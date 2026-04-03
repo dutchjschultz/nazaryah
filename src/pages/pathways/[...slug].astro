@@ -1,0 +1,227 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const pathways = await getCollection('pathways');
+  return pathways.map((pathway) => ({
+    params: { slug: pathway.slug },
+    props: { pathway },
+  }));
+}
+
+const { pathway } = Astro.props;
+const { Content } = await pathway.render();
+const { title, description, difficulty, estimatedHours, lessons, objectives, prerequisites, category } = pathway.data;
+
+const difficultyColors = {
+  beginner: 'text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-800',
+  intermediate: 'text-yellow-600 dark:text-yellow-400 bg-yellow-50 dark:bg-yellow-900/20 border-yellow-200 dark:border-yellow-800',
+  advanced: 'text-red-600 dark:text-red-400 bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-800',
+};
+
+const difficultyLabels = {
+  beginner: 'Beginner',
+  intermediate: 'Intermediate',
+  advanced: 'Advanced',
+};
+
+const totalMinutes = lessons.reduce((sum, lesson) => sum + lesson.duration, 0);
+const totalHours = Math.floor(totalMinutes / 60);
+const remainingMinutes = totalMinutes % 60;
+---
+
+<BaseLayout title={`${title} - Learning Pathway`} description={description}>
+  <article class="py-16 md:py-20">
+    <div class="container mx-auto px-6">
+      <!-- Breadcrumb -->
+      <nav class="max-w-5xl mx-auto mb-8 font-sans text-sm">
+        <ol class="flex items-center space-x-2 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)]">
+          <li><a href="/" class="hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)]">Home</a></li>
+          <li>/</li>
+          <li><a href="/pathways" class="hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)]">Pathways</a></li>
+          <li>/</li>
+          <li class="text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] font-medium">{title}</li>
+        </ol>
+      </nav>
+
+      <!-- Pathway Header -->
+      <header class="max-w-5xl mx-auto mb-12">
+        <div class="flex items-start justify-between mb-6">
+          <div class="flex-1">
+            <div class="text-sm font-sans text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] mb-3 uppercase tracking-wide">
+              {category}
+            </div>
+            <h1 class="font-serif text-4xl md:text-5xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-4">
+              {title}
+            </h1>
+          </div>
+          <div class={`text-xs font-sans font-semibold px-4 py-2 rounded-full border ${difficultyColors[difficulty]}`}>
+            {difficultyLabels[difficulty]}
+          </div>
+        </div>
+
+        <p class="text-lg text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed mb-6">
+          {description}
+        </p>
+
+        <!-- Metadata -->
+        <div class="flex flex-wrap gap-6 text-sm font-sans text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span>{lessons.length} lessons</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>{totalHours}h {remainingMinutes}m total</span>
+          </div>
+          <div class="flex items-center gap-2">
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            <span>~{estimatedHours}h estimated</span>
+          </div>
+        </div>
+      </header>
+
+      <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-12">
+          <!-- Overview -->
+          <section>
+            <h2 class="font-serif text-2xl font-bold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+              Overview
+            </h2>
+            <div class="prose prose-lg">
+              <Content />
+            </div>
+          </section>
+
+          <!-- Learning Objectives -->
+          {objectives && objectives.length > 0 && (
+            <section>
+              <h2 class="font-serif text-2xl font-bold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+                What You'll Learn
+              </h2>
+              <ul class="space-y-3">
+                {objectives.map((objective) => (
+                  <li class="flex items-start gap-3 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+                    <svg class="w-5 h-5 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    <span>{objective}</span>
+                  </li>
+                ))}
+              </ul>
+            </section>
+          )}
+
+          <!-- Lessons -->
+          <section>
+            <h2 class="font-serif text-2xl font-bold mb-6 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+              Pathway Curriculum
+            </h2>
+            <ol class="space-y-4">
+              {lessons.map((lesson, index) => (
+                <li class="card p-6 hover:border-[var(--color-accent)] dark:hover:border-[var(--color-dark-accent)] transition-all">
+                  <div class="flex items-start gap-4">
+                    <div class="flex-shrink-0 w-10 h-10 rounded-full bg-[var(--color-accent)] dark:bg-[var(--color-dark-accent)] text-white flex items-center justify-center font-bold">
+                      {index + 1}
+                    </div>
+                    <div class="flex-1">
+                      <h3 class="font-serif text-lg font-semibold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-2">
+                        <a
+                          href={lesson.slug.startsWith('http') ? lesson.slug : `/blog/${lesson.slug}`}
+                          class="hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors"
+                        >
+                          {lesson.title}
+                        </a>
+                      </h3>
+                      <p class="text-sm text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] mb-3 leading-relaxed">
+                        {lesson.description}
+                      </p>
+                      <div class="flex items-center gap-4 text-xs font-sans text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+                        <span class="flex items-center gap-1">
+                          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                          </svg>
+                          {lesson.duration} min
+                        </span>
+                        <span class="px-2 py-0.5 bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface)] rounded text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] capitalize">
+                          {lesson.type}
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ol>
+          </section>
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="space-y-6">
+          <!-- Prerequisites -->
+          {prerequisites && prerequisites.length > 0 && (
+            <div class="card p-6">
+              <h3 class="font-serif text-lg font-semibold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+                Prerequisites
+              </h3>
+              <ul class="space-y-2 text-sm">
+                {prerequisites.map((prereq) => (
+                  <li class="flex items-start gap-2 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+                    <span class="text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]">•</span>
+                    <span>{prereq}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Progress Card (placeholder for future functionality) -->
+          <div class="card p-6 bg-[var(--color-surface-elevated)] dark:bg-[var(--color-dark-surface-elevated)]">
+            <h3 class="font-serif text-lg font-semibold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+              Start Learning
+            </h3>
+            <p class="text-sm text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] mb-4">
+              Begin your journey through this structured pathway. Work at your own pace and build lasting biblical literacy.
+            </p>
+            <a
+              href={lessons[0].slug.startsWith('http') ? lessons[0].slug : `/blog/${lessons[0].slug}`}
+              class="btn btn-primary w-full text-center"
+            >
+              Begin Lesson 1
+            </a>
+          </div>
+
+          <!-- Share Card -->
+          <div class="card p-6">
+            <h3 class="font-serif text-lg font-semibold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+              Share This Pathway
+            </h3>
+            <button
+              class="btn btn-outline w-full text-center"
+              onclick={`window.open('https://twitter.com/intent/tweet?url=${encodeURIComponent(Astro.url.href)}&text=${encodeURIComponent(`Check out this biblical studies pathway: ${title}`)}','_blank','width=550,height=420')`}
+            >
+              Share on Twitter
+            </button>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .prose {
+    color: var(--color-primary-text);
+  }
+
+  .dark .prose {
+    color: var(--color-dark-text);
+  }
+</style>

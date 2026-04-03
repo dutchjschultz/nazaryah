@@ -1,0 +1,174 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PathwayCard from '../../components/PathwayCard.astro';
+import { getCollection } from 'astro:content';
+
+// Get all pathways
+const allPathways = await getCollection('pathways', ({ data }) => {
+  return data.draft !== true;
+});
+
+// Sort by difficulty, then featured
+const pathways = allPathways.sort((a, b) => {
+  if (a.data.featured !== b.data.featured) {
+    return a.data.featured ? -1 : 1;
+  }
+
+  const difficultyOrder = { beginner: 0, intermediate: 1, advanced: 2 };
+  return difficultyOrder[a.data.difficulty] - difficultyOrder[b.data.difficulty];
+});
+
+const featuredPathways = pathways.filter(p => p.data.featured);
+const otherPathways = pathways.filter(p => !p.data.featured);
+---
+
+<BaseLayout
+  title="Learning Pathways - Nazaryah"
+  description="Structured learning pathways for biblical studies. Build deep understanding through sequenced lessons on covenant theology, Hebrew language, historical context, and more."
+>
+  <!-- Hero Section -->
+  <section class="relative py-20 md:py-24 overflow-hidden bg-gradient-to-b from-[var(--color-surface-elevated)] via-[var(--color-background)] to-[var(--color-background)] dark:from-[var(--color-dark-surface-elevated)] dark:via-[var(--color-dark-background)] dark:to-[var(--color-dark-background)]">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="font-serif text-4xl md:text-5xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-6 leading-tight">
+          Learning <span class="text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]">Pathways</span>
+        </h1>
+        <p class="text-lg md:text-xl text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed mb-8">
+          Build deep, lasting biblical literacy through structured learning journeys.
+          Each pathway guides you from foundational concepts to advanced insights with curated lessons,
+          primary sources, and scholarly resources.
+        </p>
+        <div class="flex flex-wrap gap-6 justify-center text-sm font-sans">
+          <div class="flex items-center gap-2 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+            <svg class="w-5 h-5 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Sequenced lessons</span>
+          </div>
+          <div class="flex items-center gap-2 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+            <svg class="w-5 h-5 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span>Clear learning objectives</span>
+          </div>
+          <div class="flex items-center gap-2 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+            <svg class="w-5 h-5 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Self-paced progress</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Featured Pathways -->
+  {featuredPathways.length > 0 && (
+    <section class="py-16 md:py-20 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="mb-10">
+            <h2 class="font-serif text-3xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-3">
+              Featured Pathways
+            </h2>
+            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+              Start your journey with these curated learning pathways designed for maximum impact.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {featuredPathways.map((pathway) => (
+              <PathwayCard
+                title={pathway.data.title}
+                description={pathway.data.description}
+                difficulty={pathway.data.difficulty}
+                estimatedHours={pathway.data.estimatedHours}
+                lessonCount={pathway.data.lessons.length}
+                slug={pathway.slug}
+                category={pathway.data.category}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- All Pathways -->
+  {otherPathways.length > 0 && (
+    <section class="py-16 md:py-20 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="mb-10">
+            <h2 class="font-serif text-3xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-3">
+              {featuredPathways.length > 0 ? 'More Pathways' : 'All Pathways'}
+            </h2>
+            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+              Explore additional learning pathways organized by difficulty and topic.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {otherPathways.map((pathway) => (
+              <PathwayCard
+                title={pathway.data.title}
+                description={pathway.data.description}
+                difficulty={pathway.data.difficulty}
+                estimatedHours={pathway.data.estimatedHours}
+                lessonCount={pathway.data.lessons.length}
+                slug={pathway.slug}
+                category={pathway.data.category}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Empty State -->
+  {pathways.length === 0 && (
+    <section class="py-20 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+      <div class="container mx-auto px-6">
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] mb-6">
+            Learning pathways are coming soon. Check back shortly for structured courses on covenant theology,
+            Hebrew language, historical context, and more.
+          </p>
+          <a
+            href="/blog"
+            class="btn btn-primary px-8 py-3"
+          >
+            Explore Blog Posts
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)] bg-gradient-to-b from-[var(--color-surface-elevated)]/40 to-transparent dark:from-[var(--color-dark-surface-elevated)]/40 dark:to-transparent">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-serif text-2xl md:text-3xl font-bold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+          Ready to deepen your biblical literacy?
+        </h2>
+        <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] mb-8 leading-relaxed">
+          Subscribe to receive new pathways, lesson updates, and curated resources for serious biblical study.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto font-sans">
+          <input
+            type="email"
+            placeholder="Your email address"
+            class="flex-1 px-4 py-3 border border-[var(--color-border)] dark:border-[var(--color-dark-border)] rounded-lg bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface)] text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] placeholder:text-[var(--color-secondary-text)] dark:placeholder:text-[var(--color-dark-secondary-text)]"
+            required
+          />
+          <button
+            type="submit"
+            class="btn btn-primary px-6 py-3 whitespace-nowrap"
+          >
+            Subscribe
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

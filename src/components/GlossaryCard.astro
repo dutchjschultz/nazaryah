@@ -1,0 +1,64 @@
+---
+// Card component for displaying glossary terms
+interface Props {
+  term: string;
+  transliteration: string;
+  language: 'hebrew' | 'greek';
+  definition: string;
+  slug: string;
+  strongsNumber?: string;
+}
+
+const { term, transliteration, language, definition, slug, strongsNumber } = Astro.props;
+
+const languageLabels = {
+  hebrew: 'Hebrew',
+  greek: 'Greek',
+};
+
+const languageColors = {
+  hebrew: 'text-[var(--color-hebrew)] dark:text-[var(--color-dark-hebrew)] bg-[var(--color-hebrew-bg)] dark:bg-[var(--color-dark-hebrew-bg)] border-[var(--color-hebrew-border)] dark:border-[var(--color-dark-hebrew-border)]',
+  greek: 'text-[var(--color-greek)] dark:text-[var(--color-dark-greek)] bg-[var(--color-greek-bg)] dark:bg-[var(--color-dark-greek-bg)] border-[var(--color-greek-border)] dark:border-[var(--color-dark-greek-border)]',
+};
+---
+
+<article class="card group">
+  <a href={`/glossary/${slug}`} class="block p-6">
+    <!-- Header -->
+    <div class="flex items-start justify-between mb-3">
+      <div class="flex-1">
+        <h3 class="font-serif text-3xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-2 group-hover:text-[var(--color-accent)] dark:group-hover:text-[var(--color-dark-accent)] transition-colors" dir={language === 'hebrew' ? 'rtl' : 'ltr'}>
+          {term}
+        </h3>
+        <div class="font-sans text-base text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] italic">
+          {transliteration}
+        </div>
+      </div>
+
+      <!-- Language Badge -->
+      <span class={`text-xs font-sans font-semibold px-3 py-1 rounded-full border ${languageColors[language]}`}>
+        {languageLabels[language]}
+      </span>
+    </div>
+
+    <!-- Definition -->
+    <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] text-sm leading-relaxed mb-4">
+      {definition}
+    </p>
+
+    <!-- Footer Metadata -->
+    <div class="flex items-center gap-4 text-xs font-sans text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] pt-4 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+      {strongsNumber && (
+        <div class="flex items-center gap-1.5">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+          </svg>
+          <span>Strong's {strongsNumber}</span>
+        </div>
+      )}
+      <div class="ml-auto text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
+        Explore <span aria-hidden="true">→</span>
+      </div>
+    </div>
+  </a>
+</article>

@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Get all published posts
+const allPosts = await getCollection('posts', ({ data }) => {
+  return data.draft !== true;
+});
+
+// Sort by date, most recent first
+const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Get unique categories for filtering
+const categories = [...new Set(allPosts.map(post => post.data.category))].sort();
+---
+
+<BaseLayout
+  title="Biblical Studies & Theological Insights - Nazaryah Blog"
+  description="Explore in-depth biblical studies covering exegesis, theology, historical context, and fresh perspectives on Scripture."
+>
+  <div class="py-16 md:py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-6xl mx-auto">
+        <!-- Header -->
+        <div class="text-center mb-12">
+          <h1 class="font-serif text-4xl md:text-5xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-4">
+            Biblical Studies
+          </h1>
+          <p class="text-lg text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] max-w-3xl mx-auto">
+            In-depth explorations of Scripture through original languages, historical context, and scholarly analysis
+          </p>
+        </div>
+
+        <!-- Category Filter -->
+        <div class="mb-12">
+          <div class="flex flex-wrap gap-3 justify-center font-sans">
+            <button
+              class="category-filter px-4 py-2 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] text-sm font-medium transition-all hover:bg-[var(--color-accent)] hover:text-white hover:border-[var(--color-accent)] dark:hover:bg-[var(--color-dark-accent)] dark:hover:border-[var(--color-dark-accent)] active"
+              data-category="all"
+            >
+              All Posts
+            </button>
+            {categories.map((category) => (
+              <button
+                class="category-filter px-4 py-2 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] text-sm font-medium transition-all hover:bg-[var(--color-accent)] hover:text-white hover:border-[var(--color-accent)] dark:hover:bg-[var(--color-dark-accent)] dark:hover:border-[var(--color-dark-accent)]"
+                data-category={category}
+              >
+                {category}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- Posts Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="posts-grid">
+          {sortedPosts.map((post) => (
+            <article
+              class="post-card bg-white dark:bg-[#1a1a1a] border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+              data-category={post.data.category}
+            >
+              <div class="p-6">
+                <div class="text-xs font-sans text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] mb-2 uppercase tracking-wide">
+                  {post.data.category}
+                </div>
+                <h2 class="font-serif text-xl font-semibold mb-3 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class="hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors"
+                  >
+                    {post.data.title}
+                  </a>
+                </h2>
+                <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] text-sm mb-4 line-clamp-3">
+                  {post.data.description}
+                </p>
+
+                {post.data.tags && post.data.tags.length > 0 && (
+                  <div class="flex flex-wrap gap-2 mb-4">
+                    {post.data.tags.slice(0, 3).map((tag) => (
+                      <span class="text-xs font-sans px-2 py-1 bg-[#f5f5f5] dark:bg-[#2a2a2a] text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] rounded">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                )}
+
+                <div class="flex items-center justify-between text-xs font-sans text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] pt-4 border-t border-[var(--color-border)] dark:border-[var(--color-dark-accent)]">
+                  <time datetime={post.data.date.toISOString()}>
+                    {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
+                  </time>
+                  <a
+                    href={`/blog/${post.slug}`}
+                    class="text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] hover:underline"
+                  >
+                    Read More →
+                  </a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
+
+        {sortedPosts.length === 0 && (
+          <div class="text-center py-20">
+            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] text-lg">
+              No posts published yet. Check back soon!
+            </p>
+          </div>
+        )}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const filterButtons = document.querySelectorAll('.category-filter');
+    const postCards = document.querySelectorAll('.post-card');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const category = button.getAttribute('data-category');
+
+        // Update active state
+        filterButtons.forEach(btn => btn.classList.remove('active', 'bg-[var(--color-accent)]', 'text-white', 'border-[var(--color-accent)]'));
+        button.classList.add('active', 'bg-[var(--color-accent)]', 'text-white', 'border-[var(--color-accent)]');
+
+        // Filter posts
+        postCards.forEach(card => {
+          const cardCategory = card.getAttribute('data-category');
+          if (category === 'all' || cardCategory === category) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  .category-filter.active {
+    background-color: var(--color-accent);
+    color: white;
+    border-color: var(--color-accent);
+  }
+
+  .dark .category-filter.active {
+    background-color: var(--color-dark-accent);
+    border-color: var(--color-dark-accent);
+  }
+
+  .line-clamp-3 {
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+</style>

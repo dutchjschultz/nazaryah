@@ -1,0 +1,260 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('glossary');
+  return entries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const {
+  term,
+  transliteration,
+  language,
+  partOfSpeech,
+  definition,
+  etymology,
+  semanticRange,
+  usage,
+  examples,
+  relatedTerms,
+  relatedPosts,
+  strongsNumber,
+} = entry.data;
+
+const languageLabels = {
+  hebrew: 'Hebrew',
+  greek: 'Greek',
+};
+
+const languageColors = {
+  hebrew: 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/20 border-blue-200 dark:border-blue-800',
+  greek: 'text-purple-600 dark:text-purple-400 bg-purple-50 dark:bg-purple-900/20 border-purple-200 dark:border-purple-800',
+};
+---
+
+<BaseLayout title={`${transliteration} (${term}) - Glossary`} description={definition}>
+  <article class="py-16 md:py-20">
+    <div class="container mx-auto px-6">
+      <!-- Breadcrumb -->
+      <nav class="max-w-5xl mx-auto mb-8 font-sans text-sm">
+        <ol class="flex items-center space-x-2 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)]">
+          <li><a href="/" class="hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)]">Home</a></li>
+          <li>/</li>
+          <li><a href="/glossary" class="hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)]">Glossary</a></li>
+          <li>/</li>
+          <li class="text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] font-medium">{transliteration}</li>
+        </ol>
+      </nav>
+
+      <!-- Entry Header -->
+      <header class="max-w-5xl mx-auto mb-12 text-center">
+        <div class="mb-6">
+          <span class={`inline-block text-xs font-sans font-semibold px-4 py-2 rounded-full border ${languageColors[language]}`}>
+            {languageLabels[language]}
+            {strongsNumber && ` • ${strongsNumber}`}
+          </span>
+        </div>
+
+        <h1 class="font-serif text-6xl md:text-7xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-4" dir={language === 'hebrew' ? 'rtl' : 'ltr'}>
+          {term}
+        </h1>
+
+        <div class="font-sans text-2xl text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] italic mb-6">
+          {transliteration}
+          {partOfSpeech && (
+            <span class="text-base ml-3 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]">
+              ({partOfSpeech})
+            </span>
+          )}
+        </div>
+
+        <p class="text-lg text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] leading-relaxed max-w-3xl mx-auto">
+          {definition}
+        </p>
+      </header>
+
+      <div class="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-12">
+        <!-- Main Content -->
+        <div class="lg:col-span-2 space-y-12">
+          <!-- Deep Dive (MDX content) -->
+          <section>
+            <div class="prose prose-lg max-w-none">
+              <Content />
+            </div>
+          </section>
+
+          <!-- Etymology -->
+          {etymology && (
+            <section>
+              <h2 class="font-serif text-2xl font-bold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+                Etymology
+              </h2>
+              <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed">
+                {etymology}
+              </p>
+            </section>
+          )}
+
+          <!-- Usage -->
+          {usage && (
+            <section>
+              <h2 class="font-serif text-2xl font-bold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+                Usage in Scripture
+              </h2>
+              <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed">
+                {usage}
+              </p>
+            </section>
+          )}
+
+          <!-- Examples -->
+          {examples && examples.length > 0 && (
+            <section>
+              <h2 class="font-serif text-2xl font-bold mb-6 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+                Biblical Examples
+              </h2>
+              <div class="space-y-6">
+                {examples.map((example) => (
+                  <div class="card p-6">
+                    <div class="text-sm font-sans font-semibold text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] mb-3">
+                      {example.reference}
+                    </div>
+                    <div class="mb-3">
+                      <p class="text-xl font-serif text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] leading-relaxed" dir={language === 'hebrew' ? 'rtl' : 'ltr'}>
+                        {example.text}
+                      </p>
+                    </div>
+                    {example.translation && (
+                      <p class="text-sm text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] italic leading-relaxed border-l-2 border-[var(--color-accent)] dark:border-[var(--color-dark-accent)] pl-4">
+                        {example.translation}
+                      </p>
+                    )}
+                  </div>
+                ))}
+              </div>
+            </section>
+          )}
+        </div>
+
+        <!-- Sidebar -->
+        <aside class="space-y-6">
+          <!-- Semantic Range -->
+          {semanticRange && semanticRange.length > 0 && (
+            <div class="card p-6">
+              <h3 class="font-serif text-lg font-semibold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+                Semantic Range
+              </h3>
+              <ul class="space-y-2 text-sm">
+                {semanticRange.map((meaning) => (
+                  <li class="flex items-start gap-2 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+                    <span class="text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] mt-1">•</span>
+                    <span>{meaning}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Related Terms -->
+          {relatedTerms && relatedTerms.length > 0 && (
+            <div class="card p-6">
+              <h3 class="font-serif text-lg font-semibold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+                Related Terms
+              </h3>
+              <ul class="space-y-2 text-sm">
+                {relatedTerms.map((termSlug) => (
+                  <li>
+                    <a
+                      href={`/glossary/${termSlug}`}
+                      class="text-[var(--color-link)] dark:text-[var(--color-dark-link)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors"
+                    >
+                      {termSlug}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- Related Posts -->
+          {relatedPosts && relatedPosts.length > 0 && (
+            <div class="card p-6">
+              <h3 class="font-serif text-lg font-semibold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+                Related Articles
+              </h3>
+              <ul class="space-y-2 text-sm">
+                {relatedPosts.map((postSlug) => (
+                  <li>
+                    <a
+                      href={`/blog/${postSlug}`}
+                      class="text-[var(--color-link)] dark:text-[var(--color-dark-link)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors"
+                    >
+                      View article →
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          <!-- External Resources -->
+          <div class="card p-6 bg-[var(--color-surface-elevated)] dark:bg-[var(--color-dark-surface-elevated)]">
+            <h3 class="font-serif text-lg font-semibold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+              External Resources
+            </h3>
+            <ul class="space-y-3 text-sm">
+              {strongsNumber && (
+                <li>
+                  <a
+                    href={`https://biblehub.com/${language === 'hebrew' ? 'hebrew' : 'greek'}/${strongsNumber.replace(/[HG]/, '')}.htm`}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[var(--color-link)] dark:text-[var(--color-dark-link)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors flex items-center gap-2"
+                  >
+                    BibleHub Concordance
+                    <span class="text-xs" aria-hidden="true">↗</span>
+                  </a>
+                </li>
+              )}
+              <li>
+                <a
+                  href={`https://www.blueletterbible.org/lexicon/${term}/`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="text-[var(--color-link)] dark:text-[var(--color-dark-link)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors flex items-center gap-2"
+                >
+                  Blue Letter Bible
+                  <span class="text-xs" aria-hidden="true">↗</span>
+                </a>
+              </li>
+            </ul>
+          </div>
+
+          <!-- Back to Glossary -->
+          <a
+            href="/glossary"
+            class="btn btn-outline w-full text-center"
+          >
+            ← Back to Glossary
+          </a>
+        </aside>
+      </div>
+    </div>
+  </article>
+</BaseLayout>
+
+<style is:global>
+  .prose {
+    color: var(--color-primary-text);
+  }
+
+  .dark .prose {
+    color: var(--color-dark-text);
+  }
+</style>

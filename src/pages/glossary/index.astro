@@ -1,0 +1,160 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import GlossaryCard from '../../components/GlossaryCard.astro';
+import { getCollection } from 'astro:content';
+
+// Get all glossary entries
+const allEntries = await getCollection('glossary', ({ data }) => {
+  return data.draft !== true;
+});
+
+// Sort alphabetically by transliteration
+const entries = allEntries.sort((a, b) =>
+  a.data.transliteration.localeCompare(b.data.transliteration)
+);
+
+// Separate by language
+const hebrewTerms = entries.filter(e => e.data.language === 'hebrew');
+const greekTerms = entries.filter(e => e.data.language === 'greek');
+---
+
+<BaseLayout
+  title="Hebrew & Greek Glossary - Nazaryah"
+  description="Comprehensive glossary of Hebrew and Greek biblical terms with definitions, transliterations, usage examples, and scholarly references. Build your biblical language vocabulary."
+>
+  <!-- Hero Section -->
+  <section class="relative py-20 md:py-24 overflow-hidden bg-gradient-to-b from-[var(--color-surface-elevated)] via-[var(--color-background)] to-[var(--color-background)] dark:from-[var(--color-dark-surface-elevated)] dark:via-[var(--color-dark-background)] dark:to-[var(--color-dark-background)]">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h1 class="font-serif text-4xl md:text-5xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-6 leading-tight">
+          Hebrew & Greek <span class="text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]">Glossary</span>
+        </h1>
+        <p class="text-lg md:text-xl text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed mb-8">
+          Explore key biblical terms in their original languages. Each entry includes transliteration,
+          definition, etymology, usage examples, and connections to related concepts and articles.
+        </p>
+        <div class="flex flex-wrap gap-6 justify-center text-sm font-sans">
+          <div class="flex items-center gap-2 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+            <svg class="w-5 h-5 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+            <span>Original language terms</span>
+          </div>
+          <div class="flex items-center gap-2 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+            <svg class="w-5 h-5 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+            </svg>
+            <span>Biblical usage examples</span>
+          </div>
+          <div class="flex items-center gap-2 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+            <svg class="w-5 h-5 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13.828 10.172a4 4 0 00-5.656 0l-4 4a4 4 0 105.656 5.656l1.102-1.101m-.758-4.899a4 4 0 005.656 0l4-4a4 4 0 00-5.656-5.656l-1.1 1.1" />
+            </svg>
+            <span>Related terms & articles</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hebrew Terms -->
+  {hebrewTerms.length > 0 && (
+    <section class="py-16 md:py-20 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="mb-10">
+            <h2 class="font-serif text-3xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-3 flex items-center gap-3">
+              <span class="text-[var(--color-hebrew)] dark:text-[var(--color-dark-hebrew)]" aria-hidden="true">עִבְרִית</span>
+              Hebrew Terms
+            </h2>
+            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+              Explore key Hebrew words from the Old Testament - the language of Torah, Prophets, and Writings.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {hebrewTerms.map((entry) => (
+              <GlossaryCard
+                term={entry.data.term}
+                transliteration={entry.data.transliteration}
+                language={entry.data.language}
+                definition={entry.data.definition}
+                slug={entry.slug}
+                strongsNumber={entry.data.strongsNumber}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Greek Terms -->
+  {greekTerms.length > 0 && (
+    <section class="py-16 md:py-20 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+      <div class="container mx-auto px-6">
+        <div class="max-w-6xl mx-auto">
+          <div class="mb-10">
+            <h2 class="font-serif text-3xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-3 flex items-center gap-3">
+              <span class="text-[var(--color-greek)] dark:text-[var(--color-dark-greek)]" aria-hidden="true">Ἑλληνικά</span>
+              Greek Terms
+            </h2>
+            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+              Explore key Greek words from the Septuagint and New Testament - the language of the early church.
+            </p>
+          </div>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {greekTerms.map((entry) => (
+              <GlossaryCard
+                term={entry.data.term}
+                transliteration={entry.data.transliteration}
+                language={entry.data.language}
+                definition={entry.data.definition}
+                slug={entry.slug}
+                strongsNumber={entry.data.strongsNumber}
+              />
+            ))}
+          </div>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- Empty State -->
+  {entries.length === 0 && (
+    <section class="py-20 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+      <div class="container mx-auto px-6">
+        <div class="max-w-2xl mx-auto text-center">
+          <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] mb-6">
+            Glossary entries are being added. Check back soon for comprehensive Hebrew and Greek word studies.
+          </p>
+          <a
+            href="/blog"
+            class="btn btn-primary px-8 py-3"
+          >
+            Explore Blog Posts
+          </a>
+        </div>
+      </div>
+    </section>
+  )}
+
+  <!-- CTA Section -->
+  <section class="py-16 md:py-20 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)] bg-gradient-to-b from-[var(--color-surface-elevated)]/40 to-transparent dark:from-[var(--color-dark-surface-elevated)]/40 dark:to-transparent">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto text-center">
+        <h2 class="font-serif text-2xl md:text-3xl font-bold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+          Want to suggest a term?
+        </h2>
+        <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] mb-8 leading-relaxed">
+          Have a Hebrew or Greek word you'd like us to add to the glossary? Let us know and we'll research it.
+        </p>
+        <a
+          href="/contact"
+          class="btn btn-primary px-8 py-3"
+        >
+          Suggest a Term
+        </a>
+      </div>
+    </div>
+  </section>
+</BaseLayout>

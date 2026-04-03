@@ -1,0 +1,105 @@
+---
+// Subtle animated section divider
+// Organic flowing line representing connection between ideas/sections
+interface Props {
+  className?: string;
+}
+
+const { className = '' } = Astro.props;
+---
+
+<div class={`section-divider-wrapper ${className}`}>
+  <canvas class="section-divider-canvas"></canvas>
+</div>
+
+<script>
+  function initSectionDividers() {
+    const canvases = document.querySelectorAll('.section-divider-canvas') as NodeListOf<HTMLCanvasElement>;
+
+    canvases.forEach(canvas => {
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      let animationFrameId: number;
+      let offset = 0;
+
+      function resizeCanvas() {
+        const parent = canvas.parentElement;
+        if (!parent) return;
+
+        canvas.width = parent.offsetWidth;
+        canvas.height = 2; // Very thin line
+      }
+
+      function getLineColor(): string {
+        const isDark = document.documentElement.classList.contains('dark');
+        return isDark ? 'rgba(212, 168, 95, 0.3)' : 'rgba(139, 38, 53, 0.3)';
+      }
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const color = getLineColor();
+        ctx.strokeStyle = color;
+        ctx.lineWidth = 1;
+        ctx.lineCap = 'round';
+
+        ctx.beginPath();
+        ctx.moveTo(0, canvas.height / 2);
+
+        // Draw subtle flowing line
+        for (let x = 0; x < canvas.width; x += 10) {
+          const y = canvas.height / 2 + Math.sin((x + offset) * 0.01) * 0.5;
+          ctx.lineTo(x, y);
+        }
+
+        ctx.stroke();
+
+        offset += 0.5;
+        animationFrameId = requestAnimationFrame(animate);
+      }
+
+      resizeCanvas();
+      animate();
+
+      let resizeTimeout: number;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = window.setTimeout(resizeCanvas, 250);
+      });
+
+      document.addEventListener('astro:before-preparation', () => {
+        cancelAnimationFrame(animationFrameId);
+      });
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initSectionDividers);
+  } else {
+    initSectionDividers();
+  }
+
+  document.addEventListener('astro:page-load', initSectionDividers);
+</script>
+
+<style>
+  .section-divider-wrapper {
+    width: 100%;
+    height: 2px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .section-divider-canvas {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .section-divider-canvas {
+      display: none;
+    }
+  }
+</style>

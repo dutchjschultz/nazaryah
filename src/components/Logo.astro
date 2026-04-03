@@ -1,0 +1,153 @@
+---
+// Logo component with icon and wordmark
+// Design inspired by Hebrew aleph (א) and ancient scroll imagery
+interface Props {
+  variant?: 'full' | 'icon-only';
+  className?: string;
+}
+
+const { variant = 'full', className = '' } = Astro.props;
+---
+
+{variant === 'full' ? (
+  <div class={`logo-full flex items-center gap-3 ${className}`}>
+    <!-- Icon -->
+    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+      <!-- Stylized Hebrew Aleph (א) merged with scroll -->
+      <g class="logo-icon">
+        <!-- Scroll/Torah roll base -->
+        <path
+          d="M8 6 C8 4 9 3 11 3 L29 3 C31 3 32 4 32 6 L32 34 C32 36 31 37 29 37 L11 37 C9 37 8 36 8 34 Z"
+          class="scroll-base"
+          stroke="currentColor"
+          stroke-width="1.5"
+          fill="none"
+        />
+
+        <!-- Aleph-inspired mark inside -->
+        <!-- Upper diagonal stroke -->
+        <path
+          d="M15 12 L20 20"
+          class="aleph-stroke"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        />
+
+        <!-- Lower diagonal stroke -->
+        <path
+          d="M25 28 L20 20"
+          class="aleph-stroke"
+          stroke="currentColor"
+          stroke-width="2.5"
+          stroke-linecap="round"
+        />
+
+        <!-- Center vertical stroke -->
+        <path
+          d="M20 13 L20 27"
+          class="aleph-stroke"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+        />
+
+        <!-- Decorative dots (representing vowel points in Hebrew) -->
+        <circle cx="17" cy="15" r="1.5" fill="currentColor" class="vowel-point" />
+        <circle cx="23" cy="25" r="1.5" fill="currentColor" class="vowel-point" />
+      </g>
+    </svg>
+
+    <!-- Wordmark -->
+    <div class="logo-wordmark font-serif text-2xl font-bold tracking-tight">
+      Nazaryah
+    </div>
+  </div>
+) : (
+  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class={`logo-icon-only ${className}`} aria-label="Nazaryah">
+    <!-- Same icon as above -->
+    <g class="logo-icon">
+      <path
+        d="M8 6 C8 4 9 3 11 3 L29 3 C31 3 32 4 32 6 L32 34 C32 36 31 37 29 37 L11 37 C9 37 8 36 8 34 Z"
+        class="scroll-base"
+        stroke="currentColor"
+        stroke-width="1.5"
+        fill="none"
+      />
+      <path
+        d="M15 12 L20 20"
+        class="aleph-stroke"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+      />
+      <path
+        d="M25 28 L20 20"
+        class="aleph-stroke"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+      />
+      <path
+        d="M20 13 L20 27"
+        class="aleph-stroke"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+      />
+      <circle cx="17" cy="15" r="1.5" fill="currentColor" class="vowel-point" />
+      <circle cx="23" cy="25" r="1.5" fill="currentColor" class="vowel-point" />
+    </g>
+  </svg>
+)}
+
+<style>
+  .logo-full,
+  .logo-icon-only {
+    color: var(--color-accent);
+    transition: color 0.3s ease;
+  }
+
+  .dark .logo-full,
+  .dark .logo-icon-only {
+    color: var(--color-dark-accent);
+  }
+
+  .logo-full:hover .logo-icon,
+  .logo-icon-only:hover {
+    color: var(--color-accent-hover);
+  }
+
+  .dark .logo-full:hover .logo-icon,
+  .dark .logo-icon-only:hover {
+    color: var(--color-dark-accent-hover);
+  }
+
+  /* Subtle animation on scroll base */
+  .scroll-base {
+    transition: all 0.3s ease;
+  }
+
+  .logo-full:hover .scroll-base,
+  .logo-icon-only:hover .scroll-base {
+    stroke-width: 2;
+  }
+
+  /* Wordmark styling */
+  .logo-wordmark {
+    color: var(--color-accent);
+    transition: color 0.3s ease;
+  }
+
+  .dark .logo-wordmark {
+    color: var(--color-dark-accent);
+  }
+
+  .logo-full:hover .logo-wordmark {
+    color: var(--color-accent-hover);
+  }
+
+  .dark .logo-full:hover .logo-wordmark {
+    color: var(--color-dark-accent-hover);
+  }
+</style>

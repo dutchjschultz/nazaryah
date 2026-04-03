@@ -1,0 +1,218 @@
+---
+// Hybrid canvas animation: Particles flowing like wind with connections
+// Represents interconnected scholarly thought (ideas, research, connections)
+// Combined with wind/breath movement (ruach/pneuma)
+interface Props {
+  density?: 'sparse' | 'medium' | 'dense';
+  speed?: 'slow' | 'medium' | 'fast';
+}
+
+const {
+  density = 'medium',
+  speed = 'medium'
+} = Astro.props;
+---
+
+<canvas
+  class="flowing-thoughts-canvas"
+  data-density={density}
+  data-speed={speed}
+></canvas>
+
+<script>
+  class ThoughtParticle {
+    x: number;
+    y: number;
+    size: number;
+    baseSpeedX: number;
+    baseSpeedY: number;
+    speedX: number;
+    speedY: number;
+    opacity: number;
+    targetOpacity: number;
+    pulseSpeed: number;
+
+    constructor(canvas: HTMLCanvasElement, speedMultiplier: number) {
+      this.x = Math.random() * canvas.width;
+      this.y = Math.random() * canvas.height;
+      this.size = Math.random() * 2 + 1;
+
+      // Base wind direction: gentle drift right and slightly up
+      this.baseSpeedX = (Math.random() * 0.3 + 0.2) * speedMultiplier;
+      this.baseSpeedY = (Math.random() * 0.15 - 0.1) * speedMultiplier;
+
+      this.speedX = this.baseSpeedX;
+      this.speedY = this.baseSpeedY;
+
+      this.opacity = 0;
+      this.targetOpacity = Math.random() * 0.4 + 0.2;
+      this.pulseSpeed = Math.random() * 0.02 + 0.01;
+    }
+
+    update(canvas: HTMLCanvasElement, time: number) {
+      // Add subtle sine wave to movement (wind-like flow)
+      const wave = Math.sin(time * 0.001 + this.x * 0.01) * 0.3;
+      this.speedX = this.baseSpeedX + wave * 0.2;
+      this.speedY = this.baseSpeedY + Math.cos(time * 0.001 + this.y * 0.01) * 0.2;
+
+      this.x += this.speedX;
+      this.y += this.speedY;
+
+      // Gentle fade in/out pulsing
+      if (Math.abs(this.opacity - this.targetOpacity) > 0.01) {
+        this.opacity += (this.targetOpacity - this.opacity) * 0.05;
+      } else {
+        this.targetOpacity = Math.random() * 0.4 + 0.2;
+      }
+
+      // Wrap around edges smoothly
+      if (this.x > canvas.width + 50) this.x = -50;
+      if (this.x < -50) this.x = canvas.width + 50;
+      if (this.y > canvas.height + 50) this.y = -50;
+      if (this.y < -50) this.y = canvas.height + 50;
+    }
+
+    draw(ctx: CanvasRenderingContext2D, color: string) {
+      ctx.fillStyle = color;
+      ctx.globalAlpha = this.opacity;
+      ctx.beginPath();
+      ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  function initFlowingThoughts() {
+    const canvases = document.querySelectorAll('.flowing-thoughts-canvas') as NodeListOf<HTMLCanvasElement>;
+
+    canvases.forEach(canvas => {
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return;
+
+      const density = canvas.dataset.density || 'medium';
+      const speed = canvas.dataset.speed || 'medium';
+
+      let particles: ThoughtParticle[] = [];
+      let animationFrameId: number;
+      let startTime = Date.now();
+
+      // Density settings
+      const densityMap = {
+        sparse: 8000,
+        medium: 12000,
+        dense: 18000
+      };
+
+      // Speed settings
+      const speedMap = {
+        slow: 0.5,
+        medium: 1,
+        fast: 1.5
+      };
+
+      const speedMultiplier = speedMap[speed as keyof typeof speedMap];
+
+      function resizeCanvas() {
+        const parent = canvas.parentElement;
+        if (!parent) return;
+
+        canvas.width = parent.offsetWidth;
+        canvas.height = parent.offsetHeight;
+
+        const area = canvas.width * canvas.height;
+        const particleCount = Math.floor(area / densityMap[density as keyof typeof densityMap]);
+
+        particles = [];
+        for (let i = 0; i < particleCount; i++) {
+          particles.push(new ThoughtParticle(canvas, speedMultiplier));
+        }
+      }
+
+      function getParticleColor(): string {
+        const isDark = document.documentElement.classList.contains('dark');
+        return isDark ? 'rgba(212, 168, 95, 1)' : 'rgba(139, 38, 53, 1)';
+      }
+
+      function animate() {
+        const currentTime = Date.now() - startTime;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        const color = getParticleColor();
+
+        // Update and draw particles
+        particles.forEach(particle => {
+          particle.update(canvas, currentTime);
+          particle.draw(ctx, color);
+        });
+
+        // Draw connections between nearby particles (scholarly interconnection)
+        const connectionDistance = 100;
+        particles.forEach((particleA, indexA) => {
+          particles.slice(indexA + 1, indexA + 10).forEach(particleB => {
+            const dx = particleA.x - particleB.x;
+            const dy = particleA.y - particleB.y;
+            const distance = Math.sqrt(dx * dx + dy * dy);
+
+            if (distance < connectionDistance) {
+              const opacity = (1 - distance / connectionDistance) * 0.15;
+              ctx.strokeStyle = color;
+              ctx.globalAlpha = opacity * Math.min(particleA.opacity, particleB.opacity);
+              ctx.lineWidth = 0.5;
+              ctx.beginPath();
+              ctx.moveTo(particleA.x, particleA.y);
+              ctx.lineTo(particleB.x, particleB.y);
+              ctx.stroke();
+              ctx.globalAlpha = 1;
+            }
+          });
+        });
+
+        animationFrameId = requestAnimationFrame(animate);
+      }
+
+      // Initialize
+      resizeCanvas();
+      animate();
+
+      // Handle resize
+      let resizeTimeout: number;
+      window.addEventListener('resize', () => {
+        clearTimeout(resizeTimeout);
+        resizeTimeout = window.setTimeout(resizeCanvas, 250);
+      });
+
+      // Cleanup
+      document.addEventListener('astro:before-preparation', () => {
+        cancelAnimationFrame(animationFrameId);
+      });
+    });
+  }
+
+  // Initialize
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initFlowingThoughts);
+  } else {
+    initFlowingThoughts();
+  }
+
+  // Re-initialize on page navigation (for view transitions)
+  document.addEventListener('astro:page-load', initFlowingThoughts);
+</script>
+
+<style>
+  .flowing-thoughts-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    opacity: 0.6;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .flowing-thoughts-canvas {
+      display: none;
+    }
+  }
+</style>

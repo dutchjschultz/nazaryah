@@ -1,0 +1,144 @@
+---
+// References component for displaying scholarly citations
+// Supports: books, articles, YouTube, podcasts, websites, primary sources, commentaries
+interface Reference {
+  id: string;
+  type: 'book' | 'article' | 'youtube' | 'podcast' | 'website' | 'primary-source' | 'commentary';
+  title: string;
+  author?: string;
+  url?: string;
+  year?: number;
+  publisher?: string;
+  description?: string;
+}
+
+interface Props {
+  references: Reference[];
+}
+
+const { references } = Astro.props;
+
+// Group references by type for better organization
+const grouped = references.reduce((acc, ref) => {
+  if (!acc[ref.type]) acc[ref.type] = [];
+  acc[ref.type].push(ref);
+  return acc;
+}, {} as Record<string, Reference[]>);
+
+const typeLabels = {
+  'book': 'Books & Commentaries',
+  'article': 'Articles & Papers',
+  'youtube': 'Video Resources',
+  'podcast': 'Audio Resources',
+  'website': 'Web Resources',
+  'primary-source': 'Primary Sources',
+  'commentary': 'Scholarly Commentaries',
+};
+
+const typeIcons = {
+  'book': '📚',
+  'article': '📄',
+  'youtube': '🎥',
+  'podcast': '🎙️',
+  'website': '🌐',
+  'primary-source': '📜',
+  'commentary': '📖',
+};
+---
+
+<section class="references-section mt-16 pt-12 border-t-2 border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+  <h2 class="font-serif text-2xl md:text-3xl font-bold mb-6 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+    References & Further Study
+  </h2>
+  <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] mb-8">
+    This article draws on the following sources. Click any reference to explore further.
+  </p>
+
+  <div class="space-y-8">
+    {Object.entries(grouped).map(([type, refs]) => (
+      <div class="reference-group">
+        <h3 class="font-sans text-lg font-semibold mb-4 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] flex items-center gap-2">
+          <span class="text-2xl" aria-hidden="true">{typeIcons[type as keyof typeof typeIcons]}</span>
+          {typeLabels[type as keyof typeof typeLabels]}
+        </h3>
+        <ol class="space-y-4">
+          {refs.map((ref) => (
+            <li id={`ref-${ref.id}`} class="reference-item pl-6 relative">
+              <span class="absolute left-0 top-1 text-xs font-mono text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+                [{ref.id}]
+              </span>
+              <div class="font-sans">
+                {ref.url ? (
+                  <a
+                    href={ref.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    class="text-[var(--color-link)] dark:text-[var(--color-dark-link)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] font-medium transition-colors"
+                  >
+                    {ref.title}
+                    <span class="inline-block ml-1 text-sm" aria-hidden="true">↗</span>
+                  </a>
+                ) : (
+                  <span class="font-medium text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+                    {ref.title}
+                  </span>
+                )}
+
+                {ref.author && (
+                  <span class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+                    {' '}by {ref.author}
+                  </span>
+                )}
+
+                {ref.year && (
+                  <span class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+                    {' '}({ref.year})
+                  </span>
+                )}
+
+                {ref.publisher && (
+                  <span class="text-sm text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)]">
+                    {' '}— {ref.publisher}
+                  </span>
+                )}
+
+                {ref.description && (
+                  <p class="mt-1 text-sm text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed">
+                    {ref.description}
+                  </p>
+                )}
+              </div>
+            </li>
+          ))}
+        </ol>
+      </div>
+    ))}
+  </div>
+
+  <div class="mt-8 p-6 bg-[var(--color-surface-elevated)] dark:bg-[var(--color-dark-surface-elevated)] rounded-lg border border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+    <p class="text-sm text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed">
+      <strong class="text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">Citation Note:</strong>
+      All claims in this article are grounded in scholarly research. References include academic sources,
+      primary texts, and accessible media to support both serious study and general learning.
+    </p>
+  </div>
+</section>
+
+<style>
+  .reference-item {
+    scroll-margin-top: 100px; /* For anchor links */
+  }
+
+  .reference-item:target {
+    background: var(--color-surface-elevated);
+    padding: 0.75rem;
+    margin-left: -0.75rem;
+    margin-right: -0.75rem;
+    border-radius: 0.5rem;
+    transition: background-color 0.3s ease;
+  }
+
+  .dark .reference-item:target {
+    background: var(--color-dark-surface-elevated);
+  }
+</style>
