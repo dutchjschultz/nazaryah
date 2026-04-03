@@ -10,14 +10,14 @@ const allPosts = await getCollection('posts', ({ data }) => {
 const featuredPosts = allPosts
   .filter((post) => post.data.featured)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 4);
+  .slice(0, 3);
 
-// If no featured posts, get the 4 most recent
+// If no featured posts, get the 3 most recent
 const displayPosts = featuredPosts.length > 0
   ? featuredPosts
   : allPosts
       .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-      .slice(0, 4);
+      .slice(0, 3);
 ---
 
 <BaseLayout
@@ -64,22 +64,22 @@ const displayPosts = featuredPosts.length > 0
           <p class="text-center text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] mb-12 max-w-2xl mx-auto">
             Dive into our latest research and insights on biblical texts, languages, and historical context.
           </p>
-          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 lg:gap-8">
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {displayPosts.map((post) => (
-              <article class="card group">
-                <div class="p-5">
-                  <div class="text-xs font-sans font-semibold text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] mb-2 uppercase tracking-wider">
+              <article class="card group flex flex-col">
+                <div class="p-8 flex flex-col flex-1">
+                  <div class="text-xs font-sans font-semibold text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] mb-3 uppercase tracking-wider">
                     {post.data.category}
                   </div>
-                  <h3 class="font-serif text-lg font-semibold mb-2 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+                  <h3 class="font-serif text-xl font-semibold mb-3 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
                     <a href={`/blog/${post.slug}`} class="hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors">
                       {post.data.title}
                     </a>
                   </h3>
-                  <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] text-sm leading-relaxed mb-4 line-clamp-2">
+                  <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] text-base leading-relaxed mb-6 line-clamp-4 flex-1">
                     {post.data.description}
                   </p>
-                  <div class="flex items-center justify-between text-xs font-sans text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] pt-4 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+                  <div class="flex items-center justify-between text-sm font-sans text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] pt-5 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
                     <time datetime={post.data.date.toISOString()}>
                       {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                     </time>
