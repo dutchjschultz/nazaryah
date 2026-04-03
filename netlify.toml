@@ -4,3 +4,9 @@
 
 [build.environment]
   NODE_VERSION = "20"
+
+[context.develop]
+  command = "npm run build"
+
+[context.branch-deploy]
+  command = "npm run build"
