@@ -13,9 +13,9 @@ interface Props {
 const { title, description, difficulty, estimatedHours, lessonCount, slug, category } = Astro.props;
 
 const difficultyColors = {
-  beginner: 'text-green-600 dark:text-green-400',
-  intermediate: 'text-yellow-600 dark:text-yellow-400',
-  advanced: 'text-red-600 dark:text-red-400',
+  beginner: 'text-[var(--olive)] dark:text-green-400',
+  intermediate: 'text-[var(--bronze-light)] dark:text-yellow-400',
+  advanced: 'text-[var(--clay-dark)] dark:text-red-400',
 };
 
 const difficultyLabels = {
@@ -30,27 +30,27 @@ const difficultyLabels = {
     <!-- Header -->
     <div class="flex items-start justify-between mb-4">
       <div class="flex-1">
-        <div class="text-xs font-sans font-semibold text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] mb-2 uppercase tracking-wider">
+        <div class="tag mb-2" style="color: var(--bronze);">
           {category}
         </div>
-        <h3 class="font-serif text-xl font-semibold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] group-hover:text-[var(--color-accent)] dark:group-hover:text-[var(--color-dark-accent)] transition-colors">
+        <h3 class="text-xl font-semibold group-hover:text-[var(--bronze)] dark:group-hover:text-[var(--gold)] transition-colors" style="font-family: var(--font-display); color: var(--deep-earth);">
           {title}
         </h3>
       </div>
 
       <!-- Difficulty Badge -->
-      <span class={`text-xs font-sans font-semibold px-3 py-1 rounded-full border ${difficultyColors[difficulty]} border-current`}>
+      <span class={`text-xs font-semibold px-3 py-1 rounded-full border ${difficultyColors[difficulty]} border-current`} style="font-family: var(--font-display); letter-spacing: 1px;">
         {difficultyLabels[difficulty]}
       </span>
     </div>
 
     <!-- Description -->
-    <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] text-sm leading-relaxed mb-4 line-clamp-3">
+    <p class="text-sm leading-relaxed mb-4 line-clamp-3" style="color: var(--ink-faded);">
       {description}
     </p>
 
     <!-- Metadata Footer -->
-    <div class="flex items-center gap-4 text-xs font-sans text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] pt-4 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+    <div class="flex items-center gap-4 text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
       <div class="flex items-center gap-1.5">
         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
@@ -63,8 +63,8 @@ const difficultyLabels = {
         </svg>
         <span>~{estimatedHours}h total</span>
       </div>
-      <div class="ml-auto text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1">
-        Start Learning <span aria-hidden="true">→</span>
+      <div class="ml-auto font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--bronze);">
+        Start Learning <span aria-hidden="true">&rarr;</span>
       </div>
     </div>
   </a>

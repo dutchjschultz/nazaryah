@@ -25,20 +25,20 @@ const displayPosts = featuredPosts.length > 0
   description="Explore Scripture through original languages, fresh perspectives, and rich historical context. A modern biblical studies platform for serious learners."
 >
   <!-- Hero Section -->
-  <section class="relative py-24 md:py-32 lg:py-40 overflow-hidden bg-gradient-to-b from-[var(--color-surface-elevated)] via-[var(--color-background)] to-[var(--color-background)] dark:from-[var(--color-dark-surface-elevated)] dark:via-[var(--color-dark-background)] dark:to-[var(--color-dark-background)]">
+  <section class="relative py-24 md:py-32 lg:py-40 overflow-hidden">
     <div class="container mx-auto px-6">
       <div class="max-w-4xl mx-auto text-center">
-        <h1 class="font-serif text-4xl md:text-5xl lg:text-6xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-6 leading-tight">
-          Exploring Scripture with <span class="text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]">Scholarly Integrity</span>
+        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style="font-family: var(--font-display); color: var(--deep-earth);">
+          Exploring Scripture with <span style="color: var(--bronze);">Scholarly Integrity</span>
         </h1>
-        <p class="text-lg md:text-xl text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed mb-10 max-w-3xl mx-auto">
+        <p class="text-lg md:text-xl leading-relaxed mb-10 max-w-3xl mx-auto" style="color: var(--ink-faded);">
           Nazaryah is a modern biblical studies platform that bridges academic scholarship and general readership,
           emphasizing original languages, fresh perspectives, and rich contextual understanding without denominational bias.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center font-sans">
+        <div class="flex flex-col sm:flex-row gap-4 justify-center">
           <a
             href="/blog"
-            class="btn btn-primary px-8 py-3"
+            class="btn btn-stone px-8 py-3"
           >
             Explore Studies
           </a>
@@ -55,39 +55,40 @@ const displayPosts = featuredPosts.length > 0
 
   <!-- Featured Studies -->
   {displayPosts.length > 0 && (
-    <section class="py-20 md:py-24 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+    <section class="py-20 md:py-24 border-t border-[var(--sand-dark)]">
       <div class="container mx-auto px-6">
         <div class="max-w-7xl mx-auto">
-          <h2 class="font-serif text-3xl md:text-4xl font-bold text-center mb-3 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+          <h2 class="text-3xl md:text-4xl font-bold text-center mb-3" style="font-family: var(--font-display); color: var(--deep-earth);">
             Featured Studies
           </h2>
-          <p class="text-center text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] mb-12 max-w-2xl mx-auto">
+          <p class="text-center mb-12 max-w-2xl mx-auto" style="color: var(--ink-faded);">
             Dive into our latest research and insights on biblical texts, languages, and historical context.
           </p>
           <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
             {displayPosts.map((post) => (
               <article class="card group flex flex-col">
                 <div class="p-8 flex flex-col flex-1">
-                  <div class="text-xs font-sans font-semibold text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] mb-3 uppercase tracking-wider">
+                  <div class="tag mb-3" style="color: var(--bronze);">
                     {post.data.category}
                   </div>
-                  <h3 class="font-serif text-xl font-semibold mb-3 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
-                    <a href={`/blog/${post.slug}`} class="hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors">
+                  <h3 class="text-xl font-semibold mb-3" style="font-family: var(--font-display); color: var(--deep-earth);">
+                    <a href={`/blog/${post.slug}`} class="hover:text-[var(--bronze)] transition-colors" style="color: var(--deep-earth);">
                       {post.data.title}
                     </a>
                   </h3>
-                  <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] text-base leading-relaxed mb-6 line-clamp-4 flex-1">
+                  <p class="text-base leading-relaxed mb-6 line-clamp-4 flex-1" style="color: var(--ink-faded);">
                     {post.data.description}
                   </p>
-                  <div class="flex items-center justify-between text-sm font-sans text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] pt-5 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+                  <div class="flex items-center justify-between text-sm pt-5 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
                     <time datetime={post.data.date.toISOString()}>
                       {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
                     </time>
                     <a
                       href={`/blog/${post.slug}`}
-                      class="text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
+                      class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
+                      style="color: var(--bronze);"
                     >
-                      Read More <span aria-hidden="true">→</span>
+                      Read More <span aria-hidden="true">&rarr;</span>
                     </a>
                   </div>
                 </div>
@@ -97,9 +98,10 @@ const displayPosts = featuredPosts.length > 0
           <div class="text-center mt-12">
             <a
               href="/blog"
-              class="inline-flex items-center gap-2 font-sans text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] hover:text-[var(--color-accent-hover)] dark:hover:text-[var(--color-dark-accent-hover)] font-medium transition-colors"
+              class="inline-flex items-center gap-2 font-medium transition-colors"
+              style="font-family: var(--font-display); color: var(--bronze); letter-spacing: 1px;"
             >
-              View All Studies <span aria-hidden="true">→</span>
+              View All Studies <span aria-hidden="true">&rarr;</span>
             </a>
           </div>
         </div>
@@ -108,48 +110,48 @@ const displayPosts = featuredPosts.length > 0
   )}
 
   <!-- Our Approach -->
-  <section class="relative py-20 md:py-24 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)] bg-gradient-to-b from-[var(--color-surface-elevated)]/40 to-transparent dark:from-[var(--color-dark-surface-elevated)]/40 dark:to-transparent">
+  <section class="relative py-20 md:py-24 border-t border-[var(--sand-dark)]">
     <div class="container mx-auto px-6">
       <div class="max-w-5xl mx-auto">
-        <h2 class="font-serif text-3xl md:text-4xl font-bold text-center mb-3 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-3" style="font-family: var(--font-display); color: var(--deep-earth);">
           Our Approach
         </h2>
-        <p class="text-center text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] mb-14 max-w-2xl mx-auto">
+        <p class="text-center mb-14 max-w-2xl mx-auto" style="color: var(--ink-faded);">
           Four pillars that guide our biblical scholarship and research methodology.
         </p>
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div class="card p-8 group hover:border-[var(--color-accent)] dark:hover:border-[var(--color-dark-accent)] transition-all">
-            <h3 class="font-serif text-xl font-semibold mb-4 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] group-hover:text-[var(--color-accent-hover)] dark:group-hover:text-[var(--color-dark-accent-hover)] transition-colors">
+          <div class="tile-card p-8 group">
+            <h3 class="text-xl font-semibold mb-4" style="font-family: var(--font-display); color: var(--bronze);">
               Original Languages
             </h3>
-            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed">
+            <p style="color: var(--ink-faded);" class="leading-relaxed">
               We engage directly with Hebrew and Greek texts, providing transliterations and contextual insights
               to deepen your understanding of Scripture's original meaning.
             </p>
           </div>
-          <div class="card p-8 group hover:border-[var(--color-accent)] dark:hover:border-[var(--color-dark-accent)] transition-all">
-            <h3 class="font-serif text-xl font-semibold mb-4 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] group-hover:text-[var(--color-accent-hover)] dark:group-hover:text-[var(--color-dark-accent-hover)] transition-colors">
+          <div class="tile-card p-8 group">
+            <h3 class="text-xl font-semibold mb-4" style="font-family: var(--font-display); color: var(--bronze);">
               Historical Context
             </h3>
-            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed">
+            <p style="color: var(--ink-faded);" class="leading-relaxed">
               Explore the Ancient Near East, Second Temple Judaism, and Greco-Roman world to understand
               the cultural and historical backdrop of biblical texts.
             </p>
           </div>
-          <div class="card p-8 group hover:border-[var(--color-accent)] dark:hover:border-[var(--color-dark-accent)] transition-all">
-            <h3 class="font-serif text-xl font-semibold mb-4 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] group-hover:text-[var(--color-accent-hover)] dark:group-hover:text-[var(--color-dark-accent-hover)] transition-colors">
+          <div class="tile-card p-8 group">
+            <h3 class="text-xl font-semibold mb-4" style="font-family: var(--font-display); color: var(--bronze);">
               Fresh Perspectives
             </h3>
-            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed">
+            <p style="color: var(--ink-faded);" class="leading-relaxed">
               We challenge traditional interpretations when evidence warrants, bringing new insights
               from contemporary scholarship and linguistic discoveries.
             </p>
           </div>
-          <div class="card p-8 group hover:border-[var(--color-accent)] dark:hover:border-[var(--color-dark-accent)] transition-all">
-            <h3 class="font-serif text-xl font-semibold mb-4 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] group-hover:text-[var(--color-accent-hover)] dark:group-hover:text-[var(--color-dark-accent-hover)] transition-colors">
+          <div class="tile-card p-8 group">
+            <h3 class="text-xl font-semibold mb-4" style="font-family: var(--font-display); color: var(--bronze);">
               Scholarly Integrity
             </h3>
-            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed">
+            <p style="color: var(--ink-faded);" class="leading-relaxed">
               All studies are thoroughly researched, properly cited, and maintain academic rigor
               while remaining accessible to serious learners at all levels.
             </p>
@@ -160,26 +162,26 @@ const displayPosts = featuredPosts.length > 0
   </section>
 
   <!-- Newsletter -->
-  <section class="py-20 md:py-24 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)]">
+  <section class="py-20 md:py-24 border-t border-[var(--sand-dark)]">
     <div class="container mx-auto px-6">
       <div class="max-w-2xl mx-auto">
         <div class="card p-10 text-center">
-            <h2 class="font-serif text-3xl font-bold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+            <h2 class="text-3xl font-bold mb-4" style="font-family: var(--font-display); color: var(--deep-earth);">
               Stay Updated
             </h2>
-            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] mb-8 leading-relaxed">
+            <p class="mb-8 leading-relaxed" style="color: var(--ink-faded);">
               Receive new studies and insights directly in your inbox. No spam, just quality biblical scholarship.
             </p>
-            <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto font-sans">
+            <form class="flex flex-col sm:flex-row gap-3 max-w-md mx-auto">
             <input
               type="email"
               placeholder="Your email address"
-              class="flex-1 px-4 py-3 border border-[var(--color-border)] dark:border-[var(--color-dark-border)] rounded-lg bg-[var(--color-surface)] dark:bg-[var(--color-dark-surface)] text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] placeholder:text-[var(--color-secondary-text)] dark:placeholder:text-[var(--color-dark-secondary-text)]"
+              class="input-field flex-1"
               required
             />
             <button
               type="submit"
-              class="btn btn-primary px-6 py-3 whitespace-nowrap"
+              class="btn btn-stone px-6 py-3 whitespace-nowrap"
             >
               Subscribe
             </button>
