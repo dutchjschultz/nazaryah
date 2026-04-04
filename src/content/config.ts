@@ -25,7 +25,9 @@ const postsCollection = defineCollection({
       'Historical Context',
       'Book-by-Book Commentary',
       'Word Studies',
-      'Fresh Perspectives'
+      'Fresh Perspectives',
+      'Trinity Busters',
+      'Books'
     ]),
     tags: z.array(z.string()).default([]),
     featured: z.boolean().default(false),

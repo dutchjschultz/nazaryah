@@ -455,3 +455,260 @@ a, button, .btn {
     color: var(--color-dark-background);
   }
 }
+
+/* ============================================================
+   BIBLICAL THEME — parchment texture, burnt edges, ornaments
+   ============================================================ */
+
+/* --- Parchment noise texture on body background --- */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  opacity: 0.045;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 90, 43, 0.3) 2px,
+      rgba(139, 90, 43, 0.3) 3px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 4px,
+      rgba(139, 90, 43, 0.15) 4px,
+      rgba(139, 90, 43, 0.15) 5px
+    );
+  background-size: 5px 5px;
+}
+
+.dark body::before {
+  opacity: 0.03;
+}
+
+/* --- Burnt / vignette edges on page --- */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  background:
+    radial-gradient(ellipse 110% 60% at 50% 0%,   transparent 70%, rgba(80, 40, 10, 0.18) 100%),
+    radial-gradient(ellipse 110% 60% at 50% 100%, transparent 70%, rgba(80, 40, 10, 0.18) 100%),
+    radial-gradient(ellipse 60% 110% at 0%   50%, transparent 70%, rgba(80, 40, 10, 0.14) 100%),
+    radial-gradient(ellipse 60% 110% at 100% 50%, transparent 70%, rgba(80, 40, 10, 0.14) 100%);
+}
+
+.dark body::after {
+  background:
+    radial-gradient(ellipse 110% 60% at 50% 0%,   transparent 70%, rgba(0, 0, 0, 0.55) 100%),
+    radial-gradient(ellipse 110% 60% at 50% 100%, transparent 70%, rgba(0, 0, 0, 0.55) 100%),
+    radial-gradient(ellipse 60% 110% at 0%   50%, transparent 70%, rgba(0, 0, 0, 0.4)  100%),
+    radial-gradient(ellipse 60% 110% at 100% 50%, transparent 70%, rgba(0, 0, 0, 0.4)  100%);
+}
+
+/* Ensure content sits above the body pseudo-elements */
+header, main, footer {
+  position: relative;
+  z-index: 2;
+}
+
+/* --- Corner ornaments (placed on hero and key sections) --- */
+.corner-ornament {
+  position: absolute;
+  width: 64px;
+  height: 64px;
+  pointer-events: none;
+  z-index: 3;
+  opacity: 0.35;
+}
+
+.dark .corner-ornament {
+  opacity: 0.25;
+}
+
+/* Each corner is two overlapping L-shaped borders */
+.corner-ornament--tl {
+  top: 20px;
+  left: 20px;
+  border-top: 2px solid var(--color-accent);
+  border-left: 2px solid var(--color-accent);
+}
+.corner-ornament--tl::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 6px;
+  right: -6px;
+  bottom: -6px;
+  border-top: 1px solid var(--color-accent);
+  border-left: 1px solid var(--color-accent);
+  width: 40px;
+  height: 40px;
+}
+
+.corner-ornament--tr {
+  top: 20px;
+  right: 20px;
+  border-top: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+}
+.corner-ornament--tr::after {
+  content: '';
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  border-top: 1px solid var(--color-accent);
+  border-right: 1px solid var(--color-accent);
+  width: 40px;
+  height: 40px;
+}
+
+.corner-ornament--bl {
+  bottom: 20px;
+  left: 20px;
+  border-bottom: 2px solid var(--color-accent);
+  border-left: 2px solid var(--color-accent);
+}
+.corner-ornament--bl::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  left: 6px;
+  border-bottom: 1px solid var(--color-accent);
+  border-left: 1px solid var(--color-accent);
+  width: 40px;
+  height: 40px;
+}
+
+.corner-ornament--br {
+  bottom: 20px;
+  right: 20px;
+  border-bottom: 2px solid var(--color-accent);
+  border-right: 2px solid var(--color-accent);
+}
+.corner-ornament--br::after {
+  content: '';
+  position: absolute;
+  bottom: 6px;
+  right: 6px;
+  border-bottom: 1px solid var(--color-accent);
+  border-right: 1px solid var(--color-accent);
+  width: 40px;
+  height: 40px;
+}
+
+.dark .corner-ornament--tl,
+.dark .corner-ornament--tl::after,
+.dark .corner-ornament--tr,
+.dark .corner-ornament--tr::after,
+.dark .corner-ornament--bl,
+.dark .corner-ornament--bl::after,
+.dark .corner-ornament--br,
+.dark .corner-ornament--br::after {
+  border-color: var(--color-dark-accent);
+}
+
+/* --- Decorative manuscript divider used between sections --- */
+.manuscript-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 0 auto 2rem;
+  max-width: 320px;
+  color: var(--color-accent);
+  opacity: 0.5;
+}
+
+.dark .manuscript-divider {
+  color: var(--color-dark-accent);
+}
+
+.manuscript-divider::before,
+.manuscript-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: currentColor;
+}
+
+.manuscript-divider-center {
+  /* ✦ diamond star shape via clip-path */
+  width: 10px;
+  height: 10px;
+  background: currentColor;
+  clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+  flex-shrink: 0;
+}
+
+/* --- Hero logo frame --- */
+.hero-logo-frame {
+  width: 280px;
+  max-width: 100%;
+  position: relative;
+}
+
+/* Aged gilt frame effect using box-shadow + border */
+.hero-logo-frame::before {
+  content: '';
+  position: absolute;
+  inset: -8px;
+  border: 1px solid var(--color-accent);
+  opacity: 0.3;
+  border-radius: 6px;
+  pointer-events: none;
+}
+
+.hero-logo-frame::after {
+  content: '';
+  position: absolute;
+  inset: -4px;
+  border: 2px solid var(--color-accent);
+  opacity: 0.5;
+  border-radius: 4px;
+  pointer-events: none;
+  background: transparent;
+}
+
+.dark .hero-logo-frame::before,
+.dark .hero-logo-frame::after {
+  border-color: var(--color-dark-accent);
+}
+
+.hero-logo-img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 4px;
+  /* Subtle vignette around the image itself */
+  box-shadow:
+    0 0 0 1px rgba(139, 38, 53, 0.2),
+    0 8px 32px rgba(80, 40, 10, 0.25),
+    inset 0 0 60px rgba(0,0,0,0.1);
+}
+
+.dark .hero-logo-img {
+  box-shadow:
+    0 0 0 1px rgba(212, 168, 95, 0.2),
+    0 8px 32px rgba(0, 0, 0, 0.5),
+    inset 0 0 60px rgba(0,0,0,0.2);
+}
+
+/* Responsive: shrink logo on small screens */
+@media (max-width: 1023px) {
+  .hero-logo-frame {
+    width: 220px;
+  }
+}
+
+@media (max-width: 640px) {
+  .hero-logo-frame {
+    width: 180px;
+  }
+}
