@@ -27,25 +27,25 @@ const readingTime = Math.ceil(wordCount / 200);
   <article class="py-16 md:py-20">
     <div class="container mx-auto px-6">
       <!-- Breadcrumb -->
-      <nav class="max-w-4xl mx-auto mb-8 font-sans text-sm">
-        <ol class="flex items-center space-x-2 text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)]">
-          <li><a href="/" class="hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)]">Home</a></li>
+      <nav class="max-w-4xl mx-auto mb-8 text-sm" style="font-family: var(--font-body);">
+        <ol class="flex items-center space-x-2" style="color: var(--ink-faded);">
+          <li><a href="/" class="hover:text-[var(--bronze)]">Home</a></li>
           <li>/</li>
-          <li><a href="/blog" class="hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)]">Blog</a></li>
+          <li><a href="/blog" class="hover:text-[var(--bronze)]">Blog</a></li>
           <li>/</li>
-          <li class="text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] font-medium">{title}</li>
+          <li class="font-medium" style="color: var(--ink);">{title}</li>
         </ol>
       </nav>
 
       <!-- Article Header -->
       <header class="max-w-4xl mx-auto mb-12 text-center">
-        <div class="text-sm font-sans text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] mb-4 uppercase tracking-wide">
+        <div class="tag mb-4" style="color: var(--bronze);">
           {category}
         </div>
-        <h1 class="font-serif text-4xl md:text-5xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-6">
+        <h1 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: var(--font-display); color: var(--deep-earth);">
           {title}
         </h1>
-        <div class="flex items-center justify-center gap-6 text-sm font-sans text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)]">
+        <div class="flex items-center justify-center gap-6 text-sm" style="color: var(--ink-faded); font-family: var(--font-body);">
           <div class="flex items-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
@@ -69,7 +69,7 @@ const readingTime = Math.ceil(wordCount / 200);
         {tags && tags.length > 0 && (
           <div class="flex flex-wrap gap-2 justify-center mt-6">
             {tags.map((tag) => (
-              <span class="text-xs font-sans px-3 py-1 bg-[#f5f5f5] dark:bg-[#2a2a2a] text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] rounded-full">
+              <span class="tag" style="color: var(--ink-faded);">
                 {tag}
               </span>
             ))}
@@ -90,11 +90,12 @@ const readingTime = Math.ceil(wordCount / 200);
       )}
 
       <!-- Article Footer -->
-      <footer class="max-w-3xl mx-auto mt-16 pt-8 border-t border-[var(--color-border)] dark:border-[var(--color-dark-accent)]">
+      <footer class="max-w-3xl mx-auto mt-16 pt-8 border-t border-[var(--sand-dark)]">
         <div class="flex items-center justify-between">
           <a
             href="/blog"
-            class="inline-flex items-center gap-2 font-sans text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] hover:underline"
+            class="inline-flex items-center gap-2 hover:underline"
+            style="color: var(--bronze); font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 1px;"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
@@ -104,7 +105,7 @@ const readingTime = Math.ceil(wordCount / 200);
 
           <div class="flex gap-4">
             <button
-              class="p-2 rounded-lg border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] hover:bg-[var(--color-accent)] hover:text-white hover:border-[var(--color-accent)] dark:hover:bg-[var(--color-dark-accent)] transition-all"
+              class="p-2 rounded border border-[var(--sand-dark)] hover:bg-[var(--stone)] hover:text-[var(--linen)] hover:border-[var(--stone)] transition-all"
               title="Share on Twitter"
               onclick={`window.open('https://twitter.com/intent/tweet?url=${encodeURIComponent(Astro.url.href)}&text=${encodeURIComponent(title)}','_blank','width=550,height=420')`}
             >
@@ -122,7 +123,7 @@ const readingTime = Math.ceil(wordCount / 200);
 <style is:global>
   /* Enhance prose styles for biblical content */
   .prose {
-    color: var(--color-primary-text);
+    color: var(--ink);
   }
 
   .dark .prose {
@@ -131,7 +132,7 @@ const readingTime = Math.ceil(wordCount / 200);
 
   .prose strong {
     font-weight: 600;
-    color: var(--color-primary-text);
+    color: var(--deep-earth);
   }
 
   .dark .prose strong {
@@ -154,11 +155,11 @@ const readingTime = Math.ceil(wordCount / 200);
 
   .prose hr {
     border: 0;
-    border-top: 1px solid var(--color-border);
+    border-top: 1px solid var(--sand-dark);
     margin: 2rem 0;
   }
 
   .dark .prose hr {
-    border-color: var(--color-dark-accent);
+    border-color: rgba(139,125,107,0.25);
   }
 </style>
