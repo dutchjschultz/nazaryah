@@ -74,6 +74,7 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* ── Page background ── */
 body {
   background-color: var(--soil);
   background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
@@ -150,7 +151,7 @@ a:hover { color: var(--gold); }
   font-size: 0.85em;
   color: var(--gold);
   text-transform: uppercase;
-  letter-spacing: 0.05em;
+  letter-spacing: 0.1em;
 }
 
 .prose td {

@@ -9,18 +9,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   <div class="py-16 md:py-20">
     <div class="container mx-auto px-6">
       <div class="max-w-3xl mx-auto">
-        <h1 class="text-center mb-4 font-serif text-4xl font-bold text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+        <h1 class="text-center mb-4" style="font-family: var(--font-display); color: var(--deep-earth);">
           Get in Touch
         </h1>
-        <p class="text-center text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] text-lg mb-12">
+        <p class="text-center text-lg mb-12" style="color: var(--ink-faded);">
           We'd love to hear from you. Whether you have questions, feedback, or topic suggestions, don't hesitate to reach out.
         </p>
 
         <!-- Contact Form -->
-        <div class="bg-white dark:bg-[#1a1a1a] border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg p-8 mb-12">
-          <form class="space-y-6 font-sans">
+        <div class="card p-8 mb-12">
+          <form class="space-y-6">
             <div>
-              <label for="name" class="block text-sm font-medium text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-2">
+              <label for="name" class="block text-sm font-medium mb-2" style="color: var(--deep-earth); font-family: var(--font-display); letter-spacing: 1px;">
                 Name *
               </label>
               <input
@@ -28,13 +28,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 id="name"
                 name="name"
                 required
-                class="w-full px-4 py-3 border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] dark:focus:ring-[var(--color-dark-accent)] bg-white dark:bg-[#0f0f0f] text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]"
+                class="input-field w-full"
                 placeholder="Your name"
               />
             </div>
 
             <div>
-              <label for="email" class="block text-sm font-medium text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-2">
+              <label for="email" class="block text-sm font-medium mb-2" style="color: var(--deep-earth); font-family: var(--font-display); letter-spacing: 1px;">
                 Email *
               </label>
               <input
@@ -42,13 +42,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 id="email"
                 name="email"
                 required
-                class="w-full px-4 py-3 border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] dark:focus:ring-[var(--color-dark-accent)] bg-white dark:bg-[#0f0f0f] text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]"
+                class="input-field w-full"
                 placeholder="your.email@example.com"
               />
             </div>
 
             <div>
-              <label for="subject" class="block text-sm font-medium text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-2">
+              <label for="subject" class="block text-sm font-medium mb-2" style="color: var(--deep-earth); font-family: var(--font-display); letter-spacing: 1px;">
                 Subject *
               </label>
               <input
@@ -56,13 +56,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 id="subject"
                 name="subject"
                 required
-                class="w-full px-4 py-3 border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] dark:focus:ring-[var(--color-dark-accent)] bg-white dark:bg-[#0f0f0f] text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]"
+                class="input-field w-full"
                 placeholder="What's this about?"
               />
             </div>
 
             <div>
-              <label for="message" class="block text-sm font-medium text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)] mb-2">
+              <label for="message" class="block text-sm font-medium mb-2" style="color: var(--deep-earth); font-family: var(--font-display); letter-spacing: 1px;">
                 Message *
               </label>
               <textarea
@@ -70,14 +70,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
                 name="message"
                 rows="6"
                 required
-                class="w-full px-4 py-3 border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg focus:outline-none focus:ring-2 focus:ring-[var(--color-accent)] dark:focus:ring-[var(--color-dark-accent)] bg-white dark:bg-[#0f0f0f] text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]"
+                class="input-field w-full"
                 placeholder="Share your thoughts, questions, or suggestions..."
               ></textarea>
             </div>
 
             <button
               type="submit"
-              class="w-full px-8 py-3 bg-[var(--color-accent)] dark:bg-[var(--color-dark-accent)] text-white rounded-lg font-medium hover:opacity-90 transition-opacity"
+              class="btn btn-stone w-full px-8 py-3"
             >
               Send Message
             </button>
@@ -86,31 +86,33 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Additional Contact Info -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div class="bg-white dark:bg-[#1a1a1a] border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg p-6">
-            <h3 class="font-serif text-xl font-semibold mb-3 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]">
+          <div class="tile-card p-6">
+            <h3 class="text-xl font-semibold mb-3" style="font-family: var(--font-display); color: var(--bronze);">
               Email Us
             </h3>
-            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] text-sm mb-4">
+            <p class="text-sm mb-4" style="color: var(--ink-faded);">
               For general inquiries, questions, or feedback:
             </p>
             <a
               href="mailto:contact@nazaryah.com"
-              class="text-[var(--color-link)] hover:underline font-sans"
+              class="hover:underline"
+              style="color: var(--copper-patina);"
             >
               contact@nazaryah.com
             </a>
           </div>
 
-          <div class="bg-white dark:bg-[#1a1a1a] border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg p-6">
-            <h3 class="font-serif text-xl font-semibold mb-3 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]">
+          <div class="tile-card p-6">
+            <h3 class="text-xl font-semibold mb-3" style="font-family: var(--font-display); color: var(--bronze);">
               Topic Suggestions
             </h3>
-            <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] text-sm mb-4">
+            <p class="text-sm mb-4" style="color: var(--ink-faded);">
               Have a biblical topic you'd like us to explore? Let us know!
             </p>
             <a
               href="mailto:topics@nazaryah.com"
-              class="text-[var(--color-link)] hover:underline font-sans"
+              class="hover:underline"
+              style="color: var(--copper-patina);"
             >
               topics@nazaryah.com
             </a>
@@ -119,45 +121,45 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- FAQ Section -->
         <div class="mt-16">
-          <h2 class="font-serif text-2xl font-bold mb-8 text-center text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+          <h2 class="text-2xl font-bold mb-8 text-center" style="font-family: var(--font-display); color: var(--deep-earth);">
             Frequently Asked Questions
           </h2>
           <div class="space-y-6">
-            <div class="bg-white dark:bg-[#1a1a1a] border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg p-6">
-              <h3 class="font-serif font-semibold mb-2 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+            <div class="card p-6">
+              <h3 class="font-semibold mb-2" style="font-family: var(--font-display); color: var(--deep-earth);">
                 Can I submit a guest article?
               </h3>
-              <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] text-sm">
+              <p class="text-sm" style="color: var(--ink-faded);">
                 We're always interested in quality biblical scholarship. Email us your proposal, including your
                 qualifications and a brief outline of your article.
               </p>
             </div>
 
-            <div class="bg-white dark:bg-[#1a1a1a] border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg p-6">
-              <h3 class="font-serif font-semibold mb-2 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+            <div class="card p-6">
+              <h3 class="font-semibold mb-2" style="font-family: var(--font-display); color: var(--deep-earth);">
                 How often do you publish new content?
               </h3>
-              <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] text-sm">
+              <p class="text-sm" style="color: var(--ink-faded);">
                 We aim to publish new studies weekly. Subscribe to our newsletter to receive notifications
                 when new content is available.
               </p>
             </div>
 
-            <div class="bg-white dark:bg-[#1a1a1a] border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg p-6">
-              <h3 class="font-serif font-semibold mb-2 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+            <div class="card p-6">
+              <h3 class="font-semibold mb-2" style="font-family: var(--font-display); color: var(--deep-earth);">
                 Do you offer teaching resources?
               </h3>
-              <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] text-sm">
+              <p class="text-sm" style="color: var(--ink-faded);">
                 Currently, all our content is freely available for personal and educational use. We're exploring
                 additional teaching resources and may offer them in the future.
               </p>
             </div>
 
-            <div class="bg-white dark:bg-[#1a1a1a] border border-[var(--color-border)] dark:border-[var(--color-dark-accent)] rounded-lg p-6">
-              <h3 class="font-serif font-semibold mb-2 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+            <div class="card p-6">
+              <h3 class="font-semibold mb-2" style="font-family: var(--font-display); color: var(--deep-earth);">
                 Can I cite your articles?
               </h3>
-              <p class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-text)] text-sm">
+              <p class="text-sm" style="color: var(--ink-faded);">
                 Yes! All our content is properly researched and can be cited. Each article includes publication
                 date and author information. Please cite responsibly and check our most recent content for updates.
               </p>
