@@ -13,7 +13,7 @@ const navItems = [
 ];
 ---
 
-<header class="sticky top-0 z-50 border-b border-[var(--color-border)] dark:border-[var(--color-dark-border)] bg-[var(--color-surface)]/95 dark:bg-[var(--color-dark-surface)]/95 backdrop-blur-sm">
+<header class="sticky top-0 z-50 border-b border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] bg-[var(--parchment)]/95 dark:bg-[var(--deep-earth)]/95 backdrop-blur-sm">
   <nav class="container mx-auto px-6 py-5">
     <div class="flex items-center justify-between">
       <a href="/" class="no-underline group">
@@ -21,16 +21,16 @@ const navItems = [
       </a>
 
       <div class="hidden md:flex items-center space-x-8">
-        <ul class="flex space-x-8 font-sans">
+        <ul class="flex space-x-8" style="font-family: var(--font-display);">
           {navItems.map((item) => (
             <li>
               <a
                 href={item.href}
                 class:list={[
-                  'text-base font-medium transition-colors relative',
+                  'text-sm font-semibold tracking-widest uppercase transition-colors relative',
                   currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-                    ? 'text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-[var(--color-accent)] dark:after:bg-[var(--color-dark-accent)]'
-                    : 'text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)]'
+                    ? 'text-[var(--bronze)] dark:text-[var(--gold)] after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-[var(--bronze)] dark:after:bg-[var(--gold)]'
+                    : 'text-[var(--ink-faded)] dark:text-[var(--stone-light)] hover:text-[var(--bronze)] dark:hover:text-[var(--gold)]'
                 ]}
               >
                 {item.name}
@@ -46,7 +46,7 @@ const navItems = [
         <ThemeToggle />
         <button
           id="mobile-menu-button"
-          class="p-2 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]"
+          class="p-2 text-[var(--ink)] dark:text-[var(--sand-light)]"
           aria-label="Toggle menu"
         >
           <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -57,17 +57,17 @@ const navItems = [
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)] pt-4">
-      <ul class="space-y-4 font-sans">
+    <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] pt-4">
+      <ul class="space-y-4" style="font-family: var(--font-display);">
         {navItems.map((item) => (
           <li>
             <a
               href={item.href}
               class:list={[
-                'block text-base font-medium transition-colors py-2 px-3 rounded-lg',
+                'block text-sm font-semibold tracking-widest uppercase transition-colors py-2 px-3 rounded-lg',
                 currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-                  ? 'text-[var(--color-accent)] dark:text-[var(--color-dark-accent)] bg-[var(--color-surface-elevated)] dark:bg-[var(--color-dark-surface-elevated)]'
-                  : 'text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] hover:bg-[var(--color-surface-elevated)] dark:hover:bg-[var(--color-dark-surface-elevated)]'
+                  ? 'text-[var(--bronze)] dark:text-[var(--gold)] bg-[var(--parchment-dark)] dark:bg-[rgba(139,125,107,0.15)]'
+                  : 'text-[var(--ink-faded)] dark:text-[var(--stone-light)] hover:text-[var(--bronze)] dark:hover:text-[var(--gold)] hover:bg-[var(--parchment-dark)] dark:hover:bg-[rgba(139,125,107,0.15)]'
               ]}
             >
               {item.name}

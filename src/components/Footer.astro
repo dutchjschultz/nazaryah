@@ -2,37 +2,37 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="border-t border-[var(--color-border-strong)] dark:border-[var(--color-dark-border-strong)] bg-[var(--color-surface-elevated)] dark:bg-[var(--color-dark-surface-elevated)] mt-20">
+<footer class="footer mt-20">
   <div class="container mx-auto px-6 py-12">
     <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
       <!-- About -->
       <div>
-        <h3 class="font-serif text-lg font-semibold mb-4 text-[var(--color-accent)] dark:text-[var(--color-dark-accent)]">
+        <h3 class="text-lg font-semibold mb-4 tracking-widest uppercase text-sm" style="font-family: var(--font-display);">
           Nazaryah
         </h3>
-        <p class="text-sm text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] leading-relaxed">
+        <p class="text-sm leading-relaxed" style="color: var(--stone-light); font-family: var(--font-body);">
           A modern biblical studies platform emphasizing original languages, fresh perspectives, and rich contextual understanding.
         </p>
       </div>
 
       <!-- Quick Links -->
       <div>
-        <h3 class="font-sans text-base font-semibold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+        <h3 class="text-base font-semibold mb-4 tracking-widest uppercase text-sm" style="font-family: var(--font-display);">
           Quick Links
         </h3>
-        <ul class="space-y-3 text-sm font-sans">
+        <ul class="space-y-3 text-sm" style="font-family: var(--font-body);">
           <li>
-            <a href="/about" class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors inline-flex items-center gap-1">
+            <a href="/about" class="inline-flex items-center gap-1">
               <span>About Us</span>
             </a>
           </li>
           <li>
-            <a href="/blog" class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors inline-flex items-center gap-1">
+            <a href="/blog" class="inline-flex items-center gap-1">
               <span>Blog & Studies</span>
             </a>
           </li>
           <li>
-            <a href="/contact" class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors inline-flex items-center gap-1">
+            <a href="/contact" class="inline-flex items-center gap-1">
               <span>Contact</span>
             </a>
           </li>
@@ -41,22 +41,22 @@ const currentYear = new Date().getFullYear();
 
       <!-- Resources -->
       <div>
-        <h3 class="font-sans text-base font-semibold mb-4 text-[var(--color-primary-text)] dark:text-[var(--color-dark-text)]">
+        <h3 class="text-base font-semibold mb-4 tracking-widest uppercase text-sm" style="font-family: var(--font-display);">
           Resources
         </h3>
-        <ul class="space-y-3 text-sm font-sans">
+        <ul class="space-y-3 text-sm" style="font-family: var(--font-body);">
           <li>
-            <a href="/blog?category=exegetical" class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors inline-flex items-center gap-1">
+            <a href="/blog?category=exegetical" class="inline-flex items-center gap-1">
               <span>Exegetical Studies</span>
             </a>
           </li>
           <li>
-            <a href="/blog?category=theological" class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors inline-flex items-center gap-1">
+            <a href="/blog?category=theological" class="inline-flex items-center gap-1">
               <span>Theological Themes</span>
             </a>
           </li>
           <li>
-            <a href="/blog?category=historical" class="text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] hover:text-[var(--color-accent)] dark:hover:text-[var(--color-dark-accent)] transition-colors inline-flex items-center gap-1">
+            <a href="/blog?category=historical" class="inline-flex items-center gap-1">
               <span>Historical Context</span>
             </a>
           </li>
@@ -64,9 +64,9 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
 
-    <div class="border-t border-[var(--color-border)] dark:border-[var(--color-dark-border)] mt-10 pt-8 text-center">
-      <p class="text-sm text-[var(--color-secondary-text)] dark:text-[var(--color-dark-secondary-text)] font-sans">
-        &copy; {currentYear} Nazaryah. All rights reserved. | Exploring Scripture with scholarly integrity.
+    <div class="border-t border-[rgba(139,125,107,0.25)] mt-10 pt-8 text-center">
+      <p class="text-sm" style="color: var(--stone); font-family: var(--font-display); letter-spacing: 1px;">
+        &copy; {currentYear} Nazaryah. All rights reserved.
       </p>
     </div>
   </div>
