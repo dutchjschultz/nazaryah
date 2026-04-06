@@ -26,7 +26,16 @@ const displayPosts = featuredPosts.length > 0
 >
   <!-- Hero Section -->
   <section class="relative py-24 md:py-32 lg:py-40 overflow-hidden">
-    <div class="container mx-auto px-6">
+    <!-- Logo Watermark -->
+    <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
+      <img
+        src="/images/nazaryah-logo.png"
+        alt=""
+        class="w-full h-auto max-h-full object-contain"
+        style="opacity: 0.055; filter: sepia(0.6) saturate(0.8) brightness(1.1) hue-rotate(-5deg);"
+      />
+    </div>
+    <div class="container mx-auto px-6 relative z-10">
       <div class="max-w-4xl mx-auto text-center">
         <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style="font-family: var(--font-display); color: var(--deep-earth);">
           Exploring Scripture with <span style="color: var(--bronze);">Scholarly Integrity</span>
