@@ -2,22 +2,21 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* ══════════════════════════════════════════════
-   NAZARETH THEME — FULL SYSTEM
-   Archaeological Dig Site + Burnt Papyrus +
-   Pressed Clay + Scattered Seal Identity
-   ══════════════════════════════════════════════ */
+@theme {
+  /* Color Palette - Biblical Archaeology Theme */
+  /* Papyrus, ink, terracotta clay, and ancient earth tones */
 
-:root {
-  /* ── Dig site (page background) ── */
-  --soil:           #2b1d0e;
-  --soil-light:     #3d2b1a;
-  --soil-mid:       #4B3621;
+  /* Light Mode - Papyrus and Iron-Gall Ink */
+  --color-primary-text: #2b1d11;          /* Iron-gall ink (dark sepia brown) */
+  --color-secondary-text: #5b4530;        /* Faded ink */
+  --color-background: #efe1c0;            /* Aged papyrus base */
+  --color-surface: #f5e8c8;               /* Lighter papyrus for cards/scrolls */
+  --color-surface-elevated: #e8d9b3;      /* Slightly darker papyrus */
 
-  /* ── Papyrus surfaces ── */
-  --papyrus:        #f5e6be;
-  --papyrus-dark:   #e8d5a0;
-  --papyrus-light:  #faf0d4;
+  /* Accent Colors - Terracotta Clay & Ochre */
+  --color-accent: #a0451c;                /* Fired terracotta clay */
+  --color-accent-hover: #7d3414;          /* Darker baked clay */
+  --color-accent-light: #c2613a;          /* Lighter clay highlight */
 
   /* ── Stone & earth ── */
   --stone:          #8B7D6B;
@@ -29,16 +28,16 @@
   --clay-hover:     #b36a4a;
   --clay-deep:      #5d3a29;
 
-  /* ── Metals ── */
-  --bronze:         #8B6914;
-  --gold:           #C5A44E;
-  --gold-light:     #D4AF37;
-  --copper:         #B87333;
-  --copper-patina:  #4A7C6F;
+  /* Borders & Dividers */
+  --color-border: #c8a878;                /* Aged parchment edge */
+  --color-border-strong: #9c7c4c;         /* Darker scroll edge */
 
-  /* ── Accents ── */
-  --ember:          #ff4500;
-  --olive:          #556B2F;
+  /* Dark Mode - Cave / Lamplight Reading */
+  --color-dark-text: #f0e0bf;             /* Warm parchment text */
+  --color-dark-secondary-text: #c4ad84;   /* Faded ochre */
+  --color-dark-background: #1a1208;       /* Cave wall dark earth */
+  --color-dark-surface: #2a1d10;          /* Aged leather */
+  --color-dark-surface-elevated: #3a2a18; /* More elevated surfaces */
 
   /* ── Text ── */
   --ink:            #2b2b2b;
@@ -59,15 +58,31 @@
     inset 0 0 10px rgba(0,0,0,0.8),
     6px 8px 20px rgba(0,0,0,0.6);
 
-  /* ── Legacy compatibility ── */
-  --color-accent:        var(--clay);
-  --color-accent-hover:  var(--clay-hover);
-  --color-link:          var(--bronze);
-  --color-link-hover:    var(--gold);
-  --color-border:        rgba(139,125,107,0.3);
-  --color-border-strong: rgba(139,125,107,0.5);
-  --max-width-content:   780px;
-  --max-width-wide:      1200px;
+  /* Dark Mode Borders */
+  --color-dark-border: #5a4226;           /* Aged leather seam */
+  --color-dark-border-strong: #7a5a36;    /* Stronger leather */
+
+  /* Typography */
+  --font-family-serif: 'Crimson Text', Georgia, serif;
+  --font-family-sans: 'Inter', -apple-system, system-ui, sans-serif;
+
+  /* Font Sizes */
+  --font-size-body: 18px;
+  --font-size-lg: 20px;
+  --font-size-xl: 24px;
+  --font-size-2xl: 32px;
+  --font-size-3xl: 40px;
+
+  /* Line Heights */
+  --line-height-body: 1.7;
+  --line-height-heading: 1.3;
+
+  /* Max Widths */
+  --max-width-content: 780px;
+  --max-width-wide: 1200px;
+
+  /* Spacing */
+  --spacing-page: 3rem;
 }
 
 /* ── BASE ── */
@@ -76,19 +91,62 @@ html { scroll-behavior: smooth; }
 
 /* ── Page background ── */
 body {
-  background-color: var(--soil);
-  background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
-  font-family: var(--font-body);
-  font-size: 18px;
-  line-height: 1.7;
-  color: var(--ink);
+  font-family: var(--font-family-serif);
+  font-size: var(--font-size-body);
+  line-height: var(--line-height-body);
+  color: var(--color-primary-text);
+  background-color: var(--color-background);
+  /* Papyrus texture: layered gradients + SVG fiber noise */
+  background-image:
+    radial-gradient(ellipse at 20% 10%, rgba(160, 110, 50, 0.10), transparent 60%),
+    radial-gradient(ellipse at 80% 30%, rgba(120, 80, 30, 0.08), transparent 60%),
+    radial-gradient(ellipse at 50% 90%, rgba(140, 90, 40, 0.10), transparent 60%),
+    repeating-linear-gradient(
+      90deg,
+      rgba(120, 80, 30, 0.04) 0px,
+      rgba(120, 80, 30, 0.04) 1px,
+      transparent 1px,
+      transparent 4px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      rgba(120, 80, 30, 0.03) 0px,
+      rgba(120, 80, 30, 0.03) 1px,
+      transparent 1px,
+      transparent 6px
+    ),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='2' seed='5'/><feColorMatrix values='0 0 0 0 0.4  0 0 0 0 0.25  0 0 0 0 0.1  0 0 0 0.18 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+  background-blend-mode: multiply, multiply, multiply, normal, normal, multiply;
   margin: 0;
   padding: 0;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* ── TYPOGRAPHY ── */
+.dark body {
+  background-image:
+    radial-gradient(ellipse at 30% 20%, rgba(80, 50, 20, 0.4), transparent 60%),
+    radial-gradient(ellipse at 70% 80%, rgba(60, 35, 15, 0.5), transparent 60%),
+    url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' seed='7'/><feColorMatrix values='0 0 0 0 0.6  0 0 0 0 0.4  0 0 0 0 0.15  0 0 0 0.1 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)'/></svg>");
+}
+
+/* Dark Mode */
+.dark {
+  body {
+    color: var(--color-dark-text);
+    background-color: var(--color-dark-background);
+  }
+
+  a {
+    color: var(--color-dark-link);
+  }
+
+  a:hover {
+    color: var(--color-dark-link-hover);
+  }
+}
+
+/* Typography */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-display);
   font-weight: 600;
@@ -207,98 +265,212 @@ pre {
   box-shadow: 0 10px 15px rgba(0,0,0,0.4), 0 4px 6px rgba(0,0,0,0.3);
 }
 
-/* ── PAPYRUS CARD (burnt edges) ── */
-.papyrus-card {
-  background-color: var(--papyrus);
-  background-image: url("https://www.transparenttextures.com/patterns/p6.png");
-  border-radius: 2px;
-  clip-path: polygon(0% 2%, 100% 0%, 98% 100%, 1% 97%);
-  box-shadow: var(--burnt-edge);
-  transition: all 0.3s ease;
-}
-.papyrus-card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--burnt-edge-hover);
+.dark {
+  .shadow-sm {
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3), 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .shadow {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.35), 0 2px 4px rgba(0, 0, 0, 0.25);
+  }
+
+  .shadow-lg {
+    box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4), 0 4px 6px rgba(0, 0, 0, 0.3);
+  }
 }
 
-/* ── CARD (general — papyrus surface without clip-path) ── */
+/* Scroll-styled cards */
 .card {
-  background-color: var(--papyrus);
-  background-image: url("https://www.transparenttextures.com/patterns/p6.png");
-  border-radius: 4px;
-  box-shadow: var(--burnt-edge);
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(180, 130, 60, 0.15) 0%, transparent 8%, transparent 92%, rgba(180, 130, 60, 0.15) 100%),
+    radial-gradient(ellipse at center, #f5e8c8 0%, #e8d5a3 100%);
+  border: 1px solid var(--color-border);
+  /* Scroll-like rounded top and bottom edges */
+  border-radius: 4px 4px 4px 4px / 24px 24px 24px 24px;
+  box-shadow:
+    0 2px 4px rgba(60, 30, 10, 0.15),
+    0 6px 12px rgba(60, 30, 10, 0.12),
+    inset 0 1px 0 rgba(255, 240, 200, 0.6),
+    inset 0 -1px 0 rgba(120, 70, 20, 0.2);
   transition: all 0.3s ease;
-  color: var(--ink);
-}
-.card:hover {
-  transform: translateY(-2px);
-  box-shadow: var(--burnt-edge-hover);
+  overflow: hidden;
 }
 
-/* ── BUTTON BASE ── */
+/* Scroll rod ends - top */
+.card::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(180deg, #8a5a2a 0%, #6b3f17 50%, #4a2a0c 100%);
+  border-bottom: 1px solid #3a200a;
+  box-shadow: inset 0 1px 0 rgba(180, 120, 60, 0.6);
+}
+
+/* Scroll rod ends - bottom */
+.card::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 10px;
+  background: linear-gradient(0deg, #8a5a2a 0%, #6b3f17 50%, #4a2a0c 100%);
+  border-top: 1px solid #3a200a;
+  box-shadow: inset 0 -1px 0 rgba(180, 120, 60, 0.6);
+}
+
+/* Push card content below the top rod */
+.card > * {
+  position: relative;
+  z-index: 1;
+}
+.card > div:first-child,
+.card > article,
+.card > section {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.card:hover {
+  border-color: var(--color-border-strong);
+  box-shadow:
+    0 4px 8px rgba(60, 30, 10, 0.2),
+    0 12px 24px rgba(60, 30, 10, 0.18),
+    inset 0 1px 0 rgba(255, 240, 200, 0.6),
+    inset 0 -1px 0 rgba(120, 70, 20, 0.2);
+  transform: translateY(-3px);
+}
+
+.dark {
+  .card {
+    background:
+      linear-gradient(180deg, rgba(140, 90, 40, 0.25) 0%, transparent 8%, transparent 92%, rgba(140, 90, 40, 0.25) 100%),
+      radial-gradient(ellipse at center, #3a2a18 0%, #251810 100%);
+    border-color: var(--color-dark-border);
+  }
+
+  .card::before {
+    background: linear-gradient(180deg, #5a3a1a 0%, #3b240a 50%, #2a1808 100%);
+  }
+
+  .card::after {
+    background: linear-gradient(0deg, #5a3a1a 0%, #3b240a 50%, #2a1808 100%);
+  }
+
+  .card:hover {
+    border-color: var(--color-dark-border-strong);
+    box-shadow:
+      0 4px 8px rgba(0, 0, 0, 0.5),
+      0 12px 24px rgba(0, 0, 0, 0.45);
+  }
+}
+
+/* Clay-pot styled buttons */
 .btn {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.75rem 1.5rem;
-  font-family: var(--font-display);
-  font-weight: 700;
+  padding: 0.85rem 1.75rem;
+  font-family: var(--font-family-serif);
+  font-weight: 600;
   font-size: 1rem;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  border-radius: 8px 3px 10px 4px;
-  transition: all 0.3s ease;
+  letter-spacing: 0.02em;
+  /* Pot-like rounded shape */
+  border-radius: 32px 32px 26px 26px / 18px 18px 32px 32px;
+  transition: all 0.2s ease;
   cursor: pointer;
   text-decoration: none;
-  border: none;
+  border: 1px solid rgba(60, 25, 8, 0.4);
+  text-shadow: 0 1px 0 rgba(255, 220, 180, 0.25);
+  box-shadow:
+    /* Outer shadow (pot sitting on surface) */
+    0 4px 8px rgba(60, 25, 8, 0.3),
+    0 1px 2px rgba(60, 25, 8, 0.25),
+    /* Inset highlight (top of pot catches light) */
+    inset 0 2px 4px rgba(255, 220, 170, 0.45),
+    /* Inset shadow (bottom curve) */
+    inset 0 -3px 6px rgba(60, 25, 8, 0.35);
 }
 
-/* ── PRESSED CLAY BUTTON (primary) ── */
-.btn-primary,
-.btn-clay {
-  background-color: var(--clay);
-  color: var(--ink-light);
-  border: none;
-  box-shadow: 2px 2px 0px var(--clay-deep), inset 2px 2px 4px rgba(255,255,255,0.2);
-  text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
-}
-.btn-primary:hover,
-.btn-clay:hover {
-  background-color: var(--clay-hover);
-  box-shadow: 0 0 12px var(--ember);
-  transform: translateY(-1px);
-  color: var(--ink-light);
-}
-.btn-primary:active,
-.btn-clay:active {
-  transform: translateY(2px);
-  box-shadow: inset 3px 3px 5px rgba(0,0,0,0.6);
+.btn-primary {
+  /* Terracotta gradient */
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(255, 200, 140, 0.4), transparent 50%),
+    linear-gradient(180deg, #c2613a 0%, #a0451c 50%, #7a3010 100%);
+  color: #fff5e0;
 }
 
-/* ── STONE BUTTON (secondary / outline) ── */
-.btn-outline,
-.btn-stone {
-  background: linear-gradient(180deg, var(--stone), #6B5D4D);
-  color: var(--ink-light);
-  border: 2px solid var(--sand-dark);
-  border-radius: 4px;
-  font-family: var(--font-display);
-  box-shadow: 2px 4px 10px rgba(0,0,0,0.3), inset 0 1px 0 rgba(255,255,255,0.1);
-}
-.btn-outline:hover,
-.btn-stone:hover {
-  background: linear-gradient(180deg, var(--stone-light), var(--stone));
-  transform: translateY(-1px);
-  color: var(--ink-light);
+.btn-primary:hover {
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(255, 210, 150, 0.5), transparent 50%),
+    linear-gradient(180deg, #d27044 0%, #b05022 50%, #883818 100%);
+  transform: translateY(-2px);
+  box-shadow:
+    0 6px 12px rgba(60, 25, 8, 0.35),
+    0 2px 4px rgba(60, 25, 8, 0.25),
+    inset 0 2px 4px rgba(255, 220, 170, 0.5),
+    inset 0 -3px 6px rgba(60, 25, 8, 0.35);
 }
 
-/* ── BRONZE SEAL BUTTON ── */
-.btn-bronze {
-  background: linear-gradient(135deg, var(--bronze), var(--gold-light), var(--bronze));
-  color: var(--soil);
-  border: 2px solid var(--gold);
-  border-radius: 20px;
-  font-family: var(--font-display);
+.btn-primary:active {
+  transform: translateY(0);
+  box-shadow:
+    0 2px 4px rgba(60, 25, 8, 0.3),
+    inset 0 2px 4px rgba(60, 25, 8, 0.3),
+    inset 0 -1px 2px rgba(255, 220, 170, 0.2);
+}
+
+.btn-outline {
+  /* Lighter unfired clay */
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(255, 235, 200, 0.5), transparent 50%),
+    linear-gradient(180deg, #d4b080 0%, #b8895a 50%, #946838 100%);
+  color: #3a1d08;
+  border: 1px solid rgba(60, 25, 8, 0.45);
+}
+
+.btn-outline:hover {
+  background:
+    radial-gradient(ellipse at 30% 25%, rgba(255, 240, 210, 0.55), transparent 50%),
+    linear-gradient(180deg, #e0bc8c 0%, #c49568 50%, #a17442 100%);
+  transform: translateY(-2px);
+}
+
+.dark {
+  .btn {
+    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.5);
+    border-color: rgba(0, 0, 0, 0.6);
+  }
+
+  .btn-primary {
+    background:
+      radial-gradient(ellipse at 30% 25%, rgba(220, 160, 90, 0.35), transparent 50%),
+      linear-gradient(180deg, #8a4a1e 0%, #5e2f0e 50%, #3a1d08 100%);
+    color: #f0d9a8;
+  }
+
+  .btn-primary:hover {
+    background:
+      radial-gradient(ellipse at 30% 25%, rgba(230, 170, 100, 0.4), transparent 50%),
+      linear-gradient(180deg, #9a5524 0%, #6e3a14 50%, #46240c 100%);
+  }
+
+  .btn-outline {
+    background:
+      radial-gradient(ellipse at 30% 25%, rgba(180, 130, 70, 0.3), transparent 50%),
+      linear-gradient(180deg, #6a4a28 0%, #4a3018 50%, #2e1c0a 100%);
+    color: #f0d9a8;
+  }
+
+  .btn-outline:hover {
+    background:
+      radial-gradient(ellipse at 30% 25%, rgba(190, 140, 80, 0.35), transparent 50%),
+      linear-gradient(180deg, #7a5630 0%, #553820 50%, #38220c 100%);
+  }
 }
 
 /* ── BURNT DIVIDER ── */
