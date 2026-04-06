@@ -29,7 +29,7 @@ const navItems = [
                 class:list={[
                   'text-sm font-semibold tracking-widest uppercase transition-colors relative',
                   currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-                    ? 'text-[var(--bronze)] dark:text-[var(--gold)] after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-[var(--bronze)] dark:after:bg-[var(--gold)]'
+                    ? 'text-white bg-[var(--stone)] dark:bg-[var(--soil-mid)] px-3 py-1 rounded after:absolute after:bottom-[-4px] after:left-0 after:right-0 after:h-[2px] after:bg-[var(--bronze)] dark:after:bg-[var(--gold)]'
                     : 'text-[var(--ink-faded)] dark:text-[var(--stone-light)] hover:text-[var(--bronze)] dark:hover:text-[var(--gold)]'
                 ]}
               >
@@ -66,7 +66,7 @@ const navItems = [
               class:list={[
                 'block text-sm font-semibold tracking-widest uppercase transition-colors py-2 px-3 rounded-lg',
                 currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))
-                  ? 'text-[var(--bronze)] dark:text-[var(--gold)] bg-[var(--parchment-dark)] dark:bg-[rgba(139,125,107,0.15)]'
+                  ? 'text-white bg-[var(--stone)] dark:bg-[var(--soil-mid)]'
                   : 'text-[var(--ink-faded)] dark:text-[var(--stone-light)] hover:text-[var(--bronze)] dark:hover:text-[var(--gold)] hover:bg-[var(--parchment-dark)] dark:hover:bg-[rgba(139,125,107,0.15)]'
               ]}
             >

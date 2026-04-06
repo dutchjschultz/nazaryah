@@ -27,7 +27,8 @@ const postsCollection = defineCollection({
       'Word Studies',
       'Fresh Perspectives',
       'Trinity Busters',
-      'Books'
+      'Books',
+      'Parables'
     ]),
     tags: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
