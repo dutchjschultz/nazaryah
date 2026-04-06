@@ -18,7 +18,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
         <!-- Contact Form -->
         <div class="card p-8 mb-12">
-          <form class="space-y-6">
+          <form name="contact" method="POST" action="/thanks" data-netlify="true" class="space-y-6">
+            <input type="hidden" name="form-name" value="contact" />
             <div>
               <label for="name" class="block text-sm font-medium mb-2" style="color: var(--deep-earth); font-family: var(--font-display); letter-spacing: 1px;">
                 Name *
