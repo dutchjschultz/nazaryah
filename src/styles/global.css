@@ -542,7 +542,7 @@ pre {
 }
 .nav-link.active {
   background: linear-gradient(135deg, var(--clay-hover), var(--clay), var(--clay-deep));
-  color: var(--papyrus-light) !important;
+  color: #ffffff !important;
 }
 /* Mobile nav links */
 .nav-link-mobile {
@@ -557,10 +557,13 @@ pre {
   text-decoration: none;
   transition: all 0.3s ease;
 }
-.nav-link-mobile:hover,
-.nav-link-mobile.active {
+.nav-link-mobile:hover {
   background: linear-gradient(135deg, var(--clay-hover), var(--clay), var(--clay-deep));
   color: var(--ink-light) !important;
+}
+.nav-link-mobile.active {
+  background: linear-gradient(135deg, var(--clay-hover), var(--clay), var(--clay-deep));
+  color: #ffffff !important;
 }
 
 /* ── DARK SIDEBAR ── */
