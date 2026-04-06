@@ -396,6 +396,16 @@ pre {
     inset 0 -3px 6px rgba(60, 25, 8, 0.35);
 }
 
+/* ── CLAY GRADIENT HOVER (shared — applies to all .btn on hover) ── */
+.btn:hover {
+  background: linear-gradient(135deg, var(--clay-hover), var(--clay), var(--clay-deep)) !important;
+  color: var(--ink-light) !important;
+  transform: translateY(-1px);
+}
+.btn:active {
+  transform: translateY(2px);
+}
+
 .btn-primary {
   /* Terracotta gradient */
   background:
@@ -405,10 +415,6 @@ pre {
 }
 
 .btn-primary:hover {
-  background:
-    radial-gradient(ellipse at 30% 25%, rgba(255, 210, 150, 0.5), transparent 50%),
-    linear-gradient(180deg, #d27044 0%, #b05022 50%, #883818 100%);
-  transform: translateY(-2px);
   box-shadow:
     0 6px 12px rgba(60, 25, 8, 0.35),
     0 2px 4px rgba(60, 25, 8, 0.25),
@@ -425,20 +431,15 @@ pre {
 }
 
 .btn-outline {
-  /* Lighter unfired clay */
+  /* Light papyrus/sand — visually "inactive" state */
   background:
-    radial-gradient(ellipse at 30% 25%, rgba(255, 235, 200, 0.5), transparent 50%),
-    linear-gradient(180deg, #d4b080 0%, #b8895a 50%, #946838 100%);
+    radial-gradient(ellipse at 30% 25%, rgba(255, 248, 230, 0.7), transparent 50%),
+    linear-gradient(180deg, #f0ddb8 0%, #dcc898 50%, #c9ae7a 100%);
   color: #3a1d08;
-  border: 1px solid rgba(60, 25, 8, 0.45);
+  border: 1px solid rgba(60, 25, 8, 0.3);
 }
 
-.btn-outline:hover {
-  background:
-    radial-gradient(ellipse at 30% 25%, rgba(255, 240, 210, 0.55), transparent 50%),
-    linear-gradient(180deg, #e0bc8c 0%, #c49568 50%, #a17442 100%);
-  transform: translateY(-2px);
-}
+/* .btn:hover already applies clay gradient via !important */
 
 .dark {
   .btn {
@@ -530,10 +531,36 @@ pre {
   letter-spacing: 2px;
   text-transform: uppercase;
   color: var(--papyrus-dark);
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.nav-link:hover {
+  background: linear-gradient(135deg, var(--clay-hover), var(--clay), var(--clay-deep));
+  color: var(--ink-light) !important;
 }
 .nav-link.active {
-  color: var(--gold);
-  border-bottom: 2px solid var(--gold);
+  background: linear-gradient(135deg, var(--clay-hover), var(--clay), var(--clay-deep));
+  color: var(--papyrus-light) !important;
+}
+/* Mobile nav links */
+.nav-link-mobile {
+  display: block;
+  font-family: var(--font-display);
+  font-size: 11px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: var(--papyrus-dark);
+  padding: 0.5rem 0.75rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.nav-link-mobile:hover,
+.nav-link-mobile.active {
+  background: linear-gradient(135deg, var(--clay-hover), var(--clay), var(--clay-deep));
+  color: var(--ink-light) !important;
 }
 
 /* ── DARK SIDEBAR ── */
