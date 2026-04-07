@@ -10,27 +10,72 @@ const allPosts = await getCollection('posts', ({ data }) => {
 // Sort by date, most recent first
 const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-// All defined categories (shown even if no posts exist yet)
+// Updated categories — removed Book-by-Book Commentary, Theological Themes, Fresh Perspectives
+// Added Torah (Law) and Calendar
 const allCategories = [
-  'Book-by-Book Commentary',
   'Books',
   'Exegetical Studies',
-  'Fresh Perspectives',
   'Historical Context',
   'Parables',
-  'Theological Themes',
   'Trinity Busters',
   'Word Studies',
+  'Torah (Law)',
+  'Calendar',
 ];
+
+// Hover card content for each category — styled like manuscript field notes
+const categoryMeta: Record<string, { subtitle: string; description: string; verse: string }> = {
+  'Books': {
+    subtitle: '— WRITINGS OF THE ANCIENT WORLD —',
+    description: 'Full studies devoted to individual books of Scripture — tracing their structure, themes, and covenantal threads from first word to last.',
+    verse: '"All Scripture is breathed out by God." — 2 Timothy 3:16'
+  },
+  'Exegetical Studies': {
+    subtitle: '— DIGGING INTO THE TEXT —',
+    description: 'Verse-by-verse and word-by-word analysis rooted in the original Hebrew and Greek. Every layer of meaning examined, nothing assumed.',
+    verse: '"Study to show yourself approved." — 2 Timothy 2:15'
+  },
+  'Historical Context': {
+    subtitle: '— THE WORLD BEHIND THE WORDS —',
+    description: 'Ancient culture, archaeology, and geography brought to bear on the text. Scripture read in the world where it was written — not the world we inherited.',
+    verse: '"Ask for the ancient paths, where the good way is." — Jeremiah 6:16'
+  },
+  'Parables': {
+    subtitle: '— STORIES WITH BURIED TREASURE —',
+    description: "The parables of Yeshua decoded through the lens of Torah, covenant, and Second Temple Judaism — not Western allegory. Hear them the way his first listeners did.",
+    verse: '"To you it has been given to know the secrets of the kingdom." — Matthew 13:11'
+  },
+  'Trinity Busters': {
+    subtitle: '— QUESTIONING INHERITED DOCTRINE —',
+    description: 'A careful, text-first examination of Trinitarian claims set against the Hebrew Scriptures and earliest writings. Not tradition — what does the text actually say?',
+    verse: '"Hear, O Israel: Yahuah our God, Yahuah is one." — Deuteronomy 6:4'
+  },
+  'Word Studies': {
+    subtitle: '— UNEARTHING THE ANCIENT TEXT —',
+    description: 'Single words. Profound weight. These studies recover what translation buried — the covenantal meaning carried in the roots of Hebrew and Greek.',
+    verse: '"My people are destroyed for lack of knowledge." — Hosea 4:6'
+  },
+  'Torah (Law)': {
+    subtitle: '— THE FOUNDATION OF ALL SCRIPTURE —',
+    description: "The five books of Moses — not abolished, not merely historical. Torah is the constitutional document of the covenant people, alive and active from Genesis to Revelation.",
+    verse: '"Your Torah is truth." — Psalm 119:142'
+  },
+  'Calendar': {
+    subtitle: '— THE APPOINTED TIMES OF YAHUAH —',
+    description: "The biblical feasts, new moons, and Sabbaths are not Jewish customs — they are Yahuah's appointed times, written into creation itself before Israel ever existed.",
+    verse: '"These are my appointed feasts." — Leviticus 23:2'
+  },
+};
 ---
 
 <BaseLayout
   title="Biblical Studies & Theological Insights - Nazaryah Blog"
-  description="Explore in-depth biblical studies covering exegesis, theology, historical context, and fresh perspectives on Scripture."
+  description="Explore in-depth biblical studies covering exegesis, theology, historical context, and original language word studies."
 >
   <div class="py-16 md:py-20">
     <div class="container mx-auto px-6">
       <div class="max-w-6xl mx-auto">
+
         <!-- Header -->
         <div class="text-center mb-12">
           <h1 class="text-4xl md:text-5xl font-bold mb-4" style="font-family: var(--font-display); color: var(--deep-earth);">
@@ -42,21 +87,41 @@ const allCategories = [
         </div>
 
         <!-- Category Filter -->
-        <div class="mb-12">
-          <div class="flex flex-wrap gap-3 justify-center" style="font-family: var(--font-display);">
-            <button
-              class="category-filter px-4 py-2 rounded border border-[var(--sand-dark)] text-xs font-semibold tracking-widest uppercase transition-all hover:bg-[var(--stone)] hover:text-[var(--linen)] hover:border-[var(--stone)] active"
-              data-category="all"
-            >
-              All Posts
+        <div class="mb-16">
+          <div class="flex flex-wrap gap-3 justify-center">
+
+            <!-- All Posts — no tooltip -->
+            <button class="dig-filter active" data-category="all">
+              <span class="dig-filter-inner">All Posts</span>
             </button>
+
+            <!-- Category buttons with hover tooltips -->
             {allCategories.map((category) => (
-              <button
-                class="category-filter px-4 py-2 rounded border border-[var(--sand-dark)] text-xs font-semibold tracking-widest uppercase transition-all hover:bg-[var(--stone)] hover:text-[var(--linen)] hover:border-[var(--stone)]"
-                data-category={category}
-              >
-                {category}
-              </button>
+              <div class="dig-filter-wrapper">
+                <button class="dig-filter" data-category={category}>
+                  <span class="dig-filter-inner">{category}</span>
+                </button>
+
+                {categoryMeta[category] && (
+                  <div class="dig-tooltip" role="tooltip">
+                    <!-- Dark header bar -->
+                    <div class="dig-tooltip-header">
+                      <span>△</span>
+                      <span>{category}</span>
+                      <span>△</span>
+                    </div>
+                    <!-- Body -->
+                    <div class="dig-tooltip-body">
+                      <p class="dig-tooltip-subtitle">{categoryMeta[category].subtitle}</p>
+                      <p class="dig-tooltip-description">{categoryMeta[category].description}</p>
+                      <div class="dig-tooltip-divider">
+                        <span class="dig-tooltip-diamond">◆</span>
+                      </div>
+                      <p class="dig-tooltip-verse">{categoryMeta[category].verse}</p>
+                    </div>
+                  </div>
+                )}
+              </div>
             ))}
           </div>
         </div>
@@ -126,7 +191,7 @@ const allCategories = [
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll('.category-filter');
+    const filterButtons = document.querySelectorAll('.dig-filter');
     const postCards = document.querySelectorAll('.post-item');
 
     filterButtons.forEach(button => {
@@ -152,10 +217,212 @@ const allCategories = [
 </script>
 
 <style>
+  /* ── DIG SITE FILTER BUTTONS ── */
+
+  /* Wrapper for tooltip positioning */
+  .dig-filter-wrapper {
+    position: relative;
+  }
+
+  /* The button itself */
+  .dig-filter {
+    position: relative;
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--ink-faded);
+    background: transparent;
+    border: 1px solid var(--sand-dark);
+    border-radius: 2px;
+    padding: 0;
+    cursor: pointer;
+    transition: all 0.25s ease;
+    /* Rough parchment fragment feel — slightly uneven corners */
+    clip-path: polygon(
+      0% 2px, 2px 0%,
+      calc(100% - 2px) 0%, 100% 2px,
+      100% calc(100% - 2px), calc(100% - 2px) 100%,
+      2px 100%, 0% calc(100% - 2px)
+    );
+  }
+
+  .dig-filter-inner {
+    display: block;
+    padding: 0.45rem 1rem;
+  }
+
+  /* Hover state — clay gradient, matches nav-link exactly */
+  .dig-filter:hover {
+    background: linear-gradient(135deg, var(--clay-hover), var(--clay), var(--clay-deep));
+    color: #ffffff;
+    border-color: var(--clay);
+    box-shadow: 0 2px 8px rgba(150, 90, 62, 0.35);
+  }
+
+  /* Active/selected state — clay gradient stays */
+  .dig-filter.active {
+    background: linear-gradient(135deg, var(--clay-hover), var(--clay), var(--clay-deep));
+    color: #ffffff;
+    border-color: var(--clay);
+    box-shadow: 0 2px 8px rgba(150, 90, 62, 0.35);
+  }
+
+  /* ── TOOLTIP CARD ── */
+
+  .dig-tooltip {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    z-index: 100;
+    /* Parchment card border */
+    border: 1px solid var(--color-border, #c8a878);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow:
+      inset 0 0 30px rgba(75, 54, 33, 0.12),
+      0 8px 32px rgba(0, 0, 0, 0.35),
+      0 2px 8px rgba(0, 0, 0, 0.2);
+    /* Prevent tooltip from being cut off */
+    pointer-events: none;
+  }
+
+  /* Show on wrapper hover */
+  .dig-filter-wrapper:hover .dig-tooltip {
+    display: block;
+  }
+
+  /* Dark header bar — matches the image */
+  .dig-tooltip-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2b1d0e;
+    color: var(--sand-dark, #c4a97d);
+    font-family: var(--font-display);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 0.55rem 0.9rem;
+    gap: 0.5rem;
+  }
+
+  /* Divider lines on either side of the header text */
+  .dig-tooltip-header span:first-child,
+  .dig-tooltip-header span:last-child {
+    opacity: 0.6;
+    font-size: 8px;
+  }
+
+  /* Parchment body */
+  .dig-tooltip-body {
+    background-color: var(--color-surface, #f5e8c8);
+    background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+    padding: 1rem 1.1rem 0.85rem;
+  }
+
+  /* Subtitle — "— UNEARTHING THE ANCIENT TEXT —" style */
+  .dig-tooltip-subtitle {
+    font-family: var(--font-display);
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bronze, #8b6914);
+    margin: 0 0 0.6rem;
+    text-align: center;
+  }
+
+  /* Description text */
+  .dig-tooltip-description {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--color-primary-text, #2b1d11);
+    margin: 0 0 0.75rem;
+  }
+
+  /* Divider with diamond — matches image */
+  .dig-tooltip-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.6rem 0;
+  }
+  .dig-tooltip-divider::before,
+  .dig-tooltip-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--color-border, #c8a878);
+  }
+  .dig-tooltip-diamond {
+    font-size: 10px;
+    color: var(--bronze, #8b6914);
+    line-height: 1;
+  }
+
+  /* Italic Bible verse at bottom */
+  .dig-tooltip-verse {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--ink-faded, #5c4033);
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ── Post card line clamp ── */
   .line-clamp-3 {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+
+  /* ── Dark mode adjustments ── */
+  :global(.dark) .dig-filter {
+    color: var(--stone-light);
+    border-color: rgba(139, 125, 107, 0.4);
+  }
+  :global(.dark) .dig-filter:hover,
+  :global(.dark) .dig-filter.active {
+    background: linear-gradient(135deg, var(--clay-hover), var(--clay), var(--clay-deep));
+    color: #ffffff;
+    border-color: var(--clay);
+  }
+
+  :global(.dark) .dig-tooltip-header {
+    background-color: #1a1208;
+    color: var(--gold, #c5a44e);
+  }
+
+  :global(.dark) .dig-tooltip-body {
+    background-color: var(--color-dark-surface, #2a1d10);
+    background-image: url("https://www.transparenttextures.com/patterns/dark-wall.png");
+  }
+
+  :global(.dark) .dig-tooltip-subtitle {
+    color: var(--gold, #c5a44e);
+  }
+
+  :global(.dark) .dig-tooltip-description {
+    color: var(--color-dark-text, #f0e0bf);
+  }
+
+  :global(.dark) .dig-tooltip-verse {
+    color: var(--color-dark-secondary-text, #c4ad84);
+  }
+
+  :global(.dark) .dig-tooltip-divider::before,
+  :global(.dark) .dig-tooltip-divider::after {
+    background-color: rgba(139, 125, 107, 0.4);
+  }
+
+  :global(.dark) .dig-tooltip-diamond {
+    color: var(--gold, #c5a44e);
   }
 </style>
