@@ -89,6 +89,25 @@
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }
 
+/* ── BURNT EDGE VIGNETTE ──
+   Fixed overlay on every page — simulates charred/scorched parchment edges.
+   pointer-events: none so it never blocks clicks. z-index: 9998 sits below
+   any modals (search = 200, tooltips = 100) but above all page content. */
+body::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 9998;
+  box-shadow:
+    /* Inner darkening — the "charred" ring */
+    inset 0 0 120px rgba(15, 7, 2, 0.52),
+    inset 0 0 60px  rgba(15, 7, 2, 0.38),
+    inset 0 0 28px  rgba(15, 7, 2, 0.22),
+    /* Edge glow — subtle warm amber at the very rim */
+    inset 0 0 4px   rgba(100, 55, 10, 0.18);
+}
+
 /* ── Page background ── */
 body {
   font-family: var(--font-family-serif);
