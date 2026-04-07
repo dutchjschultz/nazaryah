@@ -24,10 +24,10 @@ const readingTime = Math.ceil(wordCount / 200);
 ---
 
 <BaseLayout title={`${title} - Nazaryah`} description={description} article={true}>
-  <article class="py-16 md:py-20">
+  <article class="py-16 md:py-20" data-pagefind-body>
     <div class="container mx-auto px-6">
       <!-- Breadcrumb -->
-      <nav class="max-w-4xl mx-auto mb-8 text-sm" style="font-family: var(--font-body);">
+      <nav class="max-w-4xl mx-auto mb-8 text-sm" style="font-family: var(--font-body);" data-pagefind-ignore>
         <ol class="flex items-center space-x-2" style="color: var(--ink-faded);">
           <li><a href="/" class="hover:text-[var(--bronze)]">Home</a></li>
           <li>/</li>
@@ -38,7 +38,7 @@ const readingTime = Math.ceil(wordCount / 200);
       </nav>
 
       <!-- Article Header -->
-      <header class="max-w-4xl mx-auto mb-12 text-center">
+      <header class="max-w-4xl mx-auto mb-12 text-center" data-pagefind-ignore>
         <div class="tag mb-4" style="color: var(--bronze);">
           {category}
         </div>
@@ -84,13 +84,13 @@ const readingTime = Math.ceil(wordCount / 200);
 
       <!-- References Section -->
       {references && references.length > 0 && (
-        <div class="max-w-3xl mx-auto">
+        <div class="max-w-3xl mx-auto" data-pagefind-ignore>
           <References references={references} />
         </div>
       )}
 
       <!-- Article Footer -->
-      <footer class="max-w-3xl mx-auto mt-16 pt-8 border-t border-[var(--sand-dark)]">
+      <footer class="max-w-3xl mx-auto mt-16 pt-8 border-t border-[var(--sand-dark)]" data-pagefind-ignore>
         <div class="flex items-center justify-between">
           <a
             href="/blog"
