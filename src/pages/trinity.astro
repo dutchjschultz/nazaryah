@@ -1,0 +1,350 @@
+---
+// Standalone Trinity timeline page — no site layout wrapper
+---
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>How the Trinity Was Built — Timeline</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=EB+Garamond:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      background: #1a0f05;
+      color: #3d2b0f;
+      min-height: 100vh;
+      padding: 3rem 1rem 4rem;
+    }
+
+    .tl-wrap {
+      font-family: 'EB Garamond', Georgia, serif;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+
+    /* ── Header ── */
+    .tl-header {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 1px solid #c4a46b;
+    }
+    .tl-header-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 4px;
+      color: #8a5e28;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+    .tl-header-title {
+      font-family: 'Cinzel', serif;
+      font-size: 28px;
+      font-weight: 600;
+      color: #f5ead6;
+    }
+    .tl-header-sub {
+      font-size: 15px;
+      color: #b8965a;
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    /* ── Legend ── */
+    .tl-legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-bottom: 2rem;
+      padding: 10px 14px;
+      border: 0.5px solid #c4a46b;
+      background: rgba(184,150,90,0.05);
+    }
+    .leg-item {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: #b8965a;
+      text-transform: uppercase;
+    }
+    .leg-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      border: 2px solid;
+      flex-shrink: 0;
+    }
+
+    /* ── Timeline spine ── */
+    .tl-spine {
+      position: relative;
+      padding-left: 48px;
+    }
+    .tl-spine::before {
+      content: '';
+      position: absolute;
+      left: 16px;
+      top: 0;
+      bottom: 0;
+      width: 1px;
+      background: #c4a46b;
+    }
+
+    /* ── Entries ── */
+    .tl-entry {
+      position: relative;
+      margin-bottom: 2rem;
+      cursor: pointer;
+    }
+    .tl-entry:last-child { margin-bottom: 0; }
+
+    .tl-dot {
+      position: absolute;
+      left: -40px;
+      top: 6px;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      border: 2px solid #b8965a;
+      background: #2a1700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .tl-dot-inner {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: #b8965a;
+    }
+
+    .tl-entry.pagan .tl-dot  { border-color: #993C1D; }
+    .tl-entry.pagan .tl-dot-inner  { background: #993C1D; }
+    .tl-entry.greek .tl-dot  { border-color: #534AB7; }
+    .tl-entry.greek .tl-dot-inner  { background: #534AB7; }
+    .tl-entry.church .tl-dot { border-color: #185FA5; }
+    .tl-entry.church .tl-dot-inner { background: #185FA5; }
+    .tl-entry.council .tl-dot { border-color: #A32D2D; }
+    .tl-entry.council .tl-dot-inner { background: #A32D2D; }
+
+    .tl-year {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 2px;
+      color: #8a5e28;
+      text-transform: uppercase;
+      margin-bottom: 3px;
+    }
+    .tl-title {
+      font-family: 'Cinzel', serif;
+      font-size: 16px;
+      font-weight: 600;
+      color: #f5ead6;
+      margin-bottom: 4px;
+      line-height: 1.3;
+    }
+    .tl-preview {
+      font-size: 14px;
+      color: #b8965a;
+      font-style: italic;
+      line-height: 1.5;
+    }
+    .tl-toggle {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 1.5px;
+      color: #b8965a;
+      text-transform: uppercase;
+      margin-top: 5px;
+      display: inline-block;
+    }
+    .tl-body {
+      font-size: 15px;
+      line-height: 1.75;
+      color: #e8d9c0;
+      display: none;
+      margin-top: 10px;
+      padding: 12px 16px;
+      border-left: 2px solid #c4a46b;
+      background: rgba(184,150,90,0.07);
+    }
+    .tl-body.open { display: block; }
+    .tl-body em { font-style: italic; color: #f0a070; }
+
+    /* ── Footer ── */
+    .tl-footer {
+      margin-top: 2.5rem;
+      padding-top: 1rem;
+      border-top: 0.5px solid #c4a46b;
+      text-align: center;
+      font-size: 14px;
+      font-style: italic;
+      color: #8a6840;
+      line-height: 1.6;
+    }
+    .tl-footer span {
+      display: block;
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      font-style: normal;
+      letter-spacing: 1px;
+      color: #b8965a;
+      margin-top: 4px;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 480px) {
+      .tl-header-title { font-size: 22px; }
+      .tl-spine { padding-left: 36px; }
+      .tl-dot { left: -30px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="tl-wrap">
+
+    <div class="tl-header">
+      <p class="tl-header-label">&#8213; A Documented Trail &#8213;</p>
+      <h1 class="tl-header-title">How the Trinity Was Built</h1>
+      <p class="tl-header-sub">From Babel to the Creeds — tracing a doctrine that Scripture never taught</p>
+    </div>
+
+    <div class="tl-legend">
+      <div class="leg-item"><div class="leg-dot" style="border-color:#993C1D; background:#4A1B0C;"></div>Pagan Origin</div>
+      <div class="leg-item"><div class="leg-dot" style="border-color:#534AB7; background:#26215C;"></div>Greek Influence</div>
+      <div class="leg-item"><div class="leg-dot" style="border-color:#185FA5; background:#042C53;"></div>Early Church</div>
+      <div class="leg-item"><div class="leg-dot" style="border-color:#A32D2D; background:#501313;"></div>Council / Decree</div>
+    </div>
+
+    <div class="tl-spine" id="timeline"></div>
+
+    <div class="tl-footer">
+      "My people are destroyed for lack of knowledge."
+      <span>— Hosea 4:6</span>
+    </div>
+
+  </div>
+
+  <script>
+    /*
+    ============================================================
+      ADD NEW ENTRIES HERE
+      Simply add a new object to this array.
+      The timeline will automatically sort by year.
+
+      FIELDS:
+        year   — display string e.g. "c. 325 AD" or "1200 BC"
+        type   — "pagan" | "greek" | "church" | "council"
+        title  — short headline
+        preview — one sentence shown by default
+        body   — full expanded text (wrap key phrases in <em></em>)
+    ============================================================
+    */
+    const entries = [
+      {
+        year: "c. 2200 BC",
+        type: "pagan",
+        title: "Tower of Babel — The Scattering",
+        preview: "Babylon becomes the seed of all corrupted god-concepts.",
+        body: "At Babel, Yahuah scattered the nations and confused their languages. But the <em>spiritual corruption of Nimrod's Babylon</em> — its priesthood, its triune god-structures, its mystery religion — traveled with every people group. The concept of a three-in-one deity did not begin at Nicaea. It began here, and was carried into Egypt, Sumeria, India, Greece, and Rome long before a single verse of the New Testament was written."
+      },
+      {
+        year: "c. 1500–500 BC",
+        type: "pagan",
+        title: "Pagan Trinities Spread Across the Nations",
+        preview: "Egypt, Babylon, and Hinduism all carried triadic god structures.",
+        body: "The pattern repeats across every major civilization that descended from Babel: <em>Osiris, Horus, and Isis</em> in Egypt. <em>Anu, Enlil, and Enki</em> in Sumeria. <em>Brahma, Vishnu, and Shiva</em> in Hindu theology. Three persons. One divine essence. This was not coincidence — it was the same corrupted seed replanted in every nation Yahuah had scattered. The nations that Israel was commanded to stay separate from had already built their theology around a triune deity."
+      },
+      {
+        year: "c. 428–348 BC",
+        type: "greek",
+        title: "Plato & the Divine Triad",
+        preview: "Greek philosophy formalizes the concept of a divine threefold essence.",
+        body: "Plato's theology introduced a structured divine triad: <em>the One, the Logos (Reason), and the World Soul</em>. This became the philosophical backbone that later church fathers would use to interpret Scripture. When Greek-educated scholars read 'In the beginning was the Word,' they were not reading with Hebrew eyes — they were reading with <em>Platonic categories already loaded</em>. The Logos of Plato and the Logos of Yochanan (John) are not the same thing, but the church fathers treated them as interchangeable."
+      },
+      {
+        year: "c. 50–150 AD",
+        type: "church",
+        title: "The Apostolic Writings — No Trinity Taught",
+        preview: "The original writings of the emissaries contain no trinitarian formula.",
+        body: "In every letter written by Sha'ul (Paul), Kepha (Peter), Yochanan (John), and Ya'akov (James), <em>the Father and the Son are consistently distinguished</em>. Yahuah is the Father. Yahushua is His Son — the Messiah, the firstborn, the one through whom all things were made. The Ruach HaQodesh (Set-Apart Spirit) is never presented as a separate co-equal person. The doctrine of three co-equal, co-eternal persons sharing one divine essence <em>does not exist in the original apostolic writings</em>."
+      },
+      {
+        year: "c. 150–250 AD",
+        type: "greek",
+        title: "Early Church Fathers Introduce Greek Categories",
+        preview: "Tertullian, Origen, and Justin Martyr begin blending Greek philosophy into Christology.",
+        body: "Tertullian (c. 160–220 AD) was the first to use the Latin word <em>trinitas</em> — Trinity. He was a trained Roman lawyer, not a Hebrew scholar. Origen applied Platonic philosophy directly to the nature of the Messiah, subordinating the Son to the Father (which was itself later condemned). Justin Martyr used Greek Logos theology to explain Yahushua. <em>These men meant well, but they were reading a Hebrew revelation through Greek lenses</em> — and the distortion entered the theological bloodstream of what would become the Catholic Church."
+      },
+      {
+        year: "325 AD",
+        type: "council",
+        title: "Council of Nicaea — The Trinity Becomes Policy",
+        preview: "Roman Emperor Constantine convenes the council that formally enshrines the trinity.",
+        body: "The Council of Nicaea was not called by a prophet or an emissary — it was called by <em>Constantine, a Roman Emperor</em> who had not yet been baptized and who continued to worship the sun god Sol Invictus. The council's goal was political unity, not scriptural truth. The result was the Nicene Creed, which declared the Son to be <em>'of the same substance' (homoousios) as the Father</em> — a Greek philosophical term that appears nowhere in Scripture. Bishops who refused to sign were exiled. The doctrine was not discovered in the text. It was <em>voted into existence</em>."
+      },
+      {
+        year: "381 AD",
+        type: "council",
+        title: "Council of Constantinople — The Spirit Becomes the Third Person",
+        preview: "The Holy Spirit is formally elevated to co-equal status, completing the triune formula.",
+        body: "The Council of Nicaea had not fully defined the nature of the Ruach HaQodesh. The Council of Constantinople completed the formula: the Spirit was declared <em>co-equal and co-eternal with the Father and the Son</em>, fully completing the three-person, one-substance doctrine. This was again a council decree — not a revelation, not an apostolic teaching. The Nicene-Constantinopolitan Creed became the doctrinal standard of both Eastern and Western Christianity, <em>cementing a Greek philosophical framework as if it were Hebrew revelation</em>."
+      },
+      {
+        year: "c. 400–1500 AD",
+        type: "church",
+        title: "The Catholic Church Enforces Trinitarian Orthodoxy",
+        preview: "Dissent is labeled heresy. The doctrine becomes unchallengeable.",
+        body: "For over a thousand years, <em>questioning the Trinity was punishable by excommunication, torture, or death</em>. Arius, who taught that the Son was subordinate to the Father (a position far closer to Scripture), was branded a heretic. Michael Servetus, who rejected the Trinity on biblical grounds, was burned at the stake in 1553 — with <em>John Calvin's approval</em>. The doctrine was not protected because Scripture demanded it. It was protected because <em>institutional power had been built on top of it</em>."
+      },
+      {
+        year: "1500s AD",
+        type: "church",
+        title: "The Reformation — The Trinity Goes Unquestioned",
+        preview: "Protestant reformers challenged Rome on many things — but kept the Trinity intact.",
+        body: "Luther, Calvin, Zwingli, and the other reformers challenged papal authority, indulgences, works-based salvation, and the corruption of Rome. But <em>not one of the major reformers touched the Trinity</em>. It was inherited wholesale from Catholic theology and passed directly into Protestant doctrine. The creeds remained. The Greek framework remained. The Reformation corrected many things — but it handed every subsequent denomination a trinitarian foundation that no one examined. <em>Modern Christianity inherited what the reformers refused to question.</em>"
+      }
+    ];
+
+    /* ── Sort chronologically ── */
+    entries.sort((a, b) => {
+      const parse = s => {
+        const m = s.match(/-?\d+/);
+        if (!m) return 0;
+        let n = parseInt(m[0]);
+        if (s.includes('BC')) n = -n;
+        return n;
+      };
+      return parse(a.year) - parse(b.year);
+    });
+
+    /* ── Render ── */
+    const container = document.getElementById('timeline');
+
+    entries.forEach((e, i) => {
+      const div = document.createElement('div');
+      div.className = `tl-entry ${e.type}`;
+      div.innerHTML = `
+        <div class="tl-dot"><div class="tl-dot-inner"></div></div>
+        <div class="tl-year">${e.year}</div>
+        <div class="tl-title">${e.title}</div>
+        <div class="tl-preview">${e.preview}</div>
+        <div class="tl-toggle" id="tog-${i}">+ Read more</div>
+        <div class="tl-body" id="body-${i}">${e.body}</div>
+      `;
+      div.addEventListener('click', () => {
+        const body = document.getElementById(`body-${i}`);
+        const tog  = document.getElementById(`tog-${i}`);
+        const open = body.classList.toggle('open');
+        tog.textContent = open ? '− Close' : '+ Read more';
+      });
+      container.appendChild(div);
+    });
+  </script>
+</body>
+</html>
