@@ -10,59 +10,57 @@ const allPosts = await getCollection('posts', ({ data }) => {
 // Sort by date, most recent first
 const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-// Updated categories — removed Book-by-Book Commentary, Theological Themes, Fresh Perspectives
-// Added Torah (Law) and Calendar
 const allCategories = [
-  'Books',
-  'Exegetical Studies',
-  'Historical Context',
+  'The Scrolls',
+  'Scripture Unfiltered',
+  'Buried in Plain Sight',
   'Parables',
-  'Trinity Busters',
+  'The Trinity Files',
   'Word Studies',
-  'Torah (Law)',
-  'Calendar',
+  'The Law Still Stands',
+  'The Feasts',
 ];
 
 // Hover card content for each category — styled like manuscript field notes
 const categoryMeta: Record<string, { subtitle: string; description: string; verse: string }> = {
-  'Books': {
-    subtitle: '— WRITINGS OF THE ANCIENT WORLD —',
-    description: 'Full studies devoted to individual books of Scripture — tracing their structure, themes, and covenantal threads from first word to last.',
+  'The Scrolls': {
+    subtitle: '— THE SCROLLS —',
+    description: 'These are focused book studies — narrowed down to a single theme, subject, or argument. The full book, distilled to what actually matters. No filler, no fluff, just what the author found and whether Scripture backs it up.',
     verse: '"All Scripture is breathed out by God." — 2 Timothy 3:16'
   },
-  'Exegetical Studies': {
-    subtitle: '— DIGGING INTO THE TEXT —',
-    description: 'Verse-by-verse and word-by-word analysis rooted in the original Hebrew and Greek. Every layer of meaning examined, nothing assumed.',
+  'Scripture Unfiltered': {
+    subtitle: '— SCRIPTURE UNFILTERED —',
+    description: 'Passage by passage. Verse by verse. No denominational filter, no traditional spin — just the text opened up the way it was written to be read. Some of it will wreck what you were taught. That\'s the point.',
     verse: '"Study to show yourself approved." — 2 Timothy 2:15'
   },
-  'Historical Context': {
-    subtitle: '— THE WORLD BEHIND THE WORDS —',
-    description: 'Ancient culture, archaeology, and geography brought to bear on the text. Scripture read in the world where it was written — not the world we inherited.',
+  'Buried in Plain Sight': {
+    subtitle: '— BURIED IN PLAIN SIGHT —',
+    description: 'This is the historical record of how Christianity drifted — where its doctrines actually came from, what councils decided them, what Rome enforced, and what the Reformation refused to fix. Church history that the church doesn\'t teach.',
     verse: '"Ask for the ancient paths, where the good way is." — Jeremiah 6:16'
   },
   'Parables': {
-    subtitle: '— STORIES WITH BURIED TREASURE —',
-    description: "The parables of Yeshua decoded through the lens of Torah, covenant, and Second Temple Judaism — not Western allegory. Hear them the way his first listeners did.",
+    subtitle: '— PARABLES —',
+    description: 'These are not studies of biblical parables — these are original parables written to carry hard truth in a way that a straight lecture never could. They\'re meant to be engaging. The truth inside them is anything but comfortable.',
     verse: '"To you it has been given to know the secrets of the kingdom." — Matthew 13:11'
   },
-  'Trinity Busters': {
-    subtitle: '— QUESTIONING INHERITED DOCTRINE —',
-    description: 'A careful, text-first examination of Trinitarian claims set against the Hebrew Scriptures and earliest writings. Not tradition — what does the text actually say?',
+  'The Trinity Files': {
+    subtitle: '— THE TRINITY FILES —',
+    description: 'Every verse modern Christianity uses to defend the Trinity doctrine — examined one by one against the original text. Not opinion. Not tradition. Just Scripture, opened up and put on the stand.',
     verse: '"Hear, O Israel: Yahuah our God, Yahuah is one." — Deuteronomy 6:4'
   },
   'Word Studies': {
-    subtitle: '— UNEARTHING THE ANCIENT TEXT —',
-    description: 'Single words. Profound weight. These studies recover what translation buried — the covenantal meaning carried in the roots of Hebrew and Greek.',
+    subtitle: '— WORD STUDIES —',
+    description: 'His name was changed. Key words were swapped. Covenantal meaning was buried under centuries of translation and tradition. These studies go back to the Hebrew and Greek to recover what the text actually says — before the translators got to it.',
     verse: '"My people are destroyed for lack of knowledge." — Hosea 4:6'
   },
-  'Torah (Law)': {
-    subtitle: '— THE FOUNDATION OF ALL SCRIPTURE —',
-    description: "The five books of Moses — not abolished, not merely historical. Torah is the constitutional document of the covenant people, alive and active from Genesis to Revelation.",
+  'The Law Still Stands': {
+    subtitle: '— THE LAW STILL STANDS —',
+    description: 'Scripture never said the Torah was abolished. That idea came from centuries of misread letters and mistranslated verses. These studies go back to the text and make the case that the Law was never nailed to anything — and that keeping it still matters.',
     verse: '"Your Torah is truth." — Psalm 119:142'
   },
-  'Calendar': {
-    subtitle: '— THE APPOINTED TIMES OF YAHUAH —',
-    description: "The biblical feasts, new moons, and Sabbaths are not Jewish customs — they are Yahuah's appointed times, written into creation itself before Israel ever existed.",
+  'The Feasts': {
+    subtitle: '— THE FEASTS —',
+    description: 'Yahuah set appointed times in Scripture — specific, named, and tied to His covenant with His people. Christianity replaced them with holidays borrowed from somewhere else entirely. Both calendars are laid out here. You decide which one belongs to Him.',
     verse: '"These are my appointed feasts." — Leviticus 23:2'
   },
 };
