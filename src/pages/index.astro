@@ -2,22 +2,28 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-// Get featured posts
+// Featured studies — the latest post from each of these 5 categories
+const featuredCategories = [
+  'Scripture Unfiltered',
+  'Word Studies',
+  'The Law Still Stands',
+  'The Feasts',
+  'The Scrolls',
+] as const;
+
 const allPosts = await getCollection('posts', ({ data }) => {
   return data.draft !== true;
 });
 
-const featuredPosts = allPosts
-  .filter((post) => post.data.featured)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-  .slice(0, 3);
+const sortedByDate = [...allPosts].sort(
+  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
+);
 
-// If no featured posts, get the 3 most recent
-const displayPosts = featuredPosts.length > 0
-  ? featuredPosts
-  : allPosts
-      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
-      .slice(0, 3);
+// For each category, pick the most recent post (or null if none exists)
+const displayPosts = featuredCategories.map((category) => ({
+  category,
+  post: sortedByDate.find((p) => p.data.category === category) ?? null,
+}));
 ---
 
 <BaseLayout
@@ -62,61 +68,75 @@ const displayPosts = featuredPosts.length > 0
     </div>
   </section>
 
-  <!-- Featured Studies -->
-  {displayPosts.length > 0 && (
-    <section class="py-20 md:py-24 border-t border-[var(--sand-dark)]">
-      <div class="container mx-auto px-6">
-        <div class="max-w-7xl mx-auto">
-          <h2 class="text-3xl md:text-4xl font-bold text-center mb-3" style="font-family: var(--font-display); color: var(--deep-earth);">
-            Featured Studies
-          </h2>
-          <p class="text-center mb-12 max-w-2xl mx-auto" style="color: var(--ink-faded);">
-            Dive into our latest research and insights on biblical texts, languages, and historical context.
-          </p>
-          <div class="grid grid-cols-1 md:grid-cols-3 gap-6 lg:gap-8">
-            {displayPosts.map((post) => (
+  <!-- Featured Studies — 5 across, one latest post per category -->
+  <section class="py-20 md:py-24 border-t border-[var(--sand-dark)]">
+    <div class="container mx-auto px-6">
+      <div class="max-w-7xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-center mb-3" style="font-family: var(--font-display); color: var(--deep-earth);">
+          Featured Studies
+        </h2>
+        <p class="text-center mb-12 max-w-2xl mx-auto" style="color: var(--ink-faded);">
+          The latest study from each of our core categories.
+        </p>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
+          {displayPosts.map(({ category, post }) => (
+            post ? (
               <article class="card group flex flex-col">
-                <div class="p-8 flex flex-col flex-1">
+                <div class="p-6 flex flex-col flex-1">
                   <div class="tag mb-3" style="color: var(--bronze);">
-                    {post.data.category}
+                    {category}
                   </div>
-                  <h3 class="text-xl font-semibold mb-3" style="font-family: var(--font-display); color: var(--deep-earth);">
+                  <h3 class="text-lg font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
                     <a href={`/blog/${post.slug}`} class="hover:text-[var(--bronze)] transition-colors" style="color: var(--deep-earth);">
                       {post.data.title}
                     </a>
                   </h3>
-                  <p class="text-base leading-relaxed mb-6 line-clamp-4 flex-1" style="color: var(--ink-faded);">
+                  <p class="text-sm leading-relaxed mb-5 line-clamp-4 flex-1" style="color: var(--ink-faded);">
                     {post.data.description}
                   </p>
-                  <div class="flex items-center justify-between text-sm pt-5 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
+                  <div class="flex items-center justify-between text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
                     <time datetime={post.data.date.toISOString()}>
-                      {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                      {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
                     </time>
                     <a
                       href={`/blog/${post.slug}`}
                       class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
                       style="color: var(--bronze);"
                     >
-                      Read More <span aria-hidden="true">&rarr;</span>
+                      Read <span aria-hidden="true">&rarr;</span>
                     </a>
                   </div>
                 </div>
               </article>
-            ))}
-          </div>
-          <div class="text-center mt-12">
-            <a
-              href="/blog"
-              class="inline-flex items-center gap-2 font-medium transition-colors"
-              style="font-family: var(--font-display); color: var(--bronze); letter-spacing: 1px;"
-            >
-              View All Studies <span aria-hidden="true">&rarr;</span>
-            </a>
-          </div>
+            ) : (
+              <article class="card flex flex-col opacity-70">
+                <div class="p-6 flex flex-col flex-1">
+                  <div class="tag mb-3" style="color: var(--bronze);">
+                    {category}
+                  </div>
+                  <h3 class="text-lg font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
+                    Coming soon
+                  </h3>
+                  <p class="text-sm leading-relaxed flex-1 italic" style="color: var(--ink-faded);">
+                    The first study in this category has not been published yet.
+                  </p>
+                </div>
+              </article>
+            )
+          ))}
+        </div>
+        <div class="text-center mt-12">
+          <a
+            href="/blog"
+            class="inline-flex items-center gap-2 font-medium transition-colors"
+            style="font-family: var(--font-display); color: var(--bronze); letter-spacing: 1px;"
+          >
+            View All Studies <span aria-hidden="true">&rarr;</span>
+          </a>
         </div>
       </div>
-    </section>
-  )}
+    </div>
+  </section>
 
   <!-- Our Approach -->
   <section class="relative py-20 md:py-24 border-t border-[var(--sand-dark)]">

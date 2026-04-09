@@ -1,6 +1,7 @@
 ---
-// Logo component with icon and wordmark
-// Design inspired by Hebrew aleph and ancient scroll imagery
+// Logo component — uses the Nazaryah mountain/desert logo image.
+// The source image lives at /public/images/nazaryah-logo.png — replace that
+// file to update the logo site-wide.
 interface Props {
   variant?: 'full' | 'icon-only';
   className?: string;
@@ -10,94 +11,52 @@ const { variant = 'full', className = '' } = Astro.props;
 ---
 
 {variant === 'full' ? (
-  <div class={`logo-full flex items-center gap-3 ${className}`}>
-    <!-- Icon -->
-    <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
-      <g class="logo-icon">
-        <path
-          d="M8 6 C8 4 9 3 11 3 L29 3 C31 3 32 4 32 6 L32 34 C32 36 31 37 29 37 L11 37 C9 37 8 36 8 34 Z"
-          class="scroll-base"
-          stroke="currentColor"
-          stroke-width="1.5"
-          fill="none"
-        />
-        <path d="M15 12 L20 20" class="aleph-stroke" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-        <path d="M25 28 L20 20" class="aleph-stroke" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-        <path d="M20 13 L20 27" class="aleph-stroke" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-        <circle cx="17" cy="15" r="1.5" fill="currentColor" class="vowel-point" />
-        <circle cx="23" cy="25" r="1.5" fill="currentColor" class="vowel-point" />
-      </g>
-    </svg>
-
-    <!-- Wordmark -->
-    <div class="logo-wordmark text-2xl font-bold tracking-wider" style="font-family: var(--font-display);">
-      Nazaryah
-    </div>
+  <div class={`logo-full ${className}`}>
+    <img
+      src="/images/nazaryah-logo.png"
+      alt="Nazaryah"
+      class="logo-img"
+      width="220"
+      height="56"
+      loading="eager"
+      decoding="async"
+    />
   </div>
 ) : (
-  <svg width="40" height="40" viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg" class={`logo-icon-only ${className}`} aria-label="Nazaryah">
-    <g class="logo-icon">
-      <path
-        d="M8 6 C8 4 9 3 11 3 L29 3 C31 3 32 4 32 6 L32 34 C32 36 31 37 29 37 L11 37 C9 37 8 36 8 34 Z"
-        class="scroll-base"
-        stroke="currentColor"
-        stroke-width="1.5"
-        fill="none"
-      />
-      <path d="M15 12 L20 20" class="aleph-stroke" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-      <path d="M25 28 L20 20" class="aleph-stroke" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" />
-      <path d="M20 13 L20 27" class="aleph-stroke" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
-      <circle cx="17" cy="15" r="1.5" fill="currentColor" class="vowel-point" />
-      <circle cx="23" cy="25" r="1.5" fill="currentColor" class="vowel-point" />
-    </g>
-  </svg>
+  <img
+    src="/images/nazaryah-logo.png"
+    alt="Nazaryah"
+    class={`logo-img logo-icon-only ${className}`}
+    width="56"
+    height="56"
+    loading="eager"
+    decoding="async"
+  />
 )}
 
 <style>
-  .logo-full,
-  .logo-icon-only {
-    color: var(--bronze);
-    transition: color 0.3s ease;
+  .logo-full {
+    display: inline-flex;
+    align-items: center;
   }
-
-  .dark .logo-full,
-  .dark .logo-icon-only {
-    color: var(--gold);
+  .logo-img {
+    display: block;
+    height: 56px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    transition: opacity 0.3s ease, transform 0.3s ease;
   }
-
-  .logo-full:hover .logo-icon,
+  .logo-full:hover .logo-img,
   .logo-icon-only:hover {
-    color: var(--bronze-light);
+    opacity: 0.88;
   }
-
-  .dark .logo-full:hover .logo-icon,
-  .dark .logo-icon-only:hover {
-    color: var(--gold-light);
+  /* Icon-only variant — square crop */
+  .logo-icon-only {
+    height: 48px;
+    width: 48px;
   }
-
-  .scroll-base {
-    transition: all 0.3s ease;
-  }
-
-  .logo-full:hover .scroll-base,
-  .logo-icon-only:hover .scroll-base {
-    stroke-width: 2;
-  }
-
-  .logo-wordmark {
-    color: var(--bronze);
-    transition: color 0.3s ease;
-  }
-
-  .dark .logo-wordmark {
-    color: var(--gold);
-  }
-
-  .logo-full:hover .logo-wordmark {
-    color: var(--bronze-light);
-  }
-
-  .dark .logo-full:hover .logo-wordmark {
-    color: var(--gold-light);
+  @media (max-width: 640px) {
+    .logo-img { height: 44px; }
   }
 </style>
