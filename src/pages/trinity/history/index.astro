@@ -1,0 +1,476 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { eras, numberedEntries, typeLabels } from '../../../data/trinity-timeline';
+
+// Build a single merged, chronologically-sorted sequence of
+// eras and entries. Eras get their marker row; entries get
+// their numbered dot row.
+type EraItem   = { kind: 'era';   sort: number; label: string };
+type EntryItem = { kind: 'entry'; sort: number; entry: typeof numberedEntries[number] };
+type Item = EraItem | EntryItem;
+
+const items: Item[] = [
+  ...eras.map<EraItem>(e => ({ kind: 'era', sort: e.sort, label: e.label })),
+  ...numberedEntries.map<EntryItem>(e => ({ kind: 'entry', sort: e.yearSort, entry: e })),
+].sort((a, b) => {
+  // If sort values are equal, show the era marker BEFORE the entry
+  if (a.sort === b.sort) return a.kind === 'era' ? -1 : 1;
+  return a.sort - b.sort;
+});
+
+// Trim leading/trailing empty eras to keep the timeline tight.
+// Find first entry index and last entry index.
+const firstEntryIdx = items.findIndex(i => i.kind === 'entry');
+const lastEntryIdx  = items.findLastIndex(i => i.kind === 'entry');
+
+// Keep one era before the first entry, and one era after the last entry.
+const start = Math.max(0, firstEntryIdx - 2);
+const end   = Math.min(items.length, lastEntryIdx + 3);
+const trimmed = items.slice(start, end);
+---
+
+<BaseLayout
+  title="Trinity History — The Documented Trail — Nazaryah"
+  description="A numbered timeline tracing the development of the Trinity doctrine from Babel to the Reformation — sources, councils, philosophers, and the decisions that shaped Western Christianity."
+>
+  <div class="th-wrap">
+
+    <!-- ── HEADER ── -->
+    <section class="th-header">
+      <a href="/trinity" class="th-back">&#8592; Back to Trinity</a>
+      <p class="th-label">&#8213; A Documented Trail &#8213;</p>
+      <h1 class="th-title">How the Trinity Was Built</h1>
+      <p class="th-sub">From Babel to the Reformation — tracing a doctrine that Scripture never taught</p>
+    </section>
+
+    <!-- ── LEGEND ── -->
+    <div class="th-legend-wrap">
+      <div class="th-legend">
+        <div class="leg-item"><div class="leg-dot" style="border-color:#993C1D; background:#4A1B0C;"></div><span>Pagan Origin</span></div>
+        <div class="leg-item"><div class="leg-dot" style="border-color:#534AB7; background:#26215C;"></div><span>Greek Influence</span></div>
+        <div class="leg-item"><div class="leg-dot" style="border-color:#185FA5; background:#042C53;"></div><span>Early Church</span></div>
+        <div class="leg-item"><div class="leg-dot" style="border-color:#A32D2D; background:#501313;"></div><span>Council / Decree</span></div>
+      </div>
+      <p class="th-legend-note">Hover any number for an intro. Click it to read the full article.</p>
+    </div>
+
+    <!-- ── TIMELINE ── -->
+    <div class="th-timeline-wrap">
+      <div class="th-timeline">
+        {trimmed.map((item) => {
+          if (item.kind === 'era') {
+            return (
+              <div class="th-row th-era">
+                <div class="th-col-label">{item.label}</div>
+                <div class="th-col-spine">
+                  <div class="th-era-tick"></div>
+                </div>
+                <div class="th-col-content"></div>
+              </div>
+            );
+          }
+          const e = item.entry;
+          return (
+            <div class={`th-row th-entry ${e.type}`}>
+              <div class="th-col-label th-year">{e.year}</div>
+              <div class="th-col-spine">
+                <a
+                  href={`/trinity/history/${e.slug}`}
+                  class="th-num"
+                  data-tooltip={`${e.title} — ${e.preview}`}
+                  aria-label={`Article ${e.number}: ${e.title}`}
+                >
+                  <span class="th-num-text">{e.number}</span>
+                </a>
+              </div>
+              <div class="th-col-content">
+                <span class="th-type-tag">{typeLabels[e.type]}</span>
+              </div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+
+    <!-- ── FOOTER QUOTE ── -->
+    <div class="th-footer">
+      <p class="th-footer-text">"My people are destroyed for lack of knowledge."</p>
+      <span class="th-footer-ref">— Hosea 4:6</span>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  /* ── Page wrapper — always dark ── */
+  .th-wrap {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #f0e0bf;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  /* ── HEADER ── */
+  .th-header {
+    text-align: center;
+    padding: 4rem 1.5rem 2.5rem;
+    border-bottom: 1px solid #3a2510;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(150, 90, 40, 0.18), transparent 70%),
+      linear-gradient(180deg, #0a0602 0%, #1a1208 100%);
+    position: relative;
+  }
+
+  .th-back {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #6a4820;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .th-back:hover { color: #c4a46b; }
+
+  .th-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a6028;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .th-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 0.75rem;
+    line-height: 1.2;
+  }
+
+  .th-sub {
+    font-size: 1rem;
+    color: #c4a46b;
+    font-style: italic;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── LEGEND ── */
+  .th-legend-wrap {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #2e1f0d;
+    background: rgba(10,6,2,0.4);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .th-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .leg-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #8a6028;
+    text-transform: uppercase;
+  }
+
+  .leg-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid;
+    flex-shrink: 0;
+  }
+
+  .th-legend-note {
+    font-size: 0.8rem;
+    color: #4a3018;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ── TIMELINE ── */
+  .th-timeline-wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 4rem;
+  }
+
+  .th-timeline {
+    position: relative;
+  }
+
+  /* Vertical blue spine line — runs the full timeline */
+  .th-timeline::before {
+    content: '';
+    position: absolute;
+    left: calc(120px + 0.5px); /* center of spine column */
+    top: 10px;
+    bottom: 10px;
+    width: 3px;
+    background: linear-gradient(180deg,
+      transparent 0%,
+      #4a7db8 4%,
+      #4a7db8 96%,
+      transparent 100%);
+    box-shadow: 0 0 12px rgba(74,125,184,0.35);
+    pointer-events: none;
+  }
+
+  /* ── ROW: shared grid — 3 columns (label | spine | content) ── */
+  .th-row {
+    display: grid;
+    grid-template-columns: 120px 3px 1fr;
+    align-items: center;
+    gap: 0;
+    position: relative;
+  }
+
+  .th-col-label {
+    text-align: right;
+    padding-right: 1.1rem;
+  }
+
+  .th-col-spine {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+  }
+
+  .th-col-content {
+    padding-left: 1.1rem;
+  }
+
+  /* ── ERA ROW ── */
+  .th-era {
+    margin: 0.75rem 0;
+  }
+
+  .th-era .th-col-label {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    color: #c4a46b;
+    text-transform: uppercase;
+    line-height: 1;
+  }
+
+  /* Horizontal tick mark on the spine for era markers */
+  .th-era-tick {
+    width: 28px;
+    height: 2px;
+    background: #c4a46b;
+    position: relative;
+    box-shadow: 0 0 6px rgba(196,164,107,0.4);
+  }
+
+  /* ── ENTRY ROW ── */
+  .th-entry {
+    margin: 1.1rem 0;
+  }
+
+  .th-entry .th-year {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #6a4820;
+    text-transform: uppercase;
+    line-height: 1.3;
+  }
+
+  /* The numbered circle — the clickable link */
+  .th-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    background: #1a1208;
+    border: 2px solid #8a6028;
+    text-decoration: none;
+    position: relative;
+    z-index: 2;
+    cursor: pointer;
+    transition: all 0.22s ease;
+    box-shadow: 0 0 0 3px #0e0904, 0 4px 12px rgba(0,0,0,0.5);
+  }
+
+  .th-num-text {
+    font-family: 'Cinzel', serif;
+    font-size: 14px;
+    font-weight: 700;
+    color: #f0e0bf;
+    line-height: 1;
+  }
+
+  /* Type color variants for the number circle */
+  .th-entry.pagan    .th-num { border-color: #993C1D; background: #2a0e08; }
+  .th-entry.greek    .th-num { border-color: #534AB7; background: #13122c; }
+  .th-entry.church   .th-num { border-color: #185FA5; background: #041528; }
+  .th-entry.council  .th-num { border-color: #A32D2D; background: #280c0c; }
+
+  .th-num:hover {
+    transform: scale(1.18);
+    box-shadow: 0 0 0 3px #0e0904, 0 0 20px rgba(196,164,107,0.6), 0 4px 16px rgba(0,0,0,0.7);
+  }
+
+  .th-entry.pagan    .th-num:hover { box-shadow: 0 0 0 3px #0e0904, 0 0 22px rgba(153,60,29,0.8),  0 4px 16px rgba(0,0,0,0.7); }
+  .th-entry.greek    .th-num:hover { box-shadow: 0 0 0 3px #0e0904, 0 0 22px rgba(83,74,183,0.8),  0 4px 16px rgba(0,0,0,0.7); }
+  .th-entry.church   .th-num:hover { box-shadow: 0 0 0 3px #0e0904, 0 0 22px rgba(24,95,165,0.8),  0 4px 16px rgba(0,0,0,0.7); }
+  .th-entry.council  .th-num:hover { box-shadow: 0 0 0 3px #0e0904, 0 0 22px rgba(163,45,45,0.85), 0 4px 16px rgba(0,0,0,0.7); }
+
+  /* Type tag shown to the right of the spine */
+  .th-type-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #5a3e1a;
+    text-transform: uppercase;
+  }
+
+  .th-entry.pagan   .th-type-tag { color: #8a3218; }
+  .th-entry.greek   .th-type-tag { color: #6058a8; }
+  .th-entry.church  .th-type-tag { color: #3a6a94; }
+  .th-entry.council .th-type-tag { color: #8a2a2a; }
+
+  /* ── HOVER TOOLTIP ── */
+  .th-num[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    left: calc(100% + 18px);
+    top: 50%;
+    transform: translateY(-50%) translateX(-4px);
+    min-width: 260px;
+    max-width: 340px;
+    background: linear-gradient(160deg, #241810 0%, #1a1208 100%);
+    color: #d9c9a8;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 0.9rem;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: 0;
+    line-height: 1.55;
+    padding: 0.85rem 1rem;
+    border: 1px solid #6a4820;
+    border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.7), 0 0 0 1px rgba(196,164,107,0.15);
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+    z-index: 100;
+    white-space: normal;
+    text-align: left;
+  }
+
+  /* Arrow pointing at the number circle */
+  .th-num[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    left: calc(100% + 12px);
+    top: 50%;
+    transform: translateY(-50%);
+    border: 6px solid transparent;
+    border-right-color: #6a4820;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+    z-index: 101;
+  }
+
+  .th-num[data-tooltip]:hover::after,
+  .th-num[data-tooltip]:focus::after {
+    opacity: 1;
+    transform: translateY(-50%) translateX(0);
+  }
+
+  .th-num[data-tooltip]:hover::before,
+  .th-num[data-tooltip]:focus::before {
+    opacity: 1;
+  }
+
+  /* ── FOOTER ── */
+  .th-footer {
+    text-align: center;
+    padding: 2.5rem 1.5rem 3rem;
+    border-top: 1px solid #2e1f0d;
+    background: linear-gradient(180deg, #160f07 0%, #0e0904 100%);
+  }
+
+  .th-footer-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #c4a46b;
+    margin-bottom: 0.3rem;
+  }
+
+  .th-footer-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #4a3018;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 720px) {
+    .th-timeline::before {
+      left: calc(88px + 0.5px);
+    }
+    .th-row {
+      grid-template-columns: 88px 3px 1fr;
+    }
+    .th-era .th-col-label { font-size: 10px; }
+    .th-entry .th-year    { font-size: 9px; }
+
+    .th-num[data-tooltip]::after {
+      min-width: 200px;
+      max-width: 240px;
+      font-size: 0.82rem;
+    }
+    .th-type-tag { display: none; }
+  }
+
+  @media (max-width: 500px) {
+    .th-num[data-tooltip]::after {
+      /* Drop tooltip below on very small screens so it doesn't overflow */
+      left: -60px;
+      top: calc(100% + 12px);
+      transform: translateY(-4px);
+      min-width: 220px;
+    }
+    .th-num[data-tooltip]:hover::after,
+    .th-num[data-tooltip]:focus::after {
+      transform: translateY(0);
+    }
+    .th-num[data-tooltip]::before {
+      left: 50%;
+      top: 100%;
+      transform: translateX(-50%);
+      border: 6px solid transparent;
+      border-right-color: transparent;
+      border-bottom-color: #6a4820;
+    }
+    .th-back { position: static; display: block; margin-bottom: 1.5rem; text-align: left; }
+    .th-header { padding-top: 2rem; }
+  }
+</style>
