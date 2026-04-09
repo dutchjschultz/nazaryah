@@ -1,0 +1,622 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Trinity History — The Documented Trail — Nazaryah"
+  description="A documented timeline tracing the development of the Trinity doctrine from Babel to the Reformation — sources, councils, philosophers, and the decisions that shaped Western Christianity."
+>
+  <div class="th-wrap">
+
+    <!-- ── HEADER ── -->
+    <section class="th-header">
+      <a href="/trinity" class="th-back">&#8592; Back to Trinity</a>
+      <p class="th-label">&#8213; A Documented Trail &#8213;</p>
+      <h1 class="th-title">How the Trinity Was Built</h1>
+      <p class="th-sub">From Babel to the Reformation — tracing a doctrine that Scripture never taught</p>
+    </section>
+
+    <!-- ── LEGEND ── -->
+    <div class="th-legend-wrap">
+      <div class="th-legend">
+        <div class="leg-item"><div class="leg-dot" style="border-color:#993C1D; background:#4A1B0C;"></div><span>Pagan Origin</span></div>
+        <div class="leg-item"><div class="leg-dot" style="border-color:#534AB7; background:#26215C;"></div><span>Greek Influence</span></div>
+        <div class="leg-item"><div class="leg-dot" style="border-color:#185FA5; background:#042C53;"></div><span>Early Church</span></div>
+        <div class="leg-item"><div class="leg-dot" style="border-color:#A32D2D; background:#501313;"></div><span>Council / Decree</span></div>
+      </div>
+      <p class="th-legend-note">Hover any entry title for a summary. Click to read the full record.</p>
+    </div>
+
+    <!-- ── TIMELINE ── -->
+    <div class="th-timeline-wrap">
+      <div class="th-timeline" id="timeline"></div>
+    </div>
+
+    <!-- ── FOOTER QUOTE ── -->
+    <div class="th-footer">
+      <p class="th-footer-text">"My people are destroyed for lack of knowledge."</p>
+      <span class="th-footer-ref">— Hosea 4:6</span>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  /* ── Page wrapper — always dark ── */
+  .th-wrap {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #f0e0bf;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  /* ── HEADER ── */
+  .th-header {
+    text-align: center;
+    padding: 4rem 1.5rem 2.5rem;
+    border-bottom: 1px solid #3a2510;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(150, 90, 40, 0.18), transparent 70%),
+      linear-gradient(180deg, #0a0602 0%, #1a1208 100%);
+    position: relative;
+  }
+
+  .th-back {
+    position: absolute;
+    top: 1.5rem;
+    left: 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #6a4820;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .th-back:hover { color: #c4a46b; }
+
+  .th-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a6028;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .th-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.75rem, 4vw, 2.75rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 0.75rem;
+    line-height: 1.2;
+  }
+
+  .th-sub {
+    font-size: 1rem;
+    color: #c4a46b;
+    font-style: italic;
+    max-width: 520px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── LEGEND ── */
+  .th-legend-wrap {
+    padding: 1.25rem 1.5rem;
+    border-bottom: 1px solid #2e1f0d;
+    background: rgba(10,6,2,0.4);
+    max-width: 860px;
+    margin: 0 auto;
+  }
+
+  .th-legend {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .leg-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #8a6028;
+    text-transform: uppercase;
+  }
+
+  .leg-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    border: 2px solid;
+    flex-shrink: 0;
+  }
+
+  .th-legend-note {
+    font-size: 0.8rem;
+    color: #4a3018;
+    font-style: italic;
+    margin: 0;
+  }
+
+  /* ── TIMELINE CONTAINER ── */
+  .th-timeline-wrap {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 2rem 1.5rem 4rem;
+  }
+
+  /* ── TIMELINE ── (built by JS) ── */
+  .th-timeline {
+    position: relative;
+  }
+
+  /* The vertical spine */
+  .th-spine {
+    position: absolute;
+    left: 120px;
+    top: 0;
+    bottom: 0;
+    width: 1px;
+    background: linear-gradient(180deg, transparent, #4a3218 5%, #4a3218 95%, transparent);
+    pointer-events: none;
+  }
+
+  /* ── ERA MARKER ── */
+  .th-era {
+    display: grid;
+    grid-template-columns: 120px 1px 1fr;
+    align-items: center;
+    gap: 0;
+    margin: 2.5rem 0 1rem;
+  }
+
+  .th-era:first-child { margin-top: 0.5rem; }
+
+  .th-era-year {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    color: #c4a46b;
+    text-transform: uppercase;
+    text-align: right;
+    padding-right: 1.25rem;
+    line-height: 1;
+  }
+
+  .th-era-tick {
+    width: 1px;
+    height: 28px;
+    background: #c4a46b;
+    position: relative;
+  }
+
+  .th-era-tick::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: #c4a46b;
+    box-shadow: 0 0 8px rgba(196,164,107,0.5);
+  }
+
+  .th-era-line {
+    height: 1px;
+    background: linear-gradient(90deg, #4a3218, transparent);
+    margin-left: 0;
+  }
+
+  /* ── ENTRY ── */
+  .th-entry {
+    display: grid;
+    grid-template-columns: 120px 1px 1fr;
+    gap: 0;
+    margin-bottom: 1.25rem;
+    align-items: start;
+  }
+
+  .th-entry-year {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: #5a3e1a;
+    text-transform: uppercase;
+    text-align: right;
+    padding-right: 1.25rem;
+    padding-top: 0.15rem;
+    line-height: 1.3;
+  }
+
+  .th-entry-spine {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    padding-top: 0.15rem;
+  }
+
+  .th-entry-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid #8a6028;
+    background: #1a1208;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+    position: relative;
+    z-index: 1;
+  }
+
+  /* Dot colors by type */
+  .th-entry.pagan    .th-entry-dot { border-color: #993C1D; background: #2a0e08; }
+  .th-entry.greek    .th-entry-dot { border-color: #534AB7; background: #13122c; }
+  .th-entry.church   .th-entry-dot { border-color: #185FA5; background: #041528; }
+  .th-entry.council  .th-entry-dot { border-color: #A32D2D; background: #280c0c; }
+
+  .th-entry-content {
+    padding-left: 1.25rem;
+    padding-bottom: 0.5rem;
+  }
+
+  /* The link — title of each entry */
+  .th-entry-link {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    text-decoration: none;
+    line-height: 1.35;
+    position: relative;
+    display: inline-block;
+    transition: color 0.2s;
+  }
+
+  .th-entry.pagan   .th-entry-link { color: #b85e45; }
+  .th-entry.greek   .th-entry-link { color: #7e79c4; }
+  .th-entry.church  .th-entry-link { color: #5a99c8; }
+  .th-entry.council .th-entry-link { color: #c45a5a; }
+
+  .th-entry-link:hover { filter: brightness(1.25); }
+
+  /* ── CSS TOOLTIP ── */
+  .th-entry-link[data-tooltip] {
+    cursor: help;
+  }
+
+  .th-entry-link[data-tooltip]::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 0;
+    min-width: 240px;
+    max-width: 320px;
+    background: #1e1409;
+    color: #c4ad84;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 0.875rem;
+    font-weight: 400;
+    font-style: italic;
+    letter-spacing: 0;
+    line-height: 1.55;
+    padding: 0.65rem 0.9rem;
+    border: 1px solid #4a3218;
+    border-radius: 4px;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    pointer-events: none;
+    opacity: 0;
+    transform: translateY(4px);
+    transition: opacity 0.18s ease, transform 0.18s ease;
+    z-index: 100;
+    white-space: normal;
+  }
+
+  .th-entry-link[data-tooltip]::before {
+    content: '';
+    position: absolute;
+    bottom: calc(100% + 2px);
+    left: 12px;
+    border: 5px solid transparent;
+    border-top-color: #4a3218;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.18s ease;
+    z-index: 101;
+  }
+
+  .th-entry-link[data-tooltip]:hover::after,
+  .th-entry-link[data-tooltip]:focus::after {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  .th-entry-link[data-tooltip]:hover::before,
+  .th-entry-link[data-tooltip]:focus::before {
+    opacity: 1;
+  }
+
+  /* Expanded body */
+  .th-entry-body {
+    font-size: 0.95rem;
+    line-height: 1.75;
+    color: #c4ad84;
+    display: none;
+    margin-top: 0.6rem;
+    padding: 0.75rem 1rem;
+    border-left: 2px solid #3a2510;
+    background: rgba(26,18,8,0.6);
+    border-radius: 0 4px 4px 0;
+  }
+
+  .th-entry-body.open { display: block; }
+  .th-entry-body em { font-style: italic; color: #d4935a; }
+
+  .th-entry-toggle {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1px;
+    color: #4a3018;
+    text-transform: uppercase;
+    margin-top: 4px;
+    cursor: pointer;
+    display: inline-block;
+    transition: color 0.2s;
+  }
+
+  .th-entry-toggle:hover { color: #8a6028; }
+
+  /* ── FOOTER ── */
+  .th-footer {
+    text-align: center;
+    padding: 2.5rem 1.5rem 3rem;
+    border-top: 1px solid #2e1f0d;
+    background: linear-gradient(180deg, #160f07 0%, #0e0904 100%);
+  }
+
+  .th-footer-text {
+    font-size: 1.1rem;
+    font-style: italic;
+    color: #c4a46b;
+    margin-bottom: 0.3rem;
+  }
+
+  .th-footer-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #4a3018;
+    text-transform: uppercase;
+    display: block;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 560px) {
+    .th-spine,
+    .th-era,
+    .th-entry {
+      grid-template-columns: 80px 1px 1fr;
+    }
+
+    .th-spine { left: 80px; }
+
+    .th-era-year { font-size: 9px; }
+
+    .th-entry-link[data-tooltip]::after {
+      left: -60px;
+      min-width: 200px;
+    }
+
+    .th-back { position: static; display: block; margin-bottom: 1.5rem; text-align: left; }
+    .th-header { padding-top: 2rem; }
+  }
+</style>
+
+<script>
+  /*
+  ================================================================
+    TIMELINE DATA
+    To add entries: add an object to the entries array.
+    To link to a real article: update the `url` field.
+
+    FIELDS:
+      year       — display string, e.g. "c. 325 AD" or "c. 2200 BC"
+      yearSort   — integer for sorting (negative = BC)
+      type       — "pagan" | "greek" | "church" | "council"
+      title      — short headline (becomes the link text)
+      preview    — one sentence shown in the hover tooltip
+      body       — full expanded text (wrap phrases in <em></em>)
+      url        — link href (use "#" for placeholder)
+  ================================================================
+  */
+  const entries = [
+    {
+      year: "c. 2200 BC",
+      yearSort: -2200,
+      type: "pagan",
+      title: "Tower of Babel — The Scattering",
+      preview: "Babylon becomes the seed of all corrupted god-concepts, carrying triadic theology into every nation.",
+      body: "At Babel, Yahuah scattered the nations and confused their languages. But the <em>spiritual corruption of Nimrod's Babylon</em> — its priesthood, its triune god-structures, its mystery religion — traveled with every people group. The concept of a three-in-one deity did not begin at Nicaea. It began here, and was carried into Egypt, Sumeria, India, Greece, and Rome long before a single verse of the New Testament was written.",
+      url: "#"
+    },
+    {
+      year: "c. 1500–500 BC",
+      yearSort: -1500,
+      type: "pagan",
+      title: "Pagan Trinities Spread Across the Nations",
+      preview: "Egypt, Babylon, and Hinduism all carried triadic god structures descended from Babel's corruption.",
+      body: "The pattern repeats across every major civilization that descended from Babel: <em>Osiris, Horus, and Isis</em> in Egypt. <em>Anu, Enlil, and Enki</em> in Sumeria. <em>Brahma, Vishnu, and Shiva</em> in Hindu theology. Three persons. One divine essence. This was not coincidence — it was the same corrupted seed replanted in every nation Yahuah had scattered. The nations that Israel was commanded to stay separate from had already built their theology around a triune deity.",
+      url: "#"
+    },
+    {
+      year: "c. 428–348 BC",
+      yearSort: -428,
+      type: "greek",
+      title: "Plato & the Divine Triad",
+      preview: "Greek philosophy formalizes the concept of a threefold divine essence that later church fathers would apply directly to Scripture.",
+      body: "Plato's theology introduced a structured divine triad: <em>the One, the Logos (Reason), and the World Soul</em>. This became the philosophical backbone that later church fathers would use to interpret Scripture. When Greek-educated scholars read 'In the beginning was the Word,' they were not reading with Hebrew eyes — they were reading with <em>Platonic categories already loaded</em>. The Logos of Plato and the Logos of Yochanan (John) are not the same thing, but the church fathers treated them as interchangeable.",
+      url: "#"
+    },
+    {
+      year: "c. 50–150 AD",
+      yearSort: 50,
+      type: "church",
+      title: "The Apostolic Writings — No Trinity Taught",
+      preview: "Every letter from Paul, Peter, John, and James distinguishes the Father from the Son — no trinitarian formula exists in the original writings.",
+      body: "In every letter written by Sha'ul (Paul), Kepha (Peter), Yochanan (John), and Ya'akov (James), <em>the Father and the Son are consistently distinguished</em>. Yahuah is the Father. Yahushua is His Son — the Messiah, the firstborn, the one through whom all things were made. The Ruach HaQodesh (Set-Apart Spirit) is never presented as a separate co-equal person. The doctrine of three co-equal, co-eternal persons sharing one divine essence <em>does not exist in the original apostolic writings</em>.",
+      url: "#"
+    },
+    {
+      year: "c. 150–250 AD",
+      yearSort: 150,
+      type: "greek",
+      title: "Church Fathers Introduce Greek Categories",
+      preview: "Tertullian coins the word 'Trinity.' Origen and Justin Martyr blend Platonic philosophy into Christology.",
+      body: "Tertullian (c. 160–220 AD) was the first to use the Latin word <em>trinitas</em> — Trinity. He was a trained Roman lawyer, not a Hebrew scholar. Origen applied Platonic philosophy directly to the nature of the Messiah, subordinating the Son to the Father (which was itself later condemned). Justin Martyr used Greek Logos theology to explain Yahushua. <em>These men meant well, but they were reading a Hebrew revelation through Greek lenses</em> — and the distortion entered the theological bloodstream of what would become the Catholic Church.",
+      url: "#"
+    },
+    {
+      year: "325 AD",
+      yearSort: 325,
+      type: "council",
+      title: "Council of Nicaea — The Trinity Becomes Policy",
+      preview: "Roman Emperor Constantine convenes the council that formally enshrines the Trinity — the key term comes from Greek philosophy, not Scripture.",
+      body: "The Council of Nicaea was not called by a prophet or an emissary — it was called by <em>Constantine, a Roman Emperor</em> who had not yet been baptized and who continued to worship the sun god Sol Invictus. The council's goal was political unity, not scriptural truth. The result was the Nicene Creed, which declared the Son to be <em>'of the same substance' (homoousios) as the Father</em> — a Greek philosophical term that appears nowhere in Scripture. Bishops who refused to sign were exiled. The doctrine was not discovered in the text. It was <em>voted into existence</em>.",
+      url: "#"
+    },
+    {
+      year: "381 AD",
+      yearSort: 381,
+      type: "council",
+      title: "Council of Constantinople — The Spirit Becomes the Third Person",
+      preview: "The Holy Spirit is formally elevated to co-equal status, completing the triune formula by council decree.",
+      body: "The Council of Nicaea had not fully defined the nature of the Ruach HaQodesh. The Council of Constantinople completed the formula: the Spirit was declared <em>co-equal and co-eternal with the Father and the Son</em>, fully completing the three-person, one-substance doctrine. This was again a council decree — not a revelation, not an apostolic teaching. The Nicene-Constantinopolitan Creed became the doctrinal standard of both Eastern and Western Christianity, <em>cementing a Greek philosophical framework as if it were Hebrew revelation</em>.",
+      url: "#"
+    },
+    {
+      year: "c. 400–1500 AD",
+      yearSort: 450,
+      type: "church",
+      title: "The Catholic Church Enforces Trinitarian Orthodoxy",
+      preview: "Dissent is labeled heresy. For over a thousand years, questioning the Trinity was punishable by excommunication, torture, or death.",
+      body: "For over a thousand years, <em>questioning the Trinity was punishable by excommunication, torture, or death</em>. Arius, who taught that the Son was subordinate to the Father (a position far closer to Scripture), was branded a heretic. Michael Servetus, who rejected the Trinity on biblical grounds, was burned at the stake in 1553 — with <em>John Calvin's approval</em>. The doctrine was not protected because Scripture demanded it. It was protected because <em>institutional power had been built on top of it</em>.",
+      url: "#"
+    },
+    {
+      year: "1500s AD",
+      yearSort: 1520,
+      type: "church",
+      title: "The Reformation — The Trinity Goes Unquestioned",
+      preview: "Luther, Calvin, and the reformers challenged Rome on many things — but inherited the Trinity wholesale without examination.",
+      body: "Luther, Calvin, Zwingli, and the other reformers challenged papal authority, indulgences, works-based salvation, and the corruption of Rome. But <em>not one of the major reformers touched the Trinity</em>. It was inherited wholesale from Catholic theology and passed directly into Protestant doctrine. The creeds remained. The Greek framework remained. The Reformation corrected many things — but it handed every subsequent denomination a trinitarian foundation that no one examined. <em>Modern Christianity inherited what the reformers refused to question.</em>",
+      url: "#"
+    }
+  ];
+
+  /* ── Era definitions ── */
+  /* BC: 500-year intervals. AD: 200-year intervals. */
+  const eras = [
+    { label: '2500 BC', sort: -2500 },
+    { label: '2000 BC', sort: -2000 },
+    { label: '1500 BC', sort: -1500 },
+    { label: '1000 BC', sort: -1000 },
+    { label: '500 BC',  sort: -500  },
+    { label: '0 AD',    sort: 0     },
+    { label: '200 AD',  sort: 200   },
+    { label: '400 AD',  sort: 400   },
+    { label: '600 AD',  sort: 600   },
+    { label: '800 AD',  sort: 800   },
+    { label: '1000 AD', sort: 1000  },
+    { label: '1200 AD', sort: 1200  },
+    { label: '1400 AD', sort: 1400  },
+    { label: '1600 AD', sort: 1600  },
+  ];
+
+  /* Sort entries chronologically */
+  entries.sort((a, b) => a.yearSort - b.yearSort);
+
+  /* Assign entries to era buckets.
+     An entry belongs to the era whose sort value is the largest one <= entry.yearSort */
+  function getEraIndex(yearSort) {
+    let idx = 0;
+    for (let i = 0; i < eras.length; i++) {
+      if (eras[i].sort <= yearSort) idx = i;
+      else break;
+    }
+    return idx;
+  }
+
+  const eraEntries = eras.map(() => []);
+  entries.forEach(e => {
+    eraEntries[getEraIndex(e.yearSort)].push(e);
+  });
+
+  /* ── Render ── */
+  const container = document.getElementById('timeline');
+
+  /* Vertical spine line */
+  const spine = document.createElement('div');
+  spine.className = 'th-spine';
+  container.appendChild(spine);
+
+  let entryIndex = 0;
+
+  eras.forEach((era, eraIdx) => {
+    const hasEntries = eraEntries[eraIdx].length > 0;
+
+    /* Only render eras that have entries or flank an era that does
+       (skip purely empty interior eras to keep the timeline tight) */
+    const prevHas = eraIdx > 0 && eraEntries[eraIdx - 1].length > 0;
+    const nextHas = eraIdx < eras.length - 1 && eraEntries[eraIdx + 1].length > 0;
+    if (!hasEntries && !prevHas && !nextHas) return;
+
+    /* Era marker */
+    const eraEl = document.createElement('div');
+    eraEl.className = 'th-era';
+    eraEl.innerHTML = `
+      <div class="th-era-year">${era.label}</div>
+      <div class="th-era-tick"></div>
+      <div class="th-era-line"></div>
+    `;
+    container.appendChild(eraEl);
+
+    /* Entries in this era */
+    eraEntries[eraIdx].forEach((e) => {
+      const i = entryIndex++;
+      const entryEl = document.createElement('div');
+      entryEl.className = `th-entry ${e.type}`;
+      entryEl.innerHTML = `
+        <div class="th-entry-year">${e.year}</div>
+        <div class="th-entry-spine">
+          <div class="th-entry-dot"></div>
+        </div>
+        <div class="th-entry-content">
+          <a
+            href="${e.url}"
+            class="th-entry-link"
+            data-tooltip="${e.preview.replace(/"/g, '&quot;')}"
+          >${e.title}</a>
+          <div class="th-entry-toggle" id="tog-${i}">+ Read the record</div>
+          <div class="th-entry-body" id="body-${i}">${e.body}</div>
+        </div>
+      `;
+
+      /* Toggle expand */
+      entryEl.querySelector(`#tog-${i}`).addEventListener('click', () => {
+        const body = document.getElementById(`body-${i}`);
+        const tog  = document.getElementById(`tog-${i}`);
+        const open = body.classList.toggle('open');
+        tog.textContent = open ? '− Close' : '+ Read the record';
+      });
+
+      container.appendChild(entryEl);
+    });
+  });
+</script>
