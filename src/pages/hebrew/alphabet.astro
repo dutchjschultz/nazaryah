@@ -1,0 +1,184 @@
+---
+import HebrewLayout from '../../layouts/HebrewLayout.astro';
+import { letters } from '../../data/hebrew-alphabet';
+---
+
+<HebrewLayout
+  title="The Aleph-Bet — Hebrew — Nazaryah"
+  description="The 22 letters of the Hebrew aleph-bet in modern and paleo script, with meaning and teaching for each."
+>
+  <section class="hl-hero">
+    <a href="/hebrew" class="hl-back">&#8592; Back to Hebrew</a>
+    <p class="hl-label">&#8213; Section One &#8213;</p>
+    <h1 class="hl-title">The Aleph-Bet</h1>
+    <p class="hl-sub">
+      Twenty-two letters. Each one a word. Each word a picture. The ancient script beside the modern — both speak the same truth.
+    </p>
+  </section>
+
+  <section class="hl-section">
+    <div class="intro-prose">
+      <p>
+        Each of the twenty-two letters of the Hebrew aleph-bet began as a <strong>picture</strong> — a concrete image drawn from the ancient world.
+        Aleph was an ox head. Bet was a tent or house. Gimel was a camel.
+      </p>
+      <p>
+        The <em>paleo</em> script on the left of each card is how these letters looked to Abraham, Moses, and David. The <em>modern</em> Aramaic block script on the right is what the world sees today. Both carry the same picture — one ancient, one evolved.
+      </p>
+    </div>
+  </section>
+
+  <section class="hl-section">
+    <h2 class="hl-section-title hl-center">The Twenty-Two Letters</h2>
+    <p class="hl-section-sub hl-center">Hover any card to read the deeper essence of each letter.</p>
+
+    <div class="ab-grid">
+      {letters.map((l) => (
+        <div class="ab-card">
+          <div class="ab-scripts">
+            <span class="ab-paleo">{l.paleo}</span>
+            <span class="ab-modern">{l.modern}</span>
+          </div>
+          <div class="ab-name">{l.name}</div>
+          <div class="ab-meta">
+            <span class="ab-badge">{l.sound}</span>
+            <span class="ab-num">{l.number}</span>
+          </div>
+          <div class="ab-pic">{l.pictograph}</div>
+          <div class="ab-meaning">{l.meaning}</div>
+          <div class="ab-essence" set:html={l.essence} />
+        </div>
+      ))}
+    </div>
+  </section>
+</HebrewLayout>
+
+<style>
+  .intro-prose {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #d9c9a8;
+  }
+  .intro-prose p { margin-bottom: 1.25rem; }
+  .intro-prose em { color: #c4a46b; font-style: italic; }
+  .intro-prose strong { color: #e8d5a8; }
+
+  .ab-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 1.25rem;
+  }
+
+  .ab-card {
+    background: linear-gradient(160deg, #211608 0%, #1a1007 100%);
+    /* lighter clay border */
+    border: 2px solid #8a5a2a;
+    border-radius: 8px;
+    padding: 1.5rem 1.25rem 1.25rem;
+    transition: all 0.25s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .ab-card::before {
+    content: '';
+    position: absolute; inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(196, 164, 107, 0.08), transparent 60%);
+    pointer-events: none;
+  }
+  .ab-card:hover {
+    border-color: #c4a46b;
+    background: linear-gradient(160deg, #2a1d0c 0%, #1e1309 100%);
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(196,164,107,0.12);
+    transform: translateY(-2px);
+  }
+
+  .ab-scripts {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 1rem;
+    margin-bottom: 0.6rem;
+    direction: rtl;
+  }
+  .ab-paleo {
+    font-size: 2.5rem;
+    color: #b88540;
+    line-height: 1;
+    font-weight: 400;
+  }
+  .ab-modern {
+    font-size: 3rem;
+    color: #e8c97a;
+    line-height: 1;
+    text-shadow: 0 0 20px rgba(232, 201, 122, 0.3);
+  }
+
+  .ab-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #f0e0bf;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+  .ab-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .ab-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    color: #8a6028;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border: 1px solid #3a2510;
+    border-radius: 3px;
+    background: rgba(58, 37, 16, 0.4);
+  }
+  .ab-num {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    color: #5a3e1a;
+  }
+  .ab-pic {
+    font-size: 0.72rem;
+    color: #8a6028;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 0.4rem;
+  }
+  .ab-meaning {
+    font-size: 0.88rem;
+    color: #c4a46b;
+    text-align: center;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+    line-height: 1.4;
+  }
+  .ab-essence {
+    font-size: 0.84rem;
+    color: #c4ad84;
+    line-height: 1.65;
+    display: none;
+    border-top: 1px solid #2e1f0d;
+    padding-top: 0.75rem;
+    margin-top: 0.5rem;
+  }
+  .ab-card:hover .ab-essence { display: block; }
+
+  @media (max-width: 640px) {
+    .ab-grid { grid-template-columns: repeat(2, 1fr); }
+    .ab-modern { font-size: 2.4rem; }
+    .ab-paleo { font-size: 2rem; }
+    .ab-essence { display: block; }
+  }
+</style>

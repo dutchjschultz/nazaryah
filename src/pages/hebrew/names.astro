@@ -1,0 +1,374 @@
+---
+import HebrewLayout from '../../layouts/HebrewLayout.astro';
+
+interface Example { word: string; translit: string; meaning: string; note: string; }
+interface Letter {
+  modern: string;
+  paleo: string;
+  name: string;
+  sound: string;
+  pronunciation: string;
+  examples: Example[];
+}
+interface NameEntry {
+  key: string;
+  label: string;
+  name: string;
+  modern: string;
+  paleo: string;
+  letters: Letter[];
+}
+
+const NAMES: NameEntry[] = [
+  {
+    key: 'father',
+    label: 'The Father',
+    name: 'Yahuwah',
+    modern: 'יהוה',
+    paleo: '𐤉𐤄𐤅𐤄',
+    letters: [
+      {
+        modern: 'י', paleo: '𐤉', name: 'Yod', sound: 'Y',
+        pronunciation: `Like the "Y" in "yes." The smallest letter in the Hebrew alphabet, yet it begins the most sacred name.`,
+        examples: [
+          { word: 'יָם', translit: 'Yam', meaning: 'Sea', note: 'Same Y sound beginning the word.' },
+          { word: 'יָד', translit: 'Yad', meaning: 'Hand', note: 'Yod literally means "hand" — its shape resembles a hand reaching upward.' },
+          { word: 'יוֹם', translit: 'Yom', meaning: 'Day', note: 'As in Yom Kippur — same opening Y.' },
+        ],
+      },
+      {
+        modern: 'ה', paleo: '𐤄', name: 'He', sound: 'H',
+        pronunciation: `A soft, breathy "H" — like exhaling gently. Think of the sound of breath itself. Some scholars connect this to the idea that His name is as close as your own breath.`,
+        examples: [
+          { word: 'הַלְלוּיָהּ', translit: 'HalleluYah', meaning: 'Praise Yah', note: 'Begins and ends with He — breath of praise.' },
+          { word: 'הַר', translit: 'Har', meaning: 'Mountain', note: 'Same soft H opening.' },
+          { word: 'הִנֵּה', translit: 'Hinneh', meaning: 'Behold!', note: 'The prophetic call — a breathy H of revelation.' },
+        ],
+      },
+      {
+        modern: 'ו', paleo: '𐤅', name: 'Waw', sound: 'W / Ū',
+        pronunciation: `This is the key letter. In ancient Hebrew, Waw carried a "W" or long "U" (oo) sound — never a "V." The "V" pronunciation is a much later Ashkenazi development. Every Hebrew word using this letter confirms the original sound.`,
+        examples: [
+          { word: 'רוּחַ', translit: 'Ruach', meaning: 'Spirit', note: `Everyone says "Roo-akh" — that ו is clearly a U, not a V.` },
+          { word: 'רְאוּבֵן', translit: 'Reuben', meaning: 'Behold, a son', note: `No one says "Revben." The U is undisputed.` },
+          { word: 'יְהוּדָה', translit: 'Yahudah', meaning: 'Judah / Praise', note: `Same ו = same U sound. Yah-U-dah, not Yah-V-dah.` },
+          { word: 'דָּוִד', translit: 'Dawid', meaning: 'David / Beloved', note: 'Ancient pronunciation uses W, not V.' },
+          { word: 'שָׁלוֹם', translit: 'Shalom', meaning: 'Peace', note: 'The ו produces the long O/U vowel sound.' },
+        ],
+      },
+      {
+        modern: 'ה', paleo: '𐤄', name: 'He (final)', sound: 'H (ah)',
+        pronunciation: `The final He. In Hebrew, a trailing He often opens into an "ah" sound, giving us the ending "-wah." The name concludes the same way it flows — with breath.`,
+        examples: [
+          { word: 'יְהוּדָה', translit: 'Yahudah', meaning: 'Judah', note: 'Ends with the same He → "-dah" ending.' },
+          { word: 'שָׂרָה', translit: 'Sarah', meaning: 'Princess', note: 'Final He gives the "-ah" ending.' },
+          { word: 'תּוֹרָה', translit: 'Torah', meaning: 'Instruction / Law', note: 'Same final He → "-ah" pattern.' },
+        ],
+      },
+    ],
+  },
+  {
+    key: 'son',
+    label: 'The Son',
+    name: 'Yahushua',
+    modern: 'יהושע',
+    paleo: '𐤉𐤄𐤅𐤔𐤏',
+    letters: [
+      {
+        modern: 'י', paleo: '𐤉', name: 'Yod', sound: 'Y',
+        pronunciation: `Identical to the Father's name — the Son's name begins with the same letter. "I have come in My Father's name" (John 5:43). The Yod connects them.`,
+        examples: [
+          { word: 'יָם', translit: 'Yam', meaning: 'Sea', note: 'Same Y sound.' },
+          { word: 'יָד', translit: 'Yad', meaning: 'Hand', note: 'Yod = hand reaching upward.' },
+        ],
+      },
+      {
+        modern: 'ה', paleo: '𐤄', name: 'He', sound: 'H',
+        pronunciation: `The same breathy He as in the Father's name. The first two letters — Yod He — spell "Yah," the poetic short form of the Father's name found throughout Scripture (as in HalleluYah).`,
+        examples: [
+          { word: 'הַלְלוּיָהּ', translit: 'HalleluYah', meaning: 'Praise Yah', note: 'Yah = Yod + He — embedded in the Son\'s name.' },
+        ],
+      },
+      {
+        modern: 'ו', paleo: '𐤅', name: 'Waw', sound: 'W / Ū',
+        pronunciation: `The same Waw carrying the "U" sound. Yah-U-shua. The first three letters — Yod, He, Waw — mirror the Father's name exactly. The Son carries the Father's identity.`,
+        examples: [
+          { word: 'רוּחַ', translit: 'Ruach', meaning: 'Spirit', note: 'Same U sound — "Roo-akh."' },
+          { word: 'רְאוּבֵן', translit: 'Reuben', meaning: 'Behold, a son', note: 'Fitting — the Son\'s name contains the same letter.' },
+        ],
+      },
+      {
+        modern: 'ש', paleo: '𐤔', name: 'Shin', sound: 'Sh',
+        pronunciation: `A strong "Sh" sound, like "show" or "shine." Shin is one of the most recognizable Hebrew letters — shaped like a crown with three flames. It begins the word "Shalom" (peace) and here transitions the Father's name into the meaning of salvation.`,
+        examples: [
+          { word: 'שָׁלוֹם', translit: 'Shalom', meaning: 'Peace', note: 'Same Sh sound.' },
+          { word: 'שָׁמַר', translit: 'Shamar', meaning: 'To keep / guard', note: 'As in keeping the Torah — same Shin.' },
+          { word: 'שָׁמַיִם', translit: 'Shamayim', meaning: 'Heaven(s)', note: 'Shin opens the word for the heavens.' },
+        ],
+      },
+      {
+        modern: 'ע', paleo: '𐤏', name: 'Ayin', sound: 'A (guttural)',
+        pronunciation: `Ayin has no English equivalent. It's a deep, guttural sound from the back of the throat — like a voiced stop. In modern speech it's often silent, producing an open "ah" sound. This letter completes "shua" — meaning "salvation" or "a cry for help."`,
+        examples: [
+          { word: 'עַם', translit: 'Am', meaning: 'People / Nation', note: 'Ayin opens this word — His people.' },
+          { word: 'עוֹלָם', translit: 'Olam', meaning: 'Eternity / World', note: 'Same guttural Ayin beginning.' },
+          { word: 'יְשׁוּעָה', translit: 'Yeshuah', meaning: 'Salvation', note: 'The root word — ending with Ayin. Yahushua = "Yah is salvation."' },
+        ],
+      },
+    ],
+  },
+];
+---
+
+<HebrewLayout
+  title="Sacred Names — Hebrew — Nazaryah"
+  description="The correct pronunciation of Yahuwah and Yahushua, broken down letter by letter with Scriptural evidence."
+>
+  <section class="hl-hero">
+    <a href="/hebrew" class="hl-back">&#8592; Back to Hebrew</a>
+    <p class="hl-label">&#8213; Section Four &#8213;</p>
+    <h1 class="hl-title">The Sacred Names</h1>
+    <p class="hl-sub">
+      A letter-by-letter study of the Father's name and the Son's name — the evidence is already embedded in every other word.
+    </p>
+  </section>
+
+  <section class="hl-section">
+    <!-- Tab switcher -->
+    <div class="sn-tabs">
+      {NAMES.map((n, i) => (
+        <button
+          type="button"
+          class={`sn-tab ${i === 0 ? 'active' : ''}`}
+          data-tab={n.key}
+        >
+          <span class="sn-tab-scripts">
+            <span class="sn-tab-paleo">{n.paleo}</span>
+            <span class="sn-tab-modern">{n.modern}</span>
+          </span>
+          <span class="sn-tab-name">{n.name}</span>
+          <span class="sn-tab-label">{n.label}</span>
+        </button>
+      ))}
+    </div>
+
+    {NAMES.map((n, i) => (
+      <div class={`sn-panel ${i === 0 ? 'active' : ''}`} data-panel={n.key}>
+        {/* Sound pill */}
+        <div class="sn-pill">
+          {n.letters.map((l, j) => (
+            <>
+              <button type="button" class={`sn-pill-sound ${j === 0 ? 'active' : ''}`} data-letter={j}>{l.sound}</button>
+              {j < n.letters.length - 1 && <span class="sn-pill-dot">·</span>}
+            </>
+          ))}
+        </div>
+
+        {/* Letter cards row */}
+        <div class="sn-row">
+          {n.letters.map((l, j) => (
+            <button type="button" class={`sn-letter-card ${j === 0 ? 'active' : ''}`} data-letter={j}>
+              <div class="sn-letter-scripts">
+                <span class="sn-letter-paleo">{l.paleo}</span>
+                <span class="sn-letter-modern">{l.modern}</span>
+              </div>
+              <div class="sn-letter-name">{l.name}</div>
+              <div class="sn-letter-sound">{l.sound}</div>
+            </button>
+          ))}
+        </div>
+
+        {/* Detail panels */}
+        {n.letters.map((l, j) => (
+          <div class={`sn-detail ${j === 0 ? 'active' : ''}`} data-detail={j}>
+            <div class="sn-detail-head">
+              <div class="sn-detail-big">
+                <span class="sn-detail-paleo">{l.paleo}</span>
+                <span class="sn-detail-modern">{l.modern}</span>
+              </div>
+              <div>
+                <div class="sn-detail-name">{l.name}</div>
+                <div class="sn-detail-sound">Sound: {l.sound}</div>
+              </div>
+            </div>
+            <p class="sn-pronounce">{l.pronunciation}</p>
+
+            <div class="sn-examples-label">This letter in other words</div>
+            <div class="sn-examples">
+              {l.examples.map((ex) => (
+                <div class="sn-ex">
+                  <div class="sn-ex-head">
+                    <span class="sn-ex-word">{ex.word}</span>
+                    <span class="sn-ex-translit">{ex.translit}</span>
+                    <span class="sn-ex-meaning">— {ex.meaning}</span>
+                  </div>
+                  <div class="sn-ex-note">{ex.note}</div>
+                </div>
+              ))}
+            </div>
+          </div>
+        ))}
+      </div>
+    ))}
+  </section>
+
+  <section class="hl-section hl-center">
+    <p style="color:#8a6028;font-style:italic;font-size:0.95rem;max-width:560px;margin:0 auto;">
+      Click each letter to explore its sound. The evidence speaks for itself — the letters don't change their sounds across Scripture.
+    </p>
+  </section>
+</HebrewLayout>
+
+<script>
+  // Tab switching
+  document.querySelectorAll<HTMLButtonElement>('.sn-tab').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const key = btn.dataset.tab;
+      document.querySelectorAll('.sn-tab').forEach(b => b.classList.toggle('active', (b as HTMLElement).dataset.tab === key));
+      document.querySelectorAll('.sn-panel').forEach(p => p.classList.toggle('active', (p as HTMLElement).dataset.panel === key));
+    });
+  });
+
+  // Letter selection within each panel (pill + card both trigger)
+  document.querySelectorAll<HTMLElement>('.sn-panel').forEach((panel) => {
+    const activate = (idx: string) => {
+      panel.querySelectorAll<HTMLElement>('.sn-pill-sound').forEach(el => el.classList.toggle('active', el.dataset.letter === idx));
+      panel.querySelectorAll<HTMLElement>('.sn-letter-card').forEach(el => el.classList.toggle('active', el.dataset.letter === idx));
+      panel.querySelectorAll<HTMLElement>('.sn-detail').forEach(el => el.classList.toggle('active', el.dataset.detail === idx));
+    };
+    panel.querySelectorAll<HTMLElement>('.sn-pill-sound, .sn-letter-card').forEach((el) => {
+      el.addEventListener('click', () => {
+        const idx = el.dataset.letter || '0';
+        activate(idx);
+      });
+    });
+  });
+</script>
+
+<style>
+  /* Tabs */
+  .sn-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .sn-tab {
+    background: transparent;
+    border: 2px solid #8a5a2a;
+    border-radius: 10px;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.25s ease;
+    color: #8a7450;
+    min-width: 180px;
+  }
+  .sn-tab:hover { border-color: #c4a46b; }
+  .sn-tab.active {
+    border-color: #c4a46b;
+    background: linear-gradient(160deg, #2a1d0c 0%, #1e1309 100%);
+    color: #f0e0bf;
+  }
+  .sn-tab-scripts { display: flex; align-items: baseline; gap: 0.6rem; direction: rtl; }
+  .sn-tab-paleo { font-size: 1.4rem; color: #b88540; }
+  .sn-tab-modern { font-size: 1.8rem; color: #e8c97a; }
+  .sn-tab-name { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: inherit; }
+  .sn-tab-label { font-family: 'Cinzel', serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #6a4820; }
+
+  /* Panels */
+  .sn-panel { display: none; }
+  .sn-panel.active { display: block; }
+
+  /* Pill */
+  .sn-pill {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: center;
+    background: rgba(58, 37, 16, 0.3);
+    border: 1px solid #3a2510;
+    border-radius: 999px;
+    padding: 0.65rem 1.25rem;
+    max-width: fit-content;
+    margin: 0 auto 2rem;
+  }
+  .sn-pill-sound {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    color: #8a7450;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    padding: 0.15rem 0.5rem;
+    transition: color 0.2s;
+  }
+  .sn-pill-sound.active { color: #c4a46b; font-weight: 700; text-decoration: underline; text-underline-offset: 4px; }
+  .sn-pill-dot { color: #3a2510; font-size: 0.9rem; }
+
+  /* Letter row */
+  .sn-row {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+  .sn-letter-card {
+    background: linear-gradient(160deg, #211608 0%, #1a1007 100%);
+    border: 2px solid #8a5a2a;
+    border-radius: 10px;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    transition: all 0.3s ease;
+    min-width: 110px;
+  }
+  .sn-letter-card.active {
+    border-color: #c4a46b;
+    transform: scale(1.05);
+    box-shadow: 0 0 24px rgba(196, 164, 107, 0.25), inset 0 0 16px rgba(196, 164, 107, 0.08);
+  }
+  .sn-letter-scripts { display: flex; align-items: baseline; gap: 0.6rem; direction: rtl; }
+  .sn-letter-paleo { font-size: 1.6rem; color: #b88540; line-height: 1; }
+  .sn-letter-modern { font-size: 2.2rem; color: #e8c97a; line-height: 1; text-shadow: 0 0 14px rgba(232,201,122,0.25); }
+  .sn-letter-name { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 1.5px; color: #c4a46b; text-transform: uppercase; }
+  .sn-letter-sound { font-size: 0.9rem; color: #8a7450; font-style: italic; }
+  .sn-letter-card.active .sn-letter-name { color: #f0e0bf; }
+  .sn-letter-card.active .sn-letter-sound { color: #c4a46b; }
+
+  /* Detail */
+  .sn-detail { display: none; max-width: 720px; margin: 0 auto; background: linear-gradient(135deg, #1e1409, #0e0904); border: 2px solid #8a5a2a; border-radius: 12px; padding: 2rem; }
+  .sn-detail.active { display: block; }
+  .sn-detail-head { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
+  .sn-detail-big { display: flex; align-items: baseline; gap: 0.85rem; direction: rtl; }
+  .sn-detail-paleo { font-size: 2.4rem; color: #b88540; line-height: 1; }
+  .sn-detail-modern { font-size: 3.2rem; color: #e8c97a; line-height: 1; text-shadow: 0 0 18px rgba(232,201,122,0.3); }
+  .sn-detail-name { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 700; color: #f0e0bf; letter-spacing: 1px; }
+  .sn-detail-sound { font-family: 'Cinzel', serif; font-size: 0.95rem; color: #c4a46b; font-style: italic; }
+  .sn-pronounce { font-size: 1rem; line-height: 1.8; color: #d9c9a8; border-left: 3px solid #c4a46b55; padding-left: 1rem; margin: 0 0 1.5rem; }
+
+  .sn-examples-label { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2.5px; text-transform: uppercase; color: #8a6028; margin-bottom: 0.75rem; }
+  .sn-examples { display: flex; flex-direction: column; gap: 0.75rem; }
+  .sn-ex { background: rgba(58, 37, 16, 0.3); border: 1px solid #3a2510; border-radius: 6px; padding: 0.85rem 1rem; }
+  .sn-ex-head { display: flex; align-items: baseline; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 0.25rem; }
+  .sn-ex-word { font-size: 1.3rem; color: #e8c97a; direction: rtl; }
+  .sn-ex-translit { font-size: 1rem; color: #f0e0bf; font-style: italic; }
+  .sn-ex-meaning { font-size: 0.85rem; color: #8a7450; }
+  .sn-ex-note { font-size: 0.88rem; color: #c4ad84; line-height: 1.55; }
+
+  @media (max-width: 560px) {
+    .sn-tab { min-width: 140px; padding: 0.75rem 1rem; }
+    .sn-letter-card { min-width: 90px; padding: 0.75rem 0.9rem; }
+    .sn-letter-modern { font-size: 1.8rem; }
+    .sn-detail { padding: 1.25rem; }
+  }
+</style>

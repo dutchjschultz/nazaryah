@@ -1,0 +1,137 @@
+---
+import HebrewLayout from '../layouts/HebrewLayout.astro';
+
+const sections = [
+  {
+    href: '/hebrew/alphabet',
+    title: 'Alphabet',
+    modern: 'א',
+    paleo: '𐤀',
+    blurb: 'The 22 letters of the aleph-bet — each one a word, a picture, a story.',
+  },
+  {
+    href: '/hebrew/words',
+    title: 'Word Pictures',
+    modern: 'אמת',
+    paleo: '𐤀𐤌𐤕',
+    blurb: 'Compound words broken down letter by letter — the images behind the vocabulary.',
+  },
+  {
+    href: '/hebrew/psalm-119',
+    title: 'Psalm 119',
+    modern: 'תהילים',
+    paleo: '𐤕𐤄𐤋𐤉𐤌',
+    blurb: 'The great alphabetic psalm — 22 sonnets of 8 verses, one per Hebrew letter.',
+  },
+  {
+    href: '/hebrew/names',
+    title: 'Sacred Names',
+    modern: 'יהוה',
+    paleo: '𐤉𐤄𐤅𐤄',
+    blurb: 'The correct pronunciation of Yahuwah and Yahushua, letter by letter.',
+  },
+];
+---
+
+<HebrewLayout
+  title="Hebrew — Nazaryah"
+  description="The Hebrew language encodes more than sound. Each letter is a picture, each word a story. Explore the alphabet, word pictures, Psalm 119, and the sacred names."
+>
+  <section class="hl-hero">
+    <p class="hl-label">&#8213; The Living Language &#8213;</p>
+    <h1 class="hl-title">The Hebrew Tongue</h1>
+    <p class="hl-sub">
+      Every letter is a word. Every word is a picture. Every picture tells a story that was ancient before parchment existed.
+    </p>
+  </section>
+
+  <section class="hl-section hl-center">
+    <h2 class="hl-section-title">Choose Your Path</h2>
+    <p class="hl-section-sub">Four ways to enter the language of Scripture.</p>
+
+    <div class="hub-grid">
+      {sections.map((s) => (
+        <a href={s.href} class="hub-card">
+          <div class="hub-scripts">
+            <span class="hub-paleo">{s.paleo}</span>
+            <span class="hub-modern">{s.modern}</span>
+          </div>
+          <div class="hub-title">{s.title}</div>
+          <p class="hub-blurb">{s.blurb}</p>
+          <span class="hub-enter">Enter &#8594;</span>
+        </a>
+      ))}
+    </div>
+  </section>
+</HebrewLayout>
+
+<style>
+  .hub-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 1000px;
+    margin: 0 auto;
+  }
+  .hub-card {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 2rem 1.5rem;
+    background: linear-gradient(160deg, #211608 0%, #1a1007 100%);
+    border: 2px solid #8a5a2a;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: all 0.25s ease;
+    position: relative;
+  }
+  .hub-card:hover {
+    border-color: #c4a46b;
+    background: linear-gradient(160deg, #2a1d0c 0%, #1e1309 100%);
+    transform: translateY(-3px);
+    box-shadow: 0 12px 32px rgba(0,0,0,0.55), inset 0 1px 0 rgba(196,164,107,0.12);
+  }
+  .hub-scripts {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    direction: rtl;
+  }
+  .hub-paleo {
+    font-size: 2.6rem;
+    color: #b88540;
+    line-height: 1;
+  }
+  .hub-modern {
+    font-size: 3rem;
+    color: #e8c97a;
+    line-height: 1;
+    text-shadow: 0 0 22px rgba(232,201,122,0.3);
+  }
+  .hub-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: #f0e0bf;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+  }
+  .hub-blurb {
+    font-size: 0.95rem;
+    color: #c4ad84;
+    line-height: 1.6;
+    text-align: center;
+    margin: 0;
+    font-style: italic;
+  }
+  .hub-enter {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #8a6028;
+    text-transform: uppercase;
+    margin-top: 0.25rem;
+  }
+  .hub-card:hover .hub-enter { color: #c4a46b; }
+</style>
