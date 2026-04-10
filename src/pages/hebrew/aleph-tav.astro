@@ -1,0 +1,1290 @@
+---
+import HebrewLayout from '../../layouts/HebrewLayout.astro';
+
+const TABS = [
+  { id: "what",        label: "What Is It?" },
+  { id: "genesis",     label: "Genesis 1:1" },
+  { id: "appearances", label: "Key Appearances" },
+  { id: "untranslated", label: "Never Translated" },
+  { id: "declaration", label: "Yahushua's Declaration" },
+];
+
+const GEN_WORDS = [
+  {
+    hebrew: "בְּרֵאשִׁית",
+    trans: "Bereshit",
+    english: "In the beginning",
+    et: false,
+  },
+  {
+    hebrew: "בָּרָא",
+    trans: "bara",
+    english: "created",
+    et: false,
+  },
+  {
+    hebrew: "אֱלֹהִים",
+    trans: "Elohim",
+    english: "God / the Mighty One",
+    et: false,
+  },
+  {
+    hebrew: "אֵת",
+    trans: "et",
+    english: "[UNTRANSLATED]",
+    et: true,
+    note: "The Aleph-Tav",
+  },
+  {
+    hebrew: "הַשָּׁמַיִם",
+    trans: "hashamayim",
+    english: "the heavens",
+    et: false,
+  },
+  {
+    hebrew: "וְאֵת",
+    trans: "v'et",
+    english: "and [UNTRANSLATED]",
+    et: true,
+    note: "The Aleph-Tav again",
+  },
+  {
+    hebrew: "הָאָרֶץ",
+    trans: "ha'aretz",
+    english: "the earth",
+    et: false,
+  },
+];
+
+const APPEARANCES = [
+  {
+    ref: "Genesis 1:1",
+    hebrew: "בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ",
+    english: "Elohim created [את] the heavens and [את] the earth",
+    note: "The first appearance. Placed directly between the Creator's name and His creation — the first thing He made was the complete Word.",
+  },
+  {
+    ref: "Genesis 1:27",
+    hebrew: "וַיִּבְרָא אֱלֹהִים אֶת־הָאָדָם",
+    english: "Elohim created [את] the man in His image... male and [את] female He created them",
+    note: "The את marks humanity as Elohim's direct handiwork — the object of His creative action.",
+  },
+  {
+    ref: "Genesis 3:24",
+    hebrew: "וַיְגָרֶשׁ אֶת־הָאָדָם",
+    english: "He drove out [את] the man",
+    note: "At the moment of exile from the garden, the את is present — present at the fall, as it is present at the redemption.",
+  },
+  {
+    ref: "Genesis 4:1",
+    hebrew: "קָנִיתִי אִישׁ אֶת־יְהוָה",
+    english: "I have acquired [את] a man from Yahuah",
+    note: "Eve's words at the first birth. Some read this as 'I have acquired a man — the את — from Yahuah,' an early messianic expectation embedded in the text.",
+  },
+  {
+    ref: "Genesis 9:12–17",
+    hebrew: "בֵּינִי וּבֵינֵיכֶם וּבֵין כָּל־נֶפֶשׁ חַיָּה",
+    english: "Between Me and [את] you and [את] every living creature",
+    note: "The covenant of the rainbow. The את marks the parties of the covenant — those who stand in covenant relationship with Yahuah.",
+  },
+  {
+    ref: "Genesis 22:2",
+    hebrew: "אֶת־בִּנְךָ אֶת־יְחִידְךָ אֲשֶׁר־אָהַבְתָּ אֶת־יִצְחָק",
+    english: "Take now [את] your son, [את] your only son, [את] Yitzhak whom you love",
+    note: "Three את markers — an extraordinary emphasis — on the beloved son offered as sacrifice. A direct shadow of the Father and His Son.",
+  },
+  {
+    ref: "Exodus 12:6",
+    hebrew: "וְשָׁחֲטוּ אֹתוֹ",
+    english: "The Passover lamb that must be killed — [את] the lamb",
+    note: "The Passover instructions use the את repeatedly to mark the lamb designated for slaughter. The Lamb of Elohim was the object of divine appointment.",
+  },
+  {
+    ref: "Zechariah 12:10",
+    hebrew: "וְהִבִּיטוּ אֵלַי אֵת אֲשֶׁר־דָּקָרוּ",
+    english: "They shall look upon [את] whom they have pierced",
+    note: "The את stands as the direct object — the one who was pierced. Cited directly in John 19:37 and applied to Yahushua.",
+  },
+  {
+    ref: "Isaiah 53:10",
+    hebrew: "וַיהוָה חָפֵץ דַּכְּאוֹ הֶחֱלִי",
+    english: "It pleased Yahuah to crush [את] Him",
+    note: "The suffering servant passage. The את marks the one being crushed for our iniquities — the direct object of divine judgment borne on our behalf.",
+  },
+  {
+    ref: "Revelation 1:8",
+    hebrew: "אֲנִי הָאָלֶף וְהַתָּו",
+    english: "I am the Aleph and the Tav, the Beginning and the End",
+    note: "Yahushua claims the identity of the את itself. He is not referencing a Greek concept — He is naming the untranslated marker that has been present throughout all of Scripture.",
+  },
+  {
+    ref: "Revelation 22:13",
+    hebrew: "אֲנִי הָאָלֶף וְהַתָּו הָרִאשׁוֹן וְהָאַחֲרוֹן",
+    english: "I am the Aleph and the Tav, the First and the Last, the Beginning and the End",
+    note: "The final declaration of Scripture. He claims to be the full span of the alphabet — and therefore the fullness of the Word — from first to last.",
+  },
+];
+---
+
+<HebrewLayout
+  title="The Aleph-Tav — Hebrew — Nazaryah"
+  description="The untranslated את marker appears over 7,000 times in the Hebrew Old Testament and is invisible in every English Bible. Yahushua declared himself the Aleph and the Tav — the first and last letters of the Hebrew alphabet."
+>
+  <!-- HERO -->
+  <section class="hl-hero at-hero">
+    <a href="/hebrew" class="hl-back">&#8592; Back to Hebrew</a>
+    <p class="hl-label">&#8213; The Untranslated Sign &#8213;</p>
+
+    <div class="at-hero-letters">
+      <div class="at-hero-letter-block">
+        <span class="at-letter-modern">אֵת</span>
+        <span class="at-letter-caption">Modern Hebrew</span>
+      </div>
+      <div class="at-hero-divider">·</div>
+      <div class="at-hero-letter-block">
+        <span class="at-letter-paleo">𐤀𐤕</span>
+        <span class="at-letter-caption">Paleo-Hebrew</span>
+      </div>
+    </div>
+
+    <h1 class="hl-title">The Aleph-Tav</h1>
+    <p class="hl-sub">The untranslated sign hidden across 7,000 verses — and the One who claimed it as His name</p>
+  </section>
+
+  <!-- TABS NAV -->
+  <nav class="at-tab-nav" aria-label="Study sections">
+    {TABS.map((t, i) => (
+      <button
+        type="button"
+        class={`at-tab${i === 0 ? " active" : ""}`}
+        data-tab={t.id}
+        aria-selected={i === 0 ? "true" : "false"}
+      >
+        {t.label}
+      </button>
+    ))}
+  </nav>
+
+  <!-- ══ TAB 1: WHAT IS IT? ══ -->
+  <section class="at-panel active" data-panel="what">
+    <div class="at-inner">
+      <p class="at-eyebrow">The Hidden Marker</p>
+      <h2 class="at-panel-title">What Is the Aleph-Tav?</h2>
+      <p class="at-panel-sub">Over 7,000 times in the Hebrew Old Testament — never once translated into English. This is not an oversight. And it is not nothing.</p>
+
+      <div class="at-prose">
+        <p>
+          The two-letter combination <span class="at-gold">אֵת</span> (Aleph-Tav) appears more than 7,000 times in the Hebrew Scriptures. Grammarians classify it as the "direct object marker" — a particle that signals what the verb is acting upon. By this classification, it carries no semantic content and requires no translation. So English Bibles skip it entirely.
+        </p>
+        <p>
+          But it is there — in the very first verse of Scripture:
+        </p>
+      </div>
+
+      <div class="at-verse-block">
+        <p class="at-verse-heb" dir="rtl">בְּרֵאשִׁית בָּרָא אֱלֹהִים אֵת הַשָּׁמַיִם וְאֵת הָאָרֶץ</p>
+        <p class="at-verse-trans">"In the beginning Elohim created <span class="at-gold at-emphasis">אֵת</span> the heavens and <span class="at-gold at-emphasis">וְאֵת</span> the earth"</p>
+        <p class="at-verse-ref">Genesis 1:1</p>
+      </div>
+
+      <div class="at-prose">
+        <p>
+          Every English reader sees "In the beginning God created the heavens and the earth." They do not see the <span class="at-gold">אֵת</span>. It is invisible to them. But to the Hebrew reader, it is unmistakably present — twice.
+        </p>
+      </div>
+
+      <div class="at-info-cards">
+        <div class="at-info-card">
+          <div class="at-info-card-icon">א</div>
+          <h3 class="at-info-card-title">Aleph — The First</h3>
+          <p class="at-info-card-body">The first letter of the Hebrew alphabet. In Paleo-Hebrew, pictured as an ox — representing strength, leadership, the first. Aleph is the beginning of all language.</p>
+        </div>
+        <div class="at-info-card">
+          <div class="at-info-card-icon">ת</div>
+          <h3 class="at-info-card-title">Tav — The Last</h3>
+          <p class="at-info-card-body">The twenty-second and final letter. In Paleo-Hebrew, written as a cross or X — a mark, a sign, a seal. In Ezekiel 9:4, the word "mark" is this very letter. Tav is the end of all language.</p>
+        </div>
+        <div class="at-info-card at-info-card-gold">
+          <div class="at-info-card-icon at-info-card-icon-large">𐤀𐤕</div>
+          <h3 class="at-info-card-title">Together — The Totality</h3>
+          <p class="at-info-card-body">Together they represent the entire alphabet — every letter between them, every word that can be formed, the complete building blocks of language. The <span class="at-gold">אֵת</span> is the fullness of the Word made into a single two-letter sign.</p>
+        </div>
+      </div>
+
+      <div class="at-prose">
+        <p>
+          In Paleo-Hebrew, the Tav was written as a cross (&#10010; or X). This is not a later Christian overlay — it is the oldest known form of the letter, predating any New Testament writing by over a thousand years. The mark of the last letter was a cross. And Yahushua said: "I am the Aleph and the Tav."
+        </p>
+        <p>
+          The <span class="at-gold">אֵת</span> is not a grammatical footnote. It is a two-letter signature — the first letter and the last — placed over 7,000 times throughout the Hebrew text, standing invisible to English readers, marking the relationship between the Creator and everything He acts upon.
+        </p>
+      </div>
+
+      <div class="at-stat-bar">
+        <div class="at-stat">
+          <div class="at-stat-num">7,000+</div>
+          <div class="at-stat-label">Occurrences in the Hebrew Bible</div>
+        </div>
+        <div class="at-stat-div"></div>
+        <div class="at-stat">
+          <div class="at-stat-num">0</div>
+          <div class="at-stat-label">Times translated into English</div>
+        </div>
+        <div class="at-stat-div"></div>
+        <div class="at-stat">
+          <div class="at-stat-num">22</div>
+          <div class="at-stat-label">Letters of the Hebrew alphabet — from Aleph to Tav</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TAB 2: GENESIS 1:1 ══ -->
+  <section class="at-panel" data-panel="genesis">
+    <div class="at-inner at-inner-wide">
+      <p class="at-eyebrow">The First Verse</p>
+      <h2 class="at-panel-title">The Aleph-Tav in Genesis 1:1</h2>
+      <p class="at-panel-sub">Seven words. Two untranslated. The complete Word of Elohim stands between the Creator and His creation from the very first sentence of Scripture.</p>
+
+      <div class="at-gen-words">
+        {GEN_WORDS.map((w, i) => (
+          <div class={`at-gen-word${w.et ? " at-gen-word-et" : ""}`}>
+            <div class="at-gen-num">{i + 1}</div>
+            <div class="at-gen-heb" dir="rtl">{w.hebrew}</div>
+            <div class="at-gen-trans">{w.trans}</div>
+            <div class="at-gen-eng">{w.english}</div>
+            {w.note && <div class="at-gen-note">{w.note}</div>}
+          </div>
+        ))}
+      </div>
+
+      <div class="at-gen-observation">
+        <h3 class="at-gen-obs-title">The Observation</h3>
+        <div class="at-prose">
+          <p>
+            The structure of Genesis 1:1 places the <span class="at-gold">אֵת</span> immediately after the name of Elohim and immediately before the creation. The verse reads: Elohim created — <span class="at-gold">אֵת</span> — the heavens, and — <span class="at-gold">וְאֵת</span> — the earth.
+          </p>
+          <p>
+            If the <span class="at-gold">אֵת</span> is the Aleph and the Tav — the complete Word — then the verse is saying: <em>In the beginning, Elohim created the complete Word, and then the heavens and the earth.</em> The Word preceded the physical creation. It was the first thing made. Or rather, it was the instrument through which everything else was made.
+          </p>
+          <p>
+            This is not a reading imported from outside the text. It is what the text says — if you let the letters speak.
+          </p>
+        </div>
+      </div>
+
+      <div class="at-parallel-block">
+        <div class="at-parallel-side">
+          <div class="at-parallel-label">Genesis 1:1</div>
+          <div class="at-parallel-heb" dir="rtl">בְּרֵאשִׁית בָּרָא אֱלֹהִים <span class="at-gold">אֵת</span> הַשָּׁמַיִם וְ<span class="at-gold">אֵת</span> הָאָרֶץ</div>
+          <p class="at-parallel-text">In the beginning Elohim created <span class="at-gold">[את]</span> the heavens and <span class="at-gold">[את]</span> the earth</p>
+        </div>
+        <div class="at-parallel-divider">↕</div>
+        <div class="at-parallel-side">
+          <div class="at-parallel-label">John 1:1–3</div>
+          <p class="at-parallel-text">"In the beginning was the Word, and the Word was with Elohim, and the Word was Elohim. All things were made through Him, and without Him nothing was made that was made."</p>
+        </div>
+      </div>
+
+      <div class="at-prose">
+        <p>
+          The parallel is not a later theological construction. Genesis places the <span class="at-gold">אֵת</span> — the Aleph-Tav, the complete Word — immediately after Elohim's name, as the first object of creation and the agent through which the heavens and the earth were formed. John identifies the Word in exactly the same position: with Elohim, the agent of all creation. Yahushua identifies himself as the Aleph and the Tav.
+        </p>
+        <p>
+          Three independent texts. One consistent testimony.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TAB 3: KEY APPEARANCES ══ -->
+  <section class="at-panel" data-panel="appearances">
+    <div class="at-inner at-inner-wide">
+      <p class="at-eyebrow">Throughout Scripture</p>
+      <h2 class="at-panel-title">Key Appearances</h2>
+      <p class="at-panel-sub">Eleven instances where the placement of the untranslated <span class="at-gold-inline">את</span> reveals something the English reader cannot see. Each one places the sign between Elohim and the object of His action.</p>
+
+      <div class="at-appearances-list">
+        {APPEARANCES.map((entry, i) => (
+          <div class="at-appearance-card">
+            <div class="at-appearance-num">{i + 1}</div>
+            <div class="at-appearance-body">
+              <div class="at-appearance-ref">{entry.ref}</div>
+              {entry.hebrew && (
+                <div class="at-appearance-heb" dir="rtl">{entry.hebrew}</div>
+              )}
+              <div class="at-appearance-eng">
+                <span set:html={entry.english.replace(/\[את\]/g, '<span class="at-gold at-emphasis">[את]</span>')} />
+              </div>
+              <div class="at-appearance-note">{entry.note}</div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TAB 4: NEVER TRANSLATED ══ -->
+  <section class="at-panel" data-panel="untranslated">
+    <div class="at-inner">
+      <p class="at-eyebrow">The Translation Decision</p>
+      <h2 class="at-panel-title">Why It Was Never Translated</h2>
+      <p class="at-panel-sub">The decision to leave the <span class="at-gold-inline">את</span> untranslated is not a conspiracy. It is a long-standing grammatical classification. But the consequence of that decision is significant.</p>
+
+      <div class="at-prose">
+        <p>
+          Hebrew grammarians have classified the <span class="at-gold">אֵת</span> as a "direct object marker" — a structural particle that indicates what a verb is acting upon. Under this classification, it carries no independent meaning, just as English speakers don't translate the word order rules of other languages when rendering them in English. The particle is, in this view, pure grammatical scaffolding.
+        </p>
+        <p>
+          On this basis, every major English Bible translation — the KJV, the ESV, the NIV, the NASB, the NLT — renders Genesis 1:1 as "In the beginning God created the heavens and the earth," with no indication that the <span class="at-gold">אֵת</span> appears twice in the original text.
+        </p>
+        <p>
+          The Greek Septuagint (the Greek translation of the Hebrew Scriptures, produced around 250 BCE) did not translate it either. Greek has its own direct object system — the accusative case, which marks the noun itself rather than inserting a particle — so Greek had no grammatical need for an <span class="at-gold">אֵת</span>. The particle simply did not carry over.
+        </p>
+      </div>
+
+      <div class="at-callout">
+        <h3 class="at-callout-title">The Question the Classification Doesn't Fully Answer</h3>
+        <div class="at-prose">
+          <p>
+            The standard grammatical explanation raises a legitimate observation: the <span class="at-gold">אֵת</span> does not appear consistently in all direct object constructions throughout the Hebrew Bible. There are direct object sentences without it, and there are places where its presence seems weighted beyond mere grammatical function.
+          </p>
+          <p>
+            This does not mean the grammatical explanation is wrong. It means the marker may carry more than one layer of meaning simultaneously — which is characteristic of Hebrew generally. Hebrew words and forms regularly operate on a literal level and a deeper structural level at the same time.
+          </p>
+          <p>
+            What is certain is this: the first-and-last letters of the Hebrew alphabet appear, as a combined unit, over 7,000 times in the Hebrew Scriptures. They mark the relationship between the divine subject and the object of divine action. And Yahushua, the one who said "I am the way, the truth, and the life," also said — in the final chapter of the final book of Scripture — "I am the Aleph and the Tav."
+          </p>
+        </div>
+      </div>
+
+      <div class="at-invisible-box">
+        <div class="at-invisible-title">Hidden in Plain Sight</div>
+        <div class="at-invisible-row">
+          <div class="at-invisible-col at-invisible-col-heb">
+            <div class="at-invisible-label">What the Hebrew says</div>
+            <div class="at-invisible-heb" dir="rtl">בְּרֵאשִׁית בָּרָא אֱלֹהִים <mark class="at-mark">אֵת</mark> הַשָּׁמַיִם וְ<mark class="at-mark">אֵת</mark> הָאָרֶץ</div>
+          </div>
+          <div class="at-invisible-arrow">→</div>
+          <div class="at-invisible-col">
+            <div class="at-invisible-label">What English Bibles print</div>
+            <div class="at-invisible-eng">"In the beginning God created the heavens and the earth."</div>
+            <div class="at-invisible-note">The <span class="at-gold">אֵת</span> — appearing twice — is completely absent from the English text.</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="at-prose">
+        <p>
+          The result: a textual pattern that Yahushua himself cited — "I am the Aleph and the Tav" — has been rendered invisible to every reader of an English Bible. Not by malice, but by a grammatical classification made thousands of years ago that became the universal standard.
+        </p>
+        <p>
+          The marker is still there in the Hebrew text. It has been there for three thousand years. It has never been removed. It simply has never been printed in English.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ TAB 5: YAHUSHUA'S DECLARATION ══ -->
+  <section class="at-panel" data-panel="declaration">
+    <div class="at-inner">
+      <p class="at-eyebrow">The Claim</p>
+      <h2 class="at-panel-title">Yahushua's Declaration</h2>
+      <p class="at-panel-sub">When Yahushua says "I am the Alpha and the Omega" in Revelation, the Greek is a rendering of a Hebrew reality. The Hebrew original is <span class="at-gold-inline">אֵת</span> — the Aleph and the Tav.</p>
+
+      <div class="at-decl-quotes">
+        <div class="at-decl-quote">
+          <div class="at-decl-quote-text">"I am the Alpha and the Omega, the Beginning and the End."</div>
+          <div class="at-decl-quote-ref">Revelation 1:8</div>
+        </div>
+        <div class="at-decl-quote">
+          <div class="at-decl-quote-text">"I am the Alpha and the Omega, the First and the Last, the Beginning and the End."</div>
+          <div class="at-decl-quote-ref">Revelation 22:13</div>
+        </div>
+      </div>
+
+      <div class="at-prose">
+        <p>
+          These are Greek words written in a Greek text — but the Greek alphabet is not the Hebrew alphabet. When Yahushua says "Alpha and Omega," he is using the Greek equivalents of the first and last letters of the Hebrew alphabet. He is speaking in Greek to a Greek-reading audience, but the substance of the claim is Hebrew: I am the <span class="at-gold">א</span> (Aleph) and the <span class="at-gold">ת</span> (Tav).
+        </p>
+        <p>
+          He is claiming to be the <span class="at-gold">אֵת</span>.
+        </p>
+      </div>
+
+      <div class="at-letter-meanings">
+        <div class="at-letter-card">
+          <div class="at-letter-card-paleo">𐤀</div>
+          <div class="at-letter-card-modern">א</div>
+          <div class="at-letter-card-name">Aleph</div>
+          <div class="at-letter-card-pic">Pictograph: An Ox</div>
+          <div class="at-letter-card-meanings">
+            <span>Strength</span>
+            <span>The Leader</span>
+            <span>The First</span>
+            <span>The Mighty One</span>
+          </div>
+        </div>
+        <div class="at-letter-between">+</div>
+        <div class="at-letter-card">
+          <div class="at-letter-card-paleo">𐤕</div>
+          <div class="at-letter-card-modern">ת</div>
+          <div class="at-letter-card-name">Tav</div>
+          <div class="at-letter-card-pic">Pictograph: A Cross / Mark</div>
+          <div class="at-letter-card-meanings">
+            <span>A Sign</span>
+            <span>A Seal</span>
+            <span>A Covenant Mark</span>
+            <span>The Last</span>
+          </div>
+        </div>
+        <div class="at-letter-between">=</div>
+        <div class="at-letter-card at-letter-card-gold">
+          <div class="at-letter-card-paleo">𐤀𐤕</div>
+          <div class="at-letter-card-modern">אֵת</div>
+          <div class="at-letter-card-name">Aleph-Tav</div>
+          <div class="at-letter-card-pic">The Complete Word</div>
+          <div class="at-letter-card-meanings">
+            <span>The Beginning and the End</span>
+            <span>The First and the Last</span>
+            <span>All 22 letters between</span>
+            <span>The fullness of the Word</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="at-prose">
+        <p>
+          The Paleo-Hebrew form of Tav (<span class="at-gold">𐤕</span>) was written as a cross or X-mark. This is not a later Christian interpolation — it is the oldest known form of the letter, documented in proto-Sinaitic inscriptions dating back over 3,500 years. The ancient mark of the Tav was a cross. And it was already a sign of protection and salvation long before Yahushua came: Ezekiel 9:4 says Yahuah commanded an angel to "put a mark [taw] on the foreheads of those who grieve over the abominations done in Jerusalem" — the mark of salvation was the Tav.
+        </p>
+        <p>
+          Yahushua did not invent this identification. He revealed what had been embedded in the Hebrew text from the beginning. He is the strength of the Aleph and the sealing mark of the Tav. He is the complete Word of Elohim — every letter, every word, every declaration of the Father — made visible in human form.
+        </p>
+      </div>
+
+      <div class="at-three-witnesses">
+        <h3 class="at-three-title">Three Texts, One Testimony</h3>
+        <div class="at-witness-row">
+          <div class="at-witness">
+            <div class="at-witness-source">Genesis 1:1</div>
+            <div class="at-witness-heb" dir="rtl">אֵת</div>
+            <div class="at-witness-text">Elohim created <span class="at-gold">[את]</span> the heavens and the earth — the untranslated Word stands at the origin of creation</div>
+          </div>
+          <div class="at-witness-arrow">→</div>
+          <div class="at-witness">
+            <div class="at-witness-source">John 1:1–3</div>
+            <div class="at-witness-heb">λόγος</div>
+            <div class="at-witness-text">In the beginning was the Word, and the Word was with Elohim — all things made through Him</div>
+          </div>
+          <div class="at-witness-arrow">→</div>
+          <div class="at-witness at-witness-gold">
+            <div class="at-witness-source">Revelation 22:13</div>
+            <div class="at-witness-heb" dir="rtl">אֵת</div>
+            <div class="at-witness-text">I am the Aleph and the Tav, the First and the Last, the Beginning and the End — Yahushua names Himself</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="at-closing">
+        <p class="at-closing-text">
+          From the ox (Aleph: strength, the first, the leader) to the cross (Tav: the mark, the seal, the sign, the last) — He is the complete revelation of the Father. He is the <span class="at-gold">אֵת</span>. He always was. The Hebrew text has been saying so from the very first verse.
+        </p>
+      </div>
+    </div>
+  </section>
+</HebrewLayout>
+
+<script>
+  // Tab switching
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.at-tab');
+  const panels = document.querySelectorAll<HTMLElement>('.at-panel');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      tabs.forEach((t) => {
+        t.classList.toggle('active', t.dataset.tab === target);
+        t.setAttribute('aria-selected', t.dataset.tab === target ? 'true' : 'false');
+      });
+      panels.forEach((p) => {
+        p.classList.toggle('active', p.dataset.panel === target);
+      });
+    });
+  });
+</script>
+
+<style>
+  /* ══ HERO ══ */
+  .at-hero {
+    padding-bottom: 4rem;
+  }
+  .at-hero-letters {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    margin: 1.5rem auto 1rem;
+  }
+  .at-hero-letter-block {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .at-letter-modern {
+    font-size: 3.8rem;
+    color: #c9a84c;
+    line-height: 1;
+    text-shadow: 0 0 40px rgba(201, 168, 76, 0.5);
+    direction: rtl;
+  }
+  .at-letter-paleo {
+    font-size: 3.2rem;
+    color: #e8d48b;
+    line-height: 1;
+    text-shadow: 0 0 30px rgba(232, 212, 139, 0.4);
+    letter-spacing: 2px;
+  }
+  .at-letter-caption {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6a5030;
+  }
+  .at-hero-divider {
+    font-size: 2rem;
+    color: #4a3218;
+    line-height: 1;
+    margin-top: -0.75rem;
+  }
+
+  /* ══ TABS NAV ══ */
+  .at-tab-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding: 1.25rem 1rem;
+    background: #0c0702;
+    border-bottom: 1px solid #2e1f0d;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .at-tab {
+    background: transparent;
+    border: 1px solid #4a3218;
+    border-radius: 6px;
+    padding: 0.5rem 1.25rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7a6840;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .at-tab:hover {
+    border-color: #c9a84c;
+    color: #c9a84c;
+  }
+  .at-tab.active {
+    background: linear-gradient(160deg, #2a1d0c 0%, #1e1309 100%);
+    border-color: #c9a84c;
+    color: #e8d48b;
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.15);
+  }
+
+  /* ══ PANEL SYSTEM ══ */
+  .at-panel {
+    display: none;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+  .at-panel.active {
+    display: block;
+  }
+  .at-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .at-inner-wide {
+    max-width: 980px;
+  }
+
+  /* ══ PANEL TYPOGRAPHY ══ */
+  .at-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin-bottom: 0.5rem;
+  }
+  .at-panel-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #3a2510;
+  }
+  .at-panel-sub {
+    font-size: 1rem;
+    color: #c4ad84;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ══ GOLD HIGHLIGHT ══ */
+  .at-gold {
+    color: #c9a84c;
+    font-size: 1.08em;
+    font-weight: 600;
+  }
+  .at-gold-inline {
+    color: #c9a84c;
+    font-size: 1.05em;
+    font-weight: 600;
+  }
+  .at-emphasis {
+    font-size: 1.1em;
+    text-shadow: 0 0 10px rgba(201, 168, 76, 0.3);
+  }
+
+  /* ══ PROSE ══ */
+  .at-prose {
+    margin-bottom: 2rem;
+  }
+  .at-prose p {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #d9c9a8;
+    margin-bottom: 1.25rem;
+  }
+  .at-prose strong { color: #e8d48b; }
+  .at-prose em { color: #c9a84c; font-style: italic; }
+
+  /* ══ VERSE BLOCK ══ */
+  .at-verse-block {
+    background: linear-gradient(160deg, #1a1208 0%, #130e07 100%);
+    border: 1px solid #4a3218;
+    border-left: 3px solid #c9a84c;
+    border-radius: 8px;
+    padding: 1.75rem 2rem;
+    margin: 0 0 2rem;
+  }
+  .at-verse-heb {
+    font-size: 1.6rem;
+    color: #e8d48b;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+    text-align: right;
+    direction: rtl;
+  }
+  .at-verse-trans {
+    font-size: 1.05rem;
+    color: #c4ad84;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  .at-verse-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6a5030;
+  }
+
+  /* ══ INFO CARDS ══ */
+  .at-info-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
+    margin: 0 0 2rem;
+  }
+  .at-info-card {
+    background: linear-gradient(160deg, #1a1208 0%, #130e07 100%);
+    border: 1px solid #3a2510;
+    border-radius: 10px;
+    padding: 1.5rem;
+  }
+  .at-info-card-gold {
+    border-color: #8a5a2a;
+    box-shadow: 0 0 18px rgba(201, 168, 76, 0.08);
+  }
+  .at-info-card-icon {
+    font-size: 2.8rem;
+    color: #c9a84c;
+    line-height: 1;
+    margin-bottom: 0.75rem;
+    direction: rtl;
+    text-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+  }
+  .at-info-card-icon-large {
+    font-size: 2.2rem;
+    letter-spacing: 2px;
+  }
+  .at-info-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e8d48b;
+    margin: 0 0 0.6rem;
+  }
+  .at-info-card-body {
+    font-size: 0.9rem;
+    color: #c4ad84;
+    line-height: 1.65;
+  }
+
+  /* ══ STAT BAR ══ */
+  .at-stat-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0;
+    background: linear-gradient(160deg, #1a1208 0%, #0e0904 100%);
+    border: 1px solid #4a3218;
+    border-radius: 10px;
+    padding: 1.5rem;
+    margin-top: 1rem;
+  }
+  .at-stat {
+    flex: 1;
+    min-width: 160px;
+    text-align: center;
+    padding: 0.75rem 1rem;
+  }
+  .at-stat-num {
+    font-family: 'Cinzel', serif;
+    font-size: 2.2rem;
+    font-weight: 700;
+    color: #c9a84c;
+    line-height: 1;
+    margin-bottom: 0.4rem;
+    text-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+  }
+  .at-stat-label {
+    font-size: 0.8rem;
+    color: #8a7450;
+    line-height: 1.4;
+  }
+  .at-stat-div {
+    width: 1px;
+    height: 60px;
+    background: #3a2510;
+    flex-shrink: 0;
+  }
+  @media (max-width: 560px) {
+    .at-stat-div { display: none; }
+    .at-stat { border-bottom: 1px solid #2e1f0d; }
+    .at-stat:last-child { border-bottom: none; }
+  }
+
+  /* ══ GENESIS WORD CARDS ══ */
+  .at-gen-words {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+    justify-content: center;
+  }
+  .at-gen-word {
+    background: linear-gradient(160deg, #1a1208 0%, #130e07 100%);
+    border: 1px solid #3a2510;
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    text-align: center;
+    min-width: 120px;
+    flex: 1;
+    max-width: 160px;
+    position: relative;
+  }
+  .at-gen-word-et {
+    border-color: #c9a84c;
+    background: linear-gradient(160deg, #251a06 0%, #1a1007 100%);
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.15);
+  }
+  .at-gen-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    color: #6a5030;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+  .at-gen-heb {
+    font-size: 1.5rem;
+    color: #e8d48b;
+    line-height: 1.3;
+    margin-bottom: 0.4rem;
+    direction: rtl;
+  }
+  .at-gen-word-et .at-gen-heb {
+    color: #c9a84c;
+    text-shadow: 0 0 12px rgba(201, 168, 76, 0.35);
+    font-size: 1.7rem;
+  }
+  .at-gen-trans {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 1px;
+    color: #8a7450;
+    margin-bottom: 0.35rem;
+  }
+  .at-gen-word-et .at-gen-trans {
+    color: #c9a84c;
+  }
+  .at-gen-eng {
+    font-size: 0.78rem;
+    color: #c4ad84;
+    line-height: 1.4;
+  }
+  .at-gen-word-et .at-gen-eng {
+    color: #e8d48b;
+    font-weight: 600;
+  }
+  .at-gen-note {
+    font-size: 0.68rem;
+    color: #c9a84c;
+    font-style: italic;
+    margin-top: 0.4rem;
+  }
+
+  /* ══ GENESIS OBSERVATION ══ */
+  .at-gen-observation {
+    background: linear-gradient(160deg, #1a1208 0%, #0f0a05 100%);
+    border: 1px solid #4a3218;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .at-gen-obs-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e8d48b;
+    margin: 0 0 1rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid #3a2510;
+  }
+
+  /* ══ PARALLEL BLOCK ══ */
+  .at-parallel-block {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    background: linear-gradient(160deg, #161008 0%, #0f0904 100%);
+    border: 1px solid #4a3218;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  @media (max-width: 660px) {
+    .at-parallel-block {
+      grid-template-columns: 1fr;
+    }
+    .at-parallel-divider {
+      text-align: center;
+      transform: rotate(90deg) !important;
+    }
+  }
+  .at-parallel-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin-bottom: 0.75rem;
+  }
+  .at-parallel-heb {
+    font-size: 1.25rem;
+    color: #d9c9a8;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+    direction: rtl;
+    text-align: right;
+  }
+  .at-parallel-text {
+    font-size: 0.95rem;
+    color: #c4ad84;
+    line-height: 1.7;
+    font-style: italic;
+  }
+  .at-parallel-divider {
+    font-size: 2rem;
+    color: #4a3218;
+    text-align: center;
+    writing-mode: vertical-rl;
+  }
+
+  /* ══ KEY APPEARANCES ══ */
+  .at-appearances-list {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+  .at-appearance-card {
+    display: flex;
+    gap: 1.25rem;
+    background: linear-gradient(160deg, #1a1208 0%, #130e07 100%);
+    border: 1px solid #3a2510;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+    align-items: flex-start;
+    transition: border-color 0.2s;
+  }
+  .at-appearance-card:hover {
+    border-color: #6a4820;
+  }
+  .at-appearance-num {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #c9a84c;
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+    padding-top: 0.1rem;
+  }
+  .at-appearance-body {
+    flex: 1;
+    min-width: 0;
+  }
+  .at-appearance-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin-bottom: 0.5rem;
+  }
+  .at-appearance-heb {
+    font-size: 1.1rem;
+    color: #d9c9a8;
+    line-height: 1.7;
+    margin-bottom: 0.4rem;
+    direction: rtl;
+    text-align: right;
+  }
+  .at-appearance-eng {
+    font-size: 0.97rem;
+    color: #c4ad84;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 0.5rem;
+  }
+  .at-appearance-note {
+    font-size: 0.85rem;
+    color: #8a7450;
+    line-height: 1.6;
+    border-top: 1px solid #2e1f0d;
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ══ CALLOUT ══ */
+  .at-callout {
+    background: linear-gradient(160deg, #1e1509 0%, #140f07 100%);
+    border: 1px solid #5a3a18;
+    border-left: 3px solid #8a5a2a;
+    border-radius: 8px;
+    padding: 1.75rem 2rem;
+    margin: 0 0 2rem;
+  }
+  .at-callout-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e8d48b;
+    margin: 0 0 1rem;
+  }
+
+  /* ══ INVISIBLE BOX ══ */
+  .at-invisible-box {
+    background: linear-gradient(160deg, #0f0a05 0%, #0a0703 100%);
+    border: 1px solid #3a2510;
+    border-radius: 10px;
+    padding: 1.75rem 2rem;
+    margin: 0 0 2rem;
+  }
+  .at-invisible-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #6a5030;
+    margin-bottom: 1.25rem;
+  }
+  .at-invisible-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 1.5rem;
+    align-items: center;
+  }
+  @media (max-width: 600px) {
+    .at-invisible-row {
+      grid-template-columns: 1fr;
+    }
+    .at-invisible-arrow { text-align: center; }
+  }
+  .at-invisible-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6a5030;
+    margin-bottom: 0.6rem;
+  }
+  .at-invisible-heb {
+    font-size: 1.2rem;
+    color: #d9c9a8;
+    line-height: 1.8;
+    direction: rtl;
+    text-align: right;
+  }
+  .at-mark {
+    background: rgba(201, 168, 76, 0.18);
+    color: #c9a84c;
+    padding: 0.1rem 0.25rem;
+    border-radius: 3px;
+    font-size: 1.1em;
+    text-shadow: 0 0 8px rgba(201, 168, 76, 0.4);
+    text-decoration: none;
+  }
+  .at-invisible-eng {
+    font-size: 1rem;
+    color: #c4ad84;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+  .at-invisible-note {
+    font-size: 0.82rem;
+    color: #6a5838;
+  }
+  .at-invisible-arrow {
+    font-size: 1.5rem;
+    color: #4a3218;
+  }
+  .at-invisible-col {
+    min-width: 0;
+  }
+
+  /* ══ DECLARATION QUOTES ══ */
+  .at-decl-quotes {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+  .at-decl-quote {
+    background: linear-gradient(160deg, #251a06 0%, #1a1007 100%);
+    border: 1px solid #c9a84c40;
+    border-left: 3px solid #c9a84c;
+    border-radius: 8px;
+    padding: 1.25rem 1.75rem;
+  }
+  .at-decl-quote-text {
+    font-size: 1.1rem;
+    color: #e8d48b;
+    font-style: italic;
+    line-height: 1.65;
+    margin-bottom: 0.5rem;
+  }
+  .at-decl-quote-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+  }
+
+  /* ══ LETTER MEANINGS ══ */
+  .at-letter-meanings {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    gap: 1.25rem;
+    margin: 0 0 2.5rem;
+  }
+  .at-letter-card {
+    background: linear-gradient(160deg, #1a1208 0%, #130e07 100%);
+    border: 1px solid #3a2510;
+    border-radius: 10px;
+    padding: 1.5rem 1.25rem;
+    text-align: center;
+    min-width: 180px;
+    flex: 1;
+    max-width: 220px;
+  }
+  .at-letter-card-gold {
+    border-color: #c9a84c;
+    background: linear-gradient(160deg, #251a06 0%, #1a1007 100%);
+    box-shadow: 0 0 24px rgba(201, 168, 76, 0.12);
+    max-width: 260px;
+  }
+  .at-letter-between {
+    font-size: 2rem;
+    color: #6a5030;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .at-letter-card-paleo {
+    font-size: 2.4rem;
+    color: #c9a84c;
+    line-height: 1;
+    margin-bottom: 0.3rem;
+    text-shadow: 0 0 16px rgba(201, 168, 76, 0.3);
+    letter-spacing: 2px;
+  }
+  .at-letter-card-modern {
+    font-size: 1.6rem;
+    color: #8a7450;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    direction: rtl;
+  }
+  .at-letter-card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: #e8d48b;
+    margin-bottom: 0.3rem;
+  }
+  .at-letter-card-pic {
+    font-size: 0.72rem;
+    color: #8a6028;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+  .at-letter-card-meanings {
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .at-letter-card-meanings span {
+    font-size: 0.78rem;
+    color: #c4ad84;
+    line-height: 1.4;
+  }
+  @media (max-width: 560px) {
+    .at-letter-meanings {
+      flex-direction: column;
+      align-items: stretch;
+    }
+    .at-letter-card {
+      max-width: 100%;
+    }
+    .at-letter-card-gold {
+      max-width: 100%;
+    }
+  }
+
+  /* ══ THREE WITNESSES ══ */
+  .at-three-witnesses {
+    background: linear-gradient(160deg, #161008 0%, #0f0904 100%);
+    border: 1px solid #4a3218;
+    border-radius: 10px;
+    padding: 2rem;
+    margin-bottom: 2rem;
+  }
+  .at-three-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #e8d48b;
+    margin: 0 0 1.5rem;
+    text-align: center;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #3a2510;
+  }
+  .at-witness-row {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    gap: 1rem;
+    align-items: center;
+  }
+  @media (max-width: 700px) {
+    .at-witness-row {
+      grid-template-columns: 1fr;
+    }
+    .at-witness-arrow {
+      text-align: center;
+      transform: rotate(90deg);
+    }
+  }
+  .at-witness {
+    text-align: center;
+    padding: 1rem;
+  }
+  .at-witness-gold {
+    background: rgba(201, 168, 76, 0.06);
+    border: 1px solid #c9a84c40;
+    border-radius: 8px;
+  }
+  .at-witness-source {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin-bottom: 0.5rem;
+  }
+  .at-witness-heb {
+    font-size: 1.6rem;
+    color: #c9a84c;
+    line-height: 1;
+    margin-bottom: 0.6rem;
+    direction: rtl;
+    text-shadow: 0 0 14px rgba(201, 168, 76, 0.3);
+  }
+  .at-witness-text {
+    font-size: 0.82rem;
+    color: #c4ad84;
+    line-height: 1.6;
+  }
+  .at-witness-arrow {
+    font-size: 1.4rem;
+    color: #4a3218;
+    text-align: center;
+  }
+
+  /* ══ CLOSING ══ */
+  .at-closing {
+    border-top: 1px solid #3a2510;
+    padding-top: 2rem;
+    margin-top: 1rem;
+  }
+  .at-closing-text {
+    font-size: 1.05rem;
+    color: #c4ad84;
+    font-style: italic;
+    line-height: 1.85;
+    text-align: center;
+    max-width: 680px;
+    margin: 0 auto;
+  }
+
+  /* ══ RESPONSIVE CLEANUP ══ */
+  @media (max-width: 560px) {
+    .at-gen-word {
+      min-width: 100px;
+      max-width: 48%;
+    }
+    .at-appearance-card {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    .at-appearance-num {
+      width: auto;
+    }
+  }
+</style>
