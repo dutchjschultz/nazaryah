@@ -143,8 +143,8 @@ const NAMES: NameEntry[] = [
           data-tab={n.key}
         >
           <span class="sn-tab-scripts">
-            <span class="sn-tab-paleo">{n.paleo}</span>
             <span class="sn-tab-modern">{n.modern}</span>
+            <span class="sn-tab-paleo">{n.paleo}</span>
           </span>
           <span class="sn-tab-name">{n.name}</span>
           <span class="sn-tab-label">{n.label}</span>
@@ -169,8 +169,8 @@ const NAMES: NameEntry[] = [
           {n.letters.map((l, j) => (
             <button type="button" class={`sn-letter-card ${j === 0 ? 'active' : ''}`} data-letter={j}>
               <div class="sn-letter-scripts">
-                <span class="sn-letter-paleo">{l.paleo}</span>
                 <span class="sn-letter-modern">{l.modern}</span>
+                <span class="sn-letter-paleo">{l.paleo}</span>
               </div>
               <div class="sn-letter-name">{l.name}</div>
               <div class="sn-letter-sound">{l.sound}</div>
@@ -183,8 +183,8 @@ const NAMES: NameEntry[] = [
           <div class={`sn-detail ${j === 0 ? 'active' : ''}`} data-detail={j}>
             <div class="sn-detail-head">
               <div class="sn-detail-big">
-                <span class="sn-detail-paleo">{l.paleo}</span>
                 <span class="sn-detail-modern">{l.modern}</span>
+                <span class="sn-detail-paleo">{l.paleo}</span>
               </div>
               <div>
                 <div class="sn-detail-name">{l.name}</div>
@@ -274,7 +274,7 @@ const NAMES: NameEntry[] = [
     background: linear-gradient(160deg, #2a1d0c 0%, #1e1309 100%);
     color: #f0e0bf;
   }
-  .sn-tab-scripts { display: flex; align-items: baseline; gap: 0.6rem; direction: rtl; }
+  .sn-tab-scripts { display: flex; align-items: baseline; gap: 0.6rem; }
   .sn-tab-paleo { font-size: 1.4rem; color: #b88540; }
   .sn-tab-modern { font-size: 1.8rem; color: #e8c97a; }
   .sn-tab-name { font-family: 'Cinzel', serif; font-size: 1.1rem; font-weight: 700; color: inherit; }
@@ -337,7 +337,7 @@ const NAMES: NameEntry[] = [
     transform: scale(1.05);
     box-shadow: 0 0 24px rgba(196, 164, 107, 0.25), inset 0 0 16px rgba(196, 164, 107, 0.08);
   }
-  .sn-letter-scripts { display: flex; align-items: baseline; gap: 0.6rem; direction: rtl; }
+  .sn-letter-scripts { display: flex; align-items: baseline; gap: 0.6rem; }
   .sn-letter-paleo { font-size: 1.6rem; color: #b88540; line-height: 1; }
   .sn-letter-modern { font-size: 2.2rem; color: #e8c97a; line-height: 1; text-shadow: 0 0 14px rgba(232,201,122,0.25); }
   .sn-letter-name { font-family: 'Cinzel', serif; font-size: 0.75rem; letter-spacing: 1.5px; color: #c4a46b; text-transform: uppercase; }
@@ -349,7 +349,7 @@ const NAMES: NameEntry[] = [
   .sn-detail { display: none; max-width: 720px; margin: 0 auto; background: linear-gradient(135deg, #1e1409, #0e0904); border: 2px solid #8a5a2a; border-radius: 12px; padding: 2rem; }
   .sn-detail.active { display: block; }
   .sn-detail-head { display: flex; align-items: center; gap: 1.5rem; margin-bottom: 1.25rem; flex-wrap: wrap; }
-  .sn-detail-big { display: flex; align-items: baseline; gap: 0.85rem; direction: rtl; }
+  .sn-detail-big { display: flex; align-items: baseline; gap: 0.85rem; }
   .sn-detail-paleo { font-size: 2.4rem; color: #b88540; line-height: 1; }
   .sn-detail-modern { font-size: 3.2rem; color: #e8c97a; line-height: 1; text-shadow: 0 0 18px rgba(232,201,122,0.3); }
   .sn-detail-name { font-family: 'Cinzel', serif; font-size: 1.4rem; font-weight: 700; color: #f0e0bf; letter-spacing: 1px; }

@@ -23,7 +23,7 @@ import { letters } from '../../data/hebrew-alphabet';
         Aleph was an ox head. Bet was a tent or house. Gimel was a camel.
       </p>
       <p>
-        The <em>paleo</em> script on the left of each card is how these letters looked to Abraham, Moses, and David. The <em>modern</em> Aramaic block script on the right is what the world sees today. Both carry the same picture — one ancient, one evolved.
+        The <em>modern</em> Aramaic block script appears on the left of each card — the form the world sees today. The <em>paleo</em> script on the right is how these letters looked to Abraham, Moses, and David. Both carry the same picture — one evolved, one ancient.
       </p>
     </div>
   </section>
@@ -36,8 +36,8 @@ import { letters } from '../../data/hebrew-alphabet';
       {letters.map((l) => (
         <div class="ab-card">
           <div class="ab-scripts">
-            <span class="ab-paleo">{l.paleo}</span>
             <span class="ab-modern">{l.modern}</span>
+            <span class="ab-paleo">{l.paleo}</span>
           </div>
           <div class="ab-name">{l.name}</div>
           <div class="ab-meta">
@@ -98,21 +98,22 @@ import { letters } from '../../data/hebrew-alphabet';
     display: flex;
     align-items: baseline;
     justify-content: center;
-    gap: 1rem;
+    gap: 1.25rem;
     margin-bottom: 0.6rem;
-    direction: rtl;
-  }
-  .ab-paleo {
-    font-size: 2.5rem;
-    color: #b88540;
-    line-height: 1;
-    font-weight: 400;
   }
   .ab-modern {
     font-size: 3rem;
     color: #e8c97a;
     line-height: 1;
     text-shadow: 0 0 20px rgba(232, 201, 122, 0.3);
+    text-align: left;
+  }
+  .ab-paleo {
+    font-size: 2.5rem;
+    color: #b88540;
+    line-height: 1;
+    font-weight: 400;
+    text-align: right;
   }
 
   .ab-name {

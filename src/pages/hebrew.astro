@@ -45,6 +45,30 @@ const sections = [
     </p>
   </section>
 
+  <section class="hl-section">
+    <div class="hub-intro">
+      <h2 class="hl-section-title">Not Just Letters</h2>
+      <p>
+        In English, the letter <em>A</em> is simply a sound — a marker that holds a place in a word. It carries no meaning on its own.
+        The Hebrew alphabet is a different creature entirely.
+      </p>
+      <p>
+        Each of the twenty-two letters of the Hebrew aleph-bet began as a <strong>picture</strong> — a concrete image drawn from the ancient world.
+        Aleph was an ox head. Bet was a tent or house. Gimel was a camel. These were not arbitrary symbols; they were the objects of
+        everyday life encoded with theological weight.
+      </p>
+      <p>
+        A Hebrew speaker — ancient or modern — does not just <em>hear</em> a word. They see it. Every word carries embedded within it
+        the pictographic story of each letter it contains. This is why the Hebrew Bible communicates on multiple levels simultaneously:
+        the surface meaning, the letter-picture meaning, the numerical meaning (gematria), and the acrostic meaning all coexist in a single word.
+      </p>
+      <p>
+        This alphabet is not a tool humans invented to record language. The ancient Hebrews understood it as something far more fundamental —
+        the building blocks of creation itself, the language in which reality was spoken into existence.
+      </p>
+    </div>
+  </section>
+
   <section class="hl-section hl-center">
     <h2 class="hl-section-title">Choose Your Path</h2>
     <p class="hl-section-sub">Four ways to enter the language of Scripture.</p>
@@ -53,8 +77,8 @@ const sections = [
       {sections.map((s) => (
         <a href={s.href} class="hub-card">
           <div class="hub-scripts">
-            <span class="hub-paleo">{s.paleo}</span>
             <span class="hub-modern">{s.modern}</span>
+            <span class="hub-paleo">{s.paleo}</span>
           </div>
           <div class="hub-title">{s.title}</div>
           <p class="hub-blurb">{s.blurb}</p>
@@ -66,6 +90,17 @@ const sections = [
 </HebrewLayout>
 
 <style>
+  .hub-intro {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #d9c9a8;
+  }
+  .hub-intro p { margin-bottom: 1.25rem; }
+  .hub-intro em { color: #c4a46b; font-style: italic; }
+  .hub-intro strong { color: #e8d5a8; }
+
   .hub-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -95,19 +130,20 @@ const sections = [
   .hub-scripts {
     display: flex;
     align-items: baseline;
-    gap: 0.9rem;
-    direction: rtl;
-  }
-  .hub-paleo {
-    font-size: 2.6rem;
-    color: #b88540;
-    line-height: 1;
+    gap: 1.1rem;
   }
   .hub-modern {
     font-size: 3rem;
     color: #e8c97a;
     line-height: 1;
     text-shadow: 0 0 22px rgba(232,201,122,0.3);
+    text-align: left;
+  }
+  .hub-paleo {
+    font-size: 2.6rem;
+    color: #b88540;
+    line-height: 1;
+    text-align: right;
   }
   .hub-title {
     font-family: 'Cinzel', serif;

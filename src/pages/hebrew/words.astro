@@ -21,8 +21,8 @@ import { wordPictures } from '../../data/hebrew-alphabet';
       {wordPictures.map((w) => (
         <div class="wp-card">
           <div class="wp-scripts">
-            <span class="wp-paleo">{w.paleo}</span>
             <span class="wp-modern">{w.modern}</span>
+            <span class="wp-paleo">{w.paleo}</span>
           </div>
           <div class="wp-roman">{w.roman} &middot; {w.gloss}</div>
           <div class="wp-break" set:html={w.breakdown} />
@@ -60,20 +60,21 @@ import { wordPictures } from '../../data/hebrew-alphabet';
   .wp-scripts {
     display: flex;
     align-items: baseline;
-    gap: 1rem;
-    direction: rtl;
+    gap: 1.25rem;
     margin-bottom: 0.35rem;
-  }
-  .wp-paleo {
-    font-size: 2.2rem;
-    color: #b88540;
-    line-height: 1.1;
   }
   .wp-modern {
     font-size: 2.75rem;
     color: #e8c97a;
     line-height: 1.1;
     text-shadow: 0 0 16px rgba(232, 201, 122, 0.25);
+    text-align: left;
+  }
+  .wp-paleo {
+    font-size: 2.2rem;
+    color: #b88540;
+    line-height: 1.1;
+    text-align: right;
   }
   .wp-roman {
     font-family: 'Cinzel', serif;
