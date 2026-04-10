@@ -135,7 +135,7 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
                 <div class="tag mb-3" style="color: var(--bronze);">
                   {post.data.category}
                 </div>
-                <h2 class="post-title text-lg font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
+                <h3 class="post-title text-lg font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
                   <a
                     href={`/blog/${post.slug}`}
                     class="hover:text-[var(--bronze)] transition-colors"
@@ -143,7 +143,7 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
                   >
                     {post.data.title}
                   </a>
-                </h2>
+                </h3>
                 <p class="text-sm leading-relaxed mb-5 line-clamp-4 flex-1" style="color: var(--ink-faded);">
                   {post.data.description}
                 </p>
