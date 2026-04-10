@@ -1,0 +1,241 @@
+---
+import HebrewLayout from '../../layouts/HebrewLayout.astro';
+import { letters } from '../../data/hebrew-alphabet';
+
+const messiahConnections: Record<string, string> = {
+  Aleph:  `Yahushua is the firstborn over all creation <em>(Col 1:15)</em> — the strong leader, the first and the last. He declared Himself the Aleph and the Taw, the beginning and the end. He is the silent strength before all words began.`,
+  Bet:    `<em>"In My Father's house are many rooms"</em> <em>(John 14:2)</em>. He is the door to the Father's house, the Son who builds the eternal dwelling. Creation is Bet — a house — and Yahushua is the one who prepares a place within it.`,
+  Gimel:  `He carried our sins and our sorrows <em>(Isaiah 53:4)</em>. The one who bears the burden without complaint, who walks the long distance, who brings provision across the wilderness. Grace runs toward the needy — Gimel runs after Dalet.`,
+  Dalet:  `<em>"I am the door. If anyone enters through Me, he will be saved"</em> <em>(John 10:9)</em>. He is the threshold, the entry point, the pathway between the ordinary world and the Father's presence. Through Him alone is access granted.`,
+  He:     `<em>"Behold, the Lamb of Elohim"</em> <em>(John 1:29)</em>. He is the breath of revelation — the one through whom we see and know the Father. Behold is the cry of He: stop, look, perceive. He is what the universe has been waiting to behold.`,
+  Vav:    `The nail that secures the tent. His hands and feet were pierced <em>(Psalm 22:16)</em>. Vav is the connector — the "and" that joins Yahuah to His people. He is the nail driven between heaven and earth, holding the two together in one.`,
+  Zayin:  `<em>"The word of Yahuah is sharper than any two-edged sword"</em> <em>(Hebrews 4:12)</em>. He returns with a sword from His mouth <em>(Rev 19:15)</em>. He is the weapon of the Almighty — the Zayin that both sustains the righteous and cuts away wickedness.`,
+  Chet:   `He is the wall of protection around His flock. <em>"I give them eternal life, and they shall never perish; no one will snatch them out of My hand"</em> <em>(John 10:28)</em>. The fence of Chet defines what is sacred — His people are the sacred enclosure.`,
+  Tet:    `He crushed the serpent's head <em>(Genesis 3:15)</em>. The one who surrounds evil to defeat it, who descended into the coiled darkness and emerged victorious. What the enemy meant for destruction, He turned to good — the hidden blessing of Tet revealed.`,
+  Yod:    `<em>"The Father has placed all things in His hands"</em> <em>(John 13:3)</em>. The outstretched hand of Yahuah made flesh. The smallest letter — yet the mightiest work. Yahushua said not one Yod would pass from the Torah <em>(Matthew 5:18)</em>. He is that indestructible mark.`,
+  Kaf:    `He opens the scroll no one else can open <em>(Rev 5:5)</em>. His open palms stretched on the execution stake were the price of our redemption — the kapparah, the covering. What His hands hold, He protects. What His hands release, He has redeemed.`,
+  Lamed:  `<em>"I am the good shepherd"</em> <em>(John 10:11)</em>. The staff that guides, corrects, and protects. The teacher who stands taller than all, who drives his flock toward purpose rather than pushing them down. True authority moves toward; Lamed is Yahushua leading.`,
+  Mem:    `<em>"Whoever drinks the water I give will never thirst again"</em> <em>(John 4:14)</em>. He walked on the chaos of the sea. He calmed the storm. He is the living water — both the revealed knowledge of open Mem and the hidden depths of the closed form.`,
+  Nun:    `He multiplied the fish. He called fishermen. He is the life that continues, the seed that endures, the heir who carries the Name forward. <em>"I am the way, the truth, and the life"</em> <em>(John 14:6)</em>. Faithfulness is never static — and neither is He.`,
+  Samech: `He is the pillar of fire and cloud, the encircling support. <em>"I will never leave you nor forsake you"</em> <em>(Hebrews 13:5)</em>. Samech is the closed circle — the one who surrounds His people so completely that nothing can reach them from outside His embrace.`,
+  Ayin:   `<em>"Whoever has seen Me has seen the Father"</em> <em>(John 14:9)</em>. He is the visible image of the invisible Elohim <em>(Col 1:15)</em> — the eye of Ayin opened. To look upon the Son is to perceive what was hidden beneath the surface of all creation.`,
+  Pe:     `<em>"In the beginning was the Word"</em> <em>(John 1:1)</em>. He is the mouth of Yahuah, the spoken decree made flesh. Every word He spoke was the Father's word. To open the mouth is a sacred act — and He is the Word that the mouth of Yahuah has spoken into the world.`,
+  Tsade:  `He is our righteousness <em>(Jeremiah 23:6)</em>. The fishhook that pulls us from the murky deep. The tsaddik — the righteous one — who justifies many. He is the one who was caught by death so that we might be caught by life and drawn upward into His righteousness.`,
+  Qof:    `<em>"You cannot see My face... you will see My back"</em> <em>(Exodus 33:23)</em>. He stands at the horizon between heaven and earth — the sun of righteousness rising <em>(Malachi 4:2)</em>. He exists at the edge of the observable, where the holy meets the world and the cycle of redemption turns.`,
+  Resh:   `He is the head of the body, the assembly <em>(Col 1:18)</em>. The chief cornerstone <em>(Ephesians 2:20)</em>. The firstborn, the highest authority. Where the Resh goes, the body follows — and He is the head whose direction determines the destiny of all who are joined to Him.`,
+  Shin:   `He baptizes with fire and the Set-Apart Spirit <em>(Matthew 3:11)</em>. The consuming fire of Yahuah. Teeth that devour wickedness. The three-branched crown of Shin is the Ruach descending as tongues of flame. He is Shaddai — the Almighty — whose fire refines and makes whole.`,
+  Tav:    `In ancient script, Tav was drawn as an X — the mark, the cross, the covenant sign. <em>"Set a mark (taw) upon the foreheads of those who grieve over the abominations"</em> <em>(Ezekiel 9:4)</em>. He is the mark of salvation, the seal of the covenant, the last letter — the completion of everything Aleph began.`,
+};
+---
+
+<HebrewLayout
+  title="Yahushua in Every Letter — Hebrew — Nazaryah"
+  description="How Yahushua the Messiah embodies and fulfills every one of the 22 Hebrew letters — from Aleph to Taw."
+>
+  <section class="hl-hero">
+    <a href="/hebrew" class="hl-back">&#8592; Back to Hebrew</a>
+    <p class="hl-label">&#8213; The Messiah in the Alphabet &#8213;</p>
+    <h1 class="hl-title">Yahushua in Every Letter</h1>
+    <p class="hl-sub">
+      The Messiah hidden in the Hebrew alphabet — from Aleph to Taw
+    </p>
+  </section>
+
+  <section class="hl-section">
+    <div class="intro-prose">
+      <p>
+        The Hebrew alphabet was not invented — it was <strong>revealed</strong>. Each of the twenty-two letters carries an ancient picture, a meaning, and a hidden weight that points beyond itself. When Yahushua declared <em>"I am the Aleph and the Taw"</em> — the first and last letters — He was not merely claiming priority. He was claiming the whole alphabet. He stands in every letter between.
+      </p>
+      <p>
+        What follows is not allegory imposed from the outside. It is the recognition that the one who <em>is</em> the Word would naturally be found written into the very letters that words are built from.
+      </p>
+    </div>
+  </section>
+
+  <section class="hl-section">
+    <h2 class="hl-section-title hl-center">The Twenty-Two Letters</h2>
+    <p class="hl-section-sub hl-center">Each letter. Each picture. Each connection to the Messiah.</p>
+
+    <div class="ml-grid">
+      {letters.map((l) => (
+        <div class="ml-card">
+          <div class="ml-scripts">
+            <span class="ml-modern">{l.modern}</span>
+            <span class="ml-paleo">{l.paleo}</span>
+          </div>
+
+          <div class="ml-name">{l.name}</div>
+
+          <div class="ml-meta">
+            <span class="ml-badge">{l.sound}</span>
+            <span class="ml-num">{l.number}</span>
+          </div>
+
+          <div class="ml-pic">{l.pictograph}</div>
+          <div class="ml-meaning">{l.meaning}</div>
+
+          <div class="ml-divider"></div>
+
+          <div class="ml-connection-label">Messiah Connection</div>
+          <div class="ml-connection" set:html={messiahConnections[l.name]} />
+        </div>
+      ))}
+    </div>
+  </section>
+</HebrewLayout>
+
+<style>
+  .intro-prose {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #d9c9a8;
+  }
+  .intro-prose p { margin-bottom: 1.25rem; }
+  .intro-prose em { color: #c4a46b; font-style: italic; }
+  .intro-prose strong { color: #e8d5a8; }
+
+  /* ── Grid ── */
+  .ml-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+  }
+
+  /* ── Card ── */
+  .ml-card {
+    background: linear-gradient(160deg, #211608 0%, #1a1007 100%);
+    border: 2px solid #8a5a2a;
+    border-radius: 8px;
+    padding: 1.75rem 1.5rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, transform 0.25s ease, background 0.25s ease;
+  }
+  .ml-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 50% 0%, rgba(196, 164, 107, 0.07), transparent 60%);
+    pointer-events: none;
+  }
+  .ml-card:hover {
+    border-color: #c4a46b;
+    background: linear-gradient(160deg, #2a1d0c 0%, #1e1309 100%);
+    box-shadow: 0 8px 28px rgba(0, 0, 0, 0.55), inset 0 1px 0 rgba(196, 164, 107, 0.12);
+    transform: translateY(-2px);
+  }
+
+  /* ── Letter scripts ── */
+  .ml-scripts {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 1.5rem;
+    margin-bottom: 0.6rem;
+  }
+  .ml-modern {
+    font-size: 3.2rem;
+    color: #e8c97a;
+    line-height: 1;
+    text-shadow: 0 0 22px rgba(232, 201, 122, 0.3);
+  }
+  .ml-paleo {
+    font-size: 2.6rem;
+    color: #b88540;
+    line-height: 1;
+    font-weight: 400;
+  }
+
+  /* ── Name & meta ── */
+  .ml-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #f0e0bf;
+    text-align: center;
+    letter-spacing: 1px;
+    margin-bottom: 0.5rem;
+  }
+  .ml-meta {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .ml-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.5px;
+    color: #8a6028;
+    text-transform: uppercase;
+    padding: 2px 6px;
+    border: 1px solid #3a2510;
+    border-radius: 3px;
+    background: rgba(58, 37, 16, 0.4);
+  }
+  .ml-num {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    color: #5a3e1a;
+  }
+  .ml-pic {
+    font-size: 0.72rem;
+    color: #8a6028;
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-family: 'Cinzel', serif;
+    margin-bottom: 0.35rem;
+  }
+  .ml-meaning {
+    font-size: 0.88rem;
+    color: #c4a46b;
+    text-align: center;
+    font-style: italic;
+    line-height: 1.4;
+  }
+
+  /* ── Divider between letter info and connection ── */
+  .ml-divider {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #4a3218, transparent);
+    margin: 1.1rem 0 1rem;
+  }
+
+  /* ── Messiah Connection ── */
+  .ml-connection-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #7a5020;
+    margin-bottom: 0.55rem;
+    text-align: center;
+  }
+  .ml-connection {
+    font-size: 0.9rem;
+    color: #d4c096;
+    line-height: 1.75;
+  }
+  .ml-connection em {
+    color: #c4a46b;
+    font-style: italic;
+  }
+  .ml-connection strong {
+    color: #e8d5a8;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 720px) {
+    .ml-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  @media (max-width: 480px) {
+    .ml-modern { font-size: 2.6rem; }
+    .ml-paleo  { font-size: 2.1rem; }
+  }
+</style>

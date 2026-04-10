@@ -30,6 +30,20 @@ const sections = [
     paleo: '𐤉𐤄𐤅𐤄',
     blurb: 'The correct pronunciation of Yahuwah and Yahushua, letter by letter.',
   },
+  {
+    href: '/hebrew/waw',
+    title: 'The Case for U',
+    modern: 'ו',
+    paleo: '𐤅',
+    blurb: 'Why the Hebrew Waw was always a U — never a V, never a W. The evidence is overwhelming.',
+  },
+  {
+    href: '/hebrew/messiah-letters',
+    title: 'Messiah in the Letters',
+    modern: 'ישוע',
+    paleo: '𐤉𐤔𐤅𐤏',
+    blurb: 'Yahushua hidden in every letter of the aleph-bet — from Aleph to Taw, He is there.',
+  },
 ];
 ---
 
@@ -71,7 +85,7 @@ const sections = [
 
   <section class="hl-section hl-center">
     <h2 class="hl-section-title">Choose Your Path</h2>
-    <p class="hl-section-sub">Four ways to enter the language of Scripture.</p>
+    <p class="hl-section-sub">Six ways to enter the language of Scripture.</p>
 
     <div class="hub-grid">
       {sections.map((s) => (
@@ -105,7 +119,7 @@ const sections = [
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 1.5rem;
-    max-width: 1000px;
+    max-width: 1200px;
     margin: 0 auto;
   }
   .hub-card {

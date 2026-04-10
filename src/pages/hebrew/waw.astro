@@ -1,0 +1,1131 @@
+---
+import HebrewLayout from '../../layouts/HebrewLayout.astro';
+
+const CHAIN = [
+  { letter: "𐤅", label: "Phoenician Waw", sound: "U", era: "~1100 BCE", correct: true },
+  { letter: "Υ", label: "Greek Upsilon", sound: "U", era: "~800 BCE", correct: true },
+  { letter: "V", label: "Latin V (=U shape)", sound: "U", era: "~100 BCE", correct: true },
+  { letter: "U", label: "Medieval Split", sound: "U", era: "~200 CE", correct: true },
+  { letter: "W", label: "Double U (UU→VV)", sound: "UU", era: "~700 CE", correct: false },
+  { letter: "V", label: "Ashkenazi Shift", sound: "V", era: "~200 CE+", correct: false },
+];
+
+const EVIDENCE = [
+  { n: 1, text: "Josephus (37 CE) — \"The sacred name consists of four vowels.\" V is a consonant. U is a vowel." },
+  { n: 2, text: "Greek Septuagint (~250 BCE) — David transliterated as Δαυιδ with Upsilon (U), not Beta (V)." },
+  { n: 3, text: "Dead Sea Scrolls (~200 BCE–70 CE) — Oldest manuscripts use Waw extensively as vowel letter for U/O sounds." },
+  { n: 4, text: "Ugaritic (~1400 BCE) — Hebrew's closest ancient relative uses Waw as /w/. No V in any ancient Semitic language." },
+  { n: 5, text: "Prof. Fassberg, Hebrew University — \"There is no doubt that the original sound was W and not V.\"" },
+  { n: 6, text: "Prof. Moshavi, Hebrew University — Waw as mater lectionis for long U \"would be impossible to explain if it was pronounced V.\"" },
+  { n: 7, text: "Yemenite Jews (unbroken tradition) — Never displaced to Europe. Still pronounce Waw as U/W." },
+  { n: 8, text: "Samaritan Hebrews (unbroken tradition) — Still use Paleo-Hebrew script. Pronounce sixth letter as Waw." },
+  { n: 9, text: "The Bet (ב) Argument — Only letter in biblical Hebrew that makes V sound. If Waw also made V, two letters same sound." },
+  { n: 10, text: "Five Latin Descendants — F, U, V, W, Y ALL descend from Phoenician Waw. Every one traces to U/OO origin." },
+];
+
+const WORDS = [
+  { hebrew: "רוּחַ", trans: "Ruach", meaning: "Spirit", note: "Everyone says 'Roo-akh.' Nobody says 'Rvach.' The ו is clearly U." },
+  { hebrew: "רְאוּבֵן", trans: "Reuben", meaning: "Behold, a son", note: "Nobody says 'Revben.' The U is undisputed." },
+  { hebrew: "יְהוּדָה", trans: "Yahudah", meaning: "Judah / Praise", note: "Same ו = same U. 'Yah-U-dah,' not 'Yah-V-dah.'" },
+  { hebrew: "דָּוִד", trans: "Dawid", meaning: "David / Beloved", note: "Greek Septuagint: Δαυιδ with Upsilon (U), not Beta (V)." },
+  { hebrew: "שָׁלוֹם", trans: "Shalom", meaning: "Peace", note: "The ו carries the long O vowel sound." },
+  { hebrew: "תּוֹרָה", trans: "Torah", meaning: "Instruction / Law", note: "Dead Sea Scrolls spell it with a Waw vowel letter." },
+  { hebrew: "אֱלוֹהִים", trans: "Elohim", meaning: "Mighty One(s)", note: "Dead Sea Scrolls write with a Waw. Masoretic text replaced it with a dot." },
+  { hebrew: "יְשׁוּעָה", trans: "Yeshuah", meaning: "Salvation", note: "Root of Yahushua's name. ו = U, giving 'shu' not 'shv.'" },
+];
+
+const TIMELINE = [
+  {
+    id: "t1",
+    era: "~3000–1500 BCE",
+    title: "Proto-Sinaitic / Pictographic Origin",
+    subtitle: "A Tent Peg — The Letter Was a Picture Before It Was a Sound",
+    sound: "U / OO",
+    correct: true,
+    body: `Before the Hebrew alphabet existed as letters, it existed as pictures. The earliest form of what would become the sixth letter was a pictograph of a tent peg — a Y-shaped piece of hardwood driven into the ground to secure the ropes of a goat-hair tent. The ancient name was "Waw" meaning "peg" or "hook." Its pictographic meanings: to attach, to secure, to connect, to join, to add. This is why the letter ו is used as the Hebrew prefix for "and." The pictograph evolved through stages: Proto-Sinaitic (Y-shaped tent peg) → Early Semitic → Middle Semitic → Late Semitic/Paleo-Hebrew → Modern Aramaic-derived. At every stage, the SOUND remained U/OO.`,
+    sources: [
+      "\"The original pictograph is a tent peg. The ancient name was Waw. Sounds: w, ow, uw.\" — AHRC",
+      "\"The Ancient Hebrew name for this letter is 'Wa', meaning 'peg' or 'hook.'\" — Paleo Hebrew Reference",
+    ],
+  },
+  {
+    id: "t2",
+    era: "~1100 BCE",
+    title: "Phoenician Waw (𐤅)",
+    subtitle: "The Ancestor of Five Latin Letters — All From One U Sound",
+    sound: "U / OO",
+    correct: true,
+    body: `The Phoenician alphabet descended from Proto-Sinaitic. Its sixth letter, Waw (𐤅), represented /w/ and vowel /u/. Waw was a "mater lectionis" — more often a vowel than consonant. FIVE letters of modern Latin descend from this single letter: F (via Greek Digamma), U (via Greek Upsilon), V (angular form of U), W ("double U"), Y (via Greek Upsilon). Every single one traces back to a U sound.`,
+    sources: [
+      "\"U is derived from the Semitic letter waw, along with F, V, W, and Y.\" — Letters Wiki",
+      "\"Yod and Waw in particular are more often vowels than consonants.\" — Wikipedia: Mater Lectionis",
+    ],
+  },
+  {
+    id: "t3",
+    era: "~800 BCE",
+    title: "Greek Upsilon (Υ υ)",
+    subtitle: "\"Simple U\" — The Greeks Named It What It Sounded Like",
+    sound: "U / OO",
+    correct: true,
+    body: `Greeks split Waw into Digamma (Ϝ) for /w/ and Upsilon (Υ) for /u/. "Upsilon" literally means "simple U." In the Septuagint, David (דָּוִיד) was transliterated as Δαυιδ using Upsilon — the U vowel, not Beta which would indicate V.`,
+    sources: [
+      "\"Upsilon originated from Phoenician waw. In classical Greek, it had the value of [u].\" — Vaia Encyclopedia",
+    ],
+  },
+  {
+    id: "t4",
+    era: "~1400–1200 BCE",
+    title: "Ugaritic Confirmation",
+    subtitle: "Hebrew's Closest Ancient Cousin Proves the U Sound",
+    sound: "U / OO",
+    correct: true,
+    body: `Ugarit tablets show Waw as /w/ — consonantal form of U. No V exists. Every Semitic language descending from same family preserves U/W: Ugaritic, Arabic, Aramaic, Maltese, Ge'ez. Not one ancient Semitic language has V. The V is not Semitic — it is European.`,
+    sources: [
+      "\"Ugaritic and later Semitic languages like Arabic, Maltese, and Ge'ez, all use a double 'u.'\" — Yahweh's Restoration Ministry",
+    ],
+  },
+  {
+    id: "t5",
+    era: "~200 BCE – 100 CE",
+    title: "The Dead Sea Scrolls",
+    subtitle: "Ancient Scribes Used the Waw as a Vowel Letter — Physical Proof",
+    sound: "U / OO",
+    correct: true,
+    body: `The Dead Sea Scrolls use "plene" spelling extensively — inserting Waw as vowel indicator for U and O sounds. The word "lo" (no) is written לוא with Waw as vowel. Dr. Bill Barrick: "a Waw is sometimes given as a vowel letter for the qibbuts, which really represents a shureq — the sounds were very, very close."`,
+    sources: [
+      "\"The Dead Sea Scrolls used ו for the consonant 'w' but also the vowel sound 'o.'\" — Ancient Hebrew Torah Project",
+    ],
+  },
+  {
+    id: "t6",
+    era: "37 CE",
+    title: "Josephus — Eyewitness Testimony",
+    subtitle: "\"The Sacred Name Consists of Four Vowels\"",
+    sound: "U / OO",
+    correct: true,
+    body: `Josephus describes the high priest's golden crown: "the sacred name: it consists of four vowels." V is a consonant (requires teeth + lip). U is a vowel (open mouth). The name must be: Y (Yod) + H (He) + U (Waw) + H (He) = Yah-U-ah. Four open-mouth vowel sounds.`,
+    sources: [
+      "Josephus, War of the Jews, Book 5, Chapter 5",
+    ],
+  },
+  {
+    id: "t7",
+    era: "~100 BCE – 1500 CE",
+    title: "Latin V — The Roman Chisel Problem",
+    subtitle: "Same Sound, Different Shape — Stone Changed the Letter, Not the Voice",
+    sound: "U (carved as V)",
+    correct: true,
+    body: `Romans carved U as V shape because it was easier in stone. IVLIVS = "Yoo-lee-oos." AVGVSTVS = "Ow-goos-toos." The V/U distinction as separate letters didn't exist until the 16th century. The "vee" sound is MODERN.`,
+    sources: [
+      "\"Classical Latin used V for vowel /u/ and consonant /w/. The distinction didn't emerge until the 16th century.\"",
+    ],
+  },
+  {
+    id: "t8",
+    era: "~700 CE",
+    title: "The Invention of W — A \"Double U\"",
+    subtitle: "Two U's Printed as Two V's — A Medieval European Accident",
+    sound: "UU → W",
+    correct: false,
+    body: `Anglo-Saxon scribes wrote two U's (UU) for /w/ sound. Printing press used two V blocks (VV). Name "double-U" persisted. W is a medieval European invention — does not exist in Hebrew, Greek, or Latin.`,
+    sources: [
+      "\"The ancient Roman alphabet did not have 'w.' The sound was represented by 'uu.'\" — Oxford English Dictionary",
+    ],
+  },
+  {
+    id: "t9",
+    era: "~70–200 CE onward",
+    title: "The Ashkenazi V Corruption",
+    subtitle: "Germanic Languages Overwrote the Ancient Sound",
+    sound: "V (Germanic corruption)",
+    correct: false,
+    body: `Prof. Fassberg: "There is no doubt that the original sound was W and not V." The shift occurred during Mishnaic Period. Yemenite Jews (never in Europe) still say U/W. Samaritans (use Paleo-Hebrew) still say Waw. The only V in biblical Hebrew comes from Bet (ב). Evidence is unanimous: Ugaritic, Aramaic, Arabic, Ge'ez, Yemenite, Samaritan — all say U/W.`,
+    sources: [
+      "\"Prof. Fassberg: 'There is no doubt the original sound was w and not v.'\"",
+      "\"The Yemenite Jews who retain an ancient, pure pronunciation still pronounce the waw as 'w.'\" — Horowitz",
+    ],
+  },
+  {
+    id: "t10",
+    era: "~600–1000 CE",
+    title: "The Masoretic Vowel System",
+    subtitle: "When Dots Replaced Letters — And the Evidence Was Obscured",
+    sound: "U (systematically removed from text)",
+    correct: true,
+    body: `Masoretes replaced physical Waw vowel letters with dot system. This obscured the evidence. Dead Sea Scrolls show what pre-Masoretic text looked like — Waw was everywhere as vowel. Masoretes worked 600–1000 CE, a 2000-year gap from biblical Hebrew.`,
+    sources: [
+      "\"Around 700 CE the Masorites added dots and dashes.\" — AHRC FAQ",
+    ],
+  },
+];
+
+const TABS = [
+  { id: "thesis",   label: "Thesis" },
+  { id: "journey",  label: "Journey" },
+  { id: "evidence", label: "Evidence" },
+  { id: "words",    label: "Word Proof" },
+  { id: "timeline", label: "Timeline" },
+  { id: "verdict",  label: "Verdict" },
+];
+---
+
+<HebrewLayout
+  title="The Case for U — Waw — Hebrew — Nazaryah"
+  description="Why the Hebrew letter Waw (ו) always carried a U sound — never a V, never a W. Evidence from Josephus, the Septuagint, the Dead Sea Scrolls, and Hebrew University."
+>
+  <!-- HERO -->
+  <section class="hl-hero">
+    <a href="/hebrew" class="hl-back">&#8592; Back to Hebrew</a>
+    <p class="hl-label">&#8213; The Sixth Letter &#8213;</p>
+    <div class="waw-hero-letter">ו</div>
+    <h1 class="hl-title">The Case for U</h1>
+    <p class="hl-sub">Why the Hebrew ו was always a U — never a V, never a W</p>
+  </section>
+
+  <!-- TABS NAV -->
+  <nav class="waw-tab-nav" aria-label="Study sections">
+    {TABS.map((t, i) => (
+      <button
+        type="button"
+        class={`waw-tab${i === 0 ? " active" : ""}`}
+        data-tab={t.id}
+        aria-selected={i === 0 ? "true" : "false"}
+      >
+        {t.label}
+      </button>
+    ))}
+  </nav>
+
+  <!-- ══ SECTION: THESIS ══ -->
+  <section class="waw-panel active" data-panel="thesis">
+    <div class="waw-inner">
+      <p class="waw-eyebrow">The Argument in Brief</p>
+      <h2 class="waw-panel-title">The Thesis</h2>
+      <div class="waw-thesis-body">
+        <div class="waw-thesis-letter">ו</div>
+        <div class="waw-thesis-text">
+          <p>
+            The sixth letter of the Hebrew alphabet — ו — is called "Vav" in modern Hebrew and transliterated as "W" in academic circles. Both are wrong.
+          </p>
+          <p>
+            The evidence overwhelmingly proves this letter always carried a <strong>U (oo)</strong> sound.
+          </p>
+          <p>
+            This matters: The Father's name is <strong>Yah-U-ah</strong> (יהוה). The Son's name is <strong>Yah-U-shua</strong> (יהושע).
+          </p>
+        </div>
+      </div>
+      <div class="waw-thesis-names">
+        <div class="waw-name-card waw-name-gold">
+          <div class="waw-name-heb">יהוה</div>
+          <div class="waw-name-trans">Yah · U · ah</div>
+          <div class="waw-name-label">The Father's Name</div>
+        </div>
+        <div class="waw-thesis-arrow">→</div>
+        <div class="waw-name-card waw-name-gold">
+          <div class="waw-name-heb">יהושע</div>
+          <div class="waw-name-trans">Yah · U · shua</div>
+          <div class="waw-name-label">The Son's Name</div>
+        </div>
+      </div>
+      <p class="waw-thesis-cta">Use the tabs above to walk through every layer of evidence.</p>
+    </div>
+  </section>
+
+  <!-- ══ SECTION: JOURNEY ══ -->
+  <section class="waw-panel" data-panel="journey">
+    <div class="waw-inner">
+      <p class="waw-eyebrow">How the Letter Traveled</p>
+      <h2 class="waw-panel-title">The Letter's Journey</h2>
+      <p class="waw-panel-sub">One letter. Three thousand years. The sound never changed — only the shape, and eventually the pronunciation under European influence.</p>
+
+      <!-- Chain -->
+      <div class="waw-chain-wrap">
+        <div class="waw-chain">
+          {CHAIN.map((node, i) => (
+            <>
+              <div class={`waw-node${node.correct ? " waw-node-gold" : " waw-node-red"}`}>
+                <div class="waw-node-letter">{node.letter}</div>
+                <div class="waw-node-label">{node.label}</div>
+                <div class="waw-node-sound">{node.sound}</div>
+                <div class="waw-node-era">{node.era}</div>
+                {!node.correct && <div class="waw-node-corrupt">corruption</div>}
+              </div>
+              {i < CHAIN.length - 1 && (
+                <div class={`waw-chain-arrow${CHAIN[i + 1].correct ? "" : " waw-chain-arrow-red"}`}>→</div>
+              )}
+            </>
+          ))}
+        </div>
+      </div>
+
+      <!-- Legend -->
+      <div class="waw-legend">
+        <span class="waw-legend-dot waw-legend-gold"></span><span class="waw-legend-text">Correct U sound — original, unbroken</span>
+        <span class="waw-legend-dot waw-legend-red"></span><span class="waw-legend-text">Corruption — European alteration</span>
+      </div>
+
+      <div class="waw-journey-prose">
+        <p>
+          The Phoenician Waw (𐤅) carried the U/OO sound. When the Greeks adopted the alphabet around 800 BCE, they preserved both its forms: Digamma (Ϝ) for the consonant /w/, and <strong>Upsilon (Υ)</strong> — literally "simple U" — for the vowel. The Romans inherited Upsilon as the letter V, but carved it angular in stone because chisels preferred straight lines. The sound remained U.
+        </p>
+        <p>
+          Two corruptions entered later. First: Anglo-Saxon scribes in ~700 CE needed to write the /w/ sound and doubled two U's (UU → VV in type), giving us the letter W — named "double-U" because that is exactly what it was. Second: As Ashkenazi Jewish communities settled in Germanic Europe, their pronunciation of Waw shifted to V under the influence of surrounding Germanic languages.
+        </p>
+        <p>
+          Neither corruption has ancient roots. The original sound — confirmed by Josephus, the Septuagint, the Dead Sea Scrolls, Ugaritic tablets, Yemenite tradition, and Hebrew University professors — was always <strong>U</strong>.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION: EVIDENCE ══ -->
+  <section class="waw-panel" data-panel="evidence">
+    <div class="waw-inner">
+      <p class="waw-eyebrow">The Scholarly Record</p>
+      <h2 class="waw-panel-title">Ten Pillars of Evidence</h2>
+      <p class="waw-panel-sub">Ten independent witnesses across 3,000 years of history — all pointing to the same conclusion.</p>
+
+      <div class="waw-pillars">
+        {EVIDENCE.map((e) => (
+          <div class="waw-pillar">
+            <div class="waw-pillar-num">{e.n}</div>
+            <div class="waw-pillar-text">{e.text}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="waw-evidence-note">
+        <p>These are not fringe sources. They are: a first-century Jewish historian writing under Roman authority, the oldest Greek translation of Scripture, the oldest physical Hebrew manuscripts ever found, ancient clay tablets predating Moses, and sitting professors at the Hebrew University of Jerusalem.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION: WORDS ══ -->
+  <section class="waw-panel" data-panel="words">
+    <div class="waw-inner">
+      <p class="waw-eyebrow">The Evidence in Plain Sight</p>
+      <h2 class="waw-panel-title">The Proof in Every Word</h2>
+      <p class="waw-panel-sub">The same letter ו appears in words everyone already pronounces correctly. If it sounds like U in one word, it sounds like U in all words — including the sacred names.</p>
+
+      <div class="waw-words-grid">
+        {WORDS.map((w) => (
+          <div class="waw-word-card">
+            <div class="waw-word-heb">{w.hebrew}</div>
+            <div class="waw-word-trans">{w.trans}</div>
+            <div class="waw-word-meaning">{w.meaning}</div>
+            <div class="waw-word-note">{w.note}</div>
+          </div>
+        ))}
+      </div>
+
+      <div class="waw-words-conclusion">
+        <p>
+          The same ו that gives "Roo-akh" its U sound is the same ו in יהוה and יהושע. There is no rule that makes ו into U in Ruach but V in the sacred names. Consistency demands Yah-<strong>U</strong>-ah and Yah-<strong>U</strong>-shua.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION: TIMELINE ══ -->
+  <section class="waw-panel" data-panel="timeline">
+    <div class="waw-inner">
+      <p class="waw-eyebrow">3,000 Years of Documentation</p>
+      <h2 class="waw-panel-title">The Full Historical Record</h2>
+      <p class="waw-panel-sub">Click any entry to expand the full account. The evidence is layered, consistent, and from independent sources across millennia.</p>
+
+      <div class="waw-timeline">
+        {TIMELINE.map((entry) => (
+          <div class={`waw-tl-item${entry.correct ? "" : " waw-tl-corrupt"}`} data-tl={entry.id}>
+            <button type="button" class="waw-tl-trigger" aria-expanded="false">
+              <div class="waw-tl-left">
+                <div class="waw-tl-dot"></div>
+                <div class="waw-tl-line-seg"></div>
+              </div>
+              <div class="waw-tl-header">
+                <span class="waw-tl-era">{entry.era}</span>
+                <span class={`waw-tl-sound-badge${entry.correct ? " waw-badge-gold" : " waw-badge-red"}`}>{entry.sound}</span>
+                <h3 class="waw-tl-title">{entry.title}</h3>
+                <p class="waw-tl-subtitle">{entry.subtitle}</p>
+              </div>
+              <div class="waw-tl-chevron" aria-hidden="true">&#8964;</div>
+            </button>
+            <div class="waw-tl-body" hidden>
+              <p class="waw-tl-content">{entry.body}</p>
+              {entry.sources.length > 0 && (
+                <div class="waw-tl-sources">
+                  <span class="waw-tl-sources-label">Sources</span>
+                  {entry.sources.map((s) => (
+                    <p class="waw-tl-source">{s}</p>
+                  ))}
+                </div>
+              )}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- ══ SECTION: VERDICT ══ -->
+  <section class="waw-panel" data-panel="verdict">
+    <div class="waw-inner waw-inner-verdict">
+      <p class="waw-eyebrow">The Conclusion</p>
+      <h2 class="waw-panel-title">The Verdict</h2>
+
+      <div class="waw-verdict-body">
+        <p>The Hebrew letter ו has always carried a <strong>U / OO</strong> sound.</p>
+        <p>The <strong>V</strong> pronunciation is a Germanic corruption from Ashkenazi influence. The only V in biblical Hebrew comes from Bet (ב).</p>
+        <p>The <strong>W</strong> pronunciation is a medieval English invention — two U's doubled together.</p>
+      </div>
+
+      <div class="waw-verdict-chain">
+        <span class="waw-vc-node">Phoenician Waw</span>
+        <span class="waw-vc-arrow">→</span>
+        <span class="waw-vc-node">Greek Upsilon ("simple U")</span>
+        <span class="waw-vc-arrow">→</span>
+        <span class="waw-vc-node">Latin V (= U in stone)</span>
+        <span class="waw-vc-arrow">→</span>
+        <span class="waw-vc-always">always a U</span>
+      </div>
+
+      <div class="waw-verdict-witnesses">
+        <p class="waw-verdict-wit-label">Confirmed by</p>
+        <div class="waw-witnesses">
+          <span class="waw-witness">Josephus</span>
+          <span class="waw-witness">Septuagint</span>
+          <span class="waw-witness">Dead Sea Scrolls</span>
+          <span class="waw-witness">Ugaritic Tablets</span>
+          <span class="waw-witness">Yemenite Tradition</span>
+          <span class="waw-witness">Samaritan Tradition</span>
+          <span class="waw-witness">Hebrew University</span>
+        </div>
+      </div>
+
+      <div class="waw-verdict-final">
+        <p class="waw-verdict-names">Yah · U · ah &nbsp;&nbsp;·&nbsp;&nbsp; Yah · U · shua</p>
+        <p class="waw-verdict-heb">יהוה &nbsp;&nbsp;·&nbsp;&nbsp; יהושע</p>
+        <p class="waw-verdict-caption">Therefore</p>
+      </div>
+    </div>
+  </section>
+</HebrewLayout>
+
+<script>
+  // ── Tab switching ──────────────────────────────────────────────────
+  const tabs = document.querySelectorAll<HTMLButtonElement>('.waw-tab');
+  const panels = document.querySelectorAll<HTMLElement>('.waw-panel');
+
+  tabs.forEach((tab) => {
+    tab.addEventListener('click', () => {
+      const target = tab.dataset.tab;
+      tabs.forEach((t) => {
+        t.classList.toggle('active', t.dataset.tab === target);
+        t.setAttribute('aria-selected', t.dataset.tab === target ? 'true' : 'false');
+      });
+      panels.forEach((p) => {
+        p.classList.toggle('active', p.dataset.panel === target);
+      });
+    });
+  });
+
+  // ── Timeline accordion (one open at a time) ────────────────────────
+  const tlItems = document.querySelectorAll<HTMLElement>('.waw-tl-item');
+
+  tlItems.forEach((item) => {
+    const trigger = item.querySelector<HTMLButtonElement>('.waw-tl-trigger');
+    const body = item.querySelector<HTMLElement>('.waw-tl-body');
+    const chevron = item.querySelector<HTMLElement>('.waw-tl-chevron');
+    if (!trigger || !body) return;
+
+    trigger.addEventListener('click', () => {
+      const isOpen = !body.hidden;
+
+      // Close all
+      tlItems.forEach((other) => {
+        const otherBody = other.querySelector<HTMLElement>('.waw-tl-body');
+        const otherTrigger = other.querySelector<HTMLButtonElement>('.waw-tl-trigger');
+        const otherChevron = other.querySelector<HTMLElement>('.waw-tl-chevron');
+        if (otherBody) otherBody.hidden = true;
+        if (otherTrigger) otherTrigger.setAttribute('aria-expanded', 'false');
+        if (otherChevron) otherChevron.style.transform = '';
+        other.classList.remove('waw-tl-open');
+      });
+
+      // Open clicked if it was closed
+      if (!isOpen) {
+        body.hidden = false;
+        trigger.setAttribute('aria-expanded', 'true');
+        if (chevron) chevron.style.transform = 'rotate(180deg)';
+        item.classList.add('waw-tl-open');
+      }
+    });
+  });
+</script>
+
+<style>
+  /* ── Hero letter ── */
+  .waw-hero-letter {
+    font-size: 5rem;
+    color: #c9a84c;
+    line-height: 1;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 40px rgba(201, 168, 76, 0.45);
+  }
+
+  /* ── Tab nav ── */
+  .waw-tab-nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.35rem;
+    padding: 1.25rem 1rem;
+    background: #0c0702;
+    border-bottom: 1px solid #2e1f0d;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .waw-tab {
+    background: transparent;
+    border: 1px solid #4a3218;
+    border-radius: 6px;
+    padding: 0.5rem 1.25rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #7a6840;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+  }
+  .waw-tab:hover {
+    border-color: #c9a84c;
+    color: #c9a84c;
+  }
+  .waw-tab.active {
+    background: linear-gradient(160deg, #2a1d0c 0%, #1e1309 100%);
+    border-color: #c9a84c;
+    color: #e8d48b;
+    box-shadow: 0 0 12px rgba(201, 168, 76, 0.15);
+  }
+
+  /* ── Panel system ── */
+  .waw-panel {
+    display: none;
+    padding: 3.5rem 1.5rem 5rem;
+  }
+  .waw-panel.active {
+    display: block;
+  }
+  .waw-inner {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .waw-inner-verdict {
+    max-width: 720px;
+    text-align: center;
+  }
+
+  /* ── Panel typography ── */
+  .waw-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin-bottom: 0.5rem;
+  }
+  .waw-panel-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 0.75rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #3a2510;
+  }
+  .waw-panel-sub {
+    font-size: 1rem;
+    color: #c4ad84;
+    font-style: italic;
+    line-height: 1.7;
+    margin-bottom: 2.5rem;
+  }
+
+  /* ══ THESIS ══ */
+  .waw-thesis-body {
+    display: flex;
+    gap: 2rem;
+    align-items: flex-start;
+    margin-bottom: 2.5rem;
+    flex-wrap: wrap;
+  }
+  .waw-thesis-letter {
+    font-size: 7rem;
+    color: #c9a84c;
+    line-height: 1;
+    flex-shrink: 0;
+    text-shadow: 0 0 30px rgba(201, 168, 76, 0.35);
+  }
+  .waw-thesis-text {
+    flex: 1;
+    min-width: 260px;
+  }
+  .waw-thesis-text p {
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #d9c9a8;
+    margin-bottom: 1rem;
+  }
+  .waw-thesis-text strong {
+    color: #e8d48b;
+  }
+  .waw-thesis-names {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+  }
+  .waw-thesis-arrow {
+    font-size: 2rem;
+    color: #8a6028;
+  }
+  .waw-name-card {
+    background: linear-gradient(160deg, #211608 0%, #1a1007 100%);
+    border: 2px solid #8a5a2a;
+    border-radius: 10px;
+    padding: 1.25rem 2rem;
+    text-align: center;
+    min-width: 200px;
+  }
+  .waw-name-gold {
+    border-color: #c9a84c;
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.12);
+  }
+  .waw-name-heb {
+    font-size: 2.4rem;
+    color: #e8d48b;
+    margin-bottom: 0.4rem;
+    direction: rtl;
+    text-shadow: 0 0 14px rgba(232, 212, 139, 0.25);
+  }
+  .waw-name-trans {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: #c9a84c;
+    letter-spacing: 2px;
+    margin-bottom: 0.3rem;
+  }
+  .waw-name-label {
+    font-size: 0.78rem;
+    color: #8a7450;
+    font-style: italic;
+  }
+  .waw-thesis-cta {
+    text-align: center;
+    font-style: italic;
+    color: #7a7468;
+    font-size: 0.9rem;
+    border-top: 1px solid #2e1f0d;
+    padding-top: 1.5rem;
+    margin-top: 0.5rem;
+  }
+
+  /* ══ JOURNEY ══ */
+  .waw-chain-wrap {
+    overflow-x: auto;
+    padding-bottom: 1rem;
+    margin-bottom: 1.5rem;
+  }
+  .waw-chain {
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    min-width: 700px;
+    padding: 1rem 0.5rem;
+  }
+  .waw-node {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    min-width: 110px;
+    text-align: center;
+    padding: 0.75rem 0.5rem;
+  }
+  .waw-node-letter {
+    width: 64px;
+    height: 64px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    border: 3px solid;
+    transition: box-shadow 0.2s;
+  }
+  .waw-node-gold .waw-node-letter {
+    background: radial-gradient(ellipse at 40% 35%, #2e1f0a, #1a1007);
+    border-color: #c9a84c;
+    color: #e8d48b;
+    box-shadow: 0 0 18px rgba(201, 168, 76, 0.25);
+  }
+  .waw-node-red .waw-node-letter {
+    background: radial-gradient(ellipse at 40% 35%, #2a0e0e, #1a0707);
+    border-color: #a85454;
+    color: #d48b8b;
+    box-shadow: 0 0 18px rgba(168, 84, 84, 0.25);
+  }
+  .waw-node-label {
+    font-size: 0.72rem;
+    color: #c4ad84;
+    line-height: 1.3;
+    max-width: 100px;
+  }
+  .waw-node-sound {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 1px;
+  }
+  .waw-node-gold .waw-node-sound { color: #c9a84c; }
+  .waw-node-red .waw-node-sound { color: #a85454; }
+  .waw-node-era {
+    font-size: 0.68rem;
+    color: #6a5838;
+  }
+  .waw-node-corrupt {
+    font-size: 0.62rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #a85454;
+    background: rgba(168, 84, 84, 0.12);
+    border: 1px solid #a8545430;
+    border-radius: 4px;
+    padding: 0.1rem 0.4rem;
+  }
+  .waw-chain-arrow {
+    font-size: 1.4rem;
+    color: #c9a84c;
+    align-self: center;
+    padding: 0 0.15rem;
+    flex-shrink: 0;
+  }
+  .waw-chain-arrow-red {
+    color: #a85454;
+  }
+  .waw-legend {
+    display: flex;
+    align-items: center;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+    margin-bottom: 2.5rem;
+    padding: 0.75rem 1rem;
+    background: rgba(30, 20, 9, 0.5);
+    border: 1px solid #2e1f0d;
+    border-radius: 8px;
+  }
+  .waw-legend-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+  .waw-legend-gold { background: #c9a84c; }
+  .waw-legend-red { background: #a85454; }
+  .waw-legend-text {
+    font-size: 0.85rem;
+    color: #8a7450;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+  .waw-legend-text:before { content: ''; }
+  .waw-journey-prose p {
+    font-size: 1rem;
+    line-height: 1.85;
+    color: #d9c9a8;
+    margin-bottom: 1.25rem;
+  }
+  .waw-journey-prose strong { color: #e8d48b; }
+
+  /* ══ EVIDENCE ══ */
+  .waw-pillars {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 2.5rem;
+  }
+  .waw-pillar {
+    display: flex;
+    gap: 1.25rem;
+    align-items: flex-start;
+    background: linear-gradient(135deg, #1e1409, #160f07);
+    border: 1px solid #3a2510;
+    border-radius: 8px;
+    padding: 1rem 1.25rem;
+    transition: border-color 0.2s;
+  }
+  .waw-pillar:hover { border-color: #c9a84c55; }
+  .waw-pillar-num {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #c9a84c;
+    min-width: 2rem;
+    flex-shrink: 0;
+    padding-top: 0.05rem;
+  }
+  .waw-pillar-text {
+    font-size: 0.97rem;
+    color: #d9c9a8;
+    line-height: 1.7;
+  }
+  .waw-evidence-note {
+    background: rgba(201, 168, 76, 0.06);
+    border: 1px solid #c9a84c30;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+  .waw-evidence-note p {
+    font-size: 0.95rem;
+    color: #c4ad84;
+    font-style: italic;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* ══ WORDS ══ */
+  .waw-words-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2.5rem;
+  }
+  .waw-word-card {
+    background: linear-gradient(160deg, #211608 0%, #1a1007 100%);
+    border: 2px solid #4a3218;
+    border-radius: 10px;
+    padding: 1.25rem;
+    transition: border-color 0.25s, box-shadow 0.25s;
+  }
+  .waw-word-card:hover {
+    border-color: #c9a84c;
+    box-shadow: 0 0 20px rgba(201, 168, 76, 0.1);
+  }
+  .waw-word-heb {
+    font-size: 2.2rem;
+    color: #e8d48b;
+    direction: rtl;
+    margin-bottom: 0.25rem;
+    line-height: 1.3;
+    text-shadow: 0 0 12px rgba(232, 212, 139, 0.2);
+  }
+  .waw-word-trans {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: #c9a84c;
+    letter-spacing: 1px;
+    margin-bottom: 0.2rem;
+  }
+  .waw-word-meaning {
+    font-size: 0.82rem;
+    color: #8a7450;
+    font-style: italic;
+    margin-bottom: 0.75rem;
+  }
+  .waw-word-note {
+    font-size: 0.9rem;
+    color: #c4ad84;
+    line-height: 1.6;
+    border-top: 1px solid #2e1f0d;
+    padding-top: 0.65rem;
+  }
+  .waw-words-conclusion {
+    background: rgba(201, 168, 76, 0.06);
+    border: 1px solid #c9a84c30;
+    border-radius: 8px;
+    padding: 1.25rem 1.5rem;
+  }
+  .waw-words-conclusion p {
+    font-size: 1rem;
+    color: #c4ad84;
+    line-height: 1.75;
+    margin: 0;
+    font-style: italic;
+  }
+  .waw-words-conclusion strong { color: #e8d48b; font-style: normal; }
+
+  /* ══ TIMELINE ══ */
+  .waw-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    border-left: 2px solid #3a2510;
+    padding-left: 0;
+    margin-left: 0.75rem;
+  }
+  .waw-tl-item {
+    position: relative;
+  }
+  .waw-tl-trigger {
+    width: 100%;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    display: flex;
+    align-items: flex-start;
+    gap: 0;
+    padding: 0;
+    transition: background 0.2s;
+  }
+  .waw-tl-trigger:hover .waw-tl-header {
+    background: rgba(201, 168, 76, 0.04);
+  }
+  .waw-tl-item.waw-tl-open > .waw-tl-trigger .waw-tl-header {
+    background: rgba(201, 168, 76, 0.06);
+  }
+  .waw-tl-corrupt.waw-tl-open > .waw-tl-trigger .waw-tl-header {
+    background: rgba(168, 84, 84, 0.06);
+  }
+  .waw-tl-left {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 2rem;
+    flex-shrink: 0;
+    margin-left: -1rem;
+  }
+  .waw-tl-dot {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #c9a84c;
+    border: 2px solid #1a1007;
+    box-shadow: 0 0 8px rgba(201, 168, 76, 0.4);
+    flex-shrink: 0;
+    margin-top: 1.25rem;
+    z-index: 1;
+  }
+  .waw-tl-corrupt .waw-tl-dot {
+    background: #a85454;
+    box-shadow: 0 0 8px rgba(168, 84, 84, 0.4);
+  }
+  .waw-tl-line-seg {
+    width: 2px;
+    flex: 1;
+    background: #3a2510;
+    min-height: 100%;
+  }
+  .waw-tl-header {
+    flex: 1;
+    padding: 1rem 0.75rem 1rem 1rem;
+    border-bottom: 1px solid #2e1f0d;
+    transition: background 0.2s;
+  }
+  .waw-tl-era {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 2px;
+    color: #8a6028;
+    display: block;
+    margin-bottom: 0.3rem;
+  }
+  .waw-tl-sound-badge {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.15rem 0.6rem;
+    border-radius: 4px;
+    margin-bottom: 0.5rem;
+  }
+  .waw-badge-gold {
+    background: rgba(201, 168, 76, 0.12);
+    color: #c9a84c;
+    border: 1px solid #c9a84c40;
+  }
+  .waw-badge-red {
+    background: rgba(168, 84, 84, 0.12);
+    color: #a85454;
+    border: 1px solid #a8545440;
+  }
+  .waw-tl-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #f0e0bf;
+    margin: 0 0 0.2rem;
+    line-height: 1.3;
+  }
+  .waw-tl-corrupt .waw-tl-title {
+    color: #d9b8a8;
+  }
+  .waw-tl-subtitle {
+    font-size: 0.85rem;
+    color: #8a7450;
+    font-style: italic;
+    margin: 0;
+    line-height: 1.4;
+  }
+  .waw-tl-chevron {
+    font-size: 1.2rem;
+    color: #6a5838;
+    padding: 1rem 0.75rem;
+    transition: transform 0.25s ease;
+    flex-shrink: 0;
+    align-self: center;
+  }
+  .waw-tl-body {
+    margin-left: 2.75rem;
+    padding: 1.25rem 1.25rem 1.5rem;
+    background: linear-gradient(135deg, #1a1208, #0e0904);
+    border-bottom: 1px solid #2e1f0d;
+  }
+  .waw-tl-content {
+    font-size: 0.97rem;
+    color: #d9c9a8;
+    line-height: 1.85;
+    margin: 0 0 1rem;
+  }
+  .waw-tl-sources {
+    border-top: 1px solid #2e1f0d;
+    padding-top: 0.75rem;
+  }
+  .waw-tl-sources-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #6a5838;
+    display: block;
+    margin-bottom: 0.5rem;
+  }
+  .waw-tl-source {
+    font-size: 0.82rem;
+    color: #7a7468;
+    font-style: italic;
+    line-height: 1.6;
+    margin: 0 0 0.35rem;
+    padding-left: 0.75rem;
+    border-left: 2px solid #3a2510;
+  }
+
+  /* ══ VERDICT ══ */
+  .waw-verdict-body {
+    margin-bottom: 2.5rem;
+  }
+  .waw-verdict-body p {
+    font-size: 1.05rem;
+    color: #d9c9a8;
+    line-height: 1.8;
+    margin-bottom: 0.75rem;
+  }
+  .waw-verdict-body strong { color: #e8d48b; }
+  .waw-verdict-chain {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin-bottom: 2.5rem;
+    padding: 1.25rem;
+    background: linear-gradient(135deg, #1e1409, #0e0904);
+    border: 1px solid #3a2510;
+    border-radius: 10px;
+  }
+  .waw-vc-node {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    color: #c4ad84;
+    padding: 0.25rem 0.6rem;
+    background: rgba(201, 168, 76, 0.07);
+    border: 1px solid #c9a84c25;
+    border-radius: 5px;
+  }
+  .waw-vc-arrow {
+    color: #6a5838;
+    font-size: 1rem;
+  }
+  .waw-vc-always {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #c9a84c;
+    letter-spacing: 1px;
+  }
+  .waw-verdict-witnesses {
+    margin-bottom: 3rem;
+  }
+  .waw-verdict-wit-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #6a5838;
+    margin-bottom: 0.75rem;
+  }
+  .waw-witnesses {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.5rem;
+  }
+  .waw-witness {
+    font-size: 0.82rem;
+    color: #c4ad84;
+    border: 1px solid #4a3218;
+    border-radius: 20px;
+    padding: 0.25rem 0.85rem;
+    background: rgba(58, 37, 16, 0.3);
+  }
+  .waw-verdict-final {
+    padding: 2rem;
+    background: linear-gradient(160deg, #211608, #0e0904);
+    border: 2px solid #c9a84c;
+    border-radius: 12px;
+    box-shadow: 0 0 40px rgba(201, 168, 76, 0.12);
+  }
+  .waw-verdict-caption {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin-bottom: 0.5rem;
+  }
+  .waw-verdict-names {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.1rem, 3vw, 1.6rem);
+    font-weight: 700;
+    color: #e8d48b;
+    letter-spacing: 2px;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 0 20px rgba(232, 212, 139, 0.3);
+  }
+  .waw-verdict-heb {
+    font-size: clamp(1.6rem, 4vw, 2.4rem);
+    color: #c9a84c;
+    direction: rtl;
+    margin-bottom: 1rem;
+    text-shadow: 0 0 20px rgba(201, 168, 76, 0.3);
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 640px) {
+    .waw-panel { padding: 2.5rem 1rem 4rem; }
+    .waw-tab { padding: 0.45rem 0.85rem; font-size: 0.7rem; }
+    .waw-thesis-letter { font-size: 5rem; }
+    .waw-words-grid { grid-template-columns: 1fr; }
+    .waw-tl-body { margin-left: 1.5rem; padding: 1rem; }
+    .waw-verdict-chain { flex-direction: column; text-align: center; }
+  }
+</style>
