@@ -1,12 +1,9 @@
 ---
-// Logo component — uses the Nazaryah mountain/desert logo image.
-// The source image lives at /public/images/nazaryah-logo.png — replace that
-// file to update the logo site-wide.
+// Logo component — uses the Nazaryah logo image at /public/images/nazaryah-logo.png
 interface Props {
   variant?: 'full' | 'icon-only';
   className?: string;
 }
-
 const { variant = 'full', className = '' } = Astro.props;
 ---
 
@@ -14,10 +11,8 @@ const { variant = 'full', className = '' } = Astro.props;
   <div class={`logo-full ${className}`}>
     <img
       src="/images/nazaryah-logo.png"
-      alt="Nazaryah"
+      alt="Nazaryah — Separated Unto Yah"
       class="logo-img"
-      width="220"
-      height="56"
       loading="eager"
       decoding="async"
     />
@@ -27,8 +22,6 @@ const { variant = 'full', className = '' } = Astro.props;
     src="/images/nazaryah-logo.png"
     alt="Nazaryah"
     class={`logo-img logo-icon-only ${className}`}
-    width="56"
-    height="56"
     loading="eager"
     decoding="async"
   />
@@ -41,22 +34,24 @@ const { variant = 'full', className = '' } = Astro.props;
   }
   .logo-img {
     display: block;
-    height: 56px;
+    height: 88px;
     width: auto;
     max-width: 100%;
     object-fit: contain;
-    transition: opacity 0.3s ease, transform 0.3s ease;
+    transition: opacity 0.25s ease;
   }
   .logo-full:hover .logo-img,
   .logo-icon-only:hover {
-    opacity: 0.88;
+    opacity: 0.9;
   }
-  /* Icon-only variant — square crop */
   .logo-icon-only {
-    height: 48px;
-    width: 48px;
+    height: 64px;
+    width: 64px;
+  }
+  @media (max-width: 900px) {
+    .logo-img { height: 72px; }
   }
   @media (max-width: 640px) {
-    .logo-img { height: 44px; }
+    .logo-img { height: 56px; }
   }
 </style>

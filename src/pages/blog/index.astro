@@ -128,14 +128,14 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5" id="posts-grid">
           {sortedPosts.map((post) => (
             <article
-              class="post-item card overflow-hidden"
+              class="post-item card group flex flex-col overflow-hidden"
               data-category={post.data.category}
             >
-              <div class="p-6">
-                <div class="tag mb-2" style="color: var(--bronze);">
+              <div class="p-6 flex flex-col flex-1">
+                <div class="tag mb-3" style="color: var(--bronze);">
                   {post.data.category}
                 </div>
-                <h2 class="text-xl font-semibold mb-3" style="font-family: var(--font-display); color: var(--deep-earth);">
+                <h2 class="post-title text-lg font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
                   <a
                     href={`/blog/${post.slug}`}
                     class="hover:text-[var(--bronze)] transition-colors"
@@ -144,30 +144,20 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
                     {post.data.title}
                   </a>
                 </h2>
-                <p class="text-sm mb-4 line-clamp-3" style="color: var(--ink-faded);">
+                <p class="text-sm leading-relaxed mb-5 line-clamp-4 flex-1" style="color: var(--ink-faded);">
                   {post.data.description}
                 </p>
 
-                {post.data.tags && post.data.tags.length > 0 && (
-                  <div class="flex flex-wrap gap-2 mb-4">
-                    {post.data.tags.slice(0, 3).map((tag) => (
-                      <span class="text-xs px-2 py-1 rounded" style="background: var(--parchment-dark); color: var(--ink-faded); font-family: var(--font-body);">
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                )}
-
-                <div class="flex items-center justify-between text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded);">
+                <div class="flex items-center justify-between text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
                   <time datetime={post.data.date.toISOString()}>
                     {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
                   </time>
                   <a
                     href={`/blog/${post.slug}`}
-                    class="hover:underline"
+                    class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
                     style="color: var(--bronze);"
                   >
-                    Read More &rarr;
+                    Read <span aria-hidden="true">&rarr;</span>
                   </a>
                 </div>
               </div>
@@ -379,6 +369,19 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
+  }
+  .line-clamp-4 {
+    display: -webkit-box;
+    -webkit-line-clamp: 4;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  /* Prevent long words from being cut off in narrow 5-column grid cards */
+  .post-title,
+  .post-title a {
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    hyphens: auto;
   }
 
   /* ── Dark mode adjustments ── */
