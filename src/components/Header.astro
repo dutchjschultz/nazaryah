@@ -15,7 +15,7 @@ const navItems = [
 ];
 ---
 
-<header class="sticky top-0 z-50 border-b border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] bg-[var(--parchment)]/95 dark:bg-[var(--deep-earth)]/95 backdrop-blur-sm" data-pagefind-ignore>
+<header class="site-header sticky top-0 z-50 border-b border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] backdrop-blur-sm" data-pagefind-ignore>
   <nav class="w-full pl-4 pr-6 md:pl-6 md:pr-10 py-3">
     <div class="flex items-center justify-between">
       <a href="/" class="no-underline group">
@@ -107,3 +107,12 @@ const navItems = [
     });
   });
 </script>
+
+<style>
+  .site-header {
+    background-color: rgba(245, 240, 230, 0.98);
+  }
+  :global(.dark) .site-header {
+    background-color: rgba(30, 22, 12, 0.98);
+  }
+</style>
