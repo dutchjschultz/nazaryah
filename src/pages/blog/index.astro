@@ -135,7 +135,7 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
                 <div class="tag mb-3" style="color: var(--bronze);">
                   {post.data.category}
                 </div>
-                <h3 class="post-title text-lg font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
+                <h3 class="post-title text-sm font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
                   <a
                     href={`/blog/${post.slug}`}
                     class="hover:text-[var(--bronze)] transition-colors"
@@ -383,6 +383,8 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
     word-wrap: break-word;
     hyphens: auto;
   }
+  /* Override global h3 (1.5rem) — shrink blog card titles 2pt */
+  h3.post-title { font-size: 1.05rem; line-height: 1.35; }
 
   /* ── Dark mode adjustments ── */
   :global(.dark) .dig-filter {
