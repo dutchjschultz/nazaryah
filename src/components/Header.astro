@@ -16,7 +16,7 @@ const navItems = [
 ---
 
 <header class="site-header sticky top-0 z-50 border-b border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] backdrop-blur-sm" data-pagefind-ignore>
-  <nav class="w-full pl-4 pr-6 md:pl-6 md:pr-10 py-3">
+  <nav class="w-full pl-4 pr-6 md:pl-6 md:pr-10 py-1">
     <div class="flex items-center justify-between">
       <a href="/" class="no-underline group">
         <Logo variant="full" />
@@ -110,15 +110,14 @@ const navItems = [
 
 <style>
   /* Header blends from dark (logo zone) → parchment.
-     Wide banner logo (~340px) + 24px padding = blend starts ~365px from left.
-     At 1440px wide that's ~25%; transition completes by ~38%. */
+     Logo is now ~520px wide at desktop; blend starts ~30%, completes ~46%. */
   .site-header {
     background: linear-gradient(
       90deg,
-      #0f0a04 0%,
-      #1a1208 18%,
-      rgba(70, 40, 12, 0.85) 28%,
-      rgba(245, 240, 230, 0.98) 40%,
+      #000000 0%,
+      #0f0a04 22%,
+      rgba(70, 40, 12, 0.80) 34%,
+      rgba(245, 240, 230, 0.98) 46%,
       rgba(245, 240, 230, 0.98) 100%
     );
   }
@@ -126,36 +125,34 @@ const navItems = [
   :global(.dark) .site-header {
     background: linear-gradient(
       90deg,
-      #0f0a04 0%,
-      #1a1208 22%,
-      rgba(25, 17, 8, 0.98) 42%,
+      #000000 0%,
+      #0f0a04 25%,
+      rgba(25, 17, 8, 0.98) 46%,
       rgba(30, 22, 12, 0.98) 100%
     );
   }
 
   @media (max-width: 900px) {
-    /* Logo shrinks to 260px wide — blend earlier */
     .site-header {
       background: linear-gradient(
         90deg,
-        #0f0a04 0%,
-        #1a1208 22%,
-        rgba(70, 40, 12, 0.85) 38%,
-        rgba(245, 240, 230, 0.98) 52%,
+        #000000 0%,
+        #0f0a04 26%,
+        rgba(70, 40, 12, 0.80) 44%,
+        rgba(245, 240, 230, 0.98) 58%,
         rgba(245, 240, 230, 0.98) 100%
       );
     }
   }
 
   @media (max-width: 640px) {
-    /* Logo shrinks to 200px wide */
     .site-header {
       background: linear-gradient(
         90deg,
-        #0f0a04 0%,
-        #1a1208 30%,
-        rgba(70, 40, 12, 0.85) 50%,
-        rgba(245, 240, 230, 0.98) 66%,
+        #000000 0%,
+        #0f0a04 36%,
+        rgba(70, 40, 12, 0.80) 56%,
+        rgba(245, 240, 230, 0.98) 72%,
         rgba(245, 240, 230, 0.98) 100%
       );
     }
