@@ -49,24 +49,12 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <section class="naz-section">
       <div class="naz-label">What We Reject</div>
       <h2>The doctrines we will not pretend are neutral</h2>
-      <div class="naz-grid">
-        <div class="naz-card">
-          <h3>Name erasure</h3>
-          <p>Substituting titles for the personal name of the Father is a documented scribal tradition — not a divine instruction.</p>
-        </div>
-        <div class="naz-card">
-          <h3>Torah dismissal</h3>
-          <p>"The Law was nailed to the cross" is a misreading of Colossians 2:14. The decrees nailed were a debt record — not the instructions of Yahuah.</p>
-        </div>
-        <div class="naz-card">
-          <h3>Creedal theology</h3>
-          <p>Council-manufactured doctrines shaped by political compromise are not the same as Scripture. We treat them as history, not authority.</p>
-        </div>
-        <div class="naz-card">
-          <h3>Comfortable silence</h3>
-          <p>We do not soften findings to protect denominational feelings. The text says what it says.</p>
-        </div>
-      </div>
+      <p>
+        From name erasure to Torah dismissal to the Trinity and the immortal soul — we have identified ten specific doctrines the Church got wrong, traced each one back to its origin, and laid out the scriptural case against it. These are not peripheral disagreements. They are the load-bearing errors that keep most believers from seeing the full picture.
+      </p>
+      <a href="/doctrines" class="naz-doctrine-link">
+        Read Our Ten Core Doctrines <span aria-hidden="true">&rarr;</span>
+      </a>
     </section>
 
     <hr class="naz-divider" />
@@ -211,6 +199,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .naz-name { color: #B85A30; font-weight: 600; }
+
+  .naz-doctrine-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    color: #B85A30;
+    text-decoration: none;
+    margin-top: 0.5rem;
+    transition: color 0.2s;
+  }
+  .naz-doctrine-link:hover { color: #d87856; }
 
   /* Dark mode */
   :global(.dark) .naz-hero h1,
