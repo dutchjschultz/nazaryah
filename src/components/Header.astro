@@ -109,38 +109,53 @@ const navItems = [
 </script>
 
 <style>
-  /* Header blends from dark (logo zone) → parchment */
+  /* Header blends from dark (logo zone) → parchment.
+     Wide banner logo (~340px) + 24px padding = blend starts ~365px from left.
+     At 1440px wide that's ~25%; transition completes by ~38%. */
   .site-header {
     background: linear-gradient(
       90deg,
       #0f0a04 0%,
-      #1a1208 15%,
-      rgba(70, 40, 12, 0.88) 26%,
-      rgba(245, 240, 230, 0.98) 38%,
+      #1a1208 18%,
+      rgba(70, 40, 12, 0.85) 28%,
+      rgba(245, 240, 230, 0.98) 40%,
       rgba(245, 240, 230, 0.98) 100%
     );
   }
 
   :global(.dark) .site-header {
-    /* Dark mode: stays dark across the full header, slightly lighter on right */
     background: linear-gradient(
       90deg,
       #0f0a04 0%,
-      #1a1208 20%,
-      rgba(25, 17, 8, 0.98) 40%,
+      #1a1208 22%,
+      rgba(25, 17, 8, 0.98) 42%,
       rgba(30, 22, 12, 0.98) 100%
     );
   }
 
-  @media (max-width: 640px) {
-    /* Mobile: logo is smaller, blend starts earlier */
+  @media (max-width: 900px) {
+    /* Logo shrinks to 260px wide — blend earlier */
     .site-header {
       background: linear-gradient(
         90deg,
         #0f0a04 0%,
-        #1a1208 28%,
-        rgba(70, 40, 12, 0.88) 46%,
-        rgba(245, 240, 230, 0.98) 62%,
+        #1a1208 22%,
+        rgba(70, 40, 12, 0.85) 38%,
+        rgba(245, 240, 230, 0.98) 52%,
+        rgba(245, 240, 230, 0.98) 100%
+      );
+    }
+  }
+
+  @media (max-width: 640px) {
+    /* Logo shrinks to 200px wide */
+    .site-header {
+      background: linear-gradient(
+        90deg,
+        #0f0a04 0%,
+        #1a1208 30%,
+        rgba(70, 40, 12, 0.85) 50%,
+        rgba(245, 240, 230, 0.98) 66%,
         rgba(245, 240, 230, 0.98) 100%
       );
     }
