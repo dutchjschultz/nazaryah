@@ -1,0 +1,279 @@
+---
+import HebrewLayout from '../../../layouts/HebrewLayout.astro';
+import { messiahLetters } from '../../../data/messiah-letters';
+
+export function getStaticPaths() {
+  return messiahLetters.map((l) => ({ params: { letter: l.slug } }));
+}
+
+const { letter } = Astro.params;
+const idx   = messiahLetters.findIndex((l) => l.slug === letter);
+const data  = messiahLetters[idx];
+const prev  = idx > 0  ? messiahLetters[idx - 1] : null;
+const next  = idx < messiahLetters.length - 1 ? messiahLetters[idx + 1] : null;
+---
+
+<HebrewLayout
+  title={`${data.name} — Yahushua in Every Letter — Nazaryah`}
+  description={`${data.name}: ${data.concept}. Yahushua in the Hebrew letter ${data.name} — scripture study.`}
+>
+  <!-- Hero -->
+  <section class="hl-hero ltr-hero">
+    <a href="/hebrew/messiah-letters" class="hl-back">&#8592; All Letters</a>
+    <p class="hl-label">&#8213; Letter {data.num} of 22 &#8213;</p>
+    <div class="hero-char">{data.char}</div>
+    <h1 class="hl-title">{data.name}</h1>
+    <p class="hl-sub">{data.meanings}</p>
+  </section>
+
+  <!-- Study content -->
+  <section class="hl-section study-section">
+
+    <!-- Bridge quote -->
+    <p class="bridge">{data.bridge}</p>
+
+    <!-- Concept line -->
+    <div class="concept-line">
+      <span class="concept-label">Concept —</span>
+      {data.concept}
+    </div>
+
+    <div class="section-rule"></div>
+
+    <!-- Connection paragraph -->
+    <p class="connection">{data.connection}</p>
+
+    <!-- Verses -->
+    <div class="verses">
+      {data.verses.map((v) => (
+        <div class="verse-block">
+          <span class="verse-ref">{v.ref}</span>
+          <span class="verse-text">{v.text}</span>
+        </div>
+      ))}
+    </div>
+
+    <!-- Study notes -->
+    {data.studyNotes && data.studyNotes.map((note) => (
+      <div class="study-note">
+        <span class="note-label">{note.label}</span>
+        <p class="note-text" set:html={note.text} />
+      </div>
+    ))}
+
+  </section>
+
+  <!-- Prev / Next navigation -->
+  <nav class="letter-nav">
+    {prev ? (
+      <a href={`/hebrew/messiah-letters/${prev.slug}`} class="nav-letter nav-prev">
+        <span class="nav-dir">&#8592; Previous</span>
+        <span class="nav-char">{prev.char}</span>
+        <span class="nav-name">{prev.name}</span>
+      </a>
+    ) : <div />}
+
+    <a href="/hebrew/messiah-letters" class="nav-all">All 22 Letters</a>
+
+    {next ? (
+      <a href={`/hebrew/messiah-letters/${next.slug}`} class="nav-letter nav-next">
+        <span class="nav-dir">Next &#8594;</span>
+        <span class="nav-char">{next.char}</span>
+        <span class="nav-name">{next.name}</span>
+      </a>
+    ) : <div />}
+  </nav>
+</HebrewLayout>
+
+<style>
+  /* ── Hero overrides for letter page ── */
+  .ltr-hero {
+    padding-bottom: 2.5rem;
+  }
+
+  .hero-char {
+    font-size: clamp(4rem, 10vw, 7rem);
+    color: #C9A84C;
+    direction: rtl;
+    line-height: 1;
+    margin: 0.5rem auto 0.25rem;
+    opacity: 0.9;
+  }
+
+  /* ── Study section ── */
+  .study-section {
+    max-width: 820px !important;
+  }
+
+  .bridge {
+    font-size: 1.05rem;
+    color: #A89878;
+    font-style: italic;
+    line-height: 1.85;
+    margin-bottom: 1.25rem;
+  }
+
+  .concept-line {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    color: #C9A84C;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin-bottom: 1.75rem;
+  }
+  .concept-label {
+    color: #5a4030;
+    margin-right: 8px;
+  }
+
+  .section-rule {
+    width: 100%;
+    height: 1px;
+    background: rgba(201,168,76,0.15);
+    margin-bottom: 1.75rem;
+  }
+
+  .connection {
+    font-size: 1.05rem;
+    color: #A89878;
+    line-height: 1.9;
+    margin-bottom: 2rem;
+  }
+
+  /* ── Verses ── */
+  .verses {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid rgba(201,168,76,0.2);
+    border-radius: 2px;
+    overflow: hidden;
+    margin-bottom: 1.5rem;
+  }
+
+  .verse-block {
+    background: rgba(201,168,76,0.04);
+    padding: 1.1rem 1.4rem;
+    border-bottom: 1px solid rgba(201,168,76,0.12);
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+  }
+  .verse-block:last-child { border-bottom: none; }
+
+  .verse-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #C9A84C;
+    text-transform: uppercase;
+  }
+
+  .verse-text {
+    font-size: 1rem;
+    color: #e8e0cc;
+    line-height: 1.75;
+    font-style: italic;
+  }
+
+  /* ── Study note ── */
+  .study-note {
+    background: rgba(122,46,26,0.1);
+    border-left: 2px solid rgba(122,46,26,0.45);
+    padding: 1rem 1.25rem;
+    border-radius: 0 2px 2px 0;
+    margin-bottom: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+  }
+
+  .note-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.25em;
+    color: #A0522D;
+    text-transform: uppercase;
+  }
+
+  .note-text {
+    font-size: 0.95rem;
+    color: #A89878;
+    line-height: 1.75;
+    margin: 0;
+  }
+  .note-text :global(strong) { color: #e8e0cc; font-weight: 500; }
+  .note-text :global(em)     { color: #C9A84C; font-style: italic; }
+
+  /* ── Prev / Next nav ── */
+  .letter-nav {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    gap: 1rem;
+    padding: 2rem 1.5rem 3rem;
+    max-width: 820px;
+    margin: 0 auto;
+    border-top: 1px solid rgba(201,168,76,0.12);
+  }
+
+  .nav-letter {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    text-decoration: none;
+    padding: 0.75rem 1rem;
+    border: 1px solid rgba(201,168,76,0.15);
+    border-radius: 4px;
+    background: rgba(201,168,76,0.03);
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .nav-letter:hover {
+    border-color: rgba(201,168,76,0.4);
+    background: rgba(201,168,76,0.08);
+  }
+
+  .nav-prev { text-align: left; }
+  .nav-next { text-align: right; align-items: flex-end; }
+
+  .nav-dir {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    color: #5a3e1a;
+    text-transform: uppercase;
+  }
+
+  .nav-char {
+    font-size: 2rem;
+    color: #C9A84C;
+    direction: rtl;
+    line-height: 1;
+  }
+
+  .nav-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.1em;
+    color: #c4ad84;
+    text-transform: uppercase;
+  }
+
+  .nav-all {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #8B6914;
+    text-decoration: none;
+    text-align: center;
+    white-space: nowrap;
+    transition: color 0.2s;
+  }
+  .nav-all:hover { color: #C9A84C; }
+
+  @media (max-width: 560px) {
+    .letter-nav { grid-template-columns: 1fr 1fr; grid-template-rows: auto auto; }
+    .nav-all { grid-column: 1 / -1; order: -1; padding-bottom: 0.5rem; }
+    .nav-next { align-items: flex-end; }
+  }
+</style>
