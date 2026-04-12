@@ -97,7 +97,7 @@ const sections = [
     <div class="hub-grid">
       {sections.map((s) => (
         <a href={s.href} class="hub-card">
-          <div class="hub-scripts">
+          <div class={`hub-scripts${[...s.modern].length > 3 ? ' hub-scripts--long' : ''}`}>
             <span class="hub-modern">{s.modern}</span>
             <span class="hub-paleo">{s.paleo}</span>
           </div>
@@ -165,6 +165,12 @@ const sections = [
     color: #b88540;
     line-height: 1;
     text-align: right;
+  }
+  .hub-scripts--long .hub-modern {
+    font-size: calc(3rem - 2px);
+  }
+  .hub-scripts--long .hub-paleo {
+    font-size: calc(2.6rem - 2px);
   }
   .hub-title {
     font-family: 'Cinzel', serif;
