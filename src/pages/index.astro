@@ -31,42 +31,177 @@ const displayPosts = featuredCategories.map((category) => ({
   description="Explore Scripture through original languages, fresh perspectives, and rich historical context. A modern biblical studies platform for serious learners."
 >
   <!-- Hero Section -->
-  <section class="relative py-24 md:py-32 lg:py-40 overflow-hidden">
-    <!-- Logo Watermark -->
-    <div class="absolute inset-0 flex items-center justify-center pointer-events-none" aria-hidden="true">
-      <img
-        src="/images/nazaryah-logo.png"
-        alt=""
-        class="w-full h-auto max-h-full object-contain"
-        style="opacity: 0.055; filter: sepia(0.6) saturate(0.8) brightness(1.1) hue-rotate(-5deg);"
-      />
-    </div>
-    <div class="container mx-auto px-6 relative z-10">
-      <div class="max-w-4xl mx-auto text-center">
-        <h1 class="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight" style="font-family: var(--font-display); color: var(--deep-earth);">
-          Exploring Scripture with <span style="color: var(--bronze);">Scholarly Integrity</span>
+  <section class="hero-section relative overflow-hidden">
+    <!-- Subtle grid texture overlay -->
+    <div class="absolute inset-0 pointer-events-none" aria-hidden="true" style="
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 39px, rgba(0,0,0,0.022) 40px),
+        repeating-linear-gradient(90deg, transparent, transparent 39px, rgba(0,0,0,0.022) 40px);
+      z-index: 0;
+    "></div>
+
+    <div class="hero-grid relative z-10">
+      <!-- LEFT: Logo panel (dark background matches logo image) -->
+      <div class="logo-panel">
+        <img
+          src="/images/nazaryah-logo.png"
+          alt="Nazaryah — Separated Unto Yah"
+          class="logo-panel-img"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+
+      <!-- RIGHT: Content -->
+      <div class="content-panel">
+        <p class="hero-eyebrow">Biblical Studies</p>
+        <h1 class="hero-headline">
+          The Doctrine Was Built<br>
+          To Keep You <em>Comfortable.</em>
         </h1>
-        <p class="text-lg md:text-xl leading-relaxed mb-10 max-w-3xl mx-auto" style="color: var(--ink-faded);">
-          Nazaryah is a modern biblical studies platform that bridges academic scholarship and general readership,
-          emphasizing original languages, fresh perspectives, and rich contextual understanding without denominational bias.
+        <div class="hero-rule"></div>
+        <p class="hero-body">
+          Comfortable people don't ask questions. Nazaryah is for the ones who already started asking.
         </p>
-        <div class="flex flex-col sm:flex-row gap-4 justify-center">
-          <a
-            href="/blog"
-            class="btn btn-stone px-8 py-3"
-          >
-            Explore Studies
-          </a>
-          <a
-            href="/about"
-            class="btn btn-outline px-8 py-3"
-          >
-            Learn More
-          </a>
+        <div class="hero-cta-row">
+          <a href="/blog" class="btn btn-primary">Explore Studies</a>
+          <a href="/about" class="btn btn-outline">Learn More</a>
         </div>
       </div>
     </div>
   </section>
+
+  <style>
+    .hero-section {
+      width: 100%;
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 360px 1fr;
+      min-height: 420px;
+    }
+
+    /* ── LEFT PANEL: dark, logo centered ── */
+    .logo-panel {
+      position: relative;
+      background: #0f0a04;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 2.5rem 1.5rem;
+      overflow: hidden;
+    }
+
+    /* Subtle warm radial glow behind the logo */
+    .logo-panel::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 45%, rgba(180, 120, 30, 0.18) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    /* Corner ornaments */
+    .logo-panel::after {
+      content: '';
+      position: absolute;
+      top: 10px; left: 10px;
+      width: 20px; height: 20px;
+      border-top: 1.5px solid rgba(196, 154, 78, 0.45);
+      border-left: 1.5px solid rgba(196, 154, 78, 0.45);
+    }
+
+    .logo-panel-img {
+      position: relative;
+      z-index: 1;
+      width: 100%;
+      max-width: 320px;
+      height: auto;
+      object-fit: contain;
+    }
+
+    /* ── RIGHT PANEL ── */
+    .content-panel {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 1.4rem;
+      padding: 3.5rem 3rem 3.5rem 3.5rem;
+    }
+
+    .hero-eyebrow {
+      font-family: var(--font-display);
+      font-size: 11px;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--ink-faded);
+      opacity: 0.75;
+      margin: 0;
+    }
+
+    .hero-headline {
+      font-family: var(--font-display);
+      font-size: clamp(2rem, 3.5vw, 2.8rem);
+      font-weight: 700;
+      line-height: 1.15;
+      color: var(--color-primary-text);
+      margin: 0;
+    }
+
+    .hero-headline em {
+      font-style: italic;
+      color: var(--gold-light, #c49a4e);
+    }
+
+    .hero-rule {
+      width: 48px;
+      height: 1.5px;
+      background: var(--color-border-strong);
+      opacity: 0.65;
+    }
+
+    .hero-body {
+      font-family: var(--font-body);
+      font-size: 1.15rem;
+      line-height: 1.8;
+      color: var(--color-secondary-text);
+      max-width: 480px;
+      margin: 0;
+    }
+
+    .hero-cta-row {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-top: 0.25rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 820px) {
+      .hero-grid {
+        grid-template-columns: 1fr;
+        min-height: unset;
+      }
+
+      .logo-panel {
+        padding: 2rem 1.5rem;
+        min-height: 220px;
+      }
+
+      .logo-panel-img {
+        max-width: 260px;
+      }
+
+      .content-panel {
+        padding: 2.5rem 1.5rem 2.5rem 1.5rem;
+      }
+
+      .hero-headline {
+        font-size: 1.9rem;
+      }
+    }
+  </style>
 
   <!-- Featured Studies — 5 across, one latest post per category -->
   <section class="py-20 md:py-24 border-t border-[var(--sand-dark)]">

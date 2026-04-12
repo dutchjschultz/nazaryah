@@ -18,6 +18,10 @@
   --color-accent-hover: #7d3414;          /* Darker baked clay */
   --color-accent-light: #c2613a;          /* Lighter clay highlight */
 
+  /* ── Gold ── */
+  --gold-light:     #c49a4e;
+  --gold:           #8a6520;
+
   /* ── Stone & earth ── */
   --stone:          #8B7D6B;
   --stone-light:    #A89880;
