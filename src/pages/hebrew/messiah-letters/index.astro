@@ -24,7 +24,10 @@ import { messiahLetters } from '../../../data/messiah-letters';
     <div class="letter-grid">
       {messiahLetters.map((l) => (
         <a href={`/hebrew/messiah-letters/${l.slug}`} class="letter-tile">
-          <span class="tile-char">{l.char}</span>
+          <div class="tile-scripts">
+            <span class="tile-char">{l.char}</span>
+            <span class="tile-paleo">{l.paleo}</span>
+          </div>
           <span class="tile-name">{l.name}</span>
           <span class="tile-num">{l.num} of 22</span>
           <span class="tile-concept">{l.concept}</span>
@@ -72,11 +75,24 @@ import { messiahLetters } from '../../../data/messiah-letters';
     transform: translateY(-2px);
   }
 
+  .tile-scripts {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+
   .tile-char {
-    font-size: 2.2rem;
+    font-size: 2rem;
     color: #e8c97a;
     line-height: 1;
     direction: rtl;
+  }
+
+  .tile-paleo {
+    font-size: 1.6rem;
+    color: #8B6914;
+    line-height: 1;
   }
 
   .tile-name {

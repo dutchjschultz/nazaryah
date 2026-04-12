@@ -11,6 +11,7 @@ export interface StudyNote {
 export interface MessiahLetter {
   num: number;
   char: string;
+  paleo: string;
   name: string;
   slug: string;
   meanings: string;
@@ -23,7 +24,7 @@ export interface MessiahLetter {
 
 export const messiahLetters: MessiahLetter[] = [
   {
-    num: 1, char: 'א', name: 'Aleph', slug: 'aleph',
+    num: 1, char: 'א', paleo: '𐤀', name: 'Aleph', slug: 'aleph',
     meanings: 'Strength · Leader · First',
     bridge: '"The letter Aleph speaks of the one who stands first and above all. Yahushua fulfills that in the most specific way — Yahuah appointed and ordained Him as firstborn, the first man through the door of resurrection and the first of an entirely new creation."',
     concept: 'First of the New Creation',
@@ -38,7 +39,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 2, char: 'ב', name: 'Bet', slug: 'bet',
+    num: 2, char: 'ב', paleo: '𐤁', name: 'Bet', slug: 'bet',
     meanings: 'House · Dwelling · Inside',
     bridge: '"The letter Bet means house — a dwelling, an inner space where someone takes up residence. Yahushua was not a symbol of where Yahuah lives. He was the actual dwelling place. All the fullness of Yahuah lived inside Him bodily."',
     concept: 'The Dwelling Place of Yahuah',
@@ -53,7 +54,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 3, char: 'ג', name: 'Gimel', slug: 'gimel',
+    num: 3, char: 'ג', paleo: '𐤂', name: 'Gimel', slug: 'gimel',
     meanings: 'Lift Up · Carry · Bestow',
     bridge: '"The letter Gimel carries the meaning of lifting up — raising something or someone to a higher place. Yahushua made this the centerpiece of His own testimony about Himself. He was not just lifted up — He said that lifting was the very reason He came."',
     concept: 'The Lifted Up One',
@@ -65,7 +66,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 4, char: 'ד', name: 'Dalet', slug: 'dalet',
+    num: 4, char: 'ד', paleo: '𐤃', name: 'Dalet', slug: 'dalet',
     meanings: 'Door · Gate · Entrance',
     bridge: '"The letter Dalet is a door — the only way in or out. Yahushua did not say He knew the door, or that He could show you the door. He said He was the door. There is no other entrance, no side way in, no other path to the Father."',
     concept: 'The Only Door',
@@ -77,7 +78,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 5, char: 'ה', name: 'Hey', slug: 'hey',
+    num: 5, char: 'ה', paleo: '𐤄', name: 'Hey', slug: 'hey',
     meanings: 'Behold · Reveal · Look Here',
     bridge: '"The letter Hey means behold — to reveal, to show, to make visible what was hidden. Yahushua is the full revelation of the Father made visible to human eyes. No one had ever seen the Father — Yahushua made Him seeable."',
     concept: 'The Revealed One',
@@ -89,7 +90,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 6, char: 'ו', name: 'Waw', slug: 'waw',
+    num: 6, char: 'ו', paleo: '𐤅', name: 'Waw', slug: 'waw',
     meanings: 'Nail · Hook · To Fasten',
     bridge: '"The letter Waw is a nail — a peg or spike used to fasten and hold. There is no more direct fulfillment of a Hebrew letter in all of Scripture than this one. Yahushua was nailed, and it was written about Him specifically a thousand years before it happened."',
     concept: 'The Pierced One',
@@ -104,7 +105,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 7, char: 'ז', name: 'Zayin', slug: 'zayin',
+    num: 7, char: 'ז', paleo: '𐤆', name: 'Zayin', slug: 'zayin',
     meanings: 'Sword · Weapon · To Cut',
     bridge: '"The letter Zayin is a sword or blade — something that cuts and divides. Yahushua does not come in this age with a physical sword but with the sword of His word, and the Messianic Servant declared that Yahuah had made His very mouth into a sharp blade."',
     concept: 'The Word That Cuts',
@@ -116,7 +117,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 8, char: 'ח', name: 'Chet', slug: 'chet',
+    num: 8, char: 'ח', paleo: '𐤇', name: 'Chet', slug: 'chet',
     meanings: 'Fence · Enclosure · Protection',
     bridge: '"The letter Chet is a fence or enclosure — a boundary that keeps what is inside safe and keeps the enemy out. Yahushua is that fence for His flock. He stands between them and everything that would destroy them, and He declared that nothing can breach that boundary."',
     concept: 'The Protector of the Flock',
@@ -128,7 +129,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 9, char: 'ט', name: 'Tet', slug: 'tet',
+    num: 9, char: 'ט', paleo: '𐤈', name: 'Tet', slug: 'tet',
     meanings: 'Good · Surround · Coiled',
     bridge: '"The letter Tet is the first letter of Tov — the Hebrew word for good. Yahushua took that word and made it His own declaration. He is not just a good shepherd, He is the good shepherd — a specific, irreplaceable title He claimed for Himself alone."',
     concept: 'The Good Shepherd',
@@ -140,7 +141,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 10, char: 'י', name: 'Yod', slug: 'yod',
+    num: 10, char: 'י', paleo: '𐤉', name: 'Yod', slug: 'yod',
     meanings: 'Hand · Arm · Deed',
     bridge: '"The letter Yod is the smallest in the aleph-bet — a single stroke representing the hand or arm at work. Isaiah 53 asks to whom the arm of Yahuah has been revealed. The answer is the Servant. Yahushua is that arm made visible — and His name begins with the Yod."',
     concept: 'The Arm of Yahuah Revealed',
@@ -152,7 +153,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 11, char: 'כ', name: 'Kaf', slug: 'kaf',
+    num: 11, char: 'כ', paleo: '𐤊', name: 'Kaf', slug: 'kaf',
     meanings: 'Open Palm · Bend · Submission',
     bridge: '"The letter Kaf is an open bending palm — the hand extended in submission or in receiving. Yahushua both submitted fully to the Father and is the one before whom every knee will bow. He is the Kaf in both directions — the one who bent, and the one before whom all will bend."',
     concept: 'Every Knee Will Bow',
@@ -164,7 +165,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 12, char: 'ל', name: 'Lamed', slug: 'lamed',
+    num: 12, char: 'ל', paleo: '𐤋', name: 'Lamed', slug: 'lamed',
     meanings: 'Staff · Authority · To Teach',
     bridge: '"The letter Lamed is the tallest in the aleph-bet — a shepherd\'s staff representing teaching authority and guidance. Yahushua taught as no man before or after Him — not by quoting other teachers but by His own authority. The crowds noticed immediately."',
     concept: 'The Authority That Teaches',
@@ -176,7 +177,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 13, char: 'מ', name: 'Mem', slug: 'mem',
+    num: 13, char: 'מ', paleo: '𐤌', name: 'Mem', slug: 'mem',
     meanings: 'Mighty · Revealed · Hidden',
     bridge: '"The letter Mem literally stands for water — it is the ancient picture of waves on the surface. Yahushua took that meaning and made it personal. He did not point to water or describe water — He claimed to be the source of it."',
     concept: 'Living Water',
@@ -191,7 +192,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 14, char: 'נ', name: 'Nun', slug: 'nun',
+    num: 14, char: 'נ', paleo: '𐤍', name: 'Nun', slug: 'nun',
     meanings: 'Seed · Heir · Continue',
     bridge: '"The letter Nun pictures a seed — life through death, continuation, the faithful heir. Yahushua used this image about Himself directly. He is the grain of wheat that fell into the ground, and through that death He produced a harvest that will never end."',
     concept: 'The Seed That Died and Lives',
@@ -203,7 +204,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 15, char: 'ס', name: 'Samech', slug: 'samech',
+    num: 15, char: 'ס', paleo: '𐤎', name: 'Samech', slug: 'samech',
     meanings: 'Prop · Support · Uphold',
     bridge: '"The letter Samech is a prop or support — a structure that holds everything else up. Hebrews 1:3 says Yahushua upholds all things by the word of His power. This is written specifically and exclusively about the Son."',
     concept: 'The One Who Upholds',
@@ -215,7 +216,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 16, char: 'ע', name: 'Ayin', slug: 'ayin',
+    num: 16, char: 'ע', paleo: '𐤏', name: 'Ayin', slug: 'ayin',
     meanings: 'Eye · See · Understand',
     bridge: '"The letter Ayin is an eye — sight, understanding, discernment. Yahushua opened blind eyes both literally and spiritually, and Isaiah prophesied this specifically about the Messianic Servant centuries before He arrived."',
     concept: 'He Who Opens Blind Eyes',
@@ -227,7 +228,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 17, char: 'פ', name: 'Pey', slug: 'pey',
+    num: 17, char: 'פ', paleo: '𐤐', name: 'Pey', slug: 'pey',
     meanings: 'Mouth · Word · Speak',
     bridge: '"The letter Pey is a mouth — the spoken word, the breath, the command released. Yahushua is not a man who carried messages from Yahuah. He is explicitly called the Word itself — the living spoken expression of the Father made flesh."',
     concept: 'The Living Word',
@@ -239,7 +240,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 18, char: 'צ', name: 'Tzadi', slug: 'tzadi',
+    num: 18, char: 'צ', paleo: '𐤑', name: 'Tzadi', slug: 'tzadi',
     meanings: 'Righteous · Just · To Hunt',
     bridge: '"The letter Tzadi carries the meaning of righteousness. Yahushua is not just a righteous man — He is righteousness itself for those who believe. Jeremiah named Him directly: Yahuah Our Righteousness. That is not a title. It is His name."',
     concept: 'Our Righteousness',
@@ -251,7 +252,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 19, char: 'ק', name: 'Qof', slug: 'qof',
+    num: 19, char: 'ק', paleo: '𐤒', name: 'Qof', slug: 'qof',
     meanings: 'Sun Rising · New Cycle · What Is Coming',
     bridge: '"The letter Qof pictures the sun rising at the horizon — darkness broken, a new cycle beginning, something arriving from beyond what the eye could see. Yahushua did not just perform resurrections. He declared Himself to be the resurrection — the sunrise that ends every darkness permanently."',
     concept: 'The Resurrection and the Life',
@@ -263,7 +264,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 20, char: 'ר', name: 'Resh', slug: 'resh',
+    num: 20, char: 'ר', paleo: '𐤓', name: 'Resh', slug: 'resh',
     meanings: 'Head · Chief · Highest',
     bridge: '"The letter Resh is the head of a man — the chief, the highest position, the one at the top. Yahushua was rejected as the cornerstone by the very builders who should have recognized Him — and then Yahuah made Him the head over everything."',
     concept: 'The Chief Cornerstone',
@@ -275,7 +276,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 21, char: 'ש', name: 'Shin', slug: 'shin',
+    num: 21, char: 'ש', paleo: '𐤔', name: 'Shin', slug: 'shin',
     meanings: 'Consume · Fire · Destroy',
     bridge: '"The letter Shin pictures teeth — something that consumes and destroys what is placed before it. Yahushua said He came to send fire on the earth, and He is the one who baptizes not just with water but with fire. The Shin belongs to Him."',
     concept: 'The Baptizer With Fire',
@@ -287,7 +288,7 @@ export const messiahLetters: MessiahLetter[] = [
     ],
   },
   {
-    num: 22, char: 'ת', name: 'Tav', slug: 'tav',
+    num: 22, char: 'ת', paleo: '𐤕', name: 'Tav', slug: 'tav',
     meanings: 'Seal · Covenant · Complete',
     bridge: '"The letter Tav means seal, covenant, and complete — it is the final mark, the last word. Yahushua is every one of those things: He became the New Covenant in the flesh, He sealed it with His blood, and on the cross He declared it complete with the words \'It is finished.\'"',
     concept: 'Last Adam — New Covenant',

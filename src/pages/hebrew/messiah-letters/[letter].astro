@@ -21,7 +21,14 @@ const next  = idx < messiahLetters.length - 1 ? messiahLetters[idx + 1] : null;
   <section class="hl-hero ltr-hero">
     <a href="/hebrew/messiah-letters" class="hl-back">&#8592; All Letters</a>
     <p class="hl-label">&#8213; Letter {data.num} of 22 &#8213;</p>
-    <div class="hero-char">{data.char}</div>
+    <div class="hero-scripts">
+      <div class="hero-char">{data.char}</div>
+      <div class="hero-paleo">{data.paleo}</div>
+    </div>
+    <div class="script-labels">
+      <span>Modern</span>
+      <span>Paleo</span>
+    </div>
     <h1 class="hl-title">{data.name}</h1>
     <p class="hl-sub">{data.meanings}</p>
   </section>
@@ -91,13 +98,39 @@ const next  = idx < messiahLetters.length - 1 ? messiahLetters[idx + 1] : null;
     padding-bottom: 2.5rem;
   }
 
+  .hero-scripts {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0.5rem auto 0;
+  }
+
   .hero-char {
     font-size: clamp(4rem, 10vw, 7rem);
     color: #C9A84C;
     direction: rtl;
     line-height: 1;
-    margin: 0.5rem auto 0.25rem;
     opacity: 0.9;
+  }
+
+  .hero-paleo {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: #8B6914;
+    line-height: 1;
+    opacity: 0.85;
+  }
+
+  .script-labels {
+    display: flex;
+    justify-content: center;
+    gap: 4.5rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #5a3e1a;
   }
 
   /* ── Study section ── */
