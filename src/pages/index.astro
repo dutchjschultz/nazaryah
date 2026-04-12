@@ -74,7 +74,7 @@ const displayPosts = featuredCategories.map((category) => ({
   <style>
     .hero-section {
       width: 100%;
-      padding: 2.5rem 1.5rem;
+      padding: 2rem 1.5rem;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -82,10 +82,10 @@ const displayPosts = featuredCategories.map((category) => ({
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 2fr 3fr;
+      grid-template-columns: 5fr 8fr;
       width: 100%;
       max-width: 80rem;
-      aspect-ratio: 2 / 1;
+      aspect-ratio: 13 / 4;
       overflow: hidden;
       border-radius: 4px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.15);
@@ -98,7 +98,7 @@ const displayPosts = featuredCategories.map((category) => ({
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 2.5rem 1.5rem;
+      padding: 1rem 1.25rem;
       overflow: hidden;
     }
 
@@ -124,9 +124,8 @@ const displayPosts = featuredCategories.map((category) => ({
     .logo-panel-img {
       position: relative;
       z-index: 1;
-      width: 90%;
-      max-width: 420px;
-      height: auto;
+      width: 100%;
+      height: 85%;
       object-fit: contain;
     }
 
@@ -135,8 +134,8 @@ const displayPosts = featuredCategories.map((category) => ({
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 0.85rem;
-      padding: 2rem 2.25rem 2rem 2.5rem;
+      gap: 0.65rem;
+      padding: 1.5rem 2rem 1.5rem 2rem;
     }
 
     .hero-eyebrow {
@@ -151,7 +150,7 @@ const displayPosts = featuredCategories.map((category) => ({
 
     .hero-headline {
       font-family: var(--font-display);
-      font-size: clamp(1.4rem, 2.6vw, 2.1rem);
+      font-size: clamp(1.2rem, 2vw, 1.75rem);
       font-weight: 700;
       line-height: 1.15;
       color: var(--color-primary-text);
@@ -172,8 +171,8 @@ const displayPosts = featuredCategories.map((category) => ({
 
     .hero-body {
       font-family: var(--font-body);
-      font-size: 1rem;
-      line-height: 1.7;
+      font-size: 0.95rem;
+      line-height: 1.6;
       color: var(--color-secondary-text);
       margin: 0;
     }
@@ -182,7 +181,7 @@ const displayPosts = featuredCategories.map((category) => ({
       display: flex;
       gap: 10px;
       flex-wrap: wrap;
-      margin-top: 0.1rem;
+      margin-top: 0;
     }
 
     /* ── Responsive ── */
