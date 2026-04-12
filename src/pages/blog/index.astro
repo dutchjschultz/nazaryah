@@ -9,6 +9,61 @@ const allPosts = await getCollection('posts', ({ data }) => {
 
 // Sort by date, most recent first
 const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+const allCategories = [
+  'The Scrolls',
+  'Scripture Unfiltered',
+  'Buried in Plain Sight',
+  'Parables',
+  'The Trinity Files',
+  'Word Studies',
+  'The Law Still Stands',
+  'The Feasts',
+];
+
+// Hover card content for each category — styled like manuscript field notes
+const categoryMeta: Record<string, { subtitle: string; description: string; verse: string }> = {
+  'The Scrolls': {
+    subtitle: '— THE SCROLLS —',
+    description: 'These are focused book studies — narrowed down to a single theme, subject, or argument. The full book, distilled to what actually matters. No filler, no fluff, just what the author found and whether Scripture backs it up.',
+    verse: '"All Scripture is breathed out by God." — 2 Timothy 3:16'
+  },
+  'Scripture Unfiltered': {
+    subtitle: '— SCRIPTURE UNFILTERED —',
+    description: 'Passage by passage. Verse by verse. No denominational filter, no traditional spin — just the text opened up the way it was written to be read. Some of it will wreck what you were taught. That\'s the point.',
+    verse: '"Study to show yourself approved." — 2 Timothy 2:15'
+  },
+  'Buried in Plain Sight': {
+    subtitle: '— BURIED IN PLAIN SIGHT —',
+    description: 'This is the historical record of how Christianity drifted — where its doctrines actually came from, what councils decided them, what Rome enforced, and what the Reformation refused to fix. Church history that the church doesn\'t teach.',
+    verse: '"Ask for the ancient paths, where the good way is." — Jeremiah 6:16'
+  },
+  'Parables': {
+    subtitle: '— PARABLES —',
+    description: 'These are not studies of biblical parables — these are original parables written to carry hard truth in a way that a straight lecture never could. They\'re meant to be engaging. The truth inside them is anything but comfortable.',
+    verse: '"To you it has been given to know the secrets of the kingdom." — Matthew 13:11'
+  },
+  'The Trinity Files': {
+    subtitle: '— THE TRINITY FILES —',
+    description: 'Every verse modern Christianity uses to defend the Trinity doctrine — examined one by one against the original text. Not opinion. Not tradition. Just Scripture, opened up and put on the stand.',
+    verse: '"Hear, O Israel: Yahuah our God, Yahuah is one." — Deuteronomy 6:4'
+  },
+  'Word Studies': {
+    subtitle: '— WORD STUDIES —',
+    description: 'His name was changed. Key words were swapped. Covenantal meaning was buried under centuries of translation and tradition. These studies go back to the Hebrew and Greek to recover what the text actually says — before the translators got to it.',
+    verse: '"My people are destroyed for lack of knowledge." — Hosea 4:6'
+  },
+  'The Law Still Stands': {
+    subtitle: '— THE LAW STILL STANDS —',
+    description: 'Scripture never said the Torah was abolished. That idea came from centuries of misread letters and mistranslated verses. These studies go back to the text and make the case that the Law was never nailed to anything — and that keeping it still matters.',
+    verse: '"Your Torah is truth." — Psalm 119:142'
+  },
+  'The Feasts': {
+    subtitle: '— THE FEASTS —',
+    description: 'Yahuah set appointed times in Scripture — specific, named, and tied to His covenant with His people. Christianity replaced them with holidays borrowed from somewhere else entirely. Both calendars are laid out here. You decide which one belongs to Him.',
+    verse: '"These are my appointed feasts." — Leviticus 23:2'
+  },
+};
 ---
 
 <BaseLayout
@@ -36,15 +91,34 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.
 
     <!-- Category Buttons -->
     <div id="category-filters" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; max-width: 1000px; margin: 0 auto;">
-      <button data-category="all" style="font-family: Georgia, 'Times New Roman', serif; font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1.2rem; border-radius: 3px; cursor: pointer; border: none; background: #4a2808; color: #f5e8d0; font-weight: bold;">All Posts</button>
-      <button data-category="The Scrolls" style="font-family: Georgia, 'Times New Roman', serif; font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1.2rem; border-radius: 3px; cursor: pointer; border: none; background: #a07850; color: #f5e8d0; font-weight: bold;">The Scrolls</button>
-      <button data-category="Scripture Unfiltered" style="font-family: Georgia, 'Times New Roman', serif; font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1.2rem; border-radius: 3px; cursor: pointer; border: none; background: #a07850; color: #f5e8d0; font-weight: bold;">Scripture Unfiltered</button>
-      <button data-category="Buried in Plain Sight" style="font-family: Georgia, 'Times New Roman', serif; font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1.2rem; border-radius: 3px; cursor: pointer; border: none; background: #a07850; color: #f5e8d0; font-weight: bold;">Buried in Plain Sight</button>
-      <button data-category="Parables" style="font-family: Georgia, 'Times New Roman', serif; font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1.2rem; border-radius: 3px; cursor: pointer; border: none; background: #a07850; color: #f5e8d0; font-weight: bold;">Parables</button>
-      <button data-category="The Trinity Files" style="font-family: Georgia, 'Times New Roman', serif; font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1.2rem; border-radius: 3px; cursor: pointer; border: none; background: #a07850; color: #f5e8d0; font-weight: bold;">The Trinity Files</button>
-      <button data-category="Word Studies" style="font-family: Georgia, 'Times New Roman', serif; font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1.2rem; border-radius: 3px; cursor: pointer; border: none; background: #a07850; color: #f5e8d0; font-weight: bold;">Word Studies</button>
-      <button data-category="The Law Still Stands" style="font-family: Georgia, 'Times New Roman', serif; font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1.2rem; border-radius: 3px; cursor: pointer; border: none; background: #a07850; color: #f5e8d0; font-weight: bold;">The Law Still Stands</button>
-      <button data-category="The Feasts" style="font-family: Georgia, 'Times New Roman', serif; font-size: 0.73rem; letter-spacing: 0.08em; text-transform: uppercase; padding: 0.55rem 1.2rem; border-radius: 3px; cursor: pointer; border: none; background: #a07850; color: #f5e8d0; font-weight: bold;">The Feasts</button>
+
+      <!-- All Posts — no tooltip -->
+      <button data-category="all" class="cat-btn active">All Posts</button>
+
+      <!-- Category buttons with hover tooltips -->
+      {allCategories.map((category) => (
+        <div class="cat-btn-wrapper">
+          <button data-category={category} class="cat-btn">{category}</button>
+
+          {categoryMeta[category] && (
+            <div class="dig-tooltip" role="tooltip">
+              <div class="dig-tooltip-header">
+                <span>△</span>
+                <span>{category}</span>
+                <span>△</span>
+              </div>
+              <div class="dig-tooltip-body">
+                <p class="dig-tooltip-subtitle">{categoryMeta[category].subtitle}</p>
+                <p class="dig-tooltip-description">{categoryMeta[category].description}</p>
+                <div class="dig-tooltip-divider">
+                  <span class="dig-tooltip-diamond">◆</span>
+                </div>
+                <p class="dig-tooltip-verse">{categoryMeta[category].verse}</p>
+              </div>
+            </div>
+          )}
+        </div>
+      ))}
     </div>
 
   </section>
@@ -106,20 +180,16 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll<HTMLButtonElement>('#category-filters button');
+    const filterButtons = document.querySelectorAll<HTMLButtonElement>('#category-filters .cat-btn');
     const postCards = document.querySelectorAll<HTMLElement>('.post-item');
 
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
         const category = button.getAttribute('data-category');
 
-        // Update active state via inline styles
-        filterButtons.forEach(btn => {
-          btn.style.background = '#a07850';
-          btn.style.boxShadow = 'none';
-        });
-        button.style.background = '#4a2808';
-        button.style.boxShadow = 'inset 0 2px 4px rgba(0,0,0,0.35)';
+        // Update active state
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
 
         // Filter posts
         postCards.forEach(card => {
@@ -132,6 +202,134 @@ const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.
 </script>
 
 <style>
+  /* ── Category filter buttons ── */
+  .cat-btn {
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 0.73rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.55rem 1.2rem;
+    border-radius: 3px;
+    cursor: pointer;
+    border: none;
+    background: #a07850;
+    color: #f5e8d0;
+    font-weight: bold;
+    transition: background 0.2s ease, box-shadow 0.2s ease;
+  }
+
+  .cat-btn:hover {
+    background: #3a1a04;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+  }
+
+  .cat-btn.active {
+    background: #4a2808;
+    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
+  }
+
+  /* ── Tooltip wrapper ── */
+  .cat-btn-wrapper {
+    position: relative;
+  }
+
+  /* ── Tooltip card ── */
+  .dig-tooltip {
+    display: none;
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    z-index: 100;
+    border: 1px solid var(--color-border, #c8a878);
+    border-radius: 3px;
+    overflow: hidden;
+    box-shadow:
+      inset 0 0 30px rgba(75, 54, 33, 0.12),
+      0 8px 32px rgba(0, 0, 0, 0.35),
+      0 2px 8px rgba(0, 0, 0, 0.2);
+    pointer-events: none;
+  }
+
+  .cat-btn-wrapper:hover .dig-tooltip {
+    display: block;
+  }
+
+  .dig-tooltip-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background-color: #2b1d0e;
+    color: var(--sand-dark, #c4a97d);
+    font-family: var(--font-display);
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    padding: 0.55rem 0.9rem;
+    gap: 0.5rem;
+  }
+
+  .dig-tooltip-header span:first-child,
+  .dig-tooltip-header span:last-child {
+    opacity: 0.6;
+    font-size: 8px;
+  }
+
+  .dig-tooltip-body {
+    background-color: var(--color-surface, #f5e8c8);
+    background-image: url("https://www.transparenttextures.com/patterns/p6.png");
+    padding: 1rem 1.1rem 0.85rem;
+  }
+
+  .dig-tooltip-subtitle {
+    font-family: var(--font-display);
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--bronze, #8b6914);
+    margin: 0 0 0.6rem;
+    text-align: center;
+  }
+
+  .dig-tooltip-description {
+    font-family: var(--font-body);
+    font-size: 0.88rem;
+    line-height: 1.6;
+    color: var(--color-primary-text, #2b1d11);
+    margin: 0 0 0.75rem;
+  }
+
+  .dig-tooltip-divider {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin: 0.6rem 0;
+  }
+  .dig-tooltip-divider::before,
+  .dig-tooltip-divider::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background-color: var(--color-border, #c8a878);
+  }
+  .dig-tooltip-diamond {
+    font-size: 10px;
+    color: var(--bronze, #8b6914);
+    line-height: 1;
+  }
+
+  .dig-tooltip-verse {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.8rem;
+    color: var(--ink-faded, #5c4033);
+    text-align: center;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* ── Post card helpers ── */
   .line-clamp-4 {
     display: -webkit-box;
     -webkit-line-clamp: 4;
