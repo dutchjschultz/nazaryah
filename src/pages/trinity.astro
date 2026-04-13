@@ -80,30 +80,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Nothing is hidden. Everything is documented. The trail is yours to walk.
       </p>
       <div class="tr-btn-row">
+
         <div class="tr-btn-group">
-          <a href="/trinity/history" class="tr-btn">
-            Trace the Trail &nbsp;&#8594;
-          </a>
+          <a href="/trinity/history" class="tr-btn">Trace the Trail &nbsp;&#8594;</a>
           <p class="tr-cta-note">A documented timeline from 2200 BC to the Reformation</p>
+          <div class="tr-tooltip">
+            A documented timeline tracing the triune god from the Tower of Babel through Babylon, Egypt, Greece, and Rome — all the way to the Council of Nicaea and beyond. Every major turning point, every adaptation, every name change the doctrine wore on its journey into the modern church.
+          </div>
         </div>
+
         <div class="tr-btn-group">
-          <a href="/trinity/studies" class="tr-btn">
-            Trinity Studies &nbsp;&#8594;
-          </a>
-          <p class="tr-cta-note">Verse by verse — every proof text examined</p>
-        </div>
-        <div class="tr-btn-group">
-          <a href="/trinity/roles" class="tr-btn">
-            The Sender &amp; The Sent &nbsp;&#8594;
-          </a>
-          <p class="tr-cta-note">Two distinct roles — one covenant plan</p>
-        </div>
-        <div class="tr-btn-group">
-          <a href="/trinity/files" class="tr-btn">
-            Trinity Files &nbsp;&#8594;
-          </a>
+          <a href="/trinity/files" class="tr-btn">Trinity Files &nbsp;&#8594;</a>
           <p class="tr-cta-note">The case against the doctrine, built from Scripture</p>
+          <div class="tr-tooltip">
+            Every verse trinitarians use to defend their doctrine — examined, dismantled, and returned to its original context. One verse at a time, one file at a time. If the case is as strong as they claim, it should be able to survive scrutiny.
+          </div>
         </div>
+
+        <div class="tr-btn-group">
+          <a href="/trinity/studies" class="tr-btn">Trinity Studies &nbsp;&#8594;</a>
+          <p class="tr-cta-note">Verse by verse — every proof text examined</p>
+          <div class="tr-tooltip">
+            Topical studies that expose how deeply trinitarian assumptions have shaped the way we read Scripture. Some correct outright errors. Others simply reveal what the text actually says once the doctrinal lens is removed.
+          </div>
+        </div>
+
+        <div class="tr-btn-group">
+          <a href="/trinity/roles" class="tr-btn">The Sender &amp; The Sent &nbsp;&#8594;</a>
+          <p class="tr-cta-note">Two distinct roles — one covenant plan</p>
+          <div class="tr-tooltip">
+            Scripture presents two distinct roles — never three. Father and Son, Husband and Bride, Kinsman Redeemer and the price paid, Elohim and High Priest. From Genesis to Revelation, the pattern is consistent: one sends, one is sent. The trinity collapses this design into confusion.
+          </div>
+        </div>
+
       </div>
     </section>
 
@@ -294,8 +303,39 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     margin-top: 1rem;
   }
 
+  /* ── Tooltips ── */
+  .tr-btn-group {
+    position: relative;
+  }
+
+  .tr-tooltip {
+    display: none;
+    position: absolute;
+    top: calc(100% + 14px);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    background: #1c1508;
+    border: 0.5px solid rgba(186, 117, 23, 0.3);
+    border-top: 2px solid #BA7517;
+    border-radius: 10px;
+    padding: 1.1rem 1.25rem;
+    z-index: 100;
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 0.95rem;
+    line-height: 1.7;
+    color: #c4ad84;
+    pointer-events: none;
+    text-align: left;
+  }
+
+  .tr-btn-group:hover .tr-tooltip {
+    display: block;
+  }
+
   @media (max-width: 600px) {
     .tr-btn-row { gap: 1.75rem; }
+    .tr-tooltip { width: 240px; }
   }
 
   /* ── FOOTER QUOTE ── */
