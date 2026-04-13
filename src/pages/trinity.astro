@@ -79,12 +79,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         We have traced the full history — from Babel to the Reformation — entry by entry, source by source.
         Nothing is hidden. Everything is documented. The trail is yours to walk.
       </p>
-      <a href="/trinity/history" class="tr-btn">
-        Trace the Trail &nbsp;&#8594;
-      </a>
-      <p class="tr-cta-note">
-        A documented timeline from 2200 BC to the Reformation
-      </p>
+      <div class="tr-btn-row">
+        <div class="tr-btn-group">
+          <a href="/trinity/history" class="tr-btn">
+            Trace the Trail &nbsp;&#8594;
+          </a>
+          <p class="tr-cta-note">A documented timeline from 2200 BC to the Reformation</p>
+        </div>
+        <div class="tr-btn-group">
+          <a href="/trinity/studies" class="tr-btn">
+            Trinity Studies &nbsp;&#8594;
+          </a>
+          <p class="tr-cta-note">Verse by verse — every proof text examined</p>
+        </div>
+        <div class="tr-btn-group">
+          <a href="/trinity/roles" class="tr-btn">
+            The Sender &amp; The Sent &nbsp;&#8594;
+          </a>
+          <p class="tr-cta-note">Two distinct roles — one covenant plan</p>
+        </div>
+        <div class="tr-btn-group">
+          <a href="/trinity/files" class="tr-btn">
+            Trinity Files &nbsp;&#8594;
+          </a>
+          <p class="tr-cta-note">The case against the doctrine, built from Scripture</p>
+        </div>
+      </div>
     </section>
 
     <!-- ── QUOTE ── -->
@@ -250,13 +270,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transform: translateY(1px);
   }
 
+  .tr-btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+    margin-top: 0;
+  }
+
+  .tr-btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0;
+  }
+
   .tr-cta-note {
     font-family: 'Cinzel', serif;
     font-size: 9px;
     letter-spacing: 1.5px;
     color: #4a3018;
     text-transform: uppercase;
-    margin-top: 1.25rem;
+    margin-top: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .tr-btn-row { gap: 1.75rem; }
   }
 
   /* ── FOOTER QUOTE ── */
