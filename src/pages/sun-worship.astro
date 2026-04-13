@@ -1,0 +1,282 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Sun Worship — Nazaryah"
+  description="From Babel to NASA, the worship of the sun never stopped — it was simply given new names. Trace the thread from ancient altars to modern institutions."
+>
+  <div class="sw-wrap">
+
+    <!-- ── HERO ── -->
+    <section class="sw-hero">
+      <p class="sw-label">&#8213; A Critical Examination &#8213;</p>
+      <h1 class="sw-title">Sun Worship</h1>
+      <p class="sw-sub">
+        From Babel to the modern classroom — the oldest religion never stopped.
+      </p>
+    </section>
+
+    <!-- ── INTRO ── -->
+    <section class="sw-section">
+      <div class="sw-prose">
+        <p>
+          From the moment we say "sunrise" instead of the biblical "dawn," we are speaking the language of a sun-centered world. The sun has been placed at the center of our universe, our calendars, our symbols, and even our religion — from the cross of Tammuz hanging in every church to the Sun-day that replaced the Sabbath of Yahuah.
+        </p>
+        <p>
+          What the ancient world did openly with altars and incense, the modern world does with textbooks, telescopes, and tradition. The worship never stopped — it was simply given new names.
+        </p>
+        <p>
+          This page traces the thread from Babel to NASA, and asks one question: <em>who told you the sun was at the center?</em>
+        </p>
+      </div>
+    </section>
+
+    <!-- ── CTA BUTTONS ── -->
+    <section class="sw-cta-section">
+      <p class="sw-cta-label">&#8213; Choose Your Study &#8213;</p>
+      <h2 class="sw-cta-title">Where Does the Thread Lead?</h2>
+      <p class="sw-cta-sub">
+        Four lines of evidence. One ancient lie wearing many masks.
+      </p>
+
+      <div class="sw-btn-row">
+
+        <div class="sw-btn-group">
+          <a href="/sun-worship/holidays" class="sw-btn">
+            Holidays &nbsp;&#8594;
+          </a>
+          <p class="sw-cta-note">Solar worship hidden in plain sight</p>
+        </div>
+
+        <div class="sw-btn-group">
+          <a href="/sun-worship/nasa" class="sw-btn">
+            NASA &nbsp;&#8594;
+          </a>
+          <p class="sw-cta-note">Occultists, rockets, and composite images</p>
+        </div>
+
+        <div class="sw-btn-group">
+          <a href="/sun-worship/the-ancient-lie" class="sw-btn sw-btn-featured">
+            The Ancient Lie &nbsp;&#8594;
+          </a>
+          <p class="sw-cta-note">From Babel to Newton — the full thread</p>
+        </div>
+
+        <div class="sw-btn-group">
+          <a href="/sun-worship/the-catholic-church" class="sw-btn">
+            The Catholic Church &nbsp;&#8594;
+          </a>
+          <p class="sw-cta-note">How Rome institutionalized solar religion</p>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ── QUOTE ── -->
+    <section class="sw-footer-quote">
+      <p class="sw-quote-text">"Learn not the way of the heathen, and be not dismayed at the signs of heaven; for the heathen are dismayed at them."</p>
+      <p class="sw-quote-ref">— Jeremiah 10:2</p>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .sw-wrap {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #f0e0bf;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  /* ── HERO ── */
+  .sw-hero {
+    text-align: center;
+    padding: 5rem 1.5rem 3.5rem;
+    border-bottom: 1px solid #4a3218;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(180, 100, 20, 0.2), transparent 70%),
+      linear-gradient(180deg, #0a0602 0%, #1a1208 100%);
+  }
+
+  .sw-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a6028;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .sw-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 1rem;
+    line-height: 1.1;
+  }
+
+  .sw-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #c4a46b;
+    font-style: italic;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── SECTIONS ── */
+  .sw-section {
+    padding: 3.5rem 1.5rem;
+    border-bottom: 1px solid #2e1f0d;
+  }
+
+  .sw-prose {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.85;
+    color: #d9c9a8;
+  }
+
+  .sw-prose p { margin-bottom: 1.5rem; }
+  .sw-prose p:last-child { margin-bottom: 0; }
+  .sw-prose em { color: #c4a46b; font-style: italic; }
+
+  /* ── CTA SECTION ── */
+  .sw-cta-section {
+    text-align: center;
+    padding: 5rem 1.5rem;
+    border-bottom: 1px solid #2e1f0d;
+    background: radial-gradient(ellipse at 50% 50%, rgba(100, 60, 20, 0.12), transparent 70%);
+  }
+
+  .sw-cta-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #6a4820;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+
+  .sw-cta-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3vw, 2.25rem);
+    font-weight: 600;
+    color: #f0e0bf;
+    margin: 0 0 1.25rem;
+    line-height: 1.25;
+  }
+
+  .sw-cta-sub {
+    font-size: 1.1rem;
+    color: #c4ad84;
+    font-style: italic;
+    max-width: 520px;
+    margin: 0 auto 3rem;
+    line-height: 1.7;
+  }
+
+  /* ── Button row ── */
+  .sw-btn-row {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2.5rem;
+  }
+
+  .sw-btn-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  /* ── Button — matches tr-btn exactly ── */
+  .sw-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.9rem 2.25rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #f5e8c8;
+    background: linear-gradient(180deg, #7a3a14 0%, #5e2a0c 50%, #3d1a08 100%);
+    border: 1px solid rgba(60, 25, 8, 0.5);
+    border-radius: 32px 32px 26px 26px / 18px 18px 32px 32px;
+    box-shadow:
+      0 4px 12px rgba(0,0,0,0.5),
+      inset 0 2px 4px rgba(200, 140, 80, 0.25),
+      inset 0 -2px 4px rgba(0,0,0,0.4);
+    transition: all 0.2s ease;
+  }
+
+  .sw-btn:hover {
+    background: linear-gradient(180deg, #965a3e 0%, #7a3a14 50%, #5e2a0c 100%);
+    color: #fff5e0;
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 20px rgba(0,0,0,0.6),
+      inset 0 2px 4px rgba(200, 160, 100, 0.3),
+      inset 0 -2px 4px rgba(0,0,0,0.4);
+  }
+
+  .sw-btn:active { transform: translateY(1px); }
+
+  /* Featured button — slightly brighter gold */
+  .sw-btn-featured {
+    background: linear-gradient(180deg, #9a4a1a 0%, #7a3a10 50%, #4e2208 100%);
+    border-color: rgba(186, 117, 23, 0.4);
+    box-shadow:
+      0 4px 16px rgba(186, 117, 23, 0.2),
+      inset 0 2px 4px rgba(220, 160, 80, 0.3),
+      inset 0 -2px 4px rgba(0,0,0,0.4);
+  }
+
+  .sw-btn-featured:hover {
+    background: linear-gradient(180deg, #b05a28 0%, #9a4a1a 50%, #6e3210 100%);
+  }
+
+  .sw-cta-note {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #4a3018;
+    text-transform: uppercase;
+    margin-top: 1rem;
+  }
+
+  /* ── FOOTER QUOTE ── */
+  .sw-footer-quote {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: linear-gradient(180deg, #160f07 0%, #0e0904 100%);
+  }
+
+  .sw-quote-text {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-style: italic;
+    color: #c4a46b;
+    max-width: 620px;
+    margin: 0 auto 0.5rem;
+    line-height: 1.65;
+  }
+
+  .sw-quote-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #5a3e1a;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 600px) {
+    .sw-btn-row { gap: 1.75rem; }
+  }
+</style>
