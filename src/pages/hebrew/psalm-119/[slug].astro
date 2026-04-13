@@ -1,0 +1,592 @@
+---
+import HebrewLayout from '../../../layouts/HebrewLayout.astro';
+import { PSALM119_LETTERS } from '../../../data/psalm119';
+
+export function getStaticPaths() {
+  return PSALM119_LETTERS.map((letter) => ({
+    params: { slug: letter.slug },
+    props: { letter },
+  }));
+}
+
+const { letter } = Astro.props;
+const { slug } = Astro.params;
+
+const idx = PSALM119_LETTERS.findIndex((l) => l.slug === slug);
+const prev = idx > 0 ? PSALM119_LETTERS[idx - 1] : null;
+const next = idx < PSALM119_LETTERS.length - 1 ? PSALM119_LETTERS[idx + 1] : null;
+
+// All letters up to (but not including) current, for the trail
+const trailLetters = PSALM119_LETTERS.slice(0, idx);
+---
+
+<HebrewLayout
+  title={`${letter.name} — Psalm 119 Letter ${letter.num} — Nazaryah`}
+  description={`A deep study of the ${letter.name} stanza of Psalm 119 — verses ${letter.verseStart}–${letter.verseEnd}. The pictograph, the 8 opening words, and the hidden sentence.`}
+>
+  <!-- Hero -->
+  <section class="hl-hero letter-hero">
+    <a href="/hebrew/psalm-119" class="hl-back">&#8592; All Letters</a>
+
+    <!-- Prev / Next at top -->
+    <div class="letter-nav top-nav">
+      {prev ? (
+        <a href={`/hebrew/psalm-119/${prev.slug}`} class="nav-link prev-link">
+          <span class="nav-arrow">&#8592;</span>
+          <span class="nav-glyphs" dir="rtl">{prev.paleo}</span>
+          <span class="nav-name">{prev.name}</span>
+        </a>
+      ) : <span />}
+      <div class="nav-position">Letter {letter.num} of 22</div>
+      {next ? (
+        <a href={`/hebrew/psalm-119/${next.slug}`} class="nav-link next-link">
+          <span class="nav-name">{next.name}</span>
+          <span class="nav-glyphs" dir="rtl">{next.paleo}</span>
+          <span class="nav-arrow">&#8594;</span>
+        </a>
+      ) : <span />}
+    </div>
+
+    <!-- Main hero glyphs -->
+    <div class="hero-letter-display" dir="rtl">
+      <span class="hero-paleo-large">{letter.paleo}</span>
+      <span class="hero-modern-large">{letter.modern}</span>
+    </div>
+
+    <div class="hero-badge">Letter {letter.num}</div>
+    <h1 class="hl-title hero-name">{letter.name}</h1>
+    <div class="hero-picto-meaning">
+      <span class="hero-picto">{letter.pictograph}</span>
+      <span class="hero-sep">·</span>
+      <span class="hero-meaning">{letter.meaning}</span>
+    </div>
+    <div class="hero-verse-range">Verses {letter.verseStart} – {letter.verseEnd}</div>
+  </section>
+
+  <!-- 8 Opening Words -->
+  <section class="hl-section">
+    <h2 class="hl-section-title">The 8 Opening Words</h2>
+    <p class="hl-section-sub">Each verse in this stanza opens with the letter {letter.name}. These are the 8 words — one per verse — that form the hidden sentence.</p>
+    <div class="words-row">
+      {letter.words.map((w) => (
+        <div class="word-card">
+          <div class="word-verse">v.{w.verse}</div>
+          <div class="word-hebrew" dir="rtl">{w.hebrew}</div>
+          <div class="word-translit">{w.transliteration}</div>
+          <div class="word-english">{w.english}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- Hidden Sentence -->
+  <section class="hl-section">
+    <h2 class="hl-section-title">The Hidden Sentence</h2>
+    <p class="hl-section-sub">When you read only the opening word of each verse, a sentence emerges from the letter {letter.name}:</p>
+    <blockquote class="hidden-sentence">
+      {letter.sentence}
+    </blockquote>
+  </section>
+
+  <!-- The Teaching -->
+  <section class="hl-section">
+    <h2 class="hl-section-title">The Teaching</h2>
+    <div class="teaching-prose">
+      <p>{letter.message}</p>
+    </div>
+  </section>
+
+  <!-- KJV Text (collapsible) -->
+  <section class="hl-section">
+    <button class="kjv-toggle" id="kjvToggle" aria-expanded="false">
+      <span class="kjv-toggle-label">KJV Text · Verses {letter.verseStart}–{letter.verseEnd}</span>
+      <span class="kjv-toggle-icon">&#43;</span>
+    </button>
+    <div class="kjv-collapse" id="kjvCollapse" hidden>
+      <ol class="kjv-list" start={letter.verseStart}>
+        {letter.kjv.map((verse) => (
+          <li>{verse}</li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- This Letter in the Complete Message -->
+  <section class="hl-section">
+    <h2 class="hl-section-title">This Letter in the Complete Message</h2>
+    <p class="hl-section-sub">Here is where this letter's voice falls in the full 22-sentence narrative:</p>
+
+    <!-- Trail of previous letters -->
+    {trailLetters.length > 0 && (
+      <div class="trail-wrap">
+        {trailLetters.map((tl) => (
+          <div class="trail-row">
+            <div class="trail-glyphs" dir="rtl">
+              <span class="trail-paleo">{tl.paleo}</span>
+            </div>
+            <div class="trail-body">
+              <span class="trail-name">{tl.name}</span>
+              <span class="trail-flow">{tl.flow}</span>
+            </div>
+          </div>
+        ))}
+        <div class="trail-divider"></div>
+      </div>
+    )}
+
+    <!-- Current letter highlighted -->
+    <div class="current-flow-card">
+      <div class="current-flow-header" dir="rtl">
+        <span class="current-paleo">{letter.paleo}</span>
+        <span class="current-modern">{letter.modern}</span>
+        <span class="current-label">{letter.name} · Verses {letter.verseStart}–{letter.verseEnd}</span>
+      </div>
+      <p class="current-flow-text">{letter.flow}</p>
+    </div>
+
+    <!-- Remainder hint -->
+    {next && (
+      <p class="trail-continues">
+        The narrative continues through {22 - letter.num} more letter{22 - letter.num !== 1 ? 's' : ''} — up to
+        <a href="/hebrew/psalm-119/tav" class="trail-tav-link">Tav</a>, the final seal.
+      </p>
+    )}
+    {!next && (
+      <p class="trail-continues tav-final">
+        This is the last letter. The seal is set. "I have gone astray like a lost sheep — seek Your servant."
+      </p>
+    )}
+  </section>
+
+  <!-- Bottom Prev/Next Navigation -->
+  <section class="hl-section letter-nav bottom-nav">
+    {prev ? (
+      <a href={`/hebrew/psalm-119/${prev.slug}`} class="nav-link prev-link">
+        <span class="nav-arrow">&#8592;</span>
+        <div class="nav-card-inner">
+          <span class="nav-small">Previous</span>
+          <span class="nav-glyphs-lg" dir="rtl">{prev.paleo} {prev.modern}</span>
+          <span class="nav-name-lg">{prev.name}</span>
+        </div>
+      </a>
+    ) : <span />}
+    {next ? (
+      <a href={`/hebrew/psalm-119/${next.slug}`} class="nav-link next-link">
+        <div class="nav-card-inner" style="text-align:right">
+          <span class="nav-small">Next</span>
+          <span class="nav-glyphs-lg" dir="rtl">{next.paleo} {next.modern}</span>
+          <span class="nav-name-lg">{next.name}</span>
+        </div>
+        <span class="nav-arrow">&#8594;</span>
+      </a>
+    ) : <span />}
+  </section>
+
+</HebrewLayout>
+
+<script>
+  const toggle = document.getElementById('kjvToggle');
+  const collapse = document.getElementById('kjvCollapse');
+  const icon = toggle?.querySelector('.kjv-toggle-icon');
+
+  if (toggle && collapse && icon) {
+    toggle.addEventListener('click', () => {
+      const isOpen = !collapse.hidden;
+      collapse.hidden = isOpen;
+      toggle.setAttribute('aria-expanded', String(!isOpen));
+      icon.textContent = isOpen ? '+' : '−';
+    });
+  }
+</script>
+
+<style>
+  /* Hero overrides for letter page */
+  .letter-hero {
+    padding-top: 3rem;
+  }
+
+  /* Top nav */
+  .top-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: 640px;
+    margin: 0 auto 2rem;
+  }
+
+  .nav-position {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #5a3e1a;
+    text-transform: uppercase;
+  }
+
+  .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    text-decoration: none;
+    color: #6a4820;
+    transition: color 0.2s;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .nav-link:hover { color: #c4a46b; }
+
+  .nav-glyphs {
+    font-size: 1.1rem;
+    color: #8a6028;
+    line-height: 1;
+  }
+  .nav-arrow { font-size: 0.85rem; }
+  .nav-name { display: none; }
+  @media (min-width: 480px) { .nav-name { display: inline; } }
+
+  /* Hero main display */
+  .hero-letter-display {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  .hero-paleo-large {
+    font-size: clamp(3.5rem, 8vw, 6rem);
+    color: #8a5a20;
+    line-height: 1;
+  }
+  .hero-modern-large {
+    font-size: clamp(4rem, 9vw, 7rem);
+    color: #e8c97a;
+    line-height: 1;
+    text-shadow: 0 0 24px rgba(232,201,122,0.3);
+  }
+
+  .hero-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #BA7517;
+    text-transform: uppercase;
+    background: rgba(186,117,23,0.1);
+    border: 1px solid rgba(186,117,23,0.3);
+    display: inline-block;
+    padding: 0.2rem 0.75rem;
+    border-radius: 20px;
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name { margin-bottom: 0.5rem; }
+
+  .hero-picto-meaning {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 1rem;
+    margin-bottom: 0.4rem;
+  }
+  .hero-picto { color: #d9c9a8; font-style: italic; }
+  .hero-sep { color: #4a3218; }
+  .hero-meaning { color: #c4a46b; }
+
+  .hero-verse-range {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #5a3e1a;
+    text-transform: uppercase;
+  }
+
+  /* 8 Words row */
+  .words-row {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    padding-bottom: 0.5rem;
+    scrollbar-width: thin;
+    scrollbar-color: #3a2510 transparent;
+  }
+  .words-row::-webkit-scrollbar { height: 4px; }
+  .words-row::-webkit-scrollbar-track { background: transparent; }
+  .words-row::-webkit-scrollbar-thumb { background: #3a2510; border-radius: 2px; }
+
+  .word-card {
+    flex-shrink: 0;
+    background: linear-gradient(160deg, #1e1208 0%, #160e06 100%);
+    border: 1px solid #3a2510;
+    border-top: 2px solid #6a3f10;
+    border-radius: 6px;
+    padding: 1rem 0.85rem;
+    text-align: center;
+    min-width: 100px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+  .word-verse {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 1.5px;
+    color: #BA7517;
+    text-transform: uppercase;
+  }
+  .word-hebrew {
+    font-size: 1.6rem;
+    color: #e8c97a;
+    line-height: 1.2;
+    text-shadow: 0 0 10px rgba(232,201,122,0.2);
+  }
+  .word-translit {
+    font-size: 0.75rem;
+    color: #8a6028;
+    font-style: italic;
+  }
+  .word-english {
+    font-size: 0.8rem;
+    color: #c4ad84;
+    line-height: 1.3;
+  }
+
+  /* Hidden sentence */
+  .hidden-sentence {
+    border-left: 4px solid #BA7517;
+    background: linear-gradient(135deg, #1e1208 0%, #160e06 100%);
+    border-radius: 0 6px 6px 0;
+    padding: 1.5rem 2rem;
+    font-size: clamp(1.1rem, 2.5vw, 1.35rem);
+    color: #e8d5a8;
+    font-style: italic;
+    line-height: 1.7;
+    margin: 0;
+    max-width: 760px;
+  }
+
+  /* Teaching prose */
+  .teaching-prose {
+    max-width: 760px;
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: #d9c9a8;
+  }
+  .teaching-prose p { margin: 0; }
+
+  /* KJV collapse */
+  .kjv-toggle {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    background: #1a1007;
+    border: 1px solid #3a2510;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    cursor: pointer;
+    color: #c4a46b;
+    font-family: 'Cinzel', serif;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .kjv-toggle:hover {
+    background: #211608;
+    border-color: #5a3010;
+  }
+  .kjv-toggle-label {
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-size: 11px;
+  }
+  .kjv-toggle-icon {
+    font-size: 1.3rem;
+    color: #BA7517;
+    line-height: 1;
+  }
+
+  .kjv-collapse {
+    margin-top: 1rem;
+  }
+  .kjv-list {
+    list-style: decimal;
+    padding-left: 2.25rem;
+    margin: 0;
+    color: #d9c9a8;
+    font-size: 1.02rem;
+    line-height: 1.9;
+  }
+  .kjv-list li {
+    margin-bottom: 0.6rem;
+    padding-left: 0.25rem;
+  }
+  .kjv-list li::marker {
+    color: #8a6028;
+    font-family: 'Cinzel', serif;
+    font-size: 0.85em;
+  }
+
+  /* Complete message trail */
+  .trail-wrap {
+    margin-bottom: 1rem;
+  }
+  .trail-row {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    padding: 0.6rem 0;
+    opacity: 0.45;
+  }
+  .trail-glyphs {
+    flex-shrink: 0;
+    width: 28px;
+    text-align: center;
+  }
+  .trail-paleo {
+    font-size: 1.1rem;
+    color: #8a6028;
+    line-height: 1;
+  }
+  .trail-body {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    align-items: baseline;
+    font-size: 0.82rem;
+    color: #8a7050;
+  }
+  .trail-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    color: #6a4820;
+    flex-shrink: 0;
+  }
+  .trail-name::after { content: ' —'; }
+  .trail-flow {
+    font-style: italic;
+    line-height: 1.6;
+  }
+
+  .trail-divider {
+    height: 2px;
+    background: linear-gradient(90deg, #BA7517 0%, transparent 100%);
+    margin: 0.75rem 0 1.25rem;
+    max-width: 200px;
+  }
+
+  /* Current letter highlighted flow */
+  .current-flow-card {
+    background: linear-gradient(135deg, #211608 0%, #1a1007 100%);
+    border: 1px solid #4a3218;
+    border-left: 4px solid #BA7517;
+    border-radius: 0 8px 8px 0;
+    padding: 1.5rem;
+    margin-bottom: 1.25rem;
+  }
+  .current-flow-header {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    margin-bottom: 0.75rem;
+    flex-wrap: wrap;
+  }
+  .current-paleo {
+    font-size: 2rem;
+    color: #8a5a20;
+    line-height: 1;
+  }
+  .current-modern {
+    font-size: 2.4rem;
+    color: #e8c97a;
+    line-height: 1;
+  }
+  .current-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    color: #BA7517;
+    text-transform: uppercase;
+  }
+  .current-flow-text {
+    font-size: 1.05rem;
+    color: #e8d5a8;
+    font-style: italic;
+    line-height: 1.85;
+    margin: 0;
+  }
+
+  .trail-continues {
+    font-size: 0.88rem;
+    color: #6a4820;
+    font-style: italic;
+    margin: 0;
+  }
+  .trail-tav-link {
+    color: #c4a46b;
+    text-decoration: none;
+  }
+  .trail-tav-link:hover { text-decoration: underline; }
+  .tav-final { color: #8a6028; }
+
+  /* Bottom nav */
+  .bottom-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 1rem;
+  }
+  .bottom-nav .nav-link {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    background: #1a1007;
+    border: 1px solid #3a2510;
+    border-radius: 6px;
+    padding: 1rem 1.25rem;
+    text-decoration: none;
+    color: #c4a46b;
+    transition: background 0.2s, border-color 0.2s;
+    flex: 1;
+    max-width: 260px;
+  }
+  .bottom-nav .nav-link:hover {
+    background: #211608;
+    border-color: #BA7517;
+  }
+  .bottom-nav .next-link { justify-content: flex-end; }
+
+  .nav-card-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 0.15rem;
+  }
+  .nav-small {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #5a3e1a;
+    text-transform: uppercase;
+  }
+  .nav-glyphs-lg {
+    font-size: 1.4rem;
+    color: #c4a46b;
+    line-height: 1;
+  }
+  .nav-name-lg {
+    font-family: 'Cinzel', serif;
+    font-size: 0.9rem;
+    color: #f0e0bf;
+  }
+  .bottom-nav .nav-arrow {
+    font-size: 1.1rem;
+    color: #BA7517;
+  }
+
+  @media (max-width: 560px) {
+    .bottom-nav { flex-direction: column; align-items: stretch; }
+    .bottom-nav .nav-link { max-width: 100%; }
+    .bottom-nav .next-link { justify-content: flex-start; }
+    .top-nav { margin-top: 1rem; }
+  }
+</style>

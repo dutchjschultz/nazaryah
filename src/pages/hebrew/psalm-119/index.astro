@@ -1,0 +1,781 @@
+---
+import HebrewLayout from '../../../layouts/HebrewLayout.astro';
+import { PSALM119_LETTERS, DISCOVERIES, MOVEMENTS } from '../../../data/psalm119';
+---
+
+<HebrewLayout
+  title="Psalm 119 — The 22 Letters — Nazaryah"
+  description="A complete study of Psalm 119 through its 22 Hebrew letters. Five discoveries, the complete message, and individual letter deep-dives."
+>
+  <section class="hl-hero">
+    <a href="/hebrew" class="hl-back">&#8592; Back to Hebrew</a>
+    <div class="hero-script" dir="rtl">
+      <span class="hero-paleo">𐤕𐤄𐤋𐤉𐤌</span>
+      <span class="hero-modern">תהילים</span>
+    </div>
+    <p class="hl-label">&#8213; Psalm 119 &#8213;</p>
+    <h1 class="hl-title">The Message Within the Message</h1>
+    <p class="hl-sub">
+      22 letters. 176 verses. Five discoveries hidden in plain sight — each one waiting three thousand years to be seen together.
+    </p>
+  </section>
+
+  <!-- Tab Navigation -->
+  <div class="tab-nav-wrap">
+    <div class="tab-nav">
+      <button class="tab-btn active" data-tab="letters">The 22 Letters</button>
+      <button class="tab-btn" data-tab="discoveries">Five Discoveries</button>
+      <button class="tab-btn" data-tab="message">The Complete Message</button>
+    </div>
+  </div>
+
+  <!-- TAB 1: 22 Letters Grid -->
+  <div id="tab-letters" class="tab-content active">
+    <div class="hl-section">
+      <p class="tab-intro">
+        Psalm 119 is an acrostic — 22 stanzas of 8 verses each, one for every letter of the Hebrew alphabet. Each letter is a door. Click any card to enter its stanza.
+      </p>
+      <div class="letters-grid">
+        {PSALM119_LETTERS.map((letter) => (
+          <article class="letter-card">
+            <div class="letter-card-glyphs" dir="rtl">
+              <span class="letter-card-paleo">{letter.paleo}</span>
+              <span class="letter-card-modern">{letter.modern}</span>
+            </div>
+            <div class="letter-card-num">Letter {letter.num}</div>
+            <div class="letter-card-name">{letter.name}</div>
+            <div class="letter-card-picto">{letter.pictograph}</div>
+            <div class="letter-card-meaning">{letter.meaning}</div>
+            <div class="letter-card-verses">Verses {letter.verseStart}–{letter.verseEnd}</div>
+            <a href={`/hebrew/psalm-119/${letter.slug}`} class="letter-card-enter">
+              Enter &#8594;
+            </a>
+          </article>
+        ))}
+      </div>
+    </div>
+  </div>
+
+  <!-- TAB 2: Five Discoveries -->
+  <div id="tab-discoveries" class="tab-content">
+    <div class="hl-section">
+
+      <!-- Gem 1: Architecture / Movements -->
+      <div class="gem-block">
+        <div class="gem-label">Discovery 1</div>
+        <h2 class="gem-title">The Architecture of the Journey</h2>
+        <p class="gem-subtitle">Three Movements · Seven Letters Each</p>
+        <div class="movements-grid">
+          {MOVEMENTS.map((mv) => (
+            <div class="movement-card">
+              <div class="movement-num">Movement {mv.num}</div>
+              <div class="movement-range">{mv.range}</div>
+              <div class="movement-verse-range">{mv.verseRange}</div>
+              <div class="movement-title">{mv.title}</div>
+              <div class="movement-theme">{mv.theme}</div>
+              <ul class="movement-points">
+                {mv.points.map((pt) => (
+                  <li>{pt}</li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>
+      </div>
+
+      <!-- Gem 2: First / Last -->
+      <div class="gem-block">
+        <div class="gem-label">Discovery 2</div>
+        <h2 class="gem-title">The Journey Begins with You Finding Him — and Ends with Him Finding You</h2>
+        <p class="gem-subtitle">Letter 1 vs Letter 22</p>
+        <div class="firstlast-grid">
+          <div class="fl-card fl-first">
+            <div class="fl-tag">Aleph · Letter 1</div>
+            <blockquote class="fl-quote">
+              "Blessed and blessed is the one who encounters YOU, Yahuah — oh that I would always walk in this — then I will praise You and I will keep Your Torah."
+            </blockquote>
+          </div>
+          <div class="fl-card fl-last">
+            <div class="fl-tag">Tav · Letter 22</div>
+            <blockquote class="fl-quote">
+              "I have gone astray like a lost sheep — seek Your servant, for I do not forget Your commandments."
+            </blockquote>
+          </div>
+        </div>
+        <div class="insight-grid">
+          <div class="insight-card">
+            <div class="insight-title">What the beginning declares</div>
+            <p>The journey opens with the soul encountering Yahuah and resolving — with hope, with longing — to praise and to keep. It is the declaration of a man at the beginning of the road, full of intention. The word YOU (Attah) is placed at the very center of the first section. Everything begins with recognizing who Yahuah is.</p>
+          </div>
+          <div class="insight-card">
+            <div class="insight-title">What the ending reveals</div>
+            <p>After 176 verses. After every midnight praise, every vow kept, every affliction endured, every declaration of love — the final word of the longest chapter in all of Scripture is not "I have arrived." It is not triumph. It is: "I have strayed like a lost sheep. Seek Your servant." The man at the end of the road knows himself better than the man at the beginning.</p>
+          </div>
+        </div>
+        <div class="keyline-box">
+          The entire Torah-keeping walk — from Aleph to Tav — is not the story of a man who perfected himself through the keeping of the Law. It is the story of a man who discovered, through the keeping of the Law, that he could not. And who found that Yahuah is the Seeker.
+        </div>
+      </div>
+
+      <!-- Gem 3: Aleph-Tav -->
+      <div class="gem-block">
+        <div class="gem-label">Discovery 3</div>
+        <h2 class="gem-title">The Hidden Word in Scripture</h2>
+        <p class="gem-subtitle">The untranslatable mark · Direct object · The one being acted upon</p>
+        <div class="at-ref">
+          <span class="at-glyph" dir="rtl">אֵת</span>
+          <span class="at-ref-text">The Aleph-Tav appears in Genesis 1:1 before "heavens" and "earth"</span>
+        </div>
+        <div class="cells-grid">
+          <div class="cell-card">
+            <div class="cell-title">What the Aleph-Tav marks</div>
+            <p>In Hebrew grammar, the את introduces the direct object — the recipient of the action. When Elohim creates, acts, speaks, or moves, the את marks what He is moving toward. It is the fingerprint of divine action upon a thing.</p>
+          </div>
+          <div class="cell-card">
+            <div class="cell-title">What Psalm 119 reveals</div>
+            <p>The hidden message of Psalm 119 begins with Aleph — Yahuah's Strength encountering, acting upon, blessing you. It ends with Tav — His covenant seal still pursuing, still seeking, still acting upon you. From first letter to last — you are the Aleph-Tav. The one He acts upon.</p>
+          </div>
+          <div class="cell-card">
+            <div class="cell-title">You are the direct object</div>
+            <p>This is the deepest truth of the Torah-keeping life. The believer is not the subject of the sentence. Yahuah is. You are not the one doing the great work. You are the one being acted upon — saved, sustained, sought, sealed — from Aleph to Tav.</p>
+          </div>
+          <div class="cell-card">
+            <div class="cell-title">Why this changes everything</div>
+            <p>Modern Christianity often presents the believer as the agent — the one who decides, chooses, achieves. But Psalm 119's hidden architecture whispers something different: the whole journey, from blessed beginning to straying end, is carried by the One who seeks. You are not the hero. You are the את.</p>
+          </div>
+        </div>
+        <div class="at-conclusion">
+          From the first letter to the last — You are the Aleph-Tav. The one Yahuah acts upon. The one He saves. The one He seeks.
+        </div>
+      </div>
+
+      <!-- Gem 4: Yahushua -->
+      <div class="gem-block">
+        <div class="gem-label">Discovery 4</div>
+        <h2 class="gem-title">The Declaration of Yahushua</h2>
+        <p class="gem-subtitle">The Revelation connection · The one who walks Psalm 119 on your behalf</p>
+        <div class="rev-quote">
+          "I am the Aleph and the Tav, the First and the Last, the Beginning and the End." — Revelation 22:13
+        </div>
+        <div class="yahushua-grid">
+          <div class="ycard">
+            <div class="ycard-title">Not merely eternality</div>
+            <p>When Yahushua declares "I am the Aleph and the Tav," He is not only announcing that He exists outside of time — though that is true. He is making a specific claim about His relationship to His people. He is the One who was there at the first letter of their journey and will be there at the last. He is the beginning and the end of the walk Psalm 119 describes.</p>
+          </div>
+          <div class="ycard">
+            <div class="ycard-title">The Strength and the Seal</div>
+            <p>Aleph is the Ox Head — Strength, First, Leader. Tav is the Mark, the Cross, the Covenant Seal. Yahushua is the Strength that encounters you at the beginning of the journey (Aleph) — and the Covenant Seal that marks you at the end (Tav). Every letter in between is His work in you.</p>
+          </div>
+          <div class="ycard">
+            <div class="ycard-title">The bridge from Torah to Revelation</div>
+            <p>Psalm 119 is the great Torah psalm — 176 verses of longing for the Word of Yahuah. The Book of Revelation is its completion. The man of Psalm 119 cries "I have strayed — seek me." The One who appears at the end of Revelation says "I am the First and the Last. I am coming." Psalm 119 sets the cry. Revelation answers it.</p>
+          </div>
+          <div class="ycard">
+            <div class="ycard-title">He walked it first</div>
+            <p>Yahushua the Messiah is the only human being who walked the full Torah walk described in Psalm 119 without straying. He is the one who could say from Aleph to Tav: "I have not forgotten Your commandments." He walks it perfectly — so that His people, who stray, can be sought and found by the One who did not.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Gem 5: The Verdict -->
+      <div class="gem-block">
+        <div class="gem-label">Discovery 5</div>
+        <h2 class="gem-title">The Plain Statement</h2>
+        <p class="gem-subtitle">The message encoded in the longest chapter of Scripture</p>
+        <div class="verdict-box">
+          <p class="verdict-text">
+            The message within the message of Psalm 119 is this: The entire Torah-keeping life — from first encounter to final breath — is not a story of human achievement. It is the story of Yahuah acting on His people from Aleph to Tav. It begins with blessing. It ends with being sought. The sheep does not find its way home. The Shepherd comes.
+          </p>
+          <div class="verdict-seal">
+            Psalm 119 · 176 Verses · 22 Letters · Hidden for three thousand years
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TAB 3: Complete Message -->
+  <div id="tab-message" class="tab-content">
+    <div class="hl-section">
+      <p class="tab-intro">
+        Each of the 22 letter sections opens with 8 words that form a hidden sentence. Read together, they compose the complete narrative of Psalm 119 — a 22-sentence message from Aleph to Tav.
+      </p>
+      <div class="complete-message-scroll">
+        {PSALM119_LETTERS.map((letter) => (
+          <div class="cm-row">
+            <div class="cm-glyphs" dir="rtl">
+              <span class="cm-paleo">{letter.paleo}</span>
+              <span class="cm-modern">{letter.modern}</span>
+            </div>
+            <div class="cm-body">
+              <div class="cm-name">{letter.name} <span class="cm-verses">· {letter.verseStart}–{letter.verseEnd}</span></div>
+              <p class="cm-flow">{letter.flow}</p>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+
+</HebrewLayout>
+
+<script>
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabContents = document.querySelectorAll('.tab-content');
+
+  tabBtns.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const target = (btn as HTMLElement).dataset.tab;
+      tabBtns.forEach((b) => b.classList.remove('active'));
+      tabContents.forEach((t) => t.classList.remove('active'));
+      btn.classList.add('active');
+      const el = document.getElementById('tab-' + target);
+      if (el) el.classList.add('active');
+    });
+  });
+</script>
+
+<style>
+  /* Hero script display */
+  .hero-script {
+    display: flex;
+    justify-content: center;
+    align-items: baseline;
+    gap: 1.25rem;
+    margin-bottom: 1.25rem;
+  }
+  .hero-paleo {
+    font-size: clamp(2.2rem, 5vw, 3.5rem);
+    color: #8a6028;
+    letter-spacing: 0.08em;
+    line-height: 1;
+  }
+  .hero-modern {
+    font-size: clamp(1.8rem, 4vw, 2.8rem);
+    color: #c4a46b;
+    line-height: 1;
+  }
+
+  /* Tab nav */
+  .tab-nav-wrap {
+    background: #120d06;
+    border-bottom: 1px solid #3a2510;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+  .tab-nav {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+  }
+  .tab-btn {
+    background: none;
+    border: none;
+    border-bottom: 3px solid transparent;
+    color: #6a4820;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 1rem 1.5rem;
+    cursor: pointer;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .tab-btn:hover { color: #c4a46b; }
+  .tab-btn.active {
+    color: #c4a46b;
+    border-bottom-color: #BA7517;
+  }
+
+  /* Tab content */
+  .tab-content { display: none; }
+  .tab-content.active { display: block; }
+
+  .tab-intro {
+    max-width: 680px;
+    margin: 0 auto 2.5rem;
+    text-align: center;
+    font-size: 1.05rem;
+    color: #c4ad84;
+    font-style: italic;
+    line-height: 1.7;
+  }
+
+  /* Letters grid */
+  .letters-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+  @media (max-width: 900px) { .letters-grid { grid-template-columns: repeat(3, 1fr); } }
+  @media (max-width: 640px) { .letters-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 380px) { .letters-grid { grid-template-columns: 1fr; } }
+
+  .letter-card {
+    background: linear-gradient(160deg, #1e1208 0%, #160e06 100%);
+    border: 1px solid #3a2510;
+    border-top: 2px solid #6a3f10;
+    border-radius: 6px;
+    padding: 1.25rem 1rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    gap: 0.3rem;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .letter-card:hover {
+    border-color: #BA7517;
+    background: linear-gradient(160deg, #261608 0%, #1e1208 100%);
+  }
+
+  .letter-card-glyphs {
+    display: flex;
+    gap: 0.6rem;
+    align-items: baseline;
+    margin-bottom: 0.4rem;
+  }
+  .letter-card-paleo {
+    font-size: 2rem;
+    color: #8a5a20;
+    line-height: 1;
+  }
+  .letter-card-modern {
+    font-size: 2.4rem;
+    color: #e8c97a;
+    line-height: 1;
+    text-shadow: 0 0 12px rgba(232,201,122,0.25);
+  }
+  .letter-card-num {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #6a4820;
+    text-transform: uppercase;
+  }
+  .letter-card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0.15rem 0;
+  }
+  .letter-card-picto {
+    font-size: 0.78rem;
+    color: #8a7050;
+    font-style: italic;
+  }
+  .letter-card-meaning {
+    font-size: 0.75rem;
+    color: #c4a46b;
+    line-height: 1.4;
+  }
+  .letter-card-verses {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 1px;
+    color: #5a3e1a;
+    text-transform: uppercase;
+    margin-top: 0.2rem;
+  }
+  .letter-card-enter {
+    display: inline-block;
+    margin-top: 0.75rem;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #BA7517;
+    text-decoration: none;
+    border: 1px solid #5a3010;
+    padding: 0.3rem 0.75rem;
+    border-radius: 3px;
+    transition: background 0.2s, color 0.2s, border-color 0.2s;
+  }
+  .letter-card-enter:hover {
+    background: #BA7517;
+    color: #0e0d0b;
+    border-color: #BA7517;
+  }
+
+  /* Gem blocks */
+  .gem-block {
+    margin-bottom: 4rem;
+    padding-bottom: 4rem;
+    border-bottom: 1px solid #2e1f0d;
+  }
+  .gem-block:last-child { border-bottom: none; margin-bottom: 0; padding-bottom: 0; }
+
+  .gem-label {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 3px;
+    color: #BA7517;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .gem-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.9rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 0.4rem;
+    line-height: 1.25;
+  }
+  .gem-subtitle {
+    font-size: 0.95rem;
+    color: #c4a46b;
+    font-style: italic;
+    margin-bottom: 2rem;
+  }
+
+  /* Movements grid */
+  .movements-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.25rem;
+  }
+  @media (max-width: 800px) { .movements-grid { grid-template-columns: 1fr; } }
+
+  .movement-card {
+    background: #1a1007;
+    border: 1px solid #3a2510;
+    border-left: 3px solid #BA7517;
+    border-radius: 6px;
+    padding: 1.5rem 1.25rem;
+  }
+  .movement-num {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #BA7517;
+    text-transform: uppercase;
+    margin-bottom: 0.3rem;
+  }
+  .movement-range {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    color: #c4a46b;
+    margin-bottom: 0.15rem;
+  }
+  .movement-verse-range {
+    font-size: 0.78rem;
+    color: #6a4820;
+    margin-bottom: 0.75rem;
+  }
+  .movement-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: #f0e0bf;
+    margin-bottom: 0.3rem;
+  }
+  .movement-theme {
+    font-size: 0.82rem;
+    color: #c4a46b;
+    font-style: italic;
+    margin-bottom: 1rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid #2e1f0d;
+  }
+  .movement-points {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .movement-points li {
+    font-size: 0.85rem;
+    color: #d9c9a8;
+    line-height: 1.6;
+    padding: 0.35rem 0;
+    border-bottom: 1px solid #1e1208;
+    padding-left: 1rem;
+    position: relative;
+  }
+  .movement-points li::before {
+    content: '·';
+    position: absolute;
+    left: 0;
+    color: #BA7517;
+  }
+  .movement-points li:last-child { border-bottom: none; }
+
+  /* First / Last */
+  .firstlast-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 640px) { .firstlast-grid { grid-template-columns: 1fr; } }
+
+  .fl-card {
+    background: #1a1007;
+    border: 1px solid #3a2510;
+    border-radius: 6px;
+    padding: 1.5rem;
+  }
+  .fl-first { border-top: 2px solid #BA7517; }
+  .fl-last { border-top: 2px solid #5a3010; }
+
+  .fl-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #8a6028;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .fl-quote {
+    font-size: 1.05rem;
+    color: #e8d5a8;
+    font-style: italic;
+    line-height: 1.7;
+    margin: 0;
+    border-left: 3px solid #BA7517;
+    padding-left: 1rem;
+  }
+
+  .insight-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 640px) { .insight-grid { grid-template-columns: 1fr; } }
+
+  .insight-card {
+    background: #160e06;
+    border: 1px solid #2e1f0d;
+    border-radius: 6px;
+    padding: 1.25rem;
+  }
+  .insight-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #c4a46b;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #2e1f0d;
+  }
+  .insight-card p {
+    font-size: 0.92rem;
+    color: #d9c9a8;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .keyline-box {
+    background: linear-gradient(135deg, #1e1208 0%, #160e06 100%);
+    border: 1px solid #4a3218;
+    border-left: 4px solid #BA7517;
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    font-size: 1rem;
+    color: #e8d5a8;
+    font-style: italic;
+    line-height: 1.75;
+  }
+
+  /* Aleph-Tav */
+  .at-ref {
+    display: flex;
+    align-items: center;
+    gap: 1.25rem;
+    background: #1a1007;
+    border: 1px solid #3a2510;
+    border-radius: 6px;
+    padding: 1rem 1.5rem;
+    margin-bottom: 1.5rem;
+  }
+  .at-glyph {
+    font-size: 2.5rem;
+    color: #BA7517;
+    line-height: 1;
+    flex-shrink: 0;
+  }
+  .at-ref-text {
+    font-size: 0.9rem;
+    color: #c4ad84;
+    font-style: italic;
+  }
+
+  .cells-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+    margin-bottom: 1.5rem;
+  }
+  @media (max-width: 640px) { .cells-grid { grid-template-columns: 1fr; } }
+
+  .cell-card {
+    background: #1a1007;
+    border: 1px solid #2e1f0d;
+    border-top: 2px solid #4a2e0a;
+    border-radius: 6px;
+    padding: 1.25rem;
+  }
+  .cell-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #c4a46b;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #2e1f0d;
+  }
+  .cell-card p {
+    font-size: 0.92rem;
+    color: #d9c9a8;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  .at-conclusion {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1rem;
+    color: #e8d5a8;
+    padding: 1.5rem;
+    border: 1px solid #4a3218;
+    border-radius: 6px;
+    background: radial-gradient(ellipse at 50% 50%, rgba(186,117,23,0.08) 0%, transparent 70%);
+    font-style: italic;
+    letter-spacing: 0.02em;
+  }
+
+  /* Yahushua */
+  .rev-quote {
+    background: #1a1007;
+    border: 1px solid #4a3218;
+    border-left: 4px solid #BA7517;
+    border-radius: 4px;
+    padding: 1.25rem 1.5rem;
+    font-size: 1.1rem;
+    color: #e8d5a8;
+    font-style: italic;
+    line-height: 1.6;
+    margin-bottom: 1.75rem;
+  }
+
+  .yahushua-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.25rem;
+  }
+  @media (max-width: 640px) { .yahushua-grid { grid-template-columns: 1fr; } }
+
+  .ycard {
+    background: #1a1007;
+    border: 1px solid #2e1f0d;
+    border-top: 2px solid #6a3f10;
+    border-radius: 6px;
+    padding: 1.25rem;
+  }
+  .ycard-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #c4a46b;
+    margin-bottom: 0.6rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid #2e1f0d;
+  }
+  .ycard p {
+    font-size: 0.92rem;
+    color: #d9c9a8;
+    line-height: 1.75;
+    margin: 0;
+  }
+
+  /* Verdict */
+  .verdict-box {
+    max-width: 760px;
+    margin: 0 auto;
+    text-align: center;
+  }
+  .verdict-text {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #e8d5a8;
+    line-height: 1.9;
+    font-style: italic;
+    margin-bottom: 2rem;
+    padding: 2rem;
+    background: linear-gradient(135deg, #1e1208 0%, #160e06 100%);
+    border: 1px solid #4a3218;
+    border-radius: 8px;
+  }
+  .verdict-seal {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    color: #6a4820;
+    text-transform: uppercase;
+  }
+
+  /* Complete Message */
+  .complete-message-scroll {
+    max-width: 860px;
+    margin: 0 auto;
+  }
+  .cm-row {
+    display: flex;
+    gap: 1.5rem;
+    align-items: flex-start;
+    padding: 1.5rem 0;
+    border-bottom: 1px solid #1e1208;
+  }
+  .cm-row:last-child { border-bottom: none; }
+
+  .cm-glyphs {
+    flex-shrink: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.15rem;
+    width: 56px;
+    padding-top: 0.2rem;
+  }
+  .cm-paleo {
+    font-size: 1.6rem;
+    color: #6a4820;
+    line-height: 1;
+  }
+  .cm-modern {
+    font-size: 1.9rem;
+    color: #c4a46b;
+    line-height: 1;
+  }
+  .cm-body { flex: 1; }
+  .cm-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #c4a46b;
+    margin-bottom: 0.5rem;
+  }
+  .cm-verses {
+    font-weight: 400;
+    color: #6a4820;
+    font-size: 0.78rem;
+  }
+  .cm-flow {
+    font-size: 1rem;
+    color: #d9c9a8;
+    line-height: 1.8;
+    margin: 0;
+    font-style: italic;
+  }
+
+  @media (max-width: 560px) {
+    .cm-row { gap: 1rem; }
+    .cm-glyphs { width: 44px; }
+    .cm-paleo { font-size: 1.3rem; }
+    .cm-modern { font-size: 1.5rem; }
+  }
+</style>

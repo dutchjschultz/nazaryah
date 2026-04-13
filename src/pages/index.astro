@@ -222,6 +222,50 @@ const displayPosts = featuredCategories.map((category) => ({
     }
   </style>
 
+  <!-- Hidden Gems of Scripture -->
+  <section style="background: #0a0702; padding: 4rem 1.5rem; border-top: 1px solid #2a1e0c;">
+    <div style="max-width: 900px; margin: 0 auto;">
+      <p style="font-family: var(--font-display); font-size: 10px; letter-spacing: 4px; text-transform: uppercase; color: #BA7517; text-align: center; margin-bottom: 0.6rem;">&#8213; Featured Gem &#8213;</p>
+      <h2 style="font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.2rem); font-weight: 700; color: #f0e0bf; text-align: center; margin: 0 0 0.75rem;">Hidden Gems of Scripture</h2>
+      <p style="font-size: 1rem; color: #a89f8c; font-style: italic; text-align: center; max-width: 600px; margin: 0 auto 3rem; line-height: 1.7;">
+        Discoveries that emerge only when you read the original text — passages that reward the careful reader with something no commentary ever told you.
+      </p>
+      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+
+        <!-- Card 1: Psalm 119 -->
+        <a href="/hebrew/psalm-119" style="text-decoration: none; display: block; background: #130e06; border: 1px solid #3a2510; border-left: 3px solid #BA7517; border-radius: 6px; padding: 1.75rem; transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='#1a1007'; this.style.borderColor='#BA7517';" onmouseout="this.style.background='#130e06'; this.style.borderColor='#3a2510'; this.style.borderLeftColor='#BA7517';">
+          <div style="font-family: var(--font-display); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #BA7517; margin-bottom: 0.75rem;">&#10022; Study</div>
+          <div style="display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.75rem;" dir="rtl">
+            <span style="font-size: 1.8rem; color: #6a4820; line-height: 1;">𐤕𐤄𐤋𐤉𐤌</span>
+            <span style="font-size: 1.4rem; color: #c4a46b; line-height: 1;">תהילים</span>
+          </div>
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #f0e0bf; margin: 0 0 0.25rem;">The Message Within the Message</h3>
+          <div style="font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #6a4820; margin-bottom: 0.75rem;">Psalm 119</div>
+          <p style="font-size: 0.88rem; color: #a89f8c; line-height: 1.7; margin: 0;">Five discoveries hidden inside the 22 sentences of Psalm 119 — the architecture of the journey, the first and last, the Aleph-Tav, the declaration of Yahushua, and the plain verdict. Each one a gem that has waited three thousand years to be seen together.</p>
+          <div style="margin-top: 1.25rem; font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517;">Enter Study &#8594;</div>
+        </a>
+
+        <!-- Card 2: Trinity Timeline -->
+        <a href="/trinity" style="text-decoration: none; display: block; background: #130e06; border: 1px solid #3a2510; border-left: 3px solid #5a3010; border-radius: 6px; padding: 1.75rem; transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='#1a1007'; this.style.borderLeftColor='#BA7517';" onmouseout="this.style.background='#130e06'; this.style.borderLeftColor='#5a3010';">
+          <div style="font-family: var(--font-display); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #BA7517; margin-bottom: 0.75rem;">&#10022; Timeline</div>
+          <div style="height: 3.25rem; display: flex; align-items: center; margin-bottom: 0.75rem;">
+            <div style="font-family: var(--font-display); font-size: 1.6rem; color: #4a3010; letter-spacing: 0.05em; line-height: 1;">325 AD</div>
+          </div>
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #f0e0bf; margin: 0 0 0.25rem;">The Doctrine That Rewrote the Father</h3>
+          <div style="font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #6a4820; margin-bottom: 0.75rem;">Trinity · A Historical Timeline</div>
+          <p style="font-size: 0.88rem; color: #a89f8c; line-height: 1.7; margin: 0;">From the Shema to the Council of Nicaea — how a pagan concept became the cornerstone of Christian orthodoxy. Trace the exact councils, controversies, and compromises that transformed the one Elohim of Israel into a triune God.</p>
+          <div style="margin-top: 1.25rem; font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517;">View Timeline &#8594;</div>
+        </a>
+
+      </div>
+    </div>
+    <style>
+      @media (max-width: 640px) {
+        .gems-grid { grid-template-columns: 1fr !important; }
+      }
+    </style>
+  </section>
+
   <!-- Featured Studies — 5 across, one latest post per category -->
   <section class="py-20 md:py-24 border-t border-[var(--sand-dark)]">
     <div class="container mx-auto px-6">
