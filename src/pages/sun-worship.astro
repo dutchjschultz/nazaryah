@@ -48,6 +48,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             Rituals in Plain Sight &nbsp;&#8594;
           </a>
           <p class="sw-cta-note">The holidays no one told you to question</p>
+          <div class="sw-tooltip">Christmas, Easter, Halloween — trace each one back far enough and you won't find Scripture. You'll find Babylon. This study follows the calendar year and exposes what's hiding behind every tradition the church never told you to test.</div>
         </div>
 
         <div class="sw-btn-group">
@@ -55,6 +56,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             The New Priesthood &nbsp;&#8594;
           </a>
           <p class="sw-cta-note">Lab coats replaced robes — the function is the same</p>
+          <div class="sw-tooltip">The white coat replaced the white robe. The laboratory replaced the temple. The peer review replaced the papal decree. This study examines how the priestly class never disappeared — it just rebranded. From the authority to define reality to the demand for unquestioning faith, the parallels are not accidental.</div>
         </div>
 
         <div class="sw-btn-group">
@@ -62,6 +64,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             From Mithras to Mass &nbsp;&#8594;
           </a>
           <p class="sw-cta-note">The unbroken line from Rome's sun cult to the Vatican</p>
+          <div class="sw-tooltip">Sunday worship. December 25th. The halo. The communion wafer. None of it came from Scripture — all of it came from Rome's sun cult. This study traces the unbroken thread from Mithras to Constantine to the Vatican, showing how Sol Invictus simply put on a cross and kept going.</div>
         </div>
 
       </div>
@@ -73,12 +76,14 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             The Ancient Lie &nbsp;&#8594;
           </a>
           <p class="sw-cta-note sw-cta-note-featured">From Babel to Newton — the full historical thread</p>
+          <div class="sw-tooltip sw-tooltip-featured">What if the framework you were handed for understanding the heavens and the earth didn't come from observation — but from a philosophical agenda that stretches back to Babel? This study follows the thread from Nimrod's tower to Greek philosophy to Copernicus and Newton, examining how each era repackaged the same rebellion: man replacing Yahuah's word with his own measurements.</div>
         </div>
         <div class="sw-btn-group">
           <a href="/sun-worship/sacred-act" class="sw-btn sw-btn-featured sw-btn-wide">
             The Sacred Act &nbsp;&#8594;
           </a>
           <p class="sw-cta-note sw-cta-note-featured">Where the temple met the bedroom — the sexual religion hidden inside sun worship</p>
+          <div class="sw-tooltip sw-tooltip-featured">The fertility rites of Babylon didn't vanish — they went underground. From Ishtar's temple prostitutes to the sacred marriage rituals of the mystery religions, this study uncovers the sexual theology woven into sun worship and traces how it resurfaces in places most believers would never think to look.</div>
         </div>
       </div>
     </section>
@@ -306,8 +311,55 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: #6a4820;
   }
 
+  /* ── Tooltips ── */
+  .sw-btn-group {
+    position: relative;
+  }
+
+  .sw-tooltip {
+    display: none;
+    position: absolute;
+    bottom: calc(100% + 0.85rem);
+    left: 50%;
+    transform: translateX(-50%);
+    width: 280px;
+    background: #1a1007;
+    border: 1px solid #3a2510;
+    border-top: 2px solid #BA7517;
+    border-radius: 4px;
+    padding: 1rem 1.1rem;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 0.88rem;
+    line-height: 1.65;
+    color: #c4ad84;
+    text-align: left;
+    z-index: 10;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
+    pointer-events: none;
+  }
+
+  .sw-tooltip-featured {
+    width: 320px;
+  }
+
+  .sw-tooltip::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 6px solid transparent;
+    border-top-color: #3a2510;
+  }
+
+  .sw-btn-group:hover .sw-tooltip {
+    display: block;
+  }
+
   @media (max-width: 600px) {
     .sw-btn-row { gap: 1.75rem; }
     .sw-btn-wide { padding-left: 2.25rem; padding-right: 2.25rem; }
+    .sw-tooltip { width: 240px; }
+    .sw-tooltip-featured { width: 260px; }
   }
 </style>
