@@ -35,27 +35,22 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </blockquote>
     </section>
 
-    <!-- ── KEY TERM GLOSSARY ── -->
+    <!-- ── COLLAPSIBLE GLOSSARY ── -->
     <section class="xm-glossary-section">
-      <div class="xm-glossary-box">
-        <p class="xm-glossary-eyebrow">&#9656; Key Term for This Study</p>
-        <div class="xm-glossary-header">
-          <span class="xm-glossary-hebrew">אֲשֵׁרָה</span>
-          <span class="xm-glossary-word">ASHERAH</span>
+      <details class="xm-glossary-details">
+        <summary class="xm-glossary-summary">&#128214; Glossary — Key Terms for This Study</summary>
+        <div class="xm-glossary-content">
+
+          <div class="xm-gloss-entry xm-gloss-entry--last">
+            <p class="xm-gloss-term">אֲשֵׁרָה &nbsp;&middot;&nbsp; Asherah</p>
+            <p class="xm-gloss-def">In the King James Version this word is almost always translated as <strong>"grove"</strong> or <strong>"groves"</strong> — intentionally hiding what it actually describes. An Asherah was a sacred cult object carved from a tree, set upright, and decorated with silver, gold, and woven coverings to worship the Canaanite fertility goddess of the same name. She was the consort of Baal, the "Queen of Heaven" (Jeremiah 7:18), and the embodiment of sexual and agricultural fertility in the ancient Near East.</p>
+            <p class="xm-gloss-def">The Asherah appears across Exodus, Deuteronomy, Judges, 1 &amp; 2 Kings, 2 Chronicles, Isaiah, Jeremiah, and Micah. Every time it appears, Yahuah's command is the same: cut them down, burn them, destroy them utterly. Yet today, every December, a tree is cut from the forest, brought into the house, set upright, fastened so it doesn't topple, and decorated with silver, gold, and ornaments.</p>
+            <p class="xm-gloss-def"><em>Jeremiah 10:3–4 — "For the customs of the peoples are futile; for one cuts a tree from the forest... they decorate it with silver and gold; they fasten it with nails and hammers so that it does not topple."</em></p>
+            <p class="xm-gloss-def"><em>Deuteronomy 16:21 — "You shall not plant for yourself any tree, as an Asherah, near the altar which you build for yourself to Yahuah your Elohim."</em></p>
+          </div>
+
         </div>
-        <p class="xm-glossary-def">
-          In the King James Version this word is almost always translated as <strong>"grove"</strong> or <strong>"groves"</strong> — intentionally hiding what it actually describes. An Asherah was a sacred cult object carved from a tree, set upright, and decorated with silver, gold, and woven coverings to worship the Canaanite fertility goddess of the same name. She was the consort of Baal, the "Queen of Heaven" (Jeremiah 7:18), and the embodiment of sexual and agricultural fertility in the ancient Near East.
-        </p>
-        <p class="xm-glossary-def">
-          The Asherah appears across Exodus, Deuteronomy, Judges, 1 &amp; 2 Kings, 2 Chronicles, Isaiah, Jeremiah, and Micah. Every time it appears, Yahuah's command is the same: cut them down, burn them, destroy them utterly. Yet today, every December, a tree is cut from the forest, brought into the house, set upright, fastened so it doesn't topple, and decorated with silver, gold, and ornaments.
-        </p>
-        <p class="xm-glossary-scripture">
-          Jeremiah 10:3–4 — <em>"For the customs of the peoples are futile; for one cuts a tree from the forest... they decorate it with silver and gold; they fasten it with nails and hammers so that it does not topple."</em>
-        </p>
-        <p class="xm-glossary-scripture">
-          Deuteronomy 16:21 — <em>"You shall not plant for yourself any tree, as an Asherah, near the altar which you build for yourself to Yahuah your Elohim."</em>
-        </p>
-      </div>
+      </details>
     </section>
 
     <!-- ── 30 ACCORDIONS ── -->
@@ -580,75 +575,72 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   /* ── GLOSSARY ── */
   .xm-glossary-section {
-    padding: 0 1.5rem 0;
+    padding: 0 1.5rem;
     max-width: 820px;
     margin: 0 auto;
+    border-bottom: 1px solid #2e1f0d;
   }
 
-  .xm-glossary-box {
-    background: linear-gradient(135deg, #130a04 0%, #0e0804 100%);
-    border: 1px solid #4a2e10;
+  .xm-glossary-details {
     border-left: 4px solid #BA7517;
+    background: linear-gradient(135deg, #130a04 0%, #0e0804 100%);
     border-radius: 0 6px 6px 0;
-    padding: 2rem 2rem 1.75rem;
-    margin: 0;
-    position: relative;
+    border-top: 1px solid #2e1f0d;
+    border-right: 1px solid #2e1f0d;
+    border-bottom: 1px solid #2e1f0d;
+    margin: 2rem 0;
   }
 
-  .xm-glossary-eyebrow {
+  .xm-glossary-summary {
     font-family: 'Cinzel', serif;
-    font-size: 9px;
-    letter-spacing: 3px;
+    font-size: 10px;
+    letter-spacing: 2.5px;
     text-transform: uppercase;
     color: #BA7517;
-    margin-bottom: 1.25rem;
     font-weight: 700;
+    cursor: pointer;
+    list-style: none;
+    padding: 1.25rem 1.5rem;
+    transition: background 0.15s;
   }
 
-  .xm-glossary-header {
-    display: flex;
-    align-items: baseline;
-    gap: 1.25rem;
-    margin-bottom: 1.25rem;
-    flex-wrap: wrap;
+  .xm-glossary-summary::-webkit-details-marker { display: none; }
+  .xm-glossary-summary:hover { background: rgba(186, 117, 23, 0.05); }
+
+  .xm-glossary-content {
+    padding: 0 1.5rem 1.5rem;
   }
 
-  .xm-glossary-hebrew {
-    font-size: 3rem;
-    color: #c4a46b;
-    line-height: 1;
-    direction: rtl;
+  .xm-gloss-entry {
+    padding: 1rem 0;
+    border-bottom: 1px solid #1e1208;
   }
 
-  .xm-glossary-word {
+  .xm-gloss-entry--last {
+    border-bottom: none;
+    padding-bottom: 0;
+  }
+
+  .xm-gloss-term {
     font-family: 'Cinzel', serif;
-    font-size: 1.5rem;
+    font-size: 0.8rem;
     font-weight: 700;
-    letter-spacing: 4px;
-    color: #f0e0bf;
+    letter-spacing: 1px;
+    color: #8B3A0A;
     text-transform: uppercase;
+    margin-bottom: 0.4rem !important;
   }
 
-  .xm-glossary-def {
-    font-size: 1rem;
-    line-height: 1.8;
+  .xm-gloss-def {
+    font-size: 0.95rem;
+    line-height: 1.75;
     color: #c4ad84;
-    margin-bottom: 0.9rem;
+    margin: 0 0 0.5rem !important;
   }
 
-  .xm-glossary-def strong { color: #e8d49c; }
-
-  .xm-glossary-scripture {
-    font-size: 0.9rem;
-    font-style: italic;
-    color: #8a6a38;
-    line-height: 1.7;
-    margin-bottom: 0.5rem;
-    padding-left: 1rem;
-    border-left: 1px solid #3a2510;
-  }
-
-  .xm-glossary-scripture em { color: #a08040; }
+  .xm-gloss-def:last-child { margin-bottom: 0 !important; }
+  .xm-gloss-def strong { color: #e8d49c; }
+  .xm-gloss-def em { color: #8a6a38; }
 
   /* ── ACCORDION HEADER ── */
   .xm-accordion-section {
