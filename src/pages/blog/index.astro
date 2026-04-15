@@ -128,6 +128,9 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
               data-category={post.data.category}
             >
               <div class="p-6 flex flex-col flex-1">
+                {['Trinity Studies', 'The Sender and The Sent', 'The Trinity Files'].includes(post.data.category) && (
+                  <a href="/trinity" class="trinity-badge">&#8592; Trinity</a>
+                )}
                 <div class="tag mb-3" style="color: var(--bronze);">
                   {post.data.category}
                 </div>
@@ -196,6 +199,25 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
 </script>
 
 <style>
+  .trinity-badge {
+    display: inline-block;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+    border: 1px solid #8a6028;
+    border-radius: 2px;
+    padding: 2px 7px;
+    margin-bottom: 6px;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s;
+  }
+  .trinity-badge:hover {
+    color: #c4a46b;
+    border-color: #c4a46b;
+  }
+
   /* ── Category filter buttons ── */
   .cat-btn {
     font-family: Georgia, 'Times New Roman', serif;
