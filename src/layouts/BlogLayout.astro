@@ -39,6 +39,13 @@ const readingTime = Math.ceil(wordCount / 200);
 
       <!-- Article Header -->
       <header class="max-w-4xl mx-auto mb-12 text-center" data-pagefind-ignore>
+        {['Trinity Studies', 'The Sender and The Sent', 'The Trinity Files'].includes(category) && (
+          <div class="mb-3">
+            <a href="/trinity" class="trinity-home-tag">
+              &#8592; Trinity
+            </a>
+          </div>
+        )}
         <div class="tag mb-4" style="color: var(--bronze);">
           {category}
         </div>
@@ -119,6 +126,27 @@ const readingTime = Math.ceil(wordCount / 200);
     </div>
   </article>
 </BaseLayout>
+
+<style>
+  .trinity-home-tag {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a6028;
+    border: 1px solid #8a6028;
+    border-radius: 2px;
+    padding: 3px 10px;
+    text-decoration: none;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .trinity-home-tag:hover {
+    color: #c4a46b;
+    border-color: #c4a46b;
+    background: rgba(138, 96, 40, 0.08);
+  }
+</style>
 
 <style is:global>
   /* Enhance prose styles for biblical content */
