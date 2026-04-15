@@ -136,7 +136,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       <h2 class="sw-coming-title">Deeper Explorations Coming Soon</h2>
       <div class="sw-coming-grid">
         <span class="sw-btn-soon">Astrology &#8594; Astronomy</span>
-        <span class="sw-btn-soon">The Wandering Stars</span>
+        <a href="/sun-worship/the-priesthood/the-wandering-stars" class="sw-btn-link">The Wandering Stars</a>
         <span class="sw-btn-soon">Saturn &amp; The Black Cube</span>
         <span class="sw-btn-soon">The Book of Esther / Ishtar</span>
         <span class="sw-btn-soon">Pharmakeia</span>
@@ -392,6 +392,37 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     border-radius: 32px 32px 26px 26px / 18px 18px 32px 32px;
     cursor: default;
     pointer-events: none;
+  }
+
+  .sw-btn-link {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.65rem 1.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 600;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #f5e8c8;
+    background: linear-gradient(180deg, #9a4a1a 0%, #7a3a10 50%, #4e2208 100%);
+    border: 1px solid rgba(186, 117, 23, 0.4);
+    border-radius: 32px 32px 26px 26px / 18px 18px 32px 32px;
+    box-shadow:
+      0 4px 16px rgba(186, 117, 23, 0.2),
+      inset 0 2px 4px rgba(220, 160, 80, 0.3),
+      inset 0 -2px 4px rgba(0,0,0,0.4);
+    transition: all 0.2s ease;
+  }
+
+  .sw-btn-link:hover {
+    background: linear-gradient(180deg, #b05a28 0%, #9a4a1a 50%, #6e3210 100%);
+    color: #fff5e0;
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 24px rgba(186, 117, 23, 0.3),
+      inset 0 2px 4px rgba(220, 160, 80, 0.35),
+      inset 0 -2px 4px rgba(0,0,0,0.4);
   }
 
   /* ── FOOTER ── */
