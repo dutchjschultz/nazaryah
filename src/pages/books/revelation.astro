@@ -1,0 +1,482 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const ACCENT = '#8B2828';
+
+const chapters = [
+  { num: 1,  title: 'Summons to the Court',         subtitle: 'The Gavel Falls, the King Calls All' },
+  { num: 2,  title: 'Letters as Indictments — Part I',  subtitle: 'Ephesus, Smyrna, Pergamum, and Thyatira' },
+  { num: 3,  title: 'Letters as Indictments — Part II', subtitle: 'Sardis, Philadelphia, and Laodicea' },
+  { num: 4,  title: 'Throne of Glory',               subtitle: 'The Courtroom Opens in Heaven' },
+  { num: 5,  title: 'The Scroll and the Lamb',       subtitle: 'When Authority Passes to the Lamb' },
+  { num: 6,  title: 'Six Seals Broken',              subtitle: 'The First Testimonies Enter the Record' },
+  { num: 7,  title: 'Sealed and Standing',           subtitle: 'The 144,000 and the Great Multitude' },
+  { num: 8,  title: 'Silence, Then Fire',            subtitle: 'The Seventh Seal and the First Four Trumpets' },
+  { num: 9,  title: 'Key to the Abyss',              subtitle: 'The Fifth and Sixth Trumpets' },
+  { num: 10, title: 'The Mighty Angel',              subtitle: 'The Little Scroll and the Prophet\'s Commission' },
+  { num: 11, title: 'Measured and Witnessed',        subtitle: 'The Two Witnesses and the Seventh Trumpet' },
+  { num: 12, title: 'War in Heaven',                 subtitle: 'The Woman, the Dragon, and the Male Child' },
+  { num: 13, title: 'Beasts and Allegiance',         subtitle: 'The Mark, the Image, and the Count' },
+  { num: 14, title: 'Harvest of the Earth',          subtitle: 'Three Angels and Two Reapings' },
+  { num: 15, title: 'Bowls of Completion',           subtitle: 'Preparation for the Final Judgments' },
+  { num: 16, title: 'Armageddon Gathered',           subtitle: 'The Seven Bowls of Wrath' },
+  { num: 17, title: 'Mystery Babylon Exposed',       subtitle: 'The Woman on the Scarlet Beast' },
+  { num: 18, title: 'One Hour Collapse',             subtitle: 'The Fall of Babylon the Great' },
+  { num: 19, title: 'Rider in White',                subtitle: 'The Marriage of the Lamb and the Return of the King' },
+  { num: 20, title: 'The Thousand-Year Reign',       subtitle: 'Satan Bound, the Millennium, and the Final Rebellion' },
+  { num: 21, title: 'Great White Throne',            subtitle: 'Final Judgment and the New Creation Begins' },
+  { num: 22, title: 'All Things New',                subtitle: 'The New Jerusalem and the Tree of Life Restored' },
+];
+
+function toRoman(n: number) {
+  const map: [string, number][] = [
+    ['M',1000],['CM',900],['D',500],['CD',400],
+    ['C',100],['XC',90],['L',50],['XL',40],
+    ['X',10],['IX',9],['V',5],['IV',4],['I',1]
+  ];
+  let r = '';
+  for (const [l, v] of map) { while (n >= v) { r += l; n -= v; } }
+  return r;
+}
+---
+
+<BaseLayout
+  title="The Courtroom of Heaven — Nazaryah"
+  description="Revelation Putting Modern Teaching on Trial. The case was filed in the Old Testament, argued through the prophets, and closed in Revelation."
+>
+  <div class="bk-root">
+
+    <!-- ─── BOOK DETAILS SECTION ─── -->
+    <div id="book-details">
+
+      <a href="/books" class="bk-back">← The Bookshelf</a>
+
+      <!-- Title block -->
+      <section class="bk-header">
+        <div class="bk-kicker">VOLUME III</div>
+        <h1 class="bk-title">The Courtroom of Heaven</h1>
+        <p class="bk-subtitle">Revelation Putting Modern Teaching on Trial</p>
+        <div class="bk-author">
+          <span class="bk-author-label">written by</span>
+          <span class="bk-author-name">Dutch Schultz</span>
+        </div>
+        <div class="bk-ornament">
+          <span class="bk-orn-line"></span>
+          <span class="bk-orn-mark">✦</span>
+          <span class="bk-orn-line"></span>
+        </div>
+      </section>
+
+      <!-- Hosea epigraph -->
+      <section class="bk-epigraph">
+        <blockquote class="bk-eq-text">
+          "My people are destroyed for lack of knowledge: because thou hast rejected knowledge, I will also reject thee… seeing thou hast forgotten the law of thy God, I will also forget thy children."
+        </blockquote>
+        <div class="bk-eq-ref">— Hosea 4:6</div>
+      </section>
+
+      <!-- Marketing blurb -->
+      <section class="bk-blurb">
+        <p class="bk-blurb-lead">What if the Book of Revelation was never meant to predict the future — but to put the Church on trial for abandoning the covenant?</p>
+        <p>For generations modern Christianity has turned Revelation into a roadmap of end-times prophecy — raptures, tribulations, and timelines. But the case was filed in the Old Testament. The prophets argued it for centuries. Revelation closed it. And the Church missed every hearing.</p>
+        <p>Every verse is drawn directly from Old Testament Scripture — nothing is left to man's imagination. Every seal, every trumpet, every bowl has a root. This is not interpretation. This is excavation.</p>
+        <p>This is not another end-times book. This is a covenant lawsuit. Yahuah is the Judge, the Torah is the standard, and Revelation is the verdict. If you have ever felt that something was missing from what you were taught — you were right. Court is now in session.</p>
+      </section>
+
+      <!-- Author's note -->
+      <section class="bk-note">
+        <div class="bk-note-label">A NOTE FROM THE AUTHOR</div>
+        <blockquote class="bk-note-quote">
+          "This guide is what I found when I finally read the record instead of the commentary. The throne room in chapter four is not a vision — it is a court being called to order. The seals are not coming disasters — they are the formal opening of evidence. The bowls are not catastrophes — they are final sentences from a court that has already ruled."
+        </blockquote>
+      </section>
+
+      <!-- Action -->
+      <section class="bk-action">
+        <button id="open-reader-btn" class="bk-primary-btn">
+          <span>⌘</span> Read online — Chapter 1
+        </button>
+      </section>
+      <p class="bk-price-note">Every chapter on nazaryah.com is free to read. Nothing is sold on this site.</p>
+
+      <!-- Amazon card -->
+      <aside class="bk-amz">
+        <div class="bk-amz-spine-wrap">
+          <div class="bk-amz-spine">
+            <div class="bk-amz-spine-text">The Courtroom of Heaven</div>
+          </div>
+        </div>
+        <div class="bk-amz-body">
+          <div class="bk-amz-kicker">
+            <span class="bk-amz-diamond">◆</span>
+            <span class="bk-amz-kicker-text">AVAILABLE IN PRINT</span>
+          </div>
+          <h3 class="bk-amz-title">The Courtroom of Heaven</h3>
+          <p class="bk-amz-sub">Revelation Putting Modern Teaching on Trial</p>
+          <div class="bk-amz-meta">
+            <span>by Dutch Schultz</span><span class="bk-dot">·</span>
+            <span>First Edition</span><span class="bk-dot">·</span>
+            <span>Paperback</span><span class="bk-dot">·</span>
+            <span>379 pages</span>
+          </div>
+          <p class="bk-amz-edition">
+            The print edition carries the courtroom-trial framework throughout — dockets, case briefs, evidence tags, and exhibits woven into every chapter.
+          </p>
+          <p class="bk-amz-honesty">
+            Priced at cost through Amazon. Every dollar covers printing — nothing is taken beyond that. Nothing <span class="bk-accent">Yahuah</span> gives through this work is sold here.
+          </p>
+          <a href="#" class="bk-amz-btn">
+            View the listing on Amazon <span>↗</span>
+          </a>
+        </div>
+      </aside>
+
+      <!-- Chapter list -->
+      <section class="bk-chapters">
+        <div class="bk-section-label">
+          <span class="bk-sl-line"></span>
+          <span class="bk-sl-text">CONTENTS</span>
+          <span class="bk-sl-line"></span>
+        </div>
+        <ol class="bk-ch-list">
+          {chapters.map((ch) => (
+            <li class="bk-ch-row">
+              <button class="bk-ch-inner open-reader-ch" data-chapter={ch.num}>
+                <div class="bk-ch-num">{toRoman(ch.num)}</div>
+                <div class="bk-ch-text">
+                  <div class="bk-ch-title">{ch.title}</div>
+                  <div class="bk-ch-topic">{ch.subtitle}</div>
+                </div>
+                <div class="bk-ch-arrow">→</div>
+              </button>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <div style="height: 100px;"></div>
+    </div>
+
+    <!-- ─── READER SECTION ─── -->
+    <div id="reader-section" style="display:none">
+
+      <!-- Toolbar -->
+      <div class="rd-bar">
+        <button id="reader-back-btn" class="rd-back-btn">← Back to book</button>
+        <button id="chapter-toggle-btn" class="rd-chapter-btn">
+          <span id="chapter-indicator" class="rd-ch-indicator">I</span>
+          <span id="chapter-of"> of XXII — Chapter index</span>
+          <span id="chapter-toggle-arrow" class="rd-toggle-arrow">▼</span>
+        </button>
+        <div class="rd-downloads">
+          <a href="#" class="rd-dl-btn">PDF</a>
+          <a href="#" class="rd-dl-btn">DOCX</a>
+        </div>
+      </div>
+
+      <!-- Chapter selector -->
+      <div id="chapter-selector" style="display:none" class="rd-selector">
+        <div class="rd-selector-label">JUMP TO CHAPTER</div>
+        <div class="rd-selector-grid">
+          {chapters.map((ch) => (
+            <button class="rd-selector-item" data-chapter={ch.num}>
+              <span class="rd-sel-num">{toRoman(ch.num)}</span>
+              <span class="rd-sel-title">{ch.title}</span>
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <!-- Chapter panels -->
+      <article class="rd-page">
+        {chapters.map((ch) => (
+          <div class="rd-chapter-panel" id={`chapter-${ch.num}`} style="display:none">
+            <header class="rd-page-header">
+              <div class="rd-docket-rule"></div>
+              <div class="rd-docket-label">C H A P T E R &nbsp; {toRoman(ch.num)}</div>
+              <h1 class="rd-page-title">{ch.title}</h1>
+              <p class="rd-page-sub">{ch.subtitle}</p>
+              <div class="rd-docket-rule"></div>
+            </header>
+            <div class="rd-page-body">
+              <p class="rd-placeholder">
+                [ Chapter {ch.num} content goes here. Drop the full chapter prose into this section. The printed book's court docket, case brief, and evidence-tag headers remain exclusive to the Amazon edition. ]
+              </p>
+            </div>
+            <footer class="rd-page-footer">
+              <div class="rd-pf-left">The Courtroom of Heaven</div>
+              <div class="rd-pf-center">{toRoman(ch.num)}</div>
+              <div class="rd-pf-right">nazaryah.com</div>
+            </footer>
+          </div>
+        ))}
+      </article>
+
+      <!-- Prev / Next -->
+      <nav class="rd-nav" id="rd-nav">
+        <button id="rd-prev-btn" class="rd-nav-btn" style="text-align:left">
+          <div class="rd-nav-label">◄ PREVIOUS</div>
+          <div class="rd-nav-title" id="rd-prev-title"></div>
+        </button>
+        <button id="rd-next-btn" class="rd-nav-btn" style="text-align:right">
+          <div class="rd-nav-label">NEXT ►</div>
+          <div class="rd-nav-title" id="rd-next-title"></div>
+        </button>
+      </nav>
+
+      <div style="height: 80px;"></div>
+    </div>
+
+  </div>
+</BaseLayout>
+
+<script>
+  // ─── Chapter data ───
+  const CHAPTERS = [
+    { num: 1,  title: 'Summons to the Court' },
+    { num: 2,  title: 'Letters as Indictments — Part I' },
+    { num: 3,  title: 'Letters as Indictments — Part II' },
+    { num: 4,  title: 'Throne of Glory' },
+    { num: 5,  title: 'The Scroll and the Lamb' },
+    { num: 6,  title: 'Six Seals Broken' },
+    { num: 7,  title: 'Sealed and Standing' },
+    { num: 8,  title: 'Silence, Then Fire' },
+    { num: 9,  title: 'Key to the Abyss' },
+    { num: 10, title: 'The Mighty Angel' },
+    { num: 11, title: 'Measured and Witnessed' },
+    { num: 12, title: 'War in Heaven' },
+    { num: 13, title: 'Beasts and Allegiance' },
+    { num: 14, title: 'Harvest of the Earth' },
+    { num: 15, title: 'Bowls of Completion' },
+    { num: 16, title: 'Armageddon Gathered' },
+    { num: 17, title: 'Mystery Babylon Exposed' },
+    { num: 18, title: 'One Hour Collapse' },
+    { num: 19, title: 'Rider in White' },
+    { num: 20, title: 'The Thousand-Year Reign' },
+    { num: 21, title: 'Great White Throne' },
+    { num: 22, title: 'All Things New' },
+  ];
+
+  function toRoman(n: number): string {
+    const map: [string, number][] = [
+      ['M',1000],['CM',900],['D',500],['CD',400],
+      ['C',100],['XC',90],['L',50],['XL',40],
+      ['X',10],['IX',9],['V',5],['IV',4],['I',1]
+    ];
+    let r = '';
+    for (const [l, v] of map) { while (n >= v) { r += l; n -= v; } }
+    return r;
+  }
+
+  let currentChapter = 1;
+
+  function showChapter(n: number) {
+    currentChapter = n;
+
+    // Hide all panels, show current
+    document.querySelectorAll('.rd-chapter-panel').forEach(p => {
+      (p as HTMLElement).style.display = 'none';
+    });
+    const panel = document.getElementById(`chapter-${n}`);
+    if (panel) panel.style.display = 'block';
+
+    // Update toolbar indicator
+    const indicator = document.getElementById('chapter-indicator');
+    if (indicator) indicator.textContent = toRoman(n);
+
+    // Update selector active state
+    document.querySelectorAll('.rd-selector-item').forEach(btn => {
+      const b = btn as HTMLElement;
+      const ch = parseInt(b.dataset.chapter || '0');
+      b.style.background = ch === n ? 'rgba(139,40,40,0.2)' : 'transparent';
+      b.style.borderLeft = ch === n ? '2px solid #8B2828' : '2px solid transparent';
+    });
+
+    // Prev / Next
+    const prev = CHAPTERS.find(c => c.num === n - 1);
+    const next = CHAPTERS.find(c => c.num === n + 1);
+    const prevBtn = document.getElementById('rd-prev-btn') as HTMLButtonElement;
+    const nextBtn = document.getElementById('rd-next-btn') as HTMLButtonElement;
+    const prevTitle = document.getElementById('rd-prev-title');
+    const nextTitle = document.getElementById('rd-next-title');
+
+    if (prev) {
+      prevBtn.style.display = 'block';
+      if (prevTitle) prevTitle.textContent = `${toRoman(prev.num)}. ${prev.title}`;
+      prevBtn.onclick = () => { showChapter(prev.num); scrollToTop(); };
+    } else {
+      prevBtn.style.display = 'none';
+    }
+    if (next) {
+      nextBtn.style.display = 'block';
+      if (nextTitle) nextTitle.textContent = `${toRoman(next.num)}. ${next.title}`;
+      nextBtn.onclick = () => { showChapter(next.num); scrollToTop(); };
+    } else {
+      nextBtn.style.display = 'none';
+    }
+
+    // Close selector
+    const sel = document.getElementById('chapter-selector');
+    const arrow = document.getElementById('chapter-toggle-arrow');
+    if (sel) sel.style.display = 'none';
+    if (arrow) arrow.textContent = '▼';
+  }
+
+  function scrollToTop() {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  function openReader(startChapter = 1) {
+    document.getElementById('book-details')!.style.display = 'none';
+    document.getElementById('reader-section')!.style.display = 'block';
+    showChapter(startChapter);
+    scrollToTop();
+  }
+
+  function showBook() {
+    document.getElementById('reader-section')!.style.display = 'none';
+    document.getElementById('book-details')!.style.display = 'block';
+    scrollToTop();
+  }
+
+  // Wire up buttons
+  document.getElementById('open-reader-btn')?.addEventListener('click', () => openReader(1));
+  document.getElementById('reader-back-btn')?.addEventListener('click', showBook);
+
+  // Chapter list buttons on book-details page
+  document.querySelectorAll('.open-reader-ch').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ch = parseInt((btn as HTMLElement).dataset.chapter || '1');
+      openReader(ch);
+    });
+  });
+
+  // Chapter selector toggle
+  document.getElementById('chapter-toggle-btn')?.addEventListener('click', () => {
+    const sel = document.getElementById('chapter-selector')!;
+    const arrow = document.getElementById('chapter-toggle-arrow')!;
+    const open = sel.style.display !== 'none';
+    sel.style.display = open ? 'none' : 'block';
+    arrow.textContent = open ? '▼' : '▲';
+  });
+
+  // Selector items
+  document.querySelectorAll('.rd-selector-item').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const ch = parseInt((btn as HTMLElement).dataset.chapter || '1');
+      showChapter(ch);
+      scrollToTop();
+    });
+  });
+</script>
+
+<style>
+  .bk-root {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 32px 40px;
+    background: #0D0B0A;
+    min-height: 80vh;
+    color: #E8DCC8;
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+
+  /* ── Shared book-page styles ── */
+  .bk-back { display: inline-block; font-family: 'EB Garamond', Georgia, serif; font-size: 14px; font-style: italic; color: #8A7E70; text-decoration: none; padding-bottom: 40px; transition: color 0.2s; }
+  .bk-back:hover { color: #8B2828; }
+  .bk-header { text-align: center; margin-bottom: 60px; }
+  .bk-kicker { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.4em; margin-bottom: 24px; color: #8B2828; }
+  .bk-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: clamp(36px, 5vw, 56px); font-weight: 400; line-height: 1.1; margin: 0 0 20px; color: #F5EFE4; letter-spacing: -0.01em; }
+  .bk-subtitle { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-style: italic; font-weight: 300; color: #B8AA98; margin: 0 0 32px; line-height: 1.4; }
+  .bk-author { display: flex; flex-direction: column; align-items: center; gap: 6px; margin-bottom: 16px; }
+  .bk-author-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #6B5F53; }
+  .bk-author-name { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; color: #D4C4A8; letter-spacing: 0.05em; }
+  .bk-ornament { display: flex; align-items: center; justify-content: center; gap: 16px; max-width: 300px; margin: 0 auto; }
+  .bk-orn-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(139,40,40,0.4), transparent); }
+  .bk-orn-mark { font-size: 14px; color: #8B2828; }
+  .bk-epigraph { max-width: 620px; margin: 0 auto 40px; padding: 28px 32px; border-left: 2px solid #8B2828; background: rgba(20,16,14,0.5); }
+  .bk-eq-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-style: italic; font-weight: 300; color: #D4C4A8; line-height: 1.6; margin: 0 0 12px; }
+  .bk-eq-ref { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; color: #8B2828; }
+  .bk-blurb { max-width: 680px; margin: 0 auto 40px; padding: 0 20px; }
+  .bk-blurb p { font-family: 'EB Garamond', Georgia, serif; line-height: 1.6; margin: 0 0 20px; font-size: 17px; color: #B8AA98; }
+  .bk-blurb-lead { font-size: 22px !important; font-style: italic; color: #F5EFE4 !important; }
+  .bk-note { margin: 40px auto 48px; max-width: 700px; padding: 0 20px; text-align: center; }
+  .bk-note-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #8A7E70; margin-bottom: 20px; }
+  .bk-note-quote { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-style: italic; font-weight: 300; color: #D4C4A8; line-height: 1.6; margin: 0; }
+  .bk-action { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; margin-bottom: 16px; }
+  .bk-primary-btn { padding: 14px 28px; background: #8B2828; border: none; border-radius: 2px; color: #F5EFE4; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 15px; font-weight: 600; letter-spacing: 0.05em; cursor: pointer; display: inline-flex; align-items: center; gap: 10px; transition: opacity 0.2s; }
+  .bk-primary-btn:hover { opacity: 0.9; }
+  .bk-price-note { font-family: 'EB Garamond', Georgia, serif; font-size: 13px; font-style: italic; color: #8A7E70; text-align: center; max-width: 600px; margin: 0 auto 60px; line-height: 1.5; }
+  .bk-amz { position: relative; max-width: 720px; margin: 20px auto 60px; background: linear-gradient(180deg, #1A1614 0%, #14100E 100%); border: 1px solid rgba(255,255,255,0.06); border-left: 3px solid #8B2828; border-radius: 2px; overflow: hidden; display: grid; grid-template-columns: 72px 1fr; }
+  .bk-amz-spine-wrap { background: rgba(0,0,0,0.3); display: flex; align-items: center; justify-content: center; padding: 20px 0; }
+  .bk-amz-spine { width: 28px; min-height: 240px; background: linear-gradient(180deg, #8B2828 0%, #8B282899 100%); box-shadow: inset -2px 0 4px rgba(0,0,0,0.4), inset 2px 0 2px rgba(255,255,255,0.08); border-radius: 1px; display: flex; align-items: center; justify-content: center; }
+  .bk-amz-spine-text { writing-mode: vertical-rl; transform: rotate(180deg); font-family: 'Cormorant Garamond', Georgia, serif; font-size: 11px; letter-spacing: 0.2em; color: rgba(13,11,10,0.7); font-weight: 600; white-space: nowrap; overflow: hidden; padding: 16px 0; }
+  .bk-amz-body { padding: 28px 32px 28px 28px; }
+  .bk-amz-kicker { display: flex; align-items: center; margin-bottom: 14px; }
+  .bk-amz-diamond { color: #8B2828; margin-right: 10px; font-size: 12px; }
+  .bk-amz-kicker-text { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.35em; font-weight: 500; color: #8B2828; }
+  .bk-amz-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 26px; font-weight: 500; line-height: 1.2; margin: 0 0 8px; color: #F5EFE4; }
+  .bk-amz-sub { font-family: 'EB Garamond', Georgia, serif; font-size: 14px; font-style: italic; color: #9A8C7A; line-height: 1.5; margin: 0 0 18px; }
+  .bk-amz-meta { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.15em; color: #8A7E70; padding-bottom: 18px; border-bottom: 1px solid rgba(139,40,40,0.12); margin-bottom: 20px; text-transform: uppercase; }
+  .bk-dot { opacity: 0.5; }
+  .bk-amz-edition { font-family: 'EB Garamond', Georgia, serif; font-size: 14.5px; font-style: italic; color: #D4C4A8; line-height: 1.6; margin: 0 0 20px; padding: 2px 0 2px 16px; border-left: 2px solid rgba(139,40,40,0.4); }
+  .bk-amz-honesty { font-family: 'EB Garamond', Georgia, serif; font-size: 13px; font-style: italic; color: #8A7E70; line-height: 1.6; margin: 0 0 22px; padding-left: 14px; border-left: 1px solid rgba(139,40,40,0.2); }
+  .bk-accent { color: #8B2828; font-style: normal; }
+  .bk-amz-btn { display: inline-flex; align-items: center; gap: 10px; padding: 13px 22px; border: 1px solid #8B2828; border-radius: 2px; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 15px; letter-spacing: 0.05em; text-decoration: none; transition: all 0.25s; cursor: pointer; font-weight: 500; background: transparent; color: #8B2828; }
+  .bk-amz-btn:hover { background: #8B2828; color: #F5EFE4 !important; }
+  .bk-chapters { margin-top: 40px; }
+  .bk-section-label { display: flex; align-items: center; gap: 16px; margin: 0 auto 36px; max-width: 400px; }
+  .bk-sl-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(139,40,40,0.3), transparent); }
+  .bk-sl-text { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.3em; color: #8A7E70; }
+  .bk-ch-list { list-style: none; padding: 0; margin: 0; }
+  .bk-ch-row { border-bottom: 1px solid rgba(139,40,40,0.08); }
+  .bk-ch-inner { display: grid; grid-template-columns: 60px 1fr 30px; align-items: center; gap: 20px; padding: 20px 12px; width: 100%; background: transparent; border: none; cursor: pointer; text-align: left; transition: background 0.2s; color: inherit; }
+  .bk-ch-inner:hover { background: rgba(139,40,40,0.04); }
+  .bk-ch-num { font-family: 'JetBrains Mono', monospace; font-size: 14px; letter-spacing: 0.15em; color: #8B2828; }
+  .bk-ch-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; color: #F5EFE4; line-height: 1.3; margin-bottom: 4px; }
+  .bk-ch-topic { font-family: 'EB Garamond', Georgia, serif; font-size: 13px; font-style: italic; color: #8A7E70; }
+  .bk-ch-arrow { font-size: 18px; color: #6B5F53; text-align: right; }
+
+  /* ── Reader styles ── */
+  .rd-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 16px 0; border-bottom: 1px solid rgba(139,40,40,0.2); margin-bottom: 32px; }
+  .rd-back-btn { background: none; border: none; color: #8A7E70; font-family: 'EB Garamond', Georgia, serif; font-size: 14px; font-style: italic; cursor: pointer; transition: color 0.2s; }
+  .rd-back-btn:hover { color: #C4A46B; }
+  .rd-chapter-btn { background: rgba(139,40,40,0.1); border: 1px solid rgba(139,40,40,0.3); border-radius: 2px; color: #E8DCC8; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; letter-spacing: 0.05em; padding: 10px 18px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
+  .rd-ch-indicator { color: #8B2828; margin-right: 2px; }
+  .rd-toggle-arrow { font-size: 10px; opacity: 0.7; }
+  .rd-downloads { display: flex; gap: 8px; }
+  .rd-dl-btn { padding: 8px 14px; background: transparent; border: 1px solid rgba(201,169,97,0.3); border-radius: 2px; color: #C9A961; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-decoration: none; transition: all 0.2s; }
+  .rd-dl-btn:hover { background: rgba(201,169,97,0.1); }
+  .rd-selector { background: #14100E; border: 1px solid rgba(139,40,40,0.15); border-radius: 2px; padding: 20px 24px; margin-bottom: 32px; }
+  .rd-selector-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #8A7E70; margin-bottom: 16px; }
+  .rd-selector-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 4px; }
+  .rd-selector-item { display: flex; align-items: center; gap: 14px; padding: 10px 14px; background: transparent; border: none; border-left: 2px solid transparent; cursor: pointer; text-align: left; transition: all 0.2s; color: #E8DCC8; }
+  .rd-sel-num { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.1em; color: #8A7E70; min-width: 40px; }
+  .rd-sel-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; line-height: 1.3; }
+  .rd-page { background: #F5EFE4; color: #2B2420; padding: 80px 72px 60px; border-radius: 2px; box-shadow: 0 30px 80px rgba(0,0,0,0.5), 0 0 0 1px rgba(139,40,40,0.1); position: relative; }
+  .rd-page-header { text-align: center; margin-bottom: 48px; }
+  .rd-docket-rule { width: 80px; height: 1px; background: #8B2828; margin: 0 auto; opacity: 0.4; }
+  .rd-docket-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.4em; color: #8B2828; margin: 20px 0 16px; }
+  .rd-page-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 36px; font-weight: 600; color: #1A3A5C; line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.005em; }
+  .rd-page-sub { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px; font-style: italic; color: #6B5F53; margin: 0 0 20px; line-height: 1.4; }
+  .rd-page-body { font-family: 'EB Garamond', Georgia, serif; font-size: 17px; line-height: 1.75; color: #2B2420; }
+  .rd-placeholder { font-style: italic; color: #6B5F53; margin-top: 40px; font-size: 15px; }
+  .rd-page-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(43,36,32,0.15); font-family: 'EB Garamond', Georgia, serif; font-size: 11px; font-style: italic; color: #8A7E70; }
+  .rd-pf-center { flex: 1; text-align: center; font-family: 'JetBrains Mono', monospace; font-style: normal; letter-spacing: 0.15em; }
+  .rd-pf-left, .rd-pf-right { flex: 1; }
+  .rd-pf-right { text-align: right; }
+  .rd-nav { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-top: 40px; }
+  .rd-nav-btn { background: #14100E; border: 1px solid rgba(139,40,40,0.15); border-radius: 2px; padding: 20px 24px; cursor: pointer; transition: all 0.2s; color: inherit; }
+  .rd-nav-btn:hover { border-color: rgba(139,40,40,0.35); }
+  .rd-nav-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #8B2828; margin-bottom: 8px; }
+  .rd-nav-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px; color: #E8DCC8; line-height: 1.3; }
+
+  @media (max-width: 640px) {
+    .bk-root { padding: 40px 20px 40px; }
+    .bk-amz { grid-template-columns: 1fr; }
+    .bk-amz-spine-wrap { display: none; }
+    .rd-page { padding: 40px 24px 40px; }
+    .rd-bar { flex-direction: column; align-items: flex-start; }
+    .rd-nav { grid-template-columns: 1fr; }
+  }
+</style>

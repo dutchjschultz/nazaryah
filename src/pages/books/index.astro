@@ -1,0 +1,329 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const books = [
+  {
+    id: 'five-titles',
+    num: '01',
+    title: 'Five Titles, One Christ,',
+    titleLine2: 'and the Father They Forgot',
+    subtitle: 'How One Doctrine Erased the Father and Crowned the Son With Titles That Were Never His',
+    tagline: 'Five titles. Two figures. One doctrine that blurred them into one.',
+    accent: '#C9A961',
+    accentDim: 'rgba(201,169,97,0.1)',
+    chapters: 5,
+    href: '/books/five-titles',
+  },
+  {
+    id: 'pulpit-buried',
+    num: '02',
+    title: 'What the Pulpit Buried',
+    titleLine2: null,
+    subtitle: 'Six Hebrew Words Lost Beneath Centuries of Tradition',
+    tagline: 'An excavation of six words the pulpit preaches but never unearths.',
+    accent: '#B87333',
+    accentDim: 'rgba(184,115,51,0.1)',
+    chapters: 8,
+    href: '/books/pulpit-buried',
+  },
+  {
+    id: 'revelation',
+    num: '03',
+    title: 'The Courtroom of Heaven',
+    titleLine2: null,
+    subtitle: 'Revelation Putting Modern Teaching on Trial',
+    tagline: 'The case was filed in the Old Testament, argued through the prophets, and closed in Revelation — the Church missed every hearing.',
+    accent: '#8B2828',
+    accentDim: 'rgba(139,40,40,0.1)',
+    chapters: 22,
+    href: '/books/revelation',
+  },
+];
+---
+
+<BaseLayout
+  title="The Bookshelf — Nazaryah"
+  description="Three compiled works. Every chapter free to read. Available in print at cost."
+>
+  <div class="bk-root">
+
+    <!-- Hero -->
+    <section class="bk-hero">
+      <div class="bk-kicker">THE BOOKSHELF</div>
+      <h1 class="bk-title">
+        Three works.<br />
+        <em>One conviction.</em>
+      </h1>
+      <div class="bk-ornament">
+        <span class="bk-orn-line"></span>
+        <span class="bk-orn-mark">✦</span>
+        <span class="bk-orn-line"></span>
+      </div>
+      <p class="bk-intro">
+        Every chapter on this site is free. Every book is available in print for those who want it in their hands — at cost, through outside sellers. Nothing given by <span class="bk-gold">Yahuah</span> is sold here.
+      </p>
+      <figure class="bk-epigraph">
+        <blockquote class="bk-eq-text">"Buy the truth, and sell it not; also wisdom, and instruction, and understanding."</blockquote>
+        <figcaption class="bk-eq-ref">— Mishlei (Proverbs) 23:23</figcaption>
+      </figure>
+    </section>
+
+    <!-- Book cards -->
+    <section class="bk-grid">
+      {books.map((book) => (
+        <a href={book.href} class="bk-card" style={`--accent: ${book.accent}; --accent-dim: ${book.accentDim};`}>
+          <div class="bk-spine"></div>
+          <div class="bk-num">{book.num}</div>
+          <h2 class="bk-card-title">
+            {book.title}
+            {book.titleLine2 && <><br /><em>{book.titleLine2}</em></>}
+          </h2>
+          <p class="bk-card-sub">{book.subtitle}</p>
+          <div class="bk-divider"></div>
+          <p class="bk-card-tag">{book.tagline}</p>
+          <div class="bk-meta">
+            <span>{book.chapters} chapters</span>
+            <span class="bk-dot">·</span>
+            <span>Dutch Schultz</span>
+          </div>
+          <div class="bk-open">Open the book →</div>
+        </a>
+      ))}
+    </section>
+
+    <div style="height: 80px;"></div>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .bk-root {
+    min-height: 80vh;
+    background: #0D0B0A;
+    background-image:
+      radial-gradient(ellipse at top, rgba(201,169,97,0.04) 0%, transparent 50%),
+      radial-gradient(ellipse at bottom right, rgba(139,40,40,0.03) 0%, transparent 60%);
+    color: #E8DCC8;
+    font-family: 'EB Garamond', Georgia, serif;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 80px 32px 40px;
+  }
+
+  /* Hero */
+  .bk-hero {
+    text-align: center;
+    margin-bottom: 80px;
+  }
+
+  .bk-kicker {
+    font-family: 'JetBrains Mono', 'Courier New', monospace;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    color: #8A7E70;
+    margin-bottom: 24px;
+  }
+
+  .bk-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(42px, 6vw, 72px);
+    font-weight: 300;
+    line-height: 1.1;
+    margin: 0 0 40px;
+    color: #F5EFE4;
+    letter-spacing: -0.01em;
+  }
+
+  .bk-title em {
+    font-style: italic;
+    color: #C9A961;
+  }
+
+  .bk-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin: 32px auto;
+    max-width: 300px;
+  }
+
+  .bk-orn-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(201,169,97,0.4), transparent);
+  }
+
+  .bk-orn-mark {
+    color: #C9A961;
+    font-size: 14px;
+  }
+
+  .bk-intro {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 18px;
+    line-height: 1.6;
+    color: #B8AA98;
+    max-width: 640px;
+    margin: 0 auto 48px;
+    font-style: italic;
+  }
+
+  .bk-gold {
+    color: #C9A961;
+  }
+
+  .bk-epigraph {
+    max-width: 520px;
+    margin: 0 auto;
+    padding: 0 20px;
+  }
+
+  .bk-eq-text {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: #D4C4A8;
+    line-height: 1.5;
+    margin: 0 0 12px;
+  }
+
+  .bk-eq-ref {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: #8A7E70;
+  }
+
+  /* Grid */
+  .bk-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+    gap: 32px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* Card */
+  .bk-card {
+    position: relative;
+    padding: 40px 32px 28px;
+    background: linear-gradient(180deg, #1A1614 0%, #14100E 100%);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 2px;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    min-height: 380px;
+    text-decoration: none;
+    color: inherit;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1),
+                border-color 0.3s ease,
+                box-shadow 0.3s ease;
+  }
+
+  .bk-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent);
+    box-shadow: 0 20px 60px var(--accent-dim), 0 0 0 1px color-mix(in srgb, var(--accent) 25%, transparent);
+  }
+
+  .bk-spine {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 3px;
+    background: var(--accent);
+    border-radius: 2px 0 0 2px;
+  }
+
+  .bk-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    margin-bottom: 20px;
+    color: var(--accent);
+    opacity: 0.8;
+  }
+
+  .bk-card-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 0 14px;
+    color: #F5EFE4;
+    letter-spacing: -0.005em;
+  }
+
+  .bk-card-title em {
+    font-style: italic;
+    font-weight: 500;
+  }
+
+  .bk-card-sub {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #9A8C7A;
+    line-height: 1.5;
+    margin: 0 0 24px;
+  }
+
+  .bk-divider {
+    width: 32px;
+    height: 1px;
+    background: var(--accent);
+    margin-bottom: 20px;
+  }
+
+  .bk-card-tag {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.5;
+    color: #D4C4A8;
+    margin: 0 0 auto;
+    padding-bottom: 28px;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .bk-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 20px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #6B5F53;
+  }
+
+  .bk-dot { opacity: 0.5; }
+
+  .bk-open {
+    display: inline-block;
+    padding: 12px 20px;
+    border: 1px solid var(--accent);
+    border-radius: 2px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 14px;
+    letter-spacing: 0.08em;
+    text-align: center;
+    color: var(--accent);
+    align-self: flex-start;
+    transition: all 0.25s;
+  }
+
+  .bk-card:hover .bk-open {
+    background: var(--accent);
+    color: #0D0B0A;
+  }
+
+  @media (max-width: 640px) {
+    .bk-root { padding: 60px 20px 40px; }
+    .bk-grid { grid-template-columns: 1fr; }
+  }
+</style>
