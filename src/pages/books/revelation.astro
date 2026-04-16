@@ -170,8 +170,8 @@ function toRoman(n: number) {
           <span id="chapter-toggle-arrow" class="rd-toggle-arrow">▼</span>
         </button>
         <div class="rd-downloads">
-          <a href="#" class="rd-dl-btn">PDF</a>
-          <a href="#" class="rd-dl-btn">DOCX</a>
+          <button id="rd-pdf-btn" class="rd-dl-btn">↓ PDF</button>
+          <button id="rd-spread-btn" class="rd-dl-btn rd-spread-toggle" title="Book view">⊞ Book</button>
         </div>
       </div>
 
@@ -800,6 +800,159 @@ function toRoman(n: number) {
       scrollToTop();
     });
   });
+
+  // ─── PDF print ───
+  document.getElementById('rd-pdf-btn')?.addEventListener('click', () => {
+    window.print();
+  });
+
+  // ─── Book spread view ───
+  let spreadOpen = false;
+
+  function openSpread() {
+    const panel = document.getElementById(`chapter-${currentChapter}`);
+    if (!panel) return;
+
+    // Build overlay
+    const overlay = document.createElement('div');
+    overlay.id = 'book-spread-overlay';
+
+    const title = CHAPTERS.find(c => c.num === currentChapter)?.title || '';
+    const numeral = toRoman(currentChapter);
+
+    // Clone content
+    const contentClone = panel.querySelector('.rd-page-body')?.cloneNode(true) as HTMLElement;
+    if (!contentClone) return;
+
+    overlay.innerHTML = `
+      <div class="bs-shell">
+        <button class="bs-close" id="bs-close-btn">✕ Close book view</button>
+        <div class="bs-book">
+          <button class="bs-arrow bs-arrow-left" id="bs-prev-page" aria-label="Previous pages">&#8249;</button>
+          <div class="bs-spread-wrap">
+            <div class="bs-page bs-page-left">
+              <div class="bs-running-head">The Courtroom of Heaven</div>
+              <div class="bs-content" id="bs-content"></div>
+              <div class="bs-footer"><span class="bs-pg" id="bs-pg-left"></span></div>
+            </div>
+            <div class="bs-gutter"></div>
+            <div class="bs-page bs-page-right">
+              <div class="bs-running-head">${title}</div>
+              <div class="bs-content bs-content-right" id="bs-content-right"></div>
+              <div class="bs-footer"><span class="bs-pg" id="bs-pg-right"></span></div>
+            </div>
+          </div>
+          <button class="bs-arrow bs-arrow-right" id="bs-next-page" aria-label="Next pages">&#8250;</button>
+        </div>
+        <div class="bs-chapter-nav">
+          <button class="bs-ch-nav" id="bs-prev-ch">&#8592; Previous chapter</button>
+          <span class="bs-ch-indicator">${numeral} · ${title}</span>
+          <button class="bs-ch-nav" id="bs-next-ch">Next chapter &#8594;</button>
+        </div>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+    document.body.style.overflow = 'hidden';
+    spreadOpen = true;
+
+    // Paginate the content
+    paginateSpread(contentClone, numeral, title);
+
+    document.getElementById('bs-close-btn')?.addEventListener('click', closeSpread);
+    overlay.addEventListener('click', (e) => { if (e.target === overlay) closeSpread(); });
+
+    // Chapter nav
+    document.getElementById('bs-prev-ch')?.addEventListener('click', () => {
+      const prev = CHAPTERS.find(c => c.num === currentChapter - 1);
+      if (prev) { closeSpread(); showChapter(prev.num); setTimeout(openSpread, 50); }
+    });
+    document.getElementById('bs-next-ch')?.addEventListener('click', () => {
+      const next = CHAPTERS.find(c => c.num === currentChapter + 1);
+      if (next) { closeSpread(); showChapter(next.num); setTimeout(openSpread, 50); }
+    });
+  }
+
+  let spreadPages: string[] = [];
+  let spreadCurrentPage = 0; // 0-indexed, shows pages[spreadCurrentPage] and pages[spreadCurrentPage+1]
+
+  function paginateSpread(contentEl: HTMLElement, numeral: string, title: string) {
+    // Use a hidden measuring container to paginate
+    const measurer = document.createElement('div');
+    measurer.style.cssText = 'position:absolute;top:-9999px;left:-9999px;width:340px;font-family:"EB Garamond",Georgia,serif;font-size:16px;line-height:1.75;color:#2B2420;';
+    document.body.appendChild(measurer);
+
+    // Split content into paragraphs and block elements
+    const blocks = Array.from(contentEl.children);
+    const PAGE_HEIGHT = 560; // approximate page content height in px
+
+    const pages: string[] = [];
+    let currentPageHTML = '';
+    let currentHeight = 0;
+
+    for (const block of blocks) {
+      const clone = block.cloneNode(true) as HTMLElement;
+      measurer.innerHTML = '';
+      measurer.appendChild(clone);
+      const h = measurer.getBoundingClientRect().height || measurer.offsetHeight || 40;
+
+      if (currentHeight + h > PAGE_HEIGHT && currentPageHTML) {
+        pages.push(currentPageHTML);
+        currentPageHTML = block.outerHTML;
+        currentHeight = h;
+      } else {
+        currentPageHTML += block.outerHTML;
+        currentHeight += h;
+      }
+    }
+    if (currentPageHTML) pages.push(currentPageHTML);
+    document.body.removeChild(measurer);
+
+    // Prepend chapter header as first page content
+    const headerHTML = `<div class="bs-ch-header"><div class="bs-ch-label">C H A P T E R &nbsp; ${numeral}</div><h1 class="bs-ch-title">${title}</h1></div>`;
+    if (pages.length > 0) {
+      pages[0] = headerHTML + pages[0];
+    } else {
+      pages.push(headerHTML);
+    }
+
+    spreadPages = pages;
+    spreadCurrentPage = 0;
+    renderSpreadPages();
+
+    document.getElementById('bs-prev-page')?.addEventListener('click', () => {
+      if (spreadCurrentPage > 0) { spreadCurrentPage -= 2; renderSpreadPages(); }
+    });
+    document.getElementById('bs-next-page')?.addEventListener('click', () => {
+      if (spreadCurrentPage + 2 < spreadPages.length) { spreadCurrentPage += 2; renderSpreadPages(); }
+    });
+  }
+
+  function renderSpreadPages() {
+    const leftEl = document.getElementById('bs-content');
+    const rightEl = document.getElementById('bs-content-right');
+    const pgLeft = document.getElementById('bs-pg-left');
+    const pgRight = document.getElementById('bs-pg-right');
+    const prevBtn = document.getElementById('bs-prev-page') as HTMLButtonElement;
+    const nextBtn = document.getElementById('bs-next-page') as HTMLButtonElement;
+
+    if (leftEl) leftEl.innerHTML = spreadPages[spreadCurrentPage] || '';
+    if (rightEl) rightEl.innerHTML = spreadPages[spreadCurrentPage + 1] || '';
+    if (pgLeft) pgLeft.textContent = String(spreadCurrentPage + 1);
+    if (pgRight) pgRight.textContent = spreadCurrentPage + 1 < spreadPages.length ? String(spreadCurrentPage + 2) : '';
+    if (prevBtn) prevBtn.style.opacity = spreadCurrentPage === 0 ? '0.2' : '1';
+    if (nextBtn) nextBtn.style.opacity = spreadCurrentPage + 2 >= spreadPages.length ? '0.2' : '1';
+  }
+
+  function closeSpread() {
+    document.getElementById('book-spread-overlay')?.remove();
+    document.body.style.overflow = '';
+    spreadOpen = false;
+  }
+
+  document.getElementById('rd-spread-btn')?.addEventListener('click', () => {
+    if (spreadOpen) closeSpread(); else openSpread();
+  });
 </script>
 
 <style>
@@ -930,5 +1083,95 @@ function toRoman(n: number) {
     .rd-page { padding: 40px 24px 40px; }
     .rd-bar { flex-direction: column; align-items: flex-start; }
     .rd-nav { grid-template-columns: 1fr; }
+  }
+
+  /* ── Book Spread Overlay ── */
+  :global(#book-spread-overlay) {
+    position: fixed; inset: 0; background: rgba(10,8,6,0.92); z-index: 9999;
+    display: flex; align-items: center; justify-content: center;
+    overflow-y: auto; padding: 20px;
+  }
+  :global(.bs-shell) {
+    display: flex; flex-direction: column; align-items: center; gap: 16px;
+    max-width: 1100px; width: 100%;
+  }
+  :global(.bs-close) {
+    align-self: flex-end; background: none; border: 1px solid rgba(139,40,40,0.4);
+    border-radius: 2px; color: #8A7E70; font-family: 'JetBrains Mono', monospace;
+    font-size: 11px; letter-spacing: 0.15em; padding: 8px 16px; cursor: pointer;
+    transition: all 0.2s;
+  }
+  :global(.bs-close:hover) { color: #F5EFE4; border-color: #8B2828; }
+  :global(.bs-book) {
+    display: flex; align-items: center; gap: 0; width: 100%; position: relative;
+  }
+  :global(.bs-spread-wrap) {
+    display: flex; flex: 1; min-width: 0;
+    box-shadow: 0 40px 100px rgba(0,0,0,0.7);
+    border-radius: 2px;
+  }
+  :global(.bs-page) {
+    flex: 1; background: #F5EFE4; min-height: 640px; max-height: 720px;
+    padding: 52px 48px 44px; display: flex; flex-direction: column;
+    position: relative; overflow: hidden;
+  }
+  :global(.bs-page-left) {
+    border-right: 1px solid rgba(43,36,32,0.1);
+    box-shadow: inset -6px 0 12px rgba(0,0,0,0.06);
+    border-radius: 2px 0 0 2px;
+  }
+  :global(.bs-page-right) {
+    box-shadow: inset 6px 0 12px rgba(0,0,0,0.06);
+    border-radius: 0 2px 2px 0;
+  }
+  :global(.bs-gutter) { width: 2px; background: linear-gradient(180deg, #d8cfc4 0%, #c4baae 50%, #d8cfc4 100%); }
+  :global(.bs-running-head) {
+    font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.25em;
+    color: #8B2828; text-transform: uppercase; margin-bottom: 24px;
+    padding-bottom: 10px; border-bottom: 1px solid rgba(139,40,40,0.2);
+  }
+  :global(.bs-content) { flex: 1; overflow: hidden; font-family: 'EB Garamond', Georgia, serif; font-size: 16px; line-height: 1.75; color: #2B2420; }
+  :global(.bs-content h3) { font-family: 'Cormorant Garamond',Georgia,serif; font-size: 18px; font-weight: 600; color: #1A3A5C; margin: 16px 0 4px; border-bottom: 1px solid rgba(139,40,40,0.15); padding-bottom: 4px; }
+  :global(.bs-content h4) { font-family: 'Cormorant Garamond',Georgia,serif; font-size: 15px; font-weight: 600; font-style: italic; margin: 12px 0 6px; color: #2B2420; }
+  :global(.bs-content p) { margin: 0 0 10px; }
+  :global(.bs-content aside) { border-left: 2px solid rgba(139,40,40,0.4); padding: 8px 12px; margin: 10px 0; background: rgba(139,40,40,0.04); font-size: 14px; }
+  :global(.bs-footer) {
+    text-align: center; padding-top: 16px; margin-top: 8px;
+    border-top: 1px solid rgba(43,36,32,0.12);
+  }
+  :global(.bs-pg) { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #8A7E70; }
+  :global(.bs-arrow) {
+    background: rgba(139,40,40,0.08); border: 1px solid rgba(139,40,40,0.2);
+    border-radius: 50%; width: 44px; height: 44px; font-size: 28px;
+    color: #8B2828; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    flex-shrink: 0; margin: 0 12px; transition: all 0.2s; line-height: 1;
+  }
+  :global(.bs-arrow:hover) { background: rgba(139,40,40,0.2); }
+  :global(.bs-chapter-nav) {
+    display: flex; align-items: center; gap: 20px; margin-top: 4px;
+    font-family: 'JetBrains Mono', monospace;
+  }
+  :global(.bs-ch-nav) {
+    background: none; border: none; color: #8A7E70; font-family: 'JetBrains Mono', monospace;
+    font-size: 10px; letter-spacing: 0.15em; cursor: pointer; transition: color 0.2s;
+    text-transform: uppercase;
+  }
+  :global(.bs-ch-nav:hover) { color: #8B2828; }
+  :global(.bs-ch-indicator) { font-size: 10px; letter-spacing: 0.1em; color: #6B5F53; }
+  :global(.bs-ch-header) { text-align: center; margin-bottom: 20px; padding-bottom: 12px; border-bottom: 1px solid rgba(139,40,40,0.2); }
+  :global(.bs-ch-label) { font-family: 'JetBrains Mono', monospace; font-size: 8px; letter-spacing: 0.4em; color: #8B2828; margin-bottom: 8px; }
+  :global(.bs-ch-title) { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 24px; font-weight: 600; color: #1A3A5C; margin: 0; }
+
+  /* ── Print styles ── */
+  @media print {
+    :global(body > *:not(#print-target)) { display: none !important; }
+    :global(.bk-root) { background: white !important; color: black !important; }
+    :global(.rd-bar), :global(.rd-selector), :global(.rd-nav), :global(header), :global(footer) { display: none !important; }
+    :global(#reader-section) { display: block !important; }
+    :global(#book-details) { display: none !important; }
+    :global(.rd-chapter-panel) { display: block !important; page-break-after: always; }
+    :global(.rd-page) { box-shadow: none !important; background: white !important; padding: 20px !important; }
+    :global(.rd-page-title), :global(.rd-section) { color: black !important; }
+    :global(.rd-jn), :global(.rd-te), :global(.rd-bn), :global(.rd-ca) { border: 1px solid #ccc !important; }
   }
 </style>
