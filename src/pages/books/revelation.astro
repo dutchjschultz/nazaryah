@@ -4,28 +4,28 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 const ACCENT = '#8B2828';
 
 const chapters = [
-  { num: 1,  title: 'Summons to the Court',         subtitle: 'The Gavel Falls, the King Calls All' },
-  { num: 2,  title: 'Letters as Indictments — Part I',  subtitle: 'Ephesus, Smyrna, Pergamum, and Thyatira' },
-  { num: 3,  title: 'Letters as Indictments — Part II', subtitle: 'Sardis, Philadelphia, and Laodicea' },
-  { num: 4,  title: 'Throne of Glory',               subtitle: 'The Courtroom Opens in Heaven' },
-  { num: 5,  title: 'The Scroll and the Lamb',       subtitle: 'When Authority Passes to the Lamb' },
-  { num: 6,  title: 'Six Seals Broken',              subtitle: 'The First Testimonies Enter the Record' },
-  { num: 7,  title: 'Sealed and Standing',           subtitle: 'The 144,000 and the Great Multitude' },
-  { num: 8,  title: 'Silence, Then Fire',            subtitle: 'The Seventh Seal and the First Four Trumpets' },
-  { num: 9,  title: 'Key to the Abyss',              subtitle: 'The Fifth and Sixth Trumpets' },
-  { num: 10, title: 'The Mighty Angel',              subtitle: 'The Little Scroll and the Prophet\'s Commission' },
-  { num: 11, title: 'Measured and Witnessed',        subtitle: 'The Two Witnesses and the Seventh Trumpet' },
-  { num: 12, title: 'War in Heaven',                 subtitle: 'The Woman, the Dragon, and the Male Child' },
-  { num: 13, title: 'Beasts and Allegiance',         subtitle: 'The Mark, the Image, and the Count' },
-  { num: 14, title: 'Harvest of the Earth',          subtitle: 'Three Angels and Two Reapings' },
-  { num: 15, title: 'Bowls of Completion',           subtitle: 'Preparation for the Final Judgments' },
-  { num: 16, title: 'Armageddon Gathered',           subtitle: 'The Seven Bowls of Wrath' },
-  { num: 17, title: 'Mystery Babylon Exposed',       subtitle: 'The Woman on the Scarlet Beast' },
-  { num: 18, title: 'One Hour Collapse',             subtitle: 'The Fall of Babylon the Great' },
-  { num: 19, title: 'Rider in White',                subtitle: 'The Marriage of the Lamb and the Return of the King' },
-  { num: 20, title: 'The Thousand-Year Reign',       subtitle: 'Satan Bound, the Millennium, and the Final Rebellion' },
-  { num: 21, title: 'Great White Throne',            subtitle: 'Final Judgment and the New Creation Begins' },
-  { num: 22, title: 'All Things New',                subtitle: 'The New Jerusalem and the Tree of Life Restored' },
+  { num: 1,  title: 'Summons to the Court',         templeledger: 'Lampstands Inspected', subtitle: 'The gavel falls; the King calls all.' },
+  { num: 2,  title: 'Letters as Indictments',        templeledger: 'Charges Filed',         subtitle: 'Seven charges, no defense counsel.' },
+  { num: 3,  title: 'Witness of the Faithful',       templeledger: 'Altar Blood Entered',   subtitle: 'Blood speaks louder than swords.' },
+  { num: 4,  title: 'The Throne Convened',           templeledger: 'Court Assembled',       subtitle: 'Heaven stands; earth trembles.' },
+  { num: 5,  title: 'The Lamb Takes Exhibit A',      templeledger: 'Worthiness Confirmed',  subtitle: 'Wounds entered as evidence; the Scroll yields.' },
+  { num: 6,  title: 'Six Seals Broken',              templeledger: '',                      subtitle: 'The First Testimonies Enter the Record' },
+  { num: 7,  title: 'Sealed and Standing',           templeledger: '',                      subtitle: 'The 144,000 and the Great Multitude' },
+  { num: 8,  title: 'Silence, Then Fire',            templeledger: '',                      subtitle: 'The Seventh Seal and the First Four Trumpets' },
+  { num: 9,  title: 'Key to the Abyss',              templeledger: '',                      subtitle: 'The Fifth and Sixth Trumpets' },
+  { num: 10, title: 'The Mighty Angel',              templeledger: '',                      subtitle: "The Little Scroll and the Prophet's Commission" },
+  { num: 11, title: 'Measured and Witnessed',        templeledger: '',                      subtitle: 'The Two Witnesses and the Seventh Trumpet' },
+  { num: 12, title: 'War in Heaven',                 templeledger: '',                      subtitle: 'The Woman, the Dragon, and the Male Child' },
+  { num: 13, title: 'Beasts and Allegiance',         templeledger: '',                      subtitle: 'The Mark, the Image, and the Count' },
+  { num: 14, title: 'Harvest of the Earth',          templeledger: '',                      subtitle: 'Three Angels and Two Reapings' },
+  { num: 15, title: 'Bowls of Completion',           templeledger: '',                      subtitle: 'Preparation for the Final Judgments' },
+  { num: 16, title: 'Armageddon Gathered',           templeledger: '',                      subtitle: 'The Seven Bowls of Wrath' },
+  { num: 17, title: 'Mystery Babylon Exposed',       templeledger: '',                      subtitle: 'The Woman on the Scarlet Beast' },
+  { num: 18, title: 'One Hour Collapse',             templeledger: '',                      subtitle: 'The Fall of Babylon the Great' },
+  { num: 19, title: 'Rider in White',                templeledger: '',                      subtitle: 'The Marriage of the Lamb and the Return of the King' },
+  { num: 20, title: 'The Thousand-Year Reign',       templeledger: '',                      subtitle: 'Satan Bound, the Millennium, and the Final Rebellion' },
+  { num: 21, title: 'Great White Throne',            templeledger: '',                      subtitle: 'Final Judgment and the New Creation Begins' },
+  { num: 22, title: 'All Things New',                templeledger: '',                      subtitle: 'The New Jerusalem and the Tree of Life Restored' },
 ];
 
 function toRoman(n: number) {
@@ -146,6 +146,7 @@ function toRoman(n: number) {
                 <div class="bk-ch-text">
                   <div class="bk-ch-title">{ch.title}</div>
                   <div class="bk-ch-topic">{ch.subtitle}</div>
+                  {ch.templeledger && <div class="bk-ch-ledger">Temple Ledger: {ch.templeledger}</div>}
                 </div>
                 <div class="bk-ch-arrow">→</div>
               </button>
@@ -189,19 +190,450 @@ function toRoman(n: number) {
 
       <!-- Chapter panels -->
       <article class="rd-page">
-        {chapters.map((ch) => (
+
+        <!-- ─── Chapter I ─── -->
+        <div class="rd-chapter-panel" id="chapter-1" style="display:none">
+          <header class="rd-page-header">
+            <div class="rd-docket-rule"></div>
+            <div class="rd-docket-label">C H A P T E R &nbsp; I</div>
+            <h1 class="rd-page-title">Summons to the Court</h1>
+            <div class="rd-ledger">TEMPLE LEDGER: LAMPSTANDS INSPECTED</div>
+            <p class="rd-page-sub">The gavel falls; the King calls all.</p>
+            <div class="rd-docket-rule"></div>
+          </header>
+          <div class="rd-page-body">
+            <h3 class="rd-section">1.1 &nbsp; The Record Opens</h3>
+            <p class="rd-ref">Revelation 1:1–3</p>
+            <h4 class="rd-subsec">The Chain of Revelation: Authority, Order, and Distinction</h4>
+            <aside class="rd-jn">
+              <div class="rd-box-label">JUDICIAL NOTES</div>
+              <strong class="rd-box-title">True Chain of Revelation vs. False Chain of Authority</strong>
+              <p>Truth flows from Yah → Yahushua → angel → John → servants, establishing divine order, delegated authority, and accountability.</p>
+              <p><em>Contrast — Later in Revelation:</em> A counterfeit chain appears where authority flows from the dragon → the beast → the false prophet → the image → worshipers. This false system imitates divine order but replaces revelation with deception and coercion.</p>
+              <div class="rd-box-sources">Rev 12:9 &nbsp;·&nbsp; Rev 13:1–2 &nbsp;·&nbsp; Rev 13:11–15 &nbsp;·&nbsp; Rev 16:13–14</div>
+            </aside>
+            <p>Revelation begins by telling us exactly how its message reaches John: Yah (Yahuah) gives the revelation to Yahushua, who gives it to an angel, who then gives it to John. This opening chain of revelation strongly challenges common Trinitarian assumptions by establishing a clear order of authority and transmission. The revelation originates with God, is given to Yahushua, conveyed through an angel, and delivered to John. This hierarchical flow frames the entire book and consistently governs how divine authority, speech, and action are portrayed throughout Revelation.</p>
+            <p>Yah is the source. Yahushua is the recipient and messenger, not the originator. The angel functions as an appointed envoy, and John stands as the human witness. This chain of communication matters because it shows that Revelation is not primarily about predicting events but about unveiling who the Messiah truly is. The book announces from the outset that revelation flows downward, not inward within a triune being.</p>
+            <h4 class="rd-subsec">"To Signify": Semaino and the Language of Divine Signs</h4>
+            <aside class="rd-jn">
+              <div class="rd-box-label">JUDICIAL NOTES</div>
+              <strong class="rd-box-title">True Sign of Yah vs. False Mark of the Beast</strong>
+              <p>Semaino establishes divine signs that are heard, understood, and obeyed — rooted in covenant identity (ot) and faithful hearing (shama).</p>
+              <p><em>Contrast — Later in Revelation:</em> The beast introduces a false mark (charagma) that imitates covenant ownership but is enforced through pressure and allegiance to deception rather than obedience to Yah.</p>
+              <div class="rd-box-sources">Rev 7:3 &nbsp;·&nbsp; Rev 9:4 &nbsp;·&nbsp; Rev 13:16–17 &nbsp;·&nbsp; Rev 14:9–12</div>
+            </aside>
+            <p>The word translated "signified" (Greek <em>semaino</em>) in Revelation 1:1 is loaded with meaning and sets the interpretive framework for the entire book. This word goes far beyond simple communication; it means to mark, signal, indicate, or convey through signs. It is closely related to <em>semeion</em> ("sign" or "token"), which consistently translates the Hebrew <em>ot</em>, meaning a divine sign, mark, or covenant token — such as the rainbow, the Sabbath, or other identifying marks belonging to Yah. Revelation is therefore a book of signs, not riddles or speculative symbols. Importantly, <em>semaino</em> also carries the idea of hearing Yah's voice through signs, which connects to the Hebrew <em>shama</em>, meaning to hear, listen, and obey. Revelation signals that those who truly hear Yah will understand His signs, and those signs will later stand in direct contrast to the false marks described in later chapters.</p>
+            <h4 class="rd-subsec">Watchmen, Warnings, and the Trumpet Language of Revelation</h4>
+            <p>The richness of <em>semaino</em> deepens when viewed through its Old Testament usage, particularly in the Septuagint (LXX), where it is often used to translate Hebrew warning language such as <em>zahar</em>, meaning to warn or shine forth as an alert. This brings Revelation directly into the prophetic tradition of the watchman, especially Ezekiel 33. The watchman stands on the wall, sees what is coming, and blows the trumpet to warn the people. Trumpets in Scripture are not random alarms; they announce appointed times, assemblies, feasts, and divine interventions. Revelation opens with this same watchman logic. The book itself functions as a trumpet blast — calling Yah's people to gather, to discern, and to respond.</p>
+            <aside class="rd-jn">
+              <div class="rd-box-label">JUDICIAL NOTES</div>
+              <strong class="rd-box-title">True Watchman Trumpet vs. Counterfeit Peace and Silence</strong>
+              <p>Revelation functions as a watchman's warning, echoing Ezekiel's trumpet imagery — calling Yah's people to gather, prepare, and respond.</p>
+              <p><em>Contrast — Later in Revelation:</em> False voices replace warning with reassurance, promoting safety and stability while judgment approaches. Instead of sounding the alarm, they dull the senses of the people.</p>
+              <div class="rd-box-sources">Rev 8–9 &nbsp;·&nbsp; Rev 11:15 &nbsp;·&nbsp; Rev 18:7–8 &nbsp;·&nbsp; Rev 19:20</div>
+            </aside>
+            <h4 class="rd-subsec">John as Witness: Bearing Record of the Son</h4>
+            <p>Verse 2 confirms that this revelation is carried by the same John who personally walked with Yahushua during His earthly ministry. John is not passing along secondhand tradition; he is a firsthand eyewitness. The language used — "bare record" or "testified" — is the same Greek term John uses in his Gospel (John 1:32, 1:34), where he bears witness to what he saw and heard concerning the Messiah. In the Gospels, Yahushua came to bear record of the Father, revealing Yah's character and purpose. In Revelation, the pattern reverses: the Father bears record of the Son, using John as the vessel. Revelation is therefore not detached from the Gospel; it is its continuation and confirmation, grounded in eyewitness testimony and covenant truth.</p>
+            <aside class="rd-jn">
+              <div class="rd-box-label">JUDICIAL NOTES</div>
+              <strong class="rd-box-title">True Witness of Yahushua vs. the False Prophet</strong>
+              <p>John bears witness (<em>martureo</em>) to what he saw and heard, continuing the same testimony language found in the Gospel — truth grounded in firsthand revelation.</p>
+              <p><em>Contrast — Later in Revelation:</em> The false prophet imitates prophetic authority but bears false testimony, performing signs to redirect worship away from Yah and His Messiah.</p>
+              <div class="rd-box-sources">Rev 1:2 &nbsp;·&nbsp; Rev 12:11 &nbsp;·&nbsp; Rev 13:13–14 &nbsp;·&nbsp; Rev 19:20</div>
+            </aside>
+            <h4 class="rd-subsec">The Blessing of Reading, Hearing, and Keeping</h4>
+            <p>Verse 3 is one of the most ignored and misunderstood statements in the entire Bible. God explicitly attaches a blessing to reading, hearing, and keeping the words of this prophecy. This alone destroys the modern claim that Revelation is too difficult, too symbolic, or too dangerous for believers to study. Yah does not command His people to keep what He never intended them to understand. The blessing assumes comprehension, obedience, and spiritual engagement. Revelation was given because it is necessary, not optional. Modern Christianity often swings between fear and reckless speculation, but both miss the point. Revelation is meant to instruct, anchor, warn, and strengthen Yah's people. The first three verses make this unmistakably clear: this book demands attention, discernment, and faithfulness — and it promises blessing to those who take it seriously.</p>
+            <aside class="rd-jn">
+              <div class="rd-box-label">JUDICIAL NOTES</div>
+              <strong class="rd-box-title">Blessed Obedience vs. Willful Rejection and Lawlessness</strong>
+              <p>Blessing is promised to those who read, hear, and keep the prophecy — assuming understanding, obedience, and covenant faithfulness.</p>
+              <p><em>Contrast — Later in Revelation:</em> Judgment falls on those who refuse to repent, reject correction, and persist in lawlessness — not because truth was hidden, but because it was resisted.</p>
+              <div class="rd-box-sources">Rev 3:3 &nbsp;·&nbsp; Rev 9:20–21 &nbsp;·&nbsp; Rev 16:11 &nbsp;·&nbsp; Rev 22:14–15</div>
+            </aside>
+
+            <h3 class="rd-section">1.2 &nbsp; The Judge Identified</h3>
+            <p class="rd-ref">Revelation 1:4–8 &nbsp;·&nbsp; Messiah's Titles Entered Into the Record</p>
+            <h4 class="rd-subsec">The Eternal Source, the Sevenfold Spirit, and the Name of Yahuah</h4>
+            <p>Verses 4 open with a blessing spoken from Yahuah the Father, the true source of the revelation. The phrase "Him who is, and who was, and who is to come" directly reflects the meaning embedded in the divine Name revealed to Moses. In Exodus, Yahuah's Name declares His nature — self-existent, eternal, and unbounded. He simply is. Any attempt to fully define Him falls short, because definition itself is limitation. This opening reminds the reader that Revelation originates from the One whose very Name declares timeless existence and supreme authority.</p>
+            <p>Within this same verse, John introduces "the seven Spirits before His throne." This expression is not a description of seven individual beings nor evidence of a Trinity, but a Hebrew completeness formula rooted in Isaiah 11:2, where the Spirit of Yahuah is described through its full range of attributes — wisdom, understanding, counsel, might, knowledge, and the fear of Yahuah. These are not separate spirits but a sevenfold expression of one Spirit, representing perfection and fullness. John 3:34 states that Yahuah gives the Spirit to Yahushua without limitation, and Colossians 2:9 confirms that all fullness dwells in Him bodily. This preserves distinction without division: the Spirit originates with the Father and is fully vested in the Son.</p>
+            <p>Also embedded in verse 4 is the reintroduction of the covenant Name of Yahuah, which Scripture itself warns would be obscured. Over time, this Name was replaced with the generic title "LORD," a word linguistically identical to Baal, meaning master or owner. Jeremiah 23:27 records Yahuah's charge that His people forgot His Name "for Baal," and Hosea 2:16–17 promises a restoration where His people will no longer call Him Baali ("my lord/master") but Ishi ("my husband"). Titles obscure relationship; the Name restores it.</p>
+            <h4 class="rd-subsec">The Faithful Witness and the Firstborn from the Dead</h4>
+            <p>Verses 5 shift focus to Yahushua and provide an overview of who He is and what He represents. John identifies Him as the faithful witness, the first begotten of the dead, and the ruler of the kings of the earth. As the faithful witness, Yahushua embodies perfect obedience and truth. As the first begotten from the dead, He is the prototype of resurrection life — not the first person ever raised, but the first raised into incorruptible, immortal life. Yahushua alone was raised never to die again (Romans 6:9). This truth exposes the false doctrine of the immortal soul, which claims humans are already alive after death. Scripture consistently teaches resurrection, not conscious survival apart from the body.</p>
+            <p>Romans 8:29 calls Him the "firstborn among many brethren." First Corinthians 15:20–23 lays out the order plainly: Christ the firstfruits, then those who belong to Him at His coming. Colossians 1:18 identifies Him as the "beginning," the firstborn from the dead, so that He might have preeminence in all things. Resurrection, not disembodied existence, is the biblical hope.</p>
+            <h4 class="rd-subsec">A Present Kingdom and Active Priesthood</h4>
+            <p>Verse 6 states that Yahushua has made us a kingdom and priests to Yahuah. This is not future-tense language. The Kingdom is not postponed; it is already inaugurated. Modern Christianity often delays this kingship into a future millennium, which fuels the misreading of Revelation 20 as a literal earthly reign. Verse 6 directly contradicts that framework by showing that the reign is spiritual, present, and covenantal, not political or deferred.</p>
+            <h4 class="rd-subsec">Coming With the Clouds, Not Escaping From Earth</h4>
+            <p>Verse 7 introduces a prelude to the second coming that Revelation will expand in detail. Yahushua is coming with the clouds, not hiding in them. In Scripture, clouds are not meteorological but royal and judicial imagery. Psalm 104:3 declares that Yahuah makes the clouds His chariot. Daniel 7:13 shows the Son of Man coming with the clouds to receive dominion. This verse also states that every eye will see Him, including those who pierced Him. This alone dismantles pre-tribulation rapture theology, which claims only believers will see Him while the world is unaware. Revelation teaches the opposite: the return of Yahushua is public, unavoidable, and judicial.</p>
+            <h4 class="rd-subsec">The Father's Seal: Alpha and Omega, the Almighty</h4>
+            <p>Verse 8 returns the focus to Yahuah the Father, sealing the introduction. The title "Alpha and Omega" functions as a divine signature. It is Yahuah affirming His absolute authority as the One giving testimony about His Son. This verse ties directly back to verse 4, where "He who is, and was, and is to come" was already identified as the Father. Reading verse 8 as Yahushua speaking collapses that deliberate structure and imports later assumptions into the text.</p>
+            <aside class="rd-te">
+              <div class="rd-box-label">TERMS IN EVIDENCE</div>
+              <strong class="rd-box-title">Pantokrator: The Court's Name for Supreme Authority</strong>
+              <p>The title <em>Pantokrator</em> emphasizes supreme authority and sovereign rule. In Revelation 1:8, this title identifies God as the ultimate source of power and the origin of the revelation. The title appears nine times in Revelation and once elsewhere in the New Testament (2 Corinthians 6:18), each time referring to Yahuah. Revelation 21:22 carefully distinguishes between "the Lord God Almighty" and "the Lamb," showing both unity of purpose and distinction of role.</p>
+              <p>While some argue that Revelation 1:8 applies to Yahushua, the internal pattern of Revelation consistently maintains this distinction. The Father speaks, and the Son is the one testified about.</p>
+            </aside>
+
+            <h3 class="rd-section">1.3 &nbsp; The Court Convenes</h3>
+            <p class="rd-ref">Revelation 1:9–19 &nbsp;·&nbsp; The Presiding Officer Takes His Place</p>
+            <h4 class="rd-subsec">The Kingdom Is Already Present</h4>
+            <p>John calls himself a "partner in the tribulation, and in the kingdom, and in the endurance that are in Yahushua." This short line reveals that the Kingdom of Christ is already active in John's lifetime, not postponed until the Millennium of Revelation 20. Yahushua Himself taught that the Kingdom arrived after His resurrection when "all authority in heaven and on earth" was given to Him (Matthew 28:18). Peter confirms this when he says Yahushua was enthroned at the right hand of God after rising from the dead (Acts 2:32–36). John, now suffering on Patmos, understands that the Kingdom is already present because believers were transferred into it at Christ's exaltation (Colossians 1:13).</p>
+            <h4 class="rd-subsec">A Trumpet Voice, Not the Father's Voice</h4>
+            <p>John hears a voice like a trumpet. This sound immediately tells the reader that the speaker is not God (Yahuah) the Father. In Scripture, the Father's voice is consistently described as thunder and lightning, emphasizing overwhelming majesty (Exodus 19:16–19; Psalm 29:3–4). But a trumpet-like voice is the language used for messengers or for the Messiah Himself (Exodus 20:18–19; 1 Thessalonians 4:16). Later in Revelation, the Father's voice is described as "a great thunder" (Revelation 6:1), never as a trumpet. When Yahushua speaks directly in verses 17–18 — "I am the First and the Last... I died, and behold I am alive forevermore" — He confirms that He was the one speaking with the trumpet-like voice.</p>
+            <h4 class="rd-subsec">A Textual Corruption and a Warning</h4>
+            <p>Modern Evangelical teachers often lean heavily on Revelation 1:11 (KJV) because it appears to link verse 8 directly to Yahushua, strengthening Trinitarian claims. The problem is simple: the phrase "I am Alpha and Omega, the first and the last" does not appear in the earliest and most reliable Greek manuscripts. It is absent from Codex Sinaiticus and Codex Alexandrinus and is omitted or footnoted in modern translations such as the NIV and ESV. This phrase entered the text through later Byzantine manuscripts used in the Textus Receptus, the basis for the KJV. Textual scholars widely recognize it as a scribal interpolation, likely influenced by later theological assumptions.</p>
+            <p>This leads to an important warning: you must have a strong grasp of the Old Testament before building doctrine from the New Testament. The New Testament passed through many hostile and politically motivated hands. John himself warned that the spirit of antichrist was already entering the church (1 John 2:18–19). When the enemy could no longer destroy the seed of Christ through persecution, he shifted to corruption from within. Revelation addresses that long-developing force in detail.</p>
+            <h4 class="rd-subsec">The Glorified Messiah and Temple Imagery</h4>
+            <p>When John turns to see the speaker (Rev 1:12–16), he sees the glorified Messiah whose features preview the messages He will speak to the seven churches: eyes like fire for searching judgment (Rev 2:18, 23), feet like bronze for firmness and purity (Rev 2:18), a sharp sword for the authority of His word (Rev 2:12, 16; Isa 11:4; 49:2), and a voice like many waters reflecting divine authority (Ezek 1:24; Rev 14:2). Believers will share this same pattern: in the resurrection "we shall be like Him" (1 John 3:2), conformed to His image (Rom 8:29) and bearing the image of the heavenly man (1 Cor 15:49).</p>
+            <h4 class="rd-subsec">First and Last, Death and Resurrection</h4>
+            <p>Yahushua tells John in verses 17–19 not to fear and announces His victory over death: "I am the Living One... I have the keys of Death and Hades." The title "First and Last" is inseparably tied to resurrection. Each time it is used, it is immediately defined by the phrase "was dead and is alive." This aligns perfectly with Paul's teaching of Yahushua as the Last Adam (1 Corinthians 15:45) — the final representative of the dying human race and the first of a new, resurrected humanity. If Yahushua were God in the Trinitarian sense, death would be impossible, and the statement would be meaningless.</p>
+            <h4 class="rd-subsec">The Churches in the Holy Place</h4>
+            <p>Finally, verse 20 places the seven churches among the lampstands, drawing directly from temple imagery. The churches are positioned in the Holy Place, not the Most Holy. This distinction matters. Yahushua moves among them as High Priest, while they function as priestly servants under Him. This pattern mirrors the wilderness tabernacle. Revelation consistently moves in and out of temple space, and understanding this structure will later clarify judgment, authority, priesthood, and boundaries that modern Christianity often collapses.</p>
+            <aside class="rd-ca">
+              <div class="rd-box-label">CLOSING ARGUMENTS</div>
+              <p>Revelation does not resemble pastoral letters or historical narrative. It carries the tone of Old Testament prophecy, where Yahuah and His Son directly command John to write. Every word is deliberate. Every image is ordered. And every false doctrine exposed in the book has been forming since the first century.</p>
+              <p>Nothing in Revelation 1 supports Trinitarian theology, secret rapture, immortal souls, or a postponed kingdom. Instead, it lays a foundation that governs how the rest of the book must be read.</p>
+            </aside>
+          </div>
+          <footer class="rd-page-footer">
+            <div class="rd-pf-left">The Courtroom of Heaven</div>
+            <div class="rd-pf-center">I</div>
+            <div class="rd-pf-right">nazaryah.com</div>
+          </footer>
+        </div>
+
+        <!-- ─── Chapter II ─── -->
+        <div class="rd-chapter-panel" id="chapter-2" style="display:none">
+          <header class="rd-page-header">
+            <div class="rd-docket-rule"></div>
+            <div class="rd-docket-label">C H A P T E R &nbsp; II</div>
+            <h1 class="rd-page-title">Letters as Indictments</h1>
+            <div class="rd-ledger">TEMPLE LEDGER: CHARGES FILED</div>
+            <p class="rd-page-sub">Seven charges, no defense counsel.</p>
+            <div class="rd-docket-rule"></div>
+          </header>
+          <div class="rd-page-body">
+            <h3 class="rd-section">2.1 &nbsp; Among the Lampstands</h3>
+            <p class="rd-ref">Revelation 2–3 &nbsp;·&nbsp; The Titles That Identify the Judge</p>
+            <p>Revelation 1 opens with a vision of Yahushua standing in glory among seven golden lampstands — the seven churches — and holding seven stars, which represent their leaders. This scene establishes who He is before He speaks to each congregation. When He addresses each church in chapters 2 and 3, He opens each letter by drawing on a specific quality shown in that first vision.</p>
+            <aside class="rd-jn">
+              <div class="rd-box-label">JUDICIAL NOTES</div>
+              <strong class="rd-box-title">One Christ, Seven Tailored Titles</strong>
+              <p>Each church is addressed using an attribute of Christ drawn from Revelation 1 — the specific trait that church most needs to hear for correction, encouragement, or warning.</p>
+              <ul class="rd-list">
+                <li><strong>Ephesus</strong> — "Holds the seven stars and walks among the lampstands" — His presence and authority in the Church.</li>
+                <li><strong>Smyrna</strong> — "The First and the Last, who was dead and is alive" — Encouragement to faithfulness through suffering.</li>
+                <li><strong>Pergamum</strong> — "He who has the sharp two-edged sword" — His word judges false doctrine.</li>
+                <li><strong>Thyatira</strong> — "Eyes like fire, feet like bronze" — Penetrating discernment and judgment against corruption.</li>
+                <li><strong>Sardis</strong> — "He who has the seven Spirits of God and the seven stars" — He controls spiritual life and leadership.</li>
+                <li><strong>Philadelphia</strong> — "He who is holy and true, holding the key of David" — He alone grants access to the Kingdom.</li>
+                <li><strong>Laodicea</strong> — "The Amen, the faithful and true witness" — Final authority that exposes self-deception.</li>
+              </ul>
+            </aside>
+            <h3 class="rd-section">2.2 &nbsp; Three Lines of Evidence</h3>
+            <p class="rd-ref">How the Churches, Seals, and Trumpets Work Together</p>
+            <h4 class="rd-subsec">First Exhibit: God's People Examined</h4>
+            <p>The Seven Churches are written in language drawn from the Old Testament, where Israel is described as God's own people in a deep, binding relationship with Him. Scripture calls Israel His bride, His vineyard, or His lampstand. Revelation 2–3 follows the same pattern. Yahushua speaks to each church directly, examines what they have done, calls them to repent, warns of consequences, and promises reward to those who stay faithful. The Seven Churches show the spiritual condition of God's people through different periods of history.</p>
+            <h4 class="rd-subsec">Second Exhibit: The Decree Carried Out</h4>
+            <p>The Seven Seals draw from Old Testament legal imagery, especially sealed scrolls. In ancient Israel, a sealed document was an official record — a royal decree, a deed, or a binding judgment — that only the right person was authorized to open. In Revelation 5, only the Lamb is found worthy to open the scroll. As each seal is broken, events unfold that match Old Testament patterns of judgment. The four horsemen echo judgments from Ezekiel. The martyrs' cry echoes Abel's blood calling out for justice. The Seals show how God's plan is being carried out from heaven's perspective.</p>
+            <h4 class="rd-subsec">Third Exhibit: Warnings Announced in the World</h4>
+            <p>The Seven Trumpets use Old Testament imagery of warning and warfare. In Numbers, trumpets gathered God's people, signaled battle, or warned of approaching danger. In Joel, a trumpet announces the Day of the LORD. In Revelation, each trumpet sounds as a warning alarm — announcing judgment against nations and systems that resist God's truth. The images of fire, hail, poisoned water, and darkened skies all come directly from Old Testament plagues and prophetic warnings.</p>
+            <h4 class="rd-subsec">One Story, Three Angles</h4>
+            <p>The Churches, Seals, and Trumpets are not three separate timelines. They are three ways of seeing the same story unfold. The Churches show how God deals with His people personally. The Seals show how Yahushua carries out God's plan from the throne. The Trumpets show how God warns and judges a world that refuses to hear Him. Together, they reveal one story told from three connected points of view.</p>
+            <aside class="rd-te">
+              <div class="rd-box-label">TERMS IN EVIDENCE</div>
+              <strong class="rd-box-title">The Court Record: Seven Periods, Three Witnesses Each</strong>
+              <p>The seven churches, seven seals, and seven trumpets run in parallel. Each period of church history is seen from three angles at the same time.</p>
+              <ul class="rd-list">
+                <li><strong>Ephesus / 1st Seal / 1st Trumpet</strong> — Early apostolic church, strong in doctrine but losing its first love. White Horse: the gospel goes forth in purity and victory. Judgment by fire and hail on pagan Rome.</li>
+                <li><strong>Smyrna / 2nd Seal / 2nd Trumpet</strong> — Persecuted under Roman emperors, remaining faithful unto death. Red Horse: bloodshed and martyrdom. Burning mountain cast into the sea.</li>
+                <li><strong>Pergamum / 3rd Seal / 3rd Trumpet</strong> — Compromise after Constantine. Black Horse: spiritual famine. A great star falls, turning waters bitter.</li>
+                <li><strong>Thyatira / 4th Seal / 4th Trumpet</strong> — Medieval church, dominated by false teaching. Pale Horse: the union of church and state brings spiritual death. Darkening of sun, moon, and stars.</li>
+                <li><strong>Sardis / 5th Seal / 5th Trumpet</strong> — Reformation era — alive in name but spiritually weak. Martyrs cry for justice. Rise of a rival spiritual system.</li>
+                <li><strong>Philadelphia / 6th Seal / 6th Trumpet</strong> — Missionary and revival age with open doors. Cosmic signs signal the nearness of Christ's return. Eastern powers advance.</li>
+                <li><strong>Laodicea / 7th Seal / 7th Trumpet</strong> — The lukewarm modern church. Silence in heaven. The kingdom of the world becomes Christ's; the Second Coming.</li>
+              </ul>
+            </aside>
+
+            <h3 class="rd-section">2.4 &nbsp; The Church of Ephesus</h3>
+            <p class="rd-ref">Revelation 2:1–7</p>
+            <h4 class="rd-subsec">The Judge Takes His Position (Rev 2:1)</h4>
+            <p>Revelation speaks to the churches on three levels at once: the actual congregations that existed in the first century, individual believers in every generation, and broader periods of the church age after Yahushua's resurrection (Rev 1:19). For Ephesus, He holds the seven stars — representing His authority over, and care for, the leaders of the congregations (Rev 1:16, 20). Yahushua walking among the lampstands reflects Yahuah walking among His people in the sanctuary (Lev 26:12; Exod 25:31–40). The evaluation of Ephesus is delivered from heaven's point of view, not a human one.</p>
+            <h4 class="rd-subsec">Testing the Witnesses — False Apostles Identified (Rev 2:2–3)</h4>
+            <p>Yahushua praises Ephesus for testing those who claimed to be apostles but were not. This follows a long biblical pattern: God's people are consistently warned to tell true voices from false ones (Deut 13:1–5; Jer 23:16–22). In the Old Testament, priests were responsible for guarding purity and separating what was clean from what was unclean (Lev 10:10; Mal 2:7). The church in Ephesus carried that same responsibility.</p>
+            <h4 class="rd-subsec">The Charge: Faithful in Defense, Cold in Devotion (Rev 2:4–5)</h4>
+            <p>Many teachers read "leaving your first love" as losing emotional feeling for God. But the context points to something more specific. Yahushua immediately calls the church back to their "first works." In Scripture, love and obedience are always linked. Loving Yahuah and keeping His commands are inseparable in Deuteronomy (Deut 6:5, 17). Ephesus was strong in discernment but had grown cold in active, obedient love. His call to "remember," "repent," and "do the first works" echoes the Old Testament call for Israel to return to the wholehearted devotion they had at the beginning (Jer 2:2–3).</p>
+            <h4 class="rd-subsec">The Promise — Access Restored (Rev 2:7)</h4>
+            <p>The closing promise points back to the very beginning of Scripture. Eating from the tree of life recalls Eden, where humanity lost direct access to God's presence through sin (Gen 2–3). Yahushua, as the second Adam, restores what the first Adam lost (Rom 5:12–19; 1 Cor 15:45–49). By overcoming, believers step back into the relationship with God that humanity was always meant to share.</p>
+            <aside class="rd-bn">
+              <div class="rd-box-label">BENCH NOTE</div>
+              <strong class="rd-box-title">The Tree of Life: What the Court Restored</strong>
+              <p>The Tree of Life in Eden was not a test — it was Yahuah's provision, freely given. He placed it at the center of the garden and gave open access to it (Gen 2:9, 16). When Adam and Eve chose the Tree of the Knowledge of Good and Evil, access to the Tree of Life was immediately cut off (Gen 3:22–24). Death entered the world. Humanity was driven from the garden and locked out from Yahuah's direct provision.</p>
+              <p>The promise to the overcomer at Ephesus is therefore a legal verdict, not just a reward. Access that the fall removed is being restored. Revelation 22 closes the arc: the Tree of Life stands in the new garden, producing twelve kinds of fruit every season, its leaves for the healing of the nations. What Ephesus receives as a promise, Revelation 22 delivers as a completed reality. The overcomer is not receiving something new. They are being returned to what the Creator always intended to give.</p>
+            </aside>
+
+            <h3 class="rd-section">2.5 &nbsp; The Church of Smyrna</h3>
+            <p class="rd-ref">Revelation 2:8–11</p>
+            <h4 class="rd-subsec">The Judge Who Already Walked Through Death (Rev 2:8)</h4>
+            <p>To Smyrna, Yahushua introduces Himself as "the First and the Last, who died and came to life" (Rev 1:17–18; 2:8). This title connects to His role as the firstborn of the new creation (Col 1:18) and as the Last Adam who succeeded where the first Adam failed (1 Cor 15:45). By living, dying, and rising again, He became both the beginning and the completion of God's restored humanity. This is exactly the right word for a persecuted church: they are being addressed by the One who has already walked through suffering and come out the other side.</p>
+            <h4 class="rd-subsec">The Accusers Identified — Covenant Claim Without Covenant Loyalty (Rev 2:9)</h4>
+            <p>Yahushua recognizes the suffering and poverty of the believers in Smyrna, but calls them truly "rich" — pointing to spiritual wealth, not material comfort. He then refers to "those who say they are Jews and are not, but are a synagogue of Satan." The New Testament shows ongoing conflict with certain Pharisaic teachers whose traditions were shaped during the exile and influenced by Babylonian thought (Matt 15:3–9). Yahushua Himself told these leaders that their true allegiance was not to Abraham but to another father entirely (John 8:44). They claimed Jewish authority while holding traditions that worked against God's purposes (Mark 7:8–13). By Scripture's own standard, outward identity without covenant faithfulness is spiritually hollow.</p>
+            <h4 class="rd-subsec">A Limited Trial With a Sure Promise (Rev 2:10–11)</h4>
+            <p>Yahushua warns the believers in Smyrna that more suffering is coming. Some would be imprisoned, tested, and even killed. In prophetic language, "ten days" often represents a complete but limited period of trial (Gen 24:55; Dan 1:12–15). Many interpreters connect this to the severe Roman persecution of AD 303–313, when believers were burned alive, thrown to wild animals, and executed publicly. Yahushua's command is plain: "Be faithful unto death." The promise that follows — "I will give you the crown of life" — means their suffering becomes the path that leads to a life that can never be taken away. The empire could take their bodies. It could not touch their resurrection.</p>
+
+            <h3 class="rd-section">2.6 &nbsp; The Church of Pergamum</h3>
+            <p class="rd-ref">Revelation 2:12–17</p>
+            <h4 class="rd-subsec">The Sword That Cuts Both Ways (Rev 2:12–13)</h4>
+            <p>Yahushua introduces Himself to Pergamum as the One who holds "the sharp two-edged sword" (Rev 1:16; 2:12). This represents His authority to judge — to separate what is holy from what is unclean. In Scripture, God's word is compared to a sword because it exposes truth and cuts through deception (Isa 49:2; Heb 4:12). Yahushua tells Pergamum that they live "where Satan's throne is," yet He praises them for holding firmly to His name. After the apostolic era, the church entered a period shaped by Constantine, whose political power blended Christianity with Roman religious traditions — a period when pagan elements gained real influence inside the visible church. Even so, many believers during this period stayed faithful.</p>
+            <h4 class="rd-subsec">The Charge: Mixture Tolerated, Purity Compromised (Rev 2:14–15)</h4>
+            <p>Yahushua warns that some in Pergamum had accepted teachings like those of Balaam. In the Old Testament, Balaam led Israel into compromise that looked small at first but ended in serious spiritual defilement (Num 25:1–3; 31:16). Yahushua is not charging Pergamum with breaking marriage vows. He is charging them with losing their commitment to holiness. The church had begun mixing devotion to Yahushua with practices shaped by the surrounding pagan culture. As with Israel in the wilderness, this kind of blending weakens spiritual faithfulness over time.</p>
+            <h4 class="rd-subsec">The Acquittal — A White Stone and a Hidden Name (Rev 2:17)</h4>
+            <p>The promise to those who overcome carries deep meaning. Yahushua offers hidden manna and a white stone engraved with a new name known only to the one who receives it. In ancient courts, a white stone could represent acceptance, acquittal, or honor. The white stone represents restored innocence and a place in Yahushua's righteous rule. The new name represents a transformed identity known fully only to God and to the one who receives it.</p>
+
+            <h3 class="rd-section">2.7 &nbsp; The Church of Thyatira</h3>
+            <p class="rd-ref">Revelation 2:18–29</p>
+            <h4 class="rd-subsec">Eyes of Fire, Feet of Bronze (Rev 2:18–19)</h4>
+            <p>Yahushua introduces Himself to Thyatira with two images from Revelation 1: eyes like a flame of fire and feet like polished bronze (Rev 1:14–15). Eyes of fire represent penetrating judgment — the ability to see past outward behavior and examine the true condition of the heart (Dan 10:6). Feet like bronze reflect strength, stability, and purification, drawn from tabernacle and temple imagery where bronze was used in areas connected to judgment and cleansing (Exod 27:1–2). Yahushua acknowledges Thyatira's love, service, faith, and patience, and notes that their works had increased — but outward activity had begun to crowd out spiritual discernment and holiness. This mirrors what happened in Israel, when sacrifices multiplied while justice and faithfulness declined (Hos 6:6; Isa 1:11–17).</p>
+            <h4 class="rd-subsec">The Charge: A False Voice Tolerated in the Assembly (Rev 2:20–23)</h4>
+            <p>Yahushua identifies the source of corruption as "Jezebel," drawing from the Old Testament figure who led Israel away from holiness, silenced the prophets, and replaced pure worship with practices that erased the line between holy and unholy (1 Kgs 16:31–33; 21:25). In Thyatira, the corruption had gone further than in Pergamum. Yahushua now uses the word "adultery," which signals a level of spiritual unfaithfulness that strikes at the heart of the covenant relationship itself (Jer 3:6–9; Ezek 16). Roman religion distorted works in one direction; later Christian teaching often overcorrected in the other. Thyatira shows that righteous works, rooted in holiness and purity, remain a necessary part of faithful living.</p>
+            <h4 class="rd-subsec">The Promise — Authority and the Morning Star (Rev 2:26–28)</h4>
+            <p>The promise to those who overcome is authority to rule alongside Yahushua (Rev 20:4–6). This draws directly from Psalm 2, where the Messiah is given a rod of iron to shatter rebellious nations. The promise of the Morning Star is rare and deeply significant. Its closest Old Testament connection is Numbers 24:17, where Balaam prophesies that a star would rise out of Jacob. In Revelation 22:16, Yahushua identifies Himself as the bright Morning Star. This means the ultimate reward for overcoming is Yahushua Himself — His presence, His light, His glory. Where Jezebel brought confusion and defilement, Yahushua offers clarity, holiness, and the restoration of God's image in His people.</p>
+            <aside class="rd-ca">
+              <div class="rd-box-label">CLOSING ARGUMENTS</div>
+              <p>Chapter 2 enters the record. The court has examined four periods of God's people, and the evidence is not in dispute. The letters to Ephesus through Thyatira are not pastoral encouragements — they are formal charges issued by a Judge who sees through outward appearance to the actual condition of the heart. Each letter enters the same categories of evidence: what was done faithfully, what was allowed to corrupt, what follows if repentance is refused, and what is promised to those who hold firm.</p>
+              <p>The churches, seals, and trumpets move together as three synchronized witnesses to the same unfolding events. What the churches experience on earth, the seals carry out from the throne, and the trumpets announce to the surrounding world. This court is not issuing warnings in the abstract. The evidence is entered. The record will only grow.</p>
+            </aside>
+          </div>
+          <footer class="rd-page-footer">
+            <div class="rd-pf-left">The Courtroom of Heaven</div>
+            <div class="rd-pf-center">II</div>
+            <div class="rd-pf-right">nazaryah.com</div>
+          </footer>
+        </div>
+
+        <!-- ─── Chapter III ─── -->
+        <div class="rd-chapter-panel" id="chapter-3" style="display:none">
+          <header class="rd-page-header">
+            <div class="rd-docket-rule"></div>
+            <div class="rd-docket-label">C H A P T E R &nbsp; III</div>
+            <h1 class="rd-page-title">Witness of the Faithful</h1>
+            <div class="rd-ledger">TEMPLE LEDGER: ALTAR BLOOD ENTERED</div>
+            <p class="rd-page-sub">Blood speaks louder than swords.</p>
+            <div class="rd-docket-rule"></div>
+          </header>
+          <div class="rd-page-body">
+            <h3 class="rd-section">3.1 &nbsp; The Church of Sardis</h3>
+            <p class="rd-ref">Revelation 3:1–6</p>
+            <h4 class="rd-subsec">A Name on the Record, No Life in the Witness (Rev 3:1)</h4>
+            <p>Yahushua opens His message to Sardis by identifying Himself as the One who holds the seven stars — the messengers and spiritual leaders of the churches. Sardis represents a stage in church history often connected with the Reformation, when believers began breaking free from over a thousand years of Roman religious control. During that long era, the name of Christ was still publicly honored, but the spiritual power behind that name had been worn down by a system built on ritual and human effort. When Yahushua says, "You have a name that you live, but you are dead," He exposes that contradiction. Sardis had the right identity and a solid reputation, but the life behind it was fading.</p>
+            <h4 class="rd-subsec">Strengthen the Evidence Before It Expires (Rev 3:2–3)</h4>
+            <p>Yahushua calls the church to be watchful and to strengthen what still remains. Some truth and spiritual life were present, but barely. Their works, He says, were not complete before God. The Reformation restored many important doctrines, but the deeper work of character and holiness had not fully taken hold. The church had escaped one form of bondage but had not yet reached the fullness God desired. Yahushua makes clear that recovery requires more than rejecting false teaching. It requires a life shaped by obedience to God's word.</p>
+            <p>The command to remember and hold fast echoes the Old Testament prophets, who kept calling Israel back to the truths they first received. The instruction to watch draws on the image of the watchman in Ezekiel — someone whose job was to stay alert and warn the people of danger (Ezek 33:6). Sardis is told that if they do not remain watchful, Yahushua will come upon them like a thief: suddenly, without announcement.</p>
+            <h4 class="rd-subsec">The Faithful Few — Witnesses Who Kept Their Garments Clean (Rev 3:4–5)</h4>
+            <p>Even in Sardis, Yahushua sees a faithful remnant — those who had not defiled their garments. White garments in Scripture represent purity, righteousness, and faithfulness in the middle of corruption. To those who overcome, Yahushua gives three promises: they will be clothed in white garments, their names will not be removed from the book of life, and He will confess their names before the Father. This presents Him as both High Priest and Judge. The warning about names being removed is serious. It pushes back against the idea that salvation cannot be lost, since names already written can still be taken out (Exod 32:32; Ps 69:28). Sardis is reminded that spiritual life must be guarded and strengthened, not assumed.</p>
+            <aside class="rd-te">
+              <div class="rd-box-label">TERMS IN EVIDENCE</div>
+              <strong class="rd-box-title">The Garment Record: What the Court Sees You Wearing</strong>
+              <p>Clothing in Scripture is never just fabric — it is always a covenant statement about source and standing. When Adam and Eve sinned, their first instinct was to cover themselves with fig leaves (Gen 3:7). God's response was not to improve their work. He removed it entirely and replaced it with something that required the death of an animal (Gen 3:21). What we manufacture to stand before God carries the nature of what made covering necessary in the first place. Isaiah calls human-generated righteousness <em>beged iddim</em>, filthy coverings, using the same Hebrew root as the word for betrayal (Isa 64:6). The garment and the treachery share a name.</p>
+              <p>Revelation reads garments the same way. The white robes promised to the overcomers at Sardis are <em>stolai</em> — the long robes of honor a king drapes over someone he is publicly elevating, not wages paid for service (Rev 3:4–5; 6:11; 7:9). The grammar of the promise is passive and deliberate: they will be clothed. God is the subject. The overcomer does not dress himself. Laodicea's condition in verse 17 is the exact opposite: <em>gymnos</em> — exposed before the court with no covering that qualifies. What makes it severe is not the nakedness itself but the unawareness. Adam and Eve at least recognized their exposure and moved. Laodicea does not move, because Laodicea does not see.</p>
+            </aside>
+
+            <h3 class="rd-section">3.2 &nbsp; The Church of Philadelphia</h3>
+            <p class="rd-ref">Revelation 3:7–13</p>
+            <h4 class="rd-subsec">The Key That Opens — Authority Granted by the Judge (Rev 3:7)</h4>
+            <p>Yahushua opens to Philadelphia with the imagery of the Key of David, representing His exclusive authority over access to God's presence. This language comes from Isaiah 22:22, where the steward of the royal household held authority over the king's domain. Door imagery throughout Scripture carries strong sanctuary meaning: an open door means access to God's presence and understanding; a closed door signals judgment or exclusion. When Philadelphia is told that Christ has opened a door for them, the message is clear — despite opposition and apparent weakness, access to God remains fully open by His authority alone.</p>
+            <h4 class="rd-subsec">Small in Court, Strong in the Name (Rev 3:8–9)</h4>
+            <p>Yahushua acknowledges their works and describes Philadelphia as having "a little strength" — a small or socially marginal community. But faithfulness is not measured by size or influence. It is measured by loyalty to His name and obedience to His word. The same hostile religious forces that opposed Smyrna appear here again. Though these pressures had nearly drained Philadelphia's strength, Christ promises that those who opposed the truth will ultimately recognize that God was with His faithful people (Isa 45:14).</p>
+            <h4 class="rd-subsec">Patient Endurance and Protection From the Hour of Trial (Rev 3:9–10)</h4>
+            <p>Yahushua highlights their patience — not passive waiting, but steady faithfulness under growing opposition. Because they guarded this quality, Christ promises to keep them from the coming "hour of trial," a period of worldwide testing that anticipates the later judgments in Revelation. Importantly, this promise is given specifically to Philadelphia, not to all believers automatically. Protection here is connected to faithfulness and perseverance, not to a universal exit from difficulty.</p>
+            <h4 class="rd-subsec">Permanently on the Record — Established in the Sanctuary (Rev 3:12)</h4>
+            <p>The promise here is filled with temple imagery. Yahushua tells the overcomer they will become a pillar in the temple of God. When Solomon built the temple, he erected two pillars at its entrance. The right pillar was called Jachin — "He shall establish." The left pillar was called Boaz — "In him is strength." Every person who entered the temple passed between those two declarations. This image carried particular weight for Philadelphia, a city repeatedly destroyed by earthquakes and forced to flee because the ground beneath them could not be trusted. For that community, a pillar was a picture of what holds firm when everything around it is coming apart. The phrase "shall go out no more" seals it: believers will never again face exile, instability, or separation from God's presence.</p>
+
+            <h3 class="rd-section">3.3 &nbsp; The Church of Laodicea</h3>
+            <p class="rd-ref">Revelation 3:14–22</p>
+            <h4 class="rd-subsec">The Witness Who Cannot Be Disputed (Rev 3:14)</h4>
+            <p>Yahushua opens His message to the final church with titles that emphasize firmness and final authority — exactly what Laodicea needs to hear. He is called "the Amen," a term meaning established, firm, and unchanging (Isa 65:16; 2 Cor 1:20). He is also "the faithful and true witness" — a title that directly confronts this self-deceived church with the one testimony that cannot be disputed. He identifies Himself as "the beginning of the creation of God" — pointing not back to Genesis but forward to the new creation that began with His resurrection (Col 1:18; Rev 1:5).</p>
+            <h4 class="rd-subsec">Neither Hot Nor Cold — Unfit for the Court's Purpose (Rev 3:15–16)</h4>
+            <p>"Lukewarm" is often assumed to mean half-hearted devotion, but Yahushua's imagery comes from Laodicea's actual water system. The city piped in hot water from Hierapolis and cold water from Colossae, but by the time either arrived, it had turned lukewarm, mineral-heavy, and unpleasant — neither healing like hot springs nor refreshing like cold mountain water. Hot water represented purification and zeal; cold water represented life-giving refreshment; lukewarm water represented stagnation, mixture, and uncleanness. The warning is not that Christ wished they were spiritually "cold." It is that they lacked any real usefulness at all. Laodicea — like much of the modern church — misreads this because it measures itself by outward activity rather than by transformative usefulness.</p>
+            <h4 class="rd-subsec">The Self-Deceived Defendant (Rev 3:17)</h4>
+            <p>Verse 17 is also widely misread, especially by the church it targets. Laodicea claimed, "I am rich… I have need of nothing," yet Christ declares them wretched, miserable, poor, blind, and naked — five escalating images that together describe complete spiritual collapse. Their problem was not that they had wealth; it was that they were unaware of their spiritual poverty. In a culture full of knowledge, information, and religious confidence, the Laodicean heart had grown closed — convinced it already had everything it needed. This is the true nature of lukewarmness: a self-assured religiosity that resists correction, avoids repentance, and refuses what Christ is actually offering.</p>
+            <h4 class="rd-subsec">Counsel From the Bench — What the Judge Offers Instead (Rev 3:18)</h4>
+            <p>Yahushua responds not with rejection, but with counsel. Gold refined in fire represents tested and purified faith (Mal 3:3; Zech 13:9). The white garments represent restored righteousness, reversing the shame that entered at Adam's fall (Gen 3:7). The eye salve represents genuine spiritual sight, correcting the blindness caused by self-reliance. Behind these three offers stands a Messiah whose aim is restoration, not condemnation.</p>
+            <aside class="rd-jn">
+              <div class="rd-box-label">JUDICIAL NOTES</div>
+              <strong class="rd-box-title">Fig Leaves vs. Divine Covering: Two Standards Before the Court</strong>
+              <p>Genesis 3:7 records the first act of human self-covering: "They sewed fig leaves together and made themselves coverings." The problem was not the effort. It was the source. Adam and Eve applied human craft to a divine problem and produced a covering that could not hold before the Judge. Yahuah's response in Genesis 3:21 was to remove what they had made and replace it with something that required blood — <em>kotnot or</em>, tunics of skin. An animal died. The guilty stood before the Judge wearing coverings of their own making. The Judge stripped those coverings and provided His own. And the verb for what He did is <em>vayyalbishem</em> — "and He clothed them." Yahuah is the subject. That is the pattern the rest of Scripture never abandons.</p>
+              <p>Laodicea is that scene replayed at the end of the age. The church has dressed itself in wealth, influence, and religious confidence — and genuinely believes it is covered. The white garments Yahushua offers in verse 18 are not a correction of style. They are the same offer Yahuah made in the garden: strip what you made; accept what I provide. The garment He is offering points forward to Revelation 19:8, where the bride's fine linen is defined as the <em>dikaiomata</em> — the righteous acts produced through union with the Messiah, not manufactured independently. That fine linen is granted to the bride; she does not weave it herself. Fig leaves cost nothing and cover nothing before the court. The garment Yahushua is offering cost everything — and it is the only one that holds.</p>
+            </aside>
+            <h4 class="rd-subsec">The Judge Stands at the Door — Waiting to Be Let In (Rev 3:20–21)</h4>
+            <p>One of the most personal images in all of Revelation appears here. Yahushua stands at the door and knocks, waiting for fellowship. The One who shed His blood and reopened the way back to God now stands outside a closed heart, wanting to enter. This echoes the longing in the Song of Solomon (Song 5:2) and the Passover door, where God's presence entered when obedience opened the way (Exod 12). The promise to the overcomer is striking: they will sit with Christ on His throne, just as He sat with the Father on His. This is not equality with God, but delegated authority — similar to Solomon sitting on the throne of the LORD as His representative (1 Chr 29:23).</p>
+
+            <h3 class="rd-section">3.4 &nbsp; The Verdict Already Written</h3>
+            <p class="rd-ref">Testing on Earth, Recognition in Heaven</p>
+            <p>In Revelation 1, John is not shown a generic picture of Yahushua. He is shown specific features: white garments, a golden sash, eyes like fire, a voice like many waters, stars in His hand. These traits reveal who Christ is, but they also set the standard by which the churches will be examined. What Christ looks like in chapter 1 defines what faithfulness looks like on earth in chapters 2 and 3. Each church is tested against one or more of these same qualities.</p>
+            <p>When the vision moves into chapters 4 and 5, those same qualities appear again — but now they are no longer just descriptions of Christ. They are shown as recognized realities in the heavenly scene. White garments, crowns, access to God's presence, authority near the throne, participation in heavenly worship — all of these reflect traits first seen in Christ and then demanded of the churches. What the churches were called to become on earth is what heaven already acknowledges as victorious.</p>
+            <aside class="rd-jn">
+              <div class="rd-box-label">JUDICIAL NOTES</div>
+              <strong class="rd-box-title">The Promise and the Heavenly Record</strong>
+              <p>Each church was given a promise "to the one who overcomes." When the vision moves into chapters 4 and 5, those same promises appear as recognized realities in the heavenly scene. What was pledged below is already honored above.</p>
+              <ul class="rd-list">
+                <li><strong>Ephesus</strong> — "Eat from the tree of life." → Life flows from God's throne (Rev 4:2–3).</li>
+                <li><strong>Smyrna</strong> — "Crown of life." → The elders wear crowns of gold (Rev 4:4), representing victory over death.</li>
+                <li><strong>Pergamum</strong> — "Hidden manna" and "white stone." → Access to the throne and the hidden scroll (Rev 5:1–9).</li>
+                <li><strong>Thyatira</strong> — "Authority over the nations." → The Lamb takes the scroll to begin His rule (Rev 5:5–7).</li>
+                <li><strong>Sardis</strong> — "Clothed in white garments." → The elders are dressed in white (Rev 4:4).</li>
+                <li><strong>Philadelphia</strong> — "Pillar in God's temple." → The elders sit permanently around the throne (Rev 4:4, 10).</li>
+                <li><strong>Laodicea</strong> — "Sit with Me on My throne." → The elders sit on thrones surrounding God's throne (Rev 4:4).</li>
+              </ul>
+              <p>The rewards are not random. Each promise corresponds directly to the struggle that church faced. What was lacking on earth is precisely what is granted in heaven.</p>
+            </aside>
+            <aside class="rd-ca">
+              <div class="rd-box-label">CLOSING ARGUMENTS</div>
+              <p>Chapter 3 completes the court's examination of God's people across history. Sardis shows that a surviving reputation is not the same as a living witness. Philadelphia shows that faithfulness under pressure — not size or influence — is what heaven recognizes. Laodicea shows that self-sufficiency is the hardest blindness to treat, because those who have it rarely believe they need help. Together, the three churches represent the closing stretch of the church age — each one a warning and a call.</p>
+              <p>Chapter 3 does not support the idea that believers are removed before difficulty arrives. It supports the opposite: those who endure faithfully — who guard their garments, hold their crown, and open the door when He knocks — are the ones the court names as overcomers. The verdict is already written in heaven. The question is whether the testimony on earth matches it.</p>
+            </aside>
+          </div>
+          <footer class="rd-page-footer">
+            <div class="rd-pf-left">The Courtroom of Heaven</div>
+            <div class="rd-pf-center">III</div>
+            <div class="rd-pf-right">nazaryah.com</div>
+          </footer>
+        </div>
+
+        <!-- ─── Chapter IV ─── -->
+        <div class="rd-chapter-panel" id="chapter-4" style="display:none">
+          <header class="rd-page-header">
+            <div class="rd-docket-rule"></div>
+            <div class="rd-docket-label">C H A P T E R &nbsp; IV</div>
+            <h1 class="rd-page-title">The Throne Convened</h1>
+            <div class="rd-ledger">TEMPLE LEDGER: COURT ASSEMBLED</div>
+            <p class="rd-page-sub">Heaven stands; earth trembles.</p>
+            <div class="rd-docket-rule"></div>
+          </header>
+          <div class="rd-page-body">
+            <h3 class="rd-section">4.1 &nbsp; The Session Convenes</h3>
+            <p class="rd-ref">Revelation 4:1–4 &nbsp;·&nbsp; Heaven's Court Opens</p>
+            <h4 class="rd-subsec">The Shift From Earth to Heaven (Revelation 4:1)</h4>
+            <p>Revelation chapters 1–3 remain firmly rooted on earth. The lampstands represent the seven churches (Rev 1:20), and Yahushua is seen walking among them — present among His congregations on earth, inspecting and addressing them directly. With Revelation 4:1, the perspective changes. John writes, "After this… I saw a door opened in heaven." The focus shifts from the condition of God's people on earth to heaven's vantage point. This is not an escape from the subject introduced earlier, but a deliberate transition that allows the reader to see how God has responded to that same subject from His throne.</p>
+            <p>What was examined on earth in chapters 2–3 is now viewed from heaven as God prepares to act upon it. This upward call functions like a prophetic camera change. The earthly scene has revealed the problem; the heavenly scene reveals the divine response. John is summoned to see how God (Yahuah) has governed, preserved, judged, and answered the condition of His people throughout history through decrees that are already sealed and ready to be opened. Revelation 4 does not indicate a change in time, nor does it suggest a resurrection or removal of the Church from the earth.</p>
+            <aside class="rd-bn">
+              <div class="rd-box-label">BENCH NOTE</div>
+              <strong class="rd-box-title">One Courtroom, All Witnesses: How Revelation 4 Is Structured</strong>
+              <p>When John is brought through the open door in heaven, he does not see separate visions unfolding one after another. He is shown one unified scene: a heavenly courtroom where God's authority, knowledge, witnesses, and worship are all present at the same time. At the center of everything stands the throne.</p>
+            </aside>
+            <h4 class="rd-subsec">The Trumpet Voice — Old Testament Imagery of a Court Summons (Revelation 4:1)</h4>
+            <p>The same voice John heard earlier, "like a trumpet" (Rev 1:10), calls him again: "Come up hither" (Rev 4:1). In the Old Testament, a trumpet often functions as a divine summons: God descends with a trumpet at Sinai to establish covenant (Exod 19:16–19); the prophets use trumpets to signal God's intervention (Joel 2:1; Isa 27:13); the Feast of Trumpets (Lev 23:24; Num 29:1) calls Israel to prepare for judgment. Thus the trumpet-voice is not dramatic flair — it means John is called to witness an official heavenly court session.</p>
+            <h4 class="rd-subsec">The Throne and the Judge (Revelation 4:2–3, 5)</h4>
+            <p>John sees "a throne set in heaven, and One seated on the throne" (Rev 4:2). John is careful to say that <em>one</em> sat upon the throne — not two and not three — because at this point in the vision only God (Yahuah) is revealed as Judge, while the Lamb does not appear until chapter 5. This image is immediately recognizable from earlier prophetic visions. Ezekiel saw a fiery throne surrounded by lightning and living creatures (Ezek 1:4–28). Isaiah saw the Lord seated on a high and exalted throne while heavenly beings cried "Holy, holy, holy" (Isa 6:1–3). Daniel saw the Ancient of Days seated in judgment, surrounded by fire and countless attendants as books were opened (Dan 7:9–10).</p>
+            <aside class="rd-te">
+              <div class="rd-box-label">TERMS IN EVIDENCE</div>
+              <strong class="rd-box-title">Jasper and Sardius: The Covenant Span Entered Into Evidence</strong>
+              <p>John's use of sardius and jasper is intentional and drawn from priestly order. In the high priest's breastplate, the sardius is listed as the first stone, while jasper appears as the last (Exod 28:17–20; 39:10–13). By naming only these two stones, John deliberately frames God as the One who stands at the beginning and the end of covenant history, exercising authority over its origin and its completion before judgment unfolds.</p>
+              <p>Surrounding the throne is a rainbow described as emerald-like. The image recalls the bow God placed in the clouds after the flood as a covenant sign that judgment is restrained by promise (Gen 9:12–17), an image Ezekiel also saw encircling God's throne during judgment (Ezek 1:28). John preserves this covenant meaning: the same God who judged Israel, corrected His people, and upheld His covenant in the Old Testament is the same God now responding to the condition of the seven churches.</p>
+            </aside>
+
+            <h3 class="rd-section">4.2 &nbsp; The Court Record</h3>
+            <p class="rd-ref">Who Stands Before the Throne</p>
+            <h4 class="rd-subsec">The Twenty-Four Elders as the Redeemed Saints</h4>
+            <p>The twenty-four elders mirror the twenty-four priestly divisions established under David and serving in Solomon's Temple (1 Chronicles 24). These divisions were composed of the heads of priestly families, who represented the entire priesthood when serving before God. Revelation intentionally draws from this structure to present a representative priestly order. In Revelation 4, John is shown the heavenly throne room before judgment begins on the earth. This vision does not describe the timing of the resurrection, nor does it suggest that the Church has been raptured. Instead, it functions as a temple vision, revealing how worship, authority, and priestly service are already established from God's covenant perspective.</p>
+            <p>The elders are seated on thrones, clothed in white garments, and wearing crowns of gold (Rev 4:4). White garments reflect priestly purity and service before God (Exod 28:39–43; Ezek 44:17–18), while crowns represent delegated authority (Dan 7:18). These symbols emphasize role and function, not the completion of resurrection, which Revelation later places clearly in chapter 20.</p>
+            <h4 class="rd-subsec">The Elders' Priestly Function in Revelation 5</h4>
+            <p>As the vision moves forward into Revelation 5, the role of the elders becomes clearer. In Revelation 5:8, the twenty-four elders hold harps for worship and golden bowls filled with incense, which are explicitly identified as the prayers of the saints. This mirrors the Old Testament priestly duty of offering incense before God on behalf of the people (Exod 30:7–8; Ps 141:2). Through this imagery, the elders represent the redeemed Church in a priestly capacity, not as individuals already present in heaven, but as a people represented through an ordered priestly structure.</p>
+            <aside class="rd-te">
+              <div class="rd-box-label">TERMS IN EVIDENCE — COURT RECORD</div>
+              <strong class="rd-box-title">Manuscript Variant in Revelation 5:9–10: Who Are the Elders?</strong>
+              <p>In some Greek manuscripts of Revelation 5:9–10, the elders sing that the Lamb has redeemed "them" rather than "us." This suggests the elders may be singing <em>about</em> the redeemed rather than speaking <em>as</em> the redeemed, supporting the idea that they function as representative priestly figures rather than a simple stand-in for all believers individually.</p>
+            </aside>
+
+            <h3 class="rd-section">4.3 &nbsp; The Witnesses Testify</h3>
+            <p class="rd-ref">Revelation 4:5–11 &nbsp;·&nbsp; Worship as Verdict</p>
+            <h4 class="rd-subsec">The Seven Spirits — Nothing Is Hidden (Revelation 4:5)</h4>
+            <p>From the throne come flashes of lightning and peals of thunder. Before the throne burn seven lamps of fire, identified as "the seven Spirits of God" (Rev 4:5). This imagery reaches back to Zechariah's vision of the lampstand and the "seven eyes of the LORD" that range throughout the whole earth (Zech 4:2, 10). These seven Spirits reflect the sevenfold description of God's Spirit in Isaiah 11:2 — wisdom, understanding, counsel, might, knowledge, and the fear of the LORD. In the courtroom setting of Revelation 4, this means nothing is hidden. God's judgment is not based on limited knowledge or appearance. His Spirit testifies to a complete and perfect understanding of what has taken place among His people.</p>
+            <p>In Revelation 5, the Lamb is shown possessing this same sevenfold Spirit. Yahushua was given the Spirit without measure (John 3:34) and the fullness of God dwells in Him (Col 1:19; 2:9). This does not mean that the Father and the Son are the same person or share authority as co-equal partners in a triune Godhead. It means that authority flows downward: God (Yahuah) is the source, and He has placed His complete authority and knowledge into His Son. Yahushua does not act independently or on His own initiative (John 5:19, 30).</p>
+            <h4 class="rd-subsec">The Living Creatures and the Elders (Revelation 4:6–11)</h4>
+            <p>Surrounding the throne are four living creatures, full of eyes, with faces like a lion, calf, man, and eagle (Rev 4:6–7). These are the same throne guardians Ezekiel saw — cherubim who represent God's all-seeing rule over creation (Ezek 1; 10). Their cry of "Holy, holy, holy" (Rev 4:8) echoes Isaiah's vision and affirms that God's judgments are pure and righteous. The twenty-four elders fall down before God, cast their crowns, and declare Him worthy as Creator (Rev 4:10–11). Together, the living creatures and the elders function as both witnesses and worshippers. Their worship does not interrupt judgment — it validates it. Before any seal is opened, heaven testifies that whatever follows flows from holiness, justice, and covenant faithfulness.</p>
+            <aside class="rd-ca">
+              <div class="rd-box-label">CLOSING ARGUMENTS</div>
+              <p>Chapter 4 does one thing: it opens the courtroom. Before a single seal is broken or a single trumpet sounds, John is shown that God's authority is absolute, fully witnessed, and operating from an established throne. The jasper and sardius stones connect the Judge to the covenant spanning Genesis to Revelation. The rainbow ties the whole vision to the mercy that precedes every judgment. The twenty-four elders, the four living creatures, the seven lamps, the thunder and lightning — none of these are decoration. They are the required elements of a heavenly proceeding: witnesses in place, authority confirmed, worship rendered, and the record set before the court. What follows in chapters 5 through 20 proceeds from this foundation. Nothing is improvised or unplanned. Everything is authorized.</p>
+              <p>Chapter 4 does not support the view that John's ascent to heaven signals a future removal of the Church before tribulation begins. The text says nothing about resurrection, rapture, or the Church departing the earth. It records a prophetic vision in which John is shown the heavenly perspective on what is already unfolding. The chapter's purpose is narrower and more important: to show that when judgment moves through the earth, it does so from a throne that was never vacant, before witnesses who never looked away, and under the authority of One whose character has not changed from the first covenant to the last.</p>
+            </aside>
+          </div>
+          <footer class="rd-page-footer">
+            <div class="rd-pf-left">The Courtroom of Heaven</div>
+            <div class="rd-pf-center">IV</div>
+            <div class="rd-pf-right">nazaryah.com</div>
+          </footer>
+        </div>
+
+        <!-- ─── Chapter V ─── -->
+        <div class="rd-chapter-panel" id="chapter-5" style="display:none">
+          <header class="rd-page-header">
+            <div class="rd-docket-rule"></div>
+            <div class="rd-docket-label">C H A P T E R &nbsp; V</div>
+            <h1 class="rd-page-title">The Lamb Takes Exhibit A</h1>
+            <div class="rd-ledger">TEMPLE LEDGER: WORTHINESS CONFIRMED</div>
+            <p class="rd-page-sub">Wounds entered as evidence; the Scroll yields.</p>
+            <div class="rd-docket-rule"></div>
+          </header>
+          <div class="rd-page-body">
+            <h3 class="rd-section">5.1 &nbsp; The Court Searches</h3>
+            <p class="rd-ref">Revelation 5:1–6 &nbsp;·&nbsp; No One Found Worthy</p>
+            <h4 class="rd-subsec">The Sealed Scroll — God's Legal Decrees Awaiting Execution (Revelation 5:1–4)</h4>
+            <p>Revelation 5 opens inside the heavenly courtroom established in chapter 4. God (Yahuah) holds a sealed scroll in His right hand (Rev 5:1). This scroll is a legal document, similar in nature to the prophetic scrolls given to Ezekiel (Ezek 2:9–3:4), the judgment scroll that Jeremiah read aloud (Jer 36), and the sealed visions given to Daniel (Dan 12:4, 9). It contains God's decrees — His set response to sin, covenant unfaithfulness, and the condition of His people shown in Revelation 2–3.</p>
+            <p>When no one in heaven or on earth is found worthy to open the scroll, John weeps (Rev 5:2–4). This shows how serious the problem is. Without someone qualified to act, God's decrees cannot move forward. Judgment cannot be carried out, redemption cannot be finished, and creation stays unresolved. The question is not whether God has authority — He is already seated on the throne. The mystery is this: how does He carry that certain will into human history through a qualified representative who stands inside the human story, bears the full weight of what sin has cost, and executes His decrees — without condemning the very people He is determined to bring home?</p>
+            <h4 class="rd-subsec">The Lion Announced, the Slain Lamb Revealed (Revelation 5:5–6)</h4>
+            <p>An elder announces that "the Lion of the tribe of Judah, the Root of David" has prevailed (Rev 5:5). This draws on messianic promises from Genesis 49:9–10 and Isaiah 11:1, 10, identifying the One who can open the scroll as the rightful heir to David's throne. Yet when John looks, he does not see a conquering lion. He sees a Lamb standing "as slain" (Rev 5:6). This contrast explains why the Lamb is worthy. Authority is not given through power or domination — it is earned through perfect obedience. The Lamb submitted His will entirely to the Father (Isa 53:7; Phil 2:8), doing what no other person ever could.</p>
+            <h4 class="rd-subsec">The Lamb's Seven Horns — Authority Earned, Not Assumed (Revelation 5:6)</h4>
+            <p>The Lamb bears seven horns, a symbol throughout the Old Testament of kingship and God-given authority. God exalts the horn of His anointed (1 Sam 2:10); a horn is promised to David (Ps 132:17); and horns represent ruling power in Daniel's visions (Dan 7–8). The number seven signifies completeness. These horns do not point to inherited power but to authority gained through victory. Yahuah always held the legal right to judge. His justice never required the Lamb's victory to authorize it. What the Lamb's sacrifice provided was the covering — the price that satisfies what justice requires while opening a way for the guilty who turn back to Him.</p>
+            <h4 class="rd-subsec">The Seven Eyes — Perfect Discernment for Righteous Judgment (Revelation 5:6)</h4>
+            <p>The Lamb also bears seven eyes, identified as "the seven Spirits of God sent out into all the earth" (Rev 5:6), from Zechariah 3:9 and 4:10. In courtroom terms, these eyes mean the Lamb sees everything completely. He judges without ignorance, bias, or blind spots. He knows the churches, the nations, and the hearts of every person — not only because He shares in God's full discernment, but because He has walked inside the human story Himself. He was tempted in every point as mankind is, knew hunger and rejection and grief, and lived under the full weight of the Law from within it (Heb 2:17–18; 4:15). His discernment is not distant. It is tested and proven from the inside.</p>
+
+            <h3 class="rd-section">5.2 &nbsp; The Scroll Changes Hands</h3>
+            <p class="rd-ref">Revelation 5:7–14 &nbsp;·&nbsp; Authority Transferred in Open Court</p>
+            <h4 class="rd-subsec">The Lamb Takes the Scroll (Revelation 5:7–8)</h4>
+            <p>When the Lamb takes the scroll from the right hand of God (Yahuah), the courtroom responds at once. The living creatures and the elders fall before Him, holding harps and bowls of incense (Rev 5:8). Harps go with prophetic declaration and priestly praise throughout the Old Testament (1 Sam 10:5; 1 Chr 25:1–3). Incense represents the prayers of God's people (Ps 141:2; Exod 30:1–9). This moment shows that authority has now been handed over. The prayers of the saints stand as testimony — reaching back through every generation of covenant people who cried out to Yahuah and looked toward what He would provide (Exod 2:23–24; Ps 102:17–18; Heb 11:13). The courtroom is no longer waiting.</p>
+            <h4 class="rd-subsec">The New Song — Legal Recognition of the Lamb's Worthiness (Revelation 5:9–10)</h4>
+            <p>The elders sing a new song declaring the Lamb's worthiness: He was slain, He bought back a people for God, and He made them a kingdom and priests (Rev 5:9–10). This echoes Exodus 19:5–6 and 1 Peter 2:9, showing that the Lamb's obedience opened the way for a people to draw near to Yahuah — not on their own standing, but through Him as their mediator (Heb 10:19–22; 1 Tim 2:5). This song is more than worship — it is a legal declaration. Heaven is saying out loud that the Lamb has the rightful authority to govern and to put God's decrees into effect. They now overcome "by the blood of the Lamb" (Rev 12:11).</p>
+            <h4 class="rd-subsec">Heaven Confirms the Lamb as God's Judicial Agent (Revelation 5:11–14)</h4>
+            <p>The chapter ends with all creation recognizing the Lamb's role in carrying out God's plan (Rev 5:11–14). The Lamb remains distinct from the One seated on the throne (Rev 5:13). The Father is the source of authority; the Lamb is the one authorized to act on that authority. This keeps the biblical pattern intact: God judges, and the Son carries out that judgment on His behalf (John 5:22; Acts 17:31).</p>
+
+            <h3 class="rd-section">5.3 &nbsp; The Verdict That Stands</h3>
+            <p class="rd-ref">Decree, Authority, and the Cosmic Shift</p>
+            <aside class="rd-te">
+              <div class="rd-box-label">TERMS IN EVIDENCE</div>
+              <strong class="rd-box-title">Christ's Four Roles: Authority Transferred in Open Court</strong>
+              <p><strong>1. From Prophet to King and High Priest</strong><br/>During His earthly ministry, Yahushua served as God's Prophet, speaking only what the Father gave Him to say (Deut 18:15–18; John 7:16; 12:49–50; Heb 1:1–2). After His resurrection, He was installed as King, seated at God's right hand with all authority given to Him (Ps 2:6–8; Matt 28:18; Acts 2:30–36; Eph 1:20–22). At the same time, He entered the heavenly sanctuary as High Priest, interceding for His people on the basis of His own blood (Heb 4:14–16; 7:24–27; 9:11–12).</p>
+              <p><strong>2. Entrusted With Judicial Authority</strong><br/>God has committed all judgment to the Son (John 5:22) and has appointed a Man by whom He will judge the world (Acts 17:31). Believers appear before the judgment seat of Christ (2 Cor 5:10), yet this judgment remains God's judgment carried out through Him (Rom 2:16). Revelation 5 visually represents this transfer of authority. The Lamb approaches the throne and receives the sealed scroll from God's right hand (Rev 5:7). He does not take the throne; He is entrusted with authority.</p>
+            </aside>
+            <h4 class="rd-subsec">Decree First, Judgment Later</h4>
+            <p>Revelation follows a clear order: Revelation 4 shows who has ultimate authority — God alone on the throne. Revelation 5 shows who is authorized to act — the Lamb receives the sealed decrees. Revelation 6–19 shows how those decrees unfold as judgment in history. Revelation 5 is not where judgment begins. It is the moment when judgment becomes unavoidable, because the One who can rightly carry it out has now been authorized.</p>
+            <h4 class="rd-subsec">The Cosmic Shift Revelation Reveals</h4>
+            <p>What John records here does not belong to a single point on the prophetic timeline. The Lamb's victory is past — already accomplished when He was raised and presented to the Father. The outworking is present — His authority active now in the unfolding of the seals, in the prayers rising before the throne, in the life of the churches. The completion is still to come. Because the Lamb has overcome, the churches can overcome. Because He has opened the way, God's decrees can be carried out without condemning the redeemed. Because He has defeated sin and death, judgment can go forward without destroying those for whom the price was paid. This is why the churches of Revelation 2 and 3 could not overcome on their own. They overcome "by the blood of the Lamb" (Rev 12:11).</p>
+            <aside class="rd-ca">
+              <div class="rd-box-label">CLOSING ARGUMENTS</div>
+              <p>Chapter 5 is the legal turning point of the entire book. Before this moment, God holds every decree sealed and unexecuted. The whole of heaven cannot find anyone qualified to open them. The crisis is real: without a worthy claimant, justice cannot be carried out, the prayers of the saints cannot be answered, and history has no authorized end. Then the Lamb steps forward — not as a conqueror by force, but as one already proven through sacrifice. The scroll changes hands in open court. What the Father held, the Son now carries. The rest of Revelation is not a new story. It is this transfer being worked out.</p>
+              <p>Chapter 5 does not support the view that the Lamb's authority is still future, still being earned, or still in question. Heaven's response is immediate and unanimous — every living creature, every elder, and finally all creation declares Him worthy before a single seal is broken. The Lamb's seven horns and seven eyes establish that He rules with complete authority and complete knowledge. He cannot be outmaneuvered, deceived, or overruled. Every judgment that follows in the seals, trumpets, and bowls flows from this one moment: the scroll is in the right hands, and the court is prepared to proceed.</p>
+            </aside>
+          </div>
+          <footer class="rd-page-footer">
+            <div class="rd-pf-left">The Courtroom of Heaven</div>
+            <div class="rd-pf-center">V</div>
+            <div class="rd-pf-right">nazaryah.com</div>
+          </footer>
+        </div>
+
+        <!-- ─── Chapters VI–XXII ─── -->
+        {chapters.filter(ch => ch.num > 5).map((ch) => (
           <div class="rd-chapter-panel" id={`chapter-${ch.num}`} style="display:none">
             <header class="rd-page-header">
               <div class="rd-docket-rule"></div>
               <div class="rd-docket-label">C H A P T E R &nbsp; {toRoman(ch.num)}</div>
               <h1 class="rd-page-title">{ch.title}</h1>
+              {ch.templeledger && <div class="rd-ledger">TEMPLE LEDGER: {ch.templeledger.toUpperCase()}</div>}
               <p class="rd-page-sub">{ch.subtitle}</p>
               <div class="rd-docket-rule"></div>
             </header>
             <div class="rd-page-body">
-              <p class="rd-placeholder">
-                [ Chapter {ch.num} content goes here. Drop the full chapter prose into this section. The printed book's court docket, case brief, and evidence-tag headers remain exclusive to the Amazon edition. ]
-              </p>
+              <p class="rd-placeholder">[ Chapter {ch.num} content — coming soon. ]</p>
             </div>
             <footer class="rd-page-footer">
               <div class="rd-pf-left">The Courtroom of Heaven</div>
@@ -234,10 +666,10 @@ function toRoman(n: number) {
   // ─── Chapter data ───
   const CHAPTERS = [
     { num: 1,  title: 'Summons to the Court' },
-    { num: 2,  title: 'Letters as Indictments — Part I' },
-    { num: 3,  title: 'Letters as Indictments — Part II' },
-    { num: 4,  title: 'Throne of Glory' },
-    { num: 5,  title: 'The Scroll and the Lamb' },
+    { num: 2,  title: 'Letters as Indictments' },
+    { num: 3,  title: 'Witness of the Faithful' },
+    { num: 4,  title: 'The Throne Convened' },
+    { num: 5,  title: 'The Lamb Takes Exhibit A' },
     { num: 6,  title: 'Six Seals Broken' },
     { num: 7,  title: 'Sealed and Standing' },
     { num: 8,  title: 'Silence, Then Fire' },
@@ -436,6 +868,7 @@ function toRoman(n: number) {
   .bk-ch-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 19px; color: #F5EFE4; line-height: 1.3; margin-bottom: 4px; }
   .bk-ch-topic { font-family: 'EB Garamond', Georgia, serif; font-size: 13px; font-style: italic; color: #8A7E70; }
   .bk-ch-arrow { font-size: 18px; color: #6B5F53; text-align: right; }
+  .bk-ch-ledger { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: rgba(139,40,40,0.65); margin-top: 4px; text-transform: uppercase; }
 
   /* ── Reader styles ── */
   .rd-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 16px 0; border-bottom: 1px solid rgba(139,40,40,0.2); margin-bottom: 32px; }
@@ -457,10 +890,29 @@ function toRoman(n: number) {
   .rd-page-header { text-align: center; margin-bottom: 48px; }
   .rd-docket-rule { width: 80px; height: 1px; background: #8B2828; margin: 0 auto; opacity: 0.4; }
   .rd-docket-label { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.4em; color: #8B2828; margin: 20px 0 16px; }
-  .rd-page-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 36px; font-weight: 600; color: #1A3A5C; line-height: 1.15; margin: 0 0 12px; letter-spacing: -0.005em; }
+  .rd-page-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 36px; font-weight: 600; color: #1A3A5C; line-height: 1.15; margin: 0 0 10px; letter-spacing: -0.005em; }
+  .rd-ledger { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; color: #8B2828; margin: 0 0 12px; opacity: 0.8; }
   .rd-page-sub { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 16px; font-style: italic; color: #6B5F53; margin: 0 0 20px; line-height: 1.4; }
   .rd-page-body { font-family: 'EB Garamond', Georgia, serif; font-size: 17px; line-height: 1.75; color: #2B2420; }
   .rd-placeholder { font-style: italic; color: #6B5F53; margin-top: 40px; font-size: 15px; }
+  /* Reader chapter content styles */
+  .rd-section { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 22px; font-weight: 600; color: #1A3A5C; margin: 48px 0 4px; letter-spacing: -0.01em; border-bottom: 1px solid rgba(139,40,40,0.2); padding-bottom: 8px; }
+  .rd-ref { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.2em; color: #8B2828; margin: 0 0 24px; opacity: 0.7; }
+  .rd-subsec { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; font-weight: 600; font-style: italic; color: #2B2420; margin: 28px 0 10px; }
+  .rd-list { padding-left: 20px; margin: 12px 0 16px; }
+  .rd-list li { margin-bottom: 8px; line-height: 1.6; }
+  /* Sidebar boxes */
+  .rd-jn, .rd-te, .rd-bn, .rd-ca { margin: 28px 0; padding: 20px 24px; border-radius: 2px; }
+  .rd-jn { background: rgba(139,40,40,0.05); border-left: 3px solid rgba(139,40,40,0.5); }
+  .rd-te { background: rgba(201,169,97,0.07); border-left: 3px solid rgba(201,169,97,0.6); }
+  .rd-bn { background: rgba(26,58,92,0.06); border-left: 3px solid rgba(26,58,92,0.4); }
+  .rd-ca { background: rgba(43,36,32,0.06); border: 1px solid rgba(43,36,32,0.15); border-left: 3px solid rgba(43,36,32,0.35); }
+  .rd-box-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.3em; color: #8A7E70; margin-bottom: 8px; text-transform: uppercase; }
+  .rd-jn .rd-box-label { color: #8B2828; }
+  .rd-te .rd-box-label { color: #9A7A30; }
+  .rd-bn .rd-box-label { color: #2B4A6A; }
+  .rd-box-title { display: block; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 15px; font-weight: 600; color: #2B2420; margin-bottom: 10px; line-height: 1.3; }
+  .rd-box-sources { font-family: 'JetBrains Mono', monospace; font-size: 9px; letter-spacing: 0.1em; color: #8A7E70; margin-top: 10px; }
   .rd-page-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 60px; padding-top: 20px; border-top: 1px solid rgba(43,36,32,0.15); font-family: 'EB Garamond', Georgia, serif; font-size: 11px; font-style: italic; color: #8A7E70; }
   .rd-pf-center { flex: 1; text-align: center; font-family: 'JetBrains Mono', monospace; font-style: normal; letter-spacing: 0.15em; }
   .rd-pf-left, .rd-pf-right { flex: 1; }
