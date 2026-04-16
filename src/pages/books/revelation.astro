@@ -802,7 +802,48 @@ function toRoman(n: number) {
   });
 
   // ─── PDF print ───
+  // window.print() can't override JS inline styles, so we temporarily
+  // force the right DOM state, print, then restore everything.
   document.getElementById('rd-pdf-btn')?.addEventListener('click', () => {
+    const readerSection  = document.getElementById('reader-section') as HTMLElement;
+    const bookDetails    = document.getElementById('book-details') as HTMLElement;
+    const rdBar          = document.querySelector('.rd-bar') as HTMLElement | null;
+    const rdNav          = document.getElementById('rd-nav') as HTMLElement | null;
+    const rdSelector     = document.getElementById('chapter-selector') as HTMLElement | null;
+    const allPanels      = Array.from(document.querySelectorAll('.rd-chapter-panel')) as HTMLElement[];
+    const activePanel    = document.getElementById(`chapter-${currentChapter}`) as HTMLElement | null;
+
+    // Snapshot current inline display values
+    const snap = {
+      reader:   readerSection?.style.display,
+      details:  bookDetails?.style.display,
+      bar:      rdBar?.style.display ?? '',
+      nav:      rdNav?.style.display ?? '',
+      sel:      rdSelector?.style.display ?? '',
+      panels:   allPanels.map(p => p.style.display),
+    };
+
+    // Force print-ready state via inline styles (overrides everything)
+    if (readerSection) readerSection.style.display = 'block';
+    if (bookDetails)   bookDetails.style.display   = 'none';
+    if (rdBar)         rdBar.style.display          = 'none';
+    if (rdNav)         rdNav.style.display          = 'none';
+    if (rdSelector)    rdSelector.style.display     = 'none';
+    allPanels.forEach(p => { p.style.display = 'none'; });
+    if (activePanel)   activePanel.style.display    = 'block';
+
+    // Restore after the print dialog closes (afterprint fires in all modern browsers)
+    const restore = () => {
+      if (readerSection) readerSection.style.display = snap.reader;
+      if (bookDetails)   bookDetails.style.display   = snap.details;
+      if (rdBar)         rdBar.style.display          = snap.bar;
+      if (rdNav)         rdNav.style.display          = snap.nav;
+      if (rdSelector)    rdSelector.style.display     = snap.sel;
+      allPanels.forEach((p, i) => { p.style.display = snap.panels[i]; });
+      window.removeEventListener('afterprint', restore);
+    };
+    window.addEventListener('afterprint', restore);
+
     window.print();
   });
 
