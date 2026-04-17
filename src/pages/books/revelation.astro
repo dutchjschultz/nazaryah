@@ -169,10 +169,7 @@ function toRoman(n: number) {
           <span id="chapter-of"> of XXII — Chapter index</span>
           <span id="chapter-toggle-arrow" class="rd-toggle-arrow">▼</span>
         </button>
-        <div class="rd-downloads">
-          <button id="rd-pdf-btn" class="rd-dl-btn">↓ PDF</button>
-          <button id="rd-spread-btn" class="rd-dl-btn rd-spread-toggle" title="Book view">⊞ Book</button>
-        </div>
+        <button id="rd-spread-btn" class="rd-book-view-btn" title="Book view">⊞ Book View</button>
       </div>
 
       <!-- Chapter selector -->
@@ -801,52 +798,6 @@ function toRoman(n: number) {
     });
   });
 
-  // ─── PDF print ───
-  // window.print() can't override JS inline styles, so we temporarily
-  // force the right DOM state, print, then restore everything.
-  document.getElementById('rd-pdf-btn')?.addEventListener('click', () => {
-    const readerSection  = document.getElementById('reader-section') as HTMLElement;
-    const bookDetails    = document.getElementById('book-details') as HTMLElement;
-    const rdBar          = document.querySelector('.rd-bar') as HTMLElement | null;
-    const rdNav          = document.getElementById('rd-nav') as HTMLElement | null;
-    const rdSelector     = document.getElementById('chapter-selector') as HTMLElement | null;
-    const allPanels      = Array.from(document.querySelectorAll('.rd-chapter-panel')) as HTMLElement[];
-    const activePanel    = document.getElementById(`chapter-${currentChapter}`) as HTMLElement | null;
-
-    // Snapshot current inline display values
-    const snap = {
-      reader:   readerSection?.style.display,
-      details:  bookDetails?.style.display,
-      bar:      rdBar?.style.display ?? '',
-      nav:      rdNav?.style.display ?? '',
-      sel:      rdSelector?.style.display ?? '',
-      panels:   allPanels.map(p => p.style.display),
-    };
-
-    // Force print-ready state via inline styles (overrides everything)
-    if (readerSection) readerSection.style.display = 'block';
-    if (bookDetails)   bookDetails.style.display   = 'none';
-    if (rdBar)         rdBar.style.display          = 'none';
-    if (rdNav)         rdNav.style.display          = 'none';
-    if (rdSelector)    rdSelector.style.display     = 'none';
-    allPanels.forEach(p => { p.style.display = 'none'; });
-    if (activePanel)   activePanel.style.display    = 'block';
-
-    // Restore after the print dialog closes (afterprint fires in all modern browsers)
-    const restore = () => {
-      if (readerSection) readerSection.style.display = snap.reader;
-      if (bookDetails)   bookDetails.style.display   = snap.details;
-      if (rdBar)         rdBar.style.display          = snap.bar;
-      if (rdNav)         rdNav.style.display          = snap.nav;
-      if (rdSelector)    rdSelector.style.display     = snap.sel;
-      allPanels.forEach((p, i) => { p.style.display = snap.panels[i]; });
-      window.removeEventListener('afterprint', restore);
-    };
-    window.addEventListener('afterprint', restore);
-
-    window.print();
-  });
-
   // ─── Book spread view ───
   let spreadOpen = false;
 
@@ -1071,9 +1022,8 @@ function toRoman(n: number) {
   .rd-chapter-btn { background: rgba(139,40,40,0.1); border: 1px solid rgba(139,40,40,0.3); border-radius: 2px; color: #E8DCC8; font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; letter-spacing: 0.05em; padding: 10px 18px; cursor: pointer; display: inline-flex; align-items: center; gap: 6px; }
   .rd-ch-indicator { color: #8B2828; margin-right: 2px; }
   .rd-toggle-arrow { font-size: 10px; opacity: 0.7; }
-  .rd-downloads { display: flex; gap: 8px; }
-  .rd-dl-btn { padding: 8px 14px; background: transparent; border: 1px solid rgba(201,169,97,0.3); border-radius: 2px; color: #C9A961; font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.15em; text-decoration: none; transition: all 0.2s; }
-  .rd-dl-btn:hover { background: rgba(201,169,97,0.1); }
+  .rd-book-view-btn { padding: 10px 22px; background: rgba(201,169,97,0.08); border: 1px solid rgba(201,169,97,0.5); border-radius: 3px; color: #C9A961; font-family: 'EB Garamond', Georgia, serif; font-size: 18px; letter-spacing: 0.05em; cursor: pointer; transition: all 0.2s; }
+  .rd-book-view-btn:hover { background: rgba(201,169,97,0.18); border-color: #C9A961; }
   .rd-selector { background: #14100E; border: 1px solid rgba(139,40,40,0.15); border-radius: 2px; padding: 20px 24px; margin-bottom: 32px; }
   .rd-selector-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #8A7E70; margin-bottom: 16px; }
   .rd-selector-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px, 1fr)); gap: 4px; }
