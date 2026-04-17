@@ -18,6 +18,77 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </p>
     </section>
 
+    <!-- ── MODE BAR ── -->
+    <div class="sw-mode-bar">
+      <button id="btn-quick" class="sw-mode-btn sw-mode-active">&#9654; Quick Read</button>
+      <span class="sw-mode-divider">&#8213;</span>
+      <button id="btn-full" class="sw-mode-btn">Full Study</button>
+    </div>
+
+    <!-- ── QUICK READ PANEL ── -->
+    <div id="panel-quick">
+
+      <section class="sw-section">
+        <div class="sw-prose">
+          <p class="sw-kicker">The mermaid is one of the oldest documented idols on earth — and most parents have no idea she's in their living room.</p>
+          <p>Long before Disney, half-woman half-fish goddesses were worshipped across the ancient world with blood sacrifice, temple prostitution, and fertility rituals. This is the 90-second version of her story.</p>
+        </div>
+      </section>
+
+      <section class="sw-section sw-section-alt">
+        <div class="sw-prose">
+          <p class="sw-section-heading">Where She Actually Came From</p>
+          <p>The oldest known mermaid is Atargatis — the chief goddess of northern Syria, worshipped from at least 1000 BC. Her temple at Hierapolis kept sacred fish in a pool, and temple prostitution and child sacrifice were part of her worship. This is the goddess Disney turned into a redheaded teenager named Ariel.</p>
+          <p>Her Babylonian cousin is Oannes, the fish-man whose priests wore fish-head mitres — the same mitre the Pope wears today. Her medieval descendant is Melusine, the twin-tailed mermaid at the center of the Starbucks logo. The lineage is unbroken.</p>
+          <div class="sw-scripture-block">
+            <p class="sw-scripture-label">&#9656; Exodus 20:4–5</p>
+            <p>"Thou shalt not make unto thee any graven image, or any likeness of any thing... <strong>that is in the water under the earth</strong>: thou shalt not bow down thyself to them, nor serve them..."</p>
+          </div>
+          <p>Yahuah named the exact category the mermaid belongs to. This was not vague. It was surgical.</p>
+        </div>
+      </section>
+
+      <section class="sw-section">
+        <div class="sw-prose">
+          <p class="sw-section-heading">What the Movie Actually Does</p>
+          <p>The 1989 film preserves every element of the myth that matters to the worship system:</p>
+          <ul class="sw-list">
+            <li><strong>Ariel rebels against her father</strong> — the fertility cult's feminine defiance of patriarchal order, intact.</li>
+            <li><strong>Ariel trades her voice through a sea-witch's spell</strong> — transformation through witchcraft, explicitly forbidden in Exodus 22:18 and Deuteronomy 18:10–12.</li>
+            <li><strong>Ariel seeks a prince</strong> — the fertility-cult marriage narrative: the goddess-figure seeks the sun-consort, the union that produces the harvest.</li>
+            <li><strong>The climax features a trident, storm, and ritual transformation</strong> — all drawn from sea-deity worship.</li>
+            <li><strong>Starbucks carries the same goddess</strong> — the twin-tailed Melusine, halo-ringed, on every cup. The same idol, different packaging.</li>
+          </ul>
+          <p>The film is not neutral. It is a fertility myth with a pop soundtrack, teaching children that defying their fathers and pursuing romantic love through witchcraft are noble impulses.</p>
+        </div>
+      </section>
+
+      <section class="sw-section sw-section-alt">
+        <div class="sw-prose">
+          <p class="sw-section-heading">So Now What?</p>
+          <p>You don't have to throw the VHS in the fire tonight. But the next time it comes on, sit down and ask your daughters — do you know where Ariel came from before Hans Christian Andersen? Ask them why Yahuah included "things in the water under the earth" in the second commandment. Those questions do more than any ban.</p>
+          <div class="sw-scripture-block">
+            <p class="sw-scripture-label">&#9656; 1 John 5:21</p>
+            <p>"Little children, keep yourselves from idols. Amen."</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="sw-footer-quote">
+        <div class="sw-summary-block">
+          <p class="sw-summary-label">&#9656; The Short Version</p>
+          <p class="sw-summary-text">The mermaid is Atargatis — a Syrian fish-goddess from 1000 BC — and Ariel is her newest face. The second commandment named her category specifically. Disney just gave her red hair.</p>
+        </div>
+        <p class="sw-cta-link" style="text-align:center; margin-top:1.5rem;">
+          <button id="btn-full-cta" class="sw-mode-btn" style="font-size:0.75rem; letter-spacing:2px;">&#8594; Read the Full Study</button>
+        </p>
+      </section>
+
+    </div><!-- /panel-quick -->
+
+    <!-- ── FULL STUDY PANEL ── -->
+    <div id="panel-full" style="display:none">
+
     <!-- ── INTRO ── -->
     <section class="sw-section">
       <div class="sw-prose">
@@ -171,8 +242,37 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       <p class="sw-quote-ref">— 1 John 5:21</p>
     </section>
 
+    </div><!-- /panel-full -->
+
   </div>
 </BaseLayout>
+
+<script>
+  const btnQuick = document.getElementById('btn-quick');
+  const btnFull = document.getElementById('btn-full');
+  const btnFullCta = document.getElementById('btn-full-cta');
+  const panelQuick = document.getElementById('panel-quick');
+  const panelFull = document.getElementById('panel-full');
+
+  function showQuick() {
+    panelQuick.style.display = '';
+    panelFull.style.display = 'none';
+    btnQuick.classList.add('sw-mode-active');
+    btnFull.classList.remove('sw-mode-active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+  function showFull() {
+    panelFull.style.display = '';
+    panelQuick.style.display = 'none';
+    btnFull.classList.add('sw-mode-active');
+    btnQuick.classList.remove('sw-mode-active');
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  }
+
+  btnQuick.addEventListener('click', showQuick);
+  btnFull.addEventListener('click', showFull);
+  if (btnFullCta) btnFullCta.addEventListener('click', showFull);
+</script>
 
 <style>
   .sw-wrap {
@@ -180,6 +280,45 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     color: #f0e0bf;
     font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
     min-height: 80vh;
+  }
+
+  .sw-mode-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    padding: 1rem 1.5rem;
+    background: rgba(6, 8, 16, 0.97);
+    border-bottom: 1px solid #141c38;
+    position: sticky;
+    top: 0;
+    z-index: 10;
+  }
+
+  .sw-mode-divider {
+    color: #1a2448;
+    font-size: 0.65rem;
+    letter-spacing: 4px;
+  }
+
+  .sw-mode-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.65rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.45rem 1.1rem;
+    border-radius: 20px;
+    border: 1px solid #1a2448;
+    background: transparent;
+    color: #3a4870;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+
+  .sw-mode-active {
+    background: rgba(30, 58, 139, 0.25);
+    border-color: rgba(60, 100, 186, 0.45);
+    color: #c4a46b;
   }
 
   .sw-hero {
