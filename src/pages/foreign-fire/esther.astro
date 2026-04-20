@@ -1,0 +1,277 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+// A subject page is a container for content blocks — blogs, timelines,
+// quotation collections, etc. Esther currently carries two blog blocks.
+// Future subjects can mix block types; see the instructions doc.
+const STUDIES = [
+  {
+    number: 'Study 1',
+    title: 'Ishtar & Marduk',
+    subtitle: 'The two heroes of Esther are named after Babylonian gods',
+    excerpt:
+      "The book of Esther never mentions God — and its two heroes are named after the chief god and goddess of Babylon. Here is what the church has never told you.",
+    route: '/foreign-fire/esther/ishtar-and-marduk'
+  },
+  {
+    number: 'Study 2',
+    title: 'The Star on the Flag',
+    subtitle: 'Saturn, the black cube, and a book written by Kabbalists',
+    excerpt:
+      'The six-pointed star on the flag of Israel is not in the Bible. The Bible names it as the star of a pagan god. Here is how it got from Saturn worship to a banking family to the flag that flies over Jerusalem today.',
+    route: '/foreign-fire/esther/the-star-on-the-flag'
+  }
+];
+---
+
+<BaseLayout
+  title="Esther — The Book of Esther, the Goddess Ishtar, and the Star on the Flag"
+  description="The book of Esther never names Yahuah. Its heroes are named after Babylonian gods. The star on Israel's flag traces back to the same pagan source. Two companion studies."
+>
+  <div class="ff-wrap">
+
+    <!-- ── HERO ── -->
+    <section class="ff-hero">
+      <a href="/foreign-fire" class="ff-back">&#8592; Foreign Fire</a>
+      <p class="ff-label">&#8213; Foreign Fire &#8213;</p>
+      <h1 class="ff-title">Esther</h1>
+      <p class="ff-sub">The book of Esther, the goddess Ishtar, and the star on the flag</p>
+    </section>
+
+    <!-- ── INTRO ── -->
+    <section class="ff-section">
+      <div class="ff-prose">
+        <p>
+          The book of Esther is the only book in the Bible that never mentions the name of Yahuah. Its two heroes are named after the chief god and goddess of Babylon. The festival named after it — Purim — is named after the Persian word for dice. And the six-pointed star most Christians associate with King David is actually the symbol of the goddess at the center of the story.
+        </p>
+        <p>
+          Two short studies follow. They are companions but each stands alone — read either or both.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── STUDY CARDS ── -->
+    <section class="ff-studies">
+      <p class="ff-studies-label">&#8213; Two Companion Studies &#8213;</p>
+      <h2 class="ff-studies-title">Choose Your Entry Point</h2>
+
+      <div class="ff-studies-grid">
+        {STUDIES.map((s) => (
+          <a href={s.route} class="ff-study-card">
+            <span class="ff-study-num">{s.number}</span>
+            <h3 class="ff-study-title">{s.title}</h3>
+            <p class="ff-study-sub">{s.subtitle}</p>
+            <p class="ff-study-excerpt">{s.excerpt}</p>
+            <div class="ff-study-cta">Read This Study &#8594;</div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── FOOTER QUOTE ── -->
+    <section class="ff-footer-quote">
+      <p class="ff-quote-text">"Babylon is taken, Bel is confounded, Merodach is broken in pieces; her idols are confounded, her images are broken in pieces."</p>
+      <p class="ff-quote-ref">— Jeremiah 50:2</p>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .ff-wrap {
+    background: linear-gradient(180deg, #0a0402 0%, #1a0a04 20%, #140805 100%);
+    color: #f0d8b8;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  .ff-hero {
+    text-align: center;
+    padding: 4rem 1.5rem 3.5rem;
+    border-bottom: 1px solid #3a1408;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(200, 70, 20, 0.22), transparent 70%),
+      linear-gradient(180deg, #0a0402 0%, #1a0a04 100%);
+  }
+
+  .ff-back {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    color: #8a4820;
+    text-transform: uppercase;
+    text-decoration: none;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+  .ff-back:hover { color: #d46020; }
+
+  .ff-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #a84a1a;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .ff-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #f5deb3;
+    margin: 0 0 1rem;
+    line-height: 1.1;
+    text-shadow: 0 0 30px rgba(200, 70, 20, 0.25);
+  }
+
+  .ff-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #d49555;
+    font-style: italic;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .ff-section {
+    padding: 3.5rem 1.5rem;
+    border-bottom: 1px solid #2a0f06;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .ff-prose {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #d9c2a0;
+  }
+
+  .ff-prose p { margin-bottom: 1.4rem; }
+  .ff-prose p:last-child { margin-bottom: 0; }
+
+  /* ── STUDY CARDS ── */
+  .ff-studies {
+    padding: 4rem 1.5rem;
+    text-align: center;
+    background: radial-gradient(ellipse at 50% 40%, rgba(140, 40, 15, 0.15), transparent 70%);
+    border-bottom: 1px solid #2a0f06;
+  }
+
+  .ff-studies-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a4820;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .ff-studies-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 600;
+    color: #f5deb3;
+    margin: 0 0 2.5rem;
+  }
+
+  .ff-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    max-width: 900px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .ff-study-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: #14070a;
+    border: 1px solid #3a1a0e;
+    border-top: 3px solid #a84a1a;
+    border-radius: 6px;
+    padding: 2rem;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+
+  .ff-study-card:hover {
+    background: #1f0d10;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(168, 74, 26, 0.25);
+    border-top-color: #d46020;
+  }
+
+  .ff-study-num {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #8a4820;
+    margin-bottom: 0.75rem;
+  }
+
+  .ff-study-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #f5deb3;
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+  }
+
+  .ff-study-sub {
+    font-size: 0.95rem;
+    font-style: italic;
+    color: #d49555;
+    margin: 0 0 1.1rem;
+    line-height: 1.5;
+  }
+
+  .ff-study-excerpt {
+    font-size: 0.95rem;
+    color: #b09875;
+    line-height: 1.7;
+    flex: 1;
+    margin: 0 0 1.25rem;
+  }
+
+  .ff-study-cta {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #d46020;
+    font-weight: 600;
+  }
+
+  /* ── FOOTER QUOTE ── */
+  .ff-footer-quote {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    background: linear-gradient(180deg, #0a0402 0%, #040201 100%);
+  }
+
+  .ff-quote-text {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-style: italic;
+    color: #d49555;
+    max-width: 640px;
+    margin: 0 auto 0.75rem;
+    line-height: 1.65;
+  }
+
+  .ff-quote-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #5a3818;
+    text-transform: uppercase;
+  }
+
+  @media (max-width: 700px) {
+    .ff-studies-grid { grid-template-columns: 1fr; }
+  }
+</style>

@@ -1,0 +1,457 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Subjects are data-driven so that flipping a card from "coming-soon"
+// to "active" is a single status + route change — no layout rewrite.
+const SUBJECTS = [
+  {
+    slug: 'esther',
+    status: 'active',
+    name: 'Esther',
+    subtitle: 'The book of Esther, the goddess Ishtar, and the star on the flag',
+    description:
+      'The book of Esther never names Yahuah. Its two heroes are named after the chief god and goddess of Babylon. The same religious stream that championed the book also put a pagan star on the flag of Israel.',
+    studyCount: 2,
+    route: '/foreign-fire/esther'
+  },
+  {
+    slug: 'kabbalah',
+    status: 'coming-soon',
+    name: 'Kabbalah',
+    subtitle: 'The mystical system that replaced Torah with magic',
+    description:
+      'A medieval Jewish mystical system claiming secret teachings from Moses — but built on Gnosticism, Neoplatonism, and Islamic magic. The source of the hexagram, the ten sefirot, and ritual letter-magic Torah forbids.',
+    route: null
+  },
+  {
+    slug: 'zoroastrianism',
+    status: 'coming-soon',
+    name: 'Zoroastrianism',
+    subtitle: 'The Persian religion that quietly shaped post-exilic Judaism',
+    description:
+      'A dualistic Persian religion of cosmic battle between good and evil, angels and demons, heaven and hell. Modern doctrines about Satan, the afterlife, and the end times owe more to Zoroaster than to Moses.',
+    route: null
+  },
+  {
+    slug: 'babylonian-talmud',
+    status: 'coming-soon',
+    name: 'The Babylonian Talmud',
+    subtitle: 'The oral tradition that replaced the written Word',
+    description:
+      'Not Scripture. Not Torah. A vast body of rabbinic argument, folklore, and law-making compiled in Babylon between the 3rd and 6th centuries AD — and treated as binding authority by the religion that calls itself Judaism today.',
+    route: null
+  },
+  {
+    slug: 'sabbatean-frankism',
+    status: 'coming-soon',
+    name: 'Sabbatean-Frankism',
+    subtitle: 'The false-messiah movement that taught redemption through sin',
+    description:
+      'Two false messiahs — Sabbatai Zevi (1626–1676) and Jacob Frank (1726–1791) — built a Kabbalistic movement that taught the Messiah redeems by descending into apostasy. Their crypto-networks shaped the Enlightenment, the Illuminati, and the Rothschild banking dynasty.',
+    route: null
+  },
+  {
+    slug: 'hellenism',
+    status: 'coming-soon',
+    name: 'Hellenism & Greek Philosophy',
+    subtitle: 'The Greek mind that rewrote the Hebrew gospel',
+    description:
+      "Plato, Aristotle, the Logos, the immortal soul, Greek philosophical categories. The Greek mind that conquered the world after Alexander quietly conquered the church too — and most of what people call 'Christian theology' is Greek philosophy in biblical clothes.",
+    route: null
+  }
+];
+
+const active = SUBJECTS.filter((s) => s.status === 'active');
+const soon = SUBJECTS.filter((s) => s.status === 'coming-soon');
+---
+
+<BaseLayout
+  title="Foreign Fire — Religious Systems That Crept Into the Faith"
+  description="Strange fire is what Scripture calls worship Yahuah did not authorize. This section traces the foreign religious systems that have infiltrated the faith over the centuries — exposed."
+>
+  <div class="ff-wrap">
+
+    <!-- ── HERO ── -->
+    <section class="ff-hero">
+      <p class="ff-label">&#8213; Strange Fire Before Yahuah &#8213;</p>
+      <h1 class="ff-title">Foreign Fire</h1>
+      <p class="ff-sub">Religious systems that crept into the faith without Yahuah's authorization</p>
+    </section>
+
+    <!-- ── SCRIPTURE EPIGRAPH ── -->
+    <section class="ff-epigraph-section">
+      <blockquote class="ff-epigraph">
+        <p>
+          "And Nadab and Abihu, the sons of Aaron, took either of them his censer, and put fire therein, and put incense thereon, and offered strange fire before Yahuah, which he commanded them not. And there went out fire from Yahuah, and devoured them, and they died before Yahuah."
+        </p>
+        <cite>— Leviticus 10:1–2</cite>
+      </blockquote>
+    </section>
+
+    <!-- ── INTRO ── -->
+    <section class="ff-section">
+      <div class="ff-prose">
+        <p>
+          Aaron's two oldest sons were priests of Yahuah. They served in the tabernacle. They had been ordained to the work. And on the day they took their censers and offered fire before Yahuah that He had not commanded — fire from a foreign source, "strange fire," "foreign fire" — Yahuah's own fire came out and consumed them on the spot. They died before Him. Their offering was not pagan. It was not idol worship. It was simply worship He had not authorized, brought into His house from outside.
+        </p>
+        <p>
+          That is the principle this section is built on. Yahuah is precise about how He is to be worshipped. When men add what He did not command — when they borrow practices from surrounding nations, mix His worship with foreign religion, dress pagan symbols in biblical clothes, or build doctrines on philosophies He never gave — the result is what Scripture calls foreign fire. It does not matter how sincere the worshipper is. It does not matter how long the practice has been around. Foreign fire still kills.
+        </p>
+        <p>
+          Modern Christianity is full of foreign fire. Most of it has been there so long, and is so familiar, that the average believer has no idea it is foreign at all. The studies below trace the most influential of these fires — religious systems, doctrines, festivals, and symbols that look biblical but are not, that look ancient but were imported, that look holy but trace back to gods Yahuah condemned by name. Each entry exposes one such fire. More will be added over time.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── ACTIVE STUDIES ── -->
+    <section class="ff-grid-section">
+      <p class="ff-grid-label">&#8213; Studies Available &#8213;</p>
+      <h2 class="ff-grid-title">Enter the Fire</h2>
+      <p class="ff-grid-sub">Each subject traces one foreign fire from its ancient root to its modern shape.</p>
+
+      <div class="ff-grid">
+        {active.map((s) => (
+          <a href={s.route} class="ff-card ff-card-active">
+            <div class="ff-card-meta">
+              <span class="ff-card-count">{s.studyCount} Studies</span>
+              <span class="ff-card-status">Active</span>
+            </div>
+            <h3 class="ff-card-name">{s.name}</h3>
+            <p class="ff-card-subtitle">{s.subtitle}</p>
+            <p class="ff-card-desc">{s.description}</p>
+            <div class="ff-card-cta">View Studies &#8594;</div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── COMING SOON ── -->
+    <section class="ff-grid-section ff-grid-section-muted">
+      <p class="ff-grid-label ff-grid-label-dim">&#8213; Coming Soon &#8213;</p>
+      <h2 class="ff-grid-title ff-grid-title-dim">In Development</h2>
+      <p class="ff-grid-sub">Each of these foreign fires gets its own full study. Check back as the section grows.</p>
+
+      <div class="ff-grid">
+        {soon.map((s) => (
+          <div class="ff-card ff-card-soon" aria-disabled="true">
+            <div class="ff-card-meta">
+              <span class="ff-card-count ff-card-count-dim">Study</span>
+              <span class="ff-soon-badge">Coming Soon</span>
+            </div>
+            <h3 class="ff-card-name ff-card-name-dim">{s.name}</h3>
+            <p class="ff-card-subtitle ff-card-subtitle-dim">{s.subtitle}</p>
+            <p class="ff-card-desc ff-card-desc-dim">{s.description}</p>
+            <div class="ff-card-cta ff-card-cta-dim">In Development</div>
+          </div>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── CLOSING QUOTE ── -->
+    <section class="ff-footer-quote">
+      <p class="ff-quote-text">"Take heed to yourself that you are not ensnared to follow them... You shall not worship Yahuah your Elohim in that way."</p>
+      <p class="ff-quote-ref">— Deuteronomy 12:30–31</p>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .ff-wrap {
+    background: linear-gradient(180deg, #0a0402 0%, #1a0a04 20%, #140805 100%);
+    color: #f0d8b8;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  /* ── HERO ── */
+  .ff-hero {
+    text-align: center;
+    padding: 5rem 1.5rem 3.5rem;
+    border-bottom: 1px solid #3a1408;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(200, 70, 20, 0.28), transparent 70%),
+      linear-gradient(180deg, #0a0402 0%, #1a0a04 100%);
+  }
+
+  .ff-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #a84a1a;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .ff-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #f5deb3;
+    margin: 0 0 1rem;
+    line-height: 1.1;
+    text-shadow: 0 0 30px rgba(200, 70, 20, 0.25);
+  }
+
+  .ff-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #d49555;
+    font-style: italic;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── EPIGRAPH ── */
+  .ff-epigraph-section {
+    padding: 3rem 1.5rem;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .ff-epigraph {
+    border-left: 3px solid #a84a1a;
+    padding: 1.5rem 1.75rem;
+    background: rgba(40, 16, 8, 0.5);
+    border-radius: 0 4px 4px 0;
+    margin: 0;
+  }
+
+  .ff-epigraph p {
+    font-style: italic;
+    color: #d9b885;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    margin: 0 0 0.75rem;
+  }
+
+  .ff-epigraph cite {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #8a4820;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  /* ── SECTIONS ── */
+  .ff-section {
+    padding: 2.5rem 1.5rem 4rem;
+    border-bottom: 1px solid #2a0f06;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .ff-prose {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #d9c2a0;
+  }
+
+  .ff-prose p { margin-bottom: 1.4rem; }
+  .ff-prose p:last-child { margin-bottom: 0; }
+  .ff-prose em { color: #d49555; }
+  .ff-prose strong { color: #f0c888; }
+
+  /* ── GRID SECTION ── */
+  .ff-grid-section {
+    text-align: center;
+    padding: 4.5rem 1.5rem;
+    border-bottom: 1px solid #2a0f06;
+    background: radial-gradient(ellipse at 50% 30%, rgba(140, 40, 15, 0.15), transparent 70%);
+  }
+
+  .ff-grid-section-muted {
+    background: rgba(8, 4, 2, 0.6);
+  }
+
+  .ff-grid-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a4820;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .ff-grid-label-dim { color: #4a2a18; }
+
+  .ff-grid-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 600;
+    color: #f5deb3;
+    margin: 0 0 0.5rem;
+  }
+
+  .ff-grid-title-dim { color: #7a6448; }
+
+  .ff-grid-sub {
+    font-size: 1rem;
+    color: #a87850;
+    font-style: italic;
+    margin: 0 0 3rem;
+  }
+
+  /* ── GRID ── */
+  .ff-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .ff-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: #14070a;
+    border: 1px solid #3a1a0e;
+    border-top: 3px solid #a84a1a;
+    border-radius: 6px;
+    padding: 1.75rem;
+    transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+  }
+
+  /* ── ACTIVE CARD ── */
+  .ff-card-active:hover {
+    background: #1f0d10;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 30px rgba(168, 74, 26, 0.25);
+    border-top-color: #d46020;
+  }
+
+  .ff-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1rem;
+  }
+
+  .ff-card-count {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a4820;
+  }
+
+  .ff-card-count-dim { color: #4a2a18; }
+
+  .ff-card-status {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #d46020;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid rgba(212, 96, 32, 0.4);
+    border-radius: 12px;
+    background: rgba(168, 74, 26, 0.12);
+  }
+
+  .ff-soon-badge {
+    font-family: 'Cinzel', serif;
+    font-size: 8.5px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #6a5038;
+    padding: 0.2rem 0.55rem;
+    border: 1px solid #2e1d10;
+    border-radius: 12px;
+    background: rgba(30, 16, 8, 0.4);
+  }
+
+  .ff-card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.25rem;
+    font-weight: 700;
+    color: #f5deb3;
+    margin: 0 0 0.5rem;
+    line-height: 1.2;
+  }
+
+  .ff-card-name-dim { color: #8a7250; }
+
+  .ff-card-subtitle {
+    font-size: 0.9rem;
+    font-style: italic;
+    color: #d49555;
+    margin: 0 0 1rem;
+    line-height: 1.5;
+  }
+
+  .ff-card-subtitle-dim { color: #6a5038; }
+
+  .ff-card-desc {
+    font-size: 0.925rem;
+    color: #b09875;
+    line-height: 1.7;
+    flex: 1;
+    margin: 0 0 1.25rem;
+  }
+
+  .ff-card-desc-dim { color: #6a5a45; }
+
+  .ff-card-cta {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #d46020;
+    font-weight: 600;
+  }
+
+  .ff-card-cta-dim {
+    color: #4a3828;
+    font-weight: 500;
+  }
+
+  /* ── COMING-SOON CARD ── */
+  .ff-card-soon {
+    border-top-color: #2e1d10;
+    background: #0d0604;
+    opacity: 0.7;
+    cursor: default;
+  }
+
+  .ff-card-soon:hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  /* ── FOOTER QUOTE ── */
+  .ff-footer-quote {
+    text-align: center;
+    padding: 3.5rem 1.5rem;
+    background: linear-gradient(180deg, #0a0402 0%, #040201 100%);
+  }
+
+  .ff-quote-text {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-style: italic;
+    color: #d49555;
+    max-width: 640px;
+    margin: 0 auto 0.75rem;
+    line-height: 1.65;
+  }
+
+  .ff-quote-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #5a3818;
+    text-transform: uppercase;
+  }
+
+  /* ── RESPONSIVE ── */
+  @media (max-width: 900px) {
+    .ff-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 560px) {
+    .ff-grid { grid-template-columns: 1fr; }
+  }
+</style>
