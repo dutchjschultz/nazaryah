@@ -3,7 +3,11 @@ import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
 const currentPath = Astro.url.pathname;
-const navItems = [
+
+// Two nav rows — right-justified so they clear the logo's outspray.
+// Row 1: identity + core content hubs.
+// Row 2: topical studies + extras.
+const navRow1 = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Doctrines', href: '/doctrines' },
@@ -12,6 +16,9 @@ const navItems = [
   { name: 'Trinity', href: '/trinity' },
   { name: 'Foreign Fire', href: '/foreign-fire' },
   { name: 'Books', href: '/books' },
+];
+
+const navRow2 = [
   { name: 'Sun Worship', href: '/sun-worship' },
   { name: 'Catholicism', href: '/catholicism' },
   { name: 'Disney', href: '/disney' },
@@ -21,6 +28,11 @@ const navItems = [
   { name: 'Hidden Gems', href: '/hidden-gems' },
   { name: 'Contact', href: '/contact' },
 ];
+
+const allNavItems = [...navRow1, ...navRow2];
+
+const isActive = (href: string) =>
+  currentPath === href || (href !== '/' && currentPath.startsWith(href));
 ---
 
 <header class="site-header sticky top-0 z-50 border-b border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] backdrop-blur-sm" data-pagefind-ignore>
@@ -30,22 +42,34 @@ const navItems = [
         <Logo variant="full" />
       </a>
 
-      <div class="hidden md:flex items-center space-x-8">
-        <ul class="flex space-x-2">
-          {navItems.map((item) => (
-            <li>
-              <a
-                href={item.href}
-                class:list={[
-                  'nav-link',
-                  (currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))) ? 'active' : ''
-                ]}
-              >
-                {item.name}
-              </a>
-            </li>
-          ))}
-        </ul>
+      <!-- Desktop nav: two right-justified rows of button-style links -->
+      <div class="hidden md:flex items-center gap-4">
+        <div class="nav-stack">
+          <ul class="nav-row">
+            {navRow1.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={['nav-link', isActive(item.href) ? 'active' : '']}
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+          <ul class="nav-row">
+            {navRow2.map((item) => (
+              <li>
+                <a
+                  href={item.href}
+                  class:list={['nav-link', isActive(item.href) ? 'active' : '']}
+                >
+                  {item.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
         <button
           data-search-trigger
           aria-label="Open search"
@@ -87,14 +111,11 @@ const navItems = [
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-[var(--sand-dark)] pt-4">
       <ul class="space-y-2">
-        {navItems.map((item) => (
+        {allNavItems.map((item) => (
           <li>
             <a
               href={item.href}
-              class:list={[
-                'nav-link-mobile',
-                (currentPath === item.href || (item.href !== '/' && currentPath.startsWith(item.href))) ? 'active' : ''
-              ]}
+              class:list={['nav-link-mobile', isActive(item.href) ? 'active' : '']}
             >
               {item.name}
             </a>
@@ -138,6 +159,23 @@ const navItems = [
       rgba(25, 17, 8, 0.98) 46%,
       rgba(30, 22, 12, 0.98) 100%
     );
+  }
+
+  /* Two-row nav stack, right-justified so rows never drift under the logo outspray */
+  .nav-stack {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 0.35rem;
+  }
+  .nav-row {
+    display: flex;
+    gap: 0.3rem;
+    justify-content: flex-end;
+    flex-wrap: nowrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
   }
 
   @media (max-width: 900px) {
