@@ -373,11 +373,15 @@ const displayPosts = featuredCategories.map((category) => ({
       --cod-shadow: rgba(20, 37, 71, 0.12);
 
       background: var(--cod-paper);
-      padding: 120px 24px 140px;
+      padding: 5rem 1.5rem;                 /* matches Featured Studies py-20 px-6 */
       font-family: Georgia, 'Times New Roman', serif;
       color: var(--cod-ink);
       position: relative;
       overflow: hidden;
+    }
+
+    @media (min-width: 768px) {
+      .cod-section { padding-top: 6rem; padding-bottom: 6rem; }  /* md:py-24 */
     }
 
     .cod-section::before {
@@ -392,7 +396,7 @@ const displayPosts = featuredCategories.map((category) => ({
     }
 
     .cod-inner {
-      max-width: 1200px;
+      max-width: 80rem;                     /* matches max-w-7xl (1280px) */
       margin: 0 auto;
       position: relative;
       z-index: 1;
@@ -404,7 +408,7 @@ const displayPosts = featuredCategories.map((category) => ({
       letter-spacing: 0.4em;
       color: var(--cod-gray);
       text-transform: uppercase;
-      margin-bottom: 28px;
+      margin-bottom: 20px;
       font-weight: 600;
     }
 
@@ -429,12 +433,12 @@ const displayPosts = featuredCategories.map((category) => ({
 
     .cod-headline {
       text-align: center;
-      font-size: clamp(2.2rem, 5.5vw, 4.2rem);
-      line-height: 1.05;
-      font-weight: 400;
+      font-size: clamp(1.875rem, 4vw, 3rem); /* scale down to match Featured Studies h2 */
+      line-height: 1.1;
+      font-weight: 700;
       color: var(--cod-ink);
-      margin: 0 0 24px 0;
-      letter-spacing: -0.02em;
+      margin: 0 0 12px 0;
+      letter-spacing: -0.015em;
     }
 
     .cod-headline .or {
@@ -447,28 +451,28 @@ const displayPosts = featuredCategories.map((category) => ({
 
     .cod-headline .demonic {
       color: var(--cod-blood);
-      font-weight: 600;
+      font-weight: 700;
       letter-spacing: -0.01em;
     }
 
     .cod-subhead {
       text-align: center;
-      font-size: 1.15rem;
+      font-size: 1rem;
       font-style: italic;
       color: var(--cod-gray);
       max-width: 680px;
-      margin: 0 auto 16px;
+      margin: 0 auto 12px;
       line-height: 1.55;
     }
 
     .cod-verdict {
       text-align: center;
-      font-size: 0.95rem;
+      font-size: 0.82rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
       color: var(--cod-navy);
       font-weight: 600;
-      margin-bottom: 80px;
+      margin-bottom: 3rem;                  /* matches Featured Studies mb-12 */
     }
 
     .cod-verdict::before,
@@ -481,28 +485,27 @@ const displayPosts = featuredCategories.map((category) => ({
 
     .cod-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 28px;
-      margin-bottom: 40px;
+      grid-template-columns: 1fr;           /* mobile: 1 col */
+      gap: 1.25rem;                         /* matches Featured Studies gap-5 */
+      margin-bottom: 0;
     }
 
-    @media (max-width: 980px) {
+    @media (min-width: 640px) {             /* sm */
       .cod-grid { grid-template-columns: repeat(2, 1fr); }
     }
 
-    @media (max-width: 640px) {
-      .cod-grid { grid-template-columns: 1fr; }
+    @media (min-width: 1024px) {            /* lg */
+      .cod-grid { grid-template-columns: repeat(5, 1fr); }
     }
 
     .cod-card {
       background: linear-gradient(180deg, #fefdfa 0%, var(--cod-paper) 100%);
       border: 1px solid var(--cod-rule);
-      padding: 34px 30px 28px;
+      padding: 1.5rem;                      /* matches Featured Studies p-6 */
       position: relative;
       transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
       display: flex;
       flex-direction: column;
-      min-height: 400px;
       box-shadow: 0 2px 8px var(--cod-shadow);
     }
 
@@ -514,19 +517,19 @@ const displayPosts = featuredCategories.map((category) => ({
 
     .cod-chapter {
       position: absolute;
-      top: 22px;
-      right: 26px;
-      font-size: 0.7rem;
-      letter-spacing: 0.3em;
+      top: 14px;
+      right: 16px;
+      font-size: 0.6rem;
+      letter-spacing: 0.25em;
       color: var(--cod-gray-light);
       font-weight: 600;
     }
 
     .cod-chapter-big {
       position: absolute;
-      bottom: -12px;
-      right: -6px;
-      font-size: 130px;
+      bottom: -8px;
+      right: -4px;
+      font-size: 80px;
       line-height: 1;
       font-weight: 700;
       color: var(--cod-navy);
@@ -536,29 +539,34 @@ const displayPosts = featuredCategories.map((category) => ({
     }
 
     .cod-card-topic {
-      font-size: 0.72rem;
-      letter-spacing: 0.35em;
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--cod-navy);
       font-weight: 700;
-      margin-bottom: 16px;
+      margin-bottom: 0.75rem;               /* mb-3 */
     }
 
     .cod-card-title {
-      font-size: 1.5rem;
-      line-height: 1.2;
+      font-size: 1.125rem;                  /* text-lg, matches Featured Studies h3 */
+      line-height: 1.3;
       font-weight: 600;
       color: var(--cod-ink);
-      margin: 0 0 16px 0;
-      letter-spacing: -0.01em;
+      margin: 0 0 0.75rem 0;                /* mb-3 */
+      letter-spacing: -0.005em;
     }
 
     .cod-card-hook {
-      font-size: 0.95rem;
-      line-height: 1.6;
+      font-size: 0.875rem;                  /* text-sm, matches Featured Studies p */
+      line-height: 1.55;
       color: var(--cod-ink-soft);
-      margin: 0 0 24px 0;
+      margin: 0 0 1.25rem 0;                /* mb-5 */
       flex-grow: 1;
+      display: -webkit-box;
+      -webkit-line-clamp: 5;                /* matches the ~4-line clamp on Featured */
+      line-clamp: 5;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
     }
 
     .cod-card-hook strong {
@@ -575,9 +583,9 @@ const displayPosts = featuredCategories.map((category) => ({
     .cod-card-links {
       display: flex;
       flex-direction: column;
-      gap: 10px;
+      gap: 8px;
       margin-top: auto;
-      padding-top: 18px;
+      padding-top: 0.75rem;                 /* matches Featured Studies pt-4 footer */
       border-top: 1px solid var(--cod-rule);
       position: relative;
       z-index: 2;
@@ -587,11 +595,11 @@ const displayPosts = featuredCategories.map((category) => ({
       display: inline-flex;
       align-items: center;
       justify-content: space-between;
-      font-size: 0.98rem;
+      font-size: 0.8rem;
       font-weight: 600;
       color: var(--cod-navy);
       text-decoration: none;
-      padding: 10px 0;
+      padding: 6px 0;
       border-bottom: 1px solid transparent;
       transition: all 0.25s ease;
       letter-spacing: 0.02em;
@@ -604,7 +612,7 @@ const displayPosts = featuredCategories.map((category) => ({
     }
 
     .cod-link .arrow {
-      font-size: 1.2em;
+      font-size: 1.1em;
       transition: transform 0.25s ease;
     }
 
@@ -615,14 +623,15 @@ const displayPosts = featuredCategories.map((category) => ({
     .cod-link-mystery {
       background: linear-gradient(135deg, var(--cod-navy) 0%, var(--cod-navy-deep) 100%);
       color: var(--cod-gold-bright);
-      padding: 12px 16px;
+      padding: 9px 12px;
       border: 1px solid var(--cod-navy-deep);
       font-style: italic;
-      font-size: 0.88rem;
+      font-size: 0.72rem;
       letter-spacing: 0.03em;
       position: relative;
       overflow: hidden;
-      margin-top: 4px;
+      margin-top: 2px;
+      line-height: 1.3;
     }
 
     .cod-link-mystery::before {
@@ -639,7 +648,7 @@ const displayPosts = featuredCategories.map((category) => ({
     .cod-link-mystery:hover {
       color: #fff;
       border-color: var(--cod-gold-bright);
-      padding-left: 24px;
+      padding-left: 20px;
       border-bottom-color: var(--cod-gold-bright);
     }
 
@@ -649,7 +658,7 @@ const displayPosts = featuredCategories.map((category) => ({
 
     .cod-link-mystery .sparkle {
       color: var(--cod-gold-bright);
-      margin-right: 10px;
+      margin-right: 6px;
       font-size: 0.9em;
     }
 
@@ -659,17 +668,15 @@ const displayPosts = featuredCategories.map((category) => ({
     .cod-card[data-accent="trans"]    { border-top: 3px solid var(--cod-navy); }
     .cod-card[data-accent="symbols"]  { border-top: 3px solid var(--cod-navy); }
 
-    .cod-card[data-accent="canon"] { min-height: 440px; }
-
     .cod-footer-line {
       text-align: center;
-      margin-top: 60px;
-      padding-top: 40px;
+      margin-top: 3rem;                     /* mt-12 */
+      padding-top: 2rem;
       border-top: 1px solid var(--cod-rule);
     }
 
     .cod-footer-line p {
-      font-size: 1rem;
+      font-size: 0.9rem;
       font-style: italic;
       color: var(--cod-gray);
       max-width: 620px;
@@ -677,17 +684,9 @@ const displayPosts = featuredCategories.map((category) => ({
       line-height: 1.6;
     }
 
-    @media (max-width: 980px) {
-      .cod-card-title { font-size: 1.65rem; }
-      .cod-card-hook { font-size: 1rem; }
-    }
-
-    @media (max-width: 640px) {
-      .cod-section { padding: 80px 20px 100px; }
-      .cod-card { padding: 32px 28px 28px; min-height: auto; }
-      .cod-card[data-accent="canon"] { min-height: auto; }
-      .cod-chapter-big { font-size: 120px; }
-      .cod-verdict { margin-bottom: 56px; font-size: 0.82rem; }
+    /* Small-screen adjustments */
+    @media (max-width: 639px) {
+      .cod-verdict { margin-bottom: 2rem; font-size: 0.75rem; }
       .cod-verdict::before,
       .cod-verdict::after { margin: 0 6px; }
     }
