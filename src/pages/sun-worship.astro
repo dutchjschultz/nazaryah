@@ -37,54 +37,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="sw-cta-label">&#8213; Choose Your Study &#8213;</p>
       <h2 class="sw-cta-title">Where Does the Thread Lead?</h2>
       <p class="sw-cta-sub">
-        Five lines of evidence. One ancient lie wearing many masks.
+        Four lines of evidence. One ancient lie wearing many masks.
       </p>
 
-      <!-- Top row: three supporting studies -->
-      <div class="sw-btn-row">
+      <div class="sw-card-grid">
 
-        <div class="sw-btn-group">
-          <a href="/holidays" class="sw-btn">
-            Rituals in Plain Sight &nbsp;&#8594;
-          </a>
-          <p class="sw-cta-note">The holidays no one told you to question</p>
-          <div class="sw-tooltip">Christmas, Easter, Halloween — trace each one back far enough and you won't find Scripture. You'll find Babylon. This study follows the calendar year and exposes what's hiding behind every tradition the church never told you to test.</div>
-        </div>
+        <a href="/sun-worship/the-ancient-lie" class="sw-card">
+          <span class="sw-card-title">History</span>
+          <span class="sw-card-poetic">The Ancient Lie</span>
+          <span class="sw-card-body">The historical thread from Babel to Newton — how sun worship migrated from pagan temples into modern textbooks.</span>
+        </a>
 
-        <div class="sw-btn-group">
-          <a href="/sun-worship/the-priesthood" class="sw-btn">
-            The Priesthood &nbsp;&#8594;
-          </a>
-          <p class="sw-cta-note">Three branches of the same tree — all built on the same lie</p>
-          <div class="sw-tooltip">Every religion has a priesthood — a class of men who interpret reality for the masses. The robes became lab coats. The temples became universities. The sacred texts became peer-reviewed journals. Three branches, one tree.</div>
-        </div>
+        <a href="/sun-worship/the-priesthood" class="sw-card">
+          <span class="sw-card-title">Priesthood</span>
+          <span class="sw-card-poetic">Three Branches, One Tree</span>
+          <span class="sw-card-body">The three modern institutions — science, the church, and the space agency — that function as the priesthood of the old religion.</span>
+        </a>
 
-        <div class="sw-btn-group">
-          <a href="/sun-worship/the-catholic-church" class="sw-btn">
-            From Mithras to Mass &nbsp;&#8594;
-          </a>
-          <p class="sw-cta-note">The unbroken line from Rome's sun cult to the Vatican</p>
-          <div class="sw-tooltip">Sunday worship. December 25th. The halo. The communion wafer. None of it came from Scripture — all of it came from Rome's sun cult. This study traces the unbroken thread from Mithras to Constantine to the Vatican, showing how Sol Invictus simply put on a cross and kept going.</div>
-        </div>
+        <a href="/sun-worship/sacred-act" class="sw-card">
+          <span class="sw-card-title">Sexual Worship</span>
+          <span class="sw-card-poetic">The Sacred Act</span>
+          <span class="sw-card-body">Why sun worship and sexual worship were the same religion — and why the obelisk, the dome, and the sun wheel still stand in every capital city.</span>
+        </a>
 
-      </div>
+        <a href="/holidays" class="sw-card">
+          <span class="sw-card-title">Holidays</span>
+          <span class="sw-card-poetic">Rituals in Plain Sight</span>
+          <span class="sw-card-body">The living rituals of sun worship — the feasts celebrated in every home every year, traced back to their pre-biblical roots.</span>
+        </a>
 
-      <!-- Featured row: two flagship studies -->
-      <div class="sw-btn-row sw-btn-row-featured">
-        <div class="sw-btn-group">
-          <a href="/sun-worship/the-ancient-lie" class="sw-btn sw-btn-featured sw-btn-wide">
-            The Ancient Lie &nbsp;&#8594;
-          </a>
-          <p class="sw-cta-note sw-cta-note-featured">From Babel to Newton — the full historical thread</p>
-          <div class="sw-tooltip sw-tooltip-featured">What if the framework you were handed for understanding the heavens and the earth didn't come from observation — but from a philosophical agenda that stretches back to Babel? This study follows the thread from Nimrod's tower to Greek philosophy to Copernicus and Newton, examining how each era repackaged the same rebellion: man replacing Yahuah's word with his own measurements.</div>
-        </div>
-        <div class="sw-btn-group">
-          <a href="/sun-worship/sacred-act" class="sw-btn sw-btn-featured sw-btn-wide">
-            The Sacred Act &nbsp;&#8594;
-          </a>
-          <p class="sw-cta-note sw-cta-note-featured">Where the temple met the bedroom — the sexual religion hidden inside sun worship</p>
-          <div class="sw-tooltip sw-tooltip-featured">The fertility rites of Babylon didn't vanish — they went underground. From Ishtar's temple prostitutes to the sacred marriage rituals of the mystery religions, this study uncovers the sexual theology woven into sun worship and traces how it resurfaces in places most believers would never think to look.</div>
-        </div>
       </div>
     </section>
 
@@ -195,76 +176,68 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     line-height: 1.7;
   }
 
-  /* ── Button row ── */
-  .sw-btn-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2.5rem;
+  /* ── Card grid (new 3-part button format) ── */
+  .sw-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 1040px;
+    margin: 0 auto;
   }
 
-  .sw-btn-group {
+  .sw-card {
     display: flex;
     flex-direction: column;
-    align-items: center;
-  }
-
-  /* ── Button — matches tr-btn exactly ── */
-  .sw-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 0.9rem 2.25rem;
-    font-family: 'Cinzel', serif;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    text-align: left;
     text-decoration: none;
-    color: #f5e8c8;
-    background: linear-gradient(180deg, #7a3a14 0%, #5e2a0c 50%, #3d1a08 100%);
-    border: 1px solid rgba(60, 25, 8, 0.5);
-    border-radius: 32px 32px 26px 26px / 18px 18px 32px 32px;
+    padding: 1.75rem 1.5rem 1.6rem;
+    background: linear-gradient(180deg, #7a3a14 0%, #5e2a0c 55%, #3d1a08 100%);
+    border: 1px solid rgba(186, 117, 23, 0.35);
+    border-radius: 14px;
     box-shadow:
-      0 4px 12px rgba(0,0,0,0.5),
-      inset 0 2px 4px rgba(200, 140, 80, 0.25),
+      0 4px 16px rgba(0,0,0,0.55),
+      inset 0 2px 4px rgba(220, 160, 80, 0.25),
       inset 0 -2px 4px rgba(0,0,0,0.4);
     transition: all 0.2s ease;
   }
 
-  .sw-btn:hover {
-    background: linear-gradient(180deg, #965a3e 0%, #7a3a14 50%, #5e2a0c 100%);
-    color: #fff5e0;
-    transform: translateY(-2px);
+  .sw-card:hover {
+    background: linear-gradient(180deg, #965a3e 0%, #7a3a14 55%, #5e2a0c 100%);
+    transform: translateY(-3px);
     box-shadow:
-      0 8px 20px rgba(0,0,0,0.6),
-      inset 0 2px 4px rgba(200, 160, 100, 0.3),
+      0 10px 24px rgba(0,0,0,0.65),
+      inset 0 2px 4px rgba(220, 170, 100, 0.3),
       inset 0 -2px 4px rgba(0,0,0,0.4);
   }
 
-  .sw-btn:active { transform: translateY(1px); }
-
-  /* Featured button — slightly brighter gold */
-  .sw-btn-featured {
-    background: linear-gradient(180deg, #9a4a1a 0%, #7a3a10 50%, #4e2208 100%);
-    border-color: rgba(186, 117, 23, 0.4);
-    box-shadow:
-      0 4px 16px rgba(186, 117, 23, 0.2),
-      inset 0 2px 4px rgba(220, 160, 80, 0.3),
-      inset 0 -2px 4px rgba(0,0,0,0.4);
-  }
-
-  .sw-btn-featured:hover {
-    background: linear-gradient(180deg, #b05a28 0%, #9a4a1a 50%, #6e3210 100%);
-  }
-
-  .sw-cta-note {
+  .sw-card-title {
+    display: block;
     font-family: 'Cinzel', serif;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    color: #4a3018;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
     text-transform: uppercase;
-    margin-top: 1rem;
+    color: #fff5e0;
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+  }
+
+  .sw-card-poetic {
+    display: block;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #f0d8a4;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .sw-card-body {
+    display: block;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #f5e8c8;
   }
 
   /* ── FOOTER QUOTE ── */
@@ -291,75 +264,9 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     text-transform: uppercase;
   }
 
-  /* ── Featured row for The Ancient Lie ── */
-  .sw-btn-row-featured {
-    margin-top: 2.5rem;
-    padding-top: 2rem;
-    border-top: 1px solid #2a1a08;
-  }
-
-  .sw-btn-wide {
-    padding-left: 3.5rem;
-    padding-right: 3.5rem;
-    font-size: 1rem;
-    letter-spacing: 2px;
-  }
-
-  .sw-cta-note-featured {
-    font-size: 10px;
-    letter-spacing: 1.5px;
-    color: #6a4820;
-  }
-
-  /* ── Tooltips ── */
-  .sw-btn-group {
-    position: relative;
-  }
-
-  .sw-tooltip {
-    display: none;
-    position: absolute;
-    bottom: calc(100% + 0.85rem);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 280px;
-    background: #1a1007;
-    border: 1px solid #3a2510;
-    border-top: 2px solid #BA7517;
-    border-radius: 4px;
-    padding: 1rem 1.1rem;
-    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
-    font-size: 0.88rem;
-    line-height: 1.65;
-    color: #c4ad84;
-    text-align: left;
-    z-index: 10;
-    box-shadow: 0 8px 24px rgba(0,0,0,0.6);
-    pointer-events: none;
-  }
-
-  .sw-tooltip-featured {
-    width: 320px;
-  }
-
-  .sw-tooltip::after {
-    content: '';
-    position: absolute;
-    top: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    border: 6px solid transparent;
-    border-top-color: #3a2510;
-  }
-
-  .sw-btn-group:hover .sw-tooltip {
-    display: block;
-  }
-
   @media (max-width: 600px) {
-    .sw-btn-row { gap: 1.75rem; }
-    .sw-btn-wide { padding-left: 2.25rem; padding-right: 2.25rem; }
-    .sw-tooltip { width: 240px; }
-    .sw-tooltip-featured { width: 260px; }
+    .sw-card-grid { gap: 1.25rem; }
+    .sw-card { padding: 1.5rem 1.25rem; }
+    .sw-card-title { font-size: 1.3rem; letter-spacing: 2.5px; }
   }
 </style>

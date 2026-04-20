@@ -48,7 +48,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <details class="sa-detail">
           <summary class="sa-summary">
             <span class="sa-num">I</span>
-            <span class="sa-sec-title">The Foundational Myth — The Sun as the Generative Force</span>
+            <span class="sa-head">
+              <span class="sa-head-clear">Foundation</span>
+              <span class="sa-head-poetic">The Sun as the Generative Force</span>
+            </span>
             <span class="sa-chevron">&#43;</span>
           </summary>
           <div class="sa-body">
@@ -76,7 +79,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <details class="sa-detail">
           <summary class="sa-summary">
             <span class="sa-num">II</span>
-            <span class="sa-sec-title">Temple Prostitution — How Sun Worship Was Practiced Through Sex</span>
+            <span class="sa-head">
+              <span class="sa-head-clear">Prostitution</span>
+              <span class="sa-head-poetic">Sun Worship Practiced Through Sex</span>
+            </span>
             <span class="sa-chevron">&#43;</span>
           </summary>
           <div class="sa-body">
@@ -107,7 +113,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <details class="sa-detail">
           <summary class="sa-summary">
             <span class="sa-num">III</span>
-            <span class="sa-sec-title">The Obelisk — The Phallus of the Sun God</span>
+            <span class="sa-head">
+              <span class="sa-head-clear">Obelisk</span>
+              <span class="sa-head-poetic">The Phallus of the Sun God</span>
+            </span>
             <span class="sa-chevron">&#43;</span>
           </summary>
           <div class="sa-body">
@@ -145,7 +154,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <details class="sa-detail">
           <summary class="sa-summary">
             <span class="sa-num">IV</span>
-            <span class="sa-sec-title">The Sun Wheel — The Womb of the Earth Goddess</span>
+            <span class="sa-head">
+              <span class="sa-head-clear">Sun Wheel</span>
+              <span class="sa-head-poetic">The Womb of the Earth Goddess</span>
+            </span>
             <span class="sa-chevron">&#43;</span>
           </summary>
           <div class="sa-body">
@@ -174,7 +186,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <details class="sa-detail">
           <summary class="sa-summary">
             <span class="sa-num">V</span>
-            <span class="sa-sec-title">Freemasonry — The Modern Custodians of Sun Worship</span>
+            <span class="sa-head">
+              <span class="sa-head-clear">Freemasonry</span>
+              <span class="sa-head-poetic">Modern Custodians of Sun Worship</span>
+            </span>
             <span class="sa-chevron">&#43;</span>
           </summary>
           <div class="sa-body">
@@ -209,7 +224,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <details class="sa-detail">
           <summary class="sa-summary">
             <span class="sa-num">VI</span>
-            <span class="sa-sec-title">The Pattern in Government and Culture</span>
+            <span class="sa-head">
+              <span class="sa-head-clear">Government</span>
+              <span class="sa-head-poetic">The Pattern in Power and Culture</span>
+            </span>
             <span class="sa-chevron">&#43;</span>
           </summary>
           <div class="sa-body">
@@ -245,7 +263,10 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
         <details class="sa-detail">
           <summary class="sa-summary">
             <span class="sa-num">VII</span>
-            <span class="sa-sec-title">The Holidays — How Sun Worship Enters Your Home</span>
+            <span class="sa-head">
+              <span class="sa-head-clear">Holidays</span>
+              <span class="sa-head-poetic">How Sun Worship Enters Your Home</span>
+            </span>
             <span class="sa-chevron">&#43;</span>
           </summary>
           <div class="sa-body">
@@ -506,6 +527,35 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   .sa-detail[open] .sa-sec-title {
     color: #f0e0bf;
+  }
+
+  .sa-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+  }
+
+  .sa-head-clear {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #d9c0a0;
+    line-height: 1.15;
+  }
+
+  .sa-detail[open] .sa-head-clear {
+    color: #f0e0bf;
+  }
+
+  .sa-head-poetic {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #c4a46b;
+    line-height: 1.4;
   }
 
   .sa-chevron {

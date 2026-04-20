@@ -38,7 +38,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       <div class="sw-accordion">
 
         <details class="sw-detail">
-          <summary class="sw-summary"><span class="sw-part-label">Layer One</span><span class="sw-part-title">The Foundation — From Mithras to Mass</span><span class="sw-chevron">+</span></summary>
+          <summary class="sw-summary"><span class="sw-head"><span class="sw-head-clear">Roman Church</span><span class="sw-head-poetic">From Mithras to Mass</span></span><span class="sw-chevron">+</span></summary>
           <div class="sw-body">
             <p>The Roman Empire did not abandon sun worship when it adopted Christianity. It absorbed Christianity into its existing solar religion. Mithraism, the cult of Sol Invictus, and the mystery tradition of Babylon flowed directly into the structures, symbols, and calendar of what became the Roman Catholic Church.</p>
             <p>December 25th — the birthday of Sol Invictus — became the birthday of the Messiah. Sunday — the day of the sun — replaced the seventh-day Sabbath. The halo — the solar disc that had encircled the heads of Ra, Helios, Mithras, and Sol Invictus — was placed behind the heads of the apostles in church art. The obelisk — the ancient Egyptian monument to the sun god — stands in the center of St. Peter's Square to this day.</p>
@@ -53,7 +53,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
         </details>
 
         <details class="sw-detail">
-          <summary class="sw-summary"><span class="sw-part-label">Layer Two</span><span class="sw-part-title">The False Prophets — Wolves in the Megachurch</span><span class="sw-chevron">+</span></summary>
+          <summary class="sw-summary"><span class="sw-head"><span class="sw-head-clear">False Prophets</span><span class="sw-head-poetic">Wolves in Sheep's Clothing</span></span><span class="sw-chevron">+</span></summary>
           <div class="sw-body">
             <div class="sw-scripture-block" style="margin-bottom: 1.25rem;">
               <p class="sw-scripture-label">&#9656; Matthew 7:15</p>
@@ -70,7 +70,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
         </details>
 
         <details class="sw-detail">
-          <summary class="sw-summary"><span class="sw-part-label">Layer Three</span><span class="sw-part-title">The New Apostolic Reformation — The Network Behind the Network</span><span class="sw-chevron">+</span></summary>
+          <summary class="sw-summary"><span class="sw-head"><span class="sw-head-clear">NAR</span><span class="sw-head-poetic">The New Apostolic Reformation</span></span><span class="sw-chevron">+</span></summary>
           <div class="sw-body">
             <p>If the megachurch is the visible face of the institutional priesthood, the New Apostolic Reformation (NAR) is its organizational backbone. The NAR is not a denomination. It is a network — a loosely connected web of self-appointed "apostles" and "prophets" who believe they have been given authority by Yahuah to take dominion over every sector of society: government, media, education, business, family, arts, and religion.</p>
             <p>The term was coined by C. Peter Wagner in the 1990s, who described it as "the most radical change in the way of doing church since the Protestant Reformation." Wagner organized apostolic networks, commissioned leaders, and established a hierarchical structure in which self-declared apostles hold authority over pastors, churches, and entire geographical regions.</p>
@@ -109,10 +109,23 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     <section class="sw-coming-section">
       <p class="sw-coming-label">&#8213; Future Studies &#8213;</p>
       <h2 class="sw-coming-title">Deeper Explorations Coming Soon</h2>
-      <div class="sw-coming-grid">
-        <span class="sw-btn-soon">From Mithras to Mass</span>
-        <span class="sw-btn-soon">False Prophets / Megachurch</span>
-        <span class="sw-btn-soon">NAR — New Apostolic Reformation</span>
+      <div class="sw-mini-grid">
+
+        <span class="sw-mini-card sw-mini-card-soon">
+          <span class="sw-mini-title">Roman Church</span>
+          <span class="sw-mini-poetic">From Mithras to Mass</span>
+        </span>
+
+        <span class="sw-mini-card sw-mini-card-soon">
+          <span class="sw-mini-title">False Prophets</span>
+          <span class="sw-mini-poetic">Wolves in Sheep's Clothing</span>
+        </span>
+
+        <span class="sw-mini-card sw-mini-card-soon">
+          <span class="sw-mini-title">NAR</span>
+          <span class="sw-mini-poetic">The New Apostolic Reformation</span>
+        </span>
+
       </div>
     </section>
 
@@ -255,6 +268,31 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   .sw-summary::-webkit-details-marker { display: none; }
   .sw-summary:hover { background: rgba(186, 117, 23, 0.04); }
 
+  .sw-head {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+    flex: 1;
+  }
+
+  .sw-head-clear {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-weight: 700;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #f0e0bf;
+    line-height: 1.15;
+  }
+
+  .sw-head-poetic {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #c4a46b;
+    line-height: 1.4;
+  }
+
   .sw-part-label {
     font-family: 'Cinzel', serif;
     font-size: 9px;
@@ -334,30 +372,50 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     margin: 0 0 2rem;
   }
 
-  .sw-coming-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  .sw-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
-    max-width: 700px;
+    max-width: 820px;
     margin: 0 auto;
   }
 
-  .sw-btn-soon {
-    display: inline-flex;
+  .sw-mini-card {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 0.65rem 1.5rem;
+    text-align: center;
+    text-decoration: none;
+    padding: 1rem 1rem 1.1rem;
+    background: linear-gradient(180deg, #2a1a08 0%, #1e1208 100%);
+    border: 1px solid #3a2410;
+    border-radius: 12px;
+    cursor: default;
+  }
+
+  .sw-mini-card-soon {
+    cursor: default;
+  }
+
+  .sw-mini-title {
+    display: block;
     font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 2px;
     text-transform: uppercase;
     color: #9a7840;
-    background: linear-gradient(180deg, #1e1208 0%, #160e06 100%);
-    border: 1px solid #3a2410;
-    border-radius: 32px 32px 26px 26px / 18px 18px 32px 32px;
-    cursor: default;
-    pointer-events: none;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+
+  .sw-mini-poetic {
+    display: block;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #6a5030;
+    line-height: 1.35;
   }
 
   /* ── FOOTER ── */

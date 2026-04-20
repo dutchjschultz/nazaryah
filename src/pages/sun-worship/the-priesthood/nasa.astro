@@ -36,10 +36,23 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       <p class="sw-coming-intro">
         These three studies go beneath the institution and examine the specific claims it enforces — the cosmology it teaches, the science it invented to support it, and the invisible force it asks you to accept on faith. They fall under the New Priesthood because only a priestly system could demand this much trust in things no one can verify.
       </p>
-      <div class="sw-coming-grid">
-        <a href="/sun-worship/the-priesthood/biblical-cosmology" class="sw-btn-link">Biblical Cosmology / Flat Earth</a>
-        <a href="/sun-worship/the-priesthood/gravity" class="sw-btn-link">Gravity</a>
-        <a href="/sun-worship/the-priesthood/nasa-projects" class="sw-btn-link">NASA Projects &amp; Contradictions</a>
+      <div class="sw-mini-grid">
+
+        <a href="/sun-worship/the-priesthood/biblical-cosmology" class="sw-mini-card">
+          <span class="sw-mini-title">Cosmology</span>
+          <span class="sw-mini-poetic">The Firmament</span>
+        </a>
+
+        <a href="/sun-worship/the-priesthood/gravity" class="sw-mini-card">
+          <span class="sw-mini-title">Gravity</span>
+          <span class="sw-mini-poetic">The Invisible Force</span>
+        </a>
+
+        <a href="/sun-worship/the-priesthood/nasa-projects" class="sw-mini-card">
+          <span class="sw-mini-title">NASA Projects</span>
+          <span class="sw-mini-poetic">Contradictions &amp; Cover-Ups</span>
+        </a>
+
       </div>
     </section>
 
@@ -93,8 +106,10 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       <p class="sw-report-sub">
         The Jet Propulsion Laboratory was co-founded by a devoted follower of Aleister Crowley who performed daily adorations to the sun and conducted ritual sex magic. The Saturn V rocket was built by a Nazi SS officer brought to America under Operation Paperclip. The full documented report is below.
       </p>
-      <a href="/sun-worship/nasa" class="sw-report-btn">
-        Read the Full Report: The Dark Foundations &nbsp;&#8594;
+      <a href="/sun-worship/nasa" class="sw-card sw-card-report">
+        <span class="sw-card-title">Dark Foundations</span>
+        <span class="sw-card-poetic">Parsons, Paperclip, and the Occult Origins of NASA</span>
+        <span class="sw-card-body">Read the full report on the occultist co-founder of JPL, the Nazi SS officer behind the Saturn V, and the Masonic symbolism woven through the Apollo program.</span>
       </a>
       <p class="sw-report-note">Operation Paperclip · Jack Parsons · Freemasonry in NASA · Apollo Symbolism</p>
     </section>
@@ -350,39 +365,65 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     line-height: 1.7;
   }
 
-  .sw-report-btn {
-    display: inline-flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 3rem;
-    font-family: 'Cinzel', serif;
-    font-size: 0.95rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+  .sw-card {
+    display: flex;
+    flex-direction: column;
+    text-align: left;
     text-decoration: none;
-    color: #f5e8c8;
-    background: linear-gradient(180deg, #9a4a1a 0%, #7a3a10 50%, #4e2208 100%);
+    padding: 1.75rem 1.75rem 1.6rem;
+    background: linear-gradient(180deg, #9a4a1a 0%, #7a3a10 55%, #4e2208 100%);
     border: 1px solid rgba(186, 117, 23, 0.4);
-    border-radius: 32px 32px 26px 26px / 18px 18px 32px 32px;
+    border-radius: 14px;
     box-shadow:
       0 4px 16px rgba(186, 117, 23, 0.2),
-      inset 0 2px 4px rgba(220, 160, 80, 0.3),
+      inset 0 2px 4px rgba(220, 160, 80, 0.25),
       inset 0 -2px 4px rgba(0,0,0,0.4);
     transition: all 0.2s ease;
   }
 
-  .sw-report-btn:hover {
-    background: linear-gradient(180deg, #b05a28 0%, #9a4a1a 50%, #6e3210 100%);
-    color: #fff5e0;
-    transform: translateY(-2px);
+  .sw-card:hover {
+    background: linear-gradient(180deg, #b05a28 0%, #9a4a1a 55%, #6e3210 100%);
+    transform: translateY(-3px);
     box-shadow:
-      0 8px 24px rgba(186, 117, 23, 0.3),
-      inset 0 2px 4px rgba(220, 160, 80, 0.35),
+      0 10px 24px rgba(186, 117, 23, 0.3),
+      inset 0 2px 4px rgba(220, 170, 100, 0.3),
       inset 0 -2px 4px rgba(0,0,0,0.4);
   }
 
-  .sw-report-btn:active { transform: translateY(1px); }
+  .sw-card-report {
+    max-width: 620px;
+    margin: 0 auto;
+  }
+
+  .sw-card-title {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #fff5e0;
+    line-height: 1.15;
+    margin-bottom: 0.35rem;
+  }
+
+  .sw-card-poetic {
+    display: block;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #f0d8a4;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+
+  .sw-card-body {
+    display: block;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1rem;
+    line-height: 1.7;
+    color: #f5e8c8;
+  }
 
   .sw-report-note {
     font-family: 'Cinzel', serif;
@@ -428,44 +469,59 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     line-height: 1.75;
   }
 
-  .sw-coming-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  .sw-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
     gap: 1rem;
-    max-width: 700px;
+    max-width: 820px;
     margin: 0 auto;
   }
 
-  .sw-btn-link {
-    display: inline-flex;
+  .sw-mini-card {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 0.65rem 1.5rem;
-    font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    text-align: center;
     text-decoration: none;
-    color: #f5e8c8;
-    background: linear-gradient(180deg, #9a4a1a 0%, #7a3a10 50%, #4e2208 100%);
+    padding: 1rem 1rem 1.1rem;
+    background: linear-gradient(180deg, #9a4a1a 0%, #7a3a10 55%, #4e2208 100%);
     border: 1px solid rgba(186, 117, 23, 0.4);
-    border-radius: 32px 32px 26px 26px / 18px 18px 32px 32px;
+    border-radius: 12px;
     box-shadow:
-      0 4px 16px rgba(186, 117, 23, 0.2),
-      inset 0 2px 4px rgba(220, 160, 80, 0.3),
+      0 4px 14px rgba(186, 117, 23, 0.18),
+      inset 0 2px 4px rgba(220, 160, 80, 0.25),
       inset 0 -2px 4px rgba(0,0,0,0.4);
     transition: all 0.2s ease;
   }
 
-  .sw-btn-link:hover {
-    background: linear-gradient(180deg, #b05a28 0%, #9a4a1a 50%, #6e3210 100%);
-    color: #fff5e0;
+  .sw-mini-card:hover {
+    background: linear-gradient(180deg, #b05a28 0%, #9a4a1a 55%, #6e3210 100%);
     transform: translateY(-2px);
     box-shadow:
-      0 8px 24px rgba(186, 117, 23, 0.3),
-      inset 0 2px 4px rgba(220, 160, 80, 0.35),
+      0 8px 20px rgba(186, 117, 23, 0.3),
+      inset 0 2px 4px rgba(220, 170, 100, 0.3),
       inset 0 -2px 4px rgba(0,0,0,0.4);
+  }
+
+  .sw-mini-title {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff5e0;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+
+  .sw-mini-poetic {
+    display: block;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #f0d8a4;
+    line-height: 1.35;
   }
 
   /* ── FOOTER ── */

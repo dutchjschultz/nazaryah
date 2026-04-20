@@ -134,15 +134,48 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     <section class="sw-coming-section">
       <p class="sw-coming-label">&#8213; Future Studies &#8213;</p>
       <h2 class="sw-coming-title">Deeper Explorations Coming Soon</h2>
-      <div class="sw-coming-grid">
-        <a href="/sun-worship/the-priesthood/astrology-to-astronomy" class="sw-btn-link">Astrology &#8594; Astronomy</a>
-        <a href="/sun-worship/the-priesthood/the-wandering-stars" class="sw-btn-link">The Wandering Stars</a>
-        <a href="/sun-worship/the-priesthood/saturn-black-cube" class="sw-btn-link">Saturn &amp; The Black Cube</a>
-        <span class="sw-btn-soon">The Book of Esther / Ishtar</span>
-        <a href="/sun-worship/the-priesthood/pharmakeia" class="sw-btn-link">Pharmakeia</a>
-        <a href="/sun-worship/the-priesthood/freemasonry" class="sw-btn-link">Freemasonry</a>
-        <span class="sw-btn-soon">Zoroastrianism</span>
-        <a href="/sun-worship/the-priesthood/hidden-symbols-33" class="sw-btn-link">Hidden Symbols &amp; 33</a>
+      <div class="sw-mini-grid">
+
+        <a href="/sun-worship/the-priesthood/astrology-to-astronomy" class="sw-mini-card">
+          <span class="sw-mini-title">Astronomy</span>
+          <span class="sw-mini-poetic">Astrology Renamed</span>
+        </a>
+
+        <a href="/sun-worship/the-priesthood/the-wandering-stars" class="sw-mini-card">
+          <span class="sw-mini-title">Planets</span>
+          <span class="sw-mini-poetic">The Wandering Stars</span>
+        </a>
+
+        <a href="/sun-worship/the-priesthood/saturn-black-cube" class="sw-mini-card">
+          <span class="sw-mini-title">Saturn</span>
+          <span class="sw-mini-poetic">The Black Cube</span>
+        </a>
+
+        <span class="sw-mini-card sw-mini-card-soon">
+          <span class="sw-mini-title">Esther</span>
+          <span class="sw-mini-poetic">The Book of Ishtar</span>
+        </span>
+
+        <a href="/sun-worship/the-priesthood/pharmakeia" class="sw-mini-card">
+          <span class="sw-mini-title">Pharmacy</span>
+          <span class="sw-mini-poetic">Pharmakeia</span>
+        </a>
+
+        <a href="/sun-worship/the-priesthood/freemasonry" class="sw-mini-card">
+          <span class="sw-mini-title">Freemasonry</span>
+          <span class="sw-mini-poetic">The Hermetic Order</span>
+        </a>
+
+        <span class="sw-mini-card sw-mini-card-soon">
+          <span class="sw-mini-title">Zoroastrianism</span>
+          <span class="sw-mini-poetic">The Fire Religion</span>
+        </span>
+
+        <a href="/sun-worship/the-priesthood/hidden-symbols-33" class="sw-mini-card">
+          <span class="sw-mini-title">Symbols</span>
+          <span class="sw-mini-poetic">Hidden in Plain Sight</span>
+        </a>
+
       </div>
     </section>
 
@@ -368,61 +401,80 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     margin: 0 0 2rem;
   }
 
-  .sw-coming-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  .sw-mini-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
     gap: 1rem;
-    max-width: 700px;
+    max-width: 820px;
     margin: 0 auto;
   }
 
-  .sw-btn-soon {
-    display: inline-flex;
+  .sw-mini-card {
+    display: flex;
+    flex-direction: column;
     align-items: center;
-    padding: 0.65rem 1.5rem;
-    font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    color: #9a7840;
-    background: linear-gradient(180deg, #1e1208 0%, #160e06 100%);
-    border: 1px solid #3a2410;
-    border-radius: 32px 32px 26px 26px / 18px 18px 32px 32px;
-    cursor: default;
-    pointer-events: none;
-  }
-
-  .sw-btn-link {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.65rem 1.5rem;
-    font-family: 'Cinzel', serif;
-    font-size: 0.75rem;
-    font-weight: 600;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
+    text-align: center;
     text-decoration: none;
-    color: #f5e8c8;
-    background: linear-gradient(180deg, #9a4a1a 0%, #7a3a10 50%, #4e2208 100%);
+    padding: 1rem 1rem 1.1rem;
+    background: linear-gradient(180deg, #9a4a1a 0%, #7a3a10 55%, #4e2208 100%);
     border: 1px solid rgba(186, 117, 23, 0.4);
-    border-radius: 32px 32px 26px 26px / 18px 18px 32px 32px;
+    border-radius: 12px;
     box-shadow:
-      0 4px 16px rgba(186, 117, 23, 0.2),
-      inset 0 2px 4px rgba(220, 160, 80, 0.3),
+      0 4px 14px rgba(186, 117, 23, 0.18),
+      inset 0 2px 4px rgba(220, 160, 80, 0.25),
       inset 0 -2px 4px rgba(0,0,0,0.4);
     transition: all 0.2s ease;
   }
 
-  .sw-btn-link:hover {
-    background: linear-gradient(180deg, #b05a28 0%, #9a4a1a 50%, #6e3210 100%);
-    color: #fff5e0;
+  .sw-mini-card:hover {
+    background: linear-gradient(180deg, #b05a28 0%, #9a4a1a 55%, #6e3210 100%);
     transform: translateY(-2px);
     box-shadow:
-      0 8px 24px rgba(186, 117, 23, 0.3),
-      inset 0 2px 4px rgba(220, 160, 80, 0.35),
+      0 8px 20px rgba(186, 117, 23, 0.3),
+      inset 0 2px 4px rgba(220, 170, 100, 0.3),
       inset 0 -2px 4px rgba(0,0,0,0.4);
+  }
+
+  .sw-mini-card-soon {
+    background: linear-gradient(180deg, #2a1a08 0%, #1e1208 100%);
+    border-color: #3a2410;
+    box-shadow: none;
+    cursor: default;
+  }
+
+  .sw-mini-card-soon:hover {
+    background: linear-gradient(180deg, #2a1a08 0%, #1e1208 100%);
+    transform: none;
+    box-shadow: none;
+  }
+
+  .sw-mini-title {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff5e0;
+    line-height: 1.2;
+    margin-bottom: 0.25rem;
+  }
+
+  .sw-mini-card-soon .sw-mini-title {
+    color: #9a7840;
+  }
+
+  .sw-mini-poetic {
+    display: block;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #f0d8a4;
+    line-height: 1.35;
+  }
+
+  .sw-mini-card-soon .sw-mini-poetic {
+    color: #6a5030;
   }
 
   /* ── FOOTER ── */
