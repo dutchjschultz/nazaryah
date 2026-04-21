@@ -107,8 +107,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
     <!-- ── FUTURE STUDIES ── -->
     <section class="sw-coming-section">
-      <p class="sw-coming-label">&#8213; Future Studies &#8213;</p>
-      <h2 class="sw-coming-title">Deeper Explorations Coming Soon</h2>
+      <p class="sw-coming-label">&#8213; Deeper Explorations &#8213;</p>
+      <h2 class="sw-coming-title">Branches of the Same Tree</h2>
       <div class="sw-mini-grid">
 
         <span class="sw-mini-card sw-mini-card-soon">
@@ -125,6 +125,21 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
           <span class="sw-mini-title">NAR</span>
           <span class="sw-mini-poetic">The New Apostolic Reformation</span>
         </span>
+
+        <a href="/sun-worship/the-priesthood/political-christianity" class="sw-mini-card sw-mini-card-live">
+          <span class="sw-mini-title">Political Christianity</span>
+          <span class="sw-mini-poetic">When the Church Weds the State</span>
+        </a>
+
+        <a href="/sun-worship/the-priesthood/megachurches" class="sw-mini-card sw-mini-card-live">
+          <span class="sw-mini-title">Megachurches</span>
+          <span class="sw-mini-poetic">The Laodicean Stage</span>
+        </a>
+
+        <a href="/sun-worship/the-priesthood/protestantism" class="sw-mini-card sw-mini-card-live">
+          <span class="sw-mini-title">Protestantism</span>
+          <span class="sw-mini-poetic">The Half-Finished Reformation</span>
+        </a>
 
       </div>
     </section>
@@ -391,10 +406,30 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     border: 1px solid #3a2410;
     border-radius: 12px;
     cursor: default;
+    transition: all 0.2s ease;
   }
 
   .sw-mini-card-soon {
     cursor: default;
+  }
+
+  .sw-mini-card-live {
+    background: linear-gradient(180deg, #9a4a1a 0%, #7a3a10 55%, #4e2208 100%);
+    border-color: rgba(186, 117, 23, 0.4);
+    cursor: pointer;
+    box-shadow:
+      0 4px 14px rgba(186, 117, 23, 0.18),
+      inset 0 2px 4px rgba(220, 160, 80, 0.25),
+      inset 0 -2px 4px rgba(0,0,0,0.4);
+  }
+
+  .sw-mini-card-live:hover {
+    background: linear-gradient(180deg, #b05a28 0%, #9a4a1a 55%, #6e3210 100%);
+    transform: translateY(-2px);
+    box-shadow:
+      0 8px 20px rgba(186, 117, 23, 0.3),
+      inset 0 2px 4px rgba(220, 170, 100, 0.3),
+      inset 0 -2px 4px rgba(0,0,0,0.4);
   }
 
   .sw-mini-title {
@@ -409,6 +444,10 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     margin-bottom: 0.25rem;
   }
 
+  .sw-mini-card-live .sw-mini-title {
+    color: #fff5e0;
+  }
+
   .sw-mini-poetic {
     display: block;
     font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
@@ -416,6 +455,10 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
     font-size: 0.95rem;
     color: #6a5030;
     line-height: 1.35;
+  }
+
+  .sw-mini-card-live .sw-mini-poetic {
+    color: #f0d8a4;
   }
 
   /* ── FOOTER ── */
