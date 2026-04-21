@@ -140,17 +140,33 @@ function toRoman(n: number) {
         </div>
         <ol class="bk-ch-list">
           {chapters.map((ch) => (
-            <li class="bk-ch-row">
-              <button class="bk-ch-inner open-reader-ch" data-chapter={ch.num}>
-                <div class="bk-ch-num">{toRoman(ch.num)}</div>
-                <div class="bk-ch-text">
-                  <div class="bk-ch-title">{ch.title}</div>
-                  <div class="bk-ch-topic">{ch.subtitle}</div>
-                  {ch.templeledger && <div class="bk-ch-ledger">Temple Ledger: {ch.templeledger}</div>}
-                </div>
-                <div class="bk-ch-arrow">→</div>
-              </button>
-            </li>
+            <>
+              <li class="bk-ch-row">
+                <button class="bk-ch-inner open-reader-ch" data-chapter={ch.num}>
+                  <div class="bk-ch-num">{toRoman(ch.num)}</div>
+                  <div class="bk-ch-text">
+                    <div class="bk-ch-title">{ch.title}</div>
+                    <div class="bk-ch-topic">{ch.subtitle}</div>
+                    {ch.templeledger && <div class="bk-ch-ledger">Temple Ledger: {ch.templeledger}</div>}
+                  </div>
+                  <div class="bk-ch-arrow">→</div>
+                </button>
+              </li>
+              {ch.num === 17 && (
+                <li class="bk-ch-row bk-appeal-row">
+                  <button class="bk-ch-inner bk-appeal-inner open-appeal" data-panel="court-appeal-2">
+                    <div class="bk-ch-num bk-appeal-num">II</div>
+                    <div class="bk-ch-text">
+                      <div class="bk-appeal-kicker">COURT APPEAL II</div>
+                      <div class="bk-ch-title">The Woman, the Beast, and the Second Beast</div>
+                      <div class="bk-ch-topic">Same players. Same roles. Different robes.</div>
+                      <div class="bk-ch-ledger">Filed Between Chapters 17 and 18</div>
+                    </div>
+                    <div class="bk-ch-arrow">→</div>
+                  </button>
+                </li>
+              )}
+            </>
           ))}
         </ol>
       </section>
@@ -177,10 +193,18 @@ function toRoman(n: number) {
         <div class="rd-selector-label">JUMP TO CHAPTER</div>
         <div class="rd-selector-grid">
           {chapters.map((ch) => (
-            <button class="rd-selector-item" data-chapter={ch.num}>
-              <span class="rd-sel-num">{toRoman(ch.num)}</span>
-              <span class="rd-sel-title">{ch.title}</span>
-            </button>
+            <>
+              <button class="rd-selector-item" data-chapter={ch.num}>
+                <span class="rd-sel-num">{toRoman(ch.num)}</span>
+                <span class="rd-sel-title">{ch.title}</span>
+              </button>
+              {ch.num === 17 && (
+                <button class="rd-selector-item rd-sel-appeal" data-panel="court-appeal-2">
+                  <span class="rd-sel-num">CA</span>
+                  <span class="rd-sel-title">Court Appeal II — The Woman, the Beast, and the Second Beast</span>
+                </button>
+              )}
+            </>
           ))}
         </div>
       </div>
@@ -2306,6 +2330,125 @@ function toRoman(n: number) {
           </footer>
         </div>
 
+        <div class="rd-chapter-panel rd-appeal-panel" id="court-appeal-2" style="display:none">
+          <header class="rd-page-header rd-appeal-header">
+            <div class="rd-docket-rule"></div>
+            <div class="rd-docket-label rd-appeal-label">◆  ◆  ◆ &nbsp;&nbsp; COURT APPEAL II &nbsp;&nbsp; ◆  ◆  ◆</div>
+            <p class="rd-appeal-filing">Filed Between Chapters 17 and 18</p>
+            <h1 class="rd-page-title">The Woman, the Beast, and the Second Beast</h1>
+            <p class="rd-page-sub">Same Players. Same Roles. Different Robes.</p>
+            <p class="rd-appeal-motion">A motion to overturn three insufficient verdicts<br/>and enter the full record into evidence</p>
+            <div class="rd-docket-rule"></div>
+          </header>
+          <div class="rd-page-body rd-appeal-body">
+            <div class="ca-section-head">
+              <div class="ca-section-arrow">&#9656; MOTION TO CORRECT THE RECORD &#9666;</div>
+              <p class="ca-section-sub">Three verdicts — and why all three fall short</p>
+            </div>
+            <p>This appeal is filed against three readings of Revelation 17 that currently dominate the church. All three have pieces of the truth. All three fail to deliver a complete verdict. The appeal moves the court to set aside each insufficient finding and enter the full record into evidence.</p>
+            <p>The first verdict to be overturned comes from a well-known prophetic tradition that correctly identifies a two-layer structure in Revelation 17: the woman is a corrupt religious system that got into bed with political power, and the beast is the government that enforces her agenda. This framework is sound and should not be discarded. The appeal does not challenge the structure. It challenges the emphasis. In practice, this tradition directs all attention toward Rome and the Roman Catholic Church, training its followers to watch the west — toward the pope, toward a coming Sunday law enforced by civil government. That watch is not wrong as far as it goes. But it leaves half the courtroom unexamined. The eastern side of the record — what is happening in Jacob’s land, under what name, backed by whose authority — goes completely unaddressed. The appeal moves that half of the record into evidence.</p>
+            <p>The second verdict to be overturned rightly challenges the identity of the people currently occupying Jacob’s land, drawing from Obadiah, Malachi 1:2–4, Ezekiel 35, and Revelation 3:9 to argue that the occupants are Edomites using a false covenant identity. This reading is also not without foundation. The prophets document Edom’s long-running ambition to take what Yahuah gave to Jacob, and this appeal does not move to strike that evidence. The appeal challenges the conclusion drawn from it. This reading identifies the Edomite financial and political layer as the beast itself — and in doing so repeats the exact mistake made at the First Coming. The Edomites then were also visible and powerful: Herod was Edomite, the Sanhedrin operated under Edomite leadership, the Pharisees held religious control. But they were not the beast. They were the front men. The man who actually signed Yahushua’s death warrant was not an Edomite. He was a Roman.</p>
+            <p>Both readings also arrive at a shared destination by different roads, and the court should note this convergence. The first reading waits for Sunday laws to be enforced by Rome through civil government. The second reading watches for Noahide laws to be enforced through the modern state structure in Jacob’s land and its international legal influence. Both expected outcomes describe the same thing: a political authority enforcing a religious legal code on the population. The two readings appear to be in conflict. Their end point is identical. That convergence is itself evidence that both are tracking real pieces of the same beast — and that the beast has more than one head.</p>
+            <h3 class="ca-subsection">&#9674; The Third Verdict — Dismissed at the Door &#9674;</h3>
+            <p>A third reading currently held by the majority of the modern evangelical church traces its origins to the dispensational framework introduced by John Nelson Darby in the 19th century and popularized through the Scofield Reference Bible. In this reading, most of Revelation has not yet happened, the church will be removed before the worst of it begins, a rebuilt temple in Jerusalem awaits a future seven-year tribulation period, and a single political figure — a personal antichrist — will sign a covenant with Israel, break it at the midpoint, and set up an abomination of desolation.</p>
+            <p>This appeal does not spend significant time on this verdict because it does not have standing from the outset. It cannot be reconciled with the first-century historical record, with the angel’s own explanation in Revelation 17:9–18, or with the covenant framework the prophets actually use. It is the product of accumulated theological error since Darby, layered over generations until it became the default assumption of nearly the entire modern Western evangelical church. It is mentioned here not to engage it on its own terms but to note that its widespread acceptance is itself a measure of how thoroughly the deception described in this appeal has taken hold. A reading that prevents its holders from seeing any of what this appeal documents has served the beast system extraordinarily well.</p>
+            <p>The appeal respectfully moves this verdict be set aside without further argument.</p>
+            <div class="ca-spacer" aria-hidden="true">◆  ◇  ◆</div>
+            <div class="ca-section-head">
+              <div class="ca-section-arrow">&#9656; EVIDENCE SUBMITTED: THE FIRST-CENTURY RECORD &#9666;</div>
+              <p class="ca-section-sub">The two-layer structure was not hidden — it was in plain sight</p>
+            </div>
+            <p>The appeal submits the following historical record in support of its motion. This is not pattern-matching or typology. These are documented structures that the record establishes were operating at the time of the First Coming, and which the appeal argues have continued without interruption to the present day.</p>
+            <p>Herod the Great was Edomite — Idumean. The Roman Senate appointed him King of the Jews in 37 BC. That single appointment establishes the two-layer structure in one sentence: an Edomite sat on Jacob’s throne, but only because Rome gave it to him. His sons continued the arrangement. Herod Antipas ruled Galilee under Roman authority. Herod Agrippa I received his title from Emperor Claudius. The Edomite dynasty was Rome’s local face in the covenant land.</p>
+            <p>The Sanhedrin and the chief priests served as Rome’s religious managers. Rome appointed and removed the high priest at will. Josephus records that between Herod’s time and Jerusalem’s destruction in AD 70, Rome replaced the high priest twenty-eight times — treating the office as a political appointment. The Pharisees, whose traditions had absorbed heavy Babylonian and Hellenistic influence during the captivity, provided the theological cover for the entire arrangement, teaching a version of the law that protected the system rather than exposing it (Matthew 15:3–9; John 8:44).</p>
+            <p>This visible layer held real power over the daily lives of the covenant people. It ran the temple economy. It could excommunicate, arrest, and punish. But it had one firm limit that the appeal places before the court as the central piece of first-century evidence: it could not execute. The death penalty required Rome. When the religious leaders wanted Yahushua dead, they had to walk to Pilate’s court to get the order signed. That walk is the most visible demonstration in all of history of exactly how the two-layer structure functions. The local layer pushes the agenda. The throne behind it holds the authority.</p>
+            <div class="ca-spacer" aria-hidden="true">◇</div>
+            <p>Pontius Pilate was Rome’s prefect over Judea from AD 26 to 36. He had no stake in the Sanhedrin’s religious arguments. When the chief priests brought Yahushua before him, Pilate’s own assessment was that the charges were groundless (John 18:38; 19:4, 6). He tried three times to release him. He finally gave the order not because he agreed with the verdict but because the religious leaders threatened to report him to Caesar for releasing a man who claimed to be a king — treason against Rome (John 19:12). The execution was a Roman act. The nails were Roman. The cross was a Roman instrument of death reserved for enemies of the state. The sign above it was written in three languages by Roman order: “Yahushua of Nazareth, King of the Jews” (John 19:19–20). Rome signed the death certificate. The Edomite layer was the mechanism. Rome was the authority.</p>
+            <div class="ca-spacer" aria-hidden="true">◇</div>
+            <p>Josephus, writing under Roman backing in the AD 70s and 90s, documented this same structure at full force during Jerusalem’s destruction. He records that the chief priests cooperated with Rome, that the high priestly families were among the first to negotiate terms with Vespasian’s forces, and that Titus’s soldiers carried Roman standards into the temple courts and offered sacrifice to them in the ruins of the holy place (Jewish Wars 6.6.1). The religious layer and the imperial layer were working together. What Josephus saw from the ground, John saw from the heavenly courtroom: the beast carrying the woman, both drunk with the blood of the prophets, riding together, sharing the cup, sharing the guilt (Revelation 17:3–6).</p>
+            <div class="ca-spacer" aria-hidden="true">◆  ◇  ◆</div>
+            <div class="ca-section-head">
+              <div class="ca-section-arrow">&#9656; POINT OF LAW: THIS IS NOT TYPOLOGY &#9666;</div>
+              <p class="ca-section-sub">The appeal moves to establish continuity, not pattern-matching</p>
+            </div>
+            <p>The appeal anticipates an objection: that the first-century structure is being used as a type or shadow pointing to modern events. The appeal rejects this framing. Types and shadows point forward to something new. This appeal argues that the institutions described in the first-century record never ceased to exist. They continued. They rebranded. What the court is being asked to recognize is not resemblance. It is continuity.</p>
+            <p>Rome did not simply collapse. The Western Roman Empire lost its last emperor in AD 476. But the Roman church had already positioned itself as the organizing power of Western civilization. The handoff was not a fall. It was a restructuring. The purple robe became white. Caesar became Pope. The Senate’s authority over appointments became the College of Cardinals. The imperial cult’s demand for universal submission became the papal claim to universal spiritual jurisdiction over all nations. The address changed. The institution did not.</p>
+            <h3 class="ca-subsection">&#9674; The Structure Then and Now &#9674;</h3>
+            <p>Then: Herod (Edomite ruler on Jacob’s throne) + Sanhedrin (religious managers) + Pharisees (theological cover) — all operating under Rome. The local layer ran daily life. Rome held the death penalty.</p>
+            <p>Now: The political and financial leaders managing Jacob’s land + the Rothschild banking network + mainstream dispensational theology providing cover — all operating under the Roman institution. The visible layer runs the news cycle. Rome holds the reins.</p>
+            <p>The critical difference: Then the throne was visible — everyone in Judea knew Rome ruled. Now the throne is invisible — it presents as a moral and spiritual authority that almost no one suspects of running the system. That invisibility is not accidental. It is the woman’s cover.</p>
+            <div class="ca-spacer" aria-hidden="true">◆  ◇  ◆</div>
+            <div class="ca-section-head">
+              <div class="ca-section-arrow">&#9656; THE WOMAN IDENTIFIED &#9666;</div>
+              <p class="ca-section-sub">What Scripture means when it uses the image of a woman</p>
+            </div>
+            <p>Before identifying which institution the woman represents, the appeal moves to establish what the image of a woman means in Scripture — because this determines how the entire chapter must be read.</p>
+            <p>Throughout Scripture, Yahuah consistently uses the image of a woman to describe His relationship with His people — specifically, the covenant community, the bride, the assembly. Israel is called a wife in Jeremiah 3:1–10 and Ezekiel 16. The assembly of believers is called the bride of the Messiah in Revelation 19:7–8 and Ephesians 5:25–27. When the covenant people are faithful, she is described as a pure woman, a bride, a virgin. When she is unfaithful — when she mixes the truth with error, takes on the world’s gods, and enters corrupt relationships with political power — Yahuah calls her a harlot. This is not harsh language for its own sake. It is covenant language. Spiritual unfaithfulness to Yahuah is always described as prostitution in the prophets (Hosea 1–3; Ezekiel 16:15–43; Isaiah 1:21). The harlot of Revelation 17 is therefore not a political empire. She is a religious institution — a church, an assembly, a community that was meant to be the bride of Yahuah and became something else.</p>
+            <p>The appeal notes that this identification opens a significant question: which corrupt religious institution does the harlot represent? The two primary candidates track directly with the two incomplete verdicts named at the opening of this appeal. The first candidate is the Roman Catholic Church — a church that carries the name of the Messiah, claims to be His bride, and has demonstrably mixed His truth with pagan practice, entered corrupt alliances with political power, and shed the blood of those who held the true testimony. The second candidate is the Talmudic and Babylonian religious tradition operating through the modern state in Jacob’s land — a system that claims the name of Yahuah’s covenant people, uses the vocabulary of Scripture, and yet operates from a body of tradition rooted in Babylon rather than in Yahuah’s Torah (Matthew 15:3–9; John 8:44). Both systems fit the image of a harlot as Scripture defines it. Both have mixed truth with error. Both have entered corrupt arrangements with kings. Both have been drunk with the blood of the righteous. The appeal notes that this single question — which institution is the woman — carries enough weight and complexity to fill a book of its own. What can be established here is that in either reading, the image is a religious institution that was supposed to be the bride and became the harlot. That is the non-negotiable starting point.</p>
+            <p>With that foundation established, the appeal now submits the author’s identification. The woman in this reading is the Roman Catholic Church. The RCC presents itself to the world as a moral authority — the world’s conscience on matters of peace, poverty, and human rights. The pope receives world leaders. The Vatican holds diplomatic relations with nearly every nation on earth. It is the only religious institution on the planet that functions as a sovereign state, with its own ambassadors, its own standing in international law, and financial holdings across every continent. This is not the profile of a church. It is the profile of an empire that changed its title. Nobody suspects the quiet figure on horseback when the horse is making all the noise. That invisibility is her most powerful asset.</p>
+            <p>From roughly AD 538 to 1798 the RCC held supreme authority over the kings of Europe. It could crown them and remove them. It could declare wars and call crusades. No political power in the Western world moved without its blessing. That 1,260-year period is the standard the institution has never stopped working to restore. In 1798 Napoleon’s general Berthier took Pope Pius VI prisoner. The pope died in captivity. Revelation 13:3 had already said the wound would heal. The structure did not disappear. It regrouped. And within the same decade the instrument of that regrouping was rising on the other side of the Atlantic.</p>
+            <div class="ca-spacer" aria-hidden="true">◆  ◇  ◆</div>
+            <div class="ca-section-head">
+              <div class="ca-section-arrow">&#9656; THE BEAST IS NOT ONE THING &#9666;</div>
+              <p class="ca-section-sub">Multiple facets, one shared goal — all submitted into evidence</p>
+            </div>
+            <p>The appeal moves to enter into evidence that the beast of Revelation 17 is not a single nation or a single person. It is a system — one that operates through multiple institutions and power structures that appear to be unrelated to each other. They carry different names, different religions, different public agendas. The appearance of conflict and competition between them is part of how the system functions. As long as attention stays on the visible players fighting over land, money, and ideology, nobody watches the woman directing the whole thing from the saddle.</p>
+            <h4 class="ca-h4">Facet One: The Religious Claim in Jacob’s Land</h4>
+            <p>The most visible and debated facet of the beast at this moment in history is the occupation of Jacob’s land. The debate fills social media, news cycles, and pulpits worldwide. These are exactly the right questions being asked. The problem the appeal identifies is that while the world debates them, the woman keeps riding. The visible argument consumes all the attention and none of it reaches the rider.</p>
+            <p>The appeal submits, from the prophetic record, that the people establishing and governing the modern state under the name Israel are not the covenant people of Scripture. They are Edomites using the covenant name to reclaim what Esau lost at the birthright exchange. Obadiah describes Edom standing in Jacob’s gate on the day of his people’s calamity (Obadiah 1:13). Ezekiel 35 records Yahuah’s charge against Edom for declaring “the two nations will be mine” (Ezekiel 35:10). Malachi opens with Yahuah’s declaration of love for Jacob and rejection of Esau (Malachi 1:2–3). The prophetic record on this point is not ambiguous. The appeal moves this evidence into the record and notes that it has been systematically suppressed in mainstream theological education.</p>
+            <h4 class="ca-h4">Facet Two: The Financial Network</h4>
+            <p>The Rothschild name is known worldwide as the most powerful banking dynasty in modern history. The appeal moves to enter into evidence that the name itself is a recent adoption. The family were the Bauers — a German surname meaning farmer. Mayer Bauer, operating as a Frankfurt moneylender in the late 1700s, took the name Rothschild from the red shield displayed on the family’s door. Roth Schild in German means Red Shield. Red in Hebrew is Edom. Esau was called Edom. A family positioning itself at the center of world finance under a name that means Shield of Edom is a detail the appeal moves to place before the court as direct covenantal evidence, not coincidence.</p>
+            <p>The Rothschild network financed the early waves of immigration to Palestine under the Zionist movement. Edmond de Rothschild was so central to early settlement activity that he was called “the Father of the Yishuv.” The financial facet and the religious-claim facet were not operating independently from the beginning. They were coordinated.</p>
+            <p>The appeal further moves to enter the name-change pattern as evidence. The first Prime Minister of the modern state, David Ben-Gurion, was born David Grün in Plōńsk, Poland. Benjamin Netanyahu, the state’s longest-serving Prime Minister, was born Benjamin Mileikowsky — a name his father Benzion also carried before the family adopted Netanyahu in Palestine. Netanyahu studied at MIT under the name Ben Nitay. The main international airport serving the land is named after Ben-Gurion — a man who entered that land under a different name. This is not ordinary immigrant assimilation. The pattern — European surnames exchanged for Hebrew names carrying covenant weight — is the identity-replacement strategy made visible at every level of the state’s founding generation.</p>
+            <h4 class="ca-h4">The Nazi Connection: What the Record Shows</h4>
+            <p>In 1933 some Zionist organizations entered the Haavara Agreement with the Nazi government — a tactical arrangement to allow German Jews to emigrate to Palestine and transfer assets through German export goods. The mainstream Zionist leadership was not ideologically aligned with National Socialism. The arrangement was driven by urgency to move people out of Germany before conditions worsened. The appeal does not overstate this evidence.</p>
+            <p>The appeal does move to enter into evidence that fringe elements went further: the Stern Gang briefly attempted to negotiate with Nazi officials in 1941, offering to fight the British in Palestine in exchange for Nazi support for a Jewish state. The Nazis rejected the approach. These were not mainstream positions. What the full record shows is that for certain factions within the movement, establishing a state in Palestine was the overriding priority — above ideology, above the source of backing, above almost every other consideration. The appeal submits that the modern state did not arise from the moral weight of the Holocaust alone. It arose from decades of organized financial pressure, from agreements cutting across ideological lines, and from the backing of Western powers whose institutional roots trace to Rome. The Holocaust provided the moral cover. The financial network provided the money. The Western political establishment provided the legal recognition. The RCC provided its silence and its blessing.</p>
+            <div class="ca-spacer" aria-hidden="true">◆  ◇  ◆</div>
+            <div class="ca-section-head">
+              <div class="ca-section-arrow">&#9656; ADDITIONAL EVIDENCE: OTHER FACETS OF THE BEAST &#9666;</div>
+              <p class="ca-section-sub">The appeal moves to enter supporting evidence on two further facets</p>
+            </div>
+            <h4 class="ca-h4">Islam</h4>
+            <p>Islam rose in the 7th century in an environment shaped by contact with both Jewish and Christian communities in Arabia. The appeal moves to note for the record that Waraqah ibn Nawfal — a cousin of Muhammad’s first wife Khadijah and described in Islamic tradition itself as a Christian scholar — was among the first to confirm Muhammad’s prophetic calling, telling him the angel who visited him was the same who had visited Moses. Several early Islamic theological positions align closely with specific strands of Roman Catholic practice: the high veneration of Mary, the view of Yahushua as a sinless prophet born of a virgin, structured prayer times, and fasting practices. These parallels are difficult to attribute to coincidence. The practical result was that Islam became the dominant force across the Middle East and North Africa — territories that had been Christian — while the RCC retained Europe. Two systems appearing to oppose each other between them covered most of the known world. The Crusades functioned in practice as campaigns that moved wealth westward and established the Knights Templar as a new financial and military order under direct papal authority.</p>
+            <h4 class="ca-h4">Secret Societies: Jesuits and Knights Templar</h4>
+            <p>The Society of Jesus — the Jesuits — was founded in 1540 by Ignatius of Loyola and approved by Pope Paul III. From its founding it operated as an intelligence and infiltration arm of the Vatican, with members embedded in universities, royal courts, and political structures across Europe and beyond. The Jesuit oath of absolute obedience to the pope placed them outside normal church accountability. Historians have traced Jesuit connections to the founding of Freemasonry, particularly in the Scottish Rite. The appeal submits this as supporting evidence and notes the connections remain disputed in mainstream academic sources — a fact the appeal regards as consistent with how this evidence has been handled throughout.</p>
+            <p>The Knights Templar were founded in 1119, placed under direct papal authority, and became the first international banking network in the Western world. When Pope Clement V cooperated with French king Philip IV to dissolve the order in 1307, the official record states the Templars were destroyed. The documented record shows networks surviving in Portugal under a renamed order, in Scotland outside papal jurisdiction, and in the structures of speculative Freemasonry. The financial systems the Templars pioneered did not disappear. They evolved into the banking structures the Rothschild network would later come to dominate. The appeal moves to enter this chain of institutional continuity as evidence.</p>
+            <div class="ca-spacer" aria-hidden="true">◆  ◇  ◆</div>
+            <div class="ca-section-head">
+              <div class="ca-section-arrow">&#9656; THE SECOND BEAST &#9666;</div>
+              <p class="ca-section-sub">Revelation 13 identifies a second power — the appeal names it</p>
+            </div>
+            <p>Revelation 13:11 describes a second beast rising from the earth. Unlike the first beast from the sea, this one has two horns like a lamb — it looks gentle, peaceful, even righteous. But it speaks like a dragon. It exercises all the authority of the first beast on its behalf and causes the earth to worship the first beast. It performs great signs, deceives those who dwell on the earth, and enforces the agenda of the first beast through economic control — causing all to receive a mark without which no one may buy or sell (Revelation 13:16–17). This is the profile, given by Scripture itself, of a nation that presents itself as the defender of freedom while fully serving the interests of the first beast system.</p>
+            <p>The appeal submits, on the basis of this Scriptural description first and the supporting historical and geographic evidence second, that the United States of America is the second beast of Revelation 13. The lamb-like appearance is the nation’s public identity: democracy, religious freedom, human rights, the defender of the free world. The dragon’s voice is what that identity has been used to accomplish: military enforcement of the multi-faceted beast system’s agenda across the globe, economic dominance used as leverage for compliance, and the provision of moral cover for everything the system needed done — through the Edomite networks, the financial dynasties, the secret societies, and the Roman institution directing them all — that could not be done from any of those positions openly.</p>
+            <p>The appeal draws the court’s attention to one detail the Scriptural description makes unavoidable: the second beast has two horns like a lamb. In Scripture, the Lamb is always Yahushua. A beast that looks like the Lamb is a nation that presents the Messiah at its forefront — and the United States does exactly this. His name appears on the currency. Leaders invoke Him in speeches. The flag is carried into churches. The nation presents itself as a Christian nation, built on Christian values, blessed by the Christian God. That public face is not fabricated from nothing — there are genuine believers within it and genuine appeals to Scripture in its founding documents. But behind that lamb’s face, as the evidence now coming to light confirms, the dragon has been operating all along. The enemy of Yahuah has used the credibility of the Messiah’s name as the most effective cover the beast system has ever had. The more convincingly a nation says “In God We Trust,” the less anyone looks at what is being done in the dark.</p>
+            <h4 class="ca-h4">The Geography That Speaks</h4>
+            <p>The appeal moves to enter geographic and symbolic evidence in support of this identification. Washington D.C. is not a state. It is a federal district — sovereign territory that does not belong to any of the fifty states and is not governed by the same legal framework as the rest of the country. The same structural arrangement applies to the City of London, the one-square-mile financial district within Greater London operating under its own ancient charter, separate from the United Kingdom’s normal governance. Both the political capital of the world’s leading military power and the financial capital of the global banking system exist outside the jurisdiction of the nations they appear to belong to. The appeal submits this is not a modern administrative oversight.</p>
+            <p>The district sits between Maryland and Virginia. Maryland means Mary’s Land. Virginia means the Virgin. The political capital of the nation presented as the world’s defender of freedom sits literally between two tributes to the Virgin Mary — the central Marian figure of Roman Catholic devotion. The district’s name comes from Columbia — a goddess figure connected by scholars of religious symbolism to the Marian devotion the RCC brought to the Americas through Spanish and French Catholic colonization. The street layout mirrors key structural elements of St. Peter’s Square in Rome. The Washington Monument, an Egyptian obelisk, stands in visual alignment with the Capitol dome, replicating the relationship between the Vatican obelisk and the dome of St. Peter’s Basilica.</p>
+            <h4 class="ca-h4">The 1798 Connection</h4>
+            <p>In 1798 Napoleon’s forces imprisoned Pope Pius VI, delivering the visible blow to the RCC’s temporal power. That same decade the United States established itself as a constitutional republic and within a generation became one of the most significant growth environments for Roman Catholic institutional expansion in the world. By the mid-1800s the RCC was the single largest religious denomination in America. By the 20th century, American political, financial, and military power was deeply interwoven with Catholic institutional networks — through the Knights of Columbus, Jesuit-run universities, and documented Vatican influence in both political parties.</p>
+            <p>The appeal submits the timing before the court: the wound of 1798 began healing almost immediately, and the instrument of that healing was the rising power of the United States. The second beast did not replace the first. It served it. The lamb’s face provided what the wounded institution needed most — cover, enforcement, and the moral authority of a nation the world trusted. The lamb’s face hid the dragon’s voice.</p>
+            <div class="ca-spacer" aria-hidden="true">◆  ◇  ◆</div>
+            <div class="ca-section-head">
+              <div class="ca-section-arrow">&#9656; THE AUTHOR’S POSITION — FILED TRANSPARENTLY &#9666;</div>
+              <p class="ca-section-sub">Opinion entered into the record — not doctrine</p>
+            </div>
+            <h3 class="ca-subsection">&#9674; Summary of the Appeal — The Full Record as the Author Reads It &#9674;</h3>
+            <aside class="ca-note"><strong>Note:</strong> What follows is the author’s own identification. It is entered openly as opinion, not doctrinal certainty. The reader is invited to examine the covenant evidence independently.</aside>
+            <p><strong>The motion:</strong> The three existing verdicts are insufficient. The court is moved to set aside the dispensational reading entirely, to recognize that both the prophetic-tradition reading and the Edomite-identification reading have captured real evidence while missing the full structure, and to enter the complete two-layer record into evidence.</p>
+            <p><strong>The Woman:</strong> A harlot in Scripture is always a religious institution — a community that was meant to be the bride of Yahuah and became corrupt. The author identifies the woman as the Roman Catholic Church: unbroken in institutional continuity from imperial Rome, presenting as the world’s moral authority, suspected by almost no one of directing the system from the saddle.</p>
+            <p><strong>The Beast — Multiple Facets:</strong> The religious facet is Edomites occupying Jacob’s land under a false covenant identity. The financial facet is the Rothschild network bankrolling the occupation and controlling the money systems of nations. Additional facets — Islam, the Jesuits, the Knights Templar, secret societies — all appear independent and in conflict. None of them are. Every facet moves in one direction: return the woman to her 1,260-year supremacy.</p>
+            <p><strong>The Second Beast:</strong> The United States — identified first by the Scriptural profile of Revelation 13:11–17, confirmed by the geographic, symbolic, and historical evidence submitted above. The lamb’s face provides the cover. The dragon’s voice provides the enforcement.</p>
+            <p><strong>The actual Shemites:</strong> The blood descendants of Abraham, Isaac, and Jacob — the people to whom the covenant belongs — are not the people currently in Jacob’s land under that name. They are the people who had that identity stripped from them: scattered through the transatlantic slave trade, dispossessed through colonial wars and treaties, cut off from a covenant heritage that is rightfully theirs by blood. The strategy mirrors Esau’s pattern: take the name, take the land, take the covenant position, while the real Jacob remains in captivity and unrecognized (Deuteronomy 28:15–68; Obadiah 1:17–20).</p>
+            <p class="ca-refs"><strong>Covenant References:</strong> Revelation 13:1–18; 17:1–18; Obadiah 1:1–21; Malachi 1:2–4; Ezekiel 35:1–15; Hosea 1–3; Jeremiah 3:1–10; Daniel 7:24–25; Deuteronomy 28:15–68; Genesis 25:29–34; John 19:12–16; Josephus, Jewish Wars 6.6.1</p>
+            <aside class="ca-notes-box"><strong>Court Appeal II — Notes</strong></aside>
+          </div>
+          <footer class="rd-page-footer">
+            <div class="rd-pf-left">The Courtroom of Heaven</div>
+            <div class="rd-pf-center">COURT APPEAL II</div>
+            <div class="rd-pf-right">nazaryah.com</div>
+          </footer>
+        </div>
+
         <div class="rd-chapter-panel" id="chapter-18" style="display:none">
           <header class="rd-page-header">
             <div class="rd-docket-rule"></div>
@@ -2804,15 +2947,56 @@ function toRoman(n: number) {
     return r;
   }
 
-  let currentChapter = 1;
+  let currentChapter: number | string = 1;
+
+  const APPEAL_2 = 'court-appeal-2';
+
+  function hideAllPanels() {
+    document.querySelectorAll('.rd-chapter-panel').forEach(p => {
+      (p as HTMLElement).style.display = 'none';
+    });
+  }
+
+  function clearSelectorActive() {
+    document.querySelectorAll('.rd-selector-item').forEach(btn => {
+      const b = btn as HTMLElement;
+      b.style.background = 'transparent';
+      b.style.borderLeft = '2px solid transparent';
+    });
+  }
+
+  function closeSelector() {
+    const sel = document.getElementById('chapter-selector');
+    const arrow = document.getElementById('chapter-toggle-arrow');
+    if (sel) sel.style.display = 'none';
+    if (arrow) arrow.textContent = '▼';
+  }
+
+  function setNav(prev: { label: string; go: () => void } | null, next: { label: string; go: () => void } | null) {
+    const prevBtn = document.getElementById('rd-prev-btn') as HTMLButtonElement;
+    const nextBtn = document.getElementById('rd-next-btn') as HTMLButtonElement;
+    const prevTitle = document.getElementById('rd-prev-title');
+    const nextTitle = document.getElementById('rd-next-title');
+    if (prev) {
+      prevBtn.style.display = 'block';
+      if (prevTitle) prevTitle.textContent = prev.label;
+      prevBtn.onclick = prev.go;
+    } else {
+      prevBtn.style.display = 'none';
+    }
+    if (next) {
+      nextBtn.style.display = 'block';
+      if (nextTitle) nextTitle.textContent = next.label;
+      nextBtn.onclick = next.go;
+    } else {
+      nextBtn.style.display = 'none';
+    }
+  }
 
   function showChapter(n: number) {
     currentChapter = n;
 
-    // Hide all panels, show current
-    document.querySelectorAll('.rd-chapter-panel').forEach(p => {
-      (p as HTMLElement).style.display = 'none';
-    });
+    hideAllPanels();
     const panel = document.getElementById(`chapter-${n}`);
     if (panel) panel.style.display = 'block';
 
@@ -2821,41 +3005,65 @@ function toRoman(n: number) {
     if (indicator) indicator.textContent = toRoman(n);
 
     // Update selector active state
+    clearSelectorActive();
     document.querySelectorAll('.rd-selector-item').forEach(btn => {
       const b = btn as HTMLElement;
       const ch = parseInt(b.dataset.chapter || '0');
-      b.style.background = ch === n ? 'rgba(139,40,40,0.2)' : 'transparent';
-      b.style.borderLeft = ch === n ? '2px solid #8B2828' : '2px solid transparent';
+      if (ch === n) {
+        b.style.background = 'rgba(139,40,40,0.2)';
+        b.style.borderLeft = '2px solid #8B2828';
+      }
     });
 
-    // Prev / Next
-    const prev = CHAPTERS.find(c => c.num === n - 1);
-    const next = CHAPTERS.find(c => c.num === n + 1);
-    const prevBtn = document.getElementById('rd-prev-btn') as HTMLButtonElement;
-    const nextBtn = document.getElementById('rd-next-btn') as HTMLButtonElement;
-    const prevTitle = document.getElementById('rd-prev-title');
-    const nextTitle = document.getElementById('rd-next-title');
+    // Prev / Next — special-case ch 17 → Appeal II → ch 18
+    let prev: { label: string; go: () => void } | null = null;
+    let next: { label: string; go: () => void } | null = null;
 
-    if (prev) {
-      prevBtn.style.display = 'block';
-      if (prevTitle) prevTitle.textContent = `${toRoman(prev.num)}. ${prev.title}`;
-      prevBtn.onclick = () => { showChapter(prev.num); scrollToTop(); };
+    if (n === 18) {
+      prev = { label: 'Court Appeal II', go: () => { showAppeal(APPEAL_2); scrollToTop(); } };
     } else {
-      prevBtn.style.display = 'none';
-    }
-    if (next) {
-      nextBtn.style.display = 'block';
-      if (nextTitle) nextTitle.textContent = `${toRoman(next.num)}. ${next.title}`;
-      nextBtn.onclick = () => { showChapter(next.num); scrollToTop(); };
-    } else {
-      nextBtn.style.display = 'none';
+      const p = CHAPTERS.find(c => c.num === n - 1);
+      if (p) prev = { label: `${toRoman(p.num)}. ${p.title}`, go: () => { showChapter(p.num); scrollToTop(); } };
     }
 
-    // Close selector
-    const sel = document.getElementById('chapter-selector');
-    const arrow = document.getElementById('chapter-toggle-arrow');
-    if (sel) sel.style.display = 'none';
-    if (arrow) arrow.textContent = '▼';
+    if (n === 17) {
+      next = { label: 'Court Appeal II', go: () => { showAppeal(APPEAL_2); scrollToTop(); } };
+    } else {
+      const nx = CHAPTERS.find(c => c.num === n + 1);
+      if (nx) next = { label: `${toRoman(nx.num)}. ${nx.title}`, go: () => { showChapter(nx.num); scrollToTop(); } };
+    }
+
+    setNav(prev, next);
+    closeSelector();
+  }
+
+  function showAppeal(id: string) {
+    currentChapter = id;
+
+    hideAllPanels();
+    const panel = document.getElementById(id);
+    if (panel) panel.style.display = 'block';
+
+    const indicator = document.getElementById('chapter-indicator');
+    if (indicator) indicator.textContent = 'CA';
+
+    clearSelectorActive();
+    document.querySelectorAll('.rd-selector-item').forEach(btn => {
+      const b = btn as HTMLElement;
+      if (b.dataset.panel === id) {
+        b.style.background = 'rgba(139,40,40,0.2)';
+        b.style.borderLeft = '2px solid #8B2828';
+      }
+    });
+
+    // Court Appeal II sits between ch 17 and 18
+    const ch17 = CHAPTERS.find(c => c.num === 17)!;
+    const ch18 = CHAPTERS.find(c => c.num === 18)!;
+    setNav(
+      { label: `${toRoman(ch17.num)}. ${ch17.title}`, go: () => { showChapter(17); scrollToTop(); } },
+      { label: `${toRoman(ch18.num)}. ${ch18.title}`, go: () => { showChapter(18); scrollToTop(); } }
+    );
+    closeSelector();
   }
 
   function scrollToTop() {
@@ -2879,11 +3087,40 @@ function toRoman(n: number) {
   document.getElementById('open-reader-btn')?.addEventListener('click', () => openReader(1));
   document.getElementById('reader-back-btn')?.addEventListener('click', showBook);
 
+  // If arriving with a URL hash (e.g. #court-appeal-2 from the home page watch panel),
+  // auto-open the reader to that panel.
+  function handleHashOpen() {
+    const hash = window.location.hash.replace('#', '');
+    if (!hash) return;
+    if (hash === APPEAL_2) {
+      document.getElementById('book-details')!.style.display = 'none';
+      document.getElementById('reader-section')!.style.display = 'block';
+      showAppeal(APPEAL_2);
+      scrollToTop();
+    } else if (/^chapter-\d+$/.test(hash)) {
+      const n = parseInt(hash.replace('chapter-', ''), 10);
+      if (!Number.isNaN(n)) openReader(n);
+    }
+  }
+  handleHashOpen();
+  window.addEventListener('hashchange', handleHashOpen);
+
   // Chapter list buttons on book-details page
   document.querySelectorAll('.open-reader-ch').forEach(btn => {
     btn.addEventListener('click', () => {
       const ch = parseInt((btn as HTMLElement).dataset.chapter || '1');
       openReader(ch);
+    });
+  });
+
+  // Appeal button on book-details page
+  document.querySelectorAll('.open-appeal').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const panelId = (btn as HTMLElement).dataset.panel || APPEAL_2;
+      document.getElementById('book-details')!.style.display = 'none';
+      document.getElementById('reader-section')!.style.display = 'block';
+      showAppeal(panelId);
+      scrollToTop();
     });
   });
 
@@ -2896,11 +3133,17 @@ function toRoman(n: number) {
     arrow.textContent = open ? '▼' : '▲';
   });
 
-  // Selector items
+  // Selector items — chapters or appeals
   document.querySelectorAll('.rd-selector-item').forEach(btn => {
     btn.addEventListener('click', () => {
-      const ch = parseInt((btn as HTMLElement).dataset.chapter || '1');
-      showChapter(ch);
+      const el = btn as HTMLElement;
+      const panelId = el.dataset.panel;
+      if (panelId) {
+        showAppeal(panelId);
+      } else {
+        const ch = parseInt(el.dataset.chapter || '1');
+        showChapter(ch);
+      }
       scrollToTop();
     });
   });
@@ -2909,15 +3152,20 @@ function toRoman(n: number) {
   let spreadOpen = false;
 
   function openSpread() {
-    const panel = document.getElementById(`chapter-${currentChapter}`);
+    const isAppeal = typeof currentChapter === 'string';
+    const panel = document.getElementById(
+      isAppeal ? (currentChapter as string) : `chapter-${currentChapter}`
+    );
     if (!panel) return;
 
     // Build overlay
     const overlay = document.createElement('div');
     overlay.id = 'book-spread-overlay';
 
-    const title = CHAPTERS.find(c => c.num === currentChapter)?.title || '';
-    const numeral = toRoman(currentChapter);
+    const title = isAppeal
+      ? 'Court Appeal II — The Woman, the Beast, and the Second Beast'
+      : (CHAPTERS.find(c => c.num === currentChapter)?.title || '');
+    const numeral = isAppeal ? 'CA II' : toRoman(currentChapter as number);
 
     // Clone content
     const contentClone = panel.querySelector('.rd-page-body')?.cloneNode(true) as HTMLElement;
@@ -3121,6 +3369,38 @@ function toRoman(n: number) {
   .bk-ch-topic { font-family: 'EB Garamond', Georgia, serif; font-size: 13px; font-style: italic; color: #8A7E70; }
   .bk-ch-arrow { font-size: 18px; color: #6B5F53; text-align: right; }
   .bk-ch-ledger { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.18em; color: #C9A961; margin-top: 4px; text-transform: uppercase; }
+
+  /* ── Court Appeal row in TOC ── */
+  .bk-appeal-row { border-top: 1px solid rgba(201,169,97,0.35); border-bottom: 1px solid rgba(201,169,97,0.35); background: linear-gradient(135deg, rgba(139,40,40,0.1) 0%, rgba(201,169,97,0.08) 100%); }
+  .bk-appeal-inner { position: relative; }
+  .bk-appeal-inner:hover { background: rgba(201,169,97,0.12); }
+  .bk-appeal-num { color: #C9A961 !important; font-weight: 700; }
+  .bk-appeal-kicker { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.35em; color: #C9A961; margin-bottom: 6px; text-transform: uppercase; }
+
+  /* ── Court Appeal selector ── */
+  .rd-sel-appeal { background: rgba(201,169,97,0.06) !important; border-left-color: rgba(201,169,97,0.35) !important; }
+  .rd-sel-appeal .rd-sel-num { color: #C9A961 !important; font-weight: 700; }
+  .rd-sel-appeal .rd-sel-title { color: #F5EFE4 !important; }
+
+  /* ── Court Appeal panel ── */
+  .rd-appeal-panel { position: relative; }
+  .rd-appeal-panel::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(circle at 20% 15%, rgba(201,169,97,0.04) 0%, transparent 40%), radial-gradient(circle at 80% 85%, rgba(139,40,40,0.04) 0%, transparent 45%); pointer-events: none; border-radius: 2px; }
+  .rd-appeal-header { padding-top: 12px; }
+  .rd-appeal-label { color: #C9A961 !important; font-size: 13px !important; letter-spacing: 0.3em !important; }
+  .rd-appeal-filing { font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.3em; color: #8B2828; text-transform: uppercase; margin: 0 0 18px; }
+  .rd-appeal-motion { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 14px; font-style: italic; color: #6B5F53; margin: 12px auto 24px; max-width: 480px; line-height: 1.55; }
+  .rd-appeal-body { position: relative; z-index: 1; }
+  .rd-appeal-body .ca-section-head { margin: 42px 0 16px; text-align: center; padding: 14px 0 16px; border-top: 1px solid rgba(139,40,40,0.25); border-bottom: 1px solid rgba(139,40,40,0.25); background: rgba(139,40,40,0.03); }
+  .rd-appeal-body .ca-section-arrow { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-weight: 700; color: #8B2828; letter-spacing: 0.04em; line-height: 1.2; margin-bottom: 6px; }
+  .rd-appeal-body .ca-section-sub { font-family: 'EB Garamond', Georgia, serif; font-size: 14px; font-style: italic; color: #6B5F53; margin: 0; }
+  .rd-appeal-body .ca-subsection { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 20px; font-weight: 600; color: #1A3A5C; text-align: center; margin: 32px 0 14px; letter-spacing: 0.02em; }
+  .rd-appeal-body .ca-h4 { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 18px; font-weight: 600; font-style: italic; color: #2B2420; margin: 28px 0 10px; border-left: 3px solid #C9A961; padding-left: 14px; }
+  .rd-appeal-body .ca-spacer { text-align: center; font-size: 14px; letter-spacing: 0.6em; color: #C9A961; margin: 24px 0; opacity: 0.65; }
+  .rd-appeal-body .ca-scripture { margin: 18px 0; padding: 14px 22px; background: rgba(201,169,97,0.06); border-left: 3px solid #C9A961; font-style: italic; font-size: 16px; line-height: 1.65; color: #2B2420; }
+  .rd-appeal-body .ca-scripture .ref { display: block; font-style: normal; font-family: 'JetBrains Mono', monospace; font-size: 10px; letter-spacing: 0.25em; color: #8B2828; text-transform: uppercase; margin-bottom: 6px; }
+  .rd-appeal-body .ca-note { margin: 18px 0 22px; padding: 14px 20px; background: rgba(26,58,92,0.06); border-left: 3px solid #1A3A5C; font-size: 15px; line-height: 1.65; color: #2B2420; font-style: italic; }
+  .rd-appeal-body .ca-refs { margin-top: 24px; padding: 14px 20px; background: rgba(43,36,32,0.06); border: 1px solid rgba(43,36,32,0.15); font-size: 14px; line-height: 1.65; color: #2B2420; }
+  .rd-appeal-body .ca-notes-box { display: block; margin: 32px 0 0; padding: 18px 22px; background: rgba(43,36,32,0.04); border: 1px dashed rgba(43,36,32,0.25); font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 0.2em; text-align: center; color: #6B5F53; text-transform: uppercase; }
 
   /* ── Reader styles ── */
   .rd-bar { display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px; padding: 16px 0; border-bottom: 1px solid rgba(139,40,40,0.2); margin-bottom: 32px; }
