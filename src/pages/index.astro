@@ -60,8 +60,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       display: grid;
       grid-template-columns: 5fr 8fr;
       width: 100%;
-      max-width: 44rem;
-      aspect-ratio: 13 / 4;
+      max-width: 80rem;
+      aspect-ratio: 6 / 1;
       overflow: hidden;
       border-radius: 4px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.15);
@@ -200,11 +200,40 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   <!-- ========== Nine Doors — Home Page Grid ========== -->
   <section class="row-intro">
-    <div class="ornament">✦   ✦   ✦</div>
-    <h2>Nine Doors. Choose Yours.</h2>
-    <p>Every door opens onto a different part of the work. Each one is a piece of the same picture: what modern Christianity hides, and what Scripture restores.</p>
+    <div class="row-intro-inner">
+      <p class="row-intro-label">&#8213; Choose Your Path &#8213;</p>
+      <div class="row-intro-door" aria-hidden="true">
+        <svg viewBox="0 0 80 120" width="68" height="102" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round">
+          <!-- Outer arched doorframe -->
+          <path d="M 8 118 L 8 40 Q 8 8 40 8 Q 72 8 72 40 L 72 118 Z" />
+          <!-- Inner door panel -->
+          <path d="M 14 114 L 14 42 Q 14 14 40 14 Q 66 14 66 42 L 66 114 Z" opacity="0.55" />
+          <!-- Horizontal cross rail at about 60% -->
+          <line x1="14" y1="72" x2="66" y2="72" opacity="0.55" />
+          <!-- Vertical centerline within top section -->
+          <line x1="40" y1="14" x2="40" y2="72" opacity="0.45" />
+          <!-- Handle / knob -->
+          <circle cx="58" cy="92" r="2" fill="currentColor" opacity="0.9" />
+          <!-- Keyhole detail -->
+          <circle cx="40" cy="92" r="1.6" fill="currentColor" opacity="0.7" />
+          <line x1="40" y1="93" x2="40" y2="99" opacity="0.7" />
+          <!-- Glow rays above the arch -->
+          <g opacity="0.45">
+            <line x1="40" y1="4" x2="40" y2="0" />
+            <line x1="20" y1="8" x2="16" y2="4" />
+            <line x1="60" y1="8" x2="64" y2="4" />
+          </g>
+        </svg>
+      </div>
+      <h2>Nine Doors. Choose Yours.</h2>
+      <p>Every door opens onto a different part of the work. Each one is a piece of the same picture: what modern Christianity hides, and what Scripture restores.</p>
+      <div class="row-intro-rule" aria-hidden="true">
+        <span></span><span class="gem">✦</span><span></span>
+      </div>
+    </div>
   </section>
 
+  <div class="door-grid-bg">
   <section class="door-grid">
 
     <!-- ===== ROW 1 ===== -->
@@ -343,45 +372,102 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </a>
 
   </section>
+  </div>
 
   <style>
-    /* ===== ROW INTRO ===== */
+    /* ===== ROW INTRO (matches the Catholicism / dark-burgundy theme) ===== */
     .row-intro {
       text-align: center;
-      padding: 70px 24px 30px;
-      font-family: Georgia, 'EB Garamond', serif;
-      background: #faf8f3;
+      padding: 72px 24px 48px;
+      font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(160, 20, 40, 0.22), transparent 70%),
+        linear-gradient(180deg, #0a0608 0%, #170a0e 35%, #120608 100%);
+      border-top: 1px solid #4a1820;
+      border-bottom: 1px solid #2a1010;
+      color: #f0e0bf;
+      position: relative;
     }
-    .row-intro .ornament {
-      font-size: 1.2rem;
-      color: #b89a4e;
+    .row-intro-inner {
+      max-width: 720px;
+      margin: 0 auto;
+      position: relative;
+    }
+    .row-intro-label {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
       letter-spacing: 0.4em;
-      margin-bottom: 18px;
+      color: #7a3028;
+      text-transform: uppercase;
+      margin: 0 0 1.5rem 0;
+    }
+    .row-intro-door {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: #c49a4e;
+      filter: drop-shadow(0 0 14px rgba(196, 154, 78, 0.25));
+    }
+    .row-intro-door svg {
+      transition: transform 0.3s ease, filter 0.3s ease;
+    }
+    .row-intro:hover .row-intro-door svg {
+      transform: translateY(-2px);
+      filter: drop-shadow(0 0 18px rgba(196, 154, 78, 0.45));
     }
     .row-intro h2 {
-      font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
-      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
-      color: #1a1a1a;
-      margin-bottom: 12px;
+      font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
+      font-size: clamp(1.9rem, 3.4vw, 2.6rem);
+      color: #f0e0bf;
+      margin: 0 0 14px 0;
       font-weight: 700;
+      letter-spacing: -0.005em;
     }
     .row-intro p {
-      color: #6e5a3f;
+      color: #c4a46b;
       max-width: 620px;
       margin: 0 auto;
       font-style: italic;
       font-size: 1.05rem;
+      line-height: 1.6;
+    }
+    .row-intro-rule {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-top: 28px;
+      color: #8B1A2A;
+    }
+    .row-intro-rule span {
+      display: block;
+      height: 1px;
+      width: 80px;
+      background: currentColor;
+      opacity: 0.55;
+    }
+    .row-intro-rule .gem {
+      height: auto;
+      width: auto;
+      color: #c49a4e;
+      font-size: 0.9rem;
+      opacity: 0.9;
+      background: transparent;
     }
 
     /* ===== THE GRID ===== */
+    .door-grid-bg {
+      background: linear-gradient(180deg, #120608 0%, #0a0608 100%);
+      border-bottom: 1px solid #2a1010;
+    }
     .door-grid {
       max-width: 1280px;
-      margin: 30px auto 100px;
-      padding: 0 24px;
+      margin: 0 auto;
+      padding: 48px 24px 72px;
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 28px;
-      background: #faf8f3;
+      background: transparent;
       font-family: Georgia, 'EB Garamond', serif;
     }
     .door {
