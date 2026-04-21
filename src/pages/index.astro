@@ -1,29 +1,5 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-
-// Featured studies — the latest post from each of these 5 categories
-const featuredCategories = [
-  'Scripture Unfiltered',
-  'Word Studies',
-  'The Law Still Stands',
-  'The Feasts',
-  'The Scrolls',
-] as const;
-
-const allPosts = await getCollection('posts', ({ data }) => {
-  return data.draft !== true;
-});
-
-const sortedByDate = [...allPosts].sort(
-  (a, b) => b.data.date.valueOf() - a.data.date.valueOf()
-);
-
-// For each category, pick the most recent post (or null if none exists)
-const displayPosts = featuredCategories.map((category) => ({
-  category,
-  post: sortedByDate.find((p) => p.data.category === category) ?? null,
-}));
 ---
 
 <BaseLayout
@@ -222,816 +198,909 @@ const displayPosts = featuredCategories.map((category) => ({
     }
   </style>
 
-  <!-- ========== What to Watch — Watchman's Desk Panel ========== -->
-  <section class="watch-panel" aria-labelledby="watch-title">
+  <!-- ========== Nine Doors — Home Page Grid ========== -->
+  <section class="row-intro">
+    <div class="ornament">✦   ✦   ✦</div>
+    <h2>Nine Doors. Choose Yours.</h2>
+    <p>Every door opens onto a different part of the work. Each one is a piece of the same picture: what modern Christianity hides, and what Scripture restores.</p>
+  </section>
 
-    <div class="panel-header">
-      <div class="panel-eyebrow">From the Watchman's Desk</div>
-      <h2 id="watch-title">What to Watch</h2>
-      <p class="panel-subtitle">Three current cycles worth a believer's attention — and what Scripture has to say about each.</p>
-    </div>
+  <section class="door-grid">
 
-    <div class="stripe-divider">
-      <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
-    </div>
+    <!-- ===== ROW 1 ===== -->
 
-    <div class="watch-grid">
+    <!-- Card: CHRISTIAN OR DEMONIC -->
+    <a href="/christian-or-demonic" class="door demon">
+      <div class="door-tag">A FIVE-PART EXAMINATION</div>
+      <h3 class="door-title">Christian <em>or</em> Demonic?</h3>
+      <p class="door-sub">Five pillars of modern Christianity. Five uncomfortable questions. <strong>Five answers the pulpit never gave you.</strong></p>
+      <p class="pillars">
+        <span>Prayer</span><span>Music</span><span>Canon</span><span>Translations</span><span>Symbols</span>
+      </p>
+      <span class="door-foot">Take the Examination</span>
+    </a>
 
-      <!-- ITEM 1: THE TRIUMPHAL ARCH -->
-      <a href="/american-idolatry/washington-dc" class="watch-card">
-        <div class="card-tag urgent">
-          <span>Approved · July 4 Unveiling</span>
-          <span class="star-mark">★</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-headline">The Triumphal Arch Is Coming to Washington</h3>
-          <p class="card-blurb">On April 16 the federal Commission of Fine Arts approved a 250-foot triumphal arch — a near-copy of Napoleon's Arc de Triomphe — to be unveiled on July 4, 2026. The form is Roman, the inheritance is Sol Invictus, and the date is the annual conjunction of our sun with Sirius. It is not a patriotic monument. It is the next stone in a sun-temple already standing.</p>
-          <span class="card-link">Read · The Sun Temple on the Potomac</span>
-        </div>
-      </a>
+    <!-- Card: NEWS / FIELD NOTES -->
+    <a href="/blog?category=field-notes" class="door news">
+      <div class="door-tag">★ THE WATCHMAN'S DESK ★</div>
+      <p class="dateline">21 April 2026 · Latest Brief</p>
+      <h3 class="door-title">The Triumphal Arch Comes to Washington</h3>
+      <p class="door-sub">On April 16 the federal Commission of Fine Arts approved a 250-foot Roman arch — copy of Napoleon's Sol Invictus monument. Unveiling targeted for July 4. The form is older than Rome. The date is older than the calendar.</p>
+      <span class="door-foot">All Field Notes</span>
+    </a>
 
-      <!-- ITEM 2: MIDDLE EAST WAR -->
-      <a href="/books/revelation#court-appeal-2" class="watch-card">
-        <div class="card-tag">
-          <span>On the Ground · Iran, Syria, Lebanon</span>
-          <span class="star-mark">★</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-headline">The War the Headlines Cannot Explain</h3>
-          <p class="card-blurb">News cycles will tell you who fired what missile at whom. They will not tell you who is in Jacob's land, by whose authority, or what role Scripture gives them in the closing record of the age. Court Appeal II places the full evidence before the heavenly courtroom — the Woman, the Beast in all its facets, and the Second Beast that has been providing the cover.</p>
-          <span class="card-link">Read · Court Appeal II</span>
-        </div>
-      </a>
+    <!-- Card: STUDIES (MANUSCRIPT) -->
+    <a href="/blog" class="door scripture">
+      <div class="hebrew-letter">א</div>
+      <div class="door-tag">SCRIPTURE UNFILTERED</div>
+      <h3 class="door-title">The Studies</h3>
+      <p class="door-sub">Verse by verse in the original Hebrew and Greek — recovering what was buried under tradition, denomination, and translation drift.</p>
+      <div class="latest-study">
+        <strong>★ Latest Study ★</strong>
+        Grace, New Creation, and Covenant Loyalty
+      </div>
+      <span class="door-foot">All Bible Studies</span>
+    </a>
 
-      <!-- ITEM 3: MEMORIAL DAY -->
-      <a href="/american-idolatry/memorial-veterans-day" class="watch-card">
-        <div class="card-tag horizon">
-          <span>On the Horizon · May 25</span>
-          <span class="star-mark">★</span>
-        </div>
-        <div class="card-body">
-          <h3 class="card-headline">Memorial Day Returns in Five Weeks</h3>
-          <p class="card-blurb">Eternal flames, flag-draped tombs, the bugler at Arlington — Americans are about to perform the same liturgy Rome used at the funerals of her deified emperors. The form has not changed since the cult of Vesta. The dead do not need worship. Yahuah will not share it. Now is the time to read what the rite actually is, before the day arrives.</p>
-          <span class="card-link">Read · The Cult of the Fallen Soldier</span>
-        </div>
-      </a>
+    <!-- ===== ROW 2 ===== -->
 
-    </div>
+    <!-- Card: SUN WORSHIP -->
+    <a href="/sun-worship" class="door sun">
+      <div class="sun-mark">☀</div>
+      <div class="door-tag">THE OLDEST COUNTERFEIT</div>
+      <h3 class="door-title">Sun Worship</h3>
+      <p class="door-sub">From Babel to Easter morning to the obelisks of every Western capital — the religion that never died, only changed costumes. Trace the same rite from Heliopolis to your Sunday service.</p>
+      <span class="door-foot">Open the Section</span>
+    </a>
 
-    <p class="panel-foot">
-      <strong>★ Watchman ★</strong><br>
-      "But if the watchman see the sword come, and blow not the trumpet, and the people be not warned…" — Ezekiel 33:6
-    </p>
+    <!-- Card: AMERICAN IDOLATRY -->
+    <a href="/american-idolatry" class="door america">
+      <div class="stripes-top"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+      <div class="blue-field">
+        <div class="stars-row">★ ★ ★ ★ ★ ★ ★</div>
+        <div class="door-tag">AMERICAN IDOLATRY</div>
+      </div>
+      <div class="body-area">
+        <h3 class="door-title">The Babylon We Were Born Into<em>nine studies · one cornerstone</em></h3>
+        <p class="door-sub">The patriotic holidays, monuments, oaths, and symbols Christians have been told are sacred — examined against what Scripture actually permits.</p>
+        <span class="door-foot">Open the Section</span>
+      </div>
+      <div class="stripes-bottom"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+    </a>
+
+    <!-- Card: BOOKS / LIBRARY -->
+    <a href="/books" class="door books">
+      <div class="spine-band-top"></div>
+      <div class="spine-content">
+        <div class="gold-mark">✦  ✦  ✦</div>
+        <div class="door-tag">FROM THE LIBRARY</div>
+        <h3 class="door-title">The Courtroom of Heaven</h3>
+        <p class="door-title-secondary">Revelation Putting Modern Teaching on Trial</p>
+        <p class="door-sub">Long-form teaching — the chapter studies, the Court Appeals, and the exhibits — that won't fit inside a blog post.</p>
+        <span class="door-foot">Browse the Library</span>
+      </div>
+      <div class="spine-band-bottom"></div>
+    </a>
+
+    <!-- ===== ROW 3 ===== -->
+
+    <!-- Card: TRINITY (TRIQUETRA SIGIL) -->
+    <a href="/trinity" class="door trinity">
+      <div class="sigil">
+        <svg viewBox="0 0 120 120" width="110" height="110" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#7ee5a0" stroke-width="2.2" stroke-linejoin="round" stroke-linecap="round">
+          <g transform="translate(60 62)">
+            <path d="M 0 -32 C -18 -18 -18 18 0 32 C 18 18 18 -18 0 -32 Z" transform="rotate(0)" />
+            <path d="M 0 -32 C -18 -18 -18 18 0 32 C 18 18 18 -18 0 -32 Z" transform="rotate(120)" />
+            <path d="M 0 -32 C -18 -18 -18 18 0 32 C 18 18 18 -18 0 -32 Z" transform="rotate(240)" />
+            <circle cx="0" cy="0" r="38" stroke-width="1.2" opacity="0.55" />
+          </g>
+        </svg>
+      </div>
+      <div class="door-tag">EXAMINING A SACRED COW</div>
+      <h3 class="door-title">The Trinity</h3>
+      <p class="door-sub">The symbol above is older than the church that claims it. So is the doctrine. <strong>Neither was given by Scripture.</strong> Trace where both actually came from — and what the text says instead.</p>
+      <span class="door-foot">Open the Section</span>
+    </a>
+
+    <!-- Card: FOREIGN FIRE (BLUE FLAMES) -->
+    <a href="/foreign-fire" class="door foreign-fire">
+      <div class="door-tag">STRANGE FIRE</div>
+      <h3 class="door-title">Foreign <em>Fire</em></h3>
+      <p class="door-sub">Nadab and Abihu offered fire Yahuah did not command. The fire that came out from Yahuah consumed them. The modern church has built an altar of unauthorized worship and called it holy.
+      <span class="verse-ref">Leviticus 10:1–2</span></p>
+      <span class="door-foot">Read the Warning</span>
+    </a>
+
+    <!-- Card: HEBREW (SANDSTONE TABLET WITH PALEO YHWH) -->
+    <a href="/hebrew" class="door hebrew">
+      <div class="yhwh-display">
+        <svg viewBox="0 0 320 100" width="260" height="82" xmlns="http://www.w3.org/2000/svg" fill="none" stroke="#3a2a14" stroke-width="5" stroke-linejoin="round" stroke-linecap="round">
+          <g transform="translate(260, 15)">
+            <line x1="10" y1="0" x2="10" y2="70" />
+            <line x1="10" y1="5" x2="38" y2="-5" />
+            <line x1="10" y1="30" x2="35" y2="22" />
+            <line x1="10" y1="55" x2="38" y2="50" />
+          </g>
+          <g transform="translate(180, 15)">
+            <path d="M 10 10 Q 10 0 20 0 Q 30 0 30 10 L 30 18" />
+            <line x1="30" y1="18" x2="30" y2="72" />
+          </g>
+          <g transform="translate(100, 15)">
+            <line x1="10" y1="0" x2="10" y2="70" />
+            <line x1="10" y1="5" x2="38" y2="-5" />
+            <line x1="10" y1="30" x2="35" y2="22" />
+            <line x1="10" y1="55" x2="38" y2="50" />
+          </g>
+          <g transform="translate(20, 20)">
+            <path d="M 5 0 L 25 5 L 20 25 L 40 25 L 38 55 L 55 60" />
+          </g>
+        </svg>
+      </div>
+      <div class="door-tag">THE FATHER'S NAME RESTORED</div>
+      <h3 class="door-title">Hebrew</h3>
+      <p class="door-sub">The four pictographs above are <em>YHWH</em> in paleo-Hebrew — the name the translators erased nearly seven thousand times. Word studies in the original language, restoring what was buried under Greek, Latin, and English.</p>
+      <span class="door-foot">Open the Section</span>
+    </a>
 
   </section>
 
   <style>
-    .watch-panel {
-      --navy: #0a1d3a;
-      --navy-deep: #061230;
-      --red: #b8232a;
-      --red-deep: #8a1a20;
-      --cream: #f5f1e6;
-      --parchment: #ebe3cf;
-      --gold: #c9a961;
-      --ink: #1a1a1a;
-      --ink-soft: #3a3a3a;
-
-      max-width: 1180px;
+    /* ===== ROW INTRO ===== */
+    .row-intro {
+      text-align: center;
+      padding: 70px 24px 30px;
+      font-family: Georgia, 'EB Garamond', serif;
+      background: #faf8f3;
+    }
+    .row-intro .ornament {
+      font-size: 1.2rem;
+      color: #b89a4e;
+      letter-spacing: 0.4em;
+      margin-bottom: 18px;
+    }
+    .row-intro h2 {
+      font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
+      font-size: clamp(1.8rem, 3.2vw, 2.4rem);
+      color: #1a1a1a;
+      margin-bottom: 12px;
+      font-weight: 700;
+    }
+    .row-intro p {
+      color: #6e5a3f;
+      max-width: 620px;
       margin: 0 auto;
-      padding: 50px 32px 60px;
-      background: var(--cream);
-      border-top: 6px solid var(--red);
-      border-bottom: 6px solid var(--navy);
-      position: relative;
-      font-family: Georgia, 'Times New Roman', serif;
-      color: var(--ink);
+      font-style: italic;
+      font-size: 1.05rem;
     }
 
-    /* Background star pattern */
-    .watch-panel::before {
+    /* ===== THE GRID ===== */
+    .door-grid {
+      max-width: 1280px;
+      margin: 30px auto 100px;
+      padding: 0 24px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      background: #faf8f3;
+      font-family: Georgia, 'EB Garamond', serif;
+    }
+    .door {
+      text-decoration: none;
+      color: inherit;
+      display: flex;
+      flex-direction: column;
+      min-height: 420px;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.12);
+    }
+    .door:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 18px 36px rgba(0,0,0,0.22);
+    }
+
+    .door-tag {
+      font-size: 0.68rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+    .door-title {
+      font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
+      font-size: 1.85rem;
+      font-weight: 800;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    .door-sub {
+      font-size: 0.95rem;
+      line-height: 1.55;
+      margin-bottom: 20px;
+      flex-grow: 1;
+    }
+    .door-foot {
+      font-size: 0.72rem;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      font-weight: 700;
+      padding-top: 14px;
+      border-top: 1px solid currentColor;
+      opacity: 0.85;
+    }
+    .door-foot::after { content: ' →'; }
+
+    /* ============ CARD: NEWSPAPER (FIELD NOTES) ============ */
+    .door.news {
+      background: #f5f1e6;
+      color: #1a1a1a;
+      padding: 36px 30px 30px;
+      border: 1px solid #c9c1ac;
+      background-image:
+        repeating-linear-gradient(0deg, transparent, transparent 32px, rgba(0,0,0,0.025) 32px, rgba(0,0,0,0.025) 33px);
+    }
+    .door.news .door-tag {
+      color: #b8232a;
+      font-family: 'Times New Roman', serif;
+      border-top: 3px double #1a1a1a;
+      border-bottom: 1px solid #1a1a1a;
+      padding: 8px 0;
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .door.news .door-title {
+      font-family: 'Times New Roman', Georgia, serif;
+      text-align: center;
+      line-height: 1;
+      border-bottom: 1px solid #1a1a1a;
+      padding-bottom: 16px;
+      margin-bottom: 16px;
+      font-style: italic;
+      text-transform: uppercase;
+      letter-spacing: 0.02em;
+      font-size: 1.7rem;
+    }
+    .door.news .dateline {
+      font-family: 'Times New Roman', serif;
+      font-size: 0.72rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: #6e5a3f;
+      text-align: center;
+      margin-bottom: 14px;
+      font-weight: 700;
+    }
+    .door.news .door-sub {
+      text-align: justify;
+      font-size: 0.92rem;
+      line-height: 1.5;
+      font-family: 'Times New Roman', Georgia, serif;
+    }
+    .door.news .door-sub::first-letter {
+      font-size: 2.4rem;
+      float: left;
+      line-height: 1;
+      padding: 4px 8px 0 0;
+      font-weight: 700;
+      font-family: 'Playfair Display', serif;
+    }
+    .door.news .door-foot {
+      color: #b8232a;
+      border-top: 1px solid #1a1a1a;
+    }
+
+    /* ============ CARD: CHRISTIAN OR DEMONIC (FIRE) ============ */
+    .door.demon {
+      background:
+        radial-gradient(ellipse at 50% 100%, #b8232a 0%, #6a0d10 35%, #1a0203 75%, #000 100%);
+      color: #f7e4d0;
+      padding: 36px 30px 30px;
+      border: 1px solid #2a0506;
+      position: relative;
+    }
+    .door.demon::before {
       content: '';
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(circle at 8% 15%, var(--navy) 1.5px, transparent 2px),
-        radial-gradient(circle at 92% 25%, var(--red) 1.5px, transparent 2px),
-        radial-gradient(circle at 25% 80%, var(--navy) 1.5px, transparent 2px),
-        radial-gradient(circle at 78% 75%, var(--red) 1.5px, transparent 2px),
-        radial-gradient(circle at 50% 50%, var(--navy) 1px, transparent 1.5px);
-      background-size: 600px 600px, 500px 500px, 700px 700px, 550px 550px, 400px 400px;
-      opacity: 0.06;
+        radial-gradient(circle at 30% 110%, rgba(255,160,40,0.4) 0%, transparent 25%),
+        radial-gradient(circle at 70% 105%, rgba(255,80,20,0.5) 0%, transparent 30%),
+        radial-gradient(circle at 50% 95%, rgba(255,200,80,0.3) 0%, transparent 20%);
       pointer-events: none;
+      animation: flicker-red 4s ease-in-out infinite alternate;
     }
-
-    .watch-panel .panel-header {
-      text-align: center;
-      margin-bottom: 40px;
-      position: relative;
+    @keyframes flicker-red {
+      0%, 100% { opacity: 0.85; }
+      40% { opacity: 1; }
+      60% { opacity: 0.7; }
+      80% { opacity: 0.95; }
     }
-    .watch-panel .panel-eyebrow {
+    .door.demon > * { position: relative; z-index: 1; }
+    .door.demon .door-tag {
+      color: #ffb070;
+      font-weight: 800;
+      letter-spacing: 0.4em;
+    }
+    .door.demon .door-title {
+      color: #fff;
+      text-shadow: 0 0 16px rgba(255,80,20,0.6), 0 2px 4px rgba(0,0,0,0.5);
+      font-style: italic;
+      line-height: 1;
+      font-size: 2.1rem;
+    }
+    .door.demon .door-title em {
+      color: #ff5018;
+      font-style: italic;
+      text-shadow: 0 0 20px #ff5018;
+    }
+    .door.demon .door-sub {
+      color: #f0d8b8;
+      font-size: 0.95rem;
+    }
+    .door.demon .door-sub strong {
+      color: #ff8838;
+      font-style: italic;
+      font-weight: 600;
+    }
+    .door.demon .door-foot {
+      color: #ffb070;
+      border-color: rgba(255,176,112,0.4);
+    }
+    .door.demon .pillars {
+      margin: 14px 0 16px;
+      font-size: 0.85rem;
+      color: #f7c89a;
+      letter-spacing: 0.05em;
+      line-height: 1.7;
+    }
+    .door.demon .pillars span {
       display: inline-block;
-      font-size: 0.7rem;
-      letter-spacing: 0.5em;
-      color: var(--red);
-      text-transform: uppercase;
-      font-weight: 700;
+      margin-right: 12px;
+      padding-right: 12px;
+      border-right: 1px solid rgba(247,200,154,0.3);
+    }
+    .door.demon .pillars span:last-child { border-right: none; padding-right: 0; margin-right: 0; }
+
+    /* ============ CARD: AMERICAN IDOLATRY (FLAG) ============ */
+    .door.america {
+      background: #f5f1e6;
+      color: #0a1d3a;
+      border: 1px solid #0a1d3a;
+      padding: 0;
+      overflow: hidden;
+    }
+    .door.america .stripes-top { display: flex; height: 16px; }
+    .door.america .stripes-top span { flex: 1; }
+    .door.america .stripes-top span:nth-child(odd) { background: #b8232a; }
+    .door.america .stripes-top span:nth-child(even) { background: #f5f1e6; }
+
+    .door.america .blue-field {
+      background: #0a1d3a;
+      color: #f5f1e6;
+      padding: 18px 30px;
+      text-align: center;
+      position: relative;
+      border-bottom: 6px solid #b8232a;
+    }
+    .door.america .blue-field .stars-row {
+      color: #f5f1e6;
+      letter-spacing: 0.4em;
+      font-size: 0.85rem;
+      margin-bottom: 8px;
+      opacity: 0.9;
+    }
+    .door.america .blue-field .door-tag {
+      color: #fff;
+      margin: 0;
+      font-weight: 800;
+      letter-spacing: 0.35em;
+    }
+    .door.america .body-area {
+      padding: 26px 30px 30px;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+      background-image:
+        radial-gradient(circle at 15% 25%, rgba(184,35,42,0.05) 0%, transparent 30%),
+        radial-gradient(circle at 80% 75%, rgba(10,29,58,0.06) 0%, transparent 30%);
+    }
+    .door.america .door-title {
+      color: #0a1d3a;
+      text-align: center;
+      line-height: 1.05;
       margin-bottom: 14px;
     }
-    .watch-panel .panel-eyebrow::before { content: '★ '; }
-    .watch-panel .panel-eyebrow::after { content: ' ★'; }
-
-    .watch-panel h2 {
-      font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 900;
-      color: var(--navy-deep);
-      margin: 0 0 12px;
-      letter-spacing: -0.01em;
-    }
-    .watch-panel .panel-subtitle {
+    .door.america .door-title em {
+      color: #b8232a;
       font-style: italic;
-      font-size: 1.05rem;
-      color: var(--ink-soft);
-      max-width: 540px;
-      margin: 0 auto;
-      line-height: 1.5;
-    }
-
-    .watch-panel .stripe-divider {
-      display: flex;
-      justify-content: center;
-      gap: 3px;
-      margin: 28px 0 36px;
-    }
-    .watch-panel .stripe-divider span {
       display: block;
-      width: 22px;
-      height: 3px;
+      font-size: 1rem;
+      font-weight: 500;
+      margin-top: 8px;
+      letter-spacing: 0.05em;
     }
-    .watch-panel .stripe-divider span:nth-child(odd) { background: var(--red); }
-    .watch-panel .stripe-divider span:nth-child(even) { background: var(--navy); }
-
-    .watch-panel .watch-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .watch-panel .watch-card {
-      background: #ffffff;
-      border: 2px solid var(--navy);
-      padding: 0;
-      display: flex;
-      flex-direction: column;
-      text-decoration: none;
-      color: var(--ink);
-      position: relative;
-      transition: all 0.25s ease;
-      overflow: hidden;
-    }
-    .watch-panel .watch-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 14px 28px rgba(10,29,58,0.2);
-    }
-
-    .watch-panel .card-tag {
-      background: var(--navy-deep);
-      color: var(--cream);
-      padding: 10px 18px;
-      font-size: 0.7rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      font-weight: 700;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    .watch-panel .card-tag.urgent { background: var(--red); }
-    .watch-panel .card-tag.horizon { background: var(--gold); color: var(--navy-deep); }
-    .watch-panel .card-tag .star-mark { font-size: 0.85rem; }
-
-    .watch-panel .card-body {
-      padding: 26px 24px 22px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
-    }
-
-    .watch-panel .card-headline {
-      font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
-      font-size: 1.45rem;
-      font-weight: 800;
-      color: var(--navy-deep);
-      line-height: 1.15;
-      margin: 0 0 14px;
-    }
-    .watch-panel .card-blurb {
-      font-size: 0.95rem;
-      line-height: 1.6;
-      color: var(--ink-soft);
-      margin: 0 0 22px;
-      flex-grow: 1;
-    }
-    .watch-panel .card-link {
-      display: inline-block;
-      color: var(--red-deep);
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      padding-top: 14px;
-      border-top: 1px solid var(--parchment);
-      text-decoration: none;
-    }
-    .watch-panel .card-link::after {
-      content: ' →';
-      transition: transform 0.2s ease;
-      display: inline-block;
-    }
-    .watch-panel .watch-card:hover .card-link::after {
-      transform: translateX(4px);
-    }
-
-    .watch-panel .panel-foot {
+    .door.america .door-sub {
+      color: #2c2c2c;
       text-align: center;
-      margin-top: 36px;
-      font-style: italic;
-      font-size: 0.9rem;
-      color: var(--ink-soft);
+      font-size: 0.92rem;
     }
-    .watch-panel .panel-foot strong {
-      color: var(--navy-deep);
-      font-style: normal;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      font-size: 0.75rem;
+    .door.america .door-foot {
+      color: #b8232a;
+      text-align: center;
+      border-color: #0a1d3a;
     }
+    .door.america .stripes-bottom { display: flex; height: 8px; margin-top: auto; }
+    .door.america .stripes-bottom span { flex: 1; }
+    .door.america .stripes-bottom span:nth-child(odd) { background: #b8232a; }
+    .door.america .stripes-bottom span:nth-child(even) { background: #0a1d3a; }
 
-    @media (max-width: 900px) {
-      .watch-panel .watch-grid { grid-template-columns: 1fr; gap: 18px; }
-      .watch-panel { padding: 40px 20px; }
-    }
-  </style>
-
-  <!-- Christian or Demonic? — Five-Part Examination -->
-  <section class="cod-section">
-    <div class="cod-inner">
-
-      <p class="cod-eyebrow"><span>A Five-Part Examination</span></p>
-
-      <h2 class="cod-headline">
-        Christian <span class="or">or</span> <span class="demonic">Demonic?</span>
-      </h2>
-
-      <p class="cod-subhead">
-        Five pillars of modern Christianity. Five uncomfortable questions.
-        Five answers the pulpit never gave you.
-      </p>
-
-      <p class="cod-verdict">Let Scripture &amp; History Decide</p>
-
-      <div class="cod-grid">
-
-        <!-- CARD 1: PRAYER -->
-        <article class="cod-card" data-accent="prayer">
-          <span class="cod-chapter">CHAPTER 01</span>
-          <span class="cod-chapter-big">1</span>
-          <p class="cod-card-topic">Prayer</p>
-          <h3 class="cod-card-title">It's a Courtroom Word. Not a Feeling.</h3>
-          <p class="cod-card-hook">
-            Ask any believer what prayer means and you'll hear <em>"talking to God."</em>
-            But the Hebrew word <strong>palal</strong> doesn't mean talking — it means
-            to <strong>judge</strong> and <strong>mediate</strong>. Every Hebrew word for prayer
-            is a job description. And only one Person fills it.
-          </p>
-          <div class="cod-card-links">
-            <a href="/studies/prayer" class="cod-link">
-              <span>Read the Study</span><span class="arrow">→</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- CARD 2: MUSIC -->
-        <article class="cod-card" data-accent="music">
-          <span class="cod-chapter">CHAPTER 02</span>
-          <span class="cod-chapter-big">2</span>
-          <p class="cod-card-topic">Music</p>
-          <h3 class="cod-card-title">The Sound of Self-Worship.</h3>
-          <p class="cod-card-hook">
-            Every believer can spot AC/DC. But the music on Sunday morning — the hypnotic
-            loops, the build-and-release, the trance-inducing key changes — was
-            <em>engineered</em>. Not by Yahuah. By the one whose tabrets and pipes were
-            prepared in him on the day he was created.
-          </p>
-          <div class="cod-card-links">
-            <a href="/studies/music" class="cod-link">
-              <span>Read the Study</span><span class="arrow">→</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- CARD 3: CANON (SPECIAL — TWO LINKS) -->
-        <article class="cod-card" data-accent="canon">
-          <span class="cod-chapter">CHAPTER 03</span>
-          <span class="cod-chapter-big">3</span>
-          <p class="cod-card-topic">The Canon</p>
-          <h3 class="cod-card-title">Who Gave You the New Testament?</h3>
-          <p class="cod-card-hook">
-            Show me where Yahuah authorized it. Show me where the Messiah approved it.
-            Show me where the apostles signed off. You <em>can't</em>.
-            The only stamp it carries is from men already deep inside a religion
-            forged by Constantine.
-          </p>
-          <div class="cod-card-links">
-            <a href="/studies/canon" class="cod-link">
-              <span>Read the Teaching</span><span class="arrow">→</span>
-            </a>
-            <a href="/studies/canon/parable" class="cod-link cod-link-mystery">
-              <span><span class="sparkle">✦</span> Unveil the Mystery — Enter the Parable</span>
-              <span class="arrow">→</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- CARD 4: TRANSLATIONS -->
-        <article class="cod-card" data-accent="trans">
-          <span class="cod-chapter">CHAPTER 04</span>
-          <span class="cod-chapter-big">4</span>
-          <p class="cod-card-topic">Translations</p>
-          <h3 class="cod-card-title">You Haven't Been Reading the Word.</h3>
-          <p class="cod-card-hook">
-            The Father's name erased nearly <strong>seven thousand times</strong>.
-            A Trinity verse inserted that was never in the Greek. The Hebrew vowel-pointed
-            a thousand years after Messiah by men who rejected Him. You haven't been reading
-            Scripture. You've been reading <em>an edition</em>.
-          </p>
-          <div class="cod-card-links">
-            <a href="/studies/translations" class="cod-link">
-              <span>Read the Study</span><span class="arrow">→</span>
-            </a>
-          </div>
-        </article>
-
-        <!-- CARD 5: LANGUAGE & SYMBOLS -->
-        <article class="cod-card" data-accent="symbols">
-          <span class="cod-chapter">CHAPTER 05</span>
-          <span class="cod-chapter-big">5</span>
-          <p class="cod-card-topic">Language &amp; Symbols</p>
-          <h3 class="cod-card-title">Do You Know What You're Worshipping?</h3>
-          <p class="cod-card-hook">
-            The cross belonged to Tammuz. The fish belonged to Dagon. The candles were
-            Mithraic. Dice were tools of <em>witchcraft</em>. And Ezekiel 8 already called
-            bowing toward the sunrise <em>the greatest abomination</em> — long before
-            anyone invented an Easter service.
-          </p>
-          <div class="cod-card-links">
-            <a href="/studies/language-symbols" class="cod-link">
-              <span>Read the Study</span><span class="arrow">→</span>
-            </a>
-          </div>
-        </article>
-
-      </div>
-
-      <div class="cod-footer-line">
-        <p>
-          Every claim below is measured against the text in the languages it was given.
-          No creeds. No councils. No comfortable conclusions.
-        </p>
-      </div>
-
-    </div>
-  </section>
-
-  <style>
-    /* ===========================================================
-       "Christian or Demonic?" Home Page Feature Section
-       Namespaced with cod- prefix — no collision with global styles
-       =========================================================== */
-    .cod-section {
-      --cod-ink: #1a1a1a;
-      --cod-ink-soft: #2c2c2c;
-      --cod-gray: #595959;
-      --cod-gray-light: #8a8a8a;
-      --cod-navy: #1F3864;
-      --cod-navy-deep: #142547;
-      --cod-cream: #f7f3ea;
-      --cod-paper: #faf8f3;
-      --cod-rule: #d9d4c7;
-      --cod-blood: #7a1a1a;
-      --cod-gold: #a67f00;
-      --cod-gold-bright: #c99a17;
-      --cod-shadow: rgba(20, 37, 71, 0.12);
-
-      background: var(--cod-paper);
-      padding: 5rem 1.5rem;                 /* matches Featured Studies py-20 px-6 */
-      font-family: Georgia, 'Times New Roman', serif;
-      color: var(--cod-ink);
+    /* ============ CARD: STUDIES (MANUSCRIPT) ============ */
+    .door.scripture {
+      background: linear-gradient(180deg, #f4ead5 0%, #e8d9b0 100%);
+      color: #2e2417;
+      padding: 36px 30px 30px;
+      border: 1px solid #c8b780;
       position: relative;
-      overflow: hidden;
     }
-
-    @media (min-width: 768px) {
-      .cod-section { padding-top: 6rem; padding-bottom: 6rem; }  /* md:py-24 */
-    }
-
-    .cod-section::before {
-      content: "";
+    .door.scripture::before {
+      content: '';
       position: absolute;
       inset: 0;
       background-image:
-        radial-gradient(circle at 20% 30%, rgba(31,56,100,0.03) 0%, transparent 50%),
-        radial-gradient(circle at 80% 70%, rgba(122,26,26,0.02) 0%, transparent 50%);
+        repeating-linear-gradient(92deg, transparent, transparent 38px, rgba(110,90,63,0.04) 38px, rgba(110,90,63,0.04) 39px),
+        radial-gradient(ellipse 240px 100px at 30% 20%, rgba(168,90,60,0.08) 0%, transparent 60%);
       pointer-events: none;
-      z-index: 0;
     }
-
-    .cod-inner {
-      max-width: 80rem;                     /* matches max-w-7xl (1280px) */
-      margin: 0 auto;
-      position: relative;
-      z-index: 1;
-    }
-
-    .cod-eyebrow {
+    .door.scripture > * { position: relative; z-index: 1; }
+    .door.scripture .hebrew-letter {
+      font-family: 'Times New Roman', serif;
+      font-size: 5.2rem;
+      color: #a85a3c;
+      opacity: 0.55;
       text-align: center;
-      font-size: 13px;
-      letter-spacing: 0.4em;
-      color: var(--cod-gray);
-      text-transform: uppercase;
-      margin-bottom: 20px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+    .door.scripture .door-tag {
+      color: #a85a3c;
+      text-align: center;
+      font-style: italic;
+      letter-spacing: 0.35em;
+    }
+    .door.scripture .door-title {
+      font-family: 'Cormorant Garamond', 'EB Garamond', Georgia, serif;
+      color: #2e2417;
+      text-align: center;
+      font-style: italic;
       font-weight: 600;
-    }
-
-    .cod-eyebrow span {
-      display: inline-block;
-      padding: 0 24px;
-      position: relative;
-    }
-
-    .cod-eyebrow span::before,
-    .cod-eyebrow span::after {
-      content: "";
-      position: absolute;
-      top: 50%;
-      width: 40px;
-      height: 1px;
-      background: var(--cod-gray-light);
-    }
-
-    .cod-eyebrow span::before { right: 100%; }
-    .cod-eyebrow span::after  { left: 100%; }
-
-    .cod-headline {
-      text-align: center;
-      font-size: clamp(1.875rem, 4vw, 3rem); /* scale down to match Featured Studies h2 */
       line-height: 1.1;
-      font-weight: 700;
-      color: var(--cod-ink);
-      margin: 0 0 12px 0;
-      letter-spacing: -0.015em;
+      margin-bottom: 12px;
     }
-
-    .cod-headline .or {
-      font-style: italic;
-      color: var(--cod-gray);
-      font-weight: 300;
-      display: inline-block;
-      margin: 0 0.15em;
-    }
-
-    .cod-headline .demonic {
-      color: var(--cod-blood);
-      font-weight: 700;
-      letter-spacing: -0.01em;
-    }
-
-    .cod-subhead {
+    .door.scripture .door-sub {
+      color: #4a3b27;
       text-align: center;
-      font-size: 1rem;
-      font-style: italic;
-      color: var(--cod-gray);
-      max-width: 680px;
-      margin: 0 auto 12px;
-      line-height: 1.55;
+      font-size: 0.94rem;
+      font-family: 'EB Garamond', Georgia, serif;
     }
-
-    .cod-verdict {
-      text-align: center;
-      font-size: 0.82rem;
+    .door.scripture .latest-study {
+      background: rgba(255,255,255,0.4);
+      border-left: 3px solid #a85a3c;
+      padding: 12px 16px;
+      margin: 14px 0 16px;
+      font-style: italic;
+      font-size: 0.88rem;
+      color: #4a3b27;
+    }
+    .door.scripture .latest-study strong {
+      display: block;
+      color: #2e2417;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 0.7rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: var(--cod-navy);
-      font-weight: 600;
-      margin-bottom: 3rem;                  /* matches Featured Studies mb-12 */
+      margin-bottom: 4px;
     }
-
-    .cod-verdict::before,
-    .cod-verdict::after {
-      content: " ◆ ";
-      color: var(--cod-navy);
-      margin: 0 14px;
-      opacity: 0.5;
-    }
-
-    .cod-grid {
-      display: grid;
-      grid-template-columns: 1fr;           /* mobile: 1 col */
-      gap: 1.25rem;                         /* matches Featured Studies gap-5 */
-      margin-bottom: 0;
-    }
-
-    @media (min-width: 640px) {             /* sm */
-      .cod-grid { grid-template-columns: repeat(2, 1fr); }
-    }
-
-    @media (min-width: 1024px) {            /* lg */
-      .cod-grid { grid-template-columns: repeat(5, 1fr); }
-    }
-
-    .cod-card {
-      background: linear-gradient(180deg, #fefdfa 0%, var(--cod-paper) 100%);
-      border: 1px solid var(--cod-rule);
-      padding: 1.5rem;                      /* matches Featured Studies p-6 */
-      position: relative;
-      transition: all 0.4s cubic-bezier(0.2, 0.8, 0.2, 1);
-      display: flex;
-      flex-direction: column;
-      box-shadow: 0 2px 8px var(--cod-shadow);
-    }
-
-    .cod-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 12px 32px rgba(20, 37, 71, 0.18);
-      border-color: var(--cod-navy);
-    }
-
-    .cod-chapter {
-      position: absolute;
-      top: 14px;
-      right: 16px;
-      font-size: 0.6rem;
-      letter-spacing: 0.25em;
-      color: var(--cod-gray-light);
-      font-weight: 600;
-    }
-
-    .cod-chapter-big {
-      position: absolute;
-      bottom: -8px;
-      right: -4px;
-      font-size: 80px;
-      line-height: 1;
-      font-weight: 700;
-      color: var(--cod-navy);
-      opacity: 0.04;
-      pointer-events: none;
-      user-select: none;
-    }
-
-    .cod-card-topic {
-      font-size: 0.65rem;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: var(--cod-navy);
-      font-weight: 700;
-      margin-bottom: 0.75rem;               /* mb-3 */
-    }
-
-    .cod-card-title {
-      font-size: 1.125rem;                  /* text-lg, matches Featured Studies h3 */
-      line-height: 1.3;
-      font-weight: 600;
-      color: var(--cod-ink);
-      margin: 0 0 0.75rem 0;                /* mb-3 */
-      letter-spacing: -0.005em;
-    }
-
-    .cod-card-hook {
-      font-size: 0.875rem;                  /* text-sm, matches Featured Studies p */
-      line-height: 1.55;
-      color: var(--cod-ink-soft);
-      margin: 0 0 1.25rem 0;                /* mb-5 */
-      flex-grow: 1;
-      display: -webkit-box;
-      -webkit-line-clamp: 5;                /* matches the ~4-line clamp on Featured */
-      line-clamp: 5;
-      -webkit-box-orient: vertical;
-      overflow: hidden;
-    }
-
-    .cod-card-hook strong {
-      color: var(--cod-navy);
-      font-weight: 600;
-    }
-
-    .cod-card-hook em {
-      color: var(--cod-blood);
-      font-style: italic;
-      font-weight: 500;
-    }
-
-    .cod-card-links {
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      margin-top: auto;
-      padding-top: 0.75rem;                 /* matches Featured Studies pt-4 footer */
-      border-top: 1px solid var(--cod-rule);
-      position: relative;
-      z-index: 2;
-    }
-
-    .cod-link {
-      display: inline-flex;
-      align-items: center;
-      justify-content: space-between;
-      font-size: 0.8rem;
-      font-weight: 600;
-      color: var(--cod-navy);
-      text-decoration: none;
-      padding: 6px 0;
-      border-bottom: 1px solid transparent;
-      transition: all 0.25s ease;
-      letter-spacing: 0.02em;
-    }
-
-    .cod-link:hover {
-      color: var(--cod-navy-deep);
-      border-bottom-color: var(--cod-navy);
-      padding-left: 4px;
-    }
-
-    .cod-link .arrow {
-      font-size: 1.1em;
-      transition: transform 0.25s ease;
-    }
-
-    .cod-link:hover .arrow {
-      transform: translateX(4px);
-    }
-
-    .cod-link-mystery {
-      background: linear-gradient(135deg, var(--cod-navy) 0%, var(--cod-navy-deep) 100%);
-      color: var(--cod-gold-bright);
-      padding: 9px 12px;
-      border: 1px solid var(--cod-navy-deep);
-      font-style: italic;
-      font-size: 0.72rem;
-      letter-spacing: 0.03em;
-      position: relative;
-      overflow: hidden;
-      margin-top: 2px;
-      line-height: 1.3;
-    }
-
-    .cod-link-mystery::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: -100%;
-      width: 100%;
-      height: 100%;
-      background: linear-gradient(90deg, transparent, rgba(201, 154, 23, 0.15), transparent);
-      transition: left 0.6s ease;
-    }
-
-    .cod-link-mystery:hover {
-      color: #fff;
-      border-color: var(--cod-gold-bright);
-      padding-left: 20px;
-      border-bottom-color: var(--cod-gold-bright);
-    }
-
-    .cod-link-mystery:hover::before {
-      left: 100%;
-    }
-
-    .cod-link-mystery .sparkle {
-      color: var(--cod-gold-bright);
-      margin-right: 6px;
-      font-size: 0.9em;
-    }
-
-    .cod-card[data-accent="prayer"]   { border-top: 3px solid var(--cod-navy); }
-    .cod-card[data-accent="music"]    { border-top: 3px solid var(--cod-navy); }
-    .cod-card[data-accent="canon"]    { border-top: 3px solid var(--cod-blood); }
-    .cod-card[data-accent="trans"]    { border-top: 3px solid var(--cod-navy); }
-    .cod-card[data-accent="symbols"]  { border-top: 3px solid var(--cod-navy); }
-
-    .cod-footer-line {
+    .door.scripture .door-foot {
+      color: #a85a3c;
       text-align: center;
-      margin-top: 3rem;                     /* mt-12 */
-      padding-top: 2rem;
-      border-top: 1px solid var(--cod-rule);
+      border-color: rgba(168,90,60,0.4);
     }
 
-    .cod-footer-line p {
+    /* ============ CARD: BOOKS (LEATHER VOLUME) ============ */
+    .door.books {
+      background: linear-gradient(135deg, #2a1a0e 0%, #4a2a18 50%, #2a1a0e 100%);
+      color: #d4ac4f;
+      padding: 0;
+      border: 1px solid #1a0c06;
+      position: relative;
+    }
+    .door.books .spine-band-top,
+    .door.books .spine-band-bottom {
+      background: linear-gradient(180deg, #5a3a22 0%, #3a2010 100%);
+      height: 24px;
+      border-top: 1px solid #6a4a32;
+      border-bottom: 1px solid #1a0c06;
+      box-shadow: inset 0 1px 1px rgba(0,0,0,0.4);
+    }
+    .door.books .spine-band-top { border-top: 1px solid #1a0c06; }
+    .door.books .spine-content {
+      flex-grow: 1;
+      padding: 32px 30px 30px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      border: 2px solid #8a6d2e;
+      border-left: none;
+      border-right: none;
+      background-image:
+        radial-gradient(ellipse 280px 220px at center, rgba(212,172,79,0.08) 0%, transparent 70%),
+        repeating-linear-gradient(45deg, transparent, transparent 30px, rgba(0,0,0,0.04) 30px, rgba(0,0,0,0.04) 31px);
+      position: relative;
+    }
+    .door.books .spine-content::before,
+    .door.books .spine-content::after {
+      content: '';
+      position: absolute;
+      left: 30px; right: 30px;
+      height: 1px;
+      background: #8a6d2e;
+      opacity: 0.6;
+    }
+    .door.books .spine-content::before { top: 16px; }
+    .door.books .spine-content::after { bottom: 16px; }
+    .door.books .gold-mark {
+      color: #d4ac4f;
+      font-family: 'Times New Roman', serif;
+      font-size: 1.1rem;
+      letter-spacing: 0.4em;
+      margin-bottom: 16px;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+    .door.books .door-tag {
+      color: #c4974f;
+      font-style: italic;
+      letter-spacing: 0.35em;
+    }
+    .door.books .door-title {
+      font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+      color: #e8c878;
+      font-style: italic;
+      line-height: 1.05;
+      margin: 14px 0 8px;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.6), 0 0 10px rgba(212,172,79,0.2);
+      font-size: 1.85rem;
+    }
+    .door.books .door-title-secondary {
+      font-family: 'EB Garamond', Georgia, serif;
+      font-size: 0.95rem;
+      color: #c4974f;
+      font-style: italic;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+    }
+    .door.books .door-sub {
+      color: #b89a6e;
       font-size: 0.9rem;
       font-style: italic;
-      color: var(--cod-gray);
-      max-width: 620px;
-      margin: 0 auto;
-      line-height: 1.6;
+      font-family: 'EB Garamond', Georgia, serif;
+    }
+    .door.books .door-foot {
+      color: #d4ac4f;
+      border-color: rgba(212,172,79,0.4);
     }
 
-    /* Small-screen adjustments */
-    @media (max-width: 639px) {
-      .cod-verdict { margin-bottom: 2rem; font-size: 0.75rem; }
-      .cod-verdict::before,
-      .cod-verdict::after { margin: 0 6px; }
+    /* ============ CARD: SUN WORSHIP (RADIANT) ============ */
+    .door.sun {
+      background: radial-gradient(circle at 50% 50%, #fef3a8 0%, #f5cf4a 18%, #e8932a 38%, #b85510 65%, #5a2410 90%, #2a0f08 100%);
+      color: #2a1408;
+      padding: 36px 30px 30px;
+      border: 1px solid #5a2410;
+      position: relative;
+      overflow: hidden;
+    }
+    .door.sun::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        conic-gradient(from 0deg at 50% 50%,
+          rgba(255,240,180,0.3) 0deg, transparent 8deg, transparent 22deg,
+          rgba(255,220,140,0.25) 30deg, transparent 38deg, transparent 52deg,
+          rgba(255,240,180,0.3) 60deg, transparent 68deg, transparent 82deg,
+          rgba(255,220,140,0.25) 90deg, transparent 98deg, transparent 112deg,
+          rgba(255,240,180,0.3) 120deg, transparent 128deg, transparent 142deg,
+          rgba(255,220,140,0.25) 150deg, transparent 158deg, transparent 172deg,
+          rgba(255,240,180,0.3) 180deg, transparent 188deg, transparent 202deg,
+          rgba(255,220,140,0.25) 210deg, transparent 218deg, transparent 232deg,
+          rgba(255,240,180,0.3) 240deg, transparent 248deg, transparent 262deg,
+          rgba(255,220,140,0.25) 270deg, transparent 278deg, transparent 292deg,
+          rgba(255,240,180,0.3) 300deg, transparent 308deg, transparent 322deg,
+          rgba(255,220,140,0.25) 330deg, transparent 338deg, transparent 352deg,
+          rgba(255,240,180,0.3) 360deg);
+      pointer-events: none;
+      animation: rotate-rays 60s linear infinite;
+    }
+    @keyframes rotate-rays {
+      from { transform: rotate(0deg); }
+      to { transform: rotate(360deg); }
+    }
+    .door.sun::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(circle at 50% 50%, rgba(255,250,220,0.5) 0%, transparent 25%);
+      pointer-events: none;
+      animation: pulse-glow 5s ease-in-out infinite alternate;
+    }
+    @keyframes pulse-glow {
+      from { opacity: 0.6; }
+      to { opacity: 1; }
+    }
+    .door.sun > * { position: relative; z-index: 1; }
+    .door.sun .sun-mark {
+      text-align: center;
+      font-size: 3.2rem;
+      line-height: 1;
+      color: #fef3a8;
+      text-shadow: 0 0 20px #fef3a8, 0 0 40px #f5cf4a, 0 0 60px #e8932a;
+      margin-bottom: 8px;
+    }
+    .door.sun .door-tag {
+      color: #2a0f08;
+      text-align: center;
+      font-weight: 800;
+      letter-spacing: 0.4em;
+      text-shadow: 0 1px 2px rgba(255,240,180,0.6);
+    }
+    .door.sun .door-title {
+      color: #2a0f08;
+      text-align: center;
+      font-style: italic;
+      line-height: 1.05;
+      text-shadow: 0 1px 3px rgba(255,240,180,0.6);
+      font-size: 2rem;
+    }
+    .door.sun .door-sub {
+      color: #2a1408;
+      text-align: center;
+      font-size: 0.92rem;
+      font-weight: 500;
+      text-shadow: 0 1px 2px rgba(255,240,180,0.4);
+      background: rgba(254,243,168,0.35);
+      padding: 12px;
+      border-radius: 2px;
+      backdrop-filter: blur(2px);
+    }
+    .door.sun .door-foot {
+      color: #2a0f08;
+      text-align: center;
+      border-color: rgba(42,15,8,0.4);
+      text-shadow: 0 1px 1px rgba(255,240,180,0.5);
     }
 
-    @media (prefers-reduced-motion: no-preference) {
-      .cod-card {
-        opacity: 0;
-        transform: translateY(20px);
-        animation: codReveal 0.7s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
-      }
-      .cod-card:nth-child(1) { animation-delay: 0.05s; }
-      .cod-card:nth-child(2) { animation-delay: 0.15s; }
-      .cod-card:nth-child(3) { animation-delay: 0.25s; }
-      .cod-card:nth-child(4) { animation-delay: 0.35s; }
-      .cod-card:nth-child(5) { animation-delay: 0.45s; }
+    /* ============ CARD: TRINITY (MYSTICAL SIGIL) ============ */
+    .door.trinity {
+      background:
+        radial-gradient(ellipse at 50% 40%, #1a3326 0%, #0a1a12 45%, #030806 90%, #000 100%);
+      color: #a8d8b4;
+      padding: 36px 30px 30px;
+      border: 1px solid #0a1a12;
+      position: relative;
+      overflow: hidden;
+    }
+    .door.trinity::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 50% 40%, rgba(80,200,130,0.12) 0%, transparent 55%),
+        radial-gradient(circle at 30% 80%, rgba(40,140,90,0.08) 0%, transparent 40%);
+      pointer-events: none;
+      animation: haze-drift 8s ease-in-out infinite alternate;
+    }
+    @keyframes haze-drift {
+      from { opacity: 0.7; transform: translateY(0); }
+      to { opacity: 1; transform: translateY(-6px); }
+    }
+    .door.trinity > * { position: relative; z-index: 1; }
+    .door.trinity .sigil {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 14px;
+    }
+    .door.trinity .sigil svg {
+      filter: drop-shadow(0 0 12px rgba(80,220,140,0.5));
+      animation: sigil-pulse 4s ease-in-out infinite alternate;
+    }
+    @keyframes sigil-pulse {
+      from { filter: drop-shadow(0 0 8px rgba(80,220,140,0.35)); }
+      to { filter: drop-shadow(0 0 18px rgba(80,220,140,0.65)); }
+    }
+    .door.trinity .door-tag {
+      color: #6fd69a;
+      text-align: center;
+      letter-spacing: 0.4em;
+      font-weight: 700;
+    }
+    .door.trinity .door-title {
+      color: #e0f5e8;
+      text-align: center;
+      font-style: italic;
+      line-height: 1.05;
+      text-shadow: 0 0 14px rgba(80,220,140,0.4), 0 2px 4px rgba(0,0,0,0.6);
+      font-size: 2rem;
+    }
+    .door.trinity .door-sub {
+      color: #9cc8ac;
+      text-align: center;
+      font-size: 0.94rem;
+    }
+    .door.trinity .door-sub strong {
+      color: #c8f0d4;
+      font-style: italic;
+      font-weight: 600;
+    }
+    .door.trinity .door-foot {
+      color: #6fd69a;
+      text-align: center;
+      border-color: rgba(111,214,154,0.35);
+    }
 
-      @keyframes codReveal {
-        to { opacity: 1; transform: translateY(0); }
-      }
+    /* ============ CARD: FOREIGN FIRE (BLUE FLAMES) ============ */
+    .door.foreign-fire {
+      background:
+        radial-gradient(ellipse at 50% 100%, #4a90ff 0%, #1a3a80 25%, #0a1840 55%, #040820 85%, #000 100%);
+      color: #c8dcff;
+      padding: 36px 30px 30px;
+      border: 1px solid #040820;
+      position: relative;
+      overflow: hidden;
+    }
+    .door.foreign-fire::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 25% 110%, rgba(80,180,255,0.5) 0%, transparent 28%),
+        radial-gradient(circle at 65% 108%, rgba(140,100,255,0.45) 0%, transparent 32%),
+        radial-gradient(circle at 50% 100%, rgba(180,220,255,0.35) 0%, transparent 22%),
+        radial-gradient(circle at 80% 112%, rgba(80,140,255,0.3) 0%, transparent 25%);
+      pointer-events: none;
+      animation: flicker-blue 3.5s ease-in-out infinite alternate;
+    }
+    @keyframes flicker-blue {
+      0%, 100% { opacity: 0.9; }
+      30% { opacity: 1; }
+      55% { opacity: 0.75; }
+      80% { opacity: 0.95; }
+    }
+    .door.foreign-fire > * { position: relative; z-index: 1; }
+    .door.foreign-fire .door-tag {
+      color: #9cc8ff;
+      font-weight: 800;
+      letter-spacing: 0.4em;
+      text-align: center;
+    }
+    .door.foreign-fire .door-title {
+      color: #f0f8ff;
+      text-align: center;
+      text-shadow: 0 0 16px rgba(100,180,255,0.65), 0 2px 4px rgba(0,0,0,0.5);
+      font-style: italic;
+      line-height: 1;
+      font-size: 2rem;
+    }
+    .door.foreign-fire .door-title em {
+      color: #6eaaff;
+      font-style: italic;
+      text-shadow: 0 0 20px #6eaaff;
+    }
+    .door.foreign-fire .door-sub {
+      color: #c8dcff;
+      text-align: center;
+      font-size: 0.94rem;
+    }
+    .door.foreign-fire .verse-ref {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.75rem;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #80b0ff;
+      font-weight: 700;
+    }
+    .door.foreign-fire .door-foot {
+      color: #9cc8ff;
+      text-align: center;
+      border-color: rgba(156,200,255,0.4);
+    }
+
+    /* ============ CARD: HEBREW (SANDSTONE TABLET) ============ */
+    .door.hebrew {
+      background:
+        linear-gradient(180deg, #e8d4a0 0%, #d4b880 50%, #b89a5a 100%);
+      color: #3a2a14;
+      padding: 36px 30px 30px;
+      border: 1px solid #8a6a3a;
+      position: relative;
+      overflow: hidden;
+      box-shadow:
+        inset 0 2px 0 rgba(255,240,200,0.35),
+        inset 0 -4px 10px rgba(60,40,20,0.2),
+        0 4px 14px rgba(0,0,0,0.15);
+    }
+    .door.hebrew::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(ellipse 300px 200px at 30% 20%, rgba(60,40,20,0.08) 0%, transparent 70%),
+        radial-gradient(ellipse 200px 150px at 80% 75%, rgba(60,40,20,0.1) 0%, transparent 70%),
+        radial-gradient(ellipse 180px 120px at 65% 35%, rgba(255,240,200,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .door.hebrew::after {
+      content: '';
+      position: absolute;
+      inset: 6px;
+      border: 1px solid rgba(138,106,58,0.35);
+      pointer-events: none;
+    }
+    .door.hebrew > * { position: relative; z-index: 1; }
+
+    .door.hebrew .yhwh-display {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin-bottom: 14px;
+      padding: 12px 0;
+      position: relative;
+    }
+    .door.hebrew .yhwh-display svg {
+      filter: drop-shadow(1px 1px 0 rgba(60,40,20,0.35)) drop-shadow(-1px -1px 0 rgba(255,240,200,0.2));
+    }
+
+    .door.hebrew .door-tag {
+      color: #7a5a2a;
+      text-align: center;
+      letter-spacing: 0.4em;
+      font-weight: 800;
+    }
+    .door.hebrew .door-title {
+      color: #3a2a14;
+      text-align: center;
+      font-style: italic;
+      font-family: 'Cormorant Garamond', 'Playfair Display', Georgia, serif;
+      line-height: 1.05;
+      font-size: 2rem;
+      text-shadow: 1px 1px 0 rgba(255,240,200,0.3);
+    }
+    .door.hebrew .door-sub {
+      color: #4a3820;
+      text-align: center;
+      font-size: 0.93rem;
+      font-family: 'EB Garamond', Georgia, serif;
+    }
+    .door.hebrew .door-sub em {
+      color: #7a5a2a;
+      font-style: italic;
+      font-weight: 600;
+    }
+    .door.hebrew .door-foot {
+      color: #7a5a2a;
+      text-align: center;
+      border-color: rgba(122,90,42,0.45);
+    }
+
+    /* ===== RESPONSIVE ===== */
+    @media (max-width: 980px) {
+      .door-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 600px) {
+      .door-grid { grid-template-columns: 1fr; }
     }
   </style>
-
-  <!-- Featured Studies — 5 across, one latest post per category -->
-  <section class="py-20 md:py-24 border-t border-[var(--sand-dark)]">
-    <div class="container mx-auto px-6">
-      <div class="max-w-7xl mx-auto">
-        <h2 class="text-3xl md:text-4xl font-bold text-center mb-3" style="font-family: var(--font-display); color: var(--deep-earth);">
-          Featured Studies
-        </h2>
-        <p class="text-center mb-12 max-w-2xl mx-auto" style="color: var(--ink-faded);">
-          The latest study from each of our core categories.
-        </p>
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-5">
-          {displayPosts.map(({ category, post }) => (
-            post ? (
-              <article class="card group flex flex-col">
-                <div class="p-6 flex flex-col flex-1">
-                  <div class="tag mb-3" style="color: var(--bronze);">
-                    {category}
-                  </div>
-                  <h3 class="text-lg font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
-                    <a href={`/blog/${post.slug}`} class="hover:text-[var(--bronze)] transition-colors" style="color: var(--deep-earth);">
-                      {post.data.title}
-                    </a>
-                  </h3>
-                  <p class="text-sm leading-relaxed mb-5 line-clamp-4 flex-1" style="color: var(--ink-faded);">
-                    {post.data.description}
-                  </p>
-                  <div class="flex items-center justify-between text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
-                    <time datetime={post.data.date.toISOString()}>
-                      {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                    </time>
-                    <a
-                      href={`/blog/${post.slug}`}
-                      class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
-                      style="color: var(--bronze);"
-                    >
-                      Read <span aria-hidden="true">&rarr;</span>
-                    </a>
-                  </div>
-                </div>
-              </article>
-            ) : (
-              <article class="card flex flex-col opacity-70">
-                <div class="p-6 flex flex-col flex-1">
-                  <div class="tag mb-3" style="color: var(--bronze);">
-                    {category}
-                  </div>
-                  <h3 class="text-lg font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
-                    Coming soon
-                  </h3>
-                  <p class="text-sm leading-relaxed flex-1 italic" style="color: var(--ink-faded);">
-                    The first study in this category has not been published yet.
-                  </p>
-                </div>
-              </article>
-            )
-          ))}
-        </div>
-        <div class="text-center mt-12">
-          <a
-            href="/blog"
-            class="inline-flex items-center gap-2 font-medium transition-colors"
-            style="font-family: var(--font-display); color: var(--bronze); letter-spacing: 1px;"
-          >
-            View All Studies <span aria-hidden="true">&rarr;</span>
-          </a>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Our Approach -->
   <section style="font-family: Georgia, 'Times New Roman', serif; background: #0E0C08; padding: 2.5rem 1.5rem; text-align: center;">
