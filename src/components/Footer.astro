@@ -2,12 +2,12 @@
 const currentYear = new Date().getFullYear();
 ---
 
-<footer class="footer mt-20" data-pagefind-ignore>
-  <div class="container mx-auto px-6 py-12">
-    <div class="grid grid-cols-1 md:grid-cols-3 gap-10">
+<footer class="footer mt-10" data-pagefind-ignore>
+  <div class="container mx-auto px-6 py-6">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
       <!-- About -->
       <div>
-        <h3 class="text-lg font-semibold mb-4 tracking-widest uppercase text-sm" style="font-family: var(--font-display);">
+        <h3 class="text-base font-semibold mb-3 tracking-widest uppercase text-sm" style="font-family: var(--font-display);">
           Nazaryah
         </h3>
         <p class="text-sm leading-relaxed" style="color: var(--stone-light); font-family: var(--font-body);">
@@ -15,36 +15,36 @@ const currentYear = new Date().getFullYear();
         </p>
       </div>
 
-      <!-- Quick Links -->
+      <!-- Stay Updated (replaces Quick Links) -->
       <div>
-        <h3 class="text-base font-semibold mb-4 tracking-widest uppercase text-sm" style="font-family: var(--font-display);">
-          Quick Links
+        <h3 class="text-base font-semibold mb-3 tracking-widest uppercase text-sm" style="font-family: var(--font-display);">
+          Stay Updated
         </h3>
-        <ul class="space-y-3 text-sm" style="font-family: var(--font-body);">
-          <li>
-            <a href="/about" class="inline-flex items-center gap-1">
-              <span>About Us</span>
-            </a>
-          </li>
-          <li>
-            <a href="/blog" class="inline-flex items-center gap-1">
-              <span>Blog & Studies</span>
-            </a>
-          </li>
-          <li>
-            <a href="/contact" class="inline-flex items-center gap-1">
-              <span>Contact</span>
-            </a>
-          </li>
-        </ul>
+        <p class="text-sm mb-3 leading-relaxed" style="color: var(--stone-light); font-family: var(--font-body);">
+          New studies, straight to your inbox. No spam.
+        </p>
+        <form class="flex flex-col sm:flex-row gap-2">
+          <input
+            type="email"
+            placeholder="Your email"
+            class="input-field flex-1 text-sm"
+            required
+          />
+          <button
+            type="submit"
+            class="btn btn-stone px-4 py-2 text-sm whitespace-nowrap"
+          >
+            Subscribe
+          </button>
+        </form>
       </div>
 
       <!-- Resources -->
       <div>
-        <h3 class="text-base font-semibold mb-4 tracking-widest uppercase text-sm" style="font-family: var(--font-display);">
+        <h3 class="text-base font-semibold mb-3 tracking-widest uppercase text-sm" style="font-family: var(--font-display);">
           Resources
         </h3>
-        <ul class="space-y-3 text-sm" style="font-family: var(--font-body);">
+        <ul class="space-y-2 text-sm" style="font-family: var(--font-body);">
           <li>
             <a href="/blog?category=exegetical" class="inline-flex items-center gap-1">
               <span>Exegetical Studies</span>
@@ -64,7 +64,7 @@ const currentYear = new Date().getFullYear();
       </div>
     </div>
 
-    <div class="border-t border-[rgba(139,125,107,0.25)] mt-10 pt-8 text-center">
+    <div class="border-t border-[rgba(139,125,107,0.25)] mt-5 pt-4 text-center">
       <p class="text-sm" style="color: var(--stone); font-family: var(--font-display); letter-spacing: 1px;">
         &copy; {currentYear} Nazaryah. All rights reserved.
       </p>
