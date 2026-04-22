@@ -1,0 +1,281 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Christian or Demonic? — Nazaryah"
+  description="Five pillars of modern Christianity. Five uncomfortable questions. Five answers the pulpit never gave you. Prayer, Music, Canon, Translations, and Language & Symbols — examined one at a time."
+>
+  <div class="cod-wrap">
+
+    <!-- HERO -->
+    <section class="cod-hero">
+      <p class="cod-label">&#8213; A Five-Part Examination &#8213;</p>
+      <h1 class="cod-title">Christian <em>or</em> Demonic?</h1>
+      <p class="cod-sub">
+        Let Scripture &amp; history decide.
+      </p>
+    </section>
+
+    <!-- INTRO -->
+    <section class="cod-section">
+      <div class="cod-prose">
+        <p>
+          Ask any believer what prayer means, what music is for, where their Bible came from, why they worship on Sunday, or what the cross, the fish, and the steeple actually are — and you will get answers passed down from a pulpit, not tested against the text. Five pillars of modern Christianity, five uncomfortable questions, and five answers Scripture gives that almost no one asks.
+        </p>
+        <p>
+          Each study below walks through one pillar. The Hebrew and Greek words behind the concept. The first-century context that has been quietly replaced. The pagan original underneath the Christian costume. No creeds. No councils. No comfortable conclusions — only the text in the languages it was given.
+        </p>
+      </div>
+    </section>
+
+    <!-- FIVE STUDY CARDS -->
+    <section class="cod-cta-section">
+      <p class="cod-cta-label">&#8213; Choose Your Study &#8213;</p>
+      <h2 class="cod-cta-title">The Five Pillars, One at a Time</h2>
+
+      <div class="cod-card-grid">
+
+        <a href="/studies/prayer" class="cod-card">
+          <span class="cod-card-chapter">Chapter One</span>
+          <span class="cod-card-title">Prayer</span>
+          <span class="cod-card-poetic">It's a Courtroom Word. Not a Feeling.</span>
+          <span class="cod-card-body">The Hebrew <em>palal</em> does not mean talking — it means to judge and mediate. Every Hebrew word for prayer is a job description, and only one Person fills it.</span>
+        </a>
+
+        <a href="/studies/music" class="cod-card">
+          <span class="cod-card-chapter">Chapter Two</span>
+          <span class="cod-card-title">Music</span>
+          <span class="cod-card-poetic">The Sound of Self-Worship.</span>
+          <span class="cod-card-body">The hypnotic loops, the build-and-release, the trance-inducing key changes — engineered not by Yahuah but by the one whose tabrets and pipes were prepared in him on the day he was created.</span>
+        </a>
+
+        <a href="/studies/canon" class="cod-card">
+          <span class="cod-card-chapter">Chapter Three</span>
+          <span class="cod-card-title">The Canon</span>
+          <span class="cod-card-poetic">Who Gave You the New Testament?</span>
+          <span class="cod-card-body">Show me where Yahuah authorized it. Show me where the Messiah approved it. Show me where the apostles signed off. The only stamp it carries is from men already deep inside a religion forged by Constantine.</span>
+        </a>
+
+        <a href="/studies/translations" class="cod-card">
+          <span class="cod-card-chapter">Chapter Four</span>
+          <span class="cod-card-title">Translations</span>
+          <span class="cod-card-poetic">You Haven't Been Reading the Word.</span>
+          <span class="cod-card-body">The Father's name erased nearly seven thousand times. A Trinity verse inserted that was never in the Greek. The Hebrew vowel-pointed a thousand years after Messiah by men who rejected Him.</span>
+        </a>
+
+        <a href="/studies/language-symbols" class="cod-card">
+          <span class="cod-card-chapter">Chapter Five</span>
+          <span class="cod-card-title">Language &amp; Symbols</span>
+          <span class="cod-card-poetic">Do You Know What You're Worshipping?</span>
+          <span class="cod-card-body">The cross belonged to Tammuz. The fish belonged to Dagon. The candles were Mithraic. Ezekiel 8 already called bowing toward the sunrise the greatest abomination — long before anyone invented an Easter service.</span>
+        </a>
+
+      </div>
+    </section>
+
+    <!-- FOOTER QUOTE -->
+    <section class="cod-footer-quote">
+      <p class="cod-quote-text">"Prove all things; hold fast that which is good."</p>
+      <p class="cod-quote-ref">— 1 Thessalonians 5:21</p>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .cod-wrap {
+    background:
+      radial-gradient(ellipse at 50% 100%, rgba(184,35,42,0.18) 0%, transparent 55%),
+      linear-gradient(180deg, #1a0203 0%, #0a0102 50%, #050000 100%);
+    color: #f7e4d0;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  .cod-hero {
+    text-align: center;
+    padding: 5rem 1.5rem 3.5rem;
+    border-bottom: 1px solid #3a0a0c;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(255,80,20,0.18), transparent 70%),
+      linear-gradient(180deg, #0a0203 0%, #1a0506 100%);
+  }
+  .cod-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #ffb070;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .cod-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #fff;
+    margin: 0 0 1rem;
+    line-height: 1.05;
+    font-style: italic;
+    text-shadow: 0 0 18px rgba(255,80,20,0.5), 0 2px 4px rgba(0,0,0,0.5);
+  }
+  .cod-title em {
+    color: #ff5018;
+    font-style: italic;
+    font-weight: 600;
+    text-shadow: 0 0 22px #ff5018;
+  }
+  .cod-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #f7c89a;
+    font-style: italic;
+    max-width: 540px;
+    margin: 0 auto;
+    line-height: 1.6;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+  }
+
+  .cod-section {
+    padding: 3.5rem 1.5rem;
+    border-bottom: 1px solid #2a0608;
+  }
+  .cod-prose {
+    max-width: 680px;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.85;
+    color: #f0d8b8;
+  }
+  .cod-prose p { margin-bottom: 1.5rem; }
+  .cod-prose p:last-child { margin-bottom: 0; }
+
+  .cod-cta-section {
+    text-align: center;
+    padding: 4.5rem 1.5rem 5rem;
+    border-bottom: 1px solid #2a0608;
+  }
+  .cod-cta-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a3a20;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .cod-cta-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3vw, 2.1rem);
+    font-weight: 600;
+    color: #fff5e0;
+    margin: 0 0 2.5rem;
+  }
+
+  .cod-card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 1.5rem;
+    max-width: 1120px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .cod-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    padding: 1.75rem 1.6rem 1.6rem;
+    background: linear-gradient(180deg, #7a1a1a 0%, #4a0a0e 55%, #2a0506 100%);
+    border: 1px solid rgba(255, 120, 60, 0.25);
+    border-radius: 10px;
+    box-shadow:
+      0 4px 18px rgba(120, 20, 20, 0.35),
+      inset 0 2px 4px rgba(255, 160, 100, 0.18),
+      inset 0 -2px 4px rgba(0,0,0,0.45);
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+  }
+  .cod-card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(circle at 50% 110%, rgba(255,150,60,0.25) 0%, transparent 35%);
+    pointer-events: none;
+    opacity: 0.7;
+    transition: opacity 0.25s ease;
+  }
+  .cod-card:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(180deg, #9a2a28 0%, #6a1618 55%, #3e0a0c 100%);
+    box-shadow:
+      0 10px 26px rgba(160, 40, 40, 0.45),
+      inset 0 2px 4px rgba(255, 170, 120, 0.25),
+      inset 0 -2px 4px rgba(0,0,0,0.45);
+  }
+  .cod-card:hover::before { opacity: 1; }
+
+  .cod-card > * { position: relative; z-index: 1; }
+
+  .cod-card-chapter {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    color: #ffb070;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin-bottom: 0.6rem;
+  }
+  .cod-card-title {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 1.65rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #fff5e0;
+    line-height: 1.15;
+    margin-bottom: 0.5rem;
+  }
+  .cod-card-poetic {
+    display: block;
+    font-style: italic;
+    font-size: 1rem;
+    color: #ff8838;
+    line-height: 1.4;
+    margin-bottom: 1rem;
+  }
+  .cod-card-body {
+    display: block;
+    font-size: 0.95rem;
+    color: #f0d8b8;
+    line-height: 1.65;
+  }
+  .cod-card-body em {
+    font-style: italic;
+    color: #ffc49a;
+  }
+
+  .cod-footer-quote {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    background: linear-gradient(180deg, #050000 0%, #000 100%);
+  }
+  .cod-quote-text {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    font-style: italic;
+    color: #f7c89a;
+    max-width: 620px;
+    margin: 0 auto 0.5rem;
+    line-height: 1.65;
+  }
+  .cod-quote-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #7a3a20;
+    text-transform: uppercase;
+  }
+</style>
