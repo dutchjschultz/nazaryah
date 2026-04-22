@@ -15,7 +15,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         Discoveries that emerge only when you read the original text — passages that reward the careful reader with something no commentary ever told you.
       </p>
 
-      <div class="gems-grid" style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+      <div class="gems-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 1.5rem;">
 
         <!-- Card 1: Psalm 119 -->
         <a href="/hebrew/psalm-119" style="text-decoration: none; display: block; background: #130e06; border: 1px solid #3a2510; border-left: 3px solid #BA7517; border-radius: 6px; padding: 1.75rem; transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='#1a1007'; this.style.borderColor='#BA7517';" onmouseout="this.style.background='#130e06'; this.style.borderColor='#3a2510'; this.style.borderLeftColor='#BA7517';">
@@ -30,16 +30,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <div style="margin-top: 1.25rem; font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517;">Enter Study &#8594;</div>
         </a>
 
-        <!-- Card 2: Trinity Timeline -->
-        <a href="/trinity/history" style="text-decoration: none; display: block; background: #130e06; border: 1px solid #3a2510; border-left: 3px solid #5a3010; border-radius: 6px; padding: 1.75rem; transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='#1a1007'; this.style.borderLeftColor='#BA7517';" onmouseout="this.style.background='#130e06'; this.style.borderLeftColor='#5a3010';">
-          <div style="font-family: var(--font-display); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #BA7517; margin-bottom: 0.75rem;">&#10022; Timeline</div>
-          <div style="height: 3.25rem; display: flex; align-items: center; margin-bottom: 0.75rem;">
-            <div style="font-family: var(--font-display); font-size: 1.6rem; color: #4a3010; letter-spacing: 0.05em; line-height: 1;">325 AD</div>
+        <!-- Card 2: The Beat and the Melody -->
+        <a href="/blog/the-beat-and-the-melody" style="text-decoration: none; display: block; background: #130e06; border: 1px solid #3a2510; border-left: 3px solid #BA7517; border-radius: 6px; padding: 1.75rem; transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='#1a1007'; this.style.borderColor='#BA7517';" onmouseout="this.style.background='#130e06'; this.style.borderColor='#3a2510'; this.style.borderLeftColor='#BA7517';">
+          <div style="font-family: var(--font-display); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #BA7517; margin-bottom: 0.75rem;">&#10022; Study</div>
+          <div style="display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <span style="font-size: 1.8rem; color: #c4a46b; line-height: 1;">תֹּף</span>
+            <span style="font-size: 1.2rem; color: #6a4820; line-height: 1;">◆</span>
+            <span style="font-size: 1.8rem; color: #c4a46b; line-height: 1;">כִּנּוֹר</span>
           </div>
-          <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #f0e0bf; margin: 0 0 0.25rem;">The Doctrine That Rewrote the Father</h3>
-          <div style="font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #6a4820; margin-bottom: 0.75rem;">Trinity · A Historical Timeline</div>
-          <p style="font-size: 0.88rem; color: #a89f8c; line-height: 1.7; margin: 0;">From the Shema to the Council of Nicaea — how a pagan concept became the cornerstone of Christian orthodoxy. Trace the exact councils, controversies, and compromises that transformed the one Elohim of Israel into a triune God.</p>
-          <div style="margin-top: 1.25rem; font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517;">View Timeline &#8594;</div>
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #f0e0bf; margin: 0 0 0.25rem;">The Beat and the Melody</h3>
+          <div style="font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #6a4820; margin-bottom: 0.75rem;">Toph &amp; Kinnor · Flesh &amp; Spirit</div>
+          <p style="font-size: 0.88rem; color: #a89f8c; line-height: 1.7; margin: 0;">Two instruments, two realms. The tambourine beats in the body and lives in time; the harp vibrates in the spirit realm and is the only instrument named in heaven. A hidden map of flesh and spirit written into the music of Scripture.</p>
+          <div style="margin-top: 1.25rem; font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517;">Read the Study &#8594;</div>
+        </a>
+
+        <!-- Card 3: Fate and Fortune (Gad and Meni) -->
+        <a href="/blog/fate-and-fortune" style="text-decoration: none; display: block; background: #130e06; border: 1px solid #3a2510; border-left: 3px solid #BA7517; border-radius: 6px; padding: 1.75rem; transition: background 0.2s, border-color 0.2s;" onmouseover="this.style.background='#1a1007'; this.style.borderColor='#BA7517';" onmouseout="this.style.background='#130e06'; this.style.borderColor='#3a2510'; this.style.borderLeftColor='#BA7517';">
+          <div style="font-family: var(--font-display); font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: #BA7517; margin-bottom: 0.75rem;">&#10022; Study</div>
+          <div style="display: flex; align-items: baseline; gap: 0.75rem; margin-bottom: 0.75rem;">
+            <span style="font-size: 1.8rem; color: #c4a46b; line-height: 1;">גַּד</span>
+            <span style="font-size: 1.2rem; color: #6a4820; line-height: 1;">◆</span>
+            <span style="font-size: 1.8rem; color: #c4a46b; line-height: 1;">מְנִי</span>
+          </div>
+          <h3 style="font-family: var(--font-display); font-size: 1.1rem; font-weight: 700; color: #f0e0bf; margin: 0 0 0.25rem;">Fate and Fortune</h3>
+          <div style="font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #6a4820; margin-bottom: 0.75rem;">Gad &amp; Meni · Isaiah 65:11</div>
+          <p style="font-size: 0.88rem; color: #a89f8c; line-height: 1.7; margin: 0;">Two Hebrew names the KJV buried as "troop" and "number" are actually the pagan gods of Fortune and Fate. Trace them from Isaiah's counterfeit communion table to Belshazzar's wall, to the casino, the wheel, and the cartoons still selling the same religion.</p>
+          <div style="margin-top: 1.25rem; font-family: var(--font-display); font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; color: #BA7517;">Read the Study &#8594;</div>
         </a>
 
       </div>
