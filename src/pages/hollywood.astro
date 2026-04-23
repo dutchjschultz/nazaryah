@@ -73,12 +73,19 @@ const soon = STUDIOS.filter((s) => s.status === 'coming-soon');
       <p class="hw-sub">The stories being told to a generation</p>
     </section>
 
-    <!-- ── OPENING COPY (PLACEHOLDER — REPLACE WITH SUPPLIED COPY) ── -->
-    <section class="hw-section">
+    <!-- ── OPENING INTRO ── -->
+    <section class="hw-section hw-intro">
       <div class="hw-prose">
-        <p class="hw-placeholder">
-          [Opening copy for the Hollywood section will go here. Drop the supplied text into this block — paragraph by paragraph — and remove this placeholder.]
-        </p>
+        <h2 class="hw-intro-heading">Hollywood: A Name That Tells the Truth</h2>
+        <p>Names matter. Scripture affirms this from Genesis forward — Yahuah names things according to their nature, and the enemy has always mimicked this pattern, hiding meaning in plain sight. The word "Hollywood" is no exception. Split it open and you find exactly what it has always been: <strong>Holly Wood</strong> — the wood of the holly tree.</p>
+        <p>To the Druids — the pagan priesthood of the British Isles — holly was one of the most sacred woods of their craft. It was the favored material for the <strong>magician's wand</strong>, believed to channel power for divination, spellwork, and commanding spirits. Celtic tradition personified the plant in the <strong>Holly King</strong>, a horned deity who ruled the dark half of the year. The sharp thorns were snares for demons. The red berries were drops of sacrificial blood. Holly was, in every sense, the wood of the witch.</p>
+        <p>So when a patch of Southern California was christened "Hollywood" and a global entertainment empire rose from it — an empire that has poured out a century of content celebrating sorcery, sexual rebellion, and the mocking of Yahushua the Messiah — the name was not accidental. The wand was simply traded for a camera, the incantation for a script, the casting circle for a soundstage. But the craft is the same.</p>
+        <p>This page exists to pull back the curtain on how the holly wand of the ancient sorcerer became the most effective discipleship machine the adversary has ever built — and what believers walking in the Torah of Yahuah need to recognize, renounce, and come out of.</p>
+
+        <a class="hw-callout-link" href="/holidays/christmas#holly">
+          <span class="hw-callout-arrow">→</span>
+          <span class="hw-callout-text"><strong>The Christmas Connection:</strong> How the sorcerer's wood ended up on every sanctuary door in December — and why Scripture calls it out by name.</span>
+        </a>
       </div>
     </section>
 
@@ -195,13 +202,52 @@ const soon = STUDIOS.filter((s) => s.status === 'coming-soon');
   .hw-prose em { color: #d49555; font-style: italic; }
   .hw-prose strong { color: #f0d8b8; }
 
-  .hw-placeholder {
-    font-style: italic;
-    color: #806a55;
-    border-left: 2px dashed #4a2a3a;
-    padding: 0.5rem 1rem;
-    background: rgba(40, 16, 28, 0.18);
+  /* ── INTRO ── */
+  .hw-intro { padding-bottom: 3rem; }
+
+  .hw-intro-heading {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.6rem, 3vw, 2.1rem);
+    font-weight: 700;
+    color: #f5deb3;
+    letter-spacing: 0.01em;
+    line-height: 1.2;
+    margin: 0 0 1.75rem;
+    text-align: center;
+    text-shadow: 0 0 24px rgba(200, 40, 90, 0.18);
+  }
+
+  .hw-callout-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.9rem;
+    margin: 2.5rem auto 0;
+    padding: 1.1rem 1.4rem;
+    border-left: 3px solid #a84a55;
     border-radius: 0 4px 4px 0;
+    background: linear-gradient(90deg, rgba(120, 30, 50, 0.22) 0%, rgba(40, 14, 26, 0.35) 100%);
+    color: #f0d8b8;
+    text-decoration: none;
+    font-size: 1rem;
+    line-height: 1.6;
+    transition: background 0.25s ease, border-color 0.25s ease, transform 0.25s ease;
+  }
+  .hw-callout-link:hover {
+    background: linear-gradient(90deg, rgba(168, 74, 85, 0.28) 0%, rgba(60, 22, 40, 0.45) 100%);
+    border-color: #d49555;
+    transform: translateX(2px);
+  }
+  .hw-callout-arrow {
+    color: #d49555;
+    font-family: 'Cinzel', serif;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+    line-height: 1.4;
+  }
+  .hw-callout-text { flex: 1; }
+  .hw-callout-text strong {
+    color: #f5deb3;
+    font-weight: 700;
   }
 
   /* ── GRID SECTIONS ── */

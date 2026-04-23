@@ -303,16 +303,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             </div>
           </a>
 
-          <!-- Library -->
-          <a class="home-card card-library" href="/books">
-            <div>
-              <div class="diamonds">◆ ◆ ◆</div>
-              <div class="kicker">FROM THE LIBRARY</div>
-              <h3 class="card-title">The Courtroom of Heaven</h3>
-              <div class="sub-italic">Revelation Putting Modern Teaching on Trial</div>
-              <p class="card-body">Long-form teaching — the chapter studies, the Court Appeals, and the exhibits — that won't fit inside a blog post.</p>
+          <!-- Library (open-book layout) -->
+          <a class="home-card card-library book-card" href="/books">
+            <div class="book-inner">
+              <div class="spine" aria-hidden="true"></div>
+
+              <div class="page page-left">
+                <span class="corner tl" aria-hidden="true"></span>
+                <span class="corner bl" aria-hidden="true"></span>
+                <p class="eyebrow-book">Exhibit I</p>
+                <p class="ornament-book">◆ ◆ ◆</p>
+                <div class="scripture-block">
+                  <span class="drop-cap">A</span>nd I saw a great white throne, and him that sat on it, from whose face the earth and the heaven fled away; and there was found no place for them.
+                  <br><br>
+                  And I saw the dead, small and great, stand before Yahuah; and the books were opened: and another book was opened, which is the Book of Life.
+                  <span class="verse-ref">— Revelation 20:11–12</span>
+                </div>
+              </div>
+
+              <div class="page page-right">
+                <span class="corner tr" aria-hidden="true"></span>
+                <span class="corner br" aria-hidden="true"></span>
+                <p class="eyebrow-book">From the Library</p>
+                <h3 class="book-title">The Courtroom<br>of Heaven</h3>
+                <span class="book-divider" aria-hidden="true"></span>
+                <p class="book-subtitle">Revelation Putting Modern Teaching on Trial</p>
+                <p class="book-description">The chapter studies, the Court Appeals, and the exhibits — that won't fit inside a blog post.</p>
+                <span class="book-cta">Browse the Library →</span>
+              </div>
             </div>
-            <div class="card-cta">BROWSE THE LIBRARY →</div>
           </a>
         </div>
       </section>
@@ -547,35 +566,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
             <div class="card-cta">OPEN THE SECTION →</div>
           </a>
 
-          <!-- Hollywood (Disney, Pixar, Fantasy, Sci-Fi, Symbols) -->
-          <a class="home-card card-children" href="/hollywood">
-            <div>
-              <svg class="castle" viewBox="0 0 90 90">
-                <circle cx="68" cy="18" r="10" fill="#c8a0f5" opacity="0.4"/>
-                <g fill="#0a1428" stroke="#a88ad6" stroke-width="0.5">
-                  <rect x="20" y="40" width="50" height="40"/>
-                  <rect x="12" y="30" width="14" height="50"/>
-                  <rect x="64" y="26" width="14" height="54"/>
-                  <rect x="38" y="22" width="14" height="58"/>
-                  <path d="M 10 30 L 19 18 L 28 30 Z"/>
-                  <path d="M 36 22 L 45 8 L 54 22 Z"/>
-                  <path d="M 62 26 L 71 14 L 80 26 Z"/>
-                  <rect x="14" y="40" width="2" height="4"/>
-                  <rect x="18" y="40" width="2" height="4"/>
-                  <rect x="22" y="40" width="2" height="4"/>
-                </g>
-                <rect x="42" y="40" width="2.5" height="4" fill="#ffc8c8" opacity="0.85"/>
-                <rect x="46" y="40" width="2.5" height="4" fill="#ffc8c8" opacity="0.85"/>
-                <rect x="42" y="52" width="2.5" height="4" fill="#ffc8c8" opacity="0.6"/>
-                <rect x="68" y="48" width="2.5" height="4" fill="#ffc8c8" opacity="0.7"/>
-                <rect x="16" y="52" width="2.5" height="4" fill="#ffc8c8" opacity="0.7"/>
-                <path d="M 30 80 Q 35 75, 40 80 Q 45 85, 50 80" fill="none" stroke="#a88ad6" stroke-width="0.8" opacity="0.5"/>
-              </svg>
-              <div class="kicker">RAISED ON MAGIC</div>
-              <h3 class="card-title">What They Taught Your Kids <em>While You Weren't Looking</em></h3>
-              <p class="card-body">Wizards as heroes. Witches as misunderstood. Gods as cartoons. The stories shaping the next generation aren't neutral — they're catechism.</p>
+          <!-- Hollywood (crimson + gold marquee layout) -->
+          <a class="home-card card-children hollywood-card" href="/hollywood">
+            <span class="spotlight" aria-hidden="true"></span>
+            <span class="grain" aria-hidden="true"></span>
+            <span class="art-deco-frame" aria-hidden="true"></span>
+
+            <div class="hollywood-content">
+              <div class="reel-wrap" aria-hidden="true">
+                <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
+                  <circle cx="60" cy="60" r="56" fill="#0a0000" stroke="#d4af37" stroke-width="2.5"/>
+                  <circle cx="60" cy="60" r="52" fill="none" stroke="#d4af37" stroke-width="0.5" opacity="0.6"/>
+                  <circle cx="60" cy="20" r="10" fill="#1a0303" stroke="#d4af37" stroke-width="1.5"/>
+                  <circle cx="100" cy="60" r="10" fill="#1a0303" stroke="#d4af37" stroke-width="1.5"/>
+                  <circle cx="60" cy="100" r="10" fill="#1a0303" stroke="#d4af37" stroke-width="1.5"/>
+                  <circle cx="20" cy="60" r="10" fill="#1a0303" stroke="#d4af37" stroke-width="1.5"/>
+                  <circle cx="88" cy="32" r="7" fill="#1a0303" stroke="#d4af37" stroke-width="1"/>
+                  <circle cx="88" cy="88" r="7" fill="#1a0303" stroke="#d4af37" stroke-width="1"/>
+                  <circle cx="32" cy="88" r="7" fill="#1a0303" stroke="#d4af37" stroke-width="1"/>
+                  <circle cx="32" cy="32" r="7" fill="#1a0303" stroke="#d4af37" stroke-width="1"/>
+                  <circle cx="60" cy="60" r="12" fill="#d4af37"/>
+                  <circle cx="60" cy="60" r="8" fill="#1a0303"/>
+                  <circle cx="60" cy="60" r="3" fill="#d4af37"/>
+                  <line x1="60" y1="32" x2="60" y2="48" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+                  <line x1="60" y1="72" x2="60" y2="88" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+                  <line x1="32" y1="60" x2="48" y2="60" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+                  <line x1="72" y1="60" x2="88" y2="60" stroke="#d4af37" stroke-width="1" opacity="0.5"/>
+                </svg>
+              </div>
+
+              <p class="eyebrow-hollywood">Raised on Magic</p>
+
+              <h3 class="hollywood-title">What They Taught</h3>
+              <p class="hollywood-title-italic">Your Kids</p>
+
+              <p class="hollywood-desc">Wizards as heroes. Witches as misunderstood. Gods as cartoons. The stories shaping the next generation aren't neutral — they're catechism.</p>
+
+              <div class="filmstrip" aria-hidden="true">
+                <span class="filmstrip-frame"></span>
+                <span class="filmstrip-frame"></span>
+                <span class="filmstrip-frame"></span>
+                <span class="filmstrip-frame"></span>
+                <span class="filmstrip-frame"></span>
+                <span class="filmstrip-frame"></span>
+              </div>
+
+              <p class="hollywood-cta">Open the Section →</p>
             </div>
-            <div class="card-cta">OPEN THE SECTION →</div>
           </a>
 
           <!-- Hidden Gems -->
@@ -842,36 +879,204 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       border-top-color: rgba(26, 20, 16, 0.2);
     }
 
-    /* ---------- Library ---------- */
-    .card-library {
-      background: linear-gradient(180deg, #4a2e18 0%, #2a1a0a 100%);
-      color: #e8c579;
-      border: 1px solid rgba(232, 197, 121, 0.2);
+    /* ---------- Library (open-book) ---------- */
+    .book-card {
+      padding: 0;
+      background: linear-gradient(135deg, #2a1f17 0%, #1a1209 50%, #2a1f17 100%);
+      color: #2a1810;
+      border: 1px solid rgba(200, 160, 90, 0.2);
+      box-shadow:
+        0 18px 38px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(200,160,90,0.15);
+      overflow: hidden;
+      position: relative;
     }
-    .card-library .diamonds {
-      color: var(--gold);
-      font-size: 14px;
-      letter-spacing: 6px;
-      margin-bottom: 14px;
+    .book-card .book-inner {
+      position: absolute;
+      inset: 12px;
+      border-radius: 2px;
+      background:
+        radial-gradient(ellipse at 50% 40%, #f5ecd4 0%, #ebe0c2 40%, #d9c89e 100%);
+      display: flex;
+      box-shadow:
+        inset 0 0 30px rgba(139, 95, 40, 0.25),
+        inset 0 0 90px rgba(100, 60, 20, 0.15);
+      overflow: hidden;
     }
-    .card-library .kicker { color: var(--gold-dim); }
-    .card-library .card-title {
+    .book-card .book-inner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 20% 30%, rgba(139,95,40,0.12) 0%, transparent 2%),
+        radial-gradient(circle at 80% 70%, rgba(100,60,20,0.1) 0%, transparent 2%),
+        radial-gradient(circle at 60% 20%, rgba(139,95,40,0.08) 0%, transparent 1.5%),
+        radial-gradient(circle at 30% 80%, rgba(100,60,20,0.1) 0%, transparent 2%);
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      opacity: 0.65;
+    }
+    .book-card .spine {
+      position: absolute;
+      left: 50%;
+      top: 12px;
+      bottom: 12px;
+      width: 16px;
+      transform: translateX(-50%);
+      background: linear-gradient(to right,
+        transparent 0%,
+        rgba(40,25,10,0.55) 45%,
+        rgba(20,10,0,0.85) 50%,
+        rgba(40,25,10,0.55) 55%,
+        transparent 100%);
+      z-index: 2;
+      pointer-events: none;
+    }
+    .book-card .page {
+      flex: 1;
+      position: relative;
+      padding: clamp(14px, 3vw, 26px) clamp(14px, 2.6vw, 22px);
+      z-index: 1;
+    }
+    .book-card .page-left {
+      background: linear-gradient(to right,
+        rgba(139,95,40,0.08) 0%, transparent 15%, transparent 85%, rgba(80,50,20,0.35) 100%);
+    }
+    .book-card .page-left::after {
+      content: '';
+      position: absolute;
+      top: 58px; bottom: 18px; left: 18px; right: 14px;
+      background-image: repeating-linear-gradient(
+        to bottom,
+        transparent 0px,
+        transparent 21px,
+        rgba(100,60,20,0.08) 21px,
+        rgba(100,60,20,0.08) 22px
+      );
+      pointer-events: none;
+    }
+    .book-card .page-right {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      background: linear-gradient(to left,
+        rgba(139,95,40,0.08) 0%, transparent 15%, transparent 85%, rgba(80,50,20,0.35) 100%);
+    }
+    .book-card .corner {
+      position: absolute;
+      width: 16px;
+      height: 16px;
+      border: 1px solid rgba(139,90,43,0.45);
+    }
+    .book-card .corner.tl { top: 14px; left: 14px; border-right: none; border-bottom: none; }
+    .book-card .corner.tr { top: 14px; right: 14px; border-left: none; border-bottom: none; }
+    .book-card .corner.bl { bottom: 14px; left: 14px; border-right: none; border-top: none; }
+    .book-card .corner.br { bottom: 14px; right: 14px; border-left: none; border-top: none; }
+    .book-card .eyebrow-book {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(8px, 0.85vw, 10px);
+      letter-spacing: 0.28em;
+      color: #8b5a2b;
+      text-align: center;
+      margin: 0 0 12px;
+      font-weight: 600;
+      text-transform: uppercase;
+    }
+    .book-card .ornament-book {
+      text-align: center;
+      color: #a67c3f;
+      font-size: 11px;
+      letter-spacing: 0.6em;
+      margin: 0 0 14px;
+    }
+    .book-card .scripture-block {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(11px, 1.1vw, 13px);
+      line-height: 1.6;
+      color: #4a3220;
       font-style: italic;
-      font-weight: 400;
+      position: relative;
+      z-index: 1;
     }
-    .card-library .sub-italic {
+    .book-card .drop-cap {
+      float: left;
+      font-family: 'Cinzel Decorative', serif;
+      font-size: clamp(36px, 4.5vw, 48px);
+      line-height: 0.85;
+      color: #8b3a1c;
+      padding: 4px 6px 0 0;
+      font-weight: 700;
+    }
+    .book-card .verse-ref {
+      display: block;
+      text-align: right;
+      font-family: 'Cinzel', serif;
+      font-size: 9px;
+      letter-spacing: 0.18em;
+      color: #8b5a2b;
+      margin-top: 14px;
+      font-style: normal;
+      clear: left;
+    }
+    .book-card .book-title {
+      font-family: 'Playfair Display', serif;
       font-style: italic;
-      color: rgba(232, 197, 121, 0.8);
-      font-size: 15px;
-      margin-bottom: 14px;
+      font-weight: 600;
+      font-size: clamp(20px, 2.6vw, 30px);
+      line-height: 1.1;
+      color: #2a1810;
+      text-align: center;
+      margin: 0 0 16px;
+      letter-spacing: -0.01em;
+      text-shadow: 0 1px 0 rgba(255,240,200,0.3);
     }
-    .card-library .card-body {
-      color: rgba(232, 197, 121, 0.75);
+    .book-card .book-divider {
+      display: block;
+      width: 56px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #8b5a2b, transparent);
+      margin: 0 auto 16px;
+    }
+    .book-card .book-subtitle {
+      font-family: 'Cormorant Garamond', serif;
       font-style: italic;
+      font-size: clamp(12px, 1.2vw, 15px);
+      color: #6b4420;
+      text-align: center;
+      margin: 0 0 14px;
+      font-weight: 500;
+      line-height: 1.3;
     }
-    .card-library .card-cta {
-      color: var(--gold);
-      border-top-color: rgba(232, 197, 121, 0.3);
+    .book-card .book-description {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(12px, 1.15vw, 14px);
+      line-height: 1.55;
+      color: #3d2817;
+      text-align: center;
+      font-style: italic;
+      max-width: 200px;
+      margin: 0 0 18px;
+    }
+    .book-card .book-cta {
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.22em;
+      color: #8b5a2b;
+      text-transform: uppercase;
+      font-weight: 600;
+      padding-top: 12px;
+      border-top: 1px solid rgba(139,90,43,0.3);
+      display: inline-block;
+      min-width: 140px;
+      text-align: center;
+    }
+    @media (max-width: 640px) {
+      .book-card .book-inner { flex-direction: column; }
+      .book-card .spine { display: none; }
+      .book-card .page-left { display: none; }
+      .book-card .page-right { padding: 30px 24px; }
     }
 
     /* ---------- Christian or Demonic ---------- */
@@ -1357,62 +1562,182 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       border-top-color: rgba(106, 143, 203, 0.3);
     }
 
-    /* ---------- Children / Disney ---------- */
-    .card-children {
-      background:
-        radial-gradient(ellipse at 50% 80%, rgba(138, 90, 180, 0.4) 0%, transparent 60%),
-        linear-gradient(180deg, #1a0a2e 0%, #0a1a2e 100%);
-      color: #d9c0ff;
+    /* ---------- Hollywood (crimson + antique gold) ---------- */
+    .hollywood-card {
+      padding: 0;
+      background: radial-gradient(ellipse at 50% 30%, #3a0a0a 0%, #1a0303 70%, #0a0000 100%);
+      color: #e8d9b8;
       position: relative;
       overflow: hidden;
+      box-shadow:
+        0 18px 38px rgba(0,0,0,0.5),
+        0 0 0 1px rgba(212,175,55,0.25),
+        inset 0 0 0 6px rgba(0,0,0,0.3),
+        inset 0 0 0 7px rgba(212,175,55,0.2);
     }
-    .card-children::before {
-      content: "";
+    .hollywood-card .art-deco-frame {
       position: absolute;
-      top: 10%;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 140px;
-      height: 140px;
-      background: radial-gradient(circle, rgba(200, 150, 255, 0.2) 0%, transparent 60%);
+      inset: 14px;
+      border: 1px solid rgba(212,175,55,0.35);
       pointer-events: none;
     }
-    .card-children .castle {
-      width: 90px;
-      height: 90px;
-      margin: 0 auto 14px;
+    .hollywood-card .art-deco-frame::before,
+    .hollywood-card .art-deco-frame::after {
+      content: '';
+      position: absolute;
+      width: 26px;
+      height: 26px;
+      border: 2px solid #d4af37;
+    }
+    .hollywood-card .art-deco-frame::before {
+      top: -6px; left: -6px;
+      border-right: none; border-bottom: none;
+    }
+    .hollywood-card .art-deco-frame::after {
+      bottom: -6px; right: -6px;
+      border-left: none; border-top: none;
+    }
+    .hollywood-card .spotlight {
+      position: absolute;
+      top: -80px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 140%;
+      height: 380px;
+      background: radial-gradient(ellipse at center top,
+        rgba(255,220,140,0.15) 0%,
+        rgba(255,200,100,0.08) 30%,
+        transparent 60%);
+      pointer-events: none;
+    }
+    .hollywood-card .grain {
+      position: absolute;
+      inset: 0;
+      background-image:
+        radial-gradient(circle at 15% 25%, rgba(255,255,255,0.02) 0%, transparent 1%),
+        radial-gradient(circle at 75% 65%, rgba(255,255,255,0.025) 0%, transparent 1%),
+        radial-gradient(circle at 45% 85%, rgba(255,255,255,0.02) 0%, transparent 1%),
+        radial-gradient(circle at 85% 15%, rgba(255,255,255,0.025) 0%, transparent 1%);
+      pointer-events: none;
+      mix-blend-mode: overlay;
+    }
+    .hollywood-card .hollywood-content {
       position: relative;
       z-index: 2;
+      padding: clamp(26px, 4vw, 38px) clamp(22px, 3vw, 32px) 0;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
     }
-    .card-children .kicker {
-      color: #a88ad6;
+    .hollywood-card .reel-wrap {
+      width: clamp(62px, 9vw, 82px);
+      height: clamp(62px, 9vw, 82px);
+      margin-bottom: 14px;
       position: relative;
-      z-index: 2;
+      filter: drop-shadow(0 5px 16px rgba(212,175,55,0.3));
     }
-    .card-children .card-title {
-      color: #f0e0ff;
+    .hollywood-card .reel-wrap svg { width: 100%; height: 100%; }
+    .hollywood-card .eyebrow-hollywood {
+      font-family: 'Cinzel', serif;
+      font-size: clamp(8px, 0.85vw, 10px);
+      letter-spacing: 0.35em;
+      color: #d4af37;
+      font-weight: 600;
+      margin: 0 0 18px;
+      position: relative;
+      padding: 0 38px;
+      text-transform: uppercase;
+    }
+    .hollywood-card .eyebrow-hollywood::before,
+    .hollywood-card .eyebrow-hollywood::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      width: 24px;
+      height: 1px;
+      background: linear-gradient(to right, transparent, #d4af37);
+    }
+    .hollywood-card .eyebrow-hollywood::before { left: 0; }
+    .hollywood-card .eyebrow-hollywood::after {
+      right: 0;
+      background: linear-gradient(to left, transparent, #d4af37);
+    }
+    .hollywood-card .hollywood-title {
+      font-family: 'Playfair Display', serif;
       font-weight: 700;
-      font-size: 28px;
-      line-height: 1.15;
-      position: relative;
-      z-index: 2;
+      font-size: clamp(24px, 3.4vw, 38px);
+      line-height: 1.05;
+      color: #f5e6c8;
+      margin: 0 0 4px;
+      letter-spacing: -0.02em;
+      text-shadow:
+        0 2px 4px rgba(0,0,0,0.8),
+        0 0 40px rgba(212,175,55,0.15);
     }
-    .card-children .card-title em {
+    .hollywood-card .hollywood-title-italic {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
       font-style: italic;
-      color: #c8a0f5;
-      font-weight: 400;
+      font-size: clamp(20px, 2.8vw, 30px);
+      line-height: 1.1;
+      color: #d4af37;
+      margin: 0 0 18px;
+      letter-spacing: -0.01em;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.7);
     }
-    .card-children .card-body {
-      color: rgba(217, 192, 255, 0.8);
-      font-size: 14.5px;
-      position: relative;
-      z-index: 2;
+    .hollywood-card .hollywood-desc {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(13px, 1.25vw, 15px);
+      line-height: 1.5;
+      color: #e8d9b8;
+      font-style: italic;
+      max-width: 280px;
+      margin: 0 0 22px;
     }
-    .card-children .card-cta {
-      color: #a88ad6;
-      border-top-color: rgba(168, 138, 214, 0.3);
+    .hollywood-card .filmstrip {
+      width: calc(100% + clamp(44px, 6vw, 64px));
+      margin-left: calc(-1 * clamp(22px, 3vw, 32px));
+      margin-top: auto;
+      height: 36px;
+      background: #0a0000;
       position: relative;
-      z-index: 2;
+      border-top: 1px solid rgba(212,175,55,0.3);
+      border-bottom: 1px solid rgba(212,175,55,0.3);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 0 8px;
+    }
+    .hollywood-card .filmstrip::before,
+    .hollywood-card .filmstrip::after {
+      content: '';
+      position: absolute;
+      left: 0; right: 0;
+      height: 7px;
+      background-image: repeating-linear-gradient(to right,
+        #0a0000 0px, #0a0000 10px,
+        #2a1a1a 10px, #2a1a1a 17px);
+    }
+    .hollywood-card .filmstrip::before { top: -1px; }
+    .hollywood-card .filmstrip::after { bottom: -1px; }
+    .hollywood-card .filmstrip-frame {
+      flex: 1;
+      height: 20px;
+      margin: 0 2px;
+      background: linear-gradient(135deg, #2a1010 0%, #4a1a1a 50%, #2a1010 100%);
+      border: 1px solid rgba(212,175,55,0.15);
+    }
+    .hollywood-card .hollywood-cta {
+      margin: 14px 0 0;
+      padding: 0 0 clamp(18px, 3vw, 24px);
+      font-family: 'Cinzel', serif;
+      font-size: 10px;
+      letter-spacing: 0.28em;
+      color: #d4af37;
+      text-transform: uppercase;
+      font-weight: 600;
     }
 
     /* ---------- Hidden Gems ---------- */
