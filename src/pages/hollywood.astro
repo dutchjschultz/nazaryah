@@ -1,0 +1,297 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+
+// Studios are data-driven so flipping a card from "coming-soon" to
+// "active" later is a single status + route change.
+const STUDIOS = [
+  {
+    slug: 'disney',
+    status: 'active',
+    name: 'Disney',
+    subtitle: 'The ancient gods hiding inside the stories we hand to our children',
+    description:
+      'Every classic Disney story has a pedigree. Walt did not invent Cinderella, Snow White, Hercules, or the Little Mermaid. He rebranded them. Behind each sanitized musical number stands a pagan worship system — most looping back to the same fertility goddess, the same sun god, and the same rebellion that began at Babel.',
+    studyCount: 9,
+    route: '/disney'
+  }
+];
+
+const active = STUDIOS.filter((s) => s.status === 'active');
+const soon = STUDIOS.filter((s) => s.status === 'coming-soon');
+---
+
+<BaseLayout
+  title="Hollywood — The Stories Being Told to a Generation | Nazaryah"
+  description="Hollywood is the modern world's most powerful pulpit. The studios, the franchises, and the stories shaping how a generation sees God, family, sex, authority, and the unseen world — examined."
+>
+  <div class="hw-wrap">
+
+    <!-- ── HERO ── -->
+    <section class="hw-hero">
+      <p class="hw-label">&#8213; The Modern Pulpit &#8213;</p>
+      <h1 class="hw-title">Hollywood</h1>
+      <p class="hw-sub">The stories being told to a generation</p>
+    </section>
+
+    <!-- ── OPENING COPY (PLACEHOLDER — REPLACE WITH SUPPLIED COPY) ── -->
+    <section class="hw-section">
+      <div class="hw-prose">
+        <p class="hw-placeholder">
+          [Opening copy for the Hollywood section will go here. Drop the supplied text into this block — paragraph by paragraph — and remove this placeholder.]
+        </p>
+      </div>
+    </section>
+
+    <!-- ── ACTIVE STUDIOS ── -->
+    <section class="hw-grid-section">
+      <p class="hw-grid-label">&#8213; Studios &#8213;</p>
+      <h2 class="hw-grid-title">Choose a Studio</h2>
+      <p class="hw-grid-sub">Each studio is a separate study. More will be added as the section grows.</p>
+
+      <div class="hw-grid">
+        {active.map((s) => (
+          <a href={s.route} class="hw-card hw-card-active">
+            <div class="hw-card-meta">
+              <span class="hw-card-count">{s.studyCount} {s.studyCount === 1 ? 'Study' : 'Studies'}</span>
+              <span class="hw-card-status">Active</span>
+            </div>
+            <h3 class="hw-card-name">{s.name}</h3>
+            <p class="hw-card-subtitle">{s.subtitle}</p>
+            <p class="hw-card-desc">{s.description}</p>
+            <div class="hw-card-cta">View Studio &#8594;</div>
+          </a>
+        ))}
+      </div>
+    </section>
+
+    {soon.length > 0 && (
+      <section class="hw-grid-section hw-grid-section-muted">
+        <p class="hw-grid-label hw-grid-label-dim">&#8213; Coming Soon &#8213;</p>
+        <h2 class="hw-grid-title hw-grid-title-dim">In Development</h2>
+        <p class="hw-grid-sub">More studios get the same treatment. Check back as the section grows.</p>
+
+        <div class="hw-grid">
+          {soon.map((s) => (
+            <div class="hw-card hw-card-soon" aria-disabled="true">
+              <div class="hw-card-meta">
+                <span class="hw-card-count hw-card-count-dim">Studio</span>
+                <span class="hw-soon-badge">Coming Soon</span>
+              </div>
+              <h3 class="hw-card-name hw-card-name-dim">{s.name}</h3>
+              <p class="hw-card-subtitle hw-card-subtitle-dim">{s.subtitle}</p>
+              <p class="hw-card-desc hw-card-desc-dim">{s.description}</p>
+              <div class="hw-card-cta hw-card-cta-dim">In Development</div>
+            </div>
+          ))}
+        </div>
+      </section>
+    )}
+
+  </div>
+</BaseLayout>
+
+<style>
+  .hw-wrap {
+    background: linear-gradient(180deg, #060306 0%, #160910 22%, #0a0408 100%);
+    color: #f0d8b8;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  /* ── HERO ── */
+  .hw-hero {
+    text-align: center;
+    padding: 5rem 1.5rem 3.5rem;
+    border-bottom: 1px solid #3a142a;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(200, 40, 90, 0.22), transparent 70%),
+      linear-gradient(180deg, #050204 0%, #160910 100%);
+  }
+
+  .hw-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #b06a55;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .hw-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.4rem, 6vw, 4rem);
+    font-weight: 700;
+    color: #f5deb3;
+    margin: 0 0 1rem;
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    text-shadow: 0 0 30px rgba(200, 40, 90, 0.22);
+  }
+
+  .hw-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #d49555;
+    font-style: italic;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ── INTRO ── */
+  .hw-section {
+    padding: 3rem 1.5rem 1rem;
+  }
+
+  .hw-prose {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.125rem;
+    line-height: 1.85;
+    color: #d9c2a0;
+  }
+
+  .hw-prose p { margin-bottom: 1.5rem; }
+  .hw-prose p:last-child { margin-bottom: 0; }
+  .hw-prose em { color: #d49555; font-style: italic; }
+  .hw-prose strong { color: #f0d8b8; }
+
+  .hw-placeholder {
+    font-style: italic;
+    color: #806a55;
+    border-left: 2px dashed #4a2a3a;
+    padding: 0.5rem 1rem;
+    background: rgba(40, 16, 28, 0.18);
+    border-radius: 0 4px 4px 0;
+  }
+
+  /* ── GRID SECTIONS ── */
+  .hw-grid-section {
+    text-align: center;
+    padding: 3rem 1.5rem 4rem;
+  }
+
+  .hw-grid-section-muted {
+    border-top: 1px solid #2a121e;
+    background: rgba(20, 8, 14, 0.4);
+  }
+
+  .hw-grid-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #b06a55;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+  .hw-grid-label-dim { color: #5a3a48; }
+
+  .hw-grid-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.7rem, 3vw, 2.2rem);
+    font-weight: 700;
+    color: #f5deb3;
+    margin: 0 0 0.6rem;
+  }
+  .hw-grid-title-dim { color: #6a4a58; }
+
+  .hw-grid-sub {
+    font-size: 1rem;
+    color: #a07a78;
+    font-style: italic;
+    max-width: 580px;
+    margin: 0 auto 2rem;
+    line-height: 1.6;
+  }
+
+  .hw-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  /* ── CARDS (active) ── */
+  .hw-card {
+    text-align: left;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    padding: 1.6rem 1.6rem 1.4rem;
+    border: 1px solid #3a1828;
+    border-radius: 6px;
+    background: linear-gradient(160deg, rgba(40, 14, 26, 0.55) 0%, rgba(18, 6, 12, 0.7) 100%);
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+  }
+
+  .hw-card-active:hover {
+    transform: translateY(-3px);
+    border-color: #a84a55;
+    box-shadow: 0 14px 28px rgba(120, 30, 50, 0.25);
+  }
+
+  .hw-card-meta {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 1rem;
+  }
+  .hw-card-count { color: #d49555; }
+  .hw-card-count-dim { color: #5a3a48; }
+  .hw-card-status { color: #a84a55; }
+  .hw-soon-badge {
+    color: #6a4a58;
+    border: 1px solid #4a2a3a;
+    padding: 0.2rem 0.55rem;
+    border-radius: 12px;
+  }
+
+  .hw-card-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f5deb3;
+    margin: 0 0 0.4rem;
+    line-height: 1.15;
+  }
+  .hw-card-name-dim { color: #6a4a58; }
+
+  .hw-card-subtitle {
+    font-style: italic;
+    color: #d49555;
+    font-size: 0.98rem;
+    margin: 0 0 0.9rem;
+    line-height: 1.4;
+  }
+  .hw-card-subtitle-dim { color: #5a3a48; }
+
+  .hw-card-desc {
+    font-size: 0.96rem;
+    line-height: 1.65;
+    color: #c8b08c;
+    margin: 0 0 1.2rem;
+  }
+  .hw-card-desc-dim { color: #6a564a; }
+
+  .hw-card-cta {
+    margin-top: auto;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #d49555;
+    border-top: 1px solid #3a1828;
+    padding-top: 0.9rem;
+  }
+  .hw-card-cta-dim { color: #5a3a48; border-top-color: #281020; }
+
+  .hw-card-soon {
+    cursor: not-allowed;
+    background: rgba(18, 6, 12, 0.4);
+  }
+</style>

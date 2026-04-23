@@ -25,12 +25,13 @@ const SUBJECTS = [
   },
   {
     slug: 'zoroastrianism',
-    status: 'coming-soon',
+    status: 'active',
     name: 'Zoroastrianism',
     subtitle: 'The Persian religion that quietly shaped post-exilic Judaism',
     description:
       'A dualistic Persian religion of cosmic battle between good and evil, angels and demons, heaven and hell. Modern doctrines about Satan, the afterlife, and the end times owe more to Zoroaster than to Moses.',
-    route: null
+    studyCount: 1,
+    route: '/foreign-fire/zoroastrianism'
   },
   {
     slug: 'babylonian-talmud',
@@ -113,7 +114,7 @@ const soon = SUBJECTS.filter((s) => s.status === 'coming-soon');
         {active.map((s) => (
           <a href={s.route} class="ff-card ff-card-active">
             <div class="ff-card-meta">
-              <span class="ff-card-count">{s.studyCount} Studies</span>
+              <span class="ff-card-count">{s.studyCount} {s.studyCount === 1 ? 'Study' : 'Studies'}</span>
               <span class="ff-card-status">Active</span>
             </div>
             <h3 class="ff-card-name">{s.name}</h3>
