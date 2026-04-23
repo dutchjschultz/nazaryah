@@ -1,0 +1,245 @@
+/* ============================================
+   SHARED STYLESHEET FOR ALL "HIDDEN IN PLAIN SIGHT" PAGES
+   Drop this into your /css/ folder and link from each page
+   ============================================ */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Georgia, 'Times New Roman', serif;
+  background-color: #1a1a1a;
+  color: #e8e4dc;
+  line-height: 1.7;
+  min-height: 100vh;
+}
+
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 2rem 1.5rem;
+}
+
+/* ---- HEADER ---- */
+header {
+  text-align: center;
+  padding: 2rem 0 3rem 0;
+  border-bottom: 1px solid #3a3a3a;
+  margin-bottom: 2rem;
+}
+
+header h1 {
+  font-size: 2.4rem;
+  color: #d4b87a;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.5rem;
+}
+
+header .subtitle {
+  font-style: italic;
+  color: #a0a0a0;
+  font-size: 1rem;
+}
+
+/* ---- BREADCRUMB / BACK NAV ---- */
+.breadcrumb {
+  margin-bottom: 1.5rem;
+  font-size: 0.9rem;
+}
+
+.breadcrumb a {
+  color: #d4b87a;
+  text-decoration: none;
+}
+
+.breadcrumb a:hover {
+  text-decoration: underline;
+}
+
+.breadcrumb span {
+  color: #666;
+  margin: 0 0.5rem;
+}
+
+/* ---- MONOLOGUE / INTRO TEXT ---- */
+.monologue {
+  font-size: 1.05rem;
+  margin-bottom: 2.5rem;
+}
+
+.monologue p {
+  margin-bottom: 1.2rem;
+}
+
+.scripture {
+  font-style: italic;
+  color: #c9b88a;
+  border-left: 3px solid #d4b87a;
+  padding-left: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* ---- BUTTON GRID (homepage, category pages, film pages) ---- */
+.button-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 1rem;
+  margin: 2rem 0;
+}
+
+.nav-button {
+  display: block;
+  background-color: #2a2a2a;
+  color: #e8e4dc;
+  border: 2px solid #d4b87a;
+  border-radius: 8px;
+  padding: 1.2rem 1rem;
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.1rem;
+  font-weight: bold;
+  letter-spacing: 0.05em;
+  transition: all 0.25s ease;
+  cursor: pointer;
+}
+
+.nav-button:hover,
+.nav-button:active {
+  background-color: #d4b87a;
+  color: #1a1a1a;
+  transform: translateY(-2px);
+}
+
+.nav-button .label-small {
+  display: block;
+  font-size: 0.75rem;
+  font-weight: normal;
+  font-style: italic;
+  margin-top: 0.3rem;
+  opacity: 0.8;
+}
+
+/* ---- FILM SECTION ---- */
+.film-section {
+  margin-bottom: 3rem;
+  padding-bottom: 2rem;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.film-section:last-child {
+  border-bottom: none;
+}
+
+.film-section h2 {
+  color: #d4b87a;
+  font-size: 1.8rem;
+  margin-bottom: 0.5rem;
+}
+
+.film-section .film-intro {
+  font-style: italic;
+  color: #b0b0b0;
+  margin-bottom: 1.5rem;
+}
+
+.film-section .concern {
+  margin-bottom: 1.3rem;
+}
+
+.film-section .concern-title {
+  color: #d4b87a;
+  font-weight: bold;
+}
+
+/* ---- SYMBOL LIBRARY ---- */
+.symbol-card {
+  background-color: #2a2a2a;
+  border-left: 4px solid #d4b87a;
+  border-radius: 6px;
+  padding: 1.2rem 1.4rem;
+  margin-bottom: 1rem;
+  transition: background-color 0.2s ease;
+}
+
+.symbol-card a {
+  color: #e8e4dc;
+  text-decoration: none;
+  display: block;
+}
+
+.symbol-card:hover {
+  background-color: #353535;
+}
+
+.symbol-card h3 {
+  color: #d4b87a;
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+}
+
+.symbol-card .symbol-summary {
+  color: #b0b0b0;
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+.film-list {
+  background-color: #2a2a2a;
+  border-radius: 6px;
+  padding: 1.2rem 1.5rem;
+  margin: 1.5rem 0;
+}
+
+.film-list h3 {
+  color: #d4b87a;
+  font-size: 1.1rem;
+  margin-bottom: 0.8rem;
+}
+
+.film-list ul {
+  list-style: none;
+  padding: 0;
+}
+
+.film-list li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #3a3a3a;
+}
+
+.film-list li:last-child {
+  border-bottom: none;
+}
+
+.film-list .film-name {
+  color: #d4b87a;
+  font-weight: bold;
+}
+
+/* ---- FOOTER ---- */
+footer {
+  text-align: center;
+  padding: 2rem 0;
+  margin-top: 3rem;
+  border-top: 1px solid #3a3a3a;
+  color: #888;
+  font-size: 0.85rem;
+}
+
+/* ---- MOBILE TWEAKS ---- */
+@media (max-width: 600px) {
+  header h1 {
+    font-size: 1.8rem;
+  }
+
+  .container {
+    padding: 1.5rem 1rem;
+  }
+
+  .nav-button {
+    padding: 1rem;
+    font-size: 1rem;
+  }
+}
