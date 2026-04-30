@@ -1,0 +1,703 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The Calendar — Nazaryah"
+  description="Two calendars sit before you. One was set into the heavens by Yahuah on the fourth day of creation. The other was named after dead emperors and pagan gods. Which one are you following?"
+>
+  <div class="cal-wrap">
+
+    <!-- ── HERO ── -->
+    <section class="cal-hero">
+      <p class="cal-label">&#8213; Two Timekeepers. One Author. &#8213;</p>
+      <h1 class="cal-title">The Calendar</h1>
+      <p class="cal-sub">Take your pick.</p>
+    </section>
+
+    <!-- ── INTRO ── -->
+    <section class="cal-section cal-intro">
+      <div class="cal-prose">
+        <p>Two calendars sit before you.</p>
+        <p>
+          One was set into the heavens by Yahuah Himself on the fourth day of creation, anchored in the sun, the moon, and the stars He named with His own voice. It keeps time the way the seasons keep time. It marks His appointed times the way the harvest marks the year.
+        </p>
+        <p>
+          The other was named after dead emperors and pagan gods by men who burned incense to Saturn, bowed to Sol Invictus, and adjusted their months whenever a Caesar wanted his name written into the year. It was edited by popes, signed by emperors, and handed down to a world that never asked where the names came from.
+        </p>
+      </div>
+      <p class="cal-question">Which one are you following?</p>
+    </section>
+
+    <!-- ── SIDE-BY-SIDE COMPARISON ── -->
+    <section class="cal-grid-section">
+      <div class="cal-grid">
+
+        <!-- ═══════════ ROMAN / GREGORIAN SIDE ═══════════ -->
+        <article class="cal-card cal-roman">
+          <div class="cal-side-label">The Roman Calendar</div>
+          <p class="cal-side-author">Authored by Caesars, edited by popes</p>
+
+          <div class="cal-today">
+            <span class="cal-today-label">Today</span>
+            <div class="cal-today-date" id="roman-today-date">&mdash;</div>
+            <div class="cal-today-day" id="roman-today-day">&mdash;</div>
+          </div>
+
+          <div class="cal-card-section">
+            <div class="cal-section-title">Days of the Week</div>
+            <ul class="pagan-list">
+              <li><strong>Sunday</strong><a href="/pagan-gods/sunday-sol">Sol &mdash; Roman sun god</a></li>
+              <li><strong>Monday</strong><a href="/pagan-gods/monday-luna">Luna &mdash; Roman moon goddess</a></li>
+              <li><strong>Tuesday</strong><a href="/pagan-gods/tuesday-tiw">Tiw &mdash; Norse war god</a></li>
+              <li><strong>Wednesday</strong><a href="/pagan-gods/wednesday-woden">Woden &mdash; Norse chief god</a></li>
+              <li><strong>Thursday</strong><a href="/pagan-gods/thursday-thor">Thor &mdash; Norse thunder god</a></li>
+              <li><strong>Friday</strong><a href="/pagan-gods/friday-frigg">Frigg &mdash; Norse fertility goddess</a></li>
+              <li><strong>Saturday</strong><a href="/pagan-gods/saturday-saturn">Saturn &mdash; Roman god of time</a></li>
+            </ul>
+          </div>
+
+          <div class="cal-card-section">
+            <div class="cal-section-title">Months of the Year</div>
+            <ul class="pagan-list">
+              <li><strong>January</strong><a href="/pagan-gods/january-janus">Janus &mdash; two-faced Roman god</a></li>
+              <li><strong>February</strong><a href="/pagan-gods/february-februa">Februa &mdash; Roman purification rites</a></li>
+              <li><strong>March</strong><a href="/pagan-gods/march-mars">Mars &mdash; Roman war god</a></li>
+              <li><strong>April</strong><a href="/pagan-gods/april-aphrodite">Aphrodite / Venus &mdash; goddess of love</a></li>
+              <li><strong>May</strong><a href="/pagan-gods/may-maia">Maia &mdash; Roman earth goddess</a></li>
+              <li><strong>June</strong><a href="/pagan-gods/june-juno">Juno &mdash; queen of the Roman gods</a></li>
+              <li><strong>July</strong><a href="/pagan-gods/july-julius">Julius Caesar &mdash; wrote his own name in</a></li>
+              <li><strong>August</strong><a href="/pagan-gods/august-augustus">Augustus Caesar &mdash; followed Julius</a></li>
+              <li><strong>September</strong><a href="/pagan-gods/september-seven">Septem &mdash; Latin for "seven"</a></li>
+              <li><strong>October</strong><a href="/pagan-gods/october-eight">Octo &mdash; Latin for "eight"</a></li>
+              <li><strong>November</strong><a href="/pagan-gods/november-nine">Novem &mdash; Latin for "nine"</a></li>
+              <li><strong>December</strong><a href="/pagan-gods/december-ten">Decem &mdash; Latin for "ten"</a></li>
+            </ul>
+          </div>
+
+          <p class="cal-notice">
+            Notice September through December. Their names mean seven, eight, nine, and ten &mdash; but they are now the ninth, tenth, eleventh, and twelfth months. They got bumped two slots when Julius and Augustus Caesar inserted months named after themselves. The names of the months you use every day still bear the evidence of imperial vanity.
+          </p>
+        </article>
+
+        <!-- ═══════════ YAHUAH'S CALENDAR SIDE ═══════════ -->
+        <article class="cal-card cal-yahs">
+          <div class="cal-side-label">Yahuah's Calendar</div>
+          <p class="cal-side-author">Authored on Day Four of creation</p>
+
+          <div class="cal-today">
+            <span class="cal-today-label">Today</span>
+            <div class="cal-today-date" id="yahs-today-date">&mdash;</div>
+            <div class="cal-today-day" id="yahs-today-day">&mdash;</div>
+          </div>
+
+          <div class="cal-card-section">
+            <div class="cal-section-title">How the Year Begins</div>
+            <ul class="simple-list">
+              <li>The year begins when Spica meets the moon at the new moon nearest the spring equinox. The day after that conjunction is <strong>Aviv 1</strong> &mdash; Day 1 of Month 1.</li>
+            </ul>
+          </div>
+
+          <div class="cal-card-section">
+            <div class="cal-section-title">How the Months Begin</div>
+            <ul class="simple-list">
+              <li>Every month after Aviv begins the day after the visible new-moon sliver appears. Day 1 is always the day <em>after</em> first sighting &mdash; never the day of conjunction.</li>
+            </ul>
+          </div>
+
+          <div class="cal-card-section">
+            <div class="cal-section-title">The Months</div>
+            <ul class="simple-list">
+              <li><strong>Aviv (Month 1)</strong><span class="agri-marker">barley harvest</span></li>
+              <li><strong>Month 2</strong><span class="agri-marker">wheat harvest begins</span></li>
+              <li><strong>Month 3</strong><span class="agri-marker">wheat harvest, firstfruits</span></li>
+              <li><strong>Month 4</strong><span class="agri-marker">summer fruits begin</span></li>
+              <li><strong>Month 5</strong><span class="agri-marker">grape harvest begins</span></li>
+              <li><strong>Month 6</strong><span class="agri-marker">summer fruits, grapes</span></li>
+              <li><strong>Month 7</strong><span class="agri-marker">olive harvest, ingathering</span></li>
+              <li><strong>Month 8</strong><span class="agri-marker">olive pressing, plowing</span></li>
+              <li><strong>Month 9</strong><span class="agri-marker">sowing of winter wheat</span></li>
+              <li><strong>Month 10</strong><span class="agri-marker">winter rains</span></li>
+              <li><strong>Month 11</strong><span class="agri-marker">almond blossoms appear</span></li>
+              <li><strong>Month 12</strong><span class="agri-marker">latter rains, fields awaken</span></li>
+              <li><strong>Month 13</strong><span class="agri-marker">added when needed to keep the year aligned</span></li>
+            </ul>
+          </div>
+
+          <p class="cal-notice">
+            Notice what is missing. No emperor's name. No god's name. No month adjusted for vanity. Just numbered months, agricultural markers tied to the harvest cycle Yahuah built into creation, and Aviv &mdash; the only Hebrew month name Scripture uses (Exodus 13:4, Deuteronomy 16:1) for the month of the barley harvest, the month of unleavened bread.
+          </p>
+          <p class="cal-notice">
+            Notice also: this year has thirteen months. When the agricultural year drifts out of step with the lunar months, an extra month is added to bring everything back into alignment. The Roman calendar does this with a leap day every four years and pretends the year is exactly 365 days. Yahuah's calendar does it by watching the heavens and adjusting when the heavens themselves require it.
+          </p>
+        </article>
+
+      </div>
+    </section>
+
+    <!-- ── FOUNDATION STUDIES ── -->
+    <section class="cal-studies-section">
+      <p class="cal-studies-label">&#8213; Foundation Studies &#8213;</p>
+      <h2 class="cal-studies-title">Before the Mechanics, the Lights</h2>
+      <p class="cal-studies-sub">
+        What the sun, moon, and stars are, what they were made for, and why the One who made them is the only One worth the credit.
+      </p>
+
+      <div class="cal-studies-grid">
+
+        <a href="/studies/the-sun-in-scripture" class="cal-study cal-study-sun">
+          <div class="cal-study-tag">Foundation &nbsp;&middot;&nbsp; The Greater Light</div>
+          <h3 class="cal-study-name">The Sun in Scripture</h3>
+          <p class="cal-study-blurb">What the sun represents, where its light comes from, and why it is not the Son. The greater light, the Father's office, and the lamp that will one day be retired.</p>
+          <div class="cal-study-cta">Read the study &#8594;</div>
+        </a>
+
+        <a href="/studies/the-moon-in-scripture" class="cal-study cal-study-moon">
+          <div class="cal-study-tag">Foundation &nbsp;&middot;&nbsp; The Lesser Light</div>
+          <h3 class="cal-study-name">The Moon in Scripture</h3>
+          <p class="cal-study-blurb">What the moon represents, where her light comes from, and the bride's witness in the heavens. Levanah, the white one &mdash; the lamp of the night who marks the months.</p>
+          <div class="cal-study-cta">Read the study &#8594;</div>
+        </a>
+
+        <a href="/studies/the-stars-in-scripture" class="cal-study cal-study-stars">
+          <div class="cal-study-tag">Foundation &nbsp;&middot;&nbsp; The Host of Heaven</div>
+          <h3 class="cal-study-name">The Stars in Scripture</h3>
+          <p class="cal-study-blurb">What the stars represent, how they witness the year, and the bright morning Star Himself. The host of heaven &mdash; Yahuah's army of messengers marching in unison around the pole.</p>
+          <div class="cal-study-cta">Read the study &#8594;</div>
+        </a>
+
+        <div class="cal-study cal-study-placeholder">
+          <div class="cal-study-tag">Mechanics &nbsp;&middot;&nbsp; Coming Soon</div>
+          <h3 class="cal-study-name">How the Calendar Works</h3>
+          <p class="cal-study-blurb">The mechanics of Yahuah's calendar &mdash; how the sun, moon, and stars work together to mark days, months, and years.</p>
+          <div class="cal-study-cta">Coming soon</div>
+        </div>
+
+        <div class="cal-study cal-study-placeholder">
+          <div class="cal-study-tag">Year-Start &nbsp;&middot;&nbsp; Coming Soon</div>
+          <h3 class="cal-study-name">Spica and the Year-Start</h3>
+          <p class="cal-study-blurb">Why the year begins when Spica meets the moon at the spring new moon &mdash; and how the leading stars announce each season.</p>
+          <div class="cal-study-cta">Coming soon</div>
+        </div>
+
+        <div class="cal-study cal-study-placeholder">
+          <div class="cal-study-tag">Mo'edim &nbsp;&middot;&nbsp; Coming Soon</div>
+          <h3 class="cal-study-name">The Appointed Times</h3>
+          <p class="cal-study-blurb">The mo'edim of Yahuah &mdash; the appointed times He set into creation, marked by the heavens themselves. The feasts as agricultural witnesses.</p>
+          <div class="cal-study-cta">Coming soon</div>
+        </div>
+
+        <div class="cal-study cal-study-placeholder">
+          <div class="cal-study-tag">Glory &nbsp;&middot;&nbsp; Coming Soon</div>
+          <h3 class="cal-study-name">The Glory of Yahuah</h3>
+          <p class="cal-study-blurb">What was lost in Eden, what is being restored, and why every reference to "light" in Scripture points back to His presence.</p>
+          <div class="cal-study-cta">Coming soon</div>
+        </div>
+
+        <div class="cal-study cal-study-placeholder">
+          <div class="cal-study-tag">Lucifer &nbsp;&middot;&nbsp; Coming Soon</div>
+          <h3 class="cal-study-name">The Lucifer Deception</h3>
+          <p class="cal-study-blurb">How a Latin word meaning "light-bringer" was wrongly assigned to the adversary, and why the morning star title belongs to Yahushua alone.</p>
+          <div class="cal-study-cta">Coming soon</div>
+        </div>
+
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<!--
+  ════════════════════════════════════════════════════════════════
+  CALENDAR DATE LOGIC
+  Reads today from the browser, displays Gregorian directly,
+  and computes Yahuah-calendar date from MONTH_STARTS anchors.
+
+  When the next year's Aviv 1 is confirmed (early April 2027 when
+  Spica meets the moon at the spring new moon), update MONTH_STARTS
+  and YEAR_START_GREGORIAN_YEAR below.
+  ════════════════════════════════════════════════════════════════
+-->
+<script is:inline>
+(function() {
+  'use strict';
+
+  var YEAR_START_GREGORIAN_YEAR = 2026;
+
+  // Format: 'YYYY-MM-DD' — the Gregorian date that became Day 1
+  // of each Yahuah-calendar month. Aviv 1 is the day after Spica
+  // meets the moon at the new moon nearest the spring equinox.
+  // Months 2+ begin the day after the visible new-moon sliver.
+  var MONTH_STARTS = {
+    aviv:     '2026-03-19',
+    month_2:  '2026-04-18',
+    month_3:  '2026-05-17',
+    month_4:  '2026-06-15',
+    month_5:  '2026-07-15',
+    month_6:  '2026-08-13',
+    month_7:  '2026-09-11',
+    month_8:  '2026-10-11',
+    month_9:  '2026-11-10',
+    month_10: '2026-12-09',
+    month_11: '2027-01-08',
+    month_12: '2027-02-07',
+    month_13: '2027-03-09'
+  };
+
+  var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  var monthNames = ['January','February','March','April','May','June',
+                    'July','August','September','October','November','December'];
+
+  var today = new Date();
+  var dayName = dayNames[today.getDay()];
+  var monthName = monthNames[today.getMonth()];
+  var dayOfMonth = today.getDate();
+  var year = today.getFullYear();
+
+  var romanDateEl = document.getElementById('roman-today-date');
+  var romanDayEl  = document.getElementById('roman-today-day');
+  if (romanDateEl) romanDateEl.textContent = monthName + ' ' + dayOfMonth + ', ' + year;
+  if (romanDayEl)  romanDayEl.textContent  = dayName;
+
+  function calculateYahsDate() {
+    var monthKeys = ['aviv','month_2','month_3','month_4','month_5','month_6',
+                     'month_7','month_8','month_9','month_10','month_11','month_12','month_13'];
+    var monthLabels = ['Aviv','Month 2','Month 3','Month 4','Month 5','Month 6',
+                       'Month 7','Month 8','Month 9','Month 10','Month 11','Month 12','Month 13'];
+
+    var todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    todayDate.setHours(0,0,0,0);
+
+    if (!MONTH_STARTS.aviv) {
+      return { label: 'Awaiting Aviv 1 anchor', sub: 'Calendar configuring', estimated: true };
+    }
+
+    var avivStart = new Date(MONTH_STARTS.aviv);
+    avivStart.setHours(0,0,0,0);
+
+    if (todayDate < avivStart) {
+      return {
+        label: 'Before Aviv 1, ' + YEAR_START_GREGORIAN_YEAR,
+        sub: '(previous year — anchor needed)',
+        estimated: true
+      };
+    }
+
+    var currentMonthIndex = 0;
+    var currentMonthStart = avivStart;
+
+    for (var i = 1; i < monthKeys.length; i++) {
+      var thisStart;
+      if (MONTH_STARTS[monthKeys[i]]) {
+        thisStart = new Date(MONTH_STARTS[monthKeys[i]]);
+        thisStart.setHours(0,0,0,0);
+      } else {
+        thisStart = new Date(currentMonthStart);
+        thisStart.setDate(thisStart.getDate() + 30);
+      }
+      if (todayDate < thisStart) break;
+      currentMonthIndex = i;
+      currentMonthStart = thisStart;
+    }
+
+    var msPerDay = 1000 * 60 * 60 * 24;
+    var dayInMonth = Math.floor((todayDate - currentMonthStart) / msPerDay) + 1;
+    var estimated = !MONTH_STARTS[monthKeys[currentMonthIndex]] && currentMonthIndex > 0;
+
+    return {
+      label: monthLabels[currentMonthIndex] + ', Day ' + dayInMonth,
+      sub: 'Year beginning ' + YEAR_START_GREGORIAN_YEAR,
+      estimated: estimated
+    };
+  }
+
+  var yahsResult = calculateYahsDate();
+  var yahsDateEl = document.getElementById('yahs-today-date');
+  var yahsDayEl  = document.getElementById('yahs-today-day');
+  if (yahsDateEl) yahsDateEl.textContent = yahsResult.label;
+  if (yahsDayEl)  yahsDayEl.textContent  = yahsResult.sub + (yahsResult.estimated ? ' (estimated)' : '');
+})();
+</script>
+
+<style>
+  /* ───────────── PAGE WRAP ───────────── */
+  .cal-wrap {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #f0e0bf;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  /* ───────────── HERO ───────────── */
+  .cal-hero {
+    text-align: center;
+    padding: 5rem 1.5rem 3.5rem;
+    border-bottom: 1px solid #4a3218;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(180, 100, 20, 0.2), transparent 70%),
+      linear-gradient(180deg, #0a0602 0%, #1a1208 100%);
+  }
+
+  .cal-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a6028;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .cal-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 6vw, 3.5rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 0.75rem;
+    line-height: 1.1;
+  }
+
+  .cal-sub {
+    font-size: clamp(1rem, 2vw, 1.2rem);
+    color: #c4a46b;
+    font-style: italic;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ───────────── INTRO ───────────── */
+  .cal-section {
+    padding: 3.5rem 1.5rem;
+    border-bottom: 1px solid #2e1f0d;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .cal-prose {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #d9c9a8;
+  }
+
+  .cal-prose p { margin-bottom: 1.4rem; }
+  .cal-prose p:last-child { margin-bottom: 0; }
+  .cal-prose em { color: #c4a46b; }
+  .cal-prose strong { color: #e0c88a; }
+
+  .cal-question {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.1rem, 2vw, 1.4rem);
+    font-style: italic;
+    font-weight: 600;
+    color: #BA7517;
+    margin: 2.25rem 0 0;
+    letter-spacing: 0.5px;
+  }
+
+  /* ───────────── SIDE-BY-SIDE GRID ───────────── */
+  .cal-grid-section {
+    padding: 4rem 1.5rem;
+    border-bottom: 1px solid #2e1f0d;
+    background: radial-gradient(ellipse at 50% 30%, rgba(80, 50, 15, 0.1), transparent 70%);
+  }
+
+  .cal-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cal-card {
+    background: #100b05;
+    border: 1px solid #2a1a08;
+    border-top-width: 3px;
+    border-radius: 6px;
+    padding: 2rem 1.75rem;
+  }
+
+  .cal-roman { border-top-color: #6a2e0a; }
+  .cal-yahs  { border-top-color: #BA7517; }
+
+  .cal-side-label {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    color: #c4a46b;
+    margin-bottom: 0.4rem;
+  }
+
+  .cal-roman .cal-side-label { color: #b87a3e; }
+  .cal-yahs  .cal-side-label { color: #d4930f; }
+
+  .cal-side-author {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.85rem;
+    color: #6a4820;
+    margin: 0 0 1.75rem;
+  }
+
+  .cal-today {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.25rem 1rem;
+    border-radius: 4px;
+    background: rgba(10, 6, 2, 0.5);
+    border: 1px solid #2a1a08;
+  }
+
+  .cal-today-label {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #6a4820;
+    margin-bottom: 0.5rem;
+  }
+
+  .cal-today-date {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #f0e0bf;
+    line-height: 1.3;
+  }
+
+  .cal-roman .cal-today-date { color: #d4930f; }
+  .cal-yahs  .cal-today-date { color: #f0e0bf; }
+
+  .cal-today-day {
+    font-size: 1rem;
+    color: #a89060;
+    margin-top: 0.35rem;
+    font-style: italic;
+  }
+
+  /* ───────────── CARD SECTIONS ───────────── */
+  .cal-card-section {
+    margin-bottom: 1.75rem;
+  }
+
+  .cal-section-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.45rem;
+    border-bottom: 1px solid #2a1a08;
+  }
+
+  /* ───────────── PAGAN LIST (Roman side) ───────────── */
+  .pagan-list,
+  .simple-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    font-size: 0.92rem;
+  }
+
+  .pagan-list li {
+    padding: 0.45rem 0;
+    border-bottom: 1px dotted #2a1a08;
+    color: #a89060;
+    line-height: 1.5;
+  }
+
+  .pagan-list li:last-child { border-bottom: none; }
+
+  .pagan-list strong {
+    display: inline-block;
+    min-width: 92px;
+    color: #c4a46b;
+    font-weight: 600;
+  }
+
+  .pagan-list a {
+    color: #BA7517;
+    text-decoration: underline dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 3px;
+    transition: color 0.15s;
+  }
+
+  .pagan-list a:hover {
+    color: #d4930f;
+    text-decoration-style: solid;
+  }
+
+  /* ───────────── SIMPLE LIST (Yahuah side) ───────────── */
+  .simple-list li {
+    padding: 0.45rem 0;
+    color: #a89060;
+    line-height: 1.6;
+  }
+
+  .simple-list strong {
+    display: inline-block;
+    min-width: 132px;
+    color: #c4a46b;
+    font-weight: 600;
+  }
+
+  .simple-list em { color: #c4a46b; }
+
+  .agri-marker {
+    color: #d4930f;
+    font-style: italic;
+    font-size: 0.88rem;
+    margin-left: 0.4rem;
+  }
+
+  /* ───────────── NOTICE FOOTNOTES ───────────── */
+  .cal-notice {
+    font-size: 0.92rem;
+    font-style: italic;
+    color: #8a7048;
+    line-height: 1.7;
+    margin: 1.25rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid #2a1a08;
+  }
+
+  .cal-notice + .cal-notice {
+    border-top: none;
+    padding-top: 0.6rem;
+  }
+
+  /* ───────────── FOUNDATION STUDIES ───────────── */
+  .cal-studies-section {
+    text-align: center;
+    padding: 5rem 1.5rem;
+    background: radial-gradient(ellipse at 50% 30%, rgba(80, 50, 15, 0.12), transparent 70%);
+  }
+
+  .cal-studies-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #6a4820;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .cal-studies-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 600;
+    color: #f0e0bf;
+    margin: 0 0 0.5rem;
+  }
+
+  .cal-studies-sub {
+    font-size: 1rem;
+    color: #a89060;
+    font-style: italic;
+    margin: 0 auto 3rem;
+    max-width: 640px;
+    line-height: 1.7;
+  }
+
+  .cal-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1.25rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .cal-study {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: #100b05;
+    border: 1px solid #2a1a08;
+    border-top-width: 3px;
+    border-radius: 6px;
+    padding: 1.4rem 1.25rem;
+    transition: background 0.2s, transform 0.15s;
+  }
+
+  a.cal-study:hover {
+    background: #1a1007;
+    transform: translateY(-3px);
+  }
+
+  .cal-study-sun   { border-top-color: #BA7517; }
+  .cal-study-moon  { border-top-color: #6a7a8e; }
+  .cal-study-stars { border-top-color: #4a3a6a; }
+  .cal-study-placeholder {
+    border-top-color: #3a2a14;
+    opacity: 0.62;
+  }
+
+  .cal-study-tag {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #6a4820;
+    margin-bottom: 0.6rem;
+  }
+
+  .cal-study-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 0.6rem;
+    line-height: 1.25;
+  }
+
+  .cal-study-blurb {
+    font-size: 0.85rem;
+    color: #a89060;
+    line-height: 1.65;
+    flex: 1;
+    margin: 0 0 1.1rem;
+  }
+
+  .cal-study-cta {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #BA7517;
+  }
+
+  .cal-study-placeholder .cal-study-cta { color: #6a4820; }
+
+  /* ───────────── RESPONSIVE ───────────── */
+  @media (max-width: 900px) {
+    .cal-studies-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+
+  @media (max-width: 760px) {
+    .cal-grid { grid-template-columns: 1fr; }
+    .cal-hero { padding: 3.5rem 1.25rem 2.5rem; }
+    .cal-section { padding: 2.5rem 1.25rem; }
+    .cal-grid-section { padding: 3rem 1rem; }
+    .cal-studies-section { padding: 3.5rem 1rem; }
+  }
+
+  @media (max-width: 500px) {
+    .cal-studies-grid { grid-template-columns: 1fr; }
+    .cal-card { padding: 1.5rem 1.25rem; }
+    .pagan-list strong,
+    .simple-list strong {
+      display: block;
+      min-width: 0;
+      margin-bottom: 0.15rem;
+    }
+  }
+</style>
