@@ -1,0 +1,564 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Today in Both Calendars — Nazaryah"
+  description="See today's date in both the Roman/Gregorian calendar and Yahuah's calendar. Each Roman day-name and month-name is linked to a study of its pagan-deity origin."
+>
+  <main class="today-page">
+
+    <a href="/calendar" class="td-back">Back to the Calendar</a>
+
+    <header class="today-header">
+      <p class="today-eyebrow">Today in Both Calendars</p>
+      <h1 class="today-title">Two names for the same day</h1>
+      <p class="today-subtitle">
+        Your phone calls it one thing. The heavens call it another. See the difference, click the names, and decide for yourself which calendar tells the truth.
+      </p>
+    </header>
+
+    <section class="today-grid">
+
+      <!-- ═══════ ROMAN SIDE ═══════ -->
+      <article class="today-card today-roman">
+        <div class="card-side-label">The Roman Calendar</div>
+        <p class="card-side-author">Authored by Caesars, edited by popes</p>
+
+        <div class="card-today-block">
+          <span class="today-mini-label">Today</span>
+
+          <div class="today-day-row">
+            <span class="today-day-name" id="roman-day-name">&mdash;</span>
+            <a href="#" class="today-pagan-link" id="roman-day-link" style="display:none"></a>
+          </div>
+
+          <div class="today-date-row">
+            <span class="today-date-display" id="roman-date-display">&mdash;</span>
+            <a href="#" class="today-pagan-link" id="roman-month-link" style="display:none"></a>
+          </div>
+        </div>
+
+        <p class="card-notice">
+          Every day-name and every month-name on the Roman calendar carries a pagan deity or an imperial vanity. Click the names above to see who is being honored each time you mark the date. September through December still mean seven, eight, nine, and ten &mdash; they got bumped two slots when Julius and Augustus Caesar inserted months named after themselves.
+        </p>
+      </article>
+
+      <!-- ═══════ YAHUAH SIDE ═══════ -->
+      <article class="today-card today-yahs">
+        <div class="card-side-label">Yahuah's Calendar</div>
+        <p class="card-side-author">Authored on Day Four of creation</p>
+
+        <div class="card-today-block">
+          <span class="today-mini-label">Today</span>
+          <div class="today-date-display" id="yahs-today-date">&mdash;</div>
+          <div class="today-agri-marker" id="yahs-today-marker">&mdash;</div>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-title">How the Year Begins</div>
+          <p>
+            The year begins when Spica meets the moon at the new moon nearest the spring equinox. The day after that conjunction is <strong>Aviv 1</strong> &mdash; Day 1 of Month 1.
+          </p>
+        </div>
+
+        <div class="card-section">
+          <div class="card-section-title">How the Months Begin</div>
+          <p>
+            Every month after Aviv begins the day after the visible new-moon sliver appears. Day 1 is always the day <em>after</em> first sighting &mdash; never the day of conjunction.
+          </p>
+        </div>
+
+        <p class="card-notice">
+          Notice what is missing. No emperor's name. No god's name. No month adjusted for vanity. Just numbered months, agricultural markers tied to the harvest cycle Yahuah built into creation, and Aviv &mdash; the only Hebrew month name Scripture uses (Exodus 13:4, Deuteronomy 16:1), the month of the barley harvest, the month of unleavened bread.
+        </p>
+      </article>
+
+    </section>
+
+    <div class="closing-block">
+      <a href="/calendar" class="td-back">Back to the Calendar</a>
+    </div>
+
+  </main>
+</BaseLayout>
+
+<!-- ════════════════════════════════════════════════════════════════
+     CALENDAR DATE LOGIC
+     Update MONTH_STARTS each year when Aviv 1 is confirmed and as
+     new moons are sighted. Keep in sync with the banner-snippet
+     block in calendar.astro.
+     ════════════════════════════════════════════════════════════════ -->
+<script is:inline>
+(function() {
+  'use strict';
+
+  var MONTH_STARTS = {
+    aviv:     '2026-03-19',
+    month_2:  '2026-04-18',
+    month_3:  '2026-05-17',
+    month_4:  '2026-06-15',
+    month_5:  '2026-07-15',
+    month_6:  '2026-08-13',
+    month_7:  '2026-09-11',
+    month_8:  '2026-10-11',
+    month_9:  '2026-11-10',
+    month_10: '2026-12-09',
+    month_11: '2027-01-08',
+    month_12: '2027-02-07',
+    month_13: '2027-03-09'
+  };
+
+  var AGRI_MARKERS = [
+    'Barley harvest',
+    'Wheat harvest begins',
+    'Wheat harvest, firstfruits',
+    'Summer fruits begin',
+    'Grape harvest begins',
+    'Summer fruits, grapes',
+    'Olive harvest, ingathering',
+    'Olive pressing, plowing',
+    'Sowing of winter wheat',
+    'Winter rains',
+    'Almond blossoms appear',
+    'Latter rains, fields awaken',
+    'Added when needed to keep the agricultural year aligned'
+  ];
+
+  var DAY_LOOKUP = [
+    { name: 'Sunday',    descriptor: 'Sol — Roman sun god',              link: '/calendar/pagan-gods/sunday-sol' },
+    { name: 'Monday',    descriptor: 'Luna — Roman moon goddess',        link: '/calendar/pagan-gods/monday-luna' },
+    { name: 'Tuesday',   descriptor: 'Tiw — Norse war god',              link: '/calendar/pagan-gods/tuesday-tiw' },
+    { name: 'Wednesday', descriptor: 'Woden — Norse chief god',          link: '/calendar/pagan-gods/wednesday-woden' },
+    { name: 'Thursday',  descriptor: 'Thor — Norse thunder god',         link: '/calendar/pagan-gods/thursday-thor' },
+    { name: 'Friday',    descriptor: 'Frigg — Norse fertility goddess',  link: '/calendar/pagan-gods/friday-frigg' },
+    { name: 'Saturday',  descriptor: 'Saturn — Roman god of time',       link: '/calendar/pagan-gods/saturday-saturn' }
+  ];
+
+  var MONTH_LOOKUP = [
+    { name: 'January',   descriptor: 'Janus — two-faced Roman god',           link: '/calendar/pagan-gods/january-janus' },
+    { name: 'February',  descriptor: 'Februa — Roman purification rites',     link: '/calendar/pagan-gods/february-februa' },
+    { name: 'March',     descriptor: 'Mars — Roman war god',                  link: '/calendar/pagan-gods/march-mars' },
+    { name: 'April',     descriptor: 'Aphrodite/Venus — goddess of love',     link: '/calendar/pagan-gods/april-aphrodite' },
+    { name: 'May',       descriptor: 'Maia — Roman earth goddess',            link: '/calendar/pagan-gods/may-maia' },
+    { name: 'June',      descriptor: 'Juno — queen of the Roman gods',        link: '/calendar/pagan-gods/june-juno' },
+    { name: 'July',      descriptor: 'Julius Caesar — wrote his own name in', link: '/calendar/pagan-gods/july-julius' },
+    { name: 'August',    descriptor: 'Augustus Caesar — followed Julius',     link: '/calendar/pagan-gods/august-augustus' },
+    { name: 'September', descriptor: 'Septem — Latin for "seven"',            link: '/calendar/pagan-gods/september-seven' },
+    { name: 'October',   descriptor: 'Octo — Latin for "eight"',              link: '/calendar/pagan-gods/october-eight' },
+    { name: 'November',  descriptor: 'Novem — Latin for "nine"',              link: '/calendar/pagan-gods/november-nine' },
+    { name: 'December',  descriptor: 'Decem — Latin for "ten"',               link: '/calendar/pagan-gods/december-ten' }
+  ];
+
+  // ── Roman side ──
+  var today = new Date();
+  var dayInfo = DAY_LOOKUP[today.getDay()];
+  var monthInfo = MONTH_LOOKUP[today.getMonth()];
+  var dayOfMonth = today.getDate();
+  var year = today.getFullYear();
+
+  document.getElementById('roman-day-name').textContent = dayInfo.name;
+
+  var dayLinkEl = document.getElementById('roman-day-link');
+  if (dayInfo.descriptor && dayInfo.link) {
+    dayLinkEl.textContent = dayInfo.descriptor;
+    dayLinkEl.href = dayInfo.link;
+    dayLinkEl.style.display = '';
+  }
+
+  document.getElementById('roman-date-display').textContent =
+    monthInfo.name + ' ' + dayOfMonth + ', ' + year;
+
+  var monthLinkEl = document.getElementById('roman-month-link');
+  if (monthInfo.descriptor && monthInfo.link) {
+    monthLinkEl.textContent = monthInfo.descriptor;
+    monthLinkEl.href = monthInfo.link;
+    monthLinkEl.style.display = '';
+  }
+
+  // ── Yahuah side ──
+  function calculateYahsDate() {
+    var monthKeys = ['aviv','month_2','month_3','month_4','month_5','month_6',
+                     'month_7','month_8','month_9','month_10','month_11','month_12','month_13'];
+    var monthLabels = ['Aviv','Month 2','Month 3','Month 4','Month 5','Month 6',
+                       'Month 7','Month 8','Month 9','Month 10','Month 11','Month 12','Month 13'];
+
+    var todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
+    todayDate.setHours(0, 0, 0, 0);
+
+    if (!MONTH_STARTS.aviv) {
+      return { label: 'Awaiting Aviv 1 anchor', marker: 'Calendar configuring' };
+    }
+
+    var avivStart = new Date(MONTH_STARTS.aviv);
+    avivStart.setHours(0, 0, 0, 0);
+
+    if (todayDate < avivStart) {
+      return { label: 'Before Aviv 1', marker: 'Awaiting year start' };
+    }
+
+    var currentMonthIndex = 0;
+    var currentMonthStart = avivStart;
+
+    for (var i = 1; i < monthKeys.length; i++) {
+      if (!MONTH_STARTS[monthKeys[i]]) break;
+      var thisStart = new Date(MONTH_STARTS[monthKeys[i]]);
+      thisStart.setHours(0, 0, 0, 0);
+      if (todayDate < thisStart) break;
+      currentMonthIndex = i;
+      currentMonthStart = thisStart;
+    }
+
+    var msPerDay = 1000 * 60 * 60 * 24;
+    var dayInMonth = Math.floor((todayDate - currentMonthStart) / msPerDay) + 1;
+
+    return {
+      label: monthLabels[currentMonthIndex] + ', Day ' + dayInMonth,
+      marker: AGRI_MARKERS[currentMonthIndex]
+    };
+  }
+
+  var yahsResult = calculateYahsDate();
+  document.getElementById('yahs-today-date').textContent = yahsResult.label;
+  document.getElementById('yahs-today-marker').textContent = yahsResult.marker;
+})();
+</script>
+
+<style>
+  /* ─── PAGE WRAP ─── */
+  .today-page {
+    --dark-bg:       #1a1410;
+    --dark-bg-soft:  #221a14;
+    --cream:         #F4ECDB;
+    --cream-soft:    #d6cdb9;
+    --gold:          #D4A14A;
+
+    --roman-bg:      rgba(107, 68, 35, 0.18);
+    --roman-border:  #8B5A2B;
+    --roman-accent:  #D4924A;
+    --roman-glow:    rgba(212, 146, 74, 0.2);
+
+    --yahs-bg:       rgba(70, 100, 145, 0.16);
+    --yahs-border:   #5A7BA8;
+    --yahs-accent:   #9BB5DA;
+    --yahs-glow:     rgba(155, 181, 218, 0.2);
+    --yahs-agri:     #8FB89D;
+
+    background: var(--dark-bg);
+    color: var(--cream);
+    font-family: 'Crimson Pro', Georgia, 'Times New Roman', serif;
+    font-size: 18px;
+    line-height: 1.7;
+    min-height: 100vh;
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 2.5rem 1.5rem 5rem;
+  }
+
+  /* ─── BACK LINK ─── */
+  .td-back {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    color: var(--cream-soft);
+    text-decoration: none;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+    padding: 0.5rem 0.9rem;
+    border: 1px solid var(--cream-soft);
+    border-radius: 3px;
+    transition: all 0.2s ease;
+    opacity: 0.7;
+    font-weight: 600;
+  }
+
+  .td-back::before {
+    content: "← ";
+    margin-right: 0.25rem;
+  }
+
+  .td-back:hover {
+    opacity: 1;
+    border-color: var(--gold);
+    color: var(--gold);
+  }
+
+  /* ─── HEADER ─── */
+  .today-header {
+    text-align: center;
+    margin-bottom: 3rem;
+  }
+
+  .today-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 1rem;
+    font-weight: 600;
+  }
+
+  .today-eyebrow::before,
+  .today-eyebrow::after {
+    content: "—";
+    margin: 0 0.7em;
+    opacity: 0.5;
+  }
+
+  .today-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    font-weight: 700;
+    color: var(--cream);
+    letter-spacing: 0.025em;
+    margin: 0 0 1.1rem;
+    line-height: 1.2;
+    text-transform: uppercase;
+  }
+
+  .today-subtitle {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-size: 1.08rem;
+    font-style: italic;
+    color: var(--cream-soft);
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* ─── SIDE-BY-SIDE GRID ─── */
+  .today-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.75rem;
+    margin-bottom: 3.5rem;
+  }
+
+  @media (max-width: 760px) {
+    .today-grid {
+      grid-template-columns: 1fr;
+      gap: 1.4rem;
+    }
+  }
+
+  /* ─── CARDS (shared) ─── */
+  .today-card {
+    border-radius: 4px;
+    padding: 2rem 1.75rem;
+    position: relative;
+    background: var(--dark-bg-soft);
+  }
+
+  .today-card::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    border-radius: 4px 4px 0 0;
+  }
+
+  .card-side-label {
+    font-family: 'Cinzel', serif;
+    text-align: center;
+    font-weight: 700;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-size: 0.82rem;
+    margin-bottom: 0.4rem;
+  }
+
+  .card-side-author {
+    text-align: center;
+    font-style: italic;
+    font-size: 0.85rem;
+    margin: 0 0 2rem;
+    color: var(--cream-soft);
+    opacity: 0.75;
+  }
+
+  /* ─── TODAY BLOCK ─── */
+  .card-today-block {
+    text-align: center;
+    margin-bottom: 2rem;
+    padding: 1.75rem 1.1rem;
+    border-radius: 4px;
+  }
+
+  .today-mini-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 0.85rem;
+    opacity: 0.6;
+    font-weight: 600;
+  }
+
+  /* Roman: day-of-week then date */
+  .today-roman .today-day-row {
+    margin-bottom: 1.1rem;
+    line-height: 1.4;
+  }
+
+  .today-roman .today-day-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.4rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.4rem;
+    letter-spacing: 0.02em;
+  }
+
+  .today-roman .today-date-row { line-height: 1.4; }
+
+  .today-roman .today-date-display {
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 0.4rem;
+  }
+
+  /* Pagan inline link */
+  .today-pagan-link {
+    display: inline-block;
+    font-size: 0.92rem;
+    font-style: italic;
+    text-decoration: underline dotted;
+    text-decoration-thickness: 1px;
+    text-underline-offset: 4px;
+    padding: 0.18rem 0.5rem;
+    border-radius: 3px;
+    transition: all 0.15s ease;
+  }
+
+  /* Yahuah: month/day with marker */
+  .today-yahs .today-date-display {
+    font-family: 'Cinzel', serif;
+    font-size: 1.7rem;
+    font-weight: 700;
+    line-height: 1.3;
+    display: block;
+    margin-bottom: 0.55rem;
+  }
+
+  .today-agri-marker {
+    font-size: 1rem;
+    font-style: italic;
+  }
+
+  /* ─── ROMAN COLOR APPLICATION ─── */
+  .today-roman {
+    border: 1px solid var(--roman-border);
+  }
+
+  .today-roman::before {
+    background: linear-gradient(90deg, transparent, var(--roman-accent), transparent);
+  }
+
+  .today-roman .card-side-label,
+  .today-roman .today-day-name,
+  .today-roman .today-date-display {
+    color: var(--roman-accent);
+  }
+
+  .today-roman .card-today-block {
+    background: var(--roman-bg);
+    border: 1px solid var(--roman-border);
+  }
+
+  .today-roman .today-pagan-link {
+    color: var(--roman-accent);
+  }
+
+  .today-roman .today-pagan-link:hover {
+    background: var(--roman-glow);
+    text-decoration-style: solid;
+  }
+
+  /* ─── YAHUAH COLOR APPLICATION ─── */
+  .today-yahs {
+    border: 1px solid var(--yahs-border);
+  }
+
+  .today-yahs::before {
+    background: linear-gradient(90deg, transparent, var(--yahs-accent), transparent);
+  }
+
+  .today-yahs .card-side-label,
+  .today-yahs .today-date-display {
+    color: var(--yahs-accent);
+  }
+
+  .today-yahs .card-today-block {
+    background: var(--yahs-bg);
+    border: 1px solid var(--yahs-border);
+  }
+
+  .today-yahs .today-agri-marker {
+    color: var(--yahs-agri);
+  }
+
+  /* ─── SUB-SECTIONS ─── */
+  .card-section {
+    margin-bottom: 1.4rem;
+  }
+
+  .card-section-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: 0.78rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--yahs-accent);
+    margin-bottom: 0.65rem;
+    padding-bottom: 0.4rem;
+    border-bottom: 1px solid var(--yahs-border);
+  }
+
+  .card-section p {
+    margin: 0;
+    font-size: 0.97rem;
+    line-height: 1.65;
+    color: var(--cream-soft);
+  }
+
+  .card-section strong { color: var(--yahs-accent); }
+  .card-section em { color: var(--cream); }
+
+  /* ─── NOTICE ─── */
+  .card-notice {
+    font-size: 0.93rem;
+    font-style: italic;
+    color: var(--cream-soft);
+    opacity: 0.85;
+    margin-top: 1.5rem;
+    padding-top: 1.1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+    line-height: 1.65;
+  }
+
+  /* ─── CLOSING ─── */
+  .closing-block {
+    text-align: center;
+    margin-top: 3.5rem;
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.08);
+  }
+
+  .closing-block .td-back { margin: 0; }
+
+  /* ─── MOBILE ─── */
+  @media (max-width: 640px) {
+    .today-page { padding: 1.75rem 1rem 4rem; }
+    .today-card { padding: 1.5rem 1.25rem; }
+    .today-roman .today-day-name,
+    .today-roman .today-date-display,
+    .today-yahs .today-date-display {
+      font-size: 1.3rem;
+    }
+  }
+</style>
