@@ -1,0 +1,287 @@
+/* ============================================================
+   Calendar Foundation Studies — shared styles
+   for /calendar/foundation/* mini-studies. Single-page studies
+   (500–1500 words) explaining the calendar's foundational
+   concepts. Same dark Cinzel/bronze idiom as the rest of the
+   calendar trilogy.
+   ============================================================ */
+
+.cf {
+  --cf-bg-top:    #0e0905;
+  --cf-bg-mid:    #1a110a;
+  --cf-bg-low:    #160f07;
+  --cf-rule:      #2a1a08;
+  --cf-rule-soft: #2e1f0d;
+  --cf-rule-mid:  #4a3218;
+
+  --cf-cream:     #f0e0bf;
+  --cf-paper:     #d9c9a8;
+  --cf-body:      #b8a584;
+  --cf-muted:     #a88b4f;
+  --cf-faded:     #8a7855;
+  --cf-shadow:    #6a4820;
+
+  --cf-bronze:    #c9a961;
+  --cf-gold:      #d4a04a;
+  --cf-ochre:     #a88b4f;
+
+  background: linear-gradient(180deg, var(--cf-bg-top) 0%, var(--cf-bg-mid) 18%, var(--cf-bg-low) 100%);
+  color: var(--cf-paper);
+  font-family: 'Crimson Pro', 'EB Garamond', Georgia, serif;
+  min-height: 80vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.cf::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(180, 140, 80, 0.14), transparent 60%),
+    radial-gradient(ellipse at 0% 100%, rgba(70, 40, 12, 0.18), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.cf-inner {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 4rem 1.5rem 5.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Back link ─── */
+.cf-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--cf-faded);
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+  padding: 0.5rem 0.9rem 0.5rem 0.65rem;
+  border: 1px solid var(--cf-rule);
+  background: rgba(10, 6, 2, 0.4);
+  font-weight: 600;
+  transition: color 0.2s, border-color 0.2s, padding 0.2s;
+}
+
+.cf-back:hover {
+  color: var(--cf-bronze);
+  border-color: var(--cf-rule-mid);
+  padding-left: 0.5rem;
+}
+
+.cf-back .arrow { font-size: 1em; transition: transform 0.2s; }
+.cf-back:hover .arrow { transform: translateX(-3px); }
+
+/* ─── Header ─── */
+.cf-header {
+  text-align: center;
+  border-bottom: 1px solid var(--cf-rule-mid);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+.cf-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+  color: var(--cf-faded);
+  font-weight: 600;
+  margin: 0 0 1rem;
+}
+
+.cf-eyebrow.with-rules::before,
+.cf-eyebrow.with-rules::after {
+  content: "—";
+  margin: 0 0.7em;
+  color: #6a5840;
+}
+
+.cf-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--cf-cream);
+  margin: 0 0 0.7rem;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.cf-subtitle {
+  font-family: 'Crimson Pro', Georgia, serif;
+  font-size: clamp(1rem, 1.8vw, 1.15rem);
+  font-style: italic;
+  color: var(--cf-body);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ─── Body content ─── */
+.cf p {
+  font-size: 1.06rem;
+  line-height: 1.85;
+  color: var(--cf-paper);
+  margin: 0 0 1.3rem;
+}
+
+.cf h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--cf-bronze);
+  margin: 2.5rem 0 1.1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-bottom: 0.55rem;
+  border-bottom: 1px solid var(--cf-rule);
+}
+
+.cf strong { color: var(--cf-gold); font-weight: 700; }
+.cf em { font-style: italic; color: var(--cf-body); }
+
+.cf ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.25rem 0 1.6rem;
+}
+
+.cf ul li {
+  position: relative;
+  padding: 0.4rem 0 0.4rem 1.6rem;
+  color: var(--cf-paper);
+  font-size: 1.04rem;
+  line-height: 1.75;
+}
+
+.cf ul li::before {
+  content: "◆";
+  position: absolute;
+  left: 0;
+  top: 0.45rem;
+  color: var(--cf-bronze);
+  font-size: 0.78rem;
+}
+
+/* ─── Scripture blockquote ─── */
+.cf-scripture {
+  border-left: 3px solid var(--cf-bronze);
+  padding: 1rem 1.4rem;
+  margin: 1.5rem 0;
+  font-style: italic;
+  color: var(--cf-paper);
+  background: rgba(10, 6, 2, 0.45);
+  border-radius: 0 4px 4px 0;
+  line-height: 1.7;
+  font-size: 1.02rem;
+}
+
+.cf-scripture .ref {
+  display: block;
+  margin-top: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-style: normal;
+  font-size: 0.74rem;
+  letter-spacing: 0.06em;
+  font-weight: 700;
+  color: var(--cf-bronze);
+  text-transform: uppercase;
+}
+
+.cf-scripture + .cf-scripture {
+  margin-top: 1rem;
+}
+
+/* ─── Pull thought ─── */
+.cf-pull {
+  background: rgba(212, 160, 74, 0.06);
+  border-left: 4px solid var(--cf-gold);
+  padding: 1.3rem 1.6rem;
+  margin: 2.25rem 0;
+  font-style: italic;
+  font-size: 1.08rem;
+  line-height: 1.7;
+  color: var(--cf-cream);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ─── Companion-study links ─── */
+.cf-companions {
+  margin: 4rem auto 0;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--cf-rule-soft);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+}
+
+.cf-companion {
+  display: block;
+  text-decoration: none;
+  background: rgba(10, 6, 2, 0.5);
+  border: 1px solid var(--cf-rule);
+  border-top-width: 3px;
+  border-top-color: var(--cf-bronze);
+  border-radius: 4px;
+  padding: 1.2rem 1.25rem;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.cf-companion:hover {
+  background: rgba(186, 117, 23, 0.08);
+  transform: translateY(-2px);
+}
+
+.cf-companion-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--cf-shadow);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.cf-companion-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--cf-cream);
+  margin: 0 0 0.35rem;
+  text-transform: uppercase;
+  letter-spacing: 0.01em;
+}
+
+.cf-companion-cta {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--cf-bronze);
+  font-weight: 600;
+}
+
+/* ─── Closing block ─── */
+.cf-closing {
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--cf-rule-soft);
+  text-align: center;
+}
+
+.cf-closing .cf-back { margin: 0; }
+
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+  .cf-inner { padding: 2.75rem 1.1rem 4rem; }
+  .cf p, .cf ul li { font-size: 1rem; line-height: 1.8; }
+  .cf-companions { grid-template-columns: 1fr; }
+  .cf-pull { padding: 1.1rem 1.2rem; }
+}

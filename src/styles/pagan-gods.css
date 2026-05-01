@@ -1,0 +1,200 @@
+/* ============================================================
+   Pagan-God Mini-Studies — shared styles for /pagan-gods/*
+
+   Short, focused single-page studies (300–600 words each) that
+   sit behind the Roman side of /calendar. Same dark Cinzel/
+   bronze palette as the foundation luminary studies.
+   ============================================================ */
+
+.pg {
+  --pg-bg-top:    #0a0602;
+  --pg-bg-mid:    #1a1208;
+  --pg-bg-low:    #160f07;
+  --pg-rule:      #2a1a08;
+  --pg-rule-soft: #2e1f0d;
+  --pg-rule-mid:  #4a3218;
+
+  --pg-cream:     #f0e0bf;
+  --pg-paper:     #d9c9a8;
+  --pg-body:      #c4a46b;
+  --pg-muted:     #a89060;
+  --pg-faded:     #8a7048;
+  --pg-shadow:    #6a4820;
+
+  --pg-bronze:    #BA7517;
+  --pg-gold:      #d4930f;
+  --pg-roman:     #b87a3e;
+
+  background: linear-gradient(180deg, var(--pg-bg-top) 0%, var(--pg-bg-mid) 18%, var(--pg-bg-low) 100%);
+  color: var(--pg-paper);
+  font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+  min-height: 80vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.pg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(180, 100, 20, 0.16), transparent 60%),
+    radial-gradient(ellipse at 0% 100%, rgba(70, 40, 12, 0.18), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.pg-inner {
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 3.5rem 1.5rem 5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── Back link ─── */
+.pg-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--pg-faded);
+  text-decoration: none;
+  margin-bottom: 2.5rem;
+  padding: 0.5rem 0.9rem 0.5rem 0.65rem;
+  border: 1px solid var(--pg-rule);
+  background: rgba(10, 6, 2, 0.4);
+  font-weight: 600;
+  transition: color 0.2s, border-color 0.2s, padding 0.2s;
+}
+
+.pg-back:hover {
+  color: var(--pg-bronze);
+  border-color: var(--pg-rule-mid);
+  padding-left: 0.5rem;
+}
+
+.pg-back .arrow {
+  font-size: 1em;
+  transition: transform 0.2s;
+}
+
+.pg-back:hover .arrow { transform: translateX(-3px); }
+
+/* ─── Header ─── */
+.pg-header {
+  border-bottom: 1px solid var(--pg-rule-mid);
+  padding-bottom: 1.5rem;
+  margin-bottom: 2rem;
+  text-align: left;
+}
+
+.pg-eyebrow {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: var(--pg-roman);
+  font-weight: 700;
+  margin: 0 0 0.5rem;
+}
+
+.pg-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-weight: 700;
+  color: var(--pg-cream);
+  margin: 0 0 0.5rem;
+  line-height: 1.15;
+  letter-spacing: 0.005em;
+}
+
+.pg-subtitle {
+  font-size: clamp(1rem, 1.8vw, 1.1rem);
+  font-style: italic;
+  color: var(--pg-body);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ─── Body content ─── */
+.pg p {
+  font-size: 1.06rem;
+  line-height: 1.85;
+  color: var(--pg-paper);
+  margin: 0 0 1.25rem;
+}
+
+.pg h2 {
+  font-family: 'Cinzel', serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--pg-bronze);
+  margin: 2.25rem 0 1rem;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--pg-rule);
+}
+
+.pg strong { color: var(--pg-gold); font-weight: 700; }
+.pg em { font-style: italic; color: var(--pg-body); }
+
+/* ─── Scripture quote ─── */
+.pg-scripture {
+  border-left: 3px solid var(--pg-bronze);
+  padding: 0.85rem 1.25rem;
+  margin: 1.25rem 0 1.5rem;
+  font-style: italic;
+  color: var(--pg-muted);
+  background: rgba(10, 6, 2, 0.4);
+  border-radius: 0 4px 4px 0;
+  line-height: 1.7;
+  font-size: 0.98rem;
+}
+
+.pg-scripture .ref {
+  font-family: 'Cinzel', serif;
+  font-style: normal;
+  font-size: 0.78rem;
+  letter-spacing: 0.05em;
+  font-weight: 700;
+  color: var(--pg-bronze);
+  text-transform: uppercase;
+  margin-right: 0.5rem;
+}
+
+/* ─── Pull thought ─── */
+.pg-pull {
+  background: rgba(186, 117, 23, 0.06);
+  border-left: 4px solid var(--pg-bronze);
+  padding: 1.25rem 1.5rem;
+  margin: 2rem 0;
+  font-style: italic;
+  font-size: 1.05rem;
+  line-height: 1.7;
+  color: var(--pg-paper);
+  border-radius: 0 4px 4px 0;
+}
+
+/* ─── Closing block ─── */
+.pg-closing {
+  margin-top: 3rem;
+  padding-top: 1.75rem;
+  border-top: 1px solid var(--pg-rule-soft);
+  text-align: center;
+}
+
+.pg-closing .pg-back {
+  margin: 0;
+}
+
+/* ─── Responsive ─── */
+@media (max-width: 640px) {
+  .pg-inner { padding: 2.5rem 1.1rem 3.5rem; }
+  .pg p { font-size: 1rem; line-height: 1.8; }
+  .pg-pull { padding: 1rem 1.1rem; }
+}

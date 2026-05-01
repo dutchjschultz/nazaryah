@@ -1,0 +1,479 @@
+/* ============================================================
+   Luminary Studies — shared styles for Sun, Moon, and Stars
+   in Scripture. Sits behind the Calendar page placeholders.
+
+   Uses the dark Cinzel/bronze palette consistent with
+   /calendar, /holidays, and /sun-worship.
+   ============================================================ */
+
+.lum {
+  --lum-bg-top:    #0a0602;
+  --lum-bg-mid:    #1a1208;
+  --lum-bg-low:    #160f07;
+  --lum-rule:      #2a1a08;
+  --lum-rule-soft: #2e1f0d;
+  --lum-rule-mid:  #4a3218;
+
+  --lum-cream:     #f0e0bf;
+  --lum-paper:     #d9c9a8;
+  --lum-body:      #c4a46b;
+  --lum-muted:     #a89060;
+  --lum-faded:     #8a7048;
+  --lum-shadow:    #6a4820;
+
+  --lum-bronze:    #BA7517;
+  --lum-gold:      #d4930f;
+  --lum-ochre:     #8a6028;
+
+  background: linear-gradient(180deg, var(--lum-bg-top) 0%, var(--lum-bg-mid) 18%, var(--lum-bg-low) 100%);
+  color: var(--lum-paper);
+  font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+  min-height: 80vh;
+  position: relative;
+  overflow: hidden;
+}
+
+.lum::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 50% 0%, rgba(180, 100, 20, 0.18), transparent 60%),
+    radial-gradient(ellipse at 0% 100%, rgba(70, 40, 12, 0.22), transparent 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lum-inner {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 4.5rem 1.5rem 6rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ─── BACK LINK ─── */
+.lum-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-family: 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--lum-faded);
+  text-decoration: none;
+  margin-bottom: 3rem;
+  padding: 0.5rem 0.9rem 0.5rem 0.65rem;
+  border: 1px solid var(--lum-rule);
+  background: rgba(10, 6, 2, 0.4);
+  font-weight: 600;
+  transition: color 0.2s, border-color 0.2s, padding 0.2s;
+}
+
+.lum-back:hover {
+  color: var(--lum-bronze);
+  border-color: var(--lum-rule-mid);
+  padding-left: 0.5rem;
+}
+
+.lum-back .arrow {
+  font-size: 1em;
+  transition: transform 0.2s;
+}
+
+.lum-back:hover .arrow { transform: translateX(-3px); }
+
+/* ─── TITLE BLOCK ─── */
+.lum-title-block {
+  text-align: center;
+  padding-bottom: 2.5rem;
+  margin-bottom: 2.5rem;
+  border-bottom: 1px solid var(--lum-rule-soft);
+}
+
+.lum-chapter-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  color: var(--lum-shadow);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 1.25rem;
+}
+
+.lum-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(2.2rem, 5vw, 3.2rem);
+  line-height: 1.1;
+  font-weight: 700;
+  color: var(--lum-cream);
+  margin: 0 0 1rem;
+  letter-spacing: 0.01em;
+}
+
+.lum-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  line-height: 1.5;
+  font-style: italic;
+  color: var(--lum-body);
+  max-width: 580px;
+  margin: 0 auto;
+  font-weight: 400;
+}
+
+.lum-pullquote {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.15rem, 2.2vw, 1.45rem);
+  line-height: 1.45;
+  font-style: italic;
+  font-weight: 600;
+  color: var(--lum-gold);
+  text-align: center;
+  margin: 2.5rem auto;
+  padding: 0 1rem;
+  max-width: 660px;
+  letter-spacing: 0.005em;
+}
+
+/* ─── QUICK VIEW SECTION ─── */
+.lum-quickview {
+  margin: 2.5rem 0 4rem;
+  padding: 2rem 2rem 2.25rem;
+  background: rgba(10, 6, 2, 0.55);
+  border: 1px solid var(--lum-rule);
+  border-top-width: 3px;
+  border-top-color: var(--lum-bronze);
+  border-radius: 4px;
+}
+
+.lum-quickview-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.35em;
+  color: var(--lum-bronze);
+  text-transform: uppercase;
+  font-weight: 700;
+  text-align: center;
+  margin: 0 0 0.5rem;
+}
+
+.lum-quickview-title {
+  font-family: 'Cinzel', serif;
+  font-size: 1.4rem;
+  text-align: center;
+  color: var(--lum-cream);
+  margin: 0 0 0.5rem;
+  font-weight: 600;
+}
+
+.lum-quickview-hint {
+  text-align: center;
+  font-style: italic;
+  font-size: 0.92rem;
+  color: var(--lum-faded);
+  margin: 0 0 1.75rem;
+}
+
+.lum-qv-block {
+  margin-bottom: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px dotted var(--lum-rule);
+}
+
+.lum-qv-block:last-child {
+  margin-bottom: 0;
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.lum-qv-heading {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.18em;
+  color: var(--lum-bronze);
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 0 0 0.6rem;
+}
+
+.lum-qv-body {
+  font-size: 1rem;
+  line-height: 1.75;
+  color: var(--lum-paper);
+  margin: 0;
+}
+
+.lum-qv-body strong { color: var(--lum-gold); font-weight: 600; }
+.lum-qv-body em { color: var(--lum-body); }
+
+/* ─── PARTS / SECTIONS ─── */
+.lum-part {
+  text-align: center;
+  margin: 4.5rem 0 2rem;
+}
+
+.lum-part-label {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.4em;
+  color: var(--lum-shadow);
+  text-transform: uppercase;
+  font-weight: 600;
+  margin-bottom: 0.85rem;
+}
+
+.lum-part-title {
+  font-family: 'Cinzel', serif;
+  font-size: clamp(1.4rem, 2.8vw, 1.85rem);
+  line-height: 1.25;
+  font-weight: 700;
+  color: var(--lum-cream);
+  margin: 0 auto 1rem;
+  max-width: 660px;
+  letter-spacing: 0.005em;
+}
+
+.lum-part-rule {
+  width: 90px;
+  height: 2px;
+  background: var(--lum-bronze);
+  margin: 0 auto;
+  opacity: 0.7;
+}
+
+/* ─── BODY ─── */
+.lum-body {
+  font-size: 1.08rem;
+  line-height: 1.85;
+  color: var(--lum-paper);
+  margin: 0 0 1.4rem;
+}
+
+.lum-body strong {
+  color: var(--lum-gold);
+  font-weight: 700;
+}
+
+.lum-body em { font-style: italic; color: var(--lum-body); }
+
+.lum-subhead {
+  font-family: 'Cinzel', serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--lum-bronze);
+  margin: 2.25rem 0 1rem;
+  letter-spacing: 0.005em;
+}
+
+/* ─── SCRIPTURE BLOCKQUOTE ─── */
+.lum-scripture {
+  margin: 2rem auto;
+  padding: 1.5rem 1.75rem;
+  max-width: 640px;
+  background: rgba(10, 6, 2, 0.45);
+  border-left: 3px solid var(--lum-bronze);
+  border-radius: 0 4px 4px 0;
+  text-align: left;
+}
+
+.lum-scripture-text {
+  font-size: 1.05rem;
+  font-style: italic;
+  line-height: 1.7;
+  color: var(--lum-paper);
+  margin: 0 0 0.75rem;
+}
+
+.lum-scripture-ref {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--lum-bronze);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* For multiple stacked verses */
+.lum-scripture .lum-scripture-text + .lum-scripture-text {
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px dotted var(--lum-rule);
+}
+
+/* ─── DIVIDER ─── */
+.lum-divider {
+  text-align: center;
+  margin: 3.5rem 0;
+  color: var(--lum-bronze);
+  font-size: 1.2rem;
+  opacity: 0.55;
+  letter-spacing: 0.5em;
+}
+
+/* ─── DEEPER DIVE ─── */
+.lum-deepdive {
+  margin: 2.5rem 0;
+  border: 1px solid var(--lum-rule);
+  background: rgba(10, 6, 2, 0.4);
+  overflow: hidden;
+  transition: border-color 0.25s, box-shadow 0.25s;
+  border-radius: 4px;
+}
+
+.lum-deepdive[open] {
+  border-color: var(--lum-rule-mid);
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35);
+}
+
+.lum-deepdive summary {
+  list-style: none;
+  cursor: pointer;
+  padding: 1.1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-family: 'Crimson Pro', Georgia, serif;
+  background: linear-gradient(135deg, rgba(186, 117, 23, 0.04) 0%, rgba(106, 72, 32, 0.06) 100%);
+  transition: background 0.25s;
+}
+
+.lum-deepdive summary::-webkit-details-marker { display: none; }
+
+.lum-deepdive summary:hover {
+  background: linear-gradient(135deg, rgba(186, 117, 23, 0.09) 0%, rgba(106, 72, 32, 0.13) 100%);
+}
+
+.lum-deepdive-label {
+  display: flex;
+  align-items: center;
+  gap: 0.85rem;
+}
+
+.lum-deepdive-icon {
+  color: var(--lum-gold);
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.lum-deepdive-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--lum-cream);
+  letter-spacing: 0.01em;
+  display: block;
+  text-transform: uppercase;
+}
+
+.lum-deepdive-hint {
+  font-size: 0.85rem;
+  font-style: italic;
+  color: var(--lum-muted);
+  display: block;
+  margin-top: 0.2rem;
+}
+
+.lum-deepdive-chevron {
+  color: var(--lum-bronze);
+  font-size: 1.1rem;
+  font-weight: 700;
+  transition: transform 0.25s;
+}
+
+.lum-deepdive[open] .lum-deepdive-chevron { transform: rotate(180deg); }
+
+.lum-deepdive-body {
+  padding: 0.5rem 1.75rem 1.5rem;
+  border-top: 1px solid var(--lum-rule);
+  background: rgba(10, 6, 2, 0.55);
+}
+
+.lum-deepdive-body .lum-body { font-size: 1rem; }
+
+/* ─── CLOSING ─── */
+.lum-end {
+  text-align: center;
+  margin-top: 5rem;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--lum-rule-soft);
+}
+
+.lum-end-mark {
+  color: var(--lum-bronze);
+  font-size: 1.6rem;
+  opacity: 0.55;
+  letter-spacing: 0.4em;
+}
+
+/* ─── COMPANION-STUDY LINKS (sun ↔ moon ↔ stars) ─── */
+.lum-companions {
+  margin: 4rem auto 0;
+  padding-top: 2.5rem;
+  border-top: 1px solid var(--lum-rule-soft);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  max-width: 700px;
+}
+
+.lum-companion {
+  display: block;
+  text-decoration: none;
+  background: rgba(10, 6, 2, 0.5);
+  border: 1px solid var(--lum-rule);
+  border-top-width: 3px;
+  border-radius: 4px;
+  padding: 1.2rem 1.25rem;
+  transition: background 0.2s, transform 0.15s;
+}
+
+.lum-companion:hover {
+  background: rgba(186, 117, 23, 0.08);
+  transform: translateY(-2px);
+}
+
+.lum-companion-tag {
+  font-family: 'Cinzel', serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.22em;
+  color: var(--lum-shadow);
+  text-transform: uppercase;
+  margin-bottom: 0.4rem;
+}
+
+.lum-companion-title {
+  font-family: 'Cinzel', serif;
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--lum-cream);
+  margin: 0 0 0.35rem;
+}
+
+.lum-companion-cta {
+  font-family: 'Cinzel', serif;
+  font-size: 0.7rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--lum-bronze);
+}
+
+/* Per-study top-border accents on companion cards */
+.lum-companion.is-sun   { border-top-color: #BA7517; }
+.lum-companion.is-moon  { border-top-color: #6a7a8e; }
+.lum-companion.is-stars { border-top-color: #4a3a6a; }
+
+/* ─── RESPONSIVE ─── */
+@media (max-width: 640px) {
+  .lum-inner { padding: 3rem 1.1rem 4rem; }
+  .lum-quickview { padding: 1.5rem 1.25rem; }
+  .lum-deepdive summary { padding: 1rem 1.1rem; }
+  .lum-deepdive-body { padding: 0.5rem 1.1rem 1.25rem; }
+  .lum-deepdive-hint { display: none; }
+  .lum-scripture { padding: 1.2rem 1.25rem; }
+  .lum-companions { grid-template-columns: 1fr; }
+  .lum-part { margin: 3.25rem 0 1.5rem; }
+  .lum-body { font-size: 1rem; line-height: 1.8; }
+}
