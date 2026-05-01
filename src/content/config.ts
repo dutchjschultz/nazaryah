@@ -38,31 +38,6 @@ const postsCollection = defineCollection({
   }),
 });
 
-// Learning pathway lesson schema
-const pathwayLessonSchema = z.object({
-  title: z.string(),
-  slug: z.string(), // Link to blog post or external resource
-  duration: z.number(), // Minutes
-  type: z.enum(['article', 'video', 'exercise', 'quiz']).default('article'),
-  description: z.string(),
-});
-
-const pathwaysCollection = defineCollection({
-  type: 'content',
-  schema: z.object({
-    title: z.string(),
-    description: z.string(),
-    difficulty: z.enum(['beginner', 'intermediate', 'advanced']),
-    estimatedHours: z.number(),
-    category: z.string(),
-    lessons: z.array(pathwayLessonSchema),
-    objectives: z.array(z.string()), // Learning objectives
-    prerequisites: z.array(z.string()).optional(),
-    featured: z.boolean().default(false),
-    draft: z.boolean().default(false),
-  }),
-});
-
 // Glossary collection for Hebrew/Greek terms
 const glossaryCollection = defineCollection({
   type: 'content',
@@ -89,6 +64,5 @@ const glossaryCollection = defineCollection({
 
 export const collections = {
   posts: postsCollection,
-  pathways: pathwaysCollection,
   glossary: glossaryCollection,
 };
