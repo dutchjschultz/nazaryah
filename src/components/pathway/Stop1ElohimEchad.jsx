@@ -1,9 +1,54 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Stop1ElohimEchad() {
-  const [unlockedSteps, setUnlockedSteps] = useState([0]);
+  // Storage key — unique per lesson so they don't collide
+  const STORAGE_KEY = 'pathway_stop1_elohim_echad';
+
+  // Initialize state from localStorage if it exists; fall back to fresh start.
+  const [unlockedSteps, setUnlockedSteps] = useState(() => {
+    if (typeof window === 'undefined') return [0];
+    try {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {}
+    return [0];
+  });
   const [stepAnswers, setStepAnswers] = useState({});
   const stepRefs = useRef([]);
+
+  // Save unlocked steps to localStorage whenever they change
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(unlockedSteps));
+    } catch (e) {}
+  }, [unlockedSteps]);
+
+  // On first load, if the user is resuming, scroll to the deepest unlocked step
+  useEffect(() => {
+    if (unlockedSteps.length > 1) {
+      setTimeout(() => {
+        const lastUnlocked = Math.max(...unlockedSteps);
+        const target = stepRefs.current[lastUnlocked];
+        if (target && typeof target.scrollIntoView === 'function') {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 400);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleStartOver = () => {
+    if (typeof window !== 'undefined') {
+      try { window.localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    }
+    setUnlockedSteps([0]);
+    setStepAnswers({});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const cream = '#ede4cf';
   const amber = '#d4a86a';
@@ -133,9 +178,10 @@ export default function Stop1ElohimEchad() {
           <Question
             prompt="What question does Genesis 1:1 actually answer?"
             options={[
-              { label: 'Whether God exists', correct: false, feedback: 'Genesis doesn’t argue for God’s existence — it presupposes it. The text is doing something different. Look again at how it opens.' },
-              { label: 'Which Elohim, among a world of gods, is the one who actually created everything', correct: true, feedback: 'Yes. The Bible doesn’t fight on the modern atheist’s turf. It fights on the polytheist’s turf — gods are everywhere, but only ONE created. That’s the question Torah answers.' },
-              { label: 'How creation happened scientifically', correct: false, feedback: 'Genesis is not a science textbook. It’s an identity claim — naming WHO created, not engineering HOW.' },
+              
+{ label: 'Which Elohim, among a world of gods, is the one who actually created everything', correct: true, feedback: 'Yes. The Bible doesn’t fight on the modern atheist’s turf. It fights on the polytheist’s turf — gods are everywhere, but only ONE created. That’s the question Torah answers.' },
+{ label: 'How creation happened scientifically', correct: false, feedback: 'Genesis is not a science textbook. It’s an identity claim — naming WHO created, not engineering HOW.' },
+{ label: 'Whether God exists', correct: false, feedback: 'Genesis doesn’t argue for God’s existence — it presupposes it. The text is doing something different. Look again at how it opens.' },
             ]}
             onCorrect={() => unlockNext(0)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -185,9 +231,10 @@ export default function Stop1ElohimEchad() {
           <Question
             prompt="If a pagan, a Christian, and a Jew all said “I believe in Elohim,” would they be agreeing about anything specific?"
             options={[
-              { label: 'Yes — they all believe in the same God', correct: false, feedback: 'They would only be agreeing that some mighty being exists. They wouldn’t be naming the same one. The word is a category, not a name — like agreeing “there is a king” without naming which king.' },
-              { label: 'No — they’d only be agreeing that some kind of mighty being exists, without naming which one', correct: true, feedback: 'Exactly. The word Elohim by itself has no specific referent. Even Satan is called an elohim (the “god of this world” in 2 Corinthians 4:4). The word doesn’t identify a particular being — it just names the category.' },
-              { label: 'Only if they all attended the same religion', correct: false, feedback: 'Not even then. The word is generic. Two Christians using it might not even mean the same being — one might mean the Father, another might mean a vague higher power.' },
+              
+{ label: 'Only if they all attended the same religion', correct: false, feedback: 'Not even then. The word is generic. Two Christians using it might not even mean the same being — one might mean the Father, another might mean a vague higher power.' },
+{ label: 'Yes — they all believe in the same God', correct: false, feedback: 'They would only be agreeing that some mighty being exists. They wouldn’t be naming the same one. The word is a category, not a name — like agreeing “there is a king” without naming which king.' },
+{ label: 'No — they’d only be agreeing that some kind of mighty being exists, without naming which one', correct: true, feedback: 'Exactly. The word Elohim by itself has no specific referent. Even Satan is called an elohim (the “god of this world” in 2 Corinthians 4:4). The word doesn’t identify a particular being — it just names the category.' },
             ]}
             onCorrect={() => unlockNext(1)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -246,9 +293,10 @@ export default function Stop1ElohimEchad() {
           <Question
             prompt='A celebrity at an awards show says "First, I want to thank God." Based on the word alone, which being are they naming?'
             options={[
-              { label: 'Yahuah — the Father in heaven', correct: false, feedback: 'You have no way to know that. The word God by itself doesn’t name any specific being. They could mean Yahuah. They could mean a vague higher power. They could mean the god of this world without realizing it.' },
-              { label: 'It’s impossible to tell — the word God by itself names no one specifically', correct: true, feedback: 'Right. The word is a category — Elohim, theos, god. Without a name attached, it’s ambiguous. This is why Yahuah revealed his NAME, not just his title — so his people would know specifically who they served.' },
-              { label: 'Definitely not Satan, because no one would say that out loud', correct: false, feedback: 'Paul calls Satan the “god of this world” explicitly (2 Corinthians 4:4). Whether someone says it out loud doesn’t change the reality of who has actually been receiving that worship.' },
+              
+{ label: 'Yahuah — the Father in heaven', correct: false, feedback: 'You have no way to know that. The word God by itself doesn’t name any specific being. They could mean Yahuah. They could mean a vague higher power. They could mean the god of this world without realizing it.' },
+{ label: 'It’s impossible to tell — the word God by itself names no one specifically', correct: true, feedback: 'Right. The word is a category — Elohim, theos, god. Without a name attached, it’s ambiguous. This is why Yahuah revealed his NAME, not just his title — so his people would know specifically who they served.' },
+{ label: 'Definitely not Satan, because no one would say that out loud', correct: false, feedback: 'Paul calls Satan the “god of this world” explicitly (2 Corinthians 4:4). Whether someone says it out loud doesn’t change the reality of who has actually been receiving that worship.' },
             ]}
             onCorrect={() => unlockNext(2)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -305,9 +353,10 @@ export default function Stop1ElohimEchad() {
           <Question
             prompt='When Peter calls Yahushua "the Son of the LIVING Elohim," why does that word — LIVING — matter?'
             options={[
-              { label: 'It’s just a poetic phrase with no real meaning', correct: false, feedback: 'It’s a deliberate qualifier. Peter could have just said “Son of God.” He added “living” because the world he lived in was full of dead gods — idols of wood and stone — and he wanted to distinguish Yahuah from all of them.' },
-              { label: 'It distinguishes Yahuah from the many dead and false gods that the surrounding world served', correct: true, feedback: 'Exactly. The word LIVING is not decorative — it is exclusive. Yahuah is the LIVING Elohim, distinguished from idols, from the god of this world, from every false claimant.' },
-              { label: 'It refers only to Yahuah being eternal', correct: false, feedback: 'Eternal is part of it, but the contrast in passages like Jeremiah 10 is specifically with idols that are DEAD — that cannot speak, move, or save.' },
+              
+{ label: 'It refers only to Yahuah being eternal', correct: false, feedback: 'Eternal is part of it, but the contrast in passages like Jeremiah 10 is specifically with idols that are DEAD — that cannot speak, move, or save.' },
+{ label: 'It’s just a poetic phrase with no real meaning', correct: false, feedback: 'It’s a deliberate qualifier. Peter could have just said “Son of God.” He added “living” because the world he lived in was full of dead gods — idols of wood and stone — and he wanted to distinguish Yahuah from all of them.' },
+{ label: 'It distinguishes Yahuah from the many dead and false gods that the surrounding world served', correct: true, feedback: 'Exactly. The word LIVING is not decorative — it is exclusive. Yahuah is the LIVING Elohim, distinguished from idols, from the god of this world, from every false claimant.' },
             ]}
             onCorrect={() => unlockNext(3)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -347,7 +396,10 @@ export default function Stop1ElohimEchad() {
             then Moses is a Trinity. Dagon is a Trinity. Every judge of Israel is a Trinity.</strong> The
             argument collapses the moment you trace the word's actual usage.
           </p>
-          <p className="lesson-p">What the plural actually IS in Hebrew:</p>
+          <p className="lesson-p">
+            What the plural actually IS in Hebrew — and across the entire family of languages
+            Hebrew belongs to:
+          </p>
           <div style={{
             padding: '1.4rem 1.8rem', backgroundColor: 'rgba(212, 168, 106, 0.05)',
             border: '1px solid rgba(212, 168, 106, 0.25)', borderRadius: '2px', maxWidth: '40rem',
@@ -355,9 +407,10 @@ export default function Stop1ElohimEchad() {
           }}>
             <p className="lesson-p" style={{ marginBottom: '0.9rem' }}>
               <strong style={{ color: amber }}>The plural of majesty.</strong> Hebrew's way of stretching
-              the language to honor a being too great to fit a singular form. Like the historical English
-              royal <em>"We"</em> — a king saying <em>"We are not amused"</em> didn't mean he was
-              multiple persons. It meant he carried so much weight the language had to expand.
+              the language to honor a being too great to fit a singular form. This is not a Hebrew
+              quirk. It is a documented pattern across the entire ancient Near Eastern language family
+              — Hebrew, Aramaic, Arabic, Akkadian — and every one of these languages used it the same
+              way: a singular being, wearing plural grammar as a robe of greatness.
             </p>
             <p className="lesson-p" style={{ marginBottom: '0' }}>
               <strong style={{ color: amber }}>The plural of intensification.</strong> Hebrew uses plural
@@ -366,6 +419,43 @@ export default function Stop1ElohimEchad() {
               all the elohim — the One above all the others. The plural is the exclamation point.
             </p>
           </div>
+
+          <p className="lesson-p">
+            <strong style={{ color: amber }}>You don't have to take Hebrew's word for it.</strong> Look
+            at how the same plural-of-majesty pattern shows up across the wider ancient world:
+          </p>
+
+          <div style={{ paddingLeft: '1rem', marginBottom: '1.5rem', borderLeft: `2px solid ${amber}`, maxWidth: '38rem' }}>
+            <p className="lesson-p" style={{ marginBottom: '0.7rem' }}>
+              <strong style={{ color: amber }}>Akkadian royal inscriptions.</strong> Kings like Hammurabi
+              and Sargon refer to themselves with plural forms when issuing decrees — the same culture
+              and time period as the patriarchs. Single kings, plural grammar. No one reads this as
+              proof the king was multiple persons.
+            </p>
+            <p className="lesson-p" style={{ marginBottom: '0.7rem' }}>
+              <strong style={{ color: amber }}>The Qur'an's "We" (Nahnu).</strong> Allah refers to himself
+              with the plural pronoun <em>Nahnu</em> ("We") in dozens of verses — for example, Surah
+              15:9, <em>"Indeed, We have sent down the Reminder, and indeed, We are its guardian."</em>{' '}
+              No Muslim has ever read this as plurality of persons in Allah. Every Islamic commentary
+              recognizes it as the plural of majesty — exactly what Hebrew is doing with{' '}
+              <em>Elohim</em>.
+            </p>
+            <p className="lesson-p" style={{ marginBottom: '0.7rem' }}>
+              <strong style={{ color: amber }}>Behemoth in Job.</strong> The Hebrew word{' '}
+              <em>behemoth</em> (בהמות) is grammatically plural ("beasts"), used throughout Job 40 of a
+              single creature. Plural form. Singular animal. Nobody reads this as a "compound unity
+              behemoth" with multiple persons.
+            </p>
+            <p className="lesson-p" style={{ marginBottom: '0' }}>
+              <strong style={{ color: amber }}>Baalim — the plural of Baal.</strong> Used of single
+              false gods throughout the Old Testament (Judges 2:11, 1 Samuel 7:4). If plural form
+              meant plural persons, Baal would also be a Trinity — and trinitarians would have to
+              admit it. They never do, because the rule is selective: Hebrew plural means "majesty"
+              when it suits them, "multiple persons" when applied to Yahuah. That isn't grammar. It's
+              theology in disguise.
+            </p>
+          </div>
+
           <p className="lesson-p">
             And take note of who has been reading this language for the last three thousand years. Native
             Hebrew speakers — the people whose ancestors wrote the text — have never read <em>Elohim's</em>{' '}
@@ -375,11 +465,12 @@ export default function Stop1ElohimEchad() {
             didn't speak the language. Hold onto this. It will come up again at every stop on this trail.
           </p>
           <Question
-            prompt="If the plural form of Elohim proved multiple persons inside one being, what would have to be true of Moses?"
+            prompt="If the plural form of Elohim proved multiple persons inside one being, what else in the Bible would also have to be 'multiple persons in one being'?"
             options={[
-              { label: 'Nothing — the rule only applies to Yahuah', correct: false, feedback: 'You can’t apply a grammatical rule selectively. If plural-form-means-multiple-persons is a rule, it applies to every use of the word — including Exodus 7:1 where Yahuah calls Moses elohim.' },
-              { label: 'Moses would also have to be multiple persons in one being — which proves the rule is wrong', correct: true, feedback: 'Exactly. The same plural word is used for one Moses, one Dagon, one judge. If the plural form really meant multiple persons, every one of those would have to be a Trinity. The rule isn’t actually a rule.' },
-              { label: 'Moses must have been God', correct: false, feedback: 'Moses wasn’t God — he was Yahuah’s representative with delegated authority. The word elohim covers a wide category. That’s the point: the word doesn’t tell you which elohim — it just names the category.' },
+              
+{ label: 'Behemoth in Job — the single creature called by a plural Hebrew word', correct: true, feedback: 'Right — and Moses (Exodus 7:1, called elohim), and Dagon (an elohim), and Baal (Baalim, plural). The same plural-of-majesty pattern applies to all of them. If trinitarians applied their rule consistently, behemoth would be a "compound unity beast." They never do — which proves the rule isn’t actually a rule, just selective theology.' },
+{ label: 'Nothing — the rule only applies to Yahuah', correct: false, feedback: 'You can’t apply a grammatical rule selectively. If plural-form-means-multiple-persons is a real rule, it applies to every use of plural forms — Moses, Dagon, Behemoth, Baalim. The rule has to either apply to all or be admitted as not a rule at all.' },
+{ label: 'God is the only special case', correct: false, feedback: 'That’s the trinitarian special pleading exposed. Either grammar is a rule, or it’s not. You can’t carve out one being and apply the rule only to him while ignoring it everywhere else the same word appears.' },
             ]}
             onCorrect={() => unlockNext(4)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -434,20 +525,19 @@ export default function Stop1ElohimEchad() {
             </p>
             <p className="lesson-p" style={{ marginBottom: '1rem' }}>
               <strong style={{ color: amber }}>Genesis 3:22</strong> — "the man is become as one of <em>US</em>…"<br />
-              <strong style={{ color: amber }}>Genesis 3:23</strong> — "Therefore <em>Yahuah Elohim sent
-              him</em> forth from the garden of Eden…"
+              <strong style={{ color: amber }}>Genesis 3:24</strong> — "So <em>HE drove out</em> the man…"
             </p>
             <p className="lesson-p" style={{ marginBottom: '0' }}>
               <strong style={{ color: amber }}>Genesis 11:7</strong> — "Let <em>US</em> go down, and there
               confound their language…"<br />
               <strong style={{ color: amber }}>Genesis 11:8</strong> — "So <em>Yahuah scattered them</em>{' '}
-              abroad…"
+              abroad…" (singular subject — Yahuah alone — performs the action)
             </p>
           </div>
           <p className="lesson-p">
-            Three times, the trinitarian reading would predict <em>"they created,"</em> <em>"they sent
-            him,"</em> <em>"they scattered."</em> Three times, the text says <strong style={{ color: amber }}>HE</strong>.
-            The plural announcement becomes a singular action, every time.
+            Three times, the trinitarian reading would predict <em>"they created,"</em> <em>"they drove out,"</em>{' '}
+            <em>"they scattered."</em> Three times, <strong style={{ color: amber }}>the singular subject — Yahuah —
+            acts alone</strong> in the verse that follows the plural announcement.
           </p>
           <p className="lesson-p">
             <strong style={{ color: amber }}>This is the language of a king with his court</strong> — not
@@ -491,9 +581,10 @@ export default function Stop1ElohimEchad() {
           <Question
             prompt='In all three "us" passages, what does the verse immediately AFTER the plural announcement say?'
             options={[
-              { label: 'It says "they" acted together — confirming the trinity', correct: false, feedback: 'It’s the opposite. Read Genesis 1:27, 3:23, and 11:8 — every single one switches from plural to singular. Yahuah ALONE creates, sends Adam out, and scatters the nations.' },
-              { label: 'The text switches to singular — Yahuah alone does the action', correct: true, feedback: 'Exactly. Plural announcement, singular action — three for three. This is the language of a king speaking among his court before he acts alone.' },
-              { label: 'The text doesn’t mention who acted', correct: false, feedback: 'It does mention — and it’s very specific. Look at Genesis 1:27 ("He created"), 3:23 ("Yahuah sent him"), 11:8 ("Yahuah scattered them"). Each one names the singular actor.' },
+              
+{ label: 'It says "they" acted together — confirming the trinity', correct: false, feedback: 'It’s the opposite. Read Genesis 1:27, 3:24, and 11:8 — every single one switches from plural to singular. Yahuah ALONE creates, drives Adam out, and scatters the nations.' },
+{ label: 'The text switches to singular — Yahuah alone does the action', correct: true, feedback: 'Exactly. Plural announcement, singular action — three for three. This is the language of a king speaking among his court before he acts alone.' },
+{ label: 'The text doesn’t mention who acted', correct: false, feedback: 'It does mention — and it’s very specific. Look at Genesis 1:27 ("He created"), 3:24 ("He drove out"), 11:8 ("Yahuah scattered them"). Each one names the singular actor.' },
             ]}
             onCorrect={() => unlockNext(5)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -568,9 +659,10 @@ export default function Stop1ElohimEchad() {
           <Question
             prompt='If Hebrew has a word meaning "unique / only one of its kind" (yachid), and the Shema deliberately uses echad (the cardinal number 1) instead — what does that tell you?'
             options={[
-              { label: 'The author wasn’t careful with word choice', correct: false, feedback: 'Hebrew is meticulous with word choice — especially in something as central as the Shema. The use of echad rather than yachid is deliberate.' },
-              { label: 'The text is making a numerical claim — Yahuah is ONE, not two or three', correct: true, feedback: 'Yes. If the author wanted to say "Yahuah is unique," yachid was right there. He chose echad — the simple cardinal number. The Shema is making a counting claim: not two, not three, ONE.' },
-              { label: 'It means Yahuah is a compound unity', correct: false, feedback: 'If that were the meaning, every use of echad would have to mean compound unity — including "the FIRST day" in Genesis 1:5 and "ONE son" in Genesis 22:2. The word doesn’t carry that meaning.' },
+              
+{ label: 'The text is making a numerical claim — Yahuah is ONE, not two or three', correct: true, feedback: 'Yes. If the author wanted to say "Yahuah is unique," yachid was right there. He chose echad — the simple cardinal number. The Shema is making a counting claim: not two, not three, ONE.' },
+{ label: 'It means Yahuah is a compound unity', correct: false, feedback: 'If that were the meaning, every use of echad would have to mean compound unity — including "the FIRST day" in Genesis 1:5 and "ONE son" in Genesis 22:2. The word doesn’t carry that meaning.' },
+{ label: 'The author wasn’t careful with word choice', correct: false, feedback: 'Hebrew is meticulous with word choice — especially in something as central as the Shema. The use of echad rather than yachid is deliberate.' },
             ]}
             onCorrect={() => unlockNext(6)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -616,9 +708,10 @@ export default function Stop1ElohimEchad() {
           <Question
             prompt="What was the historical setting that made the Shema necessary?"
             options={[
-              { label: 'Israel needed a philosophical statement about God’s inner nature', correct: false, feedback: 'The Shema isn’t philosophy. It’s covenant identity in a polytheistic world. Read Deuteronomy 6 in context — Israel is entering Canaan, surrounded by named gods. The Shema is exclusivity, not philosophy.' },
-              { label: 'Israel was about to enter a land full of named gods, and Yahuah was distinguishing himself as the ONE among many', correct: true, feedback: 'Exactly. The Shema is a covenant declaration in a polytheistic context. Yahuah is defining himself BY EXCLUSION — there are many elohim claimed by the nations; there is only ONE who is real, living, and theirs.' },
-              { label: 'It was an early Trinitarian creed', correct: false, feedback: 'Trinitarian doctrine didn’t exist yet — it would be defined 1,400+ years later. The Shema was given to Israel against the polytheism of Canaan, not against any early Christian heresy.' },
+              
+{ label: 'It was an early Trinitarian creed', correct: false, feedback: 'Trinitarian doctrine didn’t exist yet — it would be defined 1,400+ years later. The Shema was given to Israel against the polytheism of Canaan, not against any early Christian heresy.' },
+{ label: 'Israel needed a philosophical statement about God’s inner nature', correct: false, feedback: 'The Shema isn’t philosophy. It’s covenant identity in a polytheistic world. Read Deuteronomy 6 in context — Israel is entering Canaan, surrounded by named gods. The Shema is exclusivity, not philosophy.' },
+{ label: 'Israel was about to enter a land full of named gods, and Yahuah was distinguishing himself as the ONE among many', correct: true, feedback: 'Exactly. The Shema is a covenant declaration in a polytheistic context. Yahuah is defining himself BY EXCLUSION — there are many elohim claimed by the nations; there is only ONE who is real, living, and theirs.' },
             ]}
             onCorrect={() => unlockNext(7)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -686,9 +779,10 @@ export default function Stop1ElohimEchad() {
           <Question
             prompt="If a Hebrew word allegedly means something specific, who has the better claim to know what it means?"
             options={[
-              { label: 'A 4th-century Greek council and 17th-century Protestant theologians arguing in Latin', correct: false, feedback: 'That would be an absurd claim. The native speakers — who have read the text continuously for 3,000 years and pray it daily — have a stronger claim to know their own language than councils and theologians working centuries later in foreign tongues.' },
-              { label: 'The native speakers who have read the text continuously for three thousand years', correct: true, feedback: 'Yes. The Jewish reading of Genesis 1:26 and Deuteronomy 6:4 is the only reading that has ever come from inside the tradition that produced the text. Native speakers win on linguistic authority.' },
-              { label: 'It’s a tie — both readings are equally valid', correct: false, feedback: 'It’s not a tie. One reading comes from inside a 3,000-year-continuous tradition. The other was retrofitted by people who didn’t speak the language to defend a doctrine the text predates by 1,400 years.' },
+              
+{ label: 'A 4th-century Greek council and 17th-century Protestant theologians arguing in Latin', correct: false, feedback: 'That would be an absurd claim. The native speakers — who have read the text continuously for 3,000 years and pray it daily — have a stronger claim to know their own language than councils and theologians working centuries later in foreign tongues.' },
+{ label: 'The native speakers who have read the text continuously for three thousand years', correct: true, feedback: 'Yes. The Jewish reading of Genesis 1:26 and Deuteronomy 6:4 is the only reading that has ever come from inside the tradition that produced the text. Native speakers win on linguistic authority.' },
+{ label: 'It’s a tie — both readings are equally valid', correct: false, feedback: 'It’s not a tie. One reading comes from inside a 3,000-year-continuous tradition. The other was retrofitted by people who didn’t speak the language to defend a doctrine the text predates by 1,400 years.' },
             ]}
             onCorrect={() => unlockNext(8)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -840,6 +934,45 @@ export default function Stop1ElohimEchad() {
             ↓ Complete the step above to continue ↓
           </div>
         )}
+        {/* Subtle "Start over" — only shows once user has progressed past step 0 */}
+        {unlockedSteps.length > 1 && (
+          <div style={{
+            marginTop: '4rem', textAlign: 'center', paddingTop: '2rem',
+            borderTop: '1px solid rgba(237, 228, 207, 0.08)',
+          }}>
+            <button
+              onClick={handleStartOver}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: cream,
+                opacity: 0.4,
+                fontSize: '0.82rem',
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                fontFamily: '"Fraunces", Georgia, serif',
+                cursor: 'pointer',
+                padding: '0.5rem 1rem',
+                transition: 'opacity 0.3s',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.4'; }}
+            >
+              ↻ Start this lesson over
+            </button>
+            <div style={{
+              marginTop: '0.6rem',
+              fontSize: '0.78rem',
+              color: cream,
+              opacity: 0.32,
+              fontStyle: 'italic',
+              fontFamily: '"Fraunces", Georgia, serif',
+            }}>
+              Your progress is saved on this device — close the tab and come back anytime.
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );
@@ -1081,17 +1214,17 @@ function RecapQuiz({ colors, onComplete }) {
     {
       prompt: 'What does the word "Elohim" actually tell you about which being is being named?',
       options: [
-        { label: 'Nothing specific — it’s a category that covers many beings, including pagan gods, judges, and even Satan', correct: true, feedback: 'Yes. Elohim is a category. Without a name attached, the word doesn’t pin down which being is meant. That’s why Yahuah revealed his NAME — so his people would know specifically who they served.' },
         { label: 'It tells you the being is the Father of Yahushua', correct: false, feedback: 'It doesn’t. The same word is used of Moses, judges, pagan gods, and Satan. Without more information, the word names no specific being.' },
         { label: 'It always refers to the Trinity', correct: false, feedback: 'No — Moses isn’t a Trinity, Dagon isn’t a Trinity, the human judges aren’t Trinities. The word covers many things; it doesn’t specify who.' },
+        { label: 'Nothing specific — it’s a category that covers many beings, including pagan gods, judges, and even Satan', correct: true, feedback: 'Yes. Elohim is a category. Without a name attached, the word doesn’t pin down which being is meant. That’s why Yahuah revealed his NAME — so his people would know specifically who they served.' },
       ],
     },
     {
       prompt: 'What does the singular-plural pattern in Genesis 1:26-27, 3:22-23, and 11:7-8 prove about the "us" language?',
       options: [
-        { label: 'It proves the Trinity acts as one', correct: false, feedback: 'If three persons were acting together, the action verb would be plural — "they created." Instead, every single time the action shifts to singular: "he created," "he sent," "he scattered."' },
         { label: 'It proves a king-with-court pattern: Yahuah announces among his angelic council, then he alone acts', correct: true, feedback: 'Exactly. Plural announcement, singular action — every time. This matches the throne-room scenes throughout Scripture (1 Kings 22, Job 1-2, Daniel 7) where Yahuah speaks among his court before acting alone.' },
         { label: 'It proves nothing — the language is unclear', correct: false, feedback: 'The pattern is consistent and undeniable across all three passages. Three for three is not unclear — it’s a deliberate structure.' },
+        { label: 'It proves the Trinity acts as one', correct: false, feedback: 'If three persons were acting together, the action verb would be plural — "they created." Instead, every single time the action shifts to singular: "he created," "he drove out," "he scattered."' },
       ],
     },
     {

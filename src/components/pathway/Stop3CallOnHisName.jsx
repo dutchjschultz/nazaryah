@@ -1,9 +1,54 @@
-import { useState, useRef } from 'react';
+import { useState, useRef, useEffect } from 'react';
 
 export default function Stop3CallOnHisName() {
-  const [unlockedSteps, setUnlockedSteps] = useState([0]);
+  // Storage key — unique per lesson so they don't collide
+  const STORAGE_KEY = 'pathway_stop3_call_on_his_name';
+
+  // Initialize state from localStorage if it exists; fall back to fresh start.
+  const [unlockedSteps, setUnlockedSteps] = useState(() => {
+    if (typeof window === 'undefined') return [0];
+    try {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {}
+    return [0];
+  });
   const [stepAnswers, setStepAnswers] = useState({});
   const stepRefs = useRef([]);
+
+  // Save unlocked steps to localStorage whenever they change
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(unlockedSteps));
+    } catch (e) {}
+  }, [unlockedSteps]);
+
+  // On first load, if the user is resuming, scroll to the deepest unlocked step
+  useEffect(() => {
+    if (unlockedSteps.length > 1) {
+      setTimeout(() => {
+        const lastUnlocked = Math.max(...unlockedSteps);
+        const target = stepRefs.current[lastUnlocked];
+        if (target && typeof target.scrollIntoView === 'function') {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 400);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleStartOver = () => {
+    if (typeof window !== 'undefined') {
+      try { window.localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    }
+    setUnlockedSteps([0]);
+    setStepAnswers({});
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const cream = '#ede4cf';
   const amber = '#d4a86a';
@@ -133,9 +178,10 @@ export default function Stop3CallOnHisName() {
           <Question
             prompt="Before we begin — what kind of lesson is this?"
             options={[
-              { label: 'A test to see if I’m saved correctly', correct: false, feedback: 'Not at all. The Father has heard you all along. This is not about correcting your salvation — it is about uncovering depth that translation has hidden from you.' },
-              { label: 'A recovery of depth that translation has hidden — not a test of who is in or out', correct: true, feedback: 'Exactly. You have been calling on him in the language you were taught. He has heard you. We are simply going deeper now — finding the structure underneath the phrase.' },
-              { label: 'A lesson saying everyone except Hebrew speakers is lost', correct: false, feedback: 'That would be legalism, and it is not what Scripture teaches. The Father is not bound by translation. We are recovering depth, not gatekeeping salvation.' },
+              
+{ label: 'A recovery of depth that translation has hidden — not a test of who is in or out', correct: true, feedback: 'Exactly. You have been calling on him in the language you were taught. He has heard you. We are simply going deeper now — finding the structure underneath the phrase.' },
+{ label: 'A lesson saying everyone except Hebrew speakers is lost', correct: false, feedback: 'That would be legalism, and it is not what Scripture teaches. The Father is not bound by translation. We are recovering depth, not gatekeeping salvation.' },
+{ label: 'A test to see if I’m saved correctly', correct: false, feedback: 'Not at all. The Father has heard you all along. This is not about correcting your salvation — it is about uncovering depth that translation has hidden from you.' },
             ]}
             onCorrect={() => unlockNext(0)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -183,9 +229,10 @@ export default function Stop3CallOnHisName() {
           <Question
             prompt="Based on how qara is used elsewhere in Scripture, what kind of action is it?"
             options={[
-              { label: 'A soft, internal feeling — like quietly believing', correct: false, feedback: 'Qara is the OPPOSITE of soft and internal. It is the word for proclaiming, summoning, and naming with authority. Adam used it to name the animals; heralds used it to declare the king’s decrees.' },
-              { label: 'A public, authoritative act of summoning by name with the expectation of response', correct: true, feedback: 'Yes. Qara is active, public, and authoritative. When you "call on the name of Yahuah," you are summoning him by name — invoking his authority over your life. That is far more than passive belief.' },
-              { label: 'A magical incantation', correct: false, feedback: 'It is not magic — magic tries to manipulate divine power without permission. Qara is the language of relationship: calling someone by name because you have a covenant with them.' },
+              
+{ label: 'A magical incantation', correct: false, feedback: 'It is not magic — magic tries to manipulate divine power without permission. Qara is the language of relationship: calling someone by name because you have a covenant with them.' },
+{ label: 'A soft, internal feeling — like quietly believing', correct: false, feedback: 'Qara is the OPPOSITE of soft and internal. It is the word for proclaiming, summoning, and naming with authority. Adam used it to name the animals; heralds used it to declare the king’s decrees.' },
+{ label: 'A public, authoritative act of summoning by name with the expectation of response', correct: true, feedback: 'Yes. Qara is active, public, and authoritative. When you "call on the name of Yahuah," you are summoning him by name — invoking his authority over your life. That is far more than passive belief.' },
             ]}
             onCorrect={() => unlockNext(1)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -238,9 +285,10 @@ export default function Stop3CallOnHisName() {
           <Question
             prompt="When the Bible says someone “called upon the name of Yahuah,” what are they doing?"
             options={[
-              { label: 'Saying a quiet prayer in their head', correct: false, feedback: 'It is a much more public and structural act. Abraham built altars when he did it. Men "began" to do it as a turning point in human history. This is allegiance, not whispered prayer.' },
-              { label: 'Publicly invoking that Name as their authority and declaring whose they are', correct: true, feedback: 'Exactly. Calling on the Name is covenant — declaring your allegiance to the One whose Name you call. Elijah and the prophets of Baal were each invoking the authority of the deity they belonged to. Same verb, different masters.' },
-              { label: 'Performing a magical ritual', correct: false, feedback: 'Not magic — magic tries to manipulate spiritual power. Calling on the Name is a covenant relationship. It only works because the Name belongs to a Father who has chosen to hear those who call on him.' },
+              
+{ label: 'Saying a quiet prayer in their head', correct: false, feedback: 'It is a much more public and structural act. Abraham built altars when he did it. Men "began" to do it as a turning point in human history. This is allegiance, not whispered prayer.' },
+{ label: 'Publicly invoking that Name as their authority and declaring whose they are', correct: true, feedback: 'Exactly. Calling on the Name is covenant — declaring your allegiance to the One whose Name you call. Elijah and the prophets of Baal were each invoking the authority of the deity they belonged to. Same verb, different masters.' },
+{ label: 'Performing a magical ritual', correct: false, feedback: 'Not magic — magic tries to manipulate spiritual power. Calling on the Name is a covenant relationship. It only works because the Name belongs to a Father who has chosen to hear those who call on him.' },
             ]}
             onCorrect={() => unlockNext(2)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -293,9 +341,10 @@ export default function Stop3CallOnHisName() {
           <Question
             prompt='Proverbs 18:10 says, "The name of Yahuah is a strong tower: the righteous runneth into it, and is safe." What does that tell you about what a "name" is?'
             options={[
-              { label: 'A name is just a label — the verse is poetic', correct: false, feedback: 'A label cannot be RUN INTO. The verse is taking the Hebrew meaning of shem seriously — the Name is a place of presence, protection, and authority. It is something you can dwell inside.' },
-              { label: 'A name in Hebrew is the full identity, presence, and authority of its bearer — something a person can actually invoke and dwell within', correct: true, feedback: 'Yes. The Hebrew shem is the totality of who someone is. To run into the Name of Yahuah is to invoke his actual presence as covering and protection. This is far deeper than the modern Western idea of a name as just a label.' },
-              { label: 'It means the literal sound of the word saves you', correct: false, feedback: 'Not the sound — the BEING the Name belongs to. A name without its bearer is empty syllables. The power is in the Father whose Name it is, not in the syllables themselves.' },
+              
+{ label: 'It means the literal sound of the word saves you', correct: false, feedback: 'Not the sound — the BEING the Name belongs to. A name without its bearer is empty syllables. The power is in the Father whose Name it is, not in the syllables themselves.' },
+{ label: 'A name is just a label — the verse is poetic', correct: false, feedback: 'A label cannot be RUN INTO. The verse is taking the Hebrew meaning of shem seriously — the Name is a place of presence, protection, and authority. It is something you can dwell inside.' },
+{ label: 'A name in Hebrew is the full identity, presence, and authority of its bearer — something a person can actually invoke and dwell within', correct: true, feedback: 'Yes. The Hebrew shem is the totality of who someone is. To run into the Name of Yahuah is to invoke his actual presence as covering and protection. This is far deeper than the modern Western idea of a name as just a label.' },
             ]}
             onCorrect={() => unlockNext(3)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -337,9 +386,10 @@ export default function Stop3CallOnHisName() {
           <Question
             prompt="When Paul writes “whosoever shall call on the name of the Lord shall be saved” in Romans 10:13, what is the Greek phrase he uses?"
             options={[
-              { label: 'A new Christian phrase invented by the apostles', correct: false, feedback: 'Paul did not invent the phrase. He used the exact Greek phrase (epikaleomai to onoma) that already existed in the LXX as the standard translation of the Hebrew qara b\'shem — the same phrase used in Genesis 4:26 and Joel 2:32.' },
-              { label: 'The same phrase the LXX had used for centuries to translate the Hebrew "qara b\'shem" — covenantal invocation', correct: true, feedback: 'Exactly. Paul is inheriting the Old Testament phrase whole. "Calling on the name" means in Romans 10:13 what it meant in Joel 2:32 and Genesis 4:26 — covenantal invocation, public allegiance to a specific Name.' },
-              { label: 'A magical incantation formula', correct: false, feedback: 'No — epikaleomai is the language of relationship, not magic. The apostles used the LXX phrase precisely because it carried the full covenantal meaning of the Old Testament: calling on the Name as a covenant act.' },
+              
+{ label: 'The same phrase the LXX had used for centuries to translate the Hebrew "qara b\'shem" — covenantal invocation', correct: true, feedback: 'Exactly. Paul is inheriting the Old Testament phrase whole. "Calling on the name" means in Romans 10:13 what it meant in Joel 2:32 and Genesis 4:26 — covenantal invocation, public allegiance to a specific Name.' },
+{ label: 'A magical incantation formula', correct: false, feedback: 'No — epikaleomai is the language of relationship, not magic. The apostles used the LXX phrase precisely because it carried the full covenantal meaning of the Old Testament: calling on the Name as a covenant act.' },
+{ label: 'A new Christian phrase invented by the apostles', correct: false, feedback: 'Paul did not invent the phrase. He used the exact Greek phrase (epikaleomai to onoma) that already existed in the LXX as the standard translation of the Hebrew qara b\'shem — the same phrase used in Genesis 4:26 and Joel 2:32.' },
             ]}
             onCorrect={() => unlockNext(4)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -416,19 +466,28 @@ export default function Stop3CallOnHisName() {
             <p className="lesson-p" style={{ marginBottom: '0.9rem' }}>
               <strong style={{ color: amber }}>Yahuah</strong> made the promise.<br />
               <strong style={{ color: amber }}>Yahushua</strong> ("Yahuah saves") is the means.<br />
-              <strong style={{ color: amber }}>The Spirit</strong> applies it to those who call.
+              <strong style={{ color: amber }}>The Father's Spirit</strong> — Yahuah's own active
+              presence, the way he reaches into the world — applies it to those who call.
             </p>
-            <p className="lesson-p" style={{ marginBottom: '0' }}>
-              You call on the Father's Name — by way of the Son who carries it — and the Spirit makes it
-              real in your life. Two beings, one rescue. One thread, end to end.
+            <p className="lesson-p" style={{ marginBottom: '0.9rem' }}>
+              You call on the Father's Name — by way of the Son who carries it — and the Father's own
+              Spirit makes it real in your life. Two beings, one rescue.
+            </p>
+            <p className="lesson-p" style={{ marginBottom: '0', fontStyle: 'italic', opacity: 0.85 }}>
+              Yahuah <em>is</em> Spirit (John 4:24); he has always reached his people that way.
+              Yahushua walked among us in flesh, but after his resurrection now dwells in believers
+              as the Father's same Spirit. <strong style={{ color: amber, fontStyle: 'normal' }}>The
+              "Holy Spirit" is not a third being</strong> — it is the Father's own breath at work
+              in his people. We'll dig into this fully in Stop 8 — <em>Ruach / Pneuma</em>.
             </p>
           </div>
           <Question
             prompt="When Peter says “be baptized in the name of Yahushua” in Acts 2:38, is he REPLACING the Name from Joel’s promise, or is he naming HOW the promise arrives?"
             options={[
-              { label: 'Replacing — Yahushua is now the only name that matters', correct: false, feedback: 'That would contradict Peter himself, who just quoted Joel ("call on the name of Yahuah") seventeen verses earlier. Peter is not replacing the Father\'s Name — he is announcing the means through which the Father\'s promise reaches you: through the Son whose own name means "Yahuah saves."' },
-              { label: 'Naming the means — Yahuah promised; Yahushua (whose name means "Yahuah saves") is how the promise arrives', correct: true, feedback: 'Exactly. The Father made the promise; the Son is the means by which it reaches us. They are not interchangeable, and they are not the same person — they are working together in the rescue. The Father plans; the Son carries it out.' },
-              { label: 'They have nothing to do with each other', correct: false, feedback: 'They have everything to do with each other. The Son\'s name LITERALLY MEANS "Yahuah saves." The promise of Joel and the means of Acts 2:38 fit together perfectly — they are one unbroken thread.' },
+              
+{ label: 'Replacing — Yahushua is now the only name that matters', correct: false, feedback: 'That would contradict Peter himself, who just quoted Joel ("call on the name of Yahuah") seventeen verses earlier. Peter is not replacing the Father\'s Name — he is announcing the means through which the Father\'s promise reaches you: through the Son whose own name means "Yahuah saves."' },
+{ label: 'Naming the means — Yahuah promised; Yahushua (whose name means "Yahuah saves") is how the promise arrives', correct: true, feedback: 'Exactly. The Father made the promise; the Son is the means by which it reaches us. They are not interchangeable, and they are not the same person — they are working together in the rescue. The Father plans; the Son carries it out.' },
+{ label: 'They have nothing to do with each other', correct: false, feedback: 'They have everything to do with each other. The Son\'s name LITERALLY MEANS "Yahuah saves." The promise of Joel and the means of Acts 2:38 fit together perfectly — they are one unbroken thread.' },
             ]}
             onCorrect={() => unlockNext(5)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -494,12 +553,68 @@ export default function Stop3CallOnHisName() {
             What recovering the Name does is add depth, not legitimacy. The Father has been hearing his
             children all along. He simply has more to share with those willing to come closer.
           </p>
+
+          <p className="lesson-p" style={{ marginTop: '2rem' }}>
+            And there's one more layer here that lands close to home. Read this verse slowly:
+          </p>
+
+          <BlockQuote
+            text="And it shall be at that day, saith Yahuah, that thou shalt call me ISHI (my husband); and shalt call me no more BAALI (my master / lord). For I will take away the names of Baalim out of her mouth, and they shall no more be remembered by their name."
+            verseRef="Hosea 2:16-17"
+            colors={{ cream, amber }}
+          />
+
+          <p className="lesson-p">
+            Yahuah is speaking to his bride. And he is asking her to <em>stop calling him Baali</em> —
+            the Hebrew word that means <em>my master / my lord</em>. Why? Because the same word{' '}
+            <em>Baal</em> was the name (and title) of the false god her pagan neighbors were
+            worshiping. Yahuah is saying: <em>"don't call me by the title you used to use for the one
+            you used to belong to."</em>
+          </p>
+
+          <p className="lesson-p">
+            Think about how this lands in everyday human terms. Imagine your spouse asked you to call
+            them by a particular name — their actual name — and you instead kept using a generic
+            term that you also used to use for an ex. Even if you "meant" your spouse. Even if no one
+            in the room misunderstood. <strong style={{ color: amber }}>How would they feel about
+            that?</strong>
+          </p>
+
+          <p className="lesson-p">
+            That is what Yahuah is asking. The English word <em>Lord</em> is functionally the same
+            territory as <em>Baal</em> — a generic title that pagans used for storm gods, fertility
+            gods, and household masters across the entire ancient world. When believers call Yahuah
+            <em> "the Lord"</em> without knowing his Name, they are unintentionally addressing him with
+            the same kind of title their pagan neighbors used for completely different beings. The
+            Father isn't condemning anyone for it. But he <em>is</em> asking, gently, the way any
+            spouse might:
+          </p>
+
+          <div
+            style={{
+              padding: '1.4rem 1.8rem',
+              backgroundColor: 'rgba(212, 168, 106, 0.06)',
+              borderLeft: `3px solid ${amber}`,
+              fontFamily: '"Fraunces", Georgia, serif',
+              fontStyle: 'italic',
+              fontSize: '1.18rem',
+              color: cream,
+              opacity: 0.95,
+              lineHeight: 1.7,
+              maxWidth: '40rem',
+              marginBottom: '1.5rem',
+            }}
+          >
+            "Call me by my name. Not by the name you used to use for someone else."
+          </div>
+
           <Question
-            prompt="A Christian has spent their whole life calling on “the Lord” without knowing the Name Yahuah. Have they been heard?"
+            prompt="In Hosea 2:16, why does Yahuah ask his people to stop calling him 'Baali' (lord/master) — even though the word technically applies to him?"
             options={[
-              { label: 'No — they were calling on the wrong name and need to start over', correct: false, feedback: 'That would be legalism, and it is not what Scripture teaches. The Father is not bound by translation. He has heard millions of his children calling on him in every language under heaven. The veil obscured the depth — it did not undo the relationship.' },
-              { label: 'Yes — the Father has heard them. Knowing the Name now adds depth, not legitimacy', correct: true, feedback: 'Exactly. The Father has been hearing his children all along, in every language. Recovering the Name does not make their salvation real — it makes the structure visible. Depth, not requirement. Gift, not test.' },
-              { label: 'Only if they were Hebrew speakers', correct: false, feedback: 'The Father is not a tribal deity bound by language. He hears those who call on him in faith, in any tongue. What we are doing in this lesson is recovering depth, not redrawing the boundaries of who is saved.' },
+              
+{ label: 'It is intimacy — the same word was used for false gods and pagan masters, and Yahuah wants his bride to call him by HIS name, not by a generic title shared with the beings she used to follow', correct: true, feedback: 'Exactly. The Father is not condemning the use of "lord" as legalism. He is asking — like any spouse would — to be called by his name rather than a generic title that belonged to someone else. The English word "Lord" today is functionally the same territory as Baal: a generic title shared with countless other claimants. The Father is asking for intimacy, not perfection.' },
+{ label: 'Because using lord-language makes salvation invalid', correct: false, feedback: 'That would be legalism — and it is not what Yahuah is saying in Hosea 2. He is not condemning his people for using the title; he is asking them to come closer by using his name. Gift, not test.' },
+{ label: 'No special reason — Hebrew was just changing', correct: false, feedback: 'Yahuah specifically explains his reason: "I will take away the names of Baalim out of her mouth, and they shall no more be remembered." The contamination of the title with false gods is exactly his concern.' },
             ]}
             onCorrect={() => unlockNext(6)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -547,9 +662,10 @@ export default function Stop3CallOnHisName() {
           <Question
             prompt="In Romans 10:14, Paul builds a chain: they must HEAR before they can BELIEVE before they can CALL. What does this presuppose?"
             options={[
-              { label: 'That preaching is optional', correct: false, feedback: 'Paul says the opposite — preaching is the only way the Name reaches people. "How shall they hear without a preacher?" Naming the Name out loud is the necessary condition for calling on it.' },
-              { label: 'That calling on a Name requires KNOWING the Name — preaching exists to announce it', correct: true, feedback: 'Exactly. Paul’s entire argument requires that the Name be named. You cannot call on what you don’t know. The modern church teaches "call on the Lord" without naming the Name — Paul’s own logic requires us to do better.' },
-              { label: 'That faith is a feeling that doesn’t need words', correct: false, feedback: 'Paul says the opposite in verse 10: "with the mouth confession is made unto salvation." Faith involves the heart AND the mouth. Calling on the Name is spoken, not silent.' },
+              
+{ label: 'That faith is a feeling that doesn’t need words', correct: false, feedback: 'Paul says the opposite in verse 10: "with the mouth confession is made unto salvation." Faith involves the heart AND the mouth. Calling on the Name is spoken, not silent.' },
+{ label: 'That preaching is optional', correct: false, feedback: 'Paul says the opposite — preaching is the only way the Name reaches people. "How shall they hear without a preacher?" Naming the Name out loud is the necessary condition for calling on it.' },
+{ label: 'That calling on a Name requires KNOWING the Name — preaching exists to announce it', correct: true, feedback: 'Exactly. Paul’s entire argument requires that the Name be named. You cannot call on what you don’t know. The modern church teaches "call on the Lord" without naming the Name — Paul’s own logic requires us to do better.' },
             ]}
             onCorrect={() => unlockNext(7)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -616,9 +732,10 @@ export default function Stop3CallOnHisName() {
           <Question
             prompt="What did the substitution chain (LXX → Vulgate → KJV) actually accomplish?"
             options={[
-              { label: 'It made all those centuries of believers unsaved', correct: false, feedback: 'It did NOT do that. The Father is not bound by translation. Believers across all those centuries who called on him in faith were heard. The substitution dimmed what they could see — it did not undo the relationship.' },
-              { label: 'It hid the depth, structure, and specificity of the Name — without ending the Father’s relationship with those who called on him', correct: true, feedback: 'Exactly. The substitution buried what the believer could SEE. The Name was no longer visible. The covenant structure was no longer obvious. But the Father continued to hear those who called on him in faith. The veil obscured the depth; it did not undo the relationship.' },
-              { label: 'It was a deliberate plot by an evil committee', correct: false, feedback: 'It is more complicated than that — a chain of cultural and linguistic decisions over centuries. The result was the same (the Name was buried), but the cause was incremental, not a single conspiracy. What matters now is that we can recover what was hidden.' },
+              
+{ label: 'It made all those centuries of believers unsaved', correct: false, feedback: 'It did NOT do that. The Father is not bound by translation. Believers across all those centuries who called on him in faith were heard. The substitution dimmed what they could see — it did not undo the relationship.' },
+{ label: 'It hid the depth, structure, and specificity of the Name — without ending the Father’s relationship with those who called on him', correct: true, feedback: 'Exactly. The substitution buried what the believer could SEE. The Name was no longer visible. The covenant structure was no longer obvious. But the Father continued to hear those who called on him in faith. The veil obscured the depth; it did not undo the relationship.' },
+{ label: 'It was a deliberate plot by an evil committee', correct: false, feedback: 'It is more complicated than that — a chain of cultural and linguistic decisions over centuries. The result was the same (the Name was buried), but the cause was incremental, not a single conspiracy. What matters now is that we can recover what was hidden.' },
             ]}
             onCorrect={() => unlockNext(8)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -807,6 +924,45 @@ export default function Stop3CallOnHisName() {
             ↓ Complete the step above to continue ↓
           </div>
         )}
+        {/* Subtle "Start over" — only shows once user has progressed past step 0 */}
+        {unlockedSteps.length > 1 && (
+          <div style={{
+            marginTop: '4rem', textAlign: 'center', paddingTop: '2rem',
+            borderTop: '1px solid rgba(237, 228, 207, 0.08)',
+          }}>
+            <button
+              onClick={handleStartOver}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: cream,
+                opacity: 0.4,
+                fontSize: '0.82rem',
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                fontFamily: '"Fraunces", Georgia, serif',
+                cursor: 'pointer',
+                padding: '0.5rem 1rem',
+                transition: 'opacity 0.3s',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.4'; }}
+            >
+              ↻ Start this lesson over
+            </button>
+            <div style={{
+              marginTop: '0.6rem',
+              fontSize: '0.78rem',
+              color: cream,
+              opacity: 0.32,
+              fontStyle: 'italic',
+              fontFamily: '"Fraunces", Georgia, serif',
+            }}>
+              Your progress is saved on this device — close the tab and come back anytime.
+            </div>
+          </div>
+        )}
+
       </div>
     </div>
   );
@@ -1048,17 +1204,17 @@ function RecapQuiz({ colors, onComplete }) {
     {
       prompt: 'What does the Hebrew phrase “qara b\'shem” (call on the name) actually mean?',
       options: [
+        { label: 'A magical formula', correct: false, feedback: 'Not magic — covenant. The power is in the relationship with the Father whose Name it is, not in the syllables themselves.' },
         { label: 'Quietly thinking about God in your head', correct: false, feedback: 'It is far more active than that. Qara is the word for summoning, declaring, and proclaiming. To call on a Name is to invoke that Name publicly as your master and authority.' },
         { label: 'The covenantal act of publicly invoking a Name as your master, covering, and authority — declaring whose you are', correct: true, feedback: 'Yes. Qara b\'shem is allegiance language. Abraham did it at altars; Elijah did it on Carmel. To call on the Name of Yahuah is to declare publicly whose you are.' },
-        { label: 'A magical formula', correct: false, feedback: 'Not magic — covenant. The power is in the relationship with the Father whose Name it is, not in the syllables themselves.' },
       ],
     },
     {
       prompt: 'Joel 2:32 promises salvation to those who call on Yahuah’s Name. Acts 2:38 says to be baptized in the Name of Yahushua. How do these fit together?',
       options: [
-        { label: 'They contradict each other', correct: false, feedback: 'They do not. Yahushua’s Name LITERALLY MEANS "Yahuah saves." The Father made the promise; the Son is the means by which the promise reaches you. They fit together perfectly.' },
         { label: 'Yahuah promised; Yahushua (whose name means "Yahuah saves") is the means by which the promise reaches you', correct: true, feedback: 'Exactly. The Father made the promise, the Son carries it out, the Spirit applies it to those who call. Two distinct beings cooperating in one rescue. The structure of salvation requires both Names — and they are not the same Person.' },
         { label: 'Acts 2:38 cancels Joel 2:32', correct: false, feedback: 'Peter quoted Joel 2:32 (in Acts 2:21) seventeen verses BEFORE Acts 2:38. He is not cancelling the OT promise — he is announcing the means by which it now arrives.' },
+        { label: 'They contradict each other', correct: false, feedback: 'They do not. Yahushua’s Name LITERALLY MEANS "Yahuah saves." The Father made the promise; the Son is the means by which the promise reaches you. They fit together perfectly.' },
       ],
     },
     {

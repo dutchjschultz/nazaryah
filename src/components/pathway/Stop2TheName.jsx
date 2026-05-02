@@ -1,10 +1,53 @@
 import { useState, useEffect, useRef } from 'react';
 
 export default function Stop2TheName() {
-  const [unlockedSteps, setUnlockedSteps] = useState([0]);
+  // Storage key — unique per lesson so they don't collide
+  const STORAGE_KEY = 'pathway_stop2_the_name';
+
+  const [unlockedSteps, setUnlockedSteps] = useState(() => {
+    if (typeof window === 'undefined') return [0];
+    try {
+      const saved = window.localStorage.getItem(STORAGE_KEY);
+      if (saved) {
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.length > 0) return parsed;
+      }
+    } catch (e) {}
+    return [0];
+  });
   const [stepAnswers, setStepAnswers] = useState({});
   const [activeStep, setActiveStep] = useState(0);
   const stepRefs = useRef([]);
+
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    try {
+      window.localStorage.setItem(STORAGE_KEY, JSON.stringify(unlockedSteps));
+    } catch (e) {}
+  }, [unlockedSteps]);
+
+  useEffect(() => {
+    if (unlockedSteps.length > 1) {
+      setTimeout(() => {
+        const lastUnlocked = Math.max(...unlockedSteps);
+        const target = stepRefs.current[lastUnlocked];
+        if (target && typeof target.scrollIntoView === 'function') {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      }, 400);
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+
+  const handleStartOver = () => {
+    if (typeof window !== 'undefined') {
+      try { window.localStorage.removeItem(STORAGE_KEY); } catch (e) {}
+    }
+    setUnlockedSteps([0]);
+    setStepAnswers({});
+    setActiveStep(0);
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
 
   const cream = '#ede4cf';
   const amber = '#d4a86a';
@@ -205,9 +248,10 @@ export default function Stop2TheName() {
           <Question
             prompt="Before we move on, what does the small-caps formatting on “LORD” actually tell you?"
             options={[
-              { label: 'It’s just a stylistic choice — nothing important', correct: false, feedback: 'Look closer — translators don’t change typography for no reason. Small caps is a deliberate signal.' },
-              { label: 'The translators replaced something else with the word “Lord”', correct: true, feedback: 'Exactly. Small caps is the translator’s way of admitting a substitution happened. Now we’re going to find what got replaced.' },
-              { label: 'It’s emphasizing how holy the word “Lord” is', correct: false, feedback: 'Common assumption, but no. The small caps mark a substitution, not emphasis.' },
+              
+{ label: 'The translators replaced something else with the word “Lord”', correct: true, feedback: 'Exactly. Small caps is the translator’s way of admitting a substitution happened. Now we’re going to find what got replaced.' },
+{ label: 'It’s emphasizing how holy the word “Lord” is', correct: false, feedback: 'Common assumption, but no. The small caps mark a substitution, not emphasis.' },
+{ label: 'It’s just a stylistic choice — nothing important', correct: false, feedback: 'Look closer — translators don’t change typography for no reason. Small caps is a deliberate signal.' },
             ]}
             onCorrect={() => unlockNext(0)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -255,9 +299,10 @@ export default function Stop2TheName() {
           <Question
             prompt="How many times does the name יהוה (Yahuah) appear in the Hebrew Old Testament?"
             options={[
-              { label: 'A few hundred times', correct: false, feedback: 'Far more than that. The Father did not hide his name — translators did.' },
-              { label: 'Around 6,800 times', correct: true, feedback: 'Yes — 6,828 occurrences. The name is everywhere in the Old Testament. It was hidden in plain sight by a footnote.' },
-              { label: 'Only in a few special verses', correct: false, feedback: 'No — the name is everywhere. It is the most common proper noun in the entire Hebrew Bible.' },
+              
+{ label: 'Only in a few special verses', correct: false, feedback: 'No — the name is everywhere. It is the most common proper noun in the entire Hebrew Bible.' },
+{ label: 'A few hundred times', correct: false, feedback: 'Far more than that. The Father did not hide his name — translators did.' },
+{ label: 'Around 6,800 times', correct: true, feedback: 'Yes — 6,828 occurrences. The name is everywhere in the Old Testament. It was hidden in plain sight by a footnote.' },
             ]}
             onCorrect={() => unlockNext(1)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -385,9 +430,10 @@ export default function Stop2TheName() {
           <Question
             prompt="The English of John 8:58 says “I am” — and the English of Exodus 3:14 also says “I AM.” Based on what you just learned about the Greek, are these the same claim?"
             options={[
-              { label: 'Yes — same English words means same claim', correct: false, feedback: 'That is exactly what the English flattening tempts you to think. But the Greek is decisive: Exodus 3:14 LXX says ego eimi HO ON — "I am the Existing One" (a name). John 8:58 just says ego eimi — "I am" (an ordinary sentence-opening). The English hides the difference.' },
-              { label: 'No — Exodus 3:14 uses a special construction (ho on, "the Existing One") that John 8:58 does not use', correct: true, feedback: 'Exactly. The divine name in Greek requires the participle ho on — "the Existing One." Yahushua never uses that construction. He uses ego eimi the way every Greek-speaker did in ordinary speech. The English translation flattens two completely different phrases into the same words.' },
-              { label: 'It doesn’t matter — Greek is just Greek', correct: false, feedback: 'It matters enormously. The same skill you just used — looking past the English to find the actual Greek — is what dismantles a Trinitarian proof-text. The Greek shows you these are NOT the same claim.' },
+              
+{ label: 'Yes — same English words means same claim', correct: false, feedback: 'That is exactly what the English flattening tempts you to think. But the Greek is decisive: Exodus 3:14 LXX says ego eimi HO ON — "I am the Existing One" (a name). John 8:58 just says ego eimi — "I am" (an ordinary sentence-opening). The English hides the difference.' },
+{ label: 'No — Exodus 3:14 uses a special construction (ho on, "the Existing One") that John 8:58 does not use', correct: true, feedback: 'Exactly. The divine name in Greek requires the participle ho on — "the Existing One." Yahushua never uses that construction. He uses ego eimi the way every Greek-speaker did in ordinary speech. The English translation flattens two completely different phrases into the same words.' },
+{ label: 'It doesn’t matter — Greek is just Greek', correct: false, feedback: 'It matters enormously. The same skill you just used — looking past the English to find the actual Greek — is what dismantles a Trinitarian proof-text. The Greek shows you these are NOT the same claim.' },
             ]}
             onCorrect={() => unlockNext(2)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -522,9 +568,10 @@ export default function Stop2TheName() {
           <Question
             prompt='Look at the Hebrew of Yahushua (יהושע) and the Hebrew of Yahuah (יהוה). What does it tell you that the first three letters (יהו - "Yahu") are identical?'
             options={[
-              { label: 'It’s a coincidence — Hebrew names share letters all the time', correct: false, feedback: 'Hebrew names are constructed deliberately, not by accident. Yahushua (“Yahuah saves”) carries the Father’s name inside it on purpose. The shared letters are the structure of the relationship.' },
-              { label: 'The Son\'s name is built on the Father\'s name — the Son carries the Father\'s family name inside his own, the way a son today shares his father\'s last name', correct: true, feedback: 'Exactly. The Son\'s name contains the Father\'s name (Yahu-) plus the verb for salvation (-shua). It is a sentence that means "Yahuah saves" — and the Son carries the Father\'s name as part of his own. You cannot share a name with someone if you and that someone are the same being.' },
-              { label: 'It proves they are the same being', correct: false, feedback: 'The opposite. Sharing a name means there are two parties — like a son sharing a last name with his father. You cannot share a name with yourself. The shared letters require two distinct beings in a real family relationship.' },
+              
+{ label: 'It proves they are the same being', correct: false, feedback: 'The opposite. Sharing a name means there are two parties — like a son sharing a last name with his father. You cannot share a name with yourself. The shared letters require two distinct beings in a real family relationship.' },
+{ label: 'It’s a coincidence — Hebrew names share letters all the time', correct: false, feedback: 'Hebrew names are constructed deliberately, not by accident. Yahushua (“Yahuah saves”) carries the Father’s name inside it on purpose. The shared letters are the structure of the relationship.' },
+{ label: 'The Son\'s name is built on the Father\'s name — the Son carries the Father\'s family name inside his own, the way a son today shares his father\'s last name', correct: true, feedback: 'Exactly. The Son\'s name contains the Father\'s name (Yahu-) plus the verb for salvation (-shua). It is a sentence that means "Yahuah saves" — and the Son carries the Father\'s name as part of his own. You cannot share a name with someone if you and that someone are the same being.' },
             ]}
             onCorrect={() => unlockNext(3)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -581,9 +628,10 @@ export default function Stop2TheName() {
           <Question
             prompt="In Joel 2:32 — “Whosoever shall call on the name of Yahuah shall be DELIVERED” — what does that promise have to do with the Son's name?"
             options={[
-              { label: 'Nothing — they are unrelated verses', correct: false, feedback: 'Look again at the words. The verse says Yahuah delivers (saves). The Son is named Yahushua, which means “Yahuah saves.” The verse and the name are saying the exact same thing.' },
-              { label: 'The Son\'s name (“Yahuah saves”) is the fulfillment of this promise — Yahuah delivers through Yahushua', correct: true, feedback: 'Exactly. Joel promised Yahuah would save those who call on his name. The Son\'s name announces the means: Yahuah saves through Yahushua. The Father plans the deliverance. The Son carries it out. Two beings, one rescue.' },
-              { label: 'Joel was talking about a different god', correct: false, feedback: 'No — Joel is the prophet of Yahuah. The verse and the Son\'s name are connected directly: Yahuah delivers (Joel) → Yahuah saves (Yahushua\'s name).' },
+              
+{ label: 'The Son\'s name (“Yahuah saves”) is the fulfillment of this promise — Yahuah delivers through Yahushua', correct: true, feedback: 'Exactly. Joel promised Yahuah would save those who call on his name. The Son\'s name announces the means: Yahuah saves through Yahushua. The Father plans the deliverance. The Son carries it out. Two beings, one rescue.' },
+{ label: 'Joel was talking about a different god', correct: false, feedback: 'No — Joel is the prophet of Yahuah. The verse and the Son\'s name are connected directly: Yahuah delivers (Joel) → Yahuah saves (Yahushua\'s name).' },
+{ label: 'Nothing — they are unrelated verses', correct: false, feedback: 'Look again at the words. The verse says Yahuah delivers (saves). The Son is named Yahushua, which means “Yahuah saves.” The verse and the name are saying the exact same thing.' },
             ]}
             onCorrect={() => unlockNext(4)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -653,9 +701,10 @@ export default function Stop2TheName() {
           <Question
             prompt="What does Yahuah say his name is to be — and for how long?"
             options={[
-              { label: 'A title used only by priests, only in the temple', correct: false, feedback: 'The verse says nothing about priests or temples. It says “to all generations.” That includes us.' },
-              { label: 'His name forever, his memorial to all generations', correct: true, feedback: 'Exactly. Forever. All generations. The “too holy to speak” tradition is the opposite of what Yahuah commanded — he wanted his name remembered, not buried.' },
-              { label: 'Something to be replaced with “Lord” in later translations', correct: false, feedback: 'Read the verse again — the Father did not authorize that. Translators did. We will see who, when, and why in the next steps.' },
+              
+{ label: 'A title used only by priests, only in the temple', correct: false, feedback: 'The verse says nothing about priests or temples. It says “to all generations.” That includes us.' },
+{ label: 'His name forever, his memorial to all generations', correct: true, feedback: 'Exactly. Forever. All generations. The “too holy to speak” tradition is the opposite of what Yahuah commanded — he wanted his name remembered, not buried.' },
+{ label: 'Something to be replaced with “Lord” in later translations', correct: false, feedback: 'Read the verse again — the Father did not authorize that. Translators did. We will see who, when, and why in the next steps.' },
             ]}
             onCorrect={() => unlockNext(5)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -873,9 +922,10 @@ export default function Stop2TheName() {
           <Question
             prompt="In Acts 2:36, when Peter says “God made Jesus both Lord and Messiah,” what does the Greek word Kyrios (Lord) actually mean here?"
             options={[
-              { label: 'It means Yahuah — God turned Jesus into Yahuah', correct: false, feedback: 'That is the trap the English flattening sets. Kyrios in this verse is being used in its ordinary sense — master, sovereign, ruler — not as a substitute for the Tetragrammaton. And by the meaning of the Name itself (Step 3), no being can be MADE into the self-existent, eternal One. The Father exalted the Son to authority; he did not transfer his own identity.' },
-              { label: 'It means Master/Sovereign — the Father exalted the Son to a position of rulership and authority', correct: true, feedback: 'Yes. Kyrios here is the ordinary Greek title — master, sovereign — exactly the role we see in Psalm 110:1 where Yahuah seats Adoni (my master) at his right hand. The Father exalted the Son to rule. He did not make the Son into Yahuah, because that is impossible by the Name\'s own meaning.' },
-              { label: 'It does not matter what the Greek says', correct: false, feedback: 'It is the difference between “the Father exalted the Son to authority” and “God turned Jesus into Yahuah.” The first is what the Greek says. The second is what the flattened English allows.' },
+              
+{ label: 'It means Master/Sovereign — the Father exalted the Son to a position of rulership and authority', correct: true, feedback: 'Yes. Kyrios here is the ordinary Greek title — master, sovereign — exactly the role we see in Psalm 110:1 where Yahuah seats Adoni (my master) at his right hand. The Father exalted the Son to rule. He did not make the Son into Yahuah, because that is impossible by the Name\'s own meaning.' },
+{ label: 'It does not matter what the Greek says', correct: false, feedback: 'It is the difference between “the Father exalted the Son to authority” and “God turned Jesus into Yahuah.” The first is what the Greek says. The second is what the flattened English allows.' },
+{ label: 'It means Yahuah — God turned Jesus into Yahuah', correct: false, feedback: 'That is the trap the English flattening sets. Kyrios in this verse is being used in its ordinary sense — master, sovereign, ruler — not as a substitute for the Tetragrammaton. And by the meaning of the Name itself (Step 3), no being can be MADE into the self-existent, eternal One. The Father exalted the Son to authority; he did not transfer his own identity.' },
             ]}
             onCorrect={() => unlockNext(7)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -975,9 +1025,10 @@ export default function Stop2TheName() {
           <Question
             prompt="Where does the doctrine of replacing Yahuah with “Lord” actually come from?"
             options={[
-              { label: 'From Yahuah himself in Scripture', correct: false, feedback: 'Read Exodus 3:15 again — Yahuah commanded the opposite. The substitution is not from him.' },
-              { label: 'From Yahushua and the apostles', correct: false, feedback: 'No — Peter, Paul, and the writers of the NT quote the OT constantly and never instruct anyone to erase the name. The substitution came after.' },
-              { label: 'From post-temple Jewish tradition, then Latin translators, then English translators inheriting the chain', correct: true, feedback: 'Yes. The substitution started as a tradition (after AD 70), got locked into the Latin Vulgate (Jerome, ~AD 400), passed into English through Wycliffe and the KJV, and was inherited by every modern Bible since. Tradition replaced Scripture.' },
+              
+{ label: 'From Yahuah himself in Scripture', correct: false, feedback: 'Read Exodus 3:15 again — Yahuah commanded the opposite. The substitution is not from him.' },
+{ label: 'From Yahushua and the apostles', correct: false, feedback: 'No — Peter, Paul, and the writers of the NT quote the OT constantly and never instruct anyone to erase the name. The substitution came after.' },
+{ label: 'From post-temple Jewish tradition, then Latin translators, then English translators inheriting the chain', correct: true, feedback: 'Yes. The substitution started as a tradition (after AD 70), got locked into the Latin Vulgate (Jerome, ~AD 400), passed into English through Wycliffe and the KJV, and was inherited by every modern Bible since. Tradition replaced Scripture.' },
             ]}
             onCorrect={() => unlockNext(8)}
             colors={{ cream, amber, correctGreen, wrongRed }}
@@ -1223,6 +1274,45 @@ export default function Stop2TheName() {
             }}
           >
             ↓ Complete the step above to continue ↓
+          </div>
+        )}
+
+        {/* Subtle "Start over" — only shows once user has progressed past step 0 */}
+        {unlockedSteps.length > 1 && (
+          <div style={{
+            marginTop: '4rem', textAlign: 'center', paddingTop: '2rem',
+            borderTop: '1px solid rgba(237, 228, 207, 0.08)',
+          }}>
+            <button
+              onClick={handleStartOver}
+              style={{
+                background: 'none',
+                border: 'none',
+                color: cream,
+                opacity: 0.4,
+                fontSize: '0.82rem',
+                letterSpacing: '0.18em',
+                textTransform: 'uppercase',
+                fontFamily: '"Fraunces", Georgia, serif',
+                cursor: 'pointer',
+                padding: '0.5rem 1rem',
+                transition: 'opacity 0.3s',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.opacity = '0.7'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.4'; }}
+            >
+              ↻ Start this lesson over
+            </button>
+            <div style={{
+              marginTop: '0.6rem',
+              fontSize: '0.78rem',
+              color: cream,
+              opacity: 0.32,
+              fontStyle: 'italic',
+              fontFamily: '"Fraunces", Georgia, serif',
+            }}>
+              Your progress is saved on this device — close the tab and come back anytime.
+            </div>
           </div>
         )}
       </div>
@@ -1679,9 +1769,9 @@ function LxxClimb({ colors, onComplete }) {
       check: {
         prompt: 'In one sentence — what is Hellenization?',
         options: [
+          { label: 'A type of Greek architecture', correct: false, feedback: 'Architecture was part of it, but the term means much more — it\'s the spread of Greek language and culture itself.' },
           { label: 'A specific religious ceremony in ancient Greece', correct: false, feedback: 'Not a ceremony — it’s a much bigger cultural process.' },
           { label: 'Greek language and culture spreading across conquered lands after Alexander the Great', correct: true, feedback: 'Yes. Hellenization = the spread of Greek language, philosophy, and thinking across the ancient world. Hold onto this — it sets up everything that follows.' },
-          { label: 'A type of Greek architecture', correct: false, feedback: 'Architecture was part of it, but the term means much more — it\'s the spread of Greek language and culture itself.' },
         ],
       },
     },
@@ -1710,9 +1800,9 @@ function LxxClimb({ colors, onComplete }) {
       check: {
         prompt: 'Why did Jewish scholars translate the Hebrew Bible into Greek?',
         options: [
-          { label: 'To make the Bible secret', correct: false, feedback: 'The opposite — they wanted it accessible to Greek-speaking Jews who couldn’t read Hebrew anymore.' },
           { label: 'Because many Jews living outside Israel spoke Greek and couldn’t read Hebrew', correct: true, feedback: 'Exactly. The LXX was made so Greek-speaking Jews — who still followed Torah — could keep reading their own Scriptures.' },
           { label: 'Because Greek was a holier language than Hebrew', correct: false, feedback: 'No — they translated for practical reasons. Many Jews in the Greek-speaking world simply didn’t know Hebrew.' },
+          { label: 'To make the Bible secret', correct: false, feedback: 'The opposite — they wanted it accessible to Greek-speaking Jews who couldn’t read Hebrew anymore.' },
         ],
       },
     },
@@ -1827,9 +1917,9 @@ function LxxClimb({ colors, onComplete }) {
       check: {
         prompt: 'What word did the LXX translators put in place of Yahuah?',
         options: [
-          { label: 'Theos (god)', correct: false, feedback: 'Theos was used for "Elohim" (God), but Yahuah specifically was replaced by a different word — a generic title meaning master.' },
           { label: 'Kyrios (lord/master) — a generic title, not a name', correct: true, feedback: 'Yes. Kyrios. A generic Greek title used for any master or owner. The personal name became a faceless title — and your English Bible inherited that swap.' },
           { label: 'They left it untranslated', correct: false, feedback: 'Most surviving LXX copies replaced the name with Kyrios. A few early ones preserved the Hebrew letters, but the dominant transmission swapped it.' },
+          { label: 'Theos (god)', correct: false, feedback: 'Theos was used for "Elohim" (God), but Yahuah specifically was replaced by a different word — a generic title meaning master.' },
         ],
       },
     },
@@ -1896,9 +1986,9 @@ function RecapQuiz({ colors, onComplete }) {
     {
       prompt: 'What is the root of the name Yahuah, and what does it mean?',
       options: [
-        { label: 'H1961 — “to be, to exist” — the verb of pure existence', correct: true, feedback: 'Yes. The Father\'s name is the verb "to be" treated as a name. It means the self-existent One — He who is, was, and will be.' },
         { label: 'A coded story about the cross', correct: false, feedback: 'No — the meaning lives in the verb-root, not in decoded letter shapes. The Father told Moses plainly: "I am that I am."' },
         { label: 'A title meaning "master"', correct: false, feedback: 'That would be Adonai. Yahuah is built on the verb "to be" — pure existence, not a title of authority.' },
+        { label: 'H1961 — “to be, to exist” — the verb of pure existence', correct: true, feedback: 'Yes. The Father\'s name is the verb "to be" treated as a name. It means the self-existent One — He who is, was, and will be.' },
       ],
     },
     {
