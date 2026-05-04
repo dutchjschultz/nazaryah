@@ -368,16 +368,20 @@ const topicsActive =
     white-space: nowrap;
   }
 
-  .nav-link:hover {
-    background: rgba(168, 127, 31, 0.18);
-    color: #6b4d12;
-    border-color: rgba(168, 127, 31, 0.35);
-  }
-
+  /* Hover + current page: dark brown box, bright gold lettering.
+     text-shadow is killed on these states so the gold doesn't pick up
+     the cream halo we use for visibility on the resting state. */
+  .nav-link:hover,
   .nav-link.active {
-    color: #6b4d12;
-    background: rgba(168, 127, 31, 0.22);
-    border-color: rgba(168, 127, 31, 0.4);
+    background: #1a0e06;
+    color: #f0c450;
+    border-color: #a87f1f;
+    text-shadow: none;
+  }
+  .nav-link:hover .caret,
+  .nav-link.active .caret {
+    color: #f0c450;
+    opacity: 1;
   }
 
   .nav-link--dropdown .caret {
@@ -393,9 +397,10 @@ const topicsActive =
   }
   :global(.dark) .nav-link:hover,
   :global(.dark) .nav-link.active {
-    color: #e4bd6a;
-    background: rgba(212, 165, 49, 0.18);
-    border-color: rgba(212, 165, 49, 0.4);
+    background: #0f0a04;
+    color: #f0c450;
+    border-color: #a87f1f;
+    text-shadow: none;
   }
 
   /* ============================================================
