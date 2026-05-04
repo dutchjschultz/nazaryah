@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The Day — Dawn to Dusk | Nazaryah"
+  description="The 12-hour day of light Yahuah set in motion on day one — and the two reckoning systems that buried it: Babylon's sundown-to-sundown tradition inherited through the rabbis, and Rome's midnight day inherited through the Catholic Church."
+>
+  <main class="cf-index">
+
+    <div class="cf-index-inner">
+
+      <a href="/calendar" class="cf-index-back"><span class="arrow">←</span><span>Back to the Calendar</span></a>
+
+      <header class="cf-index-header">
+        <p class="cf-index-eyebrow">— Category III &middot; The Day —</p>
+        <h1 class="cf-index-title">The Day</h1>
+        <p class="cf-index-subtitle">Yahuah called the light Day. Yahushua said the day has twelve hours. Then Babylon and Rome crept in, and the church and the synagogue both forgot when the day actually begins.</p>
+      </header>
+
+      <section class="cf-studies-grid">
+
+        <a href="/calendar/the-day/dawn-to-dusk" class="cf-study">
+          <p class="cf-study-num">Study 1</p>
+          <h3>Dawn to Dusk</h3>
+          <p>From the very first verse where Yahuah names the day, the day <em>is</em> the light. Yahushua confirmed it in plain language: there are twelve hours in the day. The Hebrew word <em>yom</em> is used two different ways in Genesis 1:5 — and once you see them both, the entire framework comes into focus.</p>
+          <span class="cf-study-cta">Read the Study →</span>
+        </a>
+
+        <a href="/calendar/the-day/babylonian-sundown-tradition" class="cf-study">
+          <p class="cf-study-num">Study 2</p>
+          <h3>The Babylonian Sundown Tradition</h3>
+          <p>Walk into any synagogue or Torah-keeping community and you'll hear it: "the Sabbath begins at sundown." It sounds biblical. It feels Hebrew. But it isn't. The sundown tradition was picked up in Babylonian captivity, codified by rabbis afterward, and Yahushua's burial chronology is the definitive witness against it.</p>
+          <span class="cf-study-cta">Read the Study →</span>
+        </a>
+
+        <a href="/calendar/the-day/roman-midnight-lie" class="cf-study">
+          <p class="cf-study-num">Study 3</p>
+          <h3>The Roman Midnight Lie</h3>
+          <p>Ask any modern Christian when their day begins and they'll say <em>midnight.</em> Sunday begins at 12:00 AM. Christmas begins when the clock strikes twelve. It feels universal. It feels obvious. It is none of those things — it is Caesar's day, smuggled into the church through Rome, and it has nothing to do with the lights Yahuah hung in the heavens.</p>
+          <span class="cf-study-cta">Read the Study →</span>
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+</BaseLayout>
+
+<style>
+  .cf-index {
+    background: linear-gradient(180deg, #0e0905 0%, #1a110a 25%, #160f07 100%);
+    color: #b8a584;
+    font-family: 'Crimson Pro', 'EB Garamond', Georgia, serif;
+    min-height: 100vh;
+    padding: 4.5rem 1.5rem 6rem;
+  }
+
+  .cf-index-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cf-index-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #8a7855;
+    text-decoration: none;
+    margin-bottom: 3rem;
+    padding: 0.5rem 0.9rem 0.5rem 0.65rem;
+    border: 1px solid #2a1a08;
+    background: rgba(10, 6, 2, 0.4);
+    font-weight: 600;
+    transition: color 0.2s, border-color 0.2s, padding 0.2s;
+  }
+
+  .cf-index-back:hover {
+    color: #c9a961;
+    border-color: #4a3218;
+    padding-left: 0.5rem;
+  }
+
+  .cf-index-back .arrow { font-size: 1em; transition: transform 0.2s; }
+  .cf-index-back:hover .arrow { transform: translateX(-3px); }
+
+  .cf-index-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cf-index-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #8a7855;
+    font-weight: 600;
+    margin: 0 0 1.2rem;
+  }
+
+  .cf-index-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 1rem;
+    letter-spacing: 0.025em;
+    line-height: 1.12;
+    text-transform: uppercase;
+  }
+
+  .cf-index-subtitle {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #b8a584;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .cf-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cf-study {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: #1a110a;
+    border: 1px solid rgba(180, 140, 80, 0.18);
+    border-top: 3px solid #c9a961;
+    border-radius: 4px;
+    padding: 2rem 1.6rem 1.6rem;
+    transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  }
+
+  .cf-study:hover {
+    background: #221710;
+    border-color: rgba(200, 160, 100, 0.34);
+    border-top-color: #d4a04a;
+    transform: translateY(-2px);
+  }
+
+  .cf-study-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
+    color: #a88b4f;
+    margin: 0 0 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .cf-study h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 1rem;
+    line-height: 1.25;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+  }
+
+  .cf-study > p {
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: #b8a584;
+    font-size: 0.96rem;
+    line-height: 1.65;
+    flex: 1;
+    margin: 0 0 1.4rem;
+  }
+
+  .cf-study-cta {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    color: #c9a961;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  .cf-study:hover .cf-study-cta { color: #f0e0bf; }
+
+  @media (max-width: 900px) {
+    .cf-studies-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 520px) {
+    .cf-index { padding: 3rem 1.1rem 4rem; }
+  }
+</style>

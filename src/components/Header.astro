@@ -17,7 +17,7 @@ const primaryNav = [
 
 // Topics dropdown — two themed columns.
 const topicsForeignFire = {
-  label: 'Foreign Fire',
+  label: 'Counterfeits',
   sublabel: 'What to expose',
   href: '/foreign-fire',
   glyph: '\u{1F702}', // 🜂 alchemical fire
@@ -53,7 +53,7 @@ const mobileNav = [
   { name: 'Blog', href: '/blog' },
   { name: 'Books', href: '/books' },
   { name: 'Contact', href: '/contact' },
-  { name: 'Foreign Fire', href: '/foreign-fire', section: 'Topics — Foreign Fire' },
+  { name: 'Counterfeits', href: '/foreign-fire', section: 'Topics — Counterfeits' },
   ...topicsForeignFire.items,
   ...topicsRestoredTruth.items.map((it, i) => i === 0 ? { ...it, section: 'Topics — Restored Truth' } : it),
 ];
@@ -100,7 +100,7 @@ const topicsActive =
                   hidden
                 >
                   <div class="topics-grid">
-                    <!-- LEFT: Foreign Fire -->
+                    <!-- LEFT: Counterfeits -->
                     <div class="topics-column">
                       <a href={topicsForeignFire.href} class="topics-section-header" role="menuitem">
                         <span class="topics-icon">{topicsForeignFire.glyph}</span>

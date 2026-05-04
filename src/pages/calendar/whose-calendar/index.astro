@@ -1,0 +1,205 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="Whose Calendar? — Yahuah's vs. Rome's | Nazaryah"
+  description="How Rome's Gregorian system replaced Yahuah's heavens, where the rabbinic calendar drifted from Torah, and the pagan names buried on every page of the modern wall calendar."
+>
+  <main class="cf-index">
+
+    <div class="cf-index-inner">
+
+      <a href="/calendar" class="cf-index-back"><span class="arrow">←</span><span>Back to the Calendar</span></a>
+
+      <header class="cf-index-header">
+        <p class="cf-index-eyebrow">— Category II &middot; Whose Calendar? —</p>
+        <h1 class="cf-index-title">Whose Calendar?</h1>
+        <p class="cf-index-subtitle">How Rome's Gregorian system replaced Yahuah's heavens, where the rabbinic calendar drifted from Torah, and why the calendar question is a worship question.</p>
+      </header>
+
+      <section class="cf-studies-grid">
+
+        <a href="/calendar/whose-calendar/gregorian-reset" class="cf-study">
+          <p class="cf-study-num">Study 1</p>
+          <h3>The Gregorian Reset of 1582</h3>
+          <p>The calendar most of us grew up with has a birthday — and it isn't a Hebrew one. Pope Gregory XIII signed it into existence in 1582 and cut ten days out of the year so the Catholic Church's Easter would line up. Daniel saw a power coming that would think to change times and laws. This is one of the clearest fulfillments of that prophecy in history.</p>
+          <span class="cf-study-cta">Read the Study →</span>
+        </a>
+
+        <a href="/calendar/whose-calendar/pagan-names" class="cf-study">
+          <p class="cf-study-num">Study 2</p>
+          <h3>Pagan Names on Every Page</h3>
+          <p>Eight months named for Roman gods or deified Caesars. Seven days named for sun gods, moon gods, war gods, and Norse deities. Yahuah said the names of false gods should not even be heard from our mouths — yet most believers have spoken them every day of their lives without realizing what they were saying.</p>
+          <span class="cf-study-cta">Read the Study →</span>
+        </a>
+
+        <a href="/calendar/whose-calendar/math-replaced-moon" class="cf-study">
+          <p class="cf-study-num">Study 3</p>
+          <h3>When Math Replaced the Moon</h3>
+          <p>The Catholic problem isn't the only problem. In 358 AD, Rabbi Hillel II abandoned the sighting of the renewed moon and replaced it with a calculated formula. The modern Hebrew calendar is not the calendar of Moshe, David, or Yahushua — it is Hillel II's math, and it regularly disagrees with the actual heavens.</p>
+          <span class="cf-study-cta">Read the Study →</span>
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+</BaseLayout>
+
+<style>
+  .cf-index {
+    background: linear-gradient(180deg, #0e0905 0%, #1a110a 25%, #160f07 100%);
+    color: #b8a584;
+    font-family: 'Crimson Pro', 'EB Garamond', Georgia, serif;
+    min-height: 100vh;
+    padding: 4.5rem 1.5rem 6rem;
+  }
+
+  .cf-index-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .cf-index-back {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #8a7855;
+    text-decoration: none;
+    margin-bottom: 3rem;
+    padding: 0.5rem 0.9rem 0.5rem 0.65rem;
+    border: 1px solid #2a1a08;
+    background: rgba(10, 6, 2, 0.4);
+    font-weight: 600;
+    transition: color 0.2s, border-color 0.2s, padding 0.2s;
+  }
+
+  .cf-index-back:hover {
+    color: #c9a961;
+    border-color: #4a3218;
+    padding-left: 0.5rem;
+  }
+
+  .cf-index-back .arrow { font-size: 1em; transition: transform 0.2s; }
+  .cf-index-back:hover .arrow { transform: translateX(-3px); }
+
+  .cf-index-header {
+    text-align: center;
+    margin-bottom: 4rem;
+    max-width: 720px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .cf-index-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #8a7855;
+    font-weight: 600;
+    margin: 0 0 1.2rem;
+  }
+
+  .cf-index-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.2rem, 5vw, 3.4rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 1rem;
+    letter-spacing: 0.025em;
+    line-height: 1.12;
+    text-transform: uppercase;
+  }
+
+  .cf-index-subtitle {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-style: italic;
+    font-size: 1.1rem;
+    color: #b8a584;
+    line-height: 1.65;
+    margin: 0;
+  }
+
+  .cf-studies-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+  }
+
+  .cf-study {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    color: inherit;
+    background: #1a110a;
+    border: 1px solid rgba(180, 140, 80, 0.18);
+    border-top: 3px solid #c9a961;
+    border-radius: 4px;
+    padding: 2rem 1.6rem 1.6rem;
+    transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  }
+
+  .cf-study:hover {
+    background: #221710;
+    border-color: rgba(200, 160, 100, 0.34);
+    border-top-color: #d4a04a;
+    transform: translateY(-2px);
+  }
+
+  .cf-study-num {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.24em;
+    color: #a88b4f;
+    margin: 0 0 1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .cf-study h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 1rem;
+    line-height: 1.25;
+    letter-spacing: 0.015em;
+    text-transform: uppercase;
+  }
+
+  .cf-study > p {
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: #b8a584;
+    font-size: 0.96rem;
+    line-height: 1.65;
+    flex: 1;
+    margin: 0 0 1.4rem;
+  }
+
+  .cf-study-cta {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.22em;
+    color: #c9a961;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: color 0.2s;
+  }
+
+  .cf-study:hover .cf-study-cta { color: #f0e0bf; }
+
+  @media (max-width: 900px) {
+    .cf-studies-grid { grid-template-columns: 1fr; }
+  }
+
+  @media (max-width: 520px) {
+    .cf-index { padding: 3rem 1.1rem 4rem; }
+  }
+</style>
