@@ -4,37 +4,68 @@ import ThemeToggle from './ThemeToggle.astro';
 
 const currentPath = Astro.url.pathname;
 
-// Two nav rows — right-justified so they clear the logo's outspray.
-// Row 1: identity + core content hubs.
-// Row 2: topical studies + extras.
-const navRow1 = [
+// Single row of seven primary items. Everything topical lives in the Topics dropdown.
+const primaryNav = [
+  { name: 'Home', href: '/' },
+  { name: 'About', href: '/about' },
+  { name: 'Doctrines', href: '/doctrines' },
+  { name: 'Topics', href: null, dropdown: 'topics' },
+  { name: 'Blog', href: '/blog' },
+  { name: 'Books', href: '/books' },
+  { name: 'Contact', href: '/contact' },
+];
+
+// Topics dropdown — two themed columns.
+const topicsForeignFire = {
+  label: 'Foreign Fire',
+  sublabel: 'What to expose',
+  href: '/foreign-fire',
+  glyph: '\u{1F702}', // 🜂 alchemical fire
+  items: [
+    { name: 'Trinity', href: '/trinity' },
+    { name: 'Sun Worship', href: '/sun-worship' },
+    { name: 'Catholicism', href: '/catholicism' },
+    { name: 'Hollywood', href: '/hollywood' },
+    { name: 'American Idolatry', href: '/american-idolatry' },
+    { name: 'Pagan Holidays', href: '/holidays' },
+  ],
+};
+
+const topicsRestoredTruth = {
+  label: 'Restored Truth',
+  sublabel: 'The Torah path',
+  href: null,
+  glyph: '✦', // ✦
+  items: [
+    { name: 'Hebrew Word Studies', href: '/hebrew' },
+    { name: 'The Calendar', href: '/calendar' },
+    { name: 'Ekklesia', href: '/ekklesia' },
+    { name: 'Pathway', href: '/pathway' },
+    { name: 'Hidden Gems', href: '/hidden-gems' },
+  ],
+};
+
+// Flat list of every link, used for the mobile menu.
+const mobileNav = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Doctrines', href: '/doctrines' },
   { name: 'Blog', href: '/blog' },
-  { name: 'Hebrew', href: '/hebrew' },
-  { name: 'Trinity', href: '/trinity' },
-  { name: 'Foreign Fire', href: '/foreign-fire' },
   { name: 'Books', href: '/books' },
-];
-
-const navRow2 = [
-  { name: 'Sun Worship', href: '/sun-worship' },
-  { name: 'American Idolatry', href: '/american-idolatry' },
-  { name: 'Catholicism', href: '/catholicism' },
-  { name: 'Hollywood', href: '/hollywood' },
-  { name: 'Holidays', href: '/holidays' },
-  { name: 'Calendar', href: '/calendar' },
-  { name: 'Ekklesia', href: '/ekklesia' },
-  { name: 'Pathway', href: '/pathway' },
-  { name: 'Hidden Gems', href: '/hidden-gems' },
   { name: 'Contact', href: '/contact' },
+  { name: 'Foreign Fire', href: '/foreign-fire', section: 'Topics — Foreign Fire' },
+  ...topicsForeignFire.items,
+  ...topicsRestoredTruth.items.map((it, i) => i === 0 ? { ...it, section: 'Topics — Restored Truth' } : it),
 ];
 
-const allNavItems = [...navRow1, ...navRow2];
+const isActive = (href: string | null) =>
+  href !== null && (currentPath === href || (href !== '/' && currentPath.startsWith(href)));
 
-const isActive = (href: string) =>
-  currentPath === href || (href !== '/' && currentPath.startsWith(href));
+// Topics is "active" if any topic page is the current path.
+const topicsActive =
+  isActive('/foreign-fire') ||
+  topicsForeignFire.items.some((it) => isActive(it.href)) ||
+  topicsRestoredTruth.items.some((it) => isActive(it.href));
 ---
 
 <header class="site-header sticky top-0 z-50 border-b border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] backdrop-blur-sm" data-pagefind-ignore>
@@ -44,11 +75,91 @@ const isActive = (href: string) =>
         <Logo variant="full" />
       </a>
 
-      <!-- Desktop nav: two right-justified rows of button-style links -->
-      <div class="hidden md:flex items-center gap-4">
-        <div class="nav-stack">
-          <ul class="nav-row">
-            {navRow1.map((item) => (
+      <!-- Desktop nav: single right-justified row -->
+      <div class="hidden md:flex items-center gap-3">
+        <ul class="nav-row">
+          {primaryNav.map((item) => (
+            item.dropdown === 'topics' ? (
+              <li class="topics-wrap">
+                <button
+                  type="button"
+                  class:list={['nav-link nav-link--dropdown', topicsActive ? 'active' : '']}
+                  aria-haspopup="true"
+                  aria-expanded="false"
+                  data-topics-trigger
+                >
+                  {item.name}
+                  <span class="caret" aria-hidden="true">▾</span>
+                </button>
+
+                <div
+                  class="topics-dropdown"
+                  role="menu"
+                  aria-label="Topics"
+                  data-topics-panel
+                  hidden
+                >
+                  <div class="topics-grid">
+                    <!-- LEFT: Foreign Fire -->
+                    <div class="topics-column">
+                      <a href={topicsForeignFire.href} class="topics-section-header" role="menuitem">
+                        <span class="topics-icon">{topicsForeignFire.glyph}</span>
+                        <span class="topics-section-title">
+                          <span class="label">{topicsForeignFire.label}</span>
+                          <span class="sublabel">{topicsForeignFire.sublabel}</span>
+                        </span>
+                      </a>
+                      <ul class="topics-items">
+                        {topicsForeignFire.items.map((sub) => (
+                          <li>
+                            <a
+                              href={sub.href}
+                              class:list={['topics-item', isActive(sub.href) ? 'active' : '']}
+                              role="menuitem"
+                            >
+                              {sub.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+
+                    <div class="topics-divider" aria-hidden="true"></div>
+
+                    <!-- RIGHT: Restored Truth -->
+                    <div class="topics-column">
+                      <div class="topics-section-header topics-section-header--static">
+                        <span class="topics-icon">{topicsRestoredTruth.glyph}</span>
+                        <span class="topics-section-title">
+                          <span class="label">{topicsRestoredTruth.label}</span>
+                          <span class="sublabel">{topicsRestoredTruth.sublabel}</span>
+                        </span>
+                      </div>
+                      <ul class="topics-items">
+                        {topicsRestoredTruth.items.map((sub) => (
+                          <li>
+                            <a
+                              href={sub.href}
+                              class:list={['topics-item', isActive(sub.href) ? 'active' : '']}
+                              role="menuitem"
+                            >
+                              {sub.name}
+                            </a>
+                          </li>
+                        ))}
+                      </ul>
+                    </div>
+                  </div>
+
+                  <div class="topics-footer">
+                    <span class="topics-tagline">Separated unto Yahuah</span>
+                    <a href="/doctrines" class="topics-footer-link" role="menuitem">
+                      View All Doctrines <span aria-hidden="true">→</span>
+                    </a>
+                  </div>
+                </div>
+              </li>
+            ) : (
               <li>
                 <a
                   href={item.href}
@@ -57,32 +168,21 @@ const isActive = (href: string) =>
                   {item.name}
                 </a>
               </li>
-            ))}
-          </ul>
-          <ul class="nav-row">
-            {navRow2.map((item) => (
-              <li>
-                <a
-                  href={item.href}
-                  class:list={['nav-link', isActive(item.href) ? 'active' : '']}
-                >
-                  {item.name}
-                </a>
-              </li>
-            ))}
-          </ul>
+            )
+          ))}
+        </ul>
+        <div class="nav-icons">
+          <button
+            data-search-trigger
+            aria-label="Open search"
+            class="icon-btn"
+          >
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+            </svg>
+          </button>
+          <ThemeToggle />
         </div>
-        <button
-          data-search-trigger
-          aria-label="Open search"
-          class="p-2 rounded transition-colors hover:bg-[rgba(139,105,20,0.1)]"
-          style="color: var(--ink-faded);"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </button>
-        <ThemeToggle />
       </div>
 
       <!-- Mobile: Theme Toggle + Menu Button -->
@@ -113,15 +213,20 @@ const isActive = (href: string) =>
     <!-- Mobile Menu -->
     <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-[var(--sand-dark)] pt-4">
       <ul class="space-y-2">
-        {allNavItems.map((item) => (
-          <li>
-            <a
-              href={item.href}
-              class:list={['nav-link-mobile', isActive(item.href) ? 'active' : '']}
-            >
-              {item.name}
-            </a>
-          </li>
+        {mobileNav.map((item) => (
+          <>
+            {item.section && (
+              <li class="mobile-section-label">{item.section}</li>
+            )}
+            <li>
+              <a
+                href={item.href}
+                class:list={['nav-link-mobile', isActive(item.href) ? 'active' : '']}
+              >
+                {item.name}
+              </a>
+            </li>
+          </>
         ))}
       </ul>
     </div>
@@ -130,18 +235,54 @@ const isActive = (href: string) =>
 
 <script>
   document.addEventListener('DOMContentLoaded', () => {
+    // Mobile menu toggle
     const button = document.getElementById('mobile-menu-button');
     const menu = document.getElementById('mobile-menu');
-
     button?.addEventListener('click', () => {
       menu?.classList.toggle('hidden');
+    });
+
+    // Topics dropdown — toggle on click, close on outside click + Escape.
+    const trigger = document.querySelector<HTMLButtonElement>('[data-topics-trigger]');
+    const panel = document.querySelector<HTMLElement>('[data-topics-panel]');
+    if (!trigger || !panel) return;
+
+    const setOpen = (open: boolean) => {
+      trigger.setAttribute('aria-expanded', String(open));
+      if (open) {
+        panel.removeAttribute('hidden');
+      } else {
+        panel.setAttribute('hidden', '');
+      }
+    };
+
+    trigger.addEventListener('click', (e) => {
+      e.stopPropagation();
+      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
+      setOpen(!isOpen);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (trigger.getAttribute('aria-expanded') !== 'true') return;
+      const target = e.target as Node;
+      if (!panel.contains(target) && !trigger.contains(target)) {
+        setOpen(false);
+      }
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
+        setOpen(false);
+        trigger.focus();
+      }
     });
   });
 </script>
 
 <style>
-  /* Header blends from dark (logo zone) → parchment.
-     Logo is now ~520px wide at desktop; blend starts ~30%, completes ~46%. */
+  /* ============================================================
+     HEADER GRADIENT — dark logo zone fades to parchment.
+     ============================================================ */
   .site-header {
     background: linear-gradient(
       90deg,
@@ -161,23 +302,6 @@ const isActive = (href: string) =>
       rgba(25, 17, 8, 0.98) 46%,
       rgba(30, 22, 12, 0.98) 100%
     );
-  }
-
-  /* Two-row nav stack, right-justified so rows never drift under the logo outspray */
-  .nav-stack {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    gap: 0.35rem;
-  }
-  .nav-row {
-    display: flex;
-    gap: 0.3rem;
-    justify-content: flex-end;
-    flex-wrap: nowrap;
-    list-style: none;
-    margin: 0;
-    padding: 0;
   }
 
   @media (max-width: 900px) {
@@ -204,5 +328,300 @@ const isActive = (href: string) =>
         rgba(245, 240, 230, 0.98) 100%
       );
     }
+  }
+
+  /* ============================================================
+     PRIMARY NAV ROW
+     ============================================================ */
+  .nav-row {
+    display: flex;
+    gap: 0.25rem;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    flex-wrap: nowrap;
+  }
+
+  /* Nav links carry a soft cream backdrop so they stay readable
+     even when they land over the dark portion of the header gradient.
+     The backdrop is invisible against the cream side but creates a
+     subtle halo on dark — buttons "make themselves known" either way. */
+  .nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.3rem;
+    padding: 0.55rem 0.95rem;
+    color: #2a1a08;
+    text-decoration: none;
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    border-radius: 4px;
+    background: rgba(245, 240, 230, 0.55);
+    border: 1px solid transparent;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    text-shadow: 0 0 6px rgba(245, 240, 230, 0.7);
+    white-space: nowrap;
+  }
+
+  .nav-link:hover {
+    background: rgba(168, 127, 31, 0.18);
+    color: #6b4d12;
+    border-color: rgba(168, 127, 31, 0.35);
+  }
+
+  .nav-link.active {
+    color: #6b4d12;
+    background: rgba(168, 127, 31, 0.22);
+    border-color: rgba(168, 127, 31, 0.4);
+  }
+
+  .nav-link--dropdown .caret {
+    font-size: 0.65rem;
+    opacity: 0.7;
+    margin-left: 0.1rem;
+  }
+
+  :global(.dark) .nav-link {
+    color: #ede4cf;
+    background: rgba(40, 28, 14, 0.65);
+    text-shadow: 0 0 6px rgba(15, 10, 4, 0.8);
+  }
+  :global(.dark) .nav-link:hover,
+  :global(.dark) .nav-link.active {
+    color: #e4bd6a;
+    background: rgba(212, 165, 49, 0.18);
+    border-color: rgba(212, 165, 49, 0.4);
+  }
+
+  /* ============================================================
+     ICON BUTTONS (search + theme)
+     ============================================================ */
+  .nav-icons {
+    display: flex;
+    gap: 0.35rem;
+    margin-left: 0.5rem;
+    padding-left: 0.65rem;
+    border-left: 1px solid rgba(168, 127, 31, 0.3);
+    align-items: center;
+  }
+
+  .icon-btn {
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 50%;
+    border: 1.5px solid rgba(168, 127, 31, 0.3);
+    background: rgba(168, 127, 31, 0.08);
+    color: #6b4d12;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .icon-btn:hover {
+    background: rgba(168, 127, 31, 0.25);
+    color: #1a0e06;
+    border-color: rgba(168, 127, 31, 0.55);
+  }
+  :global(.dark) .icon-btn {
+    color: #e4bd6a;
+    border-color: rgba(212, 165, 49, 0.35);
+  }
+
+  /* ============================================================
+     TOPICS DROPDOWN
+     ============================================================ */
+  .topics-wrap {
+    position: relative;
+  }
+
+  .topics-dropdown {
+    position: absolute;
+    top: calc(100% + 0.5rem);
+    right: 0;
+    min-width: 36rem;
+    background:
+      radial-gradient(ellipse at top, rgba(168, 127, 31, 0.15) 0%, transparent 60%),
+      linear-gradient(180deg, #1a0e06 0%, #0d0703 100%);
+    border: 1px solid rgba(212, 165, 49, 0.4);
+    border-radius: 8px;
+    box-shadow:
+      0 20px 50px -12px rgba(0, 0, 0, 0.7),
+      0 0 0 1px rgba(212, 165, 49, 0.1),
+      0 4px 20px -4px rgba(212, 165, 49, 0.15);
+    overflow: hidden;
+    z-index: 60;
+    animation: topicsFade 0.18s ease-out;
+  }
+  @keyframes topicsFade {
+    from { opacity: 0; transform: translateY(-4px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Top accent line — the same gold gradient used elsewhere on the site */
+  .topics-dropdown::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #d4a531, #f0c450, #d4a531, transparent);
+  }
+
+  .topics-grid {
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 0;
+  }
+
+  .topics-divider {
+    background: linear-gradient(180deg, transparent, rgba(212, 165, 49, 0.3) 20%, rgba(212, 165, 49, 0.3) 80%, transparent);
+  }
+
+  .topics-column {
+    padding: 1.4rem 1.3rem;
+  }
+
+  .topics-section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.9rem;
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(212, 165, 49, 0.2);
+    text-decoration: none;
+    transition: opacity 0.15s;
+  }
+  a.topics-section-header:hover {
+    opacity: 0.85;
+  }
+
+  .topics-icon {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(212, 165, 49, 0.25) 0%, transparent 70%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #f0c450;
+    font-size: 1rem;
+    flex-shrink: 0;
+  }
+
+  .topics-section-title {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  .topics-section-title .label {
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.85rem;
+    font-weight: 700;
+    color: #f0c450;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.2;
+  }
+  .topics-section-title .sublabel {
+    font-size: 0.65rem;
+    color: rgba(240, 196, 80, 0.6);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    margin-top: 3px;
+    font-style: italic;
+    font-weight: 400;
+  }
+
+  .topics-items {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+  }
+
+  .topics-item {
+    display: flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.55rem 0.75rem;
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.78rem;
+    color: #d4c4a0;
+    text-decoration: none;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    font-weight: 500;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    transition: background-color 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+  }
+  .topics-item::before {
+    content: '\25C6'; /* ◆ */
+    color: #a87f1f;
+    font-size: 0.55rem;
+    transition: color 0.15s, transform 0.15s;
+  }
+  .topics-item:hover {
+    background: rgba(168, 127, 31, 0.14);
+    color: #f0c450;
+    border-color: rgba(212, 165, 49, 0.25);
+    transform: translateX(2px);
+  }
+  .topics-item:hover::before {
+    color: #f0c450;
+    transform: scale(1.3);
+  }
+  .topics-item.active {
+    color: #f0c450;
+    background: rgba(168, 127, 31, 0.18);
+    border-color: rgba(212, 165, 49, 0.3);
+  }
+
+  .topics-footer {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 0.7rem 1.3rem;
+    border-top: 1px solid rgba(212, 165, 49, 0.15);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.68rem;
+    color: rgba(240, 196, 80, 0.65);
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .topics-footer-link {
+    color: #f0c450;
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    transition: gap 0.2s, color 0.2s;
+  }
+  .topics-footer-link:hover {
+    gap: 0.6rem;
+    color: #fff;
+  }
+
+  /* ============================================================
+     MOBILE MENU
+     ============================================================ */
+  .mobile-section-label {
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.7rem;
+    color: var(--gold-deep, #6b4d12);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    margin-top: 1rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--sand-dark);
   }
 </style>
