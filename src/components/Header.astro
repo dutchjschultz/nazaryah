@@ -22,6 +22,7 @@ const topicsForeignFire = {
   href: '/foreign-fire',
   glyph: '\u{1F702}', // 🜂 alchemical fire
   items: [
+    { name: 'Foreign Fire', href: '/foreign-fire' },
     { name: 'Trinity', href: '/trinity' },
     { name: 'Sun Worship', href: '/sun-worship' },
     { name: 'Catholicism', href: '/catholicism' },
@@ -85,8 +86,6 @@ const topicsActive =
                   type="button"
                   class:list={['nav-link nav-link--dropdown', topicsActive ? 'active' : '']}
                   aria-haspopup="true"
-                  aria-expanded="false"
-                  data-topics-trigger
                 >
                   {item.name}
                   <span class="caret" aria-hidden="true">▾</span>
@@ -96,8 +95,6 @@ const topicsActive =
                   class="topics-dropdown"
                   role="menu"
                   aria-label="Topics"
-                  data-topics-panel
-                  hidden
                 >
                   <div class="topics-grid">
                     <!-- LEFT: Counterfeits -->
@@ -241,41 +238,8 @@ const topicsActive =
     button?.addEventListener('click', () => {
       menu?.classList.toggle('hidden');
     });
-
-    // Topics dropdown — toggle on click, close on outside click + Escape.
-    const trigger = document.querySelector<HTMLButtonElement>('[data-topics-trigger]');
-    const panel = document.querySelector<HTMLElement>('[data-topics-panel]');
-    if (!trigger || !panel) return;
-
-    const setOpen = (open: boolean) => {
-      trigger.setAttribute('aria-expanded', String(open));
-      if (open) {
-        panel.removeAttribute('hidden');
-      } else {
-        panel.setAttribute('hidden', '');
-      }
-    };
-
-    trigger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const isOpen = trigger.getAttribute('aria-expanded') === 'true';
-      setOpen(!isOpen);
-    });
-
-    document.addEventListener('click', (e) => {
-      if (trigger.getAttribute('aria-expanded') !== 'true') return;
-      const target = e.target as Node;
-      if (!panel.contains(target) && !trigger.contains(target)) {
-        setOpen(false);
-      }
-    });
-
-    document.addEventListener('keydown', (e) => {
-      if (e.key === 'Escape' && trigger.getAttribute('aria-expanded') === 'true') {
-        setOpen(false);
-        trigger.focus();
-      }
-    });
+    // Desktop Topics dropdown is now CSS-driven via :hover on .topics-wrap —
+    // no JS toggle needed.
   });
 </script>
 
@@ -445,9 +409,13 @@ const topicsActive =
     position: relative;
   }
 
+  /* Hover-only dropdown. Hidden by default; the parent .topics-wrap
+     :hover (or hovering the panel itself) reveals it. We use opacity +
+     visibility so the transition stays smooth and the panel stops being
+     a click target when closed. */
   .topics-dropdown {
     position: absolute;
-    top: calc(100% + 0.5rem);
+    top: 100%;
     right: 0;
     min-width: 36rem;
     background:
@@ -459,13 +427,38 @@ const topicsActive =
       0 20px 50px -12px rgba(0, 0, 0, 0.7),
       0 0 0 1px rgba(212, 165, 49, 0.1),
       0 4px 20px -4px rgba(212, 165, 49, 0.15);
+    /* Reserve a transparent strip above the visible panel so the cursor
+       can move from the trigger to the panel without crossing a dead
+       zone that would close it. */
+    margin-top: 0.5rem;
     overflow: hidden;
     z-index: 60;
-    animation: topicsFade 0.18s ease-out;
+    visibility: hidden;
+    opacity: 0;
+    transform: translateY(-4px);
+    pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
   }
-  @keyframes topicsFade {
-    from { opacity: 0; transform: translateY(-4px); }
-    to   { opacity: 1; transform: translateY(0); }
+
+  .topics-wrap:hover .topics-dropdown,
+  .topics-dropdown:hover,
+  .topics-dropdown:focus-within {
+    visibility: visible;
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+  }
+
+  /* Invisible bridge between the trigger and the panel — sits in the
+     0.5rem gap so the cursor never crosses an unhovered region. */
+  .topics-dropdown::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: -0.6rem;
+    height: 0.6rem;
+    background: transparent;
   }
 
   /* Top accent line — the same gold gradient used elsewhere on the site */
