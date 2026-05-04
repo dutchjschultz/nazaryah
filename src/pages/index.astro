@@ -36,10 +36,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           to keep you <em>comfortable.</em>
         </h1>
         <div class="hero-rule"></div>
-        <p class="hero-body">
-          Nazaryah goes back to the source — original languages, restored names, and the Torah your church quietly skipped. No denominations. No comfortable answers. Just the text.
-        </p>
-        <div class="hero-cta-row">
+        <div class="hero-body-row">
+          <p class="hero-body">
+            Nazaryah goes back to the source — original languages, restored names, and the Torah your church quietly skipped. No denominations. No comfortable answers. Just the text.
+          </p>
           <a href="/doctrines" class="hero-cta" aria-label="Start here — Doctrines">
             <span class="hero-cta-badge"><span class="star" aria-hidden="true">★</span> Start Here</span>
             <span class="hero-cta-label">Doctrines</span>
@@ -155,21 +155,25 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       margin-top: 0.1rem;
     }
 
-    .hero-body {
-      font-family: var(--font-body);
-      font-size: 0.95rem;
-      line-height: 1.55;
-      color: var(--color-secondary-text);
-      max-width: 32rem;
-      margin: 0;
+    /* Body + CTA share one horizontal row so the button hangs to the
+       right of the paragraph instead of dropping below the hero box. */
+    .hero-body-row {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+      margin-top: 0.4rem;
     }
 
-    .hero-cta-row {
-      display: flex;
-      gap: 18px;
-      flex-wrap: wrap;
-      align-items: center;
-      margin-top: 0.6rem;
+    .hero-body {
+      font-family: var(--font-body);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: var(--color-secondary-text);
+      /* Cap the column so it never bleeds past the end of the headline
+         word "COMFORTABLE." — leaves room for the CTA on the right. */
+      flex: 1 1 0;
+      max-width: 26rem;
+      margin: 0;
     }
 
     /* ── "Start Here · Doctrines" CTA — single gold pill with badge inside ── */
@@ -178,6 +182,8 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       display: inline-flex;
       align-items: center;
       gap: 0.7rem;
+      flex: 0 0 auto;
+      align-self: center;
       padding: 0.85rem 1.6rem;
       background: linear-gradient(180deg, #f0c450 0%, #d4a531 100%);
       color: #1a0e06;
@@ -260,6 +266,17 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       .hero-headline {
         font-size: 1.6rem;
+      }
+
+      /* Stack body + button vertically once the hero collapses to one column */
+      .hero-body-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 1rem;
+      }
+
+      .hero-body {
+        max-width: 100%;
       }
     }
   </style>
