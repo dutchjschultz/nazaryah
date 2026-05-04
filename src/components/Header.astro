@@ -412,11 +412,16 @@ const topicsActive =
   /* Hover-only dropdown. Hidden by default; the parent .topics-wrap
      :hover (or hovering the panel itself) reveals it. We use opacity +
      visibility so the transition stays smooth and the panel stops being
-     a click target when closed. */
+     a click target when closed.
+
+     Panel sits FLUSH against the button (top: 100%, no margin) so there
+     is zero dead-zone between the trigger and the panel — the cursor
+     moves directly from one hoverable element to the next. */
   .topics-dropdown {
     position: absolute;
     top: 100%;
     right: 0;
+    margin-top: 0;
     min-width: 36rem;
     background:
       radial-gradient(ellipse at top, rgba(168, 127, 31, 0.15) 0%, transparent 60%),
@@ -427,10 +432,6 @@ const topicsActive =
       0 20px 50px -12px rgba(0, 0, 0, 0.7),
       0 0 0 1px rgba(212, 165, 49, 0.1),
       0 4px 20px -4px rgba(212, 165, 49, 0.15);
-    /* Reserve a transparent strip above the visible panel so the cursor
-       can move from the trigger to the panel without crossing a dead
-       zone that would close it. */
-    margin-top: 0.5rem;
     overflow: hidden;
     z-index: 60;
     visibility: hidden;
@@ -440,25 +441,17 @@ const topicsActive =
     transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
   }
 
+  /* Hover/focus on the wrap (button + panel are both descendants) keeps
+     the panel open. Hovering the panel itself also keeps it open via
+     the same selector — once it is visible, .topics-dropdown:hover holds
+     it there. */
   .topics-wrap:hover .topics-dropdown,
-  .topics-dropdown:hover,
-  .topics-dropdown:focus-within {
+  .topics-wrap:focus-within .topics-dropdown,
+  .topics-dropdown:hover {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
-  }
-
-  /* Invisible bridge between the trigger and the panel — sits in the
-     0.5rem gap so the cursor never crosses an unhovered region. */
-  .topics-dropdown::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: -0.6rem;
-    height: 0.6rem;
-    background: transparent;
   }
 
   /* Top accent line — the same gold gradient used elsewhere on the site */
