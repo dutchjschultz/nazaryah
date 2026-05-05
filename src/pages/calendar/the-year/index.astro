@@ -1,0 +1,112 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="The Year — Aviv, Spica, the Barley, and the Equinox Error | Nazaryah"
+  description="Yahuah's year does not begin in winter. It begins in Aviv, when the star Spica leads the renewed moon and the green-ear barley confirms in the land. Two witnesses, one season — and a clear answer to the equinox-based calendars that miss the mark."
+>
+  <main class="cf-index">
+
+    <div class="cf-index-inner">
+
+      <a href="/calendar" class="cf-index-back"><span class="arrow">←</span><span>Back to the Calendar</span></a>
+
+      <header class="cf-index-header">
+        <p class="cf-index-eyebrow">— Category VI &middot; The Year —</p>
+        <h1 class="cf-index-title">The Year</h1>
+        <p class="cf-index-subtitle">Aviv as the first month, what aviv actually means, the heavenly and earthly witnesses Yahuah set to declare it, and why equinox-based calendars miss the mark.</p>
+      </header>
+
+      <section class="cf-studies-grid">
+
+        <a href="/calendar/the-year/first-month" class="cf-study">
+          <p class="cf-study-num">Study 1</p>
+          <h3>The First Month of the Year</h3>
+          <p>Yahuah's year does not begin in winter on a Roman ledger. It begins in Aviv, in the spring, when the heavens declare it. The Pesach anchor, the redemption pattern, and Daniel 7:25 on whose authority sets the year.</p>
+          <span class="cf-study-cta">Read the Study →</span>
+        </a>
+
+        <a href="/calendar/the-year/what-aviv-means" class="cf-study">
+          <p class="cf-study-num">Study 2</p>
+          <h3>What Aviv Actually Means</h3>
+          <p>The Hebrew word, the star, and the field that all bear the same name. <em>Aviv</em> means tender green ears. <em>Spica</em> means ear of grain. <em>Tzemach</em> means sprout — and is one of the prophetic names of the Branch who rose as firstfruits in this very month.</p>
+          <span class="cf-study-cta">Read the Study →</span>
+        </a>
+
+        <a href="/calendar/the-year/heavenly-and-earthly-witnesses" class="cf-study">
+          <p class="cf-study-num">Study 3</p>
+          <h3>The Heavenly and Earthly Witnesses</h3>
+          <p>The stars are not an afterthought — Yahuah named three witnesses in Genesis 1:14. Spica leading the renewed moon is the primary heavenly witness, visible everywhere. The green-ear barley in Israel is the confirming earthly witness. Both come from Him, both agree.</p>
+          <span class="cf-study-cta">Read the Study →</span>
+        </a>
+
+        <a href="/calendar/the-year/equinox-calendars-miss-the-mark" class="cf-study">
+          <p class="cf-study-num">Study 4</p>
+          <h3>Why Equinox-Based Calendars Miss the Mark</h3>
+          <p>The most subtle calendar error in Hebrew Roots teaching: anchoring Aviv to the spring equinox. A Babylonian-Greek astronomical practice that collapses Yahuah's three witnesses (sun, moon, stars) into one solar position — the sun cult's influence in astronomical clothing.</p>
+          <span class="cf-study-cta">Read the Study →</span>
+        </a>
+
+      </section>
+
+    </div>
+
+  </main>
+</BaseLayout>
+
+<style>
+  .cf-index {
+    background: linear-gradient(180deg, #0e0905 0%, #1a110a 25%, #160f07 100%);
+    color: #b8a584;
+    font-family: 'Crimson Pro', 'EB Garamond', Georgia, serif;
+    min-height: 100vh;
+    padding: 4.5rem 1.5rem 6rem;
+  }
+
+  .cf-index-inner { max-width: 1100px; margin: 0 auto; }
+
+  .cf-index-back {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    font-family: 'Cinzel', serif; font-size: 0.7rem;
+    letter-spacing: 0.22em; text-transform: uppercase;
+    color: #8a7855; text-decoration: none;
+    margin-bottom: 3rem; padding: 0.5rem 0.9rem 0.5rem 0.65rem;
+    border: 1px solid #2a1a08; background: rgba(10, 6, 2, 0.4);
+    font-weight: 600;
+    transition: color 0.2s, border-color 0.2s, padding 0.2s;
+  }
+  .cf-index-back:hover { color: #c9a961; border-color: #4a3218; padding-left: 0.5rem; }
+  .cf-index-back .arrow { font-size: 1em; transition: transform 0.2s; }
+  .cf-index-back:hover .arrow { transform: translateX(-3px); }
+
+  .cf-index-header { text-align: center; margin-bottom: 4rem; max-width: 720px; margin-left: auto; margin-right: auto; }
+  .cf-index-eyebrow { font-family: 'Cinzel', serif; font-size: 0.78rem; letter-spacing: 0.32em; text-transform: uppercase; color: #8a7855; font-weight: 600; margin: 0 0 1.2rem; }
+  .cf-index-title { font-family: 'Cinzel', serif; font-size: clamp(2.2rem, 5vw, 3.4rem); font-weight: 700; color: #f0e0bf; margin: 0 0 1rem; letter-spacing: 0.025em; line-height: 1.12; text-transform: uppercase; }
+  .cf-index-subtitle { font-family: 'Crimson Pro', Georgia, serif; font-style: italic; font-size: 1.1rem; color: #b8a584; line-height: 1.65; margin: 0; }
+
+  /* 2x2 grid for sections with four studies — keeps cards readable in
+     width. 3-col would leave a lonely fourth card on a second row. */
+  .cf-studies-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+
+  .cf-study {
+    display: flex; flex-direction: column;
+    text-decoration: none; color: inherit;
+    background: #1a110a;
+    border: 1px solid rgba(180, 140, 80, 0.18);
+    border-top: 3px solid #c9a961;
+    border-radius: 4px;
+    padding: 2rem 1.6rem 1.6rem;
+    transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  }
+  .cf-study:hover { background: #221710; border-color: rgba(200, 160, 100, 0.34); border-top-color: #d4a04a; transform: translateY(-2px); }
+
+  .cf-study-num { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.24em; color: #a88b4f; margin: 0 0 1rem; font-weight: 600; text-transform: uppercase; }
+  .cf-study h3 { font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 700; color: #f0e0bf; margin: 0 0 1rem; line-height: 1.25; letter-spacing: 0.015em; text-transform: uppercase; }
+  .cf-study > p { font-family: 'Crimson Pro', Georgia, serif; color: #b8a584; font-size: 0.96rem; line-height: 1.65; flex: 1; margin: 0 0 1.4rem; }
+  .cf-study-cta { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.22em; color: #c9a961; text-transform: uppercase; font-weight: 600; transition: color 0.2s; }
+  .cf-study:hover .cf-study-cta { color: #f0e0bf; }
+
+  @media (max-width: 700px) { .cf-studies-grid { grid-template-columns: 1fr; } }
+  @media (max-width: 520px) { .cf-index { padding: 3rem 1.1rem 4rem; } }
+</style>
