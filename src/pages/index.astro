@@ -40,11 +40,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <p class="hero-body">
             Nazaryah goes back to the source — original languages, restored names, and the Torah your church quietly skipped. No denominations. No comfortable answers. Just the text.
           </p>
-          <a href="/doctrines" class="hero-cta" aria-label="Start here — Doctrines">
-            <span class="hero-cta-badge"><span class="star" aria-hidden="true">★</span> Start Here</span>
-            <span class="hero-cta-label">Doctrines</span>
-            <span class="hero-cta-arrow" aria-hidden="true">→</span>
-          </a>
+          <div class="hero-cta-stack">
+            <a href="/doctrines" class="hero-cta" aria-label="Start here — Doctrines">
+              <span class="hero-cta-badge"><span class="star" aria-hidden="true">★</span> Start Here</span>
+              <span class="hero-cta-label">Doctrines</span>
+              <span class="hero-cta-arrow" aria-hidden="true">→</span>
+            </a>
+            <a href="/books" class="hero-cta hero-cta--ghost" aria-label="Read — Published Books">
+              <span class="hero-cta-badge"><span class="star" aria-hidden="true">★</span> Read</span>
+              <span class="hero-cta-label">Published Books</span>
+              <span class="hero-cta-arrow" aria-hidden="true">→</span>
+            </a>
+          </div>
         </div>
       </div>
     </div>
@@ -64,7 +71,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       grid-template-columns: 5fr 8fr;
       width: 100%;
       max-width: 80rem;
-      aspect-ratio: 5 / 1;
+      /* Aspect ratio dropped — the second stacked CTA needs vertical room
+         and the box now sizes to its content. min-height keeps the box
+         from collapsing on copy changes. */
+      min-height: 16rem;
       overflow: hidden;
       border-radius: 4px;
       box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.15);
@@ -176,6 +186,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       margin: 0;
     }
 
+    /* Vertical stack for the two CTAs — primary on top, ghost secondary
+       beneath. Aligned to the start of the column so both buttons start
+       at the same left edge. */
+    .hero-cta-stack {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.75rem;
+      flex: 0 0 auto;
+      align-self: center;
+    }
+
     /* ── "Start Here · Doctrines" CTA — single gold pill with badge inside ── */
     .hero-cta {
       position: relative;
@@ -230,6 +252,35 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     }
     .hero-cta:hover .hero-cta-arrow {
       transform: translateX(3px);
+    }
+
+    /* Ghost variant — same compound shape as primary but transparent
+       background with a gold outline. Visually subordinate so Doctrines
+       stays the dominant "Start Here" entry point. */
+    .hero-cta--ghost {
+      background: transparent;
+      border-color: #a87f1f;
+      color: #6b4d12;
+      padding: 0.65rem 1.3rem;
+      font-size: 0.82rem;
+      box-shadow: none;
+    }
+    .hero-cta--ghost .hero-cta-badge {
+      background: #1a0e06;
+      color: #f0c450;
+      font-size: 0.55rem;
+      padding: 0.25rem 0.55rem;
+    }
+    .hero-cta--ghost .hero-cta-label,
+    .hero-cta--ghost .hero-cta-arrow {
+      color: #6b4d12;
+      font-size: 0.85rem;
+    }
+    .hero-cta--ghost:hover {
+      transform: translateY(-1px);
+      background: rgba(168, 127, 31, 0.1);
+      border-color: #6b4d12;
+      box-shadow: 0 4px 10px -3px rgba(168, 127, 31, 0.3);
     }
 
     /* ── Responsive ── */
