@@ -1,0 +1,139 @@
+---
+// Reusable card used 12 times across the three homepage grids
+// (Counterfeits, Restoration, Living the Torah). Each instance varies
+// only by background color, icon, copy, and link target.
+//
+// Title is passed as an HTML string so callers can inline-italicize the
+// emphasis word: title='The <em>Trinity</em>'.
+
+interface Props {
+  href: string;
+  color: 'emerald' | 'amber' | 'violet' | 'charcoal' | 'sepia' | 'indigo' | 'oxblood' | 'teal' | 'blackgold' | 'navy' | 'burgundy' | 'stone';
+  icon: string;
+  eyebrow: string;
+  title: string;
+  description: string;
+  cta: string;
+}
+
+const { href, color, icon, eyebrow, title, description, cta } = Astro.props;
+---
+
+<a href={href} class:list={['home-card', `home-card--${color}`]}>
+  <span class="home-card-icon" aria-hidden="true">{icon}</span>
+  <div class="home-card-content">
+    <p class="home-card-eyebrow">{eyebrow}</p>
+    <h3 class="home-card-title" set:html={title} />
+    <p class="home-card-desc">{description}</p>
+  </div>
+  <span class="home-card-cta">{cta} <span aria-hidden="true">→</span></span>
+</a>
+
+<style>
+  .home-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    aspect-ratio: 3 / 4;
+    border-radius: 6px;
+    padding: 1.9rem 1.5rem 1.4rem;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .home-card::before {
+    content: '';
+    position: absolute;
+    top: -30%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90%;
+    height: 100%;
+    background: radial-gradient(ellipse at center, rgba(255, 255, 255, 0.08) 0%, transparent 60%);
+    pointer-events: none;
+  }
+
+  .home-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+  }
+
+  .home-card-icon {
+    font-family: 'Cinzel', serif;
+    font-size: 1.5rem;
+    color: rgba(212, 175, 55, 0.7);
+    z-index: 2;
+    height: 2rem;
+    line-height: 1;
+  }
+
+  .home-card-content {
+    z-index: 2;
+  }
+
+  .home-card-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 0.2em;
+    color: rgba(212, 175, 55, 0.85);
+    margin: 0 0 0.75rem;
+    font-weight: 600;
+    text-transform: uppercase;
+  }
+
+  .home-card-title {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 1.6rem;
+    line-height: 1.1;
+    color: #f5e6c8;
+    margin: 0 0 0.85rem;
+    font-weight: 600;
+  }
+  .home-card-title :global(em) {
+    font-style: italic;
+    color: #d4af37;
+  }
+
+  .home-card-desc {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.5;
+    color: rgba(232, 217, 184, 0.82);
+    margin: 0;
+  }
+
+  .home-card-cta {
+    z-index: 2;
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    color: #d4af37;
+    font-weight: 600;
+    text-transform: uppercase;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(212, 175, 55, 0.2);
+  }
+
+  /* ── Color variants — radial gradient backgrounds, one per card ── */
+  .home-card--emerald   { background: radial-gradient(ellipse at 50% 30%, #1a4a30 0%, #0d2818 70%, #051a0d 100%); }
+  .home-card--amber     { background: radial-gradient(ellipse at 50% 30%, #6a3a0a 0%, #3a1f05 70%, #1a0f02 100%); }
+  .home-card--violet    { background: radial-gradient(ellipse at 50% 30%, #3a1a4a 0%, #1f0d2a 70%, #0f0518 100%); }
+  .home-card--charcoal  {
+    background:
+      radial-gradient(circle at 50% 80%, rgba(180, 40, 20, 0.35) 0%, transparent 50%),
+      radial-gradient(ellipse at 50% 30%, #2a2a2a 0%, #181818 70%, #0a0a0a 100%);
+  }
+  .home-card--sepia     { background: radial-gradient(ellipse at 50% 30%, #4a3818 0%, #2a1f0d 70%, #1a0f05 100%); }
+  .home-card--indigo    { background: radial-gradient(ellipse at 50% 30%, #1a2050 0%, #0d1130 70%, #050818 100%); }
+  .home-card--oxblood   { background: radial-gradient(ellipse at 50% 30%, #5a1010 0%, #2a0808 70%, #180404 100%); }
+  .home-card--teal      { background: radial-gradient(ellipse at 50% 30%, #0a4a4a 0%, #052828 70%, #021818 100%); }
+  .home-card--blackgold { background: radial-gradient(ellipse at 50% 30%, #2a1a05 0%, #0f0802 70%, #050200 100%); }
+  .home-card--navy      { background: radial-gradient(ellipse at 50% 30%, #0a1a3a 0%, #050d20 70%, #020512 100%); }
+  .home-card--burgundy  { background: radial-gradient(ellipse at 50% 30%, #4a0a2a 0%, #28051a 70%, #18020f 100%); }
+  .home-card--stone     { background: radial-gradient(ellipse at 50% 30%, #3a3530 0%, #1f1c18 70%, #0f0e0c 100%); }
+</style>
