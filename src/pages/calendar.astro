@@ -75,10 +75,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <span class="glyph">&#9670; &#9670; &#9670;</span>
     </div>
 
-    <!-- ──────────────── 12 CATEGORY CARDS ──────────────── -->
+    <!-- ──────────────── 8 CATEGORY CARDS ──────────────── -->
     <section class="cal-block">
       <div class="cal-section-head">
-        <p class="cal-eyebrow with-rules">The Twelve Categories</p>
+        <p class="cal-eyebrow with-rules">The Eight Categories</p>
         <h2 class="cal-section-title">Walking Through the Calendar</h2>
         <p class="cal-section-subtitle">From the foundations of the appointed times, to the feasts themselves, to walking them out today.</p>
       </div>
@@ -127,46 +127,53 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           <span class="study-count">4 Studies</span>
         </a>
 
-        <a href="/calendar/mazzaroth" class="cat-card cat-card-pending">
+        <a href="/calendar/mazzaroth" class="cat-card cat-card-active">
           <p class="roman">VII</p>
           <h3>The Mazzaroth</h3>
           <p>Yahuah's gospel written in the stars, separated from zodiac corruption, and the banners of the twelve tribes.</p>
           <span class="study-count">3 Studies</span>
         </a>
 
-        <a href="/calendar/seven-moedim" class="cat-card cat-card-pending">
+        <a href="/calendar/seven-moedim" class="cat-card cat-card-active">
           <p class="roman">VIII</p>
           <h3>The Seven Moedim</h3>
           <p>Pesach, Hag HaMatzot, Bikkurim, Shavuot, Yom Teruah, Yom Kippur, Sukkot, and Shemini Atzeret.</p>
-          <span class="study-count">8 Studies</span>
+          <span class="study-count">3 Studies</span>
         </a>
 
-        <a href="/calendar/jubilee" class="cat-card cat-card-pending">
-          <p class="roman">IX</p>
+      </div>
+    </section>
+
+    <!-- ──────────────── CLOSING STUDIES ──────────────── -->
+    <section class="cal-closing-block">
+      <div class="cal-closing-head">
+        <p class="cal-closing-eyebrow">Before You Go</p>
+      </div>
+
+      <div class="closing-grid">
+
+        <a href="/calendar/sabbatical-jubilee" class="closing-card">
           <h3>Sabbatical &amp; Jubilee</h3>
-          <p>The shemitah seventh-year rest, the fiftieth-year liberty, and Daniel's seventy weeks in the Jubilee cycle.</p>
-          <span class="study-count">3 Studies</span>
+          <p>Two long-cycle commands the modern world cannot fully accommodate &mdash; what they were, what they represented, and what they still teach.</p>
+          <span class="closing-cta">Read the Study →</span>
         </a>
 
-        <a href="/calendar/false-feasts" class="cat-card cat-card-pending">
-          <p class="roman">X</p>
+        <a href="/calendar/false-feasts" class="closing-card">
           <h3>False Feasts Exposed</h3>
-          <p>Christmas, Easter, Lent, Halloween, and the principle of Deuteronomy 12:30&ndash;32 that condemns them all.</p>
-          <span class="study-count">4 Studies</span>
+          <p>The pagan substitutes Christianity has adopted in place of Yahuah's moedim &mdash; Christmas, Easter, Lent, Halloween, and Sunday worship.</p>
+          <span class="closing-cta">Read the Study →</span>
         </a>
 
-        <a href="/calendar/salvation-first" class="cat-card cat-card-pending">
-          <p class="roman">XI</p>
+        <a href="/calendar/salvation-first" class="closing-card">
           <h3>Salvation First</h3>
-          <p>Salvation through Yahushua alone, Torah obedience as fruit, and the false grace-versus-Law dichotomy.</p>
-          <span class="study-count">3 Studies</span>
+          <p>These studies are the fruit, not the root. Settle the foundation of salvation by grace before walking out the rest of the calendar.</p>
+          <span class="closing-cta">Read the Study →</span>
         </a>
 
-        <a href="/calendar/practical" class="cat-card cat-card-pending">
-          <p class="roman">XII</p>
-          <h3>Practical Observance</h3>
-          <p>Sighting the new moon, tracking the aviv barley, a feast calendar template, and family observance.</p>
-          <span class="study-count">4 Studies</span>
+        <a href="/calendar/where-to-start" class="closing-card">
+          <h3>Where to Start</h3>
+          <p>Practical first steps for walking out the calendar when you're just beginning &mdash; the next Sabbath, the next renewed moon, the next Pesach.</p>
+          <span class="closing-cta">Read the Study →</span>
         </a>
 
       </div>
@@ -553,7 +560,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     letter-spacing: 0.5em;
   }
 
-  /* ─── Category cards (4×3 grid) ─── */
+  /* ─── Category cards (4×2 grid for 8 main sections) ─── */
   .category-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -621,20 +628,108 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     text-transform: uppercase;
   }
 
+  /* ─── Closing-studies row (Before You Go) ─── */
+  .cal-closing-block {
+    max-width: 1100px;
+    margin: 4rem auto 0;
+    padding-top: 3rem;
+    border-top: 1px solid rgba(180, 140, 80, 0.16);
+  }
+
+  .cal-closing-head {
+    text-align: center;
+    margin-bottom: 2rem;
+  }
+
+  .cal-closing-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.32em;
+    text-transform: uppercase;
+    color: #8a7855;
+    font-weight: 500;
+    margin: 0;
+  }
+
+  .cal-closing-eyebrow::before,
+  .cal-closing-eyebrow::after {
+    content: "—";
+    margin: 0 0.7em;
+    color: #6a5840;
+  }
+
+  .closing-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+  }
+
+  .closing-card {
+    background: rgba(26, 17, 10, 0.6);
+    border: 1px solid rgba(180, 140, 80, 0.12);
+    border-radius: 4px;
+    padding: 1.4rem 1.3rem 1.2rem;
+    text-decoration: none;
+    color: inherit;
+    display: flex;
+    flex-direction: column;
+    transition: background 0.25s, border-color 0.25s, transform 0.2s;
+  }
+
+  .closing-card:hover {
+    background: rgba(34, 23, 16, 0.85);
+    border-color: rgba(200, 160, 100, 0.28);
+    transform: translateY(-2px);
+  }
+
+  .closing-card h3 {
+    font-family: 'Cinzel', serif;
+    font-size: 0.92rem;
+    font-weight: 700;
+    color: #e6d5af;
+    letter-spacing: 0.04em;
+    margin: 0 0 0.7rem;
+    line-height: 1.3;
+    text-transform: uppercase;
+  }
+
+  .closing-card > p {
+    font-family: 'Crimson Pro', Georgia, serif;
+    color: #a89570;
+    line-height: 1.55;
+    font-size: 0.88rem;
+    flex: 1;
+    margin: 0 0 0.95rem;
+  }
+
+  .closing-cta {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    color: #b58e50;
+    font-weight: 600;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+
+  .closing-card:hover .closing-cta { color: #e6d5af; }
+
   /* ─── Responsive ─── */
-  @media (max-width: 1100px) {
-    .category-grid { grid-template-columns: repeat(3, 1fr); }
+  @media (max-width: 900px) {
+    .category-grid { grid-template-columns: repeat(2, 1fr); }
+    .closing-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 820px) {
     .luminary-grid { grid-template-columns: 1fr; }
-    .category-grid { grid-template-columns: repeat(2, 1fr); }
   }
 
   @media (max-width: 520px) {
     .cal-landing { padding: 3.25rem 1.1rem 4rem; }
     .category-grid { grid-template-columns: 1fr; }
+    .closing-grid { grid-template-columns: 1fr; }
     .cal-block + .cal-block { margin-top: 2.5rem; }
+    .cal-closing-block { margin-top: 3rem; padding-top: 2.25rem; }
     .cal-divider { margin: 3.5rem auto 3rem; }
   }
 </style>
