@@ -38,10 +38,12 @@ export default function PathwayLanding() {
       tagline: 'What really happens when you die — and where did the fiery hell come from?',
       description:
         'If you grew up afraid of hell, this is for you. We walk through the actual Hebrew and Greek words behind hell, soul, death, and resurrection — and you find out that the doctrine you were terrified of as a child has more in common with Dante than with Scripture.',
-      stops: [],
-      status: 'coming-soon',
-      route: null,
-      buttonText: 'Coming soon',
+      stops: [
+        { num: 1, title: 'What Are We?', status: 'active', minutes: 15 },
+      ],
+      status: 'active',
+      route: '/pathway/grave-and-gate/stop-1',
+      buttonText: 'Begin this pathway',
     },
     {
       slug: 'way-marked-out',
@@ -495,7 +497,7 @@ function PathwayCard({ pathway, colors }) {
               onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; }}
               onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.85'; }}
             >
-              {expanded ? '− Hide the stops' : `+ See all ${pathway.stops.length} stops`}
+              {expanded ? '− Hide the stops' : `+ See all ${pathway.stops.length} stop${pathway.stops.length === 1 ? '' : 's'}`}
             </button>
           )}
 
