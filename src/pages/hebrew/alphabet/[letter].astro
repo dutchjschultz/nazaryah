@@ -1,0 +1,104 @@
+---
+import HebrewLayout from '../../../layouts/HebrewLayout.astro';
+import { letters } from '../../../data/hebrew-alphabet';
+
+export function getStaticPaths() {
+  return letters
+    .filter((l) => l.slug && l.quickNote)
+    .map((l) => ({ params: { letter: l.slug! } }));
+}
+
+const { letter } = Astro.params;
+const data = letters.find((l) => l.slug === letter);
+if (!data) {
+  throw new Error(`No alphabet entry with slug "${letter}"`);
+}
+---
+
+<HebrewLayout
+  title={`${data.name} — A Quick Note — Hebrew — Nazaryah`}
+  description={`A short reader's note on the Hebrew letter ${data.name} (${data.modern}): ${data.meaning}.`}
+>
+  <section class="hl-hero ltr-hero">
+    <a href="/hebrew/alphabet" class="hl-back">&#8592; Back to the Aleph-Bet</a>
+    <p class="hl-label">&#8213; A Quick Note for the Reader &#8213;</p>
+    <div class="hero-scripts">
+      <span class="hero-modern">{data.modern}</span>
+      <span class="hero-paleo">{data.paleo}</span>
+    </div>
+    <div class="script-labels">
+      <span>Modern</span>
+      <span>Paleo</span>
+    </div>
+    <h1 class="hl-title">The {data.name}</h1>
+    <p class="hl-sub">{data.meaning}</p>
+  </section>
+
+  <section class="hl-section study-section">
+    <div class="qn-prose" set:html={data.quickNote} />
+  </section>
+</HebrewLayout>
+
+<style>
+  .ltr-hero { padding-bottom: 2.5rem; }
+
+  .hero-scripts {
+    display: flex;
+    align-items: baseline;
+    justify-content: center;
+    gap: 2rem;
+    margin: 0.5rem auto 0;
+  }
+  .hero-modern {
+    font-size: clamp(4rem, 10vw, 7rem);
+    color: #C9A84C;
+    direction: rtl;
+    line-height: 1;
+    opacity: 0.9;
+  }
+  .hero-paleo {
+    font-size: clamp(3rem, 8vw, 5.5rem);
+    color: #8B6914;
+    line-height: 1;
+    opacity: 0.85;
+  }
+  .script-labels {
+    display: flex;
+    justify-content: center;
+    gap: 4.5rem;
+    margin-bottom: 0.5rem;
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #5a3e1a;
+  }
+
+  .study-section { max-width: 760px !important; }
+
+  .qn-prose {
+    font-size: 1.05rem;
+    line-height: 1.85;
+    color: #c4ad84;
+  }
+  .qn-prose :global(p) { margin-bottom: 1.25rem; }
+  .qn-prose :global(ul) {
+    list-style: none;
+    padding: 0;
+    margin: 1rem 0 1.5rem;
+    border: 1px solid rgba(201,168,76,0.18);
+    border-radius: 2px;
+    overflow: hidden;
+  }
+  .qn-prose :global(li) {
+    padding: 0.85rem 1.2rem;
+    border-bottom: 1px solid rgba(201,168,76,0.1);
+    background: rgba(201,168,76,0.04);
+    color: #c4ad84;
+  }
+  .qn-prose :global(li:last-child) { border-bottom: none; }
+  .qn-prose :global(strong) { color: #e8d5a8; font-weight: 500; }
+  .qn-prose :global(em) { color: #C9A84C; font-style: italic; }
+  .qn-prose :global(strong em),
+  .qn-prose :global(em strong) { color: #e8c97a; font-weight: 500; font-style: italic; }
+</style>

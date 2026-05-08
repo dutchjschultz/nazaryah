@@ -33,22 +33,30 @@ import { letters } from '../../data/hebrew-alphabet';
     <p class="hl-section-sub hl-center">Hover any card to read the deeper essence of each letter.</p>
 
     <div class="ab-grid">
-      {letters.map((l) => (
-        <div class="ab-card">
-          <div class="ab-scripts">
-            <span class="ab-modern">{l.modern}</span>
-            <span class="ab-paleo">{l.paleo}</span>
-          </div>
-          <div class="ab-name">{l.name}</div>
-          <div class="ab-meta">
-            <span class="ab-badge">{l.sound}</span>
-            <span class="ab-num">{l.number}</span>
-          </div>
-          <div class="ab-pic">{l.pictograph}</div>
-          <div class="ab-meaning">{l.meaning}</div>
-          <div class="ab-essence" set:html={l.essence} />
-        </div>
-      ))}
+      {letters.map((l) => {
+        const hasNote = !!(l.slug && l.quickNote);
+        const Tag = hasNote ? 'a' : 'div';
+        return (
+          <Tag
+            class={`ab-card${hasNote ? ' ab-card-link' : ''}`}
+            href={hasNote ? `/hebrew/alphabet/${l.slug}` : undefined}
+          >
+            <div class="ab-scripts">
+              <span class="ab-modern">{l.modern}</span>
+              <span class="ab-paleo">{l.paleo}</span>
+            </div>
+            <div class="ab-name">{l.name}</div>
+            <div class="ab-meta">
+              <span class="ab-badge">{l.sound}</span>
+              <span class="ab-num">{l.number}</span>
+            </div>
+            <div class="ab-pic">{l.pictograph}</div>
+            <div class="ab-meaning">{l.meaning}</div>
+            <div class="ab-essence" set:html={l.essence} />
+            {hasNote && <div class="ab-readmore">Quick note &rarr;</div>}
+          </Tag>
+        );
+      })}
     </div>
   </section>
 </HebrewLayout>
@@ -175,6 +183,32 @@ import { letters } from '../../data/hebrew-alphabet';
     margin-top: 0.5rem;
   }
   .ab-card:hover .ab-essence { display: block; }
+
+  /* Linked card variant — only used when a letter has a quick note */
+  a.ab-card-link {
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    cursor: pointer;
+  }
+  a.ab-card-link:hover {
+    border-color: #e8c97a;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(232,201,122,0.2), 0 0 0 1px rgba(232,201,122,0.25);
+  }
+  .ab-readmore {
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    text-align: center;
+    margin-top: 0.85rem;
+    padding-top: 0.65rem;
+    border-top: 1px solid rgba(201,168,76,0.18);
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+  a.ab-card-link:hover .ab-readmore { opacity: 1; }
 
   @media (max-width: 640px) {
     .ab-grid { grid-template-columns: repeat(2, 1fr); }

@@ -13,6 +13,8 @@ export interface HebrewLetter {
   pictograph: string;  // What the letter originally depicted
   meaning: string;     // Short concept line
   essence: string;     // Paragraph teaching (HTML allowed)
+  slug?: string;       // URL slug for the per-letter detail page (only when quickNote is set)
+  quickNote?: string;  // Optional long-form teaching shown on /hebrew/alphabet/<slug> (HTML allowed)
 }
 
 export const letters: HebrewLetter[] = [
@@ -28,7 +30,19 @@ export const letters: HebrewLetter[] = [
   { modern: 'י', paleo: '𐤉', name: 'Yod',    sound: 'Y',              number: 10,  pictograph: 'Arm · Hand · Work',          meaning: 'Hand of God · Deed · Creator',            essence: `The smallest letter — and the first letter of Yahuah's Name. Yahushua said not one Yod would pass from the Torah. יָד (yad) means "hand." Every act of creation is the hand of Yah at work. The smallest mark carries the greatest weight.` },
   { modern: 'כ', paleo: '𐤊', name: 'Kaf',    sound: 'K / Kh',         number: 20,  pictograph: 'Open Palm · Crown',          meaning: 'Cover · Allow · Receive',                 essence: `The open palm stretched in blessing or offering. כַּפָּרָה (kapparah) — atonement — comes from this root: to cover over. The hand that receives is the same hand that covers. What Kaf holds, it protects.` },
   { modern: 'ל', paleo: '𐤋', name: 'Lamed',  sound: 'L',              number: 30,  pictograph: 'Ox Goad · Staff · Tower',    meaning: 'Teach · Authority · Move Toward',         essence: `The tallest letter, the only one that rises above the writing line — reaching upward toward heaven. The ox goad moves life forward. לָמַד (lamad) — to teach. True authority does not push down; it drives toward purpose.` },
-  { modern: 'מ', paleo: '𐤌', name: 'Mem',    sound: 'M',              number: 40,  pictograph: 'Water · Waves',              meaning: 'Mighty · Revealed · Hidden',              essence: `Water flows to the lowest place and nourishes everything. Open Mem (מ) = revealed knowledge. Closed Mem (ם) at a word's end = hidden wisdom. מַיִם (mayim) — water — is both physical life and concealed depths.` },
+  { modern: 'מ', paleo: '𐤌', name: 'Mem',    sound: 'M',              number: 40,  pictograph: 'Water · Waves',              meaning: 'Mighty · Revealed · Hidden',              essence: `Water flows to the lowest place and nourishes everything. Open Mem (מ) = revealed knowledge. Closed Mem (ם) at a word's end = hidden wisdom. מַיִם (mayim) — water — is both physical life and concealed depths.`,
+    slug: 'mem',
+    quickNote: `<p>When the Hebrew letter Mem (מ) stands at the front of a word, it usually does one job. It takes a verb — an action — and turns it into the thing that carries that action. The verb names the doing. The Mem-word names where the doing happens, what the doing produces, or what the doing leaves behind.</p>
+<p>A handful of familiar examples make the pattern easy to see:</p>
+<ul>
+  <li><strong><em>Tsavah</em></strong> — to command → <strong><em>Mitzvah</em></strong> — a commandment, the thing the commanding produces.</li>
+  <li><strong><em>Shakan</em></strong> — to dwell → <strong><em>Mishkan</em></strong> — the dwelling place, the tabernacle where the dwelling happens.</li>
+  <li><strong><em>Ya&rsquo;ad</em></strong> — to appoint → <strong><em>Mo&rsquo;ed</em></strong> — an appointed time, the feast day Yahuah set apart.</li>
+  <li><strong><em>Shaphat</em></strong> — to judge → <strong><em>Mishpat</em></strong> — a judgment, the ruling the judging produces.</li>
+  <li><strong><em>Galal</em></strong> — to roll → <strong><em>Megillah</em></strong> — a scroll, the thing that gets rolled.</li>
+</ul>
+<p>Notice the consistent shape. The verb is the action. The Mem-word is the place, the instrument, or the result. Action on one side, vessel on the other — never the same thing.</p>
+<p>So as you read the Hebrew Scriptures, when you find a word that begins with M sitting near a verb that does not, ask the simple question: <em>Is this the action, or is this what the action produced?</em> Nine times out of ten, the Mem at the front is a quiet flag telling you which is which.</p>` },
   { modern: 'נ', paleo: '𐤍', name: 'Nun',    sound: 'N',              number: 50,  pictograph: 'Fish · Heir · Sprout',       meaning: 'Life · Faithfulness · Continuing',        essence: `The fish lives in the water, always moving, always swimming in the deep. Nun is perpetual life, the heir who carries the name forward. נֶאֱמָן (ne'eman) — faithful — comes from this root. Faithfulness is never static.` },
   { modern: 'ס', paleo: '𐤎', name: 'Samech', sound: 'S',              number: 60,  pictograph: 'Prop · Thorn · Closed Circle', meaning: 'Support · Surround · Uphold',           essence: `The closed circle of protection — it surrounds, it holds up from beneath. סָמַךְ (samakh) means to lean upon, to lay hands in support. What holds you when you cannot stand? Samech is the answer: encircling strength.` },
   { modern: 'ע', paleo: '𐤏', name: 'Ayin',   sound: 'Silent / Gh',    number: 70,  pictograph: 'Eye · Spring of Water',      meaning: 'See · Experience · Understand',           essence: `Both the eye that sees and the spring that reveals what was underground. עוֹלָם (olam) — forever, the hidden world — begins with Ayin. To truly see is to perceive what is hidden beneath the surface of what appears.` },
