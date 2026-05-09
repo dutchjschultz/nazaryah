@@ -107,6 +107,40 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
       </div>
     </section>
 
+    <!-- ── DAYS NOT APPOINTED (quieter second tier) ── -->
+    <section class="dna-section" aria-labelledby="dna-title">
+      <div class="dna-divider" aria-hidden="true"><span class="dna-divider-mark">&#9670;</span></div>
+
+      <p class="dna-eyebrow">&#8213; Also Worth Examining &#8213;</p>
+      <h2 id="dna-title" class="dna-title">Days Not Appointed</h2>
+      <p class="dna-subtitle">Quieter cases. Not pagan replacements of biblical feasts, but observances Yahuah Himself never named &mdash; and Scripture has something to say about each one.</p>
+
+      <div class="dna-grid">
+
+        <a href="/holidays/birthdays" class="dna-card">
+          <span class="dna-card-meta">Personal &middot; Cultural</span>
+          <h3 class="dna-card-title">Birthdays</h3>
+          <p class="dna-card-body">The only two birthdays Scripture names belong to Pharaoh and Herod, and both end with someone hanged or beheaded. The genealogies record lifespans, not birth dates &mdash; not even Messiah's. The day of conception, not natural birth, is what Yahuah marks.</p>
+          <span class="dna-card-cta">Begin Study &rarr;</span>
+        </a>
+
+        <a href="/holidays/mothers-day" class="dna-card">
+          <span class="dna-card-meta">May &middot; Modern Holiday</span>
+          <h3 class="dna-card-title">Mother's Day</h3>
+          <p class="dna-card-body">The fifth commandment is daily, not annual. The modern American holiday is sincere in origin but slots into an older pattern &mdash; Cybele, the Magna Mater, and the Catholic &ldquo;Mothering Sunday&rdquo; tied to Mary as Mother of the Church.</p>
+          <span class="dna-card-cta">Begin Study &rarr;</span>
+        </a>
+
+        <a href="/holidays/fathers-day" class="dna-card">
+          <span class="dna-card-meta">June &middot; Modern Holiday</span>
+          <h3 class="dna-card-title">Father's Day</h3>
+          <p class="dna-card-body">A Protestant copy of the Catholic Feast of Saint Joseph, called &ldquo;Father's Day&rdquo; in Italy, Spain, and Portugal for centuries before America had one. The fifth commandment honors fathers daily &mdash; not on a Hallmark schedule.</p>
+          <span class="dna-card-cta">Begin Study &rarr;</span>
+        </a>
+
+      </div>
+    </section>
+
     <!-- ── SUN WORSHIP BRIDGE ── -->
     <section class="hol-bridge">
       <div class="hol-bridge-inner">
@@ -402,5 +436,132 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 
   @media (max-width: 500px) {
     .hol-grid { grid-template-columns: 1fr; }
+  }
+
+  /* ── DAYS NOT APPOINTED (lighter second-tier section) ── */
+  .dna-section {
+    padding: 3.5rem 1.5rem 5rem;
+    border-bottom: 1px solid #2e1f0d;
+    text-align: center;
+    background: rgba(10, 6, 2, 0.25);
+  }
+
+  .dna-divider {
+    position: relative;
+    width: 100%;
+    max-width: 1000px;
+    height: 1px;
+    background: #2a1a08;
+    margin: 0 auto 3rem;
+  }
+  .dna-divider-mark {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(180deg, #0e0904 0%, #160f07 100%);
+    color: #8a7a52;
+    padding: 0 1rem;
+    font-size: 12px;
+    line-height: 1;
+  }
+
+  .dna-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a7a52;
+    text-transform: uppercase;
+    margin: 0 0 0.75rem;
+  }
+
+  .dna-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.15rem, 2.4vw, 1.5rem);
+    font-weight: 600;
+    color: #ede2c8;
+    margin: 0 0 0.6rem;
+    letter-spacing: 0.5px;
+  }
+
+  .dna-subtitle {
+    font-family: 'Crimson Pro', Georgia, serif;
+    font-style: italic;
+    color: #c5b894;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    max-width: 680px;
+    margin: 0 auto 2.5rem;
+  }
+
+  .dna-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    text-align: left;
+  }
+
+  .dna-card {
+    display: flex;
+    flex-direction: column;
+    text-decoration: none;
+    background: #15100a;
+    border: 1px solid #2a1a08;
+    border-top: 2px solid rgba(138, 122, 82, 0.6);
+    border-radius: 4px;
+    padding: 1.1rem 1.05rem 1rem;
+    transition: border-color 0.2s, background 0.2s, transform 0.15s;
+  }
+
+  .dna-card:hover {
+    background: #1a1208;
+    border-color: #4a3218;
+    border-top-color: #c4a46b;
+    transform: translateY(-2px);
+  }
+
+  .dna-card-meta {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    color: #8a7a52;
+    text-transform: uppercase;
+    margin-bottom: 0.6rem;
+  }
+
+  .dna-card-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: #ede2c8;
+    margin: 0 0 0.55rem;
+    letter-spacing: 0.3px;
+    line-height: 1.25;
+  }
+
+  .dna-card-body {
+    font-size: 0.78rem;
+    color: #a89060;
+    line-height: 1.65;
+    flex: 1;
+    margin: 0 0 0.95rem;
+  }
+
+  .dna-card-cta {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a46b;
+  }
+
+  @media (max-width: 1024px) {
+    .dna-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 600px) {
+    .dna-grid { grid-template-columns: 1fr; }
   }
 </style>
