@@ -887,7 +887,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     margin: 1.25rem 0;
   }
 
-  .xm-sun-callout-label {
+  .xm-sun-callout-label,
+  .xm-sun-label {
     font-family: 'Cinzel', serif;
     font-size: 8px;
     letter-spacing: 2px;
@@ -1022,6 +1023,184 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
     .xm-item-title { font-size: 0.7rem; }
     .xm-nav { flex-direction: column; gap: 1rem; text-align: center; }
     .xm-series-nav-inner { gap: 0.3rem 0; }
+  }
+
+  /* ── Pass-2 CSS fix — Christmas-aligned accordion rules, wrapper compensation, new heading classes ── */
+  .xm-section {
+    padding: 3.5rem 1.5rem;
+    border-bottom: 1px solid #2e1f0d;
+    max-width: 780px;
+    margin: 0 auto;
+  }
+
+  .xm-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a6028;
+    text-transform: uppercase;
+    text-align: center;
+    margin-bottom: 0.75rem;
+  }
+
+  .xm-page-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 6vw, 3.8rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 auto 0.5rem;
+    border-bottom: 3px solid #5a0f0f;
+    display: table;
+    padding-bottom: 0.5rem;
+    line-height: 1.1;
+    text-align: center;
+  }
+
+  .xm-tagline {
+    font-size: clamp(0.95rem, 2vw, 1.1rem);
+    color: #c4a46b;
+    font-style: italic;
+    max-width: 580px;
+    margin: 1rem auto 2.5rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  .xm-quote {
+    border-left: 3px solid #BA7517;
+    margin: 2rem 0;
+    padding: 1.25rem 1.5rem;
+    background: rgba(10, 6, 2, 0.4);
+    border-radius: 0 4px 4px 0;
+  }
+  .xm-quote p {
+    font-style: italic;
+    color: #c4a46b;
+    font-size: 1.05rem;
+    line-height: 1.75;
+    margin: 0 0 0.5rem;
+  }
+  .xm-quote cite {
+    font-family: 'Cinzel', serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    color: #6a4820;
+    text-transform: uppercase;
+    font-style: normal;
+  }
+
+  .xm-accordion-section {
+    padding: 4rem 1.5rem 5rem;
+    text-align: center;
+    border-bottom: 1px solid #2e1f0d;
+  }
+  .xm-accordion-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #6a4820;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+  .xm-accordion-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 600;
+    color: #f0e0bf;
+    margin: 0 0 0.5rem;
+  }
+
+  /* xm-detail with wrapper compensation — content has no <div class="xm-accordion"> */
+  .xm-detail {
+    max-width: 820px;
+    margin: 0 auto;
+    text-align: left;
+    border-bottom: 1px solid #2a1a08;
+  }
+  .xm-detail:first-child { border-top: 1px solid #2a1a08; }
+
+  .xm-summary {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.1rem 1rem;
+    cursor: pointer;
+    list-style: none;
+    transition: background 0.15s;
+  }
+  .xm-summary::-webkit-details-marker { display: none; }
+  .xm-summary:hover { background: rgba(186, 117, 23, 0.05); }
+
+  .xm-num {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1px;
+    color: #8B3A0A;
+    min-width: 1.75rem;
+    text-align: center;
+  }
+  .xm-item-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    color: #d0b890;
+    text-transform: uppercase;
+    flex: 1;
+    line-height: 1.35;
+  }
+  .xm-detail[open] .xm-item-title { color: #f0e0bf; }
+  .xm-chevron {
+    font-size: 1.2rem;
+    color: #BA7517;
+    min-width: 1.25rem;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+  }
+
+  .xm-body {
+    padding: 0.5rem 1rem 1.75rem 3.75rem;
+    font-size: 1rem;
+    line-height: 1.82;
+    color: #c9b890;
+    border-top: 1px solid #1e1208;
+  }
+  .xm-body p { margin-bottom: 1.1rem; }
+  .xm-body p:last-child { margin-bottom: 0; }
+  .xm-body strong { color: #e0c88a; }
+  .xm-body em { color: #c4a46b; font-style: italic; }
+
+  .xm-origin-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: #8B3A0A;
+    margin-bottom: 0.6rem !important;
+    font-weight: 700;
+  }
+
+  .xm-scripture {
+    background: rgba(8, 5, 2, 0.5);
+    border: 1px solid #2a1a08;
+    border-left: 3px solid #5a3a10;
+    border-radius: 0 4px 4px 0;
+    padding: 1rem 1.25rem;
+    margin-top: 1.25rem;
+  }
+  .xm-scripture-label {
+    font-family: 'Cinzel', serif;
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #BA7517;
+    margin-bottom: 0.6rem !important;
+    font-weight: 700;
+  }
+
+  @media (max-width: 600px) {
+    .xm-body { padding-left: 1rem; }
+    .xm-item-title { font-size: 0.7rem; }
   }
 </style>
 
