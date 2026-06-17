@@ -37,6 +37,15 @@ const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueO
       </div>
     </section>
 
+    <!-- ── FOUNDATIONS DOORWAY ── -->
+    <a class="fdoor" href="/foundations">
+      <div class="fdoor-intro">
+        <p class="fdoor-eyebrow">&#8213; The Foundations &#8213;</p>
+        <p class="fdoor-desc">A handful of arguments turn up in study after study. Rather than re-explain them in every file, each is set down once here, in full — the deeper reading the verse studies point back to.</p>
+      </div>
+      <span class="fdoor-open">Open the Foundations&nbsp;<span class="arrow">&rarr;</span></span>
+    </a>
+
     <!-- ── POST LIST ── -->
     <section class="tr-posts-section">
       <div class="tr-posts-grid">
@@ -131,6 +140,77 @@ const posts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueO
   .tr-section {
     padding: 3rem 1.5rem;
     border-bottom: 1px solid #2e1f0d;
+  }
+
+  /* ── Foundations doorway ── */
+  .fdoor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px 48px;
+    align-items: center;
+    max-width: 980px;
+    margin: 10px auto 42px;
+    padding: 26px 1.5rem;
+    border-top: 1px solid #3a2510;
+    border-bottom: 1px solid #3a2510;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .fdoor-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin: 0 0 10px;
+  }
+
+  .fdoor-desc {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: #c4a46b;
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .fdoor-open {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: #8a6028;
+    white-space: nowrap;
+    position: relative;
+    padding-bottom: 6px;
+    transition: color 0.3s ease;
+  }
+  .fdoor-open::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background: rgba(138, 96, 40, 0.45);
+    transition: background 0.3s ease;
+  }
+  .fdoor-open .arrow {
+    display: inline-block;
+    transition: transform 0.35s ease;
+  }
+  .fdoor:hover .fdoor-open { color: #f0e0bf; }
+  .fdoor:hover .fdoor-open::after { background: #8a6028; }
+  .fdoor:hover .fdoor-open .arrow { transform: translateX(7px); }
+  .fdoor:focus-visible { outline: 2px solid #8a6028; outline-offset: 4px; }
+
+  @media (max-width: 680px) {
+    .fdoor { grid-template-columns: 1fr; gap: 20px; padding: 24px 1.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fdoor-open, .fdoor-open::after, .fdoor-open .arrow { transition: none; }
   }
 
   .tr-prose {

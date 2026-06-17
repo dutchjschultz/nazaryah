@@ -1,0 +1,216 @@
+---
+import BaseLayout from './BaseLayout.astro';
+
+interface Props {
+  numeral: string;
+  eyebrow: string;
+  title: string;
+  tagline: string;
+  description: string;
+}
+
+const { numeral, eyebrow, title, tagline, description } = Astro.props;
+---
+
+<BaseLayout title={`${title} — The Foundations`} description={description}>
+  <div class="tr-wrap">
+    <div class="ref-page">
+      <div class="ref-inner">
+
+        <a class="ref-back" href="/foundations">&larr; The Foundations</a>
+
+        <p class="ref-eyebrow">&#8213; {eyebrow} &#8213;</p>
+        <p class="ref-numeral">{numeral}</p>
+        <h1 class="ref-h1">{title}</h1>
+        <p class="ref-tagline">{tagline}</p>
+
+        <div class="ref-divider"></div>
+
+        <article class="ref-body">
+          <slot />
+        </article>
+
+        <div class="ref-end-divider"></div>
+        <a class="ref-back ref-back-bottom" href="/foundations">&larr; Back to The Foundations</a>
+
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  /* ── Page frame ── */
+  .tr-wrap {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #f0e0bf;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+  .ref-page {
+    padding: 54px 32px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .ref-inner { max-width: 720px; margin: 0 auto; }
+
+  /* ── Header ── */
+  .ref-back {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+    text-decoration: none;
+    margin-bottom: 38px;
+    transition: color 0.2s ease;
+  }
+  .ref-back:hover { color: #c4a46b; }
+  .ref-back-bottom { margin-top: 38px; margin-bottom: 0; }
+
+  .ref-eyebrow {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin: 0 0 14px;
+  }
+  .ref-numeral {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.6rem;
+    color: #8a6028;
+    opacity: 0.72;
+    margin: 0 0 18px;
+    letter-spacing: 0.05em;
+  }
+  .ref-h1 {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: #f0e0bf;
+    margin: 0 0 22px;
+  }
+  .ref-tagline {
+    text-align: center;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: clamp(1.05rem, 2vw, 1.2rem);
+    font-style: italic;
+    line-height: 1.55;
+    color: #c4a46b;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .ref-divider {
+    height: 1px;
+    background: #3a2510;
+    margin: 46px auto 38px;
+  }
+  .ref-end-divider {
+    height: 1px;
+    background: #2e1f0d;
+    margin: 56px auto 0;
+  }
+
+  /* ── Body prose ── */
+  .ref-body {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1.125rem;
+    line-height: 1.85;
+    color: #dcc99a;
+  }
+  .ref-body p { margin: 0 0 1.4rem; }
+  .ref-body p:last-child { margin-bottom: 0; }
+  .ref-body em { color: #c4a46b; font-style: italic; }
+  .ref-body strong { color: #f0e0bf; font-weight: 600; }
+
+  /* ── Section subheads inside body ── */
+  .ref-body h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    color: #f0e0bf;
+    margin: 3rem 0 1.4rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid #3a2510;
+  }
+  .ref-body h2:first-child { margin-top: 0; }
+
+  /* ── Scripture blockquote ── */
+  .ref-body blockquote.scripture {
+    margin: 1.8rem 0;
+    padding: 1.4rem 1.6rem;
+    background: rgba(30, 18, 8, 0.55);
+    border-left: 2px solid #8a6028;
+    border-radius: 2px;
+  }
+  .ref-body blockquote.scripture .ref-ref {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin-bottom: 0.6rem;
+  }
+  .ref-body blockquote.scripture .ref-verse {
+    display: block;
+    font-style: italic;
+    color: #dcc99a;
+    margin: 0;
+  }
+  .ref-body blockquote.scripture + blockquote.scripture {
+    margin-top: -0.6rem;
+  }
+
+  /* ── Hebrew / Greek inline word card ── */
+  .ref-body .ref-word {
+    display: block;
+    margin: 1.8rem auto;
+    padding: 1.2rem 1.4rem;
+    max-width: 480px;
+    text-align: center;
+    background: rgba(30, 18, 8, 0.5);
+    border: 1px solid #3a2510;
+    border-radius: 3px;
+  }
+  .ref-body .ref-word .ref-script {
+    display: block;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1.7rem;
+    font-weight: 600;
+    color: #f0e0bf;
+    margin-bottom: 0.35rem;
+    line-height: 1.2;
+  }
+  .ref-body .ref-word .ref-translit {
+    display: block;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    color: #c4a46b;
+    margin-bottom: 0.35rem;
+  }
+  .ref-body .ref-word .ref-gloss {
+    display: block;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 0.98rem;
+    color: #b09060;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 680px) {
+    .ref-page { padding: 40px 20px 56px; }
+    .ref-body { font-size: 1.06rem; line-height: 1.78; }
+    .ref-body blockquote.scripture { padding: 1.1rem 1.2rem; }
+    .ref-body .ref-word .ref-script { font-size: 1.5rem; }
+  }
+</style>
