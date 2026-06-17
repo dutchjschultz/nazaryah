@@ -35,6 +35,8 @@ const postsCollection = defineCollection({
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
     references: z.array(referenceSchema).optional(),
+    verse: z.string().optional(),
+    subtitle: z.string().optional(),
   }),
 });
 
