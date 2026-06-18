@@ -1,0 +1,520 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const ACCENT = '#CE8E3F';
+
+const chapters = [
+  { num: 1, title: 'He Is the Light, the Son Is the Lamp',              topic: 'The Light',    href: '/blog/the-bearer-1-light-and-lamp' },
+  { num: 2, title: 'He Is the Unseen, the Son Is the Image',            topic: 'The Image',    href: '/blog/the-bearer-2-unseen-and-image' },
+  { num: 3, title: 'He Is the Word, the Son Is the Flesh',              topic: 'The Word',     href: '/blog/the-bearer-3-word-and-flesh' },
+  { num: 4, title: 'He Is the Presence, the Son Is the Temple',         topic: 'The Temple',   href: '/blog/the-bearer-4-presence-and-temple' },
+  { num: 5, title: 'He Is the Plan, the Son Is the Lamb on the Altar',  topic: 'The Lamb',     href: '/blog/the-bearer-5-lamb-on-the-altar' },
+];
+
+function toRoman(n: number) {
+  const map: [string, number][] = [
+    ['M',1000],['CM',900],['D',500],['CD',400],
+    ['C',100],['XC',90],['L',50],['XL',40],
+    ['X',10],['IX',9],['V',5],['IV',4],['I',1]
+  ];
+  let r = '';
+  for (const [l, v] of map) { while (n >= v) { r += l; n -= v; } }
+  return r;
+}
+---
+
+<BaseLayout
+  title="The Bearer — Nazaryah"
+  description="Seeing the Father in the One Who Carries Him. One pattern traced from Genesis to Revelation: the flame and the lamp that holds it."
+>
+  <div class="bk-root">
+
+    <a href="/books" class="bk-back">← The Bookshelf</a>
+
+    <!-- Cover -->
+    <figure class="bk-cover">
+      <img src="/images/the-bearer-cover.jpg" alt="The Bearer — book cover" width="1024" height="1536" loading="eager" />
+    </figure>
+
+    <!-- Title block -->
+    <section class="bk-header">
+      <div class="bk-kicker" style={`color: ${ACCENT}`}>VOLUME IV</div>
+      <h1 class="bk-title">The Bearer</h1>
+      <p class="bk-subtitle">Seeing the Father in the One Who Carries Him</p>
+      <div class="bk-author">
+        <span class="bk-author-label">written by</span>
+        <span class="bk-author-name">Dutch Schultz</span>
+      </div>
+      <div class="bk-ornament">
+        <span class="bk-orn-line" style={`background: linear-gradient(90deg, transparent, ${ACCENT}60, transparent)`}></span>
+        <span class="bk-orn-mark" style={`color: ${ACCENT}`}>✦</span>
+        <span class="bk-orn-line" style={`background: linear-gradient(90deg, transparent, ${ACCENT}60, transparent)`}></span>
+      </div>
+    </section>
+
+    <!-- Marketing blurb -->
+    <section class="bk-blurb">
+      <p class="bk-blurb-lead">There is a pattern hidden in plain sight on every page of Scripture, and the church has been reading past it for seventeen hundred years.</p>
+      <p>It is the difference between a flame and the lamp that carries it. The flame is the source. The lamp only holds what it was given, yet when you walk into a dark room, it is the lamp you see glowing, and through it, the fire you could not look upon directly.</p>
+      <p>This is the whole of it. Yahuah is the source. Yahushua is the One who bears Him faithfully into a world that could not survive the unfiltered presence. Not a second God playing a part. Not the Most High wearing flesh like a garment. A real man, so given over to the Father that His word and glory dwelt in Him without measure — to look on Him was to see the One who sent Him.</p>
+      <p>A doctrine of three has no shelf to set this on. It was built to guard a mystery — so it buried a meaning, and called the burial holy. In trading the bearer for a riddle of three, the church lost the wonder of a man who carried Yahuah where the first failed. And it lost the promise folded inside the pattern: that the same Spirit which filled the Son is being poured into everyone who trusts Him, conforming them into bearers of that uncreated light.</p>
+      <p>The Son carried the Father perfectly, never grasping at being the Source. Give the bearer his due, the Source everything. He went first, so the same light He bore might one day fill you. That is the gift the trinity took off the table. This book sets it back down.</p>
+    </section>
+
+    <!-- Author's note -->
+    <section class="bk-note">
+      <div class="bk-note-label">THE PATTERN IN ONE LINE</div>
+      <blockquote class="bk-note-quote">
+        "The flame is the source. The lamp only holds what it was given — yet when you walk into a dark room, it is the lamp you see glowing, and through it, the fire you could not look upon directly."
+      </blockquote>
+    </section>
+
+    <!-- Action -->
+    <section class="bk-action">
+      <a href={chapters[0].href} class="bk-primary-btn" style={`background: ${ACCENT}`}>
+        <span>↗</span> Begin reading — Chapter One
+      </a>
+    </section>
+    <p class="bk-price-note">Every chapter on nazaryah.com is free to read. Nothing is sold on this site.</p>
+
+    <!-- Print card -->
+    <aside class="bk-amz" style={`border-left-color: ${ACCENT}`}>
+      <div class="bk-amz-spine-wrap">
+        <div class="bk-amz-spine" style={`background: linear-gradient(180deg, ${ACCENT} 0%, ${ACCENT}99 100%)`}>
+          <div class="bk-amz-spine-text">The Bearer</div>
+        </div>
+      </div>
+      <div class="bk-amz-body">
+        <div class="bk-amz-kicker">
+          <span style={`color: ${ACCENT}; margin-right: 10px; font-size: 12px`}>◆</span>
+          <span class="bk-amz-kicker-text" style={`color: ${ACCENT}`}>AVAILABLE IN PRINT</span>
+        </div>
+        <h3 class="bk-amz-title">The Bearer</h3>
+        <p class="bk-amz-sub">Seeing the Father in the One Who Carries Him</p>
+        <div class="bk-amz-meta">
+          <span>by Dutch Schultz</span><span class="bk-dot">·</span>
+          <span>First Edition</span><span class="bk-dot">·</span>
+          <span>Paperback</span>
+        </div>
+        <p class="bk-amz-edition" style={`border-left-color: ${ACCENT}40`}>
+          The print edition gathers all five chapters as one sustained argument — the flame and the lamp traced from the first word over the deep to the last lamp burning in the city that needs no sun.
+        </p>
+        <p class="bk-amz-honesty">
+          Priced at cost through an outside seller. Every dollar covers printing — nothing is taken beyond that. Nothing <span style={`color: ${ACCENT}`}>Yahuah</span> gives through this work is sold here.
+        </p>
+        <a href="#" class="bk-amz-btn" style={`border-color: ${ACCENT}; color: ${ACCENT}`} data-accent={ACCENT}>
+          View the print listing <span>↗</span>
+        </a>
+      </div>
+    </aside>
+
+    <!-- Chapter list -->
+    <section class="bk-chapters">
+      <div class="bk-section-label">
+        <span class="bk-sl-line"></span>
+        <span class="bk-sl-text">CONTENTS</span>
+        <span class="bk-sl-line"></span>
+      </div>
+      <p class="bk-ext-note">Each chapter is free to read on the site. Tap a chapter to open it.</p>
+      <ol class="bk-ch-list">
+        {chapters.map((ch) => (
+          <li class="bk-ch-row">
+            <a href={ch.href} class="bk-ch-inner">
+              <div class="bk-ch-num" style={`color: ${ACCENT}`}>{toRoman(ch.num)}</div>
+              <div class="bk-ch-text">
+                <div class="bk-ch-title">{ch.title}</div>
+                <div class="bk-ch-topic">{ch.topic}</div>
+              </div>
+              <div class="bk-ch-arrow">→</div>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <div style="height: 100px;"></div>
+  </div>
+</BaseLayout>
+
+<style>
+  .bk-root {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 32px 40px;
+    background: #0D0B0A;
+    min-height: 80vh;
+    color: #E8DCC8;
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+
+  .bk-back {
+    display: inline-block;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #8A7E70;
+    text-decoration: none;
+    padding-bottom: 40px;
+    transition: color 0.2s;
+  }
+  .bk-back:hover { color: #CE8E3F; }
+
+  /* Cover */
+  .bk-cover {
+    margin: 0 auto 44px;
+    max-width: 320px;
+    padding: 0;
+  }
+  .bk-cover img {
+    display: block;
+    width: 100%;
+    height: auto;
+    border-radius: 3px;
+    box-shadow: 0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(206,142,63,0.18);
+  }
+
+  .bk-header {
+    text-align: center;
+    margin-bottom: 60px;
+  }
+
+  .bk-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    margin-bottom: 24px;
+  }
+
+  .bk-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 0 20px;
+    color: #F5EFE4;
+    letter-spacing: 0.02em;
+  }
+  .bk-title em { font-style: italic; font-weight: 400; }
+
+  .bk-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: #B8AA98;
+    margin: 0 0 32px;
+    line-height: 1.4;
+  }
+
+  .bk-author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .bk-author-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: #6B5F53;
+  }
+  .bk-author-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    color: #D4C4A8;
+    letter-spacing: 0.05em;
+  }
+
+  .bk-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .bk-orn-line { flex: 1; height: 1px; }
+  .bk-orn-mark { font-size: 14px; }
+
+  /* Blurb */
+  .bk-blurb {
+    max-width: 680px;
+    margin: 0 auto 40px;
+    padding: 0 20px;
+  }
+  .bk-blurb p {
+    font-family: 'EB Garamond', Georgia, serif;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    font-size: 17px;
+    color: #B8AA98;
+  }
+  .bk-blurb-lead {
+    font-size: 22px !important;
+    font-style: italic;
+    color: #F5EFE4 !important;
+  }
+
+  /* Author note */
+  .bk-note {
+    margin: 40px auto 48px;
+    max-width: 700px;
+    padding: 0 20px;
+    text-align: center;
+  }
+  .bk-note-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: #8A7E70;
+    margin-bottom: 20px;
+  }
+  .bk-note-quote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: #D4C4A8;
+    line-height: 1.6;
+    margin: 0;
+  }
+
+  /* Action */
+  .bk-action {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .bk-primary-btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 2px;
+    color: #0D0B0A;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .bk-primary-btn:hover { opacity: 0.9; }
+
+  .bk-price-note {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #8A7E70;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px;
+    line-height: 1.5;
+  }
+
+  /* Print card */
+  .bk-amz {
+    position: relative;
+    max-width: 720px;
+    margin: 20px auto 60px;
+    background: linear-gradient(180deg, #1A1614 0%, #14100E 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid;
+    border-radius: 2px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 72px 1fr;
+  }
+  .bk-amz-spine-wrap {
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  .bk-amz-spine {
+    width: 28px;
+    min-height: 240px;
+    box-shadow: inset -2px 0 4px rgba(0,0,0,0.4), inset 2px 0 2px rgba(255,255,255,0.08);
+    border-radius: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bk-amz-spine-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(13,11,10,0.7);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 16px 0;
+  }
+  .bk-amz-body { padding: 28px 32px 28px 28px; }
+  .bk-amz-kicker {
+    display: flex;
+    align-items: center;
+    margin-bottom: 14px;
+  }
+  .bk-amz-kicker-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    font-weight: 500;
+  }
+  .bk-amz-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    color: #F5EFE4;
+  }
+  .bk-amz-title em { font-style: italic; font-weight: 500; }
+  .bk-amz-sub {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #9A8C7A;
+    line-height: 1.5;
+    margin: 0 0 18px;
+  }
+  .bk-amz-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #8A7E70;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(206,142,63,0.08);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .bk-dot { opacity: 0.5; }
+  .bk-amz-edition {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14.5px;
+    font-style: italic;
+    color: #D4C4A8;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    padding: 2px 0 2px 16px;
+    border-left: 2px solid;
+  }
+  .bk-amz-honesty {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #8A7E70;
+    line-height: 1.6;
+    margin: 0 0 22px;
+    padding-left: 14px;
+    border-left: 1px solid rgba(206,142,63,0.2);
+  }
+  .bk-amz-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    padding: 13px 22px;
+    border: 1px solid;
+    border-radius: 2px;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+    letter-spacing: 0.05em;
+    text-decoration: none;
+    transition: all 0.25s;
+    cursor: pointer;
+    font-weight: 500;
+    background: transparent;
+  }
+  .bk-amz-btn:hover {
+    background: #CE8E3F;
+    color: #0D0B0A !important;
+  }
+
+  /* Chapter list */
+  .bk-chapters { margin-top: 40px; }
+  .bk-section-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto 36px;
+    max-width: 400px;
+  }
+  .bk-sl-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(206,142,63,0.3), transparent);
+  }
+  .bk-sl-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #8A7E70;
+  }
+  .bk-ext-note {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #8A7E70;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.5;
+  }
+  .bk-ch-list { list-style: none; padding: 0; margin: 0; }
+  .bk-ch-row { border-bottom: 1px solid rgba(206,142,63,0.08); }
+  .bk-ch-inner {
+    display: grid;
+    grid-template-columns: 60px 1fr 30px;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 12px;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+  }
+  .bk-ch-inner:hover { background: rgba(206,142,63,0.04); }
+  .bk-ch-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+  }
+  .bk-ch-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    color: #F5EFE4;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .bk-ch-topic {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #8A7E70;
+  }
+  .bk-ch-arrow {
+    font-size: 18px;
+    color: #6B5F53;
+    text-align: right;
+  }
+
+  @media (max-width: 640px) {
+    .bk-root { padding: 40px 20px 40px; }
+    .bk-cover { max-width: 240px; }
+    .bk-amz { grid-template-columns: 1fr; }
+    .bk-amz-spine-wrap { display: none; }
+  }
+</style>

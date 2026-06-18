@@ -25,6 +25,7 @@ export default config({
             { label: 'Book-by-Book Commentary', value: 'Book-by-Book Commentary' },
             { label: 'Word Studies', value: 'Word Studies' },
             { label: 'Fresh Perspectives', value: 'Fresh Perspectives' },
+            { label: 'The Bearer', value: 'The Bearer' },
           ],
           defaultValue: 'Exegetical Studies',
         }),

@@ -27,6 +27,7 @@ const postsCollection = defineCollection({
       'The Trinity Files',
       'Trinity Studies',
       'The Sender and The Sent',
+      'The Bearer',
       'Word Studies',
       'The Law Still Stands',
       'The Feasts',
