@@ -34,6 +34,11 @@ function toRoman(n: number) {
 
     <a href="/books" class="bk-back">← The Bookshelf</a>
 
+    <!-- Cover -->
+    <figure class="bk-cover">
+      <img src="/images/pulpit-buried-cover.jpg" alt="What the Pulpit Buried — book cover" width="1024" height="1536" loading="eager" />
+    </figure>
+
     <!-- Title block -->
     <section class="bk-header">
       <div class="bk-kicker" style={`color: ${ACCENT}`}>VOLUME II</div>
@@ -159,6 +164,8 @@ function toRoman(n: number) {
     transition: color 0.2s;
   }
   .bk-back:hover { color: #B87333; }
+  .bk-cover { margin: 0 auto 44px; max-width: 320px; padding: 0; }
+  .bk-cover img { display: block; width: 100%; height: auto; border-radius: 3px; box-shadow: 0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(184,115,51,0.2); }
   .bk-header { text-align: center; margin-bottom: 60px; }
   .bk-kicker {
     font-family: 'JetBrains Mono', monospace;
@@ -233,6 +240,7 @@ function toRoman(n: number) {
   .bk-ch-arrow { font-size: 18px; color: #6B5F53; text-align: right; }
   @media (max-width: 640px) {
     .bk-root { padding: 40px 20px 40px; }
+    .bk-cover { max-width: 240px; }
     .bk-amz { grid-template-columns: 1fr; }
     .bk-amz-spine-wrap { display: none; }
   }
