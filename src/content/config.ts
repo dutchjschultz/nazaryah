@@ -28,6 +28,8 @@ const postsCollection = defineCollection({
       'Trinity Studies',
       'The Sender and The Sent',
       'The Bearer',
+      'Five Titles, One Christ',
+      'What the Pulpit Buried',
       'Word Studies',
       'The Law Still Stands',
       'The Feasts',

@@ -10,6 +10,15 @@ interface Props {
 const { post } = Astro.props;
 const { title, description, date, category, tags, author, references } = post.data;
 
+// Categories that are books on the shelf — these posts are chapters, so their
+// header links back to the book rather than carrying the Trinity tag.
+const bookCategories: Record<string, string> = {
+  'The Bearer': '/books/the-bearer',
+  'Five Titles, One Christ': '/books/five-titles',
+  'What the Pulpit Buried': '/books/pulpit-buried',
+};
+const bookHref = bookCategories[category];
+
 // Format date
 const formattedDate = date.toLocaleDateString('en-US', {
   year: 'numeric',
@@ -39,13 +48,19 @@ const readingTime = Math.ceil(wordCount / 200);
 
       <!-- Article Header -->
       <header class="max-w-4xl mx-auto mb-12 text-center" data-pagefind-ignore>
-        {['Trinity Studies', 'The Sender and The Sent', 'The Trinity Files'].includes(category) && (
+        {bookHref ? (
+          <div class="mb-3">
+            <a href={bookHref} class="bookshelf-home-tag">
+              &#9672; From the Bookshelf
+            </a>
+          </div>
+        ) : ['Trinity Studies', 'The Sender and The Sent', 'The Trinity Files'].includes(category) ? (
           <div class="mb-3">
             <a href="/trinity" class="trinity-home-tag">
               &#8592; Trinity
             </a>
           </div>
-        )}
+        ) : null}
         <div class="tag mb-4" style="color: var(--bronze);">
           {category}
         </div>
@@ -145,6 +160,27 @@ const readingTime = Math.ceil(wordCount / 200);
     color: #c4a46b;
     border-color: #c4a46b;
     background: rgba(138, 96, 40, 0.08);
+  }
+  .bookshelf-home-tag {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a6028;
+    border: 1px solid #b89150;
+    border-radius: 2px;
+    padding: 3px 12px;
+    text-decoration: none;
+    background: linear-gradient(180deg, rgba(201,169,97,0.12), rgba(201,169,97,0.04));
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .bookshelf-home-tag:hover {
+    color: #4a2808;
+    border-color: #c4a46b;
+    background: rgba(201, 169, 97, 0.18);
   }
 </style>
 

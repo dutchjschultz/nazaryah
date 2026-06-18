@@ -26,6 +26,8 @@ export default config({
             { label: 'Word Studies', value: 'Word Studies' },
             { label: 'Fresh Perspectives', value: 'Fresh Perspectives' },
             { label: 'The Bearer', value: 'The Bearer' },
+            { label: 'Five Titles, One Christ', value: 'Five Titles, One Christ' },
+            { label: 'What the Pulpit Buried', value: 'What the Pulpit Buried' },
           ],
           defaultValue: 'Exegetical Studies',
         }),
