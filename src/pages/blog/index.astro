@@ -180,6 +180,9 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
                     <span class="chapter-label">Chapter {post.data.chapter}</span>
                   )}
                 </div>
+                {post.data.verse && (
+                  <div class="post-verse">{post.data.verse}</div>
+                )}
                 <h3 class="post-title text-sm font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
                   <a
                     href={`/blog/${post.slug}`}
@@ -324,6 +327,19 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
 
   /* Book-chapter category tag gets the bookshelf gold instead of plain bronze */
   .tag-book { color: #9a6b1f !important; font-weight: bold; }
+
+  /* Scripture reference on cards that cover a verse (e.g. Trinity Files) */
+  .post-verse {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #9a6b1f;
+    margin: -2px 0 8px;
+    padding-bottom: 7px;
+    border-bottom: 1px solid var(--sand-dark);
+  }
 
   /* "Chapter N" label — only revealed in a book's filtered view */
   .chapter-label {
