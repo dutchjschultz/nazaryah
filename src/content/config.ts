@@ -40,6 +40,8 @@ const postsCollection = defineCollection({
     references: z.array(referenceSchema).optional(),
     verse: z.string().optional(),
     subtitle: z.string().optional(),
+    // Chapter number when this post is a chapter of a book on the bookshelf.
+    chapter: z.number().optional(),
   }),
 });
 

@@ -166,6 +166,7 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
             <article
               class="post-item card group flex flex-col overflow-hidden"
               data-category={post.data.category}
+              data-chapter={bookCategories[post.data.category] && post.data.chapter ? post.data.chapter : ''}
             >
               <div class="p-6 flex flex-col flex-1">
                 {bookCategories[post.data.category] ? (
@@ -175,6 +176,9 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
                 ) : null}
                 <div class:list={["tag mb-3", { "tag-book": bookCategories[post.data.category] }]} style="color: var(--bronze);">
                   {post.data.category}
+                  {bookCategories[post.data.category] && post.data.chapter && (
+                    <span class="chapter-label">Chapter {post.data.chapter}</span>
+                  )}
                 </div>
                 <h3 class="post-title text-sm font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
                   <a
@@ -220,16 +224,36 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
 <script>
   document.addEventListener('DOMContentLoaded', () => {
     const filterButtons = document.querySelectorAll<HTMLButtonElement>('#category-filters .cat-btn');
+    const grid = document.getElementById('posts-grid');
     const postCards = document.querySelectorAll<HTMLElement>('.post-item');
+    // Remember the original (date-sorted) DOM order so non-book views can restore it.
+    const originalOrder = Array.from(postCards);
 
     function applyFilter(category: string | null) {
       const target = category || 'all';
       filterButtons.forEach(btn => {
         btn.classList.toggle('active', btn.getAttribute('data-category') === target);
       });
+
+      // A book category's cards all carry a data-chapter — show them in chapter order.
+      const matching = originalOrder.filter(c => c.getAttribute('data-category') === target);
+      const isBook = target !== 'all' && matching.length > 0
+        && matching.every(c => c.getAttribute('data-chapter'));
+
+      if (isBook && grid) {
+        matching
+          .slice()
+          .sort((a, b) => Number(a.dataset.chapter) - Number(b.dataset.chapter))
+          .forEach(c => grid.appendChild(c));
+        grid.classList.add('show-chapter-labels');
+      } else if (grid) {
+        originalOrder.forEach(c => grid.appendChild(c));
+        grid.classList.remove('show-chapter-labels');
+      }
+
       postCards.forEach(card => {
         const cardCategory = card.getAttribute('data-category');
-        card.style.display = (target === 'all' || cardCategory === target) ? 'block' : 'none';
+        card.style.display = (target === 'all' || cardCategory === target) ? '' : 'none';
       });
     }
 
@@ -300,6 +324,23 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
 
   /* Book-chapter category tag gets the bookshelf gold instead of plain bronze */
   .tag-book { color: #9a6b1f !important; font-weight: bold; }
+
+  /* "Chapter N" label — only revealed in a book's filtered view */
+  .chapter-label {
+    display: none;
+    margin-left: 8px;
+    padding: 1px 8px;
+    border: 1px solid #b89150;
+    border-radius: 999px;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 8.5px;
+    letter-spacing: 1.5px;
+    color: #8a6028;
+    background: rgba(201,169,97,0.1);
+    vertical-align: middle;
+    white-space: nowrap;
+  }
+  #posts-grid.show-chapter-labels .chapter-label { display: inline-block; }
 
   /* ── Category filter buttons ── */
   .cat-btn {
