@@ -222,21 +222,34 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
     const filterButtons = document.querySelectorAll<HTMLButtonElement>('#category-filters .cat-btn');
     const postCards = document.querySelectorAll<HTMLElement>('.post-item');
 
+    function applyFilter(category: string | null) {
+      const target = category || 'all';
+      filterButtons.forEach(btn => {
+        btn.classList.toggle('active', btn.getAttribute('data-category') === target);
+      });
+      postCards.forEach(card => {
+        const cardCategory = card.getAttribute('data-category');
+        card.style.display = (target === 'all' || cardCategory === target) ? 'block' : 'none';
+      });
+    }
+
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
-        const category = button.getAttribute('data-category');
-
-        // Update active state
-        filterButtons.forEach(btn => btn.classList.remove('active'));
-        button.classList.add('active');
-
-        // Filter posts
-        postCards.forEach(card => {
-          const cardCategory = card.getAttribute('data-category');
-          card.style.display = (category === 'all' || cardCategory === category) ? 'block' : 'none';
-        });
+        applyFilter(button.getAttribute('data-category'));
       });
     });
+
+    // Deep-link support: /blog?category=What the Pulpit Buried lands pre-filtered.
+    const requested = new URLSearchParams(window.location.search).get('category');
+    if (requested) {
+      const known = Array.from(filterButtons).some(
+        btn => btn.getAttribute('data-category') === requested
+      );
+      if (known) {
+        applyFilter(requested);
+        document.getElementById('posts-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
   });
 </script>
 
