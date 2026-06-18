@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { canonicalKey } from '../../data/canonicalOrder';
 
 // Get all published posts
 const allPosts = await getCollection('posts', ({ data }) => {
@@ -167,6 +168,7 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
               class="post-item card group flex flex-col overflow-hidden"
               data-category={post.data.category}
               data-chapter={bookCategories[post.data.category] && post.data.chapter ? post.data.chapter : ''}
+              data-canonical={post.data.verse ? canonicalKey(post.data.verse) : ''}
             >
               <div class="p-6 flex flex-col flex-1">
                 {bookCategories[post.data.category] ? (
@@ -192,9 +194,15 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
                     {post.data.title}
                   </a>
                 </h3>
-                <p class="text-sm leading-relaxed mb-5 line-clamp-4 flex-1" style="color: var(--ink-faded);">
-                  {post.data.description}
-                </p>
+                {post.data.subtitle ? (
+                  <p class="post-subtitle text-sm leading-relaxed mb-5 line-clamp-4 flex-1">
+                    {post.data.subtitle}
+                  </p>
+                ) : (
+                  <p class="text-sm leading-relaxed mb-5 line-clamp-4 flex-1" style="color: var(--ink-faded);">
+                    {post.data.description}
+                  </p>
+                )}
                 <div class="flex items-center justify-between text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
                   <time datetime={post.data.date.toISOString()}>
                     {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
@@ -238,17 +246,26 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
         btn.classList.toggle('active', btn.getAttribute('data-category') === target);
       });
 
-      // A book category's cards all carry a data-chapter — show them in chapter order.
       const matching = originalOrder.filter(c => c.getAttribute('data-category') === target);
-      const isBook = target !== 'all' && matching.length > 0
+      // Book categories carry data-chapter → reading order; verse studies (e.g.
+      // Trinity Files) carry data-canonical → biblical order. Otherwise leave date order.
+      const byChapter = target !== 'all' && matching.length > 0
         && matching.every(c => c.getAttribute('data-chapter'));
+      const byCanonical = !byChapter && target !== 'all' && matching.length > 0
+        && matching.every(c => c.getAttribute('data-canonical'));
 
-      if (isBook && grid) {
+      if (grid && byChapter) {
         matching
           .slice()
           .sort((a, b) => Number(a.dataset.chapter) - Number(b.dataset.chapter))
           .forEach(c => grid.appendChild(c));
         grid.classList.add('show-chapter-labels');
+      } else if (grid && byCanonical) {
+        matching
+          .slice()
+          .sort((a, b) => Number(a.dataset.canonical) - Number(b.dataset.canonical))
+          .forEach(c => grid.appendChild(c));
+        grid.classList.remove('show-chapter-labels');
       } else if (grid) {
         originalOrder.forEach(c => grid.appendChild(c));
         grid.classList.remove('show-chapter-labels');
@@ -339,6 +356,12 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
     margin: -2px 0 8px;
     padding-bottom: 7px;
     border-bottom: 1px solid var(--sand-dark);
+  }
+
+  /* Subtitle teaser on cards that have one (mirrors the Trinity Files page) */
+  .post-subtitle {
+    font-style: italic;
+    color: var(--ink-faded);
   }
 
   /* "Chapter N" label — only revealed in a book's filtered view */
