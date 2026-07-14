@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import HollywoodCategories from '../components/HollywoodCategories.astro';
 
 // Studios are data-driven so flipping a card from "coming-soon" to
 // "active" later is a single status + route change.
@@ -87,6 +88,14 @@ const soon = STUDIOS.filter((s) => s.status === 'coming-soon');
           <span class="hw-callout-text"><strong>The Christmas Connection:</strong> How the sorcerer's wood ended up on every sanctuary door in December — and why Scripture calls it out by name.</span>
         </a>
       </div>
+    </section>
+
+    <!-- ── CATEGORIES (The Craft / The Stars / The Score) ── -->
+    <section class="hw-grid-section">
+      <p class="hw-grid-label">&#8213; The Modern Pulpit &#8213;</p>
+      <h2 class="hw-grid-title">The Craft, The Stars, The Score</h2>
+      <p class="hw-grid-sub">Three ways the machine works on you. Start with the craft itself.</p>
+      <HollywoodCategories />
     </section>
 
     <!-- ── ACTIVE STUDIOS ── -->

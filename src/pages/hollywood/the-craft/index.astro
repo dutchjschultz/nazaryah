@@ -1,0 +1,125 @@
+---
+// src/pages/hollywood/the-craft/index.astro  ·  0714 V1
+// The Craft landing — the "Reels" grouping. Content comes from craft.js.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { reels } from '../../../data/craft.js';
+---
+
+<BaseLayout
+  title="The Craft — The Modern Pulpit, Hollywood | Nazaryah"
+  description="Every trick of the trade is an old spiritual technique with the serial numbers filed off. The Craft slows Hollywood's reel down one frame at a time."
+>
+<div class="craft-shell">
+<main class="wrap">
+  <p class="eyebrow reveal">The Modern Pulpit — Hollywood</p>
+  <h1 class="reveal">The Craft</h1>
+  <p class="subtitle reveal">
+    Every trick of the trade is an old spiritual technique with the serial numbers filed off.
+  </p>
+
+  <hr class="rule" />
+
+  <!-- ── Reels: the poetic gateway ── -->
+  <h2 class="reels-head reveal">Reels</h2>
+  <p class="reels-lede reveal">
+    A reel is a strip of still images wound tight and spun so fast the eye can no
+    longer tell one frame from the next. That blur <em>is</em> the trick. Each study
+    here slows the reel down, stops it on a single frame, and holds it still long
+    enough to ask the one thing the whole machine is built to keep you from asking:
+    <em>what is really on it?</em>
+  </p>
+
+  <!-- ── The Reel cards ── -->
+  <ul class="reels" role="list">
+    {reels.map((r) => (
+      <li class={`reel reveal ${r.status}`}>
+        <a href={r.href} class={`reel-link ${r.status === "live" ? "" : "is-coming"}`}>
+          <span class="reel-n">{String(r.n).padStart(2, "0")}</span>
+          <span class="reel-body">
+            <span class="reel-title">{r.title}</span>
+            <span class="reel-tag">{r.tagline}</span>
+            <span class="reel-verses">{r.verses}</span>
+          </span>
+          {r.status === "live"
+            ? <span class="reel-arrow" aria-hidden="true">→</span>
+            : <span class="reel-soon">In production</span>}
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <footer class="craft-footer reveal">nazaryah.com</footer>
+</main>
+</div>
+</BaseLayout>
+
+<style>
+  /* Dark-gold theme, scoped to this page's shell so it never leaks to the
+     global header/footer. Mirrors the house palette (bg #160a0c, gold #c99a44). */
+  .craft-shell {
+    --bg: #160a0c;
+    --bg-raise: #201114;
+    --ink: #ece1cd;
+    --ink-soft: #b6a58f;
+    --parchment: #ecd8a6;
+    --gold: #c99a44;
+    --gold-soft: #a98a53;
+    --rule: rgba(201, 154, 68, 0.22);
+    --display: "Cormorant Garamond", Georgia, serif;
+    --body: "EB Garamond", Georgia, serif;
+    --maxw: 46rem;
+
+    background:
+      radial-gradient(120% 80% at 50% -10%, #241318 0%, rgba(0,0,0,0) 55%),
+      radial-gradient(140% 120% at 50% 0%, #1d1012 0%, var(--bg) 60%);
+    background-color: var(--bg);
+    min-height: 80vh;
+  }
+
+  .wrap { max-width: var(--maxw); margin: 0 auto; padding: clamp(2.6rem, 7vw, 5.5rem) 1.4rem 4rem; color: var(--ink); font-family: var(--body); }
+
+  .eyebrow { text-align: center; font-family: var(--display); font-variant-caps: small-caps; letter-spacing: 0.32em; color: var(--gold); font-size: 0.92rem; margin: 0 0 1.4rem; }
+  .eyebrow::before, .eyebrow::after { content: "—"; color: var(--gold-soft); margin: 0 0.7em; }
+
+  h1 { font-family: var(--display); font-variant-caps: small-caps; font-weight: 600; color: var(--parchment); text-align: center; line-height: 1.08; letter-spacing: 0.015em; font-size: clamp(2.2rem, 1.3rem + 3.6vw, 3.7rem); margin: 0 0 1.1rem; }
+  .subtitle { text-align: center; font-style: italic; color: var(--ink-soft); font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); max-width: 34rem; margin: 0 auto; line-height: 1.5; }
+
+  hr.rule { border: 0; height: 1px; background: var(--rule); margin: 3.4rem 0; }
+
+  .reels-head { font-family: var(--display); font-variant-caps: small-caps; font-weight: 600; color: var(--gold); letter-spacing: 0.03em; font-size: clamp(1.5rem, 1.2rem + 1vw, 1.95rem); margin: 0 0 1rem; }
+  .reels-head::before { content: ""; display: block; width: 2.4rem; height: 1px; background: var(--gold-soft); opacity: 0.7; margin-bottom: 1.1rem; }
+  .reels-lede { font-size: 1.06em; line-height: 1.85; margin: 0 0 2.4rem; }
+  .reels-lede em { color: var(--parchment); font-style: italic; }
+
+  .reels { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.9rem; }
+
+  .reel-link {
+    display: flex; align-items: flex-start; gap: 1rem;
+    padding: 1.15rem 1.3rem;
+    background: linear-gradient(90deg, rgba(201, 154, 68, 0.08), rgba(201, 154, 68, 0.015));
+    border-left: 3px solid var(--gold);
+    border-radius: 2px;
+    text-decoration: none; color: inherit;
+    transition: background 0.25s ease, transform 0.25s ease;
+  }
+  a.reel-link:hover { background: linear-gradient(90deg, rgba(201, 154, 68, 0.16), rgba(201, 154, 68, 0.03)); transform: translateX(3px); }
+  a.reel-link:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .reel-link.is-coming { border-left-color: var(--gold-soft); opacity: 0.72; }
+  a.reel-link.is-coming:hover { opacity: 0.92; background: linear-gradient(90deg, rgba(201, 154, 68, 0.10), rgba(201, 154, 68, 0.02)); transform: translateX(2px); }
+
+  .reel-n { font-family: var(--display); font-variant-caps: small-caps; color: var(--gold); font-size: 1.15rem; letter-spacing: 0.06em; line-height: 1.5; flex: 0 0 auto; min-width: 1.8rem; }
+  .reel-body { display: flex; flex-direction: column; gap: 0.2rem; flex: 1 1 auto; }
+  .reel-title { font-family: var(--display); font-variant-caps: small-caps; font-weight: 600; color: var(--parchment); font-size: 1.28rem; letter-spacing: 0.02em; line-height: 1.2; }
+  .reel-tag { color: var(--ink); font-size: 0.98rem; line-height: 1.45; }
+  .reel-verses { color: var(--gold-soft); font-style: italic; font-size: 0.85rem; letter-spacing: 0.04em; margin-top: 0.15rem; }
+
+  .reel-arrow { color: var(--gold); font-size: 1.2rem; line-height: 1.5; flex: 0 0 auto; align-self: center; }
+  .reel-soon { color: var(--gold-soft); font-family: var(--display); font-variant-caps: small-caps; letter-spacing: 0.12em; font-size: 0.82rem; flex: 0 0 auto; align-self: center; white-space: nowrap; }
+
+  .craft-footer { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--rule); font-family: var(--display); font-variant-caps: small-caps; letter-spacing: 0.22em; color: var(--gold); font-size: 0.95rem; }
+
+  .reveal { opacity: 0; transform: translateY(14px); animation: rise 0.7s ease forwards; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; animation: none; } }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+</style>

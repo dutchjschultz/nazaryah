@@ -1,0 +1,66 @@
+---
+// src/components/HollywoodCategories.astro  ·  0714 V1
+// Drop this into the Hollywood section page where the category row belongs.
+import { categories } from "../data/craft.js";
+---
+
+<section class="cats" aria-label="Hollywood categories">
+  {categories.map((c) => (
+    c.status === "live" ? (
+      <a href={`/hollywood/${c.slug}`} class="cat cat--live reveal">
+        <h3 class="cat-title">{c.title}</h3>
+        <p class="cat-tag">{c.tagline}</p>
+        <span class="cat-cta" aria-hidden="true">Enter →</span>
+      </a>
+    ) : (
+      <div class="cat cat--coming reveal" aria-disabled="true">
+        <h3 class="cat-title">{c.title}</h3>
+        <p class="cat-tag">{c.tagline}</p>
+        <span class="cat-cta">In production</span>
+      </div>
+    )
+  ))}
+</section>
+
+<style>
+  /* Scope the section's dark-gold palette locally so it renders correctly
+     even on pages whose global tokens define a different --gold. */
+  .cats {
+    --bg-raise: #201114;
+    --parchment: #ecd8a6;
+    --ink-soft: #b6a58f;
+    --gold: #c99a44;
+    --gold-soft: #a98a53;
+    --rule: rgba(201, 154, 68, 0.22);
+    --display: "Cormorant Garamond", Georgia, serif;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(15rem, 1fr));
+    gap: 1.1rem;
+    max-width: 46rem;
+    margin: 2.4rem auto;
+    padding: 0 1.4rem;
+  }
+
+  .cat {
+    display: flex; flex-direction: column; gap: 0.55rem;
+    padding: 1.6rem 1.4rem 1.35rem;
+    background: var(--bg-raise, #201114);
+    border: 1px solid var(--rule, rgba(201,154,68,0.22));
+    border-top: 3px solid var(--gold, #c99a44);
+    border-radius: 3px;
+    text-decoration: none; color: inherit;
+    transition: transform 0.25s ease, border-color 0.25s ease, background 0.25s ease;
+  }
+  a.cat--live:hover { transform: translateY(-3px); background: #241318; }
+  a.cat--live:focus-visible { outline: 2px solid var(--gold, #c99a44); outline-offset: 3px; }
+  .cat--coming { opacity: 0.6; border-top-color: var(--gold-soft, #a98a53); cursor: default; }
+
+  .cat-title { font-family: var(--display, "Cormorant Garamond", Georgia, serif); font-variant-caps: small-caps; font-weight: 600; color: var(--parchment, #ecd8a6); font-size: 1.5rem; letter-spacing: 0.02em; margin: 0; line-height: 1.15; }
+  .cat-tag { color: var(--ink-soft, #b6a58f); font-size: 0.95rem; line-height: 1.5; margin: 0; flex: 1 1 auto; }
+  .cat-cta { font-family: var(--display, "Cormorant Garamond", Georgia, serif); font-variant-caps: small-caps; letter-spacing: 0.1em; color: var(--gold, #c99a44); font-size: 0.92rem; margin-top: 0.3rem; }
+  .cat--coming .cat-cta { color: var(--gold-soft, #a98a53); }
+
+  .reveal { opacity: 0; transform: translateY(14px); animation: rise 0.7s ease forwards; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; animation: none; } }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+</style>
