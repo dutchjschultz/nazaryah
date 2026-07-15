@@ -1,154 +1,97 @@
 ---
-// src/components/AssociatedStudies.astro
-// Cross-reference panel shown at the foot of a study. Reads like a scribe's
-// margin note: hairline gold rule, small-caps eyebrow, title over deck line.
+// src/components/AssociatedStudies.astro  ·  V2
+// Bottom-of-study cross-reference panel. Shows up to PER_CLUSTER members per
+// cluster, anchor first (★), then a "See all N →" link to the cluster page.
 // Ported from the React reference to Astro + the site's own theme tokens.
 //
 // Usage:  <AssociatedStudies current={post} />
-// It reads every post from the `posts` collection itself, so callers pass
-// only the current post.
 import { getCollection } from "astro:content";
-import { getCluster } from "../data/associations.js";
+import { getCluster, keysFor, membersOf, isAnchorOf, toStudy } from "../data/associations.js";
 
 const { current } = Astro.props;
+const PER_CLUSTER = 3;
 
-const keys = current?.data?.associations || [];
+const currentStudy = toStudy(current);
+const all = (await getCollection("posts", (p) => !p.data.draft)).map(toStudy);
 
-const deckOf = (p) => p.data.deck || p.data.subtitle || p.data.description || "";
-
-let groups = [];
-if (keys.length) {
-  const all = await getCollection("posts", (p) => !p.data.draft);
-  groups = keys
-    .map((key) => {
-      const cluster = getCluster(key);
-      const members = all
-        .filter(
-          (p) => p.slug !== current.slug && (p.data.associations || []).includes(key)
-        )
-        .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
-      return { key, cluster, members };
-    })
-    .filter((g) => g.members.length > 0);
-}
+const groups = keysFor(currentStudy)
+  .map((key) => {
+    const members = membersOf(key, all).filter((s) => s.slug !== currentStudy.slug);
+    return { key, cluster: getCluster(key), shown: members.slice(0, PER_CLUSTER), total: members.length };
+  })
+  .filter((g) => g.total > 0);
 ---
 
 {groups.length > 0 && (
-  <aside class="panel" aria-labelledby="assoc-heading">
+  <aside id="associated-studies" class="panel" aria-labelledby="assoc-heading">
     <h2 id="assoc-heading" class="heading">Associated Studies</h2>
 
-    {groups.map(({ key, cluster, members }) => (
+    {groups.map(({ key, cluster, shown, total }) => (
       <section class="cluster">
         <p class="eyebrow">{cluster.label}</p>
         {cluster.blurb && <p class="blurb">{cluster.blurb}</p>}
 
         <ul class="list">
-          {members.map((p) => (
+          {shown.map((s) => (
             <li class="item">
-              <a href={`/blog/${p.slug}`} class="link">
-                <span class="title">{p.data.title}</span>
-                {deckOf(p) && <span class="deck">{deckOf(p)}</span>}
+              <a href={`/blog/${s.slug}`} class="link">
+                <span class="title">
+                  {s.title}
+                  {isAnchorOf(s, key) && <span class="anchor" title="Main study"><span aria-hidden="true">★</span><span class="sr-only">Main study</span></span>}
+                </span>
+                {s.deck && <span class="deck">{s.deck}</span>}
               </a>
             </li>
           ))}
         </ul>
+
+        {total > shown.length && (
+          <a href={`/associations/${key}`} class="see-all">See all {total} in {cluster.label} →</a>
+        )}
       </section>
     ))}
   </aside>
 )}
 
 <style>
-  .panel {
-    margin: 4rem 0 2rem;
-    padding-top: 2rem;
-    border-top: 1px solid var(--sand-dark);
-  }
+  .panel { margin: 4rem 0 2rem; padding-top: 2rem; border-top: 1px solid var(--sand-dark); scroll-margin-top: 2rem; }
   :global(.dark) .panel { border-top-color: rgba(196, 173, 132, 0.28); }
 
-  .heading {
-    font-family: var(--font-display);
-    font-size: 0.95rem;
-    font-weight: 700;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin: 0 0 2rem;
-  }
+  .heading { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: var(--gold); margin: 0 0 2rem; }
   :global(.dark) .heading { color: var(--gold-light); }
 
-  .cluster {
-    padding-left: 1.25rem;
-    border-left: 2px solid var(--gold);
-    margin-bottom: 2.5rem;
-  }
+  .cluster { padding-left: 1.25rem; border-left: 2px solid var(--gold); margin-bottom: 2.5rem; }
   :global(.dark) .cluster { border-left-color: var(--gold-light); }
   .cluster:last-child { margin-bottom: 0; }
 
-  .eyebrow {
-    font-family: var(--font-display);
-    font-size: 0.78rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--gold);
-    margin: 0 0 0.4rem;
-  }
+  .eyebrow { font-family: var(--font-display); font-size: 0.78rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.4rem; }
   :global(.dark) .eyebrow { color: var(--gold-light); }
 
-  .blurb {
-    font-family: var(--font-body);
-    font-size: 0.95rem;
-    font-style: italic;
-    line-height: 1.5;
-    color: var(--ink-faded);
-    margin: 0 0 1.25rem;
-    max-width: 46ch;
-  }
+  .blurb { font-family: var(--font-body); font-size: 0.95rem; font-style: italic; line-height: 1.5; color: var(--ink-faded); margin: 0 0 1.25rem; max-width: 46ch; }
   :global(.dark) .blurb { color: var(--color-dark-secondary-text); }
 
   .list { list-style: none; margin: 0; padding: 0; }
   .item + .item { margin-top: 1rem; }
 
-  .link {
-    display: block;
-    text-decoration: none;
-    padding: 0.5rem 0.5rem 0.5rem 0;
-    border-radius: 2px;
-    transition: background-color 140ms ease, transform 140ms ease;
-  }
-  .link:hover {
-    background-color: rgba(138, 101, 32, 0.08);
-    transform: translateX(3px);
-  }
+  .link { display: block; text-decoration: none; padding: 0.5rem 0.5rem 0.5rem 0; border-radius: 2px; transition: background-color 140ms ease, transform 140ms ease; }
+  .link:hover { background-color: rgba(138, 101, 32, 0.08); transform: translateX(3px); }
   .link:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
 
-  .title {
-    display: block;
-    font-family: var(--font-display);
-    font-size: 1.08rem;
-    font-weight: 700;
-    color: var(--ink);
-    line-height: 1.3;
-  }
+  .title { display: block; font-family: var(--font-display); font-size: 1.08rem; font-weight: 700; color: var(--ink); line-height: 1.3; }
   :global(.dark) .title { color: var(--color-dark-text); }
 
-  .deck {
-    display: block;
-    font-family: var(--font-body);
-    font-size: 0.9rem;
-    font-style: italic;
-    color: var(--ink-faded);
-    line-height: 1.45;
-    margin-top: 0.2rem;
-    max-width: 54ch;
-  }
+  .anchor { color: var(--gold); font-size: 0.8em; margin-left: 0.4em; vertical-align: 0.1em; }
+  :global(.dark) .anchor { color: var(--gold-light); }
+
+  .deck { display: block; font-family: var(--font-body); font-size: 0.9rem; font-style: italic; color: var(--ink-faded); line-height: 1.45; margin-top: 0.2rem; max-width: 54ch; }
   :global(.dark) .deck { color: var(--color-dark-secondary-text); }
 
-  @media (prefers-reduced-motion: reduce) {
-    .link { transition: none; }
-    .link:hover { transform: none; }
-  }
-  @media (max-width: 640px) {
-    .panel { margin-top: 3rem; }
-    .cluster { padding-left: 1rem; }
-  }
+  .see-all { display: inline-block; margin-top: 1rem; font-family: var(--font-body); font-size: 0.85rem; font-style: italic; color: var(--gold); text-decoration: none; }
+  :global(.dark) .see-all { color: var(--gold-light); }
+  .see-all:hover { text-decoration: underline; }
+
+  .sr-only { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px; overflow: hidden; clip: rect(0,0,0,0); white-space: nowrap; border: 0; }
+
+  @media (prefers-reduced-motion: reduce) { .link { transition: none; } .link:hover { transform: none; } }
+  @media (max-width: 640px) { .panel { margin-top: 3rem; } .cluster { padding-left: 1rem; } }
 </style>

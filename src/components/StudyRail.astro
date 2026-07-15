@@ -1,0 +1,37 @@
+---
+// src/components/StudyRail.astro  ·  V2
+// One-line rail placed under the study title: names the clusters this study
+// touches and jumps to the Associated Studies panel at the foot of the page.
+import { labelsFor } from "../data/associations.js";
+
+const { current } = Astro.props;
+const labels = labelsFor({ associations: current?.data?.associations || [] });
+---
+
+{labels.length > 0 && (
+  <p class="rail">
+    <span class="rail-label">Associated with</span>
+    {labels.map((label, i) => (
+      <Fragment>
+        {i > 0 && <span class="rail-dot">·</span>}
+        <span class="rail-item">{label}</span>
+      </Fragment>
+    ))}
+    <a href="#associated-studies" class="rail-jump">See studies</a>
+  </p>
+)}
+
+<style>
+  .rail { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem; margin: 1rem auto 0; max-width: 56rem; padding: 0.75rem 0; border-top: 1px solid var(--sand-dark); border-bottom: 1px solid var(--sand-dark); font-family: var(--font-body); font-size: 0.82rem; }
+  :global(.dark) .rail { border-color: rgba(196, 173, 132, 0.28); }
+  .rail-label { text-transform: uppercase; letter-spacing: 0.12em; font-size: 0.7rem; color: var(--ink-faded); }
+  :global(.dark) .rail-label { color: var(--color-dark-secondary-text); }
+  .rail-item { color: var(--ink); font-weight: 700; }
+  :global(.dark) .rail-item { color: var(--color-dark-text); }
+  .rail-dot { color: var(--gold); }
+  :global(.dark) .rail-dot { color: var(--gold-light); }
+  .rail-jump { margin-left: auto; color: var(--gold); text-decoration: none; font-style: italic; white-space: nowrap; }
+  :global(.dark) .rail-jump { color: var(--gold-light); }
+  .rail-jump:hover { text-decoration: underline; }
+  @media (max-width: 640px) { .rail-jump { margin-left: 0; flex-basis: 100%; } }
+</style>

@@ -1,28 +1,26 @@
 ---
-// src/pages/associations.astro
-// Coverage map — what's covered, what's thin, what's missing across every
-// association cluster. Ported from the React reference to Astro + site theme.
+// src/pages/associations.astro  ·  V2
+// Coverage map. Flat model: a study counts toward every cluster it touches, so
+// counts overlap by design — they answer "have I covered this subject."
 // Not linked in nav on purpose; reachable at /associations.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
-import { CLUSTERS } from "../data/associations.js";
+import { CLUSTERS, getCluster, membersOf, isAnchorOf, toStudy } from "../data/associations.js";
 
-const posts = await getCollection("posts", (p) => !p.data.draft);
-const deckOf = (p) => p.data.deck || p.data.subtitle || p.data.description || "";
+const all = (await getCollection("posts", (p) => !p.data.draft)).map(toStudy);
 
-const rows = Object.entries(CLUSTERS).map(([key, cluster]) => {
-  const members = posts
-    .filter((p) => (p.data.associations || []).includes(key))
-    .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
-  return { key, cluster, members };
-});
+const rows = Object.entries(CLUSTERS).map(([key, cluster]) => ({
+  key,
+  cluster,
+  members: membersOf(key, all),
+}));
 
-const orphans = posts.filter((p) => !(p.data.associations || []).length);
+const orphans = all.filter((s) => !(s.associations || []).length);
 ---
 
 <BaseLayout
   title="Associations — Coverage Map | Nazaryah"
-  description="Every study cluster on the site, and how much of it is actually written."
+  description="Every cluster on the site, and how much of it is actually written."
 >
   <main class="assoc-page">
     <h1 class="assoc-h1">Associations</h1>
@@ -32,25 +30,28 @@ const orphans = posts.filter((p) => !(p.data.associations || []).length);
       const have = members.length;
       const want = cluster.expected;
       const thin = want && have < want;
+      const anchorMissing = !cluster.anchor && have > 0;
       return (
         <section class="assoc-cluster">
           <div class="assoc-head">
-            <h2 class="assoc-h2">{cluster.label}</h2>
-            <span class={`assoc-count ${thin ? "is-thin" : ""}`}>
-              {have}{want ? ` / ${want}` : ""}
-            </span>
+            <h2 class="assoc-h2"><a href={`/associations/${key}`} class="assoc-h2link">{cluster.label}</a></h2>
+            <span class={`assoc-count ${thin ? "is-thin" : ""}`}>{have}{want ? ` / ${want}` : ""}</span>
           </div>
           <p class="assoc-blurb">{cluster.blurb}</p>
           <p class="assoc-key">{key}</p>
+
+          {anchorMissing && (
+            <p class="assoc-warn">No anchor set. If no study is obviously the main one, this may be a tag rather than a cluster.</p>
+          )}
 
           {have === 0 ? (
             <p class="assoc-empty">Nothing written yet. Start here.</p>
           ) : (
             <ul class="assoc-list">
-              {members.map((p) => (
+              {members.map((s) => (
                 <li class="assoc-item">
-                  <a href={`/blog/${p.slug}`} class="assoc-link">{p.data.title}</a>
-                  {deckOf(p) && <span class="assoc-deck">{deckOf(p)}</span>}
+                  <a href={`/blog/${s.slug}`} class="assoc-link">{s.title}{isAnchorOf(s, key) && <span class="assoc-anchor"> ★</span>}</a>
+                  {s.deck && <span class="assoc-deck">{s.deck}</span>}
                 </li>
               ))}
             </ul>
@@ -65,12 +66,10 @@ const orphans = posts.filter((p) => !(p.data.associations || []).length);
           <h2 class="assoc-h2">Unassociated</h2>
           <span class="assoc-count is-thin">{orphans.length}</span>
         </div>
-        <p class="assoc-blurb">Studies with no cluster key. Either they stand alone, or they need one.</p>
+        <p class="assoc-blurb">Studies with no cluster key. Standing alone is a valid answer — this is not a backlog.</p>
         <ul class="assoc-list">
-          {orphans.map((p) => (
-            <li class="assoc-item">
-              <a href={`/blog/${p.slug}`} class="assoc-link">{p.data.title}</a>
-            </li>
+          {orphans.map((s) => (
+            <li class="assoc-item"><a href={`/blog/${s.slug}`} class="assoc-link">{s.title}</a></li>
           ))}
         </ul>
       </section>
@@ -89,8 +88,11 @@ const orphans = posts.filter((p) => !(p.data.associations || []).length);
   :global(.dark) .assoc-cluster { border-left-color: var(--gold-light); }
 
   .assoc-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
-  .assoc-h2 { font-family: var(--font-display); font-size: 1.25rem; color: var(--ink); margin: 0 0 0.35rem; }
-  :global(.dark) .assoc-h2 { color: var(--color-dark-text); }
+  .assoc-h2 { font-family: var(--font-display); font-size: 1.25rem; margin: 0 0 0.35rem; }
+  .assoc-h2link { color: var(--ink); text-decoration: none; }
+  :global(.dark) .assoc-h2link { color: var(--color-dark-text); }
+  .assoc-h2link:hover { color: var(--gold); }
+  :global(.dark) .assoc-h2link:hover { color: var(--gold-light); }
 
   .assoc-count { font-size: 0.85rem; letter-spacing: 0.08em; color: var(--ink-faded); white-space: nowrap; }
   :global(.dark) .assoc-count { color: var(--color-dark-secondary-text); }
@@ -99,7 +101,9 @@ const orphans = posts.filter((p) => !(p.data.associations || []).length);
 
   .assoc-blurb { font-style: italic; color: var(--ink-faded); margin: 0 0 0.35rem; line-height: 1.5; max-width: 46ch; }
   :global(.dark) .assoc-blurb { color: var(--color-dark-secondary-text); }
-  .assoc-key { font-family: ui-monospace, monospace; font-size: 0.72rem; color: var(--sand-dark); margin: 0 0 1.25rem; }
+  .assoc-key { font-family: ui-monospace, monospace; font-size: 0.72rem; color: var(--sand-dark); margin: 0 0 1rem; }
+  .assoc-warn { font-size: 0.82rem; font-style: italic; color: var(--gold); margin: 0 0 1rem; max-width: 46ch; }
+  :global(.dark) .assoc-warn { color: var(--gold-light); }
   .assoc-empty { color: var(--gold); font-style: italic; margin: 0; }
   :global(.dark) .assoc-empty { color: var(--gold-light); }
 
@@ -109,6 +113,8 @@ const orphans = posts.filter((p) => !(p.data.associations || []).length);
   :global(.dark) .assoc-link { color: var(--color-dark-text); }
   .assoc-link:hover { color: var(--gold); }
   :global(.dark) .assoc-link:hover { color: var(--gold-light); }
+  .assoc-anchor { color: var(--gold); font-size: 0.8em; }
+  :global(.dark) .assoc-anchor { color: var(--gold-light); }
   .assoc-deck { display: block; font-style: italic; font-size: 0.88rem; color: var(--ink-faded); margin-top: 0.1rem; }
   :global(.dark) .assoc-deck { color: var(--color-dark-secondary-text); }
 </style>
