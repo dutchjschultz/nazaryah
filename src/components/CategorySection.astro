@@ -1,0 +1,74 @@
+---
+// src/components/CategorySection.astro  ·  0714 V2
+// Renders ONE category: eyebrow + title + lede + its card grid.
+// The Hollywood page calls this twice — Studios & Genre, then The Craft.
+// There is no third "category of categories" layer. Two boxes, that's all.
+const { category } = Astro.props;
+const { title, tagline, lede, cards } = category;
+---
+
+<section class="cat-section" aria-label={title}>
+  <p class="eyebrow reveal">{tagline}</p>
+  <h2 class="cat-title reveal">{title}</h2>
+  <p class="cat-lede reveal">{lede}</p>
+
+  <ul class="cards" role="list">
+    {cards.map((c) => (
+      <li class="reveal">
+        <a href={c.href} class={`card ${c.status === "live" ? "" : "is-coming"}`}>
+          <span class="card-meta">
+            {c.count != null && <span class="card-count">{c.count} {c.count === 1 ? "reel" : "reels"}</span>}
+            <span class="card-status">{c.status === "live" ? "Active" : "In production"}</span>
+          </span>
+          <span class="card-title">{c.title}</span>
+          {c.tagline && <span class="card-tag">{c.tagline}</span>}
+          {c.description && <span class="card-desc">{c.description}</span>}
+          {c.verses && <span class="card-verses">{c.verses}</span>}
+          <span class="card-cta" aria-hidden="true">
+            {c.status === "live" ? "Enter →" : "In production"}
+          </span>
+        </a>
+      </li>
+    ))}
+  </ul>
+</section>
+
+<style>
+  .cat-section { max-width: 62rem; margin: 0 auto 5.5rem; padding: 0 1.4rem; }
+
+  .eyebrow { text-align: center; font-family: var(--display); font-variant-caps: small-caps; letter-spacing: 0.3em; color: var(--gold); font-size: 0.88rem; margin: 0 0 0.9rem; }
+  .eyebrow::before, .eyebrow::after { content: "—"; color: var(--gold-soft); margin: 0 0.7em; }
+
+  .cat-title { font-family: var(--display); font-variant-caps: small-caps; font-weight: 600; color: var(--parchment); text-align: center; line-height: 1.08; font-size: clamp(2rem, 1.3rem + 2.8vw, 3.1rem); margin: 0 0 1.1rem; }
+
+  .cat-lede { text-align: center; font-style: italic; color: var(--ink-soft); font-size: clamp(1rem, 0.95rem + 0.4vw, 1.18rem); max-width: 40rem; margin: 0 auto 2.6rem; line-height: 1.65; }
+
+  .cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr)); gap: 1.1rem; }
+
+  .card {
+    display: flex; flex-direction: column; gap: 0.5rem; height: 100%;
+    padding: 1.5rem 1.4rem 1.3rem;
+    background: var(--bg-raise);
+    border: 1px solid var(--rule);
+    border-top: 3px solid var(--gold);
+    border-radius: 3px;
+    text-decoration: none; color: inherit;
+    transition: transform 0.25s ease, background 0.25s ease;
+  }
+  a.card:hover { transform: translateY(-3px); background: #241318; }
+  a.card:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+  .card.is-coming { border-top-color: var(--gold-soft); opacity: 0.72; }
+  a.card.is-coming:hover { opacity: 0.92; }
+
+  .card-meta { display: flex; justify-content: space-between; gap: 1rem; font-family: var(--display); font-variant-caps: small-caps; letter-spacing: 0.16em; font-size: 0.75rem; color: var(--gold-soft); }
+  .card-title { font-family: var(--display); font-variant-caps: small-caps; font-weight: 600; color: var(--parchment); font-size: 1.45rem; letter-spacing: 0.02em; line-height: 1.15; }
+  .card-tag { color: var(--gold-soft); font-style: italic; font-size: 0.95rem; line-height: 1.5; }
+  .card-desc { color: var(--ink-soft); font-size: 0.92rem; line-height: 1.62; }
+  .card-verses { color: var(--ink-soft); font-style: italic; font-size: 0.82rem; letter-spacing: 0.04em; }
+  .card-cta { font-family: var(--display); font-variant-caps: small-caps; letter-spacing: 0.1em; color: var(--gold); font-size: 0.9rem; margin-top: auto; padding-top: 0.9rem; border-top: 1px solid var(--rule); }
+  .card.is-coming .card-cta { color: var(--gold-soft); }
+
+  .reveal { opacity: 0; transform: translateY(14px); animation: rise 0.7s ease forwards; }
+  @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; animation: none; } }
+  @keyframes rise { to { opacity: 1; transform: none; } }
+</style>

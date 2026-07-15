@@ -1,11 +1,11 @@
 ---
-// src/pages/hollywood/the-craft/[reel].astro  ·  0714 V1
+// src/pages/hollywood/the-craft/[reel].astro  ·  0714 V2
 // Auto-generates a themed "In production" page for every reel whose
-// status is not "live". When you flip a reel to "live" in craft.js
+// status is not "live". When you flip a reel to "live" in hollywood.js
 // and add its real page, this stub stops generating for that slug —
 // no collision, nothing to delete.
-import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { reels } from '../../../data/craft.js';
+import BaseLayout from "../../../layouts/BaseLayout.astro";
+import { reels } from "../../../data/hollywood.js";
 
 export function getStaticPaths() {
   return reels
@@ -44,8 +44,7 @@ const { reel } = Astro.props;
 </BaseLayout>
 
 <style>
-  /* Dark-gold theme, scoped to this page's shell so it never leaks to the
-     global header/footer. Mirrors the house palette (bg #160a0c, gold #c99a44). */
+  /* Dark-gold house theme, scoped to this page's shell. */
   .craft-shell {
     --bg: #160a0c;
     --bg-raise: #201114;
