@@ -103,8 +103,7 @@ export const categories = [
         tagline: "Storytelling as incantation — a tongue that shapes what you believe.",
         verses: "Prov 18:21; Ps 101:3",
         href: "/hollywood/the-craft/the-spell-of-the-script",
-        status: "coming",
-        soon: "Death and life are in the power of the tongue — and a script is a tongue written down, rehearsed until a room full of strangers feels exactly what it was told to feel. This reel asks what is being spoken over you while you sit still in the dark.",
+        status: "live",
       },
       {
         n: 5,
@@ -122,8 +121,7 @@ export const categories = [
         tagline: "The price of the gift — the sold soul behind the crossroads legend.",
         verses: "Mark 8:36",
         href: "/hollywood/the-craft/the-bargain",
-        status: "coming",
-        soon: "The industry tells its oldest story on itself — the gift that arrives with a price, the presence that came through and would not leave. This reel weighs that legend against the plainest arithmetic Yahushua ever gave: what shall it profit a man?",
+        status: "live",
       },
       {
         n: 7,
@@ -132,8 +130,7 @@ export const categories = [
         tagline: "The switched-off mind — a house of distraction is a door left open. Come out.",
         verses: "1 John 4:1; Rom 12:2",
         href: "/hollywood/the-craft/amusement",
-        status: "coming",
-        soon: "To be amused is to have your thinking pulled offline and your guard set down — and a mind that has stopped testing is a door left standing open. The capstone of The Craft turns from the tricks to the trap itself, and to the command that runs through the whole of Scripture: come out.",
+        status: "live",
       },
       {
         n: 8,
