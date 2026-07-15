@@ -1,0 +1,126 @@
+---
+// src/layouts/CraftStudyLayout.astro
+// Shared study-page shell for Hollywood → The Craft / The Stars reels.
+// Dark-gold house theme, gold left-border scripture blocks, "Where this goes
+// next" cross-link block. Content is passed as the default slot; scripture
+// uses <blockquote><p>…</p><cite>…</cite></blockquote>.
+import BaseLayout from "./BaseLayout.astro";
+
+const {
+  eyebrow,
+  title,
+  subtitle,
+  section = "The Craft",
+  backHref = "/hollywood/the-craft",
+  backLabel = "← Back to The Craft",
+  description,
+} = Astro.props;
+---
+
+<BaseLayout
+  title={`${title} — ${section}, Hollywood | Nazaryah`}
+  description={description ?? subtitle}
+  article={true}
+>
+<div class="craft-shell">
+<main class="wrap">
+  <p class="eyebrow">{eyebrow}</p>
+  <h1>{title}</h1>
+  {subtitle && <p class="subtitle">{subtitle}</p>}
+
+  <hr class="rule" />
+
+  <slot />
+
+  <p class="back-wrap"><a class="back" href={backHref}>{backLabel}</a></p>
+
+  <hr class="rule" />
+  <footer class="craft-footer">nazaryah.com</footer>
+</main>
+</div>
+</BaseLayout>
+
+<style is:global>
+  /* Scoped under .craft-shell so nothing leaks to the global header/footer. */
+  .craft-shell {
+    --bg: #160a0c;
+    --bg-raise: #201114;
+    --ink: #ece1cd;
+    --ink-soft: #b6a58f;
+    --parchment: #ecd8a6;
+    --gold: #c99a44;
+    --gold-soft: #a98a53;
+    --rule: rgba(201, 154, 68, 0.22);
+    --display: "Cormorant Garamond", Georgia, serif;
+    --body: "EB Garamond", Georgia, serif;
+    --maxw: 46rem;
+
+    background:
+      radial-gradient(120% 80% at 50% -10%, #241318 0%, rgba(0,0,0,0) 55%),
+      radial-gradient(140% 120% at 50% 0%, #1d1012 0%, var(--bg) 60%);
+    background-color: var(--bg);
+    min-height: 80vh;
+  }
+
+  .craft-shell .wrap {
+    max-width: var(--maxw); margin: 0 auto;
+    padding: clamp(2.6rem, 7vw, 5.5rem) 1.4rem 4rem;
+    color: var(--ink); font-family: var(--body);
+    font-size: clamp(1.06rem, 0.9rem + 0.6vw, 1.22rem);
+    line-height: 1.85; letter-spacing: 0.006em;
+    animation: craft-rise 0.7s ease both;
+  }
+  @media (prefers-reduced-motion: reduce) { .craft-shell .wrap { animation: none; } }
+  @keyframes craft-rise { from { opacity: 0; transform: translateY(14px); } to { opacity: 1; transform: none; } }
+
+  .craft-shell .eyebrow { text-align: center; font-family: var(--display); font-variant-caps: small-caps; letter-spacing: 0.32em; color: var(--gold); font-size: 0.92rem; margin: 0 0 1.4rem; }
+  .craft-shell .eyebrow::before, .craft-shell .eyebrow::after { content: "—"; color: var(--gold-soft); margin: 0 0.7em; }
+
+  .craft-shell h1 { font-family: var(--display); font-variant-caps: small-caps; font-weight: 600; color: var(--parchment); text-align: center; line-height: 1.08; letter-spacing: 0.015em; font-size: clamp(2.2rem, 1.3rem + 3.6vw, 3.7rem); margin: 0 0 1.1rem; }
+  .craft-shell .subtitle { text-align: center; font-style: italic; color: var(--ink-soft); font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); max-width: 34rem; margin: 0 auto 2.6rem; line-height: 1.5; }
+
+  .craft-shell .lede { font-size: 1.06em; }
+  .craft-shell .lede::first-letter { font-family: var(--display); float: left; color: var(--gold); font-size: 3.4em; line-height: 0.72; padding: 0.05em 0.12em 0 0; font-weight: 600; }
+
+  .craft-shell p { margin: 0 0 1.35rem; }
+  .craft-shell strong { color: var(--parchment); font-weight: 600; }
+  .craft-shell em { color: var(--ink); }
+  .craft-shell a { color: var(--gold); }
+  .craft-shell a:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; border-radius: 2px; }
+
+  .craft-shell h2 { font-family: var(--display); font-variant-caps: small-caps; font-weight: 600; color: var(--gold); letter-spacing: 0.03em; font-size: clamp(1.5rem, 1.2rem + 1vw, 1.95rem); line-height: 1.15; margin: 3rem 0 1rem; }
+  .craft-shell h2::before { content: ""; display: block; width: 2.4rem; height: 1px; background: var(--gold-soft); opacity: 0.7; margin-bottom: 1.1rem; }
+
+  .craft-shell blockquote { margin: 1.7rem 0; padding: 1.05rem 1.3rem 1.05rem 1.5rem; background: var(--bg-raise); border-left: 3px solid var(--gold); border-radius: 2px; }
+  .craft-shell blockquote p { margin: 0; font-style: italic; color: #f2e9d6; line-height: 1.7; }
+  .craft-shell blockquote cite { display: block; margin-top: 0.55rem; font-style: normal; font-family: var(--display); font-variant-caps: small-caps; letter-spacing: 0.12em; color: var(--gold); font-size: 0.95rem; }
+
+  /* Inline cross-reference callout (e.g. the masks → Symbol Library). */
+  .craft-shell .callout { margin: 2.6rem 0 0.5rem; padding: 1.1rem 1.3rem 1.1rem 1.2rem; background: linear-gradient(90deg, rgba(201,154,68,0.10), rgba(201,154,68,0.02)); border-left: 3px solid var(--gold); border-radius: 2px; display: flex; gap: 0.9rem; align-items: flex-start; }
+  .craft-shell .callout .arrow { color: var(--gold); font-size: 1.15rem; line-height: 1.6; flex: 0 0 auto; }
+  .craft-shell .callout p { margin: 0; }
+  .craft-shell .callout b { color: var(--parchment); font-weight: 600; }
+
+  /* Roster (e.g. the nine Muses) — a plain list, no bullets. */
+  .craft-shell .roster { list-style: none; margin: 1.4rem 0 1.6rem; padding: 0; display: grid; grid-template-columns: 1fr; gap: 0.4rem; }
+  .craft-shell .roster li { margin: 0; }
+  .craft-shell .roster b { color: var(--parchment); font-family: var(--display); font-variant-caps: small-caps; letter-spacing: 0.04em; font-size: 1.08em; }
+
+  /* "Where this goes next" cross-link block. */
+  .craft-shell .next { margin: 3.4rem 0 0; padding: 1.6rem 1.5rem; border: 1px solid var(--rule); border-top: 3px solid var(--gold); border-radius: 3px; background: var(--bg-raise); }
+  .craft-shell .next h2 { margin: 0 0 1.1rem; font-size: 1.35rem; }
+  .craft-shell .next h2::before { display: none; }
+  .craft-shell .next ul { list-style: none; margin: 0; padding: 0; display: flex; flex-direction: column; gap: 0.85rem; }
+  .craft-shell .next li { margin: 0; line-height: 1.5; }
+  .craft-shell .next a { font-family: var(--display); font-variant-caps: small-caps; font-weight: 600; letter-spacing: 0.02em; font-size: 1.12rem; text-decoration: none; }
+  .craft-shell .next a:hover { color: var(--parchment); }
+  .craft-shell .next .desc { display: block; color: var(--ink-soft); font-size: 0.92rem; line-height: 1.5; margin-top: 0.05rem; }
+
+  .craft-shell hr.rule { border: 0; height: 1px; background: var(--rule); margin: 3.4rem 0; }
+
+  .craft-shell .back-wrap { margin: 2.6rem 0 0; text-align: center; }
+  .craft-shell .back { color: var(--gold); text-decoration: none; font-family: var(--display); font-variant-caps: small-caps; letter-spacing: 0.1em; }
+  .craft-shell .back:hover { color: var(--parchment); }
+
+  .craft-shell .craft-footer { text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid var(--rule); font-family: var(--display); font-variant-caps: small-caps; letter-spacing: 0.22em; color: var(--gold); font-size: 0.95rem; }
+</style>

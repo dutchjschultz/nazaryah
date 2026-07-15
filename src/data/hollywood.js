@@ -1,13 +1,15 @@
-// src/data/hollywood.js  ·  0714 V2
+// src/data/hollywood.js  ·  0715 V4
 // Single source of truth for the Hollywood section.
 //
-// TWO CATEGORIES. The test for where anything goes:
+// Categories are siblings; there is no layer above them. Adding a category is a
+// data-file edit only — the index page maps over whatever is here.
 //   Name a movie in it  → Studios & Genre
-//   Name a technique    → The Craft
+//   Name a technique     → The Craft
+//   Who gets the worship → The Stars
 //
-// A "reel" = one study. Studios & Genre cards hold many reels each
-// (the card links to a studio page listing them). The Craft cards are
-// each a single reel (the card links straight to the study).
+// A "reel" = one study. Studios & Genre cards hold many reels each (the card
+// links to a studio page listing them). The Craft / Stars cards are each a
+// single reel (the card links straight to the study).
 //
 // TO PUBLISH: set status: "live" and confirm href. Nothing else.
 
@@ -17,7 +19,6 @@ export const categories = [
     title: "Studios & Genre",
     tagline: "Who made it, and what kind it is.",
     lede: "The films themselves — sorted by the house that built them or the genre they wear. Each card opens a studio; each studio holds its own reels.",
-    // Cards mirror what is already published. hrefs point at the live pages.
     cards: [
       {
         slug: "disney",
@@ -70,6 +71,15 @@ export const categories = [
     cards: [
       {
         n: 1,
+        slug: "the-muse",
+        title: "The Muse",
+        tagline: "A spirit behind the arts — who the nine were, and where her name still hides.",
+        verses: "1 John 4:1; 1 Cor 10:20",
+        href: "/hollywood/the-craft/the-muse",
+        status: "live",
+      },
+      {
+        n: 2,
         slug: "the-muse-on-the-screen",
         title: "The Muse on the Screen",
         tagline: "Acting as channeling — the emptied vessel and the voice that fills it.",
@@ -78,17 +88,16 @@ export const categories = [
         status: "live",
       },
       {
-        n: 2,
+        n: 3,
         slug: "glamour",
         title: "Glamour",
         tagline: "Enchantment and the image machine — the spell that makes the false look true.",
         verses: "1 Sam 16:7; Prov 31:30",
         href: "/hollywood/the-craft/glamour",
-        status: "coming",
-        soon: "Before it ever meant red carpets, 'glamour' was a word for a spell — an enchantment that made a thing look like what it was not. This reel follows that spell from the grimoire to the screen, and holds it against the eye that judges not by the outward appearance.",
+        status: "live",
       },
       {
-        n: 3,
+        n: 4,
         slug: "the-spell-of-the-script",
         title: "The Spell of the Script",
         tagline: "Storytelling as incantation — a tongue that shapes what you believe.",
@@ -98,17 +107,16 @@ export const categories = [
         soon: "Death and life are in the power of the tongue — and a script is a tongue written down, rehearsed until a room full of strangers feels exactly what it was told to feel. This reel asks what is being spoken over you while you sit still in the dark.",
       },
       {
-        n: 4,
+        n: 5,
         slug: "the-oracle",
         title: "The Oracle",
         tagline: "Delphi to the red carpet — the medium as performer, the performer as medium.",
         verses: "Acts 16:16; Deut 18",
         href: "/hollywood/the-craft/the-oracle",
-        status: "coming",
-        soon: "At Delphi a possessed woman spoke and kings obeyed; today the possessed speak from a stage and a generation repeats it word for word. This reel traces the medium's chair from the temple to the talk show — and reads it against the Word that calls her spirit by its right name.",
+        status: "live",
       },
       {
-        n: 5,
+        n: 6,
         slug: "the-bargain",
         title: "The Bargain",
         tagline: "The price of the gift — the sold soul behind the crossroads legend.",
@@ -118,7 +126,7 @@ export const categories = [
         soon: "The industry tells its oldest story on itself — the gift that arrives with a price, the presence that came through and would not leave. This reel weighs that legend against the plainest arithmetic Yahushua ever gave: what shall it profit a man?",
       },
       {
-        n: 6,
+        n: 7,
         slug: "amusement",
         title: "Amusement",
         tagline: "The switched-off mind — a house of distraction is a door left open. Come out.",
@@ -128,7 +136,7 @@ export const categories = [
         soon: "To be amused is to have your thinking pulled offline and your guard set down — and a mind that has stopped testing is a door left standing open. The capstone of The Craft turns from the tricks to the trap itself, and to the command that runs through the whole of Scripture: come out.",
       },
       {
-        n: 7,
+        n: 8,
         slug: "symbol-library",
         title: "Symbol Library",
         tagline: "The same signs, in film after film, generation after generation",
@@ -141,9 +149,37 @@ export const categories = [
       },
     ],
   },
+
+  {
+    slug: "the-stars",
+    title: "The Stars",
+    tagline: "Who gets the worship.",
+    lede: "A person is not born a star; a star is manufactured. These studies take up the making of the figure, the crowd that adores it, and the altar where the whole arrangement says the quiet part out loud.",
+    cards: [
+      {
+        n: 1,
+        slug: "the-making-of-stars",
+        title: "The Making of Stars",
+        tagline: "The vocabulary of a cult — star, idol, icon, adore, fan, celebrity.",
+        verses: "Acts 7:43; Ps 115:4-8; 1 John 5:21",
+        href: "/hollywood/the-stars/the-making-of-stars",
+        status: "live",
+      },
+      {
+        n: 2,
+        slug: "the-altar",
+        title: "The Altar",
+        tagline: "The golden statue, and the honest question of which god gets thanked.",
+        verses: "John 8:44; Matt 6:24; Isa 42:8",
+        href: "/hollywood/the-stars/the-altar",
+        status: "live",
+      },
+    ],
+  },
 ];
 
 // Convenience exports
 export const studios = categories.find((c) => c.slug === "studios");
 export const craft = categories.find((c) => c.slug === "the-craft");
 export const reels = craft.cards;
+export const stars = categories.find((c) => c.slug === "the-stars");

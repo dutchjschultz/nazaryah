@@ -6,8 +6,6 @@
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { categories } from "../../data/hollywood.js";
 import CategorySection from "../../components/CategorySection.astro";
-
-const [studios, craft] = categories;
 ---
 
 <BaseLayout
@@ -31,8 +29,7 @@ const [studios, craft] = categories;
 
   <hr class="rule" />
 
-  <CategorySection category={studios} />
-  <CategorySection category={craft} />
+  {categories.map((c) => <CategorySection category={c} />)}
 
   <footer class="hw-footer reveal">nazaryah.com</footer>
 </main>
