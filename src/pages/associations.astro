@@ -1,0 +1,114 @@
+---
+// src/pages/associations.astro
+// Coverage map — what's covered, what's thin, what's missing across every
+// association cluster. Ported from the React reference to Astro + site theme.
+// Not linked in nav on purpose; reachable at /associations.
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { getCollection } from "astro:content";
+import { CLUSTERS } from "../data/associations.js";
+
+const posts = await getCollection("posts", (p) => !p.data.draft);
+const deckOf = (p) => p.data.deck || p.data.subtitle || p.data.description || "";
+
+const rows = Object.entries(CLUSTERS).map(([key, cluster]) => {
+  const members = posts
+    .filter((p) => (p.data.associations || []).includes(key))
+    .sort((a, b) => (a.data.order ?? 99) - (b.data.order ?? 99));
+  return { key, cluster, members };
+});
+
+const orphans = posts.filter((p) => !(p.data.associations || []).length);
+---
+
+<BaseLayout
+  title="Associations — Coverage Map | Nazaryah"
+  description="Every study cluster on the site, and how much of it is actually written."
+>
+  <main class="assoc-page">
+    <h1 class="assoc-h1">Associations</h1>
+    <p class="assoc-lede">Every cluster on the site, and how much of it is actually written.</p>
+
+    {rows.map(({ key, cluster, members }) => {
+      const have = members.length;
+      const want = cluster.expected;
+      const thin = want && have < want;
+      return (
+        <section class="assoc-cluster">
+          <div class="assoc-head">
+            <h2 class="assoc-h2">{cluster.label}</h2>
+            <span class={`assoc-count ${thin ? "is-thin" : ""}`}>
+              {have}{want ? ` / ${want}` : ""}
+            </span>
+          </div>
+          <p class="assoc-blurb">{cluster.blurb}</p>
+          <p class="assoc-key">{key}</p>
+
+          {have === 0 ? (
+            <p class="assoc-empty">Nothing written yet. Start here.</p>
+          ) : (
+            <ul class="assoc-list">
+              {members.map((p) => (
+                <li class="assoc-item">
+                  <a href={`/blog/${p.slug}`} class="assoc-link">{p.data.title}</a>
+                  {deckOf(p) && <span class="assoc-deck">{deckOf(p)}</span>}
+                </li>
+              ))}
+            </ul>
+          )}
+        </section>
+      );
+    })}
+
+    {orphans.length > 0 && (
+      <section class="assoc-cluster">
+        <div class="assoc-head">
+          <h2 class="assoc-h2">Unassociated</h2>
+          <span class="assoc-count is-thin">{orphans.length}</span>
+        </div>
+        <p class="assoc-blurb">Studies with no cluster key. Either they stand alone, or they need one.</p>
+        <ul class="assoc-list">
+          {orphans.map((p) => (
+            <li class="assoc-item">
+              <a href={`/blog/${p.slug}`} class="assoc-link">{p.data.title}</a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+  </main>
+</BaseLayout>
+
+<style>
+  .assoc-page { max-width: 48rem; margin: 0 auto; padding: 3rem 1.5rem; font-family: var(--font-body); }
+  .assoc-h1 { font-family: var(--font-display); font-size: 2rem; color: var(--ink); margin: 0 0 0.5rem; }
+  :global(.dark) .assoc-h1 { color: var(--color-dark-text); }
+  .assoc-lede { font-style: italic; color: var(--ink-faded); margin: 0 0 3rem; }
+  :global(.dark) .assoc-lede { color: var(--color-dark-secondary-text); }
+
+  .assoc-cluster { margin-bottom: 3rem; padding-left: 1.25rem; border-left: 2px solid var(--gold); }
+  :global(.dark) .assoc-cluster { border-left-color: var(--gold-light); }
+
+  .assoc-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; }
+  .assoc-h2 { font-family: var(--font-display); font-size: 1.25rem; color: var(--ink); margin: 0 0 0.35rem; }
+  :global(.dark) .assoc-h2 { color: var(--color-dark-text); }
+
+  .assoc-count { font-size: 0.85rem; letter-spacing: 0.08em; color: var(--ink-faded); white-space: nowrap; }
+  :global(.dark) .assoc-count { color: var(--color-dark-secondary-text); }
+  .assoc-count.is-thin { color: var(--gold); font-weight: 700; }
+  :global(.dark) .assoc-count.is-thin { color: var(--gold-light); }
+
+  .assoc-blurb { font-style: italic; color: var(--ink-faded); margin: 0 0 0.35rem; line-height: 1.5; max-width: 46ch; }
+  :global(.dark) .assoc-blurb { color: var(--color-dark-secondary-text); }
+  .assoc-key { font-family: ui-monospace, monospace; font-size: 0.72rem; color: var(--sand-dark); margin: 0 0 1.25rem; }
+  .assoc-empty { color: var(--gold); font-style: italic; margin: 0; }
+  :global(.dark) .assoc-empty { color: var(--gold-light); }
+
+  .assoc-list { list-style: none; margin: 0; padding: 0; }
+  .assoc-item { margin-bottom: 0.85rem; }
+  .assoc-link { display: block; color: var(--ink); font-family: var(--font-display); font-weight: 700; text-decoration: none; line-height: 1.3; }
+  :global(.dark) .assoc-link { color: var(--color-dark-text); }
+  .assoc-link:hover { color: var(--gold); }
+  :global(.dark) .assoc-link:hover { color: var(--gold-light); }
+  .assoc-deck { display: block; font-style: italic; font-size: 0.88rem; color: var(--ink-faded); margin-top: 0.1rem; }
+  :global(.dark) .assoc-deck { color: var(--color-dark-secondary-text); }
+</style>

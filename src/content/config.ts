@@ -42,6 +42,15 @@ const postsCollection = defineCollection({
     subtitle: z.string().optional(),
     // Chapter number when this post is a chapter of a book on the bookshelf.
     chapter: z.number().optional(),
+    // Cross-reference clusters (see src/data/associations.js). A study joins a
+    // cluster by listing its key here; the Associated Studies panel and the
+    // /associations coverage map pick it up automatically.
+    associations: z.array(z.string()).default([]),
+    // One-line orientation shown under the title and in the associations panel.
+    // Falls back to `subtitle` then `description` when omitted.
+    deck: z.string().optional(),
+    // Optional position within an association cluster (lower sorts first).
+    order: z.number().optional(),
   }),
 });
 
