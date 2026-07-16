@@ -10,3 +10,10 @@
 
 [context.branch-deploy]
   command = "npm run build"
+
+# Retired duplicate: the short "Joint Heirs" blog now points at the full
+# Five Titles chapter, so inbound links and search results keep resolving.
+[[redirects]]
+  from = "/blog/joint-heirs-thrones-inheritance"
+  to = "/blog/joint-heirs-with-the-king"
+  status = 301
