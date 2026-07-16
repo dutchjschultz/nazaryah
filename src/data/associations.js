@@ -1,8 +1,6 @@
-// associations 0715 V5.js
-// Batch 2 added two clusters and broadened one blurb.
-// `lost-in-translation` is the biggest find in either batch — five studies whose
-// shared thesis is that the English text buried something, sitting in five
-// different categories with nothing in their titles to connect them.
+// associations 0715 V6.js
+// Batch 3 added one cluster. `lost-in-translation` is now the largest on the
+// site — it keeps absorbing studies whose titles give no hint of it.
 
 export const CLUSTERS = {
   "two-stage-salvation": {
@@ -16,9 +14,17 @@ export const CLUSTERS = {
   "lost-in-translation": {
     label: "Lost in Translation",
     blurb:
-      "Helel became Lucifer. Kappōret became a mercy seat. Qesheth became a rainbow. Anothen became again. What the English buried, and what it cost.",
+      "Helel became Lucifer. Kappōret became a mercy seat. Qesheth became a rainbow. Har Mo'ed became Megiddo. What the English buried, and what it cost.",
     anchor: "the-lucifer-deception",
-    expected: 9,
+    expected: 14,
+  },
+
+  "how-yahuah-speaks": {
+    label: "How Yahuah Speaks",
+    blurb:
+      "The sky, the letters, the words, and at last His own Son. He has already spoken — the question is whether we will hear what was given.",
+    anchor: "heavens-letters-words-son",
+    expected: 5,
   },
 
   "the-second-adam": {
@@ -26,7 +32,7 @@ export const CLUSTERS = {
     blurb:
       "The image was sonship. Adam lost it, Seth inherited the loss, and the Second Adam put it back on every man who trusts Him.",
     anchor: "the-image-of-yahuah",
-    expected: 6,
+    expected: 8,
   },
 
   "whose-righteousness": {
@@ -34,7 +40,7 @@ export const CLUSTERS = {
     blurb:
       "Fruit belongs to the owner of the tree. The covering belongs to the one who made it. Self-generated righteousness has always been filthy rags.",
     anchor: "clothed-by-the-owner",
-    expected: 9,
+    expected: 10,
   },
 
   "garments-and-covering": {
@@ -50,7 +56,7 @@ export const CLUSTERS = {
     blurb:
       "Authority given, never seized. The Son at the right hand, the heirs in His throne, and the kingdom handed back to the Father.",
     anchor: "joint-heirs-with-the-king",
-    expected: 7,
+    expected: 8,
   },
 
   "pulpit-vocabulary": {
@@ -66,7 +72,7 @@ export const CLUSTERS = {
     blurb:
       "Yahuah as sole Redeemer, the Son as the price paid. The legal spine under the whole atonement question.",
     anchor: "the-redeemer-who-never-needed-redeeming",
-    expected: 8,
+    expected: 9,
   },
 
   "the-mishkan": {
@@ -74,7 +80,7 @@ export const CLUSTERS = {
     blurb:
       "The structure Yahuah designed: ark, cover, veil, garments — and who may pass through what.",
     anchor: "ark-of-covering",
-    expected: 10,
+    expected: 11,
   },
 
   "yom-kippur": {
@@ -90,7 +96,7 @@ export const CLUSTERS = {
     blurb:
       "Yahuah is the source; the Son is the lamp that bears it. The Father speaks, the Son delivers. The impression is not the engraver.",
     anchor: "the-bearer-1-light-and-lamp",
-    expected: 9,
+    expected: 10,
   },
 
   "the-moedim": {
@@ -106,7 +112,7 @@ export const CLUSTERS = {
     blurb:
       "Eden planted, Eden closed, Eden restored. The arc that ends with the Tree of Knowledge absent and the curse gone.",
     anchor: "paradise-restored",
-    expected: 8,
+    expected: 9,
   },
 
   "cosmology-north": {
