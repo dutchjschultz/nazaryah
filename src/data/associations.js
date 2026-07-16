@@ -1,7 +1,8 @@
-// associations 0715 V4.js
-// Three new clusters added after reading batch 1. None of them were visible
-// from titles — each was found by a thesis or a word study shared across
-// studies whose names have nothing in common.
+// associations 0715 V5.js
+// Batch 2 added two clusters and broadened one blurb.
+// `lost-in-translation` is the biggest find in either batch — five studies whose
+// shared thesis is that the English text buried something, sitting in five
+// different categories with nothing in their titles to connect them.
 
 export const CLUSTERS = {
   "two-stage-salvation": {
@@ -10,6 +11,22 @@ export const CLUSTERS = {
       "Entry by the blood, walk by the bread. The framework the pulpit collapsed into a single step.",
     anchor: "bread-and-wine",
     expected: 22,
+  },
+
+  "lost-in-translation": {
+    label: "Lost in Translation",
+    blurb:
+      "Helel became Lucifer. Kappōret became a mercy seat. Qesheth became a rainbow. Anothen became again. What the English buried, and what it cost.",
+    anchor: "the-lucifer-deception",
+    expected: 9,
+  },
+
+  "the-second-adam": {
+    label: "The First Adam and the Second",
+    blurb:
+      "The image was sonship. Adam lost it, Seth inherited the loss, and the Second Adam put it back on every man who trusts Him.",
+    anchor: "the-image-of-yahuah",
+    expected: 6,
   },
 
   "whose-righteousness": {
@@ -39,9 +56,9 @@ export const CLUSTERS = {
   "pulpit-vocabulary": {
     label: "What the Words Actually Mean",
     blurb:
-      "Six courtroom words the pulpit softened into feelings — and what the text says instead.",
+      "Words the pulpit softened, sweetened, or reinvented outright — and what the Hebrew and Greek actually say.",
     anchor: "the-whole-counsel",
-    expected: 12,
+    expected: 13,
   },
 
   "goel-kopher": {
@@ -71,9 +88,9 @@ export const CLUSTERS = {
   "light-and-lamp": {
     label: "The Light and the Lamp",
     blurb:
-      "Yahuah is the source; the Son is the lamp that bears it. The Father speaks, the Son delivers.",
+      "Yahuah is the source; the Son is the lamp that bears it. The Father speaks, the Son delivers. The impression is not the engraver.",
     anchor: "the-bearer-1-light-and-lamp",
-    expected: 8,
+    expected: 9,
   },
 
   "the-moedim": {
@@ -109,7 +126,7 @@ export const CLUSTERS = {
   },
 };
 
-// --- helpers (unchanged from V2/V3) -------------------------------------
+// --- helpers (unchanged) -------------------------------------------------
 
 export const getCluster = (key) =>
   CLUSTERS[key] || { label: key, blurb: "", anchor: null, expected: null };
