@@ -6,7 +6,8 @@
     "dev": "astro dev",
     "build": "astro build && npx pagefind --site dist",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "check": "node check-associations.mjs --dir src/content/posts --registry src/data/associations.js"
   },
   "dependencies": {
     "@astrojs/markdoc": "^0.14.2",
