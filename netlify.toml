@@ -43,3 +43,10 @@
   from = "/foreign-fire/esther"
   to = "/blog/esther-ishtar-marduk"
   status = 301
+
+# The Lie of Gravity moved from a /sun-worship/the-priesthood article page to a
+# taggable blog post so it can join the cosmology-north cluster.
+[[redirects]]
+  from = "/sun-worship/the-priesthood/gravity"
+  to = "/blog/the-lie-of-gravity"
+  status = 301
