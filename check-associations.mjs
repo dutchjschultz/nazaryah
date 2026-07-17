@@ -162,16 +162,15 @@ for (const file of files) {
     add(short, "error", "missing category — the reader panel silently shows nothing without it");
   if (!data.date) add(short, "warn", "missing date");
 
-  // --- deck / description ---------------------------------------------
+  // --- deck length -----------------------------------------------------
+  // NOTE: description and deck are intentionally DIFFERENT fields — the deck
+  // orients a reader already on the site; the description is the search-page
+  // meta a stranger reads. The checker must never couple them.
   if (data.deck) {
     const n = words(data.deck);
     if (n < DECK_MIN || n > DECK_MAX)
       add(short, "warn", `deck is ${n} words (want ${DECK_MIN}–${DECK_MAX}): "${data.deck}"`);
   }
-  if (data.deck && data.description && data.deck.trim() !== data.description.trim())
-    add(short, "error", "description does not match the deck word for word");
-  if (data.deck && !data.description)
-    add(short, "warn", "no description — should be the deck line, verbatim");
 
   // --- second taxonomy creeping in -------------------------------------
   if (Array.isArray(data.tags) && data.tags.length)
