@@ -1,5 +1,5 @@
 ---
-// src/components/AssociatedStudies.astro  ·  V2
+// src/components/AssociatedStudies.astro  ·  V3
 // Bottom-of-study cross-reference panel. Shows up to PER_CLUSTER members per
 // cluster, anchor first (★), then a "See all N →" link to the cluster page.
 // Ported from the React reference to Astro + the site's own theme tokens.
@@ -11,12 +11,23 @@ import { getCluster, keysFor, membersOf, isAnchorOf, toStudy } from "../data/ass
 const { current } = Astro.props;
 const PER_CLUSTER = 3;
 
+// The panel is for READERS. If two studies share a category, the category nav
+// already links them, so showing the sibling again here is noise. Filter them
+// out and let the panel do the one thing the category cannot: reach outward.
+//
+// This does NOT apply to /associations or the cluster pages — those are the
+// coverage map, and they must show every member or the counts lie.
+const SAME_CATEGORY = (a, b) =>
+  !!a?.category && !!b?.category && a.category === b.category;
+
 const currentStudy = toStudy(current);
 const all = (await getCollection("posts", (p) => !p.data.draft)).map(toStudy);
 
 const groups = keysFor(currentStudy)
   .map((key) => {
-    const members = membersOf(key, all).filter((s) => s.slug !== currentStudy.slug);
+    const members = membersOf(key, all).filter(
+      (s) => s.slug !== currentStudy.slug && !SAME_CATEGORY(s, currentStudy)
+    );
     return { key, cluster: getCluster(key), shown: members.slice(0, PER_CLUSTER), total: members.length };
   })
   .filter((g) => g.total > 0);

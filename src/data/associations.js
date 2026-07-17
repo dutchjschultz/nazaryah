@@ -1,6 +1,6 @@
-// associations 0715 V6.js
-// Batch 3 added one cluster. `lost-in-translation` is now the largest on the
-// site — it keeps absorbing studies whose titles give no hint of it.
+// associations 0715 V7.js
+// the-second-adam anchor moved: the-image-of-yahuah was retired as a duplicate of
+// the-bearer-2-unseen-and-image, which is now the anchor.
 
 export const CLUSTERS = {
   "two-stage-salvation": {
@@ -31,7 +31,7 @@ export const CLUSTERS = {
     label: "The First Adam and the Second",
     blurb:
       "The image was sonship. Adam lost it, Seth inherited the loss, and the Second Adam put it back on every man who trusts Him.",
-    anchor: "the-image-of-yahuah",
+    anchor: "the-bearer-2-unseen-and-image",
     expected: 8,
   },
 
@@ -165,11 +165,13 @@ export const isAnchorOf = (study, key) => getCluster(key).anchor === study?.slug
 // --- Astro glue (preserved from the site port; not in the source registry) ---
 
 /** Map a `posts` collection entry to the flat study shape the helpers expect.
- *  deck falls back to subtitle, then description. */
+ *  deck falls back to subtitle, then description. category is carried through so
+ *  the Associated Studies panel can drop same-category siblings (V3 filter). */
 export const toStudy = (post) => ({
   slug: post.slug,
   title: post.data.title,
   deck: post.data.deck || post.data.subtitle || post.data.description || "",
+  category: post.data.category,
   associations: post.data.associations || [],
   order: post.data.order,
 });

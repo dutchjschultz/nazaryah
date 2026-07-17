@@ -17,3 +17,11 @@
   from = "/blog/joint-heirs-thrones-inheritance"
   to = "/blog/joint-heirs-with-the-king"
   status = 301
+
+# Retired duplicate: "The Image of Yahuah" was a strict subset of the Bearer
+# chapter, which now anchors the-second-adam cluster. Point inbound links and
+# search results at the full chapter.
+[[redirects]]
+  from = "/blog/the-image-of-yahuah"
+  to = "/blog/the-bearer-2-unseen-and-image"
+  status = 301
