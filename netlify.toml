@@ -25,3 +25,21 @@
   from = "/blog/the-image-of-yahuah"
   to = "/blog/the-bearer-2-unseen-and-image"
   status = 301
+
+# Esther studies moved from standalone /foreign-fire/esther/* pages to taggable
+# blog posts, so esther-ishtar-marduk can anchor the foreign-fire cluster. The
+# old topic-page URLs (and the hub) now resolve to the posts.
+[[redirects]]
+  from = "/foreign-fire/esther/ishtar-and-marduk"
+  to = "/blog/esther-ishtar-marduk"
+  status = 301
+
+[[redirects]]
+  from = "/foreign-fire/esther/the-star-on-the-flag"
+  to = "/blog/the-star-on-the-flag"
+  status = 301
+
+[[redirects]]
+  from = "/foreign-fire/esther"
+  to = "/blog/esther-ishtar-marduk"
+  status = 301
