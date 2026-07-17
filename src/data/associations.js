@@ -1,6 +1,6 @@
-// associations 0715 V7.js
-// the-second-adam anchor moved: the-image-of-yahuah was retired as a duplicate of
-// the-bearer-2-unseen-and-image, which is now the anchor.
+// associations 0715 V8.js
+// foreign-fire finally has its anchor: the Esther / Ishtar-Marduk study.
+// All 16 clusters are now anchored.
 
 export const CLUSTERS = {
   "two-stage-salvation": {
@@ -127,7 +127,7 @@ export const CLUSTERS = {
     label: "Foreign Fire",
     blurb:
       "Borrowed worship, borrowed names, borrowed fire — traced back to where it was struck.",
-    anchor: null, // the Esther / Ishtar-Marduk study will anchor this
+    anchor: "esther-ishtar-marduk",
     expected: 12,
   },
 };

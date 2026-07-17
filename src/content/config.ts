@@ -33,6 +33,7 @@ const postsCollection = defineCollection({
       'Word Studies',
       'The Law Still Stands',
       'The Feasts',
+      'Foreign Fire',
     ]),
     tags: z.array(z.string()).default([]),
     featured: z.boolean().default(false),
