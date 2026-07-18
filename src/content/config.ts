@@ -51,6 +51,8 @@ const postsCollection = defineCollection({
     deck: z.string().optional(),
     // Optional position within an association cluster (lower sorts first).
     order: z.number().optional(),
+    // Single strongest kin study, rendered as "Read Next" at the foot of the post.
+    companion: z.string().optional(),
   }),
 });
 

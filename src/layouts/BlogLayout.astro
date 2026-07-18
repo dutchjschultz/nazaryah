@@ -4,7 +4,6 @@ import References from '../components/References.astro';
 import AssociatedStudies from '../components/AssociatedStudies.astro';
 import StudyRail from '../components/StudyRail.astro';
 import { getEntry } from 'astro:content';
-import { companionOf } from '../data/companions.js';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -37,7 +36,7 @@ const readingTime = Math.ceil(wordCount / 200);
 
 // Companion study (if any) — rendered here as chrome so the shared post body
 // stays portable. In the blog context the link points at the /blog/ sibling.
-const companionSlug = companionOf(post.slug);
+const companionSlug = post.data.companion;
 const companion = companionSlug ? await getEntry('posts', companionSlug) : null;
 ---
 
@@ -124,7 +123,7 @@ const companion = companionSlug ? await getEntry('posts', companionSlug) : null;
       <!-- Companion study (wrapper-rendered; points at the /blog/ sibling) -->
       {companion && (
         <div class="max-w-3xl mx-auto companion-note" data-pagefind-ignore>
-          <p class="companion-label">Companion Study</p>
+          <p class="companion-label">Read Next</p>
           <a href={`/blog/${companion.slug}`} class="companion-link">
             {companion.data.title} <span aria-hidden="true">&rarr;</span>
           </a>

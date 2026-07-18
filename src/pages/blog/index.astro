@@ -2,8 +2,6 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { canonicalKey } from '../../data/canonicalOrder';
-import AssocEyebrow from '../../components/AssocEyebrow.astro';
-import { hasAssociations } from '../../data/associations.js';
 
 // Get all published posts
 const allPosts = await getCollection('posts', ({ data }) => {
@@ -167,13 +165,12 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
         <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5" id="posts-grid">
           {sortedPosts.map((post) => (
             <article
-              class:list={["post-item card group flex flex-col overflow-hidden", { "assoc-card": hasAssociations({ associations: post.data.associations }) }]}
+              class="post-item card group flex flex-col overflow-hidden"
               data-category={post.data.category}
               data-chapter={bookCategories[post.data.category] && post.data.chapter ? post.data.chapter : ''}
               data-canonical={post.data.verse ? canonicalKey(post.data.verse) : ''}
             >
               <div class="p-6 flex flex-col flex-1">
-                <AssocEyebrow post={post} />
                 {bookCategories[post.data.category] ? (
                   <a href={bookCategories[post.data.category].href} class="bookshelf-badge">&#9672; From the Bookshelf</a>
                 ) : ['Trinity Studies', 'The Sender and The Sent', 'The Trinity Files'].includes(post.data.category) ? (
@@ -301,9 +298,6 @@ const categoryMeta: Record<string, { subtitle: string; description: string; vers
 </script>
 
 <style>
-  /* Any study that belongs to an association cluster gets one amber edge —
-     "this has kin," nothing more. */
-  .assoc-card { border-left: 3px solid var(--gold); }
 
   .trinity-badge {
     display: inline-block;
