@@ -3,6 +3,8 @@ import BaseLayout from './BaseLayout.astro';
 import References from '../components/References.astro';
 import AssociatedStudies from '../components/AssociatedStudies.astro';
 import StudyRail from '../components/StudyRail.astro';
+import { getEntry } from 'astro:content';
+import { companionOf } from '../data/companions.js';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -10,7 +12,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, date, category, tags, author, references } = post.data;
+const { title, description, deck, date, category, tags, author, references } = post.data;
 
 // Categories that are books on the shelf — these posts are chapters, so their
 // header links back to the book rather than carrying the Trinity tag.
@@ -32,6 +34,11 @@ const formattedDate = date.toLocaleDateString('en-US', {
 const { Content } = await post.render();
 const wordCount = post.body.split(/\s+/).length;
 const readingTime = Math.ceil(wordCount / 200);
+
+// Companion study (if any) — rendered here as chrome so the shared post body
+// stays portable. In the blog context the link points at the /blog/ sibling.
+const companionSlug = companionOf(post.slug);
+const companion = companionSlug ? await getEntry('posts', companionSlug) : null;
 ---
 
 <BaseLayout title={`${title} - Nazaryah`} description={description} article={true}>
@@ -69,6 +76,9 @@ const readingTime = Math.ceil(wordCount / 200);
         <h1 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: var(--font-display); color: var(--deep-earth);">
           {title}
         </h1>
+        {deck && (
+          <p class="post-deck">{deck}</p>
+        )}
         <div class="flex items-center justify-center gap-6 text-sm" style="color: var(--ink-faded); font-family: var(--font-body);">
           <div class="flex items-center gap-2">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -110,6 +120,16 @@ const readingTime = Math.ceil(wordCount / 200);
       <div class="max-w-3xl mx-auto prose">
         <Content />
       </div>
+
+      <!-- Companion study (wrapper-rendered; points at the /blog/ sibling) -->
+      {companion && (
+        <div class="max-w-3xl mx-auto companion-note" data-pagefind-ignore>
+          <p class="companion-label">Companion Study</p>
+          <a href={`/blog/${companion.slug}`} class="companion-link">
+            {companion.data.title} <span aria-hidden="true">&rarr;</span>
+          </a>
+        </div>
+      )}
 
       <!-- References Section -->
       {references && references.length > 0 && (
@@ -194,6 +214,46 @@ const readingTime = Math.ceil(wordCount / 200);
     border-color: #c4a46b;
     background: rgba(201, 169, 97, 0.18);
   }
+  /* Deck: one-line orientation rendered from frontmatter, under the title */
+  .post-deck {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: var(--ink-faded);
+    max-width: 46ch;
+    margin: -0.5rem auto 1.75rem;
+  }
+  :global(.dark) .post-deck { color: var(--color-dark-secondary-text); }
+
+  /* Companion study card (rendered by the wrapper, not the body) */
+  .companion-note {
+    margin-top: 3rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--sand-dark);
+    border-left: 3px solid var(--gold);
+    border-radius: 3px;
+    background: rgba(138, 101, 32, 0.04);
+  }
+  :global(.dark) .companion-note { border-color: rgba(196,173,132,0.28); border-left-color: var(--gold-light); }
+  .companion-label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 0.35rem;
+  }
+  :global(.dark) .companion-label { color: var(--gold-light); }
+  .companion-link {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--deep-earth);
+    text-decoration: none;
+  }
+  :global(.dark) .companion-link { color: var(--color-dark-text); }
+  .companion-link:hover { color: var(--bronze); }
 </style>
 
 <style is:global>

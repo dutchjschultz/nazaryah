@@ -26,29 +26,6 @@
   to = "/blog/the-bearer-2-unseen-and-image"
   status = 301
 
-# Esther studies moved from standalone /foreign-fire/esther/* pages to taggable
-# blog posts, so esther-ishtar-marduk can anchor the foreign-fire cluster. The
-# old topic-page URLs (and the hub) now resolve to the posts.
-# force = true so these fire even though the .astro pages still exist — lets the
-# redirects be tested live BEFORE deletion. Drop force when the pages are removed.
-[[redirects]]
-  from = "/foreign-fire/esther/ishtar-and-marduk"
-  to = "/blog/esther-ishtar-marduk"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/foreign-fire/esther/the-star-on-the-flag"
-  to = "/blog/the-star-on-the-flag"
-  status = 301
-  force = true
-
-[[redirects]]
-  from = "/foreign-fire/esther"
-  to = "/blog/esther-ishtar-marduk"
-  status = 301
-  force = true
-
 # The Lie of Gravity moved from a /sun-worship/the-priesthood article page to a
 # taggable blog post so it can join the cosmology-north cluster.
 [[redirects]]

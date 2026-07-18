@@ -9,16 +9,20 @@ interface Props {
   description: string;
   image?: string;
   article?: boolean;
+  canonical?: string;
 }
 
 const {
   title = 'Nazaryah - Biblical Studies',
   description = 'A modern biblical studies platform emphasizing original languages, fresh perspectives, and rich contextual understanding.',
   image = '/og-image.jpg',
-  article = false
+  article = false,
+  canonical
 } = Astro.props;
 
-const canonicalURL = new URL(Astro.url.pathname, Astro.site || 'http://localhost:4321');
+// canonical override lets a duplicate page (e.g. the Foreign Fire copy of a study)
+// point search engines at the primary /blog/ version.
+const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site || 'http://localhost:4321');
 ---
 
 <!DOCTYPE html>
