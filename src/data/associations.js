@@ -1,6 +1,7 @@
-// associations 0715 V8.js
-// foreign-fire finally has its anchor: the Esther / Ishtar-Marduk study.
-// All 16 clusters are now anchored.
+// associations 0717 V10.js
+// delegated-authority repointed to the-throne-and-the-right-hand, its lead study.
+// NEW cluster trinity-examined added (anchor: the-throne-and-the-right-hand) to
+// replace the Trinity Studies *category* with an association group. 17 clusters.
 
 export const CLUSTERS = {
   "two-stage-salvation": {
@@ -55,7 +56,7 @@ export const CLUSTERS = {
     label: "The Throne and the Right Hand",
     blurb:
       "Authority given, never seized. The Son at the right hand, the heirs in His throne, and the kingdom handed back to the Father.",
-    anchor: "joint-heirs-with-the-king",
+    anchor: "the-throne-and-the-right-hand",
     expected: 8,
   },
 
@@ -129,6 +130,14 @@ export const CLUSTERS = {
       "Borrowed worship, borrowed names, borrowed fire — traced back to where it was struck.",
     anchor: "esther-ishtar-marduk",
     expected: 12,
+  },
+
+  "trinity-examined": {
+    label: "Trinity Studies",
+    blurb:
+      "The Godhead the text actually shows. Every throne vision names two, not three; worship and service sort the same way — the pattern the doctrine has to explain away.",
+    anchor: "the-throne-and-the-right-hand",
+    expected: 4,
   },
 };
 

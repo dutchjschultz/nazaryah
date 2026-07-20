@@ -26,6 +26,13 @@
   to = "/blog/the-bearer-2-unseen-and-image"
   status = 301
 
+# Trinity Studies category retired: the trinity-examined association cluster now
+# does the grouping. The listing page is gone; send it to the anchor study.
+[[redirects]]
+  from = "/trinity/studies"
+  to = "/blog/the-throne-and-the-right-hand"
+  status = 301
+
 # The Lie of Gravity moved from a /sun-worship/the-priesthood article page to a
 # taggable blog post so it can join the cosmology-north cluster.
 [[redirects]]
