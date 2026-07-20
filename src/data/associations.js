@@ -1,7 +1,7 @@
-// associations 0717 V10.js
-// delegated-authority repointed to the-throne-and-the-right-hand, its lead study.
-// NEW cluster trinity-examined added (anchor: the-throne-and-the-right-hand) to
-// replace the Trinity Studies *category* with an association group. 17 clusters.
+// associations 0717 V11.js
+// delegated-authority relabeled "The Right Hand and the Heirs" so the cluster label
+// no longer collides with the anchor study's own title (which read as a grayed-out
+// phantom study on that study's page). Anchor unchanged. 17 clusters.
 
 export const CLUSTERS = {
   "two-stage-salvation": {
@@ -53,7 +53,7 @@ export const CLUSTERS = {
   },
 
   "delegated-authority": {
-    label: "The Throne and the Right Hand",
+    label: "The Right Hand and the Heirs",
     blurb:
       "Authority given, never seized. The Son at the right hand, the heirs in His throne, and the kingdom handed back to the Father.",
     anchor: "the-throne-and-the-right-hand",
