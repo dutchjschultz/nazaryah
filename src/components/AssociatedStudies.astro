@@ -25,9 +25,15 @@ const all = (await getCollection("posts", (p) => !p.data.draft)).map(toStudy);
 
 const groups = keysFor(currentStudy)
   .map((key) => {
-    const members = membersOf(key, all).filter(
-      (s) => s.slug !== currentStudy.slug && !SAME_CATEGORY(s, currentStudy)
-    );
+    // Members of this cluster, minus the current study itself.
+    const siblings = membersOf(key, all).filter((s) => s.slug !== currentStudy.slug);
+    // Normally drop same-category siblings — the category nav already links them, so
+    // repeating them here is noise. But if that would empty the cluster, keep them:
+    // a curated cluster whose only other member shares this study's category (e.g.
+    // trinity-examined, where Throne and Worship both sit in Scripture Unfiltered)
+    // must still surface, or the panel silently loses the cross-reference.
+    const crossCategory = siblings.filter((s) => !SAME_CATEGORY(s, currentStudy));
+    const members = crossCategory.length > 0 ? crossCategory : siblings;
     return { key, cluster: getCluster(key), shown: members.slice(0, PER_CLUSTER), total: members.length };
   })
   .filter((g) => g.total > 0);
