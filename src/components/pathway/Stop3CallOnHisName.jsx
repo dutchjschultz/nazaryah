@@ -64,9 +64,9 @@ export default function Stop3CallOnHisName() {
       url: 'https://nazaryah.com/trinity/roles/',
     },
     {
-      title: 'Trinity Studies — Verse by Verse',
+      title: 'The Trinity Files — Verse by Verse',
       blurb: 'A working library of the strongest Trinitarian proof-texts examined in their original languages.',
-      url: 'https://nazaryah.com/trinity/studies/',
+      url: 'https://nazaryah.com/trinity/files/',
     },
   ];
 
