@@ -16,12 +16,13 @@ export const BLOG_GROUPS = [
   { key: 'the-quick-scroll',     name: 'The Quick Scroll',     blurb: 'Cliff-notes walkthroughs of whole books of the Bible.' },
   { key: 'buried-in-plain-sight', name: 'Buried in Plain Sight', blurb: 'The systems, symbols, and history hidden in plain view.' },
   { key: 'the-law-and-the-feasts', name: 'The Law & The Feasts', blurb: 'The Torah that still stands, and the appointed times it keeps.' },
+  { key: 'the-side-door',        name: 'The Side Door',        blurb: 'Modern parables — hard truth slipped in sideways, the way a story can and a lecture cannot.' },
 ];
 
 // Jump-outs — NOT filters. Buttons on the landing that link to where that
 // content actually lives.
 export const BLOG_JUMPOUTS = [
-  { label: 'The Trinity Files', note: '51 verse-by-verse files, on the Trinity page', href: '/trinity/files' },
+  { label: 'The Trinity Files', note: 'verse by verse, on the Trinity page', href: '/trinity/files' },
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
@@ -78,7 +79,10 @@ export const POST_GROUP = {
   'two-greatest-commandments': 'the-law-and-the-feasts',
   'seven-feasts-in-exodus': 'the-law-and-the-feasts',
 
-  // ── Scripture Unfiltered (22) ──
+  // ── The Side Door (1) — modern parables ──
+  'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
+
+  // ── Scripture Unfiltered (21) ──
   'ark-of-covering': 'scripture-unfiltered',
   'bread-and-wine': 'scripture-unfiltered',
   'clean-hands-pure-heart': 'scripture-unfiltered',
@@ -100,7 +104,6 @@ export const POST_GROUP = {
   'tree-of-knowledge-of-good-and-evil': 'scripture-unfiltered',
   'we-are-not-all-sinners': 'scripture-unfiltered',
   'the-whole-counsel': 'scripture-unfiltered',
-  'the-case-of-ned-goodman': 'scripture-unfiltered', // ⚠ default — parable/case study
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
