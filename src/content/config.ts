@@ -79,7 +79,32 @@ const glossaryCollection = defineCollection({
   }),
 });
 
+// The Watchman's Report — timely, dated news framings. Each entry is a THIN
+// pointer to a full study (which lives elsewhere and is not duplicated here).
+// Feeds both the /watchmans-desk archive page and the homepage band.
+const watchmansReportCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    date: z.date(),
+    // Colored status label on the brief, e.g. "Approved · July 4 Unveiling".
+    tag: z.string(),
+    // Tag color: urgent = red, ongoing = navy, horizon = gold.
+    tone: z.enum(['urgent', 'ongoing', 'horizon']).default('ongoing'),
+    // e.g. "Washington DC · April 16, 2026".
+    dateline: z.string(),
+    // One-line summary for the homepage band (kept deliberately thin).
+    teaser: z.string(),
+    // Outbound link to the full study this brief frames (never modified here).
+    studyUrl: z.string(),
+    studyLabel: z.string(),
+    linkText: z.string().default('Read the full study'),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   posts: postsCollection,
   glossary: glossaryCollection,
+  'watchmans-report': watchmansReportCollection,
 };

@@ -1,5 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+// Field notes now live in the watchmans-report collection (not hardcoded).
+const reports = (await getCollection('watchmans-report'))
+  .filter((r) => r.data.draft !== true)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+const rendered = await Promise.all(
+  reports.map(async (r) => ({ data: r.data, Content: (await r.render()).Content }))
+);
+const toneClass = (t) => (t === 'urgent' ? 'wd-tag-urgent' : t === 'horizon' ? 'wd-tag-horizon' : '');
 ---
 
 <BaseLayout
@@ -18,58 +28,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       </div>
     </section>
 
-    <!-- THREE BRIEFS -->
+    <!-- THREE BRIEFS — rendered from the watchmans-report collection -->
     <section class="wd-grid-section">
       <div class="wd-grid">
-
-        <!-- Brief 1: The Arch -->
-        <article class="wd-brief">
-          <div class="wd-tag wd-tag-urgent">
-            <span>Approved · July 4 Unveiling</span>
-            <span class="wd-star">★</span>
-          </div>
-          <div class="wd-brief-body">
-            <p class="wd-dateline">Washington DC · April 16, 2026</p>
-            <h2 class="wd-brief-title">The Triumphal Arch Is Coming to Washington</h2>
-            <p>On April 16 the U.S. Commission of Fine Arts approved a 250-foot Triumphal Arch to be built at Memorial Circle, directly across the Potomac from the Lincoln Memorial. It is being fast-tracked for unveiling on July 4, 2026 — the 250th anniversary of American independence. The design is a near-copy of the Arc de Triomphe in Paris, only taller.</p>
-            <p>Most Americans will see a patriotic monument. The believer who has read Scripture carefully should see something else: the architectural form of the Roman Triumph, a rite in which the victorious general was temporarily identified with Jupiter; revived by Napoleon in 1806 in direct imitation of Constantine's arch to Sol Invictus; now planted at the western gateway of a city already laid out as an Egyptian sun-temple.</p>
-            <p>The date is not an accident either. July 4 is the annual conjunction of our sun with Sirius — the Blazing Star of Masonry and the star the Egyptians identified with Isis, the Queen of Heaven Jeremiah condemned by name.</p>
-            <a href="/american-idolatry/washington-dc" class="wd-link">Read the full study &rarr;<span class="wd-link-sub">The Sun Temple on the Potomac</span></a>
-          </div>
-        </article>
-
-        <!-- Brief 2: Middle East -->
-        <article class="wd-brief">
-          <div class="wd-tag">
-            <span>On the Ground · Iran, Syria, Lebanon</span>
-            <span class="wd-star">★</span>
-          </div>
-          <div class="wd-brief-body">
-            <p class="wd-dateline">The Covenant Land · Ongoing</p>
-            <h2 class="wd-brief-title">The War the Headlines Cannot Explain</h2>
-            <p>News cycles will tell you who fired what missile at whom. They will not tell you who is in Jacob's land, by whose authority, or what role Scripture gives them in the closing record of the age.</p>
-            <p>The structure that signed the Messiah's death warrant in the first century — Edomite front men running the daily system, Rome holding the throne behind — never collapsed. It restructured. The Roman institution rebranded. The Edomite claim to Jacob's land rebranded. The financial network rebranded (Roth Schild — red shield — the shield of Edom). The front keeps changing. The rider in the saddle does not.</p>
-            <p>Court Appeal II, filed between Chapters 17 and 18 of <em>The Courtroom of Heaven</em>, places the full evidence before the heavenly courtroom — the Woman, the Beast in all its facets, and the Second Beast that has been providing the cover.</p>
-            <a href="/books/revelation#court-appeal-2" class="wd-link">Read Court Appeal II &rarr;<span class="wd-link-sub">The Woman, the Beast, and the Second Beast</span></a>
-          </div>
-        </article>
-
-        <!-- Brief 3: Memorial Day -->
-        <article class="wd-brief">
-          <div class="wd-tag wd-tag-horizon">
-            <span>On the Horizon · May 25</span>
-            <span class="wd-star">★</span>
-          </div>
-          <div class="wd-brief-body">
-            <p class="wd-dateline">Arlington · Approaching</p>
-            <h2 class="wd-brief-title">Memorial Day Returns in Five Weeks</h2>
-            <p>On Monday, May 25, Americans will perform the most religious ceremony in the nation's civic calendar. A flag on every grave at Arlington. A wreath at the Tomb of the Unknown Soldier. Taps. A 21-gun salute. The eternal flame at JFK's grave, tended by state functionaries.</p>
-            <p>Every element is Roman. Strewing flowers on graves is the late-spring Lemuria rite, a propitiation for restless dead. The eternal flame is the Sacred Fire of Vesta — the pagan hearth of the city, extinguished by Theodosius in AD 394, revived under the Arc de Triomphe in 1923, and now burning in every Western capital. The unknown soldier occupies the place Rome reserved for the deified emperor.</p>
-            <p>The holiday is built to overwhelm reflection. This brief arrives five weeks early because once the weekend begins, the emotional pull of family gatherings and televised ceremonies makes the questions almost impossible to ask. Now is the time.</p>
-            <a href="/american-idolatry/memorial-veterans-day" class="wd-link">Read the full study &rarr;<span class="wd-link-sub">The Cult of the Fallen Soldier</span></a>
-          </div>
-        </article>
-
+        {rendered.map(({ data, Content }) => (
+          <article class="wd-brief">
+            <div class={`wd-tag ${toneClass(data.tone)}`}>
+              <span>{data.tag}</span>
+              <span class="wd-star">★</span>
+            </div>
+            <div class="wd-brief-body">
+              <p class="wd-dateline">{data.dateline}</p>
+              <h2 class="wd-brief-title">{data.title}</h2>
+              <Content />
+              <a href={data.studyUrl} class="wd-link">{data.linkText} &rarr;<span class="wd-link-sub">{data.studyLabel}</span></a>
+            </div>
+          </article>
+        ))}
       </div>
 
       <div class="wd-foot">
