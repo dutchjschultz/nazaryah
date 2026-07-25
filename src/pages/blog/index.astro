@@ -1,536 +1,105 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { canonicalKey } from '../../data/canonicalOrder';
+import { BLOG_GROUPS, BLOG_JUMPOUTS, groupOf, inFeed } from '../../data/blog-groups.js';
 
-// Get all published posts
-const allPosts = await getCollection('posts', ({ data }) => {
-  return data.draft !== true;
-});
-
-// Sort by date, most recent first
-const sortedPosts = allPosts.sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-const allCategories = [
-  'The Scrolls',
-  'Scripture Unfiltered',
-  'Buried in Plain Sight',
-  'The Trinity Files',
-  'The Law Still Stands',
-  'The Feasts',
-  // ── The Bookshelf — these categories are book chapters, marked distinctly below ──
-  'The Bearer',
-  'Five Titles, One Christ',
-  'What the Pulpit Buried',
-];
-
-// Categories that are actually books on the shelf. Their filter buttons, cards,
-// and article headers get a distinct "bookshelf" treatment so readers know
-// these posts are chapters of a compiled work, not standalone blog studies.
-const bookCategories: Record<string, { title: string; href: string }> = {
-  'The Bearer': { title: 'The Bearer', href: '/books/the-bearer' },
-  'Five Titles, One Christ': { title: 'Five Titles, One Christ', href: '/books/five-titles' },
-  'What the Pulpit Buried': { title: 'What the Pulpit Buried', href: '/books/pulpit-buried' },
-};
-
-// Hover card content for each category — styled like manuscript field notes
-const categoryMeta: Record<string, { subtitle: string; description: string; verse: string }> = {
-  'The Scrolls': {
-    subtitle: '— THE SCROLLS —',
-    description: 'These are focused book studies — narrowed down to a single theme, subject, or argument. The full book, distilled to what actually matters. No filler, no fluff, just what the author found and whether Scripture backs it up.',
-    verse: '"All Scripture is breathed out by God." — 2 Timothy 3:16'
-  },
-  'Scripture Unfiltered': {
-    subtitle: '— SCRIPTURE UNFILTERED —',
-    description: 'Passage by passage. Verse by verse. No denominational filter, no traditional spin — just the text opened up the way it was written to be read. Some of it will wreck what you were taught. That\'s the point.',
-    verse: '"Study to show yourself approved." — 2 Timothy 2:15'
-  },
-  'Buried in Plain Sight': {
-    subtitle: '— BURIED IN PLAIN SIGHT —',
-    description: 'This is the historical record of how Christianity drifted — where its doctrines actually came from, what councils decided them, what Rome enforced, and what the Reformation refused to fix. Church history that the church doesn\'t teach.',
-    verse: '"Ask for the ancient paths, where the good way is." — Jeremiah 6:16'
-  },
-  'Parables': {
-    subtitle: '— PARABLES —',
-    description: 'These are not studies of biblical parables — these are original parables written to carry hard truth in a way that a straight lecture never could. They\'re meant to be engaging. The truth inside them is anything but comfortable.',
-    verse: '"To you it has been given to know the secrets of the kingdom." — Matthew 13:11'
-  },
-  'Word Studies': {
-    subtitle: '— WORD STUDIES —',
-    description: 'His name was changed. Key words were swapped. Covenantal meaning was buried under centuries of translation and tradition. These studies go back to the Hebrew and Greek to recover what the text actually says — before the translators got to it.',
-    verse: '"My people are destroyed for lack of knowledge." — Hosea 4:6'
-  },
-  'The Law Still Stands': {
-    subtitle: '— THE LAW STILL STANDS —',
-    description: 'Scripture never said the Torah was abolished. That idea came from centuries of misread letters and mistranslated verses. These studies go back to the text and make the case that the Law was never nailed to anything — and that keeping it still matters.',
-    verse: '"Your Torah is truth." — Psalm 119:142'
-  },
-  'The Feasts': {
-    subtitle: '— THE FEASTS —',
-    description: 'Yahuah set appointed times in Scripture — specific, named, and tied to His covenant with His people. Christianity replaced them with holidays borrowed from somewhere else entirely. Both calendars are laid out here. You decide which one belongs to Him.',
-    verse: '"These are my appointed feasts." — Leviticus 23:2'
-  },
-  'The Trinity Files': {
-    subtitle: '— THE TRINITY FILES —',
-    description: 'Every verse trinitarians use to defend their doctrine — examined, dismantled, and returned to its original context. One verse at a time, one file at a time. If the case is as strong as they claim, it should be able to survive scrutiny.',
-    verse: '"Test everything; hold fast what is good." — 1 Thessalonians 5:21'
-  },
-  'The Bearer': {
-    subtitle: '— FROM THE BOOKSHELF · THE BEARER —',
-    description: 'Chapters of the book. One pattern traced from Genesis to Revelation: the Father is the source, the Son is the One who carries Him — the flame and the lamp that holds it. A man so given over to the Father that to see Him was to see the One who sent Him.',
-    verse: '"The Lamb is the light thereof." — Revelation 21:23'
-  },
-  'Five Titles, One Christ': {
-    subtitle: '— FROM THE BOOKSHELF · FIVE TITLES, ONE CHRIST —',
-    description: 'Chapters of the book. Five titles the modern church hands to the Son — Bridegroom, Gospel, Redeemer, Inheritance, High Priest — traced through the Hebrew and Greek back to the Father they were quietly taken from.',
-    verse: '"That Elohim may be all in all." — 1 Corinthians 15:28'
-  },
-  'What the Pulpit Buried': {
-    subtitle: '— FROM THE BOOKSHELF · WHAT THE PULPIT BURIED —',
-    description: 'Chapters of the book. Six Hebrew words — faith, grace, mercy, righteousness, justification, sanctification — excavated from beneath centuries of tradition and held up to the light the way the text first meant them.',
-    verse: '"Remove not the ancient landmark." — Mishlei (Proverbs) 22:28'
-  },
-};
+const posts = (await getCollection('posts', ({ data }) => data.draft !== true)).filter(inFeed);
+const countByGroup = Object.fromEntries(
+  BLOG_GROUPS.map((g) => [g.key, posts.filter((p) => groupOf(p.slug) === g.key).length])
+);
+const total = posts.length;
 ---
 
 <BaseLayout
   title="Biblical Studies & Theological Insights - Nazaryah Blog"
-  description="Explore in-depth biblical studies covering exegesis, theology, historical context, and original language word studies."
+  description="Browse in-depth biblical studies by category, or search the full archive — exegesis, word studies, theology, and historical context."
 >
-  <!-- Biblical Studies Header -->
-  <section style="font-family: Georgia, 'Times New Roman', serif; background: #cfc0a0; padding: 3rem 2rem 2.5rem; text-align: center;">
-
-    <h1 style="font-size: 2.6rem; font-weight: 900; color: #1e1208; font-variant: small-caps; letter-spacing: 0.04em; margin-bottom: 0.75rem;">Biblical Studies</h1>
-
-    <!-- Decorative Rule -->
-    <div style="display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1.1rem;">
-      <span style="display: block; height: 1px; width: 80px; background: #7a4f28; opacity: 0.5;"></span>
-      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <rect x="1" y="1" width="12" height="12" stroke="#7a4f28" stroke-width="1" fill="none" transform="rotate(45 7 7)" opacity="0.6"/>
-      </svg>
-      <span style="display: block; height: 1px; width: 80px; background: #7a4f28; opacity: 0.5;"></span>
-    </div>
-
-    <!-- Intro Paragraph -->
-    <p style="font-size: 0.97rem; color: #2e1e0e; max-width: 820px; margin: 0 auto 2.25rem; line-height: 1.9;">
-      Each post here is the result of hours spent in original Hebrew and Greek — digging beneath the surface of words and doctrines that most believers treat as settled. These are not devotionals. They are focused investigations into single topics that have been repeated so often in church culture that almost no one stops to ask what they actually mean. The next time someone tells you how <strong style="color: #6b3010; font-weight: bold;">blessed</strong> they are, or insists the Law was <strong style="color: #6b3010; font-weight: bold;">nailed to the cross</strong>, or calls <strong style="color: #6b3010; font-weight: bold;">Yahushua</strong> the second person of a Trinity — you will have something to say. Not opinion. Scripture.
+  <!-- Parchment header + short how-to-navigate -->
+  <section class="blog-hero">
+    <h1 class="blog-hero-title">Biblical Studies</h1>
+    <div class="blog-hero-rule" aria-hidden="true"><span></span><svg width="12" height="12" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" stroke="#7a4f28" stroke-width="1" transform="rotate(45 7 7)" opacity="0.6"/></svg><span></span></div>
+    <p class="blog-hero-intro">
+      Every study here is a focused investigation — hours in the Hebrew and Greek, one topic at a time.
+      Pick a lens below to browse, or open <strong>All Studies</strong> to search the whole archive.
     </p>
-
-    <!-- Category Buttons -->
-    <div id="category-filters" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 0.5rem; max-width: 1000px; margin: 0 auto;">
-
-      <!-- All Posts — no tooltip -->
-      <button data-category="all" class="cat-btn active">All Posts</button>
-
-      <!-- Category buttons with hover tooltips -->
-      {allCategories.map((category) => (
-        <div class="cat-btn-wrapper">
-          <button data-category={category} class:list={["cat-btn", { "cat-btn-book": bookCategories[category] }]}>
-            {bookCategories[category] && <span class="cat-btn-glyph">◈</span>}{category}
-          </button>
-
-          {categoryMeta[category] && (
-            <div class="dig-tooltip" role="tooltip">
-              <div class="dig-tooltip-header">
-                <span>△</span>
-                <span>{category}</span>
-                <span>△</span>
-              </div>
-              <div class="dig-tooltip-body">
-                <p class="dig-tooltip-subtitle">{categoryMeta[category].subtitle}</p>
-                <p class="dig-tooltip-description">{categoryMeta[category].description}</p>
-                <div class="dig-tooltip-divider">
-                  <span class="dig-tooltip-diamond">◆</span>
-                </div>
-                <p class="dig-tooltip-verse">{categoryMeta[category].verse}</p>
-              </div>
-            </div>
-          )}
-        </div>
-      ))}
-    </div>
-
   </section>
 
-  <!-- Posts Grid -->
-  <div style="padding: 2.5rem 1.5rem;">
-    <div class="container mx-auto">
-      <div class="max-w-7xl mx-auto">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5" id="posts-grid">
-          {sortedPosts.map((post) => (
-            <article
-              class="post-item card group flex flex-col overflow-hidden"
-              data-category={post.data.category}
-              data-chapter={bookCategories[post.data.category] && post.data.chapter ? post.data.chapter : ''}
-              data-canonical={post.data.verse ? canonicalKey(post.data.verse) : ''}
-            >
-              <div class="p-6 flex flex-col flex-1">
-                {bookCategories[post.data.category] ? (
-                  <a href={bookCategories[post.data.category].href} class="bookshelf-badge">&#9672; From the Bookshelf</a>
-                ) : ['The Sender and The Sent', 'The Trinity Files'].includes(post.data.category) ? (
-                  <a href="/trinity" class="trinity-badge">&#8592; Trinity</a>
-                ) : null}
-                <div class:list={["tag mb-3", { "tag-book": bookCategories[post.data.category] }]} style="color: var(--bronze);">
-                  {post.data.category}
-                  {bookCategories[post.data.category] && post.data.chapter && (
-                    <span class="chapter-label">Chapter {post.data.chapter}</span>
-                  )}
-                </div>
-                {post.data.verse && (
-                  <div class="post-verse">{post.data.verse}</div>
-                )}
-                <h3 class="post-title text-sm font-semibold mb-3 leading-snug" style="font-family: var(--font-display); color: var(--deep-earth);">
-                  <a
-                    href={`/blog/${post.slug}`}
-                    class="hover:text-[var(--bronze)] transition-colors"
-                    style="color: var(--deep-earth);"
-                  >
-                    {post.data.title}
-                  </a>
-                </h3>
-                {post.data.subtitle ? (
-                  <p class="post-subtitle text-sm leading-relaxed mb-5 line-clamp-4 flex-1">
-                    {post.data.subtitle}
-                  </p>
-                ) : (
-                  <p class="text-sm leading-relaxed mb-5 line-clamp-4 flex-1" style="color: var(--ink-faded);">
-                    {post.data.description}
-                  </p>
-                )}
-                <div class="flex items-center justify-between text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
-                  <time datetime={post.data.date.toISOString()}>
-                    {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric' })}
-                  </time>
-                  <a
-                    href={`/blog/${post.slug}`}
-                    class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1"
-                    style="color: var(--bronze);"
-                  >
-                    Read <span aria-hidden="true">&rarr;</span>
-                  </a>
-                </div>
-              </div>
-            </article>
-          ))}
-        </div>
+  <!-- The map -->
+  <section class="blog-map">
+    <div class="blog-map-inner">
 
-        {sortedPosts.length === 0 && (
-          <div class="text-center py-20">
-            <p class="text-lg" style="color: var(--ink-faded);">
-              No posts published yet. Check back soon!
-            </p>
-          </div>
-        )}
+      <a href="/blog/all" class="blog-all">
+        <span class="blog-all-label">All Studies</span>
+        <span class="blog-all-meta">{total} studies · search the full archive</span>
+        <span class="blog-all-cta">Search &amp; browse &rarr;</span>
+      </a>
+
+      <p class="blog-map-eyebrow">Browse by category</p>
+      <div class="blog-group-grid">
+        {BLOG_GROUPS.map((g) => (
+          <a href={`/blog/c/${g.key}`} class="blog-group-card">
+            <span class="bg-name">{g.name}</span>
+            <span class="bg-blurb">{g.blurb}</span>
+            <span class="bg-count">{countByGroup[g.key]} {countByGroup[g.key] === 1 ? 'study' : 'studies'} &rarr;</span>
+          </a>
+        ))}
       </div>
+
+      <div class="blog-jumpouts">
+        {BLOG_JUMPOUTS.map((j) => (
+          <a href={j.href} class="blog-jumpout">
+            <span class="jo-label">{j.label}</span>
+            <span class="jo-note">{j.note} &rarr;</span>
+          </a>
+        ))}
+      </div>
+
     </div>
-  </div>
+  </section>
 </BaseLayout>
 
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    const filterButtons = document.querySelectorAll<HTMLButtonElement>('#category-filters .cat-btn');
-    const grid = document.getElementById('posts-grid');
-    const postCards = document.querySelectorAll<HTMLElement>('.post-item');
-    // Remember the original (date-sorted) DOM order so non-book views can restore it.
-    const originalOrder = Array.from(postCards);
-
-    function applyFilter(category: string | null) {
-      const target = category || 'all';
-      filterButtons.forEach(btn => {
-        btn.classList.toggle('active', btn.getAttribute('data-category') === target);
-      });
-
-      const matching = originalOrder.filter(c => c.getAttribute('data-category') === target);
-      // Book categories carry data-chapter → reading order; verse studies (e.g.
-      // Trinity Files) carry data-canonical → biblical order. Otherwise leave date order.
-      const byChapter = target !== 'all' && matching.length > 0
-        && matching.every(c => c.getAttribute('data-chapter'));
-      const byCanonical = !byChapter && target !== 'all' && matching.length > 0
-        && matching.every(c => c.getAttribute('data-canonical'));
-
-      if (grid && byChapter) {
-        matching
-          .slice()
-          .sort((a, b) => Number(a.dataset.chapter) - Number(b.dataset.chapter))
-          .forEach(c => grid.appendChild(c));
-        grid.classList.add('show-chapter-labels');
-      } else if (grid && byCanonical) {
-        matching
-          .slice()
-          .sort((a, b) => Number(a.dataset.canonical) - Number(b.dataset.canonical))
-          .forEach(c => grid.appendChild(c));
-        grid.classList.remove('show-chapter-labels');
-      } else if (grid) {
-        originalOrder.forEach(c => grid.appendChild(c));
-        grid.classList.remove('show-chapter-labels');
-      }
-
-      postCards.forEach(card => {
-        const cardCategory = card.getAttribute('data-category');
-        card.style.display = (target === 'all' || cardCategory === target) ? '' : 'none';
-      });
-    }
-
-    filterButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        applyFilter(button.getAttribute('data-category'));
-      });
-    });
-
-    // Deep-link support: /blog?category=What the Pulpit Buried lands pre-filtered.
-    const requested = new URLSearchParams(window.location.search).get('category');
-    if (requested) {
-      const known = Array.from(filterButtons).some(
-        btn => btn.getAttribute('data-category') === requested
-      );
-      if (known) {
-        applyFilter(requested);
-        document.getElementById('posts-grid')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
-      }
-    }
-  });
-</script>
-
 <style>
+  .blog-hero { font-family: Georgia, 'Times New Roman', serif; background: #cfc0a0; padding: 3rem 2rem 2.5rem; text-align: center; }
+  .blog-hero-title { font-size: 2.6rem; font-weight: 900; color: #1e1208; font-variant: small-caps; letter-spacing: 0.04em; margin: 0 0 0.75rem; }
+  .blog-hero-rule { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 1.1rem; }
+  .blog-hero-rule span { display: block; height: 1px; width: 80px; background: #7a4f28; opacity: 0.5; }
+  .blog-hero-intro { font-size: 0.97rem; color: #2e1e0e; max-width: 46rem; margin: 0 auto; line-height: 1.8; }
+  .blog-hero-intro strong { color: #6b3010; }
 
-  .trinity-badge {
-    display: inline-block;
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #8a6028;
-    border: 1px solid #8a6028;
-    border-radius: 2px;
-    padding: 2px 7px;
-    margin-bottom: 6px;
-    text-decoration: none;
-    transition: color 0.2s, border-color 0.2s;
-  }
-  .trinity-badge:hover {
-    color: #c4a46b;
-    border-color: #c4a46b;
-  }
+  .blog-map { background: #0a0a0a; padding: 3rem 1.5rem 4rem; border-top: 3px solid #b89150; }
+  .blog-map-inner { max-width: 72rem; margin: 0 auto; }
 
-  /* ── Bookshelf badge (book-chapter posts) ── */
-  .bookshelf-badge {
-    display: inline-flex;
-    align-items: center;
-    gap: 5px;
-    align-self: flex-start;
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 9px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #8a6028;
-    background: linear-gradient(180deg, rgba(201,169,97,0.12), rgba(201,169,97,0.04));
-    border: 1px solid #b89150;
-    border-radius: 2px;
-    padding: 2px 8px;
-    margin-bottom: 6px;
-    text-decoration: none;
-    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  /* All Studies — the wide primary entry */
+  .blog-all {
+    display: flex; flex-direction: column; gap: 0.3rem; text-decoration: none; margin-bottom: 2.5rem;
+    padding: 1.5rem 1.75rem; border-radius: 6px; border: 1px solid rgba(212,175,55,0.35); border-left: 4px solid #d4af37;
+    background: radial-gradient(ellipse at 20% 0%, #241a0c 0%, #14110c 70%, #0b0906 100%);
+    transition: transform 0.2s ease, background 0.2s ease;
   }
-  .bookshelf-badge:hover {
-    color: #4a2808;
-    border-color: #c4a46b;
-    background: rgba(201,169,97,0.2);
-  }
+  .blog-all:hover { transform: translateY(-2px); background: radial-gradient(ellipse at 20% 0%, #2c2010 0%, #1a1510 70%, #0e0b07 100%); }
+  .blog-all-label { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.7rem; color: #f5e6c8; }
+  .blog-all-meta { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1rem; color: #a09078; }
+  .blog-all-cta { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d4af37; margin-top: 0.3rem; }
 
-  /* Book-chapter category tag gets the bookshelf gold instead of plain bronze */
-  .tag-book { color: #9a6b1f !important; font-weight: bold; }
+  .blog-map-eyebrow { font-family: 'Cinzel', serif; font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; color: #a08a4e; text-align: center; margin: 0 0 1.3rem; }
 
-  /* Scripture reference on cards that cover a verse (e.g. Trinity Files) */
-  .post-verse {
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 10px;
-    font-weight: 600;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #9a6b1f;
-    margin: -2px 0 8px;
-    padding-bottom: 7px;
-    border-bottom: 1px solid var(--sand-dark);
+  .blog-group-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr)); gap: 1.1rem; margin-bottom: 2.5rem; }
+  .blog-group-card {
+    display: flex; flex-direction: column; gap: 0.5rem; text-decoration: none; padding: 1.3rem 1.4rem 1.2rem;
+    border-radius: 6px; background: #141210; border: 1px solid rgba(201,169,97,0.16); border-top: 3px solid #c9a961;
+    transition: transform 0.2s ease, background 0.2s ease;
   }
+  .blog-group-card:hover { transform: translateY(-3px); background: #1b1813; }
+  .bg-name { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.3rem; color: #f5e6c8; line-height: 1.15; }
+  .bg-blurb { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 0.95rem; line-height: 1.45; color: rgba(232,217,184,0.75); flex: 1; }
+  .bg-count { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.16em; text-transform: uppercase; color: #c9a961; padding-top: 0.5rem; border-top: 1px solid rgba(201,169,97,0.14); }
 
-  /* Subtitle teaser on cards that have one (mirrors the Trinity Files page) */
-  .post-subtitle {
-    font-style: italic;
-    color: var(--ink-faded);
+  .blog-jumpouts { display: grid; grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr)); gap: 1rem; }
+  .blog-jumpout {
+    display: flex; flex-direction: column; gap: 0.25rem; text-decoration: none; padding: 1.1rem 1.3rem; border-radius: 6px;
+    background: rgba(20,18,16,0.6); border: 1px dashed rgba(201,169,97,0.4); transition: border-color 0.2s ease, background 0.2s ease;
   }
-
-  /* "Chapter N" label — only revealed in a book's filtered view */
-  .chapter-label {
-    display: none;
-    margin-left: 8px;
-    padding: 1px 8px;
-    border: 1px solid #b89150;
-    border-radius: 999px;
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 8.5px;
-    letter-spacing: 1.5px;
-    color: #8a6028;
-    background: rgba(201,169,97,0.1);
-    vertical-align: middle;
-    white-space: nowrap;
-  }
-  #posts-grid.show-chapter-labels .chapter-label { display: inline-block; }
-
-  /* ── Category filter buttons ── */
-  .cat-btn {
-    font-family: Georgia, 'Times New Roman', serif;
-    font-size: 0.73rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.55rem 1.2rem;
-    border-radius: 3px;
-    cursor: pointer;
-    border: none;
-    background: #a07850;
-    color: #f5e8d0;
-    font-weight: bold;
-    transition: background 0.2s ease, box-shadow 0.2s ease;
-  }
-
-  .cat-btn:hover {
-    background: #3a1a04;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
-  }
-
-  .cat-btn.active {
-    background: #4a2808;
-    box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.35);
-  }
-
-  /* Book categories read as part of the bookshelf: gold-rimmed, with a glyph */
-  .cat-btn-book {
-    background: #2b1c0c;
-    color: #e7cf9b;
-    border: 1px solid #b89150;
-    box-shadow: inset 0 0 18px rgba(201,169,97,0.12);
-  }
-  .cat-btn-book:hover { background: #3a1a04; }
-  .cat-btn-book.active { background: #5a3410; color: #f5e8d0; }
-  .cat-btn-glyph {
-    color: #c9a961;
-    margin-right: 6px;
-    font-size: 0.7em;
-    vertical-align: middle;
-  }
-
-  /* ── Tooltip wrapper ── */
-  .cat-btn-wrapper {
-    position: relative;
-  }
-
-  /* ── Tooltip card ── */
-  .dig-tooltip {
-    display: none;
-    position: absolute;
-    top: calc(100% + 10px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 280px;
-    z-index: 100;
-    border: 1px solid var(--color-border, #c8a878);
-    border-radius: 3px;
-    overflow: hidden;
-    box-shadow:
-      inset 0 0 30px rgba(75, 54, 33, 0.12),
-      0 8px 32px rgba(0, 0, 0, 0.35),
-      0 2px 8px rgba(0, 0, 0, 0.2);
-    pointer-events: none;
-  }
-
-  .cat-btn-wrapper:hover .dig-tooltip {
-    display: block;
-  }
-
-  .dig-tooltip-header {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    background-color: #2b1d0e;
-    color: var(--sand-dark, #c4a97d);
-    font-family: var(--font-display);
-    font-size: 9px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    padding: 0.55rem 0.9rem;
-    gap: 0.5rem;
-  }
-
-  .dig-tooltip-header span:first-child,
-  .dig-tooltip-header span:last-child {
-    opacity: 0.6;
-    font-size: 8px;
-  }
-
-  .dig-tooltip-body {
-    background-color: var(--color-surface, #f5e8c8);
-    background-image: url("https://www.transparenttextures.com/patterns/p6.png");
-    padding: 1rem 1.1rem 0.85rem;
-  }
-
-  .dig-tooltip-subtitle {
-    font-family: var(--font-display);
-    font-size: 8px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--bronze, #8b6914);
-    margin: 0 0 0.6rem;
-    text-align: center;
-  }
-
-  .dig-tooltip-description {
-    font-family: var(--font-body);
-    font-size: 0.88rem;
-    line-height: 1.6;
-    color: var(--color-primary-text, #2b1d11);
-    margin: 0 0 0.75rem;
-  }
-
-  .dig-tooltip-divider {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    margin: 0.6rem 0;
-  }
-  .dig-tooltip-divider::before,
-  .dig-tooltip-divider::after {
-    content: '';
-    flex: 1;
-    height: 1px;
-    background-color: var(--color-border, #c8a878);
-  }
-  .dig-tooltip-diamond {
-    font-size: 10px;
-    color: var(--bronze, #8b6914);
-    line-height: 1;
-  }
-
-  .dig-tooltip-verse {
-    font-family: var(--font-body);
-    font-style: italic;
-    font-size: 0.8rem;
-    color: var(--ink-faded, #5c4033);
-    text-align: center;
-    margin: 0;
-    line-height: 1.5;
-  }
-
-  /* ── Post card helpers ── */
-  .line-clamp-4 {
-    display: -webkit-box;
-    -webkit-line-clamp: 4;
-    -webkit-box-orient: vertical;
-    overflow: hidden;
-  }
-  .post-title,
-  .post-title a {
-    overflow-wrap: break-word;
-    word-wrap: break-word;
-    hyphens: auto;
-  }
-  h3.post-title { font-size: 1.05rem; line-height: 1.35; }
+  .blog-jumpout:hover { border-color: #c9a961; background: rgba(28,24,19,0.7); }
+  .jo-label { font-family: 'Cinzel', serif; font-size: 0.66rem; letter-spacing: 0.2em; text-transform: uppercase; color: #c9a961; }
+  .jo-note { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 0.95rem; color: #a09078; }
 </style>

@@ -1,0 +1,59 @@
+---
+// Single blog post card. Extracted from the old blog index so the paginated
+// group views and the All Posts view render identical cards.
+const { post } = Astro.props;
+
+// Book-chapter categories still get the "From the Bookshelf" treatment — the
+// card shows the post's underlying category; the rail groups them thematically.
+const bookCategories = {
+  'The Bearer': { href: '/books/the-bearer' },
+  'Five Titles, One Christ': { href: '/books/five-titles' },
+  'What the Pulpit Buried': { href: '/books/pulpit-buried' },
+};
+const cat = post.data.category;
+const book = bookCategories[cat];
+const blurb = post.data.subtitle || post.data.deck || post.data.description;
+---
+
+<article class="post-item card group flex flex-col overflow-hidden"
+  data-title={post.data.title.toLowerCase()}
+  data-search={`${post.data.title} ${blurb || ''} ${cat}`.toLowerCase()}>
+  <div class="p-6 flex flex-col flex-1">
+    {book && <a href={book.href} class="bookshelf-badge">&#9672; From the Bookshelf</a>}
+    <div class:list={["tag mb-3", { "tag-book": book }]} style="color: var(--bronze);">{cat}</div>
+    {post.data.verse && <div class="post-verse">{post.data.verse}</div>}
+    <h3 class="post-title text-sm font-semibold mb-3 leading-snug" style="font-family: var(--font-display);">
+      <a href={`/blog/${post.slug}`} style="color: var(--deep-earth);">{post.data.title}</a>
+    </h3>
+    <p class="post-subtitle text-sm leading-relaxed mb-5 line-clamp-4 flex-1">{blurb}</p>
+    <div class="flex items-center justify-between text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
+      <time datetime={post.data.date.toISOString()}>
+        {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}
+      </time>
+      <a href={`/blog/${post.slug}`} class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--bronze);">
+        Read <span aria-hidden="true">&rarr;</span>
+      </a>
+    </div>
+  </div>
+</article>
+
+<style>
+  .bookshelf-badge {
+    display: inline-flex; align-items: center; gap: 5px; align-self: flex-start;
+    font-family: 'Cinzel', Georgia, serif; font-size: 9px; letter-spacing: 2px; text-transform: uppercase;
+    color: #8a6028; background: linear-gradient(180deg, rgba(201,169,97,0.12), rgba(201,169,97,0.04));
+    border: 1px solid #b89150; border-radius: 2px; padding: 2px 8px; margin-bottom: 6px; text-decoration: none;
+    transition: color 0.2s, border-color 0.2s, background 0.2s;
+  }
+  .bookshelf-badge:hover { color: #4a2808; border-color: #c4a46b; background: rgba(201,169,97,0.2); }
+  .tag-book { color: #9a6b1f !important; font-weight: bold; }
+  .post-verse {
+    font-family: 'Cinzel', Georgia, serif; font-size: 10px; font-weight: 600; letter-spacing: 2px; text-transform: uppercase;
+    color: #9a6b1f; margin: -2px 0 8px; padding-bottom: 7px; border-bottom: 1px solid var(--sand-dark);
+  }
+  .post-subtitle { font-style: italic; color: var(--ink-faded); }
+  .line-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .post-title, .post-title a { overflow-wrap: break-word; word-wrap: break-word; hyphens: auto; }
+  h3.post-title { font-size: 1.05rem; line-height: 1.35; }
+  h3.post-title a:hover { color: var(--bronze); }
+</style>

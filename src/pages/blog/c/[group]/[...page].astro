@@ -1,0 +1,77 @@
+---
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import BlogCard from '../../../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+import { BLOG_GROUPS, groupOf, POSTS_PER_PAGE } from '../../../../data/blog-groups.js';
+
+export async function getStaticPaths({ paginate }) {
+  const all = (await getCollection('posts', ({ data }) => data.draft !== true))
+    .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  return BLOG_GROUPS.flatMap((g) => {
+    const posts = all.filter((p) => groupOf(p.slug) === g.key);
+    return paginate(posts, { params: { group: g.key }, pageSize: POSTS_PER_PAGE, props: { group: g } });
+  });
+}
+
+const { page, group } = Astro.props;
+
+// Compact "1 2 3 … Next" window around the current page.
+const nums = [];
+for (let i = 1; i <= page.lastPage; i++) {
+  if (i === 1 || i === page.lastPage || Math.abs(i - page.currentPage) <= 1) nums.push(i);
+  else if (nums[nums.length - 1] !== '…') nums.push('…');
+}
+const pageHref = (n) => (n === 1 ? `/blog/c/${group.key}` : `/blog/c/${group.key}/${n}`);
+---
+
+<BaseLayout title={`${group.name} — Nazaryah Blog`} description={group.blurb}>
+  <section class="blog-subhead">
+    <a href="/blog" class="blog-back">&larr; All categories</a>
+    <h1 class="blog-subhead-title">{group.name}</h1>
+    <p class="blog-subhead-blurb">{group.blurb}</p>
+    <p class="blog-subhead-count">{page.total} {page.total === 1 ? 'study' : 'studies'} · page {page.currentPage} of {page.lastPage}</p>
+  </section>
+
+  <div class="blog-grid-wrap">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+      {page.data.map((post) => <BlogCard post={post} />)}
+    </div>
+
+    {page.lastPage > 1 && (
+      <nav class="pager" aria-label="Pagination">
+        {page.url.prev ? <a class="pager-btn" href={page.url.prev} rel="prev">&larr; Prev</a> : <span class="pager-btn is-disabled">&larr; Prev</span>}
+        {nums.map((n) => (
+          n === '…'
+            ? <span class="pager-ellipsis">…</span>
+            : (n === page.currentPage
+                ? <span class="pager-num is-current">{n}</span>
+                : <a class="pager-num" href={pageHref(n)}>{n}</a>)
+        ))}
+        {page.url.next ? <a class="pager-btn" href={page.url.next} rel="next">Next &rarr;</a> : <span class="pager-btn is-disabled">Next &rarr;</span>}
+      </nav>
+    )}
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .blog-subhead { font-family: Georgia, 'Times New Roman', serif; background: #cfc0a0; padding: 2.25rem 2rem 1.75rem; text-align: center; }
+  .blog-back { display: inline-block; font-family: 'Cinzel', Georgia, serif; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: #6b3010; text-decoration: none; margin-bottom: 0.9rem; }
+  .blog-back:hover { color: #3a1a04; }
+  .blog-subhead-title { font-size: 2.1rem; font-weight: 900; color: #1e1208; font-variant: small-caps; letter-spacing: 0.03em; margin: 0 0 0.5rem; }
+  .blog-subhead-blurb { font-size: 1rem; font-style: italic; color: #4a3520; max-width: 44rem; margin: 0 auto 0.5rem; line-height: 1.55; }
+  .blog-subhead-count { font-family: 'Cinzel', Georgia, serif; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: #7a4f28; margin: 0; }
+
+  .blog-grid-wrap { padding: 2.5rem 1.5rem 3rem; max-width: 84rem; margin: 0 auto; }
+
+  .pager { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 2.75rem; font-family: 'Cinzel', Georgia, serif; }
+  .pager-btn, .pager-num, .pager-ellipsis {
+    display: inline-flex; align-items: center; justify-content: center; min-width: 2.1rem; height: 2.1rem;
+    padding: 0 0.7rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none;
+    border: 1px solid var(--sand-dark, #c4a97d); border-radius: 3px; color: var(--deep-earth, #2b1d11); background: var(--bg-raise, #fbf5e6);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .pager-num.is-current { background: #4a2808; color: #f5e8d0; border-color: #4a2808; font-weight: bold; }
+  .pager-btn:hover, .pager-num:hover { background: #a07850; color: #f5e8d0; border-color: #a07850; }
+  .pager-btn.is-disabled { opacity: 0.4; pointer-events: none; }
+  .pager-ellipsis { border: none; background: none; min-width: 1rem; pointer-events: none; }
+</style>

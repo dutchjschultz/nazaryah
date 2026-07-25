@@ -1,0 +1,119 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+import { inFeed } from '../../data/blog-groups.js';
+
+// Full archive minus the Trinity Files. All cards render in the DOM so the
+// search can filter across the whole set; pagination is client-side (12/page)
+// so any filtered view stays short.
+const posts = (await getCollection('posts', ({ data }) => data.draft !== true))
+  .filter(inFeed)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout title="All Studies — Nazaryah Blog" description="Search and browse the full archive of biblical studies.">
+  <section class="blog-subhead">
+    <a href="/blog" class="blog-back">&larr; Browse by category</a>
+    <h1 class="blog-subhead-title">All Studies</h1>
+    <p class="blog-subhead-count">{posts.length} studies · type to filter</p>
+    <div class="blog-search-wrap">
+      <input id="blog-search" type="search" placeholder="Search titles &amp; keywords — try “goat” or “Esther”" autocomplete="off" aria-label="Search studies" />
+    </div>
+  </section>
+
+  <div class="blog-grid-wrap">
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5" id="all-grid">
+      {posts.map((post) => <BlogCard post={post} />)}
+    </div>
+    <p id="all-noresults" class="blog-noresults" style="display:none;">No studies match that search.</p>
+    <nav id="all-pager" class="pager" aria-label="Pagination"></nav>
+  </div>
+</BaseLayout>
+
+<script>
+  const PER = 12;
+  const grid = document.getElementById('all-grid');
+  const cards = Array.from(grid.querySelectorAll('.post-item'));
+  const search = document.getElementById('blog-search');
+  const pager = document.getElementById('all-pager');
+  const noResults = document.getElementById('all-noresults');
+  let filtered = cards;
+  let pageN = 1;
+
+  const compute = () => {
+    const q = search.value.trim().toLowerCase();
+    return q ? cards.filter((c) => (c.getAttribute('data-search') || '').includes(q)) : cards;
+  };
+
+  function makeBtn(label, onClick, cls, disabled) {
+    const b = document.createElement('button');
+    b.className = cls;
+    b.innerHTML = label;
+    if (disabled) { b.classList.add('is-disabled'); b.disabled = true; }
+    else b.addEventListener('click', onClick);
+    return b;
+  }
+
+  function renderPager(last) {
+    pager.innerHTML = '';
+    if (last <= 1) return;
+    pager.appendChild(makeBtn('&larr; Prev', () => { pageN--; render(); scrollTop(); }, 'pager-btn', pageN === 1));
+    const nums = [];
+    for (let i = 1; i <= last; i++) {
+      if (i === 1 || i === last || Math.abs(i - pageN) <= 1) nums.push(i);
+      else if (nums[nums.length - 1] !== '…') nums.push('…');
+    }
+    nums.forEach((n) => {
+      if (n === '…') { const s = document.createElement('span'); s.className = 'pager-ellipsis'; s.textContent = '…'; pager.appendChild(s); return; }
+      if (n === pageN) { const s = document.createElement('span'); s.className = 'pager-num is-current'; s.textContent = String(n); pager.appendChild(s); }
+      else pager.appendChild(makeBtn(String(n), () => { pageN = n; render(); scrollTop(); }, 'pager-num', false));
+    });
+    pager.appendChild(makeBtn('Next &rarr;', () => { pageN++; render(); scrollTop(); }, 'pager-btn', pageN === last));
+  }
+
+  const scrollTop = () => grid.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+  function render() {
+    const last = Math.max(1, Math.ceil(filtered.length / PER));
+    if (pageN > last) pageN = last;
+    if (pageN < 1) pageN = 1;
+    const start = (pageN - 1) * PER;
+    const show = new Set(filtered.slice(start, start + PER));
+    cards.forEach((c) => { c.style.display = show.has(c) ? '' : 'none'; });
+    noResults.style.display = filtered.length === 0 ? '' : 'none';
+    renderPager(last);
+  }
+
+  search.addEventListener('input', () => { filtered = compute(); pageN = 1; render(); });
+  render();
+</script>
+
+<style is:global>
+  .blog-subhead { font-family: Georgia, 'Times New Roman', serif; background: #cfc0a0; padding: 2.25rem 2rem 1.75rem; text-align: center; }
+  .blog-back { display: inline-block; font-family: 'Cinzel', Georgia, serif; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: #6b3010; text-decoration: none; margin-bottom: 0.9rem; }
+  .blog-back:hover { color: #3a1a04; }
+  .blog-subhead-title { font-size: 2.1rem; font-weight: 900; color: #1e1208; font-variant: small-caps; letter-spacing: 0.03em; margin: 0 0 0.5rem; }
+  .blog-subhead-count { font-family: 'Cinzel', Georgia, serif; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: #7a4f28; margin: 0 0 1rem; }
+  .blog-search-wrap { max-width: 34rem; margin: 0 auto; }
+  #blog-search {
+    width: 100%; font-family: Georgia, serif; font-size: 0.95rem; padding: 0.7rem 1rem; border-radius: 4px;
+    border: 1px solid #7a4f28; background: #fbf5e6; color: #2b1d11;
+  }
+  #blog-search:focus { outline: 2px solid #a07850; outline-offset: 1px; }
+
+  .blog-grid-wrap { padding: 2.5rem 1.5rem 3rem; max-width: 84rem; margin: 0 auto; }
+  .blog-noresults { text-align: center; font-style: italic; color: var(--ink-faded, #5c4033); padding: 2.5rem 0; }
+
+  .pager { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 2.75rem; font-family: 'Cinzel', Georgia, serif; }
+  .pager-btn, .pager-num, .pager-ellipsis {
+    display: inline-flex; align-items: center; justify-content: center; min-width: 2.1rem; height: 2.1rem;
+    padding: 0 0.7rem; font-size: 0.72rem; letter-spacing: 0.08em; text-transform: uppercase; text-decoration: none; cursor: pointer;
+    border: 1px solid var(--sand-dark, #c4a97d); border-radius: 3px; color: var(--deep-earth, #2b1d11); background: var(--bg-raise, #fbf5e6);
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .pager-num.is-current { background: #4a2808; color: #f5e8d0; border-color: #4a2808; font-weight: bold; }
+  .pager-btn:hover, .pager-num:hover { background: #a07850; color: #f5e8d0; border-color: #a07850; }
+  .pager-btn.is-disabled { opacity: 0.4; pointer-events: none; }
+  .pager-ellipsis { border: none; background: none; min-width: 1rem; pointer-events: none; cursor: default; }
+</style>
