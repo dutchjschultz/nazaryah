@@ -1,6 +1,6 @@
 ---
 title: "Memorial Day Returns in Five Weeks"
-date: 2026-04-14
+date: 2026-05-05
 tag: "On the Horizon · May 25"
 tone: "horizon"
 dateline: "Arlington · Approaching"
