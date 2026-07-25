@@ -4,10 +4,10 @@ import HomeCard from '../components/HomeCard.astro';
 import { getCollection } from 'astro:content';
 
 // ── THE RAIL (evergreen structure) ───────────────────────────────────────
-// Level 1 group → its subcategory cards. The 11 EXISTING cards are reused
-// verbatim. The 7 NEW subcategories carry `draft: true` — they render with a
-// DRAFT badge and a NEUTRAL (unassigned) icon until Dutch approves the copy.
-// `placeholder: true` = a subject with no route yet (Cosmology, Living Temple).
+// Level 1 group → its subcategory cards. Copy is approved except for the two
+// placeholders. `draft: true` now marks only those (Cosmology, Living Temple):
+// no route yet, so they render a DRAFT badge + neutral icon + Coming Soon.
+// `placeholder: true` = a subject with no route yet.
 // Every href below is an existing route; nothing here invents a URL.
 const railGroups = [
   {
@@ -26,7 +26,7 @@ const railGroups = [
     items: [
       { href: '/calendar', color: 'indigo', icon: '☾', eyebrow: 'Set in the lights', title: 'The <em>Calendar</em>', description: 'Aviv, the renewed moon, the Sabbath. The way Yahuah set the seasons.', cta: 'Open the Calendar' },
       { href: '/hebrew', color: 'oxblood', icon: 'ב', eyebrow: 'The language of Yahuah', title: 'Hebrew <em>Word</em>', description: 'Restored names, root words, and the meanings translation flattened.', cta: 'Study the Roots' },
-      { placeholder: true, draft: true, color: 'navy', icon: '', eyebrow: 'Placeholder', title: '<em>Cosmology</em>', description: 'The shape of what Yahuah made — the firmament, the north, and the machine built to hide both.', cta: 'Coming soon' },
+      { placeholder: true, draft: true, color: 'navy', icon: '', eyebrow: 'Placeholder', title: '<em>Cosmology</em>', description: 'The shape of what Yahuah made — the firmament above, the north at the center, and everything built to hide it.', cta: 'Coming soon' },
     ],
   },
   {
@@ -43,25 +43,25 @@ const railGroups = [
     name: 'What They Buried',
     eyebrow: 'Dug back up',
     items: [
-      { href: '/christian-or-demonic', draft: true, color: 'oxblood', icon: '', eyebrow: 'Test what you were taught', title: 'Christian <em>or Demonic?</em>', description: 'Five pillars, five hard questions — hold what you were taught up to the text.', cta: 'Begin the Examination' },
+      { href: '/christian-or-demonic', color: 'oxblood', icon: '⚖', eyebrow: 'Test what you were taught', title: 'Christian <em>or Demonic?</em>', description: 'Five pillars every believer inherited without testing. Hold each one to the text and see what stands.', cta: 'Begin the Examination' },
       { href: '/hidden-gems', color: 'teal', icon: '◈', eyebrow: 'Buried in plain sight', title: 'Hidden <em>Gems</em>', description: 'The verses your pastor flipped past — and what they actually mean.', cta: 'Dig In' },
-      { placeholder: true, draft: true, color: 'sepia', icon: '', eyebrow: 'Placeholder', title: 'Living <em>Temple</em>', description: 'You are the temple — what dwells in it, and what keeps it clean.', cta: 'Coming soon' },
+      { placeholder: true, draft: true, color: 'sepia', icon: '', eyebrow: 'Placeholder', title: 'Living <em>Temple</em>', description: 'You are the temple. What dwells in it, what defiles it, and what keeps it set apart.', cta: 'Coming soon' },
     ],
   },
   {
     name: 'Pathways',
     eyebrow: 'Build your own study',
     items: [
-      { href: '/pathway/name-and-nature/stop-1', draft: true, color: 'emerald', icon: '', eyebrow: 'Guided pathway', title: 'The Name <em>and the Nature</em>', description: 'Who Yahuah is, and how the church has been mistranslating His Name.', cta: 'Walk the Path' },
-      { href: '/pathway/grave-and-gate/stop-1', draft: true, color: 'indigo', icon: '', eyebrow: 'Guided pathway', title: 'The Grave <em>and the Gate</em>', description: 'What really happens when you die — and where the fiery hell came from.', cta: 'Walk the Path' },
+      { href: '/pathway/name-and-nature/stop-1', color: 'emerald', icon: '☤', eyebrow: 'Guided pathway', title: 'The Name <em>and the Nature</em>', description: 'Who Yahuah is, and how the church has been mistranslating His Name.', cta: 'Walk the Path' },
+      { href: '/pathway/grave-and-gate/stop-1', color: 'indigo', icon: '⚱', eyebrow: 'Guided pathway', title: 'The Grave <em>and the Gate</em>', description: 'What Scripture actually says about the dead, and where the borrowed fires of hell came from.', cta: 'Walk the Path' },
     ],
   },
   {
     name: "The Scribe's Desk",
     eyebrow: 'The reference shelf',
     items: [
-      { href: '/doctrines', draft: true, color: 'stone', icon: '', eyebrow: 'Start here', title: 'The <em>Doctrines</em>', description: 'The core teachings examined one at a time — the best place to start.', cta: 'Read the Doctrines' },
-      { href: '/books', draft: true, color: 'blackgold', icon: '', eyebrow: 'Long-form', title: 'The <em>Books</em>', description: 'The full-length works, from Genesis patterns to Revelation’s courtroom.', cta: 'Open the Shelf' },
+      { href: '/doctrines', color: 'stone', icon: '◉', eyebrow: 'Start here', title: 'The <em>Doctrines</em>', description: 'The teachings handed down from the pulpit, examined one at a time. Start here.', cta: 'Read the Doctrines' },
+      { href: '/books', color: 'blackgold', icon: '⌂', eyebrow: 'Long-form', title: 'The <em>Books</em>', description: 'The full-length works — the long-form case, in print.', cta: 'Open the Shelf' },
       { href: '/blog', color: 'sepia', icon: 'א', eyebrow: 'Scripture unfiltered', title: 'The <em>Studies</em>', description: 'Word studies, doctrines, and topical deep-dives — the full archive.', cta: 'All Studies' },
     ],
   },
