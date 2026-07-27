@@ -2,6 +2,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeCard from '../components/HomeCard.astro';
 import { getCollection } from 'astro:content';
+import { featuredSlugs } from '../lib/featured-queue.js';
 
 // ── THE RAIL (evergreen structure) ───────────────────────────────────────
 // Level 1 group → its subcategory cards. Copy is approved except for the two
@@ -73,18 +74,20 @@ const _reports = (await getCollection('watchmans-report'))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 const latestReport = _reports[0];
 
-// ── FEATURED PICKS (band) — 5 most recent blogs, with a manual override.
-// Pin a blog to the front by adding its slug to PINNED_SLUGS (or set
-// `featured: true` in a blog's frontmatter). Pins push the oldest auto-picks
-// out; the total always stays at 5.
+// ── FEATURED PICKS (band) — driven by the rotating queue in
+// src/lib/featured-queue.js. One study swaps out per dawn; each rides five
+// days; the whole 64-study list cycles before anything repeats. No state is
+// stored — the date is the only input, so the board is identical on every
+// build and every visitor's screen. Add a slug to PINNED_SLUGS to force it to
+// the top seats (pins eat rotation slots). Trinity Files are excluded here and
+// absent from the queue — settled decision, do not reconnect them.
 const PINNED_SLUGS: string[] = [];
-const _allPosts = (await getCollection('posts', (p) => p.data.draft !== true))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const _pinned = [
-  ...PINNED_SLUGS.map((s) => _allPosts.find((p) => p.slug === s)).filter(Boolean),
-  ..._allPosts.filter((p) => p.data.featured && !PINNED_SLUGS.includes(p.slug)),
-];
-const featuredPicks = [..._pinned, ..._allPosts.filter((p) => !_pinned.includes(p))].slice(0, 5);
+const _pool = (await getCollection('posts', (p) => p.data.draft !== true))
+  .filter((p) => !p.slug.startsWith('trinity-files-'));
+const _bySlug = new Map(_pool.map((p) => [p.slug, p]));
+const featuredPicks = featuredSlugs([..._bySlug.keys()], PINNED_SLUGS)
+  .map((s) => _bySlug.get(s))
+  .filter(Boolean);
 ---
 
 <BaseLayout
