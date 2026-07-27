@@ -13,6 +13,7 @@ export const BLOG_GROUPS = [
   { key: 'scripture-unfiltered', name: 'Scripture Unfiltered', blurb: 'General studies — passage by passage, no denominational spin.' },
   { key: 'the-root',             name: 'The Root',             blurb: 'Word studies — where a single Hebrew or Greek root is the whole study.' },
   { key: 'the-counterfeit-throne', name: 'The Counterfeit Throne', blurb: 'Blogs that take the Trinity head-on — Father, Son, and the seat between them.' },
+  { key: 'one-throne-one-name',   name: 'One Throne, One Name',   blurb: 'The Trinity put on the stand — one throne, one Name, weighed by the text itself.' },
   { key: 'the-quick-scroll',     name: 'The Quick Scroll',     blurb: 'Cliff-notes walkthroughs of whole books of the Bible.' },
   { key: 'buried-in-plain-sight', name: 'Buried in Plain Sight', blurb: 'The systems, symbols, and history hidden in plain view.' },
   { key: 'the-law-and-the-feasts', name: 'The Law & The Feasts', blurb: 'The Torah that still stands, and the appointed times it keeps.' },
@@ -78,6 +79,9 @@ export const POST_GROUP = {
   'fornication-and-adultery': 'the-law-and-the-feasts',
   'two-greatest-commandments': 'the-law-and-the-feasts',
   'seven-feasts-in-exodus': 'the-law-and-the-feasts',
+
+  // ── One Throne, One Name (1) — Trinity-examining studies ──
+  'the-judgment-of-christ': 'one-throne-one-name',
 
   // ── The Side Door (1) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable

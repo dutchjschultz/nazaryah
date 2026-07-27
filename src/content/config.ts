@@ -25,6 +25,7 @@ const postsCollection = defineCollection({
       'Buried in Plain Sight',
       'Parables',
       'The Trinity Files',
+      'One Throne, One Name',
       'The Sender and The Sent',
       'The Bearer',
       'Five Titles, One Christ',
