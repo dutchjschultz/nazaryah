@@ -85,7 +85,7 @@ const PINNED_SLUGS: string[] = [];
 const _pool = (await getCollection('posts', (p) => p.data.draft !== true))
   .filter((p) => !p.slug.startsWith('trinity-files-'));
 const _bySlug = new Map(_pool.map((p) => [p.slug, p]));
-const featuredPicks = featuredSlugs([..._bySlug.keys()], PINNED_SLUGS)
+const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.data.date })), PINNED_SLUGS)
   .map((s) => _bySlug.get(s))
   .filter(Boolean);
 ---
