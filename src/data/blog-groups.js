@@ -27,7 +27,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 63 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 67 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (15) ──
   'worship-and-service': 'the-counterfeit-throne',
@@ -64,9 +64,10 @@ export const POST_GROUP = {
   // ── The Quick Scroll (1) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
 
-  // ── Buried in Plain Sight (9) ──
+  // ── Buried in Plain Sight (10) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
   'the-christian-experiment': 'buried-in-plain-sight',
+  'the-men-in-the-margin': 'buried-in-plain-sight',
   'the-lie-of-gravity': 'buried-in-plain-sight',
   'the-rockefeller-system': 'buried-in-plain-sight',
   'the-short-season': 'buried-in-plain-sight',
@@ -75,10 +76,11 @@ export const POST_GROUP = {
   'the-star-on-the-flag': 'buried-in-plain-sight',   // ⚠ default — symbol origin, not an Esther walkthrough
   'the-lucifer-deception': 'buried-in-plain-sight',  // ⚠ default — a planted lie (could be The Root)
 
-  // ── The Law & The Feasts (3) ──
+  // ── The Law & The Feasts (4) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',
   'two-greatest-commandments': 'the-law-and-the-feasts',
   'seven-feasts-in-exodus': 'the-law-and-the-feasts',
+  'outer-to-inner': 'the-law-and-the-feasts',
 
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',
@@ -86,7 +88,7 @@ export const POST_GROUP = {
   // ── The Side Door (1) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
 
-  // ── Scripture Unfiltered (21) ──
+  // ── Scripture Unfiltered (23) ──
   'ark-of-covering': 'scripture-unfiltered',
   'bread-and-wine': 'scripture-unfiltered',
   'clean-hands-pure-heart': 'scripture-unfiltered',
@@ -108,6 +110,8 @@ export const POST_GROUP = {
   'tree-of-knowledge-of-good-and-evil': 'scripture-unfiltered',
   'we-are-not-all-sinners': 'scripture-unfiltered',
   'the-whole-counsel': 'scripture-unfiltered',
+  'the-stolen-seat': 'scripture-unfiltered',
+  'two-loads-in-the-wilderness': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
