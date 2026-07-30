@@ -1,28 +1,28 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 
-// Placeholder connections — replace name, description, and href with real values
+// Voices Worth Hearing — outside teachers/channels. Real entries carry the
+// three-part copy (opened / difference / listed); append new ones here, no
+// markup changes needed. Placeholder entries carry only a holding `description`
+// and are left untouched until real copy is supplied.
 const connections = [
   {
     name: "The WLC Videos (World's Last Chance)",
-    description: "The channel that first opened these doors for me — three years of study that put the Trinity, the sacred name, the calendar and feasts, biblical cosmology, and a symbolic Revelation on the table. I don't line up with them on everything, but their hunger for the Word is the real thing, and they'll give you far more than one voice crying in the wilderness.",
-    href: 'https://www.youtube.com/@TheWLCvideos',
+    url: 'https://www.youtube.com/@TheWLCvideos',
+    opened: "The channel that first opened these doors — three years of study that put the Trinity, the sacred name, the calendar and feasts, biblical cosmology, and a symbolic Revelation on the table at once. The first sustained case that the doctrine handed down by the Christian religion was assembled by men, not received from the Word.",
+    difference: "They anchor the start of the year to the equinox rather than to Spica surpassing the renewed moon. Their Adventist roots also show in the ordering: obedience is folded into the question of whether a man is delivered at all. Nazaryah holds the order the other way — deliverance through the Messiah first, the Torah as the walk that follows it.",
+    listed: "They took the questions seriously enough to lose an audience over them, and their hunger for the Word is the real thing. Weigh what they hand a reader against the text — that is what they themselves ask.",
   },
   {
-    name: 'Teacher / Site Name',
-    description: 'A short sentence about why this person or site is worth your time. Replace this with your own words.',
-    href: '#',
+    name: "119 Ministries",
+    url: 'https://www.youtube.com/channel/UCzO-bdQuBawrkSyjrdD07Bg',
+    opened: "The clearest, most sustained case that the Torah was never abolished — and that most of what the modern church calls doctrine cannot be found in the text it claims to stand on.",
+    difference: "They reckon the day sundown to sundown and keep a fixed seventh-day cycle rather than the renewed-moon count. They also hold a literal thousand-year reign. On the nature of Yahuah they are not Trinitarian, though they leave the question less settled than Nazaryah does.",
+    listed: "They hand a believer the tools and tell him to check them. Take what is proven, weigh the rest against the Word, and keep walking.",
   },
-  {
-    name: 'Teacher / Site Name',
-    description: 'A short sentence about why this person or site is worth your time. Replace this with your own words.',
-    href: '#',
-  },
-  {
-    name: 'Teacher / Site Name',
-    description: 'A short sentence about why this person or site is worth your time. Replace this with your own words.',
-    href: '#',
-  },
+  { name: 'Teacher / Site Name', url: '#', description: 'A short sentence about why this person or site is worth your time. Replace this with your own words.' },
+  { name: 'Teacher / Site Name', url: '#', description: 'A short sentence about why this person or site is worth your time. Replace this with your own words.' },
+  { name: 'Teacher / Site Name', url: '#', description: 'A short sentence about why this person or site is worth your time. Replace this with your own words.' },
 ];
 ---
 
@@ -130,9 +130,17 @@ const connections = [
         </div>
 
         <!-- Intro -->
-        <p class="text-center mb-10" style="color: var(--ink-faded); font-family: var(--font-body); font-size: 1rem; line-height: 1.7;">
-          These teachers and resources have shaped the scholarship behind this site. Not every view is shared — but every voice listed here takes the text seriously.
-        </p>
+        <div class="mb-10" style="font-family: var(--font-body); font-size: 1rem; line-height: 1.7;">
+          <p class="mb-5" style="color: var(--ink-faded);">
+            The Christian religion did not inherit one or two errors. It inherited a system of them — a sun-day rest, a spring fertility feast wearing the Messiah's name, a triune deity assembled by council, a rapture invented in the 1800s, a law declared dead by men who never had authority to bury it. Each error props up the next, and the whole structure is defended not from the text but from the notes printed beside it.
+          </p>
+          <p class="mb-5" style="color: var(--ink-faded);">
+            The channels below name that structure out loud. Not one of them agrees with everything taught on this site, and this site does not agree with everything they teach. They are listed because each one refused to let a doctrine stand simply because it was old and popular — and because a reader who follows their questions will end up back in the Word, which is where the answers actually live.
+          </p>
+          <p style="color: var(--deep-earth); font-style: italic;">
+            Nothing here is an authority. Test all of it. That is the only recommendation being made.
+          </p>
+        </div>
 
         <!-- Connections Grid -->
         <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -141,11 +149,19 @@ const connections = [
               <h3 class="text-lg font-semibold" style="font-family: var(--font-display); color: var(--deep-earth);">
                 {connection.name}
               </h3>
-              <p class="text-sm flex-1" style="color: var(--ink-faded); font-family: var(--font-body); line-height: 1.65;">
-                {connection.description}
-              </p>
+              {connection.opened ? (
+                <div class="flex-1 flex flex-col gap-2 text-sm" style="color: var(--ink-faded); font-family: var(--font-body); line-height: 1.65;">
+                  <p><span style="color: var(--deep-earth); font-weight: 700;">What they opened:</span> {connection.opened}</p>
+                  <p><span style="color: var(--deep-earth); font-weight: 700;">Where the difference lies:</span> {connection.difference}</p>
+                  <p><span style="color: var(--deep-earth); font-weight: 700;">Why they're listed:</span> {connection.listed}</p>
+                </div>
+              ) : (
+                <p class="text-sm flex-1" style="color: var(--ink-faded); font-family: var(--font-body); line-height: 1.65;">
+                  {connection.description}
+                </p>
+              )}
               <a
-                href={connection.href}
+                href={connection.url}
                 target="_blank"
                 rel="noopener noreferrer"
                 class="inline-flex items-center gap-1 text-xs font-semibold tracking-widest uppercase hover:underline mt-1"
