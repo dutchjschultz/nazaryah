@@ -171,6 +171,15 @@ export const categories = [
         href: "/hollywood/the-stars/the-altar",
         status: "live",
       },
+      {
+        n: 3,
+        slug: "the-red-carpet",
+        title: "The Red Carpet",
+        tagline: "The path once reserved for gods, now walked by mortals while the crowd adores.",
+        verses: "Rom 1:25; Isa 42:8; Acts 12:22",
+        href: "/hollywood/the-stars/the-red-carpet",
+        status: "live",
+      },
     ],
   },
 ];
