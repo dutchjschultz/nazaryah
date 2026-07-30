@@ -1,0 +1,332 @@
+---
+// WorthTheHour 0730 V2.astro
+// V2 — added runtime field, displayed beside the channel name in the collapsed row.
+// Second band for the nazaryah.com contact page, placed beneath "Voices Worth Hearing."
+// Lists individual teachings endorsed on their own merit, without endorsing the ministry behind them.
+// Add entries to the `videos` array. Topic chips build themselves from the topics present.
+
+const videos = [
+  {
+    title: "The Begotten",
+    channel: "Sure Word Prophecy",
+    runtime: "1:19:33",
+    topic: "The Nature of Yahuah",
+    url: "https://www.youtube.com/watch?v=vJpduB2peJI",
+    why: "The most carefully built case against the three-person doctrine gathered here. It walks the Shema through the mouth of the Messiah Himself, holds the Son as begotten rather than created, tracks the Spirit as the Spirit of the Father and the Son rather than a separate person, and names the councils of 325 and 381 as the point of manufacture.",
+    watch: "The teaching uses the English names throughout and does not distinguish the Father as the source of light from the Son as the lamp. It is sound on the count; it is thin on the titles.",
+  },
+];
+
+const topics = [...new Set(videos.map((v) => v.topic))];
+---
+
+<section class="wth-band" aria-labelledby="wth-heading">
+  <div class="wth-inner">
+    <p class="wth-eyebrow">Individual teachings</p>
+    <h2 id="wth-heading">Worth the Hour</h2>
+
+    <div class="wth-intro">
+      <p>
+        The section above lists voices. This one lists single teachings. The
+        distinction matters: a teaching can be sound while the ministry that
+        produced it carries doctrine this site does not hold. Pointing a reader
+        to one study is not an endorsement of the shelf it came from.
+      </p>
+      <p>
+        Each entry names what the teaching establishes and what to keep a hand
+        on the text about. Nothing here replaces reading it out for yourself.
+      </p>
+    </div>
+
+    <div class="wth-filters" role="group" aria-label="Filter teachings by topic">
+      <button type="button" class="wth-chip is-active" data-topic="all">
+        All
+      </button>
+      {
+        topics.map((t) => (
+          <button type="button" class="wth-chip" data-topic={t}>
+            {t}
+          </button>
+        ))
+      }
+    </div>
+
+    <div class="wth-list">
+      {
+        videos.map((v) => (
+          <details class="wth-row" data-topic={v.topic}>
+            <summary>
+              <span class="wth-row-title">{v.title}</span>
+              <span class="wth-row-meta">
+                {v.channel}
+                <span class="wth-row-rule" aria-hidden="true">&middot;</span>
+                <span class="wth-row-runtime">{v.runtime}</span>
+              </span>
+              <span class="wth-row-mark" aria-hidden="true" />
+            </summary>
+            <div class="wth-row-body">
+              <p class="wth-topic-tag">{v.topic}</p>
+              <p>
+                <span class="wth-label">What it establishes:</span> {v.why}
+              </p>
+              <p>
+                <span class="wth-label">What to watch for:</span> {v.watch}
+              </p>
+              <p class="wth-visit">
+                <a href={v.url} target="_blank" rel="noopener noreferrer">
+                  Watch &rarr;
+                </a>
+              </p>
+            </div>
+          </details>
+        ))
+      }
+    </div>
+
+    <p class="wth-foot">
+      A teaching listed here has been weighed against the text. Weigh it again.
+    </p>
+  </div>
+</section>
+
+<script>
+  // Scoped to this band only, so it cannot collide with other accordions on the site.
+  document.querySelectorAll(".wth-band").forEach((band) => {
+    const chips = band.querySelectorAll(".wth-chip");
+    const rows = band.querySelectorAll(".wth-row");
+
+    chips.forEach((chip) => {
+      chip.addEventListener("click", () => {
+        const topic = chip.dataset.topic;
+        chips.forEach((c) => c.classList.toggle("is-active", c === chip));
+        rows.forEach((row) => {
+          const show = topic === "all" || row.dataset.topic === topic;
+          row.hidden = !show;
+          if (!show) row.open = false;
+        });
+      });
+    });
+  });
+</script>
+
+<style>
+  .wth-band {
+    background: #1f3864;
+    color: #ece4d2;
+    font-family: Georgia, "Times New Roman", serif;
+    padding: 3.5rem 1.25rem 3rem;
+  }
+
+  .wth-inner {
+    max-width: 52rem;
+    margin: 0 auto;
+  }
+
+  .wth-eyebrow {
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #a9bcd8;
+    margin: 0 0 0.5rem;
+  }
+
+  .wth-band h2 {
+    font-size: 1.85rem;
+    margin: 0 0 1.5rem;
+    color: #f4eee0;
+  }
+
+  .wth-intro p {
+    margin: 0 0 1rem;
+    line-height: 1.75;
+    color: #dcd3bf;
+  }
+
+  .wth-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+    margin: 2rem 0 1.5rem;
+  }
+
+  .wth-chip {
+    font-family: inherit;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #cfd9e8;
+    background: transparent;
+    border: 1px solid rgba(236, 228, 210, 0.35);
+    border-radius: 999px;
+    padding: 0.4rem 0.95rem;
+    cursor: pointer;
+    transition:
+      background 0.15s ease,
+      color 0.15s ease,
+      border-color 0.15s ease;
+  }
+
+  .wth-chip:hover,
+  .wth-chip:focus-visible {
+    border-color: #ece4d2;
+    color: #f4eee0;
+  }
+
+  .wth-chip.is-active {
+    background: #ece4d2;
+    border-color: #ece4d2;
+    color: #1f3864;
+  }
+
+  .wth-list {
+    border-top: 1px solid rgba(236, 228, 210, 0.25);
+  }
+
+  .wth-row {
+    border-bottom: 1px solid rgba(236, 228, 210, 0.25);
+  }
+
+  .wth-row > summary {
+    display: flex;
+    align-items: baseline;
+    gap: 0.75rem;
+    padding: 1.1rem 0;
+    cursor: pointer;
+    list-style: none;
+  }
+
+  .wth-row > summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .wth-row-title {
+    flex: 1 1 auto;
+    font-size: 1.1rem;
+    color: #f4eee0;
+  }
+
+  .wth-row-meta {
+    flex: 0 0 auto;
+    font-size: 0.8rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #a9bcd8;
+  }
+
+  .wth-row-rule {
+    margin: 0 0.4rem;
+    opacity: 0.65;
+  }
+
+  .wth-row-runtime {
+    font-variant-numeric: tabular-nums;
+  }
+
+  .wth-row-mark {
+    flex: 0 0 auto;
+    width: 0.85rem;
+    height: 0.85rem;
+    position: relative;
+  }
+
+  .wth-row-mark::before,
+  .wth-row-mark::after {
+    content: "";
+    position: absolute;
+    background: #ece4d2;
+    transition: transform 0.18s ease;
+  }
+
+  .wth-row-mark::before {
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 1px;
+    transform: translateY(-50%);
+  }
+
+  .wth-row-mark::after {
+    left: 50%;
+    top: 0;
+    height: 100%;
+    width: 1px;
+    transform: translateX(-50%);
+  }
+
+  .wth-row[open] .wth-row-mark::after {
+    transform: translateX(-50%) scaleY(0);
+  }
+
+  .wth-row-body {
+    padding: 0 0 1.6rem;
+    line-height: 1.75;
+    color: #dcd3bf;
+    max-width: 46rem;
+  }
+
+  .wth-row-body p {
+    margin: 0 0 0.85rem;
+  }
+
+  .wth-topic-tag {
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #a9bcd8;
+  }
+
+  .wth-label {
+    color: #f4eee0;
+    font-weight: 700;
+  }
+
+  .wth-visit a {
+    color: #f4eee0;
+    text-decoration: none;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    border-bottom: 1px solid rgba(244, 238, 224, 0.4);
+    padding-bottom: 0.15rem;
+  }
+
+  .wth-visit a:hover,
+  .wth-visit a:focus-visible {
+    border-bottom-color: #f4eee0;
+  }
+
+  .wth-foot {
+    margin: 2.25rem 0 0;
+    font-style: italic;
+    color: #a9bcd8;
+  }
+
+  @media (max-width: 640px) {
+    .wth-band {
+      padding: 2.5rem 1rem 2.25rem;
+    }
+
+    .wth-band h2 {
+      font-size: 1.5rem;
+    }
+
+    .wth-row > summary {
+      flex-wrap: wrap;
+      gap: 0.35rem 0.75rem;
+    }
+
+    .wth-row-title {
+      flex: 1 1 100%;
+      order: 1;
+    }
+
+    .wth-row-meta {
+      order: 2;
+    }
+
+    .wth-row-mark {
+      order: 3;
+      margin-left: auto;
+    }
+  }
+</style>
