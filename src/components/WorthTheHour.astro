@@ -1,23 +1,23 @@
 ---
 // WorthTheHour 0730 V2.astro
 // V2 — added runtime field, displayed beside the channel name in the collapsed row.
-// Second band for the nazaryah.com contact page, placed beneath "Voices Worth Hearing."
-// Lists individual teachings endorsed on their own merit, without endorsing the ministry behind them.
-// ── Adding a teaching ──────────────────────────────────────────────────────
+// Second band for the nazaryah.com /voices page, placed beneath "Voices Worth Hearing."
+// Lists individual studies endorsed on their own merit, without endorsing the ministry behind them.
+// ── Adding a study ──────────────────────────────────────────────────────
 // Append an object to the `videos` array below. No markup changes are needed —
 // the list rows and the topic filter chips all render from this data.
 //
 // Required fields (all seven, on every entry):
-//   title    — the teaching's own title
+//   title    — the study's own title
 //   channel  — the ministry or channel that produced it
 //   runtime  — displayed length, e.g. "1:19:33"
 //   topic    — drives the filter chips (see note below)
 //   url      — direct link to the single video, never the channel
-//   why      — what the teaching establishes
+//   why      — what the study establishes
 //   watch    — what to keep a hand on the text about
 //
 // Topic chips build themselves from the `topic` values present, so a brand-new
-// topic string creates its own chip automatically. To file a teaching under an
+// topic string creates its own chip automatically. To file a study under an
 // existing topic, reuse that topic string EXACTLY — same spelling, casing, and
 // spacing. Any variation is treated as a separate topic and fragments the chip
 // row into near-duplicates.
@@ -30,7 +30,7 @@ const videos = [
     topic: "The Nature of Yahuah",
     url: "https://www.youtube.com/watch?v=vJpduB2peJI",
     why: "The most carefully built case against the three-person doctrine gathered here. It walks the Shema through the mouth of the Messiah Himself, holds the Son as begotten rather than created, tracks the Spirit as the Spirit of the Father and the Son rather than a separate person, and names the councils of 325 and 381 as the point of manufacture.",
-    watch: "The teaching uses the English names throughout and does not distinguish the Father as the source of light from the Son as the lamp. It is sound on the count; it is thin on the titles.",
+    watch: "The study uses the English names throughout and does not distinguish the Father as the source of light from the Son as the lamp. It is sound on the count; it is thin on the titles.",
   },
 ];
 
@@ -39,23 +39,23 @@ const topics = [...new Set(videos.map((v) => v.topic))];
 
 <section class="wth-band" aria-labelledby="wth-heading">
   <div class="wth-inner">
-    <p class="wth-eyebrow">Individual teachings</p>
+    <p class="wth-eyebrow">Individual studies</p>
     <h2 id="wth-heading">Worth the Hour</h2>
 
     <div class="wth-intro">
       <p>
-        The section above lists voices. This one lists single teachings. The
-        distinction matters: a teaching can be sound while the ministry that
+        The section above lists voices. This one lists single studies. The
+        distinction matters: a study can be sound while the ministry that
         produced it carries doctrine this site does not hold. Pointing a reader
         to one study is not an endorsement of the shelf it came from.
       </p>
       <p>
-        Each entry names what the teaching establishes and what to keep a hand
+        Each entry names what the study establishes and what to keep a hand
         on the text about. Nothing here replaces reading it out for yourself.
       </p>
     </div>
 
-    <div class="wth-filters" role="group" aria-label="Filter teachings by topic">
+    <div class="wth-filters" role="group" aria-label="Filter studies by topic">
       <button type="button" class="wth-chip is-active" data-topic="all">
         All
       </button>
@@ -101,7 +101,7 @@ const topics = [...new Set(videos.map((v) => v.topic))];
     </div>
 
     <p class="wth-foot">
-      A teaching listed here has been weighed against the text. Weigh it again.
+      A study listed here has been weighed against the text. Weigh it again.
     </p>
   </div>
 </section>
