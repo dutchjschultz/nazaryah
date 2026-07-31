@@ -3,7 +3,24 @@
 // V2 — added runtime field, displayed beside the channel name in the collapsed row.
 // Second band for the nazaryah.com contact page, placed beneath "Voices Worth Hearing."
 // Lists individual teachings endorsed on their own merit, without endorsing the ministry behind them.
-// Add entries to the `videos` array. Topic chips build themselves from the topics present.
+// ── Adding a teaching ──────────────────────────────────────────────────────
+// Append an object to the `videos` array below. No markup changes are needed —
+// the list rows and the topic filter chips all render from this data.
+//
+// Required fields (all seven, on every entry):
+//   title    — the teaching's own title
+//   channel  — the ministry or channel that produced it
+//   runtime  — displayed length, e.g. "1:19:33"
+//   topic    — drives the filter chips (see note below)
+//   url      — direct link to the single video, never the channel
+//   why      — what the teaching establishes
+//   watch    — what to keep a hand on the text about
+//
+// Topic chips build themselves from the `topic` values present, so a brand-new
+// topic string creates its own chip automatically. To file a teaching under an
+// existing topic, reuse that topic string EXACTLY — same spelling, casing, and
+// spacing. Any variation is treated as a separate topic and fragments the chip
+// row into near-duplicates.
 
 const videos = [
   {
