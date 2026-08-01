@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0801 V4",
+    "version": "0801 V5",
     "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -22,7 +22,8 @@
       "0731 V1: merged 120 + 22 new (121–142) = 142. Dropped batch duplicates Goral and Mishpat. Movement VIII rejected; counterfeit terms flagged 'break' (red) inside their true movements. Recompense (28) has a draft page (V4).",
       "0731 V2: break design LOCKED. Added red break flags to Diabolos (134), Parad (136), and the balal side of Badal/Balal (135). Seven break terms total.",
       "0731 V3: merged 7 break-term word pages (129,130,133,134,135,136,142) into words; those terms set page draft-v1. Break callouts render from the term break note, not duplicated in the record.",
-      "0801 V4: merged 12 word pages (Account–Betroth: 102,117,10,61,94,9,39,71,20,131,114,91) into words; those terms set page draft-v1."
+      "0801 V4: merged 12 word pages (Account–Betroth: 102,117,10,61,94,9,39,71,20,131,114,91) into words; those terms set page draft-v1.",
+      "0801 V5: merged 12 word pages (Birthright–Confess: 60,89,31,59,92,58,116,98,137,67,5,49) into words; those terms set page draft-v1."
     ]
   },
   "movements": [
@@ -99,7 +100,8 @@
       "n": 5,
       "term": "Condemn",
       "movement": 7,
-      "gloss": "to judge down against, guilty"
+      "gloss": "to judge down against, guilty",
+      "page": "draft-v1"
     },
     {
       "n": 6,
@@ -259,7 +261,8 @@
       "n": 31,
       "term": "Book",
       "movement": 3,
-      "gloss": "the legal register"
+      "gloss": "the legal register",
+      "page": "draft-v1"
     },
     {
       "n": 32,
@@ -368,7 +371,8 @@
       "n": 49,
       "term": "Confess",
       "movement": 5,
-      "gloss": "a legal admission on record"
+      "gloss": "a legal admission on record",
+      "page": "draft-v1"
     },
     {
       "n": 50,
@@ -422,19 +426,22 @@
       "n": 58,
       "term": "Buy",
       "movement": 4,
-      "gloss": "to acquire by paying the price"
+      "gloss": "to acquire by paying the price",
+      "page": "draft-v1"
     },
     {
       "n": 59,
       "term": "Bought",
       "movement": 4,
-      "gloss": "the purchase completed, title moved"
+      "gloss": "the purchase completed, title moved",
+      "page": "draft-v1"
     },
     {
       "n": 60,
       "term": "Birthright",
       "movement": 3,
-      "gloss": "the firstborn's legal privilege"
+      "gloss": "the firstborn's legal privilege",
+      "page": "draft-v1"
     },
     {
       "n": 61,
@@ -477,7 +484,8 @@
       "n": 67,
       "term": "Clean",
       "movement": 3,
-      "gloss": "legally admissible to approach"
+      "gloss": "legally admissible to approach",
+      "page": "draft-v1"
     },
     {
       "n": 68,
@@ -610,7 +618,8 @@
       "n": 89,
       "term": "Blood",
       "movement": 4,
-      "gloss": "a plaintiff, and the price provided"
+      "gloss": "a plaintiff, and the price provided",
+      "page": "draft-v1"
     },
     {
       "n": 90,
@@ -629,7 +638,8 @@
       "n": 92,
       "term": "Bride",
       "movement": 2,
-      "gloss": "a covenant party under the marriage bond"
+      "gloss": "a covenant party under the marriage bond",
+      "page": "draft-v1"
     },
     {
       "n": 93,
@@ -666,7 +676,8 @@
       "n": 98,
       "term": "Chesed",
       "movement": 5,
-      "gloss": "the obligated kindness of the bond"
+      "gloss": "the obligated kindness of the bond",
+      "page": "draft-v1"
     },
     {
       "n": 99,
@@ -776,7 +787,8 @@
       "n": 116,
       "term": "Cause",
       "movement": 7,
-      "gloss": "the case itself before the court"
+      "gloss": "the case itself before the court",
+      "page": "draft-v1"
     },
     {
       "n": 117,
@@ -946,7 +958,8 @@
       "term": "Cheirographon",
       "movement": 4,
       "gloss": "the handwritten certificate of debt (Col 2:14)",
-      "strongs": "G5498"
+      "strongs": "G5498",
+      "page": "draft-v1"
     },
     {
       "n": 138,
@@ -989,6 +1002,86 @@
     }
   ],
   "words": {
+    "5": {
+      "n": 5,
+      "term": "Condemn",
+      "movement": 7,
+      "rootLine": "katakrino — Greek",
+      "caseStrongs": "G2632",
+      "lead": "To condemn is the opposite ruling to acquittal — guilty, liable, sentenced. The word is built from kata, ‘down,’ and krino, ‘to judge’: to judge down against a defendant. Every use assumes a fixed standard the accused has been measured against and failed. “There is therefore now no condemnation to them which are in Messiah Yahushua” (Romans 8:1) is precious precisely because condemnation was real, filed, and deserved. Take away the standard and the good news collapses — a man cannot be spared a sentence that was never on the books.",
+      "root": [
+        {
+          "lemma": "katakrino",
+          "strong": "G2632",
+          "sense": "to give judgment against, to condemn; kata (down) + krino (judge)"
+        }
+      ],
+      "courtroomWord": "A verdict term — the ruling of guilt and the sentence that follows.",
+      "itsRole": "Condemnation is the guilty verdict — the court measuring a defendant against the standard and finding him short. It presupposes the law it judges by; without a standard there is nothing to condemn under. This is why deliverance is framed as ‘no condemnation’: the sentence was real and deserved, and it is lifted — not because the law vanished, but because the account was answered.",
+      "proofTexts": [
+        {
+          "ref": "Romans 8:1",
+          "text": "No condemnation to them which are in Messiah Yahushua.",
+          "note": "The sentence lifted, not the law removed."
+        },
+        {
+          "ref": "John 3:18",
+          "text": "He that believeth not is condemned already.",
+          "note": "The standing verdict on the unanswered."
+        },
+        {
+          "ref": "Romans 5:16",
+          "text": "The judgment was by one to condemnation.",
+          "note": "The ruling of guilt."
+        },
+        {
+          "ref": "Matthew 12:37",
+          "text": "By thy words thou shalt be condemned.",
+          "note": "The verdict weighed on the evidence."
+        }
+      ],
+      "plainTerms": [
+        "To condemn is to rule someone guilty and sentence him — the opposite of acquittal. It only means something against a standard the person broke. ‘No condemnation’ is good news because the guilty verdict was real and deserved, and it has been lifted."
+      ],
+      "bringItHome": [
+        "A judge measures the defendant against the law and rules: guilty. That is condemnation — a real verdict with a real sentence. ‘No condemnation in Messiah’ is the sentence lifted off a guilty man — which only means anything because the law he broke is still the law."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "renders the verdict of guilt, or clears it."
+        },
+        {
+          "who": "The accused",
+          "role": "the Defendant",
+          "does": "measured against the standard, condemned or acquitted."
+        },
+        {
+          "who": "The law",
+          "role": "the standard",
+          "does": "the measure the verdict is rendered by."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 3,
+          "term": "Justify"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        },
+        {
+          "n": 118,
+          "term": "Innocent"
+        },
+        {
+          "n": 111,
+          "term": "Wrath"
+        }
+      ]
+    },
     "9": {
       "n": 9,
       "term": "Advocate",
@@ -1355,6 +1448,86 @@
         }
       ]
     },
+    "31": {
+      "n": 31,
+      "term": "Book",
+      "movement": 3,
+      "rootLine": "sefer — Hebrew",
+      "caseStrongs": "H5612",
+      "lead": "A book, in Scripture, is a legal register, not a storybook. A sefer was the document of record — a deed, a certificate, a roll. When Jeremiah buys a field, the purchase is written in a sefer, witnessed, and sealed (Jeremiah 32:10-12). So “the book of life” is a citizenship roll, an official register of those enrolled, and to be blotted out of it is a legal removal from the record (Exodus 32:33). To be written in the book is not to be remembered fondly; it is to be entered, by name, on the standing legal record of the kingdom.",
+      "root": [
+        {
+          "lemma": "sefer",
+          "strong": "H5612",
+          "sense": "a writing, document, scroll; a legal register or deed"
+        }
+      ],
+      "courtroomWord": "A register term — the official document of record on which names and deeds are entered.",
+      "itsRole": "The court keeps records, and the book is the record. Deeds are written in it, names are enrolled in it, and removal from it is a legal act. The book of life functions as a citizenship roll: to be in it is to hold standing in the kingdom; to be blotted from it is to lose that standing. It is documentary, not sentimental.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 32:33",
+          "text": "Whosoever hath sinned against me, him will I blot out of my book.",
+          "note": "The register, and legal removal from it."
+        },
+        {
+          "ref": "Jeremiah 32:10",
+          "text": "I subscribed the evidence, and sealed it.",
+          "note": "The deed written in a sefer."
+        },
+        {
+          "ref": "Revelation 20:12",
+          "text": "The books were opened... and another book... the book of life.",
+          "note": "The records read at the bench."
+        },
+        {
+          "ref": "Malachi 3:16",
+          "text": "A book of remembrance was written before him.",
+          "note": "The record kept before the court."
+        }
+      ],
+      "plainTerms": [
+        "A book in Scripture is an official record — a deed, a roll, a register — not a story. The book of life is a citizenship list; being written in it means you are on the record, and being blotted out is a legal removal."
+      ],
+      "bringItHome": [
+        "Think less ‘novel,’ more ‘county deed book.’ When Jeremiah bought his field, the sale went into a sealed document — a sefer. The book of life is that kind of record: your name entered on the official roll of the kingdom. To be in it is to have standing; to be struck from it is to lose it."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge, the Recorder",
+          "does": "keeps the book; enrolls and blots names."
+        },
+        {
+          "who": "The enrolled",
+          "role": "the citizens",
+          "does": "entered by name on the record."
+        },
+        {
+          "who": "The book",
+          "role": "the Register",
+          "does": "the official document read at the bench."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 38,
+          "term": "Name"
+        },
+        {
+          "n": 34,
+          "term": "Seal"
+        },
+        {
+          "n": 104,
+          "term": "Number"
+        },
+        {
+          "n": 35,
+          "term": "Sign"
+        }
+      ]
+    },
     "39": {
       "n": 39,
       "term": "Amen",
@@ -1435,6 +1608,351 @@
         }
       ]
     },
+    "49": {
+      "n": 49,
+      "term": "Confess",
+      "movement": 5,
+      "rootLine": "yadah / homologeo — Hebrew / Greek",
+      "caseStrongs": "H3034 · G3670",
+      "lead": "To confess is a legal admission — to say the same thing the record says. To confess sin is to agree with the charge rather than contest it, entering a plea that matches the evidence; to confess the Name is to make a binding public declaration of allegiance. “Whosoever therefore shall confess me before men” (Matthew 10:32) is on-the-record testimony that binds the one who gives it. Confession, in either direction, is testimony entered about oneself: agreement with the indictment, or a sworn declaration of loyalty. It is not merely admitting a feeling; it is going on the record before the court.",
+      "root": [
+        {
+          "lemma": "yadah",
+          "strong": "H3034",
+          "sense": "to acknowledge, to confess, to give thanks openly"
+        },
+        {
+          "lemma": "homologeo",
+          "strong": "G3670",
+          "sense": "to say the same thing, to profess or confess openly"
+        }
+      ],
+      "courtroomWord": "An admission term — testimony entered about oneself, agreeing with the record.",
+      "itsRole": "A court runs on testimony, and confession is testimony a party gives about himself. To confess sin is to plead in agreement with the charge — the admission that opens the way to its being lifted. To confess the Name is to declare allegiance on the record, a binding profession. Either way, confession is not private feeling but entered testimony, spoken before the court.",
+      "proofTexts": [
+        {
+          "ref": "1 John 1:9",
+          "text": "If we confess our sins, he is faithful and just to forgive us.",
+          "note": "Admission agreeing with the charge, met with lawful pardon."
+        },
+        {
+          "ref": "Matthew 10:32",
+          "text": "Whosoever shall confess me before men, him will I confess.",
+          "note": "Allegiance declared on the record."
+        },
+        {
+          "ref": "Romans 10:9",
+          "text": "If thou shalt confess with thy mouth... thou shalt be saved.",
+          "note": "The binding profession."
+        },
+        {
+          "ref": "Proverbs 28:13",
+          "text": "Whoso confesseth and forsaketh them shall have mercy.",
+          "note": "Admission and its result."
+        }
+      ],
+      "plainTerms": [
+        "To confess is to go on the record — either agreeing with the charge against you (confessing sin) or declaring your allegiance (confessing the Name). It is testimony about yourself, not a private feeling."
+      ],
+      "bringItHome": [
+        "In court, a defendant can contest the charge or agree with it. To confess sin is to agree — ‘the record is right about me’ — which is the plea that opens the way to pardon. To confess the Name is the other kind: standing up and declaring, on the record, whose side you are on."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The one confessing",
+          "role": "the witness on himself",
+          "does": "agrees with the charge, or declares allegiance."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "before whom the confession is entered; who pardons or receives it."
+        },
+        {
+          "who": "The record",
+          "role": "the evidence",
+          "does": "which the confession agrees with."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 50,
+          "term": "Deny"
+        },
+        {
+          "n": 46,
+          "term": "Hear"
+        },
+        {
+          "n": 100,
+          "term": "Faithful"
+        },
+        {
+          "n": 47,
+          "term": "Walk"
+        }
+      ]
+    },
+    "58": {
+      "n": 58,
+      "term": "Buy",
+      "movement": 4,
+      "rootLine": "agorazo — Greek",
+      "caseStrongs": "G59",
+      "lead": "To buy is to acquire by paying the market price and thereby transfer ownership from seller to buyer. “Ye are not your own... ye are bought with a price” (1 Corinthians 6:19-20) states a completed purchase with a change of owner: the believer is property lawfully acquired at cost. The verb is commercial and legal, not romantic. To be bought is to have a new owner with the owner’s rights over the thing purchased. This is why the redeemed are called servants and the price is named blood — the transaction moved title, and title carries authority.",
+      "root": [
+        {
+          "lemma": "agorazo",
+          "strong": "G59",
+          "sense": "to buy in the marketplace; to acquire by paying a price"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "agorazo-G59",
+        "siblings": [
+          {
+            "n": 59,
+            "term": "Bought"
+          }
+        ],
+        "note": "The act and its completion: to buy (agorazo) and to have been bought. The price moves the title."
+      },
+      "courtroomWord": "A purchase term — the acquisition of ownership by a price paid.",
+      "itsRole": "A purchase transfers title. To buy is to move ownership from one hand to another, and the price is what establishes the new claim. In redemption the price is blood and the title moves to Yahuah — the redeemed acquired, owned, and thereby secured and answerable. Buying is the mechanism; ownership is the result.",
+      "proofTexts": [
+        {
+          "ref": "1 Corinthians 6:20",
+          "text": "Ye are bought with a price.",
+          "note": "The purchase that moves title."
+        },
+        {
+          "ref": "Revelation 5:9",
+          "text": "Hast redeemed us to Yahuah by thy blood.",
+          "note": "The price named."
+        },
+        {
+          "ref": "Matthew 13:46",
+          "text": "Sold all that he had, and bought it.",
+          "note": "The pearl acquired at full cost."
+        },
+        {
+          "ref": "Acts 20:28",
+          "text": "The assembly... which he hath purchased with his own blood.",
+          "note": "The price of the acquisition."
+        }
+      ],
+      "plainTerms": [
+        "To buy is to pay the price and take ownership — title moves to the buyer. In redemption the price is blood and the buyer is Yahuah: the redeemed are acquired, owned, and secured."
+      ],
+      "bringItHome": [
+        "A purchase is simple — you pay the price, and the thing is now yours, with every right an owner has. Redemption is that transaction at the highest cost: the price is blood, and the title moves. The redeemed are bought — owned, and safe in the Owner’s hand."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Buyer, the Owner",
+          "does": "acquires the redeemed by the price."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the price",
+          "does": "the blood that makes the purchase."
+        },
+        {
+          "who": "The redeemed",
+          "role": "the thing bought",
+          "does": "title moved, now owned."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 59,
+          "term": "Bought"
+        },
+        {
+          "n": 13,
+          "term": "Redeem"
+        },
+        {
+          "n": 15,
+          "term": "Ransom"
+        },
+        {
+          "n": 14,
+          "term": "Redemption"
+        }
+      ]
+    },
+    "59": {
+      "n": 59,
+      "term": "Bought",
+      "movement": 4,
+      "rootLine": "agorazo (egorasthete) — Greek",
+      "caseStrongs": "G59",
+      "lead": "Bought is the purchase completed and on the record. “Thou wast slain, and hast redeemed us to Yahuah by thy blood” (Revelation 5:9) — the redeemed are owned property, lawfully acquired, and the price paid establishes the claim. Ownership carries the owner’s rights: the bought belong to the buyer and are answerable to him. Far from diminishing the believer, this is the ground of his security — a lawful owner defends his property and honors the price he paid. To have been bought is to have been legally claimed, the transaction closed, the title transferred, the receipt written in blood.",
+      "root": [
+        {
+          "lemma": "agorazo",
+          "strong": "G59",
+          "sense": "to buy in the market, to purchase; egorasthete, ‘ye were bought’"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "agorazo-G59",
+        "siblings": [
+          {
+            "n": 58,
+            "term": "Buy"
+          }
+        ],
+        "note": "The same verb, two aspects: to buy (the act) and to have been bought (the completed purchase). Title moved; the receipt is the price."
+      },
+      "courtroomWord": "A completed-purchase term — ownership transferred by a price paid.",
+      "itsRole": "A purchase moves title, and the price establishes the claim. To be bought is to have a new owner with the owner’s rights — and, for the redeemed, an Owner who defends what He paid for. The transaction is closed and recorded; the believer is no longer his own but lawfully held, the receipt written in the price.",
+      "proofTexts": [
+        {
+          "ref": "Revelation 5:9",
+          "text": "Hast redeemed us to Yahuah by thy blood.",
+          "note": "The purchase completed, title moved."
+        },
+        {
+          "ref": "1 Corinthians 6:20",
+          "text": "Ye are bought with a price.",
+          "note": "The transaction stated flat."
+        },
+        {
+          "ref": "1 Corinthians 7:23",
+          "text": "Ye are bought with a price; be not ye the servants of men.",
+          "note": "One Owner, His rights over the bought."
+        },
+        {
+          "ref": "2 Peter 2:1",
+          "text": "Denying the Lord that bought them.",
+          "note": "The purchase real even where denied."
+        }
+      ],
+      "plainTerms": [
+        "To be bought means the purchase is done and title has moved — you belong to the buyer, and the price paid proves the claim. For the redeemed, that is security: the Owner defends what He paid for."
+      ],
+      "bringItHome": [
+        "A sale closes when the price is paid and the title changes hands — the thing bought now belongs to the buyer, with all an owner’s rights. That is the redeemed: bought, title transferred, receipt written in blood. Not diminished by it — secured by it, because the Owner protects what cost Him so much."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Owner",
+          "does": "acquires the redeemed by the price; holds and defends them."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the price",
+          "does": "the blood by which the purchase was made."
+        },
+        {
+          "who": "The redeemed",
+          "role": "the property bought",
+          "does": "lawfully claimed, answerable to the Owner."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 58,
+          "term": "Buy"
+        },
+        {
+          "n": 13,
+          "term": "Redeem"
+        },
+        {
+          "n": 14,
+          "term": "Redemption"
+        },
+        {
+          "n": 15,
+          "term": "Ransom"
+        }
+      ]
+    },
+    "60": {
+      "n": 60,
+      "term": "Birthright",
+      "movement": 3,
+      "rootLine": "bekorah — Hebrew",
+      "caseStrongs": "H1062",
+      "lead": "The birthright is the firstborn’s legal privilege — a double portion of the estate and the headship of the family. It was a real, transferable legal asset: Esau “sold his birthright unto Jacob” (Genesis 25:33) in a binding exchange he could not later undo (Hebrews 12:16-17). The bekorah was inheritance-law attached to birth order, conferring rank and a larger share of the property. This is why despising it was so grave — it was the squandering of a legal entitlement for a bowl of stew. To hold the birthright is to hold the firstborn’s documented claim on the estate.",
+      "root": [
+        {
+          "lemma": "bekorah",
+          "strong": "H1062",
+          "sense": "the right of the firstborn; a double portion and headship"
+        }
+      ],
+      "courtroomWord": "An estate term — the firstborn’s legal claim to rank and a double share.",
+      "itsRole": "Inheritance in Torah runs by law, and the firstborn’s claim is fixed by it. The birthright is that claim — documented, transferable, binding once exchanged. It confers headship and a double portion, and its sale or forfeit is a legal act with legal consequence. The believer’s calling as firstborn is estate language: a claim on the inheritance, held by right.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 25:33",
+          "text": "Esau sold his birthright unto Jacob.",
+          "note": "A transferable legal asset."
+        },
+        {
+          "ref": "Deuteronomy 21:17",
+          "text": "By giving him a double portion of all that he hath.",
+          "note": "The firstborn’s share fixed at law."
+        },
+        {
+          "ref": "Hebrews 12:16",
+          "text": "Esau, who for one morsel of meat sold his birthright.",
+          "note": "The entitlement squandered."
+        },
+        {
+          "ref": "Colossians 1:15",
+          "text": "The firstborn of every creature.",
+          "note": "The rank and inheritance of the firstborn borne by the Messiah."
+        }
+      ],
+      "plainTerms": [
+        "The birthright was the firstborn’s legal privilege — a double share of the estate and headship of the family. It was real property you could sell, and Esau did, for a bowl of stew. To hold it is to hold a documented claim on the inheritance."
+      ],
+      "bringItHome": [
+        "The oldest son held a paper worth double everyone else’s — rank, headship, a double portion. Esau traded that paper for a single meal, and could not get it back. That is the birthright: a legal entitlement, as real as a deed, and as losable as one."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The firstborn",
+          "role": "the heir",
+          "does": "holds the double portion and headship by right."
+        },
+        {
+          "who": "The estate",
+          "role": "the inheritance",
+          "does": "divided by the law of the birthright."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "fixes the firstborn’s claim."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 52,
+          "term": "Heir"
+        },
+        {
+          "n": 51,
+          "term": "Inheritance"
+        },
+        {
+          "n": 54,
+          "term": "Portion"
+        },
+        {
+          "n": 62,
+          "term": "Sonship"
+        }
+      ]
+    },
     "61": {
       "n": 61,
       "term": "Adoption",
@@ -1512,6 +2030,86 @@
         {
           "n": 64,
           "term": "Free"
+        }
+      ]
+    },
+    "67": {
+      "n": 67,
+      "term": "Clean",
+      "movement": 3,
+      "rootLine": "tahor — Hebrew",
+      "caseStrongs": "H2889",
+      "lead": "Clean means legally admissible — fit to approach the sanctuary and enter the assembly. Cleanness is a status determined by law, not a comment on hygiene: the priest examines and pronounces a person or thing tahor the way a judge issues a finding of standing (Leviticus 13). To be clean is to be ruled eligible to draw near. This is why cleanness can be lost and restored by prescribed legal process rather than by washing alone. The categories clean and unclean are courtroom findings about who may lawfully approach — determinations of standing, entered by an authorized officer.",
+      "root": [
+        {
+          "lemma": "tahor",
+          "strong": "H2889",
+          "sense": "clean, pure; legally admissible to approach the holy"
+        }
+      ],
+      "courtroomWord": "A status finding — the ruling that a person or thing is admissible to approach.",
+      "itsRole": "Approach to the sanctuary is regulated, and cleanness is the standing that permits it. The priest does not wash the leper clean; he examines and pronounces — a legal finding. Cleanness can be lost and restored only by the prescribed process, because it is a status under law, not a state of hygiene. To be clean is to be ruled fit to draw near.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 13:13",
+          "text": "The priest shall pronounce him clean.",
+          "note": "A legal finding, not a wash."
+        },
+        {
+          "ref": "Leviticus 10:10",
+          "text": "Put difference between... unclean and clean.",
+          "note": "The distinction commanded."
+        },
+        {
+          "ref": "Leviticus 11:47",
+          "text": "To make a difference between the unclean and the clean.",
+          "note": "The standing categories set at law."
+        },
+        {
+          "ref": "Psalm 24:3-4",
+          "text": "Who shall ascend... He that hath clean hands, and a pure heart.",
+          "note": "Cleanness as the standing to approach."
+        }
+      ],
+      "plainTerms": [
+        "Clean is a legal status — fit to come near the holy — not a statement about dirt. The priest pronounces it, the way a judge rules on standing. It can be lost and restored only by the prescribed process."
+      ],
+      "bringItHome": [
+        "A man could be freshly washed and still ruled unclean, or restored to clean only by a set process — because cleanness was never about soap. It was a legal finding: are you admissible to approach? The priest examined and pronounced, and the ruling set your standing before the sanctuary."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The priest",
+          "role": "the Officer",
+          "does": "examines and pronounces clean or unclean."
+        },
+        {
+          "who": "The person or thing",
+          "role": "the subject",
+          "does": "ruled admissible or barred."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "sets the categories of approach."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 68,
+          "term": "Unclean"
+        },
+        {
+          "n": 69,
+          "term": "Sanctify"
+        },
+        {
+          "n": 70,
+          "term": "Profane"
+        },
+        {
+          "n": 35,
+          "term": "Sign"
         }
       ]
     },
@@ -1605,6 +2203,87 @@
         }
       ]
     },
+    "89": {
+      "n": 89,
+      "term": "Blood",
+      "movement": 4,
+      "rootLine": "dam — Hebrew",
+      "caseStrongs": "H1818",
+      "lead": "Not a mood, not a metaphor — a plaintiff. The first time blood appears as a wrong, Yahuah tells Cain, “the voice of thy brother’s blood crieth unto me from the ground” (Genesis 4:10). Blood has a voice, and that voice files a case demanding justice. That is why innocent blood and the avenger of blood sit at the heart of Torah’s justice system — spilled blood is a legal claim the court must answer. Hold that against Hebrews 12:24, where Yahushua’s blood “speaketh better things than that of Abel.” Abel’s blood cried for judgment; this blood is the price Yahuah Himself provided to answer the court — the claim met, the docket cleared. Even the tree is filed under evidence.",
+      "root": [
+        {
+          "lemma": "dam",
+          "strong": "H1818",
+          "sense": "blood; the life, and the legal claim that shed blood makes"
+        }
+      ],
+      "courtroomWord": "A plaintiff — shed blood is a legal claim that cries for justice and must be answered.",
+      "itsRole": "In Torah, blood is not symbol but standing: it cries, it accuses, it demands satisfaction, and the court is bound to answer it. The whole apparatus of innocent blood, the avenger, and the cities of refuge exists because blood files a case. At the tree the claim is answered not by the guilty but by the price Yahuah provided — a blood that speaks better things, satisfying the court and clearing the docket.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 4:10",
+          "text": "The voice of thy brother’s blood crieth unto me from the ground.",
+          "note": "Blood as a plaintiff filing a case."
+        },
+        {
+          "ref": "Hebrews 12:24",
+          "text": "The blood... that speaketh better things than that of Abel.",
+          "note": "A blood that answers rather than accuses."
+        },
+        {
+          "ref": "Leviticus 17:11",
+          "text": "It is the blood that maketh an atonement for the soul.",
+          "note": "The claim and its covering."
+        },
+        {
+          "ref": "Numbers 35:33",
+          "text": "Blood... defileth the land... it cannot be cleansed... but by the blood of him that shed it.",
+          "note": "The legal weight of shed blood."
+        }
+      ],
+      "plainTerms": [
+        "Blood in Scripture is a plaintiff, not a picture. Shed blood cries out and demands justice; the court has to answer it.",
+        "At the tree, the claim was answered by the price Yahuah provided — a blood that speaks something better than Abel’s: satisfaction, not accusation."
+      ],
+      "bringItHome": [
+        "Abel’s blood cried from the ground for justice, and the court heard it. Every drop of innocent blood since has filed the same case. Then a blood is offered that does not cry for judgment but answers it — the price the Judge Himself provided. The docket clears. Even the tree, in this reading, is filed under evidence."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The blood",
+          "role": "the Plaintiff",
+          "does": "cries for justice and files the case."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge, the Provider",
+          "does": "provides the price that answers the claim."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the blood provided",
+          "does": "whose blood speaks better things than Abel’s."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 20,
+          "term": "Atonement"
+        },
+        {
+          "n": 15,
+          "term": "Ransom"
+        },
+        {
+          "n": 13,
+          "term": "Redeem"
+        },
+        {
+          "n": 9,
+          "term": "Advocate"
+        }
+      ]
+    },
     "91": {
       "n": 91,
       "term": "Betroth",
@@ -1685,6 +2364,86 @@
         }
       ]
     },
+    "92": {
+      "n": 92,
+      "term": "Bride",
+      "movement": 2,
+      "rootLine": "kallah — Hebrew",
+      "caseStrongs": "H3618",
+      "lead": "A bride is a covenant party bound by the marriage contract — holding the rights and duties the covenant assigns, not merely a beloved figure. The assembly pictured as bride is a legal spouse under a ratified bond (Revelation 21:2, 9). The term fixes standing: a bride has claims on her husband and obligations to him, secured by the marriage covenant. This is why the marriage imagery is never merely sentimental in Scripture — it invokes a contract with terms, fidelity clauses, and consequences for breach. To be the bride is to be a party to the covenant, with everything a covenant confers and requires.",
+      "root": [
+        {
+          "lemma": "kallah",
+          "strong": "H3618",
+          "sense": "bride, daughter-in-law; a party to the marriage covenant"
+        }
+      ],
+      "courtroomWord": "A covenant-party term — the bound spouse holding the marriage covenant’s rights and duties.",
+      "itsRole": "Marriage is a covenant, and the bride is a party to it — with enforceable claims and binding obligations. When the assembly is called the bride, it is placed under a ratified bond, not merely admired. The status carries rights (the husband’s provision and protection) and duties (fidelity to the bond), and the covenant defines both.",
+      "proofTexts": [
+        {
+          "ref": "Revelation 21:9",
+          "text": "The bride, the Lamb’s wife.",
+          "note": "The assembly as covenant spouse."
+        },
+        {
+          "ref": "Isaiah 62:5",
+          "text": "As the bridegroom rejoiceth over the bride, so shall thy Elohim rejoice over thee.",
+          "note": "The covenant bond in marriage terms."
+        },
+        {
+          "ref": "Jeremiah 2:2",
+          "text": "The love of thine espousals, when thou wentest after me.",
+          "note": "The bride’s covenant loyalty."
+        },
+        {
+          "ref": "Ephesians 5:32",
+          "text": "This is a great mystery... concerning Messiah and the assembly.",
+          "note": "The marriage covenant as the pattern."
+        }
+      ],
+      "plainTerms": [
+        "A bride is a party to the marriage covenant — with real claims on her husband and real duties to him. When Scripture calls the assembly the bride, it is naming a legal bond with terms, not just a warm relationship."
+      ],
+      "bringItHome": [
+        "A bride is not merely beloved — she is a party to a contract, with rights she can claim and duties she owes, all secured by the covenant. That is the assembly as bride: bound to the Messiah by a ratified bond, provided for and answerable, under terms."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The bride",
+          "role": "the covenant party",
+          "does": "holds the marriage covenant’s rights and duties."
+        },
+        {
+          "who": "The bridegroom",
+          "role": "the covenant party",
+          "does": "owes provision and protection under the bond."
+        },
+        {
+          "who": "The covenant",
+          "role": "the marriage contract",
+          "does": "defines the claims and obligations of both."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 91,
+          "term": "Betroth"
+        },
+        {
+          "n": 93,
+          "term": "Husband"
+        },
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 94,
+          "term": "Adultery"
+        }
+      ]
+    },
     "94": {
       "n": 94,
       "term": "Adultery",
@@ -1762,6 +2521,86 @@
         {
           "n": 95,
           "term": "Divorce"
+        }
+      ]
+    },
+    "98": {
+      "n": 98,
+      "term": "Chesed",
+      "movement": 5,
+      "rootLine": "chesed — Hebrew",
+      "caseStrongs": "H2617",
+      "lead": "Chesed is the covenant obligation of steadfast kindness owed between bound parties — loyalty a covenant partner is duty-bound to show, not random benevolence. Chesed is the faithfulness that keeps covenant even when it costs, the kindness that flows from obligation rather than mood. “That I may shew him kindness for Jonathan’s sake” (2 Samuel 9:1) is David honoring a covenant already sworn. When Scripture says Yahuah’s chesed endures forever, it declares His covenant loyalty unbreakable. It is a legal-relational term: the reliable, obligated faithfulness a bond requires of the parties within it.",
+      "root": [
+        {
+          "lemma": "chesed",
+          "strong": "H2617",
+          "sense": "covenant loyalty, steadfast love, obligated kindness"
+        }
+      ],
+      "courtroomWord": "A covenant-duty term — the loyal kindness bound parties owe each other.",
+      "itsRole": "A covenant creates obligations, and chesed is the obligation of loyal kindness within it. It is not sentiment but duty — the faithfulness a party is bound to show because the bond requires it. Yahuah’s chesed is His covenant-keeping, reliable and enduring; the believer’s chesed is the loyalty owed back. It is love as covenant fidelity, expected the way faithfulness to a bond is expected.",
+      "proofTexts": [
+        {
+          "ref": "2 Samuel 9:1",
+          "text": "That I may shew him kindness for Jonathan’s sake.",
+          "note": "Chesed rendered on a sworn covenant."
+        },
+        {
+          "ref": "Micah 6:8",
+          "text": "To love mercy, and to walk humbly with thy Elohim.",
+          "note": "The obligated kindness required."
+        },
+        {
+          "ref": "Psalm 136:1",
+          "text": "His mercy endureth for ever.",
+          "note": "Covenant loyalty unbreakable."
+        },
+        {
+          "ref": "Hosea 6:6",
+          "text": "I desired mercy, and not sacrifice.",
+          "note": "The loyalty the covenant prizes."
+        }
+      ],
+      "plainTerms": [
+        "Chesed is covenant loyalty — the steadfast kindness bound parties owe each other. It is not a random nice feeling; it is faithfulness you are duty-bound to show because of the bond. Yahuah’s chesed is His covenant-keeping, and it never fails."
+      ],
+      "bringItHome": [
+        "Two people swear a covenant, and years later one keeps it at cost to himself — not because he feels like it, but because he is bound. That is chesed: loyalty that holds because the bond holds. Yahuah’s toward His people never runs out."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the covenant party",
+          "does": "shows chesed as unbreakable covenant loyalty."
+        },
+        {
+          "who": "The covenant partner",
+          "role": "the bound party",
+          "does": "owes chesed back within the bond."
+        },
+        {
+          "who": "The covenant",
+          "role": "the bond",
+          "does": "the ground that makes the kindness an obligation."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 100,
+          "term": "Faithful"
+        },
+        {
+          "n": 97,
+          "term": "Love"
+        },
+        {
+          "n": 48,
+          "term": "Keep"
+        },
+        {
+          "n": 47,
+          "term": "Walk"
         }
       ]
     },
@@ -1928,6 +2767,96 @@
         {
           "n": 132,
           "term": "Karath"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        }
+      ]
+    },
+    "116": {
+      "n": 116,
+      "term": "Cause",
+      "movement": 7,
+      "rootLine": "rib — Hebrew",
+      "caseStrongs": "H7379",
+      "lead": "A cause is the legal case itself — the matter in dispute before the court. “Judge me, O Yahuah... plead my cause” (Psalm 43:1) asks the bench to rule on a filed claim, not to console a feeling. A rib is a controversy formally lodged, awaiting adjudication. This is why Yahuah is repeatedly asked to “maintain the cause” of the afflicted and the poor (Psalm 140:12) — to take their case and see it justly decided. The cause is the substance of the suit, the thing the court exists to settle.",
+      "root": [
+        {
+          "lemma": "rib",
+          "strong": "H7379",
+          "sense": "a dispute, controversy, legal case; the matter contended before the court"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "rib-H737x",
+        "siblings": [
+          {
+            "n": 115,
+            "term": "Plead"
+          }
+        ],
+        "note": "The case and the arguing of it share the root: the cause (rib, the matter) and to plead (rib, to contend it before the bench)."
+      },
+      "courtroomWord": "A case term — the controversy formally lodged for the court to decide.",
+      "itsRole": "A court exists to settle causes — real disputes brought for judgment. To have a cause is to have a claim on the docket; to have it maintained is to have the court take it up and rule. The afflicted appeal to Yahuah to judge their cause because the case is real and the bench is just. The cause is what the trial is about.",
+      "proofTexts": [
+        {
+          "ref": "Psalm 43:1",
+          "text": "Judge me, O Yahuah... and plead my cause.",
+          "note": "The case brought for a ruling."
+        },
+        {
+          "ref": "Psalm 140:12",
+          "text": "Yahuah will maintain the cause of the afflicted.",
+          "note": "The court taking up the case."
+        },
+        {
+          "ref": "Micah 7:9",
+          "text": "He shall plead my cause, and execute judgment for me.",
+          "note": "The cause argued to a verdict."
+        },
+        {
+          "ref": "Proverbs 22:23",
+          "text": "Yahuah will plead their cause.",
+          "note": "The poor’s case taken by the bench."
+        }
+      ],
+      "plainTerms": [
+        "A cause is the actual case before the court — the dispute to be decided. To ask Yahuah to ‘judge my cause’ is to ask Him to rule on a real claim, not to soothe a feeling."
+      ],
+      "bringItHome": [
+        "Every trial is about something — a specific dispute lodged for decision. That is the cause. When the afflicted cry ‘judge my cause,’ they are not asking for comfort; they are asking the Judge to take their case and rule. And He does."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The petitioner",
+          "role": "the party",
+          "does": "brings the cause for judgment."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "maintains and decides the cause."
+        },
+        {
+          "who": "The cause",
+          "role": "the case",
+          "does": "the dispute the court exists to settle."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 115,
+          "term": "Plead"
+        },
+        {
+          "n": 117,
+          "term": "Accuse"
+        },
+        {
+          "n": 118,
+          "term": "Innocent"
         },
         {
           "n": 119,
@@ -2608,6 +3537,92 @@
         {
           "n": 7,
           "term": "Witness"
+        }
+      ]
+    },
+    "137": {
+      "n": 137,
+      "term": "Cheirographon",
+      "movement": 4,
+      "rootLine": "cheirographon — Greek",
+      "caseStrongs": "G5498",
+      "lead": "Cheirographon is a handwritten certificate of debt — an IOU, a signed acknowledgment of what one owes. Paul says Yahushua blotted out “the handwriting of ordinances that was against us... and took it out of the way, nailing it to his cross” (Colossians 2:14). The word is precise, and so is the target: what was cancelled and nailed up was the record of debt standing against the guilty — the bond of charges — not the Torah itself. A cancelled IOU is a discharged debt, not an abolished law. The certificate that accused us was posted as paid; the standard that defined the debt still stands.",
+      "root": [
+        {
+          "lemma": "cheirographon",
+          "strong": "G5498",
+          "sense": "a handwritten document; specifically a certificate or bond of debt"
+        }
+      ],
+      "courtroomWord": "A debt-instrument term — the signed certificate of what is owed, here cancelled and posted.",
+      "itsRole": "A debt is recorded on a certificate, and the certificate is what a creditor holds against the debtor. Cheirographon is that instrument. At the cross it was blotted out and nailed — the ancient sign of a debt discharged, the bond posted as paid. This is the heart of the courtroom reading of Colossians 2: the charges against us were cancelled, the accusing record removed. It does not read ‘the law was abolished’; it reads ‘the debt was paid.’ The standard that measured the debt remains; the IOU is gone.",
+      "proofTexts": [
+        {
+          "ref": "Colossians 2:14",
+          "text": "Blotting out the handwriting of ordinances that was against us... nailing it to his cross.",
+          "note": "The certificate of debt cancelled and posted — not the law repealed."
+        },
+        {
+          "ref": "Colossians 2:13",
+          "text": "Having forgiven you all trespasses.",
+          "note": "The context: debts forgiven, charges cancelled."
+        },
+        {
+          "ref": "Ephesians 2:16",
+          "text": "Having slain the enmity thereby.",
+          "note": "The barrier of hostility removed, the parties reconciled."
+        },
+        {
+          "ref": "Romans 4:15",
+          "text": "Where no law is, there is no transgression.",
+          "note": "The standard must remain for the debt to have existed at all."
+        }
+      ],
+      "plainTerms": [
+        "A cheirographon was a handwritten IOU — a signed record of what you owe. Colossians 2:14 says that record of debt was cancelled and nailed to the cross. That is a paid debt, not an abolished law.",
+        "The bill against us is gone; the standard that defined the bill still stands."
+      ],
+      "bringItHome": [
+        "Picture a signed IOU pinned to a board with PAID stamped across it — the debt is discharged, the certificate void. That is what Colossians 2:14 describes: the record of charges against us, cancelled and posted at the cross. It does not say the law was torn up. It says the debt was paid — which only makes sense if the law that measured the debt is still there."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge, the Creditor",
+          "does": "cancels the certificate of debt against the guilty."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the price",
+          "does": "by whom the debt is discharged and the bond posted paid."
+        },
+        {
+          "who": "The cheirographon",
+          "role": "the debt-record",
+          "does": "the accusing certificate, blotted out and nailed up."
+        },
+        {
+          "who": "The law",
+          "role": "the standard",
+          "does": "unrepealed — the measure by which the debt existed."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 16,
+          "term": "Forgive"
+        },
+        {
+          "n": 20,
+          "term": "Atonement"
+        },
+        {
+          "n": 140,
+          "term": "Katargeo"
+        },
+        {
+          "n": 29,
+          "term": "Reconcile"
         }
       ]
     },
