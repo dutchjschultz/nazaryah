@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0801 V9",
+    "version": "0801 V10",
     "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -27,7 +27,8 @@
       "0801 V6: merged 12 word pages (Covenant–Eretz Gezerah: 18,76,90,41,17,50,127,95,138,78,32,123) into words; those terms set page draft-v1.",
       "0801 V7: merged 12 word pages (Face–Hupo Nomon: 83,100,99,85,16,64,79,119,81,46,52,139) into words; those terms set page draft-v1.",
       "0801 V8: merged 12 word pages (Husband–Karath: 93,53,51,118,12,96,22,1,2,4,3,132) into words; those terms set page draft-v1. Fixed Engrave mis-key: word record moved 32→33 (n:33); term 32 (Write) page cleared until its page is written.",
-      "0801 V9: merged 12 word pages (Keep–Mouth: 48,73,56,23,84,55,97,106,11,36,72,87) into words; those terms set page draft-v1."
+      "0801 V9: merged 12 word pages (Keep–Mouth: 48,73,56,23,84,55,97,106,11,36,72,87) into words; those terms set page draft-v1.",
+      "0801 V10: merged 12 word pages (Name–Promise: 38,122,104,141,124,37,115,54,57,77,70,44) into words; those terms set page draft-v1."
     ]
   },
   "movements": [
@@ -315,13 +316,15 @@
       "n": 37,
       "term": "Pillar",
       "movement": 6,
-      "gloss": "a witness monument in stone"
+      "gloss": "a witness monument in stone",
+      "page": "draft-v1"
     },
     {
       "n": 38,
       "term": "Name",
       "movement": 3,
-      "gloss": "legal identity and authority"
+      "gloss": "legal identity and authority",
+      "page": "draft-v1"
     },
     {
       "n": 39,
@@ -359,7 +362,8 @@
       "n": 44,
       "term": "Promise",
       "movement": 2,
-      "gloss": "a pledge that confers a claim"
+      "gloss": "a pledge that confers a claim",
+      "page": "draft-v1"
     },
     {
       "n": 45,
@@ -426,7 +430,8 @@
       "n": 54,
       "term": "Portion",
       "movement": 3,
-      "gloss": "the assigned legal share"
+      "gloss": "the assigned legal share",
+      "page": "draft-v1"
     },
     {
       "n": 55,
@@ -446,7 +451,8 @@
       "n": 57,
       "term": "Possess",
       "movement": 3,
-      "gloss": "to take and hold as legal owner"
+      "gloss": "to take and hold as legal owner",
+      "page": "draft-v1"
     },
     {
       "n": 58,
@@ -530,7 +536,8 @@
       "n": 70,
       "term": "Profane",
       "movement": 3,
-      "gloss": "to breach a holy boundary"
+      "gloss": "to breach a holy boundary",
+      "page": "draft-v1"
     },
     {
       "n": 71,
@@ -576,7 +583,8 @@
       "n": 77,
       "term": "Priest",
       "movement": 1,
-      "gloss": "officer who teaches and judges the law"
+      "gloss": "officer who teaches and judges the law",
+      "page": "draft-v1"
     },
     {
       "n": 78,
@@ -758,7 +766,8 @@
       "n": 104,
       "term": "Number",
       "movement": 3,
-      "gloss": "enrolled on the official roll"
+      "gloss": "enrolled on the official roll",
+      "page": "draft-v1"
     },
     {
       "n": 105,
@@ -826,7 +835,8 @@
       "n": 115,
       "term": "Plead",
       "movement": 7,
-      "gloss": "to bring and argue the lawsuit"
+      "gloss": "to bring and argue the lawsuit",
+      "page": "draft-v1"
     },
     {
       "n": 116,
@@ -874,7 +884,8 @@
       "term": "Nasa Avon",
       "movement": 4,
       "gloss": "to carry the liability of an offense",
-      "strongs": "H5375+H5771"
+      "strongs": "H5375+H5771",
+      "page": "draft-v1"
     },
     {
       "n": 123,
@@ -889,7 +900,8 @@
       "term": "Outside the Camp",
       "movement": 7,
       "gloss": "the place of the legally condemned",
-      "strongs": "exo tes paremboles / exo tes pules"
+      "strongs": "exo tes paremboles / exo tes pules",
+      "page": "draft-v1"
     },
     {
       "n": 125,
@@ -1039,7 +1051,8 @@
       "term": "Orthotomeo",
       "movement": 6,
       "gloss": "accurate handling of the record",
-      "strongs": "G3718"
+      "strongs": "G3718",
+      "page": "draft-v1"
     },
     {
       "n": 142,
@@ -7838,6 +7851,1000 @@
         {
           "n": 36,
           "term": "Memorial"
+        }
+      ]
+    },
+    "38": {
+      "n": 38,
+      "term": "Name",
+      "movement": 3,
+      "rootLine": "shem — Hebrew",
+      "caseStrongs": "H8034",
+      "lead": "A name in Scripture is legal identity and authority — not a mere label but the standing a person holds and the authority he acts under. To act ‘in the name’ of another is to act with delegated legal authority (1 Samuel 17:45); to have one’s name ‘cut off’ is to lose standing and inheritance (Deuteronomy 25:6). The name carries reputation, right, and legal identity together. This is why blotting out a name is a judicial act and why the Name of Yahuah is treated with such weight — to invoke it is to invoke His authority. A name is who you are before the law and what you are empowered to do.",
+      "root": [
+        {
+          "lemma": "shem",
+          "strong": "H8034",
+          "sense": "name; legal identity, reputation, and delegated authority"
+        }
+      ],
+      "courtroomWord": "An identity term — legal standing and the authority one acts under.",
+      "itsRole": "A name is the person’s legal identity: his standing, his reputation, and the authority attached to him. To act in a name is to act with that authority delegated; to blot out a name is to remove a standing. The Name of Yahuah carries His authority, which is why it is invoked in oath, in blessing, and in judgment. A name is who one is before the court and what one is empowered to do.",
+      "proofTexts": [
+        {
+          "ref": "1 Samuel 17:45",
+          "text": "I come to thee in the name of Yahuah of hosts.",
+          "note": "Acting under delegated authority."
+        },
+        {
+          "ref": "Deuteronomy 25:6",
+          "text": "That his name be not put out of Israel.",
+          "note": "The name as standing and inheritance."
+        },
+        {
+          "ref": "Exodus 3:15",
+          "text": "This is my name for ever.",
+          "note": "The Name that carries His authority."
+        },
+        {
+          "ref": "Proverbs 22:1",
+          "text": "A good name is rather to be chosen than great riches.",
+          "note": "The name as reputation and standing."
+        }
+      ],
+      "plainTerms": [
+        "A name, in Scripture, is your legal identity and the authority you act under — not just a label. To act ‘in the name’ of another is to act with their authority; to have a name ‘blotted out’ is to lose standing. The Name of Yahuah carries His authority."
+      ],
+      "bringItHome": [
+        "David came against Goliath ‘in the name of Yahuah’ — not invoking a word, but acting under an authority. That is what a name is: your standing before the law and the power you are empowered to wield. To blot out a name is to erase a legal identity."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the authority",
+          "does": "whose Name carries His power to those who act in it."
+        },
+        {
+          "who": "The person",
+          "role": "the bearer",
+          "does": "whose name is his standing and identity."
+        },
+        {
+          "who": "The name",
+          "role": "the identity",
+          "does": "the legal standing and delegated authority."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 31,
+          "term": "Book"
+        },
+        {
+          "n": 34,
+          "term": "Seal"
+        },
+        {
+          "n": 104,
+          "term": "Number"
+        },
+        {
+          "n": 35,
+          "term": "Sign"
+        }
+      ]
+    },
+    "122": {
+      "n": 122,
+      "term": "Nasa Avon",
+      "movement": 4,
+      "rootLine": "nasa / avon — Hebrew",
+      "caseStrongs": "H5375 · H5771",
+      "lead": "Nasa avon means ‘to bear iniquity’ — to carry the legal liability of an offense. Nasa is to lift and carry; avon is guilt, the crookedness of a wrong and the penalty it incurs. To bear iniquity is to shoulder the charge and its consequence: sometimes the guilty carry their own (“that soul shall bear his iniquity,” Leviticus 5:1), and sometimes a substitute carries it for them. This is the exact language of the Servant: “he shall bear their iniquities” (Isaiah 53:11). Nasa avon is the mechanism of substitution stated in legal terms — the liability lifted from one party and carried by another, the charge borne rather than merely forgiven.",
+      "root": [
+        {
+          "lemma": "nasa",
+          "strong": "H5375",
+          "sense": "to lift, carry, bear"
+        },
+        {
+          "lemma": "avon",
+          "strong": "H5771",
+          "sense": "iniquity, guilt, the liability of a wrong"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "nasa-H5375",
+        "siblings": [
+          {
+            "n": 16,
+            "term": "Forgive"
+          },
+          {
+            "n": 84,
+            "term": "Lift the face"
+          }
+        ],
+        "note": "Nasa lifts a charge off the record (Forgive), lifts a face in partiality (Lift the face), and here bears the charge as liability."
+      },
+      "courtroomWord": "A liability-bearing term — to carry the charge and penalty of an offense.",
+      "itsRole": "A charge, once entered, must be borne by someone. Nasa avon is the bearing — the guilty carrying their own liability, or a substitute carrying it for them. The same verb that lifts a charge in forgiveness (nasa) here shoulders it as a burden. The Servant bears the iniquity of many: the liability lifted from the guilty and carried by another. It is substitution in the law’s own vocabulary — the charge borne, not waved away.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 5:1",
+          "text": "If he do not utter it, then he shall bear his iniquity.",
+          "note": "The guilty bearing their own liability."
+        },
+        {
+          "ref": "Isaiah 53:11",
+          "text": "He shall bear their iniquities.",
+          "note": "The Servant carrying the charge of others."
+        },
+        {
+          "ref": "Leviticus 16:22",
+          "text": "The goat shall bear upon him all their iniquities.",
+          "note": "The liability carried away by a substitute."
+        },
+        {
+          "ref": "Numbers 14:34",
+          "text": "Ye shall bear your iniquities.",
+          "note": "The penalty shouldered."
+        }
+      ],
+      "plainTerms": [
+        "Nasa avon means ‘to bear iniquity’ — to carry the legal liability of a wrong. Sometimes the guilty carry it themselves; sometimes a substitute carries it for them. The Servant ‘bears the iniquities of many’: the charge lifted off the guilty and shouldered by another. It is substitution in legal terms."
+      ],
+      "bringItHome": [
+        "Every wrong leaves a liability that someone has to carry. Nasa avon is that carrying. The guilty can bear their own — or a substitute can shoulder it. Isaiah says the Servant ‘bears the iniquities of many’: the same verb that lifts a charge in forgiveness, here carrying it away on His own back."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The guilty",
+          "role": "the offender",
+          "does": "whose iniquity is a liability to be borne."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the Servant",
+          "does": "bears the iniquity of many, carrying the charge away."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "lays the liability where the covering provides."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 16,
+          "term": "Forgive"
+        },
+        {
+          "n": 20,
+          "term": "Atonement"
+        },
+        {
+          "n": 89,
+          "term": "Blood"
+        },
+        {
+          "n": 12,
+          "term": "Intercession"
+        }
+      ]
+    },
+    "104": {
+      "n": 104,
+      "term": "Number",
+      "movement": 3,
+      "rootLine": "mispar / manah — Hebrew",
+      "caseStrongs": "H4557 · H4487",
+      "lead": "To number is to enroll on the official roll — an act of legal registration, not mere counting. When Israel was ‘numbered,’ each person was entered on the census with standing, obligation, and a ransom price paid for being counted (Exodus 30:12). To be numbered among a people is to hold recognized membership; to be numbered with the transgressors (Isaiah 53:12) is to be legally reckoned in their company. The word carries enrollment and reckoning together. To have one’s days numbered, or one’s name numbered in a roll, is to be entered on a record that has legal weight. Numbering is registration, and registration is standing.",
+      "root": [
+        {
+          "lemma": "mispar",
+          "strong": "H4557",
+          "sense": "a number, a reckoning"
+        },
+        {
+          "lemma": "manah",
+          "strong": "H4487",
+          "sense": "to count, to number, to appoint"
+        }
+      ],
+      "courtroomWord": "A registration term — enrollment on an official roll, with standing and obligation.",
+      "itsRole": "To number is to register — to enter a person on the official roll with the standing and duties membership carries. Israel’s census enrolled each soul, with a ransom for being counted. To be numbered among a people is recognized membership; to be numbered with the transgressors is to be reckoned in their legal company. Numbering is enrollment on a record of weight, and the record confers standing.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 30:12",
+          "text": "When thou takest the sum... then shall they give every man a ransom.",
+          "note": "Numbering as registration with a price."
+        },
+        {
+          "ref": "Isaiah 53:12",
+          "text": "He was numbered with the transgressors.",
+          "note": "Legally reckoned in their company."
+        },
+        {
+          "ref": "Psalm 90:12",
+          "text": "So teach us to number our days.",
+          "note": "The reckoning that has weight."
+        },
+        {
+          "ref": "Luke 10:20",
+          "text": "Your names are written in heaven.",
+          "note": "Enrollment on the roll that counts."
+        }
+      ],
+      "plainTerms": [
+        "To number is to enroll someone on an official roll — registration, not just counting. Israel’s census entered each person with standing and a ransom paid. To be ‘numbered with the transgressors’ is to be legally reckoned in their company. Numbering is enrollment, and enrollment is standing."
+      ],
+      "bringItHome": [
+        "When Israel was ‘numbered,’ it was not a headcount for curiosity — it was a legal registration, each soul entered on the roll with a ransom paid for being counted. To be numbered among a people is recognized membership. And Isaiah’s Servant was ‘numbered with the transgressors’: reckoned, on the record, in their company."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the One who numbers",
+          "does": "enrolls the people on His roll."
+        },
+        {
+          "who": "The registered",
+          "role": "the members",
+          "does": "entered with standing and obligation."
+        },
+        {
+          "who": "The roll",
+          "role": "the record",
+          "does": "the register that confers membership."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 31,
+          "term": "Book"
+        },
+        {
+          "n": 38,
+          "term": "Name"
+        },
+        {
+          "n": 34,
+          "term": "Seal"
+        },
+        {
+          "n": 55,
+          "term": "Lot"
+        }
+      ]
+    },
+    "141": {
+      "n": 141,
+      "term": "Orthotomeo",
+      "movement": 6,
+      "rootLine": "orthotomeo — Greek",
+      "caseStrongs": "G3718",
+      "lead": "Orthotomeo means to cut straight — to handle a matter accurately, along its true lines. “Rightly dividing the word of truth” (2 Timothy 2:15) is a single Greek word, orthotomeo: to cut a straight path, as a mason cuts a stone true or a builder lays a straight road. Crucially, it is not ‘dividing’ the word into parts to be discarded — it is the accurate, straight handling of the whole record. The abolition reading turns this verb into a license to partition Scripture and cut pieces away; the word means the opposite: to keep the line straight, handling the testimony without warping or slicing it. Right division is accuracy, not amputation.",
+      "root": [
+        {
+          "lemma": "orthotomeo",
+          "strong": "G3718",
+          "sense": "to cut straight; to handle rightly, along true lines. From orthos (straight) + temno (to cut)"
+        }
+      ],
+      "courtroomWord": "A handling term — the accurate, straight handling of the record.",
+      "itsRole": "The record must be handled truly, and orthotomeo is that handling — cutting a straight line through the testimony, not warping or partitioning it. The word pictures a craftsman cutting straight: the workman that needeth not to be ashamed handles the truth accurately. It is not permission to divide the word and discard sections; it is the demand to keep the line straight. Right division is faithful accuracy, the opposite of slicing the law away.",
+      "proofTexts": [
+        {
+          "ref": "2 Timothy 2:15",
+          "text": "Rightly dividing the word of truth.",
+          "note": "The straight, accurate handling of the record."
+        },
+        {
+          "ref": "2 Timothy 2:15",
+          "text": "A workman that needeth not to be ashamed.",
+          "note": "The craftsman who cuts true."
+        },
+        {
+          "ref": "Proverbs 3:6",
+          "text": "He shall direct thy paths.",
+          "note": "The straight way — the same picture."
+        },
+        {
+          "ref": "Psalm 119:128",
+          "text": "I esteem all thy precepts concerning all things to be right.",
+          "note": "The whole record handled as true."
+        }
+      ],
+      "plainTerms": [
+        "Orthotomeo means ‘to cut straight’ — to handle the word accurately, along its true lines, like a mason cutting a stone true. ‘Rightly dividing the word of truth’ is not slicing Scripture into keep-and-discard piles; it is handling the whole record straight and accurate. Right division is accuracy, not amputation."
+      ],
+      "bringItHome": [
+        "A stonemason ‘cuts straight’ — true to the line, or the whole wall is crooked. That is orthotomeo: handling the word of truth accurately, along its real lines. It does not mean carving Scripture into parts to throw away. It means keeping the cut straight — the opposite of slicing the law off."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The workman",
+          "role": "the handler",
+          "does": "cuts the record straight, handling it accurately."
+        },
+        {
+          "who": "The word of truth",
+          "role": "the record",
+          "does": "to be handled true, not warped or partitioned."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the standard",
+          "does": "whose testimony is kept straight by right handling."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 32,
+          "term": "Write"
+        },
+        {
+          "n": 33,
+          "term": "Engrave"
+        },
+        {
+          "n": 7,
+          "term": "Witness"
+        },
+        {
+          "n": 106,
+          "term": "Measure"
+        }
+      ]
+    },
+    "124": {
+      "n": 124,
+      "term": "Outside the Camp",
+      "movement": 7,
+      "rootLine": "exo tes paremboles / exo tes pules — Greek",
+      "caseStrongs": "G1854 + G3925 / G4439",
+      "lead": "‘Outside the camp’ is the place of the legally condemned — where the sentence was executed and the unclean were put. The blasphemer was taken “without the camp” and stoned (Leviticus 24:14); the sin-offering’s body was burned “without the camp” (Leviticus 4:12); the leper dwelt outside it (Leviticus 13:46). To be put outside the camp was to be removed from the covenant community and its presence — a legal expulsion, the location of judgment executed. This is why Hebrews marks it deliberately: “Yahushua also, that he might sanctify the people with his own blood, suffered without the gate” (Hebrews 13:12). He was executed in the very place the condemned were put — taking the location of the sentence.",
+      "root": [
+        {
+          "lemma": "exo tes paremboles",
+          "strong": "G1854 + G3925",
+          "sense": "outside the camp; also exo tes pules (G4439), without the gate — the place of the condemned and unclean"
+        }
+      ],
+      "courtroomWord": "A place term — the location outside the community where the sentence was executed.",
+      "itsRole": "A sentence needs a place of execution, and ‘outside the camp’ is it — where the condemned were stoned, the sin-offering burned, the unclean removed. To be put there was legal expulsion from the covenant community and its presence. Hebrews marks the location on purpose: Yahushua suffered without the gate, executed in the place of the condemned. He took not only the sentence but its location — borne outside, where the guilty were put.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 24:14",
+          "text": "Bring forth him that hath cursed without the camp... and let all the congregation stone him.",
+          "note": "The place of execution."
+        },
+        {
+          "ref": "Leviticus 4:12",
+          "text": "The whole bullock shall he carry forth without the camp... and burn him.",
+          "note": "The sin-offering burned outside."
+        },
+        {
+          "ref": "Hebrews 13:12",
+          "text": "Yahushua also... suffered without the gate.",
+          "note": "Executed in the place of the condemned."
+        },
+        {
+          "ref": "Hebrews 13:13",
+          "text": "Let us go forth therefore unto him without the camp, bearing his reproach.",
+          "note": "Joining Him in the place of reproach."
+        }
+      ],
+      "plainTerms": [
+        "‘Outside the camp’ was where the condemned were put — where the guilty were stoned, the sin-offering burned, the unclean sent. It was legal expulsion from the community. And Hebrews notes it on purpose: Yahushua ‘suffered without the gate,’ executed in the very place the condemned were put."
+      ],
+      "bringItHome": [
+        "The camp was the place of the living community; outside it was the place of the condemned — execution, burning, banishment. So when Hebrews says Yahushua ‘suffered without the gate,’ it is placing Him exactly where the guilty were sent. He took not just the sentence but its address: outside, with the condemned."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "whose sentence is executed outside the camp."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the condemned’s place taken",
+          "does": "suffered without the gate, in the place of the guilty."
+        },
+        {
+          "who": "The camp",
+          "role": "the community",
+          "does": "from which the condemned are removed."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 123,
+          "term": "Eretz Gezerah"
+        },
+        {
+          "n": 132,
+          "term": "Karath"
+        },
+        {
+          "n": 127,
+          "term": "Din"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        }
+      ]
+    },
+    "37": {
+      "n": 37,
+      "term": "Pillar",
+      "movement": 6,
+      "rootLine": "matstsebah — Hebrew",
+      "caseStrongs": "H4676",
+      "lead": "A pillar was a standing stone set up as a legal witness — a monument that testified to a covenant or a boundary. Jacob set up a pillar and called it “a witness between me and thee” (Genesis 31:48-52); Joshua set a great stone “for a witness... it hath heard all the words” (Joshua 24:27). The pillar stood as silent, permanent testimony, entered into the record of the land. It is evidence made monumental: a stone that holds the memory of an agreement so it cannot be denied later. To raise a pillar was to file a witness in stone — a testimony that would outlast the parties who made it.",
+      "root": [
+        {
+          "lemma": "matstsebah",
+          "strong": "H4676",
+          "sense": "a standing pillar, a monument set up as a witness"
+        }
+      ],
+      "courtroomWord": "A witness term — a standing stone set as permanent testimony.",
+      "itsRole": "Testimony can be set in stone, and the pillar is that testimony — a monument witnessing to a covenant or boundary, entered into the record of the land. Jacob’s heap and Joshua’s stone stand ‘for a witness,’ silent and permanent. The pillar is evidence made to outlast the parties: a stone that holds the memory of the agreement so it cannot later be denied. To raise it is to file a witness that endures.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 31:48",
+          "text": "This heap is a witness between me and thee this day.",
+          "note": "The pillar as witness."
+        },
+        {
+          "ref": "Joshua 24:27",
+          "text": "This stone shall be a witness unto us... it hath heard all the words.",
+          "note": "The monument that testifies."
+        },
+        {
+          "ref": "Genesis 28:18",
+          "text": "Jacob... set it up for a pillar.",
+          "note": "The standing stone raised."
+        },
+        {
+          "ref": "Exodus 24:4",
+          "text": "Twelve pillars, according to the twelve tribes of Israel.",
+          "note": "Pillars set at the covenant."
+        }
+      ],
+      "plainTerms": [
+        "A pillar was a standing stone set up as a legal witness — a monument testifying to a covenant or boundary. Jacob’s stone was ‘a witness between me and thee’; Joshua’s had ‘heard all the words.’ The pillar is evidence made permanent: a stone that holds the memory of an agreement so it cannot be denied."
+      ],
+      "bringItHome": [
+        "When Jacob and Laban made their covenant, they piled up stones and said, ‘this heap is a witness between us.’ The pillar was testimony you could not argue with later — a witness set in stone, standing long after the handshake. To raise a pillar was to file evidence that would outlast everyone present."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The parties",
+          "role": "the covenanters",
+          "does": "set the pillar as their witness."
+        },
+        {
+          "who": "The pillar",
+          "role": "the witness",
+          "does": "the standing stone testifying to the agreement."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the One who watches",
+          "does": "before whom the pillar stands as witness."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 7,
+          "term": "Witness"
+        },
+        {
+          "n": 36,
+          "term": "Memorial"
+        },
+        {
+          "n": 32,
+          "term": "Write"
+        },
+        {
+          "n": 90,
+          "term": "Cry"
+        }
+      ]
+    },
+    "115": {
+      "n": 115,
+      "term": "Plead",
+      "movement": 7,
+      "rootLine": "rib — Hebrew",
+      "caseStrongs": "H7378",
+      "lead": "To plead is to bring and argue a lawsuit — to contend a case before the bench, not merely to beg. “Plead my cause, O Yahuah, with them that strive with me” (Psalm 35:1) asks the Judge to take up a legal contest and press it. Rib is the verb of litigation: to enter a controversy, argue it, and seek a ruling. When Yahuah says “Come now, and let us reason together” (Isaiah 1:18), the setting is a courtroom, the parties contending toward a verdict. To plead is to prosecute or defend a real case — which is why Yahuah is asked to plead the cause of the widow and the poor: to take their suit and argue it to judgment.",
+      "root": [
+        {
+          "lemma": "rib",
+          "strong": "H7378",
+          "sense": "to contend, to conduct a lawsuit, to plead a case"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "rib-H737x",
+        "siblings": [
+          {
+            "n": 116,
+            "term": "Cause"
+          }
+        ],
+        "note": "Rib as verb (to plead) and rib as noun (the cause, the case) share the root: to plead is to argue the cause."
+      },
+      "courtroomWord": "A litigation term — to bring and argue a lawsuit before the bench.",
+      "itsRole": "A case must be argued, and to plead is the arguing — contending a controversy before the court toward a ruling. It is not begging but litigation: entering the suit and pressing it. Yahuah is asked to plead the cause of the defenseless — to take their case and argue it to a verdict. He also pleads His own controversy with His people. To plead is to prosecute or defend a real matter at law.",
+      "proofTexts": [
+        {
+          "ref": "Psalm 35:1",
+          "text": "Plead my cause, O Yahuah, with them that strive with me.",
+          "note": "The Judge asked to argue the case."
+        },
+        {
+          "ref": "Isaiah 1:18",
+          "text": "Come now, and let us reason together.",
+          "note": "The courtroom contest toward a verdict."
+        },
+        {
+          "ref": "Micah 6:2",
+          "text": "Yahuah hath a controversy with his people... he will plead with Israel.",
+          "note": "The lawsuit brought."
+        },
+        {
+          "ref": "Proverbs 23:11",
+          "text": "He shall plead their cause with thee.",
+          "note": "The case argued for the defenseless."
+        }
+      ],
+      "plainTerms": [
+        "To plead is to bring and argue a lawsuit — to contend a case in court — not just to beg. ‘Plead my cause’ asks Yahuah to take up a legal contest and press it to a ruling. He is asked to plead for the widow and the poor: to argue their case to judgment. And He pleads His own controversy with His people."
+      ],
+      "bringItHome": [
+        "To ‘plead’ is what a lawyer does — not plead for mercy, but argue the case, contend the matter, press it to a verdict. When the Psalmist cries ‘plead my cause,’ he wants the Judge to enter the fight and argue it. And Yahuah pleads for the defenseless the same way: taking their suit and arguing it to judgment."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the One who pleads",
+          "does": "argues the cause of the defenseless, and His own controversy."
+        },
+        {
+          "who": "The party",
+          "role": "the litigant",
+          "does": "whose case is argued before the bench."
+        },
+        {
+          "who": "The cause",
+          "role": "the case",
+          "does": "the controversy pleaded toward a verdict."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 116,
+          "term": "Cause"
+        },
+        {
+          "n": 117,
+          "term": "Accuse"
+        },
+        {
+          "n": 118,
+          "term": "Innocent"
+        },
+        {
+          "n": 127,
+          "term": "Din"
+        }
+      ]
+    },
+    "54": {
+      "n": 54,
+      "term": "Portion",
+      "movement": 3,
+      "rootLine": "cheleq — Hebrew",
+      "caseStrongs": "H2506",
+      "lead": "A portion is the assigned legal share — the part of an estate allotted to a party by right. The Levites received “no portion” of land because “Yahuah is their portion” (Deuteronomy 10:9); each tribe received its portion of the inheritance by allotment. Cheleq is a share fixed by law, not distributed by whim. To have a portion is to hold a defined claim on the estate; to say “Yahuah is my portion” (Psalm 73:26) is to claim Him as one’s assigned inheritance, using estate language deliberately. A portion is what the law apportions to you — your legal share, entered and secured.",
+      "root": [
+        {
+          "lemma": "cheleq",
+          "strong": "H2506",
+          "sense": "a portion, share, allotment; the legally assigned part"
+        }
+      ],
+      "courtroomWord": "A share term — the legally assigned part of an estate.",
+      "itsRole": "An estate is divided into shares, and the portion is one’s assigned part — fixed by law, not by favor. The tribes received their portions by allotment; the Levites’ portion was Yahuah Himself. To hold a portion is to hold a defined, secured claim on the inheritance. ‘Yahuah is my portion’ claims Him as one’s allotted share — estate language, chosen on purpose. The portion is what the law apportions, entered and held by right.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 10:9",
+          "text": "The Levites have no part nor inheritance... Yahuah is his inheritance.",
+          "note": "The portion assigned — here Yahuah Himself."
+        },
+        {
+          "ref": "Psalm 73:26",
+          "text": "Elohim is... my portion for ever.",
+          "note": "Claiming Him as one’s allotted share."
+        },
+        {
+          "ref": "Numbers 18:20",
+          "text": "I am thy part and thine inheritance among the children of Israel.",
+          "note": "The portion defined by Yahuah."
+        },
+        {
+          "ref": "Psalm 16:5",
+          "text": "Yahuah is the portion of mine inheritance.",
+          "note": "The assigned share held by right."
+        }
+      ],
+      "plainTerms": [
+        "A portion is your assigned legal share of an estate — fixed by law, not handed out on a whim. The tribes got their portions by allotment; the Levites’ portion was Yahuah Himself. To say ‘Yahuah is my portion’ is to claim Him as your assigned inheritance, using estate language on purpose."
+      ],
+      "bringItHome": [
+        "When an estate is divided, each heir gets a portion — a defined share, secured by law. That is cheleq. And the deepest use turns it personal: the Levites held no land because ‘Yahuah is their portion.’ To say that is to claim Him as your assigned inheritance — the share the law apportions to you."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the One who apportions",
+          "does": "assigns each party its portion; is Himself the Levite’s portion."
+        },
+        {
+          "who": "The heir",
+          "role": "the shareholder",
+          "does": "holds the assigned share by right."
+        },
+        {
+          "who": "The portion",
+          "role": "the share",
+          "does": "the legally allotted part of the estate."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 51,
+          "term": "Inheritance"
+        },
+        {
+          "n": 53,
+          "term": "Inherit"
+        },
+        {
+          "n": 55,
+          "term": "Lot"
+        },
+        {
+          "n": 52,
+          "term": "Heir"
+        }
+      ]
+    },
+    "57": {
+      "n": 57,
+      "term": "Possess",
+      "movement": 3,
+      "rootLine": "yarash — Hebrew",
+      "caseStrongs": "H3423",
+      "lead": "To possess is to take and hold as legal owner — to enter into lawful ownership, often by dispossessing a prior holder. “Go up and possess it” (Deuteronomy 1:21) is a command to take legal title to the land, driving out those who held it without right. Yarash carries both taking possession and holding it: seizure ripening into ownership. To possess the inheritance is to come into full legal ownership of the estate, not merely to occupy it. This is why possession is spoken of as secured or lost — it is title, held or forfeited. To possess is to own by right, entered on the record as the lawful holder.",
+      "root": [
+        {
+          "lemma": "yarash",
+          "strong": "H3423",
+          "sense": "to take possession, to inherit, to dispossess; to seize and hold as owner"
+        }
+      ],
+      "courtroomWord": "An ownership term — taking and holding lawful title to an estate.",
+      "itsRole": "To possess is to hold legal title — to take ownership and keep it, sometimes by dispossessing a prior holder without right. Israel was to possess the land: enter into lawful ownership of the inheritance. Possession is title held, which is why it can be secured or forfeited. To possess the estate is to own it by right, entered on the record as the lawful holder, not merely to occupy the ground.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 1:21",
+          "text": "Go up and possess it, as Yahuah... hath said.",
+          "note": "The command to take legal title."
+        },
+        {
+          "ref": "Deuteronomy 30:5",
+          "text": "Thou shalt possess it.",
+          "note": "The inheritance held as owner."
+        },
+        {
+          "ref": "Genesis 15:7",
+          "text": "To give thee this land to inherit it.",
+          "note": "The possession granted by covenant."
+        },
+        {
+          "ref": "Psalm 25:13",
+          "text": "His seed shall inherit the earth.",
+          "note": "Possession held by right."
+        }
+      ],
+      "plainTerms": [
+        "To possess is to take and hold legal ownership — to come into title, sometimes by removing a holder who had no right. ‘Go up and possess the land’ means take lawful ownership of it, not just walk on it. Possession is title, held or forfeited."
+      ],
+      "bringItHome": [
+        "To possess is more than to occupy — it is to hold legal title, to own by right. When Israel was told to ‘possess the land,’ they were to enter into lawful ownership of the inheritance. Possession is a deed in hand, not just feet on the ground — and like any title, it can be kept or lost."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Grantor",
+          "does": "gives the estate to be possessed."
+        },
+        {
+          "who": "The heir",
+          "role": "the owner",
+          "does": "takes and holds lawful title."
+        },
+        {
+          "who": "The estate",
+          "role": "the inheritance",
+          "does": "possessed as owned property."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 51,
+          "term": "Inheritance"
+        },
+        {
+          "n": 53,
+          "term": "Inherit"
+        },
+        {
+          "n": 56,
+          "term": "Landmark"
+        },
+        {
+          "n": 54,
+          "term": "Portion"
+        }
+      ]
+    },
+    "77": {
+      "n": 77,
+      "term": "Priest",
+      "movement": 1,
+      "rootLine": "kohen — Hebrew",
+      "caseStrongs": "H3548",
+      "lead": "The priest is an officer of the court who teaches the law and renders rulings on it — far more than a man who offers sacrifices. “The priest’s lips should keep knowledge, and they should seek the law at his mouth” (Malachi 2:7); hard cases were brought “unto the priests the Levites, and unto the judge” for a binding decision (Deuteronomy 17:9). The kohen mediated between Yahuah and the people, taught the distinctions of clean and unclean, and pronounced legal findings. He is a judicial and teaching officer, standing in the court of the sanctuary. To hold the priesthood was to hold an office of instruction and adjudication in the law of Yahuah.",
+      "root": [
+        {
+          "lemma": "kohen",
+          "strong": "H3548",
+          "sense": "a priest; an officer who ministers, teaches the law, and renders rulings"
+        }
+      ],
+      "courtroomWord": "An office term — the officer who teaches the law and renders rulings on it.",
+      "itsRole": "The priest is a court officer: he mediates, teaches the law, and pronounces findings — clean or unclean, guilty or clear. Hard cases came to the priests for a binding ruling. His lips keep knowledge, and the people seek the law at his mouth. The priesthood is a teaching and judicial office in the sanctuary’s court, not merely a sacrificial role. To be a priest is to instruct and adjudicate in the law.",
+      "proofTexts": [
+        {
+          "ref": "Malachi 2:7",
+          "text": "The priest’s lips should keep knowledge, and they should seek the law at his mouth.",
+          "note": "The teaching office."
+        },
+        {
+          "ref": "Deuteronomy 17:9",
+          "text": "Thou shalt come unto the priests the Levites, and unto the judge... and they shall shew thee the sentence of judgment.",
+          "note": "The priest rendering rulings."
+        },
+        {
+          "ref": "Leviticus 10:11",
+          "text": "That ye may teach the children of Israel all the statutes.",
+          "note": "The priest as teacher of the law."
+        },
+        {
+          "ref": "Leviticus 13:3",
+          "text": "The priest shall look on him, and pronounce him unclean.",
+          "note": "The priest’s legal finding."
+        }
+      ],
+      "plainTerms": [
+        "A priest was an officer of the court — he taught the law, mediated, and rendered rulings (clean or unclean, and more) — not just a man at an altar. Hard cases came to the priests for a binding decision. ‘Seek the law at his mouth’: the priesthood was a teaching and judicial office."
+      ],
+      "bringItHome": [
+        "The priest was not merely a sacrifice-offerer — he was the man you went to for a ruling: is this clean or unclean, guilty or clear, what does the law require here? ‘Seek the law at his mouth.’ He taught the statutes and pronounced findings. The priesthood was an office of the court, standing in the sanctuary."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The priest",
+          "role": "the officer",
+          "does": "teaches the law and renders rulings on it."
+        },
+        {
+          "who": "The people",
+          "role": "those who inquire",
+          "does": "who seek the law at his mouth."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "whose law the priest teaches and applies."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 78,
+          "term": "Elder"
+        },
+        {
+          "n": 79,
+          "term": "Gate"
+        },
+        {
+          "n": 1,
+          "term": "Judge"
+        },
+        {
+          "n": 71,
+          "term": "Anoint"
+        }
+      ]
+    },
+    "70": {
+      "n": 70,
+      "term": "Profane",
+      "movement": 3,
+      "rootLine": "chalal — Hebrew",
+      "caseStrongs": "H2490",
+      "lead": "To profane is to breach a holy boundary — to treat as common what the law set apart, a legal violation of the sacred. Chalal is the opposite of sanctify: to sanctify sets a thing apart into holy status; to profane drags it back into common use, breaking the boundary. To “profane the sabbath” (Exodus 31:14) or “profane the name” (Leviticus 22:32) is not a mood but an act — the violation of a set-apart status. The priest who profaned his office, the man who profaned the holy things, incurred real legal consequence. To profane is to cross a line the law drew around the holy, collapsing the distinction between sacred and common.",
+      "root": [
+        {
+          "lemma": "chalal",
+          "strong": "H2490",
+          "sense": "to profane, to defile, to treat as common; to breach a holy boundary"
+        }
+      ],
+      "courtroomWord": "A violation term — the breaching of a set-apart, holy status.",
+      "itsRole": "The law draws boundaries around the holy, and to profane is to breach them — to treat as common what was set apart. It is the reverse of sanctifying: sanctify moves a thing into holy status, profane drags it back to common. Profaning the sabbath, the name, or the holy things is an act with legal consequence, not a feeling. To profane is to collapse the distinction the law established between sacred and common.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 31:14",
+          "text": "Every one that defileth it shall surely be put to death.",
+          "note": "Profaning the sabbath — a capital breach."
+        },
+        {
+          "ref": "Leviticus 22:32",
+          "text": "Neither shall ye profane my holy name.",
+          "note": "The breach of the holy Name."
+        },
+        {
+          "ref": "Ezekiel 22:26",
+          "text": "They have profaned mine holy things... they have put no difference between the holy and profane.",
+          "note": "The boundary collapsed."
+        },
+        {
+          "ref": "Malachi 2:11",
+          "text": "Judah... hath profaned the holiness of Yahuah.",
+          "note": "The sacred violated."
+        }
+      ],
+      "plainTerms": [
+        "To profane is to breach a holy boundary — to treat as common what the law set apart. It is the opposite of sanctifying. To ‘profane the sabbath’ or ‘profane the name’ is a real legal violation, not a mood: crossing the line the law drew around the holy and collapsing the difference between sacred and common."
+      ],
+      "bringItHome": [
+        "To sanctify is to set a thing apart as holy; to profane is to drag it back into common use, breaking the boundary. Profaning the sabbath or the Name was not a bad attitude — it was an act that crossed a line the law had drawn, with real consequence. It collapses the distinction the law worked to keep."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "sets the boundaries around the holy."
+        },
+        {
+          "who": "The profaner",
+          "role": "the violator",
+          "does": "breaches the boundary, treating the holy as common."
+        },
+        {
+          "who": "The holy thing",
+          "role": "the set-apart",
+          "does": "the sabbath, the Name, the sanctuary — violated."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 69,
+          "term": "Sanctify"
+        },
+        {
+          "n": 67,
+          "term": "Clean"
+        },
+        {
+          "n": 68,
+          "term": "Unclean"
+        },
+        {
+          "n": 35,
+          "term": "Sign"
+        }
+      ]
+    },
+    "44": {
+      "n": 44,
+      "term": "Promise",
+      "movement": 2,
+      "rootLine": "epaggelia — Greek",
+      "caseStrongs": "G1860",
+      "lead": "A promise is a binding pledge that confers a legal claim on the one who receives it — not a hopeful intention but an enforceable commitment. When Scripture speaks of “the promise” made to Abraham (Galatians 3:16), it means a covenant grant that created a right, guaranteed by the character and oath of the Promiser. An epaggelia is a legal undertaking: the party who gives it is bound, and the party who holds it has standing to claim it. This is why the promises are called ‘yea and amen’ — confirmed, signed, sure. To hold a promise of Yahuah is to hold an enforceable claim, secured by the One who cannot lie.",
+      "root": [
+        {
+          "lemma": "epaggelia",
+          "strong": "G1860",
+          "sense": "a promise, a pledge; a binding legal undertaking"
+        }
+      ],
+      "courtroomWord": "A pledge term — a binding commitment that confers an enforceable claim.",
+      "itsRole": "A promise binds the one who gives it and grants a claim to the one who receives it. The promise to Abraham created a right, secured by oath. It is not intention but undertaking: the Promiser is bound, the holder has standing. Yahuah confirms His promises by oath so that the heirs might have strong consolation — an enforceable guarantee. To hold His promise is to hold a legal claim, sure because the Promiser cannot lie.",
+      "proofTexts": [
+        {
+          "ref": "Galatians 3:16",
+          "text": "To Abraham and his seed were the promises made.",
+          "note": "The covenant grant that created a right."
+        },
+        {
+          "ref": "Hebrews 6:18",
+          "text": "It was impossible for Elohim to lie.",
+          "note": "The promise secured, enforceable."
+        },
+        {
+          "ref": "2 Corinthians 1:20",
+          "text": "All the promises of Elohim in him are yea, and in him Amen.",
+          "note": "The promises confirmed and signed."
+        },
+        {
+          "ref": "Romans 4:21",
+          "text": "What he had promised, he was able also to perform.",
+          "note": "The guarantee behind the pledge."
+        }
+      ],
+      "plainTerms": [
+        "A promise is a binding pledge that gives you a legal claim — not a hopeful ‘I’ll try,’ but an enforceable commitment. The promise to Abraham created a right, guaranteed by oath. The Promiser is bound; the one who holds it has standing to claim it. Yahuah’s promises are ‘yea and amen’: confirmed, signed, sure."
+      ],
+      "bringItHome": [
+        "A promise from Yahuah is not a wish — it is a binding undertaking that gives you an enforceable claim, secured by His oath and His character. He even swore an oath ‘that we might have strong consolation.’ To hold His promise is to hold a legal guarantee, sure because the One who gave it cannot lie."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Promiser",
+          "does": "binds Himself by the pledge, confirmed by oath."
+        },
+        {
+          "who": "The heir",
+          "role": "the holder",
+          "does": "has standing to claim the promise."
+        },
+        {
+          "who": "The promise",
+          "role": "the pledge",
+          "does": "the enforceable commitment secured by the Promiser."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 42,
+          "term": "Swear"
+        },
+        {
+          "n": 43,
+          "term": "Vow"
+        },
+        {
+          "n": 39,
+          "term": "Amen"
         }
       ]
     }
