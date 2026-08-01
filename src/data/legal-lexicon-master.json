@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0731 V2",
+    "version": "0731 V3",
     "updated": "2026-07-31",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -20,7 +20,8 @@
     "breakFlag": "A term wearing a 'break' object is at work in the counterfeit court — a break in the system of Yahuah. Render its mark and its 'In the Break' callout in the break color. Home movement is still its true-court role; the break is an added aspect, not a separate movement.",
     "changelog": [
       "0731 V1: merged 120 + 22 new (121–142) = 142. Dropped batch duplicates Goral and Mishpat. Movement VIII rejected; counterfeit terms flagged 'break' (red) inside their true movements. Recompense (28) has a draft page (V4).",
-      "0731 V2: break design LOCKED. Added red break flags to Diabolos (134), Parad (136), and the balal side of Badal/Balal (135). Seven break terms total."
+      "0731 V2: break design LOCKED. Added red break flags to Diabolos (134), Parad (136), and the balal side of Badal/Balal (135). Seven break terms total.",
+      "0731 V3: merged 7 break-term word pages (129,130,133,134,135,136,142) into words; those terms set page draft-v1. Break callouts render from the term break note, not duplicated in the record."
     ]
   },
   "movements": [
@@ -854,7 +855,8 @@
       "strongs": "H5709+H7985",
       "break": {
         "note": "The court's own authority, seized by a bench never granted it — jurisdiction stripped from the rightful and claimed by the usurper (Dan 7)."
-      }
+      },
+      "page": "draft-v1"
     },
     {
       "n": 130,
@@ -864,7 +866,8 @@
       "strongs": "H2166+H1882",
       "break": {
         "note": "The statute itself, tampered — appointed times and law altered by a power that was never the Lawgiver (Dan 7:25)."
-      }
+      },
+      "page": "draft-v1"
     },
     {
       "n": 131,
@@ -888,7 +891,8 @@
       "strongs": "G4864",
       "break": {
         "note": "The seat of standing, usurped — a body claiming the right to teach and judge that Yahuah never seated."
-      }
+      },
+      "page": "draft-v1"
     },
     {
       "n": 134,
@@ -898,7 +902,8 @@
       "strongs": "G1228",
       "break": {
         "note": "The charge turned to slander — an accuser who fabricates the case instead of proving it."
-      }
+      },
+      "page": "draft-v1"
     },
     {
       "n": 135,
@@ -909,7 +914,8 @@
       "break": {
         "note": "The balal side only — unlawful confusion, the deliberate mixing of what Yahuah set apart.",
         "partial": "balal"
-      }
+      },
+      "page": "draft-v1"
     },
     {
       "n": 136,
@@ -919,7 +925,8 @@
       "strongs": "H6504",
       "break": {
         "note": "Severance worked by testimony thrown between brothers — division engineered, not adjudicated."
-      }
+      },
+      "page": "draft-v1"
     },
     {
       "n": 137,
@@ -964,7 +971,8 @@
       "strongs": "G1320+G2519",
       "break": {
         "note": "Titles of standing taken by men that Yahushua forbade them to bear (Matt 23:8,10)."
-      }
+      },
+      "page": "draft-v1"
     }
   ],
   "words": {
@@ -1081,6 +1089,598 @@
         {
           "n": 9,
           "term": "Advocate"
+        }
+      ]
+    },
+    "129": {
+      "n": 129,
+      "term": "Heedayah Sholtan",
+      "movement": 1,
+      "rootLine": "heedayah / sholtan — Aramaic",
+      "caseStrongs": "H5709 · H7985",
+      "lead": "In Daniel's court the verdict does not merely punish — it strips. Sholtan is jurisdiction, the legal right to rule; heedayah is its removal, the bench recalling an authority that was seized or expired. “The judgment shall sit, and they shall take away his dominion, to consume and to destroy it unto the end” (Daniel 7:26). This is not conquest by force but a ruling from the seat: the right to govern, revoked. Every power that reigns does so on a lease, and the Ancient of Days holds the deed.",
+      "root": [
+        {
+          "lemma": "heedayah",
+          "strong": "H5709",
+          "sense": "to pass over, remove, take away (Aramaic)"
+        },
+        {
+          "lemma": "sholtan",
+          "strong": "H7985",
+          "sense": "dominion, jurisdiction, the right to rule (Aramaic)"
+        }
+      ],
+      "courtroomWord": "A jurisdiction term — the court's power to revoke the right to rule. Not violence; a ruling that cancels a mandate.",
+      "itsRole": "In the true court all dominion is granted and revocable. Heedayah sholtan is the moment the bench recalls it — the horn that had made war with the saints (Daniel 7:21) has its jurisdiction consumed when the court sits. The counterfeit runs the other way: a power strips a standing it was never given the right to strip, and seats itself. The true revoking is the answer to the false seizing.",
+      "proofTexts": [
+        {
+          "ref": "Daniel 7:26",
+          "text": "The judgment shall sit, and they shall take away his dominion.",
+          "note": "Jurisdiction revoked from the bench, not the battlefield."
+        },
+        {
+          "ref": "Daniel 7:12",
+          "text": "They had their dominion taken away, yet their lives were prolonged.",
+          "note": "The right to rule removed while the party remains."
+        },
+        {
+          "ref": "Daniel 7:14",
+          "text": "There was given him dominion... an everlasting dominion.",
+          "note": "The true grant — given to the Son of man by the Ancient of Days, received, not seized."
+        },
+        {
+          "ref": "Daniel 4:31",
+          "text": "The kingdom is departed from thee.",
+          "note": "Jurisdiction pulled from a ruler who called it his own."
+        }
+      ],
+      "plainTerms": [
+        "Dominion is the right to rule, and it is always on loan. Heedayah sholtan is the day the loan is called in — the court taking back the authority a power thought it owned. No army does it; a verdict does."
+      ],
+      "bringItHome": [
+        "A steward runs the estate for years and starts calling it his own. Then the owner returns, opens the books, and revokes his authority with a word — not a brawl, a ruling. That is heedayah sholtan: every throne that forgot it was leased has its lease canceled the moment the true Owner sits."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge, the Ancient of Days",
+          "does": "grants dominion, and revokes it from the seat."
+        },
+        {
+          "who": "The usurping horn",
+          "role": "the party stripped",
+          "does": "ruled by seized authority; its jurisdiction consumed when the court sits."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the Son of man",
+          "does": "the One to whom the true, everlasting dominion is given by the Ancient of Days."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 131,
+          "term": "Attiq Yomin"
+        },
+        {
+          "n": 74,
+          "term": "Throne"
+        },
+        {
+          "n": 73,
+          "term": "King"
+        },
+        {
+          "n": 121,
+          "term": "Seat vs Throne"
+        }
+      ]
+    },
+    "130": {
+      "n": 130,
+      "term": "Zeman + Dath",
+      "movement": 2,
+      "rootLine": "zeman / dath — Aramaic",
+      "caseStrongs": "H2166 · H1882",
+      "lead": "Daniel names the signature crime of the counterfeit power in two words: “he shall think to change times and laws” (Daniel 7:25). Zeman is the appointed time — the set seasons Yahuah fixed in the lights of heaven (Genesis 1:14); dath is the statute, the decree with binding force. To alter either is not reform; it is forgery. The horn does not abolish the law in the open — it edits it, moves the appointed times, rewrites the statute, and keeps the form while changing the substance. It is legislation by a power that was never the Lawgiver.",
+      "root": [
+        {
+          "lemma": "zeman",
+          "strong": "H2166",
+          "sense": "appointed time, set season (Aramaic)"
+        },
+        {
+          "lemma": "dath",
+          "strong": "H1882",
+          "sense": "decree, edict, law with binding force (Aramaic)"
+        }
+      ],
+      "courtroomWord": "A tampering term — the unlawful editing of the statute and the calendar by a party with no authority to legislate.",
+      "itsRole": "Only the Lawgiver may set the times and fix the law. In the break the counterfeit thinks to change them, assuming the Lawgiver's chair. The tell is subtle: not “the law is abolished” but “the law is amended” — the seventh day moved, the appointed feasts replaced, the reckoning of time reset. The court's answer stands in the same passage: the dominion of the one who changed the times is taken away (Daniel 7:26).",
+      "proofTexts": [
+        {
+          "ref": "Daniel 7:25",
+          "text": "He shall think to change times and laws.",
+          "note": "The counterfeit's signature — edit, do not openly abolish."
+        },
+        {
+          "ref": "Genesis 1:14",
+          "text": "Let them be for signs, and for seasons.",
+          "note": "The times fixed by Yahuah in sun and moon, not by man."
+        },
+        {
+          "ref": "Deuteronomy 4:2",
+          "text": "Ye shall not add unto the word... neither shall ye diminish.",
+          "note": "The standing prohibition the horn violates."
+        },
+        {
+          "ref": "Daniel 7:26",
+          "text": "The judgment shall sit, and they shall take away his dominion.",
+          "note": "The tampering answered from the bench."
+        }
+      ],
+      "plainTerms": [
+        "Zeman is Yahuah's calendar — His appointed times, set in the sun and moon. Dath is His law. To change either is not to update it; it is to counterfeit it.",
+        "The break's move is quiet: keep the religion, move the days, rewrite the rule, and few notice the signature was forged."
+      ],
+      "bringItHome": [
+        "A forger does not tear up the contract — that would be caught. He changes a date, alters a clause, and passes it off as the original. Daniel's horn does exactly that with Yahuah's law: not abolished, just amended — the seventh day slid to another, the feasts swapped, the calendar reset. Same-looking document, different terms. And the court that sits in Daniel 7 revokes the forger's authority for it."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "alone fixes the appointed times and the statute."
+        },
+        {
+          "who": "The horn",
+          "role": "the Forger",
+          "does": "thinks to change what he had no right to touch."
+        },
+        {
+          "who": "The Ancient of Days",
+          "role": "the Judge",
+          "does": "sits, and takes the forger's dominion away."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 138,
+          "term": "Dogma"
+        },
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 8,
+          "term": "Testimony"
+        },
+        {
+          "n": 19,
+          "term": "Transgression"
+        }
+      ]
+    },
+    "133": {
+      "n": 133,
+      "term": "Synagoge",
+      "movement": 1,
+      "rootLine": "synagoge — Greek",
+      "caseStrongs": "G4864",
+      "lead": "Synagoge means a gathering — a body assembled. The word is neutral until the question every court asks is put to it: by what standing? A lawful assembly is convened by authority; a counterfeit one convenes itself and claims the bench. Scripture marks the difference sharply, naming a “synagogue of Satan” — those “which say they are... and are not” (Revelation 2:9; 3:9). The break is not the gathering; it is the claim to a standing that was never granted — a body seated to teach and judge on its own warrant.",
+      "root": [
+        {
+          "lemma": "synagoge",
+          "strong": "G4864",
+          "sense": "a gathering together, an assembly; from syn (together) + ago (to bring, lead)"
+        }
+      ],
+      "courtroomWord": "A standing term — an assembled body, and the question of whether its authority to teach and judge was granted or seized.",
+      "itsRole": "Authority to teach and to render judgment is conferred, never assumed. In the break a synagoge claims the seat by its own vote — they say they are, and are not. The counterfeit assembly issues rulings, binds consciences, and casts out, on a warrant it manufactured. The mark of it is self-authorization: standing claimed, never conferred.",
+      "proofTexts": [
+        {
+          "ref": "Revelation 2:9",
+          "text": "Them which say they are... and are not, but are the synagogue of Satan.",
+          "note": "Standing claimed, not granted."
+        },
+        {
+          "ref": "Revelation 3:9",
+          "text": "The synagogue of Satan, which say they are... and do lie.",
+          "note": "The counterfeit body named for its false claim."
+        },
+        {
+          "ref": "John 9:34",
+          "text": "They cast him out.",
+          "note": "The self-seated body exercising judgment against the man who confessed the truth."
+        },
+        {
+          "ref": "Matthew 23:2-4",
+          "text": "They sit in Moses' seat... they bind heavy burdens.",
+          "note": "Binding by a seat taken, not granted."
+        }
+      ],
+      "plainTerms": [
+        "A synagogue is just an assembly — a group gathered. The word turns dark only when the group claims a seat it was never given: the right to teach as final, to judge, to cast out.",
+        "Scripture's test is blunt — they say they are, and are not. The gathering is not the problem; the stolen gavel is."
+      ],
+      "bringItHome": [
+        "A room of people is only a room of people — until someone stands at the front, claims the bench, and begins handing down verdicts no one authorized. That is the break: an assembly that seats itself and rules. The true assembly is convened by Yahuah; the counterfeit convenes itself."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "alone confers the standing to teach and to judge."
+        },
+        {
+          "who": "The self-seated body",
+          "role": "the counterfeit bench",
+          "does": "claims the seat it was never given."
+        },
+        {
+          "who": "The one cast out",
+          "role": "the faithful witness",
+          "does": "judged by a court with no jurisdiction, for confessing the truth."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 142,
+          "term": "Didaskalos + Kathegetes"
+        },
+        {
+          "n": 78,
+          "term": "Elder"
+        },
+        {
+          "n": 77,
+          "term": "Priest"
+        },
+        {
+          "n": 121,
+          "term": "Seat vs Throne"
+        }
+      ]
+    },
+    "134": {
+      "n": 134,
+      "term": "Diabolos",
+      "movement": 7,
+      "rootLine": "diabolos — Greek",
+      "caseStrongs": "G1228",
+      "lead": "Diabolos is built from dia (across) and ballo (to throw) — one who throws a charge across the room at the accused. It is the court word for the slanderer: not a witness stating what he saw, but a prosecutor manufacturing the case. Scripture names him “the accuser of our brethren... which accused them before our Elohim day and night” (Revelation 12:10). The diabolos does not prove; he alleges. His whole standing depends on a charge sticking — and the break is that the charge is a lie thrown, not a truth testified.",
+      "root": [
+        {
+          "lemma": "diabolos",
+          "strong": "G1228",
+          "sense": "slanderer, false accuser; from dia (across) + ballo (to throw)"
+        }
+      ],
+      "courtroomWord": "A prosecution term — the party who lodges the charge; in the break, a charge slandered rather than proven.",
+      "itsRole": "A lawful court receives testimony and weighs it. The diabolos short-circuits that — he throws the accusation and lets it work before it is tested. In the break, accusation itself becomes the weapon: the case is the smear. But the accused has an answer in the same court — an Advocate (1 John 2:1), and a blood that speaks better things (Hebrews 12:24). When the true price is paid, the thrown charge finds nothing to land on, and the accuser is cast down.",
+      "proofTexts": [
+        {
+          "ref": "Revelation 12:10",
+          "text": "The accuser of our brethren is cast down, which accused them... day and night.",
+          "note": "The slanderer's charge thrown out of court."
+        },
+        {
+          "ref": "Zechariah 3:1",
+          "text": "Satan standing at his right hand to resist him.",
+          "note": "The accuser positioned to prosecute the priest."
+        },
+        {
+          "ref": "John 8:44",
+          "text": "He is a liar, and the father of it.",
+          "note": "The accuser's charges are fabricated, not testified."
+        },
+        {
+          "ref": "1 John 2:1",
+          "text": "We have an advocate with the Father.",
+          "note": "The answer to the diabolos — counsel for the accused."
+        }
+      ],
+      "plainTerms": [
+        "A diabolos is a slanderer — someone who throws an accusation instead of proving one. Scripture's accuser works day and night, lodging charges against the delivered.",
+        "The break is that the charge is a lie. And the answer is not to argue it but to have an Advocate and a paid account — then the thrown charge has nothing to stick to."
+      ],
+      "bringItHome": [
+        "Picture a man in the dock while someone across the room hurls accusation after accusation, hoping one sticks — none proven, all thrown. That is the diabolos. But the accused has counsel who rises with a receipt: the debt is paid, the account is clear. The charges fall to the floor, and the accuser is put out of court."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The diabolos",
+          "role": "the false Accuser",
+          "does": "throws the charge, prosecutes by slander."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the Advocate",
+          "does": "counsel for the accused, answering the charge with a settled account."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "before whom the charge is lodged, and who casts the accuser down."
+        },
+        {
+          "who": "The brethren",
+          "role": "the accused",
+          "does": "charged day and night, cleared by the paid account."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 10,
+          "term": "Accuser"
+        },
+        {
+          "n": 117,
+          "term": "Accuse"
+        },
+        {
+          "n": 125,
+          "term": "Kategoros"
+        },
+        {
+          "n": 136,
+          "term": "Parad"
+        }
+      ]
+    },
+    "135": {
+      "n": 135,
+      "term": "Badal vs Balal",
+      "movement": 2,
+      "rootLine": "badal vs balal — Hebrew",
+      "caseStrongs": "H914 · H1101",
+      "lead": "Two Hebrew verbs sit at opposite poles of the law. Badal is to divide, to distinguish, to set apart — the work Yahuah does from the first day, dividing light from darkness (Genesis 1:4), and the priest's charge “to put difference between holy and unholy, and between unclean and clean” (Leviticus 10:10). Balal is the opposite: to mingle, to confound — the root of Babel, where Yahuah “did there confound the language” (Genesis 11:9). The law runs on badal, on maintained distinctions. The break runs on balal — the deliberate blurring of the lines the law drew, until holy and common cannot be told apart.",
+      "root": [
+        {
+          "lemma": "badal",
+          "strong": "H914",
+          "sense": "to divide, separate, distinguish, set apart"
+        },
+        {
+          "lemma": "balal",
+          "strong": "H1101",
+          "sense": "to mingle, mix, confound, confuse"
+        }
+      ],
+      "courtroomWord": "A distinction pair — badal, the lawful drawing of boundaries; balal, the unlawful erasing of them.",
+      "itsRole": "The whole legal order depends on distinctions kept: holy from common, clean from unclean, light from darkness. Badal is the court maintaining its categories. In the break, balal dissolves them — the boundary erased not by relocation but by fog, until they “have put no difference between the holy and profane” (Ezekiel 22:26). Confusion is not neutral; it is the counterfeit's method, because a law whose lines are blurred cannot convict.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 10:10",
+          "text": "Put difference between holy and unholy, and between unclean and clean.",
+          "note": "The lawful distinction commanded — badal."
+        },
+        {
+          "ref": "Genesis 1:4",
+          "text": "Elohim divided the light from the darkness.",
+          "note": "Distinction as the first act of order."
+        },
+        {
+          "ref": "Ezekiel 22:26",
+          "text": "They have put no difference between the holy and profane.",
+          "note": "The break — the distinction erased."
+        },
+        {
+          "ref": "Genesis 11:9",
+          "text": "Because Yahuah did there confound the language.",
+          "note": "Confusion named — balal, the root of Babel."
+        }
+      ],
+      "plainTerms": [
+        "Badal means to separate and tell apart — holy from common, clean from unclean. Balal means to mix until you cannot tell them apart. The law lives on badal; every commandment draws a line.",
+        "The break works by balal — not erasing the line openly, but fogging it, until no one can say where holy ends and common begins. A blurred law cannot judge."
+      ],
+      "bringItHome": [
+        "A surveyor's whole job is the line — this land is yours, that is your neighbor's. Move the stone and it is theft; but fog the whole field and no one can prove anything. Badal sets the stones; balal brings the fog. The break rarely tears the law down — it just mixes everything together until holy and common look the same, and a law you cannot read is a law you cannot keep."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "divides, sets the categories, commands the difference kept."
+        },
+        {
+          "who": "The priest",
+          "role": "the Officer",
+          "does": "charged to put difference between holy and common."
+        },
+        {
+          "who": "The confounder",
+          "role": "in the break",
+          "does": "mingles the categories until none can be told apart."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 67,
+          "term": "Clean"
+        },
+        {
+          "n": 68,
+          "term": "Unclean"
+        },
+        {
+          "n": 70,
+          "term": "Profane"
+        },
+        {
+          "n": 69,
+          "term": "Sanctify"
+        }
+      ]
+    },
+    "136": {
+      "n": 136,
+      "term": "Parad",
+      "movement": 7,
+      "rootLine": "parad — Hebrew",
+      "caseStrongs": "H6504",
+      "lead": "Parad is to part, to sever — to drive a wedge between what was joined. Where badal separates by lawful category, parad separates by injury: “a whisperer separateth chief friends” (Proverbs 16:28); “he that repeateth a matter separateth very friends” (Proverbs 17:9). It is severance produced by testimony thrown between — the slander that splits a bond, the report that parts brothers. In the court of the break, parad is the diabolos's work reaching the ground: the charge thrown becomes the friendship severed.",
+      "root": [
+        {
+          "lemma": "parad",
+          "strong": "H6504",
+          "sense": "to divide, separate, part, sever — often of relationships broken"
+        }
+      ],
+      "courtroomWord": "A severance term — division worked between parties by injurious testimony, not by lawful judgment.",
+      "itsRole": "A lawful court parts the guilty from the innocent by verdict. The break parts brother from brother by whisper — parad is division engineered, the wedge driven by a report repeated. It is the diabolos operating at ground level: the thrown charge lands, and a bond that should have held is severed. The tell is the whisper — not testimony given openly and tested, but a matter repeated to part friends.",
+      "proofTexts": [
+        {
+          "ref": "Proverbs 16:28",
+          "text": "A whisperer separateth chief friends.",
+          "note": "Severance by slander — parad."
+        },
+        {
+          "ref": "Proverbs 17:9",
+          "text": "He that repeateth a matter separateth very friends.",
+          "note": "The repeated report that parts a bond."
+        },
+        {
+          "ref": "Proverbs 6:19",
+          "text": "He that soweth discord among brethren.",
+          "note": "Among the things Yahuah hates — the parad worker condemned."
+        },
+        {
+          "ref": "Proverbs 18:1",
+          "text": "Through desire a man, having separated himself, seeketh and intermeddleth.",
+          "note": "Self-severance from the body."
+        }
+      ],
+      "plainTerms": [
+        "Parad means to split apart — to sever a bond. In the break it is division on purpose: the whisper that turns friends against each other, the repeated story that parts brothers.",
+        "It is slander with a target — not just a lie told, but a bond broken by it. Scripture lists sowing discord among the brethren among the things Yahuah hates."
+      ],
+      "bringItHome": [
+        "Two brothers stand together until a third keeps carrying words between them — a little here, a little there, each repeated at the right moment. Nothing is proven; everything is severed. That is parad: not a verdict that separates the guilty, but a whisper that separates friends. The break does not always attack the law head-on; sometimes it just parts the people who were keeping it together."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The whisperer",
+          "role": "in the break",
+          "does": "parts friends by testimony thrown between."
+        },
+        {
+          "who": "The severed brethren",
+          "role": "the injured parties",
+          "does": "divided by a charge never proven."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "who hates the sowing of discord and sees the wedge for what it is."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 134,
+          "term": "Diabolos"
+        },
+        {
+          "n": 10,
+          "term": "Accuser"
+        },
+        {
+          "n": 7,
+          "term": "Witness"
+        }
+      ]
+    },
+    "142": {
+      "n": 142,
+      "term": "Didaskalos + Kathegetes",
+      "movement": 1,
+      "rootLine": "didaskalos / kathegetes — Greek",
+      "caseStrongs": "G1320 · G2519",
+      "lead": "In one breath Yahushua forbids two titles of standing: “be not ye called Rabbi... neither be ye called masters: for one is your Master, even the Messiah” (Matthew 23:8,10). Didaskalos is the teacher, the one with authority to instruct; kathegetes is the leader, the guide men follow. Both name a standing over others — and both are withheld from men, reserved to One. The break is the taking of the title: a man seating himself as the teacher and guide whose word settles the matter, in a chair Yahushua said belongs to the Messiah alone.",
+      "root": [
+        {
+          "lemma": "didaskalos",
+          "strong": "G1320",
+          "sense": "teacher, master, instructor"
+        },
+        {
+          "lemma": "kathegetes",
+          "strong": "G2519",
+          "sense": "leader, guide, one who goes before"
+        }
+      ],
+      "courtroomWord": "Title terms — the standing to instruct and to lead, which Yahushua assigns to One and forbids to men.",
+      "itsRole": "Standing to teach with finality and to lead as master belongs to the Messiah, appointed by Yahuah. In the break, men take the titles — Rabbi, Father, Master — and with them the authority to bind and to be followed as the final word. The forbidding is not against teaching; it is against the seizing of a rank Yahushua kept for Himself. “One is your Master” is a boundary stone around an office men keep trying to occupy.",
+      "proofTexts": [
+        {
+          "ref": "Matthew 23:8",
+          "text": "Be not ye called Rabbi: for one is your Master... and all ye are brethren.",
+          "note": "The title withheld; the assembly leveled to brethren."
+        },
+        {
+          "ref": "Matthew 23:10",
+          "text": "Neither be ye called masters: for one is your Master, even the Messiah.",
+          "note": "The standing reserved to One, the Messiah."
+        },
+        {
+          "ref": "Matthew 23:9",
+          "text": "Call no man your father upon the earth: for one is your Father, which is in heaven.",
+          "note": "The same boundary around another title — one Father, the Most High."
+        },
+        {
+          "ref": "Matthew 23:11-12",
+          "text": "He that is greatest among you shall be your servant.",
+          "note": "The standing inverted — service, not title."
+        }
+      ],
+      "plainTerms": [
+        "Didaskalos is teacher; kathegetes is leader or master. Yahushua forbade His followers to take either title, because both belong to One — the Messiah, appointed by the Father.",
+        "The break is a man taking the chair: styling himself the teacher whose word is final and the master men follow. Teaching is fine; seizing the rank is the offense."
+      ],
+      "bringItHome": [
+        "A room of brothers has one Teacher and one Guide — and every one of them is a brother, level with the rest. Then a man stands, takes the title, and asks to be called Master, his word final. Yahushua drew the line before it happened: one is your Master, even the Messiah; the rest of you are brethren. The break is the title taken — a chair occupied that was reserved for One."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahushua",
+          "role": "the one Master and Teacher",
+          "does": "holds the standing to teach and lead, as the One the Father appointed — not a second self-standing authority, but the Messiah given the office."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the one Father",
+          "does": "the source; one is your Father, which is in heaven."
+        },
+        {
+          "who": "The self-titled man",
+          "role": "in the break",
+          "does": "takes the rank Yahushua forbade, seating himself as final."
+        },
+        {
+          "who": "The brethren",
+          "role": "the assembly",
+          "does": "leveled, all brothers, none the master of the rest."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 133,
+          "term": "Synagoge"
+        },
+        {
+          "n": 78,
+          "term": "Elder"
+        },
+        {
+          "n": 77,
+          "term": "Priest"
+        },
+        {
+          "n": 71,
+          "term": "Anoint"
         }
       ]
     }
