@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0801 V11",
+    "version": "0801 V12",
     "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -29,7 +29,8 @@
       "0801 V8: merged 12 word pages (Husband–Karath: 93,53,51,118,12,96,22,1,2,4,3,132) into words; those terms set page draft-v1. Fixed Engrave mis-key: word record moved 32→33 (n:33); term 32 (Write) page cleared until its page is written.",
       "0801 V9: merged 12 word pages (Keep–Mouth: 48,73,56,23,84,55,97,106,11,36,72,87) into words; those terms set page draft-v1.",
       "0801 V10: merged 12 word pages (Name–Promise: 38,122,104,141,124,37,115,54,57,77,70,44) into words; those terms set page draft-v1.",
-      "0801 V11: merged 12 word pages (Kategoros correction + Qerev–Restitution: 125,126,15,101,29,13,14,113,24,45,25,27) into words; those terms set page draft-v1. 125 Kategoros was skipped in the Keep–Mouth batch (not a break term); added here."
+      "0801 V11: merged 12 word pages (Kategoros correction + Qerev–Restitution: 125,126,15,101,29,13,14,113,24,45,25,27) into words; those terms set page draft-v1. 125 Kategoros was skipped in the Keep–Mouth batch (not a break term); added here.",
+      "0801 V12: merged 12 word pages (Restore–Servant: 30,108,82,6,21,69,105,75,34,121,128,63) into words; those terms set page draft-v1."
     ]
   },
   "movements": [
@@ -117,7 +118,8 @@
       "n": 6,
       "term": "Righteousness",
       "movement": 2,
-      "gloss": "conformity to the standard"
+      "gloss": "conformity to the standard",
+      "page": "draft-v1"
     },
     {
       "n": 7,
@@ -218,7 +220,8 @@
       "n": 21,
       "term": "Sabbath",
       "movement": 5,
-      "gloss": "the covenant sign, kept"
+      "gloss": "the covenant sign, kept",
+      "page": "draft-v1"
     },
     {
       "n": 22,
@@ -279,7 +282,8 @@
       "n": 30,
       "term": "Restore",
       "movement": 4,
-      "gloss": "property and standing returned"
+      "gloss": "property and standing returned",
+      "page": "draft-v1"
     },
     {
       "n": 31,
@@ -305,7 +309,8 @@
       "n": 34,
       "term": "Seal",
       "movement": 3,
-      "gloss": "authenticated, marked as owned"
+      "gloss": "authenticated, marked as owned",
+      "page": "draft-v1"
     },
     {
       "n": 35,
@@ -501,7 +506,8 @@
       "n": 63,
       "term": "Servant",
       "movement": 3,
-      "gloss": "a regulated bond of service"
+      "gloss": "a regulated bond of service",
+      "page": "draft-v1"
     },
     {
       "n": 64,
@@ -539,7 +545,8 @@
       "n": 69,
       "term": "Sanctify",
       "movement": 3,
-      "gloss": "set apart into holy status"
+      "gloss": "set apart into holy status",
+      "page": "draft-v1"
     },
     {
       "n": 70,
@@ -579,7 +586,8 @@
       "n": 75,
       "term": "Scepter",
       "movement": 1,
-      "gloss": "the emblem of jurisdiction"
+      "gloss": "the emblem of jurisdiction",
+      "page": "draft-v1"
     },
     {
       "n": 76,
@@ -626,7 +634,8 @@
       "n": 82,
       "term": "Right hand",
       "movement": 1,
-      "gloss": "the seat of delegated authority"
+      "gloss": "the seat of delegated authority",
+      "page": "draft-v1"
     },
     {
       "n": 83,
@@ -783,7 +792,8 @@
       "n": 105,
       "term": "Scales",
       "movement": 6,
-      "gloss": "the balance of just measure"
+      "gloss": "the balance of just measure",
+      "page": "draft-v1"
     },
     {
       "n": 106,
@@ -802,7 +812,8 @@
       "n": 108,
       "term": "Reward",
       "movement": 7,
-      "gloss": "the due paid to the faithful"
+      "gloss": "the due paid to the faithful",
+      "page": "draft-v1"
     },
     {
       "n": 109,
@@ -888,7 +899,8 @@
       "term": "Seat vs Throne",
       "movement": 1,
       "gloss": "the derived bench vs the sovereign's seat",
-      "strongs": "G2515/H4186 vs G2362/H3678"
+      "strongs": "G2515/H4186 vs G2362/H3678",
+      "page": "draft-v1"
     },
     {
       "n": 122,
@@ -943,7 +955,8 @@
       "term": "Sepharim Pethichu",
       "movement": 6,
       "gloss": "the books opened, the record entered",
-      "strongs": "Dan 7:10"
+      "strongs": "Dan 7:10",
+      "page": "draft-v1"
     },
     {
       "n": 129,
@@ -9916,6 +9929,991 @@
         {
           "n": 30,
           "term": "Restore"
+        }
+      ]
+    },
+    "30": {
+      "n": 30,
+      "term": "Restore",
+      "movement": 4,
+      "rootLine": "shuv — Hebrew",
+      "caseStrongs": "H7725",
+      "lead": "To restore is to return what was lost to its rightful place or owner — property, standing, or estate given back by law. “He shall restore that which he took violently away” (Leviticus 6:4); “restore the years that the locust hath eaten” (Joel 2:25). Shuv is to bring back, to return — and in the legal sense, to reinstate a party to what was his. Restoration is not a vague renewal but a lawful reinstatement: the dispossessed returned to his inheritance, the wronged made whole, the standing given back. To be restored is to be returned to one’s rightful place on the record — the loss reversed, the estate re-entered.",
+      "root": [
+        {
+          "lemma": "shuv",
+          "strong": "H7725",
+          "sense": "to turn back, to return, to restore; to reinstate to a former place"
+        }
+      ],
+      "courtroomWord": "A reinstatement term — the returning of property or standing to its rightful owner.",
+      "itsRole": "What was lost or taken can be returned by law, and restoration is that return — the dispossessed reinstated, the wronged made whole, the standing given back. It is lawful reinstatement, not mere renewal: the party returned to his rightful place, the estate re-entered on the record. To restore is to reverse the loss and reinstate the owner — the years given back, the possession returned, the standing recovered.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 6:4",
+          "text": "He shall restore that which he took violently away.",
+          "note": "The taken thing returned."
+        },
+        {
+          "ref": "Joel 2:25",
+          "text": "I will restore to you the years that the locust hath eaten.",
+          "note": "The loss reversed."
+        },
+        {
+          "ref": "Psalm 23:3",
+          "text": "He restoreth my soul.",
+          "note": "The reinstating of the person."
+        },
+        {
+          "ref": "Acts 1:6",
+          "text": "Wilt thou at this time restore again the kingdom to Israel?",
+          "note": "The estate returned to its owner."
+        }
+      ],
+      "plainTerms": [
+        "To restore is to return what was lost to its rightful place or owner — property, standing, or estate given back by law. It is lawful reinstatement: the dispossessed returned to his inheritance, the wronged made whole. To be restored is to be put back on the record where you belong, the loss reversed."
+      ],
+      "bringItHome": [
+        "Restoration is not a fresh start from nothing — it is being returned to what was rightfully yours: the stolen thing given back, the lost years repaid, the standing recovered. ‘He restoreth my soul’ is that reinstatement. To be restored is to be put back in your place, the record corrected, the estate re-entered."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Restorer",
+          "does": "returns the lost to its rightful place."
+        },
+        {
+          "who": "The dispossessed",
+          "role": "the reinstated",
+          "does": "returned to inheritance and standing."
+        },
+        {
+          "who": "The estate",
+          "role": "the property",
+          "does": "given back, re-entered on the record."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 29,
+          "term": "Reconcile"
+        },
+        {
+          "n": 13,
+          "term": "Redeem"
+        },
+        {
+          "n": 27,
+          "term": "Restitution"
+        },
+        {
+          "n": 26,
+          "term": "Shalom"
+        }
+      ]
+    },
+    "108": {
+      "n": 108,
+      "term": "Reward",
+      "movement": 7,
+      "rootLine": "sakar / misthos — Hebrew / Greek",
+      "caseStrongs": "H7939 · G3408",
+      "lead": "A reward is the due paid to the faithful — the legal wage earned and owed, handed down at the verdict. “Behold, I come quickly; and my reward is with me, to give every man according as his work shall be” (Revelation 22:12) is a payout, rendered by the Judge according to the record. Sakar and misthos both mean wage, hire, the pay due for labor. A reward is not a whimsical gift but a due: what the faithful have earned and the court owes them. This is why it is paid ‘according to works’ — the reward is calibrated to the record, the wage assessed and rendered at the bench. To be rewarded is to be paid what one is owed.",
+      "root": [
+        {
+          "lemma": "sakar",
+          "strong": "H7939",
+          "sense": "wages, hire, reward"
+        },
+        {
+          "lemma": "misthos",
+          "strong": "G3408",
+          "sense": "wage, pay, the due for labor"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "sakar-misthos",
+        "siblings": [
+          {
+            "n": 107,
+            "term": "Wages"
+          }
+        ],
+        "note": "The same wage-word covers the pay owed to the faithful (Reward) and the pay earned by labor (Wages)."
+      },
+      "courtroomWord": "A due-payment term — the wage owed to the faithful, rendered at the verdict.",
+      "itsRole": "The faithful earn a due, and the reward is its payment — the wage owed, handed down at the verdict according to works. It is not a gift of whim but a due assessed against the record. The Judge comes to render every man’s reward according to his work: the payout calibrated to the ledger. To be rewarded is to be paid what one is owed, the wage rendered at the bench.",
+      "proofTexts": [
+        {
+          "ref": "Revelation 22:12",
+          "text": "My reward is with me, to give every man according as his work shall be.",
+          "note": "The payout rendered at the verdict."
+        },
+        {
+          "ref": "Genesis 15:1",
+          "text": "I am thy shield, and thy exceeding great reward.",
+          "note": "The reward as the due secured."
+        },
+        {
+          "ref": "Hebrews 11:6",
+          "text": "A rewarder of them that diligently seek him.",
+          "note": "The due paid to the faithful."
+        },
+        {
+          "ref": "1 Corinthians 3:14",
+          "text": "He shall receive a reward.",
+          "note": "The wage rendered for the work."
+        }
+      ],
+      "plainTerms": [
+        "A reward is the due paid to the faithful — the wage earned and owed, handed down at the verdict ‘according to works.’ It is not a whimsical gift but a due the court owes. The Judge comes to pay every man according to his record. To be rewarded is to be paid what you are owed."
+      ],
+      "bringItHome": [
+        "A reward, in Scripture, is a wage — the pay owed to the faithful for their work, rendered at the verdict. ‘My reward is with me, to give every man according as his work shall be.’ It is not a lottery prize; it is a due, calibrated to the record and paid at the bench."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge, the Paymaster",
+          "does": "renders every man’s reward according to his work."
+        },
+        {
+          "who": "The faithful",
+          "role": "the laborers",
+          "does": "who are owed the wage they earned."
+        },
+        {
+          "who": "The record",
+          "role": "the ledger",
+          "does": "by which the reward is assessed."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 107,
+          "term": "Wages"
+        },
+        {
+          "n": 3,
+          "term": "Justify"
+        },
+        {
+          "n": 118,
+          "term": "Innocent"
+        },
+        {
+          "n": 109,
+          "term": "Steward"
+        }
+      ]
+    },
+    "82": {
+      "n": 82,
+      "term": "Right hand",
+      "movement": 1,
+      "rootLine": "yamin — Hebrew",
+      "caseStrongs": "H3225",
+      "lead": "The right hand is the seat of delegated authority — the place of highest honor and executive power beside the sovereign. “Sit thou at my right hand, until I make thine enemies thy footstool” (Psalm 110:1) seats one in the position of conferred rule: to be at the right hand is to wield the sovereign’s authority by appointment. It is a legal position, not mere proximity. The right hand acts for the throne; the one placed there exercises power delegated from it. This is why the Messiah is said to be seated ‘at the right hand’ of Yahuah — given executive authority to rule and to judge, the position conferred by the One on the throne.",
+      "root": [
+        {
+          "lemma": "yamin",
+          "strong": "H3225",
+          "sense": "the right hand; the place of authority, honor, and executive power"
+        }
+      ],
+      "courtroomWord": "A delegated-authority term — the seat of conferred executive power beside the sovereign.",
+      "itsRole": "Beside the throne is a seat of power, and the right hand is it — the position of delegated authority, wielding the sovereign’s rule by appointment. ‘Sit at my right hand’ confers executive power, not mere nearness. The one placed there acts for the throne. The Messiah at the right hand of Yahuah holds authority to rule and judge — conferred by the One on the throne, exercised on His behalf. It is position and power, granted.",
+      "proofTexts": [
+        {
+          "ref": "Psalm 110:1",
+          "text": "Sit thou at my right hand, until I make thine enemies thy footstool.",
+          "note": "The seat of delegated rule."
+        },
+        {
+          "ref": "Acts 2:33",
+          "text": "By the right hand of Yahuah exalted.",
+          "note": "The authority conferred."
+        },
+        {
+          "ref": "Ephesians 1:20",
+          "text": "Set him at his own right hand in the heavenly places.",
+          "note": "The position of executive power."
+        },
+        {
+          "ref": "Hebrews 1:3",
+          "text": "Sat down on the right hand of the Majesty on high.",
+          "note": "The seat of conferred authority."
+        }
+      ],
+      "plainTerms": [
+        "The right hand is the seat of delegated authority — the highest place of honor and power beside the sovereign. ‘Sit at my right hand’ confers executive rule, not just nearness. The Messiah at Yahuah’s right hand holds authority to rule and judge — power conferred by the One on the throne, exercised on His behalf."
+      ],
+      "bringItHome": [
+        "To be seated ‘at the right hand’ of a king was to hold his authority — to act for the throne, wielding power delegated from it. That is where the Messiah is placed: at the right hand of Yahuah, given executive authority to rule and judge. Not equal to the throne — seated beside it, exercising power the One on it conferred."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Sovereign on the throne",
+          "does": "confers the right-hand authority."
+        },
+        {
+          "who": "Yahushua",
+          "role": "seated at the right hand",
+          "does": "wields delegated executive power to rule and judge."
+        },
+        {
+          "who": "The enemies",
+          "role": "the subjected",
+          "does": "made a footstool under the conferred rule."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 85,
+          "term": "Footstool"
+        },
+        {
+          "n": 74,
+          "term": "Throne"
+        },
+        {
+          "n": 81,
+          "term": "Hand"
+        },
+        {
+          "n": 86,
+          "term": "Sit"
+        }
+      ]
+    },
+    "6": {
+      "n": 6,
+      "term": "Righteousness",
+      "movement": 2,
+      "rootLine": "tsedeq — Hebrew",
+      "caseStrongs": "H6664 · H6666",
+      "lead": "Righteousness is conformity to the standard — rightness measured against the law, the quality of what aligns with the just norm. Tsedeq is not a warm inner glow but a legal rectitude: right weights and measures are ‘just’ (tsedeq), a right verdict is righteous, a righteous man is one who conforms to the covenant standard. “The righteous Yahuah loveth righteousness” (Psalm 11:7). Because righteousness is measured against a standard, it presupposes the standard: there is no rightness where there is no norm to be right by. To be righteous is to align with the law’s requirement; the word itself is anchored to the code it conforms to.",
+      "root": [
+        {
+          "lemma": "tsedeq",
+          "strong": "H6664",
+          "sense": "rightness, justice, conformity to the standard"
+        },
+        {
+          "lemma": "tsedaqah",
+          "strong": "H6666",
+          "sense": "righteousness, righteous conduct"
+        }
+      ],
+      "courtroomWord": "A conformity term — rightness measured against the standard of the law.",
+      "itsRole": "Righteousness is measured, not felt — conformity to the just standard the law sets. A right weight, a right verdict, a right man: each is tsedeq because each aligns with the norm. It presupposes the standard it conforms to; strip the law and ‘righteous’ has nothing to be right by. Yahuah is righteous because His every act aligns with His own perfect standard. To be righteous is to conform to the code — the word anchored to the law it measures against.",
+      "proofTexts": [
+        {
+          "ref": "Psalm 11:7",
+          "text": "The righteous Yahuah loveth righteousness.",
+          "note": "Rightness as His nature and delight."
+        },
+        {
+          "ref": "Leviticus 19:36",
+          "text": "Just balances, just weights... shall ye have.",
+          "note": "Righteousness as conformity to the standard."
+        },
+        {
+          "ref": "Deuteronomy 6:25",
+          "text": "It shall be our righteousness, if we observe to do all these commandments.",
+          "note": "Righteousness tied to keeping the law."
+        },
+        {
+          "ref": "Isaiah 51:6",
+          "text": "My righteousness shall not be abolished.",
+          "note": "The standard that stands."
+        }
+      ],
+      "plainTerms": [
+        "Righteousness is conformity to the standard — rightness measured against the law, not a warm feeling. A just weight, a right verdict, a righteous man: each aligns with the norm. And it presupposes the norm: there is no ‘right’ without a standard to be right by. To be righteous is to conform to the law’s requirement."
+      ],
+      "bringItHome": [
+        "Righteousness is like a true measure — it is ‘right’ because it matches the standard. A just scale, a just verdict, a just man: all are tsedeq because all conform to the norm. Which means righteousness cannot float free of the law: strip the standard, and there is nothing left for ‘righteous’ to mean."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the standard",
+          "does": "righteous in every act, the norm righteousness conforms to."
+        },
+        {
+          "who": "The righteous",
+          "role": "the conformer",
+          "does": "whose rightness aligns with the law."
+        },
+        {
+          "who": "The law",
+          "role": "the norm",
+          "does": "the standard against which righteousness is measured."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 40,
+          "term": "Truth"
+        },
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 19,
+          "term": "Transgression"
+        },
+        {
+          "n": 8,
+          "term": "Testimony"
+        }
+      ]
+    },
+    "21": {
+      "n": 21,
+      "term": "Sabbath",
+      "movement": 5,
+      "rootLine": "shabbat — Hebrew",
+      "caseStrongs": "H7676",
+      "lead": "The Sabbath is the covenant sign, kept — a perpetual mark of the bond between Yahuah and His people, and a command to be observed. “It is a sign between me and you throughout your generations” (Exodus 31:13); “the sabbath... for a perpetual covenant” (Exodus 31:16). Shabbat is to cease, to rest — the seventh-day cessation set apart at creation and written into the covenant terms. It is not a suggestion but a sign one keeps, marking whose people one is. To keep the Sabbath is to bear the covenant sign; to profane it was a grave breach. The Sabbath is the observed mark of the covenant, the seventh day set apart and kept.",
+      "root": [
+        {
+          "lemma": "shabbat",
+          "strong": "H7676",
+          "sense": "the Sabbath, the seventh day; from shabat, to cease, to rest"
+        }
+      ],
+      "courtroomWord": "A covenant-sign term — the observed seventh-day mark of the bond.",
+      "itsRole": "A covenant has its sign, and the Sabbath is Israel’s — the seventh-day cessation set apart at creation and written into the covenant as ‘a sign... a perpetual covenant.’ It is kept, not merely admired: the mark one bears to show whose people one is. Profaning it was a grave breach; keeping it is bearing the sign. The Sabbath is the observed covenant mark, the seventh day ceased and set apart.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 31:13",
+          "text": "It is a sign between me and you throughout your generations.",
+          "note": "The covenant sign."
+        },
+        {
+          "ref": "Exodus 31:16",
+          "text": "The sabbath... for a perpetual covenant.",
+          "note": "The sign written into the terms."
+        },
+        {
+          "ref": "Exodus 20:8",
+          "text": "Remember the sabbath day, to keep it holy.",
+          "note": "The command to observe."
+        },
+        {
+          "ref": "Genesis 2:3",
+          "text": "Elohim blessed the seventh day, and sanctified it.",
+          "note": "The day set apart at creation."
+        }
+      ],
+      "plainTerms": [
+        "The Sabbath is the covenant sign, kept — the seventh-day rest set apart at creation and written into the covenant as ‘a sign between me and you.’ It is observed, not just admired: the mark you bear to show whose people you are. To keep it is to bear the sign of the bond."
+      ],
+      "bringItHome": [
+        "The Sabbath is Israel’s covenant sign — like a seal you carry, marking whose you are. ‘A sign between me and you... a perpetual covenant.’ It was set apart at creation and written into the terms, to be kept. To keep the Sabbath is to bear the mark of the bond with Yahuah."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the covenant-Giver",
+          "does": "who set the Sabbath as the sign of the bond."
+        },
+        {
+          "who": "The people",
+          "role": "the sign-bearers",
+          "does": "who keep the Sabbath as the mark of the covenant."
+        },
+        {
+          "who": "The Sabbath",
+          "role": "the sign",
+          "does": "the seventh day set apart and observed."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 25,
+          "term": "Rest"
+        },
+        {
+          "n": 48,
+          "term": "Keep"
+        },
+        {
+          "n": 45,
+          "term": "Remember"
+        },
+        {
+          "n": 47,
+          "term": "Walk"
+        }
+      ]
+    },
+    "69": {
+      "n": 69,
+      "term": "Sanctify",
+      "movement": 3,
+      "rootLine": "qadash — Hebrew",
+      "caseStrongs": "H6942",
+      "lead": "To sanctify is to set apart into holy status — a legal act of consecration that moves a person or thing from common to holy. Qadash is to declare and make holy: the seventh day was sanctified (Genesis 2:3), the firstborn sanctified to Yahuah (Exodus 13:2), the priests sanctified for office. It is a change of status conferred, not a feeling generated: what is sanctified is transferred into the holy category and thereby subject to holy use and holy rules. To sanctify is the opposite of to profane: one moves a thing into holy standing, the other drags it back to common. Sanctification is set-apart status, legally conferred.",
+      "root": [
+        {
+          "lemma": "qadash",
+          "strong": "H6942",
+          "sense": "to set apart, to consecrate, to make or declare holy"
+        }
+      ],
+      "courtroomWord": "A consecration term — the setting-apart of a person or thing into holy status.",
+      "itsRole": "The holy is a category, and to sanctify is to move something into it — a legal consecration, conferring set-apart status. The day, the firstborn, the priests, the vessels are each sanctified: transferred from common to holy, subject thereafter to holy use. It is the reverse of profaning: sanctify moves into holy standing, profane drags back to common. Sanctification is a change of status conferred by the One who makes holy.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 2:3",
+          "text": "Elohim blessed the seventh day, and sanctified it.",
+          "note": "The day set apart into holy status."
+        },
+        {
+          "ref": "Exodus 13:2",
+          "text": "Sanctify unto me all the firstborn.",
+          "note": "The firstborn consecrated."
+        },
+        {
+          "ref": "Leviticus 20:8",
+          "text": "I am Yahuah which sanctify you.",
+          "note": "The One who confers holy status."
+        },
+        {
+          "ref": "Exodus 19:6",
+          "text": "Ye shall be unto me... an holy nation.",
+          "note": "The people set apart."
+        }
+      ],
+      "plainTerms": [
+        "To sanctify is to set apart into holy status — a legal act of consecration that moves a person or thing from common to holy. The day, the firstborn, the priests were each sanctified: transferred into the holy category. It is the opposite of profaning: sanctify moves into holy standing, profane drags back to common."
+      ],
+      "bringItHome": [
+        "To sanctify is to move something into the holy category — set apart, consecrated, dedicated to Yahuah’s use. The seventh day, the firstborn, the priests: each was sanctified, transferred from common to holy. It is a change of standing, conferred by the One who makes holy — and the exact reverse of profaning."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the One who sanctifies",
+          "does": "confers holy status."
+        },
+        {
+          "who": "The set-apart",
+          "role": "the sanctified",
+          "does": "moved from common into holy standing."
+        },
+        {
+          "who": "The holy category",
+          "role": "the status",
+          "does": "the standing into which the sanctified is placed."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 67,
+          "term": "Clean"
+        },
+        {
+          "n": 68,
+          "term": "Unclean"
+        },
+        {
+          "n": 70,
+          "term": "Profane"
+        },
+        {
+          "n": 34,
+          "term": "Seal"
+        }
+      ]
+    },
+    "105": {
+      "n": 105,
+      "term": "Scales",
+      "movement": 6,
+      "rootLine": "mozen — Hebrew",
+      "caseStrongs": "H3976",
+      "lead": "The scales are the balance of just measure — the instrument by which weight, and by extension judgment, is rendered fairly. Torah demands them honest: “a just balance and scales are Yahuah’s” (Proverbs 16:11); “thou shalt not have in thy bag divers weights” (Deuteronomy 25:13). A false balance is “abomination to Yahuah” (Proverbs 11:1). The scales are also the image of judgment itself — a matter weighed, as Belshazzar was “weighed in the balances, and... found wanting” (Daniel 5:27). To weigh in the scales is to render a fair assessment; the just balance is the emblem of judgment done true.",
+      "root": [
+        {
+          "lemma": "mozen",
+          "strong": "H3976",
+          "sense": "scales, a balance; the instrument of just weighing"
+        }
+      ],
+      "courtroomWord": "A weighing term — the balance by which weight and judgment are rendered fairly.",
+      "itsRole": "Fair judgment is weighed, not guessed, and the scales are the instrument — demanded honest by the law, since a false balance defrauds. They are also the image of judgment itself: a matter set in the balance and assessed. Belshazzar was weighed and found wanting. The just scales stand for judgment done true — the assessment rendered by an honest measure, the verdict weighed rather than felt.",
+      "proofTexts": [
+        {
+          "ref": "Proverbs 16:11",
+          "text": "A just weight and balance are Yahuah’s.",
+          "note": "The honest scales as His."
+        },
+        {
+          "ref": "Deuteronomy 25:13",
+          "text": "Thou shalt not have in thy bag divers weights, a great and a small.",
+          "note": "The just balance commanded."
+        },
+        {
+          "ref": "Proverbs 11:1",
+          "text": "A false balance is abomination to Yahuah.",
+          "note": "The crooked scale condemned."
+        },
+        {
+          "ref": "Daniel 5:27",
+          "text": "Thou art weighed in the balances, and art found wanting.",
+          "note": "Judgment as a weighing."
+        }
+      ],
+      "plainTerms": [
+        "The scales are the balance of just measure — the instrument of fair weighing, demanded honest by the law. A false balance is an abomination. And the scales are the picture of judgment itself: a matter weighed and assessed, as Belshazzar was ‘weighed... and found wanting.’ The just balance is judgment done true."
+      ],
+      "bringItHome": [
+        "An honest set of scales renders a fair weight; a crooked one cheats every measure. Torah demands them true — a false balance is an abomination. And the scales are also the image of the verdict itself: your matter set in the balance and weighed. Belshazzar was ‘weighed... and found wanting.’"
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "whose are the just balance and weights; who weighs every matter true."
+        },
+        {
+          "who": "The parties",
+          "role": "the weighed",
+          "does": "whose matters are set in the balance and assessed."
+        },
+        {
+          "who": "The scales",
+          "role": "the instrument",
+          "does": "the just measure by which judgment is rendered."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 106,
+          "term": "Measure"
+        },
+        {
+          "n": 101,
+          "term": "Reckon"
+        },
+        {
+          "n": 102,
+          "term": "Account"
+        },
+        {
+          "n": 17,
+          "term": "Debt"
+        }
+      ]
+    },
+    "75": {
+      "n": 75,
+      "term": "Scepter",
+      "movement": 1,
+      "rootLine": "shebet — Hebrew",
+      "caseStrongs": "H7626",
+      "lead": "The scepter is the emblem of jurisdiction — the rod that marks the right to rule and to judge. “The sceptre shall not depart from Judah... until Shiloh come” (Genesis 49:10) is a prophecy of retained sovereign authority; “a sceptre of righteousness is the sceptre of thy kingdom” (Psalm 45:6) names the rule the scepter represents. Shebet is a rod, a staff — and the ruler’s scepter is the sign of his lawful dominion. To hold the scepter is to hold jurisdiction: the authority to command, to judge, and to enforce. It is the visible mark of the right to rule, held by the one to whom rule belongs.",
+      "root": [
+        {
+          "lemma": "shebet",
+          "strong": "H7626",
+          "sense": "a rod, staff, scepter; the emblem of ruling authority"
+        }
+      ],
+      "courtroomWord": "A jurisdiction emblem — the rod marking the right to rule and judge.",
+      "itsRole": "Authority to rule has a sign, and the scepter is it — the rod that marks lawful dominion, the right to command and to judge. Judah’s scepter would not depart until Shiloh came: sovereign authority retained. A scepter of righteousness is a kingdom ruled by the just standard. To hold the scepter is to hold jurisdiction, the visible emblem of the right to rule, borne by the one to whom rule belongs.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 49:10",
+          "text": "The sceptre shall not depart from Judah... until Shiloh come.",
+          "note": "Retained ruling authority."
+        },
+        {
+          "ref": "Psalm 45:6",
+          "text": "The sceptre of thy kingdom is a right sceptre.",
+          "note": "Rule by the just standard."
+        },
+        {
+          "ref": "Numbers 24:17",
+          "text": "A Sceptre shall rise out of Israel.",
+          "note": "The ruling authority foretold."
+        },
+        {
+          "ref": "Esther 5:2",
+          "text": "The king held out to Esther the golden sceptre.",
+          "note": "The scepter extended as the sign of favor and authority."
+        }
+      ],
+      "plainTerms": [
+        "The scepter is the emblem of the right to rule — the rod that marks lawful authority to command and to judge. ‘The sceptre shall not depart from Judah’ means sovereign authority retained. To hold the scepter is to hold jurisdiction: the visible sign that rule belongs to you."
+      ],
+      "bringItHome": [
+        "A king’s scepter is not decoration — it is the emblem of his authority to rule and judge, the visible sign that jurisdiction is his. ‘The sceptre shall not depart from Judah’ is a promise that the right to rule stays in the line until the One it points to comes. To hold the scepter is to hold the right to rule."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The ruler",
+          "role": "the sovereign",
+          "does": "holds the scepter as the sign of his right to rule."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the source of rule",
+          "does": "who confers the scepter of righteousness."
+        },
+        {
+          "who": "The scepter",
+          "role": "the emblem",
+          "does": "the mark of lawful jurisdiction."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 73,
+          "term": "King"
+        },
+        {
+          "n": 74,
+          "term": "Throne"
+        },
+        {
+          "n": 76,
+          "term": "Crown"
+        },
+        {
+          "n": 85,
+          "term": "Footstool"
+        }
+      ]
+    },
+    "34": {
+      "n": 34,
+      "term": "Seal",
+      "movement": 3,
+      "rootLine": "chotam — Hebrew",
+      "caseStrongs": "H2368",
+      "lead": "A seal is an authenticating mark of ownership and authority — the impression that certifies a document genuine and a possession claimed. In the ancient world a seal made a matter official: a sealed document was authenticated and secured (Jeremiah 32:10), and to seal a thing was to mark it as one’s own and beyond tampering. “Ye were sealed with that holy Spirit of promise” (Ephesians 1:13) uses this legal image: marked as owned, authenticated, secured until redemption. To be sealed is to bear the owner’s mark — certified as belonging to Him, the possession authenticated and protected on the record.",
+      "root": [
+        {
+          "lemma": "chotam",
+          "strong": "H2368",
+          "sense": "a seal, signet; the mark that authenticates and claims ownership"
+        }
+      ],
+      "courtroomWord": "An authentication term — the mark that certifies genuine and claims ownership.",
+      "itsRole": "A document is made official by a seal, and a possession is claimed by one — the impression that authenticates and marks ownership, securing against tampering. A sealed deed is genuine and binding; a sealed thing is owned and protected. To be sealed with the Spirit is to bear the owner’s mark: authenticated as His, secured until redemption. The seal is the legal sign of genuine ownership, entered on the record.",
+      "proofTexts": [
+        {
+          "ref": "Jeremiah 32:10",
+          "text": "I subscribed the evidence, and sealed it.",
+          "note": "The document authenticated by seal."
+        },
+        {
+          "ref": "Ephesians 1:13",
+          "text": "Ye were sealed with that holy Spirit of promise.",
+          "note": "Marked as owned, secured."
+        },
+        {
+          "ref": "2 Timothy 2:19",
+          "text": "The Lord knoweth them that are his.",
+          "note": "The seal of ownership and its mark."
+        },
+        {
+          "ref": "Song of Solomon 8:6",
+          "text": "Set me as a seal upon thine heart.",
+          "note": "The seal as the claim of belonging."
+        }
+      ],
+      "plainTerms": [
+        "A seal is an authenticating mark of ownership and authority — the impression that certifies a document genuine and claims a possession as one’s own. To be ‘sealed with the Spirit’ is to bear the owner’s mark: authenticated as His, secured until redemption. It is a legal sign of genuine ownership."
+      ],
+      "bringItHome": [
+        "In the ancient world, a seal made it official — a sealed document was certified genuine, a sealed possession was marked as owned and safe from tampering. To be ‘sealed with the Spirit’ is to carry the owner’s stamp: certified as belonging to Yahuah, authenticated and secured on the record."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Owner",
+          "does": "who seals His own, marking and securing them."
+        },
+        {
+          "who": "The sealed",
+          "role": "the possession",
+          "does": "authenticated as His, secured until redemption."
+        },
+        {
+          "who": "The seal",
+          "role": "the mark",
+          "does": "the impression that certifies genuine and claims ownership."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 38,
+          "term": "Name"
+        },
+        {
+          "n": 31,
+          "term": "Book"
+        },
+        {
+          "n": 35,
+          "term": "Sign"
+        },
+        {
+          "n": 69,
+          "term": "Sanctify"
+        }
+      ]
+    },
+    "121": {
+      "n": 121,
+      "term": "Seat vs Throne",
+      "movement": 1,
+      "rootLine": "kathedra / thronos — Greek (moshab / kisse — Hebrew)",
+      "caseStrongs": "G2515/H4186 vs G2362/H3678",
+      "lead": "Two seats, two jurisdictions. A seat — kathedra, or moshab — is a derived judicial bench, the place of one who administers the law he was given: “the scribes and the Pharisees sit in Moses’ seat” (Matthew 23:2), holding a delegated teaching authority. A throne — thronos, or kisse — is the sovereign seat of the lawgiver himself, the source of rule, not its administrator. The distinction is legal, not decorative: the one on the seat applies a law he did not make; the One on the throne is where the law comes from. To confuse them is to confuse an appointed magistrate with the Sovereign — a delegated bench with the seat of ultimate authority.",
+      "root": [
+        {
+          "lemma": "kathedra / moshab",
+          "strong": "G2515 / H4186",
+          "sense": "a seat, a derived judicial bench"
+        },
+        {
+          "lemma": "thronos / kisse",
+          "strong": "G2362 / H3678",
+          "sense": "a throne, the sovereign seat of the lawgiver"
+        }
+      ],
+      "courtroomWord": "A contrast of jurisdictions — the derived bench (seat) versus the sovereign seat of the lawgiver (throne).",
+      "itsRole": "Not every seat is a throne. A seat is a delegated bench — the magistrate administering a law he was given, like those who sit in Moses’ seat. A throne is the source of law, the sovereign’s own seat. The distinction guards against confusing an appointed administrator with the Lawgiver Himself. The One on the throne makes the law; the one on the seat applies it. Rule flows from the throne; the seat only administers what the throne decrees.",
+      "proofTexts": [
+        {
+          "ref": "Matthew 23:2",
+          "text": "The scribes and the Pharisees sit in Moses’ seat.",
+          "note": "The derived, administering bench."
+        },
+        {
+          "ref": "Psalm 47:8",
+          "text": "Elohim sitteth upon the throne of his holiness.",
+          "note": "The sovereign seat of the Lawgiver."
+        },
+        {
+          "ref": "Isaiah 66:1",
+          "text": "The heaven is my throne.",
+          "note": "The throne as the source of rule."
+        },
+        {
+          "ref": "Psalm 122:5",
+          "text": "There are set thrones of judgment.",
+          "note": "The seats of adjudication under the sovereign."
+        }
+      ],
+      "plainTerms": [
+        "A seat and a throne are two different jurisdictions. A seat (like ‘Moses’ seat’) is a delegated bench — a magistrate applying a law he was given. A throne is the sovereign’s own seat — the source of the law, not its administrator. To confuse them is to mistake an appointed judge for the Lawgiver Himself."
+      ],
+      "bringItHome": [
+        "‘Moses’ seat’ was a real thing — a delegated bench, where teachers applied the law Moses received. But a seat is not a throne. The throne is where the law comes from, the sovereign’s own seat. One administers; the other originates. The distinction keeps a magistrate from being mistaken for the Sovereign."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "on the Throne",
+          "does": "the Lawgiver, the source of rule."
+        },
+        {
+          "who": "The magistrate",
+          "role": "on the seat",
+          "does": "administers a law he was given, not made."
+        },
+        {
+          "who": "The two seats",
+          "role": "the jurisdictions",
+          "does": "derived bench versus sovereign throne."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 74,
+          "term": "Throne"
+        },
+        {
+          "n": 86,
+          "term": "Sit"
+        },
+        {
+          "n": 1,
+          "term": "Judge"
+        },
+        {
+          "n": 78,
+          "term": "Elder"
+        }
+      ]
+    },
+    "128": {
+      "n": 128,
+      "term": "Sepharim Pethichu",
+      "movement": 6,
+      "rootLine": "sifrin pethichu — Aramaic",
+      "caseStrongs": "Daniel 7:10",
+      "lead": "‘The books were opened’ — sifrin pethichu — is the entry of the evidentiary record into the court. When Daniel’s court convenes, “the judgment was set, and the books were opened” (Daniel 7:10): the trial cannot proceed until the records are brought forward and read. The opening of the books is a formal legal act — the evidence entered, the deeds of every party laid before the bench. Revelation echoes it: “the books were opened... and the dead were judged out of those things which were written in the books” (Revelation 20:12). The verdict is rendered from the record. To open the books is to enter the evidence on which the court will rule.",
+      "root": [
+        {
+          "lemma": "sifrin pethichu",
+          "strong": "Daniel 7:10",
+          "sense": "the books were opened (Aramaic); the evidentiary record brought forward and read"
+        }
+      ],
+      "courtroomWord": "An evidence term — the opening of the record before the bench.",
+      "itsRole": "A court rules from the record, and the opening of the books is its entry — the evidence brought forward and read before judgment. Daniel’s court sits and the books were opened: the deeds of every party laid before the bench. Revelation shows the same — the dead judged out of those things which were written in the books. The verdict follows the record. To open the books is to enter the evidence on which the court decides.",
+      "proofTexts": [
+        {
+          "ref": "Daniel 7:10",
+          "text": "The judgment was set, and the books were opened.",
+          "note": "The record entered as the court convenes."
+        },
+        {
+          "ref": "Revelation 20:12",
+          "text": "The books were opened... and the dead were judged out of those things which were written in the books.",
+          "note": "The verdict rendered from the record."
+        },
+        {
+          "ref": "Malachi 3:16",
+          "text": "A book of remembrance was written before him.",
+          "note": "The record kept for the court."
+        },
+        {
+          "ref": "Daniel 7:9",
+          "text": "The Ancient of days did sit.",
+          "note": "The bench and the record together."
+        }
+      ],
+      "plainTerms": [
+        "‘The books were opened’ is the entry of the evidence into the court. When Daniel’s court convened, ‘the judgment was set, and the books were opened’: the records brought forward and read before any verdict. Revelation shows the same — the dead ‘judged out of those things written in the books.’ The verdict follows the record."
+      ],
+      "bringItHome": [
+        "A trial cannot rule until the evidence is before the bench. That is what ‘the books were opened’ means: the records brought forward and read. In Daniel 7 the court sits and the books open; in Revelation the dead are judged ‘out of the things written.’ The verdict is rendered from the record — and the record is opened for all to see."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The Ancient of Days",
+          "role": "the Judge",
+          "does": "before whom the books are opened."
+        },
+        {
+          "who": "The books",
+          "role": "the record",
+          "does": "the evidence entered and read."
+        },
+        {
+          "who": "The parties",
+          "role": "the judged",
+          "does": "whose deeds, written in the books, the verdict follows."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 7,
+          "term": "Witness"
+        },
+        {
+          "n": 36,
+          "term": "Memorial"
+        },
+        {
+          "n": 101,
+          "term": "Reckon"
+        },
+        {
+          "n": 102,
+          "term": "Account"
+        }
+      ]
+    },
+    "63": {
+      "n": 63,
+      "term": "Servant",
+      "movement": 3,
+      "rootLine": "ebed — Hebrew",
+      "caseStrongs": "H5650",
+      "lead": "A servant is one under a regulated bond of service — a legal status with defined rights and duties, not mere drudgery. Torah hedged the servant with protections: release in the seventh year, rest on the Sabbath, redress for injury (Exodus 21:2-6, 26-27). The ebed held a recognized standing, and the master’s authority over him was bounded by law. To be Yahuah’s servant is a title of honor and standing — Moses, David, and the prophets are called ‘servant of Yahuah,’ a position of trusted, regulated service. The word names a legal relationship with obligations flowing both ways: service owed, and the servant’s rights protected by statute.",
+      "root": [
+        {
+          "lemma": "ebed",
+          "strong": "H5650",
+          "sense": "a servant, bondservant; one under a regulated bond of service"
+        }
+      ],
+      "courtroomWord": "A status term — the regulated bond of service, with defined rights and duties.",
+      "itsRole": "Service in Torah is a legal relationship, not lawless labor — the servant holds a defined standing, protected by statute: release in the seventh year, Sabbath rest, redress for harm. The master’s authority is bounded by law. ‘Servant of Yahuah’ is a title of honor — Moses, David, the prophets — trusted, regulated service. The bond runs both ways: service owed, and the servant’s rights guaranteed. To be a servant is to hold a regulated legal status.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 21:2",
+          "text": "In the seventh year he shall go out free for nothing.",
+          "note": "The servant’s release protected."
+        },
+        {
+          "ref": "Exodus 21:26",
+          "text": "He shall let him go free for his eye’s sake.",
+          "note": "Redress for the servant’s injury."
+        },
+        {
+          "ref": "Deuteronomy 5:14",
+          "text": "That thy manservant and thy maidservant may rest as well as thou.",
+          "note": "The servant’s Sabbath right."
+        },
+        {
+          "ref": "Joshua 1:1",
+          "text": "Moses the servant of Yahuah.",
+          "note": "The title of honored, regulated service."
+        }
+      ],
+      "plainTerms": [
+        "A servant is one under a regulated bond of service — a legal status with defined rights and duties, not just drudgery. Torah protected the servant: seventh-year release, Sabbath rest, redress for injury. ‘Servant of Yahuah’ is a title of honor. The bond runs both ways: service owed, and the servant’s rights guaranteed by law."
+      ],
+      "bringItHome": [
+        "A servant in Torah was not a rightless laborer — he held a legal standing, hedged with protections: freed in the seventh year, rested on the Sabbath, compensated for injury. And ‘servant of Yahuah’ was a title of honor, borne by Moses and David. The bond had obligations both ways: service owed, rights protected."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The servant",
+          "role": "the bondholder",
+          "does": "owes regulated service, holds protected rights."
+        },
+        {
+          "who": "The master",
+          "role": "the authority",
+          "does": "whose authority is bounded by law."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "who regulates the bond and protects the servant."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 64,
+          "term": "Free"
+        },
+        {
+          "n": 65,
+          "term": "Sojourner"
+        },
+        {
+          "n": 61,
+          "term": "Adoption"
+        },
+        {
+          "n": 62,
+          "term": "Sonship"
         }
       ]
     }
