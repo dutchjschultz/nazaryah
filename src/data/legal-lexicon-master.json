@@ -2,8 +2,8 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0731 V3",
-    "updated": "2026-07-31",
+    "version": "0801 V4",
+    "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
     "tokens": {
@@ -21,7 +21,8 @@
     "changelog": [
       "0731 V1: merged 120 + 22 new (121–142) = 142. Dropped batch duplicates Goral and Mishpat. Movement VIII rejected; counterfeit terms flagged 'break' (red) inside their true movements. Recompense (28) has a draft page (V4).",
       "0731 V2: break design LOCKED. Added red break flags to Diabolos (134), Parad (136), and the balal side of Badal/Balal (135). Seven break terms total.",
-      "0731 V3: merged 7 break-term word pages (129,130,133,134,135,136,142) into words; those terms set page draft-v1. Break callouts render from the term break note, not duplicated in the record."
+      "0731 V3: merged 7 break-term word pages (129,130,133,134,135,136,142) into words; those terms set page draft-v1. Break callouts render from the term break note, not duplicated in the record.",
+      "0801 V4: merged 12 word pages (Account–Betroth: 102,117,10,61,94,9,39,71,20,131,114,91) into words; those terms set page draft-v1."
     ]
   },
   "movements": [
@@ -122,13 +123,15 @@
       "n": 9,
       "term": "Advocate",
       "movement": 4,
-      "gloss": "defense counsel before the bench"
+      "gloss": "defense counsel before the bench",
+      "page": "draft-v1"
     },
     {
       "n": 10,
       "term": "Accuser",
       "movement": 7,
-      "gloss": "the adversary who prosecutes"
+      "gloss": "the adversary who prosecutes",
+      "page": "draft-v1"
     },
     {
       "n": 11,
@@ -188,7 +191,8 @@
       "n": 20,
       "term": "Atonement",
       "movement": 4,
-      "gloss": "the charge covered, account cleared"
+      "gloss": "the charge covered, account cleared",
+      "page": "draft-v1"
     },
     {
       "n": 21,
@@ -303,7 +307,8 @@
       "n": 39,
       "term": "Amen",
       "movement": 2,
-      "gloss": "the sworn signature to the terms"
+      "gloss": "the sworn signature to the terms",
+      "page": "draft-v1"
     },
     {
       "n": 40,
@@ -435,7 +440,8 @@
       "n": 61,
       "term": "Adoption",
       "movement": 3,
-      "gloss": "placed as son by legal act"
+      "gloss": "placed as son by legal act",
+      "page": "draft-v1"
     },
     {
       "n": 62,
@@ -495,7 +501,8 @@
       "n": 71,
       "term": "Anoint",
       "movement": 1,
-      "gloss": "investiture into office"
+      "gloss": "investiture into office",
+      "page": "draft-v1"
     },
     {
       "n": 72,
@@ -615,7 +622,8 @@
       "n": 91,
       "term": "Betroth",
       "movement": 2,
-      "gloss": "the binding contract before the wedding"
+      "gloss": "the binding contract before the wedding",
+      "page": "draft-v1"
     },
     {
       "n": 92,
@@ -633,7 +641,8 @@
       "n": 94,
       "term": "Adultery",
       "movement": 2,
-      "gloss": "covenant infidelity, a breach of the bond"
+      "gloss": "covenant infidelity, a breach of the bond",
+      "page": "draft-v1"
     },
     {
       "n": 95,
@@ -681,7 +690,8 @@
       "n": 102,
       "term": "Account",
       "movement": 6,
-      "gloss": "the ledger, and the answer for it"
+      "gloss": "the ledger, and the answer for it",
+      "page": "draft-v1"
     },
     {
       "n": 103,
@@ -753,7 +763,8 @@
       "n": 114,
       "term": "Avenger of blood",
       "movement": 7,
-      "gloss": "the executor of the sentence"
+      "gloss": "the executor of the sentence",
+      "page": "draft-v1"
     },
     {
       "n": 115,
@@ -771,7 +782,8 @@
       "n": 117,
       "term": "Accuse",
       "movement": 7,
-      "gloss": "to file the formal indictment"
+      "gloss": "to file the formal indictment",
+      "page": "draft-v1"
     },
     {
       "n": 118,
@@ -874,7 +886,8 @@
       "term": "Attiq Yomin",
       "movement": 1,
       "gloss": "the presiding Judge; seniority as standing",
-      "strongs": "H6268+H3118"
+      "strongs": "H6268+H3118",
+      "page": "draft-v1"
     },
     {
       "n": 132,
@@ -976,6 +989,256 @@
     }
   ],
   "words": {
+    "9": {
+      "n": 9,
+      "term": "Advocate",
+      "movement": 4,
+      "rootLine": "parakletos — Greek",
+      "caseStrongs": "G3875",
+      "lead": "An advocate is defense counsel — one called alongside to plead your case before the bench. “If any man sin, we have an advocate with the Father, Yahushua Messiah the righteous” (1 John 2:1). This is no vague comforter; it is an attorney standing before the court on the defendant’s behalf. The office only functions inside a live trial where charges can still be filed. To have an advocate is to admit there is a court, a prosecutor, and a case — and then to find that competent counsel has already taken the brief.",
+      "root": [
+        {
+          "lemma": "parakletos",
+          "strong": "G3875",
+          "sense": "one called alongside; an advocate, counsel for the defense"
+        }
+      ],
+      "courtroomWord": "A counsel term — the one who pleads the defendant’s case before the bench.",
+      "itsRole": "When the accuser files, the advocate answers. Yahushua stands before the Father as counsel for the accused, pleading a settled account against every charge. He does not deny that a case exists; He answers it with the price paid. The advocate is why the indictment does not stand.",
+      "proofTexts": [
+        {
+          "ref": "1 John 2:1",
+          "text": "We have an advocate with the Father, Yahushua Messiah the righteous.",
+          "note": "Counsel for the accused, standing with the Father."
+        },
+        {
+          "ref": "Romans 8:34",
+          "text": "Who also maketh intercession for us.",
+          "note": "The advocate pleading."
+        },
+        {
+          "ref": "Hebrews 7:25",
+          "text": "He ever liveth to make intercession for them.",
+          "note": "The standing office of counsel."
+        },
+        {
+          "ref": "Hebrews 9:24",
+          "text": "Now to appear in the presence of Yahuah for us.",
+          "note": "The advocate before the bench."
+        }
+      ],
+      "plainTerms": [
+        "An advocate is your defense lawyer before Yahuah. When the accuser charges you, Yahushua pleads your case — not by denying the court, but by answering it with the paid account."
+      ],
+      "bringItHome": [
+        "The prosecutor finishes his charges and the accused has no words. Then counsel rises — not to argue the man is innocent, but to lay a paid receipt on the bench. Charge answered. That is the advocate: Yahushua before the Father, pleading a settled account."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahushua",
+          "role": "the Advocate",
+          "does": "pleads the case before the Father — counsel with Him, not a second self-standing judge."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Father, the Judge",
+          "does": "before whom counsel appears."
+        },
+        {
+          "who": "The accused",
+          "role": "the Defendant",
+          "does": "represented, and cleared."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 11,
+          "term": "Mediator"
+        },
+        {
+          "n": 12,
+          "term": "Intercession"
+        },
+        {
+          "n": 89,
+          "term": "Blood"
+        },
+        {
+          "n": 120,
+          "term": "Surety"
+        }
+      ]
+    },
+    "10": {
+      "n": 10,
+      "term": "Accuser",
+      "movement": 7,
+      "rootLine": "satan — Hebrew",
+      "caseStrongs": "H7854",
+      "lead": "The accuser is the adversary who stands to prosecute — not a folk-tale imp but the party who brings the charge. In Zechariah 3:1 the satan stands at the right hand of the high priest “to resist him,” to accuse him before the court; in Job he presses his case before the bench of heaven. The role is legal: he files, he indicts, he demands the guilt of the accused. And it presupposes a law to accuse under. Revelation names him the accuser of the brethren, then announces he is cast down.",
+      "root": [
+        {
+          "lemma": "satan",
+          "strong": "H7854",
+          "sense": "adversary, one who opposes or accuses; the prosecuting party"
+        }
+      ],
+      "courtroomWord": "A prosecution party — the adversary who brings and presses the charge.",
+      "itsRole": "In the true court the accuser’s charge is tested and, if unanswered, stands. Against the covered it does not stand: the account is paid, an Advocate pleads, and the accuser is thrown out of court. His whole standing depends on an open charge — close the account and his office collapses.",
+      "proofTexts": [
+        {
+          "ref": "Zechariah 3:1",
+          "text": "Satan standing at his right hand to resist him.",
+          "note": "The accuser positioned to prosecute the priest."
+        },
+        {
+          "ref": "Job 1:9",
+          "text": "Doth Job fear Elohim for nought?",
+          "note": "The adversary pressing his case before the court."
+        },
+        {
+          "ref": "Revelation 12:10",
+          "text": "The accuser of our brethren is cast down.",
+          "note": "The prosecutor removed from court."
+        },
+        {
+          "ref": "1 Peter 5:8",
+          "text": "Your adversary the devil... seeking whom he may devour.",
+          "note": "The accuser at work against the saints."
+        }
+      ],
+      "plainTerms": [
+        "The accuser is the prosecutor — the one who brings charges against you before Yahuah. His power is only in an open case. When the account is paid, he is cast down."
+      ],
+      "bringItHome": [
+        "Picture the prosecutor who never sits — day and night lodging charges against the accused. That is the accuser. But once the debt is paid and counsel pleads it, the judge clears the docket and the prosecutor is put out. He had nothing left to charge."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The accuser",
+          "role": "the adversary, the Prosecutor",
+          "does": "brings and presses the charge."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "hears, and casts the accuser down."
+        },
+        {
+          "who": "The brethren",
+          "role": "the accused",
+          "does": "cleared by the paid account."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 117,
+          "term": "Accuse"
+        },
+        {
+          "n": 125,
+          "term": "Kategoros"
+        },
+        {
+          "n": 134,
+          "term": "Diabolos"
+        },
+        {
+          "n": 9,
+          "term": "Advocate"
+        }
+      ]
+    },
+    "20": {
+      "n": 20,
+      "term": "Atonement",
+      "movement": 4,
+      "rootLine": "kaphar — Hebrew",
+      "caseStrongs": "H3722",
+      "lead": "The devotional reading softens atonement into ‘at-one-ment,’ a restored closeness. But kaphar means to cover, to satisfy, to wipe the charge so the account balances — the legal settlement of guilt. On Yom Kippur the blood was applied to answer a claim the law had filed against the people, not to warm the national mood. Atonement is what closes the case: the debt covered, the ledger squared, the docket cleared. It is transactional by nature — an outstanding liability lawfully discharged, and the price for it provided by Yahuah Himself.",
+      "root": [
+        {
+          "lemma": "kaphar",
+          "strong": "H3722",
+          "sense": "to cover, to purge, to make atonement; to satisfy a claim"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "kpr-H372x",
+        "siblings": [
+          {
+            "n": 15,
+            "term": "Ransom"
+          }
+        ],
+        "note": "Kaphar (atonement, the covering) and kopher (ransom, the price of a life) share the k-p-r root: atonement covers the charge, the ransom pays the price that covers it."
+      },
+      "courtroomWord": "A settlement term — the covering of guilt that closes the case and clears the account.",
+      "itsRole": "A filed charge must be answered before the account can close. Atonement answers it — the blood applied, the claim covered, the ledger squared. It is not a change of feeling but a discharge of liability, and in the true court the price that covers is the one Yahuah provided, not one the guilty could pay.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 17:11",
+          "text": "It is the blood that maketh an atonement for the soul.",
+          "note": "The covering that answers the claim."
+        },
+        {
+          "ref": "Leviticus 16:30",
+          "text": "On that day shall the priest make an atonement for you, to cleanse you.",
+          "note": "The docket cleared on Yom Kippur."
+        },
+        {
+          "ref": "Romans 5:11",
+          "text": "By whom we have now received the atonement.",
+          "note": "The settlement received."
+        },
+        {
+          "ref": "Isaiah 53:5",
+          "text": "The chastisement of our peace was upon him.",
+          "note": "The price of the covering, laid on the Lamb by the Father."
+        }
+      ],
+      "plainTerms": [
+        "Atonement means to cover a charge and settle the account — to wipe the debt so the books balance. It is not a warm feeling of closeness; it is a legal discharge of guilt, paid with a price Yahuah provided."
+      ],
+      "bringItHome": [
+        "A debt is filed against you, and someone lays a covering over it that answers it in full — the account reads zero. That is atonement: not the case forgotten, the case closed. And the covering was provided by the Judge Himself, at His own cost."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge, the Provider",
+          "does": "provides the covering that settles the claim."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the covering provided",
+          "does": "the Lamb on whom the price was laid."
+        },
+        {
+          "who": "The guilty",
+          "role": "the Defendant",
+          "does": "whose charge is covered and account cleared."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 15,
+          "term": "Ransom"
+        },
+        {
+          "n": 16,
+          "term": "Forgive"
+        },
+        {
+          "n": 89,
+          "term": "Blood"
+        },
+        {
+          "n": 29,
+          "term": "Reconcile"
+        }
+      ]
+    },
     "28": {
       "n": 28,
       "term": "Recompense",
@@ -1089,6 +1352,676 @@
         {
           "n": 9,
           "term": "Advocate"
+        }
+      ]
+    },
+    "39": {
+      "n": 39,
+      "term": "Amen",
+      "movement": 2,
+      "rootLine": "amen — Hebrew / Greek",
+      "caseStrongs": "H543 · G281",
+      "lead": "People treat it as a verbal period at the end of a prayer. It is actually a legal signature. In Deuteronomy 27 the people stand and answer “Amen” to each pronounced curse — sworn, on-the-record assent to the covenant’s penalty clauses. To say Amen is to affirm at law: let it stand, hold me to it, so be it by my own word. It binds the speaker. Every time a believer closes a prayer with “amen,” he notarizes it — putting his name to the document — usually without the faintest idea he has just signed something.",
+      "root": [
+        {
+          "lemma": "amen",
+          "strong": "H543 / G281",
+          "sense": "firm, established, sure; a sworn affirmation — ‘let it stand’"
+        }
+      ],
+      "courtroomWord": "A signature term — sworn assent that binds the one who speaks it.",
+      "itsRole": "A covenant requires the parties’ assent on the record. Amen is that assent — the people’s signature under the terms, penalties and all. It is not a pious flourish but a binding affirmation, and it commits the speaker to what he has just agreed.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 27:26",
+          "text": "And all the people shall say, Amen.",
+          "note": "Sworn assent to the covenant’s clauses."
+        },
+        {
+          "ref": "Numbers 5:22",
+          "text": "And the woman shall say, Amen, amen.",
+          "note": "The oath sealed by the word."
+        },
+        {
+          "ref": "Revelation 3:14",
+          "text": "These things saith the Amen, the faithful and true witness.",
+          "note": "The word as a title of the trustworthy witness."
+        },
+        {
+          "ref": "2 Corinthians 1:20",
+          "text": "In him Amen, unto the glory of Yahuah.",
+          "note": "The promises confirmed and signed."
+        }
+      ],
+      "plainTerms": [
+        "Amen is not a period on a prayer — it is a signature. It means ‘let it stand, hold me to it.’ When you say it, you are putting your name to what was said and binding yourself to it."
+      ],
+      "bringItHome": [
+        "A contract is read aloud, clause by clause, and at each one the party says the ancient equivalent of ‘agreed — hold me to it.’ That word is Amen. It is a signature spoken. Every prayer you close with it, you have just signed."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The one who says it",
+          "role": "the signatory",
+          "does": "binds himself on the record."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the covenant party",
+          "does": "to whom the assent is given."
+        },
+        {
+          "who": "The covenant",
+          "role": "the document",
+          "does": "signed by the word."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 42,
+          "term": "Swear"
+        },
+        {
+          "n": 43,
+          "term": "Vow"
+        },
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 40,
+          "term": "Truth"
+        }
+      ]
+    },
+    "61": {
+      "n": 61,
+      "term": "Adoption",
+      "movement": 3,
+      "rootLine": "huiothesia — Greek",
+      "caseStrongs": "G5206",
+      "lead": "Adoption is a formal legal act that places a person into a family as son, with the full inheritance rights of one born to it. It is a courtroom placement, not a change of biology: “ye have received the Spirit of adoption” (Romans 8:15). Under the law an adopted son’s former debts were cancelled and his new standing was fixed and irreversible. To be adopted by Yahuah is to be legally installed as son and heir, granted a standing and an estate one was never born to — the old account wiped, the new status entered on the record.",
+      "root": [
+        {
+          "lemma": "huiothesia",
+          "strong": "G5206",
+          "sense": "the placing as a son; adoption, a legal act conferring sonship"
+        }
+      ],
+      "courtroomWord": "A status act — the legal placement of a person as son, conferring an heir’s rights.",
+      "itsRole": "Standing in the household is conferred by decree, not earned by birth. Adoption enters a new party on the estate with full rights of inheritance and cancels what stood against him. It is why the believer can be called heir: the placement is legal and secured, not a sentiment of belonging.",
+      "proofTexts": [
+        {
+          "ref": "Romans 8:15",
+          "text": "Ye have received the Spirit of adoption, whereby we cry, Abba, Father.",
+          "note": "The legal placement as son."
+        },
+        {
+          "ref": "Galatians 4:5",
+          "text": "That we might receive the adoption of sons.",
+          "note": "The purpose of the redemption."
+        },
+        {
+          "ref": "Ephesians 1:5",
+          "text": "Having predestinated us unto the adoption of children.",
+          "note": "The placement purposed from the first."
+        },
+        {
+          "ref": "Romans 8:17",
+          "text": "If children, then heirs.",
+          "note": "The inheritance the status carries."
+        }
+      ],
+      "plainTerms": [
+        "Adoption is a legal act that makes you a son with full rights — not by birth, by decree. The old debts are cancelled and the new standing is permanent. It makes you an heir."
+      ],
+      "bringItHome": [
+        "A judge signs the order and a child who was outside the family is now a son — same room, new standing, full claim on the estate, old record wiped. That is adoption. Yahuah does it by decree: not born to it, placed into it, and made heir."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Father, the Judge",
+          "does": "decrees the placement."
+        },
+        {
+          "who": "The adopted",
+          "role": "the new son and heir",
+          "does": "granted standing and estate."
+        },
+        {
+          "who": "The old account",
+          "role": "the Record",
+          "does": "wiped at the placement."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 62,
+          "term": "Sonship"
+        },
+        {
+          "n": 52,
+          "term": "Heir"
+        },
+        {
+          "n": 51,
+          "term": "Inheritance"
+        },
+        {
+          "n": 64,
+          "term": "Free"
+        }
+      ]
+    },
+    "71": {
+      "n": 71,
+      "term": "Anoint",
+      "movement": 1,
+      "rootLine": "mashach — Hebrew",
+      "caseStrongs": "H4886",
+      "lead": "To anoint is investiture into office — the formal act that installs a priest, king, or prophet and confers the authority of the post. The oil is the legal ceremony of appointment, and it changes standing: from the day Samuel anointed David, “the Spirit of Yahuah came upon David” and the office was his (1 Samuel 16:13), though years passed before the throne. To be anointed is to be commissioned, vested with authority to act — not merely honored. The anointing is the appointment made official, effective from the moment the oil is poured.",
+      "root": [
+        {
+          "lemma": "mashach",
+          "strong": "H4886",
+          "sense": "to smear, to anoint; to consecrate into office"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "mashach-H4886",
+        "siblings": [
+          {
+            "n": 72,
+            "term": "Messiah"
+          }
+        ],
+        "note": "Mashiach — ‘the Anointed One’ — is the same root: the act of anointing (mashach) and the office-holder it produces. The Messiah bears the title because Yahuah invested Him with the office."
+      },
+      "courtroomWord": "An investiture term — the formal act that installs a person into office with its authority.",
+      "itsRole": "Authority to serve as priest, king, or prophet is conferred, not assumed. The anointing is the transfer of office onto the one designated, witnessed and effective. This is why the Messiah is ‘the Anointed’ — He holds the office because Yahuah invested Him with it, a warrant received, not seized.",
+      "proofTexts": [
+        {
+          "ref": "1 Samuel 16:13",
+          "text": "Samuel took the horn of oil, and anointed him... and the Spirit of Yahuah came upon David.",
+          "note": "Investiture into office."
+        },
+        {
+          "ref": "Exodus 30:30",
+          "text": "Thou shalt anoint Aaron and his sons, and consecrate them.",
+          "note": "The priestly office conferred."
+        },
+        {
+          "ref": "Isaiah 61:1",
+          "text": "Yahuah hath anointed me to preach good tidings.",
+          "note": "The commission received."
+        },
+        {
+          "ref": "Psalm 2:2",
+          "text": "Against Yahuah, and against his anointed.",
+          "note": "The appointed one, set by the Appointer."
+        }
+      ],
+      "plainTerms": [
+        "To anoint is to appoint someone into office — priest, king, or prophet — and hand them its authority. The oil is the ceremony. It is why the Messiah is ‘the Anointed’: the office was given to Him by Yahuah."
+      ],
+      "bringItHome": [
+        "The oil is poured, and a shepherd boy is now the anointed king — the office is his from that moment, even before the crown. That is anointing: not honor, appointment. And it is why the Messiah bears the title — the office was conferred on Him by the One who anoints."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Appointer",
+          "does": "confers the office by the anointing."
+        },
+        {
+          "who": "The anointed",
+          "role": "the officer",
+          "does": "vested with authority to act."
+        },
+        {
+          "who": "The oil",
+          "role": "the seal of the act",
+          "does": "the ceremony that makes the appointment official."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 72,
+          "term": "Messiah"
+        },
+        {
+          "n": 77,
+          "term": "Priest"
+        },
+        {
+          "n": 73,
+          "term": "King"
+        },
+        {
+          "n": 76,
+          "term": "Crown"
+        }
+      ]
+    },
+    "91": {
+      "n": 91,
+      "term": "Betroth",
+      "movement": 2,
+      "rootLine": "aras — Hebrew",
+      "caseStrongs": "H781",
+      "lead": "Betrothal is a binding legal contract preceding the wedding — so firm that breaking it required a formal bill of divorce, and violating a betrothed woman carried the penalty of adultery (Deuteronomy 22:23-24). It was covenant, not courtship. This is why Yahuah says to Israel, “I will betroth thee unto me for ever... in righteousness, and in judgment” (Hosea 2:19) — the vocabulary of a ratified engagement with legal force, sworn in the language of the court. To be betrothed is to be legally bound before the union is consummated, held to the contract from the moment it is cut.",
+      "root": [
+        {
+          "lemma": "aras",
+          "strong": "H781",
+          "sense": "to betroth, to engage by binding contract"
+        }
+      ],
+      "courtroomWord": "A contract term — the binding engagement that precedes and secures the marriage.",
+      "itsRole": "A covenant is often bound before it is consummated, and betrothal is that binding — the contract cut, the parties held to it, the penalties already in force. Yahuah’s betrothal of His people is spoken in exactly these legal terms: a pledge in righteousness and judgment, secured before the wedding. To be betrothed is already to belong, under contract.",
+      "proofTexts": [
+        {
+          "ref": "Hosea 2:19",
+          "text": "I will betroth thee unto me for ever... in righteousness, and in judgment.",
+          "note": "The binding pledge in legal terms."
+        },
+        {
+          "ref": "Deuteronomy 22:24",
+          "text": "The damsel, because... a betrothed wife.",
+          "note": "The contract’s force before the wedding — its violation judged as adultery."
+        },
+        {
+          "ref": "Deuteronomy 20:7",
+          "text": "What man is there that hath betrothed a wife, and hath not taken her?",
+          "note": "The betrothed bond recognized at law."
+        },
+        {
+          "ref": "2 Corinthians 11:2",
+          "text": "I have espoused you to one husband.",
+          "note": "The assembly betrothed to the Messiah."
+        }
+      ],
+      "plainTerms": [
+        "Betrothal was a binding engagement — a real contract before the wedding, so serious that breaking it took a divorce. Yahuah ‘betroths’ His people in the language of law: bound to Him before the union is complete."
+      ],
+      "bringItHome": [
+        "In that world the contract was signed long before the wedding day — and from that moment the two belonged to each other, held to every term. That is betrothal: not a promise to maybe marry, but a binding bond already in force. Yahuah pledges His people exactly so — already His, under contract."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Betrothing party",
+          "does": "pledges the bond in righteousness and judgment."
+        },
+        {
+          "who": "The betrothed",
+          "role": "the covenant party",
+          "does": "bound from the moment the contract is cut."
+        },
+        {
+          "who": "The contract",
+          "role": "the bond",
+          "does": "in force before the wedding, penalties attached."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 92,
+          "term": "Bride"
+        },
+        {
+          "n": 93,
+          "term": "Husband"
+        },
+        {
+          "n": 94,
+          "term": "Adultery"
+        },
+        {
+          "n": 18,
+          "term": "Covenant"
+        }
+      ]
+    },
+    "94": {
+      "n": 94,
+      "term": "Adultery",
+      "movement": 2,
+      "rootLine": "naaph — Hebrew",
+      "caseStrongs": "H5003",
+      "lead": "Adultery is covenant infidelity — a breach of the marriage contract carrying legal penalty. The prophets charge Israel’s idolatry as adultery precisely because it violates a ratified bond: “thou hast played the whore with many lovers” (Jeremiah 3:1). The word names contract-breaking, not merely lust. To commit adultery is to violate the exclusivity clause of a covenant, and Torah treats it as an offense against the bond itself — tried, in the prophets, as a case in the covenant court.",
+      "root": [
+        {
+          "lemma": "naaph",
+          "strong": "H5003",
+          "sense": "to commit adultery; to break the marriage covenant"
+        }
+      ],
+      "courtroomWord": "A breach term — the violation of the marriage covenant’s exclusivity clause.",
+      "itsRole": "A covenant carries terms, and marriage carries the term of exclusivity. Adultery is its breach — actionable, penalized, and in the prophets, prosecuted. When Scripture calls idolatry adultery, it is not a loose metaphor; it is a charge of covenant-breaking brought against a bound party.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 20:14",
+          "text": "Thou shalt not commit adultery.",
+          "note": "The exclusivity clause commanded."
+        },
+        {
+          "ref": "Jeremiah 3:8",
+          "text": "I had put her away, and given her a bill of divorce.",
+          "note": "The breach answered by legal dissolution."
+        },
+        {
+          "ref": "Ezekiel 16:32",
+          "text": "As a wife that committeth adultery, which taketh strangers instead of her husband.",
+          "note": "Idolatry charged as covenant infidelity."
+        },
+        {
+          "ref": "Hosea 2:2",
+          "text": "Let her put away her whoredoms.",
+          "note": "The covenant court’s demand."
+        }
+      ],
+      "plainTerms": [
+        "Adultery is breaking the marriage covenant — violating the promise to belong to one. Scripture calls idolatry adultery because it breaks the same kind of bond with Yahuah. It is contract-breaking, and it is actionable."
+      ],
+      "bringItHome": [
+        "A signed marriage covenant has one non-negotiable clause: no other. Break it and you have not merely wandered in feeling — you have breached a contract, and the court can act. Israel’s idols were charged exactly so: not a mood, a breach."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the wronged Husband, the Judge",
+          "does": "the covenant party whose exclusivity is breached."
+        },
+        {
+          "who": "The unfaithful party",
+          "role": "the Defendant",
+          "does": "charged with covenant-breaking."
+        },
+        {
+          "who": "The covenant",
+          "role": "the contract",
+          "does": "the bond whose clause is violated."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 91,
+          "term": "Betroth"
+        },
+        {
+          "n": 93,
+          "term": "Husband"
+        },
+        {
+          "n": 96,
+          "term": "Jealous"
+        },
+        {
+          "n": 95,
+          "term": "Divorce"
+        }
+      ]
+    },
+    "102": {
+      "n": 102,
+      "term": "Account",
+      "movement": 6,
+      "rootLine": "logos — Greek",
+      "caseStrongs": "G3056",
+      "lead": "An account is two things at once — the record kept and the reckoning demanded for it. “Every one of us shall give account of himself to Yahuah” (Romans 14:12) summons each party to answer for the ledger that bears his name. The unprofitable steward is told, “give an account of thy stewardship” (Luke 16:2) — produce the books, answer for the balance. In the court of heaven the entries are real and the audit is coming; an account is a balance owed and examined, not a vague impression of a life.",
+      "root": [
+        {
+          "lemma": "logos",
+          "strong": "G3056",
+          "sense": "a word, reckoning, account; the statement rendered and the reckoning required"
+        }
+      ],
+      "courtroomWord": "A ledger term — the record of a matter and the formal answer required for it.",
+      "itsRole": "The books are open, and every party is called to answer for his own. An account is not settled by sentiment; it is audited entry by entry. The sober weight of the word is that a day is appointed when each gives account — the record read back, the balance addressed.",
+      "proofTexts": [
+        {
+          "ref": "Romans 14:12",
+          "text": "Every one of us shall give account of himself to Yahuah.",
+          "note": "Each answers for his own ledger."
+        },
+        {
+          "ref": "Luke 16:2",
+          "text": "Give an account of thy stewardship.",
+          "note": "Produce the books; answer for the balance."
+        },
+        {
+          "ref": "Hebrews 4:13",
+          "text": "All things are naked and opened unto the eyes of him with whom we have to do.",
+          "note": "Nothing falls off the record."
+        },
+        {
+          "ref": "Matthew 12:36",
+          "text": "They shall give account thereof in the day of judgment.",
+          "note": "Even words are entered."
+        }
+      ],
+      "plainTerms": [
+        "An account is both the record and the answer you give for it. The books are open, and a day is set when each person answers for his own — entry by entry, not in general."
+      ],
+      "bringItHome": [
+        "A steward runs the estate all year, then the owner returns and says: bring the books. Not “tell me how it felt” — bring the books. That is an account: the record laid open and answered for. The court of heaven keeps one for every life."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge, the Auditor",
+          "does": "before whom each gives account of himself."
+        },
+        {
+          "who": "The steward",
+          "role": "the party audited",
+          "does": "answerable for the balance on the books."
+        },
+        {
+          "who": "The ledger",
+          "role": "the Record",
+          "does": "read back, entry by entry."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 101,
+          "term": "Reckon"
+        },
+        {
+          "n": 103,
+          "term": "Visit"
+        },
+        {
+          "n": 105,
+          "term": "Scales"
+        },
+        {
+          "n": 17,
+          "term": "Debt"
+        }
+      ]
+    },
+    "114": {
+      "n": 114,
+      "term": "Avenger of blood",
+      "movement": 7,
+      "rootLine": "goel ha-dam — Hebrew",
+      "caseStrongs": "H1350 · H1818",
+      "lead": "The avenger of blood is the executor of the court’s sentence — the kinsman charged to require shed blood once guilt had been lawfully established. He was no vigilante: he could act only after the congregation judged, and only against one found guilty of intentional killing (Numbers 35:19-24). The same law that empowered him restrained him, hedging his role with the cities of refuge and the requirement of trial. The goel ha-dam shows that even the requiring of blood was legally regulated — justice executed, not private revenge, by the party the law appointed.",
+      "root": [
+        {
+          "lemma": "goel",
+          "strong": "H1350",
+          "sense": "kinsman-redeemer, one with the right to act for a relative"
+        },
+        {
+          "lemma": "dam",
+          "strong": "H1818",
+          "sense": "blood; the life that cries for justice"
+        }
+      ],
+      "courtroomWord": "An executor term — the officer who carries out the blood-sentence, within the law’s limits.",
+      "itsRole": "A verdict must be executed, and the law appointed who executes the blood-sentence — the kinsman, but only after judgment and only against established guilt. The cities of refuge stand as the check: the accused is protected until tried. The avenger is thus an officer of the court, not a free hand — his power defined and fenced by the same statute that grants it.",
+      "proofTexts": [
+        {
+          "ref": "Numbers 35:19",
+          "text": "The revenger of blood himself shall slay the murderer.",
+          "note": "The executor of the sentence."
+        },
+        {
+          "ref": "Numbers 35:12",
+          "text": "That the manslayer die not, until he stand before the congregation in judgment.",
+          "note": "The check: trial before execution."
+        },
+        {
+          "ref": "Numbers 35:24",
+          "text": "Then the congregation shall judge between the slayer and the revenger of blood.",
+          "note": "The court, not the kinsman, decides guilt."
+        },
+        {
+          "ref": "Deuteronomy 19:6",
+          "text": "Lest the avenger of the blood pursue... while his heart is hot.",
+          "note": "The law restraining private heat."
+        }
+      ],
+      "plainTerms": [
+        "The avenger of blood carried out the death-sentence for murder — but only the kinsman, only after a real trial, and only against proven intentional killing. The cities of refuge kept him from acting on his own. He was an officer of the law, not a vigilante."
+      ],
+      "bringItHome": [
+        "A man is killed, and the nearest kinsman has a duty — but not a free hand. He cannot strike until the assembly has judged and guilt is proven; until then the accused sits safe in a city of refuge. That is the avenger of blood: even vengeance was put under law, executed by an officer, not a mob."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The avenger",
+          "role": "the executor",
+          "does": "carries out the blood-sentence, within limits."
+        },
+        {
+          "who": "The congregation",
+          "role": "the court",
+          "does": "judges guilt before any execution."
+        },
+        {
+          "who": "The manslayer",
+          "role": "the accused",
+          "does": "protected in refuge until tried."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "both empowers and restrains the avenger."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 113,
+          "term": "Refuge"
+        },
+        {
+          "n": 112,
+          "term": "Vengeance"
+        },
+        {
+          "n": 132,
+          "term": "Karath"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        }
+      ]
+    },
+    "117": {
+      "n": 117,
+      "term": "Accuse",
+      "movement": 7,
+      "rootLine": "kategoreo — Greek",
+      "caseStrongs": "G2723",
+      "lead": "To accuse is to file the formal indictment — to name the charge and open the trial. It is the prosecutor’s act, not the gossip’s: kategoreo lodges a case before the bench. Scripture shows the accuser at work “before our Elohim day and night” (Revelation 12:10), pressing the guilt of the brethren without rest. Accusation presupposes a law to accuse under; strike the standard and the charge has nothing to name. And the good news sits in the same verse — the accuser is cast down, the indictment thrown out.",
+      "root": [
+        {
+          "lemma": "kategoreo",
+          "strong": "G2723",
+          "sense": "to speak against, to bring a charge, to accuse formally in court"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "kateg-G272x",
+        "siblings": [
+          {
+            "n": 125,
+            "term": "Kategoros"
+          }
+        ],
+        "note": "The verb and the party who does it share the kateg- root: to accuse (kategoreo) and the accuser (kategoros) who files the charge."
+      },
+      "courtroomWord": "An indictment term — the formal lodging of a charge that opens the trial.",
+      "itsRole": "A lawful accusation names a real breach under a real law and submits it to be tested. In the court of heaven the accuser files without rest, but the charge stands only if it can be proved and left unanswered. Against the believer it is answered — an Advocate pleads, the account is paid, and the indictment is dismissed.",
+      "proofTexts": [
+        {
+          "ref": "Revelation 12:10",
+          "text": "The accuser of our brethren... accused them before our Elohim day and night.",
+          "note": "Accusation as relentless prosecution."
+        },
+        {
+          "ref": "John 5:45",
+          "text": "There is one that accuseth you, even Moses.",
+          "note": "The law itself accuses where it is broken."
+        },
+        {
+          "ref": "Romans 8:33",
+          "text": "Who shall lay any thing to the charge of Yahuah’s elect?",
+          "note": "The challenge to any accuser of the acquitted."
+        },
+        {
+          "ref": "Luke 23:2",
+          "text": "They began to accuse him.",
+          "note": "The formal charge lodged against Yahushua."
+        }
+      ],
+      "plainTerms": [
+        "To accuse is to file a charge in court and open a case — not just to complain. Every accusation assumes a law that was broken. Against the delivered, the charge is answered and dropped."
+      ],
+      "bringItHome": [
+        "A prosecutor stands and reads the indictment — count by count, all night, every night. That is the accuser of the brethren. But defense counsel rises with a paid receipt, and the judge strikes the charge. Accusation only wins where the account is still open."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The accuser",
+          "role": "the Prosecutor",
+          "does": "files the charge and presses the case."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the Advocate",
+          "does": "answers the charge for the accused."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "before whom it is lodged, and who dismisses it."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 10,
+          "term": "Accuser"
+        },
+        {
+          "n": 125,
+          "term": "Kategoros"
+        },
+        {
+          "n": 134,
+          "term": "Diabolos"
+        },
+        {
+          "n": 115,
+          "term": "Plead"
         }
       ]
     },
@@ -1260,6 +2193,91 @@
         {
           "n": 19,
           "term": "Transgression"
+        }
+      ]
+    },
+    "131": {
+      "n": 131,
+      "term": "Attiq Yomin",
+      "movement": 1,
+      "rootLine": "attiq / yomin — Aramaic",
+      "caseStrongs": "H6268 · H3118",
+      "lead": "Attiq Yomin — the Ancient of Days — is the title of the presiding Judge, and in it seniority itself is standing. When Daniel’s court convenes, “the Ancient of days did sit... the judgment was set, and the books were opened” (Daniel 7:9-10). The name is not merely poetic age; it is jurisdictional. The One who was before every power that rose and will remain after every power falls holds the highest bench by right of being first and last. Every lesser throne is measured against His, and every dominion is granted or revoked from His seat.",
+      "root": [
+        {
+          "lemma": "attiq",
+          "strong": "H6268",
+          "sense": "advanced in days, aged, venerable (Aramaic)"
+        },
+        {
+          "lemma": "yomin",
+          "strong": "H3118",
+          "sense": "days (Aramaic)"
+        }
+      ],
+      "courtroomWord": "A title of the presiding Judge — seniority as the ground of supreme jurisdiction.",
+      "itsRole": "The highest court needs the highest standing, and standing here is age without beginning. The Ancient of Days sits, and when He sits, the session opens and the books are read. From this bench dominion is given — to the Son of man, an everlasting dominion (Daniel 7:14) — and from it dominion is taken away. Every contested authority is settled when this Judge takes His seat.",
+      "proofTexts": [
+        {
+          "ref": "Daniel 7:9",
+          "text": "The Ancient of days did sit, whose garment was white as snow.",
+          "note": "The presiding Judge seated."
+        },
+        {
+          "ref": "Daniel 7:10",
+          "text": "The judgment was set, and the books were opened.",
+          "note": "The session convened."
+        },
+        {
+          "ref": "Daniel 7:14",
+          "text": "There was given him dominion... an everlasting dominion.",
+          "note": "The Son of man receives the grant from the Ancient of Days — given, not seized."
+        },
+        {
+          "ref": "Daniel 7:22",
+          "text": "The Ancient of days came, and judgment was given to the saints.",
+          "note": "The verdict issued for His people."
+        }
+      ],
+      "plainTerms": [
+        "The Ancient of Days is the presiding Judge — the One older than every kingdom, who holds the highest court by right of being first. When He sits, the trial begins and the records are opened. He gives dominion and He takes it away."
+      ],
+      "bringItHome": [
+        "Every power in the room is young next to the One at the bench — kingdoms rise and fall, and He was there before the first and will be there after the last. That is the Ancient of Days: seniority that is jurisdiction. When He finally sits, the books open, and the contest over who rules is over."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Ancient of Days, the presiding Judge",
+          "does": "holds the highest bench; opens the session; gives and takes dominion."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the Son of man",
+          "does": "receives the everlasting dominion from His hand."
+        },
+        {
+          "who": "The saints",
+          "role": "the party vindicated",
+          "does": "for whom judgment is given."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 129,
+          "term": "Heedayah Sholtan"
+        },
+        {
+          "n": 74,
+          "term": "Throne"
+        },
+        {
+          "n": 86,
+          "term": "Sit"
+        },
+        {
+          "n": 73,
+          "term": "King"
         }
       ]
     },
