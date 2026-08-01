@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0801 V7",
+    "version": "0801 V8",
     "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -25,7 +25,8 @@
       "0801 V4: merged 12 word pages (Account–Betroth: 102,117,10,61,94,9,39,71,20,131,114,91) into words; those terms set page draft-v1.",
       "0801 V5: merged 12 word pages (Birthright–Confess: 60,89,31,59,92,58,116,98,137,67,5,49) into words; those terms set page draft-v1.",
       "0801 V6: merged 12 word pages (Covenant–Eretz Gezerah: 18,76,90,41,17,50,127,95,138,78,32,123) into words; those terms set page draft-v1.",
-      "0801 V7: merged 12 word pages (Face–Hupo Nomon: 83,100,99,85,16,64,79,119,81,46,52,139) into words; those terms set page draft-v1."
+      "0801 V7: merged 12 word pages (Face–Hupo Nomon: 83,100,99,85,16,64,79,119,81,46,52,139) into words; those terms set page draft-v1.",
+      "0801 V8: merged 12 word pages (Husband–Karath: 93,53,51,118,12,96,22,1,2,4,3,132) into words; those terms set page draft-v1. Fixed Engrave mis-key: word record moved 32→33 (n:33); term 32 (Write) page cleared until its page is written."
     ]
   },
   "movements": [
@@ -78,25 +79,29 @@
       "n": 1,
       "term": "Judge",
       "movement": 1,
-      "gloss": "the one who hears and rules"
+      "gloss": "the one who hears and rules",
+      "page": "draft-v1"
     },
     {
       "n": 2,
       "term": "Judgment",
       "movement": 1,
-      "gloss": "the ruling, and the case-law"
+      "gloss": "the ruling, and the case-law",
+      "page": "draft-v1"
     },
     {
       "n": 3,
       "term": "Justify",
       "movement": 7,
-      "gloss": "to acquit from the bench"
+      "gloss": "to acquit from the bench",
+      "page": "draft-v1"
     },
     {
       "n": 4,
       "term": "Justification",
       "movement": 7,
-      "gloss": "the acquittal made formal"
+      "gloss": "the acquittal made formal",
+      "page": "draft-v1"
     },
     {
       "n": 5,
@@ -147,7 +152,8 @@
       "n": 12,
       "term": "Intercession",
       "movement": 4,
-      "gloss": "one who steps between guilt and bench"
+      "gloss": "one who steps between guilt and bench",
+      "page": "draft-v1"
     },
     {
       "n": 13,
@@ -211,7 +217,8 @@
       "n": 22,
       "term": "Jubilee",
       "movement": 4,
-      "gloss": "debt cancelled, liberty proclaimed"
+      "gloss": "debt cancelled, liberty proclaimed",
+      "page": "draft-v1"
     },
     {
       "n": 23,
@@ -273,14 +280,14 @@
       "n": 32,
       "term": "Write",
       "movement": 6,
-      "gloss": "to make a matter binding",
-      "page": "draft-v1"
+      "gloss": "to make a matter binding"
     },
     {
       "n": 33,
       "term": "Engrave",
       "movement": 6,
-      "gloss": "cut beyond amendment"
+      "gloss": "cut beyond amendment",
+      "page": "draft-v1"
     },
     {
       "n": 34,
@@ -393,7 +400,8 @@
       "n": 51,
       "term": "Inheritance",
       "movement": 3,
-      "gloss": "the estate allotted by law"
+      "gloss": "the estate allotted by law",
+      "page": "draft-v1"
     },
     {
       "n": 52,
@@ -406,7 +414,8 @@
       "n": 53,
       "term": "Inherit",
       "movement": 3,
-      "gloss": "to take lawful possession"
+      "gloss": "to take lawful possession",
+      "page": "draft-v1"
     },
     {
       "n": 54,
@@ -663,7 +672,8 @@
       "n": 93,
       "term": "Husband",
       "movement": 2,
-      "gloss": "the covenant party with authority and duty"
+      "gloss": "the covenant party with authority and duty",
+      "page": "draft-v1"
     },
     {
       "n": 94,
@@ -683,7 +693,8 @@
       "n": 96,
       "term": "Jealous",
       "movement": 2,
-      "gloss": "the offended party enforcing exclusivity"
+      "gloss": "the offended party enforcing exclusivity",
+      "page": "draft-v1"
     },
     {
       "n": 97,
@@ -822,7 +833,8 @@
       "n": 118,
       "term": "Innocent",
       "movement": 7,
-      "gloss": "acquitted, clean of the charge"
+      "gloss": "acquitted, clean of the charge",
+      "page": "draft-v1"
     },
     {
       "n": 119,
@@ -930,7 +942,8 @@
       "term": "Karath",
       "movement": 7,
       "gloss": "the covenant death-sentence of severance",
-      "strongs": "H3772"
+      "strongs": "H3772",
+      "page": "draft-v1"
     },
     {
       "n": 133,
@@ -1805,91 +1818,6 @@
         {
           "n": 35,
           "term": "Sign"
-        }
-      ]
-    },
-    "32": {
-      "n": 32,
-      "term": "Engrave",
-      "movement": 6,
-      "rootLine": "charath / pasal — Hebrew",
-      "caseStrongs": "H2790 · H6458",
-      "lead": "To engrave is to cut permanently into stone or metal — the ancient guarantee of an unalterable document. The commandments were “graven upon the tables” (Exodus 32:16), precisely because engraving cannot be quietly revised the way ink can. What is cut in stone is meant to outlast the hand that cut it. The imagery is deliberately legal: a code engraved is a code declared beyond amendment. This makes the promise to write the same law on tablets of the heart (2 Corinthians 3:3) all the more pointed — the terms are not softened in the transfer, only relocated; still engraved, now on flesh.",
-      "root": [
-        {
-          "lemma": "charath",
-          "strong": "H2790",
-          "sense": "to engrave, to cut in"
-        },
-        {
-          "lemma": "pasal",
-          "strong": "H6458",
-          "sense": "to hew, to carve out"
-        }
-      ],
-      "courtroomWord": "A permanence term — cutting a document into stone so it cannot be revised.",
-      "itsRole": "A law’s authority depends on its being fixed, and engraving fixes it. What is cut in stone cannot be edited without leaving the cut; it is the ancient seal of an unalterable text. The commandments were engraved for exactly this reason. And when the promise comes to write the law on the heart, the verb is not ‘soften’ but ‘engrave’ — the same fixed terms, relocated to flesh, still beyond amendment.",
-      "proofTexts": [
-        {
-          "ref": "Exodus 32:16",
-          "text": "The writing... graven upon the tables.",
-          "note": "The law cut in stone, unalterable."
-        },
-        {
-          "ref": "Exodus 31:18",
-          "text": "Tables of stone, written with the finger of Elohim.",
-          "note": "The engraved testimony."
-        },
-        {
-          "ref": "Jeremiah 17:1",
-          "text": "Graven upon the table of their heart.",
-          "note": "Engraving as permanence, here of sin."
-        },
-        {
-          "ref": "2 Corinthians 3:3",
-          "text": "Written... in fleshy tables of the heart.",
-          "note": "The same terms relocated, not softened."
-        }
-      ],
-      "plainTerms": [
-        "To engrave is to cut a document permanently into stone — so it can’t be quietly changed. The commandments were engraved for that reason. And the new-covenant promise is to engrave the same law on the heart: relocated to flesh, not softened."
-      ],
-      "bringItHome": [
-        "Ink can be erased; a cut in stone cannot. That is why the commandments were engraved — to declare them beyond amendment. So when Scripture promises the law written on the heart, notice the verb: not softened, engraved. Same fixed terms, new tablet."
-      ],
-      "courtroomRoles": [
-        {
-          "who": "Yahuah",
-          "role": "the Lawgiver",
-          "does": "engraves the terms beyond amendment."
-        },
-        {
-          "who": "The tablets",
-          "role": "the medium (stone, then heart)",
-          "does": "the surface the law is cut into."
-        },
-        {
-          "who": "The law",
-          "role": "the document",
-          "does": "fixed by the engraving, relocated but not revised."
-        }
-      ],
-      "relatedInMovement": [
-        {
-          "n": 33,
-          "term": "Write"
-        },
-        {
-          "n": 36,
-          "term": "Memorial"
-        },
-        {
-          "n": 37,
-          "term": "Pillar"
-        },
-        {
-          "n": 7,
-          "term": "Witness"
         }
       ]
     },
@@ -5752,6 +5680,1148 @@
         {
           "n": 71,
           "term": "Anoint"
+        }
+      ]
+    },
+    "93": {
+      "n": 93,
+      "term": "Husband",
+      "movement": 2,
+      "rootLine": "baal / ish — Hebrew",
+      "caseStrongs": "H1167 · H376",
+      "lead": "The husband is the covenant party holding lawful authority and answerable obligation within the marriage bond. When Yahuah says, “I was an husband unto them” (Jeremiah 31:32), He invokes a legal relationship complete with terms, not a romance without stipulation. The husband bore defined duties and defined rights under the marriage covenant. This frames Israel’s unfaithfulness as breach of contract rather than mere cooling of affection — a covenant party failing its obligations to the other. To call Yahuah husband is to place the relationship inside marriage law, where loyalty is owed, provision is due, and violation is actionable.",
+      "root": [
+        {
+          "lemma": "baal",
+          "strong": "H1167",
+          "sense": "lord, master, husband; the covenant head of the marriage"
+        },
+        {
+          "lemma": "ish",
+          "strong": "H376",
+          "sense": "man, husband"
+        }
+      ],
+      "courtroomWord": "A covenant-party term — the husband bearing the marriage bond’s rights and duties.",
+      "itsRole": "Marriage is a covenant, and the husband is a party to it with defined obligations — provision, protection, faithfulness — and defined rights the covenant secures. Yahuah as husband to Israel invokes this legal frame; her idolatry is breach of the marriage contract, not merely lost feeling. The word places the relationship under law, where duties are owed and violations are actionable.",
+      "proofTexts": [
+        {
+          "ref": "Jeremiah 31:32",
+          "text": "Although I was an husband unto them, saith Yahuah.",
+          "note": "The covenant-head relationship."
+        },
+        {
+          "ref": "Isaiah 54:5",
+          "text": "Thy Maker is thine husband; Yahuah of hosts is his name.",
+          "note": "The legal bond named."
+        },
+        {
+          "ref": "Hosea 2:16",
+          "text": "Thou shalt call me Ishi.",
+          "note": "The restored covenant standing."
+        },
+        {
+          "ref": "Ephesians 5:25",
+          "text": "Husbands, love your wives... as Messiah also loved the assembly.",
+          "note": "The husband’s covenant duty."
+        }
+      ],
+      "plainTerms": [
+        "A husband, in Scripture, is a covenant party — with duties (provision, protection, faithfulness) and rights secured by the marriage bond. When Yahuah calls Himself Israel’s husband, He is naming a legal relationship with terms, not a romance. Her unfaithfulness was breach of contract."
+      ],
+      "bringItHome": [
+        "A husband is not merely a lover; he is a party to a covenant, bound to provide and protect, holding rights the bond secures. That is what Yahuah means calling Himself Israel’s husband: a legal relationship with obligations on both sides — and her idolatry was breaking it."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Husband",
+          "does": "the covenant head, bound to provide and protect."
+        },
+        {
+          "who": "Israel / the assembly",
+          "role": "the wife",
+          "does": "the covenant party owing faithfulness."
+        },
+        {
+          "who": "The covenant",
+          "role": "the marriage bond",
+          "does": "the terms defining the duties of both."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 92,
+          "term": "Bride"
+        },
+        {
+          "n": 91,
+          "term": "Betroth"
+        },
+        {
+          "n": 94,
+          "term": "Adultery"
+        },
+        {
+          "n": 95,
+          "term": "Divorce"
+        }
+      ]
+    },
+    "53": {
+      "n": 53,
+      "term": "Inherit",
+      "movement": 3,
+      "rootLine": "nachal / kleronomeo — Hebrew / Greek",
+      "caseStrongs": "H5157 · G2816",
+      "lead": "To inherit is to receive title and take lawful possession of an allotment. “The meek... shall inherit the earth” (Matthew 5:5) is not a soft blessing but a grant of estate rights — legal possession conferred. The verb transfers property under law from one holder to another. To inherit the kingdom is to come into a lawful holding, entered as its rightful possessor. This is why inheritance can be lost, forfeited, or secured — it behaves like the legal title it is. The promises framed as inheritance are promises of property one will lawfully hold, not merely blessings one will enjoy.",
+      "root": [
+        {
+          "lemma": "nachal",
+          "strong": "H5157",
+          "sense": "to take possession, to inherit"
+        },
+        {
+          "lemma": "kleronomeo",
+          "strong": "G2816",
+          "sense": "to receive by lot, to inherit"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "kleron-G281x",
+        "siblings": [
+          {
+            "n": 51,
+            "term": "Inheritance"
+          },
+          {
+            "n": 52,
+            "term": "Heir"
+          }
+        ],
+        "note": "The kleron- family: to inherit (kleronomeo) is to take the inheritance (kleronomia) as the heir (kleronomos)."
+      },
+      "courtroomWord": "A conveyance term — the receiving of title and lawful possession of an estate.",
+      "itsRole": "To inherit is to have property conveyed to one under law — title received, possession taken. It is not a wish granted but an estate entered. The kingdom, the land, the earth are all spoken of as inherited: lawful holdings received by right of standing. Because it is title, it can be secured or forfeited, which is why the inheritance is guarded and the unworthy are said not to inherit.",
+      "proofTexts": [
+        {
+          "ref": "Matthew 5:5",
+          "text": "The meek... shall inherit the earth.",
+          "note": "Estate rights conferred."
+        },
+        {
+          "ref": "Matthew 25:34",
+          "text": "Inherit the kingdom prepared for you.",
+          "note": "The lawful holding received."
+        },
+        {
+          "ref": "1 Corinthians 6:9",
+          "text": "Shall not inherit the kingdom of Elohim.",
+          "note": "The inheritance forfeitable."
+        },
+        {
+          "ref": "1 Peter 1:4",
+          "text": "An inheritance incorruptible... reserved in heaven for you.",
+          "note": "The title secured."
+        }
+      ],
+      "plainTerms": [
+        "To inherit is to receive title and take possession of an estate — by right, under law. ‘Inherit the earth’ or ‘inherit the kingdom’ means lawful holdings conferred, not vague blessings. And because it is title, it can be kept or lost."
+      ],
+      "bringItHome": [
+        "To inherit is not to be handed a nice surprise — it is to have property legally conveyed to you and to take possession as its rightful owner. That is what the promises mean: the earth, the kingdom, entered as a lawful holding by right of your standing as a son."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Testator",
+          "does": "conveys the estate to the heirs."
+        },
+        {
+          "who": "The heir",
+          "role": "the possessor",
+          "does": "receives title and takes possession."
+        },
+        {
+          "who": "The inheritance",
+          "role": "the estate",
+          "does": "the lawful holding conveyed."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 51,
+          "term": "Inheritance"
+        },
+        {
+          "n": 52,
+          "term": "Heir"
+        },
+        {
+          "n": 54,
+          "term": "Portion"
+        },
+        {
+          "n": 61,
+          "term": "Adoption"
+        }
+      ]
+    },
+    "51": {
+      "n": 51,
+      "term": "Inheritance",
+      "movement": 3,
+      "rootLine": "nachalah / kleronomia — Hebrew / Greek",
+      "caseStrongs": "H5159 · G2817",
+      "lead": "An inheritance is an estate grant — heritable property allotted by law and protected against permanent loss. The land of Israel was distributed as nachalah, parcel by parcel, by lot, and hedged by the Jubilee so that no family’s estate could be alienated forever (Leviticus 25:23). Inheritance is title, not sentiment. So when believers are called heirs of an inheritance reserved in heaven (1 Peter 1:4), the language is estate-law: a lawful holding assigned, recorded, and secured. To inherit is not to be given a gift on a whim; it is to receive property to which one holds recognized legal claim.",
+      "root": [
+        {
+          "lemma": "nachalah",
+          "strong": "H5159",
+          "sense": "an inheritance, heritable estate"
+        },
+        {
+          "lemma": "kleronomia",
+          "strong": "G2817",
+          "sense": "an inheritance, allotted possession"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "kleron-G281x",
+        "siblings": [
+          {
+            "n": 53,
+            "term": "Inherit"
+          },
+          {
+            "n": 52,
+            "term": "Heir"
+          }
+        ],
+        "note": "The kleron- family: the inheritance (kleronomia) is received by inheriting (kleronomeo), taken by the heir (kleronomos)."
+      },
+      "courtroomWord": "An estate term — the heritable property allotted and secured by law.",
+      "itsRole": "An inheritance is legal property, assigned and protected: distributed by lot, guarded by the Jubilee against permanent loss, passed by right of standing. It is not a gift of the moment but a holding on the record. The believer’s inheritance, reserved in heaven, is spoken in this register — a lawful estate secured, to which the heir holds recognized claim.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 25:23",
+          "text": "The land shall not be sold for ever... the land is mine.",
+          "note": "The inheritance protected from alienation."
+        },
+        {
+          "ref": "Numbers 26:53",
+          "text": "Unto these the land shall be divided for an inheritance.",
+          "note": "The estate allotted by law."
+        },
+        {
+          "ref": "1 Peter 1:4",
+          "text": "An inheritance incorruptible... reserved in heaven for you.",
+          "note": "The estate secured."
+        },
+        {
+          "ref": "Ephesians 1:14",
+          "text": "The earnest of our inheritance.",
+          "note": "The estate guaranteed by a pledge."
+        }
+      ],
+      "plainTerms": [
+        "An inheritance is heritable property allotted and protected by law — title, not a whim. Israel’s land was divided as inheritance and guarded by the Jubilee. The believer’s inheritance is the same kind of thing: a lawful estate, secured and reserved."
+      ],
+      "bringItHome": [
+        "An inheritance is not a present that might or might not come — it is an estate assigned to you by law, on the record, protected from being lost. Israel’s land worked that way, hedged by the Jubilee. The believer’s inheritance is reserved and secured the same way: yours by right."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Owner and Testator",
+          "does": "allots and secures the inheritance."
+        },
+        {
+          "who": "The heir",
+          "role": "the holder",
+          "does": "holds recognized claim to the estate."
+        },
+        {
+          "who": "The inheritance",
+          "role": "the estate",
+          "does": "the heritable property protected by law."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 53,
+          "term": "Inherit"
+        },
+        {
+          "n": 52,
+          "term": "Heir"
+        },
+        {
+          "n": 54,
+          "term": "Portion"
+        },
+        {
+          "n": 55,
+          "term": "Lot"
+        }
+      ]
+    },
+    "118": {
+      "n": 118,
+      "term": "Innocent",
+      "movement": 7,
+      "rootLine": "naqi — Hebrew",
+      "caseStrongs": "H5355",
+      "lead": "Innocent means acquitted — clean of the charge, free of blood-guilt. “The innocent and righteous slay thou not” (Exodus 23:7) treats innocence as a legal verdict of standing, not a comment on temperament. To be naqi is to leave the court unblamed, with no charge sustained. Pilate’s “I am innocent of the blood of this just person” (Matthew 27:24) is an attempted legal disclaimer of guilt. Innocence in Scripture is a finding, not a feeling — the state of one against whom the case has failed. To be declared innocent is to be released from the charge, the record showing no guilt assessed.",
+      "root": [
+        {
+          "lemma": "naqi",
+          "strong": "H5355",
+          "sense": "clean, free from guilt, acquitted; innocent of a charge"
+        }
+      ],
+      "courtroomWord": "A verdict term — the finding that no guilt is sustained; acquittal.",
+      "itsRole": "Innocence is a ruling: the charge examined and not sustained, the party released unblamed. It is the verdict opposite condemnation. Torah guards the innocent because a false finding of guilt is a grave wrong; the court must not slay the innocent. To be naqi is to have the case fail against you — a legal standing, not a self-assessment.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 23:7",
+          "text": "The innocent and righteous slay thou not.",
+          "note": "Innocence guarded as a legal standing."
+        },
+        {
+          "ref": "Deuteronomy 27:25",
+          "text": "Cursed be he that taketh reward to slay an innocent person.",
+          "note": "The wrong of condemning the acquitted."
+        },
+        {
+          "ref": "Matthew 27:24",
+          "text": "I am innocent of the blood of this just person.",
+          "note": "The legal disclaimer of guilt."
+        },
+        {
+          "ref": "Psalm 24:4",
+          "text": "He that hath clean hands, and a pure heart.",
+          "note": "The innocent standing before the bench."
+        }
+      ],
+      "plainTerms": [
+        "Innocent means acquitted — the charge did not stand — not a comment on your personality. It is a verdict: the case failed, no guilt assessed. Torah fiercely protects the innocent because condemning the acquitted is a grave wrong."
+      ],
+      "bringItHome": [
+        "To be innocent, in court, is not to feel good about yourself — it is to have the charge fail and walk out unblamed. That is naqi: the verdict that no guilt sticks. And the law treats slaying the innocent — condemning the acquitted — as one of the worst offenses a court can commit."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The acquitted",
+          "role": "the Defendant",
+          "does": "the charge against him not sustained."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "guards the innocent and renders the acquittal."
+        },
+        {
+          "who": "The charge",
+          "role": "the case",
+          "does": "examined and failed."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 119,
+          "term": "Guilty"
+        },
+        {
+          "n": 3,
+          "term": "Justify"
+        },
+        {
+          "n": 5,
+          "term": "Condemn"
+        },
+        {
+          "n": 116,
+          "term": "Cause"
+        }
+      ]
+    },
+    "12": {
+      "n": 12,
+      "term": "Intercession",
+      "movement": 4,
+      "rootLine": "paga — Hebrew",
+      "caseStrongs": "H6293",
+      "lead": "Reduced to ‘praying for someone.’ The root paga means to meet, to reach, to encounter — and in its legal sense, to step in and plead on another’s behalf before authority. Isaiah 53:12 files the Servant’s work under it: “he bare the sin of many, and made intercession for the transgressors.” That is not a warm prayer at a distance; it is an intercessor placing himself between the guilty and the bench, absorbing the collision. Intercession happens in a courtroom, at the moment of sentencing, when someone with standing steps between the accused and the verdict.",
+      "root": [
+        {
+          "lemma": "paga",
+          "strong": "H6293",
+          "sense": "to meet, to reach, to encounter; to interpose, to plead for"
+        }
+      ],
+      "courtroomWord": "An interposition term — stepping between the accused and the verdict to plead for them.",
+      "itsRole": "To intercede is to place oneself between the guilty and the sentence — to meet the collision on their behalf. It is not distant well-wishing but active interposition before the bench. The Servant intercedes by bearing the sin and standing between the transgressors and the verdict; the risen One ever lives to make intercession. Intercession is courtroom advocacy at the point of judgment.",
+      "proofTexts": [
+        {
+          "ref": "Isaiah 53:12",
+          "text": "He... made intercession for the transgressors.",
+          "note": "The interposition on behalf of the guilty."
+        },
+        {
+          "ref": "Hebrews 7:25",
+          "text": "He ever liveth to make intercession for them.",
+          "note": "The standing office of interposition."
+        },
+        {
+          "ref": "Romans 8:34",
+          "text": "Who also maketh intercession for us.",
+          "note": "The plea before the bench."
+        },
+        {
+          "ref": "Ezekiel 22:30",
+          "text": "I sought for a man... that should stand in the gap before me.",
+          "note": "The intercessor who steps in."
+        }
+      ],
+      "plainTerms": [
+        "To intercede is not just to pray at a distance — it is to step between the guilty and the sentence and plead for them. The word means to meet, to interpose. The Servant does it by bearing the sin and standing in the gap; the risen One does it as our standing advocate."
+      ],
+      "bringItHome": [
+        "Picture someone stepping between the accused and the falling gavel — taking the collision, pleading the case at the last moment. That is intercession: not a prayer from afar, but interposition before the bench. The Servant made intercession for the transgressors by standing exactly there."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahushua",
+          "role": "the Intercessor",
+          "does": "steps between the guilty and the verdict, and pleads for them."
+        },
+        {
+          "who": "The transgressors",
+          "role": "the accused",
+          "does": "on whose behalf He interposes."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "before whom the intercession is made."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 9,
+          "term": "Advocate"
+        },
+        {
+          "n": 11,
+          "term": "Mediator"
+        },
+        {
+          "n": 89,
+          "term": "Blood"
+        },
+        {
+          "n": 16,
+          "term": "Forgive"
+        }
+      ]
+    },
+    "96": {
+      "n": 96,
+      "term": "Jealous",
+      "movement": 2,
+      "rootLine": "qanna — Hebrew",
+      "caseStrongs": "H7067",
+      "lead": "Jealous is the rightful stance of the offended covenant party — not petty envy, but a spouse enforcing the exclusivity the contract grants. “I Yahuah thy Elohim am a jealous El” (Exodus 20:5) follows immediately upon the prohibition of other gods, because jealousy here is the enforcement of a covenant clause. A husband with exclusive claim is right to refuse a rival. Divine jealousy is therefore judicial, not emotional weakness: it is the covenant party insisting on the terms He is owed. To provoke Yahuah to jealousy (Deuteronomy 32:21) is to breach the exclusivity of the bond and invoke His rightful enforcement of it.",
+      "root": [
+        {
+          "lemma": "qanna",
+          "strong": "H7067",
+          "sense": "jealous, zealous; the rightful jealousy of an exclusive claim"
+        }
+      ],
+      "courtroomWord": "An enforcement term — the covenant party insisting on the exclusivity clause He is owed.",
+      "itsRole": "A covenant of marriage grants exclusivity, and jealousy is the enforcement of that clause. It is not insecurity but right: the offended party refusing a rival the contract forbids. Yahuah’s jealousy follows directly on the command against other gods — it is Him holding the covenant’s exclusivity. To provoke it is to breach the bond and invoke its rightful enforcement.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 20:5",
+          "text": "I Yahuah thy Elohim am a jealous El.",
+          "note": "Jealousy as the enforcement of exclusivity."
+        },
+        {
+          "ref": "Exodus 34:14",
+          "text": "Yahuah, whose name is Jealous, is a jealous El.",
+          "note": "The covenant claim named."
+        },
+        {
+          "ref": "Deuteronomy 32:21",
+          "text": "They have moved me to jealousy with that which is not El.",
+          "note": "The breach that provokes enforcement."
+        },
+        {
+          "ref": "2 Corinthians 11:2",
+          "text": "I am jealous over you with godly jealousy.",
+          "note": "The rightful jealousy of the betrothing party."
+        }
+      ],
+      "plainTerms": [
+        "Jealous, here, is not petty envy — it is the rightful stance of a spouse whose covenant grants exclusive claim. Yahuah is ‘jealous’ because the covenant forbids rivals, and He enforces that clause. To provoke His jealousy is to break the exclusivity of the bond."
+      ],
+      "bringItHome": [
+        "A husband with a rightful, exclusive claim is not insecure when he refuses a rival — he is enforcing the covenant. That is Yahuah’s jealousy: it comes right after ‘no other gods,’ because it is Him holding the exclusivity clause of the bond. It is judicial, not petty."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the offended Husband",
+          "does": "enforces the covenant’s exclusivity."
+        },
+        {
+          "who": "The people",
+          "role": "the covenant party",
+          "does": "owing exclusive loyalty by the bond."
+        },
+        {
+          "who": "The rival",
+          "role": "the breach",
+          "does": "the other god the covenant forbids."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 93,
+          "term": "Husband"
+        },
+        {
+          "n": 94,
+          "term": "Adultery"
+        },
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 91,
+          "term": "Betroth"
+        }
+      ]
+    },
+    "22": {
+      "n": 22,
+      "term": "Jubilee",
+      "movement": 4,
+      "rootLine": "yovel — Hebrew",
+      "caseStrongs": "H3104",
+      "lead": "This is the one that should stop a ‘the-law-is-done-away’ preacher cold, because Jubilee is nothing but law — debt, property, and liberty statute (Leviticus 25). Every fiftieth year debts were cancelled, bond-servants walked free, and every parcel of land reverted to its original family by legal title. The word for the freedom proclaimed is deror (H1865) — a manumission term, the legal release of one bound. There is no ‘spiritual feeling’ in Jubilee; it is a property-records reset enforced by statute. And it is the framework Yahushua read off the scroll to announce His own ministry (Luke 4:18-19) — He launched the good news in the language of release law.",
+      "root": [
+        {
+          "lemma": "yovel",
+          "strong": "H3104",
+          "sense": "the Jubilee; the ram’s-horn year of release, cancellation, and reversion"
+        }
+      ],
+      "courtroomWord": "A release-statute term — the fiftieth-year reset of debt, bondage, and property title.",
+      "itsRole": "Jubilee is pure statute: on the fiftieth year debts cancel, bondservants go free, and land reverts to its original family by legal title. It is a scheduled reset of the property and debt records, enforced by law, not a sentiment. Yahushua opens His ministry by reading it (Luke 4) — announcing deliverance in the exact register of release law. The good news arrives as Jubilee: debts cleared, captives freed, estates restored.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 25:10",
+          "text": "Proclaim liberty throughout all the land... it shall be a jubile unto you.",
+          "note": "The release-statute proclaimed."
+        },
+        {
+          "ref": "Leviticus 25:13",
+          "text": "Ye shall return every man unto his possession.",
+          "note": "Property reverting by legal title."
+        },
+        {
+          "ref": "Leviticus 25:28",
+          "text": "In the jubile it shall go out, and he shall return unto his possession.",
+          "note": "The reset enforced."
+        },
+        {
+          "ref": "Luke 4:18-19",
+          "text": "To preach the acceptable year of the Lord.",
+          "note": "The ministry announced in Jubilee terms."
+        }
+      ],
+      "plainTerms": [
+        "Jubilee is nothing but law — debt, property, and freedom statute. Every fiftieth year, debts were cancelled, slaves freed, and land returned to its family. It is a legal reset, not a feeling. And Yahushua announced His whole ministry by reading it: good news as release law."
+      ],
+      "bringItHome": [
+        "Imagine a law that, every fiftieth year, wipes every debt, frees every bondservant, and returns every family’s land — a total legal reset. That is Jubilee. Far from being done away, it is the very language Yahushua chose to launch His ministry: the acceptable year, the great release."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "decrees the fiftieth-year release."
+        },
+        {
+          "who": "The debtor and bondservant",
+          "role": "the released",
+          "does": "debts cancelled, freedom restored."
+        },
+        {
+          "who": "The land",
+          "role": "the estate",
+          "does": "reverting to its family by legal title."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 23,
+          "term": "Liberty"
+        },
+        {
+          "n": 24,
+          "term": "Release"
+        },
+        {
+          "n": 13,
+          "term": "Redeem"
+        },
+        {
+          "n": 30,
+          "term": "Restore"
+        }
+      ]
+    },
+    "1": {
+      "n": 1,
+      "term": "Judge",
+      "movement": 1,
+      "rootLine": "shaphat — Hebrew",
+      "caseStrongs": "H8199",
+      "lead": "The modern ear hears ‘judge’ and pictures disapproval — Yahuah frowning from a distance. But shaphat is an office, not a mood: the one who shaphats convenes the court, hears the case, weighs the evidence, and hands down a binding ruling that carries force. Abraham appeals to it directly — “Shall not the Judge of all the earth do right?” (Genesis 18:25) — expecting not sentiment but due process. The word seats Yahuah on a bench with a docket. To call Him Judge is not to call Him harsh; it is to say the universe has a court, and He presides over it.",
+      "root": [
+        {
+          "lemma": "shaphat",
+          "strong": "H8199",
+          "sense": "to judge, to govern, to render a ruling; the judicial office"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "shaphat-H8199",
+        "siblings": [
+          {
+            "n": 2,
+            "term": "Judgment"
+          }
+        ],
+        "note": "Mishpat (the ruling) is from shaphat (to judge): the Judge (shaphat) hands down the judgment (mishpat)."
+      },
+      "courtroomWord": "An office term — the one who convenes the court and renders binding rulings.",
+      "itsRole": "To judge is to hold an office: convene the case, weigh the evidence, render a ruling with force. It is not disapproval but adjudication. Yahuah as Judge presides over a real court with a real docket; Abraham appeals to His justice expecting due process. The judicial office is the seat from which the whole courtroom operates — and it is His.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 18:25",
+          "text": "Shall not the Judge of all the earth do right?",
+          "note": "The appeal to judicial justice."
+        },
+        {
+          "ref": "Psalm 50:6",
+          "text": "Elohim is judge himself.",
+          "note": "The office held by Yahuah."
+        },
+        {
+          "ref": "Isaiah 33:22",
+          "text": "Yahuah is our judge, Yahuah is our lawgiver, Yahuah is our king.",
+          "note": "The offices joined in One."
+        },
+        {
+          "ref": "James 4:12",
+          "text": "There is one lawgiver... who is able to save and to destroy.",
+          "note": "The single competent Judge."
+        }
+      ],
+      "plainTerms": [
+        "To judge, in Scripture, is to hold an office — convening the court, weighing evidence, handing down a binding ruling — not to frown from a distance. Yahuah as Judge means the universe has a court with a docket, and He presides. Abraham appealed to that, expecting due process."
+      ],
+      "bringItHome": [
+        "When Abraham said ‘Shall not the Judge of all the earth do right?’, he was not appealing to a mood — he was appealing to an office, expecting the bench to weigh the case justly. That is what ‘Judge’ means: the seat of the court. To call Yahuah Judge is to say the universe has a courtroom, and He is on the bench."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "convenes the court and renders binding rulings."
+        },
+        {
+          "who": "The parties",
+          "role": "those judged",
+          "does": "whose case is weighed before Him."
+        },
+        {
+          "who": "The docket",
+          "role": "the caseload",
+          "does": "the matters the Judge decides."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 2,
+          "term": "Judgment"
+        },
+        {
+          "n": 73,
+          "term": "King"
+        },
+        {
+          "n": 74,
+          "term": "Throne"
+        },
+        {
+          "n": 78,
+          "term": "Elder"
+        }
+      ]
+    },
+    "2": {
+      "n": 2,
+      "term": "Judgment",
+      "movement": 1,
+      "rootLine": "mishpat — Hebrew",
+      "caseStrongs": "H4941",
+      "lead": "Christians hear ‘judgment’ and brace for wrath. But mishpat is first the ruling a judge pronounces and then the accumulated body of case-law that guides him — the most common legal noun in the Hebrew Scriptures. When David prizes Yahuah’s mishpatim as more to be desired than gold (Psalm 19:9-10), he is not admiring a temperament; he is treasuring a code of just verdicts. To love the mishpatim of Yahuah is to love the way His court rules. Strip the legal sense and half the Psalms turn to sentiment; keep it and they read as a citizen’s delight in a righteous bench.",
+      "root": [
+        {
+          "lemma": "mishpat",
+          "strong": "H4941",
+          "sense": "a verdict, a legal decision; also the body of ordinances. From shaphat, to judge"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "shaphat-H8199",
+        "siblings": [
+          {
+            "n": 1,
+            "term": "Judge"
+          }
+        ],
+        "note": "Mishpat is from shaphat: the Judge (shaphat) issues the judgment (mishpat), and the mishpatim are the case-law behind His rulings."
+      },
+      "courtroomWord": "A ruling term — the verdict pronounced, and the case-law that guides it.",
+      "itsRole": "Mishpat is both the ruling and the code — the verdict a judge hands down and the accumulated ordinances that shape it. It is the most frequent legal noun in Scripture. To love Yahuah’s mishpatim is to treasure His just verdicts and the standard behind them. Judgment is not a mood of wrath but the rendering of a righteous ruling.",
+      "proofTexts": [
+        {
+          "ref": "Psalm 19:9",
+          "text": "The judgments of Yahuah are true and righteous altogether.",
+          "note": "The rulings prized as just."
+        },
+        {
+          "ref": "Deuteronomy 32:4",
+          "text": "All his ways are judgment: a Elohim of truth.",
+          "note": "The just verdict as His way."
+        },
+        {
+          "ref": "Isaiah 1:17",
+          "text": "Seek judgment, relieve the oppressed.",
+          "note": "Mishpat as the just ruling to be sought."
+        },
+        {
+          "ref": "Micah 6:8",
+          "text": "To do justly, and to love mercy.",
+          "note": "The rendering of right judgment required."
+        }
+      ],
+      "plainTerms": [
+        "Judgment, in Scripture, is first a verdict and then the body of just rulings behind it — not a mood of wrath. To love Yahuah’s ‘judgments’ is to treasure the way His court rules. It is the most common legal word in the Hebrew Scriptures."
+      ],
+      "bringItHome": [
+        "When the Psalmist calls Yahuah’s judgments ‘more to be desired than gold,’ he is not admiring a temper — he is treasuring a body of just verdicts, a righteous bench that always rules true. That is mishpat: the ruling and the case-law behind it. Half the Psalms read as a citizen’s delight in a just court."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "renders the judgment."
+        },
+        {
+          "who": "The mishpatim",
+          "role": "the rulings",
+          "does": "the just verdicts and the code behind them."
+        },
+        {
+          "who": "The people",
+          "role": "the citizens",
+          "does": "who love and seek His just judgment."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 1,
+          "term": "Judge"
+        },
+        {
+          "n": 73,
+          "term": "King"
+        },
+        {
+          "n": 74,
+          "term": "Throne"
+        },
+        {
+          "n": 86,
+          "term": "Sit"
+        }
+      ]
+    },
+    "4": {
+      "n": 4,
+      "term": "Justification",
+      "movement": 7,
+      "rootLine": "dikaiosis — Greek",
+      "caseStrongs": "G1347",
+      "lead": "Justification is the acquittal made formal — the standing a man walks out with once the verdict is read. A justified man leaves the court with no charge filed against his name. But the noun is empty air without a code behind it: there is nothing to be acquitted of where nothing was ever prohibited. Modern preaching wants the relief of justification while discarding the law that makes acquittal mean anything. It cannot have both. Remove the statute and ‘justified’ describes a trial with no charge, no evidence, and no verdict — a word left hanging over an empty bench.",
+      "root": [
+        {
+          "lemma": "dikaiosis",
+          "strong": "G1347",
+          "sense": "acquittal, justification; the act of being declared in the right"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "dikaio-G134x",
+        "siblings": [
+          {
+            "n": 3,
+            "term": "Justify"
+          }
+        ],
+        "note": "Dikaiosis (the noun) comes from dikaioo (the verb): to justify (acquit) yields justification (the standing)."
+      },
+      "courtroomWord": "A verdict-standing term — the acquittal made formal, the standing after the ruling.",
+      "itsRole": "Justification is what the acquitted walk out with: a standing of no-charge, the verdict entered on the record. It presupposes a real court, a real charge, a real law — acquittal is meaningless without them. This is the flaw in wanting justification while discarding the standard: strip the law and there is nothing to be acquitted of, and the word collapses.",
+      "proofTexts": [
+        {
+          "ref": "Romans 4:25",
+          "text": "Raised again for our justification.",
+          "note": "The acquittal secured."
+        },
+        {
+          "ref": "Romans 5:18",
+          "text": "The free gift came upon all men unto justification of life.",
+          "note": "The standing conferred."
+        },
+        {
+          "ref": "Romans 5:16",
+          "text": "The free gift is of many offences unto justification.",
+          "note": "Acquittal against real charges."
+        },
+        {
+          "ref": "Romans 8:33",
+          "text": "It is Yahuah that justifieth.",
+          "note": "The acquittal rendered by the Judge."
+        }
+      ],
+      "plainTerms": [
+        "Justification is the acquittal made official — the clean standing you walk out with when the verdict clears you. But it only means something against a real law and a real charge. Wanting justification while throwing out the standard leaves the word hanging over an empty court."
+      ],
+      "bringItHome": [
+        "Justification is the moment the verdict is read and you walk out with no charge on your name — the acquittal made your standing. But an acquittal needs a charge, and a charge needs a law. Keep the standard, and justification is glorious. Discard it, and there was nothing to be acquitted of."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "renders the acquittal that becomes the standing."
+        },
+        {
+          "who": "The justified",
+          "role": "the Defendant",
+          "does": "walks out with no charge on the record."
+        },
+        {
+          "who": "The law",
+          "role": "the standard",
+          "does": "without which there is nothing to be acquitted of."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 3,
+          "term": "Justify"
+        },
+        {
+          "n": 118,
+          "term": "Innocent"
+        },
+        {
+          "n": 5,
+          "term": "Condemn"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        }
+      ]
+    },
+    "3": {
+      "n": 3,
+      "term": "Justify",
+      "movement": 7,
+      "rootLine": "dikaioo — Greek",
+      "caseStrongs": "G1344",
+      "lead": "The church has spiritualized this into a warm inner glow, but dikaioo never left the courtroom. It means to declare a defendant legally in the right — to acquit from the bench. It does not make a man righteous; it pronounces him so, the way a verdict of ‘not guilty’ changes a man’s standing without changing his chemistry. This is why justification is always something rendered, never something felt. And the word refuses to stay parked at the entry door: Scripture also says “the doers of the law shall be justified” (Romans 2:13), pointing the same verb forward. An acquittal presupposes a court, and a court presupposes a law.",
+      "root": [
+        {
+          "lemma": "dikaioo",
+          "strong": "G1344",
+          "sense": "to declare righteous, to acquit; to pronounce in the right"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "dikaio-G134x",
+        "siblings": [
+          {
+            "n": 4,
+            "term": "Justification"
+          }
+        ],
+        "note": "Dikaioo (the verb) yields dikaiosis (the noun): to justify (acquit) yields justification (the standing)."
+      },
+      "courtroomWord": "A verdict verb — to declare a defendant in the right; to acquit from the bench.",
+      "itsRole": "To justify is to pronounce, not to transform — the court declaring a defendant in the right. It is a verdict rendered, the standing changed by the ruling, not the chemistry changed by feeling. And the same verb points forward: the doers of the law shall be justified. Acquittal presupposes a bench and a code; where there is no law, there is nothing to be declared right against.",
+      "proofTexts": [
+        {
+          "ref": "Romans 3:24",
+          "text": "Being justified freely by his grace.",
+          "note": "The acquittal granted."
+        },
+        {
+          "ref": "Romans 2:13",
+          "text": "The doers of the law shall be justified.",
+          "note": "The same verb pointed forward."
+        },
+        {
+          "ref": "Romans 8:33",
+          "text": "It is Yahuah that justifieth.",
+          "note": "The acquittal rendered from the bench."
+        },
+        {
+          "ref": "Luke 18:14",
+          "text": "This man went down to his house justified.",
+          "note": "The verdict of acquittal pronounced."
+        }
+      ],
+      "plainTerms": [
+        "To justify is to declare someone legally in the right — to acquit — not to make them feel righteous. It is a verdict, like ‘not guilty,’ that changes your standing without changing your nature. And it needs a court and a law: no standard, nothing to acquit against."
+      ],
+      "bringItHome": [
+        "When a judge says ‘not guilty,’ he does not change the defendant’s chemistry — he changes his standing, by a ruling. That is to justify: to declare in the right, from the bench. And an acquittal only means something where there was a real law and a real charge."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "pronounces the defendant in the right."
+        },
+        {
+          "who": "The justified",
+          "role": "the Defendant",
+          "does": "acquitted, his standing changed by the ruling."
+        },
+        {
+          "who": "The law",
+          "role": "the standard",
+          "does": "against which the acquittal is meaningful."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 4,
+          "term": "Justification"
+        },
+        {
+          "n": 5,
+          "term": "Condemn"
+        },
+        {
+          "n": 118,
+          "term": "Innocent"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        }
+      ]
+    },
+    "132": {
+      "n": 132,
+      "term": "Karath",
+      "movement": 7,
+      "rootLine": "karat — Hebrew",
+      "caseStrongs": "H3772",
+      "lead": "Karath is the covenant death-sentence of severance — the penalty of being ‘cut off.’ “That soul shall be cut off from his people” (Genesis 17:14; Leviticus 20:3) is not a mere excommunication but a sentence of severance, the guilty party cut away from the covenant community and its life. It is the same verb by which a covenant is cut (karat) — the cutting that binds a covenant is the cutting that removes its breaker. Karath is the ultimate sanction of the covenant court: the transgressor severed, cut off from the people, the promise, and the life the covenant carried.",
+      "root": [
+        {
+          "lemma": "karat",
+          "strong": "H3772",
+          "sense": "to cut, to cut off; the karet penalty of covenant severance"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "karat-H3772",
+        "siblings": [
+          {
+            "n": 41,
+            "term": "Cut"
+          },
+          {
+            "n": 95,
+            "term": "Divorce"
+          }
+        ],
+        "note": "One root H3772: the covenant cut (Cut), the marriage bond cut (Divorce), and here the covenant-breaker cut off (karet)."
+      },
+      "courtroomWord": "A severance-sentence term — the penalty of being cut off from the covenant people.",
+      "itsRole": "The covenant that is cut into force can cut its breaker out: karath is that sentence. To be cut off is not a light expulsion but a severance from the covenant community, its promises, and its life. It is the gravest sanction of the covenant court — and it stands behind the reading of death itself as severance, the transgressor cut off from the life the covenant carried until the cutting is answered.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 17:14",
+          "text": "That soul shall be cut off from his people; he hath broken my covenant.",
+          "note": "The severance-sentence for breach."
+        },
+        {
+          "ref": "Leviticus 20:3",
+          "text": "I will cut him off from among his people.",
+          "note": "The covenant court’s ultimate sanction."
+        },
+        {
+          "ref": "Exodus 31:14",
+          "text": "That soul shall be cut off from among his people.",
+          "note": "Severance for profaning the sign."
+        },
+        {
+          "ref": "Psalm 37:9",
+          "text": "Evildoers shall be cut off.",
+          "note": "The sentence of severance on the wicked."
+        }
+      ],
+      "plainTerms": [
+        "Karath is the sentence of being ‘cut off’ — severed from the covenant people, its promises, and its life. It is not a mild expulsion but the covenant court’s gravest penalty. And it is the same verb by which a covenant is ‘cut’: the cutting that makes a covenant is the cutting that removes its breaker."
+      ],
+      "bringItHome": [
+        "The same word that makes a covenant — to ‘cut’ it — is the word for its ultimate penalty: to be ‘cut off.’ The covenant-breaker is severed, cut away from the people, the promise, and the life the covenant held. That is karath: the death-sentence of severance, the sharpest edge of the covenant court."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "pronounces the sentence of severance."
+        },
+        {
+          "who": "The covenant-breaker",
+          "role": "the condemned",
+          "does": "cut off from the people and the life of the covenant."
+        },
+        {
+          "who": "The covenant",
+          "role": "the bond",
+          "does": "whose breach the cutting-off answers."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 123,
+          "term": "Eretz Gezerah"
+        },
+        {
+          "n": 122,
+          "term": "Nasa Avon"
+        },
+        {
+          "n": 127,
+          "term": "Din"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        }
+      ]
+    },
+    "33": {
+      "n": 33,
+      "term": "Engrave",
+      "movement": 6,
+      "rootLine": "charath / pasal — Hebrew",
+      "caseStrongs": "H2790 · H6458",
+      "lead": "To engrave is to cut permanently into stone or metal — the ancient guarantee of an unalterable document. The commandments were “graven upon the tables” (Exodus 32:16), precisely because engraving cannot be quietly revised the way ink can. What is cut in stone is meant to outlast the hand that cut it. The imagery is deliberately legal: a code engraved is a code declared beyond amendment. This makes the promise to write the same law on tablets of the heart (2 Corinthians 3:3) all the more pointed — the terms are not softened in the transfer, only relocated; still engraved, now on flesh.",
+      "root": [
+        {
+          "lemma": "charath",
+          "strong": "H2790",
+          "sense": "to engrave, to cut in"
+        },
+        {
+          "lemma": "pasal",
+          "strong": "H6458",
+          "sense": "to hew, to carve out"
+        }
+      ],
+      "courtroomWord": "A permanence term — cutting a document into stone so it cannot be revised.",
+      "itsRole": "A law’s authority depends on its being fixed, and engraving fixes it. What is cut in stone cannot be edited without leaving the cut; it is the ancient seal of an unalterable text. The commandments were engraved for exactly this reason. And when the promise comes to write the law on the heart, the verb is not ‘soften’ but ‘engrave’ — the same fixed terms, relocated to flesh, still beyond amendment.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 32:16",
+          "text": "The writing... graven upon the tables.",
+          "note": "The law cut in stone, unalterable."
+        },
+        {
+          "ref": "Exodus 31:18",
+          "text": "Tables of stone, written with the finger of Elohim.",
+          "note": "The engraved testimony."
+        },
+        {
+          "ref": "Jeremiah 17:1",
+          "text": "Graven upon the table of their heart.",
+          "note": "Engraving as permanence, here of sin."
+        },
+        {
+          "ref": "2 Corinthians 3:3",
+          "text": "Written... in fleshy tables of the heart.",
+          "note": "The same terms relocated, not softened."
+        }
+      ],
+      "plainTerms": [
+        "To engrave is to cut a document permanently into stone — so it can’t be quietly changed. The commandments were engraved for that reason. And the new-covenant promise is to engrave the same law on the heart: relocated to flesh, not softened."
+      ],
+      "bringItHome": [
+        "Ink can be erased; a cut in stone cannot. That is why the commandments were engraved — to declare them beyond amendment. So when Scripture promises the law written on the heart, notice the verb: not softened, engraved. Same fixed terms, new tablet."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "engraves the terms beyond amendment."
+        },
+        {
+          "who": "The tablets",
+          "role": "the medium (stone, then heart)",
+          "does": "the surface the law is cut into."
+        },
+        {
+          "who": "The law",
+          "role": "the document",
+          "does": "fixed by the engraving, relocated but not revised."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 33,
+          "term": "Write"
+        },
+        {
+          "n": 36,
+          "term": "Memorial"
+        },
+        {
+          "n": 37,
+          "term": "Pillar"
+        },
+        {
+          "n": 7,
+          "term": "Witness"
         }
       ]
     }
