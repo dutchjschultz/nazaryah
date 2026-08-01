@@ -1,15 +1,17 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { meta, movements, roadNote, terms, liveTerms, slugify } from '../../../data/legal-lexicon.js';
+import { movements, roadNote, terms, hasWord, hasBreak, slugify } from '../../../data/legal-lexicon.js';
 
-// Client data — only live terms (those with a written word page) are rendered.
-const clientMovements = movements.map((m) => ({ rom: m.rom, name: m.name, desc: m.desc }));
-const clientTerms = liveTerms.map((t) => ({ n: t.n, t: t.term, m: t.movement, g: t.gloss, slug: slugify(t.term) }));
+const byMovement = movements.map((m) => ({ m, rows: terms.filter((t) => t.movement === m.id) }));
+const azTerms = [...terms].sort((a, b) => a.term.localeCompare(b.term));
+const romOf = (mid) => movements[mid - 1].rom;
+const termHref = (t) => `/torah/legal-lexicon/${slugify(t.term)}`;
 ---
 
 <BaseLayout
   title="The Legal Lexicon of Scripture — Torah | Nazaryah"
   description="The whole Bible is a courtroom. These are its words — seven movements from the bench to the final verdict."
+  forceLight
 >
   <div class="ll">
     <div class="wrap">
@@ -30,7 +32,18 @@ const clientTerms = liveTerms.map((t) => ({ n: t.n, t: t.term, m: t.movement, g:
           <h2>The Seven Movements</h2>
           <p class="sub">every word in the lexicon lives in one of these seven</p>
         </div>
-        <div class="steps" id="steps"></div>
+        <div class="steps">
+          {byMovement.map(({ m, rows }) => (
+            <a class="rstep" href={`#m${m.id}`} onclick="ensureMove()">
+              <span class="rn">{m.rom}</span>
+              <span class="rbody">
+                <span class="rname">{m.name}</span>
+                <span class="rdesc">{m.desc}</span>
+                <span class="rct">{rows.length} word{rows.length === 1 ? '' : 's'}</span>
+              </span>
+            </a>
+          ))}
+        </div>
         <p class="roadnote" set:html={roadNote.replace(/\((IV|V|VII)\)/g, '<b>($1)</b>')} />
       </section>
 
@@ -40,11 +53,47 @@ const clientTerms = liveTerms.map((t) => ({ n: t.n, t: t.term, m: t.movement, g:
           <button id="btnAz" onclick="setView('az')">A&ndash;Z</button>
         </div>
         <div class="search"><input id="q" type="text" placeholder="Filter words&hellip;" oninput="applyFilter()"></div>
-        <span class="count" id="count"></span>
+        <span class="count" id="count">{terms.length} terms · growing</span>
       </div>
 
-      <div id="viewMove"></div>
-      <div id="viewAz" class="hidden"></div>
+      <div id="viewMove">
+        {byMovement.map(({ m, rows }) => (
+          <section class="msec" id={`m${m.id}`}>
+            <h3><span class="rom">{m.rom}</span> {m.name}</h3>
+            <p class="msub">{m.desc}</p>
+            <ul class="termrow">
+              {rows.map((t) => (
+                <li data-name={t.term.toLowerCase()}>
+                  <span class="termnum">{t.n}</span>
+                  {hasBreak(t) && <span class="brk-dot" title="At work in the counterfeit court" aria-label="break term">&#9679;</span>}
+                  {hasWord(t.n)
+                    ? <a class="termlink" href={termHref(t)}>{t.term}</a>
+                    : <span class="termplain">{t.term}</span>}
+                  <span class="termgloss">{t.gloss}</span>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+
+      <div id="viewAz" class="hidden">
+        <section class="msec">
+          <ul class="termrow">
+            {azTerms.map((t) => (
+              <li data-name={t.term.toLowerCase()}>
+                <span class="termnum">{t.n}</span>
+                {hasBreak(t) && <span class="brk-dot" title="At work in the counterfeit court" aria-label="break term">&#9679;</span>}
+                {hasWord(t.n)
+                  ? <a class="termlink" href={termHref(t)}>{t.term}</a>
+                  : <span class="termplain">{t.term}</span>}
+                <span class="termgloss">{t.gloss}</span>
+                <a class="mvchip" href={`#m${t.movement}`} onclick="ensureMove()">{romOf(t.movement)}</a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      </div>
 
       <p class="foot">nazaryah.com &nbsp;·&nbsp; The Legal Lexicon of Scripture</p>
 
@@ -52,48 +101,8 @@ const clientTerms = liveTerms.map((t) => ({ n: t.n, t: t.term, m: t.movement, g:
   </div>
 </BaseLayout>
 
-<script is:inline define:vars={{ MOVEMENTS: clientMovements, TERMS: clientTerms }}>
+<script is:inline define:vars={{ TOTAL: terms.length }}>
   const el = (id) => document.getElementById(id);
-  const base = '/torah/legal-lexicon/';
-
-  el('steps').innerHTML = MOVEMENTS.map((mv, i) => {
-    const ct = TERMS.filter((t) => t.m === i + 1).length;
-    return `<a class="rstep" href="#m${i + 1}" onclick="ensureMove()">
-      <span class="rn">${mv.rom}</span>
-      <span class="rbody">
-        <span class="rname">${mv.name}</span>
-        <span class="rdesc">${mv.desc}</span>
-        <span class="rct">${ct} word${ct === 1 ? '' : 's'}</span>
-      </span></a>`;
-  }).join('');
-
-  function rowMove(t) {
-    return `<li data-name="${t.t.toLowerCase()}">
-      <span class="termnum">${t.n}</span>
-      <a class="termlink" href="${base}${t.slug}">${t.t}</a>
-      <span class="termgloss">${t.g}</span></li>`;
-  }
-  function rowAz(t) {
-    return `<li data-name="${t.t.toLowerCase()}">
-      <span class="termnum">${t.n}</span>
-      <a class="termlink" href="${base}${t.slug}">${t.t}</a>
-      <span class="termgloss">${t.g}</span>
-      <a class="mvchip" href="#m${t.m}" onclick="ensureMove()">${MOVEMENTS[t.m - 1].rom}</a></li>`;
-  }
-
-  // Only movements that actually have a live term render a section for now.
-  el('viewMove').innerHTML = MOVEMENTS.map((mv, i) => {
-    const rows = TERMS.filter((t) => t.m === i + 1);
-    if (!rows.length) return '';
-    return `<section class="msec" id="m${i + 1}">
-      <h3><span class="rom">${mv.rom}</span> ${mv.name}</h3>
-      <p class="msub">${mv.desc}</p>
-      <ul class="termrow">${rows.map(rowMove).join('')}</ul></section>`;
-  }).join('');
-
-  const az = [...TERMS].sort((a, b) => a.t.localeCompare(b.t));
-  el('viewAz').innerHTML = `<section class="msec"><ul class="termrow">${az.map(rowAz).join('')}</ul></section>`;
-
   let view = 'move';
   window.setView = function (v) {
     view = v;
@@ -118,17 +127,14 @@ const clientTerms = liveTerms.map((t) => ({ n: t.n, t: t.term, m: t.movement, g:
         s.classList.toggle('hidden', !any);
       });
     }
-    el('count').textContent = q
-      ? `${shown} of ${TERMS.length} shown`
-      : `${TERMS.length} term${TERMS.length === 1 ? '' : 's'} · growing`;
+    el('count').textContent = q ? `${shown} of ${TOTAL} shown` : `${TOTAL} terms · growing`;
   };
-  applyFilter();
 </script>
 
 <style>
   .ll{
     --navy:#1F3864;--bronze:#9A6B2F;--bronze-soft:#b98a4e;
-    --paper:#F3F1EA;--card:#FBFAF6;--ink:#26241f;--rule:#D8D2C4;
+    --paper:#F3F1EA;--card:#FBFAF6;--ink:#26241f;--rule:#D8D2C4;--break:#A32E2E;
     background:var(--paper);color:var(--ink);
     font-family:Georgia,'Times New Roman',serif;line-height:1.6;font-size:18px;
   }
@@ -181,8 +187,10 @@ const clientTerms = liveTerms.map((t) => ({ n: t.n, t: t.term, m: t.movement, g:
   .ll .termrow li{display:flex;align-items:baseline;gap:14px;padding:10px 0;border-top:1px solid var(--rule);}
   .ll .termrow li:first-child{border-top:0;}
   .ll .termnum{color:var(--bronze);font-size:13px;min-width:30px;text-align:right;}
+  .ll .brk-dot{color:var(--break);font-size:11px;line-height:1;margin:0 -6px 0 -4px;}
   .ll .termlink{color:var(--navy);text-decoration:none;font-weight:bold;border-bottom:1px dotted var(--bronze-soft);}
   .ll .termlink:hover{color:var(--bronze);}
+  .ll .termplain{color:var(--navy);font-weight:bold;opacity:.72;}
   .ll .termgloss{color:#6c6659;font-size:14.5px;font-style:italic;}
   .ll .mvchip{font-size:11px;letter-spacing:.06em;color:var(--bronze);border:1px solid var(--rule);border-radius:2px;padding:1px 7px;text-decoration:none;margin-left:auto;white-space:nowrap;}
   .ll .mvchip:hover{border-color:var(--bronze);}

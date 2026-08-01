@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { liveTerms } from '../data/legal-lexicon.js';
+import { liveTerms, terms } from '../data/legal-lexicon.js';
 
 const sections = [
   {
@@ -8,7 +8,7 @@ const sections = [
     href: '/torah/legal-lexicon',
     deck: 'The whole Bible is a courtroom. These are its words.',
     body: 'Seven movements from the bench to the final verdict — every covenant term read as the courtroom word it is. A growing reference; the first entry is live now.',
-    meta: `${liveTerms.length} of 120 words live · growing`,
+    meta: `${liveTerms.length} of ${terms.length} words live · growing`,
   },
 ];
 ---
@@ -16,6 +16,7 @@ const sections = [
 <BaseLayout
   title="Torah - Nazaryah"
   description="The Torah at Nazaryah — the covenant law read on its own terms, beginning with the Legal Lexicon of Scripture."
+  forceLight
 >
   <div class="py-16 md:py-20">
     <div class="container mx-auto px-6">

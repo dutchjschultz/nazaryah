@@ -10,6 +10,7 @@ interface Props {
   image?: string;
   article?: boolean;
   canonical?: string;
+  forceLight?: boolean;
 }
 
 const {
@@ -17,7 +18,8 @@ const {
   description = 'A modern biblical studies platform emphasizing original languages, fresh perspectives, and rich contextual understanding.',
   image = '/og-image.jpg',
   article = false,
-  canonical
+  canonical,
+  forceLight = false
 } = Astro.props;
 
 // canonical override lets a duplicate page (e.g. the Foreign Fire copy of a study)
@@ -41,6 +43,15 @@ const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site || 'htt
         // If no stored preference, default to light mode (no class needed)
       })();
     </script>
+    {forceLight && (
+      <script is:inline>
+        // Fixed-palette section (e.g. the Torah / Legal Lexicon parchment pages):
+        // lock to light, chrome included, so there is never a half-dark clash.
+        document.documentElement.classList.remove('dark');
+        document.documentElement.classList.add('force-light');
+      </script>
+    )}
+    <style is:global>html.force-light .theme-toggle-btn{display:none !important;}</style>
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <meta name="generator" content={Astro.generator} />

@@ -1,6 +1,6 @@
 ---
 import BaseLayout from '../../../layouts/BaseLayout.astro';
-import { words, movements, slugify } from '../../../data/legal-lexicon.js';
+import { words, movements, terms, slugify } from '../../../data/legal-lexicon.js';
 
 export function getStaticPaths() {
   // Only terms with a written word record get a page. As records are added,
@@ -13,6 +13,10 @@ export function getStaticPaths() {
 
 const { w } = Astro.props;
 const mv = movements[w.movement - 1];
+// A term may carry a "break" aspect (counterfeit-court use) in the master; render
+// its "In the Break" callout when present. Recompense has none.
+const term = terms.find((t) => t.n === w.n);
+const brk = (term && term.break) || w.break || null;
 const kick = w.lead.charAt(0);
 const leadRest = w.lead.slice(1);
 
@@ -24,6 +28,7 @@ const liveRelated = (w.relatedInMovement || []).filter((r) => words[String(r.n)]
 <BaseLayout
   title={`${w.term} — The Legal Lexicon of Scripture | Nazaryah`}
   description={w.lead.slice(0, 155)}
+  forceLight
 >
   <div class="ll">
     <div class="wrap">
@@ -111,6 +116,13 @@ const liveRelated = (w.relatedInMovement || []).filter((r) => words[String(r.n)]
               ))}
             </ul>
           </section>
+
+          {brk && (
+            <section class="sec">
+              <span class="eyebrow brk-label">In the Break</span>
+              <div class="brk-body"><p>{brk.note}</p></div>
+            </section>
+          )}
 
           <section class="sec stepper">
             <span class="eyebrow">Where It Sits</span>
@@ -217,6 +229,10 @@ const liveRelated = (w.relatedInMovement || []).filter((r) => words[String(r.n)]
   .ll .related a{color:var(--navy);text-decoration:none;border-bottom:1px dotted var(--bronze-soft);}
 
   .ll .foot{text-align:center;color:#a9a091;font-size:13px;letter-spacing:.04em;margin-top:36px;}
+
+  .ll .brk-label{color:#A32E2E;}
+  .ll .brk-body{border-left:3px solid #A32E2E;padding-left:20px;margin-top:4px;}
+  .ll .brk-body p{margin:0;color:#39352c;}
 
   @media (max-width:620px){
     .ll{font-size:17px;}
