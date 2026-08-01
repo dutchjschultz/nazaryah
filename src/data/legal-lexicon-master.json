@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0801 V10",
+    "version": "0801 V11",
     "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -28,7 +28,8 @@
       "0801 V7: merged 12 word pages (Face–Hupo Nomon: 83,100,99,85,16,64,79,119,81,46,52,139) into words; those terms set page draft-v1.",
       "0801 V8: merged 12 word pages (Husband–Karath: 93,53,51,118,12,96,22,1,2,4,3,132) into words; those terms set page draft-v1. Fixed Engrave mis-key: word record moved 32→33 (n:33); term 32 (Write) page cleared until its page is written.",
       "0801 V9: merged 12 word pages (Keep–Mouth: 48,73,56,23,84,55,97,106,11,36,72,87) into words; those terms set page draft-v1.",
-      "0801 V10: merged 12 word pages (Name–Promise: 38,122,104,141,124,37,115,54,57,77,70,44) into words; those terms set page draft-v1."
+      "0801 V10: merged 12 word pages (Name–Promise: 38,122,104,141,124,37,115,54,57,77,70,44) into words; those terms set page draft-v1.",
+      "0801 V11: merged 12 word pages (Kategoros correction + Qerev–Restitution: 125,126,15,101,29,13,14,113,24,45,25,27) into words; those terms set page draft-v1. 125 Kategoros was skipped in the Keep–Mouth batch (not a break term); added here."
     ]
   },
   "movements": [
@@ -162,19 +163,22 @@
       "n": 13,
       "term": "Redeem",
       "movement": 4,
-      "gloss": "to buy back under kinsman law"
+      "gloss": "to buy back under kinsman law",
+      "page": "draft-v1"
     },
     {
       "n": 14,
       "term": "Redemption",
       "movement": 4,
-      "gloss": "release secured by a price"
+      "gloss": "release secured by a price",
+      "page": "draft-v1"
     },
     {
       "n": 15,
       "term": "Ransom",
       "movement": 4,
-      "gloss": "the price that answers a life"
+      "gloss": "the price that answers a life",
+      "page": "draft-v1"
     },
     {
       "n": 16,
@@ -234,13 +238,15 @@
       "n": 24,
       "term": "Release",
       "movement": 4,
-      "gloss": "the sabbatical cancelling of debt"
+      "gloss": "the sabbatical cancelling of debt",
+      "page": "draft-v1"
     },
     {
       "n": 25,
       "term": "Rest",
       "movement": 5,
-      "gloss": "secured possession of the inheritance"
+      "gloss": "secured possession of the inheritance",
+      "page": "draft-v1"
     },
     {
       "n": 26,
@@ -252,7 +258,8 @@
       "n": 27,
       "term": "Restitution",
       "movement": 4,
-      "gloss": "the wrong repaid in full"
+      "gloss": "the wrong repaid in full",
+      "page": "draft-v1"
     },
     {
       "n": 28,
@@ -265,7 +272,8 @@
       "n": 29,
       "term": "Reconcile",
       "movement": 4,
-      "gloss": "the ledger brought back to zero"
+      "gloss": "the ledger brought back to zero",
+      "page": "draft-v1"
     },
     {
       "n": 30,
@@ -369,7 +377,8 @@
       "n": 45,
       "term": "Remember",
       "movement": 5,
-      "gloss": "to act on a standing obligation"
+      "gloss": "to act on a standing obligation",
+      "page": "draft-v1"
     },
     {
       "n": 46,
@@ -747,7 +756,8 @@
       "n": 101,
       "term": "Reckon",
       "movement": 6,
-      "gloss": "to credit or debit the account"
+      "gloss": "to credit or debit the account",
+      "page": "draft-v1"
     },
     {
       "n": 102,
@@ -822,7 +832,8 @@
       "n": 113,
       "term": "Refuge",
       "movement": 7,
-      "gloss": "legal asylum with due process"
+      "gloss": "legal asylum with due process",
+      "page": "draft-v1"
     },
     {
       "n": 114,
@@ -908,14 +919,16 @@
       "term": "Kategoros",
       "movement": 7,
       "gloss": "the prosecuting party before the bench",
-      "strongs": "G2725"
+      "strongs": "G2725",
+      "page": "draft-v1"
     },
     {
       "n": 126,
       "term": "Qerev / Haqrev",
       "movement": 1,
       "gloss": "escorted presentation before the bench (Dan 7:13)",
-      "strongs": "H7127"
+      "strongs": "H7127",
+      "page": "draft-v1"
     },
     {
       "n": 127,
@@ -8845,6 +8858,1064 @@
         {
           "n": 39,
           "term": "Amen"
+        }
+      ]
+    },
+    "125": {
+      "n": 125,
+      "term": "Kategoros",
+      "movement": 7,
+      "rootLine": "kategoros — Greek",
+      "caseStrongs": "G2725",
+      "lead": "Kategoros is the prosecutor — the party who stands before the bench and presses the charge against the accused. It is the noun behind the verb ‘to accuse’ (kategoreo): the one who lodges the indictment and argues for the defendant’s guilt. Revelation names the great kategoros, “the accuser of our brethren... which accused them before our Elohim day and night” (Revelation 12:10). The prosecutor’s whole function depends on a live charge under a real law; where the account is answered, he has nothing to prosecute. To face a kategoros is to face a formal case pressed against you — and to have an Advocate is to have that case answered.",
+      "root": [
+        {
+          "lemma": "kategoros",
+          "strong": "G2725",
+          "sense": "an accuser, a prosecutor; the party who brings the charge in court"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "kateg-G272x",
+        "siblings": [
+          {
+            "n": 117,
+            "term": "Accuse"
+          }
+        ],
+        "note": "Kategoros (the prosecutor) and kategoreo (to accuse) share the kateg- root: the party, and the act of pressing the charge."
+      },
+      "courtroomWord": "A prosecution term — the party who presses the charge before the bench.",
+      "itsRole": "Every trial has a prosecutor, and the kategoros is it — the party who lodges the charge and argues the defendant’s guilt. The great accuser prosecutes the brethren without rest, but his case stands only while the charge is live and unanswered. Against the covered, the Advocate answers it and the prosecutor is cast down. The kategoros holds no power beyond an open charge.",
+      "proofTexts": [
+        {
+          "ref": "Revelation 12:10",
+          "text": "The accuser of our brethren... accused them before our Elohim day and night.",
+          "note": "The prosecutor pressing the case."
+        },
+        {
+          "ref": "John 8:10",
+          "text": "Where are those thine accusers?",
+          "note": "The prosecutors withdrawn, no case pressed."
+        },
+        {
+          "ref": "Acts 23:30",
+          "text": "Gave commandment to his accusers... to say before thee.",
+          "note": "Accusers bringing their charge to the bench."
+        },
+        {
+          "ref": "Acts 25:16",
+          "text": "Have the accusers face to face, and have licence to answer.",
+          "note": "The prosecutor faced, the defense allowed."
+        }
+      ],
+      "plainTerms": [
+        "A kategoros is a prosecutor — the party who presses the charge against you in court. It is the noun for ‘accuser.’ The great one prosecutes the brethren day and night, but only while the charge is open. Answer the account, and the prosecutor has nothing to press."
+      ],
+      "bringItHome": [
+        "Picture the prosecutor at his table, indictment in hand, arguing your guilt to the judge. That is the kategoros. He works relentlessly — but the moment your Advocate lays a paid receipt on the bench, the charge is answered and the prosecutor is dismissed. His power was only ever a live case."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The kategoros",
+          "role": "the Prosecutor",
+          "does": "presses the charge against the accused."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the Advocate",
+          "does": "answers the charge for the defense."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "before whom the case is lodged, and who dismisses it."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 117,
+          "term": "Accuse"
+        },
+        {
+          "n": 10,
+          "term": "Accuser"
+        },
+        {
+          "n": 134,
+          "term": "Diabolos"
+        },
+        {
+          "n": 115,
+          "term": "Plead"
+        }
+      ]
+    },
+    "126": {
+      "n": 126,
+      "term": "Qerev / Haqrev",
+      "movement": 1,
+      "rootLine": "qerev / haqrev — Aramaic",
+      "caseStrongs": "H7127",
+      "lead": "Qerev is to draw near, to approach; haqrev, its causative, is to be brought near — formally presented before authority. In Daniel’s vision, one “like the Son of man... came to the Ancient of days, and they brought him near before him” (Daniel 7:13). This is not a casual approach but a legal presentation: escorted into the presence of the court to receive what the bench confers. The same root governs the bringing near of offerings and of persons before Yahuah. To be brought near is to be presented before the bench — and in Daniel 7, the One presented receives dominion, glory, and a kingdom from the Ancient of Days.",
+      "root": [
+        {
+          "lemma": "qerev / haqrev",
+          "strong": "H7127",
+          "sense": "to draw near, approach; causative, to be brought near, presented before (Aramaic)"
+        }
+      ],
+      "courtroomWord": "A presentation term — to be formally brought near before the bench.",
+      "itsRole": "To come before the court is to be presented, and haqrev is that presentation — escorted into the presence of authority to receive what it confers. In Daniel 7 the Son of man is brought near before the Ancient of Days and given an everlasting dominion. The bringing-near is legal, not casual: a party presented before the bench, receiving from it. Approach to Yahuah, of offerings and of persons, runs on this same root.",
+      "proofTexts": [
+        {
+          "ref": "Daniel 7:13",
+          "text": "They brought him near before him.",
+          "note": "The Son of man presented before the Ancient of Days."
+        },
+        {
+          "ref": "Daniel 7:14",
+          "text": "There was given him dominion, and glory, and a kingdom.",
+          "note": "What the presented One receives from the bench — given, not seized."
+        },
+        {
+          "ref": "Leviticus 1:2",
+          "text": "Ye shall bring your offering.",
+          "note": "The bringing-near of what is presented before Yahuah."
+        },
+        {
+          "ref": "Numbers 27:5",
+          "text": "Moses brought their cause before Yahuah.",
+          "note": "A matter presented before the court."
+        }
+      ],
+      "plainTerms": [
+        "Qerev means to draw near; haqrev means to be brought near — formally presented before authority. In Daniel 7, the Son of man is ‘brought near’ before the Ancient of Days: escorted into the court to receive dominion. It is a legal presentation, not a casual approach."
+      ],
+      "bringItHome": [
+        "In Daniel 7, the Son of man does not simply walk up — He is ‘brought near,’ presented before the Ancient of Days like a party escorted before the bench. And there He receives dominion, glory, and a kingdom — given by the court, not seized. To be brought near is to be presented to receive."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The Ancient of Days",
+          "role": "the Judge",
+          "does": "before whom the presentation is made, and who confers dominion."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the Son of man",
+          "does": "brought near, presented, and given the kingdom."
+        },
+        {
+          "who": "The attendants",
+          "role": "those who bring near",
+          "does": "who present the party before the bench."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 131,
+          "term": "Attiq Yomin"
+        },
+        {
+          "n": 83,
+          "term": "Face"
+        },
+        {
+          "n": 80,
+          "term": "Stand"
+        },
+        {
+          "n": 129,
+          "term": "Heedayah Sholtan"
+        }
+      ]
+    },
+    "15": {
+      "n": 15,
+      "term": "Ransom",
+      "movement": 4,
+      "rootLine": "kopher / lutron — Hebrew / Greek",
+      "caseStrongs": "H3724 · G3083",
+      "lead": "A ransom is the price that answers a forfeited life — the payment that lawfully releases one whose life is otherwise required. Kopher is the sum accepted in place of a life owed: “then he shall give for the ransom of his life whatsoever is laid upon him” (Exodus 21:30). Lutron, in the Greek, is the price of release: the Son of man came “to give his life a ransom for many” (Matthew 20:28). A ransom presupposes a real debt of life — a claim the law has filed that must be satisfied. It is not a symbol of rescue but the legal price that discharges the claim, releasing the one whose life was forfeit.",
+      "root": [
+        {
+          "lemma": "kopher",
+          "strong": "H3724",
+          "sense": "a ransom, the price of a life"
+        },
+        {
+          "lemma": "lutron",
+          "strong": "G3083",
+          "sense": "the price of release"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "kpr-H372x",
+        "siblings": [
+          {
+            "n": 20,
+            "term": "Atonement"
+          }
+        ],
+        "note": "Kopher (ransom) and kaphar (atonement) share the k-p-r root: the ransom is the price the atonement covers with."
+      },
+      "courtroomWord": "A price term — the payment that lawfully releases a forfeited life.",
+      "itsRole": "When a life is forfeit, the law may accept a ransom in its place — the price that discharges the claim. Kopher is that price; lutron is the release it buys. The ransom presupposes a real debt of life the court has filed. The Son of man gives His life a ransom for many: the price that answers the forfeit and releases the bound. It is a legal transaction, not a picture — the claim satisfied, the captive freed.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 21:30",
+          "text": "Then he shall give for the ransom of his life whatsoever is laid upon him.",
+          "note": "The price accepted for a life owed."
+        },
+        {
+          "ref": "Matthew 20:28",
+          "text": "To give his life a ransom for many.",
+          "note": "The price of release paid."
+        },
+        {
+          "ref": "Job 33:24",
+          "text": "Deliver him from going down to the pit: I have found a ransom.",
+          "note": "The ransom that releases the condemned."
+        },
+        {
+          "ref": "1 Timothy 2:6",
+          "text": "Who gave himself a ransom for all.",
+          "note": "The price paid for release."
+        }
+      ],
+      "plainTerms": [
+        "A ransom is the price that answers a forfeited life — the payment that lawfully releases someone whose life is otherwise required. It assumes a real debt of life the court has filed. The Son of man gave His life ‘a ransom for many’: the price that discharged the claim and freed the bound."
+      ],
+      "bringItHome": [
+        "When a life was forfeit under the law, a ransom — an accepted price — could be paid in its place, and the condemned went free. That is what ‘a ransom for many’ means: not a poetic rescue, but the legal price that answered the claim on forfeited lives. The debt of life was real, and the price satisfied it."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahushua",
+          "role": "the ransom given",
+          "does": "His life the price that releases the forfeited."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "who accepts the ransom and releases the bound."
+        },
+        {
+          "who": "The captives",
+          "role": "the forfeited",
+          "does": "whose lives were required, now released by the price."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 20,
+          "term": "Atonement"
+        },
+        {
+          "n": 13,
+          "term": "Redeem"
+        },
+        {
+          "n": 89,
+          "term": "Blood"
+        },
+        {
+          "n": 14,
+          "term": "Redemption"
+        }
+      ]
+    },
+    "101": {
+      "n": 101,
+      "term": "Reckon",
+      "movement": 6,
+      "rootLine": "chashab / logizomai — Hebrew / Greek",
+      "caseStrongs": "H2803 · G3049",
+      "lead": "To reckon is to credit or debit an account — to enter a value on the ledger, formally and with consequence. “Abraham believed Yahuah, and it was counted unto him for righteousness” (Genesis 15:6) is accounting language: a value entered to his account. Logizomai, the Greek, is a bookkeeping verb — to calculate, to impute, to post to a ledger. To be reckoned righteous is to have righteousness credited to one’s account, entered on the books. And sin can be reckoned or not reckoned (Romans 4:8) — debited or left off the ledger. Reckoning is not sentiment; it is the formal entry that determines the balance.",
+      "root": [
+        {
+          "lemma": "chashab",
+          "strong": "H2803",
+          "sense": "to reckon, account, impute"
+        },
+        {
+          "lemma": "logizomai",
+          "strong": "G3049",
+          "sense": "to calculate, to credit or debit an account"
+        }
+      ],
+      "courtroomWord": "A ledger term — to credit or debit a value to an account.",
+      "itsRole": "The books must be posted, and to reckon is the posting — crediting or debiting a value to a party’s account. Abraham’s belief was reckoned for righteousness: a value entered on his ledger. Sin can be not reckoned: left off the books. Reckoning determines the balance a party stands at before the court. It is formal accounting, not feeling — the entry that fixes what one is credited or charged.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 15:6",
+          "text": "He believed Yahuah; and he counted it to him for righteousness.",
+          "note": "A value credited to the account."
+        },
+        {
+          "ref": "Romans 4:8",
+          "text": "Blessed is the man to whom Yahuah will not impute sin.",
+          "note": "The charge left off the ledger."
+        },
+        {
+          "ref": "Romans 4:4",
+          "text": "The reward... reckoned of debt.",
+          "note": "The accounting of debit and credit."
+        },
+        {
+          "ref": "2 Corinthians 5:19",
+          "text": "Not imputing their trespasses unto them.",
+          "note": "The debt not posted to the account."
+        }
+      ],
+      "plainTerms": [
+        "To reckon is to credit or debit an account — to enter a value on the ledger. Abraham’s belief was ‘reckoned for righteousness’: credited to his books. Sin can be ‘not reckoned’: left off. It is accounting, not sentiment — the formal entry that determines the balance you stand at."
+      ],
+      "bringItHome": [
+        "A bookkeeper ‘reckons’ — posts a credit or a debit to your account, and the balance changes. That is what happened with Abraham: his belief was reckoned to him as righteousness, entered on his ledger. And the mercy is that sin can be ‘not reckoned’ — the charge left off the books entirely."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge, the Accountant",
+          "does": "credits and debits each account."
+        },
+        {
+          "who": "The party",
+          "role": "the account-holder",
+          "does": "whose balance the reckoning fixes."
+        },
+        {
+          "who": "The ledger",
+          "role": "the record",
+          "does": "where the value is entered."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 102,
+          "term": "Account"
+        },
+        {
+          "n": 17,
+          "term": "Debt"
+        },
+        {
+          "n": 105,
+          "term": "Scales"
+        },
+        {
+          "n": 106,
+          "term": "Measure"
+        }
+      ]
+    },
+    "29": {
+      "n": 29,
+      "term": "Reconcile",
+      "movement": 4,
+      "rootLine": "katallasso — Greek",
+      "caseStrongs": "G2644",
+      "lead": "To reconcile is to bring estranged parties back into a settled legal relationship — the ledger brought to zero, the enmity removed, peace restored between them. Katallasso is a relational-legal term: “we were reconciled to Yahuah by the death of his Son” (Romans 5:10). It presupposes a real breach — parties at law, a standing hostility — that is formally ended. Reconciliation is not a warm feeling but a change of legal standing: the two parties, once opposed, brought back into accord, the account settled between them. To be reconciled is to have the dispute resolved and the relationship restored, on the record.",
+      "root": [
+        {
+          "lemma": "katallasso",
+          "strong": "G2644",
+          "sense": "to reconcile, to change from enmity to accord; to settle a relationship"
+        }
+      ],
+      "courtroomWord": "A settlement term — the restoring of estranged parties to accord, the account cleared.",
+      "itsRole": "A breach between parties must be settled, and reconciliation is the settling — the enmity removed, the account brought to zero, the relationship restored. It assumes a real dispute at law. Reconciled to Yahuah means the standing hostility is ended and the parties brought back into accord. It is a change of legal standing, not a mood: the case between them closed, peace on the record.",
+      "proofTexts": [
+        {
+          "ref": "Romans 5:10",
+          "text": "We were reconciled to Yahuah by the death of his Son.",
+          "note": "The breach settled."
+        },
+        {
+          "ref": "2 Corinthians 5:19",
+          "text": "Yahuah was in Messiah, reconciling the world unto himself.",
+          "note": "The parties brought to accord."
+        },
+        {
+          "ref": "2 Corinthians 5:18",
+          "text": "Hath reconciled us to himself... and hath given to us the ministry of reconciliation.",
+          "note": "The settled relationship and its proclamation."
+        },
+        {
+          "ref": "Colossians 1:20",
+          "text": "Having made peace through the blood of his cross.",
+          "note": "Peace restored by the price."
+        }
+      ],
+      "plainTerms": [
+        "To reconcile is to bring estranged parties back into accord — the enmity removed, the account cleared, the relationship restored. It assumes a real breach, parties at law. ‘Reconciled to Yahuah’ means the hostility is ended and the two brought back together, on the record. It is a change of standing, not a feeling."
+      ],
+      "bringItHome": [
+        "When two parties are at law, reconciliation is the settlement — the dispute resolved, the account zeroed, the enmity ended, and the relationship restored. That is what ‘reconciled to Yahuah’ means: not a softened mood, but a real breach formally closed, peace made through the price paid."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the offended party, the Judge",
+          "does": "who reconciles the world to Himself."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the means",
+          "does": "by whose death the breach is settled."
+        },
+        {
+          "who": "The estranged",
+          "role": "the parties",
+          "does": "brought back into accord, the account cleared."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 20,
+          "term": "Atonement"
+        },
+        {
+          "n": 16,
+          "term": "Forgive"
+        },
+        {
+          "n": 26,
+          "term": "Shalom"
+        },
+        {
+          "n": 30,
+          "term": "Restore"
+        }
+      ]
+    },
+    "13": {
+      "n": 13,
+      "term": "Redeem",
+      "movement": 4,
+      "rootLine": "gaal / padah — Hebrew",
+      "caseStrongs": "H1350 · H6299",
+      "lead": "To redeem is to buy back under the kinsman law — to recover a person or property from bondage or forfeiture by paying the price, exercised by the one with the right to do so. The goel, the kinsman-redeemer, had both the right and the duty to buy back a relative’s forfeited land or freedom (Leviticus 25:25, 48-49). Padah is the parallel: to ransom, to release by payment. Redemption is a family-law transaction — the near kinsman stepping in to recover what was lost, at cost to himself. To be redeemed is to be bought back into the family and the inheritance by one who held the legal right of redemption.",
+      "root": [
+        {
+          "lemma": "gaal",
+          "strong": "H1350",
+          "sense": "to redeem, to act as kinsman-redeemer"
+        },
+        {
+          "lemma": "padah",
+          "strong": "H6299",
+          "sense": "to ransom, to release by payment"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "gaal-H1350",
+        "siblings": [
+          {
+            "n": 14,
+            "term": "Redemption"
+          },
+          {
+            "n": 114,
+            "term": "Avenger of blood"
+          }
+        ],
+        "note": "Gaal is the root of both the redeemer (goel) who buys back and the avenger (goel ha-dam) who requires blood — the same kinsman-office, its two duties."
+      },
+      "courtroomWord": "A kinsman-law term — to buy back a forfeited person or estate by the right of redemption.",
+      "itsRole": "Under the kinsman law, what is lost can be recovered by the one with the right to redeem it — the goel, who pays the price to buy back a relative’s land or freedom. Redemption is this family-law act: the near kinsman stepping in, at his own cost, to recover the forfeited. To be redeemed is to be bought back into the family and inheritance by the one holding the legal right — the Redeemer who pays what recovery requires.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 25:25",
+          "text": "Then shall his kinsman come to redeem it.",
+          "note": "The goel buying back forfeited land."
+        },
+        {
+          "ref": "Leviticus 25:48",
+          "text": "One of his brethren may redeem him.",
+          "note": "The kinsman recovering a relative from bondage."
+        },
+        {
+          "ref": "Job 19:25",
+          "text": "I know that my redeemer liveth.",
+          "note": "The goel who recovers."
+        },
+        {
+          "ref": "Galatians 3:13",
+          "text": "Messiah hath redeemed us from the curse of the law.",
+          "note": "The price paid to buy back."
+        }
+      ],
+      "plainTerms": [
+        "To redeem is to buy back — to recover a person or property from bondage or forfeiture by paying the price, done by the one with the right to do it. The goel, the kinsman-redeemer, bought back a relative’s lost land or freedom at his own cost. To be redeemed is to be bought back into the family and the inheritance."
+      ],
+      "bringItHome": [
+        "Under the kinsman law, when a family member lost his land or freedom, the near kinsman — the goel — had the right to step in and buy it back, at cost to himself. That is redemption: not a rescue in general, but a family-law transaction. The Redeemer pays the price to recover His own into the inheritance."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahushua",
+          "role": "the Redeemer, the goel",
+          "does": "the kinsman who buys back the forfeited at His own cost."
+        },
+        {
+          "who": "The forfeited",
+          "role": "the redeemed",
+          "does": "recovered from bondage into the family and inheritance."
+        },
+        {
+          "who": "The price",
+          "role": "the payment",
+          "does": "what redemption lawfully requires."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 14,
+          "term": "Redemption"
+        },
+        {
+          "n": 15,
+          "term": "Ransom"
+        },
+        {
+          "n": 58,
+          "term": "Buy"
+        },
+        {
+          "n": 89,
+          "term": "Blood"
+        }
+      ]
+    },
+    "14": {
+      "n": 14,
+      "term": "Redemption",
+      "movement": 4,
+      "rootLine": "geulah / apolutrosis — Hebrew / Greek",
+      "caseStrongs": "H1353 · G629",
+      "lead": "Redemption is the release secured by a price — the completed act of buying back, and the freedom it obtains. Geulah is the right and the result of the kinsman’s recovery (Leviticus 25:24); apolutrosis, in the Greek, is the release-on-payment, the deliverance a ransom buys (Ephesians 1:7). Redemption is not merely rescue; it is lawful recovery: a price paid, a claim satisfied, a captive released, a title restored. “In whom we have redemption through his blood, the forgiveness of sins” (Ephesians 1:7) names the price and the result together. To have redemption is to hold the secured release — the transaction completed, the freedom obtained by payment.",
+      "root": [
+        {
+          "lemma": "geulah",
+          "strong": "H1353",
+          "sense": "the right or act of redemption"
+        },
+        {
+          "lemma": "apolutrosis",
+          "strong": "G629",
+          "sense": "release secured by a ransom"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "gaal-H1350",
+        "siblings": [
+          {
+            "n": 13,
+            "term": "Redeem"
+          }
+        ],
+        "note": "Geulah is the noun of gaal (to redeem): the act of the kinsman-redeemer and the release it secures."
+      },
+      "courtroomWord": "A release term — the completed buying-back, and the freedom it secures.",
+      "itsRole": "Redemption is the recovery completed — the price paid, the claim satisfied, the release secured. Geulah is the kinsman’s right and result; apolutrosis is the freedom the ransom buys. It is lawful recovery, not mere rescue: a title restored, a captive freed, the transaction on the record. Redemption through his blood names the price and the freedom together. To have redemption is to hold the release, secured and complete.",
+      "proofTexts": [
+        {
+          "ref": "Ephesians 1:7",
+          "text": "In whom we have redemption through his blood, the forgiveness of sins.",
+          "note": "The price and the release named together."
+        },
+        {
+          "ref": "Leviticus 25:24",
+          "text": "Ye shall grant a redemption for the land.",
+          "note": "The right of recovery."
+        },
+        {
+          "ref": "Romans 3:24",
+          "text": "The redemption that is in Messiah Yahushua.",
+          "note": "The secured release."
+        },
+        {
+          "ref": "Hebrews 9:12",
+          "text": "Having obtained eternal redemption for us.",
+          "note": "The recovery completed."
+        }
+      ],
+      "plainTerms": [
+        "Redemption is the release a price secures — the completed buying-back and the freedom it obtains. It is lawful recovery: the price paid, the claim satisfied, the captive freed, the title restored. ‘Redemption through his blood’ names the price and the result together. To have redemption is to hold the secured release."
+      ],
+      "bringItHome": [
+        "Redemption is the whole transaction done: the price paid, the claim answered, and the captive walking free with his title restored. Not a rescue in the abstract, but a lawful recovery completed. ‘Redemption through his blood’ is the price and the freedom in one phrase — the buying-back finished."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahushua",
+          "role": "the price",
+          "does": "by whose blood the redemption is secured."
+        },
+        {
+          "who": "The redeemed",
+          "role": "the released",
+          "does": "recovered, freed, title restored."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "whose claim the redemption satisfies."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 13,
+          "term": "Redeem"
+        },
+        {
+          "n": 15,
+          "term": "Ransom"
+        },
+        {
+          "n": 29,
+          "term": "Reconcile"
+        },
+        {
+          "n": 16,
+          "term": "Forgive"
+        }
+      ]
+    },
+    "113": {
+      "n": 113,
+      "term": "Refuge",
+      "movement": 7,
+      "rootLine": "miqlat — Hebrew",
+      "caseStrongs": "H4733",
+      "lead": "The city of refuge was a place of legal asylum with due process — a provision that protected the accused killer until his case could be tried. “Ye shall appoint you cities of refuge... that the slayer may flee thither, which killeth any person at unawares” (Numbers 35:11). The refuge did not excuse guilt; it guaranteed a trial: the manslayer was safe there from the avenger of blood “until he stand before the congregation in judgment” (Numbers 35:12). It is one of Torah’s due-process safeguards — protection from summary vengeance, a fair hearing before any execution. To flee to the refuge was to claim legal asylum, the right to be tried before being condemned.",
+      "root": [
+        {
+          "lemma": "miqlat",
+          "strong": "H4733",
+          "sense": "a refuge, asylum; the city that protected the accused until trial"
+        }
+      ],
+      "courtroomWord": "An asylum term — legal protection of the accused until his case is tried.",
+      "itsRole": "The accused killer needed protection from summary vengeance, and the refuge provided it — asylum until trial. It did not excuse guilt; it guaranteed due process: safe from the avenger until judged by the congregation. The refuge is Torah’s safeguard against vengeance outrunning verdict — a fair hearing before any execution. To reach it was to claim the right to be tried, not lynched.",
+      "proofTexts": [
+        {
+          "ref": "Numbers 35:11",
+          "text": "Cities of refuge... that the slayer may flee thither.",
+          "note": "The place of asylum."
+        },
+        {
+          "ref": "Numbers 35:12",
+          "text": "A refuge from the avenger; that the manslayer die not, until he stand before the congregation in judgment.",
+          "note": "Asylum until trial."
+        },
+        {
+          "ref": "Deuteronomy 19:3",
+          "text": "Prepare thee a way... that every slayer may flee thither.",
+          "note": "The refuge made accessible."
+        },
+        {
+          "ref": "Joshua 20:6",
+          "text": "Until he stand before the congregation for judgment.",
+          "note": "Due process guaranteed."
+        }
+      ],
+      "plainTerms": [
+        "The city of refuge was legal asylum — it protected the accused killer from the avenger of blood until his case could be tried. It did not excuse guilt; it guaranteed a fair trial before any execution. It is one of Torah’s due-process safeguards: a hearing before condemnation."
+      ],
+      "bringItHome": [
+        "A man who killed by accident could be run down by the victim’s kinsman before anyone judged whether it was murder or mishap. The city of refuge stopped that: flee there, and you were safe until the congregation tried your case. Not an escape from justice — a guarantee of it: trial before vengeance."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The manslayer",
+          "role": "the accused",
+          "does": "flees to the refuge, claiming asylum until trial."
+        },
+        {
+          "who": "The avenger of blood",
+          "role": "the executor",
+          "does": "held off until judgment is rendered."
+        },
+        {
+          "who": "The congregation",
+          "role": "the court",
+          "does": "which tries the case before any execution."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "provides the refuge as due process."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 114,
+          "term": "Avenger of blood"
+        },
+        {
+          "n": 118,
+          "term": "Innocent"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        },
+        {
+          "n": 116,
+          "term": "Cause"
+        }
+      ]
+    },
+    "24": {
+      "n": 24,
+      "term": "Release",
+      "movement": 4,
+      "rootLine": "shemittah — Hebrew",
+      "caseStrongs": "H8059",
+      "lead": "Release is the sabbatical cancelling of debt — a scheduled legal discharge, enacted by statute. Every seventh year was ‘the Lord’s release’: “every creditor that lendeth ought unto his neighbour shall release it... because it is called Yahuah’s release” (Deuteronomy 15:1-2). Shemittah is a letting-drop: the debt is not merely paused but released, the obligation discharged by law on a fixed cycle. It is the same release-logic that flowers into the Jubilee. Release is not the creditor’s whim but the law’s provision — a built-in mechanism that keeps debt from becoming permanent bondage, the ledger cleared by statute at the appointed time.",
+      "root": [
+        {
+          "lemma": "shemittah",
+          "strong": "H8059",
+          "sense": "a release, a letting-drop; the sabbatical remission of debt"
+        }
+      ],
+      "courtroomWord": "A discharge term — the scheduled, statutory cancelling of debt.",
+      "itsRole": "Debt could become permanent bondage, and the release prevents it — a scheduled discharge, enacted by law every seventh year. Shemittah lets the debt drop: the obligation cancelled, not merely paused, on a fixed cycle. It is the law’s own mechanism, Yahuah’s release, flowering into the Jubilee. Release is statutory mercy: the ledger cleared at the appointed time, so no man is crushed under a debt forever.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 15:1",
+          "text": "At the end of every seven years thou shalt make a release.",
+          "note": "The scheduled discharge."
+        },
+        {
+          "ref": "Deuteronomy 15:2",
+          "text": "Every creditor... shall release it... it is called Yahuah’s release.",
+          "note": "The debt cancelled by statute."
+        },
+        {
+          "ref": "Deuteronomy 15:9",
+          "text": "The year of release, is at hand.",
+          "note": "The fixed cycle of remission."
+        },
+        {
+          "ref": "Leviticus 25:4",
+          "text": "In the seventh year shall be a sabbath of rest unto the land.",
+          "note": "The sabbatical release of the land."
+        }
+      ],
+      "plainTerms": [
+        "Release is the seventh-year cancelling of debt — a scheduled legal discharge, ‘Yahuah’s release.’ The debt is not paused but dropped: the obligation cancelled by statute on a fixed cycle. It is the law’s own way of keeping debt from becoming permanent bondage — the ledger cleared at the appointed time."
+      ],
+      "bringItHome": [
+        "Every seventh year, the law simply cancelled debts — ‘Yahuah’s release.’ Not the creditor being generous, but the statute letting the debt drop. It kept a bad year from turning into lifelong bondage. And it grows into the Jubilee: release built into the calendar, mercy written as law."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "decrees the release on the fixed cycle."
+        },
+        {
+          "who": "The creditor",
+          "role": "the party bound to release",
+          "does": "who lets the debt drop by statute."
+        },
+        {
+          "who": "The debtor",
+          "role": "the released",
+          "does": "whose obligation is cancelled at the appointed time."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 22,
+          "term": "Jubilee"
+        },
+        {
+          "n": 23,
+          "term": "Liberty"
+        },
+        {
+          "n": 13,
+          "term": "Redeem"
+        },
+        {
+          "n": 16,
+          "term": "Forgive"
+        }
+      ]
+    },
+    "45": {
+      "n": 45,
+      "term": "Remember",
+      "movement": 5,
+      "rootLine": "zakar — Hebrew",
+      "caseStrongs": "H2142",
+      "lead": "To remember, in Torah, is to act on a standing obligation — not merely to recall a fact, but to bring it to mind in order to do it. “Remember the sabbath day, to keep it holy” (Exodus 20:8) commands action, not nostalgia: to remember is to observe. When Yahuah ‘remembers’ His covenant (Exodus 2:24), He acts on it — He moves to fulfill His obligations. Zakar joins memory to deed. To remember the commandments is to carry them out; to forget is to neglect the duty. Remembering is covenant faithfulness in motion — calling the obligation to mind precisely so that it is kept.",
+      "root": [
+        {
+          "lemma": "zakar",
+          "strong": "H2142",
+          "sense": "to remember, to bring to mind; to act upon a standing obligation"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "zakar-H2142",
+        "siblings": [
+          {
+            "n": 36,
+            "term": "Memorial"
+          }
+        ],
+        "note": "Zikaron (the memorial) is from zakar (to remember): the record set so a matter is remembered, and the remembering that acts on it."
+      },
+      "courtroomWord": "An obligation term — to bring a duty to mind in order to perform it.",
+      "itsRole": "In covenant, to remember is to act — to call an obligation to mind so that it is kept. ‘Remember the sabbath’ commands observance, not recollection. When Yahuah remembers His covenant, He moves to fulfill it. Zakar binds memory to deed: remembering the commandments is doing them; forgetting is neglect. It is covenant faithfulness in motion, the duty brought to mind precisely to be performed.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 20:8",
+          "text": "Remember the sabbath day, to keep it holy.",
+          "note": "Remembering as observing."
+        },
+        {
+          "ref": "Exodus 2:24",
+          "text": "Elohim... remembered his covenant.",
+          "note": "Remembering that moves to act."
+        },
+        {
+          "ref": "Numbers 15:39",
+          "text": "That ye may... remember all the commandments of Yahuah, and do them.",
+          "note": "Memory joined to deed."
+        },
+        {
+          "ref": "Deuteronomy 8:2",
+          "text": "Thou shalt remember all the way which Yahuah... led thee.",
+          "note": "The standing obligation kept in mind."
+        }
+      ],
+      "plainTerms": [
+        "To remember, in Torah, is to act on an obligation — not just recall a fact. ‘Remember the sabbath’ means keep it, not merely think of it. When Yahuah ‘remembers’ His covenant, He moves to fulfill it. Remembering joins memory to deed: to remember the commandments is to do them."
+      ],
+      "bringItHome": [
+        "‘Remember the sabbath’ is not asking you to recall that it exists — it is commanding you to keep it. That is how Torah uses ‘remember’: memory that acts. When Yahuah remembered His covenant with Israel, He did not merely think of it — He moved to deliver them. Remembering is obligation in motion."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the covenant-keeper",
+          "does": "who remembers His covenant and acts on it."
+        },
+        {
+          "who": "The believer",
+          "role": "the obligated",
+          "does": "who remembers the commandments in order to do them."
+        },
+        {
+          "who": "The commandment",
+          "role": "the obligation",
+          "does": "brought to mind precisely to be kept."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 48,
+          "term": "Keep"
+        },
+        {
+          "n": 47,
+          "term": "Walk"
+        },
+        {
+          "n": 46,
+          "term": "Hear"
+        },
+        {
+          "n": 100,
+          "term": "Faithful"
+        }
+      ]
+    },
+    "25": {
+      "n": 25,
+      "term": "Rest",
+      "movement": 5,
+      "rootLine": "nuach / menuchah — Hebrew",
+      "caseStrongs": "H5117 · H4496",
+      "lead": "Rest, in Torah, is secured possession of the inheritance — the settled enjoyment of what was promised, not mere cessation of labor. “Yahuah your Elohim... hath given you rest, and hath given you this land” (Joshua 1:13) joins rest to the secured estate: rest is the settled state of a people safe in their possession. Menuchah is a resting-place, a settled inheritance. This is why Hebrews can speak of a rest that “remaineth” (Hebrews 4:9) — an inheritance yet to be entered. The sabbath rest points to it: not idleness, but the secured enjoyment of the promise, the estate possessed and at peace.",
+      "root": [
+        {
+          "lemma": "nuach",
+          "strong": "H5117",
+          "sense": "to rest, to settle"
+        },
+        {
+          "lemma": "menuchah",
+          "strong": "H4496",
+          "sense": "a resting-place, a settled inheritance"
+        }
+      ],
+      "courtroomWord": "A possession term — the settled, secured enjoyment of the inheritance.",
+      "itsRole": "Rest is not the mere stopping of work but the settled possession of the estate — a people safe and at peace in their inheritance. Joshua joins rest to the land given; menuchah is the resting-place secured. The sabbath enacts it weekly; Hebrews points to a rest that remaineth — an inheritance still to be entered. To enter rest is to come into settled possession of the promise, the estate held and at peace.",
+      "proofTexts": [
+        {
+          "ref": "Joshua 1:13",
+          "text": "Yahuah your Elohim hath given you rest, and hath given you this land.",
+          "note": "Rest joined to the secured estate."
+        },
+        {
+          "ref": "Deuteronomy 12:9",
+          "text": "Ye are not as yet come to the rest and to the inheritance.",
+          "note": "Rest as the inheritance to be entered."
+        },
+        {
+          "ref": "Hebrews 4:9",
+          "text": "There remaineth therefore a rest to the people of Elohim.",
+          "note": "The inheritance yet ahead."
+        },
+        {
+          "ref": "Exodus 20:11",
+          "text": "And rested the seventh day.",
+          "note": "The sabbath rest that points to it."
+        }
+      ],
+      "plainTerms": [
+        "Rest, in Torah, is the secured possession of the inheritance — a people settled and at peace in what was promised — not just a break from work. Joshua ties rest to the land given. Hebrews speaks of a rest that ‘remaineth’: an inheritance still to be entered. The sabbath points to it: the estate possessed and at peace."
+      ],
+      "bringItHome": [
+        "When Israel came into ‘rest,’ it did not mean they stopped working — it meant they were settled, safe, in possession of the land promised them. That is rest: the inheritance secured and at peace. The sabbath rehearses it weekly, and Hebrews says a fuller rest still ‘remaineth’ — an estate yet to be entered."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Giver",
+          "does": "who gives rest with the inheritance."
+        },
+        {
+          "who": "The people",
+          "role": "the possessors",
+          "does": "settled and at peace in the estate."
+        },
+        {
+          "who": "The rest",
+          "role": "the settled possession",
+          "does": "the secured enjoyment of the promise."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 21,
+          "term": "Sabbath"
+        },
+        {
+          "n": 48,
+          "term": "Keep"
+        },
+        {
+          "n": 47,
+          "term": "Walk"
+        },
+        {
+          "n": 45,
+          "term": "Remember"
+        }
+      ]
+    },
+    "27": {
+      "n": 27,
+      "term": "Restitution",
+      "movement": 4,
+      "rootLine": "shalam — Hebrew",
+      "caseStrongs": "H7999",
+      "lead": "Restitution is the wrong repaid in full — the legal restoration of what was taken, often with a penalty added. Torah requires it precisely: the thief “shall restore double” or fourfold, and “if he have nothing, then he shall be sold for his theft” (Exodus 22:1-3). Shalam, the root, means to make whole, to complete, to pay in full — the same root as shalom (peace) and recompense. Restitution makes the injured party whole: the loss restored, the balance settled, and more. It is not mere apology but repayment — the concrete squaring of an account, the wrong undone by paying back what it cost, so that peace (shalom) is restored between the parties.",
+      "root": [
+        {
+          "lemma": "shalam",
+          "strong": "H7999",
+          "sense": "to make whole, to complete, to repay in full; to make restitution"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "shalam-H7999",
+        "siblings": [
+          {
+            "n": 28,
+            "term": "Recompense"
+          },
+          {
+            "n": 26,
+            "term": "Shalom"
+          }
+        ],
+        "note": "All from shalam: the wrong repaid (Restitution), the account settled (Recompense), and the peace that results (Shalom). One root, three faces."
+      },
+      "courtroomWord": "A repayment term — the full restoration of a loss, with penalty, that makes the injured whole.",
+      "itsRole": "A wrong leaves a party out of pocket, and restitution repays it — in full, often with a penalty added, so the injured is made whole. Shalam means to complete, to pay in full: restitution squares the account concretely, not with apology but with repayment. And its root is shalom: the loss restored and the penalty paid, peace is restored between the parties. Restitution is the making-whole the law requires.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 22:1",
+          "text": "He shall restore five oxen for an ox, and four sheep for a sheep.",
+          "note": "The wrong repaid, with penalty."
+        },
+        {
+          "ref": "Exodus 22:3",
+          "text": "He should make full restitution.",
+          "note": "The loss restored in full."
+        },
+        {
+          "ref": "Leviticus 6:5",
+          "text": "He shall... restore it in the principal, and shall add the fifth part more.",
+          "note": "Repayment plus a penalty."
+        },
+        {
+          "ref": "Luke 19:8",
+          "text": "If I have taken any thing from any man... I restore him fourfold.",
+          "note": "Restitution made concrete."
+        }
+      ],
+      "plainTerms": [
+        "Restitution is repaying a wrong in full — restoring what was taken, often with a penalty added, so the injured party is made whole. Its root, shalam, means to make whole, and it is the same root as shalom (peace): the loss restored and the balance settled, peace is restored between the parties. It is repayment, not apology."
+      ],
+      "bringItHome": [
+        "A thief did not just say sorry — he paid back what he took, and then some: double, fourfold, or fivefold. That is restitution: the wrong undone by concrete repayment, the injured made whole. And its root is peace — shalom — because when the account is squared in full, the breach between the parties is healed."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The wrongdoer",
+          "role": "the debtor",
+          "does": "repays the loss in full, with penalty."
+        },
+        {
+          "who": "The injured party",
+          "role": "the creditor",
+          "does": "made whole by the restitution."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "who requires the wrong repaid so peace is restored."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 28,
+          "term": "Recompense"
+        },
+        {
+          "n": 26,
+          "term": "Shalom"
+        },
+        {
+          "n": 29,
+          "term": "Reconcile"
+        },
+        {
+          "n": 30,
+          "term": "Restore"
         }
       ]
     }
