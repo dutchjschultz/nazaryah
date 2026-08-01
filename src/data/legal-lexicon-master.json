@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0801 V5",
+    "version": "0801 V6",
     "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -23,7 +23,8 @@
       "0731 V2: break design LOCKED. Added red break flags to Diabolos (134), Parad (136), and the balal side of Badal/Balal (135). Seven break terms total.",
       "0731 V3: merged 7 break-term word pages (129,130,133,134,135,136,142) into words; those terms set page draft-v1. Break callouts render from the term break note, not duplicated in the record.",
       "0801 V4: merged 12 word pages (Account–Betroth: 102,117,10,61,94,9,39,71,20,131,114,91) into words; those terms set page draft-v1.",
-      "0801 V5: merged 12 word pages (Birthright–Confess: 60,89,31,59,92,58,116,98,137,67,5,49) into words; those terms set page draft-v1."
+      "0801 V5: merged 12 word pages (Birthright–Confess: 60,89,31,59,92,58,116,98,137,67,5,49) into words; those terms set page draft-v1.",
+      "0801 V6: merged 12 word pages (Covenant–Eretz Gezerah: 18,76,90,41,17,50,127,95,138,78,32,123) into words; those terms set page draft-v1."
     ]
   },
   "movements": [
@@ -175,13 +176,15 @@
       "n": 17,
       "term": "Debt",
       "movement": 6,
-      "gloss": "the obligation owed on the books"
+      "gloss": "the obligation owed on the books",
+      "page": "draft-v1"
     },
     {
       "n": 18,
       "term": "Covenant",
       "movement": 2,
-      "gloss": "the binding treaty itself"
+      "gloss": "the binding treaty itself",
+      "page": "draft-v1"
     },
     {
       "n": 19,
@@ -268,7 +271,8 @@
       "n": 32,
       "term": "Write",
       "movement": 6,
-      "gloss": "to make a matter binding"
+      "gloss": "to make a matter binding",
+      "page": "draft-v1"
     },
     {
       "n": 33,
@@ -323,7 +327,8 @@
       "n": 41,
       "term": "Cut",
       "movement": 2,
-      "gloss": "to ratify a covenant in blood"
+      "gloss": "to ratify a covenant in blood",
+      "page": "draft-v1"
     },
     {
       "n": 42,
@@ -378,7 +383,8 @@
       "n": 50,
       "term": "Deny",
       "movement": 5,
-      "gloss": "legal repudiation of a bond"
+      "gloss": "legal repudiation of a bond",
+      "page": "draft-v1"
     },
     {
       "n": 51,
@@ -540,7 +546,8 @@
       "n": 76,
       "term": "Crown",
       "movement": 1,
-      "gloss": "sovereignty, and the prize adjudged"
+      "gloss": "sovereignty, and the prize adjudged",
+      "page": "draft-v1"
     },
     {
       "n": 77,
@@ -552,7 +559,8 @@
       "n": 78,
       "term": "Elder",
       "movement": 1,
-      "gloss": "magistrate seated in the gate"
+      "gloss": "magistrate seated in the gate",
+      "page": "draft-v1"
     },
     {
       "n": 79,
@@ -625,7 +633,8 @@
       "n": 90,
       "term": "Cry",
       "movement": 6,
-      "gloss": "the appeal lodged with the court"
+      "gloss": "the appeal lodged with the court",
+      "page": "draft-v1"
     },
     {
       "n": 91,
@@ -658,7 +667,8 @@
       "n": 95,
       "term": "Divorce",
       "movement": 2,
-      "gloss": "the legal dissolution of the covenant"
+      "gloss": "the legal dissolution of the covenant",
+      "page": "draft-v1"
     },
     {
       "n": 96,
@@ -834,7 +844,8 @@
       "term": "Eretz Gezerah",
       "movement": 7,
       "gloss": "the decreed land of cutting-off (Lev 16:22)",
-      "strongs": "H776+H1509"
+      "strongs": "H776+H1509",
+      "page": "draft-v1"
     },
     {
       "n": 124,
@@ -862,7 +873,8 @@
       "term": "Din",
       "movement": 7,
       "gloss": "the court session and its verdict",
-      "strongs": "H1780"
+      "strongs": "H1780",
+      "page": "draft-v1"
     },
     {
       "n": 128,
@@ -966,7 +978,8 @@
       "term": "Dogma",
       "movement": 2,
       "gloss": "an enacted decree with legal force",
-      "strongs": "G1378"
+      "strongs": "G1378",
+      "page": "draft-v1"
     },
     {
       "n": 139,
@@ -1239,6 +1252,166 @@
         {
           "n": 9,
           "term": "Advocate"
+        }
+      ]
+    },
+    "17": {
+      "n": 17,
+      "term": "Debt",
+      "movement": 6,
+      "rootLine": "opheilema — Greek",
+      "caseStrongs": "G3783",
+      "lead": "“Forgive us our debts” (Matthew 6:12) is bookkeeping, not metaphor. An opheilema is a binding obligation owed and enforceable at law — the exact word a creditor would use for a sum on the books. The model prayer casts sin as an outstanding balance and forgiveness as its cancellation. A debt does not appear from nowhere; it is incurred when an obligation fixed by agreement goes unmet. Which means every prayer for forgiveness quietly concedes the standard: one cannot owe a debt under a law that does not exist, and one cannot ask the cancellation of a debt one denies was ever owed.",
+      "root": [
+        {
+          "lemma": "opheilema",
+          "strong": "G3783",
+          "sense": "that which is owed, a debt; a legal obligation"
+        }
+      ],
+      "courtroomWord": "A ledger term — a binding obligation owed and enforceable, entered on the books.",
+      "itsRole": "A debt is a balance the law recognizes and a creditor can enforce. Sin, in the prayer’s own accounting, is such a balance — incurred by breaking an obligation, cancelled only by a lawful discharge. The whole logic of forgiveness runs on it: there must be a real debt, under a real standard, for its cancellation to mean anything. This is why the certificate of debt could be cancelled while the law stood.",
+      "proofTexts": [
+        {
+          "ref": "Matthew 6:12",
+          "text": "Forgive us our debts, as we forgive our debtors.",
+          "note": "Sin as an outstanding balance."
+        },
+        {
+          "ref": "Matthew 18:27",
+          "text": "The lord... forgave him the debt.",
+          "note": "The balance cancelled by the creditor."
+        },
+        {
+          "ref": "Romans 4:4",
+          "text": "The reward... reckoned... of debt.",
+          "note": "The accounting language of debt and credit."
+        },
+        {
+          "ref": "Luke 7:42",
+          "text": "He frankly forgave them both.",
+          "note": "Debts discharged by the creditor."
+        }
+      ],
+      "plainTerms": [
+        "A debt is a real balance you owe that the law can enforce. The Lord’s Prayer treats sin as exactly that — a debt to be cancelled. And you cannot owe a debt where there is no law, or ask forgiveness for one you say was never owed."
+      ],
+      "bringItHome": [
+        "‘Forgive us our debts’ is ledger language, not poetry. Sin runs up a balance on the books, and forgiveness is the creditor striking it off. But a struck debt proves there was a debt — and a debt proves there was a standard that fixed what was owed."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The debtor",
+          "role": "the party owing",
+          "does": "carries the balance incurred by breaking the obligation."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Creditor and Judge",
+          "does": "holds the debt, and may cancel it."
+        },
+        {
+          "who": "The debt",
+          "role": "the balance",
+          "does": "the obligation entered on the books."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 101,
+          "term": "Reckon"
+        },
+        {
+          "n": 102,
+          "term": "Account"
+        },
+        {
+          "n": 106,
+          "term": "Measure"
+        },
+        {
+          "n": 105,
+          "term": "Scales"
+        }
+      ]
+    },
+    "18": {
+      "n": 18,
+      "term": "Covenant",
+      "movement": 2,
+      "rootLine": "berith — Hebrew",
+      "caseStrongs": "H1285",
+      "lead": "The master legal instrument of Scripture, and the word the modern church most sentimentalizes into ‘relationship.’ A berith is a binding treaty between a sovereign and a people, complete with named parties, stipulations, witnesses, sworn ratification, and sanctions for breach — the ancient suzerain treaty in its bones. Every ‘spiritual’ bond with Yahuah is, underneath, a ratified contract with terms. This is why the Scriptures divide into an old and a renewed covenant rather than an old and a new mood. To be in covenant is not merely to be loved; it is to be legally bound, with everything that binding entails.",
+      "root": [
+        {
+          "lemma": "berith",
+          "strong": "H1285",
+          "sense": "a covenant, treaty, binding compact; cut and ratified between parties"
+        }
+      ],
+      "courtroomWord": "The master instrument — the binding treaty that governs the whole relationship.",
+      "itsRole": "A covenant is the legal frame everything else hangs on: parties, terms, witnesses, ratification, sanctions. It is not a warm bond but a contract, and every other legal word in Scripture operates inside it. To enter covenant is to accept its terms and come under its sanctions; to be in Messiah is to stand within a ratified compact, not merely to feel near.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 24:8",
+          "text": "Behold the blood of the covenant, which Yahuah hath made with you.",
+          "note": "The treaty ratified in blood."
+        },
+        {
+          "ref": "Genesis 15:18",
+          "text": "In the same day Yahuah made a covenant with Abram.",
+          "note": "The covenant cut between the parties."
+        },
+        {
+          "ref": "Jeremiah 31:31",
+          "text": "I will make a new covenant with the house of Israel.",
+          "note": "A renewed treaty, same parties."
+        },
+        {
+          "ref": "Hebrews 9:17",
+          "text": "A testament is of force after men are dead.",
+          "note": "The covenant’s binding force."
+        }
+      ],
+      "plainTerms": [
+        "A covenant is a binding treaty — named parties, terms, witnesses, and penalties for breach. It is the master contract every other legal word in Scripture works inside. To be in covenant is to be legally bound, not just fondly attached."
+      ],
+      "bringItHome": [
+        "A covenant is not a friendship; it is a signed treaty with clauses and consequences. When Yahuah enters covenant with a people, He is binding Himself and them by terms — witnessed, ratified, enforceable. Everything else in the courtroom — the charges, the pardons, the verdicts — happens inside that contract."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Sovereign",
+          "does": "sets the terms and binds Himself to them."
+        },
+        {
+          "who": "The people",
+          "role": "the covenant party",
+          "does": "bound to the stipulations and sanctions."
+        },
+        {
+          "who": "The covenant",
+          "role": "the instrument",
+          "does": "the binding treaty that frames all the rest."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 41,
+          "term": "Cut"
+        },
+        {
+          "n": 8,
+          "term": "Testimony"
+        },
+        {
+          "n": 42,
+          "term": "Swear"
+        },
+        {
+          "n": 39,
+          "term": "Amen"
         }
       ]
     },
@@ -1528,6 +1701,91 @@
         }
       ]
     },
+    "32": {
+      "n": 32,
+      "term": "Engrave",
+      "movement": 6,
+      "rootLine": "charath / pasal — Hebrew",
+      "caseStrongs": "H2790 · H6458",
+      "lead": "To engrave is to cut permanently into stone or metal — the ancient guarantee of an unalterable document. The commandments were “graven upon the tables” (Exodus 32:16), precisely because engraving cannot be quietly revised the way ink can. What is cut in stone is meant to outlast the hand that cut it. The imagery is deliberately legal: a code engraved is a code declared beyond amendment. This makes the promise to write the same law on tablets of the heart (2 Corinthians 3:3) all the more pointed — the terms are not softened in the transfer, only relocated; still engraved, now on flesh.",
+      "root": [
+        {
+          "lemma": "charath",
+          "strong": "H2790",
+          "sense": "to engrave, to cut in"
+        },
+        {
+          "lemma": "pasal",
+          "strong": "H6458",
+          "sense": "to hew, to carve out"
+        }
+      ],
+      "courtroomWord": "A permanence term — cutting a document into stone so it cannot be revised.",
+      "itsRole": "A law’s authority depends on its being fixed, and engraving fixes it. What is cut in stone cannot be edited without leaving the cut; it is the ancient seal of an unalterable text. The commandments were engraved for exactly this reason. And when the promise comes to write the law on the heart, the verb is not ‘soften’ but ‘engrave’ — the same fixed terms, relocated to flesh, still beyond amendment.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 32:16",
+          "text": "The writing... graven upon the tables.",
+          "note": "The law cut in stone, unalterable."
+        },
+        {
+          "ref": "Exodus 31:18",
+          "text": "Tables of stone, written with the finger of Elohim.",
+          "note": "The engraved testimony."
+        },
+        {
+          "ref": "Jeremiah 17:1",
+          "text": "Graven upon the table of their heart.",
+          "note": "Engraving as permanence, here of sin."
+        },
+        {
+          "ref": "2 Corinthians 3:3",
+          "text": "Written... in fleshy tables of the heart.",
+          "note": "The same terms relocated, not softened."
+        }
+      ],
+      "plainTerms": [
+        "To engrave is to cut a document permanently into stone — so it can’t be quietly changed. The commandments were engraved for that reason. And the new-covenant promise is to engrave the same law on the heart: relocated to flesh, not softened."
+      ],
+      "bringItHome": [
+        "Ink can be erased; a cut in stone cannot. That is why the commandments were engraved — to declare them beyond amendment. So when Scripture promises the law written on the heart, notice the verb: not softened, engraved. Same fixed terms, new tablet."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "engraves the terms beyond amendment."
+        },
+        {
+          "who": "The tablets",
+          "role": "the medium (stone, then heart)",
+          "does": "the surface the law is cut into."
+        },
+        {
+          "who": "The law",
+          "role": "the document",
+          "does": "fixed by the engraving, relocated but not revised."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 33,
+          "term": "Write"
+        },
+        {
+          "n": 36,
+          "term": "Memorial"
+        },
+        {
+          "n": 37,
+          "term": "Pillar"
+        },
+        {
+          "n": 7,
+          "term": "Witness"
+        }
+      ]
+    },
     "39": {
       "n": 39,
       "term": "Amen",
@@ -1605,6 +1863,100 @@
         {
           "n": 40,
           "term": "Truth"
+        }
+      ]
+    },
+    "41": {
+      "n": 41,
+      "term": "Cut",
+      "movement": 2,
+      "rootLine": "karat — Hebrew",
+      "caseStrongs": "H3772",
+      "lead": "In Hebrew, covenants are not ‘made’ — they are cut. To karat a covenant is to ratify it by cutting animals in two and passing between the pieces, invoking the same fate upon whoever breaks the terms (Genesis 15:10, 17-18; Jeremiah 34:18). The verb is the act of legal ratification, a self-maledictory oath enacted in blood: let it be done to me as to these beasts if I break faith. When Yahuah alone passes between the pieces before Abraham, He binds Himself under that sanction. Every covenant in Scripture is, at its root, something cut — sworn under penalty, not merely agreed.",
+      "root": [
+        {
+          "lemma": "karat",
+          "strong": "H3772",
+          "sense": "to cut; to cut a covenant by passing between severed pieces; also to cut off"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "karat-H3772",
+        "siblings": [
+          {
+            "n": 132,
+            "term": "Karath"
+          },
+          {
+            "n": 95,
+            "term": "Divorce"
+          }
+        ],
+        "note": "One root, three cuttings: the covenant cut (karat), the sinner cut off (karet, Karath), and the marriage bond cut (kriythuth, Divorce)."
+      },
+      "courtroomWord": "A ratification term — the cutting that binds a covenant under a self-maledictory oath.",
+      "itsRole": "A covenant is enacted by cutting — the parties pass between severed pieces, binding themselves to the fate of the animals if they break the terms. This is the most solemn form of legal ratification: an oath in blood. That Yahuah alone passes between the pieces in Genesis 15 means He takes the covenant’s sanction on Himself. To cut a covenant is to bind it beyond retraction.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 15:18",
+          "text": "In that day Yahuah made a covenant with Abram.",
+          "note": "The covenant cut."
+        },
+        {
+          "ref": "Jeremiah 34:18",
+          "text": "Which cut the calf in twain, and passed between the parts thereof.",
+          "note": "The ritual of ratification."
+        },
+        {
+          "ref": "Genesis 15:17",
+          "text": "A burning lamp that passed between those pieces.",
+          "note": "Yahuah binding Himself under the sanction."
+        },
+        {
+          "ref": "Exodus 24:8",
+          "text": "The blood of the covenant.",
+          "note": "The cutting sealed in blood."
+        }
+      ],
+      "plainTerms": [
+        "In Hebrew you don’t ‘make’ a covenant — you cut one. The parties passed between cut animals, swearing, ‘let this happen to me if I break the terms.’ It is an oath in blood. To cut a covenant is to bind it beyond taking back."
+      ],
+      "bringItHome": [
+        "Two parties walk a path lined with the halves of slaughtered animals and swear: let me become like these if I break faith. That is cutting a covenant — the most binding oath there is. And in Genesis 15, Yahuah walks it alone, taking the whole sanction on Himself."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the covenant party",
+          "does": "cuts the covenant, and takes its sanction on Himself."
+        },
+        {
+          "who": "The other party",
+          "role": "the bound",
+          "does": "sworn under the same penalty."
+        },
+        {
+          "who": "The severed pieces",
+          "role": "the sign of the oath",
+          "does": "the fate invoked on a covenant-breaker."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 42,
+          "term": "Swear"
+        },
+        {
+          "n": 43,
+          "term": "Vow"
+        },
+        {
+          "n": 39,
+          "term": "Amen"
         }
       ]
     },
@@ -1690,6 +2042,86 @@
         {
           "n": 47,
           "term": "Walk"
+        }
+      ]
+    },
+    "50": {
+      "n": 50,
+      "term": "Deny",
+      "movement": 5,
+      "rootLine": "arneomai — Greek",
+      "caseStrongs": "G720",
+      "lead": "To deny is legal repudiation — the disowning of a bond or a party on the record. “Whosoever shall deny me before men, him will I also deny before my Father” (Matthew 10:33) frames denial as a courtroom act with a matching courtroom consequence: repudiation answered by repudiation. To deny is the reverse of confession — testimony withdrawn, a covenant tie publicly disavowed. Peter’s threefold denial is precisely this: standing before accusers and repudiating his bond to the accused. Denial is not a mood of distance; it is a legal act of disowning, entered before witnesses, with standing consequences on both sides of the bench.",
+      "root": [
+        {
+          "lemma": "arneomai",
+          "strong": "G720",
+          "sense": "to deny, disown, repudiate; to refuse to acknowledge"
+        }
+      ],
+      "courtroomWord": "A repudiation term — the disowning of a bond or party, entered on the record.",
+      "itsRole": "If confession is testimony that binds, denial is testimony withdrawn. To deny the Name before men is to repudiate one’s covenant tie publicly — a legal act with a legal answer: him will I also deny. It is the reverse motion of confession, and it carries standing consequences before both courts, the earthly and the heavenly.",
+      "proofTexts": [
+        {
+          "ref": "Matthew 10:33",
+          "text": "Whosoever shall deny me before men, him will I also deny before my Father.",
+          "note": "Repudiation matched by repudiation."
+        },
+        {
+          "ref": "2 Timothy 2:12",
+          "text": "If we deny him, he also will deny us.",
+          "note": "The reciprocal legal consequence."
+        },
+        {
+          "ref": "Matthew 26:34",
+          "text": "Thou shalt deny me thrice.",
+          "note": "Peter’s public repudiation."
+        },
+        {
+          "ref": "Titus 1:16",
+          "text": "In works they deny him.",
+          "note": "Denial entered by deeds, not only words."
+        }
+      ],
+      "plainTerms": [
+        "To deny is to disown — publicly repudiating your bond to someone, on the record. It is the opposite of confession. And Scripture makes the consequence match: deny Him before men, and He denies you before the Father."
+      ],
+      "bringItHome": [
+        "Peter stood before accusers and said, in effect, ‘I have no bond with that man’ — three times, on the record. That is denial: not distance in feeling, but a covenant tie publicly disowned. And the court answers in kind."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The one denying",
+          "role": "the witness",
+          "does": "repudiates the bond on the record."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the disowned party",
+          "does": "whom the denial repudiates, and who answers in kind before the Father."
+        },
+        {
+          "who": "The witnesses",
+          "role": "the court",
+          "does": "before whom the repudiation is entered."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 49,
+          "term": "Confess"
+        },
+        {
+          "n": 100,
+          "term": "Faithful"
+        },
+        {
+          "n": 48,
+          "term": "Keep"
+        },
+        {
+          "n": 46,
+          "term": "Hear"
         }
       ]
     },
@@ -2203,6 +2635,171 @@
         }
       ]
     },
+    "76": {
+      "n": 76,
+      "term": "Crown",
+      "movement": 1,
+      "rootLine": "atarah / stephanos — Hebrew / Greek",
+      "caseStrongs": "H5850 · G4735",
+      "lead": "A crown is two legal things at once — sovereignty conferred, and the honor awarded to the faithful at the verdict. A crown marks the right to rule, and it is also the prize adjudged at the end: “there is laid up for me a crown of righteousness, which the Lord, the righteous judge, shall give me at that day” (2 Timothy 4:8). Note who awards it — the righteous judge, at the appointed day, as a verdict. The crown is either authority worn on the head or the sentence of commendation handed down from the bench. Both senses are legal: delegated rule, or the court’s favorable ruling made permanent.",
+      "root": [
+        {
+          "lemma": "atarah",
+          "strong": "H5850",
+          "sense": "a crown, wreath, diadem"
+        },
+        {
+          "lemma": "stephanos",
+          "strong": "G4735",
+          "sense": "a victor’s or honor’s crown"
+        }
+      ],
+      "courtroomWord": "A sovereignty-or-award term — the sign of the right to rule, or the prize adjudged at the verdict.",
+      "itsRole": "A crown either confers authority or records a verdict. Worn by a king, it marks delegated rule; awarded to the faithful, it is the court’s commendation made permanent, given at that day by the righteous judge. Both are legal: the crown is rule granted or judgment rendered, not mere ornament.",
+      "proofTexts": [
+        {
+          "ref": "2 Timothy 4:8",
+          "text": "A crown of righteousness, which the Lord, the righteous judge, shall give me at that day.",
+          "note": "The prize adjudged from the bench."
+        },
+        {
+          "ref": "James 1:12",
+          "text": "He shall receive the crown of life.",
+          "note": "The award to the one who endures."
+        },
+        {
+          "ref": "Revelation 2:10",
+          "text": "Be thou faithful unto death, and I will give thee a crown of life.",
+          "note": "The verdict’s prize."
+        },
+        {
+          "ref": "Psalm 21:3",
+          "text": "Thou settest a crown of pure gold on his head.",
+          "note": "Sovereignty conferred."
+        }
+      ],
+      "plainTerms": [
+        "A crown is either the sign of the right to rule or the prize handed down at the end by the Judge. When it is a reward, note who gives it and when: the righteous Judge, at that day. It is a verdict worn on the head."
+      ],
+      "bringItHome": [
+        "A crown sits on a king’s head as the mark of his authority — or it is placed on the faithful as the court’s final commendation, made permanent. Either way it is a legal act: rule conferred, or a verdict rendered and worn."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge and Sovereign",
+          "does": "confers rule, and awards the crown at the verdict."
+        },
+        {
+          "who": "The king or the faithful",
+          "role": "the recipient",
+          "does": "granted authority, or commended at that day."
+        },
+        {
+          "who": "The crown",
+          "role": "the sign",
+          "does": "rule conferred or judgment rendered."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 71,
+          "term": "Anoint"
+        },
+        {
+          "n": 73,
+          "term": "King"
+        },
+        {
+          "n": 74,
+          "term": "Throne"
+        },
+        {
+          "n": 75,
+          "term": "Scepter"
+        }
+      ]
+    },
+    "78": {
+      "n": 78,
+      "term": "Elder",
+      "movement": 1,
+      "rootLine": "zaqen — Hebrew",
+      "caseStrongs": "H2205",
+      "lead": "An elder is a judicial officer who sat in the gate to hear cases and issue rulings — a seat on the local bench. When a matter arose, “then shall his father and his mother... bring him out unto the elders of his city... unto the gate” (Deuteronomy 21:19). Boaz convenes ten elders to witness and legalize a land transaction (Ruth 4:2). The word carries office and jurisdiction, not merely advanced age. To appoint elders in the assemblies was to establish a governing and adjudicating authority. An elder is a magistrate: one seated to weigh disputes and pronounce the community’s binding decisions.",
+      "root": [
+        {
+          "lemma": "zaqen",
+          "strong": "H2205",
+          "sense": "old, an elder; a magistrate seated in the gate"
+        }
+      ],
+      "courtroomWord": "An office term — the magistrate seated to hear cases and render the community’s rulings.",
+      "itsRole": "Local justice ran through the elders — they sat in the gate, heard disputes, witnessed transactions, and pronounced binding decisions. The office is judicial, not merely a matter of age. When elders are appointed in the assemblies, a governing and adjudicating authority is established. To sit as an elder is to hold a seat on the bench.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 21:19",
+          "text": "Bring him out unto the elders of his city, and unto the gate.",
+          "note": "The elders as the local court."
+        },
+        {
+          "ref": "Ruth 4:2",
+          "text": "He took ten men of the elders of the city.",
+          "note": "Elders convened to legalize a transaction."
+        },
+        {
+          "ref": "Exodus 18:22",
+          "text": "Let them judge the people at all seasons.",
+          "note": "The judicial office established."
+        },
+        {
+          "ref": "1 Timothy 5:17",
+          "text": "Let the elders that rule well be counted worthy of double honour.",
+          "note": "The governing office in the assembly."
+        }
+      ],
+      "plainTerms": [
+        "An elder was a local magistrate — one who sat in the city gate to hear cases, witness contracts, and hand down binding rulings. The word means office and jurisdiction, not just old age. Appointing elders set up a governing, judging authority."
+      ],
+      "bringItHome": [
+        "When two neighbors had a dispute, they went to the gate, where the elders sat — and those men heard the case and ruled, and their word was binding. That is an elder: a judge on the local bench. The title is about the seat, not the years."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The elders",
+          "role": "the magistrates",
+          "does": "hear cases and render binding rulings."
+        },
+        {
+          "who": "The parties",
+          "role": "the disputants",
+          "does": "brought before the elders for judgment."
+        },
+        {
+          "who": "The gate",
+          "role": "the venue",
+          "does": "the court where the elders sit."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 79,
+          "term": "Gate"
+        },
+        {
+          "n": 1,
+          "term": "Judge"
+        },
+        {
+          "n": 77,
+          "term": "Priest"
+        },
+        {
+          "n": 80,
+          "term": "Stand"
+        }
+      ]
+    },
     "89": {
       "n": 89,
       "term": "Blood",
@@ -2281,6 +2878,86 @@
         {
           "n": 9,
           "term": "Advocate"
+        }
+      ]
+    },
+    "90": {
+      "n": 90,
+      "term": "Cry",
+      "movement": 6,
+      "rootLine": "tsaaq — Hebrew",
+      "caseStrongs": "H6817",
+      "lead": "A cry is the legal appeal of the oppressed to a higher court. The cry of the wronged is not merely emotional noise; it is a petition Yahuah’s court is bound to hear: “if thou afflict them in any wise, and they cry at all unto me, I will surely hear their cry” (Exodus 22:23). Abel’s blood cries; Sodom’s victims cry; the laborer’s withheld wages cry (James 5:4). A cry is a case lodged with the highest bench, and the response is judicial: the court takes it up and acts. To cry out is to file an appeal that cannot be ignored.",
+      "root": [
+        {
+          "lemma": "tsaaq",
+          "strong": "H6817",
+          "sense": "to cry out, to call for help; to lodge an appeal against wrong"
+        }
+      ],
+      "courtroomWord": "An appeal term — the petition of the wronged that the court is bound to hear.",
+      "itsRole": "The oppressed have recourse: the cry. It is not venting but filing — a legal appeal that reaches the highest bench and obligates it to respond. Yahuah binds Himself to hear the cry of the afflicted; the shed blood, the defrauded laborer, the wronged widow all cry, and the court acts. A cry is an appeal that cannot be dismissed.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 22:23",
+          "text": "If they cry at all unto me, I will surely hear their cry.",
+          "note": "The appeal the court must answer."
+        },
+        {
+          "ref": "Genesis 4:10",
+          "text": "The voice of thy brother’s blood crieth unto me.",
+          "note": "The cry of shed blood."
+        },
+        {
+          "ref": "Genesis 18:20",
+          "text": "The cry of Sodom and Gomorrah is great.",
+          "note": "The cry of the wronged reaching the bench."
+        },
+        {
+          "ref": "James 5:4",
+          "text": "The cries of them which have reaped are entered into the ears of the Lord.",
+          "note": "The laborer’s appeal filed."
+        }
+      ],
+      "plainTerms": [
+        "A cry, in Scripture, is a legal appeal — the wronged calling to a higher court. Yahuah binds Himself to hear it. It is not just emotion; it is a case filed that the court must answer."
+      ],
+      "bringItHome": [
+        "When the powerless have nowhere else to turn, they cry out — and that cry is not lost in the air. It is an appeal lodged with the highest court, and the Judge has bound Himself to hear it. Abel’s blood, the cheated worker, the afflicted widow — each cry is a case, and the court acts."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The oppressed",
+          "role": "the appellant",
+          "does": "lodges the cry against the wrong."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "bound to hear the cry and act."
+        },
+        {
+          "who": "The wrong",
+          "role": "the matter",
+          "does": "the injustice the cry brings to the bench."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 7,
+          "term": "Witness"
+        },
+        {
+          "n": 36,
+          "term": "Memorial"
+        },
+        {
+          "n": 87,
+          "term": "Mouth"
+        },
+        {
+          "n": 88,
+          "term": "Tongue"
         }
       ]
     },
@@ -2521,6 +3198,100 @@
         {
           "n": 95,
           "term": "Divorce"
+        }
+      ]
+    },
+    "95": {
+      "n": 95,
+      "term": "Divorce",
+      "movement": 2,
+      "rootLine": "kriythuth — Hebrew",
+      "caseStrongs": "H3748",
+      "lead": "Divorce is the formal legal dissolution of the marriage covenant by written instrument — the ‘bill of divorcement,’ a document that severs a contract (Deuteronomy 24:1). Divorce in Scripture is paperwork, a legal act with a legal record, not a mere parting. Yahuah frames His judgment on Israel in exactly these terms: “I had put her away, and given her a bill of divorce” (Jeremiah 3:8). The covenant, being a legal bond, could only be dissolved by a legal act. This is why the word carries such weight — it marks the official termination of a ratified relationship, entered by document, with standing consequences for both parties.",
+      "root": [
+        {
+          "lemma": "kriythuth",
+          "strong": "H3748",
+          "sense": "a cutting off, i.e. divorce; the bill of divorcement, from karath (H3772), to cut"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "karat-H3772",
+        "siblings": [
+          {
+            "n": 41,
+            "term": "Cut"
+          },
+          {
+            "n": 132,
+            "term": "Karath"
+          }
+        ],
+        "note": "Kriythuth is a ‘cutting,’ from the same root H3772: the covenant cut (Cut), the sinner cut off (Karath), and here the marriage bond cut."
+      },
+      "courtroomWord": "A dissolution term — the written instrument that legally severs the marriage covenant.",
+      "itsRole": "A covenant made by a legal act can be ended only by a legal act, and divorce is that act for marriage: a written bill that severs the bond and records the severance. It is not walking away but filing — a document with standing consequences. Yahuah’s dealing with unfaithful Israel is cast in exactly this legal register: a bill of divorce issued for covenant-breaking.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 24:1",
+          "text": "Then let him write her a bill of divorcement.",
+          "note": "The written instrument of severance."
+        },
+        {
+          "ref": "Jeremiah 3:8",
+          "text": "I had put her away, and given her a bill of divorce.",
+          "note": "The covenant dissolved by legal act."
+        },
+        {
+          "ref": "Isaiah 50:1",
+          "text": "Where is the bill of your mother’s divorcement?",
+          "note": "The document as the proof of severance."
+        },
+        {
+          "ref": "Malachi 2:16",
+          "text": "Yahuah... saith that he hateth putting away.",
+          "note": "The weight of the act."
+        }
+      ],
+      "plainTerms": [
+        "Divorce is the legal end of a marriage covenant — by a written bill, not just by leaving. It is paperwork that severs a contract. Even Yahuah’s judgment on unfaithful Israel is described as issuing a bill of divorce."
+      ],
+      "bringItHome": [
+        "A marriage covenant, being a legal bond, could not just be abandoned — it had to be cut by a document, the bill of divorcement, filed and recorded. That is divorce: the official severing of a ratified bond. The same ‘cutting’ root runs through covenant, being cut off, and this."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The one issuing it",
+          "role": "the party",
+          "does": "severs the bond by written instrument."
+        },
+        {
+          "who": "The other party",
+          "role": "the divorced",
+          "does": "released and recorded as such."
+        },
+        {
+          "who": "The bill",
+          "role": "the instrument",
+          "does": "the document that dissolves the covenant."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 94,
+          "term": "Adultery"
+        },
+        {
+          "n": 91,
+          "term": "Betroth"
+        },
+        {
+          "n": 93,
+          "term": "Husband"
+        },
+        {
+          "n": 41,
+          "term": "Cut"
         }
       ]
     },
@@ -2951,6 +3722,171 @@
         {
           "n": 115,
           "term": "Plead"
+        }
+      ]
+    },
+    "123": {
+      "n": 123,
+      "term": "Eretz Gezerah",
+      "movement": 7,
+      "rootLine": "eretz / gezerah — Hebrew",
+      "caseStrongs": "H776 · H1509",
+      "lead": "Eretz gezerah is the decreed land of cutting-off — the ‘land not inhabited’ to which the scapegoat was sent on Yom Kippur, “bearing upon him all their iniquities unto a land not inhabited” (Leviticus 16:22). Gezerah comes from a root meaning to cut, to decree, to separate; eretz is land. Together they name a place fixed by decree as the destination of what is cut off — a legal banishment, sin carried out of the camp to a severed place. It is the executed sentence of separation, the removal of guilt to a land set apart for it by the court’s decree.",
+      "root": [
+        {
+          "lemma": "eretz",
+          "strong": "H776",
+          "sense": "land, earth, country"
+        },
+        {
+          "lemma": "gezerah",
+          "strong": "H1509",
+          "sense": "a cutting off, a decreed separation; from gazar, to cut, to decree"
+        }
+      ],
+      "courtroomWord": "A banishment term — the decreed place to which what is cut off is removed.",
+      "itsRole": "A sentence of separation needs a destination, and eretz gezerah is it: the decreed land where the cut-off is sent. On Yom Kippur the scapegoat carries the iniquities out to this severed place — guilt removed from the camp by decree, not merely forgotten. It pictures the executed sentence of separation: the charge carried away to a land fixed for it, out of the presence of the holy.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 16:22",
+          "text": "The goat shall bear upon him all their iniquities unto a land not inhabited.",
+          "note": "The decreed land of removal."
+        },
+        {
+          "ref": "Leviticus 16:10",
+          "text": "To let him go for a scapegoat into the wilderness.",
+          "note": "The sending-away of the cut-off."
+        },
+        {
+          "ref": "Psalm 103:12",
+          "text": "So far hath he removed our transgressions from us.",
+          "note": "Guilt removed to a severed distance."
+        },
+        {
+          "ref": "Micah 7:19",
+          "text": "Thou wilt cast all their sins into the depths of the sea.",
+          "note": "The decreed banishment of sin."
+        }
+      ],
+      "plainTerms": [
+        "Eretz gezerah is the ‘cut-off land’ — the uninhabited place the scapegoat was sent to on Yom Kippur, carrying the people’s sins away. It pictures guilt removed by decree, carried out of the camp to a place set apart for it. It is a sentence of separation, executed."
+      ],
+      "bringItHome": [
+        "On the Day of Atonement one goat did not die — it was sent away, carrying the nation’s guilt out to a barren, decreed land, never to return. That is eretz gezerah: the place of cutting-off, where what is condemned is carried and left. Sin is not merely pardoned in the camp; it is removed to a severed place by decree."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "decrees the separation and the place of removal."
+        },
+        {
+          "who": "The scapegoat",
+          "role": "the bearer",
+          "does": "carries the iniquities to the cut-off land."
+        },
+        {
+          "who": "The iniquities",
+          "role": "the condemned",
+          "does": "removed from the camp to the decreed place."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 124,
+          "term": "Outside the Camp"
+        },
+        {
+          "n": 132,
+          "term": "Karath"
+        },
+        {
+          "n": 122,
+          "term": "Nasa Avon"
+        },
+        {
+          "n": 114,
+          "term": "Avenger of blood"
+        }
+      ]
+    },
+    "127": {
+      "n": 127,
+      "term": "Din",
+      "movement": 7,
+      "rootLine": "din — Aramaic",
+      "caseStrongs": "H1780",
+      "lead": "Din is the Aramaic word for the court session and the verdict it issues — judgment as both the proceeding and its ruling. In Daniel’s vision, “the judgment was set” (Daniel 7:10) uses this legal register: the court convened, the case heard, the sentence handed down. Din is not a private opinion or a mood of disapproval; it is the formal act of a bench in session. When the Ancient of Days sits, the din begins, and from it dominion is given and taken. It is the courtroom itself, named.",
+      "root": [
+        {
+          "lemma": "din",
+          "strong": "H1780",
+          "sense": "judgment; the court and its verdict (Aramaic)"
+        }
+      ],
+      "courtroomWord": "A court term — the session convened and the verdict it renders.",
+      "itsRole": "A trial is a proceeding that ends in a ruling, and din names both. When din is set, the bench is in session and a verdict is coming. In Daniel 7 the din is the hinge of the whole vision: the court sits, the books open, judgment is rendered, and the contested kingdoms are decided. Din is the formal machinery of judgment, not a feeling about right and wrong.",
+      "proofTexts": [
+        {
+          "ref": "Daniel 7:10",
+          "text": "The judgment was set, and the books were opened.",
+          "note": "The court convened."
+        },
+        {
+          "ref": "Daniel 7:22",
+          "text": "Judgment was given to the saints of the most High.",
+          "note": "The verdict rendered for His people."
+        },
+        {
+          "ref": "Daniel 7:26",
+          "text": "The judgment shall sit, and they shall take away his dominion.",
+          "note": "The ruling that strips the usurper."
+        },
+        {
+          "ref": "Ezra 7:26",
+          "text": "Let judgment be executed speedily upon him.",
+          "note": "Din enforced."
+        }
+      ],
+      "plainTerms": [
+        "Din is the Aramaic word for the court itself — the session and the verdict together. When Daniel says ‘the judgment was set,’ he means the bench convened and a ruling was coming. It is the courtroom in session, not a private opinion."
+      ],
+      "bringItHome": [
+        "In Daniel 7 the whole scene turns on one moment: the court sits. That is the din — the session opened, the books read, the verdict handed down. From that bench, kingdoms are decided and dominion changes hands. It is judgment as a formal act, not a feeling."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The Ancient of Days",
+          "role": "the Judge",
+          "does": "convenes the din and renders the verdict."
+        },
+        {
+          "who": "The saints",
+          "role": "the party",
+          "does": "for whom judgment is given."
+        },
+        {
+          "who": "The usurper",
+          "role": "the party judged",
+          "does": "whose dominion the din takes away."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 132,
+          "term": "Karath"
+        },
+        {
+          "n": 111,
+          "term": "Wrath"
+        },
+        {
+          "n": 112,
+          "term": "Vengeance"
+        },
+        {
+          "n": 116,
+          "term": "Cause"
         }
       ]
     },
@@ -3623,6 +4559,86 @@
         {
           "n": 29,
           "term": "Reconcile"
+        }
+      ]
+    },
+    "138": {
+      "n": 138,
+      "term": "Dogma",
+      "movement": 2,
+      "rootLine": "dogma — Greek",
+      "caseStrongs": "G1378",
+      "lead": "A dogma is an enacted decree with legal force — a ruling laid down by authority that binds those under it. Caesar’s census goes out as a dogma (Luke 2:1); the Jerusalem council’s decisions are delivered as dogmata (Acts 16:4). The word names legislation, not opinion. This matters at Colossians 2:14, where the certificate of debt stood against us in its dogmata — its decrees. What is cancelled there is the binding force of the charges recorded against the guilty, the decrees that condemned them — a debt discharged by a higher ruling, not the Lawgiver’s own standard erased.",
+      "root": [
+        {
+          "lemma": "dogma",
+          "strong": "G1378",
+          "sense": "a decree, ordinance, edict with binding legal force"
+        }
+      ],
+      "courtroomWord": "A decree term — an enacted ruling that binds those under it.",
+      "itsRole": "Authority legislates by decree, and a dogma is a decree in force. In the courtroom reading of Colossians 2, the certificate ‘of dogmata’ is the record of binding charges against the guilty; its cancellation is the discharge of those charges by a higher ruling. Dogma is the legal weight behind a ruling — which is exactly why cancelling the debt-decree against us is a judicial act, not the abolition of Yahuah’s law.",
+      "proofTexts": [
+        {
+          "ref": "Colossians 2:14",
+          "text": "The handwriting of ordinances that was against us.",
+          "note": "The binding charges (dogmata) cancelled."
+        },
+        {
+          "ref": "Luke 2:1",
+          "text": "There went out a decree from Caesar Augustus.",
+          "note": "An enacted, binding ruling."
+        },
+        {
+          "ref": "Acts 16:4",
+          "text": "They delivered them the decrees for to keep.",
+          "note": "Rulings laid down by authority."
+        },
+        {
+          "ref": "Ephesians 2:15",
+          "text": "The law of commandments contained in ordinances.",
+          "note": "The dividing decrees between the parties, removed — the enmity, not the Lawgiver’s standard."
+        }
+      ],
+      "plainTerms": [
+        "A dogma is a binding decree — a ruling with legal force, like Caesar’s census order. In Colossians 2, the ‘ordinances’ cancelled are the decrees of debt standing against the guilty. A higher ruling discharged the charges; it did not erase the Lawgiver’s own standard."
+      ],
+      "bringItHome": [
+        "A dogma is a decree that carries the weight of law — when it goes out, people are bound. In Colossians 2 the decrees against us — the recorded charges of debt — are cancelled by a higher court’s ruling. The charges are discharged. The Lawgiver’s own standard is not what was struck."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The authority",
+          "role": "the Legislator",
+          "does": "lays down the binding decree."
+        },
+        {
+          "who": "Those under it",
+          "role": "the subjects",
+          "does": "bound by the dogma."
+        },
+        {
+          "who": "The decrees against us",
+          "role": "the charges",
+          "does": "cancelled at the cross by a higher ruling."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 19,
+          "term": "Transgression"
+        },
+        {
+          "n": 130,
+          "term": "Zeman + Dath"
+        },
+        {
+          "n": 8,
+          "term": "Testimony"
         }
       ]
     },
