@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0801 V8",
+    "version": "0801 V9",
     "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -26,7 +26,8 @@
       "0801 V5: merged 12 word pages (Birthright–Confess: 60,89,31,59,92,58,116,98,137,67,5,49) into words; those terms set page draft-v1.",
       "0801 V6: merged 12 word pages (Covenant–Eretz Gezerah: 18,76,90,41,17,50,127,95,138,78,32,123) into words; those terms set page draft-v1.",
       "0801 V7: merged 12 word pages (Face–Hupo Nomon: 83,100,99,85,16,64,79,119,81,46,52,139) into words; those terms set page draft-v1.",
-      "0801 V8: merged 12 word pages (Husband–Karath: 93,53,51,118,12,96,22,1,2,4,3,132) into words; those terms set page draft-v1. Fixed Engrave mis-key: word record moved 32→33 (n:33); term 32 (Write) page cleared until its page is written."
+      "0801 V8: merged 12 word pages (Husband–Karath: 93,53,51,118,12,96,22,1,2,4,3,132) into words; those terms set page draft-v1. Fixed Engrave mis-key: word record moved 32→33 (n:33); term 32 (Write) page cleared until its page is written.",
+      "0801 V9: merged 12 word pages (Keep–Mouth: 48,73,56,23,84,55,97,106,11,36,72,87) into words; those terms set page draft-v1."
     ]
   },
   "movements": [
@@ -146,7 +147,8 @@
       "n": 11,
       "term": "Mediator",
       "movement": 4,
-      "gloss": "the officer who makes the covenant hold"
+      "gloss": "the officer who makes the covenant hold",
+      "page": "draft-v1"
     },
     {
       "n": 12,
@@ -224,7 +226,8 @@
       "n": 23,
       "term": "Liberty",
       "movement": 4,
-      "gloss": "the legal release of the bound"
+      "gloss": "the legal release of the bound",
+      "page": "draft-v1"
     },
     {
       "n": 24,
@@ -305,7 +308,8 @@
       "n": 36,
       "term": "Memorial",
       "movement": 6,
-      "gloss": "a remembrance filed on record"
+      "gloss": "a remembrance filed on record",
+      "page": "draft-v1"
     },
     {
       "n": 37,
@@ -380,7 +384,8 @@
       "n": 48,
       "term": "Keep",
       "movement": 5,
-      "gloss": "to guard as a charge"
+      "gloss": "to guard as a charge",
+      "page": "draft-v1"
     },
     {
       "n": 49,
@@ -427,13 +432,15 @@
       "n": 55,
       "term": "Lot",
       "movement": 3,
-      "gloss": "allotment by binding lot"
+      "gloss": "allotment by binding lot",
+      "page": "draft-v1"
     },
     {
       "n": 56,
       "term": "Landmark",
       "movement": 3,
-      "gloss": "the boundary stone of legal title"
+      "gloss": "the boundary stone of legal title",
+      "page": "draft-v1"
     },
     {
       "n": 57,
@@ -536,13 +543,15 @@
       "n": 72,
       "term": "Messiah",
       "movement": 1,
-      "gloss": "the one appointed and installed"
+      "gloss": "the one appointed and installed",
+      "page": "draft-v1"
     },
     {
       "n": 73,
       "term": "King",
       "movement": 1,
-      "gloss": "the sovereign who issues law"
+      "gloss": "the sovereign who issues law",
+      "page": "draft-v1"
     },
     {
       "n": 74,
@@ -613,7 +622,8 @@
       "n": 84,
       "term": "Lift the face",
       "movement": 1,
-      "gloss": "partiality, the sin of favoritism"
+      "gloss": "partiality, the sin of favoritism",
+      "page": "draft-v1"
     },
     {
       "n": 85,
@@ -632,7 +642,8 @@
       "n": 87,
       "term": "Mouth",
       "movement": 6,
-      "gloss": "where testimony and decree issue"
+      "gloss": "where testimony and decree issue",
+      "page": "draft-v1"
     },
     {
       "n": 88,
@@ -700,7 +711,8 @@
       "n": 97,
       "term": "Love",
       "movement": 5,
-      "gloss": "covenant loyalty and allegiance"
+      "gloss": "covenant loyalty and allegiance",
+      "page": "draft-v1"
     },
     {
       "n": 98,
@@ -758,7 +770,8 @@
       "n": 106,
       "term": "Measure",
       "movement": 6,
-      "gloss": "the fixed standard of judgment"
+      "gloss": "the fixed standard of judgment",
+      "page": "draft-v1"
     },
     {
       "n": 107,
@@ -6822,6 +6835,1009 @@
         {
           "n": 7,
           "term": "Witness"
+        }
+      ]
+    },
+    "48": {
+      "n": 48,
+      "term": "Keep",
+      "movement": 5,
+      "rootLine": "shamar — Hebrew",
+      "caseStrongs": "H8104",
+      "lead": "To keep is to guard as a charge — to watch over and preserve something entrusted, the way a sentinel keeps a post. Shamar first appears with Adam set “to dress it and to keep it” (Genesis 2:15) — a custodial duty, not a suggestion. To keep the commandments is to stand guard over them, protecting them from breach as one guards a trust. This is far more than obeying when convenient; it is the active, vigilant custody of a charge one is answerable for. ‘Keep my commandments’ places the believer as watchman over the terms of the covenant, responsible to see they are not violated.",
+      "root": [
+        {
+          "lemma": "shamar",
+          "strong": "H8104",
+          "sense": "to keep, guard, watch, preserve; to attend to a charge"
+        }
+      ],
+      "courtroomWord": "A custody term — the vigilant guarding of an entrusted charge.",
+      "itsRole": "A charge entrusted must be guarded, and shamar is that guarding. To keep the commandments is to hold them as a trust, watching against their breach — an active custody, not passive compliance. Adam was to keep the garden; the priest keeps the charge of the sanctuary; the believer keeps the covenant terms. Keeping is the watchman’s duty over what he is answerable for.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 2:15",
+          "text": "To dress it and to keep it.",
+          "note": "The custodial charge given to man."
+        },
+        {
+          "ref": "Deuteronomy 6:17",
+          "text": "Ye shall diligently keep the commandments of Yahuah.",
+          "note": "The terms guarded as a trust."
+        },
+        {
+          "ref": "Psalm 119:11",
+          "text": "Thy word have I hid in mine heart, that I might not sin.",
+          "note": "The charge kept close, against breach."
+        },
+        {
+          "ref": "John 14:15",
+          "text": "If ye love me, keep my commandments.",
+          "note": "Keeping as the proof of loyalty."
+        }
+      ],
+      "plainTerms": [
+        "To keep is to guard something entrusted to you — to watch over it like a sentinel, not just obey when convenient. To keep the commandments is to stand guard over them, protecting them from breach. It is active custody of a charge you answer for."
+      ],
+      "bringItHome": [
+        "A watchman does not ‘keep’ his post by agreeing with it — he guards it, alert against anything that would breach it. That is shamar. To keep the commandments is to be that watchman over the covenant terms: responsible, vigilant, answerable that they are not violated."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The believer",
+          "role": "the watchman",
+          "does": "guards the charge entrusted to him."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the One who entrusts",
+          "does": "gives the terms to be kept."
+        },
+        {
+          "who": "The commandments",
+          "role": "the charge",
+          "does": "the trust to be guarded against breach."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 47,
+          "term": "Walk"
+        },
+        {
+          "n": 46,
+          "term": "Hear"
+        },
+        {
+          "n": 45,
+          "term": "Remember"
+        },
+        {
+          "n": 100,
+          "term": "Faithful"
+        }
+      ]
+    },
+    "73": {
+      "n": 73,
+      "term": "King",
+      "movement": 1,
+      "rootLine": "melek — Hebrew",
+      "caseStrongs": "H4428",
+      "lead": "A king is the sovereign lawgiver — the one whose word is statute and whose throne is the source of binding rule. Kingship in Scripture is a legal office: the melek issues decrees, renders judgment, and holds the authority the whole realm answers to. “Yahuah is our king” (Isaiah 33:22) sits beside ‘Yahuah is our judge’ and ‘Yahuah is our lawgiver’ — three names for one seat of authority. To call Yahuah King is not to praise His grandeur but to locate the source of law: His will is the statute the court enforces. The King is where the law comes from, and the throne is where it is upheld.",
+      "root": [
+        {
+          "lemma": "melek",
+          "strong": "H4428",
+          "sense": "king, sovereign; the ruler who issues law and renders judgment"
+        }
+      ],
+      "courtroomWord": "A sovereignty term — the lawgiver whose word is binding statute.",
+      "itsRole": "Law has a source, and the King is it. The melek issues the decrees the realm is bound by and renders the judgments the court enforces. In Scripture, King, Judge, and Lawgiver are joined in one seat — Yahuah. To call Him King is to name the origin of the standard: His will is the statute. The King’s word is law, and the throne is where that law is upheld.",
+      "proofTexts": [
+        {
+          "ref": "Isaiah 33:22",
+          "text": "Yahuah is our judge, Yahuah is our lawgiver, Yahuah is our king.",
+          "note": "The offices joined in one seat."
+        },
+        {
+          "ref": "Psalm 47:7",
+          "text": "For Elohim is the King of all the earth.",
+          "note": "The sovereign lawgiver over all."
+        },
+        {
+          "ref": "Psalm 44:4",
+          "text": "Thou art my King, O Elohim: command deliverances.",
+          "note": "The King who decrees."
+        },
+        {
+          "ref": "1 Timothy 6:15",
+          "text": "The King of kings, and Lord of lords.",
+          "note": "The supreme sovereign authority."
+        }
+      ],
+      "plainTerms": [
+        "A king, in Scripture, is the sovereign lawgiver — the one whose word is statute and whose throne is the source of binding rule. ‘Yahuah is our king’ names Him as the origin of the law, alongside Judge and Lawgiver. To call Him King is to say His will is the standard."
+      ],
+      "bringItHome": [
+        "A king is not just a grand figure — he is the source of law: his word is statute, his throne the seat rule comes from. That is what ‘Yahuah is our King’ means: the standard the whole court enforces comes from His will. King, Judge, and Lawgiver are one seat, and it is His."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the King",
+          "does": "issues the statute and holds supreme authority."
+        },
+        {
+          "who": "The realm",
+          "role": "the subjects",
+          "does": "bound by the King’s decrees."
+        },
+        {
+          "who": "The throne",
+          "role": "the seat",
+          "does": "where the King’s law is upheld."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 74,
+          "term": "Throne"
+        },
+        {
+          "n": 75,
+          "term": "Scepter"
+        },
+        {
+          "n": 76,
+          "term": "Crown"
+        },
+        {
+          "n": 1,
+          "term": "Judge"
+        }
+      ]
+    },
+    "56": {
+      "n": 56,
+      "term": "Landmark",
+      "movement": 3,
+      "rootLine": "gebul — Hebrew",
+      "caseStrongs": "H1366",
+      "lead": "The landmark was the boundary stone that fixed a family’s legal title to its inheritance — and moving it was a serious crime. “Thou shalt not remove thy neighbour’s landmark” (Deuteronomy 19:14), and “Cursed be he that removeth his neighbour’s landmark” (Deuteronomy 27:17) place property fraud under a curse. The landmark marked where one man’s estate ended and another’s began; to move it was to steal land by redrawing the record. It is legal-title language: the boundary of a lawful holding, protected by statute. To respect the landmark is to honor the fixed boundaries of the law’s allotments; to move it is quiet theft.",
+      "root": [
+        {
+          "lemma": "gebul",
+          "strong": "H1366",
+          "sense": "a border, boundary; the marked limit of an inheritance"
+        }
+      ],
+      "courtroomWord": "A boundary term — the fixed marker of legal title to an estate.",
+      "itsRole": "Property has boundaries, and the landmark fixes them. It marks where a lawful holding ends, protecting each family’s inheritance from encroachment. Moving it is theft by redrawing the record — which is why Torah puts it under a curse. The landmark stands for the fixed boundaries the law sets; to honor it is to honor the allotment, to move it is to steal by stealth.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 19:14",
+          "text": "Thou shalt not remove thy neighbour’s landmark.",
+          "note": "The boundary protected by law."
+        },
+        {
+          "ref": "Deuteronomy 27:17",
+          "text": "Cursed be he that removeth his neighbour’s landmark.",
+          "note": "Property fraud under a curse."
+        },
+        {
+          "ref": "Proverbs 22:28",
+          "text": "Remove not the ancient landmark, which thy fathers have set.",
+          "note": "The fixed boundary honored."
+        },
+        {
+          "ref": "Proverbs 23:10",
+          "text": "Remove not the old landmark; and enter not into the fields of the fatherless.",
+          "note": "The boundary guarding the vulnerable."
+        }
+      ],
+      "plainTerms": [
+        "A landmark was the boundary stone that marked a family’s legal title to its land. Moving it was theft — stealing land by redrawing the line — and Torah put it under a curse. To respect the landmark is to honor the fixed boundaries the law set."
+      ],
+      "bringItHome": [
+        "The boundary stone told everyone where your land ended and your neighbour’s began. Slide it a few feet in the night and you have stolen his field without touching a plow. That is why ‘remove not the landmark’ carries a curse: it is quiet theft of a lawful holding."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The landowner",
+          "role": "the titleholder",
+          "does": "whose inheritance the landmark protects."
+        },
+        {
+          "who": "The mover",
+          "role": "the thief",
+          "does": "steals by redrawing the boundary."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "fixes the boundaries and curses their removal."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 51,
+          "term": "Inheritance"
+        },
+        {
+          "n": 57,
+          "term": "Possess"
+        },
+        {
+          "n": 54,
+          "term": "Portion"
+        },
+        {
+          "n": 55,
+          "term": "Lot"
+        }
+      ]
+    },
+    "23": {
+      "n": 23,
+      "term": "Liberty",
+      "movement": 4,
+      "rootLine": "deror — Hebrew",
+      "caseStrongs": "H1865",
+      "lead": "Liberty is the legal release of the bound — a manumission term, not a mood of freedom. Deror is the specific word for the release proclaimed at Jubilee: “proclaim liberty throughout all the land unto all the inhabitants thereof” (Leviticus 25:10). It is the freeing of slaves, the cancelling of servitude, the return of the captive to his own — an act of law with a legal record. When Isaiah announces “liberty to the captives” (Isaiah 61:1), the word is release, the loosing of one held. Liberty in Scripture is not the absence of law but a provision of it: the law’s own mechanism for setting the bound free.",
+      "root": [
+        {
+          "lemma": "deror",
+          "strong": "H1865",
+          "sense": "liberty, release; the manumission of the bound"
+        }
+      ],
+      "courtroomWord": "A release term — the legal manumission of one held in bondage.",
+      "itsRole": "Bondage has a lawful end, and liberty is it — the release of the captive, the cancelling of servitude, proclaimed by statute at Jubilee. Deror is a legal act, not a feeling: the bound set free by the law’s own provision. Isaiah’s ‘liberty to the captives’ is this release, and the good news announces it. Liberty is not freedom from law but the law freeing the bound.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 25:10",
+          "text": "Proclaim liberty throughout all the land unto all the inhabitants thereof.",
+          "note": "The release proclaimed by statute."
+        },
+        {
+          "ref": "Isaiah 61:1",
+          "text": "To proclaim liberty to the captives.",
+          "note": "The loosing of the bound."
+        },
+        {
+          "ref": "Jeremiah 34:8",
+          "text": "To proclaim liberty unto them.",
+          "note": "The legal manumission enacted."
+        },
+        {
+          "ref": "Galatians 5:1",
+          "text": "The liberty wherewith Messiah hath made us free.",
+          "note": "The release into a standing to be held."
+        }
+      ],
+      "plainTerms": [
+        "Liberty is a legal release — the freeing of the bound — not a vague feeling of freedom. Deror is the manumission word proclaimed at Jubilee: slaves freed, servitude cancelled, captives returned. It is the law’s own mechanism for setting people free."
+      ],
+      "bringItHome": [
+        "When Jubilee ‘proclaimed liberty,’ slaves walked out free and debts were cleared — a legal release, enacted by statute. That is deror. And when Isaiah announced liberty to the captives, he used the same word: not freedom from the law, but the law itself loosing the bound."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "proclaims the release by statute."
+        },
+        {
+          "who": "The bound",
+          "role": "the released",
+          "does": "freed from servitude and captivity."
+        },
+        {
+          "who": "The law",
+          "role": "the provision",
+          "does": "the mechanism by which liberty is granted."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 22,
+          "term": "Jubilee"
+        },
+        {
+          "n": 24,
+          "term": "Release"
+        },
+        {
+          "n": 13,
+          "term": "Redeem"
+        },
+        {
+          "n": 30,
+          "term": "Restore"
+        }
+      ]
+    },
+    "84": {
+      "n": 84,
+      "term": "Lift the face",
+      "movement": 1,
+      "rootLine": "nasa panim — Hebrew",
+      "caseStrongs": "H5375 + H6440",
+      "lead": "To ‘lift the face’ — nasa panim — is the courtroom idiom for partiality: to accept a person’s face, to be swayed by who stands before the bench rather than by the case. Torah forbids it flatly: the judge shall not “respect persons” — not lift the face — “neither take a gift” (Deuteronomy 16:19). Justice requires a blind bench, weighing the matter and not the man. This is why Yahuah is praised as the One who “regardeth not persons” (Deuteronomy 10:17): the perfect Judge lifts no one’s face. To lift the face is to corrupt judgment at its root, ruling by favor instead of fact.",
+      "root": [
+        {
+          "lemma": "nasa panim",
+          "strong": "H5375 + H6440",
+          "sense": "to lift the face; from nasa (to lift) + panim (face) — the idiom for partiality"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "nasa-H5375",
+        "siblings": [
+          {
+            "n": 16,
+            "term": "Forgive"
+          },
+          {
+            "n": 122,
+            "term": "Nasa Avon"
+          },
+          {
+            "n": 83,
+            "term": "Face"
+          }
+        ],
+        "note": "Nasa lifts a charge away (Forgive) or bears one (Nasa Avon); panim is the face one appears before (Face) or lifts in partiality here."
+      },
+      "courtroomWord": "A partiality idiom — to be swayed by the person rather than the case.",
+      "itsRole": "A just verdict weighs the matter, not the man; to lift the face is to weigh the man. Torah forbids it in the judge and praises Yahuah for never doing it. The lifted face is judgment corrupted at the root — ruling by who stands there, by gift or status or fear, instead of by the evidence. The blind bench, lifting no one’s face, is the standard the law demands and Yahuah keeps.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 16:19",
+          "text": "Thou shalt not respect persons, neither take a gift.",
+          "note": "Partiality forbidden in the judge."
+        },
+        {
+          "ref": "Deuteronomy 10:17",
+          "text": "Which regardeth not persons, nor taketh reward.",
+          "note": "Yahuah the impartial Judge."
+        },
+        {
+          "ref": "Leviticus 19:15",
+          "text": "Thou shalt not respect the person of the poor, nor honour the person of the mighty.",
+          "note": "No face lifted, high or low."
+        },
+        {
+          "ref": "Acts 10:34",
+          "text": "Elohim is no respecter of persons.",
+          "note": "The impartial bench affirmed."
+        }
+      ],
+      "plainTerms": [
+        "To ‘lift the face’ is Scripture’s idiom for partiality — being swayed by who is standing before you instead of by the facts. Torah forbids judges to do it and praises Yahuah for never doing it. It means ruling by favor instead of by evidence."
+      ],
+      "bringItHome": [
+        "A corrupt judge ‘lifts the face’ — he looks at who is in front of him, their status, their gift, their power, and rules for them instead of for the truth. Torah bans it outright. The perfect Judge lifts no one’s face: He weighs the case, never the man."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The judge",
+          "role": "the officer",
+          "does": "forbidden to lift any face, high or low."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the impartial Judge",
+          "does": "regards no person and takes no gift."
+        },
+        {
+          "who": "The parties",
+          "role": "rich and poor alike",
+          "does": "to be weighed by the case, not the face."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 83,
+          "term": "Face"
+        },
+        {
+          "n": 1,
+          "term": "Judge"
+        },
+        {
+          "n": 2,
+          "term": "Judgment"
+        },
+        {
+          "n": 78,
+          "term": "Elder"
+        }
+      ]
+    },
+    "55": {
+      "n": 55,
+      "term": "Lot",
+      "movement": 3,
+      "rootLine": "goral — Hebrew",
+      "caseStrongs": "H1486",
+      "lead": "The lot was a binding method of judicial allocation — a decision entrusted to Yahuah and accepted as final, without appeal. The land of Canaan was divided ‘by lot’ (Numbers 26:55), Achan was identified by lot (Joshua 7:14-18), and the apostles filled Judas’s place by lot (Acts 1:26). “The lot is cast into the lap; but the whole disposing thereof is of Yahuah” (Proverbs 16:33) — the outcome was received as His ruling. The lot was not gambling but adjudication: a legally binding allotment or verdict, settled by a means that removed human favoritism and left the decision to the Judge.",
+      "root": [
+        {
+          "lemma": "goral",
+          "strong": "H1486",
+          "sense": "a lot; a binding allotment or decision made by lot"
+        }
+      ],
+      "courtroomWord": "An allocation term — a binding judicial decision entrusted to Yahuah, without appeal.",
+      "itsRole": "Some decisions were settled by lot — the division of the land, the identifying of the guilty, the filling of an office — and the result was binding, received as Yahuah’s ruling. It removed favoritism: no face could be lifted where the Judge disposed the outcome. The lot is judicial allocation, final and without appeal, its whole disposing His.",
+      "proofTexts": [
+        {
+          "ref": "Proverbs 16:33",
+          "text": "The lot is cast into the lap; but the whole disposing thereof is of Yahuah.",
+          "note": "The outcome received as His ruling."
+        },
+        {
+          "ref": "Numbers 26:55",
+          "text": "The land shall be divided by lot.",
+          "note": "The binding allocation of the inheritance."
+        },
+        {
+          "ref": "Joshua 7:14",
+          "text": "The tribe which Yahuah taketh shall come.",
+          "note": "The guilty identified by lot."
+        },
+        {
+          "ref": "Acts 1:26",
+          "text": "They gave forth their lots; and the lot fell upon Matthias.",
+          "note": "An office filled by binding lot."
+        }
+      ],
+      "plainTerms": [
+        "The lot was a binding way of deciding — dividing land, finding the guilty, filling an office — with the result received as Yahuah’s ruling, final and without appeal. It was not gambling; it was adjudication that left the decision to the Judge and removed human favoritism."
+      ],
+      "bringItHome": [
+        "When Israel divided the land or filled an office ‘by lot,’ they were not rolling dice for fun — they were handing the decision to Yahuah and accepting the result as binding. ‘The whole disposing is of Yahuah’: the lot was a verdict, final, with no favoritism and no appeal."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "disposes the outcome of the lot."
+        },
+        {
+          "who": "The parties",
+          "role": "those allotted",
+          "does": "bound by the result without appeal."
+        },
+        {
+          "who": "The lot",
+          "role": "the means",
+          "does": "the binding method of allocation."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 51,
+          "term": "Inheritance"
+        },
+        {
+          "n": 54,
+          "term": "Portion"
+        },
+        {
+          "n": 56,
+          "term": "Landmark"
+        },
+        {
+          "n": 104,
+          "term": "Number"
+        }
+      ]
+    },
+    "97": {
+      "n": 97,
+      "term": "Love",
+      "movement": 5,
+      "rootLine": "ahav / agape — Hebrew / Greek",
+      "caseStrongs": "H157 · G26",
+      "lead": "The modern West reads love as a feeling; Scripture reads it as covenant loyalty enacted — allegiance shown in deeds. “Thou shalt love Yahuah thy Elohim” (Deuteronomy 6:5) is a covenant command, and no one can command a feeling; what is commanded is loyalty, the wholehearted allegiance a covenant party owes. Love in this register is measurable by conduct: “if ye love me, keep my commandments” (John 14:15). It is the treaty word for the devotion a vassal owes his sovereign — fidelity in action, not warmth in the chest. To love Yahuah is to keep covenant with Him; the feeling may follow, but the love is the loyalty.",
+      "root": [
+        {
+          "lemma": "ahav",
+          "strong": "H157",
+          "sense": "to love; covenant loyalty"
+        },
+        {
+          "lemma": "agape",
+          "strong": "G26",
+          "sense": "love as committed goodwill and allegiance"
+        }
+      ],
+      "courtroomWord": "A loyalty term — covenant allegiance shown in conduct.",
+      "itsRole": "Love, in covenant, is loyalty, not feeling — which is why it can be commanded. To love Yahuah is to render the wholehearted allegiance the covenant requires, proven by keeping His terms. ‘If ye love me, keep my commandments’ ties love directly to conduct. It is the devotion a covenant party owes, measurable in action, the feeling secondary to the fidelity.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 6:5",
+          "text": "Thou shalt love Yahuah thy Elohim with all thine heart.",
+          "note": "Love as a covenant command."
+        },
+        {
+          "ref": "John 14:15",
+          "text": "If ye love me, keep my commandments.",
+          "note": "Love measured by obedience."
+        },
+        {
+          "ref": "1 John 5:3",
+          "text": "This is the love of Elohim, that we keep his commandments.",
+          "note": "Love defined as covenant-keeping."
+        },
+        {
+          "ref": "Deuteronomy 7:9",
+          "text": "Keepeth covenant and mercy with them that love him.",
+          "note": "Love and covenant-keeping joined."
+        }
+      ],
+      "plainTerms": [
+        "Love, in Scripture, is covenant loyalty shown in action — not a feeling. You cannot command a feeling, but ‘love Yahuah’ is commanded, because it means allegiance: keeping His terms. ‘If ye love me, keep my commandments’ ties love to conduct. The feeling may come; the loyalty is the love."
+      ],
+      "bringItHome": [
+        "You cannot order someone to feel something — yet ‘love Yahuah’ is a command. That is because love here is loyalty, the allegiance a covenant party owes, proven by keeping the terms. ‘If ye love me, keep my commandments’ is the definition: love is fidelity in action."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The believer",
+          "role": "the covenant party",
+          "does": "owes loyalty, shown by keeping the terms."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the covenant Sovereign",
+          "does": "to whom the allegiance is owed."
+        },
+        {
+          "who": "The commandments",
+          "role": "the terms",
+          "does": "by which love is measured."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 98,
+          "term": "Chesed"
+        },
+        {
+          "n": 100,
+          "term": "Faithful"
+        },
+        {
+          "n": 48,
+          "term": "Keep"
+        },
+        {
+          "n": 47,
+          "term": "Walk"
+        }
+      ]
+    },
+    "106": {
+      "n": 106,
+      "term": "Measure",
+      "movement": 6,
+      "rootLine": "middah — Hebrew",
+      "caseStrongs": "H4060",
+      "lead": "A measure is the fixed standard of judgment — the just weight or rule the law requires, and the standard by which one will be judged. Torah demands honest measures: “a perfect and just measure shalt thou have” (Deuteronomy 25:15), because a false measure is a lie built into the transaction. And the standard cuts both ways: “with what measure ye mete, it shall be measured to you again” (Matthew 7:2) — the rule you apply becomes the rule applied to you. A measure is not arbitrary; it is the fixed benchmark against which quantity, and conduct, are judged. To keep a just measure is to keep the law’s own standard of fairness.",
+      "root": [
+        {
+          "lemma": "middah",
+          "strong": "H4060",
+          "sense": "a measure, a measured standard; the rule by which a thing is judged"
+        }
+      ],
+      "courtroomWord": "A standard term — the fixed benchmark against which quantity and conduct are judged.",
+      "itsRole": "Judgment needs a fixed standard, and the measure is it. Torah requires it just — a false measure defrauds — and warns that the measure one uses returns on one’s own head. The measure is the benchmark: quantity weighed by it, conduct judged by it. To keep a just measure is to keep the law’s standard; to falsify it is to build fraud into the very rule of judgment.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 25:15",
+          "text": "A perfect and just measure shalt thou have.",
+          "note": "The honest standard commanded."
+        },
+        {
+          "ref": "Leviticus 19:35",
+          "text": "Ye shall do no unrighteousness in judgment, in meteyard, in weight, or in measure.",
+          "note": "Justice in the measure itself."
+        },
+        {
+          "ref": "Matthew 7:2",
+          "text": "With what measure ye mete, it shall be measured to you again.",
+          "note": "The standard returned on the one who sets it."
+        },
+        {
+          "ref": "Micah 6:11",
+          "text": "The bag of deceitful weights.",
+          "note": "The false measure condemned."
+        }
+      ],
+      "plainTerms": [
+        "A measure is the fixed standard by which things are judged — a just weight, an honest rule. Torah demands it be true, because a false measure builds a lie into the deal. And the standard cuts both ways: the measure you use on others is the one used on you."
+      ],
+      "bringItHome": [
+        "A crooked scale cheats every transaction it touches — which is why Torah demands ‘a perfect and just measure.’ A measure is the fixed standard judgment runs on. And there is a warning in it: the measure you apply to others becomes the measure applied to you."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "requires the measure just, and applies it justly."
+        },
+        {
+          "who": "The parties",
+          "role": "the judged",
+          "does": "weighed by the fixed standard."
+        },
+        {
+          "who": "The measure",
+          "role": "the standard",
+          "does": "the benchmark of quantity and conduct."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 105,
+          "term": "Scales"
+        },
+        {
+          "n": 101,
+          "term": "Reckon"
+        },
+        {
+          "n": 102,
+          "term": "Account"
+        },
+        {
+          "n": 17,
+          "term": "Debt"
+        }
+      ]
+    },
+    "11": {
+      "n": 11,
+      "term": "Mediator",
+      "movement": 4,
+      "rootLine": "mesites — Greek",
+      "caseStrongs": "G3316",
+      "lead": "A mediator is the legally recognized go-between who stands between two parties to make a covenant hold — an office, not a friendly gesture. Moses served as mediator of the Sinai covenant, receiving the terms and standing between Yahuah and the people (Galatians 3:19). “There is one mediator between Yahuah and men, the man Messiah Yahushua” (1 Timothy 2:5) names the office precisely: one authorized party bridging the two sides so the covenant can stand. Note the framing — ‘the man’ — the mediator represents men before Yahuah, an appointed intermediary, not a third party equal to the One he mediates toward.",
+      "root": [
+        {
+          "lemma": "mesites",
+          "strong": "G3316",
+          "sense": "a mediator, an arbitrator; the middle party who makes a covenant hold"
+        }
+      ],
+      "courtroomWord": "An office term — the authorized go-between who makes a covenant stand.",
+      "itsRole": "A covenant between parties at distance needs a mediator — the recognized middle party who carries the terms and stands between the two. Moses did it at Sinai; the Messiah does it for the renewed covenant. The office is representative: the mediator stands for men before Yahuah, an appointed intermediary. ‘One mediator... the man Messiah Yahushua’ locates Him as the authorized bridge, not a co-equal to the One toward whom He mediates.",
+      "proofTexts": [
+        {
+          "ref": "1 Timothy 2:5",
+          "text": "One mediator between Yahuah and men, the man Messiah Yahushua.",
+          "note": "The office named — the mediator a man, for men."
+        },
+        {
+          "ref": "Galatians 3:19",
+          "text": "Ordained by angels in the hand of a mediator.",
+          "note": "Moses as covenant mediator."
+        },
+        {
+          "ref": "Hebrews 9:15",
+          "text": "He is the mediator of the new testament.",
+          "note": "The office for the renewed covenant."
+        },
+        {
+          "ref": "Hebrews 12:24",
+          "text": "To Yahushua the mediator of the new covenant.",
+          "note": "The go-between who makes it hold."
+        }
+      ],
+      "plainTerms": [
+        "A mediator is the authorized go-between who stands between two parties to make a covenant hold — an office, not a favor. Moses did it at Sinai; the Messiah does it now. And note ‘the man Messiah Yahushua’: the mediator represents men before Yahuah, an appointed bridge, not a co-equal."
+      ],
+      "bringItHome": [
+        "When two parties cannot come together directly, a recognized middle man carries the terms and makes the agreement stand. That is a mediator. Moses stood between Yahuah and Israel; Yahushua stands between Yahuah and men — ‘the man,’ the appointed go-between, representing us before the bench."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahushua",
+          "role": "the Mediator",
+          "does": "the appointed man who stands between Yahuah and men to make the covenant hold."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the one party",
+          "does": "toward whom the mediator represents men."
+        },
+        {
+          "who": "The people",
+          "role": "the other party",
+          "does": "whom the mediator represents."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 9,
+          "term": "Advocate"
+        },
+        {
+          "n": 12,
+          "term": "Intercession"
+        },
+        {
+          "n": 120,
+          "term": "Surety"
+        },
+        {
+          "n": 29,
+          "term": "Reconcile"
+        }
+      ]
+    },
+    "36": {
+      "n": 36,
+      "term": "Memorial",
+      "movement": 6,
+      "rootLine": "zikaron — Hebrew",
+      "caseStrongs": "H2146",
+      "lead": "A memorial is a remembrance filed on the record — an act or object that keeps a matter formally before the court, and before Yahuah. The feast of Pesach is “a memorial” (Exodus 12:14); the stones from Jordan stand as a memorial (Joshua 4:7); the offering bears ‘the memorial thereof’ before Yahuah. A memorial is not mere nostalgia; it is a deliberate entry into the record, a marker set so that a thing is not forgotten but kept on file. Prayers and deeds can “come up for a memorial before Elohim” (Acts 10:4) — entered before the bench. The memorial is evidence deliberately preserved.",
+      "root": [
+        {
+          "lemma": "zikaron",
+          "strong": "H2146",
+          "sense": "a memorial, remembrance; from zakar, to remember — a record kept before"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "zakar-H2142",
+        "siblings": [
+          {
+            "n": 45,
+            "term": "Remember"
+          }
+        ],
+        "note": "Zikaron is from zakar (to remember): the memorial (zikaron) is the record that keeps a matter remembered (zakar) before the court."
+      },
+      "courtroomWord": "A record term — a remembrance deliberately entered and kept on file.",
+      "itsRole": "A court keeps records so matters are not lost, and the memorial is a record set on purpose — a feast, a stone, an offering — to keep a thing before Yahuah. It is evidence preserved: the deed marked, the deliverance kept on file, the prayer entered ‘for a memorial.’ Far from nostalgia, a memorial is a deliberate entry into the record of the court.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 12:14",
+          "text": "This day shall be unto you for a memorial.",
+          "note": "The deliverance kept on the record."
+        },
+        {
+          "ref": "Joshua 4:7",
+          "text": "These stones shall be for a memorial.",
+          "note": "A marker set to keep the matter remembered."
+        },
+        {
+          "ref": "Acts 10:4",
+          "text": "Thy prayers and thine alms are come up for a memorial before Elohim.",
+          "note": "Deeds entered before the bench."
+        },
+        {
+          "ref": "Leviticus 2:2",
+          "text": "Burn the memorial of it upon the altar.",
+          "note": "The memorial-portion presented before Yahuah."
+        }
+      ],
+      "plainTerms": [
+        "A memorial is a remembrance put on the record — a feast, a stone, an offering — set on purpose so a matter is kept before Yahuah, not forgotten. It is not nostalgia; it is evidence deliberately preserved. Prayers and deeds can come up ‘for a memorial’ before the bench."
+      ],
+      "bringItHome": [
+        "A memorial is not a warm memory — it is a marker deliberately set so a thing stays on the record. Pesach keeps the deliverance on file; the Jordan stones keep the crossing remembered; a prayer comes up ‘for a memorial’ before Elohim. It is evidence, kept on purpose."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the One who remembers",
+          "does": "before whom the memorial is kept."
+        },
+        {
+          "who": "The people",
+          "role": "those who set it",
+          "does": "entering the matter into the record."
+        },
+        {
+          "who": "The memorial",
+          "role": "the record",
+          "does": "the remembrance preserved as evidence."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 7,
+          "term": "Witness"
+        },
+        {
+          "n": 37,
+          "term": "Pillar"
+        },
+        {
+          "n": 90,
+          "term": "Cry"
+        },
+        {
+          "n": 101,
+          "term": "Reckon"
+        }
+      ]
+    },
+    "72": {
+      "n": 72,
+      "term": "Messiah",
+      "movement": 1,
+      "rootLine": "mashiach — Hebrew",
+      "caseStrongs": "H4899",
+      "lead": "Messiah — mashiach, ‘the anointed one’ — is a title of appointed office, not a name and not a claim to independent deity. To be the Messiah is to be the One Yahuah anointed and installed: invested with office by the Anointer, holding authority conferred, not seized. Kings and priests were each a mashiach in their measure; the Messiah is the anointed One in the fullest measure, appointed to reign and to judge by the Father’s own commission. The title itself is a hierarchy: there is One who anoints and one who is anointed. To confess Yahushua as Messiah is to confess Him as the appointed of Yahuah — given dominion, not sharing an eternal throne by nature.",
+      "root": [
+        {
+          "lemma": "mashiach",
+          "strong": "H4899",
+          "sense": "anointed, the anointed one; from mashach, to anoint into office"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "mashach-H4886",
+        "siblings": [
+          {
+            "n": 71,
+            "term": "Anoint"
+          }
+        ],
+        "note": "Mashiach is from mashach (to anoint): the Messiah is the one the anointing produces, the office-holder installed by the Anointer."
+      },
+      "courtroomWord": "A title of appointed office — the One anointed and installed by Yahuah.",
+      "itsRole": "The Messiah holds an office conferred, not a rank possessed by nature. Mashiach means anointed — installed by the Anointer — and the title itself names two parties: One who anoints, one who is anointed. Kings, priests, and prophets were anointed in their measure; the Messiah is the anointed One in full, given dominion and judgment by the Father’s commission. To confess the Messiah is to confess the appointed of Yahuah.",
+      "proofTexts": [
+        {
+          "ref": "Psalm 2:2",
+          "text": "Against Yahuah, and against his anointed.",
+          "note": "The Anointer and the anointed — two parties."
+        },
+        {
+          "ref": "Daniel 9:25",
+          "text": "Unto the Messiah the Prince.",
+          "note": "The anointed One foretold."
+        },
+        {
+          "ref": "Acts 2:36",
+          "text": "Yahuah hath made that same Yahushua... both Lord and Messiah.",
+          "note": "The office conferred by Yahuah."
+        },
+        {
+          "ref": "Acts 10:38",
+          "text": "Yahuah anointed Yahushua of Nazareth.",
+          "note": "The Anointer and the anointed named."
+        }
+      ],
+      "plainTerms": [
+        "Messiah means ‘anointed one’ — a title of appointed office, not a name and not a claim to be co-equal deity. To be the Messiah is to be the One Yahuah anointed and installed, given authority by the Anointer. The title itself has two parties: One who anoints, and one who is anointed."
+      ],
+      "bringItHome": [
+        "‘Messiah’ is not a surname — it is an office, ‘the anointed one.’ And an anointed one, by definition, was anointed by someone: there is an Anointer and an anointed. To confess Yahushua as Messiah is to confess Him as the One Yahuah appointed and installed — given dominion, not sharing a throne by nature."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Anointer",
+          "does": "anoints and installs the Messiah into office."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the Messiah",
+          "does": "the anointed One, given authority to reign and judge."
+        },
+        {
+          "who": "The office",
+          "role": "the anointing",
+          "does": "the commission conferred, not seized."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 71,
+          "term": "Anoint"
+        },
+        {
+          "n": 73,
+          "term": "King"
+        },
+        {
+          "n": 77,
+          "term": "Priest"
+        },
+        {
+          "n": 74,
+          "term": "Throne"
+        }
+      ]
+    },
+    "87": {
+      "n": 87,
+      "term": "Mouth",
+      "movement": 6,
+      "rootLine": "peh — Hebrew",
+      "caseStrongs": "H6310",
+      "lead": "The mouth is where testimony and decree issue — the organ of legal utterance. “At the mouth of two witnesses... shall the matter be established” (Deuteronomy 19:15) counts mouths, not hearings: the case stands on independent testimony spoken. And “out of thine own mouth will I judge thee” (Luke 19:22) makes one’s own words evidence against oneself. The mouth is the point where a matter enters the record — by testimony, by confession, by oath, by decree. To establish a thing ‘at the mouth’ of witnesses is to require it spoken and corroborated; the mouth is where the word becomes legally binding.",
+      "root": [
+        {
+          "lemma": "peh",
+          "strong": "H6310",
+          "sense": "mouth; the organ of speech, testimony, and decree"
+        }
+      ],
+      "courtroomWord": "A testimony term — the point where a matter is spoken into the record.",
+      "itsRole": "A court runs on what is spoken, and the mouth is where speech becomes legal. Testimony is counted ‘at the mouth’ of witnesses; confession, oath, and decree all issue from it; one’s own mouth can convict. The two-or-three-witness rule counts mouths precisely — independent sources of speech, corroborated. The mouth is where a word enters the record and becomes binding.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 19:15",
+          "text": "At the mouth of two witnesses... shall the matter be established.",
+          "note": "The case counted by mouths."
+        },
+        {
+          "ref": "Deuteronomy 17:6",
+          "text": "At the mouth of two witnesses, or three witnesses, shall he... be put to death.",
+          "note": "Testimony required at the mouth."
+        },
+        {
+          "ref": "Luke 19:22",
+          "text": "Out of thine own mouth will I judge thee.",
+          "note": "One’s own words as evidence."
+        },
+        {
+          "ref": "Matthew 18:16",
+          "text": "In the mouth of two or three witnesses every word may be established.",
+          "note": "Corroboration at the mouth."
+        }
+      ],
+      "plainTerms": [
+        "The mouth is where legal words are spoken — testimony, confession, oath, decree. ‘At the mouth of two witnesses’ counts mouths, not hearings: a matter stands on independent testimony. And your own mouth can convict you. The mouth is where a word enters the record and becomes binding."
+      ],
+      "bringItHome": [
+        "A matter was established ‘at the mouth’ of two or three witnesses — the count was of mouths, of independent voices, not one story repeated. The mouth is where words become legal: testimony given, oaths sworn, and sometimes a man’s own words used to judge him."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The witnesses",
+          "role": "the mouths",
+          "does": "whose independent testimony establishes the matter."
+        },
+        {
+          "who": "The party",
+          "role": "the one judged",
+          "does": "whose own mouth can convict him."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "establishes the matter at the mouth of witnesses."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 88,
+          "term": "Tongue"
+        },
+        {
+          "n": 7,
+          "term": "Witness"
+        },
+        {
+          "n": 90,
+          "term": "Cry"
+        },
+        {
+          "n": 36,
+          "term": "Memorial"
         }
       ]
     }
