@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0801 V6",
+    "version": "0801 V7",
     "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -24,7 +24,8 @@
       "0731 V3: merged 7 break-term word pages (129,130,133,134,135,136,142) into words; those terms set page draft-v1. Break callouts render from the term break note, not duplicated in the record.",
       "0801 V4: merged 12 word pages (Account–Betroth: 102,117,10,61,94,9,39,71,20,131,114,91) into words; those terms set page draft-v1.",
       "0801 V5: merged 12 word pages (Birthright–Confess: 60,89,31,59,92,58,116,98,137,67,5,49) into words; those terms set page draft-v1.",
-      "0801 V6: merged 12 word pages (Covenant–Eretz Gezerah: 18,76,90,41,17,50,127,95,138,78,32,123) into words; those terms set page draft-v1."
+      "0801 V6: merged 12 word pages (Covenant–Eretz Gezerah: 18,76,90,41,17,50,127,95,138,78,32,123) into words; those terms set page draft-v1.",
+      "0801 V7: merged 12 word pages (Face–Hupo Nomon: 83,100,99,85,16,64,79,119,81,46,52,139) into words; those terms set page draft-v1."
     ]
   },
   "movements": [
@@ -170,7 +171,8 @@
       "n": 16,
       "term": "Forgive",
       "movement": 4,
-      "gloss": "to lift the charge from the record"
+      "gloss": "to lift the charge from the record",
+      "page": "draft-v1"
     },
     {
       "n": 17,
@@ -358,7 +360,8 @@
       "n": 46,
       "term": "Hear",
       "movement": 5,
-      "gloss": "to heed and comply"
+      "gloss": "to heed and comply",
+      "page": "draft-v1"
     },
     {
       "n": 47,
@@ -396,7 +399,8 @@
       "n": 52,
       "term": "Heir",
       "movement": 3,
-      "gloss": "one with standing to receive"
+      "gloss": "one with standing to receive",
+      "page": "draft-v1"
     },
     {
       "n": 53,
@@ -472,7 +476,8 @@
       "n": 64,
       "term": "Free",
       "movement": 3,
-      "gloss": "manumitted standing"
+      "gloss": "manumitted standing",
+      "page": "draft-v1"
     },
     {
       "n": 65,
@@ -566,7 +571,8 @@
       "n": 79,
       "term": "Gate",
       "movement": 1,
-      "gloss": "the courthouse of the city"
+      "gloss": "the courthouse of the city",
+      "page": "draft-v1"
     },
     {
       "n": 80,
@@ -578,7 +584,8 @@
       "n": 81,
       "term": "Hand",
       "movement": 1,
-      "gloss": "power, custody, jurisdiction"
+      "gloss": "power, custody, jurisdiction",
+      "page": "draft-v1"
     },
     {
       "n": 82,
@@ -590,7 +597,8 @@
       "n": 83,
       "term": "Face",
       "movement": 1,
-      "gloss": "presence, the standing to appear"
+      "gloss": "presence, the standing to appear",
+      "page": "draft-v1"
     },
     {
       "n": 84,
@@ -602,7 +610,8 @@
       "n": 85,
       "term": "Footstool",
       "movement": 1,
-      "gloss": "dominion, the conquered under foot"
+      "gloss": "dominion, the conquered under foot",
+      "page": "draft-v1"
     },
     {
       "n": 86,
@@ -693,13 +702,15 @@
       "n": 99,
       "term": "Favor",
       "movement": 4,
-      "gloss": "unearned standing granted from above"
+      "gloss": "unearned standing granted from above",
+      "page": "draft-v1"
     },
     {
       "n": 100,
       "term": "Faithful",
       "movement": 5,
-      "gloss": "fidelity that holds under test"
+      "gloss": "fidelity that holds under test",
+      "page": "draft-v1"
     },
     {
       "n": 101,
@@ -817,7 +828,8 @@
       "n": 119,
       "term": "Guilty",
       "movement": 7,
-      "gloss": "liable, owing the debt assessed"
+      "gloss": "liable, owing the debt assessed",
+      "page": "draft-v1"
     },
     {
       "n": 120,
@@ -986,7 +998,8 @@
       "term": "Hupo Nomon",
       "movement": 7,
       "gloss": "under the sentence, not under obligation to obey",
-      "strongs": "hupo nomon"
+      "strongs": "hupo nomon",
+      "page": "draft-v1"
     },
     {
       "n": 140,
@@ -1252,6 +1265,100 @@
         {
           "n": 9,
           "term": "Advocate"
+        }
+      ]
+    },
+    "16": {
+      "n": 16,
+      "term": "Forgive",
+      "movement": 4,
+      "rootLine": "nasa — Hebrew",
+      "caseStrongs": "H5375",
+      "lead": "The church pictures forgiveness as a change of feeling — letting go of a grudge. But nasa means to lift, to carry, to bear away: the legal removal of a charge from the account. To forgive iniquity is to pick the liability up off the record and haul it elsewhere. “Blessed is he whose transgression is forgiven” — lifted — (Psalm 32:1) describes a debt physically removed from the ledger, not an emotion softened. What gets lifted is something the law had entered in the first place. No entry, nothing to lift; no debt, nothing to forgive.",
+      "root": [
+        {
+          "lemma": "nasa",
+          "strong": "H5375",
+          "sense": "to lift, to carry, to bear, to take away; to bear off a charge"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "nasa-H5375",
+        "siblings": [
+          {
+            "n": 122,
+            "term": "Nasa Avon"
+          },
+          {
+            "n": 84,
+            "term": "Lift the face"
+          }
+        ],
+        "note": "One verb, three legal motions: to lift a charge away (forgive), to bear the liability of a charge (nasa avon), and to lift a face in partiality (nasa panim)."
+      },
+      "courtroomWord": "A removal term — the lifting of a charge off the record.",
+      "itsRole": "Forgiveness is not the softening of a feeling but the lifting of a liability — the charge carried off the account so the ledger clears. Because nasa means to bear, the charge lifted from the guilty must be borne by another; the same verb runs through the Servant who bare the sin of many. To forgive is to remove the entry — which presupposes an entry the law had made.",
+      "proofTexts": [
+        {
+          "ref": "Psalm 32:1",
+          "text": "Blessed is he whose transgression is forgiven.",
+          "note": "The charge lifted from the record."
+        },
+        {
+          "ref": "Exodus 34:7",
+          "text": "Forgiving iniquity and transgression and sin.",
+          "note": "The liability carried away."
+        },
+        {
+          "ref": "Isaiah 53:12",
+          "text": "He bare the sin of many.",
+          "note": "The charge lifted from the guilty, borne by the Servant."
+        },
+        {
+          "ref": "Micah 7:18",
+          "text": "That pardoneth iniquity... he retaineth not his anger.",
+          "note": "The debt removed, not merely overlooked."
+        }
+      ],
+      "plainTerms": [
+        "To forgive is to lift a charge off the record — to carry the liability away — not just to feel better about a wrong. And because the word means ‘bear,’ what is lifted from the guilty is carried by another. No charge on the books, nothing to forgive."
+      ],
+      "bringItHome": [
+        "Forgiveness is not shrugging off a feeling; it is lifting a debt off the ledger and carrying it away. And the same word says who carries it: the Servant who bare the sin of many. The charge does not vanish — it is lifted from you and borne by Him."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "lifts the charge from the record."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the bearer",
+          "does": "the Servant who bears the sin lifted from the guilty."
+        },
+        {
+          "who": "The guilty",
+          "role": "the debtor",
+          "does": "whose liability is carried away."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 20,
+          "term": "Atonement"
+        },
+        {
+          "n": 89,
+          "term": "Blood"
+        },
+        {
+          "n": 29,
+          "term": "Reconcile"
+        },
+        {
+          "n": 99,
+          "term": "Favor"
         }
       ]
     },
@@ -1960,6 +2067,86 @@
         }
       ]
     },
+    "46": {
+      "n": 46,
+      "term": "Hear",
+      "movement": 5,
+      "rootLine": "shama — Hebrew",
+      "caseStrongs": "H8085",
+      "lead": "To hear, in Torah, is to heed and comply — hearing that carries obedience as its legal freight. “Hear, O Israel” (Deuteronomy 6:4) does not request attention; it summons a people to obey the terms about to be read. Shama is the vassal’s response to the suzerain’s stipulations: to hear is to submit to the ruling. This is why hearing is never passive in Scripture but the beginning of allegiance. The one who truly hears is the one who does; the one who hears and refuses to comply is, in the law’s own reckoning, one who has not heard at all.",
+      "root": [
+        {
+          "lemma": "shama",
+          "strong": "H8085",
+          "sense": "to hear, to listen, to heed, to obey"
+        }
+      ],
+      "courtroomWord": "A compliance term — hearing that carries obedience to the terms read.",
+      "itsRole": "In covenant, to hear is to submit — the response of a party to the stipulations set before it. ‘Hear, O Israel’ summons obedience, not attention. Shama binds hearing and doing together: to hear the terms is to come under them. This is why the disobedient are said not to have heard — in the law’s reckoning, hearing that does not comply is not hearing at all.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 6:4",
+          "text": "Hear, O Israel: Yahuah our Elohim is one Yahuah.",
+          "note": "The summons to obey the terms."
+        },
+        {
+          "ref": "Exodus 24:7",
+          "text": "All that Yahuah hath said will we do, and be obedient.",
+          "note": "Hearing joined to doing."
+        },
+        {
+          "ref": "1 Samuel 15:22",
+          "text": "To obey is better than sacrifice.",
+          "note": "Heeding as the covenant response."
+        },
+        {
+          "ref": "James 1:22",
+          "text": "Be ye doers of the word, and not hearers only.",
+          "note": "Hearing that does not comply is empty."
+        }
+      ],
+      "plainTerms": [
+        "In Torah, to hear means to heed and obey — not just to listen. ‘Hear, O Israel’ is a call to comply with the terms, not to pay attention. Hearing and doing are one: if you hear and don’t obey, Scripture says you haven’t really heard."
+      ],
+      "bringItHome": [
+        "When a lord read his terms to those under him, ‘hear’ meant ‘submit to this’ — not merely ‘notice it.’ That is shama. ‘Hear, O Israel’ calls a people to come under the covenant, and the proof of hearing is doing. Hearing without obeying, in the law’s own accounting, is not hearing."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Sovereign",
+          "does": "sets the terms to be heard and heeded."
+        },
+        {
+          "who": "The people",
+          "role": "the party",
+          "does": "hear, and by hearing come under the terms."
+        },
+        {
+          "who": "The terms",
+          "role": "the stipulations",
+          "does": "read to be obeyed, not merely noted."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 47,
+          "term": "Walk"
+        },
+        {
+          "n": 48,
+          "term": "Keep"
+        },
+        {
+          "n": 45,
+          "term": "Remember"
+        },
+        {
+          "n": 49,
+          "term": "Confess"
+        }
+      ]
+    },
     "49": {
       "n": 49,
       "term": "Confess",
@@ -2122,6 +2309,100 @@
         {
           "n": 46,
           "term": "Hear"
+        }
+      ]
+    },
+    "52": {
+      "n": 52,
+      "term": "Heir",
+      "movement": 3,
+      "rootLine": "kleronomos — Greek",
+      "caseStrongs": "G2818",
+      "lead": "An heir is one with legal standing to receive an estate — not a beggar hoping for kindness, but a party holding a recognized claim the law will enforce. “If children, then heirs; heirs of Yahuah” (Romans 8:17) confers legal status, not merely affection. An heir’s expectation is guaranteed by his position: the estate is coming to him by right of standing. This is the dignity buried in the word — to be made an heir of Yahuah is to be granted enforceable title to an inheritance, entered on the estate as one legally entitled to receive.",
+      "root": [
+        {
+          "lemma": "kleronomos",
+          "strong": "G2818",
+          "sense": "an heir; one who receives an allotted inheritance"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "kleron-G281x",
+        "siblings": [
+          {
+            "n": 51,
+            "term": "Inheritance"
+          },
+          {
+            "n": 53,
+            "term": "Inherit"
+          }
+        ],
+        "note": "All from the kleron- root: the heir (kleronomos) receives the inheritance (kleronomia) by inheriting (kleronomeo)."
+      },
+      "courtroomWord": "A standing term — one with the legal right to receive an estate.",
+      "itsRole": "An heir is defined by standing, not hope: the estate is his by right, and the law will enforce the claim. To be made an heir of Yahuah is to be granted that standing — an enforceable title to the inheritance, entered on the estate. It is why the believer’s expectation is secure: not a wish for kindness, but a recognized legal claim guaranteed by his position as son.",
+      "proofTexts": [
+        {
+          "ref": "Romans 8:17",
+          "text": "If children, then heirs; heirs of Yahuah, and joint-heirs with Messiah.",
+          "note": "Legal standing to receive."
+        },
+        {
+          "ref": "Galatians 4:7",
+          "text": "No more a servant, but a son; and if a son, then an heir.",
+          "note": "The status that carries the estate."
+        },
+        {
+          "ref": "Titus 3:7",
+          "text": "Heirs according to the hope of eternal life.",
+          "note": "The enforceable expectation."
+        },
+        {
+          "ref": "Hebrews 1:2",
+          "text": "Whom he hath appointed heir of all things.",
+          "note": "The Son appointed heir by the Father."
+        }
+      ],
+      "plainTerms": [
+        "An heir is someone with the legal right to receive an estate — not begging for a gift, but holding a claim the law will enforce. To be an heir of Yahuah is to be granted that standing: the inheritance is yours by right, secured by your position as a son."
+      ],
+      "bringItHome": [
+        "An heir does not hope the family might be generous — he holds a legal claim on the estate, and the law backs it. That is what it means to be made an heir of Yahuah: not a beggar at the door, but a son with enforceable title to the inheritance."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Father, the Testator",
+          "does": "confers the standing of heir."
+        },
+        {
+          "who": "The heir",
+          "role": "the son",
+          "does": "holds enforceable title to the estate."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the appointed heir",
+          "does": "heir of all things by the Father’s appointment, with whom the sons are joint-heirs."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 51,
+          "term": "Inheritance"
+        },
+        {
+          "n": 53,
+          "term": "Inherit"
+        },
+        {
+          "n": 61,
+          "term": "Adoption"
+        },
+        {
+          "n": 62,
+          "term": "Sonship"
         }
       ]
     },
@@ -2465,6 +2746,86 @@
         }
       ]
     },
+    "64": {
+      "n": 64,
+      "term": "Free",
+      "movement": 3,
+      "rootLine": "eleutheros — Greek",
+      "caseStrongs": "G1658",
+      "lead": "Free is manumitted status — the standing of one released from legal bondage, entered on the record. Freedom in Scripture is a change of legal position, from bound to loosed, not merely a feeling of ease: “stand fast therefore in the liberty wherewith Messiah hath made us free” (Galatians 5:1). The freedman held documented standing that could be defended. This is why liberty must be ‘stood fast’ in — it is a legal status one can be argued back out of. To be made free is to have one’s bondage lawfully ended and one’s release certified, a new standing granted by an authority competent to grant it.",
+      "root": [
+        {
+          "lemma": "eleutheros",
+          "strong": "G1658",
+          "sense": "free, freeborn or freed; not under bondage"
+        }
+      ],
+      "courtroomWord": "A status term — the standing of one legally released from bondage.",
+      "itsRole": "Freedom is a legal position, not a mood — the released bondman holds a new standing on the record. It can be defended, and it can be forfeited, which is why Scripture commands standing fast in it. To be made free is to have an authority competent to release you certify your release: the bondage lawfully ended, the new status entered. Liberty is enacted and recorded, not merely felt.",
+      "proofTexts": [
+        {
+          "ref": "Galatians 5:1",
+          "text": "Stand fast therefore in the liberty wherewith Messiah hath made us free.",
+          "note": "A status to be held, defensible."
+        },
+        {
+          "ref": "John 8:36",
+          "text": "If the Son therefore shall make you free, ye shall be free indeed.",
+          "note": "Release by a competent authority."
+        },
+        {
+          "ref": "Romans 6:18",
+          "text": "Being then made free from sin.",
+          "note": "The change of legal position."
+        },
+        {
+          "ref": "1 Corinthians 7:22",
+          "text": "Is Messiah’s freeman.",
+          "note": "The freed standing named."
+        }
+      ],
+      "plainTerms": [
+        "Free is a legal status — released from bondage and certified as such — not just a feeling of ease. It can be defended and it can be lost, which is why Scripture says to stand fast in it. To be made free is to have your release granted by one with the authority to grant it."
+      ],
+      "bringItHome": [
+        "A freed slave did not just feel different — he held papers, a new legal standing that a court would recognize and defend. That is freedom in Scripture: bondage lawfully ended, release certified. And because a status can be argued away, we are told to stand fast in it."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahushua",
+          "role": "the One who frees",
+          "does": "releases the bound by competent authority."
+        },
+        {
+          "who": "The freed",
+          "role": "the former bondman",
+          "does": "granted a new, defensible standing."
+        },
+        {
+          "who": "The bondage",
+          "role": "the prior status",
+          "does": "lawfully ended and recorded."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 63,
+          "term": "Servant"
+        },
+        {
+          "n": 61,
+          "term": "Adoption"
+        },
+        {
+          "n": 62,
+          "term": "Sonship"
+        },
+        {
+          "n": 65,
+          "term": "Sojourner"
+        }
+      ]
+    },
     "67": {
       "n": 67,
       "term": "Clean",
@@ -2797,6 +3158,336 @@
         {
           "n": 80,
           "term": "Stand"
+        }
+      ]
+    },
+    "79": {
+      "n": 79,
+      "term": "Gate",
+      "movement": 1,
+      "rootLine": "shaar — Hebrew",
+      "caseStrongs": "H8179",
+      "lead": "The gate was the courthouse of the ancient city — the place where elders convened, contracts were witnessed, and cases were tried. “Then shall the elders of that city... say” (Deuteronomy 21:20); Boaz conducts his legal business ‘up to the gate’ (Ruth 4:1). To seek judgment ‘in the gate’ (Amos 5:15) was to seek it in court. The gate was the civic and legal center, the venue of law. This gives depth to ‘the gates of hell shall not prevail’ — a contest of authorities, court against court. The gate is where standing was established and verdicts were rendered.",
+      "root": [
+        {
+          "lemma": "shaar",
+          "strong": "H8179",
+          "sense": "a gate; the city gate, the seat of law and judgment"
+        }
+      ],
+      "courtroomWord": "A venue term — the courthouse of the city, where cases were tried.",
+      "itsRole": "Justice had a place, and it was the gate — where elders sat, witnesses gathered, contracts were sealed, and verdicts were pronounced. To take a matter to the gate was to take it to court. The gate is the venue of law, and the imagery of contending gates is a contest of jurisdictions. Where the gate is, judgment is rendered.",
+      "proofTexts": [
+        {
+          "ref": "Ruth 4:1",
+          "text": "Then went Boaz up to the gate, and sat him down.",
+          "note": "Legal business transacted at the gate."
+        },
+        {
+          "ref": "Deuteronomy 21:19",
+          "text": "Unto the elders of his city, and unto the gate.",
+          "note": "The gate as the court."
+        },
+        {
+          "ref": "Amos 5:15",
+          "text": "Establish judgment in the gate.",
+          "note": "Justice done in the venue of law."
+        },
+        {
+          "ref": "Proverbs 31:23",
+          "text": "Her husband is known in the gates, when he sitteth among the elders.",
+          "note": "The gate as the seat of the magistrates."
+        }
+      ],
+      "plainTerms": [
+        "The gate was the city’s courthouse — where elders judged cases, witnesses gathered, and contracts were sealed. ‘Judgment in the gate’ means justice done in court. It was the legal center of the town."
+      ],
+      "bringItHome": [
+        "When a dispute needed settling in an ancient city, everyone went to the gate — the elders sat there, cases were heard there, deals were witnessed there. It was the courthouse. So ‘judgment in the gate’ is simply ‘justice in court,’ and warring gates are warring authorities."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The elders",
+          "role": "the magistrates",
+          "does": "sit in the gate to judge."
+        },
+        {
+          "who": "The parties",
+          "role": "the disputants",
+          "does": "bring their case to the gate."
+        },
+        {
+          "who": "The gate",
+          "role": "the venue",
+          "does": "the court where standing is set and verdicts rendered."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 78,
+          "term": "Elder"
+        },
+        {
+          "n": 1,
+          "term": "Judge"
+        },
+        {
+          "n": 80,
+          "term": "Stand"
+        },
+        {
+          "n": 86,
+          "term": "Sit"
+        }
+      ]
+    },
+    "81": {
+      "n": 81,
+      "term": "Hand",
+      "movement": 1,
+      "rootLine": "yad — Hebrew",
+      "caseStrongs": "H3027",
+      "lead": "The hand is power, custody, and jurisdiction. To be ‘delivered into the hand’ of an enemy is to pass under legal control (Judges 2:14); to be redeemed ‘out of the hand’ is release from custody (Exodus 6:6). The hand is the reach of authority, the sphere in which one holds jurisdiction over persons and property. This is why placing a matter ‘in the hand’ of a mediator, or a life ‘in thy hand,’ is entrusting it to that party’s legal power. The body’s hand becomes the law’s shorthand for who holds control — whose jurisdiction a person or a thing currently falls under.",
+      "root": [
+        {
+          "lemma": "yad",
+          "strong": "H3027",
+          "sense": "hand; power, control, custody, jurisdiction"
+        }
+      ],
+      "courtroomWord": "A jurisdiction term — the reach of authority; whose control a person or thing is under.",
+      "itsRole": "Custody and control are spoken as ‘the hand.’ To fall into a hand is to pass under jurisdiction; to be redeemed from a hand is to be released from it. The hand marks who holds legal power over a person or property at any moment. To commit something into the hand of another is to transfer it to that party’s authority. It is the law’s shorthand for control.",
+      "proofTexts": [
+        {
+          "ref": "Judges 2:14",
+          "text": "He delivered them into the hands of spoilers.",
+          "note": "Passing under an enemy’s control."
+        },
+        {
+          "ref": "Exodus 6:6",
+          "text": "I will rid you out of their bondage... and I will redeem you.",
+          "note": "Release from the hand of the oppressor."
+        },
+        {
+          "ref": "Deuteronomy 32:39",
+          "text": "Neither is there any that can deliver out of my hand.",
+          "note": "The ultimate jurisdiction."
+        },
+        {
+          "ref": "Psalm 31:5",
+          "text": "Into thine hand I commit my spirit.",
+          "note": "Committing a matter to another’s authority."
+        }
+      ],
+      "plainTerms": [
+        "The hand, in Scripture, means power and control — whose custody you are in. Delivered ‘into the hand’ of an enemy means under their control; redeemed ‘out of the hand’ means released. To put something ‘in the hand’ of another is to give them authority over it."
+      ],
+      "bringItHome": [
+        "‘In the hand of’ is simply ‘under the control of.’ To be in an enemy’s hand is to be in his custody; to be pulled out of his hand is to be freed. And to commit your spirit into Yahuah’s hand is to place yourself under His authority — the safest custody there is."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the ultimate authority",
+          "does": "out of whose hand none can deliver; into whose hand one commits himself."
+        },
+        {
+          "who": "The captor or ruler",
+          "role": "the holder",
+          "does": "whose hand holds control for a time."
+        },
+        {
+          "who": "The person or thing held",
+          "role": "the subject",
+          "does": "under whichever jurisdiction currently holds it."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 82,
+          "term": "Right hand"
+        },
+        {
+          "n": 83,
+          "term": "Face"
+        },
+        {
+          "n": 85,
+          "term": "Footstool"
+        },
+        {
+          "n": 80,
+          "term": "Stand"
+        }
+      ]
+    },
+    "83": {
+      "n": 83,
+      "term": "Face",
+      "movement": 1,
+      "rootLine": "panim — Hebrew",
+      "caseStrongs": "H6440",
+      "lead": "In Scripture the face is presence before authority — the standing to appear. To ‘seek the face’ of Yahuah is to petition the court for audience; to have Him ‘hide his face’ is to be denied a hearing (Psalm 27:9). To appear ‘before the face’ is a legal presentation, an entrance into the presence of the one who decides. This is why the priests bore the tribes’ names before Yahuah and the bread of the Presence sat before His face — the language is of parties represented in court. The blessing “Yahuah make his face shine upon thee” (Numbers 6:25) is a plea for favorable audience before the bench.",
+      "root": [
+        {
+          "lemma": "panim",
+          "strong": "H6440",
+          "sense": "face, presence; the front, the standing to appear before"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "panim-H6440",
+        "siblings": [
+          {
+            "n": 84,
+            "term": "Lift the face"
+          }
+        ],
+        "note": "Nasa panim — ‘to lift the face’ — shares panim: appearing before the face (audience) and lifting the face (partiality) are two courtroom uses of the same word."
+      },
+      "courtroomWord": "A presence term — the standing to appear before the one who decides.",
+      "itsRole": "To come before the face is to be granted audience by the court; to be shut from it is to be denied a hearing. Presence before Yahuah is a legal presentation, not a mood of closeness. The priest represents the tribes before the face; the petitioner seeks the face; the blessing asks the face to shine — favorable audience granted. The face is where standing to appear is exercised.",
+      "proofTexts": [
+        {
+          "ref": "Numbers 6:25",
+          "text": "Yahuah make his face shine upon thee.",
+          "note": "The plea for favorable audience."
+        },
+        {
+          "ref": "Psalm 27:9",
+          "text": "Hide not thy face far from me.",
+          "note": "The fear of being denied a hearing."
+        },
+        {
+          "ref": "Exodus 33:20",
+          "text": "Thou canst not see my face... and live.",
+          "note": "The weight of standing before the Presence."
+        },
+        {
+          "ref": "Psalm 24:6",
+          "text": "That seek thy face, O Elohim of Jacob.",
+          "note": "The petition for audience."
+        }
+      ],
+      "plainTerms": [
+        "The face, in Scripture, is presence and audience — the standing to appear before Yahuah. To seek His face is to ask for a hearing; to have Him hide it is to be denied one. It is courtroom language, not romance."
+      ],
+      "bringItHome": [
+        "To come ‘before the face’ of a king was to be granted an audience — admitted into his presence to make your case. That is what seeking Yahuah’s face means: the standing to appear before the Judge. And when the blessing asks His face to shine on you, it asks for a favorable hearing."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the One before whom one appears",
+          "does": "grants or hides audience."
+        },
+        {
+          "who": "The petitioner",
+          "role": "the party",
+          "does": "seeks the face, exercises standing to appear."
+        },
+        {
+          "who": "The priest",
+          "role": "the representative",
+          "does": "bears the people’s names before the face."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 80,
+          "term": "Stand"
+        },
+        {
+          "n": 82,
+          "term": "Right hand"
+        },
+        {
+          "n": 86,
+          "term": "Sit"
+        },
+        {
+          "n": 81,
+          "term": "Hand"
+        }
+      ]
+    },
+    "85": {
+      "n": 85,
+      "term": "Footstool",
+      "movement": 1,
+      "rootLine": "hadom — Hebrew",
+      "caseStrongs": "H1916",
+      "lead": "The footstool is dominion and subjugation — the defeated placed lawfully under the ruler’s feet. “Until I make thine enemies thy footstool” (Psalm 110:1) is a declaration of total jurisdiction: the conquered reduced to the ruler’s possession, under his authority in the most literal posture. The earth called Yahuah’s footstool (Isaiah 66:1) declares His dominion over it. The image is legal as much as martial — conquest converted into settled, rightful rule. To be made a footstool is to be brought fully under another’s lawful authority, the contest ended and the jurisdiction absolute.",
+      "root": [
+        {
+          "lemma": "hadom",
+          "strong": "H1916",
+          "sense": "a footstool; that placed under the feet"
+        }
+      ],
+      "courtroomWord": "A dominion term — the subjugated placed under the ruler’s lawful authority.",
+      "itsRole": "When a contest for authority ends, the loser is placed under the victor’s feet — not merely defeated but brought under jurisdiction. The footstool marks that settled dominion. ‘Sit at my right hand until I make thine enemies thy footstool’ hands the enthroned One total authority over every rival, the subjugation lawful and complete. To be a footstool is to be under absolute, rightful rule.",
+      "proofTexts": [
+        {
+          "ref": "Psalm 110:1",
+          "text": "Until I make thine enemies thy footstool.",
+          "note": "Total jurisdiction over every rival."
+        },
+        {
+          "ref": "Isaiah 66:1",
+          "text": "The earth is my footstool.",
+          "note": "Yahuah’s dominion over all."
+        },
+        {
+          "ref": "1 Corinthians 15:25",
+          "text": "Till he hath put all enemies under his feet.",
+          "note": "Subjugation made complete."
+        },
+        {
+          "ref": "Hebrews 10:13",
+          "text": "Till his enemies be made his footstool.",
+          "note": "The settled, awaited dominion."
+        }
+      ],
+      "plainTerms": [
+        "A footstool is what is placed under the ruler’s feet — the defeated brought fully under his authority. ‘Enemies made a footstool’ means total, settled dominion, not just a won battle. The earth as Yahuah’s footstool declares He rules it all."
+      ],
+      "bringItHome": [
+        "An ancient king would rest his feet on the necks of the conquered — the picture of a contest ended and authority made absolute. That is the footstool: not just defeat, but subjugation under lawful rule. ‘Enemies made thy footstool’ hands the King total jurisdiction."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Sovereign",
+          "does": "places every rival under lawful dominion."
+        },
+        {
+          "who": "The enthroned One",
+          "role": "the ruler",
+          "does": "given total jurisdiction over His enemies."
+        },
+        {
+          "who": "The subjugated",
+          "role": "the footstool",
+          "does": "brought fully under rightful authority."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 82,
+          "term": "Right hand"
+        },
+        {
+          "n": 74,
+          "term": "Throne"
+        },
+        {
+          "n": 75,
+          "term": "Scepter"
+        },
+        {
+          "n": 73,
+          "term": "King"
         }
       ]
     },
@@ -3375,6 +4066,166 @@
         }
       ]
     },
+    "99": {
+      "n": 99,
+      "term": "Favor",
+      "movement": 4,
+      "rootLine": "chen — Hebrew",
+      "caseStrongs": "H2580",
+      "lead": "Favor is a favorable disposition or ruling extended toward one who holds no claim to it. To ‘find favor in the eyes’ of a king or a judge is to receive what could not be demanded — an outcome granted from above, not owed from below (Esther 5:2; Genesis 6:8). Favor is unearned standing bestowed by one with the authority to bestow it. This is the clean Hebrew sense underneath the softer modern word: not a warm feeling, but a ruling in one’s favor that the recipient could not have compelled. Favor is the court inclining toward a party out of the judge’s own good will, apart from merit.",
+      "root": [
+        {
+          "lemma": "chen",
+          "strong": "H2580",
+          "sense": "favor, grace, acceptance; a favorable disposition granted"
+        }
+      ],
+      "courtroomWord": "A disposition term — a favorable inclination or ruling granted apart from merit.",
+      "itsRole": "Some outcomes cannot be demanded, only granted — and favor is the granting. To find favor is to receive a favorable ruling one had no standing to require, extended by an authority free to extend it. Noah found favor; Esther obtained favor; the recipient contributes nothing but the finding. Favor is the court’s own goodwill, inclining toward a party who could not compel it.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 6:8",
+          "text": "But Noah found grace in the eyes of Yahuah.",
+          "note": "Favor granted, not earned."
+        },
+        {
+          "ref": "Esther 5:2",
+          "text": "She obtained favour in his sight.",
+          "note": "The favorable disposition of the one in authority."
+        },
+        {
+          "ref": "Exodus 33:17",
+          "text": "Thou hast found grace in my sight.",
+          "note": "Favor as accepted standing."
+        },
+        {
+          "ref": "Proverbs 3:4",
+          "text": "So shalt thou find favour... in the sight of Elohim and man.",
+          "note": "Favor as a granted acceptance."
+        }
+      ],
+      "plainTerms": [
+        "Favor is a favorable ruling you could not demand — granted from above out of the giver’s goodwill, not owed to you. It is the clean sense under the softer word ‘grace’: not a feeling, but the court inclining toward you apart from what you earned."
+      ],
+      "bringItHome": [
+        "Esther could not demand the king’s welcome — she could only find favor, and he extended the scepter. That is favor: a favorable ruling granted by one free to grant it, to someone with no claim to require it. Noah found it in Yahuah’s eyes the same way."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the authority",
+          "does": "extends favor out of His own goodwill."
+        },
+        {
+          "who": "The recipient",
+          "role": "the one who finds favor",
+          "does": "granted standing he could not demand."
+        },
+        {
+          "who": "The favor",
+          "role": "the disposition",
+          "does": "the favorable ruling, unearned."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 16,
+          "term": "Forgive"
+        },
+        {
+          "n": 20,
+          "term": "Atonement"
+        },
+        {
+          "n": 29,
+          "term": "Reconcile"
+        },
+        {
+          "n": 13,
+          "term": "Redeem"
+        }
+      ]
+    },
+    "100": {
+      "n": 100,
+      "term": "Faithful",
+      "movement": 5,
+      "rootLine": "emunah — Hebrew",
+      "caseStrongs": "H530",
+      "lead": "Faithful means fidelity to the terms of the bond — reliability that holds under testing, the trait a court can count on. A faithful party keeps covenant when keeping it is costly; emunah is steadfastness proven, not merely intended. “Know therefore that Yahuah thy Elohim... keepeth covenant and mercy” (Deuteronomy 7:9) grounds His faithfulness in covenant-keeping. To be faithful is to be contractually dependable — to render what one is bound to render, consistently, so the other party may rely on it. This is why the faithful are commended and the unfaithful charged: fidelity to the bond is the very thing the covenant measures.",
+      "root": [
+        {
+          "lemma": "emunah",
+          "strong": "H530",
+          "sense": "firmness, steadfastness, fidelity; faithfulness that can be relied upon"
+        }
+      ],
+      "courtroomWord": "A fidelity term — proven reliability in keeping the terms of the bond.",
+      "itsRole": "A covenant is only as good as the parties’ faithfulness to it, and emunah is that faithfulness — tested, proven, dependable. Yahuah’s faithfulness is His covenant-keeping; the believer’s is the loyalty the bond requires in return. It is measured by conduct under pressure, which is why the walk is where faithfulness is shown. The faithful are those the court can rely on to keep terms.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 7:9",
+          "text": "The faithful Elohim, which keepeth covenant.",
+          "note": "Faithfulness as covenant-keeping."
+        },
+        {
+          "ref": "Lamentations 3:23",
+          "text": "Great is thy faithfulness.",
+          "note": "Reliability that does not fail."
+        },
+        {
+          "ref": "Luke 16:10",
+          "text": "He that is faithful in that which is least is faithful also in much.",
+          "note": "Fidelity proven in the small."
+        },
+        {
+          "ref": "Revelation 2:10",
+          "text": "Be thou faithful unto death.",
+          "note": "Steadfastness under the ultimate test."
+        }
+      ],
+      "plainTerms": [
+        "Faithful means reliable to the bond — keeping the terms even when it costs. Yahuah’s faithfulness is His covenant-keeping; ours is the loyalty owed back. It shows up in conduct under pressure, which is why the walk is where it is proven."
+      ],
+      "bringItHome": [
+        "A faithful party is one you can count on when it is hard — who keeps the agreement when breaking it would be easier. That is emunah. Yahuah is faithful in exactly that way: He keeps covenant. And the walk of this life is where our own faithfulness is tested and shown."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the faithful party",
+          "does": "keeps covenant, reliable without fail."
+        },
+        {
+          "who": "The believer",
+          "role": "the covenant partner",
+          "does": "owes faithfulness back, proven in the walk."
+        },
+        {
+          "who": "The covenant",
+          "role": "the bond",
+          "does": "the terms faithfulness keeps."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 98,
+          "term": "Chesed"
+        },
+        {
+          "n": 97,
+          "term": "Love"
+        },
+        {
+          "n": 48,
+          "term": "Keep"
+        },
+        {
+          "n": 47,
+          "term": "Walk"
+        }
+      ]
+    },
     "102": {
       "n": 102,
       "term": "Account",
@@ -3722,6 +4573,86 @@
         {
           "n": 115,
           "term": "Plead"
+        }
+      ]
+    },
+    "119": {
+      "n": 119,
+      "term": "Guilty",
+      "movement": 7,
+      "rootLine": "asham — Hebrew",
+      "caseStrongs": "H817",
+      "lead": "Guilty means liable — owing restitution, under the court’s finding of fault. Asham names both the guilt incurred and the offering that answers it: the trespass that creates a debt and the sacrifice that discharges it (Leviticus 5:6). To be guilty is not merely to feel bad but to carry a liability the law has assessed, a balance owed to the offended party or to Yahuah. This is why the guilt-offering involved restitution plus a fifth (Leviticus 6:5) — guilt is a measurable legal debt. To be found asham is to stand adjudged in the wrong, owing what the law requires until the debt is lawfully settled.",
+      "root": [
+        {
+          "lemma": "asham",
+          "strong": "H817",
+          "sense": "guilt, guiltiness; also the guilt-offering that answers it"
+        }
+      ],
+      "courtroomWord": "A liability term — the finding of fault and the debt it creates.",
+      "itsRole": "Guilt is not a feeling but a legal status: fault found, liability assessed, a debt owed until settled. Remarkably, the same word names the guilt and the offering that clears it — guilt is measurable, and it has a remedy. The guilty owe restitution, sometimes with a fifth added; the account must be squared. To be guilty is to stand adjudged liable, awaiting lawful discharge.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 5:6",
+          "text": "He shall bring his trespass offering.",
+          "note": "The guilt, and the offering that answers it."
+        },
+        {
+          "ref": "Leviticus 6:5",
+          "text": "He shall... restore it... and shall add the fifth part more thereto.",
+          "note": "Guilt as a measurable debt."
+        },
+        {
+          "ref": "Numbers 5:7",
+          "text": "Recompense his trespass with the principal thereof.",
+          "note": "Liability settled by restitution."
+        },
+        {
+          "ref": "James 2:10",
+          "text": "He is guilty of all.",
+          "note": "The finding of fault under the whole standard."
+        }
+      ],
+      "plainTerms": [
+        "Guilty means legally liable — found at fault and owing a debt, not just feeling bad. The same Hebrew word means both the guilt and the offering that clears it, because guilt is measurable and has a remedy. The guilty owe restitution until the account is squared."
+      ],
+      "bringItHome": [
+        "To be found guilty is to be handed a bill — the fault assessed, the debt fixed, sometimes with a penalty added. It is not a mood; it is a liability. And the mercy is that the same word points to the remedy: the offering that answers the guilt and clears the account."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The guilty party",
+          "role": "the Defendant",
+          "does": "found liable, owing the debt."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "assesses the fault and requires the settlement."
+        },
+        {
+          "who": "The guilt-offering",
+          "role": "the remedy",
+          "does": "the sacrifice that answers the liability."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 118,
+          "term": "Innocent"
+        },
+        {
+          "n": 5,
+          "term": "Condemn"
+        },
+        {
+          "n": 111,
+          "term": "Wrath"
+        },
+        {
+          "n": 107,
+          "term": "Wages"
         }
       ]
     },
@@ -4639,6 +5570,97 @@
         {
           "n": 8,
           "term": "Testimony"
+        }
+      ]
+    },
+    "139": {
+      "n": 139,
+      "term": "Hupo Nomon",
+      "movement": 7,
+      "rootLine": "hupo nomon — Greek",
+      "caseStrongs": "G5259 + G3551",
+      "lead": "‘Under the law’ — hupo nomon — is one of the most misread phrases in the New Testament. The church hears it as ‘obligated to keep the commandments,’ and concludes that to be freed from being under law is to be freed from obeying it. But the phrase is positional, and its position is the dock: to be hupo nomon is to be under the law’s jurisdiction as a defendant — under its sentence, held in custody by its verdict of guilt. “The scripture hath concluded all under sin” (Galatians 3:22) locks the prisoner up; to be delivered from under law is to be released from its condemnation, not from its commandments. The acquitted man leaves the dock — and then keeps the law he is no longer condemned by.",
+      "root": [
+        {
+          "lemma": "hupo",
+          "strong": "G5259",
+          "sense": "under; beneath the authority or power of"
+        },
+        {
+          "lemma": "nomos",
+          "strong": "G3551",
+          "sense": "law; here, the law as a jurisdiction and its sentence"
+        }
+      ],
+      "courtroomWord": "A jurisdiction phrase — to stand under the law’s sentence, as a defendant in custody.",
+      "itsRole": "The whole weight of the phrase is positional: hupo nomon is where the guilty stand — under the law’s verdict, held by its condemnation. Paul’s argument is that all are shut up there until deliverance comes. To be brought out from under law is to be released from the sentence, not from the standard. This is the hinge the abolition case misses: leaving the dock is not the same as tearing up the statute. The freed defendant is precisely the one now free to keep the law without its condemnation hanging over him.",
+      "proofTexts": [
+        {
+          "ref": "Galatians 3:22",
+          "text": "The scripture hath concluded all under sin.",
+          "note": "The prisoner shut up under the verdict."
+        },
+        {
+          "ref": "Romans 3:19",
+          "text": "That... all the world may become guilty before Elohim.",
+          "note": "The whole world in the dock, under the sentence."
+        },
+        {
+          "ref": "Galatians 4:4-5",
+          "text": "Made under the law, to redeem them that were under the law.",
+          "note": "Deliverance from the sentence, by One who entered it."
+        },
+        {
+          "ref": "Romans 6:14-15",
+          "text": "Ye are not under the law, but under grace. What then? shall we sin?... forbid.",
+          "note": "Out from the condemnation, into favor — not out from the commandments."
+        }
+      ],
+      "plainTerms": [
+        "‘Under the law’ does not mean ‘obligated to obey.’ It means standing under the law’s sentence — in the dock as a guilty defendant. To be freed from being under law is to be released from its condemnation, not from its commandments.",
+        "The acquitted man walks out of court and still lives by the law he is no longer condemned by."
+      ],
+      "bringItHome": [
+        "A convict is ‘under’ the law in the sense that matters: under its sentence, held in custody by its verdict. When he is pardoned, he is no longer under it that way — he walks out of the dock. But pardon does not repeal the statute, and it does not make him free to break it. He is now free to keep it without the sentence hanging over him. That is hupo nomon: the position of the condemned, and deliverance from it is release from the sentence, not from the standard."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The law",
+          "role": "the jurisdiction",
+          "does": "under whose sentence the guilty are held."
+        },
+        {
+          "who": "The guilty",
+          "role": "the defendants",
+          "does": "shut up ‘under law,’ in the dock."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the deliverer",
+          "does": "entered ‘under law’ to redeem those held under its sentence."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "releases from the condemnation, the standard still standing."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 5,
+          "term": "Condemn"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        },
+        {
+          "n": 118,
+          "term": "Innocent"
+        },
+        {
+          "n": 3,
+          "term": "Justify"
         }
       ]
     },
