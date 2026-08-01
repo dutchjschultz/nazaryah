@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0801 V12",
+    "version": "0801 V13",
     "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -30,7 +30,8 @@
       "0801 V9: merged 12 word pages (Keep–Mouth: 48,73,56,23,84,55,97,106,11,36,72,87) into words; those terms set page draft-v1.",
       "0801 V10: merged 12 word pages (Name–Promise: 38,122,104,141,124,37,115,54,57,77,70,44) into words; those terms set page draft-v1.",
       "0801 V11: merged 12 word pages (Kategoros correction + Qerev–Restitution: 125,126,15,101,29,13,14,113,24,45,25,27) into words; those terms set page draft-v1. 125 Kategoros was skipped in the Keep–Mouth batch (not a break term); added here.",
-      "0801 V12: merged 12 word pages (Restore–Servant: 30,108,82,6,21,69,105,75,34,121,128,63) into words; those terms set page draft-v1."
+      "0801 V12: merged 12 word pages (Restore–Servant: 30,108,82,6,21,69,105,75,34,121,128,63) into words; those terms set page draft-v1.",
+      "0801 V13: merged 13 word pages (Katargeo correction + Shalom–Tongue: 140,26,35,86,65,62,80,109,120,42,8,74,88) into words; those terms set page draft-v1. 140 Katargeo was skipped earlier (sorts between Karath and Kategoros); added here."
     ]
   },
   "movements": [
@@ -131,7 +132,8 @@
       "n": 8,
       "term": "Testimony",
       "movement": 2,
-      "gloss": "the deposited terms of the law"
+      "gloss": "the deposited terms of the law",
+      "page": "draft-v1"
     },
     {
       "n": 9,
@@ -255,7 +257,8 @@
       "n": 26,
       "term": "Shalom",
       "movement": 4,
-      "gloss": "the account paid, the books at zero"
+      "gloss": "the account paid, the books at zero",
+      "page": "draft-v1"
     },
     {
       "n": 27,
@@ -316,7 +319,8 @@
       "n": 35,
       "term": "Sign",
       "movement": 3,
-      "gloss": "the token that proves the bond"
+      "gloss": "the token that proves the bond",
+      "page": "draft-v1"
     },
     {
       "n": 36,
@@ -363,7 +367,8 @@
       "n": 42,
       "term": "Swear",
       "movement": 2,
-      "gloss": "to bind oneself by oath"
+      "gloss": "to bind oneself by oath",
+      "page": "draft-v1"
     },
     {
       "n": 43,
@@ -500,7 +505,8 @@
       "n": 62,
       "term": "Sonship",
       "movement": 3,
-      "gloss": "status carrying the inheritance"
+      "gloss": "status carrying the inheritance",
+      "page": "draft-v1"
     },
     {
       "n": 63,
@@ -520,7 +526,8 @@
       "n": 65,
       "term": "Sojourner",
       "movement": 3,
-      "gloss": "the resident alien's status"
+      "gloss": "the resident alien's status",
+      "page": "draft-v1"
     },
     {
       "n": 66,
@@ -580,7 +587,8 @@
       "n": 74,
       "term": "Throne",
       "movement": 1,
-      "gloss": "the judgment seat itself"
+      "gloss": "the judgment seat itself",
+      "page": "draft-v1"
     },
     {
       "n": 75,
@@ -621,7 +629,8 @@
       "n": 80,
       "term": "Stand",
       "movement": 1,
-      "gloss": "to hold standing before the bench"
+      "gloss": "to hold standing before the bench",
+      "page": "draft-v1"
     },
     {
       "n": 81,
@@ -662,7 +671,8 @@
       "n": 86,
       "term": "Sit",
       "movement": 1,
-      "gloss": "to convene as judge"
+      "gloss": "to convene as judge",
+      "page": "draft-v1"
     },
     {
       "n": 87,
@@ -675,7 +685,8 @@
       "n": 88,
       "term": "Tongue",
       "movement": 6,
-      "gloss": "evidence that acquits or condemns"
+      "gloss": "evidence that acquits or condemns",
+      "page": "draft-v1"
     },
     {
       "n": 89,
@@ -819,7 +830,8 @@
       "n": 109,
       "term": "Steward",
       "movement": 7,
-      "gloss": "the trustee called to account"
+      "gloss": "the trustee called to account",
+      "page": "draft-v1"
     },
     {
       "n": 110,
@@ -892,7 +904,8 @@
       "n": 120,
       "term": "Surety",
       "movement": 4,
-      "gloss": "the pledge that guarantees the outcome"
+      "gloss": "the pledge that guarantees the outcome",
+      "page": "draft-v1"
     },
     {
       "n": 121,
@@ -1070,7 +1083,8 @@
       "term": "Katargeo",
       "movement": 4,
       "gloss": "to render an instrument inoperative, not erased",
-      "strongs": "G2673"
+      "strongs": "G2673",
+      "page": "draft-v1"
     },
     {
       "n": 141,
@@ -10914,6 +10928,1096 @@
         {
           "n": 62,
           "term": "Sonship"
+        }
+      ]
+    },
+    "140": {
+      "n": 140,
+      "term": "Katargeo",
+      "movement": 4,
+      "rootLine": "katargeo — Greek",
+      "caseStrongs": "G2673",
+      "lead": "Katargeo is the word behind ‘done away’ and ‘abolished’ in the abolition texts — and it does not mean destroyed or erased. It means to render inoperative, to make idle, to put out of working effect. A fallow field is katargeo-ed — not destroyed, but not producing (Luke 13:7). When Paul says the veil is “done away in Messiah” (2 Corinthians 3:14), or the ministry of death was “to be done away” (2 Corinthians 3:7), the sense is a function suspended, an effect brought to nothing — not a statute struck from the books. The abolition case leans hard on this verb; the verb will not bear the weight. To render an instrument inoperative is not to strike it from the record.",
+      "root": [
+        {
+          "lemma": "katargeo",
+          "strong": "G2673",
+          "sense": "to render inoperative, to make idle or ineffective; not to destroy"
+        }
+      ],
+      "courtroomWord": "An effect term — to bring a function to nothing, not to erase the thing itself.",
+      "itsRole": "The abolition reading needs ‘done away’ to mean ‘abolished, gone.’ Katargeo will not carry it. The word suspends an effect, renders a function idle — the veil’s blinding effect ended, the condemning ministry’s power brought to nothing — while the underlying thing may stand. To render inoperative is a change of operation, not of existence. Where katargeo is used, the question is always ‘what effect ceased?’ — not ‘what was erased from the code?’",
+      "proofTexts": [
+        {
+          "ref": "2 Corinthians 3:14",
+          "text": "The vail is done away in Messiah.",
+          "note": "An effect — the veil’s blinding — suspended, not the text destroyed."
+        },
+        {
+          "ref": "Luke 13:7",
+          "text": "Why cumbereth it the ground?",
+          "note": "Rendered unproductive (katargeo), not destroyed."
+        },
+        {
+          "ref": "Romans 3:31",
+          "text": "Do we then make void the law through faith? Elohim forbid: yea, we establish the law.",
+          "note": "The very verb explicitly denied of the law."
+        },
+        {
+          "ref": "Romans 7:2",
+          "text": "She is loosed from the law of her husband.",
+          "note": "A bond’s effect ended by a death — the law itself standing."
+        }
+      ],
+      "plainTerms": [
+        "Katargeo is the ‘done away’ word — and it does not mean destroyed. It means to render inoperative, to put out of working effect, like a fallow field that isn’t producing. So ‘done away in Messiah’ is a function suspended, not a statute erased.",
+        "And Romans 3:31 uses the very same verb to say faith does not ‘make void’ the law — it establishes it."
+      ],
+      "bringItHome": [
+        "When a field lies fallow, it is katargeo-ed — not plowed under and destroyed, just not producing. That is the force of ‘done away’: an effect suspended, a function brought to nothing. So the abolition texts, read on the verb’s actual meaning, speak of effects ended — the veil’s blindness, condemnation’s power — not the law struck from the books. Paul settles it himself: faith does not katargeo the law; it establishes it."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The instrument",
+          "role": "the thing",
+          "does": "rendered inoperative in its effect, not erased."
+        },
+        {
+          "who": "The effect",
+          "role": "the function",
+          "does": "the operation suspended or brought to nothing."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "whose law faith establishes, not makes void (Romans 3:31)."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 137,
+          "term": "Cheirographon"
+        },
+        {
+          "n": 16,
+          "term": "Forgive"
+        },
+        {
+          "n": 29,
+          "term": "Reconcile"
+        },
+        {
+          "n": 14,
+          "term": "Redemption"
+        }
+      ]
+    },
+    "26": {
+      "n": 26,
+      "term": "Shalom",
+      "movement": 4,
+      "rootLine": "shalom — Hebrew",
+      "caseStrongs": "H7965",
+      "lead": "Shalom is not merely peace-as-calm but the account paid, the books at zero — wholeness because nothing is outstanding. From the root shalam (to make whole, to pay in full), shalom is the state of a settled account: no debt owed, no breach open, all restored. “The chastisement of our peace was upon him” (Isaiah 53:5) ties peace directly to a price paid — our shalom is the result of a settlement. Shalom shares its root with restitution (the wrong repaid) and recompense (the account settled): peace is what remains when the ledger is squared. To have shalom is to stand with nothing outstanding against you.",
+      "root": [
+        {
+          "lemma": "shalom",
+          "strong": "H7965",
+          "sense": "peace, wholeness, completeness; from shalam, to make whole, to pay in full"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "shalam-H7999",
+        "siblings": [
+          {
+            "n": 28,
+            "term": "Recompense"
+          },
+          {
+            "n": 27,
+            "term": "Restitution"
+          }
+        ],
+        "note": "All from shalam: the account settled (Recompense), the wrong repaid (Restitution), and the peace that results (Shalom). One root, three faces."
+      },
+      "courtroomWord": "A settlement term — the wholeness of an account paid, nothing outstanding.",
+      "itsRole": "Peace, in Scripture, is a settled state — the account paid, the breach closed, nothing owed. Shalom is what remains when the ledger is squared: from shalam, to pay in full. ‘The chastisement of our peace was upon him’ makes it explicit — our shalom is the result of a price paid. It is not the absence of conflict as a mood but the presence of a settlement. To have shalom is to have nothing outstanding against you.",
+      "proofTexts": [
+        {
+          "ref": "Isaiah 53:5",
+          "text": "The chastisement of our peace was upon him.",
+          "note": "Peace as the result of a price paid."
+        },
+        {
+          "ref": "Numbers 6:26",
+          "text": "Yahuah lift up his countenance upon thee, and give thee peace.",
+          "note": "Shalom conferred as the settled state."
+        },
+        {
+          "ref": "Psalm 85:10",
+          "text": "Righteousness and peace have kissed each other.",
+          "note": "The standard met and peace resulting."
+        },
+        {
+          "ref": "Romans 5:1",
+          "text": "We have peace with Yahuah through our Lord Yahushua Messiah.",
+          "note": "Peace as the settled standing."
+        }
+      ],
+      "plainTerms": [
+        "Shalom is not just calm — it is wholeness because the account is paid, nothing outstanding. From shalam (to pay in full), it is the state of a settled ledger: no debt, no open breach. ‘The chastisement of our peace was upon him’ ties peace to a price paid. To have shalom is to stand with nothing owed against you."
+      ],
+      "bringItHome": [
+        "Shalom is the quiet that comes when the account is squared — not the absence of noise, but the absence of anything outstanding. Its root means ‘paid in full.’ ‘The chastisement of our peace was upon him’: our shalom is the result of a settlement. Peace is what remains when the ledger reads zero."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the One who gives peace",
+          "does": "confers shalom as the settled state."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the price",
+          "does": "by whose chastisement our peace was bought."
+        },
+        {
+          "who": "The believer",
+          "role": "the settled party",
+          "does": "stands with nothing outstanding, in shalom."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 28,
+          "term": "Recompense"
+        },
+        {
+          "n": 27,
+          "term": "Restitution"
+        },
+        {
+          "n": 29,
+          "term": "Reconcile"
+        },
+        {
+          "n": 30,
+          "term": "Restore"
+        }
+      ]
+    },
+    "35": {
+      "n": 35,
+      "term": "Sign",
+      "movement": 3,
+      "rootLine": "oth — Hebrew",
+      "caseStrongs": "H226",
+      "lead": "A sign is a token that proves and marks a covenant — an appointed mark that identifies a bond and testifies to it. The rainbow is “the token of the covenant” with Noah (Genesis 9:12-13); circumcision is “a token of the covenant” with Abraham (Genesis 17:11); the Sabbath is “a sign between me and you” (Exodus 31:13). An oth is not decoration but legal marking: it certifies the covenant and identifies its parties, like a seal on a contract. To bear the sign is to be marked as a party to the bond. Signs are the covenant’s identifying marks — the tokens that prove the agreement and name whose it is.",
+      "root": [
+        {
+          "lemma": "oth",
+          "strong": "H226",
+          "sense": "a sign, token, mark; the appointed token of a covenant"
+        }
+      ],
+      "courtroomWord": "A token term — the appointed mark that proves and identifies a covenant.",
+      "itsRole": "A covenant is marked by its sign — the token that certifies it and identifies its parties. The rainbow, circumcision, the Sabbath are each an oth: a legal mark, not an ornament, testifying to the bond and naming whose it is. To bear the sign is to be identified as a party to the covenant. Signs are the covenant’s proof and identification — the tokens that say the agreement stands and this one belongs to it.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 9:13",
+          "text": "I do set my bow in the cloud, and it shall be for a token of a covenant.",
+          "note": "The sign that certifies the bond."
+        },
+        {
+          "ref": "Genesis 17:11",
+          "text": "It shall be a token of the covenant betwixt me and you.",
+          "note": "Circumcision as the covenant sign."
+        },
+        {
+          "ref": "Exodus 31:13",
+          "text": "The sabbath... is a sign between me and you.",
+          "note": "The Sabbath as covenant token."
+        },
+        {
+          "ref": "Exodus 13:9",
+          "text": "It shall be for a sign unto thee upon thine hand.",
+          "note": "The sign borne as identification."
+        }
+      ],
+      "plainTerms": [
+        "A sign is a token that proves and marks a covenant — an appointed mark identifying a bond. The rainbow, circumcision, the Sabbath are each a ‘sign’: a legal mark testifying to the covenant and naming its parties, like a seal on a contract. To bear the sign is to be marked as belonging to the bond."
+      ],
+      "bringItHome": [
+        "A sign, in covenant terms, is like the seal on a contract — the token that proves the agreement and identifies who is party to it. The rainbow marks Noah’s covenant; the Sabbath marks Israel’s. To bear the sign is to be identified as belonging to the bond it certifies."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the covenant-Giver",
+          "does": "appoints the sign of the bond."
+        },
+        {
+          "who": "The covenant party",
+          "role": "the sign-bearer",
+          "does": "marked and identified by the token."
+        },
+        {
+          "who": "The sign",
+          "role": "the token",
+          "does": "certifies the covenant and names its parties."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 34,
+          "term": "Seal"
+        },
+        {
+          "n": 38,
+          "term": "Name"
+        },
+        {
+          "n": 31,
+          "term": "Book"
+        },
+        {
+          "n": 69,
+          "term": "Sanctify"
+        }
+      ]
+    },
+    "86": {
+      "n": 86,
+      "term": "Sit",
+      "movement": 1,
+      "rootLine": "yashab — Hebrew",
+      "caseStrongs": "H3427",
+      "lead": "To sit, in the courtroom sense, is to convene as judge — to take the bench and hold session. When the judge ‘sits,’ the court is in session and rulings issue: “the Ancient of days did sit... the judgment was set” (Daniel 7:9-10). To ‘sit in the gate’ is to hold court (Ruth 4:1-2); to ‘sit on the throne’ is to reign and judge. Yashab, to sit, is thus an act of authority — the one seated is the one who decides. This is why enthronement is described as sitting, and why the Messiah’s session ‘at the right hand’ is a position of rule. To sit is to take up the seat of judgment and preside.",
+      "root": [
+        {
+          "lemma": "yashab",
+          "strong": "H3427",
+          "sense": "to sit, to dwell, to remain; to take the seat of authority, to convene as judge"
+        }
+      ],
+      "courtroomWord": "A session term — to take the bench and hold court.",
+      "itsRole": "A court is in session when the judge sits, and yashab is that sitting — taking the seat of authority to decide. The Ancient of Days did sit and the judgment was set; the elders sit in the gate to try cases; the king sits on the throne to reign. To sit is to preside, to hold session, to be the one who rules. Enthronement and judgment are both described as sitting — the seat is authority taken up.",
+      "proofTexts": [
+        {
+          "ref": "Daniel 7:9",
+          "text": "The Ancient of days did sit.",
+          "note": "The Judge taking the bench."
+        },
+        {
+          "ref": "Ruth 4:2",
+          "text": "He took ten men... and said, Sit ye down. And they sat down.",
+          "note": "The court convened at the gate."
+        },
+        {
+          "ref": "Psalm 9:4",
+          "text": "Thou satest in the throne judging right.",
+          "note": "Sitting as judging."
+        },
+        {
+          "ref": "Psalm 110:1",
+          "text": "Sit thou at my right hand.",
+          "note": "The seat of conferred rule."
+        }
+      ],
+      "plainTerms": [
+        "To sit, in the courtroom sense, is to convene as judge — to take the bench and hold session. When the Ancient of Days ‘did sit,’ the court was in session. To ‘sit in the gate’ is to hold court; to ‘sit on the throne’ is to reign and judge. Sitting is an act of authority: the one seated is the one who decides."
+      ],
+      "bringItHome": [
+        "When a judge ‘sits,’ court is in session and rulings follow. That is the force of it in Scripture: ‘the Ancient of days did sit, and the judgment was set.’ To sit in the gate was to hold court; to sit on the throne was to rule. The seat is authority — the one who sits is the one who decides."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the One who sits",
+          "does": "takes the bench; when He sits, the court is in session."
+        },
+        {
+          "who": "The elders and the king",
+          "role": "those seated",
+          "does": "who sit to judge and to rule."
+        },
+        {
+          "who": "The court",
+          "role": "the session",
+          "does": "convened when the judge sits."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 74,
+          "term": "Throne"
+        },
+        {
+          "n": 121,
+          "term": "Seat vs Throne"
+        },
+        {
+          "n": 1,
+          "term": "Judge"
+        },
+        {
+          "n": 79,
+          "term": "Gate"
+        }
+      ]
+    },
+    "65": {
+      "n": 65,
+      "term": "Sojourner",
+      "movement": 3,
+      "rootLine": "ger — Hebrew",
+      "caseStrongs": "H1616",
+      "lead": "The sojourner is the resident alien — a legal class with a defined and protected status under Torah. The ger was not a citizen by birth but held real standing: the same law for the home-born and the stranger (Numbers 15:16), protection from oppression, a share in the gleanings, rest on the Sabbath. “Love ye therefore the stranger... for ye were strangers in the land of Egypt” (Deuteronomy 10:19). The sojourner’s status is legally recognized and legally guarded, a class the law names and protects. To be a sojourner is to hold the standing of a protected resident alien — not without rights, but with rights the covenant secures.",
+      "root": [
+        {
+          "lemma": "ger",
+          "strong": "H1616",
+          "sense": "a sojourner, resident alien, stranger; a protected legal class"
+        }
+      ],
+      "courtroomWord": "A status term — the resident alien’s protected legal standing.",
+      "itsRole": "The law names its classes and protects them, and the sojourner is one — the resident alien with recognized standing: one law for stranger and home-born, protection from oppression, a share in the harvest, Sabbath rest. The ger is not rightless but hedged by statute. ‘One law’ for the stranger is a repeated refrain. To be a sojourner is to hold a protected status the covenant secures — an alien by birth, a protected party by law.",
+      "proofTexts": [
+        {
+          "ref": "Numbers 15:16",
+          "text": "One law and one manner shall be for you, and for the stranger that sojourneth with you.",
+          "note": "Equal standing under the law."
+        },
+        {
+          "ref": "Deuteronomy 10:19",
+          "text": "Love ye therefore the stranger.",
+          "note": "The sojourner protected and cared for."
+        },
+        {
+          "ref": "Leviticus 19:34",
+          "text": "The stranger... shall be unto you as one born among you.",
+          "note": "The protected standing."
+        },
+        {
+          "ref": "Exodus 22:21",
+          "text": "Thou shalt neither vex a stranger, nor oppress him.",
+          "note": "The ger guarded from oppression."
+        }
+      ],
+      "plainTerms": [
+        "The sojourner is the resident alien — a legal class with a defined, protected status under Torah. The ger wasn’t a citizen by birth but held real standing: one law for stranger and home-born, protection from oppression, a share in the gleanings, Sabbath rest. To be a sojourner is to hold a status the covenant names and guards."
+      ],
+      "bringItHome": [
+        "A sojourner in Israel was a resident alien — not born to the people, but far from rightless. The law named the class and protected it: ‘one law’ for stranger and citizen alike, protection from oppression, a share in the harvest. To be a ger was to hold a real, guarded standing under the covenant."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The sojourner",
+          "role": "the resident alien",
+          "does": "holds a protected legal standing."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "names the class and guards its rights."
+        },
+        {
+          "who": "The community",
+          "role": "the home-born",
+          "does": "bound to the same law toward the stranger."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 63,
+          "term": "Servant"
+        },
+        {
+          "n": 66,
+          "term": "Widow"
+        },
+        {
+          "n": 64,
+          "term": "Free"
+        },
+        {
+          "n": 67,
+          "term": "Clean"
+        }
+      ]
+    },
+    "62": {
+      "n": 62,
+      "term": "Sonship",
+      "movement": 3,
+      "rootLine": "huios / ben — Greek / Hebrew",
+      "caseStrongs": "G5207 · H1121",
+      "lead": "Sonship is the legal status that carries the inheritance — the standing of a son, which by law entitles one to the estate. It is not merely a warm relationship but a legal position: “if a son, then an heir of Yahuah through Messiah” (Galatians 4:7). The son’s status is what confers the claim on the inheritance; sonship and heirship travel together. Under the law, the son held rights the servant did not — standing, name, and estate. To be granted sonship is to be granted the legal position from which the inheritance is claimed. It is status with an estate attached, conferred by the Father.",
+      "root": [
+        {
+          "lemma": "huios",
+          "strong": "G5207",
+          "sense": "son; the legal status of a son"
+        },
+        {
+          "lemma": "ben",
+          "strong": "H1121",
+          "sense": "son; standing that carries the inheritance"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "huios-G5207",
+        "siblings": [
+          {
+            "n": 61,
+            "term": "Adoption"
+          }
+        ],
+        "note": "Huiothesia (adoption, the placing-as-son) is built on huios: adoption confers the sonship that carries the estate."
+      },
+      "courtroomWord": "A status term — the standing of a son, entitling to the inheritance.",
+      "itsRole": "The son’s standing is a legal position, and it carries the estate: ‘if a son, then an heir.’ Sonship is what confers the claim on the inheritance — the servant does not hold it, the son does. It is status with rights: name, standing, and estate. To be granted sonship (by adoption) is to be placed in the position from which the inheritance is lawfully claimed. Sonship and heirship are one legal package, conferred by the Father.",
+      "proofTexts": [
+        {
+          "ref": "Galatians 4:7",
+          "text": "If a son, then an heir of Yahuah through Messiah.",
+          "note": "Sonship carrying the inheritance."
+        },
+        {
+          "ref": "Romans 8:17",
+          "text": "The children of Yahuah: and if children, then heirs.",
+          "note": "The status and its estate."
+        },
+        {
+          "ref": "John 1:12",
+          "text": "Power to become the sons of Yahuah.",
+          "note": "The standing conferred."
+        },
+        {
+          "ref": "Galatians 3:26",
+          "text": "Ye are all the children of Yahuah by faith in Messiah Yahushua.",
+          "note": "The sonship status."
+        }
+      ],
+      "plainTerms": [
+        "Sonship is the legal status that carries the inheritance — the standing of a son, which entitles you to the estate. ‘If a son, then an heir.’ It is not just a warm relationship but a legal position: the son holds rights the servant does not — name, standing, and estate. To be granted sonship is to be given the position from which the inheritance is claimed."
+      ],
+      "bringItHome": [
+        "A son held what a servant did not: a name, a standing, and a claim on the estate. That is sonship — a legal position, not just affection. ‘If a son, then an heir.’ To be granted sonship is to be placed where the inheritance can be claimed by right. The status and the estate come together."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Father",
+          "does": "confers the status of son and its inheritance."
+        },
+        {
+          "who": "The son",
+          "role": "the heir",
+          "does": "holds the standing that carries the estate."
+        },
+        {
+          "who": "The inheritance",
+          "role": "the estate",
+          "does": "which sonship entitles the son to claim."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 61,
+          "term": "Adoption"
+        },
+        {
+          "n": 52,
+          "term": "Heir"
+        },
+        {
+          "n": 51,
+          "term": "Inheritance"
+        },
+        {
+          "n": 64,
+          "term": "Free"
+        }
+      ]
+    },
+    "80": {
+      "n": 80,
+      "term": "Stand",
+      "movement": 1,
+      "rootLine": "amad — Hebrew",
+      "caseStrongs": "H5975",
+      "lead": "To stand, in the courtroom, is to hold legal standing before the bench — to have the recognized right to appear and to remain in the court’s presence. “Who shall stand in his holy place?” (Psalm 24:3); “the ungodly shall not stand in the judgment” (Psalm 1:5). To stand is to have standing: the position of one entitled to appear, whose case is admitted. To be unable to stand is to be cast out, denied a place before the court. Amad, to stand, is thus a legal posture — the one who stands is the one with the right to be there. To stand in the judgment is to hold a place before the bench that the verdict has not overturned.",
+      "root": [
+        {
+          "lemma": "amad",
+          "strong": "H5975",
+          "sense": "to stand, to take one’s stand, to remain; to hold standing before authority"
+        }
+      ],
+      "courtroomWord": "A standing term — the recognized right to appear and remain before the bench.",
+      "itsRole": "To appear before the court, one must have standing, and to stand is to hold it — the right to be in the court’s presence, admitted and not cast out. ‘Who shall stand?’ asks who has the standing to remain before the Judge. ‘The ungodly shall not stand in the judgment’: their standing fails, they are removed. To stand is the posture of the party whose place before the bench is secure — admitted, remaining, not overturned.",
+      "proofTexts": [
+        {
+          "ref": "Psalm 24:3",
+          "text": "Who shall stand in his holy place?",
+          "note": "Who holds the standing to appear."
+        },
+        {
+          "ref": "Psalm 1:5",
+          "text": "The ungodly shall not stand in the judgment.",
+          "note": "Standing that fails at the bench."
+        },
+        {
+          "ref": "Ephesians 6:13",
+          "text": "And having done all, to stand.",
+          "note": "To hold one’s ground before the court."
+        },
+        {
+          "ref": "Romans 14:4",
+          "text": "He shall be holden up: for Yahuah is able to make him stand.",
+          "note": "Standing secured by the Judge."
+        }
+      ],
+      "plainTerms": [
+        "To stand, in the courtroom, is to hold legal standing — the recognized right to appear and remain before the Judge. ‘Who shall stand in his holy place?’ asks who has that standing. ‘The ungodly shall not stand in the judgment’: their place fails. To stand is to be admitted before the bench; to fall is to be cast out."
+      ],
+      "bringItHome": [
+        "In court, to ‘stand’ is to have standing — the right to be there, to appear, to remain. ‘Who shall stand in his holy place?’ is asking who is admitted before the Judge. And ‘the ungodly shall not stand in the judgment’ means their standing collapses — they are removed. To stand is to hold your place before the bench."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The party",
+          "role": "the one who stands",
+          "does": "holds the standing to appear before the bench."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "before whom one stands, who makes His own stand."
+        },
+        {
+          "who": "The judgment",
+          "role": "the court",
+          "does": "in which standing is held or fails."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 83,
+          "term": "Face"
+        },
+        {
+          "n": 79,
+          "term": "Gate"
+        },
+        {
+          "n": 86,
+          "term": "Sit"
+        },
+        {
+          "n": 1,
+          "term": "Judge"
+        }
+      ]
+    },
+    "109": {
+      "n": 109,
+      "term": "Steward",
+      "movement": 7,
+      "rootLine": "oikonomos — Greek",
+      "caseStrongs": "G3623",
+      "lead": "A steward is a trustee placed over another’s property and household — entrusted with management, and answerable for it. The oikonomos ran the estate on the owner’s behalf, with real authority but full accountability: “it is required in stewards, that a man be found faithful” (1 Corinthians 4:2). The steward does not own; he administers, and the day comes to “give an account of thy stewardship” (Luke 16:2). It is a position of trust with a reckoning attached. To be a steward is to be entrusted with what is not one’s own, empowered to manage it, and bound to answer for it at the audit.",
+      "root": [
+        {
+          "lemma": "oikonomos",
+          "strong": "G3623",
+          "sense": "a household manager, steward; a trustee over another’s property"
+        }
+      ],
+      "courtroomWord": "A trustee term — one entrusted with management and answerable for it.",
+      "itsRole": "Property is often placed in a trustee’s hands, and the steward is that trustee — entrusted with the estate, empowered to manage, and bound to account. He does not own; he administers on the owner’s behalf. The reckoning is built in: ‘give an account of thy stewardship.’ Faithfulness is the standard required of him. To be a steward is to hold a trust with an audit attached — authority to manage, and liability to answer.",
+      "proofTexts": [
+        {
+          "ref": "1 Corinthians 4:2",
+          "text": "It is required in stewards, that a man be found faithful.",
+          "note": "The standard for the trustee."
+        },
+        {
+          "ref": "Luke 16:2",
+          "text": "Give an account of thy stewardship.",
+          "note": "The reckoning required."
+        },
+        {
+          "ref": "Luke 12:42",
+          "text": "Who then is that faithful and wise steward?",
+          "note": "The trustee over the household."
+        },
+        {
+          "ref": "1 Peter 4:10",
+          "text": "As good stewards of the manifold grace of Yahuah.",
+          "note": "The trust to be managed faithfully."
+        }
+      ],
+      "plainTerms": [
+        "A steward is a trustee placed over someone else’s property and household — entrusted to manage it, and answerable for it. He doesn’t own; he administers, and the day comes to ‘give an account of thy stewardship.’ It is a position of trust with a reckoning attached: authority to manage, and liability to answer at the audit."
+      ],
+      "bringItHome": [
+        "A steward runs the owner’s estate — with real authority, but always answerable. He manages what is not his, and one day the owner says: ‘give an account of thy stewardship.’ That is the steward: entrusted, empowered, and audited. Faithfulness with what belongs to another is the whole of the job."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The steward",
+          "role": "the trustee",
+          "does": "manages the owner’s property, answerable for it."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Owner",
+          "does": "entrusts the estate and requires the account."
+        },
+        {
+          "who": "The account",
+          "role": "the audit",
+          "does": "the reckoning the steward must render."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 108,
+          "term": "Reward"
+        },
+        {
+          "n": 107,
+          "term": "Wages"
+        },
+        {
+          "n": 3,
+          "term": "Justify"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        }
+      ]
+    },
+    "120": {
+      "n": 120,
+      "term": "Surety",
+      "movement": 4,
+      "rootLine": "arab / egguos — Hebrew / Greek",
+      "caseStrongs": "H6148 · G1450",
+      "lead": "A surety is the pledge who guarantees another’s obligation — the one who legally stands good for a debt or a bond, liable if the other defaults. Judah becomes surety for Benjamin: “I will be surety for him; of my hand shalt thou require him” (Genesis 43:9). A surety does not merely encourage; he assumes the liability, pledging himself against the outcome. “Yahushua made a surety of a better testament” (Hebrews 7:22) names Him the guarantee of the covenant: the One who stands good for it, whose own person secures that it will hold. To be a surety is to pledge oneself as the guarantee — liable for the obligation of another.",
+      "root": [
+        {
+          "lemma": "arab",
+          "strong": "H6148",
+          "sense": "to pledge, to give surety, to become responsible for"
+        },
+        {
+          "lemma": "egguos",
+          "strong": "G1450",
+          "sense": "a guarantor, surety"
+        }
+      ],
+      "courtroomWord": "A guarantee term — the one who pledges himself as security for another’s obligation.",
+      "itsRole": "An obligation may be secured by a surety — one who stands good for it, liable if the party defaults. It is not encouragement but assumed liability: the surety pledges his own person against the outcome. Judah stood surety for Benjamin; Yahushua is ‘surety of a better testament,’ the guarantee that the covenant will hold. To be a surety is to pledge oneself as security — the guarantee that the obligation is met, liable in the debtor’s place.",
+      "proofTexts": [
+        {
+          "ref": "Genesis 43:9",
+          "text": "I will be surety for him; of my hand shalt thou require him.",
+          "note": "The pledge assuming liability."
+        },
+        {
+          "ref": "Hebrews 7:22",
+          "text": "Was Yahushua made a surety of a better testament.",
+          "note": "The guarantee of the covenant."
+        },
+        {
+          "ref": "Proverbs 11:15",
+          "text": "He that is surety for a stranger shall smart for it.",
+          "note": "The real liability a surety takes on."
+        },
+        {
+          "ref": "Proverbs 22:26",
+          "text": "Be not thou one of them... that are sureties for debts.",
+          "note": "The weight of standing good for another."
+        }
+      ],
+      "plainTerms": [
+        "A surety is the one who guarantees another’s obligation — who legally stands good for a debt, liable if the other fails. Judah became surety for Benjamin: ‘of my hand shalt thou require him.’ Yahushua is ‘surety of a better testament’: the guarantee the covenant will hold. To be a surety is to pledge yourself as security for another."
+      ],
+      "bringItHome": [
+        "A surety is not a cheerleader — he is the one who signs to guarantee your debt, and pays if you can’t. Judah pledged himself for Benjamin’s safe return: ‘of my hand shalt thou require him.’ Yahushua is called the ‘surety’ of the covenant: the guarantee, in His own person, that it will stand."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahushua",
+          "role": "the Surety",
+          "does": "pledges Himself as the guarantee of the covenant."
+        },
+        {
+          "who": "The debtor",
+          "role": "the one guaranteed",
+          "does": "whose obligation the surety stands good for."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the party secured",
+          "does": "to whom the guarantee is given."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 11,
+          "term": "Mediator"
+        },
+        {
+          "n": 9,
+          "term": "Advocate"
+        },
+        {
+          "n": 15,
+          "term": "Ransom"
+        },
+        {
+          "n": 29,
+          "term": "Reconcile"
+        }
+      ]
+    },
+    "42": {
+      "n": 42,
+      "term": "Swear",
+      "movement": 2,
+      "rootLine": "shaba — Hebrew",
+      "caseStrongs": "H7650",
+      "lead": "To swear is to bind oneself by oath — to invoke a higher witness and place oneself under penalty for breach. An oath was legally binding in the gravest way: “if a man swear an oath to bind his soul with a bond... he shall not break his word” (Numbers 30:2). Shaba is to bind by a solemn declaration, calling Yahuah to witness. When Yahuah swears “by himself” (Genesis 22:16; Hebrews 6:13), He binds His own word irrevocably. To swear is not casual speech but self-binding at law: the one who swears stakes himself on the truth or the performance of what he says, under sanction if he fails.",
+      "root": [
+        {
+          "lemma": "shaba",
+          "strong": "H7650",
+          "sense": "to swear, to take an oath; to bind oneself by solemn declaration"
+        }
+      ],
+      "courtroomWord": "An oath term — to bind oneself under penalty by solemn sworn declaration.",
+      "itsRole": "An oath binds the one who swears — self-binding at law, invoking a higher witness and accepting penalty for breach. ‘He shall not break his word’: the sworn oath is irrevocable. Yahuah swears by Himself to bind His own promise beyond doubt. To swear is to stake oneself on the truth or performance of what is said, under sanction. It is the most solemn form of legal commitment — the word made binding by oath.",
+      "proofTexts": [
+        {
+          "ref": "Numbers 30:2",
+          "text": "If a man... swear an oath to bind his soul with a bond; he shall not break his word.",
+          "note": "The oath binding and irrevocable."
+        },
+        {
+          "ref": "Genesis 22:16",
+          "text": "By myself have I sworn, saith Yahuah.",
+          "note": "Yahuah binding His own word."
+        },
+        {
+          "ref": "Hebrews 6:13",
+          "text": "He sware by himself.",
+          "note": "The oath that secures the promise."
+        },
+        {
+          "ref": "Deuteronomy 6:13",
+          "text": "Thou shalt fear Yahuah... and shalt swear by his name.",
+          "note": "The oath sworn under the proper witness."
+        }
+      ],
+      "plainTerms": [
+        "To swear is to bind yourself by oath — to invoke a higher witness and accept penalty if you break it. ‘He shall not break his word’: a sworn oath was irrevocable. When Yahuah ‘swears by Himself,’ He binds His own word beyond doubt. To swear is self-binding at law, staking yourself on what you say."
+      ],
+      "bringItHome": [
+        "To swear an oath was to stake yourself on your word — calling Yahuah to witness, accepting the penalty if you failed. ‘He shall not break his word.’ And when Yahuah swore ‘by Himself,’ He bound His own promise irrevocably — there was no one greater to swear by. An oath is a word made binding under sanction."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The one who swears",
+          "role": "the party",
+          "does": "binds himself under penalty for breach."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Witness",
+          "does": "invoked to witness the oath; who swears by Himself."
+        },
+        {
+          "who": "The oath",
+          "role": "the bond",
+          "does": "the self-binding declaration, irrevocable."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 43,
+          "term": "Vow"
+        },
+        {
+          "n": 39,
+          "term": "Amen"
+        },
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 44,
+          "term": "Promise"
+        }
+      ]
+    },
+    "8": {
+      "n": 8,
+      "term": "Testimony",
+      "movement": 2,
+      "rootLine": "eduth — Hebrew",
+      "caseStrongs": "H5715",
+      "lead": "The testimony is the deposited terms of the covenant — the witnessed record placed on file, and by extension the tablets and the law themselves. The tablets are “the tables of testimony” (Exodus 31:18); the ark is “the ark of the testimony” (Exodus 25:22), because it held the covenant terms deposited as a permanent witness. Eduth, from the root for witness, is the covenant’s own testimony to itself: the terms recorded, witnessed, and preserved. To keep the testimony is to keep the deposited terms. The testimony is not vague inspiration but the documentary core of the covenant — the law placed on file as a standing witness.",
+      "root": [
+        {
+          "lemma": "eduth",
+          "strong": "H5715",
+          "sense": "testimony, witness; the deposited covenant terms. From ed, a witness"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "ed-H5707",
+        "siblings": [
+          {
+            "n": 7,
+            "term": "Witness"
+          }
+        ],
+        "note": "Eduth (the testimony) is from ed (a witness): the deposited terms are the covenant’s standing witness to itself."
+      },
+      "courtroomWord": "A deposited-record term — the witnessed covenant terms placed on file.",
+      "itsRole": "A covenant deposits its terms as a witness, and the testimony is that deposit — the tablets, the law, placed on file in the ark. Eduth is from ‘witness’: the covenant’s own testimony to itself, recorded and preserved. To keep the testimony is to keep the deposited terms. It is the documentary core of the covenant, the standing witness against any breach — not inspiration but the recorded law itself.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 31:18",
+          "text": "Two tables of testimony, tables of stone.",
+          "note": "The terms deposited as witness."
+        },
+        {
+          "ref": "Exodus 25:16",
+          "text": "Thou shalt put into the ark the testimony which I shall give thee.",
+          "note": "The covenant terms placed on file."
+        },
+        {
+          "ref": "Psalm 19:7",
+          "text": "The testimony of Yahuah is sure, making wise the simple.",
+          "note": "The deposited terms as reliable witness."
+        },
+        {
+          "ref": "Psalm 119:2",
+          "text": "Blessed are they that keep his testimonies.",
+          "note": "Keeping the deposited terms."
+        }
+      ],
+      "plainTerms": [
+        "The testimony is the deposited terms of the covenant — the witnessed record on file, and by extension the tablets and the law. The tablets are ‘the tables of testimony’; the ark held ‘the testimony.’ From the word for ‘witness,’ it is the covenant’s own record of itself. To keep the testimony is to keep the deposited terms."
+      ],
+      "bringItHome": [
+        "The ‘testimony’ was the covenant’s terms, written and deposited in the ark as a standing witness — ‘the tables of testimony.’ The word comes from ‘witness,’ because the deposited law testifies to the agreement and against any breach. To keep His testimonies is to keep the recorded terms of the covenant."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the covenant-Giver",
+          "does": "gives the testimony to be deposited."
+        },
+        {
+          "who": "The testimony",
+          "role": "the deposited terms",
+          "does": "the witnessed law placed on file."
+        },
+        {
+          "who": "The people",
+          "role": "the keepers",
+          "does": "who keep the testimony as the covenant terms."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 40,
+          "term": "Truth"
+        },
+        {
+          "n": 6,
+          "term": "Righteousness"
+        },
+        {
+          "n": 42,
+          "term": "Swear"
+        }
+      ]
+    },
+    "74": {
+      "n": 74,
+      "term": "Throne",
+      "movement": 1,
+      "rootLine": "kisse / thronos — Hebrew / Greek",
+      "caseStrongs": "H3678 · G2362",
+      "lead": "The throne is the judgment seat itself — the sovereign seat from which rule and verdict issue. Not a chair of honor merely, but the seat of authority: “I saw Yahuah sitting upon his throne” (1 Kings 22:19); “a great white throne, and him that sat on it... and the dead were judged” (Revelation 20:11-12). The throne is where the King reigns and the Judge rules — the two offices meeting in one seat. To occupy the throne is to hold supreme authority; to approach it is to come before the highest court. The throne is the source-seat of law and judgment, distinct from every derived bench beneath it.",
+      "root": [
+        {
+          "lemma": "kisse",
+          "strong": "H3678",
+          "sense": "a throne, the royal and judicial seat"
+        },
+        {
+          "lemma": "thronos",
+          "strong": "G2362",
+          "sense": "a throne, the seat of the sovereign"
+        }
+      ],
+      "courtroomWord": "A sovereign-seat term — the judgment seat from which rule and verdict issue.",
+      "itsRole": "Rule and judgment issue from a seat, and the throne is that seat — the sovereign’s own, where King and Judge meet. ‘I saw Yahuah sitting upon his throne’; ‘a great white throne... and the dead were judged.’ To sit on the throne is to hold supreme authority; to come before it is to stand before the highest court. The throne is the source-seat of law and verdict, above every delegated bench — the place from which the final ruling comes.",
+      "proofTexts": [
+        {
+          "ref": "1 Kings 22:19",
+          "text": "I saw Yahuah sitting on his throne.",
+          "note": "The sovereign seat of rule."
+        },
+        {
+          "ref": "Revelation 20:11",
+          "text": "A great white throne, and him that sat on it.",
+          "note": "The judgment seat."
+        },
+        {
+          "ref": "Psalm 89:14",
+          "text": "Justice and judgment are the habitation of thy throne.",
+          "note": "The throne founded on judgment."
+        },
+        {
+          "ref": "Psalm 9:7",
+          "text": "He hath prepared his throne for judgment.",
+          "note": "The throne as the seat of the verdict."
+        }
+      ],
+      "plainTerms": [
+        "The throne is the judgment seat itself — the sovereign seat from which rule and verdict issue. Not just a chair of honor, but the seat of authority where King and Judge meet: ‘him that sat on it... and the dead were judged.’ To occupy the throne is to hold supreme authority; to approach it is to come before the highest court."
+      ],
+      "bringItHome": [
+        "The throne is not decoration — it is the seat rule and judgment come from. ‘I saw Yahuah sitting upon his throne’; ‘a great white throne... and the dead were judged.’ King and Judge meet in that one seat. To come before the throne is to stand before the highest court there is."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "on the Throne",
+          "does": "reigns and judges from the sovereign seat."
+        },
+        {
+          "who": "The throne",
+          "role": "the seat",
+          "does": "the source of rule and verdict."
+        },
+        {
+          "who": "The parties",
+          "role": "those before it",
+          "does": "who come before the highest court."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 73,
+          "term": "King"
+        },
+        {
+          "n": 86,
+          "term": "Sit"
+        },
+        {
+          "n": 121,
+          "term": "Seat vs Throne"
+        },
+        {
+          "n": 75,
+          "term": "Scepter"
+        }
+      ]
+    },
+    "88": {
+      "n": 88,
+      "term": "Tongue",
+      "movement": 6,
+      "rootLine": "lashon — Hebrew",
+      "caseStrongs": "H3956",
+      "lead": "The tongue is evidence that justifies or condemns — the instrument of testimony whose words are entered on the record and weighed. “Death and life are in the power of the tongue” (Proverbs 18:21); “by thy words thou shalt be justified, and by thy words thou shalt be condemned” (Matthew 12:37). The tongue’s speech is legal testimony: what it declares can acquit or convict, bless or curse, and it is held accountable. A ‘lying tongue’ is a false witness (Proverbs 6:17), an abomination because it corrupts the evidence. To bridle the tongue is to guard one’s testimony; what the tongue speaks is entered as evidence, and by it one is judged.",
+      "root": [
+        {
+          "lemma": "lashon",
+          "strong": "H3956",
+          "sense": "the tongue; the instrument of speech and testimony"
+        }
+      ],
+      "courtroomWord": "A testimony term — speech entered as evidence that acquits or condemns.",
+      "itsRole": "What the tongue speaks is evidence, weighed and held accountable. ‘By thy words thou shalt be justified... condemned’: the tongue’s testimony can acquit or convict. A lying tongue is a false witness, corrupting the record; a faithful tongue testifies true. Death and life are in its power because its words are entered as evidence. To guard the tongue is to guard one’s testimony — for by it the verdict is shaped.",
+      "proofTexts": [
+        {
+          "ref": "Proverbs 18:21",
+          "text": "Death and life are in the power of the tongue.",
+          "note": "The weight of its testimony."
+        },
+        {
+          "ref": "Matthew 12:37",
+          "text": "By thy words thou shalt be justified, and by thy words thou shalt be condemned.",
+          "note": "Speech as evidence for the verdict."
+        },
+        {
+          "ref": "Proverbs 6:17",
+          "text": "A lying tongue... doth Yahuah hate.",
+          "note": "The false witness condemned."
+        },
+        {
+          "ref": "James 3:6",
+          "text": "The tongue is a fire.",
+          "note": "The tongue’s power, held accountable."
+        }
+      ],
+      "plainTerms": [
+        "The tongue is evidence that justifies or condemns — the instrument of testimony whose words are entered on the record. ‘By thy words thou shalt be justified... condemned.’ A lying tongue is a false witness. What the tongue speaks can acquit or convict, and it is held accountable. To guard your tongue is to guard your testimony."
+      ],
+      "bringItHome": [
+        "What you say is entered as evidence. ‘By thy words thou shalt be justified, and by thy words thou shalt be condemned’ — the tongue’s speech is testimony, weighed at the bench. A lying tongue is a false witness, an abomination. ‘Death and life are in the power of the tongue’ because its words go on the record, and by them you are judged."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The speaker",
+          "role": "the witness",
+          "does": "whose tongue enters testimony on the record."
+        },
+        {
+          "who": "The tongue",
+          "role": "the instrument",
+          "does": "whose words acquit or condemn."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "who weighs the words as evidence."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 87,
+          "term": "Mouth"
+        },
+        {
+          "n": 7,
+          "term": "Witness"
+        },
+        {
+          "n": 90,
+          "term": "Cry"
+        },
+        {
+          "n": 101,
+          "term": "Reckon"
         }
       ]
     }
