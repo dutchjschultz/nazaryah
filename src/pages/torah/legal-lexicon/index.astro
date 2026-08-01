@@ -1,0 +1,202 @@
+---
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { meta, movements, roadNote, terms, liveTerms, slugify } from '../../../data/legal-lexicon.js';
+
+// Client data — only live terms (those with a written word page) are rendered.
+const clientMovements = movements.map((m) => ({ rom: m.rom, name: m.name, desc: m.desc }));
+const clientTerms = liveTerms.map((t) => ({ n: t.n, t: t.term, m: t.movement, g: t.gloss, slug: slugify(t.term) }));
+---
+
+<BaseLayout
+  title="The Legal Lexicon of Scripture — Torah | Nazaryah"
+  description="The whole Bible is a courtroom. These are its words — seven movements from the bench to the final verdict."
+>
+  <div class="ll">
+    <div class="wrap">
+
+      <p class="crumb"><a href="/torah">Torah</a> &rsaquo; Legal Lexicon</p>
+
+      <section class="hero">
+        <span class="eyebrow">The Legal Lexicon of Scripture</span>
+        <h1>The whole Bible is a courtroom.</h1>
+        <p class="thesis">These are its words — and once you see them, you cannot unsee it.</p>
+        <p>Scripture is not a devotional book with a few legal words in it. It is a legal book, and the warmth readers feel is the warmth of a covenant kept. Every term below — even the soft, familiar ones — is a courtroom word doing courtroom work.</p>
+        <p>The words are arranged as a road: seven movements that walk from the bench itself to the final verdict. Read them in order to walk the whole trial, or look up any single word from A to Z.</p>
+      </section>
+
+      <section class="road" id="road">
+        <div class="road-head">
+          <span class="eyebrow">The Road</span>
+          <h2>The Seven Movements</h2>
+          <p class="sub">every word in the lexicon lives in one of these seven</p>
+        </div>
+        <div class="steps" id="steps"></div>
+        <p class="roadnote" set:html={roadNote.replace(/\((IV|V|VII)\)/g, '<b>($1)</b>')} />
+      </section>
+
+      <div class="controls">
+        <div class="toggle">
+          <button id="btnMove" class="on" onclick="setView('move')">By Movement</button>
+          <button id="btnAz" onclick="setView('az')">A&ndash;Z</button>
+        </div>
+        <div class="search"><input id="q" type="text" placeholder="Filter words&hellip;" oninput="applyFilter()"></div>
+        <span class="count" id="count"></span>
+      </div>
+
+      <div id="viewMove"></div>
+      <div id="viewAz" class="hidden"></div>
+
+      <p class="foot">nazaryah.com &nbsp;·&nbsp; The Legal Lexicon of Scripture</p>
+
+    </div>
+  </div>
+</BaseLayout>
+
+<script is:inline define:vars={{ MOVEMENTS: clientMovements, TERMS: clientTerms }}>
+  const el = (id) => document.getElementById(id);
+  const base = '/torah/legal-lexicon/';
+
+  el('steps').innerHTML = MOVEMENTS.map((mv, i) => {
+    const ct = TERMS.filter((t) => t.m === i + 1).length;
+    return `<a class="rstep" href="#m${i + 1}" onclick="ensureMove()">
+      <span class="rn">${mv.rom}</span>
+      <span class="rbody">
+        <span class="rname">${mv.name}</span>
+        <span class="rdesc">${mv.desc}</span>
+        <span class="rct">${ct} word${ct === 1 ? '' : 's'}</span>
+      </span></a>`;
+  }).join('');
+
+  function rowMove(t) {
+    return `<li data-name="${t.t.toLowerCase()}">
+      <span class="termnum">${t.n}</span>
+      <a class="termlink" href="${base}${t.slug}">${t.t}</a>
+      <span class="termgloss">${t.g}</span></li>`;
+  }
+  function rowAz(t) {
+    return `<li data-name="${t.t.toLowerCase()}">
+      <span class="termnum">${t.n}</span>
+      <a class="termlink" href="${base}${t.slug}">${t.t}</a>
+      <span class="termgloss">${t.g}</span>
+      <a class="mvchip" href="#m${t.m}" onclick="ensureMove()">${MOVEMENTS[t.m - 1].rom}</a></li>`;
+  }
+
+  // Only movements that actually have a live term render a section for now.
+  el('viewMove').innerHTML = MOVEMENTS.map((mv, i) => {
+    const rows = TERMS.filter((t) => t.m === i + 1);
+    if (!rows.length) return '';
+    return `<section class="msec" id="m${i + 1}">
+      <h3><span class="rom">${mv.rom}</span> ${mv.name}</h3>
+      <p class="msub">${mv.desc}</p>
+      <ul class="termrow">${rows.map(rowMove).join('')}</ul></section>`;
+  }).join('');
+
+  const az = [...TERMS].sort((a, b) => a.t.localeCompare(b.t));
+  el('viewAz').innerHTML = `<section class="msec"><ul class="termrow">${az.map(rowAz).join('')}</ul></section>`;
+
+  let view = 'move';
+  window.setView = function (v) {
+    view = v;
+    el('viewMove').classList.toggle('hidden', v !== 'move');
+    el('viewAz').classList.toggle('hidden', v !== 'az');
+    el('btnMove').classList.toggle('on', v === 'move');
+    el('btnAz').classList.toggle('on', v === 'az');
+    applyFilter();
+  };
+  window.ensureMove = function () { if (view !== 'move') setView('move'); };
+  window.applyFilter = function () {
+    const q = el('q').value.trim().toLowerCase();
+    const root = view === 'move' ? el('viewMove') : el('viewAz');
+    let shown = 0;
+    root.querySelectorAll('li').forEach((li) => {
+      const hit = !q || li.dataset.name.includes(q);
+      li.classList.toggle('hidden', !hit); if (hit) shown++;
+    });
+    if (view === 'move') {
+      root.querySelectorAll('.msec').forEach((s) => {
+        const any = [...s.querySelectorAll('li')].some((li) => !li.classList.contains('hidden'));
+        s.classList.toggle('hidden', !any);
+      });
+    }
+    el('count').textContent = q
+      ? `${shown} of ${TERMS.length} shown`
+      : `${TERMS.length} term${TERMS.length === 1 ? '' : 's'} · growing`;
+  };
+  applyFilter();
+</script>
+
+<style>
+  .ll{
+    --navy:#1F3864;--bronze:#9A6B2F;--bronze-soft:#b98a4e;
+    --paper:#F3F1EA;--card:#FBFAF6;--ink:#26241f;--rule:#D8D2C4;
+    background:var(--paper);color:var(--ink);
+    font-family:Georgia,'Times New Roman',serif;line-height:1.6;font-size:18px;
+  }
+  .ll .wrap{max-width:900px;margin:0 auto;padding:34px 26px 90px;}
+  .ll .eyebrow{font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--bronze);font-weight:bold;}
+  .ll a{color:inherit;}
+
+  .ll .crumb{font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:#9c9384;
+    border:1px solid var(--rule);border-radius:2px;padding:4px 9px;display:inline-block;background:var(--card);}
+  .ll .crumb a{color:var(--navy);text-decoration:none;}
+
+  .ll .hero{padding:34px 0 8px;}
+  .ll .hero h1{font-size:46px;line-height:1.04;color:var(--navy);margin:14px 0 8px;letter-spacing:-.01em;}
+  .ll .thesis{font-size:22px;color:var(--bronze);font-style:italic;margin:0 0 18px;}
+  .ll .hero p{font-size:18px;color:#39352c;max-width:60ch;margin:0 0 12px;}
+
+  .ll .road{margin:36px 0 10px;background:var(--card);border:1px solid var(--rule);border-radius:4px;padding:30px 34px 34px;}
+  .ll .road-head h2{font-size:22px;color:var(--navy);margin:6px 0 2px;}
+  .ll .road-head .sub{font-size:14px;color:#7a7365;font-style:italic;margin:0 0 4px;}
+  .ll .steps{margin-top:22px;position:relative;}
+  .ll .steps::before{content:"";position:absolute;left:26px;top:8px;bottom:8px;width:2px;background:var(--rule);}
+  .ll .rstep{display:flex;gap:20px;padding:12px 0;align-items:flex-start;text-decoration:none;position:relative;}
+  .ll .rstep .rn{flex:0 0 54px;height:54px;border-radius:50%;background:var(--card);border:2px solid var(--bronze-soft);
+    color:var(--navy);display:flex;align-items:center;justify-content:center;font-size:17px;font-weight:bold;letter-spacing:.02em;z-index:1;transition:all .15s;}
+  .ll .rstep:hover .rn{background:var(--navy);color:#fff;border-color:var(--navy);}
+  .ll .rstep .rbody{padding-top:5px;}
+  .ll .rstep .rname{color:var(--navy);font-weight:bold;font-size:18px;display:block;}
+  .ll .rstep:hover .rname{color:var(--bronze);}
+  .ll .rstep .rdesc{color:#4a453b;font-size:15.5px;margin-top:2px;}
+  .ll .rstep .rct{color:#a89e8c;font-size:12.5px;letter-spacing:.06em;margin-top:3px;text-transform:uppercase;}
+  .ll .roadnote{font-size:13.5px;color:#7a7365;font-style:italic;margin-top:20px;border-top:1px solid var(--rule);padding-top:16px;}
+  .ll .roadnote b{color:var(--navy);font-style:normal;}
+
+  .ll .controls{display:flex;gap:16px;align-items:center;flex-wrap:wrap;margin:40px 0 6px;
+    background:var(--paper);padding:14px 0;border-bottom:1px solid var(--rule);}
+  .ll .toggle{display:inline-flex;border:1px solid var(--navy);border-radius:3px;overflow:hidden;}
+  .ll .toggle button{font-family:inherit;font-size:14px;letter-spacing:.04em;padding:8px 18px;border:0;cursor:pointer;background:var(--card);color:var(--navy);}
+  .ll .toggle button.on{background:var(--navy);color:#fff;}
+  .ll .search{flex:1;min-width:180px;}
+  .ll .search input{width:100%;font-family:inherit;font-size:15px;padding:9px 13px;border:1px solid var(--rule);border-radius:3px;background:var(--card);color:var(--ink);}
+  .ll .search input::placeholder{color:#a89e8c;font-style:italic;}
+  .ll .count{font-size:13px;color:#8a8172;letter-spacing:.04em;}
+
+  .ll .msec{margin-top:34px;scroll-margin-top:80px;}
+  .ll .msec h3{font-size:13px;letter-spacing:.16em;text-transform:uppercase;color:var(--navy);margin:0 0 3px;display:flex;align-items:baseline;gap:10px;}
+  .ll .msec h3 .rom{color:var(--bronze);}
+  .ll .msec .msub{font-size:14px;color:var(--bronze);font-style:italic;margin:0 0 14px;}
+
+  .ll .termrow{list-style:none;margin:0;padding:0;}
+  .ll .termrow li{display:flex;align-items:baseline;gap:14px;padding:10px 0;border-top:1px solid var(--rule);}
+  .ll .termrow li:first-child{border-top:0;}
+  .ll .termnum{color:var(--bronze);font-size:13px;min-width:30px;text-align:right;}
+  .ll .termlink{color:var(--navy);text-decoration:none;font-weight:bold;border-bottom:1px dotted var(--bronze-soft);}
+  .ll .termlink:hover{color:var(--bronze);}
+  .ll .termgloss{color:#6c6659;font-size:14.5px;font-style:italic;}
+  .ll .mvchip{font-size:11px;letter-spacing:.06em;color:var(--bronze);border:1px solid var(--rule);border-radius:2px;padding:1px 7px;text-decoration:none;margin-left:auto;white-space:nowrap;}
+  .ll .mvchip:hover{border-color:var(--bronze);}
+
+  .ll .hidden{display:none !important;}
+  .ll .foot{text-align:center;color:#a9a091;font-size:13px;letter-spacing:.04em;margin-top:50px;}
+
+  @media (max-width:620px){
+    .ll{font-size:17px;}
+    .ll .wrap{padding:24px 16px 60px;}
+    .ll .hero h1{font-size:34px;} .ll .thesis{font-size:18px;}
+    .ll .road{padding:22px 18px;}
+    .ll .rstep .rn{flex-basis:44px;height:44px;font-size:15px;}
+    .ll .steps::before{left:21px;}
+    .ll .mvchip{display:none;}
+  }
+</style>

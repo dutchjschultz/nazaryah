@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { liveTerms } from '../data/legal-lexicon.js';
+
+const sections = [
+  {
+    name: 'The Legal Lexicon of Scripture',
+    href: '/torah/legal-lexicon',
+    deck: 'The whole Bible is a courtroom. These are its words.',
+    body: 'Seven movements from the bench to the final verdict — every covenant term read as the courtroom word it is. A growing reference; the first entry is live now.',
+    meta: `${liveTerms.length} of 120 words live · growing`,
+  },
+];
+---
+
+<BaseLayout
+  title="Torah - Nazaryah"
+  description="The Torah at Nazaryah — the covenant law read on its own terms, beginning with the Legal Lexicon of Scripture."
+>
+  <div class="py-16 md:py-20">
+    <div class="container mx-auto px-6">
+      <div class="max-w-3xl mx-auto">
+
+        <h1 class="text-center mb-4" style="font-family: var(--font-display); color: var(--deep-earth);">
+          Torah
+        </h1>
+        <p class="text-center text-lg mb-12" style="color: var(--ink-faded);">
+          The covenant law, read on its own terms — the standard the whole courtroom runs on.
+        </p>
+
+        <div class="grid grid-cols-1 gap-6">
+          {sections.map((s) => (
+            <a href={s.href} class="tile-card p-7 flex flex-col gap-3" style="text-decoration: none;">
+              <span class="text-xs font-semibold tracking-widest uppercase" style="color: var(--bronze); font-family: var(--font-display);">
+                {s.meta}
+              </span>
+              <h2 class="text-2xl font-semibold" style="font-family: var(--font-display); color: var(--deep-earth);">
+                {s.name}
+              </h2>
+              <p class="italic" style="color: var(--bronze); font-family: var(--font-body);">
+                {s.deck}
+              </p>
+              <p class="text-sm" style="color: var(--ink-faded); font-family: var(--font-body); line-height: 1.65;">
+                {s.body}
+              </p>
+              <span class="inline-flex items-center gap-1 text-xs font-semibold tracking-widest uppercase mt-1" style="color: var(--bronze); font-family: var(--font-display);">
+                Enter &rarr;
+              </span>
+            </a>
+          ))}
+        </div>
+
+      </div>
+    </div>
+  </div>
+</BaseLayout>
