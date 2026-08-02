@@ -109,8 +109,28 @@ const watchmansReportCollection = defineCollection({
   }),
 });
 
+// The Watchman's Letter — weekly letters. Its OWN collection, NOT posts: these
+// are letters, not studies, so they do not inherit the study schema. No
+// `associations` field — letters stay out of the study clusters. And nothing
+// here feeds the homepage Featured Picks rotation, which is built from the
+// `posts` collection only (see src/pages/index.astro).
+const watchmansDeskCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    // One-line italic deck under the title.
+    deck: z.string(),
+    // Per-issue masthead suffix; the layout supplies the fixed
+    // "THE WATCHMAN'S LETTER ·" chrome. e.g. "Week ending 31 July 2026".
+    issue: z.string(),
+    date: z.date(),
+    draft: z.boolean().default(false),
+  }),
+});
+
 export const collections = {
   posts: postsCollection,
   glossary: glossaryCollection,
   'watchmans-report': watchmansReportCollection,
+  'watchmans-desk': watchmansDeskCollection,
 };

@@ -1,0 +1,104 @@
+---
+// The Watchman's Letter — one page per weekly letter (watchmans-desk collection).
+// Masthead chrome, title, and deck all come from frontmatter / the layout — never
+// pasted into the body. Standard site header + footer come from BaseLayout.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const letters = await getCollection('watchmans-desk', (l) => l.data.draft !== true);
+  return letters.map((letter) => ({ params: { slug: letter.slug }, props: { letter } }));
+}
+
+const { letter } = Astro.props;
+const { title, deck, issue } = letter.data;
+const { Content } = await letter.render();
+---
+
+<BaseLayout title={`${title} — The Watchman's Letter | Nazaryah`} description={deck} article={true}>
+  <article class="wl">
+    <header class="wl-head">
+      <p class="wl-masthead">The Watchman's Letter &middot; {issue}</p>
+      <h1 class="wl-title">{title}</h1>
+      <p class="wl-deck">{deck}</p>
+    </header>
+
+    <div class="wl-body">
+      <Content />
+    </div>
+  </article>
+</BaseLayout>
+
+<style>
+  .wl {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: clamp(2.5rem, 6vw, 4.5rem) 1.4rem 4rem;
+    font-family: Georgia, 'Times New Roman', serif;
+    color: #241d13;
+  }
+
+  /* Masthead — the chrome line. Fixed brand + per-issue suffix, uppercased. */
+  .wl-head { text-align: center; margin-bottom: 2.6rem; }
+  .wl-masthead {
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #1f3864;
+    margin: 0 0 1.5rem;
+    padding-bottom: 1rem;
+    border-bottom: 1px solid rgba(31, 56, 100, 0.25);
+    font-weight: 600;
+  }
+  .wl-title {
+    font-size: clamp(2rem, 1.4rem + 3vw, 3rem);
+    line-height: 1.1;
+    color: #1f3864;
+    margin: 0 0 0.7rem;
+    font-weight: 700;
+  }
+  .wl-deck {
+    font-style: italic;
+    font-size: clamp(1.05rem, 1rem + 0.4vw, 1.25rem);
+    color: #5c5142;
+    margin: 0;
+    line-height: 1.5;
+  }
+
+  /* Body copy */
+  .wl-body { font-size: 1.09rem; line-height: 1.8; }
+  .wl-body :global(p) { margin: 0 0 1.3rem; }
+
+  /* Bold section headers → h2, navy per house style */
+  .wl-body :global(h2) {
+    font-size: 1.35rem;
+    color: #1f3864;
+    font-weight: 700;
+    line-height: 1.25;
+    margin: 2.6rem 0 1rem;
+  }
+
+  /* Indented italic scripture → blockquote, no decorative divider */
+  .wl-body :global(blockquote) {
+    margin: 1.7rem 0;
+    padding: 0.2rem 0 0.2rem 1.4rem;
+    border-left: 3px solid #1f3864;
+    font-style: italic;
+    color: #3a3428;
+    line-height: 1.65;
+  }
+  .wl-body :global(blockquote p) { margin: 0; }
+
+  /* Closing line — a pull-quote, visually distinct from the h2 section heads:
+     centered, larger, set off by a rule above rather than left-aligned/bold. */
+  .wl-body :global(.wl-closing) {
+    margin: 2.8rem 0 0;
+    padding-top: 1.8rem;
+    border-top: 1px solid rgba(31, 56, 100, 0.25);
+    text-align: center;
+    font-style: italic;
+    font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem);
+    line-height: 1.4;
+    color: #1f3864;
+  }
+</style>
