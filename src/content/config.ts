@@ -53,6 +53,11 @@ const postsCollection = defineCollection({
     order: z.number().optional(),
     // Single strongest kin study, rendered as "Read Next" at the foot of the post.
     companion: z.string().optional(),
+    // Optional per-study social-share overrides. Each falls back to the study's
+    // own title/description or the site default (see BaseLayout).
+    ogTitle: z.string().optional(),
+    ogDescription: z.string().optional(),
+    ogImage: z.string().optional(),
   }),
 });
 

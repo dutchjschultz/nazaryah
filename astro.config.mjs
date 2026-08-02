@@ -9,6 +9,10 @@ import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
 export default defineConfig({
+  // Absolute base for canonical links and Open Graph / Twitter image URLs.
+  // Without this, new URL(..., Astro.site) falls back to localhost and social
+  // scrapers get a dead image link.
+  site: 'https://nazaryah.com',
   integrations: [mdx(), react(), markdoc(), keystatic()],
   output: 'static',
   adapter: netlify(),

@@ -11,7 +11,7 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, deck, date, category, tags, author, references } = post.data;
+const { title, description, deck, date, category, tags, author, references, ogTitle, ogDescription, ogImage } = post.data;
 
 // Categories that are books on the shelf — these posts are chapters, so their
 // header links back to the book rather than carrying the Trinity tag.
@@ -40,7 +40,7 @@ const companionSlug = post.data.companion;
 const companion = companionSlug ? await getEntry('posts', companionSlug) : null;
 ---
 
-<BaseLayout title={`${title} - Nazaryah`} description={description} article={true}>
+<BaseLayout title={`${title} - Nazaryah`} description={description} article={true} ogTitle={ogTitle} ogDescription={ogDescription} ogImage={ogImage}>
   <article class="py-16 md:py-20" data-pagefind-body>
     <div class="container mx-auto px-6">
       <!-- Breadcrumb -->

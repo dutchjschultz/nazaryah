@@ -10,19 +10,36 @@ interface Props {
   image?: string;
   article?: boolean;
   canonical?: string;
+  ogTitle?: string;
+  ogDescription?: string;
+  ogImage?: string;
 }
 
 const {
   title = 'Nazaryah - Biblical Studies',
   description = 'A modern biblical studies platform emphasizing original languages, fresh perspectives, and rich contextual understanding.',
-  image = '/og-image.jpg',
+  image,
   article = false,
-  canonical
+  canonical,
+  ogTitle,
+  ogDescription,
+  ogImage
 } = Astro.props;
 
 // canonical override lets a duplicate page (e.g. the Foreign Fire copy of a study)
 // point search engines at the primary /blog/ version.
 const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site || 'http://localhost:4321');
+
+// Open Graph / Twitter Card. Site-wide defaults below; individual studies may
+// override og:title / og:description / og:image from frontmatter. Resolution:
+// an explicit og* value wins, else the page's own title/description/image,
+// else the site default.
+const OG_DEFAULT_TITLE = 'Nazaryah — Separated Unto Yah';
+const OG_DEFAULT_DESCRIPTION = 'Biblical studies checked against the text itself.';
+const OG_DEFAULT_IMAGE = '/og-default.jpg';
+const ogTitleResolved = ogTitle ?? title ?? OG_DEFAULT_TITLE;
+const ogDescriptionResolved = ogDescription ?? description ?? OG_DEFAULT_DESCRIPTION;
+const ogImageURL = new URL(ogImage ?? image ?? OG_DEFAULT_IMAGE, Astro.site || 'http://localhost:4321').href;
 ---
 
 <!DOCTYPE html>
@@ -54,16 +71,16 @@ const canonicalURL = new URL(canonical ?? Astro.url.pathname, Astro.site || 'htt
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content={article ? 'article' : 'website'} />
     <meta property="og:url" content={canonicalURL} />
-    <meta property="og:title" content={title} />
-    <meta property="og:description" content={description} />
-    <meta property="og:image" content={new URL(image, Astro.site || 'http://localhost:4321').href} />
+    <meta property="og:title" content={ogTitleResolved} />
+    <meta property="og:description" content={ogDescriptionResolved} />
+    <meta property="og:image" content={ogImageURL} />
 
     <!-- Twitter -->
-    <meta property="twitter:card" content="summary_large_image" />
-    <meta property="twitter:url" content={canonicalURL} />
-    <meta property="twitter:title" content={title} />
-    <meta property="twitter:description" content={description} />
-    <meta property="twitter:image" content={new URL(image, Astro.site || 'http://localhost:4321').href} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={ogTitleResolved} />
+    <meta name="twitter:description" content={ogDescriptionResolved} />
+    <meta name="twitter:image" content={ogImageURL} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
