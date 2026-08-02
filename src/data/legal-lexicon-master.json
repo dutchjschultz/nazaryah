@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0801 V14",
+    "version": "0801 V15",
     "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -32,7 +32,8 @@
       "0801 V11: merged 12 word pages (Kategoros correction + Qerev–Restitution: 125,126,15,101,29,13,14,113,24,45,25,27) into words; those terms set page draft-v1. 125 Kategoros was skipped in the Keep–Mouth batch (not a break term); added here.",
       "0801 V12: merged 12 word pages (Restore–Servant: 30,108,82,6,21,69,105,75,34,121,128,63) into words; those terms set page draft-v1.",
       "0801 V13: merged 13 word pages (Katargeo correction + Shalom–Tongue: 140,26,35,86,65,62,80,109,120,42,8,74,88) into words; those terms set page draft-v1. 140 Katargeo was skipped earlier (sorts between Karath and Kategoros); added here.",
-      "0801 V14 FINAL: merged 13 word pages (Transgression–Write: 19,110,40,68,112,103,43,107,47,66,7,111,32) into words; those terms set page draft-v1. 32 Write fills the slot cleared in V8. Completes all 142 of 142 word pages."
+      "0801 V14 FINAL: merged 13 word pages (Transgression–Write: 19,110,40,68,112,103,43,107,47,66,7,111,32) into words; those terms set page draft-v1. 32 Write fills the slot cleared in V8. Completes all 142 of 142 word pages.",
+      "0801 V15: GO-LIVE — flipped 141 word pages from draft-v1 to live. Recompense (28) held at draft-v4 (its own advanced draft, pending confirmation). All 142 word records present; page status is metadata only (rendering runs off hasWord, not page)."
     ]
   },
   "movements": [
@@ -86,189 +87,189 @@
       "term": "Judge",
       "movement": 1,
       "gloss": "the one who hears and rules",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 2,
       "term": "Judgment",
       "movement": 1,
       "gloss": "the ruling, and the case-law",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 3,
       "term": "Justify",
       "movement": 7,
       "gloss": "to acquit from the bench",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 4,
       "term": "Justification",
       "movement": 7,
       "gloss": "the acquittal made formal",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 5,
       "term": "Condemn",
       "movement": 7,
       "gloss": "to judge down against, guilty",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 6,
       "term": "Righteousness",
       "movement": 2,
       "gloss": "conformity to the standard",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 7,
       "term": "Witness",
       "movement": 6,
       "gloss": "sworn testimony, corroborated",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 8,
       "term": "Testimony",
       "movement": 2,
       "gloss": "the deposited terms of the law",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 9,
       "term": "Advocate",
       "movement": 4,
       "gloss": "defense counsel before the bench",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 10,
       "term": "Accuser",
       "movement": 7,
       "gloss": "the adversary who prosecutes",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 11,
       "term": "Mediator",
       "movement": 4,
       "gloss": "the officer who makes the covenant hold",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 12,
       "term": "Intercession",
       "movement": 4,
       "gloss": "one who steps between guilt and bench",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 13,
       "term": "Redeem",
       "movement": 4,
       "gloss": "to buy back under kinsman law",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 14,
       "term": "Redemption",
       "movement": 4,
       "gloss": "release secured by a price",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 15,
       "term": "Ransom",
       "movement": 4,
       "gloss": "the price that answers a life",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 16,
       "term": "Forgive",
       "movement": 4,
       "gloss": "to lift the charge from the record",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 17,
       "term": "Debt",
       "movement": 6,
       "gloss": "the obligation owed on the books",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 18,
       "term": "Covenant",
       "movement": 2,
       "gloss": "the binding treaty itself",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 19,
       "term": "Transgression",
       "movement": 2,
       "gloss": "the breach of a fixed line",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 20,
       "term": "Atonement",
       "movement": 4,
       "gloss": "the charge covered, account cleared",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 21,
       "term": "Sabbath",
       "movement": 5,
       "gloss": "the covenant sign, kept",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 22,
       "term": "Jubilee",
       "movement": 4,
       "gloss": "debt cancelled, liberty proclaimed",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 23,
       "term": "Liberty",
       "movement": 4,
       "gloss": "the legal release of the bound",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 24,
       "term": "Release",
       "movement": 4,
       "gloss": "the sabbatical cancelling of debt",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 25,
       "term": "Rest",
       "movement": 5,
       "gloss": "secured possession of the inheritance",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 26,
       "term": "Shalom",
       "movement": 4,
       "gloss": "the account paid, the books at zero",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 27,
       "term": "Restitution",
       "movement": 4,
       "gloss": "the wrong repaid in full",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 28,
@@ -282,644 +283,644 @@
       "term": "Reconcile",
       "movement": 4,
       "gloss": "the ledger brought back to zero",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 30,
       "term": "Restore",
       "movement": 4,
       "gloss": "property and standing returned",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 31,
       "term": "Book",
       "movement": 3,
       "gloss": "the legal register",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 32,
       "term": "Write",
       "movement": 6,
       "gloss": "to make a matter binding",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 33,
       "term": "Engrave",
       "movement": 6,
       "gloss": "cut beyond amendment",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 34,
       "term": "Seal",
       "movement": 3,
       "gloss": "authenticated, marked as owned",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 35,
       "term": "Sign",
       "movement": 3,
       "gloss": "the token that proves the bond",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 36,
       "term": "Memorial",
       "movement": 6,
       "gloss": "a remembrance filed on record",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 37,
       "term": "Pillar",
       "movement": 6,
       "gloss": "a witness monument in stone",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 38,
       "term": "Name",
       "movement": 3,
       "gloss": "legal identity and authority",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 39,
       "term": "Amen",
       "movement": 2,
       "gloss": "the sworn signature to the terms",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 40,
       "term": "Truth",
       "movement": 2,
       "gloss": "legal verity, what holds up",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 41,
       "term": "Cut",
       "movement": 2,
       "gloss": "to ratify a covenant in blood",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 42,
       "term": "Swear",
       "movement": 2,
       "gloss": "to bind oneself by oath",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 43,
       "term": "Vow",
       "movement": 2,
       "gloss": "a self-imposed binding obligation",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 44,
       "term": "Promise",
       "movement": 2,
       "gloss": "a pledge that confers a claim",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 45,
       "term": "Remember",
       "movement": 5,
       "gloss": "to act on a standing obligation",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 46,
       "term": "Hear",
       "movement": 5,
       "gloss": "to heed and comply",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 47,
       "term": "Walk",
       "movement": 5,
       "gloss": "conduct measured against the code",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 48,
       "term": "Keep",
       "movement": 5,
       "gloss": "to guard as a charge",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 49,
       "term": "Confess",
       "movement": 5,
       "gloss": "a legal admission on record",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 50,
       "term": "Deny",
       "movement": 5,
       "gloss": "legal repudiation of a bond",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 51,
       "term": "Inheritance",
       "movement": 3,
       "gloss": "the estate allotted by law",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 52,
       "term": "Heir",
       "movement": 3,
       "gloss": "one with standing to receive",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 53,
       "term": "Inherit",
       "movement": 3,
       "gloss": "to take lawful possession",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 54,
       "term": "Portion",
       "movement": 3,
       "gloss": "the assigned legal share",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 55,
       "term": "Lot",
       "movement": 3,
       "gloss": "allotment by binding lot",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 56,
       "term": "Landmark",
       "movement": 3,
       "gloss": "the boundary stone of legal title",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 57,
       "term": "Possess",
       "movement": 3,
       "gloss": "to take and hold as legal owner",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 58,
       "term": "Buy",
       "movement": 4,
       "gloss": "to acquire by paying the price",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 59,
       "term": "Bought",
       "movement": 4,
       "gloss": "the purchase completed, title moved",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 60,
       "term": "Birthright",
       "movement": 3,
       "gloss": "the firstborn's legal privilege",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 61,
       "term": "Adoption",
       "movement": 3,
       "gloss": "placed as son by legal act",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 62,
       "term": "Sonship",
       "movement": 3,
       "gloss": "status carrying the inheritance",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 63,
       "term": "Servant",
       "movement": 3,
       "gloss": "a regulated bond of service",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 64,
       "term": "Free",
       "movement": 3,
       "gloss": "manumitted standing",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 65,
       "term": "Sojourner",
       "movement": 3,
       "gloss": "the resident alien's status",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 66,
       "term": "Widow",
       "movement": 3,
       "gloss": "a protected legal class",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 67,
       "term": "Clean",
       "movement": 3,
       "gloss": "legally admissible to approach",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 68,
       "term": "Unclean",
       "movement": 3,
       "gloss": "legally barred, with a remedy",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 69,
       "term": "Sanctify",
       "movement": 3,
       "gloss": "set apart into holy status",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 70,
       "term": "Profane",
       "movement": 3,
       "gloss": "to breach a holy boundary",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 71,
       "term": "Anoint",
       "movement": 1,
       "gloss": "investiture into office",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 72,
       "term": "Messiah",
       "movement": 1,
       "gloss": "the one appointed and installed",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 73,
       "term": "King",
       "movement": 1,
       "gloss": "the sovereign who issues law",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 74,
       "term": "Throne",
       "movement": 1,
       "gloss": "the judgment seat itself",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 75,
       "term": "Scepter",
       "movement": 1,
       "gloss": "the emblem of jurisdiction",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 76,
       "term": "Crown",
       "movement": 1,
       "gloss": "sovereignty, and the prize adjudged",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 77,
       "term": "Priest",
       "movement": 1,
       "gloss": "officer who teaches and judges the law",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 78,
       "term": "Elder",
       "movement": 1,
       "gloss": "magistrate seated in the gate",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 79,
       "term": "Gate",
       "movement": 1,
       "gloss": "the courthouse of the city",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 80,
       "term": "Stand",
       "movement": 1,
       "gloss": "to hold standing before the bench",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 81,
       "term": "Hand",
       "movement": 1,
       "gloss": "power, custody, jurisdiction",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 82,
       "term": "Right hand",
       "movement": 1,
       "gloss": "the seat of delegated authority",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 83,
       "term": "Face",
       "movement": 1,
       "gloss": "presence, the standing to appear",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 84,
       "term": "Lift the face",
       "movement": 1,
       "gloss": "partiality, the sin of favoritism",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 85,
       "term": "Footstool",
       "movement": 1,
       "gloss": "dominion, the conquered under foot",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 86,
       "term": "Sit",
       "movement": 1,
       "gloss": "to convene as judge",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 87,
       "term": "Mouth",
       "movement": 6,
       "gloss": "where testimony and decree issue",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 88,
       "term": "Tongue",
       "movement": 6,
       "gloss": "evidence that acquits or condemns",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 89,
       "term": "Blood",
       "movement": 4,
       "gloss": "a plaintiff, and the price provided",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 90,
       "term": "Cry",
       "movement": 6,
       "gloss": "the appeal lodged with the court",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 91,
       "term": "Betroth",
       "movement": 2,
       "gloss": "the binding contract before the wedding",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 92,
       "term": "Bride",
       "movement": 2,
       "gloss": "a covenant party under the marriage bond",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 93,
       "term": "Husband",
       "movement": 2,
       "gloss": "the covenant party with authority and duty",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 94,
       "term": "Adultery",
       "movement": 2,
       "gloss": "covenant infidelity, a breach of the bond",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 95,
       "term": "Divorce",
       "movement": 2,
       "gloss": "the legal dissolution of the covenant",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 96,
       "term": "Jealous",
       "movement": 2,
       "gloss": "the offended party enforcing exclusivity",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 97,
       "term": "Love",
       "movement": 5,
       "gloss": "covenant loyalty and allegiance",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 98,
       "term": "Chesed",
       "movement": 5,
       "gloss": "the obligated kindness of the bond",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 99,
       "term": "Favor",
       "movement": 4,
       "gloss": "unearned standing granted from above",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 100,
       "term": "Faithful",
       "movement": 5,
       "gloss": "fidelity that holds under test",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 101,
       "term": "Reckon",
       "movement": 6,
       "gloss": "to credit or debit the account",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 102,
       "term": "Account",
       "movement": 6,
       "gloss": "the ledger, and the answer for it",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 103,
       "term": "Visit",
       "movement": 6,
       "gloss": "a judicial audit of the record",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 104,
       "term": "Number",
       "movement": 3,
       "gloss": "enrolled on the official roll",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 105,
       "term": "Scales",
       "movement": 6,
       "gloss": "the balance of just measure",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 106,
       "term": "Measure",
       "movement": 6,
       "gloss": "the fixed standard of judgment",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 107,
       "term": "Wages",
       "movement": 7,
       "gloss": "the legal due of labor owed",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 108,
       "term": "Reward",
       "movement": 7,
       "gloss": "the due paid to the faithful",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 109,
       "term": "Steward",
       "movement": 7,
       "gloss": "the trustee called to account",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 110,
       "term": "Trust",
       "movement": 7,
       "gloss": "the deposit answered for at return",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 111,
       "term": "Wrath",
       "movement": 7,
       "gloss": "the settled sentence of the court",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 112,
       "term": "Vengeance",
       "movement": 7,
       "gloss": "judicial redress reserved to the bench",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 113,
       "term": "Refuge",
       "movement": 7,
       "gloss": "legal asylum with due process",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 114,
       "term": "Avenger of blood",
       "movement": 7,
       "gloss": "the executor of the sentence",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 115,
       "term": "Plead",
       "movement": 7,
       "gloss": "to bring and argue the lawsuit",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 116,
       "term": "Cause",
       "movement": 7,
       "gloss": "the case itself before the court",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 117,
       "term": "Accuse",
       "movement": 7,
       "gloss": "to file the formal indictment",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 118,
       "term": "Innocent",
       "movement": 7,
       "gloss": "acquitted, clean of the charge",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 119,
       "term": "Guilty",
       "movement": 7,
       "gloss": "liable, owing the debt assessed",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 120,
       "term": "Surety",
       "movement": 4,
       "gloss": "the pledge that guarantees the outcome",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 121,
@@ -927,7 +928,7 @@
       "movement": 1,
       "gloss": "the derived bench vs the sovereign's seat",
       "strongs": "G2515/H4186 vs G2362/H3678",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 122,
@@ -935,7 +936,7 @@
       "movement": 4,
       "gloss": "to carry the liability of an offense",
       "strongs": "H5375+H5771",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 123,
@@ -943,7 +944,7 @@
       "movement": 7,
       "gloss": "the decreed land of cutting-off (Lev 16:22)",
       "strongs": "H776+H1509",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 124,
@@ -951,7 +952,7 @@
       "movement": 7,
       "gloss": "the place of the legally condemned",
       "strongs": "exo tes paremboles / exo tes pules",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 125,
@@ -959,7 +960,7 @@
       "movement": 7,
       "gloss": "the prosecuting party before the bench",
       "strongs": "G2725",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 126,
@@ -967,7 +968,7 @@
       "movement": 1,
       "gloss": "escorted presentation before the bench (Dan 7:13)",
       "strongs": "H7127",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 127,
@@ -975,7 +976,7 @@
       "movement": 7,
       "gloss": "the court session and its verdict",
       "strongs": "H1780",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 128,
@@ -983,7 +984,7 @@
       "movement": 6,
       "gloss": "the books opened, the record entered",
       "strongs": "Dan 7:10",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 129,
@@ -994,7 +995,7 @@
       "break": {
         "note": "The court's own authority, seized by a bench never granted it — jurisdiction stripped from the rightful and claimed by the usurper (Dan 7)."
       },
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 130,
@@ -1005,7 +1006,7 @@
       "break": {
         "note": "The statute itself, tampered — appointed times and law altered by a power that was never the Lawgiver (Dan 7:25)."
       },
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 131,
@@ -1013,7 +1014,7 @@
       "movement": 1,
       "gloss": "the presiding Judge; seniority as standing",
       "strongs": "H6268+H3118",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 132,
@@ -1021,7 +1022,7 @@
       "movement": 7,
       "gloss": "the covenant death-sentence of severance",
       "strongs": "H3772",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 133,
@@ -1032,7 +1033,7 @@
       "break": {
         "note": "The seat of standing, usurped — a body claiming the right to teach and judge that Yahuah never seated."
       },
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 134,
@@ -1043,7 +1044,7 @@
       "break": {
         "note": "The charge turned to slander — an accuser who fabricates the case instead of proving it."
       },
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 135,
@@ -1055,7 +1056,7 @@
         "note": "The balal side only — unlawful confusion, the deliberate mixing of what Yahuah set apart.",
         "partial": "balal"
       },
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 136,
@@ -1066,7 +1067,7 @@
       "break": {
         "note": "Severance worked by testimony thrown between brothers — division engineered, not adjudicated."
       },
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 137,
@@ -1074,7 +1075,7 @@
       "movement": 4,
       "gloss": "the handwritten certificate of debt (Col 2:14)",
       "strongs": "G5498",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 138,
@@ -1082,7 +1083,7 @@
       "movement": 2,
       "gloss": "an enacted decree with legal force",
       "strongs": "G1378",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 139,
@@ -1090,7 +1091,7 @@
       "movement": 7,
       "gloss": "under the sentence, not under obligation to obey",
       "strongs": "hupo nomon",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 140,
@@ -1098,7 +1099,7 @@
       "movement": 4,
       "gloss": "to render an instrument inoperative, not erased",
       "strongs": "G2673",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 141,
@@ -1106,7 +1107,7 @@
       "movement": 6,
       "gloss": "accurate handling of the record",
       "strongs": "G3718",
-      "page": "draft-v1"
+      "page": "live"
     },
     {
       "n": 142,
@@ -1117,7 +1118,7 @@
       "break": {
         "note": "Titles of standing taken by men that Yahushua forbade them to bear (Matt 23:8,10)."
       },
-      "page": "draft-v1"
+      "page": "live"
     }
   ],
   "words": {
