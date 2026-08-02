@@ -2,19 +2,16 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 
-// Field notes now live in the watchmans-report collection (not hardcoded).
-const reports = (await getCollection('watchmans-report'))
-  .filter((r) => r.data.draft !== true)
+// The Watchman's Desk — the archive of weekly letters. Every letter, newest
+// first, one stream. (The old news-brief collection, watchmans-report, is
+// retired to draft: true; its files are preserved but no longer render here.)
+const letters = (await getCollection('watchmans-desk', (l) => l.data.draft !== true))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const rendered = await Promise.all(
-  reports.map(async (r) => ({ data: r.data, Content: (await r.render()).Content }))
-);
-const toneClass = (t) => (t === 'urgent' ? 'wd-tag-urgent' : t === 'horizon' ? 'wd-tag-horizon' : '');
 ---
 
 <BaseLayout
   title="The Watchman's Desk — Nazaryah"
-  description="Field notes for believers paying attention. The Triumphal Arch, the war in Jacob's land, and Memorial Day — three current cycles with Scripture reading them as they unfold."
+  description="The Watchman's Letter — a weekly reading of the week's noise through Scripture. Every letter, newest first."
 >
   <div class="wd-wrap">
 
@@ -22,30 +19,33 @@ const toneClass = (t) => (t === 'urgent' ? 'wd-tag-urgent' : t === 'horizon' ? '
     <section class="wd-masthead">
       <p class="wd-eyebrow">&#8213; Field Notes From the Wall &#8213;</p>
       <h1 class="wd-title">The Watchman's Desk</h1>
-      <p class="wd-sub">Three current cycles worth a believer's attention — and what Scripture has to say about each.</p>
+      <p class="wd-sub">The Watchman's Letter — one week at a time, read through the text. Every letter, newest first.</p>
       <div class="wd-stripes" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
     </section>
 
-    <!-- THREE BRIEFS — rendered from the watchmans-report collection -->
+    <!-- LETTERS — one stream, newest first -->
     <section class="wd-grid-section">
-      <div class="wd-grid">
-        {rendered.map(({ data, Content }) => (
-          <article class="wd-brief">
-            <div class={`wd-tag ${toneClass(data.tone)}`}>
-              <span>{data.tag}</span>
-              <span class="wd-star">★</span>
-            </div>
-            <div class="wd-brief-body">
-              <p class="wd-dateline">{data.dateline}</p>
-              <h2 class="wd-brief-title">{data.title}</h2>
-              <Content />
-              <a href={data.studyUrl} class="wd-link">{data.linkText} &rarr;<span class="wd-link-sub">{data.studyLabel}</span></a>
-            </div>
-          </article>
-        ))}
-      </div>
+      {letters.length === 0 ? (
+        <p class="wd-empty">The first letter is on its way.</p>
+      ) : (
+        <div class="wd-stream">
+          {letters.map((letter) => (
+            <a class="wd-letter" href={`/watchmans-desk/${letter.slug}`}>
+              <div class="wd-tag">
+                <span>{letter.data.issue}</span>
+                <span class="wd-star">★</span>
+              </div>
+              <div class="wd-letter-body">
+                <h2 class="wd-letter-title">{letter.data.title}</h2>
+                <p class="wd-letter-deck">{letter.data.deck}</p>
+                <span class="wd-read">Read the letter &rarr;</span>
+              </div>
+            </a>
+          ))}
+        </div>
+      )}
 
       <div class="wd-foot">
         <p>
@@ -65,9 +65,7 @@ const toneClass = (t) => (t === 'urgent' ? 'wd-tag-urgent' : t === 'horizon' ? '
     --navy: #0a1d3a;
     --navy-deep: #061230;
     --red: #b8232a;
-    --red-deep: #8a1a20;
     --cream: #f5f1e6;
-    --parchment: #ebe3cf;
     --gold: #c9a961;
 
     background: var(--cream);
@@ -125,116 +123,76 @@ const toneClass = (t) => (t === 'urgent' ? 'wd-tag-urgent' : t === 'horizon' ? '
     margin: 0 auto;
     line-height: 1.55;
   }
-  .wd-stripes {
-    display: flex;
-    justify-content: center;
-    gap: 3px;
-    margin-top: 24px;
-  }
+  .wd-stripes { display: flex; justify-content: center; gap: 3px; margin-top: 24px; }
   .wd-stripes span { display: block; width: 22px; height: 3px; }
   .wd-stripes span:nth-child(odd) { background: var(--red); }
   .wd-stripes span:nth-child(even) { background: var(--navy); }
 
-  /* GRID */
-  .wd-grid-section {
-    padding: 3.5rem 1.5rem 4rem;
-  }
-  .wd-grid {
-    display: grid;
-    grid-template-columns: 1fr;
-    gap: 2rem;
-    max-width: 860px;
+  /* STREAM — the letters, newest first */
+  .wd-grid-section { padding: 3.5rem 1.5rem 4rem; }
+  .wd-stream {
+    display: flex;
+    flex-direction: column;
+    gap: 1.75rem;
+    max-width: 760px;
     margin: 0 auto;
   }
+  .wd-empty {
+    max-width: 760px; margin: 0 auto; text-align: center;
+    font-style: italic; color: var(--ink-soft);
+  }
 
-  .wd-brief {
+  .wd-letter {
+    display: block;
+    text-decoration: none;
     background: #fff;
     border: 1px solid var(--navy);
     overflow: hidden;
     box-shadow: 0 4px 16px rgba(10,29,58,0.12);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
   }
+  .wd-letter:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(10,29,58,0.2); }
 
   .wd-tag {
     background: var(--navy-deep);
     color: var(--cream);
     padding: 10px 22px;
+    font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
     font-size: 0.72rem;
-    letter-spacing: 0.25em;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     font-weight: 700;
     display: flex;
     align-items: center;
     justify-content: space-between;
   }
-  .wd-tag-urgent { background: var(--red); }
-  .wd-tag-horizon { background: var(--gold); color: var(--navy-deep); }
-  .wd-star { font-size: 0.9rem; }
+  .wd-star { font-size: 0.9rem; color: var(--gold); }
 
-  .wd-brief-body {
-    padding: 1.75rem 1.75rem 1.75rem;
-  }
-
-  .wd-dateline {
-    font-family: 'Times New Roman', Georgia, serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: #6e5a3f;
-    margin: 0 0 0.75rem 0;
-    font-weight: 700;
-  }
-
-  .wd-brief-title {
+  .wd-letter-body { padding: 1.6rem 1.75rem 1.7rem; }
+  .wd-letter-title {
     font-family: 'Playfair Display', 'Cinzel', Georgia, serif;
-    font-size: clamp(1.4rem, 2.8vw, 1.8rem);
+    font-size: clamp(1.4rem, 2.8vw, 1.85rem);
     font-weight: 800;
     color: var(--navy-deep);
     line-height: 1.15;
-    margin: 0 0 1.25rem 0;
-    border-bottom: 1px solid rgba(10, 29, 58, 0.18);
-    padding-bottom: 0.85rem;
+    margin: 0 0 0.7rem 0;
   }
-
-  .wd-brief-body p {
-    font-size: 1rem;
-    line-height: 1.75;
+  .wd-letter-deck {
+    font-style: italic;
+    font-size: 1.05rem;
+    line-height: 1.6;
     color: var(--ink-soft);
-    margin: 0 0 1.1rem 0;
+    margin: 0 0 1.2rem 0;
   }
-  .wd-brief-body p:last-of-type { margin-bottom: 1.5rem; }
-  .wd-brief-body em { color: var(--red-deep); font-style: italic; }
-
-  .wd-link {
-    display: block;
-    padding: 0.9rem 1.1rem;
-    background: var(--parchment);
-    border-left: 4px solid var(--red);
-    color: var(--red-deep);
+  .wd-read {
     font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
-    font-size: 0.78rem;
+    font-size: 0.74rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
     font-weight: 700;
-    text-decoration: none;
-    transition: all 0.2s ease;
+    color: var(--red);
   }
-  .wd-link:hover {
-    background: var(--navy-deep);
-    color: var(--cream);
-    border-left-color: var(--gold);
-  }
-  .wd-link-sub {
-    display: block;
-    margin-top: 6px;
-    font-family: Georgia, serif;
-    font-style: italic;
-    font-size: 0.88rem;
-    text-transform: none;
-    letter-spacing: 0;
-    color: var(--ink-soft);
-    font-weight: 400;
-  }
-  .wd-link:hover .wd-link-sub { color: var(--gold); }
+  .wd-letter:hover .wd-read { color: var(--navy-deep); }
 
   /* FOOT */
   .wd-foot {
@@ -259,6 +217,6 @@ const toneClass = (t) => (t === 'urgent' ? 'wd-tag-urgent' : t === 'horizon' ? '
 
   @media (max-width: 640px) {
     .wd-masthead::before, .wd-masthead::after { display: none; }
-    .wd-brief-body { padding: 1.5rem 1.25rem; }
+    .wd-letter-body { padding: 1.4rem 1.25rem; }
   }
 </style>
