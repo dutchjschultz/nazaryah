@@ -2,7 +2,7 @@
   "meta": {
     "title": "The Legal Lexicon of Scripture",
     "role": "MASTER LIST — single source of truth. Check new terms against this before proposing any.",
-    "version": "0801 V13",
+    "version": "0801 V14",
     "updated": "2026-08-01",
     "totalTerms": 142,
     "movementsAreForward": true,
@@ -31,7 +31,8 @@
       "0801 V10: merged 12 word pages (Name–Promise: 38,122,104,141,124,37,115,54,57,77,70,44) into words; those terms set page draft-v1.",
       "0801 V11: merged 12 word pages (Kategoros correction + Qerev–Restitution: 125,126,15,101,29,13,14,113,24,45,25,27) into words; those terms set page draft-v1. 125 Kategoros was skipped in the Keep–Mouth batch (not a break term); added here.",
       "0801 V12: merged 12 word pages (Restore–Servant: 30,108,82,6,21,69,105,75,34,121,128,63) into words; those terms set page draft-v1.",
-      "0801 V13: merged 13 word pages (Katargeo correction + Shalom–Tongue: 140,26,35,86,65,62,80,109,120,42,8,74,88) into words; those terms set page draft-v1. 140 Katargeo was skipped earlier (sorts between Karath and Kategoros); added here."
+      "0801 V13: merged 13 word pages (Katargeo correction + Shalom–Tongue: 140,26,35,86,65,62,80,109,120,42,8,74,88) into words; those terms set page draft-v1. 140 Katargeo was skipped earlier (sorts between Karath and Kategoros); added here.",
+      "0801 V14 FINAL: merged 13 word pages (Transgression–Write: 19,110,40,68,112,103,43,107,47,66,7,111,32) into words; those terms set page draft-v1. 32 Write fills the slot cleared in V8. Completes all 142 of 142 word pages."
     ]
   },
   "movements": [
@@ -126,7 +127,8 @@
       "n": 7,
       "term": "Witness",
       "movement": 6,
-      "gloss": "sworn testimony, corroborated"
+      "gloss": "sworn testimony, corroborated",
+      "page": "draft-v1"
     },
     {
       "n": 8,
@@ -209,7 +211,8 @@
       "n": 19,
       "term": "Transgression",
       "movement": 2,
-      "gloss": "the breach of a fixed line"
+      "gloss": "the breach of a fixed line",
+      "page": "draft-v1"
     },
     {
       "n": 20,
@@ -299,7 +302,8 @@
       "n": 32,
       "term": "Write",
       "movement": 6,
-      "gloss": "to make a matter binding"
+      "gloss": "to make a matter binding",
+      "page": "draft-v1"
     },
     {
       "n": 33,
@@ -354,7 +358,8 @@
       "n": 40,
       "term": "Truth",
       "movement": 2,
-      "gloss": "legal verity, what holds up"
+      "gloss": "legal verity, what holds up",
+      "page": "draft-v1"
     },
     {
       "n": 41,
@@ -374,7 +379,8 @@
       "n": 43,
       "term": "Vow",
       "movement": 2,
-      "gloss": "a self-imposed binding obligation"
+      "gloss": "a self-imposed binding obligation",
+      "page": "draft-v1"
     },
     {
       "n": 44,
@@ -401,7 +407,8 @@
       "n": 47,
       "term": "Walk",
       "movement": 5,
-      "gloss": "conduct measured against the code"
+      "gloss": "conduct measured against the code",
+      "page": "draft-v1"
     },
     {
       "n": 48,
@@ -533,7 +540,8 @@
       "n": 66,
       "term": "Widow",
       "movement": 3,
-      "gloss": "a protected legal class"
+      "gloss": "a protected legal class",
+      "page": "draft-v1"
     },
     {
       "n": 67,
@@ -546,7 +554,8 @@
       "n": 68,
       "term": "Unclean",
       "movement": 3,
-      "gloss": "legally barred, with a remedy"
+      "gloss": "legally barred, with a remedy",
+      "page": "draft-v1"
     },
     {
       "n": 69,
@@ -790,7 +799,8 @@
       "n": 103,
       "term": "Visit",
       "movement": 6,
-      "gloss": "a judicial audit of the record"
+      "gloss": "a judicial audit of the record",
+      "page": "draft-v1"
     },
     {
       "n": 104,
@@ -817,7 +827,8 @@
       "n": 107,
       "term": "Wages",
       "movement": 7,
-      "gloss": "the legal due of labor owed"
+      "gloss": "the legal due of labor owed",
+      "page": "draft-v1"
     },
     {
       "n": 108,
@@ -837,19 +848,22 @@
       "n": 110,
       "term": "Trust",
       "movement": 7,
-      "gloss": "the deposit answered for at return"
+      "gloss": "the deposit answered for at return",
+      "page": "draft-v1"
     },
     {
       "n": 111,
       "term": "Wrath",
       "movement": 7,
-      "gloss": "the settled sentence of the court"
+      "gloss": "the settled sentence of the court",
+      "page": "draft-v1"
     },
     {
       "n": 112,
       "term": "Vengeance",
       "movement": 7,
-      "gloss": "judicial redress reserved to the bench"
+      "gloss": "judicial redress reserved to the bench",
+      "page": "draft-v1"
     },
     {
       "n": 113,
@@ -12018,6 +12032,1095 @@
         {
           "n": 101,
           "term": "Reckon"
+        }
+      ]
+    },
+    "19": {
+      "n": 19,
+      "term": "Transgression",
+      "movement": 2,
+      "rootLine": "pesha / parabasis — Hebrew / Greek",
+      "caseStrongs": "H6588 · G3847",
+      "lead": "Transgression is a specific, defined breach of a known statute — the crossing of a line the law drew, chargeable because the line existed. Pesha is rebellion, a breaking of covenant; parabasis, in the Greek, is literally a stepping-across — a violation of a boundary set. “Where no law is, there is no transgression” (Romans 4:15) states the principle exactly: transgression requires a standard to transgress. To transgress is not vague wrongdoing but the breach of a particular command — the boundary crossed, the statute violated. This is why transgression presupposes the law: no line, no crossing; no command, no transgression. The charge exists only because the standard does.",
+      "root": [
+        {
+          "lemma": "pesha",
+          "strong": "H6588",
+          "sense": "rebellion, transgression, covenant breach"
+        },
+        {
+          "lemma": "parabasis",
+          "strong": "G3847",
+          "sense": "a stepping-across, a violation of a boundary"
+        }
+      ],
+      "courtroomWord": "A breach term — the crossing of a defined line the law drew.",
+      "itsRole": "A boundary must exist before it can be crossed, and transgression is the crossing — the breach of a specific, known statute. Pesha is covenant rebellion; parabasis is stepping across a set line. ‘Where no law is, there is no transgression’: the charge depends on the standard. To transgress is to violate a particular command, the boundary breached. Transgression is the law’s own evidence that a line was there to cross — no command, no transgression.",
+      "proofTexts": [
+        {
+          "ref": "Romans 4:15",
+          "text": "Where no law is, there is no transgression.",
+          "note": "Transgression presupposes the standard."
+        },
+        {
+          "ref": "Psalm 51:1",
+          "text": "Blot out my transgressions.",
+          "note": "The specific breaches charged and removed."
+        },
+        {
+          "ref": "1 John 3:4",
+          "text": "Sin is the transgression of the law.",
+          "note": "Sin defined as crossing the law’s line."
+        },
+        {
+          "ref": "Galatians 3:19",
+          "text": "It was added because of transgressions.",
+          "note": "The law defining the breaches."
+        }
+      ],
+      "plainTerms": [
+        "Transgression is a specific breach of a known law — the crossing of a line the law drew. ‘Where no law is, there is no transgression’: you can’t cross a line that isn’t there. To transgress is to violate a particular command, not just do vague wrong. The charge exists only because the standard does."
+      ],
+      "bringItHome": [
+        "You cannot step across a line that was never drawn. That is the logic of transgression: it is the crossing of a boundary the law set. ‘Where no law is, there is no transgression.’ So every charge of transgression is proof the standard was there — no command, nothing to transgress."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The transgressor",
+          "role": "the offender",
+          "does": "crosses the line the law drew."
+        },
+        {
+          "who": "The law",
+          "role": "the boundary",
+          "does": "the standard whose crossing is the transgression."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "set the line and charges its breach."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 6,
+          "term": "Righteousness"
+        },
+        {
+          "n": 40,
+          "term": "Truth"
+        },
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 8,
+          "term": "Testimony"
+        }
+      ]
+    },
+    "110": {
+      "n": 110,
+      "term": "Trust",
+      "movement": 7,
+      "rootLine": "batach — Hebrew",
+      "caseStrongs": "H982",
+      "lead": "Trust is reliance placed on the reliable — resting one’s case on another’s faithfulness, the confidence that stakes an outcome on the one relied upon. Batach is to take refuge, to lean the full weight on: “trust in Yahuah with all thine heart” (Proverbs 3:5). It is not vague optimism but a directed reliance — the trusting party commits his cause to another and rests on that party’s ability and faithfulness to carry it. In the courtroom, to trust is to entrust one’s standing to an advocate, to rest on the surety who guarantees. Trust is the confidence that leans wholly on the reliable one, staking the outcome on him.",
+      "root": [
+        {
+          "lemma": "batach",
+          "strong": "H982",
+          "sense": "to trust, to rely on, to take refuge; to lean the full weight upon"
+        }
+      ],
+      "courtroomWord": "A reliance term — resting one’s case wholly on the faithfulness of another.",
+      "itsRole": "To rest a case on another is to trust, and batach is that resting — the full weight leaned on the reliable one. It is directed reliance, not vague hope: the trusting party commits his cause and stakes the outcome on the one relied upon. In the court, to trust is to entrust one’s standing to the advocate and the surety who stand good for it. Trust is confidence placed where it is warranted — the whole weight on the faithful one.",
+      "proofTexts": [
+        {
+          "ref": "Proverbs 3:5",
+          "text": "Trust in Yahuah with all thine heart.",
+          "note": "The full-weight reliance."
+        },
+        {
+          "ref": "Psalm 37:5",
+          "text": "Commit thy way unto Yahuah; trust also in him.",
+          "note": "Committing the cause to the reliable one."
+        },
+        {
+          "ref": "Psalm 9:10",
+          "text": "They that know thy name will put their trust in thee.",
+          "note": "Reliance on the proven faithful."
+        },
+        {
+          "ref": "Isaiah 26:3",
+          "text": "Thou wilt keep him in perfect peace... because he trusteth in thee.",
+          "note": "The settled reliance that rests secure."
+        }
+      ],
+      "plainTerms": [
+        "Trust is reliance placed on the reliable — leaning your full weight on another’s faithfulness, staking the outcome on them. ‘Trust in Yahuah with all thine heart.’ It is not vague optimism but directed reliance: committing your cause to one who can and will carry it. In court, to trust is to rest your standing on the advocate and surety who stand good for it."
+      ],
+      "bringItHome": [
+        "Trust is leaning your whole weight on someone who can bear it — committing your case to them and resting on their faithfulness. ‘Trust in Yahuah with all thine heart.’ It is not a hopeful guess; it is a directed reliance, staking the outcome on the one who is proven able. In the court, you entrust your standing to the one who stands good for you."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The believer",
+          "role": "the trusting party",
+          "does": "rests his cause and standing on the reliable one."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the trusted",
+          "does": "the faithful one on whom the full weight is leaned."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the advocate and surety",
+          "does": "to whom the standing is entrusted."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 3,
+          "term": "Justify"
+        },
+        {
+          "n": 118,
+          "term": "Innocent"
+        },
+        {
+          "n": 115,
+          "term": "Plead"
+        },
+        {
+          "n": 113,
+          "term": "Refuge"
+        }
+      ]
+    },
+    "40": {
+      "n": 40,
+      "term": "Truth",
+      "movement": 2,
+      "rootLine": "emet — Hebrew",
+      "caseStrongs": "H571",
+      "lead": "Truth is not merely accuracy but reliability — firmness, faithfulness, that which is established and can be leaned on. Emet, from the root aman (to be firm, to confirm), is the quality of what stands: a true witness is a reliable one, a true word is one that holds. This is why truth and faithfulness are one word-family in Hebrew: “abundant in goodness and truth” (Exodus 34:6) means abounding in reliable faithfulness. In the courtroom, truth is the reliability of testimony that will not fail under examination. To speak truth is to speak what is firm and can be established; the same root gives us ‘amen’ — it is firm, it is established.",
+      "root": [
+        {
+          "lemma": "emet",
+          "strong": "H571",
+          "sense": "truth, firmness, faithfulness; from aman, to be firm, established, reliable"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "aman-H539",
+        "siblings": [
+          {
+            "n": 39,
+            "term": "Amen"
+          },
+          {
+            "n": 100,
+            "term": "Faithful"
+          }
+        ],
+        "note": "All from aman: truth (emet) is what is firm, amen affirms it is established, faithfulness (emunah) is the reliability itself. One root, one quality of firmness."
+      },
+      "courtroomWord": "A reliability term — the firmness of what is established and can be leaned on.",
+      "itsRole": "Truth, in Scripture, is reliability — the firmness of what stands, not bare accuracy. From aman (to be firm), emet is the quality of the testimony that holds under examination, the word that will not fail. It shares its root with ‘amen’ (it is established) and ‘faithful’ (reliable). To speak truth is to speak what is firm and can be confirmed. In the court, truth is testimony that stands — established, reliable, leaned upon.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 34:6",
+          "text": "Abundant in goodness and truth.",
+          "note": "Truth as reliable faithfulness."
+        },
+        {
+          "ref": "Psalm 119:160",
+          "text": "Thy word is true from the beginning.",
+          "note": "The word that stands firm."
+        },
+        {
+          "ref": "John 17:17",
+          "text": "Thy word is truth.",
+          "note": "The reliable, established word."
+        },
+        {
+          "ref": "Psalm 25:5",
+          "text": "Lead me in thy truth, and teach me.",
+          "note": "The firm way that holds."
+        }
+      ],
+      "plainTerms": [
+        "Truth is not just accuracy but reliability — firmness, faithfulness, what stands and can be leaned on. From aman (to be firm), it shares a root with ‘amen’ (it is established) and ‘faithful.’ A true witness is a reliable one. To speak truth is to speak what will hold under examination. Truth is testimony that stands."
+      ],
+      "bringItHome": [
+        "In Hebrew, truth and faithfulness are the same family of words — because truth is what is firm, what holds, what you can lean on. ‘Abundant in goodness and truth’ means abounding in reliable faithfulness. The same root gives ‘amen’: it is established. Truth is not just correct — it is testimony that stands under examination."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the God of truth",
+          "does": "whose word is firm and reliable, established forever."
+        },
+        {
+          "who": "The true witness",
+          "role": "the reliable",
+          "does": "whose testimony stands under examination."
+        },
+        {
+          "who": "The word",
+          "role": "the testimony",
+          "does": "true because it is firm and can be confirmed."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 39,
+          "term": "Amen"
+        },
+        {
+          "n": 6,
+          "term": "Righteousness"
+        },
+        {
+          "n": 8,
+          "term": "Testimony"
+        },
+        {
+          "n": 19,
+          "term": "Transgression"
+        }
+      ]
+    },
+    "68": {
+      "n": 68,
+      "term": "Unclean",
+      "movement": 3,
+      "rootLine": "tame — Hebrew",
+      "caseStrongs": "H2931",
+      "lead": "Unclean is a legal-ritual status, not a statement about hygiene or morality — a condition of ceremonial disqualification that barred one from the holy until it was resolved. Tame is a status one could contract (by contact with death, disease, or discharge) and from which one was cleansed by prescribed means. It is not the same as sinful: a woman after childbirth, a man who buried the dead, were ‘unclean’ without having done any wrong. The unclean was disqualified from the sanctuary until purified. To be unclean is to hold a status the law defines and the law removes — a ritual disqualification, addressed by the ritual remedy, not a verdict of guilt.",
+      "root": [
+        {
+          "lemma": "tame",
+          "strong": "H2931",
+          "sense": "unclean, ceremonially impure; a status of ritual disqualification"
+        }
+      ],
+      "courtroomWord": "A status term — ceremonial disqualification from the holy, until cleansed.",
+      "itsRole": "Cleanness is access to the holy, and uncleanness is its suspension — a ritual status barring one from the sanctuary until resolved. Tame is contracted and cleansed by prescribed means; it is not sin. The one who buried the dead was unclean without wrongdoing. To be unclean is to hold a legally defined status of disqualification, addressed by the law’s own remedy. It is about ritual access, not moral guilt — a status the law names and the law removes.",
+      "proofTexts": [
+        {
+          "ref": "Leviticus 11:47",
+          "text": "To make a difference between the unclean and the clean.",
+          "note": "The status distinguished by law."
+        },
+        {
+          "ref": "Leviticus 13:3",
+          "text": "The priest... shall pronounce him unclean.",
+          "note": "The legal finding of the status."
+        },
+        {
+          "ref": "Numbers 19:11",
+          "text": "He that toucheth the dead body... shall be unclean seven days.",
+          "note": "A status contracted, not a sin."
+        },
+        {
+          "ref": "Leviticus 15:31",
+          "text": "Thus shall ye separate the children of Israel from their uncleanness.",
+          "note": "Disqualification from the holy."
+        }
+      ],
+      "plainTerms": [
+        "Unclean is a legal-ritual status, not hygiene or sin — a ceremonial disqualification that barred one from the holy until cleansed. You could become unclean by contact with death or by childbirth, having done nothing wrong. To be unclean is to hold a status the law defines and the law removes: about ritual access, not moral guilt."
+      ],
+      "bringItHome": [
+        "‘Unclean’ did not mean dirty or wicked — it was a ritual status. A man who buried his father was unclean, though he had done a good and needed thing. It simply meant disqualified from the sanctuary until cleansed by the prescribed means. It is about access to the holy, not a verdict of guilt."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The person",
+          "role": "the disqualified",
+          "does": "holds the ritual status of uncleanness."
+        },
+        {
+          "who": "The priest",
+          "role": "the officer",
+          "does": "pronounces and oversees the status and its cleansing."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Lawgiver",
+          "does": "defines the status and provides its remedy."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 67,
+          "term": "Clean"
+        },
+        {
+          "n": 69,
+          "term": "Sanctify"
+        },
+        {
+          "n": 70,
+          "term": "Profane"
+        },
+        {
+          "n": 65,
+          "term": "Sojourner"
+        }
+      ]
+    },
+    "112": {
+      "n": 112,
+      "term": "Vengeance",
+      "movement": 7,
+      "rootLine": "naqam — Hebrew",
+      "caseStrongs": "H5359",
+      "lead": "Vengeance is judicial retribution reserved to the rightful authority — not private revenge, but the lawful requital that belongs to the one with standing to render it. “To me belongeth vengeance, and recompence” (Deuteronomy 32:35); “Vengeance is mine; I will repay, saith Yahuah” (Romans 12:19). Naqam is the just penalty exacted for wrong — and Scripture removes it from private hands precisely because it is a judicial act, reserved to Yahuah as Judge. To take vengeance is to render the wrong its due requital; that this belongs to Yahuah means the injured are not left to retaliate but may commit the matter to the One with authority to judge. Vengeance is the court’s requital, not the victim’s.",
+      "root": [
+        {
+          "lemma": "naqam",
+          "strong": "H5359",
+          "sense": "vengeance, requital; the just retribution reserved to the rightful authority"
+        }
+      ],
+      "courtroomWord": "A retribution term — lawful requital reserved to the authority with standing to render it.",
+      "itsRole": "Wrong requires requital, and vengeance is it — but reserved to the rightful judge, not seized by the wronged. ‘Vengeance is mine; I will repay.’ Naqam is judicial retribution, removed from private hands because it is a court’s act. That it belongs to Yahuah frees the injured from retaliation: they commit the matter to the One with authority to judge. Vengeance is lawful requital rendered by the bench — the wrong repaid by the One with standing to repay it.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 32:35",
+          "text": "To me belongeth vengeance, and recompence.",
+          "note": "Requital reserved to Yahuah."
+        },
+        {
+          "ref": "Romans 12:19",
+          "text": "Vengeance is mine; I will repay, saith Yahuah.",
+          "note": "Retribution removed from private hands."
+        },
+        {
+          "ref": "Nahum 1:2",
+          "text": "Yahuah revengeth, and is furious.",
+          "note": "The Judge’s just requital."
+        },
+        {
+          "ref": "Psalm 94:1",
+          "text": "O Yahuah, to whom vengeance belongeth.",
+          "note": "Vengeance as the court’s, not the victim’s."
+        }
+      ],
+      "plainTerms": [
+        "Vengeance is judicial retribution reserved to the rightful authority — not private revenge. ‘Vengeance is mine; I will repay, saith Yahuah.’ It is the just penalty for wrong, removed from private hands because it is a court’s act. That it belongs to Yahuah means the injured need not retaliate — they can commit the matter to the Judge."
+      ],
+      "bringItHome": [
+        "‘Vengeance is mine; I will repay, saith Yahuah’ is not a threat so much as a relief: the wrong done to you is not yours to avenge — it belongs to the One with authority to judge. Naqam is judicial requital, reserved to the bench. You can hand the matter to the Judge instead of taking it into your own hands."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "to whom vengeance belongs; who renders the just requital."
+        },
+        {
+          "who": "The wronged",
+          "role": "the injured",
+          "does": "commit the matter to the Judge rather than retaliate."
+        },
+        {
+          "who": "The wrongdoer",
+          "role": "the liable",
+          "does": "receives the lawful requital from the bench."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 111,
+          "term": "Wrath"
+        },
+        {
+          "n": 28,
+          "term": "Recompense"
+        },
+        {
+          "n": 114,
+          "term": "Avenger of blood"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        }
+      ]
+    },
+    "103": {
+      "n": 103,
+      "term": "Visit",
+      "movement": 6,
+      "rootLine": "paqad — Hebrew",
+      "caseStrongs": "H6485",
+      "lead": "To visit, in the legal sense, is to conduct an official inspection — to come and examine, muster, or audit, with consequences following the finding. Paqad means to attend to, to inspect, to reckon — and a divine ‘visitation’ is an official review that results in reward or reckoning. “In the day when I visit I will visit their sin upon them” (Exodus 32:34); “Yahuah visited Sarah as he had said” (Genesis 21:1). To be visited is to be inspected and dealt with according to the finding — blessed or charged. It is not a casual call but an audit: the record examined, and the appropriate consequence rendered. Visitation is the court coming to inspect and to act on what it finds.",
+      "root": [
+        {
+          "lemma": "paqad",
+          "strong": "H6485",
+          "sense": "to visit, to attend to, to inspect, to muster, to reckon"
+        }
+      ],
+      "courtroomWord": "An inspection term — an official review, with consequence following the finding.",
+      "itsRole": "An audit comes to examine and then to act, and to visit is that audit — the official inspection that results in reward or reckoning. Paqad attends to, inspects, musters. A ‘visitation’ reviews the record and renders the finding: Sarah visited with the promised son, sin visited upon the guilty. To be visited is to be inspected and dealt with accordingly. It is the court coming to examine, and acting on what it finds.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 32:34",
+          "text": "In the day when I visit I will visit their sin upon them.",
+          "note": "The inspection that charges."
+        },
+        {
+          "ref": "Genesis 21:1",
+          "text": "Yahuah visited Sarah as he had said.",
+          "note": "The visitation that blesses."
+        },
+        {
+          "ref": "Luke 19:44",
+          "text": "Thou knewest not the time of thy visitation.",
+          "note": "The official review not recognized."
+        },
+        {
+          "ref": "1 Peter 2:12",
+          "text": "Glorify Elohim in the day of visitation.",
+          "note": "The day of inspection and reckoning."
+        }
+      ],
+      "plainTerms": [
+        "To visit, in the legal sense, is to conduct an official inspection — to come, examine, and act on the finding. Paqad means to attend to, inspect, reckon. A ‘visitation’ reviews the record and renders the result: Sarah visited with a son, sin visited on the guilty. To be visited is to be inspected and dealt with accordingly — an audit, not a casual call."
+      ],
+      "bringItHome": [
+        "A ‘visitation’ from Yahuah is an audit — He comes to inspect and to act on what He finds. It cuts both ways: He ‘visited Sarah’ with the promised son, and He would ‘visit their sin upon them.’ To be visited is to be examined and dealt with by the finding — the court arriving to review the record."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Inspector, the Judge",
+          "does": "visits to examine and render the finding."
+        },
+        {
+          "who": "The visited",
+          "role": "the audited",
+          "does": "inspected and dealt with according to the record."
+        },
+        {
+          "who": "The finding",
+          "role": "the result",
+          "does": "blessing or reckoning, following the inspection."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 101,
+          "term": "Reckon"
+        },
+        {
+          "n": 102,
+          "term": "Account"
+        },
+        {
+          "n": 7,
+          "term": "Witness"
+        },
+        {
+          "n": 36,
+          "term": "Memorial"
+        }
+      ]
+    },
+    "43": {
+      "n": 43,
+      "term": "Vow",
+      "movement": 2,
+      "rootLine": "neder — Hebrew",
+      "caseStrongs": "H5088",
+      "lead": "A vow is a self-imposed binding obligation — a promise voluntarily undertaken that, once made, the law holds one to. “When thou shalt vow a vow unto Yahuah thy Elohim, thou shalt not slack to pay it” (Deuteronomy 23:21); “when thou vowest a vow... defer not to pay it” (Ecclesiastes 5:4). A neder is not a casual wish but a legally binding pledge one places on oneself: better not to vow than to vow and not pay (Ecclesiastes 5:5). The vow creates a real obligation the court will enforce. To make a vow is to bind oneself voluntarily; to break it is to default on a debt one freely incurred. Vows are self-created obligations the law takes seriously.",
+      "root": [
+        {
+          "lemma": "neder",
+          "strong": "H5088",
+          "sense": "a vow; a self-imposed binding obligation, voluntarily undertaken"
+        }
+      ],
+      "courtroomWord": "An obligation term — a binding pledge one voluntarily places on oneself.",
+      "itsRole": "An obligation can be self-imposed, and a vow is that — a pledge freely undertaken that the law then holds one to. Neder is no casual wish: once made, it must be paid, and it is better not to vow than to default. The vow creates a real, enforceable obligation. To vow is to bind oneself voluntarily; to break it is to default on a debt freely incurred. The law honors the freedom to vow and enforces the obligation it creates.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 23:21",
+          "text": "When thou shalt vow a vow unto Yahuah... thou shalt not slack to pay it.",
+          "note": "The binding obligation."
+        },
+        {
+          "ref": "Ecclesiastes 5:4",
+          "text": "When thou vowest a vow unto Elohim, defer not to pay it.",
+          "note": "The vow that must be paid."
+        },
+        {
+          "ref": "Ecclesiastes 5:5",
+          "text": "Better is it that thou shouldest not vow, than that thou shouldest vow and not pay.",
+          "note": "The weight of the self-imposed pledge."
+        },
+        {
+          "ref": "Numbers 30:2",
+          "text": "If a man vow a vow... he shall not break his word.",
+          "note": "The vow as an unbreakable bond."
+        }
+      ],
+      "plainTerms": [
+        "A vow is a self-imposed binding obligation — a promise you freely make that the law then holds you to. ‘Thou shalt not slack to pay it.’ It is no casual wish: once vowed, it must be paid, and better not to vow than to vow and default. The vow creates a real, enforceable obligation you placed on yourself."
+      ],
+      "bringItHome": [
+        "A vow is a promise you put on yourself — no one made you, but once you vow, the law holds you to it. ‘Better not to vow than to vow and not pay.’ It creates a real obligation, a debt you freely incurred. To break a vow is to default on something you bound yourself to with your own word."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The one who vows",
+          "role": "the party",
+          "does": "binds himself voluntarily to the obligation."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the One to whom the vow is made",
+          "does": "holds the vower to his word."
+        },
+        {
+          "who": "The vow",
+          "role": "the obligation",
+          "does": "the self-imposed pledge the law enforces."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 42,
+          "term": "Swear"
+        },
+        {
+          "n": 44,
+          "term": "Promise"
+        },
+        {
+          "n": 18,
+          "term": "Covenant"
+        },
+        {
+          "n": 39,
+          "term": "Amen"
+        }
+      ]
+    },
+    "107": {
+      "n": 107,
+      "term": "Wages",
+      "movement": 7,
+      "rootLine": "sakar / opsonion — Hebrew / Greek",
+      "caseStrongs": "H7939 · G3800",
+      "lead": "Wages are the pay earned and owed — the due rendered for what one has done, whether the reward of the faithful or the payoff of sin. “The wages of sin is death” (Romans 6:23) is precise legal accounting: death is the earned pay, the due owed for the work of sin. Opsonion is a soldier’s pay; sakar is hire, wage. Wages are not arbitrary; they are what the labor earned, rendered according to the record. This is why sin’s wage is death — not an arbitrary penalty but the due the work incurs. Wages are owed, calculated, and paid: the exact return on what one has done, good or ill.",
+      "root": [
+        {
+          "lemma": "sakar",
+          "strong": "H7939",
+          "sense": "hire, wages, the pay for labor"
+        },
+        {
+          "lemma": "opsonion",
+          "strong": "G3800",
+          "sense": "a soldier’s pay, wages"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "sakar-misthos",
+        "siblings": [
+          {
+            "n": 108,
+            "term": "Reward"
+          }
+        ],
+        "note": "The same wage-word covers the pay earned by labor (Wages) and the due paid to the faithful (Reward)."
+      },
+      "courtroomWord": "A due-payment term — the pay earned and owed for what one has done.",
+      "itsRole": "Labor earns a due, and wages are its payment — rendered according to the record, good or ill. ‘The wages of sin is death’: death is the earned pay for sin’s work, precise accounting, not arbitrary penalty. Opsonion and sakar are the pay owed for service. Wages are calculated and paid: the exact return on what one has done. What sin earns, it is paid; what faithfulness earns is the reward.",
+      "proofTexts": [
+        {
+          "ref": "Romans 6:23",
+          "text": "The wages of sin is death; but the gift of Elohim is eternal life.",
+          "note": "The earned pay contrasted with the free gift."
+        },
+        {
+          "ref": "Leviticus 19:13",
+          "text": "The wages of him that is hired shall not abide with thee all night.",
+          "note": "The wage owed and due promptly."
+        },
+        {
+          "ref": "James 5:4",
+          "text": "The hire of the labourers... which is of you kept back by fraud.",
+          "note": "The wage owed for labor."
+        },
+        {
+          "ref": "Jeremiah 22:13",
+          "text": "That useth his neighbour’s service without wages.",
+          "note": "The due unjustly withheld."
+        }
+      ],
+      "plainTerms": [
+        "Wages are the pay earned and owed — the due rendered for what you have done. ‘The wages of sin is death’ is exact accounting: death is the pay sin’s work earns, not an arbitrary penalty. Wages are calculated and owed, the return on the labor. What sin earns, it is paid; the faithful, by contrast, receive the reward."
+      ],
+      "bringItHome": [
+        "Wages are what your work earns — the pay owed, rendered by the record. ‘The wages of sin is death’: death is not an arbitrary sentence but the pay sin’s labor earns. And the sharp contrast in that verse is the point: sin pays a wage, but eternal life is a gift, not a wage — unearned."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The worker",
+          "role": "the paid",
+          "does": "receives the wage his labor earned, good or ill."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge, the Paymaster",
+          "does": "renders the due according to the record."
+        },
+        {
+          "who": "The wage",
+          "role": "the due",
+          "does": "the exact pay owed for the work done."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 108,
+          "term": "Reward"
+        },
+        {
+          "n": 109,
+          "term": "Steward"
+        },
+        {
+          "n": 28,
+          "term": "Recompense"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        }
+      ]
+    },
+    "47": {
+      "n": 47,
+      "term": "Walk",
+      "movement": 5,
+      "rootLine": "halak — Hebrew",
+      "caseStrongs": "H1980",
+      "lead": "To walk is to conduct one’s whole manner of life by the covenant — the daily, ongoing practice of the law, one’s entire course of conduct. “Walk in all the ways which Yahuah your Elohim hath commanded you” (Deuteronomy 5:33); “Enoch walked with Elohim” (Genesis 5:24). Halak is the metaphor for the lived-out life: not an isolated act but the direction and pattern of one’s steps. To walk in the law is to live it habitually, step by step, day by day. This is the covenant not as theory but as daily practice — the whole conduct of life ordered by the terms. To walk is how one lives out the standing one has been given.",
+      "root": [
+        {
+          "lemma": "halak",
+          "strong": "H1980",
+          "sense": "to walk, to go, to conduct oneself; one’s manner and course of life"
+        }
+      ],
+      "courtroomWord": "A conduct term — the whole ongoing manner of life, lived by the covenant.",
+      "itsRole": "Standing, once given, is lived out — and to walk is that living: the daily, habitual conduct ordered by the covenant. Halak is the whole course of life, not an isolated act. ‘Walk in all the ways Yahuah commanded’; ‘Enoch walked with Elohim.’ To walk in the law is to practice it step by step, the covenant as daily life. The walk is how the acquitted live out their standing — the terms kept not once but as one’s whole manner of life.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 5:33",
+          "text": "Walk in all the ways which Yahuah your Elohim hath commanded you.",
+          "note": "The covenant as course of life."
+        },
+        {
+          "ref": "Genesis 5:24",
+          "text": "Enoch walked with Elohim.",
+          "note": "The whole life ordered toward Him."
+        },
+        {
+          "ref": "Micah 6:8",
+          "text": "To walk humbly with thy Elohim.",
+          "note": "The manner of the covenant life."
+        },
+        {
+          "ref": "1 John 2:6",
+          "text": "Ought himself also so to walk, even as he walked.",
+          "note": "The pattern of conduct."
+        }
+      ],
+      "plainTerms": [
+        "To walk is to conduct your whole manner of life by the covenant — the daily, ongoing practice of the law, not an isolated act. ‘Walk in all the ways Yahuah commanded’; ‘Enoch walked with Elohim.’ To walk in the law is to live it step by step. The walk is how you live out the standing you’ve been given."
+      ],
+      "bringItHome": [
+        "‘Walk’ is the Bible’s word for how you live — the whole direction and pattern of your steps, day after day. ‘Enoch walked with Elohim.’ To walk in the law is not a single act but a manner of life: the covenant practiced habitually. It is how the acquitted live out the standing they were given — step by step."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The believer",
+          "role": "the one who walks",
+          "does": "lives out his standing by the covenant, day by day."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the One walked with",
+          "does": "in whose ways the walk is ordered."
+        },
+        {
+          "who": "The law",
+          "role": "the way",
+          "does": "the path the walk follows."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 48,
+          "term": "Keep"
+        },
+        {
+          "n": 46,
+          "term": "Hear"
+        },
+        {
+          "n": 45,
+          "term": "Remember"
+        },
+        {
+          "n": 97,
+          "term": "Love"
+        }
+      ]
+    },
+    "66": {
+      "n": 66,
+      "term": "Widow",
+      "movement": 3,
+      "rootLine": "almanah — Hebrew",
+      "caseStrongs": "H490",
+      "lead": "The widow is a protected legal class — named, alongside the orphan and the stranger, as one to whom the law owes special guardianship. “Ye shall not afflict any widow, or fatherless child” (Exodus 22:22); “he doth execute the judgment of the fatherless and widow” (Deuteronomy 10:18). The almanah, having lost her legal protector, is placed under the special protection of the law and of Yahuah Himself, who names Himself her defender. To harm the widow is to draw the court’s particular wrath; to defend her is to do the justice the law requires. The widow’s status is a legal category the covenant singles out for guardianship — the vulnerable made a special charge of the court.",
+      "root": [
+        {
+          "lemma": "almanah",
+          "strong": "H490",
+          "sense": "a widow; a protected legal class under special guardianship"
+        }
+      ],
+      "courtroomWord": "A protected-class term — the vulnerable made a special charge of the court.",
+      "itsRole": "The law singles out the defenseless for guardianship, and the widow is chief among them — named with the orphan and the stranger as those the court especially protects. Having lost her legal protector, the almanah is placed under Yahuah’s own defense; He executes the judgment of the widow. To afflict her draws the court’s wrath; to defend her is required justice. The widow’s status is a legal category the covenant guards — the vulnerable made the court’s particular charge.",
+      "proofTexts": [
+        {
+          "ref": "Exodus 22:22",
+          "text": "Ye shall not afflict any widow, or fatherless child.",
+          "note": "The protected class named."
+        },
+        {
+          "ref": "Deuteronomy 10:18",
+          "text": "He doth execute the judgment of the fatherless and widow.",
+          "note": "Yahuah as her defender."
+        },
+        {
+          "ref": "Psalm 68:5",
+          "text": "A father of the fatherless, and a judge of the widows.",
+          "note": "The court’s special guardianship."
+        },
+        {
+          "ref": "James 1:27",
+          "text": "To visit the fatherless and widows in their affliction.",
+          "note": "The duty toward the protected class."
+        }
+      ],
+      "plainTerms": [
+        "The widow is a protected legal class — named with the orphan and the stranger as those the law owes special guardianship. Having lost her legal protector, she is placed under Yahuah’s own defense: He ‘executes the judgment of the widow.’ To harm her draws the court’s wrath; to defend her is required justice. Her status is a category the covenant singles out for protection."
+      ],
+      "bringItHome": [
+        "The widow, the orphan, and the stranger are named again and again as the law’s special charge — the vulnerable the court particularly guards. Having lost her protector, the widow is placed under Yahuah’s own defense; He calls Himself ‘a judge of the widows.’ To afflict her is to provoke the court; to defend her is the justice the law requires."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The widow",
+          "role": "the protected class",
+          "does": "the vulnerable placed under special guardianship."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the defender",
+          "does": "who executes the judgment of the widow."
+        },
+        {
+          "who": "The community",
+          "role": "the bound",
+          "does": "required to protect, forbidden to afflict her."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 65,
+          "term": "Sojourner"
+        },
+        {
+          "n": 63,
+          "term": "Servant"
+        },
+        {
+          "n": 51,
+          "term": "Inheritance"
+        },
+        {
+          "n": 67,
+          "term": "Clean"
+        }
+      ]
+    },
+    "7": {
+      "n": 7,
+      "term": "Witness",
+      "movement": 6,
+      "rootLine": "ed — Hebrew",
+      "caseStrongs": "H5707",
+      "lead": "A witness is one whose testimony establishes a matter in court — the sworn source of evidence on which a case is decided. Torah builds its evidentiary law on the witness: “at the mouth of two witnesses, or three witnesses, shall the matter be established” (Deuteronomy 19:15); a single witness could not convict. The ed is the one who saw and testifies, whose corroborated word carries legal weight. A false witness was gravely punished, for he corrupts the very basis of judgment. To be a witness is to hold the responsibility of establishing truth before the court — the testimony that, corroborated, decides the case. The whole trial rests on the reliability of witnesses.",
+      "root": [
+        {
+          "lemma": "ed",
+          "strong": "H5707",
+          "sense": "a witness; one who testifies, whose corroborated word establishes a matter"
+        }
+      ],
+      "sharesRoot": {
+        "rootId": "ed-H5707",
+        "siblings": [
+          {
+            "n": 8,
+            "term": "Testimony"
+          }
+        ],
+        "note": "Eduth (the testimony) is from ed (the witness): the witness gives the testimony, and the deposited testimony is the covenant’s standing witness."
+      },
+      "courtroomWord": "An evidence term — the sworn source whose corroborated testimony establishes a matter.",
+      "itsRole": "A case is decided on testimony, and the witness is its source — the one who saw and testifies, whose word, corroborated, establishes the matter. Torah requires two or three: one witness cannot convict. The false witness is gravely punished, for he corrupts judgment at its root. To be a witness is to bear the responsibility of establishing truth before the bench. The whole trial rests on the reliability of the witnesses — the matter stands or falls on their testimony.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 19:15",
+          "text": "At the mouth of two witnesses, or... three witnesses, shall the matter be established.",
+          "note": "The corroboration rule."
+        },
+        {
+          "ref": "Deuteronomy 17:6",
+          "text": "At the mouth of two witnesses... shall he... be put to death; but... not... one witness.",
+          "note": "A single witness insufficient."
+        },
+        {
+          "ref": "Exodus 20:16",
+          "text": "Thou shalt not bear false witness against thy neighbour.",
+          "note": "The false witness forbidden."
+        },
+        {
+          "ref": "Deuteronomy 19:19",
+          "text": "Then shall ye do unto him, as he had thought to have done unto his brother.",
+          "note": "The false witness gravely punished."
+        }
+      ],
+      "plainTerms": [
+        "A witness is one whose testimony establishes a matter in court — the sworn source of evidence on which a case is decided. Torah requires two or three: one witness could not convict. A false witness was gravely punished, because he corrupts judgment itself. To be a witness is to bear the responsibility of establishing truth before the bench."
+      ],
+      "bringItHome": [
+        "The whole trial rests on witnesses — those who saw and testify, whose corroborated word decides the case. Torah is strict: ‘two or three witnesses,’ never one, and a false witness bore the very penalty he sought to inflict. To be a witness is to hold the truth of the matter in your testimony — the case stands or falls on it."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "The witness",
+          "role": "the source",
+          "does": "testifies to establish the matter before the court."
+        },
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "who requires corroboration and punishes the false witness."
+        },
+        {
+          "who": "The matter",
+          "role": "the case",
+          "does": "established at the mouth of two or three witnesses."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 87,
+          "term": "Mouth"
+        },
+        {
+          "n": 88,
+          "term": "Tongue"
+        },
+        {
+          "n": 37,
+          "term": "Pillar"
+        },
+        {
+          "n": 36,
+          "term": "Memorial"
+        }
+      ]
+    },
+    "111": {
+      "n": 111,
+      "term": "Wrath",
+      "movement": 7,
+      "rootLine": "charon / orge — Hebrew / Greek",
+      "caseStrongs": "H2740 · G3709",
+      "lead": "Wrath is the judicial sentence executed — the settled, righteous response of the court against sin, not a fit of temper. Charon is burning anger; orge is settled indignation — but in the legal frame, wrath is the penalty the just Judge renders and carries out. “The wrath of Yahuah” against sin is not capricious rage but the lawful consequence of breach, measured and deserved. “Ye were the children of wrath” (Ephesians 2:3) names a legal liability to sentence. Wrath is not the Judge losing control but the Judge doing justice — the sentence against sin executed. It is the court’s righteous verdict rendered against what the law condemns.",
+      "root": [
+        {
+          "lemma": "charon",
+          "strong": "H2740",
+          "sense": "burning anger, heat of anger"
+        },
+        {
+          "lemma": "orge",
+          "strong": "G3709",
+          "sense": "settled wrath, judicial indignation"
+        }
+      ],
+      "courtroomWord": "A sentence term — the righteous judicial penalty executed against sin.",
+      "itsRole": "Against real wrong, the just court renders a sentence, and wrath is that sentence executed — not temper but righteous requital. Charon and orge, in the legal frame, are the measured, deserved response of the Judge to breach. ‘Children of wrath’ names a liability to sentence. Wrath is the Judge doing justice, not losing control — the lawful consequence of sin, rendered and carried out. It is the court’s righteous verdict against what the law condemns.",
+      "proofTexts": [
+        {
+          "ref": "Ephesians 2:3",
+          "text": "Were by nature the children of wrath.",
+          "note": "The legal liability to sentence."
+        },
+        {
+          "ref": "Romans 2:5",
+          "text": "Treasurest up unto thyself wrath against the day of wrath... of the righteous judgment of Elohim.",
+          "note": "Wrath as righteous judgment."
+        },
+        {
+          "ref": "Nahum 1:2",
+          "text": "Yahuah... reserveth wrath for his enemies.",
+          "note": "The measured judicial response."
+        },
+        {
+          "ref": "Romans 5:9",
+          "text": "We shall be saved from wrath through him.",
+          "note": "The sentence one is delivered from."
+        }
+      ],
+      "plainTerms": [
+        "Wrath is the judicial sentence executed — the settled, righteous response of the court against sin, not a fit of temper. ‘The wrath of Yahuah’ is the lawful consequence of breach, measured and deserved. ‘Children of wrath’ names a liability to sentence. Wrath is the Judge doing justice, not losing control — the verdict against sin carried out."
+      ],
+      "bringItHome": [
+        "Wrath, in Scripture, is not the Judge losing His temper — it is the Judge carrying out justice: the settled, deserved sentence against sin. ‘Children of wrath’ describes a legal liability to that sentence. It is measured and righteous, the lawful consequence of breach. And the good news is framed against it: ‘saved from wrath through him.’"
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Judge",
+          "does": "renders the righteous sentence against sin."
+        },
+        {
+          "who": "The guilty",
+          "role": "under wrath",
+          "does": "liable to the sentence the breach incurs."
+        },
+        {
+          "who": "Yahushua",
+          "role": "the deliverer",
+          "does": "through whom one is saved from the wrath to come."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 112,
+          "term": "Vengeance"
+        },
+        {
+          "n": 5,
+          "term": "Condemn"
+        },
+        {
+          "n": 119,
+          "term": "Guilty"
+        },
+        {
+          "n": 28,
+          "term": "Recompense"
+        }
+      ]
+    },
+    "32": {
+      "n": 32,
+      "term": "Write",
+      "movement": 6,
+      "rootLine": "kathab — Hebrew",
+      "caseStrongs": "H3789",
+      "lead": "To write is to enter a matter into the permanent record — to inscribe it as binding, documented, and enforceable. In the covenant, what is written is what stands: “these words... write them upon the posts of thy house” (Deuteronomy 6:9); the names written in the book of life (Revelation 20:15). Kathab is the act of committing to the record — a decree written cannot be casually revoked (Esther 8:8: what is written in the king’s name ‘may no man reverse’). To write is to make a thing legally documentary: the law written to be kept, the names written to be recognized, the decree written to stand. The written record is the court’s binding memory.",
+      "root": [
+        {
+          "lemma": "kathab",
+          "strong": "H3789",
+          "sense": "to write, to inscribe, to record; to enter into the permanent record"
+        }
+      ],
+      "courtroomWord": "A record term — to enter a matter permanently and bindingly into the record.",
+      "itsRole": "What is committed to writing stands, and to write is that committing — the matter entered permanently, documented, enforceable. The law is written to be kept; the names are written to be recognized; the decree, once written in the king’s name, may no man reverse. Kathab makes a thing legally documentary. To write is to fix a matter in the record so it binds and endures — the court’s permanent, enforceable memory.",
+      "proofTexts": [
+        {
+          "ref": "Deuteronomy 6:9",
+          "text": "Thou shalt write them upon the posts of thy house, and on thy gates.",
+          "note": "The terms committed to the record."
+        },
+        {
+          "ref": "Exodus 31:18",
+          "text": "Written with the finger of Elohim.",
+          "note": "The law inscribed to stand."
+        },
+        {
+          "ref": "Esther 8:8",
+          "text": "Written in the king’s name... may no man reverse.",
+          "note": "The written decree binding and irrevocable."
+        },
+        {
+          "ref": "Revelation 20:15",
+          "text": "Whosoever was not found written in the book of life.",
+          "note": "The names entered on the record."
+        }
+      ],
+      "plainTerms": [
+        "To write is to enter a matter into the permanent record — to inscribe it as binding and enforceable. What is written stands: the law written to be kept, the names written in the book of life, the decree that ‘may no man reverse.’ Kathab makes a thing legally documentary. The written record is the court’s binding memory."
+      ],
+      "bringItHome": [
+        "In the ancient world, once a decree was written in the king’s name, ‘no man could reverse’ it — writing made it binding and permanent. That is kathab: entering a matter into the record so it stands. The law is written to be kept; the names are written to be recognized. The written record is the court’s memory, and it endures."
+      ],
+      "courtroomRoles": [
+        {
+          "who": "Yahuah",
+          "role": "the Recorder, the Lawgiver",
+          "does": "writes the law and the names into the record."
+        },
+        {
+          "who": "The written matter",
+          "role": "the record",
+          "does": "the law, the decree, the names, entered to stand."
+        },
+        {
+          "who": "The court",
+          "role": "the keeper",
+          "does": "whose binding memory the written record is."
+        }
+      ],
+      "relatedInMovement": [
+        {
+          "n": 33,
+          "term": "Engrave"
+        },
+        {
+          "n": 31,
+          "term": "Book"
+        },
+        {
+          "n": 7,
+          "term": "Witness"
+        },
+        {
+          "n": 36,
+          "term": "Memorial"
         }
       ]
     }
