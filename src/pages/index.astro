@@ -68,11 +68,13 @@ const railGroups = [
   },
 ];
 
-// ── THE WATCHMAN'S REPORT (band) — the newest brief drives slot 1. ──
-const _reports = (await getCollection('watchmans-report'))
-  .filter((r) => r.data.draft !== true)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-const latestReport = _reports[0];
+// ── THE WATCHMAN'S DESK (band) — the two most recent letters. These come from
+// the watchmans-desk collection (letters), NOT the posts pool, so they never
+// enter the Featured Picks rotation below. Fills up to two cards: one shows now,
+// two once a second letter lands.
+const featuredLetters = (await getCollection('watchmans-desk', (l) => l.data.draft !== true))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf())
+  .slice(0, 2);
 
 // ── FEATURED PICKS (band) — driven by the rotating queue in
 // src/lib/featured-queue.js. One study swaps out per dawn; each rides five
@@ -511,35 +513,36 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
 
 
   <!-- ============================================================
-       THE WATCHMAN'S REPORT — timely band. Slot 1 news brief (field-
-       notes look), Slot 2 Featured Picks, Slot 3 YouTube, + archive link.
+       THE WATCHMAN'S DESK — timely band. Up to two recent letters (field-
+       notes look), Featured Picks, YouTube, + archive link. Stays its own
+       visual block, separate from the YouTube and Featured Blogs areas.
        ============================================================ -->
-  <section class="wr-section" aria-label="The Watchman's Report">
+  <section class="wr-section" aria-label="The Watchman's Desk">
     <div class="wr-container">
 
       <div class="wr-header">
         <p class="wr-eyebrow">★ Field Notes From the Wall ★</p>
-        <h2 class="wr-title">The Watchman&rsquo;s Report</h2>
+        <h2 class="wr-title">The Watchman&rsquo;s Desk</h2>
       </div>
 
       <div class="wr-top">
-        {latestReport && (
-          <article class={`wr-brief wr-tone-${latestReport.data.tone}`}>
-            <div class="wr-tag">
-              <span>{latestReport.data.tag}</span>
-              <span class="wr-star">★</span>
-            </div>
-            <div class="wr-brief-body">
-              <p class="wr-dateline">{latestReport.data.dateline}</p>
-              <h3 class="wr-brief-title">{latestReport.data.title}</h3>
-              <p class="wr-teaser">{latestReport.data.teaser}</p>
-              <div class="wr-links">
-                <a href="/watchmans-desk" class="wr-link">Read the brief &rarr;</a>
-                <a href={latestReport.data.studyUrl} class="wr-link wr-link-study">{latestReport.data.linkText} &rarr;<span class="wr-link-sub">{latestReport.data.studyLabel}</span></a>
+        <div class="wr-letters" style={`grid-template-columns: repeat(${featuredLetters.length || 1}, minmax(0, 1fr));`}>
+          {featuredLetters.map((letter) => (
+            <article class="wr-brief">
+              <div class="wr-tag">
+                <span>{letter.data.issue}</span>
+                <span class="wr-star">★</span>
               </div>
-            </div>
-          </article>
-        )}
+              <div class="wr-brief-body">
+                <h3 class="wr-brief-title">{letter.data.title}</h3>
+                <p class="wr-teaser">{letter.data.deck}</p>
+                <div class="wr-links">
+                  <a href={`/watchmans-desk/${letter.slug}`} class="wr-link">Read the letter &rarr;</a>
+                </div>
+              </div>
+            </article>
+          ))}
+        </div>
 
         <a href="https://youtube.com/@Nazar-144" class="wr-youtube" target="_blank" rel="noopener noreferrer">
           <img class="wr-yt-photo" src="/images/nazar-144-avatar.jpg" alt="Dutchman — @Nazar-144" width="72" height="72" loading="lazy" />
@@ -563,7 +566,7 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
       </div>
 
       <div class="wr-archive">
-        <a href="/watchmans-desk" class="wr-archive-btn">Browse all reports &rarr;</a>
+        <a href="/watchmans-desk" class="wr-archive-btn">Browse the archive &rarr;</a>
       </div>
 
     </div>
@@ -703,6 +706,9 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
     .wr-title { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 900; font-size: clamp(1.9rem, 3.4vw, 2.6rem); color: var(--wr-cream); margin: 0; }
 
     .wr-top { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; align-items: stretch; margin-bottom: 2.5rem; }
+    /* Up to two letter cards fill the primary slot (columns set inline by count). */
+    .wr-letters { display: grid; gap: 1.5rem; align-items: stretch; }
+    @media (max-width: 560px) { .wr-letters { grid-template-columns: 1fr !important; } }
 
     /* Slot 1 — news brief, field-notes cream card on the dark band */
     .wr-brief { background: #fff; border: 1px solid var(--wr-navy); box-shadow: 0 6px 22px rgba(0,0,0,0.45); overflow: hidden; display: flex; flex-direction: column; }
