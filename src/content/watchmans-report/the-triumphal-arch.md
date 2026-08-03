@@ -8,7 +8,6 @@ teaser: "A 250-foot Roman triumphal arch, fast-tracked for a July 4 unveiling ac
 studyUrl: "/american-idolatry/washington-dc"
 studyLabel: "The Sun Temple on the Potomac"
 linkText: "Read the full study"
-draft: true
 ---
 
 On April 16 the U.S. Commission of Fine Arts approved a 250-foot Triumphal Arch to be built at Memorial Circle, directly across the Potomac from the Lincoln Memorial. It is being fast-tracked for unveiling on July 4, 2026 — the 250th anniversary of American independence. The design is a near-copy of the Arc de Triomphe in Paris, only taller.

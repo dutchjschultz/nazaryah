@@ -8,7 +8,6 @@ teaser: "The headlines name the missiles. They will not name who is in Jacob's l
 studyUrl: "/books/revelation#court-appeal-2"
 studyLabel: "The Woman, the Beast, and the Second Beast"
 linkText: "Read Court Appeal II"
-draft: true
 ---
 
 News cycles will tell you who fired what missile at whom. They will not tell you who is in Jacob's land, by whose authority, or what role Scripture gives them in the closing record of the age.

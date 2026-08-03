@@ -553,6 +553,12 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
         </a>
       </div>
 
+      <!-- Archive link closes the Watchman's Desk unit (heading, letter, archive). -->
+      <div class="wr-archive">
+        <a href="/watchmans-desk" class="wr-archive-btn">Browse the archive &rarr;</a>
+      </div>
+
+      <!-- Featured Picks — a separate block below the Desk unit. -->
       <div class="wr-picks">
         <p class="wr-picks-title">Featured Picks</p>
         <div class="wr-picks-grid">
@@ -563,10 +569,6 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
             </a>
           ))}
         </div>
-      </div>
-
-      <div class="wr-archive">
-        <a href="/watchmans-desk" class="wr-archive-btn">Browse the archive &rarr;</a>
       </div>
 
     </div>
@@ -705,9 +707,11 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
     .wr-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--wr-red); font-weight: 700; margin: 0 0 0.5rem; }
     .wr-title { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 900; font-size: clamp(1.9rem, 3.4vw, 2.6rem); color: var(--wr-cream); margin: 0; }
 
-    .wr-top { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; align-items: stretch; margin-bottom: 2.5rem; }
-    /* Up to two letter cards fill the primary slot (columns set inline by count). */
-    .wr-letters { display: grid; gap: 1.5rem; align-items: stretch; }
+    .wr-top { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; align-items: stretch; margin-bottom: 1.6rem; }
+    /* Up to two letter cards fill the primary slot (columns set inline by count).
+       align-self:start so a card sizes to its content instead of stretching to
+       the YouTube column height (which was leaving dead space under the deck). */
+    .wr-letters { display: grid; gap: 1.5rem; align-items: stretch; align-self: start; }
     @media (max-width: 560px) { .wr-letters { grid-template-columns: 1fr !important; } }
 
     /* Slot 1 — news brief, field-notes cream card on the dark band */
@@ -719,8 +723,8 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
     .wr-brief-body { padding: 1.5rem 1.6rem; display: flex; flex-direction: column; flex: 1; }
     .wr-dateline { font-family: 'Times New Roman', Georgia, serif; font-size: 0.68rem; letter-spacing: 0.2em; text-transform: uppercase; color: #6e5a3f; font-weight: 700; margin: 0 0 0.6rem; }
     .wr-brief-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 800; font-size: clamp(1.3rem, 2.4vw, 1.7rem); line-height: 1.15; color: var(--wr-navy-deep); margin: 0 0 0.9rem; border-bottom: 1px solid rgba(10,29,58,0.18); padding-bottom: 0.7rem; }
-    .wr-teaser { font-family: Georgia, serif; font-size: 1rem; line-height: 1.65; color: var(--wr-ink-soft); margin: 0 0 1.25rem; }
-    .wr-links { margin-top: auto; display: flex; flex-direction: column; gap: 0.6rem; }
+    .wr-teaser { font-family: Georgia, serif; font-size: 1rem; line-height: 1.65; color: var(--wr-ink-soft); margin: 0 0 0.85rem; }
+    .wr-links { display: flex; flex-direction: column; gap: 0.6rem; }
     .wr-link { display: block; padding: 0.7rem 1rem; background: var(--wr-parchment); border-left: 4px solid var(--wr-red); color: var(--wr-red-deep); font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: all 0.2s ease; }
     .wr-link:hover { background: var(--wr-navy-deep); color: var(--wr-cream); border-left-color: var(--wr-gold); }
     .wr-link-sub { display: block; margin-top: 5px; font-family: Georgia, serif; font-style: italic; font-size: 0.85rem; text-transform: none; letter-spacing: 0; color: var(--wr-ink-soft); font-weight: 400; }
@@ -736,7 +740,8 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
     .wr-yt-cta { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wr-gold); margin-top: 0.5rem; }
 
     /* Slot 2 — Featured Picks (blog pointers) */
-    .wr-picks { margin-bottom: 2rem; }
+    /* Featured Picks reads as its own block, divided from the Desk unit above. */
+    .wr-picks { margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid rgba(201,169,97,0.22); }
     .wr-picks-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--wr-gold); text-align: center; margin: 0 0 1.2rem; }
     .wr-picks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; }
     .wr-pick { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.1rem 1.2rem; border-radius: 4px; text-decoration: none; background: #141210; border: 1px solid rgba(201,169,97,0.16); border-top: 3px solid var(--wr-gold); transition: transform .2s ease, background .2s ease; }

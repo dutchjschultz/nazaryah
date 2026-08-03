@@ -8,7 +8,6 @@ teaser: "The most religious ceremony in the nation's civic calendar returns — 
 studyUrl: "/american-idolatry/memorial-veterans-day"
 studyLabel: "The Cult of the Fallen Soldier"
 linkText: "Read the full study"
-draft: true
 ---
 
 On Monday, May 25, Americans will perform the most religious ceremony in the nation's civic calendar. A flag on every grave at Arlington. A wreath at the Tomb of the Unknown Soldier. Taps. A 21-gun salute. The eternal flame at JFK's grave, tended by state functionaries.
