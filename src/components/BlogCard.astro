@@ -1,7 +1,13 @@
 ---
 // Single blog post card. Extracted from the old blog index so the paginated
 // group views and the All Posts view render identical cards.
+import { masterTitleBySlug } from '../data/books.js';
 const { post } = Astro.props;
+
+// Chapters of the multi-part books display the master chapter title from the
+// book's Contents (the single source of truth), not the blog's own title.
+// Non-chapter posts are unaffected.
+const displayTitle = masterTitleBySlug[post.slug] ?? post.data.title;
 
 // Book-chapter categories still get the "From the Bookshelf" treatment — the
 // card shows the post's underlying category; the rail groups them thematically.
@@ -16,14 +22,14 @@ const blurb = post.data.subtitle || post.data.deck || post.data.description;
 ---
 
 <article class="post-item card group flex flex-col overflow-hidden"
-  data-title={post.data.title.toLowerCase()}
-  data-search={`${post.data.title} ${blurb || ''} ${cat}`.toLowerCase()}>
+  data-title={displayTitle.toLowerCase()}
+  data-search={`${displayTitle} ${post.data.title} ${blurb || ''} ${cat}`.toLowerCase()}>
   <div class="p-6 flex flex-col flex-1">
     {book && <a href={book.href} class="bookshelf-badge">&#9672; From the Bookshelf</a>}
     <div class:list={["tag mb-3", { "tag-book": book }]} style="color: var(--bronze);">{cat}</div>
     {post.data.verse && <div class="post-verse">{post.data.verse}</div>}
     <h3 class="post-title text-sm font-semibold mb-3 leading-snug" style="font-family: var(--font-display);">
-      <a href={`/blog/${post.slug}`} style="color: var(--deep-earth);">{post.data.title}</a>
+      <a href={`/blog/${post.slug}`} style="color: var(--deep-earth);">{displayTitle}</a>
     </h3>
     <p class="post-subtitle text-sm leading-relaxed mb-5 line-clamp-4 flex-1">{blurb}</p>
     <div class="flex items-center justify-between text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">

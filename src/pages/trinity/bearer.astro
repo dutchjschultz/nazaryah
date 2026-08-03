@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ChapterCards from '../../components/ChapterCards.astro';
+import { theBearer } from '../../data/books.js';
+
+// Chapter cards from the book master (order I -> V). Same blog slugs the
+// Books > The Bearer page links to; no new routes.
+const chapters = theBearer;
+---
+
+<BaseLayout
+  title="The Bearer — Nazaryah"
+  description="A lamp is not the flame. It carries it. Every statement the church reads as proof that the Son is Yahuah turns out, in the text, to be the language of carrying."
+>
+  <div class="tr-wrap">
+
+    <!-- ── HERO ── -->
+    <section class="tr-hero">
+      <a href="/trinity" class="tr-back">&#8592; Back to Trinity</a>
+      <p class="tr-label">&#8213; The Flame and the Lamp &#8213;</p>
+      <h1 class="tr-title">The Bearer</h1>
+      <p class="tr-sub">
+        A lamp is not the flame. It carries it. Every statement the church reads as proof that the Son is Yahuah turns out, in the text, to be the language of carrying.
+      </p>
+    </section>
+
+    <!-- ── INTRO ── -->
+    <section class="tr-section">
+      <div class="tr-prose">
+        <p>
+          Light, image, word, presence, plan. Five things Scripture says the Son is — and five things the church has read as claims to be the Father Himself. But every one of them is a carrying word. A lamp is lit by something. An image is an image of someone. A word is spoken by a speaker. A temple houses a Presence that came from elsewhere. A lamb is laid on an altar by a hand that is not its own.
+        </p>
+        <p>
+          These studies take each pair in turn and ask what the text actually assigns to whom. Not what the creed concluded centuries later, but what the Hebrew and the Greek put on the page — and what happens to the doctrine when the source and the bearer are no longer read as the same figure.
+        </p>
+      </div>
+    </section>
+
+    <!-- ── CHAPTER CARDS (master order I → V) ── -->
+    <ChapterCards chapters={chapters} />
+
+  </div>
+</BaseLayout>
+
+<style>
+  .tr-wrap {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #f0e0bf;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  .tr-hero {
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    border-bottom: 1px solid #4a3218;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(150, 90, 40, 0.18), transparent 70%),
+      linear-gradient(180deg, #0a0602 0%, #1a1208 100%);
+    position: relative;
+  }
+
+  .tr-back {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #8a6028;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+  .tr-back:hover { color: #c4a46b; }
+
+  .tr-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a6028;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .tr-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 1rem;
+    line-height: 1.1;
+  }
+
+  .tr-sub {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: #c4a46b;
+    font-style: italic;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .tr-section {
+    padding: 3rem 1.5rem;
+    border-bottom: 1px solid #2e1f0d;
+  }
+
+  .tr-prose {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #dcc99a;
+  }
+  .tr-prose p { margin-bottom: 1.2rem; }
+</style>

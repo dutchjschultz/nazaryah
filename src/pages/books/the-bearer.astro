@@ -1,15 +1,8 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { theBearer as chapters } from '../../data/books.js';
 
 const ACCENT = '#CE8E3F';
-
-const chapters = [
-  { num: 1, title: 'He Is the Light, the Son Is the Lamp',              topic: 'The Light',    href: '/blog/the-bearer-1-light-and-lamp' },
-  { num: 2, title: 'He Is the Unseen, the Son Is the Image',            topic: 'The Image',    href: '/blog/the-bearer-2-unseen-and-image' },
-  { num: 3, title: 'He Is the Word, the Son Is the Flesh',              topic: 'The Word',     href: '/blog/the-bearer-3-word-and-flesh' },
-  { num: 4, title: 'He Is the Presence, the Son Is the Temple',         topic: 'The Temple',   href: '/blog/the-bearer-4-presence-and-temple' },
-  { num: 5, title: 'He Is the Plan, the Son Is the Lamb on the Altar',  topic: 'The Lamb',     href: '/blog/the-bearer-5-lamb-on-the-altar' },
-];
 
 function toRoman(n: number) {
   const map: [string, number][] = [

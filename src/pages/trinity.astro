@@ -98,10 +98,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         </div>
 
         <div class="tr-btn-group">
-          <a href="/trinity/roles" class="tr-btn">The Sender &amp; The Sent &nbsp;&#8594;</a>
-          <p class="tr-cta-note">Two distinct roles — one covenant plan</p>
+          <a href="/trinity/roles" class="tr-btn">Five Titles, One Christ &nbsp;&#8594;</a>
+          <p class="tr-cta-note">Five titles the church gave to the wrong one</p>
           <div class="tr-tooltip">
             Scripture presents two distinct roles — never three. Father and Son, Husband and Bride, Kinsman Redeemer and the price paid, Elohim and High Priest. From Genesis to Revelation, the pattern is consistent: one sends, one is sent. The trinity collapses this design into confusion.
+          </div>
+        </div>
+
+        <div class="tr-btn-group">
+          <a href="/trinity/bearer" class="tr-btn">The Bearer &nbsp;&#8594;</a>
+          <p class="tr-cta-note">The one who carries the Father is not the Father</p>
+          <div class="tr-tooltip">
+            Light, image, word, presence, plan — five things Scripture says the Son is, and five the church has read as claims to be the Father Himself. But every one is a carrying word: a lamp is lit, an image is of someone, a word is spoken, a temple houses a Presence, a lamb is laid on the altar by a hand not its own.
           </div>
         </div>
 
@@ -272,12 +280,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
 
   .tr-btn-row {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 2.5rem;
-    margin-top: 0;
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 2.25rem 1.5rem;
+    max-width: 1040px;
+    margin: 0 auto;
+    justify-items: center;
+    align-items: start;
   }
+  @media (max-width: 900px) { .tr-btn-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 540px) { .tr-btn-row { grid-template-columns: 1fr; } }
 
   .tr-btn-group {
     display: flex;
