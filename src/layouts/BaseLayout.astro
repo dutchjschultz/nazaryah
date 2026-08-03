@@ -41,14 +41,16 @@ const OG_DEFAULT_IMAGE = '/og-default.jpg';
 const ogTitleResolved = ogTitle ?? title ?? OG_DEFAULT_TITLE;
 const ogDescriptionResolved = ogDescription ?? description ?? OG_DEFAULT_DESCRIPTION;
 
-// Per-piece social card: scripts/nazaryah-social-images.py writes a titled
-// 1200×630 card to public/og/<slug>.png for each study and letter. Prefer that
-// card for og:image/twitter:image when it exists (the slug is the last URL
-// segment). An explicit frontmatter `ogImage` still wins; pieces with no card
-// yet — and index/listing pages, whose path has no piece slug — fall back to the
-// site logo. The homepage keeps the logo by design.
-const pageSlug = Astro.url.pathname.replace(/\/+$/, '').split('/').pop() || '';
-const perPageCard = pageSlug && fs.existsSync(`public/og/${pageSlug}.png`) ? `/og/${pageSlug}.png` : undefined;
+// Per-piece social card: the social-image scripts write a titled 1200×630 card
+// to public/og/<path>.png mirroring the page's URL path (e.g. /hebrew/alphabet/
+// aleph -> public/og/hebrew/alphabet/aleph.png). Keying by full path — not the
+// last segment — keeps distinct pages that share a leaf name (aleph appears
+// under alphabet, messiah-letters, and psalm-119) on distinct cards. Prefer that
+// card for og:image/twitter:image when it exists; an explicit frontmatter
+// `ogImage` still wins; pages with no card fall back to the site logo. The
+// homepage (empty path) always keeps the logo.
+const cardRel = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
+const perPageCard = cardRel && fs.existsSync(`public/og/${cardRel}.png`) ? `/og/${cardRel}.png` : undefined;
 const ogImageURL = new URL(ogImage ?? perPageCard ?? image ?? OG_DEFAULT_IMAGE, Astro.site || 'http://localhost:4321').href;
 ---
 
