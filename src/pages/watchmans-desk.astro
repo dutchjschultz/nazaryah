@@ -1,71 +1,31 @@
 ---
+// src/pages/watchmans-desk.astro · 0803 V2
+// The Watchman's Desk archive — every entry (letters + field briefs) in one
+// stream, newest first, rendered by the shared WatchmanCard (archive variant).
+// Entries and their closed kind/status lists come from the data file.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { getCollection } from 'astro:content';
-
-// The Watchman's Desk archive — letters AND briefs in ONE stream, newest first,
-// each marked by kind. Letters (watchmans-desk collection) are cards linking to
-// their own page. Briefs (watchmans-report collection) have no page of their
-// own, so they render in place as short notes, each pointing to the study it
-// frames.
-const letterItems = (await getCollection('watchmans-desk', (l) => l.data.draft !== true))
-  .map((l) => ({ kind: 'letter', date: l.data.date, slug: l.slug, data: l.data }));
-const briefItems = await Promise.all(
-  (await getCollection('watchmans-report', (r) => r.data.draft !== true)).map(async (r) => ({
-    kind: 'brief', date: r.data.date, data: r.data, Content: (await r.render()).Content,
-  }))
-);
-const stream = [...letterItems, ...briefItems].sort((a, b) => b.date.valueOf() - a.date.valueOf());
-const toneClass = (t) => (t === 'urgent' ? 'wd-tone-urgent' : t === 'horizon' ? 'wd-tone-horizon' : '');
+import WatchmanCard from '../components/WatchmanCard.astro';
+import { entries } from '../data/watchmans-desk.js';
 ---
 
 <BaseLayout
   title="The Watchman's Desk — Nazaryah"
-  description="The Watchman's Desk — weekly letters and field briefs, one stream, newest first. The week's noise read through Scripture."
+  description="The Watchman's Desk — weekly letters, field briefs, and open letters. One stream, newest first, the week read through Scripture."
 >
   <div class="wd-wrap">
 
-    <!-- MASTHEAD -->
     <section class="wd-masthead">
       <p class="wd-eyebrow">&#8213; Field Notes From the Wall &#8213;</p>
       <h1 class="wd-title">The Watchman's Desk</h1>
-      <p class="wd-sub">Weekly letters and field briefs — one stream, newest first, the week read through the text.</p>
+      <p class="wd-sub">Letters and field briefs — one stream, newest first, the week read through the text.</p>
       <div class="wd-stripes" aria-hidden="true">
         <span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span>
       </div>
     </section>
 
-    <!-- ONE STREAM — letters and briefs, newest first, marked by kind -->
     <section class="wd-grid-section">
       <div class="wd-stream">
-        {stream.map((item) => {
-          const Content = item.Content;
-          return item.kind === 'letter' ? (
-            <a class="wd-item wd-letter" href={`/watchmans-desk/${item.slug}`}>
-              <div class="wd-tag">
-                <span class="wd-kind">Weekly Letter</span>
-                <span class="wd-tag-meta">{item.data.issue}</span>
-              </div>
-              <div class="wd-item-body">
-                <h2 class="wd-item-title">{item.data.title}</h2>
-                <p class="wd-letter-deck">{item.data.deck}</p>
-                <span class="wd-read">Read the letter &rarr;</span>
-              </div>
-            </a>
-          ) : (
-            <article class={`wd-item wd-brief ${toneClass(item.data.tone)}`}>
-              <div class="wd-tag">
-                <span class="wd-kind">Field Brief</span>
-                <span class="wd-tag-meta">{item.data.tag}</span>
-              </div>
-              <div class="wd-item-body">
-                <p class="wd-dateline">{item.data.dateline}</p>
-                <h2 class="wd-item-title">{item.data.title}</h2>
-                <div class="wd-brief-prose"><Content /></div>
-                <a href={item.data.studyUrl} class="wd-link">{item.data.linkText} &rarr;<span class="wd-link-sub">{item.data.studyLabel}</span></a>
-              </div>
-            </article>
-          );
-        })}
+        {entries.map((entry) => <WatchmanCard entry={entry} variant="archive" />)}
       </div>
 
       <div class="wd-foot">
@@ -81,18 +41,10 @@ const toneClass = (t) => (t === 'urgent' ? 'wd-tone-urgent' : t === 'horizon' ? 
 
 <style>
   .wd-wrap {
-    --ink: #1a1a1a; --ink-soft: #3a3a3a;
-    --navy: #0a1d3a; --navy-deep: #061230;
-    --red: #b8232a; --red-deep: #8a1a20;
-    --cream: #f5f1e6; --parchment: #ebe3cf; --gold: #c9a961;
-
-    background: var(--cream);
-    color: var(--ink);
-    font-family: Georgia, 'Times New Roman', serif;
-    min-height: 80vh;
+    --navy: #0a1d3a; --red: #b8232a; --cream: #f5f1e6; --ink-soft: #3a3a3a;
+    background: var(--cream); color: #1a1a1a; font-family: Georgia, 'Times New Roman', serif; min-height: 80vh;
   }
 
-  /* MASTHEAD */
   .wd-masthead {
     text-align: center; padding: 4.5rem 1.5rem 3rem;
     border-top: 6px solid var(--red); border-bottom: 1px solid var(--navy);
@@ -103,52 +55,18 @@ const toneClass = (t) => (t === 'urgent' ? 'wd-tone-urgent' : t === 'horizon' ? 
   .wd-masthead::before { left: 40px; }
   .wd-masthead::after { right: 40px; }
   .wd-eyebrow { font-family: 'Cinzel', 'Playfair Display', Georgia, serif; font-size: 10px; letter-spacing: 0.4em; color: var(--red); text-transform: uppercase; margin: 0 0 1rem 0; font-weight: 700; }
-  .wd-title { font-family: 'Playfair Display', 'Cinzel', Georgia, serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; color: var(--navy-deep); letter-spacing: -0.01em; line-height: 1.05; margin: 0 0 0.85rem 0; font-style: italic; }
+  .wd-title { font-family: 'Playfair Display', 'Cinzel', Georgia, serif; font-size: clamp(2.4rem, 5vw, 3.8rem); font-weight: 900; color: #061230; letter-spacing: -0.01em; line-height: 1.05; margin: 0 0 0.85rem 0; font-style: italic; }
   .wd-sub { font-style: italic; font-size: clamp(1rem, 1.8vw, 1.2rem); color: var(--ink-soft); max-width: 640px; margin: 0 auto; line-height: 1.55; }
   .wd-stripes { display: flex; justify-content: center; gap: 3px; margin-top: 24px; }
   .wd-stripes span { display: block; width: 22px; height: 3px; }
   .wd-stripes span:nth-child(odd) { background: var(--red); }
   .wd-stripes span:nth-child(even) { background: var(--navy); }
 
-  /* STREAM */
   .wd-grid-section { padding: 3.5rem 1.5rem 4rem; }
-  .wd-stream { display: flex; flex-direction: column; gap: 1.75rem; max-width: 780px; margin: 0 auto; }
+  .wd-stream { display: flex; flex-direction: column; gap: 1.6rem; max-width: 780px; margin: 0 auto; }
 
-  .wd-item { display: block; text-decoration: none; background: #fff; border: 1px solid var(--navy); overflow: hidden; box-shadow: 0 4px 16px rgba(10,29,58,0.12); color: var(--ink); }
-  a.wd-item { transition: transform 0.2s ease, box-shadow 0.2s ease; }
-  a.wd-item:hover { transform: translateY(-3px); box-shadow: 0 10px 26px rgba(10,29,58,0.2); }
-
-  /* Tag strip: KIND pill (left) + meta (right). Brief tone colors the strip. */
-  .wd-tag { background: var(--navy-deep); color: var(--cream); padding: 9px 20px; display: flex; align-items: center; justify-content: space-between; gap: 1rem; }
-  .wd-tone-urgent .wd-tag { background: var(--red); }
-  .wd-tone-horizon .wd-tag { background: var(--gold); color: var(--navy-deep); }
-  .wd-kind { font-family: 'Cinzel', 'Playfair Display', Georgia, serif; font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; background: rgba(0,0,0,0.30); color: #fff; border: 1px solid rgba(255,255,255,0.35); padding: 3px 9px; border-radius: 3px; white-space: nowrap; }
-  .wd-tag-meta { font-family: 'Cinzel', 'Playfair Display', Georgia, serif; font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; font-weight: 700; text-align: right; }
-
-  .wd-item-body { padding: 1.6rem 1.75rem 1.7rem; }
-  .wd-dateline { font-family: 'Times New Roman', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #6e5a3f; margin: 0 0 0.7rem 0; font-weight: 700; }
-  .wd-item-title { font-family: 'Playfair Display', 'Cinzel', Georgia, serif; font-size: clamp(1.4rem, 2.8vw, 1.85rem); font-weight: 800; color: var(--navy-deep); line-height: 1.15; margin: 0 0 0.9rem 0; text-wrap: balance; }
-
-  /* Letter card — deck + read link, tight */
-  .wd-letter-deck { font-style: italic; font-size: 1.05rem; line-height: 1.6; color: var(--ink-soft); margin: 0 0 0.7rem 0; }
-  .wd-read { font-family: 'Cinzel', 'Playfair Display', Georgia, serif; font-size: 0.74rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; color: var(--red); }
-  a.wd-item:hover .wd-read { color: var(--navy-deep); }
-
-  /* Brief — full note rendered in place */
-  .wd-item-title { border-bottom: 1px solid rgba(10,29,58,0.14); padding-bottom: 0.7rem; }
-  .wd-brief-prose :global(p) { font-size: 1rem; line-height: 1.75; color: var(--ink-soft); margin: 0 0 1.1rem 0; }
-  .wd-brief-prose :global(em) { color: var(--red-deep); font-style: italic; }
-  .wd-link { display: block; margin-top: 0.4rem; padding: 0.9rem 1.1rem; background: var(--parchment); border-left: 4px solid var(--red); color: var(--red-deep); font-family: 'Cinzel', 'Playfair Display', Georgia, serif; font-size: 0.78rem; letter-spacing: 0.15em; text-transform: uppercase; font-weight: 700; text-decoration: none; transition: all 0.2s ease; }
-  .wd-link:hover { background: var(--navy-deep); color: var(--cream); border-left-color: var(--gold); }
-  .wd-link-sub { display: block; margin-top: 6px; font-family: Georgia, serif; font-style: italic; font-size: 0.88rem; text-transform: none; letter-spacing: 0; color: var(--ink-soft); font-weight: 400; }
-  .wd-link:hover .wd-link-sub { color: var(--gold); }
-
-  /* FOOT */
   .wd-foot { max-width: 680px; margin: 3rem auto 0; text-align: center; padding: 1.75rem 1.5rem; border-top: 1px solid var(--navy); font-style: italic; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.7; }
-  .wd-foot strong { color: var(--navy-deep); font-style: normal; letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.72rem; font-weight: 700; }
+  .wd-foot strong { color: #061230; font-style: normal; letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.72rem; font-weight: 700; }
 
-  @media (max-width: 640px) {
-    .wd-masthead::before, .wd-masthead::after { display: none; }
-    .wd-item-body { padding: 1.4rem 1.25rem; }
-  }
+  @media (max-width: 640px) { .wd-masthead::before, .wd-masthead::after { display: none; } }
 </style>
