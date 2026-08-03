@@ -1,4 +1,5 @@
 ---
+import fs from 'node:fs';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
 import SearchModal from '../components/SearchModal.astro';
@@ -39,7 +40,16 @@ const OG_DEFAULT_DESCRIPTION = 'Biblical studies checked against the text itself
 const OG_DEFAULT_IMAGE = '/og-default.jpg';
 const ogTitleResolved = ogTitle ?? title ?? OG_DEFAULT_TITLE;
 const ogDescriptionResolved = ogDescription ?? description ?? OG_DEFAULT_DESCRIPTION;
-const ogImageURL = new URL(ogImage ?? image ?? OG_DEFAULT_IMAGE, Astro.site || 'http://localhost:4321').href;
+
+// Per-piece social card: scripts/nazaryah-social-images.py writes a titled
+// 1200×630 card to public/og/<slug>.png for each study and letter. Prefer that
+// card for og:image/twitter:image when it exists (the slug is the last URL
+// segment). An explicit frontmatter `ogImage` still wins; pieces with no card
+// yet — and index/listing pages, whose path has no piece slug — fall back to the
+// site logo. The homepage keeps the logo by design.
+const pageSlug = Astro.url.pathname.replace(/\/+$/, '').split('/').pop() || '';
+const perPageCard = pageSlug && fs.existsSync(`public/og/${pageSlug}.png`) ? `/og/${pageSlug}.png` : undefined;
+const ogImageURL = new URL(ogImage ?? perPageCard ?? image ?? OG_DEFAULT_IMAGE, Astro.site || 'http://localhost:4321').href;
 ---
 
 <!DOCTYPE html>
