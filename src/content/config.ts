@@ -120,6 +120,8 @@ const watchmansDeskCollection = defineCollection({
     title: z.string(),
     // One-line italic deck under the title.
     deck: z.string(),
+    // Meta/social description. Falls back to `deck` in the layout when omitted.
+    description: z.string().optional(),
     // Per-issue masthead suffix; the layout supplies the fixed
     // "THE WATCHMAN'S LETTER ·" chrome. e.g. "Week ending 31 July 2026".
     issue: z.string(),

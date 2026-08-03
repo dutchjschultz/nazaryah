@@ -39,3 +39,10 @@
   from = "/sun-worship/the-priesthood/gravity"
   to = "/blog/the-lie-of-gravity"
   status = 301
+
+# The Watchman's Letter retitled: "Not Your Own" -> "A Temple, and Nobody Asked
+# Whose". Keep the old letter URL resolving to the new one.
+[[redirects]]
+  from = "/watchmans-desk/not-your-own"
+  to = "/watchmans-desk/a-temple-and-nobody-asked-whose"
+  status = 301

@@ -1,9 +1,11 @@
 ---
-title: "Not Your Own"
-deck: "A joke about a woman's body, and the question nobody in the comments asked."
+title: "A Temple, and Nobody Asked Whose"
+deck: "The building is well kept. The rent is being paid to someone else."
+description: "The building is well kept. The rent is being paid to someone else."
 issue: "Week ending 31 July 2026"
 date: 2026-07-31
 draft: false
+slug: "a-temple-and-nobody-asked-whose"
 ---
 
 An independent host on YouTube — no network behind him, a few million watching — put out a video this week taking apart an influencer who had been arrested. He went after her politics. Then he went after her weight.

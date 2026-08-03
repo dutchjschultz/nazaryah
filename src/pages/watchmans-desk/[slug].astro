@@ -11,11 +11,11 @@ export async function getStaticPaths() {
 }
 
 const { letter } = Astro.props;
-const { title, deck, issue } = letter.data;
+const { title, deck, issue, description } = letter.data;
 const { Content } = await letter.render();
 ---
 
-<BaseLayout title={`${title} — The Watchman's Letter | Nazaryah`} description={deck} article={true}>
+<BaseLayout title={`${title} — The Watchman's Letter | Nazaryah`} description={description ?? deck} article={true}>
   <article class="wl">
     <header class="wl-head">
       <p class="wl-masthead">The Watchman's Letter &middot; {issue}</p>
