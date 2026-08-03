@@ -52,6 +52,11 @@ const ogDescriptionResolved = ogDescription ?? description ?? OG_DEFAULT_DESCRIP
 const cardRel = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
 const perPageCard = cardRel && fs.existsSync(`public/og/${cardRel}.png`) ? `/og/${cardRel}.png` : undefined;
 const ogImageURL = new URL(ogImage ?? perPageCard ?? image ?? OG_DEFAULT_IMAGE, Astro.site || 'http://localhost:4321').href;
+// Explicit image hints. Both the generated cards and the default are 1200×630;
+// declaring type/dimensions/alt helps stricter crawlers (X especially) render the
+// card without a fetch-and-measure step, and clears the "no alt text" warning.
+const ogImageType = /\.png$/i.test(ogImageURL) ? 'image/png' : 'image/jpeg';
+const ogImageAlt = ogTitleResolved;
 ---
 
 <!DOCTYPE html>
@@ -86,6 +91,11 @@ const ogImageURL = new URL(ogImage ?? perPageCard ?? image ?? OG_DEFAULT_IMAGE, 
     <meta property="og:title" content={ogTitleResolved} />
     <meta property="og:description" content={ogDescriptionResolved} />
     <meta property="og:image" content={ogImageURL} />
+    <meta property="og:image:secure_url" content={ogImageURL} />
+    <meta property="og:image:type" content={ogImageType} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content={ogImageAlt} />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
@@ -93,6 +103,7 @@ const ogImageURL = new URL(ogImage ?? perPageCard ?? image ?? OG_DEFAULT_IMAGE, 
     <meta name="twitter:title" content={ogTitleResolved} />
     <meta name="twitter:description" content={ogDescriptionResolved} />
     <meta name="twitter:image" content={ogImageURL} />
+    <meta name="twitter:image:alt" content={ogImageAlt} />
 
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
