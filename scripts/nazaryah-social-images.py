@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """
-nazaryah-social-images  0803 V1
+nazaryah-social-images  0803 V2
 Generates the two social images for a nazaryah.com piece.
+
+V2: images are saved as 128-colour palette PNGs (optimize=True). Flat black with
+gold text is the case JPEG handles worst; a quantized PNG comes out ~30 KB against
+JPEG's ~57 KB and stays closer to the original. The emblem's gradient survives 128
+colours cleanly.
 
   card   1200 x 630   link preview for X, Facebook, LinkedIn  (og:image / twitter:image)
   thumb  1280 x 720   YouTube thumbnail
@@ -69,6 +74,13 @@ def wrap(draw, text, font, max_w):
     return lines
 
 
+def save_png(img, out):
+    """Writes a 128-colour palette PNG. ~2.5x smaller than truecolour for these
+    flat black-and-gold cards, and sharper than JPEG on the text edges."""
+    os.makedirs(os.path.dirname(out), exist_ok=True)
+    img.convert("RGB").quantize(colors=128, method=Image.MEDIANCUT).save(out, optimize=True)
+
+
 def place_mark(img, box_w, x, y):
     """Composites the emblem by lightening, so its black ground disappears into the card."""
     if not os.path.exists(MARK_PATH):
@@ -113,8 +125,7 @@ def build_card(kicker, title, deck, out):
     tracked(d, (PAD, H - PAD - 26), "NAZARYAH.COM", ImageFont.truetype(FONT_REG, 21), GOLD, 4)
     img = place_mark(img, 200, W - PAD - 180, H - PAD + 10)
 
-    os.makedirs(os.path.dirname(out), exist_ok=True)
-    img.save(out)
+    save_png(img, out)
     return out
 
 
@@ -152,8 +163,7 @@ def build_thumb(kicker, title, deck, out):
     tracked(d, (PAD, H - PAD - 40), "NAZARYAH.COM", ImageFont.truetype(FONT_REG, 30), GOLD, 6)
     img = place_mark(img, 300, W - PAD - 270, H - PAD + 16)
 
-    os.makedirs(os.path.dirname(out), exist_ok=True)
-    img.save(out)
+    save_png(img, out)
     return out
 
 

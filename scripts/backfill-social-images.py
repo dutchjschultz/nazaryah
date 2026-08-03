@@ -1,9 +1,15 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0803 V2
+backfill-social-images  0803 V3
 Regenerates the social card + YouTube thumbnail for every titled page on the
 site, so no shared link falls back to the site-wide logo. One-time backfill, and
 the tool to re-run whenever the emblem, fonts, or card design change.
+
+V3: the deck comes from the line the PAGE renders under its title (its italic
+deck/subtitle element), not og:description — the two diverge on most sections,
+and many pieces carry a purpose-written deck the meta description does not. Each
+section renders that line in its own class (below); og:description is the
+fallback where a section has no such element (e.g. the Legal Lexicon words).
 
 V2 is driven off the BUILT site (dist/**/index.html) rather than one content
 collection, so it covers every page type uniformly — blog studies, hand-authored
@@ -42,6 +48,48 @@ H1 = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S)
 DESC = re.compile(r'<meta property="og:description" content="((?:[^"\\]|\\.)*)"')
 TAGS = re.compile(r"<[^>]+>")
 WS = re.compile(r"\s+")
+
+# section (first URL segment) -> the class(es) the page renders its deck line in,
+# tried in order. First present element wins; otherwise the deck falls back to
+# og:description. Sections absent here (torah/legal-lexicon words, hebrew/psalm-119
+# stanzas) have no separate deck element and use og:description by design.
+# trinity/history is deliberately omitted — its th-sub line is a UI hint
+# ("Hover each number…"), so og:description (a real deck) is used there instead.
+DECK_CLASSES = {
+    "blog": ["post-deck"],
+    "american-idolatry": ["aip-subtitle", "ai-banner-sub"],
+    "associations": ["blurb", "assoc-lede"],
+    "books": ["bk-subtitle", "bk-intro"],
+    "calendar": ["cf-subtitle", "pg-subtitle", "cal-subtitle", "today-subtitle", "cf-index-subtitle"],
+    "catholicism": ["sw-sub"],
+    "disney": ["sw-sub"],
+    "foreign-fire": ["sw-sub", "ff-sub"],
+    "foundations": ["ref-tagline", "found-intro"],
+    "glossary": ["text-lg"],
+    "hebrew": ["hl-sub"],
+    "holidays": ["xm-tagline", "xm-sub", "hol-sub"],
+    "hollywood": ["subtitle"],
+    "studies": ["cod-subtitle", "lum-subtitle", "cod-parable-subtitle"],
+    "sun-worship": ["sw-sub", "al-sub", "sa-sub"],
+    "trinity": ["ta-preview", "tr-sub"],
+    "watchmans-desk": ["wl-deck", "wd-sub"],
+    "doctrines": ["doctrines-subtitle"],
+    "christian-or-demonic": ["cod-sub"],
+    "torah": ["to-sub", "thesis"],
+}
+
+
+def rendered_deck(page, rel):
+    """The deck the page shows under its title, from that section's class."""
+    for cls in DECK_CLASSES.get(rel.split("/")[0], []):
+        m = re.search(
+            r'<(p|div|h1|h2|span)[^>]*class="[^"]*\b' + re.escape(cls) + r'\b[^"]*"[^>]*>(.*?)</\1>',
+            page, re.S)
+        if m:
+            t = text(m.group(2))
+            if t:
+                return t
+    return None
 
 
 def load_generator():
@@ -90,7 +138,8 @@ def main():
         if rel.startswith("torah/legal-lexicon/"):
             title = re.sub(r"^\d+\s*", "", title)  # strip the entry number
         dm = DESC.search(page)
-        deck = html.unescape(dm.group(1)) if dm else ""
+        og_desc = html.unescape(dm.group(1)) if dm else ""
+        deck = rendered_deck(page, rel) or og_desc
         kicker = "The Watchman's Desk" if rel == "watchmans-desk" or rel.startswith("watchmans-desk/") else "STUDY"
 
         if a.dry_run:
