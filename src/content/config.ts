@@ -1,3 +1,6 @@
+// content config 0803 V1
+// V1: relaxed the watchmans-desk collection to a permissive (passthrough) schema
+// so open-letter full-text files validate alongside weekly-letter ones.
 import { defineCollection, z } from 'astro:content';
 
 // Reference schema for citations/sources
@@ -116,18 +119,13 @@ const watchmansReportCollection = defineCollection({
 // `posts` collection only (see src/pages/index.astro).
 const watchmansDeskCollection = defineCollection({
   type: 'content',
-  schema: z.object({
-    title: z.string(),
-    // One-line italic deck under the title.
-    deck: z.string(),
-    // Meta/social description. Falls back to `deck` in the layout when omitted.
-    description: z.string().optional(),
-    // Per-issue masthead suffix; the layout supplies the fixed
-    // "THE WATCHMAN'S LETTER ·" chrome. e.g. "Week ending 31 July 2026".
-    issue: z.string(),
-    date: z.date(),
-    draft: z.boolean().default(false),
-  }),
+  // Full-text store for the letter reader pages ONLY (weekly-letter + open-letter
+  // bodies). Card metadata — title, deck, status, date — is the data file's job
+  // (src/data/watchmans-desk.js); the frontmatter here just rides along with the
+  // markdown body, so the schema is permissive and validates nothing. Different
+  // letter kinds carry different frontmatter (weekly letters have `issue` + a real
+  // date; open letters carry kind/status/source and a display-string date).
+  schema: z.object({}).passthrough(),
 });
 
 export const collections = {

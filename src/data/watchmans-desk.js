@@ -1,4 +1,6 @@
-// watchmans-desk 0803 V1.js
+// watchmans-desk 0803 V2.js
+// V2: replaced the "No Creed But the Book, and a Phone" open-letter teaser body
+// with the final V7 opening paragraph.
 // Single source of truth for Watchman's Desk entries (homepage band + archive).
 // Kind and status are CLOSED lists — the card component never hand-writes pill or
 // status text; it resolves them from KINDS / STATUSES below. If an entry needs a
@@ -28,7 +30,7 @@ export const entries = [
     eyebrow: "",
     title: "No Creed But the Book, and a Phone",
     deck: "He said the Book settles it. Then he reached for something else.",
-    body: "A friend sent me a video and asked what I thought of it. I watched the whole thing. Three places in it stopped me, and all three stopped me for the same reason — he reads half a verse, and the half he leaves out is the half that completes the picture.",
+    body: "Somebody sent me a video of a sermon on the Trinity and asked what I thought of it. I watched the whole thing. Three places in it stopped me, and all three stopped me for the same reason — he reads half a verse, and the half he leaves out is the half that completes the picture.",
     source: "standalone",
   },
   {

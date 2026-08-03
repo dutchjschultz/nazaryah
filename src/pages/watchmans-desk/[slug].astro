@@ -1,5 +1,7 @@
 ---
-// src/pages/watchmans-desk/[slug].astro · 0803 V2
+// src/pages/watchmans-desk/[slug].astro · 0803 V3
+// V3: open letters render divider-free (whitespace + navy headers carry it);
+// letter bodies get explicit disc bullets so no page inherits diamond markers.
 // One reader page per Watchman's Desk letter (weekly-letter + open-letter).
 // Card metadata (title, deck, status, date) comes from the data file; the full
 // text comes from the watchmans-desk content collection when present. Field
@@ -26,7 +28,7 @@ const masthead = `${chrome} · ${STATUSES[status].label} ${date}`;
 ---
 
 <BaseLayout title={`${title} — The Watchman's Desk | Nazaryah`} description={description ?? deck} article={true}>
-  <article class="wl">
+  <article class={kind === 'open-letter' ? 'wl wl-open' : 'wl'}>
     <header class="wl-head">
       <p class="wl-masthead">{masthead}</p>
       <h1 class="wl-title">{title}</h1>
@@ -56,6 +58,12 @@ const masthead = `${chrome} · ${STATUSES[status].label} ${date}`;
   .wl-body :global(p) { margin: 0 0 1.3rem; }
   .wl-pending { font-style: italic; color: #7a6a52; }
 
+  /* Standard disc bullets — scripture stays inline in the list item, never a
+     blockquote. Navy marker ties the list to the navy section headers. */
+  .wl-body :global(ul) { list-style: disc; margin: 1.3rem 0; padding-left: 1.5rem; }
+  .wl-body :global(li) { margin: 0.5rem 0; padding-left: 0.2rem; }
+  .wl-body :global(li)::marker { color: #1f3864; }
+
   .wl-body :global(h2) { font-size: 1.35rem; color: #1f3864; font-weight: 700; line-height: 1.25; margin: 2.6rem 0 1rem; }
   .wl-body :global(blockquote) { margin: 1.7rem 0; padding: 0.2rem 0 0.2rem 1.4rem; border-left: 3px solid #1f3864; font-style: italic; color: #3a3428; line-height: 1.65; }
   .wl-body :global(blockquote p) { margin: 0; }
@@ -64,4 +72,8 @@ const masthead = `${chrome} · ${STATUSES[status].label} ${date}`;
   .wl-back { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(31,56,100,0.2); }
   .wl-back a { color: #6b3010; text-decoration: none; font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase; }
   .wl-back a:hover { color: #3a1a04; }
+
+  /* Open letters run divider-free — whitespace and the navy headers do the work. */
+  .wl-open .wl-masthead { border-bottom: none; padding-bottom: 0; }
+  .wl-open .wl-back { border-top: none; padding-top: 0; margin-top: 3.5rem; }
 </style>
