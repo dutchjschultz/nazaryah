@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
 """
+backfill-social-images  0804 V4
+V4: added --missing-only (generate only for pages whose og:image is still the
+site logo) so the build can fill card gaps without rebuilding all 560. See the
+build guard (scripts/check-cards.mjs) that enforces no cardless content page.
+---
 backfill-social-images  0803 V3
 Regenerates the social card + YouTube thumbnail for every titled page on the
 site, so no shared link falls back to the site-wide logo. One-time backfill, and
@@ -45,6 +50,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 DIST = os.path.join(HERE, "..", "dist")
 
 H1 = re.compile(r"<h1[^>]*>(.*?)</h1>", re.S)
+OG_IMG = re.compile(r'<meta property="og:image" content="([^"]*)"')
 DESC = re.compile(r'<meta property="og:description" content="((?:[^"\\]|\\.)*)"')
 TAGS = re.compile(r"<[^>]+>")
 WS = re.compile(r"\s+")
@@ -116,13 +122,15 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--dry-run", action="store_true")
     ap.add_argument("--no-thumbs", action="store_true")
+    ap.add_argument("--missing-only", action="store_true",
+                    help="only pages whose og:image is still the site logo (fill gaps, don't rebuild all)")
     a = ap.parse_args()
 
     if not os.path.isdir(DIST):
         raise SystemExit("dist/ not found — run `npm run build` first.")
 
     gen = load_generator()
-    made = skipped = no_h1 = 0
+    made = skipped = no_h1 = have_card = 0
     for f in sorted(glob.glob(os.path.join(DIST, "**", "index.html"), recursive=True)):
         rel = os.path.relpath(os.path.dirname(f), DIST).replace(os.sep, "/")
         rel = "" if rel == "." else rel
@@ -130,6 +138,11 @@ def main():
             skipped += 1
             continue
         page = open(f, encoding="utf-8").read()
+        if a.missing_only:
+            og = OG_IMG.search(page)
+            if not (og and og.group(1).endswith("/og-default.jpg")):
+                have_card += 1  # already has its own card (generated or supplied)
+                continue
         m = H1.search(page)
         if not m:
             no_h1 += 1
@@ -152,7 +165,8 @@ def main():
         made += 1
 
     verb = "would generate" if a.dry_run else "generated"
-    print(f"\n{verb} {made} pages | skipped {skipped} listing/home | {no_h1} without an <h1> (left on logo).")
+    extra = f" | {have_card} already carded" if a.missing_only else ""
+    print(f"\n{verb} {made} pages | skipped {skipped} listing/home | {no_h1} without an <h1> (left on logo){extra}.")
 
 
 if __name__ == "__main__":
