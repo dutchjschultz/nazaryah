@@ -1,5 +1,5 @@
 ---
-// src/components/WatchmanCard.astro · 0804 V3
+// src/components/WatchmanCard.astro · 0804 V4
 // Shared Watchman's Desk card — used by the homepage featured band AND the
 // archive list. The header pill and the status line resolve from the CLOSED
 // KINDS / STATUSES maps in the data file; nothing here is hand-written per card.
@@ -8,6 +8,10 @@
 //                        card bottom so paired cards align (equal-height columns).
 //   variant "archive"  = full-width card: eyebrow + title + deck + first body
 //                        paragraph clamped to 3 lines.
+// The cream companion strip renders on EVERY card (no exceptions) and is a
+// single shared block: line 1 is always a red caps link to the entry (or, when
+// source is "linked", to the companion study); line 2 is the linked study title
+// or reserved empty space, so every strip is identical height down the column.
 import { KINDS, STATUSES } from '../data/watchmans-desk.js';
 
 interface Props {
@@ -22,14 +26,15 @@ const st = STATUSES[status];
 const hasPage = kind === 'weekly-letter' || kind === 'open-letter';
 const pageUrl = `/watchmans-desk/${slug}`;
 
-// Companion strip, pinned to the card bottom: entries with their own reader page
-// (letters — weekly AND open) link to it; linked field briefs point at the study.
+// Companion strip — always present, pinned to the card bottom.
+// Line 1 label + target: a "linked" entry points at its companion study; every
+// other entry points at its own reader page. Field briefs read "full brief",
+// letters read "the letter". Line 2 (sub) is the study title when linked, else
+// null -> rendered as reserved empty space so all strips match height.
 const strip =
-  hasPage
-    ? { label: 'Read the letter', url: pageUrl, sub: null }
-    : source === 'linked'
-      ? { label: 'Read the full study', url: companionStudy.url, sub: companionStudy.title }
-      : null;
+  source === 'linked'
+    ? { label: 'Read the full study', url: companionStudy.url, sub: companionStudy.title }
+    : { label: kind === 'field-brief' ? 'Read the full brief' : 'Read the letter', url: pageUrl, sub: null };
 ---
 
 <article class={`wc-card wc-${variant} wc-band-${st.band}`}>
@@ -39,20 +44,20 @@ const strip =
   </div>
 
   <div class="wc-body">
-    {variant === 'archive' && eyebrow && <p class="wc-eyebrow">{eyebrow}</p>}
+    {eyebrow && <p class="wc-eyebrow">{eyebrow}</p>}
     <h3 class="wc-title">{hasPage ? <a href={pageUrl}>{title}</a> : title}</h3>
     <p class="wc-deck">{deck}</p>
     <p class="wc-teaser">{body}</p>
   </div>
 
-  {strip && (
-    <div class="wc-strip">
-      <div class="wc-strip-row">
-        <a class="wc-strip-link" href={strip.url}>{strip.label} &rarr;</a>
-      </div>
-      {strip.sub && <a class="wc-strip-sub" href={strip.url}>{strip.sub}</a>}
+  <div class="wc-strip">
+    <div class="wc-strip-row">
+      <a class="wc-strip-link" href={strip.url}>{strip.label} &rarr;</a>
     </div>
-  )}
+    {strip.sub
+      ? <a class="wc-strip-sub" href={strip.url}>{strip.sub}</a>
+      : <span class="wc-strip-sub wc-strip-sub--empty" aria-hidden="true">&nbsp;</span>}
+  </div>
 </article>
 
 <style>
@@ -130,11 +135,16 @@ const strip =
     transition: color 0.2s ease;
   }
   .wc-strip-link:hover { color: var(--navy-deep); }
+  /* Line 2 — italic study title (linked) or a reserved blank line (standalone),
+     the same red as line 1 but muted, so every strip is identical height. */
   .wc-strip-sub {
-    display: block; margin-top: 5px; font-family: Georgia, serif; font-style: italic;
-    font-size: 0.88rem; color: var(--ink-soft); text-decoration: none;
+    display: block; min-height: 1.3em; margin-top: 5px; font-family: Georgia, serif;
+    font-style: italic; font-size: 0.88rem; color: var(--red-deep); opacity: 0.72;
+    text-decoration: none;
   }
-  .wc-strip-sub:hover { color: var(--red-deep); }
+  a.wc-strip-sub:hover { opacity: 1; }
+  /* Empty reserved line — holds height only, never interactive. */
+  .wc-strip-sub--empty { opacity: 0; cursor: default; }
 
   @media (max-width: 640px) { .wc-body { padding: 1.25rem 1.25rem; } }
 </style>

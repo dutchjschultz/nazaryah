@@ -1,5 +1,5 @@
 ---
-// src/pages/index.astro · 0804 V3
+// src/pages/index.astro · 0804 V4
 // Watchman's Desk band renders the two most recent entries (featuredEntries,
 // derived from sortDate — see the data file) as equal, side-by-side WatchmanCards
 // (featured variant). Neither is primary; the "Browse the archive" link is a
@@ -692,12 +692,14 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
       background: #0a0a0a; padding: 3.25rem 0 4rem; border-top: 4px solid var(--wr-red);
     }
     .wr-container { max-width: 80rem; margin: 0 auto; padding: 0 2.5rem; }
-    .wr-header { text-align: center; margin-bottom: 2rem; }
+    .wr-header { text-align: center; margin-bottom: 2.5rem; }
     .wr-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--wr-red); font-weight: 700; margin: 0 0 0.5rem; }
     .wr-title { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 900; font-size: clamp(1.9rem, 3.4vw, 2.6rem); color: var(--wr-cream); margin: 0; }
-    /* Band-level archive link — the browse affordance lives here, not inside a
-       card, so the two band cards stay identical (neither reads as primary). */
-    .wr-archive-link { display: inline-block; margin-top: 0.9rem; font-family: 'Cinzel', serif; font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--wr-gold); text-decoration: none; transition: color .2s ease; }
+    /* Band-level archive link — section navigation, so it sits in the masthead
+       under the title (not inside a card). Text link only: no fill, no border,
+       no button padding. Tight to the title; the header's margin-bottom opens the
+       larger break before the card row. House red on black, brightening to cream. */
+    .wr-archive-link { display: inline-block; margin-top: 0.55rem; font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 700; color: var(--wr-red); text-decoration: none; transition: color .2s ease; }
     .wr-archive-link:hover { color: var(--wr-cream); }
 
     .wr-top { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; align-items: stretch; margin-bottom: 1.6rem; }
