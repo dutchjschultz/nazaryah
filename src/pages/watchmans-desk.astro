@@ -1,11 +1,12 @@
 ---
-// src/pages/watchmans-desk.astro · 0803 V2
-// The Watchman's Desk archive — every entry (letters + field briefs) in one
-// stream, newest first, rendered by the shared WatchmanCard (archive variant).
-// Entries and their closed kind/status lists come from the data file.
+// src/pages/watchmans-desk.astro · 0804 V3
+// The Watchman's Desk archive — every entry EXCEPT the two currently in the
+// homepage band (archiveEntries), so nothing appears twice on one page. One
+// stream, newest first by sortDate, rendered by the shared WatchmanCard (archive
+// variant). Entries and their closed kind/status lists come from the data file.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WatchmanCard from '../components/WatchmanCard.astro';
-import { entries } from '../data/watchmans-desk.js';
+import { archiveEntries } from '../data/watchmans-desk.js';
 ---
 
 <BaseLayout
@@ -25,7 +26,7 @@ import { entries } from '../data/watchmans-desk.js';
 
     <section class="wd-grid-section">
       <div class="wd-stream">
-        {entries.map((entry) => <WatchmanCard entry={entry} variant="archive" />)}
+        {archiveEntries.map((entry) => <WatchmanCard entry={entry} variant="archive" />)}
       </div>
 
       <div class="wd-foot">

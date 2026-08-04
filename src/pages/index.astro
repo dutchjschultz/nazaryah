@@ -1,12 +1,13 @@
 ---
-// src/pages/index.astro · 0803 V2
-// Watchman's Desk band now renders the shared WatchmanCard (featured variant)
-// from the watchmans-desk data file. Featured card is the latest weekly-letter
-// (the strip-bearing kind), so the "Browse the archive" link has a strip to sit in.
+// src/pages/index.astro · 0804 V3
+// Watchman's Desk band renders the two most recent entries (featuredEntries,
+// derived from sortDate — see the data file) as equal, side-by-side WatchmanCards
+// (featured variant). Neither is primary; the "Browse the archive" link is a
+// band-level affordance, not carried inside either card.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HomeCard from '../components/HomeCard.astro';
 import WatchmanCard from '../components/WatchmanCard.astro';
-import { entries as watchmanEntries } from '../data/watchmans-desk.js';
+import { featuredEntries } from '../data/watchmans-desk.js';
 import { getCollection } from 'astro:content';
 import { featuredSlugs } from '../lib/featured-queue.js';
 
@@ -74,11 +75,11 @@ const railGroups = [
   },
 ];
 
-// ── THE WATCHMAN'S DESK (band) — the two most recent weekly-letters, from the
-// watchmans-desk data file (NOT the posts pool, so they never enter Featured
-// Picks). Weekly-letters carry the "Read the letter" strip, which is where the
-// "Browse the archive" link lives. Fills up to two cards.
-const featuredLetters = watchmanEntries.filter((e) => e.kind === 'weekly-letter').slice(0, 2);
+// ── THE WATCHMAN'S DESK (band) — the two most recent entries by date, newest
+// first, straight from the data file (featuredEntries). Selection is deterministic
+// (sortDate order, no manual pinning) and independent of the posts pool, so these
+// never enter Featured Picks. Fewer than two entries -> one card, no empty slot.
+const featuredLetters = featuredEntries;
 
 // ── FEATURED PICKS (band) — driven by the rotating queue in
 // src/lib/featured-queue.js. One study swaps out per dawn; each rides five
@@ -527,12 +528,13 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
       <div class="wr-header">
         <p class="wr-eyebrow">★ Field Notes From the Wall ★</p>
         <h2 class="wr-title">The Watchman&rsquo;s Desk</h2>
+        <a class="wr-archive-link" href="/watchmans-desk">Browse the archive &rarr;</a>
       </div>
 
       <div class="wr-top">
         <div class="wr-letters" style={`grid-template-columns: repeat(${featuredLetters.length || 1}, minmax(0, 1fr));`}>
-          {featuredLetters.map((letter, i) => (
-            <WatchmanCard entry={letter} variant="featured" showArchiveLink={i === 0} />
+          {featuredLetters.map((letter) => (
+            <WatchmanCard entry={letter} variant="featured" />
           ))}
         </div>
 
@@ -693,13 +695,20 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
     .wr-header { text-align: center; margin-bottom: 2rem; }
     .wr-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--wr-red); font-weight: 700; margin: 0 0 0.5rem; }
     .wr-title { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 900; font-size: clamp(1.9rem, 3.4vw, 2.6rem); color: var(--wr-cream); margin: 0; }
+    /* Band-level archive link — the browse affordance lives here, not inside a
+       card, so the two band cards stay identical (neither reads as primary). */
+    .wr-archive-link { display: inline-block; margin-top: 0.9rem; font-family: 'Cinzel', serif; font-size: 0.64rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700; color: var(--wr-gold); text-decoration: none; transition: color .2s ease; }
+    .wr-archive-link:hover { color: var(--wr-cream); }
 
     .wr-top { display: grid; grid-template-columns: 2fr 1fr; gap: 1.5rem; align-items: stretch; margin-bottom: 1.6rem; }
-    /* Up to two letter cards fill the primary slot (columns set inline by count).
-       align-self:start so a card sizes to its content instead of stretching to
-       the YouTube column height (which was leaving dead space under the deck). */
+    /* The two band cards fill the primary slot (columns set inline by count).
+       align-items:stretch makes the pair equal-height (equal-height columns), so
+       each card's bottom-pinned cream strip lands on the same line even when one
+       title wraps further than the other. align-self:start keeps the pair from
+       stretching to the taller YouTube column beside it. */
     .wr-letters { display: grid; gap: 1.5rem; align-items: stretch; align-self: start; }
-    @media (max-width: 560px) { .wr-letters { grid-template-columns: 1fr !important; } }
+    /* Tablet + mobile: stack, newer entry on top (source order = newest first). */
+    @media (max-width: 768px) { .wr-letters { grid-template-columns: 1fr !important; } }
 
     /* Featured letter card is now the shared <WatchmanCard variant="featured">. */
 

@@ -1,10 +1,12 @@
 ---
-// src/components/WatchmanCard.astro · 0803 V1
+// src/components/WatchmanCard.astro · 0804 V2
 // Shared Watchman's Desk card — used by the homepage featured band AND the
 // archive list. The header pill and the status line resolve from the CLOSED
 // KINDS / STATUSES maps in the data file; nothing here is hand-written per card.
-//   variant "featured" = full card in the homepage band (no teaser body).
-//   variant "archive"  = compact teaser: eyebrow + title + deck + first body
+//   variant "featured" = half-width band card: title + deck + first body
+//                        paragraph clamped to 3 lines, cream strip pinned to the
+//                        card bottom so paired cards align (equal-height columns).
+//   variant "archive"  = full-width card: eyebrow + title + deck + first body
 //                        paragraph clamped to 3 lines.
 import { KINDS, STATUSES } from '../data/watchmans-desk.js';
 
@@ -21,10 +23,10 @@ const st = STATUSES[status];
 const hasPage = kind === 'weekly-letter' || kind === 'open-letter';
 const pageUrl = `/watchmans-desk/${slug}`;
 
-// Companion strip: renders for weekly-letters (-> own page) and linked briefs
-// (-> study). Absent on the standalone open letter.
+// Companion strip, pinned to the card bottom: entries with their own reader page
+// (letters — weekly AND open) link to it; linked field briefs point at the study.
 const strip =
-  kind === 'weekly-letter'
+  hasPage
     ? { label: 'Read the letter', url: pageUrl, sub: null }
     : source === 'linked'
       ? { label: 'Read the full study', url: companionStudy.url, sub: companionStudy.title }
@@ -41,7 +43,7 @@ const strip =
     {variant === 'archive' && eyebrow && <p class="wc-eyebrow">{eyebrow}</p>}
     <h3 class="wc-title">{hasPage ? <a href={pageUrl}>{title}</a> : title}</h3>
     <p class="wc-deck">{deck}</p>
-    {variant === 'archive' && <p class="wc-teaser">{body}</p>}
+    <p class="wc-teaser">{body}</p>
   </div>
 
   {strip && (
@@ -115,7 +117,7 @@ const strip =
   .wc-title a { color: inherit; text-decoration: none; }
   .wc-title a:hover { color: var(--red-deep); }
   .wc-deck { font-style: italic; font-size: 1.02rem; line-height: 1.55; color: var(--ink-soft); margin: 0; }
-  /* Teaser — first body paragraph, clamped to 3 lines (archive only). */
+  /* Teaser — first body paragraph, clamped to 3 lines (both variants). */
   .wc-teaser {
     font-size: 0.98rem; line-height: 1.6; color: var(--ink-soft); margin: 0.7rem 0 0;
     display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 3; overflow: hidden;

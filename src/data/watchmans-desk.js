@@ -1,6 +1,7 @@
-// watchmans-desk 0803 V2.js
-// V2: replaced the "No Creed But the Book, and a Phone" open-letter teaser body
-// with the final V7 opening paragraph.
+// watchmans-desk 0804 V3.js
+// V3: added sortDate (ISO) to every entry; ordering (band + archive) now derives
+// from sortDate alone. New views: featuredEntries = two most recent (the band),
+// archiveEntries = the rest. Soft, band-only length-ceiling warnings at build.
 // Single source of truth for Watchman's Desk entries (homepage band + archive).
 // Kind and status are CLOSED lists — the card component never hand-writes pill or
 // status text; it resolves them from KINDS / STATUSES below. If an entry needs a
@@ -21,12 +22,15 @@ export const STATUSES = {
   "on-ground":   { label: "ON THE GROUND",  band: "charcoal" },
 };
 
-// Entries in display order — most recent first. `date` is a free display string
-// (may be a calendar date or a phrase like "Ongoing").
+// `sortDate` (ISO YYYY-MM-DD) drives ALL ordering — band and archive, newest
+// first. The array order below is not authoritative. `date` is a free display
+// string (a calendar date, or a phrase like "Ongoing") and is shown verbatim;
+// it is never parsed or sorted on. Give every new entry a sortDate.
 export const entries = [
   {
     slug: "no-creed-but-the-book-and-a-phone",
     kind: "open-letter", status: "filed", date: "3 August 2026",
+    sortDate: "2026-08-03",
     eyebrow: "",
     title: "No Creed But the Book, and a Phone",
     deck: "He said the Book settles it. Then he reached for something else.",
@@ -36,6 +40,7 @@ export const entries = [
   {
     slug: "a-temple-and-nobody-asked-whose",
     kind: "weekly-letter", status: "week-ending", date: "31 July 2026",
+    sortDate: "2026-07-31",
     eyebrow: "",
     title: "A Temple, and Nobody Asked Whose",
     deck: "The building is well kept. The rent is being paid to someone else.",
@@ -45,6 +50,7 @@ export const entries = [
   {
     slug: "memorial-day",
     kind: "field-brief", status: "on-horizon", date: "May 25",
+    sortDate: "2026-04-20",
     eyebrow: "Arlington · Approaching",
     title: "Memorial Day Returns in Five Weeks",
     deck: "The most religious ceremony in the nation's civic calendar returns — and every element of it is Roman.",
@@ -55,6 +61,7 @@ export const entries = [
   {
     slug: "the-triumphal-arch",
     kind: "field-brief", status: "approved", date: "July 4 Unveiling",
+    sortDate: "2026-04-16",
     eyebrow: "Washington DC · April 16, 2026",
     title: "The Triumphal Arch Is Coming to Washington",
     deck: "A 250-foot Roman triumphal arch, fast-tracked for a July 4 unveiling across the Potomac from Lincoln — and the sun-temple pattern underneath it.",
@@ -65,6 +72,7 @@ export const entries = [
   {
     slug: "war-in-jacobs-land",
     kind: "field-brief", status: "on-ground", date: "Ongoing",
+    sortDate: "2026-04-01",
     eyebrow: "The Covenant Land · Ongoing",
     title: "The War the Headlines Cannot Explain",
     deck: "The headlines name the missiles. They will not name who is in Jacob's land, by whose authority, or what Scripture says they are doing there.",
@@ -88,3 +96,28 @@ for (const e of entries) {
 // An entry has its own reader page (a letter) vs. only a card (a field brief).
 export const hasPage = (e) => e.kind === "weekly-letter" || e.kind === "open-letter";
 export const pageEntries = entries.filter(hasPage);
+
+// --- date-ordered views: the band (top two) + the archive (everything else) ---
+// Ordering is derived from sortDate alone — no manual pinning, no `featured`
+// flag. ISO date strings sort correctly under a plain string compare.
+export const sortedEntries = [...entries].sort((a, b) => b.sortDate.localeCompare(a.sortDate));
+// The band holds the two most recent, newest first. Fewer than two entries ->
+// one card, no empty slot (slice handles this).
+export const featuredEntries = sortedEntries.slice(0, 2);
+// The archive shows everything the band is NOT showing, so nothing appears twice
+// on one page. Same sortDate order, newest first.
+export const archiveEntries = sortedEntries.slice(2);
+
+// --- band-only length ceilings — SOFT warning, never blocks the build ---------
+// Half-width band cards are the only place length matters; archive cards (full
+// width) take no limit. This WARNS and CONTINUES — it never alters, truncates,
+// or fails the build. Titles/decks are vetted before they reach this file; this
+// is only a backstop.
+const BAND_TITLE_CEILING = 40;
+const BAND_DECK_CEILING = 75;
+for (const e of featuredEntries) {
+  if (e.title.length > BAND_TITLE_CEILING)
+    console.warn(`[watchmans-desk] title is ${e.title.length} chars (ceiling ${BAND_TITLE_CEILING}): "${e.slug}"`);
+  if (e.deck.length > BAND_DECK_CEILING)
+    console.warn(`[watchmans-desk] deck is ${e.deck.length} chars (ceiling ${BAND_DECK_CEILING}): "${e.slug}"`);
+}
