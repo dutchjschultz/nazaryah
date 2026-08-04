@@ -1,29 +1,41 @@
 ---
-// src/pages/watchmans-desk/[slug].astro · 0803 V3
-// V3: open letters render divider-free (whitespace + navy headers carry it);
-// letter bodies get explicit disc bullets so no page inherits diamond markers.
-// One reader page per Watchman's Desk letter (weekly-letter + open-letter).
-// Card metadata (title, deck, status, date) comes from the data file; the full
-// text comes from the watchmans-desk content collection when present. Field
-// briefs have no page here — they point at their study.
+// src/pages/watchmans-desk/[slug].astro · 0804 V4
+// A reader page for EVERY entry, regardless of kind (weekly-letter, field-brief,
+// open-letter) — route generation is NOT keyed to kind, so no strip link can
+// 404. Card metadata (title, deck, status, date) comes from the data file; full
+// text comes from the watchmans-desk content collection when a .md file exists,
+// otherwise the entry's `body` paragraph renders as the page content. Open
+// letters render divider-free; letter bodies use disc bullets (no diamonds).
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { pageEntries, STATUSES } from '../../data/watchmans-desk.js';
+import { entries, STATUSES } from '../../data/watchmans-desk.js';
 
 export async function getStaticPaths() {
   const fulltext = await getCollection('watchmans-desk');
   const bySlug = new Map(fulltext.map((f) => [f.slug, f]));
-  return pageEntries.map((entry) => ({
+  const paths = entries.map((entry) => ({
     params: { slug: entry.slug },
     props: { entry, full: bySlug.get(entry.slug) ?? null },
   }));
+  // Every entry must resolve to a page that renders something — its .md file, or
+  // its body paragraph as a fallback. Fail the build naming the offending slug
+  // rather than shipping an empty page or a dead strip link.
+  for (const { props } of paths) {
+    const { entry, full } = props;
+    if (!full && !(entry.body && entry.body.trim()))
+      throw new Error(`watchmans-desk: "${entry.slug}" resolves to no page content (no .md file and no body)`);
+  }
+  return paths;
 }
 
 const { entry, full } = Astro.props;
 const { kind, status, date, title, deck, description } = entry;
 const Content = full ? (await full.render()).Content : null;
 
-const chrome = kind === 'open-letter' ? "An Open Letter" : "The Watchman's Letter";
+const chrome =
+  kind === 'open-letter' ? 'An Open Letter'
+  : kind === 'field-brief' ? 'A Field Brief'
+  : "The Watchman's Letter";
 const masthead = `${chrome} · ${STATUSES[status].label} ${date}`;
 ---
 
@@ -37,7 +49,7 @@ const masthead = `${chrome} · ${STATUSES[status].label} ${date}`;
 
     <div class="wl-body">
       {Content ? <Content /> : (
-        <p class="wl-pending">The full letter is on its way. In the meantime, here is where it begins:</p>
+        <p class="wl-pending">The full text is on its way. In the meantime, here is where it begins:</p>
       )}
       {!Content && <p>{entry.body}</p>}
     </div>

@@ -1,8 +1,9 @@
 ---
-// src/pages/watchmans-desk.astro · 0804 V3
-// The Watchman's Desk archive — every entry EXCEPT the two currently in the
-// homepage band (archiveEntries), so nothing appears twice on one page. One
-// stream, newest first by sortDate, rendered by the shared WatchmanCard (archive
+// src/pages/watchmans-desk.astro · 0804 V4
+// The Watchman's Desk archive — EVERY entry (archiveEntries), newest first by
+// sortDate, including the ones the homepage band is currently featuring. The band
+// is a view onto the same array, not a separate set, so an entry never has to be
+// hand-moved here when it ages out. Rendered by the shared WatchmanCard (archive
 // variant). Entries and their closed kind/status lists come from the data file.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WatchmanCard from '../components/WatchmanCard.astro';

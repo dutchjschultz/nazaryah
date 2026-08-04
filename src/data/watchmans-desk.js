@@ -1,7 +1,9 @@
-// watchmans-desk 0804 V3.js
-// V3: added sortDate (ISO) to every entry; ordering (band + archive) now derives
-// from sortDate alone. New views: featuredEntries = two most recent (the band),
-// archiveEntries = the rest. Soft, band-only length-ceiling warnings at build.
+// watchmans-desk 0804 V4.js
+// V4: the archive now renders EVERY entry (archiveEntries === all, newest first),
+// including whatever the band is featuring — the band is just the two most recent
+// from the same array, never a separate set, nothing duplicated or hand-moved.
+// Removed the kind-keyed page filter (hasPage/pageEntries): every entry gets a
+// reader page; route generation lives in [slug].astro. Soft band warnings kept.
 // Single source of truth for Watchman's Desk entries (homepage band + archive).
 // Kind and status are CLOSED lists — the card component never hand-writes pill or
 // status text; it resolves them from KINDS / STATUSES below. If an entry needs a
@@ -93,20 +95,18 @@ for (const e of entries) {
     throw new Error(`watchmans-desk: "${e.slug}" is source "standalone" but has a companionStudy`);
 }
 
-// An entry has its own reader page (a letter) vs. only a card (a field brief).
-export const hasPage = (e) => e.kind === "weekly-letter" || e.kind === "open-letter";
-export const pageEntries = entries.filter(hasPage);
-
-// --- date-ordered views: the band (top two) + the archive (everything else) ---
-// Ordering is derived from sortDate alone — no manual pinning, no `featured`
-// flag. ISO date strings sort correctly under a plain string compare.
+// --- date-ordered views: ONE array, two views -------------------------------
+// Ordering derives from sortDate alone (ISO strings sort correctly under a plain
+// string compare) — no manual pinning, no `featured` flag, nothing hand-moved
+// between surfaces.
 export const sortedEntries = [...entries].sort((a, b) => b.sortDate.localeCompare(a.sortDate));
-// The band holds the two most recent, newest first. Fewer than two entries ->
-// one card, no empty slot (slice handles this).
+// The archive renders EVERY entry, newest first — including whatever the band is
+// currently featuring. When a band entry ages out it is already here; there is
+// nothing to re-add by hand.
+export const archiveEntries = sortedEntries;
+// The band is a view onto the same array: the two most recent. Fewer than two
+// entries -> one card, no empty slot (slice handles this).
 export const featuredEntries = sortedEntries.slice(0, 2);
-// The archive shows everything the band is NOT showing, so nothing appears twice
-// on one page. Same sortDate order, newest first.
-export const archiveEntries = sortedEntries.slice(2);
 
 // --- band-only length ceilings — SOFT warning, never blocks the build ---------
 // Half-width band cards are the only place length matters; archive cards (full
