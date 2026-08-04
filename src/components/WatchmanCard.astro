@@ -1,5 +1,5 @@
 ---
-// src/components/WatchmanCard.astro · 0804 V2
+// src/components/WatchmanCard.astro · 0804 V3
 // Shared Watchman's Desk card — used by the homepage featured band AND the
 // archive list. The header pill and the status line resolve from the CLOSED
 // KINDS / STATUSES maps in the data file; nothing here is hand-written per card.
@@ -13,9 +13,8 @@ import { KINDS, STATUSES } from '../data/watchmans-desk.js';
 interface Props {
   entry: any;
   variant?: 'featured' | 'archive';
-  showArchiveLink?: boolean; // featured band only — the "Browse the archive" button in the strip
 }
-const { entry, variant = 'archive', showArchiveLink = false } = Astro.props;
+const { entry, variant = 'archive' } = Astro.props;
 const { kind, status, date, eyebrow, title, deck, body, source, companionStudy, slug } = entry;
 const st = STATUSES[status];
 
@@ -50,9 +49,6 @@ const strip =
     <div class="wc-strip">
       <div class="wc-strip-row">
         <a class="wc-strip-link" href={strip.url}>{strip.label} &rarr;</a>
-        {showArchiveLink && (
-          <a class="wc-archive-btn" href="/watchmans-desk">Browse the archive &rarr;</a>
-        )}
       </div>
       {strip.sub && <a class="wc-strip-sub" href={strip.url}>{strip.sub}</a>}
     </div>
@@ -139,15 +135,6 @@ const strip =
     font-size: 0.88rem; color: var(--ink-soft); text-decoration: none;
   }
   .wc-strip-sub:hover { color: var(--red-deep); }
-  /* Archive button — dark red block, sized to content, right of the strip row. */
-  .wc-archive-btn {
-    display: inline-block; padding: 0.5rem 1rem; border-radius: 3px;
-    font-family: 'Cinzel', 'Playfair Display', Georgia, serif; font-size: 0.7rem; letter-spacing: 0.2em;
-    text-transform: uppercase; font-weight: 700; text-decoration: none;
-    color: var(--cream); background: var(--red-deep); border: 1px solid var(--red);
-    transition: background 0.2s ease, border-color 0.2s ease;
-  }
-  .wc-archive-btn:hover { background: var(--navy-deep); border-color: var(--gold); }
 
   @media (max-width: 640px) { .wc-body { padding: 1.25rem 1.25rem; } }
 </style>
