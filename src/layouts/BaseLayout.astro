@@ -52,16 +52,27 @@ const ogDescriptionResolved = ogDescription ?? description ?? OG_DEFAULT_DESCRIP
 // Bump when the card ARTWORK changes (design, or the palette→truecolor format
 // fix). Appended to the card URL so crawlers that cached a prior fetch — X caches
 // the image by URL — are forced to re-fetch instead of serving the stale version.
-const OG_CARD_VERSION = 2;
 const cardRel = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
-// A path-versioned card (`<slug>.v2.png`) is a URL crawlers have never cached, so
-// it beats the `?v=` query cache-bust — some image crawlers (X included, suspected)
-// normalise query strings away when caching. Prefer it; fall back to the plain
-// card with the query bust; then nothing.
-const perPageCard =
-  cardRel && fs.existsSync(`public/og/${cardRel}.v2.png`) ? `/og/${cardRel}.v2.png`
-  : cardRel && fs.existsSync(`public/og/${cardRel}.png`) ? `/og/${cardRel}.png?v=${OG_CARD_VERSION}`
-  : undefined;
+// The card filename carries the version (`<slug>.vN.png`) — X ignores query
+// strings when caching images, so cache-busting is done by the PATH. Point at the
+// highest N on disk; the generator writes N+1 and deletes the old one on every
+// regeneration, so there is normally exactly one. No query string on the tag.
+function resolveCardUrl(rel) {
+  if (!rel) return undefined;
+  const i = rel.lastIndexOf('/');
+  const subdir = i >= 0 ? rel.slice(0, i) : '';
+  const stem = i >= 0 ? rel.slice(i + 1) : rel;
+  let best = 0;
+  try {
+    for (const f of fs.readdirSync(`public/og${subdir ? '/' + subdir : ''}`)) {
+      const m = f.match(/^(.+)\.v(\d+)\.png$/);
+      if (m && m[1] === stem) best = Math.max(best, Number(m[2]));
+    }
+  } catch { /* no card dir for this page */ }
+  if (best) return `/og/${rel}.v${best}.png`;
+  return fs.existsSync(`public/og/${rel}.png`) ? `/og/${rel}.png` : undefined;
+}
+const perPageCard = resolveCardUrl(cardRel);
 const ogImageURL = new URL(ogImage ?? perPageCard ?? image ?? OG_DEFAULT_IMAGE, Astro.site || 'http://localhost:4321').href;
 // Explicit image hints. Both the generated cards and the default are 1200×630;
 // declaring type/dimensions/alt helps stricter crawlers (X especially) render the

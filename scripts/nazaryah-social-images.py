@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-nazaryah-social-images  0803 V3
+nazaryah-social-images  0803 V4
 Generates the two social images for a nazaryah.com piece.
 
 V3: images are saved as TRUECOLOR RGB PNGs (optimize=True). V2 used 128-colour
@@ -8,6 +8,13 @@ palette PNGs for size (~30 KB), but X's image pipeline rejects indexed PNGs —
 it fetches the file, fails to decode it, shows a broken-image placeholder, and
 downgrades the large card to the small summary card. Browsers render indexed PNGs
 fine, which masks the problem. Truecolor (~75 KB) is universally crawler-safe.
+
+V4: the CARD filename carries an auto-incrementing version — `<slug>.vN.png`. X
+normalises query strings away when caching images, so `?v=` never busted its
+cache; only a new PATH does. `save_card()` reads the highest N already on disk and
+writes N+1 (starting at 2), deleting older versions, so a regeneration at an
+unchanged slug always lands on a URL X has never fetched — with no hand-kept
+number. Thumbnails are not crawled, so they stay unversioned.
 
   card   1200 x 630   link preview for X, Facebook, LinkedIn  (og:image / twitter:image)
   thumb  1280 x 720   YouTube thumbnail
@@ -30,7 +37,9 @@ Writes:  public/og/<slug>.png  and  public/thumb/<slug>.png
 """
 
 import argparse
+import glob
 import os
+import re
 from PIL import Image, ImageDraw, ImageFont, ImageChops
 
 # ---------------------------------------------------------------- configuration
@@ -83,6 +92,27 @@ def save_png(img, out):
     img.convert("RGB").save(out, optimize=True)
 
 
+def save_card(img, base_out):
+    """Save a CARD at an auto-versioned path `<stem>.vN.png` and return it.
+
+    N is one past the highest version already on disk (min 2), so a regeneration
+    at an unchanged slug always produces a NEW filename — the only cache-bust X's
+    image cache honours (it ignores query strings). Older versions and any legacy
+    unversioned `<stem>.png` are removed, leaving exactly one card per slug. The
+    version is read from the filesystem; nothing is hand-maintained."""
+    stem = base_out[:-4] if base_out.lower().endswith(".png") else base_out
+    versions = [int(m.group(1)) for p in glob.glob(glob.escape(stem) + ".v*.png")
+                if (m := re.search(r"\.v(\d+)\.png$", p))]
+    final = f"{stem}.v{(max(versions) if versions else 1) + 1}.png"
+    save_png(img, final)
+    for p in glob.glob(glob.escape(stem) + ".v*.png"):
+        if os.path.abspath(p) != os.path.abspath(final):
+            os.remove(p)
+    if os.path.exists(f"{stem}.png"):
+        os.remove(f"{stem}.png")
+    return final
+
+
 def place_mark(img, box_w, x, y):
     """Composites the emblem by lightening, so its black ground disappears into the card."""
     if not os.path.exists(MARK_PATH):
@@ -127,8 +157,7 @@ def build_card(kicker, title, deck, out):
     tracked(d, (PAD, H - PAD - 26), "NAZARYAH.COM", ImageFont.truetype(FONT_REG, 21), GOLD, 4)
     img = place_mark(img, 200, W - PAD - 180, H - PAD + 10)
 
-    save_png(img, out)
-    return out
+    return save_card(img, out)
 
 
 # ---------------------------------------------------------------- thumbnail
