@@ -1,12 +1,13 @@
 #!/usr/bin/env python3
 """
-nazaryah-social-images  0803 V2
+nazaryah-social-images  0803 V3
 Generates the two social images for a nazaryah.com piece.
 
-V2: images are saved as 128-colour palette PNGs (optimize=True). Flat black with
-gold text is the case JPEG handles worst; a quantized PNG comes out ~30 KB against
-JPEG's ~57 KB and stays closer to the original. The emblem's gradient survives 128
-colours cleanly.
+V3: images are saved as TRUECOLOR RGB PNGs (optimize=True). V2 used 128-colour
+palette PNGs for size (~30 KB), but X's image pipeline rejects indexed PNGs —
+it fetches the file, fails to decode it, shows a broken-image placeholder, and
+downgrades the large card to the small summary card. Browsers render indexed PNGs
+fine, which masks the problem. Truecolor (~75 KB) is universally crawler-safe.
 
   card   1200 x 630   link preview for X, Facebook, LinkedIn  (og:image / twitter:image)
   thumb  1280 x 720   YouTube thumbnail
@@ -75,10 +76,11 @@ def wrap(draw, text, font, max_w):
 
 
 def save_png(img, out):
-    """Writes a 128-colour palette PNG. ~2.5x smaller than truecolour for these
-    flat black-and-gold cards, and sharper than JPEG on the text edges."""
+    """Writes a truecolor RGB PNG. Indexed/palette PNGs are rejected by X's image
+    pipeline (broken image + downgrade to the small card), so cards stay truecolor
+    for crawler compatibility even though it costs ~2.5x the bytes."""
     os.makedirs(os.path.dirname(out), exist_ok=True)
-    img.convert("RGB").quantize(colors=128, method=Image.MEDIANCUT).save(out, optimize=True)
+    img.convert("RGB").save(out, optimize=True)
 
 
 def place_mark(img, box_w, x, y):

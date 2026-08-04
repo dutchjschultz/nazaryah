@@ -49,13 +49,17 @@ const ogDescriptionResolved = ogDescription ?? description ?? OG_DEFAULT_DESCRIP
 // card for og:image/twitter:image when it exists; an explicit frontmatter
 // `ogImage` still wins; pages with no card fall back to the site logo. The
 // homepage (empty path) always keeps the logo.
+// Bump when the card ARTWORK changes (design, or the palette→truecolor format
+// fix). Appended to the card URL so crawlers that cached a prior fetch — X caches
+// the image by URL — are forced to re-fetch instead of serving the stale version.
+const OG_CARD_VERSION = 2;
 const cardRel = Astro.url.pathname.replace(/^\/+|\/+$/g, '');
-const perPageCard = cardRel && fs.existsSync(`public/og/${cardRel}.png`) ? `/og/${cardRel}.png` : undefined;
+const perPageCard = cardRel && fs.existsSync(`public/og/${cardRel}.png`) ? `/og/${cardRel}.png?v=${OG_CARD_VERSION}` : undefined;
 const ogImageURL = new URL(ogImage ?? perPageCard ?? image ?? OG_DEFAULT_IMAGE, Astro.site || 'http://localhost:4321').href;
 // Explicit image hints. Both the generated cards and the default are 1200×630;
 // declaring type/dimensions/alt helps stricter crawlers (X especially) render the
 // card without a fetch-and-measure step, and clears the "no alt text" warning.
-const ogImageType = /\.png$/i.test(ogImageURL) ? 'image/png' : 'image/jpeg';
+const ogImageType = /\.png(\?|$)/i.test(ogImageURL) ? 'image/png' : 'image/jpeg';
 const ogImageAlt = ogTitleResolved;
 ---
 
