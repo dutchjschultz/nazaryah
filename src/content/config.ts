@@ -45,6 +45,12 @@ const postsCollection = defineCollection({
     subtitle: z.string().optional(),
     // Chapter number when this post is a chapter of a book on the bookshelf.
     chapter: z.number().optional(),
+    // SERIES axis — which book this post is a chapter of, if any. Separate from
+    // `category` (its blog-index group) and `tags` (display/search labels only).
+    // The Books-page Contents list (src/data/books.js) is master for titles/order.
+    series: z.string().optional(),
+    // Chapter number within `series`, 1-based, taken from that book's Contents list.
+    seriesOrder: z.number().optional(),
     // Cross-reference clusters (see src/data/associations.js). A study joins a
     // cluster by listing its key here; the Associated Studies panel and the
     // /associations coverage map pick it up automatically.

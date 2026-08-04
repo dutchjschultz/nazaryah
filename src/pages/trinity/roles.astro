@@ -1,18 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { getEntry } from 'astro:content';
+import { getCollection } from 'astro:content';
 import ChapterCards from '../../components/ChapterCards.astro';
-import { fiveTitles } from '../../data/books.js';
+import { chapterMetaBySlug } from '../../data/books.js';
 
-// Cards conform to the book master (title + order I->V). Descriptions are pulled from
-// each chapter's blog post so the intro stays in sync with the studies.
-const chapters = await Promise.all(
-  fiveTitles.map(async (ch) => {
-    const slug = ch.href.replace('/blog/', '');
-    const post = await getEntry('posts', slug);
-    return { ...ch, desc: post?.data?.description ?? '' };
-  })
-);
+// Selection + order come from the posts' series/seriesOrder frontmatter — NOT the
+// blog category, NOT publish date. Canonical card titles/topics come from the
+// Books-page Contents master (books.js); the blurb is the study's own description.
+const chapters = (await getCollection('posts', (p) => p.data.series === 'Five Titles, One Christ'))
+  .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0))
+  .map((p) => {
+    const meta = chapterMetaBySlug[p.slug] ?? {};
+    return { num: p.data.seriesOrder, title: meta.title, topic: meta.topic, desc: p.data.description, href: `/blog/${p.slug}` };
+  });
 ---
 
 <BaseLayout

@@ -1,11 +1,18 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
 import ChapterCards from '../../components/ChapterCards.astro';
-import { theBearer } from '../../data/books.js';
+import { chapterMetaBySlug, bearerDescBySlug } from '../../data/books.js';
 
-// Chapter cards from the book master (order I -> V). Same blog slugs the
-// Books > The Bearer page links to; no new routes.
-const chapters = theBearer;
+// Selection + order come from the posts' series/seriesOrder frontmatter — NOT the
+// blog category, NOT publish date. Titles/topics from the Books-page Contents
+// master (books.js), which for The Bearer also supplies the per-chapter blurbs.
+const chapters = (await getCollection('posts', (p) => p.data.series === 'The Bearer'))
+  .sort((a, b) => (a.data.seriesOrder ?? 0) - (b.data.seriesOrder ?? 0))
+  .map((p) => {
+    const meta = chapterMetaBySlug[p.slug] ?? {};
+    return { num: p.data.seriesOrder, title: meta.title, topic: meta.topic, desc: bearerDescBySlug[p.slug], href: `/blog/${p.slug}` };
+  });
 ---
 
 <BaseLayout

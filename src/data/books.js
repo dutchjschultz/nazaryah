@@ -1,4 +1,4 @@
-// books.js 0803 V1
+// books.js 0803 V2
 // Master chapter lists for the multi-part book studies. Each book's Contents on its
 // Books page is the single source of truth; the intro pages and the blog-index card
 // titles all conform to these. Order is I → V by `num` (never by publish date).
@@ -33,4 +33,17 @@ const slugOf = (href) => href.replace('/blog/', '');
 // (intro pages, blog index), display this instead of the blog's own title.
 export const masterTitleBySlug = Object.fromEntries(
   [...fiveTitles, ...theBearer].map((c) => [slugOf(c.href), c.title])
+);
+
+// slug -> full Contents-master meta (title, topic, num). The intro pages select and
+// order chapters off the posts' series/seriesOrder frontmatter, then pull canonical
+// titles/topics from here (never from the blog title or publish date).
+export const chapterMetaBySlug = Object.fromEntries(
+  [...fiveTitles, ...theBearer].map((c) => [slugOf(c.href), { title: c.title, topic: c.topic, num: c.num }])
+);
+
+// slug -> Contents-master chapter description, where the book supplies one. Only
+// The Bearer carries per-chapter blurbs here; Five Titles blurbs live on the posts.
+export const bearerDescBySlug = Object.fromEntries(
+  theBearer.map((c) => [slugOf(c.href), c.desc])
 );
