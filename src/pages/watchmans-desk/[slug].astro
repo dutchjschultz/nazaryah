@@ -1,5 +1,8 @@
 ---
-// src/pages/watchmans-desk/[slug].astro · 0804 V4
+// src/pages/watchmans-desk/[slug].astro · 0804 V5
+// V5: an entry may carry a supplied `ogImage` (a pre-made card in /public/og);
+// when present it becomes og:image/twitter:image, else BaseLayout auto-resolves.
+// Added `.wl-quote-block` — an indented italic block for quoted phrases (no rule).
 // A reader page for EVERY entry, regardless of kind (weekly-letter, field-brief,
 // open-letter) — route generation is NOT keyed to kind, so no strip link can
 // 404. Card metadata (title, deck, status, date) comes from the data file; full
@@ -29,8 +32,11 @@ export async function getStaticPaths() {
 }
 
 const { entry, full } = Astro.props;
-const { kind, status, date, title, deck, description } = entry;
+const { kind, status, date, title, deck, description, ogImage } = entry;
 const Content = full ? (await full.render()).Content : null;
+// A supplied pre-made card (filename in /public/og) overrides the auto-generated
+// per-page card; absolute-resolved in BaseLayout.
+const ogImagePath = ogImage ? `/og/${ogImage}` : undefined;
 
 const chrome =
   kind === 'open-letter' ? 'An Open Letter'
@@ -39,7 +45,7 @@ const chrome =
 const masthead = `${chrome} · ${STATUSES[status].label} ${date}`;
 ---
 
-<BaseLayout title={`${title} — The Watchman's Desk | Nazaryah`} description={description ?? deck} article={true}>
+<BaseLayout title={`${title} — The Watchman's Desk | Nazaryah`} description={description ?? deck} article={true} ogImage={ogImagePath}>
   <article class={kind === 'open-letter' ? 'wl wl-open' : 'wl'}>
     <header class="wl-head">
       <p class="wl-masthead">{masthead}</p>
@@ -79,6 +85,8 @@ const masthead = `${chrome} · ${STATUSES[status].label} ${date}`;
   .wl-body :global(h2) { font-size: 1.35rem; color: #1f3864; font-weight: 700; line-height: 1.25; margin: 2.6rem 0 1rem; }
   .wl-body :global(blockquote) { margin: 1.7rem 0; padding: 0.2rem 0 0.2rem 1.4rem; border-left: 3px solid #1f3864; font-style: italic; color: #3a3428; line-height: 1.65; }
   .wl-body :global(blockquote p) { margin: 0; }
+  /* Indented italic block for quoted phrases — NO left rule (distinct from a scripture blockquote). */
+  .wl-body :global(.wl-quote-block) { margin: 1.7rem 0; padding-left: 1.6rem; font-style: italic; color: #3a3428; line-height: 1.8; }
   .wl-body :global(.wl-closing) { margin: 2.8rem 0 0; padding-top: 1.8rem; border-top: 1px solid rgba(31, 56, 100, 0.25); text-align: center; font-style: italic; font-size: clamp(1.3rem, 1.1rem + 1vw, 1.7rem); line-height: 1.4; color: #1f3864; }
 
   .wl-back { margin-top: 3rem; padding-top: 1.5rem; border-top: 1px solid rgba(31,56,100,0.2); }

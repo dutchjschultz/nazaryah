@@ -1,4 +1,10 @@
-// watchmans-desk 0804 V4.js
+// watchmans-desk 0804 V5.js
+// V5: loaded two entries — "The Words Came First" (field-brief, 4 Aug) and "The
+// Wedge Is Quiet" (weekly-letter, 3 Aug). Both source:standalone, both carry a
+// supplied ogImage. They are the two newest by sortDate, so they fill the band;
+// No Creed (also 3 Aug) drops to the archive on the tie (array order breaks it).
+// V5 also makes band + archive DISJOINT (archiveEntries = slice(2)) — reverses
+// V4's "archive renders EVERY entry"; see the archiveEntries note below.
 // V4: the archive now renders EVERY entry (archiveEntries === all, newest first),
 // including whatever the band is featuring — the band is just the two most recent
 // from the same array, never a separate set, nothing duplicated or hand-moved.
@@ -29,6 +35,28 @@ export const STATUSES = {
 // string (a calendar date, or a phrase like "Ongoing") and is shown verbatim;
 // it is never parsed or sorted on. Give every new entry a sortDate.
 export const entries = [
+  {
+    slug: "the-words-came-first",
+    kind: "field-brief", status: "filed", date: "4 August 2026",
+    sortDate: "2026-08-04",
+    eyebrow: "",
+    title: "The Words Came First",
+    deck: "They never studied the doctrine. They speak it fluently.",
+    body: "Most days I listen to ordinary people take apart the miracle sellers and the prophets-for-pay. I am not there for the takedown. I am there for the language. The man doing the correcting tells you more about what he believes than the man he corrects ever does.",
+    source: "standalone",
+    ogImage: "the-words-came-first-card-1200x630.png",
+  },
+  {
+    slug: "the-wedge-is-quiet",
+    kind: "weekly-letter", status: "week-ending", date: "3 August 2026",
+    sortDate: "2026-08-03",
+    eyebrow: "",
+    title: "The Wedge Is Quiet",
+    deck: "Nobody swung anything. The house came apart on its own.",
+    body: "Seventeen programs went through this desk over the past week. Better than nine hours of tape, pulled from channels that agree with each other on almost nothing.",
+    source: "standalone",
+    ogImage: "the-wedge-is-quiet-card-1200x630.png",
+  },
   {
     slug: "no-creed-but-the-book-and-a-phone",
     kind: "open-letter", status: "filed", date: "3 August 2026",
@@ -100,10 +128,11 @@ for (const e of entries) {
 // string compare) — no manual pinning, no `featured` flag, nothing hand-moved
 // between surfaces.
 export const sortedEntries = [...entries].sort((a, b) => b.sortDate.localeCompare(a.sortDate));
-// The archive renders EVERY entry, newest first — including whatever the band is
-// currently featuring. When a band entry ages out it is already here; there is
-// nothing to re-add by hand.
-export const archiveEntries = sortedEntries;
+// The archive is every entry EXCEPT the two the band is currently featuring —
+// band and archive are DISJOINT (an entry shows in one surface, never both). When
+// a newer entry pushes a band entry out, slice(2) already includes it; there is
+// nothing to re-add or re-label by hand.
+export const archiveEntries = sortedEntries.slice(2);
 // The band is a view onto the same array: the two most recent. Fewer than two
 // entries -> one card, no empty slot (slice handles this).
 export const featuredEntries = sortedEntries.slice(0, 2);

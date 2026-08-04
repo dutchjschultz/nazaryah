@@ -1,17 +1,16 @@
 ---
-// src/components/WatchmanCard.astro · 0804 V4
+// src/components/WatchmanCard.astro · 0804 V5
 // Shared Watchman's Desk card — used by the homepage featured band AND the
 // archive list. The header pill and the status line resolve from the CLOSED
 // KINDS / STATUSES maps in the data file; nothing here is hand-written per card.
 //   variant "featured" = half-width band card: title + deck + first body
-//                        paragraph clamped to 3 lines, cream strip pinned to the
-//                        card bottom so paired cards align (equal-height columns).
+//                        paragraph clamped to 3 lines.
 //   variant "archive"  = full-width card: eyebrow + title + deck + first body
 //                        paragraph clamped to 3 lines.
-// The cream companion strip renders on EVERY card (no exceptions) and is a
-// single shared block: line 1 is always a red caps link to the entry (or, when
-// source is "linked", to the companion study); line 2 is the linked study title
-// or reserved empty space, so every strip is identical height down the column.
+// STANDING RULE: the cream companion strip renders ONLY for source:"linked"
+// entries — a link to the companion study. Standalone entries carry NO strip;
+// their title links to their own reader page. (V5 restored this; V4 had rendered
+// a strip on every card.)
 import { KINDS, STATUSES } from '../data/watchmans-desk.js';
 
 interface Props {
@@ -22,19 +21,17 @@ const { entry, variant = 'archive' } = Astro.props;
 const { kind, status, date, eyebrow, title, deck, body, source, companionStudy, slug } = entry;
 const st = STATUSES[status];
 
-// Entry has its own reader page? (letters do; field briefs point at a study.)
-const hasPage = kind === 'weekly-letter' || kind === 'open-letter';
 const pageUrl = `/watchmans-desk/${slug}`;
+// Standalone entries link their title to their own reader page; linked entries
+// keep the title plain and carry the companion strip instead.
+const hasPage = source === 'standalone';
 
-// Companion strip — always present, pinned to the card bottom.
-// Line 1 label + target: a "linked" entry points at its companion study; every
-// other entry points at its own reader page. Field briefs read "full brief",
-// letters read "the letter". Line 2 (sub) is the study title when linked, else
-// null -> rendered as reserved empty space so all strips match height.
+// Companion strip — ONLY for linked entries (a link to the companion study).
+// Standalone entries render no strip at all.
 const strip =
   source === 'linked'
     ? { label: 'Read the full study', url: companionStudy.url, sub: companionStudy.title }
-    : { label: kind === 'field-brief' ? 'Read the full brief' : 'Read the letter', url: pageUrl, sub: null };
+    : null;
 ---
 
 <article class={`wc-card wc-${variant} wc-band-${st.band}`}>
@@ -50,14 +47,14 @@ const strip =
     <p class="wc-teaser">{body}</p>
   </div>
 
-  <div class="wc-strip">
-    <div class="wc-strip-row">
-      <a class="wc-strip-link" href={strip.url}>{strip.label} &rarr;</a>
+  {strip && (
+    <div class="wc-strip">
+      <div class="wc-strip-row">
+        <a class="wc-strip-link" href={strip.url}>{strip.label} &rarr;</a>
+      </div>
+      {strip.sub && <a class="wc-strip-sub" href={strip.url}>{strip.sub}</a>}
     </div>
-    {strip.sub
-      ? <a class="wc-strip-sub" href={strip.url}>{strip.sub}</a>
-      : <span class="wc-strip-sub wc-strip-sub--empty" aria-hidden="true">&nbsp;</span>}
-  </div>
+  )}
 </article>
 
 <style>
