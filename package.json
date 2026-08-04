@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "astro dev",
     "build": "astro build && node scripts/check-cards.mjs && npx pagefind --site dist",
-    "cards:missing": "astro build && python3 scripts/backfill-social-images.py --missing-only --no-thumbs && astro build",
+    "cards:missing": "astro build && python3 scripts/backfill-social-images.py --missing-only --no-thumbs",
     "preview": "astro preview",
     "astro": "astro",
     "check": "node check-associations.mjs --dir src/content/posts --registry src/data/associations.js"
