@@ -1,4 +1,6 @@
 ---
+// Header.astro · 0804 V2 — DOCTRINES is now a hover dropdown (The Old Paths /
+// The Departure); the label itself still links to /doctrines.
 import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
 
@@ -8,7 +10,7 @@ const currentPath = Astro.url.pathname;
 const primaryNav = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
-  { name: 'Doctrines', href: '/doctrines' },
+  { name: 'Doctrines', href: '/doctrines', dropdown: 'doctrines' },
   { name: 'Topics', href: null, dropdown: 'topics' },
   { name: 'Torah', href: '/torah' },
   { name: 'Trinity', href: '/trinity' },
@@ -51,11 +53,22 @@ const topicsRestoredTruth = {
   ],
 };
 
+// Doctrines dropdown — two entries; the label itself links to /doctrines.
+const doctrinesNav = {
+  href: '/doctrines',
+  items: [
+    { name: 'The Old Paths', href: '/doctrines/old-paths', sublabel: 'What Scripture holds' },
+    { name: 'The Departure', href: '/doctrines/the-departure', sublabel: 'Where the church went' },
+  ],
+};
+
 // Flat list of every link, used for the mobile menu.
 const mobileNav = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Doctrines', href: '/doctrines' },
+  { name: 'The Old Paths', href: '/doctrines/old-paths' },
+  { name: 'The Departure', href: '/doctrines/the-departure' },
   { name: 'Torah', href: '/torah' },
   { name: 'Trinity', href: '/trinity' },
   { name: 'Blog', href: '/blog' },
@@ -75,6 +88,8 @@ const topicsActive =
   isActive('/foreign-fire') ||
   topicsForeignFire.items.some((it) => isActive(it.href)) ||
   topicsRestoredTruth.items.some((it) => isActive(it.href));
+
+const doctrinesActive = isActive('/doctrines');
 ---
 
 <header class="site-header sticky top-0 z-50 border-b border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] backdrop-blur-sm" data-pagefind-ignore>
@@ -169,6 +184,28 @@ const topicsActive =
                       View All Doctrines <span aria-hidden="true">→</span>
                     </a>
                   </div>
+                </div>
+              </li>
+            ) : item.dropdown === 'doctrines' ? (
+              <li class="doctrines-wrap">
+                <a
+                  href={doctrinesNav.href}
+                  class:list={['nav-link nav-link--dropdown', doctrinesActive ? 'active' : '']}
+                >
+                  {item.name}
+                  <span class="caret" aria-hidden="true">▾</span>
+                </a>
+                <div class="doctrines-dropdown" role="menu" aria-label="Doctrines">
+                  {doctrinesNav.items.map((sub) => (
+                    <a
+                      href={sub.href}
+                      class:list={['doctrines-item', isActive(sub.href) ? 'active' : '']}
+                      role="menuitem"
+                    >
+                      <span class="doctrines-item-name">{sub.name}</span>
+                      <span class="doctrines-item-sub">{sub.sublabel}</span>
+                    </a>
+                  ))}
                 </div>
               </li>
             ) : (
@@ -428,6 +465,44 @@ const topicsActive =
      ============================================================ */
   .topics-wrap {
     position: relative;
+  }
+
+  /* ── Doctrines dropdown — same hover/focus mechanism as Topics, one narrow
+     column. The label is a real link to /doctrines; hover reveals the two. ── */
+  .doctrines-wrap { position: relative; }
+  .doctrines-dropdown {
+    position: absolute; top: 100%; left: 0; min-width: 16rem; padding: 0.5rem;
+    background:
+      radial-gradient(ellipse at top, rgba(168, 127, 31, 0.15) 0%, transparent 60%),
+      linear-gradient(180deg, #1a0e06 0%, #0d0703 100%);
+    border: 1px solid rgba(212, 165, 49, 0.4); border-radius: 8px;
+    box-shadow: 0 20px 50px -12px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,165,49,0.1);
+    overflow: hidden; z-index: 60;
+    visibility: hidden; opacity: 0; transform: translateY(-4px); pointer-events: none;
+    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
+  }
+  .doctrines-dropdown::before {
+    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
+    background: linear-gradient(90deg, transparent, #d4a531, #f0c450, #d4a531, transparent);
+  }
+  .doctrines-wrap:hover .doctrines-dropdown,
+  .doctrines-wrap:focus-within .doctrines-dropdown,
+  .doctrines-dropdown:hover {
+    visibility: visible; opacity: 1; transform: translateY(0); pointer-events: auto;
+  }
+  .doctrines-item {
+    display: flex; flex-direction: column; gap: 0.1rem;
+    padding: 0.6rem 0.8rem; border-radius: 5px; text-decoration: none; transition: background 0.15s;
+  }
+  .doctrines-item:hover, .doctrines-item.active { background: rgba(212,165,49,0.12); }
+  .doctrines-item-name {
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #ede4cf;
+  }
+  .doctrines-item:hover .doctrines-item-name, .doctrines-item.active .doctrines-item-name { color: #f0c450; }
+  .doctrines-item-sub {
+    font-family: var(--font-body, Georgia, serif); font-size: 0.72rem; font-style: italic;
+    color: #a89478; letter-spacing: 0;
   }
 
   /* Hover-only dropdown. Hidden by default; the parent .topics-wrap

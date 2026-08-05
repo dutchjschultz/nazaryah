@@ -1,0 +1,18 @@
+---
+// src/pages/doctrines/old-paths/[slug].astro · 0804 V1
+// One info page per Old Paths doctrine. The Departure counterpart link is derived
+// from the same pair object in DoctrineInfo.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import DoctrineInfo from '../../../components/DoctrineInfo.astro';
+import { doctrines } from '../../../data/doctrines.data.js';
+
+export function getStaticPaths() {
+  return doctrines.map((pair) => ({ params: { slug: pair.oldPaths.slug }, props: { pair } }));
+}
+const { pair } = Astro.props;
+const e = pair.oldPaths;
+---
+
+<BaseLayout title={`${e.title} — The Old Paths | Nazaryah`} description={e.deck}>
+  <DoctrineInfo side="old-paths" pair={pair} />
+</BaseLayout>

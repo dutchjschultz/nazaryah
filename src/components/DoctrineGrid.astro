@@ -1,0 +1,61 @@
+---
+// src/components/DoctrineGrid.astro · 0804 V1
+// The shared master-grid for BOTH doctrine pages: gold-ruled header + a grid of
+// DoctrineCards. House look carried over from the original /doctrines page. The
+// default slot is the footer (optional).
+import DoctrineCard from './DoctrineCard.astro';
+interface Props {
+  eyebrow: string; title: string; subtitle: string;
+  cards: { n: string; title: string; deck: string; href: string }[];
+}
+const { eyebrow, title, subtitle, cards } = Astro.props;
+const hasFooter = Astro.slots.has('default');
+---
+
+<div class="doctrines-page">
+  <div class="doctrines-header">
+    <p class="doctrines-eyebrow">{eyebrow}</p>
+    <h1 class="doctrines-title">{title}</h1>
+    <div class="doctrines-rule">
+      <span class="rule-line"></span>
+      <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="1" y="1" width="12" height="12" stroke="#BA7517" stroke-width="1" fill="none" transform="rotate(45 7 7)"/>
+      </svg>
+      <span class="rule-line"></span>
+    </div>
+    <p class="doctrines-subtitle">{subtitle}</p>
+  </div>
+
+  <div class="doctrine-grid">
+    {cards.map((c) => <DoctrineCard n={c.n} title={c.title} deck={c.deck} href={c.href} />)}
+  </div>
+
+  {hasFooter && <div class="doctrines-footer"><slot /></div>}
+</div>
+
+<style>
+  .doctrines-page { background: #0e0d0b; min-height: 100vh; padding: 3.5rem 2rem 4rem; }
+
+  .doctrines-header { text-align: center; margin-bottom: 2.75rem; }
+  .doctrines-eyebrow {
+    font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: #BA7517; margin-bottom: 0.6rem;
+  }
+  .doctrines-title {
+    font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700;
+    color: #e8e2d4; margin-bottom: 0.75rem; letter-spacing: 0.02em;
+  }
+  .doctrines-rule { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+  .rule-line { display: block; height: 1px; width: 80px; background: #BA7517; opacity: 0.4; }
+  .doctrines-subtitle { font-family: var(--font-body); font-size: 1.1rem; font-style: italic; color: #a89f8c; }
+
+  .doctrine-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; max-width: 1400px; margin: 0 auto; }
+
+  .doctrines-footer { text-align: center; margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
+
+  @media (max-width: 860px) { .doctrine-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) {
+    .doctrine-grid { grid-template-columns: 1fr; }
+    .doctrines-page { padding: 2.5rem 1rem 3rem; }
+  }
+</style>

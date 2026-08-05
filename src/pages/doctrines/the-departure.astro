@@ -1,0 +1,45 @@
+---
+// src/pages/doctrines/the-departure.astro · 0804 V1
+// The Departure master grid — the former /doctrines "Ten Doctrines the Church
+// Got Wrong" page, moved here. Hover panels removed; each card is now a link to
+// its info page. Driven by src/data/doctrines.data.js.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DoctrineGrid from '../../components/DoctrineGrid.astro';
+import { doctrines } from '../../data/doctrines.data.js';
+
+const cards = doctrines.map((d) => ({
+  n: d.n,
+  title: d.departure.title,
+  deck: d.departure.deck,
+  href: `/doctrines/the-departure/${d.departure.slug}`,
+}));
+---
+
+<BaseLayout
+  title="The Departure — Ten Doctrines the Church Got Wrong | Nazaryah"
+  description="Ten doctrines the Church got wrong — and why it matters. Sacred names, Torah dismissal, the Trinity, immortal soul, hell, and more examined from Scripture."
+>
+  <DoctrineGrid
+    eyebrow="The Departure"
+    title="Ten Doctrines the Church Got Wrong"
+    subtitle="— and why it matters"
+    cards={cards}
+  >
+    <a class="td-crosslink" href="/doctrines/old-paths">
+      What Scripture holds — <strong>The Old Paths</strong> <span aria-hidden="true">&rarr;</span>
+    </a>
+    <a href="/blog" class="btn btn-stone px-8 py-3">Explore the Studies</a>
+  </DoctrineGrid>
+</BaseLayout>
+
+<style>
+  .td-crosslink {
+    display: inline-block; padding: 1rem 1.6rem;
+    background: linear-gradient(180deg, rgba(186,117,23,0.08), rgba(186,117,23,0.03));
+    border: 1px solid rgba(186,117,23,0.4); border-left: 4px solid #BA7517; border-radius: 10px;
+    font-family: var(--font-display); font-size: 0.95rem; letter-spacing: 0.04em;
+    color: #d8b06a; text-decoration: none; transition: background 0.2s, border-color 0.2s;
+  }
+  .td-crosslink:hover { background: rgba(186,117,23,0.14); border-color: #BA7517; }
+  .td-crosslink strong { color: #e8e2d4; font-weight: 700; }
+</style>

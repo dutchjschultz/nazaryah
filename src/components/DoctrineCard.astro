@@ -1,0 +1,58 @@
+---
+// src/components/DoctrineCard.astro · 0804 V1
+// The one card used by BOTH doctrine grids (Old Paths + The Departure). Gold top
+// rule, number in small gold caps, title, italic deck. The WHOLE card is the
+// link — no hover panel, no body text on the card.
+interface Props { n: string; title: string; deck: string; href: string; }
+const { n, title, deck, href } = Astro.props;
+---
+
+<a class="doctrine-card" href={href}>
+  <span class="doctrine-num">{n}</span>
+  <p class="doctrine-cat">{title}</p>
+  <p class="doctrine-deck">{deck}</p>
+</a>
+
+<style>
+  .doctrine-card {
+    background: #161512;
+    border: 0.5px solid rgba(255,255,255,0.07);
+    border-top: 3px solid #BA7517;
+    border-radius: 12px;
+    padding: 2.25rem 1.8rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.7rem;
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .doctrine-card:hover,
+  .doctrine-card:focus-visible {
+    background: #1c1a16;
+    border-color: rgba(186,117,23,0.45);
+    transform: translateY(-2px);
+    outline: none;
+  }
+  .doctrine-num {
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.15em;
+    color: #BA7517;
+    text-transform: uppercase;
+  }
+  .doctrine-cat {
+    font-family: var(--font-display);
+    font-size: 19px;
+    font-weight: 400;
+    color: #e8e2d4;
+    line-height: 1.35;
+  }
+  .doctrine-deck {
+    font-family: var(--font-body);
+    font-size: 17px;
+    font-style: italic;
+    color: #a89f8c;
+    line-height: 1.3;
+  }
+</style>

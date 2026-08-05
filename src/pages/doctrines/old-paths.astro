@@ -1,0 +1,27 @@
+---
+// src/pages/doctrines/old-paths.astro · 0804 V1
+// The Old Paths master grid — what Scripture holds. One card per doctrine pair,
+// linking to its info page. Driven entirely by src/data/doctrines.data.js.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import DoctrineGrid from '../../components/DoctrineGrid.astro';
+import { doctrines } from '../../data/doctrines.data.js';
+
+const cards = doctrines.map((d) => ({
+  n: d.n,
+  title: d.oldPaths.title,
+  deck: d.oldPaths.deck,
+  href: `/doctrines/old-paths/${d.oldPaths.slug}`,
+}));
+---
+
+<BaseLayout
+  title="The Old Paths — Core Beliefs | Nazaryah"
+  description="Ask for the old paths, and walk therein. Ten doctrines as Scripture holds them — the name, the walk, the calendar, and the rest."
+>
+  <DoctrineGrid
+    eyebrow="Core Beliefs"
+    title="The Old Paths"
+    subtitle="— ask for the old paths, and walk therein"
+    cards={cards}
+  />
+</BaseLayout>
