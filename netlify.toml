@@ -11,6 +11,27 @@
 [context.branch-deploy]
   command = "npm run build"
 
+# Social-card path standardization (0804): the Wedge + Words cards/thumbs moved
+# from the old flat, dimension-named path to /og/watchmans-desk/<slug>{,-thumb}.png.
+# Originals are LEFT in place (already-crawled X/Facebook posts keep resolving);
+# these are the safety net so a revisiting crawler never 404s if a file is cleaned.
+[[redirects]]
+  from = "/og/the-wedge-is-quiet-card-1200x630.png"
+  to = "/og/watchmans-desk/the-wedge-is-quiet.v2.png"
+  status = 301
+[[redirects]]
+  from = "/og/the-wedge-is-quiet-thumb-1280x720.png"
+  to = "/og/watchmans-desk/the-wedge-is-quiet-thumb.png"
+  status = 301
+[[redirects]]
+  from = "/og/the-words-came-first-card-1200x630.png"
+  to = "/og/watchmans-desk/the-words-came-first.v2.png"
+  status = 301
+[[redirects]]
+  from = "/og/the-words-came-first-thumb-1280x720.png"
+  to = "/og/watchmans-desk/the-words-came-first-thumb.png"
+  status = 301
+
 # Retired duplicate: the short "Joint Heirs" blog now points at the full
 # Five Titles chapter, so inbound links and search results keep resolving.
 [[redirects]]

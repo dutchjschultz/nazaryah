@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0804 V4
+backfill-social-images  0804 V5
+V5: thumbs written to public/og/<rel>-thumb.png (standard path), matching the
+generator; card path unchanged (public/og/<rel>.vN.png).
 V4: added --missing-only (generate only for pages whose og:image is still the
 site logo) so the build can fill card gaps without rebuilding all 560. See the
 build guard (scripts/check-cards.mjs) that enforces no cardless content page.
@@ -161,7 +163,7 @@ def main():
             continue
         gen.build_card(kicker, title, deck, os.path.join(gen.CARD_DIR, rel + ".png"))
         if not a.no_thumbs:
-            gen.build_thumb(kicker, title, deck, os.path.join(gen.THUMB_DIR, rel + ".png"))
+            gen.build_thumb(kicker, title, deck, os.path.join(gen.THUMB_DIR, rel + "-thumb.png"))
         made += 1
 
     verb = "would generate" if a.dry_run else "generated"

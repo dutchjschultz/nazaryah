@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
-nazaryah-social-images  0803 V4
+nazaryah-social-images  0804 V5
 Generates the two social images for a nazaryah.com piece.
+
+V5: thumbnail now writes to public/og/<slug>-thumb.png (was public/thumb/), so
+card and thumb share one standard scheme under /og/ mirroring the page URL.
 
 V3: images are saved as TRUECOLOR RGB PNGs (optimize=True). V2 used 128-colour
 palette PNGs for size (~30 KB), but X's image pipeline rejects indexed PNGs —
@@ -33,7 +36,8 @@ Usage:
       --title "A Temple, and Nobody Asked Whose" \
       --deck "The building is well kept. The rent is being paid to someone else."
 
-Writes:  public/og/<slug>.png  and  public/thumb/<slug>.png
+Writes:  public/og/<slug>.vN.png  and  public/og/<slug>-thumb.png
+         (standard paths mirror the page URL; both live under /og/.)
 """
 
 import argparse
@@ -50,8 +54,11 @@ FONT_REG = os.path.join(ASSETS, "gelasio-400.ttf")
 FONT_ITAL = os.path.join(ASSETS, "gelasio-400-italic.ttf")
 MARK_PATH = os.path.join(ASSETS, "nazaryah-mark.png")
 
+# Standard paths, both under public/og mirroring the page URL:
+#   card   /og/<path>.vN.png   (versioned; og:image)
+#   thumb  /og/<path>-thumb.png (unversioned; not referenced by the site)
 CARD_DIR = "public/og"
-THUMB_DIR = "public/thumb"
+THUMB_DIR = "public/og"
 
 BG = (10, 10, 11)
 GOLD = (200, 155, 60)
@@ -214,7 +221,7 @@ def main():
 
     print(build_card(a.kicker, a.title, a.deck, os.path.join(a.card_dir, a.slug + ".png")))
     if not a.no_thumb:
-        print(build_thumb(a.kicker, a.title, a.deck, os.path.join(a.thumb_dir, a.slug + ".png")))
+        print(build_thumb(a.kicker, a.title, a.deck, os.path.join(a.thumb_dir, a.slug + "-thumb.png")))
 
 
 if __name__ == "__main__":

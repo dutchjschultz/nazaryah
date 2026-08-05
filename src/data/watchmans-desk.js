@@ -1,4 +1,9 @@
-// watchmans-desk 0804 V5.js
+// watchmans-desk 0804 V6.js
+// V6: standardized card paths. Dropped the hand-set ogImage on Wedge + Words;
+// their supplied cards were moved to /og/watchmans-desk/<slug>.v2.png (the
+// pipeline path), so og:image now resolves from disk like every other entry —
+// the generator/BaseLayout own the path, never the data file. Old flat paths
+// keep resolving via netlify.toml redirects (originals left in place).
 // V5: loaded two entries — "The Words Came First" (field-brief, 4 Aug) and "The
 // Wedge Is Quiet" (weekly-letter, 3 Aug). Both source:standalone, both carry a
 // supplied ogImage. They are the two newest by sortDate, so they fill the band;
@@ -44,7 +49,6 @@ export const entries = [
     deck: "They never studied the doctrine. They speak it fluently.",
     body: "Most days I listen to ordinary people take apart the miracle sellers and the prophets-for-pay. I am not there for the takedown. I am there for the language. The man doing the correcting tells you more about what he believes than the man he corrects ever does.",
     source: "standalone",
-    ogImage: "the-words-came-first-card-1200x630.png",
   },
   {
     slug: "the-wedge-is-quiet",
@@ -55,7 +59,6 @@ export const entries = [
     deck: "Nobody swung anything. The house came apart on its own.",
     body: "Seventeen programs went through this desk over the past week. Better than nine hours of tape, pulled from channels that agree with each other on almost nothing.",
     source: "standalone",
-    ogImage: "the-wedge-is-quiet-card-1200x630.png",
   },
   {
     slug: "no-creed-but-the-book-and-a-phone",
