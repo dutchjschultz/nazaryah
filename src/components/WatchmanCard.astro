@@ -1,5 +1,7 @@
 ---
-// src/components/WatchmanCard.astro · 0804 V7
+// src/components/WatchmanCard.astro · 0804 V8
+// V8: cream-strip line 2 is now the entry's `strapline` for standalone (required
+// by the data file), the companion-study title for linked — never a blank line.
 // THE single Watchman's Desk card — the homepage band AND the archive both render
 // this one component; nothing branches on which surface it's drawn on. The header
 // pill and status line resolve from the CLOSED KINDS / STATUSES maps in the data
@@ -21,7 +23,7 @@ interface Props {
   variant?: 'featured' | 'archive';
 }
 const { entry, variant = 'archive' } = Astro.props;
-const { kind, status, date, eyebrow, title, deck, body, source, companionStudy, slug } = entry;
+const { kind, status, date, eyebrow, title, deck, body, source, companionStudy, slug, strapline } = entry;
 const st = STATUSES[status];
 
 // Card-only date compaction so the status line never wraps the navy band.
@@ -50,12 +52,13 @@ const hasPage = source === 'standalone';
 // Cream strip — renders on EVERY card. Line 1 is a red caps link that always
 // resolves: a linked entry points at its companion study, every other entry at
 // its own reader page (field brief -> "the full brief", letter -> "the letter").
-// Line 2 is the study title (linked) or reserved empty space (standalone), so
-// every strip is the same height down the column.
+// Line 2 is ALWAYS populated: the companion-study title (linked, a link to the
+// study) or the entry's strapline (standalone, plain text). The data file requires
+// a strapline on every standalone entry, so line 2 is never blank.
 const strip =
   source === 'linked'
-    ? { label: 'Read the full study', url: companionStudy && companionStudy.url, sub: companionStudy && companionStudy.title }
-    : { label: kind === 'field-brief' ? 'Read the full brief' : 'Read the letter', url: pageUrl, sub: null };
+    ? { label: 'Read the full study', url: companionStudy.url, sub: companionStudy.title, subUrl: companionStudy.url }
+    : { label: kind === 'field-brief' ? 'Read the full brief' : 'Read the letter', url: pageUrl, sub: strapline, subUrl: null };
 
 // A card with no way into its entry is a dead card — fail the build, not the reader.
 if (!strip.url)
@@ -79,9 +82,9 @@ if (!strip.url)
     <div class="wc-strip-row">
       <a class="wc-strip-link" href={strip.url}>{strip.label} &rarr;</a>
     </div>
-    {strip.sub
-      ? <a class="wc-strip-sub" href={strip.url}>{strip.sub}</a>
-      : <span class="wc-strip-sub wc-strip-sub--empty" aria-hidden="true">&nbsp;</span>}
+    {strip.subUrl
+      ? <a class="wc-strip-sub" href={strip.subUrl}>{strip.sub}</a>
+      : <span class="wc-strip-sub">{strip.sub}</span>}
   </div>
 </article>
 

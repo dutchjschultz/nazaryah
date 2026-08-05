@@ -1,4 +1,7 @@
-// watchmans-desk 0804 V7.js
+// watchmans-desk 0804 V8.js
+// V8: `strapline` is REQUIRED on every source:"standalone" entry — it is the
+// cream-strip line 2 (band AND archive). Build throws naming the slug if missing;
+// no blank line 2 ships. Linked entries use the companion-study title instead.
 // V7: Memorial Day deck reworked to imply the reversal, not state the finding.
 // V6: standardized card paths. Dropped the hand-set ogImage on Wedge + Words;
 // their supplied cards were moved to /og/watchmans-desk/<slug>.v2.png (the
@@ -49,6 +52,7 @@ export const entries = [
     title: "The Words Came First",
     deck: "They never studied the doctrine. They speak it fluently.",
     body: "Most days I listen to ordinary people take apart the miracle sellers and the prophets-for-pay. I am not there for the takedown. I am there for the language. The man doing the correcting tells you more about what he believes than the man he corrects ever does.",
+    strapline: "A week of listening to ordinary talk",
     source: "standalone",
   },
   {
@@ -59,6 +63,7 @@ export const entries = [
     title: "The Wedge Is Quiet",
     deck: "Nobody swung anything. The house came apart on its own.",
     body: "Seventeen programs went through this desk over the past week. Better than nine hours of tape, pulled from channels that agree with each other on almost nothing.",
+    strapline: "Seventeen programs in one week",
     source: "standalone",
   },
   {
@@ -69,6 +74,7 @@ export const entries = [
     title: "No Creed But the Book, and a Phone",
     deck: "He said the Book settles it. Then he reached for something else.",
     body: "Somebody sent me a video of a sermon on the Trinity and asked what I thought of it. I watched the whole thing. Three places in it stopped me, and all three stopped me for the same reason — he reads half a verse, and the half he leaves out is the half that completes the picture.",
+    strapline: "A Trinity sermon, checked line by line",
     source: "standalone",
   },
   {
@@ -79,6 +85,7 @@ export const entries = [
     title: "A Temple, and Nobody Asked Whose",
     deck: "The building is well kept. The rent is being paid to someone else.",
     body: "An independent host on YouTube — no network behind him, a few million watching — put out a video this week taking apart an influencer who had been arrested. He went after her politics. Then he went after her weight.",
+    strapline: "An online takedown, watched closely",
     source: "standalone",
   },
   {
@@ -125,6 +132,11 @@ for (const e of entries) {
     throw new Error(`watchmans-desk: "${e.slug}" is source "linked" but companionStudy is missing or its url is empty`);
   if (e.source === "standalone" && e.companionStudy)
     throw new Error(`watchmans-desk: "${e.slug}" is source "standalone" but has a companionStudy`);
+  // REQUIRED: a standalone entry supplies its own cream-strip line 2 (the strip
+  // renders on band AND archive). No blank line 2 ever ships. Linked entries use
+  // the companion-study title instead, so they are exempt.
+  if (e.source === "standalone" && !(e.strapline && e.strapline.trim()))
+    throw new Error(`watchmans-desk: "${e.slug}" is source "standalone" and must carry a non-empty strapline (cream-strip line 2)`);
 }
 
 // --- date-ordered views: ONE array, two views -------------------------------
