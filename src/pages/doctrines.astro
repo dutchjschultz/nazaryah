@@ -1,8 +1,11 @@
 ---
-// src/pages/doctrines.astro · 0804 V2
-// V2: this URL is now the DOCTRINES landing — two links only, no cards. The old
-// "Ten Doctrines the Church Got Wrong" grid moved to /doctrines/the-departure.
+// src/pages/doctrines.astro · 0804 V3
+// V3: the section links + count render from the data file (sections / doctrines),
+// not hand-written markup — adding a doctrine never touches this page.
+// V2: this URL is the DOCTRINES landing — two links only, no cards. The old "Ten
+// Doctrines the Church Got Wrong" grid moved to /doctrines/the-departure.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { sections, doctrines } from '../data/doctrines.data.js';
 ---
 
 <BaseLayout
@@ -13,23 +16,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <header class="dl-header">
       <p class="dl-eyebrow">Doctrines</p>
       <h1 class="dl-title">Two Roads From the Same Verses</h1>
-      <p class="dl-sub">Read what Scripture holds, or read where the church departed. The same ten doctrines, from both directions.</p>
+      <p class="dl-sub">Read what Scripture holds, or read where the church departed. The same {doctrines.length} doctrines, from both directions.</p>
     </header>
 
     <div class="dl-links">
-      <a class="dl-link" href="/doctrines/old-paths">
-        <p class="dl-link-kicker">Core Beliefs</p>
-        <h2 class="dl-link-title">The Old Paths</h2>
-        <p class="dl-link-deck">What Scripture holds — the way to walk.</p>
-        <span class="dl-link-cta">Walk the old paths <span aria-hidden="true">&rarr;</span></span>
-      </a>
-
-      <a class="dl-link" href="/doctrines/the-departure">
-        <p class="dl-link-kicker">The Departure</p>
-        <h2 class="dl-link-title">Ten Doctrines the Church Got Wrong</h2>
-        <p class="dl-link-deck">Where the church departed — and why it matters.</p>
-        <span class="dl-link-cta">See the departure <span aria-hidden="true">&rarr;</span></span>
-      </a>
+      {sections.map((s) => (
+        <a class="dl-link" href={s.href}>
+          <p class="dl-link-kicker">{s.kicker}</p>
+          <h2 class="dl-link-title">{s.title}</h2>
+          <p class="dl-link-deck">{s.deck}</p>
+          <span class="dl-link-cta">{s.cta} <span aria-hidden="true">&rarr;</span></span>
+        </a>
+      ))}
     </div>
   </div>
 </BaseLayout>

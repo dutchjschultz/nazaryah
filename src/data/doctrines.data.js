@@ -1,4 +1,7 @@
-// doctrines.data 0804 V1.js
+// doctrines.data 0804 V2.js
+// V2: added `sections` — the two side roots (Old Paths / The Departure) the
+// landing renders from. The landing maps this list; it holds no hand-written
+// doctrine markup, so adding a doctrine touches only this file.
 // new file — paired doctrine data driving The Old Paths + The Departure
 
 // ONE OBJECT PER PAIR. The Old Paths entry and its Departure counterpart live
@@ -192,6 +195,27 @@ export const doctrines = [
       body: `Yahuah did not suggest His feast days — He commanded them as appointed times, moedim, literally meaning scheduled meetings between the Creator and His people. The Papal Church systematically replaced these divine appointments with a Roman calendar of holidays rooted in sun worship and political convenience, leaving most believers missing the prophetic, redemptive story embedded in every feast. The Father's calendar is still active, still relevant, and the appointments are still on the table.`
     }
   }
+];
+
+// The two side roots the /doctrines landing renders. Each is a section, not a
+// doctrine — they do not grow when a pair is added. The landing maps this list.
+export const sections = [
+  {
+    slug: "old-paths",
+    href: "/doctrines/old-paths",
+    kicker: "Core Beliefs",
+    title: "The Old Paths",
+    deck: "What Scripture holds — the way to walk.",
+    cta: "Walk the old paths",
+  },
+  {
+    slug: "the-departure",
+    href: "/doctrines/the-departure",
+    kicker: "The Departure",
+    title: "Ten Doctrines the Church Got Wrong",
+    deck: "Where the church departed — and why it matters.",
+    cta: "See the departure",
+  },
 ];
 
 export default doctrines;
