@@ -1,8 +1,12 @@
 ---
-// src/components/WatchmanCard.astro · 0804 V5
+// src/components/WatchmanCard.astro · 0804 V6
 // Shared Watchman's Desk card — used by the homepage featured band AND the
 // archive list. The header pill and the status line resolve from the CLOSED
 // KINDS / STATUSES maps in the data file; nothing here is hand-written per card.
+// V6: card status line abbreviates the month at render (3-letter, no period, day
+// without leading zero) and never wraps — the band is a fixed-height flex row so
+// every card's navy band lands at the same height. The reader-page masthead still
+// shows the full month (this abbreviation is card-only).
 //   variant "featured" = half-width band card: title + deck + first body
 //                        paragraph clamped to 3 lines.
 //   variant "archive"  = full-width card: eyebrow + title + deck + first body
@@ -21,6 +25,25 @@ const { entry, variant = 'archive' } = Astro.props;
 const { kind, status, date, eyebrow, title, deck, body, source, companionStudy, slug } = entry;
 const st = STATUSES[status];
 
+// Card-only date compaction so the status line never wraps the navy band.
+// 3-letter month, no period, day without a leading zero; day-first output.
+//   "3 August 2026" -> "3 Aug 2026"   "May 25" -> "25 May"   "Ongoing" -> "Ongoing"
+// The reader-page masthead keeps the full month — this runs on the card only.
+const MONTHS = { january: 'Jan', february: 'Feb', march: 'Mar', april: 'Apr', may: 'May', june: 'Jun', july: 'Jul', august: 'Aug', september: 'Sep', october: 'Oct', november: 'Nov', december: 'Dec' };
+function shortDate(d) {
+  const names = Object.keys(MONTHS).join('|');
+  const m = d.match(new RegExp('\\b(' + names + ')\\b', 'i'));
+  if (!m) return d;                                   // no month (e.g. "Ongoing")
+  const abbr = MONTHS[m[1].toLowerCase()];
+  const monthFirst = d.match(new RegExp('^\\s*(' + m[1] + ')\\s+(\\d{1,2})\\b(.*)$', 'i'));
+  if (monthFirst) {                                   // "May 25" / "July 4 Unveiling"
+    const rest = monthFirst[3].trim();
+    return (monthFirst[2] + ' ' + abbr + (rest ? ' ' + rest : '')).trim();
+  }
+  return d.replace(new RegExp('\\b' + m[1] + '\\b', 'i'), abbr); // "3 August 2026"
+}
+const statusDate = shortDate(date);
+
 const pageUrl = `/watchmans-desk/${slug}`;
 // Standalone entries link their title to their own reader page; linked entries
 // keep the title plain and carry the companion strip instead.
@@ -37,7 +60,7 @@ const strip =
 <article class={`wc-card wc-${variant} wc-band-${st.band}`}>
   <div class="wc-head">
     <span class="wc-pill">{KINDS[kind]}</span>
-    <span class="wc-status">{st.label} &middot; {date}</span>
+    <span class="wc-status">{st.label} &middot; {statusDate}</span>
   </div>
 
   <div class="wc-body">
@@ -72,12 +95,17 @@ const strip =
     display: flex;
     flex-direction: column;
     font-family: Georgia, 'Times New Roman', serif;
+    container-type: inline-size; /* the narrow-column fallback keys off the card's own width */
   }
 
-  /* ── Header band — pill (kind) + status·date. Colour driven by status only. ── */
+  /* ── Header band — pill (kind) + status·date. Colour driven by status only.
+     Fixed min-height + centered contents: every card's band is the same height
+     regardless of kind, status length, or column width. No variant overrides it.
+     space-between puts the pill left and status right; the GAP absorbs slack —
+     neither the pill nor the status shrinks or wraps (see flex-shrink: 0 below). */
   .wc-head {
     display: flex; align-items: center; justify-content: space-between; gap: 1rem;
-    padding: 9px 18px;
+    padding: 9px 18px; min-height: 38px; box-sizing: border-box;
   }
   .wc-band-navy     .wc-head { background: var(--navy);     color: var(--cream); }
   .wc-band-red      .wc-head { background: var(--red);      color: var(--cream); }
@@ -88,7 +116,7 @@ const strip =
   .wc-pill {
     font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
     font-size: 0.56rem; letter-spacing: 0.2em; text-transform: uppercase; font-weight: 700;
-    color: var(--cream); padding: 3px 9px; border-radius: 3px; white-space: nowrap;
+    color: var(--cream); padding: 3px 9px; border-radius: 3px; white-space: nowrap; flex-shrink: 0;
   }
   .wc-band-navy     .wc-pill { background: var(--navy-deep); }
   .wc-band-red      .wc-pill { background: var(--red-deep); }
@@ -98,7 +126,19 @@ const strip =
   .wc-status {
     font-family: 'Cinzel', 'Playfair Display', Georgia, serif;
     font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; font-weight: 700;
-    text-align: right;
+    text-align: right; white-space: nowrap; flex-shrink: 0;
+  }
+  /* Narrow-column fallback — keyed off the CARD's own width (container query), so
+     it fires exactly when a card is narrow, at any breakpoint and any layout. The
+     status only ever gets smaller; it never wraps or truncates, and the band
+     height stays fixed either way. Two tiers, the second for the very tightest. */
+  @container (max-width: 370px) {
+    .wc-status { font-size: 0.62rem; letter-spacing: 0.07em; }
+  }
+  @container (max-width: 330px) {
+    .wc-head { gap: 0.45rem; padding-left: 12px; padding-right: 12px; }
+    .wc-pill { font-size: 0.5rem; letter-spacing: 0.11em; padding: 3px 6px; }
+    .wc-status { font-size: 0.53rem; letter-spacing: 0.03em; }
   }
 
   /* ── Body ── */
