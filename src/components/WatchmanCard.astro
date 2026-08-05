@@ -1,20 +1,19 @@
 ---
-// src/components/WatchmanCard.astro · 0804 V6
-// Shared Watchman's Desk card — used by the homepage featured band AND the
-// archive list. The header pill and the status line resolve from the CLOSED
-// KINDS / STATUSES maps in the data file; nothing here is hand-written per card.
+// src/components/WatchmanCard.astro · 0804 V7
+// THE single Watchman's Desk card — the homepage band AND the archive both render
+// this one component; nothing branches on which surface it's drawn on. The header
+// pill and status line resolve from the CLOSED KINDS / STATUSES maps in the data
+// file; nothing here is hand-written per card.
+// V7: the cream strip is NOT optional — it renders on EVERY card, every surface,
+// every kind, every status (reverses V5/V6 which had dropped it for standalone).
 // V6: card status line abbreviates the month at render (3-letter, no period, day
 // without leading zero) and never wraps — the band is a fixed-height flex row so
-// every card's navy band lands at the same height. The reader-page masthead still
-// shows the full month (this abbreviation is card-only).
-//   variant "featured" = half-width band card: title + deck + first body
-//                        paragraph clamped to 3 lines.
-//   variant "archive"  = full-width card: eyebrow + title + deck + first body
-//                        paragraph clamped to 3 lines.
-// STANDING RULE: the cream companion strip renders ONLY for source:"linked"
-// entries — a link to the companion study. Standalone entries carry NO strip;
-// their title links to their own reader page. (V5 restored this; V4 had rendered
-// a strip on every card.)
+// every card's navy band lands at the same height (reader masthead keeps the full
+// month; abbreviation is card-only).
+//   variant "featured" = half-width band card; "archive" = full-width card. The
+//   only difference is the archive card also shows the eyebrow — never the strip.
+// The strip's line-1 link ALWAYS resolves (own reader page, or the companion study
+// for source:"linked"); a card with no way in is a dead card — see the guard below.
 import { KINDS, STATUSES } from '../data/watchmans-desk.js';
 
 interface Props {
@@ -45,16 +44,22 @@ function shortDate(d) {
 const statusDate = shortDate(date);
 
 const pageUrl = `/watchmans-desk/${slug}`;
-// Standalone entries link their title to their own reader page; linked entries
-// keep the title plain and carry the companion strip instead.
+// Standalone entries also link their title to their own reader page.
 const hasPage = source === 'standalone';
 
-// Companion strip — ONLY for linked entries (a link to the companion study).
-// Standalone entries render no strip at all.
+// Cream strip — renders on EVERY card. Line 1 is a red caps link that always
+// resolves: a linked entry points at its companion study, every other entry at
+// its own reader page (field brief -> "the full brief", letter -> "the letter").
+// Line 2 is the study title (linked) or reserved empty space (standalone), so
+// every strip is the same height down the column.
 const strip =
   source === 'linked'
-    ? { label: 'Read the full study', url: companionStudy.url, sub: companionStudy.title }
-    : null;
+    ? { label: 'Read the full study', url: companionStudy && companionStudy.url, sub: companionStudy && companionStudy.title }
+    : { label: kind === 'field-brief' ? 'Read the full brief' : 'Read the letter', url: pageUrl, sub: null };
+
+// A card with no way into its entry is a dead card — fail the build, not the reader.
+if (!strip.url)
+  throw new Error(`WatchmanCard: "${slug}" (${kind}/${source}) has no line-1 link — a dead card must not ship.`);
 ---
 
 <article class={`wc-card wc-${variant} wc-band-${st.band}`}>
@@ -70,14 +75,14 @@ const strip =
     <p class="wc-teaser">{body}</p>
   </div>
 
-  {strip && (
-    <div class="wc-strip">
-      <div class="wc-strip-row">
-        <a class="wc-strip-link" href={strip.url}>{strip.label} &rarr;</a>
-      </div>
-      {strip.sub && <a class="wc-strip-sub" href={strip.url}>{strip.sub}</a>}
+  <div class="wc-strip">
+    <div class="wc-strip-row">
+      <a class="wc-strip-link" href={strip.url}>{strip.label} &rarr;</a>
     </div>
-  )}
+    {strip.sub
+      ? <a class="wc-strip-sub" href={strip.url}>{strip.sub}</a>
+      : <span class="wc-strip-sub wc-strip-sub--empty" aria-hidden="true">&nbsp;</span>}
+  </div>
 </article>
 
 <style>

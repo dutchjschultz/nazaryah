@@ -1,4 +1,5 @@
-// watchmans-desk 0804 V6.js
+// watchmans-desk 0804 V7.js
+// V7: Memorial Day deck reworked to imply the reversal, not state the finding.
 // V6: standardized card paths. Dropped the hand-set ogImage on Wedge + Words;
 // their supplied cards were moved to /og/watchmans-desk/<slug>.v2.png (the
 // pipeline path), so og:image now resolves from disk like every other entry —
@@ -86,7 +87,7 @@ export const entries = [
     sortDate: "2026-04-20",
     eyebrow: "Arlington · Approaching",
     title: "Memorial Day Returns in Five Weeks",
-    deck: "The most religious ceremony in the nation's civic calendar returns — and every element of it is Roman.",
+    deck: "The flags go out on schedule. Rome wrote the ceremony.",
     body: "On Monday, May 25, Americans will perform the most religious ceremony in the nation's civic calendar. A flag on every grave at Arlington. A wreath at the Tomb of the Unknown Soldier. Taps. A 21-gun salute. The eternal flame at JFK's grave, tended by state functionaries.",
     source: "linked",
     companionStudy: { title: "The Cult of the Fallen Soldier", url: "/american-idolatry/memorial-veterans-day" },
