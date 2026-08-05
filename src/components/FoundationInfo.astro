@@ -1,0 +1,87 @@
+---
+// src/components/FoundationInfo.astro · 0805 V1
+// Info page for a Tier-Two foundation (/doctrines/old-paths/[slug]). Same house
+// look as DoctrineInfo, but a different SHAPE: the anchor verse renders in small
+// caps beneath the deck, then FOUR labeled sections in fixed order —
+//   The Stone / Where It Appears Again / What It Rules Out / The Third Witness.
+// `\n\n` in a field is a paragraph break.
+// These six have NO counterpart on The Departure, so there is NO tagline block —
+// the tagline is optional in the info-page layer and here it renders nothing.
+interface Props { foundation: any; }
+const { foundation } = Astro.props;
+const f = foundation;
+
+const toParas = (s) => String(s).split('\n\n').map((p) => p.trim()).filter(Boolean);
+const sections = [
+  { label: 'The Stone', body: f.stone },
+  { label: 'Where It Appears Again', body: f.again },
+  { label: 'What It Rules Out', body: f.rulesOut },
+  { label: 'The Third Witness', body: f.thirdWitness },
+];
+---
+
+<div class="fi-page">
+<article class="fi">
+  <p class="fi-kicker">The Old Paths</p>
+  <h1 class="fi-title">{f.title}</h1>
+  <p class="fi-deck">{f.deck}</p>
+  {f.anchor && <p class="fi-anchor">{f.anchor}</p>}
+
+  {sections.map((s) => (
+    <section class="fi-section">
+      <h2 class="fi-label">{s.label}</h2>
+      {toParas(s.body).map((p) => <p class="fi-p">{p}</p>)}
+    </section>
+  ))}
+
+  <p class="fi-back"><a href="/doctrines/old-paths">&larr; All The Old Paths</a></p>
+</article>
+</div>
+
+<style>
+  .fi-page { background: #0e0d0b; min-height: 100vh; }
+  .fi {
+    max-width: 44rem; margin: 0 auto;
+    padding: clamp(3rem, 6vw, 4.5rem) 1.5rem 4rem;
+  }
+  .fi-kicker {
+    font-family: var(--font-display);
+    font-size: 11px; font-weight: 600; letter-spacing: 0.28em; text-transform: uppercase;
+    color: #BA7517; margin: 0 0 1rem;
+  }
+  .fi-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.9rem, 1.4rem + 2.4vw, 2.8rem); font-weight: 700; line-height: 1.12;
+    color: #e8e2d4; margin: 0 0 0.8rem; letter-spacing: 0.01em;
+  }
+  .fi-deck {
+    font-family: var(--font-body); font-style: italic;
+    font-size: clamp(1.05rem, 1rem + 0.5vw, 1.3rem); line-height: 1.5;
+    color: #a89f8c; margin: 0 0 0.7rem;
+  }
+  /* Anchor verse — small caps, gold, directly beneath the deck. */
+  .fi-anchor {
+    font-family: var(--font-display); font-variant: all-small-caps;
+    font-size: 1rem; letter-spacing: 0.14em; font-weight: 600;
+    color: #BA7517; margin: 0 0 2.4rem;
+  }
+
+  .fi-section { margin: 0 0 2.4rem; }
+  .fi-label {
+    font-family: var(--font-display); font-size: 11px; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: #BA7517; margin: 0 0 1rem;
+    padding-bottom: 0.6rem; border-bottom: 0.5px solid rgba(186,117,23,0.28);
+  }
+  .fi-p {
+    font-family: var(--font-body); font-size: 1.12rem; line-height: 1.85; color: #cfc7b6;
+    margin: 0 0 1.3rem;
+  }
+  .fi-p:last-child { margin-bottom: 0; }
+
+  .fi-back { margin: 1.6rem 0 0; }
+  .fi-back a {
+    font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #8a8172; text-decoration: none;
+  }
+  .fi-back a:hover { color: #BA7517; }
+</style>

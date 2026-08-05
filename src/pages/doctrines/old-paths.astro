@@ -1,16 +1,32 @@
 ---
-// src/pages/doctrines/old-paths.astro · 0804 V1
-// The Old Paths master grid — what Scripture holds. One card per doctrine pair,
-// linking to its info page. Driven entirely by src/data/doctrines.data.js.
+// src/pages/doctrines/old-paths.astro · 0805 V2
+// V2: added TIER TWO — the six foundations — BELOW the ten doctrine cards, in its
+// own section with its own heading and its own F01–F06 numbering, so the two tiers
+// read as separate lists (01–10 and F01–F06), never one list of sixteen. The
+// Hebrews note renders ONCE, beneath the six, and nowhere on a card. Tier two is
+// slotted into DoctrineGrid's footer, reusing the page frame + tier-one grid
+// unchanged (DoctrineGrid and the-departure are not touched).
+// V1: The Old Paths master grid — what Scripture holds, one card per doctrine pair.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DoctrineGrid from '../../components/DoctrineGrid.astro';
+import DoctrineCard from '../../components/DoctrineCard.astro';
 import { doctrines } from '../../data/doctrines.data.js';
+import { foundations } from '../../data/foundations.data.js';
 
 const cards = doctrines.map((d) => ({
   n: d.n,
   title: d.oldPaths.title,
   deck: d.oldPaths.deck,
   href: `/doctrines/old-paths/${d.oldPaths.slug}`,
+}));
+
+// TIER TWO — Torah's canonical order (Genesis→Deuteronomy), as the data file is
+// written. Do NOT reorder to Hebrews 6. Numbers render F01–F06 from `n`.
+const foundationCards = foundations.map((f) => ({
+  n: f.n,
+  title: f.title,
+  deck: f.deck,
+  href: `/doctrines/old-paths/${f.slug}`,
 }));
 ---
 
@@ -23,5 +39,55 @@ const cards = doctrines.map((d) => ({
     title="The Old Paths"
     subtitle="— ask for the old paths, and walk therein"
     cards={cards}
-  />
+  >
+    <section class="foundations">
+      <div class="foundations-header">
+        <h2 class="foundations-title">The Six Foundations</h2>
+        <div class="foundations-rule">
+          <span class="rule-line"></span>
+          <svg width="12" height="12" viewBox="0 0 14 14" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="1" y="1" width="12" height="12" stroke="#BA7517" stroke-width="1" fill="none" transform="rotate(45 7 7)"/>
+          </svg>
+          <span class="rule-line"></span>
+        </div>
+        <p class="foundations-subtitle">— laid in the Law, long before they were listed</p>
+      </div>
+
+      <div class="foundations-grid">
+        {foundationCards.map((c) => <DoctrineCard n={c.n} title={c.title} deck={c.deck} href={c.href} />)}
+      </div>
+
+      <p class="foundations-note">
+        The writer of Hebrews later named these same six and called them the first
+        principles his readers already possessed. He was not adding to Torah. He
+        was listing what Torah had already laid.
+      </p>
+    </section>
+  </DoctrineGrid>
 </BaseLayout>
+
+<style>
+  /* Tier two lives in DoctrineGrid's footer slot (centered flex). Reset to left so
+     the foundation cards match the tier-one cards; center only the header + note. */
+  .foundations { width: 100%; text-align: left; margin-top: 1.25rem; }
+
+  .foundations-header { text-align: center; margin-bottom: 2.75rem; }
+  .foundations-title {
+    font-family: var(--font-display); font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700;
+    color: #e8e2d4; margin: 0 0 0.75rem; letter-spacing: 0.02em;
+  }
+  .foundations-rule { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+  .rule-line { display: block; height: 1px; width: 80px; background: #BA7517; opacity: 0.4; }
+  .foundations-subtitle { font-family: var(--font-body); font-size: 1.1rem; font-style: italic; color: #a89f8c; margin: 0; }
+
+  .foundations-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; max-width: 1400px; margin: 0 auto; }
+
+  .foundations-note {
+    max-width: 40rem; margin: 2.75rem auto 0; text-align: center;
+    font-family: var(--font-body); font-style: italic; font-size: 0.95rem; line-height: 1.7;
+    color: #8f8672;
+  }
+
+  @media (max-width: 860px) { .foundations-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 500px) { .foundations-grid { grid-template-columns: 1fr; } }
+</style>

@@ -1,18 +1,32 @@
 ---
-// src/pages/doctrines/old-paths/[slug].astro · 0804 V1
-// One info page per Old Paths doctrine. The Departure counterpart link is derived
-// from the same pair object in DoctrineInfo.
+// src/pages/doctrines/old-paths/[slug].astro · 0805 V2
+// V2: this route now serves BOTH tiers of The Old Paths — the ten doctrine info
+// pages (DoctrineInfo, with the Departure counterpart link) AND the six foundation
+// info pages (FoundationInfo, four labeled sections, no tagline). The kind is
+// carried in props so each slug renders its own template.
+// V1: one info page per Old Paths doctrine.
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DoctrineInfo from '../../../components/DoctrineInfo.astro';
+import FoundationInfo from '../../../components/FoundationInfo.astro';
 import { doctrines } from '../../../data/doctrines.data.js';
+import { foundations } from '../../../data/foundations.data.js';
 
 export function getStaticPaths() {
-  return doctrines.map((pair) => ({ params: { slug: pair.oldPaths.slug }, props: { pair } }));
+  return [
+    ...doctrines.map((pair) => ({ params: { slug: pair.oldPaths.slug }, props: { kind: 'doctrine', pair } })),
+    ...foundations.map((f) => ({ params: { slug: f.slug }, props: { kind: 'foundation', foundation: f } })),
+  ];
 }
-const { pair } = Astro.props;
-const e = pair.oldPaths;
+
+const { kind, pair, foundation } = Astro.props;
+const title = kind === 'doctrine'
+  ? `${pair.oldPaths.title} — The Old Paths | Nazaryah`
+  : `${foundation.title} — The Old Paths | Nazaryah`;
+const description = kind === 'doctrine' ? pair.oldPaths.deck : foundation.deck;
 ---
 
-<BaseLayout title={`${e.title} — The Old Paths | Nazaryah`} description={e.deck}>
-  <DoctrineInfo side="old-paths" pair={pair} />
+<BaseLayout title={title} description={description}>
+  {kind === 'doctrine'
+    ? <DoctrineInfo side="old-paths" pair={pair} />
+    : <FoundationInfo foundation={foundation} />}
 </BaseLayout>
