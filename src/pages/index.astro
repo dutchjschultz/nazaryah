@@ -1,7 +1,9 @@
 ---
-// src/pages/index.astro · 0806 V5
+// src/pages/index.astro · 0806 V6
+// V6: strip now links to /close-to-the-hip (the renamed page). Still INSIGHTS
+// ONLY — never a Defense entry — and still renders nothing when none is posted.
 // V5: added the quiet Scripture Insight strip below the Watchman's Desk — the
-// latest posted insight (same JSON + posted-only filter as /scripture-insights),
+// latest posted insight (same JSON + posted-only filter as the insights lane),
 // or nothing at all when no entry is posted (no empty container).
 // Watchman's Desk band renders the two most recent entries (featuredEntries,
 // derived from sortDate — see the data file) as equal, side-by-side WatchmanCards
@@ -17,7 +19,7 @@ import { getCollection } from 'astro:content';
 import { featuredSlugs } from '../lib/featured-queue.js';
 
 // ── SCRIPTURE INSIGHT (strip) — the single latest posted insight, read at build
-// time from the same JSON the /scripture-insights page uses, with the SAME
+// time from the same JSON the /close-to-the-hip insights lane uses, with the SAME
 // posted-only filter (so a withdrawn entry never surfaces). Newest first by
 // postedDate; take one. Null when nothing is posted → the strip renders nothing.
 const siRaw = fs.readFileSync(path.join(process.cwd(), 'public/data/scripture-insights.json'), 'utf-8');
@@ -593,7 +595,7 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
         {latestInsight.refs && latestInsight.refs.length > 0 && (
           <p class="si-strip-refs">{latestInsight.refs.join(' · ')}</p>
         )}
-        <a class="si-strip-link" href="/scripture-insights">Scripture Insights <span aria-hidden="true">&rarr;</span></a>
+        <a class="si-strip-link" href="/close-to-the-hip">Close to the Hip <span aria-hidden="true">&rarr;</span></a>
       </div>
     </section>
   )}

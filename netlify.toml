@@ -67,3 +67,14 @@
   from = "/watchmans-desk/not-your-own"
   to = "/watchmans-desk/a-temple-and-nobody-asked-whose"
   status = 301
+
+# Scripture Insights became the two-lane "Close to the Hip" page. Keep the old URL
+# resolving to the new one (trailing-slash variant covered explicitly).
+[[redirects]]
+  from = "/scripture-insights"
+  to = "/close-to-the-hip"
+  status = 301
+[[redirects]]
+  from = "/scripture-insights/"
+  to = "/close-to-the-hip"
+  status = 301

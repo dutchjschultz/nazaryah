@@ -1,4 +1,6 @@
-# mirror-data.yml · 0806 V1 — mirror nazaryah.com data files to nazaryah-build-assets
+# mirror-data.yml · 0806 V2 — mirror nazaryah.com data files to nazaryah-build-assets
+# V2: added public/data/the-defense.json (The Defense) — the mirror was built to
+# guard Legal Lexicon, The Defense, and Scripture Insights; The Defense now exists.
 # so raw.githubusercontent.com serves the true current versions (Claude can't fetch
 # nazaryah.com from a chat container; raw.githubusercontent.com IS reachable).
 # NOTE: the Legal Lexicon files live in src/data/, NOT public/data/ (verified) — the
@@ -37,6 +39,7 @@ jobs:
           cp src/data/legal-lexicon-master.json build-assets/data/
           cp src/data/legal-lexicon-queue.json  build-assets/data/
           cp public/data/scripture-insights.json build-assets/data/
+          cp public/data/the-defense.json        build-assets/data/
           cp src/data/associations.js            build-assets/data/
 
       - name: Commit and push if changed
