@@ -1,4 +1,6 @@
-// check-cards.mjs 0804 V3
+// check-cards.mjs 0805 V4
+// V4: /scripture-insights joins the logo-only skip set — it is a listing page
+// whose entries are titleless insights, so it carries no per-piece card by design.
 // Build-time guard for social cards. Runs after `astro build` (needs dist/) on
 // BOTH local build and production deploy — same build command. Node-only, no
 // Python. Two hard checks; either one fails the build (never warn-and-pass):
@@ -10,7 +12,8 @@
 //      the generator writes it, it is never hand-typed in a template.
 //
 // A page is exempt from check 1 only if it is intentionally logo-only:
-//   - the homepage and blog listing/pagination (the skip set below), or
+//   - the homepage, blog listing/pagination, and /scripture-insights (the skip
+//     set below — /scripture-insights is a titleless-insight listing), or
 //   - it has no <h1> (no title to build a card from — e.g. pathway steps).
 // Messages are written for a person who will not open this file.
 import { readFileSync, readdirSync } from 'node:fs';
@@ -19,7 +22,8 @@ import { join, relative } from 'node:path';
 const DIST = 'dist';
 const LOGO = '/og-default.jpg';
 const skip = (rel) =>
-  rel === '' || rel === 'blog' || rel === 'blog/all' || rel.startsWith('blog/c/');
+  rel === '' || rel === 'blog' || rel === 'blog/all' || rel.startsWith('blog/c/') ||
+  rel === 'scripture-insights';
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 function walk(dir, out = []) {
