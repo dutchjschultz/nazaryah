@@ -1,0 +1,49 @@
+# mirror-data.yml · 0806 V1 — mirror nazaryah.com data files to nazaryah-build-assets
+# so raw.githubusercontent.com serves the true current versions (Claude can't fetch
+# nazaryah.com from a chat container; raw.githubusercontent.com IS reachable).
+# NOTE: the Legal Lexicon files live in src/data/, NOT public/data/ (verified) — the
+# task's assumed public/data paths were wrong; corrected below. The copy step is
+# fail-loud (no "|| true"): if a source path ever moves, the run goes RED rather than
+# silently mirroring a partial set that Claude would then trust.
+name: Mirror data files to build-assets
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'public/data/**.json'
+      - 'src/data/legal-lexicon-master.json'
+      - 'src/data/legal-lexicon-queue.json'
+      - 'src/data/associations.js'
+  workflow_dispatch:
+
+jobs:
+  mirror:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout site repo
+        uses: actions/checkout@v4
+
+      - name: Checkout build-assets repo
+        uses: actions/checkout@v4
+        with:
+          repository: dutchjschultz/nazaryah-build-assets
+          token: ${{ secrets.BUILD_ASSETS_TOKEN }}
+          path: build-assets
+
+      - name: Copy data files
+        run: |
+          mkdir -p build-assets/data
+          cp src/data/legal-lexicon-master.json build-assets/data/
+          cp src/data/legal-lexicon-queue.json  build-assets/data/
+          cp public/data/scripture-insights.json build-assets/data/
+          cp src/data/associations.js            build-assets/data/
+
+      - name: Commit and push if changed
+        run: |
+          cd build-assets
+          git config user.name "mirror-bot"
+          git config user.email "mirror-bot@users.noreply.github.com"
+          git add data/
+          git diff --staged --quiet || git commit -m "Mirror data files from nazaryah.com"
+          git push
