@@ -1,5 +1,9 @@
 ---
-// src/pages/close-to-the-hip.astro · 0806 V1
+// src/pages/close-to-the-hip.astro · 0806 V2
+// V2: ids are suppressed from the markup — no data-id, no number badge, no SI-###
+// or DEF-### anywhere in the rendered output. The id stays in the JSON for
+// tracking + duplicate detection only (unlike the Legal Lexicon, these lists show
+// no visible numbers). Insights = text/blip/refs; Defense = trigger/answer only.
 // Renamed from scripture-insights.astro. Now a TWO-LANE page at /close-to-the-hip
 // (NOT under /torah/, though it wears the Legal Lexicon's look as a sibling):
 //   Lane 1 — Scripture Insights: short truths to carry through the day.
@@ -62,7 +66,7 @@ const defenses = readJson('public/data/the-defense.json').entries
           </div>
           <div class="insights">
             {insights.map((i) => (
-              <article class="ins" data-id={i.id}>
+              <article class="ins">
                 <p class="ins-text">{i.text}</p>
                 {i.blip && i.blip.trim() && <p class="ins-blip">{i.blip}</p>}
                 {i.refs && i.refs.length > 0 && <p class="ins-refs">{i.refs.join(' · ')}</p>}
@@ -80,7 +84,7 @@ const defenses = readJson('public/data/the-defense.json').entries
           </div>
           <div class="defense">
             {defenses.map((d) => (
-              <article class="def" data-id={d.id}>
+              <article class="def">
                 <p class="def-trigger">&ldquo;{d.trigger}&rdquo;</p>
                 <p class="def-answer">{d.answer}</p>
               </article>
