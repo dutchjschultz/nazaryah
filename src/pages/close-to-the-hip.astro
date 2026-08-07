@@ -1,5 +1,7 @@
 ---
-// src/pages/close-to-the-hip.astro · 0806 V2
+// src/pages/close-to-the-hip.astro · 0806 V3
+// V3: insights sort breaks postedDate ties by id descending, so same-day
+// insights render newest-id-first (SI-003 above SI-002) deterministically.
 // V2: ids are suppressed from the markup — no data-id, no number badge, no SI-###
 // or DEF-### anywhere in the rendered output. The id stays in the JSON for
 // tracking + duplicate detection only (unlike the Legal Lexicon, these lists show
@@ -37,7 +39,9 @@ const readJson = (rel) => JSON.parse(fs.readFileSync(path.join(process.cwd(), re
 // Lane 1 — posted insights, newest first by postedDate.
 const insights = readJson('public/data/scripture-insights.json').insights
   .filter((i) => i.status === 'posted')
-  .sort((a, b) => String(b.postedDate).localeCompare(String(a.postedDate)));
+  .sort((a, b) =>
+    String(b.postedDate).localeCompare(String(a.postedDate)) ||
+    String(b.id).localeCompare(String(a.id)));
 
 // Lane 2 — posted defenses, by id ascending. refs are intentionally NOT read here.
 const defenses = readJson('public/data/the-defense.json').entries
