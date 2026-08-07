@@ -1,5 +1,8 @@
 ---
-// src/pages/on-these-two.astro · 0806 V1
+// src/pages/on-these-two.astro · 0806 V2
+// V2: description tightened to the exact card deck line — this page has no
+// rendered deck element, so the social-card generator uses og:description as the
+// deck; the prior long description overran and clipped mid-sentence on the card.
 // V1: The Lie Tree Walker. Four chains (Sunday, pork, three-persons, heaven)
 // climbing to the two hinges. Landing grid → client-side walker, hash-linkable.
 // Data + receipts live in src/data/lie-tree.data.js; children derived here.
@@ -24,7 +27,7 @@ for (const [id, node] of Object.entries(nodes)) {
 
 <BaseLayout
   title="On These Two — Nazaryah"
-  description="Every lie was handed to somebody by somebody else. Sunday, pork, the Trinity, heaven at death — each one walked back to its root, and every rung a dated document. On these two commandments hang all the Law."
+  description="Every lie was handed to somebody by somebody else. Walk it back up."
 >
   <div class="lt-wrap">
 

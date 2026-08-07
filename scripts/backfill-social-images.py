@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0806 V6
+backfill-social-images  0806 V7
+V7: kicker now comes from a CLOSED vocabulary (see the nazaryah-social-images
+skill): STUDY for a blog-taxonomy study, REFERENCE for a standing reference page
+(REFERENCE_PAGES set), The Watchman's Desk for the weekly section. A state not
+covered means stop and ask Dutch, never invent a kicker.
 V6: skip() now mirrors check-cards.mjs exactly (adds close-to-the-hip). The two
 lists had drifted, so a page the build guard treats as logo-only was getting a
 card minted here that the guard never asks for. Keep both skip sets in sync.
@@ -115,6 +119,22 @@ def text(node):
     return html.unescape(WS.sub(" ", TAGS.sub("", node))).strip()
 
 
+# Kicker vocabulary is CLOSED — see the nazaryah-social-images skill. STUDY is
+# the default (any blog-taxonomy study); REFERENCE marks a standing reference
+# page (not in the taxonomy, not in Featured Picks); The Watchman's Desk covers
+# the weekly section. Add a new reference page's rel here; if a page needs a
+# state not covered by this vocabulary, stop and ask Dutch — never invent one.
+REFERENCE_PAGES = {"on-these-two"}
+
+
+def kicker_for(rel):
+    if rel == "watchmans-desk" or rel.startswith("watchmans-desk/"):
+        return "The Watchman's Desk"
+    if rel in REFERENCE_PAGES:
+        return "REFERENCE"
+    return "STUDY"
+
+
 def skip(rel):
     # MUST mirror the skip set in scripts/check-cards.mjs exactly. The guard and
     # the generator have to agree on which pages are logo-only by design — if the
@@ -164,7 +184,7 @@ def main():
         dm = DESC.search(page)
         og_desc = html.unescape(dm.group(1)) if dm else ""
         deck = rendered_deck(page, rel) or og_desc
-        kicker = "The Watchman's Desk" if rel == "watchmans-desk" or rel.startswith("watchmans-desk/") else "STUDY"
+        kicker = kicker_for(rel)
 
         if a.dry_run:
             print(f"  [{kicker[:4]}] {rel}  ::  {title}")
