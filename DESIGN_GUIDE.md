@@ -344,6 +344,36 @@ When adding new components:
 
 ---
 
+## Build conventions
+
+### Styling elements built at runtime (`is:global` rule)
+
+Astro scopes a `<style>` block by stamping a `data-astro-*` attribute onto the
+elements that exist in the template **at build time**, then rewriting every
+selector to require that attribute. Any element a client script creates later
+(`document.createElement`, `innerHTML`, framework hydration into an empty
+mount) never receives that attribute, so scoped selectors miss it entirely and
+the node renders unstyled.
+
+**Rule:** any element built at runtime by script must be styled from an
+`is:global` block, and every selector in that block must carry a page-unique
+prefix so global scope introduces no collisions.
+
+```astro
+<!-- The walker builds its cards client-side, so scoped styles would miss them.
+     Every selector is lt- prefixed → global scope is collision-free. -->
+<style is:global>
+  .lt-step { /* … */ }
+  .lt-current { /* … */ }
+</style>
+```
+
+Live example: the `/on-these-two` lie-tree walker (`lt-` prefix). Static
+template markup keeps normal scoped `<style>` — only the runtime-built subtree
+needs `is:global`.
+
+---
+
 **Version**: 1.0
 **Last Updated**: January 2026
 **Framework**: Astro + Tailwind CSS

@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0804 V5
+backfill-social-images  0806 V6
+V6: skip() now mirrors check-cards.mjs exactly (adds close-to-the-hip). The two
+lists had drifted, so a page the build guard treats as logo-only was getting a
+card minted here that the guard never asks for. Keep both skip sets in sync.
 V5: thumbs written to public/og/<rel>-thumb.png (standard path), matching the
 generator; card path unchanged (public/og/<rel>.vN.png).
 V4: added --missing-only (generate only for pages whose og:image is still the
@@ -113,10 +116,16 @@ def text(node):
 
 
 def skip(rel):
+    # MUST mirror the skip set in scripts/check-cards.mjs exactly. The guard and
+    # the generator have to agree on which pages are logo-only by design — if the
+    # generator mints a card for a page the guard skips, that page silently gains
+    # a social card the guard never asked for (how close-to-the-hip got one).
+    # Any edit here needs the matching edit there, and vice versa.
     return (
         rel == ""
         or rel in ("blog", "blog/all")
         or rel.startswith("blog/c/")
+        or rel == "close-to-the-hip"
     )
 
 

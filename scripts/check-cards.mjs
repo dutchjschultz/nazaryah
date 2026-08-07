@@ -1,4 +1,7 @@
-// check-cards.mjs 0806 V5
+// check-cards.mjs 0806 V6
+// V6: no behavior change — noted that this skip set is mirrored in
+// scripts/backfill-social-images.py and the two MUST stay in sync (the
+// generator was minting cards for pages this guard skips). Edit both together.
 // V5: the titleless listing page moved from /scripture-insights to /close-to-the-hip
 // (two lanes: Scripture Insights + The Defense); the skip entry follows it.
 // V4: /scripture-insights joined the logo-only skip set — a listing page whose
@@ -23,6 +26,9 @@ import { join, relative } from 'node:path';
 
 const DIST = 'dist';
 const LOGO = '/og-default.jpg';
+// MUST stay in sync with skip() in scripts/backfill-social-images.py — the guard
+// and the generator have to agree on which pages are logo-only by design. Edit
+// one, edit the other.
 const skip = (rel) =>
   rel === '' || rel === 'blog' || rel === 'blog/all' || rel.startsWith('blog/c/') ||
   rel === 'close-to-the-hip';
