@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0806 V7
+backfill-social-images  0806 V8
+V8: on-these-two carries a dedicated .lt-card-deck element (short card deck),
+so DECK_CLASSES reads it instead of falling back to og:description — the card
+deck and the meta description are separate fields and must never merge (the long
+description clips on the card). Standing rule for every page from here.
 V7: kicker now comes from a CLOSED vocabulary (see the nazaryah-social-images
 skill): STUDY for a blog-taxonomy study, REFERENCE for a standing reference page
 (REFERENCE_PAGES set), The Watchman's Desk for the weekly section. A state not
@@ -91,6 +95,9 @@ DECK_CLASSES = {
     "doctrines": ["doctrines-subtitle"],
     "christian-or-demonic": ["cod-sub"],
     "torah": ["to-sub", "thesis"],
+    # Standing reference pages carry a dedicated (often sr-only) deck element so
+    # the short CARD deck never falls back to the long meta description.
+    "on-these-two": ["lt-card-deck"],
 }
 
 

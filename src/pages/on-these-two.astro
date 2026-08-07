@@ -1,5 +1,10 @@
 ---
-// src/pages/on-these-two.astro · 0806 V2
+// src/pages/on-these-two.astro · 0806 V3
+// V3: card deck and meta description are now SEPARATE fields. The short card
+// deck lives in a visually-hidden .lt-card-deck element the social-card
+// generator reads (kept sr-only so it doesn't echo the intro on screen); the
+// meta description runs long again for the search snippet. Neither falls back
+// to the other. See DECK_CLASSES["on-these-two"] in backfill-social-images.py.
 // V2: description tightened to the exact card deck line — this page has no
 // rendered deck element, so the social-card generator uses og:description as the
 // deck; the prior long description overran and clipped mid-sentence on the card.
@@ -27,7 +32,7 @@ for (const [id, node] of Object.entries(nodes)) {
 
 <BaseLayout
   title="On These Two — Nazaryah"
-  description="Every lie was handed to somebody by somebody else. Walk it back up."
+  description="Sunday, pork, the Trinity, heaven at death. Every one was handed down by somebody, and every step has a receipt. Pick a lie you were taught and walk it back up to where it started."
 >
   <div class="lt-wrap">
 
@@ -39,6 +44,11 @@ for (const [id, node] of Object.entries(nodes)) {
       <header class="lt-head">
         <h1 class="lt-title">{meta.title}</h1>
         <p class="lt-standing">{meta.standingLine}</p>
+        <!-- Card deck — the short line the 1200x630 social card renders. Kept
+             sr-only: the generator and search engines read it, but on screen it
+             would just echo the intro below, so it is not shown. Meta description
+             is a separate, longer field (the search snippet). Never merge them. -->
+        <p class="lt-card-deck">Every lie was handed to somebody by somebody else. Walk it back up.</p>
       </header>
       <p class="lt-intro">{meta.intro}</p>
 
@@ -212,6 +222,17 @@ for (const [id, node] of Object.entries(nodes)) {
       padding: 1rem 0;
       border-bottom: 1px solid var(--line);
       margin-bottom: 2.5rem;
+    }
+
+    /* Card deck — read by the social-card generator + search, not shown on
+       screen (it would echo the intro). Standard sr-only: in the DOM and the
+       built HTML, but visually hidden. */
+    .lt-card-deck {
+      position: absolute;
+      width: 1px; height: 1px;
+      padding: 0; margin: -1px; border: 0;
+      overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
+      white-space: nowrap;
     }
 
     /* ── LANDING ── */

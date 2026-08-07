@@ -372,6 +372,25 @@ Live example: the `/on-these-two` lie-tree walker (`lt-` prefix). Static
 template markup keeps normal scoped `<style>` — only the runtime-built subtree
 needs `is:global`.
 
+### Card deck vs. meta description (two separate fields)
+
+Every page has two distinct text fields, and neither ever falls back to the
+other:
+
+- **Card deck** — the short line on the 1200x630 social card. The card
+  generator wraps it to two lines and drops the rest, so a long deck **clips
+  mid-sentence**. It comes from a dedicated deck element the page renders (see
+  `DECK_CLASSES` in `scripts/backfill-social-images.py`).
+- **Meta description** — the `description` prop / `og:description`, which renders
+  as the search-result snippet, so it runs long. A short deck reused here wastes
+  the snippet.
+
+If a page has no visible deck line of its own (the card deck would only echo
+copy already on the page), still give it a dedicated deck element and keep it
+`sr-only` — visually hidden, but present in the built HTML so the generator and
+search read it. Live example: `/on-these-two` (`.lt-card-deck`, sr-only; its
+meta `description` is a separate, longer line).
+
 ---
 
 **Version**: 1.0
