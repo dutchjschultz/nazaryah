@@ -1,4 +1,7 @@
-// content config 0803 V1
+// content config 0806 V2
+// V2: `companion` now accepts a single slug OR an array of slugs (Read Next
+// renders every entry, frontmatter order preserved). Back-compatible — existing
+// single-string companions still validate.
 // V1: relaxed the watchmans-desk collection to a permissive (passthrough) schema
 // so open-letter full-text files validate alongside weekly-letter ones.
 import { defineCollection, z } from 'astro:content';
@@ -61,7 +64,7 @@ const postsCollection = defineCollection({
     // Optional position within an association cluster (lower sorts first).
     order: z.number().optional(),
     // Single strongest kin study, rendered as "Read Next" at the foot of the post.
-    companion: z.string().optional(),
+    companion: z.union([z.string(), z.array(z.string())]).optional(),
     // Optional per-study social-share overrides. Each falls back to the study's
     // own title/description or the site default (see BaseLayout).
     ogTitle: z.string().optional(),

@@ -1,4 +1,8 @@
 ---
+// BlogLayout.astro · 0806 V1
+// V1: Read Next renders EVERY companion (frontmatter order, strongest kin first),
+// not just the first. companion may be a single slug or an array; unresolved or
+// draft entries are skipped; an empty/absent field renders nothing.
 import BaseLayout from './BaseLayout.astro';
 import References from '../components/References.astro';
 import AssociatedStudies from '../components/AssociatedStudies.astro';
@@ -34,10 +38,19 @@ const { Content } = await post.render();
 const wordCount = post.body.split(/\s+/).length;
 const readingTime = Math.ceil(wordCount / 200);
 
-// Companion study (if any) — rendered here as chrome so the shared post body
-// stays portable. In the blog context the link points at the /blog/ sibling.
-const companionSlug = post.data.companion;
-const companion = companionSlug ? await getEntry('posts', companionSlug) : null;
+// Companion studies (Read Next) — rendered here as chrome so the shared post body
+// stays portable. `companion` is a single slug or an array, in intentional order
+// (strongest kin first — never sorted). Every entry that resolves to a published
+// (non-draft) study is shown; a slug that doesn't resolve is skipped silently, so
+// a stale reference never renders a dead link. In the blog context links point at
+// the /blog/ sibling.
+const companionField = post.data.companion;
+const companionSlugs = Array.isArray(companionField)
+  ? companionField
+  : companionField ? [companionField] : [];
+const companions = (
+  await Promise.all(companionSlugs.map((s) => getEntry('posts', s).catch(() => null)))
+).filter((c) => c && c.data.draft !== true);
 ---
 
 <BaseLayout title={`${title} - Nazaryah`} description={description} article={true} ogTitle={ogTitle} ogDescription={ogDescription} ogImage={ogImage}>
@@ -120,13 +133,23 @@ const companion = companionSlug ? await getEntry('posts', companionSlug) : null;
         <Content />
       </div>
 
-      <!-- Companion study (wrapper-rendered; points at the /blog/ sibling) -->
-      {companion && (
+      <!-- Companion studies (wrapper-rendered; each points at its /blog/ sibling).
+           Row on desktop, stacked on mobile. One companion looks as it always has. -->
+      {companions.length > 0 && (
         <div class="max-w-3xl mx-auto companion-note" data-pagefind-ignore>
           <p class="companion-label">Read Next</p>
-          <a href={`/blog/${companion.slug}`} class="companion-link">
-            {companion.data.title} <span aria-hidden="true">&rarr;</span>
-          </a>
+          <div class="companion-list">
+            {companions.map((c) => (
+              <a href={`/blog/${c.slug}`} class="companion-item">
+                <span class="companion-link">
+                  {c.data.title} <span aria-hidden="true">&rarr;</span>
+                </span>
+                {(c.data.deck || c.data.subtitle) && (
+                  <span class="companion-deck">{c.data.deck || c.data.subtitle}</span>
+                )}
+              </a>
+            ))}
+          </div>
         </div>
       )}
 
@@ -244,6 +267,22 @@ const companion = companionSlug ? await getEntry('posts', companionSlug) : null;
     margin: 0 0 0.35rem;
   }
   :global(.dark) .companion-label { color: var(--gold-light); }
+  /* Read Next list — row on desktop, stacked on mobile. Items carry no frame of
+     their own, so one companion reads like the original single link inside the
+     note box, and several share the row evenly with no stretched cell. */
+  .companion-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem 1.75rem;
+  }
+  .companion-item {
+    flex: 1 1 0;
+    min-width: 9rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-decoration: none;
+  }
   .companion-link {
     font-family: var(--font-display);
     font-size: 1.1rem;
@@ -252,7 +291,18 @@ const companion = companionSlug ? await getEntry('posts', companionSlug) : null;
     text-decoration: none;
   }
   :global(.dark) .companion-link { color: var(--color-dark-text); }
-  .companion-link:hover { color: var(--bronze); }
+  .companion-item:hover .companion-link { color: var(--bronze); }
+  .companion-deck {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: var(--ink-faded);
+  }
+  :global(.dark) .companion-deck { color: var(--color-dark-secondary-text); }
+  @media (max-width: 640px) {
+    .companion-list { flex-direction: column; gap: 1.1rem; }
+  }
 </style>
 
 <style is:global>
