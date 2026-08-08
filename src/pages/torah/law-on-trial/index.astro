@@ -1,8 +1,10 @@
 ---
-// torah/law-on-trial/index.astro · 0807 V1
+// torah/law-on-trial/index.astro · 0807 V2
+// V2: live-study CTA is "Open Testimony →" (was "Open Study"); kicker copy comes
+// from SECTION.kicker in the data file ("One Testimony at a Time").
 // Structural twin of /trinity/files. Studies render in array order (Acts 10
 // leads — do not sort). Draft studies render dimmed with no link. The word
-// "file" appears nowhere reader-facing here; the CTA is "Open Study".
+// "file" appears nowhere reader-facing here; the CTA is "Open Testimony".
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { SECTION, STUDIES } from '../../../data/law-on-trial.js';
 ---
@@ -46,7 +48,7 @@ import { SECTION, STUDIES } from '../../../data/law-on-trial.js';
               <span class="tr-post-verse">{study.reference}</span>
               <h2 class="tr-post-title">{study.title}</h2>
               <p class="tr-post-subtitle">{study.deck}</p>
-              <span class="tr-post-read">Open Study &nbsp;&#8594;</span>
+              <span class="tr-post-read">Open Testimony &nbsp;&#8594;</span>
             </a>
           ) : (
             <div class="tr-post-card is-draft">

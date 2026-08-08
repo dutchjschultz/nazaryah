@@ -1,10 +1,12 @@
-// law-on-trial 0807 V1.js
-// New file. Studies and foundations for the Law on Trial section under /torah.
+// law-on-trial 0807 V2.js
+// V2: kicker → "One Testimony at a Time"; TORAH_CARD eyebrow → "155 testimonies"
+// (the index-page "Open Testimony →" CTA lives in the page, not here).
+// Studies and foundations for the Law on Trial section under /torah.
 // Status values: 'live' (rendered as a link) | 'draft' (rendered dimmed, no link).
 // Nothing flips to 'live' without Dutch's sign-off on that study.
 
 export const SECTION = {
-  kicker: 'One Passage at a Time',
+  kicker: 'One Testimony at a Time',
   title: 'The Law on Trial',
   standfirst:
     'Every passage modern teaching uses to argue that the Torah of Yahuah was abolished, set aside, or replaced — examined one at a time, and returned to the argument it was actually written into.',
@@ -222,7 +224,7 @@ export const FOUNDATIONS = [
 // ---------------------------------------------------------------------------
 
 export const TORAH_CARD = {
-  eyebrow: '16 foundations · 155 passages · in build',
+  eyebrow: '16 foundations · 155 testimonies · in build',
   title: 'The Law on Trial',
   deck: 'Every passage used to argue the Law was abolished. Answered one at a time.',
   body: 'The case against the Torah is presented as a long list of verses, produced together on the understanding that a list this long must settle the matter. Each one is taken here on its own, and returned to the argument it was written into.',
