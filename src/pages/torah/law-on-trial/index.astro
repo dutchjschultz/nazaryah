@@ -1,5 +1,7 @@
 ---
-// torah/law-on-trial/index.astro · 0807 V2
+// torah/law-on-trial/index.astro · 0807 V3
+// V3: draft card border is now SOLID (was dashed) — a live study differs from a
+// draft only in brightness, so flipping to live moves nothing.
 // V2: live-study CTA is "Open Testimony →" (was "Open Study"); kicker copy comes
 // from SECTION.kicker in the data file ("One Testimony at a Time").
 // Structural twin of /trinity/files. Studies render in array order (Acts 10
@@ -298,11 +300,12 @@ import { SECTION, STUDIES } from '../../../data/law-on-trial.js';
     margin-top: auto;
   }
 
-  /* ── Draft study — dimmed, no link, "In progress" where the CTA sits ── */
+  /* ── Draft study — dimmed, no link, "In progress" where the CTA sits. Same
+     SOLID border and geometry as a live card, only dimmer: going live raises the
+     brightness and nothing shifts. ── */
   .tr-post-card.is-draft {
     cursor: default;
     background: rgba(20, 13, 5, 0.5);
-    border-style: dashed;
     border-color: #2e1f0d;
   }
   .tr-post-card.is-draft:hover {

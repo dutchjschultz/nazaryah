@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0806 V8
+backfill-social-images  0807 V9
+V9: the Law on Trial section carries its own kickers (authorized by Dutch): THE
+LAW ON TRIAL on the index, FOUNDATION on the foundations page, TESTIMONY on each
+study card. These read neither STUDY nor REFERENCE. See kicker_for().
 V8: on-these-two carries a dedicated .lt-card-deck element (short card deck),
 so DECK_CLASSES reads it instead of falling back to og:description — the card
 deck and the meta description are separate fields and must never merge (the long
@@ -129,12 +132,20 @@ def text(node):
 # Kicker vocabulary is CLOSED — see the nazaryah-social-images skill. STUDY is
 # the default (any blog-taxonomy study); REFERENCE marks a standing reference
 # page (not in the taxonomy, not in Featured Picks); The Watchman's Desk covers
-# the weekly section. Add a new reference page's rel here; if a page needs a
-# state not covered by this vocabulary, stop and ask Dutch — never invent one.
+# the weekly section; the Law on Trial section carries its own three (THE LAW ON
+# TRIAL / FOUNDATION / TESTIMONY). Add a new reference page's rel here; if a page
+# needs a state not covered by this vocabulary, stop and ask Dutch — never invent.
 REFERENCE_PAGES = {"on-these-two"}
 
 
 def kicker_for(rel):
+    # Law on Trial — its own section kickers (never STUDY/REFERENCE).
+    if rel == "torah/law-on-trial":
+        return "THE LAW ON TRIAL"
+    if rel == "torah/law-on-trial/foundations":
+        return "FOUNDATION"
+    if rel.startswith("torah/law-on-trial/"):
+        return "TESTIMONY"
     if rel == "watchmans-desk" or rel.startswith("watchmans-desk/"):
         return "The Watchman's Desk"
     if rel in REFERENCE_PAGES:
