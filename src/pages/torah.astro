@@ -1,8 +1,16 @@
 ---
+// torah.astro · 0807 V1 — added the Law on Trial card beneath the Legal Lexicon.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { liveTerms, terms } from '../data/legal-lexicon.js';
+import { STUDIES, TORAH_CARD } from '../data/law-on-trial.js';
 
 const lexiconMeta = `${liveTerms.length} of ${terms.length} words live · growing`;
+
+// Law on Trial eyebrow — the static "in build" line until the first study goes
+// live, at which point it converts to the Lexicon's own "N of 155 studies live"
+// form. Computed from STUDIES so it flips itself on the first sign-off.
+const lawLive = STUDIES.filter((s) => s.status === 'live').length;
+const lawMeta = lawLive > 0 ? `${lawLive} of 155 studies live · growing` : TORAH_CARD.eyebrow;
 ---
 
 <BaseLayout
@@ -35,6 +43,14 @@ const lexiconMeta = `${liveTerms.length} of ${terms.length} words live · growin
           <p class="to-card-body">Seven movements from the bench to the final verdict — every covenant term read as the courtroom word it is.</p>
           <span class="to-card-cta">Enter &nbsp;&#8594;</span>
         </a>
+
+        <a href={TORAH_CARD.href} class="to-card">
+          <p class="to-card-meta">{lawMeta}</p>
+          <h3 class="to-card-title">{TORAH_CARD.title}</h3>
+          <p class="to-card-deck">{TORAH_CARD.deck}</p>
+          <p class="to-card-body">{TORAH_CARD.body}</p>
+          <span class="to-card-cta">Enter &nbsp;&#8594;</span>
+        </a>
       </div>
     </section>
 
@@ -65,6 +81,7 @@ const lexiconMeta = `${liveTerms.length} of ${terms.length} words live · growin
   .to-h2{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:600;color:#f0e0bf;margin:0 0 1.25rem;padding-bottom:.6rem;border-bottom:1px solid #3a2510;}
 
   .to-cards{max-width:680px;margin:0 auto;}
+  .to-card+.to-card{margin-top:1.5rem;}
   .to-card{display:block;text-decoration:none;background:rgba(20,13,5,.6);border:1px solid #3a2510;border-radius:4px;padding:2rem 2.25rem;transition:all .2s ease;}
   .to-card:hover{border-color:#8a6028;background:rgba(30,20,8,.7);transform:translateY(-2px);}
   .to-card-meta{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8a6028;margin:0 0 .75rem;}

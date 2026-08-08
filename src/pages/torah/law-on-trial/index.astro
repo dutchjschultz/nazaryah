@@ -1,0 +1,330 @@
+---
+// torah/law-on-trial/index.astro · 0807 V1
+// Structural twin of /trinity/files. Studies render in array order (Acts 10
+// leads — do not sort). Draft studies render dimmed with no link. The word
+// "file" appears nowhere reader-facing here; the CTA is "Open Study".
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { SECTION, STUDIES } from '../../../data/law-on-trial.js';
+---
+
+<BaseLayout
+  title="The Law on Trial — Nazaryah"
+  description="Every passage modern teaching uses to argue the Torah was abolished, set aside, or replaced — examined one at a time, and returned to the argument it was actually written into."
+>
+  <div class="tr-wrap">
+
+    <!-- ── HERO ── -->
+    <section class="tr-hero">
+      <a href="/torah" class="tr-back">&#8592; Back to Torah</a>
+      <p class="tr-label">&#8213; {SECTION.kicker} &#8213;</p>
+      <h1 class="tr-title">{SECTION.title}</h1>
+      <p class="tr-sub">{SECTION.standfirst}</p>
+    </section>
+
+    <!-- ── INTRO ── -->
+    <section class="tr-section">
+      <div class="tr-prose">
+        {SECTION.intro.map((para) => <p>{para}</p>)}
+      </div>
+    </section>
+
+    <!-- ── FOUNDATIONS DOORWAY ── -->
+    <a class="fdoor" href="/torah/law-on-trial/foundations">
+      <div class="fdoor-intro">
+        <p class="fdoor-eyebrow">&#8213; The Foundations &#8213;</p>
+        <p class="fdoor-desc">{SECTION.foundationsBlurb}</p>
+      </div>
+      <span class="fdoor-open">Open the Foundations&nbsp;<span class="arrow">&rarr;</span></span>
+    </a>
+
+    <!-- ── STUDY GRID ── -->
+    <section class="tr-posts-section">
+      <div class="tr-posts-grid">
+        {STUDIES.map((study) => (
+          study.status === 'live' ? (
+            <a href={`/torah/law-on-trial/${study.slug}`} class="tr-post-card">
+              <span class="tr-post-verse">{study.reference}</span>
+              <h2 class="tr-post-title">{study.title}</h2>
+              <p class="tr-post-subtitle">{study.deck}</p>
+              <span class="tr-post-read">Open Study &nbsp;&#8594;</span>
+            </a>
+          ) : (
+            <div class="tr-post-card is-draft">
+              <span class="tr-post-verse">{study.reference}</span>
+              <h2 class="tr-post-title">{study.title}</h2>
+              <p class="tr-post-subtitle">{study.deck}</p>
+              <span class="tr-post-soon">In progress</span>
+            </div>
+          )
+        ))}
+      </div>
+
+      {STUDIES.length === 0 && (
+        <div class="tr-empty">
+          <p>Studies are being prepared. Check back soon.</p>
+        </div>
+      )}
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .tr-wrap {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #f0e0bf;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  .tr-hero {
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    border-bottom: 1px solid #4a3218;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(150, 90, 40, 0.18), transparent 70%),
+      linear-gradient(180deg, #0a0602 0%, #1a1208 100%);
+    position: relative;
+  }
+
+  .tr-back {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #8a6028;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+  .tr-back:hover { color: #c4a46b; }
+
+  .tr-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a6028;
+    text-transform: uppercase;
+    margin-bottom: 0.75rem;
+  }
+
+  .tr-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2rem, 5vw, 3.2rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 1rem;
+    line-height: 1.1;
+  }
+
+  .tr-sub {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: #c4a46b;
+    font-style: italic;
+    max-width: 640px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .tr-section {
+    padding: 3rem 1.5rem;
+    border-bottom: 1px solid #2e1f0d;
+  }
+
+  /* ── Foundations doorway ── */
+  .fdoor {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) auto;
+    gap: 24px 48px;
+    align-items: center;
+    max-width: 980px;
+    margin: 10px auto 42px;
+    padding: 26px 1.5rem;
+    border-top: 1px solid #3a2510;
+    border-bottom: 1px solid #3a2510;
+    text-decoration: none;
+    color: inherit;
+  }
+
+  .fdoor-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin: 0 0 10px;
+  }
+
+  .fdoor-desc {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1.1rem;
+    font-style: italic;
+    line-height: 1.55;
+    color: #c4a46b;
+    margin: 0;
+    max-width: 52ch;
+  }
+
+  .fdoor-open {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.15rem, 2.2vw, 1.5rem);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: #8a6028;
+    white-space: nowrap;
+    position: relative;
+    padding-bottom: 6px;
+    transition: color 0.3s ease;
+  }
+  .fdoor-open::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 1px;
+    width: 100%;
+    background: rgba(138, 96, 40, 0.45);
+    transition: background 0.3s ease;
+  }
+  .fdoor-open .arrow {
+    display: inline-block;
+    transition: transform 0.35s ease;
+  }
+  .fdoor:hover .fdoor-open { color: #f0e0bf; }
+  .fdoor:hover .fdoor-open::after { background: #8a6028; }
+  .fdoor:hover .fdoor-open .arrow { transform: translateX(7px); }
+  .fdoor:focus-visible { outline: 2px solid #8a6028; outline-offset: 4px; }
+
+  @media (max-width: 680px) {
+    .fdoor { grid-template-columns: 1fr; gap: 20px; padding: 24px 1.5rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .fdoor-open, .fdoor-open::after, .fdoor-open .arrow { transition: none; }
+  }
+
+  .tr-prose {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #dcc99a;
+  }
+  .tr-prose p { margin-bottom: 1.2rem; }
+  .tr-prose p:last-child { margin-bottom: 0; }
+
+  .tr-posts-section {
+    padding: 3.5rem 1.5rem;
+    max-width: 1400px;
+    margin: 0 auto;
+  }
+
+  .tr-posts-grid {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 1.1rem;
+  }
+
+  @media (max-width: 1320px) {
+    .tr-posts-grid { grid-template-columns: repeat(4, 1fr); }
+  }
+  @media (max-width: 1080px) {
+    .tr-posts-grid { grid-template-columns: repeat(3, 1fr); }
+  }
+  @media (max-width: 780px) {
+    .tr-posts-grid { grid-template-columns: repeat(2, 1fr); }
+  }
+  @media (max-width: 480px) {
+    .tr-posts-grid { grid-template-columns: 1fr; }
+  }
+
+  .tr-post-card {
+    display: flex;
+    flex-direction: column;
+    background: rgba(30, 18, 8, 0.7);
+    border: 1px solid #3a2410;
+    border-radius: 4px;
+    padding: 1.15rem 1.1rem 1rem;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+    text-align: center;
+  }
+  .tr-post-card:hover {
+    border-color: #8a6028;
+    background: rgba(50, 30, 10, 0.7);
+  }
+
+  .tr-post-verse {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 2.5px;
+    color: #c4a46b;
+    text-transform: uppercase;
+    margin: 0 0 0.7rem;
+    padding-bottom: 0.65rem;
+    border-bottom: 1px solid #3a2510;
+  }
+
+  .tr-post-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+    font-weight: 600;
+    color: #f0e0bf;
+    margin: 0 0 0.5rem;
+    line-height: 1.3;
+  }
+
+  .tr-post-subtitle {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 0.92rem;
+    color: #b09060;
+    line-height: 1.45;
+    margin: 0 0 0.9rem;
+    flex-grow: 1;
+  }
+
+  .tr-post-read {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #8a6028;
+    text-transform: uppercase;
+    margin-top: auto;
+  }
+
+  /* ── Draft study — dimmed, no link, "In progress" where the CTA sits ── */
+  .tr-post-card.is-draft {
+    cursor: default;
+    background: rgba(20, 13, 5, 0.5);
+    border-style: dashed;
+    border-color: #2e1f0d;
+  }
+  .tr-post-card.is-draft:hover {
+    border-color: #2e1f0d;
+    background: rgba(20, 13, 5, 0.5);
+  }
+  .tr-post-card.is-draft .tr-post-verse { color: #9a7b45; border-bottom-color: #2e1f0d; }
+  .tr-post-card.is-draft .tr-post-title { color: #c4b183; opacity: 0.75; }
+  .tr-post-card.is-draft .tr-post-subtitle { opacity: 0.7; }
+
+  .tr-post-soon {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    color: #7a5520;
+    text-transform: uppercase;
+    margin-top: auto;
+  }
+
+  .tr-empty {
+    text-align: center;
+    color: #7a5520;
+    font-style: italic;
+    padding: 3rem 0;
+  }
+</style>

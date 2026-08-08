@@ -1,0 +1,125 @@
+---
+// torah/law-on-trial/[slug].astro · 0807 V1
+// Stub study route. Generates one path per entry in STUDIES, renders the
+// reference, title, and deck, and returns a not-yet-published state for any
+// entry still in draft. Study bodies are loaded separately, one at a time, as
+// each is signed off. No "file" wording anywhere reader-facing.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { STUDIES } from '../../../data/law-on-trial.js';
+
+export function getStaticPaths() {
+  return STUDIES.map((study) => ({ params: { slug: study.slug }, props: { study } }));
+}
+
+const { study } = Astro.props;
+const published = study.status === 'live';
+---
+
+<BaseLayout title={`${study.title} — The Law on Trial`} description={study.deck}>
+  <div class="tr-wrap">
+
+    <section class="ls-hero">
+      <a href="/torah/law-on-trial" class="ls-back">&larr; Back to the Law on Trial</a>
+      <p class="ls-ref">{study.reference}</p>
+      <h1 class="ls-title">{study.title}</h1>
+      <p class="ls-deck">{study.deck}</p>
+    </section>
+
+    {!published && (
+      <section class="ls-soon">
+        <p class="ls-soon-label">In progress</p>
+        <p class="ls-soon-text">This study has not been published yet. It is being prepared and will appear here once it is signed off, one study at a time.</p>
+        <a href="/torah/law-on-trial" class="ls-soon-link">Back to the Law on Trial&nbsp;&#8594;</a>
+      </section>
+    )}
+
+  </div>
+</BaseLayout>
+
+<style>
+  .tr-wrap {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #f0e0bf;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  .ls-hero {
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    border-bottom: 1px solid #4a3218;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(150, 90, 40, 0.18), transparent 70%),
+      linear-gradient(180deg, #0a0602 0%, #1a1208 100%);
+  }
+  .ls-back {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #8a6028;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+  .ls-back:hover { color: #c4a46b; }
+
+  .ls-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a46b;
+    margin: 0 0 1rem;
+  }
+  .ls-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 1rem;
+    line-height: 1.15;
+  }
+  .ls-deck {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: #c4a46b;
+    font-style: italic;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .ls-soon {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+    padding: 4rem 1.5rem 5rem;
+  }
+  .ls-soon-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #7a5520;
+    margin: 0 0 1rem;
+  }
+  .ls-soon-text {
+    font-size: 1.1rem;
+    line-height: 1.75;
+    color: #b09060;
+    font-style: italic;
+    margin: 0 0 2rem;
+  }
+  .ls-soon-link {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .ls-soon-link:hover { color: #f0e0bf; }
+</style>

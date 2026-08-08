@@ -1,0 +1,254 @@
+---
+// torah/law-on-trial/foundations.astro · 0807 V1
+// Structural twin of the Trinity foundations page. Rows render in array order
+// (F-10 is numeral I; the rest follow, renumbered for display only — the `key`
+// is the real F-number the studies cite). `citedBy` is computed here from
+// STUDIES with status 'live'; never hand-maintained, no reverse verse index.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { SECTION, STUDIES, FOUNDATIONS } from '../../../data/law-on-trial.js';
+
+const liveStudies = STUDIES.filter((s) => s.status === 'live');
+const citedBy = (key) => liveStudies.filter((s) => (s.foundations || []).includes(key)).length;
+---
+
+<BaseLayout
+  title="The Foundations — The Law on Trial"
+  description="A handful of arguments turn up in study after study. Rather than answer each from scratch every time, each is set down once here, in full."
+>
+  <div class="tr-wrap">
+    <div class="found-page">
+      <div class="found-inner">
+
+        <a class="found-back" href="/torah/law-on-trial">&larr; Back to the Law on Trial</a>
+
+        <p class="found-eyebrow">&#8213; The Foundations &#8213;</p>
+        <h1 class="found-h1">The Foundations</h1>
+        <p class="found-intro">{SECTION.foundationsBlurb}</p>
+        <p class="found-intro found-intro--sub">Read these, and many of the studies fall open on their own.</p>
+
+        <div class="found-divider"></div>
+
+        <ol class="found-ledger">
+          {FOUNDATIONS.map((f) => (
+            f.status === 'live' ? (
+              <a class="found-row" href={`/torah/law-on-trial/foundations/${f.slug}`}>
+                <span class="found-num">{f.numeral}</span>
+                <span>
+                  <h3 class="found-title">{f.title}</h3>
+                  <p class="found-desc">{f.deck}</p>
+                </span>
+                <span class="found-meta">
+                  <span class="found-tally">Cited by <b>{citedBy(f.key)}</b> studies</span>
+                  <span class="found-read">Read &rarr;</span>
+                </span>
+              </a>
+            ) : (
+              <div class="found-row is-soon">
+                <span class="found-num">{f.numeral}</span>
+                <span>
+                  <h3 class="found-title">{f.title}</h3>
+                  <p class="found-desc">{f.deck}</p>
+                </span>
+                <span class="found-meta"><span class="found-soon">In progress &middot; {f.verses} verses</span></span>
+              </div>
+            )
+          ))}
+        </ol>
+
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .tr-wrap {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #f0e0bf;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  .found-page {
+    padding: 54px 32px 80px;
+    -webkit-font-smoothing: antialiased;
+  }
+  .found-inner { max-width: 980px; margin: 0 auto; }
+
+  /* ── header ── */
+  .found-back {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+    text-decoration: none;
+    margin-bottom: 46px;
+    transition: color 0.2s ease;
+  }
+  .found-back:hover { color: #c4a46b; }
+  .found-back:focus-visible { outline: 2px solid #8a6028; outline-offset: 3px; }
+
+  .found-eyebrow {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin: 0 0 16px;
+  }
+
+  .found-h1 {
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-weight: 700;
+    font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+    line-height: 1.1;
+    letter-spacing: 0.02em;
+    color: #f0e0bf;
+    margin: 0 0 28px;
+  }
+
+  .found-intro {
+    max-width: 620px;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1.2rem;
+    font-style: italic;
+    line-height: 1.6;
+    color: #c4a46b;
+  }
+  .found-intro--sub {
+    font-size: 1.05rem;
+    color: #b89a64;
+    margin-top: 18px;
+  }
+
+  .found-divider {
+    height: 1px;
+    background: #3a2510;
+    max-width: 980px;
+    margin: 54px auto 6px;
+  }
+
+  /* ── ledger ── */
+  .found-ledger {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    border-top: 1px solid #2e1f0d;
+  }
+
+  .found-row {
+    display: grid;
+    grid-template-columns: 74px 1fr auto;
+    align-items: baseline;
+    gap: 0 28px;
+    padding: 26px 14px 24px;
+    border-bottom: 1px solid #2e1f0d;
+    text-decoration: none;
+    color: inherit;
+    position: relative;
+    transition: background-color 0.35s ease;
+  }
+  .found-row::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: -1px;
+    height: 1px;
+    width: 0;
+    background: linear-gradient(90deg, #8a6028, transparent);
+    transition: width 0.45s ease;
+  }
+  .found-row:hover { background: rgba(138, 96, 40, 0.06); }
+  .found-row:hover::after { width: 100%; }
+  .found-row:focus-visible { outline: 2px solid #8a6028; outline-offset: -2px; }
+
+  .found-num {
+    font-family: 'Cinzel', serif;
+    font-size: 32px;
+    line-height: 1;
+    color: #8a6028;
+    opacity: 0.62;
+    letter-spacing: 0.02em;
+    transition: opacity 0.35s ease;
+  }
+  .found-row:hover .found-num { opacity: 1; }
+
+  .found-title {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: clamp(1.2rem, 2.4vw, 1.55rem);
+    line-height: 1.15;
+    letter-spacing: 0.02em;
+    color: #f0e0bf;
+    margin: 0 0 7px;
+  }
+
+  .found-desc {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1.05rem;
+    line-height: 1.5;
+    color: #b09060;
+    margin: 0;
+    max-width: 46ch;
+  }
+
+  .found-meta {
+    text-align: right;
+    align-self: center;
+    white-space: nowrap;
+    padding-top: 4px;
+  }
+
+  .found-tally {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+  }
+  .found-tally b { font-weight: 700; color: #c4a46b; }
+
+  .found-read {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #dcc99a;
+    margin-top: 9px;
+    transition: transform 0.35s ease, color 0.35s ease;
+  }
+  .found-row:hover .found-read { color: #f0e0bf; transform: translateX(5px); }
+
+  .found-row.is-soon { cursor: default; }
+  .found-row.is-soon .found-num,
+  .found-row.is-soon .found-title { opacity: 0.5; }
+  .found-row.is-soon .found-desc { opacity: 0.7; }
+  .found-row.is-soon:hover { background: transparent; }
+  .found-row.is-soon:hover::after { width: 0; }
+
+  .found-soon {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #7a5520;
+  }
+
+  @media (max-width: 680px) {
+    .found-page { padding: 40px 20px 56px; }
+    .found-row { grid-template-columns: 48px 1fr; gap: 4px 18px; }
+    .found-num { font-size: 26px; }
+    .found-meta { grid-column: 2; text-align: left; margin-top: 12px; }
+    .found-read { margin-top: 6px; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .found-row, .found-row::after, .found-num, .found-read, .found-back { transition: none; }
+  }
+</style>
