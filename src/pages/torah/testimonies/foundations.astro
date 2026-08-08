@@ -1,5 +1,8 @@
 ---
-// torah/law-on-trial/foundations.astro · 0807 V1
+// torah/testimonies/foundations.astro · 0807 V2
+// V2: section renamed/moved — back link reads "Back to Torah Testimonies" and
+// points at /torah/testimonies; the (future) live-foundation Read link moves to
+// /torah/testimonies/foundations/<slug>.
 // Structural twin of the Trinity foundations page. Rows render in array order
 // (F-10 is numeral I; the rest follow, renumbered for display only — the `key`
 // is the real F-number the studies cite). `citedBy` is computed here from
@@ -12,14 +15,14 @@ const citedBy = (key) => liveStudies.filter((s) => (s.foundations || []).include
 ---
 
 <BaseLayout
-  title="The Foundations — The Law on Trial"
+  title="The Foundations — Torah Testimonies"
   description="A handful of arguments turn up in study after study. Rather than answer each from scratch every time, each is set down once here, in full."
 >
   <div class="tr-wrap">
     <div class="found-page">
       <div class="found-inner">
 
-        <a class="found-back" href="/torah/law-on-trial">&larr; Back to the Law on Trial</a>
+        <a class="found-back" href="/torah/testimonies">&larr; Back to Torah Testimonies</a>
 
         <p class="found-eyebrow">&#8213; The Foundations &#8213;</p>
         <h1 class="found-h1">The Foundations</h1>
@@ -31,7 +34,7 @@ const citedBy = (key) => liveStudies.filter((s) => (s.foundations || []).include
         <ol class="found-ledger">
           {FOUNDATIONS.map((f) => (
             f.status === 'live' ? (
-              <a class="found-row" href={`/torah/law-on-trial/foundations/${f.slug}`}>
+              <a class="found-row" href={`/torah/testimonies/foundations/${f.slug}`}>
                 <span class="found-num">{f.numeral}</span>
                 <span>
                   <h3 class="found-title">{f.title}</h3>

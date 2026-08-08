@@ -1,9 +1,12 @@
 ---
-// torah/law-on-trial/index.astro · 0807 V3
+// torah/testimonies/index.astro · 0807 V4
+// V4: section renamed "Torah Testimonies" and route moved from /torah/law-on-trial
+// to /torah/testimonies (all internal links updated; 301 in netlify.toml). Title +
+// kicker come from the data file (title "Torah Testimonies", kicker "The Law on Trial").
 // V3: draft card border is now SOLID (was dashed) — a live study differs from a
 // draft only in brightness, so flipping to live moves nothing.
 // V2: live-study CTA is "Open Testimony →" (was "Open Study"); kicker copy comes
-// from SECTION.kicker in the data file ("One Testimony at a Time").
+// from SECTION.kicker in the data file.
 // Structural twin of /trinity/files. Studies render in array order (Acts 10
 // leads — do not sort). Draft studies render dimmed with no link. The word
 // "file" appears nowhere reader-facing here; the CTA is "Open Testimony".
@@ -12,7 +15,7 @@ import { SECTION, STUDIES } from '../../../data/law-on-trial.js';
 ---
 
 <BaseLayout
-  title="The Law on Trial — Nazaryah"
+  title="Torah Testimonies — Nazaryah"
   description="Every passage modern teaching uses to argue the Torah was abolished, set aside, or replaced — examined one at a time, and returned to the argument it was actually written into."
 >
   <div class="tr-wrap">
@@ -33,7 +36,7 @@ import { SECTION, STUDIES } from '../../../data/law-on-trial.js';
     </section>
 
     <!-- ── FOUNDATIONS DOORWAY ── -->
-    <a class="fdoor" href="/torah/law-on-trial/foundations">
+    <a class="fdoor" href="/torah/testimonies/foundations">
       <div class="fdoor-intro">
         <p class="fdoor-eyebrow">&#8213; The Foundations &#8213;</p>
         <p class="fdoor-desc">{SECTION.foundationsBlurb}</p>
@@ -46,7 +49,7 @@ import { SECTION, STUDIES } from '../../../data/law-on-trial.js';
       <div class="tr-posts-grid">
         {STUDIES.map((study) => (
           study.status === 'live' ? (
-            <a href={`/torah/law-on-trial/${study.slug}`} class="tr-post-card">
+            <a href={`/torah/testimonies/${study.slug}`} class="tr-post-card">
               <span class="tr-post-verse">{study.reference}</span>
               <h2 class="tr-post-title">{study.title}</h2>
               <p class="tr-post-subtitle">{study.deck}</p>

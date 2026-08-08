@@ -78,3 +78,15 @@
   from = "/scripture-insights/"
   to = "/close-to-the-hip"
   status = 301
+
+# The Law on Trial section was renamed "Torah Testimonies" and moved from
+# /torah/law-on-trial to /torah/testimonies. Keep the old route resolving — the
+# index, the foundations page, and every study slug (splat covers the subtree).
+[[redirects]]
+  from = "/torah/law-on-trial"
+  to = "/torah/testimonies"
+  status = 301
+[[redirects]]
+  from = "/torah/law-on-trial/*"
+  to = "/torah/testimonies/:splat"
+  status = 301

@@ -1,5 +1,7 @@
 ---
-// torah/law-on-trial/[slug].astro · 0807 V1
+// torah/testimonies/[slug].astro · 0807 V2
+// V2: section renamed/moved — links read "Torah Testimonies" and point at
+// /torah/testimonies.
 // Stub study route. Generates one path per entry in STUDIES, renders the
 // reference, title, and deck, and returns a not-yet-published state for any
 // entry still in draft. Study bodies are loaded separately, one at a time, as
@@ -15,11 +17,11 @@ const { study } = Astro.props;
 const published = study.status === 'live';
 ---
 
-<BaseLayout title={`${study.title} — The Law on Trial`} description={study.deck}>
+<BaseLayout title={`${study.title} — Torah Testimonies`} description={study.deck}>
   <div class="tr-wrap">
 
     <section class="ls-hero">
-      <a href="/torah/law-on-trial" class="ls-back">&larr; Back to the Law on Trial</a>
+      <a href="/torah/testimonies" class="ls-back">&larr; Back to Torah Testimonies</a>
       <p class="ls-ref">{study.reference}</p>
       <h1 class="ls-title">{study.title}</h1>
       <p class="ls-deck">{study.deck}</p>
@@ -29,7 +31,7 @@ const published = study.status === 'live';
       <section class="ls-soon">
         <p class="ls-soon-label">In progress</p>
         <p class="ls-soon-text">This study has not been published yet. It is being prepared and will appear here once it is signed off, one study at a time.</p>
-        <a href="/torah/law-on-trial" class="ls-soon-link">Back to the Law on Trial&nbsp;&#8594;</a>
+        <a href="/torah/testimonies" class="ls-soon-link">Back to Torah Testimonies&nbsp;&#8594;</a>
       </section>
     )}
 

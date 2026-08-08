@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0807 V9
+backfill-social-images  0807 V10
+V10: the Torah Testimonies section (formerly "Law on Trial") moved to
+/torah/testimonies — kicker_for() matches the new rels. Kickers unchanged: THE
+LAW ON TRIAL on the index, FOUNDATION on the foundations page, TESTIMONY on each
+study card.
 V9: the Law on Trial section carries its own kickers (authorized by Dutch): THE
 LAW ON TRIAL on the index, FOUNDATION on the foundations page, TESTIMONY on each
 study card. These read neither STUDY nor REFERENCE. See kicker_for().
@@ -139,12 +143,12 @@ REFERENCE_PAGES = {"on-these-two"}
 
 
 def kicker_for(rel):
-    # Law on Trial — its own section kickers (never STUDY/REFERENCE).
-    if rel == "torah/law-on-trial":
+    # Torah Testimonies — its own section kickers (never STUDY/REFERENCE).
+    if rel == "torah/testimonies":
         return "THE LAW ON TRIAL"
-    if rel == "torah/law-on-trial/foundations":
+    if rel == "torah/testimonies/foundations":
         return "FOUNDATION"
-    if rel.startswith("torah/law-on-trial/"):
+    if rel.startswith("torah/testimonies/"):
         return "TESTIMONY"
     if rel == "watchmans-desk" or rel.startswith("watchmans-desk/"):
         return "The Watchman's Desk"
