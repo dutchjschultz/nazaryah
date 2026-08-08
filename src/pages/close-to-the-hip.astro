@@ -1,5 +1,7 @@
 ---
-// src/pages/close-to-the-hip.astro · 0806 V3
+// src/pages/close-to-the-hip.astro · 0808 V4
+// V4: an insight may carry an optional studyLink/studyLabel pair — rendered
+// beneath the insight as a quiet text link. Absent -> nothing renders (no gap).
 // V3: insights sort breaks postedDate ties by id descending, so same-day
 // insights render newest-id-first (SI-003 above SI-002) deterministically.
 // V2: ids are suppressed from the markup — no data-id, no number badge, no SI-###
@@ -74,6 +76,9 @@ const defenses = readJson('public/data/the-defense.json').entries
                 <p class="ins-text">{i.text}</p>
                 {i.blip && i.blip.trim() && <p class="ins-blip">{i.blip}</p>}
                 {i.refs && i.refs.length > 0 && <p class="ins-refs">{i.refs.join(' · ')}</p>}
+                {i.studyLink && i.studyLabel && (
+                  <p class="ins-study"><a href={i.studyLink}>{i.studyLabel} <span aria-hidden="true">&rarr;</span></a></p>
+                )}
               </article>
             ))}
           </div>
@@ -146,6 +151,14 @@ const defenses = readJson('public/data/the-defense.json').entries
     font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .12em; text-transform: uppercase;
     color: #8a6f45; margin: 18px 0 0; padding-top: 14px; border-top: 1px solid #2e1f0d;
   }
+  /* Optional study link — a quiet text link beneath the insight, not a button.
+     Only renders when the insight carries studyLink + studyLabel. */
+  .cth .ins-study { margin: 12px 0 0; }
+  .cth .ins-study a {
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .14em; text-transform: uppercase;
+    color: #BA7517; text-decoration: none; transition: color .2s ease;
+  }
+  .cth .ins-study a:hover { color: #f0e0bf; }
 
   /* ── Lane 2: The Defense — compact. Stacked rows, hairline between, no card frame. ── */
   .cth .defense { display: flex; flex-direction: column; }
