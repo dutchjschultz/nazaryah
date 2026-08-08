@@ -1,5 +1,7 @@
-// lie-tree 0806 V2.js
-// Walker model. Four chains. Each node names its parent; children are derived.
+// lie-tree 0808 V3.js
+// Added two chains — "Jesus is Lord" and the Roman Name — both climbing through
+// the shared node name-withdrawn into hinge-identity; nicaea gains nomina-sacra
+// as a third parent. Six entries now.
 
 export const meta = {
   title: "On These Two",
@@ -11,7 +13,7 @@ export const meta = {
 };
 
 // entry points shown on the landing screen, in this order
-export const entries = ["sunday", "pork", "three-persons", "heaven"];
+export const entries = ["sunday", "pork", "three-persons", "heaven", "jesus-is-lord", "jesus-name"];
 
 // kind: "history" | "scripture" | "hinge"
 // parent: single id, or array of ids where a step has two causes
@@ -159,7 +161,7 @@ export const nodes = {
     era: "325 AD",
     kind: "history",
     receipt: "The Council of Nicaea adopts homoousios. The word is Greek, it is philosophical, and it appears nowhere in scripture.",
-    parent: ["emperor-enforces", "greek-vocabulary"],
+    parent: ["emperor-enforces", "greek-vocabulary", "nomina-sacra"],
     page: null
   },
   "emperor-enforces": {
@@ -218,6 +220,110 @@ export const nodes = {
     era: "c. 380 BC",
     kind: "history",
     receipt: "Plato, Phaedo, argues the soul survives the body. The claim enters the church through the philosophers, not through the prophets.",
+    parent: "hinge-identity",
+    page: null
+  },
+
+  // ---------- CHAIN — "JESUS IS LORD" ----------
+  "jesus-is-lord": {
+    label: "A sign that reads \"Jesus is Lord\"",
+    era: "today, on a marquee you drove past",
+    kind: "history",
+    receipt: "Printed on signs, marquees, and bumper stickers, and read by nearly everyone who passes it as a statement that Jesus is God.",
+    breaks: "The verse it comes from ends somewhere else: Philippians 2:11 — to the glory of Yahuah the Father.",
+    parent: "confession-clipped",
+    page: null
+  },
+  "confession-clipped": {
+    label: "The confession is quoted without the clause it ends on",
+    era: "every time it is printed",
+    kind: "scripture",
+    receipt: "Philippians 2:11 — every tongue confessing that Yahushua Messiah is Lord, to the glory of Yahuah the Father. The confession is a tribute being carried somewhere. Cut the last clause and it points the wrong direction.",
+    parent: "lord-equals-god",
+    page: null
+  },
+  "lord-equals-god": {
+    label: "Lord is heard as a word for deity",
+    era: "the pulpit, this Sunday",
+    kind: "scripture",
+    receipt: "1 Corinthians 8:6 — one Elohim, the Father, and one Lord, Yahushua Messiah. Paul uses the two words to separate, not to stack. The title carries no deity on its own: the woman at the well calls Him kyrie, meaning sir (John 4:11), and Sarah called Abraham lord with the same word (1 Peter 3:6).",
+    parent: ["two-parties-one-word", "nicaea"],
+    page: null
+  },
+  "two-parties-one-word": {
+    label: "Two parties become one English word, split only by capital letters",
+    era: "1611 onward",
+    kind: "scripture",
+    receipt: "Psalm 110:1 — Yahuah said unto my Adonai. Two different Hebrew words, two different parties, one sentence. English gives both the same word and leaves the entire distinction to capitalization. Yahushua builds a whole question on that gap in Matthew 22:44.",
+    parent: "name-in-english",
+    page: null
+  },
+  "name-in-english": {
+    label: "The Name is replaced by a title across the English text",
+    era: "1611",
+    kind: "history",
+    receipt: "The King James renders the four-letter Name as LORD roughly 6,800 times, and keeps Jehovah in four places only — Exodus 6:3, Psalm 83:18, Isaiah 12:2, and Isaiah 26:4.",
+    parent: "nomina-sacra",
+    page: null
+  },
+  "nomina-sacra": {
+    label: "Scribes write the Name and the Son's title with the same contraction",
+    era: "second century",
+    kind: "history",
+    receipt: "The oldest Greek copies of the Hebrew scriptures keep the Name in Hebrew letters — the Nahal Hever scroll and Papyrus Fouad 266 both preserve it. Later Christian copies replace it with a contraction, and the same style of contraction is used for the Son's title. On the page, the two stop being distinguishable.",
+    parent: "name-withdrawn",
+    page: null
+  },
+
+  // ---------- CHAIN — THE ROMAN NAME ----------
+  "jesus-name": {
+    label: "The name on the sign is Jesus",
+    era: "today, and in every English Bible you own",
+    kind: "history",
+    receipt: "Used everywhere, by everyone, with no sense that anything was lost on the way to it.",
+    breaks: "Matthew 1:21 gives a reason for the name — because he shall save his people. The reason only works in Hebrew, because Yahushua carries Yahuah inside it.",
+    parent: "english-j",
+    page: null
+  },
+  "english-j": {
+    label: "English swaps the I for a J",
+    era: "the 1600s",
+    kind: "history",
+    receipt: "The letter J was not yet distinct from I in English. The 1611 first edition of the King James prints Iesus, not Jesus.",
+    parent: "latin-iesus",
+    page: null
+  },
+  "latin-iesus": {
+    label: "Latin takes the Greek form unchanged",
+    era: "c. 405",
+    kind: "history",
+    receipt: "The Vulgate carries the Greek spelling into Latin, and Latin carries it into every language the West received its Bible from.",
+    parent: "greek-reshape",
+    page: null
+  },
+  "greek-reshape": {
+    label: "Greek reshapes it — no sh sound, and a Greek ending is added",
+    era: "before the first century",
+    kind: "history",
+    receipt: "The Greek text uses the same word for Yahushua and for Joshua son of Nun. The King James prints Jesus in Acts 7:45 and Hebrews 4:8, where the man in view is Joshua. The English Bible proves the reshaping in its own pages, twice.",
+    parent: "name-is-a-sound",
+    page: null
+  },
+  "name-is-a-sound": {
+    label: "A name is treated as a sound to be adapted, not a name to be kept",
+    era: "never stated, always assumed",
+    kind: "scripture",
+    receipt: "Every Hebrew name in the Greek text got the same handling, and nobody missed anything, because the meaning of those names was not load-bearing. This one was. Matthew 1:21 ties the name to a reason, and adapting the sound deletes the reason.",
+    parent: "name-withdrawn",
+    page: null
+  },
+
+  // ---------- SHARED NODE — BOTH CHAINS CLIMB INTO IT ----------
+  "name-withdrawn": {
+    label: "The Name stops being spoken, and a title is read in its place",
+    era: "before the second century",
+    kind: "scripture",
+    receipt: "Exodus 3:15 — this is my name for ever, and this is my memorial unto all generations. A title is read in its place instead, and within a few generations most readers no longer know what stood there.",
     parent: "hinge-identity",
     page: null
   },
