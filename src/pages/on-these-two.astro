@@ -1,5 +1,9 @@
 ---
-// src/pages/on-these-two.astro · 0806 V3
+// src/pages/on-these-two.astro · 0808 V4
+// V4: banner promoted to an amber "In Progress" live notice beneath the title,
+// repeated at the top of the walker so it shows on every screen; meta.opening
+// renders as the landing-only opening statement (first paragraph the navy lead)
+// in place of the removed meta.intro. See lie-tree.data.js V4.
 // V3: card deck and meta description are now SEPARATE fields. The short card
 // deck lives in a visually-hidden .lt-card-deck element the social-card
 // generator reads (kept sr-only so it doesn't echo the intro on screen); the
@@ -36,9 +40,6 @@ for (const [id, node] of Object.entries(nodes)) {
 >
   <div class="lt-wrap">
 
-    <!-- Banner strip — always visible -->
-    <div class="lt-banner">{meta.banner}</div>
-
     <!-- LANDING SCREEN -->
     <section id="lt-landing" class="lt-landing">
       <header class="lt-head">
@@ -46,11 +47,25 @@ for (const [id, node] of Object.entries(nodes)) {
         <p class="lt-standing">{meta.standingLine}</p>
         <!-- Card deck — the short line the 1200x630 social card renders. Kept
              sr-only: the generator and search engines read it, but on screen it
-             would just echo the intro below, so it is not shown. Meta description
+             would just echo the opening below, so it is not shown. Meta description
              is a separate, longer field (the search snippet). Never merge them. -->
         <p class="lt-card-deck">Every lie was handed to somebody by somebody else. Walk it back up.</p>
       </header>
-      <p class="lt-intro">{meta.intro}</p>
+
+      <!-- Live notice — amber band directly beneath the title. Repeated at the
+           top of the walker screen below, so it stays on every screen. -->
+      <div class="lt-banner">
+        <span class="lt-banner-label">In Progress</span>
+        <span class="lt-banner-text">{meta.banner}</span>
+      </div>
+
+      <!-- Opening statement — landing only, between the banner and the entries.
+           First paragraph is the navy lead-in. -->
+      <div class="lt-opening">
+        {meta.opening.map((para, i) => (
+          <p class={i === 0 ? 'lt-opening-lead' : 'lt-opening-p'}>{para}</p>
+        ))}
+      </div>
 
       <div class="lt-entry-grid">
         {entries.map((id) => (
@@ -63,6 +78,11 @@ for (const [id, node] of Object.entries(nodes)) {
 
     <!-- WALKER SCREEN — populated client-side -->
     <section id="lt-walker" class="lt-walker" hidden>
+      <!-- Same live notice, so it stays on every walker screen too. -->
+      <div class="lt-banner">
+        <span class="lt-banner-label">In Progress</span>
+        <span class="lt-banner-text">{meta.banner}</span>
+      </div>
       <div class="lt-startover-row">
         <button type="button" id="lt-startover" class="lt-startover">&larr; Start over</button>
       </div>
@@ -212,20 +232,38 @@ for (const [id, node] of Object.entries(nodes)) {
       padding: 0 1.5rem 4rem;
     }
 
-    /* Banner strip — full width of the column, small caps, muted. */
+    /* Live notice — amber band, full content width, body-weight text (not
+       furniture). Sits beneath the title on the landing and at the top of the
+       walker, so it shows on every screen. House amber. */
     .lt-banner {
-      text-align: center;
+      display: flex;
+      align-items: baseline;
+      gap: 0.85rem;
+      width: 100%;
+      background: #f8edcf;
+      border: 1px solid #e2c684;
+      border-left: 4px solid #b8892f;
+      border-radius: 4px;
+      padding: 0.85rem 1.15rem;
+      margin: 1.4rem 0 1.6rem;
+    }
+    .lt-banner-label {
+      flex-shrink: 0;
       font-variant: small-caps;
       letter-spacing: 0.12em;
-      font-size: 0.8rem;
-      color: var(--muted);
-      padding: 1rem 0;
-      border-bottom: 1px solid var(--line);
-      margin-bottom: 2.5rem;
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: #8a6028;
+      white-space: nowrap;
+    }
+    .lt-banner-text {
+      font-size: 1rem;
+      line-height: 1.5;
+      color: #5f4518;
     }
 
     /* Card deck — read by the social-card generator + search, not shown on
-       screen (it would echo the intro). Standard sr-only: in the DOM and the
+       screen (it would echo the opening). Standard sr-only: in the DOM and the
        built HTML, but visually hidden. */
     .lt-card-deck {
       position: absolute;
@@ -253,12 +291,24 @@ for (const [id, node] of Object.entries(nodes)) {
       line-height: 1.6;
       font-size: 1rem;
     }
-    .lt-intro {
-      max-width: 40rem;
-      margin: 2.25rem auto 0;
-      line-height: 1.75;
-      font-size: 1.08rem;
+    /* Opening statement — landing only. First paragraph is the navy lead-in
+       (larger, navy) — a lead paragraph, not a heading. */
+    .lt-opening {
+      max-width: 42rem;
+      margin: 0 auto;
     }
+    .lt-opening-lead {
+      font-size: 1.35rem;
+      line-height: 1.5;
+      color: var(--navy);
+      margin: 0 0 1.25rem;
+    }
+    .lt-opening-p {
+      font-size: 1.05rem;
+      line-height: 1.75;
+      margin: 0 0 1.1rem;
+    }
+    .lt-opening-p:last-child { margin-bottom: 0; }
 
     .lt-entry-grid {
       margin-top: 2.75rem;

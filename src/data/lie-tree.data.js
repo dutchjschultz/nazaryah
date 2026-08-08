@@ -1,13 +1,24 @@
-// lie-tree 0808 V3.js
-// Added two chains — "Jesus is Lord" and the Roman Name — both climbing through
-// the shared node name-withdrawn into hinge-identity; nicaea gains nomina-sacra
-// as a third parent. Six entries now.
+// lie-tree 0808 V4.js
+// V4: banner promoted to a live "in progress" notice + new opening statement
+// (meta.opening, landing only); meta.intro removed. standingLine kept.
+// V3: added two chains — "Jesus is Lord" and the Roman Name — both climbing
+// through the shared node name-withdrawn into hinge-identity; nicaea gains
+// nomina-sacra as a third parent. Six entries now.
 
 export const meta = {
   title: "On These Two",
-  banner: "This tree is planted, not finished.",
+  banner: "This tree is young. New chains get added as the studies get written, and some of them will move.",
   standingLine: "Who changed the truth of Yahuah into a lie, and worshipped and served the creature more than the Creator. — Romans 1:25",
-  intro: "Every lie in this list was handed to somebody by somebody else. Pick one you were taught. Walk up to see where it came from, or down to see what came out of it. Each step carries its receipt.",
+  opening: [
+    "On these two hang all the law and the prophets.",
+    "Yahushua was asked which commandment was the greatest. He answered with two.",
+    "The first is about who Yahuah is. Mark records how He opened it: Hear, O Israel, Yahuah our Elohim is one Yahuah. Then love Him with everything you have.",
+    "The second is about how you treat people. Love your neighbor as yourself.",
+    "Who He is, and how you walk. Everything else hangs on those two.",
+    "The lies hang the same way, on the same two pegs. One rewrites who He is. That is the Trinity. The other cancels how you walk. That is the setting aside of the Torah.",
+    "Pull the first peg and every commandment about worship comes loose. Pull the second and every commandment about conduct comes loose. Two pegs, and the whole thing is on the floor.",
+    "That is why the two hinges on this page are named the way they are. Every lie traced here climbs back to one of them."
+  ],
   upLabel: "What caused it",
   downLabel: "What came out of it"
 };
