@@ -1,4 +1,6 @@
-// content config 0806 V2
+// content config 0808 V3
+// V3: comment fix only — the watchmans-desk collection is "The Watchman's Desk";
+// dropped the retired "The Watchman's Letter" name. No schema change.
 // V2: `companion` now accepts a single slug OR an array of slugs (Read Next
 // renders every entry, frontmatter order preserved). Back-compatible — existing
 // single-string companions still validate.
@@ -121,7 +123,7 @@ const watchmansReportCollection = defineCollection({
   }),
 });
 
-// The Watchman's Letter — weekly letters. Its OWN collection, NOT posts: these
+// The Watchman's Desk — weekly letters. Its OWN collection, NOT posts: these
 // are letters, not studies, so they do not inherit the study schema. No
 // `associations` field — letters stay out of the study clusters. And nothing
 // here feeds the homepage Featured Picks rotation, which is built from the

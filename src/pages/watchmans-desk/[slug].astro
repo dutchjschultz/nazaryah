@@ -1,5 +1,10 @@
 ---
-// src/pages/watchmans-desk/[slug].astro · 0804 V5
+// src/pages/watchmans-desk/[slug].astro · 0808 V6
+// V6: masthead is now "The Watchman's Desk · [KIND ·] STATUS date". The section
+// name (THE WATCHMAN'S DESK) replaces the retired "The Watchman's Letter", and an
+// ordinary weekly letter carries NO kind word — only non-standard pieces (open
+// letter, field brief) name their kind. Full month stays on the reader page; the
+// card abbreviates it. Shared route: every existing letter changes with it.
 // V5: an entry may carry a supplied `ogImage` (a pre-made card in /public/og);
 // when present it becomes og:image/twitter:image, else BaseLayout auto-resolves.
 // Added `.wl-quote-block` — an indented italic block for quoted phrases (no rule).
@@ -11,7 +16,7 @@
 // letters render divider-free; letter bodies use disc bullets (no diamonds).
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { entries, STATUSES } from '../../data/watchmans-desk.js';
+import { entries, STATUSES, KINDS } from '../../data/watchmans-desk.js';
 
 export async function getStaticPaths() {
   const fulltext = await getCollection('watchmans-desk');
@@ -38,11 +43,13 @@ const Content = full ? (await full.render()).Content : null;
 // per-page card; absolute-resolved in BaseLayout.
 const ogImagePath = ogImage ? `/og/${ogImage}` : undefined;
 
-const chrome =
-  kind === 'open-letter' ? 'An Open Letter'
-  : kind === 'field-brief' ? 'A Field Brief'
-  : "The Watchman's Letter";
-const masthead = `${chrome} · ${STATUSES[status].label} ${date}`;
+// Masthead: the section name, then the status line. An ordinary weekly letter
+// carries NO kind word; only non-standard pieces (open letter, field brief) name
+// their kind. Uppercased by CSS. The full month stays here (the card abbreviates).
+const kindWord = kind === 'weekly-letter' ? '' : KINDS[kind];
+const masthead = ["The Watchman's Desk", kindWord, `${STATUSES[status].label} ${date}`]
+  .filter(Boolean)
+  .join(' · ');
 ---
 
 <BaseLayout title={`${title} — The Watchman's Desk | Nazaryah`} description={description ?? deck} article={true} ogImage={ogImagePath}>
