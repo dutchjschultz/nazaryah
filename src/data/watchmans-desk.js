@@ -1,4 +1,8 @@
-// watchmans-desk 0804 V8.js
+// watchmans-desk 0808 V9.js
+// V9: loaded "The Bird in the Bedchamber" (weekly-letter, 8 Aug, standalone). By
+// sortDate it is the newest, so it takes the featured band; "The Wedge Is Quiet"
+// drops to the archive on slice(2). Card at /og/watchmans-desk/<slug>.v2.png
+// resolves via BaseLayout — no ogImage in the data file (V6 convention).
 // V8: `strapline` is REQUIRED on every source:"standalone" entry — it is the
 // cream-strip line 2 (band AND archive). Build throws naming the slug if missing;
 // no blank line 2 ships. Linked entries use the companion-study title instead.
@@ -44,6 +48,17 @@ export const STATUSES = {
 // string (a calendar date, or a phrase like "Ongoing") and is shown verbatim;
 // it is never parsed or sorted on. Give every new entry a sortDate.
 export const entries = [
+  {
+    slug: "the-bird-in-the-bedchamber",
+    kind: "weekly-letter", status: "week-ending", date: "8 August 2026",
+    sortDate: "2026-08-08",
+    eyebrow: "",
+    title: "The Bird in the Bedchamber",
+    deck: "They each thought they had closed the door. Something with wings was already inside.",
+    body: "Four programs came across this desk last week, from channels that agree with each other on almost nothing. Each one held up something a person had written in private.",
+    strapline: "Four private messages held up on the news",
+    source: "standalone",
+  },
   {
     slug: "the-words-came-first",
     kind: "field-brief", status: "filed", date: "4 August 2026",
