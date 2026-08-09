@@ -1,4 +1,12 @@
-// watchmans-desk 0808 V9.js
+// watchmans-desk 0809 V10.js
+// V10: loaded "Carved in Granite, Buried at Calvary" (weekly-letter, 9 Aug,
+// standalone). Added the `law` field — the Torah principle the letter runs on, a
+// plain phrase (optional; back catalog gets its values over time). Reuse an
+// existing law string CHARACTER FOR CHARACTER, same rule as Worth-the-Hour topics
+// — the desk index builds its law chips from these values and any variant
+// fragments the chips. The desk index now renders EVERY entry (sortedEntries),
+// newest first, so the newest letters and their law chips are not hidden; the
+// homepage band still uses featuredEntries.
 // V9: loaded "The Bird in the Bedchamber" (weekly-letter, 8 Aug, standalone). By
 // sortDate it is the newest, so it takes the featured band; "The Wedge Is Quiet"
 // drops to the archive on slice(2). Card at /og/watchmans-desk/<slug>.v2.png
@@ -48,6 +56,18 @@ export const STATUSES = {
 // string (a calendar date, or a phrase like "Ongoing") and is shown verbatim;
 // it is never parsed or sorted on. Give every new entry a sortDate.
 export const entries = [
+  {
+    slug: "carved-in-granite-buried-at-calvary",
+    kind: "weekly-letter", status: "week-ending", date: "9 August 2026",
+    sortDate: "2026-08-09",
+    eyebrow: "",
+    title: "Carved in Granite, Buried at Calvary",
+    deck: "The stone goes up in the courthouse. The commandment comes down in the sermon.",
+    body: "There is a movement in this country that wants the law of Yahuah written into the law of the land. Commandments back in the schoolroom. Cut into stone outside the courthouse. Judges who rule by them and legislators who legislate by them.",
+    strapline: "Christian nationalism and the abolished law",
+    law: "Divers weights",
+    source: "standalone",
+  },
   {
     slug: "the-bird-in-the-bedchamber",
     kind: "weekly-letter", status: "week-ending", date: "8 August 2026",

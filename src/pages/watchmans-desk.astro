@@ -1,13 +1,19 @@
 ---
-// src/pages/watchmans-desk.astro · 0804 V4
-// The Watchman's Desk archive — EVERY entry (archiveEntries), newest first by
-// sortDate, including the ones the homepage band is currently featuring. The band
-// is a view onto the same array, not a separate set, so an entry never has to be
-// hand-moved here when it ages out. Rendered by the shared WatchmanCard (archive
-// variant). Entries and their closed kind/status lists come from the data file.
+// src/pages/watchmans-desk.astro · 0809 V5
+// V5: the desk index renders EVERY entry (sortedEntries), newest first by
+// sortDate — the full back catalog, so the newest letters and the law chips are
+// never hidden. Added data-driven LAW filter chips: one chip per distinct `law`
+// value present, built from the data (never hand-maintained, same pattern as the
+// Worth-the-Hour topic chips) and filtering the stream by data-law at render.
+// Entries with no `law` yet appear only under "All".
 import BaseLayout from '../layouts/BaseLayout.astro';
 import WatchmanCard from '../components/WatchmanCard.astro';
-import { archiveEntries } from '../data/watchmans-desk.js';
+import { sortedEntries } from '../data/watchmans-desk.js';
+
+// Law chips build themselves from the `law` values present. A new law string
+// makes its own chip automatically; reuse an existing string character for
+// character to file a letter under it.
+const laws = [...new Set(sortedEntries.map((e) => e.law).filter(Boolean))];
 ---
 
 <BaseLayout
@@ -26,8 +32,20 @@ import { archiveEntries } from '../data/watchmans-desk.js';
     </section>
 
     <section class="wd-grid-section">
+      {laws.length > 0 && (
+        <div class="wd-filters" role="group" aria-label="Filter letters by Torah principle">
+          <button type="button" class="wd-chip is-active" data-law="all">All</button>
+          {laws.map((l) => (
+            <button type="button" class="wd-chip" data-law={l}>{l}</button>
+          ))}
+        </div>
+      )}
       <div class="wd-stream">
-        {archiveEntries.map((entry) => <WatchmanCard entry={entry} variant="archive" />)}
+        {sortedEntries.map((entry) => (
+          <div class="wd-card" data-law={entry.law ?? ''}>
+            <WatchmanCard entry={entry} variant="archive" />
+          </div>
+        ))}
       </div>
 
       <div class="wd-foot">
@@ -40,6 +58,25 @@ import { archiveEntries } from '../data/watchmans-desk.js';
 
   </div>
 </BaseLayout>
+
+<script>
+  // Law-chip filter — scoped to the desk section. Toggling a chip shows only the
+  // cards whose data-law matches; "all" shows everything. Hidden cards leave no
+  // gap (the flex column skips display:none items).
+  document.querySelectorAll('.wd-grid-section').forEach((section) => {
+    const chips = section.querySelectorAll('.wd-chip');
+    const cards = section.querySelectorAll('.wd-card');
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const law = chip.dataset.law;
+        chips.forEach((c) => c.classList.toggle('is-active', c === chip));
+        cards.forEach((card) => {
+          card.hidden = !(law === 'all' || card.dataset.law === law);
+        });
+      });
+    });
+  });
+</script>
 
 <style>
   .wd-wrap {
@@ -65,7 +102,20 @@ import { archiveEntries } from '../data/watchmans-desk.js';
   .wd-stripes span:nth-child(even) { background: var(--navy); }
 
   .wd-grid-section { padding: 3.5rem 1.5rem 4rem; }
+
+  /* Law filter chips — data-driven, cream/navy to match the desk masthead. */
+  .wd-filters { max-width: 780px; margin: 0 auto 2rem; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+  .wd-chip {
+    font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--navy); background: transparent; border: 1px solid rgba(10,29,58,0.35);
+    border-radius: 999px; padding: 0.42rem 0.95rem; cursor: pointer;
+    transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+  }
+  .wd-chip:hover, .wd-chip:focus-visible { border-color: var(--navy); background: rgba(10,29,58,0.06); outline: none; }
+  .wd-chip.is-active { background: var(--navy); color: var(--cream); border-color: var(--navy); }
+
   .wd-stream { display: flex; flex-direction: column; gap: 1.6rem; max-width: 780px; margin: 0 auto; }
+  .wd-card { display: block; }
 
   .wd-foot { max-width: 680px; margin: 3rem auto 0; text-align: center; padding: 1.75rem 1.5rem; border-top: 1px solid var(--navy); font-style: italic; color: var(--ink-soft); font-size: 0.95rem; line-height: 1.7; }
   .wd-foot strong { color: #061230; font-style: normal; letter-spacing: 0.15em; text-transform: uppercase; font-size: 0.72rem; font-weight: 700; }
