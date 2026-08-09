@@ -1,4 +1,5 @@
-// lie-tree 0808 V4.js
+// lie-tree 0809 V5.js
+// V5: added the iniquity chain under hinge-walk. New entry point: no-law-in-sin.
 // V4: banner promoted to a live "in progress" notice + new opening statement
 // (meta.opening, landing only); meta.intro removed. standingLine kept.
 // V3: added two chains — "Jesus is Lord" and the Roman Name — both climbing
@@ -24,7 +25,7 @@ export const meta = {
 };
 
 // entry points shown on the landing screen, in this order
-export const entries = ["sunday", "pork", "three-persons", "heaven", "jesus-is-lord", "jesus-name"];
+export const entries = ["sunday", "pork", "three-persons", "heaven", "jesus-is-lord", "jesus-name", "no-law-in-sin"];
 
 // kind: "history" | "scripture" | "hinge"
 // parent: single id, or array of ids where a step has two causes
@@ -336,6 +337,50 @@ export const nodes = {
     kind: "scripture",
     receipt: "Exodus 3:15 — this is my name for ever, and this is my memorial unto all generations. A title is read in its place instead, and within a few generations most readers no longer know what stood there.",
     parent: "hinge-identity",
+    page: null
+  },
+
+  // ---------- CHAIN — INIQUITY ----------
+  "no-law-in-sin": {
+    label: "Sin is a heart problem, not a law problem",
+    era: "this week",
+    kind: "history",
+    receipt: "Preached from most pulpits in the country. Sin is described as brokenness, distance, or a wrong direction of the heart. The law is not mentioned.",
+    breaks: "The definition it stands against: 1 John 3:4.",
+    parent: "iniquity-word",
+    page: null
+  },
+  "iniquity-word": {
+    label: "An English word is printed that no longer says what the original said",
+    era: "405 / 1382 / 1611",
+    kind: "history",
+    receipt: "Jerome's Vulgate prints iniquitas for anomia, c. 405. Wycliffe carries it into English, 1382. The KJV translators render anomia as the transgression of the law in 1 John 3:4, and as iniquity in Matthew 7:23, 13:41, 23:28, 24:12, and 2 Thessalonians 2:7. The same committee, the same word, said plainly once.",
+    parent: "sin-redefined",
+    page: null
+  },
+  "sin-redefined": {
+    label: "The church may state in its own words what sin is",
+    era: "1566 forward",
+    kind: "history",
+    receipt: "The Roman Catechism of 1566 and the catechisms that follow it define sin without reference to the law, as an offense against reason, truth, and right conscience.",
+    breaks: "The definition was already given, and it was never withdrawn: 1 John 3:4.",
+    parent: "lawlessness-hidden",
+    page: null
+  },
+  "lawlessness-hidden": {
+    label: "The lawlessness the prophets warned of is read as ordinary wickedness",
+    era: "the standing reading",
+    kind: "scripture",
+    receipt: "Because lawlessness shall abound, the love of many shall wax cold (Matthew 24:12). Depart from me, ye that work lawlessness (Matthew 7:23). The mystery of lawlessness doth already work (2 Thessalonians 2:7). Read with the word restored, the warning is not about wickedness in general. It is about the law being put away.",
+    parent: "change-times-and-laws",
+    page: null
+  },
+  "change-times-and-laws": {
+    label: "He shall think to change times and laws",
+    era: "Daniel 7:25",
+    kind: "scripture",
+    receipt: "The verse does not describe an attack on the commandments one at a time. It names an intent to change the times and the laws themselves. A law is changed most quietly by changing what it is called.",
+    parent: "hinge-walk",
     page: null
   },
 
