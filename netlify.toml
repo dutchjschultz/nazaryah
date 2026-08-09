@@ -11,6 +11,17 @@
 [context.branch-deploy]
   command = "npm run build"
 
+# Social cards are content-addressed by version (.vN.png) — a changed card gets a
+# new filename, never a mutated one. So the files themselves are immutable and can
+# be cached hard. This replaces the default `max-age=0, must-revalidate` on /og/*
+# with a long-lived immutable cache, which aggressive link-preview crawlers
+# (Twitterbot, facebookexternalhit) treat more reliably than a revalidate-every-hit
+# resource. New versions still bust cache on their own because the URL changes.
+[[headers]]
+  for = "/og/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
 # Social-card path standardization (0804): the Wedge + Words cards/thumbs moved
 # from the old flat, dimension-named path to /og/watchmans-desk/<slug>{,-thumb}.png.
 # Originals are LEFT in place (already-crawled X/Facebook posts keep resolving);
