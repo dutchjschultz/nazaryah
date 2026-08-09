@@ -1,4 +1,9 @@
-// watchmans-desk 0809 V11.js
+// watchmans-desk 0809 V12.js
+// V12: all nine entries now carry a distinct `law` (nine chips, no repeats). The
+// canonical law strings — reuse CHARACTER FOR CHARACTER on future entries:
+//   Divers weights · Talebearing · Names of other gods · False witness ·
+//   Adding to the word · Mocking the afflicted · Offerings to the dead ·
+//   Standing images · The land is mine
 // V11: The Wedge Is Quiet gets law "False witness". Every entry already carried
 // an ISO sortDate driving the sort; display dates ("May 25", "Ongoing") are shown
 // verbatim and never parsed.
@@ -80,6 +85,7 @@ export const entries = [
     deck: "They each thought they had closed the door. Something with wings was already inside.",
     body: "Four programs came across this desk last week, from channels that agree with each other on almost nothing. Each one held up something a person had written in private.",
     strapline: "Four private messages held up on the news",
+    law: "Talebearing",
     source: "standalone",
   },
   {
@@ -91,6 +97,7 @@ export const entries = [
     deck: "They never studied the doctrine. They speak it fluently.",
     body: "Most days I listen to ordinary people take apart the miracle sellers and the prophets-for-pay. I am not there for the takedown. I am there for the language. The man doing the correcting tells you more about what he believes than the man he corrects ever does.",
     strapline: "A week of listening to ordinary talk",
+    law: "Names of other gods",
     source: "standalone",
   },
   {
@@ -114,6 +121,7 @@ export const entries = [
     deck: "He said the Book settles it. Then he reached for something else.",
     body: "Somebody sent me a video of a sermon on the Trinity and asked what I thought of it. I watched the whole thing. Three places in it stopped me, and all three stopped me for the same reason — he reads half a verse, and the half he leaves out is the half that completes the picture.",
     strapline: "A Trinity sermon, checked line by line",
+    law: "Adding to the word",
     source: "standalone",
   },
   {
@@ -125,6 +133,7 @@ export const entries = [
     deck: "The building is well kept. The rent is being paid to someone else.",
     body: "An independent host on YouTube — no network behind him, a few million watching — put out a video this week taking apart an influencer who had been arrested. He went after her politics. Then he went after her weight.",
     strapline: "An online takedown, watched closely",
+    law: "Mocking the afflicted",
     source: "standalone",
   },
   {
@@ -135,6 +144,7 @@ export const entries = [
     title: "Memorial Day Returns in Five Weeks",
     deck: "The flags go out on schedule. Rome wrote the ceremony.",
     body: "On Monday, May 25, Americans will perform the most religious ceremony in the nation's civic calendar. A flag on every grave at Arlington. A wreath at the Tomb of the Unknown Soldier. Taps. A 21-gun salute. The eternal flame at JFK's grave, tended by state functionaries.",
+    law: "Offerings to the dead",
     source: "linked",
     companionStudy: { title: "The Cult of the Fallen Soldier", url: "/american-idolatry/memorial-veterans-day" },
   },
@@ -146,6 +156,7 @@ export const entries = [
     title: "The Triumphal Arch Is Coming to Washington",
     deck: "A 250-foot Roman triumphal arch, fast-tracked for a July 4 unveiling across the Potomac from Lincoln — and the sun-temple pattern underneath it.",
     body: "On April 16 the U.S. Commission of Fine Arts approved a 250-foot Triumphal Arch to be built at Memorial Circle, directly across the Potomac from the Lincoln Memorial. It is being fast-tracked for unveiling on July 4, 2026 — the 250th anniversary of American independence. The design is a near-copy of the Arc de Triomphe in Paris, only taller.",
+    law: "Standing images",
     source: "linked",
     companionStudy: { title: "The Sun Temple on the Potomac", url: "/american-idolatry/washington-dc" },
   },
@@ -157,6 +168,7 @@ export const entries = [
     title: "The War the Headlines Cannot Explain",
     deck: "The headlines name the missiles. They will not name who is in Jacob's land, by whose authority, or what Scripture says they are doing there.",
     body: "News cycles will tell you who fired what missile at whom. They will not tell you who is in Jacob's land, by whose authority, or what role Scripture gives them in the closing record of the age.",
+    law: "The land is mine",
     source: "linked",
     companionStudy: { title: "The Woman, the Beast, and the Second Beast", url: "/books/revelation#court-appeal-2" },
   },
