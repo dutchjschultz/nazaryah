@@ -1,4 +1,7 @@
-// watchmans-desk 0809 V10.js
+// watchmans-desk 0809 V11.js
+// V11: The Wedge Is Quiet gets law "False witness". Every entry already carried
+// an ISO sortDate driving the sort; display dates ("May 25", "Ongoing") are shown
+// verbatim and never parsed.
 // V10: loaded "Carved in Granite, Buried at Calvary" (weekly-letter, 9 Aug,
 // standalone). Added the `law` field — the Torah principle the letter runs on, a
 // plain phrase (optional; back catalog gets its values over time). Reuse an
@@ -99,6 +102,7 @@ export const entries = [
     deck: "Nobody swung anything. The house came apart on its own.",
     body: "Seventeen programs went through this desk over the past week. Better than nine hours of tape, pulled from channels that agree with each other on almost nothing.",
     strapline: "Seventeen programs in one week",
+    law: "False witness",
     source: "standalone",
   },
   {
