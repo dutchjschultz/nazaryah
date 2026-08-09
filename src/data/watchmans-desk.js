@@ -1,4 +1,7 @@
-// watchmans-desk 0809 V12.js
+// watchmans-desk 0809 V13.js
+// V13: war-in-jacobs-land sortDate 2026-04-01 (placeholder) -> 2026-07-24, the
+// first-commit date of its content file (watchmans-report/war-in-jacobs-land.md,
+// commit 55cd483). Display date "Ongoing" unchanged.
 // V12: all nine entries now carry a distinct `law` (nine chips, no repeats). The
 // canonical law strings — reuse CHARACTER FOR CHARACTER on future entries:
 //   Divers weights · Talebearing · Names of other gods · False witness ·
@@ -163,7 +166,7 @@ export const entries = [
   {
     slug: "war-in-jacobs-land",
     kind: "field-brief", status: "on-ground", date: "Ongoing",
-    sortDate: "2026-04-01",
+    sortDate: "2026-07-24",
     eyebrow: "The Covenant Land · Ongoing",
     title: "The War the Headlines Cannot Explain",
     deck: "The headlines name the missiles. They will not name who is in Jacob's land, by whose authority, or what Scripture says they are doing there.",
