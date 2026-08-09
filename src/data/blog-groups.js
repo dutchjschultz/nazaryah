@@ -27,7 +27,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 69 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 70 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (15) ──
   'worship-and-service': 'the-counterfeit-throne',
@@ -88,7 +88,7 @@ export const POST_GROUP = {
   // ── The Side Door (1) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
 
-  // ── Scripture Unfiltered (25) ──
+  // ── Scripture Unfiltered (26) ──
   'ark-of-covering': 'scripture-unfiltered',
   'bread-and-wine': 'scripture-unfiltered',
   'clean-hands-pure-heart': 'scripture-unfiltered',
@@ -114,6 +114,7 @@ export const POST_GROUP = {
   'two-loads-in-the-wilderness': 'scripture-unfiltered',
   'still-waiting-for-shavuot': 'scripture-unfiltered',
   'filled-but-not-indwelt': 'scripture-unfiltered',
+  'two-kingdoms-one-walk': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
