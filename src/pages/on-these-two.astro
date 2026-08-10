@@ -1,493 +1,504 @@
 ---
-// src/pages/on-these-two.astro · 0808 V4
-// V4: banner promoted to an amber "In Progress" live notice beneath the title,
-// repeated at the top of the walker so it shows on every screen; meta.opening
-// renders as the landing-only opening statement (first paragraph the navy lead)
-// in place of the removed meta.intro. See lie-tree.data.js V4.
-// V3: card deck and meta description are now SEPARATE fields. The short card
-// deck lives in a visually-hidden .lt-card-deck element the social-card
-// generator reads (kept sr-only so it doesn't echo the intro on screen); the
-// meta description runs long again for the search snippet. Neither falls back
-// to the other. See DECK_CLASSES["on-these-two"] in backfill-social-images.py.
-// V2: description tightened to the exact card deck line — this page has no
-// rendered deck element, so the social-card generator uses og:description as the
-// deck; the prior long description overran and clipped mid-sentence on the card.
-// V1: The Lie Tree Walker. Four chains (Sunday, pork, three-persons, heaven)
-// climbing to the two hinges. Landing grid → client-side walker, hash-linkable.
-// Data + receipts live in src/data/lie-tree.data.js; children derived here.
-import BaseLayout from '../layouts/BaseLayout.astro';
-import { meta, entries, nodes } from '../data/lie-tree.data.js';
+// on-these-two 0810 V2.astro
+// V2. Fixes scoped-style bug that left the injected chain unstyled. Rebuilds the middle as graded
+// rung cards with a chain joint between them. Evidence now opens in a modal instead of inline.
+// Layout import: site has no Layout.astro; BaseLayout takes { title, description }.
+// Only this import path changed — the <Layout title description> call is untouched.
+import Layout from '../layouts/BaseLayout.astro';
+import { links } from '../data/on-these-two/links.data.js';
+import { chains, hinges, categories } from '../data/on-these-two/chains.data.js';
+import { filings, unfiledLinks } from '../lib/chain-filings.js';
 
-// ── DERIVE CHILDREN AT BUILD TIME ──────────────────────────────────────────
-// A node's children are every node whose parent (string or array) names it.
-// Never hand-maintained in the data file — recomputed on every build.
-const parentsOf = (n) => (Array.isArray(n.parent) ? n.parent : n.parent ? [n.parent] : []);
-const walker = {};
-for (const [id, node] of Object.entries(nodes)) {
-  walker[id] = {
-    ...node,
-    parents: parentsOf(node),
-    children: Object.entries(nodes)
-      .filter(([, other]) => parentsOf(other).includes(id))
-      .map(([childId]) => childId),
-  };
-}
+// Build-time writing queue: every link with no study filed against it yet.
+// Prints once during `astro build` (and on dev start). It is the writing queue.
+const _unfiled = unfiledLinks(links);
+console.log(
+  `\n[On These Two] unfiled links — ${_unfiled.length}/${Object.keys(links).length} have no study filed:`
+);
+for (const _id of _unfiled) console.log('  •', _id);
+if (_unfiled.length === 0) console.log('  (every link has at least one study filed)');
+
+const payload = {
+  hinges,
+  categories,
+  chains: chains.map((c) => ({
+    id: c.id,
+    saying: c.saying,
+    hinge: c.hinge,
+    category: c.category,
+    spokenBy: c.spokenBy,
+    aliases: c.aliases || [],
+    linkIds: c.links,
+    links: c.links.map((id) => {
+      const l = links[id];
+      if (!l) throw new Error(`On These Two: chain "${c.id}" references unknown link id "${id}"`);
+      return {
+        id,
+        title: l.title,
+        line: l.line,
+        witnesses: l.witnesses || [],
+        record: l.record || null,
+        finding: l.finding || null,
+        filings: filings[id] || [],
+      };
+    }),
+    verdict: {
+      witnesses: c.verdict?.witnesses || [],
+      record: c.verdict?.record || null,
+      finding: c.verdict?.finding || null,
+      filings: [],
+    },
+  })),
+};
+
+const counts = {};
+for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).length;
 ---
 
-<BaseLayout
-  title="On These Two — Nazaryah"
-  description="Sunday, pork, the Trinity, heaven at death. Every one was handed down by somebody, and every step has a receipt. Pick a lie you were taught and walk it back up to where it started."
->
-  <div class="lt-wrap">
+<Layout title="On These Two" description="Every lie hangs on one of two hinges. Walk the chain down to what people say out loud.">
+  <section class="ot">
 
-    <!-- LANDING SCREEN -->
-    <section id="lt-landing" class="lt-landing">
-      <header class="lt-head">
-        <h1 class="lt-title">{meta.title}</h1>
-        <p class="lt-standing">{meta.standingLine}</p>
-        <!-- Card deck — the short line the 1200x630 social card renders. Kept
-             sr-only: the generator and search engines read it, but on screen it
-             would just echo the opening below, so it is not shown. Meta description
-             is a separate, longer field (the search snippet). Never merge them. -->
-        <p class="lt-card-deck">Every lie was handed to somebody by somebody else. Walk it back up.</p>
-      </header>
+    <header class="ot-mast">
+      <p class="ot-over">On these two</p>
+      <h1>Every lie hangs on one of two hinges</h1>
+      <p class="ot-lede">Pick a hinge. Walk the chain down. The last link is what people say out loud.</p>
+    </header>
 
-      <!-- Live notice — amber band directly beneath the title. Repeated at the
-           top of the walker screen below, so it stays on every screen. -->
-      <div class="lt-banner">
-        <span class="lt-banner-label">In Progress</span>
-        <span class="lt-banner-text">{meta.banner}</span>
+    <div class="ot-hinges">
+      {hinges.map((h) => (
+        <button class={`ot-tile ot-tile-${h.id}`} data-hinge={h.id} type="button">
+          <span class="ot-tile-name">{h.name}</span>
+          <span class="ot-tile-line">{h.line}</span>
+          <span class="ot-tile-count">{counts[h.id]} chains</span>
+        </button>
+      ))}
+    </div>
+
+    <svg class="ot-band" viewBox="0 0 800 110" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M200 0 C200 50 90 60 70 110" />
+      <path d="M200 0 C200 55 175 65 170 110" />
+      <path d="M200 0 C200 55 250 65 280 110" />
+      <path d="M600 0 C600 50 520 60 500 110" />
+      <path d="M600 0 C600 55 615 65 620 110" />
+      <path d="M600 0 C600 50 700 60 735 110" />
+    </svg>
+
+    <div class="ot-filters">
+      <label class="ot-field">
+        <span>Hinge</span>
+        <select id="ot-hinge">
+          <option value="all">All</option>
+          {hinges.map((h) => <option value={h.id}>{h.name}</option>)}
+        </select>
+      </label>
+      <label class="ot-field">
+        <span>Category</span>
+        <select id="ot-cat">
+          <option value="all">All</option>
+          {categories.map((c) => <option value={c}>{c}</option>)}
+        </select>
+      </label>
+    </div>
+
+    <div id="ot-chain" class="ot-chain" aria-live="polite"></div>
+
+    <div class="ot-picker">
+      <label class="ot-field ot-grow">
+        <span>Saying</span>
+        <select id="ot-pick"></select>
+      </label>
+      <div class="ot-count"><strong id="ot-total">0</strong><span>total</span></div>
+      <label class="ot-field ot-grow">
+        <span>Search</span>
+        <input id="ot-q" type="search" placeholder="grace, saturn, colossians" autocomplete="off" />
+      </label>
+      <button id="ot-shuffle" class="ot-shuffle" type="button">Shuffle</button>
+    </div>
+
+  </section>
+
+  <div id="ot-modal" class="ot-modal" role="dialog" aria-modal="true" aria-labelledby="ot-modal-title" hidden>
+    <div class="ot-modal-scrim" data-close></div>
+    <div class="ot-modal-panel">
+      <button class="ot-modal-x" type="button" data-close aria-label="Close">&times;</button>
+      <div id="ot-modal-body"></div>
+      <div class="ot-modal-foot">
+        <button class="ot-step" type="button" data-step="-1">&larr; Previous link</button>
+        <span id="ot-modal-pos" class="ot-modal-pos"></span>
+        <button class="ot-step" type="button" data-step="1">Next link &rarr;</button>
       </div>
-
-      <!-- Opening statement — landing only, between the banner and the entries.
-           First paragraph is the navy lead-in. -->
-      <div class="lt-opening">
-        {meta.opening.map((para, i) => (
-          <p class={i === 0 ? 'lt-opening-lead' : 'lt-opening-p'}>{para}</p>
-        ))}
-      </div>
-
-      <div class="lt-entry-grid">
-        {entries.map((id) => (
-          <button type="button" class="lt-entry-card" data-goto={id}>
-            {walker[id].label}
-          </button>
-        ))}
-      </div>
-    </section>
-
-    <!-- WALKER SCREEN — populated client-side -->
-    <section id="lt-walker" class="lt-walker" hidden>
-      <!-- Same live notice, so it stays on every walker screen too. -->
-      <div class="lt-banner">
-        <span class="lt-banner-label">In Progress</span>
-        <span class="lt-banner-text">{meta.banner}</span>
-      </div>
-      <div class="lt-startover-row">
-        <button type="button" id="lt-startover" class="lt-startover">&larr; Start over</button>
-      </div>
-
-      <!-- 1. PARENTS -->
-      <div id="lt-parents" class="lt-zone lt-zone--parents"></div>
-
-      <!-- 2. CURRENT NODE -->
-      <div id="lt-current" class="lt-current-slot"></div>
-
-      <!-- 3. CHILDREN -->
-      <div id="lt-children" class="lt-zone lt-zone--children"></div>
-    </section>
-
+    </div>
   </div>
 
-  <script define:vars={{ walker, entries, meta }}>
-    (function () {
-      const landing = document.getElementById('lt-landing');
-      const screen = document.getElementById('lt-walker');
-      const parentsZone = document.getElementById('lt-parents');
-      const currentSlot = document.getElementById('lt-current');
-      const childrenZone = document.getElementById('lt-children');
+  <script type="application/json" id="ot-data" set:html={JSON.stringify(payload)}></script>
 
-      // Small helper — an element with class(es) and optional text.
-      function el(tag, cls, text) {
-        const n = document.createElement(tag);
-        if (cls) n.className = cls;
-        if (text != null) n.textContent = text;
-        return n;
+  <script>
+    const DATA = JSON.parse(document.getElementById('ot-data').textContent);
+    const elHinge = document.getElementById('ot-hinge');
+    const elCat = document.getElementById('ot-cat');
+    const elPick = document.getElementById('ot-pick');
+    const elQ = document.getElementById('ot-q');
+    const elTotal = document.getElementById('ot-total');
+    const elChain = document.getElementById('ot-chain');
+    const elModal = document.getElementById('ot-modal');
+    const elBody = document.getElementById('ot-modal-body');
+    const elPos = document.getElementById('ot-modal-pos');
+
+    const KEY = 'ot-order';
+    function newOrder() {
+      const ids = DATA.chains.map((c) => c.id);
+      for (let i = ids.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [ids[i], ids[j]] = [ids[j], ids[i]];
       }
+      return ids;
+    }
+    let order;
+    try {
+      const saved = JSON.parse(sessionStorage.getItem(KEY) || 'null');
+      order = Array.isArray(saved) && saved.length === DATA.chains.length ? saved : newOrder();
+    } catch (e) { order = newOrder(); }
+    function saveOrder() { try { sessionStorage.setItem(KEY, JSON.stringify(order)); } catch (e) {} }
+    saveOrder();
 
-      // A tappable step card (used in both the parents and children zones).
-      function stepCard(id) {
-        const node = walker[id];
-        const card = el('button', 'lt-step');
-        card.type = 'button';
-        card.setAttribute('data-goto', id);
-        card.appendChild(el('span', 'lt-step-label', node.label));
-        card.appendChild(el('span', 'lt-step-era', node.era));
-        return card;
-      }
+    const shared = {};
+    DATA.chains.forEach((c) => c.linkIds.forEach((id) => { shared[id] = (shared[id] || 0) + 1; }));
 
-      const RECEIPT_LABEL = { history: 'Receipt', scripture: 'In the book', hinge: null };
+    let current = null;
+    let openIndex = -1;
+    let lastFocus = null;
 
-      function render(id) {
-        const node = walker[id];
-        if (!node) return showLanding();
+    const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
 
-        landing.hidden = true;
-        screen.hidden = false;
+    function matches(c) {
+      if (elHinge.value !== 'all' && c.hinge !== elHinge.value) return false;
+      if (elCat.value !== 'all' && c.category !== elCat.value) return false;
+      const q = elQ.value.trim().toLowerCase();
+      if (!q) return true;
+      return c.saying.toLowerCase().includes(q)
+        || c.category.toLowerCase().includes(q)
+        || c.aliases.some((a) => a.includes(q))
+        || c.links.some((l) => l.title.toLowerCase().includes(q)
+          || l.witnesses.some((w) => w[0].toLowerCase().includes(q)));
+    }
 
-        // ---- PARENTS ZONE ----
-        parentsZone.replaceChildren();
-        if (node.parents.length) {
-          parentsZone.appendChild(el('p', 'lt-zone-label', meta.upLabel));
-          const grid = el('div', 'lt-step-grid');
-          node.parents.forEach((p) => grid.appendChild(stepCard(p)));
-          parentsZone.appendChild(grid);
-          parentsZone.appendChild(el('div', 'lt-arrow', '↓')); // ↓ points down at current
-        } else {
-          parentsZone.appendChild(el('p', 'lt-nothing', 'Nothing above this. It is the hinge.'));
-        }
+    // ---------- chain ----------
 
-        // ---- CURRENT NODE ----
-        currentSlot.replaceChildren();
-        const heavy = node.kind === 'hinge' || node.parents.length > 1;
-        const current = el('div', 'lt-current' + (node.kind === 'hinge' ? ' lt-current--hinge' : '') + (heavy ? ' lt-current--heavy' : ''));
-        current.appendChild(el('h2', 'lt-current-label', node.label));
-        current.appendChild(el('p', 'lt-current-era', node.era));
+    function render(c) {
+      current = c;
+      if (!c) { elChain.innerHTML = '<p class="ot-empty">Nothing matches those filters yet.</p>'; return; }
+      const hinge = DATA.hinges.find((h) => h.id === c.hinge);
+      const n = c.links.length;
 
-        const receiptLabel = RECEIPT_LABEL[node.kind];
-        const receipt = el('div', 'lt-receipt' + (node.kind === 'hinge' ? ' lt-receipt--hinge' : ''));
-        if (receiptLabel) receipt.appendChild(el('p', 'lt-receipt-label', receiptLabel));
-        receipt.appendChild(el('p', 'lt-receipt-text', node.receipt));
-        current.appendChild(receipt);
+      let h = `<div class="ot-head">
+        <span class="ot-badge">${esc(hinge.name)}</span>
+        <span class="ot-arrow" aria-hidden="true">&rarr;</span>
+        <span class="ot-saying">&ldquo;${esc(c.saying)}&rdquo;</span>
+        <span class="ot-linkcount">${n + 1} links</span>
+      </div>
+      <p class="ot-sub">${esc(c.category)} &middot; ${esc(c.spokenBy)}</p>
+      <ol class="ot-ladder">`;
 
-        if (node.breaks) current.appendChild(el('p', 'lt-breaks', node.breaks));
-
-        if (node.page) {
-          const link = el('a', 'lt-morelink', 'More on this step →');
-          link.href = '/' + String(node.page).replace(/^\/+/, '');
-          current.appendChild(link);
-        }
-        currentSlot.appendChild(current);
-
-        // ---- CHILDREN ZONE ----
-        childrenZone.replaceChildren();
-        if (node.children.length) {
-          childrenZone.appendChild(el('div', 'lt-arrow', '↓')); // ↓ points down at fruit
-          childrenZone.appendChild(el('p', 'lt-zone-label', meta.downLabel));
-          const grid = el('div', 'lt-step-grid');
-          node.children.forEach((c) => grid.appendChild(stepCard(c)));
-          childrenZone.appendChild(grid);
-        } else {
-          childrenZone.appendChild(el('p', 'lt-nothing', 'Nothing below this. You are standing on the fruit.'));
-        }
-
-        if (('#' + id) !== location.hash) {
-          history.replaceState(null, '', '#' + id);
-        }
-        window.scrollTo({ top: 0, behavior: 'auto' });
-      }
-
-      function showLanding() {
-        screen.hidden = true;
-        landing.hidden = false;
-        if (location.hash) history.replaceState(null, '', location.pathname + location.search);
-      }
-
-      // Delegated taps — entry cards + every step card route through data-goto.
-      document.querySelector('.lt-wrap').addEventListener('click', (e) => {
-        const goto = e.target.closest('[data-goto]');
-        if (goto) { render(goto.getAttribute('data-goto')); return; }
-        if (e.target.closest('#lt-startover')) showLanding();
+      c.links.forEach((l, i) => {
+        const t = Math.round((i / n) * 100);
+        h += `<li class="ot-rung" style="--t:${t}%">
+          <button class="ot-rung-btn" data-i="${i}" type="button">
+            <span class="ot-num">${i + 1}</span>
+            <span class="ot-rung-copy">
+              <span class="ot-rung-title">${esc(l.title)}</span>
+              <span class="ot-rung-line">${esc(l.line)}</span>
+            </span>
+            <span class="ot-rung-cue">Evidence</span>
+          </button>
+        </li>
+        <li class="ot-joint" aria-hidden="true" style="--t:${Math.round(((i + 0.5) / n) * 100)}%"><span></span></li>`;
       });
 
-      // Hash → node. Direct links like /on-these-two#nicaea open on that node.
-      function fromHash() {
-        const id = decodeURIComponent(location.hash.replace(/^#/, ''));
-        if (id && walker[id]) render(id); else showLanding();
+      h += `<li class="ot-rung ot-rung-said" style="--t:100%">
+          <button class="ot-rung-btn" data-i="${n}" type="button">
+            <span class="ot-num">${n + 1}</span>
+            <span class="ot-rung-copy">
+              <span class="ot-said-label">What they say today</span>
+              <span class="ot-said-text">&ldquo;${esc(c.saying)}&rdquo;</span>
+            </span>
+            <span class="ot-rung-cue">The answer</span>
+          </button>
+        </li></ol>`;
+
+      elChain.className = `ot-chain ot-h-${c.hinge}`;
+      elChain.innerHTML = h;
+      elChain.querySelectorAll('.ot-rung-btn').forEach((b) => {
+        b.addEventListener('click', () => openModal(Number(b.dataset.i)));
+      });
+    }
+
+    // ---------- modal ----------
+
+    function evidenceHtml(node) {
+      let h = '';
+      if (node.witnesses && node.witnesses.length) {
+        h += '<p class="ot-ev-label">Witnesses</p><dl class="ot-verses">';
+        node.witnesses.forEach((w) => {
+          h += `<div class="ot-verse"><dt>${esc(w[0])}</dt><dd>${esc(w[1])}</dd></div>`;
+        });
+        h += '</dl>';
       }
-      window.addEventListener('hashchange', fromHash);
-      fromHash();
-    })();
+      if (node.record) h += `<p class="ot-ev-label">The record</p><p class="ot-record">${esc(node.record)}</p>`;
+      if (node.finding) h += `<p class="ot-finding">${esc(node.finding)}</p>`;
+      if (node.filings && node.filings.length) {
+        h += '<p class="ot-ev-label">Filed with this link</p><p class="ot-chips">';
+        node.filings.forEach((f) => { h += `<a class="ot-chip" href="${esc(f.url)}">${esc(f.title)}</a>`; });
+        h += '</p>';
+      }
+      return h;
+    }
+
+    function openModal(i) {
+      if (!current) return;
+      openIndex = i;
+      const n = current.links.length;
+      const isSaid = i === n;
+      const node = isSaid ? current.verdict : current.links[i];
+      const hinge = DATA.hinges.find((h) => h.id === current.hinge);
+      const t = Math.round((i / n) * 100);
+
+      let h = `<p class="ot-modal-eyebrow">${esc(hinge.name)} &middot; &ldquo;${esc(current.saying)}&rdquo;</p>`;
+      if (isSaid) {
+        h += `<p class="ot-modal-kicker">What they say today</p>
+              <h2 id="ot-modal-title" class="ot-modal-title">&ldquo;${esc(current.saying)}&rdquo;</h2>`;
+      } else {
+        h += `<h2 id="ot-modal-title" class="ot-modal-title"><span class="ot-modal-num">${i + 1}</span>${esc(node.title)}</h2>
+              <p class="ot-modal-line">${esc(node.line)}</p>`;
+        if (shared[node.id] > 1) h += `<p class="ot-shared">This link is held by ${shared[node.id]} chains.</p>`;
+      }
+      h += evidenceHtml(node);
+
+      elBody.innerHTML = h;
+      elBody.style.setProperty('--t', t + '%');
+      elModal.className = `ot-modal ot-h-${current.hinge}`;
+      elPos.textContent = `Link ${i + 1} of ${n + 1}`;
+      elModal.querySelectorAll('.ot-step').forEach((b) => {
+        const to = i + Number(b.dataset.step);
+        b.disabled = to < 0 || to > n;
+      });
+
+      lastFocus = document.activeElement;
+      elModal.hidden = false;
+      document.body.classList.add('ot-locked');
+      elModal.querySelector('.ot-modal-x').focus();
+    }
+
+    function closeModal() {
+      elModal.hidden = true;
+      document.body.classList.remove('ot-locked');
+      if (lastFocus) lastFocus.focus();
+    }
+
+    elModal.querySelectorAll('[data-close]').forEach((b) => b.addEventListener('click', closeModal));
+    elModal.querySelectorAll('.ot-step').forEach((b) => {
+      b.addEventListener('click', () => openModal(openIndex + Number(b.dataset.step)));
+    });
+    document.addEventListener('keydown', (e) => {
+      if (elModal.hidden) return;
+      if (e.key === 'Escape') closeModal();
+      if (e.key === 'ArrowRight' && openIndex < current.links.length) openModal(openIndex + 1);
+      if (e.key === 'ArrowLeft' && openIndex > 0) openModal(openIndex - 1);
+    });
+
+    // ---------- filters ----------
+
+    function refresh(keepSelection) {
+      const list = order.map((id) => DATA.chains.find((c) => c.id === id)).filter(matches);
+      elTotal.textContent = list.length;
+      const prev = elPick.value;
+      elPick.innerHTML = '';
+      list.forEach((c) => {
+        const o = document.createElement('option');
+        o.value = c.id;
+        o.textContent = '\u201C' + c.saying + '\u201D';
+        elPick.appendChild(o);
+      });
+      if (keepSelection && list.some((c) => c.id === prev)) elPick.value = prev;
+      render(list.find((c) => c.id === elPick.value));
+    }
+
+    elHinge.addEventListener('change', () => refresh(true));
+    elCat.addEventListener('change', () => refresh(true));
+    elQ.addEventListener('input', () => refresh(true));
+    elPick.addEventListener('change', () => render(DATA.chains.find((c) => c.id === elPick.value)));
+    document.getElementById('ot-shuffle').addEventListener('click', () => { order = newOrder(); saveOrder(); refresh(false); });
+
+    document.querySelectorAll('.ot-tile').forEach((t) => {
+      t.addEventListener('click', () => {
+        const id = t.dataset.hinge;
+        elHinge.value = elHinge.value === id ? 'all' : id;
+        document.querySelectorAll('.ot-tile').forEach((x) => {
+          x.classList.toggle('is-dim', elHinge.value !== 'all' && x.dataset.hinge !== elHinge.value);
+        });
+        refresh(true);
+      });
+    });
+
+    refresh(false);
   </script>
 
-  <!-- is:global — the walker builds its cards client-side with createElement,
-       so those nodes never receive Astro's scoped data-attribute. Scoped styles
-       would miss them entirely. Every selector here is lt- prefixed, so global
-       scope carries no collision risk. -->
+  <!-- is:global is required. The chain is injected at runtime, so Astro's scoped styles never reach it. -->
   <style is:global>
-    /* ============================================================
-       ON THESE TWO — the lie-tree walker. House-plain: Georgia body,
-       navy #1F3864 accent, no decorative dividers, no diamonds.
-       ============================================================ */
-    .lt-wrap {
-      --navy: #1F3864;
-      --ink: #23282f;
-      --muted: #6b7280;
-      --line: #d7dbe0;
-      --paper: #ffffff;
-      font-family: Georgia, 'Times New Roman', serif;
-      color: var(--ink);
-      max-width: 52rem;
+    .ot {
+      --ot-navy: #1f3864;
+      --ot-ink: #2b2b2b;
+      --ot-mute: #7a7264;
+      --ot-rule: #d9cfb8;
+      --ot-card: #fffdf8;
+      --ot-cream: #f5efe2;
+
+      --ot-torah-bg: #f2e3c2;
+      --ot-torah-ink: #6b4a08;
+      --ot-torah-line: #c09a34;
+
+      --ot-trin-bg: #e6e2f8;
+      --ot-trin-ink: #352d80;
+      --ot-trin-line: #7f77dd;
+
+      --ot-lie-bg: #e9c9c3;
+      --ot-lie-ink: #7a1f1f;
+      --ot-lie-line: #b1584f;
+
+      max-width: 980px;
       margin: 0 auto;
-      padding: 0 1.5rem 4rem;
+      padding: 2rem 1.25rem 4rem;
+      color: var(--ot-ink);
     }
 
-    /* Live notice — amber band, full content width, body-weight text (not
-       furniture). Sits beneath the title on the landing and at the top of the
-       walker, so it shows on every screen. House amber. */
-    .lt-banner {
-      display: flex;
-      align-items: baseline;
-      gap: 0.85rem;
-      width: 100%;
-      background: #f8edcf;
-      border: 1px solid #e2c684;
-      border-left: 4px solid #b8892f;
-      border-radius: 4px;
-      padding: 0.85rem 1.15rem;
-      margin: 1.4rem 0 1.6rem;
+    .ot-mast { text-align: center; margin-bottom: 1.75rem; }
+    .ot-over { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ot-mute); margin: 0; }
+    .ot-mast h1 { font-family: Georgia, serif; color: var(--ot-navy); font-size: clamp(1.6rem, 4vw, 2.35rem); margin: .35rem 0 .5rem; }
+    .ot-lede { color: var(--ot-mute); margin: 0; }
+
+    .ot-hinges { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+    .ot-tile { display: block; width: 100%; text-align: left; border: 2px solid transparent; border-radius: 16px; padding: 1.15rem 1.3rem; cursor: pointer; font: inherit; transition: opacity .15s ease, transform .15s ease; box-shadow: 0 2px 0 rgba(0,0,0,.06); }
+    .ot-tile:hover { transform: translateY(-2px); }
+    .ot-tile.is-dim { opacity: .38; }
+    .ot-tile-name { display: block; font-family: Georgia, serif; font-size: 1.4rem; }
+    .ot-tile-line { display: block; font-size: .95rem; margin-top: .3rem; }
+    .ot-tile-count { display: block; font-size: .78rem; margin-top: .8rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
+    .ot-tile-torah { background: var(--ot-torah-bg); border-color: var(--ot-torah-line); color: var(--ot-torah-ink); }
+    .ot-tile-trinity { background: var(--ot-trin-bg); border-color: var(--ot-trin-line); color: var(--ot-trin-ink); }
+
+    .ot-band { display: block; width: 100%; height: 90px; }
+    .ot-band path { fill: none; stroke: var(--ot-rule); stroke-width: 1.5; }
+    @media (max-width: 640px) { .ot-band { height: 50px; } }
+
+    .ot-filters, .ot-picker { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; padding: .9rem 0; border-top: 1px solid var(--ot-rule); }
+    .ot-filters { border-bottom: 1px solid var(--ot-rule); }
+    .ot-field { display: flex; flex-direction: column; gap: .25rem; }
+    .ot-field > span { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ot-mute); }
+    .ot-grow { flex: 1 1 220px; }
+    .ot-field select, .ot-field input { font: inherit; font-size: .95rem; padding: .55rem .75rem; border: 1px solid var(--ot-rule); border-radius: 10px; background: var(--ot-card); color: var(--ot-ink); width: 100%; }
+    .ot-count { text-align: center; background: var(--ot-card); border: 1px solid var(--ot-rule); border-radius: 10px; padding: .45rem 1rem; }
+    .ot-count strong { display: block; font-size: 1.2rem; color: var(--ot-navy); }
+    .ot-count span { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ot-mute); }
+    .ot-shuffle { font: inherit; font-size: .9rem; padding: .6rem 1.1rem; border: 1px solid var(--ot-rule); border-radius: 10px; background: var(--ot-card); color: var(--ot-navy); cursor: pointer; }
+
+    /* ---------- the chain ---------- */
+
+    .ot-chain {
+      --h-bg: var(--ot-torah-bg); --h-ink: var(--ot-torah-ink); --h-line: var(--ot-torah-line);
+      margin: 1.6rem 0; min-height: 320px;
     }
-    .lt-banner-label {
-      flex-shrink: 0;
-      font-variant: small-caps;
-      letter-spacing: 0.12em;
-      font-size: 0.82rem;
-      font-weight: 700;
-      color: #8a6028;
-      white-space: nowrap;
+    .ot-chain.ot-h-trinity, .ot-modal.ot-h-trinity { --h-bg: var(--ot-trin-bg); --h-ink: var(--ot-trin-ink); --h-line: var(--ot-trin-line); }
+    .ot-chain.ot-h-torah, .ot-modal.ot-h-torah { --h-bg: var(--ot-torah-bg); --h-ink: var(--ot-torah-ink); --h-line: var(--ot-torah-line); }
+    .ot-empty { color: var(--ot-mute); text-align: center; padding: 4rem 0; }
+
+    .ot-head { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
+    .ot-badge { font-size: .78rem; padding: .3rem .8rem; border-radius: 999px; background: var(--h-bg); color: var(--h-ink); border: 1px solid var(--h-line); }
+    .ot-arrow { color: var(--ot-mute); }
+    .ot-saying { font-family: Georgia, serif; font-size: 1.3rem; color: var(--ot-navy); }
+    .ot-linkcount { font-size: .78rem; color: var(--ot-mute); }
+    .ot-sub { font-size: .82rem; color: var(--ot-mute); margin: .4rem 0 1.2rem; }
+
+    .ot-ladder { list-style: none; margin: 0; padding: 0; }
+
+    .ot-rung { margin: 0; }
+    .ot-rung-btn {
+      display: flex; align-items: flex-start; gap: 1rem; width: 100%; text-align: left; cursor: pointer; font: inherit;
+      padding: 1rem 1.15rem; border-radius: 14px;
+      background: var(--h-bg);
+      background: color-mix(in oklab, var(--ot-lie-bg) var(--t), var(--h-bg));
+      border: 1px solid var(--h-line);
+      border-color: color-mix(in oklab, var(--ot-lie-line) var(--t), var(--h-line));
+      color: var(--h-ink);
+      color: color-mix(in oklab, var(--ot-lie-ink) var(--t), var(--h-ink));
+      box-shadow: 0 1px 0 rgba(0,0,0,.05);
+      transition: transform .12s ease, box-shadow .12s ease;
     }
-    .lt-banner-text {
-      font-size: 1rem;
-      line-height: 1.5;
-      color: #5f4518;
+    .ot-rung-btn:hover { transform: translateX(3px); box-shadow: 0 3px 10px rgba(0,0,0,.09); }
+
+    .ot-num {
+      flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: Georgia, serif; font-size: .95rem;
+      background: currentColor; color: var(--ot-card);
+    }
+    .ot-num { color: #fffdf8; }
+    .ot-rung-copy { flex: 1; min-width: 0; }
+    .ot-rung-title { display: block; font-family: Georgia, serif; font-size: 1.12rem; }
+    .ot-rung-line { display: block; font-size: .95rem; margin-top: .2rem; opacity: .85; line-height: 1.55; }
+    .ot-rung-cue { flex: 0 0 auto; align-self: center; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; padding: .3rem .7rem; border-radius: 999px; border: 1px solid currentColor; opacity: .7; }
+    @media (max-width: 640px) { .ot-rung-cue { display: none; } }
+
+    .ot-joint { height: 26px; display: flex; justify-content: center; align-items: center; }
+    .ot-joint span {
+      display: block; width: 10px; height: 26px; border-radius: 999px;
+      border: 2px solid var(--h-line);
+      border-color: color-mix(in oklab, var(--ot-lie-line) var(--t), var(--h-line));
     }
 
-    /* Card deck — read by the social-card generator + search, not shown on
-       screen (it would echo the opening). Standard sr-only: in the DOM and the
-       built HTML, but visually hidden. */
-    .lt-card-deck {
-      position: absolute;
-      width: 1px; height: 1px;
-      padding: 0; margin: -1px; border: 0;
-      overflow: hidden; clip: rect(0 0 0 0); clip-path: inset(50%);
-      white-space: nowrap;
-    }
+    .ot-rung-said .ot-rung-btn { padding: 1.25rem 1.3rem; border-width: 2px; }
+    .ot-said-label { display: block; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; opacity: .8; }
+    .ot-said-text { display: block; font-family: Georgia, serif; font-size: 1.45rem; margin-top: .25rem; }
 
-    /* ── LANDING ── */
-    .lt-head { text-align: center; }
-    .lt-title {
-      font-family: Georgia, serif;
-      font-size: clamp(2rem, 5vw, 2.8rem);
-      font-weight: 700;
-      color: var(--navy);
-      margin: 0;
-      line-height: 1.1;
-    }
-    .lt-standing {
-      font-style: italic;
-      color: var(--muted);
-      max-width: 40rem;
-      margin: 1rem auto 0;
-      line-height: 1.6;
-      font-size: 1rem;
-    }
-    /* Opening statement — landing only. First paragraph is the navy lead-in
-       (larger, navy) — a lead paragraph, not a heading. */
-    .lt-opening {
-      max-width: 42rem;
-      margin: 0 auto;
-    }
-    .lt-opening-lead {
-      font-size: 1.35rem;
-      line-height: 1.5;
-      color: var(--navy);
-      margin: 0 0 1.25rem;
-    }
-    .lt-opening-p {
-      font-size: 1.05rem;
-      line-height: 1.75;
-      margin: 0 0 1.1rem;
-    }
-    .lt-opening-p:last-child { margin-bottom: 0; }
+    /* ---------- modal ---------- */
 
-    .lt-entry-grid {
-      margin-top: 2.75rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 1rem;
+    body.ot-locked { overflow: hidden; }
+    .ot-modal[hidden] { display: none; }
+    .ot-modal { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 1.25rem; }
+    .ot-modal-scrim { position: absolute; inset: 0; background: rgba(30, 24, 14, .55); backdrop-filter: blur(2px); }
+    .ot-modal-panel {
+      position: relative; width: min(660px, 100%); max-height: 88vh; overflow-y: auto;
+      background: var(--ot-card); border-radius: 18px; padding: 2rem 2rem 1rem;
+      border-top: 8px solid var(--h-line);
+      border-top-color: color-mix(in oklab, var(--ot-lie-line) var(--t, 0%), var(--h-line));
+      box-shadow: 0 24px 60px rgba(0,0,0,.35);
     }
-    .lt-entry-card {
-      font-family: Georgia, serif;
-      font-size: 1.25rem;
-      line-height: 1.3;
-      text-align: center;
-      color: var(--navy);
-      background: var(--paper);
-      border: 1px solid var(--navy);
-      border-radius: 4px;
-      padding: 1.6rem 1.25rem;
-      cursor: pointer;
-      transition: background 0.15s ease, color 0.15s ease;
+    .ot-modal-x { position: absolute; top: .8rem; right: 1rem; background: none; border: 0; font-size: 1.9rem; line-height: 1; color: var(--ot-mute); cursor: pointer; }
+    #ot-modal-body { --t: 0%; }
+    .ot-modal-eyebrow { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ot-mute); margin: 0 0 1rem; }
+    .ot-modal-kicker { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ot-lie-ink); margin: 0; }
+    .ot-modal-title { font-family: Georgia, serif; font-size: 1.6rem; color: var(--ot-navy); margin: 0 0 .4rem; display: flex; align-items: baseline; gap: .7rem; }
+    .ot-modal-num {
+      flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; font-size: 1rem;
+      display: inline-flex; align-items: center; justify-content: center; align-self: center;
+      background: var(--h-line); background: color-mix(in oklab, var(--ot-lie-line) var(--t), var(--h-line)); color: #fffdf8;
     }
-    .lt-entry-card:hover,
-    .lt-entry-card:focus-visible {
-      background: var(--navy);
-      color: #fff;
-      outline: none;
-    }
+    .ot-modal-line { font-size: 1.05rem; color: var(--ot-mute); margin: 0 0 1.4rem; line-height: 1.6; }
 
-    /* ── WALKER ── */
-    .lt-startover-row { margin-bottom: 1.5rem; }
-    .lt-startover {
-      font-family: Georgia, serif;
-      font-size: 0.9rem;
-      font-style: italic;
-      color: var(--muted);
-      background: none;
-      border: none;
-      padding: 0.25rem 0;
-      cursor: pointer;
-    }
-    .lt-startover:hover { color: var(--navy); }
+    .ot-ev-label { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ot-mute); margin: 1.5rem 0 .6rem; padding-bottom: .35rem; border-bottom: 1px solid var(--ot-rule); }
+    .ot-verses { margin: 0; }
+    .ot-verse { display: flex; flex-wrap: wrap; gap: .8rem; padding: .4rem 0; border-bottom: 1px solid rgba(0,0,0,.05); }
+    .ot-verse dt { min-width: 175px; font-weight: 700; color: var(--ot-navy); margin: 0; }
+    .ot-verse dd { flex: 1; margin: 0; color: var(--ot-mute); }
+    .ot-record { margin: 0; color: var(--ot-mute); }
+    .ot-finding { font-family: Georgia, serif; font-size: 1.08rem; color: var(--ot-ink); margin: 1.5rem 0 0; padding: 1rem 1.1rem; border-radius: 12px; background: var(--ot-cream); }
+    .ot-shared { font-size: .82rem; color: var(--ot-mute); margin: 0 0 1.2rem; }
+    .ot-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0; }
+    .ot-chip { font-size: .85rem; padding: .35rem .8rem; border-radius: 999px; background: var(--ot-cream); color: var(--ot-navy); text-decoration: none; border: 1px solid var(--ot-rule); }
+    .ot-chip:hover { background: var(--h-bg); }
 
-    .lt-zone { text-align: center; }
-    .lt-zone-label {
-      font-variant: small-caps;
-      letter-spacing: 0.12em;
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin: 0 0 0.9rem;
-    }
-    .lt-zone--children .lt-zone-label { margin: 0.5rem 0 0.9rem; }
-
-    .lt-step-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 0.9rem;
-      max-width: 40rem;
-      margin: 0 auto;
-    }
-    .lt-step {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35rem;
-      text-align: left;
-      font-family: Georgia, serif;
-      background: var(--paper);
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      padding: 0.95rem 1.1rem;
-      cursor: pointer;
-      transition: border-color 0.15s ease, background 0.15s ease;
-    }
-    .lt-step:hover,
-    .lt-step:focus-visible {
-      border-color: var(--navy);
-      background: #f4f6fa;
-      outline: none;
-    }
-    .lt-step-label { font-size: 1.02rem; line-height: 1.3; color: var(--ink); }
-    .lt-step-era {
-      font-variant: small-caps;
-      letter-spacing: 0.08em;
-      font-size: 0.75rem;
-      color: var(--muted);
-    }
-
-    /* Plain glyph arrow — not an image, not a divider. */
-    .lt-arrow {
-      font-size: 1.6rem;
-      line-height: 1;
-      color: var(--navy);
-      margin: 0.9rem 0;
-    }
-
-    .lt-nothing {
-      color: var(--muted);
-      font-style: italic;
-      max-width: 32rem;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-
-    /* ── CURRENT NODE — the one large element ── */
-    .lt-current-slot { margin: 0.5rem 0; }
-    .lt-current {
-      border: 1px solid var(--navy);
-      border-radius: 5px;
-      padding: 1.9rem 1.75rem;
-      background: var(--paper);
-    }
-    .lt-current--heavy { border-width: 3px; }
-    .lt-current--hinge {
-      background: #eef1f7;
-      border-color: var(--navy);
-    }
-    .lt-current-label {
-      font-family: Georgia, serif;
-      font-size: 22px;
-      line-height: 1.25;
-      font-weight: 700;
-      color: var(--navy);
-      margin: 0;
-    }
-    .lt-current-era {
-      font-variant: small-caps;
-      letter-spacing: 0.1em;
-      font-size: 0.82rem;
-      color: var(--muted);
-      margin: 0.4rem 0 0;
-    }
-
-    .lt-receipt {
-      margin-top: 1.3rem;
-      border: 1px solid var(--line);
-      border-radius: 4px;
-      padding: 1.05rem 1.15rem;
-      background: #fbfcfd;
-    }
-    .lt-receipt--hinge {
-      border-color: var(--navy);
-      background: #fff;
-    }
-    .lt-receipt-label {
-      font-variant: small-caps;
-      letter-spacing: 0.12em;
-      font-size: 0.75rem;
-      color: var(--navy);
-      margin: 0 0 0.5rem;
-    }
-    .lt-receipt-text { margin: 0; line-height: 1.7; font-size: 1.02rem; }
-
-    .lt-breaks {
-      margin: 1.15rem 0 0;
-      color: var(--navy);
-      font-style: italic;
-      line-height: 1.6;
-    }
-
-    .lt-morelink {
-      display: inline-block;
-      margin-top: 1.2rem;
-      font-size: 0.95rem;
-      color: var(--navy);
-      font-weight: 700;
-      text-decoration: none;
-      border-bottom: 1px solid var(--navy);
-      padding-bottom: 1px;
-    }
-    .lt-morelink:hover { opacity: 0.75; }
-
-    /* ── MOBILE ── the current node must never scroll sideways. ── */
-    @media (max-width: 520px) {
-      .lt-step-grid { grid-template-columns: 1fr; }
-      .lt-entry-grid { grid-template-columns: 1fr; }
-      .lt-current { padding: 1.4rem 1.2rem; }
-    }
-
-    /* Dark mode: the page keeps its paper-white ground on purpose (the walker
-       is a document look), but lift text off pure black so it stays legible. */
-    :global(.dark) .lt-wrap { color: var(--ink); }
+    .ot-modal-foot { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-top: 1.75rem; padding-top: 1rem; border-top: 1px solid var(--ot-rule); position: sticky; bottom: 0; background: var(--ot-card); }
+    .ot-step { font: inherit; font-size: .85rem; padding: .5rem .9rem; border: 1px solid var(--ot-rule); border-radius: 10px; background: var(--ot-card); color: var(--ot-navy); cursor: pointer; }
+    .ot-step[disabled] { opacity: .35; cursor: default; }
+    .ot-modal-pos { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ot-mute); }
+    @media (max-width: 520px) { .ot-modal-panel { padding: 1.5rem 1.25rem 1rem; } .ot-verse dt { min-width: 100%; } }
   </style>
-
-</BaseLayout>
+</Layout>
