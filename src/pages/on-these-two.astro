@@ -1,7 +1,9 @@
 ---
-// on-these-two 0810 V2.astro
-// V2. Fixes scoped-style bug that left the injected chain unstyled. Rebuilds the middle as graded
-// rung cards with a chain joint between them. Evidence now opens in a modal instead of inline.
+// on-these-two 0810 V3.astro
+// V3. Dark gold theme to match The Departure. Fixes the translucent modal (custom properties were
+// declared on .ot, and the modal sits outside .ot, so every var resolved to nothing). Root lines
+// strengthened and run into the filter row. Shuffle button replaced by Search; order now randomises
+// on every page load. Renders the new records array.
 // Layout import: site has no Layout.astro; BaseLayout takes { title, description }.
 // Only this import path changed — the <Layout title description> call is untouched.
 import Layout from '../layouts/BaseLayout.astro';
@@ -37,14 +39,14 @@ const payload = {
         title: l.title,
         line: l.line,
         witnesses: l.witnesses || [],
-        record: l.record || null,
+        records: l.records || [],
         finding: l.finding || null,
         filings: filings[id] || [],
       };
     }),
     verdict: {
       witnesses: c.verdict?.witnesses || [],
-      record: c.verdict?.record || null,
+      records: c.verdict?.records || [],
       finding: c.verdict?.finding || null,
       filings: [],
     },
@@ -60,7 +62,8 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
 
     <header class="ot-mast">
       <p class="ot-over">On these two</p>
-      <h1>Every lie hangs on one of two hinges</h1>
+      <h1>Every Lie Hangs on One of Two Hinges</h1>
+      <div class="ot-diamond" aria-hidden="true"><span></span><i></i><span></span></div>
       <p class="ot-lede">Pick a hinge. Walk the chain down. The last link is what people say out loud.</p>
     </header>
 
@@ -74,13 +77,21 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
       ))}
     </div>
 
-    <svg class="ot-band" viewBox="0 0 800 110" preserveAspectRatio="none" aria-hidden="true">
-      <path d="M200 0 C200 50 90 60 70 110" />
-      <path d="M200 0 C200 55 175 65 170 110" />
-      <path d="M200 0 C200 55 250 65 280 110" />
-      <path d="M600 0 C600 50 520 60 500 110" />
-      <path d="M600 0 C600 55 615 65 620 110" />
-      <path d="M600 0 C600 50 700 60 735 110" />
+    <svg class="ot-band" viewBox="0 0 800 130" preserveAspectRatio="none" aria-hidden="true">
+      <g class="ot-root ot-root-torah">
+        <path d="M200 0 V26" />
+        <path d="M200 26 C200 62 96 62 66 130" />
+        <path d="M200 26 C200 70 168 78 150 130" />
+        <path d="M200 26 C200 70 232 78 250 130" />
+        <path d="M200 26 C200 62 300 66 344 130" />
+      </g>
+      <g class="ot-root ot-root-trinity">
+        <path d="M600 0 V26" />
+        <path d="M600 26 C600 62 500 66 456 130" />
+        <path d="M600 26 C600 70 568 78 550 130" />
+        <path d="M600 26 C600 70 632 78 650 130" />
+        <path d="M600 26 C600 62 704 62 734 130" />
+      </g>
     </svg>
 
     <div class="ot-filters">
@@ -112,20 +123,20 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
         <span>Search</span>
         <input id="ot-q" type="search" placeholder="grace, saturn, colossians" autocomplete="off" />
       </label>
-      <button id="ot-shuffle" class="ot-shuffle" type="button">Shuffle</button>
+      <button id="ot-search" class="ot-searchbtn" type="button">Search</button>
     </div>
 
   </section>
 
   <div id="ot-modal" class="ot-modal" role="dialog" aria-modal="true" aria-labelledby="ot-modal-title" hidden>
-    <div class="ot-modal-scrim" data-close></div>
-    <div class="ot-modal-panel">
-      <button class="ot-modal-x" type="button" data-close aria-label="Close">&times;</button>
+    <div class="ot-scrim" data-close></div>
+    <div class="ot-panel">
+      <button class="ot-x" type="button" data-close aria-label="Close">&times;</button>
       <div id="ot-modal-body"></div>
-      <div class="ot-modal-foot">
-        <button class="ot-step" type="button" data-step="-1">&larr; Previous link</button>
-        <span id="ot-modal-pos" class="ot-modal-pos"></span>
-        <button class="ot-step" type="button" data-step="1">Next link &rarr;</button>
+      <div class="ot-foot">
+        <button class="ot-step" type="button" data-step="-1">&larr; Previous</button>
+        <span id="ot-modal-pos" class="ot-pos"></span>
+        <button class="ot-step" type="button" data-step="1">Next &rarr;</button>
       </div>
     </div>
   </div>
@@ -144,22 +155,12 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     const elBody = document.getElementById('ot-modal-body');
     const elPos = document.getElementById('ot-modal-pos');
 
-    const KEY = 'ot-order';
-    function newOrder() {
-      const ids = DATA.chains.map((c) => c.id);
-      for (let i = ids.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [ids[i], ids[j]] = [ids[j], ids[i]];
-      }
-      return ids;
+    // Fresh order on every page load. Held in memory only, so filtering never reorders mid-visit.
+    const order = DATA.chains.map((c) => c.id);
+    for (let i = order.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [order[i], order[j]] = [order[j], order[i]];
     }
-    let order;
-    try {
-      const saved = JSON.parse(sessionStorage.getItem(KEY) || 'null');
-      order = Array.isArray(saved) && saved.length === DATA.chains.length ? saved : newOrder();
-    } catch (e) { order = newOrder(); }
-    function saveOrder() { try { sessionStorage.setItem(KEY, JSON.stringify(order)); } catch (e) {} }
-    saveOrder();
 
     const shared = {};
     DATA.chains.forEach((c) => c.linkIds.forEach((id) => { shared[id] = (shared[id] || 0) + 1; }));
@@ -179,10 +180,9 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
         || c.category.toLowerCase().includes(q)
         || c.aliases.some((a) => a.includes(q))
         || c.links.some((l) => l.title.toLowerCase().includes(q)
-          || l.witnesses.some((w) => w[0].toLowerCase().includes(q)));
+          || l.witnesses.some((w) => w[0].toLowerCase().includes(q))
+          || l.records.some((r) => r.source.toLowerCase().includes(q)));
     }
-
-    // ---------- chain ----------
 
     function render(c) {
       current = c;
@@ -201,27 +201,31 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
 
       c.links.forEach((l, i) => {
         const t = Math.round((i / n) * 100);
+        const marks = [];
+        if (l.records.length) marks.push(`${l.records.length} on the record`);
+        if (shared[l.id] > 1) marks.push(`held by ${shared[l.id]} chains`);
         h += `<li class="ot-rung" style="--t:${t}%">
           <button class="ot-rung-btn" data-i="${i}" type="button">
             <span class="ot-num">${i + 1}</span>
             <span class="ot-rung-copy">
               <span class="ot-rung-title">${esc(l.title)}</span>
               <span class="ot-rung-line">${esc(l.line)}</span>
+              ${marks.length ? `<span class="ot-marks">${marks.map((m) => `<span>${esc(m)}</span>`).join('')}</span>` : ''}
             </span>
-            <span class="ot-rung-cue">Evidence</span>
+            <span class="ot-cue">Evidence</span>
           </button>
         </li>
         <li class="ot-joint" aria-hidden="true" style="--t:${Math.round(((i + 0.5) / n) * 100)}%"><span></span></li>`;
       });
 
-      h += `<li class="ot-rung ot-rung-said" style="--t:100%">
+      h += `<li class="ot-rung ot-said" style="--t:100%">
           <button class="ot-rung-btn" data-i="${n}" type="button">
             <span class="ot-num">${n + 1}</span>
             <span class="ot-rung-copy">
               <span class="ot-said-label">What they say today</span>
               <span class="ot-said-text">&ldquo;${esc(c.saying)}&rdquo;</span>
             </span>
-            <span class="ot-rung-cue">The answer</span>
+            <span class="ot-cue">The answer</span>
           </button>
         </li></ol>`;
 
@@ -232,8 +236,6 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
       });
     }
 
-    // ---------- modal ----------
-
     function evidenceHtml(node) {
       let h = '';
       if (node.witnesses && node.witnesses.length) {
@@ -243,7 +245,16 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
         });
         h += '</dl>';
       }
-      if (node.record) h += `<p class="ot-ev-label">The record</p><p class="ot-record">${esc(node.record)}</p>`;
+      if (node.records && node.records.length) {
+        h += '<p class="ot-ev-label">The record</p><ol class="ot-records">';
+        node.records.forEach((r) => {
+          h += `<li class="ot-rec">
+            <p class="ot-rec-head"><span class="ot-rec-src">${esc(r.source)}</span><span class="ot-rec-date">${esc(r.date)}</span></p>
+            <p class="ot-rec-note">${esc(r.note)}</p>
+          </li>`;
+        });
+        h += '</ol>';
+      }
       if (node.finding) h += `<p class="ot-finding">${esc(node.finding)}</p>`;
       if (node.filings && node.filings.length) {
         h += '<p class="ot-ev-label">Filed with this link</p><p class="ot-chips">';
@@ -262,9 +273,9 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
       const hinge = DATA.hinges.find((h) => h.id === current.hinge);
       const t = Math.round((i / n) * 100);
 
-      let h = `<p class="ot-modal-eyebrow">${esc(hinge.name)} &middot; &ldquo;${esc(current.saying)}&rdquo;</p>`;
+      let h = `<p class="ot-eyebrow">${esc(hinge.name)} &middot; &ldquo;${esc(current.saying)}&rdquo;</p>`;
       if (isSaid) {
-        h += `<p class="ot-modal-kicker">What they say today</p>
+        h += `<p class="ot-kicker">What they say today</p>
               <h2 id="ot-modal-title" class="ot-modal-title">&ldquo;${esc(current.saying)}&rdquo;</h2>`;
       } else {
         h += `<h2 id="ot-modal-title" class="ot-modal-title"><span class="ot-modal-num">${i + 1}</span>${esc(node.title)}</h2>
@@ -274,7 +285,7 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
       h += evidenceHtml(node);
 
       elBody.innerHTML = h;
-      elBody.style.setProperty('--t', t + '%');
+      elModal.style.setProperty('--t', t + '%');
       elModal.className = `ot-modal ot-h-${current.hinge}`;
       elPos.textContent = `Link ${i + 1} of ${n + 1}`;
       elModal.querySelectorAll('.ot-step').forEach((b) => {
@@ -285,7 +296,8 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
       lastFocus = document.activeElement;
       elModal.hidden = false;
       document.body.classList.add('ot-locked');
-      elModal.querySelector('.ot-modal-x').focus();
+      elModal.querySelector('.ot-panel').scrollTop = 0;
+      elModal.querySelector('.ot-x').focus();
     }
 
     function closeModal() {
@@ -305,8 +317,6 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
       if (e.key === 'ArrowLeft' && openIndex > 0) openModal(openIndex - 1);
     });
 
-    // ---------- filters ----------
-
     function refresh(keepSelection) {
       const list = order.map((id) => DATA.chains.find((c) => c.id === id)).filter(matches);
       elTotal.textContent = list.length;
@@ -325,8 +335,9 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     elHinge.addEventListener('change', () => refresh(true));
     elCat.addEventListener('change', () => refresh(true));
     elQ.addEventListener('input', () => refresh(true));
+    elQ.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); refresh(true); elQ.blur(); } });
+    document.getElementById('ot-search').addEventListener('click', () => { refresh(true); elQ.blur(); });
     elPick.addEventListener('change', () => render(DATA.chains.find((c) => c.id === elPick.value)));
-    document.getElementById('ot-shuffle').addEventListener('click', () => { order = newOrder(); saveOrder(); refresh(false); });
 
     document.querySelectorAll('.ot-tile').forEach((t) => {
       t.addEventListener('click', () => {
@@ -342,163 +353,173 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     refresh(false);
   </script>
 
-  <!-- is:global is required. The chain is injected at runtime, so Astro's scoped styles never reach it. -->
+  <!--
+    is:global is required. The chain is injected at runtime, so scoped styles never reach it.
+    Custom properties are declared on :root, NOT on .ot. The modal is a sibling of .ot, and in V2
+    every var inside it resolved to nothing, which is why the panel rendered see-through.
+  -->
   <style is:global>
-    .ot {
-      --ot-navy: #1f3864;
-      --ot-ink: #2b2b2b;
-      --ot-mute: #7a7264;
-      --ot-rule: #d9cfb8;
-      --ot-card: #fffdf8;
-      --ot-cream: #f5efe2;
-
-      --ot-torah-bg: #f2e3c2;
-      --ot-torah-ink: #6b4a08;
-      --ot-torah-line: #c09a34;
-
-      --ot-trin-bg: #e6e2f8;
-      --ot-trin-ink: #352d80;
-      --ot-trin-line: #7f77dd;
-
-      --ot-lie-bg: #e9c9c3;
-      --ot-lie-ink: #7a1f1f;
-      --ot-lie-line: #b1584f;
-
-      max-width: 980px;
-      margin: 0 auto;
-      padding: 2rem 1.25rem 4rem;
-      color: var(--ot-ink);
+    :root {
+      --ot-black: #0d0b09;
+      --ot-panel: #17130e;
+      --ot-panel-2: #1e1913;
+      --ot-gold: #c8912f;
+      --ot-gold-lit: #e3b559;
+      --ot-silver: #a9b3c6;
+      --ot-silver-lit: #cfd6e2;
+      --ot-blood: #a8433a;
+      --ot-blood-lit: #cd6a5c;
+      --ot-cream: #e9e2d3;
+      --ot-mute: #9b9080;
+      --ot-rule: rgba(200, 145, 47, .22);
     }
 
-    .ot-mast { text-align: center; margin-bottom: 1.75rem; }
-    .ot-over { font-size: .78rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ot-mute); margin: 0; }
-    .ot-mast h1 { font-family: Georgia, serif; color: var(--ot-navy); font-size: clamp(1.6rem, 4vw, 2.35rem); margin: .35rem 0 .5rem; }
-    .ot-lede { color: var(--ot-mute); margin: 0; }
+    .ot {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 2.5rem 1.25rem 5rem;
+      color: var(--ot-cream);
+    }
 
-    .ot-hinges { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
-    .ot-tile { display: block; width: 100%; text-align: left; border: 2px solid transparent; border-radius: 16px; padding: 1.15rem 1.3rem; cursor: pointer; font: inherit; transition: opacity .15s ease, transform .15s ease; box-shadow: 0 2px 0 rgba(0,0,0,.06); }
-    .ot-tile:hover { transform: translateY(-2px); }
-    .ot-tile.is-dim { opacity: .38; }
-    .ot-tile-name { display: block; font-family: Georgia, serif; font-size: 1.4rem; }
-    .ot-tile-line { display: block; font-size: .95rem; margin-top: .3rem; }
-    .ot-tile-count { display: block; font-size: .78rem; margin-top: .8rem; letter-spacing: .1em; text-transform: uppercase; opacity: .85; }
-    .ot-tile-torah { background: var(--ot-torah-bg); border-color: var(--ot-torah-line); color: var(--ot-torah-ink); }
-    .ot-tile-trinity { background: var(--ot-trin-bg); border-color: var(--ot-trin-line); color: var(--ot-trin-ink); }
+    .ot-mast { text-align: center; margin-bottom: 2.25rem; }
+    .ot-over { font-size: .74rem; letter-spacing: .3em; text-transform: uppercase; color: var(--ot-gold); margin: 0; }
+    .ot-mast h1 { font-family: Georgia, serif; font-variant: small-caps; color: var(--ot-cream); font-size: clamp(1.7rem, 4.4vw, 2.8rem); font-weight: 400; margin: .6rem 0 0; letter-spacing: .02em; }
+    .ot-diamond { display: flex; align-items: center; justify-content: center; gap: .9rem; margin: .9rem 0; }
+    .ot-diamond span { display: block; width: 62px; height: 1px; background: linear-gradient(90deg, transparent, var(--ot-gold)); }
+    .ot-diamond span:last-child { background: linear-gradient(90deg, var(--ot-gold), transparent); }
+    .ot-diamond i { width: 9px; height: 9px; border: 1px solid var(--ot-gold); transform: rotate(45deg); }
+    .ot-lede { font-family: Georgia, serif; font-style: italic; color: var(--ot-mute); margin: 0; }
 
-    .ot-band { display: block; width: 100%; height: 90px; }
-    .ot-band path { fill: none; stroke: var(--ot-rule); stroke-width: 1.5; }
-    @media (max-width: 640px) { .ot-band { height: 50px; } }
+    .ot-hinges { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
+    .ot-tile { display: block; width: 100%; text-align: left; cursor: pointer; font: inherit; padding: 1.35rem 1.5rem; border-radius: 10px; background: linear-gradient(180deg, var(--ot-panel-2), var(--ot-panel)); border: 1px solid var(--ot-rule); border-top: 3px solid var(--ot-gold); transition: opacity .18s ease, transform .18s ease, box-shadow .18s ease; }
+    .ot-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,0,0,.55); }
+    .ot-tile.is-dim { opacity: .32; }
+    .ot-tile-name { display: block; font-family: Georgia, serif; font-variant: small-caps; font-size: 1.5rem; letter-spacing: .04em; }
+    .ot-tile-line { display: block; font-family: Georgia, serif; font-style: italic; font-size: 1rem; margin-top: .45rem; color: var(--ot-mute); }
+    .ot-tile-count { display: block; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; margin-top: 1rem; }
+    .ot-tile-torah { border-top-color: var(--ot-gold); }
+    .ot-tile-torah .ot-tile-name, .ot-tile-torah .ot-tile-count { color: var(--ot-gold-lit); }
+    .ot-tile-trinity { border-top-color: var(--ot-silver); }
+    .ot-tile-trinity .ot-tile-name, .ot-tile-trinity .ot-tile-count { color: var(--ot-silver-lit); }
 
-    .ot-filters, .ot-picker { display: flex; flex-wrap: wrap; gap: 14px; align-items: flex-end; padding: .9rem 0; border-top: 1px solid var(--ot-rule); }
+    .ot-band { display: block; width: 100%; height: 118px; }
+    .ot-band path { fill: none; stroke-width: 1.25; }
+    .ot-root-torah path { stroke: var(--ot-gold); opacity: .45; }
+    .ot-root-trinity path { stroke: var(--ot-silver); opacity: .4; }
+    @media (max-width: 640px) { .ot-band { height: 64px; } }
+
+    .ot-filters, .ot-picker { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; padding: 1rem 0; border-top: 1px solid var(--ot-rule); }
     .ot-filters { border-bottom: 1px solid var(--ot-rule); }
-    .ot-field { display: flex; flex-direction: column; gap: .25rem; }
-    .ot-field > span { font-size: .72rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ot-mute); }
+    .ot-field { display: flex; flex-direction: column; gap: .35rem; }
+    .ot-field > span { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ot-gold); }
     .ot-grow { flex: 1 1 220px; }
-    .ot-field select, .ot-field input { font: inherit; font-size: .95rem; padding: .55rem .75rem; border: 1px solid var(--ot-rule); border-radius: 10px; background: var(--ot-card); color: var(--ot-ink); width: 100%; }
-    .ot-count { text-align: center; background: var(--ot-card); border: 1px solid var(--ot-rule); border-radius: 10px; padding: .45rem 1rem; }
-    .ot-count strong { display: block; font-size: 1.2rem; color: var(--ot-navy); }
-    .ot-count span { font-size: .68rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ot-mute); }
-    .ot-shuffle { font: inherit; font-size: .9rem; padding: .6rem 1.1rem; border: 1px solid var(--ot-rule); border-radius: 10px; background: var(--ot-card); color: var(--ot-navy); cursor: pointer; }
+    .ot-field select, .ot-field input { font: inherit; font-size: .95rem; padding: .6rem .8rem; border: 1px solid var(--ot-rule); border-radius: 8px; background: var(--ot-panel); color: var(--ot-cream); width: 100%; }
+    .ot-field select:focus, .ot-field input:focus { outline: none; border-color: var(--ot-gold); }
+    .ot-count { text-align: center; background: var(--ot-panel); border: 1px solid var(--ot-rule); border-radius: 8px; padding: .5rem 1.1rem; }
+    .ot-count strong { display: block; font-family: Georgia, serif; font-size: 1.3rem; color: var(--ot-gold-lit); }
+    .ot-count span { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ot-mute); }
+    .ot-searchbtn { font: inherit; font-family: Georgia, serif; font-variant: small-caps; font-size: 1rem; letter-spacing: .08em; padding: .6rem 1.4rem; border: 1px solid var(--ot-gold); border-radius: 8px; background: transparent; color: var(--ot-gold-lit); cursor: pointer; }
+    .ot-searchbtn:hover { background: rgba(200,145,47,.12); }
 
     /* ---------- the chain ---------- */
 
-    .ot-chain {
-      --h-bg: var(--ot-torah-bg); --h-ink: var(--ot-torah-ink); --h-line: var(--ot-torah-line);
-      margin: 1.6rem 0; min-height: 320px;
-    }
-    .ot-chain.ot-h-trinity, .ot-modal.ot-h-trinity { --h-bg: var(--ot-trin-bg); --h-ink: var(--ot-trin-ink); --h-line: var(--ot-trin-line); }
-    .ot-chain.ot-h-torah, .ot-modal.ot-h-torah { --h-bg: var(--ot-torah-bg); --h-ink: var(--ot-torah-ink); --h-line: var(--ot-torah-line); }
-    .ot-empty { color: var(--ot-mute); text-align: center; padding: 4rem 0; }
+    .ot-chain { --acc: var(--ot-gold); --acc-lit: var(--ot-gold-lit); margin: 2rem 0; min-height: 340px; }
+    .ot-chain.ot-h-trinity, .ot-modal.ot-h-trinity { --acc: var(--ot-silver); --acc-lit: var(--ot-silver-lit); }
+    .ot-chain.ot-h-torah, .ot-modal.ot-h-torah { --acc: var(--ot-gold); --acc-lit: var(--ot-gold-lit); }
+    .ot-empty { color: var(--ot-mute); text-align: center; padding: 4rem 0; font-family: Georgia, serif; font-style: italic; }
 
-    .ot-head { display: flex; align-items: center; gap: .6rem; flex-wrap: wrap; }
-    .ot-badge { font-size: .78rem; padding: .3rem .8rem; border-radius: 999px; background: var(--h-bg); color: var(--h-ink); border: 1px solid var(--h-line); }
+    .ot-head { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; }
+    .ot-badge { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; padding: .32rem .85rem; border-radius: 999px; border: 1px solid var(--acc); color: var(--acc-lit); }
     .ot-arrow { color: var(--ot-mute); }
-    .ot-saying { font-family: Georgia, serif; font-size: 1.3rem; color: var(--ot-navy); }
-    .ot-linkcount { font-size: .78rem; color: var(--ot-mute); }
-    .ot-sub { font-size: .82rem; color: var(--ot-mute); margin: .4rem 0 1.2rem; }
+    .ot-saying { font-family: Georgia, serif; font-size: 1.45rem; color: var(--ot-cream); }
+    .ot-linkcount { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ot-mute); }
+    .ot-sub { font-family: Georgia, serif; font-style: italic; font-size: .92rem; color: var(--ot-mute); margin: .5rem 0 1.5rem; }
 
     .ot-ladder { list-style: none; margin: 0; padding: 0; }
-
     .ot-rung { margin: 0; }
     .ot-rung-btn {
-      display: flex; align-items: flex-start; gap: 1rem; width: 100%; text-align: left; cursor: pointer; font: inherit;
-      padding: 1rem 1.15rem; border-radius: 14px;
-      background: var(--h-bg);
-      background: color-mix(in oklab, var(--ot-lie-bg) var(--t), var(--h-bg));
-      border: 1px solid var(--h-line);
-      border-color: color-mix(in oklab, var(--ot-lie-line) var(--t), var(--h-line));
-      color: var(--h-ink);
-      color: color-mix(in oklab, var(--ot-lie-ink) var(--t), var(--h-ink));
-      box-shadow: 0 1px 0 rgba(0,0,0,.05);
-      transition: transform .12s ease, box-shadow .12s ease;
+      display: flex; align-items: flex-start; gap: 1.1rem; width: 100%; text-align: left; cursor: pointer; font: inherit;
+      padding: 1.15rem 1.35rem; border-radius: 10px;
+      background: linear-gradient(180deg, var(--ot-panel-2), var(--ot-panel));
+      border: 1px solid var(--ot-rule);
+      border-top: 3px solid var(--acc);
+      border-top-color: color-mix(in oklab, var(--ot-blood) var(--t), var(--acc));
+      color: var(--ot-cream);
+      transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
     }
-    .ot-rung-btn:hover { transform: translateX(3px); box-shadow: 0 3px 10px rgba(0,0,0,.09); }
+    .ot-rung-btn:hover { transform: translateX(4px); box-shadow: 0 12px 30px rgba(0,0,0,.5); border-color: var(--acc); }
 
     .ot-num {
-      flex: 0 0 auto; width: 30px; height: 30px; border-radius: 50%;
+      flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      font-family: Georgia, serif; font-size: .95rem;
-      background: currentColor; color: var(--ot-card);
+      font-family: Georgia, serif; font-size: .95rem; color: var(--ot-black);
+      background: var(--acc-lit);
+      background: color-mix(in oklab, var(--ot-blood-lit) var(--t), var(--acc-lit));
     }
-    .ot-num { color: #fffdf8; }
     .ot-rung-copy { flex: 1; min-width: 0; }
-    .ot-rung-title { display: block; font-family: Georgia, serif; font-size: 1.12rem; }
-    .ot-rung-line { display: block; font-size: .95rem; margin-top: .2rem; opacity: .85; line-height: 1.55; }
-    .ot-rung-cue { flex: 0 0 auto; align-self: center; font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; padding: .3rem .7rem; border-radius: 999px; border: 1px solid currentColor; opacity: .7; }
-    @media (max-width: 640px) { .ot-rung-cue { display: none; } }
+    .ot-rung-title { display: block; font-family: Georgia, serif; font-variant: small-caps; font-size: 1.25rem; letter-spacing: .03em; color: var(--ot-cream); }
+    .ot-rung-line { display: block; font-size: .95rem; margin-top: .25rem; color: var(--ot-mute); line-height: 1.6; }
+    .ot-marks { display: flex; flex-wrap: wrap; gap: .45rem; margin-top: .65rem; }
+    .ot-marks span { font-size: .64rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ot-mute); border: 1px solid var(--ot-rule); border-radius: 999px; padding: .2rem .6rem; }
+    .ot-cue { flex: 0 0 auto; align-self: center; font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; padding: .38rem .85rem; border-radius: 999px; border: 1px solid var(--acc); color: var(--acc-lit); }
+    @media (max-width: 700px) { .ot-cue { display: none; } }
 
-    .ot-joint { height: 26px; display: flex; justify-content: center; align-items: center; }
-    .ot-joint span {
-      display: block; width: 10px; height: 26px; border-radius: 999px;
-      border: 2px solid var(--h-line);
-      border-color: color-mix(in oklab, var(--ot-lie-line) var(--t), var(--h-line));
-    }
+    .ot-joint { height: 30px; display: flex; justify-content: center; align-items: center; }
+    .ot-joint span { display: block; width: 11px; height: 30px; border-radius: 999px; border: 2px solid var(--acc); border-color: color-mix(in oklab, var(--ot-blood) var(--t), var(--acc)); opacity: .75; }
 
-    .ot-rung-said .ot-rung-btn { padding: 1.25rem 1.3rem; border-width: 2px; }
-    .ot-said-label { display: block; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; opacity: .8; }
-    .ot-said-text { display: block; font-family: Georgia, serif; font-size: 1.45rem; margin-top: .25rem; }
+    .ot-said .ot-rung-btn { padding: 1.5rem 1.35rem; border-top-width: 4px; border-top-color: var(--ot-blood); }
+    .ot-said-label { display: block; font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: var(--ot-blood-lit); }
+    .ot-said-text { display: block; font-family: Georgia, serif; font-size: 1.6rem; margin-top: .35rem; color: var(--ot-cream); }
+    .ot-said .ot-cue { border-color: var(--ot-blood); color: var(--ot-blood-lit); }
 
     /* ---------- modal ---------- */
 
     body.ot-locked { overflow: hidden; }
     .ot-modal[hidden] { display: none; }
-    .ot-modal { position: fixed; inset: 0; z-index: 90; display: flex; align-items: center; justify-content: center; padding: 1.25rem; }
-    .ot-modal-scrim { position: absolute; inset: 0; background: rgba(30, 24, 14, .55); backdrop-filter: blur(2px); }
-    .ot-modal-panel {
-      position: relative; width: min(660px, 100%); max-height: 88vh; overflow-y: auto;
-      background: var(--ot-card); border-radius: 18px; padding: 2rem 2rem 1rem;
-      border-top: 8px solid var(--h-line);
-      border-top-color: color-mix(in oklab, var(--ot-lie-line) var(--t, 0%), var(--h-line));
-      box-shadow: 0 24px 60px rgba(0,0,0,.35);
+    .ot-modal { --acc: var(--ot-gold); --acc-lit: var(--ot-gold-lit); position: fixed; inset: 0; z-index: 200; display: flex; align-items: center; justify-content: center; padding: 1.25rem; }
+    .ot-scrim { position: absolute; inset: 0; background: rgba(6, 5, 4, .88); }
+    .ot-panel {
+      position: relative; z-index: 1; width: min(680px, 100%); max-height: 88vh; overflow-y: auto;
+      background: #17130e;
+      border: 1px solid var(--ot-rule);
+      border-top: 5px solid var(--acc);
+      border-top-color: color-mix(in oklab, var(--ot-blood) var(--t, 0%), var(--acc));
+      border-radius: 10px; padding: 2.25rem 2.25rem 1rem;
+      box-shadow: 0 30px 80px rgba(0,0,0,.8);
     }
-    .ot-modal-x { position: absolute; top: .8rem; right: 1rem; background: none; border: 0; font-size: 1.9rem; line-height: 1; color: var(--ot-mute); cursor: pointer; }
-    #ot-modal-body { --t: 0%; }
-    .ot-modal-eyebrow { font-size: .74rem; letter-spacing: .12em; text-transform: uppercase; color: var(--ot-mute); margin: 0 0 1rem; }
-    .ot-modal-kicker { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ot-lie-ink); margin: 0; }
-    .ot-modal-title { font-family: Georgia, serif; font-size: 1.6rem; color: var(--ot-navy); margin: 0 0 .4rem; display: flex; align-items: baseline; gap: .7rem; }
-    .ot-modal-num {
-      flex: 0 0 auto; width: 34px; height: 34px; border-radius: 50%; font-size: 1rem;
-      display: inline-flex; align-items: center; justify-content: center; align-self: center;
-      background: var(--h-line); background: color-mix(in oklab, var(--ot-lie-line) var(--t), var(--h-line)); color: #fffdf8;
-    }
-    .ot-modal-line { font-size: 1.05rem; color: var(--ot-mute); margin: 0 0 1.4rem; line-height: 1.6; }
+    .ot-x { position: absolute; top: .6rem; right: 1rem; background: none; border: 0; font-size: 2rem; line-height: 1; color: var(--ot-mute); cursor: pointer; }
+    .ot-x:hover { color: var(--ot-gold-lit); }
+    .ot-eyebrow { font-size: .66rem; letter-spacing: .22em; text-transform: uppercase; color: var(--acc-lit); margin: 0 0 1.2rem; }
+    .ot-kicker { font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: var(--ot-blood-lit); margin: 0; }
+    .ot-modal-title { font-family: Georgia, serif; font-variant: small-caps; font-weight: 400; font-size: 1.85rem; color: var(--ot-cream); margin: 0 0 .5rem; display: flex; align-items: center; gap: .8rem; letter-spacing: .02em; }
+    .ot-modal-num { flex: 0 0 auto; width: 36px; height: 36px; border-radius: 50%; font-size: 1rem; display: inline-flex; align-items: center; justify-content: center; color: var(--ot-black); background: var(--acc-lit); background: color-mix(in oklab, var(--ot-blood-lit) var(--t), var(--acc-lit)); }
+    .ot-modal-line { font-family: Georgia, serif; font-size: 1.08rem; color: var(--ot-mute); margin: 0 0 1.5rem; line-height: 1.65; }
+    .ot-shared { font-size: .72rem; letter-spacing: .14em; text-transform: uppercase; color: var(--acc-lit); margin: -1rem 0 1.5rem; }
 
-    .ot-ev-label { font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--ot-mute); margin: 1.5rem 0 .6rem; padding-bottom: .35rem; border-bottom: 1px solid var(--ot-rule); }
+    .ot-ev-label { font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: var(--ot-gold); margin: 2rem 0 .8rem; padding-bottom: .45rem; border-bottom: 1px solid var(--ot-rule); }
     .ot-verses { margin: 0; }
-    .ot-verse { display: flex; flex-wrap: wrap; gap: .8rem; padding: .4rem 0; border-bottom: 1px solid rgba(0,0,0,.05); }
-    .ot-verse dt { min-width: 175px; font-weight: 700; color: var(--ot-navy); margin: 0; }
+    .ot-verse { display: flex; flex-wrap: wrap; gap: .9rem; padding: .5rem 0; border-bottom: 1px solid rgba(255,255,255,.05); }
+    .ot-verse dt { min-width: 180px; font-family: Georgia, serif; color: var(--ot-cream); margin: 0; }
     .ot-verse dd { flex: 1; margin: 0; color: var(--ot-mute); }
-    .ot-record { margin: 0; color: var(--ot-mute); }
-    .ot-finding { font-family: Georgia, serif; font-size: 1.08rem; color: var(--ot-ink); margin: 1.5rem 0 0; padding: 1rem 1.1rem; border-radius: 12px; background: var(--ot-cream); }
-    .ot-shared { font-size: .82rem; color: var(--ot-mute); margin: 0 0 1.2rem; }
-    .ot-chips { display: flex; flex-wrap: wrap; gap: .45rem; margin: 0; }
-    .ot-chip { font-size: .85rem; padding: .35rem .8rem; border-radius: 999px; background: var(--ot-cream); color: var(--ot-navy); text-decoration: none; border: 1px solid var(--ot-rule); }
-    .ot-chip:hover { background: var(--h-bg); }
 
-    .ot-modal-foot { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-top: 1.75rem; padding-top: 1rem; border-top: 1px solid var(--ot-rule); position: sticky; bottom: 0; background: var(--ot-card); }
-    .ot-step { font: inherit; font-size: .85rem; padding: .5rem .9rem; border: 1px solid var(--ot-rule); border-radius: 10px; background: var(--ot-card); color: var(--ot-navy); cursor: pointer; }
-    .ot-step[disabled] { opacity: .35; cursor: default; }
-    .ot-modal-pos { font-size: .78rem; letter-spacing: .1em; text-transform: uppercase; color: var(--ot-mute); }
-    @media (max-width: 520px) { .ot-modal-panel { padding: 1.5rem 1.25rem 1rem; } .ot-verse dt { min-width: 100%; } }
+    .ot-records { list-style: none; margin: 0; padding: 0; }
+    .ot-rec { padding: .85rem 0; border-bottom: 1px solid rgba(255,255,255,.05); }
+    .ot-rec:last-child { border-bottom: 0; }
+    .ot-rec-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: .7rem; margin: 0 0 .3rem; }
+    .ot-rec-src { font-family: Georgia, serif; font-variant: small-caps; font-size: 1.08rem; letter-spacing: .03em; color: var(--ot-gold-lit); }
+    .ot-rec-date { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ot-mute); border: 1px solid var(--ot-rule); border-radius: 999px; padding: .15rem .6rem; }
+    .ot-rec-note { margin: 0; color: var(--ot-cream); opacity: .82; line-height: 1.65; }
+
+    .ot-finding { font-family: Georgia, serif; font-style: italic; font-size: 1.1rem; color: var(--ot-cream); margin: 2rem 0 0; padding: 1.1rem 1.25rem; border-left: 3px solid var(--ot-gold); background: rgba(200,145,47,.07); }
+    .ot-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; }
+    .ot-chip { font-size: .82rem; padding: .38rem .85rem; border-radius: 999px; background: var(--ot-panel-2); color: var(--ot-gold-lit); text-decoration: none; border: 1px solid var(--ot-rule); }
+    .ot-chip:hover { border-color: var(--ot-gold); }
+
+    .ot-foot { display: flex; align-items: center; justify-content: space-between; gap: .75rem; margin-top: 2rem; padding: 1rem 0; border-top: 1px solid var(--ot-rule); position: sticky; bottom: 0; background: #17130e; }
+    .ot-step { font: inherit; font-size: .8rem; letter-spacing: .12em; text-transform: uppercase; padding: .5rem 1rem; border: 1px solid var(--ot-rule); border-radius: 8px; background: transparent; color: var(--ot-gold-lit); cursor: pointer; }
+    .ot-step:hover:not([disabled]) { border-color: var(--ot-gold); }
+    .ot-step[disabled] { opacity: .28; cursor: default; }
+    .ot-pos { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ot-mute); }
+    @media (max-width: 560px) { .ot-panel { padding: 1.75rem 1.25rem 1rem; } .ot-verse dt { min-width: 100%; } }
   </style>
 </Layout>
