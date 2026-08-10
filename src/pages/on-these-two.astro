@@ -1,9 +1,11 @@
 ---
-// on-these-two 0810 V3.astro
-// V3. Dark gold theme to match The Departure. Fixes the translucent modal (custom properties were
-// declared on .ot, and the modal sits outside .ot, so every var resolved to nothing). Root lines
-// strengthened and run into the filter row. Shuffle button replaced by Search; order now randomises
-// on every page load. Renders the new records array.
+// on-these-two 0810 V5.astro
+// V5. Chain joints rebuilt: forged rings with a highlight pass, alternating tilt down the ladder,
+// colour deepening toward the saying, and a broken open link as the final joint before the lie.
+// V4 notes below still apply. The page ground is the site parchment, not black. Every element on it
+// is now dark brown. Only the cards and the modal stay dark with cream type. Tile states reversed:
+// inactive is parchment with brown lettering, active is the dark card. Root lines matched on both
+// sides in one brown. The joint between rungs is now a drawn interlocking chain link.
 // Layout import: site has no Layout.astro; BaseLayout takes { title, description }.
 // Only this import path changed — the <Layout title description> call is untouched.
 import Layout from '../layouts/BaseLayout.astro';
@@ -69,7 +71,7 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
 
     <div class="ot-hinges">
       {hinges.map((h) => (
-        <button class={`ot-tile ot-tile-${h.id}`} data-hinge={h.id} type="button">
+        <button class={`ot-tile ot-tile-${h.id}`} data-hinge={h.id} type="button" aria-pressed="false">
           <span class="ot-tile-name">{h.name}</span>
           <span class="ot-tile-line">{h.line}</span>
           <span class="ot-tile-count">{counts[h.id]} chains</span>
@@ -78,19 +80,17 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     </div>
 
     <svg class="ot-band" viewBox="0 0 800 130" preserveAspectRatio="none" aria-hidden="true">
-      <g class="ot-root ot-root-torah">
-        <path d="M200 0 V26" />
-        <path d="M200 26 C200 62 96 62 66 130" />
-        <path d="M200 26 C200 70 168 78 150 130" />
-        <path d="M200 26 C200 70 232 78 250 130" />
-        <path d="M200 26 C200 62 300 66 344 130" />
-      </g>
-      <g class="ot-root ot-root-trinity">
-        <path d="M600 0 V26" />
-        <path d="M600 26 C600 62 500 66 456 130" />
-        <path d="M600 26 C600 70 568 78 550 130" />
-        <path d="M600 26 C600 70 632 78 650 130" />
-        <path d="M600 26 C600 62 704 62 734 130" />
+      <g class="ot-root">
+        <path d="M200 0 V28" />
+        <path d="M200 28 C200 64 96 64 66 130" />
+        <path d="M200 28 C200 72 168 80 150 130" />
+        <path d="M200 28 C200 72 232 80 250 130" />
+        <path d="M200 28 C200 64 304 64 334 130" />
+        <path d="M600 0 V28" />
+        <path d="M600 28 C600 64 496 64 466 130" />
+        <path d="M600 28 C600 72 568 80 550 130" />
+        <path d="M600 28 C600 72 632 80 650 130" />
+        <path d="M600 28 C600 64 704 64 734 130" />
       </g>
     </svg>
 
@@ -155,7 +155,6 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     const elBody = document.getElementById('ot-modal-body');
     const elPos = document.getElementById('ot-modal-pos');
 
-    // Fresh order on every page load. Held in memory only, so filtering never reorders mid-visit.
     const order = DATA.chains.map((c) => c.id);
     for (let i = order.length - 1; i > 0; i--) {
       const j = Math.floor(Math.random() * (i + 1));
@@ -170,6 +169,39 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     let lastFocus = null;
 
     const esc = (s) => String(s).replace(/[&<>"]/g, (m) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[m]));
+
+    // A drawn chain link. Two rings, the upper one repainted over the lower so it reads as interlocked.
+    // A forged chain link: vertical ring, horizontal ring, vertical ring. The perpendicular middle
+    // ring is what makes it read as chain rather than a stack of ovals. Each ring is stroked twice,
+    // a heavy dark pass then a thin light pass offset up and left, which gives it round metal.
+    const V_TOP = 'M23 3 a7 7 0 0 0 -7 7 v13 a7 7 0 0 0 14 0 v-13 a7 7 0 0 0 -7 -7 z';
+    const H_MID = 'M13 27 a6.5 6.5 0 0 0 0 13 h20 a6.5 6.5 0 0 0 0 -13 z';
+    const V_BOT = 'M23 37 a7 7 0 0 0 -7 7 v13 a7 7 0 0 0 14 0 v-13 a7 7 0 0 0 -7 -7 z';
+    // The middle ring, snapped. Two open halves pulling away from each other.
+    const H_LEFT = 'M22 27 h-9 a6.5 6.5 0 0 0 0 13 h11';
+    const H_RIGHT = 'M24 27 h9 a6.5 6.5 0 0 1 0 13 h-11';
+
+    const JOINT = `<svg class="ot-joint-svg" viewBox="0 0 46 68" aria-hidden="true">
+      <path class="ot-ring" d="${V_TOP}" />
+      <path class="ot-ring" d="${H_MID}" />
+      <path class="ot-ring" d="${V_BOT}" />
+      <g class="ot-shine">
+        <path d="${V_TOP}" /><path d="${H_MID}" /><path d="${V_BOT}" />
+      </g>
+    </svg>`;
+
+    const JOINT_BROKEN = `<svg class="ot-joint-svg ot-joint-svg-broken" viewBox="0 0 46 68" aria-hidden="true">
+      <path class="ot-ring" d="${V_TOP}" />
+      <path class="ot-ring ot-snap" transform="translate(-4 0)" d="${H_LEFT}" />
+      <path class="ot-ring ot-snap" transform="translate(5 1)" d="${H_RIGHT}" />
+      <path class="ot-ring" transform="translate(1 4)" d="${V_BOT}" />
+      <g class="ot-shine">
+        <path d="${V_TOP}" />
+        <path class="ot-snap" transform="translate(-4 0)" d="${H_LEFT}" />
+        <path class="ot-snap" transform="translate(5 1)" d="${H_RIGHT}" />
+        <path transform="translate(1 4)" d="${V_BOT}" />
+      </g>
+    </svg>`;
 
     function matches(c) {
       if (elHinge.value !== 'all' && c.hinge !== elHinge.value) return false;
@@ -215,7 +247,7 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
             <span class="ot-cue">Evidence</span>
           </button>
         </li>
-        <li class="ot-joint" aria-hidden="true" style="--t:${Math.round(((i + 0.5) / n) * 100)}%"><span></span></li>`;
+        <li class="ot-joint${i === n - 1 ? ' ot-joint-break' : ''}" aria-hidden="true" style="--t:${Math.round(((i + 0.5) / n) * 100)}%">${i === n - 1 ? JOINT_BROKEN : JOINT}</li>`;
       });
 
       h += `<li class="ot-rung ot-said" style="--t:100%">
@@ -332,34 +364,51 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
       render(list.find((c) => c.id === elPick.value));
     }
 
-    elHinge.addEventListener('change', () => refresh(true));
+    elHinge.addEventListener('change', () => { syncTiles(); refresh(true); });
     elCat.addEventListener('change', () => refresh(true));
     elQ.addEventListener('input', () => refresh(true));
     elQ.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); refresh(true); elQ.blur(); } });
     document.getElementById('ot-search').addEventListener('click', () => { refresh(true); elQ.blur(); });
     elPick.addEventListener('change', () => render(DATA.chains.find((c) => c.id === elPick.value)));
 
+    // No hinge chosen means both tiles read as active. Choosing one makes the other go quiet.
+    function syncTiles() {
+      const v = elHinge.value;
+      document.querySelectorAll('.ot-tile').forEach((x) => {
+        const on = v === 'all' || x.dataset.hinge === v;
+        x.classList.toggle('is-off', !on);
+        x.setAttribute('aria-pressed', String(v === x.dataset.hinge));
+      });
+    }
     document.querySelectorAll('.ot-tile').forEach((t) => {
       t.addEventListener('click', () => {
         const id = t.dataset.hinge;
         elHinge.value = elHinge.value === id ? 'all' : id;
-        document.querySelectorAll('.ot-tile').forEach((x) => {
-          x.classList.toggle('is-dim', elHinge.value !== 'all' && x.dataset.hinge !== elHinge.value);
-        });
+        syncTiles();
         refresh(true);
       });
     });
 
+    syncTiles();
     refresh(false);
   </script>
 
   <!--
     is:global is required. The chain is injected at runtime, so scoped styles never reach it.
-    Custom properties are declared on :root, NOT on .ot. The modal is a sibling of .ot, and in V2
-    every var inside it resolved to nothing, which is why the panel rendered see-through.
+    Custom properties live on :root, NOT on .ot. The modal is a sibling of .ot.
+
+    COLOR RULE FOR THIS PAGE
+    Anything sitting directly on the parchment ground uses --ot-ink or --ot-ink-2, both dark brown.
+    Cream and gold appear only inside a dark card or inside the modal. Do not put gold text on
+    parchment. That is what made V3 unreadable.
   -->
   <style is:global>
     :root {
+      --ot-ink: #3b2a12;
+      --ot-ink-2: #6a5433;
+      --ot-ink-line: rgba(59, 42, 18, .32);
+      --ot-ink-wash: rgba(59, 42, 18, .07);
+
       --ot-black: #0d0b09;
       --ot-panel: #17130e;
       --ot-panel-2: #1e1913;
@@ -374,26 +423,30 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
       --ot-rule: rgba(200, 145, 47, .22);
     }
 
-    .ot {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2.5rem 1.25rem 5rem;
-      color: var(--ot-cream);
-    }
+    .ot { max-width: 1000px; margin: 0 auto; padding: 2.5rem 1.25rem 5rem; color: var(--ot-ink); }
+
+    /* ---------- masthead, on parchment ---------- */
 
     .ot-mast { text-align: center; margin-bottom: 2.25rem; }
-    .ot-over { font-size: .74rem; letter-spacing: .3em; text-transform: uppercase; color: var(--ot-gold); margin: 0; }
-    .ot-mast h1 { font-family: Georgia, serif; font-variant: small-caps; color: var(--ot-cream); font-size: clamp(1.7rem, 4.4vw, 2.8rem); font-weight: 400; margin: .6rem 0 0; letter-spacing: .02em; }
+    .ot-over { font-size: .74rem; letter-spacing: .3em; text-transform: uppercase; color: var(--ot-ink-2); margin: 0; }
+    .ot-mast h1 { font-family: Georgia, serif; font-variant: small-caps; color: var(--ot-ink); font-size: clamp(1.7rem, 4.4vw, 2.8rem); font-weight: 400; margin: .6rem 0 0; letter-spacing: .02em; }
     .ot-diamond { display: flex; align-items: center; justify-content: center; gap: .9rem; margin: .9rem 0; }
-    .ot-diamond span { display: block; width: 62px; height: 1px; background: linear-gradient(90deg, transparent, var(--ot-gold)); }
-    .ot-diamond span:last-child { background: linear-gradient(90deg, var(--ot-gold), transparent); }
-    .ot-diamond i { width: 9px; height: 9px; border: 1px solid var(--ot-gold); transform: rotate(45deg); }
-    .ot-lede { font-family: Georgia, serif; font-style: italic; color: var(--ot-mute); margin: 0; }
+    .ot-diamond span { display: block; width: 62px; height: 1px; background: linear-gradient(90deg, transparent, var(--ot-ink)); }
+    .ot-diamond span:last-child { background: linear-gradient(90deg, var(--ot-ink), transparent); }
+    .ot-diamond i { width: 9px; height: 9px; border: 1px solid var(--ot-ink); transform: rotate(45deg); }
+    .ot-lede { font-family: Georgia, serif; font-style: italic; color: var(--ot-ink-2); margin: 0; }
+
+    /* ---------- hinge tiles: quiet state is parchment with brown type ---------- */
 
     .ot-hinges { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 18px; }
-    .ot-tile { display: block; width: 100%; text-align: left; cursor: pointer; font: inherit; padding: 1.35rem 1.5rem; border-radius: 10px; background: linear-gradient(180deg, var(--ot-panel-2), var(--ot-panel)); border: 1px solid var(--ot-rule); border-top: 3px solid var(--ot-gold); transition: opacity .18s ease, transform .18s ease, box-shadow .18s ease; }
-    .ot-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,0,0,.55); }
-    .ot-tile.is-dim { opacity: .32; }
+    .ot-tile {
+      display: block; width: 100%; text-align: left; cursor: pointer; font: inherit;
+      padding: 1.35rem 1.5rem; border-radius: 10px;
+      background: linear-gradient(180deg, var(--ot-panel-2), var(--ot-panel));
+      border: 1px solid var(--ot-rule); border-top: 3px solid var(--ot-gold);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+    .ot-tile:hover { transform: translateY(-3px); box-shadow: 0 14px 34px rgba(0,0,0,.35); }
     .ot-tile-name { display: block; font-family: Georgia, serif; font-variant: small-caps; font-size: 1.5rem; letter-spacing: .04em; }
     .ot-tile-line { display: block; font-family: Georgia, serif; font-style: italic; font-size: 1rem; margin-top: .45rem; color: var(--ot-mute); }
     .ot-tile-count { display: block; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; margin-top: 1rem; }
@@ -402,38 +455,49 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     .ot-tile-trinity { border-top-color: var(--ot-silver); }
     .ot-tile-trinity .ot-tile-name, .ot-tile-trinity .ot-tile-count { color: var(--ot-silver-lit); }
 
+    .ot-tile.is-off { background: var(--ot-ink-wash); border-color: var(--ot-ink-line); box-shadow: none; }
+    .ot-tile.is-off .ot-tile-name,
+    .ot-tile.is-off .ot-tile-count { color: var(--ot-ink); }
+    .ot-tile.is-off .ot-tile-line { color: var(--ot-ink-2); }
+    .ot-tile-torah.is-off { border-top-color: var(--ot-ink); }
+    .ot-tile-trinity.is-off { border-top-color: var(--ot-ink); }
+
+    /* ---------- roots: one brown, both sides identical ---------- */
+
     .ot-band { display: block; width: 100%; height: 118px; }
-    .ot-band path { fill: none; stroke-width: 1.25; }
-    .ot-root-torah path { stroke: var(--ot-gold); opacity: .45; }
-    .ot-root-trinity path { stroke: var(--ot-silver); opacity: .4; }
+    .ot-root path { fill: none; stroke: var(--ot-ink); stroke-width: 1.4; opacity: .55; }
     @media (max-width: 640px) { .ot-band { height: 64px; } }
 
-    .ot-filters, .ot-picker { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; padding: 1rem 0; border-top: 1px solid var(--ot-rule); }
-    .ot-filters { border-bottom: 1px solid var(--ot-rule); }
+    /* ---------- controls, on parchment ---------- */
+
+    .ot-filters, .ot-picker { display: flex; flex-wrap: wrap; gap: 16px; align-items: flex-end; padding: 1rem 0; border-top: 1px solid var(--ot-ink-line); }
+    .ot-filters { border-bottom: 1px solid var(--ot-ink-line); }
     .ot-field { display: flex; flex-direction: column; gap: .35rem; }
-    .ot-field > span { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ot-gold); }
+    .ot-field > span { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ot-ink); }
     .ot-grow { flex: 1 1 220px; }
     .ot-field select, .ot-field input { font: inherit; font-size: .95rem; padding: .6rem .8rem; border: 1px solid var(--ot-rule); border-radius: 8px; background: var(--ot-panel); color: var(--ot-cream); width: 100%; }
     .ot-field select:focus, .ot-field input:focus { outline: none; border-color: var(--ot-gold); }
     .ot-count { text-align: center; background: var(--ot-panel); border: 1px solid var(--ot-rule); border-radius: 8px; padding: .5rem 1.1rem; }
     .ot-count strong { display: block; font-family: Georgia, serif; font-size: 1.3rem; color: var(--ot-gold-lit); }
     .ot-count span { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ot-mute); }
-    .ot-searchbtn { font: inherit; font-family: Georgia, serif; font-variant: small-caps; font-size: 1rem; letter-spacing: .08em; padding: .6rem 1.4rem; border: 1px solid var(--ot-gold); border-radius: 8px; background: transparent; color: var(--ot-gold-lit); cursor: pointer; }
-    .ot-searchbtn:hover { background: rgba(200,145,47,.12); }
+    .ot-searchbtn { font: inherit; font-family: Georgia, serif; font-variant: small-caps; font-size: 1.05rem; letter-spacing: .08em; padding: .62rem 1.6rem; border: 1px solid var(--ot-ink); border-radius: 8px; background: var(--ot-ink); color: var(--ot-cream); cursor: pointer; }
+    .ot-searchbtn:hover { background: #2b1e0c; }
 
-    /* ---------- the chain ---------- */
+    /* ---------- chain header, on parchment ---------- */
 
     .ot-chain { --acc: var(--ot-gold); --acc-lit: var(--ot-gold-lit); margin: 2rem 0; min-height: 340px; }
     .ot-chain.ot-h-trinity, .ot-modal.ot-h-trinity { --acc: var(--ot-silver); --acc-lit: var(--ot-silver-lit); }
     .ot-chain.ot-h-torah, .ot-modal.ot-h-torah { --acc: var(--ot-gold); --acc-lit: var(--ot-gold-lit); }
-    .ot-empty { color: var(--ot-mute); text-align: center; padding: 4rem 0; font-family: Georgia, serif; font-style: italic; }
+    .ot-empty { color: var(--ot-ink-2); text-align: center; padding: 4rem 0; font-family: Georgia, serif; font-style: italic; }
 
     .ot-head { display: flex; align-items: center; gap: .7rem; flex-wrap: wrap; }
-    .ot-badge { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; padding: .32rem .85rem; border-radius: 999px; border: 1px solid var(--acc); color: var(--acc-lit); }
-    .ot-arrow { color: var(--ot-mute); }
-    .ot-saying { font-family: Georgia, serif; font-size: 1.45rem; color: var(--ot-cream); }
-    .ot-linkcount { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ot-mute); }
-    .ot-sub { font-family: Georgia, serif; font-style: italic; font-size: .92rem; color: var(--ot-mute); margin: .5rem 0 1.5rem; }
+    .ot-badge { font-size: .68rem; letter-spacing: .2em; text-transform: uppercase; padding: .32rem .85rem; border-radius: 999px; border: 1px solid var(--ot-ink); background: var(--ot-ink); color: var(--ot-cream); }
+    .ot-arrow { color: var(--ot-ink-2); }
+    .ot-saying { font-family: Georgia, serif; font-size: 1.5rem; color: var(--ot-ink); }
+    .ot-linkcount { font-size: .7rem; letter-spacing: .18em; text-transform: uppercase; color: var(--ot-ink-2); }
+    .ot-sub { font-family: Georgia, serif; font-style: italic; font-size: .95rem; color: var(--ot-ink-2); margin: .5rem 0 1.5rem; }
+
+    /* ---------- rungs: dark cards, cream type ---------- */
 
     .ot-ladder { list-style: none; margin: 0; padding: 0; }
     .ot-rung { margin: 0; }
@@ -447,7 +511,7 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
       color: var(--ot-cream);
       transition: transform .14s ease, box-shadow .14s ease, border-color .14s ease;
     }
-    .ot-rung-btn:hover { transform: translateX(4px); box-shadow: 0 12px 30px rgba(0,0,0,.5); border-color: var(--acc); }
+    .ot-rung-btn:hover { transform: translateX(4px); box-shadow: 0 12px 30px rgba(0,0,0,.4); border-color: var(--acc); }
 
     .ot-num {
       flex: 0 0 auto; width: 32px; height: 32px; border-radius: 50%;
@@ -464,8 +528,27 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     .ot-cue { flex: 0 0 auto; align-self: center; font-size: .64rem; letter-spacing: .2em; text-transform: uppercase; padding: .38rem .85rem; border-radius: 999px; border: 1px solid var(--acc); color: var(--acc-lit); }
     @media (max-width: 700px) { .ot-cue { display: none; } }
 
-    .ot-joint { height: 30px; display: flex; justify-content: center; align-items: center; }
-    .ot-joint span { display: block; width: 11px; height: 30px; border-radius: 999px; border: 2px solid var(--acc); border-color: color-mix(in oklab, var(--ot-blood) var(--t), var(--acc)); opacity: .75; }
+    /* ---------- the joint: a drawn interlocking link, sits on parchment so it is brown ---------- */
+
+    .ot-joint { display: flex; justify-content: center; margin: -1px 0; }
+    .ot-joint-svg { width: 31px; height: 46px; display: block; overflow: visible; }
+    /* Alternating tilt so the ladder reads as slack chain, not a column of identical marks. */
+    /* Rungs and joints are all <li> in one <ol>, so joints always sit on even
+       :nth-of-type. Count position across the interleaved list with :nth-child
+       (joints at 2/6/10 vs 4/8/12) and exclude the break so it stays straight. */
+    .ot-joint:nth-child(4n+2):not(.ot-joint-break) .ot-joint-svg { transform: rotate(4deg); }
+    .ot-joint:nth-child(4n):not(.ot-joint-break) .ot-joint-svg { transform: rotate(-4deg); }
+    /* The ring deepens toward crimson as the chain descends, tracking the card borders. */
+    .ot-ring {
+      fill: none; stroke-width: 4.6;
+      stroke: var(--ot-ink);
+      stroke: color-mix(in oklab, #5c1712 var(--t, 0%), var(--ot-ink));
+    }
+    .ot-shine { fill: none; stroke: #d9c79c; stroke-width: 1.5; opacity: .5; transform: translate(-.7px, -.7px); }
+    .ot-snap { stroke-linecap: round; }
+    /* The last joint before the saying. The chain does not simply end. It breaks. */
+    .ot-joint-break { margin: 3px 0 5px; }
+    .ot-joint-break .ot-joint-svg { transform: none; }
 
     .ot-said .ot-rung-btn { padding: 1.5rem 1.35rem; border-top-width: 4px; border-top-color: var(--ot-blood); }
     .ot-said-label { display: block; font-size: .66rem; letter-spacing: .24em; text-transform: uppercase; color: var(--ot-blood-lit); }
@@ -480,8 +563,7 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     .ot-scrim { position: absolute; inset: 0; background: rgba(6, 5, 4, .88); }
     .ot-panel {
       position: relative; z-index: 1; width: min(680px, 100%); max-height: 88vh; overflow-y: auto;
-      background: #17130e;
-      border: 1px solid var(--ot-rule);
+      background: #17130e; border: 1px solid var(--ot-rule);
       border-top: 5px solid var(--acc);
       border-top-color: color-mix(in oklab, var(--ot-blood) var(--t, 0%), var(--acc));
       border-radius: 10px; padding: 2.25rem 2.25rem 1rem;
