@@ -1,4 +1,6 @@
-// links.data 0810 V2.js
+// links.data 0810 V3.js
+// V3. Adds five links for the Sunday chain, which runs through sun worship and church authority and
+// is a separate lineage from the grace-side chain that ends in every day is a Sabbath now.
 // V2. Adds a records array to every link. Each record is a datable, checkable source: a council canon,
 // an imperial edict, a papal bull, a translation ruling, or a manuscript fact. Verses alone were too weak.
 
@@ -268,6 +270,81 @@ export const links = {
       { source: 'The antinomian controversy', date: '1530s', note: 'The end position was argued openly, written against, and named. It did not arrive by accident and it did not arrive from the text.' },
     ],
     finding: 'Preference is the end state of every branch off this hinge.',
+  },
+
+  'torah.sunday.separation-from-the-jews': {
+    title: 'A wall is built against the older practice',
+    line: 'The first move is not a new day. It is a decision to look nothing like Israel.',
+    witnesses: [
+      ['Romans 11:18', 'boast not against the branches'],
+      ['Ephesians 2:12-13', 'once strangers, now brought near'],
+      ['Isaiah 56:6-7', 'the stranger who keeps the sabbath is welcomed'],
+    ],
+    records: [
+      { source: 'Council of Nicaea, and Constantine\u2019s letter after it', date: '325', note: 'The letter preserved by Eusebius in the Life of Constantine, book 3, states the aim outright: to hold nothing in common with them. Separation is named as the reason, not scripture.' },
+      { source: 'Council of Laodicea, Canon 29', date: 'about 363\u2013364', note: 'Resting on the seventh day is condemned as judaizing. The canon does not argue from a command. It argues from not wanting to resemble anyone.' },
+    ],
+    finding: 'The reason given in the record is distance from a people, not obedience to a word.',
+  },
+
+  'torah.sunday.day-of-the-sun': {
+    title: 'The day of the sun is taken up',
+    line: 'The slot chosen already belonged to something else.',
+    witnesses: [
+      ['Ezekiel 8:16', 'men at the temple door facing the sun'],
+      ['Deuteronomy 4:19', 'warned off worshipping the sun'],
+      ['2 Kings 23:11', 'horses given to the sun, removed by Josiah'],
+      ['Jeremiah 10:2', 'learn not the way of the heathen'],
+    ],
+    records: [
+      { source: 'Justin Martyr, First Apology, section 67', date: 'about 155', note: 'The earliest plain description of Christians gathering weekly names the day as the day of the sun. The Roman name is used without embarrassment, a century and a half before any council.' },
+      { source: 'Constantine, civil rest edict', date: '7 March 321', note: 'Rest is ordered on the venerable day of the sun. The wording is pagan, the authority is imperial, and no scripture is cited. Preserved in the Code of Justinian, book 3, title 12, law 2.' },
+    ],
+    finding: 'The day was not empty when it was chosen. It already had a name and an owner.',
+  },
+
+  'torah.sunday.first-day-texts-pressed': {
+    title: 'A handful of texts are pressed into service',
+    line: 'Verses that mention the first day are read as a command to move the Sabbath.',
+    witnesses: [
+      ['Acts 20:7', 'a meeting on the first day, no command given'],
+      ['1 Corinthians 16:2', 'money set aside at home, not an assembly'],
+      ['John 20:19', 'a locked room out of fear, not a service'],
+      ['Matthew 5:18', 'not one jot passes from the law'],
+    ],
+    records: [
+      { source: 'James Cardinal Gibbons, The Faith of Our Fathers', date: '1876', note: 'Argues at length that scripture alone gives no warrant for Sunday, and uses that absence as an argument for church authority. The gap is conceded by the side that benefits from it.' },
+    ],
+    finding: 'Every one of these texts is a description. Not one of them is an instruction.',
+  },
+
+  'torah.sunday.church-claims-the-change': {
+    title: 'The change is claimed openly',
+    line: 'The institution that moved it has never hidden that it moved it.',
+    witnesses: [
+      ['Daniel 7:25', 'thinks to change times and laws'],
+      ['Mark 7:7-9', 'teaching for doctrines the commandments of men'],
+      ['Colossians 2:8', 'after the tradition of men'],
+    ],
+    records: [
+      { source: 'Council of Trent', date: '1545\u20131563', note: 'Tradition is set alongside scripture as an authority. Once that is granted, a day can be moved without a verse.' },
+      { source: 'Peter Geiermann, The Convert\u2019s Catechism of Catholic Doctrine', date: '1910', note: 'A catechism in question and answer form states that the church transferred the observance to Sunday, and treats Protestant Sunday keeping as an acknowledgment of that authority. The claim is printed, not alleged.' },
+    ],
+    finding: 'The strongest witness on this link is the one making the claim.',
+  },
+
+  'torah.sunday.rest-moved-by-law': {
+    title: 'The rest is enforced by statute',
+    line: 'What began as a practice is finished by the courts.',
+    witnesses: [
+      ['Isaiah 10:1', 'woe to those that decree unrighteous decrees'],
+      ['Acts 5:29', 'obey Elohim rather than men'],
+    ],
+    records: [
+      { source: 'Constantine, civil rest edict', date: '7 March 321', note: 'The first law compelling rest on that day. Enforcement arrives before doctrine does.' },
+      { source: 'Sunday closing laws in England and America', date: 'from the 1600s onward', note: 'Trade, travel, and labour restricted by statute on the first day for centuries. A day nobody was commanded to keep became a day nobody was permitted to break.' },
+    ],
+    finding: 'A day held up by law is held up by something other than the law of Yahuah.',
   },
 
   'trinity.hinge': {

@@ -1,5 +1,7 @@
-// chains.data 0809 V1.js
-// New file. Chains for the On These Two page. A chain is an ordered array of link ids plus its own verdict block.
+// chains.data 0810 V2.js
+// V2. Adds the Sunday chain. Sunday and every day are two different lineages and must stay separate:
+// Sunday runs through sun worship and church authority, every day runs through the grace side.
+// V1. Chains for the On These Two page. A chain is an ordered array of link ids plus its own verdict block.
 
 // RULES
 // 1. A chain never stores link text. It stores ids. Text lives in links.data.js.
@@ -64,6 +66,32 @@ export const chains = [
         ['Isaiah 58:13', 'my holy day'],
       ],
       finding: 'The possessive is the argument. His day, marked by His lights.',
+    },
+  },
+
+  {
+    id: 'sunday-is-the-sabbath',
+    saying: 'Sunday is the Sabbath',
+    hinge: 'torah',
+    category: 'The Sabbath',
+    spokenBy: 'said from nearly every pulpit in Christendom',
+    aliases: ['sunday', 'lord\u2019s day', 'lords day', 'first day', 'resurrection', 'sun', 'rome', 'catholic', 'constantine'],
+    links: [
+      'torah.hinge',
+      'torah.sunday.separation-from-the-jews',
+      'torah.sunday.day-of-the-sun',
+      'torah.sunday.first-day-texts-pressed',
+      'torah.sunday.church-claims-the-change',
+      'torah.sunday.rest-moved-by-law',
+    ],
+    verdict: {
+      witnesses: [
+        ['Exodus 20:8-11', 'the seventh, grounded in creation'],
+        ['Leviticus 23:3', 'the seventh day is a holy convocation'],
+        ['Mark 2:28', 'the Son of man is master of the sabbath, not of a substitute'],
+        ['Isaiah 58:13', 'my holy day'],
+      ],
+      finding: 'No verse moves it. A council, an emperor, and a catechism move it, and only one of the three admits it.',
     },
   },
 
