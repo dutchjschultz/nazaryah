@@ -123,7 +123,6 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
         <span>Search</span>
         <input id="ot-q" type="search" placeholder="grace, saturn, colossians" autocomplete="off" />
       </label>
-      <button id="ot-search" class="ot-searchbtn" type="button">Search</button>
     </div>
 
   </section>
@@ -370,8 +369,8 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     elHinge.addEventListener('change', () => { syncTiles(); refresh(true); });
     elCat.addEventListener('change', () => refresh(true));
     elQ.addEventListener('input', () => refresh(true));
+    // Box filters live as you type. Enter must not submit or reload — just settle and blur.
     elQ.addEventListener('keydown', (e) => { if (e.key === 'Enter') { e.preventDefault(); refresh(true); elQ.blur(); } });
-    document.getElementById('ot-search').addEventListener('click', () => { refresh(true); elQ.blur(); });
     elPick.addEventListener('change', () => render(DATA.chains.find((c) => c.id === elPick.value)));
 
     // No hinge chosen means both tiles read as active. Choosing one makes the other go quiet.
@@ -483,8 +482,6 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     .ot-count { text-align: center; background: var(--ot-panel); border: 1px solid var(--ot-rule); border-radius: 8px; padding: .5rem 1.1rem; }
     .ot-count strong { display: block; font-family: Georgia, serif; font-size: 1.3rem; color: var(--ot-gold-lit); }
     .ot-count span { font-size: .62rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ot-mute); }
-    .ot-searchbtn { font: inherit; font-family: Georgia, serif; font-variant: small-caps; font-size: 1.05rem; letter-spacing: .08em; padding: .62rem 1.6rem; border: 1px solid var(--ot-ink); border-radius: 8px; background: var(--ot-ink); color: var(--ot-cream); cursor: pointer; }
-    .ot-searchbtn:hover { background: #2b1e0c; }
 
     /* ---------- chain header, on parchment ---------- */
 
