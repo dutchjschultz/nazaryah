@@ -1,4 +1,5 @@
-// links.data 0810 V4.js
+// links.data 0811 V5.js
+// V5. Death and the grave: 10 links added. 41 total.
 // V4. All 31 link titles rewritten — titles now name the move made, past tense. No ids, records, or findings touched.
 // V3. Adds five links for the Sunday chain, which runs through sun worship and church authority and
 // is a separate lineage from the grace-side chain that ends in every day is a Sabbath now.
@@ -454,6 +455,161 @@ export const links = {
       { source: 'The Athanasian Creed', date: 'Latin, fifth or sixth century', note: 'Named for a man who did not write it and who had been dead for generations. It sets out the doctrine at length and never once gives the Father His name.' },
     ],
     finding: 'The result is a creed that never says the Father\u2019s name.',
+  },
+
+
+  'trinity.death.not-die': {
+    title: 'Death Redefined in the Garden',
+    line: 'The first sentence ever spoken against Yahuah\u2019s word was that death is not death.',
+    witnesses: [
+      ['Genesis 2:17', 'in the day thou eatest, thou shalt die'],
+      ['Genesis 3:4', 'ye shall not surely die'],
+      ['Genesis 3:19', 'unto dust shalt thou return'],
+    ],
+    records: [],
+    finding: 'Every rung below this one needs the serpent\u2019s sentence to be true.',
+  },
+
+  'trinity.death.borrowed-from-athens': {
+    title: 'Plato\u2019s Athens Taught an Undying Soul',
+    line: 'The lie was already loose. Athens gave it a school, a vocabulary, and a good name.',
+    witnesses: [
+      ['Genesis 3:4', 'the claim stated before any philosopher'],
+      ['1 Timothy 6:16', 'who only hath immortality'],
+      ['1 Corinthians 1:22', 'the Greeks seek after wisdom'],
+      ['Colossians 2:8', 'philosophy and vain deceit, after men'],
+    ],
+    records: [
+      { source: 'Plato, Phaedo', date: 'about 380 BC', note: 'Socrates is the speaker and Plato is the writer. The soul is argued to be immortal, separable from the body, and better off without it. The idea enters the written record here, in Athens, and not in Israel.' },
+      { source: 'Origen, De Principiis', date: 'about AD 230', note: 'Souls existing before their bodies, argued from inside the assembly. The frame is Greek first, and Origen does not hide where he found it.' },
+    ],
+    finding: 'Athens did not invent this, it made it respectable.',
+  },
+
+  'trinity.death.immortal-soul': {
+    title: 'The Church Adopted the Greek Soul',
+    line: 'Man was said to carry a part of himself that never dies.',
+    witnesses: [
+      ['Ezekiel 18:4', 'the soul that sinneth, it shall die'],
+      ['Ezekiel 18:20', 'said twice in the same chapter'],
+      ['Genesis 2:7', 'man became a living soul, was not given one'],
+      ['1 Timothy 6:16', 'Yahuah alone hath immortality', 'Some answer that man holds immortality derivatively, as a gift rather than by nature. Even granted, a thing men are commanded to seek is not a thing they already own \u2014 Romans 2:7.'],
+      ['Matthew 10:28', 'able to destroy both soul and body', 'Destroy is read by some as ruin rather than end. The same word is used of a lost sheep and of wineskins that burst, and neither one survives as itself.'],
+    ],
+    records: [
+      { source: 'Justin Martyr, Dialogue with Trypho', date: 'about AD 155\u2013160', note: 'Justin argues that the soul is not immortal by nature and lives only because Yahuah wills it to. A believer is still arguing against the doctrine well over a century after the tree, which is not what an apostolic teaching looks like.' },
+      { source: 'Tertullian, De Anima', date: 'about AD 210', note: 'A church writer argues for the immortal soul, and works openly from the Greek philosophers while doing it.' },
+      { source: 'Fifth Lateran Council, session 8, bull Apostolici Regiminis', date: '19 December 1513', note: 'Condemns those who say the soul is mortal. Immortality is made a required belief under penalty, which ends the argument by forbidding it.' },
+    ],
+    finding: 'Man was not given a soul, he became one.',
+  },
+
+  'trinity.death.conscious-dead': {
+    title: 'The Dead Declared Awake',
+    line: 'If the soul cannot die, it has to be somewhere, and it has to be awake.',
+    witnesses: [
+      ['Ecclesiastes 9:5', 'the dead know not any thing', 'Some answer that Solomon is writing what a man observes under the sun, not doctrine. The same claim is made outside Ecclesiastes, in the Psalms, with no such framing \u2014 Psalm 146:4 and Psalm 115:17.'],
+      ['Psalm 146:4', 'his thoughts perish that very day'],
+      ['Psalm 115:17', 'the dead praise not Yah'],
+      ['Psalm 6:5', 'in death there is no remembrance'],
+      ['Job 14:12', 'sleepeth, and riseth not, till the heavens be no more'],
+    ],
+    records: [
+      { source: 'Augustine, City of God, books 21 and 22', date: 'about AD 426', note: 'The dead are treated as awake and already receiving what is owed them, ahead of the resurrection.', dispute: 'The opponents Augustine answers in book 21 were largely universalists rather than annihilationists. What this record establishes is that the dead were being treated as conscious, not what his opponents held.' },
+    ],
+    finding: 'Scripture calls death sleep, and sleep does not know anything.',
+  },
+
+  'trinity.death.straight-to-heaven': {
+    title: 'Rome Moved the Reward to the Deathbed',
+    line: 'The reward was taken off the resurrection and set on the last breath.',
+    witnesses: [
+      ['John 3:13', 'no man hath ascended up to heaven'],
+      ['Acts 2:29', 'David is dead and buried, his sepulchre with us'],
+      ['Acts 2:34', 'David is not ascended into the heavens'],
+      ['1 Thessalonians 4:16', 'the dead in Messiah rise first'],
+      ['2 Timothy 4:8', 'the crown given at that day, not at death'],
+    ],
+    records: [
+      { source: 'Benedict XII, bull Benedictus Deus', date: '29 January 1336', note: 'Defines that the souls of the blessed see Yahuah immediately after death, before the resurrection and before the judgment. The rung written down in plain words, and dated.' },
+      { source: 'Council of Florence, bull Laetentur Caeli', date: '6 July 1439', note: 'Repeated as a term of union with the Greeks. Souls go at once to heaven, at once to punishment, or to a middle place.' },
+    ],
+    finding: 'Peter preached that David is dead, buried, and did not ascend.',
+  },
+
+  'trinity.death.absent-present': {
+    title: 'One Clause of Paul\u2019s Made the Proof',
+    line: 'A single clause is lifted out of its paragraph and made into the moment of transfer.',
+    witnesses: [
+      ['2 Corinthians 5:4', 'not unclothed, but clothed upon'],
+      ['2 Corinthians 5:8', 'the clause, read by itself'],
+      ['1 Corinthians 15:53', 'this mortal must put on immortality'],
+      ['Philippians 3:21', 'the body changed at His coming'],
+    ],
+    records: [],
+    finding: 'Four verses earlier Paul asks for the opposite of what the clause is used to prove.',
+  },
+
+  'trinity.death.dead-aware': {
+    title: 'Trent Made the Dead Reachable',
+    line: 'Once the dead are awake and up there, they can watch, and they can be asked.',
+    witnesses: [
+      ['Job 14:21', 'his sons come to honour, he knoweth it not'],
+      ['Ecclesiastes 9:6', 'neither have they any more a portion'],
+      ['Isaiah 63:16', 'Abraham is ignorant of us'],
+      ['Deuteronomy 18:11', 'no seeking unto the dead', 'Some answer that this forbids necromancy, not asking a saint to pray. The law names the act of inquiring of the dead and does not grade it by the motive behind it.'],
+      ['1 Timothy 2:5', 'one mediator between Yahuah and men'],
+    ],
+    records: [
+      { source: 'Second Council of Nicaea, session 7', date: 'AD 787', note: 'Establishes the honour paid to the saints and to their images, and with it the practice of asking them.' },
+      { source: 'Council of Trent, session 25, decree on the invocation of the saints', date: '3\u20134 December 1563', note: 'Teaches that the saints in heaven pray for men on earth, and that it is good and useful to call upon them.' },
+    ],
+    finding: 'The one law that names speaking to the dead calls it an abomination.',
+  },
+
+  'trinity.death.reunion': {
+    title: 'The Reunion Moved Off the Trumpet',
+    line: 'If everyone is already up there, the gathering has started and the trumpet adds nothing.',
+    witnesses: [
+      ['1 Thessalonians 4:13', 'concerning them which are asleep'],
+      ['1 Thessalonians 4:16', 'the dead in Messiah rise first'],
+      ['1 Thessalonians 4:18', 'comfort one another with these words'],
+      ['1 Corinthians 15:23', 'every man in his own order'],
+      ['John 11:24', 'he shall rise at the last day'],
+    ],
+    records: [],
+    finding: 'Paul comforted grieving people with the trumpet, not with the funeral.',
+  },
+
+  'trinity.death.torment': {
+    title: 'Punishment Stretched to Forever',
+    line: 'A soul that cannot die cannot be destroyed, so the punishment had to be made endless.',
+    witnesses: [
+      ['Romans 6:23', 'the wages of sin is death'],
+      ['Malachi 4:1', 'shall leave them neither root nor branch'],
+      ['Malachi 4:3', 'ashes under the soles of your feet'],
+      ['2 Peter 2:6', 'Sodom set as an example, turned to ashes'],
+      ['Psalm 37:20', 'consume away into smoke'],
+      ['Jude 7', 'suffering the vengeance of eternal fire', 'Read by some as fire that torments without end. The fire is called eternal, and Sodom is not still burning, so the word describes the source and the result rather than the length of the burning.'],
+    ],
+    records: [
+      { source: 'Augustine, City of God, book 21', date: 'about AD 426', note: 'Argues at length for punishment without end, against Christians of his own day who read the outcome differently.', dispute: 'Most of those Augustine answers in book 21 were universalists rather than annihilationists. What survives is that the endless reading had to be argued for at all, three hundred years in.' },
+      { source: 'Fourth Lateran Council, constitution Firmiter', date: '1215', note: 'Perpetual punishment written into the creed alongside perpetual glory.' },
+    ],
+    finding: 'Endless burning is not death but endless life in a bad place.',
+  },
+
+  'trinity.death.wings': {
+    title: 'The Dead Turned Into Angels',
+    line: 'No council ever taught this one. It came in through hymns, headstones, and sympathy cards.',
+    witnesses: [
+      ['Hebrews 2:16', 'he took not on him the nature of angels'],
+      ['Psalm 8:5', 'made a little lower than the angels'],
+      ['Hebrews 1:14', 'angels are ministering spirits, sent forth'],
+      ['Luke 20:36', 'equal unto the angels', 'This is the verse reached for. Equal is stated in two named respects \u2014 they do not die and they do not marry \u2014 and the same sentence calls them children of the resurrection, which angels are not.'],
+    ],
+    records: [],
+    finding: 'No council, no canon, no verse \u2014 nothing was ever filed for this one.',
   },
 
 };

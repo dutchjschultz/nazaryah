@@ -273,16 +273,19 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
       if (node.witnesses && node.witnesses.length) {
         h += '<p class="ot-ev-label">Witnesses</p><dl class="ot-verses">';
         node.witnesses.forEach((w) => {
-          h += `<div class="ot-verse"><dt>${esc(w[0])}</dt><dd>${esc(w[1])}</dd></div>`;
+          const d = w[2] ? `<div class="ot-dispute"><span class="ot-dispute-label">Where this is argued</span>${esc(w[2])}</div>` : '';
+          h += `<div class="ot-verse"><dt>${esc(w[0])}</dt><dd>${esc(w[1])}</dd>${d}</div>`;
         });
         h += '</dl>';
       }
       if (node.records && node.records.length) {
         h += '<p class="ot-ev-label">The record</p><ol class="ot-records">';
         node.records.forEach((r) => {
+          const d = r.dispute ? `<div class="ot-dispute"><span class="ot-dispute-label">Where this is argued</span>${esc(r.dispute)}</div>` : '';
           h += `<li class="ot-rec">
             <p class="ot-rec-head"><span class="ot-rec-src">${esc(r.source)}</span><span class="ot-rec-date">${esc(r.date)}</span></p>
             <p class="ot-rec-note">${esc(r.note)}</p>
+            ${d}
           </li>`;
         });
         h += '</ol>';
@@ -591,6 +594,11 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     .ot-rec-src { font-family: Georgia, serif; font-variant: small-caps; font-size: 1.08rem; letter-spacing: .03em; color: var(--ot-gold-lit); }
     .ot-rec-date { font-size: .68rem; letter-spacing: .16em; text-transform: uppercase; color: var(--ot-mute); border: 1px solid var(--ot-rule); border-radius: 999px; padding: .15rem .6rem; }
     .ot-rec-note { margin: 0; color: var(--ot-cream); opacity: .82; line-height: 1.65; }
+
+    /* Dispute footnote: optional 3rd witness element or record `dispute` key.
+       The opponent's best reading, then why it does not move the finding. */
+    .ot-dispute { flex-basis: 100%; margin: .55rem 0 .1rem; padding: .5rem .8rem; font-size: .82rem; line-height: 1.6; color: var(--ot-mute); border-left: 2px solid var(--ot-rule); background: rgba(200, 145, 47, .05); }
+    .ot-dispute-label { display: block; font-size: .58rem; letter-spacing: .2em; text-transform: uppercase; color: var(--ot-gold); margin-bottom: .3rem; }
 
     .ot-finding { font-family: Georgia, serif; font-style: italic; font-size: 1.1rem; color: var(--ot-cream); margin: 2rem 0 0; padding: 1.1rem 1.25rem; border-left: 3px solid var(--ot-gold); background: rgba(200,145,47,.07); }
     .ot-chips { display: flex; flex-wrap: wrap; gap: .5rem; margin: 0; }
