@@ -1,4 +1,5 @@
-// chains.data 0811 V3.js
+// chains.data 0811 V4.js
+// V4. Trinity 120s groups (Son, Spirit, Mechanism): 10 chains added. 23 total (13 existing + 10).
 // V3. Death and the grave: 6 chains added. 13 total (7 existing incl. the Sunday chain + 6).
 // V2. Adds the Sunday chain. Sunday and every day are two different lineages and must stay separate:
 // Sunday runs through sun worship and church authority, every day runs through the grace side.
@@ -375,6 +376,219 @@ export const chains = [
         ['Hebrews 1:14', 'angels are ministering spirits, sent forth'],
       ],
       finding: 'Man was made lower than the angels and is never once said to become one. It survives because it is said to people who are crying.',
+    },
+  },
+
+
+  {
+    id: 'i-and-my-father-are-one',
+    saying: 'He and the Father are one, same being',
+    hinge: 'trinity',
+    category: 'The Son',
+    spokenBy: 'the first verse reached for on the subject',
+    aliases: ['one', 'john 10', 'father', 'son', 'deity', 'godhead', 'equal'],
+    links: [
+      'trinity.hinge',
+      'trinity.son.one-read-as-one-being',
+      'trinity.son.context-dropped',
+      'trinity.son.same-oneness-offered-to-men',
+    ],
+    verdict: {
+      witnesses: [
+        ['John 10:36', 'I said, I am the Son of Elohim'],
+        ['John 17:21', 'that they may be one, as we are'],
+        ['John 14:28', 'my Father is greater than I'],
+        ['1 Corinthians 3:8', 'planter and waterer are one'],
+      ],
+      records: [
+        { source: 'Tertullian, Against Praxeas 22', date: 'about AD 213', note: 'One thing, not one person, argued by the writer who coined the word trinitas.' },
+      ],
+      finding: 'He answered the exact charge two verses later, and answered it with Son. The same oneness He claimed, He asked to be given to fishermen.',
+    },
+  },
+
+  {
+    id: 'the-third-person-of-the-trinity',
+    saying: 'The Holy Spirit is the third person of the Trinity',
+    hinge: 'trinity',
+    category: 'The Spirit',
+    spokenBy: 'taught in the membership class, assumed everywhere else',
+    aliases: ['holy spirit', 'third person', 'godhead', 'trinity', 'ghost', 'person', 'ruach'],
+    links: ['trinity.hinge', 'trinity.spirit.breath-made-a-person', 'trinity.spirit.constantinople-sealed-it'],
+    verdict: {
+      witnesses: [
+        ['1 Corinthians 8:6', 'one Elohim, the Father, and one Master'],
+        ['Ephesians 4:6', 'one Elohim and Father of all'],
+        ['Acts 2:17', 'I will pour out of my Spirit'],
+        ['John 20:22', 'He breathed on them'],
+      ],
+      records: [
+        { source: 'Nicaea, then Constantinople', date: 'AD 325, then AD 381', note: 'Five words in 325, a full article in 381. The gap is the argument.' },
+      ],
+      finding: 'The word means breath, and Yahuah pours it out and gives it by measure. The council that fought hardest over the Son had nothing to say about a third person.',
+    },
+  },
+
+  {
+    id: 'the-spirit-told-me',
+    saying: 'The Spirit told me',
+    hinge: 'trinity',
+    category: 'The Spirit',
+    spokenBy: 'said from the platform to end a discussion',
+    aliases: ['spirit told me', 'led', 'word for you', 'laid it on my heart', 'prophecy', 'revelation'],
+    links: ['trinity.hinge', 'trinity.spirit.breath-made-a-person', 'trinity.spirit.constantinople-sealed-it', 'trinity.spirit.own-voice'],
+    verdict: {
+      witnesses: [
+        ['John 16:13', 'he shall not speak of himself'],
+        ['Isaiah 8:20', 'if they speak not according to this word'],
+        ['Deuteronomy 13:3', 'the sign may come, and still be a test'],
+        ['1 John 4:1', 'try the spirits'],
+      ],
+      finding: 'He said it would not speak of itself, and that is the whole test. There is a law about a voice that comes with power and leads away from the commands.',
+    },
+  },
+
+  {
+    id: 'tongues-are-the-evidence',
+    saying: 'Tongues are the evidence you have the Spirit',
+    hinge: 'trinity',
+    category: 'The Spirit',
+    spokenBy: 'used to sort the room into two groups',
+    aliases: ['tongues', 'initial evidence', 'baptism', 'prayer language', 'pentecostal', 'gift'],
+    links: ['trinity.hinge', 'trinity.spirit.breath-made-a-person', 'trinity.spirit.constantinople-sealed-it', 'trinity.spirit.second-blessing', 'trinity.spirit.evidence-by-sign'],
+    verdict: {
+      witnesses: [
+        ['1 Corinthians 12:30', 'do all speak with tongues?'],
+        ['1 Corinthians 13:1', 'all the tongues, and still nothing'],
+        ['Galatians 5:22', 'the fruit named is character'],
+        ['Matthew 7:20', 'by their fruits ye shall know them'],
+      ],
+      records: [
+        { source: 'Assemblies of God, Statement of Fundamental Truths', date: '1916', note: 'A sign made into a required proof, in writing, fifteen years after the practice began.' },
+      ],
+      finding: 'Paul asked the question of a congregation that had tongues, and built it to be answered no. The evidence he named is fruit, and fruit is measured over years.',
+    },
+  },
+
+  {
+    id: 'slain-in-the-spirit',
+    saying: 'Be slain in the Spirit',
+    hinge: 'trinity',
+    category: 'The Spirit',
+    spokenBy: 'practiced with a catcher standing behind the line',
+    aliases: ['slain', 'falling', 'under the power', 'carpet', 'manifestation', 'anointing'],
+    links: ['trinity.hinge', 'trinity.spirit.breath-made-a-person', 'trinity.spirit.constantinople-sealed-it', 'trinity.spirit.second-blessing', 'trinity.spirit.body-made-the-proof'],
+    verdict: {
+      witnesses: [
+        ['1 Corinthians 14:33', 'not the author of confusion'],
+        ['1 Corinthians 14:40', 'done decently and in order'],
+        ['Galatians 5:23', 'the last fruit listed is self control'],
+      ],
+      finding: 'No council, no canon, no verse was ever filed for this. The fruit listed last is self control, and the rule for a gathering is order.',
+    },
+  },
+
+  {
+    id: 'quench-not-the-spirit',
+    saying: 'Quench not the Spirit',
+    hinge: 'trinity',
+    category: 'The Spirit',
+    spokenBy: 'said to the man who asked a question after the service',
+    aliases: ['quench', 'grieve', 'touch not', 'anointed', 'resisting', 'divisive'],
+    links: ['trinity.hinge', 'trinity.spirit.breath-made-a-person', 'trinity.spirit.constantinople-sealed-it', 'trinity.spirit.own-voice', 'trinity.spirit.correction-forbidden'],
+    verdict: {
+      witnesses: [
+        ['1 Thessalonians 5:21', 'prove all things, hold fast the good'],
+        ['Acts 17:11', 'searched the writings daily'],
+        ['1 John 4:1', 'try the spirits'],
+        ['1 Corinthians 14:29', 'let the others judge'],
+      ],
+      finding: 'Two verses later the same writer says prove all things. A verse used to stop testing sits directly above the command to test.',
+    },
+  },
+
+  {
+    id: 'enter-the-throne-room-through-worship',
+    saying: 'Enter the throne room through worship',
+    hinge: 'trinity',
+    category: 'Worship and prayer',
+    spokenBy: 'said from the platform between the third and fourth song',
+    aliases: ['worship', 'throne room', 'press in', 'presence', 'praise', 'tabernacle', 'music'],
+    links: ['trinity.hinge', 'trinity.mechanism.man-works-the-lever', 'trinity.mechanism.word-given-force', 'trinity.mechanism.music-made-the-door'],
+    verdict: {
+      witnesses: [
+        ['Hebrews 10:19', 'boldness to enter by the blood'],
+        ['Hebrews 10:20', 'the veil, already torn'],
+        ['Hebrews 4:16', 'come boldly unto the throne'],
+        ['John 4:23', 'worship in spirit and in truth'],
+      ],
+      records: [
+        { source: 'The Latter Rain revival, North Battleford', date: 'February 1948', note: 'The progression through the tabernacle taught as a worship method.' },
+      ],
+      finding: 'The curtain was torn from the top down, which tells you who tore it. A feeling that arrives on the fourth song and leaves in the parking lot was never His presence.',
+    },
+  },
+
+  {
+    id: 'pray-this-over-your-life',
+    saying: 'Pray this over your life',
+    hinge: 'trinity',
+    category: 'Worship and prayer',
+    spokenBy: 'said over a house, a job, a marriage, anything but said to Yahuah',
+    aliases: ['pray over', 'declare', 'speak life', 'decree', 'proclaim', 'prayer'],
+    links: ['trinity.hinge', 'trinity.mechanism.man-works-the-lever', 'trinity.mechanism.word-given-force', 'trinity.mechanism.asking-turned-to-declaring'],
+    verdict: {
+      witnesses: [
+        ['Matthew 7:7', 'ask, and it shall be given'],
+        ['Luke 22:42', 'nevertheless not my will, but thine'],
+        ['1 John 5:14', 'if we ask according to his will'],
+        ['Numbers 6:27', 'and I will bless them'],
+      ],
+      finding: 'Prayer is spoken to Yahuah, asking. Over is spoken at a thing, telling, and Yahushua prayed the hardest prayer ever prayed and still ended it with nevertheless.',
+    },
+  },
+
+  {
+    id: 'name-it-and-claim-it',
+    saying: 'Name it and claim it',
+    hinge: 'trinity',
+    category: 'Tithes and money',
+    spokenBy: 'preached on television, repeated in the car on the way home',
+    aliases: ['name it', 'claim it', 'confession', 'word of faith', 'speak it', 'prosperity', 'healing'],
+    links: ['trinity.hinge', 'trinity.mechanism.man-works-the-lever', 'trinity.mechanism.word-given-force', 'trinity.mechanism.asking-turned-to-declaring'],
+    verdict: {
+      witnesses: [
+        ['Romans 4:17', 'Yahuah calleth things which be not', 'This is the verse the doctrine rests on, read as a pattern to imitate. The subject of the sentence is Yahuah, and it never changes.'],
+        ['James 4:15', 'if Yahuah will, we shall do this'],
+        ['1 John 5:14', 'if we ask according to his will'],
+        ['Isaiah 55:9', 'my ways higher than your ways'],
+      ],
+      records: [
+        { source: 'Kenneth Hagin, How to Write Your Own Ticket with God', date: '1979', note: 'A guaranteed procedure, set out in four steps, under a title that says the whole thing.' },
+      ],
+      finding: 'Romans four is a description of Yahuah being read as an instruction for us. That is the trick in one line, and it is audible once you have heard it.',
+    },
+  },
+
+  {
+    id: 'sow-a-seed',
+    saying: 'Sow a seed into this ministry',
+    hinge: 'trinity',
+    category: 'Tithes and money',
+    spokenBy: 'said with a phone number on the screen and a clock beside it',
+    aliases: ['seed', 'sow', 'seed faith', 'hundredfold', 'offering', 'breakthrough', 'harvest'],
+    links: ['trinity.hinge', 'trinity.mechanism.man-works-the-lever', 'trinity.mechanism.word-given-force', 'trinity.mechanism.gift-made-a-lever'],
+    verdict: {
+      witnesses: [
+        ['Acts 8:20', 'thy money perish with thee'],
+        ['2 Corinthians 9:7', 'not grudgingly, nor of necessity'],
+        ['Micah 3:11', 'the prophets divine for money'],
+        ['Deuteronomy 14:23', 'that thou mayest learn to fear Yahuah'],
+      ],
+      records: [
+        { source: 'Oral Roberts, Miracle of Seed-Faith', date: '1970', note: 'Giving as planting, put into print and into every television appeal after it.' },
+      ],
+      finding: 'Simon tried to buy the power and was told his money could perish with him. The increase was set aside to teach a man to fear Yahuah, and nobody puts that on the screen.',
     },
   },
 

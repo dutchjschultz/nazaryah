@@ -1,4 +1,5 @@
-// links.data 0811 V5.js
+// links.data 0811 V6.js
+// V6. Trinity 120s groups (Son, Spirit, Mechanism): 15 links added. 56 total.
 // V5. Death and the grave: 10 links added. 41 total.
 // V4. All 31 link titles rewritten — titles now name the move made, past tense. No ids, records, or findings touched.
 // V3. Adds five links for the Sunday chain, which runs through sun worship and church authority and
@@ -610,6 +611,229 @@ export const links = {
     ],
     records: [],
     finding: 'No council, no canon, no verse \u2014 nothing was ever filed for this one.',
+  },
+
+
+  'trinity.son.one-read-as-one-being': {
+    title: 'One Read as One Being',
+    line: 'A word that means one thing was read as one person.',
+    witnesses: [
+      ['John 10:30', 'the word is neuter, one thing', 'Some answer that one thing means one in essence, which still yields the doctrine. The same neuter word is used four chapters later of fishermen, and nobody folds them into the Godhead.'],
+      ['John 17:11', 'that they may be one, as we are'],
+      ['John 17:22', 'the same word, said of disciples'],
+      ['1 Corinthians 3:8', 'planter and waterer are one'],
+      ['1 Corinthians 6:17', 'joined to Him is one spirit'],
+    ],
+    records: [
+      { source: 'Tertullian, Against Praxeas 22', date: 'about AD 213', note: 'Arguing against Praxeas, Tertullian presses that the verse says one thing and not one person. He makes the point deliberately, because the verse was already being misused in his own day.', dispute: 'Tertullian was no unitarian. He coined the Latin word trinitas and held one substance in three persons. What this record establishes is narrow and real: the man who named the doctrine conceded this verse does not carry it, and built it from elsewhere.' },
+    ],
+    finding: 'There is a Greek word for one person, and He did not use it.',
+  },
+
+  'trinity.son.context-dropped': {
+    title: 'The Verses on Either Side Dropped',
+    line: 'The sentence is carried off alone, away from the answer He gave six lines later.',
+    witnesses: [
+      ['John 10:29', 'my Father is greater than all'],
+      ['John 10:33', 'the charge: makest thyself Elohim'],
+      ['John 10:34', 'He answers from the law first'],
+      ['John 10:36', 'I said, I am the Son of Elohim'],
+    ],
+    records: [],
+    finding: 'Accused of making Himself Elohim, He answered with Son.',
+  },
+
+  'trinity.son.same-oneness-offered-to-men': {
+    title: 'The Same Oneness Offered to Men',
+    line: 'The oneness in question is asked for on behalf of ordinary men, out loud, in prayer.',
+    witnesses: [
+      ['John 17:21', 'that they may be one, as we are one', 'Some answer that the disciples\u2019 unity is analogous, not identical. The text supplies no such distinction, and the word is the same one used in John 10:30.'],
+      ['John 17:22', 'the glory given, that they may be one'],
+      ['John 17:23', 'I in them, and thou in me'],
+      ['Acts 4:32', 'of one heart and of one soul'],
+      ['John 14:28', 'my Father is greater than I'],
+    ],
+    records: [],
+    finding: 'Whatever oneness He had, He asked to have handed to fishermen.',
+  },
+
+  'trinity.spirit.breath-made-a-person': {
+    title: 'The Breath Made a Person',
+    line: 'A word meaning breath and wind was turned into somebody.',
+    witnesses: [
+      ['Genesis 1:2', 'ruach, the breath moving on the waters'],
+      ['Job 33:4', 'the breath of the Almighty gave me life'],
+      ['Psalm 33:6', 'by the breath of his mouth'],
+      ['John 20:22', 'He breathed on them', 'The Greek word is neuter, an it and not a he. In John 14 to 16 masculine pronouns appear, because they agree with parakletos, a masculine noun. Grammar alone settles nothing either way; the weight sits on breath, outpouring, and measure.'],
+      ['Acts 2:17', 'I will pour out of my Spirit'],
+    ],
+    records: [],
+    finding: 'Nobody pours out a person, or gives one by measure.',
+  },
+
+  'trinity.spirit.constantinople-sealed-it': {
+    title: 'Constantinople Sealed the Third Person',
+    line: 'The creed was reopened fifty-six years later and the third article was filled in.',
+    witnesses: [
+      ['1 Corinthians 8:6', 'one Elohim, the Father, and one Master'],
+      ['Ephesians 4:6', 'one Elohim and Father of all'],
+      ['1 Timothy 2:5', 'one mediator between Yahuah and men'],
+      ['Deuteronomy 6:4', 'Yahuah our Elohim is one'],
+    ],
+    records: [
+      { source: 'Council of Nicaea, the original creed', date: 'AD 325', note: 'The creed of 325 fights for the Son at length, then ends on the Spirit in five words with nothing said about it at all. That is not how a settled doctrine is written.' },
+      { source: 'First Council of Constantinople', date: 'AD 381', note: 'The third article expanded. The Spirit is given lordship, and worship and glory alongside the Father and the Son.', dispute: 'Whether that council actually produced the text credited to it is argued; some scholars hold it was attached later, at Chalcedon in 451. Either way the expansion is fourth century and later than Nicaea, which is the point the rung rests on.' },
+    ],
+    finding: 'A doctrine that had to be added later was not there earlier.',
+  },
+
+  'trinity.spirit.own-voice': {
+    title: 'The Spirit Given Its Own Voice',
+    line: 'Once it is a person, it can say things the Book never said.',
+    witnesses: [
+      ['John 16:13', 'he shall not speak of himself', 'Some answer that the pronoun in this verse proves personhood. The clause proves the opposite of independence either way: whatever speaks here does not speak on its own authority.'],
+      ['2 Peter 1:21', 'holy men spake as they were moved'],
+      ['Isaiah 8:20', 'if they speak not according to this word'],
+      ['Deuteronomy 13:3', 'the sign may come, and still be a test'],
+      ['1 John 4:1', 'try the spirits, whether they are of Yahuah'],
+    ],
+    records: [],
+    finding: 'A claim nobody is allowed to check is not a claim, it is a lever.',
+  },
+
+  'trinity.spirit.second-blessing': {
+    title: 'Receiving Made a Second Event',
+    line: 'The breath is turned into a separate transaction, obtained later, at a meeting.',
+    witnesses: [
+      ['Ephesians 1:13', 'ye were sealed, already done'],
+      ['Romans 8:9', 'if any man have not the Spirit, he is none of his'],
+      ['Acts 2:38', 'repent, be immersed, and receive', 'Read by some as two stages, one at belief and one afterward. The verse names them in one breath, as one transaction, with nothing waiting in between.'],
+      ['Galatians 3:2', 'received ye the Spirit by hearing?'],
+    ],
+    records: [
+      { source: 'Charles Parham\u2019s Bethel Bible School, Topeka, Kansas', date: '1 January 1901', note: 'The teaching that a sign accompanies the receiving is put into practice on a fixed date, and the movement dates itself from that night.' },
+    ],
+    finding: 'Two classes of believer appear, and the letters know nothing about it.',
+  },
+
+  'trinity.spirit.evidence-by-sign': {
+    title: 'A Sign Made the Proof',
+    line: 'The proof is moved off a life and onto a sound.',
+    witnesses: [
+      ['1 Corinthians 12:30', 'do all speak with tongues?', 'Some answer that this is the public gift, and that a private prayer language is a separate thing. That distinction is not in the chapter, and the chapter is where the subject is handled.'],
+      ['1 Corinthians 14:22', 'tongues are for a sign to unbelievers'],
+      ['1 Corinthians 13:1', 'all the tongues, and still nothing'],
+      ['Galatians 5:22', 'the fruit named is character'],
+      ['Matthew 7:20', 'by their fruits ye shall know them'],
+    ],
+    records: [
+      { source: 'Assemblies of God, Statement of Fundamental Truths', date: '1916', note: 'The sign written into a denominational statement as the initial physical evidence. A test the letters never gave becomes a membership standard.' },
+    ],
+    finding: 'Paul asked whether all speak with tongues, and built the question to be answered no.',
+  },
+
+  'trinity.spirit.body-made-the-proof': {
+    title: 'The Body Made the Proof',
+    line: 'What happens to a man\u2019s legs is taken as evidence of what happened to his heart.',
+    witnesses: [
+      ['1 Corinthians 14:33', 'not the author of confusion'],
+      ['1 Corinthians 14:40', 'done decently and in order'],
+      ['Galatians 5:23', 'the last fruit listed is self control'],
+      ['2 Timothy 1:7', 'a sound mind, not fear'],
+    ],
+    records: [],
+    finding: 'Every man who falls in Scripture falls forward, toward Him, and unassisted.',
+  },
+
+  'trinity.spirit.correction-forbidden': {
+    title: 'Correction Renamed Quenching',
+    line: 'The last rung is the one that guards the ladder, and asking becomes the offense.',
+    witnesses: [
+      ['1 Thessalonians 5:19', 'quench not the Spirit', 'Some answer that quenching is a real danger and the warning is real. It is, and the next sentence is the command to test everything, which is what the half-quote is used to prevent.'],
+      ['1 Thessalonians 5:21', 'prove all things, hold fast the good'],
+      ['Acts 17:11', 'searched the writings daily'],
+      ['1 Corinthians 14:29', 'let the others judge'],
+    ],
+    records: [],
+    finding: 'The verse used to stop the question is followed immediately by the command to ask it.',
+  },
+
+  'trinity.mechanism.man-works-the-lever': {
+    title: 'A Lever Put in Man\u2019s Hand',
+    line: 'Something a man can operate is placed between him and Yahuah.',
+    witnesses: [
+      ['Isaiah 55:9', 'my ways higher than your ways'],
+      ['Job 41:11', 'who hath prevented me, that I should repay?'],
+      ['Romans 11:35', 'who hath first given to him?'],
+      ['Daniel 4:35', 'none can stay his hand'],
+      ['1 John 5:14', 'if we ask according to his will'],
+    ],
+    records: [],
+    finding: 'Every rung below this one needs Yahuah to be movable by a technique.',
+  },
+
+  'trinity.mechanism.word-given-force': {
+    title: 'The Word Given Force of Its Own',
+    line: 'Words are taught to carry power in themselves, apart from who is listening.',
+    witnesses: [
+      ['Numbers 6:23', 'the blessing Yahuah put in their mouth'],
+      ['Numbers 6:27', 'and I will bless them', 'Some answer that this proves spoken words carry power. It proves the reverse: Yahuah closed the blessing by naming Himself as the one who does the blessing.'],
+      ['Matthew 6:7', 'not heard for much speaking'],
+      ['Proverbs 16:1', 'the answer of the tongue is from Yahuah'],
+      ['James 4:15', 'if Yahuah will, we shall do this'],
+    ],
+    records: [
+      { source: 'D. R. McConnell, A Different Gospel', date: '1988', note: 'Traces the word-faith vocabulary to New Thought sources, working from E. W. Kenyon\u2019s own writings. McConnell wrote from inside Pentecostalism.', dispute: 'Kenyon\u2019s biographers, Joe McIntyre and Dale Simmons, argue his roots are the Faith-Cure and Higher Life movements rather than New Thought. The parallels in wording are not in question; what they prove is.' },
+    ],
+    finding: 'The power was never in the saying, and the verse says so itself.',
+  },
+
+  'trinity.mechanism.asking-turned-to-declaring': {
+    title: 'Asking Turned Into Declaring',
+    line: 'The direction reverses, and words stop going up as a request.',
+    witnesses: [
+      ['Matthew 7:7', 'ask, and it shall be given'],
+      ['Luke 22:42', 'nevertheless not my will, but thine'],
+      ['Philippians 4:6', 'by prayer and supplication, let requests be made'],
+      ['1 John 5:14', 'if we ask according to his will'],
+      ['James 4:3', 'ye ask, and receive not, ye ask amiss'],
+    ],
+    records: [
+      { source: 'Kenneth Hagin, How to Write Your Own Ticket with God', date: '1979', note: 'The title says it out loud. Say it, do it, receive it, tell it, laid out as a procedure with a guaranteed result.' },
+    ],
+    finding: 'Every prayer word in both languages is an asking word, and not one means declare.',
+  },
+
+  'trinity.mechanism.music-made-the-door': {
+    title: 'Music Made the Door',
+    line: 'Songs are arranged as a sequence that carries the singer from outside to inside.',
+    witnesses: [
+      ['Hebrews 10:19', 'boldness to enter by the blood'],
+      ['Hebrews 10:20', 'the veil was torn, not sung through'],
+      ['Hebrews 4:16', 'come boldly unto the throne'],
+      ['Ephesians 2:18', 'through him we both have access'],
+      ['John 4:23', 'worship in spirit and in truth'],
+    ],
+    records: [
+      { source: 'The Latter Rain revival, North Battleford, Saskatchewan', date: 'February 1948', note: 'The teaching that praise carries a congregation through outer court, holy place, and most holy place enters the modern assembly here.', dispute: 'The revival and the teaching are documented. Tying the modern song-service order directly to this meeting is an inference rather than a paper trail. The teaching is the receipt; the Sunday morning sequence is the effect.' },
+    ],
+    finding: 'The way was opened by a tearing, and nobody sings through an open door.',
+  },
+
+  'trinity.mechanism.gift-made-a-lever': {
+    title: 'The Gift Made a Lever',
+    line: 'Money is handed over as an input, with a return expected out the other side.',
+    witnesses: [
+      ['Acts 8:20', 'thy money perish with thee'],
+      ['2 Corinthians 9:7', 'not grudgingly, nor of necessity'],
+      ['Micah 3:11', 'the prophets divine for money'],
+      ['1 Timothy 6:5', 'supposing that gain is godliness'],
+      ['Deuteronomy 14:23', 'that thou mayest learn to fear Yahuah'],
+    ],
+    records: [
+      { source: 'Oral Roberts, Miracle of Seed-Faith', date: '1970', note: 'Giving reframed as planting, with a harvest owed back. The book sells in the millions and the language is in every television appeal after it.' },
+    ],
+    finding: 'A gift given to get is not a gift, it is a purchase.',
   },
 
 };
