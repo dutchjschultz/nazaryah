@@ -1,4 +1,5 @@
-// links.data 0810 V3.js
+// links.data 0810 V4.js
+// V4. All 31 link titles rewritten — titles now name the move made, past tense. No ids, records, or findings touched.
 // V3. Adds five links for the Sunday chain, which runs through sun worship and church authority and
 // is a separate lineage from the grace-side chain that ends in every day is a Sabbath now.
 // V2. Adds a records array to every link. Each record is a datable, checkable source: a council canon,
@@ -16,7 +17,7 @@
 export const links = {
 
   'torah.hinge': {
-    title: 'The hinge',
+    title: 'Men Took the Pen to the Law',
     line: 'Men claim the right to redefine what Yahuah appointed.',
     witnesses: [
       ['Daniel 7:25', 'thinks to change times and laws'],
@@ -33,7 +34,7 @@ export const links = {
   },
 
   'torah.calendar.luminaries-office': {
-    title: 'The luminaries lose their office',
+    title: 'The Luminaries Stripped of Their Office',
     line: 'The lights were given to mark the appointed times. A fixed calendar ignores them.',
     witnesses: [
       ['Genesis 1:14', 'lights for signs and appointed times'],
@@ -49,7 +50,7 @@ export const links = {
   },
 
   'torah.calendar.month-by-arithmetic': {
-    title: 'The month is fixed by arithmetic',
+    title: 'The Month Fixed by Arithmetic',
     line: 'Chodesh means renewed. Calculation replaces the renewed moon.',
     witnesses: [
       ['Exodus 12:2', 'this chodesh begins your months'],
@@ -66,7 +67,7 @@ export const links = {
   },
 
   'torah.calendar.week-cut-loose': {
-    title: 'The week is cut loose from the month',
+    title: 'The Week Cut Loose From the Moon',
     line: 'The count no longer resets. It rolls across every boundary.',
     witnesses: [
       ['Isaiah 66:23', 'new moon to new moon, sabbath to sabbath'],
@@ -83,7 +84,7 @@ export const links = {
   },
 
   'torah.calendar.borrowed-grid': {
-    title: 'A borrowed grid supplies the days',
+    title: 'Rome\u2019s Planetary Week Supplied the Days',
     line: 'Rome names seven days after seven wandering stars.',
     witnesses: [
       ['Jeremiah 10:2', 'learn not the way of the heathen'],
@@ -99,7 +100,7 @@ export const links = {
   },
 
   'torah.calendar.seventh-slot-deity': {
-    title: 'The seventh slot carries a deity',
+    title: 'Saturn\u2019s Day Handed the Seventh Slot',
     line: 'Dies Saturni. A name laid over an appointed time.',
     witnesses: [
       ['Exodus 23:13', 'make no mention of other names'],
@@ -114,7 +115,7 @@ export const links = {
   },
 
   'torah.sabbath.set-apart-flattened': {
-    title: 'Set apart is read as ordinary',
+    title: 'Set Apart Flattened Into Ordinary',
     line: 'If one day was made holy, the others were not.',
     witnesses: [
       ['Genesis 2:3', 'blessed the seventh and sanctified it'],
@@ -127,7 +128,7 @@ export const links = {
   },
 
   'torah.sabbath.rest-moved-inward': {
-    title: 'Rest is moved inward',
+    title: 'Rest Moved Inward and Off the Day',
     line: 'A commanded act becomes a private feeling.',
     witnesses: [
       ['Exodus 20:9-10', 'six days labour, the seventh is the sabbath'],
@@ -140,7 +141,7 @@ export const links = {
   },
 
   'torah.sabbath.sign-erased': {
-    title: 'The sign is erased',
+    title: 'The Sign Erased From the Covenant',
     line: 'A sign nobody can see is not a sign.',
     witnesses: [
       ['Ezekiel 20:12,20', 'a sign between me and you'],
@@ -153,7 +154,7 @@ export const links = {
   },
 
   'torah.sabbath.nothing-left-to-keep': {
-    title: 'Nothing is left to keep',
+    title: 'Nothing Left on the Day to Keep',
     line: 'When every day qualifies, no day is kept.',
     witnesses: [
       ['Isaiah 58:13', 'turn away thy foot from the sabbath'],
@@ -166,7 +167,7 @@ export const links = {
   },
 
   'torah.grace.law-and-favor-opposed': {
-    title: 'Favor and law are made enemies',
+    title: 'Favor and Law Set Against Each Other',
     line: 'A choice is invented that scripture never offers.',
     witnesses: [
       ['Romans 3:31', 'we establish the law'],
@@ -181,7 +182,7 @@ export const links = {
   },
 
   'torah.grace.phrase-redefined': {
-    title: 'The phrase is redefined',
+    title: 'Under the Law Redefined as Under Rules',
     line: 'Under the law meant under its penalty. It is read as under its instruction.',
     witnesses: [
       ['Romans 6:14-15', 'shall we sin? God forbid'],
@@ -195,7 +196,7 @@ export const links = {
   },
 
   'torah.grace.sin-undefined': {
-    title: 'Sin loses its definition',
+    title: 'Sin Cut Loose From Its Definition',
     line: 'Remove the law and the word empties.',
     witnesses: [
       ['1 John 3:4', 'sin is the transgression of the law'],
@@ -209,7 +210,7 @@ export const links = {
   },
 
   'torah.grace.obedience-renamed': {
-    title: 'Obedience is renamed legalism',
+    title: 'Obedience Renamed Legalism',
     line: 'Keeping is recast as earning, and the willing are shamed.',
     witnesses: [
       ['John 14:15', 'if ye love me, keep my commandments'],
@@ -223,7 +224,7 @@ export const links = {
   },
 
   'torah.law.debt-read-as-law': {
-    title: 'A debt record is read as the law',
+    title: 'The Debt Record Read as the Law',
     line: 'The handwriting against us is the charge sheet, not the standard.',
     witnesses: [
       ['Colossians 2:14', 'the handwriting of ordinances against us'],
@@ -236,7 +237,7 @@ export const links = {
   },
 
   'torah.law.charge-merged-with-standard': {
-    title: 'The charge and the standard are merged',
+    title: 'The Charge Merged Into the Standard',
     line: 'Cancel the verdict and the statute is said to vanish with it.',
     witnesses: [
       ['Romans 3:31', 'we establish the law'],
@@ -249,7 +250,7 @@ export const links = {
   },
 
   'torah.law.witness-dismissed': {
-    title: 'The witness is dismissed',
+    title: 'The Witness Dismissed Without a Hearing',
     line: 'Nothing can testify against a man once the standard is gone.',
     witnesses: [
       ['Deuteronomy 19:15', 'at the mouth of witnesses'],
@@ -260,7 +261,7 @@ export const links = {
   },
 
   'torah.law.commands-optional': {
-    title: 'Every following command is optional',
+    title: 'Every Command Below Made Optional',
     line: 'With the standard removed, each instruction becomes preference.',
     witnesses: [
       ['James 2:10', 'offend in one point, guilty of all'],
@@ -273,7 +274,7 @@ export const links = {
   },
 
   'torah.sunday.separation-from-the-jews': {
-    title: 'A wall is built against the older practice',
+    title: 'Nicaea Ordered a Break From the Jews',
     line: 'The first move is not a new day. It is a decision to look nothing like Israel.',
     witnesses: [
       ['Romans 11:18', 'boast not against the branches'],
@@ -288,7 +289,7 @@ export const links = {
   },
 
   'torah.sunday.day-of-the-sun': {
-    title: 'The day of the sun is taken up',
+    title: 'Constantine Rested Rome on the Sun\u2019s Day',
     line: 'The slot chosen already belonged to something else.',
     witnesses: [
       ['Ezekiel 8:16', 'men at the temple door facing the sun'],
@@ -304,7 +305,7 @@ export const links = {
   },
 
   'torah.sunday.first-day-texts-pressed': {
-    title: 'A handful of texts are pressed into service',
+    title: 'Eight First-Day Texts Pressed Into Service',
     line: 'Verses that mention the first day are read as a command to move the Sabbath.',
     witnesses: [
       ['Acts 20:7', 'a meeting on the first day, no command given'],
@@ -319,7 +320,7 @@ export const links = {
   },
 
   'torah.sunday.church-claims-the-change': {
-    title: 'The change is claimed openly',
+    title: 'The Church Claimed the Change Openly',
     line: 'The institution that moved it has never hidden that it moved it.',
     witnesses: [
       ['Daniel 7:25', 'thinks to change times and laws'],
@@ -334,7 +335,7 @@ export const links = {
   },
 
   'torah.sunday.rest-moved-by-law': {
-    title: 'The rest is enforced by statute',
+    title: 'Laodicea Made Sabbath Work Punishable',
     line: 'What began as a practice is finished by the courts.',
     witnesses: [
       ['Isaiah 10:1', 'woe to those that decree unrighteous decrees'],
@@ -348,7 +349,7 @@ export const links = {
   },
 
   'trinity.hinge': {
-    title: 'The hinge',
+    title: 'A Second Elohim Invented',
     line: 'A second Elohim is invented, and the Son is handed what belongs to the Father.',
     witnesses: [
       ['Deuteronomy 6:4', 'Yahuah our Elohim is one'],
@@ -366,7 +367,7 @@ export const links = {
   },
 
   'trinity.name.father-name-covered': {
-    title: 'The Father\u2019s name is covered',
+    title: 'The Father\u2019s Name Covered by a Title',
     line: 'A title is printed where the name stood.',
     witnesses: [
       ['Exodus 3:15', 'this is my name for ever'],
@@ -381,7 +382,7 @@ export const links = {
   },
 
   'trinity.name.translated-not-carried': {
-    title: 'The name is translated, not carried',
+    title: 'The Name Translated Instead of Carried',
     line: 'A name is a sound. It was treated as a word to convert.',
     witnesses: [
       ['Proverbs 30:4', 'what is his name, and his son\u2019s name'],
@@ -393,7 +394,7 @@ export const links = {
   },
 
   'trinity.name.reshaped-through-tongues': {
-    title: 'Greek, then Latin, then English reshape it',
+    title: 'Reshaped Passing Through Three Tongues',
     line: 'Each pass moves the sound further from what was given.',
     witnesses: [],
     records: [
@@ -404,7 +405,7 @@ export const links = {
   },
 
   'trinity.name.meaning-severed': {
-    title: 'The meaning is severed',
+    title: 'The Meaning Severed From the Sound',
     line: 'Yahushua carries the Father\u2019s name inside it. The new form carries nothing.',
     witnesses: [
       ['Matthew 1:21', 'the name declares that Yahuah saves'],
@@ -417,7 +418,7 @@ export const links = {
   },
 
   'trinity.lord.title-floats-free': {
-    title: 'The title floats free',
+    title: 'The Title Cut Loose From Its Owner',
     line: 'A word with no owner can be handed to anyone.',
     witnesses: [
       ['Exodus 20:7', 'take not his name in vain'],
@@ -430,7 +431,7 @@ export const links = {
   },
 
   'trinity.lord.title-handed-to-son': {
-    title: 'It is handed to the Son',
+    title: 'The Title Handed to the Son',
     line: 'What the substitution hid, the confession now transfers.',
     witnesses: [
       ['Romans 10:9', 'confess the Lord Jesus'],
@@ -443,7 +444,7 @@ export const links = {
   },
 
   'trinity.lord.father-edged-out': {
-    title: 'The Father is edged out of His own name',
+    title: 'The Father Edged Out of His Own Name',
     line: 'The confession that should name Him names another.',
     witnesses: [
       ['Isaiah 42:8', 'I am Yahuah, that is my name'],
