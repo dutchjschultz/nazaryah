@@ -1,4 +1,5 @@
-// chains.data 0811 V6.js
+// chains.data 0811 V7.js
+// V7. The law set aside: replaced not-under-law-but-under-grace and law-nailed-to-the-cross with fuller versions, added 12 (net +10). 49 total.
 // V6. Prophecy: 10 chains added (8 Prophecy, 2 Israel and the nations). 39 total.
 // V5. The assembly: 6 chains added (1 torah, 5 trinity). 29 total.
 // V4. Trinity 120s groups (Son, Spirit, Mechanism): 10 chains added. 23 total (13 existing + 10).
@@ -119,52 +120,6 @@ export const chains = [
         ['Isaiah 58:13', 'call the sabbath a delight'],
       ],
       finding: 'The saying sounds generous and leaves nothing behind.',
-    },
-  },
-
-  {
-    id: 'not-under-law-but-under-grace',
-    saying: 'We are not under law but under grace',
-    hinge: 'torah',
-    category: 'Grace and works',
-    spokenBy: 'said in nearly every pulpit on the continent',
-    aliases: ['grace', 'favor', 'law', 'works', 'legalism', 'romans', 'earn', 'merit'],
-    links: [
-      'torah.hinge',
-      'torah.grace.law-and-favor-opposed',
-      'torah.grace.phrase-redefined',
-      'torah.grace.sin-undefined',
-      'torah.grace.obedience-renamed',
-    ],
-    verdict: {
-      witnesses: [
-        ['Romans 6:15', 'shall we sin because we are under favor? God forbid'],
-        ['Romans 3:31', 'do we make void the law? we establish it'],
-      ],
-      finding: 'The saying quotes half a sentence and stops before the answer.',
-    },
-  },
-
-  {
-    id: 'law-nailed-to-the-cross',
-    saying: 'The law was nailed to the cross',
-    hinge: 'torah',
-    category: 'The Law',
-    spokenBy: 'said whenever obedience is raised',
-    aliases: ['law', 'cross', 'nailed', 'colossians', 'handwriting', 'ordinances'],
-    links: [
-      'torah.hinge',
-      'torah.law.debt-read-as-law',
-      'torah.law.charge-merged-with-standard',
-      'torah.law.witness-dismissed',
-      'torah.law.commands-optional',
-    ],
-    verdict: {
-      witnesses: [
-        ['Colossians 2:16', 'let no man judge you, therefore'],
-        ['Colossians 2:17', 'a shadow of things to come'],
-      ],
-      finding: 'The next verse names who does the judging, and it is not the world.',
     },
   },
 
@@ -1021,6 +976,302 @@ export const chains = [
         { source: 'John Nelson Darby, lectures and writings from the 1830s onward', date: 'from about 1830', note: 'Two peoples with two futures taught as a system. Everything on the chart follows from the separation.' },
       ],
       finding: 'There is one tree in the passage and the branches are grafted into their own. Ezekiel was shown two sticks becoming one in a hand, not two staying apart on a schedule. A second chance for one people requires a second plan, and a second plan requires the wall Ephesians says came down.',
+    },
+  },
+
+
+  {
+    id: 'not-under-law-but-under-grace',
+    saying: 'We\u2019re not under law, we\u2019re under grace',
+    hinge: 'torah',
+    category: 'Grace and works',
+    spokenBy: 'said to end the conversation, never to open one',
+    aliases: ['under law', 'under grace', 'romans 6', 'favor', 'freedom', 'liberty'],
+    links: [
+      'torah.hinge',
+      'torah.law.covenant-declared-transferred',
+      'torah.law.favor-turned-into-license',
+      'torah.law.sin-left-undefined',
+    ],
+    verdict: {
+      witnesses: [
+        ['Romans 6:15', 'shall we sin, because we are not under law? Elohim forbid'],
+        ['Romans 6:1', 'shall we continue in sin? the same answer'],
+        ['Jude 4', 'turning the favor into lasciviousness'],
+        ['Titus 2:12', 'teaching us to live soberly and righteously'],
+      ],
+      finding: 'Paul asked this exact question in this exact sentence and answered it himself, in the strongest words he had. The saying quotes half his line and drops the half where he tells you what it does not mean.',
+    },
+  },
+
+  {
+    id: 'the-law-was-nailed-to-the-cross',
+    saying: 'The law was nailed to the cross',
+    hinge: 'torah',
+    category: 'The Law',
+    spokenBy: 'said with Colossians open and the verse before it unread',
+    aliases: ['nailed', 'cross', 'colossians 2', 'handwriting', 'ordinances', 'blotted out', 'debt'],
+    links: [
+      'torah.hinge',
+      'torah.law.covenant-declared-transferred',
+      'torah.law.debt-record-read-as-the-law',
+      'torah.law.sin-left-undefined',
+    ],
+    verdict: {
+      witnesses: [
+        ['Colossians 2:13', 'having forgiven you all trespasses'],
+        ['Colossians 2:14', 'the handwriting that was against us'],
+        ['Romans 3:31', 'do we then make void the law? Elohim forbid'],
+        ['Romans 7:12', 'the commandment is holy, and just, and good'],
+      ],
+      finding: 'The sentence starts with forgiven trespasses, which tells you what the handwriting recorded. A debt note is nailed up when it is paid. Nothing in the passage says the standard that produced the debt was taken down with it.',
+    },
+  },
+
+  {
+    id: 'thats-old-testament',
+    saying: 'That\u2019s Old Testament',
+    hinge: 'torah',
+    category: 'The Law',
+    spokenBy: 'said as though the binding settled the question',
+    aliases: ['old testament', 'new testament', 'outdated', 'marcion', 'canon', 'old covenant'],
+    links: [
+      'torah.hinge',
+      'torah.law.two-gods-proposed',
+      'torah.law.age-used-as-the-argument',
+      'torah.law.quotation-source-forgotten',
+    ],
+    verdict: {
+      witnesses: [
+        ['2 Timothy 3:16', 'all scripture is given by inspiration'],
+        ['2 Timothy 3:15', 'from a child thou hast known the writings'],
+        ['Romans 15:4', 'written aforetime for our learning'],
+        ['Luke 24:44', 'the law, the prophets, and the psalms'],
+      ],
+      records: [
+        { source: 'Marcion of Sinope, condemned at Rome', date: 'about AD 144', note: 'The first canon built to exclude the Hebrew writings, and the first teaching of two Elohim to justify it.' },
+      ],
+      finding: 'When Paul wrote that all scripture is profitable, the only scripture in existence was the part now dismissed by that phrase. The first man to make the division needed two Elohim to make it work and was expelled for it.',
+    },
+  },
+
+  {
+    id: 'the-law-was-only-for-the-jews',
+    saying: 'The law was only for the Jews',
+    hinge: 'torah',
+    category: 'The Law',
+    spokenBy: 'said as a courtesy, meaning it is not my problem',
+    aliases: ['for the jews', 'jewish law', 'gentile', 'stranger', 'grafted', 'two standards'],
+    links: [
+      'torah.hinge',
+      'torah.law.covenant-declared-transferred',
+      'torah.law.two-standards-built',
+    ],
+    verdict: {
+      witnesses: [
+        ['Exodus 12:49', 'one law to the homeborn and to the stranger'],
+        ['Numbers 15:16', 'one law and one manner'],
+        ['Leviticus 24:22', 'ye shall have one manner of law'],
+        ['Isaiah 56:6', 'the sons of the stranger that keep the sabbath'],
+      ],
+      records: [
+        { source: 'Council of Elvira, canon 49', date: 'about AD 306', note: 'The line between the two peoples drawn by canon, down to who may bless a field.' },
+      ],
+      finding: 'One law for the homeborn and the stranger is stated four separate times, in four separate books, before anyone was called a Jew or a Gentile in the sense the saying uses.',
+    },
+  },
+
+  {
+    id: 'christ-fulfilled-the-law',
+    saying: 'Christ fulfilled the law so we don\u2019t have to keep it',
+    hinge: 'torah',
+    category: 'The Law',
+    spokenBy: 'said with Matthew five open to verse seventeen and closed before eighteen',
+    aliases: ['fulfilled', 'matthew 5', 'destroy', 'jot', 'tittle', 'kept it for us'],
+    links: [
+      'torah.hinge',
+      'torah.law.fulfil-read-as-finish',
+      'torah.law.obedience-renamed',
+      'torah.law.sin-left-undefined',
+    ],
+    verdict: {
+      witnesses: [
+        ['Matthew 5:17', 'not to destroy, but to fulfil'],
+        ['Matthew 5:18', 'till heaven and earth pass, one jot shall not pass'],
+        ['Matthew 5:19', 'whosoever shall break one of these least commandments'],
+        ['Matthew 3:15', 'to fulfil all righteousness, said of an immersion'],
+      ],
+      finding: 'He said He did not come to destroy it, and then said nothing would pass from it while heaven and earth stand. The saying takes a sentence that denies the conclusion and uses it to reach the conclusion.',
+    },
+  },
+
+  {
+    id: 'youre-being-legalistic',
+    saying: 'You\u2019re being legalistic',
+    hinge: 'torah',
+    category: 'Grace and works',
+    spokenBy: 'said to the man who started keeping something',
+    aliases: ['legalistic', 'legalism', 'pharisee', 'works', 'earning', 'bondage'],
+    links: [
+      'torah.hinge',
+      'torah.law.obedience-renamed',
+      'torah.law.favor-turned-into-license',
+      'torah.law.sin-left-undefined',
+    ],
+    verdict: {
+      witnesses: [
+        ['John 14:15', 'if ye love me, keep my commandments'],
+        ['1 John 5:3', 'this is love, that we keep his commandments'],
+        ['Mark 7:9', 'ye reject the commandment, to keep your tradition'],
+        ['Romans 3:31', 'we establish the law'],
+      ],
+      finding: 'The rebuke Yahushua actually gave was for keeping tradition in place of the commandment, which is the reverse of what the word is used for now. A word with no definition in the text cannot be answered, which is what makes it useful.',
+    },
+  },
+
+  {
+    id: 'thats-works-based-righteousness',
+    saying: 'That\u2019s works-based righteousness',
+    hinge: 'torah',
+    category: 'Grace and works',
+    spokenBy: 'said as though belief and doing were opposites',
+    aliases: ['works', 'righteousness', 'earn', 'merit', 'hebrews 11', 'james 2', 'belief'],
+    links: [
+      'torah.hinge',
+      'torah.law.obedience-renamed',
+      'torah.law.sin-left-undefined',
+    ],
+    verdict: {
+      witnesses: [
+        ['Hebrews 11:7', 'by belief Noah prepared an ark'],
+        ['Hebrews 11:8', 'by belief Abraham obeyed, and went out'],
+        ['James 2:18', 'shew me thy belief without thy works'],
+        ['Deuteronomy 6:25', 'it shall be our righteousness, if we observe'],
+      ],
+      finding: 'The chapter written to define belief defines it entirely by what men did. Noah built. Abraham went. Not one of them is described as having merely agreed with something.',
+    },
+  },
+
+  {
+    id: 'youve-fallen-from-grace',
+    saying: 'You\u2019ve fallen from grace',
+    hinge: 'torah',
+    category: 'Grace and works',
+    spokenBy: 'said to Torah keepers, with Galatians in hand',
+    aliases: ['fallen from grace', 'galatians', 'circumcision', 'severed', 'favor', 'law keeper'],
+    links: [
+      'torah.hinge',
+      'torah.law.favor-turned-into-license',
+      'torah.law.obedience-renamed',
+      'torah.law.commands-sorted-by-preference',
+    ],
+    verdict: {
+      witnesses: [
+        ['Jude 4', 'turning the favor into lasciviousness'],
+        ['Romans 6:15', 'shall we sin, because we are not under law?'],
+        ['Titus 2:11', 'the favor that bringeth deliverance'],
+        ['Titus 2:12', 'teaching us to live soberly and righteously'],
+      ],
+      finding: 'The same favor that delivers is the favor men are warned against turning into permission, and the warning is in the writings rather than in anyone\u2019s commentary. A phrase used to stop obedience is doing the exact thing Jude names.',
+    },
+  },
+
+  {
+    id: 'moral-law-stays-ceremonial-went',
+    saying: 'The moral law stays, the ceremonial law went',
+    hinge: 'torah',
+    category: 'The Law',
+    spokenBy: 'said by everyone who keeps some of it and needs a reason',
+    aliases: ['moral law', 'ceremonial', 'civil', 'divided', 'categories', 'ten commandments'],
+    links: [
+      'torah.hinge',
+      'torah.law.commands-allegorized',
+      'torah.law.commands-sorted-by-preference',
+      'torah.law.two-standards-built',
+    ],
+    verdict: {
+      witnesses: [
+        ['James 2:10', 'offend in one point, guilty of all'],
+        ['Deuteronomy 4:2', 'ye shall not add, neither diminish'],
+        ['Leviticus 19:18', 'love thy neighbour, in the same chapter'],
+        ['Leviticus 19:19', 'and agricultural commands, in the next verse'],
+      ],
+      finding: 'The division is not made anywhere in the book being divided. Leviticus nineteen puts loving your neighbour and not sowing mixed seed in adjoining verses, and the man drawing the line has to decide which side each one falls on.',
+    },
+  },
+
+  {
+    id: 'the-law-is-written-on-our-hearts-now',
+    saying: 'The law is written on our hearts now',
+    hinge: 'torah',
+    category: 'The Law',
+    spokenBy: 'said to mean it is no longer kept',
+    aliases: ['written on hearts', 'jeremiah 31', 'hebrews 8', 'new covenant', 'inward', 'conscience'],
+    links: [
+      'torah.hinge',
+      'torah.law.covenant-declared-transferred',
+      'torah.law.heart-writing-read-as-removal',
+      'torah.law.sin-left-undefined',
+    ],
+    verdict: {
+      witnesses: [
+        ['Jeremiah 31:33', 'I will put my law in their inward parts'],
+        ['Hebrews 8:10', 'write them in their hearts'],
+        ['Hebrews 10:16', 'quoted again, in the same letter'],
+        ['Ezekiel 36:27', 'cause you to walk in my statutes'],
+      ],
+      finding: 'The promise names the law twice as the thing being written. A man who says it is written on his heart has just said which law he means, and the only question left is whether he can name what is written there.',
+    },
+  },
+
+  {
+    id: 'peters-vision-made-all-food-clean',
+    saying: 'Peter\u2019s vision made all food clean',
+    hinge: 'torah',
+    category: 'Clean and unclean',
+    spokenBy: 'said at the table, usually about bacon',
+    aliases: ['peter', 'vision', 'sheet', 'acts 10', 'clean', 'unclean', 'food', 'cornelius'],
+    links: [
+      'torah.hinge',
+      'torah.law.commands-allegorized',
+      'torah.law.food-ruling-inverted',
+    ],
+    verdict: {
+      witnesses: [
+        ['Acts 10:28', 'I should not call any man common or unclean'],
+        ['Acts 10:17', 'Peter doubted what this vision should mean'],
+        ['Acts 11:18', 'to the Gentiles granted repentance unto life'],
+        ['Acts 10:14', 'not so, Master, said years after the resurrection'],
+      ],
+      finding: 'Peter tells us what his own vision meant, and it is about men. He also says not so, Master, years after the resurrection, which is not the answer of a man who had been told the rule was cancelled.',
+    },
+  },
+
+  {
+    id: 'its-all-been-fulfilled',
+    saying: 'It\u2019s all been fulfilled',
+    hinge: 'torah',
+    category: 'The Law',
+    spokenBy: 'said when the other answers have run out',
+    aliases: ['fulfilled', 'all done', 'finished', 'complete', 'obsolete', 'passed away'],
+    links: [
+      'torah.hinge',
+      'torah.law.fulfil-read-as-finish',
+      'torah.law.everything-declared-finished',
+      'torah.law.keeping-made-punishable',
+    ],
+    verdict: {
+      witnesses: [
+        ['Matthew 5:18', 'till heaven and earth pass'],
+        ['Luke 16:17', 'easier for heaven and earth to pass than one tittle to fail'],
+        ['Revelation 12:17', 'the remnant which keep the commandments'],
+        ['Revelation 14:12', 'here are they that keep the commandments'],
+        ['Revelation 22:14', 'blessed are they that do his commandments'],
+      ],
+      records: [
+        { source: 'John Chrysostom, eight sermons Against the Judaizers, Antioch', date: 'AD 386\u2013387', note: 'Eight sermons preached against believers in his own city who were still keeping the Sabbath and the feasts, three and a half centuries after the tree.' },
+      ],
+      finding: 'The last chapter of the last book still has men keeping commandments. And if it had all ended, it took eight sermons in one city, three centuries later, to get believers to stop.',
     },
   },
 

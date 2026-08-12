@@ -1,4 +1,5 @@
-// links.data 0811 V8.js
+// links.data 0811 V9.js
+// V9. The law set aside: 17 links added (torah.law.*). 100 total.
 // V8. Prophecy: 14 links added (9 futurist, 5 zionist). 83 total.
 // V7. The assembly: 13 links added (4 torah, 9 trinity). 69 total.
 // V6. Trinity 120s groups (Son, Spirit, Mechanism): 15 links added. 56 total.
@@ -1249,6 +1250,263 @@ export const links = {
     ],
     records: [],
     finding: 'A restarted altar says out loud that one offering was not enough.',
+  },
+
+
+  'torah.law.two-gods-proposed': {
+    title: 'Two Elohim Proposed, One Discarded',
+    line: 'The Elohim of Israel and the Father of the Messiah are split into two, and the first is dropped.',
+    witnesses: [
+      ['Malachi 3:6', 'I am Yahuah, I change not'],
+      ['Hebrews 13:8', 'the same yesterday, and to day, and for ever'],
+      ['Deuteronomy 6:4', 'Yahuah our Elohim is one Yahuah'],
+      ['John 5:46', 'had ye believed Moses, ye would have believed me'],
+      ['Luke 24:27', 'beginning at Moses, he expounded in all the writings'],
+    ],
+    records: [
+      { source: 'Marcion of Sinope, condemned and expelled at Rome', date: 'about AD 144', note: 'Marcion taught two Elohim, one of the law and one of the Messiah, and built a canon with the Torah and the prophets removed entirely. He was expelled and the teaching condemned, which is what makes the date usable: the position is early, it is named, and it is on the record as error.' },
+      { source: 'Tertullian, Against Marcion', date: 'about AD 208', note: 'Five books written to answer Marcion. Nobody writes five books against a position nobody holds.' },
+    ],
+    finding: 'The oldest form of this teaching needed two Elohim to work, and was condemned for it.',
+  },
+
+  'torah.law.covenant-declared-transferred': {
+    title: 'The Covenant Declared Transferred',
+    line: 'A covenant made with a people is said to have been taken from them and handed to another.',
+    witnesses: [
+      ['Romans 11:1', 'hath Yahuah cast away his people? Elohim forbid'],
+      ['Romans 11:29', 'the gifts and calling are without repentance'],
+      ['Jeremiah 31:33', 'I will put my law in their inward parts'],
+      ['Jeremiah 31:36', 'if those ordinances depart, then the seed shall cease'],
+      ['Ephesians 2:12', 'strangers from the covenants, before being brought near'],
+    ],
+    records: [
+      { source: 'Epistle of Barnabas', date: 'about AD 130', note: 'The covenant is taught to have been forfeited at Sinai and never held by Israel at all. The food laws are said to have been meant allegorically and never literally. This is the earliest full statement of the reading, and it is a century before any council.' },
+    ],
+    finding: 'The transfer reading is older than any council and younger than the covenant by fifteen hundred years.',
+  },
+
+  'torah.law.commands-allegorized': {
+    title: 'The Commands Read as Pictures Only',
+    line: 'A plain command is said to have meant something spiritual and never anything actual.',
+    witnesses: [
+      ['Deuteronomy 30:11', 'this commandment is not hidden from thee'],
+      ['Deuteronomy 30:14', 'the word is very nigh, that thou mayest do it'],
+      ['Leviticus 11:2', 'these are the beasts which ye shall eat'],
+      ['Psalm 119:105', 'a lamp unto my feet, a light unto my path'],
+      ['1 John 3:4', 'sin is the transgression of the law'],
+    ],
+    records: [
+      { source: 'Epistle of Barnabas, chapter 10', date: 'about AD 130', note: 'The food laws are taught to have been about avoiding certain kinds of men, and never about food. The method arrives here and everything after it borrows the technique.' },
+      { source: 'Origen, De Principiis, book 4', date: 'about AD 230', note: 'A method laid out in which the plain sense of a command may be set aside for a higher one. The tool that makes any command mean something other than what it says.' },
+    ],
+    finding: 'A command that can mean anything else has stopped being a command.',
+  },
+
+  'torah.law.debt-record-read-as-the-law': {
+    title: 'The Handwriting Read as the Law',
+    line: 'A record of debt nailed to the tree is read as the commandments themselves.',
+    witnesses: [
+      ['Colossians 2:14', 'the handwriting of ordinances that was against us'],
+      ['Colossians 2:13', 'having forgiven you all trespasses, the subject of the sentence'],
+      ['Romans 3:31', 'do we then make void the law? Elohim forbid'],
+      ['Romans 7:12', 'the commandment is holy, and just, and good'],
+      ['Ezekiel 18:20', 'the soul that sinneth, it shall die'],
+    ],
+    records: [],
+    finding: 'What was against us was the debt, and the sentence before it says so.',
+  },
+
+  'torah.law.telos-read-as-termination': {
+    title: 'The Goal Read as the Stopping Point',
+    line: 'A word meaning aim or destination is read as the moment a thing ceased.',
+    witnesses: [
+      ['Romans 10:4', 'Messiah is the telos of the law for righteousness', 'Read by many as termination. The word carries the sense of aim, goal, or the point a thing runs toward. The same root gives the word for a finished purpose, not a cancelled one.'],
+      ['1 Timothy 1:5', 'the telos of the commandment is love'],
+      ['James 5:11', 'ye have seen the telos of the Master'],
+      ['1 Peter 1:9', 'receiving the telos of your belief'],
+      ['Romans 3:31', 'we establish the law'],
+    ],
+    records: [],
+    finding: 'The same word is used of love and of belief, and neither one was being cancelled.',
+  },
+
+  'torah.law.fulfil-read-as-finish': {
+    title: 'To Fill Full Read as to Finish Off',
+    line: 'A word meaning to fill up is read as a word meaning to end.',
+    witnesses: [
+      ['Matthew 5:17', 'I am not come to destroy, but to fulfil'],
+      ['Matthew 5:18', 'till heaven and earth pass, one jot shall in no wise pass'],
+      ['Matthew 5:19', 'whosoever shall break one of these least commandments'],
+      ['Matthew 3:15', 'thus it becometh us to fulfil all righteousness'],
+      ['Colossians 1:25', 'to fulfil the word, meaning to fill it out fully'],
+    ],
+    records: [],
+    finding: 'He said not destroy, and the very next sentence says nothing passes.',
+  },
+
+  'torah.law.two-standards-built': {
+    title: 'Two Standards Built for One Household',
+    line: 'One command is said to bind one people and not another.',
+    witnesses: [
+      ['Exodus 12:49', 'one law to the homeborn and to the stranger'],
+      ['Numbers 15:16', 'one law and one manner for you and the stranger'],
+      ['Leviticus 24:22', 'ye shall have one manner of law'],
+      ['Isaiah 56:6', 'the sons of the stranger that keep the sabbath'],
+      ['Ephesians 2:19', 'no more strangers, but fellowcitizens'],
+    ],
+    records: [
+      { source: 'Council of Elvira, canons 26 and 49', date: 'about AD 306', note: 'Christians corrected for Sabbath practice, and forbidden to have Jews bless their fields. The line between the two peoples is drawn by canon and enforced.' },
+      { source: 'Council of Antioch, canon 1', date: 'AD 341', note: 'Anathema pronounced on anyone keeping Pesach with the Jews. The separation is made a matter of standing.' },
+    ],
+    finding: 'One law for the homeborn and the stranger is stated four times, in four books.',
+  },
+
+  'torah.law.obedience-renamed': {
+    title: 'Obedience Renamed as Earning',
+    line: 'Keeping a command is recast as an attempt to purchase what was already given.',
+    witnesses: [
+      ['Deuteronomy 6:25', 'it shall be our righteousness, if we observe'],
+      ['Hebrews 11:7', 'by belief Noah prepared an ark'],
+      ['Hebrews 11:8', 'by belief Abraham obeyed, and went out'],
+      ['James 2:18', 'shew me thy belief without thy works'],
+      ['John 14:15', 'if ye love me, keep my commandments'],
+      ['1 John 5:3', 'this is love, that we keep his commandments'],
+    ],
+    records: [],
+    finding: 'Hebrews defines belief entirely by what men did, one man at a time, for a whole chapter.',
+  },
+
+  'torah.law.favor-turned-into-license': {
+    title: 'Favor Turned Into Permission',
+    line: 'The favor that delivers is read as permission to go on as before.',
+    witnesses: [
+      ['Jude 4', 'turning the favor of our Elohim into lasciviousness'],
+      ['Romans 6:1', 'shall we continue in sin, that favor may abound?'],
+      ['Romans 6:15', 'shall we sin, because we are not under law? Elohim forbid'],
+      ['Titus 2:11', 'the favor that bringeth deliverance'],
+      ['Titus 2:12', 'teaching us that we should live soberly and righteously'],
+    ],
+    records: [],
+    finding: 'The turning of favor into license is named as an error in the writings themselves.',
+  },
+
+  'torah.law.sin-left-undefined': {
+    title: 'Sin Left Without a Definition',
+    line: 'Once the standard is gone, the word sin has nothing left to measure against.',
+    witnesses: [
+      ['1 John 3:4', 'sin is the transgression of the law'],
+      ['Romans 3:20', 'by the law is the knowledge of sin'],
+      ['Romans 7:7', 'I had not known sin, but by the law'],
+      ['Romans 4:15', 'where no law is, there is no transgression'],
+      ['Matthew 7:23', 'depart from me, ye that work anomia'],
+    ],
+    records: [],
+    finding: 'Every definition of sin in the writings is a definition by the law.',
+  },
+
+  'torah.law.commands-sorted-by-preference': {
+    title: 'The Commands Sorted by Preference',
+    line: 'The law is divided into parts, and the parts a man wants are kept.',
+    witnesses: [
+      ['James 2:10', 'whosoever shall offend in one point, is guilty of all'],
+      ['Deuteronomy 4:2', 'ye shall not add unto the word, neither diminish'],
+      ['Matthew 5:19', 'whosoever shall break one of these least commandments'],
+      ['Leviticus 19:19', 'moral and agricultural commands in one verse'],
+      ['Leviticus 19:18', 'love thy neighbour, in the same chapter as the rest'],
+    ],
+    records: [],
+    finding: 'The division into moral and ceremonial parts is not made anywhere in the text being divided.',
+  },
+
+  'torah.law.age-used-as-the-argument': {
+    title: 'Age Made the Argument',
+    line: 'A section of the book is dismissed by its position in the binding.',
+    witnesses: [
+      ['2 Timothy 3:16', 'all scripture, written before any of the letters'],
+      ['2 Timothy 3:15', 'from a child thou hast known the writings'],
+      ['Acts 17:11', 'searched the writings daily, meaning the Hebrew ones'],
+      ['Luke 24:44', 'in the law of Moses, and the prophets, and the psalms'],
+      ['Romans 15:4', 'whatsoever things were written aforetime were written for our learning'],
+    ],
+    records: [
+      { source: 'Marcion of Sinope, condemned at Rome', date: 'about AD 144', note: 'The first man on record to bind a set of writings that excluded the Hebrew ones. The category of an old and superseded testament begins with a canon built to exclude it.' },
+    ],
+    finding: 'When all scripture was called profitable, the only scripture in existence was the part now called old.',
+  },
+
+  'torah.law.everything-declared-finished': {
+    title: 'Everything Declared Already Finished',
+    line: 'A single word is stretched across the whole book until nothing is left standing.',
+    witnesses: [
+      ['Matthew 5:18', 'till heaven and earth pass, one jot shall not pass'],
+      ['Luke 16:17', 'easier for heaven and earth to pass, than one tittle to fail'],
+      ['Revelation 12:17', 'the remnant which keep the commandments'],
+      ['Revelation 14:12', 'here are they that keep the commandments'],
+      ['Revelation 22:14', 'blessed are they that do his commandments'],
+    ],
+    records: [],
+    finding: 'The last chapter of the last book still has men keeping commandments.',
+  },
+
+  'torah.law.keeping-made-punishable': {
+    title: 'Keeping It Made Punishable',
+    line: 'The reading did not spread by persuasion alone. It was enforced.',
+    witnesses: [
+      ['Daniel 7:25', 'thinks to change times and laws'],
+      ['Acts 5:29', 'we ought to obey Elohim rather than men'],
+      ['Isaiah 24:5', 'changed the ordinance, broken the everlasting covenant'],
+      ['Mark 7:9', 'ye reject the commandment, that ye may keep your own tradition'],
+    ],
+    records: [
+      { source: 'Council of Elvira, canon 26', date: 'about AD 306', note: 'Sabbath practice corrected by canon.' },
+      { source: 'Council of Antioch, canon 1', date: 'AD 341', note: 'Anathema for keeping Pesach with the Jews.' },
+      { source: 'Council of Laodicea, canon 29', date: 'about AD 363\u2013364', note: 'Christians forbidden to rest on the Sabbath and ordered to work that day.' },
+      { source: 'John Chrysostom, eight sermons Against the Judaizers, Antioch', date: 'AD 386\u2013387', note: 'Eight sermons preached against Christians in his own congregation who were keeping the Sabbath and the feasts. The sermons are the strongest evidence in this file, and they cut the other way from their intent: no man preaches eight sermons against a practice nobody is following.' },
+    ],
+    finding: 'Eight sermons were needed in one city to stop believers doing what they were still doing.',
+  },
+
+  'torah.law.quotation-source-forgotten': {
+    title: 'The Source of the Quotations Forgotten',
+    line: 'The writings the apostles argue from are set aside as belonging to someone else.',
+    witnesses: [
+      ['Acts 17:2', 'reasoned with them out of the writings'],
+      ['Acts 18:28', 'shewing by the writings that Yahushua was Messiah'],
+      ['1 Corinthians 15:3', 'died for our sins according to the writings'],
+      ['Romans 1:2', 'promised afore by his prophets in the holy writings'],
+      ['2 Peter 1:19', 'a more sure word of prophecy'],
+    ],
+    records: [],
+    finding: 'Every proof the apostles offered came out of the part now called old.',
+  },
+
+  'torah.law.food-ruling-inverted': {
+    title: 'A Ruling About Men Read as a Ruling About Food',
+    line: 'A vision explained in its own passage is given a meaning the passage denies.',
+    witnesses: [
+      ['Acts 10:28', 'Elohim hath shewed me that I should not call any man common'],
+      ['Acts 10:17', 'Peter doubted what this vision should mean'],
+      ['Acts 11:18', 'then hath Elohim also to the Gentiles granted repentance'],
+      ['Acts 10:14', 'not so, Master, spoken years after the resurrection'],
+      ['Leviticus 11:47', 'to make a difference between the unclean and the clean'],
+    ],
+    records: [],
+    finding: 'Peter states the meaning of his own vision, and it is about men.',
+  },
+
+  'torah.law.heart-writing-read-as-removal': {
+    title: 'Written on the Heart Read as Taken Away',
+    line: 'A promise to place the law inside a man is read as a promise to take it off him.',
+    witnesses: [
+      ['Jeremiah 31:33', 'I will put my law in their inward parts'],
+      ['Hebrews 8:10', 'I will put my laws into their mind, and write them in their hearts'],
+      ['Hebrews 10:16', 'quoted a second time, in the same letter'],
+      ['Ezekiel 36:27', 'cause you to walk in my statutes'],
+      ['Psalm 40:8', 'thy law is within my heart'],
+    ],
+    records: [],
+    finding: 'The promise names the law twice as the thing being written.',
   },
 
 };
