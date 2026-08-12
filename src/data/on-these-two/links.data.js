@@ -1,4 +1,5 @@
-// links.data 0811 V11.js
+// links.data 0811 V12.js
+// V12. The Calendar and Holidays: 15 links added (7 torah.calendar, 8 torah.holidays). 140 total.
 // V11. Salvation: 15 links added (13 trinity.salvation, 2 torah.salvation). 125 total.
 // V10. The Name: 10 links added (trinity.name.*). 110 total.
 // V9. The law set aside: 17 links added (torah.law.*). 100 total.
@@ -1891,6 +1892,238 @@ export const links = {
       { source: 'Martin Luther, letter to Philip Melanchthon', date: '1 August 1521', note: 'The letter containing the line about sinning boldly.', dispute: 'This line is quoted against Luther constantly and the quotation is usually unfair. The same sentence goes on to say believe and rejoice in Messiah more boldly still, and the letter is arguing that a man should not be paralyzed by scruples. It is here because the misquotation itself became a doctrine, not because Luther taught what men say he taught.' },
     ],
     finding: 'John says twice that one born of Yahuah does not go on sinning.',
+  },
+
+
+  'torah.calendar.days-declared-equal': {
+    title: 'The Days Declared Equal',
+    line: 'A day Yahuah set apart is said to be the same as any other.',
+    witnesses: [
+      ['Genesis 2:3', 'Elohim blessed the seventh day, and set it apart'],
+      ['Leviticus 23:2', 'these are my feasts, my convocations'],
+      ['Leviticus 23:4', 'to be proclaimed in their seasons'],
+      ['Exodus 31:13', 'my sabbaths, for it is a sign between me and you'],
+      ['Isaiah 58:13', 'my holy day, honourable'],
+    ],
+    records: [],
+    finding: 'A day He blessed and set apart is by definition not the same as the others.',
+  },
+
+  'torah.calendar.romans-fourteen-stretched': {
+    title: 'One Chapter Stretched Over the Whole Calendar',
+    line: 'A passage about chosen fast days and about eating herbs is made to answer for the moedim.',
+    witnesses: [
+      ['Romans 14:5', 'one man esteemeth one day above another', 'This is the verse the category rests on. The chapter never names a Sabbath, a feast, or a moed. It is about a weak brother, chosen fast days, and whether a man eats herbs.'],
+      ['Romans 14:2', 'another, who is weak, eateth herbs'],
+      ['Romans 14:6', 'he that regardeth the day, regardeth it unto the Master'],
+      ['Romans 14:21', 'it is good neither to eat flesh, nor to drink wine'],
+      ['Romans 14:1', 'him that is weak in the belief receive ye'],
+    ],
+    records: [],
+    finding: 'The chapter names herbs, wine, and a weak brother, and never once names a feast.',
+  },
+
+  'torah.calendar.appointment-made-a-preference': {
+    title: 'An Appointment Made a Preference',
+    line: 'A date He fixed is treated as a matter a man may settle for himself.',
+    witnesses: [
+      ['Leviticus 23:4', 'proclaimed in their seasons, not in ours'],
+      ['Genesis 1:14', 'lights for signs and for appointed times'],
+      ['Psalm 104:19', 'the moon appointed for the moedim'],
+      ['Numbers 9:2', 'keep the passover at his appointed season'],
+      ['Numbers 9:3', 'according to all the rites of it'],
+    ],
+    records: [],
+    finding: 'A moed is an appointment, and the party who sets an appointment is not the one who shows up.',
+  },
+
+  'torah.calendar.heart-offered-instead-of-the-day': {
+    title: 'The Heart Offered Instead of the Day',
+    line: 'Sincerity is offered in the place of the thing that was asked for.',
+    witnesses: [
+      ['1 Samuel 15:22', 'to obey is better than sacrifice'],
+      ['1 Samuel 15:23', 'rebellion is as the sin of witchcraft'],
+      ['Deuteronomy 12:8', 'not every man whatsoever seemeth right in his own eyes'],
+      ['Deuteronomy 12:32', 'what thing soever I command you, observe to do it'],
+      ['Jeremiah 17:9', 'the heart is deceitful above all things'],
+      ['1 John 5:3', 'this is love, that we keep his commandments'],
+    ],
+    records: [],
+    finding: 'Saul had a sincere heart and a better plan, and it cost him the kingdom.',
+  },
+
+  'torah.calendar.ownership-used-as-the-answer': {
+    title: 'Ownership Used as the Answer',
+    line: 'Because every day is His, no day is treated as different from the rest.',
+    witnesses: [
+      ['Psalm 24:1', 'the earth is Yahuah\u2019s, and the fulness thereof'],
+      ['Genesis 2:3', 'he blessed the seventh day, and set it apart'],
+      ['Exodus 20:11', 'wherefore Yahuah blessed the sabbath day'],
+      ['Leviticus 23:3', 'the seventh day is a holy convocation'],
+      ['Exodus 19:5', 'all the earth is mine, said before Sinai, not instead of it'],
+    ],
+    records: [],
+    finding: 'He owned every day already when He set one of them apart from the rest.',
+  },
+
+  'torah.calendar.gathering-spread-thin': {
+    title: 'The Gathering Spread Thin',
+    line: 'Worship on every day is offered in place of assembling on the day named.',
+    witnesses: [
+      ['Leviticus 23:3', 'the seventh day is a holy convocation'],
+      ['Leviticus 23:2', 'my feasts, which ye shall proclaim'],
+      ['Acts 2:46', 'daily in the temple, AND breaking bread at home'],
+      ['Hebrews 10:25', 'not forsaking the assembling of ourselves together'],
+      ['Exodus 23:14', 'three times in the year keep a feast unto me'],
+    ],
+    records: [],
+    finding: 'The men in Acts met daily and still kept the appointed days, which is both and not either.',
+  },
+
+  'torah.calendar.tradition-used-both-ways': {
+    title: 'Tradition Used Both Ways',
+    line: 'His commands are called tradition while actual traditions are kept.',
+    witnesses: [
+      ['Mark 7:7', 'teaching for doctrines the commandments of men'],
+      ['Mark 7:8', 'laying aside the commandment, ye hold the tradition of men'],
+      ['Mark 7:9', 'ye reject the commandment, that ye may keep your own tradition'],
+      ['Colossians 2:8', 'after the tradition of men, after the rudiments of the world'],
+      ['Deuteronomy 4:2', 'ye shall not add unto the word, neither diminish'],
+    ],
+    records: [],
+    finding: 'The word tradition is used in the writings for what men added, never for what He commanded.',
+  },
+
+  'torah.holidays.days-invented-and-added': {
+    title: 'Days Invented and Added',
+    line: 'Days Yahuah never named are placed on the calendar and kept.',
+    witnesses: [
+      ['Deuteronomy 4:2', 'ye shall not add unto the word which I command you'],
+      ['Deuteronomy 12:32', 'thou shalt not add thereto, nor diminish from it'],
+      ['Leviticus 23:2', 'these are my feasts, a closed list'],
+      ['1 Kings 12:32', 'Jeroboam ordained a feast in a month he devised of his own heart'],
+      ['1 Kings 12:33', 'the feast he had devised, and he offered upon the altar'],
+    ],
+    records: [
+      { source: 'The Chronography of 354, the Philocalian Calendar, Rome', date: 'AD 354', note: 'The earliest surviving record placing the birth of the Messiah on the twenty-fifth of December. Three hundred and twenty years pass before anyone writes the date down.' },
+      { source: 'The same document, listing the Natalis Invicti', date: 'AD 354', note: 'The same Roman calendar marks the birthday of the Unconquered Sun on the twenty-fifth of December.', dispute: 'Whether the church took the date from the sun festival or arrived at it by counting nine months from an assumed conception is argued by historians and has been for a century. Both dates sit in the same document either way, and neither theory produces a verse.' },
+    ],
+    finding: 'Jeroboam devised a feast out of his own heart, and the text says so in those words.',
+  },
+
+  'torah.holidays.pagan-frame-absorbed': {
+    title: 'A Borrowed Frame Absorbed and Renamed',
+    line: 'An existing practice is taken up, given a new name, and kept.',
+    witnesses: [
+      ['Deuteronomy 12:30', 'take heed, enquire not how these nations served their gods'],
+      ['Deuteronomy 12:31', 'thou shalt not do so unto Yahuah thy Elohim'],
+      ['Jeremiah 10:2', 'learn not the way of the heathen'],
+      ['Leviticus 18:3', 'neither shall ye walk in their ordinances'],
+      ['2 Corinthians 6:17', 'come out from among them, and be ye separate'],
+    ],
+    records: [
+      { source: 'Gregory the Great, letter to Abbot Mellitus, carried in Bede', date: 'AD 601', note: 'The pope instructs the mission to England not to destroy the pagan temples but to convert them to churches, and to let the people keep their festival slaughter of cattle under a new name. The method is stated in writing by the man ordering it.' },
+      { source: 'Bede, De Temporum Ratione, chapter 15', date: 'AD 725', note: 'Bede records that the month answering to April was called Eosturmonath, after a goddess named Eostre for whom feasts were held, and says the name carried over to the Christian festival.', dispute: 'Bede is the only source for Eostre, and some scholars hold he reconstructed the name from the month rather than reporting a live cult. What is not disputed is that Bede, a believer writing to defend the reckoning, says the Christian festival kept a pagan month name.' },
+    ],
+    finding: 'The instruction to convert the temples rather than tear them down is in a letter, signed and dated.',
+  },
+
+  'torah.holidays.intent-substituted-for-obedience': {
+    title: 'Intent Substituted for Obedience',
+    line: 'What a man means by the act is offered in place of whether the act was commanded.',
+    witnesses: [
+      ['Deuteronomy 12:30', 'enquire not how these nations served their gods'],
+      ['Deuteronomy 12:31', 'thou shalt not do so unto Yahuah thy Elohim'],
+      ['Exodus 32:5', 'Aaron proclaimed a feast to YAHUAH, over a calf'],
+      ['Exodus 32:8', 'and said, these be thy gods, O Israel'],
+      ['1 Samuel 15:22', 'to obey is better than sacrifice'],
+      ['Matthew 15:9', 'in vain do they worship me'],
+    ],
+    records: [],
+    finding: 'Aaron called the calf a feast to Yahuah, by name, and it was still a calf.',
+  },
+
+  'torah.holidays.three-days-shortened': {
+    title: 'The Three Days Shortened to One and a Half',
+    line: 'The one sign He offered is compressed until it no longer fits.',
+    witnesses: [
+      ['Matthew 12:39', 'no sign, but the sign of the prophet Jonah'],
+      ['Matthew 12:40', 'three days and three nights in the heart of the earth'],
+      ['Jonah 1:17', 'three days and three nights in the belly of the fish'],
+      ['Mark 8:31', 'after three days rise again'],
+      ['John 19:31', 'that sabbath day was an high day', 'A high day is an annual moed, not the weekly seventh day. The passage names a Sabbath that falls inside the week rather than at the end of it.'],
+      ['Leviticus 23:7', 'the first day of Hag HaMatzot, a holy convocation'],
+    ],
+    records: [
+      { source: 'First Council of Nicaea, the ruling on the date of the Pascha', date: 'AD 325', note: 'The observance is fixed to a Sunday and cut loose from the fourteenth of the first month, so that it will never coincide with the reckoning the Jews used. Once the day is fixed to a weekday, the count has to bend to fit it.' },
+    ],
+    finding: 'He gave one sign, and Friday afternoon to Sunday morning cannot hold it.',
+  },
+
+  'torah.holidays.name-carried-over': {
+    title: 'A Foreign Name Carried Over',
+    line: 'A festival keeps the name it had before, and the name is defended afterward.',
+    witnesses: [
+      ['Exodus 23:13', 'make no mention of the name of other elohim'],
+      ['Hosea 2:17', 'I will take away the names of Baalim out of her mouth'],
+      ['Deuteronomy 12:3', 'destroy the names of them out of that place'],
+      ['Joshua 23:7', 'neither make mention of the name of their gods'],
+      ['Leviticus 23:5', 'the fourteenth day of the first month is the Pesach'],
+    ],
+    records: [
+      { source: 'Bede, De Temporum Ratione, chapter 15', date: 'AD 725', note: 'Bede states plainly that the Christian festival took its English name from the pagan month Eosturmonath.' },
+    ],
+    finding: 'The feast already had a name, given in Leviticus, and it was not this one.',
+  },
+
+  'torah.holidays.object-declared-neutral': {
+    title: 'The Object Declared Neutral',
+    line: 'The thing itself is said to carry no meaning, so keeping it costs nothing.',
+    witnesses: [
+      ['Deuteronomy 7:25', 'the graven images shall ye burn'],
+      ['Deuteronomy 7:26', 'thou shalt not bring an abomination into thine house'],
+      ['Exodus 34:13', 'ye shall destroy their altars, and cut down their groves'],
+      ['Acts 19:19', 'they burned their books before all men'],
+      ['1 Corinthians 10:20', 'the things the heathen sacrifice, they sacrifice to devils'],
+      ['Jeremiah 10:3', 'a tree out of the forest, the workman with the axe', 'This verse is quoted constantly and it will not carry the weight put on it. The passage describes carving an idol, overlaying it with silver and gold, and nailing it so it will not topple. A reader who finishes the chapter can say it is about a manufactured idol and be substantially right. The tree chain here does not rest on it.'],
+    ],
+    records: [
+      { source: 'Guild records and municipal accounts, Freiburg and the upper Rhine', date: 'from the early fifteenth century', note: 'The earliest records of decorated trees set up for the season appear in German-speaking lands in the fourteen hundreds. The practice enters English-speaking countries in the eighteen hundreds and is a domestic custom long before it is a church one.', dispute: 'Exact firsts are argued and several towns claim the earliest tree. The century and the region are not in question, and no source of any kind places the practice in the first four centuries of the assembly.' },
+    ],
+    finding: 'Nothing brought into a house because of a festival was ever neutral in the writings.',
+  },
+
+  'torah.holidays.harm-made-the-measure': {
+    title: 'Harm Made the Measure',
+    line: 'Whether an observance is permitted is decided by whether anyone got hurt.',
+    witnesses: [
+      ['Deuteronomy 18:10', 'not any that useth divination, or an observer of times'],
+      ['Deuteronomy 18:11', 'nor a consulter with familiar spirits, nor a necromancer'],
+      ['Deuteronomy 18:12', 'for all that do these things are an abomination'],
+      ['Ephesians 5:11', 'have no fellowship with the unfruitful works of darkness'],
+      ['1 Thessalonians 5:22', 'abstain from all appearance of evil'],
+      ['Isaiah 5:20', 'woe unto them that call evil good, and good evil'],
+    ],
+    records: [
+      { source: 'Pope Gregory III, the feast of All Saints moved to the first of November', date: 'about AD 731 to 741', note: 'The observance is fixed to the first of November, and the evening before it becomes the eve. The date lands on the same reckoning already kept in the Irish and British lands for the turn of the season.', dispute: 'Whether the date was chosen to overlay the older seasonal observance or for unrelated reasons is argued, and the older practice is known mostly from later sources. The placement of the date and the eve is not in question.' },
+    ],
+    finding: 'The law names observing times among the abominations, and never grades them by whether harm followed.',
+  },
+
+  'torah.holidays.reclaiming-offered-as-the-fix': {
+    title: 'Reclaiming Offered as the Fix',
+    line: 'A borrowed observance is said to be redeemed by putting the Messiah back into it.',
+    witnesses: [
+      ['Deuteronomy 12:31', 'thou shalt not do so unto Yahuah thy Elohim'],
+      ['Deuteronomy 12:4', 'ye shall not do so unto Yahuah your Elohim'],
+      ['Exodus 32:5', 'a feast to Yahuah, proclaimed over a calf'],
+      ['Matthew 15:9', 'in vain do they worship me, teaching for doctrines the commandments of men'],
+      ['Jeremiah 7:31', 'which I commanded them not, neither came it into my heart'],
+    ],
+    records: [
+      { source: 'Gregory the Great, letter to Abbot Mellitus', date: 'AD 601', note: 'Reclaiming is the stated method, in writing, from the top. Convert the temples, keep the festival, change the name.' },
+    ],
+    finding: 'A borrowed thing with His name put on it is the one arrangement the law names twice and forbids.',
   },
 
 };

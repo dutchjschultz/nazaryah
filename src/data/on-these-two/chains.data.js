@@ -1,4 +1,5 @@
-// chains.data 0811 V9.js
+// chains.data 0811 V10.js
+// V10. The Calendar and Holidays: 11 chains added (5 Calendar, 6 Holidays). 72 total.
 // V9. Salvation: 7 chains added (5 trinity, 2 torah). 61 total.
 // V8. The Name: 5 chains added (4 The Name, 1 Baptism and bread). 54 total.
 // V7. The law set aside: replaced not-under-law-but-under-grace and law-nailed-to-the-cross with fuller versions, added 12 (net +10). 49 total.
@@ -1607,6 +1608,297 @@ export const chains = [
         ['1 Thessalonians 4:16', 'the dead in Messiah rise first'],
       ],
       finding: 'The question smuggles in its own answer, because a man only spends eternity somewhere if he cannot die, and that is the serpent\u2019s sentence three rungs up. There is no love anywhere in the sentence. It runs on dread of a place, and the one thing named as leading a man to repentance is goodness. What the writings offer is not a destination chosen tonight but a resurrection at a trumpet, and a road to walk between here and there.',
+    },
+  },
+
+
+  {
+    id: 'all-days-are-alike',
+    saying: 'All days are alike',
+    hinge: 'torah',
+    category: 'The Calendar',
+    spokenBy: 'said with Romans fourteen open and the rest of the chapter unread',
+    aliases: ['all days alike', 'romans 14', 'esteem one day', 'every day', 'days', 'calendar', 'weak brother'],
+    links: [
+      'torah.hinge',
+      'torah.calendar.luminaries-office',
+      'torah.calendar.days-declared-equal',
+      'torah.calendar.romans-fourteen-stretched',
+      'torah.sabbath.nothing-left-to-keep',
+    ],
+    verdict: {
+      witnesses: [
+        ['Genesis 2:3', 'he blessed the seventh day, and set it apart'],
+        ['Romans 14:2', 'another, who is weak, eateth herbs'],
+        ['Romans 14:21', 'neither to eat flesh, nor to drink wine'],
+        ['Leviticus 23:2', 'these are my feasts, my convocations'],
+      ],
+      finding: 'Romans fourteen is about a weak brother, chosen fast days, herbs, and wine, and it never names a Sabbath or a feast anywhere in it. A day Yahuah blessed and set apart is by definition not the same as the others, and the setting apart is the first thing recorded about the seventh day.',
+    },
+  },
+
+  {
+    id: 'its-just-a-day',
+    saying: 'It\u2019s just a day',
+    hinge: 'torah',
+    category: 'The Calendar',
+    spokenBy: 'said to close the subject without arguing it',
+    aliases: ['just a day', 'only a day', 'a day is a day', 'no different', 'ordinary', 'calendar'],
+    links: [
+      'torah.hinge',
+      'torah.calendar.days-declared-equal',
+      'torah.calendar.appointment-made-a-preference',
+      'torah.sabbath.set-apart-flattened',
+    ],
+    verdict: {
+      witnesses: [
+        ['Genesis 2:3', 'blessed the seventh day, and set it apart'],
+        ['Exodus 31:13', 'my sabbaths, a sign between me and you'],
+        ['Leviticus 23:4', 'proclaimed in their seasons'],
+        ['Isaiah 58:13', 'my holy day, honourable'],
+      ],
+      finding: 'A moed is an appointment, and the one who sets an appointment is not the one who shows up to it. He called the day His own, called it honourable, and called it a sign, which is three more things than any other day was called.',
+    },
+  },
+
+  {
+    id: 'god-doesnt-care-about-dates',
+    saying: 'God doesn\u2019t care about dates, He cares about your heart',
+    hinge: 'torah',
+    category: 'The Calendar',
+    spokenBy: 'said gently, and meant as the higher ground',
+    aliases: ['doesn\u2019t care about dates', 'cares about your heart', 'heart', 'sincere', 'legalistic', 'intent'],
+    links: [
+      'torah.hinge',
+      'torah.calendar.appointment-made-a-preference',
+      'torah.calendar.heart-offered-instead-of-the-day',
+      'torah.law.sin-left-undefined',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 Samuel 15:22', 'to obey is better than sacrifice'],
+        ['1 Samuel 15:23', 'rebellion is as the sin of witchcraft'],
+        ['Deuteronomy 12:8', 'not every man whatsoever seemeth right in his own eyes'],
+        ['Jeremiah 17:9', 'the heart is deceitful above all things'],
+      ],
+      finding: 'Saul had a sincere heart and a better plan and it cost him the kingdom, and the word given to him was that obeying is better than sacrificing. The one instrument this saying puts its weight on is the same one Jeremiah says cannot be trusted.',
+    },
+  },
+
+  {
+    id: 'every-day-belongs-to-the-lord',
+    saying: 'Every day belongs to the Lord',
+    hinge: 'torah',
+    category: 'The Calendar',
+    spokenBy: 'said as though ownership settled the question',
+    aliases: ['every day belongs', 'all days are his', 'the lord\u2019s', 'psalm 24', 'ownership', 'his day'],
+    links: [
+      'torah.hinge',
+      'torah.calendar.days-declared-equal',
+      'torah.calendar.ownership-used-as-the-answer',
+      'torah.sabbath.sign-erased',
+    ],
+    verdict: {
+      witnesses: [
+        ['Psalm 24:1', 'the earth is Yahuah\u2019s, and the fulness thereof'],
+        ['Exodus 19:5', 'all the earth is mine, said before Sinai'],
+        ['Genesis 2:3', 'he blessed the seventh day'],
+        ['Exodus 20:11', 'wherefore Yahuah blessed the sabbath day'],
+      ],
+      finding: 'The saying is true and does not reach the question. He owned every day already on the day He set one of them apart, and He said all the earth was His in the same breath that He began giving commands about part of it.',
+    },
+  },
+
+  {
+    id: 'we-worship-every-day',
+    saying: 'We worship every day, not just one day a week',
+    hinge: 'torah',
+    category: 'The Calendar',
+    spokenBy: 'said as an upgrade on what was asked for',
+    aliases: ['worship every day', 'not one day', 'daily', 'lifestyle of worship', 'all week', 'gathering'],
+    links: [
+      'torah.hinge',
+      'torah.calendar.days-declared-equal',
+      'torah.calendar.gathering-spread-thin',
+      'torah.assembly.appointed-times-dropped',
+      'torah.sabbath.rest-moved-inward',
+    ],
+    verdict: {
+      witnesses: [
+        ['Acts 2:46', 'daily in the temple, AND breaking bread at home'],
+        ['Leviticus 23:3', 'the seventh day is a holy convocation'],
+        ['Leviticus 23:2', 'my feasts, which ye shall proclaim'],
+        ['Exodus 23:14', 'three times in the year keep a feast unto me'],
+      ],
+      finding: 'The men in Acts were in the temple daily and still kept the appointed days, which is both and not either. Spreading a thing across every day is how a thing gets thinner, and the day He named was the one day nobody had to guess about.',
+    },
+  },
+
+  {
+    id: 'put-christ-back-in-christmas',
+    saying: 'Put Christ back in Christmas',
+    hinge: 'torah',
+    category: 'Holidays',
+    spokenBy: 'printed on signs, and said as though it were a defense of the faith',
+    aliases: ['christmas', 'put christ back', 'december 25', 'xmas', 'nativity', 'yule', 'holiday'],
+    links: [
+      'torah.hinge',
+      'torah.holidays.days-invented-and-added',
+      'torah.holidays.pagan-frame-absorbed',
+      'torah.holidays.reclaiming-offered-as-the-fix',
+    ],
+    verdict: {
+      witnesses: [
+        ['Deuteronomy 4:2', 'ye shall not add unto the word which I command you'],
+        ['Leviticus 23:2', 'these are my feasts, a closed list'],
+        ['1 Kings 12:33', 'the feast he had devised of his own heart'],
+        ['Jeremiah 7:31', 'which I commanded them not, neither came it into my heart'],
+      ],
+      records: [
+        { source: 'The Chronography of 354, Rome', date: 'AD 354', note: 'The earliest surviving record of the twenty-fifth of December as the birth date, three hundred and twenty years after the fact, in a calendar that marks the birthday of the Unconquered Sun on the same day.' },
+      ],
+      finding: 'He cannot be put back into a day He was never in. The date appears in writing for the first time three centuries late, in a Roman calendar that already had something else on it, and the feast list He gave was closed with a warning against adding to it.',
+    },
+  },
+
+  {
+    id: 'he-is-risen-happy-easter',
+    saying: 'He is risen, Happy Easter',
+    hinge: 'torah',
+    category: 'Holidays',
+    spokenBy: 'said on the one morning of the year the building is full',
+    aliases: ['easter', 'he is risen', 'resurrection sunday', 'eostre', 'bede', 'pascha', 'sunrise service'],
+    links: [
+      'torah.hinge',
+      'torah.holidays.days-invented-and-added',
+      'torah.holidays.pagan-frame-absorbed',
+      'torah.holidays.name-carried-over',
+      'torah.sunday.day-of-the-sun',
+    ],
+    verdict: {
+      witnesses: [
+        ['Leviticus 23:5', 'the fourteenth day of the first month is the Pesach'],
+        ['Exodus 23:13', 'make no mention of the name of other elohim'],
+        ['Hosea 2:17', 'I will take away the names of Baalim out of her mouth'],
+        ['1 Corinthians 5:7', 'Messiah our Pesach is sacrificed for us'],
+      ],
+      records: [
+        { source: 'Bede, De Temporum Ratione, chapter 15', date: 'AD 725', note: 'A believer writing to defend the reckoning states that the English name of the festival came from a pagan month named for a goddess.' },
+      ],
+      finding: 'The rising is the truth and the greeting is the problem. Paul called Him our Pesach and used the Hebrew name, in Greek, to Greeks. The feast already had a name given in Leviticus, and a believer writing in the eighth century tells us plainly where the replacement came from.',
+    },
+  },
+
+  {
+    id: 'good-friday-to-easter-sunday',
+    saying: 'Good Friday to Easter Sunday',
+    hinge: 'torah',
+    category: 'Holidays',
+    spokenBy: 'taught to children with a calendar on the wall',
+    aliases: ['good friday', 'easter sunday', 'three days', 'jonah', 'high day', 'friday', 'sunrise', 'crucifixion'],
+    links: [
+      'torah.hinge',
+      'torah.holidays.days-invented-and-added',
+      'torah.holidays.three-days-shortened',
+      'torah.sunday.day-of-the-sun',
+      'torah.assembly.appointed-times-dropped',
+    ],
+    verdict: {
+      witnesses: [
+        ['Matthew 12:39', 'no sign, but the sign of the prophet Jonah'],
+        ['Matthew 12:40', 'three days and three nights in the heart of the earth'],
+        ['Jonah 1:17', 'three days and three nights in the belly of the fish'],
+        ['John 19:31', 'that sabbath day was an high day'],
+        ['Leviticus 23:7', 'the first day of Hag HaMatzot, a holy convocation'],
+      ],
+      records: [
+        { source: 'First Council of Nicaea, the ruling on the Pascha', date: 'AD 325', note: 'The observance fixed to a Sunday and cut loose from the fourteenth of the first month. Once the day is fixed to a weekday, the count must bend to fit it.' },
+      ],
+      finding: 'He offered exactly one sign and put a number on it. Friday afternoon to Sunday morning is one day and two nights however it is counted, and the Sabbath named in John is called a high day, which is an annual moed falling inside the week rather than the weekly seventh day.',
+    },
+  },
+
+  {
+    id: 'halloween-is-harmless-fun',
+    saying: 'Halloween is harmless fun',
+    hinge: 'torah',
+    category: 'Holidays',
+    spokenBy: 'said in the church parking lot, at the trunk-or-treat',
+    aliases: ['halloween', 'harmless', 'trick or treat', 'costumes', 'harvest party', 'all saints', 'candy'],
+    links: [
+      'torah.hinge',
+      'torah.holidays.days-invented-and-added',
+      'torah.holidays.pagan-frame-absorbed',
+      'torah.holidays.harm-made-the-measure',
+      'torah.holidays.intent-substituted-for-obedience',
+    ],
+    verdict: {
+      witnesses: [
+        ['Deuteronomy 18:10', 'not any that useth divination, or an observer of times'],
+        ['Deuteronomy 18:12', 'all that do these things are an abomination'],
+        ['Ephesians 5:11', 'have no fellowship with the unfruitful works of darkness'],
+        ['Isaiah 5:20', 'woe unto them that call evil good'],
+        ['1 Thessalonians 5:22', 'abstain from all appearance of evil'],
+      ],
+      finding: 'Harmless is not one of the tests. The law names observing times among the abominations and never grades them by whether anyone got hurt afterward. Moving the party into the parking lot changes the address and leaves the date exactly where it was.',
+    },
+  },
+
+  {
+    id: 'were-honoring-christ-with-it',
+    saying: 'We\u2019re honoring Christ with it',
+    hinge: 'torah',
+    category: 'Holidays',
+    spokenBy: 'said when the origin has been shown and the practice is kept anyway',
+    aliases: ['honoring christ', 'unto the lord', 'redeem it', 'reclaim', 'intent', 'my heart', 'for him'],
+    links: [
+      'torah.hinge',
+      'torah.holidays.pagan-frame-absorbed',
+      'torah.holidays.intent-substituted-for-obedience',
+      'torah.holidays.reclaiming-offered-as-the-fix',
+      'torah.law.commands-allegorized',
+    ],
+    verdict: {
+      witnesses: [
+        ['Exodus 32:5', 'Aaron proclaimed a feast to YAHUAH, over a calf'],
+        ['Deuteronomy 12:30', 'enquire not how these nations served their gods'],
+        ['Deuteronomy 12:31', 'thou shalt not do so unto Yahuah thy Elohim'],
+        ['Matthew 15:9', 'in vain do they worship me'],
+        ['Jeremiah 7:31', 'which I commanded them not'],
+      ],
+      records: [
+        { source: 'Gregory the Great, letter to Abbot Mellitus', date: 'AD 601', note: 'Convert the temples, keep the festival, change the name. The method stated in writing by the man ordering it.' },
+      ],
+      finding: 'Aaron called the calf a feast to Yahuah by name, and it was still a calf. The one arrangement the law forbids twice in two verses is taking how the nations served their gods and doing that unto Him. And the reclaiming was not the people\u2019s idea in the first place, it was policy, and there is a letter.',
+    },
+  },
+
+  {
+    id: 'the-tree-is-just-for-decoration',
+    saying: 'The tree is just for decoration',
+    hinge: 'torah',
+    category: 'Holidays',
+    spokenBy: 'said after the Jeremiah verse has been quoted at them',
+    aliases: ['tree', 'christmas tree', 'decoration', 'jeremiah 10', 'ornament', 'just a tree', 'lights'],
+    links: [
+      'torah.hinge',
+      'torah.holidays.days-invented-and-added',
+      'torah.holidays.pagan-frame-absorbed',
+      'torah.holidays.object-declared-neutral',
+      'torah.holidays.intent-substituted-for-obedience',
+    ],
+    verdict: {
+      witnesses: [
+        ['Jeremiah 10:3', 'a tree out of the forest, the workman with the axe', 'This is the verse quoted at them, and the reply is not wrong. Read the next verse and it is an idol overlaid with silver and gold and nailed upright. That is a manufactured image, not a decorated tree. The case against the practice does not need this passage and is not built on it here.'],
+        ['Deuteronomy 7:26', 'thou shalt not bring an abomination into thine house'],
+        ['Acts 19:19', 'they burned their books before all men'],
+        ['Deuteronomy 12:30', 'enquire not how these nations served their gods'],
+        ['Leviticus 23:2', 'these are my feasts, a closed list'],
+      ],
+      records: [
+        { source: 'Guild and municipal records, Freiburg and the upper Rhine', date: 'from the early fifteenth century', note: 'Decorated trees for the season first appear in the record in German-speaking lands in the fourteen hundreds, as a domestic custom. No source of any kind places the practice in the first four centuries.' },
+      ],
+      finding: 'The reply is half right and it is worth conceding, because the Jeremiah passage is describing a carved idol and a reader who finishes the chapter can see it. The trouble is that conceding the verse costs nothing. The tree has a century and a region and a paper trail of its own, it arrives fourteen hundred years too late, and nothing brought into a house because of a festival was ever neutral in the writings.',
     },
   },
 
