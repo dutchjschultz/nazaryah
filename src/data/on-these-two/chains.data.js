@@ -1,4 +1,5 @@
-// chains.data 0811 V4.js
+// chains.data 0811 V5.js
+// V5. The assembly: 6 chains added (1 torah, 5 trinity). 29 total.
 // V4. Trinity 120s groups (Son, Spirit, Mechanism): 10 chains added. 23 total (13 existing + 10).
 // V3. Death and the grave: 6 chains added. 13 total (7 existing incl. the Sunday chain + 6).
 // V2. Adds the Sunday chain. Sunday and every day are two different lineages and must stay separate:
@@ -589,6 +590,166 @@ export const chains = [
         { source: 'Oral Roberts, Miracle of Seed-Faith', date: '1970', note: 'Giving as planting, put into print and into every television appeal after it.' },
       ],
       finding: 'Simon tried to buy the power and was told his money could perish with him. The increase was set aside to teach a man to fear Yahuah, and nobody puts that on the screen.',
+    },
+  },
+
+
+  {
+    id: 'dont-forsake-the-assembling',
+    saying: 'Don\u2019t forsake the assembling',
+    hinge: 'torah',
+    category: 'The assembly',
+    spokenBy: 'said to the man who missed two Sundays in a row',
+    aliases: ['assembling', 'hebrews 10', 'attendance', 'forsake', 'church', 'gathering', 'moedim'],
+    links: [
+      'torah.hinge',
+      'torah.assembly.appointed-times-dropped',
+      'torah.assembly.gathering-made-a-building',
+      'torah.assembly.calendar-set-by-the-building',
+      'torah.assembly.attendance-made-the-command',
+    ],
+    verdict: {
+      witnesses: [
+        ['Leviticus 23:2', 'these are my feasts, my convocations'],
+        ['Leviticus 23:4', 'proclaimed in their seasons'],
+        ['Hebrews 10:24', 'the reason given: to provoke unto love'],
+        ['Hebrews 10:26', 'the warning that follows is apostasy'],
+      ],
+      records: [
+        { source: 'Council of Laodicea, Canon 29', date: 'about AD 363\u2013364', note: 'The day of gathering moved by canon, with a penalty attached.' },
+      ],
+      finding: 'The verse is quoted to defend a schedule Yahuah never set. He named the days His people gather, and the writer of Hebrews was warning about abandoning brethren, not about attendance.',
+    },
+  },
+
+  {
+    id: 'church-membership-is-your-spiritual-home',
+    saying: 'Church membership is your spiritual home',
+    hinge: 'trinity',
+    category: 'The assembly',
+    spokenBy: 'handed to you on a card at the end of the class',
+    aliases: ['membership', 'covenant', 'home church', 'join', 'roll', 'commitment', 'institution'],
+    links: [
+      'trinity.hinge',
+      'trinity.assembly.household-replaced-by-institution',
+      'trinity.assembly.belonging-made-a-requirement',
+    ],
+    verdict: {
+      witnesses: [
+        ['Romans 16:5', 'the assembly that is in their house'],
+        ['Colossians 4:15', 'the assembly which is in his house'],
+        ['Acts 2:46', 'breaking bread from house to house'],
+        ['1 Peter 2:5', 'ye also are built up a spiritual house'],
+      ],
+      records: [
+        { source: 'Edict of Thessalonica', date: '27 February 380', note: 'Belonging becomes a legal status, enforceable by the state.' },
+      ],
+      finding: 'For three centuries there were no buildings and no rolls, and the assembly met in houses. A man signs a card and is told he now has a home, when the house was already his.',
+    },
+  },
+
+  {
+    id: 'god-wants-you-in-community',
+    saying: 'God wants you in community',
+    hinge: 'trinity',
+    category: 'The assembly',
+    spokenBy: 'said gently, to the one who left and did not come back',
+    aliases: ['community', 'fellowship', 'connected', 'plugged in', 'alone', 'isolated', 'small group'],
+    links: [
+      'trinity.hinge',
+      'trinity.assembly.household-replaced-by-institution',
+      'trinity.assembly.belonging-made-a-requirement',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 Kings 19:18', 'seven thousand kept, and Elijah knew of none'],
+        ['Matthew 18:20', 'where two or three are gathered'],
+        ['Acts 8:39', 'the eunuch went on his way rejoicing'],
+        ['2 Timothy 4:16', 'no man stood with me'],
+      ],
+      finding: 'Brethren are a gift and the need is real. The sleight of hand is the next sentence, where community turns out to mean this organization, and a man who walks away from the building is told he walked away from Yahuah.',
+    },
+  },
+
+  {
+    id: 'you-need-to-be-under-covering',
+    saying: 'You need to be under covering',
+    hinge: 'trinity',
+    category: 'The assembly',
+    spokenBy: 'said to the man who started studying on his own',
+    aliases: ['covering', 'authority', 'submit', 'accountability', 'pastor', 'elder', 'mediator'],
+    links: [
+      'trinity.hinge',
+      'trinity.assembly.household-replaced-by-institution',
+      'trinity.assembly.mediator-installed',
+      'trinity.assembly.access-made-conditional',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 Timothy 2:5', 'one mediator between Yahuah and men'],
+        ['Hebrews 4:16', 'come boldly unto the throne of favor'],
+        ['Hebrews 7:25', 'he ever liveth to make intercession'],
+        ['Matthew 23:8', 'one is your Master, and all ye are brethren'],
+      ],
+      records: [
+        { source: 'Council of Trent, session 23', date: '15 July 1563', note: 'A hierarchy of ministers declared to be of divine ordinance, with anathema for denying it.' },
+      ],
+      finding: 'The office of mediator is filled and the man holding it is not on the platform. Covering is the old office under a word soft enough that nobody notices it being filled twice.',
+    },
+  },
+
+  {
+    id: 'touch-not-gods-anointed',
+    saying: 'The pastor is God\u2019s anointed, touch not',
+    hinge: 'trinity',
+    category: 'The assembly',
+    spokenBy: 'said the moment a leader is questioned out loud',
+    aliases: ['touch not', 'anointed', 'pastor', 'criticize', 'priesthood', 'temple', 'leader'],
+    links: [
+      'trinity.hinge',
+      'trinity.assembly.household-replaced-by-institution',
+      'trinity.assembly.priesthood-narrowed',
+      'trinity.assembly.anointing-narrowed',
+      'trinity.assembly.temple-relocated',
+      'trinity.assembly.immunity-from-correction',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 Peter 2:9', 'ye are a royal priesthood'],
+        ['1 John 2:27', 'the anointing abideth in you'],
+        ['1 Corinthians 6:19', 'your body is the temple'],
+        ['1 Samuel 24:6', 'David refusing to strike Saul, the actual setting'],
+        ['Galatians 2:11', 'Paul withstood Peter to the face'],
+      ],
+      records: [
+        { source: 'Council of Trent, session 23, canon 4', date: '15 July 1563', note: 'Anathema on anyone who says all Christians alike are priests.' },
+      ],
+      finding: 'Every believer is a priest, carries the anointing, and is the temple. The saying takes all three back from the reader and hands them to one man, and then forbids him to ask about it.',
+    },
+  },
+
+  {
+    id: 'thats-a-divisive-spirit',
+    saying: 'That\u2019s a divisive spirit',
+    hinge: 'trinity',
+    category: 'The assembly',
+    spokenBy: 'said after the second question, never after the first',
+    aliases: ['divisive', 'division', 'critical spirit', 'rebellious', 'gossip', 'unity', 'submit'],
+    links: [
+      'trinity.hinge',
+      'trinity.assembly.household-replaced-by-institution',
+      'trinity.assembly.mediator-installed',
+      'trinity.assembly.immunity-from-correction',
+      'trinity.assembly.questioner-made-the-offender',
+    ],
+    verdict: {
+      witnesses: [
+        ['Acts 17:11', 'searched the writings daily, and were called noble'],
+        ['1 Thessalonians 5:21', 'prove all things, hold fast the good'],
+        ['Titus 3:10', 'a divisive man builds a faction around himself'],
+        ['Galatians 2:11', 'Paul withstood Peter to the face, publicly'],
+      ],
+      finding: 'The Bereans checked an apostle against the writings, daily, and the record calls them noble for it. A teaching that cannot survive the question was never resting on the writings to begin with.',
     },
   },
 

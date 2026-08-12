@@ -1,4 +1,5 @@
-// links.data 0811 V6.js
+// links.data 0811 V7.js
+// V7. The assembly: 13 links added (4 torah, 9 trinity). 69 total.
 // V6. Trinity 120s groups (Son, Spirit, Mechanism): 15 links added. 56 total.
 // V5. Death and the grave: 10 links added. 41 total.
 // V4. All 31 link titles rewritten — titles now name the move made, past tense. No ids, records, or findings touched.
@@ -834,6 +835,202 @@ export const links = {
       { source: 'Oral Roberts, Miracle of Seed-Faith', date: '1970', note: 'Giving reframed as planting, with a harvest owed back. The book sells in the millions and the language is in every television appeal after it.' },
     ],
     finding: 'A gift given to get is not a gift, it is a purchase.',
+  },
+
+
+  'torah.assembly.appointed-times-dropped': {
+    title: 'The Appointed Times Dropped',
+    line: 'Yahuah named the days His people gather. Those days were set aside and other days kept.',
+    witnesses: [
+      ['Leviticus 23:2', 'these are my feasts, my convocations'],
+      ['Leviticus 23:4', 'to be proclaimed in their seasons'],
+      ['Leviticus 23:3', 'the seventh day, a holy convocation'],
+      ['Exodus 23:14', 'three times in the year keep a feast'],
+      ['Psalm 74:8', 'they burned up all the moedim in the land'],
+    ],
+    records: [
+      { source: 'Council of Laodicea, Canon 29', date: 'about AD 363\u2013364', note: 'Christians are forbidden to rest on the Sabbath and ordered to work that day. The gathering is moved by canon, not by any text.' },
+    ],
+    finding: 'The convocation is His, called on His days, and He named them.',
+  },
+
+  'torah.assembly.gathering-made-a-building': {
+    title: 'The Gathering Made a Building',
+    line: 'A word that means a called-out people was turned into a place with a roof.',
+    witnesses: [
+      ['Acts 7:38', 'the assembly in the wilderness'],
+      ['Acts 19:32', 'the same word used of a town crowd'],
+      ['Acts 19:41', 'and he dismissed the assembly'],
+      ['Romans 16:5', 'the assembly that is in their house'],
+      ['1 Corinthians 16:19', 'the assembly in the house of Aquila'],
+    ],
+    records: [
+      { source: 'William Tyndale\u2019s New Testament', date: '1526', note: 'Tyndale renders the Greek word as congregation throughout, refusing church. He was burned in 1536, and translation was among the charges.' },
+      { source: 'The rules laid down for the King James translators, rule 3', date: '1604', note: 'The old ecclesiastical words are ordered kept, and church is named specifically as the word to be used. The translators are instructed what the word must say before they begin.' },
+    ],
+    finding: 'The word never meant a building until a rule required it to.',
+  },
+
+  'torah.assembly.attendance-made-the-command': {
+    title: 'Attendance Made the Command',
+    line: 'A warning about abandoning one another is turned into a rule about showing up.',
+    witnesses: [
+      ['Hebrews 10:25', 'not forsaking the assembling of ourselves'],
+      ['Hebrews 10:24', 'the reason given: to provoke unto love'],
+      ['Hebrews 10:26', 'the warning that follows is apostasy'],
+      ['Hebrews 3:13', 'exhort one another daily'],
+      ['Malachi 3:16', 'they that feared Yahuah spake often one to another'],
+    ],
+    records: [],
+    finding: 'The verse warns against abandoning the brethren, not against missing a service.',
+  },
+
+  'torah.assembly.calendar-set-by-the-building': {
+    title: 'The Calendar Set by the Building',
+    line: 'Once the gathering is a building, the building decides when the gathering happens.',
+    witnesses: [
+      ['Daniel 7:25', 'thinks to change times and laws'],
+      ['Leviticus 23:4', 'proclaimed in their seasons, not in ours'],
+      ['Colossians 2:16', 'let no man judge you in respect of a feast'],
+      ['Numbers 10:10', 'the trumpet at the appointed days'],
+    ],
+    records: [
+      { source: 'Constantine, civil rest edict', date: '7 March 321', note: 'Rest ordered on the venerable day of the Sun. Preserved in the Code of Justinian, book 3, title 12, law 2.' },
+    ],
+    finding: 'A gathering set by a schedule is a gathering no longer set by Him.',
+  },
+
+  'trinity.assembly.household-replaced-by-institution': {
+    title: 'The Household Replaced by an Institution',
+    line: 'What met in houses was given an address, a roll, and an office.',
+    witnesses: [
+      ['Romans 16:5', 'the assembly that is in their house'],
+      ['Colossians 4:15', 'the assembly which is in his house'],
+      ['Philemon 2', 'to the assembly in thy house'],
+      ['Acts 2:46', 'breaking bread from house to house'],
+      ['1 Peter 2:5', 'ye also are built up a spiritual house'],
+    ],
+    records: [
+      { source: 'Constantine, the Lateran basilica given to the bishop of Rome', date: 'about AD 313\u2013318', note: 'An imperial palace handed over as a place of worship. The assembly acquires real property and, with it, an institution to hold it.' },
+      { source: 'Edict of Thessalonica', date: '27 February 380', note: 'Theodosius makes one confession the law of the empire and names all others heretics. Belonging becomes a legal status.' },
+    ],
+    finding: 'For three centuries the assembly had no buildings and no membership rolls.',
+  },
+
+  'trinity.assembly.belonging-made-a-requirement': {
+    title: 'Belonging Made a Requirement',
+    line: 'A man is told he cannot walk this out alone, and the cure sold is an organization.',
+    witnesses: [
+      ['1 Kings 19:18', 'seven thousand kept, and Elijah knew of none'],
+      ['1 Kings 19:10', 'I, even I only, am left'],
+      ['Matthew 18:20', 'where two or three are gathered'],
+      ['Acts 8:39', 'the eunuch went on his way rejoicing, alone'],
+      ['2 Timothy 4:16', 'no man stood with me'],
+    ],
+    records: [],
+    finding: 'Elijah thought he stood alone and was wrong, and Yahuah did not send him to a congregation.',
+  },
+
+  'trinity.assembly.mediator-installed': {
+    title: 'A Mediator Installed Under a New Name',
+    line: 'A man is placed between the believer and Yahuah, and the arrangement is called covering.',
+    witnesses: [
+      ['1 Timothy 2:5', 'one mediator between Yahuah and men'],
+      ['Hebrews 7:25', 'he ever liveth to make intercession'],
+      ['Hebrews 4:16', 'come boldly unto the throne of favor'],
+      ['Matthew 23:8', 'one is your Master, and all ye are brethren'],
+      ['Matthew 23:9', 'call no man your father upon the earth'],
+    ],
+    records: [
+      { source: 'Council of Trent, session 23, canons on the sacrament of order', date: '15 July 1563', note: 'A hierarchy of ministers is declared to be of divine ordinance, and those who deny it are anathematized.' },
+    ],
+    finding: 'There is one mediator, and the office is filled.',
+  },
+
+  'trinity.assembly.access-made-conditional': {
+    title: 'Access Made Conditional',
+    line: 'Standing before Yahuah is made to depend on standing with a man.',
+    witnesses: [
+      ['Hebrews 10:19', 'boldness to enter, by the blood'],
+      ['Hebrews 10:20', 'the veil was torn, and the way opened'],
+      ['Ephesians 2:18', 'through him we both have access'],
+      ['Ephesians 3:12', 'boldness and access with confidence'],
+      ['Romans 8:34', 'it is Messiah that maketh intercession'],
+    ],
+    records: [],
+    finding: 'The way was opened by a tearing, and no man was posted at it afterward.',
+  },
+
+  'trinity.assembly.priesthood-narrowed': {
+    title: 'The Priesthood Narrowed to One Man',
+    line: 'A priesthood given to a whole body is handed back to a single office.',
+    witnesses: [
+      ['1 Peter 2:9', 'ye are a royal priesthood'],
+      ['1 Peter 2:5', 'a holy priesthood, to offer up sacrifices'],
+      ['Revelation 1:6', 'hath made us kings and priests'],
+      ['Revelation 5:10', 'made us unto our Elohim kings and priests'],
+      ['Exodus 19:6', 'ye shall be unto me a kingdom of priests'],
+    ],
+    records: [
+      { source: 'Council of Trent, session 23, canon 4', date: '15 July 1563', note: 'Anathema pronounced on anyone who says all Christians alike are priests. The narrowing is written down and enforced by name.' },
+    ],
+    finding: 'A kingdom of priests was the plan at Sinai and it never changed.',
+  },
+
+  'trinity.assembly.anointing-narrowed': {
+    title: 'The Anointing Narrowed to the Office',
+    line: 'The anointing given to every believer is reassigned to the man holding the microphone.',
+    witnesses: [
+      ['1 John 2:20', 'ye have an anointing from the Set-apart One'],
+      ['1 John 2:27', 'the anointing abideth in you'],
+      ['2 Corinthians 1:21', 'he which hath anointed us is Yahuah'],
+      ['Ephesians 1:14', 'the Spirit, the earnest of our inheritance'],
+      ['Acts 2:17', 'I will pour out of my Spirit upon all flesh'],
+    ],
+    records: [],
+    finding: 'The anointing is described as already in the reader, not in a man on a platform.',
+  },
+
+  'trinity.assembly.temple-relocated': {
+    title: 'The Temple Relocated to a Man',
+    line: 'A dwelling place moved into every believer is moved back out, into one person again.',
+    witnesses: [
+      ['1 Corinthians 3:16', 'ye are the temple, and the Spirit dwelleth in you'],
+      ['1 Corinthians 6:19', 'your body is the temple of the Set-apart Spirit'],
+      ['2 Corinthians 6:16', 'ye are the temple of the living Elohim'],
+      ['Ephesians 2:22', 'builded together for a habitation'],
+      ['Acts 7:48', 'dwelleth not in temples made with hands'],
+    ],
+    records: [],
+    finding: 'The dwelling place moved into the body and was never moved back out.',
+  },
+
+  'trinity.assembly.immunity-from-correction': {
+    title: 'Immunity From Correction Claimed',
+    line: 'A line about a king is turned into a shield for a preacher.',
+    witnesses: [
+      ['1 Chronicles 16:22', 'touch not mine anointed', 'This is the line quoted. It is spoken over the patriarchs wandering among nations, warning kings not to harm them. It is a promise of protection to the vulnerable, not a gag on the congregation.'],
+      ['1 Samuel 24:6', 'David refusing to kill Saul, the actual setting'],
+      ['1 Samuel 24:12', 'David says Yahuah judge, and does not strike'],
+      ['Galatians 2:11', 'Paul withstood Peter to the face'],
+      ['1 Timothy 5:20', 'them that sin, rebuke before all'],
+    ],
+    records: [],
+    finding: 'The words were said about kings not killing prophets, not about congregations not asking questions.',
+  },
+
+  'trinity.assembly.questioner-made-the-offender': {
+    title: 'The Questioner Made the Offender',
+    line: 'The last rung guards the ladder, and the man asking becomes the problem.',
+    witnesses: [
+      ['Acts 17:11', 'searched the writings daily, and were called noble'],
+      ['1 Thessalonians 5:21', 'prove all things, hold fast the good'],
+      ['1 John 4:1', 'try the spirits, whether they are of Yahuah'],
+      ['Titus 3:10', 'a divisive man, after the second admonition', 'This is the verse behind the accusation. The word describes a man who forms a faction around himself, not a man who checks a teaching against the writings.'],
+      ['Proverbs 18:17', 'the first to plead seems just, until another searches him'],
+    ],
+    records: [],
+    finding: 'The Bereans did the very thing this saying is used to forbid, and were called noble for it.',
   },
 
 };
