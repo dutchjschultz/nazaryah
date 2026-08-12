@@ -1,4 +1,5 @@
-// chains.data 0811 V7.js
+// chains.data 0811 V8.js
+// V8. The Name: 5 chains added (4 The Name, 1 Baptism and bread). 54 total.
 // V7. The law set aside: replaced not-under-law-but-under-grace and law-nailed-to-the-cross with fuller versions, added 12 (net +10). 49 total.
 // V6. Prophecy: 10 chains added (8 Prophecy, 2 Israel and the nations). 39 total.
 // V5. The assembly: 6 chains added (1 torah, 5 trinity). 29 total.
@@ -1272,6 +1273,145 @@ export const chains = [
         { source: 'John Chrysostom, eight sermons Against the Judaizers, Antioch', date: 'AD 386\u2013387', note: 'Eight sermons preached against believers in his own city who were still keeping the Sabbath and the feasts, three and a half centuries after the tree.' },
       ],
       finding: 'The last chapter of the last book still has men keeping commandments. And if it had all ended, it took eight sermons in one city, three centuries later, to get believers to stop.',
+    },
+  },
+
+
+  {
+    id: 'theyre-all-his-names',
+    saying: 'God, Lord, Jehovah Jireh, they\u2019re all His names',
+    hinge: 'trinity',
+    category: 'The Name',
+    spokenBy: 'said kindly, and meant as generosity',
+    aliases: ['names', 'jehovah jireh', 'god', 'lord', 'titles', 'compound names', 'el shaddai'],
+    links: [
+      'trinity.hinge',
+      'trinity.name.father-name-covered',
+      'trinity.name.titles-counted-as-names',
+      'trinity.lord.title-floats-free',
+    ],
+    verdict: {
+      witnesses: [
+        ['Exodus 3:15', 'this is my name for ever, my memorial'],
+        ['Psalm 83:18', 'whose name alone is Yahuah'],
+        ['Isaiah 42:8', 'I am Yahuah, that is my name'],
+        ['Genesis 22:14', 'Yahuah-Yireh, a place Abraham named'],
+      ],
+      finding: 'Jireh means He provides, and Abraham used it to name a mountain. Every one of the compound titles is built on the Name and describes something He does. He said once, plainly, this is my name for ever, and it was one name.',
+    },
+  },
+
+  {
+    id: 'it-doesnt-matter-what-you-call-him',
+    saying: 'It doesn\u2019t matter what you call Him, He knows your heart',
+    hinge: 'trinity',
+    category: 'The Name',
+    spokenBy: 'said the moment the Name is spoken out loud',
+    aliases: ['doesn\u2019t matter', 'knows your heart', 'sincere', 'pronunciation', 'name', 'call him'],
+    links: [
+      'trinity.hinge',
+      'trinity.name.father-name-covered',
+      'trinity.name.translated-not-carried',
+      'trinity.name.intent-made-sufficient',
+      'trinity.name.knowing-made-optional',
+    ],
+    verdict: {
+      witnesses: [
+        ['Jeremiah 23:27', 'which think to cause my people to forget my name'],
+        ['Isaiah 52:6', 'my people shall know my name'],
+        ['Joel 2:32', 'whosoever shall call on the name of Yahuah'],
+        ['Zephaniah 3:9', 'that they may all call upon the name'],
+      ],
+      finding: 'He says twice that His people will know His name, and once that there were men working to make them forget it. A man who tells you the name does not matter would not accept that answer about his own name, from his own children.',
+    },
+  },
+
+  {
+    id: 'the-name-above-every-name',
+    saying: 'Jesus is the name above every name',
+    hinge: 'trinity',
+    category: 'The Name',
+    spokenBy: 'said to raise the Son, by men who have not read the next verse',
+    aliases: ['above every name', 'philippians 2', 'exalted', 'given him a name', 'bow', 'highest name'],
+    links: [
+      'trinity.hinge',
+      'trinity.name.father-name-covered',
+      'trinity.name.given-read-as-owned',
+      'trinity.name.mediator-blurred',
+      'trinity.lord.title-handed-to-son',
+      'trinity.lord.father-edged-out',
+    ],
+    verdict: {
+      witnesses: [
+        ['Philippians 2:9', 'Elohim hath given him a name'],
+        ['Philippians 2:11', 'to the glory of Elohim the Father'],
+        ['John 5:43', 'I am come in my Father\u2019s name'],
+        ['Hebrews 1:4', 'obtained by inheritance a more excellent name'],
+        ['Acts 4:12', 'none other name given among men'],
+      ],
+      finding: 'The verse says the name was given to Him, and the sentence ends by naming who gets the glory for it. Given, exalted, inherited — three words in three books, all of them describing something received. Ask whose name it was before it was given and the passage answers in the same paragraph.',
+    },
+  },
+
+  {
+    id: 'hallelujah-just-means-praise-the-lord',
+    saying: 'Hallelujah just means praise the Lord',
+    hinge: 'trinity',
+    category: 'The Name',
+    spokenBy: 'said in explanation, by men who sing it every week',
+    aliases: ['hallelujah', 'praise the lord', 'jehovah', 'lord', 'yah', 'alleluia', 'translation'],
+    links: [
+      'trinity.hinge',
+      'trinity.name.father-name-covered',
+      'trinity.name.title-substituted-in-translation',
+      'trinity.name.translated-not-carried',
+      'trinity.name.reshaped-through-tongues',
+      'trinity.name.name-hidden-inside-a-word',
+      'trinity.name.meaning-severed',
+    ],
+    verdict: {
+      witnesses: [
+        ['Psalm 68:4', 'by his name Yah, extol him'],
+        ['Exodus 15:2', 'Yah is my strength and song'],
+        ['Isaiah 12:2', 'Yah Yahuah is my strength'],
+        ['Revelation 19:1', 'the word carried across untranslated'],
+        ['Jeremiah 23:27', 'to cause my people to forget my name'],
+      ],
+      records: [
+        { source: 'The rules laid down for the King James translators', date: '1604', note: 'The old ecclesiastical words ordered kept, and a title set where the Name stands roughly six thousand eight hundred times.' },
+      ],
+      finding: 'The second half of the word is the Name, and the Psalm says so directly. The word was carried into Greek without translating it and then into English the same way, so every congregation singing it says the Name out loud and is told afterward that it means something else.',
+    },
+  },
+
+  {
+    id: 'baptized-in-the-name-of-father-son-holy-ghost',
+    saying: 'We baptize in the name of the Father, Son, and Holy Ghost',
+    hinge: 'trinity',
+    category: 'Baptism and bread',
+    spokenBy: 'recited at the water, in nearly every denomination',
+    aliases: ['baptize', 'immersion', 'formula', 'matthew 28', 'father son holy ghost', 'trine', 'titles'],
+    links: [
+      'trinity.hinge',
+      'trinity.name.father-name-covered',
+      'trinity.name.commission-without-a-formula',
+      'trinity.name.formula-set-over-the-name',
+      'trinity.name.name-made-a-slot',
+      'trinity.name.mediator-blurred',
+    ],
+    verdict: {
+      witnesses: [
+        ['Acts 2:38', 'immersed in the name of Yahushua Messiah'],
+        ['Acts 8:16', 'in the name of the Master Yahushua'],
+        ['Acts 10:48', 'commanded them to be immersed in the name'],
+        ['Acts 19:5', 'they were immersed in the name of the Master'],
+        ['Matthew 28:19', 'in the name, singular, of the Father and of the Son'],
+        ['Acts 4:12', 'none other name under heaven given among men'],
+      ],
+      records: [
+        { source: 'Eusebius of Caesarea, quoting the commission before Nicaea', date: 'before AD 325', note: 'The verse cited repeatedly in a short form in his earlier works, with the fuller form appearing after the council.' },
+      ],
+      finding: 'The men who heard the commission with their own ears immersed in the Name every single time it is recorded, five for five, and not one of them recited three titles. The verse itself says name in the singular, and three titles are not a name. Whatever else is true, the practice of the men who were there is the plainest evidence available.',
     },
   },
 

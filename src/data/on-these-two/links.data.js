@@ -1,4 +1,5 @@
-// links.data 0811 V9.js
+// links.data 0811 V10.js
+// V10. The Name: 10 links added (trinity.name.*). 110 total.
 // V9. The law set aside: 17 links added (torah.law.*). 100 total.
 // V8. Prophecy: 14 links added (9 futurist, 5 zionist). 83 total.
 // V7. The assembly: 13 links added (4 torah, 9 trinity). 69 total.
@@ -1507,6 +1508,157 @@ export const links = {
     ],
     records: [],
     finding: 'The promise names the law twice as the thing being written.',
+  },
+
+
+  'trinity.name.titles-counted-as-names': {
+    title: 'Titles Counted as Names',
+    line: 'Words describing what He is are listed as though they were what He is called.',
+    witnesses: [
+      ['Exodus 3:15', 'this is my name for ever, my memorial'],
+      ['Psalm 83:18', 'whose name alone is Yahuah'],
+      ['Isaiah 42:8', 'I am Yahuah, that is my name'],
+      ['Genesis 22:14', 'Yahuah-Yireh, a place Abraham named'],
+      ['Exodus 34:14', 'whose name is Jealous, said of one attribute'],
+    ],
+    records: [],
+    finding: 'A name is what a thing is called, and a title is what it does.',
+  },
+
+  'trinity.name.title-substituted-in-translation': {
+    title: 'A Title Substituted Six Thousand Times',
+    line: 'The Name is lifted out of the text and a title is set in its place.',
+    witnesses: [
+      ['Jeremiah 23:27', 'which think to cause my people to forget my name'],
+      ['Psalm 83:18', 'whose name alone is Yahuah'],
+      ['Exodus 20:7', 'thou shalt not take the name in vain'],
+      ['Isaiah 52:6', 'my people shall know my name'],
+      ['Proverbs 30:4', 'what is his name, and what is his son\u2019s name?'],
+    ],
+    records: [
+      { source: 'The rules laid down for the King James translators, rule 1 and rule 3', date: '1604', note: 'The translators are instructed to follow the Bishops\u2019 Bible and to keep the old ecclesiastical words. The practice of setting LORD in small capitals where the Name stands is inherited rather than decided, and it is carried through roughly six thousand eight hundred times.' },
+      { source: 'The Tyndale New Testament and Pentateuch', date: '1526 and 1530', note: 'Tyndale renders the Name as Iehouah in places in the Pentateuch, showing the choice was available and was sometimes taken. He was executed in 1536.' },
+    ],
+    finding: 'A title set in the place of a Name six thousand times is not a translation choice, it is a policy.',
+  },
+
+  'trinity.name.intent-made-sufficient': {
+    title: 'Intent Made Sufficient',
+    line: 'What a man means is offered in place of what he says.',
+    witnesses: [
+      ['Exodus 23:13', 'make no mention of the name of other elohim'],
+      ['Joel 2:32', 'whosoever shall call on the name of Yahuah'],
+      ['Acts 4:12', 'none other name under heaven given among men'],
+      ['Proverbs 18:10', 'the name of Yahuah is a strong tower'],
+      ['Malachi 3:16', 'a book of remembrance for them that thought upon his name'],
+    ],
+    records: [],
+    finding: 'A man who says the name does not matter would not accept that answer about his own.',
+  },
+
+  'trinity.name.given-read-as-owned': {
+    title: 'A Given Name Read as an Owned One',
+    line: 'A name handed to the Son is read as proof He always held it.',
+    witnesses: [
+      ['Philippians 2:9', 'wherefore Elohim also hath highly exalted him, and given him a name'],
+      ['Philippians 2:11', 'to the glory of Elohim the Father'],
+      ['John 5:43', 'I am come in my Father\u2019s name'],
+      ['John 17:11', 'keep through thine own name those whom thou hast given me'],
+      ['Hebrews 1:4', 'obtained by inheritance a more excellent name'],
+      ['Acts 4:12', 'none other name under heaven GIVEN among men'],
+    ],
+    records: [],
+    finding: 'A name that was given has an owner who gave it, and the passage names Him twice.',
+  },
+
+  'trinity.name.name-hidden-inside-a-word': {
+    title: 'The Name Hidden Inside a Word',
+    line: 'A word carrying the Name is translated in a way that buries it.',
+    witnesses: [
+      ['Psalm 68:4', 'by his name Yah, extol him'],
+      ['Exodus 15:2', 'Yah is my strength and song'],
+      ['Isaiah 12:2', 'Yah Yahuah is my strength'],
+      ['Revelation 19:1', 'the word kept untranslated, even in Greek'],
+      ['Revelation 19:6', 'kept untranslated a fourth time in six verses'],
+    ],
+    records: [],
+    finding: 'The word was carried across untranslated into Greek and into English, and then explained as though it were not.',
+  },
+
+  'trinity.name.formula-set-over-the-name': {
+    title: 'A Formula Set Over the Name',
+    line: 'Three titles are recited where a Name was spoken.',
+    witnesses: [
+      ['Acts 2:38', 'be immersed in the name of Yahushua Messiah'],
+      ['Acts 8:16', 'only they were immersed in the name of the Master Yahushua'],
+      ['Acts 10:48', 'commanded them to be immersed in the name of the Master'],
+      ['Acts 19:5', 'they were immersed in the name of the Master Yahushua'],
+      ['Acts 22:16', 'wash away thy sins, calling on the name'],
+      ['Matthew 28:19', 'in the name, singular, of the Father and of the Son'],
+    ],
+    records: [
+      { source: 'Eusebius of Caesarea, quoting the commission across his pre-Nicene works', date: 'before AD 325', note: 'Eusebius cites the verse repeatedly in a short form ending in my name, in works written before the council. After Nicaea the fuller form appears in his citations.', dispute: 'Scholars are divided. Some read the short citations as loose paraphrase or abbreviation rather than a different text, and no manuscript of Matthew lacks the triune wording. This record establishes how a fourth-century bishop quoted the verse, not that the text once read differently.' },
+      { source: 'The Didache, chapter 7', date: 'about AD 100\u2013120', note: 'An early manual giving the triune wording for immersion, and giving it plainly.', dispute: 'This record cuts against the rest of the rung and is included for that reason. The same chapter also permits pouring where water is short, so it already shows practice moving early. What it establishes is that both the formula and a departure from the pattern are second-century, not fourth.' },
+    ],
+    finding: 'Every immersion recorded in Acts is done in the Name, five times out of five.',
+  },
+
+  'trinity.name.commission-without-a-formula': {
+    title: 'A Commission Given Without a Formula',
+    line: 'The earliest account of the sending contains no wording for immersion at all.',
+    witnesses: [
+      ['Mark 16:15', 'go ye into all the world, preach the gospel'],
+      ['Mark 16:16', 'he that believeth and is immersed shall be saved'],
+      ['Luke 24:47', 'repentance and remission preached in his name'],
+      ['Acts 1:8', 'ye shall be witnesses unto me, no formula given'],
+      ['Mark 9:38', 'casting out devils in thy name'],
+    ],
+    records: [
+      { source: 'Markan priority, the standard position in Gospel scholarship', date: 'from the nineteenth century', note: 'Mark is generally held to be the earliest of the three, with Matthew and Luke drawing on it. On that reading, the account closest to the events gives the sending with no formula for immersion, and Luke\u2019s version speaks of His name.', dispute: 'Markan priority is the dominant view rather than a settled fact, and a minority still argues for Matthew first. Separately, the ending of Mark from verse nine onward is missing from the two oldest complete manuscripts. Neither point damages the rung, because Luke and Acts say the same thing without relying on Mark at all.' },
+    ],
+    finding: 'The account closest to the events gives the sending and gives no wording to recite.',
+  },
+
+  'trinity.name.name-made-a-slot': {
+    title: 'The Name Made an Empty Slot',
+    line: 'The word name is kept in the sentence while nothing is put into it.',
+    witnesses: [
+      ['Matthew 28:19', 'in the NAME, singular, of the Father'],
+      ['John 5:43', 'I am come in my Father\u2019s name'],
+      ['John 17:6', 'I have manifested thy name unto the men'],
+      ['John 17:26', 'I have declared unto them thy name'],
+      ['Acts 4:12', 'none other name under heaven'],
+    ],
+    records: [],
+    finding: 'The verse says name in the singular, and three titles are not a name.',
+  },
+
+  'trinity.name.mediator-blurred': {
+    title: 'The Sent One Blurred Into the Sender',
+    line: 'The one who carried the Name is turned into the one who owns it.',
+    witnesses: [
+      ['John 5:43', 'I am come in my Father\u2019s name'],
+      ['John 12:49', 'I have not spoken of myself'],
+      ['John 14:28', 'my Father is greater than I'],
+      ['Isaiah 43:11', 'beside me there is no saviour'],
+      ['Philippians 2:11', 'to the glory of Elohim the Father'],
+    ],
+    records: [],
+    finding: 'He said He came in His Father\u2019s name, which is a sentence about two.',
+  },
+
+  'trinity.name.knowing-made-optional': {
+    title: 'Knowing It Made Optional',
+    line: 'The guard rung. Asking after the Name becomes the strange thing to do.',
+    witnesses: [
+      ['Jeremiah 23:27', 'which think to cause my people to forget my name'],
+      ['Isaiah 52:6', 'my people shall know my name'],
+      ['Psalm 91:14', 'because he hath known my name'],
+      ['John 17:26', 'I have declared thy name, and will declare it'],
+      ['Zephaniah 3:9', 'that they may all call upon the name of Yahuah'],
+    ],
+    records: [],
+    finding: 'Yahuah says twice that His people will know His name, which is not the language of a detail.',
   },
 
 };
