@@ -1,4 +1,5 @@
-// chains.data 0811 V8.js
+// chains.data 0811 V9.js
+// V9. Salvation: 7 chains added (5 trinity, 2 torah). 61 total.
 // V8. The Name: 5 chains added (4 The Name, 1 Baptism and bread). 54 total.
 // V7. The law set aside: replaced not-under-law-but-under-grace and law-nailed-to-the-cross with fuller versions, added 12 (net +10). 49 total.
 // V6. Prophecy: 10 chains added (8 Prophecy, 2 Israel and the nations). 39 total.
@@ -1412,6 +1413,200 @@ export const chains = [
         { source: 'Eusebius of Caesarea, quoting the commission before Nicaea', date: 'before AD 325', note: 'The verse cited repeatedly in a short form in his earlier works, with the fuller form appearing after the council.' },
       ],
       finding: 'The men who heard the commission with their own ears immersed in the Name every single time it is recorded, five for five, and not one of them recited three titles. The verse itself says name in the singular, and three titles are not a name. Whatever else is true, the practice of the men who were there is the plainest evidence available.',
+    },
+  },
+
+
+  {
+    id: 'ask-jesus-into-your-heart',
+    saying: 'Ask Jesus into your heart',
+    hinge: 'trinity',
+    category: 'Salvation',
+    spokenBy: 'said to children first, and to grown men in the same words',
+    aliases: ['into your heart', 'invite', 'ask jesus', 'revelation 3:20', 'knocking', 'door', 'feelings'],
+    links: [
+      'trinity.hinge',
+      'trinity.salvation.deliverance-collapsed-to-a-moment',
+      'trinity.salvation.entry-sold-as-the-whole',
+      'trinity.salvation.invitation-read-as-entry',
+      'trinity.salvation.body-swapped-for-the-heart',
+      'trinity.salvation.walk-reduced-to-feeling',
+    ],
+    verdict: {
+      witnesses: [
+        ['Revelation 3:14', 'unto the assembly of the Laodiceans write'],
+        ['1 Corinthians 6:19', 'your BODY is the temple'],
+        ['Romans 12:1', 'present your BODIES a living sacrifice'],
+        ['Jeremiah 17:9', 'the heart is deceitful above all things'],
+        ['1 John 2:3', 'hereby we know him, if we keep his commandments'],
+      ],
+      finding: 'The door being knocked on belonged to a congregation that had already shut Him outside, and the letter is a rebuke to men who thought they were rich. The deeper swap is the address itself. Every temple passage names the BODY, and a body is measured by what it does. Put the temple in the heart and a man checks his standing by how he feels that morning, which is the one instrument Jeremiah says cannot be trusted.',
+    },
+  },
+
+  {
+    id: 'personal-lord-and-savior',
+    saying: 'Accept Him as your personal Lord and Savior',
+    hinge: 'trinity',
+    category: 'Salvation',
+    spokenBy: 'said as though the phrase came out of the book',
+    aliases: ['personal', 'lord and savior', 'accept him', 'saviour', 'personal relationship', 'decision', 'my own'],
+    links: [
+      'trinity.hinge',
+      'trinity.salvation.deliverance-collapsed-to-a-moment',
+      'trinity.salvation.savior-title-moved',
+      'trinity.salvation.price-mistaken-for-the-payer',
+      'trinity.salvation.made-private',
+      'trinity.lord.title-handed-to-son',
+      'trinity.lord.father-edged-out',
+    ],
+    verdict: {
+      witnesses: [
+        ['Isaiah 43:11', 'beside me there is no saviour'],
+        ['Hosea 13:4', 'there is no saviour beside me'],
+        ['John 3:16', 'Elohim so loved the world, that he GAVE his only begotten Son'],
+        ['1 Peter 2:9', 'a royal priesthood, an holy NATION'],
+        ['1 Corinthians 12:13', 'immersed into one BODY'],
+      ],
+      finding: 'Yahuah says three separate times that there is no saviour beside Him, and the letters keep calling the Father by that title long after the resurrection. The Father gave, sent, and delivered up. The Son was the price, not the one paying it. And the word personal does quiet work at the front of the phrase, turning a body, a household, and a nation into one man and his own private arrangement.',
+    },
+  },
+
+  {
+    id: 'say-this-prayer-after-me',
+    saying: 'Say this prayer after me',
+    hinge: 'trinity',
+    category: 'Salvation',
+    spokenBy: 'read off a card, at the close of the meeting',
+    aliases: ['sinner\u2019s prayer', 'say this prayer', 'repeat after me', 'pray this', 'four spiritual laws', 'decision card', 'altar call'],
+    links: [
+      'trinity.hinge',
+      'trinity.salvation.deliverance-collapsed-to-a-moment',
+      'trinity.mechanism.man-works-the-lever',
+      'trinity.mechanism.word-given-force',
+      'trinity.salvation.method-invented-at-the-front',
+      'trinity.salvation.words-made-the-transaction',
+    ],
+    verdict: {
+      witnesses: [
+        ['Acts 2:37', 'men and brethren, what shall we do?'],
+        ['Acts 2:38', 'repent, and be immersed every one of you'],
+        ['Matthew 6:7', 'use not vain repetitions, as the heathen do'],
+        ['Matthew 7:21', 'not every one that saith unto me, Master, Master'],
+        ['Acts 22:16', 'why tarriest thou? arise, and be immersed'],
+      ],
+      records: [
+        { source: 'Charles Finney, Lectures on Revivals of Religion', date: '1835', note: 'The new measures set out and defended in his own words. The machinery of the modern appeal is built here.' },
+      ],
+      finding: 'The question was asked out loud in Acts, by a crowd, and the answer is on the page. Repent and be immersed. A form of words repeated after another man is a thing the writings never once describe, and He named repetition as the practice of the heathen in His own words. Whatever a recited prayer does, it does not do what a man is told it does.',
+    },
+  },
+
+  {
+    id: 'once-saved-always-saved',
+    saying: 'Once saved, always saved',
+    hinge: 'torah',
+    category: 'Salvation',
+    spokenBy: 'said to settle a man who has stopped walking',
+    aliases: ['once saved', 'eternal security', 'cannot lose it', 'perseverance', 'dort', 'secure', 'sealed'],
+    links: [
+      'torah.hinge',
+      'trinity.salvation.deliverance-collapsed-to-a-moment',
+      'trinity.salvation.entry-sold-as-the-whole',
+      'torah.salvation.walk-made-optional',
+      'torah.law.obedience-renamed',
+    ],
+    verdict: {
+      witnesses: [
+        ['Matthew 24:13', 'he that shall endure unto the end'],
+        ['Hebrews 10:26', 'if we sin wilfully after we have received the knowledge'],
+        ['2 Peter 2:20', 'the latter end is worse than the beginning'],
+        ['Ezekiel 33:13', 'if he trust to his own righteousness, and commit iniquity'],
+        ['Revelation 3:5', 'I will not blot out his name'],
+      ],
+      records: [
+        { source: 'Synod of Dort, Canons, fifth head of doctrine', date: '13 November 1618 to 9 May 1619', note: 'Perseverance defined and made a term of standing, with the contrary position condemned by name.' },
+      ],
+      finding: 'The promise not to blot out a name only means something if a name can be blotted out. Endure to the end is a strange thing to say to a man whose end is already settled, and Hebrews spends an entire passage on people who received the knowledge and then turned from it.',
+    },
+  },
+
+  {
+    id: 'just-a-sinner-saved-by-grace',
+    saying: 'Nobody\u2019s perfect, just a sinner saved by grace',
+    hinge: 'torah',
+    category: 'Grace and works',
+    spokenBy: 'said with a shrug, as the end of the discussion',
+    aliases: ['nobody\u2019s perfect', 'sinner saved by grace', 'we all sin', 'not perfect', 'struggle', 'flesh', 'still a sinner'],
+    links: [
+      'torah.hinge',
+      'torah.law.sin-left-undefined',
+      'torah.law.favor-turned-into-license',
+      'torah.salvation.failure-made-expected',
+      'torah.law.obedience-renamed',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 John 3:9', 'whosoever is born of Elohim doth not commit sin'],
+        ['1 John 5:18', 'whosoever is born of Elohim sinneth not'],
+        ['Romans 6:2', 'how shall we live any longer therein?'],
+        ['Titus 2:12', 'that we should live soberly, righteously, and godly'],
+        ['1 Corinthians 10:13', 'will make a way to escape'],
+      ],
+      finding: 'John states twice, flatly, that one born of Yahuah does not go on in sin. The saying is true in the first half and does all its work in the second, where a description of what a man was becomes a forecast of what he will always be, and nobody is expected to change.',
+    },
+  },
+
+  {
+    id: 'not-a-religion-but-a-relationship',
+    saying: 'It\u2019s not a religion, it\u2019s a relationship',
+    hinge: 'trinity',
+    category: 'Salvation',
+    spokenBy: 'said inside a building, on a schedule, by paid staff',
+    aliases: ['not a religion', 'relationship', 'rules', 'religious', 'personal', 'james 1', 'organized religion'],
+    links: [
+      'trinity.hinge',
+      'trinity.salvation.deliverance-collapsed-to-a-moment',
+      'trinity.salvation.assembly-word-discarded',
+      'trinity.salvation.made-private',
+      'torah.law.obedience-renamed',
+    ],
+    verdict: {
+      witnesses: [
+        ['James 1:27', 'pure religion and undefiled before Elohim'],
+        ['James 1:26', 'if any man seem to be religious'],
+        ['John 14:15', 'if ye love me, keep my commandments'],
+        ['1 John 5:3', 'this is the love of Elohim, that we keep his commandments'],
+        ['Deuteronomy 6:4', 'Yahuah our Elohim is one Yahuah'],
+      ],
+      finding: 'James used the word without flinching and then told us what a clean one looks like. There is a plainer test. Ask a man who the relationship is with and count the names that come back. Three entities is a creed, and a creed is the thing the saying claims to have escaped. What actually gets discarded is the obedience, and the word religion is what takes the blame for it.',
+    },
+  },
+
+  {
+    id: 'where-would-you-spend-eternity',
+    saying: 'Do you know where you\u2019d spend eternity?',
+    hinge: 'trinity',
+    category: 'Salvation',
+    spokenBy: 'asked on a doorstep, and printed on the back of a card',
+    aliases: ['eternity', 'spend eternity', 'if you died tonight', 'heaven or hell', 'destination', 'forever', 'die tonight'],
+    links: [
+      'trinity.hinge',
+      'trinity.death.immortal-soul',
+      'trinity.death.straight-to-heaven',
+      'trinity.salvation.destination-made-the-question',
+      'trinity.salvation.fear-made-the-motive',
+      'trinity.salvation.deliverance-collapsed-to-a-moment',
+    ],
+    verdict: {
+      witnesses: [
+        ['Romans 6:23', 'the wages of sin is death'],
+        ['Ecclesiastes 9:5', 'the dead know not any thing'],
+        ['1 John 4:18', 'perfect love casteth out fear'],
+        ['Romans 2:4', 'the goodness of Elohim leadeth thee to repentance'],
+        ['1 Thessalonians 4:16', 'the dead in Messiah rise first'],
+      ],
+      finding: 'The question smuggles in its own answer, because a man only spends eternity somewhere if he cannot die, and that is the serpent\u2019s sentence three rungs up. There is no love anywhere in the sentence. It runs on dread of a place, and the one thing named as leading a man to repentance is goodness. What the writings offer is not a destination chosen tonight but a resurrection at a trumpet, and a road to walk between here and there.',
     },
   },
 

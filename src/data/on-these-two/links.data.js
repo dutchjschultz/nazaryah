@@ -1,4 +1,5 @@
-// links.data 0811 V10.js
+// links.data 0811 V11.js
+// V11. Salvation: 15 links added (13 trinity.salvation, 2 torah.salvation). 125 total.
 // V10. The Name: 10 links added (trinity.name.*). 110 total.
 // V9. The law set aside: 17 links added (torah.law.*). 100 total.
 // V8. Prophecy: 14 links added (9 futurist, 5 zionist). 83 total.
@@ -1659,6 +1660,237 @@ export const links = {
     ],
     records: [],
     finding: 'Yahuah says twice that His people will know His name, which is not the language of a detail.',
+  },
+
+
+  'trinity.salvation.deliverance-collapsed-to-a-moment': {
+    title: 'A Walk Compressed Into a Moment',
+    line: 'A walk that runs the length of a life is compressed into one evening.',
+    witnesses: [
+      ['Matthew 24:13', 'he that shall endure unto the end shall be saved'],
+      ['Philippians 2:12', 'work out your own deliverance with fear and trembling'],
+      ['1 Corinthians 15:2', 'ye are saved, if ye keep in memory'],
+      ['Acts 9:2', 'any of this way, the name they were first called by'],
+      ['Hebrews 3:14', 'if we hold the beginning of our confidence unto the end'],
+    ],
+    records: [],
+    finding: 'The first name for it was the Way, which is a road and not a door.',
+  },
+
+  'trinity.salvation.entry-sold-as-the-whole': {
+    title: 'The Entry Sold as the Whole',
+    line: 'The door is described so completely that nobody asks what lies past it.',
+    witnesses: [
+      ['Matthew 7:13', 'enter ye in at the strait gate'],
+      ['Matthew 7:14', 'narrow is the WAY, which leadeth unto life'],
+      ['Colossians 2:6', 'as ye have received him, so WALK ye in him'],
+      ['Acts 24:14', 'after the way which they call heresy, so worship I'],
+      ['2 Peter 2:21', 'to turn from the holy commandment delivered unto them'],
+    ],
+    records: [],
+    finding: 'The gate and the way are two different things in the same sentence.',
+  },
+
+  'trinity.salvation.method-invented-at-the-front': {
+    title: 'A Method Invented at the Front of the Room',
+    line: 'A bench is set at the front, and coming forward becomes the thing that happens.',
+    witnesses: [
+      ['Acts 2:37', 'men and brethren, what shall we do?'],
+      ['Acts 2:38', 'repent, and be immersed every one of you'],
+      ['Acts 8:36', 'see, here is water, what doth hinder me?'],
+      ['Acts 16:33', 'immersed, he and all his, the same hour of the night'],
+      ['Acts 22:16', 'why tarriest thou? arise, and be immersed'],
+    ],
+    records: [
+      { source: 'Charles Finney, Lectures on Revivals of Religion', date: '1835', note: 'Finney sets out the new measures in his own words, the anxious bench among them, and defends them as means a man may choose. What ended in water in Acts becomes a seat at the front of a room, and the machinery of the modern appeal is built from here.' },
+      { source: 'Billy Sunday, the sawdust trail', date: 'from about 1896', note: 'Coming forward at the close of a meeting becomes the recognized act, on a scale of tens of thousands, and enters the language of the country.' },
+    ],
+    finding: 'Every response recorded in Acts ends in water, and none of them ends in a bench.',
+  },
+
+  'trinity.salvation.words-made-the-transaction': {
+    title: 'Words Made the Transaction',
+    line: 'A set form is recited after another man, and the reciting is treated as the thing itself.',
+    witnesses: [
+      ['Matthew 6:7', 'use not vain repetitions, as the heathen do'],
+      ['Matthew 7:21', 'not every one that saith unto me, Master, Master'],
+      ['Matthew 7:22', 'many will say to me in that day'],
+      ['James 2:19', 'the devils also believe, and tremble'],
+      ['Acts 2:38', 'repent, and be immersed, the answer actually given'],
+    ],
+    records: [
+      { source: 'Billy Graham, Steps to Peace with God', date: 'from the 1950s', note: 'A printed prayer distributed by the million, with the assurance that reciting it settles the matter. The words become a form, and the form becomes portable.' },
+      { source: 'Bill Bright, The Four Spiritual Laws', date: 'booklet form from 1965', note: 'The transaction reduced to four steps with a prayer on the last page.', dispute: 'Bright wrote the material in the early nineteen fifties and the booklet form dates from the middle sixties. The distribution figures come from the organization itself and are not independently audited. The existence and the shape of the booklet are not in question.' },
+    ],
+    finding: 'He named repetition as the practice of the heathen, in those words, before anyone printed a card.',
+  },
+
+  'trinity.salvation.invitation-read-as-entry': {
+    title: 'A Letter to an Assembly Read as an Altar Call',
+    line: 'A rebuke sent to a congregation is turned into an appeal to a stranger.',
+    witnesses: [
+      ['Revelation 3:20', 'behold, I stand at the door, and knock'],
+      ['Revelation 3:14', 'unto the assembly of the Laodiceans write'],
+      ['Revelation 3:19', 'as many as I love, I rebuke and chasten'],
+      ['Revelation 3:22', 'let him hear what the Spirit saith unto the assemblies'],
+      ['John 6:44', 'no man can come, except the Father draw him'],
+    ],
+    records: [],
+    finding: 'The door in that verse belongs to an assembly that had already shut Him outside.',
+  },
+
+  'trinity.salvation.body-swapped-for-the-heart': {
+    title: 'The Body Swapped for the Heart',
+    line: 'The temple is a body in the writings. Move it to the heart and the walk becomes a feeling.',
+    witnesses: [
+      ['1 Corinthians 6:19', 'your BODY is the temple of the Set-apart Spirit'],
+      ['1 Corinthians 6:20', 'therefore glorify Elohim in your body'],
+      ['Romans 12:1', 'present your BODIES a living sacrifice'],
+      ['1 Corinthians 3:16', 'the Spirit of Elohim dwelleth in you'],
+      ['Jeremiah 17:9', 'the heart is deceitful above all things'],
+      ['Galatians 4:6', 'Elohim hath sent forth the Spirit of his Son into your hearts'],
+    ],
+    records: [],
+    finding: 'Every temple passage in the letters names the body, and a body is measured by what it does.',
+  },
+
+  'trinity.salvation.walk-reduced-to-feeling': {
+    title: 'The Walk Reduced to a Feeling',
+    line: 'Once the temple is a feeling, a man checks his standing by his mood.',
+    witnesses: [
+      ['Jeremiah 17:9', 'the heart is deceitful above all things, and desperately wicked'],
+      ['Proverbs 28:26', 'he that trusteth in his own heart is a fool'],
+      ['1 John 2:3', 'hereby we do know that we know him, if we keep his commandments'],
+      ['1 John 3:18', 'let us not love in word, but in deed and in truth'],
+      ['Matthew 7:20', 'by their fruits ye shall know them'],
+      ['James 1:22', 'be ye doers of the word, and not hearers only'],
+    ],
+    records: [],
+    finding: 'John gives one test for knowing Him and it is a thing a man does, not a thing he feels.',
+  },
+
+  'trinity.salvation.made-private': {
+    title: 'The Walk Made Private',
+    line: 'A word is added that nobody examines, and it quietly closes the door on everyone else.',
+    witnesses: [
+      ['1 Corinthians 12:13', 'by one Spirit are we all immersed into one BODY'],
+      ['Ephesians 2:19', 'fellowcitizens with the saints, and of the household'],
+      ['1 Peter 2:5', 'ye also, as lively stones, are built up a spiritual house'],
+      ['1 Peter 2:9', 'ye are a chosen generation, a royal priesthood, an holy NATION'],
+      ['Hebrews 10:24', 'consider one another to provoke unto love and good works'],
+      ['Exodus 19:6', 'a kingdom of priests, and an holy nation'],
+    ],
+    records: [],
+    finding: 'Every picture given for it is plural — a body, a house, a nation, a priesthood.',
+  },
+
+  'trinity.salvation.savior-title-moved': {
+    title: 'The Saviour Title Moved Off the Father',
+    line: 'A title Yahuah claims exclusively is handed to the Son as though it were vacant.',
+    witnesses: [
+      ['Isaiah 43:11', 'I, even I, am Yahuah, and beside me there is no saviour'],
+      ['Isaiah 45:21', 'a just El and a Saviour, there is none beside me'],
+      ['Hosea 13:4', 'there is no saviour beside me'],
+      ['Luke 1:47', 'my spirit hath rejoiced in Elohim my Saviour'],
+      ['1 Timothy 1:1', 'the commandment of Elohim our Saviour'],
+      ['Jude 25', 'the only wise Elohim our Saviour'],
+      ['Titus 3:6', 'through Yahushua Messiah our Saviour', 'This is the passage that cuts the other way and it is here on purpose. Two verses earlier the same paragraph says Elohim our Saviour, and the sentence between them says the Spirit was shed on us THROUGH Yahushua. The passage names the channel in the same breath as the source.'],
+    ],
+    records: [],
+    finding: 'Three times, in the strongest wording available, Yahuah says there is no saviour beside Him.',
+  },
+
+  'trinity.salvation.price-mistaken-for-the-payer': {
+    title: 'The Price Mistaken for the Payer',
+    line: 'The one given is treated as the one who gave.',
+    witnesses: [
+      ['John 3:16', 'Elohim so loved the world, that he GAVE his only begotten Son'],
+      ['Romans 8:32', 'he that spared not his own Son, but delivered him up'],
+      ['1 John 4:10', 'he loved us, and SENT his Son to be the propitiation'],
+      ['2 Corinthians 5:19', 'Elohim was in Messiah, reconciling the world unto himself'],
+      ['Genesis 22:8', 'Elohim will provide himself a lamb'],
+      ['Isaiah 53:10', 'it pleased Yahuah to bruise him'],
+    ],
+    records: [],
+    finding: 'The Father gave, sent, delivered up, and provided, and the Son was what He gave.',
+  },
+
+  'trinity.salvation.assembly-word-discarded': {
+    title: 'A Word Discarded to Keep the Thing',
+    line: 'The word is thrown out while the building, the staff, and the schedule stay.',
+    witnesses: [
+      ['James 1:27', 'pure religion and undefiled before Elohim'],
+      ['James 1:26', 'if any man seem to be religious, and bridleth not his tongue'],
+      ['Acts 26:5', 'after the most straitest sect of our religion'],
+      ['John 14:15', 'if ye love me, keep my commandments'],
+      ['1 John 5:3', 'this is the love of Elohim, that we keep his commandments'],
+    ],
+    records: [],
+    finding: 'James used the word and then told us what a clean one looks like.',
+  },
+
+  'trinity.salvation.destination-made-the-question': {
+    title: 'The Destination Made the Question',
+    line: 'The question asked is where a man will be, which takes for granted that he will be somewhere.',
+    witnesses: [
+      ['Ecclesiastes 9:5', 'the dead know not any thing'],
+      ['Psalm 146:4', 'his thoughts perish that very day'],
+      ['Romans 6:23', 'the wages of sin is death'],
+      ['John 5:28', 'all that are in the graves shall hear his voice'],
+      ['1 Thessalonians 4:16', 'the dead in Messiah rise first'],
+    ],
+    records: [],
+    finding: 'The question assumes the one thing the serpent had to establish first.',
+  },
+
+  'trinity.salvation.fear-made-the-motive': {
+    title: 'Fear Made the Motive',
+    line: 'A man is moved by dread of a place rather than by anything he was shown to love.',
+    witnesses: [
+      ['1 John 4:18', 'there is no fear in love, perfect love casteth out fear'],
+      ['1 John 4:19', 'we love him, because he first loved us'],
+      ['Romans 2:4', 'the goodness of Elohim leadeth thee to repentance'],
+      ['John 6:44', 'no man can come, except the Father draw him'],
+      ['Jeremiah 31:3', 'with lovingkindness have I drawn thee'],
+      ['2 Timothy 1:7', 'Elohim hath not given us the spirit of fear'],
+    ],
+    records: [],
+    finding: 'The one thing named as leading a man to repentance is goodness, not dread.',
+  },
+
+  'torah.salvation.walk-made-optional': {
+    title: 'The Walk Made Optional',
+    line: 'Once entry is the whole thing, what follows it stops being required.',
+    witnesses: [
+      ['Matthew 24:13', 'he that shall endure unto the end'],
+      ['Hebrews 10:26', 'if we sin wilfully after we have received the knowledge'],
+      ['Hebrews 6:4', 'impossible for those who were once enlightened, if they fall away'],
+      ['2 Peter 2:20', 'the latter end is worse with them than the beginning'],
+      ['Ezekiel 33:13', 'if he trust to his own righteousness, and commit iniquity'],
+      ['Revelation 3:5', 'I will not blot out his name, which means a name can be blotted'],
+    ],
+    records: [
+      { source: 'Synod of Dort, Canons, fifth head of doctrine', date: '13 November 1618 to 9 May 1619', note: 'The perseverance of the saints defined and made a term of standing, with the contrary position condemned by name. The doctrine has a date, a place, and a list of signatures.' },
+    ],
+    finding: 'A name that will not be blotted out is a name that could be.',
+  },
+
+  'torah.salvation.failure-made-expected': {
+    title: 'Failure Made the Expected Outcome',
+    line: 'Falling short is treated as the settled condition, so nobody is asked to stop.',
+    witnesses: [
+      ['1 John 3:9', 'whosoever is born of Elohim doth not commit sin'],
+      ['1 John 5:18', 'whosoever is born of Elohim sinneth not'],
+      ['Romans 6:2', 'how shall we, that are dead to sin, live any longer therein?'],
+      ['Titus 2:12', 'that we should live soberly, righteously, and godly'],
+      ['1 Corinthians 10:13', 'will with the temptation also make a way to escape'],
+      ['Matthew 5:48', 'be ye therefore perfect', 'The word carries the sense of complete or fully grown rather than flawless. It is still a command, and it is still addressed to men.'],
+    ],
+    records: [
+      { source: 'Martin Luther, Lectures on Romans', date: '1515 to 1516', note: 'The formula that a man is at once righteous and a sinner is set out here. Whatever Luther meant by it, the phrase travels well and arrives in the modern pulpit as a reason not to expect change.' },
+      { source: 'Martin Luther, letter to Philip Melanchthon', date: '1 August 1521', note: 'The letter containing the line about sinning boldly.', dispute: 'This line is quoted against Luther constantly and the quotation is usually unfair. The same sentence goes on to say believe and rejoice in Messiah more boldly still, and the letter is arguing that a man should not be paralyzed by scruples. It is here because the misquotation itself became a doctrine, not because Luther taught what men say he taught.' },
+    ],
+    finding: 'John says twice that one born of Yahuah does not go on sinning.',
   },
 
 };
