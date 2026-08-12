@@ -57,26 +57,59 @@ const payload = {
 
 const counts = {};
 for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).length;
+
+// Static reuse of the interlocking chain-ring link drawn between rungs (V_TOP /
+// H_MID / V_BOT), for the short connectors that drop from each tablet to its tile.
+const RING_SVG = `<svg class="ot-joint-svg" viewBox="0 0 46 68" aria-hidden="true"><path class="ot-ring" d="M23 3 a7 7 0 0 0 -7 7 v13 a7 7 0 0 0 14 0 v-13 a7 7 0 0 0 -7 -7 z"/><path class="ot-ring" d="M13 27 a6.5 6.5 0 0 0 0 13 h20 a6.5 6.5 0 0 0 0 -13 z"/><path class="ot-ring" d="M23 37 a7 7 0 0 0 -7 7 v13 a7 7 0 0 0 14 0 v-13 a7 7 0 0 0 -7 -7 z"/><g class="ot-shine"><path d="M23 3 a7 7 0 0 0 -7 7 v13 a7 7 0 0 0 14 0 v-13 a7 7 0 0 0 -7 -7 z"/><path d="M13 27 a6.5 6.5 0 0 0 0 13 h20 a6.5 6.5 0 0 0 0 -13 z"/><path d="M23 37 a7 7 0 0 0 -7 7 v13 a7 7 0 0 0 14 0 v-13 a7 7 0 0 0 -7 -7 z"/></g></svg>`;
+
+// Tiles reordered: Trinity (first commandment) left, Torah (second) right.
+const hTrinity = hinges.find((h) => h.id === 'trinity');
+const hTorah = hinges.find((h) => h.id === 'torah');
 ---
 
-<Layout title="On These Two" description="Every lie hangs on one of two hinges. Walk the chain down to what people say out loud.">
+<Layout title="The Paper Trail" description="Every lie has a beginning. Two commandments hold up the whole law — love Yahuah, love your neighbour. Walk the chain down to what the lie sounds like today.">
   <section class="ot">
 
     <header class="ot-mast">
-      <p class="ot-over">On these two</p>
-      <h1>Every Lie Hangs on One of Two Hinges</h1>
+      <h1>The Paper Trail</h1>
       <div class="ot-diamond" aria-hidden="true"><span></span><i></i><span></span></div>
-      <p class="ot-lede">Pick a hinge. Walk the chain down. The last link is what people say out loud.</p>
+      <p class="ot-lede">Every lie has a beginning.</p>
+      <p class="ot-intro">Two commandments hold up everything. Love Yahuah. Love your neighbour. Yahushua said the whole law and the prophets hang on those two. Knock out either one and the rest comes down.</p>
     </header>
 
-    <div class="ot-hinges">
-      {hinges.map((h) => (
-        <button class={`ot-tile ot-tile-${h.id}`} data-hinge={h.id} type="button" aria-pressed="false">
-          <span class="ot-tile-name">{h.name}</span>
-          <span class="ot-tile-line">{h.line}</span>
-          <span class="ot-tile-count">{counts[h.id]} chains</span>
+    <div class="ot-crown">
+      <div class="ot-tablet ot-a-tabA">
+        <p class="ot-tablet-sub">The first and great commandment</p>
+        <p class="ot-tablet-cmd">Love Yahuah thy Elohim</p>
+      </div>
+      <div class="ot-tablet ot-a-tabB">
+        <p class="ot-tablet-sub">And the second is like unto it</p>
+        <p class="ot-tablet-cmd">Love thy neighbour as thyself</p>
+      </div>
+
+      <p class="ot-tablet-ref ot-a-ref">Matthew 22:40</p>
+
+      <div class="ot-stalk ot-a-stkA">
+        <div class="ot-links" aria-hidden="true">
+          <div class="ot-joint" set:html={RING_SVG}></div>
+        </div>
+        <button class="ot-tile ot-tile-trinity" data-hinge="trinity" type="button" aria-pressed="false">
+          <span class="ot-tile-name">{hTrinity.name}</span>
+          <span class="ot-tile-line">The lie &mdash; a second Elohim invented</span>
+          <span class="ot-tile-count">{counts['trinity']} chains</span>
         </button>
-      ))}
+      </div>
+      <div class="ot-stalk ot-a-stkB">
+        <div class="ot-links" aria-hidden="true">
+          <div class="ot-joint" set:html={RING_SVG}></div>
+          <div class="ot-joint" set:html={RING_SVG}></div>
+        </div>
+        <button class="ot-tile ot-tile-torah" data-hinge="torah" type="button" aria-pressed="false">
+          <span class="ot-tile-name">{hTorah.name}</span>
+          <span class="ot-tile-line">The lie &mdash; the law set aside</span>
+          <span class="ot-tile-count">{counts['torah']} chains</span>
+        </button>
+      </div>
     </div>
 
     <svg class="ot-band" viewBox="0 0 800 130" preserveAspectRatio="none" aria-hidden="true">
@@ -253,10 +286,10 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
           <button class="ot-rung-btn" data-i="${n}" type="button">
             <span class="ot-num">${n + 1}</span>
             <span class="ot-rung-copy">
-              <span class="ot-said-label">What they say today</span>
+              <span class="ot-said-label">What the lie sounds like today</span>
               <span class="ot-said-text">&ldquo;${esc(c.saying)}&rdquo;</span>
             </span>
-            <span class="ot-cue">The answer</span>
+            <span class="ot-cue">The verdict</span>
           </button>
         </li></ol>`;
 
@@ -309,7 +342,7 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
 
       let h = `<p class="ot-eyebrow">${esc(hinge.name)} &middot; &ldquo;${esc(current.saying)}&rdquo;</p>`;
       if (isSaid) {
-        h += `<p class="ot-kicker">What they say today</p>
+        h += `<p class="ot-kicker">What the lie sounds like today</p>
               <h2 id="ot-modal-title" class="ot-modal-title">&ldquo;${esc(current.saying)}&rdquo;</h2>`;
       } else {
         h += `<h2 id="ot-modal-title" class="ot-modal-title"><span class="ot-modal-num">${i + 1}</span>${esc(node.title)}</h2>
@@ -437,6 +470,57 @@ for (const h of hinges) counts[h.id] = chains.filter((c) => c.hinge === h.id).le
     .ot-diamond span:last-child { background: linear-gradient(90deg, var(--ot-ink), transparent); }
     .ot-diamond i { width: 9px; height: 9px; border: 1px solid var(--ot-ink); transform: rotate(45deg); }
     .ot-lede { font-family: Georgia, serif; font-style: italic; color: var(--ot-ink-2); margin: 0; }
+    .ot-intro { max-width: 640px; margin: 1.1rem auto 0; color: var(--ot-ink-2); line-height: 1.7; }
+
+    /* ---------- two commandments, each chain-linked down to its tile ----------
+       One grid. Each column is a pair: tablet -> chain link -> tile. Trinity
+       (first and great) on the left, Torah (the second) on the right. On a phone
+       the columns stack, so each tablet keeps its own tile directly beneath it. */
+
+    .ot-crown {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      column-gap: 18px;
+      align-items: start;
+      grid-template-areas:
+        "tabA tabB"
+        "ref  ref"
+        "stkA stkB";
+    }
+    .ot-a-tabA { grid-area: tabA; }
+    .ot-a-tabB { grid-area: tabB; }
+    .ot-a-ref  { grid-area: ref; }
+    .ot-a-stkA { grid-area: stkA; }
+    .ot-a-stkB { grid-area: stkB; }
+
+    .ot-tablet {
+      text-align: center; padding: 1.4rem 1.4rem 1.6rem;
+      border: 1px solid var(--ot-rule); border-radius: 46px 46px 10px 10px;
+      background: linear-gradient(180deg, var(--ot-panel-2), var(--ot-panel));
+    }
+    .ot-tablet-sub { font-family: Georgia, serif; font-style: italic; font-size: .95rem; color: var(--ot-mute); margin: 0 0 .5rem; }
+    .ot-tablet-cmd { font-family: Georgia, serif; font-variant: small-caps; font-size: 1.35rem; letter-spacing: .03em; color: var(--ot-cream); margin: 0; }
+    .ot-tablet-ref { text-align: center; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--ot-ink-2); margin: .7rem 0; }
+
+    /* Each stalk drops its chain then hangs its tile off it. The Torah stalk
+       carries a second link, so its tile hangs one full link lower than Trinity's
+       — the offset comes from the ring spacing, and the chain still reaches flush. */
+    .ot-stalk { display: flex; flex-direction: column; align-items: stretch; }
+    .ot-links { display: flex; flex-direction: column; align-items: center; }
+    .ot-links .ot-joint-svg { width: 26px; height: 40px; transform: none; }
+
+    @media (max-width: 640px) {
+      .ot-crown {
+        grid-template-columns: 1fr;
+        grid-template-areas:
+          "tabA"
+          "stkA"
+          "tabB"
+          "stkB"
+          "ref";
+      }
+      .ot-a-ref { margin-top: 1.1rem; }
+    }
 
     /* ---------- hinge tiles: quiet state is parchment with brown type ---------- */
 
