@@ -1,4 +1,5 @@
-// chains.data 0811 V5.js
+// chains.data 0811 V6.js
+// V6. Prophecy: 10 chains added (8 Prophecy, 2 Israel and the nations). 39 total.
 // V5. The assembly: 6 chains added (1 torah, 5 trinity). 29 total.
 // V4. Trinity 120s groups (Son, Spirit, Mechanism): 10 chains added. 23 total (13 existing + 10).
 // V3. Death and the grave: 6 chains added. 13 total (7 existing incl. the Sunday chain + 6).
@@ -750,6 +751,276 @@ export const chains = [
         ['Galatians 2:11', 'Paul withstood Peter to the face, publicly'],
       ],
       finding: 'The Bereans checked an apostle against the writings, daily, and the record calls them noble for it. A teaching that cannot survive the question was never resting on the writings to begin with.',
+    },
+  },
+
+
+  {
+    id: 'when-the-antichrist-is-revealed',
+    saying: 'When the Antichrist is revealed',
+    hinge: 'trinity',
+    category: 'Prophecy',
+    spokenBy: 'said on the radio as though the man were already booked',
+    aliases: ['antichrist', 'man of sin', 'revealed', 'futurist', 'ribera', 'jesuit', 'beast'],
+    links: [
+      'trinity.hinge',
+      'trinity.futurist.fulfilled-moved-forward',
+      'trinity.futurist.seventy-weeks-split',
+      'trinity.futurist.gap-inserted',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 John 2:18', 'even now are there many antichrists'],
+        ['1 John 4:3', 'already is it in the world'],
+        ['2 John 7', 'many deceivers are entered into the world'],
+        ['Daniel 9:26', 'Messiah cut off, but not for himself'],
+      ],
+      records: [
+        { source: 'Francisco Ribera, commentary on Revelation', date: 'published 1590', note: 'A Jesuit moves the Antichrist into a distant future, and the reading that pointed at Rome loses its target.' },
+      ],
+      finding: 'The only writer who uses the word says there were many already, in his own day, and describes them as men who went out from among the brethren. A figure kept permanently in the future can never be identified, which is convenient for whoever fits the description now.',
+    },
+  },
+
+  {
+    id: 'the-seven-year-tribulation',
+    saying: 'The seven-year tribulation',
+    hinge: 'trinity',
+    category: 'Prophecy',
+    spokenBy: 'drawn on a whiteboard with a line down the middle',
+    aliases: ['tribulation', 'seven year', 'seventieth week', 'daniel 9', 'gap', 'covenant', 'treaty'],
+    links: [
+      'trinity.hinge',
+      'trinity.futurist.fulfilled-moved-forward',
+      'trinity.futurist.seventy-weeks-split',
+      'trinity.futurist.gap-inserted',
+    ],
+    verdict: {
+      witnesses: [
+        ['Daniel 9:24', 'seventy weeks, one span, one purpose'],
+        ['Daniel 9:26', 'Messiah cut off, but not for himself'],
+        ['Daniel 9:27', 'he shall confirm the covenant with many'],
+        ['Matthew 26:28', 'my blood of the new covenant, shed for many'],
+      ],
+      records: [
+        { source: 'C. I. Scofield, The Scofield Reference Bible', date: '1909', note: 'The gap and the split week printed in the margins beside the text, and read alongside it for a century.' },
+      ],
+      finding: 'The seventieth week belongs to the Messiah. He confirmed a covenant with many and was cut off in the midst of it, which is what the passage says happens. The reader is handed a terror in exchange for the clearest prophecy of the Messiah in the writings.',
+    },
+  },
+
+  {
+    id: 'left-behind',
+    saying: 'Left behind, caught up before it gets bad',
+    hinge: 'trinity',
+    category: 'Prophecy',
+    spokenBy: 'said to children, and printed on bumper stickers',
+    aliases: ['rapture', 'left behind', 'caught up', 'taken', 'escape', 'pretrib', 'darby'],
+    links: [
+      'trinity.hinge',
+      'trinity.futurist.fulfilled-moved-forward',
+      'trinity.futurist.gap-inserted',
+      'trinity.futurist.judgment-read-as-rescue',
+      'trinity.futurist.escape-promised',
+    ],
+    verdict: {
+      witnesses: [
+        ['Matthew 24:39', 'the flood came and took them all away'],
+        ['John 17:15', 'not that thou shouldest take them out of the world'],
+        ['Matthew 24:29', 'immediately after the tribulation of those days'],
+        ['Revelation 7:14', 'came out of great tribulation, not around it'],
+      ],
+      records: [
+        { source: 'John Nelson Darby, lectures and writings from the 1830s onward', date: 'from about 1830', note: 'A removal before the trouble taught as doctrine. Sixteen centuries of writers before him do not teach it.' },
+      ],
+      finding: 'In the comparison Yahushua Himself supplies, the ones taken away were taken by the flood. The reader is promised the seat he would rather have and loses the promise he was actually given, which is to be kept through it.',
+    },
+  },
+
+  {
+    id: 'were-the-last-generation',
+    saying: 'We\u2019re the last generation',
+    hinge: 'trinity',
+    category: 'Prophecy',
+    spokenBy: 'said for seventy years running, with the meaning adjusted each time',
+    aliases: ['last generation', 'this generation', '1948', 'fig tree', 'israel', 'clock', 'countdown'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.one-people-made-two',
+      'trinity.zionist.blessing-tied-to-a-state',
+      'trinity.zionist.clock-in-the-news',
+      'trinity.futurist.date-watching',
+    ],
+    verdict: {
+      witnesses: [
+        ['Matthew 24:34', 'this generation, said to the men present'],
+        ['Matthew 23:36', 'all these things shall come upon this generation'],
+        ['Matthew 24:36', 'of that day and hour knoweth no man'],
+        ['Deuteronomy 18:22', 'if the thing follow not, he spake presumptuously'],
+      ],
+      records: [
+        { source: 'The First Zionist Congress, Basel', date: '29\u201331 August 1897', note: 'The political movement comes first, and the prophetic reading is built on top of it afterward.' },
+      ],
+      finding: 'The word this points at the near thing. He said it to the men standing in front of Him, and He had just said the same words one chapter earlier about that same generation. A count that gets a new meaning every time it runs out was never a count.',
+    },
+  },
+
+  {
+    id: 'the-third-temple',
+    saying: 'The third temple has to be rebuilt',
+    hinge: 'trinity',
+    category: 'Prophecy',
+    spokenBy: 'taught with architectural drawings and fundraising attached',
+    aliases: ['third temple', 'rebuild', 'temple mount', 'sacrifice', 'altar', 'red heifer', 'jerusalem'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.one-people-made-two',
+      'trinity.zionist.two-plans-two-futures',
+      'trinity.zionist.temple-required-again',
+      'trinity.futurist.temple-rebuilt-in-stone',
+    ],
+    verdict: {
+      witnesses: [
+        ['John 2:19', 'destroy this temple, and in three days I will raise it'],
+        ['John 2:21', 'but he spake of the temple of his body'],
+        ['1 Corinthians 3:16', 'ye are the temple of Elohim'],
+        ['Hebrews 10:18', 'no more offering for sin'],
+        ['Acts 7:48', 'dwelleth not in temples made with hands'],
+      ],
+      finding: 'He said He would raise it in three days and the writer stops to tell us He meant His body. The reader is the temple now, and a doctrine that puts it back in stone hands him a construction project in place of the thing he already is.',
+    },
+  },
+
+  {
+    id: 'the-mark-is-a-chip',
+    saying: 'The mark is a chip',
+    hinge: 'trinity',
+    category: 'Prophecy',
+    spokenBy: 'updated every few years to whatever technology is newest',
+    aliases: ['mark', 'chip', 'beast', 'barcode', 'microchip', 'forehead', 'hand', '666'],
+    links: [
+      'trinity.hinge',
+      'trinity.futurist.fulfilled-moved-forward',
+      'trinity.futurist.gap-inserted',
+      'trinity.futurist.mark-made-a-device',
+    ],
+    verdict: {
+      witnesses: [
+        ['Revelation 14:9', 'in his forehead, or in his hand'],
+        ['Deuteronomy 6:8', 'a sign upon thine hand, frontlets between thine eyes'],
+        ['Exodus 13:9', 'the same two places, hand and eyes'],
+        ['Revelation 14:12', 'here are they that keep the commandments'],
+      ],
+      finding: 'Hand and forehead is Torah language for what a man does and what he holds true. Four verses on, the ones who do not carry the mark are described as those who keep the commandments, which points the question at obedience rather than at hardware. A man watching for a device will not notice a mark he can already be wearing.',
+    },
+  },
+
+  {
+    id: 'blood-moon-prophecy',
+    saying: 'Blood moon prophecy',
+    hinge: 'trinity',
+    category: 'Prophecy',
+    spokenBy: 'sold in hardback, and quietly dropped afterward',
+    aliases: ['blood moon', 'tetrad', 'eclipse', 'moon', 'signs', 'hagee', 'biltz', 'feast days'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.blessing-tied-to-a-state',
+      'trinity.zionist.clock-in-the-news',
+      'trinity.futurist.date-watching',
+    ],
+    verdict: {
+      witnesses: [
+        ['Genesis 1:14', 'lights for signs and for appointed times'],
+        ['Matthew 24:36', 'of that day and hour knoweth no man'],
+        ['Deuteronomy 18:22', 'if the thing follow not, he spake presumptuously'],
+        ['Acts 1:7', 'not for you to know the times or the seasons'],
+      ],
+      records: [
+        { source: 'John Hagee, Four Blood Moons', date: '2013', note: 'The tetrad completed in September 2015 and the expected event did not come. A rare thing in prophecy teaching: a claim dated closely enough to fail in public, in under seven years.' },
+      ],
+      finding: 'The lights were given for signs and for the appointed times, which is a calendar and not a countdown. Torah gave one test for a man who speaks a thing in Yahuah\u2019s name, and this one was tested and failed on schedule.',
+    },
+  },
+
+  {
+    id: 'pray-for-the-peace-of-jerusalem',
+    saying: 'Pray for the peace of Jerusalem',
+    hinge: 'trinity',
+    category: 'Israel and the nations',
+    spokenBy: 'said from the pulpit with a flag on the platform',
+    aliases: ['jerusalem', 'peace', 'psalm 122', 'israel', 'zionism', 'bless', 'balfour'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.one-people-made-two',
+      'trinity.zionist.two-plans-two-futures',
+      'trinity.zionist.blessing-tied-to-a-state',
+      'trinity.zionist.clock-in-the-news',
+    ],
+    verdict: {
+      witnesses: [
+        ['Galatians 3:16', 'he saith not, and to seeds, but as of one'],
+        ['Romans 9:6', 'they are not all Israel, which are of Israel'],
+        ['Galatians 4:26', 'Jerusalem which is above is free'],
+        ['Hebrews 12:22', 'ye are come unto the heavenly Jerusalem'],
+      ],
+      records: [
+        { source: 'The Balfour Declaration', date: '2 November 1917', note: 'A government letter, read afterward as prophecy in pulpits that had not previously read it that way.' },
+      ],
+      finding: 'The prayer itself is in the Psalms and nothing is wrong with praying it. The move is what the words are made to mean, where a line about a city becomes a position on a modern government, and a promise Galatians says runs through one seed is handed to a parliament.',
+    },
+  },
+
+  {
+    id: 'the-millennial-reign',
+    saying: 'The millennial reign',
+    hinge: 'trinity',
+    category: 'Prophecy',
+    spokenBy: 'charted on a timeline with the church age drawn as a gap',
+    aliases: ['millennium', 'thousand years', 'reign', 'kingdom', 'earthly', 'throne', 'david'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.one-people-made-two',
+      'trinity.zionist.two-plans-two-futures',
+      'trinity.futurist.gap-inserted',
+      'trinity.futurist.kingdom-postponed',
+    ],
+    verdict: {
+      witnesses: [
+        ['Mark 1:15', 'the time is fulfilled, the kingdom is at hand'],
+        ['Luke 17:21', 'the kingdom of Elohim is within you'],
+        ['Colossians 1:13', 'hath translated us into the kingdom'],
+        ['Mark 9:1', 'some standing here shall see it come'],
+        ['John 18:36', 'my kingdom is not of this world'],
+      ],
+      finding: 'At hand meant it had drawn near, and He sent men out to announce it in those words. Somewhere the sentence turned around, and a kingdom announced as arrived became one still two thousand years off. The reader is told to wait for a throne he was already brought under.',
+    },
+  },
+
+  {
+    id: 'israel-gets-a-second-chance',
+    saying: 'Israel gets a second chance after the church age',
+    hinge: 'trinity',
+    category: 'Israel and the nations',
+    spokenBy: 'taught as the reason the whole timeline works',
+    aliases: ['second chance', 'church age', 'two peoples', 'dispensation', 'olive tree', 'grafted', 'remnant'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.one-people-made-two',
+      'trinity.zionist.two-plans-two-futures',
+      'trinity.futurist.gap-inserted',
+    ],
+    verdict: {
+      witnesses: [
+        ['Romans 11:17', 'grafted in among them, into the same tree'],
+        ['Romans 11:24', 'grafted into their own olive tree'],
+        ['Ephesians 2:14', 'made both one, broken down the middle wall'],
+        ['Ezekiel 37:19', 'the two sticks made one in his hand'],
+        ['Galatians 3:29', 'then are ye Abraham\u2019s seed'],
+      ],
+      records: [
+        { source: 'John Nelson Darby, lectures and writings from the 1830s onward', date: 'from about 1830', note: 'Two peoples with two futures taught as a system. Everything on the chart follows from the separation.' },
+      ],
+      finding: 'There is one tree in the passage and the branches are grafted into their own. Ezekiel was shown two sticks becoming one in a hand, not two staying apart on a schedule. A second chance for one people requires a second plan, and a second plan requires the wall Ephesians says came down.',
     },
   },
 

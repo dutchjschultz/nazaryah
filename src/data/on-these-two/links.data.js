@@ -1,4 +1,5 @@
-// links.data 0811 V7.js
+// links.data 0811 V8.js
+// V8. Prophecy: 14 links added (9 futurist, 5 zionist). 83 total.
 // V7. The assembly: 13 links added (4 torah, 9 trinity). 69 total.
 // V6. Trinity 120s groups (Son, Spirit, Mechanism): 15 links added. 56 total.
 // V5. Death and the grave: 10 links added. 41 total.
@@ -1031,6 +1032,223 @@ export const links = {
     ],
     records: [],
     finding: 'The Bereans did the very thing this saying is used to forbid, and were called noble for it.',
+  },
+
+
+  'trinity.futurist.fulfilled-moved-forward': {
+    title: 'A Fulfilled Text Moved Forward',
+    line: 'Prophecy already answered in the Messiah is pushed into a reader\u2019s own future.',
+    witnesses: [
+      ['Daniel 9:24', 'to make an end of sins, to bring everlasting righteousness'],
+      ['Daniel 9:26', 'Messiah cut off, but not for himself'],
+      ['Luke 24:44', 'all things must be fulfilled, which were written'],
+      ['Acts 3:18', 'those things which he had shewed, he hath so fulfilled'],
+      ['2 Corinthians 1:20', 'all the promises are yea, and amen'],
+    ],
+    records: [
+      { source: 'Francisco Ribera, commentary on Revelation', date: 'published 1590', note: 'A Spanish Jesuit places the Antichrist in a future three and a half years, well past his own century. The reading moves the subject off the page and into the distance.', dispute: 'Ribera did not build the seven-year system preached today. He moved the Antichrist forward, and later writers assembled the rest around that move. What this record establishes is the seed, not the finished doctrine.' },
+      { source: 'Luis de Alc\u00e1zar, Vestigatio arcani sensus in Apocalypsi', date: 'published 1614', note: 'A second Jesuit pushes the same material the other direction, into the distant past. Between the two, the reading that pointed at Rome is left with nowhere to land.' },
+    ],
+    finding: 'A promise already kept is worth more than a promise moved out of reach.',
+  },
+
+  'trinity.futurist.seventy-weeks-split': {
+    title: 'The Seventy Weeks Split Apart',
+    line: 'Sixty-nine weeks are read as history and the seventieth is carried off alone.',
+    witnesses: [
+      ['Daniel 9:24', 'seventy weeks are determined, one span'],
+      ['Daniel 9:25', 'seven weeks, and threescore and two weeks'],
+      ['Daniel 9:26', 'and after threescore and two weeks'],
+      ['Daniel 9:27', 'he shall confirm the covenant with many', 'Read by some as an antichrist making a treaty. The he of this verse is the Messiah of the verse before it, and nothing in the passage introduces a new subject.'],
+      ['Matthew 26:28', 'my blood of the new covenant, shed for many'],
+    ],
+    records: [],
+    finding: 'The he who confirms the covenant is the Messiah named two verses earlier.',
+  },
+
+  'trinity.futurist.gap-inserted': {
+    title: 'A Gap Inserted Into the Count',
+    line: 'Two thousand years are laid into a gap the text never names.',
+    witnesses: [
+      ['Daniel 9:24', 'seventy weeks, counted without a break'],
+      ['Daniel 9:26', 'the events follow immediately, and after'],
+      ['Galatians 4:4', 'when the fulness of the time was come'],
+      ['Mark 1:15', 'the time is fulfilled, and the kingdom is at hand'],
+    ],
+    records: [
+      { source: 'John Nelson Darby, lectures and writings from the 1830s onward', date: 'from about 1830', note: 'The gap between the sixty-ninth and seventieth week is taught as a system, along with the separation of the assembly from Israel. The framework spreads through the Brethren and then far beyond them.' },
+      { source: 'C. I. Scofield, The Scofield Reference Bible', date: '1909', note: 'The system is printed in the margins alongside the text itself. A generation of readers meets the notes and the Scripture on the same page and does not always separate them.' },
+    ],
+    finding: 'The count runs unbroken until a reader needs a place to stand.',
+  },
+
+  'trinity.futurist.judgment-read-as-rescue': {
+    title: 'A Judgment Read as a Rescue',
+    line: 'The one taken away is turned into the one who escapes.',
+    witnesses: [
+      ['Matthew 24:39', 'the flood came and took them all away'],
+      ['Matthew 24:40', 'the one shall be taken, and the other left', 'Read by some as the believer removed to safety. The comparison the verse itself supplies is Noah\u2019s day, where the ones taken away were taken by the flood.'],
+      ['Luke 17:37', 'the disciples ask where, and are told where the body is'],
+      ['John 17:15', 'not that thou shouldest take them out of the world'],
+      ['Matthew 13:30', 'gather the tares first, and bind them'],
+    ],
+    records: [],
+    finding: 'In the comparison the verse supplies, being taken was the bad outcome.',
+  },
+
+  'trinity.futurist.escape-promised': {
+    title: 'An Escape Promised Before the Trouble',
+    line: 'A removal is promised ahead of the trouble, and endurance stops being required.',
+    witnesses: [
+      ['John 16:33', 'in the world ye shall have tribulation'],
+      ['Matthew 24:13', 'he that shall endure unto the end'],
+      ['Matthew 24:29', 'immediately after the tribulation of those days'],
+      ['Revelation 7:14', 'these came out of great tribulation, not around it'],
+      ['Acts 14:22', 'through much tribulation enter into the kingdom'],
+    ],
+    records: [
+      { source: 'John Nelson Darby, lectures and writings from the 1830s onward', date: 'from about 1830', note: 'A removal of the assembly before the trouble taught as doctrine. Sixteen centuries of writers before him do not teach it, which is a long silence for a doctrine of comfort.' },
+    ],
+    finding: 'Every gathering in the text comes after the trouble, not before it.',
+  },
+
+  'trinity.futurist.temple-rebuilt-in-stone': {
+    title: 'The Temple Rebuilt in Stone',
+    line: 'A dwelling place moved into a body is put back into masonry.',
+    witnesses: [
+      ['John 2:19', 'destroy this temple, and in three days I will raise it'],
+      ['John 2:21', 'but he spake of the temple of his body'],
+      ['1 Corinthians 3:16', 'ye are the temple of Elohim'],
+      ['1 Corinthians 6:19', 'your body is the temple of the Set-apart Spirit'],
+      ['Acts 7:48', 'dwelleth not in temples made with hands'],
+      ['Hebrews 10:18', 'where remission is, there is no more offering for sin'],
+    ],
+    records: [],
+    finding: 'He said He would raise it in three days, and the writer tells us what He meant.',
+  },
+
+  'trinity.futurist.mark-made-a-device': {
+    title: 'The Mark Made a Device',
+    line: 'A question of whose service a man is in is turned into a question of hardware.',
+    witnesses: [
+      ['Revelation 14:9', 'in his forehead, or in his hand'],
+      ['Deuteronomy 6:8', 'a sign upon thine hand, frontlets between thine eyes'],
+      ['Exodus 13:9', 'a sign upon thine hand, a memorial between thine eyes'],
+      ['Deuteronomy 11:18', 'the same two places, hand and eyes'],
+      ['Revelation 14:12', 'here are they that keep the commandments'],
+    ],
+    records: [],
+    finding: 'Hand and forehead is the language Torah already used for what a man does and what he holds true.',
+  },
+
+  'trinity.futurist.kingdom-postponed': {
+    title: 'The Kingdom Postponed Two Thousand Years',
+    line: 'A kingdom announced as arrived is turned into one still coming.',
+    witnesses: [
+      ['Mark 1:15', 'the time is fulfilled, the kingdom is at hand'],
+      ['Matthew 12:28', 'then the kingdom is come unto you'],
+      ['Luke 17:21', 'the kingdom of Elohim is within you'],
+      ['Mark 9:1', 'some standing here shall not taste of death till they see it', 'Read by some as the transfiguration, or as a preview. Whatever the referent, the sentence puts the seeing inside the lifetime of the men He was speaking to.'],
+      ['Colossians 1:13', 'hath translated us into the kingdom of his dear Son'],
+    ],
+    records: [],
+    finding: 'At hand meant it had drawn near, and He sent men out to say so.',
+  },
+
+  'trinity.futurist.date-watching': {
+    title: 'The Calendar Handed to the Newspaper',
+    line: 'Signs are read off the headlines, and a date is always close.',
+    witnesses: [
+      ['Matthew 24:36', 'of that day and hour knoweth no man'],
+      ['Acts 1:7', 'it is not for you to know the times or the seasons'],
+      ['Mark 13:33', 'ye know not when the time is'],
+      ['Deuteronomy 18:22', 'if the thing follow not, the prophet hath spoken presumptuously'],
+      ['2 Peter 3:4', 'where is the promise of his coming?'],
+    ],
+    records: [
+      { source: 'Mark Biltz, blood moon tetrad teaching', date: 'from 2008', note: 'Four lunar eclipses falling on feast days are read as a prophetic signal, and the teaching spreads quickly.' },
+      { source: 'John Hagee, Four Blood Moons', date: '2013', note: 'The teaching reaches a mass audience in print. The tetrad completed in September 2015 and the expected event did not come, which is a rare thing in prophecy teaching: a claim dated closely enough to fail in public.' },
+    ],
+    finding: 'Torah gave one test for a prophet, and it is whether the thing came to pass.',
+  },
+
+  'trinity.zionist.one-people-made-two': {
+    title: 'One People Made Two',
+    line: 'One tree, one covenant, and one body are read as two peoples on two tracks.',
+    witnesses: [
+      ['Romans 11:17', 'grafted in among them, into the same tree'],
+      ['Romans 11:24', 'grafted into their own olive tree'],
+      ['Ephesians 2:14', 'made both one, broken down the middle wall'],
+      ['Ephesians 2:19', 'no more strangers, but fellowcitizens'],
+      ['Galatians 3:29', 'if ye be Messiah\u2019s, then are ye Abraham\u2019s seed'],
+      ['Ezekiel 37:19', 'the two sticks made one in his hand'],
+    ],
+    records: [
+      { source: 'John Nelson Darby, lectures and writings from the 1830s onward', date: 'from about 1830', note: 'Israel and the assembly taught as two distinct peoples with two distinct futures. Everything else in the system follows from the separation.' },
+      { source: 'C. I. Scofield, The Scofield Reference Bible', date: '1909', note: 'The two-peoples framework printed in the margins beside the text, and carried into pulpits and schools for a century.' },
+    ],
+    finding: 'The wall was broken down, and one tree cannot be grafted into two futures.',
+  },
+
+  'trinity.zionist.two-plans-two-futures': {
+    title: 'Two Plans and Two Futures Built',
+    line: 'Two peoples require two programs, so one is set aside while the other runs.',
+    witnesses: [
+      ['Romans 11:1', 'hath Yahuah cast away his people? Elohim forbid'],
+      ['Romans 11:5', 'even so at this present time there is a remnant'],
+      ['Romans 11:26', 'and so all Israel shall be saved'],
+      ['1 Corinthians 12:13', 'by one Spirit are we all baptized into one body'],
+      ['Colossians 3:11', 'neither Greek nor Jew, but Messiah is all'],
+    ],
+    records: [],
+    finding: 'Paul answers the two-peoples question directly, and the answer is a remnant in one body.',
+  },
+
+  'trinity.zionist.blessing-tied-to-a-state': {
+    title: 'The Blessing Tied to a State',
+    line: 'A promise made to a man is applied to a government.',
+    witnesses: [
+      ['Genesis 12:3', 'I will bless them that bless thee', 'Read as a foreign policy. The thee of the verse is Abram, and Galatians identifies the seed the promise runs through as one, the Messiah.'],
+      ['Galatians 3:16', 'he saith not, and to seeds, but as of one'],
+      ['Romans 9:6', 'they are not all Israel, which are of Israel'],
+      ['Romans 2:28', 'he is not a Jew, which is one outwardly'],
+      ['Matthew 3:9', 'say not, we have Abraham to our father'],
+    ],
+    records: [
+      { source: 'The Balfour Declaration', date: '2 November 1917', note: 'A British government letter supporting a national home in Palestine. From here forward, a modern state and an ancient promise are read together in pulpits.' },
+      { source: 'The First Zionist Congress, Basel', date: '29\u201331 August 1897', note: 'A political movement for a national homeland is organized, decades before the religious framework is built around it.' },
+    ],
+    finding: 'The promise runs through a seed, and Galatians names the seed as one.',
+  },
+
+  'trinity.zionist.clock-in-the-news': {
+    title: 'A Prophetic Clock Set in the News',
+    line: 'A generation is counted from a headline, and the count is reset when it fails.',
+    witnesses: [
+      ['Matthew 24:34', 'this generation shall not pass', 'Read as the generation that sees a modern founding. He said this generation, to the men in front of Him, and the word this points at the near thing, not the far one.'],
+      ['Matthew 23:36', 'all these things shall come upon this generation'],
+      ['Matthew 24:36', 'of that day and hour knoweth no man'],
+      ['Acts 1:7', 'not for you to know the times or the seasons'],
+      ['Deuteronomy 18:22', 'if the thing follow not, he spake presumptuously'],
+    ],
+    records: [
+      { source: 'The First Zionist Congress, Basel', date: '29\u201331 August 1897', note: 'The political movement predates the prophetic reading built on top of it by half a century.' },
+    ],
+    finding: 'A date that keeps moving was never a date, and the generation He named was standing in front of Him.',
+  },
+
+  'trinity.zionist.temple-required-again': {
+    title: 'A Temple Required Again',
+    line: 'The two-peoples plan needs a building and an altar, so both are put back on the schedule.',
+    witnesses: [
+      ['Hebrews 10:12', 'one sacrifice for sins for ever'],
+      ['Hebrews 10:14', 'by one offering he hath perfected for ever'],
+      ['Hebrews 10:18', 'no more offering for sin'],
+      ['Hebrews 9:26', 'once in the end of the world hath he appeared'],
+      ['John 4:21', 'neither in this mountain, nor yet at Jerusalem'],
+    ],
+    records: [],
+    finding: 'A restarted altar says out loud that one offering was not enough.',
   },
 
 };
