@@ -1,4 +1,5 @@
-// chains.data 0811 V13.js
+// chains.data 0812 V14.js
+// V14. Son, Sabbath, Feasts, Food: 12 chains added (3 trinity, 9 torah). 101 total.
 // V13. Borrowed stories: new category added + 4 chains. 89 total.
 // V12. Images and idols + Tithes: 4 chains added (3 Images and idols, 1 Tithes and money). 85 total.
 // V11. The Trinity and The Father: 9 chains added (6 The Trinity, 3 The Father). 81 total.
@@ -2374,6 +2375,336 @@ export const chains = [
         ['Proverbs 29:5', 'a man that flattereth spreadeth a net for his feet'],
       ],
       finding: 'Yahuah picked David and told the prophet which son it was, and Samuel had already guessed wrong twice by then. The anointing a believer carries is described as already his and abiding in him, which leaves nothing for a man in a prayer line to hand over. What is actually being handed over is a compliment, and Proverbs has a word for a compliment that binds a man to the one giving it.',
+    },
+  },
+
+
+  // ── THE SON ───────────────────────────────────────────────────────────────
+  {
+    id: 'hes-the-alpha-and-omega',
+    saying: 'He is the Alpha and Omega, so He\u2019s God',
+    hinge: 'trinity',
+    category: 'The Son',
+    spokenBy: 'said with Revelation open near the front of the book',
+    aliases: ['alpha and omega', 'first and last', 'beginning and end', 'revelation 1', 'almighty', 'title'],
+    links: [
+      'trinity.hinge',
+      'trinity.son.shared-title-read-as-identity',
+      'trinity.son.given-read-as-owned',
+      'trinity.lord.title-handed-to-son',
+      'trinity.lord.father-edged-out',
+    ],
+    verdict: {
+      witnesses: [
+        ['Revelation 1:8', 'saith the Master, the Almighty'],
+        ['Revelation 21:6', 'I am Alpha and Omega'],
+        ['Revelation 21:7', 'I will be his Elohim, and he shall be my son'],
+        ['Revelation 3:14', 'the beginning of the creation of Elohim'],
+        ['Isaiah 44:6', 'I am the first, and I am the last, said by Yahuah'],
+      ],
+      records: [
+        { source: 'The words at Revelation 1:11 in the Received Text', date: 'printed editions from 1516', note: 'The verse most often used to attach the title to the Son early in the book carries words absent from the oldest Greek manuscripts.' },
+      ],
+      finding: 'The clearest use of the title in the whole book is at twenty-one six, and the very next sentence out of the same mouth is a promise to be somebody\u2019s Elohim. That is not how one speaks of oneself. The title is real, it is used of both, and a title used of two is evidence of something shared, not of one being.',
+    },
+  },
+
+  {
+    id: 'he-was-with-god-in-the-beginning',
+    saying: 'He was with God in the beginning',
+    hinge: 'trinity',
+    category: 'The Son',
+    spokenBy: 'said as the settled answer, from the first page of John',
+    aliases: ['the word', 'logos', 'john 1', 'in the beginning', 'pre-existed', 'eternal son', 'always was'],
+    links: [
+      'trinity.hinge',
+      'trinity.son.with-read-as-was',
+      'trinity.son.word-turned-into-a-person-early',
+      'trinity.trinity.word-supplied-from-outside',
+      'trinity.son.one-read-as-one-being',
+    ],
+    verdict: {
+      witnesses: [
+        ['John 1:1', 'the Word was WITH Elohim'],
+        ['John 1:2', 'the same was in the beginning WITH Elohim'],
+        ['John 1:14', 'and the Word was MADE flesh'],
+        ['Genesis 1:3', 'and Elohim SAID, let there be light'],
+        ['Psalm 33:6', 'by the word of Yahuah were the heavens made'],
+        ['Hebrews 1:2', 'hath in these last days spoken unto us by his Son'],
+      ],
+      records: [
+        { source: 'Justin Martyr, First Apology and Dialogue with Trypho', date: 'about AD 155\u2013160', note: 'The Greek logos of the philosophers brought into Christian teaching and applied to the Son, with the philosophers named as he goes.' },
+      ],
+      finding: 'The saying is quoting the verse and the verse says WITH, twice in two lines. A thing that is with another thing is not that other thing. Yahuah spoke and it was done, which is what a word is, and John says that word was MADE flesh, which is something that happens at a moment rather than something that always was.',
+    },
+  },
+
+  {
+    id: 'jesus-is-the-light',
+    saying: 'Jesus is the Light',
+    hinge: 'trinity',
+    category: 'The Son',
+    spokenBy: 'sung, printed, and said without anyone stopping on it',
+    aliases: ['the light', 'light of the world', 'john 8:12', 'lamp', 'shine', 'darkness'],
+    links: [
+      'trinity.hinge',
+      'trinity.son.lamp-called-the-source',
+      'trinity.son.given-read-as-owned',
+      'trinity.name.father-name-covered',
+      'trinity.salvation.savior-title-moved',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 John 1:5', 'Elohim IS light, and in him is no darkness at all'],
+        ['John 1:8', 'he was not that Light, but sent to bear witness of that Light'],
+        ['Revelation 21:23', 'the glory of Elohim did lighten it, and the Lamb is the LAMP'],
+        ['Matthew 5:14', 'YE are the light of the world, said to fishermen'],
+        ['James 1:17', 'the Father of lights'],
+        ['Psalm 27:1', 'Yahuah is my light and my salvation'],
+      ],
+      finding: 'John says flatly that Elohim IS light and that the Son was sent to bear witness of that Light. In the city at the end, the glory of Elohim is what lightens it and the Lamb is called the lamp, which is a thing that carries a flame rather than a thing that is one. And He said the same six words to a crowd of fishermen four books earlier without anyone concluding a thing about them.',
+    },
+  },
+
+  // ── THE SABBATH ───────────────────────────────────────────────────────────
+  {
+    id: 'jesus-is-our-rest',
+    saying: 'Jesus is our rest, so we don\u2019t need a day',
+    hinge: 'torah',
+    category: 'The Sabbath',
+    spokenBy: 'said as the gentle version, with Hebrews four open',
+    aliases: ['our rest', 'hebrews 4', 'sabbath rest', 'rest in him', 'entered his rest', 'ceased from works'],
+    links: [
+      'torah.hinge',
+      'torah.sabbath.set-apart-flattened',
+      'torah.sabbath.rest-moved-inward',
+      'torah.sabbath.rest-read-as-the-replacement',
+      'torah.sabbath.nothing-left-to-keep',
+    ],
+    verdict: {
+      witnesses: [
+        ['Hebrews 4:9', 'there remaineth a sabbath keeping to the people of Elohim'],
+        ['Hebrews 4:4', 'Elohim did rest the seventh day from all his works'],
+        ['Hebrews 4:11', 'let us labour therefore to enter into that rest'],
+        ['Exodus 20:11', 'wherefore Yahuah blessed the sabbath day'],
+        ['Matthew 11:28', 'I will give you rest, said without cancelling anything'],
+      ],
+      finding: 'The one chapter used to retire the day contains a word found nowhere else in the writings, and the word means a sabbath-keeping. The writer had every ordinary word for rest available and reached past all of them for that one. Two verses later he tells his readers to labour to enter it, which is a strange instruction about something already finished.',
+    },
+  },
+
+  {
+    id: 'the-sabbath-was-made-for-the-jews',
+    saying: 'The Sabbath was made for the Jews',
+    hinge: 'torah',
+    category: 'The Sabbath',
+    spokenBy: 'said as a courtesy, meaning it is not my concern',
+    aliases: ['made for the jews', 'jewish sabbath', 'for israel', 'not for us', 'gentile', 'mark 2:27'],
+    links: [
+      'torah.hinge',
+      'torah.sabbath.made-for-man-narrowed',
+      'torah.law.two-standards-built',
+      'torah.sabbath.sign-erased',
+    ],
+    verdict: {
+      witnesses: [
+        ['Mark 2:27', 'the sabbath was made for MAN'],
+        ['Genesis 2:3', 'set apart at the founding'],
+        ['Isaiah 56:6', 'the sons of the stranger that keep the sabbath'],
+        ['Isaiah 66:23', 'from one sabbath to another shall all flesh come'],
+        ['Exodus 12:49', 'one law to the homeborn and to the stranger'],
+      ],
+      records: [
+        { source: 'Council of Elvira, canon 26', date: 'about AD 306', note: 'Sabbath practice corrected by canon, which happens only where a practice exists to correct.' },
+      ],
+      finding: 'He said it was made for man, using the word for mankind, and He said it in answer to men arguing about it. It was set apart on the seventh day of the world, twenty generations before Abraham and long before anyone was called a Jew. Isaiah names the stranger keeping it and says all flesh will come from one Sabbath to another.',
+    },
+  },
+
+  // ── THE FEASTS ────────────────────────────────────────────────────────────
+  {
+    id: 'those-were-jewish-feasts',
+    saying: 'Those were Jewish feasts',
+    hinge: 'torah',
+    category: 'The Feasts',
+    spokenBy: 'said with a shrug, meaning somebody else\u2019s calendar',
+    aliases: ['jewish feasts', 'their feasts', 'old testament feasts', 'israel', 'not for us', 'leviticus 23'],
+    links: [
+      'torah.hinge',
+      'torah.feasts.ownership-reassigned',
+      'torah.law.two-standards-built',
+      'torah.assembly.appointed-times-dropped',
+    ],
+    verdict: {
+      witnesses: [
+        ['Leviticus 23:2', 'the feasts of YAHUAH, MY feasts'],
+        ['Leviticus 23:4', 'the feasts of Yahuah, said a second time'],
+        ['Exodus 12:49', 'one law to the homeborn and to the stranger'],
+        ['Zechariah 14:16', 'the nations shall go up to keep the feast'],
+        ['Isaiah 56:6', 'the sons of the stranger, joined to Yahuah'],
+      ],
+      finding: 'He calls them my feasts twice in one chapter and never once calls them Israel\u2019s. Zechariah has the nations going up to keep Sukkot with a penalty named for the ones who stay home, which is not how a retired calendar behaves.',
+    },
+  },
+
+  {
+    id: 'the-feasts-were-shadows',
+    saying: 'The feasts were shadows, so they\u2019re done',
+    hinge: 'torah',
+    category: 'The Feasts',
+    spokenBy: 'said with Colossians two open to verse seventeen',
+    aliases: ['shadow', 'colossians 2:17', 'types and shadows', 'fulfilled', 'substance', 'body of christ'],
+    links: [
+      'torah.hinge',
+      'torah.feasts.shadow-read-as-vanished',
+      'torah.law.fulfil-read-as-finish',
+      'torah.law.commands-allegorized',
+      'torah.calendar.days-declared-equal',
+    ],
+    verdict: {
+      witnesses: [
+        ['Colossians 2:16', 'let no MAN therefore judge you'],
+        ['Colossians 2:17', 'which ARE a shadow of things to come'],
+        ['Colossians 2:8', 'the tradition of men, the subject of the chapter'],
+        ['1 Corinthians 5:8', 'let us keep the feast, present tense'],
+        ['Zechariah 14:16', 'the nations keeping Sukkot, still ahead'],
+      ],
+      finding: 'A shadow is proof that something real is standing there casting it, and Paul writes it in the present tense — they ARE a shadow, not they were. He is telling that congregation not to let men judge them for keeping the days, which is the opposite of the use the verse is put to.',
+    },
+  },
+
+  {
+    id: 'passover-is-now-communion',
+    saying: 'Passover is now communion',
+    hinge: 'torah',
+    category: 'The Feasts',
+    spokenBy: 'said at the table on the first Sunday of the month',
+    aliases: ['passover', 'communion', 'lord\u2019s supper', 'eucharist', 'bread and cup', 'pesach', 'memorial'],
+    links: [
+      'torah.hinge',
+      'torah.feasts.ownership-reassigned',
+      'torah.feasts.rehearsal-called-finished',
+      'torah.feasts.appointed-day-replaced-by-a-rite',
+      'torah.assembly.appointed-times-dropped',
+    ],
+    verdict: {
+      witnesses: [
+        ['Leviticus 23:5', 'the fourteenth day of the first month'],
+        ['Exodus 12:14', 'a feast by an ordinance for ever'],
+        ['Numbers 9:2', 'keep the passover at his APPOINTED season'],
+        ['Luke 22:15', 'with desire I have desired to eat this passover with you'],
+        ['1 Corinthians 5:8', 'let us keep the feast, not with old leaven'],
+      ],
+      records: [
+        { source: 'First Council of Nicaea, the ruling on the Pascha', date: 'AD 325', note: 'The observance cut loose from the fourteenth of the first month and fixed to a Sunday.' },
+        { source: 'Fourth Lateran Council, canon 21', date: '1215', note: 'Yearly confession and communion made compulsory, and the bread defined as changed in substance.' },
+      ],
+      finding: 'The meal He kept had a date on it, and the date was called an ordinance for ever. What He handed His men that night was the bread and the cup of that meal, on that night, at that appointment. A yearly memorial with a fixed date became a rite the assembly performs on a schedule of its own choosing, and a council picked the new day.',
+    },
+  },
+
+  // ── CLEAN AND UNCLEAN ─────────────────────────────────────────────────────
+  {
+    id: 'jesus-declared-all-foods-clean',
+    saying: 'Jesus declared all foods clean',
+    hinge: 'torah',
+    category: 'Clean and unclean',
+    spokenBy: 'said at the table, with a modern translation in mind',
+    aliases: ['declared all foods clean', 'mark 7:19', 'purging all meats', 'clean', 'unclean', 'pork', 'diet'],
+    links: [
+      'torah.hinge',
+      'torah.food.handwashing-swapped-for-food-law',
+      'torah.food.word-food-redefined',
+      'torah.law.commands-allegorized',
+      'torah.law.sin-left-undefined',
+    ],
+    verdict: {
+      witnesses: [
+        ['Mark 7:2', 'they saw his disciples eat with unwashen hands'],
+        ['Mark 7:5', 'why walk not thy disciples according to the tradition of the elders?'],
+        ['Mark 7:8', 'laying aside the commandment, ye hold the tradition of men'],
+        ['Matthew 15:20', 'to eat with unwashen hands defileth not a man'],
+        ['Acts 10:14', 'not so, Master, said years after the resurrection'],
+      ],
+      finding: 'The argument in that chapter was about washing hands and the text says so three times before the clause in question. Matthew closes the same account by naming the subject outright. And Peter, who was standing there, still had never eaten anything common years later, which is not what a man says who heard the rule cancelled in front of him.',
+    },
+  },
+
+  {
+    id: 'its-what-comes-out-that-defiles',
+    saying: 'It\u2019s what comes out of the mouth that defiles',
+    hinge: 'torah',
+    category: 'Clean and unclean',
+    spokenBy: 'quoted correctly, and applied to the wrong argument',
+    aliases: ['comes out of the mouth', 'matthew 15', 'defiles', 'heart', 'not what goes in', 'washing'],
+    links: [
+      'torah.hinge',
+      'torah.food.handwashing-swapped-for-food-law',
+      'torah.law.commands-allegorized',
+      'torah.law.sin-left-undefined',
+    ],
+    verdict: {
+      witnesses: [
+        ['Matthew 15:2', 'they wash not their hands when they eat bread'],
+        ['Matthew 15:11', 'not that which goeth into the mouth defileth a man'],
+        ['Matthew 15:20', 'to eat with unwashen hands defileth not a man'],
+        ['Mark 7:8', 'ye hold the tradition of men'],
+        ['Leviticus 11:47', 'to make a difference between the unclean and the clean'],
+      ],
+      finding: 'He said it and it is true, and He finished the paragraph by naming what He was talking about. These are the things which defile a man, but to eat with unwashen hands defileth not a man. The saying is quoted accurately and then pointed at a law nobody in the room had raised.',
+    },
+  },
+
+  {
+    id: 'every-creature-of-god-is-good',
+    saying: 'Every creature of God is good, nothing to be refused',
+    hinge: 'torah',
+    category: 'Clean and unclean',
+    spokenBy: 'said over the plate, as a blessing and an argument at once',
+    aliases: ['every creature', '1 timothy 4', 'nothing to be refused', 'received with thanksgiving', 'sanctified', 'prayer'],
+    links: [
+      'torah.hinge',
+      'torah.food.asceticism-answered-read-as-permission',
+      'torah.food.word-food-redefined',
+      'torah.law.commands-allegorized',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 Timothy 4:3', 'forbidding to marry, and commanding to abstain from meats'],
+        ['1 Timothy 4:4', 'every creature of Elohim is good'],
+        ['1 Timothy 4:5', 'for it is sanctified by the WORD of Elohim and prayer'],
+        ['Leviticus 11:2', 'these are the beasts which ye shall eat'],
+        ['1 Timothy 4:1', 'doctrines of devils, the thing being answered'],
+      ],
+      finding: 'The men Paul is answering were forbidding marriage and commanding men to abstain, which is the opposite error from the one the verse is used against. And the next line says the food is set apart by the word of Elohim, which is exactly where the list of what counts as food is written down.',
+    },
+  },
+
+  {
+    id: 'that-was-a-health-law',
+    saying: 'That was a health law for a desert people',
+    hinge: 'torah',
+    category: 'Clean and unclean',
+    spokenBy: 'said kindly, as though it settled the matter with science',
+    aliases: ['health law', 'refrigeration', 'desert', 'trichinosis', 'hygiene', 'cultural', 'ancient'],
+    links: [
+      'torah.hinge',
+      'torah.food.reason-supplied-then-dismissed',
+      'torah.law.commands-allegorized',
+      'torah.law.keeping-made-punishable',
+    ],
+    verdict: {
+      witnesses: [
+        ['Leviticus 11:44', 'ye shall be holy, for I am holy'],
+        ['Leviticus 11:45', 'be ye holy, for I am holy, said twice'],
+        ['Leviticus 20:25', 'ye shall put difference between clean and unclean'],
+        ['Leviticus 20:26', 'and ye shall be holy unto me'],
+        ['Deuteronomy 14:2', 'thou art an holy people unto Yahuah thy Elohim'],
+      ],
+      records: [
+        { source: 'Council of Florence, the bull Cantate Domino', date: '4 February 1442', note: 'The legal prescriptions of the Hebrew writings declared ended and forbidden to those who would keep them, with a penalty attached.' },
+      ],
+      finding: 'He gave the reason Himself, four times, in two books, and the word every time is holy. Not healthy. A reason supplied by men is then used to retire a law, and the law it retires had a stated purpose that had nothing to do with the one being argued.',
     },
   },
 

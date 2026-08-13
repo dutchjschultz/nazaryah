@@ -1,4 +1,5 @@
-// links.data 0811 V15.js
+// links.data 0812 V16.js
+// V16. Son, Sabbath, Feasts, Food: 15 links added (5 trinity.son, 2 torah.sabbath, 4 torah.feasts, 4 torah.food). 187 total.
 // V15. Borrowed stories: 10 links added (trinity.borrowed.*). 172 total.
 // V14. Images and idols + Tithes: 9 links added (7 torah.images, 2 trinity.money). 162 total.
 // V13. The Trinity and The Father: 13 links added (8 trinity.trinity, 5 trinity.father). 153 total.
@@ -2634,6 +2635,249 @@ export const links = {
     ],
     records: [],
     finding: 'Proverbs calls flattery a net spread for the feet, and names it as that.',
+  },
+
+
+  'trinity.son.shared-title-read-as-identity': {
+    title: 'A Shared Title Read as an Identity',
+    line: 'A title held by the Father and also given to the Son is read as proof they are one being.',
+    witnesses: [
+      ['Revelation 1:8', 'saith the Master, the Almighty, the Father speaking'],
+      ['Revelation 21:6', 'I am Alpha and Omega, and the next verse says I will be his Elohim'],
+      ['Revelation 21:7', 'I will be his Elohim, and he shall be my son'],
+      ['Isaiah 44:6', 'I am the first, and I am the last, said by Yahuah'],
+      ['Revelation 1:17', 'the first and the last, tied to dying and living again'],
+      ['Revelation 22:13', 'the speaker here is argued in both directions', 'This verse is claimed by both sides and cannot be settled from the sentence alone. The chain does not rest on it, and a reader should know it is contested rather than be told otherwise.'],
+      ['Revelation 3:14', 'the beginning of the creation of Elohim'],
+    ],
+    records: [
+      { source: 'The words at Revelation 1:11 in the Received Text', date: 'printed editions from 1516 onward', note: 'The King James at Revelation 1:11 reads I am Alpha and Omega, the first and the last. Those words are absent from the oldest Greek manuscripts of Revelation and do not appear in modern critical editions. The strongest verse for attaching the title to the Son early in the book is the one verse with a textual problem.', dispute: 'Defenders of the Received Text argue the reading is genuine and preserved. The manuscript evidence is what it is and can be checked by any reader with a critical apparatus. The chain notes the fact and does not settle the argument.' },
+    ],
+    finding: 'The clearest use of the title in the book is followed by a promise to be somebody\u2019s Elohim.',
+  },
+
+  'trinity.son.with-read-as-was': {
+    title: 'With Read as Was',
+    line: 'A sentence saying one was WITH the other is used to prove they are the same one.',
+    witnesses: [
+      ['John 1:1', 'the Word was WITH Elohim'],
+      ['John 1:2', 'the same was in the beginning WITH Elohim, said twice'],
+      ['John 1:18', 'no man hath seen Elohim at any time'],
+      ['1 John 1:2', 'that eternal life, which was WITH the Father'],
+      ['John 17:5', 'the glory which I had with thee, given and had, not held'],
+      ['Proverbs 8:22', 'Yahuah possessed me in the beginning of his way'],
+    ],
+    records: [],
+    finding: 'A thing that is with another thing is not that other thing, and John says with twice.',
+  },
+
+  'trinity.son.word-turned-into-a-person-early': {
+    title: 'The Spoken Word Turned Into a Second Being',
+    line: 'What Yahuah speaks is turned into somebody standing beside Him.',
+    witnesses: [
+      ['Genesis 1:3', 'and Elohim SAID, let there be light'],
+      ['Psalm 33:6', 'by the word of Yahuah were the heavens made'],
+      ['Psalm 33:9', 'he spake, and it was done'],
+      ['Isaiah 55:11', 'so shall my word be that goeth forth out of my mouth'],
+      ['John 1:14', 'and the Word was MADE flesh, made rather than always was'],
+      ['Hebrews 1:1', 'Elohim spake in time past by the prophets'],
+      ['Hebrews 1:2', 'hath in these last days spoken unto us by his Son'],
+    ],
+    records: [
+      { source: 'Justin Martyr, First Apology and Dialogue with Trypho', date: 'about AD 155\u2013160', note: 'The Greek logos of the philosophers is brought into Christian teaching and applied to the Son at length. Justin argues from Plato and the Stoics openly and expects his pagan readers to follow him.', dispute: 'Justin is answering pagans in language they already used, which some hold is presentation rather than borrowing. The vocabulary and the framework are Greek either way, and Justin himself points at the philosophers as he goes.' },
+      { source: 'Theophilus of Antioch, To Autolycus', date: 'about AD 180', note: 'The word described as internal to Elohim and then uttered forth, a distinction taken directly from Greek philosophical usage.' },
+    ],
+    finding: 'The Word was MADE flesh, and made is a thing that happens at a moment.',
+  },
+
+  'trinity.son.lamp-called-the-source': {
+    title: 'The Lamp Called the Source',
+    line: 'The one who carries the light is described as the light itself.',
+    witnesses: [
+      ['1 John 1:5', 'Elohim IS light, and in him is no darkness at all'],
+      ['Revelation 21:23', 'the glory of Elohim did lighten it, and the Lamb is the LAMP thereof', 'The word rendered light here is luchnos, a lamp. The same verse names the glory of Elohim as what lightens the city, and the Lamb as the lamp that carries it.'],
+      ['John 8:12', 'I am the light of the world'],
+      ['Matthew 5:14', 'YE are the light of the world, said to fishermen'],
+      ['John 1:8', 'he was not that Light, but sent to bear witness of that Light'],
+      ['James 1:17', 'the Father of lights, with whom is no variableness'],
+      ['Psalm 27:1', 'Yahuah is my light and my salvation'],
+    ],
+    records: [],
+    finding: 'The same words are said to ordinary fishermen four books earlier, and nobody makes them Elohim.',
+  },
+
+  'trinity.son.given-read-as-owned': {
+    title: 'What Was Given Read as What Was Always Held',
+    line: 'Titles and authority described as handed over are read as things always possessed.',
+    witnesses: [
+      ['Matthew 28:18', 'all power IS GIVEN unto me'],
+      ['John 5:26', 'so hath he GIVEN to the Son to have life in himself'],
+      ['John 5:27', 'and hath GIVEN him authority to execute judgment'],
+      ['Hebrews 1:4', 'obtained by INHERITANCE a more excellent name'],
+      ['Philippians 2:9', 'Elohim hath highly exalted him, and GIVEN him a name'],
+      ['1 Corinthians 15:27', 'he is excepted, which did put all things under him'],
+      ['Acts 2:36', 'Elohim hath MADE that same Yahushua both Master and Messiah'],
+    ],
+    records: [],
+    finding: 'Given, inherited, exalted, and made are four words about receiving, not about having.',
+  },
+
+  'torah.sabbath.rest-read-as-the-replacement': {
+    title: 'The Rest Read as the Replacement',
+    line: 'A rest offered in a Person is used to cancel the day that pictured it.',
+    witnesses: [
+      ['Hebrews 4:9', 'there remaineth therefore a sabbath keeping to the people of Elohim', 'The Greek word here is sabbatismos, a sabbath-keeping. It appears nowhere else in the writings, and the writer chose it in the one chapter used to argue the day is finished.'],
+      ['Hebrews 4:4', 'Elohim did rest the seventh day from all his works'],
+      ['Hebrews 4:11', 'let us labour therefore to enter into that rest'],
+      ['Hebrews 4:1', 'let us therefore fear, lest a promise being left us'],
+      ['Matthew 11:28', 'come unto me, and I will give you rest'],
+      ['Exodus 20:11', 'wherefore Yahuah blessed the sabbath day, and set it apart'],
+    ],
+    records: [],
+    finding: 'The chapter used to end the day contains a word that means keeping the day, and it is used once in all the writings.',
+  },
+
+  'torah.sabbath.made-for-man-narrowed': {
+    title: 'Made for Man, Narrowed to One People',
+    line: 'A gift given to mankind is reassigned to one nation.',
+    witnesses: [
+      ['Mark 2:27', 'the sabbath was made for MAN, and not man for the sabbath'],
+      ['Genesis 2:3', 'set apart at the founding, before any nation existed'],
+      ['Isaiah 56:6', 'the sons of the stranger that keep the sabbath'],
+      ['Isaiah 56:7', 'even them will I bring to my holy mountain'],
+      ['Isaiah 66:23', 'from one sabbath to another shall all flesh come to worship'],
+      ['Exodus 20:10', 'nor thy stranger that is within thy gates'],
+      ['Exodus 12:49', 'one law to the homeborn and to the stranger'],
+    ],
+    records: [
+      { source: 'Council of Elvira, canon 26', date: 'about AD 306', note: 'Sabbath practice corrected by canon, which is a thing done only where the practice exists.' },
+    ],
+    finding: 'He said it was made for man, and it was set apart twenty generations before Abraham.',
+  },
+
+  'torah.feasts.ownership-reassigned': {
+    title: 'The Ownership Reassigned',
+    line: 'Days Yahuah calls His own are handed to one people and set aside with them.',
+    witnesses: [
+      ['Leviticus 23:2', 'the feasts of YAHUAH, MY feasts'],
+      ['Leviticus 23:4', 'these are the feasts of Yahuah, said a second time'],
+      ['Leviticus 23:44', 'Moses declared unto the children of Israel the feasts of Yahuah'],
+      ['Exodus 12:14', 'a feast to Yahuah throughout your generations'],
+      ['Zechariah 14:16', 'the nations shall go up to keep the feast of tabernacles'],
+      ['Zechariah 14:18', 'and if the family of Egypt go not up'],
+    ],
+    records: [],
+    finding: 'He calls them my feasts twice in the same chapter, and never once calls them Israel\u2019s.',
+  },
+
+  'torah.feasts.shadow-read-as-vanished': {
+    title: 'A Shadow Read as a Thing Vanished',
+    line: 'A word meaning cast by something real is read as a word meaning gone.',
+    witnesses: [
+      ['Colossians 2:16', 'let no MAN therefore judge you in meat, or in drink'],
+      ['Colossians 2:17', 'which ARE a shadow of things to come, present tense'],
+      ['Colossians 2:17', 'but the body is of Messiah'],
+      ['Hebrews 10:1', 'the law having a shadow of good things to come'],
+      ['Hebrews 8:5', 'who serve unto the example and shadow of heavenly things'],
+      ['Colossians 2:8', 'the tradition of men, the actual subject of the chapter'],
+    ],
+    records: [],
+    finding: 'A shadow proves there is something standing there casting it.',
+  },
+
+  'torah.feasts.rehearsal-called-finished': {
+    title: 'A Rehearsal Called Finished Halfway Through',
+    line: 'Days that picture what is coming are declared complete when only some have come.',
+    witnesses: [
+      ['Leviticus 23:2', 'my convocations, appointed rehearsals'],
+      ['1 Corinthians 5:7', 'Messiah our Pesach is sacrificed for us'],
+      ['1 Corinthians 5:8', 'therefore let us KEEP the feast, present tense, to Greeks'],
+      ['Zechariah 14:16', 'the nations going up to keep Sukkot, still future'],
+      ['Acts 20:16', 'Paul hasted to be at Jerusalem for Shavuot'],
+      ['Acts 18:21', 'I must by all means keep this feast that cometh'],
+    ],
+    records: [],
+    finding: 'Paul told Greeks to keep the feast, in the present tense, after the resurrection.',
+  },
+
+  'torah.feasts.appointed-day-replaced-by-a-rite': {
+    title: 'An Appointed Day Replaced by a Rite',
+    line: 'A once-a-year appointment becomes a ceremony performed whenever the assembly chooses.',
+    witnesses: [
+      ['Leviticus 23:5', 'the fourteenth day of the first month is the Pesach of Yahuah'],
+      ['Exodus 12:14', 'a memorial, a feast by an ordinance for ever'],
+      ['Numbers 9:2', 'let the children of Israel keep the passover at his APPOINTED season'],
+      ['Luke 22:15', 'with desire I have desired to eat this passover with you'],
+      ['1 Corinthians 11:26', 'ye do shew the Master\u2019s death till he come'],
+      ['1 Corinthians 5:8', 'let us keep the feast, not with old leaven'],
+    ],
+    records: [
+      { source: 'First Council of Nicaea, the ruling on the Pascha', date: 'AD 325', note: 'The observance is cut loose from the fourteenth of the first month and fixed to a Sunday, so that it will never fall with the reckoning the Jews kept.' },
+      { source: 'Fourth Lateran Council, canon 21, and the doctrine of transubstantiation', date: '1215', note: 'The bread and the cup are defined as changed in substance, and yearly confession and communion are made compulsory. A yearly memorial has become a rite the assembly administers.' },
+    ],
+    finding: 'The day was given a date and the date was an ordinance for ever.',
+  },
+
+  'torah.food.handwashing-swapped-for-food-law': {
+    title: 'A Handwashing Dispute Swapped for the Food Law',
+    line: 'An argument about washed hands is retold as an argument about what may be eaten.',
+    witnesses: [
+      ['Mark 7:2', 'they saw some of his disciples eat with unwashen hands'],
+      ['Mark 7:5', 'why walk not thy disciples according to the tradition of the elders?'],
+      ['Matthew 15:2', 'they wash not their hands when they eat bread'],
+      ['Matthew 15:20', 'to eat with unwashen hands defileth not a man'],
+      ['Mark 7:8', 'laying aside the commandment, ye hold the tradition of men'],
+      ['Mark 7:19', 'purging all meats, a clause about the body, not a ruling'],
+    ],
+    records: [],
+    finding: 'He names the subject Himself at the end of the passage, and it is unwashed hands.',
+  },
+
+  'torah.food.word-food-redefined': {
+    title: 'The Word Food Quietly Redefined',
+    line: 'A word that meant clean food to everyone in the room is read as anything edible.',
+    witnesses: [
+      ['Leviticus 11:2', 'these are the beasts which ye SHALL EAT'],
+      ['Leviticus 11:47', 'to make a difference between the unclean and the clean'],
+      ['Deuteronomy 14:3', 'thou shalt not eat any abominable thing'],
+      ['Acts 10:14', 'not so, Master, I have never eaten any thing common or unclean'],
+      ['Ezekiel 4:14', 'neither came there abominable flesh into my mouth'],
+      ['Daniel 1:8', 'Daniel purposed that he would not defile himself'],
+    ],
+    records: [],
+    finding: 'To every man in that conversation the word food already meant the things on the list.',
+  },
+
+  'torah.food.asceticism-answered-read-as-permission': {
+    title: 'An Answer to Ascetics Read as Permission',
+    line: 'A rebuke of men forbidding marriage and food is read as the cancelling of the food law.',
+    witnesses: [
+      ['1 Timothy 4:3', 'forbidding to marry, and commanding to abstain from meats'],
+      ['1 Timothy 4:4', 'every creature of Elohim is good, and nothing to be refused'],
+      ['1 Timothy 4:5', 'for it is sanctified by the WORD of Elohim and prayer'],
+      ['1 Timothy 4:1', 'giving heed to seducing spirits, and doctrines of devils'],
+      ['Genesis 1:31', 'Elohim saw every thing that he had made, and it was very good'],
+      ['Leviticus 11:44', 'ye shall be holy, for I am holy'],
+    ],
+    records: [],
+    finding: 'The next verse says it is set apart by the word, and the word is where the list is.',
+  },
+
+  'torah.food.reason-supplied-then-dismissed': {
+    title: 'A Reason Supplied, Then the Real One Dismissed',
+    line: 'A health explanation is invented, and then the explanation is used to retire the law.',
+    witnesses: [
+      ['Leviticus 11:44', 'ye shall be holy, for I am holy, the reason He gives'],
+      ['Leviticus 11:45', 'be ye holy, for I am holy, said twice'],
+      ['Leviticus 20:25', 'ye shall therefore put difference between clean and unclean'],
+      ['Leviticus 20:26', 'and ye shall be holy unto me, for I Yahuah am holy'],
+      ['Deuteronomy 14:2', 'thou art an holy people unto Yahuah thy Elohim'],
+      ['Deuteronomy 14:21', 'for thou art an holy people, given as the reason again'],
+    ],
+    records: [
+      { source: 'Council of Florence, the bull Cantate Domino', date: '4 February 1442', note: 'The legal prescriptions of the Hebrew writings are declared to have ceased and are forbidden to those who would keep them, on pain of losing eternal salvation. The food law does not fade away, it is ended by decree and a penalty is attached.' },
+    ],
+    finding: 'He gives the reason four separate times and it is the same word each time, holy.',
   },
 
 };
