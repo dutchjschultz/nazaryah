@@ -1,4 +1,5 @@
-// links.data 0812 V17.js
+// links.data 0812 V18.js
+// V18. Israel and the nations: 14 links added (10 trinity.israel, 4 torah.israel). 214 total.
 // V17. Authority and Tithes: 13 links added (7 trinity.authority, 5 torah.tithes, 1 trinity.tithes). 200 total.
 // V16. Son, Sabbath, Feasts, Food: 15 links added (5 trinity.son, 2 torah.sabbath, 4 torah.feasts, 4 torah.food). 187 total.
 // V15. Borrowed stories: 10 links added (trinity.borrowed.*). 172 total.
@@ -3088,6 +3089,236 @@ export const links = {
       { source: 'Oral Roberts, Miracle of Seed-Faith', date: '1970', note: 'Giving reframed as planting with a harvest owed back, and the language carried into every appeal after it.' },
     ],
     finding: 'A gift given in order to get is a purchase, and the writings already have a word for that.',
+  },
+
+
+  'trinity.israel.chosen-read-as-a-standing': {
+    title: 'Chosen for a Task Read as a Standing',
+    line: 'A people picked to carry something is read as a people holding a permanent rank.',
+    witnesses: [
+      ['Deuteronomy 7:7', 'not because ye were more in number than any people'],
+      ['Deuteronomy 7:8', 'but because Yahuah loved you, and would keep the oath'],
+      ['Exodus 19:5', 'IF ye will obey my voice, then ye shall be a peculiar treasure'],
+      ['Exodus 19:6', 'and ye shall be unto me a kingdom of priests'],
+      ['Amos 3:2', 'you only have I known, THEREFORE I will punish you'],
+      ['Romans 9:6', 'they are not all Israel, which are of Israel'],
+      ['1 Peter 2:9', 'ye are a chosen generation, said to scattered readers'],
+    ],
+    records: [],
+    finding: 'The one place Yahuah explains the choosing, He attaches an if to the front of it.',
+  },
+
+  'trinity.israel.seed-read-as-a-bloodline': {
+    title: 'The Seed Read as a Bloodline',
+    line: 'A promise the writings say runs through one seed is applied to a population.',
+    witnesses: [
+      ['Galatians 3:16', 'he saith not, and to seeds, as of many, but as of ONE'],
+      ['Galatians 3:16', 'and to thy seed, which is Messiah'],
+      ['Galatians 3:29', 'if ye be Messiah\u2019s, then are ye Abraham\u2019s seed'],
+      ['Romans 9:7', 'neither, because they are the seed of Abraham, are they all children'],
+      ['Romans 9:8', 'the children of the promise are counted for the seed'],
+      ['Matthew 3:9', 'say not, we have Abraham to our father'],
+      ['John 8:39', 'if ye were Abraham\u2019s children, ye would do the works of Abraham'],
+    ],
+    records: [],
+    finding: 'Paul stops mid-argument to say the word is singular, and names who the one seed is.',
+  },
+
+  'trinity.israel.promise-read-as-real-estate': {
+    title: 'The Promise Read as Real Estate',
+    line: 'A promise the writings enlarge to the world is narrowed back to a survey line.',
+    witnesses: [
+      ['Romans 4:13', 'the promise, that he should be the heir of the WORLD'],
+      ['Hebrews 11:9', 'he sojourned in the land of promise, as in a strange country'],
+      ['Hebrews 11:10', 'he looked for a city which hath foundations'],
+      ['Hebrews 11:13', 'these all died in faith, not having received the promises'],
+      ['Hebrews 11:16', 'they desire a better country, that is, an heavenly'],
+      ['Joshua 21:43', 'Yahuah gave unto Israel all the land which he sware'],
+      ['Joshua 21:45', 'there failed not ought of any good thing, all came to pass'],
+    ],
+    records: [],
+    finding: 'Joshua says twice that the land promise was kept, and that nothing failed of it.',
+  },
+
+  'trinity.israel.loyalty-made-a-test-of-belief': {
+    title: 'Loyalty Made a Test of Belief',
+    line: 'A position on a government becomes a measure of whether a man believes.',
+    witnesses: [
+      ['1 Corinthians 3:11', 'other foundation can no man lay than that is laid'],
+      ['1 Corinthians 2:2', 'I determined not to know any thing among you, save Messiah'],
+      ['Galatians 1:8', 'though we, or an angel, preach any other gospel'],
+      ['John 18:36', 'my kingdom is not of this world'],
+      ['Philippians 3:20', 'our conversation is in heaven'],
+      ['Romans 10:9', 'the test given, and it names no nation'],
+    ],
+    records: [
+      { source: 'William Blackstone, the Blackstone Memorial to President Harrison', date: 'March 1891', note: 'A petition urging American support for a Jewish homeland, signed by prominent men and organized by a Christian minister on prophetic grounds. Christian support enters American politics as a doctrinal duty here, six years before the Zionist Congress.' },
+      { source: 'Hal Lindsey, The Late Great Planet Earth', date: '1970', note: 'The framework reaches tens of millions of readers, tying current events to a prophetic timetable and a political alignment. For a generation of Christians, the position and the belief arrive as one package.' },
+    ],
+    finding: 'The one test given for confessing belief names a Person and does not name a country.',
+  },
+
+  'trinity.israel.blessing-tied-to-a-side': {
+    title: 'The Blessing Tied to Taking a Side',
+    line: 'A promise made to one man is read as a return on backing a government.',
+    witnesses: [
+      ['Genesis 12:3', 'I will bless them that bless THEE, singular, said to Abram'],
+      ['Genesis 12:2', 'and thou shalt be a blessing'],
+      ['Galatians 3:8', 'in thee shall all nations be blessed'],
+      ['Galatians 3:14', 'that the blessing of Abraham might come on the nations'],
+      ['Galatians 3:16', 'as of one, and to thy seed, which is Messiah'],
+      ['Numbers 23:8', 'how shall I curse, whom El hath not cursed?'],
+    ],
+    records: [
+      { source: 'The Balfour Declaration', date: '2 November 1917', note: 'A British government letter afterward read in pulpits as prophecy in places that had not read it that way before.' },
+    ],
+    finding: 'The thee of that verse is one man, and Galatians says the seed the promise runs through is one.',
+  },
+
+  'trinity.israel.recognition-postponed': {
+    title: 'Recognition Postponed to a Later Program',
+    line: 'One people is told to wait for a separate arrangement while another is dealt with now.',
+    witnesses: [
+      ['Romans 11:5', 'even so then at this PRESENT time there is a remnant'],
+      ['Romans 11:1', 'hath Elohim cast away his people? Elohim forbid'],
+      ['Romans 11:14', 'if by any means I may provoke them, and might save SOME of them'],
+      ['Romans 10:12', 'there is no difference between the Jew and the Greek'],
+      ['Acts 4:12', 'none other name under heaven given among men'],
+      ['Romans 1:16', 'to the Jew first, and also to the Greek'],
+    ],
+    records: [],
+    finding: 'Paul says the remnant is being gathered at this present time, and he means his own.',
+  },
+
+  'torah.israel.assembly-swapped-for-the-tree': {
+    title: 'The Assembly Swapped In for the Tree',
+    line: 'Instead of being grafted into the tree, the assembly is said to have replaced it.',
+    witnesses: [
+      ['Romans 11:17', 'thou, being a wild olive, wert graffed in AMONG them'],
+      ['Romans 11:18', 'boast not against the branches'],
+      ['Romans 11:20', 'be not highminded, but fear'],
+      ['Romans 11:21', 'if Elohim spared not the natural branches, take heed lest he spare not thee'],
+      ['Romans 11:24', 'graffed into their OWN olive tree'],
+      ['Ephesians 2:12', 'strangers from the covenants of promise, before being brought near'],
+      ['Ephesians 2:19', 'no more strangers, but fellowcitizens'],
+    ],
+    records: [
+      { source: 'Justin Martyr, Dialogue with Trypho', date: 'about AD 155\u2013160', note: 'The assembly argued to be the true Israel and the older people described as displaced. The reading is early and it is the other error from the two-peoples one.' },
+      { source: 'Melito of Sardis, Peri Pascha', date: 'about AD 170', note: 'The earliest surviving text charging a whole people with the death of Elohim. Within a hundred years of the swap being argued, this is what came out of it.' },
+    ],
+    finding: 'Paul warns the grafted branch twice in four verses not to boast against the natural ones.',
+  },
+
+  'torah.israel.branches-declared-permanently-cut': {
+    title: 'The Branches Declared Permanently Cut',
+    line: 'A breaking off the text calls reversible is treated as final.',
+    witnesses: [
+      ['Romans 11:23', 'if they abide not in unbelief, shall be graffed in'],
+      ['Romans 11:24', 'how much more shall these, which be the natural branches'],
+      ['Romans 11:11', 'have they stumbled that they should fall? Elohim forbid'],
+      ['Romans 11:29', 'the gifts and calling of Elohim are without repentance'],
+      ['Jeremiah 31:36', 'if those ordinances depart, then the seed of Israel shall cease'],
+      ['Jeremiah 31:37', 'then will I also cast off all the seed of Israel'],
+    ],
+    records: [
+      { source: 'John Chrysostom, eight sermons Against the Judaizers, Antioch', date: 'AD 386\u2013387', note: 'Preached against believers in his own city who were keeping the Sabbath and the feasts. The language used about the older people in these sermons is quoted for centuries afterward.' },
+    ],
+    finding: 'The text says the natural branches can be grafted back, and calls it the easier work.',
+  },
+
+  'torah.israel.law-assigned-by-bloodline': {
+    title: 'The Law Assigned by Bloodline',
+    line: 'A command is said to attach to ancestry rather than to a household.',
+    witnesses: [
+      ['Exodus 12:49', 'one law to the homeborn and to the stranger'],
+      ['Numbers 15:16', 'one law and one manner for you, and for the stranger'],
+      ['Leviticus 24:22', 'ye shall have one manner of law'],
+      ['Isaiah 56:3', 'let not the son of the stranger say, Yahuah hath utterly separated me'],
+      ['Isaiah 56:6', 'the sons of the stranger that keep the sabbath'],
+      ['Exodus 12:38', 'a mixed multitude went up also with them'],
+      ['Romans 2:29', 'he is a Jew, which is one inwardly'],
+    ],
+    records: [],
+    finding: 'A mixed multitude came out of Egypt and stood at the mountain with everybody else.',
+  },
+
+  'trinity.israel.covenant-people-defined-by-descent': {
+    title: 'The Covenant People Defined by Descent',
+    line: 'Who belongs is settled by ancestry rather than by the terms the covenant states.',
+    witnesses: [
+      ['Romans 9:6', 'they are not all Israel, which are of Israel'],
+      ['Romans 2:28', 'he is not a Jew, which is one outwardly'],
+      ['Romans 2:29', 'circumcision is that of the heart, in the spirit'],
+      ['Matthew 3:9', 'Elohim is able of these stones to raise up children unto Abraham'],
+      ['Galatians 3:28', 'there is neither Jew nor Greek'],
+      ['Ruth 1:16', 'thy people shall be my people, and thy Elohim my Elohim'],
+    ],
+    records: [],
+    finding: 'Ruth was a Moabitess, and she is in the line the Messiah came through.',
+  },
+
+  'trinity.israel.two-covenants-run-in-parallel': {
+    title: 'Two Covenants Run Side by Side',
+    line: 'One people is said to be held by an older arrangement while another is under a newer one.',
+    witnesses: [
+      ['Hebrews 8:13', 'he hath made the first old, ready to vanish away'],
+      ['Jeremiah 31:33', 'I will make a new covenant with the house of Israel'],
+      ['Jeremiah 31:31', 'with the house of Israel, and with the house of Judah'],
+      ['Ephesians 2:15', 'to make in himself of twain ONE new man'],
+      ['Ephesians 2:16', 'that he might reconcile both unto Elohim in one body'],
+      ['Acts 4:12', 'none other name under heaven given among men'],
+      ['John 14:6', 'no man cometh unto the Father, but by me'],
+    ],
+    records: [],
+    finding: 'The new covenant in Jeremiah is announced to the house of Israel by name.',
+  },
+
+  'trinity.israel.timetable-read-off-the-map': {
+    title: 'The Timetable Read Off the Map',
+    line: 'Borders and headlines become the clock the whole doctrine runs on.',
+    witnesses: [
+      ['Acts 1:6', 'wilt thou at this time restore again the kingdom to Israel?'],
+      ['Acts 1:7', 'it is not for you to know the times or the seasons'],
+      ['Acts 1:8', 'but ye shall be witnesses unto me, the answer He gave instead'],
+      ['Matthew 24:36', 'of that day and hour knoweth no man'],
+      ['John 18:36', 'my kingdom is not of this world'],
+      ['Luke 17:20', 'the kingdom of Elohim cometh not with observation'],
+    ],
+    records: [
+      { source: 'C. I. Scofield, The Scofield Reference Bible', date: '1909', note: 'The two-peoples framework printed in the margins beside the text and carried into pulpits and schools for a century.' },
+    ],
+    finding: 'They asked Him that exact question and He told them it was not theirs to know.',
+  },
+
+  'trinity.israel.land-grant-made-unconditional': {
+    title: 'The Land Grant Made Unconditional',
+    line: 'A grant the text attaches conditions to is described as having none.',
+    witnesses: [
+      ['Leviticus 18:28', 'that the land spue not you out also, as it spued out the nations'],
+      ['Leviticus 20:22', 'keep all my statutes, that the land whither I bring you spue you not out'],
+      ['Deuteronomy 4:26', 'ye shall soon utterly perish from off the land'],
+      ['Deuteronomy 28:63', 'ye shall be plucked from off the land whither thou goest'],
+      ['Joshua 21:43', 'Yahuah gave unto Israel all the land which he sware'],
+      ['Joshua 21:45', 'there failed not ought of any good thing'],
+      ['Jeremiah 7:4', 'trust ye not in lying words, saying, the temple of Yahuah'],
+    ],
+    records: [],
+    finding: 'The land is twice described as capable of spitting its inhabitants out, and the reason given is conduct.',
+  },
+
+  'torah.israel.same-book-two-audiences': {
+    title: 'One Book Split Into Two Audiences',
+    line: 'Commands are sorted by who they were for, and the sorting is done by ancestry.',
+    witnesses: [
+      ['Romans 15:4', 'whatsoever things were written aforetime were written for OUR learning'],
+      ['1 Corinthians 10:11', 'they are written for our admonition'],
+      ['2 Timothy 3:16', 'all scripture is profitable'],
+      ['Exodus 12:49', 'one law to the homeborn and to the stranger'],
+      ['Ephesians 2:19', 'fellowcitizens with the saints, and of the household'],
+      ['Galatians 3:29', 'then are ye Abraham\u2019s seed, and heirs'],
+    ],
+    records: [],
+    finding: 'Paul says the older writings were written for our learning, and he is writing to Greeks.',
   },
 
 };

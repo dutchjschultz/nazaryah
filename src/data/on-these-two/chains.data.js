@@ -1,4 +1,5 @@
-// chains.data 0812 V15.js
+// chains.data 0812 V16.js
+// V16. Israel and the nations: 9 chains added (6 trinity, 3 torah) — first category spanning both hinges. 119 total.
 // V15. Authority and Tithes: 9 chains added (7 trinity, 2 torah). 110 total.
 // V14. Son, Sabbath, Feasts, Food: 12 chains added (3 trinity, 9 torah). 101 total.
 // V13. Borrowed stories: new category added + 4 chains. 89 total.
@@ -2956,6 +2957,257 @@ export const chains = [
         { source: 'Council of M\u00e2con, canon 5', date: 'AD 585', note: 'Excommunication named for those who withhold tithes from the church.' },
       ],
       finding: 'Malachi names who he is talking to in the first chapter and again in the second, and both times it is the priests. They were the ones handling the portions and the ones keeping what was not theirs. The charge was aimed up the ladder, and it gets quoted down it.',
+    },
+  },
+
+
+  {
+    id: 'bless-israel-and-youll-be-blessed',
+    saying: 'Bless Israel and you\u2019ll be blessed',
+    hinge: 'trinity',
+    category: 'Israel and the nations',
+    spokenBy: 'said from the platform, with a flag beside it',
+    aliases: ['bless israel', 'genesis 12:3', 'curse them that curse', 'blessed', 'stand with', 'promise'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.one-people-made-two',
+      'trinity.israel.seed-read-as-a-bloodline',
+      'trinity.israel.blessing-tied-to-a-side',
+      'trinity.zionist.blessing-tied-to-a-state',
+    ],
+    verdict: {
+      witnesses: [
+        ['Genesis 12:3', 'them that bless THEE, singular, said to one man'],
+        ['Galatians 3:16', 'not to seeds, as of many, but as of one'],
+        ['Galatians 3:14', 'that the blessing might come on the nations'],
+        ['Romans 9:6', 'they are not all Israel, which are of Israel'],
+      ],
+      records: [
+        { source: 'The Balfour Declaration', date: '2 November 1917', note: 'A government letter read afterward as prophecy in pulpits that had not read it that way before.' },
+      ],
+      finding: 'The thee in that verse is Abram, one man standing in front of Yahuah. Paul stops in the middle of his own argument to point out that the word is singular and to name who the one seed is. The blessing was always going to reach the nations, and Galatians says it already has.',
+    },
+  },
+
+  {
+    id: 'israel-is-gods-chosen-people',
+    saying: 'Israel is God\u2019s chosen people',
+    hinge: 'trinity',
+    category: 'Israel and the nations',
+    spokenBy: 'said as the sentence everything else in the category rests on',
+    aliases: ['chosen people', 'chosen', 'elect nation', 'god\u2019s people', 'special', 'apple of his eye'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.one-people-made-two',
+      'trinity.israel.chosen-read-as-a-standing',
+      'trinity.israel.covenant-people-defined-by-descent',
+      'trinity.israel.seed-read-as-a-bloodline',
+    ],
+    verdict: {
+      witnesses: [
+        ['Exodus 19:5', 'IF ye will obey my voice, then ye shall be a peculiar treasure'],
+        ['Deuteronomy 7:7', 'not because ye were more in number'],
+        ['Amos 3:2', 'you only have I known, THEREFORE I will punish you'],
+        ['Romans 9:6', 'they are not all Israel, which are of Israel'],
+        ['1 Peter 2:9', 'ye are a chosen generation, written to scattered readers'],
+      ],
+      finding: 'The choosing is real and the terms are on the page beside it. The one place He explains it, He puts an if at the front, and Amos says being known was the reason for the punishment rather than a shelter from it. Chosen was never a rank. It was a job, and Peter hands the same words to a mixed set of congregations.',
+    },
+  },
+
+  {
+    id: 'god-has-a-plan-for-israel',
+    saying: 'God has a plan for Israel',
+    hinge: 'trinity',
+    category: 'Israel and the nations',
+    spokenBy: 'said to explain why one people is on a separate track',
+    aliases: ['plan for israel', 'separate plan', 'set aside', 'dispensation', 'later', 'program', 'church age'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.one-people-made-two',
+      'trinity.zionist.two-plans-two-futures',
+      'trinity.futurist.gap-inserted',
+      'trinity.israel.recognition-postponed',
+      'trinity.israel.two-covenants-run-in-parallel',
+    ],
+    verdict: {
+      witnesses: [
+        ['Romans 11:5', 'at this PRESENT time there is a remnant'],
+        ['Romans 10:12', 'there is no difference between the Jew and the Greek'],
+        ['Ephesians 2:15', 'to make in himself of twain ONE new man'],
+        ['Acts 4:12', 'none other name under heaven given among men'],
+        ['Romans 1:16', 'to the Jew first, and also to the Greek'],
+      ],
+      records: [
+        { source: 'John Nelson Darby, lectures from the 1830s onward', date: 'from about 1830', note: 'Two peoples with two futures taught as a system. Everything else on the chart follows from the separation.' },
+      ],
+      finding: 'He does have a plan, and Paul says it is running right now. A remnant at this present time, gathered the same way everyone else is. The trouble is the word separate, which does not appear, and the wall Ephesians says came down has to be quietly rebuilt to make room for it.',
+    },
+  },
+
+  {
+    id: 'we-stand-with-israel',
+    saying: 'We stand with Israel',
+    hinge: 'trinity',
+    category: 'Israel and the nations',
+    spokenBy: 'printed on a banner behind the pulpit',
+    aliases: ['stand with israel', 'support israel', 'pro israel', 'zionism', 'blackstone', 'alliance', 'flag'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.one-people-made-two',
+      'trinity.zionist.blessing-tied-to-a-state',
+      'trinity.israel.loyalty-made-a-test-of-belief',
+      'trinity.zionist.clock-in-the-news',
+    ],
+    verdict: {
+      witnesses: [
+        ['John 18:36', 'my kingdom is not of this world'],
+        ['Philippians 3:20', 'our conversation is in heaven'],
+        ['Galatians 3:16', 'as of one, and to thy seed, which is Messiah'],
+        ['Romans 10:12', 'there is no difference between the Jew and the Greek'],
+        ['1 Corinthians 3:11', 'other foundation can no man lay'],
+      ],
+      records: [
+        { source: 'William Blackstone, the Blackstone Memorial', date: 'March 1891', note: 'Christian support for a homeland enters American politics as a prophetic duty, six years before the Zionist Congress.' },
+      ],
+      finding: 'The saying is about a government, and the promise Galatians describes runs through one seed and reaches the nations. A congregation is free to hold any political view it likes. What this page traces is the moment the view stopped being politics and started being preached as doctrine, and that moment is on the record with a date.',
+    },
+  },
+
+  {
+    id: 'god-gave-them-that-land',
+    saying: 'God gave them that land',
+    hinge: 'trinity',
+    category: 'Israel and the nations',
+    spokenBy: 'said as the end of the discussion, and usually about a border',
+    aliases: ['gave them the land', 'land promise', 'deed', 'borders', 'canaan', 'inheritance', 'title deed'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.blessing-tied-to-a-state',
+      'trinity.israel.promise-read-as-real-estate',
+      'trinity.israel.land-grant-made-unconditional',
+      'trinity.zionist.clock-in-the-news',
+    ],
+    verdict: {
+      witnesses: [
+        ['Joshua 21:43', 'Yahuah gave unto Israel all the land which he sware'],
+        ['Joshua 21:45', 'there failed not ought of any good thing, all came to pass'],
+        ['Leviticus 18:28', 'that the land spue not you out also'],
+        ['Romans 4:13', 'the promise, that he should be the heir of the WORLD'],
+        ['Hebrews 11:10', 'he looked for a city which hath foundations'],
+      ],
+      finding: 'He did, and Joshua says twice that the promise was kept and that nothing failed of it. Leviticus twice describes the land as able to spit its inhabitants out, and gives conduct as the reason, so the grant was never described without terms. And Paul enlarges the promise to the whole world while Hebrews says Abraham was looking past the acreage the entire time.',
+    },
+  },
+
+  {
+    id: 'you-cant-be-a-christian-and-be-against-israel',
+    saying: 'You can\u2019t be a Christian and be against Israel',
+    hinge: 'trinity',
+    category: 'Israel and the nations',
+    spokenBy: 'said to end an argument by making it a question of standing',
+    aliases: ['can\u2019t be a christian', 'against israel', 'test', 'real believer', 'loyalty', 'apostate', 'replacement'],
+    links: [
+      'trinity.hinge',
+      'trinity.zionist.one-people-made-two',
+      'trinity.israel.loyalty-made-a-test-of-belief',
+      'trinity.israel.timetable-read-off-the-map',
+      'trinity.futurist.date-watching',
+    ],
+    verdict: {
+      witnesses: [
+        ['Romans 10:9', 'the test given, and it names no country'],
+        ['1 Corinthians 3:11', 'other foundation can no man lay than that is laid'],
+        ['1 Corinthians 2:2', 'save Messiah, and him crucified'],
+        ['Acts 1:7', 'it is not for you to know the times or the seasons'],
+        ['John 18:36', 'my kingdom is not of this world'],
+      ],
+      records: [
+        { source: 'Hal Lindsey, The Late Great Planet Earth', date: '1970', note: 'A prophetic timetable and a political alignment reach tens of millions of readers as one package.' },
+      ],
+      finding: 'The test for confessing belief is written down and it names a Person. No foreign policy appears anywhere in it. The men who asked Him about restoring the kingdom got told plainly that the times were not theirs to know, and were handed a commission instead. A doctrine that adds a requirement to that test has added to the foundation.',
+    },
+  },
+
+  {
+    id: 'the-church-replaced-israel',
+    saying: 'The church replaced Israel',
+    hinge: 'torah',
+    category: 'Israel and the nations',
+    spokenBy: 'taught as the older answer, and it is the other error',
+    aliases: ['replaced israel', 'replacement theology', 'supersession', 'new israel', 'true israel', 'cut off', 'branches'],
+    links: [
+      'torah.hinge',
+      'torah.law.covenant-declared-transferred',
+      'torah.israel.assembly-swapped-for-the-tree',
+      'torah.israel.branches-declared-permanently-cut',
+      'torah.assembly.gathering-made-a-building',
+    ],
+    verdict: {
+      witnesses: [
+        ['Romans 11:17', 'graffed in AMONG them, into the same tree'],
+        ['Romans 11:18', 'boast not against the branches'],
+        ['Romans 11:21', 'take heed lest he also spare not thee'],
+        ['Romans 11:23', 'if they abide not in unbelief, shall be graffed in'],
+        ['Romans 11:1', 'hath Elohim cast away his people? Elohim forbid'],
+      ],
+      records: [
+        { source: 'Melito of Sardis, Peri Pascha', date: 'about AD 170', note: 'The earliest surviving text charging a whole people with the death of Elohim. What came out of the swap within a hundred years of it being argued.' },
+      ],
+      finding: 'Paul asks whether they were cast away and answers it himself in the strongest words he has. Then he warns the grafted branch twice not to boast, and says the natural ones can be put back and that it is the easier work. This is the older error and the two-peoples doctrine is the newer one, and both of them require a second tree the text never planted.',
+    },
+  },
+
+  {
+    id: 'gentiles-were-grafted-into-a-new-tree',
+    saying: 'The Gentiles were grafted into a new tree',
+    hinge: 'torah',
+    category: 'Israel and the nations',
+    spokenBy: 'said with Romans eleven open, and the word own passed over',
+    aliases: ['grafted', 'new tree', 'olive tree', 'romans 11', 'wild branch', 'engrafted', 'root'],
+    links: [
+      'torah.hinge',
+      'torah.israel.assembly-swapped-for-the-tree',
+      'torah.israel.same-book-two-audiences',
+      'torah.law.two-standards-built',
+      'torah.law.covenant-declared-transferred',
+    ],
+    verdict: {
+      witnesses: [
+        ['Romans 11:17', 'graffed in among them, and with them partakest of the root'],
+        ['Romans 11:24', 'graffed into their OWN olive tree'],
+        ['Romans 11:18', 'thou bearest not the root, but the root thee'],
+        ['Ephesians 2:19', 'no more strangers, but fellowcitizens'],
+        ['Galatians 3:29', 'then are ye Abraham\u2019s seed, and heirs'],
+      ],
+      finding: 'The grafting is real and the tree is the point. Paul says their own olive tree, and says the wild branch does not carry the root, the root carries it. There is one tree in that passage. The word new is the whole lie, because a second tree gives a man somewhere to stand where the root does not reach him.',
+    },
+  },
+
+  {
+    id: 'youre-not-jewish-so-thats-not-your-law',
+    saying: 'You\u2019re not Jewish, so that\u2019s not your law',
+    hinge: 'torah',
+    category: 'Israel and the nations',
+    spokenBy: 'said kindly, and meant as a release',
+    aliases: ['not jewish', 'not your law', 'gentile', 'jewish law', 'bloodline', 'ancestry', 'their law'],
+    links: [
+      'torah.hinge',
+      'torah.israel.law-assigned-by-bloodline',
+      'torah.israel.same-book-two-audiences',
+      'torah.law.two-standards-built',
+      'torah.law.commands-allegorized',
+    ],
+    verdict: {
+      witnesses: [
+        ['Exodus 12:49', 'one law to the homeborn and to the stranger'],
+        ['Numbers 15:16', 'one law and one manner'],
+        ['Exodus 12:38', 'a mixed multitude went up also with them'],
+        ['Isaiah 56:6', 'the sons of the stranger that keep the sabbath'],
+        ['Romans 2:29', 'he is a Jew, which is one inwardly'],
+        ['Ruth 1:16', 'thy people shall be my people'],
+      ],
+      finding: 'One law for the homeborn and the stranger is written four times in four books, and a mixed multitude walked out of Egypt and stood at the mountain with everyone else. Ruth was a Moabitess and she is in the line the Messiah came through. If law follows bloodline, she had the wrong one.',
     },
   },
 
