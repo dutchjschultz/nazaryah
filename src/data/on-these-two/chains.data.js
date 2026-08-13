@@ -1,4 +1,5 @@
-// chains.data 0811 V12.js
+// chains.data 0811 V13.js
+// V13. Borrowed stories: new category added + 4 chains. 89 total.
 // V12. Images and idols + Tithes: 4 chains added (3 Images and idols, 1 Tithes and money). 85 total.
 // V11. The Trinity and The Father: 9 chains added (6 The Trinity, 3 The Father). 81 total.
 // V10. The Calendar and Holidays: 11 chains added (5 Calendar, 6 Holidays). 72 total.
@@ -49,6 +50,7 @@ export const categories = [
   'Israel and the nations',
   'Images and idols',
   'Authority and tradition',
+  'Borrowed stories',
 ];
 
 export const chains = [
@@ -2264,6 +2266,114 @@ export const chains = [
         { source: 'Oral Roberts, Miracle of Seed-Faith', date: '1970', note: 'Giving reframed as planting with a harvest owed back, and the language carried into every appeal after it.' },
       ],
       finding: 'The sentence is true and the meaning has been swapped out underneath it. He does want His people blessed, and every blessing He listed on that mountain went to somebody with nothing. Blessed are the poor. Blessed are the persecuted. Job was called perfect and upright and lost the whole estate, and the Psalm says flatly that the ungodly are the ones prospering. Paul had a name for men who read a bank balance as a verdict.',
+    },
+  },
+
+
+  {
+    id: 'we-need-more-esthers',
+    saying: 'We need more Esthers',
+    hinge: 'trinity',
+    category: 'Borrowed stories',
+    spokenBy: 'said at a women\u2019s conference, from a stage, to a full room',
+    aliases: ['esther', 'for such a time as this', 'queen', 'called for this moment', 'destiny', 'purpose'],
+    links: [
+      'trinity.hinge',
+      'trinity.borrowed.reader-cast-in-the-story',
+      'trinity.borrowed.hearer-always-the-hero',
+      'trinity.borrowed.esther-read-as-a-template',
+      'trinity.borrowed.silence-of-the-text-filled-in',
+    ],
+    verdict: {
+      witnesses: [
+        ['Esther 2:8', 'Esther was taken, not volunteered'],
+        ['Esther 4:11', 'whosoever cometh unto the king uncalled is put to death'],
+        ['Esther 4:14', 'deliverance shall arise from another place'],
+        ['Esther 4:16', 'if I perish, I perish'],
+        ['1 Corinthians 10:11', 'written for our admonition'],
+      ],
+      finding: 'She was taken into that house, not called to it, and the law said anyone approaching the king unbidden was killed. Mordecai told her outright that deliverance would come from somewhere else if she stayed silent, so the moment was never hers to be the answer to. What she actually said was if I perish, I perish, and a room full of people being told they are Esthers is not being handed that sentence.',
+    },
+  },
+
+  {
+    id: 'we-are-the-army-of-joel',
+    saying: 'We are the army of Joel',
+    hinge: 'trinity',
+    category: 'Borrowed stories',
+    spokenBy: 'sung from the platform, and printed on the conference banner',
+    aliases: ['joel 2', 'army', 'locust', 'mighty army', 'end time army', 'joel', 'great army'],
+    links: [
+      'trinity.hinge',
+      'trinity.borrowed.reader-cast-in-the-story',
+      'trinity.borrowed.hearer-always-the-hero',
+      'trinity.borrowed.locusts-made-the-congregation',
+      'trinity.borrowed.silence-of-the-text-filled-in',
+    ],
+    verdict: {
+      witnesses: [
+        ['Joel 1:4', 'the palmerworm, the locust, the cankerworm, the caterpiller'],
+        ['Joel 2:2', 'a day of darkness and of gloominess'],
+        ['Joel 2:11', 'the day of Yahuah is great and very terrible, who can abide it?'],
+        ['Joel 2:25', 'the years that the LOCUST hath eaten, my great army'],
+        ['Joel 2:12', 'turn ye even to me with all your heart'],
+      ],
+      finding: 'Yahuah names the army Himself two chapters on, and it is the locusts. He sent them against His own people, and the whole passage is a call to turn back with fasting and weeping. A congregation singing that it is that army has claimed the judgment and skipped the repentance the chapter was written to produce.',
+    },
+  },
+
+  {
+    id: 'were-the-issachar-generation',
+    saying: 'We\u2019re the Issachar generation, we understand the times',
+    hinge: 'trinity',
+    category: 'Borrowed stories',
+    spokenBy: 'said before an opinion about politics or a date',
+    aliases: ['issachar', 'understand the times', 'discern the times', 'sons of issachar', 'generation', 'know what to do'],
+    links: [
+      'trinity.hinge',
+      'trinity.borrowed.reader-cast-in-the-story',
+      'trinity.borrowed.hearer-always-the-hero',
+      'trinity.borrowed.two-hundred-made-a-generation',
+      'trinity.borrowed.rare-office-made-common',
+      'trinity.futurist.date-watching',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 Chronicles 12:32', 'the heads of them were two hundred'],
+        ['1 Chronicles 12:23', 'the numbers of the bands that came to David'],
+        ['Acts 1:7', 'it is not for you to know the times or the seasons'],
+        ['1 Corinthians 12:29', 'are all prophets?'],
+        ['Matthew 24:36', 'of that day and hour knoweth no man'],
+      ],
+      finding: 'The passage is a muster roll counting who showed up for David at Hebron, and it names two hundred heads out of one tribe. What they understood was which man should be king, and the text says so in the same sentence. A whole generation claiming the title has taken a line about two hundred men and made it a credential for saying what the news means.',
+    },
+  },
+
+  {
+    id: 'you-have-a-david-anointing',
+    saying: 'You have a David anointing',
+    hinge: 'trinity',
+    category: 'Borrowed stories',
+    spokenBy: 'said over a man in a prayer line, with a hand on his shoulder',
+    aliases: ['david anointing', 'anointing', 'mantle', 'called', 'giant killer', 'worshipper', 'prophetic word'],
+    links: [
+      'trinity.hinge',
+      'trinity.borrowed.reader-cast-in-the-story',
+      'trinity.borrowed.calling-assigned-by-a-man',
+      'trinity.borrowed.anointing-transferred-by-name',
+      'trinity.borrowed.gift-made-a-flattery',
+      'trinity.assembly.anointing-narrowed',
+      'trinity.spirit.own-voice',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 Samuel 16:1', 'I have provided me a king among his sons'],
+        ['1 Samuel 16:12', 'arise, anoint him, for this is he'],
+        ['1 John 2:27', 'the anointing which ye have received abideth in you'],
+        ['Jeremiah 23:21', 'I have not sent these prophets, yet they ran'],
+        ['Proverbs 29:5', 'a man that flattereth spreadeth a net for his feet'],
+      ],
+      finding: 'Yahuah picked David and told the prophet which son it was, and Samuel had already guessed wrong twice by then. The anointing a believer carries is described as already his and abiding in him, which leaves nothing for a man in a prayer line to hand over. What is actually being handed over is a compliment, and Proverbs has a word for a compliment that binds a man to the one giving it.',
     },
   },
 

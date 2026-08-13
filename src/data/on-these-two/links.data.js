@@ -1,4 +1,5 @@
-// links.data 0811 V14.js
+// links.data 0811 V15.js
+// V15. Borrowed stories: 10 links added (trinity.borrowed.*). 172 total.
 // V14. Images and idols + Tithes: 9 links added (7 torah.images, 2 trinity.money). 162 total.
 // V13. The Trinity and The Father: 13 links added (8 trinity.trinity, 5 trinity.father). 153 total.
 // V12. The Calendar and Holidays: 15 links added (7 torah.calendar, 8 torah.holidays). 140 total.
@@ -2487,6 +2488,152 @@ export const links = {
       { source: 'Kenneth Hagin, How to Write Your Own Ticket with God', date: '1979', note: 'A guaranteed procedure in four steps under a title that says the whole thing out loud.' },
     ],
     finding: 'Paul names men who suppose that gain is godliness, and names it as the error.',
+  },
+
+
+  'trinity.borrowed.reader-cast-in-the-story': {
+    title: 'The Reader Cast in the Story',
+    line: 'A record of what happened is handed to a hearer as a part he is now playing.',
+    witnesses: [
+      ['1 Corinthians 10:11', 'written for our admonition, meaning as warning'],
+      ['Romans 15:4', 'written aforetime for our learning'],
+      ['2 Timothy 3:16', 'profitable for doctrine, for reproof, for correction'],
+      ['1 Corinthians 10:6', 'these things were our examples, to the intent we should not lust'],
+      ['1 Corinthians 10:12', 'let him that thinketh he standeth take heed lest he fall'],
+    ],
+    records: [],
+    finding: 'Paul says the accounts are there as warning, and he gives the warning in the same breath.',
+  },
+
+  'trinity.borrowed.hearer-always-the-hero': {
+    title: 'The Hearer Always Gets the Lead',
+    line: 'The part assigned is never the coward, the grumbler, or the crowd.',
+    witnesses: [
+      ['1 Corinthians 10:10', 'neither murmur ye, as some of them also murmured'],
+      ['Hebrews 3:17', 'whose carcases fell in the wilderness'],
+      ['Luke 18:11', 'Elohim, I thank thee, that I am not as other men'],
+      ['Romans 12:3', 'not to think of himself more highly than he ought'],
+      ['Jeremiah 17:9', 'the heart is deceitful above all things'],
+      ['1 Corinthians 10:12', 'let him that thinketh he standeth take heed'],
+    ],
+    records: [],
+    finding: 'Nobody is ever told he is the one whose carcase fell in the wilderness.',
+  },
+
+  'trinity.borrowed.calling-assigned-by-a-man': {
+    title: 'A Calling Assigned by a Man',
+    line: 'A role is handed out from a platform, and the handing out is the appointment.',
+    witnesses: [
+      ['Jeremiah 1:5', 'before I formed thee, I knew thee, said by Yahuah'],
+      ['Galatians 1:1', 'an apostle, not of men, neither by man'],
+      ['Acts 13:2', 'the Set-apart Spirit said, separate me Barnabas and Saul'],
+      ['Jeremiah 23:21', 'I have not sent these prophets, yet they ran'],
+      ['Jeremiah 14:14', 'they prophesy a false vision, the deceit of their heart'],
+      ['1 Corinthians 12:11', 'dividing to every man severally as HE will'],
+    ],
+    records: [],
+    finding: 'Every calling in the writings is issued by Yahuah, and He does the sending Himself.',
+  },
+
+  'trinity.borrowed.rare-office-made-common': {
+    title: 'A Rare Office Made Common',
+    line: 'Something granted to one man in one moment is offered to a whole room.',
+    witnesses: [
+      ['1 Corinthians 12:11', 'dividing to every man severally as he will'],
+      ['1 Corinthians 12:29', 'are all apostles? are all prophets?'],
+      ['1 Corinthians 12:30', 'have all the gifts of healing? do all speak with tongues?'],
+      ['Ephesians 4:11', 'he gave SOME apostles, and SOME prophets'],
+      ['Numbers 11:29', 'would that all were prophets, spoken as a wish, not a fact'],
+    ],
+    records: [],
+    finding: 'Paul asks whether all are prophets and builds the question to be answered no.',
+  },
+
+  'trinity.borrowed.silence-of-the-text-filled-in': {
+    title: 'The Silence of the Text Filled In',
+    line: 'What a passage never says is supplied by the man teaching it.',
+    witnesses: [
+      ['Deuteronomy 4:2', 'ye shall not add unto the word which I command you'],
+      ['Proverbs 30:6', 'add thou not unto his words, lest he reprove thee'],
+      ['Revelation 22:18', 'if any man shall add unto these things'],
+      ['1 Corinthians 4:6', 'that ye might learn not to think above that which is written'],
+      ['Isaiah 8:20', 'if they speak not according to this word'],
+    ],
+    records: [],
+    finding: 'The instruction is not to think above what is written, and it is written down.',
+  },
+
+  'trinity.borrowed.esther-read-as-a-template': {
+    title: 'A Queen in Persia Made a Template',
+    line: 'One woman in one court in one hour is turned into a category of person.',
+    witnesses: [
+      ['Esther 4:14', 'who knoweth whether thou art come for such a time as this'],
+      ['Esther 4:16', 'if I perish, I perish, the actual weight of the moment'],
+      ['Esther 2:8', 'Esther was taken, not volunteered'],
+      ['Esther 4:11', 'whosoever shall come unto the king, who is not called, put to death'],
+      ['Esther 4:14', 'deliverance shall arise from another place, the promise is not to her'],
+    ],
+    records: [],
+    finding: 'Mordecai told her plainly that deliverance would come from somewhere else if she failed.',
+  },
+
+  'trinity.borrowed.locusts-made-the-congregation': {
+    title: 'A Judgment Army Made the Congregation',
+    line: 'An army sent in judgment against Yahuah\u2019s people is claimed as Yahuah\u2019s people.',
+    witnesses: [
+      ['Joel 2:1', 'sound an alarm, for the day of Yahuah cometh, it is nigh at hand'],
+      ['Joel 2:2', 'a day of darkness and of gloominess, a day of clouds'],
+      ['Joel 2:11', 'the day of Yahuah is great and very terrible, who can abide it?'],
+      ['Joel 1:4', 'that which the palmerworm hath left hath the locust eaten'],
+      ['Joel 2:25', 'the years that the LOCUST hath eaten, my great army'],
+      ['Joel 2:12', 'therefore turn ye even to me with all your heart'],
+    ],
+    records: [],
+    finding: 'Yahuah calls the locusts His great army, and He sent them against His own people.',
+  },
+
+  'trinity.borrowed.two-hundred-made-a-generation': {
+    title: 'Two Hundred Men Made a Generation',
+    line: 'A line in a muster roll becomes a title a whole movement claims.',
+    witnesses: [
+      ['1 Chronicles 12:32', 'the heads of them were two hundred'],
+      ['1 Chronicles 12:32', 'and all their brethren were at their commandment'],
+      ['1 Chronicles 12:23', 'the numbers of the bands that came to David'],
+      ['Matthew 16:3', 'can ye not discern the signs of the times?'],
+      ['Acts 1:7', 'it is not for you to know the times or the seasons'],
+      ['Luke 12:56', 'how is it that ye do not discern this time?'],
+    ],
+    records: [],
+    finding: 'The passage is a muster roll, and it names two hundred men by count.',
+  },
+
+  'trinity.borrowed.anointing-transferred-by-name': {
+    title: 'An Anointing Transferred by Naming It',
+    line: 'A dead man\u2019s calling is said to rest on a living one because the name was spoken.',
+    witnesses: [
+      ['1 Samuel 16:12', 'arise, anoint him, for this is he, Yahuah chose'],
+      ['1 Samuel 16:1', 'I have provided me a king among his sons'],
+      ['1 John 2:20', 'ye have an anointing from the Set-apart One'],
+      ['1 John 2:27', 'the anointing which ye have received abideth in you'],
+      ['2 Corinthians 1:21', 'he which hath anointed us is Yahuah'],
+      ['1 Samuel 16:7', 'Yahuah looketh on the heart, and man on the outward appearance'],
+    ],
+    records: [],
+    finding: 'David was anointed because Yahuah chose him, and the prophet was told which one.',
+  },
+
+  'trinity.borrowed.gift-made-a-flattery': {
+    title: 'The Gift Turned Into Flattery',
+    line: 'Naming a calling over a man becomes a way of holding him.',
+    witnesses: [
+      ['Proverbs 29:5', 'a man that flattereth his neighbour spreadeth a net for his feet'],
+      ['Jude 16', 'having men\u2019s persons in admiration because of advantage'],
+      ['1 Thessalonians 2:5', 'neither used we flattering words, nor a cloke of covetousness'],
+      ['Romans 16:18', 'by good words and fair speeches deceive the hearts of the simple'],
+      ['Galatians 1:10', 'if I yet pleased men, I should not be the servant of Messiah'],
+    ],
+    records: [],
+    finding: 'Proverbs calls flattery a net spread for the feet, and names it as that.',
   },
 
 };
