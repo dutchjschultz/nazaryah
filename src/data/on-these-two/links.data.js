@@ -1,4 +1,5 @@
-// links.data 0811 V12.js
+// links.data 0811 V13.js
+// V13. The Trinity and The Father: 13 links added (8 trinity.trinity, 5 trinity.father). 153 total.
 // V12. The Calendar and Holidays: 15 links added (7 torah.calendar, 8 torah.holidays). 140 total.
 // V11. Salvation: 15 links added (13 trinity.salvation, 2 torah.salvation). 125 total.
 // V10. The Name: 10 links added (trinity.name.*). 110 total.
@@ -2124,6 +2125,215 @@ export const links = {
       { source: 'Gregory the Great, letter to Abbot Mellitus', date: 'AD 601', note: 'Reclaiming is the stated method, in writing, from the top. Convert the temples, keep the festival, change the name.' },
     ],
     finding: 'A borrowed thing with His name put on it is the one arrangement the law names twice and forbids.',
+  },
+
+
+  'trinity.trinity.word-supplied-from-outside': {
+    title: 'A Word Supplied From Outside the Book',
+    line: 'The doctrine needs a word that appears nowhere in the writings, so one is made.',
+    witnesses: [
+      ['Deuteronomy 6:4', 'Yahuah our Elohim is one Yahuah'],
+      ['Mark 12:29', 'Yahushua quotes it back, unchanged'],
+      ['Mark 12:32', 'the scribe agrees, there is one, and none other'],
+      ['1 Corinthians 8:6', 'to us there is but one Elohim, the Father'],
+      ['1 Timothy 2:5', 'one Elohim, and one mediator, plainly two'],
+      ['John 17:3', 'that they might know thee the only true Elohim'],
+    ],
+    records: [
+      { source: 'Tertullian, Against Praxeas', date: 'about AD 213', note: 'The Latin word trinitas is coined here and put to work. A word invented in the third century is required in order to state a doctrine said to have been taught in the first.' },
+      { source: 'Theophilus of Antioch, To Autolycus, book 2', date: 'about AD 180', note: 'The Greek word trias appears, used of Elohim, His word, and His wisdom.', dispute: 'Theophilus is often named the first Trinitarian on the strength of this one word. His three are Elohim, His Word, and His Wisdom, which is not the later formula, and he never applies the term to Father, Son, and Spirit. The record establishes when the word appears, not what it meant.' },
+    ],
+    finding: 'The word had to be invented, and the man who invented it wrote in the third century.',
+  },
+
+  'trinity.trinity.persons-language-imported': {
+    title: 'The Language of Persons Imported',
+    line: 'A Roman word for a stage mask and a legal party is borrowed to describe Yahuah.',
+    witnesses: [
+      ['Numbers 23:19', 'Elohim is not a man, that he should lie'],
+      ['Hosea 11:9', 'I am El, and not man'],
+      ['Isaiah 46:9', 'I am El, and there is none else'],
+      ['Isaiah 45:5', 'I am Yahuah, and there is none else'],
+      ['Isaiah 44:24', 'that stretcheth forth the heavens ALONE, by myself'],
+    ],
+    records: [
+      { source: 'Tertullian, Against Praxeas', date: 'about AD 213', note: 'The Latin persona is applied to the Father, the Son, and the Spirit. In Roman usage the word meant a mask worn on a stage or a party recognized at law, and neither sense existed in Hebrew.' },
+      { source: 'Council of Chalcedon, the definition', date: 'AD 451', note: 'Person and nature separated as technical terms and fixed by council. Two more centuries pass before the vocabulary settles into the form now recited.' },
+    ],
+    finding: 'He said He stretched out the heavens alone, and by Himself, in one sentence.',
+  },
+
+  'trinity.trinity.council-settled-it-by-vote': {
+    title: 'Settled by Council and Enforced by Empire',
+    line: 'The question is closed by a vote and then made a matter of law.',
+    witnesses: [
+      ['Deuteronomy 4:2', 'ye shall not add unto the word'],
+      ['Mark 7:7', 'teaching for doctrines the commandments of men'],
+      ['Colossians 2:8', 'philosophy and vain deceit, after the tradition of men'],
+      ['Acts 5:29', 'we ought to obey Elohim rather than men'],
+      ['Isaiah 8:20', 'if they speak not according to this word'],
+    ],
+    records: [
+      { source: 'First Council of Nicaea, convened by the emperor', date: 'AD 325', note: 'Constantine calls the council, presides at the opening, and exiles those who will not sign. The doctrine acquires a date, a roll of signatures, and a penalty for dissent.' },
+      { source: 'Edict of Thessalonica', date: '27 February 380', note: 'Theodosius makes the Nicene confession the law of the empire and names all others heretics, punishable by the state. Belief becomes a legal status a full year before the doctrine is finished.' },
+      { source: 'First Council of Constantinople', date: 'AD 381', note: 'The third article expanded and the Spirit given worship and glory. Fifty-six years after Nicaea, and three hundred and fifty after the tree.' },
+    ],
+    finding: 'An emperor called the meeting, and a later emperor made the outcome law.',
+  },
+
+  'trinity.trinity.mystery-made-the-defense': {
+    title: 'Mystery Made the Defense',
+    line: 'The question is closed by declaring it unanswerable.',
+    witnesses: [
+      ['Deuteronomy 29:29', 'the things revealed belong unto us and to our children'],
+      ['Colossians 1:26', 'the mystery hid from ages, but NOW made manifest'],
+      ['Ephesians 3:4', 'my knowledge in the mystery, written so it could be read'],
+      ['Isaiah 45:19', 'I have not spoken in secret, in a dark place'],
+      ['1 Corinthians 14:33', 'Elohim is not the author of confusion'],
+    ],
+    records: [],
+    finding: 'Every mystery in the letters is one that was hidden and has since been told.',
+  },
+
+  'trinity.trinity.illustrations-that-name-heresies': {
+    title: 'Illustrations That Name Old Heresies',
+    line: 'Pictures are offered to explain it, and every picture is a position the councils condemned.',
+    witnesses: [
+      ['Isaiah 40:18', 'to whom then will ye liken El?'],
+      ['Isaiah 40:25', 'to whom will ye liken me, saith the Set-apart One'],
+      ['Isaiah 46:5', 'to whom will ye liken me, and make me equal?'],
+      ['Exodus 20:4', 'thou shalt not make unto thee any likeness'],
+      ['Deuteronomy 4:15', 'ye saw no manner of similitude'],
+    ],
+    records: [
+      { source: 'The condemnations of modalism, from the third century onward', date: 'from about AD 220', note: 'Praxeas, Noetus, and Sabellius are condemned for teaching that the three are one being appearing in three modes. The water, ice, and steam illustration is that teaching exactly, and it is handed out in Sunday school every year by men who would reject it if it were named to them.' },
+    ],
+    finding: 'The water and ice picture is modalism, and modalism was condemned in the third century.',
+  },
+
+  'trinity.trinity.i-am-read-as-a-claim': {
+    title: 'A Common Phrase Read as a Claim',
+    line: 'An ordinary Greek expression is treated as a divine title wherever it suits.',
+    witnesses: [
+      ['John 8:58', 'before Abraham was, I am'],
+      ['John 9:9', 'a blind beggar says the same two Greek words', 'The identical construction appears here from an ordinary man identifying himself. Translations render it I am he for the beggar and I AM for Yahushua, out of the same two words.'],
+      ['Exodus 3:14', 'I AM THAT I AM, a different phrase, in Hebrew'],
+      ['John 8:28', 'I do nothing of myself, but as the Father hath taught me'],
+      ['John 8:42', 'neither came I of myself, but he sent me'],
+      ['John 8:54', 'it is my Father that honoureth me'],
+    ],
+    records: [],
+    finding: 'A blind beggar says the same two Greek words four chapters later, and nobody calls it a claim.',
+  },
+
+  'trinity.trinity.plural-read-as-persons': {
+    title: 'A Plural Read as Persons',
+    line: 'Plural grammar is read as a conversation happening inside Elohim.',
+    witnesses: [
+      ['Genesis 1:26', 'let US make man in our image'],
+      ['Genesis 1:27', 'so Elohim created man in HIS OWN image, the next verse'],
+      ['Isaiah 44:24', 'I stretched forth the heavens alone, by myself'],
+      ['Job 38:7', 'the sons of Elohim shouted for joy at the founding'],
+      ['1 Kings 22:19', 'the host of heaven standing on his right and on his left'],
+      ['Judges 16:23', 'the same plural form used of Dagon, one idol'],
+    ],
+    records: [],
+    finding: 'The very next verse says His own image, singular, and says it twice.',
+  },
+
+  'trinity.trinity.deathless-one-said-to-die': {
+    title: 'The Deathless One Said to Have Died',
+    line: 'A claim is made that undoes the doctrine it was meant to defend.',
+    witnesses: [
+      ['1 Timothy 6:16', 'who only hath immortality'],
+      ['1 Timothy 1:17', 'the King eternal, immortal, invisible'],
+      ['Habakkuk 1:12', 'art thou not from everlasting? we shall not die'],
+      ['Acts 2:24', 'whom Elohim hath raised up, having loosed the pains of death'],
+      ['Acts 2:32', 'this Yahushua hath Elohim raised up, whereof we all are witnesses'],
+      ['Romans 6:4', 'raised up BY the glory of the Father'],
+      ['Malachi 3:6', 'I am Yahuah, I change not'],
+    ],
+    records: [],
+    finding: 'If He cannot die and He died, one of those two statements has to give.',
+  },
+
+  'trinity.father.one-being-split-in-two': {
+    title: 'One Being Split Into Two Characters',
+    line: 'The Elohim of the first pages and the Father of the letters are read as two temperaments.',
+    witnesses: [
+      ['Malachi 3:6', 'I am Yahuah, I change not'],
+      ['Hebrews 13:8', 'the same yesterday, and to day, and for ever'],
+      ['James 1:17', 'no variableness, neither shadow of turning'],
+      ['Exodus 34:6', 'merciful and gracious, longsuffering, abundant in goodness'],
+      ['Numbers 14:18', 'longsuffering, and of great mercy, forgiving iniquity'],
+      ['Psalm 103:8', 'Yahuah is merciful and gracious, slow to anger'],
+    ],
+    records: [
+      { source: 'Marcion of Sinope, condemned and expelled at Rome', date: 'about AD 144', note: 'Two Elohim taught openly, one of the law and one of the Messiah, with the Hebrew writings cut out of the canon in order to make it work. The position is early, it is named, and it is on the record as error.' },
+    ],
+    finding: 'He describes Himself as merciful, gracious, and slow to anger, and He does it at Sinai.',
+  },
+
+  'trinity.father.wrath-and-love-set-against-each-other': {
+    title: 'Wrath and Love Set Against Each Other',
+    line: 'Two things Scripture holds together are made opposites and handed to different ages.',
+    witnesses: [
+      ['Hebrews 12:6', 'whom the Master loveth he chasteneth'],
+      ['Proverbs 3:12', 'even as a father the son in whom he delighteth'],
+      ['Revelation 3:19', 'as many as I love, I rebuke and chasten'],
+      ['John 3:36', 'the wrath of Elohim abideth on him, in the same chapter as John 3:16'],
+      ['Romans 1:18', 'the wrath of Elohim is revealed from heaven, present tense'],
+      ['Nahum 1:7', 'Yahuah is good, a strong hold in the day of trouble'],
+    ],
+    records: [],
+    finding: 'The chapter with the most quoted verse about love says wrath abides, twenty lines later.',
+  },
+
+  'trinity.father.wrath-redirected-onto-the-son': {
+    title: 'The Wrath Redirected Onto the Son',
+    line: 'A sacrifice given in love is retold as an execution carried out in anger.',
+    witnesses: [
+      ['John 3:16', 'Elohim so loved the world, that he GAVE'],
+      ['1 John 4:10', 'he loved us, and sent his Son to be the propitiation'],
+      ['2 Corinthians 5:19', 'Elohim was IN Messiah, reconciling the world unto himself'],
+      ['Psalm 22:24', 'he hath not despised nor abhorred the affliction of the afflicted'],
+      ['John 10:17', 'therefore doth my Father love me, because I lay down my life'],
+      ['John 10:18', 'no man taketh it from me, I lay it down of myself'],
+    ],
+    records: [],
+    finding: 'The Psalm He quoted from the tree says the Father did not hide His face from him.',
+  },
+
+  'trinity.father.sacrifice-made-a-payment-to-the-father': {
+    title: 'The Sacrifice Made a Payment to the Father',
+    line: 'A gift the Father gave is described as a debt the Father collected.',
+    witnesses: [
+      ['John 3:16', 'he GAVE his only begotten Son'],
+      ['Romans 8:32', 'spared not his own Son, but delivered him up FOR US ALL'],
+      ['Genesis 22:8', 'Elohim will provide himself a lamb'],
+      ['Genesis 22:13', 'and Abraham offered the ram, provided by the one who asked'],
+      ['1 John 4:10', 'he loved us, and SENT his Son'],
+      ['Isaiah 43:11', 'beside me there is no saviour'],
+    ],
+    records: [],
+    finding: 'The one who asked for the offering is the one who supplied it, at Moriah and at the tree.',
+  },
+
+  'trinity.father.rank-flattened': {
+    title: 'The Rank Flattened',
+    line: 'Statements of order between the Father and the Son are read as figures of speech.',
+    witnesses: [
+      ['John 14:28', 'my Father is greater than I'],
+      ['John 13:16', 'he that is sent is not greater than he that sent him'],
+      ['1 Corinthians 11:3', 'the head of Messiah is Elohim'],
+      ['1 Corinthians 15:28', 'then shall the Son also himself be subject'],
+      ['Mark 13:32', 'neither the Son, but the Father'],
+      ['John 20:17', 'my Father, and your Father, and my Elohim, and your Elohim'],
+    ],
+    records: [
+      { source: 'First Council of Nicaea, the term homoousios', date: 'AD 325', note: 'Of one substance written into the creed and made the test of standing. The word appears nowhere in the writings, and it was contested by men who were present in the room.' },
+    ],
+    finding: 'He called the Father His Elohim, after the resurrection, with His own mouth.',
   },
 
 };

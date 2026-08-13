@@ -1,4 +1,5 @@
-// chains.data 0811 V10.js
+// chains.data 0811 V11.js
+// V11. The Trinity and The Father: 9 chains added (6 The Trinity, 3 The Father). 81 total.
 // V10. The Calendar and Holidays: 11 chains added (5 Calendar, 6 Holidays). 72 total.
 // V9. Salvation: 7 chains added (5 trinity, 2 torah). 61 total.
 // V8. The Name: 5 chains added (4 The Name, 1 Baptism and bread). 54 total.
@@ -1899,6 +1900,250 @@ export const chains = [
         { source: 'Guild and municipal records, Freiburg and the upper Rhine', date: 'from the early fifteenth century', note: 'Decorated trees for the season first appear in the record in German-speaking lands in the fourteen hundreds, as a domestic custom. No source of any kind places the practice in the first four centuries.' },
       ],
       finding: 'The reply is half right and it is worth conceding, because the Jeremiah passage is describing a carved idol and a reader who finishes the chapter can see it. The trouble is that conceding the verse costs nothing. The tree has a century and a region and a paper trail of its own, it arrives fourteen hundred years too late, and nothing brought into a house because of a festival was ever neutral in the writings.',
+    },
+  },
+
+
+  {
+    id: 'god-in-three-persons',
+    saying: 'God in three persons',
+    hinge: 'trinity',
+    category: 'The Trinity',
+    spokenBy: 'sung in the opening hymn, and recited in the membership class',
+    aliases: ['three persons', 'godhead', 'triune', 'trinity', 'nicaea', 'creed', 'co-equal'],
+    links: [
+      'trinity.hinge',
+      'trinity.trinity.word-supplied-from-outside',
+      'trinity.trinity.persons-language-imported',
+      'trinity.trinity.council-settled-it-by-vote',
+      'trinity.spirit.constantinople-sealed-it',
+    ],
+    verdict: {
+      witnesses: [
+        ['Deuteronomy 6:4', 'Yahuah our Elohim is one Yahuah'],
+        ['Mark 12:29', 'Yahushua quotes it back, unchanged'],
+        ['1 Corinthians 8:6', 'to us there is but one Elohim, the Father'],
+        ['John 17:3', 'thee the only true Elohim'],
+        ['Isaiah 44:24', 'I stretched forth the heavens ALONE'],
+      ],
+      records: [
+        { source: 'Tertullian, Against Praxeas', date: 'about AD 213', note: 'The word trinitas coined and put to work in the third century.' },
+      ],
+      finding: 'Asked which command was first, Yahushua quoted Yahuah our Elohim is one and did not adjust a word of it. The word for the doctrine had to be invented, the word for persons was borrowed out of a Roman courtroom, and the question was closed by a vote an emperor called and a later emperor made law.',
+    },
+  },
+
+  {
+    id: 'its-a-mystery-you-just-accept',
+    saying: 'It\u2019s a mystery you just have to accept',
+    hinge: 'trinity',
+    category: 'The Trinity',
+    spokenBy: 'said the moment the follow-up question is asked',
+    aliases: ['mystery', 'beyond understanding', 'finite mind', 'don\u2019t question', 'accept it', 'faith not logic'],
+    links: [
+      'trinity.hinge',
+      'trinity.trinity.word-supplied-from-outside',
+      'trinity.trinity.council-settled-it-by-vote',
+      'trinity.trinity.mystery-made-the-defense',
+    ],
+    verdict: {
+      witnesses: [
+        ['Deuteronomy 29:29', 'the things revealed belong unto us and to our children'],
+        ['Colossians 1:26', 'the mystery hid from ages, but NOW made manifest'],
+        ['Ephesians 3:4', 'written so it could be read'],
+        ['Isaiah 45:19', 'I have not spoken in secret, in a dark place'],
+        ['1 Corinthians 14:33', 'Elohim is not the author of confusion'],
+      ],
+      finding: 'Every mystery named in the letters is one that was hidden and has since been told, and Paul wrote his down so his readers could check it. A doctrine that cannot be stated without contradicting itself is not a mystery, it is an unfinished sentence, and the word mystery is what keeps it from ever being finished.',
+    },
+  },
+
+  {
+    id: 'like-water-ice-and-steam',
+    saying: 'Like water, ice, and steam',
+    hinge: 'trinity',
+    category: 'The Trinity',
+    spokenBy: 'drawn on a whiteboard in Sunday school, with an egg as the backup',
+    aliases: ['water ice steam', 'egg', 'shamrock', 'clover', 'three in one', 'illustration', 'analogy'],
+    links: [
+      'trinity.hinge',
+      'trinity.trinity.word-supplied-from-outside',
+      'trinity.trinity.mystery-made-the-defense',
+      'trinity.trinity.illustrations-that-name-heresies',
+    ],
+    verdict: {
+      witnesses: [
+        ['Isaiah 40:18', 'to whom then will ye liken El?'],
+        ['Isaiah 46:5', 'to whom will ye liken me, and make me equal?'],
+        ['Deuteronomy 4:15', 'ye saw no manner of similitude'],
+        ['Exodus 20:4', 'thou shalt not make unto thee any likeness'],
+      ],
+      records: [
+        { source: 'The condemnations of modalism, third century onward', date: 'from about AD 220', note: 'Praxeas, Noetus, and Sabellius condemned for teaching one being appearing in three modes.' },
+      ],
+      finding: 'One substance appearing in three forms is modalism, and modalism was condemned as heresy in the third century. The picture handed to children every year is a position those same councils would have thrown a man out for holding, which tells you the doctrine cannot be illustrated without breaking it.',
+    },
+  },
+
+  {
+    id: 'he-said-i-am',
+    saying: 'He said I AM, that proves He\u2019s God',
+    hinge: 'trinity',
+    category: 'The Trinity',
+    spokenBy: 'said as the closing argument, with John eight open',
+    aliases: ['i am', 'john 8:58', 'before abraham', 'ego eimi', 'exodus 3:14', 'claimed to be god'],
+    links: [
+      'trinity.hinge',
+      'trinity.trinity.i-am-read-as-a-claim',
+      'trinity.name.meaning-severed',
+      'trinity.son.context-dropped',
+    ],
+    verdict: {
+      witnesses: [
+        ['John 9:9', 'a blind beggar says the same two Greek words'],
+        ['John 8:28', 'I do nothing of myself'],
+        ['John 8:42', 'neither came I of myself, but he sent me'],
+        ['John 8:54', 'it is my Father that honoureth me'],
+        ['Exodus 3:14', 'a different phrase entirely, in Hebrew'],
+      ],
+      finding: 'Four chapters later a blind beggar says the identical two Greek words and every translation renders them I am he. In the same conversation being quoted, Yahushua says three separate times that He does nothing of Himself and came not of Himself, which is not how a man speaks who is claiming to be the one who sent him.',
+    },
+  },
+
+  {
+    id: 'let-us-make-man-in-our-image',
+    saying: 'Let us make man in our image, that\u2019s the Trinity talking',
+    hinge: 'trinity',
+    category: 'The Trinity',
+    spokenBy: 'said on the first page, before the argument has even started',
+    aliases: ['let us', 'our image', 'genesis 1:26', 'plural', 'elohim', 'us', 'divine council'],
+    links: [
+      'trinity.hinge',
+      'trinity.trinity.plural-read-as-persons',
+      'trinity.trinity.persons-language-imported',
+    ],
+    verdict: {
+      witnesses: [
+        ['Genesis 1:27', 'so Elohim created man in HIS OWN image'],
+        ['Isaiah 44:24', 'I stretched forth the heavens ALONE, by myself'],
+        ['Job 38:7', 'the sons of Elohim shouted for joy at the founding'],
+        ['1 Kings 22:19', 'the host of heaven on his right and on his left'],
+        ['Judges 16:23', 'the same plural form used of Dagon, one idol'],
+      ],
+      finding: 'The very next verse answers it. So Elohim created man in HIS OWN image, singular, said twice in one sentence. There was a court present at the founding and Job says so plainly, and the same plural form is used of Dagon, who was one idol standing in one temple.',
+    },
+  },
+
+  {
+    id: 'god-died-on-the-cross',
+    saying: 'God died on the cross',
+    hinge: 'trinity',
+    category: 'The Trinity',
+    spokenBy: 'sung in hymns, and preached without anyone stopping on it',
+    aliases: ['god died', 'died on the cross', 'immortal', 'deity died', 'who raised him', 'death of god'],
+    links: [
+      'trinity.hinge',
+      'trinity.trinity.word-supplied-from-outside',
+      'trinity.trinity.deathless-one-said-to-die',
+      'trinity.death.immortal-soul',
+      'trinity.lord.title-handed-to-son',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 Timothy 6:16', 'who only hath immortality'],
+        ['1 Timothy 1:17', 'the King eternal, immortal, invisible'],
+        ['Acts 2:24', 'whom Elohim hath raised up'],
+        ['Acts 2:32', 'this Yahushua hath Elohim raised up'],
+        ['Romans 6:4', 'raised up BY the glory of the Father'],
+        ['Malachi 3:6', 'I am Yahuah, I change not'],
+      ],
+      finding: 'Yahuah alone has immortality, which means He is the one being who cannot die. If He died, the writings are wrong about Him. And every account of the rising says the Father raised Him, which leaves nobody at all outside that grave doing the raising if the two are one being.',
+    },
+  },
+
+  {
+    id: 'old-testament-wrath-new-testament-love',
+    saying: 'The Old Testament God was wrath, the New Testament God is love',
+    hinge: 'trinity',
+    category: 'The Father',
+    spokenBy: 'said as an apology for the first half of the book',
+    aliases: ['old testament god', 'wrath', 'angry god', 'god of love', 'two gods', 'marcion', 'changed'],
+    links: [
+      'trinity.hinge',
+      'trinity.father.one-being-split-in-two',
+      'trinity.father.wrath-and-love-set-against-each-other',
+      'trinity.name.father-name-covered',
+    ],
+    verdict: {
+      witnesses: [
+        ['Exodus 34:6', 'merciful and gracious, longsuffering, abundant in goodness'],
+        ['Psalm 103:8', 'merciful and gracious, slow to anger'],
+        ['Malachi 3:6', 'I am Yahuah, I change not'],
+        ['John 3:36', 'the wrath of Elohim abideth on him'],
+        ['Romans 1:18', 'the wrath of Elohim is revealed, present tense'],
+      ],
+      records: [
+        { source: 'Marcion of Sinope, condemned at Rome', date: 'about AD 144', note: 'Two Elohim taught openly, with the Hebrew writings cut out of the canon to make it work. Condemned and expelled.' },
+      ],
+      finding: 'He describes Himself at Sinai as merciful, gracious, and slow to anger, in His own words, in the middle of the part men call wrathful. The same chapter that carries the most quoted verse about love says twenty lines later that wrath abides. And the first man to split them into two needed two Elohim to do it, and was thrown out for it.',
+    },
+  },
+
+  {
+    id: 'god-poured-out-his-wrath-on-his-son',
+    saying: 'God poured out His wrath on His Son',
+    hinge: 'trinity',
+    category: 'The Father',
+    spokenBy: 'preached every spring, from a platform, as the heart of it',
+    aliases: ['poured out his wrath', 'wrath on the son', 'punished him', 'forsaken', 'turned his face', 'atonement'],
+    links: [
+      'trinity.hinge',
+      'trinity.father.wrath-and-love-set-against-each-other',
+      'trinity.father.wrath-redirected-onto-the-son',
+      'trinity.father.sacrifice-made-a-payment-to-the-father',
+      'trinity.salvation.price-mistaken-for-the-payer',
+      'trinity.salvation.savior-title-moved',
+    ],
+    verdict: {
+      witnesses: [
+        ['John 3:16', 'Elohim so loved the world, that he GAVE'],
+        ['2 Corinthians 5:19', 'Elohim was IN Messiah, reconciling the world unto himself'],
+        ['Psalm 22:24', 'he hath not despised nor abhorred the affliction of the afflicted'],
+        ['John 10:17', 'therefore doth my Father love me, because I lay down my life'],
+        ['Romans 8:32', 'spared not his own Son, but delivered him up FOR US ALL'],
+        ['Genesis 22:8', 'Elohim will provide himself a lamb'],
+      ],
+      finding: 'The Psalm He quoted from the tree says outright that the afflicted one was not despised or abhorred and that the Father did not hide His face from him. Paul says the Father was IN Messiah reconciling, which is not the position of someone pouring out anger on another. The Father gave, sent, spared not, and delivered up. He was never the one collecting.',
+    },
+  },
+
+  {
+    id: 'father-son-and-spirit-are-co-equal',
+    saying: 'The Father, Son, and Spirit are co-equal',
+    hinge: 'trinity',
+    category: 'The Father',
+    spokenBy: 'recited off a statement of faith, word for word',
+    aliases: ['co-equal', 'coequal', 'same substance', 'homoousios', 'equal in power', 'creed', 'athanasian'],
+    links: [
+      'trinity.hinge',
+      'trinity.trinity.word-supplied-from-outside',
+      'trinity.trinity.council-settled-it-by-vote',
+      'trinity.father.rank-flattened',
+      'trinity.spirit.breath-made-a-person',
+      'trinity.lord.father-edged-out',
+    ],
+    verdict: {
+      witnesses: [
+        ['John 14:28', 'my Father is greater than I'],
+        ['John 20:17', 'my Father, and your Father, and my Elohim, and your Elohim'],
+        ['1 Corinthians 11:3', 'the head of Messiah is Elohim'],
+        ['1 Corinthians 15:28', 'then shall the Son also himself be subject'],
+        ['Mark 13:32', 'neither the Son, but the Father'],
+      ],
+      records: [
+        { source: 'First Council of Nicaea, the term homoousios', date: 'AD 325', note: 'Of one substance written into the creed and made the test of standing. The word appears nowhere in the writings and was contested by men in the room.' },
+      ],
+      finding: 'He said the Father is greater, called the Father His Elohim after the resurrection, and said He did not know the day. Paul says the head of Messiah is Elohim and that the Son will be subject at the end. Equal is the one word none of them used, and the word the council reached for instead was invented for the occasion.',
     },
   },
 
