@@ -1,4 +1,5 @@
-// links.data 0812 V16.js
+// links.data 0812 V17.js
+// V17. Authority and Tithes: 13 links added (7 trinity.authority, 5 torah.tithes, 1 trinity.tithes). 200 total.
 // V16. Son, Sabbath, Feasts, Food: 15 links added (5 trinity.son, 2 torah.sabbath, 4 torah.feasts, 4 torah.food). 187 total.
 // V15. Borrowed stories: 10 links added (trinity.borrowed.*). 172 total.
 // V14. Images and idols + Tithes: 9 links added (7 torah.images, 2 trinity.money). 162 total.
@@ -2878,6 +2879,215 @@ export const links = {
       { source: 'Council of Florence, the bull Cantate Domino', date: '4 February 1442', note: 'The legal prescriptions of the Hebrew writings are declared to have ceased and are forbidden to those who would keep them, on pain of losing eternal salvation. The food law does not fade away, it is ended by decree and a penalty is attached.' },
     ],
     finding: 'He gives the reason four separate times and it is the same word each time, holy.',
+  },
+
+
+  'trinity.authority.second-authority-installed': {
+    title: 'A Second Authority Installed Beside the Text',
+    line: 'A body of writings outside the book is given standing equal to the book.',
+    witnesses: [
+      ['Isaiah 8:20', 'to the law and to the testimony, if they speak not according'],
+      ['Deuteronomy 4:2', 'ye shall not add unto the word'],
+      ['Proverbs 30:5', 'every word of Elohim is pure'],
+      ['Proverbs 30:6', 'add thou not unto his words, lest he reprove thee'],
+      ['Mark 7:13', 'making the word of Elohim of none effect through your tradition'],
+      ['2 Timothy 3:16', 'all scripture is profitable, and it names scripture'],
+    ],
+    records: [
+      { source: 'Council of Trent, fourth session, decree on the canonical scriptures', date: '8 April 1546', note: 'Scripture and unwritten tradition are ordered to be received with equal affection of piety and reverence. The second authority is not implied, it is defined, dated, and signed.' },
+    ],
+    finding: 'The test given is whether a thing speaks according to what is written.',
+  },
+
+  'trinity.authority.age-made-the-proof': {
+    title: 'Age Made the Proof',
+    line: 'How long a thing has been believed is offered as evidence that it is true.',
+    witnesses: [
+      ['Exodus 23:2', 'thou shalt not follow a multitude to do evil'],
+      ['Matthew 7:13', 'wide is the gate, and many there be which go in thereat'],
+      ['Matthew 7:14', 'narrow is the way, and few there be that find it'],
+      ['1 Kings 19:18', 'seven thousand left, out of a nation'],
+      ['Jeremiah 6:16', 'ask for the OLD paths, where is the good way'],
+      ['Isaiah 5:20', 'woe unto them that call evil good, and good evil'],
+    ],
+    records: [],
+    finding: 'A multitude going the same direction is the one thing Exodus warns about by name.',
+  },
+
+  'trinity.authority.expertise-made-the-gate': {
+    title: 'Expertise Made the Gate',
+    line: 'A language or a degree is set between a man and the text he is holding.',
+    witnesses: [
+      ['Acts 4:13', 'they perceived that they were unlearned and ignorant men'],
+      ['Matthew 11:25', 'hid these things from the wise and prudent, and revealed them unto babes'],
+      ['1 Corinthians 1:26', 'not many wise men after the flesh are called'],
+      ['1 Corinthians 1:27', 'Elohim hath chosen the foolish things to confound the wise'],
+      ['Deuteronomy 30:11', 'this commandment is not hidden from thee, neither is it far off'],
+      ['Deuteronomy 30:14', 'the word is very nigh unto thee, that thou mayest do it'],
+    ],
+    records: [
+      { source: 'The Constitutions of Oxford, under Archbishop Thomas Arundel', date: '1409', note: 'Translating scripture into English or reading such a translation is forbidden without a bishop\u2019s licence, on pain of excommunication and worse. Access to the text is made a matter of permission.' },
+      { source: 'William Tyndale, reported exchange with a learned man', date: 'about 1523', note: 'Tyndale is recorded as answering that if Yahuah spared his life he would cause a boy that driveth the plough to know more of the writings than his opponent did. He was strangled and burned in 1536.', dispute: 'The line is reported by John Foxe some decades later and is not a court record. Tyndale\u2019s translation work, his stated purpose in his own prefaces, and his execution are all documented independently.' },
+    ],
+    finding: 'The men who turned the world over were described as unlearned and ignorant.',
+  },
+
+  'trinity.authority.reading-made-a-permission': {
+    title: 'Reading Made a Permission',
+    line: 'A man is told he may not decide what a passage means without someone above him.',
+    witnesses: [
+      ['Acts 17:11', 'searched the writings daily, whether those things were so'],
+      ['1 Thessalonians 5:21', 'prove all things, hold fast that which is good'],
+      ['1 John 2:27', 'ye need not that any man teach you'],
+      ['John 5:39', 'search the writings, said to ordinary hearers'],
+      ['Deuteronomy 6:7', 'thou shalt teach them diligently unto thy children'],
+      ['Revelation 1:3', 'blessed is he that readeth, and they that hear'],
+    ],
+    records: [
+      { source: 'The Constitutions of Oxford', date: '1409', note: 'Reading scripture in English without licence made an offence.' },
+      { source: 'Council of Trent, fourth session, decree on the edition and use of the sacred books', date: '8 April 1546', note: 'No one may interpret the writings contrary to the sense held by the church or contrary to the unanimous consent of the fathers. The permission is written down and the penalty is named.' },
+    ],
+    finding: 'The Bereans were called noble for checking an apostle against the writings, daily.',
+  },
+
+  'trinity.authority.private-interpretation-inverted': {
+    title: 'One Verse Turned Against Its Own Readers',
+    line: 'A line about where prophecy came from is read as a rule about who may read it.',
+    witnesses: [
+      ['2 Peter 1:20', 'no prophecy of the scripture is of any private interpretation'],
+      ['2 Peter 1:21', 'for the prophecy came not by the will of man', 'The next sentence explains the one before it. The subject is the ORIGIN of prophecy, not the reading of it, and Peter says so with the word for.'],
+      ['2 Peter 1:19', 'whereunto ye do well that ye take heed, said to the readers'],
+      ['Acts 17:11', 'searched the writings daily'],
+      ['1 John 2:27', 'the anointing teacheth you of all things'],
+    ],
+    records: [],
+    finding: 'The very next sentence names the subject, and the subject is where prophecy came from.',
+  },
+
+  'trinity.authority.obedience-to-men-made-the-command': {
+    title: 'Obedience to Men Made the Command',
+    line: 'A verse about following faithful men becomes a rule against questioning them.',
+    witnesses: [
+      ['Hebrews 13:7', 'whose faith FOLLOW, considering the end of their conversation'],
+      ['Hebrews 13:17', 'obey them that have the rule over you'],
+      ['Acts 5:29', 'we ought to obey Elohim rather than men'],
+      ['Galatians 2:11', 'I withstood him to the face, because he was to be blamed'],
+      ['1 Timothy 5:20', 'them that sin rebuke before all'],
+      ['Matthew 23:8', 'one is your Master, and all ye are brethren'],
+      ['1 Thessalonians 5:21', 'prove all things'],
+    ],
+    records: [],
+    finding: 'The verse ten lines earlier says to follow their belief after considering how they lived.',
+  },
+
+  'trinity.authority.question-made-the-offense': {
+    title: 'The Question Made the Offense',
+    line: 'The guard rung. Asking becomes the thing that must be answered for.',
+    witnesses: [
+      ['Acts 17:11', 'these were more noble, in that they searched'],
+      ['1 John 4:1', 'try the spirits, whether they are of Elohim'],
+      ['Proverbs 18:17', 'the first to plead seemeth just, till another searcheth him'],
+      ['1 Corinthians 14:29', 'let the other judge'],
+      ['Jeremiah 6:16', 'ask for the old paths, and they said, we will not walk therein'],
+      ['John 7:51', 'doth our law judge any man, before it hear him?'],
+    ],
+    records: [],
+    finding: 'A teaching that cannot survive the question was never resting on the writings.',
+  },
+
+  'torah.tithes.increase-changed-to-wages': {
+    title: 'The Increase Changed to Wages',
+    line: 'A command about what the ground and the herd produced is applied to a paycheck.',
+    witnesses: [
+      ['Leviticus 27:30', 'the tithe of the LAND, of the seed of the land, of the fruit of the tree'],
+      ['Leviticus 27:32', 'the tithe of the herd, or of the flock'],
+      ['Deuteronomy 14:22', 'the increase of thy SEED, that the field bringeth forth'],
+      ['Numbers 18:26', 'the tithes which I have given you of them for your inheritance'],
+      ['Deuteronomy 12:17', 'the tithe of thy corn, or of thy wine, or of thy oil'],
+      ['2 Chronicles 31:5', 'the firstfruits of corn, wine, oil, honey, and of all the increase'],
+    ],
+    records: [],
+    finding: 'Every list of what a tithe was made of names crops and animals, and never money.',
+  },
+
+  'torah.tithes.who-received-it-changed': {
+    title: 'Who Received It Changed',
+    line: 'A portion set aside for the Levite, the stranger, the fatherless, and the widow is redirected.',
+    witnesses: [
+      ['Deuteronomy 14:29', 'the Levite, and the stranger, and the fatherless, and the widow'],
+      ['Deuteronomy 26:12', 'given unto the Levite, the stranger, the fatherless, and the widow'],
+      ['Numbers 18:21', 'given the children of Levi, for the service which they serve'],
+      ['Deuteronomy 14:26', 'thou shalt eat there before Yahuah, and thou shalt rejoice'],
+      ['Deuteronomy 12:18', 'thou shalt eat them before Yahuah, thou, and thy son, and thy daughter'],
+      ['Hebrews 7:5', 'they that are of the sons of Levi have a commandment to take tithes'],
+    ],
+    records: [
+      { source: 'Council of M\u00e2con, canon 5', date: 'AD 585', note: 'Payment of tithes to the church urged with excommunication named for refusal. One of the earliest points at which the tithe becomes an obligation owed to an institution.' },
+      { source: 'Charlemagne, the Admonitio Generalis and the capitularies', date: 'from AD 779', note: 'The tithe made compulsory by imperial law across the Frankish realm and collected as a civil obligation. It stops being an offering at this point and becomes a tax.' },
+    ],
+    finding: 'Four groups are named as receiving it, and three of them owned nothing at all.',
+  },
+
+  'torah.tithes.storehouse-relocated': {
+    title: 'The Storehouse Relocated',
+    line: 'A room in the temple that held food becomes whichever building a man attends.',
+    witnesses: [
+      ['Malachi 3:10', 'bring ye all the tithes into the storehouse, that there may be MEAT'],
+      ['Nehemiah 10:38', 'the Levites shall bring up the tithe unto the chambers'],
+      ['Nehemiah 13:5', 'a great chamber, where aforetime they laid the meat offerings'],
+      ['Nehemiah 13:12', 'brought the tithe of the corn and the new wine and the oil'],
+      ['2 Chronicles 31:11', 'prepare chambers in the house of Yahuah, and they prepared them'],
+      ['Malachi 3:8', 'wherein have we robbed thee? in tithes and offerings'],
+    ],
+    records: [],
+    finding: 'The reason Malachi gives for filling the storehouse is so there would be food in it.',
+  },
+
+  'torah.tithes.priesthood-substituted': {
+    title: 'A Priesthood Substituted to Receive It',
+    line: 'A portion belonging to one tribe with no land is claimed by men holding an office.',
+    witnesses: [
+      ['Numbers 18:20', 'thou shalt have no inheritance in their land'],
+      ['Numbers 18:21', 'I have given the children of Levi all the tenth in Israel'],
+      ['Numbers 18:24', 'therefore I have said, they shall have no inheritance'],
+      ['Deuteronomy 18:1', 'the priests the Levites shall have no part nor inheritance'],
+      ['Hebrews 7:5', 'they that are of the sons of Levi'],
+      ['1 Peter 2:9', 'ye are a royal priesthood'],
+    ],
+    records: [],
+    finding: 'The tithe was given to Levi in exchange for having no land at all.',
+  },
+
+  'torah.tithes.robbery-charge-repointed': {
+    title: 'The Robbery Charge Repointed',
+    line: 'A charge Yahuah brought against the priests is turned on the man in the pew.',
+    witnesses: [
+      ['Malachi 1:6', 'O priests, that despise my name'],
+      ['Malachi 2:1', 'and now, O ye priests, this commandment is for YOU'],
+      ['Malachi 2:8', 'ye have caused many to stumble at the law'],
+      ['Malachi 3:3', 'he shall purify the sons of Levi'],
+      ['Malachi 3:8', 'will a man rob Elohim?'],
+      ['Nehemiah 13:10', 'the portions of the Levites had not been given them'],
+    ],
+    records: [],
+    finding: 'The book opens by naming the priests as the ones addressed, and says so twice.',
+  },
+
+  'trinity.tithes.giving-made-an-investment': {
+    title: 'Giving Made an Investment',
+    line: 'An offering is described as an outlay with a return owed on it.',
+    witnesses: [
+      ['2 Corinthians 9:7', 'not grudgingly, or of necessity, for Elohim loveth a cheerful giver'],
+      ['Matthew 6:3', 'let not thy left hand know what thy right hand doeth'],
+      ['Luke 6:35', 'lend, hoping for nothing again'],
+      ['Acts 8:20', 'thy money perish with thee'],
+      ['1 Timothy 6:5', 'supposing that gain is godliness'],
+      ['Luke 21:3', 'this poor widow hath cast in more than they all'],
+    ],
+    records: [
+      { source: 'Oral Roberts, Miracle of Seed-Faith', date: '1970', note: 'Giving reframed as planting with a harvest owed back, and the language carried into every appeal after it.' },
+    ],
+    finding: 'A gift given in order to get is a purchase, and the writings already have a word for that.',
   },
 
 };

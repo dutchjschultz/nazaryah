@@ -1,4 +1,5 @@
-// chains.data 0812 V14.js
+// chains.data 0812 V15.js
+// V15. Authority and Tithes: 9 chains added (7 trinity, 2 torah). 110 total.
 // V14. Son, Sabbath, Feasts, Food: 12 chains added (3 trinity, 9 torah). 101 total.
 // V13. Borrowed stories: new category added + 4 chains. 89 total.
 // V12. Images and idols + Tithes: 4 chains added (3 Images and idols, 1 Tithes and money). 85 total.
@@ -2705,6 +2706,256 @@ export const chains = [
         { source: 'Council of Florence, the bull Cantate Domino', date: '4 February 1442', note: 'The legal prescriptions of the Hebrew writings declared ended and forbidden to those who would keep them, with a penalty attached.' },
       ],
       finding: 'He gave the reason Himself, four times, in two books, and the word every time is holy. Not healthy. A reason supplied by men is then used to retire a law, and the law it retires had a stated purpose that had nothing to do with the one being argued.',
+    },
+  },
+
+
+  // ── AUTHORITY AND TRADITION ───────────────────────────────────────────────
+  {
+    id: 'the-church-fathers-settled-that',
+    saying: 'The church fathers settled that',
+    hinge: 'trinity',
+    category: 'Authority and tradition',
+    spokenBy: 'said when the verse itself has not gone the way it was supposed to',
+    aliases: ['church fathers', 'settled', 'patristics', 'tradition', 'councils', 'early church', 'orthodoxy'],
+    links: [
+      'trinity.hinge',
+      'trinity.authority.second-authority-installed',
+      'trinity.trinity.council-settled-it-by-vote',
+      'trinity.authority.age-made-the-proof',
+    ],
+    verdict: {
+      witnesses: [
+        ['Isaiah 8:20', 'if they speak not according to this word'],
+        ['Mark 7:13', 'making the word of Elohim of none effect through your tradition'],
+        ['Deuteronomy 4:2', 'ye shall not add unto the word'],
+        ['Acts 17:11', 'searched the writings daily'],
+      ],
+      records: [
+        { source: 'Council of Trent, fourth session', date: '8 April 1546', note: 'Scripture and unwritten tradition ordered received with equal reverence. The second authority defined, dated, and signed.' },
+      ],
+      finding: 'The men called fathers disagreed with each other on nearly everything, which is why the councils were needed in the first place. A body of writing outside the book was given equal standing with the book by a decree with a date on it, and once that is granted the book stops being able to settle anything by itself.',
+    },
+  },
+
+  {
+    id: 'two-thousand-years-of-scholars',
+    saying: 'Two thousand years of scholars can\u2019t all be wrong',
+    hinge: 'trinity',
+    category: 'Authority and tradition',
+    spokenBy: 'said as though a head count were an argument',
+    aliases: ['scholars', 'two thousand years', 'majority', 'everyone believes', 'consensus', 'tradition', 'all wrong'],
+    links: [
+      'trinity.hinge',
+      'trinity.authority.age-made-the-proof',
+      'trinity.authority.second-authority-installed',
+      'trinity.trinity.council-settled-it-by-vote',
+      'trinity.trinity.mystery-made-the-defense',
+    ],
+    verdict: {
+      witnesses: [
+        ['Exodus 23:2', 'thou shalt not follow a multitude to do evil'],
+        ['Matthew 7:13', 'wide is the gate, and many there be which go in thereat'],
+        ['1 Kings 19:18', 'seven thousand left, out of a whole nation'],
+        ['Jeremiah 6:16', 'ask for the old paths, where is the good way'],
+        ['Isaiah 5:20', 'woe unto them that call evil good'],
+      ],
+      finding: 'A multitude moving in one direction is the exact thing Exodus warns about by name, and Yahushua said the wide gate is the one with the traffic. Elijah counted himself the last man standing and was off by seven thousand, which cuts the other way too. Numbers were never the test. What is written was.',
+    },
+  },
+
+  {
+    id: 'you-need-greek-to-understand-it',
+    saying: 'You need Greek to understand it',
+    hinge: 'trinity',
+    category: 'Authority and tradition',
+    spokenBy: 'said to the man who read the chapter and came back with a question',
+    aliases: ['greek', 'hebrew', 'original languages', 'seminary', 'trained', 'scholar', 'lexicon', 'plowboy'],
+    links: [
+      'trinity.hinge',
+      'trinity.authority.expertise-made-the-gate',
+      'trinity.authority.reading-made-a-permission',
+      'trinity.assembly.mediator-installed',
+    ],
+    verdict: {
+      witnesses: [
+        ['Acts 4:13', 'unlearned and ignorant men, and they took knowledge of them'],
+        ['Matthew 11:25', 'hid from the wise and prudent, revealed unto babes'],
+        ['1 Corinthians 1:27', 'chosen the foolish things to confound the wise'],
+        ['Deuteronomy 30:11', 'not hidden from thee, neither is it far off'],
+        ['Deuteronomy 30:14', 'the word is very nigh unto thee'],
+      ],
+      records: [
+        { source: 'The Constitutions of Oxford', date: '1409', note: 'Reading the writings in English without a bishop\u2019s licence made an offence.' },
+      ],
+      finding: 'The letters were written to congregations of tradesmen and slaves and were read aloud to people who owned nothing and studied nowhere. Moses said the word was not hidden and not far off, and he said it about the commandment itself. Language study is a real help and a fine thing. It is not a gate, and it was made one on purpose in fourteen hundred and nine.',
+    },
+  },
+
+  {
+    id: 'who-are-you-to-interpret-scripture',
+    saying: 'Who are you to interpret Scripture on your own',
+    hinge: 'trinity',
+    category: 'Authority and tradition',
+    spokenBy: 'said the first time a man disagrees out loud',
+    aliases: ['who are you', 'interpret', 'on your own', 'authority', 'submit', 'humility', 'proud'],
+    links: [
+      'trinity.hinge',
+      'trinity.authority.reading-made-a-permission',
+      'trinity.authority.expertise-made-the-gate',
+      'trinity.assembly.mediator-installed',
+      'trinity.authority.question-made-the-offense',
+    ],
+    verdict: {
+      witnesses: [
+        ['Acts 17:11', 'searched the writings daily, whether those things were so'],
+        ['1 John 2:27', 'ye need not that any man teach you'],
+        ['John 5:39', 'search the writings, said to ordinary hearers'],
+        ['1 Thessalonians 5:21', 'prove all things'],
+        ['Revelation 1:3', 'blessed is he that readeth'],
+      ],
+      records: [
+        { source: 'Council of Trent, fourth session', date: '8 April 1546', note: 'Interpretation contrary to the sense held by the church, or contrary to the unanimous consent of the fathers, forbidden by decree.' },
+      ],
+      finding: 'The Bereans were handed an apostle and went home to check him against the writings, and the record calls them noble for it. The rule against reading for yourself is not in the book, it is in a decree from fifteen forty-six, and a man asking a question is being answered with that decree without being told where it came from.',
+    },
+  },
+
+  {
+    id: 'submit-to-your-leaders',
+    saying: 'Submit to your leaders, they watch for your souls',
+    hinge: 'trinity',
+    category: 'Authority and tradition',
+    spokenBy: 'quoted from the platform, at the man who has stopped nodding',
+    aliases: ['submit', 'obey them', 'hebrews 13:17', 'leaders', 'rule over you', 'authority', 'rebellion'],
+    links: [
+      'trinity.hinge',
+      'trinity.assembly.mediator-installed',
+      'trinity.assembly.immunity-from-correction',
+      'trinity.authority.obedience-to-men-made-the-command',
+      'trinity.spirit.correction-forbidden',
+    ],
+    verdict: {
+      witnesses: [
+        ['Hebrews 13:7', 'whose faith FOLLOW, considering the end of their conversation'],
+        ['Acts 5:29', 'we ought to obey Elohim rather than men'],
+        ['Galatians 2:11', 'I withstood him to the face, because he was to be blamed'],
+        ['1 Timothy 5:20', 'them that sin rebuke before all'],
+        ['Matthew 23:8', 'one is your Master, and all ye are brethren'],
+      ],
+      finding: 'Ten verses earlier the same writer says to follow their belief after considering how they lived, which is a man being weighed before he is followed. Paul opposed Peter publicly and wrote it down. And the whole thing is settled by one sentence from men who had been ordered to stop preaching: we ought to obey Elohim rather than men.',
+    },
+  },
+
+  {
+    id: 'thats-private-interpretation',
+    saying: 'That\u2019s private interpretation',
+    hinge: 'trinity',
+    category: 'Authority and tradition',
+    spokenBy: 'said with Peter quoted, and the next sentence left out',
+    aliases: ['private interpretation', '2 peter 1:20', 'own interpretation', 'twisting', 'your own idea'],
+    links: [
+      'trinity.hinge',
+      'trinity.authority.private-interpretation-inverted',
+      'trinity.authority.reading-made-a-permission',
+      'trinity.spirit.own-voice',
+      'trinity.authority.question-made-the-offense',
+    ],
+    verdict: {
+      witnesses: [
+        ['2 Peter 1:20', 'no prophecy of the scripture is of any private interpretation'],
+        ['2 Peter 1:21', 'FOR the prophecy came not in old time by the will of man'],
+        ['2 Peter 1:19', 'ye do well that ye take heed, said to the readers'],
+        ['Acts 17:11', 'searched the writings daily'],
+        ['1 John 2:27', 'ye need not that any man teach you'],
+      ],
+      finding: 'The next sentence explains the one being quoted and it starts with the word for. The subject is where prophecy came from, not who is allowed to read it. Peter had just told those same readers they do well to take heed to it themselves, which is the exact activity the verse is now used to forbid.',
+    },
+  },
+
+  // ── TITHES AND MONEY ──────────────────────────────────────────────────────
+  {
+    id: 'bring-the-tithe-into-the-storehouse',
+    saying: 'Bring the tithe into the storehouse',
+    hinge: 'torah',
+    category: 'Tithes and money',
+    spokenBy: 'read from the platform immediately before the plate goes around',
+    aliases: ['storehouse', 'malachi 3:10', 'tithe', 'ten percent', 'windows of heaven', 'local church', 'bring it in'],
+    links: [
+      'torah.hinge',
+      'torah.tithes.increase-changed-to-wages',
+      'torah.tithes.who-received-it-changed',
+      'torah.tithes.storehouse-relocated',
+      'torah.assembly.gathering-made-a-building',
+    ],
+    verdict: {
+      witnesses: [
+        ['Malachi 3:10', 'that there may be MEAT in mine house'],
+        ['Leviticus 27:30', 'the tithe of the land, of the seed, of the fruit of the tree'],
+        ['Deuteronomy 14:29', 'the Levite, the stranger, the fatherless, and the widow'],
+        ['Nehemiah 13:5', 'a great chamber, where they laid the meat offerings'],
+        ['Deuteronomy 14:26', 'thou shalt eat there before Yahuah, and rejoice'],
+      ],
+      records: [
+        { source: 'Charlemagne, the capitularies', date: 'from AD 779', note: 'The tithe made compulsory by imperial law and collected as a civil obligation.' },
+      ],
+      finding: 'Malachi says why: so there would be food in the house. The storehouse was a room with chambers in it and the tithe was corn, wine, oil, and animals, brought so the Levite and the widow and the fatherless and the stranger could eat. A room that held food has become a building with a budget, and the four groups it was for are not usually the ones receiving it.',
+    },
+  },
+
+  {
+    id: 'you-cant-out-give-god',
+    saying: 'You can\u2019t out-give God',
+    hinge: 'trinity',
+    category: 'Tithes and money',
+    spokenBy: 'said warmly, with the card readers already out',
+    aliases: ['out-give', 'give and it shall be given', 'return', 'hundredfold', 'sow', 'reap', 'blessing'],
+    links: [
+      'trinity.hinge',
+      'trinity.mechanism.man-works-the-lever',
+      'trinity.mechanism.word-given-force',
+      'trinity.mechanism.gift-made-a-lever',
+      'trinity.tithes.giving-made-an-investment',
+      'trinity.money.wealth-read-as-a-verdict',
+    ],
+    verdict: {
+      witnesses: [
+        ['2 Corinthians 9:7', 'not grudgingly, or of necessity'],
+        ['Luke 6:35', 'lend, hoping for nothing again'],
+        ['Matthew 6:3', 'let not thy left hand know what thy right hand doeth'],
+        ['Luke 21:3', 'this poor widow hath cast in more than they all'],
+        ['Acts 8:20', 'thy money perish with thee'],
+      ],
+      finding: 'The sentence is true and it is being used as a sales close. Paul rules out giving of necessity, and a promise of return manufactures exactly that. He said to lend hoping for nothing again. The widow gave two mites and got nothing back in the account, and He said she gave more than everyone.',
+    },
+  },
+
+  {
+    id: 'youre-robbing-god',
+    saying: 'You\u2019re robbing God',
+    hinge: 'torah',
+    category: 'Tithes and money',
+    spokenBy: 'said to the man who stopped giving, with Malachi open',
+    aliases: ['robbing god', 'malachi 3:8', 'cursed with a curse', 'withholding', 'tithes and offerings', 'stealing'],
+    links: [
+      'torah.hinge',
+      'torah.tithes.increase-changed-to-wages',
+      'torah.tithes.priesthood-substituted',
+      'torah.tithes.robbery-charge-repointed',
+      'torah.law.keeping-made-punishable',
+    ],
+    verdict: {
+      witnesses: [
+        ['Malachi 1:6', 'O priests, that despise my name'],
+        ['Malachi 2:1', 'and now, O ye priests, this commandment is for YOU'],
+        ['Malachi 2:8', 'ye have caused many to stumble at the law'],
+        ['Malachi 3:3', 'he shall purify the sons of Levi'],
+        ['Nehemiah 13:10', 'the portions of the Levites had not been given them'],
+      ],
+      records: [
+        { source: 'Council of M\u00e2con, canon 5', date: 'AD 585', note: 'Excommunication named for those who withhold tithes from the church.' },
+      ],
+      finding: 'Malachi names who he is talking to in the first chapter and again in the second, and both times it is the priests. They were the ones handling the portions and the ones keeping what was not theirs. The charge was aimed up the ladder, and it gets quoted down it.',
     },
   },
 
