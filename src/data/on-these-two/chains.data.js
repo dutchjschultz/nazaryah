@@ -1,4 +1,5 @@
-// chains.data 0812 V16.js
+// chains.data 0812 V17.js
+// V17. Pulpit filler (new category) added + 12 chains (11 trinity, 1 torah). 131 total.
 // V16. Israel and the nations: 9 chains added (6 trinity, 3 torah) — first category spanning both hinges. 119 total.
 // V15. Authority and Tithes: 9 chains added (7 trinity, 2 torah). 110 total.
 // V14. Son, Sabbath, Feasts, Food: 12 chains added (3 trinity, 9 torah). 101 total.
@@ -54,6 +55,7 @@ export const categories = [
   'Images and idols',
   'Authority and tradition',
   'Borrowed stories',
+  'Pulpit filler',
 ];
 
 export const chains = [
@@ -3208,6 +3210,333 @@ export const chains = [
         ['Ruth 1:16', 'thy people shall be my people'],
       ],
       finding: 'One law for the homeborn and the stranger is written four times in four books, and a mixed multitude walked out of Egypt and stood at the mountain with everyone else. Ruth was a Moabitess and she is in the line the Messiah came through. If law follows bloodline, she had the wrong one.',
+    },
+  },
+
+
+  // ── BAPTISM AND BREAD ─────────────────────────────────────────────────────
+  {
+    id: 'sprinkling-counts-its-the-same-thing',
+    saying: 'Sprinkling counts, it\u2019s the same thing',
+    hinge: 'trinity',
+    category: 'Baptism and bread',
+    spokenBy: 'said at the font, and at the christening afterward',
+    aliases: ['sprinkling', 'pouring', 'aspersion', 'font', 'christening', 'immersion', 'baptizo', 'dunk'],
+    links: [
+      'trinity.hinge',
+      'trinity.baptism.word-emptied-of-its-action',
+      'trinity.baptism.exception-made-the-rule',
+      'trinity.assembly.mediator-installed',
+      'trinity.name.formula-set-over-the-name',
+    ],
+    verdict: {
+      witnesses: [
+        ['Acts 8:38', 'they went DOWN both into the water'],
+        ['Acts 8:39', 'when they were come UP OUT OF the water'],
+        ['John 3:23', 'because there was much water there'],
+        ['Romans 6:4', 'buried with him by immersion into death'],
+        ['Colossians 2:12', 'buried with him, and risen with him'],
+      ],
+      records: [
+        { source: 'Cyprian of Carthage, letter to Magnus', date: 'about AD 255', note: 'Sprinkling defended for the sick who cannot be immersed. The concession is argued in writing and afterward becomes the ordinary form.' },
+      ],
+      finding: 'Two men stopped a chariot because they found water, and one of them came up out of it. John chose a place because there was much water there, which is a pointless reason if a cupful will do. The picture the writings give is a burial, and nobody buries a man by sprinkling dirt on his forehead.',
+    },
+  },
+
+  {
+    id: 'communion-every-sunday',
+    saying: 'Communion every Sunday',
+    hinge: 'torah',
+    category: 'Baptism and bread',
+    spokenBy: 'printed in the bulletin, first Sunday of every month or every week',
+    aliases: ['communion', 'lord\u2019s supper', 'eucharist', 'weekly', 'monthly', 'table', 'bread and cup'],
+    links: [
+      'torah.hinge',
+      'torah.assembly.appointed-times-dropped',
+      'torah.feasts.appointed-day-replaced-by-a-rite',
+      'torah.bread.appointed-meal-made-a-schedule',
+    ],
+    verdict: {
+      witnesses: [
+        ['Exodus 12:14', 'a memorial, a feast by an ordinance for ever'],
+        ['Leviticus 23:5', 'the fourteenth day of the first month'],
+        ['Numbers 9:2', 'keep the passover at his APPOINTED season'],
+        ['Luke 22:15', 'with desire I have desired to eat this passover with you'],
+        ['1 Corinthians 5:8', 'therefore let us keep the feast'],
+      ],
+      records: [
+        { source: 'Fourth Lateran Council, canon 21', date: '1215', note: 'Communion made compulsory at least yearly, with penalties for neglect.' },
+      ],
+      finding: 'The meal He kept had a date on it and the date was called an ordinance for ever. What He handed His men was the bread and cup of that meal, on that night, at that appointment. A yearly memorial fixed by Yahuah has become a rite scheduled by whoever runs the building, and the frequency is now a denominational preference.',
+    },
+  },
+
+  {
+    id: 'the-bread-becomes-his-actual-body',
+    saying: 'The bread becomes His actual body',
+    hinge: 'trinity',
+    category: 'Baptism and bread',
+    spokenBy: 'taught as the reason the table must be administered by a priest',
+    aliases: ['transubstantiation', 'real presence', 'actual body', 'host', 'blood', 'wine', 'substance', 'mass'],
+    links: [
+      'trinity.hinge',
+      'trinity.assembly.mediator-installed',
+      'trinity.assembly.priesthood-narrowed',
+      'trinity.baptism.rite-made-the-carrier',
+      'trinity.baptism.blood-command-crossed',
+    ],
+    verdict: {
+      witnesses: [
+        ['Luke 22:19', 'this do in REMEMBRANCE of me'],
+        ['1 Corinthians 11:26', 'ye do SHEW the Master\u2019s death till he come'],
+        ['John 6:63', 'the flesh profiteth nothing, the words that I speak, they are spirit'],
+        ['Leviticus 17:14', 'ye shall eat the blood of no manner of flesh'],
+        ['Acts 15:29', 'abstain from blood, written after the resurrection'],
+      ],
+      records: [
+        { source: 'Fourth Lateran Council, constitution Firmiter', date: '1215', note: 'The word transubstantiated used in a council document for the first time.' },
+        { source: 'Council of Trent, thirteenth session', date: '11 October 1551', note: 'Anathema on anyone saying the substance of bread and wine remains.' },
+      ],
+      finding: 'He said do this in remembrance, and remembrance is a word about something not presently here. He also said plainly in the same book that the flesh profits nothing. And every man at that table had been raised under a command against consuming blood that predates Sinai, and the assembly at Jerusalem repeated it to the nations years after the resurrection.',
+    },
+  },
+
+  {
+    id: 'baptism-is-just-an-outward-symbol',
+    saying: 'Baptism is just an outward symbol',
+    hinge: 'trinity',
+    category: 'Baptism and bread',
+    spokenBy: 'said to a man who has believed and not yet gone to the water',
+    aliases: ['just a symbol', 'outward sign', 'not necessary', 'already saved', 'optional', 'public declaration'],
+    links: [
+      'trinity.hinge',
+      'trinity.salvation.deliverance-collapsed-to-a-moment',
+      'trinity.salvation.words-made-the-transaction',
+      'trinity.baptism.act-emptied-into-a-gesture',
+    ],
+    verdict: {
+      witnesses: [
+        ['Acts 2:38', 'repent, and be immersed, for the remission of sins'],
+        ['Acts 22:16', 'be immersed, and WASH AWAY thy sins'],
+        ['1 Peter 3:21', 'immersion doth also now save us'],
+        ['Romans 6:4', 'buried with him, that we should walk in newness of life'],
+        ['Mark 16:16', 'he that believeth and is immersed shall be saved'],
+      ],
+      finding: 'This is the other end of the same subject and the error runs the opposite direction. Saul had already met Him on the road, already been struck blind, and already been praying three days, and Ananias still told him to get up and wash away his sins. Peter says immersion saves. Nobody has to make the water do more than that. It is enough to stop making it do less.',
+    },
+  },
+
+  // ── WORSHIP AND PRAYER ────────────────────────────────────────────────────
+  {
+    id: 'just-have-a-quiet-time',
+    saying: 'Just have a quiet time with the Lord',
+    hinge: 'trinity',
+    category: 'Worship and prayer',
+    spokenBy: 'said as the answer to nearly any question about the walk',
+    aliases: ['quiet time', 'devotions', 'time with the lord', 'morning', 'journal', 'get alone', 'daily'],
+    links: [
+      'trinity.hinge',
+      'trinity.salvation.made-private',
+      'trinity.worship.walk-reduced-to-a-daily-slot',
+      'trinity.salvation.walk-reduced-to-feeling',
+      'trinity.worship.experience-made-the-measure',
+    ],
+    verdict: {
+      witnesses: [
+        ['Deuteronomy 6:7', 'when thou sittest, walkest, liest down, and risest up'],
+        ['1 Thessalonians 5:17', 'pray without ceasing'],
+        ['Matthew 6:6', 'enter into thy closet, and pray to thy Father in secret'],
+        ['James 1:22', 'be ye doers of the word, and not hearers only'],
+        ['1 John 2:3', 'hereby we know him, if we keep his commandments'],
+      ],
+      finding: 'Praying alone is commanded and there is nothing wrong with the practice. The trouble is the word just. Moses names sitting, walking, lying down, and rising up, which between them are the whole day, and a slot at six in the morning is not that. And a walk measured by whether the time felt like anything is being measured by the one instrument Jeremiah says cannot be trusted.',
+    },
+  },
+
+  {
+    id: 'a-hedge-of-protection',
+    saying: 'A hedge of protection',
+    hinge: 'trinity',
+    category: 'Worship and prayer',
+    spokenBy: 'prayed over a car trip, a surgery, and a school year',
+    aliases: ['hedge of protection', 'hedge', 'traveling mercies', 'cover them', 'protection', 'job 1:10', 'safe'],
+    links: [
+      'trinity.hinge',
+      'trinity.mechanism.man-works-the-lever',
+      'trinity.mechanism.word-given-force',
+      'trinity.mechanism.asking-turned-to-declaring',
+      'trinity.worship.accusers-line-repeated-as-a-promise',
+    ],
+    verdict: {
+      witnesses: [
+        ['Job 1:10', 'hast not thou made an hedge about him, the accuser speaking'],
+        ['Job 1:12', 'all that he hath is in thy power'],
+        ['Job 1:21', 'Yahuah gave, and Yahuah hath taken away'],
+        ['John 16:33', 'in the world ye shall have tribulation'],
+        ['Psalm 91:15', 'I will be with him IN trouble'],
+      ],
+      finding: 'The phrase appears once in all the writings and it is in the accuser\u2019s mouth, offered as a complaint that Job had been made too safe to test. Two verses later the hedge comes down. The prayer being prayed is a request for the one arrangement the book of Job spends forty chapters taking apart, and the promise actually given is company in the trouble rather than a fence around it.',
+    },
+  },
+
+  {
+    id: 'let-go-and-let-god',
+    saying: 'Let go and let God',
+    hinge: 'trinity',
+    category: 'Worship and prayer',
+    spokenBy: 'said to a man who has run out of options, and to one who has not started',
+    aliases: ['let go', 'let god', 'surrender', 'stop striving', 'rest in him', 'quit trying', 'give it to god'],
+    links: [
+      'trinity.hinge',
+      'trinity.mechanism.man-works-the-lever',
+      'trinity.worship.effort-made-the-obstacle',
+      'trinity.salvation.walk-reduced-to-feeling',
+    ],
+    verdict: {
+      witnesses: [
+        ['Philippians 2:12', 'work out your own deliverance with fear and trembling'],
+        ['Philippians 2:13', 'for it is Elohim which worketh in you'],
+        ['Nehemiah 4:9', 'we made our prayer, AND set a watch'],
+        ['James 2:17', 'belief, if it hath not works, is dead'],
+        ['1 Corinthians 15:10', 'I laboured more abundantly than they all'],
+      ],
+      records: [
+        { source: 'Hannah Whitall Smith, The Christian\u2019s Secret of a Happy Life', date: '1875', note: 'The surrendered life taught as a method, in a book that shaped a century of devotional writing.' },
+      ],
+      finding: 'Paul puts both halves in adjoining sentences. Work out your own deliverance, for it is Elohim who works in you. Nehemiah prayed and posted a guard and the verse holds the two together with an and. Trusting Him has never once in the writings meant doing nothing, and a man told to let go is usually being told to stop asking questions.',
+    },
+  },
+
+  {
+    id: 'two-or-three-gathered',
+    saying: 'Two or three gathered, so God has to show up',
+    hinge: 'trinity',
+    category: 'Worship and prayer',
+    spokenBy: 'said when the room is thin and somebody needs encouraging',
+    aliases: ['two or three', 'matthew 18:20', 'gathered in my name', 'in the midst', 'small group', 'attendance'],
+    links: [
+      'trinity.hinge',
+      'trinity.mechanism.man-works-the-lever',
+      'trinity.mechanism.word-given-force',
+      'trinity.worship.courtroom-line-made-an-attendance-promise',
+      'trinity.assembly.household-replaced-by-institution',
+    ],
+    verdict: {
+      witnesses: [
+        ['Matthew 18:15', 'go and tell him his fault between thee and him alone'],
+        ['Matthew 18:16', 'in the mouth of two or three WITNESSES'],
+        ['Matthew 18:17', 'tell it unto the assembly'],
+        ['Deuteronomy 19:15', 'at the mouth of two witnesses shall the matter be established'],
+        ['Psalm 139:7', 'whither shall I flee from thy presence?'],
+      ],
+      finding: 'The two or three in that sentence are witnesses, and the verse four lines above says so in those words, quoting the law of witnesses out of Deuteronomy. The passage is about a brother who has sinned and about what a gathering may settle. He is there in the midst of the judgment. And He was never anywhere else to begin with, which the Psalm asks about and answers.',
+    },
+  },
+
+  // ── THE SPIRIT ────────────────────────────────────────────────────────────
+  {
+    id: 'she-has-a-loving-spirit',
+    saying: 'She has a loving spirit',
+    hinge: 'trinity',
+    category: 'The Spirit',
+    spokenBy: 'said as a compliment, and heard as a verdict',
+    aliases: ['loving spirit', 'sweet spirit', 'gentle spirit', 'spirit of', 'good spirit', 'her spirit', 'atmosphere'],
+    links: [
+      'trinity.hinge',
+      'trinity.spirit.breath-made-a-person',
+      'trinity.spirit.constantinople-sealed-it',
+      'trinity.spirit.one-word-doing-two-jobs',
+      'trinity.spirit.temperament-read-as-evidence',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 Peter 3:4', 'a meek and quiet spirit, said of a disposition'],
+        ['Numbers 14:24', 'Caleb, because he had another spirit with him'],
+        ['Acts 2:17', 'I will pour out of my Spirit upon all flesh'],
+        ['Matthew 7:20', 'by their fruits ye shall know them'],
+        ['1 Samuel 16:7', 'man looketh on the outward appearance'],
+        ['1 John 4:1', 'try the spirits'],
+      ],
+      finding: 'Scripture uses the word this way and there is nothing wrong with the sentence by itself. The trouble arrives after the breath of Yahuah has been made a third person, because from then on one word carries a woman\u2019s manner and the breath of the Almighty and nobody separates them in ordinary speech. Only one of the two gets poured out on all flesh. Fruit takes years to show, and a pleasant manner takes an afternoon.',
+    },
+  },
+
+  // ── PULPIT FILLER ─────────────────────────────────────────────────────────
+  {
+    id: 'god-wont-give-you-more-than-you-can-handle',
+    saying: 'God won\u2019t give you more than you can handle',
+    hinge: 'trinity',
+    category: 'Pulpit filler',
+    spokenBy: 'said in a hospital corridor, by someone who needs the moment to end',
+    aliases: ['more than you can handle', 'won\u2019t give you more', '1 corinthians 10:13', 'bear it', 'strong enough'],
+    links: [
+      'trinity.hinge',
+      'trinity.filler.temptation-verse-moved-to-hardship',
+      'trinity.filler.comfort-substituted-for-presence',
+    ],
+    verdict: {
+      witnesses: [
+        ['1 Corinthians 10:13', 'there hath no TEMPTATION taken you'],
+        ['2 Corinthians 1:8', 'we were pressed out of measure, ABOVE STRENGTH'],
+        ['2 Corinthians 1:9', 'that we should not trust in ourselves, but in Elohim which raiseth the dead'],
+        ['2 Corinthians 12:9', 'my strength is made perfect in weakness'],
+        ['Psalm 34:18', 'Yahuah is nigh unto them that are of a broken heart'],
+      ],
+      finding: 'The verse behind it is about temptation and it promises a way out of temptation, which is a different thing from a load. Paul says flatly that he was pressed above his strength until he despaired of living, and then says the whole point was that he would stop trusting himself. Told to a man who is drowning, the saying means he should be handling it, which adds shame to whatever else he is carrying.',
+    },
+  },
+
+  {
+    id: 'everything-happens-for-a-reason',
+    saying: 'Everything happens for a reason',
+    hinge: 'trinity',
+    category: 'Pulpit filler',
+    spokenBy: 'said at the graveside, and at the wake afterward',
+    aliases: ['for a reason', 'god\u2019s plan', 'meant to be', 'purpose', 'romans 8:28', 'all things work together'],
+    links: [
+      'trinity.hinge',
+      'trinity.filler.reason-supplied-for-everything',
+      'trinity.filler.comfort-substituted-for-presence',
+    ],
+    verdict: {
+      witnesses: [
+        ['Ecclesiastes 9:11', 'time and chance happeneth to them all'],
+        ['Luke 13:4', 'those eighteen, think ye that they were sinners above all men?'],
+        ['Luke 13:5', 'I tell you, Nay'],
+        ['John 9:3', 'neither hath this man sinned, nor his parents'],
+        ['Job 42:7', 'ye have not spoken of me the thing that is right'],
+      ],
+      finding: 'A tower fell on eighteen men and He was asked whose fault it was, and He said it was nobody\u2019s. Solomon says time and chance happen to everyone. Yahuah can work good out of anything and Romans says so, with a clause naming who it is said to. That is not the same as every event arriving with a reason attached, and the men who tried hardest to supply reasons for a disaster were the three friends Yahuah rebuked by name at the end.',
+    },
+  },
+
+  {
+    id: 'god-has-a-wonderful-plan-for-your-life',
+    saying: 'God has a wonderful plan for your life',
+    hinge: 'trinity',
+    category: 'Pulpit filler',
+    spokenBy: 'printed on the first page of the tract, and said at the altar',
+    aliases: ['wonderful plan', 'plan for your life', 'jeremiah 29:11', 'purpose', 'destiny', 'four spiritual laws'],
+    links: [
+      'trinity.hinge',
+      'trinity.salvation.made-private',
+      'trinity.filler.plan-made-personal-and-pleasant',
+      'trinity.filler.hard-word-never-included',
+      'trinity.salvation.words-made-the-transaction',
+    ],
+    verdict: {
+      witnesses: [
+        ['Jeremiah 29:10', 'after SEVENTY YEARS be accomplished at Babylon'],
+        ['Jeremiah 29:5', 'build ye houses, and dwell in them'],
+        ['Acts 9:16', 'how great things he must suffer for my name\u2019s sake'],
+        ['Luke 9:23', 'take up his cross daily'],
+        ['Philippians 1:29', 'not only to believe, but also to suffer'],
+      ],
+      records: [
+        { source: 'Bill Bright, The Four Spiritual Laws', date: 'booklet form from 1965', note: 'The first of the four laws is that Elohim loves you and offers a wonderful plan for your life. The sentence enters the modern assembly here and is printed in the hundreds of millions.' },
+      ],
+      finding: 'The verse is written to a nation already in Babylon, and the sentence before it says seventy years first. They were told to build houses and plant gardens there, and most of them died in that country. When Yahuah described the plan for the man who wrote most of the letters, the first thing He said was how much he would suffer, and that sentence never makes it onto the tract.',
     },
   },
 

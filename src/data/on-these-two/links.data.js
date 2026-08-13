@@ -1,4 +1,5 @@
-// links.data 0812 V18.js
+// links.data 0812 V19.js
+// V19. Baptism, Worship, Spirit, Pulpit filler: 18 links added (5 baptism, 1 bread, 5 worship, 2 spirit, 5 filler). 232 total.
 // V18. Israel and the nations: 14 links added (10 trinity.israel, 4 torah.israel). 214 total.
 // V17. Authority and Tithes: 13 links added (7 trinity.authority, 5 torah.tithes, 1 trinity.tithes). 200 total.
 // V16. Son, Sabbath, Feasts, Food: 15 links added (5 trinity.son, 2 torah.sabbath, 4 torah.feasts, 4 torah.food). 187 total.
@@ -3319,6 +3320,301 @@ export const links = {
     ],
     records: [],
     finding: 'Paul says the older writings were written for our learning, and he is writing to Greeks.',
+  },
+
+
+  'trinity.baptism.word-emptied-of-its-action': {
+    title: 'A Word Emptied of Its Action',
+    line: 'A word meaning to plunge under is kept while the action it names is dropped.',
+    witnesses: [
+      ['Acts 8:38', 'they went DOWN both into the water'],
+      ['Acts 8:39', 'when they were come UP OUT OF the water'],
+      ['Mark 1:10', 'coming up out of the water'],
+      ['John 3:23', 'because there was much water there'],
+      ['Romans 6:4', 'buried with him by immersion into death'],
+      ['Colossians 2:12', 'buried with him, wherein also ye are risen with him'],
+    ],
+    records: [
+      { source: 'The Didache, chapter 7', date: 'about AD 100\u2013120', note: 'Living water is directed first, then other water, and pouring on the head is permitted where there is not enough. The earliest departure is an allowance for scarcity, and the allowance is what remains.' },
+      { source: 'Cyprian of Carthage, letter to Magnus', date: 'about AD 255', note: 'Cyprian defends sprinkling for the sick who cannot be immersed, arguing it is sufficient. The exception is argued for on grounds of necessity, in writing, and then becomes the rule.' },
+    ],
+    finding: 'A burial is the picture given, and nobody buries a man by sprinkling dirt on him.',
+  },
+
+  'trinity.baptism.exception-made-the-rule': {
+    title: 'The Exception Made the Rule',
+    line: 'An allowance made for the dying and the waterless becomes the ordinary practice.',
+    witnesses: [
+      ['Acts 8:36', 'see, here is water, what doth hinder me to be immersed?'],
+      ['Acts 16:33', 'he took them the same hour of the night, and washed their stripes'],
+      ['Acts 2:41', 'the same day there were added about three thousand souls'],
+      ['Acts 10:47', 'can any man forbid water, that these should not be immersed?'],
+      ['John 3:23', 'John also was immersing in Aenon, because there was much water'],
+    ],
+    records: [
+      { source: 'Cyprian of Carthage, letter to Magnus', date: 'about AD 255', note: 'Aspersion defended for the sick as a concession. Within a few centuries the concession is the ordinary form across most of the west.' },
+    ],
+    finding: 'The eunuch stopped a chariot because there was water, which is a strange thing to do if any water will do.',
+  },
+
+  'trinity.baptism.rite-made-the-carrier': {
+    title: 'The Rite Made the Carrier',
+    line: 'The bread and the cup are said to hold what only Yahuah gives.',
+    witnesses: [
+      ['Luke 22:19', 'this do in REMEMBRANCE of me'],
+      ['1 Corinthians 11:24', 'this do in remembrance of me, said a second time'],
+      ['1 Corinthians 11:26', 'ye do SHEW the Master\u2019s death till he come'],
+      ['John 6:63', 'the flesh profiteth nothing, the words that I speak, they are spirit'],
+      ['Leviticus 17:14', 'ye shall eat the blood of no manner of flesh'],
+      ['Acts 15:20', 'that they abstain from blood, written after the resurrection'],
+      ['Acts 15:29', 'abstain from blood, repeated in the letter sent out'],
+    ],
+    records: [
+      { source: 'Fourth Lateran Council, constitution Firmiter', date: '1215', note: 'The bread and wine defined as changed in substance, with the word transubstantiated used in a council document for the first time.' },
+      { source: 'Council of Trent, thirteenth session, canons on the Eucharist', date: '11 October 1551', note: 'Anathema pronounced on anyone who says the substance of bread and wine remains. The doctrine is not merely taught, it is enforced by name.' },
+    ],
+    finding: 'He said do this in remembrance, and remembrance is a word about something absent.',
+  },
+
+  'trinity.baptism.blood-command-crossed': {
+    title: 'A Standing Command About Blood Crossed',
+    line: 'A prohibition repeated after the resurrection is set aside by a doctrine about the cup.',
+    witnesses: [
+      ['Leviticus 17:10', 'I will set my face against that soul that eateth blood'],
+      ['Leviticus 17:12', 'no soul of you shall eat blood, neither any stranger'],
+      ['Genesis 9:4', 'flesh with the life thereof, which is the blood, shall ye not eat'],
+      ['Acts 15:20', 'abstain from blood, decided by the assembly at Jerusalem'],
+      ['Acts 15:29', 'from which if ye keep yourselves, ye shall do well'],
+      ['Acts 21:25', 'the same four things repeated years later'],
+    ],
+    records: [],
+    finding: 'The command predates Sinai, is repeated to the nations, and is repeated again years on.',
+  },
+
+  'trinity.baptism.act-emptied-into-a-gesture': {
+    title: 'The Act Emptied Into a Gesture',
+    line: 'The other error. What the writings tie to washing and to burial is called a formality.',
+    witnesses: [
+      ['Acts 2:38', 'repent, and be immersed every one of you for the remission of sins'],
+      ['Acts 22:16', 'arise, and be immersed, and WASH AWAY thy sins'],
+      ['1 Peter 3:21', 'immersion doth also now save us'],
+      ['Romans 6:3', 'immersed into Messiah were immersed into his death'],
+      ['Romans 6:4', 'buried with him, that we also should walk in newness of life'],
+      ['Mark 16:16', 'he that believeth and is immersed shall be saved'],
+      ['Colossians 2:12', 'buried with him, and risen with him'],
+    ],
+    records: [],
+    finding: 'Ananias told Saul to get up and wash away his sins, and Saul had already met Him on the road.',
+  },
+
+  'torah.bread.appointed-meal-made-a-schedule': {
+    title: 'An Appointed Meal Put on a Schedule',
+    line: 'A meal with a date on it is performed whenever the assembly decides to perform it.',
+    witnesses: [
+      ['Exodus 12:14', 'a memorial, a feast by an ordinance for ever'],
+      ['Leviticus 23:5', 'the fourteenth day of the first month at even'],
+      ['Numbers 9:2', 'keep the passover at his APPOINTED season'],
+      ['Numbers 9:3', 'according to all the rites of it shall ye keep it'],
+      ['Luke 22:15', 'with desire I have desired to eat this passover with you'],
+      ['1 Corinthians 11:26', 'as often as ye eat this bread, ye do shew his death till he come'],
+      ['1 Corinthians 5:8', 'therefore let us KEEP the feast'],
+    ],
+    records: [
+      { source: 'Fourth Lateran Council, canon 21', date: '1215', note: 'Confession and communion made compulsory at least once a year, with penalties for neglect. The meal becomes an obligation the institution administers and measures.' },
+      { source: 'Council of Trent, twenty-second session', date: '17 September 1562', note: 'The rite defined as a sacrifice offered by a priest. The memorial has become an offering, and it has an officiant.' },
+    ],
+    finding: 'The meal had a date, and the date was called an ordinance for ever.',
+  },
+
+  'trinity.worship.walk-reduced-to-a-daily-slot': {
+    title: 'The Walk Reduced to a Daily Slot',
+    line: 'A life is discharged by an appointment kept alone, early, with a cup of coffee.',
+    witnesses: [
+      ['Deuteronomy 6:7', 'when thou sittest, walkest, liest down, and risest up'],
+      ['1 Thessalonians 5:17', 'pray without ceasing'],
+      ['Colossians 3:17', 'whatsoever ye do in word or deed, do all in his name'],
+      ['James 1:22', 'be ye doers of the word, and not hearers only'],
+      ['Micah 6:8', 'to do justly, to love mercy, and to walk humbly'],
+      ['Matthew 6:6', 'enter into thy closet, and pray to thy Father in secret'],
+    ],
+    records: [],
+    finding: 'Moses names four times of day and all of them together are the whole day.',
+  },
+
+  'trinity.worship.experience-made-the-measure': {
+    title: 'The Experience Made the Measure',
+    line: 'Whether the time counted is judged by whether it felt like anything.',
+    witnesses: [
+      ['Jeremiah 17:9', 'the heart is deceitful above all things'],
+      ['Matthew 6:6', 'thy Father which seeth in secret shall reward thee openly'],
+      ['1 John 2:3', 'hereby we know that we know him, if we keep his commandments'],
+      ['Matthew 7:20', 'by their fruits ye shall know them'],
+      ['Luke 18:11', 'the man who left satisfied with how it went'],
+      ['Luke 18:13', 'the one who went down to his house justified'],
+    ],
+    records: [],
+    finding: 'The man who left that temple feeling good about it is the one who went home unjustified.',
+  },
+
+  'trinity.worship.accusers-line-repeated-as-a-promise': {
+    title: 'The Accuser\u2019s Line Repeated as a Promise',
+    line: 'A phrase spoken by the accuser is prayed as though Yahuah had offered it.',
+    witnesses: [
+      ['Job 1:10', 'hast not thou made an hedge about him', 'These are the words. They are in the mouth of the accuser, spoken as an accusation, and they are the only place the phrase appears.'],
+      ['Job 1:12', 'and Yahuah said, behold, all that he hath is in thy power'],
+      ['Job 1:21', 'Yahuah gave, and Yahuah hath taken away'],
+      ['John 16:33', 'in the world ye shall have tribulation'],
+      ['Acts 14:22', 'through much tribulation enter into the kingdom'],
+      ['2 Timothy 3:12', 'all that will live godly shall suffer persecution'],
+      ['Psalm 91:15', 'I will be with him IN trouble, not instead of it'],
+    ],
+    records: [],
+    finding: 'The only mouth that phrase comes out of in all the writings belongs to the accuser.',
+  },
+
+  'trinity.worship.effort-made-the-obstacle': {
+    title: 'Effort Made the Obstacle',
+    line: 'Doing anything is recast as getting in the way of what Yahuah would otherwise do.',
+    witnesses: [
+      ['Philippians 2:12', 'work out your own deliverance with fear and trembling'],
+      ['Philippians 2:13', 'for it is Elohim which worketh in you, both to will and to do'],
+      ['Nehemiah 4:9', 'we made our prayer, AND set a watch against them'],
+      ['James 2:17', 'belief, if it hath not works, is dead'],
+      ['2 Thessalonians 3:10', 'if any would not work, neither should he eat'],
+      ['1 Corinthians 15:10', 'I laboured more abundantly than they all'],
+      ['Joshua 1:9', 'be strong and of a good courage, said with a command attached'],
+    ],
+    records: [
+      { source: 'Hannah Whitall Smith, The Christian\u2019s Secret of a Happy Life', date: '1875', note: 'The surrendered life taught as a method, in a book that sells enormously and shapes a century of devotional writing. The phrase itself belongs to the Higher Life teaching that spreads from the Keswick meetings the same year.', dispute: 'The exact wording cannot be traced to one sentence in one book, and it circulates in several forms before settling. The teaching it summarizes is documented, dated, and named.' },
+    ],
+    finding: 'Nehemiah prayed and posted a guard, and the sentence holds both halves with an and.',
+  },
+
+  'trinity.worship.courtroom-line-made-an-attendance-promise': {
+    title: 'A Courtroom Line Made an Attendance Promise',
+    line: 'A sentence about witnesses in a judgment is read as a promise to show up at small meetings.',
+    witnesses: [
+      ['Matthew 18:15', 'if thy brother shall trespass against thee, go and tell him'],
+      ['Matthew 18:16', 'that in the mouth of two or three WITNESSES every word may be established'],
+      ['Matthew 18:17', 'tell it unto the assembly'],
+      ['Matthew 18:18', 'whatsoever ye shall bind on earth shall be bound in heaven'],
+      ['Matthew 18:20', 'where two or three are gathered together in my name'],
+      ['Deuteronomy 19:15', 'at the mouth of two witnesses shall the matter be established'],
+      ['Psalm 139:7', 'whither shall I flee from thy presence?'],
+    ],
+    records: [],
+    finding: 'The two or three of that passage are witnesses, and the verse four lines up says so.',
+  },
+
+  'trinity.spirit.one-word-doing-two-jobs': {
+    title: 'One Word Doing Two Jobs',
+    line: 'Personal temperament and the breath of Yahuah come to share a single word.',
+    witnesses: [
+      ['1 Peter 3:4', 'a meek and quiet spirit, said of a disposition', 'Scripture does use the word this way and there is nothing wrong with it. The blur begins only after the breath of Yahuah has been made a person, because then the two uses stop being distinguishable in ordinary speech.'],
+      ['Numbers 14:24', 'my servant Caleb, because he had another spirit with him'],
+      ['Proverbs 16:32', 'he that ruleth his spirit than he that taketh a city'],
+      ['Genesis 1:2', 'the breath of Elohim moved upon the face of the waters'],
+      ['Acts 2:17', 'I will pour out of my Spirit upon all flesh'],
+      ['John 20:22', 'he breathed on them, and saith, receive ye the Set-apart Spirit'],
+    ],
+    records: [],
+    finding: 'One word carries a man\u2019s temper and the breath of Yahuah, and only one of them can be poured out.',
+  },
+
+  'trinity.spirit.temperament-read-as-evidence': {
+    title: 'Temperament Read as Evidence',
+    line: 'A pleasant nature is spoken of as though it were proof of Yahuah in someone.',
+    witnesses: [
+      ['Matthew 7:20', 'by their fruits ye shall know them'],
+      ['Matthew 7:22', 'many will say to me in that day, have we not prophesied in thy name?'],
+      ['Galatians 5:22', 'the fruit of the Spirit is love, joy, peace, longsuffering'],
+      ['Galatians 5:23', 'meekness, temperance, against such there is no law'],
+      ['1 Samuel 16:7', 'man looketh on the outward appearance'],
+      ['2 Corinthians 11:14', 'transformed into an angel of light'],
+      ['1 John 4:1', 'try the spirits, whether they are of Elohim'],
+    ],
+    records: [],
+    finding: 'Fruit takes years to show, and a pleasant manner takes an afternoon.',
+  },
+
+  'trinity.filler.temptation-verse-moved-to-hardship': {
+    title: 'A Verse About Temptation Moved to Hardship',
+    line: 'A promise about being tempted is applied to whatever a man is carrying.',
+    witnesses: [
+      ['1 Corinthians 10:13', 'there hath no TEMPTATION taken you but such as is common to man'],
+      ['1 Corinthians 10:13', 'will with the temptation also make a way to escape'],
+      ['2 Corinthians 1:8', 'we were pressed out of measure, ABOVE STRENGTH'],
+      ['2 Corinthians 1:9', 'we had the sentence of death in ourselves'],
+      ['2 Corinthians 1:9', 'that we should not trust in ourselves, but in Elohim which raiseth the dead'],
+      ['2 Corinthians 12:9', 'my strength is made perfect in weakness'],
+      ['Psalm 34:18', 'Yahuah is nigh unto them that are of a broken heart'],
+    ],
+    records: [],
+    finding: 'Paul says outright that he was loaded beyond his strength, and says why.',
+  },
+
+  'trinity.filler.comfort-substituted-for-presence': {
+    title: 'A Sentence Substituted for Presence',
+    line: 'A phrase is offered so that something can be said and the moment can end.',
+    witnesses: [
+      ['Job 2:13', 'they sat down with him seven days, and none spake a word'],
+      ['Job 16:2', 'miserable comforters are ye all'],
+      ['Romans 12:15', 'weep with them that weep'],
+      ['John 11:35', 'Yahushua wept, standing at a grave He was about to open'],
+      ['Proverbs 25:20', 'as songs to an heavy heart, so is he that singeth songs to it'],
+      ['Ecclesiastes 3:7', 'a time to keep silence, and a time to speak'],
+    ],
+    records: [],
+    finding: 'Job\u2019s friends were doing well for seven days, and they were not saying anything.',
+  },
+
+  'trinity.filler.reason-supplied-for-everything': {
+    title: 'A Reason Supplied for Everything',
+    line: 'Every event is assigned a purpose, so nothing is ever simply wrong.',
+    witnesses: [
+      ['Ecclesiastes 9:11', 'time and chance happeneth to them all'],
+      ['Luke 13:4', 'those eighteen, think ye that they were sinners above all men?'],
+      ['Luke 13:5', 'I tell you, Nay'],
+      ['John 9:2', 'who did sin, this man, or his parents?'],
+      ['John 9:3', 'neither hath this man sinned, nor his parents'],
+      ['Romans 8:28', 'all things work together for good TO THEM THAT LOVE Elohim'],
+      ['Job 42:7', 'ye have not spoken of me the thing that is right, as my servant Job hath'],
+    ],
+    records: [],
+    finding: 'He was asked directly whose fault a disaster was and answered that it was nobody\u2019s.',
+  },
+
+  'trinity.filler.plan-made-personal-and-pleasant': {
+    title: 'The Plan Made Personal and Pleasant',
+    line: 'A promise made to a nation in exile is handed to an individual as a forecast.',
+    witnesses: [
+      ['Jeremiah 29:10', 'after SEVENTY YEARS be accomplished at Babylon'],
+      ['Jeremiah 29:11', 'I know the thoughts that I think toward YOU, plural, a nation'],
+      ['Jeremiah 29:5', 'build ye houses, and dwell in them, and plant gardens'],
+      ['Jeremiah 29:7', 'seek the peace of the city whither I have caused you to be carried away'],
+      ['Acts 9:16', 'I will shew him how great things he must suffer for my name'],
+      ['John 21:18', 'another shall gird thee, and carry thee whither thou wouldest not'],
+      ['2 Timothy 3:12', 'all that will live godly shall suffer persecution'],
+    ],
+    records: [
+      { source: 'Bill Bright, The Four Spiritual Laws', date: 'booklet form from 1965', note: 'The first of the four laws states that Elohim loves you and offers a wonderful plan for your life. The sentence enters the language of the modern assembly here and is printed in the hundreds of millions.' },
+    ],
+    finding: 'The verse promises seventy years in Babylon first, and most of the hearers died there.',
+  },
+
+  'trinity.filler.hard-word-never-included': {
+    title: 'The Hard Word Left Out of the Plan',
+    line: 'The plan is described using only the half of the calling that sounds like good news.',
+    witnesses: [
+      ['Acts 9:16', 'how great things he must suffer for my name\u2019s sake'],
+      ['Luke 9:23', 'let him deny himself, and take up his cross daily'],
+      ['Philippians 1:29', 'not only to believe on him, but also to suffer for his sake'],
+      ['1 Peter 4:12', 'think it not strange concerning the fiery trial'],
+      ['John 16:33', 'in the world ye shall have tribulation'],
+      ['Matthew 10:22', 'ye shall be hated of all men for my name\u2019s sake'],
+    ],
+    records: [],
+    finding: 'The first thing said about the greatest missionary\u2019s calling was how much he would suffer.',
   },
 
 };
