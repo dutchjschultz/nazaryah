@@ -1,4 +1,5 @@
-// chains.data 0811 V11.js
+// chains.data 0811 V12.js
+// V12. Images and idols + Tithes: 4 chains added (3 Images and idols, 1 Tithes and money). 85 total.
 // V11. The Trinity and The Father: 9 chains added (6 The Trinity, 3 The Father). 81 total.
 // V10. The Calendar and Holidays: 11 chains added (5 Calendar, 6 Holidays). 72 total.
 // V9. Salvation: 7 chains added (5 trinity, 2 torah). 61 total.
@@ -2144,6 +2145,125 @@ export const chains = [
         { source: 'First Council of Nicaea, the term homoousios', date: 'AD 325', note: 'Of one substance written into the creed and made the test of standing. The word appears nowhere in the writings and was contested by men in the room.' },
       ],
       finding: 'He said the Father is greater, called the Father His Elohim after the resurrection, and said He did not know the day. Paul says the head of Messiah is Elohim and that the Son will be subject at the end. Equal is the one word none of them used, and the word the council reached for instead was invented for the occasion.',
+    },
+  },
+
+
+  {
+    id: 'statues-are-a-tribute-to-the-person',
+    saying: 'Statues are a tribute to the person',
+    hinge: 'torah',
+    category: 'Images and idols',
+    spokenBy: 'said in front of a shrine, with candles already lit at the base',
+    aliases: ['statue', 'tribute', 'saint', 'veneration', 'icon', 'shrine', 'honor', 'relic'],
+    links: [
+      'torah.hinge',
+      'torah.images.second-command-narrowed',
+      'torah.images.honor-split-from-worship',
+      'torah.images.old-figures-renamed',
+      'torah.images.tribute-offered-as-the-defense',
+      'trinity.assembly.mediator-installed',
+    ],
+    verdict: {
+      witnesses: [
+        ['Exodus 20:4', 'thou shalt not make unto thee any graven image'],
+        ['Exodus 20:5', 'nor bow down thyself to them, NOR serve them'],
+        ['2 Kings 18:4', 'Hezekiah brake the brasen serpent Moses had made'],
+        ['Isaiah 42:8', 'my glory will I not give to another'],
+        ['Revelation 19:10', 'see thou do it not, worship Elohim'],
+      ],
+      records: [
+        { source: 'Second Council of Nicaea', date: 'AD 787', note: 'Veneration of images permitted by vote, with anathema for refusing. The distinction men now use to keep the practice was created here.' },
+      ],
+      finding: 'Moses made the bronze serpent at Yahuah\u2019s own command, and Hezekiah broke it to pieces once men burned incense to it. The category that separates honoring from worshipping was not found in the writings, it was written by a council in seven eighty-seven, and a messenger in Revelation twice refuses the honor a statue is given without argument.',
+    },
+  },
+
+  {
+    id: 'thats-just-what-a-star-looks-like',
+    saying: 'That\u2019s just what a star looks like',
+    hinge: 'torah',
+    category: 'Images and idols',
+    spokenBy: 'said about the barn, the hat, the steeple, and the ceiling',
+    aliases: ['star', 'five point', 'pentagram', 'six point', 'barn star', 'symbol', 'decoration', 'remphan'],
+    links: [
+      'torah.hinge',
+      'torah.images.second-command-narrowed',
+      'torah.images.shape-never-questioned',
+      'torah.holidays.object-declared-neutral',
+      'torah.images.meaning-offered-instead-of-the-command',
+    ],
+    verdict: {
+      witnesses: [
+        ['Amos 5:26', 'ye have borne the star of your elohim, which ye made'],
+        ['Acts 7:43', 'the star of your god Remphan, figures which ye made'],
+        ['Deuteronomy 4:19', 'lest thou be driven to worship the host of heaven'],
+        ['Jeremiah 10:2', 'be not dismayed at the signs of heaven'],
+        ['Deuteronomy 4:15', 'ye saw no manner of similitude'],
+      ],
+      finding: 'No star has ever looked like that to any eye that has looked up. The shape is a drawn convention, and Amos names a star men carried in worship and says plainly that they made it themselves. Stephen quoted that line back while they were picking up stones. The trouble is not that the shape is proven to mean something, it is that nobody has ever once been asked why it is on everything.',
+    },
+  },
+
+  {
+    id: 'the-cross-is-a-sign-of-jesus-dying',
+    saying: 'The cross is a sign of Jesus dying',
+    hinge: 'torah',
+    category: 'Images and idols',
+    spokenBy: 'said about the one around the neck, and the one on the hat',
+    aliases: ['cross', 'crucifix', 'necklace', 'symbol', 'constantine', 'chi rho', 'stake', 'tree'],
+    links: [
+      'torah.hinge',
+      'torah.images.second-command-narrowed',
+      'torah.images.symbol-adopted-late',
+      'torah.holidays.pagan-frame-absorbed',
+      'torah.images.meaning-offered-instead-of-the-command',
+      'torah.sunday.day-of-the-sun',
+    ],
+    verdict: {
+      witnesses: [
+        ['Acts 5:30', 'whom ye slew and hanged on a tree'],
+        ['Galatians 3:13', 'cursed is every one that hangeth on a tree'],
+        ['1 Corinthians 1:18', 'the preaching of it, and not an emblem'],
+        ['Deuteronomy 4:15', 'ye saw no manner of similitude'],
+        ['John 4:24', 'worship in spirit and in truth'],
+      ],
+      records: [
+        { source: 'Constantine and the labarum', date: 'AD 312 onward', note: 'The mark becomes an imperial military standard before it becomes a devotional emblem.' },
+        { source: 'The abolition of crucifixion under Constantine', date: 'about AD 337', note: 'The execution ends under the same house that adopted its sign.' },
+      ],
+      finding: 'The argument here is not about the shape of the wood, which can be fought to a draw all day. It is about the emblem. For three hundred years the assemblies used no such mark at all, and it arrives with an emperor who saw something before a battle and put it on a standard. Peter called it a tree. Paul called it a curse. Neither one wore it.',
+    },
+  },
+
+  {
+    id: 'god-wants-you-blessed',
+    saying: 'God wants you blessed',
+    hinge: 'trinity',
+    category: 'Tithes and money',
+    spokenBy: 'said from a platform, to a full room, right before the offering',
+    aliases: ['blessed', 'blessing', 'favor', 'increase', 'prosperity', 'abundance', 'overflow', 'wants you rich'],
+    links: [
+      'trinity.hinge',
+      'trinity.mechanism.man-works-the-lever',
+      'trinity.mechanism.word-given-force',
+      'trinity.money.blessing-measured-in-money',
+      'trinity.money.wealth-read-as-a-verdict',
+      'trinity.mechanism.gift-made-a-lever',
+    ],
+    verdict: {
+      witnesses: [
+        ['Luke 6:20', 'blessed be ye poor, for yours is the kingdom'],
+        ['Luke 6:24', 'but woe unto you that are rich'],
+        ['Matthew 5:10', 'blessed are they which are persecuted'],
+        ['Job 1:8', 'a perfect and upright man, who lost everything'],
+        ['Psalm 73:12', 'these are the ungodly, who prosper in the world'],
+        ['1 Timothy 6:5', 'supposing that gain is godliness'],
+      ],
+      records: [
+        { source: 'Oral Roberts, Miracle of Seed-Faith', date: '1970', note: 'Giving reframed as planting with a harvest owed back, and the language carried into every appeal after it.' },
+      ],
+      finding: 'The sentence is true and the meaning has been swapped out underneath it. He does want His people blessed, and every blessing He listed on that mountain went to somebody with nothing. Blessed are the poor. Blessed are the persecuted. Job was called perfect and upright and lost the whole estate, and the Psalm says flatly that the ungodly are the ones prospering. Paul had a name for men who read a bank balance as a verdict.',
     },
   },
 

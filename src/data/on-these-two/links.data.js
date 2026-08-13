@@ -1,4 +1,5 @@
-// links.data 0811 V13.js
+// links.data 0811 V14.js
+// V14. Images and idols + Tithes: 9 links added (7 torah.images, 2 trinity.money). 162 total.
 // V13. The Trinity and The Father: 13 links added (8 trinity.trinity, 5 trinity.father). 153 total.
 // V12. The Calendar and Holidays: 15 links added (7 torah.calendar, 8 torah.holidays). 140 total.
 // V11. Salvation: 15 links added (13 trinity.salvation, 2 torah.salvation). 125 total.
@@ -2334,6 +2335,158 @@ export const links = {
       { source: 'First Council of Nicaea, the term homoousios', date: 'AD 325', note: 'Of one substance written into the creed and made the test of standing. The word appears nowhere in the writings, and it was contested by men who were present in the room.' },
     ],
     finding: 'He called the Father His Elohim, after the resurrection, with His own mouth.',
+  },
+
+
+  'torah.images.second-command-narrowed': {
+    title: 'The Second Command Narrowed to Foreign Gods',
+    line: 'A command about images is read as a command about other gods only.',
+    witnesses: [
+      ['Exodus 20:3', 'thou shalt have no other elohim before me, the FIRST command'],
+      ['Exodus 20:4', 'thou shalt not make unto thee any graven image, the SECOND'],
+      ['Exodus 20:5', 'thou shalt not bow down thyself to them, nor serve them'],
+      ['Deuteronomy 4:15', 'ye saw no manner of similitude'],
+      ['Deuteronomy 4:16', 'lest ye corrupt yourselves, and make you a graven image'],
+      ['Exodus 32:4', 'the calf was made for Yahuah, not for a rival'],
+    ],
+    records: [
+      { source: 'Second Council of Nicaea, the decree on images', date: 'AD 787', note: 'The veneration of images is defined and made binding, with anathema for those who refuse. The council draws a distinction between veneration and worship in order to permit the first.' },
+      { source: 'The Roman catechism numbering of the commandments', date: 'from the medieval period onward', note: 'The command against graven images is folded into the first and the tenth is split in two to keep the count at ten. The prohibition survives on the page and disappears from the list taught.', dispute: 'The numbering is ancient and predates any argument about images, and Augustine used a similar division. The effect on catechism teaching is not in question; the motive behind the original numbering is.' },
+    ],
+    finding: 'Having no other elohim is the first command, and the image command is the second one.',
+  },
+
+  'torah.images.honor-split-from-worship': {
+    title: 'Honor Split Away From Worship',
+    line: 'A distinction is drawn between honoring an image and worshipping it, and the first is permitted.',
+    witnesses: [
+      ['Exodus 20:5', 'thou shalt not bow down thyself to them, NOR serve them'],
+      ['Leviticus 26:1', 'nor rear you up a standing image, to bow down unto it'],
+      ['Isaiah 42:8', 'my glory will I not give to another, neither my praise to graven images'],
+      ['Acts 10:25', 'Cornelius fell at his feet, and Peter took him up'],
+      ['Revelation 19:10', 'see thou do it not, worship Elohim'],
+      ['Revelation 22:9', 'the messenger refuses it a second time'],
+    ],
+    records: [
+      { source: 'Second Council of Nicaea', date: 'AD 787', note: 'Veneration of images permitted and worship reserved, with the distinction made a term of standing. The category men now use to keep the practice is created here, by vote.' },
+    ],
+    finding: 'The command names bowing down and serving as two separate things and forbids both.',
+  },
+
+  'torah.images.old-figures-renamed': {
+    title: 'Old Figures Kept and Renamed',
+    line: 'Existing figures are given new names and kept in the same places.',
+    witnesses: [
+      ['Deuteronomy 12:3', 'destroy the names of them out of that place'],
+      ['Exodus 23:13', 'make no mention of the name of other elohim'],
+      ['Hosea 2:17', 'I will take away the names of Baalim out of her mouth'],
+      ['Deuteronomy 12:30', 'enquire not how these nations served their gods'],
+      ['2 Kings 18:4', 'Hezekiah brake the brasen serpent Moses had made'],
+    ],
+    records: [
+      { source: 'Gregory the Great, letter to Abbot Mellitus, carried in Bede', date: 'AD 601', note: 'The mission to England instructed not to destroy the pagan temples but to convert them, and to let the people keep the festival under a new name. Renaming rather than removing is stated as policy, in writing, by the man ordering it.' },
+      { source: 'The Pantheon in Rome rededicated as a church', date: 'AD 609', note: 'A temple built for all the gods is rededicated to Mary and the martyrs and kept in continuous use. The building did not change and the name did.' },
+    ],
+    finding: 'Hezekiah broke the bronze serpent Moses himself had made, once men burned incense to it.',
+  },
+
+  'torah.images.tribute-offered-as-the-defense': {
+    title: 'Tribute Offered as the Defense',
+    line: 'The figure is said to honor a person rather than to receive anything.',
+    witnesses: [
+      ['Isaiah 42:8', 'my glory will I not give to another'],
+      ['Numbers 21:9', 'the serpent of brass, made at His own command'],
+      ['2 Kings 18:4', 'and they burned incense to it, so he brake it'],
+      ['Exodus 32:5', 'Aaron proclaimed a feast to YAHUAH, over the calf'],
+      ['1 Corinthians 10:14', 'flee from idolatry'],
+      ['1 John 5:21', 'little children, keep yourselves from idols'],
+    ],
+    records: [],
+    finding: 'The bronze serpent was made at His own command and was still broken to pieces.',
+  },
+
+  'torah.images.symbol-adopted-late': {
+    title: 'The Symbol Adopted Three Centuries Late',
+    line: 'A mark absent from the first assemblies becomes the sign of the faith.',
+    witnesses: [
+      ['1 Corinthians 1:18', 'the preaching of the tree, not an emblem of it'],
+      ['Galatians 6:14', 'glory in the tree, meaning the event'],
+      ['Deuteronomy 4:15', 'ye saw no manner of similitude'],
+      ['John 4:24', 'they that worship him must worship in spirit and in truth'],
+      ['Acts 5:30', 'whom ye slew and hanged on a tree'],
+      ['Galatians 3:13', 'cursed is every one that hangeth on a tree'],
+    ],
+    records: [
+      { source: 'The absence of the symbol in the earliest assemblies', date: 'first three centuries', note: 'The fish, the anchor, and the Chi-Rho monogram appear in early Christian art. The cross as a devotional emblem does not appear in surviving use until the fourth century, three hundred years after the event it marks.' },
+      { source: 'Constantine and the labarum, reported by Eusebius and Lactantius', date: 'AD 312 onward', note: 'A sign in the sky before the battle at the Milvian Bridge, and a standard carried afterward. The mark becomes an imperial military ensign before it becomes a devotional one.', dispute: 'Eusebius and Lactantius disagree on what the sign was and Eusebius writes decades later. What is not disputed is that the symbol enters public and imperial use at this point and not before.' },
+      { source: 'The abolition of crucifixion under Constantine', date: 'about AD 337', note: 'The execution method is ended by the same house that adopted its symbol, which is the point at which the mark stops meaning an execution and starts meaning an allegiance.' },
+    ],
+    finding: 'For three hundred years the assemblies used no such emblem at all.',
+  },
+
+  'torah.images.meaning-offered-instead-of-the-command': {
+    title: 'The Meaning Offered Instead of the Command',
+    line: 'What the object stands for is offered as the reason it is permitted.',
+    witnesses: [
+      ['Deuteronomy 12:30', 'enquire not how these nations served their gods'],
+      ['Deuteronomy 12:31', 'thou shalt not do so unto Yahuah thy Elohim'],
+      ['1 Samuel 15:22', 'to obey is better than sacrifice'],
+      ['Matthew 15:9', 'in vain do they worship me'],
+      ['Exodus 32:8', 'these be thy gods, said of a calf made for Him'],
+      ['Colossians 2:23', 'a shew of wisdom in will worship'],
+    ],
+    records: [],
+    finding: 'A good meaning attached to a forbidden thing was Aaron\u2019s exact defense at the calf.',
+  },
+
+  'torah.images.shape-never-questioned': {
+    title: 'A Shape Nobody Was Ever Asked to Explain',
+    line: 'A figure appears everywhere and nobody is asked where it came from.',
+    witnesses: [
+      ['Amos 5:26', 'ye have borne the star of your elohim, which ye made'],
+      ['Acts 7:43', 'Stephen quotes it back, the star of your god Remphan'],
+      ['Acts 7:42', 'given up to worship the host of heaven'],
+      ['Deuteronomy 4:19', 'lest thou be driven to worship the host of heaven'],
+      ['Deuteronomy 17:3', 'served other elohim, either the sun, or moon, or any of the host'],
+      ['Jeremiah 10:2', 'be not dismayed at the signs of heaven'],
+    ],
+    records: [],
+    finding: 'A star carried in worship is named twice, once by a prophet and once by a man being stoned.',
+  },
+
+  'trinity.money.blessing-measured-in-money': {
+    title: 'Blessing Measured in Money',
+    line: 'A word covering favor, protection, and peace is narrowed until it means income.',
+    witnesses: [
+      ['Matthew 5:3', 'blessed are the poor in spirit'],
+      ['Matthew 5:10', 'blessed are they which are persecuted'],
+      ['Matthew 5:11', 'blessed are ye, when men shall revile you'],
+      ['Luke 6:20', 'blessed be ye poor, for yours is the kingdom'],
+      ['Luke 6:24', 'but woe unto you that are rich'],
+      ['James 1:12', 'blessed is the man that endureth temptation'],
+      ['Philippians 4:12', 'I know both how to be abased, and how to abound'],
+    ],
+    records: [],
+    finding: 'Every blessing He listed on the mountain was handed to somebody with nothing.',
+  },
+
+  'trinity.money.wealth-read-as-a-verdict': {
+    title: 'Wealth Read as a Verdict',
+    line: 'What a man has is treated as evidence of where he stands.',
+    witnesses: [
+      ['Job 1:8', 'a perfect and upright man, who lost everything'],
+      ['Job 2:3', 'still he holdeth fast his integrity, after the loss'],
+      ['Psalm 73:3', 'I was envious when I saw the prosperity of the wicked'],
+      ['Psalm 73:12', 'these are the ungodly, who prosper in the world'],
+      ['Jeremiah 12:1', 'wherefore doth the way of the wicked prosper?'],
+      ['Luke 16:25', 'thou in thy lifetime receivedst thy good things'],
+      ['1 Timothy 6:5', 'supposing that gain is godliness'],
+    ],
+    records: [
+      { source: 'Oral Roberts, Miracle of Seed-Faith', date: '1970', note: 'Giving reframed as planting with a harvest owed back. The language enters every television appeal after it and the measure of standing becomes the return.' },
+      { source: 'Kenneth Hagin, How to Write Your Own Ticket with God', date: '1979', note: 'A guaranteed procedure in four steps under a title that says the whole thing out loud.' },
+    ],
+    finding: 'Paul names men who suppose that gain is godliness, and names it as the error.',
   },
 
 };
