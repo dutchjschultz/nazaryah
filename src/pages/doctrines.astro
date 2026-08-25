@@ -1,23 +1,57 @@
 ---
-// src/pages/doctrines.astro · 0804 V3
+// src/pages/doctrines.astro · 0824 V4
+// V4: the fixed count is gone from the deck line and the meta description — the
+// list grows and a number in a string rots. Added the hub introduction beneath
+// the links: what the page is, and that nothing on it is new.
 // V3: the section links + count render from the data file (sections / doctrines),
 // not hand-written markup — adding a doctrine never touches this page.
 // V2: this URL is the DOCTRINES landing — two links only, no cards. The old "Ten
 // Doctrines the Church Got Wrong" grid moved to /doctrines/the-departure.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { sections, doctrines } from '../data/doctrines.data.js';
+import { sections } from '../data/doctrines.data.js';
 ---
 
 <BaseLayout
   title="Doctrines — The Old Paths & The Departure | Nazaryah"
-  description="Two ways to read the same ten doctrines: The Old Paths, what Scripture holds, and The Departure, where the church went wrong."
+  description="Two ways to read the same doctrines: The Old Paths, what Scripture holds, and The Departure, where the church went wrong."
 >
   <div class="dl-page">
     <header class="dl-header">
       <p class="dl-eyebrow">Doctrines</p>
       <h1 class="dl-title">Two Roads From the Same Verses</h1>
-      <p class="dl-sub">Read what Scripture holds, or read where the church departed. The same {doctrines.length} doctrines, from both directions.</p>
+      <p class="dl-sub">The same doctrines, read from both directions.</p>
     </header>
+
+    <div class="dl-intro">
+      <p>
+        Two men can hold the same Bible, read the same verse, and walk away with two
+        different religions. That is not a failure of the text. It is a record of what
+        each man was handed before he ever opened it. This page sets the two readings
+        side by side and lets them be compared in the open.
+      </p>
+      <p>
+        Nothing listed here is new. There is no revelation behind it, no vision, no
+        council, no teacher who unlocked something the prophets missed. Every doctrine
+        on this page was written down before the first church door was ever hung, and
+        most of it was settled in the Law before Israel crossed the Jordan. What the
+        church calls new teaching is usually old error, and what it calls old error is
+        usually the original road. Jeremiah told a generation exactly like ours to
+        stand in the ways and look, and to ask for the old paths, where the good way
+        is, and walk in it. That is the whole assignment of this page.
+      </p>
+      <p>
+        Under the doctrines sit the Six Foundations. Hebrews 6:1-2 names them in
+        order — repentance from dead works, belief toward Yahuah, the doctrine of
+        washings, laying on of hands, resurrection of the dead, and eternal judgment —
+        and calls them the principles a believer starts from, the milk before the meat.
+        They are usually read as New Testament material. Every one of the six was
+        already operating in the Law, in the sacrifice, in the priesthood, and in the
+        promises made to the fathers. The writer of Hebrews was not introducing six new
+        things. He was listing six things his readers were expected to already know,
+        and telling them to stop circling the foundation and start building on it.
+      </p>
+      <p class="dl-intro-close">Read either road first. Both lead to the same verses.</p>
+    </div>
 
     <div class="dl-links">
       {sections.map((s) => (
@@ -44,6 +78,18 @@ import { sections, doctrines } from '../data/doctrines.data.js';
     font-weight: 700; color: #e8e2d4; margin: 0 0 0.9rem; line-height: 1.14;
   }
   .dl-sub { font-family: var(--font-body); font-style: italic; font-size: 1.1rem; color: #a89f8c; margin: 0; line-height: 1.5; }
+
+  /* Hub introduction — sits between the masthead and the two roads, so the
+     closing line hands the reader straight into the choice below it. */
+  .dl-intro { max-width: 44rem; margin: 0 auto 3rem; }
+  .dl-intro p {
+    font-family: var(--font-body); font-size: 1.08rem; line-height: 1.8;
+    color: #cfc7b6; margin: 0 0 1.3rem;
+  }
+  .dl-intro-close {
+    text-align: center; font-style: italic; color: #a89f8c !important;
+    margin: 2rem 0 0 !important;
+  }
 
   .dl-links { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; max-width: 60rem; margin: 0 auto; }
   .dl-link {

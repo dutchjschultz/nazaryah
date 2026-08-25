@@ -1,6 +1,9 @@
 ---
-// src/components/DoctrineInfo.astro · 0804 V1
-// One template for BOTH info pages. `side` picks which half of the pair is the
+// src/components/DoctrineInfo.astro · 0824 V2
+// V2: the recognition `tag` renders beneath the deck. Both halves of a pair
+// carry the identical tag, so the reader landing on either side sees the same
+// label and understands they are two readings of one question.
+// V1: One template for BOTH info pages. `side` picks which half of the pair is the
 // subject; the counterpart link is DERIVED from the same object, never stored —
 // so the round-trip can't break. Scripture shows on the Old Paths side only.
 // The tagline arrow is intentionally reversed between the two sides.
@@ -20,6 +23,7 @@ const counterpartHref = isOld
   <p class="di-kicker">{kicker}</p>
   <h1 class="di-title">{entry.title}</h1>
   <p class="di-deck">{entry.deck}</p>
+  {entry.tag && <p class="di-tag">{entry.tag}</p>}
 
   <div class="di-body">
     <p>{entry.body}</p>
@@ -69,6 +73,14 @@ const counterpartHref = isOld
     font-family: var(--font-body); font-style: italic;
     font-size: clamp(1.05rem, 1rem + 0.5vw, 1.3rem); line-height: 1.5;
     color: #a89f8c; margin: 0 0 2.2rem;
+  }
+  /* Recognition tag — muted gold small caps under the deck. When it is present
+     the deck's bottom margin is collapsed so the two read as one unit. */
+  .di-deck:has(+ .di-tag) { margin-bottom: 0.7rem; }
+  .di-tag {
+    font-family: var(--font-display); font-variant: all-small-caps;
+    font-size: 1rem; letter-spacing: 0.14em; font-weight: 600;
+    color: #9a7c46; margin: 0 0 2.2rem;
   }
   .di-body { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.85; color: #cfc7b6; }
   .di-body p { margin: 0 0 1.3rem; }

@@ -1,12 +1,13 @@
 ---
-// src/components/DoctrineGrid.astro · 0804 V1
-// The shared master-grid for BOTH doctrine pages: gold-ruled header + a grid of
-// DoctrineCards. House look carried over from the original /doctrines page. The
-// default slot is the footer (optional).
+// src/components/DoctrineGrid.astro · 0824 V2
+// V2: cards may carry a recognition `tag`; passed straight through to the card.
+// V1: The shared master-grid for BOTH doctrine pages: gold-ruled header + a grid
+// of DoctrineCards. House look carried over from the original /doctrines page.
+// The default slot is the footer (optional).
 import DoctrineCard from './DoctrineCard.astro';
 interface Props {
   eyebrow: string; title: string; subtitle: string;
-  cards: { n: string; title: string; deck: string; href: string }[];
+  cards: { n: string; title: string; deck: string; tag?: string; href: string }[];
 }
 const { eyebrow, title, subtitle, cards } = Astro.props;
 const hasFooter = Astro.slots.has('default');
@@ -27,7 +28,7 @@ const hasFooter = Astro.slots.has('default');
   </div>
 
   <div class="doctrine-grid">
-    {cards.map((c) => <DoctrineCard n={c.n} title={c.title} deck={c.deck} href={c.href} />)}
+    {cards.map((c) => <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} />)}
   </div>
 
   {hasFooter && <div class="doctrines-footer"><slot /></div>}

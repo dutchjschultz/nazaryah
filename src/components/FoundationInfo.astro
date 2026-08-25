@@ -1,6 +1,8 @@
 ---
-// src/components/FoundationInfo.astro · 0805 V1
-// Info page for a Tier-Two foundation (/doctrines/old-paths/[slug]). Same house
+// src/components/FoundationInfo.astro · 0824 V2
+// V2: the recognition `tag` renders between the deck and the anchor verse —
+// muted gold so it does not compete with the anchor's full gold beneath it.
+// V1: Info page for a Tier-Two foundation (/doctrines/old-paths/[slug]). Same house
 // look as DoctrineInfo, but a different SHAPE: the anchor verse renders in small
 // caps beneath the deck, then FOUR labeled sections in fixed order —
 //   The Stone / Where It Appears Again / What It Rules Out / The Third Witness.
@@ -25,6 +27,7 @@ const sections = [
   <p class="fi-kicker">The Old Paths</p>
   <h1 class="fi-title">{f.title}</h1>
   <p class="fi-deck">{f.deck}</p>
+  {f.tag && <p class="fi-tag">{f.tag}</p>}
   {f.anchor && <p class="fi-anchor">{f.anchor}</p>}
 
   {sections.map((s) => (
@@ -58,6 +61,13 @@ const sections = [
     font-family: var(--font-body); font-style: italic;
     font-size: clamp(1.05rem, 1rem + 0.5vw, 1.3rem); line-height: 1.5;
     color: #a89f8c; margin: 0 0 0.7rem;
+  }
+  /* Recognition tag — the foundation in church vocabulary. Muted gold, so the
+     anchor verse directly below keeps the full gold to itself. */
+  .fi-tag {
+    font-family: var(--font-display); font-variant: all-small-caps;
+    font-size: 1rem; letter-spacing: 0.14em; font-weight: 600;
+    color: #9a7c46; margin: 0 0 0.35rem;
   }
   /* Anchor verse — small caps, gold, directly beneath the deck. */
   .fi-anchor {

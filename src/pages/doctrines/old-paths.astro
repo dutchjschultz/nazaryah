@@ -1,5 +1,9 @@
 ---
-// src/pages/doctrines/old-paths.astro · 0805 V2
+// src/pages/doctrines/old-paths.astro · 0824 V3
+// V3: tier two now renders in the order of Hebrews 6:1-2, as the data file is
+// written — the V2 note telling the next editor NOT to do that is reversed.
+// Cards carry the recognition tag, and the fixed count is out of the meta
+// description.
 // V2: added TIER TWO — the six foundations — BELOW the ten doctrine cards, in its
 // own section with its own heading and its own F01–F06 numbering, so the two tiers
 // read as separate lists (01–10 and F01–F06), never one list of sixteen. The
@@ -17,22 +21,25 @@ const cards = doctrines.map((d) => ({
   n: d.n,
   title: d.oldPaths.title,
   deck: d.oldPaths.deck,
+  tag: d.oldPaths.tag,
   href: `/doctrines/old-paths/${d.oldPaths.slug}`,
 }));
 
-// TIER TWO — Torah's canonical order (Genesis→Deuteronomy), as the data file is
-// written. Do NOT reorder to Hebrews 6. Numbers render F01–F06 from `n`.
+// TIER TWO — the order of Hebrews 6:1-2, as the data file is written. Render it
+// as it comes; the sequence is the verse's and is set in foundations.data.js.
+// Numbers render F01–F06 from `n`.
 const foundationCards = foundations.map((f) => ({
   n: f.n,
   title: f.title,
   deck: f.deck,
+  tag: f.tag,
   href: `/doctrines/old-paths/${f.slug}`,
 }));
 ---
 
 <BaseLayout
   title="The Old Paths — Core Beliefs | Nazaryah"
-  description="Ask for the old paths, and walk therein. Ten doctrines as Scripture holds them — the name, the walk, the calendar, and the rest."
+  description="Ask for the old paths, and walk therein. The doctrines as Scripture holds them — the name, the walk, the calendar, and the rest."
 >
   <DoctrineGrid
     eyebrow="Core Beliefs"
@@ -54,7 +61,7 @@ const foundationCards = foundations.map((f) => ({
       </div>
 
       <div class="foundations-grid">
-        {foundationCards.map((c) => <DoctrineCard n={c.n} title={c.title} deck={c.deck} href={c.href} />)}
+        {foundationCards.map((c) => <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} />)}
       </div>
 
       <p class="foundations-note">

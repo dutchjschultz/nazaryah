@@ -1,8 +1,11 @@
 ---
-// src/pages/doctrines/the-departure.astro · 0804 V1
-// The Departure master grid — the former /doctrines "Ten Doctrines the Church
-// Got Wrong" page, moved here. Hover panels removed; each card is now a link to
-// its info page. Driven by src/data/doctrines.data.js.
+// src/pages/doctrines/the-departure.astro · 0824 V2
+// V2: the fixed count is out of the H1, the meta title and the meta description
+// (og:image alt derives from the title, so it follows). Cards now carry the
+// recognition tag.
+// V1: The Departure master grid — the former /doctrines "Ten Doctrines the
+// Church Got Wrong" page, moved here. Hover panels removed; each card is now a
+// link to its info page. Driven by src/data/doctrines.data.js.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import DoctrineGrid from '../../components/DoctrineGrid.astro';
 import { doctrines } from '../../data/doctrines.data.js';
@@ -11,17 +14,18 @@ const cards = doctrines.map((d) => ({
   n: d.n,
   title: d.departure.title,
   deck: d.departure.deck,
+  tag: d.departure.tag,
   href: `/doctrines/the-departure/${d.departure.slug}`,
 }));
 ---
 
 <BaseLayout
-  title="The Departure — Ten Doctrines the Church Got Wrong | Nazaryah"
-  description="Ten doctrines the Church got wrong — and why it matters. Sacred names, Torah dismissal, the Trinity, immortal soul, hell, and more examined from Scripture."
+  title="The Departure — Doctrines the Church Got Wrong | Nazaryah"
+  description="The doctrines the Church got wrong — and why it matters. Sacred names, Torah dismissal, the Trinity, immortal soul, hell, and more examined from Scripture."
 >
   <DoctrineGrid
     eyebrow="The Departure"
-    title="Ten Doctrines the Church Got Wrong"
+    title="Doctrines the Church Got Wrong"
     subtitle="— and why it matters"
     cards={cards}
   >
