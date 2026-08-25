@@ -1,4 +1,11 @@
-// doctrines.data 0824 V3.js
+// doctrines.data 0824 V4.js
+// V4: added pairs 12 (One Olive Tree / Rightly Divided) and 13 (It Shall Be Our
+// Righteousness / Imputed Righteousness). Corrected two V3 tags: 02 was "Law vs.
+// Grace" and is now "Law Abolished"; 11 was "Faith Alone · Once Saved" and is
+// now "Saved by Grace". "Law vs. Grace" was fusing two separate questions —
+// whether the road still exists (02) and whether walking it bears on a man's
+// standing (11) — and the shared tag told the reader 02 and 11 were the same
+// card twice. See the tag rules below: a tag names ONE question.
 // V3: added pair 11 (The Wine and the Bread / Faith Alone) and the `tag`
 // recognition field to BOTH halves of every pair. Also dropped the fixed count
 // from the Departure section title — the list grows, the string must not name a
@@ -19,12 +26,18 @@
 // `tag` is the RECOGNITION TAG — the doctrine named in church vocabulary, three
 // words or fewer, so a reader who has never heard the poetic title knows what
 // he is looking at before he clicks. It is the one field on this site where the
-// familiar word is the correct word. Two standing rules:
+// familiar word is the correct word. Three standing rules:
 //   1. BOTH HALVES OF A PAIR CARRY THE SAME TAG. Old Paths 03 and Departure 03
 //      argue one doctrine from opposite ends; the identical label is what tells
 //      the reader they are two readings of one question. Never let them drift.
 //   2. The tag names the SUBJECT, never the verdict — "Speaking in Tongues",
 //      not "The Tongues Error". The body does the arguing.
+//   3. A tag names ONE question, and no two pairs share a tag. Corollary of
+//      rule 1: if the same label sits on two different pairs, it is telling the
+//      reader they are the same card twice. "Law vs. Grace" failed this — it
+//      fused whether Torah still applies (02) with whether the walk bears on a
+//      man's standing (11), which are answered independently and by different
+//      verses. Romans 6:14 belongs to 02; Ephesians 2:8-9 belongs to 11.
 //
 // `departure.body` carried over verbatim from the hover text that was on the
 // old /doctrines page (now /doctrines/the-departure). Not rewritten.
@@ -56,7 +69,7 @@ export const doctrines = [
       slug: "walk-after-the-door",
       title: "The Walk After the Door",
       deck: "Deliverance Opens It. Torah Is What Walking Looks Like.",
-      tag: "Law vs. Grace",
+      tag: "Law Abolished",
       body: "Moses said the commandment is not hidden, not far off, not beyond the sea — it is near, in the mouth and in the heart, that it may be done. Torah was never the door. Deliverance comes through the blood Yahuah provided; Torah is what walking looks like on the other side of it. Collapsing the two produces both errors at once: a people who think keeping saves them, and a people who think being saved excuses them from walking.",
       torah: ["Deuteronomy 30:11-14"],
       witness: ["Psalm 119:44-45", "Proverbs 6:23"]
@@ -65,7 +78,7 @@ export const doctrines = [
       slug: "torah-dismissal",
       title: "Torah Dismissal",
       deck: "Grace Didn't Kill the Law — It Fulfilled the Penalty",
-      tag: "Law vs. Grace",
+      tag: "Law Abolished",
       body: `One of the most dangerous half-truths in modern Christianity is the idea that the Torah was "nailed to the cross" and has no place in the believer's life today. Yahushua Himself declared He did not come to abolish the Law but to fulfill it — and fulfilling a debt is not the same as erasing the standard. There is a critical difference between the penalty of the Law, which Messiah bore, and the instruction of the Law, which remains the very definition of righteousness for those who love Yahuah.`
     }
   },
@@ -236,7 +249,7 @@ export const doctrines = [
       slug: "wine-and-the-bread",
       title: "The Wine and the Bread",
       deck: "The Cup Opens the Door. The Bread Walks the Road.",
-      tag: "Faith Alone · Once Saved",
+      tag: "Saved by Grace",
       body: "Melchizedek came out to Abram with bread and wine, and the table has been set that way ever since. The wine is the blood — entry, atonement, a door Yahuah opened at a price no man could raise. The bread is the body — the walk, the commandments, the life lived on the other side of that door. The two were never separated in the Law. Every offering that went up carried its meal offering and its drink offering together, because the pattern was one deliverance in two stages. Yahushua handed His disciples both elements, in that order, the night before He died. This is why Scripture speaks of being saved in three tenses — past, present, and still to come. The cup starts a man. The bread finishes him.",
       torah: ["Genesis 14:18", "Numbers 15:4-5"],
       witness: ["Proverbs 9:5", "Psalm 110:4"]
@@ -245,8 +258,48 @@ export const doctrines = [
       slug: "faith-alone",
       title: "Faith Alone",
       deck: "The Cup Poured, the Bread Never Passed",
-      tag: "Faith Alone · Once Saved",
+      tag: "Saved by Grace",
       body: `Sola fide is not wrong about the cup. Nothing a man does buys entry, and the blood is not for sale. It is wrong about everything that comes after. Luther put the word "alone" into Paul's sentence when he carried it into German, and five centuries of preaching have been built on a word the apostle never wrote. The single place Scripture joins belief to the word "only" is James 2:24, and it says a man is justified, and not by belief only. What the doctrine did was cut the table in half. It pours the wine, calls the meal finished, and never passes the bread — so a man walks out believing he has received the whole of deliverance at the door, with no road in front of him and no reason to walk it. He was handed a receipt in place of a life.`
+    }
+  },
+
+  {
+    n: "12",
+    oldPaths: {
+      slug: "one-olive-tree",
+      title: "One Olive Tree",
+      deck: "He Never Started a Second People",
+      tag: "Israel and the Church",
+      body: "Yahuah gave one law for the homeborn and for the stranger living among them. Same law. Same table. Same penalty for breaking it. When a foreigner came in, he was not handed a separate arrangement with softer terms. He was brought into the one that already existed. Paul used a tree to say the same thing. Natural branches were broken off and wild branches were grafted in, but there was only ever one tree, one root, and one set of promises. A grafted branch does not get its own root. Yahuah did not start a second people with a second plan and a second rulebook running alongside the first. He opened His own household and let strangers walk in.",
+      torah: ["Exodus 12:49", "Numbers 15:15-16"],
+      witness: ["Isaiah 56:6-7", "Ezekiel 47:22-23"]
+    },
+    departure: {
+      slug: "rightly-divided",
+      title: "Rightly Divided",
+      deck: "Cut the Book in Half and Both Halves Bleed",
+      tag: "Israel and the Church",
+      body: `Dispensationalism cuts history into boxes and gives each box its own rules. Israel gets the Law. The church gets grace. The two are kept apart on purpose, and whatever Yahuah said to one is filed away from the other. Ask why, and the answer is almost always four words out of 2 Timothy 2:15 — rightly dividing the word of truth. The Greek word behind "dividing" is a road word. It means cutting straight ahead, the way a man cuts a line across open ground and does not wander. Paul told Timothy to keep the road straight. He did not tell him to saw the book in half. A hundred years ago that verse got printed with study notes beside it explaining where the cuts go, and generations of readers have taken the notes for the text. The result is a Bible where most of it was written to somebody else, and a reader who has been taught to skip the parts addressed to him.`
+    }
+  },
+
+  {
+    n: "13",
+    oldPaths: {
+      slug: "it-shall-be-our-righteousness",
+      title: "It Shall Be Our Righteousness",
+      deck: "He Credited Belief. He Still Expected Feet.",
+      tag: "Filthy Rags · Christ's Righteousness",
+      body: `Abraham believed Yahuah, and it was counted to him for righteousness. "Counted" is a bookkeeping word, and it is true — the ledger really was settled. But the same man who was counted righteous in Genesis 15 was told two chapters later to walk before Yahuah and be perfect, and he still had to get up early and go do the hardest thing he was ever asked to do. The counting settled a debt. It did not do the walking. Moses said it plainly: it shall be our righteousness if we observe to do all these commandments. Ezekiel said it from the other side: the righteousness of the righteous shall be upon him. Upon him. Not on somebody else's account, and not on a record kept in another man's name. Yahuah credits belief at the door. He still expects feet on the road.`,
+      torah: ["Genesis 15:6", "Deuteronomy 6:25"],
+      witness: ["Psalm 119:172", "Ezekiel 18:20"]
+    },
+    departure: {
+      slug: "imputed-righteousness",
+      title: "Imputed Righteousness",
+      deck: "A Record Swapped, a Life Untouched",
+      tag: "Filthy Rags · Christ's Righteousness",
+      body: "The teaching is that the obedience of Messiah gets placed on a believer's record, so when Yahuah looks at the man He sees somebody else's life instead. Nothing the man does afterward improves the paperwork, and nothing he fails to do damages it. Two verses hold the whole structure up, and both have been carried well outside their own fence. The filthy rags line in Isaiah 64:6 is describing a nation in open rebellion, not a man keeping the commandments — Isaiah is naming the rags of people who had quit, and the pulpit has turned it into a verdict on obedience itself. Ezekiel 18:20 says the reverse of a transfer: the righteousness of the righteous stays on him, and the wickedness of the wicked stays on him. Righteousness is not a certificate that changes hands. Blood pays what a man owes. It was never meant to live his life for him."
     }
   }
 ];
