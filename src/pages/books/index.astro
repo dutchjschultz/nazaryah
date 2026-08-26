@@ -50,12 +50,27 @@ const books = [
     chapters: 5,
     href: '/books/the-bearer',
   },
+  {
+    id: 'one-god-one-name-one-throne',
+    num: '05',
+    title: 'One God, One Name, One Throne',
+    titleLine2: null,
+    subtitle: 'Six More Words the Pulpit Buried',
+    tagline: 'Six words, still standing, hollowed out one at a time.',
+    // Volume II's amber, reused deliberately. This is the companion volume to
+    // What the Pulpit Buried and the shelf should say so before the reader
+    // opens either one. Not a new colour value.
+    accent: '#B87333',
+    accentDim: 'rgba(184,115,51,0.1)',
+    chapters: 8,
+    href: '/books/one-god-one-name-one-throne',
+  },
 ];
 ---
 
 <BaseLayout
   title="The Bookshelf — Nazaryah"
-  description="Four compiled works. Every chapter free to read. Available in print at cost."
+  description="Five compiled works. Every chapter free to read. Available in print at cost."
 >
   <div class="bk-root">
 
@@ -63,7 +78,7 @@ const books = [
     <section class="bk-hero">
       <div class="bk-kicker">THE BOOKSHELF</div>
       <h1 class="bk-title">
-        Four works.<br />
+        Five works.<br />
         <em>One conviction.</em>
       </h1>
       <div class="bk-ornament">

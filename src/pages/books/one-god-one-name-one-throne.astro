@@ -1,0 +1,476 @@
+---
+// src/pages/books/one-god-one-name-one-throne.astro · 0826 V1
+// Volume V — One God, One Name, One Throne. Built component for component off
+// five-titles.astro, per the load spec: no new component, no new type scale, no
+// new colour value. The accent is Volume II's amber (#B87333), reused rather
+// than invented, because this is the companion volume to What the Pulpit Buried
+// and the shelf should say so before the reader opens either one.
+//
+// TWO DELIBERATE OMISSIONS, both the same principle — nothing here links into
+// empty space:
+//   1. PRINT PANEL is in its PRE-RELEASE state. Eyebrow reads COMING TO PRINT
+//      and the retailer button is absent entirely — not greyed, not stubbed,
+//      not pointed at a search page. When a listing goes live: eyebrow back to
+//      AVAILABLE IN PRINT, the second note back to the at-cost language the
+//      other volumes carry, and the button restored.
+//   2. COMPANION STUDY PANEL (Six Acts, One Pardon) is specced for this page,
+//      below the Contents, but the handout page itself has not been produced.
+//      Its markup is NOT here yet on purpose. Add it together with the route
+//      /books/one-god-one-name-one-throne/six-acts-one-pardon, never before.
+//
+// Contents rows come from `oneThrone` in books.js — the roman numerals use that
+// file's exported `roman()`, which is why ROMAN was extended to VIII.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { oneThrone as chapters, roman } from '../../data/books.js';
+
+const ACCENT = '#B87333'; // Volume II's amber — matched pair, not a new token
+const BLOG_HREF = '/blog?category=One%20God%2C%20One%20Name%2C%20One%20Throne';
+---
+
+<BaseLayout
+  title="One God, One Name, One Throne — Nazaryah"
+  description="Six More Words the Pulpit Buried. Prayer, Blessed, Forgive, Glory, Sin, World — six load-bearing words, hollowed out one at a time, and the throne underneath that never moved."
+>
+  <div class="bk-root">
+
+    <a href="/books" class="bk-back">← The Bookshelf</a>
+
+    <!-- Cover -->
+    <figure class="bk-cover">
+      <img src="/images/one-god-one-name-one-throne-cover.jpg" alt="One God, One Name, One Throne — book cover" width="1021" height="1541" loading="eager" />
+    </figure>
+
+    <!-- Title block -->
+    <section class="bk-header">
+      <div class="bk-kicker" style={`color: ${ACCENT}`}>VOLUME V</div>
+      <h1 class="bk-title">One God, One Name, One Throne</h1>
+      <p class="bk-subtitle">Six More Words the Pulpit Buried</p>
+      <div class="bk-author">
+        <span class="bk-author-label">written by</span>
+        <span class="bk-author-name">Dutch Schultz</span>
+      </div>
+      <div class="bk-ornament">
+        <span class="bk-orn-line" style={`background: linear-gradient(90deg, transparent, ${ACCENT}60, transparent)`}></span>
+        <span class="bk-orn-mark" style={`color: ${ACCENT}`}>✦</span>
+        <span class="bk-orn-line" style={`background: linear-gradient(90deg, transparent, ${ACCENT}60, transparent)`}></span>
+      </div>
+    </section>
+
+    <!-- Front matter -->
+    <section class="bk-blurb">
+      <p class="bk-blurb-lead">Say them out loud. Prayer. Blessed. Forgive. Glory. Sin. World. You use these words every week. You have never been told what they weigh.</p>
+      <p>They were never deleted — that is the strange part. Every one of them is still preached, still sung, still printed in the bulletin, spoken so often and so lightly that no one notices the weight has drained out of them. The pulpit did not bury the words. It buried what they carried. Prayer lost its plea, until mediation became passive talking. Blessed lost its direction, until it described the recipient instead of naming the Source. Forgive lost its cost, until a transaction became a mood. Glory lost its substance, until weight became a feeling. Sin lost its measure, until there was no mark left to miss. The world lost its enemy, until a hostile system became a neutral planet.</p>
+      <p>Six words, still standing, hollowed out one at a time — until the ground they held up began to give.</p>
+      <p>These words are load-bearing. They hold up how a man approaches <span style={`color: ${ACCENT}`}>Yahuah</span>, and drained of their weight they crumble like pillars with nothing left inside them. But dig past the words, down through the rubble into the bedrock, and you find the thing they always rested on. A throne. Unmoved. Exactly where it has always been.</p>
+      <p>This volume is the companion to <em>What the Pulpit Buried</em>, and it follows the same dig-site method: one word at a time, down through the English, into the Hebrew and the Greek, KJV in hand, until every word carries its full weight again. <em>Palal</em> — to stand between and plead. <em>Barak</em> — to bend the knee and send praise up. <em>Nasa</em> — to lift the debt off and carry it away. <em>Kavod</em> — the heaviness of the One who sits. <em>Chata</em> — to miss the mark you were measured against. <em>Kosmos</em> — the rival kingdom outside the gate. Restore all six and they point the same direction — down, to one seat, where <span style={`color: ${ACCENT}`}>Yahuah</span> alone is enthroned and <span style={`color: ${ACCENT}`}>Yahushua</span> the Messiah stands as the appointed Mediator, the one who carries us there and never takes the chair.</p>
+    </section>
+
+    <!-- Second pull quote -->
+    <section class="bk-note">
+      <blockquote class="bk-note-quote">The words are crumbling. What they stood on never moved.</blockquote>
+      <p class="bk-note-stamp">Six words. One throne.</p>
+    </section>
+
+    <!-- Action -->
+    <section class="bk-action">
+      <a href={BLOG_HREF} class="bk-primary-btn" style={`background: ${ACCENT}`}>
+        <span>↗</span> Read the chapters through the blog
+      </a>
+    </section>
+    <p class="bk-price-note">Every chapter on nazaryah.com is free to read. Nothing is sold on this site.</p>
+
+    <!-- Print panel — PRE-RELEASE: no retailer button until a listing exists -->
+    <aside class="bk-amz" style={`border-left-color: ${ACCENT}`}>
+      <div class="bk-amz-spine-wrap">
+        <div class="bk-amz-spine" style={`background: linear-gradient(180deg, ${ACCENT} 0%, ${ACCENT}99 100%)`}>
+          <div class="bk-amz-spine-text">One God, One Name, One Throne</div>
+        </div>
+      </div>
+      <div class="bk-amz-body">
+        <div class="bk-amz-kicker">
+          <span style={`color: ${ACCENT}; margin-right: 10px; font-size: 12px`}>◆</span>
+          <span class="bk-amz-kicker-text" style={`color: ${ACCENT}`}>COMING TO PRINT</span>
+        </div>
+        <h3 class="bk-amz-title">One God, One Name, One Throne</h3>
+        <p class="bk-amz-sub">Six More Words the Pulpit Buried</p>
+        <div class="bk-amz-meta">
+          <span>by Dutch Schultz</span><span class="bk-dot">·</span>
+          <span>First Edition</span><span class="bk-dot">·</span>
+          <span>Paperback</span>
+        </div>
+        <p class="bk-amz-edition" style={`border-left-color: ${ACCENT}40`}>
+          Where <em>What the Pulpit Buried</em> excavated how a guilty man is pardoned, this book excavates how a man approaches and worships the One on the throne, and who that One is. The print edition closes with a synthesis chapter gathering all six words into a single argument, and a parable showing every word at full weight in the life of one ordinary man.
+        </p>
+        <p class="bk-amz-honesty">
+          The paperback is in production. Every chapter is already here, free, and will stay free. Nothing <span style={`color: ${ACCENT}`}>Yahuah</span> gives through this work is sold on this site.
+        </p>
+      </div>
+    </aside>
+
+    <!-- Chapter list -->
+    <section class="bk-chapters">
+      <div class="bk-section-label">
+        <span class="bk-sl-line"></span>
+        <span class="bk-sl-text">CONTENTS</span>
+        <span class="bk-sl-line"></span>
+      </div>
+      <p class="bk-ext-note">Each chapter is free to read on the site under <strong style={`color: ${ACCENT}`}>Blog &rsaquo; One God, One Name, One Throne</strong>. Tap a chapter to open it.</p>
+      <ol class="bk-ch-list">
+        {chapters.map((ch) => (
+          <li class="bk-ch-row">
+            <a href={ch.href} class="bk-ch-inner">
+              <div class="bk-ch-num" style={`color: ${ACCENT}`}>{roman(ch.num)}</div>
+              <div class="bk-ch-text">
+                <div class="bk-ch-title">{ch.title}</div>
+                <div class="bk-ch-topic">{ch.topic}</div>
+              </div>
+              <div class="bk-ch-arrow">→</div>
+            </a>
+          </li>
+        ))}
+      </ol>
+    </section>
+
+    <div style="height: 100px;"></div>
+  </div>
+</BaseLayout>
+
+<style>
+  .bk-root {
+    max-width: 860px;
+    margin: 0 auto;
+    padding: 60px 32px 40px;
+    background: #0D0B0A;
+    min-height: 80vh;
+    color: #E8DCC8;
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+
+  .bk-back {
+    display: inline-block;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #8A7E70;
+    text-decoration: none;
+    padding-bottom: 40px;
+    transition: color 0.2s;
+  }
+  .bk-back:hover { color: #B87333; }
+  .bk-cover { margin: 0 auto 44px; max-width: 320px; padding: 0; }
+  .bk-cover img { display: block; width: 100%; height: auto; border-radius: 3px; box-shadow: 0 30px 70px rgba(0,0,0,0.6), 0 0 0 1px rgba(184,115,51,0.2); }
+
+  .bk-header { text-align: center; margin-bottom: 60px; }
+
+  .bk-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    margin-bottom: 24px;
+  }
+
+  .bk-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(36px, 5vw, 56px);
+    font-weight: 400;
+    line-height: 1.1;
+    margin: 0 0 20px;
+    color: #F5EFE4;
+    letter-spacing: -0.01em;
+  }
+  .bk-title em { font-style: italic; font-weight: 400; }
+
+  .bk-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: #B8AA98;
+    margin: 0 0 32px;
+    line-height: 1.4;
+  }
+
+  .bk-author {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    margin-bottom: 16px;
+  }
+  .bk-author-label {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.3em;
+    color: #6B5F53;
+  }
+  .bk-author-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    color: #D4C4A8;
+    letter-spacing: 0.05em;
+  }
+
+  .bk-ornament {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    max-width: 300px;
+    margin: 0 auto;
+  }
+  .bk-orn-line { flex: 1; height: 1px; }
+  .bk-orn-mark { font-size: 14px; }
+
+  /* Front matter */
+  .bk-blurb { max-width: 680px; margin: 0 auto 40px; padding: 0 20px; }
+  .bk-blurb p {
+    font-family: 'EB Garamond', Georgia, serif;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    font-size: 17px;
+    color: #B8AA98;
+  }
+  .bk-blurb-lead {
+    font-size: 22px !important;
+    font-style: italic;
+    color: #F5EFE4 !important;
+  }
+
+  /* Second pull quote — the position Volume I gives the author's note. The
+     stamp line sets bold beneath it, as it does on the back cover. */
+  .bk-note {
+    margin: 40px auto 48px;
+    max-width: 700px;
+    padding: 0 20px;
+    text-align: center;
+  }
+  .bk-note-quote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-style: italic;
+    font-weight: 300;
+    color: #D4C4A8;
+    line-height: 1.6;
+    margin: 0;
+  }
+  .bk-note-stamp {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-weight: 600;
+    color: #F5EFE4;
+    letter-spacing: 0.04em;
+    margin: 18px 0 0;
+  }
+
+  /* Action */
+  .bk-action {
+    display: flex;
+    gap: 16px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 16px;
+  }
+  .bk-primary-btn {
+    padding: 14px 28px;
+    border: none;
+    border-radius: 2px;
+    color: #0D0B0A;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    transition: opacity 0.2s;
+  }
+  .bk-primary-btn:hover { opacity: 0.9; }
+
+  .bk-price-note {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #8A7E70;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 60px;
+    line-height: 1.5;
+  }
+
+  /* Print panel */
+  .bk-amz {
+    position: relative;
+    max-width: 720px;
+    margin: 20px auto 60px;
+    background: linear-gradient(180deg, #1A1614 0%, #14100E 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid;
+    border-radius: 2px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 72px 1fr;
+  }
+  .bk-amz-spine-wrap {
+    background: rgba(0,0,0,0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 20px 0;
+  }
+  .bk-amz-spine {
+    width: 28px;
+    min-height: 240px;
+    box-shadow: inset -2px 0 4px rgba(0,0,0,0.4), inset 2px 0 2px rgba(255,255,255,0.08);
+    border-radius: 1px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .bk-amz-spine-text {
+    writing-mode: vertical-rl;
+    transform: rotate(180deg);
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 11px;
+    letter-spacing: 0.2em;
+    color: rgba(13,11,10,0.7);
+    font-weight: 600;
+    white-space: nowrap;
+    overflow: hidden;
+    padding: 16px 0;
+  }
+  /* Pre-release: no button, so the body's bottom padding closes the panel
+     instead of the button's own margin. */
+  .bk-amz-body { padding: 28px 32px 28px 28px; }
+  .bk-amz-kicker { display: flex; align-items: center; margin-bottom: 14px; }
+  .bk-amz-kicker-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.35em;
+    font-weight: 500;
+  }
+  .bk-amz-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 26px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    color: #F5EFE4;
+  }
+  .bk-amz-title em { font-style: italic; font-weight: 500; }
+  .bk-amz-sub {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #9A8C7A;
+    line-height: 1.5;
+    margin: 0 0 18px;
+  }
+  .bk-amz-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    flex-wrap: wrap;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    letter-spacing: 0.15em;
+    color: #8A7E70;
+    padding-bottom: 18px;
+    border-bottom: 1px solid rgba(184,115,51,0.08);
+    margin-bottom: 20px;
+    text-transform: uppercase;
+  }
+  .bk-dot { opacity: 0.5; }
+  .bk-amz-edition {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14.5px;
+    font-style: italic;
+    color: #D4C4A8;
+    line-height: 1.6;
+    margin: 0 0 20px;
+    padding: 2px 0 2px 16px;
+    border-left: 2px solid;
+  }
+  .bk-amz-honesty {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #8A7E70;
+    line-height: 1.6;
+    margin: 0;
+    padding-left: 14px;
+    border-left: 1px solid rgba(184,115,51,0.2);
+  }
+
+  /* Chapter list */
+  .bk-chapters { margin-top: 40px; }
+  .bk-section-label {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    margin: 0 auto 36px;
+    max-width: 400px;
+  }
+  .bk-sl-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(184,115,51,0.3), transparent);
+  }
+  .bk-sl-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #8A7E70;
+  }
+  .bk-ext-note {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #8A7E70;
+    text-align: center;
+    max-width: 600px;
+    margin: 0 auto 40px;
+    line-height: 1.5;
+  }
+  .bk-ch-list { list-style: none; padding: 0; margin: 0; }
+  .bk-ch-row { border-bottom: 1px solid rgba(184,115,51,0.08); }
+  .bk-ch-inner {
+    display: grid;
+    grid-template-columns: 60px 1fr 30px;
+    align-items: center;
+    gap: 20px;
+    padding: 20px 12px;
+    width: 100%;
+    text-decoration: none;
+    color: inherit;
+    transition: background 0.2s;
+  }
+  .bk-ch-inner:hover { background: rgba(184,115,51,0.04); }
+  .bk-ch-num {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px;
+    letter-spacing: 0.15em;
+  }
+  .bk-ch-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 19px;
+    color: #F5EFE4;
+    line-height: 1.3;
+    margin-bottom: 4px;
+  }
+  .bk-ch-topic {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 13px;
+    font-style: italic;
+    color: #8A7E70;
+  }
+  .bk-ch-arrow { font-size: 18px; color: #6B5F53; text-align: right; }
+
+  @media (max-width: 640px) {
+    .bk-root { padding: 40px 20px 40px; }
+    .bk-cover { max-width: 240px; }
+    .bk-amz { grid-template-columns: 1fr; }
+    .bk-amz-spine-wrap { display: none; }
+  }
+</style>
