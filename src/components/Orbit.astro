@@ -1,5 +1,9 @@
 ---
-// src/components/Orbit.astro · 0825 V1
+// src/components/Orbit.astro · 0825 V2
+// V2: the geometry layers no longer eat clicks. Each .arm is a full-stage
+// absolute layer, so the last one in the DOM covered the other three and only
+// its chip was reachable. Events now fall through the layers to the chips.
+// V1:
 // The investigation orbit: a nucleus at centre, four witness chips carried round
 // it on a slow spin, and one caption line that swaps to whatever is hovered.
 //
@@ -186,6 +190,12 @@ const whoFor = (w) =>
     from { transform: rotate(0deg); }
     to { transform: rotate(360deg); }
   }
+
+  /* Each .arm is a full-stage absolute layer, so the last one in the DOM
+     covers the other three and eats their clicks. Let events fall through
+     the geometry layers and land only on the chips themselves. */
+  .spinner, .arm, .slot, .counter { pointer-events: none; }
+  .chip, .nucleus { pointer-events: auto; }
 
   .stage:hover .spinner,
   .stage:hover .counter,
