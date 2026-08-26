@@ -1,7 +1,13 @@
-// books.js 0803 V2
+// books.js 0826 V3
+// V3: added the `oneThrone` master chapter list for Volume V — One God, One Name,
+// One Throne (8 chapters). Extended ROMAN to VIII. Wired oneThrone into
+// masterTitleBySlug, chapterMetaBySlug, and the per-chapter description map
+// (renamed to descBySlug, with bearerDescBySlug kept as an alias so existing
+// imports do not break).
+//
 // Master chapter lists for the multi-part book studies. Each book's Contents on its
 // Books page is the single source of truth; the intro pages and the blog-index card
-// titles all conform to these. Order is I → V by `num` (never by publish date).
+// titles all conform to these. Order is I → VIII by `num` (never by publish date).
 
 export const fiveTitles = [
   { num: 1, title: 'One Held the Covenant, the Other Bled for It',        topic: 'The Bridegroom',  href: '/blog/misplaced-titles-1-bridegroom' },
@@ -24,26 +30,63 @@ export const theBearer = [
     desc: 'The lamb does not purpose the offering. The Father purposed it, and the Son was the price laid on the altar. Part 5 of 5: The Bearer.' },
 ];
 
-const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII'];
+// Volume V — One God, One Name, One Throne: Six More Words the Pulpit Buried.
+// Six word studies, a synthesis chapter, and a closing parable.
+//
+// The `one-throne-` prefix is LOAD-BEARING, not decorative. This is the companion
+// volume to What the Pulpit Buried, which is also a six-word excavation and already
+// owns `/blog/the-whole-counsel` — its own Chapter 7 synthesis, on a different six
+// words (faith, grace, justification, righteousness, mercy, sanctification). Checked
+// against all existing post slugs on 26 Aug 2026: with the prefix there are no
+// collisions. Drop it and chapter VII lands on top of the other book's capstone.
+export const oneThrone = [
+  { num: 1, title: "The Mediator's Word",       topic: 'Prayer',              href: '/blog/one-throne-1-the-mediators-word',
+    desc: 'Ask a believer what prayer is and the answer is talking to God. The Hebrew palal says judgment and mediation — a man standing between and pleading. Part 1 of 8: One God, One Name, One Throne.' },
+  { num: 2, title: 'The Bended Knee',           topic: 'Blessed',             href: '/blog/one-throne-2-the-bended-knee',
+    desc: 'Blessed does not mean good things happened. Barak means to kneel, and every time it appears the motion runs one direction. Part 2 of 8: One God, One Name, One Throne.' },
+  { num: 3, title: 'The Charge Carried Away',   topic: 'Forgive',             href: '/blog/one-throne-3-the-charge-carried-away',
+    desc: 'English has one word for forgiveness. Hebrew has six, and not one of them is a feeling. Part 3 of 8: One God, One Name, One Throne.' },
+  { num: 4, title: 'The Weight on the Throne',  topic: 'Glory',               href: '/blog/one-throne-4-the-weight-on-the-throne',
+    desc: 'Kavod is heaviness, not brightness. Glory is the substance of the One who sits, and it was never the atmosphere in a room. Part 4 of 8: One God, One Name, One Throne.' },
+  { num: 5, title: 'The Missing Mark',          topic: 'Sin',                 href: '/blog/one-throne-5-the-missing-mark',
+    desc: 'To miss a mark there must be a mark. Set the Torah aside and sin has nothing left to be measured against. Part 5 of 8: One God, One Name, One Throne.' },
+  { num: 6, title: 'The Counterfeit Throne',    topic: 'World',               href: '/blog/one-throne-6-the-counterfeit-throne',
+    desc: "Kosmos is not the planet and not the people on it. In John's hands it is a rival order — human life organized without Yahuah. Part 6 of 8: One God, One Name, One Throne." },
+  { num: 7, title: 'Six Words, One Throne',     topic: 'The Whole Counsel',   href: '/blog/one-throne-7-six-words-one-throne',
+    desc: 'The six words were never separate. Misread one and the slide starts in the other five. Part 7 of 8: One God, One Name, One Throne.' },
+  { num: 8, title: 'The Debt of Wendell Hollis', topic: 'The Closing Parable', href: '/blog/one-throne-8-the-debt-of-wendell-hollis',
+    desc: 'A parable of two houses and the measure on the wall. A man carried his debt everywhere but the one place that could settle it. Part 8 of 8: One God, One Name, One Throne.' },
+];
+
+const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
 export const roman = (n) => ROMAN[n] || String(n);
 
 const slugOf = (href) => href.replace('/blog/', '');
 
-// slug -> master chapter title. Wherever a chapter of either book is shown as a card
-// (intro pages, blog index), display this instead of the blog's own title.
+const ALL = [...fiveTitles, ...theBearer, ...oneThrone];
+
+// slug -> master chapter title. Wherever a chapter of any of these books is shown as a
+// card (intro pages, blog index), display this instead of the blog's own title.
 export const masterTitleBySlug = Object.fromEntries(
-  [...fiveTitles, ...theBearer].map((c) => [slugOf(c.href), c.title])
+  ALL.map((c) => [slugOf(c.href), c.title])
 );
 
 // slug -> full Contents-master meta (title, topic, num). The intro pages select and
 // order chapters off the posts' series/seriesOrder frontmatter, then pull canonical
 // titles/topics from here (never from the blog title or publish date).
 export const chapterMetaBySlug = Object.fromEntries(
-  [...fiveTitles, ...theBearer].map((c) => [slugOf(c.href), { title: c.title, topic: c.topic, num: c.num }])
+  ALL.map((c) => [slugOf(c.href), { title: c.title, topic: c.topic, num: c.num }])
 );
 
-// slug -> Contents-master chapter description, where the book supplies one. Only
-// The Bearer carries per-chapter blurbs here; Five Titles blurbs live on the posts.
-export const bearerDescBySlug = Object.fromEntries(
-  theBearer.map((c) => [slugOf(c.href), c.desc])
+// slug -> Contents-master chapter description, where the book supplies one. The Bearer
+// and One God, One Name, One Throne carry per-chapter blurbs here; Five Titles blurbs
+// live on the posts.
+export const descBySlug = Object.fromEntries(
+  ALL.filter((c) => c.desc).map((c) => [slugOf(c.href), c.desc])
 );
+
+// Back-compat alias for existing imports. NOTE: this map is no longer Bearer-only —
+// it carries every book's blurbs. Callers key it by slug AFTER selecting their own
+// chapters by series (see trinity/bearer.astro), so the extra keys are inert. Prefer
+// `descBySlug` in new code.
+export const bearerDescBySlug = descBySlug;
