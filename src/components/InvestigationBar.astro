@@ -1,0 +1,141 @@
+---
+// InvestigationBar.astro
+//
+// Renders on any post whose frontmatter carries `investigation: "<slug>"`.
+// Shows the whole investigation — nucleus plus every witness — with the current
+// post marked, so a reader who lands on one study can reach the other four
+// without going back to the hub. Read Next stays as it is; this is the map,
+// not the recommendation.
+//
+// Silently renders nothing if the slug is unknown, so a typo can never break a post.
+//
+// DARK MODE. The light palette below leans on --ink, which global.css sets to
+// #2b2b2b and never overrides under .dark — so the piece names would render
+// near-black on the dark ground. The :global(.dark) block at the foot of the
+// stylesheet restates every colour, following StudyRail/AssociatedStudies. Add a
+// dark value alongside any new colour here; a light-only token will disappear.
+
+import { getInvestigation } from '../data/investigations.js';
+
+const { current } = Astro.props;
+const slug = current?.data?.investigation;
+const inv = slug ? getInvestigation(slug) : null;
+
+const here = `/blog/${current.slug}`;
+
+const pieces = inv
+  ? [
+      { label: 'The Nucleus', name: inv.nucleus.title, href: inv.nucleus.href, status: 'live' },
+      ...inv.witnesses.map((w) => ({
+        label: w.tag,
+        name: w.name,
+        study: w.study,
+        href: w.href,
+        status: w.status,
+      })),
+    ]
+  : [];
+---
+
+{inv && (
+  <div class="inv-bar" data-pagefind-ignore>
+    <div class="inv-head">
+      <span class="inv-kicker">Part of the investigation</span>
+      <a class="inv-title" href={`/investigations/${inv.slug}`}>{inv.title} &#8594;</a>
+    </div>
+
+    <div class="inv-grid">
+      {pieces.map((p) => {
+        const isHere = p.href === here;
+        const dead = p.status === 'pending';
+        const Tag = isHere || dead ? 'div' : 'a';
+        return (
+          <Tag
+            class={`inv-piece ${isHere ? 'here' : ''} ${dead ? 'pending' : ''}`}
+            href={isHere || dead ? undefined : p.href}
+          >
+            <span class="inv-label">{p.label}</span>
+            <span class="inv-name">{p.name}</span>
+            {p.study && <span class="inv-study">{p.study}</span>}
+            {isHere && <span class="inv-you">You are here</span>}
+            {dead && <span class="inv-you">Coming</span>}
+          </Tag>
+        );
+      })}
+    </div>
+  </div>
+)}
+
+<style>
+  .inv-bar {
+    margin: 2.5rem auto 0;
+    padding: 1.4rem 0 0;
+    border-top: 1px solid var(--rule, #d8cfb8);
+  }
+  .inv-head {
+    display: flex; justify-content: space-between; align-items: baseline;
+    flex-wrap: wrap; gap: .5rem; margin-bottom: 1rem;
+  }
+  .inv-kicker {
+    font-size: .7rem; letter-spacing: 2.5px; text-transform: uppercase;
+    color: var(--muted, #8a7c5e);
+  }
+  .inv-title {
+    font-size: .82rem; letter-spacing: 1px; text-decoration: none;
+    color: var(--accent, #8b6914); font-weight: 600;
+  }
+  .inv-title:hover { text-decoration: underline; }
+
+  .inv-grid {
+    display: grid; gap: .6rem;
+    grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
+  }
+
+  .inv-piece {
+    display: block; text-decoration: none; padding: .8rem .9rem;
+    border: 1px solid var(--rule, #d8cfb8); border-radius: 5px;
+    border-left: 3px solid var(--accent, #8b6914);
+    transition: background .18s, border-color .18s;
+  }
+  a.inv-piece:hover { background: rgba(139,105,20,.06); }
+  .inv-piece.here { border-left-color: var(--muted, #8a7c5e); background: rgba(139,105,20,.05); }
+  .inv-piece.pending { border-style: dashed; border-left-color: var(--muted, #8a7c5e); opacity: .6; }
+
+  .inv-label {
+    display: block; font-size: .62rem; letter-spacing: 1.8px;
+    text-transform: uppercase; color: var(--muted, #8a7c5e); margin-bottom: .3rem;
+  }
+  .inv-name {
+    display: block; font-size: .92rem; font-weight: 700;
+    color: var(--ink, #2b2317); line-height: 1.3;
+  }
+  .inv-study {
+    display: block; font-size: .68rem; letter-spacing: 1.2px;
+    text-transform: uppercase; color: var(--accent, #8b6914); margin-top: .3rem;
+  }
+  .inv-you {
+    display: block; font-size: .62rem; letter-spacing: 1.5px;
+    text-transform: uppercase; color: var(--muted, #8a7c5e); margin-top: .3rem;
+    font-style: italic;
+  }
+
+  /* Dark mode — see the note at the head of this file. Every colour above is
+     restated; none of these tokens survive the theme flip on their own. */
+  :global(.dark) .inv-bar { border-top-color: rgba(196, 173, 132, 0.28); }
+  :global(.dark) .inv-kicker,
+  :global(.dark) .inv-label,
+  :global(.dark) .inv-you { color: var(--color-dark-secondary-text); }
+  :global(.dark) .inv-title,
+  :global(.dark) .inv-study { color: var(--gold-light); }
+  :global(.dark) .inv-piece {
+    border-color: #3a2510;
+    border-left-color: var(--gold-light);
+  }
+  :global(.dark) a.inv-piece:hover { background: rgba(196, 154, 78, 0.1); }
+  :global(.dark) .inv-piece.here {
+    border-left-color: var(--color-dark-secondary-text);
+    background: rgba(196, 154, 78, 0.07);
+  }
+  :global(.dark) .inv-piece.pending { border-left-color: var(--color-dark-secondary-text); }
+  :global(.dark) .inv-name { color: var(--color-dark-text); }
+</style>

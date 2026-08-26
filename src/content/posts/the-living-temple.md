@@ -30,7 +30,7 @@ companion:
 
 *An Investigation in Four Witnesses*
 
-<img src="media/9feb1990adc406b1cd805e86f1e1afa35cd79b3c.undefined" style="width:5.41667in;height:4.30208in" />
+<img src="/og/investigations/the-living-temple.v2.png" alt="The Living Temple — four witnesses arranged around the nucleus" style="width:100%;height:auto;" />
 
 > *A single claim, weighed by four witnesses. Each may be heard on its own, in any order; together their testimony forms one picture — and the picture overturns the claim.*
 

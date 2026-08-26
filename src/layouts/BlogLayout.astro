@@ -1,5 +1,10 @@
 ---
-// BlogLayout.astro · 0806 V1
+// BlogLayout.astro · 0825 V2
+// V2: posts carrying `investigation` get an InvestigationBar under the article —
+// the whole case, with the current study marked "You are here". It sits ABOVE
+// Read Next on purpose: the bar is the map, Read Next is the recommendation.
+// Renders nothing on a post with no investigation, so every other post is
+// byte-identical.
 // V1: Read Next renders EVERY companion (frontmatter order, strongest kin first),
 // not just the first. companion may be a single slug or an array; unresolved or
 // draft entries are skipped; an empty/absent field renders nothing.
@@ -7,6 +12,7 @@ import BaseLayout from './BaseLayout.astro';
 import References from '../components/References.astro';
 import AssociatedStudies from '../components/AssociatedStudies.astro';
 import StudyRail from '../components/StudyRail.astro';
+import InvestigationBar from '../components/InvestigationBar.astro';
 import { getEntry } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
@@ -131,6 +137,11 @@ const companions = (
       <!-- Article Content -->
       <div class="max-w-3xl mx-auto prose">
         <Content />
+      </div>
+
+      <!-- Investigation bar (the whole case; nothing when the post has none) -->
+      <div class="max-w-3xl mx-auto">
+        <InvestigationBar current={post} />
       </div>
 
       <!-- Companion studies (wrapper-rendered; each points at its /blog/ sibling).
