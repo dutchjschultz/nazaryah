@@ -1,4 +1,9 @@
-// content config 0825 V6
+// content config 0826 V7
+// V7: added the category "One God, One Name, One Throne" — Volume V, the eight
+// chapters of the companion to What the Pulpit Buried. NOTE the near-collision:
+// "One Throne, One Name" is ALREADY in this enum and is a different thing (the
+// Trinity-on-the-stand blog rail group, currently one post). The two strings are
+// not interchangeable; a chapter of Volume V must carry the longer one.
 // V6: added `lede` — the single opening paragraph that replaces the ragged stack
 // of italic fragments the .docx conversion left at the top of a study. A nucleus
 // study uses nucleusClaim instead and carries no lede, so the two never collide.
@@ -49,6 +54,8 @@ const postsCollection = defineCollection({
       'The Bearer',
       'Five Titles, One Christ',
       'What the Pulpit Buried',
+      // Volume V. Not the same as 'One Throne, One Name' above — see the V7 note.
+      'One God, One Name, One Throne',
       'Word Studies',
       'The Law Still Stands',
       'The Feasts',
