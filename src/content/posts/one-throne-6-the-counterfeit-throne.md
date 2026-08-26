@@ -11,7 +11,7 @@ book: "one-god-one-name-one-throne"
 topic: "World"
 associations: ["pulpit-vocabulary"]
 companion: []      # PENDING — Dutch to pick from the studies index
-draft: true
+draft: false
 ---
 
 ***kosmos** — the fallen human order, the rival kingdom outside the gate*

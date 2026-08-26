@@ -1,5 +1,11 @@
-// blog-groups 0825 V1.js
-// The four Living Temple studies join Buried in Plain Sight (10 → 14). The map
+// blog-groups 0826 V2.js
+// V2: Volume V's eight chapters join the feed. The Root 13 → 20 (the seven word
+// chapters, beside What the Pulpit Buried's six); The Side Door 1 → 2 (the
+// Wendell Hollis parable, beside the Ned Goodman one). Map total 75 → 83.
+// NOTE this file gates the feed: inFeed is !!POST_GROUP[slug], so a study with
+// no line here is invisible in /blog and /blog/all no matter what its draft
+// flag says. Lifting a draft is not enough to publish it.
+// V1: The four Living Temple studies join Buried in Plain Sight (10 → 14). The map
 // header total was stale at 70 against 71 actual entries; corrected to 75.
 // shalom-whole-complete is the investigation's fourth witness but stays in
 // The Root, where it already sat — an investigation is not a rail group.
@@ -32,7 +38,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 75 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 83 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (15) ──
   'worship-and-service': 'the-counterfeit-throne',
@@ -51,7 +57,18 @@ export const POST_GROUP = {
   'the-man-between-the-veil-and-the-throne': 'the-counterfeit-throne',
   'the-redeemer-who-never-needed-redeeming': 'the-counterfeit-throne',
 
-  // ── The Root (13) ──
+  // ── The Root (20) ──
+  // Volume V's seven word chapters. They sit beside What the Pulpit Buried's
+  // six, which is the point: the two books are a matched pair excavating one
+  // vocabulary, and the rail should read that way.
+  'one-throne-1-the-mediators-word': 'the-root',
+  'one-throne-2-the-bended-knee': 'the-root',
+  'one-throne-3-the-charge-carried-away': 'the-root',
+  'one-throne-4-the-weight-on-the-throne': 'the-root',
+  'one-throne-5-the-missing-mark': 'the-root',
+  'one-throne-6-the-counterfeit-throne': 'the-root',
+  'one-throne-7-six-words-one-throne': 'the-root', // synthesis chapter
+
   'born-from-above': 'the-root',
   'shalom-whole-complete': 'the-root',
   'three-words-for-creation': 'the-root',
@@ -96,8 +113,9 @@ export const POST_GROUP = {
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',
 
-  // ── The Side Door (1) — modern parables ──
+  // ── The Side Door (2) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
+  'one-throne-8-the-debt-of-wendell-hollis': 'the-side-door', // Volume V's closing parable
 
   // ── Scripture Unfiltered (26) ──
   'ark-of-covering': 'scripture-unfiltered',

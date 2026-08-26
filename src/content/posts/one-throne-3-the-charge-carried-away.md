@@ -11,7 +11,7 @@ book: "one-god-one-name-one-throne"
 topic: "Forgive"
 associations: ["pulpit-vocabulary", "goel-kopher"]
 companion: []      # PENDING — Dutch to pick from the studies index
-draft: true
+draft: false
 ---
 
 ***nasa / salach** — to lift the debt off and bear it away*

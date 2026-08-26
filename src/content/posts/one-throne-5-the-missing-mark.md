@@ -11,7 +11,7 @@ book: "one-god-one-name-one-throne"
 topic: "Sin"
 associations: ["pulpit-vocabulary", "two-stage-salvation"]
 companion: []      # PENDING — Dutch to pick from the studies index
-draft: true
+draft: false
 ---
 
 ***ḥāṭāʾ** — to miss the mark, to fall short of the standard*

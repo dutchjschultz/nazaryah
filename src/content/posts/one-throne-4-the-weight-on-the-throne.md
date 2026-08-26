@@ -11,7 +11,7 @@ book: "one-god-one-name-one-throne"
 topic: "Glory"
 associations: ["pulpit-vocabulary", "the-mishkan"]
 companion: []      # PENDING — Dutch to pick from the studies index
-draft: true
+draft: false
 ---
 
 ***kavod** — heaviness, the substance of the One who sits*

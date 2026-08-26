@@ -11,7 +11,7 @@ book: "one-god-one-name-one-throne"
 topic: "Prayer"
 associations: ["pulpit-vocabulary", "trinity-examined"]
 companion: []      # PENDING — Dutch to pick from the studies index
-draft: true
+draft: false
 ---
 
 ***palal** — to intercede, to stand between and plead*

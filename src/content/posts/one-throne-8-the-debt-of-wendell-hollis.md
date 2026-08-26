@@ -11,7 +11,7 @@ book: "one-god-one-name-one-throne"
 topic: "The Closing Parable"
 associations: ["two-stage-salvation"]
 companion: []      # PENDING — Dutch to pick from the studies index
-draft: true
+draft: false
 ---
 ## Part One — Crossroads
 

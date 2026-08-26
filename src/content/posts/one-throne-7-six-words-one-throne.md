@@ -11,7 +11,7 @@ book: "one-god-one-name-one-throne"
 topic: "The Whole Counsel"
 associations: ["pulpit-vocabulary", "trinity-examined"]
 companion: []      # PENDING — Dutch to pick from the studies index
-draft: true
+draft: false
 ---
 ## Part One — Pull One Thread
 
