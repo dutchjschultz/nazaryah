@@ -1,4 +1,7 @@
-// content config 0825 V5
+// content config 0825 V6
+// V6: added `lede` — the single opening paragraph that replaces the ragged stack
+// of italic fragments the .docx conversion left at the top of a study. A nucleus
+// study uses nucleusClaim instead and carries no lede, so the two never collide.
 // V5: added the three nucleusClaim/nucleusSource/nucleusQuestion fields that drive
 // NucleusClaim.astro — the opening device on a nucleus study. All optional; the
 // component renders nothing unless claim AND question are both present, so the
@@ -79,6 +82,10 @@ const postsCollection = defineCollection({
     // (see src/data/investigations.js). Separate from `associations`: an
     // association is an open subject tag, an investigation is a closed case with
     // one nucleus and three or four witnesses. A study carries at most one.
+    // One opening paragraph, rendered above the article body by Lede.astro.
+    // Separate from `deck` (the card line) and `subtitle` (the header line):
+    // this is the study's first paragraph, not a label for it.
+    lede: z.string().optional(),
     investigation: z.string().optional(),
     // Nucleus-study opening block (see src/components/NucleusClaim.astro). The
     // verdict modern teaching holds, where it is heard, and the question this

@@ -31,8 +31,6 @@ companion:
 
 <style>.prose ul { list-style-type: disc; }</style>
 
-> *A single claim, weighed by four witnesses. Each may be heard on its own, in any order; together their testimony forms one picture — and the picture overturns the claim.*
-
 ## The Claim on Trial
 
 Modern Christianity has reached a verdict and stopped examining it: the Law of Moses was abolished at the cross. The commandments, the feast days, the offerings — closed, retired, gone. It is repeated from pulpits as settled fact. But a verdict repeated often is not the same as a verdict proven, and this one does not survive a careful look at the evidence.

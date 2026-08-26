@@ -1,0 +1,57 @@
+---
+// Lede.astro
+//
+// One opening paragraph, identical in shape on every study. It replaces the
+// ragged stack of short italic lines that came across when the .docx titles were
+// converted — subtitle, sub-subtitle, ornament row, standfirst, each landing as
+// its own paragraph and breaking the page up before the reader reached a sentence.
+//
+// Driven by a single frontmatter field. Renders nothing if absent, so a study
+// without one is simply unaffected.
+//
+//   lede: "The English word cease in Daniel 9:27 hides the Hebrew verb shabath."
+//
+// Nucleus studies use NucleusClaim instead and do not carry a lede, so the two
+// never appear together.
+//
+// COLOUR NOTE: every colour is declared twice — light first, then again under
+// :global(.dark). Do not use var(--token, fallback); several site tokens have no
+// dark value and the fallback silently wins.
+
+const { post } = Astro.props;
+const lede = post?.data?.lede;
+---
+
+{lede && (
+  <p class="lede">{lede}</p>
+)}
+
+<style>
+  .lede {
+    margin: 0 0 2.4rem;
+    padding: 0 0 1.5rem;
+    border-bottom: 1px solid #d8cfb8;
+    font-family: var(--font-display);
+    font-size: clamp(1.08rem, 2.1vw, 1.3rem);
+    font-weight: 600;
+    line-height: 1.62;
+    color: #2b2317;
+    text-wrap: pretty;
+  }
+  :global(.dark) .lede {
+    border-bottom-color: #3a2510;
+    color: #f0e0bf;
+  }
+
+  /* First line gets the gold mark, so the eye lands here before the body. */
+  .lede::first-letter {
+    color: #8b6914;
+  }
+  :global(.dark) .lede::first-letter {
+    color: #ba7517;
+  }
+
+  @media (max-width: 620px) {
+    .lede { margin-bottom: 1.9rem; padding-bottom: 1.2rem; }
+  }
+</style>

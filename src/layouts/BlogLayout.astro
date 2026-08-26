@@ -1,5 +1,9 @@
 ---
-// BlogLayout.astro · 0825 V3
+// BlogLayout.astro · 0825 V4
+// V4: a witness study opens with Lede — one paragraph, same shape every time,
+// in place of the stack of short italic lines the .docx conversion produced.
+// Order above the body is NucleusClaim then Lede; a nucleus carries the claim
+// block and no lede, a witness the reverse, so only one ever renders.
 // V3: a nucleus study opens with NucleusClaim — the verdict on trial, then the
 // question the investigation puts to it — directly above the article body. It
 // renders only when nucleusClaim AND nucleusQuestion are both set, so the four
@@ -16,6 +20,7 @@ import BaseLayout from './BaseLayout.astro';
 import References from '../components/References.astro';
 import AssociatedStudies from '../components/AssociatedStudies.astro';
 import StudyRail from '../components/StudyRail.astro';
+import Lede from '../components/Lede.astro';
 import NucleusClaim from '../components/NucleusClaim.astro';
 import InvestigationBar from '../components/InvestigationBar.astro';
 import { getEntry } from 'astro:content';
@@ -142,6 +147,11 @@ const companions = (
       <!-- The verdict on trial (nucleus studies only; nothing on a witness) -->
       <div class="max-w-3xl mx-auto">
         <NucleusClaim post={post} />
+      </div>
+
+      <!-- Opening paragraph (witness studies; nothing on a nucleus) -->
+      <div class="max-w-3xl mx-auto">
+        <Lede post={post} />
       </div>
 
       <!-- Article Content -->

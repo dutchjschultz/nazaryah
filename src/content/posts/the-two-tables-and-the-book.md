@@ -18,6 +18,7 @@ tags:
   - "Hebrew"
   - "Living Temple"
 featured: false
+lede: "A study on what the Law actually is, where modern Christianity split it wrong, and why every part of it still applies to the believer who has become priest, temple, and bride."
 draft: false
 investigation: "the-living-temple"
 associations:
@@ -28,20 +29,6 @@ companion:
 ---
 
 <style>.prose ul { list-style-type: disc; }</style>
-
-*The Difference Between the Commandments*
-
-*and the Levitical Law —*
-
-*And How the Believer Walks Them*
-
-*as Priest, Temple, and Bride*
-
-❖ ❖ ❖
-
-*A study on what the Law actually is, where modern Christianity split it wrong, and why every part of it still applies to the believer who has become priest, temple, and bride.*
-
-*nazaryah.com*
 
 ## Where the Confusion Began
 

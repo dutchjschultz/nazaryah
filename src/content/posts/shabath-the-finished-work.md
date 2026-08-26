@@ -18,6 +18,7 @@ tags:
   - "Rest"
   - "Living Temple"
 featured: false
+lede: "The English word “cease” in Daniel 9:27 hides the Hebrew verb shabath — the root of Sabbath itself. When Yahushua finished His atoning work, the zevach and the minchah did not collapse, get cancelled, or get torn away. They entered Sabbath rest. Their work was done. The substance had arrived."
 draft: false
 investigation: "the-living-temple"
 associations:
@@ -28,14 +29,6 @@ companion:
 ---
 
 <style>.prose ul { list-style-type: disc; }</style>
-
-*The Hebrew Verb the English Hides*
-
-*How the cross caused the messianic-type offerings*
-
-*to enter the rest of completion*
-
-> *The English word “cease” in Daniel 9:27 hides the Hebrew verb shabath — the root of Sabbath itself. When Yahushua finished His atoning work, the zevach and the minchah did not collapse, get cancelled, or get torn away. They entered Sabbath rest. Their work was done. The substance had arrived.*
 
 ## The Word the English Hides
 

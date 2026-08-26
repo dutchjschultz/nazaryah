@@ -10,6 +10,7 @@ readTime: "12 min"
 image: "/og/blog/shalom-whole-complete.v2.png"
 tags: ["Hebrew", "Word Study", "Shalom", "shalem", "tamim", "Prosperity Gospel", "Heart", "Wholeness", "Living Temple"]
 featured: false
+lede: "What if shalom was never about what is missing from your life — but about what is mixed in your heart?"
 draft: false
 investigation: "the-living-temple"
 associations: ["pulpit-vocabulary"]
@@ -17,14 +18,6 @@ companion: ["the-living-temple", "the-whole-counsel"]
 ---
 
 <style>.prose ul { list-style-type: disc; }</style>
-
-*Why “Nothing Missing, Nothing Broken” Is Not What the Hebrew Says*
-
-*It Was Never About What You Are Missing*
-
-• • •
-
-*What if shalom was never about what is missing from your life — but about what is mixed in your heart?*
 
 ## Introduction
 

@@ -17,6 +17,7 @@ tags:
   - "Hebrew"
   - "Living Temple"
 featured: false
+lede: "This is what the cross did with the offerings: it ended the one function that carried guilt, and filled all the rest into the hands of the priest you have become — millu’im, the Torah’s own word for that filling."
 draft: false
 investigation: "the-living-temple"
 associations:
@@ -27,12 +28,6 @@ companion:
 ---
 
 <style>.prose ul { list-style-type: disc; }</style>
-
-*The Filling of the Priest’s Hands*
-
-*This is what the cross did with the offerings: it ended the one function that carried guilt, and filled all the rest into the hands of the priest you have become — millu’im, the Torah’s own word for that filling.*
-
-*A companion to The Two Tables and the Book and the Shabath study. This is the fill of the house.*
 
 ## Introduction — One Function, Not the Whole
 
