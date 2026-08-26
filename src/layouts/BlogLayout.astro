@@ -1,5 +1,9 @@
 ---
-// BlogLayout.astro · 0825 V2
+// BlogLayout.astro · 0825 V3
+// V3: a nucleus study opens with NucleusClaim — the verdict on trial, then the
+// question the investigation puts to it — directly above the article body. It
+// renders only when nucleusClaim AND nucleusQuestion are both set, so the four
+// witness studies show the bar and no claim block.
 // V2: posts carrying `investigation` get an InvestigationBar under the article —
 // the whole case, with the current study marked "You are here". It sits ABOVE
 // Read Next on purpose: the bar is the map, Read Next is the recommendation.
@@ -12,6 +16,7 @@ import BaseLayout from './BaseLayout.astro';
 import References from '../components/References.astro';
 import AssociatedStudies from '../components/AssociatedStudies.astro';
 import StudyRail from '../components/StudyRail.astro';
+import NucleusClaim from '../components/NucleusClaim.astro';
 import InvestigationBar from '../components/InvestigationBar.astro';
 import { getEntry } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
@@ -132,6 +137,11 @@ const companions = (
       <!-- Association rail (cluster names + jump to panel) -->
       <div class="max-w-3xl mx-auto" data-pagefind-ignore>
         <StudyRail current={post} />
+      </div>
+
+      <!-- The verdict on trial (nucleus studies only; nothing on a witness) -->
+      <div class="max-w-3xl mx-auto">
+        <NucleusClaim post={post} />
       </div>
 
       <!-- Article Content -->

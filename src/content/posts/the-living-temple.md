@@ -19,6 +19,9 @@ tags:
 featured: true
 draft: false
 investigation: "the-living-temple"
+nucleusClaim: "The Law of Moses was abolished at the cross."
+nucleusSource: "Repeated from pulpits as settled fact — the commandments, the feast days, the offerings: closed, retired, gone."
+nucleusQuestion: "What did Yahushua actually do with the Torah? Not which parts survived — what did He do to it? Scripture answers with four verbs, and the four are one house."
 associations:
   - "lost-in-translation"
 companion:
@@ -27,10 +30,6 @@ companion:
 ---
 
 <style>.prose ul { list-style-type: disc; }</style>
-
-*An Investigation in Four Witnesses*
-
-<img src="/og/investigations/the-living-temple.v2.png" alt="The Living Temple — four witnesses arranged around the nucleus" style="width:100%;height:auto;" />
 
 > *A single claim, weighed by four witnesses. Each may be heard on its own, in any order; together their testimony forms one picture — and the picture overturns the claim.*
 

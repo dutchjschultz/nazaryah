@@ -1,0 +1,107 @@
+---
+// NucleusClaim.astro
+//
+// The opening device for a nucleus study — the piece at the centre of an
+// investigation. It states the verdict modern teaching holds, then the question
+// the investigation puts to it. Nothing else on the site looks like this, which
+// is the point: a reader landing on a nucleus should know within one screen that
+// this study frames a case rather than argues one leg of it.
+//
+// Driven by two frontmatter fields. Renders nothing unless both are present, so
+// the four witness studies are untouched.
+//
+//   nucleusClaim:    "The Law of Moses was abolished at the cross."
+//   nucleusQuestion: "What did Yahushua actually do with the Torah?"
+//
+// COLOUR NOTE: every colour is declared twice — light first, then again under
+// :global(.dark). Do not use var(--token, fallback) here; several site tokens
+// have no dark value and the fallback silently wins.
+
+const { post } = Astro.props;
+const claim = post?.data?.nucleusClaim;
+const question = post?.data?.nucleusQuestion;
+const source = post?.data?.nucleusSource ?? 'Repeated from pulpits as settled fact';
+---
+
+{claim && question && (
+  <aside class="nucleus-claim" data-pagefind-ignore>
+    <p class="nc-kicker">The verdict on trial</p>
+
+    <blockquote class="nc-claim">{claim}</blockquote>
+    <p class="nc-source">{source}</p>
+
+    <div class="nc-rule"></div>
+
+    <p class="nc-kicker">The question this investigation asks</p>
+    <p class="nc-question">{question}</p>
+  </aside>
+)}
+
+<style>
+  .nucleus-claim {
+    margin: 2.2rem 0 2.6rem;
+    padding: 2rem 2.2rem 1.9rem;
+    border: 1px solid #d8cfb8;
+    border-left: 4px solid #8b6914;
+    border-radius: 3px;
+    background: #f7f1e2;
+    box-shadow: 0 2px 14px rgba(43, 35, 23, 0.09);
+  }
+  :global(.dark) .nucleus-claim {
+    border-color: #3a2510;
+    border-left-color: #ba7517;
+    background: #171009;
+    box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
+  }
+
+  .nc-kicker {
+    margin: 0 0 0.7rem;
+    font-size: 0.68rem;
+    letter-spacing: 2.6px;
+    text-transform: uppercase;
+    color: #8a7c5e;
+  }
+  :global(.dark) .nc-kicker { color: #9c7c4c; }
+
+  .nc-claim {
+    margin: 0;
+    padding: 0;
+    border: none;
+    font-family: var(--font-display);
+    font-size: clamp(1.25rem, 2.6vw, 1.6rem);
+    font-style: italic;
+    line-height: 1.4;
+    color: #2b2317;
+  }
+  :global(.dark) .nc-claim { color: #f0e0bf; }
+  .nc-claim::before { content: '\201C'; }
+  .nc-claim::after  { content: '\201D'; }
+
+  .nc-source {
+    margin: 0.7rem 0 0;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: #8a7c5e;
+  }
+  :global(.dark) .nc-source { color: #9c7c4c; }
+
+  .nc-rule {
+    height: 1px;
+    margin: 1.6rem 0 1.4rem;
+    background: #d8cfb8;
+  }
+  :global(.dark) .nc-rule { background: #3a2510; }
+
+  .nc-question {
+    margin: 0;
+    font-size: 1.05rem;
+    font-weight: 700;
+    line-height: 1.55;
+    color: #2b2317;
+  }
+  :global(.dark) .nc-question { color: #f0e0bf; }
+
+  @media (max-width: 620px) {
+    .nucleus-claim { padding: 1.5rem 1.4rem 1.4rem; }
+  }
+</style>

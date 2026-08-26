@@ -1,4 +1,8 @@
-// content config 0825 V4
+// content config 0825 V5
+// V5: added the three nucleusClaim/nucleusSource/nucleusQuestion fields that drive
+// NucleusClaim.astro — the opening device on a nucleus study. All optional; the
+// component renders nothing unless claim AND question are both present, so the
+// witness studies are untouched.
 // V4: added `investigation` — the curated-case axis (src/data/investigations.js).
 // A post joins an investigation by naming its slug; the /investigations pages read
 // the data file, not this field, but the field must be declared or Zod strips it
@@ -76,6 +80,13 @@ const postsCollection = defineCollection({
     // association is an open subject tag, an investigation is a closed case with
     // one nucleus and three or four witnesses. A study carries at most one.
     investigation: z.string().optional(),
+    // Nucleus-study opening block (see src/components/NucleusClaim.astro). The
+    // verdict modern teaching holds, where it is heard, and the question this
+    // investigation puts to it. Claim + question are the pair that switches the
+    // block on; source has its own default in the component.
+    nucleusClaim: z.string().optional(),
+    nucleusSource: z.string().optional(),
+    nucleusQuestion: z.string().optional(),
     // Optional per-study social-share overrides. Each falls back to the study's
     // own title/description or the site default (see BaseLayout).
     ogTitle: z.string().optional(),
