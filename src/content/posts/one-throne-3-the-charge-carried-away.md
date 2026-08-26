@@ -1,7 +1,7 @@
 ---
 title: "The Charge Carried Away"
 description: "English has one word for forgiveness. Hebrew has six, and none are feelings."
-date: 2026-08-26
+date: 2026-08-31
 author: "Dutch Schultz"
 series: "One God, One Name, One Throne"
 seriesOrder: 3

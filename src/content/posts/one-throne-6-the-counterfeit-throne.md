@@ -1,7 +1,7 @@
 ---
 title: "The Counterfeit Throne"
 description: "John's kosmos is not the planet. It is the rival kingdom outside the gate."
-date: 2026-08-26
+date: 2026-09-02
 author: "Dutch Schultz"
 series: "One God, One Name, One Throne"
 seriesOrder: 6

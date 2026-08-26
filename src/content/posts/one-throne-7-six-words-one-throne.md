@@ -1,7 +1,7 @@
 ---
 title: "Six Words, One Throne"
 description: "Pull one word loose and the other five start sliding with it."
-date: 2026-08-26
+date: 2026-09-04
 author: "Dutch Schultz"
 series: "One God, One Name, One Throne"
 seriesOrder: 7

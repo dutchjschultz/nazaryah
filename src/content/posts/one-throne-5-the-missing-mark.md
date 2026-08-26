@@ -1,7 +1,7 @@
 ---
 title: "The Missing Mark"
 description: "To miss a mark there must be a mark. Torah is the mark."
-date: 2026-08-26
+date: 2026-09-02
 author: "Dutch Schultz"
 series: "One God, One Name, One Throne"
 seriesOrder: 5

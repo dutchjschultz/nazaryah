@@ -1,7 +1,7 @@
 ---
 title: "The Mediator's Word"
 description: "Palal is a courtroom word. The church turned it into small talk."
-date: 2026-08-26
+date: 2026-08-29
 author: "Dutch Schultz"
 series: "One God, One Name, One Throne"
 seriesOrder: 1
