@@ -25,7 +25,8 @@ const here = `/blog/${current.slug}`;
 
 const pieces = inv
   ? [
-      { label: 'The Nucleus', name: inv.nucleus.title, href: inv.nucleus.href, status: 'live' },
+      { label: 'The Nucleus', name: inv.nucleus.title, href: inv.nucleus.href,
+        status: 'live', isNucleus: true },
       ...inv.witnesses.map((w) => ({
         label: w.tag,
         name: w.name,
@@ -51,7 +52,7 @@ const pieces = inv
         const Tag = isHere || dead ? 'div' : 'a';
         return (
           <Tag
-            class={`inv-piece ${isHere ? 'here' : ''} ${dead ? 'pending' : ''}`}
+            class={`inv-piece ${p.isNucleus ? 'nucleus' : ''} ${isHere ? 'here' : ''} ${dead ? 'pending' : ''}`}
             href={isHere || dead ? undefined : p.href}
           >
             <span class="inv-label">{p.label}</span>
@@ -90,6 +91,10 @@ const pieces = inv
     display: grid; gap: .6rem;
     grid-template-columns: repeat(auto-fit, minmax(165px, 1fr));
   }
+
+  /* The nucleus spans the row, so the witnesses sit as a clean set beneath it
+     instead of leaving the fifth piece orphaned on a row of its own. */
+  .inv-piece.nucleus { grid-column: 1 / -1; }
 
   .inv-piece {
     display: block; text-decoration: none; padding: .8rem .9rem;
