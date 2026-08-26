@@ -1,3 +1,8 @@
+// blog-groups 0825 V1.js
+// The four Living Temple studies join Buried in Plain Sight (10 → 14). The map
+// header total was stale at 70 against 71 actual entries; corrected to 75.
+// shalom-whole-complete is the investigation's fourth witness but stays in
+// The Root, where it already sat — an investigation is not a rail group.
 // ─────────────────────────────────────────────────────────────────────────
 // Blog rail groups — SEPARATE from the homepage rail on purpose.
 // Same visual styling as the homepage rail, but its own groups and its own
@@ -27,7 +32,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 70 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 75 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (15) ──
   'worship-and-service': 'the-counterfeit-throne',
@@ -64,7 +69,7 @@ export const POST_GROUP = {
   // ── The Quick Scroll (1) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
 
-  // ── Buried in Plain Sight (10) ──
+  // ── Buried in Plain Sight (14) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
   'the-christian-experiment': 'buried-in-plain-sight',
   'the-men-in-the-margin': 'buried-in-plain-sight',
@@ -75,6 +80,12 @@ export const POST_GROUP = {
   'two-kingdoms': 'buried-in-plain-sight',
   'the-star-on-the-flag': 'buried-in-plain-sight',   // ⚠ default — symbol origin, not an Esther walkthrough
   'the-lucifer-deception': 'buried-in-plain-sight',  // ⚠ default — a planted lie (could be The Root)
+  // The Living Temple investigation — nucleus + three of its four witnesses.
+  // The fourth (shalom-whole-complete) stays in The Root; see the header note.
+  'the-living-temple': 'buried-in-plain-sight',
+  'shabath-the-finished-work': 'buried-in-plain-sight',
+  'milluim-the-filling': 'buried-in-plain-sight',
+  'the-two-tables-and-the-book': 'buried-in-plain-sight',
 
   // ── The Law & The Feasts (4) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',

@@ -1,0 +1,194 @@
+---
+// src/pages/investigations/index.astro · 0825 V1
+// The investigations landing — one card per entry in src/data/investigations.js.
+// A live case links to its orbit page; a `soon: true` case is dimmed, carries a
+// Coming Soon pill and is not a link, because its page is not built.
+//
+// An investigation is not an association. An association is a subject tag —
+// automatic, unordered, membership grows by tagging. An investigation is a
+// curated case: one question, one nucleus, three or four witnesses, and an end.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { INVESTIGATIONS, liveCount } from '../../data/investigations.js';
+
+const cards = INVESTIGATIONS.map((inv) => ({
+  ...inv,
+  pieces: 1 + inv.witnesses.length,
+  live: liveCount(inv),
+}));
+---
+
+<BaseLayout
+  title="Investigations | Nazaryah"
+  description="Curated cases, not subject tags. Each investigation asks one question, argues its method in a nucleus study, and closes the case with three or four witnesses from different directions."
+>
+  <main class="hub">
+    <p class="eyebrow">― Investigations ―</p>
+    <h1>One Question, Four Witnesses</h1>
+    <p class="sub">
+      A case, not a category — a nucleus that argues the method, and witnesses that
+      close it from different directions. Read in any order.
+    </p>
+
+    <div class="grid">
+      {cards.map((inv) => {
+        const Tag = inv.soon ? 'div' : 'a';
+        return (
+          <Tag
+            class:list={['card', { soon: inv.soon }]}
+            href={inv.soon ? undefined : `/investigations/${inv.slug}`}
+          >
+            <div class="kicker">
+              <span class="k">Investigation</span>
+              {inv.soon && <span class="pill">Coming Soon</span>}
+            </div>
+            <h2>{inv.title}</h2>
+            <p class="deck">{inv.deck}</p>
+            <p class="question">{inv.question}</p>
+            <p class="meta">
+              {inv.live} of {inv.pieces} pieces live
+              {!inv.soon && <span class="go">Enter the orbit →</span>}
+            </p>
+          </Tag>
+        );
+      })}
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .hub {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4.5rem;
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin: 0 0 0.6rem;
+  }
+  :global(.dark) .eyebrow { color: var(--gold-light); }
+
+  .hub h1 {
+    font-family: var(--font-display);
+    text-align: center;
+    margin: 0 0 0.5rem;
+    font-size: clamp(1.9rem, 4.6vw, 2.8rem);
+  }
+  :global(.dark) .hub h1 { color: var(--color-dark-text); }
+
+  .sub {
+    max-width: 620px;
+    margin: 0 auto 2.6rem;
+    text-align: center;
+    font-style: italic;
+    color: var(--color-secondary-text);
+  }
+  :global(.dark) .sub { color: var(--color-dark-secondary-text); }
+
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 1.4rem;
+  }
+
+  .card {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-left: 3px solid var(--gold);
+    border-radius: 8px;
+    padding: 1.6rem 1.5rem;
+    transition: border-color 0.2s, transform 0.2s, box-shadow 0.2s;
+  }
+  :global(.dark) .card {
+    background: #130e06;
+    border-color: #3a2510;
+    border-left-color: #ba7517;
+  }
+  a.card:hover,
+  a.card:focus-visible {
+    border-color: var(--gold);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 22px rgba(138, 101, 32, 0.14);
+    outline: none;
+  }
+  :global(.dark) a.card:hover,
+  :global(.dark) a.card:focus-visible {
+    border-color: #ba7517;
+    box-shadow: 0 6px 22px rgba(186, 117, 23, 0.2);
+  }
+
+  .card.soon {
+    opacity: 0.55;
+    border-style: dashed;
+    border-left-color: var(--color-border-strong);
+    cursor: default;
+  }
+  :global(.dark) .card.soon { border-left-color: #6a4820; }
+
+  .kicker {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.55rem;
+  }
+  .kicker .k {
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  :global(.dark) .kicker .k { color: var(--gold-light); }
+  .pill {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--color-secondary-text);
+    border: 1px solid var(--color-border-strong);
+    border-radius: 999px;
+    padding: 0.15rem 0.5rem;
+  }
+  :global(.dark) .pill { color: #c4a46b; border-color: #6a4820; }
+
+  .card h2 {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    margin: 0 0 0.35rem;
+  }
+  :global(.dark) .card h2 { color: var(--color-dark-text); }
+
+  .deck {
+    font-style: italic;
+    color: var(--clay);
+    margin: 0 0 0.8rem;
+    font-size: 0.95rem;
+  }
+  :global(.dark) .deck { color: #c4a46b; }
+
+  .question {
+    font-size: 0.92rem;
+    color: var(--color-secondary-text);
+    margin: 0 0 1.1rem;
+  }
+  :global(.dark) .question { color: #a89f8c; }
+
+  .meta {
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0;
+    font-size: 9px;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    color: var(--color-secondary-text);
+  }
+  :global(.dark) .meta { color: #6a4820; }
+  .meta .go { color: var(--gold); }
+  :global(.dark) .meta .go { color: var(--gold-light); }
+</style>

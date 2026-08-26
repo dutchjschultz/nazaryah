@@ -1,0 +1,379 @@
+---
+// src/components/Orbit.astro · 0825 V1
+// The investigation orbit: a nucleus at centre, four witness chips carried round
+// it on a slow spin, and one caption line that swaps to whatever is hovered.
+//
+// Built from the End Times Gap mockup V3, made data-driven — every string comes
+// from src/data/investigations.js, nothing is hard-coded here. Adding an
+// investigation never touches this file.
+//
+// THE COUNTER-ROTATION. .spinner turns the whole rig forward. Each .arm is fixed
+// at 0/90/180/270 so the four chips sit at the compass points. Inside each slot a
+// .counter turns backward at the same rate and a .fN cancels that arm's own fixed
+// angle, so the chip stays upright the whole way round. Break the nesting and the
+// text tumbles.
+//
+// Hover anywhere on the stage pauses every animation (spinner, counters, dashed
+// ring) so a reader can actually reach a chip. prefers-reduced-motion stops them
+// outright.
+//
+// Under 620px the orbit is REPLACED by a plain list — never shown alongside it.
+// A rotating ring of absolutely-positioned chips has no readable small-screen
+// form, so the stage, caption and hint all go display:none together.
+const { investigation } = Astro.props;
+const inv = investigation;
+
+const COUNT_WORD = ['no', 'one', 'two', 'three', 'four', 'five', 'six'];
+const n = inv.witnesses.length;
+const defaultWho = `${COUNT_WORD[n] ?? n} witnesses · one claim`;
+
+// The chip's third line: the study's own title for a live piece, its state for a
+// pending one. The concept leads on line two, the title follows here — a reader
+// who does not know the Hebrew still knows what the chip offers.
+const linkLine = (w) => (w.status === 'live' && w.study ? `${w.study} →` : 'In progress');
+
+// Caption heading for a hovered chip: the witness tag, then what it opens.
+const whoFor = (w) =>
+  w.status === 'live'
+    ? `${w.tag} · ${w.study ?? 'Read'}${w.hebrew ? ` ${w.hebrew}` : ''}`
+    : `${w.tag} · In progress`;
+---
+
+<div class="orbit">
+  <div class="stage">
+    <svg class="rings" viewBox="0 0 100 100" aria-hidden="true">
+      <circle class="ring" cx="50" cy="50" r="38" />
+      <circle class="ring dashed" cx="50" cy="50" r="27" />
+    </svg>
+
+    <div class="spinner">
+      {inv.witnesses.map((w, i) => (
+        <div class={`arm a${i + 1}`}>
+          <div class="slot">
+            <div class="counter">
+              <div class={`f${i + 1}`}>
+                <a
+                  class:list={['chip', { pending: w.status !== 'live' }]}
+                  href={w.href}
+                  aria-disabled={w.status !== 'live' ? 'true' : undefined}
+                  data-who={whoFor(w)}
+                  data-txt={w.blurb}
+                >
+                  <span class="tag">{w.tag}</span>
+                  <span class="nm">{w.name}</span>
+                  <span class="st">{linkLine(w)}</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+
+    <a
+      class="nucleus"
+      href={inv.nucleus.href}
+      data-who={`${inv.nucleus.label} · Start here`}
+      data-txt={inv.nucleus.blurb}
+    >
+      <span class="tag">{inv.nucleus.label}</span>
+      <span class="nm">{inv.nucleus.title}</span>
+      <span class="st">Start here</span>
+    </a>
+  </div>
+
+  <p class="caption dim" data-caption>
+    <span class="who" data-who-slot>{defaultWho}</span>
+    <span data-txt-slot>{inv.question}</span>
+  </p>
+
+  <p class="hint">Hover to hold · read in any order</p>
+
+  {/* shown only under 620px, never alongside the orbit */}
+  <div class="mobile-list">
+    <a class="row core" href={inv.nucleus.href}>
+      <span class="t">✦ {inv.nucleus.label} · start here</span>
+      <span class="h">{inv.nucleus.title}</span>
+      <span class="d">{inv.nucleus.blurb}</span>
+    </a>
+    {inv.witnesses.map((w) => (
+      <a class:list={['row', { pending: w.status !== 'live' }]} href={w.href}>
+        <span class="t">✦ {w.tag}{w.status === 'live' ? '' : ' · in progress'}</span>
+        <span class="h">{w.name}</span>
+        {w.status === 'live' && w.study && <span class="s">{w.study}{w.hebrew ? ` · ${w.hebrew}` : ''}</span>}
+        <span class="d">{w.blurb}</span>
+      </a>
+    ))}
+  </div>
+</div>
+
+<style>
+  /* Light (papyrus) is the site default; the dark block below is the mockup's
+     own palette. Every colour goes through a token so the two stay in step. */
+  .orbit {
+    --o-card: #f5e8c8;
+    --o-card-hi: #efe1c0;
+    --o-rule: #c8a878;
+    --o-edge: #c8a878;
+    --o-gold: #8a6520;
+    --o-gold-dim: #9c7c4c;
+    --o-gold-warm: #7d5a2a;
+    --o-cream: #2b1d11;
+    --o-body: #5b4530;
+    --o-core-in: #f7ecd2;
+    --o-core-out: #eadcb8;
+    --o-glow: rgba(138, 101, 32, 0.14);
+    --o-glow-hi: rgba(138, 101, 32, 0.3);
+    --spin: 72s;
+
+    font-family: var(--font-family-serif);
+    color: var(--o-body);
+    line-height: 1.7;
+  }
+
+  :global(.dark) .orbit {
+    --o-card: #130e06;
+    --o-card-hi: #1a1007;
+    --o-rule: #2a1e0c;
+    --o-edge: #3a2510;
+    --o-gold: #ba7517;
+    --o-gold-dim: #6a4820;
+    --o-gold-warm: #c4a46b;
+    --o-cream: #f0e0bf;
+    --o-body: #a89f8c;
+    --o-core-in: #1d1307;
+    --o-core-out: #140d04;
+    --o-glow: rgba(186, 117, 23, 0.16);
+    --o-glow-hi: rgba(186, 117, 23, 0.36);
+  }
+
+  /* ================= orbit ================= */
+  .stage {
+    position: relative;
+    width: 100%;
+    max-width: 680px;
+    margin: 0 auto;
+    aspect-ratio: 1 / 1;
+  }
+  .rings { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .ring { fill: none; stroke: var(--o-rule); stroke-width: 0.5; }
+  .ring.dashed {
+    stroke-dasharray: 2.5 6;
+    opacity: 0.75;
+    transform-origin: 50% 50%;
+    animation: orbit-spin calc(var(--spin) * 2.4) linear infinite reverse;
+  }
+
+  .spinner {
+    position: absolute;
+    inset: 0;
+    transform-origin: 50% 50%;
+    animation: orbit-spin var(--spin) linear infinite;
+  }
+  .arm { position: absolute; inset: 0; transform-origin: 50% 50%; }
+  .a1 { transform: rotate(0deg); }
+  .a2 { transform: rotate(90deg); }
+  .a3 { transform: rotate(180deg); }
+  .a4 { transform: rotate(270deg); }
+  .slot { position: absolute; left: 50%; top: 12%; width: 31%; transform: translate(-50%, -50%); }
+  .counter { transform-origin: 50% 50%; animation: orbit-spin var(--spin) linear infinite reverse; }
+  .f1 { transform: rotate(0deg); }
+  .f2 { transform: rotate(-90deg); }
+  .f3 { transform: rotate(-180deg); }
+  .f4 { transform: rotate(-270deg); }
+
+  @keyframes orbit-spin {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .stage:hover .spinner,
+  .stage:hover .counter,
+  .stage:hover .ring.dashed,
+  .stage:focus-within .spinner,
+  .stage:focus-within .counter,
+  .stage:focus-within .ring.dashed { animation-play-state: paused; }
+
+  .chip {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    background: var(--o-card);
+    border: 1px solid var(--o-edge);
+    border-radius: 8px;
+    padding: 0.8rem 0.6rem;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .chip:hover,
+  .chip:focus-visible {
+    background: var(--o-card-hi);
+    border-color: var(--o-gold);
+    transform: scale(1.05);
+    outline: none;
+  }
+  .chip .tag {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--o-gold-dim);
+    margin-bottom: 0.3rem;
+  }
+  .chip .nm { display: block; font-size: 0.9rem; color: var(--o-cream); font-weight: 700; line-height: 1.25; }
+  .chip .st {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--o-gold);
+    margin-top: 0.38rem;
+  }
+  .chip.pending { border-style: dashed; background: transparent; }
+  .chip.pending .nm { color: var(--o-gold-warm); }
+  .chip.pending .st { color: var(--o-gold-dim); }
+
+  .nucleus {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 38%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 45%, var(--o-core-in) 0%, var(--o-core-out) 70%);
+    border: 1px solid var(--o-gold);
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+    box-shadow: 0 0 46px var(--o-glow);
+    transition: box-shadow 0.25s, border-color 0.25s;
+  }
+  .nucleus:hover,
+  .nucleus:focus-visible { box-shadow: 0 0 70px var(--o-glow-hi); outline: none; }
+  .nucleus .tag {
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--o-gold);
+    margin-bottom: 0.35rem;
+  }
+  .nucleus .nm { font-size: clamp(0.9rem, 2.3vw, 1.3rem); color: var(--o-cream); font-weight: 700; line-height: 1.2; }
+  .nucleus .st {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--o-gold-dim);
+    margin-top: 0.4rem;
+  }
+
+  /* one caption line, swapped on hover — never a second stack of cards */
+  .caption {
+    max-width: 640px;
+    margin: 1.4rem auto 0;
+    min-height: 4.6rem;
+    text-align: center;
+    font-size: 0.92rem;
+    color: var(--o-body);
+    transition: opacity 0.18s;
+  }
+  .caption .who {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--o-gold);
+    margin-bottom: 0.45rem;
+  }
+  .caption.dim { opacity: 0.55; }
+
+  .hint {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--o-gold-dim);
+    margin: 1.8rem 0 0;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .spinner,
+    .counter,
+    .ring.dashed { animation: none; }
+  }
+
+  /* ============ mobile: orbit swapped for a plain list, never both ============ */
+  .mobile-list { display: none; }
+  @media (max-width: 620px) {
+    .stage,
+    .caption,
+    .hint { display: none; }
+    .mobile-list { display: block; }
+  }
+  .row {
+    display: block;
+    text-decoration: none;
+    background: var(--o-card);
+    border: 1px solid var(--o-edge);
+    border-left: 3px solid var(--o-gold);
+    border-radius: 6px;
+    padding: 1.1rem 1.2rem;
+    margin-bottom: 0.8rem;
+  }
+  .row.core { background: var(--o-card-hi); }
+  .row.pending { border-left-color: var(--o-gold-dim); border-style: dashed; opacity: 0.75; }
+  .row .t {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--o-gold);
+    margin-bottom: 0.35rem;
+  }
+  .row.pending .t { color: var(--o-gold-dim); }
+  .row .h { display: block; font-size: 1rem; font-weight: 700; color: var(--o-cream); }
+  .row .s {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--o-gold);
+    margin-top: 0.25rem;
+  }
+  .row .d { display: block; font-size: 0.85rem; color: var(--o-body); margin-top: 0.4rem; }
+</style>
+
+<script>
+  // One caption for the whole orbit. Hovering or focusing a piece writes that
+  // piece's own line in; leaving puts the investigation's question back. Text
+  // only — no markup crosses from the data file into innerHTML.
+  document.querySelectorAll('.orbit').forEach((orbit) => {
+    const cap = orbit.querySelector('[data-caption]');
+    const who = orbit.querySelector('[data-who-slot]');
+    const txt = orbit.querySelector('[data-txt-slot]');
+    if (!cap || !who || !txt) return;
+
+    const baseWho = who.textContent;
+    const baseTxt = txt.textContent;
+
+    orbit.querySelectorAll('.stage [data-txt]').forEach((el) => {
+      const on = () => {
+        who.textContent = el.getAttribute('data-who');
+        txt.textContent = el.getAttribute('data-txt');
+        cap.classList.remove('dim');
+      };
+      const off = () => {
+        who.textContent = baseWho;
+        txt.textContent = baseTxt;
+        cap.classList.add('dim');
+      };
+      el.addEventListener('mouseenter', on);
+      el.addEventListener('focus', on);
+      el.addEventListener('mouseleave', off);
+      el.addEventListener('blur', off);
+    });
+  });
+</script>

@@ -1,4 +1,8 @@
-// content config 0808 V3
+// content config 0825 V4
+// V4: added `investigation` — the curated-case axis (src/data/investigations.js).
+// A post joins an investigation by naming its slug; the /investigations pages read
+// the data file, not this field, but the field must be declared or Zod strips it
+// and the post loses its badge. Optional, so nothing existing changes.
 // V3: comment fix only — the watchmans-desk collection is "The Watchman's Desk";
 // dropped the retired "The Watchman's Letter" name. No schema change.
 // V2: `companion` now accepts a single slug OR an array of slugs (Read Next
@@ -67,6 +71,11 @@ const postsCollection = defineCollection({
     order: z.number().optional(),
     // Single strongest kin study, rendered as "Read Next" at the foot of the post.
     companion: z.union([z.string(), z.array(z.string())]).optional(),
+    // INVESTIGATION axis — the slug of the curated case this study belongs to
+    // (see src/data/investigations.js). Separate from `associations`: an
+    // association is an open subject tag, an investigation is a closed case with
+    // one nucleus and three or four witnesses. A study carries at most one.
+    investigation: z.string().optional(),
     // Optional per-study social-share overrides. Each falls back to the study's
     // own title/description or the site default (see BaseLayout).
     ogTitle: z.string().optional(),

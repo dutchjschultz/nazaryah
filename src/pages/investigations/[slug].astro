@@ -1,0 +1,99 @@
+---
+// src/pages/investigations/[slug].astro · 0825 V1
+// One investigation, one page. Everything on it comes from src/data/investigations.js
+// — adding an investigation means adding an entry there, never a page here.
+//
+// Only live investigations get a page built. A `soon: true` entry is listed on the
+// index and in the nav with a Coming Soon pill and deliberately has no route, so a
+// half-written case can be announced without shipping an empty page.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Orbit from '../../components/Orbit.astro';
+import { INVESTIGATIONS, getInvestigation, liveCount } from '../../data/investigations.js';
+
+export function getStaticPaths() {
+  return INVESTIGATIONS.filter((i) => !i.soon).map((i) => ({ params: { slug: i.slug } }));
+}
+
+const { slug } = Astro.params;
+const inv = getInvestigation(slug);
+
+const pieces = 1 + inv.witnesses.length;
+const live = liveCount(inv);
+
+// No hand-set ogImage. The build guard (scripts/check-cards.mjs) requires every
+// card to sit at the path mirroring its page URL — the hub art for this page
+// lives at public/og/investigations/<slug>.vN.png and BaseLayout resolves it
+// automatically. Naming a card anywhere else fails the build.
+---
+
+<BaseLayout
+  title={`${inv.title} — An Investigation | Nazaryah`}
+  description={inv.question}
+>
+  <main class="inv">
+    <p class="eyebrow">― Investigation ―</p>
+    <h1>{inv.title}</h1>
+    <p class="sub">{inv.deck}</p>
+
+    <Orbit investigation={inv} />
+
+    <div class="foot">
+      <span class="l">Investigation · {live} of {pieces} pieces live</span>
+      <a href="/investigations">All investigations →</a>
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  .inv {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4.5rem;
+  }
+  .eyebrow {
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--gold);
+    text-align: center;
+    margin: 0 0 0.6rem;
+  }
+  :global(.dark) .eyebrow { color: var(--gold-light); }
+
+  .inv h1 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    text-align: center;
+    margin: 0 0 0.5rem;
+    font-size: clamp(2rem, 5vw, 3rem);
+  }
+  :global(.dark) .inv h1 { color: var(--color-dark-text); }
+
+  .sub {
+    text-align: center;
+    font-style: italic;
+    font-size: 1.02rem;
+    color: var(--clay);
+    margin: 0 0 2.2rem;
+  }
+  :global(.dark) .sub { color: #c4a46b; }
+
+  .foot {
+    margin-top: 3rem;
+    padding-top: 1.4rem;
+    border-top: 1px solid var(--color-border);
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 1rem;
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+  }
+  :global(.dark) .foot { border-top-color: var(--color-dark-border); }
+  .foot .l { color: var(--color-secondary-text); }
+  :global(.dark) .foot .l { color: #6a4820; }
+  .foot a { color: var(--gold); text-decoration: none; }
+  :global(.dark) .foot a { color: var(--gold-light); }
+  .foot a:hover { text-decoration: underline; }
+</style>
