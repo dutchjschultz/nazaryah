@@ -1,0 +1,424 @@
+---
+// src/pages/books/one-god-one-name-one-throne/six-acts-one-pardon.astro · 0826 V1
+// The companion handout for Volume V — a Bible-study sheet, NOT a chapter.
+// Converted from six-acts-one-pardon 0619 V2 Forgive handout.docx.
+//
+// WHY IT LIVES HERE AND NOT IN THE BLOG. The load spec requires it be kept out
+// of the studies index. It is an .astro page, not an entry in the `posts`
+// content collection, so no getCollection('posts') query can reach it — the
+// exclusion is structural, not a filter someone has to remember to maintain.
+// Do NOT move this into src/content/posts to "tidy it up"; that would put a
+// handout into the study clusters, the blog feed, and Featured Picks.
+//
+// SOCIAL CARD. The page copy asked for no card of its own, on the theory that
+// the book page's card would cover it. It cannot: BaseLayout resolves cards by
+// URL path, so with no card here the page falls back to the site LOGO, not the
+// book card — and pointing a hand-set ogImage at the book's card trips check 2
+// of scripts/check-cards.mjs ("CARD AT A NON-STANDARD PATH ... remove any
+// hand-set ogImage so the generator owns the path"). So it carries its own card
+// at the standard path, generated like every other page.
+//
+// The docx subtitle read 'Companion Study to "The Release"' — a stale name for
+// what is now Chapter III, The Charge Carried Away. Same class of stale label
+// the load spec flagged on two chapter files; it is not inherited here. The
+// line is a live link to the chapter instead.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+
+const ACCENT = '#B87333'; // Volume V's amber, same as the book page
+const BOOK = '/books/one-god-one-name-one-throne';
+const CH3 = '/blog/one-throne-3-the-charge-carried-away';
+
+const useNotes = [
+  'English has one word for forgiveness. Hebrew has six. Each one describes a different action — a different face of what Yahuah does when He forgives. The modern church has collapsed all six into a single feeling: “letting go.” But in Scripture, forgiveness is not a feeling. It is a series of deliberate, costly, covenantal acts.',
+  'The parable below puts all six Hebrew words into a single courtroom scene. As you read, watch for each act. Notice that no single one of them is the whole picture. The passing over is not the same as the erasing. The releasing is not the same as the covering. And the pardon at the end requires all five acts that came before it.',
+  'After the parable, you will find a reference section listing each word with its definition, its role in the story, and the Scripture that anchors it. Use that section for personal study, small group discussion, or as a teaching outline.',
+];
+
+const setup = [
+  'There was a man named Reuben who owned a vineyard. He hired a worker named Shimon to tend it for three seasons. In exchange, Reuben gave Shimon a house on the edge of the property, a wage, and a share of the harvest.',
+  'But Shimon was careless. He neglected the vines. He sold portions of the harvest to traders behind Reuben’s back and kept the money. When Reuben confronted him, Shimon panicked. He set fire to the storehouse to destroy the records of what he had taken. The fire spread. It burned the storehouse, half the vineyard, and the wall of Reuben’s own home.',
+  'Shimon fled in the night. He was caught two towns over, dragged back, and brought before the local judge.',
+  'The courtroom was full. Everyone in the village knew what Shimon had done. The evidence was stacked high — the stolen goods, the burned vineyard, the ruined wall. Shimon had no defence. He stood there with nothing.',
+  'Reuben sat on the other side of the room. He had every right to demand the full penalty. Under the law, Shimon owed restitution for every vine, every lost harvest, every stone in the broken wall, and the years of labour it would take to rebuild what was destroyed. The debt was enormous. Shimon could not pay it in a lifetime.',
+  'The judge looked at the evidence. He looked at Shimon. Then he spoke.',
+];
+
+// The six acts, in the order the parable performs them.
+const acts = [
+  {
+    word: 'ʿĀvar', hebrew: 'עבר', gloss: 'to pass over; to withhold judgment with purpose',
+    body: 'He passed over the smaller offences. The days Shimon had been lazy. The corners he had cut. The minor neglect that everyone knew about but nobody had reported. The judge said, “These things I will not bring forward today. They are not the matter before me, and mercy has room for what repentance may yet address.” He let the small transgressions pass without penalty — not because they did not matter, but because pressing every minor charge would crush the man before the real issue was even heard.',
+  },
+  {
+    word: 'Shāmaṭ', hebrew: 'שמט', gloss: 'to release; to let drop a debt',
+    body: 'Then he addressed the theft. Shimon had stolen from the harvest and the records proved it. The judge turned to Reuben and asked what he wanted. Reuben stood and said, “I will not demand repayment. I release the debt. He cannot pay it and I will not spend my life trying to collect what will never come.” The judge recorded it. The stolen wages were written off. The claim was dropped. The creditor cancelled what was owed.',
+  },
+  {
+    word: 'Kāphar', hebrew: 'כפר', gloss: 'to cover; to make atonement; to repair the damage',
+    body: 'Next came the fire — the real damage. The storehouse was ash. The vineyard was scarred. Reuben’s wall was cracked open. Forgiving the debt did not rebuild the wall. Someone had to repair what was broken. Reuben’s brother, a builder, stood up and said, “I will cover the cost of the repairs. The storehouse, the wall, the vineyard — I will pay for all of it.” He was not the one who caused the damage. But he stepped in and absorbed the price so that the damage could be made right without destroying Shimon in the process.',
+  },
+  {
+    word: 'Māḥāh', hebrew: 'מחה', gloss: 'to blot out; to wipe the record clean',
+    body: 'Then the judge turned to the record. Every offence had been written in the court ledger — the theft, the arson, the breach of contract. The judge picked up his pen. He did not file the record in a drawer for future reference. He did not mark it “suspended.” He drew a line through every entry until the page was blank. “This man’s account with this court is cleared,” he said. “No future judge may reopen these charges. No future accuser may bring this ledger forward.”',
+  },
+  {
+    word: 'Nāśāʼ', hebrew: 'נשא', gloss: 'to lift; to carry away; to bear the burden',
+    body: 'Then something unexpected happened. Reuben crossed the room. He stood in front of Shimon — the man who had stolen from him, lied to him, and burned his property. And he said, “I am not going to carry this. I am not going to hold it over you. I am not going to tell this story at every market and make sure the whole region knows what you did. I am putting this down.” He did not say “I forgive but I will remember.” He said, “I am lifting this off my back and I am not picking it up again.”',
+  },
+  {
+    word: 'Sālaḥ', hebrew: 'סלח', gloss: 'to pardon; the sovereign act only the authority can give',
+    body: 'Finally, the judge stood. He looked at Shimon and delivered his ruling. “The debt is cancelled. The damage is covered. The record is erased. The burden is released. And by the authority of this court, I pardon you.” He did not say “you are free because you earned it.” He did not say “you are free because the crime was small.” He said, “You are pardoned because it is within my authority to pardon, and mercy has spoken louder than the law’s demand.”',
+  },
+];
+
+const verdict = [
+  'Shimon walked out of the courtroom a free man. Not because he deserved it. Not because the crime did not happen. But because six different acts — each one distinct, each one necessary — had come together to do what no single gesture could accomplish alone.',
+  'The small offences were passed over. The debt was released. The damage was covered by another. The record was erased. The burden was set down. And the judge spoke the pardon.',
+  'That is what Scripture means when it says “forgive.”',
+];
+
+// Reference section — same six words, same order, four fixed fields each.
+const reference = [
+  {
+    word: 'ʿĀvar', hebrew: 'עבר', gloss: 'to pass over',
+    means: 'Yahuah sees the offence and chooses not to bring the full weight of judgment in that moment. He withholds punishment with purpose — creating space for repentance.',
+    parable: 'The judge passes over Shimon’s minor offences rather than crushing him under every charge before the real matter is heard.',
+    scripture: 'Micah 7:18 — “Who is a God like unto thee, that pardoneth iniquity, and passeth by the transgression of the remnant of his heritage?”',
+    nt: 'Romans 3:25 — Paul writes about Yahuah’s forbearance in passing over sins previously committed, showing the cross as the settlement of that patient mercy.',
+  },
+  {
+    word: 'Shāmaṭ', hebrew: 'שמט', gloss: 'to release / to let drop',
+    means: 'The Shemitah release — every seventh year, all debts were cancelled by law. The creditor lets the claim fall to the ground. This is forgiveness as scheduled, legislated debt cancellation.',
+    parable: 'Reuben stands and voluntarily releases the debt Shimon owes. He drops the claim because he knows it can never be repaid.',
+    scripture: 'Deuteronomy 15:1–2 — “At the end of every seven years thou shalt make a release… every creditor that lendeth ought unto his neighbour shall release it.”',
+    nt: 'The Greek word aphesis (release) — the New Testament’s primary forgiveness word — carries this same Shemitah-shaped meaning.',
+  },
+  {
+    word: 'Kāphar', hebrew: 'כפר', gloss: 'to cover / to make atonement',
+    means: 'Atonement is not forgiveness itself but the mechanism that makes forgiveness righteous. It deals with the damage — the stain, the breach, the broken thing — so that pardon is not cheap.',
+    parable: 'Reuben’s brother steps in to cover the cost of rebuilding the storehouse, vineyard, and wall. He absorbs a debt he did not create.',
+    scripture: 'Leviticus 17:11 — “For the life of the flesh is in the blood: and I have given it to you upon the altar to make an atonement for your souls.”',
+    nt: 'Hebrews 9:22 — Without the shedding of blood there is no remission. The Messiah’s sacrifice is the ultimate kāphar — it purifies and restores access, not merely waves sin away.',
+  },
+  {
+    word: 'Māḥāh', hebrew: 'מחה', gloss: 'to blot out / to erase',
+    means: 'Record-book language. The charge is not filed away for later. It is deleted. In Hebrew, “remembering” sin means bringing it forward as an active charge. “Not remembering” means the case is permanently closed.',
+    parable: 'The judge draws a line through every entry in the court ledger and declares no future judge or accuser may reopen it.',
+    scripture: 'Isaiah 43:25 — “I, even I, am he that blotteth out thy transgressions for mine own sake, and will not remember thy sins.”',
+    nt: 'Colossians 2:14 — The handwriting of ordinances that was against us is blotted out, nailed to the cross.',
+  },
+  {
+    word: 'Nāśāʼ', hebrew: 'נשא', gloss: 'to lift / to carry away',
+    means: 'Guilt is a weight. Someone carries it. Either the sinner staggers under it, or someone else lifts it off. Forgiveness costs someone something — the burden does not vanish; it gets transferred.',
+    parable: 'Reuben crosses the courtroom and tells Shimon he will not carry the offence as leverage, gossip, or identity. He sets the weight down and refuses to pick it up again.',
+    scripture: 'Genesis 50:17 — Joseph’s brothers ask him to lift their trespass. The scapegoat on the Day of Atonement carries the sins of Israel into the wilderness (Leviticus 16:21–22).',
+    nt: 'John 1:29 — “Behold the Lamb of Yahuah, who takes away the sin of the world.” The Lamb lifts, carries, and bears away.',
+  },
+  {
+    word: 'Sālaḥ', hebrew: 'סלח', gloss: 'to pardon',
+    means: 'A judicial pardon. In nearly every Old Testament use, the subject is Yahuah — not humans. This is a sovereign clearing of guilt that only the one in authority can pronounce.',
+    parable: 'The judge delivers the final ruling: “I pardon you.” Not because the crime was small or the defendant earned it, but because mercy spoke louder than the law’s demand.',
+    scripture: 'Numbers 14:19–20 — Moses intercedes and Yahuah says, “I have pardoned according to thy word.”',
+    nt: 'When Yahushua forgives sins (Mark 2:5–7), the religious leaders ask, “Who can forgive sins but God alone?” They understood sālaḥ — this kind of pardon belongs to Yahuah’s authority.',
+  },
+];
+
+const questions = [
+  'Which of the six acts surprised you the most? Why?',
+  'When someone says “I forgive but I won’t forget,” which of the six Hebrew words does that violate? What would māḥāh (blotting out) look like in that situation?',
+  'Reuben’s brother covers the damage he did not cause. How does this picture the Messiah’s role in kāphar (atonement)? Why is forgiveness incomplete without someone repairing the damage?',
+  'The Shemitah cancelled debts every seven years whether the creditor felt like it or not. What does it mean that Yahuah legislated forgiveness rather than leaving it to human willpower?',
+  'In Matthew 18, Yahushua tells the parable of the unforgiving servant immediately after saying “seventy times seven.” How is that parable a picture of Jubilee? What happens to the servant who refuses to release?',
+  'Yahushua announces “the acceptable year of the Lord” in Luke 4:18–19. If He is the walking Jubilee, what does that mean for how His followers should handle debts others owe them?',
+  'Is there someone in your life you have “forgiven” but whose debt you are still carrying as leverage, suspicion, or identity? What would it look like to practise all six acts toward that person?',
+];
+---
+
+<BaseLayout
+  title="Six Acts, One Pardon — Nazaryah"
+  description="A Parable of the Six Hebrew Words for Forgiveness. English has one word; Hebrew has six, and each one is a separate act. A companion Bible-study handout to One God, One Name, One Throne."
+>
+  <div class="sa-root">
+
+    <a href={BOOK} class="sa-back">← One God, One Name, One Throne</a>
+
+    <header class="sa-header">
+      <div class="sa-kicker" style={`color: ${ACCENT}`}>BIBLE STUDY</div>
+      <h1 class="sa-title">Six Acts, One Pardon</h1>
+      <p class="sa-subtitle">A Parable of the Six Hebrew Words for Forgiveness</p>
+      <p class="sa-companion">
+        Companion study to <a href={CH3}>Chapter III — The Charge Carried Away</a>
+      </p>
+      <div class="sa-ornament">
+        <span class="sa-orn-line" style={`background: linear-gradient(90deg, transparent, ${ACCENT}60, transparent)`}></span>
+        <span class="sa-orn-mark" style={`color: ${ACCENT}`}>✦</span>
+        <span class="sa-orn-line" style={`background: linear-gradient(90deg, transparent, ${ACCENT}60, transparent)`}></span>
+      </div>
+    </header>
+
+    <section class="sa-use">
+      <h2 class="sa-h2">How to Use This Study</h2>
+      {useNotes.map((p) => <p>{p}</p>)}
+    </section>
+
+    <div class="sa-rule" aria-hidden="true">◇&nbsp;&nbsp;&nbsp;◇&nbsp;&nbsp;&nbsp;◇</div>
+
+    <section class="sa-parable">
+      <div class="sa-section-label">
+        <span class="sa-sl-line"></span>
+        <span class="sa-sl-text">THE PARABLE</span>
+        <span class="sa-sl-line"></span>
+      </div>
+      <h2 class="sa-h2 sa-h2-center">The Ruling of the Good Judge</h2>
+
+      {setup.map((p) => <p>{p}</p>)}
+
+      {acts.map((a) => (
+        <div class="sa-act">
+          <p class="sa-act-head" style={`border-left-color: ${ACCENT}`}>
+            <span class="sa-act-word" style={`color: ${ACCENT}`}>{a.word}</span>
+            <span class="sa-act-heb" lang="he">{a.hebrew}</span>
+            <span class="sa-act-gloss">{a.gloss}</span>
+          </p>
+          <p>{a.body}</p>
+        </div>
+      ))}
+
+      <div class="sa-rule" aria-hidden="true">◇&nbsp;&nbsp;&nbsp;◇&nbsp;&nbsp;&nbsp;◇</div>
+
+      {verdict.map((p) => <p>{p}</p>)}
+    </section>
+
+    <section class="sa-reference">
+      <div class="sa-section-label">
+        <span class="sa-sl-line"></span>
+        <span class="sa-sl-text">REFERENCE</span>
+        <span class="sa-sl-line"></span>
+      </div>
+      <h2 class="sa-h2 sa-h2-center">The Six Hebrew Words at a Glance</h2>
+
+      {reference.map((r) => (
+        <article class="sa-ref" style={`border-left-color: ${ACCENT}40`}>
+          <h3 class="sa-ref-head">
+            <span class="sa-ref-word" style={`color: ${ACCENT}`}>{r.word}</span>
+            <span class="sa-ref-heb" lang="he">{r.hebrew}</span>
+            <span class="sa-ref-gloss">{r.gloss}</span>
+          </h3>
+          <dl class="sa-ref-fields">
+            <dt>What it means</dt><dd>{r.means}</dd>
+            <dt>In the parable</dt><dd>{r.parable}</dd>
+            <dt>Key Scripture</dt><dd>{r.scripture}</dd>
+            <dt>NT connection</dt><dd>{r.nt}</dd>
+          </dl>
+        </article>
+      ))}
+    </section>
+
+    <section class="sa-discussion">
+      <div class="sa-section-label">
+        <span class="sa-sl-line"></span>
+        <span class="sa-sl-text">DISCUSSION</span>
+        <span class="sa-sl-line"></span>
+      </div>
+      <h2 class="sa-h2 sa-h2-center">Questions for Personal Study or Group Teaching</h2>
+      <ol class="sa-questions">
+        {questions.map((q) => <li>{q}</li>)}
+      </ol>
+    </section>
+
+    <div class="sa-close">
+      <div class="sa-close-mark" style={`color: ${ACCENT}`}>◆</div>
+      <blockquote class="sa-close-quote">
+        Forgiveness is not one act. It is six — and the God who gave us all six did not model “I’ll let it go but I’ll keep the receipt.” He passed over, released, covered, erased, lifted, and pardoned. That is the standard.
+      </blockquote>
+    </div>
+
+    <p class="sa-foot"><a href={BOOK}>← Back to One God, One Name, One Throne</a></p>
+
+    <div style="height: 80px;"></div>
+  </div>
+</BaseLayout>
+
+<style>
+  .sa-root {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 60px 32px 40px;
+    background: #0D0B0A;
+    min-height: 80vh;
+    color: #E8DCC8;
+    font-family: 'EB Garamond', Georgia, serif;
+  }
+
+  .sa-back, .sa-foot a {
+    display: inline-block;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #8A7E70;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .sa-back { padding-bottom: 40px; }
+  .sa-back:hover, .sa-foot a:hover { color: #B87333; }
+
+  .sa-header { text-align: center; margin-bottom: 52px; }
+  .sa-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.4em;
+    margin-bottom: 24px;
+  }
+  .sa-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: clamp(32px, 4.4vw, 48px);
+    font-weight: 400;
+    line-height: 1.12;
+    margin: 0 0 16px;
+    color: #F5EFE4;
+  }
+  .sa-subtitle {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px;
+    font-style: italic;
+    font-weight: 300;
+    color: #B8AA98;
+    margin: 0 0 14px;
+    line-height: 1.4;
+  }
+  .sa-companion {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 14px;
+    font-style: italic;
+    color: #8A7E70;
+    margin: 0 0 26px;
+  }
+  .sa-companion a { color: #B87333; text-decoration: none; border-bottom: 1px solid rgba(184,115,51,0.35); }
+  .sa-companion a:hover { border-bottom-color: #B87333; }
+
+  .sa-ornament {
+    display: flex; align-items: center; justify-content: center;
+    gap: 16px; max-width: 300px; margin: 0 auto;
+  }
+  .sa-orn-line { flex: 1; height: 1px; }
+  .sa-orn-mark { font-size: 14px; }
+
+  .sa-root p {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px;
+    line-height: 1.7;
+    color: #B8AA98;
+    margin: 0 0 20px;
+  }
+
+  .sa-h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 26px;
+    font-weight: 500;
+    color: #F5EFE4;
+    margin: 0 0 20px;
+    line-height: 1.25;
+  }
+  .sa-h2-center { text-align: center; margin-bottom: 32px; }
+
+  .sa-rule {
+    text-align: center;
+    color: #6B5F53;
+    letter-spacing: 0.2em;
+    margin: 40px 0;
+    font-size: 14px;
+  }
+
+  .sa-section-label {
+    display: flex; align-items: center; gap: 16px;
+    margin: 0 auto 28px; max-width: 400px;
+  }
+  .sa-sl-line { flex: 1; height: 1px; background: linear-gradient(90deg, transparent, rgba(184,115,51,0.3), transparent); }
+  .sa-sl-text {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    letter-spacing: 0.3em;
+    color: #8A7E70;
+    white-space: nowrap;
+  }
+
+  .sa-use, .sa-parable, .sa-reference, .sa-discussion { margin-bottom: 48px; }
+
+  /* One act of the parable — the Hebrew word heading, then the scene. */
+  .sa-act { margin: 34px 0 0; }
+  .sa-act-head {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px;
+    margin: 0 0 14px !important;
+    padding: 4px 0 4px 16px;
+    border-left: 3px solid;
+  }
+  .sa-act-word {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 22px; font-weight: 600; letter-spacing: 0.02em;
+  }
+  .sa-act-heb, .sa-ref-heb {
+    font-size: 20px; color: #D4C4A8; direction: rtl; unicode-bidi: isolate;
+  }
+  .sa-act-gloss {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 15px; font-style: italic; color: #8A7E70;
+    flex: 1 1 100%;
+  }
+
+  /* Reference entries */
+  .sa-ref {
+    margin: 0 0 28px;
+    padding: 18px 0 18px 20px;
+    border-left: 2px solid;
+    background: linear-gradient(90deg, rgba(184,115,51,0.04), transparent 60%);
+  }
+  .sa-ref-head {
+    display: flex; flex-wrap: wrap; align-items: baseline; gap: 6px 14px;
+    margin: 0 0 14px;
+  }
+  .sa-ref-word {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 21px; font-weight: 600;
+  }
+  .sa-ref-gloss {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 15px; font-style: italic; color: #8A7E70; flex: 1 1 100%;
+  }
+  .sa-ref-fields { margin: 0; }
+  .sa-ref-fields dt {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 9.5px; letter-spacing: 0.22em; text-transform: uppercase;
+    color: #B87333; margin: 14px 0 5px;
+  }
+  .sa-ref-fields dt:first-child { margin-top: 0; }
+  .sa-ref-fields dd {
+    margin: 0;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 16px; line-height: 1.65; color: #B8AA98;
+  }
+
+  /* Discussion questions */
+  .sa-questions { margin: 0; padding-left: 1.4em; }
+  .sa-questions li {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 17px; line-height: 1.7; color: #B8AA98;
+    margin: 0 0 18px; padding-left: 6px;
+  }
+  .sa-questions li::marker { color: #B87333; font-family: 'JetBrains Mono', monospace; font-size: 13px; }
+
+  /* Close */
+  .sa-close { margin: 52px auto 32px; max-width: 640px; text-align: center; }
+  .sa-close-mark { font-size: 15px; margin-bottom: 22px; }
+  .sa-close-quote {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 20px; font-style: italic; font-weight: 300;
+    color: #D4C4A8; line-height: 1.6; margin: 0;
+  }
+
+  .sa-foot { margin: 40px 0 0 !important; }
+
+  @media (max-width: 640px) {
+    .sa-root { padding: 40px 20px 40px; }
+    .sa-ref { padding-left: 14px; }
+  }
+</style>

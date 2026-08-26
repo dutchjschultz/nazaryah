@@ -1,5 +1,6 @@
 ---
-// src/pages/books/one-god-one-name-one-throne.astro · 0826 V1
+// src/pages/books/one-god-one-name-one-throne.astro · 0826 V2
+// V2: the companion-study panel for Six Acts, One Pardon, added with its route.
 // Volume V — One God, One Name, One Throne. Built component for component off
 // five-titles.astro, per the load spec: no new component, no new type scale, no
 // new colour value. The accent is Volume II's amber (#B87333), reused rather
@@ -13,10 +14,10 @@
 //      not pointed at a search page. When a listing goes live: eyebrow back to
 //      AVAILABLE IN PRINT, the second note back to the at-cost language the
 //      other volumes carry, and the button restored.
-//   2. COMPANION STUDY PANEL (Six Acts, One Pardon) is specced for this page,
-//      below the Contents, but the handout page itself has not been produced.
-//      Its markup is NOT here yet on purpose. Add it together with the route
-//      /books/one-god-one-name-one-throne/six-acts-one-pardon, never before.
+// (The companion-study panel below the Contents shipped in V2, together with
+// its route at /books/one-god-one-name-one-throne/six-acts-one-pardon. It is
+// styled as an aside off the bordered-note treatment, never as a chapter row,
+// so it cannot read as Chapter IX.)
 //
 // Contents rows come from `oneThrone` in books.js — the roman numerals use that
 // file's exported `roman()`, which is why ROMAN was extended to VIII.
@@ -130,6 +131,25 @@ const BLOG_HREF = '/blog?category=One%20God%2C%20One%20Name%2C%20One%20Throne';
         ))}
       </ol>
     </section>
+
+    <!-- Companion study — an ASIDE, not a chapter row. It sits below the
+         Contents list on purpose and must never be numbered, or it reads as
+         Chapter IX. Built from the same bordered-note treatment as the print
+         panel; nothing new is styled for it. -->
+    <aside class="bk-companion" style={`border-left-color: ${ACCENT}`}>
+      <div class="bk-amz-kicker">
+        <span style={`color: ${ACCENT}; margin-right: 10px; font-size: 12px`}>◆</span>
+        <span class="bk-amz-kicker-text" style={`color: ${ACCENT}`}>COMPANION STUDY</span>
+      </div>
+      <h3 class="bk-companion-title">Six Acts, One Pardon</h3>
+      <p class="bk-amz-sub">A Parable of the Six Hebrew Words for Forgiveness</p>
+      <p class="bk-companion-body">
+        English has one word for forgiveness. Hebrew has six, and each one is a separate act. This handout sets all six inside one courtroom, then breaks them out for personal study or group teaching. It is not a chapter of this book. It is the workbench beside Chapter III.
+      </p>
+      <a href="/books/one-god-one-name-one-throne/six-acts-one-pardon" class="bk-companion-link" style={`color: ${ACCENT}`}>
+        Open the study <span aria-hidden="true">→</span>
+      </a>
+    </aside>
 
     <div style="height: 100px;"></div>
   </div>
@@ -466,6 +486,44 @@ const BLOG_HREF = '/blog?category=One%20God%2C%20One%20Name%2C%20One%20Throne';
     color: #8A7E70;
   }
   .bk-ch-arrow { font-size: 18px; color: #6B5F53; text-align: right; }
+
+  /* Companion study aside — the print panel's bordered-note treatment, no
+     spine and no numbering, so it reads as a sidebar rather than a chapter. */
+  .bk-companion {
+    max-width: 720px;
+    margin: 48px auto 0;
+    padding: 26px 30px;
+    background: linear-gradient(180deg, #1A1614 0%, #14100E 100%);
+    border: 1px solid rgba(255,255,255,0.06);
+    border-left: 3px solid;
+    border-radius: 2px;
+  }
+  .bk-companion-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 1.2;
+    margin: 0 0 8px;
+    color: #F5EFE4;
+  }
+  .bk-companion-body {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-size: 15.5px;
+    line-height: 1.65;
+    color: #B8AA98;
+    margin: 0 0 18px;
+  }
+  .bk-companion-link {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-size: 15px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(184,115,51,0.4);
+    padding-bottom: 2px;
+    transition: border-color 0.2s;
+  }
+  .bk-companion-link:hover { border-bottom-color: #B87333; }
 
   @media (max-width: 640px) {
     .bk-root { padding: 40px 20px 40px; }
