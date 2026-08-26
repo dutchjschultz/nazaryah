@@ -1,4 +1,9 @@
-// src/data/hollywood.js  ·  0715 V4
+// src/data/hollywood.js  ·  0825 V5
+// V5: added "The Signature in the Swarm" to Studios & Genre — the fly-god page.
+// Unlike the other Studios cards (legacy static HTML under public/hollywood/films),
+// its page and entries are Astro under src/pages/hollywood/swarm, so they get the
+// site chrome, the theme, and a social card. Its entries live on the card as
+// `entries`, the way The Craft keeps its reels here; the hub maps over them.
 // Single source of truth for the Hollywood section.
 //
 // Categories are siblings; there is no layer above them. Adding a category is a
@@ -59,6 +64,40 @@ export const categories = [
         count: 1,
         href: "/hollywood/films/sci-fi/index.html",
         status: "live",
+      },
+      {
+        slug: "swarm",
+        title: "The Signature in the Swarm",
+        tagline: "Hollywood keeps reaching for the same insect. Scripture named him first.",
+        description:
+          "Baal-zebub, lord of the fly, was the god of Ekron — and Ahaziah only asked him a question. That was enough. The films gathered here all turn on one thing: where the story says evil lives. Put sin in the flesh and it comes out by technique, which is sorcery. Put sin on the record and it comes out by verdict, which needs a law, a witness, and blood.",
+        count: 2,
+        href: "/hollywood/swarm",
+        status: "live",
+        // Entries under the fly-god page. Each gets the hub's same three questions:
+        // where does the evil live, how is it removed, who pays and by what standard.
+        entries: [
+          {
+            n: 1,
+            slug: "named-at-ekron",
+            title: "Named at Ekron",
+            tagline: "A book titled after a devil, assigned to schoolchildren for seventy years.",
+            work: "Lord of the Flies — William Golding, 1954",
+            verses: "1 John 3:4; Rom 4:15; Lev 16:21-22; Heb 9:22",
+            href: "/hollywood/swarm/named-at-ekron",
+            status: "live",
+          },
+          {
+            n: 2,
+            slug: "they-made-him-a-face",
+            title: "They Made Him a Face",
+            tagline: "The film sold as the finest picture of God breaks the doctrine it is selling.",
+            work: "The Shack — 2017, from the 2007 novel",
+            verses: "Deut 4:15-16; John 14:28; 1 Cor 11:3; Heb 9:22",
+            href: "/hollywood/swarm/they-made-him-a-face",
+            status: "live",
+          },
+        ],
       },
     ],
   },
@@ -189,3 +228,5 @@ export const studios = categories.find((c) => c.slug === "studios");
 export const craft = categories.find((c) => c.slug === "the-craft");
 export const reels = craft.cards;
 export const stars = categories.find((c) => c.slug === "the-stars");
+export const swarm = studios.cards.find((c) => c.slug === "swarm");
+export const swarmEntries = swarm.entries;

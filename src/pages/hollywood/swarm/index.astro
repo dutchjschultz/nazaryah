@@ -1,0 +1,306 @@
+---
+// src/pages/hollywood/swarm/index.astro · 0825 V1
+// The Signature in the Swarm — the fly-god page under Studios & Genre.
+//
+// This is a genre hub, not a study: it names Baal-zebub, states the doctrinal
+// test every entry is measured by, and lists the films. The entries live in
+// src/data/hollywood.js on the `swarm` card; adding a film is a data edit plus
+// its page, nothing here.
+//
+// Built in Astro rather than as static HTML under public/hollywood/films, where
+// its Studios siblings still sit. That legacy sub-site carries its own <head>,
+// its own breadcrumb and its own stylesheet, so those pages get no site header,
+// no theme, no social card and no search indexing. New work goes on the stack.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { swarm, swarmEntries } from '../../../data/hollywood.js';
+---
+
+<BaseLayout
+  title="The Signature in the Swarm — Hollywood | Nazaryah"
+  description={swarm.description}
+>
+<div class="craft-shell">
+<main class="wrap">
+  <p class="eyebrow">Studios &amp; Genre — Hollywood</p>
+  <h1>The Signature in the Swarm</h1>
+  <p class="subtitle">Hollywood keeps reaching for the same insect. Scripture named him first.</p>
+
+  <hr class="rule" />
+
+  <h2>The Name</h2>
+  <p>
+    Ahaziah, king of Israel, fell through a lattice and was badly hurt. He sent men to
+    ask Baal-zebub, the god of Ekron, whether he would live. Yahuah sent Elijah to meet
+    them on the road with one question — is there not a God in Israel? — and one
+    sentence. The king would not come down off that bed.
+  </p>
+  <blockquote>
+    <p>
+      Is it not because there is not a God in Israel, that ye go to enquire of
+      Baal-zebub the god of Ekron?
+    </p>
+    <cite>2 Kings 1:2-4</cite>
+  </blockquote>
+  <p>
+    He did not build the fly-god a temple. He did not sacrifice to him. He asked him a
+    question. That was enough.
+  </p>
+  <p>
+    Baal-zebub means lord of the fly. The name returns in the gospels, spelled
+    Beelzebub, as the title of the prince of devils (Matthew 12:24).
+  </p>
+
+  <h2>The Doctrine</h2>
+  <p>Every film under this page turns on one question. Where does evil live?</p>
+  <p>
+    Scripture answers plainly. Sin is the transgression of the law (1 John 3:4). A
+    broken command. A charge on a record. Not a substance in the flesh, not a residue
+    in the meat, not an atmosphere a sensitive person can feel in a room.
+  </p>
+  <p>
+    If sin is a substance, it comes out by technique — a gifted man, a method, a
+    transfer. No law, no court, no judge. That is sorcery.
+  </p>
+  <p>
+    If sin is a charge, it comes out by verdict — a standard, a witness, a sentence,
+    and blood (Hebrews 9:22). That is Scripture.
+  </p>
+
+  <h2>Two Lies, One Root</h2>
+  <ul class="lies">
+    <li>The evil is inside you and can never be removed. That one ends in despair.</li>
+    <li>The evil is inside you and a gifted man can draw it out. That one ends in sorcery.</li>
+  </ul>
+  <p>
+    They look like opposites. They are not. Both put sin in the flesh instead of on the
+    record, and once that is settled neither one needs a law and neither one needs blood.
+  </p>
+
+  <h2>Why an Insect</h2>
+  <p>
+    Flies gather where something has died. They announce death. They do not explain it.
+  </p>
+  <p>
+    That is what makes the swarm useful. It tells an audience something is wrong here
+    without ever naming a broken command, a lawbreaker, or a price. It is guilt with the
+    courtroom stripped out — carrying a devil's name the audience is never told.
+  </p>
+
+  <h2>How to Read the Entries</h2>
+  <p>Each film below gets the same three questions.</p>
+  <ol class="tests">
+    <li>Where does the story say the evil lives?</li>
+    <li>How does the story remove it?</li>
+    <li>Who pays, and by what standard?</li>
+  </ol>
+  <p class="close">The third question is where every one of them falls silent.</p>
+
+  <hr class="rule" />
+
+  <h2 class="entries-head">The Entries</h2>
+  <ul class="entries" role="list">
+    {swarmEntries.map((e) => (
+      <li class={`entry ${e.status}`}>
+        <a href={e.href} class={`entry-link ${e.status === 'live' ? '' : 'is-coming'}`}>
+          <span class="entry-n">{String(e.n).padStart(2, '0')}</span>
+          <span class="entry-body">
+            <span class="entry-title">{e.title}</span>
+            <span class="entry-work">{e.work}</span>
+            <span class="entry-tag">{e.tagline}</span>
+            <span class="entry-verses">{e.verses}</span>
+          </span>
+          {e.status === 'live'
+            ? <span class="entry-arrow" aria-hidden="true">→</span>
+            : <span class="entry-soon">In production</span>}
+        </a>
+      </li>
+    ))}
+  </ul>
+
+  <p class="back-wrap"><a class="back" href="/hollywood">← Back to Hollywood</a></p>
+
+  <hr class="rule" />
+  <footer class="craft-footer">nazaryah.com</footer>
+</main>
+</div>
+</BaseLayout>
+
+<style>
+  /* The Hollywood house theme, scoped to this shell so it never leaks to the
+     global header/footer. Same palette as The Craft and The Stars. */
+  .craft-shell {
+    --bg: #160a0c;
+    --bg-raise: #201114;
+    --ink: #ece1cd;
+    --ink-soft: #b6a58f;
+    --parchment: #ecd8a6;
+    --gold: #c99a44;
+    --gold-soft: #a98a53;
+    --rule: rgba(201, 154, 68, 0.22);
+    --display: "Cormorant Garamond", Georgia, serif;
+    --body: "EB Garamond", Georgia, serif;
+    --maxw: 46rem;
+
+    background:
+      radial-gradient(120% 80% at 50% -10%, #241318 0%, rgba(0, 0, 0, 0) 55%),
+      radial-gradient(140% 120% at 50% 0%, #1d1012 0%, var(--bg) 60%);
+    background-color: var(--bg);
+    min-height: 80vh;
+  }
+
+  .wrap {
+    max-width: var(--maxw);
+    margin: 0 auto;
+    padding: clamp(2.6rem, 7vw, 5.5rem) 1.4rem 4rem;
+    color: var(--ink);
+    font-family: var(--body);
+  }
+
+  .eyebrow {
+    font-family: var(--display);
+    font-variant-caps: small-caps;
+    letter-spacing: 0.32em;
+    color: var(--gold);
+    font-size: 0.92rem;
+    margin: 0 0 1.4rem;
+    text-align: center;
+  }
+  .eyebrow::before,
+  .eyebrow::after { content: "—"; color: var(--gold-soft); margin: 0 0.7em; }
+
+  h1 {
+    font-family: var(--display);
+    font-variant-caps: small-caps;
+    font-weight: 600;
+    color: var(--parchment);
+    line-height: 1.08;
+    letter-spacing: 0.015em;
+    font-size: clamp(2.1rem, 1.3rem + 3.4vw, 3.5rem);
+    margin: 0 0 1.1rem;
+    text-align: center;
+  }
+  .subtitle {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: clamp(1.05rem, 1rem + 0.5vw, 1.3rem);
+    max-width: 34rem;
+    margin: 0 auto;
+    line-height: 1.5;
+    text-align: center;
+  }
+
+  hr.rule { border: 0; height: 1px; background: var(--rule); margin: 3rem auto; max-width: 20rem; }
+
+  h2 {
+    font-family: var(--display);
+    font-variant-caps: small-caps;
+    letter-spacing: 0.12em;
+    color: var(--gold);
+    font-size: 1.4rem;
+    margin: 2.4rem 0 0.9rem;
+  }
+  p { line-height: 1.8; margin: 0 0 1.1rem; }
+
+  blockquote {
+    margin: 1.5rem 0;
+    padding: 0.2rem 0 0.2rem 1.2rem;
+    border-left: 3px solid var(--gold-soft);
+  }
+  blockquote p { font-style: italic; color: var(--parchment); margin: 0 0 0.4rem; }
+  blockquote cite {
+    font-style: normal;
+    font-family: var(--display);
+    font-variant-caps: small-caps;
+    letter-spacing: 0.12em;
+    color: var(--gold-soft);
+    font-size: 0.9rem;
+  }
+
+  .lies, .tests { margin: 0 0 1.2rem; padding-left: 1.3rem; }
+  .lies li, .tests li { line-height: 1.75; margin-bottom: 0.5rem; }
+  .lies { list-style: none; padding-left: 0; }
+  .lies li { padding-left: 1.3rem; position: relative; }
+  .lies li::before { content: "✦"; position: absolute; left: 0; color: var(--gold-soft); }
+  .tests li::marker { color: var(--gold-soft); }
+
+  .close { font-style: italic; color: var(--parchment); }
+
+  .entries-head { text-align: center; margin-bottom: 1.6rem; }
+  .entries { list-style: none; margin: 0; padding: 0; }
+  .entry { margin-bottom: 0.9rem; }
+  .entry-link {
+    display: flex;
+    align-items: flex-start;
+    gap: 1rem;
+    padding: 1.1rem 1.2rem;
+    text-decoration: none;
+    color: inherit;
+    background: var(--bg-raise);
+    border: 1px solid var(--rule);
+    border-radius: 3px;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .entry-link:hover, .entry-link:focus-visible { border-color: var(--gold); outline: none; }
+  .entry-link.is-coming { opacity: 0.6; }
+
+  .entry-n {
+    font-family: var(--display);
+    color: var(--gold-soft);
+    font-size: 1.1rem;
+    letter-spacing: 0.08em;
+    padding-top: 0.15rem;
+  }
+  .entry-body { flex: 1; }
+  .entry-title {
+    display: block;
+    font-family: var(--display);
+    font-variant-caps: small-caps;
+    letter-spacing: 0.06em;
+    color: var(--parchment);
+    font-size: 1.2rem;
+    line-height: 1.25;
+  }
+  .entry-work { display: block; color: var(--gold-soft); font-size: 0.86rem; margin-top: 0.15rem; }
+  .entry-tag { display: block; color: var(--ink-soft); font-size: 0.95rem; margin-top: 0.4rem; line-height: 1.5; }
+  .entry-verses {
+    display: block;
+    color: var(--gold-soft);
+    font-style: italic;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    margin-top: 0.45rem;
+  }
+  .entry-arrow { color: var(--gold); font-size: 1.1rem; padding-top: 0.15rem; }
+  .entry-soon {
+    font-family: var(--display);
+    font-variant-caps: small-caps;
+    letter-spacing: 0.14em;
+    color: var(--gold-soft);
+    font-size: 0.85rem;
+    padding-top: 0.2rem;
+  }
+
+  .back-wrap { text-align: center; margin-top: 2.6rem; }
+  .back {
+    color: var(--gold);
+    text-decoration: none;
+    font-family: var(--display);
+    font-variant-caps: small-caps;
+    letter-spacing: 0.1em;
+  }
+  .back:hover { color: var(--parchment); }
+  .back:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+
+  .craft-footer {
+    text-align: center;
+    font-family: var(--display);
+    font-variant-caps: small-caps;
+    letter-spacing: 0.22em;
+    color: var(--gold);
+    font-size: 0.95rem;
+  }
+
+  @media (max-width: 520px) {
+    .entry-link { flex-wrap: wrap; }
+  }
+</style>
