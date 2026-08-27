@@ -1,9 +1,16 @@
-// associations 0825 V15.js
-// The four Living Temple studies join lost-in-translation; expected 14 -> 18.
-// NOTE: they were specced for a "the-law-stands" cluster too. No such cluster
-// exists in this registry and one was not invented, so all four carry
-// lost-in-translation only — which is why this is +4 and not the +3 specced.
-// Restore the-law-stands and re-tag when that cluster is written.
+// associations 0827 V16.js
+// V16: The Parables section opens. Kingdom of Lights joins the-mishkan and
+// pulpit-vocabulary; Dark Sayings of Old joins how-yahuah-speaks. Three expected
+// counts bump: the-mishkan 12 -> 13, pulpit-vocabulary 14 -> 15,
+// how-yahuah-speaks 7 -> 8. Neither study anchors a cluster.
+// NOTE: the batch spec was written against a V16 that never landed here and
+// listed the "was" values as 13 / 21 / 7. This file was at V15 with 12 / 14 / 7,
+// so the +1 delta was applied to what is actually in the file. Flagged to Dutch.
+// V15: The four Living Temple studies join lost-in-translation; expected 14 -> 18.
+//      They were specced for a "the-law-stands" cluster too. No such cluster
+//      exists in this registry and one was not invented, so all four carry
+//      lost-in-translation only — which is why this is +4 and not the +3 specced.
+//      Restore the-law-stands and re-tag when that cluster is written.
 // V14: Two Kingdoms, One Walk added to delegated-authority; expected bumped +1.
 
 export const CLUSTERS = {
@@ -28,7 +35,7 @@ export const CLUSTERS = {
     blurb:
       "The sky, the letters, the words, and at last His own Son. He has already spoken — the question is whether we will hear what was given.",
     anchor: "heavens-letters-words-son",
-    expected: 7,
+    expected: 8,
   },
 
   "the-second-adam": {
@@ -68,7 +75,7 @@ export const CLUSTERS = {
     blurb:
       "Words the pulpit softened, sweetened, or reinvented outright — and what the Hebrew and Greek actually say.",
     anchor: "the-whole-counsel",
-    expected: 14,
+    expected: 15,
   },
 
   "goel-kopher": {
@@ -84,7 +91,7 @@ export const CLUSTERS = {
     blurb:
       "The structure Yahuah designed: ark, cover, veil, garments — and who may pass through what.",
     anchor: "ark-of-covering",
-    expected: 12,
+    expected: 13,
   },
 
   "yom-kippur": {

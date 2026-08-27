@@ -1,4 +1,8 @@
-// content config 0825 V6
+// content config 0827 V7
+// V7: added `companionOf` — the slug of the study a companion page belongs to.
+// A companion (e.g. a parable read-through) still renders at /blog/<slug> and is
+// reached from its parent's Read Next, but it is not its own card: section grids
+// filter it out. Absent on every ordinary study, so nothing existing changes.
 // V6: added `lede` — the single opening paragraph that replaces the ragged stack
 // of italic fragments the .docx conversion left at the top of a study. A nucleus
 // study uses nucleusClaim instead and carries no lede, so the two never collide.
@@ -78,6 +82,10 @@ const postsCollection = defineCollection({
     order: z.number().optional(),
     // Single strongest kin study, rendered as "Read Next" at the foot of the post.
     companion: z.union([z.string(), z.array(z.string())]).optional(),
+    // COMPANION PAGE — the slug of the study this page is a companion to. Set on
+    // the companion itself, not the parent. A page carrying it is deliberately
+    // absent from section card grids; it is reached from the parent's Read Next.
+    companionOf: z.string().optional(),
     // INVESTIGATION axis — the slug of the curated case this study belongs to
     // (see src/data/investigations.js). Separate from `associations`: an
     // association is an open subject tag, an investigation is a closed case with
