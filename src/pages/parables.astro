@@ -1,0 +1,162 @@
+---
+// src/pages/parables.astro · 0827 V1
+// The Parables — section landing. The front door prose, then the card grid.
+//
+// The grid is data-driven, never hand-maintained: every published post in the
+// "Parables" category, newest first, minus any page carrying `companionOf`
+// (a read-through belongs to its parent study and is reached from that study's
+// Read Next, not from this grid). Adding a study to the section means writing
+// the study with category "Parables" — nothing here changes.
+//
+// Cards are BlogCard, the same component the blog group views use. No new card
+// shape was invented for this section.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BlogCard from '../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+
+const studies = (await getCollection('posts', ({ data }) =>
+  data.draft !== true && data.category === 'Parables' && !data.companionOf
+)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+---
+
+<BaseLayout
+  title="The Parables | Nazaryah"
+  description="Hebrew symbols, spoken to Hebrew men, out of Hebrew Scripture. Everything added since is invention."
+>
+  <main class="par">
+    <div class="wrap">
+
+      <header class="hero">
+        <h1>The Parables</h1>
+        <p class="deck">Hebrew symbols, spoken to Hebrew men, out of Hebrew Scripture. Everything added since is invention.</p>
+      </header>
+
+      <section class="intro" data-pagefind-body>
+        <p>The parables are treated as the shallow end of Scripture. They are handed to children on felt boards and preached to adults as moral encouragement. A man can sit through forty years of sermons on the sower, the talents, and the ten virgins and never once be shown a verse of Torah that any of them was built from.</p>
+
+        <p>The reason is simple, and it is almost never said out loud. Yahushua was a Hebrew teacher speaking to Hebrew men, and every image He used came out of the Scriptures those men had known since childhood. They had no gospels, no epistles, no commentaries, no systematic theology. They had Torah, the Prophets, and the Writings, and nothing else. A lamp, a vineyard, a door, a seed, a shepherd, a debt, a harvest — not one of those was a blank symbol waiting to be filled in. Every one of them already carried a history in the text those men had memorized. <strong>He was not inventing symbols. He was using theirs.</strong></p>
+
+        <p>He said as much Himself, and He said it by quoting the Psalms:</p>
+
+        <blockquote class="par-scripture">
+          <p class="par-scripture-text">I will open my mouth in a parable: I will utter dark sayings of old.</p>
+          <p class="par-scripture-ref">Psalm 78:2, cited at Matthew 13:35</p>
+        </blockquote>
+
+        <p><em>Old</em> is the word that matters. Not new sayings. Old ones, spoken in a form that hid them in the open.</p>
+
+        <p>Cut a parable loose from the Hebrew Scriptures and it has nowhere left to go but a moral. That is how the sower became a lesson about attitude and the ten virgins became a lesson about punctuality. The symbols are still sitting there, still unexplained, and the man in the pulpit fills them himself because nothing else is available to fill them with.</p>
+
+        <p>What follows from that is worse than shallow preaching. Once the meaning has been unmoored, whoever is talking gets to supply it. A man announces that he has uncovered a hidden layer nobody else has seen, assigns his own values to the numbers and the objects, and an audience with no way to test any of it mistakes the confidence for depth. It is not depth. It is one man's opinion wearing a parable, and the parable cannot defend itself because it has already been separated from the only thing that could.</p>
+
+        <p><strong>The test is not complicated. If a meaning cannot be found in the Scriptures the original audience already held in their hands, it was not in the parable. It was added.</strong></p>
+
+        <p>There is a second cost, and it is quieter. Cut loose from the Hebrew Scriptures, the meaning always shrinks to fit what the teacher already believes. A parable about a priesthood becomes advice about being on time. A parable about a covenant becomes a lesson in being pleasant to people. The parable then appears to confirm the doctrine it was just used to illustrate, and the circle closes with nothing outside it left to break the loop.</p>
+
+        <p>These studies add nothing. They put back what was underneath the stories the whole time, and they let the Hebrew Scriptures say what the symbols meant to the men who first heard them.</p>
+
+        <h2 class="going-further">Going further</h2>
+
+        <p><a href="/blog/dark-sayings-of-old">Dark Sayings of Old</a> sets out the error in full — what a <em>mashal</em> is in the Hebrew, how Scripture repeatedly interprets its own parables, why Yahushua said He spoke in them so that some would not understand, and the three ways modern teaching goes wrong once the Hebrew Scriptures are set aside.</p>
+      </section>
+
+      {studies.length > 0 && (
+        <section class="studies" aria-label="Studies in The Parables">
+          <div class="studies-head">
+            <h2>The Studies</h2>
+            <p class="studies-count">{studies.length} {studies.length === 1 ? 'study' : 'studies'}</p>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {studies.map((post) => <BlogCard post={post} />)}
+          </div>
+        </section>
+      )}
+
+    </div>
+  </main>
+</BaseLayout>
+
+<style>
+  /* COLOUR NOTE: every colour is declared twice — light first, then again under
+     :global(.dark). Site tokens without a dark value would silently win. */
+  .par { padding: 3rem 1.5rem 4.5rem; }
+  .wrap { max-width: 62rem; margin: 0 auto; }
+
+  .hero { text-align: center; margin-bottom: 3rem; }
+  .hero h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 3.1rem); font-weight: 700;
+    color: #2b1d11; margin: 0 0 0.9rem;
+  }
+  :global(.dark) .hero h1 { color: #f0e0bf; }
+  .deck {
+    font-style: italic; font-size: clamp(1rem, 2.1vw, 1.15rem);
+    line-height: 1.6; max-width: 40rem; margin: 0 auto;
+    color: #6b5940; text-wrap: pretty;
+  }
+  :global(.dark) .deck { color: #c9b489; }
+
+  .intro { max-width: 44rem; margin: 0 auto; }
+  .intro p {
+    font-family: var(--font-body);
+    font-size: 1.03rem; line-height: 1.78; margin: 0 0 1.4rem;
+    color: #2b2317; text-wrap: pretty;
+  }
+  :global(.dark) .intro p { color: #ded0b4; }
+  .intro strong { color: #1e1208; }
+  :global(.dark) .intro strong { color: #f5e8d0; }
+  .intro a { color: #8b6914; text-decoration: underline; text-underline-offset: 2px; }
+  .intro a:hover { color: #4a2808; }
+  :global(.dark) .intro a { color: #ba7517; }
+  :global(.dark) .intro a:hover { color: #e0b25a; }
+
+  .par-scripture {
+    border-left: 3px solid #c4a97d;
+    padding: 0.15rem 0 0.15rem 1.15rem;
+    margin: 1.9rem 0 1.9rem 0.25rem;
+  }
+  :global(.dark) .par-scripture { border-left-color: #8a6028; }
+  .par-scripture-text {
+    font-family: var(--font-display); font-style: italic;
+    font-size: 1.12rem !important; line-height: 1.6 !important;
+    margin: 0 0 0.45rem !important; color: #3a2c19 !important;
+  }
+  :global(.dark) .par-scripture-text { color: #f0e0bf !important; }
+  .par-scripture-ref {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10px !important; letter-spacing: 2px; text-transform: uppercase;
+    margin: 0 !important; color: #8b6914 !important;
+  }
+  :global(.dark) .par-scripture-ref { color: #ba7517 !important; }
+
+  .going-further {
+    font-family: var(--font-display);
+    font-size: 1.28rem; font-weight: 700;
+    margin: 2.6rem 0 1rem; color: #2b1d11;
+  }
+  :global(.dark) .going-further { color: #f0e0bf; }
+
+  .studies { margin-top: 4rem; }
+  .studies-head {
+    text-align: center; margin-bottom: 1.8rem;
+    padding-top: 2.2rem; border-top: 1px solid #d8cfb8;
+  }
+  :global(.dark) .studies-head { border-top-color: #3a2510; }
+  .studies-head h2 {
+    font-family: var(--font-display); font-size: 1.6rem; font-weight: 700;
+    font-variant: small-caps; letter-spacing: 0.03em;
+    margin: 0 0 0.35rem; color: #2b1d11;
+  }
+  :global(.dark) .studies-head h2 { color: #f0e0bf; }
+  .studies-count {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10px; letter-spacing: 2px; text-transform: uppercase;
+    margin: 0; color: #8b6914;
+  }
+  :global(.dark) .studies-count { color: #ba7517; }
+
+  @media (max-width: 620px) {
+    .par { padding: 2.2rem 1.1rem 3.2rem; }
+    .hero { margin-bottom: 2.2rem; }
+  }
+</style>
