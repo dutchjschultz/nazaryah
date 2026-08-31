@@ -1,12 +1,18 @@
 ---
-// src/pages/parables.astro · 0827 V1
+// src/pages/parables.astro · 0831 V2
+// V2: Dark Sayings of Old is PROMOTED out of the grid into the Foundation Bar
+// above "The Studies" — the one study the rest of the section rests on. The
+// study, its file, its route and its association entries are all untouched; it
+// is simply no longer one card among many. The old "Going further" heading and
+// paragraph are gone, replaced by the bar.
 // The Parables — section landing. The front door prose, then the card grid.
 //
 // The grid is data-driven, never hand-maintained: every published post in the
 // "Parables" category, newest first, minus any page carrying `companionOf`
 // (a read-through belongs to its parent study and is reached from that study's
-// Read Next, not from this grid). Adding a study to the section means writing
-// the study with category "Parables" — nothing here changes.
+// Read Next, not from this grid) and minus the foundation study below. Adding a
+// study to the section means writing the study with category "Parables" —
+// nothing here changes.
 //
 // Cards are BlogCard, the same component the blog group views use. No new card
 // shape was invented for this section.
@@ -14,9 +20,16 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogCard from '../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
 
+// THE FOUNDATION — one slug, used twice: excluded from the grid, and the target
+// of the Foundation Bar. Promoting a different study means changing it here only.
+const FOUNDATION_SLUG = 'dark-sayings-of-old';
+const foundationHref = `/blog/${FOUNDATION_SLUG}`;
+
 const studies = (await getCollection('posts', ({ data }) =>
   data.draft !== true && data.category === 'Parables' && !data.companionOf
-)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+))
+  .filter((post) => post.slug !== FOUNDATION_SLUG)
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <BaseLayout
@@ -54,11 +67,19 @@ const studies = (await getCollection('posts', ({ data }) =>
         <p>There is a second cost, and it is quieter. Cut loose from the Hebrew Scriptures, the meaning always shrinks to fit what the teacher already believes. A parable about a priesthood becomes advice about being on time. A parable about a covenant becomes a lesson in being pleasant to people. The parable then appears to confirm the doctrine it was just used to illustrate, and the circle closes with nothing outside it left to break the loop.</p>
 
         <p>These studies add nothing. They put back what was underneath the stories the whole time, and they let the Hebrew Scriptures say what the symbols meant to the men who first heard them.</p>
-
-        <h2 class="going-further">Going further</h2>
-
-        <p><a href="/blog/dark-sayings-of-old">Dark Sayings of Old</a> sets out the error in full — what a <em>mashal</em> is in the Hebrew, how Scripture repeatedly interprets its own parables, why Yahushua said He spoke in them so that some would not understand, and the three ways modern teaching goes wrong once the Hebrew Scriptures are set aside.</p>
       </section>
+
+      <!-- THE FOUNDATION BAR — the whole bar is one anchor; nothing nests inside
+           it. Full content width, so it sits wider than the intro prose above it
+           and squares with the grid below. -->
+      <a class="fbar" href={foundationHref}>
+        <span class="fbar-eyebrow">The Foundation</span>
+        <span class="fbar-row">
+          <span class="fbar-title">Dark Sayings of Old</span>
+          <span class="fbar-deck">What a mashal is, and why every study below rests on it.</span>
+          <span class="fbar-cta">Read first <span class="fbar-arrow" aria-hidden="true">&rarr;</span></span>
+        </span>
+      </a>
 
       {studies.length > 0 && (
         <section class="studies" aria-label="Studies in The Parables">
@@ -129,12 +150,60 @@ const studies = (await getCollection('posts', ({ data }) =>
   }
   :global(.dark) .par-scripture-ref { color: #ba7517 !important; }
 
-  .going-further {
-    font-family: var(--font-display);
-    font-size: 1.28rem; font-weight: 700;
-    margin: 2.6rem 0 1rem; color: #2b1d11;
+  /* ── THE FOUNDATION BAR ──────────────────────────────────────────────────
+     A bar, not a card: the grid cards carry the scroll-rod curl, the shadow and
+     the hover lift from .card in global.css, and this deliberately carries none
+     of them. Parchment one step deeper than those cards — the cards sit on
+     --color-surface, this sits on --color-surface-elevated, the palette's own
+     "slightly darker papyrus". The gold reads on both grounds, so only the
+     parchment and the ink are declared twice. */
+  .fbar {
+    display: block;
+    margin: 3rem 0 4rem;
+    padding: 1.5rem 2rem;
+    background: var(--color-surface-elevated);
+    border: 1px solid rgba(139, 111, 62, 0.45);
+    border-left: 3px solid #8b6f3e;
+    text-decoration: none;
   }
-  :global(.dark) .going-further { color: #f0e0bf; }
+  :global(.dark) .fbar { background: var(--color-dark-surface-elevated); }
+  .fbar-eyebrow {
+    display: block;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-variant: small-caps; font-size: 0.72rem; letter-spacing: 0.18em;
+    color: #8b6914; margin-bottom: 0.35rem;
+  }
+  :global(.dark) .fbar-eyebrow { color: #ba7517; }
+  /* Title and deck share a row and are centred against each other; the CTA is
+     pushed to the far edge. */
+  .fbar-row { display: flex; align-items: center; gap: 1.5rem; }
+  .fbar-title {
+    flex: 0 0 auto;
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-variant: small-caps; font-size: 1.75rem; line-height: 1.15;
+    color: #2b1d11;
+  }
+  :global(.dark) .fbar-title { color: #f0e0bf; }
+  .fbar-deck {
+    flex: 1 1 auto; max-width: 60ch;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic; font-size: 1rem; line-height: 1.5;
+    color: #6b5940;
+  }
+  :global(.dark) .fbar-deck { color: #c9b489; }
+  /* No colour change and no underline on hover — the arrow alone moves. */
+  .fbar-cta {
+    flex: 0 0 auto; margin-left: auto; white-space: nowrap;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-variant: small-caps; font-size: 0.85rem; letter-spacing: 0.1em;
+    color: #8b6914;
+  }
+  :global(.dark) .fbar-cta { color: #ba7517; }
+  .fbar-arrow { display: inline-block; transition: transform 200ms ease; }
+  .fbar:hover .fbar-arrow { transform: translateX(4px); }
+  @media (prefers-reduced-motion: reduce) {
+    .fbar-arrow { transition: none; }
+  }
 
   .studies { margin-top: 4rem; }
   .studies-head {
@@ -154,6 +223,15 @@ const studies = (await getCollection('posts', ({ data }) =>
     margin: 0; color: #8b6914;
   }
   :global(.dark) .studies-count { color: #ba7517; }
+
+  /* The card grid drops to one column below Tailwind's sm (640px); the bar
+     stacks on the same line so the two never disagree. The gold rule stays. */
+  @media (max-width: 639px) {
+    .fbar { padding: 1.25rem 1.25rem 1.25rem 1.5rem; }
+    .fbar-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
+    .fbar-deck { max-width: none; }
+    .fbar-cta { margin-left: 0; }
+  }
 
   @media (max-width: 620px) {
     .par { padding: 2.2rem 1.1rem 3.2rem; }
