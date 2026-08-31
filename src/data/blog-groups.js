@@ -1,4 +1,11 @@
-// blog-groups 0826 V2.js
+// blog-groups 0831 V3.js
+// V3: new group THE PARABLES — Scripture's own parables, read out of the Hebrew
+// Scriptures the first hearers already held. Kingdom of Lights leads it, with
+// Dark Sayings of Old beside it; both were invisible in the feed until now
+// because neither had a line here. Sits next to The Side Door on purpose: that
+// group is MODERN parables Dutch writes, this one is the parables in the text.
+// The read-through companion stays out — a companionOf page is reached from its
+// parent's Read Next, never as its own card. Map total 83 → 85.
 // V2: Volume V's eight chapters join the feed. The Root 13 → 20 (the seven word
 // chapters, beside What the Pulpit Buried's six); The Side Door 1 → 2 (the
 // Wendell Hollis parable, beside the Ned Goodman one). Map total 75 → 83.
@@ -28,6 +35,7 @@ export const BLOG_GROUPS = [
   { key: 'the-quick-scroll',     name: 'The Quick Scroll',     blurb: 'Cliff-notes walkthroughs of whole books of the Bible.' },
   { key: 'buried-in-plain-sight', name: 'Buried in Plain Sight', blurb: 'The systems, symbols, and history hidden in plain view.' },
   { key: 'the-law-and-the-feasts', name: 'The Law & The Feasts', blurb: 'The Torah that still stands, and the appointed times it keeps.' },
+  { key: 'the-parables',         name: 'The Parables',         blurb: 'The parables of Yahushua, read out of the Hebrew Scriptures His first hearers already held.' },
   { key: 'the-side-door',        name: 'The Side Door',        blurb: 'Modern parables — hard truth slipped in sideways, the way a story can and a lecture cannot.' },
 ];
 
@@ -38,7 +46,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 83 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 85 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (15) ──
   'worship-and-service': 'the-counterfeit-throne',
@@ -112,6 +120,15 @@ export const POST_GROUP = {
 
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',
+
+  // ── The Parables (2) — the parables in the text ──
+  // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
+  // Foundation Bar on /parables and is pulled from that grid there; the blog is
+  // a different surface — the chronological feed — so it carries a card here.
+  // kingdom-of-lights-read-through is deliberately absent: it carries
+  // companionOf, so it belongs to its parent's Read Next, not to a feed.
+  'kingdom-of-lights': 'the-parables',
+  'dark-sayings-of-old': 'the-parables',
 
   // ── The Side Door (2) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
