@@ -27,3 +27,7 @@ pnpm-debug.log*
 
 # Claude Code personal settings (per-machine; do not commit)
 .claude/settings.local.json
+
+# Python bytecode from scripts/ (backfill-social-images imports the generator)
+__pycache__/
+*.pyc

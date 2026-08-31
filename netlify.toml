@@ -101,3 +101,89 @@
   from = "/torah/law-on-trial/*"
   to = "/torah/testimonies/:splat"
   status = 301
+
+# Legal Lexicon headword conversion (0831 V16): the headword rule requires an
+# English term field, so 20 transliterated headwords (122-142) became English.
+# Word-page slugs derive from that field, so all 20 URLs changed. One 301 per old
+# slug. The old social cards are LEFT in place at their old paths, same as the
+# 0804 card standardization above — an already-crawled preview keeps resolving.
+[[redirects]]
+  from = "/torah/legal-lexicon/nasa-avon"
+  to = "/torah/legal-lexicon/bear-iniquity"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/eretz-gezerah"
+  to = "/torah/legal-lexicon/land-of-separation"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/kategoros"
+  to = "/torah/legal-lexicon/prosecutor"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/qerev-haqrev"
+  to = "/torah/legal-lexicon/brought-near"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/din"
+  to = "/torah/legal-lexicon/the-session"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/sepharim-pethichu"
+  to = "/torah/legal-lexicon/the-books-opened"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/heedayah-sholtan"
+  to = "/torah/legal-lexicon/dominion-taken-away"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/zeman-dath"
+  to = "/torah/legal-lexicon/times-and-law"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/attiq-yomin"
+  to = "/torah/legal-lexicon/ancient-of-days"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/karath"
+  to = "/torah/legal-lexicon/cut-off"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/synagoge"
+  to = "/torah/legal-lexicon/the-assembly"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/diabolos"
+  to = "/torah/legal-lexicon/slanderer"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/badal-vs-balal"
+  to = "/torah/legal-lexicon/separate-vs-mingle"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/parad"
+  to = "/torah/legal-lexicon/set-apart-by-report"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/cheirographon"
+  to = "/torah/legal-lexicon/handwriting-of-ordinances"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/dogma"
+  to = "/torah/legal-lexicon/decree"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/hupo-nomon"
+  to = "/torah/legal-lexicon/under-the-law"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/katargeo"
+  to = "/torah/legal-lexicon/made-inoperative"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/orthotomeo"
+  to = "/torah/legal-lexicon/rightly-dividing"
+  status = 301
+[[redirects]]
+  from = "/torah/legal-lexicon/didaskalos-kathegetes"
+  to = "/torah/legal-lexicon/teacher-and-master"
+  status = 301
