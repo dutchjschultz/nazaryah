@@ -1,0 +1,78 @@
+---
+// WatchCard.astro · 0831 V1
+// The video read-through of a study, rendered directly under the deck and above
+// the article body. A bordered card that LINKS OUT — never an iframe — so page
+// weight stays down and the reader chooses. Wears the Read Next callout's frame
+// (hairline box, gold spine) with its own WATCH label, so the two read as a pair
+// bracketing the study. Driven by the post's optional `watch` frontmatter block
+// (title / url / note / cta); renders nothing at all when the block is absent,
+// so every study without a video is byte-identical.
+const { post } = Astro.props;
+const watch = post?.data?.watch;
+---
+
+{watch && (
+  <aside class="watch-note" data-pagefind-ignore>
+    <p class="watch-label">Watch</p>
+    <a class="watch-item" href={watch.url} target="_blank" rel="noopener noreferrer">
+      <span class="watch-title">{watch.title}</span>
+      {watch.note && <span class="watch-line">{watch.note}</span>}
+      <span class="watch-cta">{watch.cta} <span aria-hidden="true">&rarr;</span></span>
+    </a>
+  </aside>
+)}
+
+<style>
+  /* Same frame as the Read Next callout at the foot of the study; it sits above
+     the body instead of below it, so the margins are mirrored. */
+  .watch-note {
+    margin: 0 0 2.5rem;
+    padding: 1.25rem 1.5rem;
+    border: 1px solid var(--sand-dark);
+    border-left: 3px solid var(--gold);
+    border-radius: 3px;
+    background: rgba(138, 101, 32, 0.04);
+  }
+  :global(.dark) .watch-note { border-color: rgba(196,173,132,0.28); border-left-color: var(--gold-light); }
+  .watch-label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin: 0 0 0.35rem;
+  }
+  :global(.dark) .watch-label { color: var(--gold-light); }
+  .watch-item {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+    text-decoration: none;
+  }
+  .watch-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--deep-earth);
+  }
+  :global(.dark) .watch-title { color: var(--color-dark-text); }
+  .watch-item:hover .watch-title { color: var(--bronze); }
+  .watch-line {
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: 0.92rem;
+    line-height: 1.45;
+    color: var(--ink-faded);
+  }
+  :global(.dark) .watch-line { color: var(--color-dark-secondary-text); }
+  .watch-cta {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-top: 0.25rem;
+  }
+  :global(.dark) .watch-cta { color: var(--gold-light); }
+  .watch-item:hover .watch-cta { color: var(--bronze); }
+</style>

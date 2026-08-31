@@ -10,6 +10,10 @@ featured: false
 draft: false
 associations: ["the-mishkan", "pulpit-vocabulary"]
 companion: ["kingdom-of-lights-read-through"]
+watch:
+  title: "The Oil Is Not the Holy Spirit — The Ten Virgins Explained"
+  url: "https://www.youtube.com/watch?v=j7u907iF7qs"
+  note: "This study, read through on video. 16 minutes."
 ---
 
 The disciples were standing outside the temple pointing at the stonework when Yahushua told them not one stone would be left on another. Their next question was *when* (Matthew 24:1–3). Everything He says for the next two chapters answers that question, and the parable of the ten virgins is part of the answer. Read on its own it becomes a warning about being on time. Read where it stands, it tells them what happens to the priesthood, the service, and the presence of Yahuah when the building they were pointing at is gone.
@@ -119,7 +123,5 @@ The disciples asked when a building would end. Yahushua answered by telling them
 The light in that house was never the stonework and never the ceremony. It was Yahuah's own instruction, carried by men whose assignment was to keep knowledge on their lips so a watching world could see what He is like. Malachi says what became of it — they departed out of the way and caused many to stumble at the law. The lamp went out at the mouths of the men holding it, and the stones came down afterward.
 
 The temple Yahuah is building now is made of people, and its priests are the ones who never went after idols. What is asked of them is what was asked of every household in Israel: bring in what keeps the light burning, day after ordinary day, until He comes. **Yahuah does not dwell in a temple with the light put out.** There is nothing there for Him to dwell in.
-
-One clarification belongs here, because it is easy to state this wrong. **The light is not the price of admission.** Ezekiel's demoted Levites were never put out of the sanctuary — they kept their standing and lost their nearness. That is precisely the parable's warning, and it is aimed at people already inside. Deliverance comes through the Messiah. The lamp is what a delivered man carries afterward, and it is what decides whether he is near or merely present.
 
 Ten held the office. Five kept the light. When the delay ran long enough to show the difference, nothing could be borrowed, because it never could be.

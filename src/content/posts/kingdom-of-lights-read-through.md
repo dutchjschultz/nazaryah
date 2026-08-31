@@ -10,6 +10,10 @@ featured: false
 draft: false
 companionOf: "kingdom-of-lights"
 companion: ["kingdom-of-lights"]
+watch:
+  title: "The Oil Is Not the Holy Spirit — The Ten Virgins Explained"
+  url: "https://www.youtube.com/watch?v=j7u907iF7qs"
+  note: "This study, read through on video. 16 minutes."
 ---
 
 This is a companion to the study **Kingdom of Lights**. Nothing here is argued; it is argued there. The bracketed notes are not part of the text — each one carries a meaning the Hebrew Scriptures had already given the image beside it.

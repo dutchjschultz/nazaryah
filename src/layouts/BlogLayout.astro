@@ -1,5 +1,9 @@
 ---
-// BlogLayout.astro · 0825 V4
+// BlogLayout.astro · 0831 V5
+// V5: a study carrying a `watch` frontmatter block opens with WatchCard —
+// the video read-through, as a card that links out (never an embed), placed
+// directly above the article body so it follows the deck line and precedes
+// the opening paragraph. Renders nothing on a study with no video.
 // V4: a witness study opens with Lede — one paragraph, same shape every time,
 // in place of the stack of short italic lines the .docx conversion produced.
 // Order above the body is NucleusClaim then Lede; a nucleus carries the claim
@@ -21,6 +25,7 @@ import References from '../components/References.astro';
 import AssociatedStudies from '../components/AssociatedStudies.astro';
 import StudyRail from '../components/StudyRail.astro';
 import Lede from '../components/Lede.astro';
+import WatchCard from '../components/WatchCard.astro';
 import NucleusClaim from '../components/NucleusClaim.astro';
 import InvestigationBar from '../components/InvestigationBar.astro';
 import { getEntry } from 'astro:content';
@@ -152,6 +157,11 @@ const companions = (
       <!-- Opening paragraph (witness studies; nothing on a nucleus) -->
       <div class="max-w-3xl mx-auto">
         <Lede post={post} />
+      </div>
+
+      <!-- Watch the video (studies with a `watch` block; nothing on the rest) -->
+      <div class="max-w-3xl mx-auto">
+        <WatchCard post={post} />
       </div>
 
       <!-- Article Content -->

@@ -1,4 +1,9 @@
-// content config 0827 V8
+// content config 0831 V9
+// V9: added the optional `watch` block — the video read-through of a study,
+// rendered as a link-out card above the article body by WatchCard.astro. Fields:
+// title (video title), url, note (the one line under it), cta (defaults to
+// "Watch on YouTube"). NEVER an embed. Absent on every study without a video,
+// so nothing existing changes.
 // V8: added `companionOf` — the slug of the study a companion page belongs to.
 // A companion (e.g. a parable read-through) still renders at /blog/<slug> and is
 // reached from its parent's Read Next, but it is not its own card: section grids
@@ -109,6 +114,15 @@ const postsCollection = defineCollection({
     nucleusClaim: z.string().optional(),
     nucleusSource: z.string().optional(),
     nucleusQuestion: z.string().optional(),
+    // WATCH CARD — the video read-through of this study. Rendered above the
+    // article body by WatchCard.astro as a card that links out; the site never
+    // embeds a YouTube iframe. Omit the block entirely and nothing renders.
+    watch: z.object({
+      title: z.string(),
+      url: z.string().url(),
+      note: z.string().optional(),
+      cta: z.string().default('Watch on YouTube'),
+    }).optional(),
     // Optional per-study social-share overrides. Each falls back to the study's
     // own title/description or the site default (see BaseLayout).
     ogTitle: z.string().optional(),
