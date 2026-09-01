@@ -1,5 +1,11 @@
 ---
-// on-these-two 0810 V5.astro
+// on-these-two 0831 V6.astro
+// V6. Carries a REAL .lt-card-deck element at last. backfill-social-images has
+// listed this page under that class since its V8, but no such element existed, so
+// the card silently fell back to the long og:description — the exact merge that
+// rule exists to prevent. The deck below is written for the CARD and nothing else;
+// the visible lede/intro and the meta description are untouched. Clipped from the
+// screen rather than display:none so the generator still reads it.
 // V5. Chain joints rebuilt: forged rings with a highlight pass, alternating tilt down the ladder,
 // colour deepening toward the saying, and a broken open link as the final joint before the lie.
 // V4 notes below still apply. The page ground is the site parchment, not black. Every element on it
@@ -75,6 +81,7 @@ const hTorah = hinges.find((h) => h.id === 'torah');
       <div class="ot-diamond" aria-hidden="true"><span></span><i></i><span></span></div>
       <p class="ot-lede">Every lie has a beginning.</p>
       <p class="ot-intro">Two commandments hold up everything. Love Yahuah. Love your neighbour. Yahushua said the whole law and the prophets hang on those two. Knock out either one and the rest comes down.</p>
+      <p class="lt-card-deck">Two lies. Every branch that grew from them.</p>
     </header>
 
     <div class="ot-crown">
@@ -498,6 +505,10 @@ const hTorah = hinges.find((h) => h.id === 'torah');
       border: 1px solid var(--ot-rule); border-radius: 46px 46px 10px 10px;
       background: linear-gradient(180deg, var(--ot-panel-2), var(--ot-panel));
     }
+    /* The social card's deck. Clipped, not display:none, so the generator (which
+       reads the rendered page) still finds it. Never shown on screen. */
+    .lt-card-deck { position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+      overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0; }
     .ot-tablet-sub { font-family: Georgia, serif; font-style: italic; font-size: .95rem; color: var(--ot-mute); margin: 0 0 .5rem; }
     .ot-tablet-cmd { font-family: Georgia, serif; font-variant: small-caps; font-size: 1.35rem; letter-spacing: .03em; color: var(--ot-cream); margin: 0; }
     .ot-tablet-ref { text-align: center; font-size: .72rem; letter-spacing: .22em; text-transform: uppercase; color: var(--ot-ink-2); margin: .7rem 0; }

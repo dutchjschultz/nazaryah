@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0831 V11
+backfill-social-images  0831 V12
+V12: added --only <rel> (repeatable) to remint ONE page. Without it the choices were
+--missing-only (skips any page that already has a card) or a full run, and a full run
+auto-increments every card to vN+1 and deletes the old file — churning ~650 crawled
+card URLs to fix one. --only keeps the single code path; nothing else changes.
 V11: /close-to-the-hip comes OFF the skip set — it renders an h1, so the "titleless
 listing" reason no longer holds. It is a standing reference page (kicker REFERENCE)
 and carries a dedicated .cth-card-deck so the short card deck never falls back to
@@ -181,6 +185,9 @@ def main():
     ap.add_argument("--no-thumbs", action="store_true")
     ap.add_argument("--missing-only", action="store_true",
                     help="only pages whose og:image is still the site logo (fill gaps, don't rebuild all)")
+    ap.add_argument("--only", action="append", metavar="REL", default=[],
+                    help="remint just this page rel (e.g. on-these-two). Repeatable. "
+                         "Use to fix one card without bumping every other card's version.")
     a = ap.parse_args()
 
     if not os.path.isdir(DIST):
@@ -191,6 +198,8 @@ def main():
     for f in sorted(glob.glob(os.path.join(DIST, "**", "index.html"), recursive=True)):
         rel = os.path.relpath(os.path.dirname(f), DIST).replace(os.sep, "/")
         rel = "" if rel == "." else rel
+        if a.only and rel not in a.only:
+            continue
         if skip(rel):
             skipped += 1
             continue
