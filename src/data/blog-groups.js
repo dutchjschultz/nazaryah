@@ -1,4 +1,11 @@
-// blog-groups 0831 V3.js
+// blog-groups 0901 V4.js
+// V4: They Wanted the House Without the Owner joins THE PARABLES (2 → 3). Its
+// read-through, house-without-the-owner-read-through, stays out for the same
+// reason kingdom-of-lights-read-through does — it carries companionOf, so it is
+// reached from its parent's Read Next and never carries a feed card. Map total
+// 85 → 86. NOTE: the batch file for this study said nothing was needed here; it
+// was wrong. Without this line the study renders on /parables but is invisible
+// in /blog and /blog/all, because inFeed is !!POST_GROUP[slug].
 // V3: new group THE PARABLES — Scripture's own parables, read out of the Hebrew
 // Scriptures the first hearers already held. Kingdom of Lights leads it, with
 // Dark Sayings of Old beside it; both were invisible in the feed until now
@@ -46,7 +53,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 85 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 86 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (15) ──
   'worship-and-service': 'the-counterfeit-throne',
@@ -121,7 +128,7 @@ export const POST_GROUP = {
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',
 
-  // ── The Parables (2) — the parables in the text ──
+  // ── The Parables (3) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
   // Foundation Bar on /parables and is pulled from that grid there; the blog is
   // a different surface — the chronological feed — so it carries a card here.
@@ -129,6 +136,7 @@ export const POST_GROUP = {
   // companionOf, so it belongs to its parent's Read Next, not to a feed.
   'kingdom-of-lights': 'the-parables',
   'dark-sayings-of-old': 'the-parables',
+  'house-without-the-owner': 'the-parables',
 
   // ── The Side Door (2) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
