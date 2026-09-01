@@ -1,5 +1,13 @@
 ---
-// src/pages/close-to-the-hip.astro · 0808 V4
+// src/pages/close-to-the-hip.astro · 0831 V5
+// V5: carries a dedicated .cth-card-deck element — the SHORT deck the social
+// card uses, kept separate from the visible thesis line and from the long meta
+// description (the standing rule: the card deck and the meta description are
+// separate fields and must never merge, because the long one clips on the card).
+// It is clipped from the screen, not display:none, so it stays readable to the
+// generator and to assistive tech. The page was on the social-card skip list as
+// "a titleless two-lane listing"; it renders an h1 and is no longer titleless,
+// so the exemption is lifted in check-cards.mjs and backfill-social-images.py.
 // V4: an insight may carry an optional studyLink/studyLabel pair — rendered
 // beneath the insight as a quiet text link. Absent -> nothing renders (no gap).
 // V3: insights sort breaks postedDate ties by id descending, so same-day
@@ -62,6 +70,7 @@ const defenses = readJson('public/data/the-defense.json').entries
         <span class="eyebrow">Close to the Hip</span>
         <h1>Close to the Hip</h1>
         <p class="thesis">Short truths worth carrying, and short answers worth having.</p>
+        <p class="cth-card-deck">Short answers, kept where they can be reached.</p>
       </section>
 
       {insights.length > 0 && (
@@ -136,6 +145,12 @@ const defenses = readJson('public/data/the-defense.json').entries
   .cth .lane-head h2 {
     font-family: 'Cinzel', serif; font-size: 15px; letter-spacing: .16em; text-transform: uppercase;
     color: #f0e0bf; margin: 0 0 6px;
+  }
+  /* The social card's deck. Clipped rather than display:none so the generator
+     (which reads the rendered page) still finds it. Never shown on screen. */
+  .cth .cth-card-deck {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
   }
   .cth .lane-head .standfirst { font-size: 16px; color: #c4a46b; font-style: italic; margin: 0; }
 

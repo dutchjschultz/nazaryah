@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0807 V10
+backfill-social-images  0831 V11
+V11: /close-to-the-hip comes OFF the skip set — it renders an h1, so the "titleless
+listing" reason no longer holds. It is a standing reference page (kicker REFERENCE)
+and carries a dedicated .cth-card-deck so the short card deck never falls back to
+its long meta description. The matching skip edit is in check-cards.mjs.
 V10: the Torah Testimonies section (formerly "Law on Trial") moved to
 /torah/testimonies — kicker_for() matches the new rels. Kickers unchanged: THE
 LAW ON TRIAL on the index, FOUNDATION on the foundations page, TESTIMONY on each
@@ -105,6 +109,7 @@ DECK_CLASSES = {
     # Standing reference pages carry a dedicated (often sr-only) deck element so
     # the short CARD deck never falls back to the long meta description.
     "on-these-two": ["lt-card-deck"],
+    "close-to-the-hip": ["cth-card-deck"],
 }
 
 
@@ -139,7 +144,7 @@ def text(node):
 # the weekly section; the Law on Trial section carries its own three (THE LAW ON
 # TRIAL / FOUNDATION / TESTIMONY). Add a new reference page's rel here; if a page
 # needs a state not covered by this vocabulary, stop and ask Dutch — never invent.
-REFERENCE_PAGES = {"on-these-two"}
+REFERENCE_PAGES = {"on-these-two", "close-to-the-hip"}
 
 
 def kicker_for(rel):
@@ -167,7 +172,6 @@ def skip(rel):
         rel == ""
         or rel in ("blog", "blog/all")
         or rel.startswith("blog/c/")
-        or rel == "close-to-the-hip"
     )
 
 

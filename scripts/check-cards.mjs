@@ -1,4 +1,7 @@
-// check-cards.mjs 0806 V6
+// check-cards.mjs 0831 V7
+// V7: /close-to-the-hip comes OFF the skip set. It was exempt as "a titleless
+// two-lane listing", but it renders an h1 ("Close to the Hip") and so is a normal
+// carded page now. The matching skip edit is in backfill-social-images.py (V11).
 // V6: no behavior change — noted that this skip set is mirrored in
 // scripts/backfill-social-images.py and the two MUST stay in sync (the
 // generator was minting cards for pages this guard skips). Edit both together.
@@ -17,8 +20,7 @@
 //      the generator writes it, it is never hand-typed in a template.
 //
 // A page is exempt from check 1 only if it is intentionally logo-only:
-//   - the homepage, blog listing/pagination, and /close-to-the-hip (the skip
-//     set below — /close-to-the-hip is a titleless two-lane listing), or
+//   - the homepage and the blog listing/pagination pages (the skip set below), or
 //   - it has no <h1> (no title to build a card from — e.g. pathway steps).
 // Messages are written for a person who will not open this file.
 import { readFileSync, readdirSync } from 'node:fs';
@@ -30,8 +32,7 @@ const LOGO = '/og-default.jpg';
 // and the generator have to agree on which pages are logo-only by design. Edit
 // one, edit the other.
 const skip = (rel) =>
-  rel === '' || rel === 'blog' || rel === 'blog/all' || rel.startsWith('blog/c/') ||
-  rel === 'close-to-the-hip';
+  rel === '' || rel === 'blog' || rel === 'blog/all' || rel.startsWith('blog/c/');
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 function walk(dir, out = []) {
