@@ -1,5 +1,14 @@
 ---
-// src/pages/parables.astro · 0831 V2
+// src/pages/parables.astro · 0903 V3
+// V3: an ON VIDEO rail closes the page — every study in this section that has a
+// video, as a row that links out to YouTube. It is DERIVED, not hand-maintained:
+// the source is the study's own `watch` frontmatter block (the same block that
+// draws the watch card at the top of the study), so a new parable video shows up
+// here the moment the study carries one, and no list here has to be edited. No
+// new schema was invented for the section. Read-throughs are excluded the way
+// the grid excludes them, so a study and its companion never list the same video
+// twice; the foundation study is NOT excluded, since its video would belong here
+// like any other. Rows link out only — the site never embeds a YouTube iframe.
 // V2: Dark Sayings of Old is PROMOTED out of the grid into the Foundation Bar
 // above "The Studies" — the one study the rest of the section rests on. The
 // study, its file, its route and its association entries are all untouched; it
@@ -30,6 +39,14 @@ const studies = (await getCollection('posts', ({ data }) =>
 ))
   .filter((post) => post.slug !== FOUNDATION_SLUG)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// ON VIDEO — the same collection, filtered to the studies carrying a `watch`
+// block, newest first. The foundation study is deliberately left in (a video on
+// it belongs in this rail); read-throughs are left out, so the parent study's
+// video is listed once.
+const videos = (await getCollection('posts', ({ data }) =>
+  data.draft !== true && data.category === 'Parables' && !data.companionOf && data.watch
+)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
 <BaseLayout
@@ -89,6 +106,28 @@ const studies = (await getCollection('posts', ({ data }) =>
           </div>
           <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {studies.map((post) => <BlogCard post={post} />)}
+          </div>
+        </section>
+      )}
+
+      <!-- ON VIDEO — one row per study carrying a `watch` block. Each row is a
+           single anchor out to YouTube; nothing nests inside it. -->
+      {videos.length > 0 && (
+        <section class="vrail" aria-label="Videos in The Parables" data-pagefind-ignore>
+          <div class="studies-head">
+            <h2>On Video</h2>
+            <p class="studies-count">{videos.length} {videos.length === 1 ? 'video' : 'videos'}</p>
+          </div>
+          <div class="vlist">
+            {videos.map((post) => (
+              <a class="vrow" href={post.data.watch.url} target="_blank" rel="noopener noreferrer">
+                <span class="vrow-body">
+                  <span class="vrow-title">{post.data.watch.title}</span>
+                  {post.data.watch.note && <span class="vrow-note">{post.data.watch.note}</span>}
+                </span>
+                <span class="vrow-cta">{post.data.watch.cta} <span class="vrow-arrow" aria-hidden="true">&rarr;</span></span>
+              </a>
+            ))}
           </div>
         </section>
       )}
@@ -224,6 +263,48 @@ const studies = (await getCollection('posts', ({ data }) =>
   }
   :global(.dark) .studies-count { color: #ba7517; }
 
+  /* ── ON VIDEO ────────────────────────────────────────────────────────────
+     Rows, not cards, and cut from the Foundation Bar: same parchment one step
+     deeper than the grid, same gold spine, same arrow-only hover. It closes the
+     page rather than competing with the studies above it, and it wears the
+     studies heading so the two sections read as one column. */
+  .vrail { margin-top: 4rem; }
+  .vlist { display: flex; flex-direction: column; gap: 0.9rem; }
+  .vrow {
+    display: flex; align-items: center; gap: 1.5rem;
+    padding: 1.15rem 1.75rem;
+    background: var(--color-surface-elevated);
+    border: 1px solid rgba(139, 111, 62, 0.45);
+    border-left: 3px solid #8b6f3e;
+    text-decoration: none;
+  }
+  :global(.dark) .vrow { background: var(--color-dark-surface-elevated); }
+  .vrow-body { flex: 1 1 auto; display: flex; flex-direction: column; gap: 0.3rem; }
+  .vrow-title {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-variant: small-caps; font-size: 1.4rem; line-height: 1.2;
+    color: #2b1d11; text-wrap: pretty;
+  }
+  :global(.dark) .vrow-title { color: #f0e0bf; }
+  .vrow-note {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic; font-size: 0.95rem; line-height: 1.5;
+    color: #6b5940;
+  }
+  :global(.dark) .vrow-note { color: #c9b489; }
+  .vrow-cta {
+    flex: 0 0 auto; margin-left: auto; white-space: nowrap;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-variant: small-caps; font-size: 0.85rem; letter-spacing: 0.1em;
+    color: #8b6914;
+  }
+  :global(.dark) .vrow-cta { color: #ba7517; }
+  .vrow-arrow { display: inline-block; transition: transform 200ms ease; }
+  .vrow:hover .vrow-arrow { transform: translateX(4px); }
+  @media (prefers-reduced-motion: reduce) {
+    .vrow-arrow { transition: none; }
+  }
+
   /* The card grid drops to one column below Tailwind's sm (640px); the bar
      stacks on the same line so the two never disagree. The gold rule stays. */
   @media (max-width: 639px) {
@@ -231,6 +312,8 @@ const studies = (await getCollection('posts', ({ data }) =>
     .fbar-row { flex-direction: column; align-items: flex-start; gap: 0.5rem; }
     .fbar-deck { max-width: none; }
     .fbar-cta { margin-left: 0; }
+    .vrow { padding: 1rem 1rem 1rem 1.25rem; flex-direction: column; align-items: flex-start; gap: 0.55rem; }
+    .vrow-cta { margin-left: 0; }
   }
 
   @media (max-width: 620px) {
