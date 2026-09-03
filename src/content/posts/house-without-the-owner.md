@@ -10,6 +10,10 @@ featured: false
 draft: false
 associations: ["delegated-authority", "whose-righteousness", "lost-in-translation"]
 companion: ["house-without-the-owner-read-through"]
+watch:
+  title: "The Nation Is Not the Church — The Wicked Husbandmen Explained"
+  url: "https://www.youtube.com/watch?v=umWTEOEJ-GQ"
+  note: "This study, read through on video. 17 minutes."
 ---
 
 This parable is used to teach one idea more than any other. The teaching says Yahuah finished with Israel and started over with the church. The verse used is verse 43.

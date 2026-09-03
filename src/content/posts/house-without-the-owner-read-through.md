@@ -10,6 +10,10 @@ featured: false
 draft: false
 companionOf: "house-without-the-owner"
 companion: ["house-without-the-owner"]
+watch:
+  title: "The Nation Is Not the Church — The Wicked Husbandmen Explained"
+  url: "https://www.youtube.com/watch?v=umWTEOEJ-GQ"
+  note: "This study, read through on video. 17 minutes."
 ---
 
 This is a companion to the study **They Wanted the House Without the Owner**. Nothing here is argued; it is argued there. The bracketed notes are not part of the text — each one carries a meaning the Hebrew Scriptures had already given the image beside it.
