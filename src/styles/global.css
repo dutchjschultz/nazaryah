@@ -89,6 +89,28 @@
   --spacing-page: 3rem;
 }
 
+/* ── LEGACY TOKENS ───────────────────────────────────────────────────────────
+   --bronze is the manuscript palette's gold. It was defined when that design
+   system landed (98c6da2, 2026-04-04) and was dropped two days later by the
+   biblical-archaeology retheme (f08deff), which replaced the palette but left
+   every `var(--bronze)` in the markup pointing at nothing. An undefined var with
+   no fallback is invalid at computed-value time, so for five months those rules
+   did not fail loudly — they just stopped applying: `a { color: var(--bronze) }`
+   inherited instead of colouring, and the two `solid var(--bronze)` borders
+   invalidated their whole shorthand and drew no border at all.
+   The value here is the original #8B6914 — the same gold the newer pages have
+   been hardcoding all along, and the same one SearchModal already carries as its
+   own `var(--bronze, #8b6914)` fallback, so restoring it brings the rest of the
+   site up to what that modal has been showing.
+   NOTE the other 28 dead tokens (--deep-earth, --papyrus, --color-link, the
+   hebrew/greek pairs, …) are a separate question and are deliberately NOT
+   defined here; each one changes what it touches, and only --bronze was asked
+   for. `grep -o 'var(--[a-z-]*' -r src | sort -u` against the definitions finds
+   the rest. */
+:root {
+  --bronze: #8B6914;
+}
+
 /* ── BASE ── */
 *, *::before, *::after { box-sizing: border-box; }
 html { scroll-behavior: smooth; }

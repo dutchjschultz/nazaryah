@@ -248,14 +248,15 @@ const companions = (
   /* The category / common-name line under the breadcrumb. Same treatment as the
      card's reference line (BlogCard's .post-verse): 10px Cinzel, uppercase, 2px
      tracking.
-     COLOUR: this line asked for var(--bronze) before and still does — but that
-     token is not defined anywhere in the site, so the request silently fell
-     through to inherited body ink. The fallback is .post-verse's own colour, so
-     the line matches the card today and follows --bronze the day it is defined. */
+     COLOUR: pinned to .post-verse's own #9a6b1f rather than var(--bronze), so
+     the two lines stay the same gold. --bronze is now defined (#8B6914, see
+     global.css) and is a shade off the card's; matching the card is what this
+     line was asked to do, so it follows the card. Unify both on the token if the
+     card's line ever moves onto it. */
   .post-kicker {
     font-family: 'Cinzel', Georgia, serif; font-size: 10px; font-weight: 600;
     letter-spacing: 2px; text-transform: uppercase;
-    color: var(--bronze, #9a6b1f);
+    color: #9a6b1f;
   }
 
   .trinity-home-tag {
