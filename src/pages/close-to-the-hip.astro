@@ -1,40 +1,53 @@
 ---
-// src/pages/close-to-the-hip.astro · 0831 V5
-// V5: carries a dedicated .cth-card-deck element — the SHORT deck the social
-// card uses, kept separate from the visible thesis line and from the long meta
-// description (the standing rule: the card deck and the meta description are
-// separate fields and must never merge, because the long one clips on the card).
-// It is clipped from the screen, not display:none, so it stays readable to the
-// generator and to assistive tech. The page was on the social-card skip list as
-// "a titleless two-lane listing"; it renders an h1 and is no longer titleless,
-// so the exemption is lifted in check-cards.mjs and backfill-social-images.py.
-// V4: an insight may carry an optional studyLink/studyLabel pair — rendered
-// beneath the insight as a quiet text link. Absent -> nothing renders (no gap).
-// V3: insights sort breaks postedDate ties by id descending, so same-day
-// insights render newest-id-first (SI-003 above SI-002) deterministically.
-// V2: ids are suppressed from the markup — no data-id, no number badge, no SI-###
-// or DEF-### anywhere in the rendered output. The id stays in the JSON for
-// tracking + duplicate detection only (unlike the Legal Lexicon, these lists show
-// no visible numbers). Insights = text/blip/refs; Defense = trigger/answer only.
-// Renamed from scripture-insights.astro. Now a TWO-LANE page at /close-to-the-hip
-// (NOT under /torah/, though it wears the Legal Lexicon's look as a sibling):
-//   Lane 1 — Scripture Insights: short truths to carry through the day.
-//   Lane 2 — The Defense: short answers to what you'll hear pushed back at you.
-// A 301 from /scripture-insights lives in netlify.toml.
+// src/pages/close-to-the-hip.astro · 0903 V6
+// V6: REBUILT AS ONE LANE OF PAIRED CARDS. The two separate lanes (Scripture
+// Insights above, The Defense below) are gone. There is now one card per posted
+// Scripture Insight; a card whose insight carries a `pair` shows a small
+// "when it gets questioned" toggle that reveals the claim and the Defense answer
+// IN PLACE. No pair -> no toggle, and no empty affordance.
 //
-// DATA (both read at build time, project-root/cwd paths — compiled module lives
+// PAIRING lives in the DATA, not here: scripture-insights.json and
+// the-defense.json stay two files, keep their own ids, and each side names the
+// other in a `pair` field. This page joins them by that field and never
+// renumbers anything.
+//
+// CONSEQUENCE, on purpose and worth knowing: a Defense entry reaches this page
+// ONLY through its pair. The five posted entries with no insight (DEF-083,
+// DEF-084, DEF-085, DEF-087, DEF-088) are no longer rendered anywhere. They are
+// still posted in the data file; they are dark until an insight is written for
+// them or this page grows a card shape for a standalone claim.
+//
+// FILTERING — both filters are client-side over server-rendered cards, so the
+// script only ever flips attributes; it never builds an element (Astro's scoped
+// styles do not reach runtime-created nodes, so building them here would need an
+// is:global block — sidestepped by rendering everything up front).
+//   · Search — one box over one haystack per card, built at build time into
+//     data-hay: insight text + blip + claim + Defense answer + refs + study label.
+//   · Chips — GENERATED from the entry data, never hand-maintained. Each insight
+//     may carry `clusters`, holding cluster keys copied character-for-character
+//     from src/data/associations.js; the row is the union of those keys across
+//     the rendered cards, labelled from that same registry. An unknown key would
+//     fail silently, so the build asserts every key exists before rendering.
+//   · The two combine: chips OR within themselves, AND against the search.
+//
+// DATA (read at build time, project-root/cwd paths — the compiled module lives
 // under .netlify/, so import.meta.url-relative paths would miss the sources):
 //   public/data/scripture-insights.json  — versions by FIELDS (version/changeNote)
 //   public/data/the-defense.json         — same field-versioning convention
+// NOTE the rebuild spec put the version in a `meta` block; neither file has ever
+// had one. Both version through top-level version/changeNote, and that is where
+// the bumps went.
 //
 // SCRIPTURE INSIGHTS field rules ----------------------------------------------
-//   id · key · text (card body) · blip (optional, smaller/lighter) · refs (small,
-//   joined " · ") · status ("open"|"approved"|"posted", only posted renders) ·
-//   postedDate (drives the sort).
+//   id · key · pair (optional, a DEF-### id) · text (card body) · blip (optional,
+//   smaller/lighter) · refs (small, joined " · ") · clusters (optional, cluster
+//   keys from associations.js — drives the chips) · status ("open"|"approved"|
+//   "posted", only posted renders) · postedDate (drives the sort).
 //
 // THE DEFENSE field rules -----------------------------------------------------
 //   id       — DEF-###, zero-padded to three, matching the master count. Never reused.
 //   key      — lowercase hyphen slug; duplicate detection across chats
+//   pair     — optional, the SI-### id this entry mirrors
 //   trigger  — the anticipated question/claim, as a real person would say it
 //   answer   — the spoken reply. NEVER contains a verse reference.
 //   refs     — FOR THE MASTER FILE ONLY. Not rendered on this page.
@@ -43,20 +56,51 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { CLUSTERS } from '../data/associations.js';
 
 const readJson = (rel) => JSON.parse(fs.readFileSync(path.join(process.cwd(), rel), 'utf-8'));
 
-// Lane 1 — posted insights, newest first by postedDate.
+// Posted insights, newest first by postedDate, ties broken by id descending so
+// same-day entries render newest-id-first deterministically.
 const insights = readJson('public/data/scripture-insights.json').insights
   .filter((i) => i.status === 'posted')
   .sort((a, b) =>
     String(b.postedDate).localeCompare(String(a.postedDate)) ||
     String(b.id).localeCompare(String(a.id)));
 
-// Lane 2 — posted defenses, by id ascending. refs are intentionally NOT read here.
-const defenses = readJson('public/data/the-defense.json').entries
-  .filter((d) => d.status === 'posted')
-  .sort((a, b) => String(a.id).localeCompare(String(b.id)));
+// Posted defenses, indexed by id. A pair pointing at a withdrawn or unloaded
+// entry simply finds nothing, and that card renders without a toggle.
+const defenseById = Object.fromEntries(
+  readJson('public/data/the-defense.json').entries
+    .filter((d) => d.status === 'posted')
+    .map((d) => [d.id, d]));
+
+// One card model per insight: the entry, its Defense (or null), its cluster keys,
+// and the single lowercased haystack the search box runs over.
+const cards = insights.map((i) => {
+  const def = (i.pair && defenseById[i.pair]) || null;
+  const clusters = (i.clusters || []).filter(Boolean);
+  for (const key of clusters) {
+    if (!CLUSTERS[key]) {
+      throw new Error(
+        `close-to-the-hip: ${i.id} carries cluster key "${key}", which is not in ` +
+        `src/data/associations.js. Unknown keys fail silently — fix the key or the registry.`);
+    }
+  }
+  const hay = [
+    i.text, i.blip, i.studyLabel,
+    def?.trigger, def?.answer,
+    (i.refs || []).join(' · '),
+  ].filter(Boolean).join(' ').toLowerCase();
+  return { insight: i, def, clusters, hay };
+});
+
+// The chip row: the union of cluster keys actually present on the cards above,
+// labelled from the registry and sorted by label. Nothing here is a list anyone
+// maintains — tag an insight and its chip appears.
+const chips = [...new Set(cards.flatMap((c) => c.clusters))]
+  .map((key) => ({ key, label: CLUSTERS[key].label }))
+  .sort((a, b) => a.label.localeCompare(b.label));
 ---
 
 <BaseLayout
@@ -73,47 +117,140 @@ const defenses = readJson('public/data/the-defense.json').entries
         <p class="cth-card-deck">Short answers, kept where they can be reached.</p>
       </section>
 
-      {insights.length > 0 && (
-        <section class="lane" aria-label="Scripture Insights">
-          <div class="lane-head">
-            <h2>Scripture Insights</h2>
-            <p class="standfirst">Truths worth keeping close.</p>
+      {cards.length > 0 && (
+        <section class="cth-lane" aria-label="Scripture Insights">
+
+          <div class="cth-controls">
+            <label class="cth-search-label" for="cth-search">Search</label>
+            <input
+              type="search"
+              id="cth-search"
+              class="cth-search"
+              placeholder="Search the insights, the claims, and the references"
+              autocomplete="off"
+            />
+
+            {chips.length > 0 && (
+              <div class="cth-chips" role="group" aria-label="Filter by subject">
+                <button type="button" class="cth-chip is-on" data-key="" aria-pressed="true">All</button>
+                {chips.map((c) => (
+                  <button type="button" class="cth-chip" data-key={c.key} aria-pressed="false">{c.label}</button>
+                ))}
+              </div>
+            )}
+
+            <p class="cth-count" aria-live="polite" data-total={cards.length}>
+              {cards.length} {cards.length === 1 ? 'insight' : 'insights'}
+            </p>
           </div>
-          <div class="insights">
-            {insights.map((i) => (
-              <article class="ins">
+
+          <div class="cth-cards">
+            {cards.map(({ insight: i, def, clusters, hay }) => (
+              <article class="cth-card" data-hay={hay} data-clusters={clusters.join(' ')}>
                 <p class="ins-text">{i.text}</p>
                 {i.blip && i.blip.trim() && <p class="ins-blip">{i.blip}</p>}
                 {i.refs && i.refs.length > 0 && <p class="ins-refs">{i.refs.join(' · ')}</p>}
                 {i.studyLink && i.studyLabel && (
                   <p class="ins-study"><a href={i.studyLink}>{i.studyLabel} <span aria-hidden="true">&rarr;</span></a></p>
                 )}
-              </article>
-            ))}
-          </div>
-        </section>
-      )}
 
-      {defenses.length > 0 && (
-        <section class="lane" aria-label="The Defense">
-          <div class="lane-head">
-            <h2>The Defense</h2>
-            <p class="standfirst">For when it gets questioned.</p>
-          </div>
-          <div class="defense">
-            {defenses.map((d) => (
-              <article class="def">
-                <p class="def-trigger">&ldquo;{d.trigger}&rdquo;</p>
-                <p class="def-answer">{d.answer}</p>
+                {def && (
+                  <>
+                    <button
+                      type="button"
+                      class="cth-toggle"
+                      aria-expanded="false"
+                      aria-controls={`def-${i.id}`}
+                    >
+                      <span class="cth-toggle-mark" aria-hidden="true">+</span>
+                      <span>when it gets questioned</span>
+                    </button>
+                    <div class="cth-def" id={`def-${i.id}`} hidden>
+                      <p class="def-trigger">&ldquo;{def.trigger}&rdquo;</p>
+                      <p class="def-answer">{def.answer}</p>
+                    </div>
+                  </>
+                )}
               </article>
             ))}
           </div>
+
+          <p class="cth-empty" hidden>Nothing matches that. Clear the search, or choose <strong>All</strong>.</p>
         </section>
       )}
 
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  // Filtering and the per-card toggle. Every element this touches was rendered by
+  // Astro above; nothing is created here, so the scoped styles all apply.
+  const lane = document.querySelector('.cth-lane');
+  if (lane) {
+    const search = lane.querySelector('.cth-search');
+    const chips = [...lane.querySelectorAll('.cth-chip')];
+    const cards = [...lane.querySelectorAll('.cth-card')];
+    const count = lane.querySelector('.cth-count');
+    const empty = lane.querySelector('.cth-empty');
+    const total = Number(count?.dataset.total ?? cards.length);
+
+    // ── the toggle: reveals the claim and the answer in place ──
+    lane.querySelectorAll('.cth-toggle').forEach((btn) => {
+      const panel = document.getElementById(btn.getAttribute('aria-controls'));
+      const mark = btn.querySelector('.cth-toggle-mark');
+      btn.addEventListener('click', () => {
+        const open = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!open));
+        if (panel) panel.hidden = open;
+        if (mark) mark.textContent = open ? '+' : '−';
+      });
+    });
+
+    // ── the filters: chips OR within themselves, AND against the search ──
+    const selected = new Set();
+
+    const apply = () => {
+      const q = (search?.value ?? '').trim().toLowerCase();
+      let shown = 0;
+      for (const card of cards) {
+        const keys = (card.dataset.clusters || '').split(' ').filter(Boolean);
+        const byChip = selected.size === 0 || keys.some((k) => selected.has(k));
+        const byText = q === '' || (card.dataset.hay || '').includes(q);
+        const visible = byChip && byText;
+        card.hidden = !visible;
+        if (visible) shown += 1;
+      }
+      if (count) {
+        count.textContent = shown === total
+          ? `${total} ${total === 1 ? 'insight' : 'insights'}`
+          : `${shown} of ${total}`;
+      }
+      if (empty) empty.hidden = shown !== 0;
+    };
+
+    search?.addEventListener('input', apply);
+
+    chips.forEach((chip) => {
+      chip.addEventListener('click', () => {
+        const key = chip.dataset.key || '';
+        if (key === '') {
+          selected.clear();                     // the All chip resets the row
+        } else if (selected.has(key)) {
+          selected.delete(key);
+        } else {
+          selected.add(key);
+        }
+        for (const c of chips) {
+          const on = c.dataset.key === '' ? selected.size === 0 : selected.has(c.dataset.key);
+          c.classList.toggle('is-on', on);
+          c.setAttribute('aria-pressed', String(on));
+        }
+        apply();
+      });
+    });
+  }
+</script>
 
 <style>
   /* Sibling of the Legal Lexicon (torah/legal-lexicon) — same fixed-dark ground,
@@ -138,28 +275,52 @@ const defenses = readJson('public/data/the-defense.json').entries
     color: #f0e0bf; margin: 12px 0 12px; letter-spacing: -.01em;
   }
   .cth .thesis { font-size: 20px; color: #c4a46b; font-style: italic; margin: 0; }
-
-  /* ── Lane heading — shared by both sections ── */
-  .cth .lane { margin-top: 56px; }
-  .cth .lane-head { margin-bottom: 24px; padding-bottom: 12px; border-bottom: 1px solid #3a2510; }
-  .cth .lane-head h2 {
-    font-family: 'Cinzel', serif; font-size: 15px; letter-spacing: .16em; text-transform: uppercase;
-    color: #f0e0bf; margin: 0 0 6px;
-  }
   /* The social card's deck. Clipped rather than display:none so the generator
      (which reads the rendered page) still finds it. Never shown on screen. */
   .cth .cth-card-deck {
     position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
     overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
   }
-  .cth .lane-head .standfirst { font-size: 16px; color: #c4a46b; font-style: italic; margin: 0; }
 
-  /* ── Lane 1: Scripture Insights — the heavier weight. Bordered panel, gold spine. ── */
-  .cth .insights { display: flex; flex-direction: column; gap: 20px; }
-  .cth .ins {
+  /* ── Controls: search, chips, count ── */
+  .cth .cth-lane { margin-top: 48px; }
+  .cth .cth-controls { margin-bottom: 26px; padding-bottom: 18px; border-bottom: 1px solid #3a2510; }
+  .cth .cth-search-label {
+    display: block;
+    font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: .16em; text-transform: uppercase;
+    color: #8a6028; margin-bottom: 8px;
+  }
+  .cth .cth-search {
+    width: 100%; box-sizing: border-box; padding: 11px 14px;
+    background: rgba(20, 13, 5, .6); border: 1px solid #3a2510; border-radius: 3px;
+    font-family: inherit; font-size: 17px; color: #e0d2b2;
+  }
+  .cth .cth-search::placeholder { color: #8a7350; font-style: italic; }
+  .cth .cth-search:focus { outline: none; border-color: #8a6028; }
+
+  .cth .cth-chips { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 16px; }
+  .cth .cth-chip {
+    padding: 6px 13px;
+    background: transparent; border: 1px solid #3a2510; border-radius: 999px;
+    font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: .1em; text-transform: uppercase;
+    color: #9a8763; cursor: pointer; transition: color .2s ease, border-color .2s ease, background-color .2s ease;
+  }
+  .cth .cth-chip:hover { color: #f0e0bf; border-color: #8a6028; }
+  .cth .cth-chip.is-on { background: rgba(138, 96, 40, .22); border-color: #8a6028; color: #f0e0bf; }
+  .cth .cth-chip:focus-visible { outline: 2px solid #BA7517; outline-offset: 2px; }
+
+  .cth .cth-count {
+    font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: #8a6f45; margin: 16px 0 0;
+  }
+
+  /* ── The lane: one card per insight ── */
+  .cth .cth-cards { display: flex; flex-direction: column; gap: 20px; }
+  .cth .cth-card {
     background: rgba(20, 13, 5, .5); border: 1px solid #3a2510; border-left: 3px solid #8a6028;
     border-radius: 4px; padding: 26px 28px;
   }
+  .cth .cth-card[hidden] { display: none; }
   .cth .ins-text { font-size: 19px; line-height: 1.8; color: #e0d2b2; margin: 0; }
   .cth .ins-blip { font-size: 15.5px; line-height: 1.65; color: #9a8763; font-style: italic; margin: 14px 0 0; }
   .cth .ins-refs {
@@ -175,18 +336,41 @@ const defenses = readJson('public/data/the-defense.json').entries
   }
   .cth .ins-study a:hover { color: #f0e0bf; }
 
-  /* ── Lane 2: The Defense — compact. Stacked rows, hairline between, no card frame. ── */
-  .cth .defense { display: flex; flex-direction: column; }
-  .cth .def { padding: 16px 0; border-top: 1px solid #2e1f0d; }
-  .cth .def:first-child { border-top: 0; padding-top: 4px; }
+  /* ── The toggle and the Defense it reveals ── */
+  .cth .cth-toggle {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    margin: 18px 0 0; padding: 0;
+    background: none; border: 0; cursor: pointer;
+    font-family: 'Cinzel', serif; font-size: 10.5px; letter-spacing: .14em; text-transform: uppercase;
+    color: #8a6f45; transition: color .2s ease;
+  }
+  .cth .cth-toggle:hover { color: #BA7517; }
+  .cth .cth-toggle:focus-visible { outline: 2px solid #BA7517; outline-offset: 3px; }
+  .cth .cth-toggle-mark {
+    font-family: 'Crimson Pro', Georgia, serif; font-size: 15px; line-height: 1;
+    color: #8a6028;
+  }
+  .cth .cth-def {
+    margin: 14px 0 0; padding: 16px 0 0; border-top: 1px solid #2e1f0d;
+  }
+  .cth .cth-def[hidden] { display: none; }
   .cth .def-trigger { font-size: 17px; font-style: italic; color: #c4a46b; margin: 0 0 6px; line-height: 1.5; }
   .cth .def-answer { font-size: 17px; color: #d9c9a8; margin: 0; line-height: 1.65; }
+
+  .cth .cth-empty { font-size: 17px; font-style: italic; color: #9a8763; margin: 28px 0 0; }
+  .cth .cth-empty[hidden] { display: none; }
+  .cth .cth-empty strong { color: #c4a46b; font-style: normal; }
 
   @media (max-width: 620px) {
     .cth { font-size: 17px; }
     .cth .wrap { padding: 28px 16px 60px; }
     .cth .hero h1 { font-size: 32px; } .cth .thesis { font-size: 17px; }
-    .cth .ins { padding: 20px 18px; }
+    .cth .cth-card { padding: 20px 18px; }
     .cth .ins-text { font-size: 18px; }
+    /* Cinzel uppercase with letter-spacing makes these labels long; at phone
+       width the full-size chip takes a row each. Tighten so the row reads as a
+       row. */
+    .cth .cth-chips { gap: 6px; }
+    .cth .cth-chip { padding: 5px 10px; font-size: 9.5px; letter-spacing: .06em; }
   }
 </style>
