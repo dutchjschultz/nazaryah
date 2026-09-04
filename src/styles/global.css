@@ -102,13 +102,73 @@
    been hardcoding all along, and the same one SearchModal already carries as its
    own `var(--bronze, #8b6914)` fallback, so restoring it brings the rest of the
    site up to what that modal has been showing.
-   NOTE the other 28 dead tokens (--deep-earth, --papyrus, --color-link, the
-   hebrew/greek pairs, …) are a separate question and are deliberately NOT
-   defined here; each one changes what it touches, and only --bronze was asked
-   for. `grep -o 'var(--[a-z-]*' -r src | sort -u` against the definitions finds
-   the rest. */
+   The rest of the block below is the same casualty list: every token the retheme
+   dropped while the markup kept asking for it. RULE USED FOR THE VALUES: each is
+   the value that token last held in git, EXCEPT where today's code demonstrates
+   a different one for the same role — the one such exception is flagged inline.
+   Provenance: 98c6da2 (manuscript system, 2026-04-04), 48b2b00 (Nazareth theme,
+   same day), f08deff^ (the state the retheme deleted), 2fcb7a1 (initial, for the
+   dark palette). Nothing here is invented.
+   NOT included: --token, which only ever appears inside two comments in
+   NucleusClaim.astro and Lede.astro describing the `var(--token, fallback)`
+   pattern in the abstract. It is prose, not a token. */
 :root {
+  /* Gold. See the note above — restored first, on its own. */
   --bronze: #8B6914;
+
+  /* Ink. EXCEPTION TO THE RULE: git says #3B2F2F, but that is the manuscript
+     palette's warm grey and it is LIGHTER than the ink this site now uses. The
+     role is "darkest heading ink" (h1s, card titles, form labels), it renders as
+     --color-primary-text today by inheritance, and the live palette's ink is
+     that. Taking the archived hex would lighten every heading on the site, so
+     the live palette wins and this stays a no-op. */
+  --deep-earth: var(--color-primary-text);
+
+  /* Dark grounds — the footer and the dark sidebar. Both currently paint
+     nothing: an undefined var in `background: var(--soil)` kills the
+     declaration, which is why the footer has been showing --stone grey text on
+     the parchment page instead of on its own dark ground. */
+  --soil:           #2b1d0e;
+  --soil-mid:       #4B3621;
+
+  /* Light grounds and the light text that sits on the dark ones. */
+  --papyrus:        #f5e6be;
+  --papyrus-dark:   #e8d5a0;
+  --papyrus-light:  #faf0d4;
+  --linen:          #FAF0E6;
+  --sand-light:     #F5E6C8;
+  --parchment-dark: #E0D0B0;
+
+  /* Accents. --muted takes the value its own five call sites already carry as
+     their fallback, so defining it changes nothing and closes the gap. */
+  --ember:          #ff4500;
+  --muted:          #8a7c5e;
+
+  /* Links. Held as references, the way f08deff^ held them. */
+  --color-link:       var(--bronze);
+  --color-link-hover: var(--gold);
+
+  /* Hebrew and Greek get their own colour coding in the glossary — blue and
+     purple. With these dead, both languages have been rendering identically and
+     their tinted panels have not been painting at all. */
+  --color-hebrew:        #5a7a9a;
+  --color-hebrew-bg:     #f0f4f8;
+  --color-hebrew-border: #c8d8e8;
+  --color-greek:         #7a6a9a;
+  --color-greek-bg:      #f4f0f8;
+  --color-greek-border:  #d8c8e8;
+
+  /* The dark-mode half of the same. These names continue the scheme the current
+     @theme already uses, so the values come from where that scheme started. */
+  --color-dark-accent:        #d4a85f;
+  --color-dark-link:          #8ab4d4;
+  --color-dark-link-hover:    #a0c4e0;
+  --color-dark-hebrew:        #8ab0d0;
+  --color-dark-hebrew-bg:     #1a2530;
+  --color-dark-hebrew-border: #3a4a5a;
+  --color-dark-greek:         #b0a0d0;
+  --color-dark-greek-bg:      #251a30;
+  --color-dark-greek-border:  #4a3a5a;
 }
 
 /* ── BASE ── */
