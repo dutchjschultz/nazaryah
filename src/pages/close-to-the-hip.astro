@@ -1,21 +1,30 @@
 ---
-// src/pages/close-to-the-hip.astro · 0903 V6
-// V6: REBUILT AS ONE LANE OF PAIRED CARDS. The two separate lanes (Scripture
-// Insights above, The Defense below) are gone. There is now one card per posted
-// Scripture Insight; a card whose insight carries a `pair` shows a small
-// "when it gets questioned" toggle that reveals the claim and the Defense answer
-// IN PLACE. No pair -> no toggle, and no empty affordance.
+// src/pages/close-to-the-hip.astro · 0903 V7
+// V7: THE LANE BUILDS A CARD FROM ANY POSTED ENTRY IN EITHER FILE. Two shapes,
+// one frame:
+//   · Insight card — the insight text is the face. When its `pair` resolves to a
+//     posted Defense, a small "when it gets questioned" toggle reveals the claim
+//     and the answer IN PLACE. No pair -> no toggle, and no empty affordance.
+//   · Defense card — for a posted Defense that no rendered insight consumed. The
+//     CLAIM is the face and the answer sits under it. No toggle: there is nothing
+//     to reveal, the whole entry is already on the face.
+// Both sort together by postedDate (newest first), so an unpaired Defense falls
+// in where its date puts it rather than clustering at the end. Same-date ties
+// break by id descending — a string compare, which keeps the insight cards in the
+// order they have always rendered; it is only a tiebreak, and the date does the
+// real interleaving.
 //
 // PAIRING lives in the DATA, not here: scripture-insights.json and
 // the-defense.json stay two files, keep their own ids, and each side names the
 // other in a `pair` field. This page joins them by that field and never
 // renumbers anything.
 //
-// CONSEQUENCE, on purpose and worth knowing: a Defense entry reaches this page
-// ONLY through its pair. The five posted entries with no insight (DEF-083,
-// DEF-084, DEF-085, DEF-087, DEF-088) are no longer rendered anywhere. They are
-// still posted in the data file; they are dark until an insight is written for
-// them or this page grows a card shape for a standalone claim.
+// THE DARK-ENTRY GUARD — nothing posted may go dark on a push. After the cards
+// are built, the ids they actually render are collected FROM THE CARD LIST (not
+// from the logic that built it, so a future edit to that logic is caught too) and
+// checked against every posted id in both files. Anything posted that reaches no
+// card FAILS THE BUILD and is named. A changeNote warning is a record; this is
+// the guard.
 //
 // FILTERING — both filters are client-side over server-rendered cards, so the
 // script only ever flips attributes; it never builds an element (Astro's scoped
@@ -60,40 +69,85 @@ import { CLUSTERS } from '../data/associations.js';
 
 const readJson = (rel) => JSON.parse(fs.readFileSync(path.join(process.cwd(), rel), 'utf-8'));
 
-// Posted insights, newest first by postedDate, ties broken by id descending so
-// same-day entries render newest-id-first deterministically.
-const insights = readJson('public/data/scripture-insights.json').insights
-  .filter((i) => i.status === 'posted')
-  .sort((a, b) =>
-    String(b.postedDate).localeCompare(String(a.postedDate)) ||
-    String(b.id).localeCompare(String(a.id)));
+const postedInsights = readJson('public/data/scripture-insights.json').insights
+  .filter((i) => i.status === 'posted');
+const postedDefenses = readJson('public/data/the-defense.json').entries
+  .filter((d) => d.status === 'posted');
 
-// Posted defenses, indexed by id. A pair pointing at a withdrawn or unloaded
-// entry simply finds nothing, and that card renders without a toggle.
-const defenseById = Object.fromEntries(
-  readJson('public/data/the-defense.json').entries
-    .filter((d) => d.status === 'posted')
-    .map((d) => [d.id, d]));
+// Posted defenses indexed by id. A pair pointing at a withdrawn or unloaded entry
+// simply finds nothing, and that insight card renders without a toggle.
+const defenseById = Object.fromEntries(postedDefenses.map((d) => [d.id, d]));
 
-// One card model per insight: the entry, its Defense (or null), its cluster keys,
-// and the single lowercased haystack the search box runs over.
-const cards = insights.map((i) => {
-  const def = (i.pair && defenseById[i.pair]) || null;
-  const clusters = (i.clusters || []).filter(Boolean);
+// Cluster keys are copied by hand into the data; an unknown one would fail
+// silently and take the entry out of every chip, so it is checked here.
+const checkClusters = (entry) => {
+  const clusters = (entry.clusters || []).filter(Boolean);
   for (const key of clusters) {
     if (!CLUSTERS[key]) {
       throw new Error(
-        `close-to-the-hip: ${i.id} carries cluster key "${key}", which is not in ` +
+        `close-to-the-hip: ${entry.id} carries cluster key "${key}", which is not in ` +
         `src/data/associations.js. Unknown keys fail silently — fix the key or the registry.`);
     }
   }
-  const hay = [
-    i.text, i.blip, i.studyLabel,
-    def?.trigger, def?.answer,
-    (i.refs || []).join(' · '),
-  ].filter(Boolean).join(' ').toLowerCase();
-  return { insight: i, def, clusters, hay };
+  return clusters;
+};
+
+// ── INSIGHT CARDS — the insight is the face; its paired Defense rides along ──
+const consumed = new Set();
+const insightCards = postedInsights.map((i) => {
+  const def = (i.pair && defenseById[i.pair]) || null;
+  if (def) consumed.add(def.id);
+  return {
+    kind: 'insight',
+    id: i.id,
+    sortDate: String(i.postedDate),
+    insight: i,
+    def,
+    clusters: checkClusters(i),
+    hay: [
+      i.text, i.blip, i.studyLabel,
+      def?.trigger, def?.answer,
+      (i.refs || []).join(' · '),
+    ].filter(Boolean).join(' ').toLowerCase(),
+  };
 });
+
+// ── DEFENSE CARDS — a posted Defense no insight card picked up. The claim is the
+// face. `refs` stays out of both the card and the haystack: on this lane those
+// are master-file only and have never been rendered for a Defense entry. ──
+const defenseCards = postedDefenses
+  .filter((d) => !consumed.has(d.id))
+  .map((d) => ({
+    kind: 'defense',
+    id: d.id,
+    sortDate: String(d.postedDate),
+    insight: null,
+    def: d,
+    clusters: checkClusters(d),
+    hay: [d.trigger, d.answer].filter(Boolean).join(' ').toLowerCase(),
+  }));
+
+// One lane. The date interleaves the two shapes; id descending is only the
+// same-date tiebreak.
+const cards = [...insightCards, ...defenseCards].sort((a, b) =>
+  b.sortDate.localeCompare(a.sortDate) || String(b.id).localeCompare(String(a.id)));
+
+// ── THE GUARD — read back what the cards actually carry, and fail on anything
+// posted that reaches none of them. ──
+const rendered = new Set();
+for (const c of cards) {
+  if (c.insight) rendered.add(c.insight.id);
+  if (c.def) rendered.add(c.def.id);
+}
+const dark = [...postedInsights, ...postedDefenses]
+  .map((e) => e.id)
+  .filter((id) => !rendered.has(id));
+if (dark.length > 0) {
+  throw new Error(
+    `close-to-the-hip: ${dark.length} posted ${dark.length === 1 ? 'entry renders' : 'entries render'} ` +
+    `on no card — ${dark.join(', ')}. Every posted entry in scripture-insights.json and ` +
+    `the-defense.json must reach the lane. Either give it a card or take it off "posted".`);
+}
 
 // The chip row: the union of cluster keys actually present on the cards above,
 // labelled from the registry and sorted by label. Nothing here is a list anyone
@@ -140,35 +194,44 @@ const chips = [...new Set(cards.flatMap((c) => c.clusters))]
             )}
 
             <p class="cth-count" aria-live="polite" data-total={cards.length}>
-              {cards.length} {cards.length === 1 ? 'insight' : 'insights'}
+              {cards.length} {cards.length === 1 ? 'entry' : 'entries'}
             </p>
           </div>
 
           <div class="cth-cards">
-            {cards.map(({ insight: i, def, clusters, hay }) => (
+            {cards.map(({ kind, id, insight: i, def, clusters, hay }) => (
               <article class="cth-card" data-hay={hay} data-clusters={clusters.join(' ')}>
-                <p class="ins-text">{i.text}</p>
-                {i.blip && i.blip.trim() && <p class="ins-blip">{i.blip}</p>}
-                {i.refs && i.refs.length > 0 && <p class="ins-refs">{i.refs.join(' · ')}</p>}
-                {i.studyLink && i.studyLabel && (
-                  <p class="ins-study"><a href={i.studyLink}>{i.studyLabel} <span aria-hidden="true">&rarr;</span></a></p>
-                )}
-
-                {def && (
+                {kind === 'insight' ? (
                   <>
-                    <button
-                      type="button"
-                      class="cth-toggle"
-                      aria-expanded="false"
-                      aria-controls={`def-${i.id}`}
-                    >
-                      <span class="cth-toggle-mark" aria-hidden="true">+</span>
-                      <span>when it gets questioned</span>
-                    </button>
-                    <div class="cth-def" id={`def-${i.id}`} hidden>
-                      <p class="def-trigger">&ldquo;{def.trigger}&rdquo;</p>
-                      <p class="def-answer">{def.answer}</p>
-                    </div>
+                    <p class="ins-text">{i.text}</p>
+                    {i.blip && i.blip.trim() && <p class="ins-blip">{i.blip}</p>}
+                    {i.refs && i.refs.length > 0 && <p class="ins-refs">{i.refs.join(' · ')}</p>}
+                    {i.studyLink && i.studyLabel && (
+                      <p class="ins-study"><a href={i.studyLink}>{i.studyLabel} <span aria-hidden="true">&rarr;</span></a></p>
+                    )}
+
+                    {def && (
+                      <>
+                        <button
+                          type="button"
+                          class="cth-toggle"
+                          aria-expanded="false"
+                          aria-controls={`def-${id}`}
+                        >
+                          <span class="cth-toggle-mark" aria-hidden="true">+</span>
+                          <span>when it gets questioned</span>
+                        </button>
+                        <div class="cth-def" id={`def-${id}`} hidden>
+                          <p class="def-trigger">&ldquo;{def.trigger}&rdquo;</p>
+                          <p class="def-answer">{def.answer}</p>
+                        </div>
+                      </>
+                    )}
+                  </>
+                ) : (
+                  <>
+                    <p class="cth-claim">&ldquo;{def.trigger}&rdquo;</p>
+                    <p class="def-answer">{def.answer}</p>
                   </>
                 )}
               </article>
@@ -223,7 +286,7 @@ const chips = [...new Set(cards.flatMap((c) => c.clusters))]
       }
       if (count) {
         count.textContent = shown === total
-          ? `${total} ${total === 1 ? 'insight' : 'insights'}`
+          ? `${total} ${total === 1 ? 'entry' : 'entries'}`
           : `${shown} of ${total}`;
       }
       if (empty) empty.hidden = shown !== 0;
@@ -356,6 +419,15 @@ const chips = [...new Set(cards.flatMap((c) => c.clusters))]
   .cth .cth-def[hidden] { display: none; }
   .cth .def-trigger { font-size: 17px; font-style: italic; color: #c4a46b; margin: 0 0 6px; line-height: 1.5; }
   .cth .def-answer { font-size: 17px; color: #d9c9a8; margin: 0; line-height: 1.65; }
+
+  /* The claim as a card FACE, on a Defense that no insight carries. Same frame,
+     same italic quoted voice as the revealed trigger above — but sized to the
+     insight text it sits in the lane beside, because here it is the opening line
+     rather than a line inside an opened card. */
+  .cth .cth-claim {
+    font-size: 19px; line-height: 1.6; font-style: italic; color: #c4a46b;
+    margin: 0 0 12px;
+  }
 
   .cth .cth-empty { font-size: 17px; font-style: italic; color: #9a8763; margin: 28px 0 0; }
   .cth .cth-empty[hidden] { display: none; }
