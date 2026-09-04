@@ -3,6 +3,7 @@ title: "Kingdom of Lights"
 description: "Yahuah does not dwell in a temple with the light put out."
 deck: "Yahuah does not dwell in a temple with the light put out."
 verse: "Matthew 24:1–25:13"
+commonName: "The Ten Virgins"
 date: 2026-08-27
 author: "Nazaryah"
 category: "Parables"

@@ -74,6 +74,12 @@ const postsCollection = defineCollection({
     draft: z.boolean().default(false),
     references: z.array(referenceSchema).optional(),
     verse: z.string().optional(),
+    // The name a parable is commonly known by ("The Ten Virgins"). It IDENTIFIES
+    // which parable a study covers and never replaces the study's own title —
+    // "Kingdom of Lights" stays the title. Rendered in exactly two places: the
+    // small-caps line under the breadcrumb (PARABLES · THE TEN VIRGINS) and the
+    // card's reference line (MATTHEW 24:1-25:13 · THE TEN VIRGINS).
+    commonName: z.string().optional(),
     subtitle: z.string().optional(),
     // Chapter number when this post is a chapter of a book on the bookshelf.
     chapter: z.number().optional(),

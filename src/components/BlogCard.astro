@@ -19,26 +19,45 @@ const bookCategories = {
 const cat = post.data.category;
 const book = bookCategories[cat];
 const blurb = post.data.subtitle || post.data.deck || post.data.description;
+
+// Reference line: the passage, plus the parable's common name when the study
+// carries one — MATTHEW 24:1-25:13 · THE TEN VIRGINS. The name identifies the
+// parable; the card's title stays the study's own.
+const verseLine = [post.data.verse, post.data.commonName].filter(Boolean).join(' · ');
+
+// The study's video, if it has one — the same `watch` block that draws the watch
+// card on the study page. No block, no second action row.
+const watch = post.data.watch;
 ---
 
-<article class="post-item card group flex flex-col overflow-hidden"
+<article class="post-item card group flex flex-col overflow-hidden h-full"
   data-title={displayTitle.toLowerCase()}
   data-search={`${displayTitle} ${post.data.title} ${blurb || ''} ${cat}`.toLowerCase()}>
   <div class="p-6 flex flex-col flex-1">
     {book && <a href={book.href} class="bookshelf-badge">&#9672; From the Bookshelf</a>}
     <div class:list={["tag mb-3", { "tag-book": book }]} style="color: var(--bronze);">{cat}</div>
-    {post.data.verse && <div class="post-verse">{post.data.verse}</div>}
+    {verseLine && <div class="post-verse">{verseLine}</div>}
     <h3 class="post-title text-sm font-semibold mb-3 leading-snug" style="font-family: var(--font-display);">
       <a href={`/blog/${post.slug}`} style="color: var(--deep-earth);">{displayTitle}</a>
     </h3>
     <p class="post-subtitle text-sm leading-relaxed mb-5 line-clamp-4 flex-1">{blurb}</p>
-    <div class="flex items-center justify-between text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
-      <time datetime={post.data.date.toISOString()}>
-        {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}
-      </time>
-      <a href={`/blog/${post.slug}`} class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--bronze);">
-        Read <span aria-hidden="true">&rarr;</span>
-      </a>
+    {/* The actions, pinned to the foot of the card so they line up across the
+        grid. Watch is a second row beneath Read, and only when there is a video. */}
+    <div class="card-actions">
+      <div class="flex items-center justify-between text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
+        <time datetime={post.data.date.toISOString()}>
+          {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}
+        </time>
+        <a href={`/blog/${post.slug}`} class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--bronze);">
+          Read <span aria-hidden="true">&rarr;</span>
+        </a>
+      </div>
+      {watch && (
+        <a class="card-watch" href={watch.url} target="_blank" rel="noopener noreferrer">
+          <span class="card-watch-cta">Watch on YouTube <span class="card-watch-arrow" aria-hidden="true">&rarr;</span></span>
+          <span class="card-watch-title">{watch.title}</span>
+        </a>
+      )}
     </div>
   </div>
 </article>
@@ -58,6 +77,41 @@ const blurb = post.data.subtitle || post.data.deck || post.data.description;
     color: #9a6b1f; margin: -2px 0 8px; padding-bottom: 7px; border-bottom: 1px solid var(--sand-dark);
   }
   .post-subtitle { font-style: italic; color: var(--ink-faded); }
+
+  /* ── Card foot ────────────────────────────────────────────────────────────
+     margin-top:auto pins the whole action block to the bottom of the card, so
+     the Read row and the Watch row sit at the foot on every card whatever the
+     deck line does above them. The grid stretches the cards to a common height
+     (see .h-full on the article), which is what makes the feet line up. NOTE a
+     video title that wraps to two lines makes its own card's Read row ride one
+     line higher — the alternative is truncating the title, which is exactly what
+     was ruled out. Card bottoms always align; Read aligns across cards whose
+     watch rows are the same height. */
+  .card-actions { margin-top: auto; }
+  .card-watch {
+    display: flex; flex-direction: column; gap: 2px;
+    margin-top: 10px; padding-top: 10px;
+    border-top: 1px solid var(--sand-dark);
+    text-decoration: none;
+  }
+  .card-watch-cta {
+    display: inline-flex; align-items: center; gap: 4px;
+    font-family: 'Cinzel', Georgia, serif; font-size: 9px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: #9a6b1f;
+  }
+  .card-watch-arrow { transition: transform 0.2s ease; }
+  .card-watch:hover .card-watch-arrow { transform: translateX(3px); }
+  .card-watch:hover .card-watch-cta { color: #4a2808; }
+  /* The video's full title. It wraps; it is never clamped. */
+  .card-watch-title {
+    font-family: var(--font-body); font-size: 0.78rem; line-height: 1.4;
+    color: var(--ink-faded); overflow-wrap: break-word;
+  }
+  .card-watch:hover .card-watch-title { color: var(--deep-earth); }
+  @media (prefers-reduced-motion: reduce) {
+    .card-watch-arrow { transition: none; }
+  }
   .line-clamp-4 { display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
   .post-title, .post-title a { overflow-wrap: break-word; word-wrap: break-word; hyphens: auto; }
   h3.post-title { font-size: 1.05rem; line-height: 1.35; }

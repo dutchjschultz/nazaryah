@@ -103,8 +103,11 @@ const companions = (
             </a>
           </div>
         ) : null}
+        {/* Category, plus the parable's common name when the study carries one:
+            PARABLES · THE TEN VIRGINS. The name identifies which parable this
+            study covers; the study's own title is untouched. */}
         <div class="tag mb-4" style="color: var(--bronze);">
-          {category}
+          {post.data.commonName ? `${category} · ${post.data.commonName}` : category}
         </div>
         <h1 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: var(--font-display); color: var(--deep-earth);">
           {title}

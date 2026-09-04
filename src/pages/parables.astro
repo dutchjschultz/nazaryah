@@ -1,5 +1,10 @@
 ---
-// src/pages/parables.astro · 0903 V3
+// src/pages/parables.astro · 0903 V4
+// V4: the ON VIDEO rail now carries only videos whose study is NOT on this page.
+// Each study card shows its own video in the card foot, so a rail entry for a
+// study in the grid would be the same link a second time. Both parable videos
+// belong to studies in the grid, so the rail renders nothing today; it is kept
+// for the case it was built for — a video with no study behind it.
 // V3: an ON VIDEO rail closes the page — every study in this section that has a
 // video, as a row that links out to YouTube. It is DERIVED, not hand-maintained:
 // the source is the study's own `watch` frontmatter block (the same block that
@@ -40,13 +45,21 @@ const studies = (await getCollection('posts', ({ data }) =>
   .filter((post) => post.slug !== FOUNDATION_SLUG)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
-// ON VIDEO — the same collection, filtered to the studies carrying a `watch`
-// block, newest first. The foundation study is deliberately left in (a video on
-// it belongs in this rail); read-throughs are left out, so the parent study's
-// video is listed once.
+// ON VIDEO — only videos with NO study on this page. A study that is here
+// carries its own video on its card now (BlogCard's Watch row), so repeating it
+// in a rail below would be the same link twice. What the rail is for is a video
+// whose study is not on this page at all.
+//
+// Every slug the page shows: the grid, plus the foundation study in the bar.
+const onThisPage = new Set([FOUNDATION_SLUG, ...studies.map((p) => p.slug)]);
 const videos = (await getCollection('posts', ({ data }) =>
   data.draft !== true && data.category === 'Parables' && !data.companionOf && data.watch
-)).sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+))
+  .filter((post) => !onThisPage.has(post.slug))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+// As of this change that is EMPTY, and the section renders nothing: both parable
+// videos belong to studies in the grid. The rail is kept, not deleted, because
+// the shape is still wanted the day a video outruns its study.
 ---
 
 <BaseLayout
