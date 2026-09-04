@@ -3,6 +3,7 @@ title: "The Vineyard and the Husbandmen: The Parable Read Through"
 description: "Matthew 21:33–46 unbroken, with each image carrying the meaning the Hebrew Scriptures had already given it."
 deck: "Matthew 21:33–46 unbroken, with each image carrying the meaning the Hebrew Scriptures had already given it."
 verse: "Matthew 21:33–46"
+commonName: "The Wicked Husbandmen"
 date: 2026-09-01
 author: "Nazaryah"
 category: "Parables"

@@ -32,7 +32,7 @@ const watch = post.data.watch;
 
 <article class="post-item card group flex flex-col overflow-hidden h-full"
   data-title={displayTitle.toLowerCase()}
-  data-search={`${displayTitle} ${post.data.title} ${blurb || ''} ${cat}`.toLowerCase()}>
+  data-search={`${displayTitle} ${post.data.title} ${blurb || ''} ${cat} ${post.data.commonName || ''}`.toLowerCase()}>
   <div class="p-6 flex flex-col flex-1">
     {book && <a href={book.href} class="bookshelf-badge">&#9672; From the Bookshelf</a>}
     <div class:list={["tag mb-3", { "tag-book": book }]} style="color: var(--bronze);">{cat}</div>
@@ -41,9 +41,18 @@ const watch = post.data.watch;
       <a href={`/blog/${post.slug}`} style="color: var(--deep-earth);">{displayTitle}</a>
     </h3>
     <p class="post-subtitle text-sm leading-relaxed mb-5 line-clamp-4 flex-1">{blurb}</p>
-    {/* The actions, pinned to the foot of the card so they line up across the
-        grid. Watch is a second row beneath Read, and only when there is a video. */}
+    {/* The actions, pinned to the foot of the card. READ IS LAST, so it sits on
+        the bottom line of every card in the grid. Watch goes above it with its
+        CTA line closest to Read, so that line holds too; a long video title
+        wraps UPWARD into the slack above, which is the only part of the card
+        that has any. Nothing is truncated. */}
     <div class="card-actions">
+      {watch && (
+        <a class="card-watch" href={watch.url} target="_blank" rel="noopener noreferrer">
+          <span class="card-watch-title">{watch.title}</span>
+          <span class="card-watch-cta">Watch on YouTube <span class="card-watch-arrow" aria-hidden="true">&rarr;</span></span>
+        </a>
+      )}
       <div class="flex items-center justify-between text-xs pt-4 border-t border-[var(--sand-dark)]" style="color: var(--ink-faded); font-family: var(--font-body);">
         <time datetime={post.data.date.toISOString()}>
           {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}
@@ -52,12 +61,6 @@ const watch = post.data.watch;
           Read <span aria-hidden="true">&rarr;</span>
         </a>
       </div>
-      {watch && (
-        <a class="card-watch" href={watch.url} target="_blank" rel="noopener noreferrer">
-          <span class="card-watch-cta">Watch on YouTube <span class="card-watch-arrow" aria-hidden="true">&rarr;</span></span>
-          <span class="card-watch-title">{watch.title}</span>
-        </a>
-      )}
     </div>
   </div>
 </article>
@@ -79,23 +82,22 @@ const watch = post.data.watch;
   .post-subtitle { font-style: italic; color: var(--ink-faded); }
 
   /* ── Card foot ────────────────────────────────────────────────────────────
-     margin-top:auto pins the whole action block to the bottom of the card, so
-     the Read row and the Watch row sit at the foot on every card whatever the
-     deck line does above them. The grid stretches the cards to a common height
-     (see .h-full on the article), which is what makes the feet line up. NOTE a
-     video title that wraps to two lines makes its own card's Read row ride one
-     line higher — the alternative is truncating the title, which is exactly what
-     was ruled out. Card bottoms always align; Read aligns across cards whose
-     watch rows are the same height. */
+     margin-top:auto pins the action block to the bottom of the card, and the
+     grid stretches the cards to a common height (see .h-full on the article), so
+     the block's bottom edge is the same line on every card. Read is the last row
+     in the block, which puts it on that line everywhere — with or without a
+     video. The Watch CTA is the row directly above Read, so it lines up too, and
+     a video title that wraps to two lines grows upward into the card's slack
+     instead of pushing anything down. Nothing is clamped. */
   .card-actions { margin-top: auto; }
   .card-watch {
     display: flex; flex-direction: column; gap: 2px;
-    margin-top: 10px; padding-top: 10px;
+    margin-top: 14px; padding-top: 10px;
     border-top: 1px solid var(--sand-dark);
     text-decoration: none;
   }
   .card-watch-cta {
-    display: inline-flex; align-items: center; gap: 4px;
+    display: inline-flex; align-items: center; gap: 4px; margin-top: 2px;
     font-family: 'Cinzel', Georgia, serif; font-size: 9px; font-weight: 600;
     letter-spacing: 2px; text-transform: uppercase;
     color: #9a6b1f;

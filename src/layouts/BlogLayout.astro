@@ -105,8 +105,12 @@ const companions = (
         ) : null}
         {/* Category, plus the parable's common name when the study carries one:
             PARABLES · THE TEN VIRGINS. The name identifies which parable this
-            study covers; the study's own title is untouched. */}
-        <div class="tag mb-4" style="color: var(--bronze);">
+            study covers; the study's own title is untouched.
+            Wears the card reference line's treatment (10px Cinzel, uppercase,
+            2px tracking) under its own class rather than by defining `.tag` —
+            that class is also on the tag chips further down this page and on the
+            card's category line, and neither of those was asked to change. */}
+        <div class="post-kicker mb-4">
           {post.data.commonName ? `${category} · ${post.data.commonName}` : category}
         </div>
         <h1 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: var(--font-display); color: var(--deep-earth);">
@@ -241,6 +245,19 @@ const companions = (
 </BaseLayout>
 
 <style>
+  /* The category / common-name line under the breadcrumb. Same treatment as the
+     card's reference line (BlogCard's .post-verse): 10px Cinzel, uppercase, 2px
+     tracking.
+     COLOUR: this line asked for var(--bronze) before and still does — but that
+     token is not defined anywhere in the site, so the request silently fell
+     through to inherited body ink. The fallback is .post-verse's own colour, so
+     the line matches the card today and follows --bronze the day it is defined. */
+  .post-kicker {
+    font-family: 'Cinzel', Georgia, serif; font-size: 10px; font-weight: 600;
+    letter-spacing: 2px; text-transform: uppercase;
+    color: var(--bronze, #9a6b1f);
+  }
+
   .trinity-home-tag {
     display: inline-block;
     font-family: 'Cinzel', serif;

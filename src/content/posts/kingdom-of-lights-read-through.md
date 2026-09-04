@@ -3,6 +3,7 @@ title: "Kingdom of Lights: The Parable Read Through"
 description: "The parable start to finish, with every symbol carrying the meaning the Hebrew Scriptures already gave it."
 deck: "The parable start to finish, with every symbol carrying the meaning the Hebrew Scriptures already gave it."
 verse: "Matthew 25:1–13"
+commonName: "The Ten Virgins"
 date: 2026-08-27
 author: "Nazaryah"
 category: "Parables"
