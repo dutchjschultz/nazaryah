@@ -1,5 +1,11 @@
 ---
-// src/pages/parables.astro · 0903 V4
+// src/pages/parables.astro · 0906 V5
+// V5: a bar under the grid opens /parables/timeline. It is the SAME bar as the
+// Foundation Bar above — same parchment, same gold spine, same arrow-only hover
+// — used a second time rather than a third shape being invented for it. The
+// only new CSS is the modifier that gives it its own spacing. Placement is the
+// argument: the grid says what is written, and the bar under it says what the
+// whole list looks like and how much of it is still to come.
 // V4: the ON VIDEO rail now carries only videos whose study is NOT on this page.
 // Each study card shows its own video in the card foot, so a rail entry for a
 // study in the grid would be the same link a second time. Both parable videos
@@ -33,6 +39,9 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import BlogCard from '../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
+// The timeline's own count, so the bar below never has to be edited when a
+// parable is added to the data file.
+import { totalCount } from '../data/parables.js';
 
 // THE FOUNDATION — one slug, used twice: excluded from the grid, and the target
 // of the Foundation Bar. Promoting a different study means changing it here only.
@@ -122,6 +131,18 @@ const videos = (await getCollection('posts', ({ data }) =>
           </div>
         </section>
       )}
+
+      <!-- THE TIMELINE — the same bar as the Foundation Bar above, used a second
+           time. It sits under the grid on purpose: the grid is what is written,
+           and this is the whole field it was cut from. -->
+      <a class="fbar fbar-timeline" href="/parables/timeline">
+        <span class="fbar-eyebrow">The Whole List</span>
+        <span class="fbar-row">
+          <span class="fbar-title">The Parable Timeline</span>
+          <span class="fbar-deck">All {totalCount}, in the order each gospel tells them, with the studies marked.</span>
+          <span class="fbar-cta">Open the timeline <span class="fbar-arrow" aria-hidden="true">&rarr;</span></span>
+        </span>
+      </a>
 
       <!-- ON VIDEO — one row per study carrying a `watch` block. Each row is a
            single anchor out to YouTube; nothing nests inside it. -->
@@ -256,6 +277,14 @@ const videos = (await getCollection('posts', ({ data }) =>
   @media (prefers-reduced-motion: reduce) {
     .fbar-arrow { transition: none; }
   }
+
+  /* THE TIMELINE BAR — the Foundation Bar's modifier, not a second bar. Only
+     two things differ: it closes the grid rather than opening it, so the top
+     margin matches the gap the ON VIDEO rail keeps below it; and the title
+     steps down one size, so the Foundation stays the loudest thing on the page.
+     Everything else — parchment, spine, gold, hover — is inherited. */
+  .fbar-timeline { margin: 4rem 0 0; }
+  .fbar-timeline .fbar-title { font-size: 1.5rem; }
 
   .studies { margin-top: 4rem; }
   .studies-head {
