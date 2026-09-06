@@ -1,5 +1,10 @@
 ---
-// src/pages/parables/timeline.astro · 0906 V2
+// src/pages/parables/timeline.astro · 0906 V3
+// V3: carries a real .pt-card-deck element, and backfill-social-images lists
+// `parables` under that class. Without both halves the social card falls back
+// to the long meta description, which is the merge the card-deck rule exists to
+// prevent. The deck below is written for the CARD alone; the visible deck and
+// the meta description are untouched.
 // V2: placed on the site and dressed in the site's own clothes. The supplied
 // build was navy-on-white Georgia with no dark mode, which would have landed
 // on a parchment site carrying a theme toggle. Every colour is now the same
@@ -32,6 +37,11 @@ import ParableTimeline from '../../components/ParableTimeline.jsx';
         or search by name or reference. A parable told in more than one gospel
         carries the same number in every one of them.
       </p>
+      <!-- The social card's deck, and nothing else. Clipped rather than
+           display:none so the generator, which reads the rendered page, still
+           finds it. Without it the card falls back to the long meta description
+           — the merge the card-deck rule exists to prevent. -->
+      <p class="pt-card-deck">Forty-two parables, in the order each gospel tells them.</p>
     </header>
 
     <div data-pagefind-ignore>
@@ -100,6 +110,12 @@ import ParableTimeline from '../../components/ParableTimeline.jsx';
     text-wrap: pretty;
   }
   .dark .pt-deck { color: #c9b489; }
+  /* The social card's deck. Clipped, not display:none, so the generator still
+     reads it. Never shown on screen. */
+  .pt-card-deck {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
 
   /* ── GOSPEL TABS ─────────────────────────────────────────────────────────
      Parchment buttons on the page ground; the chosen gospel fills with the

@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0831 V12
+backfill-social-images  0906 V13
+V13: `parables` mapped to .pt-card-deck for the new /parables/timeline page. The
+kicker is untouched — the timeline falls through kicker_for() to STUDY, the
+default, so no new vocabulary was invented. The /parables landing is unaffected:
+it carries no .pt-card-deck and keeps its og:description fallback and its card.
 V12: added --only <rel> (repeatable) to remint ONE page. Without it the choices were
 --missing-only (skips any page that already has a card) or a full run, and a full run
 auto-increments every card to vN+1 and deletes the old file — churning ~650 crawled
@@ -108,6 +112,9 @@ DECK_CLASSES = {
     "trinity": ["ta-preview", "tr-sub"],
     "watchmans-desk": ["wl-deck", "wd-sub"],
     "doctrines": ["doctrines-subtitle"],
+    # The timeline carries a clipped .pt-card-deck; the /parables landing has no
+    # such element and keeps falling back to og:description, as it always has.
+    "parables": ["pt-card-deck"],
     "christian-or-demonic": ["cod-sub"],
     "torah": ["to-sub", "thesis"],
     # Standing reference pages carry a dedicated (often sr-only) deck element so
