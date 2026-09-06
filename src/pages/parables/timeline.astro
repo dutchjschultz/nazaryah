@@ -1,0 +1,369 @@
+---
+// src/pages/parables/timeline.astro · 0906 V2
+// V2: placed on the site and dressed in the site's own clothes. The supplied
+// build was navy-on-white Georgia with no dark mode, which would have landed
+// on a parchment site carrying a theme toggle. Every colour is now the same
+// parchment and gold the section landing uses, declared twice — light first,
+// then again under .dark — and the done-node card, the gold spine and the
+// arrow-only hover are lifted from the Foundation Bar on /parables so the two
+// pages read as one section.
+//
+// The timeline itself is a React island. Astro's scoped styles never reach a
+// framework component's output, so the whole stylesheet below is `is:global`
+// and every selector carries the page-unique `pt-` prefix to keep it from
+// leaking onto anything else.
+//
+// Pagefind indexes the prose only: `data-pagefind-body` on the main, and
+// `data-pagefind-ignore` on the island — forty-two parable names in the index
+// would bury every real study under a list of references.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ParableTimeline from '../../components/ParableTimeline.jsx';
+---
+
+<BaseLayout
+  title="The Parables of Yahushua — Timeline | Nazaryah"
+  description="Forty-two parables in the order each gospel tells them, with the studies that are written marked. Choose a gospel, or search by name or reference. John records no parables, and the reason is on the page."
+>
+  <main class="pt-page" data-pagefind-body>
+    <header class="pt-hero">
+      <h1>The Parables of Yahushua</h1>
+      <p class="pt-deck">
+        Forty-two parables, in the order each gospel tells them. Choose a gospel,
+        or search by name or reference. A parable told in more than one gospel
+        carries the same number in every one of them.
+      </p>
+    </header>
+
+    <div data-pagefind-ignore>
+      <ParableTimeline client:load />
+    </div>
+
+    <section class="pt-note">
+      <h2>Why John is not here</h2>
+      <p>
+        The gospel of John records no parables. Matthew, Mark, and Luke use the
+        word parabole about fifty times between them. John never uses it once.
+        What John uses is a different word, paroimia, and only three times — at
+        the shepherd and the door in John 10:6, and again in John 16:25 and
+        16:29. A paroimia is a figure of speech, a saying set beside the plain
+        thing it stands for.
+      </p>
+      <p>
+        The shape of the teaching differs as well. A parable is a story with its
+        own people and its own events, and none of them are the speaker. The
+        meaning is withheld on purpose. John contains no such stories. The vine,
+        the door, the shepherd, the bread, the light — these are single images,
+        and Yahushua names Himself as the image in the same breath He speaks it.
+        Nothing is withheld.
+      </p>
+      <p>
+        Those images belong to the Hebrew Scriptures that produced them. The
+        shepherd of John 10 belongs to Ezekiel 34. The vine of John 15 belongs
+        to Isaiah 5 and Psalm 80. Read there, they are not a claim to be the
+        Father. Ezekiel's one shepherd is the servant set over the flock by
+        Yahuah, and the vine of John 15 has a husbandman standing over it who is
+        plainly another.
+      </p>
+    </section>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  /* COLOUR NOTE: every colour is declared twice — light first, then again under
+     .dark. Site tokens without a dark value would silently win. `is:global` is
+     required because the timeline is a React island; the `pt-` prefix is what
+     keeps these rules from reaching anything else on the site. */
+  .pt-page {
+    max-width: 48rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4.5rem;
+  }
+
+  .pt-hero { margin-bottom: 2.5rem; }
+  .pt-page h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.6vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 0.9rem;
+    color: #2b1d11;
+    text-wrap: pretty;
+  }
+  .dark .pt-page h1 { color: #f0e0bf; }
+  .pt-deck {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.1vw, 1.12rem);
+    line-height: 1.6;
+    margin: 0;
+    color: #6b5940;
+    text-wrap: pretty;
+  }
+  .dark .pt-deck { color: #c9b489; }
+
+  /* ── GOSPEL TABS ─────────────────────────────────────────────────────────
+     Parchment buttons on the page ground; the chosen gospel fills with the
+     same gold that draws every spine on this page. */
+  .pt-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .pt-tab {
+    flex: 1;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.6rem 0;
+    border: 1px solid rgba(139, 111, 62, 0.45);
+    background: var(--color-surface);
+    color: #6b5940;
+    cursor: pointer;
+  }
+  .pt-tab:hover { border-color: #8b6f3e; }
+  .dark .pt-tab {
+    background: var(--color-dark-surface);
+    border-color: rgba(186, 117, 23, 0.35);
+    color: #c9b489;
+  }
+  .pt-tab-on,
+  .pt-tab-on:hover {
+    background: #8b6f3e;
+    border-color: #8b6f3e;
+    color: #f5e8c8;
+  }
+  .dark .pt-tab-on,
+  .dark .pt-tab-on:hover {
+    background: #8a6028;
+    border-color: #8a6028;
+    color: #f0e0bf;
+  }
+
+  /* ── SEARCH ──────────────────────────────────────────────────────────────*/
+  .pt-searchrow {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+  }
+  .pt-search {
+    flex: 1;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgba(139, 111, 62, 0.45);
+    background: var(--color-surface);
+    color: #2b2317;
+  }
+  .pt-search::placeholder { color: #9c8560; }
+  .pt-search:focus {
+    outline: none;
+    border-color: #8b6f3e;
+  }
+  .dark .pt-search {
+    background: var(--color-dark-surface);
+    border-color: rgba(186, 117, 23, 0.35);
+    color: #ded0b4;
+  }
+  .dark .pt-search::placeholder { color: #8a7857; }
+  .dark .pt-search:focus { border-color: #ba7517; }
+  .pt-clear {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0 1rem;
+    border: 1px solid rgba(139, 111, 62, 0.45);
+    background: var(--color-surface);
+    color: #8b6914;
+    cursor: pointer;
+  }
+  .pt-clear:hover { border-color: #8b6f3e; }
+  .dark .pt-clear {
+    background: var(--color-dark-surface);
+    border-color: rgba(186, 117, 23, 0.35);
+    color: #ba7517;
+  }
+
+  .pt-count {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 1.75rem;
+    color: #8b6914;
+  }
+  .dark .pt-count { color: #ba7517; }
+  .pt-empty {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #6b5940;
+  }
+  .dark .pt-empty { color: #c9b489; }
+
+  /* ── THE TIMELINE ────────────────────────────────────────────────────────
+     One rule down the left, a numbered node on it for every parable. An
+     unwritten parable is the bare node; a written one wears the card. */
+  .pt-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 2.5rem;
+    position: relative;
+  }
+  .pt-list::before {
+    content: "";
+    position: absolute;
+    left: 0.85rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: #c8a878;
+  }
+  .dark .pt-list::before { background: #5a4526; }
+
+  .pt-node {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .pt-num {
+    position: absolute;
+    left: -2.5rem;
+    top: 0;
+    width: 1.7rem;
+    height: 1.7rem;
+    line-height: 1.65rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #c8a878;
+    background: var(--color-background);
+    color: #9c8560;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+  }
+  .dark .pt-num {
+    border-color: #5a4526;
+    background: var(--color-dark-surface);
+    color: #8a7857;
+  }
+  .pt-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-variant: small-caps;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: #6b5940;
+  }
+  .dark .pt-name { color: #c9b489; }
+  .pt-ref {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    margin-top: 0.15rem;
+    color: #8a7550;
+  }
+  .dark .pt-ref { color: #a8967a; }
+  .pt-chips {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    margin-top: 0.45rem;
+  }
+  .pt-chip {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    padding: 0.2rem 0.4rem;
+    background: #8b6f3e;
+    color: #f5e8c8;
+  }
+  .dark .pt-chip { background: #8a6028; color: #f0e0bf; }
+  .pt-alone {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    margin-left: 0.3rem;
+    color: #9c8560;
+  }
+  .dark .pt-alone { color: #8a7857; }
+
+  /* A written study — the Foundation Bar's language: deeper parchment, a gold
+     spine, and an arrow that moves on hover while nothing else does. */
+  .pt-done .pt-card {
+    display: block;
+    padding: 0.9rem 1.15rem;
+    margin-left: -0.35rem;
+    background: var(--color-surface-elevated);
+    border: 1px solid rgba(139, 111, 62, 0.45);
+    border-left: 3px solid #8b6f3e;
+    text-decoration: none;
+  }
+  .dark .pt-done .pt-card { background: var(--color-dark-surface-elevated); }
+  .pt-done .pt-num {
+    top: 0.75rem;
+    left: -2.15rem;
+    background: #8b6f3e;
+    border-color: #8b6f3e;
+    color: #f5e8c8;
+  }
+  .dark .pt-done .pt-num {
+    background: #8a6028;
+    border-color: #8a6028;
+    color: #f0e0bf;
+  }
+  .pt-done .pt-name {
+    font-size: 1.5rem;
+    color: #2b1d11;
+  }
+  .dark .pt-done .pt-name { color: #f0e0bf; }
+  .pt-done .pt-ref { color: #6b5940; }
+  .dark .pt-done .pt-ref { color: #c9b489; }
+  .pt-link {
+    margin-top: 0.6rem;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-variant: small-caps;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: #8b6914;
+  }
+  .dark .pt-link { color: #ba7517; }
+  .pt-arrow { display: inline-block; transition: transform 200ms ease; }
+  .pt-done .pt-card:hover .pt-arrow { transform: translateX(4px); }
+  @media (prefers-reduced-motion: reduce) {
+    .pt-arrow { transition: none; }
+  }
+
+  /* ── WHY JOHN IS NOT HERE ────────────────────────────────────────────────*/
+  .pt-note {
+    margin-top: 4rem;
+    padding-top: 2.2rem;
+    border-top: 1px solid #d8cfb8;
+  }
+  .dark .pt-note { border-top-color: #3a2510; }
+  .pt-note h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant: small-caps;
+    letter-spacing: 0.03em;
+    margin: 0 0 1rem;
+    color: #2b1d11;
+  }
+  .dark .pt-note h2 { color: #f0e0bf; }
+  .pt-note p {
+    font-family: var(--font-body);
+    font-size: 1.03rem;
+    line-height: 1.78;
+    margin: 0 0 1.4rem;
+    color: #2b2317;
+    text-wrap: pretty;
+  }
+  .dark .pt-note p { color: #ded0b4; }
+
+  @media (max-width: 620px) {
+    .pt-page { padding: 2.2rem 1.1rem 3.2rem; }
+    .pt-tab { font-size: 0.7rem; letter-spacing: 0.05em; }
+    .pt-list { padding-left: 2.25rem; }
+    .pt-num { left: -2.25rem; }
+    .pt-done .pt-num { left: -1.9rem; }
+    .pt-done .pt-name { font-size: 1.3rem; }
+  }
+</style>
