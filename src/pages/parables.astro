@@ -1,5 +1,22 @@
 ---
-// src/pages/parables.astro · 0906 V5
+// src/pages/parables.astro · 0907 V6
+// V6: the sayings page comes up out of the basement. Its only way in was a note
+// near the foot of the timeline, which is itself behind a link — two clicks and
+// a scroll from here. It now sits directly under the Foundation Bar, and the
+// timeline bar has been moved up beside it from below the grid, so the two
+// companion pages read as a pair under the foundation.
+//
+// No new markup and no new CSS rule. Both are the same <a class="fbar"> block
+// with the lower-emphasis modifier that already existed for the timeline bar;
+// the modifier was renamed .fbar-timeline -> .fbar-companion, since it now
+// carries two, and its margin was retuned for a stacked pair rather than a
+// single bar closing the page. The Foundation's own bottom margin came down to
+// match, which is what tucks the pair under it. Dark Sayings keeps the full
+// title size and stays the loudest thing on the page.
+//
+// The note and link on the timeline page STAY. That block explains why six
+// passages are missing from a list the reader is actively counting, and it
+// belongs where the counting happens. Two entry points is correct.
 // V5: a bar under the grid opens /parables/timeline. It is the SAME bar as the
 // Foundation Bar above — same parchment, same gold spine, same arrow-only hover
 // — used a second time rather than a third shape being invented for it. The
@@ -120,6 +137,29 @@ const videos = (await getCollection('posts', ({ data }) =>
         </span>
       </a>
 
+      <!-- THE TWO COMPANION BARS — the same bar as the Foundation above, wearing
+           the lower-emphasis modifier, and sitting tucked under it as a pair.
+           Neither is a second headline: Dark Sayings keeps the full title size
+           and reads first. The timeline bar used to sit alone below the grid;
+           it is up here now so the two companion pages read together. -->
+      <a class="fbar fbar-companion" href="/parables/sayings">
+        <span class="fbar-eyebrow">The Sayings</span>
+        <span class="fbar-row">
+          <span class="fbar-title">Sayings, Not Parables</span>
+          <span class="fbar-deck">Six passages counted among the parables that are not parables, and what each one actually says.</span>
+          <span class="fbar-cta">Read <span class="fbar-arrow" aria-hidden="true">&rarr;</span></span>
+        </span>
+      </a>
+
+      <a class="fbar fbar-companion" href="/parables/timeline">
+        <span class="fbar-eyebrow">The Whole List</span>
+        <span class="fbar-row">
+          <span class="fbar-title">The Parable Timeline</span>
+          <span class="fbar-deck">All {totalCount}, in the order each gospel tells them, with the studies marked.</span>
+          <span class="fbar-cta">Open the timeline <span class="fbar-arrow" aria-hidden="true">&rarr;</span></span>
+        </span>
+      </a>
+
       {studies.length > 0 && (
         <section class="studies" aria-label="Studies in The Parables">
           <div class="studies-head">
@@ -131,18 +171,6 @@ const videos = (await getCollection('posts', ({ data }) =>
           </div>
         </section>
       )}
-
-      <!-- THE TIMELINE — the same bar as the Foundation Bar above, used a second
-           time. It sits under the grid on purpose: the grid is what is written,
-           and this is the whole field it was cut from. -->
-      <a class="fbar fbar-timeline" href="/parables/timeline">
-        <span class="fbar-eyebrow">The Whole List</span>
-        <span class="fbar-row">
-          <span class="fbar-title">The Parable Timeline</span>
-          <span class="fbar-deck">All {totalCount}, in the order each gospel tells them, with the studies marked.</span>
-          <span class="fbar-cta">Open the timeline <span class="fbar-arrow" aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
 
       <!-- ON VIDEO — one row per study carrying a `watch` block. Each row is a
            single anchor out to YouTube; nothing nests inside it. -->
@@ -232,7 +260,7 @@ const videos = (await getCollection('posts', ({ data }) =>
      parchment and the ink are declared twice. */
   .fbar {
     display: block;
-    margin: 3rem 0 4rem;
+    margin: 3rem 0 1rem;
     padding: 1.5rem 2rem;
     background: var(--color-surface-elevated);
     border: 1px solid rgba(139, 111, 62, 0.45);
@@ -278,13 +306,15 @@ const videos = (await getCollection('posts', ({ data }) =>
     .fbar-arrow { transition: none; }
   }
 
-  /* THE TIMELINE BAR — the Foundation Bar's modifier, not a second bar. Only
-     two things differ: it closes the grid rather than opening it, so the top
-     margin matches the gap the ON VIDEO rail keeps below it; and the title
-     steps down one size, so the Foundation stays the loudest thing on the page.
-     Everything else — parchment, spine, gold, hover — is inherited. */
-  .fbar-timeline { margin: 4rem 0 0; }
-  .fbar-timeline .fbar-title { font-size: 1.5rem; }
+  /* THE COMPANION BARS — the Foundation Bar's lower-emphasis modifier, not a
+     second bar. Was .fbar-timeline while the timeline was the only one wearing
+     it; renamed, not rewritten, now that the sayings bar wears it too. Still
+     the same two declarations and no rule of its own: the title steps down one
+     size so the Foundation stays the loudest thing on the page, and the pair
+     stacks tight beneath it. Everything else — parchment, spine, gold, hover,
+     and the whole mobile block, which targets .fbar — is inherited. */
+  .fbar-companion { margin: 0 0 1rem; }
+  .fbar-companion .fbar-title { font-size: 1.5rem; }
 
   .studies { margin-top: 4rem; }
   .studies-head {
