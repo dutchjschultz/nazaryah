@@ -1,4 +1,8 @@
-// blog-groups 0901 V4.js
+// blog-groups 0907 V5.js
+// V5: Who Is My Neighbour joins THE PARABLES (3 → 4). Its read-through,
+// who-is-my-neighbour-read-through, stays out for the same reason the other two
+// read-throughs do — it carries companionOf. Map total 86 → 87. The batch file
+// for this study said nothing about this file either; it is still required.
 // V4: They Wanted the House Without the Owner joins THE PARABLES (2 → 3). Its
 // read-through, house-without-the-owner-read-through, stays out for the same
 // reason kingdom-of-lights-read-through does — it carries companionOf, so it is
@@ -128,7 +132,7 @@ export const POST_GROUP = {
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',
 
-  // ── The Parables (3) — the parables in the text ──
+  // ── The Parables (4) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
   // Foundation Bar on /parables and is pulled from that grid there; the blog is
   // a different surface — the chronological feed — so it carries a card here.
@@ -137,6 +141,7 @@ export const POST_GROUP = {
   'kingdom-of-lights': 'the-parables',
   'dark-sayings-of-old': 'the-parables',
   'house-without-the-owner': 'the-parables',
+  'who-is-my-neighbour': 'the-parables',
 
   // ── The Side Door (2) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable

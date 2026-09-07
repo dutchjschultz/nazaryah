@@ -1,4 +1,7 @@
-// parables 0906 V2.js
+// parables 0907 V3.js
+// V3: id 28, the good Samaritan, goes live — Who Is My Neighbour. The node
+// turns solid and the counter climbs to 3 of 42 on its own. Id 25, the talents,
+// is still the one written study with no page on the site.
 // V2: placed on the site. Live paths inserted for the two parable studies that
 // are actually published - id 8 (the wicked husbandmen) and id 24 (the ten
 // virgins). Ids 25 and 28 stay null: no study for the talents or the good
@@ -274,8 +277,8 @@ export const parables = [
     refs: [
       { gospel: "Luke", ref: "Luke 10:25-37", ch: 10, v: 25 }
     ],
-    // Who Is My Neighbour - written, not published. No page yet - leave null.
-    study: null
+    // Who Is My Neighbour - live.
+    study: "/blog/who-is-my-neighbour"
   },
   {
     id: 29,
