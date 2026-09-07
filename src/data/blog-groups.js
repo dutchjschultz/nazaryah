@@ -1,4 +1,9 @@
-// blog-groups 0907 V5.js
+// blog-groups 0907 V6.js
+// V6: The Talents joins THE PARABLES (4 → 5). Its batch filed the study under
+// "Buried in Plain Sight" in both frontmatter blocks while its own prose called
+// it a Parables study and "study five of forty-two"; Dutch settled it as
+// Parables, which is what puts it on /parables and in this group. Its
+// read-through stays out, carrying companionOf. Map total 87 → 88.
 // V5: Who Is My Neighbour joins THE PARABLES (3 → 4). Its read-through,
 // who-is-my-neighbour-read-through, stays out for the same reason the other two
 // read-throughs do — it carries companionOf. Map total 86 → 87. The batch file
@@ -132,7 +137,7 @@ export const POST_GROUP = {
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',
 
-  // ── The Parables (4) — the parables in the text ──
+  // ── The Parables (5) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
   // Foundation Bar on /parables and is pulled from that grid there; the blog is
   // a different surface — the chronological feed — so it carries a card here.
@@ -142,6 +147,7 @@ export const POST_GROUP = {
   'dark-sayings-of-old': 'the-parables',
   'house-without-the-owner': 'the-parables',
   'who-is-my-neighbour': 'the-parables',
+  'the-talents': 'the-parables',
 
   // ── The Side Door (2) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable

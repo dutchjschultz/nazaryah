@@ -1,4 +1,8 @@
-// parables 0907 V3.js
+// parables 0907 V4.js
+// V4: id 25, the talents, goes live. That closes the four studies the original
+// handover called written — every one of them now has a page, and the counter
+// reads 4 of 42. From here a solid node means a study that exists, with no
+// written-but-unpublished backlog behind the file.
 // V3: id 28, the good Samaritan, goes live — Who Is My Neighbour. The node
 // turns solid and the counter climbs to 3 of 42 on its own. Id 25, the talents,
 // is still the one written study with no page on the site.
@@ -252,8 +256,8 @@ export const parables = [
     refs: [
       { gospel: "Matthew", ref: "Matthew 25:14-30", ch: 25, v: 14 }
     ],
-    // Study written, not published. No page on the site yet - leave null.
-    study: null
+    // The Talents - live.
+    study: "/blog/the-talents"
   },
   {
     id: 26,
