@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0906 V13
+backfill-social-images  0907 V14
+V14: .sy-card-deck added alongside .pt-card-deck under `parables`, for the new
+/parables/sayings page. Same reason as V13 — without it that page's card falls
+back to its long meta description. Kicker is untouched: sayings falls through
+kicker_for() to STUDY, the default.
 V13: `parables` mapped to .pt-card-deck for the new /parables/timeline page. The
 kicker is untouched — the timeline falls through kicker_for() to STUDY, the
 default, so no new vocabulary was invented. The /parables landing is unaffected:
@@ -112,9 +116,10 @@ DECK_CLASSES = {
     "trinity": ["ta-preview", "tr-sub"],
     "watchmans-desk": ["wl-deck", "wd-sub"],
     "doctrines": ["doctrines-subtitle"],
-    # The timeline carries a clipped .pt-card-deck; the /parables landing has no
-    # such element and keeps falling back to og:description, as it always has.
-    "parables": ["pt-card-deck"],
+    # The timeline carries a clipped .pt-card-deck and the sayings page a
+    # .sy-card-deck; first present wins. The /parables landing has neither and
+    # keeps falling back to og:description, as it always has.
+    "parables": ["pt-card-deck", "sy-card-deck"],
     "christian-or-demonic": ["cod-sub"],
     "torah": ["to-sub", "thesis"],
     # Standing reference pages carry a dedicated (often sr-only) deck element so

@@ -1,0 +1,205 @@
+---
+// src/pages/parables/sayings.astro · 0907 V2
+// V2: placed on the site and dressed in the site's own clothes, exactly as the
+// timeline page was — the supplied build was navy-on-white Georgia with no dark
+// mode, and every colour here is now declared twice, light then .dark.
+//
+// TWO DIFFERENCES FROM THE TIMELINE PAGE, both deliberate:
+//
+// Styles here are SCOPED, not `is:global`. The timeline needs is:global because
+// its list is a React island and Astro's scoped styles never reach a framework
+// component's output. This page has no island — every element below is in this
+// template — so scoped is correct and keeps the `sy-` rules from leaking.
+//
+// It carries `.sy-card-deck`, and backfill-social-images maps `parables` to it
+// alongside the timeline's `.pt-card-deck`. Without that the social card falls
+// back to the long meta description.
+//
+// All prose lives in src/data/sayings.js. This file is structure and styling
+// only; editing a paragraph means editing the data file and nothing else.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { PAGE, sayings } from '../../data/sayings.js';
+---
+
+<BaseLayout
+  title={`${PAGE.title} | Nazaryah`}
+  description="Six passages commonly counted among the parables — the lamp under a bushel, the mote and the beam, treasures new and old, the blind leading the blind, the guests who cannot repay, and the tower builder. Each is instruction with an image attached, and each explains itself where it stands."
+>
+  <main class="sy-page" data-pagefind-body>
+    <header class="sy-hero">
+      <h1>{PAGE.title}</h1>
+      <p class="sy-deck">{PAGE.deck}</p>
+      <!-- The social card's deck, and nothing else. Clipped rather than
+           display:none so the generator, which reads the rendered page, still
+           finds it. -->
+      <p class="sy-card-deck">Six passages counted among the parables, and why they are not.</p>
+    </header>
+
+    <section class="sy-intro">
+      {PAGE.intro.map((p) => <p>{p}</p>)}
+    </section>
+
+    <ol class="sy-list">
+      {sayings.map((s) => (
+        <li class="sy-item">
+          <h2>{s.name}</h2>
+          <p class="sy-ref">
+            {s.ref}
+            {s.also.length > 0 && <span class="sy-also"> · also {s.also.join(' · ')}</span>}
+          </p>
+          <p class="sy-taught">{s.taught}</p>
+          {s.body.map((p) => <p class="sy-body">{p}</p>)}
+        </li>
+      ))}
+    </ol>
+
+    <p class="sy-back">
+      <a href="/parables/timeline">Back to the parable timeline <span class="sy-arrow" aria-hidden="true">&rarr;</span></a>
+    </p>
+  </main>
+</BaseLayout>
+
+<style>
+  /* COLOUR NOTE: every colour is declared twice — light first, then again under
+     :global(.dark). Site tokens without a dark value would silently win. */
+  .sy-page {
+    max-width: 46rem;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4.5rem;
+  }
+
+  .sy-hero { margin-bottom: 2.5rem; }
+  .sy-page h1 {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4.6vw, 2.8rem);
+    font-weight: 700;
+    line-height: 1.15;
+    margin: 0 0 0.9rem;
+    color: #2b1d11;
+    text-wrap: pretty;
+  }
+  :global(.dark) .sy-page h1 { color: #f0e0bf; }
+  .sy-deck {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1rem, 2.1vw, 1.12rem);
+    line-height: 1.6;
+    margin: 0;
+    color: #6b5940;
+    text-wrap: pretty;
+  }
+  :global(.dark) .sy-deck { color: #c9b489; }
+  .sy-card-deck {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  .sy-intro p {
+    font-family: var(--font-body);
+    font-size: 1.03rem;
+    line-height: 1.78;
+    margin: 0 0 1.4rem;
+    color: #2b2317;
+    text-wrap: pretty;
+  }
+  :global(.dark) .sy-intro p { color: #ded0b4; }
+
+  /* ── THE SIX ─────────────────────────────────────────────────────────────
+     Numbered by CSS counter, so the data file never carries a display number
+     and the ids in it stay free to be permanent. */
+  .sy-list {
+    list-style: none;
+    margin: 3rem 0 0;
+    padding: 0;
+    counter-reset: sy;
+  }
+  .sy-item {
+    counter-increment: sy;
+    margin-bottom: 3rem;
+    padding-top: 2rem;
+    border-top: 1px solid #d8cfb8;
+  }
+  :global(.dark) .sy-item { border-top-color: #3a2510; }
+  .sy-item h2 {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-variant: small-caps;
+    font-size: 1.75rem;
+    line-height: 1.15;
+    margin: 0 0 0.35rem;
+    color: #2b1d11;
+    text-wrap: pretty;
+  }
+  :global(.dark) .sy-item h2 { color: #f0e0bf; }
+  .sy-item h2::before {
+    content: counter(sy) ". ";
+    font-family: 'Cinzel', Georgia, serif;
+    font-variant: normal;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: #8b6914;
+  }
+  :global(.dark) .sy-item h2::before { color: #ba7517; }
+  .sy-ref {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 1rem;
+    color: #8b6914;
+  }
+  :global(.dark) .sy-ref { color: #ba7517; }
+  .sy-also { color: #9c8560; }
+  :global(.dark) .sy-also { color: #8a7857; }
+
+  /* What the pulpit does with it — set apart from the correction that follows,
+     the way a scripture block is set apart, with the same gold spine. */
+  .sy-taught {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.6;
+    border-left: 3px solid #c4a97d;
+    padding: 0.15rem 0 0.15rem 1.15rem;
+    margin: 0 0 1.4rem 0.15rem;
+    color: #6b5940;
+  }
+  :global(.dark) .sy-taught {
+    border-left-color: #8a6028;
+    color: #c9b489;
+  }
+  .sy-body {
+    font-family: var(--font-body);
+    font-size: 1.03rem;
+    line-height: 1.78;
+    margin: 0 0 1.4rem;
+    color: #2b2317;
+    text-wrap: pretty;
+  }
+  :global(.dark) .sy-body { color: #ded0b4; }
+
+  .sy-back {
+    margin-top: 1rem;
+    padding-top: 2.2rem;
+    border-top: 1px solid #d8cfb8;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-variant: small-caps;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+  }
+  :global(.dark) .sy-back { border-top-color: #3a2510; }
+  .sy-back a {
+    color: #8b6914;
+    text-decoration: none;
+  }
+  :global(.dark) .sy-back a { color: #ba7517; }
+  .sy-arrow { display: inline-block; transition: transform 200ms ease; }
+  .sy-back a:hover .sy-arrow { transform: translateX(4px); }
+  @media (prefers-reduced-motion: reduce) {
+    .sy-arrow { transition: none; }
+  }
+
+  @media (max-width: 620px) {
+    .sy-page { padding: 2.2rem 1.1rem 3.2rem; }
+    .sy-item h2 { font-size: 1.45rem; }
+  }
+</style>

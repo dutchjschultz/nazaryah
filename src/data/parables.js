@@ -1,4 +1,9 @@
-// parables 0907 V4.js
+// parables 0907 V5.js
+// V5: id 5, the sower, takes the Matthew reference the master list actually
+// carries — Matthew 13:3-9, 18-23 rather than the blunt 13:3-23. Verses 10-17
+// are the why-parables passage, not the sower, and the master list's own prose
+// cites 13:10-15 as exactly that. Checked all 42 entries against Parable Master
+// List 0907 V5 while I was in here; this was the only difference in the file.
 // V4: id 25, the talents, goes live. That closes the four studies the original
 // handover called written — every one of them now has a page, and the counter
 // reads 4 of 42. From here a solid node means a study that exists, with no
@@ -80,7 +85,7 @@ export const parables = [
     name: "The Sower",
     refs: [
       { gospel: "Mark", ref: "Mark 4:3-20", ch: 4, v: 3 },
-      { gospel: "Matthew", ref: "Matthew 13:3-23", ch: 13, v: 3 },
+      { gospel: "Matthew", ref: "Matthew 13:3-9, 18-23", ch: 13, v: 3 },
       { gospel: "Luke", ref: "Luke 8:5-15", ch: 8, v: 5 }
     ],
     study: null

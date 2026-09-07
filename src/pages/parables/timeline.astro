@@ -1,5 +1,11 @@
 ---
-// src/pages/parables/timeline.astro · 0906 V3
+// src/pages/parables/timeline.astro · 0907 V4
+// V4: a second note closes the page — why six familiar passages carry no
+// number — linking out to /parables/sayings. It reuses the pt-note styling the
+// John note already had; the only new rule is the link colour, since pt-note
+// had no anchor in it before. The handover asked for this page and its data
+// file to go to V2; both were past that (page V3, data V4), so each took its
+// own next number instead.
 // V3: carries a real .pt-card-deck element, and backfill-social-images lists
 // `parables` under that class. Without both halves the social card falls back
 // to the long meta description, which is the merge the card-deck rule exists to
@@ -73,6 +79,21 @@ import ParableTimeline from '../../components/ParableTimeline.jsx';
         Father. Ezekiel's one shepherd is the servant set over the flock by
         Yahuah, and the vine of John 15 has a husbandman standing over it who is
         plainly another.
+      </p>
+    </section>
+
+    <section class="pt-note">
+      <h2>Why some familiar passages are not numbered</h2>
+      <p>
+        Six passages commonly counted among the parables are not on this
+        timeline. The lamp under a bushel, the mote and the beam, treasures new
+        and old, the blind leading the blind, the guests who cannot repay, and
+        the tower builder with the king going to war are sayings rather than
+        parables. Each is instruction with an image attached, and each explains
+        itself where it stands. They are not set aside.
+      </p>
+      <p class="pt-notelink">
+        <a href="/parables/sayings">Read the sayings <span class="pt-arrow" aria-hidden="true">&rarr;</span></a>
       </p>
     </section>
   </main>
@@ -373,6 +394,16 @@ import ParableTimeline from '../../components/ParableTimeline.jsx';
     text-wrap: pretty;
   }
   .dark .pt-note p { color: #ded0b4; }
+  /* The only rule the sayings note needed: pt-note carried no anchor before. */
+  .pt-notelink {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-variant: small-caps;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+  }
+  .pt-notelink a { color: #8b6914; text-decoration: none; }
+  .dark .pt-notelink a { color: #ba7517; }
+  .pt-notelink a:hover .pt-arrow { transform: translateX(4px); }
 
   @media (max-width: 620px) {
     .pt-page { padding: 2.2rem 1.1rem 3.2rem; }
