@@ -191,20 +191,29 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 (function() {
   'use strict';
 
+  // 0908: KEEP THIS IN SYNC WITH src/pages/calendar/today.astro — the two
+  // tables must be identical. The year starts a month later than this table
+  // had it: a 13th month was called by Spica, so the moon of 19 March 2026 was
+  // the last month of the previous year, not Aviv 1. Every value has moved up
+  // one slot; none of the dates themselves changed.
+  //
+  // Every entry is the CONJUNCTION + 1 — Day 1 is the first sliver, never the
+  // dark conjunction.
   var MONTH_STARTS = {
-    aviv:     '2026-03-19',
-    month_2:  '2026-04-18',
-    month_3:  '2026-05-17',
-    month_4:  '2026-06-15',
-    month_5:  '2026-07-15',
-    month_6:  '2026-08-13',
-    month_7:  '2026-09-11',
-    month_8:  '2026-10-11',
-    month_9:  '2026-11-10',
-    month_10: '2026-12-09',
-    month_11: '2027-01-08',
-    month_12: '2027-02-07',
-    month_13: '2027-03-09'
+    aviv:     '2026-04-18',
+    month_2:  '2026-05-17',
+    month_3:  '2026-06-15',
+    month_4:  '2026-07-15',
+    month_5:  '2026-08-13',
+    month_6:  '2026-09-11',
+    month_7:  '2026-10-11',
+    month_8:  '2026-11-10',
+    month_9:  '2026-12-09',
+    month_10: '2027-01-08',
+    month_11: '2027-02-07',
+    month_12: '2027-03-09',
+    // Empty until Spica calls another one. The loop stops at the first blank.
+    month_13: ''
   };
 
   var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
@@ -222,13 +231,23 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   var romanEl = document.getElementById('banner-roman-date');
   if (romanEl) romanEl.textContent = dayName + ', ' + romanDate;
 
+  // A 'YYYY-MM-DD' string handed to new Date() is parsed as UTC midnight, which
+  // in any timezone west of Greenwich is the EVENING BEFORE. setHours(0,0,0,0)
+  // then snapped it to that earlier local day, so every month start sat one day
+  // early and the day-of-month read one too high across the Americas. Build the
+  // date from its parts instead, which is local by definition. Same fix, same
+  // reason, as in src/pages/calendar/today.astro.
+  function parseLocalDate(s) {
+    var p = String(s).split('-');
+    return new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
+  }
+
   var todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
   todayDate.setHours(0,0,0,0);
 
   var yahsLabel = '—';
   if (MONTH_STARTS.aviv) {
-    var avivStart = new Date(MONTH_STARTS.aviv);
-    avivStart.setHours(0,0,0,0);
+    var avivStart = parseLocalDate(MONTH_STARTS.aviv);
 
     if (todayDate >= avivStart) {
       var currentMonthIndex = 0;
@@ -236,8 +255,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
       for (var i = 1; i < monthKeys.length; i++) {
         if (!MONTH_STARTS[monthKeys[i]]) break;
-        var thisStart = new Date(MONTH_STARTS[monthKeys[i]]);
-        thisStart.setHours(0,0,0,0);
+        var thisStart = parseLocalDate(MONTH_STARTS[monthKeys[i]]);
         if (todayDate < thisStart) break;
         currentMonthIndex = i;
         currentMonthStart = thisStart;
