@@ -1,0 +1,130 @@
+/* MoedCountdown 0908 V2.css
+   V2: the placeholder palette is gone. Every value below is the one the
+   calendar section already uses, taken from src/pages/calendar/today.astro and
+   src/pages/calendar.astro, so the card and the pages around it are one
+   palette rather than two.
+
+   The var(--color-*, hex) fallbacks the file shipped with could not stay: the
+   site DOES define --color-text, --color-border and friends in global.css, but
+   they are the PARCHMENT tokens — light surfaces and dark ink. On this page,
+   which is the one dark room on the site, they would have resolved to real
+   values and painted dark text on a dark panel. A fallback only helps when the
+   token is missing; these are present and wrong. */
+
+.moed-card {
+  --moed-gold:   #D4A14A;              /* --gold on .today-page */
+  --moed-blue:   #9BB5DA;              /* --yahs-accent, the Yahuah side */
+  --moed-text:   #F4ECDB;              /* --cream */
+  --moed-muted:  #b8a584;              /* .cal-landing body colour */
+  --moed-panel:  #221a14;              /* --dark-bg-soft, the elevated surface */
+  --moed-line:   #3a2510;              /* the dark-mode rule used site-wide */
+
+  border: 1px solid var(--moed-line);
+  border-radius: 6px;
+  background: var(--moed-panel);
+  padding: 1.75rem 2rem;
+  text-align: center;
+  color: var(--moed-text);
+}
+
+.moed-card--loading {
+  min-height: 11rem;
+}
+
+.moed-card__eyebrow {
+  margin: 0 0 0.75rem;
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--moed-muted);
+}
+
+.moed-card__name {
+  margin: 0 0 0.35rem;
+  font-size: 1.9rem;
+  font-variant: small-caps;
+  color: var(--moed-blue);
+}
+
+.moed-card__count {
+  margin: 0 0 0.6rem;
+  font-size: 1.15rem;
+  color: var(--moed-gold);
+}
+
+.moed-card__when {
+  margin: 0;
+  font-size: 0.9rem;
+  font-style: italic;
+  color: var(--moed-muted);
+}
+
+.moed-card__daylabel {
+  margin: 1rem 0 0;
+  font-size: 0.8rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--moed-muted);
+}
+
+.moed-card__charge {
+  margin: 1.25rem auto 0;
+  max-width: 34rem;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--moed-text);
+}
+
+/* ── The eve. A quiet lift, nothing more. ─────────────────────────────── */
+.moed-card--eve {
+  border-color: color-mix(in srgb, var(--moed-gold) 40%, var(--moed-line));
+}
+.moed-card--eve .moed-card__count {
+  font-size: 1.35rem;
+}
+
+/* ── The day itself, and any day inside a multi-day feast. ────────────── */
+.moed-card--today,
+.moed-card--during {
+  border-color: var(--moed-gold);
+  background:
+    radial-gradient(120% 100% at 50% 0%,
+      color-mix(in srgb, var(--moed-gold) 12%, transparent) 0%,
+      transparent 65%),
+    var(--moed-panel);
+}
+
+.moed-card--today .moed-card__name,
+.moed-card--during .moed-card__name {
+  font-size: 2.4rem;
+  color: var(--moed-gold);
+}
+
+.moed-card--today .moed-card__count,
+.moed-card--during .moed-card__count {
+  font-size: 1rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--moed-blue);
+}
+
+/* A slow breath on the border, once every eight seconds. Deliberately
+   understated — this marks a moed, it is not a sale banner. */
+@media (prefers-reduced-motion: no-preference) {
+  .moed-card--today,
+  .moed-card--during {
+    animation: moed-breathe 8s ease-in-out infinite;
+  }
+}
+
+@keyframes moed-breathe {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--moed-gold) 22%, transparent); }
+  50%      { box-shadow: 0 0 22px 2px color-mix(in srgb, var(--moed-gold) 16%, transparent); }
+}
+
+@media (max-width: 560px) {
+  .moed-card { padding: 1.4rem 1.2rem; }
+  .moed-card__name { font-size: 1.55rem; }
+  .moed-card--today .moed-card__name,
+  .moed-card--during .moed-card__name { font-size: 1.9rem; }
+}

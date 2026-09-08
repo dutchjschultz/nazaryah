@@ -1,5 +1,15 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import MoedCountdown from '../components/MoedCountdown.jsx';
+import { toScriptural } from '../lib/scriptural-date.js';
+import { avivOneDate, romanDate } from '../lib/moedim.js';
+
+// Aviv 1 is fixed for the whole year, so it is resolved once at build time
+// rather than shipped to the browser. The weekday is left off: the Roman week
+// is the thing this calendar exists to get out from under, and romanDate keeps
+// it opt-in for that reason.
+const avivOne = avivOneDate(toScriptural);
+const avivOneRoman = romanDate(avivOne);
 ---
 
 <BaseLayout
@@ -25,9 +35,21 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <div class="today-banner-side yahs">
           <span class="today-banner-label">The heavens say</span>
           <span class="today-banner-value" id="banner-yahs-date">&mdash;</span>
+          <!-- Only ever "New Moon" or "Sabbath"; hidden on the other days. -->
+          <span class="today-banner-daylabel" id="banner-yahs-daylabel" hidden></span>
+          {avivOneRoman && (
+            <span class="today-banner-aviv">Aviv 1 &middot; {avivOneRoman}</span>
+          )}
         </div>
       </div>
     </a>
+
+    <!-- ──────────────── NEXT MOED ────────────────
+         client:load, not a build-time render: the site is static, so a
+         countdown baked at deploy is wrong the next morning. -->
+    <section class="cal-moed" aria-label="The next appointed time">
+      <MoedCountdown client:load />
+    </section>
 
     <!-- ──────────────── HERO ──────────────── -->
     <section class="cal-hero">
@@ -185,44 +207,20 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 <!-- ════════════════════════════════════════════════════════════════
      TEASER-BANNER DATE LOGIC
      Populates the Roman and Yahuah dates in the today-comparison
-     banner. Keep MONTH_STARTS in sync with /calendar/today.
+     banner. The month table is NOT here — it lives once, in
+     src/lib/scriptural-date.js, and is imported below. Nothing to keep
+     in sync any more.
      ════════════════════════════════════════════════════════════════ -->
-<script is:inline>
+<script>
+import { toScriptural, scripturalLabel } from '../lib/scriptural-date.js';
+import { dayLabel } from '../lib/moedim.js';
+
 (function() {
   'use strict';
-
-  // 0908: KEEP THIS IN SYNC WITH src/pages/calendar/today.astro — the two
-  // tables must be identical. The year starts a month later than this table
-  // had it: a 13th month was called by Spica, so the moon of 19 March 2026 was
-  // the last month of the previous year, not Aviv 1. Every value has moved up
-  // one slot; none of the dates themselves changed.
-  //
-  // Every entry is the CONJUNCTION + 1 — Day 1 is the first sliver, never the
-  // dark conjunction.
-  var MONTH_STARTS = {
-    aviv:     '2026-04-18',
-    month_2:  '2026-05-17',
-    month_3:  '2026-06-15',
-    month_4:  '2026-07-15',
-    month_5:  '2026-08-13',
-    month_6:  '2026-09-11',
-    month_7:  '2026-10-11',
-    month_8:  '2026-11-10',
-    month_9:  '2026-12-09',
-    month_10: '2027-01-08',
-    month_11: '2027-02-07',
-    month_12: '2027-03-09',
-    // Empty until Spica calls another one. The loop stops at the first blank.
-    month_13: ''
-  };
 
   var dayNames = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
   var monthNames = ['January','February','March','April','May','June',
                     'July','August','September','October','November','December'];
-  var monthLabels = ['Aviv','Month 2','Month 3','Month 4','Month 5','Month 6',
-                     'Month 7','Month 8','Month 9','Month 10','Month 11','Month 12','Month 13'];
-  var monthKeys = ['aviv','month_2','month_3','month_4','month_5','month_6',
-                   'month_7','month_8','month_9','month_10','month_11','month_12','month_13'];
 
   var today = new Date();
   var dayName = dayNames[today.getDay()];
@@ -231,40 +229,18 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   var romanEl = document.getElementById('banner-roman-date');
   if (romanEl) romanEl.textContent = dayName + ', ' + romanDate;
 
-  // A 'YYYY-MM-DD' string handed to new Date() is parsed as UTC midnight, which
-  // in any timezone west of Greenwich is the EVENING BEFORE. setHours(0,0,0,0)
-  // then snapped it to that earlier local day, so every month start sat one day
-  // early and the day-of-month read one too high across the Americas. Build the
-  // date from its parts instead, which is local by definition. Same fix, same
-  // reason, as in src/pages/calendar/today.astro.
-  function parseLocalDate(s) {
-    var p = String(s).split('-');
-    return new Date(Number(p[0]), Number(p[1]) - 1, Number(p[2]));
-  }
+  // One source of truth. The table used to be pasted here and in
+  // /calendar/today; both now import it from src/lib/scriptural-date.js, and
+  // so does the moed countdown, so the three cannot drift apart.
+  var todayScriptural = toScriptural(today);
+  var yahsLabel = scripturalLabel(today) || '\u2014';
 
-  var todayDate = new Date(today.getFullYear(), today.getMonth(), today.getDate());
-  todayDate.setHours(0,0,0,0);
-
-  var yahsLabel = '—';
-  if (MONTH_STARTS.aviv) {
-    var avivStart = parseLocalDate(MONTH_STARTS.aviv);
-
-    if (todayDate >= avivStart) {
-      var currentMonthIndex = 0;
-      var currentMonthStart = avivStart;
-
-      for (var i = 1; i < monthKeys.length; i++) {
-        if (!MONTH_STARTS[monthKeys[i]]) break;
-        var thisStart = parseLocalDate(MONTH_STARTS[monthKeys[i]]);
-        if (todayDate < thisStart) break;
-        currentMonthIndex = i;
-        currentMonthStart = thisStart;
-      }
-
-      var msPerDay = 1000 * 60 * 60 * 24;
-      var dayOfMonth = Math.floor((todayDate - currentMonthStart) / msPerDay) + 1;
-      yahsLabel = monthLabels[currentMonthIndex] + ', Day ' + dayOfMonth;
-    }
+  // New Moon on day 1, Sabbath on the 8th/15th/22nd/29th, nothing otherwise.
+  var bannerDayLabel = todayScriptural ? dayLabel(todayScriptural.day) : null;
+  var dayLabelEl = document.getElementById('banner-yahs-daylabel');
+  if (dayLabelEl) {
+    dayLabelEl.textContent = bannerDayLabel || '';
+    dayLabelEl.hidden = !bannerDayLabel;
   }
 
   var yahsEl = document.getElementById('banner-yahs-date');
@@ -349,6 +325,32 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
   .today-banner-side.roman .today-banner-value { color: #D4924A; }
   .today-banner-side.yahs  .today-banner-value { color: #9BB5DA; }
+
+  /* Only ever "New Moon" or "Sabbath". Hidden outright on the other days, so
+     the banner never carries an empty line. */
+  .today-banner-daylabel {
+    margin-top: 0.3rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: #D4A14A;
+  }
+
+  /* Static for the whole year, so it is rendered at build time. */
+  .today-banner-aviv {
+    margin-top: 0.35rem;
+    font-size: 0.72rem;
+    font-style: italic;
+    color: #8a7a5e;
+  }
+
+  /* The countdown sits between the banner and the hero: the banner says what
+     day it is, this says what is coming, and the hero opens the section. */
+  .cal-moed {
+    max-width: 46rem;
+    margin: 0 auto 4rem;
+  }
 
   .today-banner-cta {
     text-align: center;
