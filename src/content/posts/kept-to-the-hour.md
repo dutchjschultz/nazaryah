@@ -27,7 +27,9 @@ None of the dates in this study can be located without the calendar Yahuah set i
 
 The day is twelve hours, dawn to dusk. It begins when the light breaks and ends when the light goes. Sundown-to-sundown reckoning is Babylonian rabbinic tradition carried into the church, not Torah.
 
-The month begins at the renewed moon — chodesh, the first sliver of light after the dark phase. Not the full moon, which Scripture names separately as kese (Psalm 81:3), and which falls on the fifteenth.
+The month begins at the renewed moon — chodesh, from chadash, to renew. The renewal is the moment the moon passes the sun and turns back toward light, and the dawn that follows opens the month. Not the full moon, which Scripture names separately as kese (Psalm 81:3), and which falls on the fifteenth.
+
+That moment is a single instant in the heavens, identical for every man on earth regardless of his longitude, his latitude, his season or his weather. It is the only reckoning under which the whole earth keeps one appointed time on one day. First visible light does not do this: the crescent appears on different evenings in different places, and a rule that hands two men two different days has not given them one appointed time. It also matches Hanok 78:7, which places accomplished light on the fifteenth day — full light falls roughly fourteen and three-quarter days after the passing, which lands on the fifteenth exactly. Reckoned from first visibility it would fall on the thirteenth or fourteenth.
 
 The Sabbaths of each month fall on the 8th, 15th, 22nd, and 29th, resetting at each renewed moon. The continuous rotating week came from Rome after the resurrection.
 
@@ -127,7 +129,7 @@ Shavuot is the covenant moved inward and the two loaves brought in together — 
 
 Leviticus 23:24 calls it a memorial of blowing of trumpets, a holy convocation, with a commanded rest. Numbers 29:1 repeats it. It is the only appointed time in the year that falls on the renewed moon itself, on the first day of a month.
 
-That detail carries the whole character of the day. A month does not begin by calculation but by sighting — the first sliver of light after the dark phase, watched for and reported. Until the sliver is seen, no one on earth can say the day or the hour the trumpet will sound. It is not a mystery; it is a feast that begins on a witness.
+That detail carries the whole character of the day. The month does not open on a man’s report; it opens on the two lights themselves. The moon passes the sun at one instant, and that instant is handed to every man alive at once, whatever his sky looks like. A watchman in Judea and a watchman on the far side of the earth receive the same moment. It is an appointment the whole earth can keep together, on the same day, with no court standing in the middle to decide it.
 
 ### What has been laid on this day
 
@@ -135,11 +137,11 @@ Six things have been added to the first day of the seventh month, and not one of
 
 First, the name. The day is now called the head of the year, a title Scripture never gives it. The first month of the year was named at the exodus, in the spring: “This month shall be unto you the beginning of months: it shall be the first month of the year to you” (Exodus 12:2). Scripture calls this day the first day of the seventh month and nothing else (Leviticus 23:24; Numbers 29:1). The Hebrew phrase rosh hashanah occurs exactly once in the whole of Scripture, at Ezekiel 40:1 — and there it lands on the tenth day of the month, not the first. The single occurrence of the phrase does not describe the day the name was later attached to.
 
-Second, the length. The text names one day. Two are now kept, a second day added to cover the uncertainty of the sighting — which is to say, added to remove the very uncertainty the day was built on.
+Second, the length. The text names one day. Two are now kept, a second day added to cover the uncertainty introduced by a sighting rule that the text never gave in the first place — an addition built to patch an addition.
 
 Third, the start. The day is now begun in the darkness of the night before, under the sundown reckoning carried back from Babylon. The Torah day is twelve hours of light, dawn to dusk. Yom Kippur and Pesach are the two exceptions named in the text, and Yom Teruah is not among them.
 
-Fourth, the reckoning. The date is now fixed by calculation rather than by the sighting of the sliver, so that it can be printed years in advance. That change quietly destroys the character of the appointment. A day set by arithmetic is a day any man can name; the day the text describes cannot be named until witnesses report the light.
+Fourth, the postponement. This is the one worth naming carefully, because the objection is often aimed at the wrong target. Calculation itself is not the fault; the passing of the moon by the sun is an event in the heavens and reckoning from it is reading the sign Yahuah hung there. The fault is that the reckoning was then bent. Days are pushed forward and held back by rule so that certain dates never fall where the calendar puts them, because falling there is inconvenient. Once a day can be moved for convenience it has stopped being an appointment and become a preference.
 
 Fifth, the year. The day was made the beginning of a year that Yahuah began in the spring. A seventh month cannot be the head of a year. That is not a theological objection; it is counting. The one textual hook offered is the ingathering at the going out of the year (Exodus 23:16; 34:22) — the close of the agricultural season in the seventh month. But a year that ends in the seventh month began in the first. That verse assumes the spring beginning; it does not overturn it.
 
@@ -147,11 +149,11 @@ Sixth, the fast. A penitential season was built around the day, with fasting att
 
 The month name itself belongs to the same accumulation. Tishri is not in the Torah; it belongs to the Babylonian month list carried back from the captivity, where Scripture simply numbers the months. That same imported list carries a month named for a foreign deity, and Ezekiel was shown women weeping for him at the gate of the house of Yahuah (Ezekiel 8:14).
 
-The order of the additions is worth studying on its own, because it is not unique to this day. A thing is renamed. The new name is then treated as evidence. The day is extended, moved, and calculated, and each step is defended by the step before it, until the appointment on the page and the observance on the ground have nothing in common but a position in the month. The title became the argument, and recognizing that move is most of the answer.
+The order of the additions is worth studying on its own, because it is not unique to this day. A thing is renamed. The new name is then treated as evidence. The day is extended, moved, and adjusted to suit, and each step is defended by the step before it, until the appointment on the page and the observance on the ground have nothing in common but a position in the month. The title became the argument, and recognizing that move is most of the answer.
 
 ### How it is portrayed in the Apostolic writings
 
-1 Corinthians 15:52 and 1 Thessalonians 4:16 place the last trump at the resurrection of the dead, with the shout and the voice of the archangel. Matthew 24:36 — of that day and hour knoweth no man — reads as a plain description of an appointment that opens on a sighting, not as a warning that the calendar is unknowable.
+1 Corinthians 15:52 and 1 Thessalonians 4:16 place the last trump at the resurrection of the dead, with the shout and the voice of the archangel. Matthew 24:36 is frequently attached to this day on the argument that a feast opening on a crescent sighting cannot be named in advance. That argument is set aside here. The date of the first day of the seventh month is reckoned from the passing of the moon by the sun and is knowable years ahead, so whatever Matthew 24:36 withholds, it is not the date of a moed. The verse speaks of the day of His coming, and nothing in this study rests on it.
 
 Two errors deserve to be named. First, this is not a secret removal of believers ahead of a seven-year tribulation. Daniel's seventieth week is not sitting in a gap waiting to run; all four hundred and ninety years are complete, the sacrifice was caused to cease in the midst of the week at the tree in 31 AD, and the week closed within a few years afterward. Second, there is no thousand-year earthly kingdom on the far side of that trumpet. When He returns, death is ended and the judgment is held, and that is the whole of it.
 
