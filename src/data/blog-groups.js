@@ -1,4 +1,8 @@
-// blog-groups 0907 V6.js
+// blog-groups 0908 V7.js
+// V7: The Appointed Times joins SCRIPTURE UNFILTERED (26 → 27). Its batch, like
+// the three before it, said nothing about this file; without the line the study
+// renders on its own route but is invisible in /blog and /blog/all, because
+// inFeed is !!POST_GROUP[slug]. Map total 88 → 89.
 // V6: The Talents joins THE PARABLES (4 → 5). Its batch filed the study under
 // "Buried in Plain Sight" in both frontmatter blocks while its own prose called
 // it a Parables study and "study five of forty-two"; Dutch settled it as
@@ -153,8 +157,9 @@ export const POST_GROUP = {
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
   'one-throne-8-the-debt-of-wendell-hollis': 'the-side-door', // Volume V's closing parable
 
-  // ── Scripture Unfiltered (26) ──
+  // ── Scripture Unfiltered (27) ──
   'ark-of-covering': 'scripture-unfiltered',
+  'the-appointed-times': 'scripture-unfiltered',
   'bread-and-wine': 'scripture-unfiltered',
   'clean-hands-pure-heart': 'scripture-unfiltered',
   'clothed-by-the-owner': 'scripture-unfiltered',
