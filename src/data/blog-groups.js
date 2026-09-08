@@ -1,4 +1,7 @@
-// blog-groups 0908 V7.js
+// blog-groups 0908 V8.js
+// V8: the study shipped this morning as `the-appointed-times` is renamed to
+// `kept-to-the-hour`. The cluster label "The Appointed Times" is registry-level
+// and already rendering in panels, so the study was the cheap end to move.
 // V7: The Appointed Times joins SCRIPTURE UNFILTERED (26 → 27). Its batch, like
 // the three before it, said nothing about this file; without the line the study
 // renders on its own route but is invisible in /blog and /blog/all, because
@@ -159,7 +162,7 @@ export const POST_GROUP = {
 
   // ── Scripture Unfiltered (27) ──
   'ark-of-covering': 'scripture-unfiltered',
-  'the-appointed-times': 'scripture-unfiltered',
+  'kept-to-the-hour': 'scripture-unfiltered',
   'bread-and-wine': 'scripture-unfiltered',
   'clean-hands-pure-heart': 'scripture-unfiltered',
   'clothed-by-the-owner': 'scripture-unfiltered',

@@ -1,5 +1,5 @@
 ---
-title: "The Appointed Times"
+title: "Kept to the Hour"
 description: "What was done in each feast, what it showed, and what it accomplishes."
 deck: "What was done in each feast, what it showed, and what it accomplishes."
 date: 2026-09-08

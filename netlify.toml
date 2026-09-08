@@ -43,6 +43,18 @@
   to = "/og/watchmans-desk/the-words-came-first-thumb.png"
   status = 301
 
+# Renamed 0908, hours after publishing: the study went live as
+# "The Appointed Times", which collided with the the-moedim cluster label of
+# the same name in src/data/associations.js. The study was the cheap end to
+# move, since the cluster label was already rendering in panels. The old
+# address was live and served a real page, so it is redirected rather than
+# left to 404. Its card at /og/blog/the-appointed-times.v2.png is deliberately
+# NOT deleted — a crawled card file is never removed or renamed.
+[[redirects]]
+  from = "/blog/the-appointed-times"
+  to = "/blog/kept-to-the-hour"
+  status = 301
+
 # Retired duplicate: the short "Joint Heirs" blog now points at the full
 # Five Titles chapter, so inbound links and search results keep resolving.
 [[redirects]]
