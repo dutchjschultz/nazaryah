@@ -1,4 +1,8 @@
-/* MoedCountdown 0908 V2.css
+/* MoedCountdown 0908 V3.css
+   V3: the watching state — the stretch from the close of Sukkot until Aviv is
+   confirmed. Dashed and unlit: no gold, no glow, no breath. It is a card at
+   rest, and it should not compete with a moed that is actually here.
+
    V2: the placeholder palette is gone. Every value below is the one the
    calendar section already uses, taken from src/pages/calendar/today.astro and
    src/pages/calendar.astro, so the card and the pages around it are one
@@ -73,6 +77,27 @@
   font-size: 1rem;
   line-height: 1.6;
   color: var(--moed-text);
+}
+
+/* ── Watching for Aviv. Dashed and unlit. ─────────────────────────────── */
+.moed-card--watching {
+  border-style: dashed;
+  border-color: var(--moed-line);
+  background: none;
+}
+.moed-card--watching .moed-card__name {
+  font-size: 1.5rem;
+  color: var(--moed-muted);
+}
+.moed-card--watching .moed-card__count {
+  font-size: 0.8rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--moed-muted);
+}
+.moed-card--watching .moed-card__when {
+  font-style: italic;
+  color: var(--moed-muted);
 }
 
 /* ── The eve. A quiet lift, nothing more. ─────────────────────────────── */

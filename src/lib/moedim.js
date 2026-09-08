@@ -1,5 +1,5 @@
-// moedim 0908 V1.js
-// New file. Lunar day labels, the Aviv 1 Roman date, and next-moed countdown logic.
+// moedim 0908 V3.js
+// FIFTY_COUNT_INCLUSIVE set true — the morrow is day one of the fifty.
 
 /*
   ────────────────────────────────────────────────────────────────────────────
@@ -109,12 +109,26 @@ export function avivOneDate(toScriptural, from = new Date(), limit = 800) {
     3. a fifty-day count on top
 
   FIFTY_COUNT_INCLUSIVE decides whether the morrow is day 1 of the fifty
-  (true) or whether fifty days are added after it (false). Scripture is not
-  explicit and the two readings differ by one day. Default is false, giving
-  the full 49 + 1 + 50 structure the study describes. Flip it here, in one
-  place, if the study settles the other way.
+  (true) or whether fifty days are added after it (false). Set TRUE: "number
+  fifty days" is read as counting the morrow itself as the first of them.
+
+  ── Note on the sequence, so nobody re-derives it ──
+  Because every month carries at least 29 days, all four Sabbath positions
+  (8, 15, 22, 29) exist in every month without exception. The seven Sabbaths
+  counted from Bikkurim on the 16th of month 1 are therefore the SAME
+  month-and-day sequence every single year:
+
+      1/22, 1/29, 2/8, 2/15, 2/22, 2/29, 3/8
+
+  The seventh Sabbath is always 3/8 and the morrow is always 3/9. A 30th day,
+  where a month has one, adds a day to the span but is not a Sabbath and does
+  not disturb the sequence.
+
+  The only year-to-year variable is whether months 3 and 4 run 29 or 30 days,
+  which moves the landing between 4/28 and 4/29. Shavuot can never fall in
+  the third month under this count.
 */
-export const FIFTY_COUNT_INCLUSIVE = false;
+export const FIFTY_COUNT_INCLUSIVE = true;
 
 export function shavuotDate(toScriptural, from = new Date()) {
   const bikkurim = findScripturalDate(toScriptural, 1, 16, addDays(from, -400));
@@ -152,6 +166,7 @@ export function shavuotDate(toScriptural, from = new Date()) {
 */
 export function nextMoed(toScriptural, now = new Date()) {
   const today = atNoon(now);
+  const scriptural = toScriptural(today) || null;
   const occurrences = [];
 
   for (const m of MOEDIM) {
@@ -186,7 +201,29 @@ export function nextMoed(toScriptural, now = new Date()) {
     });
   }
 
-  if (!occurrences.length) return null;
+  /*
+    Nothing ahead. This is the normal condition from the close of Sukkot
+    until Aviv is confirmed, and it is not an error to be papered over —
+    an observational calendar cannot name next year's moedim before the
+    heavens have given the ruling. The card says so rather than vanishing.
+
+    A null `scriptural` means the adapter itself failed for today, which
+    IS an error. The two are distinguished so the component can stay
+    silent in the second case.
+  */
+  if (!occurrences.length) {
+    return {
+      key: 'watching',
+      name: null,
+      days: 0,
+      startDate: null,
+      endDate: null,
+      daysUntil: null,
+      dayOf: null,
+      scriptural,
+      status: scriptural ? 'watching' : 'unavailable',
+    };
+  }
 
   /* In progress first, then nearest by start date. */
   occurrences.sort((a, b) => {
@@ -203,7 +240,7 @@ export function nextMoed(toScriptural, now = new Date()) {
   else if (next.daysUntil === 1) status = 'eve';
   else status = 'upcoming';
 
-  return { ...next, status };
+  return { ...next, scriptural, status };
 }
 
 /* ─────────────────────────── 6. FORMATTING ─────────────────────────────── */
@@ -235,6 +272,8 @@ export function countdownText(moed) {
     case 'today':    return 'Today';
     case 'eve':      return 'Tomorrow';
     case 'during':   return `Day ${moed.dayOf} of ${moed.days}`;
+    case 'watching': return 'Watching for Aviv';
+    case 'unavailable': return '';
     default:         return `${moed.daysUntil} days`;
   }
 }

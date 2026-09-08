@@ -1,6 +1,20 @@
-// MoedCountdown 0908 V1.jsx
-// New file. Countdown card to the next moed, with distinct states for the eve,
-// the day itself, and a multi-day feast in progress.
+// MoedCountdown 0908 V2.jsx
+// V2: the two statuses moedim V3 added.
+//
+// 'watching' — the stretch between the close of Sukkot and the confirming of
+// Aviv. nextMoed no longer returns null there, so the old `if (!moed) return
+// null` would never fire again and the card would have rendered with an empty
+// name and an empty date. It renders a rest state instead. This is permanent
+// behaviour, not a stopgap for a short table: every year has that stretch,
+// because an observational calendar cannot name next year's moedim before the
+// ruling comes. MONTH_STARTS is deliberately NOT extended with projected dates
+// to close it — the gap is the point.
+//
+// 'unavailable' — the adapter itself failed for today. That is a real fault,
+// not a normal watch, so the card renders nothing and stays distinguishable.
+//
+// V1: countdown card with distinct states for the eve, the day itself, and a
+// multi-day feast in progress.
 
 import { useState, useEffect } from 'react';
 import { nextMoed, countdownText, romanDate, dayLabel } from '../lib/moedim.js';
@@ -39,9 +53,26 @@ export default function MoedCountdown({ toScriptural = siteToScriptural }) {
   const moed = nextMoed(toScriptural, now);
   if (!moed) return null;
 
-  const today = toScriptural(now);
+  // A real adapter fault. Say nothing rather than dress it as a quiet season.
+  if (moed.status === 'unavailable') return null;
+
+  const today = moed.scriptural || toScriptural(now);
   const label = today ? dayLabel(today.day) : null;
   const active = moed.status === 'today' || moed.status === 'during';
+
+  // The year's appointed times are behind us and the next ones cannot be named
+  // until the heavens give the ruling. The card rests rather than vanishing.
+  if (moed.status === 'watching') {
+    return (
+      <div className="moed-card moed-card--watching" role="status" aria-live="polite">
+        <p className="moed-card__eyebrow">The year&rsquo;s appointed times</p>
+        <p className="moed-card__name">Complete</p>
+        <p className="moed-card__count">{countdownText(moed)}</p>
+        <p className="moed-card__when">No date is set until the heavens give it.</p>
+        {label && <p className="moed-card__daylabel">{label} today</p>}
+      </div>
+    );
+  }
 
   return (
     <div
