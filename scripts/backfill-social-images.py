@@ -134,8 +134,7 @@ DECK_CLASSES = {
     # Without it the card deck fell back to og:description, which on these pages
     # is the long question and clips. The bare class `sub` was tried first and is
     # wrong: the nav's .doctrines-item-sub matches \bsub\b and wins the search.
-    # The /investigations index is deliberately absent — it has no such hook and
-    # keeps the og:description fallback it has always used.
+    # The /investigations index carries the same hook, hidden.
     "investigations": ["inv-card-deck"],
 }
 

@@ -1,5 +1,15 @@
 ---
-// src/pages/investigations/index.astro · 0825 V1
+// src/pages/investigations/index.astro · 0909 V2
+// V2: the page no longer assumes every case has four witnesses. The heading, the
+// intro and the meta description all said four, and the card link said "Enter the
+// orbit" — every one of them written when the ring was the only shape. The link
+// words now come from the record (enterLabel), so a card names the shape it
+// opens; The Living Temple's card is unchanged, because its record carries the
+// same words the page used to hard-code. The heading change forced the page's own
+// social card to be reminted, which exposed a second fault: it had no card deck
+// and was falling back to the meta description, clipping mid-sentence. It carries
+// a proper one now (.inv-card-deck, hidden). Nothing visible else moves.
+// V1:
 // The investigations landing — one card per entry in src/data/investigations.js.
 // A live case links to its orbit page; a `soon: true` case is dimmed, carries a
 // Coming Soon pill and is not a link, because its page is not built.
@@ -19,14 +29,19 @@ const cards = INVESTIGATIONS.map((inv) => ({
 
 <BaseLayout
   title="Investigations | Nazaryah"
-  description="Curated cases, not subject tags. Each investigation asks one question, argues its method in a nucleus study, and closes the case with three or four witnesses from different directions."
+  description="Curated cases, not subject tags. Each investigation asks one question, argues its method in a nucleus study, and closes the case with several witnesses from different directions."
 >
   <main class="hub">
     <p class="eyebrow">― Investigations ―</p>
-    <h1>One Question, Four Witnesses</h1>
+    <h1>One Question, Many Witnesses</h1>
+    {/* The short CARD deck, read by the social-card generator. Not visible: the
+        page's own intro is below, and the meta description is a third field
+        again. The card must never fall back to the description, which is long
+        enough to clip mid-sentence. */}
+    <p class="inv-card-deck">A case, not a category. Read one, or read the case.</p>
     <p class="sub">
-      A case, not a category — a nucleus that argues the method, and witnesses that
-      close it from different directions. Read in any order.
+      A case, not a category — a nucleus that argues the method, and several witnesses
+      that close it from different directions. Read in any order.
     </p>
 
     <div class="grid">
@@ -46,7 +61,7 @@ const cards = INVESTIGATIONS.map((inv) => ({
             <p class="question">{inv.question}</p>
             <p class="meta">
               {inv.live} of {inv.pieces} pieces live
-              {!inv.soon && <span class="go">Enter the orbit →</span>}
+              {!inv.soon && <span class="go">{inv.enterLabel ?? 'Enter the orbit'} →</span>}
             </p>
           </Tag>
         );
@@ -78,6 +93,12 @@ const cards = INVESTIGATIONS.map((inv) => ({
     font-size: clamp(1.9rem, 4.6vw, 2.8rem);
   }
   :global(.dark) .hub h1 { color: var(--color-dark-text); }
+
+  /* Visually hidden; it exists for the card generator, not the reader. */
+  .inv-card-deck {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
 
   .sub {
     max-width: 620px;

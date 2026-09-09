@@ -1,4 +1,9 @@
-// investigations 0908 V3.js
+// investigations 0909 V4.js
+// V4: added `enterLabel`, the words on the index card's link. It was hard-coded
+// as "Enter the orbit" on the index, which is layout-specific and stopped being
+// true the moment a second shape existed. It is a field here now. The Living
+// Temple and The End Times Gap keep "Enter the orbit" exactly; the columns case
+// reads "Enter the case".
 // V3: The Mountain Message joins the file, and with it a second SHAPE. The orbit
 // ring was built for four witnesses; ten do not fit it and their cards carry four
 // lines rather than three. So an investigation now names its own layout —
@@ -23,6 +28,9 @@
 //   question    the claim, shown in the caption when nothing is hovered
 //   soon        true = listed in nav and index with a Coming Soon pill, page not built
 //   layout      'orbit' (default) or 'columns' — see THE TWO SHAPES below
+//   enterLabel  the index card's link words. Not decoration: it names the shape
+//               the reader is about to walk into, so it moves with `layout`.
+//               A record without one falls back to "Enter the orbit".
 //   nucleus     { label, title, href, blurb }  the centre circle
 //   witnesses[] { tag, name, study?, status, href, blurb, hebrew?, passage?, anchor? }
 //                 name  = the plain-English idea, what the reader is getting into
@@ -54,6 +62,7 @@ export const INVESTIGATIONS = [
     title: 'The Living Temple',
     deck: 'Four witnesses to one question, walked one at a time',
     layout: 'orbit',
+    enterLabel: 'Enter the orbit',
     question:
       'What did Yahushua actually do with the Law of Moses? Not which parts survived — what did He do to it? Scripture answers with four verbs, and the four are one house.',
     soon: false,
@@ -113,6 +122,7 @@ export const INVESTIGATIONS = [
     title: 'The End Times Gap',
     deck: 'Four holes cut into prophecy — and who cut them',
     layout: 'orbit',
+    enterLabel: 'Enter the orbit',
     question:
       'Every load-bearing piece of the modern chart needs a hole cut into a passage that has none. Each witness closes one hole from a different direction.',
     soon: true,
@@ -166,6 +176,7 @@ export const INVESTIGATIONS = [
     // Ten cards will not ride a ring, and each carries four lines rather than
     // three. This is the investigation the 'columns' shape was built for.
     layout: 'columns',
+    enterLabel: 'Enter the case',
     question:
       'What is the Sermon on the Mount actually made of? Not which parts are still binding — what was Yahushua quoting? Ten passages, and every one of them was already written.',
     soon: false,
