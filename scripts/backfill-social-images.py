@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0907 V14
+backfill-social-images  0908 V15
+V15: `investigations` mapped to .sub — the deck line an investigation page (and
+the investigations index) renders under its title. Without it those cards fell
+back to og:description, which on an investigation is the long question and clips
+on the card. Existing cards are untouched; only a page minted from here reads it.
 V14: .sy-card-deck added alongside .pt-card-deck under `parables`, for the new
 /parables/sayings page. Same reason as V13 — without it that page's card falls
 back to its long meta description. Kicker is untouched: sayings falls through
@@ -126,6 +130,13 @@ DECK_CLASSES = {
     # the short CARD deck never falls back to the long meta description.
     "on-these-two": ["lt-card-deck"],
     "close-to-the-hip": ["cth-card-deck"],
+    # An investigation page carries .inv-card-deck on the line under its title.
+    # Without it the card deck fell back to og:description, which on these pages
+    # is the long question and clips. The bare class `sub` was tried first and is
+    # wrong: the nav's .doctrines-item-sub matches \bsub\b and wins the search.
+    # The /investigations index is deliberately absent — it has no such hook and
+    # keeps the og:description fallback it has always used.
+    "investigations": ["inv-card-deck"],
 }
 
 

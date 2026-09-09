@@ -1,0 +1,70 @@
+---
+// Epigraph.astro · 0908 V1
+//
+// The scriptural line a study opens on, set directly under the deck. Title,
+// deck and epigraph are ONE masthead unit — nothing may sit between them, and
+// anything else the page carries (a claim block, a lede, a watch card) comes
+// after the header, not inside it.
+//
+// Driven by one frontmatter block; renders nothing when it is absent, so every
+// study without one is unaffected.
+//
+//   epigraph:
+//     text: "For ever, O Yahuah, thy word is settled in heaven."
+//     ref: "Psalm 119:89"
+//
+// `text` is stored WITHOUT quote marks. The marks below are typographic and
+// belong to the treatment, not to the data.
+//
+// COLOUR NOTE: every colour is declared twice — light first, then again under
+// :global(.dark). Do not use var(--token, fallback); several site tokens have
+// no dark value and the fallback silently wins.
+
+const { post } = Astro.props;
+const ep = post?.data?.epigraph;
+---
+
+{ep && (
+  <figure class="epigraph">
+    <blockquote>&ldquo;{ep.text}&rdquo;</blockquote>
+    <figcaption>{ep.ref}</figcaption>
+  </figure>
+)}
+
+<style>
+  .epigraph {
+    max-width: 46rem;
+    margin: 1.35rem auto 1.9rem;
+    padding: 0;
+    text-align: center;
+  }
+
+  /* The quotation is set in the body serif, not the display face: Cinzel has no
+     lowercase, so a verse set in it reads as a headline in small caps instead of
+     as something quoted. Only the citation below keeps the display face, which
+     is what every other kicker on the site uses. */
+  .epigraph blockquote {
+    margin: 0;
+    font-family: var(--font-body);
+    font-style: italic;
+    font-size: clamp(1rem, 1.9vw, 1.14rem);
+    line-height: 1.65;
+    color: #4a3a26;
+    text-wrap: pretty;
+  }
+  :global(.dark) .epigraph blockquote { color: #c4a46b; }
+
+  .epigraph figcaption {
+    margin-top: 0.55rem;
+    font-family: var(--font-display);
+    font-size: 10px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8b6914;
+  }
+  :global(.dark) .epigraph figcaption { color: #ba7517; }
+
+  @media (max-width: 620px) {
+    .epigraph { margin: 1.1rem auto 1.5rem; }
+  }
+</style>

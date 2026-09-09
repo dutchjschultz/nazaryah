@@ -1,5 +1,12 @@
 ---
-// src/pages/investigations/[slug].astro · 0825 V1
+// src/pages/investigations/[slug].astro · 0908 V2
+// V2: an investigation now names its own shape. `layout: 'columns'` renders
+// ConvergingColumns (a large case: five cards either side of the nucleus, ten
+// hairlines converging on it); anything else, including a record with no layout
+// field at all, renders the Orbit ring exactly as before. Everything around the
+// shape — the kicker, the title, the deck, the piece count, the footer bar — is
+// shared, so the two kinds of investigation differ only in the middle.
+// V1:
 // One investigation, one page. Everything on it comes from src/data/investigations.js
 // — adding an investigation means adding an entry there, never a page here.
 //
@@ -8,6 +15,7 @@
 // half-written case can be announced without shipping an empty page.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Orbit from '../../components/Orbit.astro';
+import ConvergingColumns from '../../components/ConvergingColumns.astro';
 import { INVESTIGATIONS, getInvestigation, liveCount } from '../../data/investigations.js';
 
 export function getStaticPaths() {
@@ -19,6 +27,10 @@ const inv = getInvestigation(slug);
 
 const pieces = 1 + inv.witnesses.length;
 const live = liveCount(inv);
+
+// The shape. Absent field = the ring, so the two records written before this
+// existed are unaffected.
+const Shape = inv.layout === 'columns' ? ConvergingColumns : Orbit;
 
 // No hand-set ogImage. The build guard (scripts/check-cards.mjs) requires every
 // card to sit at the path mirroring its page URL — the hub art for this page
@@ -33,9 +45,14 @@ const live = liveCount(inv);
   <main class="inv">
     <p class="eyebrow">― Investigation ―</p>
     <h1>{inv.title}</h1>
-    <p class="sub">{inv.deck}</p>
+    {/* inv-card-deck is a hook for the social-card generator, not a style. The
+        card deck and the meta description are separate fields: the description
+        here is the investigation's question, which is far too long for a card.
+        `sub` alone was not specific enough — the nav's own dropdown sub-labels
+        matched it first. Nothing about the rendering changes. */}
+    <p class="sub inv-card-deck">{inv.deck}</p>
 
-    <Orbit investigation={inv} />
+    <Shape investigation={inv} />
 
     <div class="foot">
       <span class="l">Investigation · {live} of {pieces} pieces live</span>

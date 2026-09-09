@@ -1,0 +1,479 @@
+---
+// src/components/ConvergingColumns.astro · 0908 V1
+//
+// The SECOND shape for an investigation. Orbit.astro is the first and is
+// untouched: a ring built for three or four witnesses, whose cards carry three
+// lines. Ten cards will not ride that ring, and the cards in a large
+// investigation carry four lines, which makes them taller as well as more
+// numerous. So a large case gets converging columns instead.
+//
+// Five cards stack left, five right, the nucleus sits at centre, and one
+// hairline runs from each card to the middle — ten lines converging on one
+// centre. The hairline is STRUCTURAL, not decorative: same weight, colour and
+// opacity as the ring's dashed orbit. If the page starts reading as a flowchart,
+// the lines are too heavy.
+//
+// Which shape an investigation uses is a field on its record (layout: 'columns'),
+// not a guess made here. Do not refactor one shape into the other.
+//
+// THE GEOMETRY IS DRAWN IN JS, NOT CSS. Card positions depend on wrapped text,
+// so the endpoints cannot be written down in advance. Every <polyline> is
+// present in the markup at build time and the script only sets its `points`
+// attribute — nothing is created at runtime, so these scoped styles reach it.
+//
+// THREE STATES, and the script picks by width, not by device:
+//   wide   (> 900px) two columns; a straight hairline from each card's inner
+//                    edge to the nucleus rim.
+//   stack  (769-900) one column, nucleus first; each card sends a short rib out
+//                    to a rail in the left margin, and ONE spine carries the rail
+//                    up into the nucleus. The spine is drawn once, on its own
+//                    polyline — ten overlapping strokes would read ten times
+//                    darker than a rib.
+//   off    (<= 768)  no hairlines at all. The svg is hidden and the ten cards
+//                    stack under the nucleus in witness order.
+//
+// Lines terminate at the nucleus EDGE, never at its centre, and the nucleus sits
+// above the svg so it paints over their ends.
+const { investigation } = Astro.props;
+const inv = investigation;
+
+const COUNT_WORD = ['no', 'one', 'two', 'three', 'four', 'five', 'six', 'seven',
+                    'eight', 'nine', 'ten', 'eleven', 'twelve'];
+const n = inv.witnesses.length;
+const defaultWho = `${COUNT_WORD[n] ?? n} witnesses · one claim`;
+
+// Left column takes the first half in order, right column the rest. Witness
+// order is sermon order and is the order they are numbered.
+const half = Math.ceil(n / 2);
+const left = inv.witnesses.slice(0, half);
+const right = inv.witnesses.slice(half);
+
+const whoFor = (w) => (w.status === 'live' ? w.tag : `${w.tag} · In progress`);
+---
+
+<div class="cols">
+  <div class="stage" data-stage>
+    <svg class="wires" data-wires aria-hidden="true" preserveAspectRatio="none">
+      {inv.witnesses.map(() => <polyline class="wire" points="" />)}
+      <polyline class="wire spine" points="" data-spine />
+    </svg>
+
+    <div class="col">
+      {left.map((w) => (
+        <a
+          class:list={['card', { pending: w.status !== 'live' }]}
+          href={w.href}
+          aria-disabled={w.status !== 'live' ? 'true' : undefined}
+          data-who={whoFor(w)}
+          data-txt={w.blurb}
+        >
+          <span class="tag">{w.tag}</span>
+          <span class="nm">{w.name}</span>
+          {w.passage && <span class="ps">{w.passage}</span>}
+          {w.anchor && <span class="st">{w.anchor} &#8594;</span>}
+        </a>
+      ))}
+    </div>
+
+    <div class="hub">
+      <a
+        class="nucleus"
+        href={inv.nucleus.href}
+        data-who={`${inv.nucleus.label} · Start here`}
+        data-txt={inv.nucleus.blurb}
+      >
+        <span class="tag">{inv.nucleus.label}</span>
+        <span class="nm">{inv.nucleus.title}</span>
+        <span class="st">Start here</span>
+      </a>
+    </div>
+
+    <div class="col">
+      {right.map((w) => (
+        <a
+          class:list={['card', { pending: w.status !== 'live' }]}
+          href={w.href}
+          aria-disabled={w.status !== 'live' ? 'true' : undefined}
+          data-who={whoFor(w)}
+          data-txt={w.blurb}
+        >
+          <span class="tag">{w.tag}</span>
+          <span class="nm">{w.name}</span>
+          {w.passage && <span class="ps">{w.passage}</span>}
+          {w.anchor && <span class="st">{w.anchor} &#8594;</span>}
+        </a>
+      ))}
+    </div>
+  </div>
+
+  <p class="caption dim" data-caption>
+    <span class="who" data-who-slot>{defaultWho}</span>
+    <span data-txt-slot>{inv.question}</span>
+  </p>
+
+  <p class="hint">Numbered in sermon order · read in any order</p>
+</div>
+
+<style>
+  /* The palette is Orbit's, token for token, so the two shapes never drift
+     apart. Light (papyrus) first, then the dark values. */
+  .cols {
+    --o-card: #f5e8c8;
+    --o-card-hi: #efe1c0;
+    --o-rule: #c8a878;
+    --o-edge: #c8a878;
+    --o-gold: #8a6520;
+    --o-gold-dim: #9c7c4c;
+    --o-gold-warm: #7d5a2a;
+    --o-cream: #2b1d11;
+    --o-body: #5b4530;
+    --o-core-in: #f7ecd2;
+    --o-core-out: #eadcb8;
+    --o-glow: rgba(138, 101, 32, 0.14);
+    --o-glow-hi: rgba(138, 101, 32, 0.3);
+
+    font-family: var(--font-family-serif);
+    color: var(--o-body);
+    line-height: 1.7;
+  }
+
+  :global(.dark) .cols {
+    --o-card: #130e06;
+    --o-card-hi: #1a1007;
+    --o-rule: #2a1e0c;
+    --o-edge: #3a2510;
+    --o-gold: #ba7517;
+    --o-gold-dim: #6a4820;
+    --o-gold-warm: #c4a46b;
+    --o-cream: #f0e0bf;
+    --o-body: #a89f8c;
+    --o-core-in: #1d1307;
+    --o-core-out: #140d04;
+    --o-glow: rgba(186, 117, 23, 0.16);
+    --o-glow-hi: rgba(186, 117, 23, 0.36);
+  }
+
+  /* ================= the stage ================= */
+  .stage {
+    position: relative;
+    display: grid;
+    grid-template-columns: 1fr minmax(190px, 250px) 1fr;
+    align-items: stretch;
+    gap: 1.5rem;
+    max-width: 940px;
+    margin: 0 auto;
+  }
+
+  /* Both columns are stretched to the stage's row height, then split into equal
+     rows — so every card in the investigation is the height of the tallest,
+     across both columns and not merely within one. */
+  .col {
+    display: grid;
+    grid-auto-rows: 1fr;
+    gap: 0.9rem;
+  }
+
+  .hub { display: flex; align-items: center; justify-content: center; }
+
+  /* ================= the hairlines ================= */
+  .wires {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 0;
+    overflow: visible;
+  }
+  /* Same colour and opacity as the ring's dashed orbit. The ring's stroke-width
+     of 0.5 is in a 100-unit viewBox blown up to a 680px stage — about 3.4 real
+     pixels. This svg is 1:1 with the page, and 3.4px of straight line across a
+     tall layout reads as a flowchart, which is the one thing these lines must
+     not do. 1px is the same line at the weight the brief actually asks for. */
+  .wire {
+    fill: none;
+    stroke: var(--o-rule);
+    stroke-width: 1;
+    opacity: 0.75;
+  }
+
+  /* ================= the card ================= */
+  /* Four lines, centred. Lines 1 and 3 are both small caps and must not read as
+     the same line: line 1 keeps the orbit chip's tracking and weight in gold,
+     line 3 sits under the title in the body colour with half the tracking and no
+     added weight. */
+  .card {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    text-align: center;
+    text-decoration: none;
+    background: var(--o-card);
+    border: 1px solid var(--o-edge);
+    border-radius: 8px;
+    padding: 0.85rem 0.9rem;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .card:hover,
+  .card:focus-visible {
+    background: var(--o-card-hi);
+    border-color: var(--o-gold);
+    transform: scale(1.03);
+    outline: none;
+  }
+
+  .card .tag {
+    display: block;
+    font-size: 8px;
+    font-weight: 600;
+    letter-spacing: 2.2px;
+    text-transform: uppercase;
+    color: var(--o-gold-dim);
+    margin-bottom: 0.32rem;
+  }
+  .card .nm {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--o-cream);
+    font-weight: 700;
+    line-height: 1.25;
+    text-wrap: balance;
+  }
+  .card .ps {
+    display: block;
+    font-size: 8px;
+    font-weight: 400;
+    letter-spacing: 1.1px;
+    text-transform: uppercase;
+    color: var(--o-body);
+    opacity: 0.85;
+    line-height: 1.5;
+    margin-top: 0.34rem;
+  }
+  .card .st {
+    display: block;
+    font-size: 8px;
+    letter-spacing: 1.8px;
+    text-transform: uppercase;
+    color: var(--o-gold);
+    margin-top: 0.3rem;
+  }
+  .card.pending { border-style: dashed; background: transparent; }
+  .card.pending .nm { color: var(--o-gold-warm); }
+  .card.pending .st { color: var(--o-gold-dim); }
+
+  /* ================= the nucleus ================= */
+  /* Same treatment as the ring's: circle, radial ground, gold rim, glow on
+     hover. Only the type scale differs, because this hub's title is long. */
+  .nucleus {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 50%;
+    background: radial-gradient(circle at 50% 45%, var(--o-core-in) 0%, var(--o-core-out) 70%);
+    border: 1px solid var(--o-gold);
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 1.4rem;
+    box-shadow: 0 0 46px var(--o-glow);
+    transition: box-shadow 0.25s, border-color 0.25s;
+  }
+  .nucleus:hover,
+  .nucleus:focus-visible { box-shadow: 0 0 70px var(--o-glow-hi); outline: none; }
+  .nucleus .tag {
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--o-gold);
+    margin-bottom: 0.4rem;
+  }
+  .nucleus .nm {
+    font-size: clamp(0.82rem, 1.5vw, 1rem);
+    color: var(--o-cream);
+    font-weight: 700;
+    line-height: 1.3;
+    text-wrap: balance;
+  }
+  .nucleus .st {
+    font-size: 8px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--o-gold-dim);
+    margin-top: 0.45rem;
+  }
+
+  /* ================= caption and hint ================= */
+  /* One caption for the whole layout, swapped on hover — never a second stack
+     of cards. Identical to the ring's. */
+  .caption {
+    max-width: 640px;
+    margin: 2rem auto 0;
+    min-height: 4.6rem;
+    text-align: center;
+    font-size: 0.92rem;
+    color: var(--o-body);
+    transition: opacity 0.18s;
+  }
+  .caption .who {
+    display: block;
+    font-size: 9px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: var(--o-gold);
+    margin-bottom: 0.45rem;
+  }
+  .caption.dim { opacity: 0.55; }
+
+  .hint {
+    text-align: center;
+    font-size: 10px;
+    letter-spacing: 2.5px;
+    text-transform: uppercase;
+    color: var(--o-gold-dim);
+    margin: 1.6rem 0 0;
+  }
+
+  /* ================= one column, nucleus first ================= */
+  @media (max-width: 900px) {
+    .stage {
+      grid-template-columns: 1fr;
+      gap: 0.9rem;
+      max-width: 560px;
+      /* the rail the ribs run out to; cleared again below 768px */
+      padding-left: 40px;
+    }
+    .col { grid-auto-rows: auto; }
+    .hub { order: -1; margin-bottom: 0.9rem; }
+    .nucleus { width: 250px; padding: 1.2rem; }
+    .card { padding: 1rem 1.1rem; }
+  }
+
+  /* ================= no hairlines ================= */
+  @media (max-width: 768px) {
+    .stage { padding-left: 0; }
+    .wires { display: none; }
+  }
+</style>
+
+<script>
+  // Two jobs: draw the hairlines, and swap the one caption on hover.
+  //
+  // The hairlines are geometry, so they are measured rather than declared —
+  // card positions depend on wrapped text and on the viewport. Every polyline
+  // already exists in the markup; this only writes its `points`.
+  document.querySelectorAll('.cols').forEach((root) => {
+    const stage = root.querySelector('[data-stage]');
+    const svg = root.querySelector('[data-wires]');
+    const spine = root.querySelector('[data-spine]');
+    const nucleus = root.querySelector('.nucleus');
+    if (!stage || !svg || !spine || !nucleus) return;
+
+    const cards = Array.from(root.querySelectorAll('.card'));
+    const wires = Array.from(svg.querySelectorAll('.wire:not(.spine)'));
+
+    const GAP = 6;      // breathing room between a card edge and its line
+    const RAIL = 18;    // x of the margin rail in the one-column state
+    const LEAD = 14;    // how far the spine runs past the nucleus before turning
+
+    const draw = () => {
+      const w = stage.clientWidth;
+      const h = stage.clientHeight;
+      if (!w || !h) return;
+      svg.setAttribute('viewBox', `0 0 ${w} ${h}`);
+
+      // below 768 the svg is display:none — measuring it there is meaningless
+      if (!svg.getClientRects().length) return;
+
+      const s = stage.getBoundingClientRect();
+      const n = nucleus.getBoundingClientRect();
+      const cx = n.left - s.left + n.width / 2;
+      const cy = n.top - s.top + n.height / 2;
+      const r = n.width / 2;
+
+      // One column when the nucleus no longer sits between the two stacks.
+      const stacked = window.matchMedia('(max-width: 900px)').matches;
+      let lowest = 0;
+
+      cards.forEach((card, i) => {
+        const wire = wires[i];
+        if (!wire) return;
+        const c = card.getBoundingClientRect();
+        const midY = c.top - s.top + c.height / 2;
+
+        if (stacked) {
+          // a short rib out to the rail; the spine carries it the rest of the way
+          const ax = c.left - s.left - GAP;
+          lowest = Math.max(lowest, midY);
+          wire.setAttribute('points', `${ax},${midY} ${RAIL},${midY}`);
+          return;
+        }
+
+        // two columns: straight from the card's INNER edge to the nucleus rim
+        const onLeft = c.left - s.left + c.width / 2 < cx;
+        const ax = onLeft ? c.right - s.left + GAP : c.left - s.left - GAP;
+        const dx = ax - cx;
+        const dy = midY - cy;
+        const len = Math.hypot(dx, dy) || 1;
+        wire.setAttribute('points',
+          `${ax},${midY} ${cx + (dx / len) * r},${cy + (dy / len) * r}`);
+      });
+
+      if (stacked && lowest) {
+        // drawn ONCE: ten overlapping strokes would read ten times darker
+        const foot = cy + r;
+        spine.setAttribute('points',
+          `${RAIL},${lowest} ${RAIL},${foot + LEAD} ${cx},${foot}`);
+      } else {
+        spine.setAttribute('points', '');
+      }
+    };
+
+    let queued = false;
+    const schedule = () => {
+      if (queued) return;
+      queued = true;
+      requestAnimationFrame(() => { queued = false; draw(); });
+    };
+
+    draw();
+    new ResizeObserver(schedule).observe(stage);
+    window.addEventListener('resize', schedule);
+    if (document.fonts && document.fonts.ready) document.fonts.ready.then(draw);
+
+    // ---- the caption ----
+    // Hovering or focusing a piece writes that piece's own line in; leaving puts
+    // the investigation's question back. Text only — no markup crosses from the
+    // data file into innerHTML.
+    const cap = root.querySelector('[data-caption]');
+    const who = root.querySelector('[data-who-slot]');
+    const txt = root.querySelector('[data-txt-slot]');
+    if (!cap || !who || !txt) return;
+
+    const baseWho = who.textContent;
+    const baseTxt = txt.textContent;
+
+    root.querySelectorAll('.stage [data-txt]').forEach((el) => {
+      const on = () => {
+        who.textContent = el.getAttribute('data-who');
+        txt.textContent = el.getAttribute('data-txt');
+        cap.classList.remove('dim');
+      };
+      const off = () => {
+        who.textContent = baseWho;
+        txt.textContent = baseTxt;
+        cap.classList.add('dim');
+      };
+      el.addEventListener('mouseenter', on);
+      el.addEventListener('focus', on);
+      el.addEventListener('mouseleave', off);
+      el.addEventListener('blur', off);
+    });
+  });
+</script>

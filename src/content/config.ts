@@ -1,4 +1,9 @@
-// content config 0831 V9
+// content config 0908 V10
+// V10: added the optional `epigraph` block — the scriptural line a study opens
+// on, carried in the masthead directly under the deck (title + epigraph are one
+// unit, so it lives in the header, not in the body). Fields: text (the quotation,
+// stored WITHOUT quote marks — Epigraph.astro adds them) and ref (the citation).
+// Absent on every existing study, so nothing already published changes.
 // V9: added the optional `watch` block — the video read-through of a study,
 // rendered as a link-out card above the article body by WatchCard.astro. Fields:
 // title (video title), url, note (the one line under it), cta (defaults to
@@ -96,6 +101,14 @@ const postsCollection = defineCollection({
     // One-line orientation shown under the title and in the associations panel.
     // Falls back to `subtitle` then `description` when omitted.
     deck: z.string().optional(),
+    // MASTHEAD EPIGRAPH — the scriptural line the study opens on, rendered by
+    // Epigraph.astro under the deck. Title, deck and epigraph are one masthead
+    // unit; anything else (a claim block, a lede) comes after it. `text` carries
+    // no quote marks of its own; the component draws them.
+    epigraph: z.object({
+      text: z.string(),
+      ref: z.string(),
+    }).optional(),
     // Optional position within an association cluster (lower sorts first).
     order: z.number().optional(),
     // Single strongest kin study, rendered as "Read Next" at the foot of the post.

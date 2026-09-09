@@ -1,4 +1,10 @@
-// blog-groups 0908 V8.js
+// blog-groups 0908 V9.js
+// V9: The Mountain Message investigation joins the feed — its hub and its ten
+// studies, all into THE LAW & THE FEASTS (4 → 15), which is where their
+// frontmatter category ("The Law Still Stands") already puts them. Without these
+// eleven lines the studies render on their own routes and inside the
+// investigation, and are invisible in /blog and /blog/all, because inFeed is
+// !!POST_GROUP[slug]. Map total 89 → 100.
 // V8: the study shipped this morning as `the-appointed-times` is renamed to
 // `kept-to-the-hour`. The cluster label "The Appointed Times" is registry-level
 // and already rendering in panels, so the study was the cheap end to move.
@@ -69,7 +75,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 86 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 100 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (15) ──
   'worship-and-service': 'the-counterfeit-throne',
@@ -135,11 +141,25 @@ export const POST_GROUP = {
   'milluim-the-filling': 'buried-in-plain-sight',
   'the-two-tables-and-the-book': 'buried-in-plain-sight',
 
-  // ── The Law & The Feasts (4) ──
+  // ── The Law & The Feasts (15) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',
   'two-greatest-commandments': 'the-law-and-the-feasts',
   'seven-feasts-in-exodus': 'the-law-and-the-feasts',
   'outer-to-inner': 'the-law-and-the-feasts',
+  // The Mountain Message investigation — nucleus plus all ten witnesses. Unlike
+  // The Living Temple, no piece of this one sits in another group: all eleven are
+  // Torah exposition of one sermon and belong together on the rail.
+  'the-mountain-message': 'the-law-and-the-feasts',
+  'blessed-are': 'the-law-and-the-feasts',
+  'a-city-set-on-a-hill': 'the-law-and-the-feasts',
+  'not-one-jot': 'the-law-and-the-feasts',
+  'ye-have-heard': 'the-law-and-the-feasts',
+  'this-is-the-law-and-the-prophets': 'the-law-and-the-feasts',
+  'enter-into-thy-closet': 'the-law-and-the-feasts',
+  'ye-cannot-serve': 'the-law-and-the-feasts',
+  'judge-not': 'the-law-and-the-feasts',
+  'strait-is-the-gate': 'the-law-and-the-feasts',
+  'i-never-knew-you': 'the-law-and-the-feasts',
 
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',

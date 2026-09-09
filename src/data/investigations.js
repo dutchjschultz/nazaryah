@@ -1,6 +1,13 @@
-// investigations 0825 V2.js
-// Living Temple hrefs verified against the live post slugs; witness names carry the
-// plain-English idea with the study title on the link line.
+// investigations 0908 V3.js
+// V3: The Mountain Message joins the file, and with it a second SHAPE. The orbit
+// ring was built for four witnesses; ten do not fit it and their cards carry four
+// lines rather than three. So an investigation now names its own layout —
+// 'orbit' (the ring, the default, what The Living Temple and The End Times Gap
+// keep) or 'columns' (five cards left, five right, hairlines converging on the
+// nucleus). Two shapes, one data file, one route. Do not refactor either into the
+// other. The V2 note below still stands unchanged.
+// V2 (0825): Living Temple hrefs verified against the live post slugs; witness
+// names carry the plain-English idea with the study title on the link line.
 // One entry per investigation. Adding an investigation means adding an entry here —
 // no new page, no new component. The dynamic route and the Topics nav both read this file.
 //
@@ -15,8 +22,9 @@
 //   deck        one line under the title, 8-14 words
 //   question    the claim, shown in the caption when nothing is hovered
 //   soon        true = listed in nav and index with a Coming Soon pill, page not built
+//   layout      'orbit' (default) or 'columns' — see THE TWO SHAPES below
 //   nucleus     { label, title, href, blurb }  the centre circle
-//   witnesses[] { tag, name, study?, status, href, blurb, hebrew? }
+//   witnesses[] { tag, name, study?, status, href, blurb, hebrew?, passage?, anchor? }
 //                 name  = the plain-English idea, what the reader is getting into
 //                 study = the study's own title, shown small underneath as the link line
 //                 A reader who does not know Hebrew must still know what a chip offers,
@@ -26,12 +34,26 @@
 //
 // hebrew is optional. The Living Temple uses it because its four operations are named by
 // Hebrew verbs. Investigations without a Hebrew spine leave it off.
+//
+// THE TWO SHAPES
+//   'orbit'   — a nucleus with three or four witnesses carried round it on a ring.
+//               Card face: tag, name, link line (the study title). Orbit.astro.
+//   'columns' — a nucleus at centre with five cards stacked either side and a
+//               hairline from each to the middle. Card face: tag, title, passage,
+//               anchor. ConvergingColumns.astro.
+//               `passage` and `anchor` are the third and fourth card lines and
+//               belong ONLY to this shape; the ring ignores them. `anchor` is the
+//               study's own masthead epigraph reference, not a fresh choice.
+// The shape is chosen by size, not by taste: a ring cannot hold ten cards and a
+// column pair looks thin under four. Everything else — the index card, the
+// nucleus treatment, the piece count, the footer bar — is identical in both.
 
 export const INVESTIGATIONS = [
   {
     slug: 'the-living-temple',
     title: 'The Living Temple',
     deck: 'Four witnesses to one question, walked one at a time',
+    layout: 'orbit',
     question:
       'What did Yahushua actually do with the Law of Moses? Not which parts survived — what did He do to it? Scripture answers with four verbs, and the four are one house.',
     soon: false,
@@ -90,6 +112,7 @@ export const INVESTIGATIONS = [
     slug: 'the-end-times-gap',
     title: 'The End Times Gap',
     deck: 'Four holes cut into prophecy — and who cut them',
+    layout: 'orbit',
     question:
       'Every load-bearing piece of the modern chart needs a hole cut into a passage that has none. Each witness closes one hole from a different direction.',
     soon: true,
@@ -132,6 +155,125 @@ export const INVESTIGATIONS = [
         href: '/blog/gog-and-magog',
         blurb:
           'Ezekiel 38 and 39 cut in half so one ending can be told as two wars a thousand years apart. One unbroken oracle, matched to Revelation 20 detail for detail — same names, same gathering, same fire.',
+      },
+    ],
+  },
+
+  {
+    slug: 'the-mountain-message',
+    title: 'The Mountain Message Christianity Never Preached',
+    deck: 'Ten witnesses to one sermon, and the Law named at both ends',
+    // Ten cards will not ride a ring, and each carries four lines rather than
+    // three. This is the investigation the 'columns' shape was built for.
+    layout: 'columns',
+    question:
+      'What is the Sermon on the Mount actually made of? Not which parts are still binding — what was Yahushua quoting? Ten passages, and every one of them was already written.',
+    soon: false,
+    nucleus: {
+      label: 'The Nucleus',
+      title: 'The Mountain Message Christianity Never Preached',
+      href: '/blog/the-mountain-message',
+      blurb:
+        'The sermon is preached as the founding charter of a new religion, the place where a softer covenant begins. Matthew 5 through 7 is Torah exposition from beginning to end, and the law and the prophets are named by Yahushua at both ends of it. The hub states the claim; the studies prove it.',
+    },
+    // Sermon order, which is also the numbering. Witnesses one through five take
+    // the left column, six through ten the right. `passage` is the third card
+    // line, `anchor` the fourth — and `anchor` is the study's own masthead
+    // epigraph reference, never chosen freshly here.
+    witnesses: [
+      {
+        tag: 'Witness One · Quoted',
+        name: 'Blessed Are',
+        passage: 'Matthew 5:3-12',
+        anchor: 'Psalm 1:1-2',
+        status: 'live',
+        href: '/blog/blessed-are',
+        blurb: 'Eight blessings, eight passages already written by the prophets and the psalms.',
+      },
+      {
+        tag: 'Witness Two · Seen',
+        name: 'A City Set on a Hill',
+        passage: 'Matthew 5:13-16',
+        anchor: 'Deuteronomy 4:6',
+        status: 'live',
+        href: '/blog/a-city-set-on-a-hill',
+        blurb:
+          'Salt of the covenant, a lamp that makes no light of its own, and the good works Deuteronomy 4:6 already named.',
+      },
+      {
+        tag: 'Witness Three · Settled',
+        name: 'Not One Jot',
+        passage: 'Matthew 5:17-20',
+        anchor: 'Psalm 119:89',
+        status: 'live',
+        href: '/blog/not-one-jot',
+        blurb: 'Fulfil means fill full, and the clock He set was heaven and earth, not the tree.',
+      },
+      {
+        tag: 'Witness Four · Added',
+        name: 'Ye Have Heard',
+        passage: 'Matthew 5:21-48',
+        anchor: 'Deuteronomy 4:2',
+        status: 'live',
+        href: '/blog/ye-have-heard',
+        blurb: 'Six quotations of what men said, one of which Yahuah never said at all.',
+      },
+      {
+        // The only card with two references, and the only one likely to wrap on
+        // the passage line. Let it wrap; do not shrink the type.
+        tag: 'Witness Five · Asked',
+        name: 'This Is the Law and the Prophets',
+        passage: 'Matthew 5:39-42 · 7:7-12',
+        anchor: 'Deuteronomy 15:7-8',
+        status: 'live',
+        href: '/blog/this-is-the-law-and-the-prophets',
+        blurb:
+          'The cheek, the cloke, the second mile, the asking, and the golden rule sealed by naming the Law.',
+      },
+      {
+        tag: 'Witness Six · Hidden',
+        name: 'Enter Into Thy Closet',
+        passage: 'Matthew 6:1-18',
+        anchor: '1 Samuel 16:7',
+        status: 'live',
+        href: '/blog/enter-into-thy-closet',
+        blurb: 'Alms, prayer, and fasting all kept; only the audience is corrected.',
+      },
+      {
+        tag: 'Witness Seven · Divided',
+        name: 'Ye Cannot Serve',
+        passage: 'Matthew 6:19-34',
+        anchor: 'Deuteronomy 8:3',
+        status: 'live',
+        href: '/blog/ye-cannot-serve',
+        blurb: 'The evil eye is a Hebrew money idiom, and the manna was a test of walking in the Law.',
+      },
+      {
+        tag: 'Witness Eight · Measured',
+        name: 'Judge Not',
+        passage: 'Matthew 7:1-6',
+        anchor: 'Leviticus 19:15',
+        status: 'live',
+        href: '/blog/judge-not',
+        blurb: 'A measure, not a ban, and the paragraph ends with the reader removing the mote.',
+      },
+      {
+        tag: 'Witness Nine · Chosen',
+        name: 'Strait Is the Gate',
+        passage: 'Matthew 7:13-27',
+        anchor: 'Deuteronomy 30:19',
+        status: 'live',
+        href: '/blog/strait-is-the-gate',
+        blurb: 'Deuteronomy 30 and the Torah test for a false prophet.',
+      },
+      {
+        tag: 'Witness Ten · Known',
+        name: 'I Never Knew You',
+        passage: 'Matthew 7:21-23',
+        anchor: 'Psalm 40:8',
+        status: 'live',
+        href: '/blog/i-never-knew-you',
+        blurb: 'The verdict is lawlessness, and every man rejected is inside the assembly.',
       },
     ],
   },
