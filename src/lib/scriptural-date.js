@@ -1,4 +1,4 @@
-// scriptural-date 0908 V1.js
+// scriptural-date 0910 V2.js — comments only: the sun's turn calls the 13th month
 // New file. THE month table and the one function that reads it.
 //
 // WHY THIS EXISTS
@@ -17,8 +17,9 @@
 // the dark conjunction. The 2026 conjunctions are 18 Jan, 17 Feb, 18 Mar,
 // 17 Apr, 16 May, 14 Jun, 14 Jul, 12 Aug, 10 Sep, 10 Oct, 9 Nov, 8 Dec.
 //
-// Spica called a 13th month into the year that ended in April 2026, which is
-// why Aviv 1 is the April moon and not the March one.
+// A 13th month was called into the year that ended in April 2026, because the
+// twelfth month ran out before the sun reached its turn, which is why Aviv 1 is
+// the April moon and not the March one.
 
 export const MONTH_STARTS = {
   aviv:     '2026-04-18',
@@ -33,7 +34,7 @@ export const MONTH_STARTS = {
   month_10: '2027-01-08',
   month_11: '2027-02-07',
   month_12: '2027-03-09',
-  // Empty until Spica calls another one. The walk stops at the first blank.
+  // Empty until the turn calls another one. The walk stops at the first blank.
   month_13: ''
 };
 
