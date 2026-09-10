@@ -58,3 +58,5 @@ The Beatitudes are the credential. Before touching a single command in verse 21,
 The Beatitudes are preached as the gentle new ethic, the soft opening of a kinder covenant, set against the hard Law standing behind it. That contrast collapses the moment the sources are written in the margin. There is no distance between the mountain and the Law, because on the mountain the Law's own psalms and prophets are being quoted back to the crowd, one line at a time.
 
 The second common reading turns them into attitudes a believer should cultivate, which quietly removes the Old Testament from the passage altogether. Read with the sources restored, the opening of the sermon says something much simpler and much harder: nothing new was said on the mountain.
+
+*One of ten witnesses to a single sermon. This one is the quoted — eight blessings the prophets had already spoken. The Law and the Prophets are named at both ends of the mountain, and the case they close is set out in the nucleus study, The Mountain Message Christianity Never Preached.*

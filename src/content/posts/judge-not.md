@@ -58,3 +58,5 @@ And the same speaker settled the matter elsewhere in one line: "Judge not accord
 Judge not has become the one commandment the modern assembly enforces. It is produced whenever conduct is named, and it functions as a gag rather than a scale. The result is a congregation that cannot correct anything, which is the opposite of what Leviticus 19:17 requires of a brother.
 
 The sequence is worth tracing, because it did not happen by accident. Remove the Law and the standard for judgment is gone. Remove judgment and no one is left who can say a standard was broken. What remains is a room full of people who cannot name a single thing as wrong, holding the one verse that makes it feel like obedience.
+
+*One of ten witnesses to a single sermon. This one is the measured — the scale a man judges with, weighed back out to him. The Law and the Prophets are named at both ends of the mountain, and the case they close is set out in the nucleus study, The Mountain Message Christianity Never Preached.*

@@ -46,3 +46,5 @@ Moses drives it to the point four verses on: "And what nation is there so great,
 Let your light shine is preached as warmth, friendliness, and a good attitude at work, with the good works left carefully undefined. They have to stay undefined, because defining them would require naming statutes, and the same pulpit teaches that the statutes were taken out of the way.
 
 Strip the definition out and the saying still sounds pleasant, but it can no longer do what Deuteronomy 4 says it does. Nations do not look twice at a friendly person. They look at a people living by a law nobody else keeps, and then they ask who gave it.
+
+*One of ten witnesses to a single sermon. This one is the seen — the good works the nations watch, named in Deuteronomy before they were named on the mountain. The Law and the Prophets are named at both ends of the mountain, and the case they close is set out in the nucleus study, The Mountain Message Christianity Never Preached.*

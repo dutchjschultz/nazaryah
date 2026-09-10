@@ -62,3 +62,5 @@ Anoint thine head, wash thy face, and let the fast go unseen. Isaiah had already
 This chapter is regularly used to argue that outward religious practice is finished, that Messiah moved everything indoors, and that what matters now is the heart alone. The text does not remove one of the three practices. It keeps all three and fixes the direction they face.
 
 The result of the modern reading is visible. Giving is announced from platforms and printed in reports. Fasting has quietly disappeared. And the one fast Scripture actually commands, on the day of atonement, is not kept at all by the people most certain that the heart is what counts.
+
+*One of ten witnesses to a single sermon. This one is the hidden — the practices kept whole and only the audience corrected. The Law and the Prophets are named at both ends of the mountain, and the case they close is set out in the nucleus study, The Mountain Message Christianity Never Preached.*

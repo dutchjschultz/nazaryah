@@ -60,3 +60,5 @@ It also closes the sermon's frame. The law and the prophets are named at the ope
 These verses are preached as passivity. Absorb the blow, surrender the coat, ask nothing back, and call it meekness. Read that way, Yahushua spends four verses teaching a believer to be a doormat, not twenty verses after defending the Law down to the stroke of a letter.
 
 The golden rule takes the heavier damage. It is quoted as the entire content of the teaching, a moral minimum standing in place of the commandments: treat people well and nothing else is required. The verse refuses that. It names the law and the prophets as the thing being summarized, and a summary requires something behind it. Strip those out and the sentence has nothing left to summarize.
+
+*One of ten witnesses to a single sermon. This one is the asked — the open hand, on the giving side and the receiving side alike. The Law and the Prophets are named at both ends of the mountain, and the case they close is set out in the nucleus study, The Mountain Message Christianity Never Preached.*

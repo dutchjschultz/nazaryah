@@ -48,3 +48,5 @@ That is the passage standing under Matthew 6. Anxiety about provision is the thi
 Two readings share this passage and both empty it. One turns it into a promise of increase, where seeking first is a deposit and the added things are the return. The other turns it into a devotional about worry, comforting and vague, with nothing in it a man could obey on a Tuesday.
 
 Neither one keeps the definition the sermon supplies. The remedy offered for a divided heart is not a better attitude and not a bigger barn. It is His righteousness, and Scripture says plainly what that is.
+
+*One of ten witnesses to a single sermon. This one is the divided — the eye and the master that a man cannot split in two. The Law and the Prophets are named at both ends of the mountain, and the case they close is set out in the nucleus study, The Mountain Message Christianity Never Preached.*

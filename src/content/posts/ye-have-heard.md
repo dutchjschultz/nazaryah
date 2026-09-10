@@ -68,3 +68,5 @@ The section closes on a line the pulpit treats as an impossible standard: "Be ye
 The standard teaching calls this passage the six antitheses, a word meaning opposition, and the label does the work before the reader arrives. Once the section is called opposition, every sentence reads as Messiah against Moses, and the conclusion is written before the text is opened.
 
 Read without the label, the section is a man taking six commands back from those who trimmed them, padded them, and moved them outdoors. He puts each one back where the Law had it, in the heart. That is not opposition. That is repair.
+
+*One of ten witnesses to a single sermon. This one is the added — what men hung on the commandments, taken back off them one at a time. The Law and the Prophets are named at both ends of the mountain, and the case they close is set out in the nucleus study, The Mountain Message Christianity Never Preached.*

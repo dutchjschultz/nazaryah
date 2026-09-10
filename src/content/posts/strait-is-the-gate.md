@@ -50,3 +50,5 @@ Between the trees and the builders stands the verdict already examined elsewhere
 The narrow gate is preached as a single moment of decision, entered by a prayer, after which the way is no longer narrow. Fruit is preached as temperament or as converts counted. The two builders become believing versus not believing, with doing quietly dropped out of a sentence that has doing as its only variable.
 
 Read as written, all three pictures test the same thing, and the sermon closes exactly where it opened. At the front, not one jot passes from the Law. At the back, the man who hears these sayings and does them is the only one whose house is standing when the water goes down.
+
+*One of ten witnesses to a single sermon. This one is the chosen — two ways, and the Torah test for the men who point down them. The Law and the Prophets are named at both ends of the mountain, and the case they close is set out in the nucleus study, The Mountain Message Christianity Never Preached.*

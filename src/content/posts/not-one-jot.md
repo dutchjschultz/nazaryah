@@ -48,3 +48,5 @@ None of this was new on the mountain. "For ever, O Yahuah, thy word is settled i
 The modern teaching is that Messiah fulfilled the Law so that no one else has to keep it, as though fulfilling a thing empties it for everybody else. A husband who fulfils his vows has not ended his marriage. He has been faithful inside it. And the man who insists the Law was finished at verse 17 still has to explain why the One who finished it spent the next three chapters teaching it deeper than the crowd had ever heard it taught.
 
 Entry is through the blood, and nothing here disturbs that. A man is brought near by the offering Yahuah provided, not by his record. But the door was never the destination. The sermon on the mountain begins after the door, and it begins with the Law standing, down to the stroke of a pen.
+
+*One of ten witnesses to a single sermon. This one is the settled — the word that does not pass while heaven and earth are standing. The Law and the Prophets are named at both ends of the mountain, and the case they close is set out in the nucleus study, The Mountain Message Christianity Never Preached.*
