@@ -1,5 +1,9 @@
 ---
-// BlogLayout.astro · 0910 V7
+// BlogLayout.astro · 0910 V8
+// V8: the book-text note honours a `bookText: false` frontmatter flag, so a post
+// filed under a book category but written for the site rather than lifted from
+// print does not claim to be the printed copy. Category is the default, not the
+// authority.
 // V7: a chapter of a book already in print carries BookTextNote at the foot of
 // the body, before Read Next. Driven by category — the four book categories
 // below are the whole set, twenty-six chapters. Published book text is not
@@ -69,7 +73,11 @@ const bookTextCategories = [
   'What the Pulpit Buried',
   'One God, One Name, One Throne',
 ];
-const isBookText = bookTextCategories.includes(category);
+// `bookText: false` in frontmatter suppresses the note on a post filed under a
+// book category that is not reproduced from print. Unset means the category
+// decides. The note claims the page and the printed copy are the same words, so
+// an uncertain page must not carry it.
+const isBookText = bookTextCategories.includes(category) && post.data.bookText !== false;
 
 // Format date
 const formattedDate = date.toLocaleDateString('en-US', {

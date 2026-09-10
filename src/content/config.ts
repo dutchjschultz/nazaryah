@@ -1,4 +1,14 @@
-// content config 0908 V10
+// content config 0910 V11
+// V11: added the optional `bookText` flag — the escape hatch on the book-text
+// note. BlogLayout renders BookTextNote on any post filed under one of the four
+// book categories (The Bearer, Five Titles One Christ, What the Pulpit Buried,
+// One God One Name One Throne), because every chapter of those four is lifted
+// from a book already in print. CATEGORY IS THE DEFAULT, NOT THE AUTHORITY. The
+// note claims that what the reader sees and what is printed in their copy are
+// the same words, so a post filed under one of those categories that was written
+// FOR THE SITE rather than lifted from print must set `bookText: false` and the
+// note disappears. Absent on every existing study, and absent means the category
+// decides — so nothing already published changes.
 // V10: added the optional `epigraph` block — the scriptural line a study opens
 // on, carried in the masthead directly under the deck (title + epigraph are one
 // unit, so it lives in the header, not in the body). Fields: text (the quotation,
@@ -126,6 +136,11 @@ const postsCollection = defineCollection({
     // this is the study's first paragraph, not a label for it.
     lede: z.string().optional(),
     investigation: z.string().optional(),
+    // BOOK TEXT — set `false` on a post filed under a book category that is NOT
+    // reproduced from the printed book (a handout, a companion piece, anything
+    // written for the site). BlogLayout suppresses the book-text note on it.
+    // Leave it unset on a real chapter: the category already says yes.
+    bookText: z.boolean().optional(),
     // Nucleus-study opening block (see src/components/NucleusClaim.astro). The
     // verdict modern teaching holds, where it is heard, and the question this
     // investigation puts to it. Claim + question are the pair that switches the
