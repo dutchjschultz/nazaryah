@@ -33,7 +33,11 @@ That moment is a single instant in the heavens, identical for every man on earth
 
 The Sabbaths of each month fall on the 8th, 15th, 22nd, and 29th, resetting at each renewed moon. The continuous rotating week came from Rome after the resurrection.
 
-The year begins with Aviv, marked when Spica — whose name means ear of grain, the same meaning as Aviv — surpasses the renewed moon. The seventh month opens when Hamal, the Lamb-star, does the same. The barley in the land is the confirming witness; the stars are the primary witness, because the stars can be seen from anywhere on earth and a barley field in Judea cannot.
+The year begins with Aviv, and the marker is the sun itself. Watched from one fixed place, the sun rises far to the south through the winter and far to the north through the summer, walking out and back once each year. One morning in the spring it rises at the exact middle of that walk, and on that day the light and the dark are equal. That is the turn of the year.
+
+The cost of reading it is two stones set on a line and a clear horizon. No instrument, no calculation, and no reckoning handed down from any authority. It works in Egypt, in a wilderness with no field in it, and on the far side of the earth on the same morning. At the turn the point of rising moves nearly a full sun-width every day, the fastest it moves all year, which is why the one moment the calendar needs is the one moment the sun is easiest to read. Hanok describes the same thing as the sun rising in the fourth portal, where the daytime is equal to the night.
+
+The stars hold station rather than mark the turn. Scripture gives them rank and order — brought out by number, every one called by name, not one of them failing (Isaiah 40:26), Mazzaroth brought forth in his season and Ayish guided with her sons (Job 38:32). They are witnesses to a year already fixed, not the instrument that fixes it. The barley in the land is the same: a confirmation, and not a determiner, since Israel kept this appointment in a wilderness where no barley grew (Numbers 9:1-5).
 
 With that in place, the appointed times fall into two groups: four in the first month and the weeks after it, and three in the seventh month. The first group has already landed, to the day and in several cases to the hour. The second group has not.
 
