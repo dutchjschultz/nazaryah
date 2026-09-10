@@ -23,7 +23,7 @@ Giving: "thou shalt open thine hand wide unto thy brother, to thy poor, and to t
 
 Prayer: "if from thence thou shalt seek Yahuah thy God, thou shalt find him, if thou seek him with all thy heart" (Deuteronomy 4:29); "Evening, and morning, and at noon, will I pray" (Psalm 55:17).
 
-Fasting: the day of atonement, where the command is to afflict your souls, a statute for ever (Leviticus 16:29-31); "turn ye even to me with all your heart, and with fasting" (Joel 2:12).
+Fasting: Yom Kippur, where the command is to afflict your souls, a statute for ever (Leviticus 16:29-31); "turn ye even to me with all your heart, and with fasting" (Joel 2:12).
 
 ## The Problem Was the Audience
 
