@@ -1,4 +1,4 @@
-// scriptural-date 0910 V2.js — comments only: the sun's turn calls the 13th month
+// scriptural-date 0910 V3.js — comments only: Day 1 is the dawn after the passing
 // New file. THE month table and the one function that reads it.
 //
 // WHY THIS EXISTS
@@ -13,9 +13,10 @@
 // UPDATING THE YEAR
 //
 // Edit MONTH_STARTS here and nowhere else, then climb the version on line 1.
-// Every entry is the CONJUNCTION + 1 — Day 1 is the first sliver of light, not
-// the dark conjunction. The 2026 conjunctions are 18 Jan, 17 Feb, 18 Mar,
-// 17 Apr, 16 May, 14 Jun, 14 Jul, 12 Aug, 10 Sep, 10 Oct, 9 Nov, 8 Dec.
+// Every entry is the CONJUNCTION + 1 — Day 1 is the dawn after the passing,
+// not the dark conjunction itself and not a sighted crescent. The 2026
+// conjunctions are 18 Jan, 17 Feb, 18 Mar, 17 Apr, 16 May, 14 Jun, 14 Jul,
+// 12 Aug, 10 Sep, 10 Oct, 9 Nov, 8 Dec.
 //
 // A 13th month was called into the year that ended in April 2026, because the
 // twelfth month ran out before the sun reached its turn, which is why Aviv 1 is
