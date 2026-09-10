@@ -1,0 +1,163 @@
+---
+// BookTextNote.astro · 0910 V1
+//
+// The standing note for any page that carries the text of a book already in
+// print. Placed at the foot of the body, before the companion navigation.
+//
+// WHY IT EXISTS. Published book text is not edited on the site — the page and
+// the printed copy stay identical, and a correction is made by naming it rather
+// than by rewriting the page. The note says so where the reader can see it.
+//
+// WHERE IT RENDERS. Twenty-six chapter posts across four books, driven from
+// BlogLayout by the post's category, plus src/pages/books/revelation.astro,
+// which carries The Courtroom of Heaven as a single page rather than chapters.
+//
+// WHAT IT IS NOT ON. The five book landing pages keep their own `bk-note`
+// blocks (an author's note, a different thing). Six Acts, One Pardon is a
+// handout rather than reproduced text, so it stays out: the note makes a
+// factual claim, and an uncertain page must not carry it.
+//
+// STYLES. Lifted from the `bk-note` shape used on the landing pages — centred,
+// a small monospace label over an italic serif block — but re-tokenised for the
+// blog palette so it reads on the study background rather than the book one.
+// The landing pages were deliberately left on their own copies; do not
+// refactor them into this component without a reason to touch them.
+//
+// seeAlso: optional. Where a specific point on a page has since been corrected,
+// pass { title, href } and the second line renders beneath the note. Nothing
+// renders without it.
+
+interface Props {
+  seeAlso?: { title: string; href: string };
+  tone?: 'study' | 'book';
+}
+
+const { seeAlso, tone = 'study' } = Astro.props;
+---
+
+<aside class={`btn-booktext is-${tone}`} data-pagefind-ignore>
+  <p class="btn-booktext-label">A NOTE ON THIS TEXT</p>
+  <p class="btn-booktext-body">
+    <strong>This page carries the book as published.</strong> Where later study
+    has sharpened or corrected a point, the correction is kept in the studies on
+    this site rather than made to the book's text &mdash; so that what you read
+    here and what is printed in your copy are the same words. Corrections are
+    named openly rather than quietly applied.
+  </p>
+  <p class="btn-booktext-press">Ancient Paths Restoration Press</p>
+  {seeAlso && (
+    <p class="btn-booktext-seealso">
+      On this page, see also: <a href={seeAlso.href}>{seeAlso.title}</a>
+    </p>
+  )}
+</aside>
+
+<style>
+  .btn-booktext {
+    max-width: 48rem;
+    margin: 4rem auto 0;
+    padding: 1.75rem 1.5rem;
+    border-top: 1px solid var(--sand-dark);
+    border-bottom: 1px solid var(--sand-dark);
+    text-align: center;
+  }
+
+  .btn-booktext-label {
+    font-family: var(--font-display), 'JetBrains Mono', monospace;
+    font-size: 0.625rem;
+    letter-spacing: 0.3em;
+    color: var(--ink-faded);
+    margin: 0 0 1rem;
+  }
+
+  .btn-booktext-body {
+    font-family: var(--font-body), Georgia, serif;
+    font-size: 1.0625rem;
+    font-style: italic;
+    line-height: 1.65;
+    color: var(--ink);
+    margin: 0;
+  }
+
+  .btn-booktext-body strong {
+    font-style: normal;
+    font-weight: 600;
+  }
+
+  .btn-booktext-press {
+    font-family: var(--font-display), Georgia, serif;
+    font-size: 0.8125rem;
+    font-style: italic;
+    letter-spacing: 0.05em;
+    color: var(--bronze);
+    margin: 1rem 0 0;
+  }
+
+  .btn-booktext-seealso {
+    font-family: var(--font-body), Georgia, serif;
+    font-size: 0.875rem;
+    color: var(--ink-faded);
+    margin: 1rem 0 0;
+  }
+
+  .btn-booktext-seealso a {
+    color: var(--bronze);
+    font-style: italic;
+  }
+
+  /* Dark mode — the site puts `.dark` on the root and components override from
+     it, the same way the Read Next block does a few lines down in BlogLayout. */
+  :global(.dark) .btn-booktext.is-study {
+    border-top-color: rgba(196, 173, 132, 0.28);
+    border-bottom-color: rgba(196, 173, 132, 0.28);
+  }
+  :global(.dark) .btn-booktext.is-study .btn-booktext-label {
+    color: var(--gold-light);
+  }
+  :global(.dark) .btn-booktext.is-study .btn-booktext-body {
+    color: var(--color-dark-text);
+  }
+  :global(.dark) .btn-booktext.is-study .btn-booktext-press,
+  :global(.dark) .btn-booktext.is-study .btn-booktext-seealso {
+    color: var(--color-dark-secondary-text);
+  }
+  :global(.dark) .btn-booktext.is-study .btn-booktext-seealso a {
+    color: var(--gold-light);
+  }
+
+  /* Book tone — the dark reader palette used by the book pages, where the study
+     tokens do not exist. Same shape, the colours the surrounding page already
+     uses. */
+  .btn-booktext.is-book {
+    border-top-color: rgba(139, 40, 40, 0.2);
+    border-bottom-color: rgba(139, 40, 40, 0.2);
+  }
+  .btn-booktext.is-book .btn-booktext-label {
+    font-family: 'JetBrains Mono', monospace;
+    color: #8B2828;
+  }
+  .btn-booktext.is-book .btn-booktext-body {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #D4C4A8;
+  }
+  .btn-booktext.is-book .btn-booktext-press {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    color: #8A7E70;
+  }
+  .btn-booktext.is-book .btn-booktext-seealso {
+    color: #8A7E70;
+  }
+  .btn-booktext.is-book .btn-booktext-seealso a {
+    color: #D4C4A8;
+  }
+
+  @media (max-width: 640px) {
+    .btn-booktext {
+      margin-top: 3rem;
+      padding: 1.5rem 1rem;
+    }
+    .btn-booktext-body {
+      font-size: 1rem;
+    }
+  }
+</style>

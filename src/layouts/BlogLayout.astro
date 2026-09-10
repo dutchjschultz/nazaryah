@@ -1,5 +1,10 @@
 ---
-// BlogLayout.astro · 0908 V6
+// BlogLayout.astro · 0910 V7
+// V7: a chapter of a book already in print carries BookTextNote at the foot of
+// the body, before Read Next. Driven by category — the four book categories
+// below are the whole set, twenty-six chapters. Published book text is not
+// edited on the site, and the note says so where the reader can see it.
+// Renders nothing on an ordinary study.
 // V6: a study carrying an `epigraph` block shows it inside the header, directly
 // under the deck. Title, deck and epigraph are one masthead unit — the meta row
 // (author, date, read time), the claim block and the lede all come after it, and
@@ -34,6 +39,7 @@ import WatchCard from '../components/WatchCard.astro';
 import NucleusClaim from '../components/NucleusClaim.astro';
 import Epigraph from '../components/Epigraph.astro';
 import InvestigationBar from '../components/InvestigationBar.astro';
+import BookTextNote from '../components/BookTextNote.astro';
 import { getEntry } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
@@ -52,6 +58,18 @@ const bookCategories: Record<string, string> = {
   'What the Pulpit Buried': '/books/pulpit-buried',
 };
 const bookHref = bookCategories[category];
+
+// Chapters of a book already in print. `bookCategories` above is the header
+// back-link and covers three of the four; One God, One Name, One Throne is a
+// book on the shelf too, so the note set is its own list rather than that map's
+// keys. Twenty-six chapters in total.
+const bookTextCategories = [
+  'The Bearer',
+  'Five Titles, One Christ',
+  'What the Pulpit Buried',
+  'One God, One Name, One Throne',
+];
+const isBookText = bookTextCategories.includes(category);
 
 // Format date
 const formattedDate = date.toLocaleDateString('en-US', {
@@ -189,6 +207,9 @@ const companions = (
       <div class="max-w-3xl mx-auto">
         <InvestigationBar current={post} />
       </div>
+
+      <!-- Book text note (a chapter of a book in print; nothing on an ordinary study) -->
+      {isBookText && <BookTextNote />}
 
       <!-- Companion studies (wrapper-rendered; each points at its /blog/ sibling).
            Row on desktop, stacked on mobile. One companion looks as it always has. -->

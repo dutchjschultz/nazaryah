@@ -1,5 +1,6 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import BookTextNote from '../../components/BookTextNote.astro';
 
 const ACCENT = '#8B2828';
 
@@ -2897,6 +2898,8 @@ function toRoman(n: number) {
       </article>
 
       <!-- Prev / Next -->
+      <BookTextNote tone="book" />
+
       <nav class="rd-nav" id="rd-nav">
         <button id="rd-prev-btn" class="rd-nav-btn" style="text-align:left">
           <div class="rd-nav-label">◄ PREVIOUS</div>
