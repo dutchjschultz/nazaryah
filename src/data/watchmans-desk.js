@@ -1,4 +1,11 @@
-// watchmans-desk 0809 V13.js
+// watchmans-desk 0911 V14.js
+// V14: loaded "Wrap It In A Bow" (open-letter, 11 September, standalone). By
+// sortDate it is the newest, so it takes the band and Carved in Granite drops
+// toward the archive. Status "filed" and law "Names of other gods" were not
+// supplied with the upload — both are Etsy's read from the neighbouring
+// open-letter entry and the canonical law list in V12, and both are flagged for
+// Dutch. Card resolves from disk at /og/watchmans-desk/<slug>.vN.png; no
+// ogImage in the data file (V6 convention).
 // V13: war-in-jacobs-land sortDate 2026-04-01 (placeholder) -> 2026-07-24, the
 // first-commit date of its content file (watchmans-report/war-in-jacobs-land.md,
 // commit 55cd483). Display date "Ongoing" unchanged.
@@ -67,6 +74,18 @@ export const STATUSES = {
 // string (a calendar date, or a phrase like "Ongoing") and is shown verbatim;
 // it is never parsed or sorted on. Give every new entry a sortDate.
 export const entries = [
+  {
+    slug: "wrap-it-in-a-bow",
+    kind: "open-letter", status: "filed", date: "11 September 2026",
+    sortDate: "2026-09-11",
+    eyebrow: "",
+    title: "Wrap It In A Bow",
+    deck: "Four empires left their fingerprints on the religion that claims a Hebrew Messiah. Not one of them worshipped the Elohim of Abraham.",
+    body: "A business card came back from the printer with five lines on it. Egyptian sun-worship. Babylonian mysticism. Greek philosophy. Roman Mithraism. Wrap it in a bow and call it Christianity.",
+    strapline: "Egyptian sun-worship. Babylonian mysticism. Greek philosophy. Roman Mithraism.",
+    law: "Names of other gods",
+    source: "standalone",
+  },
   {
     slug: "carved-in-granite-buried-at-calvary",
     kind: "weekly-letter", status: "week-ending", date: "9 August 2026",
