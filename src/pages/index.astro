@@ -1,5 +1,10 @@
 ---
-// src/pages/index.astro · 0902 V10
+// src/pages/index.astro · 0911 V11
+// V11: the What They Buried rail loses its Living Temple placeholder and gains
+// the Investigations section card (/investigations). The Living Temple is live —
+// 5 of 5 pieces — so nothing on this page may call it draft or coming soon. The
+// DRAFT badge, the Placeholder eyebrow and the Coming soon line go with the tile.
+// Cosmology is now the only placeholder left in the rail.
 // V10: latestVideo swapped to the second Dutchman upload — "The Nation Is Not
 // the Church" (the Wicked Husbandmen). Title + url only; the card is untouched.
 // V9: the Dutchman channel card in the Watchman's Desk carries a small
@@ -51,7 +56,7 @@ const latestVideo = {
 
 // ── THE RAIL (evergreen structure) ───────────────────────────────────────
 // Level 1 group → its subcategory cards. Copy is approved except for the two
-// placeholders. `draft: true` now marks only those (Cosmology, Living Temple):
+// placeholders. `draft: true` now marks only those (Cosmology):
 // no route yet, so they render a DRAFT badge + neutral icon + Coming Soon.
 // `placeholder: true` = a subject with no route yet.
 // Every href below is an existing route; nothing here invents a URL.
@@ -92,7 +97,7 @@ const railGroups = [
     items: [
       { href: '/christian-or-demonic', color: 'oxblood', icon: '⚖', eyebrow: 'Test what you were taught', title: 'Christian <em>or Demonic?</em>', description: 'Five pillars every believer inherited without testing. Hold each one to the text and see what stands.', cta: 'Begin the Examination' },
       { href: '/hidden-gems', color: 'teal', icon: '◈', eyebrow: 'Buried in plain sight', title: 'Hidden <em>Gems</em>', description: 'The verses your pastor flipped past — and what they actually mean.', cta: 'Dig In' },
-      { placeholder: true, draft: true, color: 'sepia', icon: '', eyebrow: 'Placeholder', title: 'Living <em>Temple</em>', description: 'You are the temple. What dwells in it, what defiles it, and what keeps it set apart.', cta: 'Coming soon' },
+      { href: '/investigations', color: 'sepia', icon: '§', eyebrow: 'Many witnesses, one verdict', title: '<em>Investigations</em>', description: 'One claim put on the stand and examined witness by witness.', cta: 'Open the File' },
     ],
   },
   {
