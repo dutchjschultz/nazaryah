@@ -1,4 +1,15 @@
-// watchmans-desk 0911 V14.js
+// watchmans-desk 0917 V15.js
+// V15: loaded "A Knot in the Stomach" (field-brief, 17 September, standalone).
+// By sortDate it is the newest, so it takes the top of the desk stream and the
+// first band slot; Wrap It In A Bow stays in the band and Carved in Granite is
+// already in the archive — nothing is moved by hand, the sort does it. New law
+// "Hating thy brother in thine heart" — a TENTH canonical string, added to the
+// V12 list below; it duplicates no existing chip. `strapline` was not supplied
+// with the upload — "One word, checked in a conversation" is Etsy's, built on
+// the pattern of the neighbouring field-brief straplines, and flagged for Dutch.
+// The upload also asked for the card at /og/watchmans-desk/<slug>.png; the card
+// went to <slug>.v2.png instead, the versioned path the generator writes and
+// BaseLayout prefers (V6 convention). Thumb path was as supplied.
 // V14: loaded "Wrap It In A Bow" (open-letter, 11 September, standalone). By
 // sortDate it is the newest, so it takes the band and Carved in Granite drops
 // toward the archive. Status "filed" and law "Names of other gods" were not
@@ -13,7 +24,8 @@
 // canonical law strings — reuse CHARACTER FOR CHARACTER on future entries:
 //   Divers weights · Talebearing · Names of other gods · False witness ·
 //   Adding to the word · Mocking the afflicted · Offerings to the dead ·
-//   Standing images · The land is mine
+//   Standing images · The land is mine ·
+//   Hating thy brother in thine heart  (added V15)
 // V11: The Wedge Is Quiet gets law "False witness". Every entry already carried
 // an ISO sortDate driving the sort; display dates ("May 25", "Ongoing") are shown
 // verbatim and never parsed.
@@ -74,6 +86,18 @@ export const STATUSES = {
 // string (a calendar date, or a phrase like "Ongoing") and is shown verbatim;
 // it is never parsed or sorted on. Give every new entry a sortDate.
 export const entries = [
+  {
+    slug: "a-knot-in-the-stomach",
+    kind: "field-brief", status: "filed", date: "17 September 2026",
+    sortDate: "2026-09-17",
+    eyebrow: "",
+    title: "A Knot in the Stomach",
+    deck: "A friend gave the Spirit the credit for mending things with his sister. He was right about the move. The word he used for it is smaller than he thinks.",
+    body: "A conversation with a friend this week turned on one word. He uses agape often, and he means it. He spoke of a break with his sister he could not leave alone, of a knot in his stomach that stayed until he went and talked it out with her.",
+    strapline: "One word, checked in a conversation",
+    law: "Hating thy brother in thine heart",
+    source: "standalone",
+  },
   {
     slug: "wrap-it-in-a-bow",
     kind: "open-letter", status: "filed", date: "11 September 2026",
