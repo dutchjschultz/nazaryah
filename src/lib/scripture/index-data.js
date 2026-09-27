@@ -1,4 +1,9 @@
-// index-data 0927 V3.js
+// index-data 0927 V4.js
+// V4: the tie-break changes. A verse covered by more than one citation on the
+// same page points at the NARROWEST citation (fewest verses); page order only
+// breaks a tie between equally narrow ones. So "Gen 1:1-19" on an early card
+// still expands (every verse stays findable) but loses the link to "Gen 1:6-8"
+// on the card that teaches it.
 // V3: a verse cited under two anchors on the same page (two cards that both
 // print it) is still listed once for that page, and now points at the anchor
 // FIRST IN PAGE ORDER, carrying that citation's range and tier. Was: whichever
@@ -87,23 +92,27 @@ async function build() {
         subjects: (post.data.associations ?? []).filter((k) => CLUSTERS[k]),
         tier: r.tier ?? null,
         citedAs: parsed.display,
-        // Where this citation sits on the page; an unanchored one links to the
-        // top and yields to any anchored citation of the same verse.
+        // How wide the citation is, and where it sits on the page; an
+        // unanchored one links to the top and yields to any anchored citation.
+        _width: 0,
         _pos: r.anchor ? anchors.get(r.anchor) : Infinity,
       };
-      for (const verse of expandRef(parsed)) {
+      const verses = expandRef(parsed);
+      cite._width = verses.length;
+      for (const verse of verses) {
         const entry = entryFor(verse);
         const prior = entry.cites.find((x) => x.slug === cite.slug);
         if (!prior) {
           entry.cites.push({ ...cite, _tiers: cite.tier ? [cite.tier] : [] });
           continue;
         }
-        // Same page, same verse, cited under two anchors (a card that repeats a
-        // verse another card teaches): the page is listed ONCE, pointing at the
-        // anchor that comes FIRST IN PAGE ORDER, with that citation's range and
-        // tier. Frontmatter order does not matter.
+        // Same page, same verse, cited more than once: the page is listed ONCE,
+        // pointing at the NARROWEST citation (fewest verses), with that
+        // citation's range and tier. Page order breaks a tie between equally
+        // narrow citations. Frontmatter order does not matter.
         if (cite.tier) prior._tiers.push(cite.tier);
-        if (cite._pos < prior._pos) Object.assign(prior, { href: cite.href, citedAs: cite.citedAs, tier: cite.tier, _pos: cite._pos });
+        const narrower = cite._width < prior._width || (cite._width === prior._width && cite._pos < prior._pos);
+        if (narrower) Object.assign(prior, { href: cite.href, citedAs: cite.citedAs, tier: cite.tier, _width: cite._width, _pos: cite._pos });
       }
     }
   }
@@ -112,6 +121,7 @@ async function build() {
   for (const entry of entries.values()) {
     for (const c of entry.cites) {
       if (!c.tier && c._tiers.length) c.tier = [...c._tiers].sort((a, b) => TIER_RANK[a] - TIER_RANK[b])[0];
+      delete c._width;
       delete c._pos;
       delete c._tiers;
     }

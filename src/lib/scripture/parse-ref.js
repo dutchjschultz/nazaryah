@@ -1,4 +1,8 @@
-// parse-ref 0927 V1.js
+// parse-ref 0927 V2.js
+// V2: a one-chapter book (Obadiah, Philemon, 2 John, 3 John, Jude) may be
+// cited by verse alone — "Jude 13", "Jude 14-15" — and is read as chapter 1.
+// Surfaced by the first real gathered.js, which cites "Jude 13". Every other
+// book still needs its chapter: "Ps 19" is still an error.
 // V1: the one parser for Scripture references in the index.
 //
 // Canonical form:  Book C:V   |   Book C:V-V   |   Book C:V-C:V (crosses a chapter)
@@ -12,13 +16,21 @@
 import { BOOK_BY_KEY, resolveBook } from './books.js';
 
 const SHAPE = /^(.+?)\s*(\d+):(\d+)(?:\s*-\s*(?:(\d+):)?(\d+))?$/;
+const VERSE_ONLY = /^(.+?)\s*(\d+)(?:\s*-\s*(\d+))?$/;
 
 // → { ok: true, book, start: {c, v}, end: {c, v}, key: 'Gen 1:14-19', display: 'Genesis 1:14–19' }
 // → { ok: false, error: 'why' }
 export function parseRef(input) {
   const raw = String(input ?? '').trim().replace(/[–—]/g, '-');
-  const m = raw.match(SHAPE);
-  if (!m) return { ok: false, error: 'not in the form "Book C:V" or "Book C:V-V"' };
+  let m = raw.match(SHAPE);
+  if (!m) {
+    // A one-chapter book is commonly cited by verse alone ("Jude 13",
+    // "Obad 21"); read it as chapter 1. Any other book still needs its chapter.
+    const v = raw.match(VERSE_ONLY);
+    const one = v && resolveBook(v[1]);
+    if (one && one.chapters.length === 1) m = [raw, v[1], '1', v[2], v[3] ? '1' : undefined, v[3]];
+    else return { ok: false, error: 'not in the form "Book C:V" or "Book C:V-V"' };
+  }
 
   const book = resolveBook(m[1]);
   if (!book) return { ok: false, error: `unknown book "${m[1].trim()}"` };
