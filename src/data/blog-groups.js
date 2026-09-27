@@ -1,4 +1,8 @@
-// blog-groups 0908 V9.js
+// blog-groups 0927 V10.js
+// V10: The Heavens and the Earth joins BURIED IN PLAIN SIGHT, where its
+// frontmatter category already puts it. Its batch (associations-batch-23) said
+// nothing about this file; the line is still required, because inFeed is
+// !!POST_GROUP[slug]. Map total 100 → 101.
 // V9: The Mountain Message investigation joins the feed — its hub and its ten
 // studies, all into THE LAW & THE FEASTS (4 → 15), which is where their
 // frontmatter category ("The Law Still Stands") already puts them. Without these
@@ -128,6 +132,7 @@ export const POST_GROUP = {
   'the-christian-experiment': 'buried-in-plain-sight',
   'the-men-in-the-margin': 'buried-in-plain-sight',
   'the-lie-of-gravity': 'buried-in-plain-sight',
+  'the-heavens-and-the-earth': 'buried-in-plain-sight',
   'the-rockefeller-system': 'buried-in-plain-sight',
   'the-short-season': 'buried-in-plain-sight',
   'the-sword-that-was-never-ours': 'buried-in-plain-sight',

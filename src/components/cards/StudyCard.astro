@@ -1,0 +1,100 @@
+---
+// StudyCard.astro · 0927 V1
+// V1: one card in a StudyCardGrid. The card's title is an ordinary markdown
+// heading written inside it (so it gets an id, shows in the page's headings,
+// and can be a Scripture-index `anchor`); the deck line, body, and verses
+// follow as markdown.
+//
+// `verses` + `anchor`: the card's "Verses:" line is NOT typed in the body. It is
+// built from the post's own `refs` frontmatter — every ref whose anchor is this
+// card's heading id — so the verse list lives in one place and the Scripture
+// index and the card can never disagree. Pass `verses={frontmatter.refs}`.
+//
+// `source`: a record citation (Band 7 style), shown under the body. `sourceLinks`
+// is an optional list of { label, href } rendered after it.
+// `link`: an optional { label, href } read-more line at the foot of the card.
+import { parseRef } from '../../lib/scripture/parse-ref.js';
+
+interface Ref { ref: string; anchor?: string }
+interface Props {
+  anchor?: string;
+  verses?: Ref[];
+  source?: string;
+  sourceLinks?: { label: string; href: string }[];
+  link?: { label: string; href: string };
+}
+const { anchor, verses = [], source, sourceLinks = [], link } = Astro.props;
+
+const mine = anchor
+  ? verses.filter((r) => r.anchor === anchor).map((r) => {
+      const p = parseRef(r.ref);
+      if (!p.ok) throw new Error(`[StudyCard] bad ref "${r.ref}" on card "${anchor}": ${p.error}`);
+      return p.display;
+    })
+  : [];
+if (anchor && !mine.length) {
+  throw new Error(`[StudyCard] card "${anchor}" has an anchor but no refs in frontmatter point at it`);
+}
+---
+
+<div class="sc">
+  <slot />
+  {mine.length > 0 && (
+    <p class="sc-verses"><span class="sc-label">Verses</span> {mine.join('; ')}</p>
+  )}
+  {source && (
+    <p class="sc-source">
+      <span class="sc-label">Source</span> {source}
+      {sourceLinks.map((l) => (
+        <>
+          {' '}<a href={l.href} rel="noopener" target="_blank">{l.label}</a>
+        </>
+      ))}
+    </p>
+  )}
+  {link && (
+    <p class="sc-link"><a href={link.href}>{link.label} &rarr;</a></p>
+  )}
+</div>
+
+<style>
+  .sc {
+    border: 1px solid var(--color-border-strong, #d4cec4);
+    border-top: 3px solid var(--gold);
+    border-radius: 4px;
+    padding: 1.1rem 1.25rem 1rem;
+    background: rgba(255, 255, 255, 0.35);
+    min-width: 0;
+  }
+  :global(.dark) .sc {
+    border-color: var(--color-dark-border-strong);
+    border-top-color: var(--gold-light);
+    background: rgba(255, 255, 255, 0.03);
+  }
+  /* Slotted markdown: Astro scoping does not reach it, hence :global under .sc */
+  .sc :global(h3) { margin-top: 0 !important; margin-bottom: 0.35rem !important; }
+  .sc :global(h3 + p > em:only-child) { display: block; }
+  .sc :global(p) { margin: 0.6rem 0; }
+  .sc-verses,
+  .sc-source {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    border-top: 1px solid var(--color-border, #e8e5df);
+    padding-top: 0.55rem;
+    margin-top: 0.9rem !important;
+  }
+  :global(.dark) .sc-verses,
+  :global(.dark) .sc-source { border-top-color: var(--color-dark-border); }
+  .sc-source + .sc-verses,
+  .sc-verses + .sc-source { border-top: 0; padding-top: 0; margin-top: 0.3rem !important; }
+  .sc-label {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--gold);
+    margin-right: 0.35rem;
+  }
+  :global(.dark) .sc-label { color: var(--gold-light); }
+  .sc-link { font-size: 0.95rem; margin-bottom: 0 !important; }
+</style>

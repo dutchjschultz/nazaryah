@@ -1,0 +1,24 @@
+---
+// StudyCardGrid.astro · 0927 V1
+// V1: lays a band of study cards out in columns inside a post body (first used
+// by The Heavens and the Earth). `full` makes every card span the full width —
+// for a band whose copy says "full-width card, no columns".
+interface Props {
+  full?: boolean;
+}
+const { full = false } = Astro.props;
+---
+
+<div class:list={['scg', { 'scg--full': full }]}>
+  <slot />
+</div>
+
+<style>
+  .scg {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
+    gap: 1.25rem;
+    margin: 1.5rem 0 2.5rem;
+  }
+  .scg--full { grid-template-columns: 1fr; }
+</style>
