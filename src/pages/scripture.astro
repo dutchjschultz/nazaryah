@@ -1,0 +1,112 @@
+---
+// src/pages/scripture.astro · 0927 V1
+// V1: the site-wide Scripture index, first pass — grouping and the search box.
+// Generated on every build from the studies' `refs` frontmatter and
+// src/data/gathered.js (see src/lib/scripture/index-data.js). NEVER edit an
+// entry here: change the study's frontmatter and the index follows.
+// Not linked in nav yet; reachable at /scripture.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import ScriptureIndex from '../components/ScriptureIndex.jsx';
+import { getScriptureIndex } from '../lib/scripture/index-data.js';
+
+const index = await getScriptureIndex();
+const { counts } = index;
+---
+
+<BaseLayout
+  title="Scripture Index | Nazaryah"
+  description="Every verse the site teaches on, and every study that uses it. Find the passage, see who handles it, go straight there."
+>
+  <main class="sx-page">
+    <header class="sx-head">
+      <p class="sx-kicker">Scripture Index</p>
+      <h1 class="sx-h1">Every Verse, Every Study</h1>
+      <p class="sx-lede">
+        Find the passage and go straight to the page that handles it. Each verse lists every study that cites it; open the verse to read it in place.
+      </p>
+      <p class="sx-counts">
+        {counts.versesIndexed} verses from {counts.pagesCiting} {counts.pagesCiting === 1 ? 'study' : 'studies'}
+        {counts.gatheredOnly > 0 && <> · {counts.gatheredOnly} gathered, not yet studied</>}
+      </p>
+    </header>
+
+    <ScriptureIndex client:load index={index} />
+
+    <p class="sx-source">
+      Verse text: King James Version, with Yahuah and Yahushua restored.
+    </p>
+  </main>
+</BaseLayout>
+
+<style is:global>
+  /* sx- : the Scripture index. is:global because the island's markup is not
+     reached by Astro's scoped styles. */
+  .sx-page { max-width: 48rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; font-family: var(--font-body); color: var(--ink); }
+  .dark .sx-page { color: var(--color-dark-text); }
+
+  .sx-head { margin-bottom: 2rem; }
+  .sx-kicker { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.5rem; }
+  .dark .sx-kicker { color: var(--gold-light); }
+  .sx-h1 { font-family: var(--font-display); font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.15; margin: 0 0 0.75rem; }
+  .sx-lede { font-size: 1.15rem; font-style: italic; color: var(--ink-faded); margin: 0 0 0.75rem; }
+  .dark .sx-lede { color: var(--color-dark-secondary-text); }
+  .sx-counts { font-size: 0.95rem; color: var(--ink-faded); margin: 0; }
+  .dark .sx-counts { color: var(--color-dark-secondary-text); }
+
+  .sx-search { padding: 0.75rem 0; margin-bottom: 1rem; border-bottom: 1px solid var(--color-border, #e8e5df); }
+  .dark .sx-search { border-bottom-color: var(--color-dark-border); }
+  .sx-search-label { display: block; font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--ink-faded); margin-bottom: 0.35rem; }
+  .dark .sx-search-label { color: var(--color-dark-secondary-text); }
+  .sx-search-input { width: 100%; box-sizing: border-box; font: inherit; font-size: 1.1rem; padding: 0.6rem 0.8rem; border: 1px solid var(--color-border-strong, #d4cec4); border-radius: 4px; background: var(--color-surface, #fff); color: inherit; }
+  .sx-search-input:focus { outline: 2px solid var(--gold); outline-offset: 1px; }
+  .dark .sx-search-input { background: var(--color-dark-surface); border-color: var(--color-dark-border-strong); }
+  .sx-search-count { font-size: 0.85rem; color: var(--ink-faded); margin: 0.35rem 0 0; }
+  .dark .sx-search-count { color: var(--color-dark-secondary-text); }
+  .sx-empty { font-style: italic; color: var(--ink-faded); }
+
+  .sx-book { margin: 2.5rem 0 0; scroll-margin-top: 7rem; }
+  .sx-book-name { font-family: var(--font-display); font-size: 1.5rem; margin: 0 0 0.25rem; padding-bottom: 0.35rem; border-bottom: 2px solid var(--gold); }
+  .dark .sx-book-name { border-bottom-color: var(--gold-light); }
+  .sx-chapter-name { font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink-faded); margin: 1.25rem 0 0.4rem; }
+  .dark .sx-chapter-name { color: var(--color-dark-secondary-text); }
+
+  .sx-entries { list-style: none; margin: 0; padding: 0; }
+  .sx-entry { padding: 0.7rem 0; border-bottom: 1px solid var(--color-border, #e8e5df); scroll-margin-top: 7rem; }
+  .dark .sx-entry { border-bottom-color: var(--color-dark-border); }
+  .sx-entry:target { background: rgba(196, 154, 78, 0.12); }
+
+  .sx-verse > summary { cursor: pointer; list-style: none; display: flex; align-items: baseline; gap: 0.6rem; }
+  .sx-verse > summary::-webkit-details-marker { display: none; }
+  .sx-ref { font-variant: small-caps; font-weight: 600; font-size: 1.1rem; letter-spacing: 0.03em; }
+  .sx-toggle { font-size: 0.8rem; color: var(--ink-faded); }
+  .sx-toggle::before { content: '+ '; }
+  .sx-verse[open] .sx-toggle::before { content: '\2212  '; }
+  .dark .sx-toggle { color: var(--color-dark-secondary-text); }
+  .sx-text { margin: 0.4rem 0 0.2rem; padding: 0.1rem 0 0.1rem 0.9rem; border-left: 2px solid var(--gold-light); font-style: italic; line-height: 1.55; }
+
+  .sx-cites { list-style: none; margin: 0.35rem 0 0; padding: 0; }
+  .sx-cite { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.25rem 0.6rem; padding: 0.15rem 0; }
+  .sx-cite-title { font-weight: 600; color: var(--color-link, #1e4d7b); text-decoration: none; }
+  .sx-cite-title:hover { text-decoration: underline; }
+  .dark .sx-cite-title { color: var(--color-dark-link); }
+  .sx-cite-meta { font-size: 0.9rem; color: var(--ink-faded); display: inline-flex; gap: 0.5rem; }
+  .dark .sx-cite-meta { color: var(--color-dark-secondary-text); }
+  .sx-cite-as { font-style: italic; }
+  .sx-cite-section + .sx-cite-as::before { content: '· '; font-style: normal; }
+
+  .sx-tier { font-family: var(--font-display); font-size: 0.66rem; letter-spacing: 0.1em; text-transform: uppercase; padding: 0.1rem 0.45rem; border-radius: 3px; border: 1px solid currentColor; }
+  .sx-tier.is-plain { color: #2f5d3a; }
+  .sx-tier.is-supporting { color: #1e4d7b; }
+  .sx-tier.is-care { color: #8b2635; }
+  .dark .sx-tier.is-plain { color: #8fc49b; }
+  .dark .sx-tier.is-supporting { color: #6ba3d4; }
+  .dark .sx-tier.is-care { color: #e08a96; }
+
+  .sx-entry.is-gathered { opacity: 0.55; }
+  .sx-not-yet { margin: 0.3rem 0 0; font-size: 0.9rem; display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .sx-not-yet-mark { font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 0.12em; text-transform: uppercase; }
+  .sx-not-yet-note { font-style: italic; }
+
+  .sx-source { margin-top: 3rem; font-size: 0.85rem; font-style: italic; color: var(--ink-faded); }
+  .dark .sx-source { color: var(--color-dark-secondary-text); }
+</style>

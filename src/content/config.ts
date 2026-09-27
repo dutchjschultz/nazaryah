@@ -1,4 +1,12 @@
-// content config 0910 V11
+// content config 0927 V12
+// V12: added the optional `refs` list — the passages a study teaches on, which
+// the Scripture index at /scripture is generated from (one source of truth: no
+// verse list lives anywhere else). Each entry: ref (required, "Gen 1:14" or
+// "Gen 1:14-19"; parsed by src/lib/scripture/parse-ref.js), tier (optional:
+// plain | supporting | care), anchor (optional: the id of the heading where the
+// verse is handled). An unresolvable ref FAILS THE BUILD with the file name and
+// the bad string — nothing is silently dropped. Absent on every existing study,
+// so nothing already published changes.
 // V11: added the optional `bookText` flag — the escape hatch on the book-text
 // note. BlogLayout renders BookTextNote on any post filed under one of the four
 // book categories (The Bearer, Five Titles One Christ, What the Pulpit Buried,
@@ -47,6 +55,24 @@
 // V1: relaxed the watchmans-desk collection to a permissive (passthrough) schema
 // so open-letter full-text files validate alongside weekly-letter ones.
 import { defineCollection, z } from 'astro:content';
+import { parseRef } from '../lib/scripture/parse-ref.js';
+
+// Scripture index citation (see src/pages/scripture.astro). Tier is a property
+// of the CITATION, not the verse: the same passage can be a plain statement in
+// one study and a supporting witness in another.
+//   plain      — plain statement
+//   supporting — supporting witness
+//   care       — handle with care (a vision, a dream, a parable, poetry pressed hard)
+const scriptureRefSchema = z.object({
+  ref: z.string().superRefine((value, ctx) => {
+    const parsed = parseRef(value);
+    if (!parsed.ok) {
+      ctx.addIssue({ code: z.ZodIssueCode.custom, message: `Scripture index: cannot resolve ref "${value}" — ${parsed.error}` });
+    }
+  }),
+  tier: z.enum(['plain', 'supporting', 'care']).optional(),
+  anchor: z.string().optional(),
+});
 
 // Reference schema for citations/sources
 const referenceSchema = z.object({
@@ -88,6 +114,9 @@ const postsCollection = defineCollection({
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
     references: z.array(referenceSchema).optional(),
+    // SCRIPTURE INDEX — the passages this study teaches on. The /scripture index
+    // is generated from these and nowhere else. See scriptureRefSchema above.
+    refs: z.array(scriptureRefSchema).default([]),
     verse: z.string().optional(),
     // The name a parable is commonly known by ("The Ten Virgins"). It IDENTIFIES
     // which parable a study covers and never replaces the study's own title —
