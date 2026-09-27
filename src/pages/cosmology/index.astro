@@ -1,5 +1,7 @@
 ---
-// src/pages/cosmology/index.astro · 0927 V4
+// src/pages/cosmology/index.astro · 0927 V5
+// V5: comments only — the permanent-anchor rule and the work owed if the
+// section ever splits (see the notes above SECTION_SOURCES). No change in output.
 // V4: one page with anchors, built so a later split is not blocked. The verse
 // index takes the section's pages as a list of sources; today that list is
 // this page alone. If a reading (a Band 4 witness, or Band 7) later becomes a
@@ -32,6 +34,19 @@ const { title, deck, description, epigraph, refs, ogTitle, ogDescription } = pos
 const TITLE_TAG = 'Cosmology — What Scripture Says Was Made';
 
 // The section's pages, for its verse index. One page today: this one.
+//
+// ANCHORS ARE PERMANENT. Every band id and reading anchor (the reading's
+// heading id, e.g. #the-firmament) may already be in a shared link, and a
+// fragment never reaches the server, so it cannot be redirected. Never rename
+// one for tidiness; a reading that is retitled keeps its old anchor.
+//
+// WORK OWED IF A SPLIT HAPPENS (Dutch, 0927: not decided, do not build yet):
+//   1. Band 5's "This was settled centuries ago" card links to
+//      #the-chain-of-fixes; retarget it if Band 7 leaves this page.
+//   2. A small script here that forwards an old fragment link
+//      (/cosmology#<moved-reading>) to the reading's new page, since the
+//      server cannot redirect a fragment.
+//   3. The moved page joins SECTION_SOURCES below, and gets a route.
 const SECTION_SOURCES = [{ refs, headings, href: '' }];
 
 // The verse index card (its count line is generated from the index itself).
