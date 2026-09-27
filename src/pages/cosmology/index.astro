@@ -1,5 +1,8 @@
 ---
-// src/pages/cosmology/index.astro · 0927 V6
+// src/pages/cosmology/index.astro · 0927 V7
+// V7: styles for "Two Ways to Read This Section" (in the study body, under the
+// introduction): Enter by Scripture opens the verse panel (#verse-index, closed
+// until asked for), Read in Order jumps to the band row (#open-the-account).
 // V6: the verse index is no longer the last card. It is a panel of its own
 // (components/cosmology/VerseIndexPanel.astro), placed by the study body
 // directly under the introduction; this page supplies the component to the
@@ -184,6 +187,36 @@ const TITLE_TAG = 'Cosmology — What Scripture Says Was Made';
   .cz-back { text-align: center; margin: 2rem 0 0; font-size: 0.9rem; }
   .cz-back a { color: var(--band-count); text-decoration: none; letter-spacing: 0.02em; }
   .cz-back a:hover { color: var(--band-link); text-decoration: underline; }
+
+  /* ── Two Ways to Read This Section ── */
+  .cz-ways { padding: 0 0 2.5rem; scroll-margin-top: 7.5rem; }
+  .cz-ways-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.2rem, 2.6vw, 1.5rem);
+    font-weight: 600;
+    text-align: center;
+    color: var(--band-title);
+    margin: 0 0 1.25rem;
+  }
+  .cz-ways-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr)); gap: 1.25rem; }
+  .cz-way {
+    display: flex;
+    flex-direction: column;
+    gap: 0.4rem;
+    padding: 1.4rem 1.5rem;
+    background: var(--band-bg);
+    border: 1px solid var(--band-border);
+    border-top: 3px solid var(--band-accent);
+    border-radius: 6px;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .cz-way:hover { background: #0f1c33; transform: translateY(-2px); }
+  .cz-way:focus-visible { outline: 2px solid var(--band-accent); outline-offset: 3px; }
+  .cz-way-title { font-family: 'Cinzel', serif; font-size: 1.15rem; font-weight: 700; color: var(--band-title); }
+  .cz-way-title::after { content: ' →'; color: var(--band-accent); }
+  .cz-way-line { font-size: 1rem; line-height: 1.6; color: var(--band-text); }
+  .cz-row-head { scroll-margin-top: 7.5rem; }
 
   /* ── The verse index panel, full width under the introduction ── */
   .cz .pvi { margin: 0 0 1rem; }

@@ -1,12 +1,17 @@
 ---
-// PageVerseIndex.astro · 0927 V4
-// V4: a PANEL, not a band card — no count line, no (+), open by default so the
-// passages show without a click. Every entry names the band and reading it
-// points to ("Band 4, The Witnesses → Two Great Lights"). A sort control
-// regroups the same build-time data three ways: By book (default), By band
-// (band, then reading, in page order), By reading (reading titles A–Z, each
-// with every passage it rests on). All three views are in the page source;
-// the control only shows one and hides the others. No tier filter yet.
+// PageVerseIndex.astro · 0927 V5
+// V5: the panel starts CLOSED — the full list is not shown on the page until
+// the reader asks for it ("Enter by Scripture", or any #verse-index link),
+// though every entry stays in the page source. Bands are named "Band Four ·
+// The Witnesses" (src/lib/number-words.js), the same form the band cards show.
+// By book stays the default, the full list. By band and By reading are now
+// PICKERS, not sorts: each shows a dropdown and nothing else; choosing a band
+// (or a reading) shows only its passages, with a count line ("14 passages in
+// Band Four") so a narrowed list never reads as a short one, and a visible
+// control to clear the choice and return to the full list. All lists are
+// built at build time; the controls only show one. No tier filter.
+// V4: a panel of its own under the introduction, entries naming band and
+// reading, three sort views.
 // V3: SPLIT-READY — reads a list of SOURCES (each a page of the section with
 // its own refs, headings, bands and address), not only the page it sits on.
 // Today /cosmology passes one source (itself, href ""), so links are
@@ -17,6 +22,7 @@
 // print (printed-refs.js). A passage taught in two readings lists both.
 import { BOOK_BY_KEY } from '../../lib/scripture/books.js';
 import { printedRefs } from '../../lib/scripture/printed-refs.js';
+import { bandName, numberWord } from '../../lib/number-words.js';
 
 interface Band { number: number; id: string; title: string; anchors: string[] }
 interface Source {
@@ -39,14 +45,17 @@ const { sources, id = 'verse-index', title = 'Verse Index', deck, note } = Astro
 
 // Every reading in the section, keyed by its link, in reading order.
 const readings = new Map();
-sources.forEach(({ headings, bands, href = '' }, s) => {
+const bands = [];
+sources.forEach(({ headings, bands: srcBands, href = '' }, s) => {
   const titleOf = new Map(headings.map((h) => [h.slug, h.text]));
   const rankOf = new Map(headings.map((h, i) => [h.slug, i]));
-  for (const band of bands) {
+  for (const band of srcBands) {
+    bands.push(band);
     for (const anchor of band.anchors) {
       if (!titleOf.has(anchor)) throw new Error(`[PageVerseIndex] band "${band.id}" holds "${anchor}", which is not a heading on that page`);
       readings.set(`${href}#${anchor}`, {
         href: `${href}#${anchor}`,
+        key: `${s}-${anchor}`,
         title: titleOf.get(anchor),
         band,
         rank: s * 100000 + rankOf.get(anchor),
@@ -73,45 +82,77 @@ for (const { refs = [], href = '' } of sources) {
   }
 }
 for (const e of byPassage.values()) e.readings.sort((a, b) => a.rank - b.rank);
+const all = [...byPassage.values()].sort((a, b) => canon(a.p, b.p));
 
-const bandLabel = (band) => `Band ${band.number}, ${band.title}`;
-const withPassages = [...readings.values()].filter((rd) => rd.passages.length);
+const plural = (n) => `${n} ${n === 1 ? 'passage' : 'passages'}`;
 
-// View 1 — by book, canonical order.
+// By book — the full list, grouped by book.
 const byBook = [];
-for (const e of [...byPassage.values()].sort((a, b) => canon(a.p, b.p))) {
+for (const e of all) {
   let g = byBook[byBook.length - 1];
   if (!g || g.key !== e.p.book) byBook.push((g = { key: e.p.book, name: BOOK_BY_KEY[e.p.book].name, rows: [] }));
   g.rows.push(e);
 }
 
-// View 2 — by band, then reading, in page order.
-const byBand = [];
-for (const rd of [...withPassages].sort((a, b) => a.rank - b.rank)) {
-  let g = byBand[byBand.length - 1];
-  if (!g || g.band !== rd.band) byBand.push((g = { band: rd.band, readings: [] }));
-  g.readings.push(rd);
-}
+// By band — one list per band: that band's passages in book order, each with
+// the reading(s) in that band that teach it.
+const bandLists = bands.map((band) => {
+  const rows = all
+    .map((e) => ({ p: e.p, readings: e.readings.filter((rd) => rd.band === band) }))
+    .filter((row) => row.readings.length);
+  return { band, rows, count: `${plural(rows.length)} in Band ${numberWord(band.number)}` };
+});
 
-// View 3 — by reading title, A–Z (quote marks and a leading "The" ignored).
-const sortKey = (t) => t.replace(/^[“"‘']+/, '').replace(/^The\s+/i, '').toLowerCase();
-const byReading = [...withPassages].sort((a, b) => sortKey(a.title).localeCompare(sortKey(b.title)));
+// By reading — one list per reading with verses: its passages, as its verse line has them.
+const withPassages = [...readings.values()].filter((rd) => rd.passages.length).sort((a, b) => a.rank - b.rank);
+const readingLists = withPassages.map((rd) => ({ rd, count: `${plural(rd.passages.length)} in ${rd.title}` }));
+const readingGroups = bands
+  .map((band) => ({ band, readings: withPassages.filter((rd) => rd.band === band) }))
+  .filter((g) => g.readings.length);
 ---
 
-<section class="pvi" id={id} data-pvi aria-labelledby={`${id}-title`}>
+<section class="pvi" id={id} data-pvi data-panel aria-labelledby={`${id}-title`}>
   <header class="pvi-head">
     <h2 class="pvi-title" id={`${id}-title`}>{title}</h2>
+    <button type="button" class="pvi-close" data-panel-close hidden>Close <span aria-hidden="true">×</span></button>
     {deck && <p class="pvi-deck">{deck}</p>}
     {note && <p class="pvi-note">{note}</p>}
-    <div class="pvi-sort" role="group" aria-label="Sort the verse index" hidden>
-      <span class="pvi-sort-label">Sort</span>
-      <button type="button" class="pvi-sort-btn" data-view="book" aria-pressed="true">By book</button>
-      <button type="button" class="pvi-sort-btn" data-view="band" aria-pressed="false">By band</button>
-      <button type="button" class="pvi-sort-btn" data-view="reading" aria-pressed="false">By reading</button>
+
+    <div class="pvi-controls" hidden>
+      <div class="pvi-modes" role="group" aria-label="How to find a passage">
+        <button type="button" class="pvi-mode" data-mode="book" aria-pressed="true">By book</button>
+        <button type="button" class="pvi-mode" data-mode="band" aria-pressed="false">By band</button>
+        <button type="button" class="pvi-mode" data-mode="reading" aria-pressed="false">By reading</button>
+      </div>
+      <label class="pvi-pick" data-pick="band" hidden>
+        <span class="sr-only">Choose a band</span>
+        <select>
+          <option value="">Choose a band…</option>
+          {bandLists.map(({ band, rows }) => (
+            <option value={band.id} disabled={!rows.length}>{bandName(band.number, band.title)}{!rows.length && ' (no verse lines)'}</option>
+          ))}
+        </select>
+      </label>
+      <label class="pvi-pick" data-pick="reading" hidden>
+        <span class="sr-only">Choose a reading</span>
+        <select>
+          <option value="">Choose a reading…</option>
+          {readingGroups.map((g) => (
+            <optgroup label={bandName(g.band.number, g.band.title)}>
+              {g.readings.map((rd) => <option value={rd.key}>{rd.title}</option>)}
+            </optgroup>
+          ))}
+        </select>
+      </label>
+      <p class="pvi-status" aria-live="polite" hidden>
+        <span class="pvi-count"></span>
+        <button type="button" class="pvi-clear">Show all passages</button>
+      </p>
     </div>
   </header>
 
-  <div class="pvi-view" data-view="book">
+  <!-- By book: the full list (the default) -->
+  <div class="pvi-list pvi-book" data-list="book">
     {byBook.map((g) => (
       <div class="pvi-group">
         <h3 class="pvi-group-name">{g.name}</h3>
@@ -122,7 +163,7 @@ const byReading = [...withPassages].sort((a, b) => sortKey(a.title).localeCompar
               <span class="pvi-where">
                 {e.readings.map((rd) => (
                   <span class="pvi-line">
-                    <span class="pvi-band">{bandLabel(rd.band)}</span>
+                    <span class="pvi-band">{bandName(rd.band.number, rd.band.title)}</span>
                     <span class="pvi-arrow" aria-hidden="true"> → </span>
                     <a href={rd.href}>{rd.title}</a>
                   </span>
@@ -135,58 +176,85 @@ const byReading = [...withPassages].sort((a, b) => sortKey(a.title).localeCompar
     ))}
   </div>
 
-  <div class="pvi-view" data-view="band" hidden>
-    {byBand.map((g) => (
-      <div class="pvi-group">
-        <h3 class="pvi-group-name">Band {g.band.number} — {g.band.title}</h3>
-        {g.readings.map((rd) => (
-          <div class="pvi-reading">
-            <h4 class="pvi-reading-name"><a href={rd.href}>{rd.title}</a></h4>
-            <p class="pvi-passages">
-              {rd.passages.map((p, i) => (
-                <>{i > 0 && <span class="pvi-sep" aria-hidden="true"> · </span>}<a href={rd.href}>{p.display}</a></>
-              ))}
-            </p>
-          </div>
+  <!-- By band: one list per band, shown only when that band is chosen -->
+  {bandLists.map(({ band, rows, count }) => (
+    <div class="pvi-list" data-list={`band:${band.id}`} data-count={count} hidden>
+      <ul class="pvi-rows">
+        {rows.map((row) => (
+          <li class="pvi-row">
+            <span class="pvi-ref">{row.p.display}</span>
+            <span class="pvi-where">
+              {row.readings.map((rd) => <a href={rd.href}>{rd.title}</a>)}
+            </span>
+          </li>
         ))}
-      </div>
-    ))}
-  </div>
+      </ul>
+    </div>
+  ))}
 
-  <div class="pvi-view" data-view="reading" hidden>
-    {byReading.map((rd) => (
-      <div class="pvi-reading">
-        <h4 class="pvi-reading-name"><a href={rd.href}>{rd.title}</a> <span class="pvi-band">{bandLabel(rd.band)}</span></h4>
-        <p class="pvi-passages">
-          {rd.passages.map((p, i) => (
-            <>{i > 0 && <span class="pvi-sep" aria-hidden="true"> · </span>}<a href={rd.href}>{p.display}</a></>
-          ))}
-        </p>
-      </div>
-    ))}
-  </div>
+  <!-- By reading: one list per reading, shown only when that reading is chosen -->
+  {readingLists.map(({ rd, count }) => (
+    <div class="pvi-list" data-list={`reading:${rd.key}`} data-count={count} hidden>
+      <p class="pvi-reading-of">
+        <span class="pvi-band">{bandName(rd.band.number, rd.band.title)}</span>
+        <span class="pvi-arrow" aria-hidden="true"> → </span>
+        <a href={rd.href}>{rd.title}</a>
+      </p>
+      <ul class="pvi-rows pvi-rows-single">
+        {rd.passages.map((p) => (
+          <li class="pvi-row"><a class="pvi-ref" href={rd.href}>{p.display}</a></li>
+        ))}
+      </ul>
+    </div>
+  ))}
 </section>
 
 <script>
-  // The sort control only regroups: all three views are in the page source.
-  // Without JavaScript the control stays hidden and By book shows.
+  // Mode and picker. All lists are in the page source; this only chooses which
+  // one shows. Without JavaScript the controls stay hidden and By book shows.
   document.querySelectorAll<HTMLElement>('[data-pvi]').forEach((panel) => {
-    const control = panel.querySelector<HTMLElement>('.pvi-sort');
-    if (!control) return;
-    control.hidden = false;
-    const buttons = [...control.querySelectorAll<HTMLButtonElement>('.pvi-sort-btn')];
-    const views = [...panel.querySelectorAll<HTMLElement>('.pvi-view')];
-    buttons.forEach((btn) => btn.addEventListener('click', () => {
-      const view = btn.dataset.view;
-      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
-      views.forEach((v) => { v.hidden = v.dataset.view !== view; });
+    const controls = panel.querySelector<HTMLElement>('.pvi-controls');
+    if (!controls) return;
+    controls.hidden = false;
+    const modes = [...panel.querySelectorAll<HTMLButtonElement>('.pvi-mode')];
+    const picks = [...panel.querySelectorAll<HTMLElement>('.pvi-pick')];
+    const lists = [...panel.querySelectorAll<HTMLElement>('.pvi-list')];
+    const status = panel.querySelector<HTMLElement>('.pvi-status')!;
+    const countEl = panel.querySelector<HTMLElement>('.pvi-count')!;
+    let mode = 'book';
+
+    const show = (key: string | null) => {
+      lists.forEach((l) => { l.hidden = l.dataset.list !== key; });
+      const shown = lists.find((l) => l.dataset.list === key);
+      countEl.textContent = shown?.dataset.count ?? '';
+    };
+    const setMode = (m: string) => {
+      mode = m;
+      modes.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.mode === m)));
+      picks.forEach((p) => {
+        p.hidden = p.dataset.pick !== m;
+        const sel = p.querySelector('select');
+        if (sel) sel.value = '';
+      });
+      // By book: the full list. By band / By reading: the dropdown and nothing
+      // else, until a choice is made.
+      show(m === 'book' ? 'book' : null);
+      status.hidden = m === 'book';
+    };
+
+    modes.forEach((b) => b.addEventListener('click', () => setMode(b.dataset.mode!)));
+    picks.forEach((p) => p.querySelector('select')?.addEventListener('change', (ev) => {
+      const value = (ev.target as HTMLSelectElement).value;
+      show(value ? `${mode}:${value}` : null);
     }));
+    panel.querySelector('.pvi-clear')?.addEventListener('click', () => setMode('book'));
   });
 </script>
 
 <style>
   .pvi {
     scroll-margin-top: 7.5rem;
+    position: relative;
     margin: 0 0 1rem;
     padding: 2rem 2rem 1.75rem;
     background: rgba(9, 18, 34, 0.85);
@@ -194,6 +262,7 @@ const byReading = [...withPassages].sort((a, b) => sortKey(a.title).localeCompar
     border-left: 3px solid var(--band-accent, #c9a85c);
     border-radius: 4px;
   }
+  .pvi.panel-js.is-closed { display: none; }
   .pvi-head { max-width: 46rem; margin: 0 0 1.5rem; }
   .pvi-title {
     font-family: 'Cinzel', serif;
@@ -201,20 +270,29 @@ const byReading = [...withPassages].sort((a, b) => sortKey(a.title).localeCompar
     font-weight: 700;
     color: var(--band-title, #eef2fa);
     margin: 0 0 0.4rem;
+    padding-right: 5rem;
   }
+  .pvi-close {
+    position: absolute;
+    top: 1.6rem;
+    right: 1.5rem;
+    font: inherit;
+    font-size: 0.9rem;
+    background: transparent;
+    border: 1px solid var(--band-border, #1d2e4a);
+    border-radius: 999px;
+    color: var(--band-count, #7f9bc8);
+    padding: 0.2rem 0.75rem;
+    cursor: pointer;
+  }
+  .pvi-close[hidden] { display: none; }
   .pvi-deck { font-style: italic; font-size: 1.05rem; color: var(--band-deck, #a9c0e2); margin: 0 0 0.75rem; }
   .pvi-note { font-size: 1rem; line-height: 1.75; color: var(--band-text, #c3cddd); margin: 0 0 1.25rem; }
-  .pvi-sort { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
-  .pvi-sort[hidden] { display: none; }
-  .pvi-sort-label {
-    font-family: 'Cinzel', serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: var(--band-count, #7f9bc8);
-    margin-right: 0.25rem;
-  }
-  .pvi-sort-btn {
+
+  .pvi-controls { display: flex; flex-direction: column; gap: 0.75rem; }
+  .pvi-controls[hidden] { display: none; }
+  .pvi-modes { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+  .pvi-mode, .pvi-clear {
     font: inherit;
     font-size: 0.92rem;
     padding: 0.3rem 0.85rem;
@@ -224,17 +302,35 @@ const byReading = [...withPassages].sort((a, b) => sortKey(a.title).localeCompar
     color: var(--band-text, #c3cddd);
     cursor: pointer;
   }
-  .pvi-sort-btn[aria-pressed='true'] {
+  .pvi-mode[aria-pressed='true'] {
     background: var(--band-accent, #c9a85c);
     border-color: var(--band-accent, #c9a85c);
     color: #0b1526;
   }
-  .pvi-sort-btn:focus-visible { outline: 2px solid var(--band-accent, #c9a85c); outline-offset: 2px; }
+  .pvi-mode:focus-visible, .pvi-clear:focus-visible, .pvi-close:focus-visible, .pvi-pick select:focus-visible {
+    outline: 2px solid var(--band-accent, #c9a85c);
+    outline-offset: 2px;
+  }
+  .pvi-pick[hidden] { display: none; }
+  .pvi-pick select {
+    font: inherit;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 30rem;
+    padding: 0.5rem 0.75rem;
+    border-radius: 4px;
+    border: 1px solid var(--band-border, #1d2e4a);
+    background: #0f1b31;
+    color: var(--band-title, #eef2fa);
+  }
+  .pvi-status { display: flex; flex-wrap: wrap; align-items: center; gap: 0.75rem; margin: 0; }
+  .pvi-status[hidden] { display: none; }
+  .pvi-count { font-family: 'Cinzel', serif; font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: var(--band-accent, #c9a85c); }
+  .pvi-count:empty { display: none; }
 
-  .pvi-view { columns: 2 22rem; column-gap: 2.75rem; }
-  .pvi-view[hidden] { display: none; }
+  .pvi-list[hidden] { display: none; }
+  .pvi-book { columns: 2 22rem; column-gap: 2.75rem; }
   .pvi-group { break-inside: avoid; margin: 0 0 1.4rem; }
-  .pvi-view[data-view='band'] .pvi-group { break-inside: auto; }
   .pvi-group-name {
     font-family: 'Cinzel', serif;
     font-size: 0.8rem;
@@ -246,20 +342,19 @@ const byReading = [...withPassages].sort((a, b) => sortKey(a.title).localeCompar
     border-bottom: 1px solid var(--band-border, #1d2e4a);
   }
   .pvi-rows { list-style: none; margin: 0; padding: 0; }
-  .pvi-row { display: grid; grid-template-columns: 7.75rem 1fr; gap: 0.75rem; padding: 0.3rem 0; font-size: 0.95rem; line-height: 1.5; }
+  .pvi-list:not(.pvi-book) .pvi-rows { columns: 2 20rem; column-gap: 2.75rem; }
+  .pvi-row { display: grid; grid-template-columns: 7.75rem 1fr; gap: 0.75rem; padding: 0.3rem 0; font-size: 0.95rem; line-height: 1.5; break-inside: avoid; }
+  .pvi-rows-single .pvi-row { grid-template-columns: 1fr; }
   .pvi-ref { color: var(--band-title, #eef2fa); white-space: nowrap; font-variant-numeric: tabular-nums; }
   .pvi-where { display: flex; flex-direction: column; }
   .pvi-band { color: var(--band-count, #7f9bc8); font-size: 0.88em; }
   .pvi-arrow { color: var(--band-accent, #c9a85c); }
   .pvi a { color: var(--band-link, #9cc0f0); text-decoration: none; }
   .pvi a:hover { text-decoration: underline; }
-  .pvi-reading { break-inside: avoid; margin: 0 0 0.9rem; }
-  .pvi-reading-name { font-size: 1rem; font-weight: 600; margin: 0 0 0.15rem; color: var(--band-title, #eef2fa); }
-  .pvi-reading-name .pvi-band { font-weight: 400; margin-left: 0.35rem; }
-  .pvi-passages { font-size: 0.92rem; line-height: 1.6; margin: 0; color: var(--band-text, #c3cddd); }
-  .pvi-sep { color: var(--band-count, #7f9bc8); }
+  .pvi-reading-of { margin: 0 0 0.6rem; font-size: 1rem; }
   @media (max-width: 560px) {
     .pvi { padding: 1.4rem 1.1rem 1.25rem; }
+    .pvi-close { top: 1.1rem; right: 1rem; }
     .pvi-row { grid-template-columns: 1fr; gap: 0.1rem; }
   }
 </style>

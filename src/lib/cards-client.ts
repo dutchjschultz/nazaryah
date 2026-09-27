@@ -1,4 +1,7 @@
-// cards-client 0927 V1.ts
+// cards-client 0927 V2.ts
+// V2: panels — an element marked data-panel (the verse index) starts closed
+// and opens only when a link points at it or into it (#verse-index, from
+// "Enter by Scripture" or the foot link); its Close button closes it again.
 // V1: the open-in-place behaviour for band cards (BandCard.astro) and reading
 // cards (StudyCard.astro), in one module so the two can never disagree about a
 // link. Both components import it; the bundler runs it once per page.
@@ -45,6 +48,18 @@ const initBands = () => {
   });
 };
 
+const initPanels = () => {
+  document.querySelectorAll<HTMLElement>('[data-panel]:not(.panel-js)').forEach((panel) => {
+    panel.classList.add('panel-js');
+    const close = panel.querySelector<HTMLElement>('[data-panel-close]');
+    if (close) {
+      close.hidden = false;
+      close.addEventListener('click', () => setOpen(panel, false));
+    }
+    setOpen(panel, panel.dataset.open === 'true');
+  });
+};
+
 const initReadings = () => {
   document.querySelectorAll<HTMLElement>('.sc[data-sc]:not(.sc-js)').forEach((card) => {
     const h = card.querySelector<HTMLElement>(':scope > h3');
@@ -72,11 +87,12 @@ const openFromHash = () => {
   const target = id && document.getElementById(id);
   if (!target) return;
   for (let el: HTMLElement | null = target; el; el = el.parentElement) {
-    if (el.matches('.band-js, .sc-js')) setOpen(el, true);
+    if (el.matches('.band-js, .sc-js, .panel-js')) setOpen(el, true);
   }
   target.scrollIntoView({ block: 'start', behavior: 'instant' });
 };
 
+initPanels();
 initBands();
 initReadings();
 openFromHash();

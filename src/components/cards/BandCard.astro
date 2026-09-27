@@ -1,5 +1,7 @@
 ---
-// BandCard.astro · 0927 V1
+// BandCard.astro · 0927 V2
+// V2: `number` — the band shows its number with its title ("Band Four · The
+// Witnesses"), the same form the verse index uses (src/lib/number-words.js).
 // V1: one band of a sectioned study (first used by /cosmology), in the Foreign
 // Fire card shape: count line, title, one-line deck, short blurb, and the (+)
 // at the upper right. The header is always visible; the band's note and its
@@ -10,15 +12,18 @@
 // that holds no readings (the verse index). `open` starts the band open.
 // The band's `id` is its stable anchor; links to it (or to anything inside
 // it) open it — see src/lib/cards-client.ts.
+import { numberWord } from '../../lib/number-words.js';
+
 interface Props {
   id: string;
+  number?: number;
   title: string;
   deck?: string;
   blurb?: string;
   open?: boolean;
   count?: string;
 }
-const { id, title, deck, blurb, open = false, count } = Astro.props;
+const { id, number, title, deck, blurb, open = false, count } = Astro.props;
 
 const body = await Astro.slots.render('default');
 const readings = (body.match(/\bdata-sc(?=[\s>=])/g) ?? []).length;
@@ -28,7 +33,7 @@ const countLine = count ?? `${readings} ${readings === 1 ? 'Reading' : 'Readings
 <section class="band" id={id} data-band data-open={open ? 'true' : undefined}>
   <div class="band-head">
     <p class="band-count">{countLine}</p>
-    <h2 class="band-title">{title}</h2>
+    <h2 class="band-title">{number != null && <span class="band-number">Band {numberWord(number)} · </span>}{title}</h2>
     {deck && <p class="band-deck">{deck}</p>}
     {blurb && <p class="band-blurb">{blurb}</p>}
   </div>
@@ -72,6 +77,7 @@ const countLine = count ?? `${readings} ${readings === 1 ? 'Reading' : 'Readings
     color: var(--band-title, #2b2b2b);
     margin: 0 0 0.45rem;
   }
+  .band-number { color: var(--band-count, #8a6520); font-weight: 600; }
   .band-deck {
     font-style: italic;
     font-size: 1.02rem;
