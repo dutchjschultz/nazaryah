@@ -1,4 +1,8 @@
-// index-data 0927 V1.js
+// index-data 0927 V2.js
+// V2: gathered.js is permanent (entries are never deleted), so every build now
+// prints a promotion report — "Now studied — gathered entry superseded" — naming
+// each gathered entry a study now cites and the studies that cite it. The same
+// list is written to the artifact as `superseded`. Report only; nothing is removed.
 // V1: the Scripture index generator. Runs at build time only.
 //
 // Reads every published study's `refs` frontmatter (the ONLY place a study's
@@ -91,15 +95,26 @@ async function build() {
   }
 
   let gatheredOnly = 0;
+  const superseded = []; // the promotion report
   for (const g of GATHERED) {
     const parsed = parseRef(g.ref);
     if (!parsed.ok) throw new Error(`[scripture] src/data/gathered.js: cannot resolve ref "${g.ref}" — ${parsed.error}`);
-    for (const verse of expandRef(parsed)) {
+    const verses = expandRef(parsed);
+    let cited = 0;
+    const by = new Set();
+    for (const verse of verses) {
       const existing = entries.get(verseId(verse));
-      if (existing?.cites.length) continue; // a study cites it: the study wins
+      if (existing?.cites.length) {
+        // A study cites it: the study wins. The gathered entry stays in the
+        // file, outranked, and goes on the promotion report.
+        cited += 1;
+        for (const c of existing.cites) by.add(c.title);
+        continue;
+      }
       const entry = entryFor(verse);
       entry.gathered ??= { note: g.note ?? null };
     }
+    if (cited) superseded.push({ ref: parsed.display, cited, of: verses.length, by: [...by].sort() });
   }
 
   const sorted = [...entries.values()].sort(
@@ -137,6 +152,9 @@ async function build() {
     subjects: Object.entries(CLUSTERS)
       .filter(([key]) => usedSubjects.has(key))
       .map(([key, c]) => ({ key, label: c.label })),
+    // Gathered entries a study now cites (in whole or in part). Report only —
+    // gathered.js is permanent and nothing is ever removed from it.
+    superseded,
     entries: sorted,
   };
 
@@ -144,5 +162,11 @@ async function build() {
   console.log(
     `[scripture] index built: ${c.versesIndexed} verses indexed from ${c.citations} citations on ${c.pagesCiting} of ${c.pagesScanned} pages scanned; ${c.gatheredOnly} gathered-only`,
   );
+  console.log(`[scripture] Now studied — gathered entry superseded (${superseded.length}):`);
+  if (!superseded.length) console.log('[scripture]   none');
+  for (const s of superseded) {
+    const part = s.cited < s.of ? `${s.cited} of ${s.of} verses` : s.of === 1 ? 'the verse' : `all ${s.of} verses`;
+    console.log(`[scripture]   ${s.ref} — ${part} now cited by ${s.by.join('; ')}`);
+  }
   return index;
 }

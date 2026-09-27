@@ -1,4 +1,7 @@
-// ScriptureIndex.jsx · 0927 V1
+// ScriptureIndex.jsx · 0927 V2
+// V2: a "Gathered only" filter — shows just the verses from src/data/gathered.js
+// that no study cites yet (the working list of what needs writing), and combines
+// with the search box. The greyed mark now reads "Gathered — not yet studied".
 // V1: the /scripture index body — grouped book → chapter → verse, a search box
 // over reference and book name, verse text collapsed in place. Static React: it
 // works on the pre-built index handed to it as props, no fetch. Styled from the
@@ -38,15 +41,20 @@ function readQuery(raw, books) {
 
 export default function ScriptureIndex({ index }) {
   const [query, setQuery] = useState('');
+  const [gatheredOnly, setGatheredOnly] = useState(false);
   const bookName = useMemo(() => Object.fromEntries(index.books.map((b) => [b.key, b.name])), [index]);
+
+  const gatheredCount = useMemo(() => index.entries.filter((e) => !e.cites.length).length, [index]);
 
   const shown = useMemo(() => {
     const q = readQuery(query, index.books);
-    if (!q) return index.entries;
     return index.entries.filter(
-      (e) => (!q.keys || q.keys.has(e.book)) && (q.c == null || e.c === q.c) && (q.v == null || e.v === q.v),
+      (e) =>
+        (!gatheredOnly || !e.cites.length) &&
+        (!q || ((!q.keys || q.keys.has(e.book)) && (q.c == null || e.c === q.c) && (q.v == null || e.v === q.v))),
     );
-  }, [query, index]);
+  }, [query, gatheredOnly, index]);
+  const filtering = query.trim() || gatheredOnly;
 
   // book → chapter → entries, in the order the generator already sorted them.
   const groups = useMemo(() => {
@@ -74,8 +82,17 @@ export default function ScriptureIndex({ index }) {
           onChange={(ev) => setQuery(ev.target.value)}
           autoComplete="off"
         />
+        <label className={`sx-filter${gatheredCount ? '' : ' is-inert'}`}>
+          <input
+            type="checkbox"
+            checked={gatheredOnly}
+            disabled={!gatheredCount}
+            onChange={(ev) => setGatheredOnly(ev.target.checked)}
+          />
+          Gathered only <span className="sx-filter-count">({gatheredCount})</span>
+        </label>
         <p className="sx-search-count" aria-live="polite">
-          {query.trim()
+          {filtering
             ? `${shown.length} of ${index.entries.length} verses`
             : `${index.entries.length} verses`}
         </p>
@@ -84,7 +101,9 @@ export default function ScriptureIndex({ index }) {
       {!groups.length && (
         <p className="sx-empty">
           {index.entries.length
-            ? 'No verse in the index matches that.'
+            ? gatheredOnly && !query.trim()
+              ? 'Every gathered verse has a study behind it.'
+              : 'No verse in the index matches that.'
             : 'No study carries refs yet.'}
         </p>
       )}
@@ -134,7 +153,7 @@ function Entry({ e }) {
         </ul>
       ) : (
         <p className="sx-not-yet">
-          <span className="sx-not-yet-mark">Not yet studied</span>
+          <span className="sx-not-yet-mark">Gathered — not yet studied</span>
           {e.gathered?.note && <span className="sx-not-yet-note">{e.gathered.note}</span>}
         </p>
       )}
