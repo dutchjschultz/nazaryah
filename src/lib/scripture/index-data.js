@@ -1,4 +1,8 @@
-// index-data 0927 V2.js
+// index-data 0927 V3.js
+// V3: a verse cited under two anchors on the same page (two cards that both
+// print it) is still listed once for that page, and now points at the anchor
+// FIRST IN PAGE ORDER, carrying that citation's range and tier. Was: whichever
+// ref came first in frontmatter, with the strongest tier merged in.
 // V2: gathered.js is permanent (entries are never deleted), so every build now
 // prints a promotion report — "Now studied — gathered entry superseded" — naming
 // each gathered entry a study now cites and the studies that cite it. The same
@@ -63,15 +67,16 @@ async function build() {
     pagesCiting += 1;
     const file = `src/content/posts/${post.id}`;
 
+    // Heading id → its position on the page (document order).
     const anchors = refs.some((r) => r.anchor)
-      ? new Set((await render(post)).headings.map((h) => h.slug))
+      ? new Map((await render(post)).headings.map((h, i) => [h.slug, i]))
       : null;
 
     for (const r of refs) {
       const parsed = parseRef(r.ref);
       if (!parsed.ok) throw new Error(`[scripture] ${file}: cannot resolve ref "${r.ref}" — ${parsed.error}`);
       if (r.anchor && !anchors.has(r.anchor)) {
-        throw new Error(`[scripture] ${file}: anchor "${r.anchor}" (on ref "${r.ref}") is not a heading id on that page. Headings: ${[...anchors].join(', ') || 'none'}`);
+        throw new Error(`[scripture] ${file}: anchor "${r.anchor}" (on ref "${r.ref}") is not a heading id on that page. Headings: ${[...anchors.keys()].join(', ') || 'none'}`);
       }
       citations += 1;
       const cite = {
@@ -82,15 +87,33 @@ async function build() {
         subjects: (post.data.associations ?? []).filter((k) => CLUSTERS[k]),
         tier: r.tier ?? null,
         citedAs: parsed.display,
+        // Where this citation sits on the page; an unanchored one links to the
+        // top and yields to any anchored citation of the same verse.
+        _pos: r.anchor ? anchors.get(r.anchor) : Infinity,
       };
       for (const verse of expandRef(parsed)) {
         const entry = entryFor(verse);
         const prior = entry.cites.find((x) => x.slug === cite.slug);
-        if (!prior) entry.cites.push({ ...cite });
-        // Same page, same verse, cited twice (overlapping ranges): list the page
-        // once, keeping the strongest tier and the first anchor it was given.
-        else if (cite.tier && (!prior.tier || TIER_RANK[cite.tier] < TIER_RANK[prior.tier])) prior.tier = cite.tier;
+        if (!prior) {
+          entry.cites.push({ ...cite, _tiers: cite.tier ? [cite.tier] : [] });
+          continue;
+        }
+        // Same page, same verse, cited under two anchors (a card that repeats a
+        // verse another card teaches): the page is listed ONCE, pointing at the
+        // anchor that comes FIRST IN PAGE ORDER, with that citation's range and
+        // tier. Frontmatter order does not matter.
+        if (cite.tier) prior._tiers.push(cite.tier);
+        if (cite._pos < prior._pos) Object.assign(prior, { href: cite.href, citedAs: cite.citedAs, tier: cite.tier, _pos: cite._pos });
       }
+    }
+  }
+  // An untiered winning citation falls back to the strongest tier the page gives
+  // that verse elsewhere; then the build-only bookkeeping is dropped.
+  for (const entry of entries.values()) {
+    for (const c of entry.cites) {
+      if (!c.tier && c._tiers.length) c.tier = [...c._tiers].sort((a, b) => TIER_RANK[a] - TIER_RANK[b])[0];
+      delete c._pos;
+      delete c._tiers;
     }
   }
 
