@@ -1,5 +1,10 @@
 ---
-// src/pages/index.astro · 0911 V11
+// src/pages/index.astro · 0927 V12
+// V12: the Restoration rail's Cosmology placeholder goes live, pointing at The
+// Heavens and the Earth (/blog/the-heavens-and-the-earth) — same target as the
+// Header's Cosmology slot (Header V8). DRAFT badge, Placeholder eyebrow and
+// Coming soon line go with it; the description is the approved copy, kept as is.
+// No placeholders are left in the rail.
 // V11: the What They Buried rail loses its Living Temple placeholder and gains
 // the Investigations section card (/investigations). The Living Temple is live —
 // 5 of 5 pieces — so nothing on this page may call it draft or coming soon. The
@@ -56,7 +61,7 @@ const latestVideo = {
 
 // ── THE RAIL (evergreen structure) ───────────────────────────────────────
 // Level 1 group → its subcategory cards. Copy is approved except for the two
-// placeholders. `draft: true` now marks only those (Cosmology):
+// placeholders. `draft: true` marks only those — none left as of V12:
 // no route yet, so they render a DRAFT badge + neutral icon + Coming Soon.
 // `placeholder: true` = a subject with no route yet.
 // Every href below is an existing route; nothing here invents a URL.
@@ -78,7 +83,7 @@ const railGroups = [
     items: [
       { href: '/calendar', color: 'indigo', icon: '☾', eyebrow: 'Set in the lights', title: 'The <em>Calendar</em>', description: 'Aviv, the renewed moon, the Sabbath. The way Yahuah set the seasons.', cta: 'Open the Calendar' },
       { href: '/hebrew', color: 'oxblood', icon: 'ב', eyebrow: 'The language of Yahuah', title: 'Hebrew <em>Word</em>', description: 'Restored names, root words, and the meanings translation flattened.', cta: 'Study the Roots' },
-      { placeholder: true, draft: true, color: 'navy', icon: '', eyebrow: 'Placeholder', title: '<em>Cosmology</em>', description: 'The shape of what Yahuah made — the firmament above, the north at the center, and everything built to hide it.', cta: 'Coming soon' },
+      { href: '/blog/the-heavens-and-the-earth', color: 'navy', icon: '◠', eyebrow: 'The heavens and the earth', title: '<em>Cosmology</em>', description: 'The shape of what Yahuah made — the firmament above, the north at the center, and everything built to hide it.', cta: 'Read the Witnesses' },
     ],
   },
   {
