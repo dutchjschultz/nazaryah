@@ -1,4 +1,8 @@
-// content config 0927 V12
+// content config 0927 V13
+// V13: `refs` entries take an optional `lead: true` — this citation takes the
+// Scripture index link for every verse it covers on its page, ahead of any
+// narrower citation of the same verse. For the card that TEACHES a verse when
+// other cards on the page also print it. Absent everywhere else.
 // V12: added the optional `refs` list — the passages a study teaches on, which
 // the Scripture index at /scripture is generated from (one source of truth: no
 // verse list lives anywhere else). Each entry: ref (required, "Gen 1:14" or
@@ -72,6 +76,8 @@ const scriptureRefSchema = z.object({
   }),
   tier: z.enum(['plain', 'supporting', 'care']).optional(),
   anchor: z.string().optional(),
+  // Takes the index link for its verses on this page over narrower citations.
+  lead: z.boolean().optional(),
 });
 
 // Reference schema for citations/sources

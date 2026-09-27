@@ -1,4 +1,7 @@
-// index-data 0927 V4.js
+// index-data 0927 V5.js
+// V5: a ref marked `lead: true` takes the link for every verse it covers on its
+// page, ahead of any narrower citation. Among leads (or among non-leads) the
+// V4 rule stands: narrowest wins, page order breaks ties.
 // V4: the tie-break changes. A verse covered by more than one citation on the
 // same page points at the NARROWEST citation (fewest verses); page order only
 // breaks a tie between equally narrow ones. So "Gen 1:1-19" on an early card
@@ -95,6 +98,7 @@ async function build() {
         // How wide the citation is, and where it sits on the page; an
         // unanchored one links to the top and yields to any anchored citation.
         _width: 0,
+        _lead: r.lead === true,
         _pos: r.anchor ? anchors.get(r.anchor) : Infinity,
       };
       const verses = expandRef(parsed);
@@ -111,8 +115,12 @@ async function build() {
         // citation's range and tier. Page order breaks a tie between equally
         // narrow citations. Frontmatter order does not matter.
         if (cite.tier) prior._tiers.push(cite.tier);
-        const narrower = cite._width < prior._width || (cite._width === prior._width && cite._pos < prior._pos);
-        if (narrower) Object.assign(prior, { href: cite.href, citedAs: cite.citedAs, tier: cite.tier, _width: cite._width, _pos: cite._pos });
+        // A `lead: true` citation outranks any that is not.
+        const wins =
+          cite._lead !== prior._lead ? cite._lead
+          : cite._width !== prior._width ? cite._width < prior._width
+          : cite._pos < prior._pos;
+        if (wins) Object.assign(prior, { href: cite.href, citedAs: cite.citedAs, tier: cite.tier, _width: cite._width, _pos: cite._pos, _lead: cite._lead });
       }
     }
   }
@@ -122,6 +130,7 @@ async function build() {
     for (const c of entry.cites) {
       if (!c.tier && c._tiers.length) c.tier = [...c._tiers].sort((a, b) => TIER_RANK[a] - TIER_RANK[b])[0];
       delete c._width;
+      delete c._lead;
       delete c._pos;
       delete c._tiers;
     }

@@ -13,7 +13,8 @@ draft: false
 # anchor, so this is the only place the page's verses are listed. Tiers and
 # anchors from Cosmology Refs Block 0927 V1; each card also carries every verse
 # its copy prints (page copy wins). A verse on two cards is indexed once, at
-# the card first in page order.
+# the lead ref if one is marked, else the narrowest citation, page order
+# breaking ties.
 refs:
   # Band 1 — the claim
   - { ref: "Gen 1:1", tier: plain, anchor: "what-this-page-argues" }
@@ -53,16 +54,16 @@ refs:
   # Band 4 — the witnesses
   - { ref: "Gen 1:1", anchor: "day-one" }  # page copy; indexed at its first card
   - { ref: "Gen 1:11-13", tier: plain, anchor: "day-one" }
-  - { ref: "Gen 1:14-19", tier: plain, anchor: "day-one" }
+  - { ref: "Gen 1:14-19", tier: plain, anchor: "day-one", lead: true }
   - { ref: "Gen 2:1", tier: plain, anchor: "day-one" }
   - { ref: "Gen 1:3-5", tier: plain, anchor: "light-before-the-lights" }
   - { ref: "Dan 2:22", tier: supporting, anchor: "light-before-the-lights" }
   - { ref: "1John 1:5", tier: plain, anchor: "light-before-the-lights" }
   - { ref: "Rev 21:23", tier: care, anchor: "light-before-the-lights" }
-  - { ref: "Gen 1:3-5", tier: plain, anchor: "he-called-the-light-day" }
+  - { ref: "Gen 1:3-5", tier: plain, anchor: "he-called-the-light-day", lead: true }
   - { ref: "Gen 1:14", tier: plain, anchor: "he-called-the-light-day" }
   - { ref: "John 11:9", tier: plain, anchor: "he-called-the-light-day" }
-  - { ref: "Gen 1:6-8", tier: plain, anchor: "the-firmament" }
+  - { ref: "Gen 1:6-8", tier: plain, anchor: "the-firmament", lead: true }
   - { ref: "Gen 1:20", tier: plain, anchor: "the-firmament" }
   - { ref: "Job 37:18", anchor: "the-firmament" }  # page copy; indexed at its first card
   - { ref: "Ps 19:1", tier: supporting, anchor: "the-firmament" }
