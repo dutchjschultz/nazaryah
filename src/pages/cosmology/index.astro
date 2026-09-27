@@ -1,5 +1,10 @@
 ---
-// src/pages/cosmology/index.astro · 0927 V5
+// src/pages/cosmology/index.astro · 0927 V6
+// V6: the verse index is no longer the last card. It is a panel of its own
+// (components/cosmology/VerseIndexPanel.astro), placed by the study body
+// directly under the introduction; this page supplies the component to the
+// body. A small link at the foot jumps back up to it (#verse-index). The
+// section-sources list and the split notes moved into VerseIndexPanel.
 // V5: comments only — the permanent-anchor rule and the work owed if the
 // section ever splits (see the notes above SECTION_SOURCES). No change in output.
 // V4: one page with anchors, built so a later split is not blocked. The verse
@@ -23,39 +28,15 @@
 // The old /blog and /cosmology/the-heavens-and-the-earth addresses 301 here.
 // V1: a section front listing the study and the cosmology-north cluster.
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import PageVerseIndex from '../../components/cards/PageVerseIndex.astro';
+import VerseIndexPanel from '../../components/cosmology/VerseIndexPanel.astro';
 import { getCollection, render } from 'astro:content';
 
 const [post] = await getCollection('posts', (p) => p.data.route === '/cosmology' && p.data.draft !== true);
 if (!post) throw new Error('[cosmology] no published study carries route: "/cosmology"');
-const { Content, headings } = await render(post);
-const { title, deck, description, epigraph, refs, ogTitle, ogDescription } = post.data;
+const { Content } = await render(post);
+const { title, deck, description, epigraph, ogTitle, ogDescription } = post.data;
 
 const TITLE_TAG = 'Cosmology — What Scripture Says Was Made';
-
-// The section's pages, for its verse index. One page today: this one.
-//
-// ANCHORS ARE PERMANENT. Every band id and reading anchor (the reading's
-// heading id, e.g. #the-firmament) may already be in a shared link, and a
-// fragment never reaches the server, so it cannot be redirected. Never rename
-// one for tidiness; a reading that is retitled keeps its old anchor.
-//
-// WORK OWED IF A SPLIT HAPPENS (Dutch, 0927: not decided, do not build yet):
-//   1. Band 5's "This was settled centuries ago" card links to
-//      #the-chain-of-fixes; retarget it if Band 7 leaves this page.
-//   2. A small script here that forwards an old fragment link
-//      (/cosmology#<moved-reading>) to the reading's new page, since the
-//      server cannot redirect a fragment.
-//   3. The moved page joins SECTION_SOURCES below, and gets a route.
-const SECTION_SOURCES = [{ refs, headings, href: '' }];
-
-// The verse index card (its count line is generated from the index itself).
-const VERSE_INDEX = {
-  title: 'Every Verse on This Page',
-  deck: 'Click any passage to open the reading that handles it.',
-  blurb: 'Every passage this section teaches, gathered in one place and ordered by book. Nothing here sends a reader off the page — each entry opens the reading that explains it.',
-  note: 'This is the whole of what the section teaches, in the order of the books. A reader with ten minutes can work from here rather than from the top of the page: find the passage, click it, and land on the reading that handles it. A passage taught in two readings lists both. Where a verse carries a caution — a dream, an idiom, a context that will not bear the weight put on it — the reading says so when it opens, not here.',
-};
 ---
 
 <BaseLayout title={TITLE_TAG} description={description} ogTitle={ogTitle} ogDescription={ogDescription}>
@@ -76,14 +57,15 @@ const VERSE_INDEX = {
     )}
 
     <div class="cz-main">
-      <Content />
-      <PageVerseIndex sources={SECTION_SOURCES} {...VERSE_INDEX} />
+      <Content components={{ VerseIndexPanel }} />
     </div>
 
     <section class="cz-footer-quote">
       <p class="cz-quote-text">&ldquo;Lift up your eyes on high, and behold who hath created these things, that bringeth out their host by number: he calleth them all by names by the greatness of his might, for that he is strong in power; not one faileth.&rdquo;</p>
       <p class="cz-quote-ref">&mdash; Isaiah 40:26</p>
     </section>
+
+    <p class="cz-back"><a href="#verse-index">&uarr; Every verse on this page</a></p>
   </div>
 </BaseLayout>
 
@@ -198,6 +180,13 @@ const VERSE_INDEX = {
     color: var(--band-count);
     margin: 0;
   }
+
+  .cz-back { text-align: center; margin: 2rem 0 0; font-size: 0.9rem; }
+  .cz-back a { color: var(--band-count); text-decoration: none; letter-spacing: 0.02em; }
+  .cz-back a:hover { color: var(--band-link); text-decoration: underline; }
+
+  /* ── The verse index panel, full width under the introduction ── */
+  .cz .pvi { margin: 0 0 1rem; }
 
   /* ── Reading cards inside the bands ── */
   .cz .sc {

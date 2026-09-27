@@ -1,98 +1,131 @@
 ---
-// PageVerseIndex.astro · 0927 V3
-// V3: SPLIT-READY. The index reads a list of SOURCES — each a page of the
-// section with its own refs, headings and address — instead of assuming every
-// reading lives on this page. Today /cosmology passes one source (itself, href
-// ""), so every link is "#anchor" exactly as before. If a reading later moves to
-// a page of its own, the section page adds that page as a second source and
-// its links become "<its address>#anchor"; nothing here changes. The index
-// still reads only the section's own pages, never other studies.
-// V2: takes the card's deck, blurb, and a note that runs above the list
-// (all section copy, passed by the page). The count line stays generated.
-// V1: the closing card of a sectioned study (first used by /cosmology): every
-// passage the page teaches, and the reading(s) on THIS page that teach it.
-// SELF-CONTAINED — it reads the page's own `refs` frontmatter (the same lines
-// the reading cards print, via printed-refs.js) and links only to reading
-// anchors on the page. No site-wide index, no gathered file, no scan of other
-// studies, no external link.
-//
-// Grouped by book in canonical order, then by chapter and verse, numerically.
-// A passage taught in more than one reading lists every one, in page order.
-// A link opens the band and the reading around it (src/lib/cards-client.ts).
-import BandCard from './BandCard.astro';
+// PageVerseIndex.astro · 0927 V4
+// V4: a PANEL, not a band card — no count line, no (+), open by default so the
+// passages show without a click. Every entry names the band and reading it
+// points to ("Band 4, The Witnesses → Two Great Lights"). A sort control
+// regroups the same build-time data three ways: By book (default), By band
+// (band, then reading, in page order), By reading (reading titles A–Z, each
+// with every passage it rests on). All three views are in the page source;
+// the control only shows one and hides the others. No tier filter yet.
+// V3: SPLIT-READY — reads a list of SOURCES (each a page of the section with
+// its own refs, headings, bands and address), not only the page it sits on.
+// Today /cosmology passes one source (itself, href ""), so links are
+// "#anchor". A reading that later moves to its own page is added as a source
+// and its links follow it. Only the section's own pages, never other studies.
+// V2: deck and note are section copy, passed by the page.
+// V1: the page's own verse index, from the same verse lines the readings
+// print (printed-refs.js). A passage taught in two readings lists both.
 import { BOOK_BY_KEY } from '../../lib/scripture/books.js';
 import { printedRefs } from '../../lib/scripture/printed-refs.js';
 
+interface Band { number: number; id: string; title: string; anchors: string[] }
 interface Source {
   refs?: { ref: string; anchor?: string; lead?: boolean }[];
   /** That page's headings, in page order (from render()). */
   headings: { slug: string; text: string }[];
+  /** That page's bands, in order (src/lib/section-structure.js). */
+  bands: Band[];
   /** That page's address: "" for the page the index sits on. */
   href?: string;
 }
 interface Props {
-  /** The section's pages, in reading order. */
   sources: Source[];
   id?: string;
   title?: string;
   deck?: string;
-  blurb?: string;
   note?: string;
 }
-const { sources, id = 'verse-index', title = 'Verse Index', deck, blurb, note } = Astro.props;
+const { sources, id = 'verse-index', title = 'Verse Index', deck, note } = Astro.props;
 
-// Every reading in the section, keyed by its link, in reading order: source
-// order first, then heading order within the source.
-const readingAt = new Map();
-sources.forEach(({ headings, href = '' }, s) => {
-  headings.forEach((h, i) => readingAt.set(`${href}#${h.slug}`, { title: h.text, rank: s * 100000 + i }));
+// Every reading in the section, keyed by its link, in reading order.
+const readings = new Map();
+sources.forEach(({ headings, bands, href = '' }, s) => {
+  const titleOf = new Map(headings.map((h) => [h.slug, h.text]));
+  const rankOf = new Map(headings.map((h, i) => [h.slug, i]));
+  for (const band of bands) {
+    for (const anchor of band.anchors) {
+      if (!titleOf.has(anchor)) throw new Error(`[PageVerseIndex] band "${band.id}" holds "${anchor}", which is not a heading on that page`);
+      readings.set(`${href}#${anchor}`, {
+        href: `${href}#${anchor}`,
+        title: titleOf.get(anchor),
+        band,
+        rank: s * 100000 + rankOf.get(anchor),
+        passages: [],
+      });
+    }
+  }
 });
 
+const canon = (a, b) =>
+  BOOK_BY_KEY[a.book].order - BOOK_BY_KEY[b.book].order ||
+  a.start.c - b.start.c || a.start.v - b.start.v || a.end.c - b.end.c || a.end.v - b.end.v;
+
+// Passages, and which readings teach each (every reading, in page order).
 const byPassage = new Map();
 for (const { refs = [], href = '' } of sources) {
   for (const { r, p } of printedRefs(refs)) {
-    const link = `${href}#${r.anchor ?? ''}`;
-    if (!r.anchor || !readingAt.has(link)) {
-      throw new Error(`[PageVerseIndex] ref "${r.ref}" has no reading at ${link}`);
-    }
-    const entry = byPassage.get(p.key) ?? { p, links: [] };
-    if (!entry.links.includes(link)) entry.links.push(link);
+    const reading = readings.get(`${href}#${r.anchor ?? ''}`);
+    if (!reading) throw new Error(`[PageVerseIndex] ref "${r.ref}" (anchor ${r.anchor ?? 'none'}) is not a reading in any band`);
+    if (!reading.passages.some((q) => q.key === p.key)) reading.passages.push(p);
+    const entry = byPassage.get(p.key) ?? { p, readings: [] };
+    if (!entry.readings.includes(reading)) entry.readings.push(reading);
     byPassage.set(p.key, entry);
   }
 }
+for (const e of byPassage.values()) e.readings.sort((a, b) => a.rank - b.rank);
 
-const passages = [...byPassage.values()]
-  .map((e) => ({ ...e, links: e.links.sort((a, b) => readingAt.get(a).rank - readingAt.get(b).rank) }))
-  .sort((a, b) =>
-    BOOK_BY_KEY[a.p.book].order - BOOK_BY_KEY[b.p.book].order ||
-    a.p.start.c - b.p.start.c || a.p.start.v - b.p.start.v ||
-    a.p.end.c - b.p.end.c || a.p.end.v - b.p.end.v);
+const bandLabel = (band) => `Band ${band.number}, ${band.title}`;
+const withPassages = [...readings.values()].filter((rd) => rd.passages.length);
 
-const books = [];
-for (const e of passages) {
-  let g = books[books.length - 1];
-  if (!g || g.key !== e.p.book) books.push((g = { key: e.p.book, name: BOOK_BY_KEY[e.p.book].name, rows: [] }));
-  g.rows.push({
-    ref: e.p.display,
-    readings: e.links.map((link) => ({ href: link, title: readingAt.get(link).title })),
-  });
+// View 1 — by book, canonical order.
+const byBook = [];
+for (const e of [...byPassage.values()].sort((a, b) => canon(a.p, b.p))) {
+  let g = byBook[byBook.length - 1];
+  if (!g || g.key !== e.p.book) byBook.push((g = { key: e.p.book, name: BOOK_BY_KEY[e.p.book].name, rows: [] }));
+  g.rows.push(e);
 }
-const count = `${passages.length} ${passages.length === 1 ? 'Passage' : 'Passages'}`;
+
+// View 2 — by band, then reading, in page order.
+const byBand = [];
+for (const rd of [...withPassages].sort((a, b) => a.rank - b.rank)) {
+  let g = byBand[byBand.length - 1];
+  if (!g || g.band !== rd.band) byBand.push((g = { band: rd.band, readings: [] }));
+  g.readings.push(rd);
+}
+
+// View 3 — by reading title, A–Z (quote marks and a leading "The" ignored).
+const sortKey = (t) => t.replace(/^[“"‘']+/, '').replace(/^The\s+/i, '').toLowerCase();
+const byReading = [...withPassages].sort((a, b) => sortKey(a.title).localeCompare(sortKey(b.title)));
 ---
 
-<BandCard id={id} title={title} deck={deck} blurb={blurb} count={count}>
-  {note && <p>{note}</p>}
-  <div class="pvi">
-    {books.map((g) => (
-      <div class="pvi-book">
-        <h3 class="pvi-book-name">{g.name}</h3>
+<section class="pvi" id={id} data-pvi aria-labelledby={`${id}-title`}>
+  <header class="pvi-head">
+    <h2 class="pvi-title" id={`${id}-title`}>{title}</h2>
+    {deck && <p class="pvi-deck">{deck}</p>}
+    {note && <p class="pvi-note">{note}</p>}
+    <div class="pvi-sort" role="group" aria-label="Sort the verse index" hidden>
+      <span class="pvi-sort-label">Sort</span>
+      <button type="button" class="pvi-sort-btn" data-view="book" aria-pressed="true">By book</button>
+      <button type="button" class="pvi-sort-btn" data-view="band" aria-pressed="false">By band</button>
+      <button type="button" class="pvi-sort-btn" data-view="reading" aria-pressed="false">By reading</button>
+    </div>
+  </header>
+
+  <div class="pvi-view" data-view="book">
+    {byBook.map((g) => (
+      <div class="pvi-group">
+        <h3 class="pvi-group-name">{g.name}</h3>
         <ul class="pvi-rows">
-          {g.rows.map((row) => (
+          {g.rows.map((e) => (
             <li class="pvi-row">
-              <span class="pvi-ref">{row.ref}</span>
-              <span class="pvi-readings">
-                {row.readings.map((rd, i) => (
-                  <>{i > 0 && <span class="pvi-sep" aria-hidden="true"> · </span>}<a href={rd.href}>{rd.title}</a></>
+              <span class="pvi-ref">{e.p.display}</span>
+              <span class="pvi-where">
+                {e.readings.map((rd) => (
+                  <span class="pvi-line">
+                    <span class="pvi-band">{bandLabel(rd.band)}</span>
+                    <span class="pvi-arrow" aria-hidden="true"> → </span>
+                    <a href={rd.href}>{rd.title}</a>
+                  </span>
                 ))}
               </span>
             </li>
@@ -101,28 +134,132 @@ const count = `${passages.length} ${passages.length === 1 ? 'Passage' : 'Passage
       </div>
     ))}
   </div>
-</BandCard>
+
+  <div class="pvi-view" data-view="band" hidden>
+    {byBand.map((g) => (
+      <div class="pvi-group">
+        <h3 class="pvi-group-name">Band {g.band.number} — {g.band.title}</h3>
+        {g.readings.map((rd) => (
+          <div class="pvi-reading">
+            <h4 class="pvi-reading-name"><a href={rd.href}>{rd.title}</a></h4>
+            <p class="pvi-passages">
+              {rd.passages.map((p, i) => (
+                <>{i > 0 && <span class="pvi-sep" aria-hidden="true"> · </span>}<a href={rd.href}>{p.display}</a></>
+              ))}
+            </p>
+          </div>
+        ))}
+      </div>
+    ))}
+  </div>
+
+  <div class="pvi-view" data-view="reading" hidden>
+    {byReading.map((rd) => (
+      <div class="pvi-reading">
+        <h4 class="pvi-reading-name"><a href={rd.href}>{rd.title}</a> <span class="pvi-band">{bandLabel(rd.band)}</span></h4>
+        <p class="pvi-passages">
+          {rd.passages.map((p, i) => (
+            <>{i > 0 && <span class="pvi-sep" aria-hidden="true"> · </span>}<a href={rd.href}>{p.display}</a></>
+          ))}
+        </p>
+      </div>
+    ))}
+  </div>
+</section>
+
+<script>
+  // The sort control only regroups: all three views are in the page source.
+  // Without JavaScript the control stays hidden and By book shows.
+  document.querySelectorAll<HTMLElement>('[data-pvi]').forEach((panel) => {
+    const control = panel.querySelector<HTMLElement>('.pvi-sort');
+    if (!control) return;
+    control.hidden = false;
+    const buttons = [...control.querySelectorAll<HTMLButtonElement>('.pvi-sort-btn')];
+    const views = [...panel.querySelectorAll<HTMLElement>('.pvi-view')];
+    buttons.forEach((btn) => btn.addEventListener('click', () => {
+      const view = btn.dataset.view;
+      buttons.forEach((b) => b.setAttribute('aria-pressed', String(b === btn)));
+      views.forEach((v) => { v.hidden = v.dataset.view !== view; });
+    }));
+  });
+</script>
 
 <style>
-  .pvi { columns: 2 20rem; column-gap: 2.5rem; padding-top: 1rem; }
-  .pvi-book { break-inside: avoid; margin: 0 0 1.25rem; }
-  .pvi-book-name {
+  .pvi {
+    scroll-margin-top: 7.5rem;
+    margin: 0 0 1rem;
+    padding: 2rem 2rem 1.75rem;
+    background: rgba(9, 18, 34, 0.85);
+    border: 1px solid var(--band-border, #1d2e4a);
+    border-left: 3px solid var(--band-accent, #c9a85c);
+    border-radius: 4px;
+  }
+  .pvi-head { max-width: 46rem; margin: 0 0 1.5rem; }
+  .pvi-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 3vw, 1.6rem);
+    font-weight: 700;
+    color: var(--band-title, #eef2fa);
+    margin: 0 0 0.4rem;
+  }
+  .pvi-deck { font-style: italic; font-size: 1.05rem; color: var(--band-deck, #a9c0e2); margin: 0 0 0.75rem; }
+  .pvi-note { font-size: 1rem; line-height: 1.75; color: var(--band-text, #c3cddd); margin: 0 0 1.25rem; }
+  .pvi-sort { display: flex; flex-wrap: wrap; align-items: center; gap: 0.5rem; }
+  .pvi-sort[hidden] { display: none; }
+  .pvi-sort-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--band-count, #7f9bc8);
+    margin-right: 0.25rem;
+  }
+  .pvi-sort-btn {
+    font: inherit;
+    font-size: 0.92rem;
+    padding: 0.3rem 0.85rem;
+    border-radius: 999px;
+    border: 1px solid var(--band-border, #1d2e4a);
+    background: transparent;
+    color: var(--band-text, #c3cddd);
+    cursor: pointer;
+  }
+  .pvi-sort-btn[aria-pressed='true'] {
+    background: var(--band-accent, #c9a85c);
+    border-color: var(--band-accent, #c9a85c);
+    color: #0b1526;
+  }
+  .pvi-sort-btn:focus-visible { outline: 2px solid var(--band-accent, #c9a85c); outline-offset: 2px; }
+
+  .pvi-view { columns: 2 22rem; column-gap: 2.75rem; }
+  .pvi-view[hidden] { display: none; }
+  .pvi-group { break-inside: avoid; margin: 0 0 1.4rem; }
+  .pvi-view[data-view='band'] .pvi-group { break-inside: auto; }
+  .pvi-group-name {
     font-family: 'Cinzel', serif;
     font-size: 0.8rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    color: var(--band-count, #8a6520);
-    margin: 0 0 0.35rem;
-    padding-bottom: 0.25rem;
-    border-bottom: 1px solid var(--band-border, #d4cec4);
+    color: var(--band-count, #7f9bc8);
+    margin: 0 0 0.4rem;
+    padding-bottom: 0.3rem;
+    border-bottom: 1px solid var(--band-border, #1d2e4a);
   }
   .pvi-rows { list-style: none; margin: 0; padding: 0; }
-  .pvi-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.75rem; padding: 0.2rem 0; font-size: 0.95rem; line-height: 1.5; }
-  .pvi-ref { color: var(--band-title, #2b2b2b); font-variant-numeric: tabular-nums; white-space: nowrap; }
-  .pvi-readings a { color: var(--band-link, #1e4d7b); text-decoration: none; }
-  .pvi-readings a:hover { text-decoration: underline; }
-  .pvi-sep { color: var(--band-count, #8a6520); }
-  @media (max-width: 480px) {
-    .pvi-row { grid-template-columns: 1fr; gap: 0; }
+  .pvi-row { display: grid; grid-template-columns: 7.75rem 1fr; gap: 0.75rem; padding: 0.3rem 0; font-size: 0.95rem; line-height: 1.5; }
+  .pvi-ref { color: var(--band-title, #eef2fa); white-space: nowrap; font-variant-numeric: tabular-nums; }
+  .pvi-where { display: flex; flex-direction: column; }
+  .pvi-band { color: var(--band-count, #7f9bc8); font-size: 0.88em; }
+  .pvi-arrow { color: var(--band-accent, #c9a85c); }
+  .pvi a { color: var(--band-link, #9cc0f0); text-decoration: none; }
+  .pvi a:hover { text-decoration: underline; }
+  .pvi-reading { break-inside: avoid; margin: 0 0 0.9rem; }
+  .pvi-reading-name { font-size: 1rem; font-weight: 600; margin: 0 0 0.15rem; color: var(--band-title, #eef2fa); }
+  .pvi-reading-name .pvi-band { font-weight: 400; margin-left: 0.35rem; }
+  .pvi-passages { font-size: 0.92rem; line-height: 1.6; margin: 0; color: var(--band-text, #c3cddd); }
+  .pvi-sep { color: var(--band-count, #7f9bc8); }
+  @media (max-width: 560px) {
+    .pvi { padding: 1.4rem 1.1rem 1.25rem; }
+    .pvi-row { grid-template-columns: 1fr; gap: 0.1rem; }
   }
 </style>

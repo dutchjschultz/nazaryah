@@ -1,0 +1,38 @@
+---
+// VerseIndexPanel.astro · 0927 V1
+// V1: the Cosmology verse index as placed in the study body, full width
+// directly beneath the introduction and above "Open the Account". It gathers
+// the section's pages (SECTION_SOURCES) and the panel copy, and renders
+// PageVerseIndex. The study body places it with <VerseIndexPanel />; the
+// /cosmology page supplies the component to the body.
+//
+// ANCHORS ARE PERMANENT. The panel's id (#verse-index), every band id and
+// every reading anchor may already be in a shared link, and a fragment never
+// reaches the server, so it cannot be redirected. Never rename one for tidiness.
+//
+// WORK OWED IF A SPLIT HAPPENS (Dutch, 0927: not decided, do not build yet):
+//   1. Band 5's "This was settled centuries ago" card links to
+//      #the-chain-of-fixes; retarget it if Band 7 leaves this page.
+//   2. A small script on /cosmology that forwards an old fragment link
+//      (/cosmology#<moved-reading>) to the reading's new page.
+//   3. The moved page joins SECTION_SOURCES below, and gets a route.
+import PageVerseIndex from '../cards/PageVerseIndex.astro';
+import { getCollection, render } from 'astro:content';
+import { sectionBands } from '../../lib/section-structure.js';
+
+const [post] = await getCollection('posts', (p) => p.data.route === '/cosmology' && p.data.draft !== true);
+const { headings } = await render(post);
+
+// The section's pages, for its verse index. One page today: this one.
+const SECTION_SOURCES = [
+  { refs: post.data.refs, headings, bands: sectionBands(post.body), href: '' },
+];
+
+const COPY = {
+  title: 'Every Verse on This Page',
+  deck: 'Click any passage to open the reading that handles it.',
+  note: 'This is the whole of what the section teaches, in the order of the books. A reader with ten minutes can work from here rather than from the top of the page: find the passage, click it, and land on the reading that handles it. A passage taught in two readings lists both. Where a verse carries a caution — a dream, an idiom, a context that will not bear the weight put on it — the reading says so when it opens, not here.',
+};
+---
+
+<PageVerseIndex sources={SECTION_SOURCES} {...COPY} />
