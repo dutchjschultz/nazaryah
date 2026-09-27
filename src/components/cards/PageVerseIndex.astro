@@ -1,5 +1,12 @@
 ---
-// PageVerseIndex.astro · 0927 V2
+// PageVerseIndex.astro · 0927 V3
+// V3: SPLIT-READY. The index reads a list of SOURCES — each a page of the
+// section with its own refs, headings and address — instead of assuming every
+// reading lives on this page. Today /cosmology passes one source (itself, href
+// ""), so every link is "#anchor" exactly as before. If a reading later moves to
+// a page of its own, the section page adds that page as a second source and
+// its links become "<its address>#anchor"; nothing here changes. The index
+// still reads only the section's own pages, never other studies.
 // V2: takes the card's deck, blurb, and a note that runs above the list
 // (all section copy, passed by the page). The count line stays generated.
 // V1: the closing card of a sectioned study (first used by /cosmology): every
@@ -16,33 +23,46 @@ import BandCard from './BandCard.astro';
 import { BOOK_BY_KEY } from '../../lib/scripture/books.js';
 import { printedRefs } from '../../lib/scripture/printed-refs.js';
 
-interface Props {
+interface Source {
   refs?: { ref: string; anchor?: string; lead?: boolean }[];
-  /** The page's headings, in page order (from render()). */
+  /** That page's headings, in page order (from render()). */
   headings: { slug: string; text: string }[];
+  /** That page's address: "" for the page the index sits on. */
+  href?: string;
+}
+interface Props {
+  /** The section's pages, in reading order. */
+  sources: Source[];
   id?: string;
   title?: string;
   deck?: string;
   blurb?: string;
   note?: string;
 }
-const { refs = [], headings, id = 'verse-index', title = 'Verse Index', deck, blurb, note } = Astro.props;
+const { sources, id = 'verse-index', title = 'Verse Index', deck, blurb, note } = Astro.props;
 
-const order = new Map(headings.map((h, i) => [h.slug, i]));
-const titleOf = new Map(headings.map((h) => [h.slug, h.text]));
+// Every reading in the section, keyed by its link, in reading order: source
+// order first, then heading order within the source.
+const readingAt = new Map();
+sources.forEach(({ headings, href = '' }, s) => {
+  headings.forEach((h, i) => readingAt.set(`${href}#${h.slug}`, { title: h.text, rank: s * 100000 + i }));
+});
 
 const byPassage = new Map();
-for (const { r, p } of printedRefs(refs)) {
-  if (!r.anchor || !titleOf.has(r.anchor)) {
-    throw new Error(`[PageVerseIndex] ref "${r.ref}" has no anchor on this page (anchor: ${r.anchor ?? 'none'})`);
+for (const { refs = [], href = '' } of sources) {
+  for (const { r, p } of printedRefs(refs)) {
+    const link = `${href}#${r.anchor ?? ''}`;
+    if (!r.anchor || !readingAt.has(link)) {
+      throw new Error(`[PageVerseIndex] ref "${r.ref}" has no reading at ${link}`);
+    }
+    const entry = byPassage.get(p.key) ?? { p, links: [] };
+    if (!entry.links.includes(link)) entry.links.push(link);
+    byPassage.set(p.key, entry);
   }
-  const entry = byPassage.get(p.key) ?? { p, anchors: [] };
-  if (!entry.anchors.includes(r.anchor)) entry.anchors.push(r.anchor);
-  byPassage.set(p.key, entry);
 }
 
 const passages = [...byPassage.values()]
-  .map((e) => ({ ...e, anchors: e.anchors.sort((a, b) => order.get(a) - order.get(b)) }))
+  .map((e) => ({ ...e, links: e.links.sort((a, b) => readingAt.get(a).rank - readingAt.get(b).rank) }))
   .sort((a, b) =>
     BOOK_BY_KEY[a.p.book].order - BOOK_BY_KEY[b.p.book].order ||
     a.p.start.c - b.p.start.c || a.p.start.v - b.p.start.v ||
@@ -54,7 +74,7 @@ for (const e of passages) {
   if (!g || g.key !== e.p.book) books.push((g = { key: e.p.book, name: BOOK_BY_KEY[e.p.book].name, rows: [] }));
   g.rows.push({
     ref: e.p.display,
-    readings: e.anchors.map((a) => ({ href: `#${a}`, title: titleOf.get(a) })),
+    readings: e.links.map((link) => ({ href: link, title: readingAt.get(link).title })),
   });
 }
 const count = `${passages.length} ${passages.length === 1 ? 'Passage' : 'Passages'}`;

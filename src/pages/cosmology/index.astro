@@ -1,5 +1,9 @@
 ---
-// src/pages/cosmology/index.astro · 0927 V3
+// src/pages/cosmology/index.astro · 0927 V4
+// V4: one page with anchors, built so a later split is not blocked. The verse
+// index takes the section's pages as a list of sources; today that list is
+// this page alone. If a reading (a Band 4 witness, or Band 7) later becomes a
+// page of its own, add it to SECTION_SOURCES and its index links follow it.
 // V3: section furniture (Cosmology Section Furniture 0927): the band-row
 // heading (in the study body, above the bands), the verse index card's title,
 // deck, blurb and note (count line still generated), the closing Scripture
@@ -26,6 +30,9 @@ const { Content, headings } = await render(post);
 const { title, deck, description, epigraph, refs, ogTitle, ogDescription } = post.data;
 
 const TITLE_TAG = 'Cosmology — What Scripture Says Was Made';
+
+// The section's pages, for its verse index. One page today: this one.
+const SECTION_SOURCES = [{ refs, headings, href: '' }];
 
 // The verse index card (its count line is generated from the index itself).
 const VERSE_INDEX = {
@@ -55,7 +62,7 @@ const VERSE_INDEX = {
 
     <div class="cz-main">
       <Content />
-      <PageVerseIndex refs={refs} headings={headings} {...VERSE_INDEX} />
+      <PageVerseIndex sources={SECTION_SOURCES} {...VERSE_INDEX} />
     </div>
 
     <section class="cz-footer-quote">
