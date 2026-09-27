@@ -1,5 +1,9 @@
 ---
-// StudyCard.astro · 0927 V1
+// StudyCard.astro · 0927 V2
+// V2: a `lead: true` ref whose verses are all covered by another ref on the
+// same card is not printed. It exists to steer the Scripture index (e.g. a lead
+// Gen 1:5 beside the printed Gen 1:3-5), not for the card's Verses line. Every
+// other ref prints exactly as the copy has it, overlaps included.
 // V1: one card in a StudyCardGrid. The card's title is an ordinary markdown
 // heading written inside it (so it gets an id, shows in the page's headings,
 // and can be a Scripture-index `anchor`); the deck line, body, and verses
@@ -13,9 +17,9 @@
 // `source`: a record citation (Band 7 style), shown under the body. `sourceLinks`
 // is an optional list of { label, href } rendered after it.
 // `link`: an optional { label, href } read-more line at the foot of the card.
-import { parseRef } from '../../lib/scripture/parse-ref.js';
+import { parseRef, expandRef, verseId } from '../../lib/scripture/parse-ref.js';
 
-interface Ref { ref: string; anchor?: string }
+interface Ref { ref: string; anchor?: string; lead?: boolean }
 interface Props {
   anchor?: string;
   verses?: Ref[];
@@ -25,13 +29,18 @@ interface Props {
 }
 const { anchor, verses = [], source, sourceLinks = [], link } = Astro.props;
 
-const mine = anchor
+const parsed = anchor
   ? verses.filter((r) => r.anchor === anchor).map((r) => {
       const p = parseRef(r.ref);
       if (!p.ok) throw new Error(`[StudyCard] bad ref "${r.ref}" on card "${anchor}": ${p.error}`);
-      return p.display;
+      return { p, lead: r.lead === true, ids: expandRef(p).map(verseId) };
     })
   : [];
+// An index-steering lead ref that another ref on this card already covers in
+// full is not printed; everything else prints as written.
+const mine = parsed
+  .filter(({ lead, ids }, i) => !(lead && parsed.some((o, j) => j !== i && ids.every((id) => o.ids.includes(id)))))
+  .map(({ p }) => p.display);
 if (anchor && !mine.length) {
   throw new Error(`[StudyCard] card "${anchor}" has an anchor but no refs in frontmatter point at it`);
 }
