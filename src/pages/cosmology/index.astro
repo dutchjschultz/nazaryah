@@ -1,5 +1,10 @@
 ---
-// src/pages/cosmology/index.astro · 0927 V2
+// src/pages/cosmology/index.astro · 0927 V3
+// V3: section furniture (Cosmology Section Furniture 0927): the band-row
+// heading (in the study body, above the bands), the verse index card's title,
+// deck, blurb and note (count line still generated), the closing Scripture
+// block (Isaiah 40:26), and the page meta — title tag here; meta and Open
+// Graph description/title in the study's frontmatter.
 // V2: REBUILT as a section in the Foreign Fire pattern (Cosmology Section
 // Rebuild 0927). /cosmology IS the page now — the study whose frontmatter sets
 // route: "/cosmology" (the-heavens-and-the-earth.mdx; slug and associations
@@ -18,10 +23,20 @@ import { getCollection, render } from 'astro:content';
 const [post] = await getCollection('posts', (p) => p.data.route === '/cosmology' && p.data.draft !== true);
 if (!post) throw new Error('[cosmology] no published study carries route: "/cosmology"');
 const { Content, headings } = await render(post);
-const { title, deck, description, epigraph, refs } = post.data;
+const { title, deck, description, epigraph, refs, ogTitle, ogDescription } = post.data;
+
+const TITLE_TAG = 'Cosmology — What Scripture Says Was Made';
+
+// The verse index card (its count line is generated from the index itself).
+const VERSE_INDEX = {
+  title: 'Every Verse on This Page',
+  deck: 'Click any passage to open the reading that handles it.',
+  blurb: 'Every passage this section teaches, gathered in one place and ordered by book. Nothing here sends a reader off the page — each entry opens the reading that explains it.',
+  note: 'This is the whole of what the section teaches, in the order of the books. A reader with ten minutes can work from here rather than from the top of the page: find the passage, click it, and land on the reading that handles it. A passage taught in two readings lists both. Where a verse carries a caution — a dream, an idiom, a context that will not bear the weight put on it — the reading says so when it opens, not here.',
+};
 ---
 
-<BaseLayout title={`${title} | Nazaryah`} description={description}>
+<BaseLayout title={TITLE_TAG} description={description} ogTitle={ogTitle} ogDescription={ogDescription}>
   <div class="cz" data-pagefind-body>
     <section class="cz-hero">
       <p class="cz-label">&#8213; What Yahuah Made &#8213;</p>
@@ -40,8 +55,13 @@ const { title, deck, description, epigraph, refs } = post.data;
 
     <div class="cz-main">
       <Content />
-      <PageVerseIndex refs={refs} headings={headings} />
+      <PageVerseIndex refs={refs} headings={headings} {...VERSE_INDEX} />
     </div>
+
+    <section class="cz-footer-quote">
+      <p class="cz-quote-text">&ldquo;Lift up your eyes on high, and behold who hath created these things, that bringeth out their host by number: he calleth them all by names by the greatness of his might, for that he is strong in power; not one faileth.&rdquo;</p>
+      <p class="cz-quote-ref">&mdash; Isaiah 40:26</p>
+    </section>
   </div>
 </BaseLayout>
 
@@ -125,6 +145,37 @@ const { title, deck, description, epigraph, refs } = post.data;
   .cz-intro { max-width: 780px; margin: 0 auto; padding: 2rem 0 3rem; font-size: 1.1rem; line-height: 1.85; color: #cfd8e6; }
   .cz-intro p { margin: 0 0 1.4rem; }
   .cz-intro p:last-child { margin-bottom: 0; }
+
+  /* ── Over the band row ── */
+  .cz-row-head { text-align: center; padding: 1rem 0 2.25rem; border-top: 1px solid #16233a; }
+  .cz-row-label {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: var(--band-count);
+    margin: 2.5rem 0 0.75rem;
+  }
+  .cz-row-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3vw, 2.1rem);
+    font-weight: 600;
+    color: var(--band-title);
+    margin: 0 0 0.5rem;
+  }
+  .cz-row-sub { font-size: 1rem; font-style: italic; color: var(--band-deck); max-width: 36rem; margin: 0 auto; }
+
+  /* ── Closing Scripture block ── */
+  .cz-footer-quote { max-width: 720px; margin: 3.5rem auto 0; padding: 3rem 1.5rem 0; text-align: center; border-top: 1px solid #16233a; }
+  .cz-quote-text { font-style: italic; font-size: 1.15rem; line-height: 1.8; color: #d6e0f0; margin: 0 0 0.75rem; }
+  .cz-quote-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--band-count);
+    margin: 0;
+  }
 
   /* ── Reading cards inside the bands ── */
   .cz .sc {

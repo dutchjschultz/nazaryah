@@ -1,5 +1,7 @@
 ---
-// PageVerseIndex.astro · 0927 V1
+// PageVerseIndex.astro · 0927 V2
+// V2: takes the card's deck, blurb, and a note that runs above the list
+// (all section copy, passed by the page). The count line stays generated.
 // V1: the closing card of a sectioned study (first used by /cosmology): every
 // passage the page teaches, and the reading(s) on THIS page that teach it.
 // SELF-CONTAINED — it reads the page's own `refs` frontmatter (the same lines
@@ -20,8 +22,11 @@ interface Props {
   headings: { slug: string; text: string }[];
   id?: string;
   title?: string;
+  deck?: string;
+  blurb?: string;
+  note?: string;
 }
-const { refs = [], headings, id = 'verse-index', title = 'Verse Index' } = Astro.props;
+const { refs = [], headings, id = 'verse-index', title = 'Verse Index', deck, blurb, note } = Astro.props;
 
 const order = new Map(headings.map((h, i) => [h.slug, i]));
 const titleOf = new Map(headings.map((h) => [h.slug, h.text]));
@@ -55,7 +60,8 @@ for (const e of passages) {
 const count = `${passages.length} ${passages.length === 1 ? 'Passage' : 'Passages'}`;
 ---
 
-<BandCard id={id} title={title} count={count}>
+<BandCard id={id} title={title} deck={deck} blurb={blurb} count={count}>
+  {note && <p>{note}</p>}
   <div class="pvi">
     {books.map((g) => (
       <div class="pvi-book">
