@@ -1,5 +1,7 @@
 ---
-// StudyCardGrid.astro · 0927 V1
+// StudyCardGrid.astro · 0927 V2
+// V2: cards align to the top of their row, so opening one card lengthens it
+// alone instead of stretching its closed neighbours.
 // V1: lays a band of study cards out in columns inside a post body (first used
 // by The Heavens and the Earth). `full` makes every card span the full width —
 // for a band whose copy says "full-width card, no columns".
@@ -18,6 +20,7 @@ const { full = false } = Astro.props;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 19rem), 1fr));
     gap: 1.25rem;
+    align-items: start;
     margin: 1.5rem 0 2.5rem;
   }
   .scg--full { grid-template-columns: 1fr; }

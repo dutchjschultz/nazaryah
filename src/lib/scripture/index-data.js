@@ -36,6 +36,7 @@ import { parseRef, expandRef, verseId } from './parse-ref.js';
 import { GATHERED } from '../../data/gathered.js';
 import { CLUSTERS } from '../../data/associations.js';
 import { KJV_SOURCE_URL, KJV_SOURCE_COMMIT } from '../../data/bible/kjv-source.js';
+import { postHref } from '../post-href.js';
 
 // The KJV is read here, server-side, and only the verses that are actually in
 // the index go into the output. The browser never receives the whole Bible.
@@ -90,7 +91,7 @@ async function build() {
       const cite = {
         slug: post.slug,
         title: post.data.title,
-        href: `/blog/${post.slug}${r.anchor ? `#${r.anchor}` : ''}`,
+        href: `${postHref(post)}${r.anchor ? `#${r.anchor}` : ''}`,
         section: post.data.category,
         subjects: (post.data.associations ?? []).filter((k) => CLUSTERS[k]),
         tier: r.tier ?? null,

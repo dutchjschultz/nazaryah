@@ -1,5 +1,8 @@
 ---
-// src/pages/index.astro · 0927 V12
+// src/pages/index.astro · 0927 V13
+// V13: the Cosmology rail card opens the /cosmology section front, matching the
+// Header slot; The Heavens and the Earth moved out of the blog to
+// /cosmology/the-heavens-and-the-earth. Copy unchanged.
 // V12: the Restoration rail's Cosmology placeholder goes live, pointing at The
 // Heavens and the Earth (/blog/the-heavens-and-the-earth) — same target as the
 // Header's Cosmology slot (Header V8). DRAFT badge, Placeholder eyebrow and
@@ -38,6 +41,7 @@ import WatchmanCard from '../components/WatchmanCard.astro';
 import { featuredEntries } from '../data/watchmans-desk.js';
 import { getCollection } from 'astro:content';
 import { featuredSlugs } from '../lib/featured-queue.js';
+import { postHref } from '../lib/post-href.js';
 
 // ── SCRIPTURE INSIGHT (strip) — the single latest posted insight, read at build
 // time from the same JSON the /close-to-the-hip insights lane uses, with the SAME
@@ -83,7 +87,7 @@ const railGroups = [
     items: [
       { href: '/calendar', color: 'indigo', icon: '☾', eyebrow: 'Set in the lights', title: 'The <em>Calendar</em>', description: 'Aviv, the renewed moon, the Sabbath. The way Yahuah set the seasons.', cta: 'Open the Calendar' },
       { href: '/hebrew', color: 'oxblood', icon: 'ב', eyebrow: 'The language of Yahuah', title: 'Hebrew <em>Word</em>', description: 'Restored names, root words, and the meanings translation flattened.', cta: 'Study the Roots' },
-      { href: '/blog/the-heavens-and-the-earth', color: 'navy', icon: '◠', eyebrow: 'The heavens and the earth', title: '<em>Cosmology</em>', description: 'The shape of what Yahuah made — the firmament above, the north at the center, and everything built to hide it.', cta: 'Read the Witnesses' },
+      { href: '/cosmology', color: 'navy', icon: '◠', eyebrow: 'The heavens and the earth', title: '<em>Cosmology</em>', description: 'The shape of what Yahuah made — the firmament above, the north at the center, and everything built to hide it.', cta: 'Read the Witnesses' },
     ],
   },
   {
@@ -608,7 +612,7 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
         <p class="wr-picks-title">Featured Picks</p>
         <div class="wr-picks-grid">
           {featuredPicks.map((p) => (
-            <a href={`/blog/${p.slug}`} class="wr-pick">
+            <a href={postHref(p)} class="wr-pick">
               <span class="wr-pick-date">{p.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}</span>
               <span class="wr-pick-title">{p.data.title}</span>
             </a>

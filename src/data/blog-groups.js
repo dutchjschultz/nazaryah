@@ -1,4 +1,7 @@
-// blog-groups 0927 V10.js
+// blog-groups 0927 V11.js
+// V11: The Heavens and the Earth leaves BURIED IN PLAIN SIGHT's feed — it moved
+// out of the blog to /cosmology/the-heavens-and-the-earth (frontmatter `home`),
+// and the /cosmology section front lists it. Map total 101 → 100.
 // V10: The Heavens and the Earth joins BURIED IN PLAIN SIGHT, where its
 // frontmatter category already puts it. Its batch (associations-batch-23) said
 // nothing about this file; the line is still required, because inFeed is
@@ -132,7 +135,6 @@ export const POST_GROUP = {
   'the-christian-experiment': 'buried-in-plain-sight',
   'the-men-in-the-margin': 'buried-in-plain-sight',
   'the-lie-of-gravity': 'buried-in-plain-sight',
-  'the-heavens-and-the-earth': 'buried-in-plain-sight',
   'the-rockefeller-system': 'buried-in-plain-sight',
   'the-short-season': 'buried-in-plain-sight',
   'the-sword-that-was-never-ours': 'buried-in-plain-sight',

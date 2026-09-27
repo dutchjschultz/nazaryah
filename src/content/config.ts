@@ -1,4 +1,8 @@
-// content config 0927 V13
+// content config 0927 V14
+// V14: added the optional `home` — the section a study lives in, when that is
+// not the blog (e.g. home: "/cosmology" puts it at /cosmology/<slug>). Read only
+// through src/lib/post-href.js; the /blog route skips any post that sets it.
+// Absent on every other study, so nothing else moves.
 // V13: `refs` entries take an optional `lead: true` — this citation takes the
 // Scripture index link for every verse it covers on its page, ahead of any
 // narrower citation of the same verse. For the card that TEACHES a verse when
@@ -117,6 +121,9 @@ const postsCollection = defineCollection({
       'The Feasts',
     ]),
     tags: z.array(z.string()).default([]),
+    // HOME — the section this study is served from, if not /blog. The URL is
+    // <home>/<slug>; see src/lib/post-href.js. Must start with "/".
+    home: z.string().regex(/^\/[a-z0-9-]+$/).optional(),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
     references: z.array(referenceSchema).optional(),

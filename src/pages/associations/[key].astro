@@ -4,6 +4,7 @@
 // panel. Ported from the React reference to Astro + site theme.
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { hrefMap } from "../../lib/post-href.js";
 import { getCluster, clusterKeys, membersOf, isAnchorOf, toStudy } from "../../data/associations.js";
 
 export function getStaticPaths() {
@@ -12,7 +13,9 @@ export function getStaticPaths() {
 
 const { key } = Astro.params;
 const cluster = getCluster(key);
-const all = (await getCollection("posts", (p) => !p.data.draft)).map(toStudy);
+const allPosts = await getCollection("posts", (p) => !p.data.draft);
+const hrefOf = hrefMap(allPosts);
+const all = allPosts.map(toStudy);
 const members = membersOf(key, all);
 ---
 
@@ -33,7 +36,7 @@ const members = membersOf(key, all);
       <ul class="list">
         {members.map((s) => (
           <li class="item">
-            <a href={`/blog/${s.slug}`} class="link">
+            <a href={hrefOf[s.slug]} class="link">
               {s.title}
               {isAnchorOf(s, key) && <span class="anchor" title="Main study"><span aria-hidden="true"> ★</span><span class="sr-only">Main study</span></span>}
             </a>

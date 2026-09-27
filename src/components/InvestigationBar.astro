@@ -16,12 +16,13 @@
 // dark value alongside any new colour here; a light-only token will disappear.
 
 import { getInvestigation } from '../data/investigations.js';
+import { postHref } from '../lib/post-href.js';
 
 const { current } = Astro.props;
 const slug = current?.data?.investigation;
 const inv = slug ? getInvestigation(slug) : null;
 
-const here = `/blog/${current.slug}`;
+const here = postHref(current);
 
 const pieces = inv
   ? [

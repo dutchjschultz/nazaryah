@@ -2,6 +2,7 @@
 // Single blog post card. Extracted from the old blog index so the paginated
 // group views and the All Posts view render identical cards.
 import { masterTitleBySlug } from '../data/books.js';
+import { postHref } from '../lib/post-href.js';
 const { post } = Astro.props;
 
 // Chapters of the multi-part books display the master chapter title from the
@@ -38,7 +39,7 @@ const watch = post.data.watch;
     <div class:list={["tag mb-3", { "tag-book": book }]} style="color: var(--bronze);">{cat}</div>
     {verseLine && <div class="post-verse">{verseLine}</div>}
     <h3 class="post-title text-sm font-semibold mb-3 leading-snug" style="font-family: var(--font-display);">
-      <a href={`/blog/${post.slug}`} style="color: var(--deep-earth);">{displayTitle}</a>
+      <a href={postHref(post)} style="color: var(--deep-earth);">{displayTitle}</a>
     </h3>
     <p class="post-subtitle text-sm leading-relaxed mb-5 line-clamp-4 flex-1">{blurb}</p>
     {/* The actions, pinned to the foot of the card. READ IS LAST, so it sits on
@@ -57,7 +58,7 @@ const watch = post.data.watch;
         <time datetime={post.data.date.toISOString()}>
           {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}
         </time>
-        <a href={`/blog/${post.slug}`} class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--bronze);">
+        <a href={postHref(post)} class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--bronze);">
           Read <span aria-hidden="true">&rarr;</span>
         </a>
       </div>

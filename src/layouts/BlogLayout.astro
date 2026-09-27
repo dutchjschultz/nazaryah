@@ -1,5 +1,11 @@
 ---
-// BlogLayout.astro · 0910 V8
+// BlogLayout.astro · 0927 V9
+// V9: a study may live outside the blog (frontmatter `home`, e.g. /cosmology).
+// The breadcrumb, the "Back to …" link and Read Next all take their URL and
+// label from src/lib/post-href.js, so the same layout serves every section.
+// Adds ScriptureRefs at the foot of the body: the study's own passages from its
+// `refs` frontmatter, each linking to its Scripture index entry (renders
+// nothing on a study with no refs).
 // V8: the book-text note honours a `bookText: false` frontmatter flag, so a post
 // filed under a book category but written for the site rather than lifted from
 // print does not claim to be the printed copy. Category is the default, not the
@@ -44,6 +50,8 @@ import NucleusClaim from '../components/NucleusClaim.astro';
 import Epigraph from '../components/Epigraph.astro';
 import InvestigationBar from '../components/InvestigationBar.astro';
 import BookTextNote from '../components/BookTextNote.astro';
+import ScriptureRefs from '../components/ScriptureRefs.astro';
+import { postHref, postHome, postHomeLabel } from '../lib/post-href.js';
 import { getEntry } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
 
@@ -95,8 +103,10 @@ const readingTime = Math.ceil(wordCount / 200);
 // stays portable. `companion` is a single slug or an array, in intentional order
 // (strongest kin first — never sorted). Every entry that resolves to a published
 // (non-draft) study is shown; a slug that doesn't resolve is skipped silently, so
-// a stale reference never renders a dead link. In the blog context links point at
-// the /blog/ sibling.
+// a stale reference never renders a dead link. Each link goes wherever that
+// study lives (postHref).
+const home = postHome(post);
+const homeLabel = postHomeLabel(post);
 const companionField = post.data.companion;
 const companionSlugs = Array.isArray(companionField)
   ? companionField
@@ -114,7 +124,7 @@ const companions = (
         <ol class="flex items-center space-x-2" style="color: var(--ink-faded);">
           <li><a href="/" class="hover:text-[var(--bronze)]">Home</a></li>
           <li>/</li>
-          <li><a href="/blog" class="hover:text-[var(--bronze)]">Blog</a></li>
+          <li><a href={home} class="hover:text-[var(--bronze)]">{homeLabel}</a></li>
           <li>/</li>
           <li class="font-medium" style="color: var(--ink);">{title}</li>
         </ol>
@@ -219,14 +229,19 @@ const companions = (
       <!-- Book text note (a chapter of a book in print; nothing on an ordinary study) -->
       {isBookText && <BookTextNote />}
 
-      <!-- Companion studies (wrapper-rendered; each points at its /blog/ sibling).
+      <!-- This study's passages, each linking to its Scripture index entry -->
+      <div class="max-w-3xl mx-auto" data-pagefind-ignore>
+        <ScriptureRefs refs={post.data.refs} />
+      </div>
+
+      <!-- Companion studies (wrapper-rendered; each points at its own URL).
            Row on desktop, stacked on mobile. One companion looks as it always has. -->
       {companions.length > 0 && (
         <div class="max-w-3xl mx-auto companion-note" data-pagefind-ignore>
           <p class="companion-label">Read Next</p>
           <div class="companion-list">
             {companions.map((c) => (
-              <a href={`/blog/${c.slug}`} class="companion-item">
+              <a href={postHref(c)} class="companion-item">
                 <span class="companion-link">
                   {c.data.title} <span aria-hidden="true">&rarr;</span>
                 </span>
@@ -255,14 +270,14 @@ const companions = (
       <footer class="max-w-3xl mx-auto mt-16 pt-8 border-t border-[var(--sand-dark)]" data-pagefind-ignore>
         <div class="flex items-center justify-between">
           <a
-            href="/blog"
+            href={home}
             class="inline-flex items-center gap-2 hover:underline"
             style="color: var(--bronze); font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 1px;"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            Back to Blog
+            Back to {homeLabel}
           </a>
 
           <div class="flex gap-4">

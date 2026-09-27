@@ -7,6 +7,7 @@
 // Usage:  <AssociatedStudies current={post} />
 import { getCollection } from "astro:content";
 import { getCluster, keysFor, membersOf, isAnchorOf, toStudy } from "../data/associations.js";
+import { hrefMap } from "../lib/post-href.js";
 
 const { current } = Astro.props;
 const PER_CLUSTER = 3;
@@ -21,7 +22,9 @@ const SAME_CATEGORY = (a, b) =>
   !!a?.category && !!b?.category && a.category === b.category;
 
 const currentStudy = toStudy(current);
-const all = (await getCollection("posts", (p) => !p.data.draft)).map(toStudy);
+const allPosts = await getCollection("posts", (p) => !p.data.draft);
+const hrefOf = hrefMap(allPosts);
+const all = allPosts.map(toStudy);
 
 const groups = keysFor(currentStudy)
   .map((key) => {
@@ -51,7 +54,7 @@ const groups = keysFor(currentStudy)
         <ul class="list">
           {shown.map((s) => (
             <li class="item">
-              <a href={`/blog/${s.slug}`} class="link">
+              <a href={hrefOf[s.slug]} class="link">
                 <span class="title">
                   {s.title}
                   {isAnchorOf(s, key) && <span class="anchor" title="Main study"><span aria-hidden="true">★</span><span class="sr-only">Main study</span></span>}

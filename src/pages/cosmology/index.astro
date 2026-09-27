@@ -1,0 +1,86 @@
+---
+// src/pages/cosmology/index.astro · 0927 V1
+// V1: the Cosmology section landing, in the pattern of the other section fronts.
+// Both lists are DERIVED, never hand-maintained:
+//   - The Pages: every published study whose frontmatter sets home: "/cosmology".
+//   - Related Studies: the other members of the cosmology-north cluster, read
+//     live from src/data/associations.js, that live elsewhere on the site.
+// Adding a cosmology page means writing it with home: "/cosmology". The deck is
+// the approved copy from the homepage rail card.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+import { getCluster, membersOf, toStudy } from '../../data/associations.js';
+
+const CLUSTER = 'cosmology-north';
+
+const published = await getCollection('posts', ({ data }) => data.draft !== true);
+const pages = published
+  .filter((p) => p.data.home === '/cosmology' && !p.data.companionOf)
+  .sort((a, b) => a.data.date.valueOf() - b.data.date.valueOf());
+
+const onThisPage = new Set(pages.map((p) => p.slug));
+const bySlug = new Map(published.map((p) => [p.slug, p]));
+const related = membersOf(CLUSTER, published.map(toStudy))
+  .filter((s) => !onThisPage.has(s.slug))
+  .map((s) => bySlug.get(s.slug));
+const cluster = getCluster(CLUSTER);
+---
+
+<BaseLayout
+  title="Cosmology | Nazaryah"
+  description="The shape of what Yahuah made — the firmament above, the north at the center, and everything built to hide it."
+>
+  <main class="cz">
+    <header class="cz-hero">
+      <p class="cz-kicker">Restored Truth</p>
+      <h1 class="cz-h1">Cosmology</h1>
+      <p class="cz-deck">The shape of what Yahuah made — the firmament above, the north at the center, and everything built to hide it.</p>
+    </header>
+
+    {pages.length > 0 && (
+      <section class="cz-section" aria-label="Cosmology pages">
+        <div class="cz-head">
+          <h2>The Pages</h2>
+          <p class="cz-count">{pages.length} {pages.length === 1 ? 'page' : 'pages'}</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {pages.map((post) => <BlogCard post={post} />)}
+        </div>
+      </section>
+    )}
+
+    {related.length > 0 && (
+      <section class="cz-section" aria-label="Related studies">
+        <div class="cz-head">
+          <h2>Related Studies</h2>
+          <p class="cz-count">{cluster.label}</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {related.map((post) => <BlogCard post={post} />)}
+        </div>
+      </section>
+    )}
+
+    <p class="cz-index">Every verse these pages teach on is in the <a href="/scripture">Scripture index</a>.</p>
+  </main>
+</BaseLayout>
+
+<style>
+  .cz { max-width: 72rem; margin: 0 auto; padding: 3.5rem 1.25rem 4rem; font-family: var(--font-body); }
+  .cz-hero { max-width: 44rem; margin: 0 auto 3rem; text-align: center; }
+  .cz-kicker { font-family: var(--font-display); font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin: 0 0 0.6rem; }
+  :global(.dark) .cz-kicker { color: var(--gold-light); }
+  .cz-h1 { font-family: var(--font-display); font-size: clamp(2.2rem, 6vw, 3.2rem); color: var(--deep-earth, var(--ink)); margin: 0 0 1rem; }
+  :global(.dark) .cz-h1 { color: var(--color-dark-text); }
+  .cz-deck { font-size: 1.25rem; font-style: italic; color: var(--ink-faded); margin: 0; }
+  :global(.dark) .cz-deck { color: var(--color-dark-secondary-text); }
+  .cz-section { margin: 0 0 3rem; }
+  .cz-head { display: flex; align-items: baseline; justify-content: space-between; gap: 1rem; border-bottom: 2px solid var(--gold); padding-bottom: 0.4rem; margin-bottom: 1.25rem; }
+  :global(.dark) .cz-head { border-bottom-color: var(--gold-light); }
+  .cz-head h2 { font-family: var(--font-display); font-size: 1.4rem; margin: 0; }
+  .cz-count { font-size: 0.9rem; font-style: italic; color: var(--ink-faded); margin: 0; }
+  :global(.dark) .cz-count { color: var(--color-dark-secondary-text); }
+  .cz-index { text-align: center; font-style: italic; color: var(--ink-faded); }
+  :global(.dark) .cz-index { color: var(--color-dark-secondary-text); }
+</style>

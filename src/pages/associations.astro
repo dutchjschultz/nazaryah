@@ -5,9 +5,12 @@
 // Not linked in nav on purpose; reachable at /associations.
 import BaseLayout from "../layouts/BaseLayout.astro";
 import { getCollection } from "astro:content";
+import { hrefMap } from "../lib/post-href.js";
 import { CLUSTERS, getCluster, membersOf, isAnchorOf, toStudy } from "../data/associations.js";
 
-const all = (await getCollection("posts", (p) => !p.data.draft)).map(toStudy);
+const allPosts = await getCollection("posts", (p) => !p.data.draft);
+const hrefOf = hrefMap(allPosts);
+const all = allPosts.map(toStudy);
 
 const rows = Object.entries(CLUSTERS).map(([key, cluster]) => ({
   key,
@@ -50,7 +53,7 @@ const orphans = all.filter((s) => !(s.associations || []).length);
             <ul class="assoc-list">
               {members.map((s) => (
                 <li class="assoc-item">
-                  <a href={`/blog/${s.slug}`} class="assoc-link">{s.title}{isAnchorOf(s, key) && <span class="assoc-anchor"> ★</span>}</a>
+                  <a href={hrefOf[s.slug]} class="assoc-link">{s.title}{isAnchorOf(s, key) && <span class="assoc-anchor"> ★</span>}</a>
                   {s.deck && <span class="assoc-deck">{s.deck}</span>}
                 </li>
               ))}
@@ -69,7 +72,7 @@ const orphans = all.filter((s) => !(s.associations || []).length);
         <p class="assoc-blurb">Studies with no cluster key. Standing alone is a valid answer — this is not a backlog.</p>
         <ul class="assoc-list">
           {orphans.map((s) => (
-            <li class="assoc-item"><a href={`/blog/${s.slug}`} class="assoc-link">{s.title}</a></li>
+            <li class="assoc-item"><a href={hrefOf[s.slug]} class="assoc-link">{s.title}</a></li>
           ))}
         </ul>
       </section>
