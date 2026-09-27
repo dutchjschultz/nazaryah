@@ -1,4 +1,6 @@
-// post-href 0927 V1.js
+// post-href 0927 V2.js
+// V2: `route` — a study that IS a section page (the cosmology page) is served at
+// its exact route ("/cosmology"), ahead of `home` and the slug.
 // V1: the ONE place a study's URL is decided. A `posts` entry lives at
 // /blog/<slug> unless its frontmatter sets `home` (e.g. home: "/cosmology"),
 // in which case it lives at <home>/<slug> — same slug, same associations, same
@@ -20,7 +22,7 @@ export const HOME_LABEL = {
 
 export const postHome = (entry) => entry?.data?.home ?? DEFAULT_HOME;
 
-export const postHref = (entry) => `${postHome(entry)}/${entry.slug}`;
+export const postHref = (entry) => entry?.data?.route ?? `${postHome(entry)}/${entry.slug}`;
 
 export const postHomeLabel = (entry) => HOME_LABEL[postHome(entry)] ?? 'Blog';
 

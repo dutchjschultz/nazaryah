@@ -1,5 +1,8 @@
 ---
-// StudyCard.astro · 0927 V3
+// StudyCard.astro · 0927 V4
+// V4: the open/close script moved to src/lib/cards-client.ts, shared with
+// BandCard, so a link can open the band and the reading around its target in
+// one step. New `open` prop: the reading starts open (The Claim's reading).
 // V3: cards open in place. Each card starts COLLAPSED to its title and deck
 // line; clicking the title (a button) or the deck opens the rest in place, and
 // clicking the title again closes it. Every card toggles on its own — a band is
@@ -33,8 +36,9 @@ interface Props {
   source?: string;
   sourceLinks?: { label: string; href: string }[];
   link?: { label: string; href: string };
+  open?: boolean;
 }
-const { anchor, verses = [], source, sourceLinks = [], link } = Astro.props;
+const { anchor, verses = [], source, sourceLinks = [], link, open = false } = Astro.props;
 
 // Every ref on this card prints as written, except an index-steering lead ref
 // another ref on the card already covers (see printed-refs.js).
@@ -46,7 +50,7 @@ if (anchor && !mine.length) {
 }
 ---
 
-<div class="sc" data-sc>
+<div class="sc" data-sc data-open={open ? "true" : undefined}>
   <slot />
   {mine.length > 0 && (
     <p class="sc-verses"><span class="sc-label">Verses</span> {mine.join('; ')}</p>
@@ -148,51 +152,5 @@ if (anchor && !mine.length) {
 </style>
 
 <script>
-  const setOpen = (card: HTMLElement, open: boolean) => {
-    card.classList.toggle('is-closed', !open);
-    card.querySelector('.sc-toggle')?.setAttribute('aria-expanded', String(open));
-  };
-
-  const init = () => {
-    document.querySelectorAll<HTMLElement>('.sc[data-sc]:not(.sc-js)').forEach((card) => {
-      const h = card.querySelector<HTMLElement>(':scope > h3');
-      if (!h) return;
-      // The deck is the italic line straight under the title.
-      const next = h.nextElementSibling;
-      const deck =
-        next instanceof HTMLParagraphElement &&
-        next.childElementCount === 1 &&
-        next.firstElementChild?.tagName === 'EM' &&
-        next.textContent?.trim() === next.firstElementChild.textContent?.trim()
-          ? next : null;
-      deck?.classList.add('sc-deck');
-
-      const btn = document.createElement('button');
-      btn.type = 'button';
-      btn.className = 'sc-toggle';
-      btn.append(...Array.from(h.childNodes));
-      h.append(btn);
-      btn.addEventListener('click', () => setOpen(card, card.classList.contains('is-closed')));
-      deck?.addEventListener('click', () => { if (card.classList.contains('is-closed')) setOpen(card, true); });
-
-      card.classList.add('sc-js');
-      setOpen(card, false);
-    });
-  };
-
-  // A link straight to a card (the Scripture index, a shared URL) opens it.
-  // Any other link target on the page (a band heading) is scrolled to again,
-  // because collapsing the cards moved it after the browser's own jump.
-  const openFromHash = () => {
-    const id = decodeURIComponent(location.hash.slice(1));
-    const target = id && document.getElementById(id);
-    if (!target) return;
-    const card = target.closest<HTMLElement>('.sc-js');
-    if (card) setOpen(card, true);
-    target.scrollIntoView({ block: 'start', behavior: 'instant' });
-  };
-
-  init();
-  openFromHash();
-  window.addEventListener('hashchange', openFromHash);
+  import '../../lib/cards-client.ts';
 </script>

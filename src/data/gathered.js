@@ -1,4 +1,8 @@
-// gathered 0927 V3.js
+// gathered 0927 V4.js
+// V4: PARKED. Retired for the cosmology section (its page carries its own
+// verse index, and every verse on it is taught there). Nothing reads this file
+// while the site-wide index is parked; every entry stays, as the file is
+// permanent.
 // V3: first real file. 22 entries, all from the cosmology verse inventory —
 // passages gathered for the subject that no card on The Heavens and the Earth
 // teaches on. A generated index entry always outranks an entry here; nothing is

@@ -1,0 +1,102 @@
+---
+// PageVerseIndex.astro · 0927 V1
+// V1: the closing card of a sectioned study (first used by /cosmology): every
+// passage the page teaches, and the reading(s) on THIS page that teach it.
+// SELF-CONTAINED — it reads the page's own `refs` frontmatter (the same lines
+// the reading cards print, via printed-refs.js) and links only to reading
+// anchors on the page. No site-wide index, no gathered file, no scan of other
+// studies, no external link.
+//
+// Grouped by book in canonical order, then by chapter and verse, numerically.
+// A passage taught in more than one reading lists every one, in page order.
+// A link opens the band and the reading around it (src/lib/cards-client.ts).
+import BandCard from './BandCard.astro';
+import { BOOK_BY_KEY } from '../../lib/scripture/books.js';
+import { printedRefs } from '../../lib/scripture/printed-refs.js';
+
+interface Props {
+  refs?: { ref: string; anchor?: string; lead?: boolean }[];
+  /** The page's headings, in page order (from render()). */
+  headings: { slug: string; text: string }[];
+  id?: string;
+  title?: string;
+}
+const { refs = [], headings, id = 'verse-index', title = 'Verse Index' } = Astro.props;
+
+const order = new Map(headings.map((h, i) => [h.slug, i]));
+const titleOf = new Map(headings.map((h) => [h.slug, h.text]));
+
+const byPassage = new Map();
+for (const { r, p } of printedRefs(refs)) {
+  if (!r.anchor || !titleOf.has(r.anchor)) {
+    throw new Error(`[PageVerseIndex] ref "${r.ref}" has no anchor on this page (anchor: ${r.anchor ?? 'none'})`);
+  }
+  const entry = byPassage.get(p.key) ?? { p, anchors: [] };
+  if (!entry.anchors.includes(r.anchor)) entry.anchors.push(r.anchor);
+  byPassage.set(p.key, entry);
+}
+
+const passages = [...byPassage.values()]
+  .map((e) => ({ ...e, anchors: e.anchors.sort((a, b) => order.get(a) - order.get(b)) }))
+  .sort((a, b) =>
+    BOOK_BY_KEY[a.p.book].order - BOOK_BY_KEY[b.p.book].order ||
+    a.p.start.c - b.p.start.c || a.p.start.v - b.p.start.v ||
+    a.p.end.c - b.p.end.c || a.p.end.v - b.p.end.v);
+
+const books = [];
+for (const e of passages) {
+  let g = books[books.length - 1];
+  if (!g || g.key !== e.p.book) books.push((g = { key: e.p.book, name: BOOK_BY_KEY[e.p.book].name, rows: [] }));
+  g.rows.push({
+    ref: e.p.display,
+    readings: e.anchors.map((a) => ({ href: `#${a}`, title: titleOf.get(a) })),
+  });
+}
+const count = `${passages.length} ${passages.length === 1 ? 'Passage' : 'Passages'}`;
+---
+
+<BandCard id={id} title={title} count={count}>
+  <div class="pvi">
+    {books.map((g) => (
+      <div class="pvi-book">
+        <h3 class="pvi-book-name">{g.name}</h3>
+        <ul class="pvi-rows">
+          {g.rows.map((row) => (
+            <li class="pvi-row">
+              <span class="pvi-ref">{row.ref}</span>
+              <span class="pvi-readings">
+                {row.readings.map((rd, i) => (
+                  <>{i > 0 && <span class="pvi-sep" aria-hidden="true"> · </span>}<a href={rd.href}>{rd.title}</a></>
+                ))}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    ))}
+  </div>
+</BandCard>
+
+<style>
+  .pvi { columns: 2 20rem; column-gap: 2.5rem; padding-top: 1rem; }
+  .pvi-book { break-inside: avoid; margin: 0 0 1.25rem; }
+  .pvi-book-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--band-count, #8a6520);
+    margin: 0 0 0.35rem;
+    padding-bottom: 0.25rem;
+    border-bottom: 1px solid var(--band-border, #d4cec4);
+  }
+  .pvi-rows { list-style: none; margin: 0; padding: 0; }
+  .pvi-row { display: grid; grid-template-columns: 7.5rem 1fr; gap: 0.75rem; padding: 0.2rem 0; font-size: 0.95rem; line-height: 1.5; }
+  .pvi-ref { color: var(--band-title, #2b2b2b); font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .pvi-readings a { color: var(--band-link, #1e4d7b); text-decoration: none; }
+  .pvi-readings a:hover { text-decoration: underline; }
+  .pvi-sep { color: var(--band-count, #8a6520); }
+  @media (max-width: 480px) {
+    .pvi-row { grid-template-columns: 1fr; gap: 0; }
+  }
+</style>

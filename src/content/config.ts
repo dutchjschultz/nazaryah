@@ -1,4 +1,10 @@
-// content config 0927 V14
+// content config 0927 V15
+// V15: two changes for a study that is a SECTION rather than a blog post (the
+// cosmology page). `route` — the exact URL it is served at ("/cosmology"),
+// overriding /blog/<slug> and `home`; read only through src/lib/post-href.js.
+// And `category` is now optional: a sectioned study is filed under no blog
+// category. Every blog study still carries one (the blog feed, cards and
+// category pages are unchanged).
 // V14: added the optional `home` — the section a study lives in, when that is
 // not the blog (e.g. home: "/cosmology" puts it at /cosmology/<slug>). Read only
 // through src/lib/post-href.js; the /blog route skips any post that sets it.
@@ -103,6 +109,8 @@ const postsCollection = defineCollection({
     description: z.string(),
     date: z.date(),
     author: z.string().default('Nazaryah'),
+    // Optional ONLY for a study served as its own section (`route` set); every
+    // blog study carries one.
     category: z.enum([
       'The Scrolls',
       'Scripture Unfiltered',
@@ -119,11 +127,14 @@ const postsCollection = defineCollection({
       'Word Studies',
       'The Law Still Stands',
       'The Feasts',
-    ]),
+    ]).optional(),
     tags: z.array(z.string()).default([]),
     // HOME — the section this study is served from, if not /blog. The URL is
     // <home>/<slug>; see src/lib/post-href.js. Must start with "/".
     home: z.string().regex(/^\/[a-z0-9-]+$/).optional(),
+    // ROUTE — the exact URL, for a study that IS a section page (e.g. "/cosmology").
+    // Takes precedence over `home`. See src/lib/post-href.js.
+    route: z.string().regex(/^\/[a-z0-9-]+(\/[a-z0-9-]+)*$/).optional(),
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
     references: z.array(referenceSchema).optional(),

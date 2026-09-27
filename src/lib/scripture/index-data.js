@@ -1,4 +1,7 @@
-// index-data 0927 V5.js
+// index-data 0927 V6.js
+// V6: PARKED with /scripture — nothing imports this while the site-wide index
+// is unpublished. Unchanged otherwise; it comes back when a second section
+// carries refs.
 // V5: a ref marked `lead: true` takes the link for every verse it covers on its
 // page, ahead of any narrower citation. Among leads (or among non-leads) the
 // V4 rule stands: narrowest wins, page order breaks ties.

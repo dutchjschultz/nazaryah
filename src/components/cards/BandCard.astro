@@ -1,0 +1,124 @@
+---
+// BandCard.astro · 0927 V1
+// V1: one band of a sectioned study (first used by /cosmology), in the Foreign
+// Fire card shape: count line, title, one-line deck, short blurb, and the (+)
+// at the upper right. The header is always visible; the band's note and its
+// reading cards (StudyCardGrid of StudyCard) open in place beneath it.
+//
+// The count line is GENERATED from the readings actually inside the band
+// (every StudyCard in the slot), never typed; pass `count` only for a card
+// that holds no readings (the verse index). `open` starts the band open.
+// The band's `id` is its stable anchor; links to it (or to anything inside
+// it) open it — see src/lib/cards-client.ts.
+interface Props {
+  id: string;
+  title: string;
+  deck?: string;
+  blurb?: string;
+  open?: boolean;
+  count?: string;
+}
+const { id, title, deck, blurb, open = false, count } = Astro.props;
+
+const body = await Astro.slots.render('default');
+const readings = (body.match(/\bdata-sc(?=[\s>=])/g) ?? []).length;
+const countLine = count ?? `${readings} ${readings === 1 ? 'Reading' : 'Readings'}`;
+---
+
+<section class="band" id={id} data-band data-open={open ? 'true' : undefined}>
+  <div class="band-head">
+    <p class="band-count">{countLine}</p>
+    <h2 class="band-title">{title}</h2>
+    {deck && <p class="band-deck">{deck}</p>}
+    {blurb && <p class="band-blurb">{blurb}</p>}
+  </div>
+  <div class="band-body" id={`${id}-body`}>
+    <Fragment set:html={body} />
+  </div>
+</section>
+
+<script>
+  import '../../lib/cards-client.ts';
+</script>
+
+<style is:global>
+  /* band- : BandCard. is:global because the script adds the state classes and
+     the title button at runtime. Colours come from the section's palette
+     variables (--band-*), set by the page that uses the card. */
+  .band {
+    position: relative;
+    background: var(--band-bg, #fff);
+    border: 1px solid var(--band-border, #d4cec4);
+    border-top: 3px solid var(--band-accent, #8a6520);
+    border-radius: 6px;
+    margin: 0 0 1.5rem;
+    scroll-margin-top: 7.5rem;
+  }
+  .band-head { padding: 1.5rem 1.75rem 1.4rem; }
+  .band-js > .band-head { cursor: pointer; padding-right: 3.5rem; }
+  .band-count {
+    font-family: 'Cinzel', serif;
+    font-size: 9.5px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--band-count, #8a6520);
+    margin: 0 0 0.6rem;
+  }
+  .band-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.25rem, 3vw, 1.55rem);
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--band-title, #2b2b2b);
+    margin: 0 0 0.45rem;
+  }
+  .band-deck {
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: var(--band-deck, #5c4033);
+    margin: 0 0 0.7rem;
+  }
+  .band-blurb {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: var(--band-text, #5c4033);
+    margin: 0;
+  }
+  .band-toggle {
+    all: unset;
+    cursor: pointer;
+    font: inherit;
+    color: inherit;
+  }
+  .band-toggle:focus-visible { outline: 2px solid var(--band-accent, #8a6520); outline-offset: 4px; border-radius: 2px; }
+  /* The (+) at the upper right. */
+  .band-js > .band-head::after {
+    content: '+';
+    position: absolute;
+    top: 1.05rem;
+    right: 1.35rem;
+    font-size: 1.7rem;
+    line-height: 1;
+    color: var(--band-accent, #8a6520);
+  }
+  .band-js:not(.is-closed) > .band-head::after { content: '\2212'; }
+  .band-js.is-closed > .band-body { display: none; }
+  .band-body {
+    padding: 0.25rem 1.75rem 1.5rem;
+    border-top: 1px solid var(--band-border, #d4cec4);
+  }
+  .band-body > p {
+    font-size: 1.02rem;
+    line-height: 1.8;
+    color: var(--band-text, #5c4033);
+    max-width: 46rem;
+    margin: 1.25rem 0 0.25rem;
+  }
+  @media (max-width: 560px) {
+    .band-head { padding: 1.25rem 1.1rem 1.15rem; }
+    .band-js > .band-head { padding-right: 3rem; }
+    .band-js > .band-head::after { right: 1rem; }
+    .band-body { padding: 0.25rem 1.1rem 1.25rem; }
+  }
+</style>

@@ -2,10 +2,10 @@
 import { getCollection } from 'astro:content';
 import BlogLayout from '../../layouts/BlogLayout.astro';
 
-// A study that sets `home` (e.g. /cosmology) is served from its own section
-// instead; its old /blog URL is a 301 in netlify.toml.
+// A study that sets `home` or `route` (e.g. /cosmology) is served from its own
+// section instead; its old /blog URL is a 301 in netlify.toml.
 export async function getStaticPaths() {
-  const posts = (await getCollection('posts')).filter((post) => !post.data.home);
+  const posts = (await getCollection('posts')).filter((post) => !post.data.home && !post.data.route);
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: { post },

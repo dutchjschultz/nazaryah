@@ -1,5 +1,8 @@
 ---
-// BlogLayout.astro · 0927 V9
+// BlogLayout.astro · 0927 V10
+// V10: the per-page verse block (ScriptureRefs) is PARKED — no longer rendered
+// on any study. The component stays in the repo for when the site-wide index
+// comes back.
 // V9: a study may live outside the blog (frontmatter `home`, e.g. /cosmology).
 // The breadcrumb, the "Back to …" link and Read Next all take their URL and
 // label from src/lib/post-href.js, so the same layout serves every section.
@@ -50,7 +53,6 @@ import NucleusClaim from '../components/NucleusClaim.astro';
 import Epigraph from '../components/Epigraph.astro';
 import InvestigationBar from '../components/InvestigationBar.astro';
 import BookTextNote from '../components/BookTextNote.astro';
-import ScriptureRefs from '../components/ScriptureRefs.astro';
 import { postHref, postHome, postHomeLabel } from '../lib/post-href.js';
 import { getEntry } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
@@ -228,11 +230,6 @@ const companions = (
 
       <!-- Book text note (a chapter of a book in print; nothing on an ordinary study) -->
       {isBookText && <BookTextNote />}
-
-      <!-- This study's passages, each linking to its Scripture index entry -->
-      <div class="max-w-3xl mx-auto" data-pagefind-ignore>
-        <ScriptureRefs refs={post.data.refs} />
-      </div>
 
       <!-- Companion studies (wrapper-rendered; each points at its own URL).
            Row on desktop, stacked on mobile. One companion looks as it always has. -->

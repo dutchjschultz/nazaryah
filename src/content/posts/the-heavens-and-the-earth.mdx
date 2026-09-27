@@ -1,22 +1,23 @@
 ---
-title: "The Heavens and the Earth"
-deck: "What Scripture says was made, and who changed the reading"
+title: "Cosmology"
+deck: "What Scripture says was made, and the machine built to hide it"
 description: "What Scripture says was made, and who changed the reading"
 date: 2026-09-27
 author: "Nazaryah"
-category: "Buried in Plain Sight"
-# Served at /cosmology/the-heavens-and-the-earth (see src/lib/post-href.js).
-home: "/cosmology"
 tags: []
 associations: ["cosmology-north", "lost-in-translation"]
+# A SECTION, not a blog post: served at /cosmology, filed under no blog
+# category (see src/lib/post-href.js). Slug and associations unchanged.
+route: "/cosmology"
+epigraph:
+  text: "And Yahuah said, Let there be a firmament in the midst of the waters, and let it divide the waters from the waters. And Yahuah made the firmament, and divided the waters which were under the firmament from the waters which were above the firmament: and it was so."
+  ref: "Genesis 1:6–7"
 featured: false
 draft: false
-# Scripture index. Every card's "Verses" line is built from these refs by
-# anchor, so this is the only place the page's verses are listed. Tiers and
-# anchors from Cosmology Refs Block 0927 V1; each card also carries every verse
-# its copy prints (page copy wins). A verse on two cards is indexed once, at
-# the lead ref if one is marked, else the narrowest citation, page order
-# breaking ties.
+# Every reading's "Verses" line is built from these refs by anchor, and the
+# page's own verse index (PageVerseIndex) is built from the same lines — this
+# is the only place the page's verses are listed. Tiers and `lead` flags are
+# from the parked site-wide index; this page's index lists every reading.
 refs:
   # Band 1 — the claim
   - { ref: "Gen 1:1", tier: plain, anchor: "what-this-page-argues" }
@@ -73,12 +74,28 @@ refs:
   - { ref: "Amos 9:6", tier: supporting, anchor: "the-firmament" }
   - { ref: "Ezek 1:22-26", tier: care, anchor: "the-firmament" }
   - { ref: "Rev 4:6", tier: care, anchor: "the-firmament" }
+  - { ref: "Psalm 150:1", anchor: "the-firmament" }
+  - { ref: "Daniel 12:3", anchor: "the-firmament" }
+  - { ref: "Isaiah 40:22", anchor: "the-heavens-stretched-out" }
+  - { ref: "Psalm 104:2", anchor: "the-heavens-stretched-out" }
+  - { ref: "Isaiah 44:24", anchor: "the-heavens-stretched-out" }
+  - { ref: "Isaiah 45:12", anchor: "the-heavens-stretched-out" }
+  - { ref: "Isaiah 40:22", anchor: "the-circle-and-the-face" }
+  - { ref: "Isaiah 22:18", anchor: "the-circle-and-the-face" }
+  - { ref: "Proverbs 8:27", anchor: "the-circle-and-the-face" }
+  - { ref: "Job 26:10", anchor: "the-circle-and-the-face" }
+  - { ref: "Genesis 1:2", anchor: "the-circle-and-the-face" }
+  - { ref: "Job 38:30", anchor: "the-circle-and-the-face" }
+  - { ref: "Revelation 20:9", anchor: "the-circle-and-the-face" }
   - { ref: "Gen 1:16", tier: plain, anchor: "two-great-lights" }
   - { ref: "Isa 13:10", tier: supporting, anchor: "two-great-lights" }
   - { ref: "Isa 30:26", tier: supporting, anchor: "two-great-lights" }
   - { ref: "Jer 31:35", tier: supporting, anchor: "two-great-lights" }
   - { ref: "Ezek 32:7", tier: supporting, anchor: "two-great-lights" }
   - { ref: "1Cor 15:41", tier: plain, anchor: "two-great-lights" }
+  - { ref: "Joel 2:31", anchor: "two-great-lights" }
+  - { ref: "Matthew 24:29", anchor: "two-great-lights" }
+  - { ref: "Mark 13:24", anchor: "two-great-lights" }
   - { ref: "Gen 1:6-8", anchor: "the-waters-above" }  # page copy; indexed at its first card
   - { ref: "Gen 7:11", tier: plain, anchor: "the-waters-above" }
   - { ref: "Gen 8:2", tier: plain, anchor: "the-waters-above" }
@@ -89,6 +106,10 @@ refs:
   - { ref: "Prov 8:29", tier: supporting, anchor: "founded-and-bounded" }
   - { ref: "Jer 5:22", tier: supporting, anchor: "founded-and-bounded" }
   - { ref: "1Sam 2:8", anchor: "founded-and-bounded" }  # page copy; indexed at its first card
+  - { ref: "Acts 17:26", anchor: "founded-and-bounded" }
+  - { ref: "Job 9:6", anchor: "founded-and-bounded" }
+  - { ref: "Psalm 75:3", anchor: "founded-and-bounded" }
+  - { ref: "Isaiah 11:12", anchor: "founded-and-bounded" }
   - { ref: "1Chr 16:30", tier: supporting, anchor: "it-shall-not-be-moved" }
   - { ref: "Ps 93:1", tier: supporting, anchor: "it-shall-not-be-moved" }
   - { ref: "Ps 96:10", tier: supporting, anchor: "it-shall-not-be-moved" }
@@ -105,9 +126,15 @@ refs:
   - { ref: "Dan 8:10", tier: care, anchor: "named-and-numbered" }
   - { ref: "Rev 1:20", tier: supporting, anchor: "named-and-numbered" }
   - { ref: "Rev 12:4", tier: care, anchor: "named-and-numbered" }
+  - { ref: "Jude 13", anchor: "named-and-numbered" }
+  - { ref: "Matthew 4:8", anchor: "seen-from-one-place" }
+  - { ref: "Genesis 11:4", anchor: "seen-from-one-place" }
+  - { ref: "Revelation 1:7", anchor: "seen-from-one-place" }
+  - { ref: "Matthew 24:27", anchor: "seen-from-one-place" }
   - { ref: "Isa 34:4", tier: supporting, anchor: "how-it-ends" }
   - { ref: "Rev 6:13-14", tier: care, anchor: "how-it-ends" }
   - { ref: "2Pet 3:10-13", tier: plain, anchor: "how-it-ends" }
+  - { ref: "Revelation 21:16", anchor: "how-it-ends" }
   # Band 6 — what is still open
   - { ref: "Isa 40:22", anchor: "what-this-page-does-not-claim-to-know" }  # page copy; indexed at its first card
   - { ref: "Job 37:18", anchor: "what-this-page-does-not-claim-to-know" }  # page copy; indexed at its first card
@@ -117,12 +144,23 @@ refs:
 
 import StudyCardGrid from '../../components/cards/StudyCardGrid.astro';
 import StudyCard from '../../components/cards/StudyCard.astro';
+import BandCard from '../../components/cards/BandCard.astro';
 
-## Band 1 — The claim
+<div class="cz-intro">
+
+Genesis 1 is not a psalm and not a vision. It is an account of what was made and in what order, written in the same flat voice Scripture uses for the flood, for Sinai, and for the empty tomb. The earth stands on the first day. Grass and fruit tree come on the third. Only on the fourth are the lights made and set in the firmament. A man who decides that account is mistaken has not set aside one chapter. He has established that the plain voice of Scripture can be overruled by another authority, and once that is established there is nothing left to protect the resurrection or the promises from the same treatment.
+
+This section does not teach that a man is lost over his picture of the sky. Deliverance came through the blood of the Messiah, and no passage anywhere conditions it on a model of the heavens. But Scripture does tie a man's standing to two things this subject goes straight at: what he trusts, and what he bows to. Israel was warned by name against being drawn away to serve the sun, the moon, and the whole host of heaven, and Judah burned incense to them anyway and was judged under those same lights. Paul names the exchange in Romans without softening it: the creature worshipped and served in the place of the One who made it.
+
+So the question is not geography. A cosmology that takes the throne out of the heavens and puts man on an accident in an endless void is not a neutral map of anything. It is the groundwork for serving the creation instead of its Maker, which is the oldest worship there is and the one Scripture never treats as harmless. What follows is the text first, in its own order and weight, and then the record of who changed the reading and what reasons they gave. Where Scripture does not settle a thing, this section says so plainly rather than filling the gap.
+
+</div>
+
+<BandCard id="the-claim" title="The Claim" deck="What this section argues, and what it does not." blurb="Scripture makes plain statements about what was made and in what order. This section takes them as they stand, says openly what is not settled, and answers the one question under all of it: whose account is true?" open>
 
 <StudyCardGrid full>
 
-<StudyCard anchor="what-this-page-argues" verses={frontmatter.refs}>
+<StudyCard open anchor="what-this-page-argues" verses={frontmatter.refs}>
 
 ### What This Page Argues
 
@@ -138,7 +176,11 @@ So the lie is not aimed at a reader's geography. It is aimed at his confidence i
 
 </StudyCardGrid>
 
-## Band 2 — Why it matters
+</BandCard>
+
+<BandCard id="why-it-matters" title="Why It Matters" deck="Not geography — authority, worship, and the throne above." blurb="The usual answer is that none of this changes anything. That holds only if the question is the shape of the sky. What is actually at stake is what governs a man's reading, what he bows to, and whether the language Scripture uses for the Most High means anything at all.">
+
+The usual answer to this subject is that it changes nothing. A man's picture of the sky does not feed his family, and it is not what he will be asked about. That answer holds only if the question is geography, and it is not. Three things are actually at stake, and each has a reading here. The first is what governs: if the plainest chapter in Scripture can be overruled, the principle that protected the rest of it is gone. The second is what a man serves, because the host of heaven has been drawing worship since Babel and has never stopped. The third is the language Scripture uses for Yahuah Himself, which assumes a settled above and a settled below.
 
 <StudyCardGrid>
 
@@ -174,9 +216,11 @@ Scripture speaks of Yahuah as the Most High and of His ways as higher than ours,
 
 </StudyCardGrid>
 
-## Band 3 — How to weigh a verse
+</BandCard>
 
-This band is the page's method, and it is stated before any evidence is offered. Piling up every verse that mentions the earth is what has made this subject easy to dismiss. Sorting them by weight is what makes it answerable.
+<BandCard id="how-to-weigh-a-verse" title="How to Weigh a Verse" deck="Plain statements, supporting witnesses, and the verses this section will not use." blurb="More harm has been done here by piling up verses than by opposing them. This band sorts them by weight before anything is argued, and names its own weak ground first — the dreams, visions, and idioms that cannot carry a doctrine.">
+
+More harm has been done to this subject by piling up verses than by opposing them. Gather two hundred passages that mention the earth, hand them to a man who disagrees, and he will find the weakest one, answer that, and walk away believing he has answered all two hundred. So this section sorts before it argues. Plain statements are declarative or sequential and carry the case. Supporting witnesses are real cosmology carried inside an argument about something else; they confirm. The third tier holds the dreams, visions, and idioms that cannot carry weight, and this section names them openly rather than waiting to be caught with them.
 
 <StudyCardGrid>
 
@@ -212,7 +256,11 @@ Nebuchadnezzar's tree is inside a dream, and the dream is interpreted for us. Th
 
 </StudyCardGrid>
 
-## Band 4 — The witnesses
+</BandCard>
+
+<BandCard id="the-witnesses" title="The Witnesses" deck="The passages themselves, in the order the account gives them." blurb="The sequence of the days, the light that came before the lights, the day named for the light itself, the firmament beaten out, two great lights, the waters above, the foundations, the settled earth, the sun's circuit, the host of heaven, and how it all ends.">
+
+These are the passages themselves, fourteen readings, each holding one strand of what Scripture says was made. They are set out in the order the account gives them: the sequence of the days, then the light, then the day itself, then the firmament and the lights set in it, then the waters, the foundations, the settled earth, the sun's circuit, the host, and the end of it all. No reading argues from anything but the text and the Hebrew or Greek behind it. Where a passage is commonly pressed further than it will go, the reading says so inside the reading rather than in a footnote, because a caution a reader has to hunt for is no caution at all.
 
 <StudyCardGrid>
 
@@ -254,6 +302,32 @@ Genesis 1:5 does not say that the sun rules off a day. It says Yahuah called the
 
 The Hebrew is raqia (H7549), from raqa (H7554), the verb used for hammering metal into thin plates. The Seventy rendered it stereoma, from stereos, firm. Job is asked whether he spread out a sky that is strong, like a cast mirror. Ezekiel, looking up, calls it crystal; John, looking from before the throne, sees glass like crystal. Amos speaks of a bound structure founded over the earth. Whatever the firmament is made of, Scripture never describes it as open space, and it stood still in David's day, long after the flood.
 
+Two more passages treat the firmament as a thing with properties. David calls men to praise Yahuah in the firmament of His power, tying it to His strength rather than to empty distance. Daniel says the wise shall shine as the brightness of the firmament, which assumes a brightness belonging to it. Neither is a plain statement of what it is made of, and neither is offered as one; they are witnesses that the writers thought of it as something rather than nothing.
+
+</StudyCard>
+
+<StudyCard anchor="the-heavens-stretched-out" verses={frontmatter.refs}>
+
+### The Heavens Stretched Out
+
+*Stretched as a curtain, spread as a tent — and by one pair of hands.*
+
+Four passages use the same image, and it is not a vague one. Yahuah stretches out the heavens as a curtain and spreads them as a tent to dwell in. David repeats it word for picture in the Psalms. Isaiah says it twice more, and the second time adds what the image is for: I am Yahuah that maketh all things, that stretcheth forth the heavens alone, that spreadeth abroad the earth by myself. Alone, and by Himself. There is no second party in the work, which is why this reading reaches past cosmology into who was and was not present at creation.
+
+A tent is a covering with something over it and something under it; a tent of open space is not a tent but a field. The word does its own work here, and it does the same work in Isaiah 40:22, where the circle below and the tent above are given in a single breath. In the last of the four the host of heaven is named as commanded — stretched out by His hands and under His orders, not loose in a void.
+
+</StudyCard>
+
+<StudyCard anchor="the-circle-and-the-face" verses={frontmatter.refs}>
+
+### The Circle and the Face
+
+*A compass set on the face of the deep — and three cautions stated up front.*
+
+Isaiah says Yahuah sits upon the circle of the earth. The word is chug (H2329), a circle or compass, and Isaiah knew another word for a ball: in 22:18 he says a man will be tossed like a duwr (H1754) into a large country. The distinction is real and the reading makes it. The caution is made in the same breath: Strong's gives duwr a range that includes circle and pile as well as ball, so the argument is that Isaiah reached for a different word, not that Hebrew had no word for a sphere.
+
+Proverbs sets a compass on the face of the depth, and Job draws a circular bound on the waters at the limit of light and darkness. The face language starts in Genesis 1:2, on the deep and on the waters, and runs through Scripture. Two more cautions belong here rather than in a footnote. Job 38:30, where the face of the deep is frozen, is describing winter ice in its own context, not the first day. And the breadth of the earth in Revelation 20:9 is platos (G4114), width or extent; it says how far, not how flat.
+
 </StudyCard>
 
 <StudyCard anchor="two-great-lights" verses={frontmatter.refs}>
@@ -263,6 +337,8 @@ The Hebrew is raqia (H7549), from raqa (H7554), the verb used for hammering meta
 *The moon is named a light and set in the same class as the sun.*
 
 Genesis 1:16 makes two great lights, the greater to rule the day and the lesser to rule the night, and adds the stars as a separate work. The prophets hold to that language: the moon does not give her light, causes her light to shine, or is set alongside the sun as a second light by day and by night. Paul adds that the sun, the moon, and the stars each have their own glory, and that stars differ among themselves. Scripture never calls the lesser light a mirror.
+
+The prophets and the Messiah keep the two lights distinct to the end. Joel says the sun shall be turned into darkness and the moon into blood before the day of Yahuah comes — two lights, two different fates. Yahushua repeats the older language without adjusting it: the sun darkened, and the moon not giving her light, in Matthew and again in Mark. Every one of these would be a strange way to speak of a mirror, which does not withhold anything of its own.
 
 </StudyCard>
 
@@ -283,6 +359,8 @@ The firmament's first stated work is to divide the waters from the waters. That 
 *Measured, fastened, and given a boundary the sea cannot pass.*
 
 Job 38 is building language from end to end: foundations laid, measures taken, a line stretched, a cornerstone set, doors and bars given to the sea. The Psalms and Proverbs repeat it — a bound the waters may not pass, foundations appointed, a world set upon pillars. Held together with Job 26:7, where the earth hangs upon nothing, the picture is of something deliberately built and hung, not something that fell together. Scripture gives both, and a faithful page keeps both.
+
+The same building language reaches past the earth to the men on it. Paul tells Athens that Yahuah determined the times appointed and the bounds of men's habitation — boundaries set for people as the sea has boundaries set for water. Job speaks of the earth shaken out of her place and her pillars trembling, and David says plainly that when it is shaken it is Yahuah who bears up the pillars of it. Isaiah gathers the dispersed from the four corners, kanaph (H3671), a wing or an extremity — an idiom for every quarter, and named as one here so no weight is hung on it.
 
 </StudyCard>
 
@@ -314,6 +392,20 @@ The sun is given a tabernacle and runs a circuit from one end of heaven to the o
 
 He tells the number of the stars and calls them all by name. They fought from heaven in their courses against Sisera. The morning stars sang together while the foundations were laid. A horn casts some of the host and of the stars to the ground and tramples them; a dragon's tail draws a third of them down. In Revelation the seven stars are interpreted for us as messengers. Whatever else the host of heaven is, Scripture speaks of it in the language of living beings under command.
 
+Jude gives the word behind our planet: wandering stars, planetes (G4107), for whom the blackness of darkness is reserved. The caution is plain and the reading gives it rather than hiding it. In Jude's own context the phrase is one of five images applied to false teachers, alongside clouds without water and trees whose fruit withers. What is worth noticing is the image he reached for, and that a reserved judgment is a strange thing to speak of over a ball of burning gas.
+
+</StudyCard>
+
+<StudyCard anchor="seen-from-one-place" verses={frontmatter.refs}>
+
+### Seen From One Place
+
+*Four passages that assume a single vantage over the whole of it.*
+
+The devil takes Yahushua up into an exceeding high mountain and shows him all the kingdoms of the world and their glory. Babel's builders set out to raise a tower whose top would reach heaven. John writes that He comes with clouds and every eye shall see Him, and Yahushua Himself says the coming will be as lightning out of the east shining to the west. These are four different kinds of text — a temptation account, a narrative, a vision, and a teaching — and they share an assumption that something can be seen, reached, or shown from one place.
+
+The reading states its own limits. Revelation 1:7 sits inside a vision, and a man may reasonably read every eye as a figure for all mankind rather than a claim about sightlines. Babel says what the builders intended, not whether the thing was possible. What the four do together is show what the writers took for granted, which is worth setting down without pressing it into proof.
+
 </StudyCard>
 
 <StudyCard anchor="how-it-ends" verses={frontmatter.refs}>
@@ -324,11 +416,17 @@ He tells the number of the stars and calls them all by name. They fought from he
 
 Isaiah and Revelation give the same picture: the host dissolved, the heavens rolled together as a scroll, every mountain and island moved. Peter adds that the heavens pass with a great noise and the elements melt with fervent heat. Neither rolling nor melting is something empty space can do; both require a thing. The end of the account matches its beginning, and both describe something made, something real, and something that will be taken down before the new heavens and the new earth.
 
+What comes down at the end is measured. The city lies foursquare, its length as large as its breadth, and the height equal to both — twelve thousand furlongs on every side, measured with a reed in the hand of a messenger. It descends from Yahuah out of heaven to a new earth. The reading does not calculate anything from those figures; it notes that the account ends as it began, with something made, measured, and set in place.
+
 </StudyCard>
 
 </StudyCardGrid>
 
-## Band 5 — Objections answered
+</BandCard>
+
+<BandCard id="objections-answered" title="Objections Answered" deck="Each one stated at its strongest, then answered." blurb="That it is only poetry. That the writers described what they saw. That cosmology is no salvation issue. That the matter was settled centuries ago. Two of the four are fair as far as they go, and the answers say so.">
+
+Four objections come back every time, and each is stated here in its strongest form before it is answered. A weak version of an objection is worse than none: a reader who already holds it recognizes the caricature and stops trusting everything around it. Two of the four are fair as far as they go, and the answers say so. The point of this band is not to leave an opponent with nothing to say. It is to move the argument onto the ground it actually belongs on, which is what governs a reader's reading and what fills the sky once the throne has been taken out of it.
 
 <StudyCardGrid>
 
@@ -362,7 +460,7 @@ No man is saved or lost by his picture of the sky, and this page has never said 
 
 </StudyCard>
 
-<StudyCard link={{"label": "The chain of fixes", "href": "#band-7--the-chain-of-fixes"}}>
+<StudyCard link={{"label": "The chain of fixes", "href": "#the-chain-of-fixes"}}>
 
 ### “This was settled centuries ago.”
 
@@ -374,7 +472,9 @@ The reading changed, and the record of who changed it and what reasons they gave
 
 </StudyCardGrid>
 
-## Band 6 — What is still open
+</BandCard>
+
+<BandCard id="what-is-still-open" title="What Is Still Open" deck="What the text does not settle, said plainly." blurb="Scripture calls the firmament beaten out, strong, and like crystal. It does not give its shape, its height, or what it is made of. It names the lights without giving their size or distance. Where there is no answer here, this section says so.">
 
 <StudyCardGrid>
 
@@ -392,9 +492,11 @@ These are not embarrassments. They are the limits of what was revealed, and a pa
 
 </StudyCardGrid>
 
-## Band 7 — The chain of fixes
+</BandCard>
 
-This band is the record, not an argument from Scripture. It asks one question of each step: what problem arose, and what was added to answer it. Every claim below is dated and sourced, and every man speaks in his own published words. The pattern it shows is that each fix required a further fix. It does not claim that every addition was invented out of nothing and never confirmed afterward, and the page should not say so.
+<BandCard id="the-chain-of-fixes" title="The Chain of Fixes" deck="History, not Scripture — who changed the reading, and what they said at the time." blurb="A centre chosen in 1543, circles exchanged for ellipses, a force supplied to hold it together, an answer for why the motion is not felt, experiments that found no motion, and a theory explaining why none could be found. Dated, sourced, and quoted from what they published.">
+
+This band is history rather than Scripture, and it asks one question of each step: what problem arose, and what was added to answer it. Every claim is dated, sourced, and quoted from what the man published. Read end to end, the record shows a structure built by addition — a centre chosen, a shape exchanged, a force supplied, an explanation for what is not felt, an experiment that found nothing, and an account of why nothing could be found. It does not claim that every addition was invented out of nothing and never confirmed afterward. Whether that is the ordinary refinement of a theory or something else is the reader's to weigh. This band hands him the dates and the words and lets him weigh it.
 
 <StudyCardGrid>
 
@@ -471,3 +573,5 @@ Laid end to end the record shows a structure built by addition: a center chosen,
 </StudyCard>
 
 </StudyCardGrid>
+
+</BandCard>
