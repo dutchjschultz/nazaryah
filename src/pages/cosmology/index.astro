@@ -1,5 +1,9 @@
 ---
-// src/pages/cosmology/index.astro · 0927 V7
+// src/pages/cosmology/index.astro · 0928 V8
+// V8: the Enoch panel (Enoch Section 0928): a third main card, "Enoch", opens
+// a panel (#enoch) holding the introduction, six cards that open in place,
+// and the closing quotations. Styles here for its quotations (.sq), small
+// subheads (.sc-sub), introduction and closing. Same palette.
 // V7: styles for "Two Ways to Read This Section" (in the study body, under the
 // introduction): Enter by Scripture opens the verse panel (#verse-index, closed
 // until asked for), Read in Order jumps to the band row (#open-the-account).
@@ -217,6 +221,44 @@ const TITLE_TAG = 'Cosmology — What Scripture Says Was Made';
   .cz-way-title::after { content: ' →'; color: var(--band-accent); }
   .cz-way-line { font-size: 1rem; line-height: 1.6; color: var(--band-text); }
   .cz-row-head { scroll-margin-top: 7.5rem; }
+
+  /* ── Enoch panel: introduction, quotations, subheads, closing ── */
+  .enoch-intro { max-width: 46rem; font-size: 1.05rem; line-height: 1.8; color: var(--band-text); margin: 0 0 1.75rem; }
+  .enoch-intro p { margin: 0 0 1.1rem; }
+  .enoch-intro a, .cz .sc a { color: var(--band-link); }
+  .enoch-head {
+    font-family: 'Cinzel', serif;
+    font-size: 1.05rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+    color: var(--band-title);
+    margin: 1.75rem 0 0.6rem;
+  }
+  .enoch-intro .enoch-head:first-child { margin-top: 0; }
+  .cz .sq {
+    margin: 0.9rem 0 1.1rem 1rem;
+    padding: 0.2rem 0 0.2rem 1rem;
+    border-left: 2px solid var(--band-accent);
+  }
+  .cz .sq p { font-style: italic; font-size: 1rem; line-height: 1.7; color: #d6e0f0; margin: 0 0 0.3rem; }
+  .cz .sq cite {
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: var(--band-count);
+  }
+  .cz .sc-sub {
+    font-family: 'Cinzel', serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--band-accent);
+    margin: 1.4rem 0 0.4rem;
+  }
+  .enoch-closing { max-width: 46rem; margin: 1.75rem auto 0; }
+  .enoch-closing .sq { margin-left: 0; }
 
   /* ── The verse index panel, full width under the introduction ── */
   .cz .pvi { margin: 0 0 1rem; }

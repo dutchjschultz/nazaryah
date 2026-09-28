@@ -1,5 +1,9 @@
 ---
-// PageVerseIndex.astro · 0927 V5
+// PageVerseIndex.astro · 0928 V6
+// V6: panels (the Enoch panel) sit beside the bands: named by title alone
+// ("Enoch → The Sun's Six Gates"), offered in the By band picker after the
+// numbered bands, counted as "6 passages in Enoch". Their readings' printed
+// Passages lines reach this index as refs passed in by the section.
 // V5: the panel starts CLOSED — the full list is not shown on the page until
 // the reader asks for it ("Enter by Scripture", or any #verse-index link),
 // though every entry stays in the page source. Bands are named "Band Four ·
@@ -22,7 +26,7 @@
 // print (printed-refs.js). A passage taught in two readings lists both.
 import { BOOK_BY_KEY } from '../../lib/scripture/books.js';
 import { printedRefs } from '../../lib/scripture/printed-refs.js';
-import { bandName, numberWord } from '../../lib/number-words.js';
+import { bandName, bandShort } from '../../lib/number-words.js';
 
 interface Band { number: number; id: string; title: string; anchors: string[] }
 interface Source {
@@ -94,19 +98,21 @@ for (const e of all) {
   g.rows.push(e);
 }
 
-// By band — one list per band: that band's passages in book order, each with
-// the reading(s) in that band that teach it.
-const bandLists = bands.map((band) => {
+// By band — one list per band (numbered bands first, then panels such as
+// Enoch): that band's passages in book order, each with the reading(s) in
+// that band that teach it.
+const pickerOrder = [...bands.filter((b) => b.number != null), ...bands.filter((b) => b.number == null)];
+const bandLists = pickerOrder.map((band) => {
   const rows = all
     .map((e) => ({ p: e.p, readings: e.readings.filter((rd) => rd.band === band) }))
     .filter((row) => row.readings.length);
-  return { band, rows, count: `${plural(rows.length)} in Band ${numberWord(band.number)}` };
+  return { band, rows, count: `${plural(rows.length)} in ${bandShort(band.number, band.title)}` };
 });
 
 // By reading — one list per reading with verses: its passages, as its verse line has them.
 const withPassages = [...readings.values()].filter((rd) => rd.passages.length).sort((a, b) => a.rank - b.rank);
 const readingLists = withPassages.map((rd) => ({ rd, count: `${plural(rd.passages.length)} in ${rd.title}` }));
-const readingGroups = bands
+const readingGroups = pickerOrder
   .map((band) => ({ band, readings: withPassages.filter((rd) => rd.band === band) }))
   .filter((g) => g.readings.length);
 ---

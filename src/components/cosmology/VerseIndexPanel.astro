@@ -1,5 +1,8 @@
 ---
-// VerseIndexPanel.astro · 0927 V1
+// VerseIndexPanel.astro · 0928 V2
+// V2: the Enoch panel's readings carry printed Passages lines instead of refs
+// frontmatter; their canon refs are derived from those lines here
+// (passages-line.js) and join the index. Enoch refs never do.
 // V1: the Cosmology verse index as placed in the study body, full width
 // directly beneath the introduction and above "Open the Account". It gathers
 // the section's pages (SECTION_SOURCES) and the panel copy, and renders
@@ -19,13 +22,19 @@
 import PageVerseIndex from '../cards/PageVerseIndex.astro';
 import { getCollection, render } from 'astro:content';
 import { sectionBands } from '../../lib/section-structure.js';
+import { canonRefsFromLine } from '../../lib/scripture/passages-line.js';
 
 const [post] = await getCollection('posts', (p) => p.data.route === '/cosmology' && p.data.draft !== true);
 const { headings } = await render(post);
 
 // The section's pages, for its verse index. One page today: this one.
+const bands = sectionBands(post.body);
+// Readings with a printed Passages line (the Enoch cards): canon refs only.
+const passagesRefs = bands.flatMap((b) => b.cards
+  .filter((c) => c.passages)
+  .flatMap((c) => canonRefsFromLine(c.passages).map((ref) => ({ ref, anchor: c.anchor }))));
 const SECTION_SOURCES = [
-  { refs: post.data.refs, headings, bands: sectionBands(post.body), href: '' },
+  { refs: [...(post.data.refs ?? []), ...passagesRefs], headings, bands, href: '' },
 ];
 
 const COPY = {

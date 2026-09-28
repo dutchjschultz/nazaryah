@@ -1,0 +1,74 @@
+---
+// SectionPanel.astro · 0928 V1
+// V1: a panel of a sectioned study that stays CLOSED until the reader asks for
+// it — opened by a link to its id (a main card such as "Enoch" on /cosmology),
+// or by a link to anything inside it — with a Close button to put it away.
+// Its readings are ordinary StudyCards that open in place. Every word is in
+// the page source; closed is state, never withheld (src/lib/cards-client.ts).
+// The verse index reads a panel like a band with no number: it is named by
+// its title alone (src/lib/section-structure.js).
+interface Props {
+  id: string;
+  title: string;
+  deck?: string;
+}
+const { id, title, deck } = Astro.props;
+---
+
+<section class="spanel" id={id} data-panel aria-labelledby={`${id}-title`}>
+  <header class="spanel-head">
+    <h2 class="spanel-title" id={`${id}-title`}>{title}</h2>
+    <button type="button" class="spanel-close" data-panel-close hidden>Close <span aria-hidden="true">×</span></button>
+    {deck && <p class="spanel-deck">{deck}</p>}
+  </header>
+  <div class="spanel-body">
+    <slot />
+  </div>
+</section>
+
+<script>
+  import '../../lib/cards-client.ts';
+</script>
+
+<style>
+  .spanel {
+    position: relative;
+    scroll-margin-top: 7.5rem;
+    margin: 0 0 1.5rem;
+    padding: 2rem 2rem 1.75rem;
+    background: rgba(9, 18, 34, 0.85);
+    border: 1px solid var(--band-border, #1d2e4a);
+    border-left: 3px solid var(--band-accent, #c9a85c);
+    border-radius: 4px;
+  }
+  .spanel.panel-js.is-closed { display: none; }
+  .spanel-head { margin: 0 0 1.25rem; }
+  .spanel-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.5rem, 3.4vw, 2rem);
+    font-weight: 700;
+    color: var(--band-title, #eef2fa);
+    margin: 0 0 0.35rem;
+    padding-right: 5rem;
+  }
+  .spanel-deck { font-style: italic; font-size: 1.08rem; color: var(--band-deck, #a9c0e2); margin: 0; }
+  .spanel-close {
+    position: absolute;
+    top: 1.75rem;
+    right: 1.5rem;
+    font: inherit;
+    font-size: 0.9rem;
+    background: transparent;
+    border: 1px solid var(--band-border, #1d2e4a);
+    border-radius: 999px;
+    color: var(--band-count, #7f9bc8);
+    padding: 0.2rem 0.75rem;
+    cursor: pointer;
+  }
+  .spanel-close[hidden] { display: none; }
+  .spanel-close:focus-visible { outline: 2px solid var(--band-accent, #c9a85c); outline-offset: 2px; }
+  @media (max-width: 560px) {
+    .spanel { padding: 1.4rem 1.1rem 1.25rem; }
+    .spanel-close { top: 1.2rem; right: 1rem; }
+  }
+</style>
