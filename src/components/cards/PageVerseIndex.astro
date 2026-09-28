@@ -1,5 +1,6 @@
 ---
-// PageVerseIndex.astro · 0928 V6
+// PageVerseIndex.astro · 0928 V7
+// V7: `view` — the panel can be one of a section's views (data-view).
 // V6: panels (the Enoch panel) sit beside the bands: named by title alone
 // ("Enoch → The Sun's Six Gates"), offered in the By band picker after the
 // numbered bands, counted as "6 passages in Enoch". Their readings' printed
@@ -44,8 +45,9 @@ interface Props {
   title?: string;
   deck?: string;
   note?: string;
+  view?: string;
 }
-const { sources, id = 'verse-index', title = 'Verse Index', deck, note } = Astro.props;
+const { sources, id = 'verse-index', title = 'Verse Index', deck, note, view } = Astro.props;
 
 // Every reading in the section, keyed by its link, in reading order.
 const readings = new Map();
@@ -117,7 +119,7 @@ const readingGroups = pickerOrder
   .filter((g) => g.readings.length);
 ---
 
-<section class="pvi" id={id} data-pvi data-panel aria-labelledby={`${id}-title`}>
+<section class="pvi" id={id} data-pvi data-panel data-view={view} aria-labelledby={`${id}-title`}>
   <header class="pvi-head">
     <h2 class="pvi-title" id={`${id}-title`}>{title}</h2>
     <button type="button" class="pvi-close" data-panel-close hidden>Close <span aria-hidden="true">×</span></button>

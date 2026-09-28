@@ -167,24 +167,30 @@ So the question is not geography. A cosmology that takes the throne out of the h
 <div class="cz-ways" id="two-ways-to-read">
   <h2 class="cz-ways-title">Two Ways to Read This Section</h2>
   <div class="cz-ways-grid">
-    <a class="cz-way" href="#verse-index">
+    <a class="cz-way" href="#verse-index" data-open-view="scripture">
       <span class="cz-way-title">Enter by Scripture</span>
       <span class="cz-way-line">Come with a passage, find it, and go straight to the reading that handles it.</span>
     </a>
-    <a class="cz-way" href="#open-the-account">
+    <a class="cz-way" href="#open-the-account" data-open-view="order">
       <span class="cz-way-title">Read in Order</span>
       <span class="cz-way-line">Start at the claim and work through to the record.</span>
     </a>
-    <a class="cz-way" href="#enoch">
-      <span class="cz-way-title">Enoch</span>
-      <span class="cz-way-line">What the seventh from Adam saw: the sun and the moon walking through gates at the ends of heaven, plain enough for any eye with a clear view of the east.</span>
-    </a>
+  </div>
+</div>
+
+<div class="cz-beyond">
+  <h2 class="cz-beyond-title">Beyond the Canon</h2>
+  <div class="cz-beyond-card">
+    <a class="cz-way" href="#enoch" data-open-view="enoch">
+    <span class="cz-way-title">Enoch</span>
+    <span class="cz-way-line">What the seventh from Adam saw: the sun and the moon walking through gates at the ends of heaven, plain enough for any eye with a clear view of the east.</span>
+  </a>
   </div>
 </div>
 
 <VerseIndexPanel />
 
-<SectionPanel id="enoch" title="Enoch" deck="The Courses of the Sun and the Moon">
+<SectionPanel id="enoch" view="enoch" title="Enoch" deck="The Courses of the Sun and the Moon">
 
 <div class="enoch-intro">
 
@@ -226,9 +232,11 @@ Every quotation from Enoch in this section comes from one source: R.H. Charles, 
 
 </div>
 
+<ViewPicker group="enoch" />
+
 <StudyCardGrid full>
 
-<StudyCard anchor="the-suns-six-gates" passages={"Enoch 72:2–32; Psalm 19:4–6; Ecclesiastes 1:5; Job 38:12–13; Psalm 74:16–17; Genesis 1:14"}>
+<StudyCard alias="enoch-1" anchor="the-suns-six-gates" passages={"Enoch 72:2–32; Psalm 19:4–6; Ecclesiastes 1:5; Job 38:12–13; Psalm 74:16–17; Genesis 1:14"}>
 
 ### The Sun’s Six Gates
 
@@ -264,7 +272,7 @@ David calls it a circuit that runs from one end of heaven to the other. Solomon 
 
 </StudyCard>
 
-<StudyCard anchor="light-given-by-measure" passages={"Enoch 73:2; 78:6–13; Psalm 104:19; Psalm 89:37; Psalm 81:3; Isaiah 13:10; Jeremiah 31:35"}>
+<StudyCard alias="enoch-2" anchor="light-given-by-measure" passages={"Enoch 73:2; 78:6–13; Psalm 104:19; Psalm 89:37; Psalm 81:3; Isaiah 13:10; Jeremiah 31:35"}>
 
 ### Light Given by Measure
 
@@ -302,7 +310,7 @@ Psalm 81:3 names two moments in the month with two different words: the new moon
 
 </StudyCard>
 
-<StudyCard anchor="two-great-lights-equal-in-size" passages={"Enoch 72:37; 73:3; 78:3–4; Genesis 1:16; Isaiah 30:26; 1 Corinthians 15:41"}>
+<StudyCard alias="enoch-3" anchor="two-great-lights-equal-in-size" passages={"Enoch 72:37; 73:3; 78:3–4; Genesis 1:16; Isaiah 30:26; 1 Corinthians 15:41"}>
 
 ### Two Great Lights, Equal in Size
 
@@ -334,7 +342,7 @@ Isaiah uses the same measure Enoch uses. Sevenfold is the ratio of the sun’s l
 
 </StudyCard>
 
-<StudyCard anchor="the-moon-walks-the-same-gates-faster" passages={"Enoch 72:3; 73:3; 74:4–16; 79:5; Jeremiah 31:35; Jeremiah 33:25; Genesis 1:14"}>
+<StudyCard alias="enoch-4" anchor="the-moon-walks-the-same-gates-faster" passages={"Enoch 72:3; 73:3; 74:4–16; 79:5; Jeremiah 31:35; Jeremiah 33:25; Genesis 1:14"}>
 
 ### The Moon Walks the Same Gates, Faster
 
@@ -372,7 +380,7 @@ The moon has ordinances of her own, written into her road. Enoch was shown them.
 
 </StudyCard>
 
-<StudyCard anchor="the-stars-keep-their-stations" passages={"Enoch 72:3; 75:3; 80:7; 82:9–19; Deuteronomy 4:19; Isaiah 40:26; Psalm 147:4; Job 38:31–33; Judges 5:20; Jude 13"}>
+<StudyCard alias="enoch-5" anchor="the-stars-keep-their-stations" passages={"Enoch 72:3; 75:3; 80:7; 82:9–19; Deuteronomy 4:19; Isaiah 40:26; Psalm 147:4; Job 38:31–33; Judges 5:20; Jude 13"}>
 
 ### The Stars Keep Their Stations
 
@@ -410,7 +418,7 @@ Jude, in the verse just before he quotes Enoch, names the stars that break rank:
 
 </StudyCard>
 
-<StudyCard anchor="the-winds-from-the-ends-of-heaven" passages={"Enoch 72:5; 73:2; 76:1–14; Ecclesiastes 1:5–6; Psalm 135:7; Jeremiah 10:13; Job 28:24–25; Job 37:9; Job 38:24; Jeremiah 49:36; Daniel 7:2; 8:8; 11:4; Zechariah 2:6; Matthew 24:31; Mark 13:27; Revelation 7:1; Psalm 104:3; Proverbs 30:4"}>
+<StudyCard alias="enoch-6" anchor="the-winds-from-the-ends-of-heaven" passages={"Enoch 72:5; 73:2; 76:1–14; Ecclesiastes 1:5–6; Psalm 135:7; Jeremiah 10:13; Job 28:24–25; Job 37:9; Job 38:24; Jeremiah 49:36; Daniel 7:2; 8:8; 11:4; Zechariah 2:6; Matthew 24:31; Mark 13:27; Revelation 7:1; Psalm 104:3; Proverbs 30:4"}>
 
 ### The Winds from the Ends of Heaven
 
@@ -468,11 +476,15 @@ There is one Keeper of the gates. The winds go out when He sends them, and retur
 
 </SectionPanel>
 
+<div class="cz-order" data-view="order">
+
 <div class="cz-row-head" id="open-the-account">
   <p class="cz-row-label">&#8213; Seven Bands &#8213;</p>
   <h2 class="cz-row-title">Open the Account</h2>
   <p class="cz-row-sub">The text first, in its own order and weight. Then the record of who changed the reading.</p>
 </div>
+
+<ViewPicker group="bands" />
 
 <BandCard number={1} id="the-claim" title="The Claim" deck="What this section argues, and what it does not." blurb="Scripture makes plain statements about what was made and in what order. This section takes them as they stand, says openly what is not settled, and answers the one question under all of it: whose account is true?" open>
 
@@ -893,3 +905,5 @@ Put the steps in a row and a pattern shows. A centre was chosen. The shape was e
 </StudyCardGrid>
 
 </BandCard>
+
+</div>

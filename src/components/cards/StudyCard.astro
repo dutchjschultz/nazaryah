@@ -1,5 +1,7 @@
 ---
-// StudyCard.astro · 0928 V5
+// StudyCard.astro · 0928 V6
+// V6: `alias` — a reading that is picked on its own (an Enoch card) answers to
+// a short alias (#enoch-2) and is a pick item for its view's picker.
 // V5: `passages` — a reading can carry its own printed "Passages" line (the
 // Enoch cards), printed exactly as written, Enoch refs and all. Its canon
 // refs reach the section's verse index through passages-line.js; the reading
@@ -42,8 +44,9 @@ interface Props {
   link?: { label: string; href: string };
   open?: boolean;
   passages?: string;
+  alias?: string;
 }
-const { anchor, verses = [], source, sourceLinks = [], link, open = false, passages } = Astro.props;
+const { anchor, verses = [], source, sourceLinks = [], link, open = false, passages, alias } = Astro.props;
 
 // Every ref on this card prints as written, except an index-steering lead ref
 // another ref on the card already covers (see printed-refs.js).
@@ -55,7 +58,7 @@ if (anchor && !mine.length && !passages) {
 }
 ---
 
-<div class="sc" data-sc data-open={open ? "true" : undefined}>
+<div class="sc" data-sc id={alias ? `${anchor}-card` : undefined} data-pick-item={alias ? true : undefined} data-alias={alias} data-open={open ? "true" : undefined}>
   <slot />
   {passages && (
     <p class="sc-verses"><span class="sc-label">Passages</span> {passages}</p>

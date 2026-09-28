@@ -1,5 +1,13 @@
 ---
-// src/pages/cosmology/index.astro · 0928 V8
+// src/pages/cosmology/index.astro · 0928 V9
+// V9: VIEWS (behaviour and colour only; no copy change). On load only the
+// introduction, the two-way box and the Enoch side card ("Beyond the Canon")
+// show. Read in Order, Enter by Scripture and Enoch each open one view and
+// close the others (src/lib/cards-client.ts). Read in Order shows the band row
+// heading and seven band buttons (ViewPicker); a band appears only when its
+// button is chosen. Enoch shows its introduction and six card buttons the same
+// way. Links: #band-N, #enoch-N, and every existing anchor. Reading cards are
+// now light blue (#DCE6F2) with navy text and the gold top edge.
 // V8: the Enoch panel (Enoch Section 0928): a third main card, "Enoch", opens
 // a panel (#enoch) holding the introduction, six cards that open in place,
 // and the closing quotations. Styles here for its quotations (.sq), small
@@ -36,6 +44,7 @@
 // V1: a section front listing the study and the cosmology-north cluster.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import VerseIndexPanel from '../../components/cosmology/VerseIndexPanel.astro';
+import ViewPicker from '../../components/cosmology/ViewPicker.astro';
 import { getCollection, render } from 'astro:content';
 
 const [post] = await getCollection('posts', (p) => p.data.route === '/cosmology' && p.data.draft !== true);
@@ -64,7 +73,7 @@ const TITLE_TAG = 'Cosmology — What Scripture Says Was Made';
     )}
 
     <div class="cz-main">
-      <Content components={{ VerseIndexPanel }} />
+      <Content components={{ VerseIndexPanel, ViewPicker }} />
     </div>
 
     <section class="cz-footer-quote">
@@ -263,28 +272,59 @@ const TITLE_TAG = 'Cosmology — What Scripture Says Was Made';
   /* ── The verse index panel, full width under the introduction ── */
   .cz .pvi { margin: 0 0 1rem; }
 
-  /* ── Reading cards inside the bands ── */
-  .cz .sc {
-    background: var(--cz-reading-bg);
-    border-color: var(--cz-reading-border);
-    border-top-color: var(--cz-reading-accent);
-    color: var(--band-text);
+  /* ── Views: what the script hides (nothing is hidden without it) ── */
+  .cz .view-hidden, .cz .pick-hidden { display: none !important; }
+  .cz .cz-way[aria-current='true'] { border-color: var(--band-accent); background: #0f1c33; }
+
+  /* ── Beyond the Canon: the Enoch side card, one card wide, centred ── */
+  .cz-beyond { padding: 0 0 2.75rem; text-align: center; }
+  .cz-beyond-title {
+    font-family: 'Cinzel', serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: var(--band-count);
+    margin: 0 0 1rem;
   }
-  .cz .sc h3 {
+  .cz-beyond-card { max-width: calc((100% - 1.25rem) / 2); min-width: min(100%, 18rem); margin: 0 auto; text-align: left; }
+  .cz-beyond-card .cz-way { height: 100%; }
+  @media (max-width: 640px) { .cz-beyond-card { max-width: 100%; } }
+
+  /* ── Read in Order: a picked band shows whole — heading, deck, note, readings ── */
+  .cz-order { scroll-margin-top: 7.5rem; }
+  .cz .band-static > .band-head { cursor: default; }
+  .cz .band-static .band-count,
+  .cz .band-static .band-blurb { display: none; }
+  .cz .band-static > .band-body { display: block; }
+
+  /* ── Reading cards (bands and Enoch): light blue, navy, gold top edge ── */
+  .cz .sc[data-sc] {
+    background: #DCE6F2;
+    border-color: #b9c8dd;
+    border-top: 3px solid var(--band-accent);
+    color: #1F3864;
+    scroll-margin-top: 7.5rem;
+  }
+  .cz .sc[data-sc] h3 {
     font-family: 'Cinzel', serif;
     font-size: 1.08rem;
     font-weight: 700;
     line-height: 1.3;
-    color: var(--band-title);
+    color: #1F3864;
     margin: 0 0 0.35rem;
     scroll-margin-top: 7.5rem;
   }
-  .cz .sc p { font-size: 1rem; line-height: 1.75; color: var(--band-text); }
-  .cz .sc em { color: var(--band-deck); }
-  .cz .sc a { color: var(--band-link); }
-  .cz .sc .sc-label { color: var(--band-accent); }
-  .cz .sc .sc-verses,
-  .cz .sc .sc-source { border-top-color: var(--cz-reading-border); color: #aebbd0; }
-  .cz .sc-toggle::after { color: var(--band-accent); }
+  .cz .sc[data-sc] p { font-size: 1rem; line-height: 1.75; color: #1F3864; }
+  .cz .sc[data-sc] em, .cz .sc[data-sc] .sc-deck, .cz .sc[data-sc] .sc-deck em { color: #2E4A7D; font-style: italic; }
+  .cz .sc[data-sc] a { color: #1F3864; text-decoration: underline; }
+  .cz .sc[data-sc] .sc-label { color: #1F3864; }
+  .cz .sc[data-sc] .sc-verses,
+  .cz .sc[data-sc] .sc-source { border-top-color: rgba(31, 56, 100, 0.22); color: #1F3864; }
+  .cz .sc[data-sc] .sc-toggle::after { color: #1F3864; }
+  .cz .sc[data-sc] .sc-sub { color: #1F3864; }
+  .cz .sc[data-sc] .sq { border-left-color: var(--band-accent); }
+  .cz .sc[data-sc] .sq p { color: #1F3864; }
+  .cz .sc[data-sc] .sq cite { color: #2E4A7D; }
   .cz .scg { margin: 1.25rem 0 0.5rem; }
 </style>

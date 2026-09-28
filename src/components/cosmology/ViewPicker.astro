@@ -1,0 +1,71 @@
+---
+// ViewPicker.astro · 0928 V1
+// V1: the row of title buttons inside a /cosmology view. group="bands" gives
+// the seven band buttons ("Band One · The Claim" … "Band Seven · The Chain of
+// Fixes"), each a link to #band-N; group="enoch" gives the six Enoch card
+// buttons, each a link to #enoch-N. Nothing is shown below the row until a
+// button is chosen; the chosen one is marked in gold (src/lib/cards-client.ts).
+// The buttons are GENERATED from the study body (section-structure.js) and its
+// headings, never typed. They are ordinary links, so without JavaScript each
+// one simply jumps to its band or card, and each can be shared.
+import { getCollection, render } from 'astro:content';
+import { sectionBands } from '../../lib/section-structure.js';
+import { bandName } from '../../lib/number-words.js';
+
+interface Props { group: 'bands' | 'enoch' }
+const { group } = Astro.props;
+
+const [post] = await getCollection('posts', (p) => p.data.route === '/cosmology' && p.data.draft !== true);
+const { headings } = await render(post);
+const titleOf = new Map(headings.map((h) => [h.slug, h.text]));
+const groups = sectionBands(post.body);
+
+const buttons = group === 'bands'
+  ? groups.filter((g) => g.kind === 'band').map((g) => ({
+      label: bandName(g.number, g.title), href: `#band-${g.number}`, pick: g.id,
+    }))
+  : (groups.find((g) => g.id === 'enoch')?.anchors ?? []).map((anchor, i) => ({
+      label: titleOf.get(anchor), href: `#enoch-${i + 1}`, pick: `${anchor}-card`,
+    }));
+const label = group === 'bands' ? 'Choose a band' : 'Choose an Enoch card';
+---
+
+<nav class="vpick" data-picker aria-label={label}>
+  {buttons.map((b) => (
+    <a class="vpick-btn" href={b.href} data-pick={b.pick} aria-pressed="false">{b.label}</a>
+  ))}
+</nav>
+
+<style>
+  .vpick {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin: 0 0 1.75rem;
+    scroll-margin-top: 7.5rem;
+  }
+  .vpick-btn {
+    font-family: 'Cinzel', serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    padding: 0.55rem 1rem;
+    border: 1px solid var(--band-border, #1d2e4a);
+    border-radius: 4px;
+    background: var(--band-bg, #0b1526);
+    color: var(--band-title, #eef2fa);
+    text-decoration: none;
+    transition: background 0.15s, border-color 0.15s;
+  }
+  .vpick-btn:hover { border-color: var(--band-accent, #c9a85c); }
+  .vpick-btn[aria-pressed='true'] {
+    background: var(--band-accent, #c9a85c);
+    border-color: var(--band-accent, #c9a85c);
+    color: #0b1526;
+  }
+  .vpick-btn:focus-visible { outline: 2px solid var(--band-accent, #c9a85c); outline-offset: 2px; }
+  @media (max-width: 560px) {
+    .vpick { flex-direction: column; }
+    .vpick-btn { text-align: left; }
+  }
+</style>
