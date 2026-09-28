@@ -1,5 +1,7 @@
 ---
-// src/pages/hollywood/swarm/index.astro · 0825 V1
+// src/pages/hollywood/swarm/index.astro · 0928 V2
+// V2: hub copy replaced (The Signature in the Swarm 0928 V3) — four questions
+// instead of three, "Two Lies, One Root" retired; five entries in film order.
 // The Signature in the Swarm — the fly-god page under Studios & Genre.
 //
 // This is a genre hub, not a study: it names Baal-zebub, states the doctrinal
@@ -23,77 +25,65 @@ import { swarm, swarmEntries } from '../../../data/hollywood.js';
 <main class="wrap">
   <p class="eyebrow">Studios &amp; Genre — Hollywood</p>
   <h1>The Signature in the Swarm</h1>
-  <p class="subtitle">Hollywood keeps reaching for the same insect. Scripture named him first.</p>
+  <p class="subtitle">{swarm.tagline}</p>
 
   <hr class="rule" />
 
   <h2>The Name</h2>
   <p>
-    Ahaziah, king of Israel, fell through a lattice and was badly hurt. He sent men to
-    ask Baal-zebub, the god of Ekron, whether he would live. Yahuah sent Elijah to meet
-    them on the road with one question — is there not a God in Israel? — and one
-    sentence. The king would not come down off that bed.
-  </p>
-  <blockquote>
-    <p>
-      Is it not because there is not a God in Israel, that ye go to enquire of
-      Baal-zebub the god of Ekron?
-    </p>
-    <cite>2 Kings 1:2-4</cite>
-  </blockquote>
-  <p>
-    He did not build the fly-god a temple. He did not sacrifice to him. He asked him a
-    question. That was enough.
+    Ahaziah, king of Israel, was badly hurt and sent men to ask Baal-zebub, the god of
+    Ekron, whether he would live. Baal-zebub means lord of the fly. Elijah met the
+    messengers on the road with a question and a sentence — is there not a God in
+    Israel, and the king will not come down off that bed (2 Kings 1:2-4). He did not
+    build the fly-god a temple. He asked him one question. That was enough. The same
+    name is the title of the prince of devils in the gospels (Matthew 12:24).
   </p>
   <p>
-    Baal-zebub means lord of the fly. The name returns in the gospels, spelled
-    Beelzebub, as the title of the prince of devils (Matthew 12:24).
+    So the fly belongs to a devil, and asking that devil about your own healing was a
+    capital matter. That is the Book's position, stated twice, in both testaments.
   </p>
 
-  <h2>The Doctrine</h2>
-  <p>Every film under this page turns on one question. Where does evil live?</p>
+  <h2>Why Hollywood Reaches For It</h2>
+  <p>Flies gather where something has died. They do not cause the death. They announce it.</p>
   <p>
-    Scripture answers plainly. Sin is the transgression of the law (1 John 3:4). A
-    broken command. A charge on a record. Not a substance in the flesh, not a residue
-    in the meat, not an atmosphere a sensitive person can feel in a room.
+    That is what makes the swarm so useful to a storyteller. A cloud of insects tells an
+    audience that something is deeply wrong here, and it says nothing at all about what
+    law was broken, who broke it, or what it will cost to settle.
   </p>
   <p>
-    If sin is a substance, it comes out by technique — a gifted man, a method, a
+    It is the feeling of guilt with the courtroom stripped out. And it carries a devil's
+    name the audience is never told.
+  </p>
+
+  <h2>The Doctrine Underneath</h2>
+  <p>Every film on this page turns on one question. Where does evil live?</p>
+  <p>
+    Scripture answers plainly. Sin is the transgression of the law (1 John 3:4). A
+    broken command. A charge on a record. It is not a substance in the flesh, not a
+    residue in the meat, not an atmosphere a sensitive person can feel in a room.
+  </p>
+  <p>
+    If sin is a substance, it comes out by technique — a gifted man, a ritual, a
     transfer. No law, no court, no judge. That is sorcery.
   </p>
   <p>
     If sin is a charge, it comes out by verdict — a standard, a witness, a sentence,
     and blood (Hebrews 9:22). That is Scripture.
   </p>
-
-  <h2>Two Lies, One Root</h2>
-  <ul class="lies">
-    <li>The evil is inside you and can never be removed. That one ends in despair.</li>
-    <li>The evil is inside you and a gifted man can draw it out. That one ends in sorcery.</li>
-  </ul>
-  <p>
-    They look like opposites. They are not. Both put sin in the flesh instead of on the
-    record, and once that is settled neither one needs a law and neither one needs blood.
-  </p>
-
-  <h2>Why an Insect</h2>
-  <p>
-    Flies gather where something has died. They announce death. They do not explain it.
-  </p>
-  <p>
-    That is what makes the swarm useful. It tells an audience something is wrong here
-    without ever naming a broken command, a lawbreaker, or a price. It is guilt with the
-    courtroom stripped out — carrying a devil's name the audience is never told.
-  </p>
+  <p>Every swarm below is arguing for the first one.</p>
 
   <h2>How to Read the Entries</h2>
-  <p>Each film below gets the same three questions.</p>
+  <p>Each film gets the same four questions.</p>
   <ol class="tests">
-    <li>Where does the story say the evil lives?</li>
-    <li>How does the story remove it?</li>
-    <li>Who pays, and by what standard?</li>
+    <li>What does the fly actually do on screen?</li>
+    <li>What is the fly being used to teach?</li>
+    <li>What does the name behind it belong to?</li>
+    <li>What does Scripture say instead?</li>
   </ol>
-  <p class="close">The third question is where every one of them falls silent.</p>
+  <p class="close">
+    The five are not connected by genre, studio, or decade. They are connected by an
+    insect, and the insect has a name.
+  </p>
 
   <hr class="rule" />
 
@@ -216,11 +206,8 @@ import { swarm, swarmEntries } from '../../../data/hollywood.js';
     font-size: 0.9rem;
   }
 
-  .lies, .tests { margin: 0 0 1.2rem; padding-left: 1.3rem; }
-  .lies li, .tests li { line-height: 1.75; margin-bottom: 0.5rem; }
-  .lies { list-style: none; padding-left: 0; }
-  .lies li { padding-left: 1.3rem; position: relative; }
-  .lies li::before { content: "✦"; position: absolute; left: 0; color: var(--gold-soft); }
+  .tests { margin: 0 0 1.2rem; padding-left: 1.3rem; }
+  .tests li { line-height: 1.75; margin-bottom: 0.5rem; }
   .tests li::marker { color: var(--gold-soft); }
 
   .close { font-style: italic; color: var(--parchment); }

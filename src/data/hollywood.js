@@ -1,4 +1,8 @@
-// src/data/hollywood.js  ·  0825 V5
+// src/data/hollywood.js  ·  0928 V6
+// V6: The Signature in the Swarm rebuilt — new hub copy, Named at Ekron
+// rewritten, four new entries (Exorcist II, Amityville, The Green Mile,
+// Hereditary), five in film-date order. They Made Him a Face moves to The Craft
+// as reel 9. Cards now carry `associations`; `pageStudies` exports them.
 // V5: added "The Signature in the Swarm" to Studios & Genre — the fly-god page.
 // Unlike the other Studios cards (legacy static HTML under public/hollywood/films),
 // its page and entries are Astro under src/pages/hollywood/swarm, so they get the
@@ -68,34 +72,71 @@ export const categories = [
       {
         slug: "swarm",
         title: "The Signature in the Swarm",
-        tagline: "Hollywood keeps reaching for the same insect. Scripture named him first.",
+        tagline: "Five films. The same insect. Scripture named him first.",
         description:
-          "Baal-zebub, lord of the fly, was the god of Ekron — and Ahaziah only asked him a question. That was enough. The films gathered here all turn on one thing: where the story says evil lives. Put sin in the flesh and it comes out by technique, which is sorcery. Put sin on the record and it comes out by verdict, which needs a law, a witness, and blood.",
-        count: 2,
+          "Baal-zebub, lord of the fly, was the god of Ekron, and the gospels make his name the title of the prince of devils. Five films, unconnected by genre, studio, or decade, reach for the same insect. Every one turns on where evil lives: a substance removed by technique, or a charge answered by verdict, witness, and blood.",
+        count: 5,
         href: "/hollywood/swarm",
         status: "live",
-        // Entries under the fly-god page. Each gets the hub's same three questions:
-        // where does the evil live, how is it removed, who pays and by what standard.
+        associations: ["foreign-fire", "goel-kopher"],
+        // Entries under the fly-god page, in film-date order. Each gets the hub's
+        // same four questions: what the fly does on screen, what it is used to
+        // teach, whose name is behind it, and what Scripture says instead.
         entries: [
           {
             n: 1,
             slug: "named-at-ekron",
             title: "Named at Ekron",
-            tagline: "A book titled after a devil, assigned to schoolchildren for seventy years.",
-            work: "Lord of the Flies — William Golding, 1954",
-            verses: "1 John 3:4; Rom 4:15; Lev 16:21-22; Heb 9:22",
+            tagline: "Here the swarm does not warn. It preaches.",
+            work: "Lord of the Flies — William Golding, 1954; filmed 1963",
+            verses: "2 Kgs 1:2-4; 1 John 3:4; Rom 4:15; Lev 16:21-22",
             href: "/hollywood/swarm/named-at-ekron",
             status: "live",
+            associations: ["foreign-fire"],
           },
           {
             n: 2,
-            slug: "they-made-him-a-face",
-            title: "They Made Him a Face",
-            tagline: "The film sold as the finest picture of God breaks the doctrine it is selling.",
-            work: "The Shack — 2017, from the 2007 novel",
-            verses: "Deut 4:15-16; John 14:28; 1 Cor 11:3; Heb 9:22",
-            href: "/hollywood/swarm/they-made-him-a-face",
+            slug: "the-devil-was-the-swarm",
+            title: "The Devil Was the Swarm",
+            tagline: "The one film that stops hinting and says the insect and the devil are the same thing.",
+            work: "Exorcist II: The Heretic — 1977",
+            verses: "Exod 10:12-19; Rev 9:3-11; Isa 45:5-7; Deut 18:10-12",
+            href: "/hollywood/swarm/the-devil-was-the-swarm",
             status: "live",
+            associations: ["foreign-fire"],
+          },
+          {
+            n: 3,
+            slug: "the-room-that-filled",
+            title: "The Room That Filled",
+            tagline: "A priest brings a formula to a house, and the flies stop him at the door.",
+            work: "The Amityville Horror — 1979",
+            verses: "Lev 14:33-45; Acts 19:13-16; Jas 4:7",
+            href: "/hollywood/swarm/the-room-that-filled",
+            status: "live",
+            associations: ["foreign-fire"],
+          },
+          {
+            n: 4,
+            slug: "out-of-his-mouth",
+            title: "Out of His Mouth",
+            tagline: "The film puts the flies inside a savior and calls it healing.",
+            work: "The Green Mile — 1999",
+            verses: "1 John 3:4; Lev 16:21-22; Deut 18:10-12; Exod 8:31; Isa 43:11",
+            href: "/hollywood/swarm/out-of-his-mouth",
+            status: "live",
+            associations: ["foreign-fire"],
+          },
+          {
+            n: 5,
+            slug: "where-the-flies-gather",
+            title: "Where the Flies Gather",
+            tagline: "Here the swarm is not an attack. It is a map of where the coven has been.",
+            work: "Hereditary — 2018",
+            verses: "Ezek 18:20; Deut 18:10-12; 1 Chr 10:13-14",
+            href: "/hollywood/swarm/where-the-flies-gather",
+            status: "live",
+            associations: ["foreign-fire"],
           },
         ],
       },
@@ -183,6 +224,18 @@ export const categories = [
         href: "/hollywood/symbols/index.html",
         status: "live",
       },
+      {
+        // Moved here from The Signature in the Swarm 0928 — The Shack has no
+        // flies in it. The old /hollywood/swarm URL 301s here (netlify.toml).
+        n: 9,
+        slug: "they-made-him-a-face",
+        title: "They Made Him a Face",
+        tagline: "The film sold as the finest picture of God breaks the doctrine it is selling.",
+        verses: "Deut 4:15-16; John 14:28; 1 Cor 11:3; Heb 9:22",
+        href: "/hollywood/the-craft/they-made-him-a-face",
+        status: "live",
+        associations: ["trinity-examined"],
+      },
     ],
   },
 
@@ -230,3 +283,20 @@ export const reels = craft.cards;
 export const stars = categories.find((c) => c.slug === "the-stars");
 export const swarm = studios.cards.find((c) => c.slug === "swarm");
 export const swarmEntries = swarm.entries;
+
+// Hollywood pages that sit in association clusters. They are Astro pages, not
+// `posts` entries, so src/lib/study-pool.js folds them into the pool the
+// coverage map, the cluster pages and the Associated Studies panel read. A card
+// joins by carrying `associations`; its href doubles as its slug, so it can
+// never collide with a post slug.
+export const pageStudies = [...studios.cards, ...(swarm.entries || []), ...craft.cards, ...stars.cards]
+  .filter((c) => c.status === "live" && (c.associations || []).length)
+  .map((c) => ({
+    slug: c.href,
+    href: c.href,
+    title: c.title,
+    deck: c.tagline || "",
+    category: "hollywood",
+    associations: c.associations,
+    order: c.order,
+  }));

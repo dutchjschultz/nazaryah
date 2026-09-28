@@ -221,3 +221,16 @@
   from = "/cosmology/the-heavens-and-the-earth/"
   to = "/cosmology"
   status = 301
+
+# Moved 0928: The Shack has no flies in it, so "They Made Him a Face" left The
+# Signature in the Swarm for The Craft. Its card at
+# /og/hollywood/swarm/they-made-him-a-face.v2.png is deliberately NOT deleted —
+# a crawled card file is never removed or renamed.
+[[redirects]]
+  from = "/hollywood/swarm/they-made-him-a-face"
+  to = "/hollywood/the-craft/they-made-him-a-face"
+  status = 301
+[[redirects]]
+  from = "/hollywood/swarm/they-made-him-a-face/"
+  to = "/hollywood/the-craft/they-made-him-a-face"
+  status = 301

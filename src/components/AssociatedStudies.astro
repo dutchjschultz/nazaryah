@@ -1,13 +1,13 @@
 ---
-// src/components/AssociatedStudies.astro  ·  V3
+// src/components/AssociatedStudies.astro  ·  V4
+// V4: members come from src/lib/study-pool.js (posts + Hollywood page studies).
 // Bottom-of-study cross-reference panel. Shows up to PER_CLUSTER members per
 // cluster, anchor first (★), then a "See all N →" link to the cluster page.
 // Ported from the React reference to Astro + the site's own theme tokens.
 //
 // Usage:  <AssociatedStudies current={post} />
-import { getCollection } from "astro:content";
 import { getCluster, keysFor, membersOf, isAnchorOf, toStudy } from "../data/associations.js";
-import { hrefMap } from "../lib/post-href.js";
+import { studyPool } from "../lib/study-pool.js";
 
 const { current } = Astro.props;
 const PER_CLUSTER = 3;
@@ -22,9 +22,7 @@ const SAME_CATEGORY = (a, b) =>
   !!a?.category && !!b?.category && a.category === b.category;
 
 const currentStudy = toStudy(current);
-const allPosts = await getCollection("posts", (p) => !p.data.draft);
-const hrefOf = hrefMap(allPosts);
-const all = allPosts.map(toStudy);
+const { all, hrefOf } = await studyPool();
 
 const groups = keysFor(currentStudy)
   .map((key) => {

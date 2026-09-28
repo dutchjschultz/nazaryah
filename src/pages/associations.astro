@@ -1,16 +1,14 @@
 ---
-// src/pages/associations.astro  ·  V2
+// src/pages/associations.astro  ·  V3
+// V3: reads src/lib/study-pool.js, so Hollywood page studies count too.
 // Coverage map. Flat model: a study counts toward every cluster it touches, so
 // counts overlap by design — they answer "have I covered this subject."
 // Not linked in nav on purpose; reachable at /associations.
 import BaseLayout from "../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import { hrefMap } from "../lib/post-href.js";
-import { CLUSTERS, getCluster, membersOf, isAnchorOf, toStudy } from "../data/associations.js";
+import { studyPool } from "../lib/study-pool.js";
+import { CLUSTERS, membersOf, isAnchorOf } from "../data/associations.js";
 
-const allPosts = await getCollection("posts", (p) => !p.data.draft);
-const hrefOf = hrefMap(allPosts);
-const all = allPosts.map(toStudy);
+const { all, hrefOf } = await studyPool();
 
 const rows = Object.entries(CLUSTERS).map(([key, cluster]) => ({
   key,

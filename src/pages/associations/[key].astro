@@ -1,11 +1,11 @@
 ---
-// src/pages/associations/[key].astro  ·  V2
+// src/pages/associations/[key].astro  ·  V3
+// V3: reads src/lib/study-pool.js, so Hollywood page studies count too.
 // One cluster, every member. Anchor (★) first. The "See all" target from the
 // panel. Ported from the React reference to Astro + site theme.
 import BaseLayout from "../../layouts/BaseLayout.astro";
-import { getCollection } from "astro:content";
-import { hrefMap } from "../../lib/post-href.js";
-import { getCluster, clusterKeys, membersOf, isAnchorOf, toStudy } from "../../data/associations.js";
+import { studyPool } from "../../lib/study-pool.js";
+import { getCluster, clusterKeys, membersOf, isAnchorOf } from "../../data/associations.js";
 
 export function getStaticPaths() {
   return clusterKeys().map((key) => ({ params: { key } }));
@@ -13,9 +13,7 @@ export function getStaticPaths() {
 
 const { key } = Astro.params;
 const cluster = getCluster(key);
-const allPosts = await getCollection("posts", (p) => !p.data.draft);
-const hrefOf = hrefMap(allPosts);
-const all = allPosts.map(toStudy);
+const { all, hrefOf } = await studyPool();
 const members = membersOf(key, all);
 ---
 
