@@ -1,5 +1,12 @@
 ---
-// src/components/Orbit.astro · 0825 V2
+// src/components/Orbit.astro · 0929 V3
+// V3: the broken nucleus. An investigation carrying nucleusStyle: 'broken' draws
+// its nucleus as an SVG ring with one wedge missing instead of the solid border —
+// The End Times Gap's claim is that something was cut out. The cut is aimed at
+// the gap between witness one and witness two, and the ring turns with the
+// spinner (same rate, same pause, same reduced-motion stop) so the opening stays
+// between two chips all the way round instead of drifting behind one. Every
+// investigation without the field renders the closed circle exactly as before.
 // V2: the geometry layers no longer eat clicks. Each .arm is a full-stage
 // absolute layer, so the last one in the DOM covered the other three and only
 // its chip was reachable. Events now fall through the layers to the chips.
@@ -26,6 +33,7 @@
 // form, so the stage, caption and hint all go display:none together.
 const { investigation } = Astro.props;
 const inv = investigation;
+const broken = inv.nucleusStyle === 'broken';
 
 const COUNT_WORD = ['no', 'one', 'two', 'three', 'four', 'five', 'six'];
 const n = inv.witnesses.length;
@@ -75,11 +83,16 @@ const whoFor = (w) =>
     </div>
 
     <a
-      class="nucleus"
+      class:list={['nucleus', { broken }]}
       href={inv.nucleus.href}
       data-who={`${inv.nucleus.label} · Start here`}
       data-txt={inv.nucleus.blurb}
     >
+      {broken && (
+        <svg class="nucleus-ring" viewBox="0 0 100 100" aria-hidden="true">
+          <circle cx="50" cy="50" r="48" />
+        </svg>
+      )}
       <span class="tag">{inv.nucleus.label}</span>
       <span class="nm">{inv.nucleus.title}</span>
       <span class="st">Start here</span>
@@ -200,9 +213,11 @@ const whoFor = (w) =>
   .stage:hover .spinner,
   .stage:hover .counter,
   .stage:hover .ring.dashed,
+  .stage:hover .nucleus-ring,
   .stage:focus-within .spinner,
   .stage:focus-within .counter,
-  .stage:focus-within .ring.dashed { animation-play-state: paused; }
+  .stage:focus-within .ring.dashed,
+  .stage:focus-within .nucleus-ring { animation-play-state: paused; }
 
   .chip {
     display: block;
@@ -280,6 +295,45 @@ const whoFor = (w) =>
     margin-top: 0.4rem;
   }
 
+  /* ---- the broken nucleus (nucleusStyle: 'broken') ----
+     The SVG draws the ring, so the solid border goes. The nucleus is already
+     absolutely positioned, which makes it the SVG's containing block — do not
+     set position: relative here or the centring transform is lost. */
+  .nucleus.broken {
+    border: none;
+    box-shadow: 0 0 40px rgba(139, 105, 20, 0.14);
+  }
+  :global(.dark) .nucleus.broken { box-shadow: 0 0 52px rgba(186, 117, 23, 0.22); }
+  .nucleus.broken:hover,
+  .nucleus.broken:focus-visible { box-shadow: 0 0 70px var(--o-glow-hi); }
+
+  /* The whole SVG turns with .spinner (same keyframes, same --spin) so the cut
+     keeps its place between two chips as they travel. */
+  .nucleus-ring {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    overflow: visible;
+    transform-origin: 50% 50%;
+    animation: orbit-spin var(--spin) linear infinite;
+  }
+  .nucleus-ring circle {
+    fill: none;
+    stroke: #8b6914;
+    stroke-width: 0.9;
+    stroke-linecap: round;
+    /* r=48 -> circumference 301.6; one 34-unit wedge left open, which reads
+       as a cut rather than a dashed decoration. Unrotated, the gap is centred
+       about 20deg above 3 o'clock; -25deg carries it to 45deg — the upper-right
+       diagonal, midway between witness one (top) and witness two (right). */
+    stroke-dasharray: 267.6 34;
+    transform: rotate(-25deg);
+    transform-origin: 50% 50%;
+  }
+  :global(.dark) .nucleus-ring circle { stroke: #ba7517; }
+
   /* one caption line, swapped on hover — never a second stack of cards */
   .caption {
     max-width: 640px;
@@ -312,7 +366,8 @@ const whoFor = (w) =>
   @media (prefers-reduced-motion: reduce) {
     .spinner,
     .counter,
-    .ring.dashed { animation: none; }
+    .ring.dashed,
+    .nucleus-ring { animation: none; }
   }
 
   /* ============ mobile: orbit swapped for a plain list, never both ============ */

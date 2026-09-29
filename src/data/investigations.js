@@ -1,4 +1,10 @@
-// investigations 0909 V4.js
+// investigations 0929 V5.js
+// V5: The End Times Gap goes live. soon -> false; the nucleus and all four
+// witnesses resolve (The Seventieth Week, The Reign Is Now, The Short Season,
+// Gog and Magog), and each witness now carries its `study` link line. Its
+// question field asks a question, so the index card matches its siblings. New
+// optional field `nucleusStyle`: 'broken' draws the nucleus as a ring with a
+// wedge cut out (Orbit.astro). Absent = the closed circle, unchanged.
 // V4: added `enterLabel`, the words on the index card's link. It was hard-coded
 // as "Enter the orbit" on the index, which is layout-specific and stopped being
 // true the moment a second shape existed. It is a field here now. The Living
@@ -31,6 +37,8 @@
 //   enterLabel  the index card's link words. Not decoration: it names the shape
 //               the reader is about to walk into, so it moves with `layout`.
 //               A record without one falls back to "Enter the orbit".
+//   nucleusStyle optional. 'broken' = the nucleus ring is drawn with a wedge
+//               missing (orbit shape only). Omit for the closed circle.
 //   nucleus     { label, title, href, blurb }  the centre circle
 //   witnesses[] { tag, name, study?, status, href, blurb, hebrew?, passage?, anchor? }
 //                 name  = the plain-English idea, what the reader is getting into
@@ -124,47 +132,52 @@ export const INVESTIGATIONS = [
     layout: 'orbit',
     enterLabel: 'Enter the orbit',
     question:
-      'Every load-bearing piece of the modern chart needs a hole cut into a passage that has none. Each witness closes one hole from a different direction.',
-    soon: true,
+      'Where did the church get a seven-year tribulation, a rebuilt temple, and a thousand-year kingdom still ahead of us? Every one of them needs a blank cut into a passage that has none.',
+    soon: false,
+    nucleusStyle: 'broken',
     nucleus: {
       label: 'The Nucleus',
       title: 'The End Times Gap',
-      href: '#',
+      href: '/blog/the-end-times-gap',
       blurb:
-        'Every believer has seen the chart: a line from the cross, then a blank stretch, then a tribulation and a kingdom. The blank stretch is in none of the passages it claims. This study shows how the cutting works and how to test any passage for it.',
+        'Every believer has seen the chart: a line from the cross, then a blank stretch, then a tribulation and a kingdom. That blank is in none of the passages it claims. This study shows how the cutting works and how to test any passage for it.',
     },
     witnesses: [
       {
-        tag: 'Witness One',
+        tag: 'Witness One · Paused',
         name: 'The Paused Week',
-        status: 'pending',
-        href: '#',
+        study: 'The Seventieth Week',
+        status: 'live',
+        href: '/blog/the-seventieth-week',
         blurb:
           "Daniel's seventieth week, lifted off the end of a counted prophecy and floated two thousand years forward. The original cut, and the one that makes every other cut possible.",
       },
       {
-        tag: 'Witness Two',
+        tag: 'Witness Two · Postponed',
         name: 'The Postponed Kingdom',
-        status: 'pending',
-        href: '#',
+        study: 'The Reign Is Now',
+        status: 'live',
+        href: '/blog/the-reign-is-now',
         blurb:
-          'A thousand years moved out of this present age and set down as a future earthly reign. The number examined where the Hebrew Scriptures actually use it.',
+          'A thousand years moved out of this present age and set down as a future earthly reign. The prophets, the Messiah, and Peter all describe a king already seated.',
       },
       {
-        tag: 'Witness Three',
+        tag: 'Witness Three · Delayed',
         name: 'The Delayed Binding',
+        study: 'The Short Season',
         status: 'live',
         href: '/blog/the-short-season',
         blurb:
-          'The chaining of the enemy pushed forward to a future date. The Messiah put it first — bind the strong man, then spoil his house. The binding at the cross, and the loosing at an appointed moment.',
+          'The chaining of the enemy pushed forward to a future date. The Messiah put it first — bind the strong man, then spoil his house — and said it while spoiling the house.',
       },
       {
-        tag: 'Witness Four',
+        tag: 'Witness Four · Doubled',
         name: 'The Second War',
+        study: 'Gog and Magog',
         status: 'live',
         href: '/blog/gog-and-magog',
         blurb:
-          'Ezekiel 38 and 39 cut in half so one ending can be told as two wars a thousand years apart. One unbroken oracle, matched to Revelation 20 detail for detail — same names, same gathering, same fire.',
+          'Ezekiel 38 and 39 cut in half so one ending can be told as two wars a thousand years apart. One unbroken oracle, matched to Revelation 20 detail for detail.',
       },
     ],
   },

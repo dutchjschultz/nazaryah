@@ -1,4 +1,9 @@
-// blog-groups 0927 V11.js
+// blog-groups 0929 V12.js
+// V12: The End Times Gap investigation joins BURIED IN PLAIN SIGHT (14 → 18) —
+// the nucleus and three new witnesses (The Seventieth Week, The Reign Is Now,
+// Gog and Magog). The fourth witness, The Short Season, was already here; it
+// moved from .mdx to .md at the same slug, so its line is unchanged. Map total
+// 100 → 104.
 // V11: The Heavens and the Earth leaves BURIED IN PLAIN SIGHT's feed — it moved
 // out of the blog to /cosmology/the-heavens-and-the-earth (frontmatter `home`),
 // and the /cosmology section front lists it. Map total 101 → 100.
@@ -82,7 +87,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 100 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 104 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (15) ──
   'worship-and-service': 'the-counterfeit-throne',
@@ -130,7 +135,7 @@ export const POST_GROUP = {
   // ── The Quick Scroll (1) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
 
-  // ── Buried in Plain Sight (14) ──
+  // ── Buried in Plain Sight (18) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
   'the-christian-experiment': 'buried-in-plain-sight',
   'the-men-in-the-margin': 'buried-in-plain-sight',
@@ -147,6 +152,12 @@ export const POST_GROUP = {
   'shabath-the-finished-work': 'buried-in-plain-sight',
   'milluim-the-filling': 'buried-in-plain-sight',
   'the-two-tables-and-the-book': 'buried-in-plain-sight',
+  // The End Times Gap investigation — nucleus + all four witnesses (the fourth,
+  // the-short-season, sits higher up; it was in this group first).
+  'the-end-times-gap': 'buried-in-plain-sight',
+  'the-seventieth-week': 'buried-in-plain-sight',
+  'the-reign-is-now': 'buried-in-plain-sight',
+  'gog-and-magog': 'buried-in-plain-sight',
 
   // ── The Law & The Feasts (15) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',
