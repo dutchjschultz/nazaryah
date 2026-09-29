@@ -20,9 +20,9 @@ tags:
 featured: true
 draft: false
 investigation: "the-end-times-gap"
-nucleusClaim: "The seventieth week of Daniel is still ahead of us."
-nucleusSource: "Taught from pulpits and printed in the margins of reference Bibles until it reads like part of the page."
-nucleusQuestion: "Where is that blank stretch in the Bible? Not which system needs it — which verse gives it? Four holes carry the weight of the modern chart, and not one of them is in the text."
+nucleusClaim: "Nearly all of it is still ahead of us."
+nucleusSource: "The seven-year tribulation, the thousand-year kingdom, the binding of the enemy, the last great war — every one of them pushed forward past the cross and past our own age, taught from pulpits and printed in the margins of reference Bibles until it reads like part of the page."
+nucleusQuestion: "Every one of those requires a blank stretch of time that no prophet ever mentions. Where is it? Not which system needs it — which verse gives it? Four holes carry the weight of the modern chart, and not one of them is in the text."
 associations:
   - "lost-in-translation"
 ---

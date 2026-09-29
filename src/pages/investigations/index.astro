@@ -1,5 +1,10 @@
 ---
-// src/pages/investigations/index.astro · 0929 V3
+// src/pages/investigations/index.astro · 0929 V4
+// V4: the page now says what each case is AGAINST. H1 "One Question, Many
+// Witnesses" -> "One Lie, Many Witnesses"; the intro names false teachings
+// rather than errors; every card carries a "teaching on trial" line (the new
+// `teaching` field in investigations.js) above its question, in the shape of
+// the study pages' claim block. The H1 change reminted the page's social card.
 // V3: the intro under the H1 is rewritten in plain words — the old line
 // ("a nucleus that argues the method…") read as jargon to anyone who has not
 // built one of these. The H1, the hidden card deck and the meta description
@@ -37,17 +42,18 @@ const cards = INVESTIGATIONS.map((inv) => ({
 >
   <main class="hub">
     <p class="eyebrow">― Investigations ―</p>
-    <h1>One Question, Many Witnesses</h1>
+    <h1>One Lie, Many Witnesses</h1>
     {/* The short CARD deck, read by the social-card generator. Not visible: the
         page's own intro is below, and the meta description is a third field
         again. The card must never fall back to the description, which is long
         enough to clip mid-sentence. */}
     <p class="inv-card-deck">A case, not a category. Read one, or read the case.</p>
     <p class="sub">
-      Some errors are too large to answer in a single study. An investigation takes one
-      of them, states plainly what modern teaching claims, and then answers it from
-      several directions at once. One study sets out the case. Each of the others proves
-      one part of it and stands on its own. Start anywhere.
+      Some false teachings are too large to answer in a single study. They run through
+      dozens of sermons, hold up whole systems, and get repeated until nobody checks
+      them. An investigation takes one of them by name, puts it on trial, and answers it
+      from several directions at once. One study sets out the case. Each of the others
+      closes one part of it and stands on its own. Start anywhere.
     </p>
 
     <div class="grid">
@@ -64,6 +70,12 @@ const cards = INVESTIGATIONS.map((inv) => ({
             </div>
             <h2>{inv.title}</h2>
             <p class="deck">{inv.deck}</p>
+            {inv.teaching && (
+              <>
+                <p class="inv-teaching-label">The teaching on trial</p>
+                <p class="inv-teaching">{inv.teaching}</p>
+              </>
+            )}
             <p class="question">{inv.question}</p>
             <p class="meta">
               {inv.live} of {inv.pieces} pieces live
@@ -196,6 +208,32 @@ const cards = INVESTIGATIONS.map((inv) => ({
     font-size: 0.95rem;
   }
   :global(.dark) .deck { color: #c4a46b; }
+
+  /* The teaching on trial — the claim-block shape from the study pages
+     (NucleusClaim): muted small-caps label, then the teaching in italic display
+     type, set off from the question below by a hairline. Light first, dark
+     repeated; never rely on var() fallbacks for the dark value. */
+  .inv-teaching-label {
+    margin: 0 0 0.35rem;
+    font-size: 9px;
+    letter-spacing: 2.4px;
+    text-transform: uppercase;
+    color: #8a7c5e;
+  }
+  :global(.dark) .inv-teaching-label { color: #9c7c4c; }
+  .inv-teaching {
+    margin: 0 0 0.9rem;
+    padding: 0 0 0.9rem;
+    border-bottom: 1px solid #d8cfb8;
+    /* the body serif, not --font-display: Cinzel is capitals-only and has no
+       italic, so the teaching would render as small caps */
+    font-family: var(--font-family-serif);
+    font-style: italic;
+    font-size: 1.02rem;
+    line-height: 1.5;
+    color: #2b2317;
+  }
+  :global(.dark) .inv-teaching { color: #f0e0bf; border-bottom-color: #3a2510; }
 
   .question {
     font-size: 0.92rem;

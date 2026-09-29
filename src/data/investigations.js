@@ -1,4 +1,10 @@
-// investigations 0929 V5.js
+// investigations 0929 V6.js
+// V6: new field `teaching` on every investigation — the false teaching the case
+// answers, stated as the church states it. Rendered on the index card above the
+// question, under the label "The teaching on trial". The End Times Gap's fourth
+// witness renamed to name the operation, not the result: Doubled / The Second
+// War -> Split / The Split Oracle (the set now reads Paused, Postponed,
+// Delayed, Split); its blurb rewritten to match. Link line stays Gog and Magog.
 // V5: The End Times Gap goes live. soon -> false; the nucleus and all four
 // witnesses resolve (The Seventieth Week, The Reign Is Now, The Short Season,
 // Gog and Magog), and each witness now carries its `study` link line. Its
@@ -31,6 +37,8 @@
 //   slug        url segment -> /investigations/[slug]
 //   title       displayed name
 //   deck        one line under the title, 8-14 words
+//   teaching    the false teaching on trial, stated as the church states it.
+//               Shown on the index card above the question.
 //   question    the claim, shown in the caption when nothing is hovered
 //   soon        true = listed in nav and index with a Coming Soon pill, page not built
 //   layout      'orbit' (default) or 'columns' — see THE TWO SHAPES below
@@ -71,6 +79,8 @@ export const INVESTIGATIONS = [
     deck: 'Four witnesses to one question, walked one at a time',
     layout: 'orbit',
     enterLabel: 'Enter the orbit',
+    teaching:
+      'You are the temple, the Spirit lives in you — handed down from the pulpit as a phrase with no teaching behind it. The believer is told a third person of a godhead has moved in, and is never shown the Most Holy Place, the High Priest who entered it, or the Torah that governs how any dwelling of Yahuah is ordered, cleansed, filled and kept.',
     question:
       'What did Yahushua actually do with the Law of Moses? Not which parts survived — what did He do to it? Scripture answers with four verbs, and the four are one house.',
     soon: false,
@@ -131,6 +141,8 @@ export const INVESTIGATIONS = [
     deck: 'Four holes cut into prophecy — and who cut them',
     layout: 'orbit',
     enterLabel: 'Enter the orbit',
+    teaching:
+      'Nearly everything the prophets described is still ahead of us — the tribulation, the kingdom, the binding of the enemy, the last war. So the church spends its life waiting for what it was given to live in.',
     question:
       'Where did the church get a seven-year tribulation, a rebuilt temple, and a thousand-year kingdom still ahead of us? Every one of them needs a blank cut into a passage that has none.',
     soon: false,
@@ -171,13 +183,13 @@ export const INVESTIGATIONS = [
           'The chaining of the enemy pushed forward to a future date. The Messiah put it first — bind the strong man, then spoil his house — and said it while spoiling the house.',
       },
       {
-        tag: 'Witness Four · Doubled',
-        name: 'The Second War',
+        tag: 'Witness Four · Split',
+        name: 'The Split Oracle',
         study: 'Gog and Magog',
         status: 'live',
         href: '/blog/gog-and-magog',
         blurb:
-          'Ezekiel 38 and 39 cut in half so one ending can be told as two wars a thousand years apart. One unbroken oracle, matched to Revelation 20 detail for detail.',
+          'One unbroken oracle in Ezekiel, cut in half so its two ends can be set a thousand years apart. Read whole, it matches Revelation 20 detail for detail — the same names, the same gathering, the same fire.',
       },
     ],
   },
@@ -190,6 +202,8 @@ export const INVESTIGATIONS = [
     // three. This is the investigation the 'columns' shape was built for.
     layout: 'columns',
     enterLabel: 'Enter the case',
+    teaching:
+      'The Sermon on the Mount is the new and higher way Yahushua brought, replacing the Law He came to end — when every line of it is Torah, quoted and explained.',
     question:
       'What is the Sermon on the Mount actually made of? Not which parts are still binding — what was Yahushua quoting? Ten passages, and every one of them was already written.',
     soon: false,
