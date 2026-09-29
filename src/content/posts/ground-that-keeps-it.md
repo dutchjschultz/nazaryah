@@ -10,7 +10,7 @@ category: "Parables"
 featured: false
 draft: false
 associations: ["two-stage-salvation", "pulpit-vocabulary", "whose-righteousness"]
-companion: ["ground-that-keeps-it-read-through", "dark-sayings-of-old", "bread-and-wine", "fruit-whose-work-is-it"]
+companion: ["ground-that-keeps-it-read-through", "dark-sayings-of-old", "bread-and-wine", "grace-new-creation-covenant-loyalty"]
 ---
 
 ## The Reading That Is Handed Out
