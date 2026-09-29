@@ -1,4 +1,8 @@
-// investigations 0929 V6.js
+// investigations 0929 V7.js
+// V7: new field `shortTitle` on every investigation — the name printed as the
+// gold label on the study card of every piece in the case (hub and witnesses),
+// in place of the study's own topic category. Read through cardLabelOf() in
+// src/data/collections.js; the studies' frontmatter category is untouched.
 // V6: new field `teaching` on every investigation — the false teaching the case
 // answers, stated as the church states it. Rendered on the index card above the
 // question, under the label "The teaching on trial". The End Times Gap's fourth
@@ -36,6 +40,7 @@
 // FIELDS
 //   slug        url segment -> /investigations/[slug]
 //   title       displayed name
+//   shortTitle  the card label on every study in this case (collections.js)
 //   deck        one line under the title, 8-14 words
 //   teaching    the false teaching on trial, stated as the church states it.
 //               Shown on the index card above the question.
@@ -76,6 +81,7 @@ export const INVESTIGATIONS = [
   {
     slug: 'the-living-temple',
     title: 'The Living Temple',
+    shortTitle: 'The Living Temple',
     deck: 'Four witnesses to one question, walked one at a time',
     layout: 'orbit',
     enterLabel: 'Enter the orbit',
@@ -138,6 +144,7 @@ export const INVESTIGATIONS = [
   {
     slug: 'the-end-times-gap',
     title: 'The End Times Gap',
+    shortTitle: 'The End Times Gap',
     deck: 'Four holes cut into prophecy — and who cut them',
     layout: 'orbit',
     enterLabel: 'Enter the orbit',
@@ -197,6 +204,7 @@ export const INVESTIGATIONS = [
   {
     slug: 'the-mountain-message',
     title: 'The Mountain Message Christianity Never Preached',
+    shortTitle: 'The Mountain Message',
     deck: 'Ten witnesses to one sermon, and the Law named at both ends',
     // Ten cards will not ride a ring, and each carries four lines rather than
     // three. This is the investigation the 'columns' shape was built for.

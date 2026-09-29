@@ -6,6 +6,7 @@
 // small PE'AH tag so a reader knows it is a short read. Study cards unchanged.
 import { masterTitleBySlug } from '../data/books.js';
 import { postHref } from '../lib/post-href.js';
+import { cardLabelOf } from '../data/collections.js';
 const { post } = Astro.props;
 
 // Chapters of the multi-part books display the master chapter title from the
@@ -22,8 +23,11 @@ const bookCategories = {
 };
 const isPeah = post.collection === 'peah';
 const href = isPeah ? `/peah/${post.slug}` : postHref(post);
-const cat = isPeah ? post.data.group : post.data.category;
-const book = bookCategories[cat];
+// The gold label: a study in a collection shows its collection's label (an
+// investigation study shows its case's shortTitle); everything else shows its
+// own category. The bookshelf check still reads the real category.
+const cat = isPeah ? post.data.group : (cardLabelOf(post.slug) ?? post.data.category);
+const book = isPeah ? undefined : bookCategories[post.data.category];
 const blurb = isPeah ? post.data.deck : (post.data.subtitle || post.data.deck || post.data.description);
 
 // Reference line: the passage, plus the parable's common name when the study

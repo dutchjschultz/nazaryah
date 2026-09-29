@@ -1,4 +1,8 @@
-// collections 0929 V1.js
+// collections 0929 V2.js
+// V2: optional `labelOf(slug)` on a collection — the gold label a study card
+// prints for a study in that collection, in place of its topic category.
+// Investigations answers with the owning case's shortTitle. cardLabelOf() is
+// what BlogCard reads; a study in no collection keeps its category.
 // V1: COLLECTIONS — the second kind of card on the Studies index.
 //
 // TWO KINDS OF CARDS on /blog:
@@ -19,6 +23,8 @@
 //   name   card title.   blurb  the card's one line.
 //   slugs  an array of post slugs, or a function returning one (when the list is
 //          derived from another data file, as Investigations is).
+//   labelOf  optional (slug) => string, the card label for a study in it. Omit
+//          and cards fall back to the collection's `name` (e.g. 'Books').
 // Order in this array is the order of the collection row.
 import { INVESTIGATIONS } from './investigations.js';
 import { BLOG_GROUPS } from './blog-groups.js';
@@ -38,6 +44,13 @@ export const COLLECTIONS = [
         .map((p) => p.href || '')
         .filter((h) => h.startsWith('/blog/'))
         .map((h) => h.slice('/blog/'.length).replace(/\/$/, '')),
+    // Card label: the shortTitle of the case this study belongs to.
+    labelOf: (slug) => {
+      const at = `/blog/${slug}`;
+      const inv = INVESTIGATIONS.find((i) =>
+        [i.nucleus, ...i.witnesses].some((p) => (p.href || '').replace(/\/$/, '') === at));
+      return inv ? inv.shortTitle || inv.title : null;
+    },
   },
 ];
 
@@ -51,6 +64,15 @@ for (const c of COLLECTIONS) {
 
 export const collectionOf = (slug) => SLUG_TO_COLLECTION[slug] || null;
 export const inCollection = (slug) => !!SLUG_TO_COLLECTION[slug];
+
+// The gold label on a study card: the collection's label for a collection study,
+// null otherwise (the card then prints the study's own category).
+export const cardLabelOf = (slug) => {
+  const key = SLUG_TO_COLLECTION[slug];
+  if (!key) return null;
+  const c = COLLECTIONS.find((x) => x.key === key);
+  return (c.labelOf && c.labelOf(slug)) || c.name;
+};
 
 // A collection key that matched a topic key would silently merge two pages at
 // one /blog/c/<key> address. Fail loudly instead.
