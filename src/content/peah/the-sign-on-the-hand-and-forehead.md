@@ -2,6 +2,7 @@
 title: "The Sign on the Hand and Forehead"
 reference: "Deuteronomy 6:8"
 deck: "Two things Yahuah told Israel to bind on the hand and between the eyes, and the same two things Daniel's horn would think to change."
+cardDeck: "Two things on the hand and forehead, and the horn that would change them."
 group: ""
 keyVerse: "And thou shalt bind them for a sign upon thine hand, and they shall be as frontlets between thine eyes."
 keyVerseRef: "Deuteronomy 6:8"
