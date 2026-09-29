@@ -116,7 +116,7 @@ The thousand years of Revelation 20, moved out of this present age and set down 
 
 The chaining of the enemy, pushed forward to a future date so that it can precede a future kingdom. The Messiah described it as already done: the strong man is bound first, and then his house is spoiled. Put the binding where He put it, at the tree, and the loosing falls where the record puts it — near the close of the age, when the chain is lifted and the deception broadens.
 
-### The Second War
+### The Split Oracle
 
 Ezekiel 38 and 39, cut in half so that two accounts of one ending can be spread a thousand years apart. The birds summoned to the slain are assigned to the return; the name Gog is assigned to a separate uprising a millennium later. What stands there is one unbroken oracle with no seam in it, matched detail for detail by Revelation 20 — the same names, the same gathering, the same fire, the same ending.
 
@@ -136,7 +136,7 @@ Remove the cuts and the line runs unbroken from the cross to the end. There is n
 
 ## Where to Start
 
-The four studies do not need to be read in order. They are four vantage points on one claim, and each one stands on its own evidence. A reader who wants the linguistic case should start with the paused week. A reader who wants the plainest test should start with the second war, where the two accounts can be laid side by side and compared line for line.
+The four studies do not need to be read in order. They are four vantage points on one claim, and each one stands on its own evidence. A reader who wants the linguistic case should start with the paused week. A reader who wants the plainest test should start with the split oracle, where the two accounts can be laid side by side and compared line for line.
 
 What holds them together is the method, not the sequence. In every case the question is the same, and any believer can ask it without knowing Hebrew or Greek: does the text say the interval is there, or did someone put it there?
 
