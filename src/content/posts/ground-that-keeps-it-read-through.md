@@ -1,7 +1,7 @@
 ---
 title: "Ground That Keeps It: The Parable Read Through"
-description: "Mark 4:3-9 and 13-20 straight through, each image's meaning carried alongside."
-deck: "Mark 4:3-9 and 13-20 straight through, each image's meaning carried alongside."
+description: "Mark 4:3-9 and 13-20 straight through, each image's meaning carried alongside"
+deck: "Mark 4:3-9 and 13-20 straight through, each image's meaning carried alongside"
 verse: "Mark 4:3–9, 13–20"
 commonName: "The Sower"
 date: 2026-09-29
