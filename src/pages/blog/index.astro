@@ -1,17 +1,21 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
-import { BLOG_GROUPS, BLOG_JUMPOUTS, groupOf, inFeed } from '../../data/blog-groups.js';
+import { BLOG_GROUPS, BLOG_JUMPOUTS, INVESTIGATIONS_GROUP, investigationSlugs, groupOf, inFeed } from '../../data/blog-groups.js';
 
 const posts = (await getCollection('posts', ({ data }) => data.draft !== true)).filter(inFeed);
 const countByGroup = Object.fromEntries(
   BLOG_GROUPS.map((g) => [g.key, posts.filter((p) => groupOf(p.slug) === g.key).length])
 );
 const total = posts.length;
+// Investigations card: counts the live case pieces that resolve to a post.
+const invSlugs = new Set(investigationSlugs());
+const invCount = (await getCollection('posts', ({ data }) => data.draft !== true))
+  .filter((p) => invSlugs.has(p.slug)).length;
 ---
 
 <BaseLayout
-  title="Biblical Studies & Theological Insights - Nazaryah Blog"
+  title="Biblical Studies & Theological Insights - Nazaryah Studies"
   description="Browse in-depth biblical studies by category, or search the full archive — exegesis, word studies, theology, and historical context."
 >
   <!-- Parchment header + short how-to-navigate -->
@@ -43,6 +47,11 @@ const total = posts.length;
             <span class="bg-count">{countByGroup[g.key]} {countByGroup[g.key] === 1 ? 'study' : 'studies'} &rarr;</span>
           </a>
         ))}
+        <a href={`/blog/c/${INVESTIGATIONS_GROUP.key}`} class="blog-group-card">
+          <span class="bg-name">{INVESTIGATIONS_GROUP.name}</span>
+          <span class="bg-blurb">{INVESTIGATIONS_GROUP.blurb}</span>
+          <span class="bg-count">{invCount} {invCount === 1 ? 'study' : 'studies'} &rarr;</span>
+        </a>
       </div>
 
       <div class="blog-jumpouts">

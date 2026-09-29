@@ -12,7 +12,7 @@ const posts = (await getCollection('posts', ({ data }) => data.draft !== true))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 ---
 
-<BaseLayout title="All Studies — Nazaryah Blog" description="Search and browse the full archive of biblical studies.">
+<BaseLayout title="All Studies — Nazaryah Studies" description="Search and browse the full archive of biblical studies.">
   <section class="blog-subhead">
     <a href="/blog" class="blog-back">&larr; Browse by category</a>
     <h1 class="blog-subhead-title">All Studies</h1>

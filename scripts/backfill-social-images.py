@@ -1,6 +1,10 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0908 V15
+backfill-social-images  0929 V16
+V16: `peah` mapped to .peah-sub, then .pe-card-deck. The /peah index's card deck
+is its subtitle line ("The Corner of the Field"); an entry page carries a hidden
+.pe-card-deck holding the entry's `deck` field. Neither falls back to the meta
+description.
 V15: `investigations` mapped to .sub — the deck line an investigation page (and
 the investigations index) renders under its title. Without it those cards fell
 back to og:description, which on an investigation is the long question and clips
@@ -136,6 +140,9 @@ DECK_CLASSES = {
     # wrong: the nav's .doctrines-item-sub matches \bsub\b and wins the search.
     # The /investigations index carries the same hook, hidden.
     "investigations": ["inv-card-deck"],
+    # Pe'ah: the index's subtitle line; an entry's hidden .pe-card-deck (its
+    # `deck` field). First present wins.
+    "peah": ["peah-sub", "pe-card-deck"],
 }
 
 

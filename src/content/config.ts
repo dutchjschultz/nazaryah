@@ -1,4 +1,9 @@
-// content config 0927 V15
+// content config 0929 V16
+// V16: new `peah` collection — Pe'ah, The Corner of the Field: short reads
+// served at /peah/<slug>, same 'content' loader as posts. `group` must be one
+// of the Studies taxonomy names character for character (BLOG_GROUPS in
+// src/data/blog-groups.js) or blank; anything else fails the build rather than
+// minting a stray filter chip.
 // V15: two changes for a study that is a SECTION rather than a blog post (the
 // cosmology page). `route` — the exact URL it is served at ("/cosmology"),
 // overriding /blog/<slug> and `home`; read only through src/lib/post-href.js.
@@ -70,6 +75,7 @@
 // so open-letter full-text files validate alongside weekly-letter ones.
 import { defineCollection, z } from 'astro:content';
 import { parseRef } from '../lib/scripture/parse-ref.js';
+import { BLOG_GROUPS } from '../data/blog-groups.js';
 
 // Scripture index citation (see src/pages/scripture.astro). Tier is a property
 // of the CITATION, not the verse: the same passage can be a plain statement in
@@ -282,8 +288,30 @@ const watchmansDeskCollection = defineCollection({
   schema: z.object({}).passthrough(),
 });
 
+// PE'AH — short reads from the corner of the field (/peah). Plain literal title,
+// one key verse, body paragraphs only, and the verses it touches listed at foot.
+const PEAH_GROUPS = BLOG_GROUPS.map((g) => g.name);
+const peahCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    reference: z.string(),                 // small caps on the card
+    deck: z.string(),
+    group: z.string().default('').refine(
+      (v) => v === '' || PEAH_GROUPS.includes(v),
+      { message: `group must be blank or one of: ${PEAH_GROUPS.join(' | ')}` }
+    ),
+    keyVerse: z.string(),
+    keyVerseRef: z.string(),
+    verses: z.string().optional(),         // the "Verses:" line at the foot
+    date: z.coerce.date(),
+    draft: z.boolean().optional(),
+  }),
+});
+
 export const collections = {
   posts: postsCollection,
+  peah: peahCollection,
   glossary: glossaryCollection,
   'watchmans-report': watchmansReportCollection,
   'watchmans-desk': watchmansDeskCollection,

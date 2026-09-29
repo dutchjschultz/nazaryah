@@ -1,0 +1,95 @@
+---
+// src/pages/peah/index.astro · 0929 V1
+// Pe'ah — The Corner of the Field. The short-reads index, mirroring the Studies
+// archive (/blog/all): the same parchment header, the same five-column grid and
+// the same BlogCard, which knows a Pe'ah entry (links /peah/<slug>, shows the
+// reference with a PE'AH tag). Reached from the Studies dropdown in the nav.
+//
+// The group filter chips are GENERATED from the entries' `group` values — a
+// chip exists only for a group that has at least one entry, and the names are
+// the Studies taxonomy strings themselves (the schema enforces that). Never
+// hand-maintain this list.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import BlogCard from '../../components/BlogCard.astro';
+import { getCollection } from 'astro:content';
+import { BLOG_GROUPS } from '../../data/blog-groups.js';
+
+const entries = (await getCollection('peah', ({ data }) => data.draft !== true))
+  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Chips in taxonomy order, only for groups in use.
+const used = new Set(entries.map((e) => e.data.group).filter(Boolean));
+const chips = BLOG_GROUPS.map((g) => g.name).filter((n) => used.has(n));
+---
+
+<BaseLayout
+  title="Pe'ah — The Corner of the Field | Nazaryah"
+  description="Short reads gathered from the edges of the field — “Thou shalt leave them for the poor and stranger” (Leviticus 19:10)."
+>
+  <section class="peah-head">
+    <a href="/blog" class="peah-back">&larr; Studies</a>
+    <h1 class="peah-title">Pe'ah</h1>
+    <p class="peah-sub">The Corner of the Field</p>
+    <p class="peah-intro">
+      Short reads gathered from the edges of the field — “Thou shalt leave them for the poor
+      and stranger” (Leviticus 19:10).
+    </p>
+    <p class="peah-count">{entries.length} {entries.length === 1 ? 'read' : 'reads'}</p>
+  </section>
+
+  <div class="peah-wrap">
+    {chips.length > 0 && (
+      <div class="peah-chips" role="group" aria-label="Filter by group">
+        <button type="button" class="peah-chip is-on" data-chip="">All</button>
+        {chips.map((c) => (
+          <button type="button" class="peah-chip" data-chip={c}>{c}</button>
+        ))}
+      </div>
+    )}
+    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5" id="peah-grid">
+      {entries.map((e) => <BlogCard post={e} />)}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* Header mirrors .blog-subhead on the Studies archive. */
+  .peah-head { font-family: Georgia, 'Times New Roman', serif; background: #cfc0a0; padding: 2.25rem 2rem 1.75rem; text-align: center; }
+  .peah-back { display: inline-block; font-family: 'Cinzel', Georgia, serif; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: #6b3010; text-decoration: none; margin-bottom: 0.9rem; }
+  .peah-back:hover { color: #3a1a04; }
+  .peah-title { font-size: 2.3rem; font-weight: 900; color: #1e1208; font-variant: small-caps; letter-spacing: 0.03em; margin: 0; }
+  .peah-sub { font-family: 'Cinzel', Georgia, serif; font-size: 0.8rem; letter-spacing: 0.22em; text-transform: uppercase; color: #6b3010; margin: 0.35rem 0 0.9rem; }
+  /* italic -> the body serif, never Cinzel */
+  .peah-intro { font-family: var(--font-family-serif); font-size: 1.05rem; font-style: italic; color: #4a3520; max-width: 44rem; margin: 0 auto 0.6rem; line-height: 1.55; }
+  .peah-count { font-family: 'Cinzel', Georgia, serif; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: #7a4f28; margin: 0; }
+
+  .peah-wrap { padding: 2.25rem 1.5rem 3rem; max-width: 84rem; margin: 0 auto; }
+
+  .peah-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.8rem; }
+  .peah-chip {
+    font-family: 'Cinzel', Georgia, serif; font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
+    padding: 0.4rem 0.85rem; border-radius: 999px; cursor: pointer;
+    border: 1px solid #c4a97d; background: #fbf5e6; color: #2b1d11;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+  .peah-chip:hover { border-color: #a07850; }
+  .peah-chip.is-on { background: #4a2808; color: #f5e8d0; border-color: #4a2808; }
+  :global(.dark) .peah-chip { border-color: #3a2510; background: #130e06; color: #c4a46b; }
+  :global(.dark) .peah-chip:hover { border-color: #ba7517; }
+  :global(.dark) .peah-chip.is-on { background: #ba7517; color: #140d04; border-color: #ba7517; }
+</style>
+
+<script>
+  // Chip filter: shows cards whose data-group matches; "All" clears it.
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.peah-chip'));
+  const cards = Array.from(document.querySelectorAll<HTMLElement>('#peah-grid .post-item'));
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      const g = chip.dataset.chip || '';
+      chips.forEach((c) => c.classList.toggle('is-on', c === chip));
+      cards.forEach((card) => {
+        card.style.display = !g || card.dataset.group === g ? '' : 'none';
+      });
+    });
+  });
+</script>

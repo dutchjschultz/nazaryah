@@ -1,4 +1,6 @@
-// post-href 0927 V2.js
+// post-href 0929 V3.js
+// V3: the /blog home's reader-facing label is now "Studies" (breadcrumbs and
+// "Back to …"). The address is unchanged.
 // V2: `route` — a study that IS a section page (the cosmology page) is served at
 // its exact route ("/cosmology"), ahead of `home` and the slug.
 // V1: the ONE place a study's URL is decided. A `posts` entry lives at
@@ -16,7 +18,7 @@ export const DEFAULT_HOME = '/blog';
 // Reader-facing name of each home, for breadcrumbs and "Back to …" links.
 // A new section adds one line here.
 export const HOME_LABEL = {
-  '/blog': 'Blog',
+  '/blog': 'Studies',
   '/cosmology': 'Cosmology',
 };
 
@@ -24,6 +26,6 @@ export const postHome = (entry) => entry?.data?.home ?? DEFAULT_HOME;
 
 export const postHref = (entry) => entry?.data?.route ?? `${postHome(entry)}/${entry.slug}`;
 
-export const postHomeLabel = (entry) => HOME_LABEL[postHome(entry)] ?? 'Blog';
+export const postHomeLabel = (entry) => HOME_LABEL[postHome(entry)] ?? 'Studies';
 
 export const hrefMap = (entries) => Object.fromEntries(entries.map((e) => [e.slug, postHref(e)]));

@@ -1,6 +1,9 @@
 ---
 // Single blog post card. Extracted from the old blog index so the paginated
 // group views and the All Posts view render identical cards.
+// 0929: also renders a Pe'ah entry (collection 'peah') — links to /peah/<slug>,
+// its category line is the entry's `group`, and its reference line carries a
+// small PE'AH tag so a reader knows it is a short read. Study cards unchanged.
 import { masterTitleBySlug } from '../data/books.js';
 import { postHref } from '../lib/post-href.js';
 const { post } = Astro.props;
@@ -17,14 +20,16 @@ const bookCategories = {
   'Five Titles, One Christ': { href: '/books/five-titles' },
   'What the Pulpit Buried': { href: '/books/pulpit-buried' },
 };
-const cat = post.data.category;
+const isPeah = post.collection === 'peah';
+const href = isPeah ? `/peah/${post.slug}` : postHref(post);
+const cat = isPeah ? post.data.group : post.data.category;
 const book = bookCategories[cat];
-const blurb = post.data.subtitle || post.data.deck || post.data.description;
+const blurb = isPeah ? post.data.deck : (post.data.subtitle || post.data.deck || post.data.description);
 
 // Reference line: the passage, plus the parable's common name when the study
 // carries one — MATTHEW 24:1-25:13 · THE TEN VIRGINS. The name identifies the
 // parable; the card's title stays the study's own.
-const verseLine = [post.data.verse, post.data.commonName].filter(Boolean).join(' · ');
+const verseLine = isPeah ? post.data.reference : [post.data.verse, post.data.commonName].filter(Boolean).join(' · ');
 
 // The study's video, if it has one — the same `watch` block that draws the watch
 // card on the study page. No block, no second action row.
@@ -33,13 +38,14 @@ const watch = post.data.watch;
 
 <article class="post-item card group flex flex-col overflow-hidden h-full"
   data-title={displayTitle.toLowerCase()}
-  data-search={`${displayTitle} ${post.data.title} ${blurb || ''} ${cat} ${post.data.commonName || ''}`.toLowerCase()}>
+  data-search={`${displayTitle} ${post.data.title} ${blurb || ''} ${cat || ''} ${post.data.commonName || ''}`.toLowerCase()}
+  data-group={isPeah ? (cat || '') : undefined}>
   <div class="p-6 flex flex-col flex-1">
     {book && <a href={book.href} class="bookshelf-badge">&#9672; From the Bookshelf</a>}
-    <div class:list={["tag mb-3", { "tag-book": book }]} style="color: var(--bronze);">{cat}</div>
-    {verseLine && <div class="post-verse">{verseLine}</div>}
+    {cat && <div class:list={["tag mb-3", { "tag-book": book }]} style="color: var(--bronze);">{cat}</div>}
+    {verseLine && <div class="post-verse">{verseLine}{isPeah && <span class="peah-tag">Pe'ah</span>}</div>}
     <h3 class="post-title text-sm font-semibold mb-3 leading-snug" style="font-family: var(--font-display);">
-      <a href={postHref(post)} style="color: var(--deep-earth);">{displayTitle}</a>
+      <a href={href} style="color: var(--deep-earth);">{displayTitle}</a>
     </h3>
     <p class="post-subtitle text-sm leading-relaxed mb-5 line-clamp-4 flex-1">{blurb}</p>
     {/* The actions, pinned to the foot of the card. READ IS LAST, so it sits on
@@ -58,7 +64,7 @@ const watch = post.data.watch;
         <time datetime={post.data.date.toISOString()}>
           {post.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}
         </time>
-        <a href={postHref(post)} class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--bronze);">
+        <a href={href} class="font-medium group-hover:translate-x-1 transition-transform inline-flex items-center gap-1" style="color: var(--bronze);">
           Read <span aria-hidden="true">&rarr;</span>
         </a>
       </div>
@@ -81,6 +87,13 @@ const watch = post.data.watch;
     color: #9a6b1f; margin: -2px 0 8px; padding-bottom: 7px; border-bottom: 1px solid var(--sand-dark);
   }
   .post-subtitle { font-style: italic; color: var(--ink-faded); }
+  /* Pe'ah marker beside the reference — a short read, not a full study. */
+  .peah-tag {
+    display: inline-block; margin-left: 8px; padding: 1px 6px; vertical-align: 1px;
+    font-size: 8px; letter-spacing: 1.6px; color: #7a5a1c;
+    border: 1px solid #c4a46b; border-radius: 2px;
+  }
+  :global(.dark) .peah-tag { color: #c4a46b; border-color: #6a4820; }
 
   /* ── Card foot ────────────────────────────────────────────────────────────
      margin-top:auto pins the action block to the bottom of the card, and the

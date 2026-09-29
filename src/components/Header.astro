@@ -1,5 +1,9 @@
 ---
-// Header.astro · 0927 V9 — Topics → Restored Truth: COSMOLOGY now opens the
+// Header.astro · 0929 V10 — BLOG is now STUDIES, a hover dropdown (Studies →
+// /blog, Pe'ah — The Corner of the Field → /peah) built on the Doctrines
+// dropdown's markup and classes. Reader-facing word only: every address stays
+// /blog. Mobile lists both links.
+// V9 — Topics → Restored Truth: COSMOLOGY now opens the
 // /cosmology section front instead of the study itself (the study moved to
 // /cosmology/the-heavens-and-the-earth). Mobile inherits it.
 // V8 — Topics → Restored Truth: COSMOLOGY goes live. The
@@ -33,7 +37,7 @@ const primaryNav = [
   { name: 'Topics', href: null, dropdown: 'topics' },
   { name: 'Torah', href: '/torah' },
   { name: 'Trinity', href: '/trinity' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Studies', href: '/blog', dropdown: 'studies' },
   { name: 'Voices', href: '/voices' },
   { name: 'Books', href: '/books' },
   { name: 'Contact', href: '/contact' },
@@ -84,6 +88,17 @@ const doctrinesNav = {
   ],
 };
 
+// Studies dropdown — the label itself links to the index. Addresses did not
+// move: the index is still /blog and every study is still /blog/<slug>; only the
+// reader-facing word changed from Blog to Studies.
+const studiesNav = {
+  href: '/blog',
+  items: [
+    { name: 'Studies', href: '/blog' },
+    { name: "Pe'ah — The Corner of the Field", href: '/peah' },
+  ],
+};
+
 // Flat list of every link, used for the mobile menu.
 const mobileNav = [
   { name: 'Home', href: '/' },
@@ -93,7 +108,8 @@ const mobileNav = [
   { name: 'The Departure', href: '/doctrines/the-departure' },
   { name: 'Torah', href: '/torah' },
   { name: 'Trinity', href: '/trinity' },
-  { name: 'Blog', href: '/blog' },
+  { name: 'Studies', href: '/blog' },
+  { name: "Pe'ah — The Corner of the Field", href: '/peah' },
   { name: 'Voices', href: '/voices' },
   { name: 'Books', href: '/books' },
   { name: 'Contact', href: '/contact' },
@@ -112,6 +128,7 @@ const topicsActive =
   topicsRestoredTruth.items.some((it) => isActive(it.href));
 
 const doctrinesActive = isActive('/doctrines');
+const studiesActive = isActive('/blog') || isActive('/peah');
 ---
 
 <header class="site-header sticky top-0 z-50 border-b border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] backdrop-blur-sm" data-pagefind-ignore>
@@ -226,6 +243,29 @@ const doctrinesActive = isActive('/doctrines');
                     >
                       <span class="doctrines-item-name">{sub.name}</span>
                       <span class="doctrines-item-sub">{sub.sublabel}</span>
+                    </a>
+                  ))}
+                </div>
+              </li>
+            ) : item.dropdown === 'studies' ? (
+              /* Same hover dropdown as Doctrines, same classes; its items carry
+                 no sublabel line. */
+              <li class="doctrines-wrap">
+                <a
+                  href={studiesNav.href}
+                  class:list={['nav-link nav-link--dropdown', studiesActive ? 'active' : '']}
+                >
+                  {item.name}
+                  <span class="caret" aria-hidden="true">▾</span>
+                </a>
+                <div class="doctrines-dropdown" role="menu" aria-label="Studies">
+                  {studiesNav.items.map((sub) => (
+                    <a
+                      href={sub.href}
+                      class:list={['doctrines-item', currentPath === sub.href || (sub.href !== '/blog' && isActive(sub.href)) ? 'active' : '']}
+                      role="menuitem"
+                    >
+                      <span class="doctrines-item-name">{sub.name}</span>
                     </a>
                   ))}
                 </div>

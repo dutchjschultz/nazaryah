@@ -2,15 +2,21 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import BlogCard from '../../../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
-import { BLOG_GROUPS, groupOf, POSTS_PER_PAGE } from '../../../../data/blog-groups.js';
+import { BLOG_GROUPS, INVESTIGATIONS_GROUP, investigationSlugs, groupOf, POSTS_PER_PAGE } from '../../../../data/blog-groups.js';
 
 export async function getStaticPaths({ paginate }) {
   const all = (await getCollection('posts', ({ data }) => data.draft !== true))
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-  return BLOG_GROUPS.flatMap((g) => {
+  const byGroup = BLOG_GROUPS.flatMap((g) => {
     const posts = all.filter((p) => groupOf(p.slug) === g.key);
     return paginate(posts, { params: { group: g.key }, pageSize: POSTS_PER_PAGE, props: { group: g } });
   });
+  // Investigations: the same page, fed from the curated cases instead of
+  // POST_GROUP. Same date order as every other category.
+  const inv = new Set(investigationSlugs());
+  const invPosts = all.filter((p) => inv.has(p.slug));
+  const g = INVESTIGATIONS_GROUP;
+  return [...byGroup, ...paginate(invPosts, { params: { group: g.key }, pageSize: POSTS_PER_PAGE, props: { group: g } })];
 }
 
 const { page, group } = Astro.props;
@@ -24,7 +30,7 @@ for (let i = 1; i <= page.lastPage; i++) {
 const pageHref = (n) => (n === 1 ? `/blog/c/${group.key}` : `/blog/c/${group.key}/${n}`);
 ---
 
-<BaseLayout title={`${group.name} — Nazaryah Blog`} description={group.blurb}>
+<BaseLayout title={`${group.name} — Nazaryah Studies`} description={group.blurb}>
   <section class="blog-subhead">
     <a href="/blog" class="blog-back">&larr; All categories</a>
     <h1 class="blog-subhead-title">{group.name}</h1>

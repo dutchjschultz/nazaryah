@@ -1,0 +1,140 @@
+---
+// src/pages/peah/[slug].astro · 0929 V1
+// One Pe'ah entry — a lighter page than a study. In order: the small-caps
+// section label, the plain title over a thin rule, the key verse (italic, thin
+// gold bar on its left, reference after it in smaller type), the body
+// paragraphs, the Verses line in small type, and the back link.
+// No inner headings, no epigraph, no signature header, no study chrome.
+//
+// Colours are declared light first, then again under :global(.dark). Italic
+// text is set in the body serif, never Cinzel (capitals only, no italic).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const entries = await getCollection('peah', ({ data }) => data.draft !== true);
+  return entries.map((entry) => ({ params: { slug: entry.slug }, props: { entry } }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+const d = entry.data;
+---
+
+<BaseLayout title={`${d.title} — Pe'ah | Nazaryah`} description={d.deck}>
+  <article class="peah-entry">
+    <p class="pe-label">Pe'ah — The Corner of the Field</p>
+    <h1 class="pe-title">{d.title}</h1>
+    {/* The short CARD deck, read by the social-card generator; not shown. */}
+    <p class="pe-card-deck">{d.deck}</p>
+    <div class="pe-rule" aria-hidden="true"></div>
+
+    <blockquote class="pe-key">
+      <p class="pe-key-text">{d.keyVerse}</p>
+      <cite class="pe-key-ref">{d.keyVerseRef}</cite>
+    </blockquote>
+
+    <div class="pe-body">
+      <Content />
+    </div>
+
+    {d.verses && <p class="pe-verses"><span>Verses:</span> {d.verses}</p>}
+
+    <a href="/peah" class="pe-back">&larr; All Pe'ah</a>
+  </article>
+</BaseLayout>
+
+<style>
+  .peah-entry {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 3.2rem 1.5rem 4.5rem;
+    font-family: var(--font-family-serif);
+    color: #2b2317;
+  }
+  :global(.dark) .peah-entry { color: #d8ccb4; }
+
+  .pe-label {
+    margin: 0 0 1rem;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: #8a6520;
+  }
+  :global(.dark) .pe-label { color: #ba7517; }
+
+  .pe-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 4.4vw, 2.3rem);
+    line-height: 1.2;
+    color: #1e1208;
+  }
+  :global(.dark) .pe-title { color: #f0e0bf; }
+
+  .pe-card-deck {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+
+  .pe-rule { height: 1px; margin: 1.1rem 0 1.9rem; background: #d8cfb8; }
+  :global(.dark) .pe-rule { background: #3a2510; }
+
+  .pe-key {
+    margin: 0 0 2rem;
+    padding: 0.15rem 0 0.15rem 1.05rem;
+    border-left: 2px solid #b8923a;
+  }
+  :global(.dark) .pe-key { border-left-color: #ba7517; }
+  .pe-key-text {
+    margin: 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: #2b2317;
+  }
+  :global(.dark) .pe-key-text { color: #f0e0bf; }
+  .pe-key-ref {
+    display: block;
+    margin-top: 0.4rem;
+    font-style: normal;
+    font-size: 0.8rem;
+    letter-spacing: 0.04em;
+    color: #8a7c5e;
+  }
+  :global(.dark) .pe-key-ref { color: #9c7c4c; }
+
+  .pe-body :global(p) { margin: 0 0 1.15rem; font-size: 1.1rem; line-height: 1.75; }
+
+  .pe-verses {
+    margin: 2.2rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid #d8cfb8;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #8a7c5e;
+  }
+  .pe-verses span {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-right: 0.3rem;
+  }
+  :global(.dark) .pe-verses { color: #9c7c4c; border-top-color: #3a2510; }
+
+  .pe-back {
+    display: inline-block;
+    margin-top: 1.8rem;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #8a6520;
+  }
+  .pe-back:hover { color: #4a2808; }
+  :global(.dark) .pe-back { color: #ba7517; }
+  :global(.dark) .pe-back:hover { color: #f0e0bf; }
+</style>
