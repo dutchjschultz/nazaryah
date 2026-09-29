@@ -1,4 +1,5 @@
-// content config 0929 V16
+// content config 0929 V17
+// V17: peah gains optional `cardDeck` — the social card's line when `deck` clips.
 // V16: new `peah` collection — Pe'ah, The Corner of the Field: short reads
 // served at /peah/<slug>, same 'content' loader as posts. `group` must be one
 // of the Studies taxonomy names character for character (BLOG_GROUPS in
@@ -297,6 +298,9 @@ const peahCollection = defineCollection({
     title: z.string(),
     reference: z.string(),                 // small caps on the card
     deck: z.string(),
+    // Optional shorter line for the SOCIAL CARD only, when `deck` is too long to
+    // fit under a two-line title. The page and the /peah card keep `deck`.
+    cardDeck: z.string().optional(),
     group: z.string().default('').refine(
       (v) => v === '' || PEAH_GROUPS.includes(v),
       { message: `group must be blank or one of: ${PEAH_GROUPS.join(' | ')}` }

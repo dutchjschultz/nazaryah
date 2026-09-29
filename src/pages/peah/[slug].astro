@@ -25,8 +25,9 @@ const d = entry.data;
   <article class="peah-entry">
     <p class="pe-label">Pe'ah — The Corner of the Field</p>
     <h1 class="pe-title">{d.title}</h1>
-    {/* The short CARD deck, read by the social-card generator; not shown. */}
-    <p class="pe-card-deck">{d.deck}</p>
+    {/* The short CARD deck, read by the social-card generator; not shown.
+        `cardDeck` when the entry sets one (a deck too long for the card). */}
+    <p class="pe-card-deck">{d.cardDeck ?? d.deck}</p>
     <div class="pe-rule" aria-hidden="true"></div>
 
     <blockquote class="pe-key">
