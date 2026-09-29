@@ -1,4 +1,10 @@
-// blog-groups 0929 V13.js
+// blog-groups 0929 V14.js
+// V14: the interim Investigations card code (INVESTIGATIONS_GROUP,
+// investigationSlugs) moves out to src/data/collections.js, which now owns every
+// COLLECTION card. The nine BLOG_GROUPS are TOPIC cards: a study in a collection
+// is filtered out of the topic counts and /blog/c/<topic> pages but KEEPS its
+// POST_GROUP line here, so removing it from the collection puts it straight back.
+// inFeed (/blog/all) is unchanged — collection studies still appear there.
 // V13: an INVESTIGATIONS category card on the Studies index, beside the nine
 // groups, opening /blog/c/investigations through the same category template.
 // It is NOT a tenth BLOG_GROUP and it moves no study: POST_GROUP is untouched,
@@ -74,8 +80,6 @@
 // feed and reached through a jump-out button instead.
 // ─────────────────────────────────────────────────────────────────────────
 
-import { INVESTIGATIONS } from './investigations.js';
-
 export const BLOG_GROUPS = [
   { key: 'scripture-unfiltered', name: 'Scripture Unfiltered', blurb: 'General studies — passage by passage, no denominational spin.' },
   { key: 'the-root',             name: 'The Root',             blurb: 'Word studies — where a single Hebrew or Greek root is the whole study.' },
@@ -87,22 +91,6 @@ export const BLOG_GROUPS = [
   { key: 'the-parables',         name: 'The Parables',         blurb: 'The parables of Yahushua, read out of the Hebrew Scriptures His first hearers already held.' },
   { key: 'the-side-door',        name: 'The Side Door',        blurb: 'Modern parables — hard truth slipped in sideways, the way a story can and a lecture cannot.' },
 ];
-
-// Investigations — a category card that lists studies by their curated case
-// rather than by POST_GROUP. Blurb is the /investigations page's own card deck.
-export const INVESTIGATIONS_GROUP = {
-  key: 'investigations',
-  name: 'Investigations',
-  blurb: 'A case, not a category. Read one, or read the case.',
-};
-// Slugs of every live piece in every live investigation (hubs + witnesses),
-// in the data file's order. Only /blog/<slug> hrefs resolve to a post.
-export const investigationSlugs = () =>
-  INVESTIGATIONS.filter((i) => !i.soon)
-    .flatMap((i) => [i.nucleus, ...i.witnesses.filter((w) => w.status === 'live')])
-    .map((p) => p.href || '')
-    .filter((h) => h.startsWith('/blog/'))
-    .map((h) => h.slice('/blog/'.length).replace(/\/$/, ''));
 
 // Jump-outs — NOT filters. Buttons on the landing that link to where that
 // content actually lives.

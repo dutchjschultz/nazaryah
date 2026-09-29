@@ -2,21 +2,26 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import BlogCard from '../../../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
-import { BLOG_GROUPS, INVESTIGATIONS_GROUP, investigationSlugs, groupOf, POSTS_PER_PAGE } from '../../../../data/blog-groups.js';
+import { BLOG_GROUPS, groupOf, POSTS_PER_PAGE } from '../../../../data/blog-groups.js';
+import { COLLECTIONS, collectionSlugs, inCollection } from '../../../../data/collections.js';
 
 export async function getStaticPaths({ paginate }) {
   const all = (await getCollection('posts', ({ data }) => data.draft !== true))
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  // TOPIC pages: regular studies only — a study in a collection is listed on
+  // its collection page instead (it keeps its POST_GROUP line; see collections.js).
   const byGroup = BLOG_GROUPS.flatMap((g) => {
-    const posts = all.filter((p) => groupOf(p.slug) === g.key);
+    const posts = all.filter((p) => groupOf(p.slug) === g.key && !inCollection(p.slug));
     return paginate(posts, { params: { group: g.key }, pageSize: POSTS_PER_PAGE, props: { group: g } });
   });
-  // Investigations: the same page, fed from the curated cases instead of
-  // POST_GROUP. Same date order as every other category.
-  const inv = new Set(investigationSlugs());
-  const invPosts = all.filter((p) => inv.has(p.slug));
-  const g = INVESTIGATIONS_GROUP;
-  return [...byGroup, ...paginate(invPosts, { params: { group: g.key }, pageSize: POSTS_PER_PAGE, props: { group: g } })];
+  // COLLECTION pages: same template, fed from src/data/collections.js. Adding a
+  // collection there adds its page here with no template change.
+  const byCollection = COLLECTIONS.flatMap((c) => {
+    const set = new Set(collectionSlugs(c));
+    const posts = all.filter((p) => set.has(p.slug));
+    return paginate(posts, { params: { group: c.key }, pageSize: POSTS_PER_PAGE, props: { group: c } });
+  });
+  return [...byGroup, ...byCollection];
 }
 
 const { page, group } = Astro.props;

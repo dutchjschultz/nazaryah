@@ -1,5 +1,10 @@
 ---
-// src/pages/peah/index.astro · 0929 V1
+// src/pages/peah/index.astro · 0929 V2
+// V2: Pe'ah entries carry no topic group now, so the chip row does not render
+// (it only appears when at least one entry has a group). Pe'ah is not a Studies
+// card or collection; the Studies dropdown is its only entry point, and it stays
+// out of /blog/all and the association clusters (separate collection, never read
+// by inFeed or study-pool.js).
 // Pe'ah — The Corner of the Field. The short-reads index, mirroring the Studies
 // archive (/blog/all): the same parchment header, the same five-column grid and
 // the same BlogCard, which knows a Pe'ah entry (links /peah/<slug>, shows the

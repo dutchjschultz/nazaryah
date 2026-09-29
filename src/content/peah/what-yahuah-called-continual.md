@@ -2,7 +2,7 @@
 title: "What Yahuah Called Continual"
 reference: "Leviticus 24:8"
 deck: "The Hebrew word tamid in the tabernacle, in Daniel, and in the walk."
-group: "The Law & The Feasts"
+group: ""
 keyVerse: "Every sabbath he shall set it in order before Yahuah continually, being taken from the children of Israel by an everlasting covenant."
 keyVerseRef: "Leviticus 24:8"
 verses: "Leviticus 24:8 · Exodus 25:30 · Exodus 27:20 · Exodus 28:29–30 · Exodus 28:38 · Exodus 29:38–42 · Exodus 30:8 · Ezra 3:5 · Nehemiah 10:33 · Daniel 7:25 · Daniel 8:11–13 · Daniel 12:11 · Matthew 27:51 · Deuteronomy 8:3 · Psalm 119:105 · Proverbs 6:21 · Deuteronomy 6:8 · Psalm 141:2 · Hebrews 13:15 · Psalm 16:8 · Psalm 119:44"
