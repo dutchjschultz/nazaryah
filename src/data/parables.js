@@ -1,4 +1,6 @@
-// parables 0907 V5.js
+// parables 0929 V6.js
+// V6: id 5, the sower, goes live — Ground That Keeps It. The node turns solid
+// and the counter climbs to 5 of 42 on its own.
 // V5: id 5, the sower, takes the Matthew reference the master list actually
 // carries — Matthew 13:3-9, 18-23 rather than the blunt 13:3-23. Verses 10-17
 // are the why-parables passage, not the sower, and the master list's own prose
@@ -88,7 +90,8 @@ export const parables = [
       { gospel: "Matthew", ref: "Matthew 13:3-9, 18-23", ch: 13, v: 3 },
       { gospel: "Luke", ref: "Luke 8:5-15", ch: 8, v: 5 }
     ],
-    study: null
+    // Ground That Keeps It - live.
+    study: "/blog/ground-that-keeps-it"
   },
   {
     id: 6,

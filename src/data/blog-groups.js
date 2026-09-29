@@ -1,4 +1,7 @@
-// blog-groups 0929 V14.js
+// blog-groups 0929 V15.js
+// V15: Ground That Keeps It joins THE PARABLES (5 → 6). Its read-through,
+// ground-that-keeps-it-read-through, stays out — it carries companionOf. Map
+// total 104 → 105.
 // V14: the interim Investigations card code (INVESTIGATIONS_GROUP,
 // investigationSlugs) moves out to src/data/collections.js, which now owns every
 // COLLECTION card. The nine BLOG_GROUPS are TOPIC cards: a study in a collection
@@ -99,7 +102,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 104 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 105 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (15) ──
   'worship-and-service': 'the-counterfeit-throne',
@@ -194,7 +197,7 @@ export const POST_GROUP = {
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',
 
-  // ── The Parables (5) — the parables in the text ──
+  // ── The Parables (6) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
   // Foundation Bar on /parables and is pulled from that grid there; the blog is
   // a different surface — the chronological feed — so it carries a card here.
@@ -205,6 +208,7 @@ export const POST_GROUP = {
   'house-without-the-owner': 'the-parables',
   'who-is-my-neighbour': 'the-parables',
   'the-talents': 'the-parables',
+  'ground-that-keeps-it': 'the-parables',
 
   // ── The Side Door (2) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
