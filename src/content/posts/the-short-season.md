@@ -28,9 +28,6 @@ companion: "esther-ishtar-marduk"
 ---
 
 <style>.prose ul { list-style-type: disc; }</style>
-*When the Appointed Time Came and Yahuah Released the Chain*
-
-Modern teaching holds that the binding of the enemy is still ahead of us, waiting on a kingdom that has not started. That reading needs a long blank between the cross and the chain — centuries in which nothing described in Revelation 20 has begun. The Messiah left no room for it. He said the strong man is bound first and the house is spoiled afterward, and He said it while spoiling the house. So the binding is behind us, and the brief release that follows it is behind us too. This study asks when.
 
 *What if the devil was loosed on a specific day — and what if that day landed inside a single year that the fingerprints of heaven and hell both mark?*
 
@@ -38,7 +35,7 @@ Modern teaching holds that the binding of the enemy is still ahead of us, waitin
 
 Revelation 20 tells us that HaSatan is bound for a "thousand years" and then loosed for a "little season" to deceive the nations one final time before the end. Most modern Christians read this as a future event — a literal thousand-year kingdom still to come, after which the devil gets a short release. This study takes a different position, one that fits the whole witness of Scripture better and fits the world we actually live in even more clearly.
 
-This study takes a different position. The binding already happened, the thousand years is the long age we are living in, and the loosing is behind us rather than ahead of us. The case for the binding itself is settled by the Messiah’s own order — the strong man bound first, then his house spoiled — and is set out briefly below rather than argued at length. What this study does is set one window of years on the table, show the fingerprints heaven and hell both left on it, and walk forward from there.
+The binding already happened, the thousand years is the long age we are living in, and the loosing is behind us rather than ahead of us. The case for the binding itself is settled by the Messiah’s own order — the strong man bound first, then his house spoiled — and is set out briefly below rather than argued at length. What this study does is set one window of years on the table, show the fingerprints heaven and hell both left on it, and walk forward from there.
 
 Start with the text itself. The Revelation of Yahushua to John does not give us many places where the devil's movements are described in plain terms. Chapter twenty is one of them. It is worth reading slowly.
 

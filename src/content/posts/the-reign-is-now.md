@@ -26,9 +26,10 @@ associations:
 ---
 
 <style>.prose ul { list-style-type: disc; }</style>
+
 Modern teaching puts the reign of the Messiah entirely in the future. The thousand years of Revelation 20 is lifted out of this present age and set down after His return, as an earthly kingdom that has not begun. That move requires a blank stretch — a span between the resurrection and the reign in which the throne stands empty and the assembly waits. Scripture describes no such stretch. This study closes that blank by walking the prophets, the Messiah, and the apostles in order, and showing that every one of them speaks of a king already seated.
 
-Ask most believers when the Messiah begins to reign and the answer comes back the same way: at the second coming. He came the first time to die, He went back to heaven, and one day He will return and take up a throne in Jerusalem. The reign is in front of us. Everything between the two comings is a waiting room.
+He came the first time to die, He went back to heaven, and one day He will return and take up a throne in Jerusalem — so the teaching runs. The reign is in front of us. Everything between the two comings is a waiting room.
 
 Scripture says otherwise, and it says so from one end to the other. The prophets announced a king who would be seated and would reign until His enemies were subdued. The Messiah Himself announced the kingdom as arrived rather than approaching. And on the first day the assembly ever preached, Peter stood in front of thousands and told them the man they had crucified was already on the throne. None of that is obscure. It is the plain reading of passages most believers can find without help.
 

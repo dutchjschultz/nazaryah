@@ -27,7 +27,6 @@ associations:
 ---
 
 <style>.prose ul { list-style-type: disc; }</style>
-Modern teaching needs Ezekiel 38 to be a war still ahead of us, fought by named modern nations, and it needs Revelation 20 to be a second war a thousand years after the first. Both requirements come from the same habit — inserting a stretch of time that the text never gives, then filling it with events. This study takes Ezekiel as he stands, and then lays his account beside John’s to see whether two wars are there at all.
 
 For about a hundred years, Ezekiel 38 and 39 have been sold as a war forecast. Russia leads a coalition down out of the north. It invades the modern State of Israel. The world ends. Maps have been drawn. Books have sold by the millions. Sermons have been preached with the evening news open on the pulpit.
 
