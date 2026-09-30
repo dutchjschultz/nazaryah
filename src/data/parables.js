@@ -1,4 +1,6 @@
-// parables 0930 V7.js
+// parables 0930 V8.js
+// V8: id 6, the seed growing secretly, goes live - The Seed Growing Secretly.
+// Its row already reads Mark 4:26-29, the range the study argues.
 // V7: reference audit, now that the timeline is the index on /parables. The
 // Sower's rows take the range its study argues: Mark 4:3-20 -> 4:1-20 and
 // Luke 8:5-15 -> 8:4-15 (the study reads "Mark 4:1-20, with Luke 8:4-15").
@@ -107,7 +109,8 @@ export const parables = [
     refs: [
       { gospel: "Mark", ref: "Mark 4:26-29", ch: 4, v: 26 }
     ],
-    study: null
+    // The Seed Growing Secretly - live.
+    study: "/blog/the-seed-growing-secretly"
   },
   {
     id: 7,
