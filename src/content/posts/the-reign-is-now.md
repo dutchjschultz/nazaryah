@@ -23,6 +23,7 @@ draft: false
 investigation: "the-end-times-gap"
 associations:
   - "lost-in-translation"
+  - "kingdom-now"
 ---
 
 <style>.prose ul { list-style-type: disc; }</style>

@@ -25,6 +25,7 @@ nucleusSource: "The seven-year tribulation, the thousand-year kingdom, the bindi
 nucleusQuestion: "Every one of those requires a blank stretch of time that no prophet ever mentions. Where is it? Not which system needs it — which verse gives it? Four holes carry the weight of the modern chart, and not one of them is in the text."
 associations:
   - "lost-in-translation"
+  - "kingdom-now"
 ---
 
 <style>.prose ul { list-style-type: disc; }</style>

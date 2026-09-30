@@ -9,7 +9,7 @@ author: "Nazaryah"
 category: "Parables"
 featured: false
 draft: false
-associations: ["pulpit-vocabulary", "two-stage-salvation"]
+associations: ["kingdom-now", "two-stage-salvation"]
 companion: ["the-stone-that-was-sown-read-through", "ground-that-keeps-it", "the-seed-growing-secretly", "the-reign-is-now"]
 ---
 
