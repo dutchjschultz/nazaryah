@@ -3,7 +3,6 @@ title: "The Seed Growing Secretly: The Parable Read Through"
 description: "Mark 4:26–29 straight through, each image's meaning carried alongside."
 deck: "Mark 4:26–29 straight through, each image's meaning carried alongside."
 verse: "Mark 4:26–29"
-commonName: "The Seed Growing Secretly"
 date: 2026-09-29
 author: "Nazaryah"
 category: "Parables"

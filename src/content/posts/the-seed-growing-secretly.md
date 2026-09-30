@@ -3,7 +3,6 @@ title: "The Seed Growing Secretly"
 description: "Four verses nobody preaches, and a pulpit with nothing to name growing."
 deck: "Four verses nobody preaches, and a pulpit with nothing to name growing."
 verse: "Mark 4:26–29"
-commonName: "The Seed Growing Secretly"
 date: 2026-09-29
 author: "Nazaryah"
 category: "Parables"
