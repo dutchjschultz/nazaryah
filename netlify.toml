@@ -234,3 +234,16 @@
   from = "/hollywood/swarm/they-made-him-a-face/"
   to = "/hollywood/the-craft/they-made-him-a-face"
   status = 301
+
+# Retired 0930: the parable timeline became the index on /parables itself, so
+# /parables/timeline would have been a second copy of the same list. Its card at
+# /og/parables/timeline.v2.png is deliberately NOT deleted — a crawled card file
+# is never removed or renamed.
+[[redirects]]
+  from = "/parables/timeline"
+  to = "/parables#timeline"
+  status = 301
+[[redirects]]
+  from = "/parables/timeline/"
+  to = "/parables#timeline"
+  status = 301

@@ -1,5 +1,7 @@
 ---
-// src/pages/parables/sayings.astro · 0907 V2
+// src/pages/parables/sayings.astro · 0930 V3
+// V3: the back link points at /parables#timeline - the timeline is the index on
+// /parables now, and /parables/timeline is a redirect.
 // V2: placed on the site and dressed in the site's own clothes, exactly as the
 // timeline page was — the supplied build was navy-on-white Georgia with no dark
 // mode, and every colour here is now declared twice, light then .dark.
@@ -54,7 +56,7 @@ import { PAGE, sayings } from '../../data/sayings.js';
     </ol>
 
     <p class="sy-back">
-      <a href="/parables/timeline">Back to the parable timeline <span class="sy-arrow" aria-hidden="true">&rarr;</span></a>
+      <a href="/parables#timeline">Back to the parable timeline <span class="sy-arrow" aria-hidden="true">&rarr;</span></a>
     </p>
   </main>
 </BaseLayout>

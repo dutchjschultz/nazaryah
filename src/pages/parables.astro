@@ -1,5 +1,17 @@
 ---
-// src/pages/parables.astro · 0907 V6
+// src/pages/parables.astro · 0930 V7
+// V7: the numbered timeline is now the index on this page, and the stacked
+// BlogCard grid is retired HERE ONLY - BlogCard is untouched and still carries
+// the blog feed, the home page and every group view. With forty-two parables
+// coming the grid would not hold; the timeline already lists all of them and
+// marks the written studies. /parables/timeline is gone (301 to this page, see
+// netlify.toml) so there is one index, not two, and its two notes - why John is
+// not here, why six passages are not numbered - moved down with it. Its card
+// file stays: a crawled card is never removed. The island renders on the
+// server on its ALL tab, so all forty-two titles and references are in the
+// HTML with no click. Read-throughs still get no row.
+// The ON VIDEO rail now lists every parable study with a video: its rule was
+// "not already on a card on this page", and nothing here carries a card now.
 // V6: the sayings page comes up out of the basement. Its only way in was a note
 // near the foot of the timeline, which is itself behind a link — two clicks and
 // a scroll from here. It now sits directly under the Foundation Bar, and the
@@ -42,50 +54,29 @@
 // study, its file, its route and its association entries are all untouched; it
 // is simply no longer one card among many. The old "Going further" heading and
 // paragraph are gone, replaced by the bar.
-// The Parables — section landing. The front door prose, then the card grid.
-//
-// The grid is data-driven, never hand-maintained: every published post in the
-// "Parables" category, newest first, minus any page carrying `companionOf`
-// (a read-through belongs to its parent study and is reached from that study's
-// Read Next, not from this grid) and minus the foundation study below. Adding a
-// study to the section means writing the study with category "Parables" —
-// nothing here changes.
-//
-// Cards are BlogCard, the same component the blog group views use. No new card
-// shape was invented for this section.
+// The Parables — section landing. The front door prose, the Foundation Bar,
+// the sayings bar, then the index: every parable in src/data/parables.js, with
+// the written studies marked. Publishing a parable study means pointing its
+// row's `study` at it there; nothing on this page changes.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import BlogCard from '../components/BlogCard.astro';
+import ParableTimeline from '../components/ParableTimeline.jsx';
 import { getCollection } from 'astro:content';
-// The timeline's own count, so the bar below never has to be edited when a
-// parable is added to the data file.
+// Counts come from the data file, so nothing here is edited when a parable is added.
 import { totalCount } from '../data/parables.js';
 
-// THE FOUNDATION — one slug, used twice: excluded from the grid, and the target
-// of the Foundation Bar. Promoting a different study means changing it here only.
+// THE FOUNDATION — the one study the section rests on, and the target of the
+// Foundation Bar. Promoting a different study means changing it here only.
 const FOUNDATION_SLUG = 'dark-sayings-of-old';
 const foundationHref = `/blog/${FOUNDATION_SLUG}`;
 
-const studies = (await getCollection('posts', ({ data }) =>
-  data.draft !== true && data.category === 'Parables' && !data.companionOf
-))
-  .filter((post) => post.slug !== FOUNDATION_SLUG)
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-
-// ON VIDEO — only videos with NO study on this page. A study that is here
-// carries its own video on its card now (BlogCard's Watch row), so repeating it
-// in a rail below would be the same link twice. What the rail is for is a video
-// whose study is not on this page at all.
-//
-// Every slug the page shows: the grid, plus the foundation study in the bar.
-const onThisPage = new Set([FOUNDATION_SLUG, ...studies.map((p) => p.slug)]);
+// ON VIDEO — every parable study carrying a `watch` block. The rail used to
+// skip studies already shown as a card in the grid; the grid is gone, so none
+// are skipped. Read-throughs stay out, so a study and its companion never list
+// the same video twice.
 const videos = (await getCollection('posts', ({ data }) =>
   data.draft !== true && data.category === 'Parables' && !data.companionOf && data.watch
 ))
-  .filter((post) => !onThisPage.has(post.slug))
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
-// As of this change that is EMPTY, and the section renders nothing: both parable
-// videos belong to studies in the grid. The rail is kept, not deleted, because
-// the shape is still wanted the day a video outruns its study.
 ---
 
 <BaseLayout
@@ -137,11 +128,10 @@ const videos = (await getCollection('posts', ({ data }) =>
         </span>
       </a>
 
-      <!-- THE TWO COMPANION BARS — the same bar as the Foundation above, wearing
-           the lower-emphasis modifier, and sitting tucked under it as a pair.
-           Neither is a second headline: Dark Sayings keeps the full title size
-           and reads first. The timeline bar used to sit alone below the grid;
-           it is up here now so the two companion pages read together. -->
+      <!-- THE COMPANION BAR — the same bar as the Foundation above, wearing the
+           lower-emphasis modifier, tucked under it. Dark Sayings keeps the full
+           title size and reads first. The timeline bar that sat beside it is
+           gone: the timeline is on this page now. -->
       <a class="fbar fbar-companion" href="/parables/sayings">
         <span class="fbar-eyebrow">The Sayings</span>
         <span class="fbar-row">
@@ -151,26 +141,59 @@ const videos = (await getCollection('posts', ({ data }) =>
         </span>
       </a>
 
-      <a class="fbar fbar-companion" href="/parables/timeline">
-        <span class="fbar-eyebrow">The Whole List</span>
-        <span class="fbar-row">
-          <span class="fbar-title">The Parable Timeline</span>
-          <span class="fbar-deck">All {totalCount}, in the order each gospel tells them, with the studies marked.</span>
-          <span class="fbar-cta">Open the timeline <span class="fbar-arrow" aria-hidden="true">&rarr;</span></span>
-        </span>
-      </a>
+      <section class="studies" id="timeline" aria-label="The parables in order">
+        <div class="studies-head">
+          <h2>The Parables in Order</h2>
+          <p class="studies-count">{totalCount} parables</p>
+        </div>
+        <p class="pt-intro">Numbered once, and the number follows a parable into every gospel that tells it. Choose a gospel to read them in that gospel's order, or search by name or reference.</p>
+        <div class="pt-index" data-pagefind-ignore>
+          <ParableTimeline client:load />
+        </div>
+      </section>
 
-      {studies.length > 0 && (
-        <section class="studies" aria-label="Studies in The Parables">
-          <div class="studies-head">
-            <h2>The Studies</h2>
-            <p class="studies-count">{studies.length} {studies.length === 1 ? 'study' : 'studies'}</p>
-          </div>
-          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {studies.map((post) => <BlogCard post={post} />)}
-          </div>
-        </section>
-      )}
+      <section class="pt-note pt-index">
+        <h2>Why John is not here</h2>
+        <p>
+          The gospel of John records no parables. Matthew, Mark, and Luke use the
+          word parabole about fifty times between them. John never uses it once.
+          What John uses is a different word, paroimia, and only three times — at
+          the shepherd and the door in John 10:6, and again in John 16:25 and
+          16:29. A paroimia is a figure of speech, a saying set beside the plain
+          thing it stands for.
+        </p>
+        <p>
+          The shape of the teaching differs as well. A parable is a story with its
+          own people and its own events, and none of them are the speaker. The
+          meaning is withheld on purpose. John contains no such stories. The vine,
+          the door, the shepherd, the bread, the light — these are single images,
+          and Yahushua names Himself as the image in the same breath He speaks it.
+          Nothing is withheld.
+        </p>
+        <p>
+          Those images belong to the Hebrew Scriptures that produced them. The
+          shepherd of John 10 belongs to Ezekiel 34. The vine of John 15 belongs
+          to Isaiah 5 and Psalm 80. Read there, they are not a claim to be the
+          Father. Ezekiel's one shepherd is the servant set over the flock by
+          Yahuah, and the vine of John 15 has a husbandman standing over it who is
+          plainly another.
+        </p>
+      </section>
+
+      <section class="pt-note pt-index">
+        <h2>Why some familiar passages are not numbered</h2>
+        <p>
+          Six passages commonly counted among the parables are not on this
+          timeline. The lamp under a bushel, the mote and the beam, treasures new
+          and old, the blind leading the blind, the guests who cannot repay, and
+          the tower builder with the king going to war are sayings rather than
+          parables. Each is instruction with an image attached, and each explains
+          itself where it stands. They are not set aside.
+        </p>
+        <p class="pt-notelink">
+          <a href="/parables/sayings">Read the sayings <span class="pt-arrow" aria-hidden="true">&rarr;</span></a>
+        </p>
+      </section>
 
       <!-- ON VIDEO — one row per study carrying a `watch` block. Each row is a
            single anchor out to YouTube; nothing nests inside it. -->
@@ -391,5 +414,297 @@ const videos = (await getCollection('posts', ({ data }) =>
   @media (max-width: 620px) {
     .par { padding: 2.2rem 1.1rem 3.2rem; }
     .hero { margin-bottom: 2.2rem; }
+  }
+</style>
+
+<style is:global>
+  /* COLOUR NOTE: every colour is declared twice — light first, then again under
+     .dark. Site tokens without a dark value would silently win. `is:global` is
+     required because the timeline is a React island; the `pt-` prefix is what
+     keeps these rules from reaching anything else on the site. */
+  /* The index sits in a narrower column than the page wrap, so the rows
+     read as a list and not a table. */
+  .pt-index { max-width: 48rem; margin: 0 auto; }
+  .pt-intro {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic; font-size: 1.05rem; line-height: 1.6;
+    text-align: center; max-width: 40rem; margin: 0 auto 1.8rem;
+    color: #6b5940; text-wrap: pretty;
+  }
+  .dark .pt-intro { color: #c9b489; }
+
+  /* ── GOSPEL TABS ─────────────────────────────────────────────────────────
+     Parchment buttons on the page ground; the chosen gospel fills with the
+     same gold that draws every spine on this page. */
+  .pt-tabs {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .pt-tab {
+    flex: 1;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.6rem 0;
+    border: 1px solid rgba(139, 111, 62, 0.45);
+    background: var(--color-surface);
+    color: #6b5940;
+    cursor: pointer;
+  }
+  .pt-tab:hover { border-color: #8b6f3e; }
+  .dark .pt-tab {
+    background: var(--color-dark-surface);
+    border-color: rgba(186, 117, 23, 0.35);
+    color: #c9b489;
+  }
+  .pt-tab-on,
+  .pt-tab-on:hover {
+    background: #8b6f3e;
+    border-color: #8b6f3e;
+    color: #f5e8c8;
+  }
+  .dark .pt-tab-on,
+  .dark .pt-tab-on:hover {
+    background: #8a6028;
+    border-color: #8a6028;
+    color: #f0e0bf;
+  }
+
+  /* ── SEARCH ──────────────────────────────────────────────────────────────*/
+  .pt-searchrow {
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 0.6rem;
+  }
+  .pt-search {
+    flex: 1;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgba(139, 111, 62, 0.45);
+    background: var(--color-surface);
+    color: #2b2317;
+  }
+  .pt-search::placeholder { color: #9c8560; }
+  .pt-search:focus {
+    outline: none;
+    border-color: #8b6f3e;
+  }
+  .dark .pt-search {
+    background: var(--color-dark-surface);
+    border-color: rgba(186, 117, 23, 0.35);
+    color: #ded0b4;
+  }
+  .dark .pt-search::placeholder { color: #8a7857; }
+  .dark .pt-search:focus { border-color: #ba7517; }
+  .pt-clear {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0 1rem;
+    border: 1px solid rgba(139, 111, 62, 0.45);
+    background: var(--color-surface);
+    color: #8b6914;
+    cursor: pointer;
+  }
+  .pt-clear:hover { border-color: #8b6f3e; }
+  .dark .pt-clear {
+    background: var(--color-dark-surface);
+    border-color: rgba(186, 117, 23, 0.35);
+    color: #ba7517;
+  }
+
+  .pt-count {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 1.75rem;
+    color: #8b6914;
+  }
+  .dark .pt-count { color: #ba7517; }
+  .pt-empty {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: #6b5940;
+  }
+  .dark .pt-empty { color: #c9b489; }
+
+  /* ── THE TIMELINE ────────────────────────────────────────────────────────
+     One rule down the left, a numbered node on it for every parable. An
+     unwritten parable is the bare node; a written one wears the card. */
+  .pt-list {
+    list-style: none;
+    margin: 0;
+    padding: 0 0 0 2.5rem;
+    position: relative;
+  }
+  .pt-list::before {
+    content: "";
+    position: absolute;
+    left: 0.85rem;
+    top: 0.5rem;
+    bottom: 0.5rem;
+    width: 1px;
+    background: #c8a878;
+  }
+  .dark .pt-list::before { background: #5a4526; }
+
+  .pt-node {
+    position: relative;
+    margin-bottom: 1.5rem;
+  }
+  .pt-num {
+    position: absolute;
+    left: -2.5rem;
+    top: 0;
+    width: 1.7rem;
+    height: 1.7rem;
+    line-height: 1.65rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #c8a878;
+    background: var(--color-background);
+    color: #9c8560;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+  }
+  .dark .pt-num {
+    border-color: #5a4526;
+    background: var(--color-dark-surface);
+    color: #8a7857;
+  }
+  .pt-name {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-variant: small-caps;
+    font-size: 1.25rem;
+    line-height: 1.2;
+    color: #6b5940;
+  }
+  .dark .pt-name { color: #c9b489; }
+  .pt-ref {
+    font-family: var(--font-body);
+    font-size: 0.92rem;
+    margin-top: 0.15rem;
+    color: #8a7550;
+  }
+  .dark .pt-ref { color: #a8967a; }
+  .pt-chips {
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+    margin-top: 0.45rem;
+  }
+  .pt-chip {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    padding: 0.2rem 0.4rem;
+    background: #8b6f3e;
+    color: #f5e8c8;
+  }
+  .dark .pt-chip { background: #8a6028; color: #f0e0bf; }
+  .pt-alone {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    margin-left: 0.3rem;
+    color: #9c8560;
+  }
+  .dark .pt-alone { color: #8a7857; }
+
+  /* A written study — the Foundation Bar's language: deeper parchment, a gold
+     spine, and an arrow that moves on hover while nothing else does. */
+  .pt-done .pt-card {
+    display: block;
+    padding: 0.9rem 1.15rem;
+    margin-left: -0.35rem;
+    background: var(--color-surface-elevated);
+    border: 1px solid rgba(139, 111, 62, 0.45);
+    border-left: 3px solid #8b6f3e;
+    text-decoration: none;
+  }
+  .dark .pt-done .pt-card { background: var(--color-dark-surface-elevated); }
+  .pt-done .pt-num {
+    top: 0.75rem;
+    left: -2.15rem;
+    background: #8b6f3e;
+    border-color: #8b6f3e;
+    color: #f5e8c8;
+  }
+  .dark .pt-done .pt-num {
+    background: #8a6028;
+    border-color: #8a6028;
+    color: #f0e0bf;
+  }
+  .pt-done .pt-name {
+    font-size: 1.5rem;
+    color: #2b1d11;
+  }
+  .dark .pt-done .pt-name { color: #f0e0bf; }
+  .pt-done .pt-ref { color: #6b5940; }
+  .dark .pt-done .pt-ref { color: #c9b489; }
+  .pt-link {
+    margin-top: 0.6rem;
+    font-family: 'EB Garamond', Georgia, serif;
+    font-variant: small-caps;
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+    color: #8b6914;
+  }
+  .dark .pt-link { color: #ba7517; }
+  .pt-arrow { display: inline-block; transition: transform 200ms ease; }
+  .pt-done .pt-card:hover .pt-arrow { transform: translateX(4px); }
+  @media (prefers-reduced-motion: reduce) {
+    .pt-arrow { transition: none; }
+  }
+
+  /* ── WHY JOHN IS NOT HERE ────────────────────────────────────────────────*/
+  .pt-note {
+    margin-top: 4rem;
+    padding-top: 2.2rem;
+    border-top: 1px solid #d8cfb8;
+  }
+  .dark .pt-note { border-top-color: #3a2510; }
+  .pt-note h2 {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    font-weight: 700;
+    font-variant: small-caps;
+    letter-spacing: 0.03em;
+    margin: 0 0 1rem;
+    color: #2b1d11;
+  }
+  .dark .pt-note h2 { color: #f0e0bf; }
+  .pt-note p {
+    font-family: var(--font-body);
+    font-size: 1.03rem;
+    line-height: 1.78;
+    margin: 0 0 1.4rem;
+    color: #2b2317;
+    text-wrap: pretty;
+  }
+  .dark .pt-note p { color: #ded0b4; }
+  /* The only rule the sayings note needed: pt-note carried no anchor before. */
+  .pt-notelink {
+    font-family: 'EB Garamond', Georgia, serif;
+    font-variant: small-caps;
+    font-size: 0.95rem;
+    letter-spacing: 0.06em;
+  }
+  .pt-notelink a { color: #8b6914; text-decoration: none; }
+  .dark .pt-notelink a { color: #ba7517; }
+  .pt-notelink a:hover .pt-arrow { transform: translateX(4px); }
+
+  @media (max-width: 620px) {
+    .pt-tab { font-size: 0.7rem; letter-spacing: 0.05em; }
+    .pt-list { padding-left: 2.25rem; }
+    .pt-num { left: -2.25rem; }
+    .pt-done .pt-num { left: -1.9rem; }
+    .pt-done .pt-name { font-size: 1.3rem; }
   }
 </style>

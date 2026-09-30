@@ -1,4 +1,12 @@
-// parables 0929 V6.js
+// parables 0930 V7.js
+// V7: reference audit, now that the timeline is the index on /parables. The
+// Sower's rows take the range its study argues: Mark 4:3-20 -> 4:1-20 and
+// Luke 8:5-15 -> 8:4-15 (the study reads "Mark 4:1-20, with Luke 8:4-15").
+// Sort keys move with them; neither move changes the order. Every row already
+// used one convention - full book name, hyphen, no spaces - and it stands.
+// Id 24, the ten virgins, is LEFT at Matthew 25:1-13: its study reads the
+// parable inside Matthew 24:1-25:13, and a row citing 24:1 would read as coming
+// before rows 22 and 23 (24:32, 24:45) in the Matthew order.
 // V6: id 5, the sower, goes live — Ground That Keeps It. The node turns solid
 // and the counter climbs to 5 of 42 on its own.
 // V5: id 5, the sower, takes the Matthew reference the master list actually
@@ -86,9 +94,9 @@ export const parables = [
     id: 5,
     name: "The Sower",
     refs: [
-      { gospel: "Mark", ref: "Mark 4:3-20", ch: 4, v: 3 },
+      { gospel: "Mark", ref: "Mark 4:1-20", ch: 4, v: 1 },
       { gospel: "Matthew", ref: "Matthew 13:3-9, 18-23", ch: 13, v: 3 },
-      { gospel: "Luke", ref: "Luke 8:5-15", ch: 8, v: 5 }
+      { gospel: "Luke", ref: "Luke 8:4-15", ch: 8, v: 4 }
     ],
     // Ground That Keeps It - live.
     study: "/blog/ground-that-keeps-it"

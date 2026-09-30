@@ -1,4 +1,10 @@
-// src/components/ParableTimeline.jsx · 0906 V3
+// src/components/ParableTimeline.jsx · 0930 V4
+// V4: an ALL tab, and it is the default. The timeline is now the index on
+// /parables, and the island renders on the server with its opening state -
+// which was the Mark tab, so every Matthew-only and Luke-only parable was
+// missing from the HTML until a reader clicked. All forty-two now ship in the
+// page, in master order, each row carrying every gospel's reference. The three
+// gospel tabs are unchanged and still show that gospel's order.
 // V3: a search result now shows the reference the reader matched. Searching a
 // Luke reference and being answered with the Mark telling read as a wrong hit.
 // V2: the arrow on a written study's card is its own span so the page can move
@@ -11,6 +17,10 @@
 
 import { useState, useMemo } from "react";
 import { parables, GOSPELS, GOSPEL_ABBR, inGospel } from "../data/parables.js";
+
+const ALL = "All";
+const TABS = [ALL, ...GOSPELS];
+const byId = [...parables].sort((a, b) => a.id - b.id);
 
 function Chips({ item }) {
   return (
@@ -32,16 +42,21 @@ function Chips({ item }) {
 // actually matched - searching "Luke 20" must not answer with "Mark 12:1-12".
 // A name match falls back to the first reference, which is the earliest telling.
 function Node({ item, gospel, term }) {
-  const ref = gospel
-    ? item.refs.find((r) => r.gospel === gospel)
-    : (term && item.refs.find((r) => r.ref.toLowerCase().includes(term))) ||
-      item.refs[0];
+  // ALL (no gospel, no search): every telling, in the order the refs are kept.
+  const refText =
+    gospel === ALL && !term
+      ? item.refs.map((r) => r.ref).join(" \u00b7 ")
+      : (gospel && gospel !== ALL
+          ? item.refs.find((r) => r.gospel === gospel)
+          : (term && item.refs.find((r) => r.ref.toLowerCase().includes(term))) ||
+            item.refs[0]
+        ).ref;
   const done = Boolean(item.study);
 
   const inner = (
     <>
       <div className="pt-name">{item.name}</div>
-      <div className="pt-ref">{ref.ref}</div>
+      <div className="pt-ref">{refText}</div>
       <Chips item={item} />
       {done && (
         <div className="pt-link">
@@ -71,7 +86,7 @@ function Node({ item, gospel, term }) {
 }
 
 export default function ParableTimeline() {
-  const [gospel, setGospel] = useState("Mark");
+  const [gospel, setGospel] = useState(ALL);
   const [q, setQ] = useState("");
 
   const term = q.trim().toLowerCase();
@@ -86,12 +101,12 @@ export default function ParableTimeline() {
   }, [term]);
 
   const written = parables.filter((p) => p.study).length;
-  const list = term ? results : inGospel(gospel);
+  const list = term ? results : gospel === ALL ? byId : inGospel(gospel);
 
   return (
     <div className="pt-wrap">
       <div className="pt-tabs" role="tablist" aria-label="Choose a gospel">
-        {GOSPELS.map((g) => (
+        {TABS.map((g) => (
           <button
             key={g}
             role="tab"
