@@ -1,4 +1,6 @@
-// parables 0930 V8.js
+// parables 0930 V9.js
+// V9: id 7, the mustard seed, goes live - The Stone That Was Sown. Its Mark
+// row already reads Mark 4:30-32, the range the study argues.
 // V8: id 6, the seed growing secretly, goes live - The Seed Growing Secretly.
 // Its row already reads Mark 4:26-29, the range the study argues.
 // V7: reference audit, now that the timeline is the index on /parables. The
@@ -120,7 +122,8 @@ export const parables = [
       { gospel: "Matthew", ref: "Matthew 13:31-32", ch: 13, v: 31 },
       { gospel: "Luke", ref: "Luke 13:18-19", ch: 13, v: 18 }
     ],
-    study: null
+    // The Stone That Was Sown - live.
+    study: "/blog/the-stone-that-was-sown"
   },
   {
     id: 8,
