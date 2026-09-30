@@ -1,4 +1,7 @@
-// parables 0930 V9.js
+// parables 0930 V10.js
+// V10: id 3, new wine in old bottles, goes live - New Wine, Old Bottles. The
+// study reads the whole Luke 5:33-39 scene, but its parable is 5:37-39, which is
+// what the Luke row already carries; rows 1 and 2 hold 5:33-36. Left as is.
 // V9: id 7, the mustard seed, goes live - The Stone That Was Sown. Its Mark
 // row already reads Mark 4:30-32, the range the study argues.
 // V8: id 6, the seed growing secretly, goes live - The Seed Growing Secretly.
@@ -82,7 +85,8 @@ export const parables = [
       { gospel: "Matthew", ref: "Matthew 9:17", ch: 9, v: 17 },
       { gospel: "Luke", ref: "Luke 5:37-39", ch: 5, v: 37 }
     ],
-    study: null
+    // New Wine, Old Bottles - live.
+    study: "/blog/new-wine-old-bottles"
   },
   {
     id: 4,

@@ -1,4 +1,7 @@
-// blog-groups 0930 V17.js
+// blog-groups 0930 V18.js
+// V18: New Wine, Old Bottles joins THE PARABLES (8 → 9) — the batch filed it
+// under Buried in Plain Sight and Dutch settled it as Parables. Its read-through
+// stays out — it carries companionOf. Map total 107 → 108.
 // V17: The Stone That Was Sown joins THE PARABLES (7 → 8). Its read-through
 // stays out — it carries companionOf. Map total 106 → 107.
 // V16: The Seed Growing Secretly joins THE PARABLES (6 → 7). Its read-through
@@ -106,7 +109,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 107 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 108 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (15) ──
   'worship-and-service': 'the-counterfeit-throne',
@@ -201,7 +204,7 @@ export const POST_GROUP = {
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',
 
-  // ── The Parables (8) — the parables in the text ──
+  // ── The Parables (9) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
   // Foundation Bar on /parables and is pulled from that grid there; the blog is
   // a different surface — the chronological feed — so it carries a card here.
@@ -215,6 +218,7 @@ export const POST_GROUP = {
   'ground-that-keeps-it': 'the-parables',
   'the-seed-growing-secretly': 'the-parables',
   'the-stone-that-was-sown': 'the-parables',
+  'new-wine-old-bottles': 'the-parables',
 
   // ── The Side Door (2) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
