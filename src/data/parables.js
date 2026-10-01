@@ -1,4 +1,7 @@
-// parables 0930 V10.js
+// parables 1001 V11.js
+// V11: id 4, the strong man bound, goes live - The Strong Man Bound. The study
+// reads Mark 3:20-30 with Matthew 12:22-30 and Luke 11:14-22; the row keeps the
+// parable's own verses (Mark 3:27), as V10 left New Wine's row on its parable.
 // V10: id 3, new wine in old bottles, goes live - New Wine, Old Bottles. The
 // study reads the whole Luke 5:33-39 scene, but its parable is 5:37-39, which is
 // what the Luke row already carries; rows 1 and 2 hold 5:33-36. Left as is.
@@ -96,7 +99,8 @@ export const parables = [
       { gospel: "Matthew", ref: "Matthew 12:29", ch: 12, v: 29 },
       { gospel: "Luke", ref: "Luke 11:21-22", ch: 11, v: 21 }
     ],
-    study: null
+    // The Strong Man Bound - live.
+    study: "/blog/the-strong-man-bound"
   },
   {
     id: 5,

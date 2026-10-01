@@ -1,4 +1,6 @@
-// blog-groups 1001 V19.js
+// blog-groups 1001 V20.js
+// V20: The Strong Man Bound joins THE PARABLES (9 → 10). Its read-through stays
+// out — it carries companionOf. Map total 110 → 111.
 // V19: The Same Word, a Different Master joins THE LAW & THE FEASTS (15 → 16);
 // Hearts and Reins joins SCRIPTURE UNFILTERED (27 → 28). Map total 108 → 110.
 // V18: New Wine, Old Bottles joins THE PARABLES (8 → 9) — the batch filed it
@@ -207,7 +209,7 @@ export const POST_GROUP = {
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',
 
-  // ── The Parables (9) — the parables in the text ──
+  // ── The Parables (10) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
   // Foundation Bar on /parables and is pulled from that grid there; the blog is
   // a different surface — the chronological feed — so it carries a card here.
@@ -222,6 +224,7 @@ export const POST_GROUP = {
   'the-seed-growing-secretly': 'the-parables',
   'the-stone-that-was-sown': 'the-parables',
   'new-wine-old-bottles': 'the-parables',
+  'the-strong-man-bound': 'the-parables',
 
   // ── The Side Door (2) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
