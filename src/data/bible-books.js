@@ -1,5 +1,6 @@
-// bible-books 1002 V2.js
+// bible-books 1002 V3.js
 // canonical book order for the Pe'ah index and book drop-down
+// V3: no list change — the Pe'ah index now shows one book at a time from this order.
 // The 66 books, Genesis through Revelation, spelled as a Pe'ah `reference`
 // spells them ("Psalm", "1 John"). The /peah sort and its Book drop-down both
 // read this list; src/lib/peah.js fails the build on a book not in it.

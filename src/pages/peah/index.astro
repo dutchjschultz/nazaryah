@@ -1,5 +1,14 @@
 ---
-// src/pages/peah/index.astro · 1002 V3
+// src/pages/peah/index.astro · 1002 V4
+// V4: ONE BOOK AT A TIME. The page never lists every entry: it opens on the
+// earliest book in canonical order that holds an entry (Genesis once one
+// exists), and shows only that book's entries until another is picked. The
+// drop-down has no "All books". Chips narrow the chosen book only; a chip with
+// nothing in that book is greyed out (disabled), never hidden, so the row holds
+// still between books. A bare /peah opens the default book; ?book=&subject=
+// still makes a view shareable. All books stay in the HTML (search engines);
+// non-default books carry `hidden` until picked, and a no-script reader sees
+// them all.
 // V3: the index is in Bible order. Entries sit under a heading per book,
 // Genesis to Revelation (src/data/bible-books.js), then by chapter and verse,
 // read from `reference` alone (src/lib/peah.js — an unknown book or an
@@ -58,7 +67,6 @@ const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, sl
       <label class="peah-book-pick">
         <span class="peah-book-label">Book</span>
         <select id="peah-book">
-          <option value="">All books</option>
           {books.map((b) => <option value={b.slug}>{b.name}</option>)}
         </select>
       </label>
@@ -73,8 +81,8 @@ const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, sl
     </div>
 
     <div id="peah-list">
-      {books.map((b) => (
-        <section class="peah-bookgroup" data-book={b.slug}>
+      {books.map((b, i) => (
+        <section class="peah-bookgroup" data-book={b.slug} hidden={i > 0}>
           <h2 class="peah-book-name">{b.name}</h2>
           <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {b.items.map((e) => (
@@ -87,6 +95,7 @@ const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, sl
       ))}
     </div>
     <p class="peah-empty" id="peah-empty" hidden>No entry yet on that passage.</p>
+    <noscript><style>.peah-bookgroup[hidden]{display:block !important}</style></noscript>
   </div>
 </BaseLayout>
 
@@ -103,7 +112,7 @@ const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, sl
 
   .peah-wrap { padding: 2.25rem 1.5rem 3rem; max-width: 84rem; margin: 0 auto; }
 
-  .peah-controls { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; justify-content: center; margin-bottom: 2.2rem; }
+  .peah-controls { display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-bottom: 2.2rem; }
   .peah-book-pick { display: inline-flex; align-items: center; gap: 0.6rem; }
   .peah-book-label { font-family: 'Cinzel', Georgia, serif; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: #6b3010; }
   #peah-book {
@@ -123,6 +132,8 @@ const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, sl
   }
   .peah-chip:hover { border-color: #a07850; }
   .peah-chip.is-on { background: #4a2808; color: #f5e8d0; border-color: #4a2808; }
+  .peah-chip:disabled { opacity: 0.38; cursor: default; }
+  .peah-chip:disabled:hover { border-color: #c4a97d; }
   :global(.dark) .peah-chip { border-color: #3a2510; background: #130e06; color: #c4a46b; }
   :global(.dark) .peah-chip:hover { border-color: #ba7517; }
   :global(.dark) .peah-chip.is-on { background: #ba7517; color: #140d04; border-color: #ba7517; }
@@ -141,42 +152,51 @@ const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, sl
 </style>
 
 <script>
-  // Book drop-down + subject chip, applied together and kept in the address
-  // (?book=<slug>&subject=<slug>) so a filtered view can be shared. An unknown
-  // value in the address is ignored. Book headings with nothing showing hide.
+  // One book at a time. The book is the drop-down's value (default: its first
+  // option, the earliest book holding an entry); the subject chip narrows that
+  // book only. Chips with nothing in the chosen book are disabled (greyed). The
+  // choice is kept in the address (?book=<slug>&subject=<slug>); an unknown value
+  // is ignored. A subject the newly chosen book does not hold falls back to All.
   const select = document.getElementById('peah-book') as HTMLSelectElement | null;
   const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.peah-chip'));
   const groups = Array.from(document.querySelectorAll<HTMLElement>('.peah-bookgroup'));
   const empty = document.getElementById('peah-empty');
 
-  const bookOk = (v: string) => !!select && Array.from(select.options).some((o) => o.value === v);
-  const subjectOk = (v: string) => chips.some((c) => (c.dataset.chip || '') === v);
+  const bookOk = (v: string) => groups.some((g) => g.dataset.book === v);
+  const subjectsIn = (bk: string) => {
+    const g = groups.find((x) => x.dataset.book === bk);
+    return new Set(Array.from(g ? g.querySelectorAll<HTMLElement>('.peah-cell') : []).map((c) => c.dataset.subject || ''));
+  };
 
-  let book = '';
+  let book = groups[0]?.dataset.book || '';
   let subject = '';
 
   function apply(updateUrl: boolean) {
     if (select) select.value = book;
-    chips.forEach((c) => c.classList.toggle('is-on', (c.dataset.chip || '') === subject));
+    const has = subjectsIn(book);
+    if (subject && !has.has(subject)) subject = '';
+    chips.forEach((c) => {
+      const v = c.dataset.chip || '';
+      c.disabled = !!v && !has.has(v);
+      c.classList.toggle('is-on', v === subject);
+    });
     let shown = 0;
     groups.forEach((g) => {
-      const bookMatch = !book || g.dataset.book === book;
-      let inGroup = 0;
+      const mine = g.dataset.book === book;
+      g.hidden = !mine;
+      if (!mine) return;
       g.querySelectorAll<HTMLElement>('.peah-cell').forEach((cell) => {
-        const on = bookMatch && (!subject || cell.dataset.subject === subject);
+        const on = !subject || cell.dataset.subject === subject;
         cell.style.display = on ? '' : 'none';
-        if (on) inGroup++;
+        if (on) shown++;
       });
-      g.style.display = inGroup ? '' : 'none';
-      shown += inGroup;
     });
     if (empty) empty.hidden = shown > 0;
     if (updateUrl) {
       const q = new URLSearchParams();
-      if (book) q.set('book', book);
+      q.set('book', book);
       if (subject) q.set('subject', subject);
-      const qs = q.toString();
-      history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
+      history.replaceState(null, '', `${location.pathname}?${q.toString()}${location.hash}`);
     }
   }
 
@@ -184,11 +204,11 @@ const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, sl
   const b = (params.get('book') || '').toLowerCase();
   const s = (params.get('subject') || '').toLowerCase();
   if (bookOk(b)) book = b;
-  if (subjectOk(s)) subject = s;
+  if (chips.some((c) => (c.dataset.chip || '') === s)) subject = s;
   apply(false);
 
   select?.addEventListener('change', () => { book = select.value; apply(true); });
   chips.forEach((chip) => {
-    chip.addEventListener('click', () => { subject = chip.dataset.chip || ''; apply(true); });
+    chip.addEventListener('click', () => { if (!chip.disabled) { subject = chip.dataset.chip || ''; apply(true); } });
   });
 </script>
