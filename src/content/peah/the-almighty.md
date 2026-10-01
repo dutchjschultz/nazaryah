@@ -2,7 +2,7 @@
 title: "The Almighty"
 reference: "Revelation 21:22"
 deck: "Ten times in the New Testament, and every time it is the Father."
-group: ""
+group: "One God"
 keyVerse: "…for the Lord God Almighty and the Lamb are the temple of it."
 keyVerseRef: "Revelation 21:22"
 verses: "2 Corinthians 6:17–18 · Isaiah 52:11 · 2 Samuel 7:8, 14 · Revelation 1:1, 4–5, 8 · 4:8 · 11:15–17 · 15:3 · 16:7 · 16:14 · 19:1–6 · 19:13–15 · 21:22 · 1 Corinthians 15:27–28"

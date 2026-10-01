@@ -2,7 +2,7 @@
 title: "Wool and Linen Together"
 reference: "Deuteronomy 22:11"
 deck: "Why Yahuah kept wool off the priest in the inner court."
-group: ""
+group: "Law"
 keyVerse: "Thou shalt not wear a garment of divers sorts, as of woollen and linen together."
 keyVerseRef: "Deuteronomy 22:11"
 verses: "Deuteronomy 22:9–11 · Leviticus 19:19 · 2 Corinthians 6:14 · Ezekiel 44:17–18 · Genesis 3:19 · Revelation 19:8 · Isaiah 61:10 · 1 Peter 2:9"

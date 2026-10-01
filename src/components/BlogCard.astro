@@ -4,17 +4,22 @@
 // 0929: also renders a Pe'ah entry (collection 'peah') — links to /peah/<slug>,
 // its category line is the entry's `group`, and its reference line carries a
 // small PE'AH tag so a reader knows it is a short read. Study cards unchanged.
+// 1002: a Pe'ah card's title is `reference — title`, and its reference line
+// (with the PE'AH tag) is gone — the verse sits in the title now.
 // 1002: One God, One Name, One Throne joins the bookshelf map, so all four
 // books' chapter cards carry the badge and the book-name label alike.
 import { masterTitleBySlug } from '../data/books.js';
 import { postHref } from '../lib/post-href.js';
 import { cardLabelOf } from '../data/collections.js';
+import { peahTitle } from '../lib/peah.js';
 const { post } = Astro.props;
 
 // Chapters of the multi-part books display the master chapter title from the
 // book's Contents (the single source of truth), not the blog's own title.
 // Non-chapter posts are unaffected.
-const displayTitle = masterTitleBySlug[post.slug] ?? post.data.title;
+const isPeah = post.collection === 'peah';
+// A Pe'ah entry shows its composed title, `reference — title` (src/lib/peah.js).
+const displayTitle = isPeah ? peahTitle(post.data) : (masterTitleBySlug[post.slug] ?? post.data.title);
 
 // Book-chapter categories still get the "From the Bookshelf" treatment — the
 // card shows the post's underlying category; the rail groups them thematically.
@@ -24,7 +29,6 @@ const bookCategories = {
   'What the Pulpit Buried': { href: '/books/pulpit-buried' },
   'One God, One Name, One Throne': { href: '/books/one-god-one-name-one-throne' },
 };
-const isPeah = post.collection === 'peah';
 const href = isPeah ? `/peah/${post.slug}` : postHref(post);
 // The gold label: a study in a collection shows its collection's label (an
 // investigation study shows its case's shortTitle); everything else shows its
@@ -36,7 +40,8 @@ const blurb = isPeah ? post.data.deck : (post.data.subtitle || post.data.deck ||
 // Reference line: the passage, plus the parable's common name when the study
 // carries one — MATTHEW 24:1-25:13 · THE TEN VIRGINS. The name identifies the
 // parable; the card's title stays the study's own.
-const verseLine = isPeah ? post.data.reference : [post.data.verse, post.data.commonName].filter(Boolean).join(' · ');
+// A Pe'ah card has no reference line: the verse leads its title instead.
+const verseLine = isPeah ? null : [post.data.verse, post.data.commonName].filter(Boolean).join(' · ');
 
 // The study's video, if it has one — the same `watch` block that draws the watch
 // card on the study page. No block, no second action row.
@@ -50,7 +55,7 @@ const watch = post.data.watch;
   <div class="p-6 flex flex-col flex-1">
     {book && <a href={book.href} class="bookshelf-badge">&#9672; From the Bookshelf</a>}
     {cat && <div class:list={["tag mb-3", { "tag-book": book }]} style="color: var(--bronze);">{cat}</div>}
-    {verseLine && <div class="post-verse">{verseLine}{isPeah && <span class="peah-tag">Pe'ah</span>}</div>}
+    {verseLine && <div class="post-verse">{verseLine}</div>}
     <h3 class="post-title text-sm font-semibold mb-3 leading-snug" style="font-family: var(--font-display);">
       <a href={href} style="color: var(--deep-earth);">{displayTitle}</a>
     </h3>
@@ -94,13 +99,6 @@ const watch = post.data.watch;
     color: #9a6b1f; margin: -2px 0 8px; padding-bottom: 7px; border-bottom: 1px solid var(--sand-dark);
   }
   .post-subtitle { font-style: italic; color: var(--ink-faded); }
-  /* Pe'ah marker beside the reference — a short read, not a full study. */
-  .peah-tag {
-    display: inline-block; margin-left: 8px; padding: 1px 6px; vertical-align: 1px;
-    font-size: 8px; letter-spacing: 1.6px; color: #7a5a1c;
-    border: 1px solid #c4a46b; border-radius: 2px;
-  }
-  :global(.dark) .peah-tag { color: #c4a46b; border-color: #6a4820; }
 
   /* ── Card foot ────────────────────────────────────────────────────────────
      margin-top:auto pins the action block to the bottom of the card, and the

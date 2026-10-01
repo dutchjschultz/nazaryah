@@ -2,7 +2,7 @@
 title: "A Day for a Year"
 reference: "Numbers 14:34"
 deck: "Where the day-for-a-year rule is written in Scripture."
-group: ""
+group: "Prophecy"
 keyVerse: "…each day for a year, shall ye bear your iniquities, even forty years."
 keyVerseRef: "Numbers 14:34"
 verses: "Numbers 14:34 · Ezekiel 4:5–6 · Genesis 29:20–28 · Leviticus 25:8 · Exodus 13:10 · 1 Samuel 1:3 · Leviticus 25:29 · Judges 17:10 · 1 Samuel 27:7 · Psalm 90:4 · 2 Peter 3:8"

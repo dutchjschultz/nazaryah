@@ -1,4 +1,7 @@
-// content config 0929 V17
+// content config 1002 V18
+// V18: Pe'ah `group` is now the entry's SUBJECT, restricted to PEAH_SUBJECTS
+// (Law | One God | Calendar and Feasts | Prophecy | Scripture) instead of the
+// Studies taxonomy names. `reference` now leads the displayed title.
 // V17: peah gains optional `cardDeck` — the social card's line when `deck` clips.
 // V16: new `peah` collection — Pe'ah, The Corner of the Field: short reads
 // served at /peah/<slug>, same 'content' loader as posts. `group` must be one
@@ -76,7 +79,7 @@
 // so open-letter full-text files validate alongside weekly-letter ones.
 import { defineCollection, z } from 'astro:content';
 import { parseRef } from '../lib/scripture/parse-ref.js';
-import { BLOG_GROUPS } from '../data/blog-groups.js';
+import { PEAH_SUBJECTS } from '../lib/peah.js';
 
 // Scripture index citation (see src/pages/scripture.astro). Tier is a property
 // of the CITATION, not the verse: the same passage can be a plain statement in
@@ -291,19 +294,30 @@ const watchmansDeskCollection = defineCollection({
 
 // PE'AH — short reads from the corner of the field (/peah). Plain literal title,
 // one key verse, body paragraphs only, and the verses it touches listed at foot.
-const PEAH_GROUPS = BLOG_GROUPS.map((g) => g.name);
+//
+// PE'AH SUBJECTS — the `group` field is the entry's subject tag:
+//   Law
+//   One God
+//   Calendar and Feasts
+//   Prophecy
+//   Scripture
+// One value per entry. Reuse character for character. Chips are generated from
+// the data — never hand-maintain a chip list. A value outside this list fails
+// the build (a typo would otherwise mint a duplicate chip). Blank is allowed.
+// The /peah chips follow this order. The list itself is PEAH_SUBJECTS in
+// src/lib/peah.js (imported above), so the schema and the chips read one copy.
 const peahCollection = defineCollection({
   type: 'content',
   schema: z.object({
     title: z.string(),
-    reference: z.string(),                 // small caps on the card
+    reference: z.string(),                 // "Book chapter:verse" — leads the displayed title; sorts /peah
     deck: z.string(),
     // Optional shorter line for the SOCIAL CARD only, when `deck` is too long to
     // fit under a two-line title. The page and the /peah card keep `deck`.
     cardDeck: z.string().optional(),
     group: z.string().default('').refine(
-      (v) => v === '' || PEAH_GROUPS.includes(v),
-      { message: `group must be blank or one of: ${PEAH_GROUPS.join(' | ')}` }
+      (v) => v === '' || PEAH_SUBJECTS.includes(v),
+      { message: `group must be blank or one of: ${PEAH_SUBJECTS.join(' | ')}` }
     ),
     keyVerse: z.string(),
     keyVerseRef: z.string(),

@@ -2,7 +2,7 @@
 title: "Adding to His Word or Taking Away"
 reference: "Deuteronomy 4:2"
 deck: "Five witnesses, from the Law to the last chapter of Revelation, against adding to Yahuah's word or taking from it."
-group: ""
+group: "Scripture"
 keyVerse: "Ye shall not add unto the word which I command you, neither shall ye diminish ought from it, that ye may keep the commandments of Yahuah your God which I command you."
 keyVerseRef: "Deuteronomy 4:2"
 verses: "Deuteronomy 4:2 · Deuteronomy 12:30–32 · Proverbs 30:5–6 · Judges 21:25 · Matthew 5:18 · 2 Peter 1:20 · Revelation 22:14 · Revelation 22:18–19 · Genesis 3:22"

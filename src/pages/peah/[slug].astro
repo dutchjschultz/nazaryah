@@ -1,5 +1,7 @@
 ---
-// src/pages/peah/[slug].astro · 0929 V1
+// src/pages/peah/[slug].astro · 1002 V2
+// V2: the heading, the <title> and og:/twitter:title carry the composed title
+// `reference — title` (peahTitle in src/lib/peah.js); the file's title stays plain.
 // One Pe'ah entry — a lighter page than a study. In order: the small-caps
 // section label, the plain title over a thin rule, the key verse (italic, thin
 // gold bar on its left, reference after it in smaller type), the body
@@ -10,6 +12,7 @@
 // text is set in the body serif, never Cinzel (capitals only, no italic).
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
+import { peahTitle, parsePeahRef } from '../../lib/peah.js';
 
 export async function getStaticPaths() {
   const entries = await getCollection('peah', ({ data }) => data.draft !== true);
@@ -19,12 +22,14 @@ export async function getStaticPaths() {
 const { entry } = Astro.props;
 const { Content } = await entry.render();
 const d = entry.data;
+parsePeahRef(entry); // fails the build on a reference that will not parse
+const shown = peahTitle(d);
 ---
 
-<BaseLayout title={`${d.title} — Pe'ah | Nazaryah`} description={d.deck}>
+<BaseLayout title={`${shown} — Pe'ah | Nazaryah`} description={d.deck} ogTitle={shown}>
   <article class="peah-entry">
     <p class="pe-label">Pe'ah — The Corner of the Field</p>
-    <h1 class="pe-title">{d.title}</h1>
+    <h1 class="pe-title">{shown}</h1>
     {/* The short CARD deck, read by the social-card generator; not shown.
         `cardDeck` when the entry sets one (a deck too long for the card). */}
     <p class="pe-card-deck">{d.cardDeck ?? d.deck}</p>

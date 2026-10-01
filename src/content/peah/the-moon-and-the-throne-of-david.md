@@ -2,7 +2,7 @@
 title: "The Moon and the Throne of David"
 reference: "Psalm 89:37"
 deck: "Why Yahuah named the moon as the witness to the throne of David's seed."
-group: ""
+group: "Calendar and Feasts"
 keyVerse: "It shall be established for ever as the moon, and as a faithful witness in heaven. Selah."
 keyVerseRef: "Psalm 89:37"
 verses: "Psalm 89:35–37 · Acts 2:30 · Psalm 104:19 · Psalm 78:37 · Jeremiah 33:20–21 · Psalm 8:3 · Deuteronomy 4:19"

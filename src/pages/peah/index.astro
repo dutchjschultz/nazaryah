@@ -1,30 +1,41 @@
 ---
-// src/pages/peah/index.astro · 0929 V2
-// V2: Pe'ah entries carry no topic group now, so the chip row does not render
-// (it only appears when at least one entry has a group). Pe'ah is not a Studies
-// card or collection; the Studies dropdown is its only entry point, and it stays
-// out of /blog/all and the association clusters (separate collection, never read
-// by inFeed or study-pool.js).
-// Pe'ah — The Corner of the Field. The short-reads index, mirroring the Studies
-// archive (/blog/all): the same parchment header, the same five-column grid and
-// the same BlogCard, which knows a Pe'ah entry (links /peah/<slug>, shows the
-// reference with a PE'AH tag). Reached from the Studies dropdown in the nav.
-//
-// The group filter chips are GENERATED from the entries' `group` values — a
-// chip exists only for a group that has at least one entry, and the names are
-// the Studies taxonomy strings themselves (the schema enforces that). Never
-// hand-maintain this list.
+// src/pages/peah/index.astro · 1002 V3
+// V3: the index is in Bible order. Entries sit under a heading per book,
+// Genesis to Revelation (src/data/bible-books.js), then by chapter and verse,
+// read from `reference` alone (src/lib/peah.js — an unknown book or an
+// unparseable reference fails the build and names the file). A Book drop-down
+// (only books holding an entry, canonical order) and the subject chips (from the
+// entries' `group` values, in PEAH_SUBJECTS order) filter together, and the
+// choice is kept in the address: /peah?book=romans&subject=law. With no script,
+// everything shows. Cards carry the composed title `reference — title`.
+// V2: Pe'ah entries carry no topic group now, so the chip row does not render.
+// Pe'ah is not a Studies card or collection; the Studies dropdown is its only
+// entry point, and it stays out of /blog/all and the association clusters
+// (separate collection, never read by inFeed or study-pool.js).
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
-import { BLOG_GROUPS } from '../../data/blog-groups.js';
+import { parsePeahRef, PEAH_SUBJECTS, slugify } from '../../lib/peah.js';
 
 const entries = (await getCollection('peah', ({ data }) => data.draft !== true))
-  .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+  .map((e) => ({ e, ref: parsePeahRef(e) }))
+  .sort((a, b) =>
+    a.ref.bookIndex - b.ref.bookIndex ||
+    a.ref.chapter - b.ref.chapter ||
+    a.ref.verse - b.ref.verse ||
+    a.e.data.title.localeCompare(b.e.data.title));
 
-// Chips in taxonomy order, only for groups in use.
-const used = new Set(entries.map((e) => e.data.group).filter(Boolean));
-const chips = BLOG_GROUPS.map((g) => g.name).filter((n) => used.has(n));
+// One section per book that holds at least one entry, in canonical order.
+const books = [];
+for (const x of entries) {
+  const last = books[books.length - 1];
+  if (last && last.slug === x.ref.bookSlug) last.items.push(x.e);
+  else books.push({ slug: x.ref.bookSlug, name: x.ref.heading, items: [x.e] });
+}
+
+// Chips: subjects in use, in PEAH_SUBJECTS order. Never hand-maintained.
+const used = new Set(entries.map((x) => x.e.data.group).filter(Boolean));
+const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, slug: slugify(s) }));
 ---
 
 <BaseLayout
@@ -43,17 +54,39 @@ const chips = BLOG_GROUPS.map((g) => g.name).filter((n) => used.has(n));
   </section>
 
   <div class="peah-wrap">
-    {chips.length > 0 && (
-      <div class="peah-chips" role="group" aria-label="Filter by group">
-        <button type="button" class="peah-chip is-on" data-chip="">All</button>
-        {chips.map((c) => (
-          <button type="button" class="peah-chip" data-chip={c}>{c}</button>
-        ))}
-      </div>
-    )}
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5" id="peah-grid">
-      {entries.map((e) => <BlogCard post={e} />)}
+    <div class="peah-controls">
+      <label class="peah-book-pick">
+        <span class="peah-book-label">Book</span>
+        <select id="peah-book">
+          <option value="">All books</option>
+          {books.map((b) => <option value={b.slug}>{b.name}</option>)}
+        </select>
+      </label>
+      {chips.length > 0 && (
+        <div class="peah-chips" role="group" aria-label="Filter by subject">
+          <button type="button" class="peah-chip is-on" data-chip="">All</button>
+          {chips.map((c) => (
+            <button type="button" class="peah-chip" data-chip={c.slug}>{c.name}</button>
+          ))}
+        </div>
+      )}
     </div>
+
+    <div id="peah-list">
+      {books.map((b) => (
+        <section class="peah-bookgroup" data-book={b.slug}>
+          <h2 class="peah-book-name">{b.name}</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+            {b.items.map((e) => (
+              <div class="peah-cell" data-subject={e.data.group ? slugify(e.data.group) : ''}>
+                <BlogCard post={e} />
+              </div>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+    <p class="peah-empty" id="peah-empty" hidden>No entry yet on that passage.</p>
   </div>
 </BaseLayout>
 
@@ -70,7 +103,18 @@ const chips = BLOG_GROUPS.map((g) => g.name).filter((n) => used.has(n));
 
   .peah-wrap { padding: 2.25rem 1.5rem 3rem; max-width: 84rem; margin: 0 auto; }
 
-  .peah-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; margin-bottom: 1.8rem; }
+  .peah-controls { display: flex; flex-wrap: wrap; gap: 1rem 1.5rem; align-items: center; justify-content: center; margin-bottom: 2.2rem; }
+  .peah-book-pick { display: inline-flex; align-items: center; gap: 0.6rem; }
+  .peah-book-label { font-family: 'Cinzel', Georgia, serif; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: #6b3010; }
+  #peah-book {
+    font-family: var(--font-family-serif); font-size: 1rem; color: #2b1d11;
+    padding: 0.35rem 2rem 0.35rem 0.75rem; border: 1px solid #c4a97d; border-radius: 4px; background-color: #fbf5e6;
+    max-width: 100%;
+  }
+  :global(.dark) .peah-book-label { color: #c4a46b; }
+  :global(.dark) #peah-book { background-color: #130e06; color: #e8d9b8; border-color: #3a2510; }
+
+  .peah-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
   .peah-chip {
     font-family: 'Cinzel', Georgia, serif; font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
     padding: 0.4rem 0.85rem; border-radius: 999px; cursor: pointer;
@@ -82,19 +126,69 @@ const chips = BLOG_GROUPS.map((g) => g.name).filter((n) => used.has(n));
   :global(.dark) .peah-chip { border-color: #3a2510; background: #130e06; color: #c4a46b; }
   :global(.dark) .peah-chip:hover { border-color: #ba7517; }
   :global(.dark) .peah-chip.is-on { background: #ba7517; color: #140d04; border-color: #ba7517; }
+
+  .peah-bookgroup + .peah-bookgroup { margin-top: 2.5rem; }
+  .peah-book-name {
+    font-family: 'Cinzel', Georgia, serif; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #4a2808; margin: 0 0 1rem; padding-bottom: 0.45rem; border-bottom: 1px solid #c4a97d;
+  }
+  :global(.dark) .peah-book-name { color: #e8c98a; border-bottom-color: #3a2510; }
+  .peah-cell { display: flex; }
+  .peah-cell > :global(*) { flex: 1; }
+
+  .peah-empty { text-align: center; font-family: var(--font-family-serif); font-style: italic; font-size: 1.1rem; color: #6b5a45; margin: 2rem 0; }
+  :global(.dark) .peah-empty { color: #b8a888; }
 </style>
 
 <script>
-  // Chip filter: shows cards whose data-group matches; "All" clears it.
+  // Book drop-down + subject chip, applied together and kept in the address
+  // (?book=<slug>&subject=<slug>) so a filtered view can be shared. An unknown
+  // value in the address is ignored. Book headings with nothing showing hide.
+  const select = document.getElementById('peah-book') as HTMLSelectElement | null;
   const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.peah-chip'));
-  const cards = Array.from(document.querySelectorAll<HTMLElement>('#peah-grid .post-item'));
-  chips.forEach((chip) => {
-    chip.addEventListener('click', () => {
-      const g = chip.dataset.chip || '';
-      chips.forEach((c) => c.classList.toggle('is-on', c === chip));
-      cards.forEach((card) => {
-        card.style.display = !g || card.dataset.group === g ? '' : 'none';
+  const groups = Array.from(document.querySelectorAll<HTMLElement>('.peah-bookgroup'));
+  const empty = document.getElementById('peah-empty');
+
+  const bookOk = (v: string) => !!select && Array.from(select.options).some((o) => o.value === v);
+  const subjectOk = (v: string) => chips.some((c) => (c.dataset.chip || '') === v);
+
+  let book = '';
+  let subject = '';
+
+  function apply(updateUrl: boolean) {
+    if (select) select.value = book;
+    chips.forEach((c) => c.classList.toggle('is-on', (c.dataset.chip || '') === subject));
+    let shown = 0;
+    groups.forEach((g) => {
+      const bookMatch = !book || g.dataset.book === book;
+      let inGroup = 0;
+      g.querySelectorAll<HTMLElement>('.peah-cell').forEach((cell) => {
+        const on = bookMatch && (!subject || cell.dataset.subject === subject);
+        cell.style.display = on ? '' : 'none';
+        if (on) inGroup++;
       });
+      g.style.display = inGroup ? '' : 'none';
+      shown += inGroup;
     });
+    if (empty) empty.hidden = shown > 0;
+    if (updateUrl) {
+      const q = new URLSearchParams();
+      if (book) q.set('book', book);
+      if (subject) q.set('subject', subject);
+      const qs = q.toString();
+      history.replaceState(null, '', location.pathname + (qs ? `?${qs}` : '') + location.hash);
+    }
+  }
+
+  const params = new URLSearchParams(location.search);
+  const b = (params.get('book') || '').toLowerCase();
+  const s = (params.get('subject') || '').toLowerCase();
+  if (bookOk(b)) book = b;
+  if (subjectOk(s)) subject = s;
+  apply(false);
+
+  select?.addEventListener('change', () => { book = select.value; apply(true); });
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => { subject = chip.dataset.chip || ''; apply(true); });
   });
 </script>
