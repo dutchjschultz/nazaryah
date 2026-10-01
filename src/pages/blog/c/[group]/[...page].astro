@@ -2,21 +2,33 @@
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import BlogCard from '../../../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
-import { BLOG_GROUPS, groupOf, POSTS_PER_PAGE } from '../../../../data/blog-groups.js';
-import { COLLECTIONS, collectionSlugs, inCollection } from '../../../../data/collections.js';
+import { BLOG_GROUPS, groupOf, POSTS_PER_PAGE, extrasOf } from '../../../../data/blog-groups.js';
+import { COLLECTIONS, collectionSlugs, leavesTopic } from '../../../../data/collections.js';
 
 export async function getStaticPaths({ paginate }) {
   const all = (await getCollection('posts', ({ data }) => data.draft !== true))
     .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
   // TOPIC pages: regular studies only — a study in a collection is listed on
-  // its collection page instead (it keeps its POST_GROUP line; see collections.js).
+  // its collection page instead (it keeps its POST_GROUP line; see collections.js),
+  // unless the collection lets it keep its topic (alsoOnTopic). Topic extras —
+  // pages outside the blog (TOPIC_EXTRAS) — are merged in by date.
   const byGroup = BLOG_GROUPS.flatMap((g) => {
-    const posts = all.filter((p) => groupOf(p.slug) === g.key && !inCollection(p.slug));
+    const posts = [...all.filter((p) => groupOf(p.slug) === g.key && !leavesTopic(p.slug)), ...extrasOf(g.key)]
+      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
     return paginate(posts, { params: { group: g.key }, pageSize: POSTS_PER_PAGE, props: { group: g } });
   });
   // COLLECTION pages: same template, fed from src/data/collections.js. Adding a
   // collection there adds its page here with no template change.
+  // A SHELF collection (Books) pages its shelf rows — each with its live
+  // chapter count — instead of study cards; rows with no live chapter stay off.
+  const live = new Set(all.map((p) => p.slug));
   const byCollection = COLLECTIONS.flatMap((c) => {
+    if (c.shelf) {
+      const rows = c.shelf
+        .map((row) => ({ ...row, live: row.slugs.filter((s) => live.has(s)).length }))
+        .filter((row) => row.live > 0);
+      return paginate(rows, { params: { group: c.key }, pageSize: POSTS_PER_PAGE, props: { group: c } });
+    }
     const set = new Set(collectionSlugs(c));
     const posts = all.filter((p) => set.has(p.slug));
     return paginate(posts, { params: { group: c.key }, pageSize: POSTS_PER_PAGE, props: { group: c } });
@@ -25,6 +37,7 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page, group } = Astro.props;
+const [one, many] = group.countNoun || ['study', 'studies'];
 
 // Compact "1 2 3 … Next" window around the current page.
 const nums = [];
@@ -40,13 +53,25 @@ const pageHref = (n) => (n === 1 ? `/blog/c/${group.key}` : `/blog/c/${group.key
     <a href="/blog" class="blog-back">&larr; All categories</a>
     <h1 class="blog-subhead-title">{group.name}</h1>
     <p class="blog-subhead-blurb">{group.blurb}</p>
-    <p class="blog-subhead-count">{page.total} {page.total === 1 ? 'study' : 'studies'} · page {page.currentPage} of {page.lastPage}</p>
+    <p class="blog-subhead-count">{page.total} {page.total === 1 ? one : many} · page {page.currentPage} of {page.lastPage}</p>
   </section>
 
   <div class="blog-grid-wrap">
-    <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-      {page.data.map((post) => <BlogCard post={post} />)}
-    </div>
+    {group.shelf ? (
+      <div class="shelf-grid">
+        {page.data.map((row) => (
+          <a href={row.href} class="shelf-book" style={`--accent: ${row.accent};`}>
+            <span class="shelf-name">{row.name}</span>
+            <span class="shelf-sub">{row.subtitle}</span>
+            <span class="shelf-count">{row.live} {row.live === 1 ? 'chapter' : 'chapters'} &rarr;</span>
+          </a>
+        ))}
+      </div>
+    ) : (
+      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+        {page.data.map((post) => <BlogCard post={post} />)}
+      </div>
+    )}
 
     {page.lastPage > 1 && (
       <nav class="pager" aria-label="Pagination">
@@ -73,6 +98,18 @@ const pageHref = (n) => (n === 1 ? `/blog/c/${group.key}` : `/blog/c/${group.key
   .blog-subhead-count { font-family: 'Cinzel', Georgia, serif; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: #7a4f28; margin: 0; }
 
   .blog-grid-wrap { padding: 2.5rem 1.5rem 3rem; max-width: 84rem; margin: 0 auto; }
+
+  /* Shelf collection (Books): one card per book, opening its /books page. */
+  .shelf-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(16rem, 1fr)); gap: 1.25rem; max-width: 64rem; margin: 0 auto; }
+  .shelf-book {
+    display: flex; flex-direction: column; gap: 0.55rem; text-decoration: none; padding: 1.5rem 1.5rem 1.25rem;
+    border-radius: 6px; background: #141210; border: 1px solid rgba(201,169,97,0.2); border-left: 4px solid var(--accent, #c9a961);
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+  .shelf-book:hover { transform: translateY(-3px); background: #1b1813; }
+  .shelf-name { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.35rem; color: #f5e6c8; line-height: 1.2; }
+  .shelf-sub { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 0.98rem; line-height: 1.45; color: rgba(232,217,184,0.75); flex: 1; }
+  .shelf-count { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--accent, #c9a961); padding-top: 0.55rem; border-top: 1px solid rgba(201,169,97,0.14); }
 
   .pager { display: flex; flex-wrap: wrap; align-items: center; justify-content: center; gap: 0.4rem; margin-top: 2.75rem; font-family: 'Cinzel', Georgia, serif; }
   .pager-btn, .pager-num, .pager-ellipsis {

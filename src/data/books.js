@@ -1,4 +1,11 @@
-// books.js 0826 V3
+// books.js 1002 V4
+// V4: two additions for the Books collection card on the Studies index; nothing
+// existing changes. `pulpitBuried` — What the Pulpit Buried's Contents, moved
+// here from books/pulpit-buried.astro (the page now imports it), so all four
+// chapter lists live in one file. It is deliberately NOT in ALL: its blog cards
+// keep their own titles, as they always have. `BOOK_SHELF` — the four books that
+// have chapters on the blog, in shelf order, each with its /books page and its
+// chapter slugs; collections.js reads it (the Books collection and its labels).
 // V3: added the `oneThrone` master chapter list for Volume V — One God, One Name,
 // One Throne (8 chapters). Extended ROMAN to VIII. Wired oneThrone into
 // masterTitleBySlug, chapterMetaBySlug, and the per-chapter description map
@@ -58,10 +65,37 @@ export const oneThrone = [
     desc: 'A parable of two houses and the measure on the wall. A man carried his debt everywhere but the one place that could settle it. Part 8 of 8: One God, One Name, One Throne.' },
 ];
 
+// Volume II — What the Pulpit Buried. Moved from books/pulpit-buried.astro (V4).
+// Not in ALL below: these chapters keep their blog titles on cards.
+export const pulpitBuried = [
+  { num: 1, title: 'Faith',              topic: 'Emunah — the lean',                                      href: '/blog/faith-the-weight-of-what-it-means-to-believe' },
+  { num: 2, title: 'Grace',              topic: 'Chen — the Judge\'s favorable regard',                   href: '/blog/grace-the-disposition-of-the-judge' },
+  { num: 3, title: 'Righteousness',      topic: 'Tsedaqah — alignment with the standard',                 href: '/blog/righteousness-the-standard-and-the-measuring-line' },
+  { num: 4, title: 'Justification',      topic: 'Tsadaq — the verdict',                                   href: '/blog/justification-the-verdict-buried-beneath-forgiveness' },
+  { num: 5, title: 'Sanctification',     topic: 'Qadash — the separation',                                href: '/blog/sanctification-the-temple-life-of-a-claimed-people' },
+  { num: 6, title: 'Mercy',              topic: 'Chesed — the penalty withheld',                          href: '/blog/mercy-the-act-buried-under-a-feeling' },
+  { num: 7, title: 'The Whole Counsel',  topic: 'Unearthing the Complete Picture from the Dig Site',      href: '/blog/the-whole-counsel',                               capstone: true },
+  { num: 8, title: 'The Parable of Ned', topic: 'A courtroom parable to close the dig',                   href: '/blog/the-case-of-ned-goodman',                         closing: true },
+];
+
 const ROMAN = ['', 'I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
 export const roman = (n) => ROMAN[n] || String(n);
 
 const slugOf = (href) => href.replace('/blog/', '');
+
+// The Books collection's shelf (Studies index -> /blog/c/books). One row per book
+// that has chapters on the blog, in the /books shelf's order. `name` is the label
+// every chapter card of that book prints; title/subtitle/accent match /books.
+export const BOOK_SHELF = [
+  { key: 'five-titles', name: 'Five Titles, One Christ', subtitle: 'How One Doctrine Erased the Father and Crowned the Son With Titles That Were Never His',
+    accent: '#C9A961', href: '/books/five-titles', chapters: fiveTitles },
+  { key: 'pulpit-buried', name: 'What the Pulpit Buried', subtitle: 'Six Hebrew Words Lost Beneath Centuries of Tradition',
+    accent: '#B87333', href: '/books/pulpit-buried', chapters: pulpitBuried },
+  { key: 'the-bearer', name: 'The Bearer', subtitle: 'Seeing the Father in the One Who Carries Him',
+    accent: '#CE8E3F', href: '/books/the-bearer', chapters: theBearer },
+  { key: 'one-god-one-name-one-throne', name: 'One God, One Name, One Throne', subtitle: 'Six More Words the Pulpit Buried',
+    accent: '#B87333', href: '/books/one-god-one-name-one-throne', chapters: oneThrone },
+].map((b) => ({ ...b, slugs: b.chapters.map((c) => slugOf(c.href)) }));
 
 const ALL = [...fiveTitles, ...theBearer, ...oneThrone];
 

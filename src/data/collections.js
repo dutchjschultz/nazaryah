@@ -1,4 +1,17 @@
-// collections 0929 V2.js
+// collections 1002 V3.js
+// V3: two more collections, Parables and Books, plus three optional fields so
+// every new collection stays a data-only addition:
+//   alsoOnTopic  slugs that join the collection but KEEP their topic card too
+//                (Books: the two Side Door parables that are also book chapters).
+//   shelf        rows the collection page shows INSTEAD of study cards — each
+//                { key, name, subtitle, accent, href, slugs } (Books: one row per
+//                book, opening its /books page). The collection's slugs are the
+//                union of the rows' slugs.
+//   countNoun    what the Studies-index card counts, when it is not studies.
+// Parables takes the key `the-parables`, which the retired Parables TOPIC group
+// held, so /blog/c/the-parables keeps its address. Its twelve studies keep their
+// POST_GROUP lines ('the-parables'); that is what puts a new parable study in.
+// leavesTopic(slug) is what the topic cards and pages now filter on.
 // V2: optional `labelOf(slug)` on a collection — the gold label a study card
 // prints for a study in that collection, in place of its topic category.
 // Investigations answers with the owning case's shortTitle. cardLabelOf() is
@@ -6,8 +19,8 @@
 // V1: COLLECTIONS — the second kind of card on the Studies index.
 //
 // TWO KINDS OF CARDS on /blog:
-//   TOPIC cards      the nine BLOG_GROUPS in blog-groups.js. Regular studies only.
-//   COLLECTION cards one per entry below (Investigations now, Books later).
+//   TOPIC cards      the BLOG_GROUPS in blog-groups.js. Regular studies only.
+//   COLLECTION cards one per entry below (Investigations, Parables, Books).
 // A study in a collection appears ONLY on its collection card: the topic card
 // counts and the /blog/c/<topic> pages leave it out. /blog/all and the
 // association clusters are untouched — collection studies still appear there.
@@ -27,7 +40,8 @@
 //          and cards fall back to the collection's `name` (e.g. 'Books').
 // Order in this array is the order of the collection row.
 import { INVESTIGATIONS } from './investigations.js';
-import { BLOG_GROUPS } from './blog-groups.js';
+import { BLOG_GROUPS, POST_GROUP } from './blog-groups.js';
+import { BOOK_SHELF } from './books.js';
 
 export const COLLECTIONS = [
   {
@@ -52,9 +66,32 @@ export const COLLECTIONS = [
       return inv ? inv.shortTitle || inv.title : null;
     },
   },
+  {
+    key: 'the-parables',
+    name: 'Parables',
+    // The retired Parables topic card's blurb, carried over unchanged.
+    blurb: 'The parables of Yahushua, read out of the Hebrew Scriptures His first hearers already held.',
+    // The Bible parable studies: every POST_GROUP line filed 'the-parables'.
+    // Read-throughs carry no line (they are reached from their study), so they
+    // stay out. The Side Door's modern parables are a topic, not this collection.
+    slugs: () => Object.keys(POST_GROUP).filter((s) => POST_GROUP[s] === 'the-parables'),
+  },
+  {
+    key: 'books',
+    name: 'Books',
+    blurb: 'Every chapter of every book, free to read. Pick a book.',
+    shelf: BOOK_SHELF,
+    countNoun: ['book', 'books'],
+    // Card label: the chapter's book.
+    labelOf: (slug) => (BOOK_SHELF.find((b) => b.slugs.includes(slug)) || {}).name || null,
+    // Ned Goodman (Pulpit Buried ch. 8) and Wendell Hollis (One Throne ch. 8) are
+    // Side Door parables as well as chapters: they stay on that card too.
+    alsoOnTopic: ['the-case-of-ned-goodman', 'one-throne-8-the-debt-of-wendell-hollis'],
+  },
 ];
 
-export const collectionSlugs = (c) => (typeof c.slugs === 'function' ? c.slugs() : c.slugs);
+export const collectionSlugs = (c) =>
+  c.shelf ? c.shelf.flatMap((row) => row.slugs) : typeof c.slugs === 'function' ? c.slugs() : c.slugs;
 
 // slug -> collection key, first collection wins.
 const SLUG_TO_COLLECTION = {};
@@ -64,6 +101,11 @@ for (const c of COLLECTIONS) {
 
 export const collectionOf = (slug) => SLUG_TO_COLLECTION[slug] || null;
 export const inCollection = (slug) => !!SLUG_TO_COLLECTION[slug];
+
+// Off its topic card: in a collection, and not one of that collection's
+// alsoOnTopic exceptions. Topic counts and /blog/c/<topic> pages filter on this.
+const KEEPS_TOPIC = new Set(COLLECTIONS.flatMap((c) => c.alsoOnTopic || []));
+export const leavesTopic = (slug) => inCollection(slug) && !KEEPS_TOPIC.has(slug);
 
 // The gold label on a study card: the collection's label for a collection study,
 // null otherwise (the card then prints the study's own category).

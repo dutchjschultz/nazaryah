@@ -4,6 +4,8 @@
 // 0929: also renders a Pe'ah entry (collection 'peah') — links to /peah/<slug>,
 // its category line is the entry's `group`, and its reference line carries a
 // small PE'AH tag so a reader knows it is a short read. Study cards unchanged.
+// 1002: One God, One Name, One Throne joins the bookshelf map, so all four
+// books' chapter cards carry the badge and the book-name label alike.
 import { masterTitleBySlug } from '../data/books.js';
 import { postHref } from '../lib/post-href.js';
 import { cardLabelOf } from '../data/collections.js';
@@ -20,6 +22,7 @@ const bookCategories = {
   'The Bearer': { href: '/books/the-bearer' },
   'Five Titles, One Christ': { href: '/books/five-titles' },
   'What the Pulpit Buried': { href: '/books/pulpit-buried' },
+  'One God, One Name, One Throne': { href: '/books/one-god-one-name-one-throne' },
 };
 const isPeah = post.collection === 'peah';
 const href = isPeah ? `/peah/${post.slug}` : postHref(post);

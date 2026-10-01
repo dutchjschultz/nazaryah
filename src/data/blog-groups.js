@@ -1,4 +1,11 @@
-// blog-groups 1002 V22.js
+// blog-groups 1002 V23.js
+// V23: THE PARABLES leaves BLOG_GROUPS — it is now the Parables COLLECTION card
+// (src/data/collections.js), which took the key `the-parables`, so
+// /blog/c/the-parables keeps its address. The twelve POST_GROUP lines stay as
+// they are: they are what the collection reads, so a new parable study is still
+// added here. New TOPIC_EXTRAS: a card on a topic page for a piece that is not a
+// blog post — The Adventures of Barney and Clyde (/studies/canon/parable) joins
+// THE SIDE DOOR at its own address. Map total unchanged (113).
 // V22: Summer Is Nigh joins THE PARABLES (11 → 12). Its read-through stays out
 // — it carries companionOf. Map total 112 → 113.
 // V21: Strange Apparel joins THE PARABLES (10 → 11). Its read-through stays out
@@ -106,9 +113,29 @@ export const BLOG_GROUPS = [
   { key: 'the-quick-scroll',     name: 'The Quick Scroll',     blurb: 'Cliff-notes walkthroughs of whole books of the Bible.' },
   { key: 'buried-in-plain-sight', name: 'Buried in Plain Sight', blurb: 'The systems, symbols, and history hidden in plain view.' },
   { key: 'the-law-and-the-feasts', name: 'The Law & The Feasts', blurb: 'The Torah that still stands, and the appointed times it keeps.' },
-  { key: 'the-parables',         name: 'The Parables',         blurb: 'The parables of Yahushua, read out of the Hebrew Scriptures His first hearers already held.' },
   { key: 'the-side-door',        name: 'The Side Door',        blurb: 'Modern parables — hard truth slipped in sideways, the way a story can and a lecture cannot.' },
 ];
+
+// Topic-card extras — pieces that live outside the blog (a standalone page, not
+// a post) but belong on a topic card. Each renders as an ordinary study card,
+// linking to its own `route`; nothing moves. Shape mirrors a post entry:
+// { slug, data: { title, route, subtitle, category, date } }. `subtitle` is the
+// line the page itself prints under its title; `date` is when the page went up.
+export const TOPIC_EXTRAS = {
+  'the-side-door': [
+    {
+      slug: 'the-adventures-of-barney-and-clyde',
+      data: {
+        title: 'The Adventures of Barney and Clyde',
+        route: '/studies/canon/parable',
+        subtitle: 'A story of two books, one Guide, and the source of authority.',
+        category: 'The Canon',
+        date: new Date('2026-04-20'),
+      },
+    },
+  ],
+};
+export const extrasOf = (key) => TOPIC_EXTRAS[key] || [];
 
 // Jump-outs — NOT filters. Buttons on the landing that link to where that
 // content actually lives.
