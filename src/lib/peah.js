@@ -1,11 +1,8 @@
-// peah 1002 V2.js
+// peah 1002 V3.js
+// V3: bookCoverage() and the verse-count check are gone — the drop-down now
+// counts entries per book (in the index). The parser keeps every V2 change.
 // V2: the reference parser takes single-chapter books ("Jude 5", "Jude 24-25"),
-// book aliases ("Psalms" for "Psalm"), and keeps a range's end; new
-// bookCoverage() gives each book's drop-down figure — unique verses named by the
-// entries' `reference` fields (never `verses`) over the book's KJV count
-// (src/data/bible-verse-counts.js), or "complete" for a book listed in
-// src/data/peah-finished-books.js. A cross-chapter range parses and sorts, but
-// is left out of the count (no per-chapter verse counts) and reported at build.
+// book aliases ("Psalms" for "Psalm"), and keeps a range's end.
 // Pe'ah helpers, shared by the /peah index, the entry pages and the card.
 //   peahTitle(data)       the displayed title: `reference — title`. The file's
 //                         own `title` stays plain.
@@ -15,26 +12,10 @@
 //                         sorts by its first verse. A book not in src/data/bible-books.js, or a
 //                         reference that will not parse, FAILS THE BUILD and
 //                         names the file.
-//   bookCoverage(entries) Map heading -> { covered, total, label } where label
-//                         is "32%", "<1%" or "complete".
 //   PEAH_SUBJECTS         the five subject values, in chip order.
 //   slugify(s)            "1 John" -> "1-john", "Calendar and Feasts" ->
 //                         "calendar-and-feasts" (the ?book= / ?subject= values).
 import { BIBLE_BOOKS, BOOK_ALIAS, SINGLE_CHAPTER, bookHeading } from '../data/bible-books.js';
-import { bibleVerseCounts } from '../data/bible-verse-counts.js';
-import { peahFinishedBooks } from '../data/peah-finished-books.js';
-
-// The verse-count file must sum to the KJV totals and cover every book.
-{
-  const counts = BIBLE_BOOKS.map((b) => bibleVerseCounts[bookHeading(b)]);
-  const missing = BIBLE_BOOKS.filter((b, i) => counts[i] == null);
-  if (missing.length) throw new Error(`bible-verse-counts.js: no count for ${missing.join(', ')}`);
-  const ot = counts.slice(0, 39).reduce((a, n) => a + n, 0);
-  const nt = counts.slice(39).reduce((a, n) => a + n, 0);
-  if (ot !== 23145 || nt !== 7957) {
-    throw new Error(`bible-verse-counts.js: totals are ${ot} OT / ${nt} NT; expected 23145 / 7957 (31102).`);
-  }
-}
 
 // The Pe'ah subject list, in chip order. The content schema restricts `group`
 // to these (see the comment block in src/content/config.ts). One value per
@@ -83,29 +64,4 @@ export function parsePeahRef(entry) {
     book, heading, bookIndex, bookSlug: slugify(heading),
     chapter, verse, chapterEnd, verseEnd, crossChapter: chapterEnd !== chapter,
   };
-}
-
-// Coverage per book, from the entries' main references only. Duplicate verses
-// count once. A cross-chapter range is skipped (reported once at build).
-export function bookCoverage(entries) {
-  const seen = new Map();
-  for (const e of entries) {
-    const r = parsePeahRef(e);
-    if (r.crossChapter) {
-      console.warn(`[Pe'ah coverage] skipped cross-chapter range "${e.data.reference}" (${e.id ?? e.slug}): no per-chapter verse counts.`);
-      continue;
-    }
-    if (!seen.has(r.heading)) seen.set(r.heading, new Set());
-    for (let v = r.verse; v <= r.verseEnd; v++) seen.get(r.heading).add(`${r.chapter}:${v}`);
-  }
-  const out = new Map();
-  for (const [heading, set] of seen) {
-    const total = bibleVerseCounts[heading];
-    const pct = (set.size / total) * 100;
-    const label = peahFinishedBooks.includes(heading) ? 'complete'
-      : pct > 0 && pct < 1 ? '<1%'
-      : `${Math.round(pct)}%`;
-    out.set(heading, { covered: set.size, total, label });
-  }
-  return out;
 }
