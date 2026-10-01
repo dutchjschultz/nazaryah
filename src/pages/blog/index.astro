@@ -16,14 +16,11 @@ const countByGroup = Object.fromEntries(
 );
 // "All Studies" still counts everything in the feed, collections included.
 const total = posts.length;
-// COLLECTION cards: live posts named by each collection — or, for a shelf
-// collection (Books), the shelf rows holding at least one live post.
+// COLLECTION cards: live posts named by each collection.
 const slugSet = new Set(all.map((p) => p.slug));
 const collections = COLLECTIONS.map((c) => ({
   collection: c,
-  count: c.shelf
-    ? c.shelf.filter((row) => row.slugs.some((s) => slugSet.has(s))).length
-    : collectionSlugs(c).filter((s) => slugSet.has(s)).length,
+  count: collectionSlugs(c).filter((s) => slugSet.has(s)).length,
 }));
 ---
 

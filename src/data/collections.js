@@ -1,12 +1,17 @@
-// collections 1002 V3.js
+// collections 1002 V4.js
+// V4: `shelf` becomes `sections`. The collection page shows ONE page of study
+// cards grouped under a heading per section, in each section's own order,
+// instead of a shelf of links out. Books: all chapters under each book title, in
+// chapter order, read from BOOK_SHELF (books.js) — each card opens the chapter
+// study directly. The index card counts the chapters, not the books.
 // V3: two more collections, Parables and Books, plus three optional fields so
 // every new collection stays a data-only addition:
 //   alsoOnTopic  slugs that join the collection but KEEP their topic card too
 //                (Books: the two Side Door parables that are also book chapters).
-//   shelf        rows the collection page shows INSTEAD of study cards — each
-//                { key, name, subtitle, accent, href, slugs } (Books: one row per
-//                book, opening its /books page). The collection's slugs are the
-//                union of the rows' slugs.
+//   sections     groups the collection page lists its study cards under, in
+//                order — each { key, name, subtitle, accent, slugs }, cards in
+//                `slugs` order (Books: one section per book, chapter order; V4).
+//                The collection's slugs are the union of the sections' slugs.
 //   countNoun    what the Studies-index card counts, when it is not studies.
 // Parables takes the key `the-parables`, which the retired Parables TOPIC group
 // held, so /blog/c/the-parables keeps its address. Its twelve studies keep their
@@ -79,9 +84,9 @@ export const COLLECTIONS = [
   {
     key: 'books',
     name: 'Books',
-    blurb: 'Every chapter of every book, free to read. Pick a book.',
-    shelf: BOOK_SHELF,
-    countNoun: ['book', 'books'],
+    blurb: 'Every chapter of every book, free to read.',
+    sections: BOOK_SHELF,
+    countNoun: ['chapter', 'chapters'],
     // Card label: the chapter's book.
     labelOf: (slug) => (BOOK_SHELF.find((b) => b.slugs.includes(slug)) || {}).name || null,
     // Ned Goodman (Pulpit Buried ch. 8) and Wendell Hollis (One Throne ch. 8) are
@@ -91,7 +96,7 @@ export const COLLECTIONS = [
 ];
 
 export const collectionSlugs = (c) =>
-  c.shelf ? c.shelf.flatMap((row) => row.slugs) : typeof c.slugs === 'function' ? c.slugs() : c.slugs;
+  c.sections ? c.sections.flatMap((sec) => sec.slugs) : typeof c.slugs === 'function' ? c.slugs() : c.slugs;
 
 // slug -> collection key, first collection wins.
 const SLUG_TO_COLLECTION = {};
