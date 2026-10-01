@@ -1,4 +1,6 @@
-// parables 1001 V12.js
+// parables 1002 V13.js
+// V13: id 9, the budding fig tree, goes live - Summer Is Nigh. Its Mark row
+// already reads Mark 13:28-31, the range the study argues.
 // V12: id 22, the marriage of the king's son, goes live - Strange Apparel. Its
 // row already reads Matthew 22:1-14, the range the study argues.
 // V11: id 4, the strong man bound, goes live - The Strong Man Bound. The study
@@ -154,7 +156,8 @@ export const parables = [
       { gospel: "Matthew", ref: "Matthew 24:32-35", ch: 24, v: 32 },
       { gospel: "Luke", ref: "Luke 21:29-33", ch: 21, v: 29 }
     ],
-    study: null
+    // Summer Is Nigh - live.
+    study: "/blog/summer-is-nigh"
   },
   {
     id: 10,
