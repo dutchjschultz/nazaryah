@@ -1,8 +1,10 @@
 ---
-// torah.astro · 0807 V1 — added the Law on Trial card beneath the Legal Lexicon.
+// torah.astro · 1001 V2 — added the Paul's Laws card (eyebrow/title/deck/framing from pauls-laws.js).
+// V1 — added the Law on Trial card beneath the Legal Lexicon.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { liveTerms, terms } from '../data/legal-lexicon.js';
 import { STUDIES, TORAH_CARD } from '../data/law-on-trial.js';
+import { paulsLaws } from '../data/pauls-laws.js';
 
 const lexiconMeta = `${liveTerms.length} of ${terms.length} words live · growing`;
 
@@ -50,6 +52,14 @@ const lawMeta = lawLive > 0 ? `${lawLive} of 155 studies live · growing` : TORA
           <p class="to-card-deck">{TORAH_CARD.deck}</p>
           <p class="to-card-body">{TORAH_CARD.body}</p>
           <span class="to-card-cta">Enter &nbsp;&#8594;</span>
+        </a>
+
+        <a href={`/torah/${paulsLaws.slug}`} class="to-card">
+          <p class="to-card-meta">{paulsLaws.eyebrow}</p>
+          <h3 class="to-card-title">{paulsLaws.title}</h3>
+          <p class="to-card-deck">{paulsLaws.deck}</p>
+          <p class="to-card-body">{paulsLaws.framing}</p>
+          <span class="to-card-cta">Read &nbsp;&#8594;</span>
         </a>
       </div>
     </section>

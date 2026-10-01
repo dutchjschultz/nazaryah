@@ -1,0 +1,131 @@
+---
+// torah/pauls-laws 1001 V1.astro
+// V1. First load: Paul's Laws teaching page, rendered from src/data/pauls-laws.js
+// (intro, ten laws, side by side, conclusion). Data strings may hold <em>/<strong>,
+// so prose renders with set:html. The card deck sits in a clipped .thesis element
+// (the torah deck class in backfill-social-images) so a regenerated card reads the
+// deck, not the meta description. Torah dark theme, matching /torah.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { paulsLaws as p } from '../../data/pauls-laws.js';
+
+const description = `${p.subtitle}. ${p.framing}`;
+---
+
+<BaseLayout title={`${p.title} — Torah — Nazaryah`} description={description} article>
+  <div class="pl-wrap">
+
+    <header class="pl-hero">
+      <a class="pl-back" href="/torah">&larr; Torah</a>
+      <p class="pl-eyebrow">&#8213; {p.eyebrow} &#8213;</p>
+      <h1 class="pl-title">{p.title}</h1>
+      <p class="pl-sub">{p.subtitle}</p>
+      <p class="thesis pl-clip">{p.deck}</p>
+    </header>
+
+    <section class="pl-section">
+      <div class="pl-prose">
+        <p class="pl-framing" set:html={p.framing} />
+        {p.intro.map((para) => <p set:html={para} />)}
+      </div>
+
+      <nav class="pl-index" aria-label="The ten laws">
+        <ol>
+          {p.laws.map((law) => (
+            <li><a href={`#law-${law.n}`}><span class="pl-index-n">{law.n}</span>{law.title}</a></li>
+          ))}
+        </ol>
+      </nav>
+    </section>
+
+    <section class="pl-section pl-section-alt">
+      <div class="pl-laws">
+        {p.laws.map((law) => (
+          <article class="pl-law" id={`law-${law.n}`}>
+            <p class="pl-law-n">Law {law.n} of {p.laws.length}</p>
+            <h2 class="pl-law-title">{law.title}</h2>
+            <p class="pl-refs">{law.refs}</p>
+            {law.body.map((para) => <p class="pl-body" set:html={para} />)}
+            <div class="pl-picture">
+              <p class="pl-tag">The Picture</p>
+              <p set:html={law.picture} />
+            </div>
+            <div class="pl-point">
+              <p class="pl-tag">The Point</p>
+              <p set:html={law.point} />
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <section class="pl-section">
+      <div class="pl-prose">
+        <h2 class="pl-h2">All Ten, Side by Side</h2>
+        {p.together.map((para) => <p set:html={para} />)}
+      </div>
+    </section>
+
+    <section class="pl-section pl-section-alt">
+      <div class="pl-prose">
+        <h2 class="pl-h2">Conclusion</h2>
+        {p.conclusion.map((para) => <p set:html={para} />)}
+      </div>
+    </section>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .pl-wrap{
+    background:linear-gradient(180deg,#0e0904 0%,#1a1208 20%,#160f07 100%);
+    color:#d9c9a8;
+    font-family:'Crimson Pro','Crimson Text',Georgia,serif;
+    min-height:80vh;
+  }
+
+  .pl-hero{
+    text-align:center;padding:3.5rem 1.5rem 3.5rem;border-bottom:1px solid #4a3218;
+    background:radial-gradient(ellipse at 50% 0%,rgba(150,90,40,.18),transparent 70%),linear-gradient(180deg,#0a0602 0%,#1a1208 100%);
+  }
+  .pl-back{display:inline-block;margin-bottom:2rem;font-family:'Cinzel',serif;font-size:.75rem;letter-spacing:2px;text-transform:uppercase;color:#8a6028;text-decoration:none;}
+  .pl-back:hover{color:#c4a46b;}
+  .pl-eyebrow{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;color:#8a6028;text-transform:uppercase;margin:0 0 .75rem;}
+  .pl-title{font-family:'Cinzel',serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:700;color:#f0e0bf;margin:0 0 1rem;line-height:1.1;}
+  .pl-sub{font-size:clamp(1rem,2vw,1.2rem);color:#c4a46b;font-style:italic;max-width:600px;margin:0 auto;line-height:1.6;}
+  .pl-clip{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;margin:0;padding:0;}
+
+  .pl-section{padding:3.5rem 1.5rem;border-bottom:1px solid #2e1f0d;}
+  .pl-section-alt{background:rgba(10,6,2,.3);}
+  .pl-prose{max-width:680px;margin:0 auto;font-size:1.125rem;line-height:1.85;}
+  .pl-prose p{margin:0 0 1.5rem;} .pl-prose p:last-child{margin:0;}
+  .pl-framing{font-style:italic;color:#c4a46b;font-size:1.25rem;line-height:1.6;border-left:2px solid #8a6028;padding-left:1.25rem;}
+  .pl-h2{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:600;color:#f0e0bf;margin:0 0 1.25rem;padding-bottom:.6rem;border-bottom:1px solid #3a2510;}
+  .pl-prose :global(strong){color:#f0e0bf;}
+
+  .pl-index{max-width:680px;margin:2.5rem auto 0;}
+  .pl-index ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem 1.5rem;}
+  .pl-index a{display:flex;gap:.75rem;align-items:baseline;padding:.45rem 0;border-bottom:1px solid #2e1f0d;color:#d9c9a8;text-decoration:none;font-size:1.05rem;}
+  .pl-index a:hover{color:#f0e0bf;border-bottom-color:#8a6028;}
+  .pl-index-n{font-family:'Cinzel',serif;font-size:.8rem;color:#8a6028;min-width:1.4rem;}
+
+  .pl-laws{max-width:720px;margin:0 auto;}
+  .pl-law{background:rgba(20,13,5,.6);border:1px solid #3a2510;border-radius:4px;padding:2rem 2.25rem;scroll-margin-top:5rem;}
+  .pl-law+.pl-law{margin-top:1.75rem;}
+  .pl-law-n{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8a6028;margin:0 0 .6rem;}
+  .pl-law-title{font-family:'Cinzel',serif;font-size:1.5rem;color:#f0e0bf;margin:0 0 .5rem;line-height:1.25;}
+  .pl-refs{font-size:.95rem;color:#a88a58;margin:0 0 1.25rem;}
+  .pl-body{font-size:1.1rem;line-height:1.8;margin:0 0 1.1rem;}
+  .pl-body :global(em){color:#f0e0bf;}
+  .pl-picture,.pl-point{border-top:1px solid #2e1f0d;padding-top:1rem;margin-top:1.25rem;}
+  .pl-picture p,.pl-point p{margin:0;font-size:1.05rem;line-height:1.7;}
+  .pl-picture p:not(.pl-tag){font-style:italic;color:#c4a46b;}
+  .pl-point p:not(.pl-tag){color:#f0e0bf;}
+  .pl-tag{font-family:'Cinzel',serif;font-size:10px !important;letter-spacing:3px;text-transform:uppercase;color:#8a6028;margin:0 0 .4rem !important;}
+
+  @media (max-width:620px){
+    .pl-hero{padding:2.5rem 1rem 2.5rem;}
+    .pl-section{padding:2.5rem 1rem;}
+    .pl-law{padding:1.5rem 1.25rem;}
+    .pl-index ol{grid-template-columns:1fr;}
+  }
+</style>
