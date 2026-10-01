@@ -1,4 +1,6 @@
-// blog-groups 0930 V18.js
+// blog-groups 1001 V19.js
+// V19: The Same Word, a Different Master joins THE LAW & THE FEASTS (15 → 16);
+// Hearts and Reins joins SCRIPTURE UNFILTERED (27 → 28). Map total 108 → 110.
 // V18: New Wine, Old Bottles joins THE PARABLES (8 → 9) — the batch filed it
 // under Buried in Plain Sight and Dutch settled it as Parables. Its read-through
 // stays out — it carries companionOf. Map total 107 → 108.
@@ -181,7 +183,7 @@ export const POST_GROUP = {
   'the-reign-is-now': 'buried-in-plain-sight',
   'gog-and-magog': 'buried-in-plain-sight',
 
-  // ── The Law & The Feasts (15) ──
+  // ── The Law & The Feasts (16) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',
   'two-greatest-commandments': 'the-law-and-the-feasts',
   'seven-feasts-in-exodus': 'the-law-and-the-feasts',
@@ -200,6 +202,7 @@ export const POST_GROUP = {
   'judge-not': 'the-law-and-the-feasts',
   'strait-is-the-gate': 'the-law-and-the-feasts',
   'i-never-knew-you': 'the-law-and-the-feasts',
+  'the-same-word-a-different-master': 'the-law-and-the-feasts',
 
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',
@@ -224,7 +227,8 @@ export const POST_GROUP = {
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
   'one-throne-8-the-debt-of-wendell-hollis': 'the-side-door', // Volume V's closing parable
 
-  // ── Scripture Unfiltered (27) ──
+  // ── Scripture Unfiltered (28) ──
+  'hearts-and-reins': 'scripture-unfiltered',
   'ark-of-covering': 'scripture-unfiltered',
   'kept-to-the-hour': 'scripture-unfiltered',
   'bread-and-wine': 'scripture-unfiltered',
