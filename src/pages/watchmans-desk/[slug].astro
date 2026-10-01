@@ -1,5 +1,8 @@
 ---
-// src/pages/watchmans-desk/[slug].astro · 0808 V6
+// src/pages/watchmans-desk/[slug].astro · 1001 V7
+// V7: added `.wl-epigraph` — a centered italic scripture epigraph with its
+// reference beneath, opening the body directly under the header (first used by
+// "A Lullaby With No Morning").
 // V6: masthead is now "The Watchman's Desk · [KIND ·] STATUS date". The section
 // name (THE WATCHMAN'S DESK) replaces the retired "The Watchman's Letter", and an
 // ordinary weekly letter carries NO kind word — only non-standard pieces (open
@@ -89,6 +92,9 @@ const masthead = ["The Watchman's Desk", kindWord, `${STATUSES[status].label} ${
   .wl-body :global(li) { margin: 0.5rem 0; padding-left: 0.2rem; }
   .wl-body :global(li)::marker { color: #1f3864; }
 
+  .wl-body :global(.wl-epigraph) { margin: 0 auto 2.6rem; max-width: 32rem; text-align: center; font-family: var(--font-family-serif, 'Crimson Text', Georgia, serif); font-style: italic; color: #3a3428; line-height: 1.6; }
+  .wl-body :global(.wl-epigraph p) { margin: 0; }
+  .wl-body :global(.wl-epigraph .wl-epigraph-ref) { margin-top: 0.5rem; font-style: normal; font-size: 0.8rem; letter-spacing: 0.14em; text-transform: uppercase; color: #1f3864; }
   .wl-body :global(h2) { font-size: 1.35rem; color: #1f3864; font-weight: 700; line-height: 1.25; margin: 2.6rem 0 1rem; }
   .wl-body :global(blockquote) { margin: 1.7rem 0; padding: 0.2rem 0 0.2rem 1.4rem; border-left: 3px solid #1f3864; font-style: italic; color: #3a3428; line-height: 1.65; }
   .wl-body :global(blockquote p) { margin: 0; }

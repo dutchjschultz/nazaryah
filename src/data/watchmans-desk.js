@@ -1,4 +1,10 @@
-// watchmans-desk 0917 V15.js
+// watchmans-desk 1001 V16.js
+// V16: loaded "A Lullaby With No Morning" (weekly-letter, 1 October, standalone).
+// Newest by sortDate, so it takes the top of the stream and the first band slot.
+// Status "week-ending" follows the other weekly letters (not supplied). No `law`
+// was supplied and none of the ten canonical strings fits, so the field is left
+// off (it is optional) — flagged for Dutch. Card from the generator at
+// /og/watchmans-desk/<slug>.vN.png; thumb not committed.
 // V15: loaded "A Knot in the Stomach" (field-brief, 17 September, standalone).
 // By sortDate it is the newest, so it takes the top of the desk stream and the
 // first band slot; Wrap It In A Bow stays in the band and Carved in Granite is
@@ -86,6 +92,17 @@ export const STATUSES = {
 // string (a calendar date, or a phrase like "Ongoing") and is shown verbatim;
 // it is never parsed or sorted on. Give every new entry a sortDate.
 export const entries = [
+  {
+    slug: "a-lullaby-with-no-morning",
+    kind: "weekly-letter", status: "week-ending", date: "1 October 2026",
+    sortDate: "2026-10-01",
+    eyebrow: "",
+    title: "A Lullaby With No Morning",
+    deck: "A bedtime science channel walked a generation through a hundred mysteries and never once let the Maker in. The night it offers has no dawn.",
+    body: "A popular channel made for falling asleep plays a long, soft narration on the unsolved mysteries of science. A calm voice walks the listener through one hundred of them. It starts at the edge of the universe and ends inside the human heart.",
+    strapline: "Science without a Maker can only sing a generation to sleep.",
+    source: "standalone",
+  },
   {
     slug: "a-knot-in-the-stomach",
     kind: "field-brief", status: "filed", date: "17 September 2026",
