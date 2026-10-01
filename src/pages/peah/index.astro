@@ -1,5 +1,9 @@
 ---
-// src/pages/peah/index.astro · 1002 V4
+// src/pages/peah/index.astro · 1002 V5
+// V5: each drop-down book carries its coverage in parentheses — "Jude (32%)",
+// "(<1%)", or "(complete)" for a book in peah-finished-books.js — from
+// bookCoverage() in src/lib/peah.js (main `reference` verses only, over the KJV
+// count). The book heading on the page stays the name alone.
 // V4: ONE BOOK AT A TIME. The page never lists every entry: it opens on the
 // earliest book in canonical order that holds an entry (Genesis once one
 // exists), and shows only that book's entries until another is picked. The
@@ -24,7 +28,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
-import { parsePeahRef, PEAH_SUBJECTS, slugify } from '../../lib/peah.js';
+import { parsePeahRef, bookCoverage, PEAH_SUBJECTS, slugify } from '../../lib/peah.js';
 
 const entries = (await getCollection('peah', ({ data }) => data.draft !== true))
   .map((e) => ({ e, ref: parsePeahRef(e) }))
@@ -41,6 +45,9 @@ for (const x of entries) {
   if (last && last.slug === x.ref.bookSlug) last.items.push(x.e);
   else books.push({ slug: x.ref.bookSlug, name: x.ref.heading, items: [x.e] });
 }
+
+// Coverage figure per book, for the drop-down.
+const coverage = bookCoverage(entries.map((x) => x.e));
 
 // Chips: subjects in use, in PEAH_SUBJECTS order. Never hand-maintained.
 const used = new Set(entries.map((x) => x.e.data.group).filter(Boolean));
@@ -67,7 +74,7 @@ const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, sl
       <label class="peah-book-pick">
         <span class="peah-book-label">Book</span>
         <select id="peah-book">
-          {books.map((b) => <option value={b.slug}>{b.name}</option>)}
+          {books.map((b) => <option value={b.slug}>{b.name}{coverage.has(b.name) ? ` (${coverage.get(b.name).label})` : ''}</option>)}
         </select>
       </label>
       {chips.length > 0 && (

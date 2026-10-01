@@ -1,5 +1,7 @@
-// bible-books 1002 V3.js
+// bible-books 1002 V4.js
 // canonical book order for the Pe'ah index and book drop-down
+// V4: BOOK_ALIAS (a reference may write "Psalms" or "Song of Songs") and
+// SINGLE_CHAPTER (Obadiah, Philemon, 2 John, 3 John, Jude — "Jude 5" is 1:5).
 // V3: no list change — the Pe'ah index now shows one book at a time from this order.
 // The 66 books, Genesis through Revelation, spelled as a Pe'ah `reference`
 // spells them ("Psalm", "1 John"). The /peah sort and its Book drop-down both
@@ -23,3 +25,9 @@ export const BIBLE_BOOKS = [
 // how a reference spells it: a reference cites "Psalm 119:18", the book is Psalms.
 export const BOOK_HEADING = { Psalm: 'Psalms' };
 export const bookHeading = (book) => BOOK_HEADING[book] || book;
+
+// Other spellings a reference may use, mapped to the spelling above.
+export const BOOK_ALIAS = { Psalms: 'Psalm', 'Song of Songs': 'Song of Solomon' };
+
+// Books with one chapter: a reference may give the verse alone ("Jude 5").
+export const SINGLE_CHAPTER = ['Obadiah', 'Philemon', '2 John', '3 John', 'Jude'];
