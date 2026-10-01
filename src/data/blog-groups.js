@@ -1,4 +1,6 @@
-// blog-groups 1001 V20.js
+// blog-groups 1001 V21.js
+// V21: Strange Apparel joins THE PARABLES (10 → 11). Its read-through stays out
+// — it carries companionOf. Map total 111 → 112.
 // V20: The Strong Man Bound joins THE PARABLES (9 → 10). Its read-through stays
 // out — it carries companionOf. Map total 110 → 111.
 // V19: The Same Word, a Different Master joins THE LAW & THE FEASTS (15 → 16);
@@ -209,7 +211,7 @@ export const POST_GROUP = {
   // ── One Throne, One Name (1) — Trinity-examining studies ──
   'the-judgment-of-christ': 'one-throne-one-name',
 
-  // ── The Parables (10) — the parables in the text ──
+  // ── The Parables (11) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
   // Foundation Bar on /parables and is pulled from that grid there; the blog is
   // a different surface — the chronological feed — so it carries a card here.
@@ -225,6 +227,7 @@ export const POST_GROUP = {
   'the-stone-that-was-sown': 'the-parables',
   'new-wine-old-bottles': 'the-parables',
   'the-strong-man-bound': 'the-parables',
+  'strange-apparel': 'the-parables',
 
   // ── The Side Door (2) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable

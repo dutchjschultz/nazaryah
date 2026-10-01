@@ -1,4 +1,6 @@
-// parables 1001 V11.js
+// parables 1001 V12.js
+// V12: id 22, the marriage of the king's son, goes live - Strange Apparel. Its
+// row already reads Matthew 22:1-14, the range the study argues.
 // V11: id 4, the strong man bound, goes live - The Strong Man Bound. The study
 // reads Mark 3:20-30 with Matthew 12:22-30 and Luke 11:14-22; the row keeps the
 // parable's own verses (Mark 3:27), as V10 left New Wine's row on its parable.
@@ -260,7 +262,8 @@ export const parables = [
     refs: [
       { gospel: "Matthew", ref: "Matthew 22:1-14", ch: 22, v: 1 }
     ],
-    study: null
+    // Strange Apparel - live.
+    study: "/blog/strange-apparel"
   },
   {
     id: 23,
