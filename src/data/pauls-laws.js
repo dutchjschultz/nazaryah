@@ -1,5 +1,5 @@
-// pauls-laws 1001 V1.js
-// First load: Paul’s Laws teaching page content (intro, ten laws, summary, conclusion). Strings may hold <em>/<strong>; render with set:html.
+// pauls-laws 1002 V2.js
+// Intro line 3 reworded (no stray 'handout' reference); added handoutPdf path.
 export const paulsLaws = {
   "slug": "pauls-laws",
   "title": "Paul’s Laws",
@@ -8,10 +8,11 @@ export const paulsLaws = {
   "deck": "One word, ten jobs. Separate them and Romans stops contradicting itself.",
   "framing": "When Paul writes the word “law,” which law does he mean — and what goes wrong when every one of them is read as the same law?",
   "date": "2026-10-01",
+  "handoutPdf": "/downloads/torah/pauls-laws-handout.pdf",
   "intro": [
     "Most people know that not every law is the same law. A parking ticket and a robbery charge both count as “breaking the law,” but nobody treats them the same. People know a misdemeanor from a felony. They know the speed limit sign is one law and the fine for speeding is another. And they know that paying the fine does not take the speed limit sign down.",
     "Yet when people read the word “law” in Romans, they treat every one as the same law. Many pulpits read “not under the law” and decide that the commandments of Yahuah (God) are gone. Paul never said that. In Romans he names about ten different laws, and each one does a different job. Once they are separated, Romans stops sounding like it contradicts itself.",
-    "Each law below has its verses, a short explanation, an everyday picture, and the point it proves. The handout reads best with a King James Bible open alongside it."
+    "Each law opens on its own, with its verses, a short explanation, an everyday picture, and the point it proves. The study reads best with a King James Bible open alongside it, and a printable handout of the whole study is available for home or group study."
   ],
   "laws": [
     {

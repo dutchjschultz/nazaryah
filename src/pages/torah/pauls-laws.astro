@@ -1,78 +1,196 @@
 ---
-// torah/pauls-laws 1001 V1.astro
-// V1. First load: Paul's Laws teaching page, rendered from src/data/pauls-laws.js
-// (intro, ten laws, side by side, conclusion). Data strings may hold <em>/<strong>,
-// so prose renders with set:html. The card deck sits in a clipped .thesis element
-// (the torah deck class in backfill-social-images) so a regenerated card reads the
-// deck, not the meta description. Torah dark theme, matching /torah.
+// torah/pauls-laws 1002 V2.astro
+// V2. One long scroll becomes a click-through viewer, driven by location.hash:
+// "" / #start = HOME (masthead, intro, handout button, 12-item menu); #law-1 …
+// #law-10, #side-by-side, #conclusion = that panel alone. Every panel is in the
+// HTML (search engines, no-JS readers). The inline script adds .pl-js to the
+// wrapper and toggles `hidden` on the panels; without it all panels show in
+// order, as V1 did, and the viewer chrome (top bar, sidebar, toggle, prev/next)
+// stays hidden. The deck now shows on HOME (still class .thesis, the torah deck
+// class in backfill-social-images). Handout PDF button on HOME and at the foot
+// of the Conclusion. Wording is the data file's, untouched.
+// V1. First load, rendered from src/data/pauls-laws.js.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { paulsLaws as p } from '../../data/pauls-laws.js';
 
 const description = `${p.subtitle}. ${p.framing}`;
+const total = p.laws.length;
+
+// The 12 views after HOME, in reading order.
+const items = [
+  ...p.laws.map((law) => ({
+    id: `law-${law.n}`,
+    menu: `${law.n}. ${law.title}`,
+    title: law.title,
+    label: `Law ${law.n} of ${total}`,
+    teaser: law.point,
+  })),
+  { id: 'side-by-side', menu: 'All Ten, Side by Side', title: 'All Ten, Side by Side', label: 'Summary' },
+  { id: 'conclusion', menu: 'Conclusion', title: 'Conclusion', label: 'Conclusion' },
+];
+const prev = (i) => items[i - 1];
+const next = (i) => items[i + 1];
+const views = Object.fromEntries(items.map((it) => [it.id, it.label]));
 ---
 
 <BaseLayout title={`${p.title} — Torah — Nazaryah`} description={description} article>
-  <div class="pl-wrap">
+  <div class="pl-wrap" id="pl-viewer" data-view="start">
 
-    <header class="pl-hero">
-      <a class="pl-back" href="/torah">&larr; Torah</a>
-      <p class="pl-eyebrow">&#8213; {p.eyebrow} &#8213;</p>
-      <h1 class="pl-title">{p.title}</h1>
-      <p class="pl-sub">{p.subtitle}</p>
-      <p class="thesis pl-clip">{p.deck}</p>
-    </header>
-
-    <section class="pl-section">
-      <div class="pl-prose">
-        <p class="pl-framing" set:html={p.framing} />
-        {p.intro.map((para) => <p set:html={para} />)}
+    <!-- Viewer chrome (JS only): top bar + mobile list toggle -->
+    <div class="pl-chrome">
+      <div class="pl-topbar">
+        <a class="pl-toplink" href="#start">&larr; All Laws</a>
+        <span class="pl-toplabel" id="pl-toplabel"></span>
       </div>
-
-      <nav class="pl-index" aria-label="The ten laws">
-        <ol>
-          {p.laws.map((law) => (
-            <li><a href={`#law-${law.n}`}><span class="pl-index-n">{law.n}</span>{law.title}</a></li>
-          ))}
+      <details class="pl-toggle" id="pl-toggle">
+        <summary>All laws &#9662;</summary>
+        <ol class="pl-navlist">
+          {items.map((it) => <li><a href={`#${it.id}`} data-nav={it.id}>{it.menu}</a></li>)}
         </ol>
-      </nav>
-    </section>
+      </details>
+    </div>
 
-    <section class="pl-section pl-section-alt">
-      <div class="pl-laws">
-        {p.laws.map((law) => (
-          <article class="pl-law" id={`law-${law.n}`}>
-            <p class="pl-law-n">Law {law.n} of {p.laws.length}</p>
-            <h2 class="pl-law-title">{law.title}</h2>
-            <p class="pl-refs">{law.refs}</p>
-            {law.body.map((para) => <p class="pl-body" set:html={para} />)}
-            <div class="pl-picture">
-              <p class="pl-tag">The Picture</p>
-              <p set:html={law.picture} />
+    <div class="pl-layout">
+
+      <aside class="pl-sidebar" aria-label="Paul’s Laws">
+        <a class="pl-side-home" href="#start">Paul’s Laws</a>
+        <ol class="pl-navlist">
+          {items.map((it) => <li><a href={`#${it.id}`} data-nav={it.id}>{it.menu}</a></li>)}
+        </ol>
+      </aside>
+
+      <div class="pl-main">
+
+        <!-- HOME -->
+        <section class="pl-panel pl-home" id="start" data-panel="start">
+          <header class="pl-hero">
+            <a class="pl-back" href="/torah">&larr; Torah</a>
+            <p class="pl-eyebrow">&#8213; {p.eyebrow} &#8213;</p>
+            <h1 class="pl-title">{p.title}</h1>
+            <p class="pl-sub">{p.subtitle}</p>
+            <p class="thesis pl-deck">{p.deck}</p>
+          </header>
+
+          <div class="pl-section">
+            <div class="pl-prose">
+              <p class="pl-framing" set:html={p.framing} />
+              {p.intro.map((para) => <p set:html={para} />)}
+              <p class="pl-handout-wrap">
+                <a class="pl-handout" href={p.handoutPdf} target="_blank" rel="noopener">Download the printable handout (PDF)</a>
+              </p>
             </div>
-            <div class="pl-point">
-              <p class="pl-tag">The Point</p>
-              <p set:html={law.point} />
-            </div>
-          </article>
+
+            <nav class="pl-menu" aria-label="The ten laws">
+              <ol>
+                {items.map((it) => (
+                  <li>
+                    <a href={`#${it.id}`}>
+                      <span class="pl-menu-title">{it.menu}</span>
+                      {it.teaser && <span class="pl-menu-teaser" set:html={it.teaser} />}
+                    </a>
+                  </li>
+                ))}
+              </ol>
+            </nav>
+          </div>
+        </section>
+
+        <!-- LAWS 1–10 -->
+        {p.laws.map((law, i) => (
+          <section class="pl-panel" id={`law-${law.n}`} data-panel={`law-${law.n}`}>
+            <article class="pl-law">
+              <p class="pl-law-n">Law {law.n} of {total}</p>
+              <h2 class="pl-law-title">{law.title}</h2>
+              <p class="pl-refs">{law.refs}</p>
+              {law.body.map((para) => <p class="pl-body" set:html={para} />)}
+              <div class="pl-picture">
+                <p class="pl-tag">The Picture</p>
+                <p set:html={law.picture} />
+              </div>
+              <div class="pl-point">
+                <p class="pl-tag">The Point</p>
+                <p set:html={law.point} />
+              </div>
+            </article>
+            <nav class="pl-pager" aria-label="Previous and next">
+              {prev(i) ? <a class="pl-prev" href={`#${prev(i).id}`}>&larr; Previous: {prev(i).title}</a> : <span />}
+              <a class="pl-next" href={`#${next(i).id}`}>Next: {next(i).title} &rarr;</a>
+            </nav>
+          </section>
         ))}
-      </div>
-    </section>
 
-    <section class="pl-section">
-      <div class="pl-prose">
-        <h2 class="pl-h2">All Ten, Side by Side</h2>
-        {p.together.map((para) => <p set:html={para} />)}
-      </div>
-    </section>
+        <!-- SIDE BY SIDE -->
+        <section class="pl-panel" id="side-by-side" data-panel="side-by-side">
+          <article class="pl-law">
+            <h2 class="pl-law-title">All Ten, Side by Side</h2>
+            {p.together.map((para) => <p class="pl-body" set:html={para} />)}
+          </article>
+          <nav class="pl-pager" aria-label="Previous and next">
+            <a class="pl-prev" href={`#${items[total - 1].id}`}>&larr; Previous: {items[total - 1].title}</a>
+            <a class="pl-next" href="#conclusion">Next: Conclusion &rarr;</a>
+          </nav>
+        </section>
 
-    <section class="pl-section pl-section-alt">
-      <div class="pl-prose">
-        <h2 class="pl-h2">Conclusion</h2>
-        {p.conclusion.map((para) => <p set:html={para} />)}
-      </div>
-    </section>
+        <!-- CONCLUSION -->
+        <section class="pl-panel" id="conclusion" data-panel="conclusion">
+          <article class="pl-law">
+            <h2 class="pl-law-title">Conclusion</h2>
+            {p.conclusion.map((para) => <p class="pl-body" set:html={para} />)}
+            <p class="pl-handout-wrap pl-handout-foot">
+              <a class="pl-handout" href={p.handoutPdf} target="_blank" rel="noopener">Download the printable handout (PDF)</a>
+            </p>
+          </article>
+          <nav class="pl-pager" aria-label="Previous and back">
+            <a class="pl-prev" href="#side-by-side">&larr; Previous: All Ten, Side by Side</a>
+            <a class="pl-next" href="#start">&larr; Back to All Laws</a>
+          </nav>
+        </section>
 
+      </div>
+    </div>
   </div>
+
+  <script is:inline define:vars={{ views }}>
+    (function () {
+      var root = document.getElementById('pl-viewer');
+      if (!root) return;
+      root.classList.add('pl-js');
+      var panels = root.querySelectorAll('[data-panel]');
+      var navLinks = root.querySelectorAll('[data-nav]');
+      var label = document.getElementById('pl-toplabel');
+      var toggle = document.getElementById('pl-toggle');
+
+      function current() {
+        var h = decodeURIComponent(location.hash.slice(1));
+        return Object.prototype.hasOwnProperty.call(views, h) ? h : 'start';
+      }
+      function show(scroll) {
+        var v = current();
+        root.setAttribute('data-view', v);
+        for (var i = 0; i < panels.length; i++) {
+          panels[i].hidden = panels[i].getAttribute('data-panel') !== v;
+        }
+        for (var j = 0; j < navLinks.length; j++) {
+          if (navLinks[j].getAttribute('data-nav') === v) navLinks[j].setAttribute('aria-current', 'page');
+          else navLinks[j].removeAttribute('aria-current');
+        }
+        if (label) label.textContent = views[v] || '';
+        if (toggle) toggle.open = false;
+        if (scroll) {
+          // After the browser's own jump to the anchor, settle on the viewer top.
+          requestAnimationFrame(function () {
+            if (v === 'start') { window.scrollTo(0, 0); return; }
+            // The site header is sticky, so land the viewer just below it.
+            var hd = document.querySelector('header');
+            var offset = hd && getComputedStyle(hd).position !== 'static' ? hd.offsetHeight : 0;
+            window.scrollTo(0, root.getBoundingClientRect().top + window.scrollY - offset);
+          });
+        }
+      }
+      show(location.hash.length > 1);
+      window.addEventListener('hashchange', function () { show(true); });
+    })();
+  </script>
 </BaseLayout>
 
 <style>
@@ -92,40 +210,84 @@ const description = `${p.subtitle}. ${p.framing}`;
   .pl-eyebrow{font-family:'Cinzel',serif;font-size:10px;letter-spacing:4px;color:#8a6028;text-transform:uppercase;margin:0 0 .75rem;}
   .pl-title{font-family:'Cinzel',serif;font-size:clamp(2.5rem,6vw,4rem);font-weight:700;color:#f0e0bf;margin:0 0 1rem;line-height:1.1;}
   .pl-sub{font-size:clamp(1rem,2vw,1.2rem);color:#c4a46b;font-style:italic;max-width:600px;margin:0 auto;line-height:1.6;}
-  .pl-clip{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap;margin:0;padding:0;}
+  .pl-deck{font-size:1.05rem;color:#d9c9a8;font-style:italic;max-width:560px;margin:1rem auto 0;line-height:1.6;}
 
-  .pl-section{padding:3.5rem 1.5rem;border-bottom:1px solid #2e1f0d;}
-  .pl-section-alt{background:rgba(10,6,2,.3);}
+  .pl-section{padding:3.5rem 1.5rem;}
   .pl-prose{max-width:680px;margin:0 auto;font-size:1.125rem;line-height:1.85;}
   .pl-prose p{margin:0 0 1.5rem;} .pl-prose p:last-child{margin:0;}
   .pl-framing{font-style:italic;color:#c4a46b;font-size:1.25rem;line-height:1.6;border-left:2px solid #8a6028;padding-left:1.25rem;}
-  .pl-h2{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:600;color:#f0e0bf;margin:0 0 1.25rem;padding-bottom:.6rem;border-bottom:1px solid #3a2510;}
-  .pl-prose :global(strong){color:#f0e0bf;}
 
-  .pl-index{max-width:680px;margin:2.5rem auto 0;}
-  .pl-index ol{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.5rem 1.5rem;}
-  .pl-index a{display:flex;gap:.75rem;align-items:baseline;padding:.45rem 0;border-bottom:1px solid #2e1f0d;color:#d9c9a8;text-decoration:none;font-size:1.05rem;}
-  .pl-index a:hover{color:#f0e0bf;border-bottom-color:#8a6028;}
-  .pl-index-n{font-family:'Cinzel',serif;font-size:.8rem;color:#8a6028;min-width:1.4rem;}
+  .pl-handout-wrap{text-align:center;margin-top:2rem !important;}
+  .pl-handout{display:inline-block;font-family:'Cinzel',serif;font-size:.8rem;letter-spacing:2px;text-transform:uppercase;color:#f0e0bf;text-decoration:none;border:1px solid #8a6028;border-radius:3px;padding:.8rem 1.4rem;background:rgba(138,96,40,.12);transition:all .2s ease;}
+  .pl-handout:hover{background:rgba(138,96,40,.3);border-color:#c4a46b;}
+  .pl-handout-foot{margin-top:2.25rem !important;padding-top:1.5rem;border-top:1px solid #2e1f0d;}
 
-  .pl-laws{max-width:720px;margin:0 auto;}
-  .pl-law{background:rgba(20,13,5,.6);border:1px solid #3a2510;border-radius:4px;padding:2rem 2.25rem;scroll-margin-top:5rem;}
-  .pl-law+.pl-law{margin-top:1.75rem;}
+  /* HOME menu: vertical card list */
+  .pl-menu{max-width:680px;margin:3rem auto 0;}
+  .pl-menu ol{list-style:none;margin:0;padding:0;}
+  .pl-menu li+li{margin-top:.75rem;}
+  .pl-menu a{display:block;text-decoration:none;background:rgba(20,13,5,.6);border:1px solid #3a2510;border-radius:4px;padding:1rem 1.25rem;transition:all .2s ease;}
+  .pl-menu a:hover{border-color:#8a6028;background:rgba(30,20,8,.7);}
+  .pl-menu-title{display:block;font-family:'Cinzel',serif;font-size:1.05rem;color:#f0e0bf;line-height:1.35;}
+  .pl-menu-teaser{display:block;margin-top:.35rem;font-size:.95rem;font-style:italic;color:#a88a58;line-height:1.5;}
+
+  /* Law / section panels */
+  .pl-panel:not(.pl-home){padding:2.5rem 1.5rem;border-top:1px solid #2e1f0d;}
+  .pl-law{max-width:720px;margin:0 auto;background:rgba(20,13,5,.6);border:1px solid #3a2510;border-radius:4px;padding:2rem 2.25rem;}
   .pl-law-n{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8a6028;margin:0 0 .6rem;}
   .pl-law-title{font-family:'Cinzel',serif;font-size:1.5rem;color:#f0e0bf;margin:0 0 .5rem;line-height:1.25;}
   .pl-refs{font-size:.95rem;color:#a88a58;margin:0 0 1.25rem;}
   .pl-body{font-size:1.1rem;line-height:1.8;margin:0 0 1.1rem;}
   .pl-body :global(em){color:#f0e0bf;}
+  .pl-body :global(strong){color:#f0e0bf;}
   .pl-picture,.pl-point{border-top:1px solid #2e1f0d;padding-top:1rem;margin-top:1.25rem;}
   .pl-picture p,.pl-point p{margin:0;font-size:1.05rem;line-height:1.7;}
   .pl-picture p:not(.pl-tag){font-style:italic;color:#c4a46b;}
   .pl-point p:not(.pl-tag){color:#f0e0bf;}
   .pl-tag{font-family:'Cinzel',serif;font-size:10px !important;letter-spacing:3px;text-transform:uppercase;color:#8a6028;margin:0 0 .4rem !important;}
 
+  /* Viewer chrome — hidden until the script runs */
+  .pl-chrome,.pl-sidebar,.pl-pager{display:none;}
+
+  .pl-js .pl-panel:not(.pl-home){border-top:0;padding-top:1.5rem;}
+  .pl-js .pl-law-n{display:none;}
+  .pl-js .pl-pager{display:flex;justify-content:space-between;gap:1rem;max-width:720px;margin:1.25rem auto 0;}
+  .pl-pager a{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:1.5px;text-transform:uppercase;color:#c4a46b;text-decoration:none;line-height:1.5;padding:.5rem 0;}
+  .pl-pager a:hover{color:#f0e0bf;}
+  .pl-next{text-align:right;margin-left:auto;}
+
+  .pl-js:not([data-view="start"]) .pl-chrome{display:block;max-width:720px;margin:0 auto;padding:1.5rem 1.5rem 0;}
+  .pl-topbar{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding-bottom:.75rem;border-bottom:1px solid #3a2510;}
+  .pl-toplink{font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#c4a46b;text-decoration:none;}
+  .pl-toplink:hover{color:#f0e0bf;}
+  .pl-toplabel{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8a6028;}
+
+  .pl-toggle{margin-top:.75rem;}
+  .pl-toggle summary{cursor:pointer;list-style:none;font-family:'Cinzel',serif;font-size:.78rem;letter-spacing:2px;text-transform:uppercase;color:#c4a46b;padding:.4rem 0;}
+  .pl-toggle summary::-webkit-details-marker{display:none;}
+  .pl-toggle .pl-navlist{margin-top:.5rem;background:rgba(20,13,5,.85);border:1px solid #3a2510;border-radius:4px;padding:.5rem;}
+
+  .pl-navlist{list-style:none;margin:0;padding:0;}
+  .pl-navlist a{display:block;padding:.45rem .75rem;border-radius:3px;color:#d9c9a8;text-decoration:none;font-size:1rem;line-height:1.35;}
+  .pl-navlist a:hover{color:#f0e0bf;background:rgba(138,96,40,.12);}
+  .pl-navlist a[aria-current]{color:#f0e0bf;background:rgba(138,96,40,.25);box-shadow:inset 2px 0 0 #c4a46b;}
+
+  @media (min-width:900px){
+    .pl-js:not([data-view="start"]) .pl-toggle{display:none;}
+    .pl-js:not([data-view="start"]) .pl-layout{display:grid;grid-template-columns:260px minmax(0,1fr);gap:1.5rem;max-width:1080px;margin:0 auto;padding:0 1.5rem;}
+    .pl-js:not([data-view="start"]) .pl-chrome{max-width:1080px;padding-left:calc(1.5rem + 260px + 1.5rem);}
+    .pl-js:not([data-view="start"]) .pl-sidebar{display:block;position:sticky;top:8.5rem;align-self:start;padding:1.5rem 0;max-height:calc(100vh - 9rem);overflow-y:auto;}
+    .pl-side-home{display:block;font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8a6028;text-decoration:none;padding:0 .75rem .75rem;}
+    .pl-js:not([data-view="start"]) .pl-panel:not(.pl-home){padding-left:0;padding-right:0;}
+  }
+
   @media (max-width:620px){
     .pl-hero{padding:2.5rem 1rem 2.5rem;}
     .pl-section{padding:2.5rem 1rem;}
+    .pl-panel:not(.pl-home){padding-left:1rem;padding-right:1rem;}
+    .pl-js:not([data-view="start"]) .pl-chrome{padding-left:1rem;padding-right:1rem;}
     .pl-law{padding:1.5rem 1.25rem;}
-    .pl-index ol{grid-template-columns:1fr;}
+    .pl-pager{flex-direction:column;gap:.25rem;}
+    .pl-next{text-align:left;margin-left:0;}
   }
 </style>
