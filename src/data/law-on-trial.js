@@ -9,7 +9,7 @@
 //         'planned' — foundations only; listed so the architecture is visible
 
 export const meta = {
-  version: 6,
+  version: 7,
   updated: '2026-10-03',
 };
 
@@ -83,7 +83,7 @@ export const STUDIES = [
     reference: 'Romans 14:14',
     title: 'Nothing Unclean of Itself',
     deck: 'The word Paul used, and the argument the chapter says he was settling',
-    foundations: ['f-10'],
+    foundations: ['f-09', 'f-10'],
     group: 'D',
     status: 'live',
   },
