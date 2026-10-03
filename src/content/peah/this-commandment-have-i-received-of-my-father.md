@@ -1,16 +1,18 @@
 ---
 title: "This Commandment Have I Received of My Father"
 reference: "John 10:18"
-deck: "The verse used to say Yahushua raised himself ends with a commandment from the Father."
+deck: "Power in this verse is authority given by the Father, the same authority given to believers to become sons of God."
 group: "One God"
 keyVerse: "I have power to lay it down, and I have power to take it again. This commandment have I received of my Father."
 keyVerseRef: "John 10:18"
-verses: "John 10:18 · Acts 2:24 · Galatians 1:1"
+verses: "John 10:18 · John 1:12-13 · 1 Corinthians 6:14"
 date: 2026-10-02
 ---
 
-Yahushua said of his life, "I have power to lay it down, and I have power to take it again. This commandment have I received of my Father" (John 10:18). Some read this as proof that he raised himself, and so he must be God.
+Yahushua said of his life, "I have power to lay it down, and I have power to take it again. This commandment have I received of my Father" (John 10:18). Many read this as proof that he raised himself, and so he must be God.
 
-Read the last line. The power came as a commandment, and he received it from his Father. Peter tells who raised him: "Whom God hath raised up, having loosed the pains of death" (Acts 2:24). Paul says the same, naming "God the Father, who raised him from the dead" (Galatians 1:1).
+The word "power" is exousia (G1849), authority. The same verse says where the authority came from: "This commandment have I received of my Father." The Son held it because the Father gave it.
 
-The Son laid his life down in obedience. The Father raised him up. Both halves of John 10:18 rest on what the Father gave.
+Believers are given the same authority. "But as many as received him, to them gave he power to become the sons of God" (John 1:12). It is the same word, exousia, and the next verse says those sons are born "of God" (John 1:13). No one reads that and says the believer raised himself to new life.
+
+Paul puts the two side by side: "God hath both raised up the Lord, and will also raise up us by his own power" (1 Corinthians 6:14). The authority was given. The raising was the Father's.
