@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  0929 V16
+backfill-social-images  1003 V17
+V17: a Foundation's own page (/torah/testimonies/foundations/<slug>) takes the
+FOUNDATION kicker, like the foundations index. It matched the testimonies
+prefix before and would have been carded TESTIMONY.
 V16: `peah` mapped to .peah-sub, then .pe-card-deck. The /peah index's card deck
 is its subtitle line ("The Corner of the Field"); an entry page carries a hidden
 .pe-card-deck holding the entry's `deck` field. Neither falls back to the meta
@@ -184,7 +187,7 @@ def kicker_for(rel):
     # Torah Testimonies — its own section kickers (never STUDY/REFERENCE).
     if rel == "torah/testimonies":
         return "THE LAW ON TRIAL"
-    if rel == "torah/testimonies/foundations":
+    if rel == "torah/testimonies/foundations" or rel.startswith("torah/testimonies/foundations/"):
         return "FOUNDATION"
     if rel.startswith("torah/testimonies/"):
         return "TESTIMONY"

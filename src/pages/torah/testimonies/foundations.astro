@@ -1,5 +1,8 @@
 ---
-// torah/testimonies/foundations.astro · 0807 V2
+// torah/testimonies/foundations.astro · 1003 V3
+// V3: reader-facing "studies" → "testimonies" (the tally reads "Cited by N
+// testimonies", singular at 1). F-10 is the first live foundation; its Read link
+// opens /torah/testimonies/foundations/<slug> (foundations/[slug].astro).
 // V2: section renamed/moved — back link reads "Back to Torah Testimonies" and
 // points at /torah/testimonies; the (future) live-foundation Read link moves to
 // /torah/testimonies/foundations/<slug>.
@@ -16,7 +19,7 @@ const citedBy = (key) => liveStudies.filter((s) => (s.foundations || []).include
 
 <BaseLayout
   title="The Foundations — Torah Testimonies"
-  description="A handful of arguments turn up in study after study. Rather than answer each from scratch every time, each is set down once here, in full."
+  description="A handful of arguments turn up in testimony after testimony. Rather than answer each from scratch every time, each is set down once here, in full."
 >
   <div class="tr-wrap">
     <div class="found-page">
@@ -27,7 +30,7 @@ const citedBy = (key) => liveStudies.filter((s) => (s.foundations || []).include
         <p class="found-eyebrow">&#8213; The Foundations &#8213;</p>
         <h1 class="found-h1">The Foundations</h1>
         <p class="found-intro">{SECTION.foundationsBlurb}</p>
-        <p class="found-intro found-intro--sub">Read these, and many of the studies fall open on their own.</p>
+        <p class="found-intro found-intro--sub">Read these, and many of the testimonies fall open on their own.</p>
 
         <div class="found-divider"></div>
 
@@ -41,7 +44,7 @@ const citedBy = (key) => liveStudies.filter((s) => (s.foundations || []).include
                   <p class="found-desc">{f.deck}</p>
                 </span>
                 <span class="found-meta">
-                  <span class="found-tally">Cited by <b>{citedBy(f.key)}</b> studies</span>
+                  <span class="found-tally">Cited by <b>{citedBy(f.key)}</b> {citedBy(f.key) === 1 ? 'testimony' : 'testimonies'}</span>
                   <span class="found-read">Read &rarr;</span>
                 </span>
               </a>

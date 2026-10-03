@@ -1,0 +1,107 @@
+---
+// TestimonyBody 1003 V1.astro
+// The reading column for a Torah Testimony or a Foundation body (markdown from
+// src/content/testimonies or src/content/foundations). Bodies use three
+// elements: ## section, ### sub-heading (Foundations), and a > scripture block
+// whose LAST paragraph is its reference ("— **Mark 7:15**").
+// Scripture blocks read as the Trinity studies' do: centred, italic, the
+// reference beneath in small caps. The opening "Where the … Collapses" section
+// (always the first ## of a testimony) carries the most weight on the page.
+// Styles are is:global under .tb-body: the markdown renders through <Content />,
+// which scoped styles do not reach.
+const { opening = false } = Astro.props;
+---
+
+<article class:list={['tb-body', { 'tb-has-opening': opening }]}>
+  <slot />
+</article>
+
+<style is:global>
+  .tb-body {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 3rem 1.5rem 4rem;
+    font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: #e6d3ad;
+  }
+  .tb-body p { margin: 0 0 1.25rem; }
+  .tb-body strong { color: #f0e0bf; }
+  .tb-body em { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; }
+
+  .tb-body h2 {
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    color: #c4a46b;
+    margin: 3rem 0 1.1rem;
+    padding-top: 1.6rem;
+    border-top: 1px solid #3a2810;
+    line-height: 1.35;
+  }
+  .tb-body h3 {
+    font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif;
+    font-style: italic;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #e0c48c;
+    margin: 2rem 0 0.75rem;
+  }
+  .tb-body ul { margin: 0 0 1.4rem; padding-left: 1.3rem; list-style: disc; }
+  .tb-body li { margin: 0 0 0.55rem; }
+  .tb-body li::marker { color: #8a6028; }
+
+  /* ── Scripture block ── */
+  .tb-body blockquote {
+    margin: 2rem auto;
+    padding: 1.4rem 1.5rem 1.2rem;
+    max-width: 580px;
+    text-align: center;
+    border-top: 1px solid #4a3218;
+    border-bottom: 1px solid #4a3218;
+    background: rgba(150, 90, 40, 0.07);
+  }
+  .tb-body blockquote p {
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.7;
+    color: #f0e0bf;
+    margin: 0 0 0.6rem;
+  }
+  /* The reference line — the label, not body text. */
+  .tb-body blockquote p:last-child {
+    font-style: normal;
+    font-family: 'Cinzel', serif;
+    font-variant-caps: small-caps;
+    font-size: 0.95rem;
+    letter-spacing: 1.5px;
+    color: #c4a46b;
+    margin: 0.4rem 0 0;
+  }
+  .tb-body blockquote p:last-child strong { color: inherit; font-weight: 600; }
+
+  /* ── Opening section: the first ## and its paragraphs, up to the second ## ── */
+  .tb-has-opening > h2:first-child {
+    border-top: none;
+    margin-top: 0;
+    padding-top: 0;
+    color: #e0c48c;
+    font-size: 1.3rem;
+  }
+  .tb-has-opening > h2:first-child ~ p:not(.tb-has-opening > h2:nth-of-type(2) ~ p) {
+    font-size: 1.25rem;
+    line-height: 1.75;
+    color: #f0e0bf;
+    border-left: 3px solid #c4a46b;
+    padding-left: 1.1rem;
+  }
+
+  @media (max-width: 600px) {
+    .tb-body { font-size: 1.08rem; padding: 2.25rem 1rem 3rem; }
+    .tb-body blockquote { padding: 1.1rem 1rem 1rem; }
+    .tb-body blockquote p { font-size: 1.1rem; }
+    .tb-has-opening > h2:first-child ~ p:not(.tb-has-opening > h2:nth-of-type(2) ~ p) { font-size: 1.15rem; }
+  }
+</style>

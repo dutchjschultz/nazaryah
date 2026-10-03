@@ -2,7 +2,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { getCollection } from 'astro:content';
 import { BLOG_GROUPS, BLOG_JUMPOUTS, groupOf, inFeed, extrasOf } from '../../data/blog-groups.js';
-import { COLLECTIONS, collectionSlugs, leavesTopic } from '../../data/collections.js';
+import { COLLECTIONS, collectionSlugs, leavesTopic, entryCount } from '../../data/collections.js';
 import CollectionCard from '../../components/CollectionCard.astro';
 
 const all = await getCollection('posts', ({ data }) => data.draft !== true);
@@ -20,7 +20,8 @@ const total = posts.length;
 const slugSet = new Set(all.map((p) => p.slug));
 const collections = COLLECTIONS.map((c) => ({
   collection: c,
-  count: collectionSlugs(c).filter((s) => slugSet.has(s)).length,
+  // An `entries` collection (Torah Testimonies) counts its items, not posts.
+  count: c.entries ? entryCount(c) : collectionSlugs(c).filter((s) => slugSet.has(s)).length,
 }));
 ---
 

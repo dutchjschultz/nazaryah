@@ -1,4 +1,8 @@
-// content config 1002 V18
+// content config 1003 V19
+// V19: two body-only collections for Torah Testimonies — `testimonies` and
+// `foundations` (src/content/testimonies, src/content/foundations). No
+// frontmatter: title, reference and deck live in src/data/law-on-trial.js, the
+// one source of truth; the entry id is the slug the data file names in `body`.
 // V18: Pe'ah `group` is now the entry's SUBJECT, restricted to PEAH_SUBJECTS
 // (Law | One God | Calendar and Feasts | Prophecy | Scripture) instead of the
 // Studies taxonomy names. `reference` now leads the displayed title.
@@ -327,9 +331,15 @@ const peahCollection = defineCollection({
   }),
 });
 
+// TORAH TESTIMONIES — markdown bodies only, no frontmatter (see V19).
+const testimoniesCollection = defineCollection({ type: 'content', schema: z.object({}) });
+const testimonyFoundationsCollection = defineCollection({ type: 'content', schema: z.object({}) });
+
 export const collections = {
   posts: postsCollection,
   peah: peahCollection,
+  testimonies: testimoniesCollection,
+  foundations: testimonyFoundationsCollection,
   glossary: glossaryCollection,
   'watchmans-report': watchmansReportCollection,
   'watchmans-desk': watchmansDeskCollection,

@@ -1,23 +1,32 @@
 ---
-// torah/testimonies/[slug].astro · 0807 V2
+// torah/testimonies/[slug].astro · 1003 V3
+// V3: renders the testimony body. One page per LIVE entry in STUDIES; the body
+// is the `testimonies` collection entry the data file names in `body`
+// (src/content/testimonies/<slug>.md, no frontmatter: reference, title and deck
+// come from law-on-trial.js). The draft stub is gone; a draft testimony gets no
+// page, and the index shows it dimmed with no link. A live testimony with no
+// body file fails the build. The first ## ("Where the … Collapses") is the
+// opening section (TestimonyBody `opening`).
 // V2: section renamed/moved — links read "Torah Testimonies" and point at
 // /torah/testimonies.
-// Stub study route. Generates one path per entry in STUDIES, renders the
-// reference, title, and deck, and returns a not-yet-published state for any
-// entry still in draft. Study bodies are loaded separately, one at a time, as
-// each is signed off. No "file" wording anywhere reader-facing.
+// No "file" wording anywhere reader-facing.
 import BaseLayout from '../../../layouts/BaseLayout.astro';
+import TestimonyBody from '../../../components/TestimonyBody.astro';
+import { getEntry } from 'astro:content';
 import { STUDIES } from '../../../data/law-on-trial.js';
 
 export function getStaticPaths() {
-  return STUDIES.map((study) => ({ params: { slug: study.slug }, props: { study } }));
+  return STUDIES.filter((s) => s.status === 'live').map((study) => ({ params: { slug: study.slug }, props: { study } }));
 }
 
 const { study } = Astro.props;
-const published = study.status === 'live';
+const id = (study.body || `${study.slug}.md`).replace(/\.md$/, '');
+const entry = await getEntry('testimonies', id);
+if (!entry) throw new Error(`Torah Testimonies: ${study.slug} is live but src/content/testimonies/${id}.md is missing`);
+const { Content } = await entry.render();
 ---
 
-<BaseLayout title={`${study.title} — Torah Testimonies`} description={study.deck}>
+<BaseLayout title={`${study.reference} — ${study.title} — Torah Testimonies`} description={study.deck}>
   <div class="tr-wrap">
 
     <section class="ls-hero">
@@ -27,13 +36,14 @@ const published = study.status === 'live';
       <p class="ls-deck">{study.deck}</p>
     </section>
 
-    {!published && (
-      <section class="ls-soon">
-        <p class="ls-soon-label">In progress</p>
-        <p class="ls-soon-text">This study has not been published yet. It is being prepared and will appear here once it is signed off, one study at a time.</p>
-        <a href="/torah/testimonies" class="ls-soon-link">Back to Torah Testimonies&nbsp;&#8594;</a>
-      </section>
-    )}
+    <TestimonyBody opening>
+      <Content />
+    </TestimonyBody>
+
+    <nav class="ls-foot">
+      <a href="/torah/testimonies/foundations" class="ls-foot-link">The Foundations&nbsp;&#8594;</a>
+      <a href="/torah/testimonies" class="ls-foot-link">All Torah Testimonies&nbsp;&#8594;</a>
+    </nav>
 
   </div>
 </BaseLayout>
@@ -93,28 +103,14 @@ const published = study.status === 'live';
     line-height: 1.6;
   }
 
-  .ls-soon {
-    max-width: 620px;
-    margin: 0 auto;
-    text-align: center;
-    padding: 4rem 1.5rem 5rem;
+  .ls-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem 2.5rem;
+    padding: 0 1.5rem 5rem;
   }
-  .ls-soon-label {
-    font-family: 'Cinzel', serif;
-    font-size: 11px;
-    letter-spacing: 3px;
-    text-transform: uppercase;
-    color: #7a5520;
-    margin: 0 0 1rem;
-  }
-  .ls-soon-text {
-    font-size: 1.1rem;
-    line-height: 1.75;
-    color: #b09060;
-    font-style: italic;
-    margin: 0 0 2rem;
-  }
-  .ls-soon-link {
+  .ls-foot-link {
     font-family: 'Cinzel', serif;
     font-size: 11px;
     letter-spacing: 2px;
@@ -123,5 +119,5 @@ const published = study.status === 'live';
     text-decoration: none;
     transition: color 0.2s;
   }
-  .ls-soon-link:hover { color: #f0e0bf; }
+  .ls-foot-link:hover { color: #f0e0bf; }
 </style>

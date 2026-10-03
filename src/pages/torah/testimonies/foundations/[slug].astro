@@ -1,0 +1,172 @@
+---
+// torah/testimonies/foundations/[slug].astro · 1003 V1
+// One page per LIVE foundation in FOUNDATIONS, at
+// /torah/testimonies/foundations/<slug> (the Read link on the foundations page).
+// Body is the `foundations` collection entry the data file names in `body`
+// (src/content/foundations/<slug>.md, no frontmatter). A live foundation with no
+// body file fails the build. Beneath the body, the live testimonies that cite
+// it — computed from STUDIES, never hand-kept.
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import TestimonyBody from '../../../../components/TestimonyBody.astro';
+import { getEntry } from 'astro:content';
+import { STUDIES, FOUNDATIONS } from '../../../../data/law-on-trial.js';
+
+export function getStaticPaths() {
+  return FOUNDATIONS.filter((f) => f.status === 'live').map((f) => ({ params: { slug: f.slug }, props: { f } }));
+}
+
+const { f } = Astro.props;
+const id = (f.body || `${f.slug}.md`).replace(/\.md$/, '');
+const entry = await getEntry('foundations', id);
+if (!entry) throw new Error(`Torah Testimonies: foundation ${f.slug} is live but src/content/foundations/${id}.md is missing`);
+const { Content } = await entry.render();
+const citing = STUDIES.filter((s) => s.status === 'live' && (s.foundations || []).includes(f.key));
+---
+
+<BaseLayout title={`${f.title} — The Foundations — Torah Testimonies`} description={f.deck}>
+  <div class="tr-wrap">
+
+    <section class="ls-hero">
+      <a href="/torah/testimonies/foundations" class="ls-back">&larr; Back to the Foundations</a>
+      <p class="ls-ref">Foundation {f.numeral}</p>
+      <h1 class="ls-title">{f.title}</h1>
+      <p class="ls-deck">{f.deck}</p>
+    </section>
+
+    <TestimonyBody>
+      <Content />
+    </TestimonyBody>
+
+    {citing.length > 0 && (
+      <section class="fc-cited">
+        <p class="fc-cited-label">Cited by {citing.length} {citing.length === 1 ? 'testimony' : 'testimonies'}</p>
+        <ul class="fc-cited-list">
+          {citing.map((s) => (
+            <li>
+              <a href={`/torah/testimonies/${s.slug}`}>
+                <span class="fc-cited-ref">{s.reference}</span>
+                <span class="fc-cited-title">{s.title}</span>
+              </a>
+            </li>
+          ))}
+        </ul>
+      </section>
+    )}
+
+    <nav class="ls-foot">
+      <a href="/torah/testimonies/foundations" class="ls-foot-link">The Foundations&nbsp;&#8594;</a>
+      <a href="/torah/testimonies" class="ls-foot-link">All Torah Testimonies&nbsp;&#8594;</a>
+    </nav>
+
+  </div>
+</BaseLayout>
+
+<style>
+  .tr-wrap {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #f0e0bf;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    min-height: 80vh;
+  }
+
+  .ls-hero {
+    text-align: center;
+    padding: 4rem 1.5rem 3rem;
+    border-bottom: 1px solid #4a3218;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(150, 90, 40, 0.18), transparent 70%),
+      linear-gradient(180deg, #0a0602 0%, #1a1208 100%);
+  }
+  .ls-back {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    color: #8a6028;
+    text-decoration: none;
+    text-transform: uppercase;
+    margin-bottom: 1.5rem;
+    transition: color 0.2s;
+  }
+  .ls-back:hover { color: #c4a46b; }
+
+  .ls-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c4a46b;
+    margin: 0 0 1rem;
+  }
+  .ls-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.8rem, 4.5vw, 2.8rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    margin: 0 0 1rem;
+    line-height: 1.15;
+  }
+  .ls-deck {
+    font-size: clamp(1rem, 2vw, 1.15rem);
+    color: #c4a46b;
+    font-style: italic;
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  .ls-foot {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.25rem 2.5rem;
+    padding: 0 1.5rem 5rem;
+  }
+  .ls-foot-link {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .ls-foot-link:hover { color: #f0e0bf; }
+  .fc-cited {
+    max-width: 680px;
+    margin: 0 auto 3.5rem;
+    padding: 1.75rem 1.5rem 0;
+    border-top: 1px solid #4a3218;
+  }
+  .fc-cited-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin: 0 0 1rem;
+    text-align: center;
+  }
+  .fc-cited-list { list-style: none; margin: 0; padding: 0; }
+  .fc-cited-list li + li { border-top: 1px solid #2e1f0d; }
+  .fc-cited-list a {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: baseline;
+    gap: 0.25rem 1rem;
+    padding: 0.7rem 0.25rem;
+    text-decoration: none;
+  }
+  .fc-cited-ref {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4a46b;
+    min-width: 11rem;
+  }
+  .fc-cited-title { font-size: 1.1rem; color: #f0e0bf; transition: color 0.2s; }
+  .fc-cited-list a:hover .fc-cited-title { color: #c4a46b; }
+</style>

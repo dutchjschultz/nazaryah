@@ -1,5 +1,7 @@
 ---
-// torah/testimonies/index.astro · 0807 V4
+// torah/testimonies/index.astro · 1003 V5
+// V5: first content load — seven testimonies live (data file V5). Empty-state
+// line reads "Testimonies", not "Studies". Nothing else changes.
 // V4: section renamed "Torah Testimonies" and route moved from /torah/law-on-trial
 // to /torah/testimonies (all internal links updated; 301 in netlify.toml). Title +
 // kicker come from the data file (title "Torah Testimonies", kicker "The Law on Trial").
@@ -68,7 +70,7 @@ import { SECTION, STUDIES } from '../../../data/law-on-trial.js';
 
       {STUDIES.length === 0 && (
         <div class="tr-empty">
-          <p>Studies are being prepared. Check back soon.</p>
+          <p>Testimonies are being prepared. Check back soon.</p>
         </div>
       )}
     </section>

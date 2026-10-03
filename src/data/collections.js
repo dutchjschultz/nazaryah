@@ -1,4 +1,15 @@
-// collections 1002 V4.js
+// collections 1003 V5.js
+// V5: Torah Testimonies — the first collection whose entries are NOT blog posts.
+// New optional field `entries`: a function returning the collection page's
+// sections, each { key, name, subtitle, accent, items }, where an item is a
+// ready card { collection, slug, href, data: { reference, title, deck } }.
+// An `entries` collection contributes no post slugs (collectionSlugs returns
+// []), so it never touches topic counts, /blog/all or any study's label. Its
+// index-card count is the number of items. Torah Testimonies reads
+// law-on-trial.js: live testimonies in array order (Acts 10 leads, never sorted),
+// grouped under a live foundation — the first live one, in FOUNDATIONS order,
+// that the testimony cites. Each card opens /torah/testimonies/<slug>, the
+// testimony's one page and one URL.
 // V4: `shelf` becomes `sections`. The collection page shows ONE page of study
 // cards grouped under a heading per section, in each section's own order,
 // instead of a shelf of links out. Books: all chapters under each book title, in
@@ -47,6 +58,7 @@
 import { INVESTIGATIONS } from './investigations.js';
 import { BLOG_GROUPS, POST_GROUP } from './blog-groups.js';
 import { BOOK_SHELF } from './books.js';
+import { STUDIES, FOUNDATIONS, STUDIES_COLLECTION } from './law-on-trial.js';
 
 export const COLLECTIONS = [
   {
@@ -93,10 +105,39 @@ export const COLLECTIONS = [
     // Side Door parables as well as chapters: they stay on that card too.
     alsoOnTopic: ['the-case-of-ned-goodman', 'one-throne-8-the-debt-of-wendell-hollis'],
   },
+  {
+    key: STUDIES_COLLECTION.key,
+    name: STUDIES_COLLECTION.title,
+    blurb: STUDIES_COLLECTION.deck,
+    countNoun: ['testimony', 'testimonies'],
+    sectionNoun: ['foundation', 'foundations'],
+    entries: () => {
+      const live = STUDIES.filter((s) => s.status === 'live');
+      const home = (s) => FOUNDATIONS.find((f) => f.status === 'live' && (s.foundations || []).includes(f.key));
+      return FOUNDATIONS.filter((f) => f.status === 'live')
+        .map((f) => ({
+          key: f.key,
+          name: f.title,
+          subtitle: f.deck,
+          href: `/torah/testimonies/foundations/${f.slug}`,
+          accent: '#9a6b1f',
+          items: live.filter((s) => home(s) === f).map((s) => ({
+            collection: 'testimonies',
+            slug: s.slug,
+            href: `/torah/testimonies/${s.slug}`,
+            data: { reference: s.reference, title: s.title, deck: s.deck },
+          })),
+        }))
+        .filter((sec) => sec.items.length > 0);
+    },
+  },
 ];
 
+// Item count for an `entries` collection's index card.
+export const entryCount = (c) => (c.entries ? c.entries().reduce((n, sec) => n + sec.items.length, 0) : 0);
+
 export const collectionSlugs = (c) =>
-  c.sections ? c.sections.flatMap((sec) => sec.slugs) : typeof c.slugs === 'function' ? c.slugs() : c.slugs;
+  c.entries ? [] : c.sections ? c.sections.flatMap((sec) => sec.slugs) : typeof c.slugs === 'function' ? c.slugs() : c.slugs;
 
 // slug -> collection key, first collection wins.
 const SLUG_TO_COLLECTION = {};
