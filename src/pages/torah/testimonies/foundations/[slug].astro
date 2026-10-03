@@ -1,5 +1,7 @@
 ---
-// torah/testimonies/foundations/[slug].astro · 1003 V1
+// torah/testimonies/foundations/[slug].astro · 1003 V2
+// V2: the label above the title is the foundation's F-number from `key`
+// ("Foundation F-10"); the Roman numeral is gone from the data.
 // One page per LIVE foundation in FOUNDATIONS, at
 // /torah/testimonies/foundations/<slug> (the Read link on the foundations page).
 // Body is the `foundations` collection entry the data file names in `body`
@@ -28,7 +30,7 @@ const citing = STUDIES.filter((s) => s.status === 'live' && (s.foundations || []
 
     <section class="ls-hero">
       <a href="/torah/testimonies/foundations" class="ls-back">&larr; Back to the Foundations</a>
-      <p class="ls-ref">Foundation {f.numeral}</p>
+      <p class="ls-ref">Foundation {f.key.toUpperCase()}</p>
       <h1 class="ls-title">{f.title}</h1>
       <p class="ls-deck">{f.deck}</p>
     </section>

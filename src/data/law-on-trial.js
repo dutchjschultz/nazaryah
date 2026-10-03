@@ -9,7 +9,7 @@
 //         'planned' — foundations only; listed so the architecture is visible
 
 export const meta = {
-  version: 5,
+  version: 6,
   updated: '2026-10-03',
 };
 
@@ -39,7 +39,7 @@ export const STUDIES = [
     reference: 'Acts 10:9–16',
     title: 'Three Times, Three Men',
     deck: 'A vision he could not read, and the meaning he gave it himself',
-    foundations: ['f-10', 'f-14'],
+    foundations: ['f-09', 'f-10', 'f-14'],
     group: 'D',
     status: 'live',
   },
@@ -112,14 +112,14 @@ export const STUDIES = [
 ];
 
 // ---------------------------------------------------------------------------
-// FOUNDATIONS — numbered rail. `citedBy` is COMPUTED at build time from
+// FOUNDATIONS — the rail shows each foundation's F-number from `key`.
+// No second numbering system. `citedBy` is COMPUTED at build time from
 // STUDIES where status === 'live'. Never hand-maintain a count here.
 // ---------------------------------------------------------------------------
 
 export const FOUNDATIONS = [
   {
     key: 'f-10',
-    numeral: 'I',
     slug: 'common-is-not-unclean',
     body: 'common-is-not-unclean.md',
     title: 'Common Is Not Unclean',
@@ -127,21 +127,21 @@ export const FOUNDATIONS = [
     verses: 19,
     status: 'live',
   },
-  { key: 'f-01', numeral: 'II', slug: 'which-law-is-under-discussion', title: 'Which Law Is Under Discussion', deck: 'The word law does not always name the same thing, and the argument depends on nobody checking.', verses: 29, status: 'planned' },
-  { key: 'f-02', numeral: 'III', slug: 'under-the-law', title: 'Under the Law Means Under the Sentence', deck: 'What a man is under when he is under the law, and what he is delivered from.', verses: 15, status: 'planned' },
-  { key: 'f-03', numeral: 'IV', slug: 'entry-by-blood-walk-by-bread', title: 'Entry by Blood, Walk by Bread', deck: 'How a man comes in, and how he walks once he is inside. Two questions, never one.', verses: 30, status: 'planned' },
-  { key: 'f-04', numeral: 'V', slug: 'the-abolition-vocabulary', title: 'The Abolition Vocabulary', deck: 'Abolished, blotted out, done away, made old — the words behind the words.', verses: 10, status: 'planned' },
-  { key: 'f-05', numeral: 'VI', slug: 'a-covenant-is-not-its-terms', title: 'A Covenant Is Not Its Terms', deck: 'An agreement can be replaced without the standard inside it changing at all.', verses: 17, status: 'planned' },
-  { key: 'f-06', numeral: 'VII', slug: 'what-changed-at-the-tree', title: 'What Actually Changed at the Tree', deck: 'Something real changed. Naming it precisely removes the need to overstate it.', verses: 17, status: 'planned' },
-  { key: 'f-07', numeral: 'VIII', slug: 'the-shadow-proves-the-body', title: 'The Shadow Proves the Body', deck: 'A shadow is cast by something solid. It does not vanish when the body arrives.', verses: 4, status: 'planned' },
-  { key: 'f-08', numeral: 'IX', slug: 'who-is-doing-the-judging', title: 'Identify Who Is Doing the Judging', deck: 'Before answering a warning about judgment, find out who was holding the gavel.', verses: 7, status: 'planned' },
-  { key: 'f-09', numeral: 'X', slug: 'commandments-and-traditions', title: 'Commandments of Yahuah, Traditions of Men', deck: 'The standing difference between what was written and what men added to it.', verses: 19, status: 'planned' },
-  { key: 'f-11', numeral: 'XI', slug: 'the-eight-first-day-texts', title: 'The Eight First-Day Texts', deck: 'Every passage said to move the Sabbath, read for what it actually reports.', verses: 8, status: 'planned' },
-  { key: 'f-12', numeral: 'XII', slug: 'sabbatismos-and-the-four-sabbaths', title: 'Sabbatismos and the Four Sabbaths', deck: 'The rest that remains, and the four Sabbaths the calendar actually holds.', verses: 3, status: 'planned' },
-  { key: 'f-13', numeral: 'XIII', slug: 'till-heaven-and-earth-pass', title: 'Till Heaven and Earth Pass Away', deck: 'He gave the expiry date Himself, and it has not arrived.', verses: 12, status: 'planned' },
-  { key: 'f-14', numeral: 'XIV', slug: 'one-law-for-the-stranger', title: 'One Law for the Stranger', deck: 'The nations were never given a second standard to walk by.', verses: 25, status: 'planned' },
-  { key: 'f-15', numeral: 'XV', slug: 'dispensational-vocabulary', title: 'Dispensational Vocabulary', deck: 'Ages, economies, and administrations — a system read back into the text.', verses: 5, status: 'planned' },
-  { key: 'f-16', numeral: 'XVI', slug: 'prophetic-indictment-is-not-repeal', title: 'Prophetic Indictment Is Not Repeal', deck: 'A prophet condemning empty worship is not a prophet cancelling the command.', verses: 6, status: 'planned' },
+  { key: 'f-01', slug: 'which-law-is-under-discussion', title: 'Which Law Is Under Discussion', deck: 'The word law does not always name the same thing, and the argument depends on nobody checking.', verses: 29, status: 'planned' },
+  { key: 'f-02', slug: 'under-the-law', title: 'Under the Law Means Under the Sentence', deck: 'What a man is under when he is under the law, and what he is delivered from.', verses: 15, status: 'planned' },
+  { key: 'f-03', slug: 'entry-by-blood-walk-by-bread', title: 'Entry by Blood, Walk by Bread', deck: 'How a man comes in, and how he walks once he is inside. Two questions, never one.', verses: 30, status: 'planned' },
+  { key: 'f-04', slug: 'the-abolition-vocabulary', title: 'The Abolition Vocabulary', deck: 'Abolished, blotted out, done away, made old — the words behind the words.', verses: 10, status: 'planned' },
+  { key: 'f-05', slug: 'a-covenant-is-not-its-terms', title: 'A Covenant Is Not Its Terms', deck: 'An agreement can be replaced without the standard inside it changing at all.', verses: 17, status: 'planned' },
+  { key: 'f-06', slug: 'what-changed-at-the-tree', title: 'What Actually Changed at the Tree', deck: 'Something real changed. Naming it precisely removes the need to overstate it.', verses: 17, status: 'planned' },
+  { key: 'f-07', slug: 'the-shadow-proves-the-body', title: 'The Shadow Proves the Body', deck: 'A shadow is cast by something solid. It does not vanish when the body arrives.', verses: 4, status: 'planned' },
+  { key: 'f-08', slug: 'who-is-doing-the-judging', title: 'Identify Who Is Doing the Judging', deck: 'Before answering a warning about judgment, find out who was holding the gavel.', verses: 7, status: 'planned' },
+  { key: 'f-09', slug: 'commandments-and-traditions', title: 'Commandments of Yahuah, Traditions of Men', deck: 'The standing difference between what was written and what men added to it.', verses: 19, status: 'planned' },
+  { key: 'f-11', slug: 'the-eight-first-day-texts', title: 'The Eight First-Day Texts', deck: 'Every passage said to move the Sabbath, read for what it actually reports.', verses: 8, status: 'planned' },
+  { key: 'f-12', slug: 'sabbatismos-and-the-four-sabbaths', title: 'Sabbatismos and the Four Sabbaths', deck: 'The rest that remains, and the four Sabbaths the calendar actually holds.', verses: 3, status: 'planned' },
+  { key: 'f-13', slug: 'till-heaven-and-earth-pass', title: 'Till Heaven and Earth Pass Away', deck: 'He gave the expiry date Himself, and it has not arrived.', verses: 12, status: 'planned' },
+  { key: 'f-14', slug: 'one-law-for-the-stranger', title: 'One Law for the Stranger', deck: 'The nations were never given a second standard to walk by.', verses: 25, status: 'planned' },
+  { key: 'f-15', slug: 'dispensational-vocabulary', title: 'Dispensational Vocabulary', deck: 'Ages, economies, and administrations — a system read back into the text.', verses: 5, status: 'planned' },
+  { key: 'f-16', slug: 'prophetic-indictment-is-not-repeal', title: 'Prophetic Indictment Is Not Repeal', deck: 'A prophet condemning empty worship is not a prophet cancelling the command.', verses: 6, status: 'planned' },
 ];
 
 // ---------------------------------------------------------------------------

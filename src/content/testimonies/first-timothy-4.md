@@ -86,4 +86,4 @@ Every one of those limits points back to the place where the word did the settin
 
 ## Foundations Cited
 
-F-10 Common Is Not Unclean  ·  F-01 Which Law Is Under Discussion
+F-09 Commandments of Yahuah, Traditions of Men  ·  F-10 Common Is Not Unclean

@@ -80,4 +80,4 @@ What a man takes in reaches his belly and stops there. What breaks the Law comes
 
 ## Foundations Cited
 
-F-10 Common Is Not Unclean  ·  F-09 Commandments of Yahuah, Traditions of Men
+F-10 Common Is Not Unclean
