@@ -1,4 +1,6 @@
-// blog-groups 1004 V24.js
+// blog-groups 1004 V25.js
+// V25: goat-that-was-not-slain moves to the-law-and-the-feasts (its category is now
+// The Feasts); the-year-of-liberty and forty-nine-or-fifty join it there.
 // V24: sign-of-the-goat registered under the-law-and-the-feasts (its category is
 // The Feasts; its companion, The Goat That Was Not Slain, stays in Scripture Unfiltered).
 // V23: THE PARABLES leaves BLOG_GROUPS — it is now the Parables COLLECTION card
@@ -273,7 +275,7 @@ export const POST_GROUP = {
   'clean-hands-pure-heart': 'scripture-unfiltered',
   'clothed-by-the-owner': 'scripture-unfiltered',
   'fruit-whose-work-is-it': 'scripture-unfiltered',
-  'goat-that-was-not-slain': 'scripture-unfiltered',
+  'goat-that-was-not-slain': 'the-law-and-the-feasts',
   'grace-new-creation-covenant-loyalty': 'scripture-unfiltered',
   'paradise-restored': 'scripture-unfiltered',
   'partakers-of-the-promise': 'scripture-unfiltered',
@@ -292,6 +294,8 @@ export const POST_GROUP = {
   'the-stolen-seat': 'scripture-unfiltered',
   'two-loads-in-the-wilderness': 'scripture-unfiltered',
   'sign-of-the-goat': 'the-law-and-the-feasts',
+  'the-year-of-liberty': 'the-law-and-the-feasts',
+  'forty-nine-or-fifty': 'the-law-and-the-feasts',
   'still-waiting-for-shavuot': 'scripture-unfiltered',
   'filled-but-not-indwelt': 'scripture-unfiltered',
   'two-kingdoms-one-walk': 'scripture-unfiltered',
