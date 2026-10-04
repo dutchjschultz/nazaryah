@@ -1,6 +1,8 @@
 ---
-// torah/testimonies/foundations.astro · 1003 V4
-// V4: the Roman numeral rail is gone. Each row shows its own F-number, from
+// torah/testimonies/foundations.astro · 1004 V5
+// V5: the "Cited by N testimonies" tally is hidden at zero; a live foundation
+// no live testimony cites shows only "Read →". Still computed from STUDIES.
+// V4 (1003): the Roman numeral rail is gone. Each row shows its own F-number, from
 // `key` (f-10 → F-10) — the number every testimony cites and the tracker uses.
 // Rows still run in array order (F-10 first). Column widened for "F-10".
 // V3: reader-facing "studies" → "testimonies" (the tally reads "Cited by N
@@ -47,7 +49,9 @@ const citedBy = (key) => liveStudies.filter((s) => (s.foundations || []).include
                   <p class="found-desc">{f.deck}</p>
                 </span>
                 <span class="found-meta">
-                  <span class="found-tally">Cited by <b>{citedBy(f.key)}</b> {citedBy(f.key) === 1 ? 'testimony' : 'testimonies'}</span>
+                  {citedBy(f.key) > 0 && (
+                    <span class="found-tally">Cited by <b>{citedBy(f.key)}</b> {citedBy(f.key) === 1 ? 'testimony' : 'testimonies'}</span>
+                  )}
                   <span class="found-read">Read &rarr;</span>
                 </span>
               </a>
