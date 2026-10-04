@@ -1,4 +1,6 @@
-// blog-groups 1002 V23.js
+// blog-groups 1004 V24.js
+// V24: sign-of-the-goat registered under the-law-and-the-feasts (its category is
+// The Feasts; its companion, The Goat That Was Not Slain, stays in Scripture Unfiltered).
 // V23: THE PARABLES leaves BLOG_GROUPS — it is now the Parables COLLECTION card
 // (src/data/collections.js), which took the key `the-parables`, so
 // /blog/c/the-parables keeps its address. The twelve POST_GROUP lines stay as
@@ -289,6 +291,7 @@ export const POST_GROUP = {
   'the-whole-counsel': 'scripture-unfiltered',
   'the-stolen-seat': 'scripture-unfiltered',
   'two-loads-in-the-wilderness': 'scripture-unfiltered',
+  'sign-of-the-goat': 'the-law-and-the-feasts',
   'still-waiting-for-shavuot': 'scripture-unfiltered',
   'filled-but-not-indwelt': 'scripture-unfiltered',
   'two-kingdoms-one-walk': 'scripture-unfiltered',
