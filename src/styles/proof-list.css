@@ -1,0 +1,187 @@
+/* src/styles/proof-list.css · 1005 V1
+   The numbered proof-text list (ProofTextList.jsx) on /trinity/files and
+   /torah/testimonies. Imported by each page; global because the list is a
+   React island. Cloned from the pt- timeline on /parables, in the dark palette
+   only — both pages are dark in both site themes. `pl-` prefix throughout. */
+  .pl-heading {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    text-align: center;
+    margin: 0 0 0.75rem;
+  }
+  .pl-intro {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic; font-size: 1.1rem; line-height: 1.6;
+    text-align: center; max-width: 40rem; margin: 0 auto 1.8rem;
+    color: #c4a46b; text-wrap: pretty;
+  }
+  .pl-index { max-width: 48rem; margin: 0 auto; }
+
+  /* ── SECTION CHIPS ── */
+  .pl-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
+  .pl-tab {
+    flex: 1 1 auto;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.8rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.6rem 0.9rem;
+    border: 1px solid rgba(186, 117, 23, 0.35);
+    background: rgba(30, 18, 8, 0.7);
+    color: #c9b489;
+    cursor: pointer;
+    white-space: nowrap;
+  }
+  .pl-tab:hover { border-color: #8a6028; }
+  .pl-tab-on, .pl-tab-on:hover { background: #8a6028; border-color: #8a6028; color: #f0e0bf; }
+
+  /* ── SEARCH ── */
+  .pl-searchrow { display: flex; gap: 0.5rem; margin-bottom: 0.6rem; }
+  .pl-search {
+    flex: 1;
+    min-width: 0;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1.05rem;
+    padding: 0.55rem 0.75rem;
+    border: 1px solid rgba(186, 117, 23, 0.35);
+    background: rgba(30, 18, 8, 0.7);
+    color: #ded0b4;
+  }
+  .pl-search::placeholder { color: #8a7857; }
+  .pl-search:focus { outline: none; border-color: #ba7517; }
+  .pl-clear {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    padding: 0 1rem;
+    border: 1px solid rgba(186, 117, 23, 0.35);
+    background: rgba(30, 18, 8, 0.7);
+    color: #ba7517;
+    cursor: pointer;
+  }
+  .pl-clear:hover { border-color: #8a6028; }
+
+  .pl-count {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 0 0 1.75rem;
+    color: #ba7517;
+  }
+  .pl-empty {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #c9b489;
+  }
+
+  /* ── THE LIST ── one rule down the left, a numbered node per verse. A coming
+     file is the bare, muted node; a written one wears the card. */
+  .pl-list { list-style: none; margin: 0; padding: 0 0 0 2.5rem; position: relative; }
+  .pl-list::before {
+    content: "";
+    position: absolute;
+    left: 0.85rem; top: 0.5rem; bottom: 0.5rem;
+    width: 1px;
+    background: #5a4526;
+  }
+  .pl-node { position: relative; margin-bottom: 1.5rem; }
+  .pl-num {
+    position: absolute;
+    left: -2.5rem; top: 0;
+    width: 1.7rem; height: 1.7rem;
+    line-height: 1.65rem;
+    text-align: center;
+    border-radius: 50%;
+    border: 1px solid #5a4526;
+    background: #160f07;
+    color: #8a7857;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.66rem;
+  }
+  .pl-ref {
+    font-family: 'Cormorant Garamond', Georgia, serif;
+    font-variant: small-caps;
+    font-size: 1.2rem;
+    line-height: 1.2;
+    color: #a8967a;
+  }
+  .pl-claim {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.45;
+    margin-top: 0.15rem;
+    color: #8a7857;
+  }
+  .pl-coming {
+    display: inline-block;
+    margin-top: 0.45rem;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 9px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    padding: 0.2rem 0.45rem;
+    border: 1px solid #5a4526;
+    color: #8a7857;
+  }
+
+  /* A written file — deeper ground, a gold spine, an arrow that moves. */
+  .pl-done .pl-card {
+    display: block;
+    padding: 0.9rem 1.15rem;
+    margin-left: -0.35rem;
+    background: rgba(50, 30, 10, 0.7);
+    border: 1px solid #3a2410;
+    border-left: 3px solid #8a6028;
+    text-decoration: none;
+    transition: border-color 0.2s;
+  }
+  .pl-done .pl-card:hover { border-color: #8a6028; }
+  .pl-done .pl-num {
+    top: 0.75rem;
+    left: -2.15rem;
+    background: #8a6028;
+    border-color: #8a6028;
+    color: #f0e0bf;
+  }
+  .pl-done .pl-ref { color: #c4a46b; font-size: 1.1rem; }
+  .pl-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.3;
+    margin-top: 0.2rem;
+    color: #f0e0bf;
+  }
+  .pl-deck {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 1rem;
+    line-height: 1.45;
+    margin-top: 0.3rem;
+    color: #b09060;
+  }
+  .pl-link {
+    margin-top: 0.6rem;
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ba7517;
+  }
+  .pl-arrow { display: inline-block; transition: transform 200ms ease; }
+  .pl-done .pl-card:hover .pl-arrow { transform: translateX(4px); }
+  @media (prefers-reduced-motion: reduce) { .pl-arrow { transition: none; } }
+
+  @media (max-width: 620px) {
+    .pl-tab { font-size: 0.7rem; letter-spacing: 0.05em; padding: 0.55rem 0.6rem; }
+    .pl-list { padding-left: 2.25rem; }
+    .pl-num { left: -2.25rem; }
+    .pl-done .pl-num { left: -1.9rem; }
+    .pl-title { font-size: 1.08rem; }
+  }

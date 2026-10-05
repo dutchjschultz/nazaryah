@@ -1,12 +1,15 @@
 ---
-// src/pages/trinity/files.astro · 1005 V1
+// src/pages/trinity/files.astro · 1005 V2
+// V2: the list is the shared ProofTextList (also on /torah/testimonies); its
+// styles moved to src/styles/proof-list.css. Nothing reader-facing changes.
 // V1: the five-across card grid of written studies is retired. The page now
 // carries every proof text, written and coming, as one numbered list built on
 // the /parables pattern (TrinityFilesTracker, data in src/data/trinity-files.js).
 // The rating sentence is gone from the intro: the star ratings went with the
 // move to the Study Paper format.
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import TrinityFilesTracker from '../../components/TrinityFilesTracker.jsx';
+import ProofTextList from '../../components/ProofTextList.jsx';
+import '../../styles/proof-list.css';
 import { getCollection } from 'astro:content';
 import { trinityFiles } from '../../data/trinity-files.js';
 
@@ -61,10 +64,18 @@ if (unlisted.length) throw new Error(`trinity-files.js: live Trinity File not on
 
     <!-- ── EVERY PROOF TEXT ── -->
     <section class="tr-posts-section" id="files" aria-label="Every proof text, in order">
-      <h2 class="tf-heading">Every Proof Text, in Order.</h2>
-      <p class="tf-intro">Every verse offered in defense of the Trinity, numbered in canonical order. Written files open; the rest are on the way.</p>
-      <div class="tf-index" data-pagefind-ignore>
-        <TrinityFilesTracker client:load />
+      <h2 class="pl-heading">Every Proof Text, in Order.</h2>
+      <p class="pl-intro">Every verse offered in defense of the Trinity, numbered in canonical order. Written files open; the rest are on the way.</p>
+      <div class="pl-index" data-pagefind-ignore>
+        <ProofTextList
+          client:load
+          items={trinityFiles}
+          base="/blog/"
+          cta="Open File"
+          noun="files"
+          comingTag
+          label="Search the Trinity Files"
+        />
       </div>
     </section>
 
@@ -247,193 +258,5 @@ if (unlisted.length) throw new Error(`trinity-files.js: live Trinity File not on
     letter-spacing: 2px;
     color: #7a5520;
     text-transform: uppercase;
-  }
-</style>
-
-<style is:global>
-  /* The list is a React island, so its rules must be global; the `tf-` prefix
-     keeps them on this page. Cloned from the pt- timeline on /parables, in the
-     dark palette only — this page is dark in both site themes. */
-  .tf-heading {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(1.4rem, 3vw, 2rem);
-    font-weight: 700;
-    color: #f0e0bf;
-    text-align: center;
-    margin: 0 0 0.75rem;
-  }
-  .tf-intro {
-    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
-    font-style: italic; font-size: 1.1rem; line-height: 1.6;
-    text-align: center; max-width: 40rem; margin: 0 auto 1.8rem;
-    color: #c4a46b; text-wrap: pretty;
-  }
-  .tf-index { max-width: 48rem; margin: 0 auto; }
-
-  /* ── SECTION CHIPS ── */
-  .tf-tabs { display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.75rem; }
-  .tf-tab {
-    flex: 1 1 auto;
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 0.8rem;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
-    padding: 0.6rem 0.9rem;
-    border: 1px solid rgba(186, 117, 23, 0.35);
-    background: rgba(30, 18, 8, 0.7);
-    color: #c9b489;
-    cursor: pointer;
-    white-space: nowrap;
-  }
-  .tf-tab:hover { border-color: #8a6028; }
-  .tf-tab-on, .tf-tab-on:hover { background: #8a6028; border-color: #8a6028; color: #f0e0bf; }
-
-  /* ── SEARCH ── */
-  .tf-searchrow { display: flex; gap: 0.5rem; margin-bottom: 0.6rem; }
-  .tf-search {
-    flex: 1;
-    min-width: 0;
-    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
-    font-size: 1.05rem;
-    padding: 0.55rem 0.75rem;
-    border: 1px solid rgba(186, 117, 23, 0.35);
-    background: rgba(30, 18, 8, 0.7);
-    color: #ded0b4;
-  }
-  .tf-search::placeholder { color: #8a7857; }
-  .tf-search:focus { outline: none; border-color: #ba7517; }
-  .tf-clear {
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 0.72rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    padding: 0 1rem;
-    border: 1px solid rgba(186, 117, 23, 0.35);
-    background: rgba(30, 18, 8, 0.7);
-    color: #ba7517;
-    cursor: pointer;
-  }
-  .tf-clear:hover { border-color: #8a6028; }
-
-  .tf-count {
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    margin: 0 0 1.75rem;
-    color: #ba7517;
-  }
-  .tf-empty {
-    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
-    font-style: italic;
-    font-size: 1.05rem;
-    color: #c9b489;
-  }
-
-  /* ── THE LIST ── one rule down the left, a numbered node per verse. A coming
-     file is the bare, muted node; a written one wears the card. */
-  .tf-list { list-style: none; margin: 0; padding: 0 0 0 2.5rem; position: relative; }
-  .tf-list::before {
-    content: "";
-    position: absolute;
-    left: 0.85rem; top: 0.5rem; bottom: 0.5rem;
-    width: 1px;
-    background: #5a4526;
-  }
-  .tf-node { position: relative; margin-bottom: 1.5rem; }
-  .tf-num {
-    position: absolute;
-    left: -2.5rem; top: 0;
-    width: 1.7rem; height: 1.7rem;
-    line-height: 1.65rem;
-    text-align: center;
-    border-radius: 50%;
-    border: 1px solid #5a4526;
-    background: #160f07;
-    color: #8a7857;
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 0.66rem;
-  }
-  .tf-ref {
-    font-family: 'Cormorant Garamond', Georgia, serif;
-    font-variant: small-caps;
-    font-size: 1.2rem;
-    line-height: 1.2;
-    color: #a8967a;
-  }
-  .tf-claim {
-    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
-    font-style: italic;
-    font-size: 1rem;
-    line-height: 1.45;
-    margin-top: 0.15rem;
-    color: #8a7857;
-  }
-  .tf-coming {
-    display: inline-block;
-    margin-top: 0.45rem;
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 9px;
-    letter-spacing: 1.5px;
-    text-transform: uppercase;
-    padding: 0.2rem 0.45rem;
-    border: 1px solid #5a4526;
-    color: #8a7857;
-  }
-
-  /* A written file — deeper ground, a gold spine, an arrow that moves. */
-  .tf-done .tf-card {
-    display: block;
-    padding: 0.9rem 1.15rem;
-    margin-left: -0.35rem;
-    background: rgba(50, 30, 10, 0.7);
-    border: 1px solid #3a2410;
-    border-left: 3px solid #8a6028;
-    text-decoration: none;
-    transition: border-color 0.2s;
-  }
-  .tf-done .tf-card:hover { border-color: #8a6028; }
-  .tf-done .tf-num {
-    top: 0.75rem;
-    left: -2.15rem;
-    background: #8a6028;
-    border-color: #8a6028;
-    color: #f0e0bf;
-  }
-  .tf-done .tf-ref { color: #c4a46b; font-size: 1.1rem; }
-  .tf-title {
-    font-family: 'Cinzel', serif;
-    font-size: 1.2rem;
-    font-weight: 600;
-    line-height: 1.3;
-    margin-top: 0.2rem;
-    color: #f0e0bf;
-  }
-  .tf-deck {
-    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
-    font-style: italic;
-    font-size: 1rem;
-    line-height: 1.45;
-    margin-top: 0.3rem;
-    color: #b09060;
-  }
-  .tf-link {
-    margin-top: 0.6rem;
-    font-family: 'Cinzel', serif;
-    font-size: 10px;
-    letter-spacing: 2px;
-    text-transform: uppercase;
-    color: #ba7517;
-  }
-  .tf-arrow { display: inline-block; transition: transform 200ms ease; }
-  .tf-done .tf-card:hover .tf-arrow { transform: translateX(4px); }
-  @media (prefers-reduced-motion: reduce) { .tf-arrow { transition: none; } }
-
-  @media (max-width: 620px) {
-    .tf-tab { font-size: 0.7rem; letter-spacing: 0.05em; padding: 0.55rem 0.6rem; }
-    .tf-list { padding-left: 2.25rem; }
-    .tf-num { left: -2.25rem; }
-    .tf-done .tf-num { left: -1.9rem; }
-    .tf-title { font-size: 1.08rem; }
   }
 </style>

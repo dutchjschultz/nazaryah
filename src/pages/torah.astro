@@ -1,20 +1,23 @@
 ---
-// torah.astro · 1003 V3 — the Torah Testimonies eyebrow counts testimonies, not studies
+// torah.astro · 1005 V4 — the Torah Testimonies eyebrow now reads from
+// src/data/torah-testimonies.js, the same file that builds /torah/testimonies,
+// so the card and the list can never disagree ("7 of 156 testimonies live · growing").
+// V3 — the Torah Testimonies eyebrow counts testimonies, not studies
 // ("7 of 155 testimonies live · growing"), still computed from STUDIES.
 // V2 — added the Paul's Laws card (eyebrow/title/deck/framing from pauls-laws.js).
 // V1 — added the Law on Trial card beneath the Legal Lexicon.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { liveTerms, terms } from '../data/legal-lexicon.js';
-import { STUDIES, TORAH_CARD } from '../data/law-on-trial.js';
+import { TORAH_CARD } from '../data/law-on-trial.js';
+import { torahTestimonies } from '../data/torah-testimonies.js';
 import { paulsLaws } from '../data/pauls-laws.js';
 
 const lexiconMeta = `${liveTerms.length} of ${terms.length} words live · growing`;
 
-// Law on Trial eyebrow — the static "in build" line until the first study goes
-// live, at which point it converts to the Lexicon's own
-// form ("N of 155 testimonies live"). Computed from STUDIES so it flips itself on the first sign-off.
-const lawLive = STUDIES.filter((s) => s.status === 'live').length;
-const lawMeta = lawLive > 0 ? `${lawLive} of 155 testimonies live · growing` : TORAH_CARD.eyebrow;
+// Law on Trial eyebrow — computed from the testimonies list. TORAH_CARD.eyebrow
+// is only the fallback for a list with nothing written.
+const lawLive = torahTestimonies.filter((t) => t.slug).length;
+const lawMeta = lawLive > 0 ? `${lawLive} of ${torahTestimonies.length} testimonies live · growing` : TORAH_CARD.eyebrow;
 ---
 
 <BaseLayout
