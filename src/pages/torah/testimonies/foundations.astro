@@ -1,5 +1,7 @@
 ---
-// torah/testimonies/foundations.astro · 1004 V5
+// torah/testimonies/foundations.astro · 1005 V6
+// V6: rows sort by foundation code, F-01 through F-16 — never by data-file
+// position or load date (F-10 used to lead because it went live first).
 // V5: the "Cited by N testimonies" tally is hidden at zero; a live foundation
 // no live testimony cites shows only "Read →". Still computed from STUDIES.
 // V4 (1003): the Roman numeral rail is gone. Each row shows its own F-number, from
@@ -18,6 +20,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import { SECTION, STUDIES, FOUNDATIONS } from '../../../data/law-on-trial.js';
 
 const fNum = (key) => key.toUpperCase();
+const byCode = (a, b) => parseInt(a.key.slice(2), 10) - parseInt(b.key.slice(2), 10);
+const ordered = [...FOUNDATIONS].sort(byCode);
 const liveStudies = STUDIES.filter((s) => s.status === 'live');
 const citedBy = (key) => liveStudies.filter((s) => (s.foundations || []).includes(key)).length;
 ---
@@ -40,7 +44,7 @@ const citedBy = (key) => liveStudies.filter((s) => (s.foundations || []).include
         <div class="found-divider"></div>
 
         <ol class="found-ledger">
-          {FOUNDATIONS.map((f) => (
+          {ordered.map((f) => (
             f.status === 'live' ? (
               <a class="found-row" href={`/torah/testimonies/foundations/${f.slug}`}>
                 <span class="found-num">{fNum(f.key)}</span>

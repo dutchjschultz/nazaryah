@@ -1,4 +1,9 @@
-// collections 1003 V5.js
+// collections 1005 V6.js
+// V6: Torah Testimonies headings run in foundation-code order (F-01 … F-16), and a
+// testimony now sits under the live foundation it cites that the MOST live
+// testimonies cite (ties by code) — not simply the first in list order. With
+// F-09 live and listed ahead of F-10, the old rule would have moved six of the
+// seven food testimonies off Common Is Not Unclean. Computed, never hand-kept.
 // V5: Torah Testimonies — the first collection whose entries are NOT blog posts.
 // New optional field `entries`: a function returning the collection page's
 // sections, each { key, name, subtitle, accent, items }, where an item is a
@@ -113,8 +118,13 @@ export const COLLECTIONS = [
     sectionNoun: ['foundation', 'foundations'],
     entries: () => {
       const live = STUDIES.filter((s) => s.status === 'live');
-      const home = (s) => FOUNDATIONS.find((f) => f.status === 'live' && (s.foundations || []).includes(f.key));
-      return FOUNDATIONS.filter((f) => f.status === 'live')
+      const code = (f) => parseInt(f.key.slice(2), 10);
+      const liveF = FOUNDATIONS.filter((f) => f.status === 'live').sort((a, b) => code(a) - code(b));
+      const citeCount = (f) => live.filter((s) => (s.foundations || []).includes(f.key)).length;
+      const home = (s) => liveF
+        .filter((f) => (s.foundations || []).includes(f.key))
+        .sort((a, b) => citeCount(b) - citeCount(a) || code(a) - code(b))[0];
+      return liveF
         .map((f) => ({
           key: f.key,
           name: f.title,

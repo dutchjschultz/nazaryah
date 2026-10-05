@@ -9,8 +9,8 @@
 //         'planned' — foundations only; listed so the architecture is visible
 
 export const meta = {
-  version: 8,
-  updated: '2026-10-04',
+  version: 9,
+  updated: '2026-10-05',
 };
 
 export const SECTION = {
@@ -112,21 +112,12 @@ export const STUDIES = [
 ];
 
 // ---------------------------------------------------------------------------
-// FOUNDATIONS — the rail shows each foundation's F-number from `key`.
-// No second numbering system. `citedBy` is COMPUTED at build time from
+// FOUNDATIONS — in code order, F-01 through F-16; the rail shows each
+// foundation's F-number from `key`. No second numbering system. `citedBy` is COMPUTED at build time from
 // STUDIES where status === 'live'. Never hand-maintain a count here.
 // ---------------------------------------------------------------------------
 
 export const FOUNDATIONS = [
-  {
-    key: 'f-10',
-    slug: 'common-is-not-unclean',
-    body: 'common-is-not-unclean.md',
-    title: 'Common Is Not Unclean',
-    deck: 'Two Greek words that look alike in English, and the whole table argument resting on the difference.',
-    verses: 19,
-    status: 'live',
-  },
   {
     key: 'f-01',
     slug: 'which-law-is-under-discussion',
@@ -190,13 +181,30 @@ export const FOUNDATIONS = [
     verses: 4,
     status: 'live',
   },
-  { key: 'f-08', slug: 'who-is-doing-the-judging', title: 'Identify Who Is Doing the Judging', deck: 'Before answering a warning about judgment, find out who was holding the gavel.', verses: 7, status: 'planned' },
+  {
+    key: 'f-08',
+    slug: 'who-is-doing-the-judging',
+    body: 'who-is-doing-the-judging.md',
+    title: 'Identify Who Is Doing the Judging',
+    deck: 'In every text, find the party in the room.',
+    verses: 7,
+    status: 'live',
+  },
   {
     key: 'f-09',
     slug: 'commandments-and-traditions',
     body: 'commandments-and-traditions.md',
     title: 'Commandments of Yahuah, Traditions of Men',
     deck: 'The yoke nobody could bear was never His.',
+    verses: 19,
+    status: 'live',
+  },
+  {
+    key: 'f-10',
+    slug: 'common-is-not-unclean',
+    body: 'common-is-not-unclean.md',
+    title: 'Common Is Not Unclean',
+    deck: 'Two Greek words that look alike in English, and the whole table argument resting on the difference.',
     verses: 19,
     status: 'live',
   },
@@ -209,11 +217,51 @@ export const FOUNDATIONS = [
     verses: 8,
     status: 'live',
   },
-  { key: 'f-12', slug: 'sabbatismos-and-the-four-sabbaths', title: 'Sabbatismos and the Four Sabbaths', deck: 'The rest that remains, and the four Sabbaths the calendar actually holds.', verses: 3, status: 'planned' },
-  { key: 'f-13', slug: 'till-heaven-and-earth-pass', title: 'Till Heaven and Earth Pass Away', deck: 'He gave the expiry date Himself, and it has not arrived.', verses: 12, status: 'planned' },
-  { key: 'f-14', slug: 'one-law-for-the-stranger', title: 'One Law for the Stranger', deck: 'The nations were never given a second standard to walk by.', verses: 25, status: 'planned' },
-  { key: 'f-15', slug: 'dispensational-vocabulary', title: 'Dispensational Vocabulary', deck: 'Ages, economies, and administrations — a system read back into the text.', verses: 5, status: 'planned' },
-  { key: 'f-16', slug: 'prophetic-indictment-is-not-repeal', title: 'Prophetic Indictment Is Not Repeal', deck: 'A prophet condemning empty worship is not a prophet cancelling the command.', verses: 6, status: 'planned' },
+  {
+    key: 'f-12',
+    slug: 'sabbatismos-one-day-four-witnesses',
+    body: 'sabbatismos-one-day-four-witnesses.md',
+    title: 'Sabbatismos: One Day, Four Witnesses',
+    deck: 'Creation behind it, deliverance in it, the rest to come ahead of it.',
+    verses: 3,
+    status: 'live',
+  },
+  {
+    key: 'f-13',
+    slug: 'till-heaven-and-earth-pass',
+    body: 'till-heaven-and-earth-pass.md',
+    title: 'Till Heaven and Earth Pass Away',
+    deck: 'Yahushua set the expiry date Himself.',
+    verses: 12,
+    status: 'live',
+  },
+  {
+    key: 'f-14',
+    slug: 'one-law-for-the-stranger',
+    body: 'one-law-for-the-stranger.md',
+    title: 'One Law for the Stranger',
+    deck: 'The commonwealth of Israel and the stranger within its gates.',
+    verses: 25,
+    status: 'live',
+  },
+  {
+    key: 'f-15',
+    slug: 'dispensational-vocabulary',
+    body: 'dispensational-vocabulary.md',
+    title: 'Dispensational Vocabulary',
+    deck: 'Two words that were never meant to cut Scripture into eras.',
+    verses: 5,
+    status: 'live',
+  },
+  {
+    key: 'f-16',
+    slug: 'prophetic-indictment-is-not-repeal',
+    body: 'prophetic-indictment-is-not-repeal.md',
+    title: 'Prophetic Indictment Is Not Repeal',
+    deck: 'When Yahuah says He hates your feasts.',
+    verses: 6,
+    status: 'live',
+  },
 ];
 
 // ---------------------------------------------------------------------------
