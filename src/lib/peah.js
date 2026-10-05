@@ -1,4 +1,7 @@
-// peah 1002 V3.js
+// peah 1005 V4.js
+// V4: a reference naming two passages ("Luke 1:33; 1 Corinthians 15:24") files
+// and sorts by the FIRST one, the part before the semicolon. The displayed title
+// still shows the whole reference.
 // V3: bookCoverage() and the verse-count check are gone — the drop-down now
 // counts entries per book (in the index). The parser keeps every V2 change.
 // V2: the reference parser takes single-chapter books ("Jude 5", "Jude 24-25"),
@@ -34,7 +37,7 @@ const VERSE_ONLY = new RegExp(`^(.+?)\\s+(\\d+)(?:${RANGE}(\\d+))?$`);
 
 export function parsePeahRef(entry) {
   const file = `src/content/peah/${entry.id ?? entry.slug + '.md'}`;
-  const ref = (entry.data.reference || '').trim();
+  const ref = (entry.data.reference || '').split(';')[0].trim();
   let book, chapter, verse, chapterEnd, verseEnd;
   let m = ref.match(WITH_CHAPTER);
   if (m) {
