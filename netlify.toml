@@ -247,3 +247,15 @@
   from = "/parables/timeline/"
   to = "/parables#timeline"
   status = 301
+
+# 1005: the Esther studies live at /blog/ only. The Foreign Fire copies (which
+# rendered the same blog markdown) are retired; the /foreign-fire/esther hub
+# links straight to the /blog/ studies.
+[[redirects]]
+  from = "/foreign-fire/esther/ishtar-and-marduk"
+  to = "/blog/esther-ishtar-marduk"
+  status = 301
+[[redirects]]
+  from = "/foreign-fire/esther/the-star-on-the-flag"
+  to = "/blog/the-star-on-the-flag"
+  status = 301
