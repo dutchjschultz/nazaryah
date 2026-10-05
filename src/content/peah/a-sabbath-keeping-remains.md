@@ -5,10 +5,12 @@ deck: "Only here does the writer change his word for rest."
 group: "Calendar and Feasts"
 keyVerse: "There remaineth therefore a rest to the people of God."
 keyVerseRef: "Hebrews 4:9"
-verses: "Hebrews 4:9 · Genesis 2:2-3 · John 19:30 · Hebrews 4:3 · Isaiah 66:23"
-date: 2026-10-04
+verses: "Hebrews 4:9 · Genesis 2:2-3 · Deuteronomy 5:15 · Exodus 31:13 · Isaiah 66:23"
+date: 2026-10-05
 ---
 
-Throughout Hebrews 3 and 4 the word for rest is katapausis. Here, and only here in all of Scripture, the writer changes words. This rest is sabbatismos (G4520), a Sabbath-keeping, a Sabbath observance. The change is deliberate. And it "remaineth" (apoleipo, G620): it is still left standing for the people of God after the cross, not finished at it.
+All through Hebrews 3 and 4, the word for rest is the ordinary one. In verse 9 alone, the writer changes it. The new word is sabbatismos, built from the Greek verb for keeping the Sabbath. It means a Sabbath-keeping, and the verse says it "remaineth" for the people of God.
 
-Scripture holds four Sabbaths, not one. The creation Sabbath (Genesis 2:2-3). The redemption Sabbath, the finished work at the tree (John 19:30). This one, the transitional Sabbath of Hebrews 4, entered now by belief (4:3) and walked through by living the commandments. And the consummation, when all flesh comes to worship from one Sabbath to another (Isaiah 66:23). Saying the Sabbath ended at the cross mistakes the second Sabbath for the whole. Saying the Sabbath is now only rest in Messiah mistakes the third for the whole. Verse 10 ties it straight back to the seventh day: he that is entered into his rest "hath ceased from his own works, as God did from his."
+Many churches teach that the Sabbath was only a picture, that Yahushua is now the rest, and so the day is gone. Scripture shows one Sabbath, the seventh day, bearing witness to four things. It remembers creation (Genesis 2:2-3). It remembers deliverance (Deuteronomy 5:15). It is kept now as the sign between Yahuah and His people (Exodus 31:13). And it is still kept in the rest to come, when all flesh worships "from one sabbath to another" (Isaiah 66:23).
+
+The rest in Messiah is real, and it is one of the things the day points to. It never replaces the day. Where Hebrews names what remains for Yahuah's people, it uses a word built from keeping the Sabbath. The full case is in the foundation [Sabbatismos: One Day, Four Witnesses](/torah/testimonies/foundations/sabbatismos-one-day-four-witnesses/).
