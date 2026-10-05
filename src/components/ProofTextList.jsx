@@ -1,4 +1,12 @@
-// src/components/ProofTextList.jsx · 1005 V2
+// src/components/ProofTextList.jsx · 1005 V3
+// V3: Sort by <group> | Sort by foundation. When the page passes `foundations`
+// ([{ id, title, href }], in their own order), a two-way switch sits above the
+// list. The default sort keeps the section chips; the foundation sort swaps them
+// for one dropdown ("All Foundations" first, then "id · title") and, once a
+// Foundation is chosen, a "Read the foundation →" line (only if it has a page).
+// It filters the one list on each entry's `foundations` ids, so an entry citing
+// three appears under all three. Number and Bible order never change; search and
+// the count line follow whichever sort is active.
 // V2: one list, two pages. TrinityFilesTracker (V1) is generalised: the page
 // hands in its entries and its wording, so /trinity/files and
 // /torah/testimonies run the same numbered list. Added: numbered books match
@@ -70,8 +78,12 @@ export default function ProofTextList({
   comingTag = false,
   placeholder = "Search by reference, title, or wording",
   label = "Search the list",
+  foundations = null,
+  groupLabel = "section",
 }) {
   const [section, setSection] = useState(ALL);
+  const [mode, setMode] = useState("group");
+  const [found, setFound] = useState(ALL);
   const [q, setQ] = useState("");
 
   const numbered = useMemo(
@@ -101,18 +113,68 @@ export default function ProofTextList({
 
   // Search runs inside the chosen section, so the count line always describes
   // exactly the rows on screen.
+  const byFoundation = mode === "foundation";
   const list = useMemo(() => {
-    const inSection =
-      section === ALL ? numbered : numbered.filter((f) => f.section === section);
-    if (!term) return inSection;
-    return inSection.filter((f) => f.hay.some((s) => s.includes(term)));
-  }, [numbered, section, term]);
+    const inScope = byFoundation
+      ? found === ALL
+        ? numbered
+        : numbered.filter((f) => (f.foundations || []).includes(found))
+      : section === ALL
+        ? numbered
+        : numbered.filter((f) => f.section === section);
+    if (!term) return inScope;
+    return inScope.filter((f) => f.hay.some((s) => s.includes(term)));
+  }, [numbered, byFoundation, found, section, term]);
 
   const written = list.filter((f) => f.slug).length;
-  const where = section === ALL ? "" : ` in ${section}`;
+  const where = byFoundation
+    ? found === ALL ? "" : ` under ${found}`
+    : section === ALL ? "" : ` in ${section}`;
+  const chosen = byFoundation && found !== ALL
+    ? (foundations || []).find((f) => f.id === found)
+    : null;
 
   return (
     <div className="pl-wrap">
+      {foundations && (
+        <div className="pl-sort" role="group" aria-label="Sort the list">
+          {[["group", `Sort by ${groupLabel}`], ["foundation", "Sort by foundation"]].map(([m, text]) => (
+            <button
+              key={m}
+              type="button"
+              aria-pressed={mode === m}
+              className={mode === m ? "pl-sortbtn pl-sortbtn-on" : "pl-sortbtn"}
+              onClick={() => setMode(m)}
+            >
+              {text}
+            </button>
+          ))}
+        </div>
+      )}
+
+      {byFoundation ? (
+        <div className="pl-found">
+          <select
+            className="pl-select"
+            value={found}
+            onChange={(e) => setFound(e.target.value)}
+            aria-label="Choose a foundation"
+          >
+            <option value={ALL}>All Foundations</option>
+            {foundations.map((f) => (
+              <option key={f.id} value={f.id}>
+                {f.id} · {f.title}
+              </option>
+            ))}
+          </select>
+          {chosen && chosen.href && (
+            <a className="pl-foundlink" href={chosen.href}>
+              Read the foundation{" "}
+              <span className="pl-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+          )}
+        </div>
+      ) : (
       <div className="pl-tabs" role="tablist" aria-label="Choose a section">
         {tabs.map((s) => (
           <button
@@ -126,6 +188,7 @@ export default function ProofTextList({
           </button>
         ))}
       </div>
+      )}
 
       <div className="pl-searchrow">
         <input
@@ -151,8 +214,9 @@ export default function ProofTextList({
 
       {list.length === 0 ? (
         <p className="pl-empty">
-          Nothing matches that. Try a shorter word, or a reference such as
-          Romans 14.
+          {term
+            ? "Nothing matches that. Try a shorter word, or a reference such as Romans 14."
+            : "Nothing on the list cites this foundation yet."}
         </p>
       ) : (
         <ol className="pl-list">

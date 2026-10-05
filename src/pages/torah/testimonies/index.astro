@@ -1,5 +1,9 @@
 ---
-// torah/testimonies/index.astro · 1005 V6
+// torah/testimonies/index.astro · 1005 V7
+// V7: Sort by argument | Sort by foundation. The sixteen Foundations (names,
+// links) come from FOUNDATIONS in law-on-trial.js — the same source the
+// Foundation pages use; each testimony names its own by id (F-01…) in
+// torah-testimonies.js. The build fails on an id with no Foundation.
 // V6: the seven-card grid is retired. The page now carries every Law on Trial
 // passage, written and coming, as one numbered list in Bible order — the
 // shared ProofTextList (also on /trinity/files), fed by
@@ -22,7 +26,7 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import ProofTextList from '../../../components/ProofTextList.jsx';
 import '../../../styles/proof-list.css';
-import { SECTION, STUDIES } from '../../../data/law-on-trial.js';
+import { SECTION, STUDIES, FOUNDATIONS } from '../../../data/law-on-trial.js';
 import { torahTestimonies } from '../../../data/torah-testimonies.js';
 
 // Build guard: a written entry must have a testimony page (a live STUDIES
@@ -33,6 +37,16 @@ const noPage = [...listed].filter((s) => !pages.has(s));
 const notListed = [...pages].filter((s) => !listed.has(s));
 if (noPage.length) throw new Error(`torah-testimonies.js: no live testimony page for ${noPage.join(', ')} (add it to STUDIES in law-on-trial.js)`);
 if (notListed.length) throw new Error(`torah-testimonies.js: live testimony not written on the list: ${notListed.join(', ')}`);
+
+// Foundations for the dropdown, in F-number order: "F-01" from key 'f-01'.
+const foundations = FOUNDATIONS.map((f) => ({
+  id: f.key.toUpperCase(),
+  title: f.title,
+  href: f.status === 'live' ? `/torah/testimonies/foundations/${f.slug}` : null,
+}));
+const known = new Set(foundations.map((f) => f.id));
+const badIds = torahTestimonies.flatMap((t) => (t.foundations || []).filter((id) => !known.has(id)).map((id) => `${t.id} ${id}`));
+if (badIds.length) throw new Error(`torah-testimonies.js: unknown foundation id: ${badIds.join(', ')}`);
 ---
 
 <BaseLayout
@@ -77,6 +91,8 @@ if (notListed.length) throw new Error(`torah-testimonies.js: live testimony not 
           cta="Open Testimony"
           noun="testimonies"
           label="Search the testimonies"
+          foundations={foundations}
+          groupLabel="argument"
         />
       </div>
     </section>

@@ -1,5 +1,10 @@
 ---
-// torah.astro · 1005 V4 — the Torah Testimonies eyebrow now reads from
+// torah.astro · 1005 V5 — Torah Testimonies leads: one full-width main card
+// (count, title, deck, full text), then the Legal Lexicon and Paul's Laws as two
+// smaller cards side by side beneath it (count, title, one deck line, link);
+// they stack on a phone. The two longer paragraphs leave this page and stay on
+// their own pages.
+// V4 — the Torah Testimonies eyebrow now reads from
 // src/data/torah-testimonies.js, the same file that builds /torah/testimonies,
 // so the card and the list can never disagree ("7 of 156 testimonies live · growing").
 // V3 — the Torah Testimonies eyebrow counts testimonies, not studies
@@ -43,15 +48,7 @@ const lawMeta = lawLive > 0 ? `${lawLive} of ${torahTestimonies.length} testimon
 
     <section class="to-section to-section-alt">
       <div class="to-cards">
-        <a href="/torah/legal-lexicon" class="to-card">
-          <p class="to-card-meta">{lexiconMeta}</p>
-          <h3 class="to-card-title">The Legal Lexicon of Scripture</h3>
-          <p class="to-card-deck">The whole Bible is a courtroom. These are its words.</p>
-          <p class="to-card-body">Seven movements from the bench to the final verdict — every covenant term read as the courtroom word it is.</p>
-          <span class="to-card-cta">Enter &nbsp;&#8594;</span>
-        </a>
-
-        <a href={TORAH_CARD.href} class="to-card">
+        <a href={TORAH_CARD.href} class="to-card to-card-main">
           <p class="to-card-meta">{lawMeta}</p>
           <h3 class="to-card-title">{TORAH_CARD.title}</h3>
           <p class="to-card-deck">{TORAH_CARD.deck}</p>
@@ -59,13 +56,21 @@ const lawMeta = lawLive > 0 ? `${lawLive} of ${torahTestimonies.length} testimon
           <span class="to-card-cta">Enter &nbsp;&#8594;</span>
         </a>
 
-        <a href={`/torah/${paulsLaws.slug}`} class="to-card">
-          <p class="to-card-meta">{paulsLaws.eyebrow}</p>
-          <h3 class="to-card-title">{paulsLaws.title}</h3>
-          <p class="to-card-deck">{paulsLaws.deck}</p>
-          <p class="to-card-body">{paulsLaws.framing}</p>
-          <span class="to-card-cta">Read &nbsp;&#8594;</span>
-        </a>
+        <div class="to-card-pair">
+          <a href="/torah/legal-lexicon" class="to-card to-card-small">
+            <p class="to-card-meta">{lexiconMeta}</p>
+            <h3 class="to-card-title">The Legal Lexicon of Scripture</h3>
+            <p class="to-card-deck">The whole Bible is a courtroom. These are its words.</p>
+            <span class="to-card-cta">Enter &nbsp;&#8594;</span>
+          </a>
+
+          <a href={`/torah/${paulsLaws.slug}`} class="to-card to-card-small">
+            <p class="to-card-meta">{paulsLaws.eyebrow}</p>
+            <h3 class="to-card-title">{paulsLaws.title}</h3>
+            <p class="to-card-deck">{paulsLaws.deck}</p>
+            <span class="to-card-cta">Read &nbsp;&#8594;</span>
+          </a>
+        </div>
       </div>
     </section>
 
@@ -95,8 +100,11 @@ const lawMeta = lawLive > 0 ? `${lawLive} of ${torahTestimonies.length} testimon
   .to-prose p{margin:0 0 1.5rem;} .to-prose p:last-child{margin:0;}
   .to-h2{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:600;color:#f0e0bf;margin:0 0 1.25rem;padding-bottom:.6rem;border-bottom:1px solid #3a2510;}
 
-  .to-cards{max-width:680px;margin:0 auto;}
-  .to-card+.to-card{margin-top:1.5rem;}
+  .to-cards{max-width:820px;margin:0 auto;}
+  .to-card-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;}
+  .to-card-small{display:flex;flex-direction:column;padding:1.6rem 1.75rem;}
+  .to-card-small .to-card-title{font-size:1.2rem;}
+  .to-card-small .to-card-deck{flex-grow:1;margin-bottom:1.1rem;}
   .to-card{display:block;text-decoration:none;background:rgba(20,13,5,.6);border:1px solid #3a2510;border-radius:4px;padding:2rem 2.25rem;transition:all .2s ease;}
   .to-card:hover{border-color:#8a6028;background:rgba(30,20,8,.7);transform:translateY(-2px);}
   .to-card-meta{font-family:'Cinzel',serif;font-size:10px;letter-spacing:3px;text-transform:uppercase;color:#8a6028;margin:0 0 .75rem;}
@@ -110,5 +118,6 @@ const lawMeta = lawLive > 0 ? `${lawLive} of ${torahTestimonies.length} testimon
     .to-hero{padding:3.5rem 1rem 2.5rem;}
     .to-section{padding:2.5rem 1rem;}
     .to-card{padding:1.5rem;}
+    .to-card-pair{grid-template-columns:1fr;}
   }
 </style>

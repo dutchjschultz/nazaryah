@@ -1,4 +1,4 @@
-/* src/styles/proof-list.css · 1005 V1
+/* src/styles/proof-list.css · 1005 V2 — V2: sort switch + foundation dropdown
    The numbered proof-text list (ProofTextList.jsx) on /trinity/files and
    /torah/testimonies. Imported by each page; global because the list is a
    React island. Cloned from the pt- timeline on /parables, in the dark palette
@@ -185,3 +185,58 @@
     .pl-done .pl-num { left: -1.9rem; }
     .pl-title { font-size: 1.08rem; }
   }
+
+/* ── SORT SWITCH + FOUNDATION DROPDOWN (V2) ── a quiet two-way switch above the
+   chips; the chosen sort takes the same gold as the chosen chip. */
+.pl-sort {
+  display: flex;
+  justify-content: center;
+  gap: 0;
+  margin: 0 auto 1rem;
+  width: fit-content;
+  border: 1px solid rgba(186, 117, 23, 0.35);
+}
+.pl-sortbtn {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  padding: 0.5rem 1rem;
+  border: 0;
+  background: transparent;
+  color: #a8967a;
+  cursor: pointer;
+}
+.pl-sortbtn + .pl-sortbtn { border-left: 1px solid rgba(186, 117, 23, 0.35); }
+.pl-sortbtn:hover { color: #f0e0bf; }
+.pl-sortbtn-on, .pl-sortbtn-on:hover { background: #8a6028; color: #f0e0bf; }
+
+.pl-found { margin-bottom: 0.75rem; }
+.pl-select {
+  width: 100%;
+  font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+  font-size: 1.05rem;
+  padding: 0.55rem 0.75rem;
+  border: 1px solid rgba(186, 117, 23, 0.35);
+  background: rgba(30, 18, 8, 0.7);
+  color: #ded0b4;
+  cursor: pointer;
+}
+.pl-select:focus { outline: none; border-color: #ba7517; }
+.pl-select option { background: #1a1208; color: #ded0b4; }
+.pl-foundlink {
+  display: inline-block;
+  margin-top: 0.6rem;
+  font-family: 'Cinzel', serif;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: #ba7517;
+  text-decoration: none;
+}
+.pl-foundlink:hover { color: #f0e0bf; }
+.pl-foundlink:hover .pl-arrow { transform: translateX(4px); }
+
+@media (max-width: 620px) {
+  .pl-sortbtn { font-size: 0.64rem; letter-spacing: 0.06em; padding: 0.5rem 0.7rem; }
+}

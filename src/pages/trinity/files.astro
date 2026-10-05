@@ -1,5 +1,9 @@
 ---
-// src/pages/trinity/files.astro · 1005 V2
+// src/pages/trinity/files.astro · 1005 V3
+// V3: Sort by section | Sort by foundation. The Trinity Foundations (names,
+// links) come from src/data/trinity-foundations.js, the file the /foundations
+// ledger renders from; each entry names its own by id (I…VI). The build fails
+// on an id with no Foundation.
 // V2: the list is the shared ProofTextList (also on /torah/testimonies); its
 // styles moved to src/styles/proof-list.css. Nothing reader-facing changes.
 // V1: the five-across card grid of written studies is retired. The page now
@@ -12,6 +16,7 @@ import ProofTextList from '../../components/ProofTextList.jsx';
 import '../../styles/proof-list.css';
 import { getCollection } from 'astro:content';
 import { trinityFiles } from '../../data/trinity-files.js';
+import { trinityFoundations } from '../../data/trinity-foundations.js';
 
 // Build guard: a written entry whose slug has no live post would ship a 404,
 // and a live Trinity File missing from the list would be invisible here.
@@ -23,6 +28,15 @@ const dead = [...listed].filter((s) => !live.has(s));
 const unlisted = [...live].filter((s) => !listed.has(s));
 if (dead.length) throw new Error(`trinity-files.js: no live post for ${dead.join(', ')}`);
 if (unlisted.length) throw new Error(`trinity-files.js: live Trinity File not on the list: ${unlisted.join(', ')}`);
+
+const foundations = trinityFoundations.map((f) => ({
+  id: f.id,
+  title: f.title,
+  href: f.slug ? `/foundations/${f.slug}` : null,
+}));
+const known = new Set(foundations.map((f) => f.id));
+const badIds = trinityFiles.flatMap((t) => (t.foundations || []).filter((id) => !known.has(id)).map((id) => `${t.ref} ${id}`));
+if (badIds.length) throw new Error(`trinity-files.js: unknown foundation id: ${badIds.join(', ')}`);
 ---
 
 <BaseLayout
@@ -75,6 +89,8 @@ if (unlisted.length) throw new Error(`trinity-files.js: live Trinity File not on
           noun="files"
           comingTag
           label="Search the Trinity Files"
+          foundations={foundations}
+          groupLabel="section"
         />
       </div>
     </section>
