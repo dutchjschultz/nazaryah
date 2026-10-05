@@ -1,0 +1,139 @@
+---
+// StudyModes 1005 V1.astro
+// The QUICK READ / FULL STUDY toggle, lifted from the Zoroastrianism study
+// (src/pages/foreign-fire/zoroastrianism.astro): same two buttons, same tooltips,
+// same behaviour (one panel shown, a "Read the Full Study" button at the foot of
+// the quick panel), re-skinned in the study page's parchment and gold.
+// One listed page carries both versions; QUICK READ shows on open, FULL STUDY second.
+// Used from .mdx (blank lines around the markdown inside each slot div):
+//   import StudyModes from '../../components/StudyModes.astro';
+//   <StudyModes>
+//   <div slot="quick">
+//
+//   …quick markdown…
+//
+//   </div>
+//   <div slot="full">
+//
+//   …full markdown…
+//
+//   </div>
+//   </StudyModes>
+// Styles are is:global under .sm-*: the slotted markdown is not this component's
+// own markup, and the panels are toggled at runtime.
+---
+
+<div class="sm-modes" data-study-modes>
+  <div class="sm-bar" data-pagefind-ignore>
+    <button type="button" class="sm-btn sm-active" data-mode="quick" aria-pressed="true" data-tip="Fits between bath time and bedtime.">&#9654; Quick Read</button>
+    <span class="sm-divider" aria-hidden="true">&#8213;</span>
+    <button type="button" class="sm-btn" data-mode="full" aria-pressed="false" data-tip="This is why they invented coffee.">Full Study</button>
+  </div>
+
+  <div class="sm-panel" data-panel="quick">
+    <slot name="quick" />
+    <div class="sm-cta" data-pagefind-ignore>
+      <button type="button" class="sm-btn" data-mode="full">&#8594; Read the Full Study</button>
+    </div>
+  </div>
+
+  <div class="sm-panel" data-panel="full" hidden>
+    <slot name="full" />
+  </div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-study-modes]').forEach((root) => {
+    const bar = root.querySelector<HTMLElement>('.sm-bar');
+    const show = (mode: string) => {
+      root.querySelectorAll<HTMLElement>('[data-panel]').forEach((p) => {
+        p.hidden = p.dataset.panel !== mode;
+      });
+      root.querySelectorAll<HTMLElement>('.sm-bar [data-mode]').forEach((b) => {
+        const on = b.dataset.mode === mode;
+        b.classList.toggle('sm-active', on);
+        b.setAttribute('aria-pressed', String(on));
+      });
+      bar?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    };
+    root.querySelectorAll<HTMLElement>('[data-mode]').forEach((b) =>
+      b.addEventListener('click', () => show(b.dataset.mode || 'quick')));
+  });
+</script>
+
+<style is:global>
+  .sm-modes { margin: 0 0 1rem; }
+  .sm-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    margin: 0 0 2.25rem;
+    padding: 0.9rem 1rem;
+    border-top: 1px solid var(--sand-dark, #c4a97d);
+    border-bottom: 1px solid var(--sand-dark, #c4a97d);
+    background: rgba(184, 134, 43, 0.06);
+    scroll-margin-top: 6rem;
+  }
+  .sm-divider { color: var(--sand-dark, #c4a97d); font-size: 0.65rem; letter-spacing: 4px; }
+  .sm-btn {
+    font-family: var(--font-display, 'Cinzel'), serif;
+    font-size: 0.7rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    padding: 0.5rem 1.15rem;
+    border-radius: 20px;
+    border: 1px solid var(--sand-dark, #c4a97d);
+    background: transparent;
+    color: var(--ink-faded, #6b5a45);
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+  }
+  .sm-btn:not(.sm-active):hover {
+    color: var(--bronze, #8a5a20);
+    border-color: var(--gold, #b8862b);
+    background: rgba(184, 134, 43, 0.08);
+  }
+  .sm-active {
+    background: rgba(184, 134, 43, 0.18);
+    border-color: var(--gold, #b8862b);
+    color: var(--deep-earth, #2b1d11);
+    font-weight: 700;
+  }
+  .sm-btn:focus-visible { outline: 2px solid var(--gold, #b8862b); outline-offset: 2px; }
+  .sm-btn[data-tip]::after {
+    content: attr(data-tip);
+    position: absolute;
+    bottom: calc(100% + 8px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--deep-earth, #2b1d11);
+    color: #f0e0bf;
+    font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.3px;
+    text-transform: none;
+    font-weight: normal;
+    white-space: nowrap;
+    padding: 0.35rem 0.8rem;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.2s;
+    z-index: 20;
+  }
+  .sm-btn:hover[data-tip]::after { opacity: 1; }
+  .sm-cta { text-align: center; margin: 2.5rem 0 0; }
+  .sm-panel[hidden] { display: none; }
+
+  .dark .sm-bar { border-color: rgba(196, 173, 132, 0.3); background: rgba(212, 168, 90, 0.06); }
+  .dark .sm-btn { color: rgba(240, 224, 191, 0.75); border-color: rgba(196, 173, 132, 0.35); }
+  .dark .sm-active { color: var(--gold-light, #d4a85a); border-color: var(--gold-light, #d4a85a); background: rgba(212, 168, 90, 0.14); }
+
+  @media (max-width: 480px) {
+    .sm-bar { gap: 0.4rem; padding: 0.75rem 0.5rem; }
+    .sm-btn { padding: 0.45rem 0.8rem; letter-spacing: 1.5px; }
+    .sm-btn[data-tip]::after { display: none; }
+  }
+</style>

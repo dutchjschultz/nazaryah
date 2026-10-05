@@ -259,3 +259,14 @@
   from = "/foreign-fire/esther/the-star-on-the-flag"
   to = "/blog/the-star-on-the-flag"
   status = 301
+
+# 1005: The Sign of the Goat and Forty-Nine or Fifty were unlisted "go deeper"
+# pages for two days; their text now lives in the FULL STUDY of the parent page.
+[[redirects]]
+  from = "/blog/sign-of-the-goat"
+  to = "/blog/goat-that-was-not-slain"
+  status = 301
+[[redirects]]
+  from = "/blog/forty-nine-or-fifty"
+  to = "/blog/the-year-of-liberty"
+  status = 301
