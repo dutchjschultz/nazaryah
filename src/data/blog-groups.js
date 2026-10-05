@@ -1,4 +1,6 @@
-// blog-groups 1005 V26.js
+// blog-groups 1005 V27.js
+// V27: blood-and-bread joins scripture-unfiltered (category Scripture Unfiltered,
+// a stand-in until the planned Salvation category).
 // V26: sign-of-the-goat and forty-nine-or-fifty leave the map — they are unlisted
 // "go deeper" pages now (unlisted: true, companionOf their parent), reached only
 // from the link inside The Goat That Was Not Slain and The Year of Liberty.
@@ -270,7 +272,8 @@ export const POST_GROUP = {
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
   'one-throne-8-the-debt-of-wendell-hollis': 'the-side-door', // Volume V's closing parable
 
-  // ── Scripture Unfiltered (28) ──
+  // ── Scripture Unfiltered (29) ──
+  'blood-and-bread': 'scripture-unfiltered',
   'hearts-and-reins': 'scripture-unfiltered',
   'ark-of-covering': 'scripture-unfiltered',
   'kept-to-the-hour': 'scripture-unfiltered',

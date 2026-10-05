@@ -1,5 +1,13 @@
 ---
-// StudyModes 1005 V1.astro
+// StudyModes 1005 V2.astro
+// V2: the labels are props, so the same toggle carries a two-path study (The
+// Blood and the Bread: THE BLOOD / THE BREAD) as well as QUICK READ / FULL
+// STUDY. Defaults are the V1 wording, so the Goat and the Year of Liberty are
+// untouched. A tip of "" drops the tooltip; slot names stay quick / full
+// (first panel / second panel). The play mark (&#9654;) belongs to Quick Read
+// only and shows only when `first` is left at its default.
+//   <StudyModes first="The Blood" second="The Bread" firstTip="" secondTip=""
+//               cta="Turn to the Bread">
 // The QUICK READ / FULL STUDY toggle, lifted from the Zoroastrianism study
 // (src/pages/foreign-fire/zoroastrianism.astro): same two buttons, same tooltips,
 // same behaviour (one panel shown, a "Read the Full Study" button at the foot of
@@ -21,19 +29,34 @@
 //   </StudyModes>
 // Styles are is:global under .sm-*: the slotted markdown is not this component's
 // own markup, and the panels are toggled at runtime.
+interface Props {
+  first?: string;
+  second?: string;
+  firstTip?: string;
+  secondTip?: string;
+  cta?: string;
+}
+const {
+  first = 'Quick Read',
+  second = 'Full Study',
+  firstTip = 'Fits between bath time and bedtime.',
+  secondTip = 'This is why they invented coffee.',
+  cta = 'Read the Full Study',
+} = Astro.props;
+const play = first === 'Quick Read';
 ---
 
 <div class="sm-modes" data-study-modes>
   <div class="sm-bar" data-pagefind-ignore>
-    <button type="button" class="sm-btn sm-active" data-mode="quick" aria-pressed="true" data-tip="Fits between bath time and bedtime.">&#9654; Quick Read</button>
+    <button type="button" class="sm-btn sm-active" data-mode="quick" aria-pressed="true" data-tip={firstTip || undefined}>{play && <Fragment set:html="&#9654; " />}{first}</button>
     <span class="sm-divider" aria-hidden="true">&#8213;</span>
-    <button type="button" class="sm-btn" data-mode="full" aria-pressed="false" data-tip="This is why they invented coffee.">Full Study</button>
+    <button type="button" class="sm-btn" data-mode="full" aria-pressed="false" data-tip={secondTip || undefined}>{second}</button>
   </div>
 
   <div class="sm-panel" data-panel="quick">
     <slot name="quick" />
     <div class="sm-cta" data-pagefind-ignore>
-      <button type="button" class="sm-btn" data-mode="full">&#8594; Read the Full Study</button>
+      <button type="button" class="sm-btn" data-mode="full">&#8594; {cta}</button>
     </div>
   </div>
 
