@@ -248,18 +248,6 @@
   to = "/parables#timeline"
   status = 301
 
-# 1005: the Esther studies live at /blog/ only. The Foreign Fire copies (which
-# rendered the same blog markdown) are retired; the /foreign-fire/esther hub
-# links straight to the /blog/ studies.
-[[redirects]]
-  from = "/foreign-fire/esther/ishtar-and-marduk"
-  to = "/blog/esther-ishtar-marduk"
-  status = 301
-[[redirects]]
-  from = "/foreign-fire/esther/the-star-on-the-flag"
-  to = "/blog/the-star-on-the-flag"
-  status = 301
-
 # 1005: The Sign of the Goat and Forty-Nine or Fifty were unlisted "go deeper"
 # pages for two days; their text now lives in the FULL STUDY of the parent page.
 [[redirects]]

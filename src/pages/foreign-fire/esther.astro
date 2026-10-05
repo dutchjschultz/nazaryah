@@ -4,8 +4,6 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 // A subject page is a container for content blocks — blogs, timelines,
 // quotation collections, etc. Esther currently carries two blog blocks.
 // Future subjects can mix block types; see the instructions doc.
-// 1005: the study cards open the /blog/ studies — the one copy of each. The old
-// /foreign-fire/esther/<study> pages are retired (301s in netlify.toml).
 const STUDIES = [
   {
     number: 'Study 1',
@@ -13,7 +11,7 @@ const STUDIES = [
     subtitle: 'The two heroes of Esther are named after Babylonian gods',
     excerpt:
       "The book of Esther never mentions God — and its two heroes are named after the chief god and goddess of Babylon. Here is what the church has never told you.",
-    route: '/blog/esther-ishtar-marduk'
+    route: '/foreign-fire/esther/ishtar-and-marduk'
   },
   {
     number: 'Study 2',
@@ -21,7 +19,7 @@ const STUDIES = [
     subtitle: 'Saturn, the black cube, and a book written by Kabbalists',
     excerpt:
       'The six-pointed star on the flag of Israel is not in the Bible. The Bible names it as the star of a pagan god. Here is how it got from Saturn worship to a banking family to the flag that flies over Jerusalem today.',
-    route: '/blog/the-star-on-the-flag'
+    route: '/foreign-fire/esther/the-star-on-the-flag'
   }
 ];
 ---
