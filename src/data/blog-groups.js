@@ -1,4 +1,7 @@
-// blog-groups 1004 V25.js
+// blog-groups 1005 V26.js
+// V26: sign-of-the-goat and forty-nine-or-fifty leave the map — they are unlisted
+// "go deeper" pages now (unlisted: true, companionOf their parent), reached only
+// from the link inside The Goat That Was Not Slain and The Year of Liberty.
 // V25: goat-that-was-not-slain moves to the-law-and-the-feasts (its category is now
 // The Feasts); the-year-of-liberty and forty-nine-or-fifty join it there.
 // V24: sign-of-the-goat registered under the-law-and-the-feasts (its category is
@@ -293,9 +296,7 @@ export const POST_GROUP = {
   'the-whole-counsel': 'scripture-unfiltered',
   'the-stolen-seat': 'scripture-unfiltered',
   'two-loads-in-the-wilderness': 'scripture-unfiltered',
-  'sign-of-the-goat': 'the-law-and-the-feasts',
   'the-year-of-liberty': 'the-law-and-the-feasts',
-  'forty-nine-or-fifty': 'the-law-and-the-feasts',
   'still-waiting-for-shavuot': 'scripture-unfiltered',
   'filled-but-not-indwelt': 'scripture-unfiltered',
   'two-kingdoms-one-walk': 'scripture-unfiltered',

@@ -1,5 +1,7 @@
 ---
-// BlogLayout.astro · 0927 V10
+// BlogLayout.astro · 1005 V11
+// V11: an `unlisted` post (a "go deeper" page) drops data-pagefind-body, so site
+// search skips it; it stays reachable from its parent study's link.
 // V10: the per-page verse block (ScriptureRefs) is PARKED — no longer rendered
 // on any study. The component stays in the repo for when the site-wide index
 // comes back.
@@ -119,7 +121,7 @@ const companions = (
 ---
 
 <BaseLayout title={`${title} - Nazaryah`} description={description} article={true} ogTitle={ogTitle} ogDescription={ogDescription} ogImage={ogImage}>
-  <article class="py-16 md:py-20" data-pagefind-body>
+  <article class="py-16 md:py-20" data-pagefind-body={post.data.unlisted ? undefined : true}>
     <div class="container mx-auto px-6">
       <!-- Breadcrumb -->
       <nav class="max-w-4xl mx-auto mb-8 text-sm" style="font-family: var(--font-body);" data-pagefind-ignore>

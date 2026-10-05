@@ -158,7 +158,8 @@ for (const file of files) {
   // --- required fields -------------------------------------------------
   if (!data.title) add(short, "error", "missing title");
   if (!data.deck) add(short, "error", "missing deck");
-  if (!data.category)
+  // An `unlisted` "go deeper" page carries no category by design.
+  if (!data.category && !data.unlisted)
     add(short, "error", "missing category — the reader panel silently shows nothing without it");
   if (!data.date) add(short, "warn", "missing date");
 

@@ -1,4 +1,8 @@
-// content config 1003 V19
+// content config 1005 V20
+// V20: optional `unlisted` on a post — a "go deeper" page reached only by the link
+// inside its parent study. It renders at /blog/<slug> but carries no category,
+// associations or POST_GROUP line, stays out of Featured Picks and out of site
+// search. Absent on every ordinary study, so nothing existing changes.
 // V19: two body-only collections for Torah Testimonies — `testimonies` and
 // `foundations` (src/content/testimonies, src/content/foundations). No
 // frontmatter: title, reference and deck live in src/data/law-on-trial.js, the
@@ -194,6 +198,7 @@ const postsCollection = defineCollection({
     // the companion itself, not the parent. A page carrying it is deliberately
     // absent from section card grids; it is reached from the parent's Read Next.
     companionOf: z.string().optional(),
+    unlisted: z.boolean().optional(),
     // INVESTIGATION axis — the slug of the curated case this study belongs to
     // (see src/data/investigations.js). Separate from `associations`: an
     // association is an open subject tag, an investigation is a closed case with
