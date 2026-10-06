@@ -1,5 +1,11 @@
 ---
-// trinity.astro · 1006 V2 — the four destinations come up from under the essays
+// trinity.astro · 1006 V3 — top of page: the H1 comes down to about two thirds
+// and its band tightens; a two-line bridge lifted from "The Question No One Is
+// Supposed to Ask" (existing words, essay itself unchanged) sits between header
+// and feature; the Trinity Files title becomes a case-file label — italic body
+// serif, title case, about half its old size, thin gold rules either side — so
+// it no longer reads as a second H1.
+// V2 · 1006 — the four destinations come up from under the essays
 // and each gets its own weight: Trinity Files as the lead feature (progress line
 // computed from src/data/trinity-files.js, the same file /trinity/files counts),
 // the two books as a pair of book cards (Read → the section, Get the book → its
@@ -51,11 +57,17 @@ const STATIONS = ['Babel', 'Babylon', 'Egypt', 'Greece', 'Rome', 'Nicaea', 'Refo
       </p>
     </section>
 
+    <!-- ── BRIDGE — two lines from "The Question No One Is Supposed to Ask" ── -->
+    <section class="tl-bridge">
+      <p class="tl-bridge-q">Where does Scripture actually teach this doctrine?</p>
+      <p class="tl-bridge-a">The answer is nowhere. The word <em>Trinity</em> does not appear in Scripture.</p>
+    </section>
+
     <!-- ── LEAD FEATURE: TRINITY FILES ── -->
     <section class="tl-feature">
       <a class="tl-feature-card" href="/trinity/files">
         <p class="tl-eyebrow">&#8213; One Verse at a Time &#8213;</p>
-        <h2 class="tl-feature-title">Trinity Files</h2>
+        <h2 class="tl-feature-title"><span class="tl-rule" aria-hidden="true"></span>Trinity Files<span class="tl-rule" aria-hidden="true"></span></h2>
         <p class="tl-feature-desc">Every verse trinitarians use to defend their doctrine — examined, dismantled, and returned to its original context. One verse at a time, one file at a time.</p>
         <p class="tl-progress">{filesLine}</p>
         <span class="tr-btn">Open the Files &nbsp;&#8594;</span>
@@ -176,7 +188,7 @@ const STATIONS = ['Babel', 'Babylon', 'Egypt', 'Greece', 'Rome', 'Nicaea', 'Refo
   /* ── HERO ── */
   .tr-hero {
     text-align: center;
-    padding: 5rem 1.5rem 3.5rem;
+    padding: 3rem 1.5rem 2.25rem;
     border-bottom: 1px solid #4a3218;
     background:
       radial-gradient(ellipse at 50% 0%, rgba(150, 90, 40, 0.18), transparent 70%),
@@ -194,10 +206,10 @@ const STATIONS = ['Babel', 'Babylon', 'Egypt', 'Greece', 'Rome', 'Nicaea', 'Refo
 
   .tr-title {
     font-family: 'Cinzel', serif;
-    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-size: clamp(1.75rem, 4vw, 2.7rem);
     font-weight: 700;
     color: #f0e0bf;
-    margin: 0 0 1rem;
+    margin: 0 0 0.85rem;
     line-height: 1.1;
   }
 
@@ -282,7 +294,7 @@ const STATIONS = ['Babel', 'Babylon', 'Egypt', 'Greece', 'Rome', 'Nicaea', 'Refo
 
   /* ── LEAD FEATURE — Trinity Files, the largest thing on the page ── */
   .tl-feature {
-    padding: 2.75rem 1.5rem 2.5rem;
+    padding: 1.75rem 1.5rem 2.5rem;
     border-bottom: 1px solid #2e1f0d;
     text-align: center;
   }
@@ -313,14 +325,29 @@ const STATIONS = ['Babel', 'Babylon', 'Egypt', 'Greece', 'Rome', 'Nicaea', 'Refo
     text-transform: uppercase;
     margin: 0 0 0.9rem;
   }
+  /* A case-file label, not a second H1: italic body serif, title case, thin
+     gold rules either side. */
   .tl-feature-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(2.2rem, 5.5vw, 3.6rem);
-    font-weight: 700;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+    font-family: var(--font-family-serif, 'Crimson Text'), 'Crimson Pro', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.5rem, 3vw, 1.95rem);
+    font-weight: 600;
+    letter-spacing: 0.01em;
     color: #f0e0bf;
-    line-height: 1.1;
+    line-height: 1.2;
     margin: 0 0 1.1rem;
   }
+  .tl-rule {
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 1px;
+    background: #8a6028;
+  }
+
   .tl-feature-desc {
     font-size: clamp(1.05rem, 2vw, 1.25rem);
     font-style: italic;
@@ -351,6 +378,28 @@ const STATIONS = ['Babel', 'Babylon', 'Egypt', 'Greece', 'Rome', 'Nicaea', 'Refo
   .tl-arrow { display: inline-block; transition: transform 0.2s ease; }
   .tl-feature-sub:hover .tl-arrow,
   .tl-book-links a:hover .tl-arrow { transform: translateX(4px); }
+
+  /* ── BRIDGE — part of the intro: no box, narrow column, room around it ── */
+  .tl-bridge {
+    max-width: 640px;
+    margin: 0 auto;
+    padding: 2.75rem 1.5rem 1.25rem;
+    text-align: center;
+  }
+  .tl-bridge-q {
+    font-style: italic;
+    font-size: clamp(1.3rem, 2.6vw, 1.6rem);
+    line-height: 1.4;
+    color: #e8d5a8;
+    margin: 0 0 0.75rem;
+  }
+  .tl-bridge-a {
+    font-size: 1.125rem;
+    line-height: 1.7;
+    color: #d9c9a8;
+    margin: 0;
+  }
+  .tl-bridge-a em { color: #c4a46b; }
 
   /* ── BANDS — The Books, The Historic Trail ── */
   .tl-band {
