@@ -1,5 +1,39 @@
 ---
+// trinity.astro · 1006 V2 — the four destinations come up from under the essays
+// and each gets its own weight: Trinity Files as the lead feature (progress line
+// computed from src/data/trinity-files.js, the same file /trinity/files counts),
+// the two books as a pair of book cards (Read → the section, Get the book → its
+// /books entry), the Historic Trail as a timeline band (it replaces "Ready to
+// See Where This Leads?"), then the three intro essays, moved, wording unchanged.
+// V1 — essays first, four equal buttons with hover notes at the foot.
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { trinityFiles } from '../data/trinity-files.js';
+import { BOOK_SHELF } from '../data/books.js';
+
+const filesWritten = trinityFiles.filter((f) => f.slug).length;
+const filesLine = `${filesWritten} of ${trinityFiles.length} files written`;
+
+const shelf = Object.fromEntries(BOOK_SHELF.map((b) => [b.key, b]));
+const BOOKS = [
+  {
+    key: 'five-titles',
+    title: 'Five Titles, One Christ',
+    deck: 'Five titles the church gave to the wrong one',
+    desc: 'Scripture presents two distinct roles — never three. Father and Son, Husband and Bride, Kinsman Redeemer and the price paid, Elohim and High Priest. From Genesis to Revelation, the pattern is consistent: one sends, one is sent. The trinity collapses this design into confusion.',
+    read: '/trinity/roles',
+    cover: '/images/five-titles-cover.jpg',
+  },
+  {
+    key: 'the-bearer',
+    title: 'The Bearer',
+    deck: 'The one who carries the Father is not the Father',
+    desc: 'Light, image, word, presence, plan — five things Scripture says the Son is, and five the church has read as claims to be the Father Himself. But every one is a carrying word: a lamp is lit, an image is of someone, a word is spoken, a temple houses a Presence, a lamb is laid on the altar by a hand not its own.',
+    read: '/trinity/bearer',
+    cover: '/images/the-bearer-cover.jpg',
+  },
+].map((b) => ({ ...b, get: shelf[b.key].href, accent: shelf[b.key].accent }));
+
+const STATIONS = ['Babel', 'Babylon', 'Egypt', 'Greece', 'Rome', 'Nicaea', 'Reformation'];
 ---
 
 <BaseLayout
@@ -15,6 +49,54 @@ import BaseLayout from '../layouts/BaseLayout.astro';
       <p class="tr-sub">
         The most foundational doctrine in Western Christianity — and one of the least examined.
       </p>
+    </section>
+
+    <!-- ── LEAD FEATURE: TRINITY FILES ── -->
+    <section class="tl-feature">
+      <a class="tl-feature-card" href="/trinity/files">
+        <p class="tl-eyebrow">&#8213; One Verse at a Time &#8213;</p>
+        <h2 class="tl-feature-title">Trinity Files</h2>
+        <p class="tl-feature-desc">Every verse trinitarians use to defend their doctrine — examined, dismantled, and returned to its original context. One verse at a time, one file at a time.</p>
+        <p class="tl-progress">{filesLine}</p>
+        <span class="tr-btn">Open the Files &nbsp;&#8594;</span>
+      </a>
+      <a class="tl-feature-sub" href="/foundations">The Foundations <span class="tl-arrow" aria-hidden="true">&rarr;</span></a>
+    </section>
+
+    <!-- ── THE BOOKS ── -->
+    <section class="tl-band">
+      <h2 class="tl-band-title">The Books</h2>
+      <div class="tl-books">
+        {BOOKS.map((b) => (
+          <article class="tl-book" style={`--tl-accent: ${b.accent}`}>
+            <a class="tl-cover" href={b.read} aria-hidden="true" tabindex="-1">
+              <img src={b.cover} alt="" width="120" height="180" loading="lazy" />
+            </a>
+            <div class="tl-book-body">
+              <h3 class="tl-book-title"><a href={b.read}>{b.title}</a></h3>
+              <p class="tl-book-deck">{b.deck}</p>
+              <p class="tl-book-desc">{b.desc}</p>
+              <p class="tl-book-links">
+                <a href={b.read}>Read <span class="tl-arrow" aria-hidden="true">&rarr;</span></a>
+                <a href={b.get}>Get the book <span class="tl-arrow" aria-hidden="true">&rarr;</span></a>
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </section>
+
+    <!-- ── THE HISTORIC TRAIL ── -->
+    <section class="tl-band tl-trail">
+      <h2 class="tl-band-title">The Historic Trail</h2>
+      <p class="tl-band-sub">A documented timeline from 2200 BC to the Reformation</p>
+      <div class="tl-strip" role="list" aria-label="Stations on the trail">
+        {STATIONS.map((st) => (
+          <span class="tl-station" role="listitem"><span class="tl-dot" aria-hidden="true"></span>{st}</span>
+        ))}
+      </div>
+      <p class="tl-trail-desc">A documented timeline tracing the triune god from the Tower of Babel through Babylon, Egypt, Greece, and Rome — all the way to the Council of Nicaea and beyond. Every major turning point, every adaptation, every name change the doctrine wore on its journey into the modern church.</p>
+      <a href="/trinity/history" class="tr-btn">Walk the Trail &nbsp;&#8594;</a>
     </section>
 
     <!-- ── INTRO ── -->
@@ -68,51 +150,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
         <p>
           The trail is long. And it is not hidden — it is simply unread.
         </p>
-      </div>
-    </section>
-
-    <!-- ── CTA ── -->
-    <section class="tr-cta-section">
-      <p class="tr-cta-label">&#8213; Follow the Evidence &#8213;</p>
-      <h2 class="tr-cta-title">Ready to See Where This Leads?</h2>
-      <p class="tr-cta-sub">
-        We have traced the full history — from Babel to the Reformation — entry by entry, source by source.
-        Nothing is hidden. Everything is documented. The trail is yours to walk.
-      </p>
-      <div class="tr-btn-row">
-
-        <div class="tr-btn-group">
-          <a href="/trinity/history" class="tr-btn">Historic Trail &nbsp;&#8594;</a>
-          <p class="tr-cta-note">A documented timeline from 2200 BC to the Reformation</p>
-          <div class="tr-tooltip">
-            A documented timeline tracing the triune god from the Tower of Babel through Babylon, Egypt, Greece, and Rome — all the way to the Council of Nicaea and beyond. Every major turning point, every adaptation, every name change the doctrine wore on its journey into the modern church.
-          </div>
-        </div>
-
-        <div class="tr-btn-group">
-          <a href="/trinity/files" class="tr-btn">Trinity Files &nbsp;&#8594;</a>
-          <p class="tr-cta-note">The case against the doctrine, built from Scripture</p>
-          <div class="tr-tooltip">
-            Every verse trinitarians use to defend their doctrine — examined, dismantled, and returned to its original context. One verse at a time, one file at a time. If the case is as strong as they claim, it should be able to survive scrutiny.
-          </div>
-        </div>
-
-        <div class="tr-btn-group">
-          <a href="/trinity/roles" class="tr-btn">Five Titles, One Christ &nbsp;&#8594;</a>
-          <p class="tr-cta-note">Five titles the church gave to the wrong one</p>
-          <div class="tr-tooltip">
-            Scripture presents two distinct roles — never three. Father and Son, Husband and Bride, Kinsman Redeemer and the price paid, Elohim and High Priest. From Genesis to Revelation, the pattern is consistent: one sends, one is sent. The trinity collapses this design into confusion.
-          </div>
-        </div>
-
-        <div class="tr-btn-group">
-          <a href="/trinity/bearer" class="tr-btn">The Bearer &nbsp;&#8594;</a>
-          <p class="tr-cta-note">The one who carries the Father is not the Father</p>
-          <div class="tr-tooltip">
-            Light, image, word, presence, plan — five things Scripture says the Son is, and five the church has read as claims to be the Father Himself. But every one is a carrying word: a lamp is lit, an image is of someone, a word is spoken, a temple houses a Presence, a lamb is laid on the altar by a hand not its own.
-          </div>
-        </div>
-
       </div>
     </section>
 
@@ -206,42 +243,6 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     border-bottom: 1px solid #3a2510;
   }
 
-  /* ── CTA SECTION ── */
-  .tr-cta-section {
-    text-align: center;
-    padding: 5rem 1.5rem;
-    border-bottom: 1px solid #2e1f0d;
-    background:
-      radial-gradient(ellipse at 50% 50%, rgba(100, 60, 20, 0.12), transparent 70%);
-  }
-
-  .tr-cta-label {
-    font-family: 'Cinzel', serif;
-    font-size: 10px;
-    letter-spacing: 4px;
-    color: #6a4820;
-    text-transform: uppercase;
-    margin-bottom: 1rem;
-  }
-
-  .tr-cta-title {
-    font-family: 'Cinzel', serif;
-    font-size: clamp(1.5rem, 3vw, 2.25rem);
-    font-weight: 600;
-    color: #f0e0bf;
-    margin: 0 0 1.25rem;
-    line-height: 1.25;
-  }
-
-  .tr-cta-sub {
-    font-size: 1.1rem;
-    color: #c4ad84;
-    font-style: italic;
-    max-width: 560px;
-    margin: 0 auto 2.5rem;
-    line-height: 1.7;
-  }
-
   /* ── Button — clay pot style matching the site ── */
   .tr-btn {
     display: inline-flex;
@@ -279,67 +280,227 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     transform: translateY(1px);
   }
 
-  .tr-btn-row {
-    display: grid;
-    grid-template-columns: repeat(4, minmax(0, 1fr));
-    gap: 2.25rem 1.5rem;
-    max-width: 1040px;
-    margin: 0 auto;
-    justify-items: center;
-    align-items: start;
+  /* ── LEAD FEATURE — Trinity Files, the largest thing on the page ── */
+  .tl-feature {
+    padding: 2.75rem 1.5rem 2.5rem;
+    border-bottom: 1px solid #2e1f0d;
+    text-align: center;
   }
-  @media (max-width: 900px) { .tr-btn-row { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
-  @media (max-width: 540px) { .tr-btn-row { grid-template-columns: 1fr; } }
+  .tl-feature-card {
+    display: block;
+    max-width: 980px;
+    margin: 0 auto;
+    padding: 2.75rem 2rem 2.5rem;
+    text-decoration: none;
+    border: 1px solid #4a3218;
+    border-top: 3px solid #8a6028;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(150, 90, 40, 0.16), transparent 70%),
+      rgba(20, 13, 5, 0.6);
+    transition: border-color 0.2s;
+  }
+  .tl-feature-card:hover { border-color: #8a6028; }
+  .tl-feature-card:hover .tr-btn {
+    background: linear-gradient(180deg, #965a3e 0%, #7a3a14 50%, #5e2a0c 100%);
+    color: #fff5e0;
+    transform: translateY(-2px);
+  }
+  .tl-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 4px;
+    color: #8a6028;
+    text-transform: uppercase;
+    margin: 0 0 0.9rem;
+  }
+  .tl-feature-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(2.2rem, 5.5vw, 3.6rem);
+    font-weight: 700;
+    color: #f0e0bf;
+    line-height: 1.1;
+    margin: 0 0 1.1rem;
+  }
+  .tl-feature-desc {
+    font-size: clamp(1.05rem, 2vw, 1.25rem);
+    font-style: italic;
+    color: #c4a46b;
+    line-height: 1.6;
+    max-width: 640px;
+    margin: 0 auto 1.4rem;
+  }
+  .tl-progress {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #ba7517;
+    margin: 0 0 1.9rem;
+  }
+  .tl-feature-sub {
+    display: inline-block;
+    margin-top: 1.25rem;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+    text-decoration: none;
+  }
+  .tl-feature-sub:hover { color: #c4a46b; }
+  .tl-arrow { display: inline-block; transition: transform 0.2s ease; }
+  .tl-feature-sub:hover .tl-arrow,
+  .tl-book-links a:hover .tl-arrow { transform: translateX(4px); }
 
-  .tr-btn-group {
+  /* ── BANDS — The Books, The Historic Trail ── */
+  .tl-band {
+    padding: 2.75rem 1.5rem;
+    border-bottom: 1px solid #2e1f0d;
+  }
+  .tl-band-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.35rem, 2.8vw, 1.8rem);
+    font-weight: 600;
+    color: #f0e0bf;
+    text-align: center;
+    margin: 0 0 1.75rem;
+  }
+
+  .tl-books {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    max-width: 980px;
+    margin: 0 auto;
+  }
+  .tl-book {
+    display: grid;
+    grid-template-columns: 112px minmax(0, 1fr);
+    gap: 1.25rem;
+    padding: 1.4rem;
+    background: rgba(20, 13, 5, 0.6);
+    border: 1px solid #3a2510;
+    border-left: 4px solid var(--tl-accent, #8a6028);
+  }
+  .tl-cover img {
+    display: block;
+    width: 112px;
+    height: auto;
+    aspect-ratio: 2 / 3;
+    object-fit: cover;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(240, 224, 191, 0.12);
+  }
+  .tl-book-title {
+    font-family: 'Cinzel', serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    line-height: 1.25;
+    margin: 0 0 0.35rem;
+  }
+  .tl-book-title a { color: #f0e0bf; text-decoration: none; }
+  .tl-book-title a:hover { color: #fff5e0; }
+  .tl-book-deck {
+    font-style: italic;
+    color: #c4a46b;
+    font-size: 1rem;
+    line-height: 1.45;
+    margin: 0 0 0.6rem;
+  }
+  .tl-book-desc {
+    color: #b8a682;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0 0 0.9rem;
+  }
+  .tl-book-links {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.4rem 1.4rem;
+    margin: 0;
+  }
+  .tl-book-links a {
+    font-family: 'Cinzel', serif;
+    font-size: 10px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ba7517;
+    text-decoration: none;
+  }
+  .tl-book-links a:hover { color: #f0e0bf; }
+
+  /* ── THE HISTORIC TRAIL — a strip of stations on one rule. On a phone the
+     strip scrolls sideways inside its own box; the page body never does. ── */
+  .tl-trail { text-align: center; background: rgba(10, 6, 2, 0.3); }
+  .tl-band-sub {
+    font-style: italic;
+    color: #c4a46b;
+    font-size: 1.05rem;
+    margin: -1.1rem 0 2rem;
+  }
+  .tl-strip {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    padding: 0 0.5rem 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .tl-strip::before {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 6px;
+    height: 1px;
+    background: #5a4526;
+  }
+  .tl-station {
+    position: relative;
+    flex: 0 0 auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0;
-  }
-
-  .tr-cta-note {
+    gap: 0.7rem;
+    min-width: 4.5rem;
     font-family: 'Cinzel', serif;
-    font-size: 9px;
+    font-size: 11px;
     letter-spacing: 1.5px;
-    color: #4a3018;
     text-transform: uppercase;
-    margin-top: 1rem;
+    color: #c9b489;
   }
-
-  /* ── Tooltips ── */
-  .tr-btn-group {
-    position: relative;
+  .tl-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #160f07;
+    border: 1px solid #8a6028;
   }
-
-  .tr-tooltip {
-    display: none;
-    position: absolute;
-    top: calc(100% + 14px);
-    left: 50%;
-    transform: translateX(-50%);
-    width: 280px;
-    background: #1c1508;
-    border: 0.5px solid rgba(186, 117, 23, 0.3);
-    border-top: 2px solid #BA7517;
-    border-radius: 10px;
-    padding: 1.1rem 1.25rem;
-    z-index: 100;
-    font-family: 'Crimson Pro', Georgia, serif;
-    font-size: 0.95rem;
-    line-height: 1.7;
+  .tl-trail-desc {
+    max-width: 640px;
+    margin: 0 auto 2rem;
     color: #c4ad84;
-    pointer-events: none;
-    text-align: left;
+    font-size: 1.05rem;
+    line-height: 1.7;
   }
 
-  .tr-btn-group:hover .tr-tooltip {
-    display: block;
+  @media (max-width: 760px) {
+    .tl-books { grid-template-columns: 1fr; }
   }
-
-  @media (max-width: 600px) {
-    .tr-btn-row { gap: 1.75rem; }
-    .tr-tooltip { width: 240px; }
+  @media (max-width: 620px) {
+    .tl-feature { padding: 2rem 1rem 2.25rem; }
+    .tl-feature-card { padding: 2.25rem 1.25rem 2.25rem; }
+    .tl-band { padding: 2.5rem 1rem; }
+    .tl-book { grid-template-columns: 84px minmax(0, 1fr); gap: 1rem; padding: 1.1rem; }
+    .tl-cover img { width: 84px; }
+    .tl-strip { justify-content: flex-start; gap: 1.25rem; }
+    .tl-strip::before { right: auto; width: calc(7 * 5.75rem); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tl-arrow { transition: none; }
   }
 
   /* ── FOOTER QUOTE ── */
