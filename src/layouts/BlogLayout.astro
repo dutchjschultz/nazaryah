@@ -1,5 +1,7 @@
 ---
-// BlogLayout.astro · 1007 V12
+// BlogLayout.astro · 1007 V13
+// V13: the Trilogy panel's wrapper widens to max-w-5xl so the panel runs
+// wider and shorter (three studies side by side). Nothing else moves.
 // V12: ReadingSet renders directly under the masthead on any study named in
 // src/data/reading-sets.js (studies meant to be read together, in order).
 // Renders nothing on every other study.
@@ -204,8 +206,8 @@ const companions = (
         )}
       </header>
 
-      <!-- Reading set (studies read together in order; nothing on the rest) -->
-      <div class="max-w-3xl mx-auto">
+      <!-- Trilogy panel (studies that belong together; nothing on the rest) -->
+      <div class="max-w-5xl mx-auto px-4">
         <ReadingSet current={post} />
       </div>
 

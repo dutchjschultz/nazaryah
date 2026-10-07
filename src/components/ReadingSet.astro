@@ -1,27 +1,28 @@
 ---
-// ReadingSet.astro · 1007 V2
-// V2: a study may sit in MORE THAN ONE set. The page still shows ONE panel:
-// the set the reader came in through. Every link inside a panel carries
-// ?set=<key>, so clicking from Reading I of one set lands on Reading II of
-// THAT set. A reader arriving from search or a card sees the first set the
-// study is listed in. Under the list, an "Also" line names each other set this
-// study belongs to, with its reading number; clicking it swaps the panel in
-// place (no reload) and updates the address. Without JavaScript the first set
-// shows and the "Also" links still work as ordinary links.
+// ReadingSet.astro · 1007 V3
+// V3: the panel becomes the TRILOGY panel, reworked to Dutch's notes.
+//   - Wider and shorter: the studies sit side by side on desktop (stacked on a
+//     phone), with tighter padding top to bottom.
+//   - Header names what it is: "A Trilogy" kicker, the trilogy's title, and one
+//     standing sentence on what a trilogy is.
+//   - No order: no Roman numerals, no "Reading II of III", no "Next" line.
+//   - The "Also" line has more presence and reads "Also part of the trilogy",
+//     with the other trilogy's title set larger than the words before it.
+// V2: a study may sit in more than one set; one panel shows, chosen by ?set=.
 // V1: the panel, one set per study.
 //
-// The Reading Set panel: studies meant to be read together, in order, like
-// the lessons of one Bible study. Shown at the top of every study named in a
-// set in src/data/reading-sets.js, directly under the masthead.
+// Shown at the top of every study named in src/data/reading-sets.js, directly
+// under the masthead. It is built to look NOTHING like the Quick Read / Full
+// Study bar: a dark bound-leather panel with tooled gold rules and the current
+// study marked in clay.
 //
-// It is built to look NOTHING like the Quick Read / Full Study bar. That bar is
-// light parchment with gold pills; this is a dark bound-leather panel with
-// tooled gold rules, Roman-numeral lessons and the current reading marked in
-// clay. A reader should see at a glance that this is a course of study, not a
-// page control.
+// MORE THAN ONE TRILOGY: the page still shows ONE panel, the trilogy the reader
+// came in through. Every link inside a panel carries ?set=<key>. A reader
+// arriving cold sees the first trilogy listed in the data file. The "Also"
+// line swaps the panel in place (no reload) and updates the address. Without
+// JavaScript the first trilogy shows and the "Also" links still work.
 //
-// Renders nothing when the study is in no set, so every other study is
-// untouched. Unknown slugs in the data file are skipped.
+// Renders nothing when the study is in no trilogy. Unknown slugs are skipped.
 //
 // COLOUR NOTE: every colour is declared for light, then restated under
 // :global(.dark). Do not lean on var(--token, fallback) here; several site
@@ -32,9 +33,6 @@ import { setsFor } from '../data/reading-sets.js';
 import { postHref } from '../lib/post-href.js';
 
 const { current } = Astro.props;
-const NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
-const WORDS = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
-const num = (n) => NUMERALS[n - 1] ?? String(n);
 const withSet = (href, key) => `${href}${href.includes('?') ? '&' : '?'}set=${key}`;
 
 const sets = current
@@ -55,56 +53,45 @@ const sets = current
               }),
             )
           ).filter(Boolean);
-          const position = readings.findIndex((r) => r.here) + 1;
-          return { ...set, readings, position };
+          return { ...set, readings };
         }),
       )
-    ).filter((s) => s.readings.length > 1 && s.position > 0)
+    ).filter((s) => s.readings.length > 1 && s.readings.some((r) => r.here))
   : [];
 ---
 
 {sets.length > 0 && (
   <div class="rs-wrap" data-reading-sets data-pagefind-ignore>
     {sets.map((set, si) => (
-      <aside class="rs" aria-label={`Reading set: ${set.title}`} data-set={set.key} hidden={si > 0}>
+      <aside class="rs" aria-label={`Trilogy: ${set.title}`} data-set={set.key} hidden={si > 0}>
         <div class="rs-inner">
-          <p class="rs-kicker">A Study in {WORDS[set.readings.length] || set.readings.length} Readings</p>
-          <p class="rs-title">{set.title}</p>
-          <p class="rs-intro">{set.intro}</p>
+          <header class="rs-head">
+            <p class="rs-kicker">A Trilogy</p>
+            <p class="rs-title">{set.title}</p>
+            <p class="rs-intro">Three studies that stand on their own and shed light on one another. Start with any one.</p>
+          </header>
 
-          <ol class="rs-list">
-            {set.readings.map((r, i) => (
+          <ul class="rs-list" style={`--rs-cols:${set.readings.length}`}>
+            {set.readings.map((r) => (
               <li class={r.here ? 'rs-item rs-here' : 'rs-item'}>
-                <span class="rs-num" aria-hidden="true">{num(i + 1)}</span>
-                <span class="rs-body">
-                  {r.here ? (
-                    <span class="rs-name" aria-current="page">{r.title}</span>
-                  ) : (
-                    <a class="rs-name" href={withSet(r.href, set.key)}>{r.title}</a>
-                  )}
-                  <span class="rs-line">{r.line}</span>
-                </span>
                 {r.here && <span class="rs-mark">You are reading</span>}
+                {r.here ? (
+                  <span class="rs-name" aria-current="page">{r.title}</span>
+                ) : (
+                  <a class="rs-name" href={withSet(r.href, set.key)}>{r.title}</a>
+                )}
+                <span class="rs-line">{r.line}</span>
               </li>
             ))}
-          </ol>
-
-          <p class="rs-foot">
-            Reading {num(set.position)} of {num(set.readings.length)}
-            {set.position < set.readings.length && (
-              <>
-                {' · '}
-                <a href={withSet(set.readings[set.position].href, set.key)}>Next: {set.readings[set.position].title} &rarr;</a>
-              </>
-            )}
-          </p>
+          </ul>
 
           {sets.length > 1 && (
             <div class="rs-also">
-              <span class="rs-also-label">This study is also</span>
               {sets.filter((o) => o.key !== set.key).map((o) => (
                 <a class="rs-also-link" href={`?set=${o.key}`} data-switch={o.key}>
-                  Reading {num(o.position)} of <em>{o.title}</em> &rarr;
+                  <span class="rs-also-label">Also part of the trilogy</span>
+                  <span class="rs-also-title">{o.title}</span>
+                  <span class="rs-also-arrow" aria-hidden="true">&rarr;</span>
                 </a>
               ))}
             </div>
@@ -116,7 +103,7 @@ const sets = current
 )}
 
 <script>
-  // Show the set the reader came in through (?set=key); otherwise the first.
+  // Show the trilogy the reader came in through (?set=key); otherwise the first.
   // The "Also" links swap panels in place and keep the address in step.
   document.querySelectorAll('[data-reading-sets]').forEach((wrap) => {
     const panels = Array.from(wrap.querySelectorAll('[data-set]'));
@@ -143,113 +130,140 @@ const sets = current
 
 <style>
   .rs {
-    max-width: 46rem;
-    margin: 0.5rem auto 2.25rem;
-    padding: 6px;
+    margin: 0.25rem auto 1.75rem;
+    padding: 5px;
     background: #2a1d10;
     border-radius: 6px;
     box-shadow: 0 6px 22px rgba(43, 29, 17, 0.28);
   }
+  .rs[hidden] { display: none; }
   .rs-inner {
     border: 1px solid #8a6520;
     outline: 1px solid rgba(196, 154, 78, 0.35);
     outline-offset: -5px;
     border-radius: 3px;
-    padding: 1.6rem 1.75rem 1.3rem;
-    text-align: center;
+    padding: 1rem 1.5rem 1.05rem;
   }
+
+  .rs-head { text-align: center; margin: 0 0 0.85rem; }
   .rs-kicker {
-    margin: 0 0 0.35rem;
+    margin: 0;
     font-family: 'Cinzel', serif;
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     letter-spacing: 3px;
     text-transform: uppercase;
     color: #c49a4e;
   }
   .rs-title {
-    margin: 0;
+    margin: 0.1rem 0 0;
     font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
     font-style: italic;
-    font-size: clamp(1.45rem, 3vw, 1.85rem);
+    font-size: clamp(1.4rem, 2.6vw, 1.75rem);
     line-height: 1.2;
     color: #f0e0bf;
   }
   .rs-intro {
-    margin: 0.35rem 0 1.2rem;
+    margin: 0.2rem auto 0;
+    max-width: 40rem;
     font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
-    font-size: 1rem;
+    font-size: 0.98rem;
+    line-height: 1.4;
     color: #c4ad84;
   }
+
   .rs-list {
     list-style: none;
     margin: 0;
     padding: 0;
-    text-align: left;
+    display: grid;
+    grid-template-columns: repeat(var(--rs-cols, 3), minmax(0, 1fr));
     border-top: 1px solid rgba(196, 154, 78, 0.35);
+    border-bottom: 1px solid rgba(196, 154, 78, 0.35);
   }
   .rs-item {
     display: flex;
-    align-items: center;
-    gap: 1rem;
-    padding: 0.85rem 0.6rem;
-    border-bottom: 1px solid rgba(196, 154, 78, 0.35);
-  }
-  .rs-num {
-    flex: 0 0 2.6rem;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.2rem;
+    padding: 0.75rem 1rem;
     text-align: center;
-    font-family: 'Cinzel', serif;
-    font-size: 1.15rem;
-    color: #c49a4e;
   }
-  .rs-body { flex: 1 1 auto; min-width: 0; }
+  .rs-item + .rs-item { border-left: 1px solid rgba(196, 154, 78, 0.35); }
   .rs-name {
-    display: block;
     font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
-    font-size: 1.15rem;
+    font-size: 1.08rem;
     font-weight: 600;
+    line-height: 1.25;
     color: #f0e0bf;
     text-decoration: none;
   }
   a.rs-name:hover { color: #c49a4e; text-decoration: underline; text-underline-offset: 3px; }
   a.rs-name:focus-visible { outline: 2px solid #c49a4e; outline-offset: 2px; }
   .rs-line {
-    display: block;
-    margin-top: 0.1rem;
     font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
     font-style: italic;
-    font-size: 0.95rem;
+    font-size: 0.92rem;
+    line-height: 1.35;
     color: #c4ad84;
   }
-  .rs-here { background: rgba(160, 69, 28, 0.22); }
-  .rs-here .rs-num { color: #e08a5c; }
+  .rs-here { background: rgba(160, 69, 28, 0.24); }
   .rs-mark {
-    flex: 0 0 auto;
+    align-self: center;
+    margin-bottom: 0.15rem;
     font-family: 'Cinzel', serif;
-    font-size: 0.58rem;
+    font-size: 0.56rem;
     letter-spacing: 1.5px;
     text-transform: uppercase;
     color: #f0e0bf;
     background: #a0451c;
     border-radius: 3px;
-    padding: 0.3rem 0.55rem;
+    padding: 0.22rem 0.5rem;
   }
-  .rs-foot {
-    margin: 1rem 0 0;
+
+  .rs-also {
+    margin: 0.85rem 0 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem;
+  }
+  .rs-also-link {
+    display: inline-flex;
+    align-items: baseline;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.25rem 0.6rem;
+    padding: 0.45rem 1.1rem;
+    border: 1px solid rgba(196, 154, 78, 0.7);
+    border-radius: 4px;
+    background: rgba(196, 154, 78, 0.08);
+    text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
+  }
+  .rs-also-label {
     font-family: 'Cinzel', serif;
-    font-size: 0.64rem;
+    font-size: 0.66rem;
     letter-spacing: 2px;
     text-transform: uppercase;
     color: #c4ad84;
   }
-  .rs-foot a { color: #c49a4e; text-decoration: none; }
-  .rs-foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .rs-also-title {
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-weight: 600;
+    font-size: 1.3rem;
+    line-height: 1.2;
+    color: #e2b864;
+  }
+  .rs-also-arrow { font-size: 1.1rem; color: #e2b864; }
+  .rs-also-link:hover { border-color: #e2b864; background: rgba(196, 154, 78, 0.18); }
+  .rs-also-link:focus-visible { outline: 2px solid #c49a4e; outline-offset: 2px; }
 
-  @media (max-width: 560px) {
-    .rs-inner { padding: 1.3rem 1rem 1.1rem; }
-    .rs-item { flex-wrap: wrap; gap: 0.6rem; padding: 0.8rem 0.25rem; }
-    .rs-num { flex-basis: 2rem; font-size: 1rem; }
-    .rs-body { flex-basis: calc(100% - 2.6rem); }
-    .rs-mark { margin-left: 2.6rem; }
+  @media (max-width: 680px) {
+    .rs-inner { padding: 0.9rem 0.9rem 0.95rem; }
+    .rs-list { grid-template-columns: 1fr; }
+    .rs-item { padding: 0.65rem 0.6rem; }
+    .rs-item + .rs-item { border-left: 0; border-top: 1px solid rgba(196, 154, 78, 0.35); }
   }
 
   /* Dark site: the panel lifts one step off the dark page and keeps its gold. */
@@ -260,37 +274,9 @@ const sets = current
   :global(.dark) .rs-mark { color: #f0e0bf; }
   :global(.dark) .rs-intro,
   :global(.dark) .rs-line,
-  :global(.dark) .rs-foot { color: #c4ad84; }
-  :global(.dark) .rs-kicker,
-  :global(.dark) .rs-num,
-  :global(.dark) .rs-foot a { color: #c49a4e; }
-  :global(.dark) .rs-here { background: rgba(160, 69, 28, 0.3); }
-  :global(.dark) .rs-here .rs-num { color: #e08a5c; }
-  .rs[hidden] { display: none; }
-  .rs-also {
-    margin: 0.9rem 0 0;
-    padding-top: 0.85rem;
-    border-top: 1px dashed rgba(196, 154, 78, 0.35);
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: baseline;
-    gap: 0.35rem 0.9rem;
-    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
-    font-size: 0.98rem;
-  }
-  .rs-also-label { color: #c4ad84; font-style: italic; }
-  .rs-also-link {
-    color: #f0e0bf;
-    text-decoration: none;
-    border: 1px solid rgba(196, 154, 78, 0.55);
-    border-radius: 3px;
-    padding: 0.15rem 0.6rem;
-  }
-  .rs-also-link em { color: #c49a4e; }
-  .rs-also-link:hover { border-color: #c49a4e; background: rgba(196, 154, 78, 0.12); }
-  .rs-also-link:focus-visible { outline: 2px solid #c49a4e; outline-offset: 2px; }
   :global(.dark) .rs-also-label { color: #c4ad84; }
-  :global(.dark) .rs-also-link { color: #f0e0bf; }
-  :global(.dark) .rs-also-link em { color: #c49a4e; }
+  :global(.dark) .rs-kicker { color: #c49a4e; }
+  :global(.dark) .rs-also-title,
+  :global(.dark) .rs-also-arrow { color: #e2b864; }
+  :global(.dark) .rs-here { background: rgba(160, 69, 28, 0.3); }
 </style>

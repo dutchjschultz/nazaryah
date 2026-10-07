@@ -1,34 +1,36 @@
-// reading-sets 1007 V2.js
-// V2: a study may now sit in more than one set (The Goat That Was Not Slain is
-// Reading II of both sets below). Second set added: The Tenth Day.
-// V1: new file. The first reading set, The Garment and the Blood.
+// reading-sets 1007 V3.js
+// V3: sets are now presented as TRILOGIES. No reading order: the panel shows no
+// numbers, so list the studies in whatever order looks best left to right.
+// The per-set `intro` line is gone; the panel carries one standing sentence on
+// what a trilogy is. Each study keeps its short `line`.
+// V2: a study may sit in more than one set (The Goat That Was Not Slain is in
+// both sets below). Second set added: The Tenth Day.
+// V1: new file. The first set, The Garment and the Blood.
 //
-// READING SETS — studies meant to be read together, in a fixed order, like
-// the lessons of one Bible study. Curated by hand. Nothing here is generated,
-// and nothing is inferred from associations: a set exists only because it is
-// written in this file.
+// TRILOGIES — studies that stand alone but belong together. Curated by hand.
+// Nothing here is generated, and nothing is inferred from associations: a
+// trilogy exists only because it is written in this file.
 //
-// Every study named in a set shows the Reading Set panel at the top of its
-// page (ReadingSet.astro, under the masthead), with all readings of the set
-// in order and the current one marked. Nothing else on the site changes.
+// Every study named here shows the Trilogy panel at the top of its page
+// (ReadingSet.astro, under the masthead) with the other studies of the set and
+// the current one marked. Nothing else on the site changes.
 //
-// To add a set: copy a block below, give it a unique `key`, a `title`, an
-// `intro` line, and its `readings` in reading order. Each reading names the
-// study's slug (its file name without .mdx) and one short line saying what
-// that reading gives the reader. Titles come from each study's own
-// frontmatter, so a retitled study updates here by itself.
+// To add a trilogy: copy a block below, give it a unique `key` and a `title`,
+// and list its `readings`. Each reading names the study's slug (its file name
+// without .mdx) and one short `line` saying what that study brings. Titles
+// come from each study's own frontmatter, so a retitled study updates here
+// by itself.
 //
-// A study may sit in several sets. Its page shows the set the reader came in
-// through; a reader arriving cold sees the FIRST set (top of this file) that
-// lists it, with an "Also" line to the others. So list the set you want shown
-// by default first. An unknown slug is skipped, so a typo can never break a
-// page; check the panel after a deploy.
+// A study may sit in several trilogies. Its page shows the trilogy the reader
+// came in through; a reader arriving cold sees the FIRST trilogy (top of this
+// file) that lists it, with an "Also part of the trilogy" line to the others.
+// So list the one you want shown by default first. An unknown slug is skipped,
+// so a typo can never break a page; check the panel after a deploy.
 
 export const READING_SETS = [
   {
     key: "the-garment-and-the-blood",
     title: "The Garment and the Blood",
-    intro: "Three studies, one thread. Read them in order.",
     readings: [
       {
         slug: "clothed-by-the-owner",
@@ -47,7 +49,6 @@ export const READING_SETS = [
   {
     key: "the-tenth-day",
     title: "The Tenth Day",
-    intro: "One day in the seventh month: the cover, the goats, the trumpet of liberty.",
     readings: [
       {
         slug: "the-kapporet-atonement-cover",
