@@ -1,5 +1,7 @@
 ---
-// BlogLayout.astro · 1007 V13
+// BlogLayout.astro · 1007 V14
+// V14: the Trilogy panel runs edge to edge with the text on phones; its
+// wrapper's side padding (px-4) now applies from md up only.
 // V13: the Trilogy panel's wrapper widens to max-w-5xl so the panel runs
 // wider and shorter (three studies side by side). Nothing else moves.
 // V12: ReadingSet renders directly under the masthead on any study named in
@@ -207,7 +209,7 @@ const companions = (
       </header>
 
       <!-- Trilogy panel (studies that belong together; nothing on the rest) -->
-      <div class="max-w-5xl mx-auto px-4">
+      <div class="max-w-5xl mx-auto md:px-4">
         <ReadingSet current={post} />
       </div>
 
