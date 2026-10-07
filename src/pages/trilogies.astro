@@ -1,0 +1,26 @@
+---
+// trilogies.astro · 1007 V1 — the Trilogies item in the Berean Studies menu.
+// Every trilogy in src/data/reading-sets.js, each shown in the same dark panel
+// that sits at the top of its studies (ReadingSet.astro with `only`). Adding a
+// trilogy to the data file adds it here; nothing in this page changes.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import StudiesHero from '../components/StudiesHero.astro';
+import ReadingSet from '../components/ReadingSet.astro';
+import { READING_SETS } from '../data/reading-sets.js';
+---
+
+<BaseLayout title="Trilogies - Berean Studies - Nazaryah" description="Three studies that stand on their own and shed light on one another.">
+  <StudiesHero title="Trilogies">
+    Three studies that stand on their own and shed light on one another. Start with any one, and the other two will open it wider.
+  </StudiesHero>
+  <section class="tri-wrap">
+    <div class="tri-inner">
+      {READING_SETS.map((set) => <ReadingSet only={set.key} />)}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .tri-wrap { background: #0a0a0a; padding: 2.5rem 1rem 3.5rem; border-top: 3px solid #b89150; }
+  .tri-inner { max-width: 64rem; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+</style>

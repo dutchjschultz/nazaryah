@@ -1,4 +1,8 @@
-// content config 1005 V20
+// content config 1007 V21
+// V21: category enum — adds 'The Way In and the Walk' (the new topic group,
+// subtitle The Blood and the Bread) and retires 'One Throne, One Name' (its one
+// study joined The Counterfeit Throne group and now carries Scripture
+// Unfiltered, like the rest of that group).
 // V20: optional `unlisted` on a post — a "go deeper" page reached only by the link
 // inside its parent study. It renders at /blog/<slug> but carries no category,
 // associations or POST_GROUP line, stays out of Featured Picks and out of site
@@ -132,15 +136,15 @@ const postsCollection = defineCollection({
     category: z.enum([
       'The Scrolls',
       'Scripture Unfiltered',
+      'The Way In and the Walk',
       'Buried in Plain Sight',
       'Parables',
       'The Trinity Files',
-      'One Throne, One Name',
       'The Sender and The Sent',
       'The Bearer',
       'Five Titles, One Christ',
       'What the Pulpit Buried',
-      // Volume V. Not the same as 'One Throne, One Name' above — see the V7 note.
+      // Volume V of the books. (The near-collision 'One Throne, One Name' was retired in V21.)
       'One God, One Name, One Throne',
       'Word Studies',
       'The Law Still Stands',

@@ -1,0 +1,14 @@
+---
+// blog/collections.astro · 1007 V1 — the Collections item in the Berean Studies
+// menu: the collection cards only.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import StudiesHero from '../../components/StudiesHero.astro';
+import StudiesMap from '../../components/StudiesMap.astro';
+---
+
+<BaseLayout title="Collections - Berean Studies - Nazaryah" description="Studies that outgrew the page.">
+  <StudiesHero title="Collections">
+    Each of these began as one study, and the subject kept going. Now each has a room of its own.
+  </StudiesHero>
+  <StudiesMap show="collections" />
+</BaseLayout>

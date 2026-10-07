@@ -1,5 +1,10 @@
 ---
-// Header.astro · 0929 V10 — BLOG is now STUDIES, a hover dropdown (Studies →
+// Header.astro · 1007 V11 — STUDIES is now BEREAN STUDIES (Acts 17:11). The
+// label still opens /blog, which now shows all four kinds of reading. The
+// dropdown has four items, each with a one-line description under its name
+// (the Doctrines sublabel line): Studies (/blog/topics), Pe'ah (/peah),
+// Trilogies (/trilogies), Collections (/blog/collections). Mobile lists all four.
+// V10: Header.astro · 0929 V10 — BLOG is now STUDIES, a hover dropdown (Studies →
 // /blog, Pe'ah — The Corner of the Field → /peah) built on the Doctrines
 // dropdown's markup and classes. Reader-facing word only: every address stays
 // /blog. Mobile lists both links.
@@ -37,7 +42,7 @@ const primaryNav = [
   { name: 'Topics', href: null, dropdown: 'topics' },
   { name: 'Torah', href: '/torah' },
   { name: 'Trinity', href: '/trinity' },
-  { name: 'Studies', href: '/blog', dropdown: 'studies' },
+  { name: 'Berean Studies', href: '/blog', dropdown: 'studies' },
   { name: 'Voices', href: '/voices' },
   { name: 'Books', href: '/books' },
   { name: 'Contact', href: '/contact' },
@@ -94,8 +99,10 @@ const doctrinesNav = {
 const studiesNav = {
   href: '/blog',
   items: [
-    { name: 'Studies', href: '/blog' },
-    { name: "Pe'ah — The Corner of the Field", href: '/peah' },
+    { name: 'Studies', href: '/blog/topics', sublabel: 'Full Bible studies, one subject at a time, sorted by topic.' },
+    { name: "Pe'ah — The Corner of the Field", href: '/peah', sublabel: 'A short read on one verse, one point. Fits with morning coffee.' },
+    { name: 'Trilogies', href: '/trilogies', sublabel: 'Three studies that belong together. Each one opens the other two wider.' },
+    { name: 'Collections', href: '/blog/collections', sublabel: 'Studies that outgrew the page.' },
   ],
 };
 
@@ -108,8 +115,11 @@ const mobileNav = [
   { name: 'The Departure', href: '/doctrines/the-departure' },
   { name: 'Torah', href: '/torah' },
   { name: 'Trinity', href: '/trinity' },
-  { name: 'Studies', href: '/blog' },
+  { name: 'Berean Studies', href: '/blog' },
+  { name: 'Studies', href: '/blog/topics' },
   { name: "Pe'ah — The Corner of the Field", href: '/peah' },
+  { name: 'Trilogies', href: '/trilogies' },
+  { name: 'Collections', href: '/blog/collections' },
   { name: 'Voices', href: '/voices' },
   { name: 'Books', href: '/books' },
   { name: 'Contact', href: '/contact' },
@@ -128,7 +138,7 @@ const topicsActive =
   topicsRestoredTruth.items.some((it) => isActive(it.href));
 
 const doctrinesActive = isActive('/doctrines');
-const studiesActive = isActive('/blog') || isActive('/peah');
+const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilogies');
 ---
 
 <header class="site-header sticky top-0 z-50 border-b border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] backdrop-blur-sm" data-pagefind-ignore>
@@ -248,8 +258,8 @@ const studiesActive = isActive('/blog') || isActive('/peah');
                 </div>
               </li>
             ) : item.dropdown === 'studies' ? (
-              /* Same hover dropdown as Doctrines, same classes; its items carry
-                 no sublabel line. */
+              /* Same hover dropdown as Doctrines, same classes, and now the
+                 same sublabel line under each item. */
               <li class="doctrines-wrap">
                 <a
                   href={studiesNav.href}
@@ -262,10 +272,11 @@ const studiesActive = isActive('/blog') || isActive('/peah');
                   {studiesNav.items.map((sub) => (
                     <a
                       href={sub.href}
-                      class:list={['doctrines-item', currentPath === sub.href || (sub.href !== '/blog' && isActive(sub.href)) ? 'active' : '']}
+                      class:list={['doctrines-item', isActive(sub.href) ? 'active' : '']}
                       role="menuitem"
                     >
                       <span class="doctrines-item-name">{sub.name}</span>
+                      {sub.sublabel && <span class="doctrines-item-sub">{sub.sublabel}</span>}
                     </a>
                   ))}
                 </div>

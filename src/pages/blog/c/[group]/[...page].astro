@@ -63,6 +63,7 @@ const pageHref = (n) => (n === 1 ? `/blog/c/${group.key}` : `/blog/c/${group.key
   <section class="blog-subhead">
     <a href="/blog" class="blog-back">&larr; All categories</a>
     <h1 class="blog-subhead-title">{group.name}</h1>
+    {group.subtitle && <p class="blog-subhead-sub">{group.subtitle}</p>}
     <p class="blog-subhead-blurb">{group.blurb}</p>
     <p class="blog-subhead-count">{sectioned
       ? `${total} ${total === 1 ? one : many} · ${page.total} ${page.total === 1 ? secOne : secMany}`
@@ -106,6 +107,7 @@ const pageHref = (n) => (n === 1 ? `/blog/c/${group.key}` : `/blog/c/${group.key
 </BaseLayout>
 
 <style is:global>
+  .blog-subhead-sub { font-family: 'Cinzel', serif; font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #7a4f28; margin: -0.35rem 0 0.6rem; }
   .blog-subhead { font-family: Georgia, 'Times New Roman', serif; background: #cfc0a0; padding: 2.25rem 2rem 1.75rem; text-align: center; }
   .blog-back { display: inline-block; font-family: 'Cinzel', Georgia, serif; font-size: 0.65rem; letter-spacing: 0.18em; text-transform: uppercase; color: #6b3010; text-decoration: none; margin-bottom: 0.9rem; }
   .blog-back:hover { color: #3a1a04; }

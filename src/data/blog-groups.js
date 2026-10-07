@@ -1,4 +1,14 @@
-// blog-groups 1007 V28.js
+// blog-groups 1007 V29.js
+// V29: two changes. (1) New topic group THE WAY IN AND THE WALK (subtitle on the
+// card: The Blood and the Bread) takes 14 studies out of SCRIPTURE UNFILTERED
+// (29 -> 15): blood-and-bread, bread-and-wine, ark-of-covering,
+// clothed-by-the-owner, the-robe-of-the-firstborn, fruit-whose-work-is-it,
+// grace-new-creation-covenant-loyalty, partakers-of-the-promise,
+// we-are-not-all-sinners, clean-hands-pure-heart, the-whole-counsel,
+// two-loads-in-the-wilderness, two-kingdoms-one-walk, prepare-the-horse.
+// (2) ONE THRONE, ONE NAME is retired: its one study, the-judgment-of-christ,
+// joins THE COUNTERFEIT THRONE (15 -> 16). /blog/c/one-throne-one-name stops
+// existing. Map total unchanged.
 // V28: the-robe-of-the-firstborn joins scripture-unfiltered (category Scripture Unfiltered).
 // V27: blood-and-bread joins scripture-unfiltered (category Scripture Unfiltered,
 // a stand-in until the planned Salvation category).
@@ -116,10 +126,10 @@
 // ─────────────────────────────────────────────────────────────────────────
 
 export const BLOG_GROUPS = [
-  { key: 'scripture-unfiltered', name: 'Scripture Unfiltered', blurb: 'General studies — passage by passage, no denominational spin.' },
+  { key: 'scripture-unfiltered', name: 'Scripture Unfiltered', blurb: 'The passages the pulpit misreads, read again — passage by passage, no denominational spin.' },
+  { key: 'the-way-in-and-the-walk', name: 'The Way In and the Walk', subtitle: 'The Blood and the Bread', blurb: 'Deliverance in two parts: the door the blood opens, and the road the bread walks.' },
   { key: 'the-root',             name: 'The Root',             blurb: 'Word studies — where a single Hebrew or Greek root is the whole study.' },
   { key: 'the-counterfeit-throne', name: 'The Counterfeit Throne', blurb: 'Blogs that take the Trinity head-on — Father, Son, and the seat between them.' },
-  { key: 'one-throne-one-name',   name: 'One Throne, One Name',   blurb: 'The Trinity put on the stand — one throne, one Name, weighed by the text itself.' },
   { key: 'the-quick-scroll',     name: 'The Quick Scroll',     blurb: 'Cliff-notes walkthroughs of whole books of the Bible.' },
   { key: 'buried-in-plain-sight', name: 'Buried in Plain Sight', blurb: 'The systems, symbols, and history hidden in plain view.' },
   { key: 'the-law-and-the-feasts', name: 'The Law & The Feasts', blurb: 'The Torah that still stands, and the appointed times it keeps.' },
@@ -156,7 +166,8 @@ export const BLOG_JUMPOUTS = [
 
 // slug → group key. 108 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
-  // ── The Counterfeit Throne (15) ──
+  // ── The Counterfeit Throne (16) ──
+  'the-judgment-of-christ': 'the-counterfeit-throne',
   'worship-and-service': 'the-counterfeit-throne',
   'the-throne-and-the-right-hand': 'the-counterfeit-throne',
   'the-assembly-of-the-most-high': 'the-counterfeit-throne',
@@ -247,9 +258,6 @@ export const POST_GROUP = {
   'i-never-knew-you': 'the-law-and-the-feasts',
   'the-same-word-a-different-master': 'the-law-and-the-feasts',
 
-  // ── One Throne, One Name (1) — Trinity-examining studies ──
-  'the-judgment-of-christ': 'one-throne-one-name',
-
   // ── The Parables (12) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
   // Foundation Bar on /parables and is pulled from that grid there; the blog is
@@ -273,20 +281,27 @@ export const POST_GROUP = {
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
   'one-throne-8-the-debt-of-wendell-hollis': 'the-side-door', // Volume V's closing parable
 
-  // ── Scripture Unfiltered (29) ──
-  'blood-and-bread': 'scripture-unfiltered',
+  // ── The Way In and the Walk (14) — The Blood and the Bread ──
+  'blood-and-bread': 'the-way-in-and-the-walk',
+  'bread-and-wine': 'the-way-in-and-the-walk',
+  'ark-of-covering': 'the-way-in-and-the-walk',
+  'clothed-by-the-owner': 'the-way-in-and-the-walk',
+  'the-robe-of-the-firstborn': 'the-way-in-and-the-walk',
+  'fruit-whose-work-is-it': 'the-way-in-and-the-walk',
+  'grace-new-creation-covenant-loyalty': 'the-way-in-and-the-walk',
+  'partakers-of-the-promise': 'the-way-in-and-the-walk',
+  'we-are-not-all-sinners': 'the-way-in-and-the-walk',
+  'clean-hands-pure-heart': 'the-way-in-and-the-walk',
+  'the-whole-counsel': 'the-way-in-and-the-walk',
+  'two-loads-in-the-wilderness': 'the-way-in-and-the-walk',
+  'two-kingdoms-one-walk': 'the-way-in-and-the-walk',
+  'prepare-the-horse': 'the-way-in-and-the-walk',
+
+  // ── Scripture Unfiltered (15) ──
   'hearts-and-reins': 'scripture-unfiltered',
-  'ark-of-covering': 'scripture-unfiltered',
   'kept-to-the-hour': 'scripture-unfiltered',
-  'bread-and-wine': 'scripture-unfiltered',
-  'clean-hands-pure-heart': 'scripture-unfiltered',
-  'clothed-by-the-owner': 'scripture-unfiltered',
-  'fruit-whose-work-is-it': 'scripture-unfiltered',
   'goat-that-was-not-slain': 'the-law-and-the-feasts',
-  'grace-new-creation-covenant-loyalty': 'scripture-unfiltered',
   'paradise-restored': 'scripture-unfiltered',
-  'partakers-of-the-promise': 'scripture-unfiltered',
-  'prepare-the-horse': 'scripture-unfiltered',
   'prophets-and-prophecy': 'scripture-unfiltered',
   'the-beat-and-the-melody': 'scripture-unfiltered',
   'the-garment-and-the-gear': 'scripture-unfiltered',
@@ -296,15 +311,10 @@ export const POST_GROUP = {
   'the-seed-war': 'scripture-unfiltered',
   'throne-above-the-north': 'scripture-unfiltered',
   'tree-of-knowledge-of-good-and-evil': 'scripture-unfiltered',
-  'we-are-not-all-sinners': 'scripture-unfiltered',
-  'the-whole-counsel': 'scripture-unfiltered',
   'the-stolen-seat': 'scripture-unfiltered',
-  'two-loads-in-the-wilderness': 'scripture-unfiltered',
   'the-year-of-liberty': 'the-law-and-the-feasts',
   'still-waiting-for-shavuot': 'scripture-unfiltered',
   'filled-but-not-indwelt': 'scripture-unfiltered',
-  'two-kingdoms-one-walk': 'scripture-unfiltered',
-  'the-robe-of-the-firstborn': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;

@@ -1,5 +1,8 @@
 ---
-// ReadingSet.astro · 1007 V3
+// ReadingSet.astro · 1007 V4
+// V4: a second use. Given `only="<set key>"` and no `current`, it renders that
+// one trilogy as a plain listing, nothing marked "You are reading" — used by
+// the /trilogies page. On a study page nothing changes.
 // V3: the panel becomes the TRILOGY panel, reworked to Dutch's notes.
 //   - Wider and shorter: the studies sit side by side on desktop (stacked on a
 //     phone), with tighter padding top to bottom.
@@ -29,16 +32,17 @@
 // tokens have no dark value and the fallback silently wins.
 
 import { getEntry } from 'astro:content';
-import { setsFor } from '../data/reading-sets.js';
+import { setsFor, READING_SETS } from '../data/reading-sets.js';
 import { postHref } from '../lib/post-href.js';
 
-const { current } = Astro.props;
+const { current, only } = Astro.props;
+const chosen = current ? setsFor(current.slug) : only ? READING_SETS.filter((s) => s.key === only) : [];
 const withSet = (href, key) => `${href}${href.includes('?') ? '&' : '?'}set=${key}`;
 
-const sets = current
+const sets = chosen.length
   ? (
       await Promise.all(
-        setsFor(current.slug).map(async (set) => {
+        chosen.map(async (set) => {
           const readings = (
             await Promise.all(
               set.readings.map(async (r) => {
@@ -48,7 +52,7 @@ const sets = current
                   title: entry.data.title,
                   href: postHref(entry),
                   line: r.line,
-                  here: entry.slug === current.slug,
+                  here: !!current && entry.slug === current.slug,
                 };
               }),
             )
@@ -56,7 +60,7 @@ const sets = current
           return { ...set, readings };
         }),
       )
-    ).filter((s) => s.readings.length > 1 && s.readings.some((r) => r.here))
+    ).filter((s) => s.readings.length > 1 && (!current || s.readings.some((r) => r.here)))
   : [];
 ---
 

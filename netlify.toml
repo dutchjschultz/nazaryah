@@ -258,3 +258,10 @@
   from = "/blog/forty-nine-or-fifty"
   to = "/blog/the-year-of-liberty"
   status = 301
+
+# 1007: the One Throne, One Name group was retired (blog-groups V29); its one
+# study joined The Counterfeit Throne.
+[[redirects]]
+  from = "/blog/c/one-throne-one-name"
+  to = "/blog/c/the-counterfeit-throne"
+  status = 301

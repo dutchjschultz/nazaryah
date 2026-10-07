@@ -1,7 +1,7 @@
 ---
 title: "Two Kingdoms, One Walk"
 slug: "two-kingdoms-one-walk"
-category: "Scripture Unfiltered"
+category: "The Way In and the Walk"
 date: 2026-08-09
 deck: "Two princes, two law codes, one piece of ground — and the believer's actual assignment."
 description: "Two princes, two law codes, one piece of ground — and the believer's actual assignment."
