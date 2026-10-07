@@ -1,4 +1,5 @@
-// reading-sets 1007 V3.js
+// reading-sets 1007 V4.js
+// V4: third trilogy added: How Yahuah Speaks.
 // V3: sets are now presented as TRILOGIES. No reading order: the panel shows no
 // numbers, so list the studies in whatever order looks best left to right.
 // The per-set `intro` line is gone; the panel carries one standing sentence on
@@ -61,6 +62,24 @@ export const READING_SETS = [
       {
         slug: "the-year-of-liberty",
         line: "The trumpet: the Jubilee sounded on the same day.",
+      },
+    ],
+  },
+  {
+    key: "how-yahuah-speaks",
+    title: "How Yahuah Speaks",
+    readings: [
+      {
+        slug: "heavens-letters-words-son",
+        line: "Four voices: the sky, the letters, the words, the Son.",
+      },
+      {
+        slug: "dark-sayings-of-old",
+        line: "The parables: meanings written long before they were spoken.",
+      },
+      {
+        slug: "prophets-and-prophecy",
+        line: "The last voice: why heaven has nothing left to add.",
       },
     ],
   },
