@@ -1,12 +1,13 @@
-// borrowed-words 1007 V4.js
-// Intro updated to the approved text (Intro V6): "added to it" line, four steps, Plato line
+// borrowed-words 1007 V5.js
+// V5: WORD_PAGE_LIVE on — /doctrines/borrowed-words/ is built; every dropdown label links to its entry.
+// V4: Intro updated to the approved text (Intro V6): "added to it" line, four steps, Plato line
 //
 // SAVE AS: src/data/borrowed-words.js
 // Words are shared by both pages. Each doctrine lists its Old Paths slug and its Departure slug.
 // The link on every word points to the full word page (not yet built). Leave WORD_PAGE_LIVE false
 // until /doctrines/borrowed-words/ exists; while false, the link label shows as plain text.
 
-export const WORD_PAGE_LIVE = false;
+export const WORD_PAGE_LIVE = true;
 export const WORD_PAGE_PATH = "/doctrines/borrowed-words/";
 
 export const pageIntro = {

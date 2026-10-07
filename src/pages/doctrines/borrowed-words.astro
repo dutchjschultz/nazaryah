@@ -1,0 +1,133 @@
+---
+// borrowed-words-page 1007 V2.astro — src/pages/doctrines/borrowed-words.astro
+// V2: wrapped in BaseLayout and set on the doctrine pages' fixed dark ground
+// (#0e0d0b, #BA7517 gold, #e8e2d4 headings) so it reads as their third page.
+// Every colour is set here; the V1 fallbacks would not read on that ground.
+// Explicit {" "} between each label and its text (Astro's HTML compression drops
+// those spaces). Anchors clear the sticky header via scroll-margin-top.
+// V1: First build: the full "Words Your Bible Borrowed" page.
+//
+// URL: /doctrines/borrowed-words/ — the doctrine dropdowns (BorrowedWords.astro)
+// link here as WORD_PAGE_PATH#<id>. Content: src/data/borrowed-words-page.js.
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import {
+  pageTitle, pageSubtitle, intro, doctrines, futureStudies, failedClaims
+} from "../../data/borrowed-words-page.js";
+---
+<BaseLayout
+  title={`${pageTitle} | Nazaryah`}
+  description={pageSubtitle}
+>
+<div class="bwp-page">
+<main class="bwp">
+  <header class="bwp-head">
+    <p class="bwp-eyebrow">Core Beliefs</p>
+    <h1>{pageTitle}</h1>
+    <div class="bwp-rule" aria-hidden="true">
+      <span></span>
+      <svg width="12" height="12" viewBox="0 0 14 14" fill="none"><rect x="1" y="1" width="12" height="12" stroke="#BA7517" stroke-width="1" fill="none" transform="rotate(45 7 7)"/></svg>
+      <span></span>
+    </div>
+    <p class="bwp-sub">{pageSubtitle}</p>
+  </header>
+
+  <section class="bwp-intro">
+    {intro.map(p => <p>{p}</p>)}
+  </section>
+
+  <nav class="bwp-jump" aria-label="Jump to a doctrine">
+    {doctrines.map(d => <a href={`#d-${d.departureSlug}`}>{`${d.num} ${d.title}`}</a>)}
+  </nav>
+
+  {doctrines.map(d => (
+    <section class="bwp-doctrine" id={`d-${d.departureSlug}`}>
+      <h2><span class="bwp-num">{d.num}</span>{" "}{d.title}{" "}<span class="bwp-count">({d.words.length} {d.words.length === 1 ? "word" : "words"})</span></h2>
+      <p class="bwp-doclinks">
+        <a href={`/doctrines/the-departure/${d.departureSlug}`}>The Departure</a>{" · "}<a href={`/doctrines/old-paths/${d.oldPathsSlug}`}>The Old Paths</a>
+      </p>
+
+      {d.words.map(w => (
+        <article class="bwp-word" id={w.id}>
+          {w.aliases.map(a => <span id={a} class="bwp-anchor"></span>)}
+          <h3>{w.greek}{" "}<span class="bwp-strongs">{w.strongs}</span>
+            <span class="bwp-kjv">KJV: “{w.kjv}”</span></h3>
+          <p><span class="bwp-label">Pagan source.</span>{" "}{w.source}</p>
+          <p><span class="bwp-label">Hebrew beneath.</span>{" "}{w.hebrew}</p>
+          <p><span class="bwp-label">What it fed.</span>{" "}{w.fed}</p>
+          {w.bridge && <p class="bwp-bridge"><span class="bwp-label">The bridge.</span>{" "}{w.bridge}</p>}
+        </article>
+      ))}
+
+      {d.note && <p class="bwp-note">{d.note}</p>}
+    </section>
+  ))}
+
+  <section class="bwp-more" id="future-studies">
+    <h2>For Future Studies</h2>
+    <p>These words carry real pagan or philosophical freight but bear on subjects outside the thirteen doctrines.</p>
+    <ul>{futureStudies.map(f => <li><strong>{f.word}.</strong>{" "}{f.note}</li>)}</ul>
+  </section>
+
+  <section class="bwp-more" id="failed-claims">
+    <h2>Claims That Failed the Test</h2>
+    <p>These popular claims circulate widely but cannot be supported from the history of the words. Using them weakens the true findings above.</p>
+    <ul>{failedClaims.map(f => <li><strong>{f.claim}</strong>{" "}{f.answer}</li>)}</ul>
+  </section>
+</main>
+</div>
+</BaseLayout>
+
+<style>
+  /* Doctrine-page palette (DoctrineGrid / DoctrineCard): ground #0e0d0b, gold
+     #BA7517, soft gold #d8b06a, heading #e8e2d4, body #cfc6b3, muted #a89f8c.
+     Italic runs in the body serif; --font-display (Cinzel) is caps-only. */
+  .bwp-page { background: #0e0d0b; min-height: 100vh; padding: 3.5rem 1.25rem 4rem; }
+  .bwp { max-width: 46rem; margin: 0 auto; font-family: var(--font-body); font-size: 1.08rem; line-height: 1.7; color: #cfc6b3; overflow-wrap: anywhere; }
+  .bwp h1, .bwp h2, .bwp h3 { font-family: var(--font-display); color: #e8e2d4; font-weight: 600; letter-spacing: 0.02em; }
+  .bwp a { color: #d8b06a; text-decoration: none; }
+  .bwp a:hover { color: #e8c98a; text-decoration: underline; text-underline-offset: 3px; }
+
+  .bwp-head { text-align: center; margin: 0 0 2.25rem; }
+  .bwp-eyebrow { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase; color: #BA7517; margin: 0 0 0.6rem; }
+  .bwp-head h1 { font-size: clamp(1.5rem, 3vw, 2.1rem); font-weight: 700; margin: 0 0 0.75rem; line-height: 1.25; }
+  .bwp-rule { display: flex; align-items: center; justify-content: center; gap: 0.75rem; margin-bottom: 0.6rem; }
+  .bwp-rule span { display: block; height: 1px; width: 80px; background: #BA7517; opacity: 0.4; }
+  .bwp-sub { font-style: italic; font-size: 1.1rem; color: #a89f8c; margin: 0; }
+
+  .bwp-intro p { margin: 0 0 1rem; }
+
+  .bwp-jump {
+    display: flex; flex-wrap: wrap; gap: 0.45rem 1.1rem; margin: 2rem 0 3rem; padding: 1rem 1.2rem;
+    border: 1px solid rgba(186,117,23,0.3); border-left: 3px solid #BA7517; border-radius: 8px; background: #161512;
+    font-size: 0.98rem;
+  }
+
+  .bwp-doctrine { margin: 0 0 3.25rem; scroll-margin-top: 9rem; }
+  .bwp-doctrine h2 { font-size: 1.35rem; line-height: 1.35; border-bottom: 1px solid rgba(186,117,23,0.55); padding-bottom: 0.4rem; margin: 0 0 0.4rem; }
+  .bwp-num { color: #BA7517; }
+  .bwp-count { font-family: var(--font-body); font-size: 0.95rem; font-weight: 400; letter-spacing: 0; color: #a89f8c; white-space: nowrap; }
+  .bwp-doclinks { font-size: 0.95rem; margin: 0 0 1.4rem; color: #8f8672; }
+
+  .bwp-word { margin: 0 0 1.75rem; scroll-margin-top: 9rem; }
+  .bwp-word h3 { margin: 0 0 0.4rem; font-size: 1.2rem; line-height: 1.35; }
+  .bwp-strongs { font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; letter-spacing: 0; color: #8f8672; margin-left: 0.2em; }
+  .bwp-kjv { display: block; font-family: var(--font-body); font-size: 1rem; font-style: italic; font-weight: 400; letter-spacing: 0; color: #a89f8c; margin-top: 0.15rem; }
+  .bwp-word p { margin: 0 0 0.4rem; }
+  .bwp-label { font-weight: 600; color: #d8b06a; }
+  .bwp-bridge { font-size: 0.98rem; color: #b8af9c; }
+  /* Alias anchors (pneuma-delphi, pneuma-stoics) land on the entry heading. */
+  .bwp-anchor { display: block; height: 0; scroll-margin-top: 9rem; }
+  .bwp-note { font-style: italic; color: #a89f8c; border-left: 2px solid rgba(186,117,23,0.4); padding-left: 0.9rem; }
+
+  .bwp-more { margin-top: 3.5rem; scroll-margin-top: 9rem; }
+  .bwp-more h2 { font-size: 1.3rem; border-bottom: 1px solid rgba(186,117,23,0.55); padding-bottom: 0.4rem; margin: 0 0 0.8rem; }
+  .bwp-more ul { padding-left: 1.2rem; margin: 0; }
+  .bwp-more li { margin-bottom: 0.5rem; }
+  .bwp-more li::marker { color: #BA7517; }
+  .bwp-more strong { color: #e8e2d4; }
+
+  @media (max-width: 500px) {
+    .bwp-page { padding: 2.5rem 1rem 3rem; }
+    .bwp-jump { padding: 0.9rem 1rem; }
+  }
+</style>
