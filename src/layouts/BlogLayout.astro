@@ -1,5 +1,8 @@
 ---
-// BlogLayout.astro · 1005 V11
+// BlogLayout.astro · 1007 V12
+// V12: ReadingSet renders directly under the masthead on any study named in
+// src/data/reading-sets.js (studies meant to be read together, in order).
+// Renders nothing on every other study.
 // V11: an `unlisted` post (a "go deeper" page) drops data-pagefind-body, so site
 // search skips it; it stays reachable from its parent study's link.
 // V10: the per-page verse block (ScriptureRefs) is PARKED — no longer rendered
@@ -55,6 +58,7 @@ import NucleusClaim from '../components/NucleusClaim.astro';
 import Epigraph from '../components/Epigraph.astro';
 import InvestigationBar from '../components/InvestigationBar.astro';
 import BookTextNote from '../components/BookTextNote.astro';
+import ReadingSet from '../components/ReadingSet.astro';
 import { postHref, postHome, postHomeLabel } from '../lib/post-href.js';
 import { getEntry } from 'astro:content';
 import type { CollectionEntry } from 'astro:content';
@@ -199,6 +203,11 @@ const companions = (
           </div>
         )}
       </header>
+
+      <!-- Reading set (studies read together in order; nothing on the rest) -->
+      <div class="max-w-3xl mx-auto">
+        <ReadingSet current={post} />
+      </div>
 
       <!-- Association rail (cluster names + jump to panel) -->
       <div class="max-w-3xl mx-auto" data-pagefind-ignore>

@@ -1,4 +1,5 @@
-// blog-groups 1005 V27.js
+// blog-groups 1007 V28.js
+// V28: the-robe-of-the-firstborn joins scripture-unfiltered (category Scripture Unfiltered).
 // V27: blood-and-bread joins scripture-unfiltered (category Scripture Unfiltered,
 // a stand-in until the planned Salvation category).
 // V26: sign-of-the-goat and forty-nine-or-fifty leave the map — they are unlisted
@@ -303,6 +304,7 @@ export const POST_GROUP = {
   'still-waiting-for-shavuot': 'scripture-unfiltered',
   'filled-but-not-indwelt': 'scripture-unfiltered',
   'two-kingdoms-one-walk': 'scripture-unfiltered',
+  'the-robe-of-the-firstborn': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;

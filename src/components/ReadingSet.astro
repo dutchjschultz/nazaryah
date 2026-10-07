@@ -1,0 +1,214 @@
+---
+// ReadingSet.astro · 1007 V1
+//
+// The Reading Set panel: studies meant to be read together, in order, like
+// the lessons of one Bible study. Shown at the top of every study named in a
+// set in src/data/reading-sets.js, directly under the masthead.
+//
+// It is built to look NOTHING like the Quick Read / Full Study bar. That bar is
+// light parchment with gold pills; this is a dark bound-leather panel with
+// tooled gold rules, Roman-numeral lessons and the current reading marked in
+// clay. A reader should see at a glance that this is a course of study, not a
+// page control.
+//
+// Renders nothing when the study is in no set, so every other study is
+// untouched. Unknown slugs in the data file are skipped.
+//
+// COLOUR NOTE: every colour is declared for light, then restated under
+// :global(.dark). Do not lean on var(--token, fallback) here; several site
+// tokens have no dark value and the fallback silently wins.
+
+import { getEntry } from 'astro:content';
+import { setFor } from '../data/reading-sets.js';
+import { postHref } from '../lib/post-href.js';
+
+const { current } = Astro.props;
+const set = current ? setFor(current.slug) : null;
+
+const NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+
+const readings = set
+  ? (
+      await Promise.all(
+        set.readings.map(async (r) => {
+          const entry = await getEntry('posts', r.slug).catch(() => null);
+          if (!entry) return null;
+          return {
+            title: entry.data.title,
+            href: postHref(entry),
+            line: r.line,
+            here: entry.slug === current.slug,
+          };
+        }),
+      )
+    ).filter(Boolean)
+  : [];
+
+const position = readings.findIndex((r) => r.here) + 1;
+---
+
+{set && readings.length > 1 && (
+  <aside class="rs" aria-label={`Reading set: ${set.title}`} data-pagefind-ignore>
+    <div class="rs-inner">
+      <p class="rs-kicker">A Study in {readings.length === 3 ? 'Three' : readings.length} Readings</p>
+      <p class="rs-title">{set.title}</p>
+      <p class="rs-intro">{set.intro}</p>
+
+      <ol class="rs-list">
+        {readings.map((r, i) => (
+          <li class={r.here ? 'rs-item rs-here' : 'rs-item'}>
+            <span class="rs-num" aria-hidden="true">{NUMERALS[i] ?? i + 1}</span>
+            <span class="rs-body">
+              {r.here ? (
+                <span class="rs-name" aria-current="page">{r.title}</span>
+              ) : (
+                <a class="rs-name" href={r.href}>{r.title}</a>
+              )}
+              <span class="rs-line">{r.line}</span>
+            </span>
+            {r.here && <span class="rs-mark">You are reading</span>}
+          </li>
+        ))}
+      </ol>
+
+      {position > 0 && (
+        <p class="rs-foot">
+          Reading {NUMERALS[position - 1] ?? position} of {NUMERALS[readings.length - 1] ?? readings.length}
+          {position < readings.length && (
+            <>
+              {' · '}
+              <a href={readings[position].href}>Next: {readings[position].title} &rarr;</a>
+            </>
+          )}
+        </p>
+      )}
+    </div>
+  </aside>
+)}
+
+<style>
+  .rs {
+    max-width: 46rem;
+    margin: 0.5rem auto 2.25rem;
+    padding: 6px;
+    background: #2a1d10;
+    border-radius: 6px;
+    box-shadow: 0 6px 22px rgba(43, 29, 17, 0.28);
+  }
+  .rs-inner {
+    border: 1px solid #8a6520;
+    outline: 1px solid rgba(196, 154, 78, 0.35);
+    outline-offset: -5px;
+    border-radius: 3px;
+    padding: 1.6rem 1.75rem 1.3rem;
+    text-align: center;
+  }
+  .rs-kicker {
+    margin: 0 0 0.35rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.68rem;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #c49a4e;
+  }
+  .rs-title {
+    margin: 0;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: clamp(1.45rem, 3vw, 1.85rem);
+    line-height: 1.2;
+    color: #f0e0bf;
+  }
+  .rs-intro {
+    margin: 0.35rem 0 1.2rem;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1rem;
+    color: #c4ad84;
+  }
+  .rs-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    text-align: left;
+    border-top: 1px solid rgba(196, 154, 78, 0.35);
+  }
+  .rs-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.85rem 0.6rem;
+    border-bottom: 1px solid rgba(196, 154, 78, 0.35);
+  }
+  .rs-num {
+    flex: 0 0 2.6rem;
+    text-align: center;
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    color: #c49a4e;
+  }
+  .rs-body { flex: 1 1 auto; min-width: 0; }
+  .rs-name {
+    display: block;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+    color: #f0e0bf;
+    text-decoration: none;
+  }
+  a.rs-name:hover { color: #c49a4e; text-decoration: underline; text-underline-offset: 3px; }
+  a.rs-name:focus-visible { outline: 2px solid #c49a4e; outline-offset: 2px; }
+  .rs-line {
+    display: block;
+    margin-top: 0.1rem;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-style: italic;
+    font-size: 0.95rem;
+    color: #c4ad84;
+  }
+  .rs-here { background: rgba(160, 69, 28, 0.22); }
+  .rs-here .rs-num { color: #e08a5c; }
+  .rs-mark {
+    flex: 0 0 auto;
+    font-family: 'Cinzel', serif;
+    font-size: 0.58rem;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #f0e0bf;
+    background: #a0451c;
+    border-radius: 3px;
+    padding: 0.3rem 0.55rem;
+  }
+  .rs-foot {
+    margin: 1rem 0 0;
+    font-family: 'Cinzel', serif;
+    font-size: 0.64rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #c4ad84;
+  }
+  .rs-foot a { color: #c49a4e; text-decoration: none; }
+  .rs-foot a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 560px) {
+    .rs-inner { padding: 1.3rem 1rem 1.1rem; }
+    .rs-item { flex-wrap: wrap; gap: 0.6rem; padding: 0.8rem 0.25rem; }
+    .rs-num { flex-basis: 2rem; font-size: 1rem; }
+    .rs-body { flex-basis: calc(100% - 2.6rem); }
+    .rs-mark { margin-left: 2.6rem; }
+  }
+
+  /* Dark site: the panel lifts one step off the dark page and keeps its gold. */
+  :global(.dark) .rs { background: #3a2a18; box-shadow: 0 6px 22px rgba(0, 0, 0, 0.45); }
+  :global(.dark) .rs-inner { border-color: #c49a4e; }
+  :global(.dark) .rs-title,
+  :global(.dark) .rs-name,
+  :global(.dark) .rs-mark { color: #f0e0bf; }
+  :global(.dark) .rs-intro,
+  :global(.dark) .rs-line,
+  :global(.dark) .rs-foot { color: #c4ad84; }
+  :global(.dark) .rs-kicker,
+  :global(.dark) .rs-num,
+  :global(.dark) .rs-foot a { color: #c49a4e; }
+  :global(.dark) .rs-here { background: rgba(160, 69, 28, 0.3); }
+  :global(.dark) .rs-here .rs-num { color: #e08a5c; }
+</style>
