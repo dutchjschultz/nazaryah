@@ -1,4 +1,5 @@
-// blog-groups 1007 V29.js
+// blog-groups 1007 V30.js
+// V30: two-mountains joins scripture-unfiltered (category Scripture Unfiltered).
 // V29: two changes. (1) New topic group THE WAY IN AND THE WALK (subtitle on the
 // card: The Blood and the Bread) takes 14 studies out of SCRIPTURE UNFILTERED
 // (29 -> 15): blood-and-bread, bread-and-wine, ark-of-covering,
@@ -315,6 +316,7 @@ export const POST_GROUP = {
   'the-year-of-liberty': 'the-law-and-the-feasts',
   'still-waiting-for-shavuot': 'scripture-unfiltered',
   'filled-but-not-indwelt': 'scripture-unfiltered',
+  'two-mountains': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
