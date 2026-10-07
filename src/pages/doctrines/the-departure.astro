@@ -1,5 +1,8 @@
 ---
-// src/pages/doctrines/the-departure.astro · 0824 V2
+// src/pages/doctrines/the-departure.astro · 1007 V3
+// V3: the doctrine grid carries borrowed="departure" — the Words Your Bible
+// Borrowed intro above the cards and a dropdown under each doctrine card
+// (DoctrineGrid V3).
 // V2: the fixed count is out of the H1, the meta title and the meta description
 // (og:image alt derives from the title, so it follows). Cards now carry the
 // recognition tag.
@@ -16,6 +19,7 @@ const cards = doctrines.map((d) => ({
   deck: d.departure.deck,
   tag: d.departure.tag,
   href: `/doctrines/the-departure/${d.departure.slug}`,
+  slug: d.departure.slug,
 }));
 ---
 
@@ -28,6 +32,7 @@ const cards = doctrines.map((d) => ({
     title="Doctrines the Church Got Wrong"
     subtitle="— and why it matters"
     cards={cards}
+    borrowed="departure"
   >
     <a class="td-crosslink" href="/doctrines/old-paths">
       What Scripture holds — <strong>The Old Paths</strong> <span aria-hidden="true">&rarr;</span>

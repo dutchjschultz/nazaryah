@@ -1,5 +1,8 @@
 ---
-// src/pages/doctrines/old-paths.astro · 0824 V3
+// src/pages/doctrines/old-paths.astro · 1007 V4
+// V4: the doctrine grid carries borrowed="old-paths" — the Words Your Bible
+// Borrowed intro above the cards and a dropdown under each of the 13 doctrine
+// cards (DoctrineGrid V3). The Six Foundations get none.
 // V3: tier two now renders in the order of Hebrews 6:1-2, as the data file is
 // written — the V2 note telling the next editor NOT to do that is reversed.
 // Cards carry the recognition tag, and the fixed count is out of the meta
@@ -23,6 +26,7 @@ const cards = doctrines.map((d) => ({
   deck: d.oldPaths.deck,
   tag: d.oldPaths.tag,
   href: `/doctrines/old-paths/${d.oldPaths.slug}`,
+  slug: d.oldPaths.slug,
 }));
 
 // TIER TWO — the order of Hebrews 6:1-2, as the data file is written. Render it
@@ -46,6 +50,7 @@ const foundationCards = foundations.map((f) => ({
     title="The Old Paths"
     subtitle="— ask for the old paths, and walk therein"
     cards={cards}
+    borrowed="old-paths"
   >
     <section class="foundations">
       <div class="foundations-header">

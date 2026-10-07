@@ -1,15 +1,24 @@
 ---
-// src/components/DoctrineGrid.astro · 0824 V2
+// src/components/DoctrineGrid.astro · 1007 V3
+// V3: optional `borrowed` ("old-paths" | "departure"). When set, the Words Your
+// Bible Borrowed intro renders above the cards, and each card sits in a cell
+// with its BorrowedWords dropdown beneath it — outside the card's link, so the
+// dropdown opens without navigating. The cell is a two-row subgrid: cards in a
+// row keep equal heights, and an open dropdown only grows the dropdown row.
+// Cards need `slug` for the lookup. Without `borrowed` the grid renders as V2.
 // V2: cards may carry a recognition `tag`; passed straight through to the card.
 // V1: The shared master-grid for BOTH doctrine pages: gold-ruled header + a grid
 // of DoctrineCards. House look carried over from the original /doctrines page.
 // The default slot is the footer (optional).
 import DoctrineCard from './DoctrineCard.astro';
+import BorrowedWords from './BorrowedWords.astro';
+import BorrowedWordsIntro from './BorrowedWordsIntro.astro';
 interface Props {
   eyebrow: string; title: string; subtitle: string;
-  cards: { n: string; title: string; deck: string; tag?: string; href: string }[];
+  cards: { n: string; title: string; deck: string; tag?: string; href: string; slug?: string }[];
+  borrowed?: 'old-paths' | 'departure';
 }
-const { eyebrow, title, subtitle, cards } = Astro.props;
+const { eyebrow, title, subtitle, cards, borrowed } = Astro.props;
 const hasFooter = Astro.slots.has('default');
 ---
 
@@ -27,8 +36,17 @@ const hasFooter = Astro.slots.has('default');
     <p class="doctrines-subtitle">{subtitle}</p>
   </div>
 
-  <div class="doctrine-grid">
-    {cards.map((c) => <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} />)}
+  {borrowed && <BorrowedWordsIntro />}
+
+  <div class:list={['doctrine-grid', borrowed && 'has-borrowed']}>
+    {cards.map((c) => borrowed ? (
+      <div class="doctrine-cell">
+        <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} />
+        <BorrowedWords slug={c.slug} page={borrowed} />
+      </div>
+    ) : (
+      <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} />
+    ))}
   </div>
 
   {hasFooter && <div class="doctrines-footer"><slot /></div>}
@@ -51,6 +69,10 @@ const hasFooter = Astro.slots.has('default');
   .doctrines-subtitle { font-family: var(--font-body); font-size: 1.1rem; font-style: italic; color: #a89f8c; }
 
   .doctrine-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.25rem; max-width: 1400px; margin: 0 auto; }
+
+  /* Card + its dropdown: a two-row subgrid cell. */
+  .doctrine-grid.has-borrowed { row-gap: 1.75rem; }
+  .doctrine-cell { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0.6rem; min-width: 0; }
 
   .doctrines-footer { text-align: center; margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
 

@@ -1,0 +1,37 @@
+---
+// BorrowedWordsIntro 1007 V1.astro
+// The "Words Your Bible Borrowed" intro above the doctrine cards on both
+// doctrine pages. Text is pageIntro in src/data/borrowed-words.js: the title as
+// a small heading, the first two paragraphs open, the rest behind "Read more".
+// Pure <details>, no client JS. Doctrine-page palette (fixed dark ground).
+import { pageIntro } from "../data/borrowed-words.js";
+const [first, second, ...rest] = pageIntro.paragraphs;
+---
+<section class="bwi" aria-labelledby="bwi-title">
+  <h2 class="bwi-title" id="bwi-title">{pageIntro.title}</h2>
+  <p class="bwi-p">{first}</p>
+  <p class="bwi-p">{second}</p>
+  {rest.length > 0 && (
+    <details class="bwi-more">
+      <summary class="bwi-more-summary"><span class="bwi-open">Read more</span><span class="bwi-close">Read less</span></summary>
+      {rest.map((p) => <p class="bwi-p">{p}</p>)}
+    </details>
+  )}
+</section>
+
+<style>
+  .bwi { max-width: 46rem; margin: 0 auto 2.75rem; text-align: left; }
+  .bwi-title {
+    font-family: var(--font-display); font-size: 0.8rem; font-weight: 600; letter-spacing: 0.22em;
+    text-transform: uppercase; color: #BA7517; text-align: center; margin: 0 0 1rem;
+  }
+  .bwi-p { font-family: var(--font-body); font-size: 1.08rem; line-height: 1.7; color: #cfc6b3; margin: 0 0 1rem; }
+  .bwi-more-summary {
+    cursor: pointer; list-style: none; text-align: center; margin: 0.25rem 0 1rem;
+    font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d8b06a;
+  }
+  .bwi-more-summary::-webkit-details-marker { display: none; }
+  .bwi-more-summary:focus-visible { outline: 2px solid #BA7517; outline-offset: 3px; }
+  .bwi-close, .bwi-more[open] .bwi-open { display: none; }
+  .bwi-more[open] .bwi-close { display: inline; }
+</style>

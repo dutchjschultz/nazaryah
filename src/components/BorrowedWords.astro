@@ -1,0 +1,82 @@
+---
+// BorrowedWords 1007 V2.astro
+// V2: styled in the doctrine pages' own palette. Those pages are a fixed dark
+// ground (#0e0d0b) with #BA7517 gold and #e8e2d4 text in both site themes, so
+// every colour is set here; the V1 fallbacks (var(--gold) is a dark gold on this
+// site, and unset text took the body's dark ink) would not read on that ground.
+// Explicit {" "} between each label and its value (Astro's HTML compression
+// dropped those spaces), and align-self: start so a closed dropdown keeps its
+// own height when a neighbour in the same grid row is opened.
+// V1: First build: dropdown of root words under a doctrine card. Pure <details>/<summary>, no client JS.
+//
+// SAVE AS: src/components/BorrowedWords.astro
+// Props:
+//   slug  — the doctrine's slug on the current page (Old Paths slug OR Departure slug)
+//   page  — "old-paths" | "departure"
+import {
+  doctrines, dropdownLead, oldPathsHeader, bereanNote,
+  WORD_PAGE_LIVE, WORD_PAGE_PATH
+} from "../data/borrowed-words.js";
+
+const { slug, page } = Astro.props;
+const d = doctrines.find(x => (page === "departure" ? x.departureSlug : x.oldPathsSlug) === slug);
+const header = d && (page === "departure"
+  ? `You’ve been quoting ${d.departureSource} and calling it Scripture.`
+  : oldPathsHeader);
+const names = d ? d.words.map(w => w.greek.split(" / ")[0].toLowerCase()).join(" · ") : "";
+---
+{d && (
+  <details class="bw">
+    <summary class="bw-summary">
+      <span class="bw-title">Words your Bible borrowed ({d.words.length})</span>
+      <span class="bw-names">{names}</span>
+    </summary>
+
+    <div class="bw-body">
+      <p class="bw-header">{header}</p>
+      {page === "departure" && (
+        <p class="bw-berean"><em>{bereanNote.text}</em>{" — "}{bereanNote.ref}</p>
+      )}
+      <p class="bw-lead">{dropdownLead}</p>
+
+      {d.words.map(w => (
+        <div class="bw-word" id={`bw-${w.id}`}>
+          <p class="bw-word-name">{w.greek.toUpperCase()}{" "}<span class="bw-kjv">· “{w.yourBible}”</span>{" "}<span class="bw-strongs">{w.strongs}</span></p>
+          <p class="bw-line"><span class="bw-label">Your Bible says:</span>{" "}{w.yourBible}</p>
+          <p class="bw-line"><span class="bw-label">{w.sourceName}:</span>{" "}{w.sourceLine}</p>
+          <p class="bw-line"><span class="bw-label">{w.scriptureName}:</span>{" "}{w.scriptureLine}</p>
+          <p class="bw-link">
+            {WORD_PAGE_LIVE
+              ? <a href={`${WORD_PAGE_PATH}#${w.id}`}>{w.linkLabel} →</a>
+              : <span>{w.linkLabel}</span>}
+          </p>
+        </div>
+      ))}
+    </div>
+  </details>
+)}
+
+<style>
+  /* Doctrine-page palette (DoctrineCard.astro): gold #BA7517, heading #e8e2d4,
+     muted #a89f8c, soft gold #d8b06a. Italic runs in the body serif. */
+  .bw { align-self: start; margin: 0 0 0.4rem; border-left: 2px solid rgba(186,117,23,0.55); padding: 0.1rem 0 0.1rem 0.9rem; font-family: var(--font-body); color: #cfc6b3; }
+  .bw-summary { cursor: pointer; list-style: none; line-height: 1.35; }
+  .bw-summary::-webkit-details-marker { display: none; }
+  .bw-summary::before { content: "▸ "; color: #BA7517; }
+  .bw[open] > .bw-summary::before { content: "▾ "; }
+  .bw-summary:focus-visible { outline: 2px solid #BA7517; outline-offset: 3px; }
+  .bw-title { font-weight: 600; font-size: 1.02rem; color: #d8b06a; }
+  .bw-names { display: block; font-style: italic; color: #a89f8c; font-size: 0.95rem; margin-left: 1.1em; overflow-wrap: anywhere; }
+  .bw-body { margin-top: 0.8rem; }
+  .bw-header { font-family: var(--font-display); font-size: 1rem; font-weight: 600; letter-spacing: 0.03em; color: #e8e2d4; line-height: 1.4; margin: 0 0 0.3rem; }
+  .bw-berean { font-size: 0.9rem; color: #8f8672; margin: 0 0 0.6rem; }
+  .bw-lead { font-size: 1rem; line-height: 1.5; color: #a89f8c; margin: 0 0 1rem; }
+  .bw-word { margin: 0 0 1.1rem; }
+  .bw-word-name { font-weight: 700; letter-spacing: 0.04em; color: #e8e2d4; margin: 0 0 0.25rem; line-height: 1.35; }
+  .bw-kjv { font-weight: 400; font-style: italic; letter-spacing: 0; color: #a89f8c; }
+  .bw-strongs { font-weight: 400; font-size: 0.8em; color: #8f8672; margin-left: 0.4em; white-space: nowrap; }
+  .bw-line { margin: 0 0 0.15rem 1rem; line-height: 1.45; overflow-wrap: anywhere; }
+  .bw-label { font-weight: 600; color: #d8b06a; }
+  .bw-link { margin: 0.3rem 0 0 1rem; font-style: italic; color: #9a7c46; }
+  .bw-link a { color: #d8b06a; }
+</style>
