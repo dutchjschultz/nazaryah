@@ -1,5 +1,14 @@
 ---
-// ReadingSet.astro · 1007 V1
+// ReadingSet.astro · 1007 V2
+// V2: a study may sit in MORE THAN ONE set. The page still shows ONE panel:
+// the set the reader came in through. Every link inside a panel carries
+// ?set=<key>, so clicking from Reading I of one set lands on Reading II of
+// THAT set. A reader arriving from search or a card sees the first set the
+// study is listed in. Under the list, an "Also" line names each other set this
+// study belongs to, with its reading number; clicking it swaps the panel in
+// place (no reload) and updates the address. Without JavaScript the first set
+// shows and the "Also" links still work as ordinary links.
+// V1: the panel, one set per study.
 //
 // The Reading Set panel: studies meant to be read together, in order, like
 // the lessons of one Bible study. Shown at the top of every study named in a
@@ -19,72 +28,118 @@
 // tokens have no dark value and the fallback silently wins.
 
 import { getEntry } from 'astro:content';
-import { setFor } from '../data/reading-sets.js';
+import { setsFor } from '../data/reading-sets.js';
 import { postHref } from '../lib/post-href.js';
 
 const { current } = Astro.props;
-const set = current ? setFor(current.slug) : null;
-
 const NUMERALS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII', 'IX', 'X'];
+const WORDS = ['', 'One', 'Two', 'Three', 'Four', 'Five', 'Six', 'Seven', 'Eight', 'Nine', 'Ten'];
+const num = (n) => NUMERALS[n - 1] ?? String(n);
+const withSet = (href, key) => `${href}${href.includes('?') ? '&' : '?'}set=${key}`;
 
-const readings = set
+const sets = current
   ? (
       await Promise.all(
-        set.readings.map(async (r) => {
-          const entry = await getEntry('posts', r.slug).catch(() => null);
-          if (!entry) return null;
-          return {
-            title: entry.data.title,
-            href: postHref(entry),
-            line: r.line,
-            here: entry.slug === current.slug,
-          };
+        setsFor(current.slug).map(async (set) => {
+          const readings = (
+            await Promise.all(
+              set.readings.map(async (r) => {
+                const entry = await getEntry('posts', r.slug).catch(() => null);
+                if (!entry) return null;
+                return {
+                  title: entry.data.title,
+                  href: postHref(entry),
+                  line: r.line,
+                  here: entry.slug === current.slug,
+                };
+              }),
+            )
+          ).filter(Boolean);
+          const position = readings.findIndex((r) => r.here) + 1;
+          return { ...set, readings, position };
         }),
       )
-    ).filter(Boolean)
+    ).filter((s) => s.readings.length > 1 && s.position > 0)
   : [];
-
-const position = readings.findIndex((r) => r.here) + 1;
 ---
 
-{set && readings.length > 1 && (
-  <aside class="rs" aria-label={`Reading set: ${set.title}`} data-pagefind-ignore>
-    <div class="rs-inner">
-      <p class="rs-kicker">A Study in {readings.length === 3 ? 'Three' : readings.length} Readings</p>
-      <p class="rs-title">{set.title}</p>
-      <p class="rs-intro">{set.intro}</p>
+{sets.length > 0 && (
+  <div class="rs-wrap" data-reading-sets data-pagefind-ignore>
+    {sets.map((set, si) => (
+      <aside class="rs" aria-label={`Reading set: ${set.title}`} data-set={set.key} hidden={si > 0}>
+        <div class="rs-inner">
+          <p class="rs-kicker">A Study in {WORDS[set.readings.length] || set.readings.length} Readings</p>
+          <p class="rs-title">{set.title}</p>
+          <p class="rs-intro">{set.intro}</p>
 
-      <ol class="rs-list">
-        {readings.map((r, i) => (
-          <li class={r.here ? 'rs-item rs-here' : 'rs-item'}>
-            <span class="rs-num" aria-hidden="true">{NUMERALS[i] ?? i + 1}</span>
-            <span class="rs-body">
-              {r.here ? (
-                <span class="rs-name" aria-current="page">{r.title}</span>
-              ) : (
-                <a class="rs-name" href={r.href}>{r.title}</a>
-              )}
-              <span class="rs-line">{r.line}</span>
-            </span>
-            {r.here && <span class="rs-mark">You are reading</span>}
-          </li>
-        ))}
-      </ol>
+          <ol class="rs-list">
+            {set.readings.map((r, i) => (
+              <li class={r.here ? 'rs-item rs-here' : 'rs-item'}>
+                <span class="rs-num" aria-hidden="true">{num(i + 1)}</span>
+                <span class="rs-body">
+                  {r.here ? (
+                    <span class="rs-name" aria-current="page">{r.title}</span>
+                  ) : (
+                    <a class="rs-name" href={withSet(r.href, set.key)}>{r.title}</a>
+                  )}
+                  <span class="rs-line">{r.line}</span>
+                </span>
+                {r.here && <span class="rs-mark">You are reading</span>}
+              </li>
+            ))}
+          </ol>
 
-      {position > 0 && (
-        <p class="rs-foot">
-          Reading {NUMERALS[position - 1] ?? position} of {NUMERALS[readings.length - 1] ?? readings.length}
-          {position < readings.length && (
-            <>
-              {' · '}
-              <a href={readings[position].href}>Next: {readings[position].title} &rarr;</a>
-            </>
+          <p class="rs-foot">
+            Reading {num(set.position)} of {num(set.readings.length)}
+            {set.position < set.readings.length && (
+              <>
+                {' · '}
+                <a href={withSet(set.readings[set.position].href, set.key)}>Next: {set.readings[set.position].title} &rarr;</a>
+              </>
+            )}
+          </p>
+
+          {sets.length > 1 && (
+            <div class="rs-also">
+              <span class="rs-also-label">This study is also</span>
+              {sets.filter((o) => o.key !== set.key).map((o) => (
+                <a class="rs-also-link" href={`?set=${o.key}`} data-switch={o.key}>
+                  Reading {num(o.position)} of <em>{o.title}</em> &rarr;
+                </a>
+              ))}
+            </div>
           )}
-        </p>
-      )}
-    </div>
-  </aside>
+        </div>
+      </aside>
+    ))}
+  </div>
 )}
+
+<script>
+  // Show the set the reader came in through (?set=key); otherwise the first.
+  // The "Also" links swap panels in place and keep the address in step.
+  document.querySelectorAll('[data-reading-sets]').forEach((wrap) => {
+    const panels = Array.from(wrap.querySelectorAll('[data-set]'));
+    const show = (key) => {
+      const hit = panels.find((p) => p.dataset.set === key);
+      if (!hit) return false;
+      panels.forEach((p) => { p.hidden = p !== hit; });
+      return true;
+    };
+    const wanted = new URLSearchParams(location.search).get('set');
+    if (wanted) show(wanted);
+    wrap.addEventListener('click', (e) => {
+      const link = e.target.closest('[data-switch]');
+      if (!link) return;
+      e.preventDefault();
+      if (show(link.dataset.switch)) {
+        const url = new URL(location.href);
+        url.searchParams.set('set', link.dataset.switch);
+        history.replaceState(null, '', url);
+      }
+    });
+  });
+</script>
 
 <style>
   .rs {
@@ -211,4 +266,31 @@ const position = readings.findIndex((r) => r.here) + 1;
   :global(.dark) .rs-foot a { color: #c49a4e; }
   :global(.dark) .rs-here { background: rgba(160, 69, 28, 0.3); }
   :global(.dark) .rs-here .rs-num { color: #e08a5c; }
+  .rs[hidden] { display: none; }
+  .rs-also {
+    margin: 0.9rem 0 0;
+    padding-top: 0.85rem;
+    border-top: 1px dashed rgba(196, 154, 78, 0.35);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: baseline;
+    gap: 0.35rem 0.9rem;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 0.98rem;
+  }
+  .rs-also-label { color: #c4ad84; font-style: italic; }
+  .rs-also-link {
+    color: #f0e0bf;
+    text-decoration: none;
+    border: 1px solid rgba(196, 154, 78, 0.55);
+    border-radius: 3px;
+    padding: 0.15rem 0.6rem;
+  }
+  .rs-also-link em { color: #c49a4e; }
+  .rs-also-link:hover { border-color: #c49a4e; background: rgba(196, 154, 78, 0.12); }
+  .rs-also-link:focus-visible { outline: 2px solid #c49a4e; outline-offset: 2px; }
+  :global(.dark) .rs-also-label { color: #c4ad84; }
+  :global(.dark) .rs-also-link { color: #f0e0bf; }
+  :global(.dark) .rs-also-link em { color: #c49a4e; }
 </style>

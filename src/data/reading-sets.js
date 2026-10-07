@@ -1,4 +1,6 @@
-// reading-sets 1007 V1.js
+// reading-sets 1007 V2.js
+// V2: a study may now sit in more than one set (The Goat That Was Not Slain is
+// Reading II of both sets below). Second set added: The Tenth Day.
 // V1: new file. The first reading set, The Garment and the Blood.
 //
 // READING SETS — studies meant to be read together, in a fixed order, like
@@ -16,8 +18,11 @@
 // that reading gives the reader. Titles come from each study's own
 // frontmatter, so a retitled study updates here by itself.
 //
-// A study belongs to at most ONE set. An unknown slug is skipped, so a typo
-// can never break a page; check the panel after a deploy.
+// A study may sit in several sets. Its page shows the set the reader came in
+// through; a reader arriving cold sees the FIRST set (top of this file) that
+// lists it, with an "Also" line to the others. So list the set you want shown
+// by default first. An unknown slug is skipped, so a typo can never break a
+// page; check the panel after a deploy.
 
 export const READING_SETS = [
   {
@@ -39,7 +44,26 @@ export const READING_SETS = [
       },
     ],
   },
+  {
+    key: "the-tenth-day",
+    title: "The Tenth Day",
+    intro: "One day in the seventh month: the cover, the goats, the trumpet of liberty.",
+    readings: [
+      {
+        slug: "the-kapporet-atonement-cover",
+        line: "The cover: what the blood was sprinkled on, and why.",
+      },
+      {
+        slug: "goat-that-was-not-slain",
+        line: "The goats: one slain, one sent away.",
+      },
+      {
+        slug: "the-year-of-liberty",
+        line: "The trumpet: the Jubilee sounded on the same day.",
+      },
+    ],
+  },
 ];
 
-export const setFor = (slug) =>
-  READING_SETS.find((s) => s.readings.some((r) => r.slug === slug)) || null;
+export const setsFor = (slug) =>
+  READING_SETS.filter((s) => s.readings.some((r) => r.slug === slug));
