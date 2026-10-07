@@ -1,4 +1,8 @@
-// src/data/trinity-files.js · 1005 V2
+// src/data/trinity-files.js · 1007 V3
+// V3: Hebrews 9:16-17 added and written — "A Will Nobody Wrote"
+// (trinity-files-hebrews-9-16-17). It was not on the list, so it goes in at its
+// canonical place after Hebrews 9:14. foundations [] — it cites the go'el-kopher
+// study, which is not one of the Trinity Foundations I to VI.
 // V2: `foundations` added to every entry for the Sort by Foundation control —
 // ids from src/data/trinity-foundations.js ("I" to "VI"). Written entries take
 // them from the study's own Reference Piece pointer ("Foundation: … →"); coming
@@ -150,6 +154,7 @@ export const trinityFiles = [
   { ref: "Hebrews 3:1-4", section: "Acts & Letters", foundations: [], claim: "“He that built all things is God”" },
   { ref: "Hebrews 3:7-11", section: "Acts & Letters", foundations: [], claim: "“As the Holy Ghost saith”" },
   { ref: "Hebrews 9:14; 10:29-30", section: "Acts & Letters", foundations: [], claim: "“Through the eternal Spirit”" },
+  { ref: "Hebrews 9:16-17", section: "Acts & Letters", foundations: [], title: "A Will Nobody Wrote", deck: "A blood covenant, not a lawyer's will — read the dying 'testator' again.", slug: "trinity-files-hebrews-9-16-17" },
   { ref: "Hebrews 13:20", section: "Acts & Letters", foundations: [], claim: "“That great shepherd of the sheep”" },
   { ref: "Hebrews 13:21", section: "Acts & Letters", foundations: [], claim: "“To whom be glory for ever and ever”" },
   { ref: "1 Peter 1:2", section: "Acts & Letters", foundations: [], claim: "Foreknowledge of the Father, sanctification of the Spirit" },
