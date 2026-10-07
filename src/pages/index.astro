@@ -1,5 +1,7 @@
 ---
-// src/pages/index.astro · 0927 V13
+// src/pages/index.astro · 1007 V14
+// V14: the hero headline, its italic, the eyebrow and the body paragraph get dark-mode
+// colours; they had none, so the headline sat near-black on the dark page.
 // V13: the Cosmology rail card opens the /cosmology section front, matching the
 // Header slot; The Heavens and the Earth moved out of the blog to
 // /cosmology/the-heavens-and-the-earth. Copy unchanged.
@@ -333,6 +335,11 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
       max-width: 44rem;
       margin: 0;
     }
+
+    :global(.dark) .hero-headline { color: var(--color-dark-text); }
+    :global(.dark) .hero-headline em,
+    :global(.dark) .hero-eyebrow { color: var(--gold-light); }
+    :global(.dark) .hero-body { color: var(--color-dark-secondary-text); }
 
     /* Vertical stack for the two CTAs — primary on top, ghost secondary
        beneath. Aligned to the start of the column so both buttons start

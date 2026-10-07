@@ -231,6 +231,15 @@ body {
 
 /* Dark Mode */
 .dark {
+  /* Heading ink. --ink (every h1–h6, rail and card titles) and --deep-earth
+     (the study title) are light-mode ink with no dark value, so on the dark
+     page they rendered near-black on near-black. --deep-earth only broke when
+     bf90322 defined it: undefined, it had inherited the dark body text.
+     Pages that set their own --ink on a wrapper (Hollywood, American
+     Idolatry, WatchmanCard) still win, being closer to the text. */
+  --ink: var(--color-dark-text);
+  --deep-earth: var(--color-dark-text);
+
   body {
     color: var(--color-dark-text);
     background-color: var(--color-dark-background);
