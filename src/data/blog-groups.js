@@ -1,4 +1,5 @@
-// blog-groups 1007 V30.js
+// blog-groups 1008 V31.js
+// V31: isaiah-runs-forward joins the-quick-scroll (category The Scrolls).
 // V30: two-mountains joins scripture-unfiltered (category Scripture Unfiltered).
 // V29: two changes. (1) New topic group THE WAY IN AND THE WALK (subtitle on the
 // card: The Blood and the Bread) takes 14 studies out of SCRIPTURE UNFILTERED
@@ -165,7 +166,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 108 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 109 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (16) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
@@ -211,8 +212,9 @@ export const POST_GROUP = {
   'justification-the-verdict-buried-beneath-forgiveness': 'the-root',
   'sanctification-the-temple-life-of-a-claimed-people': 'the-root',
 
-  // ── The Quick Scroll (1) ──
+  // ── The Quick Scroll (2) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
+  'isaiah-runs-forward': 'the-quick-scroll',
 
   // ── Buried in Plain Sight (18) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
