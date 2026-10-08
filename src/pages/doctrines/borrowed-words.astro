@@ -1,5 +1,10 @@
 ---
-// borrowed-words-page 1008 V3.astro — src/pages/doctrines/borrowed-words.astro
+// borrowed-words-page 1008 V4.astro — src/pages/doctrines/borrowed-words.astro
+// V4: cross-listings. A doctrine's crossRefs list shows another doctrine's word
+// as a second listing (id <word>--<doctrine>) with an italic "In this doctrine"
+// note at the top of the opened entry; its aliases (pneuma-stoics,
+// oikonomia-trinity) land there. The count is unique words (59), so a
+// cross-listing is never counted twice. alsoIn and its "also under" line retired.
 // V3: Short, searchable list. Search box + two filter rows (By doctrine, By
 // source) that work together, live "Showing N of 60 words" count, empty doctrine
 // sections hide. Each word is a collapsed <details> line (Greek, KJV, source
@@ -22,8 +27,13 @@ import {
   pageTitle, pageSubtitle, intro, doctrines, futureStudies, failedClaims, sourceTypes
 } from "../../data/borrowed-words-page.js";
 
-const total = doctrines.reduce((n, d) => n + d.words.length, 0);
-const titleOf = (slug) => doctrines.find(x => x.departureSlug === slug)?.title;
+const total = doctrines.reduce((n, d) => n + d.words.length, 0); // unique words
+const byId = Object.fromEntries(doctrines.flatMap(d => d.words.map(w => [w.id, w])));
+// A doctrine's own words, then the words it borrows from another doctrine.
+const listings = (d) => [
+  ...d.words.map(w => ({ w, key: w.id, aliases: w.aliases, note: null })),
+  ...d.crossRefs.map(c => ({ w: byId[c.id], key: `${c.id}--${d.departureSlug}`, aliases: c.aliases, note: c.note })),
+];
 // Lower-case, diacritics stripped, so "psyche" matches "Psychē".
 const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 ---
@@ -70,19 +80,20 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
         <a href={`/doctrines/the-departure/${d.departureSlug}`}>The Departure</a>{" · "}<a href={`/doctrines/old-paths/${d.oldPathsSlug}`}>The Old Paths</a>
       </p>
 
-      {d.words.map(w => (
-        <details class="bwp-word" id={w.id}
-          data-aliases={w.aliases.join(" ")}
-          data-doctrine={[d.departureSlug, ...w.alsoIn].join(" ")}
+      {listings(d).map(({ w, key, aliases, note }) => (
+        <details class="bwp-word" id={key}
+          data-word={w.id}
+          data-aliases={aliases.join(" ")}
+          data-doctrine={d.departureSlug}
           data-sources={w.sources.join("|")}
-          data-search={fold([w.id, w.greek, w.kjv, w.strongs, w.source, w.hebrew, w.fed, w.bridge || "", w.sources.join(" ")].join(" "))}>
+          data-search={fold([w.id, w.greek, w.kjv, w.strongs, w.source, w.hebrew, w.fed, w.bridge || "", note || "", w.sources.join(" ")].join(" "))}>
           <summary>
             <span class="bwp-name">{w.greek}</span>
             <span class="bwp-kjv">“{w.kjv}”</span>
             <span class="bwp-tags">{w.sources.join(" · ")}</span>
-            {w.alsoIn.length > 0 && <span class="bwp-also">also under {w.alsoIn.map(titleOf).join(", ")}</span>}
           </summary>
           <div class="bwp-body">
+            {note && <p class="bwp-note-in">{note}</p>}
             <p class="bwp-strongs">{w.strongs}</p>
             <p><span class="bwp-label">Pagan source.</span>{" "}{w.source}</p>
             <p><span class="bwp-label">Hebrew beneath.</span>{" "}{w.hebrew}</p>
@@ -121,20 +132,22 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   const count = document.getElementById("bwp-count")!;
   const none = document.getElementById("bwp-none")!;
   const state: Record<string, string> = { doctrine: "", source: "", q: "" };
+  const unique = new Set(words.map(w => w.dataset.word)).size;
   const fold = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
   function apply() {
-    let shown = 0;
+    // Count unique words: a cross-listed word showing twice still counts once.
+    const seen = new Set<string>();
     for (const w of words) {
-      const ok = (!state.doctrine || w.dataset.doctrine!.split(" ").includes(state.doctrine))
+      const ok = (!state.doctrine || w.dataset.doctrine === state.doctrine)
         && (!state.source || w.dataset.sources!.split("|").includes(state.source))
         && (!state.q || w.dataset.search!.includes(state.q));
       w.hidden = !ok;
-      if (ok) shown++;
+      if (ok) seen.add(w.dataset.word!);
     }
     for (const s of sections) s.hidden = !s.querySelector(".bwp-word:not([hidden])");
-    count.textContent = `Showing ${shown} of ${words.length} words`;
-    none.hidden = shown !== 0;
+    count.textContent = `Showing ${seen.size} of ${unique} words`;
+    none.hidden = seen.size !== 0;
   }
 
   function choose(group: HTMLElement, b: HTMLButtonElement) {
@@ -230,9 +243,10 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   .bwp-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.02em; color: #e8e2d4; }
   .bwp-kjv { font-style: italic; color: #a89f8c; }
   .bwp-tags { margin-left: auto; font-size: 0.8rem; color: #8f8672; text-align: right; }
-  .bwp-also { flex-basis: 100%; font-size: 0.85rem; font-style: italic; color: #a89f8c; padding-left: 1.55em; }
   .bwp-body { padding: 0 0 1rem 1.55em; }
   .bwp-body p { margin: 0 0 0.4rem; }
+  /* Cross-listing note — why this word also sits under this doctrine. */
+  .bwp-note-in { font-style: italic; color: #b8af9c; border-left: 2px solid #BA7517; padding-left: 0.8rem; margin: 0 0 0.6rem !important; }
   .bwp-strongs { font-size: 0.85rem; color: #8f8672; }
   .bwp-label { font-weight: 600; color: #d8b06a; }
   .bwp-bridge { font-size: 0.98rem; color: #b8af9c; }

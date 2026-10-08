@@ -1,4 +1,9 @@
-// borrowed-words-page 1008 V3.js
+// borrowed-words-page 1008 V4.js
+// V4: cross-listings — each doctrine has crossRefs ({ id, note, aliases }); a word can show under
+// more than one doctrine with an "In this doctrine" note. Pneuma is cross-listed under Immortal
+// Soul (alias pneuma-stoics moves there); Oikonomia keeps one entry (Rightly Divided), cross-listed
+// under The Trinity (alias oikonomia-trinity) — the separate oikonomia-trinity entry is gone.
+// alsoIn retired. 59 unique words.
 // V3: the five Immortal Soul story links open their own tab on the tabbed page
 // (/doctrines/the-departure/immortal-soul#word-<id>).
 // V2: Search, filters (doctrine + source), collapsed entries; story links live for the Immortal Soul words only
@@ -26,6 +31,7 @@ export const doctrines = [
     "departureSlug": "sacred-names",
     "oldPathsSlug": "the-name-that-endures",
     "note": null,
+    "crossRefs": [],
     "words": [
       {
         "id": "kurios",
@@ -37,7 +43,6 @@ export const doctrines = [
         "fed": "The loss of the Name, and a Father and Son both called “Lord” until the reader cannot tell them apart.",
         "bridge": "Matthew 22:44 quotes Psalm 110:1 — the Greek kurios stands where the Hebrew has the Name.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Emperors & state"
         ],
@@ -53,7 +58,6 @@ export const doctrines = [
         "fed": "A word of divine nature in place of a word of authority given by Yahuah.",
         "bridge": "Matthew 22:32 quotes Exodus 3:6 — theos for Elohim.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -69,7 +73,6 @@ export const doctrines = [
         "fed": "The title of god-kings moved to the Son, and the name that declares “Yahuah saves” lost its meaning.",
         "bridge": "The Septuagint of Habakkuk 3:18 puts sōtēr for yesha, “the Elohim of my salvation.”",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths",
           "Emperors & state"
@@ -86,7 +89,6 @@ export const doctrines = [
         "fed": "The Name dropped from its most common title, and a throne-image of the Son built on the word.",
         "bridge": "2 Corinthians 6:18 draws on 2 Samuel 7:8 — “Lord Almighty” where the Hebrew has “Yahuah of hosts.”",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Temples & cults"
         ],
@@ -102,7 +104,6 @@ export const doctrines = [
         "fed": "A title the pagan world shared, drawn away from the Name it was joined to.",
         "bridge": "The Septuagint of Genesis 14:18 puts hypsistos for Elyon.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -116,6 +117,7 @@ export const doctrines = [
     "departureSlug": "torah-dismissal",
     "oldPathsSlug": "walk-after-the-door",
     "note": null,
+    "crossRefs": [],
     "words": [
       {
         "id": "charis",
@@ -127,7 +129,6 @@ export const doctrines = [
         "fed": "A gift that sets the Law aside.",
         "bridge": "The Septuagint of Genesis 6:8 puts charis for chen: “Noah found grace.”",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -143,7 +144,6 @@ export const doctrines = [
         "fed": "The Torah heard as a legal code of rules and penalties rather than a Father’s instruction. “Under the law” became a curse instead of a path.",
         "bridge": "Romans 7:7 quotes Exodus 20:17 and calls it nomos — the Torah itself.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
         ],
@@ -159,7 +159,6 @@ export const doctrines = [
         "fed": "The verse read as “termination,” the most quoted proof that the Law has ended. Here the Greek meaning is right and the English reading is wrong.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
         ],
@@ -175,7 +174,6 @@ export const doctrines = [
         "fed": "“Old Testament” and “New Testament” — a superseded will and a replacement, rather than one covenant renewed.",
         "bridge": "Hebrews 8:8–10 quotes Jeremiah 31:31–33 — diathēkē for berit.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Emperors & state"
         ],
@@ -191,7 +189,6 @@ export const doctrines = [
         "fed": "A verse about returning to pagan star-worship turned against the Sabbath and the feasts of Yahuah.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers",
           "Temples & cults"
@@ -208,7 +205,6 @@ export const doctrines = [
         "fed": "Repentance reduced to a feeling of sorrow or a change of mind, with no return to the Law required.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -222,6 +218,7 @@ export const doctrines = [
     "departureSlug": "tongue-talking",
     "oldPathsSlug": "a-pure-lip",
     "note": null,
+    "crossRefs": [],
     "words": [
       {
         "id": "pneuma",
@@ -233,11 +230,7 @@ export const doctrines = [
         "fed": "Possession by a spirit that speaks through the worshipper; a third person of the Trinity; and the claim that the spirit of man lives on after death.",
         "bridge": "Acts 2:17 quotes Joel 2:28 — pneuma for ruach.",
         "aliases": [
-          "pneuma-delphi",
-          "pneuma-stoics"
-        ],
-        "alsoIn": [
-          "immortal-soul"
+          "pneuma-delphi"
         ],
         "sources": [
           "Temples & cults",
@@ -260,7 +253,6 @@ export const doctrines = [
         "fed": "The New Testament itself names Delphi as the source of ecstatic spirit-speech.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Temples & cults"
         ],
@@ -276,7 +268,6 @@ export const doctrines = [
         "fed": "Tongues followed by interpretation, and “prophetic words” never tested by the Torah.",
         "bridge": "Acts 3:22 quotes Deuteronomy 18:15 — prophētēs for navi.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Temples & cults"
         ],
@@ -292,7 +283,6 @@ export const doctrines = [
         "fed": "Loss of self-control treated as proof of the Spirit.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Temples & cults"
         ],
@@ -308,7 +298,6 @@ export const doctrines = [
         "fed": "The “charismatic” movement — gifts defined by sensation rather than by edification and order.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -322,6 +311,7 @@ export const doctrines = [
     "departureSlug": "hell",
     "oldPathsSlug": "wicked-consumed",
     "note": null,
+    "crossRefs": [],
     "words": [
       {
         "id": "hades",
@@ -333,7 +323,6 @@ export const doctrines = [
         "fed": "Conscious torment from the moment of death.",
         "bridge": "Acts 2:27 quotes Psalm 16:10 — Hadēs where the psalm has Sheol.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -349,7 +338,6 @@ export const doctrines = [
         "fed": "A torture pit beneath the underworld.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -365,7 +353,6 @@ export const doctrines = [
         "fed": "Punishment that never stops, rather than a punishment whose result never ends.",
         "bridge": "Matthew 25:46 echoes Daniel 12:2 — aiōnios where Daniel has olam.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -381,7 +368,6 @@ export const doctrines = [
         "fed": "Added weight to endless-torment readings.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
         ],
@@ -397,7 +383,6 @@ export const doctrines = [
         "fed": "“Everlasting punishment” (Matthew 25:46) read as endless suffering instead of permanent cutting off. Here the Greek meaning supports the Hebrew; the church reading departs from both.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
         ],
@@ -413,7 +398,6 @@ export const doctrines = [
         "fed": "A living population “under the earth” in Philippians 2:10.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -429,7 +413,6 @@ export const doctrines = [
         "fed": "A literal pit of fire beneath the earth.",
         "bridge": "The Septuagint of Genesis 1:2 puts abyssos for tehom.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -443,6 +426,15 @@ export const doctrines = [
     "departureSlug": "immortal-soul",
     "oldPathsSlug": "became-a-living-soul",
     "note": null,
+    "crossRefs": [
+      {
+        "id": "pneuma",
+        "note": "In Immortal Soul: when the soul argument fails, the same undying self is moved from psychē to pneuma — “the spirit lives on.”",
+        "aliases": [
+          "pneuma-stoics"
+        ]
+      }
+    ],
     "words": [
       {
         "id": "psyche",
@@ -454,7 +446,6 @@ export const doctrines = [
         "fed": "The immortal soul — and with it hell as endless torment, going to heaven at death, and a judgment at death before the Judgment.",
         "bridge": "Acts 2:27 quotes Psalm 16:10 — psychē where the psalm has nephesh.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths",
           "Philosophers"
@@ -476,7 +467,6 @@ export const doctrines = [
         "fed": "Man given the defining mark of a Greek god.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -497,7 +487,6 @@ export const doctrines = [
         "fed": "Wandering spirits of the departed.",
         "bridge": "1 Corinthians 10:20 quotes Deuteronomy 32:17 — daimonia for shedim.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -518,7 +507,6 @@ export const doctrines = [
         "fed": "The belief that the dead return as visible spirits.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -537,6 +525,7 @@ export const doctrines = [
     "departureSlug": "revelation-teaching",
     "oldPathsSlug": "the-book-quotes",
     "note": "The rest of this doctrine came from later teaching, not word freight: the Jesuit Francisco Ribera’s futurism (1590), carried forward by John Darby in the 1830s and the Scofield Reference Bible (1909).",
+    "crossRefs": [],
     "words": [
       {
         "id": "parousia",
@@ -548,7 +537,6 @@ export const doctrines = [
         "fed": "Dispensational teaching splits parousia from epiphaneia to create a secret rapture and a later return.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Emperors & state"
         ],
@@ -564,7 +552,6 @@ export const doctrines = [
         "fed": "Used with parousia to build two separate comings.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Emperors & state"
         ],
@@ -578,6 +565,7 @@ export const doctrines = [
     "departureSlug": "going-to-heaven",
     "oldPathsSlug": "inheritance-is-the-earth",
     "note": null,
+    "crossRefs": [],
     "words": [
       {
         "id": "ouranos",
@@ -589,7 +577,6 @@ export const doctrines = [
         "fed": "The soul flying to heaven at death.",
         "bridge": "Acts 7:49 quotes Isaiah 66:1 — ouranos for shamayim.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths",
           "Philosophers"
@@ -606,7 +593,6 @@ export const doctrines = [
         "fed": "A heavenly waiting room for souls, built on Luke 23:43.",
         "bridge": "The Septuagint of Genesis 2:8 puts paradeisos for gan.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Emperors & state"
         ],
@@ -622,7 +608,6 @@ export const doctrines = [
         "fed": "“The blessed dead” pictured as already enjoying heaven.",
         "bridge": "Romans 4:7–8 quotes Psalm 32:1–2 — makarios for ashrei.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -636,6 +621,15 @@ export const doctrines = [
     "departureSlug": "the-trinity",
     "oldPathsSlug": "hear-o-israel",
     "note": null,
+    "crossRefs": [
+      {
+        "id": "oikonomia",
+        "note": "In The Trinity: Tertullian’s “economy” — one God arranged into three.",
+        "aliases": [
+          "oikonomia-trinity"
+        ]
+      }
+    ],
     "words": [
       {
         "id": "logos",
@@ -647,7 +641,6 @@ export const doctrines = [
         "fed": "A second divine person beside the Father.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
         ],
@@ -663,7 +656,6 @@ export const doctrines = [
         "fed": "“Godhead” as a shared divine substance in three persons (Colossians 2:9).",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
         ],
@@ -679,7 +671,6 @@ export const doctrines = [
         "fed": "Homoousios, “of one substance,” the key word of the Nicene Creed (325).",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
         ],
@@ -695,7 +686,6 @@ export const doctrines = [
         "fed": "Three hypostases in one God, the formula of the Council of Constantinople (381).",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
         ],
@@ -711,7 +701,6 @@ export const doctrines = [
         "fed": "The “two natures” of Chalcedon (451).",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
         ],
@@ -727,7 +716,6 @@ export const doctrines = [
         "fed": "“Eternally begotten of the Father before all ages” (Nicene Creed).",
         "bridge": "Hebrews 11:17 calls Isaac monogenēs, drawing on Genesis 22:2 — yachid.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
         ],
@@ -743,25 +731,8 @@ export const doctrines = [
         "fed": "Proof offered that the Son shares the divine essence.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
-        ],
-        "story": []
-      },
-      {
-        "id": "oikonomia-trinity",
-        "greek": "Oikonomia",
-        "strongs": "G3622",
-        "kjv": "dispensation",
-        "source": "Household management. Tertullian used “the economy” to describe God arranged into three (Against Praxeas 2–3).",
-        "hebrew": "The stewardship of a household (Luke 16:2; Ephesians 3:2).",
-        "fed": "The “economic Trinity” — and later, dispensationalism (see Rightly Divided).",
-        "bridge": null,
-        "aliases": [],
-        "alsoIn": [],
-        "sources": [
-          "Later teachers & translators"
         ],
         "story": []
       },
@@ -775,7 +746,6 @@ export const doctrines = [
         "fed": "Man-made hymns that teach the Trinity in their verses.",
         "bridge": "Hebrews 2:12 quotes Psalm 22:22 — hymneō for halal, “praise.”",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Temples & cults"
         ],
@@ -789,6 +759,7 @@ export const doctrines = [
     "departureSlug": "purification-holiness",
     "oldPathsSlug": "ye-shall-be-holy",
     "note": null,
+    "crossRefs": [],
     "words": [
       {
         "id": "hagios",
@@ -800,7 +771,6 @@ export const doctrines = [
         "fed": "Holiness as a rank (canonized saints) or a feeling (a “position in Christ”), with nothing required of the plate.",
         "bridge": "1 Peter 1:16 quotes Leviticus 11:44 — hagios for qadosh, the verse that closes the food laws.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Temples & cults"
         ],
@@ -816,7 +786,6 @@ export const doctrines = [
         "fed": "Perfection as a second experience — the Holiness movement’s “entire sanctification” — rather than a whole-hearted walk.",
         "bridge": "Matthew 5:48 draws on Deuteronomy 18:13 — teleios for tamim.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Temples & cults"
         ],
@@ -830,6 +799,7 @@ export const doctrines = [
     "departureSlug": "calendar-feasts",
     "oldPathsSlug": "signs-and-seasons",
     "note": null,
+    "crossRefs": [],
     "words": [
       {
         "id": "kairos",
@@ -841,7 +811,6 @@ export const doctrines = [
         "fed": "The appointed feasts heard as “seasons” or “opportunities” rather than set meetings with Yahuah.",
         "bridge": "The Septuagint of Genesis 1:14 puts kairoi for moadim.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -857,7 +826,6 @@ export const doctrines = [
         "fed": "“The Lord’s day” (Revelation 1:10) claimed as Sunday.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Emperors & state"
         ],
@@ -873,7 +841,6 @@ export const doctrines = [
         "fed": "Church “holy days” treated as interchangeable with the feasts of Yahuah.",
         "bridge": "The Septuagint of Leviticus 23 puts heortē for chag.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Temples & cults"
         ],
@@ -889,7 +856,6 @@ export const doctrines = [
         "fed": "The Pesach replaced by a goddess’s festival, its date set apart from the Hebrew reckoning at Nicaea (325).",
         "bridge": "1 Corinthians 5:7 — “Messiah our passover (pascha)” — pascha is Pesach.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths",
           "Later teachers & translators"
@@ -906,7 +872,6 @@ export const doctrines = [
         "fed": "A feast detached from its count and moved to late spring.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Later teachers & translators"
         ],
@@ -920,6 +885,7 @@ export const doctrines = [
     "departureSlug": "faith-alone",
     "oldPathsSlug": "wine-and-the-bread",
     "note": null,
+    "crossRefs": [],
     "words": [
       {
         "id": "pistis",
@@ -931,7 +897,6 @@ export const doctrines = [
         "fed": "Mental agreement that saves without a walk.",
         "bridge": "Romans 1:17 quotes Habakkuk 2:4 — pistis for emunah.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -947,7 +912,6 @@ export const doctrines = [
         "fed": "A birth announcement with no kingdom and no Law.",
         "bridge": "Romans 10:15 quotes Isaiah 52:7 — euangelizō for basar.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Emperors & state"
         ],
@@ -963,7 +927,6 @@ export const doctrines = [
         "fed": "Sacraments that dispense favor, and doctrines placed beyond question as “a mystery.”",
         "bridge": "The Septuagint of Daniel 2:18–19 puts mystērion for raz.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Temples & cults"
         ],
@@ -979,7 +942,6 @@ export const doctrines = [
         "fed": "The Eucharist — favor received through a rite.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Temples & cults"
         ],
@@ -995,7 +957,6 @@ export const doctrines = [
         "fed": "Instant “regeneration” at baptism or at a prayer (Titus 3:5).",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Philosophers"
         ],
@@ -1011,7 +972,6 @@ export const doctrines = [
         "fed": "A finished triumph that asks no endurance of the believer.",
         "bridge": "1 Corinthians 15:54 quotes Isaiah 25:8 — nikos for netsach.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths"
         ],
@@ -1025,6 +985,7 @@ export const doctrines = [
     "departureSlug": "rightly-divided",
     "oldPathsSlug": "one-olive-tree",
     "note": "The system itself came from later teaching: John Darby in the 1830s and the Scofield Reference Bible (1909).",
+    "crossRefs": [],
     "words": [
       {
         "id": "ekklesia",
@@ -1036,7 +997,6 @@ export const doctrines = [
         "fed": "A “church” separate from Israel, with its own age and its own rules.",
         "bridge": "Hebrews 2:12 quotes Psalm 22:22 — ekklēsia for qahal.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Emperors & state"
         ],
@@ -1047,12 +1007,11 @@ export const doctrines = [
         "greek": "Oikonomia",
         "strongs": "G3622",
         "kjv": "dispensation",
-        "source": "Household management; Darby built separate “dispensations” on it.",
+        "source": "Household management. Tertullian used “the economy” to describe God arranged into three (Against Praxeas 2–3); John Darby later built separate “dispensations” on it.",
         "hebrew": "Stewardship: “a dispensation of the gospel is committed unto me” (1 Corinthians 9:17).",
         "fed": "Darby’s seven dispensations, each with different terms of salvation (Ephesians 1:10; 3:2).",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Later teachers & translators"
         ],
@@ -1068,7 +1027,6 @@ export const doctrines = [
         "fed": "2 Timothy 2:15 read as “divide the Bible into separate ages” instead of “cut a straight path through the word.” The Greek here is plain; the English rendering made the doctrine.",
         "bridge": null,
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Later teachers & translators"
         ],
@@ -1082,6 +1040,7 @@ export const doctrines = [
     "departureSlug": "imputed-righteousness",
     "oldPathsSlug": "it-shall-be-our-righteousness",
     "note": null,
+    "crossRefs": [],
     "words": [
       {
         "id": "dikaiosyne",
@@ -1093,7 +1052,6 @@ export const doctrines = [
         "fed": "A legal verdict transferred onto a record, rather than righteousness walked out.",
         "bridge": "Romans 4:3 quotes Genesis 15:6 — dikaiosynē for tsedaqah.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Gods & myths",
           "Emperors & state"
@@ -1110,7 +1068,6 @@ export const doctrines = [
         "fed": "“Imputed righteousness” — a swapped record that leaves the life untouched.",
         "bridge": "Romans 4:3 quotes Genesis 15:6 — logizomai for chashav.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Emperors & state"
         ],
@@ -1126,7 +1083,6 @@ export const doctrines = [
         "fed": "The Son appeasing an angry Father — a Greek picture in place of Yahuah providing the covering Himself.",
         "bridge": "Hebrews 9:5 uses hilastērion for the mercy seat, the kapporet.",
         "aliases": [],
-        "alsoIn": [],
         "sources": [
           "Temples & cults"
         ],

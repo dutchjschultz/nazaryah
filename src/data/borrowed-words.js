@@ -1,4 +1,5 @@
-// borrowed-words 1007 V5.js
+// borrowed-words 1008 V6.js
+// V6: Immortal Soul dropdown gains Phantasma (now 5 words, matching the tabs and the word page).
 // V5: WORD_PAGE_LIVE on — /doctrines/borrowed-words/ is built; every dropdown label links to its entry.
 // V4: Intro updated to the approved text (Intro V6): "added to it" line, four steps, Plato line
 //
@@ -156,7 +157,11 @@ export const doctrines = [
       { id: "daimonion", greek: "Daimonion", strongs: "G1140", yourBible: "devils",
         sourceName: "Hesiod wrote", sourceLine: "daimones — spirits of the dead watching the living",
         scriptureName: "Moses wrote", scriptureLine: "shedim — false gods behind idols (Deuteronomy 32:17)",
-        linkLabel: "Hesiod’s word or Yahuah’s?" }
+        linkLabel: "Hesiod’s word or Yahuah’s?" },
+      { id: "phantasma", greek: "Phantasma", strongs: "G5326", yourBible: "spirit",
+        sourceName: "Homer wrote", sourceLine: "phantasma — the shades of the dead rising to speak (Odyssey 11)",
+        scriptureName: "Solomon wrote", scriptureLine: "“the dead know not any thing” (Ecclesiastes 9:5)",
+        linkLabel: "Homer’s word or Yahuah’s?" }
     ]
   },
   {
