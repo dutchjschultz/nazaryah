@@ -1,5 +1,9 @@
 ---
-// src/pages/doctrines.astro · 1008 V5
+// src/pages/doctrines.astro · 1008 V6
+// V6: the root paragraph is set apart in place — a faint gold-wash panel with a
+// gold left edge, a small THE ROOT label, the text in italic a touch larger.
+// Italic runs in the body serif (--font-body); the site carries no Cormorant
+// and --font-display (Cinzel) is caps-only.
 // V5: a new intro paragraph between the old-paths paragraph and the Six
 // Foundations paragraph — bad fruit grows from a root — linking Words Your Bible
 // Borrowed (/doctrines/borrowed-words/).
@@ -42,14 +46,17 @@ import { sections } from '../data/doctrines.data.js';
         stand in the ways and look, and to ask for the old paths, where the good way
         is, and walk in it. That is the whole assignment of this page.
       </p>
-      <p>
+      <aside class="dl-root">
+        <span class="dl-root-label">The Root</span>
+        <p>
         But bad fruit grows from a root. Most of these errors did not begin in a
         pulpit; they began in a word — a Hebrew word carried into Greek, where it
         picked up the meaning of the Greek gods and philosophers, and the church built
         its doctrine on that meaning. The Departure shows the fruit.
-        <a href="/doctrines/borrowed-words/"><strong>Words Your Bible Borrowed</strong></a>
+        <a href="/doctrines/borrowed-words/">Words Your Bible Borrowed</a>
         shows the root it grew from.
-      </p>
+        </p>
+      </aside>
       <p>
         Under the doctrines sit the Six Foundations. Hebrews 6:1-2 names them in
         order — repentance from dead works, belief toward Yahuah, the doctrine of
@@ -100,6 +107,23 @@ import { sections } from '../data/doctrines.data.js';
   .dl-intro a { color: #d8b06a; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(216,176,106,0.45); }
   .dl-intro a:hover { color: #e8c98a; text-decoration-color: #BA7517; }
   .dl-intro a strong { color: inherit; }
+  /* The root paragraph — same column, set apart by a wash and a gold edge only
+     (no full border, no shadow) so it still reads as part of the intro. */
+  .dl-root {
+    margin: 2.2rem 0; padding: 1.4rem 1.6rem 1.4rem 1.8rem;
+    background: rgba(186,117,23,0.07); border-left: 3px solid #BA7517; border-radius: 0 6px 6px 0;
+  }
+  .dl-root-label {
+    display: block; font-family: var(--font-display); font-size: 10px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.5rem;
+  }
+  .dl-intro .dl-root p {
+    margin: 0; font-style: italic; font-weight: 500; font-size: 1.2rem; line-height: 1.65; color: #ddd5c3;
+  }
+  .dl-intro .dl-root a {
+    font-style: normal; font-weight: 600; text-decoration: none; border-bottom: 1px solid #BA7517;
+  }
+  .dl-intro .dl-root a:hover { border-bottom-color: #e8c98a; }
   .dl-intro-close {
     text-align: center; font-style: italic; color: #a89f8c !important;
     margin: 2rem 0 0 !important;
@@ -127,6 +151,7 @@ import { sections } from '../data/doctrines.data.js';
   }
 
   @media (max-width: 640px) {
+    .dl-root { padding: 1.1rem 1.1rem 1.1rem 1.25rem; }
     .dl-links { grid-template-columns: 1fr; }
     .dl-page { padding: 3rem 1.25rem 4rem; }
   }
