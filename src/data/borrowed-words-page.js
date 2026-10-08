@@ -1,5 +1,7 @@
-// borrowed-words-page 1008 V2.js
-// Search, filters (doctrine + source), collapsed entries; story links live for the Immortal Soul words only
+// borrowed-words-page 1008 V3.js
+// V3: the five Immortal Soul story links open their own tab on the tabbed page
+// (/doctrines/the-departure/immortal-soul#word-<id>).
+// V2: Search, filters (doctrine + source), collapsed entries; story links live for the Immortal Soul words only
 // V1: First build: full word page — intro, 60 words under 13 doctrines, future-study words, failed claims
 //
 // SAVE AS: src/data/borrowed-words-page.js
@@ -244,7 +246,7 @@ export const doctrines = [
         "story": [
           {
             "label": "Immortal Soul — the “spirit lives on” fallback",
-            "href": "/doctrines/the-departure/immortal-soul"
+            "href": "/doctrines/the-departure/immortal-soul#word-pneuma"
           }
         ]
       },
@@ -460,7 +462,7 @@ export const doctrines = [
         "story": [
           {
             "label": "Immortal Soul",
-            "href": "/doctrines/the-departure/immortal-soul"
+            "href": "/doctrines/the-departure/immortal-soul#word-psyche"
           }
         ]
       },
@@ -481,7 +483,7 @@ export const doctrines = [
         "story": [
           {
             "label": "Immortal Soul",
-            "href": "/doctrines/the-departure/immortal-soul"
+            "href": "/doctrines/the-departure/immortal-soul#word-athanasia"
           }
         ]
       },
@@ -502,7 +504,7 @@ export const doctrines = [
         "story": [
           {
             "label": "Immortal Soul",
-            "href": "/doctrines/the-departure/immortal-soul"
+            "href": "/doctrines/the-departure/immortal-soul#word-daimonion"
           }
         ]
       },
@@ -523,7 +525,7 @@ export const doctrines = [
         "story": [
           {
             "label": "Immortal Soul",
-            "href": "/doctrines/the-departure/immortal-soul"
+            "href": "/doctrines/the-departure/immortal-soul#word-phantasma"
           }
         ]
       }

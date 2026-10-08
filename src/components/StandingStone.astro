@@ -1,0 +1,33 @@
+---
+// StandingStone.astro · 1008 V1 — fixed notice at the top of every Departure
+// doctrine page, above the kicker and title, pointing readers to the Spoken in
+// Hebrew investigation first. Rendered by DoctrineInfo on the departure side
+// only (never Old Paths, Six Foundations, or the word page). A full gold border,
+// not a left edge, so it never reads as the Doctrines landing's "The Root" callout.
+// Colours are the doctrine pages' fixed dark palette (#BA7517 gold, #d8b06a soft
+// gold, #cfc7b6 body).
+---
+<aside class="standing-stone">
+  <a class="ss-link" href="/investigations/spoken-in-hebrew/">→ Start here: Spoken in Hebrew</a>
+  <p>The message was Hebrew before it was Greek. Yahushua and His apostles spoke and taught in Hebrew, and the earliest witnesses say their message was first written in Hebrew. The Greek came later — “translated into Greek, though by what author is uncertain” (Jerome). Plato never sat at the feet of Gamaliel, yet somehow his ideas made it into the translation. The words below are the translators’, not the apostles’.</p>
+</aside>
+
+<style>
+  .standing-stone {
+    border: 1px solid rgba(186,117,23,0.55); background: rgba(186,117,23,0.06);
+    border-radius: 6px; padding: 1.1rem 1.4rem 1.2rem; margin: 0 0 2.2rem;
+  }
+  .ss-link {
+    display: inline-block; margin-bottom: 0.6rem;
+    font-family: var(--font-display); font-size: 0.78rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase;
+    color: #d8b06a; text-decoration: none; border-bottom: 1px solid #BA7517;
+  }
+  .ss-link:hover { color: #e8c98a; border-bottom-color: #e8c98a; }
+  .standing-stone p {
+    margin: 0; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.7; color: #cfc7b6;
+  }
+  @media (max-width: 520px) {
+    .standing-stone { padding: 1rem 1.1rem 1.1rem; }
+  }
+</style>

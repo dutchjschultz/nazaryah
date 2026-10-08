@@ -1,5 +1,9 @@
 ---
-// src/components/DoctrineInfo.astro · 1008 V3
+// src/components/DoctrineInfo.astro · 1008 V4
+// V4: every Departure page opens with the StandingStone notice (above the
+// kicker and title; never on the Old Paths side). A Departure entry with a
+// departure-tabs.js entry renders DoctrineTabs in place of its body; every other
+// entry renders its body exactly as before.
 // V3: an entry marked `bodyFormat: "markdown"` renders its body as markdown
 // (Astro's own processor, so headings, lists, links and blockquotes come out as
 // they do in a study), styled below in this page's dark palette. Every other
@@ -12,13 +16,17 @@
 // so the round-trip can't break. Scripture shows on the Old Paths side only.
 // The tagline arrow is intentionally reversed between the two sides.
 import { createMarkdownProcessor } from '@astrojs/markdown-remark';
+import StandingStone from './StandingStone.astro';
+import DoctrineTabs from './DoctrineTabs.astro';
+import { departureTabs } from '../data/departure-tabs.js';
 interface Props { side: 'old-paths' | 'departure'; pair: any; }
 const { side, pair } = Astro.props;
 const isOld = side === 'old-paths';
 const entry = isOld ? pair.oldPaths : pair.departure;
 const counterpart = isOld ? pair.departure : pair.oldPaths;
 const kicker = isOld ? 'The Old Paths' : 'The Departure';
-const bodyHtml = entry.bodyFormat === 'markdown'
+const hasTabs = !isOld && Boolean(departureTabs[entry.slug]);
+const bodyHtml = !hasTabs && entry.bodyFormat === 'markdown'
   ? (await (await createMarkdownProcessor()).render(entry.body)).code
   : null;
 const counterpartHref = isOld
@@ -28,14 +36,17 @@ const counterpartHref = isOld
 
 <div class="di-page">
 <article class="di">
+  {!isOld && <StandingStone />}
   <p class="di-kicker">{kicker}</p>
   <h1 class="di-title">{entry.title}</h1>
   <p class="di-deck">{entry.deck}</p>
   {entry.tag && <p class="di-tag">{entry.tag}</p>}
 
-  {bodyHtml
-    ? <div class="di-body di-body-md" set:html={bodyHtml} />
-    : <div class="di-body"><p>{entry.body}</p></div>}
+  {hasTabs
+    ? <DoctrineTabs slug={entry.slug} />
+    : bodyHtml
+      ? <div class="di-body di-body-md" set:html={bodyHtml} />
+      : <div class="di-body"><p>{entry.body}</p></div>}
 
   {isOld && (
     <div class="di-scripture">

@@ -1,0 +1,160 @@
+---
+// DoctrineTabs.astro · 1008 V1 — tabbed Departure page body: a short opening,
+// one tab per root word (The Greek word / What the Hebrew said / How it grew —
+// a gold timeline / What it built + a link to the word on Words Your Bible
+// Borrowed), then a closing "The Old Path" with Further Reading.
+// Content: src/data/departure-tabs.js. Renders nothing when the slug has no
+// entry, so DoctrineInfo shows the old body for the other doctrines.
+// Deep links: #word-<id> opens that tab and scrolls to the tab row; clicking a
+// tab rewrites the address the same way (replaceState — no history spam).
+// Colours are the doctrine pages' fixed dark palette; --font-display (Cinzel) is
+// caps-only, so every italic runs in the body serif.
+import { departureTabs } from "../data/departure-tabs.js";
+interface Props { slug: string; }
+const { slug } = Astro.props;
+const d = departureTabs[slug];
+const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\*(.+?)\*/g, "<em>$1</em>");
+---
+{d && (
+<div class="dt">
+  <section class="dt-opening">{d.opening.map((p) => <p set:html={fmt(p)} />)}</section>
+
+  <div class="dt-tabs" role="tablist" aria-label="Root words">
+    {d.tabs.map((t, i) => (
+      <button type="button" role="tab" class={i === 0 ? "on" : ""} data-tab={t.id}
+        aria-selected={i === 0 ? "true" : "false"} aria-controls={`word-${t.id}`}>
+        <span class="dt-g">{t.greek}</span><span class="dt-k">“{t.kjv}”</span>
+      </button>
+    ))}
+  </div>
+
+  {d.tabs.map((t, i) => (
+    <section class="dt-panel" id={`word-${t.id}`} data-panel={t.id} role="tabpanel" hidden={i !== 0}>
+      <p class="dt-role">{t.role}</p>
+      <h2>{t.greek}{" "}<span class="dt-k">“{t.kjv}”</span></h2>
+      <h3>The Greek word</h3>
+      {t.word.map((p) => <p set:html={fmt(p)} />)}
+      <h3>What the Hebrew said</h3>
+      {t.hebrew.map((p) => <p set:html={fmt(p)} />)}
+      <h3>How it grew</h3>
+      <ol class="dt-time">
+        {t.timeline.map(([when, who, what]) => (
+          <li><span class="dt-when">{when}</span><span class="dt-who">{who}</span>{" "}<span class="dt-what" set:html={fmt(what)} /></li>
+        ))}
+      </ol>
+      <h3>What it built</h3>
+      <ul class="dt-built">{t.built.map((b) => <li set:html={fmt(b)} />)}</ul>
+      <p class="dt-more"><a href={`/doctrines/borrowed-words/#${t.id}`}>{t.greek} on Words Your Bible Borrowed →</a></p>
+    </section>
+  ))}
+
+  <section class="dt-closing">
+    <h2>The Old Path</h2>
+    {d.closing.map((p) => <p set:html={fmt(p)} />)}
+    <h3>Further Reading</h3>
+    <ul>{d.further.map(([label, href]) => <li><a href={href}>{label}</a></li>)}</ul>
+  </section>
+</div>
+)}
+
+<script>
+  document.querySelectorAll<HTMLElement>(".dt").forEach((root) => {
+    const tabs = [...root.querySelectorAll<HTMLElement>("[data-tab]")];
+    const panels = [...root.querySelectorAll<HTMLElement>("[data-panel]")];
+    const row = root.querySelector<HTMLElement>(".dt-tabs")!;
+    const show = (id: string, scroll?: ScrollBehavior) => {
+      if (!panels.some((p) => p.dataset.panel === id)) return;
+      tabs.forEach((t) => {
+        const on = t.dataset.tab === id;
+        t.classList.toggle("on", on);
+        t.setAttribute("aria-selected", on ? "true" : "false");
+      });
+      panels.forEach((p) => (p.hidden = p.dataset.panel !== id));
+      if (scroll) row.scrollIntoView({ block: "start", behavior: scroll });
+    };
+    tabs.forEach((t) => t.addEventListener("click", () => {
+      show(t.dataset.tab!);
+      history.replaceState(null, "", "#word-" + t.dataset.tab);
+    }));
+    const fromHash = (behavior: ScrollBehavior) => {
+      const h = location.hash.startsWith("#word-") ? location.hash.slice(6) : "";
+      if (h) show(decodeURIComponent(h), behavior);
+    };
+    window.addEventListener("hashchange", () => fromHash("smooth"));
+    // On arrival jump straight there (the page's smooth scroll lags on load).
+    fromHash("instant");
+  });
+</script>
+
+<style>
+  .dt { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.85; color: #cfc7b6; }
+  .dt h2, .dt h3 { font-family: var(--font-display); color: #e8e2d4; letter-spacing: 0.01em; }
+  .dt p { margin: 0 0 1.3rem; }
+  .dt :global(strong) { color: #e8e2d4; font-weight: 700; }
+  .dt :global(em) { font-family: var(--font-body); font-style: italic; }
+  .dt a { color: #d8b06a; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(216,176,106,0.45); }
+  .dt a:hover { color: #e8c98a; text-decoration-color: #BA7517; }
+
+  /* Tab row — Greek word over its KJV word; the open tab is filled gold. */
+  .dt-tabs {
+    display: flex; flex-wrap: wrap; gap: 0.45rem; margin: 2.2rem 0 0; padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(186,117,23,0.55); scroll-margin-top: 9rem;
+  }
+  .dt-tabs button {
+    display: flex; flex-direction: column; align-items: center; gap: 0.1rem; line-height: 1.2;
+    padding: 0.45rem 0.9rem; cursor: pointer; background: #161512; color: #cfc7b6;
+    border: 1px solid rgba(186,117,23,0.5); border-radius: 6px;
+    transition: background 0.15s, border-color 0.15s, color 0.15s;
+  }
+  .dt-tabs button:hover { border-color: #d8b06a; color: #e8e2d4; }
+  .dt-tabs button.on { background: #BA7517; border-color: #BA7517; color: #0e0d0b; }
+  .dt-g { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.04em; }
+  .dt-k { font-family: var(--font-body); font-style: italic; font-size: 0.85rem; font-weight: 400; letter-spacing: 0; }
+  .dt-tabs button:not(.on) .dt-k { color: #a89f8c; }
+
+  .dt-panel { padding: 1.6rem 0 0.5rem; }
+  .dt-role {
+    font-family: var(--font-display); font-size: 10px !important; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: #BA7517; margin: 0 0 0.3rem !important;
+  }
+  .dt-panel h2 { font-size: clamp(1.6rem, 1.3rem + 1.4vw, 2.1rem); font-weight: 700; line-height: 1.2; margin: 0 0 0.6rem; }
+  .dt-panel h2 .dt-k { font-size: 1.05rem; color: #a89f8c; }
+  .dt h3 {
+    font-size: 1.05rem; font-weight: 700; letter-spacing: 0.06em; color: #d8b06a;
+    margin: 2rem 0 0.7rem; padding-bottom: 0.35rem; border-bottom: 1px solid rgba(186,117,23,0.3);
+  }
+
+  /* How it grew — a gold rule with a dot at each step. */
+  .dt-time { list-style: none; padding: 0; margin: 0.6rem 0 0.8rem 0.3rem; border-left: 2px solid #BA7517; }
+  .dt-time li { position: relative; padding: 0 0 1.1rem 1.3rem; }
+  .dt-time li:last-child { padding-bottom: 0.2rem; }
+  .dt-time li::before {
+    content: ""; position: absolute; left: -7px; top: 0.6em; width: 12px; height: 12px;
+    border-radius: 50%; background: #BA7517; box-shadow: 0 0 0 3px #0e0d0b;
+  }
+  .dt-when {
+    display: block; font-family: var(--font-display); font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517;
+  }
+  .dt-who { font-weight: 700; color: #e8e2d4; }
+
+  .dt-built { list-style: disc; padding-left: 1.3rem; margin: 0 0 1.4rem; }
+  .dt-built li { margin: 0 0 0.6rem; }
+  .dt-built li::marker, .dt-closing li::marker { color: #BA7517; }
+  .dt-more { font-style: italic; margin-top: 1.4rem !important; }
+
+  .dt-closing { margin-top: 2.8rem; padding-top: 0.2rem; }
+  .dt-closing h2 {
+    font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.65rem); font-weight: 700; line-height: 1.25;
+    margin: 0 0 1rem; padding-bottom: 0.45rem; border-bottom: 1px solid rgba(186,117,23,0.55);
+  }
+  .dt-closing ul { list-style: disc; padding-left: 1.3rem; margin: 0; }
+  .dt-closing li { margin: 0 0 0.5rem; }
+
+  .dt [hidden] { display: none !important; }
+
+  @media (max-width: 520px) {
+    .dt-tabs button { padding: 0.4rem 0.7rem; }
+  }
+</style>
