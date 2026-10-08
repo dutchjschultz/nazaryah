@@ -1,8 +1,11 @@
-// borrowed-words-page 1007 V1.js
-// First build: full word page — intro, 59 words under 13 doctrines, future-study words, failed claims
+// borrowed-words-page 1008 V2.js
+// Search, filters (doctrine + source), collapsed entries; story links live for the Immortal Soul words only
+// V1: First build: full word page — intro, 60 words under 13 doctrines, future-study words, failed claims
 //
 // SAVE AS: src/data/borrowed-words-page.js
 // Each word's id matches the dropdown links (WORD_PAGE_PATH#id). aliases are extra anchor ids on the same entry.
+
+export const sourceTypes = ["Gods & myths","Temples & cults","Philosophers","Emperors & state","Later teachers & translators"];
 
 export const pageTitle = "Words Your Bible Borrowed";
 export const pageSubtitle = "The Greek words that came into the New Testament carrying their gods with them";
@@ -31,7 +34,12 @@ export const doctrines = [
         "hebrew": "The Name, Yahuah (H3068), replaced about 6,800 times; and adon (H113), master. Hosea 2:16 forbids “Baali,” my lord.",
         "fed": "The loss of the Name, and a Father and Son both called “Lord” until the reader cannot tell them apart.",
         "bridge": "Matthew 22:44 quotes Psalm 110:1 — the Greek kurios stands where the Hebrew has the Name.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": []
       },
       {
         "id": "theos",
@@ -42,7 +50,12 @@ export const doctrines = [
         "hebrew": "Elohim (H430), a title of rank and authority, used even of Moses and the judges (Exodus 7:1; Psalm 82:6).",
         "fed": "A word of divine nature in place of a word of authority given by Yahuah.",
         "bridge": "Matthew 22:32 quotes Exodus 3:6 — theos for Elohim.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       },
       {
         "id": "soter",
@@ -53,7 +66,13 @@ export const doctrines = [
         "hebrew": "Yasha (H3467): “beside me there is no saviour” (Isaiah 43:11).",
         "fed": "The title of god-kings moved to the Son, and the name that declares “Yahuah saves” lost its meaning.",
         "bridge": "The Septuagint of Habakkuk 3:18 puts sōtēr for yesha, “the Elohim of my salvation.”",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths",
+          "Emperors & state"
+        ],
+        "story": []
       },
       {
         "id": "pantokrator",
@@ -64,7 +83,12 @@ export const doctrines = [
         "hebrew": "Tsebaoth (H6635), hosts. The Septuagint turned “Yahuah of hosts” into “Lord Almighty,” removing the Name and the hosts together.",
         "fed": "The Name dropped from its most common title, and a throne-image of the Son built on the word.",
         "bridge": "2 Corinthians 6:18 draws on 2 Samuel 7:8 — “Lord Almighty” where the Hebrew has “Yahuah of hosts.”",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
       },
       {
         "id": "hypsistos",
@@ -75,7 +99,12 @@ export const doctrines = [
         "hebrew": "Elyon (H5945), the Most High, always joined to Yahuah in the Torah (Genesis 14:22).",
         "fed": "A title the pagan world shared, drawn away from the Name it was joined to.",
         "bridge": "The Septuagint of Genesis 14:18 puts hypsistos for Elyon.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       }
     ]
   },
@@ -95,7 +124,12 @@ export const doctrines = [
         "hebrew": "Chen (H2580), favor found by walking in Yahuah’s way (Genesis 6:8; Exodus 33:13).",
         "fed": "A gift that sets the Law aside.",
         "bridge": "The Septuagint of Genesis 6:8 puts charis for chen: “Noah found grace.”",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       },
       {
         "id": "nomos",
@@ -106,7 +140,12 @@ export const doctrines = [
         "hebrew": "Torah (H8451), instruction, teaching, the way to walk — from yarah, to aim or point the way.",
         "fed": "The Torah heard as a legal code of rules and penalties rather than a Father’s instruction. “Under the law” became a curse instead of a path.",
         "bridge": "Romans 7:7 quotes Exodus 20:17 and calls it nomos — the Torah itself.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "telos",
@@ -117,7 +156,12 @@ export const doctrines = [
         "hebrew": "The aim of the Torah: righteousness. “Christ is the end of the law for righteousness” (Romans 10:4) means He is its goal.",
         "fed": "The verse read as “termination,” the most quoted proof that the Law has ended. Here the Greek meaning is right and the English reading is wrong.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "diatheke",
@@ -128,7 +172,12 @@ export const doctrines = [
         "hebrew": "Berit (H1285), covenant, a binding agreement renewed and written on the heart (Jeremiah 31:33).",
         "fed": "“Old Testament” and “New Testament” — a superseded will and a replacement, rather than one covenant renewed.",
         "bridge": "Hebrews 8:8–10 quotes Jeremiah 31:31–33 — diathēkē for berit.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": []
       },
       {
         "id": "stoicheia",
@@ -139,7 +188,13 @@ export const doctrines = [
         "hebrew": "Paul names them as the Galatians’ old pagan bondage: “how turn ye again to the weak and beggarly elements… Ye observe days, and months, and times” (Galatians 4:9–10).",
         "fed": "A verse about returning to pagan star-worship turned against the Sabbath and the feasts of Yahuah.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers",
+          "Temples & cults"
+        ],
+        "story": []
       },
       {
         "id": "metanoia",
@@ -150,7 +205,12 @@ export const doctrines = [
         "hebrew": "Shuv (H7725), to turn back — a return to the commandments (Deuteronomy 30:2; Ezekiel 18:21).",
         "fed": "Repentance reduced to a feeling of sorrow or a change of mind, with no return to the Law required.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       }
     ]
   },
@@ -173,6 +233,19 @@ export const doctrines = [
         "aliases": [
           "pneuma-delphi",
           "pneuma-stoics"
+        ],
+        "alsoIn": [
+          "immortal-soul"
+        ],
+        "sources": [
+          "Temples & cults",
+          "Philosophers"
+        ],
+        "story": [
+          {
+            "label": "Immortal Soul — the “spirit lives on” fallback",
+            "href": "/doctrines/the-departure/immortal-soul"
+          }
         ]
       },
       {
@@ -184,7 +257,12 @@ export const doctrines = [
         "hebrew": "The Torah forbids divination outright (Deuteronomy 18:10).",
         "fed": "The New Testament itself names Delphi as the source of ecstatic spirit-speech.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
       },
       {
         "id": "prophetes",
@@ -195,7 +273,12 @@ export const doctrines = [
         "hebrew": "Navi (H5030), who speaks plain words from Yahuah and is tested by Deuteronomy 13 and 18.",
         "fed": "Tongues followed by interpretation, and “prophetic words” never tested by the Torah.",
         "bridge": "Acts 3:22 quotes Deuteronomy 18:15 — prophētēs for navi.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
       },
       {
         "id": "ekstasis",
@@ -206,7 +289,12 @@ export const doctrines = [
         "hebrew": "Hebrew visions came to men fully awake and speaking with Yahuah (Numbers 12:6–8).",
         "fed": "Loss of self-control treated as proof of the Spirit.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
       },
       {
         "id": "charisma",
@@ -217,7 +305,12 @@ export const doctrines = [
         "hebrew": "Gifts given by Yahuah for building up the assembly in order (1 Corinthians 14:33, 40).",
         "fed": "The “charismatic” movement — gifts defined by sensation rather than by edification and order.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       }
     ]
   },
@@ -237,7 +330,12 @@ export const doctrines = [
         "hebrew": "Sheol (H7585), the silent grave: “the dead know not any thing” (Ecclesiastes 9:5, 10).",
         "fed": "Conscious torment from the moment of death.",
         "bridge": "Acts 2:27 quotes Psalm 16:10 — Hadēs where the psalm has Sheol.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       },
       {
         "id": "tartaroo",
@@ -248,7 +346,12 @@ export const doctrines = [
         "hebrew": "No Hebrew counterpart; the word is purely Greek myth. The prophets say the wicked become “ashes under the soles of your feet” (Malachi 4:3).",
         "fed": "A torture pit beneath the underworld.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       },
       {
         "id": "aion",
@@ -259,7 +362,12 @@ export const doctrines = [
         "hebrew": "Olam (H5769), an age whose end lies beyond sight (Exodus 21:6; Jonah 2:6).",
         "fed": "Punishment that never stops, rather than a punishment whose result never ends.",
         "bridge": "Matthew 25:46 echoes Daniel 12:2 — aiōnios where Daniel has olam.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       },
       {
         "id": "aidios",
@@ -270,7 +378,12 @@ export const doctrines = [
         "hebrew": "Jude 6 uses it of chains that hold the fallen “unto the judgment” — chains with an end date.",
         "fed": "Added weight to endless-torment readings.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "kolasis",
@@ -281,7 +394,12 @@ export const doctrines = [
         "hebrew": "Karath (H3772), to be cut off from the people — the Torah’s penalty.",
         "fed": "“Everlasting punishment” (Matthew 25:46) read as endless suffering instead of permanent cutting off. Here the Greek meaning supports the Hebrew; the church reading departs from both.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "katachthonios",
@@ -292,7 +410,12 @@ export const doctrines = [
         "hebrew": "The grave, the dust (Genesis 3:19).",
         "fed": "A living population “under the earth” in Philippians 2:10.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       },
       {
         "id": "abyssos",
@@ -303,7 +426,12 @@ export const doctrines = [
         "hebrew": "Tehom (H8415), the deep waters of Genesis 1:2.",
         "fed": "A literal pit of fire beneath the earth.",
         "bridge": "The Septuagint of Genesis 1:2 puts abyssos for tehom.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       }
     ]
   },
@@ -323,7 +451,18 @@ export const doctrines = [
         "hebrew": "Nephesh (H5315), a living creature that can die (Genesis 2:7; Ezekiel 18:4).",
         "fed": "The immortal soul — and with it hell as endless torment, going to heaven at death, and a judgment at death before the Judgment.",
         "bridge": "Acts 2:27 quotes Psalm 16:10 — psychē where the psalm has nephesh.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths",
+          "Philosophers"
+        ],
+        "story": [
+          {
+            "label": "Immortal Soul",
+            "href": "/doctrines/the-departure/immortal-soul"
+          }
+        ]
       },
       {
         "id": "athanasia",
@@ -334,7 +473,17 @@ export const doctrines = [
         "hebrew": "Scripture gives immortality to Yahuah alone (1 Timothy 6:16), and to men only at the resurrection (1 Corinthians 15:53).",
         "fed": "Man given the defining mark of a Greek god.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": [
+          {
+            "label": "Immortal Soul",
+            "href": "/doctrines/the-departure/immortal-soul"
+          }
+        ]
       },
       {
         "id": "daimonion",
@@ -345,7 +494,17 @@ export const doctrines = [
         "hebrew": "Shedim (H7700), the false gods behind idols (Deuteronomy 32:17).",
         "fed": "Wandering spirits of the departed.",
         "bridge": "1 Corinthians 10:20 quotes Deuteronomy 32:17 — daimonia for shedim.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": [
+          {
+            "label": "Immortal Soul",
+            "href": "/doctrines/the-departure/immortal-soul"
+          }
+        ]
       },
       {
         "id": "phantasma",
@@ -356,7 +515,17 @@ export const doctrines = [
         "hebrew": "The disciples’ fear on the water (Matthew 14:26) — a Greek superstition Yahushua corrected.",
         "fed": "The belief that the dead return as visible spirits.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": [
+          {
+            "label": "Immortal Soul",
+            "href": "/doctrines/the-departure/immortal-soul"
+          }
+        ]
       }
     ]
   },
@@ -376,7 +545,12 @@ export const doctrines = [
         "hebrew": "The day of Yahuah — one day (Joel 2:31; Malachi 4:5).",
         "fed": "Dispensational teaching splits parousia from epiphaneia to create a secret rapture and a later return.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": []
       },
       {
         "id": "epiphaneia",
@@ -387,7 +561,12 @@ export const doctrines = [
         "hebrew": "The glory of Yahuah appearing, and “all flesh shall see it together” (Isaiah 40:5).",
         "fed": "Used with parousia to build two separate comings.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": []
       }
     ]
   },
@@ -407,7 +586,13 @@ export const doctrines = [
         "hebrew": "Shamayim (H8064), Yahuah’s throne; “the earth hath he given to the children of men” (Psalm 115:16).",
         "fed": "The soul flying to heaven at death.",
         "bridge": "Acts 7:49 quotes Isaiah 66:1 — ouranos for shamayim.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths",
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "paradeisos",
@@ -418,7 +603,12 @@ export const doctrines = [
         "hebrew": "Gan (H1588), the garden of Eden, restored on the earth (Revelation 2:7; 22:1–2).",
         "fed": "A heavenly waiting room for souls, built on Luke 23:43.",
         "bridge": "The Septuagint of Genesis 2:8 puts paradeisos for gan.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": []
       },
       {
         "id": "makarios",
@@ -429,7 +619,12 @@ export const doctrines = [
         "hebrew": "Ashrei (H835), “happy is the man” who walks in the Torah (Psalm 1:1).",
         "fed": "“The blessed dead” pictured as already enjoying heaven.",
         "bridge": "Romans 4:7–8 quotes Psalm 32:1–2 — makarios for ashrei.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       }
     ]
   },
@@ -449,7 +644,12 @@ export const doctrines = [
         "hebrew": "Davar (H1697), the spoken word of Yahuah: “by the word of Yahuah were the heavens made” (Psalm 33:6).",
         "fed": "A second divine person beside the Father.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "theotes",
@@ -460,7 +660,12 @@ export const doctrines = [
         "hebrew": "The fullness of Yahuah dwelling in the Son by the Father’s pleasure (Colossians 1:19).",
         "fed": "“Godhead” as a shared divine substance in three persons (Colossians 2:9).",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "ousia",
@@ -471,7 +676,12 @@ export const doctrines = [
         "hebrew": "Never used of Yahuah anywhere in Scripture.",
         "fed": "Homoousios, “of one substance,” the key word of the Nicene Creed (325).",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "hypostasis",
@@ -482,7 +692,12 @@ export const doctrines = [
         "hebrew": "“The express image of his person” (Hebrews 1:3) — the Son as the exact likeness of the Father. “Hear, O Israel: Yahuah our Elohim is one Yahuah” (Deuteronomy 6:4).",
         "fed": "Three hypostases in one God, the formula of the Council of Constantinople (381).",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "physis",
@@ -493,7 +708,12 @@ export const doctrines = [
         "hebrew": "“Partakers of the divine nature” (2 Peter 1:4) — said of believers, and no one calls them God.",
         "fed": "The “two natures” of Chalcedon (451).",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "monogenes",
@@ -504,7 +724,12 @@ export const doctrines = [
         "hebrew": "Yachid (H3173), only, unique — Isaac, Abraham’s only son (Genesis 22:2), born in time.",
         "fed": "“Eternally begotten of the Father before all ages” (Nicene Creed).",
         "bridge": "Hebrews 11:17 calls Isaac monogenēs, drawing on Genesis 22:2 — yachid.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "morphe",
@@ -515,7 +740,12 @@ export const doctrines = [
         "hebrew": "“Who, being in the form of God” (Philippians 2:6) — the likeness of the image given to Adam (Genesis 1:26).",
         "fed": "Proof offered that the Son shares the divine essence.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "oikonomia-trinity",
@@ -526,7 +756,12 @@ export const doctrines = [
         "hebrew": "The stewardship of a household (Luke 16:2; Ephesians 3:2).",
         "fed": "The “economic Trinity” — and later, dispensationalism (see Rightly Divided).",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Later teachers & translators"
+        ],
+        "story": []
       },
       {
         "id": "hymnos",
@@ -537,7 +772,12 @@ export const doctrines = [
         "hebrew": "Tehillim, the Psalms, the songs Yahuah gave His people.",
         "fed": "Man-made hymns that teach the Trinity in their verses.",
         "bridge": "Hebrews 2:12 quotes Psalm 22:22 — hymneō for halal, “praise.”",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
       }
     ]
   },
@@ -557,7 +797,12 @@ export const doctrines = [
         "hebrew": "Qadosh (H6918), set apart by obedience, tied directly to clean food (Leviticus 11:44; 20:25–26).",
         "fed": "Holiness as a rank (canonized saints) or a feeling (a “position in Christ”), with nothing required of the plate.",
         "bridge": "1 Peter 1:16 quotes Leviticus 11:44 — hagios for qadosh, the verse that closes the food laws.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
       },
       {
         "id": "teleios",
@@ -568,7 +813,12 @@ export const doctrines = [
         "hebrew": "Tamim (H8549), whole, upright — “walk before me, and be thou perfect” (Genesis 17:1).",
         "fed": "Perfection as a second experience — the Holiness movement’s “entire sanctification” — rather than a whole-hearted walk.",
         "bridge": "Matthew 5:48 draws on Deuteronomy 18:13 — teleios for tamim.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
       }
     ]
   },
@@ -588,7 +838,12 @@ export const doctrines = [
         "hebrew": "Moed (H4150), an appointed meeting: “these are my feasts” (Leviticus 23:2).",
         "fed": "The appointed feasts heard as “seasons” or “opportunities” rather than set meetings with Yahuah.",
         "bridge": "The Septuagint of Genesis 1:14 puts kairoi for moadim.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       },
       {
         "id": "kyriakos",
@@ -599,7 +854,12 @@ export const doctrines = [
         "hebrew": "The Sabbath, which Yahuah calls “my holy day” (Isaiah 58:13).",
         "fed": "“The Lord’s day” (Revelation 1:10) claimed as Sunday.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": []
       },
       {
         "id": "heorte",
@@ -610,7 +870,12 @@ export const doctrines = [
         "hebrew": "Chag (H2282) and moed, feasts commanded and dated in Leviticus 23.",
         "fed": "Church “holy days” treated as interchangeable with the feasts of Yahuah.",
         "bridge": "The Septuagint of Leviticus 23 puts heortē for chag.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
       },
       {
         "id": "pascha",
@@ -621,7 +886,13 @@ export const doctrines = [
         "hebrew": "Pesach (H6453): “it is Yahuah’s passover” (Exodus 12:11).",
         "fed": "The Pesach replaced by a goddess’s festival, its date set apart from the Hebrew reckoning at Nicaea (325).",
         "bridge": "1 Corinthians 5:7 — “Messiah our passover (pascha)” — pascha is Pesach.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths",
+          "Later teachers & translators"
+        ],
+        "story": []
       },
       {
         "id": "pentekoste",
@@ -632,7 +903,12 @@ export const doctrines = [
         "hebrew": "Shavuot — seven Sabbaths complete, then fifty days, falling in summer (Leviticus 23:15–16).",
         "fed": "A feast detached from its count and moved to late spring.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Later teachers & translators"
+        ],
+        "story": []
       }
     ]
   },
@@ -652,7 +928,12 @@ export const doctrines = [
         "hebrew": "Emunah (H530), steadfastness proven by conduct — Moses’ hands “steady” (Exodus 17:12).",
         "fed": "Mental agreement that saves without a walk.",
         "bridge": "Romans 1:17 quotes Habakkuk 2:4 — pistis for emunah.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       },
       {
         "id": "euangelion",
@@ -663,7 +944,12 @@ export const doctrines = [
         "hebrew": "Besorah (H1309), the reign of Yahuah: “Thy God reigneth!” (Isaiah 52:7).",
         "fed": "A birth announcement with no kingdom and no Law.",
         "bridge": "Romans 10:15 quotes Isaiah 52:7 — euangelizō for basar.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": []
       },
       {
         "id": "mysterion",
@@ -674,7 +960,12 @@ export const doctrines = [
         "hebrew": "Sod (H5475), the plan now revealed: “he revealeth his secret unto his servants the prophets” (Amos 3:7).",
         "fed": "Sacraments that dispense favor, and doctrines placed beyond question as “a mystery.”",
         "bridge": "The Septuagint of Daniel 2:18–19 puts mystērion for raz.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
       },
       {
         "id": "eucharistia",
@@ -685,7 +976,12 @@ export const doctrines = [
         "hebrew": "The blessing over bread and cup at the table: “this do in remembrance of me” (Luke 22:19).",
         "fed": "The Eucharist — favor received through a rite.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
       },
       {
         "id": "palingenesia",
@@ -696,7 +992,12 @@ export const doctrines = [
         "hebrew": "The restoration of all things at the return (Matthew 19:28; Acts 3:21).",
         "fed": "Instant “regeneration” at baptism or at a prayer (Titus 3:5).",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       },
       {
         "id": "nike",
@@ -707,7 +1008,12 @@ export const doctrines = [
         "hebrew": "Netsach (H5331), endurance for ever: “He will swallow up death for ever” (Isaiah 25:8).",
         "fed": "A finished triumph that asks no endurance of the believer.",
         "bridge": "1 Corinthians 15:54 quotes Isaiah 25:8 — nikos for netsach.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
       }
     ]
   },
@@ -727,7 +1033,12 @@ export const doctrines = [
         "hebrew": "Qahal (H6951), the assembly of Israel — “the church in the wilderness” (Acts 7:38).",
         "fed": "A “church” separate from Israel, with its own age and its own rules.",
         "bridge": "Hebrews 2:12 quotes Psalm 22:22 — ekklēsia for qahal.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": []
       },
       {
         "id": "oikonomia",
@@ -738,7 +1049,12 @@ export const doctrines = [
         "hebrew": "Stewardship: “a dispensation of the gospel is committed unto me” (1 Corinthians 9:17).",
         "fed": "Darby’s seven dispensations, each with different terms of salvation (Ephesians 1:10; 3:2).",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Later teachers & translators"
+        ],
+        "story": []
       },
       {
         "id": "orthotomeo",
@@ -749,7 +1065,12 @@ export const doctrines = [
         "hebrew": "The Septuagint uses it for “he shall direct thy paths” (Proverbs 3:6).",
         "fed": "2 Timothy 2:15 read as “divide the Bible into separate ages” instead of “cut a straight path through the word.” The Greek here is plain; the English rendering made the doctrine.",
         "bridge": null,
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Later teachers & translators"
+        ],
+        "story": []
       }
     ]
   },
@@ -769,7 +1090,13 @@ export const doctrines = [
         "hebrew": "Tsedaqah (H6666), righteousness done: “it shall be our righteousness, if we observe to do all these commandments” (Deuteronomy 6:25).",
         "fed": "A legal verdict transferred onto a record, rather than righteousness walked out.",
         "bridge": "Romans 4:3 quotes Genesis 15:6 — dikaiosynē for tsedaqah.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Gods & myths",
+          "Emperors & state"
+        ],
+        "story": []
       },
       {
         "id": "logizomai",
@@ -780,7 +1107,12 @@ export const doctrines = [
         "hebrew": "Chashav (H2803): Abraham believed, “and he counted it to him for righteousness” (Genesis 15:6) — belief proven by obedience (Genesis 26:5).",
         "fed": "“Imputed righteousness” — a swapped record that leaves the life untouched.",
         "bridge": "Romans 4:3 quotes Genesis 15:6 — logizomai for chashav.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": []
       },
       {
         "id": "hilasmos",
@@ -791,7 +1123,12 @@ export const doctrines = [
         "hebrew": "Kaphar (H3722), to cover; kapporet, the mercy seat Yahuah Himself provided (Exodus 25:22).",
         "fed": "The Son appeasing an angry Father — a Greek picture in place of Yahuah providing the covering Himself.",
         "bridge": "Hebrews 9:5 uses hilastērion for the mercy seat, the kapporet.",
-        "aliases": []
+        "aliases": [],
+        "alsoIn": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
       }
     ]
   }

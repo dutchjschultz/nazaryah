@@ -1,5 +1,13 @@
 ---
-// borrowed-words-page 1007 V2.astro — src/pages/doctrines/borrowed-words.astro
+// borrowed-words-page 1008 V3.astro — src/pages/doctrines/borrowed-words.astro
+// V3: Short, searchable list. Search box + two filter rows (By doctrine, By
+// source) that work together, live "Showing N of 60 words" count, empty doctrine
+// sections hide. Each word is a collapsed <details> line (Greek, KJV, source
+// tags); "Read how this became a doctrine →" inside where a story exists.
+// alsoIn words (Pneuma) also show under that doctrine's filter. Future Studies
+// and Failed Claims collapse. A hash link (#psyche, #pneuma-stoics alias) opens
+// the word and scrolls to it. Search ignores diacritics (psyche finds Psychē).
+// The jump row is retired (the doctrine filter replaces it).
 // V2: wrapped in BaseLayout and set on the doctrine pages' fixed dark ground
 // (#0e0d0b, #BA7517 gold, #e8e2d4 headings) so it reads as their third page.
 // Every colour is set here; the V1 fallbacks would not read on that ground.
@@ -11,8 +19,13 @@
 // link here as WORD_PAGE_PATH#<id>. Content: src/data/borrowed-words-page.js.
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
-  pageTitle, pageSubtitle, intro, doctrines, futureStudies, failedClaims
+  pageTitle, pageSubtitle, intro, doctrines, futureStudies, failedClaims, sourceTypes
 } from "../../data/borrowed-words-page.js";
+
+const total = doctrines.reduce((n, d) => n + d.words.length, 0);
+const titleOf = (slug) => doctrines.find(x => x.departureSlug === slug)?.title;
+// Lower-case, diacritics stripped, so "psyche" matches "Psychē".
+const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 ---
 <BaseLayout
   title={`${pageTitle} | Nazaryah`}
@@ -35,47 +48,132 @@ import {
     {intro.map(p => <p>{p}</p>)}
   </section>
 
-  <nav class="bwp-jump" aria-label="Jump to a doctrine">
-    {doctrines.map(d => <a href={`#d-${d.departureSlug}`}>{`${d.num} ${d.title}`}</a>)}
-  </nav>
+  <section class="bwp-tools" aria-label="Find a word">
+    <input id="bwp-search" type="search" placeholder="Search a word, a god, a philosopher, a verse…" autocomplete="off" aria-label="Search the words" />
+    <p class="bwp-row-label">By doctrine</p>
+    <div class="bwp-chips" data-group="doctrine">
+      <button type="button" class="on" data-value="" aria-pressed="true">All</button>
+      {doctrines.map(d => <button type="button" data-value={d.departureSlug} aria-pressed="false">{d.title}</button>)}
+    </div>
+    <p class="bwp-row-label">By source</p>
+    <div class="bwp-chips" data-group="source">
+      <button type="button" class="on" data-value="" aria-pressed="true">All</button>
+      {sourceTypes.map(s => <button type="button" data-value={s} aria-pressed="false">{s}</button>)}
+    </div>
+    <p class="bwp-shown" id="bwp-count" aria-live="polite">Showing {total} of {total} words</p>
+  </section>
 
   {doctrines.map(d => (
-    <section class="bwp-doctrine" id={`d-${d.departureSlug}`}>
-      <h2><span class="bwp-num">{d.num}</span>{" "}{d.title}{" "}<span class="bwp-count">({d.words.length} {d.words.length === 1 ? "word" : "words"})</span></h2>
+    <section class="bwp-doctrine" id={`d-${d.departureSlug}`} data-doctrine={d.departureSlug}>
+      <h2><span class="bwp-num">{d.num}</span>{" "}{d.title}</h2>
       <p class="bwp-doclinks">
         <a href={`/doctrines/the-departure/${d.departureSlug}`}>The Departure</a>{" · "}<a href={`/doctrines/old-paths/${d.oldPathsSlug}`}>The Old Paths</a>
       </p>
 
       {d.words.map(w => (
-        <article class="bwp-word" id={w.id}>
-          {w.aliases.map(a => <span id={a} class="bwp-anchor"></span>)}
-          <h3>{w.greek}{" "}<span class="bwp-strongs">{w.strongs}</span>
-            <span class="bwp-kjv">KJV: “{w.kjv}”</span></h3>
-          <p><span class="bwp-label">Pagan source.</span>{" "}{w.source}</p>
-          <p><span class="bwp-label">Hebrew beneath.</span>{" "}{w.hebrew}</p>
-          <p><span class="bwp-label">What it fed.</span>{" "}{w.fed}</p>
-          {w.bridge && <p class="bwp-bridge"><span class="bwp-label">The bridge.</span>{" "}{w.bridge}</p>}
-        </article>
+        <details class="bwp-word" id={w.id}
+          data-aliases={w.aliases.join(" ")}
+          data-doctrine={[d.departureSlug, ...w.alsoIn].join(" ")}
+          data-sources={w.sources.join("|")}
+          data-search={fold([w.id, w.greek, w.kjv, w.strongs, w.source, w.hebrew, w.fed, w.bridge || "", w.sources.join(" ")].join(" "))}>
+          <summary>
+            <span class="bwp-name">{w.greek}</span>
+            <span class="bwp-kjv">“{w.kjv}”</span>
+            <span class="bwp-tags">{w.sources.join(" · ")}</span>
+            {w.alsoIn.length > 0 && <span class="bwp-also">also under {w.alsoIn.map(titleOf).join(", ")}</span>}
+          </summary>
+          <div class="bwp-body">
+            <p class="bwp-strongs">{w.strongs}</p>
+            <p><span class="bwp-label">Pagan source.</span>{" "}{w.source}</p>
+            <p><span class="bwp-label">Hebrew beneath.</span>{" "}{w.hebrew}</p>
+            <p><span class="bwp-label">What it fed.</span>{" "}{w.fed}</p>
+            {w.bridge && <p class="bwp-bridge"><span class="bwp-label">The bridge.</span>{" "}{w.bridge}</p>}
+            {w.story.map(s => <p class="bwp-story"><a href={s.href}>Read how this became a doctrine: {s.label} →</a></p>)}
+          </div>
+        </details>
       ))}
 
       {d.note && <p class="bwp-note">{d.note}</p>}
     </section>
   ))}
 
-  <section class="bwp-more" id="future-studies">
-    <h2>For Future Studies</h2>
+  <p class="bwp-none" id="bwp-none" hidden>No words match. Clear the search or choose “All.”</p>
+
+  <details class="bwp-more" id="future-studies">
+    <summary><h2>For Future Studies</h2></summary>
     <p>These words carry real pagan or philosophical freight but bear on subjects outside the thirteen doctrines.</p>
     <ul>{futureStudies.map(f => <li><strong>{f.word}.</strong>{" "}{f.note}</li>)}</ul>
-  </section>
+  </details>
 
-  <section class="bwp-more" id="failed-claims">
-    <h2>Claims That Failed the Test</h2>
+  <details class="bwp-more" id="failed-claims">
+    <summary><h2>Claims That Failed the Test</h2></summary>
     <p>These popular claims circulate widely but cannot be supported from the history of the words. Using them weakens the true findings above.</p>
     <ul>{failedClaims.map(f => <li><strong>{f.claim}</strong>{" "}{f.answer}</li>)}</ul>
-  </section>
+  </details>
 </main>
 </div>
 </BaseLayout>
+
+<script>
+  const words = [...document.querySelectorAll<HTMLDetailsElement>(".bwp-word")];
+  const sections = [...document.querySelectorAll<HTMLElement>(".bwp-doctrine")];
+  const search = document.getElementById("bwp-search") as HTMLInputElement;
+  const count = document.getElementById("bwp-count")!;
+  const none = document.getElementById("bwp-none")!;
+  const state: Record<string, string> = { doctrine: "", source: "", q: "" };
+  const fold = (s: string) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
+
+  function apply() {
+    let shown = 0;
+    for (const w of words) {
+      const ok = (!state.doctrine || w.dataset.doctrine!.split(" ").includes(state.doctrine))
+        && (!state.source || w.dataset.sources!.split("|").includes(state.source))
+        && (!state.q || w.dataset.search!.includes(state.q));
+      w.hidden = !ok;
+      if (ok) shown++;
+    }
+    for (const s of sections) s.hidden = !s.querySelector(".bwp-word:not([hidden])");
+    count.textContent = `Showing ${shown} of ${words.length} words`;
+    none.hidden = shown !== 0;
+  }
+
+  function choose(group: HTMLElement, b: HTMLButtonElement) {
+    group.querySelectorAll("button").forEach(x => {
+      x.classList.toggle("on", x === b);
+      x.setAttribute("aria-pressed", String(x === b));
+    });
+    state[group.dataset.group!] = b.dataset.value!;
+  }
+
+  document.querySelectorAll<HTMLElement>(".bwp-chips").forEach(group => {
+    group.addEventListener("click", e => {
+      const b = (e.target as HTMLElement).closest("button"); if (!b) return;
+      choose(group, b);
+      apply();
+    });
+  });
+  search.addEventListener("input", () => { state.q = fold(search.value.trim()); apply(); });
+
+  // Open the word named in the link (#psyche, #pneuma-stoics, …). If filters
+  // are hiding it, clear them first so the link always lands.
+  function openFromHash(behavior: ScrollBehavior = "smooth") {
+    const id = decodeURIComponent(location.hash.slice(1));
+    if (!id) return;
+    const w = words.find(x => x.id === id)
+      || words.find(x => x.dataset.aliases!.split(" ").includes(id));
+    if (!w) return;
+    if (w.hidden) {
+      document.querySelectorAll<HTMLElement>(".bwp-chips").forEach(g => choose(g, g.querySelector("button")!));
+      search.value = ""; state.q = "";
+      apply();
+    }
+    w.open = true;
+    w.scrollIntoView({ block: "start", behavior });
+  }
+  window.addEventListener("hashchange", () => openFromHash());
+  // On arrival, jump straight there (smooth scroll over 60 lines lags).
+  openFromHash("instant");
+</script>
 
 <style>
   /* Doctrine-page palette (DoctrineGrid / DoctrineCard): ground #0e0d0b, gold
@@ -83,7 +181,7 @@ import {
      Italic runs in the body serif; --font-display (Cinzel) is caps-only. */
   .bwp-page { background: #0e0d0b; min-height: 100vh; padding: 3.5rem 1.25rem 4rem; }
   .bwp { max-width: 46rem; margin: 0 auto; font-family: var(--font-body); font-size: 1.08rem; line-height: 1.7; color: #cfc6b3; overflow-wrap: anywhere; }
-  .bwp h1, .bwp h2, .bwp h3 { font-family: var(--font-display); color: #e8e2d4; font-weight: 600; letter-spacing: 0.02em; }
+  .bwp h1, .bwp h2 { font-family: var(--font-display); color: #e8e2d4; font-weight: 600; letter-spacing: 0.02em; }
   .bwp a { color: #d8b06a; text-decoration: none; }
   .bwp a:hover { color: #e8c98a; text-decoration: underline; text-underline-offset: 3px; }
 
@@ -96,38 +194,69 @@ import {
 
   .bwp-intro p { margin: 0 0 1rem; }
 
-  .bwp-jump {
-    display: flex; flex-wrap: wrap; gap: 0.45rem 1.1rem; margin: 2rem 0 3rem; padding: 1rem 1.2rem;
+  /* Search + filters */
+  .bwp-tools {
+    margin: 2rem 0 3rem; padding: 1.1rem 1.2rem 1rem;
     border: 1px solid rgba(186,117,23,0.3); border-left: 3px solid #BA7517; border-radius: 8px; background: #161512;
-    font-size: 0.98rem;
   }
+  #bwp-search {
+    width: 100%; box-sizing: border-box; padding: 0.6rem 0.8rem; font: inherit; font-size: 1rem;
+    border: 1px solid rgba(186,117,23,0.55); border-radius: 6px; background: #0e0d0b; color: #e8e2d4;
+  }
+  #bwp-search::placeholder { color: #8f8672; font-style: italic; }
+  #bwp-search:focus { outline: none; border-color: #d8b06a; box-shadow: 0 0 0 2px rgba(216,176,106,0.25); }
+  .bwp-row-label { font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase; color: #BA7517; margin: 1rem 0 0.45rem; }
+  .bwp-chips { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .bwp-chips button {
+    font-family: var(--font-body); font-size: 0.92rem; line-height: 1.3; padding: 0.25rem 0.75rem;
+    border: 1px solid rgba(186,117,23,0.55); border-radius: 999px; background: transparent; color: #cfc6b3; cursor: pointer;
+  }
+  .bwp-chips button:hover { border-color: #d8b06a; color: #e8e2d4; }
+  .bwp-chips button.on { background: #BA7517; border-color: #BA7517; color: #0e0d0b; font-weight: 600; }
+  .bwp-shown { font-size: 0.92rem; font-style: italic; color: #a89f8c; margin: 0.9rem 0 0; }
 
-  .bwp-doctrine { margin: 0 0 3.25rem; scroll-margin-top: 9rem; }
+  .bwp-doctrine { margin: 0 0 3rem; scroll-margin-top: 9rem; }
   .bwp-doctrine h2 { font-size: 1.35rem; line-height: 1.35; border-bottom: 1px solid rgba(186,117,23,0.55); padding-bottom: 0.4rem; margin: 0 0 0.4rem; }
   .bwp-num { color: #BA7517; }
-  .bwp-count { font-family: var(--font-body); font-size: 0.95rem; font-weight: 400; letter-spacing: 0; color: #a89f8c; white-space: nowrap; }
-  .bwp-doclinks { font-size: 0.95rem; margin: 0 0 1.4rem; color: #8f8672; }
+  .bwp-doclinks { font-size: 0.95rem; margin: 0 0 0.6rem; color: #8f8672; }
 
-  .bwp-word { margin: 0 0 1.75rem; scroll-margin-top: 9rem; }
-  .bwp-word h3 { margin: 0 0 0.4rem; font-size: 1.2rem; line-height: 1.35; }
-  .bwp-strongs { font-family: var(--font-body); font-size: 0.85rem; font-weight: 400; letter-spacing: 0; color: #8f8672; margin-left: 0.2em; }
-  .bwp-kjv { display: block; font-family: var(--font-body); font-size: 1rem; font-style: italic; font-weight: 400; letter-spacing: 0; color: #a89f8c; margin-top: 0.15rem; }
-  .bwp-word p { margin: 0 0 0.4rem; }
+  /* Collapsed word lines */
+  .bwp-word { border-bottom: 1px solid rgba(186,117,23,0.2); scroll-margin-top: 9rem; }
+  .bwp-word > summary { cursor: pointer; list-style: none; padding: 0.6rem 0; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.15rem 0.75rem; }
+  .bwp-word > summary::-webkit-details-marker { display: none; }
+  .bwp-word > summary::before { content: "▸"; color: #BA7517; width: 0.8em; }
+  .bwp-word[open] > summary::before { content: "▾"; }
+  .bwp-word > summary:hover .bwp-name { color: #d8b06a; }
+  .bwp-name { font-family: var(--font-display); font-size: 1.1rem; font-weight: 600; letter-spacing: 0.02em; color: #e8e2d4; }
+  .bwp-kjv { font-style: italic; color: #a89f8c; }
+  .bwp-tags { margin-left: auto; font-size: 0.8rem; color: #8f8672; text-align: right; }
+  .bwp-also { flex-basis: 100%; font-size: 0.85rem; font-style: italic; color: #a89f8c; padding-left: 1.55em; }
+  .bwp-body { padding: 0 0 1rem 1.55em; }
+  .bwp-body p { margin: 0 0 0.4rem; }
+  .bwp-strongs { font-size: 0.85rem; color: #8f8672; }
   .bwp-label { font-weight: 600; color: #d8b06a; }
   .bwp-bridge { font-size: 0.98rem; color: #b8af9c; }
-  /* Alias anchors (pneuma-delphi, pneuma-stoics) land on the entry heading. */
-  .bwp-anchor { display: block; height: 0; scroll-margin-top: 9rem; }
-  .bwp-note { font-style: italic; color: #a89f8c; border-left: 2px solid rgba(186,117,23,0.4); padding-left: 0.9rem; }
+  .bwp-story { margin-top: 0.6rem !important; font-style: italic; }
+  .bwp-note { font-style: italic; color: #a89f8c; border-left: 2px solid rgba(186,117,23,0.4); padding-left: 0.9rem; margin-top: 1rem; }
+  .bwp-none { font-style: italic; color: #a89f8c; text-align: center; margin: 0 0 3rem; }
 
-  .bwp-more { margin-top: 3.5rem; scroll-margin-top: 9rem; }
-  .bwp-more h2 { font-size: 1.3rem; border-bottom: 1px solid rgba(186,117,23,0.55); padding-bottom: 0.4rem; margin: 0 0 0.8rem; }
+  /* Collapsed back matter */
+  .bwp-more { margin-top: 2rem; scroll-margin-top: 9rem; }
+  .bwp-more > summary { cursor: pointer; list-style: none; border-bottom: 1px solid rgba(186,117,23,0.55); padding-bottom: 0.4rem; margin: 0 0 0.8rem; }
+  .bwp-more > summary::-webkit-details-marker { display: none; }
+  .bwp-more > summary::before { content: "▸"; color: #BA7517; margin-right: 0.5em; }
+  .bwp-more[open] > summary::before { content: "▾"; }
+  .bwp-more > summary h2 { display: inline; font-size: 1.3rem; margin: 0; }
   .bwp-more ul { padding-left: 1.2rem; margin: 0; }
   .bwp-more li { margin-bottom: 0.5rem; }
   .bwp-more li::marker { color: #BA7517; }
   .bwp-more strong { color: #e8e2d4; }
 
+  .bwp [hidden] { display: none !important; }
+
   @media (max-width: 500px) {
     .bwp-page { padding: 2.5rem 1rem 3rem; }
-    .bwp-jump { padding: 0.9rem 1rem; }
+    .bwp-tools { padding: 0.9rem 1rem; }
+    .bwp-tags { margin-left: 1.55em; flex-basis: 100%; text-align: left; }
   }
 </style>
