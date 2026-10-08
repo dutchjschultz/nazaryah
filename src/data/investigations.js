@@ -1,4 +1,10 @@
-// investigations 0929 V7.js
+// investigations 1008 V8.js
+// V8: Spoken in Hebrew joins the file — the second 'columns' case, six witnesses
+// (three a side). New optional field `orderNote`: the small line under the
+// columns. It was hard-coded "Numbered in sermon order", true only of The
+// Mountain Message, which keeps that wording as the default. Witness blurbs are
+// the hub's own one-line descriptions of its six witnesses; the nucleus blurb is
+// the hub's claim paragraph.
 // V7: new field `shortTitle` on every investigation — the name printed as the
 // gold label on the study card of every piece in the case (hub and witnesses),
 // in place of the study's own topic category. Read through cardLabelOf() in
@@ -47,6 +53,8 @@
 //   question    the claim, shown in the caption when nothing is hovered
 //   soon        true = listed in nav and index with a Coming Soon pill, page not built
 //   layout      'orbit' (default) or 'columns' — see THE TWO SHAPES below
+//   orderNote   optional, 'columns' only: the small line under the columns.
+//               Absent = "Numbered in sermon order · read in any order".
 //   enterLabel  the index card's link words. Not decoration: it names the shape
 //               the reader is about to walk into, so it moves with `layout`.
 //               A record without one falls back to "Enter the orbit".
@@ -320,6 +328,86 @@ export const INVESTIGATIONS = [
         status: 'live',
         href: '/blog/i-never-knew-you',
         blurb: 'The verdict is lawlessness, and every man rejected is inside the assembly.',
+      },
+    ],
+  },
+  {
+    slug: 'spoken-in-hebrew',
+    title: 'Spoken in Hebrew',
+    shortTitle: 'Spoken in Hebrew',
+    deck: 'The message beneath the Greek — and what the Greek carried in',
+    // Six witnesses: the columns shape, three a side.
+    layout: 'columns',
+    enterLabel: 'Enter the case',
+    orderNote: 'Numbered as the hub lists them · read in any order',
+    teaching:
+      'The New Testament was composed in Greek, and the Greek is the source: when a hard question comes up, the answer begins, “The Greek says…”',
+    question:
+      'Was the message of Yahushua first spoken in Greek, or in Hebrew — and what did the Greek carry in? Six witnesses answer.',
+    soon: false,
+    nucleus: {
+      label: 'The Nucleus',
+      title: 'Spoken in Hebrew',
+      href: '/blog/spoken-in-hebrew',
+      blurb:
+        'The message of Yahushua was spoken in Hebrew, by Hebrews, to Hebrews, out of the Hebrew Scriptures — and, by the testimony of the earliest writers, at least part of it was first written in Hebrew. The Greek is a faithful carrier in many places, but it is a carrier.',
+    },
+    // The hub's order. One through three take the left column, four through six
+    // the right. `anchor` is each study's own masthead epigraph reference.
+    witnesses: [
+      {
+        tag: 'Witness One · Testified',
+        name: 'The Witnesses',
+        passage: 'Acts 24:5',
+        anchor: 'Deuteronomy 19:15',
+        status: 'live',
+        href: '/blog/the-witnesses',
+        blurb: 'What the earliest writers said about a Hebrew Matthew and a Hebrew letter to the Hebrews — and the late “Hebrew” texts that are not the original.',
+      },
+      {
+        tag: 'Witness Two · Spoken',
+        name: 'The Language of Judea',
+        passage: 'Acts 26:14',
+        anchor: 'Nehemiah 13:24',
+        status: 'live',
+        href: '/blog/the-language-of-judea',
+        blurb: 'What Scripture itself records about the language spoken in Jerusalem, and the Hebrew words the Greek never translated.',
+      },
+      {
+        tag: 'Witness Three · Hidden',
+        name: 'Hebrew Beneath the Greek',
+        passage: 'Matthew 2:23',
+        anchor: 'Proverbs 25:2',
+        status: 'live',
+        href: '/blog/hebrew-beneath-the-greek',
+        blurb: 'Hebrew sentence patterns, wordplay that only works in Hebrew, and quotations that follow the Hebrew prophets.',
+      },
+      {
+        tag: 'Witness Four · Betrothed',
+        name: 'The Bride and the Bridegroom',
+        passage: 'John 14:2–3',
+        anchor: 'Hosea 2:19',
+        status: 'live',
+        href: '/blog/the-bride-and-the-bridegroom',
+        blurb: 'The marriage customs of Israel that the Greek reader could not see.',
+      },
+      {
+        tag: 'Witness Five · Worn',
+        name: 'Torah in Daily Life',
+        passage: 'Matthew 9:20',
+        anchor: 'Deuteronomy 6:6–7',
+        status: 'live',
+        href: '/blog/torah-in-daily-life',
+        blurb: 'The hem, the sandal, the kinsman redeemer, the witnesses, the feast lambs — the Torah customs woven through the Gospels.',
+      },
+      {
+        tag: 'Witness Six · Carried',
+        name: 'What the Greek Carried',
+        passage: 'Colossians 2:8',
+        anchor: 'Exodus 23:13',
+        status: 'live',
+        href: '/blog/what-the-greek-carried',
+        blurb: 'The Greek words that came into the New Testament already loaded with the meanings of the gods and the philosophers, and the full list on the page Words Your Bible Borrowed.',
       },
     ],
   },

@@ -1,4 +1,6 @@
-// featured-queue 0909 V3.js
+// featured-queue 1008 V4.js
+// V4: second run — Spoken in Hebrew (seven files dated 2026-10-07): hub first,
+// three days apart, cap 2, exactly as The Mountain Message.
 // V3: added RUNS — a batch of studies with explicit debut dates and a ceiling on
 // how many of them may hold seats at once. Auto-debut assumes studies arrive a
 // few at a time; eleven sharing one date broke it. They were ordered by slug, so
@@ -90,6 +92,21 @@ export const RUNS = [
       "judge-not": "2026-10-03", // witness eight
       "strait-is-the-gate": "2026-10-06", // witness nine
       "i-never-knew-you": "2026-10-09", // witness ten
+    },
+  },
+  {
+    // SPOKEN IN HEBREW (added 1008). Seven files share 2026-10-07; hub first,
+    // then the witnesses in the hub's order, three days apart.
+    name: "Spoken in Hebrew",
+    cap: 2,
+    debuts: {
+      "spoken-in-hebrew": "2026-10-10", // the nucleus, first
+      "the-witnesses": "2026-10-13", // witness one
+      "the-language-of-judea": "2026-10-16", // witness two
+      "hebrew-beneath-the-greek": "2026-10-19", // witness three
+      "the-bride-and-the-bridegroom": "2026-10-22", // witness four
+      "torah-in-daily-life": "2026-10-25", // witness five
+      "what-the-greek-carried": "2026-10-28", // witness six
     },
   },
 ];

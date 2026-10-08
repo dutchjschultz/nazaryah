@@ -1,5 +1,10 @@
 ---
-// src/components/ConvergingColumns.astro · 0908 V1
+// src/components/ConvergingColumns.astro · 1008 V2
+// V2: the line under the columns reads the record's `orderNote`; a record
+// without one (The Mountain Message) keeps "Numbered in sermon order · read in
+// any order" exactly. Nothing else changes; the split was already half/half,
+// so six witnesses sit three a side.
+// V1:
 //
 // The SECOND shape for an investigation. Orbit.astro is the first and is
 // untouched: a ring built for three or four witnesses, whose cards carry three
@@ -111,7 +116,7 @@ const whoFor = (w) => (w.status === 'live' ? w.tag : `${w.tag} · In progress`);
     <span data-txt-slot>{inv.question}</span>
   </p>
 
-  <p class="hint">Numbered in sermon order · read in any order</p>
+  <p class="hint">{inv.orderNote ?? 'Numbered in sermon order · read in any order'}</p>
 </div>
 
 <style>
