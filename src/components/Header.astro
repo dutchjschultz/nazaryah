@@ -1,5 +1,15 @@
 ---
-// Header.astro · 1007 V12 — Doctrines dropdown and mobile menu gain Words Your
+// Header.astro · 1008 V13 — Topics retired. COUNTERFEITS and RESTORED TRUTH are
+// top-level dropdowns of their own (after Doctrines), one column each, every link
+// with a one-line description under it. Neither label is a link (Counterfeits no
+// longer jumps to /foreign-fire). Links + descriptions come from
+// src/data/nav-sections.js. "On These Two" reads The Paper Trail (address
+// unchanged). Mobile groups read Counterfeits / Restored Truth, with descriptions.
+// Eleven top-level items: the row tightens in two steps (below 1700px, below
+// 1480px) rather than wrapping; under 1240px the hamburger menu takes over (it was
+// 768px — ten items already overflowed at 1280). The mobile menu now scrolls
+// inside itself; inside the sticky header its lower groups were unreachable.
+// V12: Doctrines dropdown and mobile menu gain Words Your
 // Bible Borrowed (/doctrines/borrowed-words) after The Departure.
 // V11: STUDIES is now BEREAN STUDIES (Acts 17:11). The
 // label still opens /blog, which now shows all four kinds of reading. The
@@ -33,15 +43,18 @@
 // itself still links to /doctrines.
 import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import { counterfeitsNav, restoredTruthNav } from '../data/nav-sections.js';
 
 const currentPath = Astro.url.pathname;
 
-// Single row of seven primary items. Everything topical lives in the Topics dropdown.
+// Single row of eleven primary items. Counterfeits and Restored Truth are the two
+// topical dropdowns; their links live in src/data/nav-sections.js.
 const primaryNav = [
   { name: 'Home', href: '/' },
   { name: 'About', href: '/about' },
   { name: 'Doctrines', href: '/doctrines', dropdown: 'doctrines' },
-  { name: 'Topics', href: null, dropdown: 'topics' },
+  { name: 'Counterfeits', href: null, dropdown: 'section', section: counterfeitsNav },
+  { name: 'Restored Truth', href: null, dropdown: 'section', section: restoredTruthNav },
   { name: 'Torah', href: '/torah' },
   { name: 'Trinity', href: '/trinity' },
   { name: 'Berean Studies', href: '/blog', dropdown: 'studies' },
@@ -49,42 +62,6 @@ const primaryNav = [
   { name: 'Books', href: '/books' },
   { name: 'Contact', href: '/contact' },
 ];
-
-// Topics dropdown — two themed columns.
-const topicsForeignFire = {
-  label: 'Counterfeits',
-  sublabel: 'What to expose',
-  href: '/foreign-fire',
-  glyph: '\u{1F702}', // 🜂 alchemical fire
-  items: [
-    { name: 'Foreign Fire', href: '/foreign-fire' },
-    { name: 'Sun Worship', href: '/sun-worship' },
-    { name: 'Catholicism', href: '/catholicism' },
-    { name: 'Hollywood', href: '/hollywood' },
-    { name: 'American Idolatry', href: '/american-idolatry' },
-    { name: 'Pagan Holidays', href: '/holidays' },
-    { name: 'Christian or Demonic', href: '/christian-or-demonic' },
-    { name: 'On These Two', href: '/on-these-two' },
-  ],
-};
-
-const topicsRestoredTruth = {
-  label: 'Restored Truth',
-  sublabel: 'The Torah path',
-  href: null,
-  glyph: '✦', // ✦
-  items: [
-    { name: 'Hebrew Word Studies', href: '/hebrew' },
-    { name: 'The Calendar', href: '/calendar' },
-    { name: 'Ekklesia', href: '/ekklesia' },
-    { name: 'Pathway', href: '/pathway' },
-    { name: 'Hidden Gems', href: '/hidden-gems' },
-    { name: 'Close to the Hip', href: '/close-to-the-hip' },
-    { name: 'The Parables', href: '/parables' },
-    { name: 'Investigations', href: '/investigations' },
-    { name: 'Cosmology', href: '/cosmology' },
-  ],
-};
 
 // Doctrines dropdown — two entries; the label itself links to /doctrines.
 const doctrinesNav = {
@@ -127,19 +104,16 @@ const mobileNav = [
   { name: 'Voices', href: '/voices' },
   { name: 'Books', href: '/books' },
   { name: 'Contact', href: '/contact' },
-  { name: 'Counterfeits', href: '/foreign-fire', section: 'Topics — Counterfeits' },
-  ...topicsForeignFire.items,
-  ...topicsRestoredTruth.items.map((it, i) => i === 0 ? { ...it, section: 'Topics — Restored Truth' } : it),
+  ...[counterfeitsNav, restoredTruthNav].flatMap((sec) =>
+    sec.items.map((it, i) => ({ name: it.label, href: it.href, desc: it.desc, ...(i === 0 ? { section: sec.label } : {}) }))
+  ),
 ];
 
 const isActive = (href: string | null) =>
   href !== null && (currentPath === href || (href !== '/' && currentPath.startsWith(href)));
 
-// Topics is "active" if any topic page is the current path.
-const topicsActive =
-  isActive('/foreign-fire') ||
-  topicsForeignFire.items.some((it) => isActive(it.href)) ||
-  topicsRestoredTruth.items.some((it) => isActive(it.href));
+// A section dropdown is "active" if any of its pages is the current path.
+const sectionActive = (sec: { items: { href: string }[] }) => sec.items.some((it) => isActive(it.href));
 
 const doctrinesActive = isActive('/doctrines');
 const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilogies');
@@ -153,89 +127,47 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
       </a>
 
       <!-- Desktop nav: single right-justified row -->
-      <div class="hidden md:flex items-center gap-3">
+      <div class="desktop-nav hidden min-[1240px]:flex items-center gap-3">
         <ul class="nav-row">
           {primaryNav.map((item) => (
-            item.dropdown === 'topics' ? (
+            item.dropdown === 'section' ? (
               <li class="topics-wrap">
                 <button
                   type="button"
-                  class:list={['nav-link nav-link--dropdown', topicsActive ? 'active' : '']}
+                  class:list={['nav-link nav-link--dropdown', sectionActive(item.section) ? 'active' : '']}
                   aria-haspopup="true"
                 >
                   {item.name}
                   <span class="caret" aria-hidden="true">▾</span>
                 </button>
 
-                <div
-                  class="topics-dropdown"
-                  role="menu"
-                  aria-label="Topics"
-                >
-                  <div class="topics-grid">
-                    <!-- LEFT: Counterfeits -->
-                    <div class="topics-column">
-                      <a href={topicsForeignFire.href} class="topics-section-header" role="menuitem">
-                        <span class="topics-icon">{topicsForeignFire.glyph}</span>
-                        <span class="topics-section-title">
-                          <span class="label">{topicsForeignFire.label}</span>
-                          <span class="sublabel">{topicsForeignFire.sublabel}</span>
-                        </span>
-                      </a>
-                      <ul class="topics-items">
-                        {topicsForeignFire.items.map((sub) => (
-                          <li>
-                            <a
-                              href={sub.href}
-                              class:list={['topics-item', isActive(sub.href) ? 'active' : '']}
-                              role="menuitem"
-                            >
-                              {sub.name}
-                            </a>
-                          </li>
-                        ))}
-                      </ul>
+                <div class="topics-dropdown" role="menu" aria-label={item.section.label}>
+                  <div class="topics-column">
+                    <div class="topics-section-header">
+                      <span class="topics-icon">{item.section.glyph}</span>
+                      <span class="topics-section-title">
+                        <span class="label">{item.section.label}</span>
+                        <span class="sublabel">{item.section.sublabel}</span>
+                      </span>
                     </div>
-
-                    <div class="topics-divider" aria-hidden="true"></div>
-
-                    <!-- RIGHT: Restored Truth -->
-                    <div class="topics-column">
-                      <div class="topics-section-header topics-section-header--static">
-                        <span class="topics-icon">{topicsRestoredTruth.glyph}</span>
-                        <span class="topics-section-title">
-                          <span class="label">{topicsRestoredTruth.label}</span>
-                          <span class="sublabel">{topicsRestoredTruth.sublabel}</span>
-                        </span>
-                      </div>
-                      <ul class="topics-items">
-                        {topicsRestoredTruth.items.map((sub) => (
-                          <li>
-                            {sub.soon ? (
-                              <span class="topics-item topics-item--soon" aria-disabled="true" title="Coming soon">
-                                <span class="topics-item-name">{sub.name}</span>
-                                <span class="topics-soon-tag">Coming Soon</span>
-                              </span>
-                            ) : (
-                              <a
-                                href={sub.href}
-                                class:list={['topics-item', isActive(sub.href) ? 'active' : '']}
-                                role="menuitem"
-                              >
-                                {sub.name}
-                              </a>
-                            )}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                    <ul class="topics-items">
+                      {item.section.items.map((sub) => (
+                        <li>
+                          <a
+                            href={sub.href}
+                            class:list={['topics-item', isActive(sub.href) ? 'active' : '']}
+                            role="menuitem"
+                          >
+                            <span class="topics-item-name">{sub.label}</span>
+                            <span class="topics-item-desc">{sub.desc}</span>
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
 
                   <div class="topics-footer">
                     <span class="topics-tagline">Separated unto Yahuah</span>
-                    <a href="/doctrines" class="topics-footer-link" role="menuitem">
-                      View All Doctrines <span aria-hidden="true">→</span>
-                    </a>
                   </div>
                 </div>
               </li>
@@ -312,7 +244,7 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
       </div>
 
       <!-- Mobile: Theme Toggle + Menu Button -->
-      <div class="flex items-center gap-2 md:hidden">
+      <div class="flex items-center gap-2 min-[1240px]:hidden">
         <button
           data-search-trigger
           aria-label="Open search"
@@ -337,7 +269,7 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden md:hidden mt-6 pb-4 border-t border-[var(--sand-dark)] pt-4">
+    <div id="mobile-menu" class="hidden min-[1240px]:hidden mt-6 pb-4 border-t border-[var(--sand-dark)] pt-4">
       <ul class="space-y-2">
         {mobileNav.map((item) => (
           <>
@@ -355,6 +287,7 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
                   class:list={['nav-link-mobile', isActive(item.href) ? 'active' : '']}
                 >
                   {item.name}
+                  {item.desc && <span class="nav-mobile-desc">{item.desc}</span>}
                 </a>
               )}
             </li>
@@ -483,6 +416,18 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     opacity: 1;
   }
 
+  /* Eleven items: the row tightens in even steps (padding, letter-spacing, size)
+     as the window narrows, so nothing wraps or clips. Below 1240px the
+     hamburger menu takes over — every item is there, none dropped. */
+  @media (max-width: 1699px) {
+    .nav-row { gap: 0.1rem; }
+    .nav-link { padding: 0.45rem 0.42rem; font-size: 0.7rem; letter-spacing: 0.05em; }
+    .nav-icons { margin-left: 0.3rem; padding-left: 0.45rem; }
+  }
+  @media (max-width: 1479px) {
+    .nav-link { padding: 0.42rem 0.32rem; font-size: 0.66rem; letter-spacing: 0.04em; }
+  }
+
   .nav-link--dropdown .caret {
     font-size: 0.65rem;
     opacity: 0.7;
@@ -593,9 +538,16 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
   .topics-dropdown {
     position: absolute;
     top: 100%;
-    right: 0;
+    left: 0;
     margin-top: 0;
-    min-width: 36rem;
+    width: 23rem;
+    /* Nine described links run tall — on a short screen the panel scrolls
+       inside itself rather than running off the bottom. */
+    max-height: calc(100vh - 5.5rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212, 165, 49, 0.4) transparent;
     background:
       radial-gradient(ellipse at top, rgba(168, 127, 31, 0.15) 0%, transparent 60%),
       linear-gradient(180deg, #1a0e06 0%, #0d0703 100%);
@@ -605,7 +557,7 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
       0 20px 50px -12px rgba(0, 0, 0, 0.7),
       0 0 0 1px rgba(212, 165, 49, 0.1),
       0 4px 20px -4px rgba(212, 165, 49, 0.15);
-    overflow: hidden;
+    overflow-x: hidden;
     z-index: 60;
     visibility: hidden;
     opacity: 0;
@@ -636,16 +588,6 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     background: linear-gradient(90deg, transparent, #d4a531, #f0c450, #d4a531, transparent);
   }
 
-  .topics-grid {
-    display: grid;
-    grid-template-columns: 1fr 1px 1fr;
-    gap: 0;
-  }
-
-  .topics-divider {
-    background: linear-gradient(180deg, transparent, rgba(212, 165, 49, 0.3) 20%, rgba(212, 165, 49, 0.3) 80%, transparent);
-  }
-
   .topics-column {
     padding: 1.4rem 1.3rem;
   }
@@ -659,9 +601,6 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     border-bottom: 1px solid rgba(212, 165, 49, 0.2);
     text-decoration: none;
     transition: opacity 0.15s;
-  }
-  a.topics-section-header:hover {
-    opacity: 0.85;
   }
 
   .topics-icon {
@@ -710,11 +649,14 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     gap: 1px;
   }
 
+  /* Diamond in a narrow first column; title over its description in the second. */
   .topics-item {
-    display: flex;
-    align-items: center;
-    gap: 0.55rem;
-    padding: 0.55rem 0.75rem;
+    display: grid;
+    grid-template-columns: 0.6rem 1fr;
+    column-gap: 0.55rem;
+    row-gap: 0.15rem;
+    align-items: baseline;
+    padding: 0.45rem 0.75rem;
     font-family: var(--font-display, 'Cinzel', Georgia, serif);
     font-size: 0.78rem;
     color: #d4c4a0;
@@ -731,6 +673,19 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     color: #a87f1f;
     font-size: 0.55rem;
     transition: color 0.15s, transform 0.15s;
+  }
+  .topics-item-name { grid-column: 2; }
+  /* Description line — matches the Berean Studies dropdown's sublabel. */
+  .topics-item-desc {
+    grid-column: 2;
+    font-family: var(--font-body, Georgia, serif);
+    font-size: 0.72rem;
+    font-style: italic;
+    font-weight: 400;
+    color: #a89478;
+    letter-spacing: 0;
+    text-transform: none;
+    line-height: 1.35;
   }
   .topics-item:hover {
     background: rgba(168, 127, 31, 0.14);
@@ -798,23 +753,28 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
-  .topics-footer-link {
-    color: #f0c450;
-    text-decoration: none;
-    font-weight: 600;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.35rem;
-    transition: gap 0.2s, color 0.2s;
-  }
-  .topics-footer-link:hover {
-    gap: 0.6rem;
-    color: #fff;
-  }
-
   /* ============================================================
      MOBILE MENU
      ============================================================ */
+  /* The menu lives inside the sticky header, so it can never scroll with the
+     page — it scrolls inside itself, or its lower groups sit off-screen. */
+  #mobile-menu {
+    max-height: calc(100dvh - 7rem);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+  }
+  .nav-mobile-desc {
+    display: block;
+    font-family: var(--font-body, Georgia, serif);
+    font-size: 0.8rem;
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: 0;
+    text-transform: none;
+    opacity: 0.7;
+    line-height: 1.35;
+    margin-top: 0.1rem;
+  }
   .mobile-section-label {
     font-family: var(--font-display, 'Cinzel', Georgia, serif);
     font-size: 0.7rem;
