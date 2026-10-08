@@ -1,5 +1,8 @@
 ---
-// Header.astro · 1008 V13 — Topics retired. COUNTERFEITS and RESTORED TRUTH are
+// Header.astro · 1008 V14 — the mobile menu opens on its own dark panel (the
+// dropdowns' ground) so it reads in light mode, where it sat over the header's
+// cream half.
+// V13: Topics retired. COUNTERFEITS and RESTORED TRUTH are
 // top-level dropdowns of their own (after Doctrines), one column each, every link
 // with a one-line description under it. Neither label is a link (Counterfeits no
 // longer jumps to /foreign-fire). Links + descriptions come from
@@ -269,7 +272,7 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     </div>
 
     <!-- Mobile Menu -->
-    <div id="mobile-menu" class="hidden min-[1240px]:hidden mt-6 pb-4 border-t border-[var(--sand-dark)] pt-4">
+    <div id="mobile-menu" class="hidden min-[1240px]:hidden mt-3 mb-2">
       <ul class="space-y-2">
         {mobileNav.map((item) => (
           <>
@@ -758,11 +761,29 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
      ============================================================ */
   /* The menu lives inside the sticky header, so it can never scroll with the
      page — it scrolls inside itself, or its lower groups sit off-screen. */
+  /* Its own dark panel (the desktop dropdowns' ground), so the light lettering
+     reads in light mode too — over the header's cream half it vanished. */
   #mobile-menu {
-    max-height: calc(100dvh - 7rem);
+    max-height: calc(100dvh - 6rem);
     overflow-y: auto;
     overscroll-behavior: contain;
+    padding: 0.75rem 0.5rem 1rem;
+    background:
+      radial-gradient(ellipse at top, rgba(168, 127, 31, 0.15) 0%, transparent 60%),
+      linear-gradient(180deg, #1a0e06 0%, #0d0703 100%);
+    border: 1px solid rgba(212, 165, 49, 0.4);
+    border-radius: 8px;
+    box-shadow: 0 20px 50px -12px rgba(0, 0, 0, 0.7);
+    scrollbar-width: thin;
+    scrollbar-color: rgba(212, 165, 49, 0.4) transparent;
   }
+  #mobile-menu .nav-link-mobile { color: #ede4cf; }
+  #mobile-menu .mobile-section-label {
+    color: #f0c450;
+    border-bottom-color: rgba(212, 165, 49, 0.3);
+    padding-left: 0.75rem;
+  }
+  #mobile-menu .nav-mobile-desc { color: #a89478; opacity: 1; }
   .nav-mobile-desc {
     display: block;
     font-family: var(--font-body, Georgia, serif);
