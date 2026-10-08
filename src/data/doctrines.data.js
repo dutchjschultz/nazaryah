@@ -1,4 +1,8 @@
-// doctrines.data 0824 V4.js
+// doctrines.data 1008 V5.js
+// V5: Departure 05 Immortal Soul gets its full page — `body` is now the long
+// markdown study (10 sections + Further Reading), marked `bodyFormat: "markdown"`
+// so DoctrineInfo renders it as markdown. Every other entry has no bodyFormat
+// and still renders its body as one plain paragraph, unchanged.
 // V4: added pairs 12 (One Olive Tree / Rightly Divided) and 13 (It Shall Be Our
 // Righteousness / Imputed Righteousness). Corrected two V3 tags: 02 was "Law vs.
 // Grace" and is now "Law Abolished"; 11 was "Faith Alone · Once Saved" and is
@@ -38,6 +42,9 @@
 //      fused whether Torah still applies (02) with whether the walk bears on a
 //      man's standing (11), which are answered independently and by different
 //      verses. Romans 6:14 belongs to 02; Ephesians 2:8-9 belongs to 11.
+//
+// `bodyFormat: "markdown"` (optional) — the body is markdown (headings, lists,
+// links, blockquotes) and DoctrineInfo renders it as such. Absent = plain text.
 //
 // `departure.body` carried over verbatim from the hover text that was on the
 // old /doctrines page (now /doctrines/the-departure). Not rewritten.
@@ -139,7 +146,130 @@ export const doctrines = [
       title: "Immortal Soul",
       deck: "You Are Not Immortal — And the Serpent Told You Otherwise",
       tag: "The Immortal Soul",
-      body: `"You will not surely die" — the very first lie ever recorded — has been dressed in theological clothing and placed inside the doctrine of the immortal soul. Scripture is consistent from Genesis to Revelation: immortality is not a human default; it is a gift granted only to those born from above through Yahushua the Messiah. The pagan Greek origin of soul immortality entered church doctrine quietly — but its consequences are anything but quiet.`
+      // Full page (1008): markdown, rendered by DoctrineInfo via bodyFormat.
+      bodyFormat: "markdown",
+      body: `## What the Pulpit Teaches
+
+Every person has a soul that can never die. When the body stops, the soul slips out and lives on, fully awake. It goes straight to heaven or straight to hell. This is preached at nearly every funeral, in Catholic and Protestant churches alike.
+
+The men preaching it went to seminary. They studied the Greek. They had every chance to find out where this teaching came from, and they preach it anyway. The people in the pew trusted them to check. They did not check.
+
+## One Word Behind It All
+
+The whole doctrine rests on one Greek word: *psychē* (G5590), pronounced soo-KAY. It is the word the Greek New Testament uses for "soul." Take *psychē* out and read the Hebrew word it replaced, and the immortal soul has nothing left to stand on. Every step below follows that one word.
+
+## What the Torah Said
+
+The Hebrew word for soul is *nephesh* (H5315). It means a living, breathing creature. Man was not given a soul. Man became one:
+
+> *And Yahuah Elohim formed man of the dust of the ground, and breathed into his nostrils the breath of life; and man became a living soul.* (Genesis 2:7)
+
+Four verses earlier, the same Hebrew words describe the cattle and the creeping things (Genesis 1:24). A nephesh is alive, and a nephesh can die. Scripture says it twice in one chapter:
+
+> *The soul that sinneth, it shall die.* (Ezekiel 18:4, 20)
+
+A dead body is even called a dead nephesh (Numbers 6:6). The Torah does not have a word for a soul that cannot die, because it never taught one. Every pastor who preaches one is preaching something Moses never wrote.
+
+## The Word Swap: Nephesh Became Psychē
+
+When the Hebrew Scriptures were put into Greek at Alexandria, around 250 years before Messiah, *nephesh* was rendered *psychē*. The Apostolic writings followed the same path. It looks like a simple translation. It was not, because *psychē* did not arrive empty.
+
+Psyche was a figure of Greek myth, a mortal woman made immortal by Zeus. She was painted with the wings of a butterfly, because *psychē* was also the Greek word for butterfly — the creature that leaves its old body behind and flies away. The word itself carried the picture of a soul escaping the body. Seminaries teach *psychē* every year, and they still define it by Plato instead of by Moses.
+
+## What Psychē Carried
+
+Greek philosophers had already built a doctrine on *psychē*. The Orphic teachers said the body was a tomb and the *psychē* its prisoner. Plato, writing around 380 BC in the Phaedo, taught that the *psychē* is immortal by its very nature, trapped in the body, and set free at death to go to the realm of Hades for judgment.
+
+So when a Greek reader saw *psychē* in the Bible, he did not see a breathing creature formed from dust. He saw Plato’s undying soul. The Hebrew meaning was gone the moment *psychē* was chosen, and the church has never gone back for it.
+
+## How Psychē Entered the Church
+
+The idea did not arrive all at once. It came in steps, and both sides of the church carried it.
+
+- **The Garden.** The first lie: "Ye shall not surely die" (Genesis 3:4).
+
+- **Plato, c. 380 BC.** The lie is given a philosophy: the *psychē* cannot die.
+
+- **Alexandria, c. 250 BC.** Nephesh is put into Greek as *psychē*, and Plato’s philosophy comes with the word.
+
+- **Tertullian, c. 210 AD.** He appeals openly to Plato’s view that every *psychē* is immortal.
+
+- **Augustine, c. 420 AD.** A Platonist before his conversion, he makes the immortal *psychē* a pillar of Western teaching.
+
+- **Rome, 1513.** The Fifth Lateran Council condemns anyone who says the soul is mortal.
+
+- **Westminster, 1646.** The Protestant confession states that souls "having an immortal subsistence, immediately return to God" at death (Westminster Confession 32.1).
+
+The Reformers broke with Rome on many things. They did not break with Plato. They claimed Scripture alone, and then kept Plato’s *psychē*, a doctrine Scripture never taught.
+
+## The Fallback: "The Spirit Lives On"
+
+When the Hebrew word nephesh is shown to them, many teachers retreat to a second answer: the soul may die, but the *spirit* lives on. This is the same doctrine moved to a different word. The Greek idea of an undying self is simply taken off *psychē* and placed on *pneuma* (G4151), "spirit."
+
+The Hebrew word beneath *pneuma* is *ruach* (H7307): breath, wind. Scripture gives the same ruach to man and beast:
+
+> *For that which befalleth the sons of men befalleth beasts… as the one dieth, so dieth the other; yea, they have all one breath.* (Ecclesiastes 3:19)
+
+"One breath" is one ruach. If the spirit of a man is a conscious being that lives on, so is the spirit of a cow. The flood account says the same: everything "in whose nostrils was the breath of life" died (Genesis 7:22).
+
+The verse used to defend the fallback says that at death "the spirit shall return unto God who gave it" (Ecclesiastes 12:7). The ruach is the breath of life Yahuah lent at creation (Genesis 2:7). At death that breath goes back to the One who gave it, the way the dust goes back to the earth. It does not go back thinking:
+
+> *His breath goeth forth, he returneth to his earth; in that very day his thoughts perish.* (Psalm 146:4)
+
+The word "breath" in that verse is ruach. The day the ruach leaves, the thoughts end. The spirit-lives-on teaching is Plato’s *psychē* with a new label.
+
+## A Second Judgment
+
+The immortal *psychē* creates a problem the pulpit never explains. If every soul goes straight to heaven or straight to hell at death, then every soul has already been judged. Its sentence has been handed down and it is already serving it.
+
+Yet Scripture places the judgment on one appointed day, at the return of the Son:
+
+> *Because he hath appointed a day, in the which he will judge the world in righteousness.* (Acts 17:31)
+>
+> *The Lord Yahushua Messiah, who shall judge the quick and the dead at his appearing and his kingdom.* (2 Timothy 4:1)
+
+Revelation shows where the dead are on that day. They are not brought down from heaven or up from a fire. They are brought out of the grave:
+
+> *And the sea gave up the dead which were in it; and death and hell delivered up the dead which were in them: and they were judged every man according to their works.* (Revelation 20:13)
+
+If the dead were judged at death, this is a second trial for people already sentenced — a man pulled out of prison to be tried for the crime he is already serving time for. Scripture knows only one judgment. The second one exists only because *psychē* put the dead somewhere other than the grave.
+
+## What Psychē Built
+
+Once the *psychē* could not die, it had to go somewhere. An entire set of doctrines was built on that one word:
+
+- **Hell as endless torment** — an undying *psychē* must suffer forever.
+
+- **Going to heaven at death** — the *psychē* flies upward, like Psyche on her butterfly wings.
+
+- **A judgment at death** — and with it, a second judgment on the last day.
+
+- **Purgatory and prayers for the dead** — a *psychē* in between needs help from the living.
+
+- **Praying to saints** — the dead are said to be awake and listening.
+
+- **Ghosts and contact with the dead** — the *psychē* is said to linger, which the Torah forbids seeking (Deuteronomy 18:10–12).
+
+Remove *psychē*, and every one of these falls with it. That is why it is defended so hard. Too much has been built on it to admit it was never there.
+
+## The Old Path
+
+Scripture places the hope of the dead in one event: the resurrection.
+
+> *And many of them that sleep in the dust of the earth shall awake, some to everlasting life, and some to shame and everlasting contempt.* (Daniel 12:2)
+
+Immortality is not something man has. It is something he must put on: "this mortal must put on immortality" (1 Corinthians 15:53). Yahuah "only hath immortality" (1 Timothy 6:16), and He gives it to those who are His at the return of the Son. Until then, the dead sleep. Yahushua called it sleep (John 11:11–14), and He said they would hear His voice and come out of the graves (John 5:28–29) — not down from heaven, and not up from a fire.
+
+The serpent said, "Ye shall not surely die." Plato gave the lie a name, and *psychē* gave it a home in the Bible. Every funeral sermon that sends a loved one straight to heaven is repeating the serpent’s promise over an open grave.
+
+Revelation closes the matter where Daniel began it. The dead stand before the throne raised from the grave, the books are opened, and then death itself is ended: "And there shall be no more death, neither sorrow, nor crying" (Revelation 21:4). That is the hope Moses and the prophets held, and it never needed a Greek butterfly.
+
+## Further Reading
+
+- **The Old Paths:** [He Became a Living Soul](/doctrines/old-paths/became-a-living-soul)
+- **The root word:** [Psychē — Words Your Bible Borrowed](/doctrines/borrowed-words/#psyche)
+- **The investigation:** [Spoken in Hebrew](/investigations/spoken-in-hebrew)
+`
     }
   },
 

@@ -1,5 +1,8 @@
 ---
-// src/pages/doctrines.astro · 0824 V4
+// src/pages/doctrines.astro · 1008 V5
+// V5: a new intro paragraph between the old-paths paragraph and the Six
+// Foundations paragraph — bad fruit grows from a root — linking Words Your Bible
+// Borrowed (/doctrines/borrowed-words/).
 // V4: the fixed count is gone from the deck line and the meta description — the
 // list grows and a number in a string rots. Added the hub introduction beneath
 // the links: what the page is, and that nothing on it is new.
@@ -38,6 +41,14 @@ import { sections } from '../data/doctrines.data.js';
         usually the original road. Jeremiah told a generation exactly like ours to
         stand in the ways and look, and to ask for the old paths, where the good way
         is, and walk in it. That is the whole assignment of this page.
+      </p>
+      <p>
+        But bad fruit grows from a root. Most of these errors did not begin in a
+        pulpit; they began in a word — a Hebrew word carried into Greek, where it
+        picked up the meaning of the Greek gods and philosophers, and the church built
+        its doctrine on that meaning. The Departure shows the fruit.
+        <a href="/doctrines/borrowed-words/"><strong>Words Your Bible Borrowed</strong></a>
+        shows the root it grew from.
       </p>
       <p>
         Under the doctrines sit the Six Foundations. Hebrews 6:1-2 names them in
@@ -86,6 +97,9 @@ import { sections } from '../data/doctrines.data.js';
     font-family: var(--font-body); font-size: 1.08rem; line-height: 1.8;
     color: #cfc7b6; margin: 0 0 1.3rem;
   }
+  .dl-intro a { color: #d8b06a; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(216,176,106,0.45); }
+  .dl-intro a:hover { color: #e8c98a; text-decoration-color: #BA7517; }
+  .dl-intro a strong { color: inherit; }
   .dl-intro-close {
     text-align: center; font-style: italic; color: #a89f8c !important;
     margin: 2rem 0 0 !important;

@@ -1,5 +1,9 @@
 ---
-// src/components/DoctrineInfo.astro · 0824 V2
+// src/components/DoctrineInfo.astro · 1008 V3
+// V3: an entry marked `bodyFormat: "markdown"` renders its body as markdown
+// (Astro's own processor, so headings, lists, links and blockquotes come out as
+// they do in a study), styled below in this page's dark palette. Every other
+// entry still renders its body as one plain paragraph, exactly as before.
 // V2: the recognition `tag` renders beneath the deck. Both halves of a pair
 // carry the identical tag, so the reader landing on either side sees the same
 // label and understands they are two readings of one question.
@@ -7,12 +11,16 @@
 // subject; the counterpart link is DERIVED from the same object, never stored —
 // so the round-trip can't break. Scripture shows on the Old Paths side only.
 // The tagline arrow is intentionally reversed between the two sides.
+import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 interface Props { side: 'old-paths' | 'departure'; pair: any; }
 const { side, pair } = Astro.props;
 const isOld = side === 'old-paths';
 const entry = isOld ? pair.oldPaths : pair.departure;
 const counterpart = isOld ? pair.departure : pair.oldPaths;
 const kicker = isOld ? 'The Old Paths' : 'The Departure';
+const bodyHtml = entry.bodyFormat === 'markdown'
+  ? (await (await createMarkdownProcessor()).render(entry.body)).code
+  : null;
 const counterpartHref = isOld
   ? `/doctrines/the-departure/${counterpart.slug}`
   : `/doctrines/old-paths/${counterpart.slug}`;
@@ -25,9 +33,9 @@ const counterpartHref = isOld
   <p class="di-deck">{entry.deck}</p>
   {entry.tag && <p class="di-tag">{entry.tag}</p>}
 
-  <div class="di-body">
-    <p>{entry.body}</p>
-  </div>
+  {bodyHtml
+    ? <div class="di-body di-body-md" set:html={bodyHtml} />
+    : <div class="di-body"><p>{entry.body}</p></div>}
 
   {isOld && (
     <div class="di-scripture">
@@ -84,6 +92,32 @@ const counterpartHref = isOld
   }
   .di-body { font-family: var(--font-body); font-size: 1.12rem; line-height: 1.85; color: #cfc7b6; }
   .di-body p { margin: 0 0 1.3rem; }
+
+  /* Markdown body (bodyFormat: "markdown"). set:html content is not scoped, so
+     every rule reaches it through :global() under the scoped wrapper. */
+  .di-body-md :global(h2) {
+    font-family: var(--font-display); font-size: clamp(1.3rem, 1.1rem + 0.9vw, 1.65rem); font-weight: 700;
+    line-height: 1.25; letter-spacing: 0.01em; color: #e8e2d4;
+    margin: 2.6rem 0 1rem; padding-bottom: 0.45rem; border-bottom: 1px solid rgba(186,117,23,0.45);
+  }
+  .di-body-md :global(p) { margin: 0 0 1.3rem; }
+  .di-body-md :global(h2:first-child) { margin-top: 0; }
+  .di-body-md :global(strong) { color: #e8e2d4; font-weight: 700; }
+  .di-body-md :global(em) { font-family: var(--font-body); font-style: italic; }
+  .di-body-md :global(a) { color: #d8b06a; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(216,176,106,0.45); }
+  .di-body-md :global(a:hover) { color: #e8c98a; text-decoration-color: #BA7517; }
+  .di-body-md :global(ul) { list-style: disc; margin: 0 0 1.4rem; padding-left: 1.3rem; }
+  .di-body-md :global(li) { margin: 0 0 0.55rem; }
+  .di-body-md :global(li::marker) { color: #BA7517; }
+  .di-body-md :global(li p) { margin: 0; }
+  /* Scripture: the gold-ruled quote block the site uses for verses. */
+  .di-body-md :global(blockquote) {
+    margin: 1.4rem 0 1.6rem; padding: 1rem 1.3rem;
+    background: #161512; border: 0.5px solid rgba(255,255,255,0.07); border-left: 3px solid #BA7517; border-radius: 0 10px 10px 0;
+    color: #ddd5c4;
+  }
+  .di-body-md :global(blockquote p) { margin: 0 0 0.7rem; }
+  .di-body-md :global(blockquote p:last-child) { margin-bottom: 0; }
 
   /* Scripture — labeled reference groups, references only (Old Paths side). */
   .di-scripture {
