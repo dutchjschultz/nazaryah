@@ -1,4 +1,7 @@
-// borrowed-words-page 1009 V5.js
+// borrowed-words-page 1009 V6.js
+// V6: eight For Future Studies words placed — kardia, syneidesis (Torah Dismissal), apokatastasis
+// (Hell), nous (Immortal Soul), sophia, demiourgos, parakletos (Trinity), gnosis (Faith Alone);
+// now 80 unique words; For Future Studies down to 4.
 // V5: doctrines 14–17 added (Lucifer, Predestination, Images in Worship, Clergy over the People): 13 new words, now 72 unique;
 // those words leave For Future Studies (12 remain); their story links open each doctrine’s tabs.
 // V4: cross-listings — each doctrine has crossRefs ({ id, note, aliases }); a word can show under
@@ -211,6 +214,37 @@ export const doctrines = [
           "Gods & myths"
         ],
         "story": []
+      },
+      {
+        "id": "kardia",
+        "greek": "Kardia",
+        "strongs": "G2588",
+        "kjv": "heart",
+        "source": "In Homer the heart is the seat of passion and courage; Plato set reason in the head and the passions in the chest (Timaeus 69–70). The Greek heart feels.",
+        "hebrew": "Lev (H3820), the seat of thought, understanding, and will — where the Torah is written: “these words, which I command thee this day, shall be in thine heart” (Deuteronomy 6:6). “The heart is deceitful above all things” (Jeremiah 17:9).",
+        "fed": "“Follow your heart” and “God looks at the heart” — feeling set over the commandment.",
+        "bridge": "Hebrews 8:10 quotes Jeremiah 31:33 — kardia where Jeremiah has lev, the heart the Torah is written on.",
+        "aliases": [],
+        "sources": [
+          "Gods & myths",
+          "Philosophers"
+        ],
+        "story": []
+      },
+      {
+        "id": "syneidesis",
+        "greek": "Syneidēsis",
+        "strongs": "G4893",
+        "kjv": "conscience",
+        "source": "A term of Greek moral philosophy, popular with the Stoics: an inner awareness that judges a man’s own deeds.",
+        "hebrew": "Hebrew has no word for conscience. The standard is outside the man, written: “To the law and to the testimony: if they speak not according to this word, it is because there is no light in them” (Isaiah 8:20).",
+        "fed": "“Let your conscience be your guide” — an inner feeling in place of the written Torah; “I don’t feel convicted.”",
+        "bridge": "The Septuagint of Ecclesiastes 10:20 puts syneidēsis for madda, “thought.”",
+        "aliases": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
       }
     ]
   },
@@ -419,6 +453,22 @@ export const doctrines = [
           "Gods & myths"
         ],
         "story": []
+      },
+      {
+        "id": "apokatastasis",
+        "greek": "Apokatastasis",
+        "strongs": "G605",
+        "kjv": "restitution",
+        "source": "Stoic cosmic restoration: the world burned and remade in endless cycles. Origen taught a final restoration of all, the devil included (On First Principles 1.6); the teaching was condemned in 553.",
+        "hebrew": "Peter’s “restitution of all things, which God hath spoken by the mouth of all his holy prophets” (Acts 3:21) — the kingdom restored to Israel and the earth renewed, while the wicked “shall be ashes under the soles of your feet” (Malachi 4:3).",
+        "fed": "Universalism — every soul saved in the end, hell as a place of purifying. Like endless torment, it denies that the wicked are consumed.",
+        "bridge": "The Septuagint of Malachi 4:6 uses apokathistēmi for shuv: “he shall turn the heart of the fathers.”",
+        "aliases": [],
+        "sources": [
+          "Philosophers",
+          "Later teachers & translators"
+        ],
+        "story": []
       }
     ]
   },
@@ -516,6 +566,26 @@ export const doctrines = [
           {
             "label": "Immortal Soul",
             "href": "/doctrines/the-departure/immortal-soul#word-phantasma"
+          }
+        ]
+      },
+      {
+        "id": "nous",
+        "greek": "Nous",
+        "strongs": "G3563",
+        "kjv": "mind",
+        "source": "Anaxagoras’ cosmic Mind that orders the universe; for Plato the reasoning part of the soul is its divine, undying part; Aristotle called the active mind alone “immortal and eternal” (On the Soul 3.5).",
+        "hebrew": "Man thinks with his lev, and dies whole: “His breath goeth forth, he returneth to his earth; in that very day his thoughts perish” (Psalm 146:4).",
+        "fed": "The mind that survives death — consciousness carried on without the body.",
+        "bridge": "Romans 11:34 quotes Isaiah 40:13 — nous where Isaiah has ruach.",
+        "aliases": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": [
+          {
+            "label": "Immortal Soul",
+            "href": "/doctrines/the-departure/immortal-soul#word-nous"
           }
         ]
       }
@@ -752,6 +822,53 @@ export const doctrines = [
           "Temples & cults"
         ],
         "story": []
+      },
+      {
+        "id": "sophia",
+        "greek": "Sophia",
+        "strongs": "G4678",
+        "kjv": "wisdom",
+        "source": "Philo’s Wisdom beside God; in Gnostic teaching Sophia became a divine being, one of the aeons. Justin Martyr read the Wisdom of Proverbs 8 as a second divine person (Dialogue with Trypho 61).",
+        "hebrew": "Chokmah (H2451), wisdom — Yahuah’s own: “Yahuah by wisdom hath founded the earth” (Proverbs 3:19). Proverbs 8 pictures her as a woman calling in the streets; Proverbs 9 does the same with Folly. Neither is a person.",
+        "fed": "Proverbs 8 used to prove an eternal second person; Hagia Sophia, the “Holy Wisdom” church.",
+        "bridge": "The Septuagint of Proverbs 8:1 puts sophia for chokmah.",
+        "aliases": [],
+        "sources": [
+          "Philosophers",
+          "Temples & cults"
+        ],
+        "story": []
+      },
+      {
+        "id": "demiourgos",
+        "greek": "Dēmiourgos",
+        "strongs": "G1217",
+        "kjv": "maker",
+        "source": "Plato’s Demiurge, the craftsman-god who shapes the world (Timaeus 28a). Philo and the early fathers made the Logos a second agent through whom the highest God created.",
+        "hebrew": "“I am Yahuah that maketh all things; that stretcheth forth the heavens alone; that spreadeth abroad the earth by myself” (Isaiah 44:24). The one New Testament use is of Yahuah Himself: “whose builder and maker is God” (Hebrews 11:10).",
+        "fed": "A second divine craftsman beside the Father doing the work of creation.",
+        "bridge": null,
+        "aliases": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
+      },
+      {
+        "id": "parakletos",
+        "greek": "Paraklētos",
+        "strongs": "G3875",
+        "kjv": "Comforter, advocate",
+        "source": "A legal advocate in the Greek courts, one called to stand beside the accused.",
+        "hebrew": "Menachem, comforter, from nacham (H5162): “Comfort ye, comfort ye my people” (Isaiah 40:1). John calls the Son the paraklētos — “we have an advocate with the Father, Jesus Christ the righteous” (1 John 2:1) — and Yahushua says of the Comforter, “I will not leave you comfortless: I will come to you” (John 14:18).",
+        "fed": "The chief proof offered that the Spirit is a third person.",
+        "bridge": null,
+        "aliases": [],
+        "sources": [
+          "Emperors & state",
+          "Later teachers & translators"
+        ],
+        "story": []
       }
     ]
   },
@@ -976,6 +1093,22 @@ export const doctrines = [
         "aliases": [],
         "sources": [
           "Gods & myths"
+        ],
+        "story": []
+      },
+      {
+        "id": "gnosis",
+        "greek": "Gnōsis",
+        "strongs": "G1108",
+        "kjv": "knowledge",
+        "source": "The root of Gnosticism: salvation by secret knowledge, with spirit good and the flesh worthless, so what the body does does not matter.",
+        "hebrew": "Yada (H3045), to know by doing: “He judged the cause of the poor and needy… was not this to know me? saith Yahuah” (Jeremiah 22:16). “He that saith, I know him, and keepeth not his commandments, is a liar” (1 John 2:4).",
+        "fed": "Salvation by knowing and agreeing — “just believe” — with nothing required of the walk.",
+        "bridge": "The Septuagint of Malachi 2:7 puts gnōsis for da’at: “the priest’s lips should keep knowledge, and they should seek the law at his mouth.”",
+        "aliases": [],
+        "sources": [
+          "Temples & cults",
+          "Philosophers"
         ],
         "story": []
       }
@@ -1404,30 +1537,6 @@ export const doctrines = [
 
 export const futureStudies = [
   {
-    "word": "Nous (G3563), mind",
-    "note": "Anaxagoras’ cosmic Mind; the Greek split of mind against body."
-  },
-  {
-    "word": "Kardia (G2588), heart",
-    "note": "Greek seat of emotion; Hebrew lev is the seat of thought and will."
-  },
-  {
-    "word": "Syneidēsis (G4893), conscience",
-    "note": "A Stoic concept of inner moral awareness."
-  },
-  {
-    "word": "Sophia (G4678), wisdom",
-    "note": "Later a goddess in Gnosticism; Hagia Sophia."
-  },
-  {
-    "word": "Gnōsis (G1108), knowledge",
-    "note": "The root of Gnosticism."
-  },
-  {
-    "word": "Dēmiourgos (G1217), maker",
-    "note": "Plato’s Demiurge, the craftsman-god of the Timaeus (Hebrews 11:10)."
-  },
-  {
     "word": "Parthenos (G3933), virgin",
     "note": "Athena Parthenos; the Septuagint’s rendering of almah in Isaiah 7:14."
   },
@@ -1442,14 +1551,6 @@ export const futureStudies = [
   {
     "word": "Typhōnikos (G5189), tempestuous",
     "note": "From Typhon, the storm monster of Greek myth (Acts 27:14)."
-  },
-  {
-    "word": "Apokatastasis (G605), restitution",
-    "note": "Stoic cosmic restoration; Origen’s universal salvation."
-  },
-  {
-    "word": "Paraklētos (G3875), Comforter",
-    "note": "A Greek legal advocate; read as proof of a third person."
   }
 ];
 

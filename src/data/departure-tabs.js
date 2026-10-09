@@ -1,4 +1,5 @@
-// departure-tabs 1009 V2.js
+// departure-tabs 1009 V3.js
+// V3: Immortal Soul gains a sixth tab, Nous (mind); opening, closing and Further Reading say six words.
 // V2: four new tabbed Departure pages — lucifer, predestination, images-in-worship, clergy-over-the-people.
 // V1: First build: tabbed Departure page content — Immortal Soul only (pilot)
 //
@@ -13,7 +14,7 @@ export const departureTabs = {
     "opening": [
       "Every person has a soul that can never die. When the body stops, the soul slips out and lives on, fully awake, and goes straight to heaven or straight to hell. That is preached at nearly every funeral, Catholic and Protestant alike. The men preaching it studied the Greek. They had every chance to find out where the teaching came from, and they preach it anyway.",
       "The Torah says something else. “And Yahuah Elohim formed man of the dust of the ground, and breathed into his nostrils the breath of life; and man became a living soul” (Genesis 2:7). Man was not given a soul; he became one — a *nephesh*, a living creature, the same word used of the cattle four verses earlier. And a nephesh can die: “The soul that sinneth, it shall die” (Ezekiel 18:4).",
-      "Five Greek words carried the undying soul into the church. Each one is opened below — where it came from, what the Hebrew said, how it grew, and what it built. Choose a word."
+      "Six Greek words carried the undying soul into the church. Each one is opened below — where it came from, what the Hebrew said, how it grew, and what it built. Choose a word."
     ],
     "tabs": [
       {
@@ -232,11 +233,54 @@ export const departureTabs = {
           "**Ghost belief** — the dead said to be awake, wandering, and able to appear.",
           "**Fear of the dead** — where Scripture says the dead sleep until the resurrection."
         ]
+      },
+      {
+        "id": "nous",
+        "greek": "Nous",
+        "kjv": "mind",
+        "role": "The last refuge",
+        "word": [
+          "*Nous* (G3563), “mind,” was the Greek philosophers’ name for the highest part of man. Anaxagoras taught a cosmic Mind that orders the universe. Plato made the reasoning part of the soul its divine and undying part, and Aristotle said that the active mind alone is “immortal and eternal” (*On the Soul* 3.5). When the soul is gone and the spirit is gone, the mind is where the undying self is kept."
+        ],
+        "hebrew": [
+          "Hebrew thinks with the *lev* (H3820), the heart, and the whole man dies: “His breath goeth forth, he returneth to his earth; in that very day his thoughts perish” (Psalm 146:4). “For the living know that they shall die: but the dead know not any thing” (Ecclesiastes 9:5). Paul shows the bridge himself: “who hath known the mind of the Lord?” (Romans 11:34) quotes Isaiah 40:13, where the Hebrew is *ruach* — breath, not an undying intellect."
+        ],
+        "timeline": [
+          [
+            "c. 450 BC",
+            "Anaxagoras",
+            "Nous, a cosmic Mind, orders all things."
+          ],
+          [
+            "c. 360 BC",
+            "Plato",
+            "The reasoning part of the soul is divine and immortal (Timaeus)."
+          ],
+          [
+            "c. 330 BC",
+            "Aristotle",
+            "The active mind alone is “immortal and eternal” (On the Soul 3.5)."
+          ],
+          [
+            "1641",
+            "Descartes",
+            "“I think”: the mind a separate substance from the body (Meditations)."
+          ],
+          [
+            "Today",
+            "The near-death story",
+            "“Your consciousness lives on after the brain stops.”"
+          ]
+        ],
+        "built": [
+          "**The mind that survives death** — Plato’s soul moved into the brain.",
+          "**Consciousness after death** — the near-death testimony treated as proof against Psalm 146:4."
+        ]
       }
     ],
     "closing": [
       "Scripture places the hope of the dead in one event: the resurrection. “Many of them that sleep in the dust of the earth shall awake, some to everlasting life, and some to shame and everlasting contempt” (Daniel 12:2). Yahushua called death sleep (John 11:11–14), and said the dead would hear His voice and come out of the graves (John 5:28–29) — not down from heaven, and not up from a fire.",
-      "The serpent said, “Ye shall not surely die.” Plato gave the lie a name, and five Greek words gave it a home in the Bible. The Torah says what it always said — the soul that sinneth, it shall die — and the one who is Yahuah’s shall rise. Revelation closes it: “And there shall be no more death, neither sorrow, nor crying” (Revelation 21:4)."
+      "The serpent said, “Ye shall not surely die.” Plato gave the lie a name, and six Greek words gave it a home in the Bible. The Torah says what it always said — the soul that sinneth, it shall die — and the one who is Yahuah’s shall rise. Revelation closes it: “And there shall be no more death, neither sorrow, nor crying” (Revelation 21:4)."
     ],
     "further": [
       [
@@ -244,7 +288,7 @@ export const departureTabs = {
         "/doctrines/old-paths/became-a-living-soul"
       ],
       [
-        "All five words on Words Your Bible Borrowed",
+        "All six words on Words Your Bible Borrowed",
         "/doctrines/borrowed-words/"
       ],
       [

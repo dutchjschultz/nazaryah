@@ -1,4 +1,6 @@
-// borrowed-words 1009 V7.js
+// borrowed-words 1009 V8.js
+// V8: eight For Future Studies words join their doctrines' dropdowns — kardia, syneidesis (02),
+// apokatastasis (04), nous (05), sophia, demiourgos, parakletos (08), gnosis (11).
 // V7: doctrines 14–17 added (Lucifer, Predestination, Images in Worship, Clergy over the People).
 // V6: Immortal Soul dropdown gains Phantasma (now 5 words, matching the tabs and the word page).
 // V5: WORD_PAGE_LIVE on — /doctrines/borrowed-words/ is built; every dropdown label links to its entry.
@@ -88,7 +90,15 @@ export const doctrines = [
       { id: "metanoia", greek: "Metanoia", strongs: "G3341", yourBible: "repentance",
         sourceName: "The Greek painters showed", sourceLine: "Metanoia — a goddess of regret, weeping too late",
         scriptureName: "Ezekiel wrote", scriptureLine: "shuv — turn back and “keep all my statutes” (Ezekiel 18:21)",
-        linkLabel: "Regret’s word or Yahuah’s?" }
+        linkLabel: "Regret’s word or Yahuah’s?" },
+      { id: "kardia", greek: "Kardia", strongs: "G2588", yourBible: "heart",
+        sourceName: "The poets wrote", sourceLine: "kardia — the seat of feeling and passion",
+        scriptureName: "Moses wrote", scriptureLine: "lev — “these words… shall be in thine heart” (Deuteronomy 6:6)",
+        linkLabel: "The poets’ word or Yahuah’s?" },
+      { id: "syneidesis", greek: "Syneidēsis", strongs: "G4893", yourBible: "conscience",
+        sourceName: "The Stoics wrote", sourceLine: "syneidēsis — an inner judge of right and wrong",
+        scriptureName: "Isaiah wrote", scriptureLine: "“To the law and to the testimony” (Isaiah 8:20)",
+        linkLabel: "The Stoics’ word or Yahuah’s?" }
     ]
   },
   {
@@ -136,7 +146,11 @@ export const doctrines = [
       { id: "katachthonios", greek: "Katachthonios", strongs: "G2709", yourBible: "under the earth",
         sourceName: "Homer wrote", sourceLine: "Zeus Katachthonios — Zeus of the underworld",
         scriptureName: "Moses wrote", scriptureLine: "“dust thou art, and unto dust shalt thou return” (Genesis 3:19)",
-        linkLabel: "Homer’s word or Yahuah’s?" }
+        linkLabel: "Homer’s word or Yahuah’s?" },
+      { id: "apokatastasis", greek: "Apokatastasis", strongs: "G605", yourBible: "restitution",
+        sourceName: "Origen wrote", sourceLine: "apokatastasis — all restored at last, the devil too",
+        scriptureName: "Malachi wrote", scriptureLine: "the wicked “shall be ashes under the soles of your feet” (Malachi 4:3)",
+        linkLabel: "Origen’s word or Yahuah’s?" }
     ]
   },
   {
@@ -162,7 +176,11 @@ export const doctrines = [
       { id: "phantasma", greek: "Phantasma", strongs: "G5326", yourBible: "spirit",
         sourceName: "Homer wrote", sourceLine: "phantasma — the shades of the dead rising to speak (Odyssey 11)",
         scriptureName: "Solomon wrote", scriptureLine: "“the dead know not any thing” (Ecclesiastes 9:5)",
-        linkLabel: "Homer’s word or Yahuah’s?" }
+        linkLabel: "Homer’s word or Yahuah’s?" },
+      { id: "nous", greek: "Nous", strongs: "G3563", yourBible: "mind",
+        sourceName: "Aristotle wrote", sourceLine: "nous — the mind, “immortal and eternal”",
+        scriptureName: "David wrote", scriptureLine: "“in that very day his thoughts perish” (Psalm 146:4)",
+        linkLabel: "Aristotle’s word or Yahuah’s?" }
     ]
   },
   {
@@ -236,7 +254,19 @@ export const doctrines = [
       { id: "hymnos", greek: "Hymnos", strongs: "G5215", yourBible: "hymn",
         sourceName: "Homer wrote", sourceLine: "hymnos — songs sung to Apollo, Demeter, and Hermes",
         scriptureName: "David wrote", scriptureLine: "tehillim — the Psalms, songs Yahuah gave His people",
-        linkLabel: "Homer’s word or Yahuah’s?" }
+        linkLabel: "Homer’s word or Yahuah’s?" },
+      { id: "sophia", greek: "Sophia", strongs: "G4678", yourBible: "wisdom",
+        sourceName: "The Gnostics wrote", sourceLine: "Sophia — a divine being beside God",
+        scriptureName: "Solomon wrote", scriptureLine: "chokmah — “Yahuah by wisdom hath founded the earth” (Proverbs 3:19)",
+        linkLabel: "The Gnostics’ word or Yahuah’s?" },
+      { id: "demiourgos", greek: "Dēmiourgos", strongs: "G1217", yourBible: "maker",
+        sourceName: "Plato wrote", sourceLine: "the Demiurge — a second, craftsman god",
+        scriptureName: "Isaiah wrote", scriptureLine: "“that spreadeth abroad the earth by myself” (Isaiah 44:24)",
+        linkLabel: "Plato’s word or Yahuah’s?" },
+      { id: "parakletos", greek: "Paraklētos", strongs: "G3875", yourBible: "Comforter",
+        sourceName: "The Greek courts said", sourceLine: "paraklētos — an advocate called to one’s side",
+        scriptureName: "John wrote", scriptureLine: "“we have an advocate with the Father, Jesus Christ” (1 John 2:1)",
+        linkLabel: "The courts’ word or Yahuah’s?" }
     ]
   },
   {
@@ -306,7 +336,11 @@ export const doctrines = [
       { id: "nike", greek: "Nikē", strongs: "G3529", yourBible: "victory",
         sourceName: "Athens wrote", sourceLine: "Nike — the winged goddess of the Acropolis",
         scriptureName: "Isaiah wrote", scriptureLine: "netsach — “He will swallow up death for ever” (Isaiah 25:8)",
-        linkLabel: "Athens’ word or Yahuah’s?" }
+        linkLabel: "Athens’ word or Yahuah’s?" },
+      { id: "gnosis", greek: "Gnōsis", strongs: "G1108", yourBible: "knowledge",
+        sourceName: "The Gnostics wrote", sourceLine: "gnōsis — saved by knowing, whatever the body does",
+        scriptureName: "Jeremiah wrote", scriptureLine: "judging the cause of the poor — “was not this to know me?” (Jeremiah 22:16)",
+        linkLabel: "The Gnostics’ word or Yahuah’s?" }
     ]
   },
   {
