@@ -1,5 +1,9 @@
 ---
-// borrowed-words-page 1009 V5.astro — src/pages/doctrines/borrowed-words.astro
+// borrowed-words-page 1009 V6.astro — src/pages/doctrines/borrowed-words.astro
+// V6: For Future Studies and Claims That Failed the Test leave their collapsed
+// <details> and become two open cards side by side (.bwp-pair), stacked on a
+// phone with Side Notes on top. #future-studies is kept as an anchor inside the
+// Side Notes card so old links still land there.
 // V5: the For Future Studies line no longer names a doctrine count ("outside the
 // doctrines above") — the list grew from thirteen to seventeen.
 // V4: cross-listings. A doctrine's crossRefs list shows another doctrine's word
@@ -26,7 +30,7 @@
 // link here as WORD_PAGE_PATH#<id>. Content: src/data/borrowed-words-page.js.
 import BaseLayout from "../../layouts/BaseLayout.astro";
 import {
-  pageTitle, pageSubtitle, intro, doctrines, futureStudies, failedClaims, sourceTypes
+  pageTitle, pageSubtitle, intro, doctrines, sideNotes, sideNotesIntro, failedClaims, failedIntro, sourceTypes
 } from "../../data/borrowed-words-page.js";
 
 const total = doctrines.reduce((n, d) => n + d.words.length, 0); // unique words
@@ -112,17 +116,21 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
   <p class="bwp-none" id="bwp-none" hidden>No words match. Clear the search or choose “All.”</p>
 
-  <details class="bwp-more" id="future-studies">
-    <summary><h2>For Future Studies</h2></summary>
-    <p>These words carry real pagan or philosophical freight but bear on subjects outside the doctrines above.</p>
-    <ul>{futureStudies.map(f => <li><strong>{f.word}.</strong>{" "}{f.note}</li>)}</ul>
-  </details>
-
-  <details class="bwp-more" id="failed-claims">
-    <summary><h2>Claims That Failed the Test</h2></summary>
-    <p>These popular claims circulate widely but cannot be supported from the history of the words. Using them weakens the true findings above.</p>
-    <ul>{failedClaims.map(f => <li><strong>{f.claim}</strong>{" "}{f.answer}</li>)}</ul>
-  </details>
+  <div class="bwp-pair">
+    <section class="bwp-card" id="side-notes">
+      <span class="bwp-anchor" id="future-studies"></span>
+      <p class="bwp-card-label">Real freight · no doctrine</p>
+      <h2>Side Notes</h2>
+      <p class="bwp-card-intro">{sideNotesIntro}</p>
+      <ul>{sideNotes.map(f => <li><strong>{f.word}.</strong>{" "}{f.note}</li>)}</ul>
+    </section>
+    <section class="bwp-card bwp-card-failed" id="failed-claims">
+      <p class="bwp-card-label">No substance · set aside</p>
+      <h2>Claims That Failed the Test</h2>
+      <p class="bwp-card-intro">{failedIntro}</p>
+      <ul>{failedClaims.map(f => <li><strong>{f.claim}</strong>{" "}{f.answer}</li>)}</ul>
+    </section>
+  </div>
 </main>
 </div>
 </BaseLayout>
@@ -176,7 +184,13 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
     if (!id) return;
     const w = words.find(x => x.id === id)
       || words.find(x => x.dataset.aliases!.split(" ").includes(id));
-    if (!w) return;
+    if (!w) {
+      // Not a word: the two foot cards (#side-notes, #failed-claims, and the
+      // old #future-studies anchor inside Side Notes).
+      document.getElementById(id)?.closest(".bwp-pair")
+        && document.getElementById(id)!.scrollIntoView({ block: "start", behavior });
+      return;
+    }
     if (w.hidden) {
       document.querySelectorAll<HTMLElement>(".bwp-chips").forEach(g => choose(g, g.querySelector("button")!));
       search.value = ""; state.q = "";
@@ -257,16 +271,22 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   .bwp-none { font-style: italic; color: #a89f8c; text-align: center; margin: 0 0 3rem; }
 
   /* Collapsed back matter */
-  .bwp-more { margin-top: 2rem; scroll-margin-top: 9rem; }
-  .bwp-more > summary { cursor: pointer; list-style: none; border-bottom: 1px solid rgba(186,117,23,0.55); padding-bottom: 0.4rem; margin: 0 0 0.8rem; }
-  .bwp-more > summary::-webkit-details-marker { display: none; }
-  .bwp-more > summary::before { content: "▸"; color: #BA7517; margin-right: 0.5em; }
-  .bwp-more[open] > summary::before { content: "▾"; }
-  .bwp-more > summary h2 { display: inline; font-size: 1.3rem; margin: 0; }
-  .bwp-more ul { padding-left: 1.2rem; margin: 0; }
-  .bwp-more li { margin-bottom: 0.5rem; }
-  .bwp-more li::marker { color: #BA7517; }
-  .bwp-more strong { color: #e8e2d4; }
+  /* Side Notes + Claims That Failed the Test: two cards side by side, stacked
+     on a phone (Side Notes on top). Gold border and wash at the standing stone's
+     weight; the failed-claims card is fainter. */
+  .bwp-pair { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 1.2rem; margin-top: 2.6rem; align-items: start; }
+  .bwp-card { border: 1px solid rgba(186,117,23,0.55); background: rgba(186,117,23,0.06); border-radius: 6px; padding: 1.1rem 1.25rem 0.8rem; scroll-margin-top: 9rem; min-width: 0; }
+  .bwp-card-failed { border-color: rgba(232,226,212,0.2); background: rgba(232,226,212,0.03); }
+  .bwp-anchor { display: block; scroll-margin-top: 9rem; }
+  .bwp-card-label { margin: 0 0 0.25rem; font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.16em; text-transform: uppercase; color: #BA7517; }
+  .bwp-card-failed .bwp-card-label { color: #a89f8c; }
+  .bwp-card h2 { font-size: 1.3rem; margin: 0 0 0.5rem; }
+  .bwp-card-intro { font-style: italic; font-size: 0.98rem; color: #b8af9c; margin: 0 0 0.8rem; }
+  .bwp-card ul { padding-left: 1.1rem; margin: 0; }
+  .bwp-card li { margin-bottom: 0.6rem; font-size: 0.98rem; line-height: 1.55; overflow-wrap: anywhere; }
+  .bwp-card li::marker { color: #BA7517; }
+  .bwp-card strong { color: #e8e2d4; }
+  @media (max-width: 760px) { .bwp-pair { grid-template-columns: minmax(0, 1fr); } }
 
   .bwp [hidden] { display: none !important; }
 

@@ -1,4 +1,6 @@
-// borrowed-words-page 1009 V6.js
+// borrowed-words-page 1009 V7.js
+// V7: futureStudies renamed sideNotes (the 4 words, fuller notes); adds sideNotesIntro and failedIntro
+// for the two side-by-side cards at the foot of the word page.
 // V6: eight For Future Studies words placed — kardia, syneidesis (Torah Dismissal), apokatastasis
 // (Hell), nous (Immortal Soul), sophia, demiourgos, parakletos (Trinity), gnosis (Faith Alone);
 // now 80 unique words; For Future Studies down to 4.
@@ -1535,22 +1537,26 @@ export const doctrines = [
   }
 ];
 
-export const futureStudies = [
+export const sideNotesIntro = "These words carry real pagan freight, but no false doctrine was built on them. In some, the apostles even turned the word against its source.";
+
+export const failedIntro = "These popular claims circulate widely but cannot be supported from the history of the words. Using them weakens the true findings above.";
+
+export const sideNotes = [
   {
     "word": "Parthenos (G3933), virgin",
-    "note": "Athena Parthenos; the Septuagint’s rendering of almah in Isaiah 7:14."
+    "note": "Athena Parthenos was the virgin goddess of the Parthenon. The Septuagint put parthenos for almah in Isaiah 7:14, and Matthew 1:23 quotes it. The weight came later, from Rome: Mary as the ever-virgin Queen of Heaven — a title Jeremiah heard given to another (Jeremiah 7:18)."
   },
   {
-    "word": "Metamorphoō (G3339), transfigure",
-    "note": "Ovid’s Metamorphoses, the shape-changing of the gods."
+    "word": "Metamorphoō (G3339), transfigure, transform",
+    "note": "Ovid’s Metamorphoses, the shape-changing of the gods. Paul turns the word to good use: “be ye transformed by the renewing of your mind” (Romans 12:2; 2 Corinthians 3:18) — the circumcised heart the Torah promised (Deuteronomy 30:6)."
   },
   {
     "word": "Thriambeuō (G2358), triumph",
-    "note": "From thriambos, a hymn to Dionysus sung in triumphal processions."
+    "note": "From thriambos, a hymn to Dionysus sung in Rome’s victory parades. Paul turns the parade on the powers themselves: “he made a shew of them openly, triumphing over them in it” (Colossians 2:15)."
   },
   {
     "word": "Typhōnikos (G5189), tempestuous",
-    "note": "From Typhon, the storm monster of Greek myth (Acts 27:14)."
+    "note": "From Typhon, the storm monster of Greek myth. Luke uses it once, of the wind Euroclydon that wrecked Paul’s ship (Acts 27:14) — a sailor’s word, and no doctrine was built on it."
   }
 ];
 
