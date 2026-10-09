@@ -1,4 +1,9 @@
-// doctrines.data 1008 V6.js
+// doctrines.data 1009 V7.js
+// V7: added pairs 14 (A Proverb Against the King of Babylon / Lucifer), 15 (Choose
+// Life / Predestination), 16 (No Manner of Similitude / Images in Worship) and 17
+// (A Kingdom of Priests / Clergy over the People). The four Old Paths bodies run to
+// several paragraphs, so they carry bodyFormat: "markdown". The four Departure
+// pages are tabbed (departure-tabs.js) and carry no body.
 // V6: Departure 05 Immortal Soul's long markdown body is removed — the page is
 // now the tabbed layout (departure-tabs.js via DoctrineTabs). Its short pre-V5
 // body is restored as the entry's summary; bodyFormat dropped.
@@ -312,6 +317,106 @@ export const doctrines = [
       deck: "A Record Swapped, a Life Untouched",
       tag: "Filthy Rags · Christ's Righteousness",
       body: "The teaching is that the obedience of Messiah gets placed on a believer's record, so when Yahuah looks at the man He sees somebody else's life instead. Nothing the man does afterward improves the paperwork, and nothing he fails to do damages it. Two verses hold the whole structure up, and both have been carried well outside their own fence. The filthy rags line in Isaiah 64:6 is describing a nation in open rebellion, not a man keeping the commandments — Isaiah is naming the rags of people who had quit, and the pulpit has turned it into a verdict on obedience itself. Ezekiel 18:20 says the reverse of a transfer: the righteousness of the righteous stays on him, and the wickedness of the wicked stays on him. Righteousness is not a certificate that changes hands. Blood pays what a man owes. It was never meant to live his life for him."
+    }
+  },
+  {
+    n: "14",
+    oldPaths: {
+      slug: "a-proverb-against-babylon",
+      title: "A Proverb Against the King of Babylon",
+      deck: "Isaiah Named the Man",
+      tag: "Lucifer, the Fallen Angel",
+      bodyFormat: "markdown",
+      body: `Isaiah 14 does not tell the story of an angel falling from heaven. It tells the reader exactly who it is about before it begins: “thou shalt take up this proverb against the king of Babylon” (Isaiah 14:4). It is a taunt song over a dead tyrant, and a few verses later the onlookers say it outright: “Is this the man that made the earth to tremble, that did shake kingdoms?” (Isaiah 14:16). Before that line the king is already in the grave: “Thy pomp is brought down to the grave… the worm is spread under thee, and the worms cover thee” (Isaiah 14:11). Maggots do not eat angels.
+
+The name the king gave himself was heylel (H1966), “shining one” — the morning star of the pagan sky, claimed by a man who said, “I will ascend into heaven, I will exalt my throne above the stars of God” (Isaiah 14:13). Ezekiel does the same with the prince of Tyre, and stops to say plainly, “yet thou art a man, and not God” (Ezekiel 28:2).
+
+The true morning star is not a fallen angel. It is the Son: “I am the root and the offspring of David, and the bright and morning star” (Revelation 22:16). Heylel was a stolen boast; the title belongs to its rightful bearer, and the adversary’s own names — satan, the accuser; diabolos, the slanderer; nachash, the serpent — have nothing to do with light.`,
+      torah: ["Numbers 22:22", "Deuteronomy 32:17"],
+      witness: ["Isaiah 14:4, 13, 16", "Ezekiel 28:2", "Revelation 22:16"]
+    },
+    departure: {
+      slug: "lucifer",
+      title: "Lucifer",
+      deck: "The Fallen Angel Hollywood Built — and Isaiah Never Wrote",
+      tag: "Lucifer, the Fallen Angel"
+      // No body: the page is the tabbed layout (departure-tabs.js via DoctrineTabs).
+    }
+  },
+  {
+    n: "15",
+    oldPaths: {
+      slug: "choose-life",
+      title: "Choose Life",
+      deck: "The Choice Was Always Yours",
+      tag: "Predestination · The Blood Without the Walk",
+      bodyFormat: "markdown",
+      body: `The Torah sets two roads in front of every man and tells him to choose: “I call heaven and earth to record this day against you, that I have set before you life and death, blessing and cursing: therefore choose life, that both thou and thy seed may live” (Deuteronomy 30:19). A choice that was settled before birth is no choice at all.
+
+The same Torah says a name can be removed: “Whosoever hath sinned against me, him will I blot out of my book” (Exodus 32:33). Ezekiel says the righteous man who turns away dies in his sin (Ezekiel 18:24). Yahushua said, “he that shall endure unto the end, the same shall be saved” (Matthew 24:13).
+
+The pattern was set in Egypt. The blood of the lamb on the doorposts saved Israel from death (Exodus 12:13) — and that same night they ate unleavened bread, which they kept for seven days (Exodus 12:15–17), and walked out toward Sinai, where the Torah was given. The blood began the journey; it did not end it. Paul applies the same order to the Messiah: “Christ our passover is sacrificed for us: Therefore let us keep the feast… with the unleavened bread of sincerity and truth” (1 Corinthians 5:7–8). Blood, then bread, then the walk.
+
+Yahuah knows the end from the beginning (Isaiah 46:10). Knowing is not forcing. He calls, man answers, and the one who keeps walking is the one who arrives.`,
+      torah: ["Deuteronomy 30:19", "Exodus 32:33"],
+      witness: ["Ezekiel 18:24", "Matthew 24:13", "Revelation 3:5"]
+    },
+    departure: {
+      slug: "predestination",
+      title: "Predestination",
+      deck: "Most Deny It by Name — and Live It Every Sunday",
+      tag: "Predestination · The Blood Without the Walk"
+      // No body: the page is the tabbed layout (departure-tabs.js via DoctrineTabs).
+    }
+  },
+  {
+    n: "16",
+    oldPaths: {
+      slug: "no-manner-of-similitude",
+      title: "No Manner of Similitude",
+      deck: "You Saw No Form — So Make None",
+      tag: "Crosses · Icons · Christian Tattoos and Symbols",
+      bodyFormat: "markdown",
+      body: `When Yahuah spoke at Sinai, Israel saw nothing: “ye heard the voice of the words, but saw no similitude; only ye heard a voice” (Deuteronomy 4:12). That was the reason for the command that follows: “Take ye therefore good heed… Lest ye corrupt yourselves, and make you a graven image, the similitude of any figure” (Deuteronomy 4:15–16).
+
+The second commandment does not make an exception for religious images: “Thou shalt not make unto thee any graven image, or any likeness of any thing… Thou shalt not bow down thyself to them” (Exodus 20:4–5).
+
+Even an object Yahuah ordered made could become an idol. Moses lifted up the bronze serpent on a pole for healing (Numbers 21:8–9). Seven hundred years later Israel was burning incense to it, and Hezekiah “brake in pieces the brasen serpent that Moses had made” (2 Kings 18:4). The sign that pointed to deliverance had become a thing to worship.
+
+Yahuah did give Israel something to wear — and it was not an image. “Make them fringes in the borders of their garments… that ye may look upon it, and remember all the commandments of Yahuah, and do them” (Numbers 15:38–39). What He forbade was the mark: “Ye shall not make any cuttings in your flesh for the dead, nor print any marks upon you: I am Yahuah” (Leviticus 19:28). The sign on the hand and between the eyes was to be His words (Deuteronomy 6:6–8), not a picture.`,
+      torah: ["Exodus 20:4–5", "Deuteronomy 4:12, 15–16", "Leviticus 19:28", "Numbers 15:38–39"],
+      witness: ["2 Kings 18:4", "Isaiah 40:18", "Acts 17:29"]
+    },
+    departure: {
+      slug: "images-in-worship",
+      title: "Images in Worship",
+      deck: "The Cross on the Neck, the Steeple, and the Skin",
+      tag: "Crosses · Icons · Christian Tattoos and Symbols"
+      // No body: the page is the tabbed layout (departure-tabs.js via DoctrineTabs).
+    }
+  },
+  {
+    n: "17",
+    oldPaths: {
+      slug: "a-kingdom-of-priests",
+      title: "A Kingdom of Priests",
+      deck: "Every One of Them, Not a Class Above Them",
+      tag: "Clergy and Laity",
+      bodyFormat: "markdown",
+      body: `At Sinai, Yahuah described the whole nation: “ye shall be unto me a kingdom of priests, and an holy nation” (Exodus 19:6). When two men prophesied in the camp and Joshua wanted them stopped, Moses answered, “would God that all Yahuah’s people were prophets” (Numbers 11:29).
+
+The apostles say the same to every believer: “ye are a chosen generation, a royal priesthood” (1 Peter 2:9), and Yahushua “hath made us kings and priests unto God and his Father” (Revelation 1:6). Yahushua warned against titles that lift one man over the rest: “be not ye called Rabbi: for one is your Master… and all ye are brethren” (Matthew 23:8).
+
+The assembly has elders and overseers who serve, teach, and keep watch — but they are brothers among brothers, not a priesthood standing between the people and Yahuah. There is “one mediator between God and men, the man Christ Jesus” (1 Timothy 2:5) — and no second one, whether he wears a collar or a suit.`,
+      torah: ["Exodus 19:6", "Numbers 11:29"],
+      witness: ["1 Peter 2:9", "Revelation 1:6", "Matthew 23:8–10", "1 Timothy 2:5"]
+    },
+    departure: {
+      slug: "clergy-over-the-people",
+      title: "Clergy over the People",
+      deck: "One Pulpit, One Pew — and the Wall Between Them",
+      tag: "Clergy and Laity"
+      // No body: the page is the tabbed layout (departure-tabs.js via DoctrineTabs).
     }
   }
 ];

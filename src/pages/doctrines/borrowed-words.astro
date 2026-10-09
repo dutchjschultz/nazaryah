@@ -1,5 +1,7 @@
 ---
-// borrowed-words-page 1008 V4.astro — src/pages/doctrines/borrowed-words.astro
+// borrowed-words-page 1009 V5.astro — src/pages/doctrines/borrowed-words.astro
+// V5: the For Future Studies line no longer names a doctrine count ("outside the
+// doctrines above") — the list grew from thirteen to seventeen.
 // V4: cross-listings. A doctrine's crossRefs list shows another doctrine's word
 // as a second listing (id <word>--<doctrine>) with an italic "In this doctrine"
 // note at the top of the opened entry; its aliases (pneuma-stoics,
@@ -112,7 +114,7 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
   <details class="bwp-more" id="future-studies">
     <summary><h2>For Future Studies</h2></summary>
-    <p>These words carry real pagan or philosophical freight but bear on subjects outside the thirteen doctrines.</p>
+    <p>These words carry real pagan or philosophical freight but bear on subjects outside the doctrines above.</p>
     <ul>{futureStudies.map(f => <li><strong>{f.word}.</strong>{" "}{f.note}</li>)}</ul>
   </details>
 

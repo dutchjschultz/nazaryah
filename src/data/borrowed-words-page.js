@@ -1,4 +1,6 @@
-// borrowed-words-page 1008 V4.js
+// borrowed-words-page 1009 V5.js
+// V5: doctrines 14–17 added (Lucifer, Predestination, Images in Worship, Clergy over the People): 13 new words, now 72 unique;
+// those words leave For Future Studies (12 remain); their story links open each doctrine’s tabs.
 // V4: cross-listings — each doctrine has crossRefs ({ id, note, aliases }); a word can show under
 // more than one doctrine with an "In this doctrine" note. Pneuma is cross-listed under Immortal
 // Soul (alias pneuma-stoics moves there); Oikonomia keeps one entry (Rightly Divided), cross-listed
@@ -21,7 +23,7 @@ export const intro = [
   "Every word on this page is a Greek word from the New Testament that was already in use before the apostles wrote it — in the temples of the gods, at the oracle of Delphi, in the schools of the philosophers, or on the inscriptions of the emperors. Each one replaced a Hebrew word, and each one brought its own meaning with it.",
   "The list was made by screening every Greek word in the New Testament — 5,523 entries in Strong’s dictionary. A word was kept only if its pagan or philosophical meaning can be shown to have changed a doctrine. Words that kept their Hebrew meaning in the church’s hands were left off, no matter where they came from.",
   "How do we know the Hebrew word beneath the Greek? Where the New Testament quotes the Old, or the Greek translation of the Old Testament renders a Hebrew word, the bridge is shown under the entry, so every claim can be checked.",
-  "The words are grouped under the thirteen doctrines they changed. Below them are words that bear on other subjects, and the popular claims that did not survive the test."
+  "The words are grouped under the seventeen doctrines they changed. Below them are words that bear on other subjects, and the popular claims that did not survive the test."
 ];
 
 export const doctrines = [
@@ -1089,6 +1091,314 @@ export const doctrines = [
         "story": []
       }
     ]
+  },
+  {
+    "num": "14",
+    "title": "Lucifer",
+    "departureSlug": "lucifer",
+    "oldPathsSlug": "a-proverb-against-babylon",
+    "note": null,
+    "crossRefs": [],
+    "words": [
+      {
+        "id": "phosphoros",
+        "greek": "Phōsphoros / Heōsphoros",
+        "strongs": "G5459",
+        "kjv": "day star",
+        "source": "The morning-star god, son of the dawn goddess Eos. The Septuagint put heōsphoros in Isaiah 14:12; Jerome’s Latin made it lucifer.",
+        "hebrew": "Heylel (H1966), “shining one” — the boast of “the king of Babylon” (Isaiah 14:4, 12), whom the onlookers call “the man” (14:16).",
+        "fed": "Lucifer the fallen angel — and the Messiah’s own title, which Jerome used of Him in 2 Peter 1:19, handed to the adversary.",
+        "bridge": "The Septuagint of Isaiah 14:12 puts heōsphoros for heylel.",
+        "aliases": [],
+        "sources": [
+          "Gods & myths",
+          "Later teachers & translators"
+        ],
+        "story": [
+          {
+            "label": "Lucifer",
+            "href": "/doctrines/the-departure/lucifer#word-phosphoros"
+          }
+        ]
+      },
+      {
+        "id": "drakon",
+        "greek": "Drakōn",
+        "strongs": "G1404",
+        "kjv": "dragon",
+        "source": "The serpent-monsters of Greek myth: Python of Delphi, slain by Apollo, and Ladon, who guarded the golden apples.",
+        "hebrew": "Tannin (H8577), a prophetic picture of an empire and its king — Pharaoh, “the great dragon that lieth in the midst of his rivers” (Ezekiel 29:3).",
+        "fed": "A literal winged dragon-devil in place of the prophets’ picture of beastly kingdoms.",
+        "bridge": "The Septuagint of Ezekiel 29:3 puts drakōn for tannin.",
+        "aliases": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": [
+          {
+            "label": "Lucifer",
+            "href": "/doctrines/the-departure/lucifer#word-drakon"
+          }
+        ]
+      },
+      {
+        "id": "kosmokrator",
+        "greek": "Kosmokratōr",
+        "strongs": "G2888",
+        "kjv": "rulers of the darkness of this world",
+        "source": "Greek astrology’s title for the planetary powers believed to rule human fate (Ephesians 6:12).",
+        "hebrew": "Princes behind the nations (Daniel 10:13), answered by obedience and prayer: “Submit yourselves therefore to God. Resist the devil, and he will flee from you” (James 4:7).",
+        "fed": "Territorial spirits over cities, mapped and bound by name.",
+        "bridge": null,
+        "aliases": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": [
+          {
+            "label": "Lucifer",
+            "href": "/doctrines/the-departure/lucifer#word-kosmokrator"
+          }
+        ]
+      },
+      {
+        "id": "angelos",
+        "greek": "Angelos",
+        "strongs": "G32",
+        "kjv": "angel",
+        "source": "The word means messenger; Greek art gave divine messengers wings — Hermes’ sandals, Nike and Eros.",
+        "hebrew": "Malak (H4397), messengers who came looking like men (Genesis 18:2; 19:1, 5; Hebrews 13:2).",
+        "fed": "Winged angels, and the dead “getting their wings.”",
+        "bridge": "Hebrews 1:7 quotes Psalm 104:4 — angelos for malak.",
+        "aliases": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": [
+          {
+            "label": "Lucifer",
+            "href": "/doctrines/the-departure/lucifer#word-angelos"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "num": "15",
+    "title": "Predestination",
+    "departureSlug": "predestination",
+    "oldPathsSlug": "choose-life",
+    "note": null,
+    "crossRefs": [],
+    "words": [
+      {
+        "id": "proorizo",
+        "greek": "Proorizō",
+        "strongs": "G4309",
+        "kjv": "predestinate",
+        "source": "The word means to mark out a boundary beforehand. The church read it through Stoic heimarmenē — fate that nothing can change.",
+        "hebrew": "Bachar (H977), to choose — and every man is told to choose: “therefore choose life” (Deuteronomy 30:19).",
+        "fed": "Predestination — and its working form in most churches: the blood without the walk.",
+        "bridge": null,
+        "aliases": [],
+        "sources": [
+          "Philosophers",
+          "Later teachers & translators"
+        ],
+        "story": [
+          {
+            "label": "Predestination",
+            "href": "/doctrines/the-departure/predestination#word-proorizo"
+          }
+        ]
+      },
+      {
+        "id": "pronoia",
+        "greek": "Pronoia",
+        "strongs": "G4307",
+        "kjv": "providence",
+        "source": "Stoic providence, one with fate, so that nothing could have been otherwise (Zeno, Chrysippus); Athena was worshipped as Pronoia at Delphi.",
+        "hebrew": "The “if” of Isaiah 1:19–20, and names blotted out of the book (Exodus 32:33; Revelation 3:5).",
+        "fed": "Once saved, always saved.",
+        "bridge": null,
+        "aliases": [],
+        "sources": [
+          "Philosophers",
+          "Temples & cults"
+        ],
+        "story": [
+          {
+            "label": "Predestination",
+            "href": "/doctrines/the-departure/predestination#word-pronoia"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "num": "16",
+    "title": "Images in Worship",
+    "departureSlug": "images-in-worship",
+    "oldPathsSlug": "no-manner-of-similitude",
+    "note": null,
+    "crossRefs": [],
+    "words": [
+      {
+        "id": "stauros",
+        "greek": "Stauros",
+        "strongs": "G4716",
+        "kjv": "cross",
+        "source": "In Greek an upright stake. The cross as a sacred sign began with Constantine: “in this sign conquer” (Eusebius, Life of Constantine 1.28).",
+        "hebrew": "Etz (H6086), tree — “he that is hanged is accursed” (Deuteronomy 21:23); the bronze serpent broken as Nehushtan when Israel worshipped it (2 Kings 18:4).",
+        "fed": "The cross as an object of reverence — on steeples, necks, caps, and skin.",
+        "bridge": "Galatians 3:13 quotes Deuteronomy 21:23 and calls the stauros a tree.",
+        "aliases": [],
+        "sources": [
+          "Emperors & state",
+          "Later teachers & translators"
+        ],
+        "story": [
+          {
+            "label": "Images in Worship",
+            "href": "/doctrines/the-departure/images-in-worship#word-stauros"
+          }
+        ]
+      },
+      {
+        "id": "eikon",
+        "greek": "Eikōn",
+        "strongs": "G1504",
+        "kjv": "image",
+        "source": "Plato’s image of a heavenly form. The Second Council of Nicaea (787) argued that honor paid to an image passes to the one it shows.",
+        "hebrew": "Pesel (H6459) and temunah (H8544), forbidden in worship: “ye saw no manner of similitude” (Deuteronomy 4:15–16).",
+        "fed": "Icon veneration, and the painted face of Jesus on Protestant walls.",
+        "bridge": "The Septuagint of Genesis 1:26 puts eikōn for tselem.",
+        "aliases": [],
+        "sources": [
+          "Philosophers",
+          "Later teachers & translators"
+        ],
+        "story": [
+          {
+            "label": "Images in Worship",
+            "href": "/doctrines/the-departure/images-in-worship#word-eikon"
+          }
+        ]
+      },
+      {
+        "id": "stigma",
+        "greek": "Stigma",
+        "strongs": "G4742",
+        "kjv": "marks",
+        "source": "The brand or tattoo of slaves and of a god’s devotees (Herodotus 2.113); Ptolemy IV ordered Jews branded with the ivy leaf of Dionysus (3 Maccabees 2:29).",
+        "hebrew": "“Nor print any marks upon you: I am Yahuah” (Leviticus 19:28). Paul’s marks were scars from rods and stones (2 Corinthians 11:25; Galatians 6:17).",
+        "fed": "Christian tattoos, and the “stigmata” of the saints.",
+        "bridge": null,
+        "aliases": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": [
+          {
+            "label": "Images in Worship",
+            "href": "/doctrines/the-departure/images-in-worship#word-stigma"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "num": "17",
+    "title": "Clergy over the People",
+    "departureSlug": "clergy-over-the-people",
+    "oldPathsSlug": "a-kingdom-of-priests",
+    "note": null,
+    "crossRefs": [],
+    "words": [
+      {
+        "id": "episkopos",
+        "greek": "Episkopos",
+        "strongs": "G1985",
+        "kjv": "bishop",
+        "source": "The title of civic overseers in Greek cities. Ignatius (c. 110) set one bishop above the elders.",
+        "hebrew": "Pakad (H6485), oversight as care (Numbers 4:16). Elders are not “lords over God’s heritage” (1 Peter 5:3).",
+        "fed": "One bishop, or one senior pastor, over the assembly.",
+        "bridge": "The Septuagint of Numbers 4:16 calls Eleazar episkopos.",
+        "aliases": [],
+        "sources": [
+          "Emperors & state",
+          "Later teachers & translators"
+        ],
+        "story": [
+          {
+            "label": "Clergy over the People",
+            "href": "/doctrines/the-departure/clergy-over-the-people#word-episkopos"
+          }
+        ]
+      },
+      {
+        "id": "hiereus",
+        "greek": "Hiereus · Laikos",
+        "strongs": "G2409",
+        "kjv": "priest",
+        "source": "The servant of a Greek temple. Clement of Rome (c. 96) is the first to call ordinary believers laikos, “laymen.”",
+        "hebrew": "Kohen (H3548); the whole nation is “a kingdom of priests” (Exodus 19:6), and every believer “a royal priesthood” (1 Peter 2:9).",
+        "fed": "A priest class between the believer and Yahuah, and the laity as an audience.",
+        "bridge": "1 Peter 2:9 draws on Exodus 19:6 — the kingdom of priests.",
+        "aliases": [],
+        "sources": [
+          "Temples & cults",
+          "Later teachers & translators"
+        ],
+        "story": [
+          {
+            "label": "Clergy over the People",
+            "href": "/doctrines/the-departure/clergy-over-the-people#word-hiereus"
+          }
+        ]
+      },
+      {
+        "id": "poimen",
+        "greek": "Poimēn",
+        "strongs": "G4166",
+        "kjv": "pastor",
+        "source": "Homer calls kings like Agamemnon poimēn laōn, “shepherd of the people” — a ruler’s title over the crowd.",
+        "hebrew": "Ro’eh (H7462): “Yahuah is my shepherd” (Psalm 23:1); woe to the shepherds who feed themselves (Jeremiah 23:1; Ezekiel 34:2).",
+        "fed": "The senior pastor — the Catholic priest under a Protestant title; “my pastor says.”",
+        "bridge": "Matthew 26:31 quotes Zechariah 13:7 — poimēn for ro’eh.",
+        "aliases": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": [
+          {
+            "label": "Clergy over the People",
+            "href": "/doctrines/the-departure/clergy-over-the-people#word-poimen"
+          }
+        ]
+      },
+      {
+        "id": "anathema",
+        "greek": "Anathema",
+        "strongs": "G331",
+        "kjv": "accursed",
+        "source": "Votive offerings hung up in Greek temples; from the fourth century, the curses closing the creeds of church councils.",
+        "hebrew": "Cherem (H2764), something devoted to Yahuah (Joshua 6:17). Paul uses anathema for “any other gospel” (Galatians 1:8), not for disagreeing with a council.",
+        "fed": "Excommunication by office, and creeds enforced by curse.",
+        "bridge": "The Septuagint of Joshua 6:17 puts anathema for cherem.",
+        "aliases": [],
+        "sources": [
+          "Temples & cults",
+          "Later teachers & translators"
+        ],
+        "story": [
+          {
+            "label": "Clergy over the People",
+            "href": "/doctrines/the-departure/clergy-over-the-people#word-anathema"
+          }
+        ]
+      }
+    ]
   }
 ];
 
@@ -1118,40 +1428,8 @@ export const futureStudies = [
     "note": "Plato’s Demiurge, the craftsman-god of the Timaeus (Hebrews 11:10)."
   },
   {
-    "word": "Phōsphoros (G5459), day star",
-    "note": "Phosphoros, the god of the morning star; Latin Lucifer (2 Peter 1:19)."
-  },
-  {
-    "word": "Stauros (G4716), cross",
-    "note": "A stake; the cross as a symbol came later."
-  },
-  {
     "word": "Parthenos (G3933), virgin",
     "note": "Athena Parthenos; the Septuagint’s rendering of almah in Isaiah 7:14."
-  },
-  {
-    "word": "Angelos (G32), angel",
-    "note": "Hermes, messenger of the gods; Hebrew malak."
-  },
-  {
-    "word": "Kosmokratōr (G2888), rulers of this world",
-    "note": "A title of astral and planetary powers (Ephesians 6:12)."
-  },
-  {
-    "word": "Eikōn (G1504), image",
-    "note": "Plato’s image; the root of church icons."
-  },
-  {
-    "word": "Pronoia / Proorizō (G4307, G4309), providence, predestinate",
-    "note": "Stoic fate, later Augustine and Calvin."
-  },
-  {
-    "word": "Anathema (G331), accursed",
-    "note": "An offering hung in a pagan temple; later the curses of church councils."
-  },
-  {
-    "word": "Episkopos, Hiereus (G1985, G2409), bishop, priest",
-    "note": "Greek civic and temple offices behind the clergy hierarchy."
   },
   {
     "word": "Metamorphoō (G3339), transfigure",
@@ -1164,10 +1442,6 @@ export const futureStudies = [
   {
     "word": "Typhōnikos (G5189), tempestuous",
     "note": "From Typhon, the storm monster of Greek myth (Acts 27:14)."
-  },
-  {
-    "word": "Drakōn (G1404), dragon",
-    "note": "The serpent-monsters of Greek myth; Hebrew tannin."
   },
   {
     "word": "Apokatastasis (G605), restitution",

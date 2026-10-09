@@ -1,4 +1,5 @@
-// borrowed-words 1008 V6.js
+// borrowed-words 1009 V7.js
+// V7: doctrines 14–17 added (Lucifer, Predestination, Images in Worship, Clergy over the People).
 // V6: Immortal Soul dropdown gains Phantasma (now 5 words, matching the tabs and the word page).
 // V5: WORD_PAGE_LIVE on — /doctrines/borrowed-words/ is built; every dropdown label links to its entry.
 // V4: Intro updated to the approved text (Intro V6): "added to it" line, four steps, Plato line
@@ -338,6 +339,82 @@ export const doctrines = [
         sourceName: "Homer wrote", sourceLine: "hilaskomai — appeasing an angry god with an offering",
         scriptureName: "Moses wrote", scriptureLine: "kapporet — the mercy seat Yahuah Himself provided (Exodus 25:22)",
         linkLabel: "Homer’s word or Yahuah’s?" }
+    ]
+  },
+  {
+    num: "14", oldPathsSlug: "a-proverb-against-babylon", departureSlug: "lucifer",
+    departureSource: "Jerome",
+    words: [
+      { id: "phosphoros", greek: "Phōsphoros", strongs: "G5459", yourBible: "day star · Lucifer",
+        sourceName: "The Greeks wrote", sourceLine: "Heōsphoros — the morning-star god, son of the dawn",
+        scriptureName: "Peter wrote", scriptureLine: "phōsphoros — the Messiah rising “in your hearts” (2 Peter 1:19)",
+        linkLabel: "The Greeks’ word or Yahuah’s?" },
+      { id: "drakon", greek: "Drakōn", strongs: "G1404", yourBible: "dragon",
+        sourceName: "Hesiod wrote", sourceLine: "drakōn — the monster heroes slew",
+        scriptureName: "Ezekiel wrote", scriptureLine: "tannin — Pharaoh, “the great dragon” (Ezekiel 29:3)",
+        linkLabel: "Hesiod’s word or Yahuah’s?" },
+      { id: "kosmokrator", greek: "Kosmokratōr", strongs: "G2888", yourBible: "rulers of the darkness",
+        sourceName: "The astrologers wrote", sourceLine: "kosmokratores — the planets that rule fate",
+        scriptureName: "James wrote", scriptureLine: "“Resist the devil, and he will flee from you” (James 4:7)",
+        linkLabel: "The astrologers’ word or Yahuah’s?" },
+      { id: "angelos", greek: "Angelos", strongs: "G32", yourBible: "angel",
+        sourceName: "Greek art showed", sourceLine: "Nike and Eros — messengers with wings",
+        scriptureName: "Moses wrote", scriptureLine: "malak — “three men” at Abraham’s tent (Genesis 18:2)",
+        linkLabel: "The Greeks’ word or Yahuah’s?" }
+    ]
+  },
+  {
+    num: "15", oldPathsSlug: "choose-life", departureSlug: "predestination",
+    departureSource: "the Stoics",
+    words: [
+      { id: "proorizo", greek: "Proorizō", strongs: "G4309", yourBible: "predestinate",
+        sourceName: "The Stoics wrote", sourceLine: "heimarmenē — fate that nothing can change",
+        scriptureName: "Moses wrote", scriptureLine: "“therefore choose life” (Deuteronomy 30:19)",
+        linkLabel: "The Stoics’ word or Yahuah’s?" },
+      { id: "pronoia", greek: "Pronoia", strongs: "G4307", yourBible: "providence",
+        sourceName: "The Stoics wrote", sourceLine: "pronoia — all things arranged in advance",
+        scriptureName: "Paul wrote", scriptureLine: "blood, then bread — “let us keep the feast” (1 Corinthians 5:7–8)",
+        linkLabel: "The Stoics’ word or Yahuah’s?" }
+    ]
+  },
+  {
+    num: "16", oldPathsSlug: "no-manner-of-similitude", departureSlug: "images-in-worship",
+    departureSource: "Constantine",
+    words: [
+      { id: "stauros", greek: "Stauros", strongs: "G4716", yourBible: "cross",
+        sourceName: "Constantine wrote", sourceLine: "“in this sign conquer” — the cross on the shields",
+        scriptureName: "Hezekiah did", scriptureLine: "broke the bronze serpent — “a piece of brass” (2 Kings 18:4)",
+        linkLabel: "Constantine’s word or Yahuah’s?" },
+      { id: "eikon", greek: "Eikōn", strongs: "G1504", yourBible: "image",
+        sourceName: "Plato wrote", sourceLine: "eikōn — the image that stands for heaven",
+        scriptureName: "Moses wrote", scriptureLine: "“ye saw no manner of similitude” (Deuteronomy 4:15)",
+        linkLabel: "Plato’s word or Yahuah’s?" },
+      { id: "stigma", greek: "Stigma", strongs: "G4742", yourBible: "marks",
+        sourceName: "The pagan temples did", sourceLine: "stigma — the god’s brand on the devotee’s skin",
+        scriptureName: "Moses wrote", scriptureLine: "“nor print any marks upon you” (Leviticus 19:28)",
+        linkLabel: "The temple’s mark or Yahuah’s?" }
+    ]
+  },
+  {
+    num: "17", oldPathsSlug: "a-kingdom-of-priests", departureSlug: "clergy-over-the-people",
+    departureSource: "the Greek temples",
+    words: [
+      { id: "episkopos", greek: "Episkopos", strongs: "G1985", yourBible: "bishop",
+        sourceName: "Ignatius wrote", sourceLine: "“do nothing without the bishop”",
+        scriptureName: "Peter wrote", scriptureLine: "“neither as being lords over God’s heritage” (1 Peter 5:3)",
+        linkLabel: "Ignatius’s word or Yahuah’s?" },
+      { id: "hiereus", greek: "Hiereus · Laikos", strongs: "G2409", yourBible: "priest · laity",
+        sourceName: "Clement wrote", sourceLine: "laikos — the layman, a lower class",
+        scriptureName: "Moses wrote", scriptureLine: "“a kingdom of priests” (Exodus 19:6)",
+        linkLabel: "Clement’s word or Yahuah’s?" },
+      { id: "poimen", greek: "Poimēn", strongs: "G4166", yourBible: "pastors",
+        sourceName: "Homer wrote", sourceLine: "poimēn laōn — the king as shepherd over the people",
+        scriptureName: "Ezekiel wrote", scriptureLine: "“I, even I, will both search my sheep” (Ezekiel 34:11)",
+        linkLabel: "Homer’s word or Yahuah’s?" },
+      { id: "anathema", greek: "Anathema", strongs: "G331", yourBible: "accursed",
+        sourceName: "The councils wrote", sourceLine: "anathema — cursed for disagreeing",
+        scriptureName: "Paul wrote", scriptureLine: "anathema for “any other gospel” (Galatians 1:8)",
+        linkLabel: "The councils’ word or Yahuah’s?" }
     ]
   }
 ];
