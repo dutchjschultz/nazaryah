@@ -1,5 +1,5 @@
 ---
-// DoctrineTabs.astro · 1008 V1 — tabbed Departure page body: a short opening,
+// DoctrineTabs.astro · 1009 V2 — tabbed Departure page body: a short opening,
 // one tab per root word (The Greek word / What the Hebrew said / How it grew —
 // a gold timeline / What it built + a link to the word on Words Your Bible
 // Borrowed), then a closing "The Old Path" with Further Reading.
@@ -9,7 +9,14 @@
 // tab rewrites the address the same way (replaceState — no history spam).
 // Colours are the doctrine pages' fixed dark palette; --font-display (Cinzel) is
 // caps-only, so every italic runs in the body serif.
+// V2: verse-first tabs. A tab carrying `verse` opens with the verse (gold-edged
+// quote + KJV ref), then What you were taught / What the Greek brought in / The
+// Hebrew beneath it / a boxed "Read it again", then How it grew and What it built
+// as before. A tab without `verse` keeps the V1 sections. Further Reading labels
+// may hold {count}, filled with the unique word count from borrowed-words-page.js.
 import { departureTabs } from "../data/departure-tabs.js";
+import { doctrines as bwDoctrines } from "../data/borrowed-words-page.js";
+const wordCount = new Set(bwDoctrines.flatMap((x) => x.words.map((w) => w.id))).size;
 interface Props { slug: string; }
 const { slug } = Astro.props;
 const d = departureTabs[slug];
@@ -33,10 +40,26 @@ const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>
     <section class="dt-panel" id={`word-${t.id}`} data-panel={t.id} role="tabpanel" hidden={i !== 0}>
       <p class="dt-role">{t.role}</p>
       <h2>{t.greek}{" "}<span class="dt-k">“{t.kjv}”</span></h2>
-      <h3>The Greek word</h3>
-      {t.word.map((p) => <p set:html={fmt(p)} />)}
-      <h3>What the Hebrew said</h3>
-      {t.hebrew.map((p) => <p set:html={fmt(p)} />)}
+      {t.verse ? (
+        <>
+          <h3>The verse</h3>
+          <blockquote class="dt-verse"><p set:html={fmt(t.verse.text)} /><cite>{t.verse.ref} (KJV)</cite></blockquote>
+          <h3>What you were taught</h3>
+          {t.taught.map((p) => <p set:html={fmt(p)} />)}
+          <h3>What the Greek brought in</h3>
+          {t.word.map((p) => <p set:html={fmt(p)} />)}
+          <h3>The Hebrew beneath it</h3>
+          {t.hebrew.map((p) => <p set:html={fmt(p)} />)}
+          <div class="dt-reread"><p class="dt-reread-label">Read it again</p>{t.reread.map((p) => <p set:html={fmt(p)} />)}</div>
+        </>
+      ) : (
+        <>
+          <h3>The Greek word</h3>
+          {t.word.map((p) => <p set:html={fmt(p)} />)}
+          <h3>What the Hebrew said</h3>
+          {t.hebrew.map((p) => <p set:html={fmt(p)} />)}
+        </>
+      )}
       <h3>How it grew</h3>
       <ol class="dt-time">
         {t.timeline.map(([when, who, what]) => (
@@ -53,7 +76,7 @@ const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>
     <h2>The Old Path</h2>
     {d.closing.map((p) => <p set:html={fmt(p)} />)}
     <h3>Further Reading</h3>
-    <ul>{d.further.map(([label, href]) => <li><a href={href}>{label}</a></li>)}</ul>
+    <ul>{d.further.map(([label, href]) => <li><a href={href}>{label.replace("{count}", String(wordCount))}</a></li>)}</ul>
   </section>
 </div>
 )}
@@ -138,6 +161,26 @@ const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>
     letter-spacing: 0.1em; text-transform: uppercase; color: #BA7517;
   }
   .dt-who { font-weight: 700; color: #e8e2d4; }
+
+  /* The verse — gold-edged quote; italic in the body serif, ref in small caps gold. */
+  .dt-verse {
+    margin: 0.4rem 0 1.2rem; padding: 1rem 1.3rem 0.9rem; border-left: 3px solid #BA7517;
+    background: rgba(186,117,23,0.06); border-radius: 0 6px 6px 0;
+  }
+  .dt-verse p { font-family: var(--font-body); font-style: italic; font-size: 1.18rem; color: #e8e2d4; margin: 0 0 0.5rem !important; }
+  .dt-verse cite {
+    font-family: var(--font-display); font-style: normal; font-size: 0.78rem; font-weight: 700;
+    letter-spacing: 0.1em; color: #BA7517;
+  }
+  /* Read it again — boxed, at the standing stone's weight. */
+  .dt-reread {
+    margin: 2rem 0 0.6rem; padding: 1.1rem 1.4rem 0.2rem;
+    border: 1px solid rgba(186,117,23,0.55); background: rgba(186,117,23,0.06); border-radius: 6px;
+  }
+  .dt-reread-label {
+    font-family: var(--font-display); font-size: 10px !important; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: #BA7517; margin: 0 0 0.5rem !important;
+  }
 
   .dt-built { list-style: disc; padding-left: 1.3rem; margin: 0 0 1.4rem; }
   .dt-built li { margin: 0 0 0.6rem; }
