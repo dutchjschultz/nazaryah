@@ -1,5 +1,10 @@
 ---
-// src/pages/doctrines/the-departure.astro · 1007 V3
+// src/pages/doctrines/the-departure.astro · 1009 V4
+// V4: each card's bottom line now names its Old Paths partner — "→ THE NAME
+// THAT ENDURES" and so on, from the pair's oldPaths.title (small caps via
+// .doctrine-tag). The Old Paths cards carry the Departure title the same way,
+// so every card names its partner. departure.tag stays in the data and still
+// shows under the deck on the Departure page itself.
 // V3: the doctrine grid carries borrowed="departure" — the Words Your Bible
 // Borrowed intro above the cards and a dropdown under each doctrine card
 // (DoctrineGrid V3).
@@ -17,7 +22,8 @@ const cards = doctrines.map((d) => ({
   n: d.n,
   title: d.departure.title,
   deck: d.departure.deck,
-  tag: d.departure.tag,
+  // The card's bottom line names its Old Paths partner (V4).
+  tag: `→ ${d.oldPaths.title}`,
   href: `/doctrines/the-departure/${d.departure.slug}`,
   slug: d.departure.slug,
 }));
