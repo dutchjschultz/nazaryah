@@ -1,4 +1,10 @@
-// doctrines.data 1009 V7.js
+// doctrines.data 1009 V8.js
+// V8: every Old Paths `tag` (the small-caps topic line on its card and page) is
+// now its pair's Departure title — SACRED NAMES, TORAH DISMISSAL … CLERGY OVER
+// THE PEOPLE (07 and 09 use the word page's shorter names, Going to Heaven and
+// Purification & Holiness) — so the Old Paths card, the Departure page and the word page all
+// name the doctrine the same way (Dutch, 1009). Departure tags are unchanged.
+// This supersedes tag rule 1 below for the Old Paths half.
 // V7: added pairs 14 (A Proverb Against the King of Babylon / Lucifer), 15 (Choose
 // Life / Predestination), 16 (No Manner of Similitude / Images in Worship) and 17
 // (A Kingdom of Priests / Clergy over the People). The four Old Paths bodies run to
@@ -64,7 +70,7 @@ export const doctrines = [
       slug: "the-name-that-endures",
       title: "The Name That Endures",
       deck: "He Gave It to Be Remembered — Generation to Generation",
-      tag: "God's Name",
+      tag: "Sacred Names",
       body: "Yahuah revealed His name at the bush and bound it to time itself: this is His name forever, His memorial to all generations. Moses charged Israel to fear that glorious and fearful name, and the Psalms and Malachi both record it as the thing His people remembered and spoke among themselves. In most English Bibles that name has been replaced by a title roughly seven thousand times. Restoring it is obedience to a standing command, not innovation.",
       torah: ["Exodus 3:15", "Deuteronomy 28:58"],
       witness: ["Psalm 135:13", "Malachi 3:16"]
@@ -84,7 +90,7 @@ export const doctrines = [
       slug: "walk-after-the-door",
       title: "The Walk After the Door",
       deck: "Deliverance Opens It. Torah Is What Walking Looks Like.",
-      tag: "Law Abolished",
+      tag: "Torah Dismissal",
       body: "Moses said the commandment is not hidden, not far off, not beyond the sea — it is near, in the mouth and in the heart, that it may be done. Torah was never the door. Deliverance comes through the blood Yahuah provided; Torah is what walking looks like on the other side of it. Collapsing the two produces both errors at once: a people who think keeping saves them, and a people who think being saved excuses them from walking.",
       torah: ["Deuteronomy 30:11-14"],
       witness: ["Psalm 119:44-45", "Proverbs 6:23"]
@@ -104,7 +110,7 @@ export const doctrines = [
       slug: "a-pure-lip",
       title: "A Pure Lip",
       deck: "He Promised a Language, Not a Noise",
-      tag: "Speaking in Tongues",
+      tag: "Tongue Talking",
       body: "The Spirit came upon the seventy elders and they prophesied, and Moses answered the complaint by wishing all Yahuah's people were prophets. Joel promised the same outpouring on sons, daughters, servants, and handmaids. Zephaniah names the gift precisely: a pure lip, a language given so that all may call on the Name and serve with one consent. The Spirit is poured out and the gifts operate. Scripture describes them as understood.",
       torah: ["Numbers 11:25-29"],
       witness: ["Joel 2:28-29", "Zephaniah 3:9"]
@@ -124,7 +130,7 @@ export const doctrines = [
       slug: "wicked-consumed",
       title: "The Wicked Consumed",
       deck: "The Fire Finishes Its Work",
-      tag: "Hell · Eternal Torment",
+      tag: "Hell",
       body: "Fire went out from Yahuah and devoured Nadab and Abihu; the plain of Sodom was left brimstone and salt and burning. Malachi describes the day as an oven that leaves neither root nor branch, and the wicked as ashes under the soles of the feet. The Psalms say they are consumed into smoke. The fire is eternal in what it accomplishes, not in how long it must keep working.",
       torah: ["Leviticus 10:2", "Deuteronomy 29:23"],
       witness: ["Malachi 4:1-3", "Psalm 37:20"]
@@ -144,7 +150,7 @@ export const doctrines = [
       slug: "became-a-living-soul",
       title: "He Became a Living Soul",
       deck: "He Did Not Receive One",
-      tag: "The Immortal Soul",
+      tag: "Immortal Soul",
       body: "Yahuah formed man of the dust and breathed into him, and man became a living nephesh. He was not issued one. The same phrase describes the creatures of the sea and the field four verses earlier. Dust he was and to dust he returns; Ezekiel states twice in one chapter that the soul that sins dies, and the Psalms say the thoughts perish the same day the breath goes. Immortality is a promise held for the resurrection, not a possession held from birth.",
       torah: ["Genesis 2:7", "Genesis 3:19"],
       witness: ["Ezekiel 18:4, 20", "Psalm 146:4"]
@@ -166,7 +172,7 @@ export const doctrines = [
       slug: "the-book-quotes",
       title: "The Book Quotes",
       deck: "Every Symbol Was Already Written",
-      tag: "Revelation · End Times",
+      tag: "Revelation Teaching",
       body: "The Revelation introduces no new symbol. Its trumpets and vials are the plagues of Egypt reissued; its sevenfold measure is the seven times more of Leviticus 26; its beasts are Daniel's, its measuring reed and eaten scroll are Ezekiel's, its lampstands and horses are Zechariah's. Every image has an address in the Law and the Prophets. Read against those texts the book interprets itself. Read as fresh material with nothing behind it, it becomes whatever a given century needs it to be.",
       torah: ["Exodus 7-12", "Leviticus 26:18-28"],
       witness: ["Ezekiel 2:9-3:3", "Daniel 7", "Zechariah 4"]
@@ -226,7 +232,7 @@ export const doctrines = [
       slug: "ye-shall-be-holy",
       title: "Ye Shall Be Holy",
       deck: "Clean and Unclean Were Taught, Not Guessed",
-      tag: "Clean and Unclean Food",
+      tag: "Purification & Holiness",
       body: "Yahuah drew the line Himself and charged the priesthood to put a difference between holy and profane, clean and unclean. Leviticus 11 does not leave the distinction to appetite or conscience, and Leviticus 20 gives the reason: ye shall be holy unto me, for I have severed you from other people. Ezekiel names the failure to teach that difference as a violation of the law and a profaning of the set-apart things.",
       torah: ["Leviticus 10:10", "Leviticus 11", "Leviticus 20:25-26"],
       witness: ["Ezekiel 44:23", "Ezekiel 22:26"]
@@ -246,7 +252,7 @@ export const doctrines = [
       slug: "signs-and-seasons",
       title: "Signs and Seasons",
       deck: "The Calendar Was Hung in the Sky",
-      tag: "Christmas · Easter · Sunday",
+      tag: "Calendar & Feasts",
       body: "The lights were placed on the fourth day for signs, for appointed times, for days and years — hung in the sky before any nation existed to keep them. Leviticus calls the feasts my feasts, spoken by Yahuah in the first person, not Israel's and not the Jews'. The Psalms say He appointed the moon for the seasons. The appointments still stand. What changed was the calendar men use to find them.",
       torah: ["Genesis 1:14", "Leviticus 23:1-4"],
       witness: ["Psalm 104:19"]
@@ -266,7 +272,7 @@ export const doctrines = [
       slug: "wine-and-the-bread",
       title: "The Wine and the Bread",
       deck: "The Cup Opens the Door. The Bread Walks the Road.",
-      tag: "Saved by Grace",
+      tag: "Faith Alone",
       body: "Melchizedek came out to Abram with bread and wine, and the table has been set that way ever since. The wine is the blood — entry, atonement, a door Yahuah opened at a price no man could raise. The bread is the body — the walk, the commandments, the life lived on the other side of that door. The two were never separated in the Law. Every offering that went up carried its meal offering and its drink offering together, because the pattern was one deliverance in two stages. Yahushua handed His disciples both elements, in that order, the night before He died. This is why Scripture speaks of being saved in three tenses — past, present, and still to come. The cup starts a man. The bread finishes him.",
       torah: ["Genesis 14:18", "Numbers 15:4-5"],
       witness: ["Proverbs 9:5", "Psalm 110:4"]
@@ -286,7 +292,7 @@ export const doctrines = [
       slug: "one-olive-tree",
       title: "One Olive Tree",
       deck: "He Never Started a Second People",
-      tag: "Israel and the Church",
+      tag: "Rightly Divided",
       body: "Yahuah gave one law for the homeborn and for the stranger living among them. Same law. Same table. Same penalty for breaking it. When a foreigner came in, he was not handed a separate arrangement with softer terms. He was brought into the one that already existed. Paul used a tree to say the same thing. Natural branches were broken off and wild branches were grafted in, but there was only ever one tree, one root, and one set of promises. A grafted branch does not get its own root. Yahuah did not start a second people with a second plan and a second rulebook running alongside the first. He opened His own household and let strangers walk in.",
       torah: ["Exodus 12:49", "Numbers 15:15-16"],
       witness: ["Isaiah 56:6-7", "Ezekiel 47:22-23"]
@@ -306,7 +312,7 @@ export const doctrines = [
       slug: "it-shall-be-our-righteousness",
       title: "It Shall Be Our Righteousness",
       deck: "He Credited Belief. He Still Expected Feet.",
-      tag: "Filthy Rags · Christ's Righteousness",
+      tag: "Imputed Righteousness",
       body: `Abraham believed Yahuah, and it was counted to him for righteousness. "Counted" is a bookkeeping word, and it is true — the ledger really was settled. But the same man who was counted righteous in Genesis 15 was told two chapters later to walk before Yahuah and be perfect, and he still had to get up early and go do the hardest thing he was ever asked to do. The counting settled a debt. It did not do the walking. Moses said it plainly: it shall be our righteousness if we observe to do all these commandments. Ezekiel said it from the other side: the righteousness of the righteous shall be upon him. Upon him. Not on somebody else's account, and not on a record kept in another man's name. Yahuah credits belief at the door. He still expects feet on the road.`,
       torah: ["Genesis 15:6", "Deuteronomy 6:25"],
       witness: ["Psalm 119:172", "Ezekiel 18:20"]
@@ -325,7 +331,7 @@ export const doctrines = [
       slug: "a-proverb-against-babylon",
       title: "A Proverb Against the King of Babylon",
       deck: "Isaiah Named the Man",
-      tag: "Lucifer, the Fallen Angel",
+      tag: "Lucifer",
       bodyFormat: "markdown",
       body: `Isaiah 14 does not tell the story of an angel falling from heaven. It tells the reader exactly who it is about before it begins: “thou shalt take up this proverb against the king of Babylon” (Isaiah 14:4). It is a taunt song over a dead tyrant, and a few verses later the onlookers say it outright: “Is this the man that made the earth to tremble, that did shake kingdoms?” (Isaiah 14:16). Before that line the king is already in the grave: “Thy pomp is brought down to the grave… the worm is spread under thee, and the worms cover thee” (Isaiah 14:11). Maggots do not eat angels.
 
@@ -349,7 +355,7 @@ The true morning star is not a fallen angel. It is the Son: “I am the root and
       slug: "choose-life",
       title: "Choose Life",
       deck: "The Choice Was Always Yours",
-      tag: "Predestination · The Blood Without the Walk",
+      tag: "Predestination",
       bodyFormat: "markdown",
       body: `The Torah sets two roads in front of every man and tells him to choose: “I call heaven and earth to record this day against you, that I have set before you life and death, blessing and cursing: therefore choose life, that both thou and thy seed may live” (Deuteronomy 30:19). A choice that was settled before birth is no choice at all.
 
@@ -375,7 +381,7 @@ Yahuah knows the end from the beginning (Isaiah 46:10). Knowing is not forcing. 
       slug: "no-manner-of-similitude",
       title: "No Manner of Similitude",
       deck: "You Saw No Form — So Make None",
-      tag: "Crosses · Icons · Christian Tattoos and Symbols",
+      tag: "Images in Worship",
       bodyFormat: "markdown",
       body: `When Yahuah spoke at Sinai, Israel saw nothing: “ye heard the voice of the words, but saw no similitude; only ye heard a voice” (Deuteronomy 4:12). That was the reason for the command that follows: “Take ye therefore good heed… Lest ye corrupt yourselves, and make you a graven image, the similitude of any figure” (Deuteronomy 4:15–16).
 
@@ -401,7 +407,7 @@ Yahuah did give Israel something to wear — and it was not an image. “Make th
       slug: "a-kingdom-of-priests",
       title: "A Kingdom of Priests",
       deck: "Every One of Them, Not a Class Above Them",
-      tag: "Clergy and Laity",
+      tag: "Clergy over the People",
       bodyFormat: "markdown",
       body: `At Sinai, Yahuah described the whole nation: “ye shall be unto me a kingdom of priests, and an holy nation” (Exodus 19:6). When two men prophesied in the camp and Joshua wanted them stopped, Moses answered, “would God that all Yahuah’s people were prophets” (Numbers 11:29).
 

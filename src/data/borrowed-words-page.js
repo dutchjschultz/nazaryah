@@ -1,4 +1,7 @@
-// borrowed-words-page 1009 V7.js
+// borrowed-words-page 1009 V8.js
+// V8: each doctrine carries oldPathsTitle (shown in parentheses after its heading); every word with
+// a Departure tab now has a story link — 75 of 80 (Pneuma and Oikonomia carry two each; telos,
+// charisma, kolasis, abyssos and orthotomeo have no tab and no link).
 // V7: futureStudies renamed sideNotes (the 4 words, fuller notes); adds sideNotesIntro and failedIntro
 // for the two side-by-side cards at the foot of the word page.
 // V6: eight For Future Studies words placed — kardia, syneidesis (Torah Dismissal), apokatastasis
@@ -35,6 +38,7 @@ export const doctrines = [
   {
     "num": "01",
     "title": "Sacred Names",
+    "oldPathsTitle": "The Name That Endures",
     "departureSlug": "sacred-names",
     "oldPathsSlug": "the-name-that-endures",
     "note": null,
@@ -53,7 +57,12 @@ export const doctrines = [
         "sources": [
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Sacred Names",
+            "href": "/doctrines/the-departure/sacred-names#word-kurios"
+          }
+        ]
       },
       {
         "id": "theos",
@@ -68,7 +77,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Sacred Names",
+            "href": "/doctrines/the-departure/sacred-names#word-theos"
+          }
+        ]
       },
       {
         "id": "soter",
@@ -84,7 +98,12 @@ export const doctrines = [
           "Gods & myths",
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Sacred Names",
+            "href": "/doctrines/the-departure/sacred-names#word-soter"
+          }
+        ]
       },
       {
         "id": "pantokrator",
@@ -99,7 +118,12 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Sacred Names",
+            "href": "/doctrines/the-departure/sacred-names#word-pantokrator"
+          }
+        ]
       },
       {
         "id": "hypsistos",
@@ -114,13 +138,19 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Sacred Names",
+            "href": "/doctrines/the-departure/sacred-names#word-hypsistos"
+          }
+        ]
       }
     ]
   },
   {
     "num": "02",
     "title": "Torah Dismissal",
+    "oldPathsTitle": "The Walk After the Door",
     "departureSlug": "torah-dismissal",
     "oldPathsSlug": "walk-after-the-door",
     "note": null,
@@ -139,7 +169,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Torah Dismissal",
+            "href": "/doctrines/the-departure/torah-dismissal#word-charis"
+          }
+        ]
       },
       {
         "id": "nomos",
@@ -154,7 +189,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Torah Dismissal",
+            "href": "/doctrines/the-departure/torah-dismissal#word-nomos"
+          }
+        ]
       },
       {
         "id": "telos",
@@ -184,7 +224,12 @@ export const doctrines = [
         "sources": [
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Torah Dismissal",
+            "href": "/doctrines/the-departure/torah-dismissal#word-diatheke"
+          }
+        ]
       },
       {
         "id": "stoicheia",
@@ -200,7 +245,12 @@ export const doctrines = [
           "Philosophers",
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Torah Dismissal",
+            "href": "/doctrines/the-departure/torah-dismissal#word-stoicheia"
+          }
+        ]
       },
       {
         "id": "metanoia",
@@ -215,7 +265,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Torah Dismissal",
+            "href": "/doctrines/the-departure/torah-dismissal#word-metanoia"
+          }
+        ]
       },
       {
         "id": "kardia",
@@ -231,7 +286,12 @@ export const doctrines = [
           "Gods & myths",
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Torah Dismissal",
+            "href": "/doctrines/the-departure/torah-dismissal#word-kardia"
+          }
+        ]
       },
       {
         "id": "syneidesis",
@@ -246,13 +306,19 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Torah Dismissal",
+            "href": "/doctrines/the-departure/torah-dismissal#word-syneidesis"
+          }
+        ]
       }
     ]
   },
   {
     "num": "03",
     "title": "Tongue Talking",
+    "oldPathsTitle": "A Pure Lip",
     "departureSlug": "tongue-talking",
     "oldPathsSlug": "a-pure-lip",
     "note": null,
@@ -276,7 +342,11 @@ export const doctrines = [
         ],
         "story": [
           {
-            "label": "Immortal Soul — the “spirit lives on” fallback",
+            "label": "Tongue Talking",
+            "href": "/doctrines/the-departure/tongue-talking#word-pneuma-delphi"
+          },
+          {
+            "label": "Immortal Soul",
             "href": "/doctrines/the-departure/immortal-soul#word-pneuma"
           }
         ]
@@ -294,7 +364,12 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Tongue Talking",
+            "href": "/doctrines/the-departure/tongue-talking#word-python"
+          }
+        ]
       },
       {
         "id": "prophetes",
@@ -309,7 +384,12 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Tongue Talking",
+            "href": "/doctrines/the-departure/tongue-talking#word-prophetes"
+          }
+        ]
       },
       {
         "id": "ekstasis",
@@ -324,7 +404,12 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Tongue Talking",
+            "href": "/doctrines/the-departure/tongue-talking#word-ekstasis"
+          }
+        ]
       },
       {
         "id": "charisma",
@@ -346,6 +431,7 @@ export const doctrines = [
   {
     "num": "04",
     "title": "Hell",
+    "oldPathsTitle": "The Wicked Consumed",
     "departureSlug": "hell",
     "oldPathsSlug": "wicked-consumed",
     "note": null,
@@ -364,7 +450,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Hell",
+            "href": "/doctrines/the-departure/hell#word-hades"
+          }
+        ]
       },
       {
         "id": "tartaroo",
@@ -379,7 +470,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Hell",
+            "href": "/doctrines/the-departure/hell#word-tartaroo"
+          }
+        ]
       },
       {
         "id": "aion",
@@ -394,7 +490,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Hell",
+            "href": "/doctrines/the-departure/hell#word-aion"
+          }
+        ]
       },
       {
         "id": "aidios",
@@ -409,7 +510,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Hell",
+            "href": "/doctrines/the-departure/hell#word-aidios"
+          }
+        ]
       },
       {
         "id": "kolasis",
@@ -439,7 +545,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Hell",
+            "href": "/doctrines/the-departure/hell#word-katachthonios"
+          }
+        ]
       },
       {
         "id": "abyssos",
@@ -470,13 +581,19 @@ export const doctrines = [
           "Philosophers",
           "Later teachers & translators"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Hell",
+            "href": "/doctrines/the-departure/hell#word-apokatastasis"
+          }
+        ]
       }
     ]
   },
   {
     "num": "05",
     "title": "Immortal Soul",
+    "oldPathsTitle": "He Became a Living Soul",
     "departureSlug": "immortal-soul",
     "oldPathsSlug": "became-a-living-soul",
     "note": null,
@@ -596,6 +713,7 @@ export const doctrines = [
   {
     "num": "06",
     "title": "Revelation Teaching",
+    "oldPathsTitle": "The Book Quotes",
     "departureSlug": "revelation-teaching",
     "oldPathsSlug": "the-book-quotes",
     "note": "The rest of this doctrine came from later teaching, not word freight: the Jesuit Francisco Ribera’s futurism (1590), carried forward by John Darby in the 1830s and the Scofield Reference Bible (1909).",
@@ -614,7 +732,12 @@ export const doctrines = [
         "sources": [
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Revelation Teaching",
+            "href": "/doctrines/the-departure/revelation-teaching#word-parousia"
+          }
+        ]
       },
       {
         "id": "epiphaneia",
@@ -629,13 +752,19 @@ export const doctrines = [
         "sources": [
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Revelation Teaching",
+            "href": "/doctrines/the-departure/revelation-teaching#word-epiphaneia"
+          }
+        ]
       }
     ]
   },
   {
     "num": "07",
     "title": "Going to Heaven",
+    "oldPathsTitle": "The Inheritance Is the Earth",
     "departureSlug": "going-to-heaven",
     "oldPathsSlug": "inheritance-is-the-earth",
     "note": null,
@@ -655,7 +784,12 @@ export const doctrines = [
           "Gods & myths",
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Going to Heaven",
+            "href": "/doctrines/the-departure/going-to-heaven#word-ouranos"
+          }
+        ]
       },
       {
         "id": "paradeisos",
@@ -670,7 +804,12 @@ export const doctrines = [
         "sources": [
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Going to Heaven",
+            "href": "/doctrines/the-departure/going-to-heaven#word-paradeisos"
+          }
+        ]
       },
       {
         "id": "makarios",
@@ -685,13 +824,19 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Going to Heaven",
+            "href": "/doctrines/the-departure/going-to-heaven#word-makarios"
+          }
+        ]
       }
     ]
   },
   {
     "num": "08",
     "title": "The Trinity",
+    "oldPathsTitle": "Hear, O Israel",
     "departureSlug": "the-trinity",
     "oldPathsSlug": "hear-o-israel",
     "note": null,
@@ -718,7 +863,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-logos"
+          }
+        ]
       },
       {
         "id": "theotes",
@@ -733,7 +883,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-theotes"
+          }
+        ]
       },
       {
         "id": "ousia",
@@ -748,7 +903,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-ousia"
+          }
+        ]
       },
       {
         "id": "hypostasis",
@@ -763,7 +923,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-hypostasis"
+          }
+        ]
       },
       {
         "id": "physis",
@@ -778,7 +943,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-physis"
+          }
+        ]
       },
       {
         "id": "monogenes",
@@ -793,7 +963,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-monogenes"
+          }
+        ]
       },
       {
         "id": "morphe",
@@ -808,7 +983,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-morphe"
+          }
+        ]
       },
       {
         "id": "hymnos",
@@ -823,7 +1003,12 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-hymnos"
+          }
+        ]
       },
       {
         "id": "sophia",
@@ -839,7 +1024,12 @@ export const doctrines = [
           "Philosophers",
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-sophia"
+          }
+        ]
       },
       {
         "id": "demiourgos",
@@ -854,7 +1044,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-demiourgos"
+          }
+        ]
       },
       {
         "id": "parakletos",
@@ -870,13 +1065,19 @@ export const doctrines = [
           "Emperors & state",
           "Later teachers & translators"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-parakletos"
+          }
+        ]
       }
     ]
   },
   {
     "num": "09",
     "title": "Purification & Holiness",
+    "oldPathsTitle": "Ye Shall Be Holy",
     "departureSlug": "purification-holiness",
     "oldPathsSlug": "ye-shall-be-holy",
     "note": null,
@@ -895,7 +1096,12 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Purification & Holiness",
+            "href": "/doctrines/the-departure/purification-holiness#word-hagios"
+          }
+        ]
       },
       {
         "id": "teleios",
@@ -910,13 +1116,19 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Purification & Holiness",
+            "href": "/doctrines/the-departure/purification-holiness#word-teleios"
+          }
+        ]
       }
     ]
   },
   {
     "num": "10",
     "title": "Calendar & Feasts",
+    "oldPathsTitle": "Signs and Seasons",
     "departureSlug": "calendar-feasts",
     "oldPathsSlug": "signs-and-seasons",
     "note": null,
@@ -935,7 +1147,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Calendar & Feasts",
+            "href": "/doctrines/the-departure/calendar-feasts#word-kairos"
+          }
+        ]
       },
       {
         "id": "kyriakos",
@@ -950,7 +1167,12 @@ export const doctrines = [
         "sources": [
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Calendar & Feasts",
+            "href": "/doctrines/the-departure/calendar-feasts#word-kyriakos"
+          }
+        ]
       },
       {
         "id": "heorte",
@@ -965,7 +1187,12 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Calendar & Feasts",
+            "href": "/doctrines/the-departure/calendar-feasts#word-heorte"
+          }
+        ]
       },
       {
         "id": "pascha",
@@ -981,7 +1208,12 @@ export const doctrines = [
           "Gods & myths",
           "Later teachers & translators"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Calendar & Feasts",
+            "href": "/doctrines/the-departure/calendar-feasts#word-pascha"
+          }
+        ]
       },
       {
         "id": "pentekoste",
@@ -996,13 +1228,19 @@ export const doctrines = [
         "sources": [
           "Later teachers & translators"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Calendar & Feasts",
+            "href": "/doctrines/the-departure/calendar-feasts#word-pentekoste"
+          }
+        ]
       }
     ]
   },
   {
     "num": "11",
     "title": "Faith Alone",
+    "oldPathsTitle": "The Wine and the Bread",
     "departureSlug": "faith-alone",
     "oldPathsSlug": "wine-and-the-bread",
     "note": null,
@@ -1021,7 +1259,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Faith Alone",
+            "href": "/doctrines/the-departure/faith-alone#word-pistis"
+          }
+        ]
       },
       {
         "id": "euangelion",
@@ -1036,7 +1279,12 @@ export const doctrines = [
         "sources": [
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Faith Alone",
+            "href": "/doctrines/the-departure/faith-alone#word-euangelion"
+          }
+        ]
       },
       {
         "id": "mysterion",
@@ -1051,7 +1299,12 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Faith Alone",
+            "href": "/doctrines/the-departure/faith-alone#word-mysterion"
+          }
+        ]
       },
       {
         "id": "eucharistia",
@@ -1066,7 +1319,12 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Faith Alone",
+            "href": "/doctrines/the-departure/faith-alone#word-eucharistia"
+          }
+        ]
       },
       {
         "id": "palingenesia",
@@ -1081,7 +1339,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Faith Alone",
+            "href": "/doctrines/the-departure/faith-alone#word-palingenesia"
+          }
+        ]
       },
       {
         "id": "nike",
@@ -1096,7 +1359,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Faith Alone",
+            "href": "/doctrines/the-departure/faith-alone#word-nike"
+          }
+        ]
       },
       {
         "id": "gnosis",
@@ -1112,13 +1380,19 @@ export const doctrines = [
           "Temples & cults",
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Faith Alone",
+            "href": "/doctrines/the-departure/faith-alone#word-gnosis"
+          }
+        ]
       }
     ]
   },
   {
     "num": "12",
     "title": "Rightly Divided",
+    "oldPathsTitle": "One Olive Tree",
     "departureSlug": "rightly-divided",
     "oldPathsSlug": "one-olive-tree",
     "note": "The system itself came from later teaching: John Darby in the 1830s and the Scofield Reference Bible (1909).",
@@ -1137,7 +1411,12 @@ export const doctrines = [
         "sources": [
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Rightly Divided",
+            "href": "/doctrines/the-departure/rightly-divided#word-ekklesia"
+          }
+        ]
       },
       {
         "id": "oikonomia",
@@ -1152,7 +1431,16 @@ export const doctrines = [
         "sources": [
           "Later teachers & translators"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Trinity",
+            "href": "/doctrines/the-departure/the-trinity#word-oikonomia-trinity"
+          },
+          {
+            "label": "Rightly Divided",
+            "href": "/doctrines/the-departure/rightly-divided#word-oikonomia"
+          }
+        ]
       },
       {
         "id": "orthotomeo",
@@ -1174,6 +1462,7 @@ export const doctrines = [
   {
     "num": "13",
     "title": "Imputed Righteousness",
+    "oldPathsTitle": "It Shall Be Our Righteousness",
     "departureSlug": "imputed-righteousness",
     "oldPathsSlug": "it-shall-be-our-righteousness",
     "note": null,
@@ -1193,7 +1482,12 @@ export const doctrines = [
           "Gods & myths",
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Imputed Righteousness",
+            "href": "/doctrines/the-departure/imputed-righteousness#word-dikaiosyne"
+          }
+        ]
       },
       {
         "id": "logizomai",
@@ -1208,7 +1502,12 @@ export const doctrines = [
         "sources": [
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Imputed Righteousness",
+            "href": "/doctrines/the-departure/imputed-righteousness#word-logizomai"
+          }
+        ]
       },
       {
         "id": "hilasmos",
@@ -1223,13 +1522,19 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Imputed Righteousness",
+            "href": "/doctrines/the-departure/imputed-righteousness#word-hilasmos"
+          }
+        ]
       }
     ]
   },
   {
     "num": "14",
     "title": "Lucifer",
+    "oldPathsTitle": "A Proverb Against the King of Babylon",
     "departureSlug": "lucifer",
     "oldPathsSlug": "a-proverb-against-babylon",
     "note": null,
@@ -1321,6 +1626,7 @@ export const doctrines = [
   {
     "num": "15",
     "title": "Predestination",
+    "oldPathsTitle": "Choose Life",
     "departureSlug": "predestination",
     "oldPathsSlug": "choose-life",
     "note": null,
@@ -1373,6 +1679,7 @@ export const doctrines = [
   {
     "num": "16",
     "title": "Images in Worship",
+    "oldPathsTitle": "No Manner of Similitude",
     "departureSlug": "images-in-worship",
     "oldPathsSlug": "no-manner-of-similitude",
     "note": null,
@@ -1445,6 +1752,7 @@ export const doctrines = [
   {
     "num": "17",
     "title": "Clergy over the People",
+    "oldPathsTitle": "A Kingdom of Priests",
     "departureSlug": "clergy-over-the-people",
     "oldPathsSlug": "a-kingdom-of-priests",
     "note": null,

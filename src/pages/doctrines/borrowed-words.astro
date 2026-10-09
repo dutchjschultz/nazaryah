@@ -1,5 +1,8 @@
 ---
-// borrowed-words-page 1009 V6.astro — src/pages/doctrines/borrowed-words.astro
+// borrowed-words-page 1009 V7.astro — src/pages/doctrines/borrowed-words.astro
+// V7: doctrine headings add the Old Paths title in parentheses (.bwp-op, smaller
+// gold italic); "Read how this became a doctrine" becomes a boxed button
+// (.bwp-story, label SEE THE VERSE IT TWISTED) linking to the word's Departure tab.
 // V6: For Future Studies and Claims That Failed the Test leave their collapsed
 // <details> and become two open cards side by side (.bwp-pair), stacked on a
 // phone with Side Notes on top. #future-studies is kept as an anchor inside the
@@ -81,7 +84,7 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
 
   {doctrines.map(d => (
     <section class="bwp-doctrine" id={`d-${d.departureSlug}`} data-doctrine={d.departureSlug}>
-      <h2><span class="bwp-num">{d.num}</span>{" "}{d.title}</h2>
+      <h2><span class="bwp-num">{d.num}</span>{" "}{d.title}{d.oldPathsTitle && <span class="bwp-op">{" "}({d.oldPathsTitle})</span>}</h2>
       <p class="bwp-doclinks">
         <a href={`/doctrines/the-departure/${d.departureSlug}`}>The Departure</a>{" · "}<a href={`/doctrines/old-paths/${d.oldPathsSlug}`}>The Old Paths</a>
       </p>
@@ -105,7 +108,7 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
             <p><span class="bwp-label">Hebrew beneath.</span>{" "}{w.hebrew}</p>
             <p><span class="bwp-label">What it fed.</span>{" "}{w.fed}</p>
             {w.bridge && <p class="bwp-bridge"><span class="bwp-label">The bridge.</span>{" "}{w.bridge}</p>}
-            {w.story.map(s => <p class="bwp-story"><a href={s.href}>Read how this became a doctrine: {s.label} →</a></p>)}
+            {w.story.length > 0 && <div class="bwp-stories">{w.story.map(s => <a class="bwp-story" href={s.href}><span class="bwp-story-label">See the verse it twisted</span><span class="bwp-story-title">Read how this became a doctrine:{" "}<strong>{s.label}</strong>{" "}→</span></a>)}</div>}
           </div>
         </details>
       ))}
@@ -266,7 +269,21 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
   .bwp-strongs { font-size: 0.85rem; color: #8f8672; }
   .bwp-label { font-weight: 600; color: #d8b06a; }
   .bwp-bridge { font-size: 0.98rem; color: #b8af9c; }
-  .bwp-story { margin-top: 0.6rem !important; font-style: italic; }
+  /* Old Paths title after the doctrine heading — smaller, gold, italic (body serif). */
+  .bwp-op { font-family: var(--font-body); font-style: italic; font-weight: 400; font-size: 0.8em; letter-spacing: 0; color: #d8b06a; }
+  /* "Read how this became a doctrine" — a boxed button, thick gold left edge. */
+  .bwp-stories { display: flex; flex-direction: column; gap: 0.5rem; margin: 0.9rem 0 0.3rem; }
+  .bwp-story {
+    display: block; padding: 0.7rem 1rem; border: 1px solid rgba(186,117,23,0.55); border-left: 4px solid #BA7517;
+    border-radius: 6px; background: rgba(186,117,23,0.08); text-decoration: none; transition: background 0.15s, border-color 0.15s;
+  }
+  .bwp a.bwp-story:hover, .bwp a.bwp-story:focus-visible { background: rgba(186,117,23,0.18); border-color: #d8b06a; text-decoration: none; }
+  .bwp-story-label {
+    display: block; font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.25em;
+    text-transform: uppercase; color: #BA7517; margin-bottom: 0.2rem;
+  }
+  .bwp-story-title { display: block; font-size: 1.08rem; line-height: 1.45; color: #d8b06a; }
+  .bwp-story-title strong { color: #e8c98a; font-weight: 700; }
   .bwp-note { font-style: italic; color: #a89f8c; border-left: 2px solid rgba(186,117,23,0.4); padding-left: 0.9rem; margin-top: 1rem; }
   .bwp-none { font-style: italic; color: #a89f8c; text-align: center; margin: 0 0 3rem; }
 
