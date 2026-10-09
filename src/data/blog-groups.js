@@ -1,4 +1,5 @@
-// blog-groups 1009 V32.js
+// blog-groups 1009 V33.js
+// V33: the-pledge-and-the-bride joins the-law-and-the-feasts (category The Law Still Stands).
 // V32: hosea-lives-it-then-says-it joins the-quick-scroll (category The Scrolls).
 // V31: isaiah-runs-forward joins the-quick-scroll (category The Scrolls).
 // V30: two-mountains joins scripture-unfiltered (category Scripture Unfiltered).
@@ -167,7 +168,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 110 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 111 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (16) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
@@ -242,7 +243,7 @@ export const POST_GROUP = {
   'the-reign-is-now': 'buried-in-plain-sight',
   'gog-and-magog': 'buried-in-plain-sight',
 
-  // ── The Law & The Feasts (16) ──
+  // ── The Law & The Feasts (17) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',
   'two-greatest-commandments': 'the-law-and-the-feasts',
   'seven-feasts-in-exodus': 'the-law-and-the-feasts',
@@ -262,6 +263,7 @@ export const POST_GROUP = {
   'strait-is-the-gate': 'the-law-and-the-feasts',
   'i-never-knew-you': 'the-law-and-the-feasts',
   'the-same-word-a-different-master': 'the-law-and-the-feasts',
+  'the-pledge-and-the-bride': 'the-law-and-the-feasts',
 
   // ── The Parables (12) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
