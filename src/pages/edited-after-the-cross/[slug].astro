@@ -1,0 +1,260 @@
+---
+// src/pages/edited-after-the-cross/[slug].astro · 1010 V1
+// V1: the verse-page template for Edited After the Cross. One page per `live`
+// entry in src/data/edited-after-the-cross.js; nothing on the page is
+// hand-written. Order: reference / title / tag chip → Side by Side (built from
+// sideBySide, changed words in gold) → What Your Bible Says → What the Jewish
+// Bible Says → What Changed → Which One Is Right? → Purpose of the Change → The
+// Bottom Line → Dig Deeper (closed <details>, no script) → back / prev / next.
+// Search: the reference is weighted and leads the result title, so a search for
+// the verse lands on its page.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { verses } from '../../data/edited-after-the-cross.js';
+import { canonicalKey } from '../../data/canonicalOrder';
+
+export function getStaticPaths() {
+  const live = verses
+    .filter((v) => v.status === 'live')
+    .sort((a, b) => canonicalKey(a.reference) - canonicalKey(b.reference));
+  return live.map((v, i) => ({
+    params: { slug: v.slug },
+    props: { v, prev: live[i - 1] ?? null, next: live[i + 1] ?? null },
+  }));
+}
+
+const { v, prev, next } = Astro.props;
+const s = v.sideBySide;
+const tagSlug = v.tag.toLowerCase().replace(/\s+/g, '-');
+const BASE = '/edited-after-the-cross';
+
+// Split the NT text around its changed words so they can be highlighted.
+const nt = s.nt
+  ? (() => {
+      const at = s.nt.text.indexOf(s.nt.changed);
+      return at < 0
+        ? { reference: s.nt.reference, before: s.nt.text, changed: '', after: '' }
+        : { reference: s.nt.reference, before: s.nt.text.slice(0, at), changed: s.nt.changed, after: s.nt.text.slice(at + s.nt.changed.length) };
+    })()
+  : null;
+
+const prose = [
+  { id: 'what-changed', title: 'What Changed', paras: v.whatChanged },
+  { id: 'which-one-is-right', title: 'Which One Is Right?', paras: v.whichIsRight },
+  { id: 'purpose-of-the-change', title: 'Purpose of the Change', paras: v.purpose },
+];
+---
+
+<BaseLayout
+  title={`${v.reference} — ${v.title} | Edited After the Cross | Nazaryah`}
+  description={v.description}
+  article
+>
+  <article class="ev-page" data-pagefind-body data-pagefind-meta={`title:${v.reference} — ${v.title}`}>
+    <header class="ev-header">
+      <p class="ev-ref" data-pagefind-weight="10">{v.reference}</p>
+      <h1 class="ev-title">{v.title}</h1>
+      <a class="ev-chip" href={`${BASE}/?tag=${tagSlug}#verses`} data-pagefind-ignore>{v.tag}</a>
+      <p class="ev-card-deck sr-only">{v.deck}</p>
+    </header>
+
+    <section class="ev-sbs" aria-labelledby="side-by-side">
+      <h2 id="side-by-side" class="ev-sbs-h">Side by Side</h2>
+      <div class="ev-panels">
+        {[s.lxx, s.mt].map((t, i) => (
+          <div class:list={['ev-panel', i === 0 ? 'ev-panel--older' : 'ev-panel--later']}>
+            <p class="ev-panel-label">{t.label}</p>
+            <p class="ev-panel-note">{t.note}</p>
+            <p class="ev-panel-text">{t.before}<mark>{t.changed}</mark>{t.after}</p>
+          </div>
+        ))}
+        {nt && (
+          <div class="ev-panel ev-panel--nt">
+            <p class="ev-panel-label">Quoted in {nt.reference}</p>
+            <p class="ev-panel-text">{nt.before}{nt.changed && <mark>{nt.changed}</mark>}{nt.after}</p>
+          </div>
+        )}
+      </div>
+      <p class="ev-kjv">{s.kjv}</p>
+      <a class="ev-jump" href="#what-your-bible-says" data-pagefind-ignore>See what changed and why ↓</a>
+    </section>
+
+    <div class="ev-body">
+      <section id="what-your-bible-says">
+        <h2>What Your Bible Says</h2>
+        <blockquote>
+          <p>{v.yourBible.quote}</p>
+          <cite>{v.yourBible.cite}</cite>
+        </blockquote>
+        {v.yourBible.paras.map((p) => <p set:html={p} />)}
+      </section>
+
+      <section id="what-the-jewish-bible-says">
+        <h2>What the Jewish Bible Says</h2>
+        <blockquote>
+          <p>{v.jewishBible.quote}</p>
+          <cite>{v.jewishBible.cite}</cite>
+        </blockquote>
+        {v.jewishBible.paras.map((p) => <p set:html={p} />)}
+      </section>
+
+      {prose.map((sec) => (
+        <section id={sec.id}>
+          <h2>{sec.title}</h2>
+          {sec.paras.map((p) => <p set:html={p} />)}
+        </section>
+      ))}
+
+      <section id="the-bottom-line" class="ev-bottom">
+        <h2>The Bottom Line</h2>
+        <p class="ev-ready">{v.bottomLine.ready}</p>
+        {v.bottomLine.paras.map((p) => <p set:html={p} />)}
+      </section>
+
+      <details class="ev-deeper">
+        <summary>
+          <span class="ev-deeper-title">Dig Deeper</span>
+          <span class="ev-deeper-hint">The evidence, for anyone who wants it</span>
+        </summary>
+        <div class="ev-deeper-body">
+          {v.digDeeper.map((d) => (
+            <div class="ev-deeper-item">
+              <h3>{d.heading}</h3>
+              {d.paras?.map((p) => <p set:html={p} />)}
+              {d.list && <ul>{d.list.map((li) => <li set:html={li} />)}</ul>}
+            </div>
+          ))}
+        </div>
+      </details>
+    </div>
+
+    <nav class="ev-foot" aria-label="Edited After the Cross" data-pagefind-ignore>
+      <a class="ev-back" href={`${BASE}/`}>← Edited After the Cross</a>
+      <div class="ev-prevnext">
+        {prev ? (
+          <a href={`${BASE}/${prev.slug}`} class="ev-pn"><span class="ev-pn-k">Previous</span><span class="ev-pn-t">{prev.reference} — {prev.title}</span></a>
+        ) : <span />}
+        {next && (
+          <a href={`${BASE}/${next.slug}`} class="ev-pn ev-pn--next"><span class="ev-pn-k">Next</span><span class="ev-pn-t">{next.reference} — {next.title}</span></a>
+        )}
+      </div>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .ev-page { background: #0e0d0b; min-height: 100vh; padding: 3.5rem 2rem 5rem; color: #cfc7b6; }
+  .ev-header { text-align: center; max-width: 46rem; margin: 0 auto 2.4rem; }
+  .ev-ref {
+    font-family: var(--font-display); font-size: 0.85rem; font-weight: 600; letter-spacing: 0.24em;
+    font-variant: small-caps; text-transform: uppercase; color: #BA7517; margin: 0 0 0.7rem;
+  }
+  .ev-title {
+    font-family: var(--font-display); font-size: clamp(1.7rem, 1.25rem + 2.4vw, 2.6rem);
+    font-weight: 700; color: #e8e2d4; margin: 0 0 1rem; line-height: 1.15;
+  }
+  .ev-chip {
+    display: inline-block; font-family: var(--font-display); font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #f0c450; text-decoration: none;
+    border: 1px solid rgba(212,165,49,0.45); background: rgba(186,117,23,0.12);
+    border-radius: 999px; padding: 0.3rem 0.8rem;
+  }
+  .ev-chip:hover { background: rgba(186,117,23,0.25); }
+
+  /* Side by Side — first thing the reader sees. */
+  .ev-sbs { max-width: 60rem; margin: 0 auto 3.5rem; }
+  .ev-sbs-h {
+    text-align: center; font-family: var(--font-display); font-size: 0.75rem; font-weight: 600;
+    letter-spacing: 0.26em; text-transform: uppercase; color: #8f8775; margin: 0 0 1rem;
+  }
+  .ev-panels { display: grid; grid-template-columns: 1fr 1fr; gap: 1.1rem; }
+  .ev-panel {
+    background: #161512; border: 0.5px solid rgba(255,255,255,0.08); border-radius: 12px;
+    padding: 1.5rem 1.6rem 1.6rem; border-top: 3px solid #BA7517;
+  }
+  .ev-panel--later { border-top-color: #6d655a; }
+  .ev-panel--nt { grid-column: 1 / -1; border-top-color: #d8b06a; }
+  .ev-panel-label {
+    font-family: var(--font-display); font-size: 0.85rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #e8e2d4; margin: 0;
+  }
+  .ev-panel-note {
+    font-family: var(--font-family-serif); font-style: italic; font-size: 0.95rem; color: #8f8775; margin: 0.2rem 0 1rem;
+  }
+  .ev-panel-text { font-family: var(--font-body); font-size: 1.22rem; line-height: 1.7; color: #ddd5c3; margin: 0; }
+  .ev-panel mark {
+    background: rgba(240,196,80,0.16); color: #f0c450; font-weight: 700;
+    padding: 0.05em 0.25em; border-radius: 3px; box-shadow: inset 0 -2px 0 #d4a531;
+  }
+  .ev-kjv { text-align: center; font-family: var(--font-body); font-size: 0.95rem; color: #a89f8c; margin: 1.1rem 0 0.6rem; }
+  .ev-jump {
+    display: block; width: fit-content; margin: 0 auto; font-family: var(--font-display); font-size: 0.78rem;
+    font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #d8b06a; text-decoration: none;
+    border-bottom: 1px solid rgba(216,176,106,0.4); padding-bottom: 2px;
+  }
+  .ev-jump:hover { color: #f0c450; border-bottom-color: #f0c450; }
+
+  /* Explanation */
+  .ev-body { max-width: 44rem; margin: 0 auto; }
+  .ev-body section { margin-bottom: 2.6rem; scroll-margin-top: 6rem; }
+  .ev-body h2 {
+    font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: #e8e2d4;
+    margin: 0 0 1rem; padding-bottom: 0.55rem; border-bottom: 1px solid rgba(186,117,23,0.35);
+  }
+  .ev-body p, .ev-body li { font-family: var(--font-body); font-size: 1.08rem; line-height: 1.8; color: #cfc7b6; margin: 0 0 1.15rem; }
+  .ev-body :global(strong) { color: #e8c98a; font-weight: 600; }
+  .ev-body blockquote {
+    margin: 0 0 1.3rem; padding: 1rem 1.3rem; background: rgba(186,117,23,0.07);
+    border-left: 3px solid #BA7517; border-radius: 0 6px 6px 0;
+  }
+  .ev-body blockquote p { font-family: var(--font-family-serif); font-style: italic; font-size: 1.15rem; color: #ddd5c3; margin: 0 0 0.4rem; }
+  .ev-body blockquote cite {
+    font-style: normal; font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.12em;
+    text-transform: uppercase; color: #BA7517;
+  }
+  .ev-body .ev-ready {
+    font-family: var(--font-family-serif); font-style: italic; font-size: 1.3rem; line-height: 1.55; color: #f0c450;
+    text-align: center; margin: 0.4rem 0 1.4rem;
+  }
+
+  .ev-deeper {
+    margin: 3rem 0 0; background: #161512; border: 0.5px solid rgba(255,255,255,0.08);
+    border-radius: 12px; border-top: 3px solid #6d655a;
+  }
+  .ev-deeper summary {
+    list-style: none; cursor: pointer; padding: 1.2rem 1.5rem; display: flex; align-items: baseline;
+    justify-content: space-between; gap: 0.5rem 1rem; flex-wrap: wrap;
+  }
+  .ev-deeper summary::-webkit-details-marker { display: none; }
+  .ev-deeper summary:focus-visible { outline: 2px solid #BA7517; outline-offset: -2px; border-radius: 12px; }
+  .ev-deeper-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: #e8e2d4; }
+  .ev-deeper-title::after { content: ' ▾'; color: #BA7517; font-size: 0.9rem; }
+  .ev-deeper[open] .ev-deeper-title::after { content: ' ▴'; }
+  .ev-deeper-hint { font-family: var(--font-family-serif); font-style: italic; color: #8f8775; font-size: 0.98rem; }
+  .ev-deeper-body { padding: 0 1.5rem 0.6rem; }
+  .ev-deeper-item { padding-top: 1.2rem; border-top: 1px solid rgba(255,255,255,0.06); }
+  .ev-deeper-item h3 {
+    font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.06em;
+    color: #e8c98a; margin: 0 0 0.6rem;
+  }
+  .ev-deeper-item ul { padding-left: 1.2rem; margin: 0 0 1rem; }
+
+  .ev-foot { max-width: 44rem; margin: 3.5rem auto 0; padding-top: 1.6rem; border-top: 1px solid rgba(186,117,23,0.3); }
+  .ev-back, .ev-pn-k {
+    font-family: var(--font-display); font-size: 0.75rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #d8b06a; text-decoration: none;
+  }
+  .ev-back:hover { color: #f0c450; }
+  .ev-prevnext { display: flex; justify-content: space-between; gap: 1rem; margin-top: 1.2rem; }
+  .ev-pn { display: flex; flex-direction: column; gap: 0.2rem; text-decoration: none; max-width: 48%; }
+  .ev-pn--next { text-align: right; margin-left: auto; }
+  .ev-pn-t { font-family: var(--font-body); color: #cfc7b6; font-size: 1rem; }
+  .ev-pn:hover .ev-pn-t { color: #f0c450; }
+
+  @media (max-width: 720px) {
+    .ev-page { padding: 2.6rem 1rem 4rem; }
+    .ev-panels { grid-template-columns: 1fr; }
+    .ev-panel { padding: 1.2rem 1.2rem 1.3rem; }
+    .ev-panel-text { font-size: 1.12rem; }
+    .ev-deeper summary, .ev-deeper-body { padding-left: 1.1rem; padding-right: 1.1rem; }
+  }
+</style>

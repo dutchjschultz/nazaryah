@@ -1,7 +1,10 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  1003 V17
-V17: a Foundation's own page (/torah/testimonies/foundations/<slug>) takes the
+backfill-social-images  1010 V18
+V18: `edited-after-the-cross` mapped to .ev-card-deck (a verse page's hidden
+`deck`), then .eac-sub (the section front's subtitle line). Kicker falls
+through kicker_for() to STUDY, the default.
+V17 (1003): a Foundation's own page (/torah/testimonies/foundations/<slug>) takes the
 FOUNDATION kicker, like the foundations index. It matched the testimonies
 prefix before and would have been carded TESTIMONY.
 V16: `peah` mapped to .peah-sub, then .pe-card-deck. The /peah index's card deck
@@ -115,6 +118,7 @@ DECK_CLASSES = {
     "books": ["bk-subtitle", "bk-intro"],
     "calendar": ["cf-subtitle", "pg-subtitle", "cal-subtitle", "today-subtitle", "cf-index-subtitle"],
     "catholicism": ["sw-sub"],
+    "edited-after-the-cross": ["ev-card-deck", "eac-sub"],
     "disney": ["sw-sub"],
     "foreign-fire": ["sw-sub", "ff-sub"],
     "foundations": ["ref-tagline", "found-intro"],

@@ -1,5 +1,16 @@
 ---
-// Header.astro · 1008 V14 — the mobile menu opens on its own dark panel (the
+// Header.astro · 1010 V15 — header rework: seven tabs, panel menus, all read
+// from src/data/nav.js (nav-sections.js retired). Top row: Counterfeits ·
+// Restored Truth · Torah · Trinity · Berean Studies · Edited After the Cross ·
+// Books; far right, smaller: search, About, Contact, theme. Home and About leave
+// the row (the logo is home; About rides with Contact). Doctrines is pinned first
+// in both the Counterfeits and Restored Truth panels and opens the paired
+// /doctrines page. Panels open on hover or click (touch laptops), one at a time;
+// Escape or a click outside closes; buttons carry aria-expanded so the row and
+// an open panel are keyboard-reachable. More than six links → two columns. Phone:
+// logo + menu button only; the menu lists the seven tabs, panels expand in place
+// (accordion), search / About / Contact / theme sit at its foot.
+// V14 (1008) — the mobile menu opens on its own dark panel (the
 // dropdowns' ground) so it reads in light mode, where it sat over the header's
 // cream half.
 // V13: Topics retired. COUNTERFEITS and RESTORED TRUTH are
@@ -46,272 +57,286 @@
 // itself still links to /doctrines.
 import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
-import { counterfeitsNav, restoredTruthNav } from '../data/nav-sections.js';
+import { mainNav, utilityNav } from '../data/nav.js';
 
-const currentPath = Astro.url.pathname;
+const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 
-// Single row of eleven primary items. Counterfeits and Restored Truth are the two
-// topical dropdowns; their links live in src/data/nav-sections.js.
-const primaryNav = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Doctrines', href: '/doctrines', dropdown: 'doctrines' },
-  { name: 'Counterfeits', href: null, dropdown: 'section', section: counterfeitsNav },
-  { name: 'Restored Truth', href: null, dropdown: 'section', section: restoredTruthNav },
-  { name: 'Torah', href: '/torah' },
-  { name: 'Trinity', href: '/trinity' },
-  { name: 'Berean Studies', href: '/blog', dropdown: 'studies' },
-  { name: 'Voices', href: '/voices' },
-  { name: 'Books', href: '/books' },
-  { name: 'Contact', href: '/contact' },
-];
+const matches = (href: string) =>
+  href === '/' ? currentPath === '/' : currentPath === href || currentPath.startsWith(href + '/');
 
-// Doctrines dropdown — two entries; the label itself links to /doctrines.
-const doctrinesNav = {
-  href: '/doctrines',
-  items: [
-    { name: 'The Old Paths', href: '/doctrines/old-paths', sublabel: 'What Scripture holds' },
-    { name: 'The Departure', href: '/doctrines/the-departure', sublabel: 'Where the church went' },
-    { name: 'Words Your Bible Borrowed', href: '/doctrines/borrowed-words', sublabel: 'The Greek behind the doctrines' },
-  ],
-};
+// Within a panel only the most specific match lights up, so /doctrines/borrowed-words
+// marks Words Your Bible Borrowed, not Doctrines as well.
+const activeHref = (links: { href: string }[]) =>
+  links.filter((l) => matches(l.href)).sort((a, b) => b.href.length - a.href.length)[0]?.href;
 
-// Studies dropdown — the label itself links to the index. Addresses did not
-// move: the index is still /blog and every study is still /blog/<slug>; only the
-// reader-facing word changed from Blog to Studies.
-const studiesNav = {
-  href: '/blog',
-  items: [
-    { name: 'Studies', href: '/blog/topics', sublabel: 'Full Bible studies, one subject at a time, sorted by topic.' },
-    { name: "Pe'ah — The Corner of the Field", href: '/peah', sublabel: 'A short read on one verse, one point. Fits with morning coffee.' },
-    { name: 'Trilogies', href: '/trilogies', sublabel: 'Three studies that belong together. Each one opens the other two wider.' },
-    { name: 'Collections', href: '/blog/collections', sublabel: 'Studies that outgrew the page.' },
-  ],
-};
+type NavLink = { label: string; href: string; desc: string; pinned?: boolean };
+type Tab = { label: string; href?: string; sublabel?: string; glyph?: string; links?: NavLink[] };
 
-// Flat list of every link, used for the mobile menu.
-const mobileNav = [
-  { name: 'Home', href: '/' },
-  { name: 'About', href: '/about' },
-  { name: 'Doctrines', href: '/doctrines' },
-  { name: 'The Old Paths', href: '/doctrines/old-paths' },
-  { name: 'The Departure', href: '/doctrines/the-departure' },
-  { name: 'Words Your Bible Borrowed', href: '/doctrines/borrowed-words' },
-  { name: 'Torah', href: '/torah' },
-  { name: 'Trinity', href: '/trinity' },
-  { name: 'Berean Studies', href: '/blog' },
-  { name: 'Studies', href: '/blog/topics' },
-  { name: "Pe'ah — The Corner of the Field", href: '/peah' },
-  { name: 'Trilogies', href: '/trilogies' },
-  { name: 'Collections', href: '/blog/collections' },
-  { name: 'Voices', href: '/voices' },
-  { name: 'Books', href: '/books' },
-  { name: 'Contact', href: '/contact' },
-  ...[counterfeitsNav, restoredTruthNav].flatMap((sec) =>
-    sec.items.map((it, i) => ({ name: it.label, href: it.href, desc: it.desc, ...(i === 0 ? { section: sec.label } : {}) }))
-  ),
-];
-
-const isActive = (href: string | null) =>
-  href !== null && (currentPath === href || (href !== '/' && currentPath.startsWith(href)));
-
-// A section dropdown is "active" if any of its pages is the current path.
-const sectionActive = (sec: { items: { href: string }[] }) => sec.items.some((it) => isActive(it.href));
-
-const doctrinesActive = isActive('/doctrines');
-const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilogies');
+const tabs = (mainNav as Tab[]).map((tab, i) => {
+  if (!tab.links) return { ...tab, id: `np-${i}`, active: matches(tab.href!) };
+  const current = activeHref(tab.links);
+  return {
+    ...tab,
+    id: `np-${i}`,
+    current,
+    pinned: tab.links.filter((l) => l.pinned),
+    rest: tab.links.filter((l) => !l.pinned),
+    twoCol: tab.links.length > 6,
+    active: !!current || (tab.href ? matches(tab.href) : false),
+  };
+});
 ---
 
 <header class="site-header sticky top-0 z-50 border-b border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] backdrop-blur-sm" data-pagefind-ignore>
-  <nav class="w-full pl-4 pr-6 md:pl-6 md:pr-10 py-1">
+  <nav class="w-full pl-4 pr-6 md:pl-6 md:pr-10 py-1" aria-label="Main">
     <div class="flex items-center justify-between">
-      <a href="/" class="no-underline group">
+      <a href="/" class="no-underline group" aria-label="Nazaryah — home">
         <Logo variant="full" />
       </a>
 
-      <!-- Desktop nav: single right-justified row -->
-      <div class="desktop-nav hidden min-[1240px]:flex items-center gap-3">
+      <!-- Desktop: one right-justified row of seven tabs, then the utility cluster -->
+      <div class="desktop-nav hidden min-[1240px]:flex items-center">
         <ul class="nav-row">
-          {primaryNav.map((item) => (
-            item.dropdown === 'section' ? (
-              <li class="topics-wrap">
+          {tabs.map((tab) =>
+            tab.links ? (
+              <li class="np-wrap" data-np>
                 <button
                   type="button"
-                  class:list={['nav-link nav-link--dropdown', sectionActive(item.section) ? 'active' : '']}
-                  aria-haspopup="true"
+                  class:list={['nav-link nav-link--dropdown', tab.active && 'active']}
+                  aria-expanded="false"
+                  aria-controls={tab.id}
+                  data-np-trigger
                 >
-                  {item.name}
+                  {tab.label}
                   <span class="caret" aria-hidden="true">▾</span>
                 </button>
-
-                <div class="topics-dropdown" role="menu" aria-label={item.section.label}>
-                  <div class="topics-column">
-                    <div class="topics-section-header">
-                      <span class="topics-icon">{item.section.glyph}</span>
-                      <span class="topics-section-title">
-                        <span class="label">{item.section.label}</span>
-                        <span class="sublabel">{item.section.sublabel}</span>
+                <div id={tab.id} class:list={['np-panel', tab.twoCol && 'np-panel--two']} data-np-panel>
+                  {tab.href ? (
+                    <a href={tab.href} class="np-head np-head--link">
+                      <span class="np-glyph" aria-hidden="true">{tab.glyph}</span>
+                      <span class="np-head-text">
+                        <span class="np-head-label">{tab.label}</span>
+                        <span class="np-head-sub">{tab.sublabel}</span>
+                      </span>
+                      <span class="np-head-go" aria-hidden="true">→</span>
+                    </a>
+                  ) : (
+                    <div class="np-head">
+                      <span class="np-glyph" aria-hidden="true">{tab.glyph}</span>
+                      <span class="np-head-text">
+                        <span class="np-head-label">{tab.label}</span>
+                        <span class="np-head-sub">{tab.sublabel}</span>
                       </span>
                     </div>
-                    <ul class="topics-items">
-                      {item.section.items.map((sub) => (
+                  )}
+                  {tab.pinned.length > 0 && (
+                    <ul class="np-pinned">
+                      {tab.pinned.map((l) => (
                         <li>
-                          <a
-                            href={sub.href}
-                            class:list={['topics-item', isActive(sub.href) ? 'active' : '']}
-                            role="menuitem"
-                          >
-                            <span class="topics-item-name">{sub.label}</span>
-                            <span class="topics-item-desc">{sub.desc}</span>
+                          <a href={l.href} class:list={['np-item np-item--pinned', tab.current === l.href && 'active']}>
+                            <span class="np-item-name">{l.label}</span>
+                            {l.desc && <span class="np-item-desc">{l.desc}</span>}
                           </a>
                         </li>
                       ))}
                     </ul>
-                  </div>
-
-                  <div class="topics-footer">
-                    <span class="topics-tagline">Separated unto Yahuah</span>
-                  </div>
-                </div>
-              </li>
-            ) : item.dropdown === 'doctrines' ? (
-              <li class="doctrines-wrap">
-                <a
-                  href={doctrinesNav.href}
-                  class:list={['nav-link nav-link--dropdown', doctrinesActive ? 'active' : '']}
-                >
-                  {item.name}
-                  <span class="caret" aria-hidden="true">▾</span>
-                </a>
-                <div class="doctrines-dropdown" role="menu" aria-label="Doctrines">
-                  {doctrinesNav.items.map((sub) => (
-                    <a
-                      href={sub.href}
-                      class:list={['doctrines-item', isActive(sub.href) ? 'active' : '']}
-                      role="menuitem"
-                    >
-                      <span class="doctrines-item-name">{sub.name}</span>
-                      <span class="doctrines-item-sub">{sub.sublabel}</span>
-                    </a>
-                  ))}
-                </div>
-              </li>
-            ) : item.dropdown === 'studies' ? (
-              /* Same hover dropdown as Doctrines, same classes, and now the
-                 same sublabel line under each item. */
-              <li class="doctrines-wrap">
-                <a
-                  href={studiesNav.href}
-                  class:list={['nav-link nav-link--dropdown', studiesActive ? 'active' : '']}
-                >
-                  {item.name}
-                  <span class="caret" aria-hidden="true">▾</span>
-                </a>
-                <div class="doctrines-dropdown" role="menu" aria-label="Studies">
-                  {studiesNav.items.map((sub) => (
-                    <a
-                      href={sub.href}
-                      class:list={['doctrines-item', isActive(sub.href) ? 'active' : '']}
-                      role="menuitem"
-                    >
-                      <span class="doctrines-item-name">{sub.name}</span>
-                      {sub.sublabel && <span class="doctrines-item-sub">{sub.sublabel}</span>}
-                    </a>
-                  ))}
+                  )}
+                  <ul class="np-items">
+                    {tab.rest.map((l) => (
+                      <li>
+                        <a href={l.href} class:list={['np-item', tab.current === l.href && 'active']}>
+                          <span class="np-item-name">{l.label}</span>
+                          {l.desc && <span class="np-item-desc">{l.desc}</span>}
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                  <div class="np-foot">Separated unto Yahuah</div>
                 </div>
               </li>
             ) : (
               <li>
-                <a
-                  href={item.href}
-                  class:list={['nav-link', isActive(item.href) ? 'active' : '']}
-                >
-                  {item.name}
-                </a>
+                <a href={tab.href} class:list={['nav-link', tab.active && 'active']}>{tab.label}</a>
               </li>
             )
-          ))}
+          )}
         </ul>
-        <div class="nav-icons">
-          <button
-            data-search-trigger
-            aria-label="Open search"
-            class="icon-btn"
-          >
-            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+        <div class="nav-utility">
+          <button data-search-trigger aria-label="Open search" class="icon-btn">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
             </svg>
           </button>
+          {utilityNav.map((u) => (
+            <a href={u.href} class:list={['util-link', matches(u.href) && 'active']}>{u.label}</a>
+          ))}
           <ThemeToggle />
         </div>
       </div>
 
-      <!-- Mobile: Theme Toggle + Menu Button -->
-      <div class="flex items-center gap-2 min-[1240px]:hidden">
-        <button
-          data-search-trigger
-          aria-label="Open search"
-          class="p-2 transition-colors hover:bg-[rgba(139,105,20,0.1)] rounded"
-          style="color: var(--ink-faded);"
-        >
-          <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
-          </svg>
-        </button>
-        <ThemeToggle />
-        <button
-          id="mobile-menu-button"
-          class="p-2 text-[var(--ink)] dark:text-[var(--sand-light)]"
-          aria-label="Toggle menu"
-        >
-          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-          </svg>
-        </button>
-      </div>
+      <!-- Phone / narrow: the mark and a menu button, nothing else -->
+      <button
+        id="mobile-menu-button"
+        class="min-[1240px]:hidden p-2 text-[var(--ink)] dark:text-[var(--sand-light)]"
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+        </svg>
+      </button>
     </div>
 
-    <!-- Mobile Menu -->
+    <!-- Phone menu: the seven tabs; a panel tab expands in place -->
     <div id="mobile-menu" class="hidden min-[1240px]:hidden mt-3 mb-2">
-      <ul class="space-y-2">
-        {mobileNav.map((item) => (
-          <>
-            {item.section && (
-              <li class="mobile-section-label">{item.section}</li>
-            )}
-            <li>
-              {item.soon ? (
-                <span class="nav-link-mobile nav-link-mobile--soon" aria-disabled="true">
-                  {item.name}<span class="topics-soon-tag">Coming Soon</span>
-                </span>
-              ) : (
-                <a
-                  href={item.href}
-                  class:list={['nav-link-mobile', isActive(item.href) ? 'active' : '']}
-                >
-                  {item.name}
-                  {item.desc && <span class="nav-mobile-desc">{item.desc}</span>}
-                </a>
-              )}
+      <ul class="m-list">
+        {tabs.map((tab) =>
+          tab.links ? (
+            <li class="m-group">
+              <button
+                type="button"
+                class:list={['m-tab', tab.active && 'active']}
+                aria-expanded={tab.active ? 'true' : 'false'}
+                aria-controls={`m-${tab.id}`}
+                data-m-trigger
+              >
+                {tab.label}
+                <span class="m-caret" aria-hidden="true">▾</span>
+              </button>
+              <ul id={`m-${tab.id}`} class="m-sub" hidden={!tab.active}>
+                {tab.href && (
+                  <li>
+                    <a href={tab.href} class:list={['m-link', currentPath === tab.href && 'active']}>
+                      All {tab.label}
+                    </a>
+                  </li>
+                )}
+                {tab.links.map((l) => (
+                  <li class:list={[l.pinned && 'm-pinned']}>
+                    <a href={l.href} class:list={['m-link', tab.current === l.href && 'active']}>
+                      {l.label}
+                      {l.desc && <span class="m-desc">{l.desc}</span>}
+                    </a>
+                  </li>
+                ))}
+              </ul>
             </li>
-          </>
-        ))}
+          ) : (
+            <li class="m-group">
+              <a href={tab.href} class:list={['m-tab', tab.active && 'active']}>{tab.label}</a>
+            </li>
+          )
+        )}
       </ul>
+      <div class="m-utility">
+        <button type="button" data-search-trigger class="m-util-link">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+          </svg>
+          Search
+        </button>
+        {utilityNav.map((u) => (
+          <a href={u.href} class="m-util-link">{u.label}</a>
+        ))}
+        <ThemeToggle />
+      </div>
     </div>
   </nav>
 </header>
 
 <script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Mobile menu toggle
-    const button = document.getElementById('mobile-menu-button');
-    const menu = document.getElementById('mobile-menu');
-    button?.addEventListener('click', () => {
-      menu?.classList.toggle('hidden');
+  // Panels: hover (mouse only) or click opens; one open at a time; Escape or a
+  // click outside closes. Touch pointers skip the hover path so a tap toggles once.
+  const wraps = Array.from(document.querySelectorAll<HTMLElement>('[data-np]'));
+  let closeTimer: number | undefined;
+
+  const triggerOf = (w: HTMLElement) => w.querySelector<HTMLButtonElement>('[data-np-trigger]')!;
+  const panelOf = (w: HTMLElement) => w.querySelector<HTMLElement>('[data-np-panel]')!;
+
+  function place(w: HTMLElement) {
+    // Keep a wide panel on screen: shift it left when it would run off the right edge.
+    const panel = panelOf(w);
+    panel.style.left = '0px';
+    const r = panel.getBoundingClientRect();
+    const over = r.right - (document.documentElement.clientWidth - 16);
+    if (over > 0) panel.style.left = `${-over}px`;
+  }
+
+  function open(w: HTMLElement) {
+    window.clearTimeout(closeTimer);
+    wraps.forEach((o) => o !== w && close(o));
+    if (w.classList.contains('is-open')) return;
+    w.classList.add('is-open');
+    triggerOf(w).setAttribute('aria-expanded', 'true');
+    place(w);
+  }
+  function close(w: HTMLElement) {
+    w.classList.remove('is-open');
+    triggerOf(w).setAttribute('aria-expanded', 'false');
+  }
+  const closeAll = () => wraps.forEach(close);
+
+  wraps.forEach((w) => {
+    // A mouse has already opened the panel by hovering, so its click only keeps
+    // it open; keyboard and touch clicks toggle.
+    let pointer = '';
+    triggerOf(w).addEventListener('pointerdown', (e) => { pointer = e.pointerType; });
+    triggerOf(w).addEventListener('click', (e) => {
+      const byMouse = e.detail > 0 && pointer === 'mouse';
+      pointer = '';
+      if (byMouse || !w.classList.contains('is-open')) open(w);
+      else close(w);
     });
-    // Desktop Topics dropdown is now CSS-driven via :hover on .topics-wrap —
-    // no JS toggle needed.
+    w.addEventListener('pointerenter', (e) => {
+      if (e.pointerType === 'mouse') open(w);
+    });
+    w.addEventListener('pointerleave', (e) => {
+      if (e.pointerType !== 'mouse') return;
+      closeTimer = window.setTimeout(() => close(w), 160);
+    });
+    // Tabbing out of a tab and its panel closes it.
+    w.addEventListener('focusout', (e) => {
+      const to = (e as FocusEvent).relatedTarget as Node | null;
+      if (to && !w.contains(to)) close(w);
+    });
   });
+
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    const openWrap = wraps.find((w) => w.classList.contains('is-open'));
+    if (openWrap) {
+      close(openWrap);
+      triggerOf(openWrap).focus();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (!wraps.some((w) => w.contains(e.target as Node))) closeAll();
+  });
+  window.addEventListener('resize', () => wraps.filter((w) => w.classList.contains('is-open')).forEach(place));
+
+  // Phone menu and its accordion groups.
+  const button = document.getElementById('mobile-menu-button');
+  const menu = document.getElementById('mobile-menu');
+  button?.addEventListener('click', () => {
+    const hidden = menu?.classList.toggle('hidden');
+    button.setAttribute('aria-expanded', hidden ? 'false' : 'true');
+  });
+  document.querySelectorAll<HTMLButtonElement>('[data-m-trigger]').forEach((t) => {
+    t.addEventListener('click', () => {
+      const sub = document.getElementById(t.getAttribute('aria-controls')!);
+      const expanded = t.getAttribute('aria-expanded') === 'true';
+      t.setAttribute('aria-expanded', expanded ? 'false' : 'true');
+      if (sub) sub.hidden = expanded;
+    });
+  });
+  // Search opens over the page; fold the phone menu away behind it.
+  menu?.querySelectorAll('[data-search-trigger]').forEach((s) =>
+    s.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      button?.setAttribute('aria-expanded', 'false');
+    })
+  );
 </script>
 
 <style>
@@ -379,9 +404,7 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
   }
 
   /* Nav links carry a soft cream backdrop so they stay readable
-     even when they land over the dark portion of the header gradient.
-     The backdrop is invisible against the cream side but creates a
-     subtle halo on dark — buttons "make themselves known" either way. */
+     even when they land over the dark portion of the header gradient. */
   .nav-link {
     display: inline-flex;
     align-items: center;
@@ -398,44 +421,29 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     background: rgba(245, 240, 230, 0.55);
     border: 1px solid transparent;
     cursor: pointer;
-    transition: background-color 0.2s, color 0.2s, border-color 0.2s, transform 0.2s;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s;
     text-shadow: 0 0 6px rgba(245, 240, 230, 0.7);
     white-space: nowrap;
   }
 
-  /* Hover + current page: dark brown box, bright gold lettering.
-     text-shadow is killed on these states so the gold doesn't pick up
-     the cream halo we use for visibility on the resting state. */
+  /* Hover, open panel, current page: dark brown box, bright gold lettering. */
   .nav-link:hover,
-  .nav-link.active {
+  .nav-link.active,
+  .np-wrap.is-open > .nav-link {
     background: #1a0e06;
     color: #f0c450;
     border-color: #a87f1f;
     text-shadow: none;
   }
-  .nav-link:hover .caret,
-  .nav-link.active .caret {
-    color: #f0c450;
-    opacity: 1;
-  }
-
-  /* Eleven items: the row tightens in even steps (padding, letter-spacing, size)
-     as the window narrows, so nothing wraps or clips. Below 1240px the
-     hamburger menu takes over — every item is there, none dropped. */
-  @media (max-width: 1699px) {
-    .nav-row { gap: 0.1rem; }
-    .nav-link { padding: 0.45rem 0.42rem; font-size: 0.7rem; letter-spacing: 0.05em; }
-    .nav-icons { margin-left: 0.3rem; padding-left: 0.45rem; }
-  }
-  @media (max-width: 1479px) {
-    .nav-link { padding: 0.42rem 0.32rem; font-size: 0.66rem; letter-spacing: 0.04em; }
-  }
+  .nav-link:focus-visible { outline: 2px solid #d4a531; outline-offset: 2px; }
 
   .nav-link--dropdown .caret {
     font-size: 0.65rem;
     opacity: 0.7;
     margin-left: 0.1rem;
+    transition: transform 0.18s;
   }
+  .np-wrap.is-open .caret { transform: rotate(180deg); opacity: 1; }
 
   :global(.dark) .nav-link {
     color: #ede4cf;
@@ -443,28 +451,54 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     text-shadow: 0 0 6px rgba(15, 10, 4, 0.8);
   }
   :global(.dark) .nav-link:hover,
-  :global(.dark) .nav-link.active {
+  :global(.dark) .nav-link.active,
+  :global(.dark) .np-wrap.is-open > .nav-link {
     background: #0f0a04;
     color: #f0c450;
     border-color: #a87f1f;
     text-shadow: none;
   }
 
+  /* Seven tabs fit easily wide; the row tightens in the same two steps the
+     eleven-item row used (no smaller than before) as the window narrows. */
+  @media (max-width: 1699px) {
+    .nav-row { gap: 0.1rem; }
+    .nav-link { padding: 0.45rem 0.55rem; font-size: 0.72rem; letter-spacing: 0.07em; }
+  }
+  @media (max-width: 1479px) {
+    .nav-link { padding: 0.42rem 0.4rem; font-size: 0.68rem; letter-spacing: 0.05em; }
+  }
+
   /* ============================================================
-     ICON BUTTONS (search + theme)
+     UTILITY CLUSTER — search, About, Contact, theme (smaller type)
      ============================================================ */
-  .nav-icons {
+  .nav-utility {
     display: flex;
-    gap: 0.35rem;
-    margin-left: 0.5rem;
-    padding-left: 0.65rem;
+    gap: 0.2rem;
+    margin-left: 0.6rem;
+    padding-left: 0.6rem;
     border-left: 1px solid rgba(168, 127, 31, 0.3);
     align-items: center;
   }
+  .util-link {
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #6b4d12;
+    text-decoration: none;
+    padding: 0.35rem 0.35rem;
+    border-radius: 3px;
+    white-space: nowrap;
+  }
+  .util-link:hover, .util-link.active { color: #1a0e06; background: rgba(168, 127, 31, 0.15); }
+  :global(.dark) .util-link { color: #c9a95c; }
+  :global(.dark) .util-link:hover, :global(.dark) .util-link.active { color: #f0c450; background: rgba(212, 165, 49, 0.12); }
 
   .icon-btn {
-    width: 2.2rem;
-    height: 2.2rem;
+    width: 1.9rem;
+    height: 1.9rem;
     border-radius: 50%;
     border: 1.5px solid rgba(168, 127, 31, 0.3);
     background: rgba(168, 127, 31, 0.08);
@@ -486,66 +520,15 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
   }
 
   /* ============================================================
-     TOPICS DROPDOWN
+     PANELS — open on hover or click (script sets .is-open)
      ============================================================ */
-  .topics-wrap {
-    position: relative;
-  }
+  .np-wrap { position: relative; }
 
-  /* ── Doctrines dropdown — same hover/focus mechanism as Topics, one narrow
-     column. The label is a real link to /doctrines; hover reveals the two. ── */
-  .doctrines-wrap { position: relative; }
-  .doctrines-dropdown {
-    position: absolute; top: 100%; left: 0; min-width: 16rem; padding: 0.5rem;
-    background:
-      radial-gradient(ellipse at top, rgba(168, 127, 31, 0.15) 0%, transparent 60%),
-      linear-gradient(180deg, #1a0e06 0%, #0d0703 100%);
-    border: 1px solid rgba(212, 165, 49, 0.4); border-radius: 8px;
-    box-shadow: 0 20px 50px -12px rgba(0,0,0,0.7), 0 0 0 1px rgba(212,165,49,0.1);
-    overflow: hidden; z-index: 60;
-    visibility: hidden; opacity: 0; transform: translateY(-4px); pointer-events: none;
-    transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
-  }
-  .doctrines-dropdown::before {
-    content: ''; position: absolute; top: 0; left: 0; right: 0; height: 2px;
-    background: linear-gradient(90deg, transparent, #d4a531, #f0c450, #d4a531, transparent);
-  }
-  .doctrines-wrap:hover .doctrines-dropdown,
-  .doctrines-wrap:focus-within .doctrines-dropdown,
-  .doctrines-dropdown:hover {
-    visibility: visible; opacity: 1; transform: translateY(0); pointer-events: auto;
-  }
-  .doctrines-item {
-    display: flex; flex-direction: column; gap: 0.1rem;
-    padding: 0.6rem 0.8rem; border-radius: 5px; text-decoration: none; transition: background 0.15s;
-  }
-  .doctrines-item:hover, .doctrines-item.active { background: rgba(212,165,49,0.12); }
-  .doctrines-item-name {
-    font-family: var(--font-display, 'Cinzel', Georgia, serif);
-    font-size: 0.82rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: #ede4cf;
-  }
-  .doctrines-item:hover .doctrines-item-name, .doctrines-item.active .doctrines-item-name { color: #f0c450; }
-  .doctrines-item-sub {
-    font-family: var(--font-body, Georgia, serif); font-size: 0.72rem; font-style: italic;
-    color: #a89478; letter-spacing: 0;
-  }
-
-  /* Hover-only dropdown. Hidden by default; the parent .topics-wrap
-     :hover (or hovering the panel itself) reveals it. We use opacity +
-     visibility so the transition stays smooth and the panel stops being
-     a click target when closed.
-
-     Panel sits FLUSH against the button (top: 100%, no margin) so there
-     is zero dead-zone between the trigger and the panel — the cursor
-     moves directly from one hoverable element to the next. */
-  .topics-dropdown {
+  .np-panel {
     position: absolute;
     top: 100%;
     left: 0;
-    margin-top: 0;
-    width: 23rem;
-    /* Nine described links run tall — on a short screen the panel scrolls
-       inside itself rather than running off the bottom. */
+    width: 24rem;
     max-height: calc(100vh - 5.5rem);
     overflow-y: auto;
     overscroll-behavior: contain;
@@ -560,7 +543,6 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
       0 20px 50px -12px rgba(0, 0, 0, 0.7),
       0 0 0 1px rgba(212, 165, 49, 0.1),
       0 4px 20px -4px rgba(212, 165, 49, 0.15);
-    overflow-x: hidden;
     z-index: 60;
     visibility: hidden;
     opacity: 0;
@@ -568,206 +550,119 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     pointer-events: none;
     transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
   }
-
-  /* Hover/focus on the wrap (button + panel are both descendants) keeps
-     the panel open. Hovering the panel itself also keeps it open via
-     the same selector — once it is visible, .topics-dropdown:hover holds
-     it there. */
-  .topics-wrap:hover .topics-dropdown,
-  .topics-wrap:focus-within .topics-dropdown,
-  .topics-dropdown:hover {
+  .np-panel--two { width: 42rem; }
+  .np-wrap.is-open .np-panel {
     visibility: visible;
     opacity: 1;
     transform: translateY(0);
     pointer-events: auto;
   }
-
-  /* Top accent line — the same gold gradient used elsewhere on the site */
-  .topics-dropdown::before {
+  /* Top accent line — the site's gold gradient */
+  .np-panel::before {
     content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
+    position: sticky;
+    display: block;
+    top: 0;
     height: 2px;
+    margin-bottom: -2px;
     background: linear-gradient(90deg, transparent, #d4a531, #f0c450, #d4a531, transparent);
   }
 
-  .topics-column {
-    padding: 1.4rem 1.3rem;
-  }
-
-  .topics-section-header {
+  .np-head {
     display: flex;
     align-items: center;
     gap: 0.6rem;
-    margin-bottom: 0.9rem;
-    padding-bottom: 0.8rem;
+    margin: 1.2rem 1.3rem 0.6rem;
+    padding-bottom: 0.75rem;
     border-bottom: 1px solid rgba(212, 165, 49, 0.2);
     text-decoration: none;
-    transition: opacity 0.15s;
   }
-
-  .topics-icon {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 50%;
+  .np-head--link:hover .np-head-label, .np-head--link:focus-visible .np-head-label { color: #fff1c4; }
+  .np-head-go { margin-left: auto; color: #d4a531; font-size: 0.9rem; }
+  .np-glyph {
+    width: 2rem; height: 2rem; border-radius: 50%;
     background: radial-gradient(circle, rgba(212, 165, 49, 0.25) 0%, transparent 70%);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: #f0c450;
-    font-size: 1rem;
-    flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center;
+    color: #f0c450; font-size: 1rem; flex-shrink: 0;
+  }
+  .np-head-text { display: flex; flex-direction: column; }
+  .np-head-label {
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.85rem; font-weight: 700; color: #f0c450;
+    letter-spacing: 0.12em; text-transform: uppercase; line-height: 1.2;
+  }
+  .np-head-sub {
+    font-family: var(--font-family-serif, 'Crimson Text', Georgia, serif);
+    font-size: 0.78rem; color: rgba(240, 196, 80, 0.6);
+    font-style: italic; margin-top: 2px;
   }
 
-  .topics-section-title {
-    flex: 1;
+  .np-pinned, .np-items { list-style: none; margin: 0; padding: 0 0.8rem; }
+  /* Doctrines: first, and set apart from the links beneath it. */
+  .np-pinned {
+    margin: 0 0.5rem 0.5rem;
+    padding: 0.3rem;
+    border: 1px solid rgba(212, 165, 49, 0.28);
+    border-radius: 6px;
+    background: rgba(168, 127, 31, 0.08);
+  }
+  .np-items { padding-bottom: 0.9rem; display: grid; gap: 1px; }
+  .np-panel--two .np-items { grid-template-columns: 1fr 1fr; column-gap: 0.6rem; }
+
+  .np-item {
     display: flex;
     flex-direction: column;
-  }
-  .topics-section-title .label {
-    font-family: var(--font-display, 'Cinzel', Georgia, serif);
-    font-size: 0.85rem;
-    font-weight: 700;
-    color: #f0c450;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    line-height: 1.2;
-  }
-  .topics-section-title .sublabel {
-    font-size: 0.65rem;
-    color: rgba(240, 196, 80, 0.6);
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    margin-top: 3px;
-    font-style: italic;
-    font-weight: 400;
-  }
-
-  .topics-items {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 1px;
-  }
-
-  /* Diamond in a narrow first column; title over its description in the second. */
-  .topics-item {
-    display: grid;
-    grid-template-columns: 0.6rem 1fr;
-    column-gap: 0.55rem;
-    row-gap: 0.15rem;
-    align-items: baseline;
-    padding: 0.45rem 0.75rem;
-    font-family: var(--font-display, 'Cinzel', Georgia, serif);
-    font-size: 0.78rem;
-    color: #d4c4a0;
+    gap: 0.15rem;
+    padding: 0.5rem 0.75rem;
     text-decoration: none;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    font-weight: 500;
     border-radius: 4px;
     border: 1px solid transparent;
-    transition: background-color 0.15s, color 0.15s, border-color 0.15s, transform 0.15s;
+    transition: background-color 0.15s, border-color 0.15s;
   }
-  .topics-item::before {
-    content: '\25C6'; /* ◆ */
-    color: #a87f1f;
-    font-size: 0.55rem;
-    transition: color 0.15s, transform 0.15s;
+  /* Label in the gold serif; description beneath, smaller and muted. */
+  .np-item-name {
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.09em;
+    text-transform: uppercase;
+    color: #e2bd62;
   }
-  .topics-item-name { grid-column: 2; }
-  /* Description line — matches the Berean Studies dropdown's sublabel. */
-  .topics-item-desc {
-    grid-column: 2;
-    font-family: var(--font-body, Georgia, serif);
-    font-size: 0.72rem;
+  .np-item-desc {
+    font-family: var(--font-family-serif, 'Crimson Text', Georgia, serif);
+    font-size: 0.86rem;
     font-style: italic;
-    font-weight: 400;
     color: #a89478;
-    letter-spacing: 0;
-    text-transform: none;
     line-height: 1.35;
   }
-  .topics-item:hover {
+  .np-item:hover, .np-item:focus-visible {
     background: rgba(168, 127, 31, 0.14);
-    color: #f0c450;
     border-color: rgba(212, 165, 49, 0.25);
-    transform: translateX(2px);
+    outline: none;
   }
-  .topics-item:hover::before {
-    color: #f0c450;
-    transform: scale(1.3);
-  }
-  .topics-item.active {
-    color: #f0c450;
-    background: rgba(168, 127, 31, 0.18);
-    border-color: rgba(212, 165, 49, 0.3);
-  }
+  .np-item:hover .np-item-name, .np-item:focus-visible .np-item-name, .np-item.active .np-item-name { color: #fff1c4; }
+  .np-item.active { background: rgba(168, 127, 31, 0.18); border-color: rgba(212, 165, 49, 0.3); }
+  .np-item--pinned .np-item-name { font-size: 0.86rem; color: #f0c450; }
 
-  /* Coming-soon items — dimmed, non-clickable, dashed to echo the rail placeholders */
-  .topics-item--soon {
-    color: #6f6446;
-    cursor: default;
-    border: 1px dashed rgba(168, 127, 31, 0.3);
-    background: rgba(168, 127, 31, 0.04);
-  }
-  .topics-item--soon::before { color: #6a5c33; opacity: 0.6; }
-  .topics-item--soon:hover {
-    background: rgba(168, 127, 31, 0.04);
-    color: #6f6446;
-    border-color: rgba(168, 127, 31, 0.3);
-    transform: none;
-  }
-  .topics-item--soon:hover::before { color: #6a5c33; transform: none; }
-  .topics-soon-tag {
-    margin-left: auto;
-    font-family: 'Cinzel', Georgia, serif;
-    font-size: 0.5rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: #b5943f;
-    border: 1px dashed rgba(212, 165, 49, 0.45);
-    border-radius: 3px;
-    padding: 2px 6px;
-    white-space: nowrap;
-  }
-  .nav-link-mobile--soon {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.5rem;
-    color: #6f6446;
-    cursor: default;
-    opacity: 0.85;
-  }
-
-  .topics-footer {
+  .np-foot {
     background: rgba(0, 0, 0, 0.35);
-    padding: 0.7rem 1.3rem;
+    padding: 0.6rem 1.3rem;
     border-top: 1px solid rgba(212, 165, 49, 0.15);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
     font-family: var(--font-display, 'Cinzel', Georgia, serif);
-    font-size: 0.68rem;
+    font-size: 0.66rem;
     color: rgba(240, 196, 80, 0.65);
     letter-spacing: 0.15em;
     text-transform: uppercase;
   }
+
   /* ============================================================
-     MOBILE MENU
+     PHONE MENU — its own dark panel; scrolls inside itself
      ============================================================ */
-  /* The menu lives inside the sticky header, so it can never scroll with the
-     page — it scrolls inside itself, or its lower groups sit off-screen. */
-  /* Its own dark panel (the desktop dropdowns' ground), so the light lettering
-     reads in light mode too — over the header's cream half it vanished. */
   #mobile-menu {
     max-height: calc(100dvh - 6rem);
     overflow-y: auto;
     overscroll-behavior: contain;
-    padding: 0.75rem 0.5rem 1rem;
+    padding: 0.6rem 0.5rem 0.8rem;
     background:
       radial-gradient(ellipse at top, rgba(168, 127, 31, 0.15) 0%, transparent 60%),
       linear-gradient(180deg, #1a0e06 0%, #0d0703 100%);
@@ -777,33 +672,81 @@ const studiesActive = isActive('/blog') || isActive('/peah') || isActive('/trilo
     scrollbar-width: thin;
     scrollbar-color: rgba(212, 165, 49, 0.4) transparent;
   }
-  #mobile-menu .nav-link-mobile { color: #ede4cf; }
-  #mobile-menu .mobile-section-label {
-    color: #f0c450;
-    border-bottom-color: rgba(212, 165, 49, 0.3);
-    padding-left: 0.75rem;
+  .m-list { list-style: none; margin: 0; padding: 0; }
+  .m-group + .m-group { border-top: 1px solid rgba(212, 165, 49, 0.14); }
+  .m-tab {
+    display: flex;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.8rem 0.75rem;
+    background: none;
+    border: 0;
+    text-align: left;
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #ede4cf;
+    text-decoration: none;
+    cursor: pointer;
   }
-  #mobile-menu .nav-mobile-desc { color: #a89478; opacity: 1; }
-  .nav-mobile-desc {
+  .m-tab.active { color: #f0c450; }
+  .m-caret { font-size: 0.7rem; color: #d4a531; transition: transform 0.18s; }
+  .m-tab[aria-expanded='true'] .m-caret { transform: rotate(180deg); }
+  .m-sub { list-style: none; margin: 0 0 0.6rem; padding: 0 0.4rem 0 0.9rem; border-left: 1px solid rgba(212, 165, 49, 0.3); margin-left: 0.75rem; }
+  .m-sub[hidden] { display: none; }
+  .m-link {
     display: block;
-    font-family: var(--font-body, Georgia, serif);
-    font-size: 0.8rem;
+    padding: 0.5rem 0.5rem;
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.76rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #e2bd62;
+    text-decoration: none;
+    border-radius: 4px;
+  }
+  .m-link.active { background: rgba(168, 127, 31, 0.18); color: #fff1c4; }
+  .m-pinned .m-link { background: rgba(168, 127, 31, 0.08); border: 1px solid rgba(212, 165, 49, 0.28); margin-bottom: 0.35rem; }
+  .m-desc {
+    display: block;
+    margin-top: 0.1rem;
+    font-family: var(--font-family-serif, 'Crimson Text', Georgia, serif);
+    font-size: 0.9rem;
     font-style: italic;
     font-weight: 400;
     letter-spacing: 0;
     text-transform: none;
-    opacity: 0.7;
+    color: #a89478;
     line-height: 1.35;
-    margin-top: 0.1rem;
   }
-  .mobile-section-label {
+  .m-utility {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 0.3rem 0.9rem;
+    margin-top: 0.4rem;
+    padding: 0.8rem 0.75rem 0.2rem;
+    border-top: 1px solid rgba(212, 165, 49, 0.3);
+  }
+  .m-util-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.35rem;
+    background: none;
+    border: 0;
+    padding: 0.35rem 0;
     font-family: var(--font-display, 'Cinzel', Georgia, serif);
     font-size: 0.7rem;
-    color: var(--gold-deep, #6b4d12);
-    letter-spacing: 0.18em;
+    font-weight: 600;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
-    margin-top: 1rem;
-    padding-bottom: 0.3rem;
-    border-bottom: 1px solid var(--sand-dark);
+    color: #c9a95c;
+    text-decoration: none;
+    cursor: pointer;
   }
+  .m-utility :global(.theme-toggle-btn) { color: #c9a95c !important; margin-left: auto; }
 </style>

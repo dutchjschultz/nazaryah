@@ -1,0 +1,265 @@
+---
+// src/pages/edited-after-the-cross/index.astro · 1010 V1
+// V1: section front for Edited After the Cross (Septuagint vs Masoretic).
+// Masthead, the Hebrews 10:5 / Psalm 40:6 hook, four expanding cards, How to Read
+// with the four tag chips, The Verses (list + tag filter built from
+// src/data/edited-after-the-cross.js — never hand-maintained), The Last Word.
+// Cards are <details>: title + first sentence closed, full text open, no script.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { verses, TAGS, TAG_NOTES } from '../../data/edited-after-the-cross.js';
+import { canonicalKey } from '../../data/canonicalOrder';
+
+const live = verses
+  .filter((v) => v.status === 'live')
+  .sort((a, b) => canonicalKey(a.reference) - canonicalKey(b.reference));
+const tagSlug = (t: string) => t.toLowerCase().replace(/\s+/g, '-');
+
+// Each card: title, its first sentence (shown closed), and its full text.
+const cards = [
+  {
+    title: 'What the Two Texts Are',
+    first: 'Two to three hundred years before Yahushua was born, Jewish scholars in Egypt translated the Hebrew Scriptures into Greek, the common language of that world.',
+    blocks: [
+      { head: 'The Septuagint', text: 'Two to three hundred years before Yahushua was born, Jewish scholars in Egypt translated the Hebrew Scriptures into Greek, the common language of that world. The translation is called the Septuagint, meaning “seventy,” after the old account of the translators who made it. It is often written LXX. Jews across the Roman world read it in their synagogues. When the apostles quote the Old Testament, their words match the Septuagint far more often than they match the Hebrew text used today.' },
+      { head: 'The Masoretic Text', text: 'The Masoretic text is the Hebrew Bible used by Jews today, and the one most English Old Testaments are translated from. It was put in its final form by Jewish scribes called the Masoretes between about 600 and 1000 AD. The oldest complete copy is the Leningrad Codex, written in 1008 AD, about a thousand years after the cross.' },
+      { head: 'What Happened in Between', text: 'Once believers began proving Yahushua from the Greek Bible, Jewish teachers turned against it. In the second century, three new Greek translations appeared, made by Aquila, Symmachus, and Theodotion, to replace the one their own fathers had made. The Hebrew copies that were handed down from then on were the ones the rabbis chose to keep.' },
+    ],
+  },
+  {
+    title: 'The Tiebreaker: The Dead Sea Scrolls',
+    first: 'In 1947 a shepherd found clay jars in a cave near the Dead Sea.',
+    blocks: [
+      { text: 'In 1947 a shepherd found clay jars in a cave near the Dead Sea. Inside were Scripture scrolls copied between about 250 BC and the first century AD, roughly a thousand years older than any complete Masoretic copy.' },
+      { text: 'The scrolls show that in Messiah’s day there was more than one form of the Hebrew text. Some scrolls match the later Jewish Bible. Others match the Hebrew the Greek translators worked from. At key verses about Messiah, the scrolls side with the Septuagint. A scroll has “pierced” in Psalm 22:16. Another keeps the line in Deuteronomy 32:43 that Hebrews 1:6 quotes and the Masoretic text dropped, calling on the heavenly host to worship Him.' },
+      { text: 'The Greek translators were not making things up. They were translating a real Hebrew text, one the rabbis later set aside.' },
+    ],
+  },
+  {
+    title: 'Why Your KJV Argues With Itself',
+    first: 'The King James translators took their Old Testament from the Masoretic Hebrew.',
+    blocks: [
+      { text: 'The King James translators took their Old Testament from the Masoretic Hebrew. The New Testament was already written, and it quotes the older text. So the same Bible says two different things in place after place:' },
+      { list: [
+        'Hebrews 10:5 says “a body hast thou prepared me.” Psalm 40:6 says “mine ears hast thou opened.”',
+        'Hebrews 11:21 says Jacob worshipped “leaning upon the top of his staff.” Genesis 47:31 says he “bowed himself upon the bed’s head.”',
+        'Acts 7:14 says threescore and fifteen souls went down to Egypt. Genesis 46:27 says threescore and ten.',
+      ] },
+      { text: 'Readers have been told these are small slips. They are two different Old Testaments bound into one cover. In a few places the translators would not follow the Masoretic text at all. Psalm 22:16 is one of them.' },
+    ],
+  },
+  {
+    title: 'A Witness, Not an Authority',
+    first: 'The Septuagint is not a new Bible to replace the Hebrew.',
+    blocks: [
+      { text: 'The Septuagint is not a new Bible to replace the Hebrew. It is a witness. It shows what the Hebrew said before it was changed.' },
+      // "The Pagan Freight study" — no page carries that title; the word-by-word
+      // study of Greek words that carried pagan meaning is Words Your Bible Borrowed.
+      { text: 'It is still a Greek translation, and Greek came with baggage. The translators put the Greek word Kyrios, “Lord,” where the Name Yahuah stood. They used Greek words such as Hades and psychē that already carried pagan meaning, and those words later carried Greek philosophy into the church. The <a href="/doctrines/borrowed-words">Pagan Freight</a> study traces that damage word by word.' },
+      { text: 'So the rule on these pages is simple. The Hebrew is the source. The Greek is a witness to what the Hebrew said before the rabbis changed it. Where the Septuagint preserves Messiah, it is called to testify. Where it carries a Greek idea, it is not followed.' },
+    ],
+  },
+];
+---
+
+<BaseLayout
+  title="Edited After the Cross — Septuagint and Masoretic | Nazaryah"
+  description="The apostles read one Old Testament; the other was finished by Jewish scribes a thousand years after the cross. Where the Septuagint and the Masoretic text disagree, the later one is missing Messiah. Verse by verse, side by side."
+>
+  <div class="eac-page" data-pagefind-body>
+    <header class="eac-header">
+      <h1 class="eac-title">Edited After the Cross</h1>
+      <p class="eac-sub">Septuagint and Masoretic: what the apostles read, and what was rewritten after Messiah</p>
+    </header>
+
+    <div class="eac-col eac-hook">
+      <p>Open a King James Bible to Hebrews 10:5 and read what Messiah says as He comes into the world: “a body hast thou prepared me.” Now turn back to the verse being quoted, Psalm 40:6. The same Bible says “mine ears hast thou opened.” The body is gone.</p>
+      <p>That is not a printing mistake. The two Testaments in that Bible were translated from two different Old Testaments. The apostles read one of them. The other was put in its final form by Jewish scribes hundreds of years after the cross. Again and again, where the two disagree, the later one is missing Messiah.</p>
+      <p>This section sets the two side by side, one verse at a time.</p>
+    </div>
+
+    <div class="eac-cards">
+      {cards.map((c) => (
+        <details class="eac-card">
+          <summary>
+            <span class="eac-card-title">{c.title}</span>
+            <span class="eac-card-first">{c.first}</span>
+            <span class="eac-card-more" aria-hidden="true"><span class="closed">Read more ▾</span><span class="opened">Close ▴</span></span>
+          </summary>
+          <div class="eac-card-body">
+            {c.blocks.map((b) =>
+              b.list ? (
+                <ul>{b.list.map((li) => <li>{li}</li>)}</ul>
+              ) : (
+                <p>
+                  {b.head && <strong class="eac-card-head">{b.head}. </strong>}
+                  <Fragment set:html={b.text} />
+                </p>
+              )
+            )}
+          </div>
+        </details>
+      ))}
+    </div>
+
+    <section class="eac-col eac-section">
+      <h2 class="eac-h2">How to Read the Verse Pages</h2>
+      <p>Each verse page shows what the reader’s Bible says, what the Jewish Bible says, what changed, and why. A Dig Deeper section at the bottom holds the evidence for anyone who wants it. Every page carries one of four tags:</p>
+      <ul class="eac-tag-key">
+        {TAGS.map((t) => (
+          <li><span class="eac-chip">{t}</span><span class="eac-tag-note">{TAG_NOTES[t]}</span></li>
+        ))}
+      </ul>
+    </section>
+
+    <section class="eac-col eac-section" id="verses">
+      <h2 class="eac-h2">The Verses</h2>
+      <p>Choose a verse below to see what was changed.</p>
+      <div class="eac-filter" role="group" aria-label="Filter verses by tag" data-pagefind-ignore>
+        <button type="button" class="eac-chip eac-chip--btn" aria-pressed="true" data-tag="all">All</button>
+        {TAGS.map((t) => (
+          <button type="button" class="eac-chip eac-chip--btn" aria-pressed="false" data-tag={tagSlug(t)}>{t}</button>
+        ))}
+      </div>
+      <ul class="eac-verses">
+        {live.map((v) => (
+          <li data-tag={tagSlug(v.tag)}>
+            <a href={`/edited-after-the-cross/${v.slug}`} class="eac-verse">
+              <span class="eac-verse-ref">{v.reference}</span>
+              <span class="eac-verse-title">{v.title}</span>
+              <span class="eac-chip eac-chip--sm">{v.tag}</span>
+            </a>
+          </li>
+        ))}
+      </ul>
+      <p class="eac-empty" hidden>No verse carries this tag yet.</p>
+      <p class="eac-more">More verses are being added.</p>
+    </section>
+
+    <section class="eac-col eac-section eac-last">
+      <h2 class="eac-h2">The Last Word</h2>
+      <p>Men have tried to cut Messiah out of the Scriptures before, one letter at a time. Scripture closes with a warning to anyone who would do it: “If any man shall take away from the words of the book of this prophecy, God shall take away his part out of the book of life” (Revelation 22:19).</p>
+    </section>
+  </div>
+</BaseLayout>
+
+<script>
+  // Tag chips filter the verse list. ?tag=<slug> (from a verse page's chip)
+  // preselects one.
+  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.eac-filter [data-tag]'));
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('.eac-verses [data-tag]'));
+  const empty = document.querySelector<HTMLElement>('.eac-empty');
+  function apply(tag: string) {
+    chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.tag === tag)));
+    let shown = 0;
+    rows.forEach((r) => {
+      const on = tag === 'all' || r.dataset.tag === tag;
+      r.hidden = !on;
+      if (on) shown++;
+    });
+    if (empty) empty.hidden = shown > 0;
+  }
+  chips.forEach((c) => c.addEventListener('click', () => apply(c.dataset.tag!)));
+  const pre = new URLSearchParams(location.search).get('tag');
+  if (pre && chips.some((c) => c.dataset.tag === pre)) apply(pre);
+</script>
+
+<style>
+  .eac-page { background: #0e0d0b; min-height: 100vh; padding: 4rem 2rem 5rem; color: #cfc7b6; }
+  .eac-header { text-align: center; max-width: 46rem; margin: 0 auto 2.8rem; }
+  .eac-title {
+    font-family: var(--font-display); font-size: clamp(1.8rem, 1.3rem + 2.6vw, 2.8rem);
+    font-weight: 700; color: #e8e2d4; margin: 0 0 0.9rem; line-height: 1.14;
+  }
+  .eac-sub {
+    font-family: var(--font-family-serif); font-style: italic; font-size: 1.15rem;
+    color: #a89f8c; margin: 0; line-height: 1.5;
+  }
+
+  .eac-col { max-width: 44rem; margin: 0 auto; }
+  .eac-col p, .eac-card-body p, .eac-card-body li {
+    font-family: var(--font-body); font-size: 1.08rem; line-height: 1.8; color: #cfc7b6; margin: 0 0 1.2rem;
+  }
+  .eac-hook { margin-bottom: 3rem; }
+  .eac-hook p:first-child { font-size: 1.18rem; color: #ddd5c3; }
+
+  /* Four cards: title + first sentence closed; the full text opens in place. */
+  .eac-cards {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.25rem;
+    max-width: 60rem; margin: 0 auto 3.5rem;
+  }
+  .eac-card {
+    background: #161512; border: 0.5px solid rgba(255,255,255,0.07); border-top: 3px solid #BA7517;
+    border-radius: 12px; transition: background 0.2s, border-color 0.2s;
+  }
+  .eac-card[open] { grid-column: 1 / -1; background: #1a1814; }
+  .eac-card summary {
+    list-style: none; cursor: pointer; display: flex; flex-direction: column; gap: 0.55rem;
+    padding: 1.6rem 1.6rem 1.3rem;
+  }
+  .eac-card summary::-webkit-details-marker { display: none; }
+  .eac-card summary:hover .eac-card-title, .eac-card summary:focus-visible .eac-card-title { color: #f0c450; }
+  .eac-card summary:focus-visible { outline: 2px solid #BA7517; outline-offset: -2px; border-radius: 12px; }
+  .eac-card-title { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: #e8e2d4; line-height: 1.25; }
+  .eac-card-first { font-family: var(--font-body); font-size: 1.02rem; line-height: 1.6; color: #a89f8c; }
+  .eac-card[open] .eac-card-first { display: none; }
+  .eac-card-more {
+    font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #d8b06a; font-weight: 600;
+  }
+  .eac-card-more .opened, .eac-card[open] .eac-card-more .closed { display: none; }
+  .eac-card[open] .eac-card-more .opened { display: inline; }
+  .eac-card-body { padding: 0 1.6rem 1.2rem; max-width: 46rem; }
+  .eac-card-body ul { margin: 0 0 1.2rem; padding-left: 1.2rem; }
+  .eac-card-body li { margin-bottom: 0.6rem; }
+  .eac-card-head { color: #e8c98a; font-weight: 600; }
+  .eac-card-body :global(a), .eac-col a:not(.eac-verse) {
+    color: #d8b06a; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(216,176,106,0.45);
+  }
+
+  .eac-section { margin-bottom: 3.2rem; }
+  .eac-h2 {
+    font-family: var(--font-display); font-size: 1.35rem; font-weight: 700; color: #e8e2d4;
+    margin: 0 0 1rem; padding-bottom: 0.6rem; border-bottom: 1px solid rgba(186,117,23,0.35);
+  }
+
+  .eac-chip {
+    display: inline-block; font-family: var(--font-display); font-size: 0.68rem; font-weight: 600;
+    letter-spacing: 0.1em; text-transform: uppercase; color: #f0c450; white-space: nowrap;
+    border: 1px solid rgba(212,165,49,0.45); background: rgba(186,117,23,0.12);
+    border-radius: 999px; padding: 0.3rem 0.75rem;
+  }
+  .eac-chip--sm { font-size: 0.6rem; padding: 0.2rem 0.6rem; }
+  .eac-tag-key { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+  .eac-tag-key li { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; }
+  .eac-tag-note { font-family: var(--font-body); font-size: 1.02rem; color: #cfc7b6; line-height: 1.5; flex: 1 1 14rem; }
+
+  .eac-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.1rem; }
+  .eac-chip--btn { cursor: pointer; color: #a89f8c; background: transparent; border-color: rgba(212,165,49,0.25); }
+  .eac-chip--btn:hover { color: #e8c98a; border-color: rgba(212,165,49,0.5); }
+  .eac-chip--btn[aria-pressed='true'] { color: #0e0d0b; background: #d8b06a; border-color: #d8b06a; }
+
+  .eac-verses { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: 0.6rem; }
+  .eac-verses li[hidden] { display: none; }
+  .eac-verse {
+    display: flex; align-items: center; gap: 0.4rem 1rem; flex-wrap: wrap; text-decoration: none;
+    background: #161512; border: 0.5px solid rgba(255,255,255,0.07); border-left: 3px solid #BA7517;
+    border-radius: 8px; padding: 1rem 1.2rem; transition: background 0.2s, transform 0.2s;
+  }
+  .eac-verse:hover, .eac-verse:focus-visible { background: #1c1a16; transform: translateX(3px); outline: none; }
+  .eac-verse-ref {
+    font-family: var(--font-display); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #BA7517;
+  }
+  .eac-verse-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: #e8e2d4; flex: 1 1 14rem; }
+  .eac-verse:hover .eac-verse-title { color: #f0c450; }
+  .eac-col .eac-more, .eac-col .eac-empty { font-family: var(--font-family-serif); font-style: italic; color: #8f8775; font-size: 1rem; }
+
+  .eac-last p { font-size: 1.15rem; color: #ddd5c3; }
+
+  @media (max-width: 720px) {
+    .eac-page { padding: 3rem 1rem 4rem; }
+    .eac-cards { grid-template-columns: 1fr; }
+    .eac-card summary { padding: 1.3rem 1.2rem 1.1rem; }
+    .eac-card-body { padding: 0 1.2rem 1rem; }
+  }
+</style>
