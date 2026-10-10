@@ -1,4 +1,6 @@
-// reading-sets 1010 V5.js
+// reading-sets 1010 V6.js
+// V6: Trilogy "When the Father Spoke" added — Two Mountains, The Anointing at
+// the Jordan, Yet Once More.
 // V5: fourth trilogy added: The Beast of Revelation 13. Two of its three
 // readings are book material, not studies: they live as panels on
 // /books/revelation. A reading may now name an `href` and a `title` in place of
@@ -105,6 +107,24 @@ export const READING_SETS = [
         href: "/books/revelation#court-appeal-2",
         title: "Court Appeal II — The Woman, the Beast, and the Second Beast",
         line: "Rome, the Edomite layer, and the whole system: the court identifies the coalition.",
+      },
+    ],
+  },
+  {
+    key: "when-the-father-spoke",
+    title: "When the Father Spoke",
+    readings: [
+      {
+        slug: "two-mountains",
+        line: "Sinai and Sion: the voice Israel begged not to hear again.",
+      },
+      {
+        slug: "trinity-files-matthew-3-13-17",
+        line: "The Jordan: the Father's voice names His beloved Son.",
+      },
+      {
+        slug: "yet-once-more",
+        line: "The last word: heaven shakes, and the kingdom remains.",
       },
     ],
   },

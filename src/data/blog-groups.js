@@ -1,4 +1,5 @@
-// blog-groups 1010 V35.js
+// blog-groups 1010 V36.js
+// V36: yet-once-more joins scripture-unfiltered (category Scripture Unfiltered).
 // V35: the-copy-of-the-son joins the-counterfeit-throne (category Scripture Unfiltered).
 // V34: six Quick Scroll studies join the-quick-scroll (category The Scrolls): jonah-the-prophet-who-ran-from-mercy,
 // malachi-six-disputes-and-a-last-command, haggai-four-dates-and-an-unfinished-house,
@@ -172,7 +173,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 118 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 119 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (17) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
@@ -315,7 +316,7 @@ export const POST_GROUP = {
   'two-kingdoms-one-walk': 'the-way-in-and-the-walk',
   'prepare-the-horse': 'the-way-in-and-the-walk',
 
-  // ── Scripture Unfiltered (15) ──
+  // ── Scripture Unfiltered (17) ──
   'hearts-and-reins': 'scripture-unfiltered',
   'kept-to-the-hour': 'scripture-unfiltered',
   'goat-that-was-not-slain': 'the-law-and-the-feasts',
@@ -334,6 +335,7 @@ export const POST_GROUP = {
   'still-waiting-for-shavuot': 'scripture-unfiltered',
   'filled-but-not-indwelt': 'scripture-unfiltered',
   'two-mountains': 'scripture-unfiltered',
+  'yet-once-more': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
