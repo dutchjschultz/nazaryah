@@ -41,9 +41,9 @@ The people could not bear to hear it, so they begged Moses to speak to them in Y
 
 ## Whose Voice Is It?
 
-Some teachers say the voice in these verses belongs to the Son. They claim He spoke at Sinai before He was born, and they use that claim to make the Son the God of Sinai. The passage itself does not allow it.
+Some teachers say the voice in these verses belongs to the Son. They claim He spoke at Sinai before He was born, and they use that claim to build a Trinity. The passage itself does not allow it.
 
-The promise "Yet once more I shake… heaven" is quoted from Haggai 2:6, and in Haggai the line begins, "thus saith Yahuah of hosts." The last words of the passage, "our God is a consuming fire," come from Moses: "Yahuah thy God is a consuming fire" (Deuteronomy 4:24). Hebrews also says when the Son became the one God speaks through. It was not at Sinai. It was "in these last days."
+The promise "Yet once more I shake… heaven" is quoted from Haggai 2:6, and in Haggai the line begins, "thus saith Yahuah of hosts." The last words of the passage, "our God is a consuming fire," come from Moses: "Yahuah thy God is a consuming fire" (Deuteronomy 4:24). Hebrews also says when the Son became the one Yahuah speaks through. It was not at Sinai. It was "in these last days."
 
 > **Hebrews 1:1-2**
 >

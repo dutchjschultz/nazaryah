@@ -1,4 +1,5 @@
-// reading-sets 1010 V6.js
+// reading-sets 1010 V7.js
+// V7: When the Father Spoke — Two Mountains line reworded (Dutch).
 // V6: Trilogy "When the Father Spoke" added — Two Mountains, The Anointing at
 // the Jordan, Yet Once More.
 // V5: fourth trilogy added: The Beast of Revelation 13. Two of its three
@@ -116,7 +117,7 @@ export const READING_SETS = [
     readings: [
       {
         slug: "two-mountains",
-        line: "Sinai and Sion: the voice Israel begged not to hear again.",
+        line: "Sinai and the high mountain: the voice Israel feared says, 'Hear ye him.'",
       },
       {
         slug: "trinity-files-matthew-3-13-17",
