@@ -1,5 +1,9 @@
 ---
-// ReadingSet.astro · 1007 V4
+// ReadingSet.astro · 1010 V5
+// V5: a reading can be book material outside the posts collection (a panel on
+// /books/revelation), named in the data by `href` + `title` instead of `slug`.
+// Such a page passes `current={{ href }}` to be marked "You are reading". The
+// ?set= key is now inserted ahead of any #hash so panel links keep working.
 // V4: a second use. Given `only="<set key>"` and no `current`, it renders that
 // one trilogy as a plain listing, nothing marked "You are reading" — used by
 // the /trilogies page. On a study page nothing changes.
@@ -32,12 +36,16 @@
 // tokens have no dark value and the fallback silently wins.
 
 import { getEntry } from 'astro:content';
-import { setsFor, READING_SETS } from '../data/reading-sets.js';
+import { setsFor, readingId, READING_SETS } from '../data/reading-sets.js';
 import { postHref } from '../lib/post-href.js';
 
 const { current, only } = Astro.props;
-const chosen = current ? setsFor(current.slug) : only ? READING_SETS.filter((s) => s.key === only) : [];
-const withSet = (href, key) => `${href}${href.includes('?') ? '&' : '?'}set=${key}`;
+const currentId = current ? (current.href ?? current.slug) : null;
+const chosen = current ? setsFor(currentId) : only ? READING_SETS.filter((s) => s.key === only) : [];
+const withSet = (href, key) => {
+  const [path, hash] = href.split('#');
+  return `${path}${path.includes('?') ? '&' : '?'}set=${key}${hash ? '#' + hash : ''}`;
+};
 
 const sets = chosen.length
   ? (
@@ -46,13 +54,18 @@ const sets = chosen.length
           const readings = (
             await Promise.all(
               set.readings.map(async (r) => {
+                if (!r.slug) {
+                  return r.href && r.title
+                    ? { title: r.title, href: r.href, line: r.line, here: currentId === readingId(r) }
+                    : null;
+                }
                 const entry = await getEntry('posts', r.slug).catch(() => null);
                 if (!entry) return null;
                 return {
                   title: entry.data.title,
                   href: postHref(entry),
                   line: r.line,
-                  here: !!current && entry.slug === current.slug,
+                  here: currentId === r.slug,
                 };
               }),
             )

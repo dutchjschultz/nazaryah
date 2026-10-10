@@ -1,4 +1,9 @@
-// reading-sets 1007 V4.js
+// reading-sets 1010 V5.js
+// V5: fourth trilogy added: The Beast of Revelation 13. Two of its three
+// readings are book material, not studies: they live as panels on
+// /books/revelation. A reading may now name an `href` and a `title` in place of
+// a `slug` for anything outside the posts collection; the page at that href
+// carries its own ReadingSet with `current={{ href }}`.
 // V4: third trilogy added: How Yahuah Speaks.
 // V3: sets are now presented as TRILOGIES. No reading order: the panel shows no
 // numbers, so list the studies in whatever order looks best left to right.
@@ -83,7 +88,30 @@ export const READING_SETS = [
       },
     ],
   },
+  {
+    key: "the-beast-of-revelation-13",
+    title: "The Beast of Revelation 13",
+    readings: [
+      {
+        href: "/books/revelation#chapter-13",
+        title: "Chapter 13 — False Claims Enforced",
+        line: "The sea beast rises, receives the dragon's throne, and demands the world's allegiance.",
+      },
+      {
+        slug: "the-copy-of-the-son",
+        line: "Seven marks on the beast, every one lifted from the life of Yahushua.",
+      },
+      {
+        href: "/books/revelation#court-appeal-2",
+        title: "Court Appeal II — The Woman, the Beast, and the Second Beast",
+        line: "Rome, the Edomite layer, and the whole system: the court identifies the coalition.",
+      },
+    ],
+  },
 ];
 
-export const setsFor = (slug) =>
-  READING_SETS.filter((s) => s.readings.some((r) => r.slug === slug));
+// A reading is identified by its slug (a study) or its href (book material).
+export const readingId = (r) => r.slug ?? r.href;
+
+export const setsFor = (id) =>
+  READING_SETS.filter((s) => s.readings.some((r) => readingId(r) === id));

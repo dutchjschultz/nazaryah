@@ -1,6 +1,7 @@
 ---
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BookTextNote from '../../components/BookTextNote.astro';
+import ReadingSet from '../../components/ReadingSet.astro';
 
 const ACCENT = '#8B2828';
 
@@ -1692,6 +1693,7 @@ function toRoman(n: number) {
             <p class="rd-page-sub">A forged crown demands your allegiance.</p>
             <div class="rd-docket-rule"></div>
           </header>
+          <ReadingSet current={{ href: '/books/revelation#chapter-13' }} />
           <div class="rd-page-body">            <h2 class="rd-section">13.1 The Case Opens &#x2014; A Counterfeit Covenant Enters the Record</h2>
             <p class="rd-ref">Revelation 13 in Context</p>
             <h4 class="rd-subsec">Two Covenants Set Side by Side &#x2014; The Framework Before the Evidence</h4>
@@ -2346,6 +2348,7 @@ function toRoman(n: number) {
             <p class="rd-appeal-motion">A motion to overturn three insufficient verdicts<br/>and enter the full record into evidence</p>
             <div class="rd-docket-rule"></div>
           </header>
+          <ReadingSet current={{ href: '/books/revelation#court-appeal-2' }} />
           <div class="rd-page-body rd-appeal-body">
             <div class="ca-section-head">
               <div class="ca-section-arrow">&#9656; MOTION TO CORRECT THE RECORD &#9666;</div>
