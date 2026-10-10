@@ -1,4 +1,7 @@
-// blog-groups 1010 V37.js
+// blog-groups 1010 V38.js
+// V38: saturnalia, ashtoreth and bohemian-grove join buried-in-plain-sight (category
+// Buried in Plain Sight); the-grove-that-was-never-a-grove joins the-root (category
+// Scripture Unfiltered, like the root's other standalone word studies).
 // V37: two-clocks-not-one joins buried-in-plain-sight (category Buried in Plain Sight).
 // V36: yet-once-more joins scripture-unfiltered (category Scripture Unfiltered).
 // V35: the-copy-of-the-son joins the-counterfeit-throne (category Scripture Unfiltered).
@@ -174,7 +177,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 120 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 124 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (17) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
@@ -195,7 +198,7 @@ export const POST_GROUP = {
   'the-redeemer-who-never-needed-redeeming': 'the-counterfeit-throne',
   'the-copy-of-the-son': 'the-counterfeit-throne',
 
-  // ── The Root (20) ──
+  // ── The Root (21) ──
   // Volume V's seven word chapters. They sit beside What the Pulpit Buried's
   // six, which is the point: the two books are a matched pair excavating one
   // vocabulary, and the rail should read that way.
@@ -206,6 +209,7 @@ export const POST_GROUP = {
   'one-throne-5-the-missing-mark': 'the-root',
   'one-throne-6-the-counterfeit-throne': 'the-root',
   'one-throne-7-six-words-one-throne': 'the-root', // synthesis chapter
+  'the-grove-that-was-never-a-grove': 'the-root',
 
   'born-from-above': 'the-root',
   'shalom-whole-complete': 'the-root',
@@ -232,7 +236,7 @@ export const POST_GROUP = {
   'micah-three-calls-to-hear': 'the-quick-scroll',
   'zephaniah-the-day-closes-in': 'the-quick-scroll',
 
-  // ── Buried in Plain Sight (19) ──
+  // ── Buried in Plain Sight (22) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
   'the-christian-experiment': 'buried-in-plain-sight',
   'the-men-in-the-margin': 'buried-in-plain-sight',
@@ -256,6 +260,9 @@ export const POST_GROUP = {
   'the-reign-is-now': 'buried-in-plain-sight',
   'gog-and-magog': 'buried-in-plain-sight',
   'two-clocks-not-one': 'buried-in-plain-sight',
+  'saturnalia': 'buried-in-plain-sight',
+  'ashtoreth': 'buried-in-plain-sight',
+  'bohemian-grove': 'buried-in-plain-sight',
 
   // ── The Law & The Feasts (17) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',

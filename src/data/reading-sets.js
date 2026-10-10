@@ -1,4 +1,6 @@
-// reading-sets 1010 V7.js
+// reading-sets 1010 V8.js
+// V8: Trilogy "The Star of Your God" added — Saturnalia, Ashtoreth, Esther, Ishtar
+// & Marduk.
 // V7: When the Father Spoke — Two Mountains line reworded (Dutch).
 // V6: Trilogy "When the Father Spoke" added — Two Mountains, The Anointing at
 // the Jordan, Yet Once More.
@@ -126,6 +128,24 @@ export const READING_SETS = [
       {
         slug: "yet-once-more",
         line: "The last word: heaven shakes, and the kingdom remains.",
+      },
+    ],
+  },
+  {
+    key: "the-star-of-your-god",
+    title: "The Star of Your God",
+    readings: [
+      {
+        slug: "saturnalia",
+        line: "Saturn's star: Rome's December week, kept under a new name.",
+      },
+      {
+        slug: "ashtoreth",
+        line: "The queen of heaven: the goddess Israel would not put away.",
+      },
+      {
+        slug: "esther-ishtar-marduk",
+        line: "Ishtar and Marduk: the star names carried into the book of Esther.",
       },
     ],
   },
