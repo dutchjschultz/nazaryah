@@ -1,4 +1,5 @@
-// blog-groups 1010 V36.js
+// blog-groups 1010 V37.js
+// V37: two-clocks-not-one joins buried-in-plain-sight (category Buried in Plain Sight).
 // V36: yet-once-more joins scripture-unfiltered (category Scripture Unfiltered).
 // V35: the-copy-of-the-son joins the-counterfeit-throne (category Scripture Unfiltered).
 // V34: six Quick Scroll studies join the-quick-scroll (category The Scrolls): jonah-the-prophet-who-ran-from-mercy,
@@ -173,7 +174,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 119 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 120 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (17) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
@@ -231,7 +232,7 @@ export const POST_GROUP = {
   'micah-three-calls-to-hear': 'the-quick-scroll',
   'zephaniah-the-day-closes-in': 'the-quick-scroll',
 
-  // ── Buried in Plain Sight (18) ──
+  // ── Buried in Plain Sight (19) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
   'the-christian-experiment': 'buried-in-plain-sight',
   'the-men-in-the-margin': 'buried-in-plain-sight',
@@ -254,6 +255,7 @@ export const POST_GROUP = {
   'the-seventieth-week': 'buried-in-plain-sight',
   'the-reign-is-now': 'buried-in-plain-sight',
   'gog-and-magog': 'buried-in-plain-sight',
+  'two-clocks-not-one': 'buried-in-plain-sight',
 
   // ── The Law & The Feasts (17) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',
