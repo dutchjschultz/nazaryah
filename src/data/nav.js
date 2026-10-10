@@ -1,5 +1,7 @@
-// nav 1010 V1.js
-// header rework: seven tabs, panel menus, Doctrines in two panels
+// nav 1010 V2.js
+// Voices gets its description (Dutch)
+//
+// V1: header rework: seven tabs, panel menus, Doctrines in two panels
 //
 // The ONE source for every site menu: the desktop header row, its panels, the
 // phone menu, and the footer's link list all read this file. Never hand-code a
@@ -12,7 +14,7 @@
 // (label + sublabel) into a link to the section's front page.
 //
 // Descriptions: live wording kept wherever the old menus had one. New drafts
-// (awaiting Dutch's approval): Doctrines, Books. Voices had none — flagged.
+// (awaiting Dutch's approval): Doctrines, Books. Voices written by Dutch.
 
 // Doctrines points to the paired Old Paths / Departure page. Never link to one
 // half of the pair from the header.
@@ -79,7 +81,7 @@ export const mainNav = [
     glyph: '✦',
     links: [
       { label: 'Books', href: '/books', desc: 'Titles from Ancient Paths Restoration Press.' },
-      { label: 'Voices', href: '/voices', desc: '' }, // no live description — awaiting Dutch
+      { label: 'Voices', href: '/voices', desc: 'Recommended teachings and channels, each one tested against Scripture.' },
     ],
   },
 ];
