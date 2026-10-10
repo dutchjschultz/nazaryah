@@ -1,5 +1,12 @@
 ---
-// BlogLayout.astro · 1007 V14
+// BlogLayout.astro · 1010 V15
+// V15: the subtitle prints as its own masthead line, between the title and the
+// deck (kicker / title / subtitle / deck). Italic body serif, a step smaller
+// than the title and a step quieter than the deck. No subtitle → no line; no
+// deck → the subtitle line alone. A study whose body already opens with its
+// subtitle (most Trinity Files: ref / bold title / italic subtitle) keeps that
+// and gets no masthead line, so it never prints twice. Study pages only: cards, panels, share cards
+// and meta descriptions keep the deck.
 // V14: the Trilogy panel runs edge to edge with the text on phones; its
 // wrapper's side padding (px-4) now applies from md up only.
 // V13: the Trilogy panel's wrapper widens to max-w-5xl so the panel runs
@@ -72,7 +79,10 @@ interface Props {
 }
 
 const { post } = Astro.props;
-const { title, description, deck, date, category, tags, author, references, ogTitle, ogDescription, ogImage } = post.data;
+// Skip the masthead subtitle when the body's opening lines already carry it.
+const bodyOpening = (post.body || '').slice(0, 800).replace(/[*_\\]/g, '');
+const showSubtitle = !!post.data.subtitle && !bodyOpening.includes(post.data.subtitle.replace(/[*_\\]/g, ''));
+const { title, subtitle, description, deck, date, category, tags, author, references, ogTitle, ogDescription, ogImage } = post.data;
 
 // Categories that are books on the shelf — these posts are chapters, so their
 // header links back to the book rather than carrying the Trinity tag.
@@ -170,6 +180,9 @@ const companions = (
         <h1 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: var(--font-display); color: var(--deep-earth);">
           {title}
         </h1>
+        {showSubtitle && (
+          <p class="post-masthead-sub">{subtitle}</p>
+        )}
         {deck && (
           <p class="post-deck">{deck}</p>
         )}
@@ -363,6 +376,21 @@ const companions = (
     border-color: #c4a46b;
     background: rgba(201, 169, 97, 0.18);
   }
+  /* Subtitle: its own line between title and deck. Larger than the deck but
+     softer in colour, so title / subtitle / deck read as three lines. */
+  .post-masthead-sub {
+    font-family: var(--font-family-serif);
+    font-style: italic;
+    font-size: clamp(1.25rem, 1.1rem + 0.6vw, 1.55rem);
+    line-height: 1.4;
+    color: var(--ink-faded);
+    opacity: 0.82;
+    max-width: 40ch;
+    margin: -0.75rem auto 1.25rem;
+    text-wrap: balance;
+  }
+  :global(.dark) .post-masthead-sub { color: var(--color-dark-secondary-text); }
+
   /* Deck: one-line orientation rendered from frontmatter, under the title */
   .post-deck {
     font-family: var(--font-body);

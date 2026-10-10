@@ -7,8 +7,8 @@ slug: "the-copy-of-the-son"
 category: "Scripture Unfiltered"
 date: 2026-10-10
 author: "Nazaryah"
-associations: []
-companion: []
+associations: ["trinity-examined", "delegated-authority", "light-and-lamp"]
+companion: ["trinity-files-matthew-3-13-17", "the-throne-and-the-right-hand", "prophets-and-prophecy"]
 featured: false
 draft: false
 ---
