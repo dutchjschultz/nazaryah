@@ -265,3 +265,12 @@
   from = "/blog/c/one-throne-one-name"
   to = "/blog/c/the-counterfeit-throne"
   status = 301
+
+# The Adventures of Barney and Clyde moved from its standalone canon page to a
+# taggable blog post (V2 text) so it can join trinity-examined, light-and-lamp and
+# how-yahuah-speaks. Its card at /og/studies/canon/parable.v2.png is deliberately
+# NOT deleted — a crawled card file is never removed or renamed.
+[[redirects]]
+  from = "/studies/canon/parable"
+  to = "/blog/barney-and-clyde"
+  status = 301

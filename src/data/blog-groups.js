@@ -1,4 +1,9 @@
-// blog-groups 1010 V38.js
+// blog-groups 1010 V39.js
+// V39: two modern parables join THE SIDE DOOR (2 -> 4), category Scripture
+// Unfiltered: The Parable of Sinai Arcade (sinai-arcade) and The Adventures of
+// Barney and Clyde (barney-and-clyde). Barney moves from its standalone page
+// (/studies/canon/parable, now a 301 to /blog/barney-and-clyde) to a taggable
+// post, so its TOPIC_EXTRAS card is retired; the post now carries the card.
 // V38: saturnalia, ashtoreth and bohemian-grove join buried-in-plain-sight (category
 // Buried in Plain Sight); the-grove-that-was-never-a-grove joins the-root (category
 // Scripture Unfiltered, like the root's other standalone word studies).
@@ -155,18 +160,8 @@ export const BLOG_GROUPS = [
 // { slug, data: { title, route, subtitle, category, date } }. `subtitle` is the
 // line the page itself prints under its title; `date` is when the page went up.
 export const TOPIC_EXTRAS = {
-  'the-side-door': [
-    {
-      slug: 'the-adventures-of-barney-and-clyde',
-      data: {
-        title: 'The Adventures of Barney and Clyde',
-        route: '/studies/canon/parable',
-        subtitle: 'A story of two books, one Guide, and the source of authority.',
-        category: 'The Canon',
-        date: new Date('2026-04-20'),
-      },
-    },
-  ],
+  // 'the-side-door': The Adventures of Barney and Clyde was here until V39;
+  // it is a post now (/blog/barney-and-clyde) and lists like any study.
 };
 export const extrasOf = (key) => TOPIC_EXTRAS[key] || [];
 
@@ -177,7 +172,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 124 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 126 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (17) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
@@ -305,9 +300,11 @@ export const POST_GROUP = {
   'strange-apparel': 'the-parables',
   'summer-is-nigh': 'the-parables',
 
-  // ── The Side Door (2) — modern parables ──
+  // ── The Side Door (4) — modern parables ──
   'the-case-of-ned-goodman': 'the-side-door', // courtroom parable
   'one-throne-8-the-debt-of-wendell-hollis': 'the-side-door', // Volume V's closing parable
+  'sinai-arcade': 'the-side-door', // the price paid, the law unchanged
+  'barney-and-clyde': 'the-side-door', // who sent the Son
 
   // ── The Way In and the Walk (14) — The Blood and the Bread ──
   'blood-and-bread': 'the-way-in-and-the-walk',

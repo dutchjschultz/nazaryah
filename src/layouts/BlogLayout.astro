@@ -502,4 +502,44 @@ const companions = (
   .dark .prose hr {
     border-color: rgba(139,125,107,0.25);
   }
+
+  /* THE DECODER — the key to a Side Door parable, behind a tap at the foot of
+     the page (<details class="parable-decoder"> in the study's markdown). Read
+     the parable first; the key is opened on purpose. */
+  .prose .parable-decoder {
+    margin: 3rem 0 1rem;
+    border: 1px solid var(--sand-dark);
+    border-left: 3px solid var(--gold);
+    border-radius: 6px;
+    background: rgba(201, 169, 97, 0.06);
+  }
+  .prose .parable-decoder summary {
+    cursor: pointer;
+    list-style: none;
+    padding: 0.9rem 1.25rem;
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--gold);
+  }
+  .prose .parable-decoder summary::-webkit-details-marker { display: none; }
+  .prose .parable-decoder summary::after { content: " — tap to open"; font-family: var(--font-family-serif); font-style: italic; font-weight: 400; letter-spacing: 0; text-transform: none; color: var(--ink-faded); }
+  .prose .parable-decoder[open] summary::after { content: ""; }
+  .prose .parable-decoder summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+  .prose .parable-decoder .pd-body { padding: 0 1.25rem 1.1rem; }
+  .prose .parable-decoder .pd-row { margin: 0 0 0.65rem; }
+  .prose .parable-decoder .pd-head {
+    margin: 1.5rem 0 0.6rem;
+    font-family: var(--font-display);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--deep-earth);
+  }
+  .prose .parable-decoder .pd-deny { margin: 0 0 0.6rem; }
+  .dark .prose .parable-decoder { background: rgba(201, 169, 97, 0.08); border-color: rgba(139,125,107,0.35); border-left-color: var(--gold); }
+  .dark .prose .parable-decoder .pd-head { color: var(--color-dark-secondary-text); }
 </style>
