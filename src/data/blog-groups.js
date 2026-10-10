@@ -1,4 +1,7 @@
-// blog-groups 1009 V33.js
+// blog-groups 1009 V34.js
+// V34: six Quick Scroll studies join the-quick-scroll (category The Scrolls): jonah-the-prophet-who-ran-from-mercy,
+// malachi-six-disputes-and-a-last-command, haggai-four-dates-and-an-unfinished-house,
+// joel-locusts-return-and-the-outpouring, micah-three-calls-to-hear, zephaniah-the-day-closes-in.
 // V33: the-pledge-and-the-bride joins the-law-and-the-feasts (category The Law Still Stands).
 // V32: hosea-lives-it-then-says-it joins the-quick-scroll (category The Scrolls).
 // V31: isaiah-runs-forward joins the-quick-scroll (category The Scrolls).
@@ -168,7 +171,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 111 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 117 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (16) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
@@ -214,10 +217,16 @@ export const POST_GROUP = {
   'justification-the-verdict-buried-beneath-forgiveness': 'the-root',
   'sanctification-the-temple-life-of-a-claimed-people': 'the-root',
 
-  // ── The Quick Scroll (3) ──
+  // ── The Quick Scroll (9) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
   'isaiah-runs-forward': 'the-quick-scroll',
   'hosea-lives-it-then-says-it': 'the-quick-scroll',
+  'jonah-the-prophet-who-ran-from-mercy': 'the-quick-scroll',
+  'malachi-six-disputes-and-a-last-command': 'the-quick-scroll',
+  'haggai-four-dates-and-an-unfinished-house': 'the-quick-scroll',
+  'joel-locusts-return-and-the-outpouring': 'the-quick-scroll',
+  'micah-three-calls-to-hear': 'the-quick-scroll',
+  'zephaniah-the-day-closes-in': 'the-quick-scroll',
 
   // ── Buried in Plain Sight (18) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
