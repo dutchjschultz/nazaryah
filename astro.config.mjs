@@ -6,6 +6,7 @@ import markdoc from '@astrojs/markdoc';
 import keystatic from '@keystatic/astro';
 import netlify from '@astrojs/netlify';
 import tailwindcss from '@tailwindcss/vite';
+import remarkHeadingId from './src/lib/remark-heading-id.mjs';
 
 // https://astro.build/config
 export default defineConfig({
@@ -14,6 +15,8 @@ export default defineConfig({
   // scrapers get a dead image link.
   site: 'https://nazaryah.com',
   integrations: [mdx(), react(), markdoc(), keystatic()],
+  // `## Heading {#id}` sets an explicit heading id (Hebrew studies use it).
+  markdown: { remarkPlugins: [remarkHeadingId] },
   output: 'static',
   adapter: netlify(),
   vite: {

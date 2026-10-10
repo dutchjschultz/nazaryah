@@ -1,4 +1,6 @@
-// content config 1007 V21
+// content config 1010 V22
+// V22: new `hebrew` collection (src/content/hebrew) for long-form Hebrew-section
+// studies; first entry letters-moses-wrote, served at /hebrew/letters-moses-wrote.
 // V21: category enum — adds 'The Way In and the Walk' (the new topic group,
 // subtitle The Blood and the Bread) and retires 'One Throne, One Name' (its one
 // study joined The Counterfeit Throne group and now carries Scripture
@@ -340,6 +342,19 @@ const peahCollection = defineCollection({
   }),
 });
 
+// HEBREW STUDIES — long-form studies that live in the Hebrew section, served at
+// /hebrew/<slug> by their own page (src/pages/hebrew/<slug>.astro). Headings may
+// carry an explicit anchor, `## Heading {#id}` (see remark-heading-id.mjs).
+const hebrewCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    subtitle: z.string().optional(),
+    section: z.literal('hebrew'),
+    version: z.string().optional(),
+  }),
+});
+
 // TORAH TESTIMONIES — markdown bodies only, no frontmatter (see V19).
 const testimoniesCollection = defineCollection({ type: 'content', schema: z.object({}) });
 const testimonyFoundationsCollection = defineCollection({ type: 'content', schema: z.object({}) });
@@ -352,4 +367,5 @@ export const collections = {
   glossary: glossaryCollection,
   'watchmans-report': watchmansReportCollection,
   'watchmans-desk': watchmansDeskCollection,
+  hebrew: hebrewCollection,
 };

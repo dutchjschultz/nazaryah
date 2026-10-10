@@ -1,7 +1,30 @@
 ---
+// hebrew.astro · 1010 V2
+// V2: The Letters Moses Wrote — the Trail of the Letters strip under the hero
+// (modelled on the Historic Trail band on /trinity; styles copied here as htl-*,
+// the Trinity page is untouched), an eighth card placed first in Choose Your
+// Path, and two Not Just Letters sentences that taught Kabbalah replaced.
 import HebrewLayout from '../layouts/HebrewLayout.astro';
 
+const STUDY = '/hebrew/letters-moses-wrote/';
+const TRAIL = [
+  { label: 'Sinai', date: 'c. 1850 BC', id: 'sinai' },
+  { label: 'Canaan', date: 'c. 1700 BC', id: 'canaan' },
+  { label: 'Kings', date: 'c. 1000 BC', id: 'kings' },
+  { label: 'Babylon', date: '586 BC', id: 'babylon' },
+  { label: 'Scrolls', date: '250 BC', id: 'scrolls' },
+  { label: 'Samaria', date: 'late BC', id: 'samaritan' },
+  { label: 'Masoretes', date: 'AD 600', id: 'masoretes' },
+];
+
 const sections = [
+  {
+    href: STUDY,
+    title: 'The Letters Moses Wrote',
+    modern: 'א',
+    paleo: '𐤀',
+    blurb: 'From the Sinai to Babylon, the four scripts Scripture passed through, and why the square letters are not Kabbalah.',
+  },
   {
     href: '/hebrew/alphabet',
     title: 'Alphabet',
@@ -66,6 +89,23 @@ const sections = [
     </p>
   </section>
 
+  <!-- ── THE TRAIL OF THE LETTERS ── -->
+  <section class="htl-band">
+    <h2 class="htl-title">The Trail of the Letters</h2>
+    <p class="htl-sub">From the Sinai to the square script, 1850 BC to AD 1000</p>
+    <div class="htl-strip" role="list" aria-label="Stations on the trail of the letters">
+      {TRAIL.map((st) => (
+        <a class="htl-station" role="listitem" href={`${STUDY}#${st.id}`}>
+          <span class="htl-dot" aria-hidden="true"></span>
+          <span class="htl-label">{st.label}</span>
+          <span class="htl-date">{st.date}</span>
+        </a>
+      ))}
+    </div>
+    <p class="htl-desc">The letters printed in a Hebrew Bible today are not the letters Moses wrote. Follow the trail from the turquoise mines of the Sinai to the scribes who added the vowels.</p>
+    <a href={STUDY} class="htl-read">Read the Study <span class="htl-arrow">&#8594;</span></a>
+  </section>
+
   <section class="hl-section">
     <div class="hub-intro">
       <h2 class="hl-section-title">Not Just Letters</h2>
@@ -80,19 +120,18 @@ const sections = [
       </p>
       <p>
         A Hebrew speaker — ancient or modern — does not just <em>hear</em> a word. They see it. Every word carries embedded within it
-        the pictographic story of each letter it contains. This is why the Hebrew Bible communicates on multiple levels simultaneously:
-        the surface meaning, the letter-picture meaning, the numerical meaning (gematria), and the acrostic meaning all coexist in a single word.
+        the pictographic story of each letter it contains. This is why the Hebrew Bible rewards slow reading: the surface meaning, the picture behind each letter, and the acrostic patterns of the Psalms all sit within the same text.
       </p>
       <p>
-        This alphabet is not a tool humans invented to record language. The ancient Hebrews understood it as something far more fundamental —
-        the building blocks of creation itself, the language in which reality was spoken into existence.
+        The pictures behind the letters are real history, carved by Semitic workers in the Sinai long before Israel had a king. They help a reader
+        remember the letters and see the world the alphabet came from. The meaning of any word is still settled by how Scripture uses it, from Genesis forward.
       </p>
     </div>
   </section>
 
   <section class="hl-section hl-center">
     <h2 class="hl-section-title">Choose Your Path</h2>
-    <p class="hl-section-sub">Seven ways to enter the language of Scripture.</p>
+    <p class="hl-section-sub">Eight ways to enter the language of Scripture.</p>
 
     <div class="hub-grid">
       {sections.map((s) => (
@@ -111,6 +150,111 @@ const sections = [
 </HebrewLayout>
 
 <style>
+  /* ── THE TRAIL OF THE LETTERS — copied from the Historic Trail band on
+     /trinity (.tl-band / .tl-trail / .tl-strip), renamed htl-* ── */
+  .htl-band {
+    padding: 2.75rem 1.5rem;
+    border-bottom: 1px solid #2e1f0d;
+    text-align: center;
+    background: rgba(10, 6, 2, 0.3);
+  }
+  .htl-title {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.35rem, 2.8vw, 1.8rem);
+    font-weight: 600;
+    color: #f0e0bf;
+    text-align: center;
+    margin: 0 0 1.75rem;
+  }
+  .htl-sub {
+    font-style: italic;
+    color: #c4a46b;
+    font-size: 1.05rem;
+    margin: -1.1rem 0 2rem;
+  }
+  .htl-strip {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    gap: 1rem;
+    max-width: 900px;
+    margin: 0 auto 2rem;
+    padding: 0 0.5rem 0.5rem;
+    overflow-x: auto;
+    scrollbar-width: thin;
+  }
+  .htl-strip::before {
+    content: "";
+    position: absolute;
+    left: 1.5rem;
+    right: 1.5rem;
+    top: 6px;
+    height: 1px;
+    background: #5a4526;
+  }
+  .htl-station {
+    position: relative;
+    flex: 0 0 auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.7rem;
+    min-width: 4.5rem;
+    text-decoration: none;
+  }
+  .htl-label {
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    color: #c9b489;
+    transition: color 0.2s;
+  }
+  .htl-date {
+    margin-top: -0.45rem;
+    font-size: 0.82rem;
+    font-style: italic;
+    color: #8a7350;
+  }
+  .htl-dot {
+    width: 13px;
+    height: 13px;
+    border-radius: 50%;
+    background: #160f07;
+    border: 1px solid #8a6028;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .htl-station:hover .htl-label { color: #f0e0bf; }
+  .htl-station:hover .htl-dot { border-color: #c4a46b; background: #2a1d0c; }
+  .htl-station:focus-visible { outline: 2px solid #c4a46b; outline-offset: 4px; border-radius: 4px; }
+  .htl-desc {
+    max-width: 640px;
+    margin: 0 auto 1.25rem;
+    color: #c4ad84;
+    font-size: 1.05rem;
+    line-height: 1.7;
+  }
+  .htl-read {
+    display: inline-block;
+    font-family: 'Cinzel', serif;
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #8a6028;
+    text-decoration: none;
+  }
+  .htl-read:hover { color: #c4a46b; }
+  .htl-arrow { display: inline-block; transition: transform 0.2s ease; }
+  .htl-read:hover .htl-arrow { transform: translateX(4px); }
+  @media (max-width: 620px) {
+    .htl-band { padding: 2.5rem 1rem; }
+    .htl-strip { justify-content: flex-start; gap: 1.25rem; }
+    .htl-strip::before { right: auto; width: calc(7 * 5.75rem); }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .htl-arrow { transition: none; }
+  }
+
   .hub-intro {
     max-width: 720px;
     margin: 0 auto;

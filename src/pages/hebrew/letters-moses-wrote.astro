@@ -1,0 +1,97 @@
+---
+// letters-moses-wrote.astro · 1010 V1
+// The Letters Moses Wrote — the history of the Hebrew script, from the Sinai to
+// the square letters. Text lives in src/content/hebrew/letters-moses-wrote.md
+// (the `hebrew` collection); this page only frames it in the Hebrew section's
+// dark-clay theme. Every `## Heading {#id}` renders as an h2 with that id — the
+// Trail of the Letters strip on /hebrew links to them.
+import { getEntry, render } from 'astro:content';
+import HebrewLayout from '../../layouts/HebrewLayout.astro';
+
+const entry = await getEntry('hebrew', 'letters-moses-wrote');
+if (!entry) throw new Error('letters-moses-wrote: src/content/hebrew/letters-moses-wrote.md is missing');
+const { Content } = await render(entry);
+const { title, subtitle } = entry.data;
+---
+
+<HebrewLayout
+  title={`${title} — Hebrew — Nazaryah`}
+  description="The letters printed in a Hebrew Bible today are not the letters Moses wrote. The trail from the Sinai to the square script, and where Kabbalah and gematria were laid on top."
+>
+  <div data-pagefind-body>
+    <section class="hl-hero">
+      <p class="hl-label">&#8213; The History of the Script &#8213;</p>
+      <h1 class="hl-title">{title}</h1>
+      {subtitle && <p class="hl-sub">{subtitle}</p>}
+      <a href="/hebrew/" class="hl-back lmw-back" data-pagefind-ignore>&#8592; The Hebrew Tongue</a>
+    </section>
+
+    <section class="hl-section">
+      <article class="lmw-prose">
+        <Content />
+      </article>
+    </section>
+  </div>
+</HebrewLayout>
+
+<style is:global>
+  /* Prefix lmw- : the study body is rendered markdown, so every rule here is
+     global and scoped by the .lmw-prose wrapper instead. */
+  .hl-back.lmw-back {
+    position: static;
+    display: inline-block;
+    margin-top: 1.5rem;
+  }
+
+  .lmw-prose {
+    max-width: 720px;
+    margin: 0 auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #d9c9a8;
+  }
+  .lmw-prose h2 {
+    font-family: 'Cinzel', serif;
+    font-size: clamp(1.3rem, 2.6vw, 1.7rem);
+    font-weight: 600;
+    color: #f0e0bf;
+    margin: 3rem 0 1.25rem;
+    padding-bottom: 0.6rem;
+    border-bottom: 1px solid #3a2510;
+    line-height: 1.3;
+    scroll-margin-top: 6rem;
+  }
+  .lmw-prose h2:first-child { margin-top: 0; }
+  .lmw-prose p { margin: 0 0 1.25rem; }
+  .lmw-prose em { color: #c4a46b; font-style: italic; font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; }
+  .lmw-prose strong { color: #e8d5a8; }
+  .lmw-prose a { color: #c4a46b; }
+
+  /* Scripture — the same verse block the other Hebrew pages use
+     (aleph-tav .at-verse-block): dark card, gold left rule, italic gold text. */
+  .lmw-prose blockquote {
+    background: linear-gradient(160deg, #1a1208 0%, #130e07 100%);
+    border: 1px solid #4a3218;
+    border-left: 3px solid #c9a84c;
+    border-radius: 8px;
+    padding: 1.25rem 1.75rem;
+    margin: 0 0 1.75rem;
+    color: #8a7350;
+    font-size: 1rem;
+  }
+  .lmw-prose blockquote p { margin: 0; }
+  .lmw-prose blockquote em { color: #e8d48b; font-size: 1.08rem; line-height: 1.65; }
+
+  .lmw-prose ul {
+    list-style: disc;
+    padding-left: 1.5rem;
+    margin: 0 0 1.5rem;
+  }
+  .lmw-prose li { margin: 0 0 0.6rem; }
+  .lmw-prose li::marker { color: #8a6028; }
+  .lmw-prose li p { margin: 0; }
+
+  @media (max-width: 560px) {
+    .lmw-prose blockquote { padding: 1rem 1.1rem; }
+  }
+</style>
