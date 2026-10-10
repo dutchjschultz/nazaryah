@@ -1,4 +1,5 @@
-// blog-groups 1009 V34.js
+// blog-groups 1010 V35.js
+// V35: the-copy-of-the-son joins the-counterfeit-throne (category Scripture Unfiltered).
 // V34: six Quick Scroll studies join the-quick-scroll (category The Scrolls): jonah-the-prophet-who-ran-from-mercy,
 // malachi-six-disputes-and-a-last-command, haggai-four-dates-and-an-unfinished-house,
 // joel-locusts-return-and-the-outpouring, micah-three-calls-to-hear, zephaniah-the-day-closes-in.
@@ -171,9 +172,9 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 117 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 118 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
-  // ── The Counterfeit Throne (16) ──
+  // ── The Counterfeit Throne (17) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
   'worship-and-service': 'the-counterfeit-throne',
   'the-throne-and-the-right-hand': 'the-counterfeit-throne',
@@ -190,6 +191,7 @@ export const POST_GROUP = {
   'the-herald-they-made-into-the-king': 'the-counterfeit-throne',
   'the-man-between-the-veil-and-the-throne': 'the-counterfeit-throne',
   'the-redeemer-who-never-needed-redeeming': 'the-counterfeit-throne',
+  'the-copy-of-the-son': 'the-counterfeit-throne',
 
   // ── The Root (20) ──
   // Volume V's seven word chapters. They sit beside What the Pulpit Buried's
