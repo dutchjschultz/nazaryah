@@ -7,7 +7,8 @@ verse: "Hebrews 8:1–2"
 category: "Buried in Plain Sight"
 date: 2026-10-11
 author: "Nazaryah"
-associations: []
+associations: ["the-mishkan", "trinity-examined", "delegated-authority"]
+companion: ["the-throne-and-the-right-hand", "ark-of-covering", "one-face-and-one-name"]
 epigraph:
   text: "Is the throne of Yahuah one place in heaven and His sanctuary another, or are they one and the same?"
 featured: false

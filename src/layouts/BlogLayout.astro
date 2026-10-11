@@ -1,5 +1,8 @@
 ---
-// BlogLayout.astro · 1010 V15
+// BlogLayout.astro · 1011 V16
+// V16: Read Next resolves a companion slug against Pe'ah when it is not a post
+// (a corner study taken from the study), linking /peah/<slug> under its
+// `reference — title`. Posts resolve exactly as before.
 // V15: the subtitle prints as its own masthead line, between the title and the
 // deck (kicker / title / subtitle / deck). Italic body serif, a step smaller
 // than the title and a step quieter than the deck. No subtitle → no line; no
@@ -72,6 +75,7 @@ import BookTextNote from '../components/BookTextNote.astro';
 import ReadingSet from '../components/ReadingSet.astro';
 import { postHref, postHome, postHomeLabel } from '../lib/post-href.js';
 import { getEntry } from 'astro:content';
+import { peahTitle } from '../lib/peah.js';
 import type { CollectionEntry } from 'astro:content';
 
 interface Props {
@@ -133,9 +137,16 @@ const companionField = post.data.companion;
 const companionSlugs = Array.isArray(companionField)
   ? companionField
   : companionField ? [companionField] : [];
+// A slug that is not a post may name a Pe'ah entry (a corner study taken from
+// the study); it links to /peah/<slug> under its composed `reference — title`.
 const companions = (
-  await Promise.all(companionSlugs.map((s) => getEntry('posts', s).catch(() => null)))
-).filter((c) => c && c.data.draft !== true);
+  await Promise.all(companionSlugs.map(async (s) => {
+    const p = await getEntry('posts', s).catch(() => null);
+    if (p) return p.data.draft === true ? null : { href: postHref(p), title: p.data.title, deck: p.data.deck || p.data.subtitle };
+    const e = await getEntry('peah', s).catch(() => null);
+    return e && e.data.draft !== true ? { href: `/peah/${e.slug}`, title: peahTitle(e.data), deck: e.data.deck } : null;
+  }))
+).filter(Boolean);
 ---
 
 <BaseLayout title={`${title} - Nazaryah`} description={description} article={true} ogTitle={ogTitle} ogDescription={ogDescription} ogImage={ogImage}>
@@ -266,12 +277,12 @@ const companions = (
           <p class="companion-label">Read Next</p>
           <div class="companion-list">
             {companions.map((c) => (
-              <a href={postHref(c)} class="companion-item">
+              <a href={c.href} class="companion-item">
                 <span class="companion-link">
-                  {c.data.title} <span aria-hidden="true">&rarr;</span>
+                  {c.title} <span aria-hidden="true">&rarr;</span>
                 </span>
-                {(c.data.deck || c.data.subtitle) && (
-                  <span class="companion-deck">{c.data.deck || c.data.subtitle}</span>
+                {c.deck && (
+                  <span class="companion-deck">{c.deck}</span>
                 )}
               </a>
             ))}
