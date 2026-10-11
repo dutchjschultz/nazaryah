@@ -6,7 +6,7 @@ description: "Why the Law let the unclean and the clean eat the same meat."
 verse: "Deuteronomy 12:20–24"
 category: "The Law Still Stands"
 date: 2026-10-11
-associations: []
+associations: ["pulpit-vocabulary", "the-mishkan"]
 epigraph:
   text: "If uncleanness kept a man away from the altar, why could he still sit down to supper with his family?"
 featured: false
