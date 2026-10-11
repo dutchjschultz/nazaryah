@@ -1,5 +1,10 @@
 ---
-// src/pages/edited-after-the-cross/[slug].astro · 1010 V1
+// src/pages/edited-after-the-cross/[slug].astro · 1010 V2
+// V2: body comes from the entry's `sections`, rendered in order with whatever
+// headings the page carries (Genesis 11 uses "What the Older Text Says" and adds
+// two sections). Panel text carries <mark> for each changed span, so a panel can
+// highlight several; the NT panel takes an optional note. Dig Deeper and section
+// bodies accept { quote, cite } blockquotes between paragraphs.
 // V1: the verse-page template for Edited After the Cross. One page per `live`
 // entry in src/data/edited-after-the-cross.js; nothing on the page is
 // hand-written. Order: reference / title / tag chip → Side by Side (built from
@@ -26,22 +31,8 @@ const { v, prev, next } = Astro.props;
 const s = v.sideBySide;
 const tagSlug = v.tag.toLowerCase().replace(/\s+/g, '-');
 const BASE = '/edited-after-the-cross';
-
-// Split the NT text around its changed words so they can be highlighted.
-const nt = s.nt
-  ? (() => {
-      const at = s.nt.text.indexOf(s.nt.changed);
-      return at < 0
-        ? { reference: s.nt.reference, before: s.nt.text, changed: '', after: '' }
-        : { reference: s.nt.reference, before: s.nt.text.slice(0, at), changed: s.nt.changed, after: s.nt.text.slice(at + s.nt.changed.length) };
-    })()
-  : null;
-
-const prose = [
-  { id: 'what-changed', title: 'What Changed', paras: v.whatChanged },
-  { id: 'which-one-is-right', title: 'Which One Is Right?', paras: v.whichIsRight },
-  { id: 'purpose-of-the-change', title: 'Purpose of the Change', paras: v.purpose },
-];
+const idOf = (h: string) => h.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+const sections = v.sections.map((sec) => ({ ...sec, id: idOf(sec.heading) }));
 ---
 
 <BaseLayout
@@ -64,43 +55,33 @@ const prose = [
           <div class:list={['ev-panel', i === 0 ? 'ev-panel--older' : 'ev-panel--later']}>
             <p class="ev-panel-label">{t.label}</p>
             <p class="ev-panel-note">{t.note}</p>
-            <p class="ev-panel-text">{t.before}<mark>{t.changed}</mark>{t.after}</p>
+            <p class="ev-panel-text" set:html={t.text} />
           </div>
         ))}
-        {nt && (
+        {s.nt && (
           <div class="ev-panel ev-panel--nt">
-            <p class="ev-panel-label">Quoted in {nt.reference}</p>
-            <p class="ev-panel-text">{nt.before}{nt.changed && <mark>{nt.changed}</mark>}{nt.after}</p>
+            <p class="ev-panel-label">Quoted in {s.nt.reference}</p>
+            {s.nt.note && <p class="ev-panel-note">{s.nt.note}</p>}
+            <p class="ev-panel-text" set:html={s.nt.text} />
           </div>
         )}
       </div>
-      <p class="ev-kjv">{s.kjv}</p>
-      <a class="ev-jump" href="#what-your-bible-says" data-pagefind-ignore>See what changed and why ↓</a>
+      <p class="ev-kjv" set:html={s.kjv} />
+      <a class="ev-jump" href={`#${sections[0].id}`} data-pagefind-ignore>See what changed and why ↓</a>
     </section>
 
     <div class="ev-body">
-      <section id="what-your-bible-says">
-        <h2>What Your Bible Says</h2>
-        <blockquote>
-          <p>{v.yourBible.quote}</p>
-          <cite>{v.yourBible.cite}</cite>
-        </blockquote>
-        {v.yourBible.paras.map((p) => <p set:html={p} />)}
-      </section>
-
-      <section id="what-the-jewish-bible-says">
-        <h2>What the Jewish Bible Says</h2>
-        <blockquote>
-          <p>{v.jewishBible.quote}</p>
-          <cite>{v.jewishBible.cite}</cite>
-        </blockquote>
-        {v.jewishBible.paras.map((p) => <p set:html={p} />)}
-      </section>
-
-      {prose.map((sec) => (
+      {sections.map((sec) => (
         <section id={sec.id}>
-          <h2>{sec.title}</h2>
-          {sec.paras.map((p) => <p set:html={p} />)}
+          <h2>{sec.heading}</h2>
+          {sec.body.map((b) =>
+            typeof b === 'string' ? <p set:html={b} /> : (
+              <blockquote>
+                <p set:html={b.quote} />
+                <cite>{b.cite}</cite>
+              </blockquote>
+            )
+          )}
         </section>
       ))}
 
@@ -119,7 +100,14 @@ const prose = [
           {v.digDeeper.map((d) => (
             <div class="ev-deeper-item">
               <h3>{d.heading}</h3>
-              {d.paras?.map((p) => <p set:html={p} />)}
+              {d.body?.map((b) =>
+                typeof b === 'string' ? <p set:html={b} /> : (
+                  <blockquote>
+                    <p set:html={b.quote} />
+                    <cite>{b.cite}</cite>
+                  </blockquote>
+                )
+              )}
               {d.list && <ul>{d.list.map((li) => <li set:html={li} />)}</ul>}
             </div>
           ))}
@@ -181,10 +169,12 @@ const prose = [
     font-family: var(--font-family-serif); font-style: italic; font-size: 0.95rem; color: #8f8775; margin: 0.2rem 0 1rem;
   }
   .ev-panel-text { font-family: var(--font-body); font-size: 1.22rem; line-height: 1.7; color: #ddd5c3; margin: 0; }
-  .ev-panel mark {
+  .ev-panel :global(mark) {
     background: rgba(240,196,80,0.16); color: #f0c450; font-weight: 700;
     padding: 0.05em 0.25em; border-radius: 3px; box-shadow: inset 0 -2px 0 #d4a531;
   }
+  .ev-panel-text :global(em) { font-family: var(--font-family-serif); color: #8f8775; }
+  .ev-kjv :global(strong) { color: #e8c98a; font-weight: 600; }
   .ev-kjv { text-align: center; font-family: var(--font-body); font-size: 0.95rem; color: #a89f8c; margin: 1.1rem 0 0.6rem; }
   .ev-jump {
     display: block; width: fit-content; margin: 0 auto; font-family: var(--font-display); font-size: 0.78rem;

@@ -1,5 +1,12 @@
 ---
-// src/pages/edited-after-the-cross/index.astro · 1010 V2
+// src/pages/edited-after-the-cross/index.astro · 1010 V3
+// V3: master list + ten tags (Etsy Septuagint Master List 1010 V2). How to Read
+// lists all ten tags with their one-line notes. The Verses is now every planned
+// pair, grouped under the ten tags in TAGS order (file order within a group),
+// each heading with its count from the data. Live entries are full color and
+// open their page; coming entries are muted, not links, labeled "coming". Tag
+// chips still filter; a Live only toggle hides the coming entries (group counts
+// switch to live counts while it is on).
 // V2: Card 4 sentence now names its link (LXX Intro 1010 V3): "The page Words
 // Your Bible Borrowed traces that damage word by word."
 // V1: section front for Edited After the Cross (Septuagint vs Masoretic).
@@ -9,12 +16,12 @@
 // Cards are <details>: title + first sentence closed, full text open, no script.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import { verses, TAGS, TAG_NOTES } from '../../data/edited-after-the-cross.js';
-import { canonicalKey } from '../../data/canonicalOrder';
 
-const live = verses
-  .filter((v) => v.status === 'live')
-  .sort((a, b) => canonicalKey(a.reference) - canonicalKey(b.reference));
 const tagSlug = (t: string) => t.toLowerCase().replace(/\s+/g, '-');
+const groups = TAGS.map((t) => {
+  const items = verses.filter((v) => v.tag === t);
+  return { tag: t, items, live: items.filter((v) => v.status === 'live').length };
+});
 
 // Each card: title, its first sentence (shown closed), and its full text.
 const cards = [
@@ -103,7 +110,7 @@ const cards = [
 
     <section class="eac-col eac-section">
       <h2 class="eac-h2">How to Read the Verse Pages</h2>
-      <p>Each verse page shows what the reader’s Bible says, what the Jewish Bible says, what changed, and why. A Dig Deeper section at the bottom holds the evidence for anyone who wants it. Every page carries one of four tags:</p>
+      <p>Each verse page shows what the reader’s Bible says, what the Jewish Bible says, what changed, and why. A Dig Deeper section at the bottom holds the evidence for anyone who wants it. Every page carries one of these tags:</p>
       <ul class="eac-tag-key">
         {TAGS.map((t) => (
           <li><span class="eac-chip">{t}</span><span class="eac-tag-note">{TAG_NOTES[t]}</span></li>
@@ -113,26 +120,47 @@ const cards = [
 
     <section class="eac-col eac-section" id="verses">
       <h2 class="eac-h2">The Verses</h2>
-      <p>Choose a verse below to see what was changed.</p>
+      <p>This list holds every verse pair planned for the section, {verses.length} in all, sorted under the ten tags. Each pair shows the Old Testament reference, the New Testament verse that quotes it where there is one, and the difference in a few words. The reading of the older Greek text comes first; the later Hebrew follows “vs.” Pairs with a page open it; the rest are marked coming.</p>
       <div class="eac-filter" role="group" aria-label="Filter verses by tag" data-pagefind-ignore>
         <button type="button" class="eac-chip eac-chip--btn" aria-pressed="true" data-tag="all">All</button>
         {TAGS.map((t) => (
           <button type="button" class="eac-chip eac-chip--btn" aria-pressed="false" data-tag={tagSlug(t)}>{t}</button>
         ))}
       </div>
-      <ul class="eac-verses">
-        {live.map((v) => (
-          <li data-tag={tagSlug(v.tag)}>
-            <a href={`/edited-after-the-cross/${v.slug}`} class="eac-verse">
-              <span class="eac-verse-ref">{v.reference}</span>
-              <span class="eac-verse-title">{v.title}</span>
-              <span class="eac-chip eac-chip--sm">{v.tag}</span>
-            </a>
-          </li>
-        ))}
-      </ul>
-      <p class="eac-empty" hidden>No verse carries this tag yet.</p>
-      <p class="eac-more">More verses are being added.</p>
+      <button type="button" class="eac-live-toggle" aria-pressed="false" data-pagefind-ignore>
+        <span class="eac-switch" aria-hidden="true"></span>Live only
+      </button>
+      {groups.map((g) => (
+        <section class="eac-group" data-tag={tagSlug(g.tag)}>
+          <h3 class="eac-group-h">
+            {g.tag} <span class="eac-count" data-total={g.items.length} data-live={g.live}>({g.items.length})</span>
+          </h3>
+          <ul class="eac-verses">
+            {g.items.map((v) => {
+              const inner = (
+                <>
+                  <span class="eac-verse-line">
+                    <span class="eac-verse-ref">{v.reference}</span>
+                    {v.ntReference && <span class="eac-verse-nt">→ {v.ntReference}</span>}
+                    {v.status !== 'live' && <span class="eac-soon">coming</span>}
+                  </span>
+                  <span class="eac-verse-contrast">{v.contrast}</span>
+                </>
+              );
+              return (
+                <li data-live={v.status === 'live' ? 'true' : 'false'}>
+                  {v.status === 'live' ? (
+                    <a href={`/edited-after-the-cross/${v.slug}`} class="eac-verse">{inner}</a>
+                  ) : (
+                    <div class="eac-verse eac-verse--coming">{inner}</div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      ))}
+      <p class="eac-empty" hidden>No live verse carries this tag yet.</p>
     </section>
 
     <section class="eac-col eac-section eac-last">
@@ -143,24 +171,38 @@ const cards = [
 </BaseLayout>
 
 <script>
-  // Tag chips filter the verse list. ?tag=<slug> (from a verse page's chip)
-  // preselects one.
+  // Tag chips pick one group (or all); Live only hides the coming entries. A
+  // group with nothing left to show hides with its heading. ?tag=<slug> (from a
+  // verse page's chip) preselects one.
   const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.eac-filter [data-tag]'));
-  const rows = Array.from(document.querySelectorAll<HTMLElement>('.eac-verses [data-tag]'));
+  const groups = Array.from(document.querySelectorAll<HTMLElement>('.eac-group'));
+  const toggle = document.querySelector<HTMLButtonElement>('.eac-live-toggle');
   const empty = document.querySelector<HTMLElement>('.eac-empty');
-  function apply(tag: string) {
+  let tag = 'all';
+  let liveOnly = false;
+  function apply() {
     chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.tag === tag)));
+    toggle?.setAttribute('aria-pressed', String(liveOnly));
     let shown = 0;
-    rows.forEach((r) => {
-      const on = tag === 'all' || r.dataset.tag === tag;
-      r.hidden = !on;
-      if (on) shown++;
+    groups.forEach((g) => {
+      let n = 0;
+      g.querySelectorAll<HTMLElement>('li').forEach((li) => {
+        const on = !liveOnly || li.dataset.live === 'true';
+        li.hidden = !on;
+        if (on) n++;
+      });
+      const count = g.querySelector<HTMLElement>('.eac-count');
+      if (count) count.textContent = `(${liveOnly ? count.dataset.live : count.dataset.total})`;
+      const on = (tag === 'all' || g.dataset.tag === tag) && n > 0;
+      g.hidden = !on;
+      if (on) shown += n;
     });
     if (empty) empty.hidden = shown > 0;
   }
-  chips.forEach((c) => c.addEventListener('click', () => apply(c.dataset.tag!)));
+  chips.forEach((c) => c.addEventListener('click', () => { tag = c.dataset.tag!; apply(); }));
+  toggle?.addEventListener('click', () => { liveOnly = !liveOnly; apply(); });
   const pre = new URLSearchParams(location.search).get('tag');
-  if (pre && chips.some((c) => c.dataset.tag === pre)) apply(pre);
+  if (pre && chips.some((c) => c.dataset.tag === pre)) { tag = pre; apply(); }
 </script>
 
 <style>
@@ -238,21 +280,58 @@ const cards = [
   .eac-chip--btn:hover { color: #e8c98a; border-color: rgba(212,165,49,0.5); }
   .eac-chip--btn[aria-pressed='true'] { color: #0e0d0b; background: #d8b06a; border-color: #d8b06a; }
 
-  .eac-verses { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: 0.6rem; }
+  .eac-live-toggle {
+    display: inline-flex; align-items: center; gap: 0.55rem; cursor: pointer; margin: 0 0 1.8rem;
+    background: none; border: 0; padding: 0.2rem 0; font-family: var(--font-display); font-size: 0.72rem;
+    font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; color: #a89f8c;
+  }
+  .eac-live-toggle:hover { color: #e8c98a; }
+  .eac-live-toggle:focus-visible { outline: 2px solid #BA7517; outline-offset: 3px; border-radius: 4px; }
+  .eac-switch {
+    position: relative; width: 2.1rem; height: 1.15rem; border-radius: 999px; flex: none;
+    border: 1px solid rgba(212,165,49,0.45); background: transparent; transition: background 0.2s;
+  }
+  .eac-switch::after {
+    content: ''; position: absolute; top: 2px; left: 2px; width: calc(1.15rem - 6px); height: calc(1.15rem - 6px);
+    border-radius: 50%; background: #8f8775; transition: transform 0.2s, background 0.2s;
+  }
+  .eac-live-toggle[aria-pressed='true'] { color: #e8c98a; }
+  .eac-live-toggle[aria-pressed='true'] .eac-switch { background: rgba(186,117,23,0.35); }
+  .eac-live-toggle[aria-pressed='true'] .eac-switch::after { transform: translateX(0.95rem); background: #f0c450; }
+
+  .eac-group { margin: 0 0 2rem; }
+  .eac-group[hidden] { display: none; }
+  .eac-group-h {
+    font-family: var(--font-display); font-size: 1rem; font-weight: 700; letter-spacing: 0.04em;
+    color: #e8c98a; margin: 0 0 0.7rem;
+  }
+  .eac-count { color: #8f8775; font-weight: 600; }
+
+  .eac-verses { list-style: none; margin: 0 0 1rem; padding: 0; display: grid; gap: 0.5rem; }
   .eac-verses li[hidden] { display: none; }
   .eac-verse {
-    display: flex; align-items: center; gap: 0.4rem 1rem; flex-wrap: wrap; text-decoration: none;
+    display: flex; flex-direction: column; gap: 0.3rem; text-decoration: none;
     background: #161512; border: 0.5px solid rgba(255,255,255,0.07); border-left: 3px solid #BA7517;
     border-radius: 8px; padding: 1rem 1.2rem; transition: background 0.2s, transform 0.2s;
   }
-  .eac-verse:hover, .eac-verse:focus-visible { background: #1c1a16; transform: translateX(3px); outline: none; }
+  a.eac-verse:hover, a.eac-verse:focus-visible { background: #1c1a16; transform: translateX(3px); outline: none; }
   .eac-verse-ref {
     font-family: var(--font-display); font-size: 0.78rem; font-weight: 600; letter-spacing: 0.14em;
     text-transform: uppercase; color: #BA7517;
   }
-  .eac-verse-title { font-family: var(--font-display); font-size: 1.05rem; font-weight: 700; color: #e8e2d4; flex: 1 1 14rem; }
-  .eac-verse:hover .eac-verse-title { color: #f0c450; }
-  .eac-col .eac-more, .eac-col .eac-empty { font-family: var(--font-family-serif); font-style: italic; color: #8f8775; font-size: 1rem; }
+  .eac-verse-line { display: flex; align-items: baseline; gap: 0.3rem 0.8rem; flex-wrap: wrap; }
+  .eac-verse-nt { font-family: var(--font-body); font-size: 0.95rem; color: #a89f8c; }
+  .eac-verse-contrast { font-family: var(--font-body); font-size: 1.05rem; line-height: 1.5; color: #e8e2d4; }
+  a.eac-verse:hover .eac-verse-contrast { color: #f0c450; }
+  .eac-verse--coming { border-left-color: #3a362f; background: #12110e; padding-top: 0.75rem; padding-bottom: 0.75rem; }
+  .eac-verse--coming .eac-verse-ref { color: #6d655a; }
+  .eac-verse--coming .eac-verse-nt { color: #5f584d; }
+  .eac-verse--coming .eac-verse-contrast { color: #7a7266; font-size: 0.98rem; }
+  .eac-soon {
+    margin-left: auto; font-family: var(--font-display); font-size: 0.58rem; font-weight: 600; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #6d655a; border: 1px solid #3a362f; border-radius: 999px; padding: 0.12rem 0.5rem;
+  }
+  .eac-col .eac-empty { font-family: var(--font-family-serif); font-style: italic; color: #8f8775; font-size: 1rem; }
 
   .eac-last p { font-size: 1.15rem; color: #ddd5c3; }
 
