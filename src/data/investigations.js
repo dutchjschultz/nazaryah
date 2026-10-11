@@ -1,4 +1,7 @@
-// investigations 1008 V8.js
+// investigations 1011 V9.js
+// V9: Spoken in Hebrew gains Witness Seven · Names — Two Names, One Man (Acts 13:9 /
+// Genesis 17:5). Already the columns shape; the card takes the next slot (left
+// column four, right three). No other witness, and no hub text, changed.
 // V8: Spoken in Hebrew joins the file — the second 'columns' case, six witnesses
 // (three a side). New optional field `orderNote`: the small line under the
 // columns. It was hard-coded "Numbered in sermon order", true only of The
@@ -408,6 +411,15 @@ export const INVESTIGATIONS = [
         status: 'live',
         href: '/blog/what-the-greek-carried',
         blurb: 'The Greek words that came into the New Testament already loaded with the meanings of the gods and the philosophers, and the full list on the page Words Your Bible Borrowed.',
+      },
+      {
+        tag: 'Witness Seven · Names',
+        name: 'Two Names, One Man',
+        passage: 'Acts 13:9',
+        anchor: 'Genesis 17:5',
+        status: 'live',
+        href: '/blog/two-names-one-man',
+        blurb: 'Paul was never renamed. The writers kept translating Hebrew names for Greek readers.',
       },
     ],
   },
