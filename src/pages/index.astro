@@ -1,5 +1,13 @@
 ---
-// src/pages/index.astro · 1008 V15
+// src/pages/index.astro · 1011 V16
+// V16: the page centers on new work (Homepage Featured and Recent Spec 1011 V2).
+// The six-tab rail is gone — its card looks now live in src/data/series-skins.js
+// and render through SeriesCard — and so is the old five-link Featured Picks
+// strip (the featured-queue rotation). Order: hero → Doctrines card (with The
+// Old Paths and The Departure side by side) → Featured Picks (hand-picked via
+// `featured`/`featuredAt`, six seats, each card in its series skin; hidden when
+// none) → Last 30 Days (closed dropdowns per section, from src/lib/
+// home-pieces.js; hidden when empty) → Watchman's Desk → Close to the Hip.
 // V15: the /on-these-two rail card reads The Paper Trail (address unchanged),
 // matching the page title and the Counterfeits menu.
 // V14: the hero headline, its italic, the eyebrow and the body paragraph get dark-mode
@@ -40,12 +48,11 @@
 import fs from 'node:fs';
 import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
-import HomeCard from '../components/HomeCard.astro';
+import SeriesCard from '../components/SeriesCard.astro';
 import WatchmanCard from '../components/WatchmanCard.astro';
 import { featuredEntries } from '../data/watchmans-desk.js';
-import { getCollection } from 'astro:content';
-import { featuredSlugs } from '../lib/featured-queue.js';
-import { postHref } from '../lib/post-href.js';
+import { SKINS } from '../data/series-skins.js';
+import { homePieces, featuredPicks, recentGroups, showDate } from '../lib/home-pieces.js';
 
 // ── SCRIPTURE INSIGHT (strip) — the single latest posted insight, read at build
 // time from the same JSON the /close-to-the-hip insights lane uses, with the SAME
@@ -67,93 +74,21 @@ const latestVideo = {
   url: 'https://www.youtube.com/watch?v=umWTEOEJ-GQ',
 };
 
-// ── THE RAIL (evergreen structure) ───────────────────────────────────────
-// Level 1 group → its subcategory cards. Copy is approved except for the two
-// placeholders. `draft: true` marks only those — none left as of V12:
-// no route yet, so they render a DRAFT badge + neutral icon + Coming Soon.
-// `placeholder: true` = a subject with no route yet.
-// Every href below is an existing route; nothing here invents a URL.
-const railGroups = [
-  {
-    name: 'False Foundations',
-    eyebrow: 'What modern Christianity got wrong',
-    items: [
-      { href: '/trinity', color: 'emerald', icon: '✡', eyebrow: 'Examining a sacred cow', title: 'The <em>Trinity</em>', description: 'Three Gods in one — or one Father quietly hidden behind the doctrine?', cta: 'Examine the Doctrine' },
-      { href: '/sun-worship', color: 'amber', icon: '☀', eyebrow: 'The oldest counterfeit', title: 'Sun <em>Worship</em>', description: 'From Babel to Easter morning to the obelisks of every capital city.', cta: 'Trace the Pattern' },
-      { href: '/catholicism', color: 'violet', icon: '†', eyebrow: 'The mother church', title: '<em>Catholicism</em>', description: 'The institution that crowned itself — and the daughters who never left home.', cta: 'Open the Indictment' },
-      { href: '/foreign-fire', color: 'charcoal', icon: '🜂', eyebrow: 'Strange fire on the altar', title: 'Foreign <em>Fire</em>', description: 'Worship Yahuah did not command. Nadab and Abihu would recognize it.', cta: 'Read the Warning' },
-      { href: '/on-these-two', color: 'navy', icon: '⇅', eyebrow: 'Root and fruit', title: 'The Paper <em>Trail</em>', description: 'Every lie was handed to somebody. Walk it back up.', cta: 'Walk the Tree' },
-    ],
-  },
-  {
-    name: 'Restoration',
-    eyebrow: 'What the text actually says',
-    items: [
-      { href: '/calendar', color: 'indigo', icon: '☾', eyebrow: 'Set in the lights', title: 'The <em>Calendar</em>', description: 'Aviv, the renewed moon, the Sabbath. The way Yahuah set the seasons.', cta: 'Open the Calendar' },
-      { href: '/hebrew', color: 'oxblood', icon: 'ב', eyebrow: 'The language of Yahuah', title: 'Hebrew <em>Word</em>', description: 'Restored names, root words, and the meanings translation flattened.', cta: 'Study the Roots' },
-      { href: '/cosmology', color: 'navy', icon: '◠', eyebrow: 'The heavens and the earth', title: '<em>Cosmology</em>', description: 'The shape of what Yahuah made — the firmament above, the north at the center, and everything built to hide it.', cta: 'Read the Witnesses' },
-    ],
-  },
-  {
-    name: 'Living Torah',
-    eyebrow: 'Walking it out',
-    items: [
-      { href: '/hollywood', color: 'blackgold', icon: '◉', eyebrow: 'Raised on magic', title: '<em>Hollywood</em>', description: 'Wizards as heroes. Witches as misunderstood. Catechism in disguise.', cta: 'Open the Section' },
-      { href: '/american-idolatry', color: 'navy', icon: '★', eyebrow: 'The flag on the pulpit', title: 'American <em>Idolatry</em>', description: 'When country becomes covenant and patriotism becomes worship.', cta: 'Examine It' },
-      { href: '/holidays', color: 'burgundy', icon: '✦', eyebrow: 'Christmas · Easter · Sunday', title: 'The <em>Holidays</em>', description: 'Days the church kept that the text never named — and the Feasts it forgot.', cta: 'Trace the Origins' },
-      { href: '/ekklesia', color: 'stone', icon: '⌂', eyebrow: 'What the church is not', title: '<em>Ekklesia</em>', description: 'The institution called “church” — and how far it drifted from the assembly.', cta: 'Recover the Pattern' },
-    ],
-  },
-  {
-    name: 'What They Buried',
-    eyebrow: 'Dug back up',
-    items: [
-      { href: '/christian-or-demonic', color: 'oxblood', icon: '⚖', eyebrow: 'Test what you were taught', title: 'Christian <em>or Demonic?</em>', description: 'Five pillars every believer inherited without testing. Hold each one to the text and see what stands.', cta: 'Begin the Examination' },
-      { href: '/hidden-gems', color: 'teal', icon: '◈', eyebrow: 'Buried in plain sight', title: 'Hidden <em>Gems</em>', description: 'The verses your pastor flipped past — and what they actually mean.', cta: 'Dig In' },
-      { href: '/investigations', color: 'sepia', icon: '§', eyebrow: 'Many witnesses, one verdict', title: '<em>Investigations</em>', description: 'One claim put on the stand and examined witness by witness.', cta: 'Open the File' },
-    ],
-  },
-  {
-    name: 'Pathways',
-    eyebrow: 'Build your own study',
-    items: [
-      { href: '/pathway/name-and-nature/stop-1', color: 'emerald', icon: '☤', eyebrow: 'Guided pathway', title: 'The Name <em>and the Nature</em>', description: 'Who Yahuah is, and how the church has been mistranslating His Name.', cta: 'Walk the Path' },
-      { href: '/pathway/grave-and-gate/stop-1', color: 'indigo', icon: '⚱', eyebrow: 'Guided pathway', title: 'The Grave <em>and the Gate</em>', description: 'What Scripture actually says about the dead, and where the borrowed fires of hell came from.', cta: 'Walk the Path' },
-    ],
-  },
-  {
-    name: "The Scribe's Desk",
-    eyebrow: 'The reference shelf',
-    items: [
-      { href: '/doctrines', color: 'stone', icon: '◉', eyebrow: 'Start here', title: 'The <em>Doctrines</em>', description: 'The teachings handed down from the pulpit, examined one at a time. Start here.', cta: 'Read the Doctrines' },
-      { href: '/books', color: 'blackgold', icon: '⌂', eyebrow: 'Long-form', title: 'The <em>Books</em>', description: 'The full-length works — the long-form case, in print.', cta: 'Open the Shelf' },
-      { href: '/blog', color: 'sepia', icon: 'א', eyebrow: 'Scripture unfiltered', title: 'The <em>Studies</em>', description: 'Word studies, doctrines, and topical deep-dives — the full archive.', cta: 'All Studies' },
-    ],
-  },
-];
-
 // ── THE WATCHMAN'S DESK (band) — the two most recent entries by date, newest
 // first, straight from the data file (featuredEntries). Selection is deterministic
 // (sortDate order, no manual pinning) and independent of the posts pool, so these
 // never enter Featured Picks. Fewer than two entries -> one card, no empty slot.
 const featuredLetters = featuredEntries;
 
-// ── FEATURED PICKS (band) — driven by the rotating queue in
-// src/lib/featured-queue.js. One study swaps out per dawn; each rides five
-// days; the whole 64-study list cycles before anything repeats. No state is
-// stored — the date is the only input, so the board is identical on every
-// build and every visitor's screen. Add a slug to PINNED_SLUGS to force it to
-// the top seats (pins eat rotation slots). Trinity Files are excluded here and
-// absent from the queue — settled decision, do not reconnect them.
-const PINNED_SLUGS: string[] = [];
-const _pool = (await getCollection('posts', (p) => p.data.draft !== true))
-  .filter((p) => !p.slug.startsWith('trinity-files-'))
-  // An `unlisted` "go deeper" page never takes a seat on the board.
-  .filter((p) => !p.data.unlisted);
-const _bySlug = new Map(_pool.map((p) => [p.slug, p]));
-const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.data.date })), PINNED_SLUGS)
-  .map((s) => _bySlug.get(s))
-  .filter(Boolean);
+// ── DOCTRINES — the one rail card kept (the most-clicked), with its paired
+// documents as secondary links.
+const doctrines = SKINS.doctrines;
+
+// ── FEATURED PICKS + LAST 30 DAYS — one pool (src/lib/home-pieces.js). Picks
+// come first so Last 30 Days can leave them out; nothing shows twice.
+const pieces = await homePieces();
+const picks = featuredPicks(pieces);
+const recent = recentGroups(pieces, picks);
 ---
 
 <BaseLayout
@@ -441,13 +376,6 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
       box-shadow: 0 4px 10px -3px rgba(168, 127, 31, 0.3);
     }
 
-    /* ── Responsive ── */
-    @media (max-width: 640px) {
-      .pillar-grid {
-        grid-template-columns: 1fr !important;
-      }
-    }
-
     @media (max-width: 720px) {
       .hero-section {
         padding: 1.5rem 1rem;
@@ -492,99 +420,80 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
 
 
   <!-- ============================================================
-       THE RAIL — evergreen structure. CSS-only (hidden radios +
-       :checked ~). Desktop = subject rail + card panel; <768px =
-       <details> accordions. Container swap: HomeCard is untouched.
+       DOCTRINES — the one card kept from the old rail.
        ============================================================ -->
-  <section class="rail-section" aria-label="Browse by subject">
-    <div class="rail-shell">
-
-      <!-- Desktop rail -->
-      <div class="cat-rail">
-        {railGroups.map((g, i) => (
-          <input type="radio" name="home-rail" id={`home-rail-${i}`} class="cat-rail-radio" checked={i === 0} />
-        ))}
-        <div class="cat-rail-list">
-          {railGroups.map((g, i) => (
-            <label for={`home-rail-${i}`} class="cat-rail-item">
-              <span class="cat-rail-name">{g.name}</span>
-              <span class="cat-rail-tag">{g.eyebrow}</span>
-            </label>
-          ))}
-        </div>
-        <div class="cat-rail-panels">
-          {railGroups.map((g) => (
-            <div class="cat-rail-panel">
-              <div class="rail-cards">
-                {g.items.map((it) => (
-                  it.placeholder ? (
-                    <div class="rail-card--placeholder">
-                      <span class="rail-draft-badge">DRAFT</span>
-                      <span class="rail-ph-icon" aria-hidden="true">{it.icon}</span>
-                      <div>
-                        <p class="rail-ph-eyebrow">{it.eyebrow}</p>
-                        <h3 class="rail-ph-title" set:html={it.title} />
-                        <p class="rail-ph-desc">{it.description}</p>
-                      </div>
-                      <span class="rail-ph-cta">{it.cta}</span>
-                    </div>
-                  ) : it.draft ? (
-                    <div class="rail-card--draft">
-                      <span class="rail-draft-badge">DRAFT</span>
-                      <HomeCard href={it.href} color={it.color} icon={it.icon} eyebrow={it.eyebrow} title={it.title} description={it.description} cta={it.cta} />
-                    </div>
-                  ) : (
-                    <HomeCard href={it.href} color={it.color} icon={it.icon} eyebrow={it.eyebrow} title={it.title} description={it.description} cta={it.cta} />
-                  )
-                ))}
-              </div>
-            </div>
-          ))}
-        </div>
-      </div>
-
-      <!-- Mobile accordion -->
-      <div class="cat-accordion">
-        {railGroups.map((g, i) => (
-          <details class="cat-acc-item" open={i === 0}>
-            <summary class="cat-acc-summary">{g.name}</summary>
-            <div class="cat-acc-body">
-              <div class="rail-cards">
-                {g.items.map((it) => (
-                  it.placeholder ? (
-                    <div class="rail-card--placeholder">
-                      <span class="rail-draft-badge">DRAFT</span>
-                      <span class="rail-ph-icon" aria-hidden="true">{it.icon}</span>
-                      <div>
-                        <p class="rail-ph-eyebrow">{it.eyebrow}</p>
-                        <h3 class="rail-ph-title" set:html={it.title} />
-                        <p class="rail-ph-desc">{it.description}</p>
-                      </div>
-                      <span class="rail-ph-cta">{it.cta}</span>
-                    </div>
-                  ) : it.draft ? (
-                    <div class="rail-card--draft">
-                      <span class="rail-draft-badge">DRAFT</span>
-                      <HomeCard href={it.href} color={it.color} icon={it.icon} eyebrow={it.eyebrow} title={it.title} description={it.description} cta={it.cta} />
-                    </div>
-                  ) : (
-                    <HomeCard href={it.href} color={it.color} icon={it.icon} eyebrow={it.eyebrow} title={it.title} description={it.description} cta={it.cta} />
-                  )
-                ))}
-              </div>
-            </div>
-          </details>
-        ))}
-      </div>
-
+  <section class="home-band home-band--doctrines" aria-label="Doctrines">
+    <div class="home-shell">
+      <SeriesCard
+        class="home-doctrines"
+        skin={doctrines}
+        href={doctrines.href}
+        title={doctrines.title}
+        description={doctrines.description}
+        cta={doctrines.cta}
+        links={[
+          { label: 'The Old Paths', href: '/doctrines/old-paths' },
+          { label: 'The Departure', href: '/doctrines/the-departure' },
+        ]}
+      />
     </div>
   </section>
 
+  {picks.length > 0 && (
+    <section class="home-band" aria-labelledby="featured-picks">
+      <div class="home-shell">
+        <h2 id="featured-picks" class="home-h2">Featured Picks</h2>
+        <div class="home-picks">
+          {picks.map((p) => (
+            <SeriesCard
+              skin={p.skin}
+              href={p.href}
+              title={p.title}
+              description={p.deck}
+              cta={p.cta}
+              date={showDate(p.date)}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {recent.length > 0 && (
+    <section class="home-band" aria-labelledby="last-30-days">
+      <div class="home-shell">
+        <h2 id="last-30-days" class="home-h2">Last 30 Days</h2>
+        <p class="home-sub">New on the site, grouped by where it lives.</p>
+        <div class="home-recent">
+          {recent.map((g) => (
+            <details class="home-group" style={`--grp-accent: ${g.accent}`}>
+              <summary>
+                <span class="home-group-name">{g.name} <span class="home-group-count">({g.items.length})</span></span>
+                <a class="home-group-all" href={g.href}>View all <span aria-hidden="true">→</span></a>
+              </summary>
+              <ul class="home-group-list">
+                {g.items.map((it) => (
+                  <li>
+                    <a href={it.href}>
+                      <span class="home-item-line">
+                        <span class="home-item-title">{it.title}</span>
+                        <span class="home-item-date">{showDate(it.date)}</span>
+                      </span>
+                      {it.deck && <span class="home-item-deck">{it.deck}</span>}
+                    </a>
+                  </li>
+                ))}
+              </ul>
+            </details>
+          ))}
+        </div>
+      </div>
+    </section>
+  )}
 
   <!-- ============================================================
        THE WATCHMAN'S DESK — timely band. Up to two recent letters (field-
-       notes look), Featured Picks, YouTube, + archive link. Stays its own
-       visual block, separate from the YouTube and Featured Blogs areas.
+       notes look), YouTube, + archive link. Stays its own visual block.
        ============================================================ -->
   <section class="wr-section" aria-label="The Watchman's Desk">
     <div class="wr-container">
@@ -615,19 +524,6 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
               <span class="wr-yt-latest-label">Latest:</span> {latestVideo.title}
             </a>
           )}
-        </div>
-      </div>
-
-      <!-- Featured Picks — a separate block below the Desk unit. -->
-      <div class="wr-picks">
-        <p class="wr-picks-title">Featured Picks</p>
-        <div class="wr-picks-grid">
-          {featuredPicks.map((p) => (
-            <a href={postHref(p)} class="wr-pick">
-              <span class="wr-pick-date">{p.data.date.toLocaleDateString('en-US', { year: 'numeric', month: 'short', day: 'numeric', timeZone: 'UTC' })}</span>
-              <span class="wr-pick-title">{p.data.title}</span>
-            </a>
-          ))}
         </div>
       </div>
 
@@ -670,121 +566,64 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
 
   <style>
     /* ============================================================
-       THE RAIL — CSS-only subject switcher (hidden radios + :checked ~).
-       Same pattern as the shipped /hollywood rail. No JS, no hydration.
+       DOCTRINES / FEATURED PICKS / LAST 30 DAYS — same dark ground the
+       rail had. Card looks come from the skins; nothing here colors a card.
        ============================================================ */
-    .rail-section {
-      background: #0a0a0a;
-      padding: 2.75rem 0 3.25rem;
-      border-bottom: 1px solid rgba(212, 175, 55, 0.1);
+    .home-band { background: #0a0a0a; padding: 2.75rem 0 0.5rem; }
+    .home-band--doctrines { padding-top: 2.5rem; }
+    .home-shell { max-width: 72rem; margin: 0 auto; padding: 0 2.5rem; }
+    .home-h2 {
+      font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.26em;
+      text-transform: uppercase; font-variant: small-caps; color: #d4af37; text-align: center; margin: 0 0 1.4rem;
     }
-    .rail-shell { max-width: 80rem; margin: 0 auto; padding: 0 2.5rem; }
-
-    .cat-rail {
-      position: relative;
-      display: grid;
-      grid-template-columns: 215px 1fr;
-      gap: 2.4rem;
-      align-items: start;
-    }
-    /* Radios: visually hidden but focusable (clipped sr-only, NOT display:none). */
-    .cat-rail-radio {
-      position: absolute; width: 1px; height: 1px;
-      padding: 0; margin: -1px; border: 0; overflow: hidden;
-      clip: rect(0 0 0 0); clip-path: inset(50%); white-space: nowrap;
-    }
-    .cat-rail-list { position: sticky; top: 1.5rem; display: flex; flex-direction: column; gap: 0.25rem; }
-    .cat-rail-item {
-      display: flex; flex-direction: column; gap: 0.12rem;
-      padding: 0.7rem 0.9rem; cursor: pointer;
-      border-left: 2px solid transparent; border-radius: 0 3px 3px 0;
-      transition: color .2s ease, border-color .2s ease, background .2s ease;
-    }
-    .cat-rail-name { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.15rem; line-height: 1.12; color: #b9a985; }
-    .cat-rail-tag  { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: #6b5d42; }
-    .cat-rail-item:hover { background: rgba(212,175,55,0.06); }
-    .cat-rail-item:hover .cat-rail-name { color: #f5e6c8; }
-
-    .cat-rail-panels { position: relative; overflow: visible; min-height: 22rem; }
-    .cat-rail-panel { display: none; overflow: visible; }
-    .rail-cards { display: grid; grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr)); gap: 1.25rem; }
-
-    /* checked → show matching panel (rules cover up to 8 groups) */
-    .cat-rail-radio:nth-of-type(1):checked ~ .cat-rail-panels > .cat-rail-panel:nth-child(1),
-    .cat-rail-radio:nth-of-type(2):checked ~ .cat-rail-panels > .cat-rail-panel:nth-child(2),
-    .cat-rail-radio:nth-of-type(3):checked ~ .cat-rail-panels > .cat-rail-panel:nth-child(3),
-    .cat-rail-radio:nth-of-type(4):checked ~ .cat-rail-panels > .cat-rail-panel:nth-child(4),
-    .cat-rail-radio:nth-of-type(5):checked ~ .cat-rail-panels > .cat-rail-panel:nth-child(5),
-    .cat-rail-radio:nth-of-type(6):checked ~ .cat-rail-panels > .cat-rail-panel:nth-child(6),
-    .cat-rail-radio:nth-of-type(7):checked ~ .cat-rail-panels > .cat-rail-panel:nth-child(7),
-    .cat-rail-radio:nth-of-type(8):checked ~ .cat-rail-panels > .cat-rail-panel:nth-child(8) { display: block; }
-    /* checked → light matching rail item */
-    .cat-rail-radio:nth-of-type(1):checked ~ .cat-rail-list > .cat-rail-item:nth-child(1),
-    .cat-rail-radio:nth-of-type(2):checked ~ .cat-rail-list > .cat-rail-item:nth-child(2),
-    .cat-rail-radio:nth-of-type(3):checked ~ .cat-rail-list > .cat-rail-item:nth-child(3),
-    .cat-rail-radio:nth-of-type(4):checked ~ .cat-rail-list > .cat-rail-item:nth-child(4),
-    .cat-rail-radio:nth-of-type(5):checked ~ .cat-rail-list > .cat-rail-item:nth-child(5),
-    .cat-rail-radio:nth-of-type(6):checked ~ .cat-rail-list > .cat-rail-item:nth-child(6),
-    .cat-rail-radio:nth-of-type(7):checked ~ .cat-rail-list > .cat-rail-item:nth-child(7),
-    .cat-rail-radio:nth-of-type(8):checked ~ .cat-rail-list > .cat-rail-item:nth-child(8) {
-      border-left-color: #d4af37; background: rgba(212,175,55,0.1);
-    }
-    .cat-rail-radio:nth-of-type(1):checked ~ .cat-rail-list > .cat-rail-item:nth-child(1) .cat-rail-name,
-    .cat-rail-radio:nth-of-type(2):checked ~ .cat-rail-list > .cat-rail-item:nth-child(2) .cat-rail-name,
-    .cat-rail-radio:nth-of-type(3):checked ~ .cat-rail-list > .cat-rail-item:nth-child(3) .cat-rail-name,
-    .cat-rail-radio:nth-of-type(4):checked ~ .cat-rail-list > .cat-rail-item:nth-child(4) .cat-rail-name,
-    .cat-rail-radio:nth-of-type(5):checked ~ .cat-rail-list > .cat-rail-item:nth-child(5) .cat-rail-name,
-    .cat-rail-radio:nth-of-type(6):checked ~ .cat-rail-list > .cat-rail-item:nth-child(6) .cat-rail-name,
-    .cat-rail-radio:nth-of-type(7):checked ~ .cat-rail-list > .cat-rail-item:nth-child(7) .cat-rail-name,
-    .cat-rail-radio:nth-of-type(8):checked ~ .cat-rail-list > .cat-rail-item:nth-child(8) .cat-rail-name { color: #f5e6c8; }
-    /* keyboard focus on the active rail item */
-    .cat-rail-radio:nth-of-type(1):focus-visible ~ .cat-rail-list > .cat-rail-item:nth-child(1),
-    .cat-rail-radio:nth-of-type(2):focus-visible ~ .cat-rail-list > .cat-rail-item:nth-child(2),
-    .cat-rail-radio:nth-of-type(3):focus-visible ~ .cat-rail-list > .cat-rail-item:nth-child(3),
-    .cat-rail-radio:nth-of-type(4):focus-visible ~ .cat-rail-list > .cat-rail-item:nth-child(4),
-    .cat-rail-radio:nth-of-type(5):focus-visible ~ .cat-rail-list > .cat-rail-item:nth-child(5),
-    .cat-rail-radio:nth-of-type(6):focus-visible ~ .cat-rail-list > .cat-rail-item:nth-child(6),
-    .cat-rail-radio:nth-of-type(7):focus-visible ~ .cat-rail-list > .cat-rail-item:nth-child(7),
-    .cat-rail-radio:nth-of-type(8):focus-visible ~ .cat-rail-list > .cat-rail-item:nth-child(8) {
-      outline: 2px solid #d4af37; outline-offset: 2px;
+    .home-sub {
+      font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1.05rem;
+      color: #a09078; text-align: center; margin: -0.9rem 0 1.4rem;
     }
 
-    /* Draft badge — marks the 7 unapproved subcategories */
-    .rail-card--draft { position: relative; }
-    .rail-draft-badge {
-      position: absolute; top: 0.55rem; right: 0.55rem; z-index: 5;
-      font-family: 'Cinzel', serif; font-size: 0.5rem; letter-spacing: 0.16em;
-      font-weight: 700; color: #1a0e06; background: #d4af37;
-      padding: 0.18rem 0.4rem; border-radius: 3px;
+    /* Doctrines: one wide card; text left, CTA + paired links right. */
+    .home-shell :global(.home-doctrines) {
+      display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0 1.6rem;
+      padding: 1.5rem 1.8rem;
     }
-    /* Placeholder card — subject with no route yet */
-    .rail-card--placeholder {
-      position: relative; display: flex; flex-direction: column; justify-content: space-between;
-      gap: 0.85rem; padding: 1.9rem 1.5rem 1.4rem; border-radius: 6px;
-      border: 1px dashed rgba(212,175,55,0.35);
-      background: radial-gradient(ellipse at 50% 30%, #201c15 0%, #14110c 70%, #0b0906 100%);
+    .home-shell :global(.home-doctrines .series-card-icon) { height: auto; font-size: 2rem; }
+    .home-shell :global(.home-doctrines .series-card-title) { margin-bottom: 0.4rem; }
+    .home-shell :global(.home-doctrines .series-card-foot) {
+      flex-direction: column; align-items: flex-end; gap: 0.7rem; border-top: 0; padding-top: 0;
     }
-    .rail-ph-icon { height: 2rem; line-height: 1; font-family: 'Cinzel', serif; font-size: 1.5rem; color: rgba(212,175,55,0.4); }
-    .rail-ph-eyebrow { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(212,175,55,0.7); margin: 0 0 0.7rem; }
-    .rail-ph-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.6rem; line-height: 1.1; color: #b9a985; margin: 0 0 0.7rem; }
-    .rail-ph-title em { font-style: italic; color: #d4af37; }
-    .rail-ph-desc { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 0.92rem; line-height: 1.5; color: rgba(232,217,184,0.65); margin: 0; }
-    .rail-ph-cta { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: rgba(212,175,55,0.7); padding-top: 0.85rem; border-top: 1px dashed rgba(212,175,55,0.22); }
 
-    /* Mobile accordion */
-    .cat-accordion { display: none; }
-    .cat-acc-item { border-top: 1px solid rgba(212,175,55,0.18); }
-    .cat-acc-item:last-of-type { border-bottom: 1px solid rgba(212,175,55,0.18); }
-    .cat-acc-summary {
-      cursor: pointer; list-style: none; display: flex; justify-content: space-between; align-items: baseline;
-      padding: 1.1rem 0.2rem; font-family: 'Playfair Display', Georgia, serif; font-style: italic;
-      font-size: 1.3rem; color: #f5e6c8;
+    /* Featured Picks: two rows of three, rail-card proportions. */
+    .home-picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+
+    /* Last 30 Days: closed dropdowns, a series-color bar on the left edge. */
+    .home-recent { display: grid; gap: 0.6rem; max-width: 52rem; margin: 0 auto; }
+    .home-group {
+      background: #141210; border: 1px solid rgba(201,169,97,0.14); border-left: 3px solid var(--grp-accent);
+      border-radius: 4px;
     }
-    .cat-acc-summary::-webkit-details-marker { display: none; }
-    .cat-acc-summary::after { content: "+"; color: #d4af37; font-style: normal; }
-    .cat-acc-item[open] .cat-acc-summary::after { content: "\2013"; }
-    .cat-acc-summary:focus-visible { outline: 2px solid #d4af37; outline-offset: 2px; }
-    .cat-acc-body { overflow: visible; padding: 0.4rem 0 1.3rem; }
+    .home-group summary {
+      list-style: none; cursor: pointer; display: flex; align-items: baseline; justify-content: space-between;
+      gap: 1rem; padding: 0.95rem 1.2rem;
+    }
+    .home-group summary::-webkit-details-marker { display: none; }
+    .home-group summary:focus-visible { outline: 2px solid var(--grp-accent); outline-offset: 2px; }
+    .home-group-name { font-family: 'Playfair Display', Georgia, serif; font-size: 1.12rem; color: #f5e6c8; }
+    .home-group-name::before { content: '\25B8'; display: inline-block; width: 1.1em; color: var(--grp-accent); font-size: 0.8em; transition: transform .2s ease; }
+    .home-group[open] .home-group-name::before { transform: rotate(90deg); }
+    .home-group-count { color: #a09078; font-size: 0.95rem; }
+    .home-group-all {
+      flex: none; font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;
+      font-weight: 700; color: #c9a961; text-decoration: none;
+    }
+    .home-group-all:hover { color: #f5e6c8; }
+    .home-group-list { list-style: none; margin: 0; padding: 0 1.2rem 0.6rem; }
+    .home-group-list li { border-top: 1px solid rgba(201,169,97,0.1); }
+    .home-group-list a { display: block; padding: 0.7rem 0; text-decoration: none; }
+    .home-item-line { display: flex; align-items: baseline; justify-content: space-between; gap: 0.3rem 1rem; flex-wrap: wrap; }
+    .home-item-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1rem; line-height: 1.3; color: #e8d9b8; }
+    .home-group-list a:hover .home-item-title { color: #f0c450; }
+    .home-item-date { flex: none; font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.14em; text-transform: uppercase; color: #8f8268; }
+    .home-item-deck { display: block; margin-top: 0.2rem; font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 0.98rem; line-height: 1.45; color: #a09078; }
 
     /* ============================================================
        THE WATCHMAN'S REPORT — field-notes band. Deliberately looks
@@ -835,28 +674,25 @@ const featuredPicks = featuredSlugs(_pool.map((p) => ({ slug: p.slug, date: p.da
     .wr-yt-latest:hover { color: var(--wr-cream); }
     .wr-yt-latest-label { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--wr-gold); }
 
-    /* Slot 2 — Featured Picks (blog pointers) */
-    /* Featured Picks reads as its own block, divided from the Desk unit above. */
-    .wr-picks { margin-top: 3rem; padding-top: 2.5rem; border-top: 1px solid rgba(201,169,97,0.22); }
-    .wr-picks-title { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.24em; text-transform: uppercase; color: var(--wr-gold); text-align: center; margin: 0 0 1.2rem; }
-    .wr-picks-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 1rem; }
-    .wr-pick { display: flex; flex-direction: column; gap: 0.4rem; padding: 1.1rem 1.2rem; border-radius: 4px; text-decoration: none; background: #141210; border: 1px solid rgba(201,169,97,0.16); border-top: 3px solid var(--wr-gold); transition: transform .2s ease, background .2s ease; }
-    .wr-pick:hover { transform: translateY(-3px); background: #1b1813; }
-    .wr-pick-date { font-family: 'Cinzel', serif; font-size: 0.55rem; letter-spacing: 0.14em; text-transform: uppercase; color: #a08a4e; }
-    .wr-pick-title { font-family: 'Playfair Display', Georgia, serif; font-size: 1.05rem; line-height: 1.2; color: #f5e6c8; }
-
-
     /* ============================================================
        RESPONSIVE
        ============================================================ */
-    @media (max-width: 900px) { .wr-top { grid-template-columns: 1fr; } }
-    @media (max-width: 767px) {
-      .cat-rail { display: none; }
-      .cat-accordion { display: block; }
+    @media (max-width: 900px) {
+      .wr-top { grid-template-columns: 1fr; }
+      .home-picks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
+    @media (max-width: 720px) {
+      .home-shell :global(.home-doctrines) { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.6rem 1.4rem 1.3rem; }
+      .home-shell :global(.home-doctrines .series-card-foot) {
+        align-items: flex-start; border-top: 1px solid rgba(212, 175, 55, 0.2); padding-top: 0.85rem;
+      }
+    }
+    @media (max-width: 640px) { .home-picks { grid-template-columns: 1fr; } }
     @media (max-width: 600px) {
-      .rail-shell, .wr-container { padding: 0 1.25rem; }
-      .rail-section, .wr-section { padding: 2.5rem 0 3rem; }
+      .home-shell, .wr-container { padding: 0 1rem; }
+      .wr-section { padding: 2.5rem 0 3rem; }
+      .home-group summary { padding: 0.9rem 1rem; }
+      .home-group-list { padding: 0 1rem 0.5rem; }
     }
   </style>
 

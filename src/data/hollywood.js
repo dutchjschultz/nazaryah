@@ -1,4 +1,9 @@
-// src/data/hollywood.js  ·  0928 V6
+// src/data/hollywood.js  ·  1011 V7
+// V7: reels carry an optional `date` (ISO YYYY-MM-DD, the day the reel went
+// live) — the homepage Last 30 Days reads it. Set on the four Swarm reels
+// published 0928; older reels predate the window and carry none. Give every new
+// reel a date. A reel may also carry `featured`/`featuredAt`/`skin` (homepage
+// Featured Picks — see src/lib/home-pieces.js).
 // V6: The Signature in the Swarm rebuilt — new hub copy, Named at Ekron
 // rewritten, four new entries (Exorcist II, Amityville, The Green Mile,
 // Hereditary), five in film-date order. They Made Him a Face moves to The Craft
@@ -20,7 +25,7 @@
 // links to a studio page listing them). The Craft / Stars cards are each a
 // single reel (the card links straight to the study).
 //
-// TO PUBLISH: set status: "live" and confirm href. Nothing else.
+// TO PUBLISH: set status: "live", confirm href, and set date.
 
 export const categories = [
   {
@@ -103,6 +108,7 @@ export const categories = [
             verses: "Exod 10:12-19; Rev 9:3-11; Isa 45:5-7; Deut 18:10-12",
             href: "/hollywood/swarm/the-devil-was-the-swarm",
             status: "live",
+            date: "2026-09-28",
             associations: ["foreign-fire"],
           },
           {
@@ -114,6 +120,7 @@ export const categories = [
             verses: "Lev 14:33-45; Acts 19:13-16; Jas 4:7",
             href: "/hollywood/swarm/the-room-that-filled",
             status: "live",
+            date: "2026-09-28",
             associations: ["foreign-fire"],
           },
           {
@@ -125,6 +132,7 @@ export const categories = [
             verses: "1 John 3:4; Lev 16:21-22; Deut 18:10-12; Exod 8:31; Isa 43:11",
             href: "/hollywood/swarm/out-of-his-mouth",
             status: "live",
+            date: "2026-09-28",
             associations: ["foreign-fire"],
           },
           {
@@ -136,6 +144,7 @@ export const categories = [
             verses: "Ezek 18:20; Deut 18:10-12; 1 Chr 10:13-14",
             href: "/hollywood/swarm/where-the-flies-gather",
             status: "live",
+            date: "2026-09-28",
             associations: ["foreign-fire"],
           },
         ],

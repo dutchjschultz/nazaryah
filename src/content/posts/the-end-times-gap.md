@@ -17,7 +17,7 @@ tags:
   - "Millennium"
   - "Scofield"
   - "End Times Gap"
-featured: true
+featured: false
 draft: false
 investigation: "the-end-times-gap"
 nucleusClaim: "Nearly all of it is still ahead of us."

@@ -1,4 +1,6 @@
-// edited-after-the-cross 1010 V2.js
+// edited-after-the-cross 1011 V3.js
+// V3: live entries carry `date` (ISO YYYY-MM-DD, the day the page went live) for
+// the homepage Last 30 Days; optional `featured`/`featuredAt`/`skin` as on posts.
 // V2: master list added, ten tags. Every planned verse pair is an entry (status
 // "coming" until its page is written); new `contrast` field is the short
 // difference shown in the list. Two new pages live: Genesis 11:10–26 and
@@ -19,7 +21,7 @@
 //    (the master-list order). Verse pages' prev/next run in Scripture order.
 //  - `slug`: book name and reference, hyphenated, lower case (psalm-22-16).
 //  - `tag`: one of TAGS below, character for character.
-//  - Live pages: title, deck, description, sideBySide, sections, bottomLine,
+//  - Live pages: date (YYYY-MM-DD it went live), title, deck, description, sideBySide, sections, bottomLine,
 //    digDeeper. `deck` is the short card line; `description` is the long
 //    meta/search line.
 //  - sideBySide: lxx / mt panels { label, note, text }; nt is null unless the NT
@@ -59,6 +61,7 @@ export const TAG_NOTES = {
 export const verses = [
   {
     slug: 'psalm-22-16',
+    date: '2026-10-10',
     reference: 'Psalm 22:16',
     ntReference: 'Luke 24:39; John 20:25, 27', // fulfillment, not a direct quote
     contrast: 'They pierced vs. like a lion',
@@ -200,6 +203,7 @@ export const verses = [
   { slug: "proverbs-8-22", reference: "Proverbs 8:22", ntReference: null, contrast: "Created me vs. possessed me", tag: "Doctrine shifted", status: "coming" },
   {
     slug: 'deuteronomy-32-43',
+    date: '2026-10-11',
     reference: 'Deuteronomy 32:43',
     ntReference: 'Hebrews 1:6',
     contrast: 'Let all the angels of Elohim worship him (line missing)',
@@ -316,6 +320,7 @@ export const verses = [
   { slug: "genesis-5", reference: "Genesis 5", ntReference: null, contrast: "Ages before the flood run centuries longer", tag: "Numbers changed", status: "coming" },
   {
     slug: 'genesis-11-10-26',
+    date: '2026-10-11',
     reference: 'Genesis 11:10–26',
     ntReference: 'Luke 3:36; Hebrews 7:1–3, 17',
     contrast: 'Shem outlives Abraham vs. dies centuries before him',

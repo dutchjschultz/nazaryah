@@ -16,7 +16,7 @@ tags:
   - "New Covenant"
   - "Temple"
   - "Living Temple"
-featured: true
+featured: false
 draft: false
 investigation: "the-living-temple"
 nucleusClaim: "The Law of Moses was abolished at the cross."

@@ -1,5 +1,7 @@
 ---
-// Footer.astro · 1010 V2 — the About / Contact line under the columns reads
+// Footer.astro · 1011 V3 — Resources now point at the Berean Studies shelves
+// (Studies, Pe’ah, Trilogies, Collections) instead of the three old ?category=
+// blog links. V2: the About / Contact line under the columns reads
 // utilityNav from src/data/nav.js (one data file for every menu).
 import { utilityNav } from '../data/nav.js';
 const currentYear = new Date().getFullYear();
@@ -49,18 +51,23 @@ const currentYear = new Date().getFullYear();
         </h3>
         <ul class="space-y-1.5 text-sm" style="font-family: var(--font-body);">
           <li>
-            <a href="/blog?category=exegetical" class="inline-flex items-center gap-1">
-              <span>Exegetical Studies</span>
+            <a href="/blog/topics" class="inline-flex items-center gap-1">
+              <span>Studies</span>
             </a>
           </li>
           <li>
-            <a href="/blog?category=theological" class="inline-flex items-center gap-1">
-              <span>Theological Themes</span>
+            <a href="/peah" class="inline-flex items-center gap-1">
+              <span>Pe’ah</span>
             </a>
           </li>
           <li>
-            <a href="/blog?category=historical" class="inline-flex items-center gap-1">
-              <span>Historical Context</span>
+            <a href="/trilogies" class="inline-flex items-center gap-1">
+              <span>Trilogies</span>
+            </a>
+          </li>
+          <li>
+            <a href="/blog/collections" class="inline-flex items-center gap-1">
+              <span>Collections</span>
             </a>
           </li>
         </ul>

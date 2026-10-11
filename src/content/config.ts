@@ -1,4 +1,9 @@
-// content config 1010 V22
+// content config 1011 V23
+// V23: posts and peah gain the homepage Featured Picks fields — `featured`
+// (true = a pick), `featuredAt` (the date Dutch named it, NOT the publish date;
+// newest first, six shown) and `skin` (a series-skins.js key forcing the card's
+// look when the folder does not say the series). Posts already had `featured`
+// (unused); its 12 stale `true`s were set false so only named picks count.
 // V22: new `hebrew` collection (src/content/hebrew) for long-form Hebrew-section
 // studies; first entry letters-moses-wrote, served at /hebrew/letters-moses-wrote.
 // V21: category enum — adds 'The Way In and the Walk' (the new topic group,
@@ -159,6 +164,8 @@ const postsCollection = defineCollection({
     // ROUTE — the exact URL, for a study that IS a section page (e.g. "/cosmology").
     // Takes precedence over `home`. See src/lib/post-href.js.
     route: z.string().regex(/^\/[a-z0-9-]+(\/[a-z0-9-]+)*$/).optional(),
+    // `featured` predates V23 (an unused flag; the 12 stale `true`s were set false
+    // 1011). It now means a homepage Featured Pick — see the block further down.
     featured: z.boolean().default(false),
     draft: z.boolean().default(false),
     references: z.array(referenceSchema).optional(),
@@ -240,6 +247,12 @@ const postsCollection = defineCollection({
     ogTitle: z.string().optional(),
     ogDescription: z.string().optional(),
     ogImage: z.string().optional(),
+    // HOMEPAGE FEATURED PICKS (index.astro, src/lib/home-pieces.js). `featured`
+    // marks a pick; `featuredAt` is the day Dutch named it (orders the six seats
+    // and decides which pick is bumped). `skin` forces a series skin by its key
+    // in src/data/series-skins.js; an unknown key fails the build.
+    featuredAt: z.coerce.date().optional(),
+    skin: z.string().optional(),
   }),
 });
 
@@ -339,6 +352,13 @@ const peahCollection = defineCollection({
     verses: z.string().optional(),         // the "Verses:" line at the foot
     date: z.coerce.date(),
     draft: z.boolean().optional(),
+    // HOMEPAGE FEATURED PICKS (index.astro, src/lib/home-pieces.js). `featured`
+    // marks a pick; `featuredAt` is the day Dutch named it (orders the six seats
+    // and decides which pick is bumped). `skin` forces a series skin by its key
+    // in src/data/series-skins.js; an unknown key fails the build.
+    featured: z.boolean().optional(),
+    featuredAt: z.coerce.date().optional(),
+    skin: z.string().optional(),
   }),
 });
 
