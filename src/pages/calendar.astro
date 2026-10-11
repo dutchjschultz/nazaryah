@@ -1,6 +1,10 @@
 ---
+// calendar.astro · 1011 — Feast Day Hero Brief 1011 V2: the full FeastHero
+// leads the page on a feast day (the "Today is" card steps aside), and "The
+// heavens say" follows the dawn rule (src/lib/dawn.js) like the heroes.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import MoedCountdown from '../components/MoedCountdown.jsx';
+import FeastHero from '../components/FeastHero.jsx';
 import { toScriptural } from '../lib/scriptural-date.js';
 import { avivOneDate, romanDate } from '../lib/moedim.js';
 
@@ -17,6 +21,9 @@ const avivOneRoman = romanDate(avivOne);
   description="The mo'edim of the Father — set into the sun, the moon, and the stars on day four of creation, written in the heavens for every believer to see."
 >
   <main class="cal-landing">
+
+    <!-- Feast mode: renders only on a feast day, first thing on the page. -->
+    <FeastHero client:load variant="full" />
 
     <!-- ──────────────── TEASER BANNER ──────────────── -->
     <a href="/calendar/today" class="today-banner">
@@ -48,7 +55,7 @@ const avivOneRoman = romanDate(avivOne);
          client:load, not a build-time render: the site is static, so a
          countdown baked at deploy is wrong the next morning. -->
     <section class="cal-moed" aria-label="The next appointed time">
-      <MoedCountdown client:load />
+      <MoedCountdown client:load hideWhenActive />
     </section>
 
     <!-- ──────────────── HERO ──────────────── -->
@@ -214,6 +221,7 @@ const avivOneRoman = romanDate(avivOne);
 <script>
 import { toScriptural, scripturalLabel } from '../lib/scriptural-date.js';
 import { dayLabel } from '../lib/moedim.js';
+import { currentMoment, guessCoords, resolveCoords, biblicalDay } from '../lib/dawn.js';
 
 (function() {
   'use strict';
@@ -222,7 +230,11 @@ import { dayLabel } from '../lib/moedim.js';
   var monthNames = ['January','February','March','April','May','June',
                     'July','August','September','October','November','December'];
 
-  var today = new Date();
+  // The phone's side is the phone's date. The heavens' side is the biblical
+  // day, which begins at dawn (src/lib/dawn.js) — before dawn it is still
+  // yesterday there. ?date= is the testing override.
+  var today = currentMoment();
+  var heavensDay = biblicalDay(today, guessCoords());
   var dayName = dayNames[today.getDay()];
   var romanDate = monthNames[today.getMonth()] + ' ' + today.getDate();
 
@@ -232,8 +244,9 @@ import { dayLabel } from '../lib/moedim.js';
   // One source of truth. The table used to be pasted here and in
   // /calendar/today; both now import it from src/lib/scriptural-date.js, and
   // so does the moed countdown, so the three cannot drift apart.
-  var todayScriptural = toScriptural(today);
-  var yahsLabel = scripturalLabel(today) || '\u2014';
+  function paintHeavens(day) {
+  var todayScriptural = toScriptural(day);
+  var yahsLabel = scripturalLabel(day) || '\u2014';
 
   // New Moon on day 1, Sabbath on the 8th/15th/22nd/29th, nothing otherwise.
   var bannerDayLabel = todayScriptural ? dayLabel(todayScriptural.day) : null;
@@ -245,6 +258,10 @@ import { dayLabel } from '../lib/moedim.js';
 
   var yahsEl = document.getElementById('banner-yahs-date');
   if (yahsEl) yahsEl.textContent = yahsLabel;
+  }
+  paintHeavens(heavensDay);
+  // A visitor who has already granted location gets their own dawn.
+  resolveCoords().then(function (c) { if (c) paintHeavens(biblicalDay(today, c)); });
 })();
 </script>
 

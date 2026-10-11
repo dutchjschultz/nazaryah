@@ -1,5 +1,7 @@
 ---
-// src/pages/index.astro · 1011 V16
+// src/pages/index.astro · 1011 V17
+// V17: the slim FeastHero leads the page on a feast day (Feast Day Hero Brief
+// 1011 V2); nothing renders on other days.
 // V16: the page centers on new work (Homepage Featured and Recent Spec 1011 V2).
 // The six-tab rail is gone — its card looks now live in src/data/series-skins.js
 // and render through SeriesCard — and so is the old five-link Featured Picks
@@ -49,6 +51,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SeriesCard from '../components/SeriesCard.astro';
+import FeastHero from '../components/FeastHero.jsx';
 import WatchmanCard from '../components/WatchmanCard.astro';
 import { featuredEntries } from '../data/watchmans-desk.js';
 import { SKINS } from '../data/series-skins.js';
@@ -95,6 +98,10 @@ const recent = recentGroups(pieces, picks);
   title="Nazaryah - Biblical Studies with Scholarly Integrity"
   description="Explore Scripture through original languages, fresh perspectives, and rich historical context. A modern biblical studies platform for serious learners."
 >
+  <!-- Feast mode (Feast Day Hero Brief 1011 V2): the slim hero, first on the
+       page, on a feast day only. On any other day it renders nothing. -->
+  <FeastHero client:load variant="slim" />
+
   <!-- Hero Section -->
   <section class="hero-section relative overflow-hidden">
     <!-- Subtle grid texture overlay -->

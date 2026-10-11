@@ -1,5 +1,8 @@
-// moedim 0908 V3.js
-// FIFTY_COUNT_INCLUSIVE set true — the morrow is day one of the fifty.
+// moedim 1011 V4.js
+// V4: Shemini Atzeret added (month 7, day 22 — the eighth day, Leviticus 23:36), and
+// moedOccurrences() split out of nextMoed() so the feast hero can see every moed
+// in progress on a day (Bikkurim inside Hag HaMatzot). nextMoed's answers are unchanged.
+// V3: FIFTY_COUNT_INCLUSIVE set true — the morrow is day one of the fifty.
 
 /*
   ────────────────────────────────────────────────────────────────────────────
@@ -55,7 +58,7 @@ export function isSabbath(day) {
   return SABBATH_DAYS.includes(day);
 }
 
-/* ──────────────────────────── 2. THE SEVEN MOEDIM ───────────────────────── */
+/* ──────────────────────────── 2. THE MOEDIM ──────────────────────────────── */
 
 /* `days` is the length of the observance. Bikkurim sits inside the week of
    Hag HaMatzot and is listed separately because it carries its own command.
@@ -69,6 +72,7 @@ export const MOEDIM = [
   { key: 'yom-teruah',   name: 'Yom Teruah',   month: 7, day: 1,  days: 1 },
   { key: 'yom-kippur',   name: 'Yom Kippur',   month: 7, day: 10, days: 1 },
   { key: 'sukkot',       name: 'Sukkot',       month: 7, day: 15, days: 7 },
+  { key: 'shemini-atzeret', name: 'Shemini Atzeret', month: 7, day: 22, days: 1 },
 ];
 
 /* ─────────────────────── 3. FINDING A SCRIPTURAL DATE ───────────────────── */
@@ -164,9 +168,8 @@ export function shavuotDate(toScriptural, from = new Date()) {
   Multi-day feasts win over a nearer upcoming one, so Sukkot day 4 shows as
   in-progress rather than counting down to something after it.
 */
-export function nextMoed(toScriptural, now = new Date()) {
+export function moedOccurrences(toScriptural, now = new Date()) {
   const today = atNoon(now);
-  const scriptural = toScriptural(today) || null;
   const occurrences = [];
 
   for (const m of MOEDIM) {
@@ -200,6 +203,13 @@ export function nextMoed(toScriptural, now = new Date()) {
       dayOf: offset <= 0 ? daysBetween(start, today) + 1 : null,
     });
   }
+  return occurrences;
+}
+
+export function nextMoed(toScriptural, now = new Date()) {
+  const today = atNoon(now);
+  const scriptural = toScriptural(today) || null;
+  const occurrences = moedOccurrences(toScriptural, now);
 
   /*
     Nothing ahead. This is the normal condition from the close of Sukkot

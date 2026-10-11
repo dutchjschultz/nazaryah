@@ -1,0 +1,143 @@
+/* FeastHero 1011 V1.css
+   The feast-day hero. Same palette as the moed card (MoedCountdown.css) — dark
+   warm panel, gold border, gold feast name, small-caps tracked labels — larger,
+   with a soft gold glow so it reads as the day's headline. The full variant
+   sits on /calendar; the slim one on the homepage, short enough that the
+   homepage banner stays in view beneath it on a laptop. Global, not scoped:
+   this is a React island. Every class carries the fh- / feast-hero prefix. */
+
+.feast-hero {
+  --fh-gold:  #D4A14A;
+  --fh-gold-bright: #f0c450;
+  --fh-text:  #F4ECDB;
+  --fh-muted: #b8a584;
+  --fh-panel: #1d150e;
+  box-sizing: border-box;
+  width: 100%;
+  background: radial-gradient(ellipse at 50% 0%, rgba(212, 161, 74, 0.16), transparent 65%), var(--fh-panel);
+  border: 1px solid var(--fh-gold);
+  border-radius: 8px;
+  box-shadow: 0 0 0 1px rgba(212, 161, 74, 0.18), 0 0 38px rgba(212, 161, 74, 0.22);
+  color: var(--fh-text);
+  text-align: center;
+}
+.fh-inner { max-width: 44rem; margin: 0 auto; }
+
+.fh-label {
+  margin: 0 0 0.6rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  color: var(--fh-muted);
+}
+.fh-name {
+  margin: 0;
+  font-family: 'Cinzel', Georgia, serif;
+  font-weight: 700;
+  line-height: 1.1;
+  color: var(--fh-gold-bright);
+  text-shadow: 0 0 22px rgba(240, 196, 80, 0.35);
+}
+.fh-day {
+  margin: 0.55rem 0 0;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fh-gold);
+}
+.fh-cal { margin: 1rem 0 0; }
+.fh-cal-line {
+  margin: 0;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  color: var(--fh-text);
+}
+.fh-greg { margin: 0.2rem 0 0; font-family: var(--font-family-serif, 'Crimson Text', Georgia, serif); font-size: 1rem; color: var(--fh-muted); }
+
+.fh-verse { margin: 1.3rem auto 0; padding: 0; max-width: 38rem; }
+.fh-verse p {
+  margin: 0;
+  font-family: var(--font-family-serif, 'Crimson Text', Georgia, serif);
+  font-style: italic;
+  line-height: 1.6;
+  color: var(--fh-text);
+  overflow-wrap: break-word;
+}
+.fh-verse cite {
+  display: block;
+  margin-top: 0.5rem;
+  font-style: normal;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  font-variant: small-caps;
+  color: var(--fh-gold);
+}
+
+.fh-shofar { margin: 1.2rem 0 0; }
+.fh-shofar-btn {
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.78rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fh-gold-bright);
+  background: transparent;
+  border: 1px solid var(--fh-gold);
+  border-radius: 999px;
+  padding: 0.65rem 1.4rem;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s;
+}
+.fh-shofar-btn:hover:not(:disabled) { background: rgba(212, 161, 74, 0.16); }
+.fh-shofar-btn:focus-visible { outline: 2px solid var(--fh-gold-bright); outline-offset: 3px; }
+.fh-shofar-btn:disabled { cursor: default; opacity: 0.75; }
+
+.fh-study, .fh-both {
+  display: inline-block;
+  margin-top: 1.1rem;
+  font-family: 'Cinzel', Georgia, serif;
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--fh-gold);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(212, 161, 74, 0.45);
+  padding-bottom: 2px;
+}
+.fh-study:hover, .fh-both:hover { color: var(--fh-gold-bright); border-bottom-color: var(--fh-gold-bright); }
+.fh-next {
+  margin: 1.1rem 0 0;
+  font-family: var(--font-family-serif, 'Crimson Text', Georgia, serif);
+  font-size: 1rem;
+  color: var(--fh-muted);
+}
+
+/* Full — the day's headline on /calendar. */
+.feast-hero--full { padding: 2.4rem 2rem 2.2rem; margin: 0 0 2rem; }
+.feast-hero--full .fh-name { font-size: clamp(2.4rem, 1.6rem + 3.6vw, 3.8rem); }
+.feast-hero--full .fh-verse p { font-size: 1.2rem; }
+
+/* Slim — the homepage, above the banner. */
+.fh-slim-wrap { max-width: 80rem; margin: 1rem auto 0.4rem; padding: 0 1.5rem; box-sizing: border-box; }
+@media (max-width: 720px) { .fh-slim-wrap { padding: 0 1rem; } }
+.feast-hero--slim { padding: 1.3rem 1.25rem 1.2rem; }
+.feast-hero--slim .fh-label { margin-bottom: 0.35rem; font-size: 0.7rem; }
+.feast-hero--slim .fh-name { font-size: clamp(1.7rem, 1.3rem + 1.8vw, 2.4rem); }
+.feast-hero--slim .fh-verse { margin-top: 0.8rem; }
+.feast-hero--slim .fh-verse p { font-size: 1.02rem; }
+.feast-hero--slim .fh-shofar { margin-top: 0.8rem; }
+.feast-hero--slim .fh-next { margin-top: 0.7rem; font-size: 0.95rem; }
+.feast-hero--slim .fh-both { margin-top: 0.7rem; }
+
+@media (max-width: 600px) {
+  .feast-hero--full { padding: 1.8rem 1.1rem 1.7rem; }
+  .feast-hero--full .fh-verse p { font-size: 1.08rem; }
+  .feast-hero--slim { padding: 1.1rem 1rem 1rem; }
+}

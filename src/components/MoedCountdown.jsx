@@ -1,4 +1,9 @@
-// MoedCountdown 0908 V2.jsx
+// MoedCountdown 1011 V3.jsx
+// V3 (Feast Day Hero Brief 1011 V2): the day rolls at dawn, not midnight — the
+// card asks src/lib/dawn.js which biblical day it is (same rule as the feast
+// heroes and both banners; ?date= override honoured), and re-checks every
+// minute. New prop hideWhenActive: on /calendar the full FeastHero replaces this
+// card on a feast day, so the card steps aside while a moed is here.
 // V2: the two statuses moedim V3 added.
 //
 // 'watching' — the stretch between the close of Sukkot and the confirming of
@@ -19,6 +24,7 @@
 import { useState, useEffect } from 'react';
 import { nextMoed, countdownText, romanDate, dayLabel } from '../lib/moedim.js';
 import { toScriptural as siteToScriptural } from '../lib/scriptural-date.js';
+import { currentMoment, guessCoords, resolveCoords, biblicalDay } from '../lib/dawn.js';
 import './MoedCountdown.css';
 
 /*
@@ -35,15 +41,19 @@ import './MoedCountdown.css';
   which is what the contract in moedim.js actually asks for. The prop is kept
   as an optional override so a test can inject a different adapter.
 */
-export default function MoedCountdown({ toScriptural = siteToScriptural }) {
+export default function MoedCountdown({ toScriptural = siteToScriptural, hideWhenActive = false }) {
   const [now, setNow] = useState(null);
 
   useEffect(() => {
-    setNow(new Date());
-    /* Re-check hourly so the card rolls over on its own if a tab is left
-       open across the day boundary. */
-    const id = setInterval(() => setNow(new Date()), 3600 * 1000);
-    return () => clearInterval(id);
+    /* `now` is the biblical day (dawn to dawn), not the phone's date. Re-check
+       every minute so the card rolls over at dawn if a tab is left open. */
+    let alive = true;
+    let coords = guessCoords();
+    const tick = () => alive && setNow(biblicalDay(currentMoment(), coords));
+    tick();
+    resolveCoords().then((c) => { if (c) { coords = c; tick(); } });
+    const id = setInterval(tick, 60 * 1000);
+    return () => { alive = false; clearInterval(id); };
   }, []);
 
   /* Render nothing until the client knows the date. Rendering a server-time
@@ -59,6 +69,8 @@ export default function MoedCountdown({ toScriptural = siteToScriptural }) {
   const today = moed.scriptural || toScriptural(now);
   const label = today ? dayLabel(today.day) : null;
   const active = moed.status === 'today' || moed.status === 'during';
+  // The full FeastHero is showing in this card's place.
+  if (hideWhenActive && active) return null;
 
   // The year's appointed times are behind us and the next ones cannot be named
   // until the heavens give the ruling. The card rests rather than vanishing.

@@ -1,4 +1,6 @@
 ---
+// calendar/today.astro · 1011 — the Yahuah side follows the dawn rule
+// (src/lib/dawn.js), the same reckoning as /calendar and the feast heroes.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 ---
 
@@ -98,6 +100,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 <script>
 import { toScriptural, scripturalLabel, agriMarker } from '../../lib/scriptural-date.js';
 import { dayLabel } from '../../lib/moedim.js';
+import { currentMoment, guessCoords, resolveCoords, biblicalDay } from '../../lib/dawn.js';
 
 (function() {
   'use strict';
@@ -127,8 +130,8 @@ import { dayLabel } from '../../lib/moedim.js';
     { name: 'December',  descriptor: 'Decem — Latin for "ten"',               link: '/calendar/pagan-gods/december-ten' }
   ];
 
-  // ── Roman side ──
-  var today = new Date();
+  // ── Roman side ── (the phone's date; ?date= is the testing override)
+  var today = currentMoment();
   var dayInfo = DAY_LOOKUP[today.getDay()];
   var monthInfo = MONTH_LOOKUP[today.getMonth()];
   var dayOfMonth = today.getDate();
@@ -157,12 +160,14 @@ import { dayLabel } from '../../lib/moedim.js';
   // One source of truth: the same toScriptural() the countdown and the other
   // banner use. If this page and the countdown ever disagreed, a feast day
   // would be wrong and nobody would notice, so neither of them owns a table.
-  var scripturalToday = toScriptural(today);
+  // The biblical day begins at dawn: before dawn it is still yesterday here.
+  function paintYahs(day) {
+  var scripturalToday = toScriptural(day);
 
   document.getElementById('yahs-today-date').textContent =
-    scripturalLabel(today) || 'Before Aviv 1';
+    scripturalLabel(day) || 'Before Aviv 1';
   document.getElementById('yahs-today-marker').textContent =
-    agriMarker(today) || 'Awaiting year start';
+    agriMarker(day) || 'Awaiting year start';
 
   var dayLabelEl = document.getElementById('yahs-today-daylabel');
   if (dayLabelEl) {
@@ -170,6 +175,9 @@ import { dayLabel } from '../../lib/moedim.js';
     dayLabelEl.textContent = label || '';
     dayLabelEl.hidden = !label;
   }
+  }
+  paintYahs(biblicalDay(today, guessCoords()));
+  resolveCoords().then(function (c) { if (c) paintYahs(biblicalDay(today, c)); });
 })();
 </script>
 
