@@ -1,5 +1,8 @@
 ---
-// src/pages/edited-after-the-cross/index.astro · 1010 V3
+// src/pages/edited-after-the-cross/index.astro · 1011 V4
+// V4 (Septuagint Apostles Filter 1011 V1): above The Verses, the count of times
+// the apostles quoted the older Greek / the Hebrew (from ntUse); a first chip,
+// "Apostles quoted the Greek (n)", filtering ntUse greek across the groups.
 // V3: master list + ten tags (Etsy Septuagint Master List 1010 V2). How to Read
 // lists all ten tags with their one-line notes. The Verses is now every planned
 // pair, grouped under the ten tags in TAGS order (file order within a group),
@@ -18,6 +21,9 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import { verses, TAGS, TAG_NOTES } from '../../data/edited-after-the-cross.js';
 
 const tagSlug = (t: string) => t.toLowerCase().replace(/\s+/g, '-');
+// How often the apostles quoted each text (ntUse in the data file).
+const greekCount = verses.filter((v) => v.ntUse === 'greek').length;
+const hebrewCount = verses.filter((v) => v.ntUse === 'hebrew').length;
 const groups = TAGS.map((t) => {
   const items = verses.filter((v) => v.tag === t);
   return { tag: t, items, live: items.filter((v) => v.status === 'live').length };
@@ -118,11 +124,18 @@ const cards = [
       </ul>
     </section>
 
+    <div class="eac-col eac-tally">
+      <p class="eac-tally-line"><strong>{greekCount}</strong> times the apostles quoted the older Greek wording where the later Hebrew reads differently.</p>
+      <p class="eac-tally-line"><strong>{hebrewCount}</strong> times they quoted the Hebrew.</p>
+      <p class="eac-tally-note"><em>Every one of them is on its own page below.</em></p>
+    </div>
+
     <section class="eac-col eac-section" id="verses">
       <h2 class="eac-h2">The Verses</h2>
       <p>This list holds every verse pair planned for the section, {verses.length} in all, sorted under the ten tags. Each pair shows the Old Testament reference, the New Testament verse that quotes it where there is one, and the difference in a few words. The reading of the older Greek text comes first; the later Hebrew follows “vs.” Pairs with a page open it; the rest are marked coming.</p>
       <div class="eac-filter" role="group" aria-label="Filter verses by tag" data-pagefind-ignore>
         <button type="button" class="eac-chip eac-chip--btn" aria-pressed="true" data-tag="all">All</button>
+        <button type="button" class="eac-chip eac-chip--btn eac-chip--greek" aria-pressed="false" data-tag="apostles-greek">Apostles quoted the Greek ({greekCount})</button>
         {TAGS.map((t) => (
           <button type="button" class="eac-chip eac-chip--btn" aria-pressed="false" data-tag={tagSlug(t)}>{t}</button>
         ))}
@@ -148,7 +161,7 @@ const cards = [
                 </>
               );
               return (
-                <li data-live={v.status === 'live' ? 'true' : 'false'}>
+                <li data-live={v.status === 'live' ? 'true' : 'false'} data-ntuse={v.ntUse ?? ''}>
                   {v.status === 'live' ? (
                     <a href={`/edited-after-the-cross/${v.slug}`} class="eac-verse">{inner}</a>
                   ) : (
@@ -171,6 +184,8 @@ const cards = [
 </BaseLayout>
 
 <script>
+  // "Apostles quoted the Greek" keeps only ntUse greek entries, across groups; it
+  // and the tag chips clear each other (one chip at a time).
   // Tag chips pick one group (or all); Live only hides the coming entries. A
   // group with nothing left to show hides with its heading. ?tag=<slug> (from a
   // verse page's chip) preselects one.
@@ -183,17 +198,19 @@ const cards = [
   function apply() {
     chips.forEach((c) => c.setAttribute('aria-pressed', String(c.dataset.tag === tag)));
     toggle?.setAttribute('aria-pressed', String(liveOnly));
+    const greek = tag === 'apostles-greek';
     let shown = 0;
     groups.forEach((g) => {
       let n = 0;
       g.querySelectorAll<HTMLElement>('li').forEach((li) => {
-        const on = !liveOnly || li.dataset.live === 'true';
+        const on = (!liveOnly || li.dataset.live === 'true') && (!greek || li.dataset.ntuse === 'greek');
         li.hidden = !on;
         if (on) n++;
       });
+      // The Greek chip cuts across groups, so a group's count is what it shows.
       const count = g.querySelector<HTMLElement>('.eac-count');
-      if (count) count.textContent = `(${liveOnly ? count.dataset.live : count.dataset.total})`;
-      const on = (tag === 'all' || g.dataset.tag === tag) && n > 0;
+      if (count) count.textContent = `(${greek ? n : liveOnly ? count.dataset.live : count.dataset.total})`;
+      const on = (tag === 'all' || greek || g.dataset.tag === tag) && n > 0;
       g.hidden = !on;
       if (on) shown += n;
     });
@@ -275,6 +292,12 @@ const cards = [
   .eac-tag-key li { display: flex; align-items: baseline; gap: 0.8rem; flex-wrap: wrap; }
   .eac-tag-note { font-family: var(--font-body); font-size: 1.02rem; color: #cfc7b6; line-height: 1.5; flex: 1 1 14rem; }
 
+  .eac-tally { margin-bottom: 2.4rem; padding: 1.4rem 0 0.4rem; border-top: 1px solid rgba(186,117,23,0.35); }
+  .eac-col .eac-tally-line { font-family: var(--font-body); font-size: 1.25rem; line-height: 1.55; color: #ddd5c3; margin: 0 0 0.6rem; }
+  .eac-tally-line strong { font-family: var(--font-display); font-size: 2.2rem; font-weight: 700; color: #f0c450; margin-right: 0.35rem; vertical-align: -0.12em; }
+  .eac-col .eac-tally-note { font-size: 1.02rem; color: #a89f8c; margin: 0.9rem 0 0; }
+  .eac-tally-note em { font-family: var(--font-family-serif); }
+  .eac-chip--greek { border-color: rgba(212,165,49,0.55); color: #e8c98a; }
   .eac-filter { display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 0 0 1.1rem; }
   .eac-chip--btn { cursor: pointer; color: #a89f8c; background: transparent; border-color: rgba(212,165,49,0.25); }
   .eac-chip--btn:hover { color: #e8c98a; border-color: rgba(212,165,49,0.5); }

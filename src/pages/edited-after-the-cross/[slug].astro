@@ -1,5 +1,7 @@
 ---
-// src/pages/edited-after-the-cross/[slug].astro · 1011 V3
+// src/pages/edited-after-the-cross/[slug].astro · 1011 V4
+// V4: a small gold line under the title and tag chip says how the NT uses the
+// verse, built from ntUse + ntReference (none on pages without ntUse).
 // V3: panels render from sideBySide.panels in order with their own labels (The
 // Older Text / The Later Text, The Hebrew / The Greek, Quoted in …, The
 // Samaritan Torah): the first two side by side, the rest full width beneath.
@@ -36,6 +38,15 @@ const tagSlug = v.tag.toLowerCase().replace(/\s+/g, '-');
 const BASE = '/edited-after-the-cross';
 const idOf = (h: string) => h.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const sections = v.sections.map((sec) => ({ ...sec, id: idOf(sec.heading) }));
+// The NT-use line under the title (ntUse in the data file); none without ntUse.
+const NT_LINE = {
+  greek: (r) => `Quoted by the apostles in ${r}, in the older Greek wording`,
+  hebrew: (r) => `Quoted by the apostles in ${r}, in the Hebrew wording`,
+  fulfilled: (r) => `Fulfilled in ${r}`,
+  named: () => 'Named in Luke 3:36', // Genesis 11 only — not its full ntReference
+  other: (r) => `Quoted in ${r}`,
+};
+const ntLine = v.ntUse ? NT_LINE[v.ntUse](v.ntReference) : null;
 ---
 
 <BaseLayout
@@ -48,6 +59,7 @@ const sections = v.sections.map((sec) => ({ ...sec, id: idOf(sec.heading) }));
       <p class="ev-ref" data-pagefind-weight="10">{v.reference}</p>
       <h1 class="ev-title">{v.title}</h1>
       <a class="ev-chip" href={`${BASE}/?tag=${tagSlug}#verses`} data-pagefind-ignore>{v.tag}</a>
+      {ntLine && <p class="ev-ntuse">{ntLine}</p>}
       <p class="ev-card-deck sr-only">{v.deck}</p>
     </header>
 
@@ -143,6 +155,10 @@ const sections = v.sections.map((sec) => ({ ...sec, id: idOf(sec.heading) }));
     border-radius: 999px; padding: 0.3rem 0.8rem;
   }
   .ev-chip:hover { background: rgba(186,117,23,0.25); }
+  .ev-ntuse {
+    margin: 0.9rem auto 0; max-width: 34rem; font-family: var(--font-display); font-size: 0.72rem;
+    font-weight: 600; letter-spacing: 0.1em; text-transform: uppercase; line-height: 1.6; color: #d8b06a;
+  }
 
   /* Side by Side — first thing the reader sees. */
   .ev-sbs { max-width: 60rem; margin: 0 auto 3.5rem; }
