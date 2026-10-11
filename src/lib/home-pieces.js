@@ -1,9 +1,12 @@
-// home-pieces 1011 V1.js
+// home-pieces 1011 V2.js
+// V2: Hebrew-section studies (the `hebrew` collection, /hebrew/<slug>) join the
+// pool; `featuredAt` keeps its time of day (Dutch orders picks to the minute —
+// "2026-10-11T14:06"), compared as a timestamp, not cut to the date.
 // V1: one pool of every piece that has its own page, for the homepage's two
 // new-work sections (Homepage Featured and Recent Spec 1011 V2). Replaces the
 // rotating board in featured-queue.js.
 //
-// Sources: posts, Pe'ah, the Watchman's Desk, Hollywood reels, Edited After the
+// Sources: posts, Hebrew studies, Pe'ah, the Watchman's Desk, Hollywood reels, Edited After the
 // Cross. A piece is { key, title, deck, href, date, section, skin, cta,
 // featured, featuredAt }; `date` is an ISO YYYY-MM-DD string or null.
 //
@@ -46,13 +49,14 @@ function piece({ key, title, deck, href, date, section, data = {}, cta }) {
     skin: skinOf(section, data.skin),
     cta: cta || SECTIONS[section].cta,
     featured: data.featured === true,
-    featuredAt: iso(data.featuredAt),
+    featuredAt: data.featuredAt ? new Date(data.featuredAt).getTime() : null,
   };
 }
 
 export async function homePieces() {
   const posts = await getCollection('posts', (p) => p.data.draft !== true && !p.data.unlisted && !p.data.companionOf);
   const peah = await getCollection('peah', (p) => p.data.draft !== true);
+  const hebrew = await getCollection('hebrew');
 
   const reels = [...studios.cards, ...(swarmEntries || []), ...craft.cards, ...stars.cards]
     .filter((r) => r.status === 'live' && r.href);
@@ -66,6 +70,15 @@ export async function homePieces() {
       date: p.data.date,
       section: sectionOfPost(p, groupOf(p.slug)),
       data: p.data,
+    })),
+    ...hebrew.map((h) => piece({
+      key: `hebrew:${h.slug}`,
+      title: h.data.title,
+      deck: h.data.subtitle,
+      href: `/hebrew/${h.slug}`,
+      date: h.data.date,
+      section: 'hebrew',
+      data: h.data,
     })),
     ...peah.map((p) => piece({
       key: `peah:${p.slug}`,
@@ -113,7 +126,7 @@ const newestFirst = (a, b) => (b.date ?? '').localeCompare(a.date ?? '') || a.ti
 export function featuredPicks(pieces) {
   return pieces
     .filter((p) => p.featured)
-    .sort((a, b) => (b.featuredAt ?? '').localeCompare(a.featuredAt ?? '') || newestFirst(a, b))
+    .sort((a, b) => (b.featuredAt ?? 0) - (a.featuredAt ?? 0) || newestFirst(a, b))
     .slice(0, FEATURED_SLOTS);
 }
 

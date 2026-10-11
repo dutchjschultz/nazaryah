@@ -6,7 +6,6 @@ verse: "Matthew 5-7"
 date: 2026-09-08
 author: "Nazaryah"
 category: "The Law Still Stands"
-featured: false
 draft: false
 epigraph:
   text: "To the law and to the testimony: if they speak not according to this word, it is because there is no light in them."
@@ -16,6 +15,9 @@ associations: []
 nucleusClaim: "The Sermon on the Mount is the founding charter of a new religion."
 nucleusSource: "Preached as the place where a softer covenant begins and the old one is left behind — the most quoted passage in the modern pulpit, and one of the least examined."
 nucleusQuestion: "What is the Sermon on the Mount actually made of? Not which parts are still binding — what was Yahushua quoting? Ten passages, and every one of them was already written."
+featured: true
+featuredAt: 2026-10-11T14:03
+skin: investigations
 ---
 
 ## The Claim

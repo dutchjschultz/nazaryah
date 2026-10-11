@@ -1,4 +1,5 @@
-// content config 1011 V23
+// content config 1011 V24
+// V24: `hebrew` gains optional date + featured/featuredAt/skin (homepage picks).
 // V23: posts and peah gain the homepage Featured Picks fields — `featured`
 // (true = a pick), `featuredAt` (the date Dutch named it, NOT the publish date;
 // newest first, six shown) and `skin` (a series-skins.js key forcing the card's
@@ -372,6 +373,11 @@ const hebrewCollection = defineCollection({
     subtitle: z.string().optional(),
     section: z.literal('hebrew'),
     version: z.string().optional(),
+    // Publish date (homepage Last 30 Days) and the Featured Picks fields, as on posts.
+    date: z.coerce.date().optional(),
+    featured: z.boolean().optional(),
+    featuredAt: z.coerce.date().optional(),
+    skin: z.string().optional(),
   }),
 });
 

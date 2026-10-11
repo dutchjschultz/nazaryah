@@ -1,4 +1,5 @@
-// series-skins 1011 V1.js
+// series-skins 1011 V2.js
+// V2: SECTIONS gains `hebrew` (Hebrew-section studies, /hebrew/<slug>).
 // V1: the homepage rail's card looks, extracted before the rail was removed
 // (Homepage Featured and Recent Spec 1011 V2). One skin per series; every
 // Featured Picks card wears the skin of the series its piece comes from, and
@@ -167,6 +168,7 @@ export const SECTIONS = {
   parables: { name: 'Parables', href: '/parables', skin: null, cta: 'Read the Parable' },
   'side-door': { name: 'The Side Door', href: '/blog/c/the-side-door', skin: null, cta: 'Read the Parable' },
   cosmology: { name: 'Cosmology', href: '/cosmology', skin: 'cosmology', cta: 'Read the Study' },
+  hebrew: { name: 'Hebrew Word Studies', href: '/hebrew', skin: 'hebrew', cta: 'Read the Study' },
   peah: { name: 'Pe’ah', href: '/peah', skin: null, cta: 'Read the Entry' },
   'watchmans-desk': { name: 'The Watchman’s Desk', href: '/watchmans-desk', skin: null, cta: 'Read the Letter' },
   hollywood: { name: 'Hollywood', href: '/hollywood', skin: 'hollywood', cta: 'Read the Reel' },

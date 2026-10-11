@@ -1,4 +1,5 @@
-// edited-after-the-cross 1011 V3.js
+// edited-after-the-cross 1011 V4.js
+// V4: Psalm 22:16 named a homepage Featured Pick (featuredAt 2026-10-11T14:04).
 // V3: live entries carry `date` (ISO YYYY-MM-DD, the day the page went live) for
 // the homepage Last 30 Days; optional `featured`/`featuredAt`/`skin` as on posts.
 // V2: master list added, ten tags. Every planned verse pair is an entry (status
@@ -62,6 +63,8 @@ export const verses = [
   {
     slug: 'psalm-22-16',
     date: '2026-10-10',
+    featured: true,
+    featuredAt: '2026-10-11T14:04',
     reference: 'Psalm 22:16',
     ntReference: 'Luke 24:39; John 20:25, 27', // fulfillment, not a direct quote
     contrast: 'They pierced vs. like a lion',

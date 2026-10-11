@@ -4,6 +4,10 @@ subtitle: "How the Hebrew Script Traveled from Sinai to Babylon, and What Was Lo
 slug: letters-moses-wrote
 section: hebrew
 version: "1010 V2"
+date: 2026-10-10
+featured: true
+featuredAt: 2026-10-11T14:06
+skin: hebrew
 ---
 
 ## A People of the Written Word {#written-word}

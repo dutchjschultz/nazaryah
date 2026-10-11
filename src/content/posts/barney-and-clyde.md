@@ -7,8 +7,9 @@ category: "Scripture Unfiltered"
 date: 2026-10-10
 author: "Nazaryah"
 associations: ["trinity-examined", "light-and-lamp", "how-yahuah-speaks"]
-featured: false
 draft: false
+featured: true
+featuredAt: 2026-10-11T14:05
 ---
 
 In the early days of human civilization, when people huddled around fires and marveled at lightning from a safe distance, there lived a humble man named Barney. He was known throughout his village as one who spoke truthfully and lived righteously, though he possessed no special education and no worldly wisdom.
