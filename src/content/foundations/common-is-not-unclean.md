@@ -79,6 +79,28 @@ In Greek that is koinon kai akatharton. If the two words meant the same thing, P
 
 That is what this sentence is doing here, and it is all it is doing here. What the vision meant, and what Peter said it meant, belong to the Acts 10 testimony.
 
+## The Torah Already Kept Two Lines Apart
+
+Peter did not invent the difference between common and unclean. The Torah drew two separate lines long before he spoke, and it told the priests to keep them apart.
+
+> And that ye may put difference between holy and unholy, and between unclean and clean.
+> 
+> — **Leviticus 10:10**
+
+That verse holds two pairs, not one. The first pair, holy and unholy, is about what belongs to the altar of Yahuah and what is ordinary. The Hebrew word for unholy is chol (H2455), and it means common in the plain sense: not set apart, everyday. The second pair, unclean and clean, is the line of Leviticus 11. A thing can be common and still clean. Most of the food on any table in Israel was exactly that.
+
+Deuteronomy 12 shows both lines working at the same table. Once Israel spread across the land, a family living far from the altar was allowed to kill an ox, a sheep, or a goat at home for an ordinary meal (Deuteronomy 12:20–21). That meat was never offered. It was common. And the verse that follows says who may eat it.
+
+> Even as the roebuck and the hart is eaten, so thou shalt eat them: the unclean and the clean shall eat of them alike.
+> 
+> — **Deuteronomy 12:22**
+
+The "unclean" in that verse is a person, not an animal. A man who had buried his father, for example, was ritually unclean for a time, and that state barred him from eating holy meat from the altar (Leviticus 7:20). But home-killed meat was not holy, so he could eat it with his family. The animal itself still had to be a clean kind, and the blood was still poured out on the ground (Deuteronomy 12:23–24). Deuteronomy 15:22 gives the same ruling for a blemished firstborn that could not go on the altar.
+
+Here is the whole matter in one passage. Common meat, from a clean animal, eaten by a person who might be unclean — and not one of those facts erased another. Common never meant unclean, and an unclean person at the table never made a pig into food. The Law kept every line in its place at the same meal.
+
+One honest note. The Greek Old Testament does not use koinos in Leviticus 10:10, so this is a match of categories, not of vocabulary. The point does not need the word to match. It needs only what the Torah plainly says: common and unclean were two different things from the beginning, and the passages quoted against Leviticus 11 are dealing with the first, not the second.
+
 ## What Did Change
 
 Something real did change in the book of Acts, and saying exactly what it was keeps anyone from having to overstate the case.

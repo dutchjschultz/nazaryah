@@ -1,4 +1,5 @@
-// blog-groups 1010 V39.js
+// blog-groups 1011 V40.js
+// V40: clean-and-unclean-at-the-same-table → the-law-and-the-feasts.
 // V39: two modern parables join THE SIDE DOOR (2 -> 4), category Scripture
 // Unfiltered: The Parable of Sinai Arcade (sinai-arcade) and The Adventures of
 // Barney and Clyde (barney-and-clyde). Barney moves from its standalone page
@@ -280,6 +281,7 @@ export const POST_GROUP = {
   'i-never-knew-you': 'the-law-and-the-feasts',
   'the-same-word-a-different-master': 'the-law-and-the-feasts',
   'the-pledge-and-the-bride': 'the-law-and-the-feasts',
+  'clean-and-unclean-at-the-same-table': 'the-law-and-the-feasts',
 
   // ── The Parables (12) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's

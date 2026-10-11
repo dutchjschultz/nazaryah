@@ -9,8 +9,8 @@
 //         'planned' — foundations only; listed so the architecture is visible
 
 export const meta = {
-  version: 9,
-  updated: '2026-10-05',
+  version: 10,
+  updated: '2026-10-11', // v10: F-10 V3 — one section added
 };
 
 export const SECTION = {
@@ -207,6 +207,10 @@ export const FOUNDATIONS = [
     deck: 'Two Greek words that look alike in English, and the whole table argument resting on the difference.',
     verses: 19,
     status: 'live',
+    // F-10 V3 (2026-10-11): "The Torah Already Kept Two Lines Apart" added
+    // between "Both Words in One Breath" and "What Did Change" (Leviticus 10:10,
+    // Deuteronomy 12:22). Nothing else in the foundation changed.
+    version: '1011 V3',
   },
   {
     key: 'f-11',

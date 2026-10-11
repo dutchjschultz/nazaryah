@@ -1,4 +1,5 @@
-// content config 1011 V24
+// content config 1011 V25
+// V25: epigraph.ref optional — a framing question with no citation.
 // V24: `hebrew` gains optional date + featured/featuredAt/skin (homepage picks).
 // V23: posts and peah gain the homepage Featured Picks fields — `featured`
 // (true = a pick), `featuredAt` (the date Dutch named it, NOT the publish date;
@@ -200,9 +201,11 @@ const postsCollection = defineCollection({
     // Epigraph.astro under the deck. Title, deck and epigraph are one masthead
     // unit; anything else (a claim block, a lede) comes after it. `text` carries
     // no quote marks of its own; the component draws them.
+    // `ref` may be left off (V25): the line is then the study's own framing
+    // question, drawn without quote marks or a citation.
     epigraph: z.object({
       text: z.string(),
-      ref: z.string(),
+      ref: z.string().optional(),
     }).optional(),
     // Optional position within an association cluster (lower sorts first).
     order: z.number().optional(),

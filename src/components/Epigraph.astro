@@ -1,5 +1,9 @@
 ---
-// Epigraph.astro · 0908 V1
+// Epigraph.astro · 1011 V2
+// V2: `ref` is optional. Without one the line is the study's own framing
+// question (Clean and Unclean at the Same Table), not a quotation: same italic
+// centered line, no quote marks, no citation.
+// V1 (0908)
 //
 // The scriptural line a study opens on, set directly under the deck. Title,
 // deck and epigraph are ONE masthead unit — nothing may sit between them, and
@@ -26,8 +30,8 @@ const ep = post?.data?.epigraph;
 
 {ep && (
   <figure class="epigraph">
-    <blockquote>&ldquo;{ep.text}&rdquo;</blockquote>
-    <figcaption>{ep.ref}</figcaption>
+    {ep.ref ? <blockquote>&ldquo;{ep.text}&rdquo;</blockquote> : <p class="epigraph-line">{ep.text}</p>}
+    {ep.ref && <figcaption>{ep.ref}</figcaption>}
   </figure>
 )}
 
@@ -43,7 +47,7 @@ const ep = post?.data?.epigraph;
      lowercase, so a verse set in it reads as a headline in small caps instead of
      as something quoted. Only the citation below keeps the display face, which
      is what every other kicker on the site uses. */
-  .epigraph blockquote {
+  .epigraph blockquote, .epigraph-line {
     margin: 0;
     font-family: var(--font-body);
     font-style: italic;
@@ -52,7 +56,7 @@ const ep = post?.data?.epigraph;
     color: #4a3a26;
     text-wrap: pretty;
   }
-  :global(.dark) .epigraph blockquote { color: #c4a46b; }
+  :global(.dark) .epigraph blockquote, :global(.dark) .epigraph-line { color: #c4a46b; }
 
   .epigraph figcaption {
     margin-top: 0.55rem;
