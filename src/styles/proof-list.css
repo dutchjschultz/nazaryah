@@ -1,4 +1,5 @@
-/* src/styles/proof-list.css · 1005 V2 — V2: sort switch + foundation dropdown
+/* src/styles/proof-list.css · 1011 V3 — V3: group headers (pl-group…) and room
+   for a third sort switch on phones. V2: sort switch + foundation dropdown
    The numbered proof-text list (ProofTextList.jsx) on /trinity/files and
    /torah/testimonies. Imported by each page; global because the list is a
    React island. Cloned from the pt- timeline on /parables, in the dark palette
@@ -240,3 +241,20 @@
 @media (max-width: 620px) {
   .pl-sortbtn { font-size: 0.64rem; letter-spacing: 0.06em; padding: 0.5rem 0.7rem; }
 }
+/* Three switches on a phone: share the row evenly and wrap their words. */
+@media (max-width: 480px) {
+  .pl-sort { width: 100%; }
+  .pl-sortbtn { flex: 1 1 0; padding: 0.5rem 0.4rem; line-height: 1.3; }
+}
+
+/* ── GROUP HEADERS ── under "All": small-caps gold label, thin gold hairline. */
+.pl-group + .pl-group { margin-top: 2.2rem; }
+.pl-grouphead {
+  display: flex; align-items: baseline; justify-content: space-between; gap: 1rem;
+  margin: 0 0 1.1rem; padding-bottom: 0.45rem;
+  border-bottom: 1px solid rgba(186, 117, 23, 0.45);
+  font-family: 'Cinzel', Georgia, serif; font-weight: 600;
+}
+.pl-grouplabel { font-size: 0.82rem; letter-spacing: 0.12em; text-transform: uppercase; font-variant: small-caps; color: #d4a531; }
+.pl-groupcount { font-size: 0.7rem; letter-spacing: 0.1em; color: #8a7857; flex: none; }
+.pl-groupempty { margin: 0 0 0.5rem; font-size: 0.98rem; }
