@@ -1,5 +1,7 @@
 ---
-// Header.astro · 1010 V15 — header rework: seven tabs, panel menus, all read
+// Header.astro · 1011 V16 — every panel is placed on load and on resize, so a
+// closed panel under a tab near the right edge (Books, once Symbol Lexicon joined
+// the row — nav V4) never widens the page. V15: header rework: seven tabs, panel menus, all read
 // from src/data/nav.js (nav-sections.js retired). Top row: Counterfeits ·
 // Restored Truth · Torah · Trinity · Berean Studies · Edited After the Cross ·
 // Books; far right, smaller: search, About, Contact, theme. Home and About leave
@@ -262,6 +264,12 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
     const over = r.right - (document.documentElement.clientWidth - 16);
     if (over > 0) panel.style.left = `${-over}px`;
   }
+  // A closed panel is invisible but still takes up layout room, so one that hangs
+  // past the right edge would widen the page and scroll it sideways. Place every
+  // panel on load and on resize, not only when it opens.
+  const placeAll = () => wraps.forEach(place);
+  placeAll();
+  window.addEventListener('resize', placeAll);
 
   function open(w: HTMLElement) {
     window.clearTimeout(closeTimer);
@@ -467,6 +475,12 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
   }
   @media (max-width: 1479px) {
     .nav-link { padding: 0.42rem 0.4rem; font-size: 0.68rem; letter-spacing: 0.05em; }
+  }
+  /* Eight tabs (Symbol Lexicon, nav V4): one more step so the row and the
+     utility cluster still fit from 1240px, where the desktop row begins. */
+  @media (max-width: 1399px) {
+    .nav-link { padding: 0.42rem 0.3rem; font-size: 0.64rem; letter-spacing: 0.04em; }
+    .nav-utility { margin-left: 0.35rem; padding-left: 0.35rem; }
   }
 
   /* ============================================================
