@@ -1,7 +1,10 @@
 ---
-// src/pages/symbol-lexicon/index.astro · 1011 V1
+// src/pages/symbol-lexicon/index.astro · 1011 V2
+// V2: opening line is Dutch's "The New Testament speaks in pictures the Old
+// Testament had already painted." followed by roadNote; the sheet's added
+// sentence (a near-repeat of roadNote's last line) is dropped.
 // V1: the Symbol Lexicon front (Etsy Build Sheet Symbol Lexicon 1011 V1).
-// Opening paragraph from the master's roadNote + one sentence, a filter box
+// Opening paragraph: Dutch's opening sentence + the master's roadNote, a filter box
 // (symbol name and New Testament refs: "Rev 12" finds every Revelation 12
 // symbol), then the six movements in order, each a grid of cards — number in
 // small caps, headword, italic gloss, a muted "Counterfeit court" tag on break
@@ -24,7 +27,7 @@ const refKey = (refs) => refs.map((r) => r.toLowerCase()).join('|');
         <span class="sx-eyebrow">Restored Truth</span>
         <h1>The Symbol Lexicon of Scripture</h1>
         <p class="sx-sub">Every New Testament symbol traced back to its Old Testament root.</p>
-        <p class="sx-open">{roadNote} Every image Revelation shows was first planted in the Torah and the Prophets.</p>
+        <p class="sx-open">The New Testament speaks in pictures the Old Testament had already painted. {roadNote}</p>
         <p class="sx-companion">Companion list: <a href="/torah/legal-lexicon">The Legal Lexicon of Scripture</a></p>
       </header>
 
