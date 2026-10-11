@@ -1,4 +1,6 @@
-// check-cards.mjs 0831 V7
+// check-cards.mjs 1011 V8
+// V8: symbol-lexicon/<slug> joins the skip set — the 229 symbol pages share the
+// index card (Symbol Lexicon build sheet 1011). Mirrored in backfill V19.
 // V7: /close-to-the-hip comes OFF the skip set. It was exempt as "a titleless
 // two-lane listing", but it renders an h1 ("Close to the Hip") and so is a normal
 // carded page now. The matching skip edit is in backfill-social-images.py (V11).
@@ -31,8 +33,11 @@ const LOGO = '/og-default.jpg';
 // MUST stay in sync with skip() in scripts/backfill-social-images.py — the guard
 // and the generator have to agree on which pages are logo-only by design. Edit
 // one, edit the other.
+// symbol-lexicon/<slug>: the 229 symbol pages share the index's card (Etsy
+// Build Sheet Symbol Lexicon 1011 V1) — the index itself is still guarded.
 const skip = (rel) =>
-  rel === '' || rel === 'blog' || rel === 'blog/all' || rel.startsWith('blog/c/');
+  rel === '' || rel === 'blog' || rel === 'blog/all' || rel.startsWith('blog/c/') ||
+  rel.startsWith('symbol-lexicon/');
 const escapeRe = (s) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
 
 function walk(dir, out = []) {

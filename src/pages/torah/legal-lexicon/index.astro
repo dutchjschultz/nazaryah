@@ -23,6 +23,7 @@ const termHref = (t) => `/torah/legal-lexicon/${slugify(t.term)}`;
         <p class="thesis">These are its words — and once you see them, you cannot unsee it.</p>
         <p>Scripture is not a devotional book with a few legal words in it. It is a legal book, and the warmth readers feel is the warmth of a covenant kept. Every term below — even the soft, familiar ones — is a courtroom word doing courtroom work.</p>
         <p>The words are arranged as a road: seven movements that walk from the bench itself to the final verdict. Read them in order to walk the whole trial, or look up any single word from A to Z.</p>
+        <p class="companion">Companion list: <a href="/symbol-lexicon">The Symbol Lexicon of Scripture</a></p>
       </section>
 
       <section class="road" id="road">
@@ -206,4 +207,7 @@ const termHref = (t) => `/torah/legal-lexicon/${slugify(t.term)}`;
     .ll .steps::before{left:21px;}
     .ll .mvchip{display:none;}
   }
+  .ll .companion{font-size:14.5px;color:#9a8763;margin:0;}
+  .ll .companion a{color:#c4a46b;text-decoration:underline;text-underline-offset:3px;text-decoration-color:rgba(196,164,107,.45);}
+  .ll .companion a:hover{color:#f0e0bf;}
 </style>

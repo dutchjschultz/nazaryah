@@ -1,0 +1,200 @@
+---
+// src/pages/symbol-lexicon/[slug].astro · 1011 V1
+// V1: one page per symbol in src/data/symbol-lexicon-master.json (Etsy Build
+// Sheet Symbol Lexicon 1011 V1). The Pe'ah corner-study look, not a full
+// study. In order: movement (small caps) → headword (+ Counterfeit court tag)
+// → italic gloss → Root (· hebrew) → Old Testament chain as a wrapping arrow
+// path (skipped when empty) → New Testament refs → the corner study → source
+// line → prev / next by running number + back to the movement on the index.
+// Social card: these pages share the index card (/og/symbol-lexicon.vN.png)
+// and are exempt from the card guard (scripts/check-cards.mjs).
+//
+// Colours are declared light first, then again under :global(.dark). Italic
+// text is set in the body serif, never Cinzel.
+import fs from 'node:fs';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { symbols, movementOf, chainSteps } from '../../lib/symbol-lexicon.js';
+
+export function getStaticPaths() {
+  return symbols.map((s, i) => ({
+    params: { slug: s.slug },
+    props: { s, prev: symbols[i - 1] ?? null, next: symbols[i + 1] ?? null },
+  }));
+}
+
+const { s, prev, next } = Astro.props;
+const m = movementOf(s);
+const steps = chainSteps(s.chain);
+
+// The index card, newest version on disk.
+const v = Math.max(0, ...fs.readdirSync('public/og').map((f) => Number(f.match(/^symbol-lexicon\.v(\d+)\.png$/)?.[1] ?? 0)));
+const ogImage = v ? `/og/symbol-lexicon.v${v}.png` : undefined;
+---
+
+<BaseLayout
+  title={`${s.symbol} — The Symbol Lexicon of Scripture | Nazaryah`}
+  description={`${s.symbol}: ${s.gloss}. Root: ${s.root}. Traced from the Old Testament to ${s.ntRefs[0] ?? 'the New'}.`}
+  ogTitle={s.symbol}
+  ogImage={ogImage}
+>
+  <article class="sl-entry">
+    <p class="sl-label"><a href={`/symbol-lexicon#${m.anchor}`}>{m.title}</a></p>
+    <h1 class="sl-title">
+      {s.symbol}
+      {s.break && <span class="sl-break">Counterfeit court</span>}
+    </h1>
+    <p class="sl-gloss">{s.gloss}</p>
+    <div class="sl-rule" aria-hidden="true"></div>
+
+    <dl class="sl-facts">
+      <div>
+        <dt>Root</dt>
+        <dd>{s.root}{s.hebrew && <span class="sl-hebrew"> · {s.hebrew}</span>}</dd>
+      </div>
+      {steps.length > 0 && (
+        <div>
+          <dt>Old Testament chain</dt>
+          <dd>
+            <ol class="sl-chain">
+              {steps.map((r) => <li>{r}</li>)}
+            </ol>
+          </dd>
+        </div>
+      )}
+      {s.ntRefs.length > 0 && (
+        <div>
+          <dt>New Testament</dt>
+          <dd>{s.ntRefs.join('; ')}</dd>
+        </div>
+      )}
+    </dl>
+
+    <div class="sl-body">
+      <p>{s.corner}</p>
+    </div>
+
+    <p class="sl-source">From <em>{s.source.book}</em>, pp. {s.source.pages}</p>
+
+    <nav class="sl-nav" aria-label="Symbol Lexicon">
+      <div class="sl-pn">
+        {prev ? (
+          <a href={`/symbol-lexicon/${prev.slug}`}><span class="sl-pn-k">&larr; {prev.n}</span><span class="sl-pn-t">{prev.symbol}</span></a>
+        ) : <span />}
+        {next && (
+          <a class="sl-pn--next" href={`/symbol-lexicon/${next.slug}`}><span class="sl-pn-k">{next.n} &rarr;</span><span class="sl-pn-t">{next.symbol}</span></a>
+        )}
+      </div>
+      <a class="sl-back" href={`/symbol-lexicon#${m.anchor}`}>&larr; {m.title}</a>
+    </nav>
+  </article>
+</BaseLayout>
+
+<style>
+  .sl-entry {
+    max-width: 40rem;
+    margin: 0 auto;
+    padding: 3.2rem 1.5rem 4.5rem;
+    font-family: var(--font-family-serif);
+    color: #2b2317;
+  }
+  :global(.dark) .sl-entry { color: #d8ccb4; }
+
+  .sl-label {
+    margin: 0 0 1rem;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.66rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+  }
+  .sl-label a { color: #8a6520; text-decoration: none; }
+  .sl-label a:hover { color: #4a2808; }
+  :global(.dark) .sl-label a { color: #ba7517; }
+  :global(.dark) .sl-label a:hover { color: #f0e0bf; }
+
+  .sl-title {
+    margin: 0;
+    font-family: var(--font-display);
+    font-size: clamp(1.7rem, 4.4vw, 2.3rem);
+    line-height: 1.2;
+    color: #1e1208;
+  }
+  :global(.dark) .sl-title { color: #f0e0bf; }
+  .sl-break {
+    display: inline-block;
+    vertical-align: middle;
+    margin-left: 0.6rem;
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.6rem;
+    font-weight: 600;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #8a7c5e;
+    border: 1px solid #d8cfb8;
+    border-radius: 2px;
+    padding: 0.15rem 0.5rem;
+  }
+  :global(.dark) .sl-break { color: #9c7c4c; border-color: #3a2510; }
+
+  .sl-gloss {
+    margin: 0.55rem 0 0;
+    font-style: italic;
+    font-size: 1.2rem;
+    line-height: 1.5;
+    color: #6b5a3a;
+  }
+  :global(.dark) .sl-gloss { color: #c4a46b; }
+
+  .sl-rule { height: 1px; margin: 1.1rem 0 1.6rem; background: #d8cfb8; }
+  :global(.dark) .sl-rule { background: #3a2510; }
+
+  .sl-facts { margin: 0 0 1.9rem; display: grid; gap: 0.85rem; }
+  .sl-facts dt {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.64rem;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: #8a6520;
+    margin-bottom: 0.2rem;
+  }
+  :global(.dark) .sl-facts dt { color: #ba7517; }
+  .sl-facts dd { margin: 0; font-size: 1.02rem; line-height: 1.6; }
+  .sl-hebrew { font-style: italic; color: #6b5a3a; }
+  :global(.dark) .sl-hebrew { color: #c4a46b; }
+
+  /* The chain: a path of references joined by arrows; wraps on phones. */
+  .sl-chain { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; align-items: baseline; row-gap: 0.25rem; }
+  .sl-chain li { white-space: nowrap; }
+  .sl-chain li + li::before { content: '→'; margin: 0 0.45rem; color: #b8923a; }
+  :global(.dark) .sl-chain li + li::before { color: #ba7517; }
+
+  .sl-body p { margin: 0 0 1.15rem; font-size: 1.1rem; line-height: 1.75; }
+
+  .sl-source {
+    margin: 2.2rem 0 0;
+    padding-top: 1rem;
+    border-top: 1px solid #d8cfb8;
+    font-size: 0.82rem;
+    line-height: 1.6;
+    color: #8a7c5e;
+  }
+  :global(.dark) .sl-source { color: #9c7c4c; border-top-color: #3a2510; }
+
+  .sl-nav { margin-top: 1.8rem; }
+  .sl-pn { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 1.4rem; }
+  .sl-pn a { display: flex; flex-direction: column; gap: 0.15rem; max-width: 48%; text-decoration: none; }
+  .sl-pn--next { text-align: right; margin-left: auto; }
+  .sl-pn-k, .sl-back {
+    font-family: 'Cinzel', Georgia, serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    text-decoration: none;
+    color: #8a6520;
+  }
+  .sl-pn-t { font-size: 1rem; color: #2b2317; }
+  .sl-pn a:hover .sl-pn-t, .sl-back:hover { color: #4a2808; }
+  :global(.dark) .sl-pn-k, :global(.dark) .sl-back { color: #ba7517; }
+  :global(.dark) .sl-pn-t { color: #d8ccb4; }
+  :global(.dark) .sl-pn a:hover .sl-pn-t, :global(.dark) .sl-back:hover { color: #f0e0bf; }
+</style>

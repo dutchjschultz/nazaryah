@@ -1,6 +1,9 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  1010 V18
+backfill-social-images  1011 V19
+V19: `symbol-lexicon` mapped to .sx-sub (the index's subtitle line), and
+symbol-lexicon/<slug> joins skip() — the 229 symbol pages share the index card
+(mirrored in check-cards.mjs V8).
 V18: `edited-after-the-cross` mapped to .ev-card-deck (a verse page's hidden
 `deck`), then .eac-sub (the section front's subtitle line). Kicker falls
 through kicker_for() to STUDY, the default.
@@ -119,6 +122,7 @@ DECK_CLASSES = {
     "calendar": ["cf-subtitle", "pg-subtitle", "cal-subtitle", "today-subtitle", "cf-index-subtitle"],
     "catholicism": ["sw-sub"],
     "edited-after-the-cross": ["ev-card-deck", "eac-sub"],
+    "symbol-lexicon": ["sx-sub"],
     "disney": ["sw-sub"],
     "foreign-fire": ["sw-sub", "ff-sub"],
     "foundations": ["ref-tagline", "found-intro"],
@@ -212,6 +216,8 @@ def skip(rel):
         rel == ""
         or rel in ("blog", "blog/all")
         or rel.startswith("blog/c/")
+        # the symbol pages share the index card (Symbol Lexicon build sheet 1011)
+        or rel.startswith("symbol-lexicon/")
     )
 
 

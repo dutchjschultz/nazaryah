@@ -1,0 +1,163 @@
+---
+// src/pages/symbol-lexicon/index.astro · 1011 V1
+// V1: the Symbol Lexicon front (Etsy Build Sheet Symbol Lexicon 1011 V1).
+// Opening paragraph from the master's roadNote + one sentence, a filter box
+// (symbol name and New Testament refs: "Rev 12" finds every Revelation 12
+// symbol), then the six movements in order, each a grid of cards — number in
+// small caps, headword, italic gloss, a muted "Counterfeit court" tag on break
+// symbols. Everything is generated from src/data/symbol-lexicon-master.json.
+// No tables. Same dark parchment as the Legal Lexicon, its companion list.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { symbols, movements, roadNote } from '../../lib/symbol-lexicon.js';
+
+// "Rev 12" must match "Rev 12:1" and "Rev 12" but not "Rev 1:2" or "Rev 120".
+const refKey = (refs) => refs.map((r) => r.toLowerCase()).join('|');
+---
+
+<BaseLayout
+  title="The Symbol Lexicon of Scripture | Nazaryah"
+  description={`Every New Testament symbol traced back to its Old Testament root. ${symbols.length} symbols from Revelation, each followed from the Torah and the Prophets to the book that closes the record, with a corner study on every one.`}
+>
+  <div class="sx">
+    <div class="sx-wrap">
+      <header class="sx-hero">
+        <span class="sx-eyebrow">Restored Truth</span>
+        <h1>The Symbol Lexicon of Scripture</h1>
+        <p class="sx-sub">Every New Testament symbol traced back to its Old Testament root.</p>
+        <p class="sx-open">{roadNote} Every image Revelation shows was first planted in the Torah and the Prophets.</p>
+        <p class="sx-companion">Companion list: <a href="/torah/legal-lexicon">The Legal Lexicon of Scripture</a></p>
+      </header>
+
+      <div class="sx-controls" data-pagefind-ignore>
+        <label class="sx-search">
+          <span class="sr-only">Filter symbols</span>
+          <input id="sx-q" type="search" placeholder="Filter by symbol or verse — try “Rev 12”" autocomplete="off" />
+        </label>
+        <span class="sx-count" id="sx-count">{symbols.length} symbols</span>
+      </div>
+
+      {movements.map((m) => (
+        <section class="sx-mv" id={m.anchor} aria-labelledby={`${m.anchor}-h`}>
+          <h2 id={`${m.anchor}-h`} class="sx-mv-h">{m.title}</h2>
+          <p class="sx-mv-span">{m.span}</p>
+          <ul class="sx-cards">
+            {m.symbols.map((s) => (
+              <li data-name={s.symbol.toLowerCase()} data-refs={refKey(s.ntRefs)}>
+                <a class="sx-card" href={`/symbol-lexicon/${s.slug}`}>
+                  <span class="sx-n">No. {s.n}</span>
+                  <span class="sx-name">{s.symbol}</span>
+                  <span class="sx-gloss">{s.gloss}</span>
+                  {s.break && <span class="sx-break">Counterfeit court</span>}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+      <p class="sx-empty" id="sx-empty" hidden>No symbol matches that filter.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Filter: the symbol name contains the query, or one of its NT refs starts
+  // with it at a reference boundary ("rev 12" → "rev 12:3", not "rev 1:2").
+  const BOOKS: Record<string, string> = { revelation: 'rev', matthew: 'matt', genesis: 'gen', exodus: 'exod', isaiah: 'isa', daniel: 'dan', psalms: 'ps', psalm: 'ps', hebrews: 'heb', romans: 'rom' };
+  const input = document.getElementById('sx-q') as HTMLInputElement | null;
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('.sx-cards li'));
+  const groups = Array.from(document.querySelectorAll<HTMLElement>('.sx-mv'));
+  const count = document.getElementById('sx-count');
+  const empty = document.getElementById('sx-empty');
+  const total = rows.length;
+  const norm = (q: string) => {
+    let s = q.toLowerCase().replace(/\s+/g, ' ').trim();
+    const w = s.split(' ')[0];
+    if (BOOKS[w]) s = BOOKS[w] + s.slice(w.length);
+    return s;
+  };
+  function refHit(refs: string, q: string) {
+    return refs.split('|').some((r) => r.startsWith(q) && !/\d/.test(r.charAt(q.length) || ''));
+  }
+  function apply() {
+    const raw = input?.value ?? '';
+    const q = norm(raw);
+    let shown = 0;
+    rows.forEach((li) => {
+      const on = !q || li.dataset.name!.includes(raw.toLowerCase().trim()) || refHit(li.dataset.refs!, q);
+      li.hidden = !on;
+      if (on) shown++;
+    });
+    groups.forEach((g) => { g.hidden = !g.querySelector('li:not([hidden])'); });
+    if (count) count.textContent = q ? `${shown} of ${total} symbols` : `${total} symbols`;
+    if (empty) empty.hidden = shown > 0;
+  }
+  input?.addEventListener('input', apply);
+</script>
+
+<style>
+  .sx {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #e0d2b2;
+    font-family: var(--font-family-serif);
+    min-height: 100vh;
+  }
+  .sx-wrap { max-width: 64rem; margin: 0 auto; padding: 3.2rem 1.5rem 4.5rem; }
+  .sx-eyebrow, .sx-n, .sx-count, .sx-break, .sx-mv-h {
+    font-family: 'Cinzel', serif; text-transform: uppercase;
+  }
+  .sx-eyebrow { font-size: 0.7rem; letter-spacing: 0.24em; color: #8a6028; font-weight: 600; }
+  .sx-hero { max-width: 44rem; margin: 0 0 2.2rem; }
+  .sx-hero h1 {
+    font-family: 'Cinzel', serif; font-size: clamp(1.9rem, 5vw, 2.8rem); line-height: 1.1;
+    color: #f0e0bf; margin: 0.8rem 0 0.6rem;
+  }
+  .sx-sub { font-style: italic; font-size: 1.3rem; color: #c4a46b; margin: 0 0 1.2rem; }
+  .sx-open { font-size: 1.12rem; line-height: 1.75; margin: 0 0 1rem; }
+  .sx-companion { font-size: 0.95rem; color: #9a8763; margin: 0; }
+  .sx-companion a { color: #c4a46b; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(196,164,107,0.45); }
+  .sx-companion a:hover { color: #f0e0bf; }
+
+  .sx-controls {
+    position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 0.6rem 1rem; flex-wrap: wrap;
+    padding: 0.8rem 0; margin-bottom: 1.4rem; background: rgba(22,15,7,0.94); border-bottom: 1px solid #3a2510;
+  }
+  .sx-search { flex: 1 1 18rem; }
+  .sx-search input {
+    width: 100%; font-family: inherit; font-size: 1rem; padding: 0.55rem 0.8rem; border: 1px solid #3a2510;
+    border-radius: 3px; background: #160f07; color: #e0d2b2;
+  }
+  .sx-search input::placeholder { color: #8a6f45; font-style: italic; }
+  .sx-search input:focus { outline: 2px solid #8a6028; outline-offset: 1px; }
+  .sx-count { font-size: 0.7rem; letter-spacing: 0.08em; color: #8a6f45; }
+
+  .sx-mv { margin: 0 0 2.6rem; scroll-margin-top: 5rem; }
+  .sx-mv[hidden] { display: none; }
+  .sx-mv-h {
+    font-size: 0.95rem; letter-spacing: 0.14em; color: #f0e0bf; margin: 0;
+    padding-bottom: 0.5rem; border-bottom: 1px solid #3a2510;
+  }
+  .sx-mv-span { font-style: italic; color: #c4a46b; font-size: 1rem; margin: 0.55rem 0 1rem; }
+
+  .sx-cards { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr)); gap: 0.75rem; }
+  .sx-cards li[hidden] { display: none; }
+  .sx-card {
+    display: flex; flex-direction: column; gap: 0.25rem; height: 100%; text-decoration: none;
+    background: rgba(20,13,5,0.55); border: 1px solid #3a2510; border-top: 2px solid #8a6028; border-radius: 3px;
+    padding: 0.85rem 1rem 0.95rem; transition: background .15s, border-color .15s;
+  }
+  .sx-card:hover, .sx-card:focus-visible { background: #20160a; border-color: #8a6028; outline: none; }
+  .sx-n { font-size: 0.62rem; letter-spacing: 0.16em; color: #8a6028; font-variant: small-caps; }
+  .sx-name { font-family: var(--font-display); font-size: 1.08rem; line-height: 1.25; color: #f0e0bf; }
+  .sx-card:hover .sx-name { color: #f0c450; }
+  .sx-gloss { font-style: italic; font-size: 0.98rem; line-height: 1.45; color: #9a8763; }
+  .sx-break {
+    align-self: flex-start; margin-top: 0.35rem; font-size: 0.55rem; letter-spacing: 0.14em; color: #8a6f45;
+    border: 1px solid #3a2510; border-radius: 2px; padding: 0.1rem 0.45rem;
+  }
+  .sx-empty { font-style: italic; color: #8a6f45; }
+
+  @media (max-width: 600px) {
+    .sx-wrap { padding: 2.4rem 1rem 3.5rem; }
+    .sx-cards { grid-template-columns: 1fr; }
+  }
+</style>

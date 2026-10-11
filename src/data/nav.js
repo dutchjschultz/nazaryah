@@ -1,5 +1,6 @@
-// nav 1010 V2.js
-// Voices gets its description (Dutch)
+// nav 1011 V3.js
+// The Symbol Lexicon joins Restored Truth (Etsy Build Sheet Symbol Lexicon 1011 V1).
+// V2: Voices gets its description (Dutch)
 //
 // V1: header rework: seven tabs, panel menus, Doctrines in two panels
 //
@@ -53,6 +54,7 @@ export const mainNav = [
       { label: 'The Calendar', href: '/calendar', desc: 'Aviv, the renewed moon, and the Sabbath, read from the lights Yahuah set in the sky.' },
       { label: 'Ekklesia', href: '/ekklesia', desc: 'What the assembly was meant to be before it became “church.”' },
       { label: 'Cosmology', href: '/cosmology', desc: 'The shape of what Yahuah made, from the firmament above to the earth below.' },
+      { label: 'The Symbol Lexicon', href: '/symbol-lexicon', desc: 'Every New Testament symbol traced back to its Old Testament root.' },
     ],
   },
   { label: 'Torah', href: '/torah' },
