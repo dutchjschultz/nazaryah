@@ -339,7 +339,7 @@ export const INVESTIGATIONS = [
     title: 'Spoken in Hebrew',
     shortTitle: 'Spoken in Hebrew',
     deck: 'The message beneath the Greek — and what the Greek carried in',
-    // Six witnesses: the columns shape, three a side.
+    // Seven witnesses (V9): the columns shape, four left, three right.
     layout: 'columns',
     enterLabel: 'Enter the case',
     orderNote: 'Numbered as the hub lists them · read in any order',
