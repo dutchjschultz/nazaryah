@@ -1,4 +1,5 @@
-// blog-groups 1011 V40.js
+// blog-groups 1011 V41.js
+// V41: call-no-man-your-father joins scripture-unfiltered (category Scripture Unfiltered).
 // V40: clean-and-unclean-at-the-same-table → the-law-and-the-feasts.
 // V39: two modern parables join THE SIDE DOOR (2 -> 4), category Scripture
 // Unfiltered: The Parable of Sinai Arcade (sinai-arcade) and The Adventures of
@@ -344,6 +345,7 @@ export const POST_GROUP = {
   'filled-but-not-indwelt': 'scripture-unfiltered',
   'two-mountains': 'scripture-unfiltered',
   'yet-once-more': 'scripture-unfiltered',
+  'call-no-man-your-father': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
