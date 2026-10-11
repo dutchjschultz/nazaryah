@@ -193,3 +193,5 @@ Scripture does promise a renaming, but it is not on the Damascus road, and it do
 > *Him that overcometh will I make a pillar in the temple of my Elohim ... and I will write upon him the name of my Elohim, and the name of the city of my Elohim, which is new Jerusalem ... and I will write upon him my new name.*
 
 That is the only new name the believer is promised, and it will need no interpreter. It will be written by the Son, bearing the name of His Elohim, Yahuah, on those who have kept His commandments and the testimony of Yahushua to the end.
+
+*One of seven witnesses in a single case. **Two Names, One Man** is the testimony of the names — the Hebrew names the writers kept and glossed for Greek readers, never replaced. The seven together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*

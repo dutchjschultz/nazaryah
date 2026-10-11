@@ -85,4 +85,4 @@ The Gospels were not written to people who had left the Torah behind. They were 
 >
 > *Blessed are they that do his commandments, that they may have right to the tree of life, and may enter in through the gates into the city.*
 
-*One of six witnesses in a single case. **Torah in Daily Life** is the testimony of custom — the fringe, the sandal, the witnesses, and the lamb, the daily Torah that the Gospels assume on every page. The six together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*
+*One of seven witnesses in a single case. **Torah in Daily Life** is the testimony of custom — the fringe, the sandal, the witnesses, and the lamb, the daily Torah that the Gospels assume on every page. The seven together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*

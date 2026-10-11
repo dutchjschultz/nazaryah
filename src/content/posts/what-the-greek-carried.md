@@ -53,4 +53,4 @@ Every Greek word in the New Testament has been screened — 5,523 entries in Str
 
 The full list is on the page [**Words Your Bible Borrowed**](/doctrines/borrowed-words/).
 
-*One of six witnesses in a single case. **What the Greek Carried** is the reason the case matters — the Greek words that came in carrying their gods and philosophers, and the Hebrew they replaced. The six together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*
+*One of seven witnesses in a single case. **What the Greek Carried** is the reason the case matters — the Greek words that came in carrying their gods and philosophers, and the Hebrew they replaced. The seven together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*

@@ -1,4 +1,7 @@
-// investigations 1011 V9.js
+// investigations 1011 V10.js
+// V10: Spoken in Hebrew question reads "Seven witnesses answer."; Witness Seven's
+// blurb is now the hub study's own line for it (the V8 rule: blurbs are the
+// hub's descriptions).
 // V9: Spoken in Hebrew gains Witness Seven · Names — Two Names, One Man (Acts 13:9 /
 // Genesis 17:5). Already the columns shape; the card takes the next slot (left
 // column four, right three). No other witness, and no hub text, changed.
@@ -346,7 +349,7 @@ export const INVESTIGATIONS = [
     teaching:
       'The New Testament was composed in Greek, and the Greek is the source: when a hard question comes up, the answer begins, “The Greek says…”',
     question:
-      'Was the message of Yahushua first spoken in Greek, or in Hebrew — and what did the Greek carry in? Six witnesses answer.',
+      'Was the message of Yahushua first spoken in Greek, or in Hebrew — and what did the Greek carry in? Seven witnesses answer.',
     soon: false,
     nucleus: {
       label: 'The Nucleus',
@@ -419,7 +422,7 @@ export const INVESTIGATIONS = [
         anchor: 'Genesis 17:5',
         status: 'live',
         href: '/blog/two-names-one-man',
-        blurb: 'Paul was never renamed. The writers kept translating Hebrew names for Greek readers.',
+        blurb: 'Saul was never renamed. Luke says he was “also called Paul,” the risen Messiah still called him Saul in the Hebrew tongue, and the same Hebrew-name-plus-gloss pattern runs through Barnabas, Simeon Niger, Thomas Didymus, Cephas, and Messias. The renaming story came later, from Jerome and Augustine, not from Scripture.',
       },
     ],
   },

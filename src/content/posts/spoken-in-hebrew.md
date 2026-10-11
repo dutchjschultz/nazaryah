@@ -24,9 +24,9 @@ If the message began in Hebrew, then every Greek word chosen to carry it came wi
 
 That is not a small adjustment. It changes how soul, grave, favor, belief, and dozens of other words are read — and with them, the doctrines built on those words.
 
-## The Six Witnesses
+## The Seven Witnesses
 
-Torah requires more than one witness before a matter is settled (Deuteronomy 19:15). This case calls six. Each stands on its own, and each points back here.
+Torah requires more than one witness before a matter is settled (Deuteronomy 19:15). This case calls seven. Each stands on its own, and each points back here.
 
 - **1. [The Witnesses](/blog/the-witnesses).** What the earliest writers said about a Hebrew Matthew and a Hebrew letter to the Hebrews — and the late "Hebrew" texts that are not the original.
 
@@ -40,9 +40,11 @@ Torah requires more than one witness before a matter is settled (Deuteronomy 19:
 
 - **6. [What the Greek Carried](/blog/what-the-greek-carried).** The Greek words that came into the New Testament already loaded with the meanings of the gods and the philosophers, and the full list on the page [Words Your Bible Borrowed](/doctrines/borrowed-words/).
 
+- **7. [Two Names, One Man](/blog/two-names-one-man) (Acts 13:9).** Saul was never renamed. Luke says he was "also called Paul," the risen Messiah still called him Saul in the Hebrew tongue, and the same Hebrew-name-plus-gloss pattern runs through Barnabas, Simeon Niger, Thomas Didymus, Cephas, and Messias. The renaming story came later, from Jerome and Augustine, not from Scripture.
+
 ## The Verdict the Witnesses Reach
 
-Read together, the six witnesses say one thing: the New Testament must be read from the Hebrew up, not from the Greek down. The apostles thought in the language of Moses. To understand them, the reader has to go where they went first — to the Torah and the Prophets.
+Read together, the seven witnesses say one thing: the New Testament must be read from the Hebrew up, not from the Greek down. The apostles thought in the language of Moses. To understand them, the reader has to go where they went first — to the Torah and the Prophets.
 
 > **JEREMIAH 6:16 — KJV**
 >

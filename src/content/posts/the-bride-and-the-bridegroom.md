@@ -77,4 +77,4 @@ Revelation finishes the story the prophets began. The bride has made herself rea
 
 Then the bride comes down: "the holy city, new Jerusalem, coming down from God out of heaven, prepared as a bride adorned for her husband" (Revelation 21:2). From Hosea to Revelation, it is one marriage — and only a Hebrew reader hears all of it.
 
-*One of six witnesses in a single case. **The Bride and the Bridegroom** is the testimony of Israel’s marriage — the betrothal, the price, the prepared place, and the feast that run from the prophets to Revelation. The six together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*
+*One of seven witnesses in a single case. **The Bride and the Bridegroom** is the testimony of Israel’s marriage — the betrothal, the price, the prepared place, and the feast that run from the prophets to Revelation. The seven together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*
