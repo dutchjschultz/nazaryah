@@ -1,4 +1,5 @@
-// blog-groups 1011 V41.js
+// blog-groups 1011 V42.js
+// V42: the-throne-in-the-sanctuary joins buried-in-plain-sight (category Buried in Plain Sight).
 // V41: call-no-man-your-father joins scripture-unfiltered (category Scripture Unfiltered).
 // V40: clean-and-unclean-at-the-same-table → the-law-and-the-feasts.
 // V39: two modern parables join THE SIDE DOOR (2 -> 4), category Scripture
@@ -257,6 +258,7 @@ export const POST_GROUP = {
   'the-reign-is-now': 'buried-in-plain-sight',
   'gog-and-magog': 'buried-in-plain-sight',
   'two-clocks-not-one': 'buried-in-plain-sight',
+  'the-throne-in-the-sanctuary': 'buried-in-plain-sight',
   'saturnalia': 'buried-in-plain-sight',
   'ashtoreth': 'buried-in-plain-sight',
   'bohemian-grove': 'buried-in-plain-sight',
