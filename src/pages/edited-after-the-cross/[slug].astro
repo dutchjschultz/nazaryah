@@ -1,5 +1,8 @@
 ---
-// src/pages/edited-after-the-cross/[slug].astro · 1010 V2
+// src/pages/edited-after-the-cross/[slug].astro · 1011 V3
+// V3: panels render from sideBySide.panels in order with their own labels (The
+// Older Text / The Later Text, The Hebrew / The Greek, Quoted in …, The
+// Samaritan Torah): the first two side by side, the rest full width beneath.
 // V2: body comes from the entry's `sections`, rendered in order with whatever
 // headings the page carries (Genesis 11 uses "What the Older Text Says" and adds
 // two sections). Panel text carries <mark> for each changed span, so a panel can
@@ -51,20 +54,13 @@ const sections = v.sections.map((sec) => ({ ...sec, id: idOf(sec.heading) }));
     <section class="ev-sbs" aria-labelledby="side-by-side">
       <h2 id="side-by-side" class="ev-sbs-h">Side by Side</h2>
       <div class="ev-panels">
-        {[s.lxx, s.mt].map((t, i) => (
-          <div class:list={['ev-panel', i === 0 ? 'ev-panel--older' : 'ev-panel--later']}>
+        {s.panels.map((t, i) => (
+          <div class:list={['ev-panel', i === 0 ? 'ev-panel--older' : i === 1 ? 'ev-panel--later' : 'ev-panel--nt']}>
             <p class="ev-panel-label">{t.label}</p>
-            <p class="ev-panel-note">{t.note}</p>
+            {t.note && <p class="ev-panel-note" set:html={t.note} />}
             <p class="ev-panel-text" set:html={t.text} />
           </div>
         ))}
-        {s.nt && (
-          <div class="ev-panel ev-panel--nt">
-            <p class="ev-panel-label">Quoted in {s.nt.reference}</p>
-            {s.nt.note && <p class="ev-panel-note">{s.nt.note}</p>}
-            <p class="ev-panel-text" set:html={s.nt.text} />
-          </div>
-        )}
       </div>
       <p class="ev-kjv" set:html={s.kjv} />
       <a class="ev-jump" href={`#${sections[0].id}`} data-pagefind-ignore>See what changed and why ↓</a>
