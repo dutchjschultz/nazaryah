@@ -2,19 +2,21 @@
  "meta": {
   "title": "The Symbol Lexicon of Scripture",
   "file": "symbol-lexicon-master.json",
-  "version": "1010 V2",
-  "updated": "2026-10-10",
+  "version": "1012 V3",
+  "updated": "2026-10-12",
   "count": 229,
   "note": "Master list. Every New Testament symbol traced to its Old Testament root. Starter set drawn from The Courtroom of Heaven (Revelation). Movements run forward through the Old Testament story by each symbol's primary source.",
   "break": "Symbols marked break:true belong to the counterfeit court — the enemy's imitation of Yahuah's order.",
   "fields": {
    "root": "primary Old Testament source",
    "chain": "how the image is reused inside the Old Testament before the New, earliest to latest",
-   "corner": "the corner study (Peah length)"
+   "corner": "the corner study (Peah length)",
+   "date": "the day the symbol page went live (ISO)"
   },
   "changelog": [
    "1010 V1 — starter set of 229 Revelation symbols from The Courtroom of Heaven; corner studies written; six movements set.",
-   "1010 V2 — 45 entries revised from the editorial review: citations corrected, 11 movements reassigned, Trinitarian objections answered in-entry, saints' reign reframed to present priestly standing; renumbered."
+   "1010 V2 — 45 entries revised from the editorial review: citations corrected, 11 movements reassigned, Trinitarian objections answered in-entry, saints' reign reframed to present priestly standing; renumbered.",
+   "1012 V3 — every symbol carries `date` (2026-10-11, the day the section was first committed) for the homepage Last 30 Days; no text changed."
   ]
  },
  "movements": [
@@ -80,7 +82,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "125, 130, 281–282"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 2,
@@ -104,7 +107,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "170"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 3,
@@ -133,7 +137,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "195, 216–217, 240"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 4,
@@ -159,7 +164,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "365–366"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 5,
@@ -192,7 +198,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "31–32, 59, 365, 367–370, 377–378, 384"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 6,
@@ -218,7 +225,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "371–372"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 7,
@@ -244,7 +252,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "156–157"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 8,
@@ -272,7 +281,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "169, 176, 201, 333–334"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 9,
@@ -297,7 +307,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "51, 56"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 10,
@@ -325,7 +336,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "51, 55–56, 262–263"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 11,
@@ -361,7 +373,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "49–51, 56, 59, 67, 92, 99, 103–105"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 12,
@@ -388,7 +401,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "169–170, 183"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 13,
@@ -414,7 +428,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "171"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 14,
@@ -440,7 +455,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "169, 172–173"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 15,
@@ -465,7 +481,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "370–371"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 16,
@@ -492,7 +509,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "170"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 17,
@@ -520,7 +538,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "81, 91–92, 312–313"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 18,
@@ -546,7 +565,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "14, 66, 71, 141–142"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 19,
@@ -572,7 +592,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "14–15"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 20,
@@ -599,7 +620,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "52, 54"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 21,
@@ -633,7 +655,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "99, 103–104"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 22,
@@ -657,7 +680,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "305, 308–309"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 23,
@@ -684,7 +708,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "322–323, 374–375"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 24,
@@ -710,7 +735,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "308"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 25,
@@ -737,7 +763,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "229–230"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 26,
@@ -766,7 +793,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "191, 229–230, 269, 320, 327"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 27,
@@ -796,7 +824,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "161, 227–228, 287"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 28,
@@ -819,7 +848,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "33"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 29,
@@ -846,7 +876,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "291, 297, 302"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 30,
@@ -881,7 +912,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "99, 101–103, 110, 221–222"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 31,
@@ -909,7 +941,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "101, 107"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 32,
@@ -934,7 +967,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "356–357"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 33,
@@ -958,7 +992,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "170–172"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 34,
@@ -982,7 +1017,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "73–74"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 35,
@@ -1010,7 +1046,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "29, 129, 133–134, 259–260"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 36,
@@ -1039,7 +1076,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "17–18, 20–21, 349, 353, 376–377"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 37,
@@ -1069,7 +1107,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "159–160, 166, 255–257"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 38,
@@ -1097,7 +1136,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "181, 204–205, 260–262"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 39,
@@ -1124,7 +1164,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "255–256"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 40,
@@ -1154,7 +1195,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "27, 29, 115, 118–120, 265"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 41,
@@ -1182,7 +1224,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "258–259, 265"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 42,
@@ -1213,7 +1256,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "186, 188, 237–238, 241, 243, 254–255"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 43,
@@ -1242,7 +1286,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "73–75, 77, 195, 205–206, 222"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 44,
@@ -1273,7 +1318,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "99–100, 107, 110"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 45,
@@ -1298,7 +1344,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "237, 240–241"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 46,
@@ -1323,7 +1370,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "179–180"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 47,
@@ -1349,7 +1397,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "63, 66, 237, 239"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 48,
@@ -1377,7 +1426,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "21, 63, 69, 117–118, 164, 264"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 49,
@@ -1403,7 +1453,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "129–130"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 50,
@@ -1430,7 +1481,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "19–20, 76"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 51,
@@ -1458,7 +1510,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "221, 226–227"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 52,
@@ -1487,7 +1540,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "46, 51, 282, 333, 343, 346, 362"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 53,
@@ -1514,7 +1568,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "196, 203"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 54,
@@ -1539,7 +1594,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "372–373"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 55,
@@ -1571,7 +1627,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "195, 197–198, 213–218, 223, 239–240, 256, 279"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 56,
@@ -1595,7 +1652,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "25, 35, 59"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 57,
@@ -1622,7 +1680,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "169, 173–175, 180, 183, 277"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 58,
@@ -1653,7 +1712,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "169, 182–183, 242–243, 285"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 59,
@@ -1680,7 +1740,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "225–226"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 60,
@@ -1702,7 +1763,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "181"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 61,
@@ -1726,7 +1788,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "134"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 62,
@@ -1750,7 +1813,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "131–132"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 63,
@@ -1777,7 +1841,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "25, 34–35"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 64,
@@ -1803,7 +1868,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "25, 38, 379–380"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 65,
@@ -1831,7 +1897,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "121–122"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 66,
@@ -1861,7 +1928,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "155, 157–161"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 67,
@@ -1887,7 +1955,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "161"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 68,
@@ -1912,7 +1981,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "35, 59"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 69,
@@ -1939,7 +2009,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "13, 23, 26, 30, 64, 159, 165"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 70,
@@ -1967,7 +2038,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "67–68, 76, 115–116"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 71,
@@ -1993,7 +2065,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "116"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 72,
@@ -2023,7 +2096,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "133, 257"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 73,
@@ -2049,7 +2123,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "115–116, 232–233"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 74,
@@ -2076,7 +2151,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "27, 29, 49, 67, 90–93"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 75,
@@ -2100,7 +2176,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "66, 71"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 76,
@@ -2128,7 +2205,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "355–359, 365"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 77,
@@ -2156,7 +2234,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "222–223, 373"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 78,
@@ -2182,7 +2261,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "279"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 79,
@@ -2208,7 +2288,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "278, 280"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 80,
@@ -2236,7 +2317,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "270, 273, 321–323"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 81,
@@ -2262,7 +2344,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "164–165, 190, 242–243, 254"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 82,
@@ -2289,7 +2372,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "352–353"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 83,
@@ -2316,7 +2400,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "237, 244–245, 254"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 84,
@@ -2343,7 +2428,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "115–117"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 85,
@@ -2367,7 +2453,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "194–195"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 86,
@@ -2396,7 +2483,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "233, 362, 378–379"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 87,
@@ -2424,7 +2512,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "279–281, 314–315"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 88,
@@ -2450,7 +2539,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "307, 322, 326–328"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 89,
@@ -2478,7 +2568,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "29, 105–107, 110, 115"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 90,
@@ -2504,7 +2595,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "225–226"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 91,
@@ -2530,7 +2622,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "114–115, 118"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 92,
@@ -2558,7 +2651,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "16, 29, 155, 163–164"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 93,
@@ -2584,7 +2678,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "99, 103"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 94,
@@ -2609,7 +2704,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "57"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 95,
@@ -2634,7 +2730,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "141, 144"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 96,
@@ -2660,7 +2757,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "357–358, 360, 363"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 97,
@@ -2688,7 +2786,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "100, 119"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 98,
@@ -2714,7 +2813,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "73, 75, 77"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 99,
@@ -2741,7 +2841,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "88"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 100,
@@ -2766,7 +2867,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "104–105"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 101,
@@ -2792,7 +2894,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "74, 379, 384"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 102,
@@ -2821,7 +2924,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "25, 33, 53, 59, 63, 67, 324"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 103,
@@ -2850,7 +2954,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "284–285, 326"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 104,
@@ -2877,7 +2982,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "319, 324–325"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 105,
@@ -2906,7 +3012,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "59, 63, 66–68, 163, 321"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 106,
@@ -2934,7 +3041,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "67, 76, 224, 239"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 107,
@@ -2961,7 +3069,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "73, 76, 224"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 108,
@@ -2985,7 +3094,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "320–321"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 109,
@@ -3012,7 +3122,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "37–38"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 110,
@@ -3039,7 +3150,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "222"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 111,
@@ -3062,7 +3174,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "76–77"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 112,
@@ -3095,7 +3208,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "250–251, 271, 333, 337–340, 347"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 113,
@@ -3121,7 +3235,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "87–88"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 114,
@@ -3145,7 +3260,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "53–54, 59"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 115,
@@ -3174,7 +3290,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "25, 36–37"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 116,
@@ -3201,7 +3318,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "195, 212"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 117,
@@ -3228,7 +3346,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "129, 131"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 118,
@@ -3252,7 +3371,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "55–56"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 119,
@@ -3278,7 +3398,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "221, 233–234"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 120,
@@ -3306,7 +3427,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "198, 212–214, 240"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 121,
@@ -3333,7 +3455,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "355–356, 358, 361–362, 378"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 122,
@@ -3359,7 +3482,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "13, 22, 36"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 123,
@@ -3384,7 +3508,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "243"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 124,
@@ -3412,7 +3537,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "191, 283–284, 310, 312, 316"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 125,
@@ -3436,7 +3562,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "155, 162, 166"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 126,
@@ -3460,7 +3587,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "55"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 127,
@@ -3489,7 +3617,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "18, 26, 50, 69–70, 75, 77"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 128,
@@ -3515,7 +3644,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "19"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 129,
@@ -3536,7 +3666,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "13"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 130,
@@ -3564,7 +3695,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "22, 26, 36, 324"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 131,
@@ -3592,7 +3724,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "13, 22, 224, 319, 321"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 132,
@@ -3618,7 +3751,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "13, 26, 30, 50"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 133,
@@ -3647,7 +3781,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "13, 22, 26, 34–35, 186–187, 189, 248–249, 270, 319, 325, 329"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 134,
@@ -3674,7 +3809,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "22, 26, 32"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 135,
@@ -3701,7 +3837,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "32–33, 52"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 136,
@@ -3728,7 +3865,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "34, 201"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 137,
@@ -3756,7 +3894,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "35, 54, 319"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 138,
@@ -3783,7 +3922,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "50, 262"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 139,
@@ -3806,7 +3946,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "26, 52"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 140,
@@ -3835,7 +3976,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "18, 26, 54–55, 324"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 141,
@@ -3861,7 +4003,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "56"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 142,
@@ -3886,7 +4029,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "56"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 143,
@@ -3915,7 +4059,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "57, 59, 67, 333, 335, 339, 373–374"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 144,
@@ -3940,7 +4085,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "63–65, 71"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 145,
@@ -3967,7 +4113,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "63, 65–66, 73, 77"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 146,
@@ -3996,7 +4143,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "63, 66, 70, 243–244"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 147,
@@ -4023,7 +4171,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "27–29, 73–74, 81, 96"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 148,
@@ -4050,7 +4199,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "81–83"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 149,
@@ -4088,7 +4238,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "27, 29, 81, 83–84"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 150,
@@ -4118,7 +4269,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "29, 85–86"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 151,
@@ -4148,7 +4300,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "29, 86–88"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 152,
@@ -4175,7 +4328,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "29, 88–90"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 153,
@@ -4207,7 +4361,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "13, 22, 89, 333, 343–345"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 154,
@@ -4234,7 +4389,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "91, 93, 230–231"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 155,
@@ -4266,7 +4422,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "27, 29, 93–96, 166"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 156,
@@ -4292,7 +4449,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "94"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 157,
@@ -4319,7 +4477,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "94–95"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 158,
@@ -4346,7 +4505,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "94–95, 264–265"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 159,
@@ -4372,7 +4532,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "81, 94"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 160,
@@ -4398,7 +4559,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "99–100"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 161,
@@ -4427,7 +4589,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "105, 349, 353–354, 365, 381"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 162,
@@ -4454,7 +4617,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "105, 349, 353"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 163,
@@ -4481,7 +4645,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "29, 120–121"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 164,
@@ -4513,7 +4678,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "29, 121–122, 129–130"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 165,
@@ -4537,7 +4703,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "115, 119"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 166,
@@ -4564,7 +4731,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "29, 122–124"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 167,
@@ -4591,7 +4759,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "115, 123–124"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 168,
@@ -4626,7 +4795,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "29, 129–132, 135"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 169,
@@ -4656,7 +4826,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "129, 134–136"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 170,
@@ -4683,7 +4854,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "136–137"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 171,
@@ -4712,7 +4884,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "140–143"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 172,
@@ -4746,7 +4919,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "141, 143, 145–146"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 173,
@@ -4775,7 +4949,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "141, 146–147"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 174,
@@ -4804,7 +4979,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "124, 149–152, 157, 160–161, 173, 180, 198, 203–204, 211–212, 215"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 175,
@@ -4832,7 +5008,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "155–157, 357"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 176,
@@ -4858,7 +5035,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "155, 157"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 177,
@@ -4884,7 +5062,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "158, 203–204"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 178,
@@ -4909,7 +5088,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "159–160, 165"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 179,
@@ -4934,7 +5114,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "162"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 180,
@@ -4958,7 +5139,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "155, 162"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 181,
@@ -4987,7 +5169,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "14, 49, 169, 171–172"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 182,
@@ -5010,7 +5193,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "169, 175, 177–178"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 183,
@@ -5040,7 +5224,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "169, 175–179, 191"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 184,
@@ -5067,7 +5252,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "180–181, 204–205"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 185,
@@ -5095,7 +5281,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "195, 260–261"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 186,
@@ -5125,7 +5312,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "120, 199, 312, 350–351"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 187,
@@ -5153,7 +5341,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "199, 250"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 188,
@@ -5182,7 +5371,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "185, 188, 195, 198–199, 205, 215"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 189,
@@ -5214,7 +5404,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "171–172, 200, 282–283, 294"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 190,
@@ -5243,7 +5434,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "171, 200, 283"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 191,
@@ -5270,7 +5462,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "195, 204–205"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 192,
@@ -5294,7 +5487,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "200"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 193,
@@ -5321,7 +5515,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "195, 202, 208–210, 283, 296, 301"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 194,
@@ -5347,7 +5542,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "205, 207"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 195,
@@ -5376,7 +5572,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "195, 210–212, 215, 300–302"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 196,
@@ -5406,7 +5603,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "227–228, 305–307, 316"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 197,
@@ -5435,7 +5633,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "227, 307"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 198,
@@ -5467,7 +5666,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "228–230, 253, 264, 309"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 199,
@@ -5495,7 +5695,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "221, 231–232"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 200,
@@ -5523,7 +5724,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "221, 231–232"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 201,
@@ -5553,7 +5755,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "188, 221, 232–234, 325"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 202,
@@ -5584,7 +5787,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "188, 191, 247–251, 263, 284, 328–329"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 203,
@@ -5610,7 +5814,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "258"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 204,
@@ -5633,7 +5838,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "264–265"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 205,
@@ -5667,7 +5873,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "186, 188–189, 225, 227, 268–269, 275–278, 285, 294–296, 302"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 206,
@@ -5697,7 +5904,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "161, 166, 277, 281–282, 296–300, 302"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 207,
@@ -5724,7 +5932,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "278–279"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 208,
@@ -5753,7 +5962,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "286–288, 310"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 209,
@@ -5778,7 +5988,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "306"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 210,
@@ -5805,7 +6016,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "306–307"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 211,
@@ -5838,7 +6050,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "191, 305, 307, 309–313"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 212,
@@ -5865,7 +6078,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "305, 312"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 213,
@@ -5888,7 +6102,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "305, 313–314"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 214,
@@ -5914,7 +6129,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "314"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 215,
@@ -5939,7 +6155,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "314"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 216,
@@ -5968,7 +6185,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "321–323, 351–352, 354"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 217,
@@ -5990,7 +6208,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "319, 324–325"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 218,
@@ -6013,7 +6232,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "325"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 219,
@@ -6039,7 +6259,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "249, 307, 319, 326–329"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 220,
@@ -6074,7 +6295,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "33–34, 250, 271, 319, 329, 333, 339, 345–346, 355"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 221,
@@ -6104,7 +6326,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "333–336"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 222,
@@ -6128,7 +6351,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "333, 338"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 223,
@@ -6153,7 +6377,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "249–250, 271, 340–341"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 224,
@@ -6181,7 +6406,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "249–250, 333, 341–342"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 225,
@@ -6208,7 +6434,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "333, 342–343"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 226,
@@ -6236,7 +6463,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "187, 190, 333, 343–344, 376"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 227,
@@ -6260,7 +6488,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "350"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 228,
@@ -6289,7 +6518,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "359–361, 373"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   },
   {
    "n": 229,
@@ -6316,7 +6546,8 @@
     "book": "The Courtroom of Heaven",
     "pages": "375–376"
    },
-   "page": "queued"
+   "page": "queued",
+   "date": "2026-10-11"
   }
  ]
 }

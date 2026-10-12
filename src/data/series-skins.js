@@ -1,4 +1,7 @@
-// series-skins 1012 V3.js
+// series-skins 1012 V4.js
+// V4: SECTIONS gains the newly dated kinds (Dutch 1012): The Symbol Lexicon, Torah
+// Testimonies, and the hand-built section pages (American Idolatry, Sun Worship,
+// Catholicism, The Holidays, Foreign Fire, The Calendar) read from page-dates.json.
 // V3 (Homepage Featured and Recent Spec 1012 V3, Part C): SYMBOLS — one thin-line
 // SVG per category, same 24-unit box and stroke weight so the set reads as a
 // family (no emoji, no diamond placeholder). Keyed by the category slug; shown
@@ -178,6 +181,15 @@ export const SECTIONS = {
   'watchmans-desk': { name: 'The Watchman’s Desk', href: '/watchmans-desk', skin: null, cta: 'Read the Letter' },
   hollywood: { name: 'Hollywood', href: '/hollywood', skin: 'hollywood', cta: 'Read the Reel' },
   'edited-after-the-cross': { name: 'Edited After the Cross', href: '/edited-after-the-cross', skin: null, cta: 'Read the Verse' },
+  'symbol-lexicon': { name: 'The Symbol Lexicon', href: '/symbol-lexicon', skin: null, cta: 'Read the Symbol' },
+  'torah-testimonies': { name: 'Torah Testimonies', href: '/torah/testimonies', skin: null, cta: 'Read the Testimony' },
+  // Hand-built section pages, dated through src/data/page-dates.json (1012).
+  'american-idolatry': { name: 'American Idolatry', href: '/american-idolatry', skin: 'american-idolatry', cta: 'Read the Study' },
+  'sun-worship': { name: 'Sun Worship', href: '/sun-worship', skin: 'sun-worship', cta: 'Read the Study' },
+  catholicism: { name: 'Catholicism', href: '/catholicism', skin: 'catholicism', cta: 'Read the Study' },
+  holidays: { name: 'The Holidays', href: '/holidays', skin: 'holidays', cta: 'Read the Study' },
+  'foreign-fire': { name: 'Foreign Fire', href: '/foreign-fire', skin: 'foreign-fire', cta: 'Read the Study' },
+  calendar: { name: 'The Calendar', href: '/calendar', skin: 'calendar', cta: 'Read the Study' },
 };
 
 // Trinity series: the Trinity Files and the three Trinity books shelved under /trinity.
@@ -243,6 +255,7 @@ const SYMBOL_ALIAS = {
   'berean-studies': 'studies',
   'pathway-name-and-nature': 'pathway',
   'pathway-grave-and-gate': 'pathway',
+  'torah-testimonies': 'torah',
 };
 
 /** The SYMBOLS key for a piece: its skin's symbol when it has one, else its section's. */

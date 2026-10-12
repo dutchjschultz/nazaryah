@@ -9,8 +9,9 @@
 //         'planned' — foundations only; listed so the architecture is visible
 
 export const meta = {
-  version: 10,
-  updated: '2026-10-11', // v10: F-10 V3 — one section added
+  version: 11,
+  updated: '2026-10-12', // v11: live testimonies and foundations carry `date` (first commit, git log) for the homepage Last 30 Days
+  // v10: F-10 V3 — one section added
 };
 
 export const SECTION = {
@@ -42,6 +43,7 @@ export const STUDIES = [
     foundations: ['f-09', 'f-10', 'f-14'],
     group: 'D',
     status: 'live',
+    date: '2026-10-03', // first committed
   },
   {
     id: 'D-002',
@@ -53,6 +55,7 @@ export const STUDIES = [
     foundations: ['f-09', 'f-10'],
     group: 'D',
     status: 'live',
+    date: '2026-10-03', // first committed
   },
   {
     id: 'D-003',
@@ -64,6 +67,7 @@ export const STUDIES = [
     foundations: ['f-10'],
     group: 'D',
     status: 'live',
+    date: '2026-10-03', // first committed
   },
   {
     id: 'D-004',
@@ -75,6 +79,7 @@ export const STUDIES = [
     foundations: ['f-09', 'f-10'],
     group: 'D',
     status: 'live',
+    date: '2026-10-03', // first committed
   },
   {
     id: 'D-012',
@@ -86,6 +91,7 @@ export const STUDIES = [
     foundations: ['f-09', 'f-10'],
     group: 'D',
     status: 'live',
+    date: '2026-10-03', // first committed
   },
   {
     id: 'D-018',
@@ -97,6 +103,7 @@ export const STUDIES = [
     foundations: ['f-09', 'f-10'],
     group: 'D',
     status: 'live',
+    date: '2026-10-03', // first committed
   },
   {
     id: 'D-019',
@@ -108,6 +115,7 @@ export const STUDIES = [
     foundations: ['f-09', 'f-10'],
     group: 'D',
     status: 'live',
+    date: '2026-10-03', // first committed
   },
 ];
 
@@ -126,6 +134,7 @@ export const FOUNDATIONS = [
     deck: 'Five different words, one English label.',
     verses: 29,
     status: 'live',
+    date: '2026-10-04', // first committed
   },
   {
     key: 'f-02',
@@ -135,6 +144,7 @@ export const FOUNDATIONS = [
     deck: 'To be under a law is a courtroom position, not a way of life.',
     verses: 15,
     status: 'live',
+    date: '2026-10-04', // first committed
   },
   {
     key: 'f-03',
@@ -144,6 +154,7 @@ export const FOUNDATIONS = [
     deck: 'Two stages, and only one of them was ever by works.',
     verses: 30,
     status: 'live',
+    date: '2026-10-04', // first committed
   },
   {
     key: 'f-04',
@@ -153,6 +164,7 @@ export const FOUNDATIONS = [
     deck: 'Five Greek words carry the whole claim, and not one of them means repealed.',
     verses: 10,
     status: 'live',
+    date: '2026-10-04', // first committed
   },
   {
     key: 'f-05',
@@ -162,6 +174,7 @@ export const FOUNDATIONS = [
     deck: 'The agreement was renewed; the terms were relocated.',
     verses: 17,
     status: 'live',
+    date: '2026-10-04', // first committed
   },
   {
     key: 'f-06',
@@ -171,6 +184,7 @@ export const FOUNDATIONS = [
     deck: 'Priesthood, offering, penalty, and access, named one by one.',
     verses: 17,
     status: 'live',
+    date: '2026-10-04', // first committed
   },
   {
     key: 'f-07',
@@ -180,6 +194,7 @@ export const FOUNDATIONS = [
     deck: 'A shadow is evidence, not a placeholder.',
     verses: 4,
     status: 'live',
+    date: '2026-10-04', // first committed
   },
   {
     key: 'f-08',
@@ -189,6 +204,7 @@ export const FOUNDATIONS = [
     deck: 'In every text, find the party in the room.',
     verses: 7,
     status: 'live',
+    date: '2026-10-05', // first committed
   },
   {
     key: 'f-09',
@@ -198,6 +214,7 @@ export const FOUNDATIONS = [
     deck: 'The yoke nobody could bear was never His.',
     verses: 19,
     status: 'live',
+    date: '2026-10-04', // first committed
   },
   {
     key: 'f-10',
@@ -207,6 +224,7 @@ export const FOUNDATIONS = [
     deck: 'Two Greek words that look alike in English, and the whole table argument resting on the difference.',
     verses: 19,
     status: 'live',
+    date: '2026-10-03', // first committed
     // F-10 V3 (2026-10-11): "The Torah Already Kept Two Lines Apart" added
     // between "Both Words in One Breath" and "What Did Change" (Leviticus 10:10,
     // Deuteronomy 12:22). Nothing else in the foundation changed.
@@ -220,6 +238,7 @@ export const FOUNDATIONS = [
     deck: 'Every occurrence, and who actually moved the day.',
     verses: 8,
     status: 'live',
+    date: '2026-10-04', // first committed
   },
   {
     key: 'f-12',
@@ -229,6 +248,7 @@ export const FOUNDATIONS = [
     deck: 'Creation behind it, deliverance in it, the rest to come ahead of it.',
     verses: 3,
     status: 'live',
+    date: '2026-10-05', // first committed
   },
   {
     key: 'f-13',
@@ -238,6 +258,7 @@ export const FOUNDATIONS = [
     deck: 'Yahushua set the expiry date Himself.',
     verses: 12,
     status: 'live',
+    date: '2026-10-05', // first committed
   },
   {
     key: 'f-14',
@@ -247,6 +268,7 @@ export const FOUNDATIONS = [
     deck: 'The commonwealth of Israel and the stranger within its gates.',
     verses: 25,
     status: 'live',
+    date: '2026-10-05', // first committed
   },
   {
     key: 'f-15',
@@ -256,6 +278,7 @@ export const FOUNDATIONS = [
     deck: 'Two words that were never meant to cut Scripture into eras.',
     verses: 5,
     status: 'live',
+    date: '2026-10-05', // first committed
   },
   {
     key: 'f-16',
@@ -265,6 +288,7 @@ export const FOUNDATIONS = [
     deck: 'When Yahuah says He hates your feasts.',
     verses: 6,
     status: 'live',
+    date: '2026-10-05', // first committed
   },
 ];
 

@@ -1,4 +1,6 @@
-// src/data/hollywood.js  ·  1011 V7
+// src/data/hollywood.js  ·  1012 V8
+// V8: every live entry now carries `date` — the day its page was first committed
+// to the site (git log), per Dutch's 1012 rule for undated pieces.
 // V7: reels carry an optional `date` (ISO YYYY-MM-DD, the day the reel went
 // live) — the homepage Last 30 Days reads it. Set on the four Swarm reels
 // published 0928; older reels predate the window and carry none. Give every new
@@ -43,6 +45,7 @@ export const categories = [
         count: 9,
         href: "/disney",
         status: "live",
+        date: "2026-04-16",
       },
       {
         slug: "pixar",
@@ -53,6 +56,7 @@ export const categories = [
         count: 8,
         href: "/hollywood/films/pixar/index.html",
         status: "live",
+        date: "2026-04-22",
       },
       {
         slug: "fantasy-films",
@@ -63,6 +67,7 @@ export const categories = [
         count: 2,
         href: "/hollywood/films/fantasy/index.html",
         status: "live",
+        date: "2026-04-22",
       },
       {
         slug: "sci-fi",
@@ -73,6 +78,7 @@ export const categories = [
         count: 1,
         href: "/hollywood/films/sci-fi/index.html",
         status: "live",
+        date: "2026-04-22",
       },
       {
         slug: "swarm",
@@ -83,6 +89,7 @@ export const categories = [
         count: 5,
         href: "/hollywood/swarm",
         status: "live",
+        date: "2026-08-25",
         associations: ["foreign-fire", "goel-kopher"],
         // Entries under the fly-god page, in film-date order. Each gets the hub's
         // same four questions: what the fly does on screen, what it is used to
@@ -97,6 +104,7 @@ export const categories = [
             verses: "2 Kgs 1:2-4; 1 John 3:4; Rom 4:15; Lev 16:21-22",
             href: "/hollywood/swarm/named-at-ekron",
             status: "live",
+            date: "2026-08-25",
             associations: ["foreign-fire"],
           },
           {
@@ -166,6 +174,7 @@ export const categories = [
         verses: "1 John 4:1; 1 Cor 10:20",
         href: "/hollywood/the-craft/the-muse",
         status: "live",
+        date: "2026-07-15",
       },
       {
         n: 2,
@@ -175,6 +184,7 @@ export const categories = [
         verses: "Matt 23:27; Acts 16:16",
         href: "/hollywood/the-craft/the-muse-on-the-screen",
         status: "live",
+        date: "2026-07-14",
       },
       {
         n: 3,
@@ -184,6 +194,7 @@ export const categories = [
         verses: "1 Sam 16:7; Prov 31:30",
         href: "/hollywood/the-craft/glamour",
         status: "live",
+        date: "2026-07-15",
       },
       {
         n: 4,
@@ -193,6 +204,7 @@ export const categories = [
         verses: "Prov 18:21; Ps 101:3",
         href: "/hollywood/the-craft/the-spell-of-the-script",
         status: "live",
+        date: "2026-07-15",
       },
       {
         n: 5,
@@ -202,6 +214,7 @@ export const categories = [
         verses: "Acts 16:16; Deut 18",
         href: "/hollywood/the-craft/the-oracle",
         status: "live",
+        date: "2026-07-15",
       },
       {
         n: 6,
@@ -211,6 +224,7 @@ export const categories = [
         verses: "Mark 8:36",
         href: "/hollywood/the-craft/the-bargain",
         status: "live",
+        date: "2026-07-15",
       },
       {
         n: 7,
@@ -220,6 +234,7 @@ export const categories = [
         verses: "1 John 4:1; Rom 12:2",
         href: "/hollywood/the-craft/amusement",
         status: "live",
+        date: "2026-07-15",
       },
       {
         n: 8,
@@ -232,6 +247,7 @@ export const categories = [
         count: 3,
         href: "/hollywood/symbols/index.html",
         status: "live",
+        date: "2026-04-22",
       },
       {
         // Moved here from The Signature in the Swarm 0928 — The Shack has no
@@ -243,6 +259,7 @@ export const categories = [
         verses: "Deut 4:15-16; John 14:28; 1 Cor 11:3; Heb 9:22",
         href: "/hollywood/the-craft/they-made-him-a-face",
         status: "live",
+        date: "2026-08-25",
         associations: ["trinity-examined"],
       },
     ],
@@ -262,6 +279,7 @@ export const categories = [
         verses: "Acts 7:43; Ps 115:4-8; 1 John 5:21",
         href: "/hollywood/the-stars/the-making-of-stars",
         status: "live",
+        date: "2026-07-15",
       },
       {
         n: 2,
@@ -271,6 +289,7 @@ export const categories = [
         verses: "John 8:44; Matt 6:24; Isa 42:8",
         href: "/hollywood/the-stars/the-altar",
         status: "live",
+        date: "2026-07-15",
       },
       {
         n: 3,
@@ -280,6 +299,7 @@ export const categories = [
         verses: "Rom 1:25; Isa 42:8; Acts 12:22",
         href: "/hollywood/the-stars/the-red-carpet",
         status: "live",
+        date: "2026-07-29",
       },
     ],
   },

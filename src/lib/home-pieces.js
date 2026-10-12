@@ -1,4 +1,9 @@
-// home-pieces 1012 V3.js
+// home-pieces 1012 V4.js
+// V4: Dutch's 1012 rule — every piece is dated (first commit, git log), so three
+// more kinds join the pool: Torah Testimonies + Foundations (law-on-trial.js),
+// the Symbol Lexicon (symbol-lexicon-master.json), and the hand-built section
+// pages (src/data/page-dates.json, made by scripts/page-dates.py). A registry
+// route already served by another source (a Hebrew study page) is skipped.
 // V3 (Homepage Featured and Recent Spec 1012 V3): five featured seats, not six
 // (the oldest featuredAt steps down to Last 30 Days on its own); each piece
 // carries `location` (the menu path to where it lives, from nav.js through
@@ -33,6 +38,9 @@ import { groupOf } from '../data/blog-groups.js';
 import { entries as deskEntries } from '../data/watchmans-desk.js';
 import { studios, swarmEntries, craft, stars } from '../data/hollywood.js';
 import { verses as eacVerses } from '../data/edited-after-the-cross.js';
+import { STUDIES as testimonies, FOUNDATIONS as foundations } from '../data/law-on-trial.js';
+import { symbols as lexiconSymbols } from './symbol-lexicon.js';
+import pageDates from '../data/page-dates.json';
 import { SECTIONS, SKINS, sectionOfPost, skinOf, symbolKeyOf } from '../data/series-skins.js';
 import { locationOf } from './nav-location.js';
 
@@ -73,7 +81,7 @@ export async function homePieces() {
   const reels = [...studios.cards, ...(swarmEntries || []), ...craft.cards, ...stars.cards]
     .filter((r) => r.status === 'live' && r.href);
 
-  return [
+  const list = [
     ...posts.map((p) => piece({
       key: `post:${p.slug}`,
       title: p.data.title,
@@ -129,7 +137,42 @@ export async function homePieces() {
       section: 'edited-after-the-cross',
       data: v,
     })),
+    ...testimonies.filter((t) => t.status === 'live').map((t) => piece({
+      key: `testimony:${t.slug}`,
+      title: `${t.reference} — ${t.title}`,
+      deck: t.deck,
+      href: `/torah/testimonies/${t.slug}`,
+      date: t.date,
+      section: 'torah-testimonies',
+      data: t,
+    })),
+    ...foundations.filter((f) => f.status === 'live').map((f) => piece({
+      key: `foundation:${f.slug}`,
+      title: `${f.key.toUpperCase()} — ${f.title}`,
+      deck: f.deck,
+      href: `/torah/testimonies/foundations/${f.slug}`,
+      date: f.date,
+      section: 'torah-testimonies',
+      data: f,
+      cta: 'Read the Foundation',
+    })),
+    ...lexiconSymbols.map((x) => piece({
+      key: `symbol:${x.slug}`,
+      title: x.symbol,
+      deck: x.gloss,
+      href: `/symbol-lexicon/${x.slug}`,
+      date: x.date,
+      section: 'symbol-lexicon',
+      data: x,
+    })),
   ];
+  // Hand-built pages last, so a route another source already serves wins.
+  const seen = new Set(list.map((p) => p.href.replace(/\/$/, '')));
+  for (const pg of pageDates.pages) {
+    if (seen.has(pg.route)) continue;
+    list.push(piece({ key: `page:${pg.route}`, title: pg.title, deck: pg.deck, href: pg.route, date: pg.date, section: pg.section }));
+  }
+  return list;
 }
 
 const newestFirst = (a, b) => (b.date ?? '').localeCompare(a.date ?? '') || a.title.localeCompare(b.title);
