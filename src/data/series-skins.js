@@ -1,4 +1,9 @@
-// series-skins 1011 V2.js
+// series-skins 1012 V3.js
+// V3 (Homepage Featured and Recent Spec 1012 V3, Part C): SYMBOLS — one thin-line
+// SVG per category, same 24-unit box and stroke weight so the set reads as a
+// family (no emoji, no diamond placeholder). Keyed by the category slug; shown
+// on the featured cards and the Last 30 Days rows. A swap is one line here.
+// symbolKeyOf() picks a piece's symbol from its skin, then its section.
 // V2: SECTIONS gains `hebrew` (Hebrew-section studies, /hebrew/<slug>).
 // V1: the homepage rail's card looks, extracted before the rail was removed
 // (Homepage Featured and Recent Spec 1011 V2). One skin per series; every
@@ -196,4 +201,56 @@ export function skinOf(sectionKey, override) {
     throw new Error(`series-skins: unknown skin "${override}" — use one of: ${Object.keys(SKINS).join(', ')}`);
   }
   return key ? { key, ...SKINS[key] } : { key: null, ...HOUSE_SKIN, kicker: SECTIONS[sectionKey]?.name ?? '' };
+}
+
+// ── SYMBOLS ─────────────────────────────────────────────────────────────────
+// Each value: SVG path data drawn with stroke="currentColor", fill none, in a
+// 24×24 box. Optional { d, fill } adds filled shapes; { text } draws a glyph.
+export const SYMBOLS = {
+  torah: { d: 'M5 20V8a3 3 0 0 1 6 0v12H5z M13 20V8a3 3 0 0 1 6 0v12h-6z M7 11h2 M7 14h2 M15 11h2 M15 14h2' },
+  trinity: { d: 'M12 3l7.8 13.5H4.2z M12 21L4.2 7.5h15.6z' }, // the Trinity card's ✡
+  doctrines: { d: 'M12 4a8 8 0 1 0 0 16a8 8 0 1 0 0-16z', fill: 'M12 8.5a3.5 3.5 0 1 0 0 7a3.5 3.5 0 1 0 0-7z' }, // ◉
+  hebrew: { text: 'ב' }, // the letter already in use
+  investigations: { d: 'M10 4a6 6 0 1 0 0 12a6 6 0 1 0 0-12z M14.5 14.5L20 20' },
+  'hidden-gems': { d: 'M3 9l3-5h12l3 5-9 11z M3 9h18 M9.5 4L12 9l2.5-5 M8 9l4 11 4-11' },
+  calendar: { d: 'M15 3a9 9 0 1 0 6 14.5A7.5 7.5 0 0 1 15 3z' },
+  cosmology: { d: 'M2 17h20 M4.5 17a7.5 7.5 0 0 1 15 0 M7 21h10 M12 6.5v1.5' },
+  ekklesia: { d: 'M3 15c2 2 4.5 3 9 3s7-1.5 9-4c-3 .5-5 0-6-1.5H6c-1.5 0-3 1-3 2.5z M15 12.5c1.5-.5 3-1.5 3.5-3 M9 12.5V11 M9 11c-1.5-1.3-1.2-3.4 0-5 1.2 1.6 1.5 3.7 0 5z' },
+  pathway: { d: 'M3 20h5v-5h5v-5h5V5h3 M3 20h18' },
+  'close-to-the-hip': { d: 'M20 3C12 4 7 9.5 5 20 M20 3c-1 5.5-4.5 9.5-11 11 M9 14l-2.5 1 M5 20l-1.5 1.5' },
+  parables: { d: 'M12 21V9 M12 9c-2-1-3-3-3-5 2 1 3 3 3 5z M12 9c2-1 3-3 3-5-2 1-3 3-3 5z M12 14c-2-.8-3.6-2.4-4-4.5 2 .4 3.6 2 4 4.5z M12 14c2-.8 3.6-2.4 4-4.5-2 .4-3.6 2-4 4.5z M9 21h6' },
+  'foreign-fire': { d: 'M12 3c.8 3.5 6 6 6 11a6 6 0 0 1-12 0c0-3 1.8-5 3-6.5.2 2 1 3.2 2.2 3.5C11 8.5 11 5.5 12 3z' },
+  'sun-worship': { d: 'M12 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8z M12 2v3 M12 19v3 M2 12h3 M19 12h3 M4.9 4.9l2.1 2.1 M17 17l2.1 2.1 M4.9 19.1L7 17 M17 7l2.1-2.1' },
+  catholicism: { d: 'M12 3v18 M7 8h10' }, // the card's †
+  hollywood: { d: 'M12 4a8 8 0 1 0 0 16a8 8 0 1 0 0-16z M12 6.5a1.6 1.6 0 1 0 0 3.2a1.6 1.6 0 1 0 0-3.2z M12 14.3a1.6 1.6 0 1 0 0 3.2a1.6 1.6 0 1 0 0-3.2z M7.9 10.4a1.6 1.6 0 1 0 0 3.2a1.6 1.6 0 1 0 0-3.2z M16.1 10.4a1.6 1.6 0 1 0 0 3.2a1.6 1.6 0 1 0 0-3.2z M20 20h2' },
+  'american-idolatry': { d: 'M12 3l2.6 6.2 6.7.3-5.1 4.3 1.6 6.5L12 16.8l-5.8 3.5 1.6-6.5-5.1-4.3 6.7-.3z' },
+  holidays: { d: 'M12 4.5a7 7 0 1 0 0 14a7 7 0 1 0 0-14z M12 7.5a4 4 0 1 0 0 8a4 4 0 1 0 0-8z M10 18.5l-1.5 3 M14 18.5l1.5 3' },
+  'christian-or-demonic': { d: 'M12 4v16 M8 20h8 M5 7h14 M5 7l-2.5 6a2.5 2.5 0 0 0 5 0z M19 7l-2.5 6a2.5 2.5 0 0 0 5 0z' },
+  'paper-trail': { d: 'M8 20V4 M5 7l3-3 3 3 M16 4v16 M13 17l3 3 3-3' }, // ⇅
+  studies: { d: 'M6 5h11a3 3 0 0 1 3 3v12H9a3 3 0 0 1-3-3z M6 5a2 2 0 0 0-2 2v2h2 M10 10h7 M10 13h7 M10 16h5' },
+  peah: { d: 'M4 4v16h16 M8 16v-3.5 M8 12.5c-.9-.4-1.3-1.2-1.3-2 .9.3 1.3 1.1 1.3 2z M12 16v-3.5 M12 12.5c-.9-.4-1.3-1.2-1.3-2 .9.3 1.3 1.1 1.3 2z M8 9V6.5 M8 6.5c-.9-.4-1.3-1.2-1.3-2 .9.3 1.3 1.1 1.3 2z' },
+  trilogies: { d: 'M6 5v14 M12 5v14 M18 5v14' },
+  collections: { d: 'M9 3h11v13H9z M6 6v13h11 M3 9v13h11' },
+  'side-door': { d: 'M3 21h18 M6 21V3h11v18 M6 3l7 2.5V21 M10.5 12.5v1.5' },
+  'edited-after-the-cross': { d: 'M12 3l6 7-6 11-6-11z M12 3v8.5 M12 11.5a1.3 1.3 0 1 0 0 2.6a1.3 1.3 0 1 0 0-2.6z' },
+  'symbol-lexicon': { d: 'M8 8a4 4 0 1 0 0 8a4 4 0 1 0 0-8z M12 12h9 M18 12v3 M21 12v2.5' },
+  books: { d: 'M5 5a2 2 0 0 1 2-2h11v15H7a2 2 0 0 0-2 2z M5 20a2 2 0 0 0 2 2h11v-4 M9 7h6' },
+  'watchmans-desk': { d: 'M9 21l1-11h4l1 11 M7 10h10 M8 10l1-4h6l1 4 M12 3v3 M6 21h12 M11 14h2' },
+};
+
+// Sections and skins that wear another category's symbol.
+const SYMBOL_ALIAS = {
+  'berean-studies': 'studies',
+  'pathway-name-and-nature': 'pathway',
+  'pathway-grave-and-gate': 'pathway',
+};
+
+/** The SYMBOLS key for a piece: its skin's symbol when it has one, else its section's. */
+export function symbolKeyOf(sectionKey, skinKey) {
+  for (const k of [skinKey, sectionKey]) {
+    if (!k) continue;
+    const key = SYMBOL_ALIAS[k] || k;
+    if (SYMBOLS[key]) return key;
+  }
+  return 'studies';
 }

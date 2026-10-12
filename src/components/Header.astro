@@ -1,5 +1,10 @@
 ---
-// Header.astro · 1011 V16 — every panel is placed on load and on resize, so a
+// Header.astro · 1012 V17 — Homepage spec 1012 V3, A2/A4/A5: the logo glows
+// gold on hover (it already led home) and a house icon leads the utility
+// cluster; the warm middle tone now holds across the row to Books before the
+// fade to parchment; two-word labels stack on two centred lines (the phone
+// menu keeps one line); NAV_DIVIDERS in nav.js switches a hairline between tabs.
+// V16 — every panel is placed on load and on resize, so a
 // closed panel under a tab near the right edge (Books, once Symbol Lexicon joined
 // the row — nav V4) never widens the page. V15: header rework: seven tabs, panel menus, all read
 // from src/data/nav.js (nav-sections.js retired). Top row: Counterfeits ·
@@ -59,7 +64,16 @@
 // itself still links to /doctrines.
 import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
-import { mainNav, utilityNav } from '../data/nav.js';
+import { mainNav, utilityNav, NAV_DIVIDERS } from '../data/nav.js';
+
+// A label of two or more words stacks on two centred lines in the desktop row
+// ("Edited After / the Cross"); single words stay on one line.
+const stackOf = (label: string) => {
+  const w = label.split(' ');
+  if (w.length < 2) return null;
+  const m = Math.ceil(w.length / 2);
+  return [w.slice(0, m).join(' '), w.slice(m).join(' ')];
+};
 
 const currentPath = Astro.url.pathname.replace(/\/+$/, '') || '/';
 
@@ -92,13 +106,13 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
 <header class="site-header sticky top-0 z-50 border-b border-[var(--sand-dark)] dark:border-[rgba(139,125,107,0.25)] backdrop-blur-sm" data-pagefind-ignore>
   <nav class="w-full pl-4 pr-6 md:pl-6 md:pr-10 py-1" aria-label="Main">
     <div class="flex items-center justify-between">
-      <a href="/" class="no-underline group" aria-label="Nazaryah — home">
+      <a href="/" class="no-underline group home-logo" aria-label="Nazaryah — home">
         <Logo variant="full" />
       </a>
 
       <!-- Desktop: one right-justified row of seven tabs, then the utility cluster -->
       <div class="desktop-nav hidden min-[1240px]:flex items-center">
-        <ul class="nav-row">
+        <ul class:list={['nav-row', NAV_DIVIDERS && 'nav-row--dividers']}>
           {tabs.map((tab) =>
             tab.links ? (
               <li class="np-wrap" data-np>
@@ -109,7 +123,7 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
                   aria-controls={tab.id}
                   data-np-trigger
                 >
-                  {tab.label}
+                  {stackOf(tab.label) ? <span class="nav-stack">{stackOf(tab.label)!.map((line) => <span>{line}</span>)}</span> : tab.label}
                   <span class="caret" aria-hidden="true">▾</span>
                 </button>
                 <div id={tab.id} class:list={['np-panel', tab.twoCol && 'np-panel--two']} data-np-panel>
@@ -158,12 +172,19 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
               </li>
             ) : (
               <li>
-                <a href={tab.href} class:list={['nav-link', tab.active && 'active']}>{tab.label}</a>
+                <a href={tab.href} class:list={['nav-link', tab.active && 'active']}>
+                  {stackOf(tab.label) ? <span class="nav-stack">{stackOf(tab.label)!.map((line) => <span>{line}</span>)}</span> : tab.label}
+                </a>
               </li>
             )
           )}
         </ul>
         <div class="nav-utility">
+          <a href="/" class:list={['icon-btn', currentPath === '/' && 'active']} aria-label="Home">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-6h4v6" />
+            </svg>
+          </a>
           <button data-search-trigger aria-label="Open search" class="icon-btn">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
@@ -351,13 +372,20 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
   /* ============================================================
      HEADER GRADIENT — dark logo zone fades to parchment.
      ============================================================ */
+  /* The warm amber-brown holds from ~20% to ~75% (behind Restored Truth through
+     Symbol Lexicon) and fades to parchment only around Books, finishing behind
+     About / Contact / theme. The tabs keep their cream chip, so the labels read
+     at every point of the bar. */
   .site-header {
     background: linear-gradient(
       90deg,
       #000000 0%,
-      #0f0a04 22%,
-      rgba(70, 40, 12, 0.80) 34%,
-      rgba(245, 240, 230, 0.98) 46%,
+      #0f0a04 10%,
+      rgba(70, 40, 12, 0.92) 20%,
+      rgba(84, 52, 18, 0.88) 50%,
+      rgba(96, 62, 24, 0.84) 75%,
+      rgba(196, 170, 128, 0.94) 84%,
+      rgba(245, 240, 230, 0.98) 90%,
       rgba(245, 240, 230, 0.98) 100%
     );
   }
@@ -426,13 +454,42 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
     letter-spacing: 0.12em;
     text-transform: uppercase;
     border-radius: 4px;
-    background: rgba(245, 240, 230, 0.55);
+    /* A firmer chip than before (0.55): the bar behind it now stays dark-warm
+       across most of the row, and the dark lettering needs the backing. */
+    background: rgba(245, 240, 230, 0.7);
     border: 1px solid transparent;
     cursor: pointer;
     transition: background-color 0.2s, color 0.2s, border-color 0.2s;
     text-shadow: 0 0 6px rgba(245, 240, 230, 0.7);
     white-space: nowrap;
   }
+
+  /* Two-word labels: two centred lines, tight, so the bar keeps its height.
+     The caret sits to the right of the block, centred on it. */
+  .nav-stack {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    line-height: 1.05;
+    text-align: center;
+  }
+
+  /* A5 trial (NAV_DIVIDERS in nav.js): a thin muted-gold hairline between tabs. */
+  .nav-row--dividers > li + li { position: relative; padding-left: 0.3rem; }
+  .nav-row--dividers > li + li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 22%;
+    bottom: 22%;
+    width: 1px;
+    background: rgba(201, 169, 97, 0.55);
+  }
+
+  /* The logo leads home: a pointer and a soft gold glow on hover (A2). */
+  .home-logo { cursor: pointer; display: inline-block; border-radius: 6px; transition: filter 0.2s ease; }
+  .home-logo:hover, .home-logo:focus-visible { filter: drop-shadow(0 0 6px rgba(240, 196, 80, 0.55)); }
+  .home-logo:focus-visible { outline: 2px solid #d4a531; outline-offset: 3px; }
 
   /* Hover, open panel, current page: dark brown box, bright gold lettering. */
   .nav-link:hover,
@@ -511,6 +568,7 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
   :global(.dark) .util-link:hover, :global(.dark) .util-link.active { color: #f0c450; background: rgba(212, 165, 49, 0.12); }
 
   .icon-btn {
+    text-decoration: none;
     width: 1.9rem;
     height: 1.9rem;
     border-radius: 50%;
@@ -523,7 +581,8 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
     cursor: pointer;
     transition: all 0.2s;
   }
-  .icon-btn:hover {
+  .icon-btn:hover,
+  .icon-btn.active {
     background: rgba(168, 127, 31, 0.25);
     color: #1a0e06;
     border-color: rgba(168, 127, 31, 0.55);

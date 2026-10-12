@@ -1,5 +1,8 @@
-// nav 1011 V4.js
-// The Symbol Lexicon moves out of Restored Truth to its own tab beside Edited
+// nav 1012 V5.js
+// V5 (Homepage spec 1012 V3, A6): "Hebrew Word Studies" → "The Hebrew Tongue",
+// matching the page it opens. NAV_DIVIDERS is the switch for the trial hairline
+// between top-level tabs (A5): true shows it, false hides it.
+// V4: The Symbol Lexicon moves out of Restored Truth to its own tab beside Edited
 // After the Cross (Dutch).
 // V3: The Symbol Lexicon joins Restored Truth (Etsy Build Sheet Symbol Lexicon 1011 V1).
 // V2: Voices gets its description (Dutch)
@@ -28,6 +31,9 @@ const doctrines = {
   pinned: true,
 };
 
+// A5 trial: a thin muted-gold hairline between top-level tabs. One switch.
+export const NAV_DIVIDERS = false;
+
 export const mainNav = [
   {
     label: 'Counterfeits',
@@ -52,7 +58,7 @@ export const mainNav = [
     glyph: '✦',
     links: [
       doctrines,
-      { label: 'Hebrew Word Studies', href: '/hebrew', desc: 'Restored names, root words, and the meanings translation flattened.' },
+      { label: 'The Hebrew Tongue', href: '/hebrew', desc: 'Restored names, root words, and the meanings translation flattened.' },
       { label: 'The Calendar', href: '/calendar', desc: 'Aviv, the renewed moon, and the Sabbath, read from the lights Yahuah set in the sky.' },
       { label: 'Ekklesia', href: '/ekklesia', desc: 'What the assembly was meant to be before it became “church.”' },
       { label: 'Cosmology', href: '/cosmology', desc: 'The shape of what Yahuah made, from the firmament above to the earth below.' },

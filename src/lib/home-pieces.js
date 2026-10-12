@@ -1,4 +1,9 @@
-// home-pieces 1011 V2.js
+// home-pieces 1012 V3.js
+// V3 (Homepage Featured and Recent Spec 1012 V3): five featured seats, not six
+// (the oldest featuredAt steps down to Last 30 Days on its own); each piece
+// carries `location` (the menu path to where it lives, from nav.js through
+// src/lib/nav-location.js) and `symbol` (its category symbol); each Last 30
+// Days group carries its symbol too.
 // V2: Hebrew-section studies (the `hebrew` collection, /hebrew/<slug>) join the
 // pool; `featuredAt` keeps its time of day (Dutch orders picks to the minute —
 // "2026-10-11T14:06"), compared as a timestamp, not cut to the date.
@@ -28,9 +33,10 @@ import { groupOf } from '../data/blog-groups.js';
 import { entries as deskEntries } from '../data/watchmans-desk.js';
 import { studios, swarmEntries, craft, stars } from '../data/hollywood.js';
 import { verses as eacVerses } from '../data/edited-after-the-cross.js';
-import { SECTIONS, sectionOfPost, skinOf } from '../data/series-skins.js';
+import { SECTIONS, SKINS, sectionOfPost, skinOf, symbolKeyOf } from '../data/series-skins.js';
+import { locationOf } from './nav-location.js';
 
-export const FEATURED_SLOTS = 6;
+export const FEATURED_SLOTS = 5;
 export const WINDOW_DAYS = 30;
 
 const iso = (d) => (d == null || d === '' ? null : d instanceof Date ? d.toISOString().slice(0, 10) : String(d).slice(0, 10));
@@ -47,6 +53,12 @@ function piece({ key, title, deck, href, date, section, data = {}, cta }) {
     date: iso(date),
     section,
     skin: skinOf(section, data.skin),
+    // Where a reader would find it: the skin's own front page when the piece
+    // wears one by override (The Copy of the Son → Hidden Gems), else its section's.
+    location: data.skin
+      ? locationOf(SKINS[data.skin].href, SKINS[data.skin].name)
+      : locationOf(SECTIONS[section].href, SECTIONS[section].name),
+    symbol: symbolKeyOf(section, data.skin),
     cta: cta || SECTIONS[section].cta,
     featured: data.featured === true,
     featuredAt: data.featuredAt ? new Date(data.featuredAt).getTime() : null,
@@ -144,7 +156,7 @@ export function recentGroups(pieces, featured, now = new Date()) {
     .map(([key, items]) => {
       items.sort(newestFirst);
       const s = SECTIONS[key];
-      return { key, name: s.name, href: s.href, accent: skinOf(key).accent, items };
+      return { key, name: s.name, href: s.href, accent: skinOf(key).accent, symbol: symbolKeyOf(key), items };
     })
     .sort((a, b) => b.items[0].date.localeCompare(a.items[0].date) || a.name.localeCompare(b.name));
 }

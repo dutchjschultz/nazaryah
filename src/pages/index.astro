@@ -1,5 +1,10 @@
 ---
-// src/pages/index.astro · 1011 V17
+// src/pages/index.astro · 1012 V18
+// V18 (Homepage Featured and Recent Spec 1012 V3): the large Doctrines card is
+// gone — the mustard Start Here button carries it, with a small "The Old Paths ·
+// The Departure" line beneath; Featured Picks is five compact cards in one row
+// (symbol, menu location line, title, deck, CTA + date); each Last 30 Days row
+// shows its category symbol. Order: hero → Featured → Last 30 Days → Desk → CttH.
 // V17: the slim FeastHero leads the page on a feast day (Feast Day Hero Brief
 // 1011 V2); nothing renders on other days.
 // V16: the page centers on new work (Homepage Featured and Recent Spec 1011 V2).
@@ -51,10 +56,10 @@ import fs from 'node:fs';
 import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SeriesCard from '../components/SeriesCard.astro';
+import Symbol from '../components/Symbol.astro';
 import FeastHero from '../components/FeastHero.jsx';
 import WatchmanCard from '../components/WatchmanCard.astro';
 import { featuredEntries } from '../data/watchmans-desk.js';
-import { SKINS } from '../data/series-skins.js';
 import { homePieces, featuredPicks, recentGroups, showDate } from '../lib/home-pieces.js';
 
 // ── SCRIPTURE INSIGHT (strip) — the single latest posted insight, read at build
@@ -83,9 +88,6 @@ const latestVideo = {
 // never enter Featured Picks. Fewer than two entries -> one card, no empty slot.
 const featuredLetters = featuredEntries;
 
-// ── DOCTRINES — the one rail card kept (the most-clicked), with its paired
-// documents as secondary links.
-const doctrines = SKINS.doctrines;
 
 // ── FEATURED PICKS + LAST 30 DAYS — one pool (src/lib/home-pieces.js). Picks
 // come first so Last 30 Days can leave them out; nothing shows twice.
@@ -136,11 +138,17 @@ const recent = recentGroups(pieces, picks);
             Nazaryah goes back to the source — original languages, restored names, and the Torah your church quietly skipped. No denominations. No comfortable answers. Just the text.
           </p>
           <div class="hero-cta-stack">
-            <a href="/doctrines" class="hero-cta" aria-label="Start here — Doctrines">
-              <span class="hero-cta-badge"><span class="star" aria-hidden="true">★</span> Start Here</span>
-              <span class="hero-cta-label">Doctrines</span>
-              <span class="hero-cta-arrow" aria-hidden="true">→</span>
-            </a>
+            <div class="hero-cta-col">
+              <a href="/doctrines" class="hero-cta" aria-label="Start here — Doctrines">
+                <span class="hero-cta-badge"><span class="star" aria-hidden="true">★</span> Start Here</span>
+                <span class="hero-cta-label">Doctrines</span>
+                <span class="hero-cta-arrow" aria-hidden="true">→</span>
+              </a>
+              <!-- The paired documents, kept side by side (spec 1012 V3, A3). -->
+              <p class="hero-doc-links">
+                <a href="/doctrines/old-paths">The Old Paths</a><span aria-hidden="true"> · </span><a href="/doctrines/the-departure">The Departure</a>
+              </p>
+            </div>
             <a href="/books" class="hero-cta hero-cta--ghost" aria-label="Read — Published Books">
               <span class="hero-cta-badge"><span class="star" aria-hidden="true">★</span> Read</span>
               <span class="hero-cta-label">Published Books</span>
@@ -298,6 +306,16 @@ const recent = recentGroups(pieces, picks);
       align-self: flex-start;
     }
 
+    /* The mustard button with the paired-documents line directly beneath it. */
+    .hero-cta-col { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
+    .hero-doc-links {
+      margin: 0; font-family: var(--font-display, 'Cinzel', Georgia, serif); font-size: 0.66rem;
+      font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; font-variant: small-caps; color: #3a2a12;
+    }
+    .hero-doc-links a { color: #3a2a12; text-decoration: none; border-bottom: 1px solid rgba(107, 77, 18, 0.35); }
+    .hero-doc-links a:hover { color: #6b4d12; border-bottom-color: #6b4d12; }
+    :global(.dark) .hero-doc-links, :global(.dark) .hero-doc-links a { color: var(--gold-light); }
+
     /* ── "Start Here · Doctrines" CTA — single gold pill with badge inside ── */
     .hero-cta {
       position: relative;
@@ -389,10 +407,17 @@ const recent = recentGroups(pieces, picks);
       }
 
       .hero-grid {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
         aspect-ratio: unset;
         max-width: 100%;
       }
+      /* The panel may shrink to the column: the mustard button's tracked caps
+         used to push it 46px past the box on a phone, clipping the text. */
+      .content-panel { min-width: 0; }
+      .hero-cta-stack, .hero-cta-col { max-width: 100%; }
+      .hero-cta { max-width: 100%; box-sizing: border-box; gap: 0.5rem; padding: 0.55rem 0.95rem; letter-spacing: 0.1em; }
+      .hero-cta-label { font-size: 0.9rem; }
+      .hero-cta--ghost .hero-cta-label { font-size: 0.78rem; }
 
       .logo-panel {
         padding: 1.75rem 1.5rem;
@@ -426,29 +451,9 @@ const recent = recentGroups(pieces, picks);
   </style>
 
 
-  <!-- ============================================================
-       DOCTRINES — the one card kept from the old rail.
-       ============================================================ -->
-  <section class="home-band home-band--doctrines" aria-label="Doctrines">
-    <div class="home-shell">
-      <SeriesCard
-        class="home-doctrines"
-        skin={doctrines}
-        href={doctrines.href}
-        title={doctrines.title}
-        description={doctrines.description}
-        cta={doctrines.cta}
-        links={[
-          { label: 'The Old Paths', href: '/doctrines/old-paths' },
-          { label: 'The Departure', href: '/doctrines/the-departure' },
-        ]}
-      />
-    </div>
-  </section>
-
   {picks.length > 0 && (
     <section class="home-band" aria-labelledby="featured-picks">
-      <div class="home-shell">
+      <div class="home-shell home-shell--wide">
         <h2 id="featured-picks" class="home-h2">Featured Picks</h2>
         <div class="home-picks">
           {picks.map((p) => (
@@ -459,6 +464,8 @@ const recent = recentGroups(pieces, picks);
               description={p.deck}
               cta={p.cta}
               date={showDate(p.date)}
+              location={p.location}
+              symbol={p.symbol}
             />
           ))}
         </div>
@@ -475,7 +482,7 @@ const recent = recentGroups(pieces, picks);
           {recent.map((g) => (
             <details class="home-group" style={`--grp-accent: ${g.accent}`}>
               <summary>
-                <span class="home-group-name">{g.name} <span class="home-group-count">({g.items.length})</span></span>
+                <span class="home-group-name"><span class="home-group-symbol" aria-hidden="true"><Symbol name={g.symbol} size="1.05rem" /></span>{g.name} <span class="home-group-count">({g.items.length})</span></span>
                 <a class="home-group-all" href={g.href}>View all <span aria-hidden="true">→</span></a>
               </summary>
               <ul class="home-group-list">
@@ -573,11 +580,10 @@ const recent = recentGroups(pieces, picks);
 
   <style>
     /* ============================================================
-       DOCTRINES / FEATURED PICKS / LAST 30 DAYS — same dark ground the
+       FEATURED PICKS / LAST 30 DAYS — same dark ground the
        rail had. Card looks come from the skins; nothing here colors a card.
        ============================================================ */
     .home-band { background: #0a0a0a; padding: 2.75rem 0 0.5rem; }
-    .home-band--doctrines { padding-top: 2.5rem; }
     .home-shell { max-width: 72rem; margin: 0 auto; padding: 0 2.5rem; }
     .home-h2 {
       font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.26em;
@@ -588,19 +594,13 @@ const recent = recentGroups(pieces, picks);
       color: #a09078; text-align: center; margin: -0.9rem 0 1.4rem;
     }
 
-    /* Doctrines: one wide card; text left, CTA + paired links right. */
-    .home-shell :global(.home-doctrines) {
-      display: grid; grid-template-columns: auto 1fr auto; align-items: center; gap: 0 1.6rem;
-      padding: 1.5rem 1.8rem;
-    }
-    .home-shell :global(.home-doctrines .series-card-icon) { height: auto; font-size: 2rem; }
-    .home-shell :global(.home-doctrines .series-card-title) { margin-bottom: 0.4rem; }
-    .home-shell :global(.home-doctrines .series-card-foot) {
-      flex-direction: column; align-items: flex-end; gap: 0.7rem; border-top: 0; padding-top: 0;
-    }
+    /* Featured Picks: five compact cards in one row (spec 1012 V3, Part B);
+       three and two on a tablet, one column on a phone. */
+    .home-shell--wide { max-width: 80rem; }
+    .home-picks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.9rem; }
 
-    /* Featured Picks: two rows of three, rail-card proportions. */
-    .home-picks { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.25rem; }
+    /* Last 30 Days row symbol, in the section's own colour. */
+    .home-group-symbol { display: inline-flex; vertical-align: -0.15em; margin-right: 0.45rem; color: var(--grp-accent); }
 
     /* Last 30 Days: closed dropdowns, a series-color bar on the left edge. */
     .home-recent { display: grid; gap: 0.6rem; max-width: 52rem; margin: 0 auto; }
@@ -686,14 +686,8 @@ const recent = recentGroups(pieces, picks);
        ============================================================ */
     @media (max-width: 900px) {
       .wr-top { grid-template-columns: 1fr; }
-      .home-picks { grid-template-columns: repeat(2, minmax(0, 1fr)); }
     }
-    @media (max-width: 720px) {
-      .home-shell :global(.home-doctrines) { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.6rem 1.4rem 1.3rem; }
-      .home-shell :global(.home-doctrines .series-card-foot) {
-        align-items: flex-start; border-top: 1px solid rgba(212, 175, 55, 0.2); padding-top: 0.85rem;
-      }
-    }
+    @media (max-width: 1100px) { .home-picks { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
     @media (max-width: 640px) { .home-picks { grid-template-columns: 1fr; } }
     @media (max-width: 600px) {
       .home-shell, .wr-container { padding: 0 1rem; }

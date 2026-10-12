@@ -1,0 +1,19 @@
+---
+// src/components/Symbol.astro · 1012 V1
+// V1: draws one category symbol from SYMBOLS in src/data/series-skins.js — a
+// thin-line 24×24 SVG in currentColor (set the colour on the parent). The same
+// stroke weight for every symbol, so the set reads as a family.
+import { SYMBOLS } from '../data/series-skins.js';
+
+interface Props { name: string; size?: string; class?: string; }
+const { name, size = '1.15rem', class: extra } = Astro.props;
+const s = SYMBOLS[name];
+---
+{s && (
+  <svg class:list={['cat-symbol', extra]} viewBox="0 0 24 24" width={size} height={size} aria-hidden="true" focusable="false"
+       fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+    {s.d && <path d={s.d} />}
+    {s.fill && <path d={s.fill} fill="currentColor" stroke="none" />}
+    {s.text && <text x="12" y="17.5" text-anchor="middle" font-size="17" font-family="'Times New Roman', serif" fill="currentColor" stroke="none">{s.text}</text>}
+  </svg>
+)}
