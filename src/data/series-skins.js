@@ -1,4 +1,5 @@
-// series-skins 1012 V4.js
+// series-skins 1012 V5.js
+// V5: SECTIONS gains 'restored-truth' (The Five Offerings), wearing the Torah symbol.
 // V4: SECTIONS gains the newly dated kinds (Dutch 1012): The Symbol Lexicon, Torah
 // Testimonies, and the hand-built section pages (American Idolatry, Sun Worship,
 // Catholicism, The Holidays, Foreign Fire, The Calendar) read from page-dates.json.
@@ -183,6 +184,8 @@ export const SECTIONS = {
   'edited-after-the-cross': { name: 'Edited After the Cross', href: '/edited-after-the-cross', skin: null, cta: 'Read the Verse' },
   'symbol-lexicon': { name: 'The Symbol Lexicon', href: '/symbol-lexicon', skin: null, cta: 'Read the Symbol' },
   'torah-testimonies': { name: 'Torah Testimonies', href: '/torah/testimonies', skin: null, cta: 'Read the Testimony' },
+  // Restored Truth has no front page of its own; its row's View all opens The Five Offerings.
+  'restored-truth': { name: 'Restored Truth', href: '/five-offerings', skin: null, cta: 'Read the Study' },
   // Hand-built section pages, dated through src/data/page-dates.json (1012).
   'american-idolatry': { name: 'American Idolatry', href: '/american-idolatry', skin: 'american-idolatry', cta: 'Read the Study' },
   'sun-worship': { name: 'Sun Worship', href: '/sun-worship', skin: 'sun-worship', cta: 'Read the Study' },
@@ -256,6 +259,7 @@ const SYMBOL_ALIAS = {
   'pathway-name-and-nature': 'pathway',
   'pathway-grave-and-gate': 'pathway',
   'torah-testimonies': 'torah',
+  'restored-truth': 'torah',
 };
 
 /** The SYMBOLS key for a piece: its skin's symbol when it has one, else its section's. */

@@ -1,4 +1,5 @@
-// nav 1012 V6.js
+// nav 1012 V7.js
+// V7: The Five Offerings joins Restored Truth (Five Offerings Etsy Block 1012 V1).
 // V6: STANDING RULE (Dutch, 1012) — every dropdown item's label is the title of
 // the page it opens, exactly as the page shows it (its <h1>); the page title wins.
 // Twelve items renamed to match (Doctrines, Foreign Fire, Catholicism, Holidays,
@@ -68,6 +69,7 @@ export const mainNav = [
       { label: "Yahuah's Appointed Times", href: '/calendar', desc: 'Aviv, the renewed moon, and the Sabbath, read from the lights Yahuah set in the sky.' },
       { label: 'Is This the Ekklesia?', href: '/ekklesia', desc: 'What the assembly was meant to be before it became “church.”' },
       { label: 'Cosmology', href: '/cosmology', desc: 'The shape of what Yahuah made, from the firmament above to the earth below.' },
+      { label: 'The Five Offerings', href: '/five-offerings', desc: 'The five offerings of Leviticus, what each one held, and why none of them is gone.' },
     ],
   },
   { label: 'Torah', href: '/torah' },

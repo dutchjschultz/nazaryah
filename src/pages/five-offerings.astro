@@ -1,0 +1,82 @@
+---
+// src/pages/five-offerings.astro · 1012 V1
+// V1: The Five Offerings (Five Offerings Etsy Block 1012 V1) — the intro, the
+// cards from src/data/offerings.js (one OfferingCard each; the burnt offering
+// first), and the close. Two columns on desktop, one on a phone; a lone last
+// card sits centred. Until all five are written, a muted line says how many
+// are still to follow. Listed in the header under Restored Truth.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import OfferingCard from '../components/OfferingCard.astro';
+import { offerings } from '../data/offerings.js';
+
+const TOTAL = 5;
+const WORDS = ['', 'One', 'Two', 'Three', 'Four'];
+const toFollow = TOTAL - offerings.length;
+const loneLast = offerings.length % 2 === 1;
+---
+
+<BaseLayout
+  title="The Five Offerings | Nazaryah"
+  description="The five offerings of Leviticus 1–7 — burnt, meal, peace, sin, and trespass — what each one held, what each pictured of the Messiah, and why three are carried forward and two are at rest, finished once, but none of them abolished."
+>
+  <div class="fo-page">
+    <header class="fo-header">
+      <h1 class="fo-title">The Five Offerings</h1>
+      <p class="fo-sub">Burnt, meal, peace, sin, and trespass, and why none of them is gone.</p>
+    </header>
+
+    <section class="fo-col fo-intro">
+      <p>Yahuah gave Israel five offerings at Sinai, and Leviticus 1 through 7 lays them out one by one: the burnt offering, the meal offering, the peace offering, the sin offering, and the trespass offering. Each one pictured a different part of the Messiah’s work, and each one taught the worshipper something about walking with Yahuah.</p>
+      <p>Most pulpits teach that all five ended at the cross. Scripture does not say that. Three of the offerings are carried straight into the Apostolic writings and handed to the believer to keep: the burnt offering as a life laid on the altar every day, the meal offering as the bread of the commandments, and the peace offering as praise and fellowship at Yahuah’s table <span class="fo-ref">(Romans 12:1; Hebrews 13:15–16)</span>.</p>
+      <p>The other two, the sin offering and the trespass offering, were finished once. “By one offering he hath perfected for ever them that are sanctified,” and “where remission of these is, there is no more offering for sin” <span class="fo-ref">(Hebrews 10:14, 18)</span>. They are at rest, not abolished. Ezekiel’s closing vision still names them <span class="fo-ref">(Ezekiel 45:17)</span>.</p>
+      <p>Each card below opens on five plain questions. Was it voluntary or required? What was offered? What was added to it? Where did the blood go? Who ate it?</p>
+    </section>
+
+    <div class:list={['fo-grid', loneLast && 'fo-grid--lone-last']}>
+      {offerings.map((o) => <OfferingCard o={o} />)}
+    </div>
+    {toFollow > 0 && (
+      <p class="fo-follow">{WORDS[toFollow]} more {toFollow === 1 ? 'offering' : 'offerings'} to follow</p>
+    )}
+
+    <section class="fo-col fo-close">
+      <h2 class="fo-close-h">Where the Offerings End</h2>
+      <p>The offerings were never thrown away. They were fulfilled in the Messiah and carried in the believer. They lead to the place where the altar’s purpose is complete and Yahuah dwells with His people face to face: “Behold, the tabernacle of God is with men, and he will dwell with them” <span class="fo-ref">(Revelation 21:3)</span>.</p>
+    </section>
+  </div>
+</BaseLayout>
+
+<style>
+  .fo-page { background: #0e0d0b; min-height: 100vh; padding: 3.5rem 2rem 5rem; color: #cfc7b6; }
+  .fo-header { text-align: center; max-width: 46rem; margin: 0 auto 2.2rem; }
+  .fo-title {
+    font-family: var(--font-display); font-size: clamp(1.9rem, 1.3rem + 2.6vw, 2.9rem);
+    font-weight: 700; color: #e8e2d4; margin: 0 0 0.8rem; line-height: 1.12;
+  }
+  .fo-sub { font-family: var(--font-family-serif); font-style: italic; font-size: 1.2rem; color: #a89f8c; margin: 0; line-height: 1.5; }
+
+  .fo-col { max-width: 44rem; margin: 0 auto; }
+  .fo-col p { font-family: var(--font-body); font-size: 1.08rem; line-height: 1.8; color: #cfc7b6; margin: 0 0 1.15rem; }
+  .fo-intro { margin-bottom: 2.6rem; }
+  .fo-ref { color: #8f8775; }
+
+  .fo-grid {
+    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem;
+    max-width: 62rem; margin: 0 auto; align-items: start;
+  }
+  /* The lone last card (the fifth, or the only one so far) sits centred. */
+  .fo-grid--lone-last > :global(:last-child) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 0.7rem); }
+  .fo-follow {
+    text-align: center; font-family: var(--font-family-serif); font-style: italic; font-size: 1.05rem;
+    color: #8f8775; margin: 1.4rem 0 0;
+  }
+
+  .fo-close { margin-top: 3.2rem; padding-top: 1.6rem; border-top: 1px solid rgba(186,117,23,0.35); }
+  .fo-close-h { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: #e8e2d4; margin: 0 0 1rem; }
+
+  @media (max-width: 760px) {
+    .fo-page { padding: 2.6rem 1rem 4rem; }
+    .fo-grid { grid-template-columns: 1fr; }
+    .fo-grid--lone-last > :global(:last-child) { width: 100%; }
+  }
+</style>

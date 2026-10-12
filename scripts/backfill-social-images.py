@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  1011 V19
+backfill-social-images  1012 V20
+V20: `five-offerings` mapped to .fo-sub (the page's subtitle line).
 V19: `symbol-lexicon` mapped to .sx-sub (the index's subtitle line), and
 symbol-lexicon/<slug> joins skip() — the 229 symbol pages share the index card
 (mirrored in check-cards.mjs V8).
@@ -122,6 +123,7 @@ DECK_CLASSES = {
     "calendar": ["cf-subtitle", "pg-subtitle", "cal-subtitle", "today-subtitle", "cf-index-subtitle"],
     "catholicism": ["sw-sub"],
     "edited-after-the-cross": ["ev-card-deck", "eac-sub"],
+    "five-offerings": ["fo-sub"],
     "symbol-lexicon": ["sx-sub"],
     "disney": ["sw-sub"],
     "foreign-fire": ["sw-sub", "ff-sub"],

@@ -1,0 +1,124 @@
+---
+// src/components/OfferingCard.astro · 1012 V1
+// V1: one offering on /five-offerings, from an object in src/data/offerings.js.
+// Static: the five drop-downs are native <details> sharing the card's id as
+// `name`, so opening one closes the others in the same card — no client JS.
+// Face, top to bottom: reference (small caps, muted), title, Hebrew line (word
+// lang="he", italic transliteration, Strong's, gloss), italic deck, status pill,
+// Messiah line (small-caps label, thin left rule), the five drop-downs (heading
+// left, short answer right in muted italics), then Carried Forward, always open.
+// Scripture references in parentheses are set in the muted colour.
+
+interface Drop { heading: string; short: string; body: string[] }
+interface Props {
+  o: {
+    id: string; reference: string; title: string;
+    hebrew: { word: string; translit: string; strongs: string; gloss: string };
+    deck: string; status: string; messiah: string; drops: Drop[]; forward: string[];
+  };
+}
+const { o } = Astro.props;
+
+// Body strings are trusted data (only <em> inside); escape anything else and
+// mute the parenthesised Scripture references: (Leviticus 1:3), (1:4), (7:8).
+const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
+  .replace(/&lt;(\/?)em&gt;/g, '<$1em>');
+const withRefs = (s: string) => esc(s).replace(/\(([^()]*\d+:\d+[^()]*)\)/g, '<span class="oc-ref">($1)</span>');
+const atRest = o.status !== 'Still standing';
+---
+
+<article class="oc" id={o.id}>
+  <p class="oc-reference">{o.reference}</p>
+  <h2 class="oc-title">{o.title}</h2>
+  <p class="oc-hebrew">
+    <span class="oc-he" lang="he">{o.hebrew.word}</span>
+    <span class="oc-translit">{o.hebrew.translit}</span>
+    <span class="oc-strongs">{o.hebrew.strongs}</span>
+    <span class="oc-gloss">“{o.hebrew.gloss}”</span>
+  </p>
+  <p class="oc-deck">{o.deck}</p>
+  <p class:list={['oc-status', atRest && 'oc-status--rest']}>{o.status}</p>
+  <p class="oc-messiah"><span class="oc-messiah-label">Messiah</span> <span set:html={withRefs(o.messiah)} /></p>
+
+  <div class="oc-drops">
+    {o.drops.map((d) => (
+      <details class="oc-drop" name={o.id}>
+        <summary>
+          <span class="oc-drop-h">{d.heading}</span>
+          <span class="oc-drop-short">{d.short}</span>
+        </summary>
+        <div class="oc-drop-body">
+          {d.body.map((p) => <p set:html={withRefs(p)} />)}
+        </div>
+      </details>
+    ))}
+  </div>
+
+  <section class="oc-forward" aria-label="Carried Forward">
+    <h3 class="oc-forward-h">Carried Forward</h3>
+    {o.forward.map((p) => <p set:html={withRefs(p)} />)}
+  </section>
+</article>
+
+<style>
+  .oc {
+    background: #161512; border: 0.5px solid rgba(255,255,255,0.08); border-top: 3px solid #BA7517;
+    border-radius: 12px; padding: 1.7rem 1.8rem 1.6rem; color: #cfc7b6; box-sizing: border-box;
+  }
+  .oc-reference {
+    margin: 0 0 0.55rem; font-family: var(--font-display); font-size: 0.72rem; font-weight: 600;
+    letter-spacing: 0.16em; text-transform: uppercase; font-variant: small-caps; color: #8f8775;
+  }
+  .oc-title { margin: 0 0 0.6rem; font-family: var(--font-display); font-size: 1.65rem; line-height: 1.15; color: #e8e2d4; }
+  .oc-hebrew { margin: 0 0 0.85rem; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.2rem 0.6rem; font-size: 1rem; color: #a89f8c; }
+  .oc-he { font-size: 1.45rem; color: #f0c450; line-height: 1; }
+  .oc-translit { font-family: var(--font-family-serif); font-style: italic; color: #e8c98a; }
+  .oc-strongs { font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 0.1em; color: #8f8775; }
+  .oc-gloss { font-family: var(--font-body); }
+  .oc-deck { margin: 0 0 0.9rem; font-family: var(--font-family-serif); font-style: italic; font-size: 1.15rem; line-height: 1.5; color: #ddd5c3; }
+  .oc-status {
+    display: inline-block; margin: 0 0 1rem; padding: 0.22rem 0.75rem; border-radius: 999px;
+    font-family: var(--font-display); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
+    color: #0e0d0b; background: #d8b06a;
+  }
+  .oc-status--rest { color: #d8b06a; background: transparent; border: 1px solid rgba(216,176,106,0.6); }
+  .oc-messiah {
+    margin: 0 0 1.3rem; padding: 0.2rem 0 0.2rem 0.9rem; border-left: 2px solid rgba(186,117,23,0.65);
+    font-family: var(--font-body); font-size: 1.02rem; line-height: 1.65; color: #cfc7b6;
+  }
+  .oc-messiah-label {
+    font-family: var(--font-display); font-size: 0.68rem; font-weight: 700; letter-spacing: 0.16em;
+    text-transform: uppercase; font-variant: small-caps; color: #d8b06a; margin-right: 0.35rem;
+  }
+
+  .oc-drops { border-top: 1px solid rgba(186,117,23,0.3); }
+  .oc-drop { border-bottom: 1px solid rgba(186,117,23,0.2); }
+  .oc-drop summary {
+    list-style: none; cursor: pointer; display: flex; align-items: baseline; justify-content: space-between;
+    gap: 0.4rem 1rem; padding: 0.8rem 0.2rem;
+  }
+  .oc-drop summary::-webkit-details-marker { display: none; }
+  .oc-drop summary:focus-visible { outline: 2px solid #BA7517; outline-offset: 2px; border-radius: 4px; }
+  .oc-drop-h { font-family: var(--font-display); font-size: 0.86rem; font-weight: 700; letter-spacing: 0.04em; color: #e8e2d4; }
+  .oc-drop-h::before { content: '▸'; display: inline-block; width: 1.1em; color: #BA7517; transition: transform .2s ease; }
+  .oc-drop[open] .oc-drop-h::before { transform: rotate(90deg); }
+  .oc-drop summary:hover .oc-drop-h { color: #f0c450; }
+  .oc-drop-short { font-family: var(--font-family-serif); font-style: italic; font-size: 1rem; color: #8f8775; text-align: right; }
+  .oc-drop-body { padding: 0 0.2rem 0.6rem 1.3rem; }
+  .oc-drop-body p, .oc-forward p { margin: 0 0 0.85rem; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.7; color: #cfc7b6; }
+  .oc :global(em) { font-family: var(--font-family-serif); font-style: italic; }
+  .oc :global(.oc-ref) { color: #8f8775; }
+
+  .oc-forward { margin-top: 1.3rem; }
+  .oc-forward-h {
+    margin: 0 0 0.6rem; font-family: var(--font-display); font-size: 0.74rem; font-weight: 700; letter-spacing: 0.18em;
+    text-transform: uppercase; font-variant: small-caps; color: #d8b06a;
+  }
+
+  @media (max-width: 600px) {
+    .oc { padding: 1.3rem 1.1rem 1.2rem; }
+    .oc-title { font-size: 1.4rem; }
+    .oc-drop summary { flex-direction: column; gap: 0.15rem; }
+    .oc-drop-short { text-align: left; padding-left: 1.1em; }
+  }
+</style>
