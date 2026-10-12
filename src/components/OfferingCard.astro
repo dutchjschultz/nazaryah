@@ -1,5 +1,10 @@
 ---
-// src/components/OfferingCard.astro · 1012 V2
+// src/components/OfferingCard.astro · 1012 V3
+// V3 (block 1012 V3): text carries <i>…</i> for italics; parenthesised Scripture
+// references are wrapped <span class="cite"> (the block's own regex); the
+// status pill has two looks — warm for Still standing, a cool blue-grey for At
+// rest · finished once; the card takes scroll-margin-top so the page's jump
+// links land below the sticky header.
 // V2 (block 1012 V2): each drop-down closes on a lightly shaded "For the believer"
 // note — the New Testament side, from the drop's `believer` field.
 // V1: one offering on /five-offerings, from an object in src/data/offerings.js.
@@ -19,13 +24,9 @@ interface Props {
     deck: string; status: string; messiah: string; drops: Drop[]; forward: string[];
   };
 }
+import { withRefs } from '../lib/offerings-text.js';
 const { o } = Astro.props;
 
-// Body strings are trusted data (only <em> inside); escape anything else and
-// mute the parenthesised Scripture references: (Leviticus 1:3), (1:4), (7:8).
-const esc = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')
-  .replace(/&lt;(\/?)em&gt;/g, '<$1em>');
-const withRefs = (s: string) => esc(s).replace(/\(([^()]*\d+:\d+[^()]*)\)/g, '<span class="oc-ref">($1)</span>');
 const atRest = o.status !== 'Still standing';
 ---
 
@@ -33,7 +34,7 @@ const atRest = o.status !== 'Still standing';
   <p class="oc-reference">{o.reference}</p>
   <h2 class="oc-title">{o.title}</h2>
   <p class="oc-hebrew">
-    <span class="oc-he" lang="he">{o.hebrew.word}</span>
+    <span class="oc-he" lang="he" dir="rtl">{o.hebrew.word}</span>
     <span class="oc-translit">{o.hebrew.translit}</span>
     <span class="oc-strongs">{o.hebrew.strongs}</span>
     <span class="oc-gloss">“{o.hebrew.gloss}”</span>
@@ -70,6 +71,7 @@ const atRest = o.status !== 'Still standing';
 
 <style>
   .oc {
+    scroll-margin-top: 9rem;
     background: #161512; border: 0.5px solid rgba(255,255,255,0.08); border-top: 3px solid #BA7517;
     border-radius: 12px; padding: 1.7rem 1.8rem 1.6rem; color: #cfc7b6; box-sizing: border-box;
   }
@@ -89,7 +91,8 @@ const atRest = o.status !== 'Still standing';
     font-family: var(--font-display); font-size: 0.66rem; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
     color: #0e0d0b; background: #d8b06a;
   }
-  .oc-status--rest { color: #d8b06a; background: transparent; border: 1px solid rgba(216,176,106,0.6); }
+  /* At rest · finished once: a cool, quiet blue-grey, apart from the warm three. */
+  .oc-status--rest { color: #c3cdd8; background: rgba(120, 140, 160, 0.16); border: 1px solid rgba(150, 168, 186, 0.5); }
   .oc-messiah {
     margin: 0 0 1.3rem; padding: 0.2rem 0 0.2rem 0.9rem; border-left: 2px solid rgba(186,117,23,0.65);
     font-family: var(--font-body); font-size: 1.02rem; line-height: 1.65; color: #cfc7b6;
@@ -114,8 +117,8 @@ const atRest = o.status !== 'Still standing';
   .oc-drop-short { font-family: var(--font-family-serif); font-style: italic; font-size: 1rem; color: #8f8775; text-align: right; }
   .oc-drop-body { padding: 0 0.2rem 0.6rem 1.3rem; }
   .oc-drop-body p, .oc-forward p { margin: 0 0 0.85rem; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.7; color: #cfc7b6; }
-  .oc :global(em) { font-family: var(--font-family-serif); font-style: italic; }
-  .oc :global(.oc-ref) { color: #8f8775; }
+  .oc :global(em), .oc :global(i) { font-family: var(--font-family-serif); font-style: italic; }
+  .oc :global(.cite) { color: #8f8775; }
 
   /* The New Testament side of each drop-down: a lightly shaded note. */
   .oc-believer {

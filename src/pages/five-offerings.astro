@@ -1,49 +1,59 @@
 ---
-// src/pages/five-offerings.astro · 1012 V2
-// V2 (block 1012 V2): the intro's third paragraph rewritten (Daniel 9:27,
-// Hebrews 10:18, 1 John 1:9; 2:1–2, Ezekiel 45:17; 46:20).
-// V1: The Five Offerings (Five Offerings Etsy Block 1012 V1) — the intro, the
-// cards from src/data/offerings.js (one OfferingCard each; the burnt offering
-// first), and the close. Two columns on desktop, one on a phone; a lone last
-// card sits centred. Until all five are written, a muted line says how many
-// are still to follow. Listed in the header under Restored Truth.
+// src/pages/five-offerings.astro · 1012 V3
+// V3 (Five Offerings Etsy Block 1012 V3): the full page, every word from
+// src/data/offerings.js — `page` (title, subtitle, intro, close) and the five
+// `offerings`. Order: title + italic subtitle → intro → jump row (one pill per
+// card: the Hebrew word, muted, then the short name, linking to #id) → the five
+// cards in ONE column (drop-downs make two columns uneven) → the close.
+// The data file holds words only, so the build checks live here: five
+// drop-downs with the five standard headings in order, a believer note in each,
+// and one of the two statuses.
+// V2: intro paragraph three rewritten. V1: page + first card.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import OfferingCard from '../components/OfferingCard.astro';
-import { offerings } from '../data/offerings.js';
+import { page, offerings } from '../data/offerings.js';
+import { withRefs } from '../lib/offerings-text.js';
 
-const TOTAL = 5;
-const WORDS = ['', 'One', 'Two', 'Three', 'Four'];
-const toFollow = TOTAL - offerings.length;
-const loneLast = offerings.length % 2 === 1;
+const HEADINGS = ['Voluntary or Required', 'What Was Offered', 'What Was Added', 'Where the Blood Went', 'Who Ate It'];
+const STATUSES = ['Still standing', 'At rest · finished once'];
+for (const o of offerings) {
+  if (!STATUSES.includes(o.status)) throw new Error(`offerings.js: ${o.id} status "${o.status}" must be ${STATUSES.join(' or ')}`);
+  if (o.drops.map((d) => d.heading).join('|') !== HEADINGS.join('|')) throw new Error(`offerings.js: ${o.id} drop-downs must be, in order: ${HEADINGS.join(', ')}`);
+  if (o.drops.some((d) => !d.believer)) throw new Error(`offerings.js: ${o.id} every drop-down needs its believer note`);
+}
+const shortName = (title: string) => title.replace(/^The\s+/, '');
 ---
 
 <BaseLayout
-  title="The Five Offerings | Nazaryah"
+  title={`${page.title} | Nazaryah`}
   description="The five offerings of Leviticus 1–7 — burnt, meal, peace, sin, and trespass — what each one held, what each pictured of the Messiah, and why three are carried forward and two are at rest, finished once, but none of them abolished."
 >
   <div class="fo-page">
     <header class="fo-header">
-      <h1 class="fo-title">The Five Offerings</h1>
-      <p class="fo-sub">Burnt, meal, peace, sin, and trespass, and why none of them is gone.</p>
+      <h1 class="fo-title">{page.title}</h1>
+      <p class="fo-sub">{page.subtitle}</p>
     </header>
 
     <section class="fo-col fo-intro">
-      <p>Yahuah gave Israel five offerings at Sinai, and Leviticus 1 through 7 lays them out one by one: the burnt offering, the meal offering, the peace offering, the sin offering, and the trespass offering. Each one pictured a different part of the Messiah’s work, and each one taught the worshipper something about walking with Yahuah.</p>
-      <p>Most pulpits teach that all five ended at the cross. Scripture does not say that. Three of the offerings are carried straight into the Apostolic writings and handed to the believer to keep: the burnt offering as a life laid on the altar every day, the meal offering as the bread of the commandments, and the peace offering as praise and fellowship at Yahuah’s table <span class="fo-ref">(Romans 12:1; Hebrews 13:15–16)</span>.</p>
-      <p>The other two, the sin offering and the trespass offering, had one job: to deal with sin. Daniel foretold that the Messiah would bring the sacrifices to a stop in the middle of the week <span class="fo-ref">(Daniel 9:27)</span>, and Hebrews tells which ones: “where remission of these is, there is no more offering for sin” <span class="fo-ref">(Hebrews 10:18)</span>. Once sin was removed by the one offering Yahuah provided, these two had no work left to do. They are at rest. They stay at rest because that one offering never wears out: when a believer stumbles and confesses, he is covered by the same blood, and nothing new has to be brought to the altar <span class="fo-ref">(1 John 1:9; 2:1–2; Hebrews 10:14)</span>. Ezekiel’s closing vision still names the sin offering and the trespass offering as offerings yet to come <span class="fo-ref">(Ezekiel 45:17; 46:20)</span>.</p>
-      <p>Each card below opens on five plain questions. Was it voluntary or required? What was offered? What was added to it? Where did the blood go? Who ate it?</p>
+      {page.intro.map((p) => <p set:html={withRefs(p)} />)}
     </section>
 
-    <div class:list={['fo-grid', loneLast && 'fo-grid--lone-last']}>
+    <nav class="fo-jump" aria-label="The five offerings">
+      {offerings.map((o) => (
+        <a class="fo-pill" href={`#${o.id}`}>
+          <span class="fo-pill-he" lang="he" dir="rtl">{o.hebrew.word}</span>
+          <span class="fo-pill-name">{shortName(o.title)}</span>
+        </a>
+      ))}
+    </nav>
+
+    <div class="fo-cards">
       {offerings.map((o) => <OfferingCard o={o} />)}
     </div>
-    {toFollow > 0 && (
-      <p class="fo-follow">{WORDS[toFollow]} more {toFollow === 1 ? 'offering' : 'offerings'} to follow</p>
-    )}
 
     <section class="fo-col fo-close">
-      <h2 class="fo-close-h">Where the Offerings End</h2>
-      <p>The offerings were never thrown away. They were fulfilled in the Messiah and carried in the believer. They lead to the place where the altar’s purpose is complete and Yahuah dwells with His people face to face: “Behold, the tabernacle of God is with men, and he will dwell with them” <span class="fo-ref">(Revelation 21:3)</span>.</p>
+      <h2 class="fo-close-h">{page.closeTitle}</h2>
+      <p set:html={withRefs(page.close)} />
     </section>
   </div>
 </BaseLayout>
@@ -59,26 +69,34 @@ const loneLast = offerings.length % 2 === 1;
 
   .fo-col { max-width: 44rem; margin: 0 auto; }
   .fo-col p { font-family: var(--font-body); font-size: 1.08rem; line-height: 1.8; color: #cfc7b6; margin: 0 0 1.15rem; }
-  .fo-intro { margin-bottom: 2.6rem; }
-  .fo-ref { color: #8f8775; }
+  .fo-col :global(i) { font-family: var(--font-family-serif); font-style: italic; }
+  .fo-col :global(.cite) { color: #8f8775; }
+  .fo-intro { margin-bottom: 1.8rem; }
 
-  .fo-grid {
-    display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem;
-    max-width: 62rem; margin: 0 auto; align-items: start;
+  /* Jump row: one pill per card; wraps on a phone. */
+  .fo-jump {
+    display: flex; flex-wrap: wrap; justify-content: center; gap: 0.55rem;
+    max-width: 46rem; margin: 0 auto 2.4rem;
   }
-  /* The lone last card (the fifth, or the only one so far) sits centred. */
-  .fo-grid--lone-last > :global(:last-child) { grid-column: 1 / -1; justify-self: center; width: calc(50% - 0.7rem); }
-  .fo-follow {
-    text-align: center; font-family: var(--font-family-serif); font-style: italic; font-size: 1.05rem;
-    color: #8f8775; margin: 1.4rem 0 0;
+  .fo-pill {
+    display: inline-flex; align-items: baseline; gap: 0.45rem; padding: 0.4rem 0.85rem; border-radius: 999px;
+    border: 1px solid rgba(212,165,49,0.4); background: rgba(186,117,23,0.08); text-decoration: none;
+    transition: background 0.2s, border-color 0.2s;
   }
+  .fo-pill:hover, .fo-pill:focus-visible { background: rgba(186,117,23,0.22); border-color: #d8b06a; outline: none; }
+  .fo-pill-he { font-size: 1.05rem; color: #8f8775; line-height: 1; }
+  .fo-pill-name {
+    font-family: var(--font-display); font-size: 0.7rem; font-weight: 600; letter-spacing: 0.1em;
+    text-transform: uppercase; color: #e8c98a;
+  }
+
+  /* The five cards, one column. */
+  .fo-cards { display: grid; gap: 1.6rem; max-width: 46rem; margin: 0 auto; }
 
   .fo-close { margin-top: 3.2rem; padding-top: 1.6rem; border-top: 1px solid rgba(186,117,23,0.35); }
   .fo-close-h { font-family: var(--font-display); font-size: 1.3rem; font-weight: 700; color: #e8e2d4; margin: 0 0 1rem; }
 
   @media (max-width: 760px) {
     .fo-page { padding: 2.6rem 1rem 4rem; }
-    .fo-grid { grid-template-columns: 1fr; }
-    .fo-grid--lone-last > :global(:last-child) { width: 100%; }
   }
 </style>
