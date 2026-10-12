@@ -1,4 +1,10 @@
-// nav 1012 V5.js
+// nav 1012 V6.js
+// V6: STANDING RULE (Dutch, 1012) — every dropdown item's label is the title of
+// the page it opens, exactly as the page shows it (its <h1>); the page title wins.
+// Twelve items renamed to match (Doctrines, Foreign Fire, Catholicism, Holidays,
+// Christian or Demonic?, the Calendar, Ekklesia, Pe'ah, Investigations,
+// Pathways, Hidden Gems, Books). New menu items take their page's title.
+// scripts/check-nav-titles.mjs reports any drift after a build.
 // V5 (Homepage spec 1012 V3, A6): "Hebrew Word Studies" → "The Hebrew Tongue",
 // matching the page it opens. NAV_DIVIDERS is the switch for the trial hairline
 // between top-level tabs (A5): true shows it, false hides it.
@@ -25,7 +31,7 @@
 // Doctrines points to the paired Old Paths / Departure page. Never link to one
 // half of the pair from the header.
 const doctrines = {
-  label: 'Doctrines',
+  label: 'Two Roads From the Same Verses',
   href: '/doctrines',
   desc: 'The Old Paths and The Departure side by side: what Scripture taught and where the church left it.',
   pinned: true,
@@ -41,13 +47,13 @@ export const mainNav = [
     glyph: '\u{1F702}', // 🜂 alchemical fire
     links: [
       doctrines,
-      { label: 'Foreign Fire Worship', href: '/foreign-fire', desc: 'Worship Yahuah never commanded, offered at His altar anyway.' },
+      { label: 'Foreign Fire', href: '/foreign-fire', desc: 'Worship Yahuah never commanded, offered at His altar anyway.' },
       { label: 'Sun Worship', href: '/sun-worship', desc: 'The oldest counterfeit, traced from Babel to Easter morning.' },
-      { label: 'Catholicism', href: '/catholicism', desc: 'The church that crowned itself, and the daughters who never left home.' },
+      { label: 'Catholicism in Plain Sight', href: '/catholicism', desc: 'The church that crowned itself, and the daughters who never left home.' },
       { label: 'Hollywood', href: '/hollywood', desc: 'How the screen taught a generation to cheer for wizards and witches.' },
       { label: 'American Idolatry', href: '/american-idolatry', desc: 'When the flag stands on the pulpit and the nation becomes the covenant.' },
-      { label: 'Pagan Holidays', href: '/holidays', desc: 'Christmas, Easter, and Sunday — days the church kept that Scripture never named.' },
-      { label: 'Christian or Demonic', href: '/christian-or-demonic', desc: 'Five pillars every believer inherited, held up to the text.' },
+      { label: 'Unmasking the Holidays', href: '/holidays', desc: 'Christmas, Easter, and Sunday — days the church kept that Scripture never named.' },
+      { label: 'Christian or Demonic?', href: '/christian-or-demonic', desc: 'Five pillars every believer inherited, held up to the text.' },
       { label: 'The Paper Trail', href: '/on-these-two', desc: 'Every false teaching traced back up the tree to the root it grew from.' },
       { label: 'Words Your Bible Borrowed', href: '/doctrines/borrowed-words', desc: 'The Greek behind the doctrines.' },
     ],
@@ -59,8 +65,8 @@ export const mainNav = [
     links: [
       doctrines,
       { label: 'The Hebrew Tongue', href: '/hebrew', desc: 'Restored names, root words, and the meanings translation flattened.' },
-      { label: 'The Calendar', href: '/calendar', desc: 'Aviv, the renewed moon, and the Sabbath, read from the lights Yahuah set in the sky.' },
-      { label: 'Ekklesia', href: '/ekklesia', desc: 'What the assembly was meant to be before it became “church.”' },
+      { label: "Yahuah's Appointed Times", href: '/calendar', desc: 'Aviv, the renewed moon, and the Sabbath, read from the lights Yahuah set in the sky.' },
+      { label: 'Is This the Ekklesia?', href: '/ekklesia', desc: 'What the assembly was meant to be before it became “church.”' },
       { label: 'Cosmology', href: '/cosmology', desc: 'The shape of what Yahuah made, from the firmament above to the earth below.' },
     ],
   },
@@ -73,13 +79,13 @@ export const mainNav = [
     href: '/blog',
     links: [
       { label: 'Studies', href: '/blog/topics', desc: 'Full Bible studies, one subject at a time, sorted by topic.' },
-      { label: "Pe'ah — The Corner of the Field", href: '/peah', desc: 'A short read on one verse, one point. Fits with morning coffee.' },
+      { label: "Pe'ah", href: '/peah', desc: 'A short read on one verse, one point. Fits with morning coffee.' },
       { label: 'Trilogies', href: '/trilogies', desc: 'Three studies that belong together. Each one opens the other two wider.' },
       { label: 'Collections', href: '/blog/collections', desc: 'Studies that outgrew the page.' },
       { label: 'The Parables', href: '/parables', desc: 'Yahushua’s parables read from the Law and the Prophets, not the pulpit.' },
-      { label: 'Investigations', href: '/investigations', desc: 'One claim put on the stand and examined witness by witness.' },
-      { label: 'Pathways', href: '/pathway', desc: 'Guided walks through one subject, stop by stop.' },
-      { label: 'Hidden Gems', href: '/hidden-gems', desc: 'The verses the pulpit flips past, and what they actually say.' },
+      { label: 'One Lie, Many Witnesses', href: '/investigations', desc: 'One claim put on the stand and examined witness by witness.' },
+      { label: 'Stop being told what to believe. Start finding out.', href: '/pathway', desc: 'Guided walks through one subject, stop by stop.' },
+      { label: 'Hidden Gems of Scripture', href: '/hidden-gems', desc: 'The verses the pulpit flips past, and what they actually say.' },
       { label: 'Close to the Hip', href: '/close-to-the-hip', desc: 'Short answers and quick insights to carry into any conversation.' },
     ],
   },
@@ -90,7 +96,7 @@ export const mainNav = [
     sublabel: 'Ancient Paths Restoration Press',
     glyph: '✦',
     links: [
-      { label: 'Books', href: '/books', desc: 'Titles from Ancient Paths Restoration Press.' },
+      { label: 'Five works. One conviction.', href: '/books', desc: 'Titles from Ancient Paths Restoration Press.' },
       { label: 'Voices', href: '/voices', desc: 'Recommended teachings and channels, each one tested against Scripture.' },
     ],
   },
