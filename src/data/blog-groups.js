@@ -1,4 +1,5 @@
-// blog-groups 1011 V42.js
+// blog-groups 1012 V43.js
+// V43: incarnate joins the-counterfeit-throne (category Scripture Unfiltered).
 // V42: the-throne-in-the-sanctuary joins buried-in-plain-sight (category Buried in Plain Sight).
 // V41: call-no-man-your-father joins scripture-unfiltered (category Scripture Unfiltered).
 // V40: clean-and-unclean-at-the-same-table → the-law-and-the-feasts.
@@ -181,6 +182,7 @@ export const POST_GROUP = {
   'the-judgment-of-christ': 'the-counterfeit-throne',
   'worship-and-service': 'the-counterfeit-throne',
   'the-throne-and-the-right-hand': 'the-counterfeit-throne',
+  'incarnate': 'the-counterfeit-throne',
   'the-assembly-of-the-most-high': 'the-counterfeit-throne',
   'faith-has-an-address': 'the-counterfeit-throne',
   'heavens-letters-words-son': 'the-counterfeit-throne',
