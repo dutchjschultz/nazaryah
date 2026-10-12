@@ -1,5 +1,7 @@
 ---
-// src/components/OfferingCard.astro · 1012 V1
+// src/components/OfferingCard.astro · 1012 V2
+// V2 (block 1012 V2): each drop-down closes on a lightly shaded "For the believer"
+// note — the New Testament side, from the drop's `believer` field.
 // V1: one offering on /five-offerings, from an object in src/data/offerings.js.
 // Static: the five drop-downs are native <details> sharing the card's id as
 // `name`, so opening one closes the others in the same card — no client JS.
@@ -9,7 +11,7 @@
 // left, short answer right in muted italics), then Carried Forward, always open.
 // Scripture references in parentheses are set in the muted colour.
 
-interface Drop { heading: string; short: string; body: string[] }
+interface Drop { heading: string; short: string; body: string[]; believer?: string }
 interface Props {
   o: {
     id: string; reference: string; title: string;
@@ -49,6 +51,12 @@ const atRest = o.status !== 'Still standing';
         </summary>
         <div class="oc-drop-body">
           {d.body.map((p) => <p set:html={withRefs(p)} />)}
+          {d.believer && (
+            <div class="oc-believer">
+              <p class="oc-believer-label">For the believer</p>
+              <p set:html={withRefs(d.believer)} />
+            </div>
+          )}
         </div>
       </details>
     ))}
@@ -108,6 +116,16 @@ const atRest = o.status !== 'Still standing';
   .oc-drop-body p, .oc-forward p { margin: 0 0 0.85rem; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.7; color: #cfc7b6; }
   .oc :global(em) { font-family: var(--font-family-serif); font-style: italic; }
   .oc :global(.oc-ref) { color: #8f8775; }
+
+  /* The New Testament side of each drop-down: a lightly shaded note. */
+  .oc-believer {
+    margin: 0.2rem 0 0.8rem; padding: 0.75rem 0.9rem 0.1rem; border-radius: 6px;
+    background: rgba(216, 176, 106, 0.07); border-left: 2px solid rgba(216, 176, 106, 0.45);
+  }
+  .oc-believer-label {
+    margin: 0 0 0.4rem !important; font-family: var(--font-display) !important; font-size: 0.66rem !important;
+    font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; font-variant: small-caps; color: #d8b06a !important;
+  }
 
   .oc-forward { margin-top: 1.3rem; }
   .oc-forward-h {
