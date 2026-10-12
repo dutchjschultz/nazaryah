@@ -1,4 +1,7 @@
-// investigations 1011 V10.js
+// investigations 1012 V11.js
+// V11: The Sealed Count goes live — nucleus + five witnesses, the columns shape
+// (three left, two right), placed after Spoken in Hebrew. Its nucleus carries the
+// optional passage/anchor lines (ConvergingColumns V3).
 // V10: Spoken in Hebrew question reads "Seven witnesses answer."; Witness Seven's
 // blurb is now the hub study's own line for it (the V8 rule: blurbs are the
 // hub's descriptions).
@@ -423,6 +426,76 @@ export const INVESTIGATIONS = [
         status: 'live',
         href: '/blog/two-names-one-man',
         blurb: 'Saul was never renamed. Luke says he was “also called Paul,” the risen Messiah still called him Saul in the Hebrew tongue, and the same Hebrew-name-plus-gloss pattern runs through Barnabas, Simeon Niger, Thomas Didymus, Cephas, and Messias. The renaming story came later, from Jerome and Augustine, not from Scripture.',
+      },
+    ],
+  },
+  {
+    slug: 'the-sealed-count',
+    title: 'The Sealed Count',
+    shortTitle: 'The Sealed Count',
+    deck: 'Five witnesses to one number, and the councils that changed it',
+    // Five witnesses: the columns shape, three left, two right.
+    layout: 'columns',
+    enterLabel: 'Enter the case',
+    orderNote: 'Numbered as the hub lists them · read in any order',
+    teaching:
+      'The church gave the world its Old Testament. Bishops at Hippo and Carthage decided which books belonged, and until they voted, the matter was open.',
+    question:
+      'Who closed the Old Testament — a church council, or the people to whom the oracles were committed? Five witnesses answer.',
+    soon: false,
+    nucleus: {
+      label: 'The Nucleus',
+      title: 'The Sealed Count',
+      href: '/blog/the-sealed-count',
+      passage: 'Romans 3:2',
+      anchor: 'Deuteronomy 4:2',
+      blurb: 'The church inherited a sealed count of Scripture and only renumbered it.',
+    },
+    witnesses: [
+      {
+        tag: 'Witness One · Lampstand',
+        name: 'The Almond Watch',
+        passage: 'Exodus 25:33-34',
+        anchor: 'Jeremiah 1:11-12',
+        status: 'live',
+        href: '/blog/the-almond-watch',
+        blurb: 'Twenty-two almond cups stood watch before the Law, set in gold at Sinai.',
+      },
+      {
+        tag: 'Witness Two · Ground',
+        name: 'Letters in Stone',
+        passage: 'Lamentations 2–4',
+        anchor: 'Job 19:23-24',
+        status: 'live',
+        href: '/blog/letters-in-stone',
+        blurb: "Clay, stone, and plaster from Israel's ground carry the twenty-two letters in order.",
+      },
+      {
+        tag: 'Witness Three · Text',
+        name: 'The Alphabet Psalms',
+        passage: 'Psalm 119:1',
+        anchor: 'Psalm 119:160',
+        status: 'live',
+        href: '/blog/the-alphabet-psalms',
+        blurb: 'Scripture counts itself in twenty-two and gives the whole alphabet to the Law.',
+      },
+      {
+        tag: 'Witness Four · Record',
+        name: 'Twenty-Two Books',
+        passage: 'Luke 24:44',
+        anchor: 'Isaiah 34:16',
+        status: 'live',
+        href: '/blog/twenty-two-books',
+        blurb: 'The count was written down three hundred years before any council met.',
+      },
+      {
+        tag: 'Witness Five · Addition',
+        name: 'The Greek Addition',
+        passage: 'Romans 3:2',
+        anchor: 'Proverbs 30:5-6',
+        status: 'live',
+        href: '/blog/the-greek-addition',
+        blurb: 'The extra books came in through Greek copies that never agreed on a list.',
       },
     ],
   },

@@ -1,4 +1,7 @@
-// content config 1011 V25
+// content config 1012 V26
+// V26: optional `kicker` — the centered label line a study opens on ("THE SEALED
+// COUNT · WITNESS ONE · THE LAMPSTAND"), shown above the title in place of the
+// category line. Absent everywhere else.
 // V25: epigraph.ref optional — a framing question with no citation.
 // V24: `hebrew` gains optional date + featured/featuredAt/skin (homepage picks).
 // V23: posts and peah gain the homepage Featured Picks fields — `featured`
@@ -182,6 +185,9 @@ const postsCollection = defineCollection({
     // card's reference line (MATTHEW 24:1-25:13 · THE TEN VIRGINS).
     commonName: z.string().optional(),
     subtitle: z.string().optional(),
+    // KICKER — the small line above the title, when the study carries its own
+    // (an investigation's label line). Absent: the category line, as before.
+    kicker: z.string().optional(),
     // Chapter number when this post is a chapter of a book on the bookshelf.
     chapter: z.number().optional(),
     // SERIES axis — which book this post is a chapter of, if any. Separate from

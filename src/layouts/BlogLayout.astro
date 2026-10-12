@@ -1,5 +1,7 @@
 ---
-// BlogLayout.astro · 1011 V16
+// BlogLayout.astro · 1012 V17
+// V17: a study's own `kicker` (its label line) takes the small line above the
+// title; without one the line is the category, as before.
 // V16: Read Next resolves a companion slug against Pe'ah when it is not a post
 // (a corner study taken from the study), linking /peah/<slug> under its
 // `reference — title`. Posts resolve exactly as before.
@@ -186,7 +188,7 @@ const companions = (
             that class is also on the tag chips further down this page and on the
             card's category line, and neither of those was asked to change. */}
         <div class="post-kicker mb-4">
-          {post.data.commonName ? `${category} · ${post.data.commonName}` : category}
+          {post.data.kicker ?? (post.data.commonName ? `${category} · ${post.data.commonName}` : category)}
         </div>
         <h1 class="text-4xl md:text-5xl font-bold mb-6" style="font-family: var(--font-display); color: var(--deep-earth);">
           {title}
