@@ -1,5 +1,9 @@
 ---
-// src/pages/index.astro · 1012 V18
+// src/pages/index.astro · 1012 V19
+// V19 (spec 1012 V4): hero shorter (narrower picture panel, 105px picture,
+// tighter spacing); Doctrines and Published Books level on one row, each with
+// its subline beneath ("Where Christianity Has Been Handed a Lie" → /books);
+// Last 30 Days subline rewritten, gold chevron + SEE LIST / HIDE LIST cue.
 // V18 (Homepage Featured and Recent Spec 1012 V3): the large Doctrines card is
 // gone — the mustard Start Here button carries it, with a small "The Old Paths ·
 // The Departure" line beneath; Featured Picks is five compact cards in one row
@@ -137,23 +141,25 @@ const recent = recentGroups(pieces, picks);
           <p class="hero-body">
             Nazaryah goes back to the source — original languages, restored names, and the Torah your church quietly skipped. No denominations. No comfortable answers. Just the text.
           </p>
+          <!-- Two buttons on one row, centres level; each subline under its own
+               button (spec 1012 V4, A3/A4). On a phone: button, line, button, line. -->
           <div class="hero-cta-stack">
-            <div class="hero-cta-col">
-              <a href="/doctrines" class="hero-cta" aria-label="Start here — Doctrines">
-                <span class="hero-cta-badge"><span class="star" aria-hidden="true">★</span> Start Here</span>
-                <span class="hero-cta-label">Doctrines</span>
-                <span class="hero-cta-arrow" aria-hidden="true">→</span>
-              </a>
-              <!-- The paired documents, kept side by side (spec 1012 V3, A3). -->
-              <p class="hero-doc-links">
-                <a href="/doctrines/old-paths">The Old Paths</a><span aria-hidden="true"> · </span><a href="/doctrines/the-departure">The Departure</a>
-              </p>
-            </div>
+            <a href="/doctrines" class="hero-cta hero-cta--doctrines" aria-label="Start here — Doctrines">
+              <span class="hero-cta-badge"><span class="star" aria-hidden="true">★</span> Start Here</span>
+              <span class="hero-cta-label">Doctrines</span>
+              <span class="hero-cta-arrow" aria-hidden="true">→</span>
+            </a>
             <a href="/books" class="hero-cta hero-cta--ghost" aria-label="Read — Published Books">
               <span class="hero-cta-badge"><span class="star" aria-hidden="true">★</span> Read</span>
               <span class="hero-cta-label">Published Books</span>
               <span class="hero-cta-arrow" aria-hidden="true">→</span>
             </a>
+            <p class="hero-doc-links hero-sub--doctrines">
+              <a href="/doctrines/old-paths">The Old Paths</a><span aria-hidden="true"> · </span><a href="/doctrines/the-departure">The Departure</a>
+            </p>
+            <p class="hero-doc-links hero-sub--books">
+              <a href="/books">Where Christianity Has Been Handed a Lie</a>
+            </p>
           </div>
         </div>
       </div>
@@ -171,7 +177,8 @@ const recent = recentGroups(pieces, picks);
 
     .hero-grid {
       display: grid;
-      grid-template-columns: 5fr 8fr;
+      /* V4 (A5): the dark logo panel narrows so the parchment side gains width. */
+      grid-template-columns: 7fr 18fr;
       width: 100%;
       max-width: 80rem;
       /* Aspect ratio dropped — the second stacked CTA needs vertical room
@@ -190,7 +197,7 @@ const recent = recentGroups(pieces, picks);
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 0.6rem 1.25rem;
+      padding: 0.35rem 1rem;
       overflow: hidden;
     }
 
@@ -217,7 +224,7 @@ const recent = recentGroups(pieces, picks);
       position: relative;
       z-index: 1;
       width: 100%;
-      height: 140px;
+      height: 105px; /* V4 (A5): three quarters of 140px */
       object-fit: contain;
     }
 
@@ -226,8 +233,8 @@ const recent = recentGroups(pieces, picks);
       display: flex;
       flex-direction: column;
       justify-content: center;
-      gap: 0.3rem;
-      padding: 0.35rem 2rem;
+      gap: 0.08rem;
+      padding: 0.2rem 2rem;
     }
 
     .hero-eyebrow {
@@ -237,7 +244,7 @@ const recent = recentGroups(pieces, picks);
       letter-spacing: 0.25em;
       text-transform: uppercase;
       font-weight: 600;
-      margin-bottom: 0.15rem;
+      margin-bottom: 0;
     }
     .hero-eyebrow::before {
       content: '\25C6  '; /* ◆ */
@@ -274,14 +281,14 @@ const recent = recentGroups(pieces, picks);
       display: flex;
       flex-direction: column;
       align-items: flex-start;
-      gap: 0.55rem;
-      margin-top: 0.2rem;
+      gap: 0.3rem;
+      margin-top: 0;
     }
 
     .hero-body {
       font-family: var(--font-body);
       font-size: 0.88rem;
-      line-height: 1.45;
+      line-height: 1.38;
       color: var(--color-secondary-text);
       flex: 1 1 auto;
       max-width: 44rem;
@@ -296,18 +303,23 @@ const recent = recentGroups(pieces, picks);
     /* Vertical stack for the two CTAs — primary on top, ghost secondary
        beneath. Aligned to the start of the column so both buttons start
        at the same left edge. */
+    /* Row 1: the two buttons, centres level. Row 2: their sublines, level. */
     .hero-cta-stack {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: wrap;
+      display: grid;
+      grid-template-columns: auto auto;
+      grid-template-areas: "doc books" "docsub bookssub";
       align-items: center;
-      gap: 0.55rem;
-      flex: 0 0 auto;
+      justify-items: center;
+      column-gap: 0.7rem;
+      row-gap: 0.12rem;
       align-self: flex-start;
     }
+    .hero-cta--doctrines { grid-area: doc; }
+    .hero-cta--ghost { grid-area: books; }
+    .hero-sub--doctrines { grid-area: docsub; }
+    .hero-sub--books { grid-area: bookssub; }
 
     /* The mustard button with the paired-documents line directly beneath it. */
-    .hero-cta-col { display: flex; flex-direction: column; align-items: center; gap: 0.3rem; }
     .hero-doc-links {
       margin: 0; font-family: var(--font-display, 'Cinzel', Georgia, serif); font-size: 0.66rem;
       font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase; font-variant: small-caps; color: #3a2a12;
@@ -414,7 +426,15 @@ const recent = recentGroups(pieces, picks);
       /* The panel may shrink to the column: the mustard button's tracked caps
          used to push it 46px past the box on a phone, clipping the text. */
       .content-panel { min-width: 0; }
-      .hero-cta-stack, .hero-cta-col { max-width: 100%; }
+      .hero-cta-stack {
+        max-width: 100%;
+        grid-template-columns: minmax(0, auto);
+        grid-template-areas: "doc" "docsub" "books" "bookssub";
+        justify-items: start;
+        row-gap: 0.35rem;
+      }
+      .hero-sub--doctrines { margin-bottom: 0.45rem; }
+      .hero-doc-links { font-size: 0.62rem; letter-spacing: 0.06em; }
       .hero-cta { max-width: 100%; box-sizing: border-box; gap: 0.5rem; padding: 0.55rem 0.95rem; letter-spacing: 0.1em; }
       .hero-cta-label { font-size: 0.9rem; }
       .hero-cta--ghost .hero-cta-label { font-size: 0.78rem; }
@@ -477,12 +497,16 @@ const recent = recentGroups(pieces, picks);
     <section class="home-band" aria-labelledby="last-30-days">
       <div class="home-shell">
         <h2 id="last-30-days" class="home-h2">Last 30 Days</h2>
-        <p class="home-sub">New on the site, grouped by where it lives.</p>
+        <p class="home-sub">Added in the past month, filed by where each study lives. Open a section to see them.</p>
         <div class="home-recent">
           {recent.map((g) => (
             <details class="home-group" style={`--grp-accent: ${g.accent}`}>
               <summary>
-                <span class="home-group-name"><span class="home-group-symbol" aria-hidden="true"><Symbol name={g.symbol} size="1.05rem" /></span>{g.name} <span class="home-group-count">({g.items.length})</span></span>
+                <span class="home-group-name">
+                  <svg class="home-group-chev" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6" /></svg>
+                  <span class="home-group-symbol" aria-hidden="true"><Symbol name={g.symbol} size="1.05rem" /></span>{g.name} <span class="home-group-count">({g.items.length})</span>
+                  <span class="home-group-cue"><span class="cue-closed">See list ▾</span><span class="cue-open">Hide list ▴</span></span>
+                </span>
                 <a class="home-group-all" href={g.href}>View all <span aria-hidden="true">→</span></a>
               </summary>
               <ul class="home-group-list">
@@ -615,8 +639,18 @@ const recent = recentGroups(pieces, picks);
     .home-group summary::-webkit-details-marker { display: none; }
     .home-group summary:focus-visible { outline: 2px solid var(--grp-accent); outline-offset: 2px; }
     .home-group-name { font-family: 'Playfair Display', Georgia, serif; font-size: 1.12rem; color: #f5e6c8; }
-    .home-group-name::before { content: '\25B8'; display: inline-block; width: 1.1em; color: var(--grp-accent); font-size: 0.8em; transition: transform .2s ease; }
-    .home-group[open] .home-group-name::before { transform: rotate(90deg); }
+    /* V4 (A6): the open cue — a gold chevron the size of the symbol (down when
+       closed, up when open) and a small-caps SEE LIST / HIDE LIST after the count. */
+    .home-group-chev { width: 1.15rem; height: 1.15rem; flex: none; color: #d4af37; margin-right: 0.45rem; vertical-align: -0.2em; transition: transform .2s ease; }
+    .home-group[open] .home-group-chev { transform: rotate(180deg); }
+    .home-group-cue {
+      margin-left: 0.6rem; font-family: 'Cinzel', serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em;
+      text-transform: uppercase; font-variant: small-caps; color: #a8925a; white-space: nowrap; vertical-align: 0.1em;
+    }
+    .home-group-cue .cue-open, .home-group[open] .home-group-cue .cue-closed { display: none; }
+    .home-group[open] .home-group-cue .cue-open { display: inline; }
+    .home-group summary { transition: background .15s ease; border-radius: 4px; }
+    .home-group summary:hover { background: #1c1915; }
     .home-group-count { color: #a09078; font-size: 0.95rem; }
     .home-group-all {
       flex: none; font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.18em; text-transform: uppercase;

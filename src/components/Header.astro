@@ -1,5 +1,8 @@
 ---
-// Header.astro · 1012 V17 — Homepage spec 1012 V3, A2/A4/A5: the logo glows
+// Header.astro · 1012 V18 — spec 1012 V4 (A1/A2): the home button is larger
+// than the search circle, solid dark ink in a gold ring (also in the phone bar);
+// the tabs spread evenly from the logo to the home button and every pill shares
+// one height and one bottom line. V17 — Homepage spec 1012 V3, A2/A4/A5: the logo glows
 // gold on hover (it already led home) and a house icon leads the utility
 // cluster; the warm middle tone now holds across the row to Books before the
 // fade to parchment; two-word labels stack on two centred lines (the phone
@@ -111,7 +114,7 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
       </a>
 
       <!-- Desktop: one right-justified row of seven tabs, then the utility cluster -->
-      <div class="desktop-nav hidden min-[1240px]:flex items-center">
+      <div class="desktop-nav hidden min-[1240px]:flex items-center flex-1">
         <ul class:list={['nav-row', NAV_DIVIDERS && 'nav-row--dividers']}>
           {tabs.map((tab) =>
             tab.links ? (
@@ -180,10 +183,8 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
           )}
         </ul>
         <div class="nav-utility">
-          <a href="/" class:list={['icon-btn', currentPath === '/' && 'active']} aria-label="Home">
-            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 11l9-7 9 7M5 9.5V20h14V9.5M10 20v-6h4v6" />
-            </svg>
+          <a href="/" class:list={['home-btn', currentPath === '/' && 'active']} aria-label="Home">
+            <svg class="home-btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2l9.3 7.3a.9.9 0 0 1-1.1 1.4L19 11v8.6c0 .8-.6 1.4-1.4 1.4h-3.4v-5.6h-4.4V21H6.4c-.8 0-1.4-.6-1.4-1.4V11l-1.2.9a.9.9 0 0 1-1.1-1.4z"/></svg>
           </a>
           <button data-search-trigger aria-label="Open search" class="icon-btn">
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
@@ -197,10 +198,14 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
         </div>
       </div>
 
-      <!-- Phone / narrow: the mark and a menu button, nothing else -->
+      <!-- Phone / narrow: the mark, the home button and a menu button -->
+      <div class="min-[1240px]:hidden flex items-center gap-2">
+      <a href="/" class="home-btn" aria-label="Home">
+        <svg class="home-btn-icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 3.2l9.3 7.3a.9.9 0 0 1-1.1 1.4L19 11v8.6c0 .8-.6 1.4-1.4 1.4h-3.4v-5.6h-4.4V21H6.4c-.8 0-1.4-.6-1.4-1.4V11l-1.2.9a.9.9 0 0 1-1.1-1.4z"/></svg>
+      </a>
       <button
         id="mobile-menu-button"
-        class="min-[1240px]:hidden p-2 text-[var(--ink)] dark:text-[var(--sand-light)]"
+        class="p-2 text-[var(--ink)] dark:text-[var(--sand-light)]"
         aria-label="Open menu"
         aria-expanded="false"
         aria-controls="mobile-menu"
@@ -209,6 +214,7 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
         </svg>
       </button>
+      </div>
     </div>
 
     <!-- Phone menu: the seven tabs; a panel tab expands in place -->
@@ -429,10 +435,17 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
   /* ============================================================
      PRIMARY NAV ROW
      ============================================================ */
+  /* V4 (A2): the tabs spread evenly across the whole run between the logo and
+     the home button, and every pill shares one height and one bottom line —
+     single-word labels sit level with the second line of the stacked ones. */
+  .desktop-nav { min-width: 0; margin-left: 2.2rem; }
   .nav-row {
+    flex: 1 1 auto;
+    justify-content: space-between;
+    margin-right: 1.4rem;
     display: flex;
     gap: 0.25rem;
-    align-items: center;
+    align-items: flex-end;
     list-style: none;
     margin: 0;
     padding: 0;
@@ -445,7 +458,11 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    padding: 0.55rem 0.95rem;
+    height: 2.5rem;
+    box-sizing: border-box;
+    align-items: flex-end;
+    line-height: 1.05;
+    padding: 0 0.95rem 0.45rem;
     color: #2a1a08;
     text-decoration: none;
     font-family: var(--font-display, 'Cinzel', Georgia, serif);
@@ -503,6 +520,7 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
   .nav-link:focus-visible { outline: 2px solid #d4a531; outline-offset: 2px; }
 
   .nav-link--dropdown .caret {
+    line-height: 1.05;
     font-size: 0.65rem;
     opacity: 0.7;
     margin-left: 0.1rem;
@@ -528,15 +546,15 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
      eleven-item row used (no smaller than before) as the window narrows. */
   @media (max-width: 1699px) {
     .nav-row { gap: 0.1rem; }
-    .nav-link { padding: 0.45rem 0.55rem; font-size: 0.72rem; letter-spacing: 0.07em; }
+    .nav-link { padding: 0 0.55rem 0.45rem; font-size: 0.72rem; letter-spacing: 0.07em; }
   }
   @media (max-width: 1479px) {
-    .nav-link { padding: 0.42rem 0.4rem; font-size: 0.68rem; letter-spacing: 0.05em; }
+    .nav-link { padding: 0 0.4rem 0.45rem; font-size: 0.68rem; letter-spacing: 0.05em; }
   }
   /* Eight tabs (Symbol Lexicon, nav V4): one more step so the row and the
      utility cluster still fit from 1240px, where the desktop row begins. */
   @media (max-width: 1399px) {
-    .nav-link { padding: 0.42rem 0.3rem; font-size: 0.64rem; letter-spacing: 0.04em; }
+    .nav-link { padding: 0 0.3rem 0.45rem; font-size: 0.64rem; letter-spacing: 0.04em; }
     .nav-utility { margin-left: 0.35rem; padding-left: 0.35rem; }
   }
 
@@ -566,6 +584,31 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
   .util-link:hover, .util-link.active { color: #1a0e06; background: rgba(168, 127, 31, 0.15); }
   :global(.dark) .util-link { color: #c9a95c; }
   :global(.dark) .util-link:hover, :global(.dark) .util-link.active { color: #f0c450; background: rgba(212, 165, 49, 0.12); }
+
+  /* V4 (A1): the home button — larger than the search circle, a solid dark
+     house, a gold ring at the search circle's weight, a soft gold glow on hover. */
+  .home-btn {
+    width: 3rem;
+    height: 3rem;
+    flex: none;
+    border-radius: 50%;
+    border: 1.5px solid #c9a961;
+    background: rgba(245, 240, 230, 0.6);
+    color: #1a0e06;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: background 0.2s, box-shadow 0.2s;
+  }
+  .home-btn-icon { width: 1.7rem; height: 1.7rem; }
+  .home-btn:hover, .home-btn:focus-visible, .home-btn.active {
+    background: rgba(240, 196, 80, 0.35);
+    box-shadow: 0 0 12px rgba(240, 196, 80, 0.55);
+  }
+  .home-btn:focus-visible { outline: 2px solid #d4a531; outline-offset: 2px; }
+  :global(.dark) .home-btn { color: #f0e0bf; background: rgba(40, 28, 14, 0.7); }
+  .nav-utility .home-btn { margin-right: 0.15rem; }
 
   .icon-btn {
     text-decoration: none;
