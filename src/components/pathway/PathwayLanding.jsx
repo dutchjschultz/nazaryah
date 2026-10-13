@@ -145,6 +145,9 @@ export default function PathwayLanding() {
               lineHeight: 0.98,
               letterSpacing: '-0.03em',
               maxWidth: '18ch',
+              // Muted grey on the plain words, gold italic on the rest — the same
+              // two tones as the /investigations headline (Dutch 1013).
+              color: '#6f6c64',
             }}
           >
             Stop being{' '}
