@@ -10,7 +10,7 @@ author: "Nazaryah"
 associations: ["trinity-examined", "delegated-authority", "light-and-lamp"]
 companion: ["trinity-files-matthew-3-13-17", "the-throne-and-the-right-hand", "prophets-and-prophecy"]
 draft: false
-featured: true
+featured: false
 featuredAt: 2026-10-11T14:02
 skin: hidden-gems
 ---

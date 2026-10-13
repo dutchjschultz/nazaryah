@@ -1,4 +1,7 @@
-// series-skins 1012 V5.js
+// series-skins 1013 V6.js
+// V6: SECTIONS gains 'the-root' (The Root, /blog/c/the-root), filed like The Side
+// Door: a Root study's featured card wears the house look labelled The Root and
+// its location reads BEREAN STUDIES › THE ROOT (first: Marred Outside, Spotless Within).
 // V5: SECTIONS gains 'restored-truth' (The Five Offerings), wearing the Torah symbol.
 // V4: SECTIONS gains the newly dated kinds (Dutch 1012): The Symbol Lexicon, Torah
 // Testimonies, and the hand-built section pages (American Idolatry, Sun Worship,
@@ -176,6 +179,7 @@ export const SECTIONS = {
   investigations: { name: 'Investigations', href: '/investigations', skin: 'investigations', cta: 'Read the Study' },
   parables: { name: 'Parables', href: '/parables', skin: null, cta: 'Read the Parable' },
   'side-door': { name: 'The Side Door', href: '/blog/c/the-side-door', skin: null, cta: 'Read the Parable' },
+  'the-root': { name: 'The Root', href: '/blog/c/the-root', skin: null, cta: 'Read the Study' },
   cosmology: { name: 'Cosmology', href: '/cosmology', skin: 'cosmology', cta: 'Read the Study' },
   hebrew: { name: 'Hebrew Word Studies', href: '/hebrew', skin: 'hebrew', cta: 'Read the Study' },
   peah: { name: 'Pe’ah', href: '/peah', skin: null, cta: 'Read the Entry' },
@@ -205,6 +209,7 @@ export function sectionOfPost(post, group) {
   if (post.slug.startsWith('trinity-files-') || TRINITY_CATEGORIES.includes(d.category)) return 'trinity';
   if (d.investigation) return 'investigations';
   if (group === 'the-side-door') return 'side-door';
+  if (group === 'the-root') return 'the-root';
   if (group === 'the-parables' || d.category === 'Parables') return 'parables';
   return 'berean-studies';
 }
@@ -256,6 +261,7 @@ export const SYMBOLS = {
 // Sections and skins that wear another category's symbol.
 const SYMBOL_ALIAS = {
   'berean-studies': 'studies',
+  'the-root': 'studies',
   'pathway-name-and-nature': 'pathway',
   'pathway-grave-and-gate': 'pathway',
   'torah-testimonies': 'torah',
