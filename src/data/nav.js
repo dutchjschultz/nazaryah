@@ -1,4 +1,11 @@
-// nav 1013 V8.js
+// nav 1013 V9.js
+// V9 (Header — Lexicons tab, Dutch 1013): the Symbol Lexicon and LXX vs Masoretic
+// top tabs are replaced by one LEXICONS panel tab holding Legal Lexicon
+// (/torah/legal-lexicon — its existing page), Symbol Lexicon and LXX vs
+// Masoretic, each with Dutch's one-line description. Labels are Dutch's short
+// names; the Legal Lexicon and Symbol Lexicon pages carry longer h1s, so
+// check-nav-titles warns on those two (flagged to Dutch). Panel sublabel
+// "Words, symbols, and texts" is a placeholder, not supplied.
 // V8 (Page titles 1013): labels follow the new page titles — Doctrines (was Two Roads From
 // the Same Verses), Greek Influence (was Words Your Bible Borrowed), Investigations (was One
 // Lie, Many Witnesses), Pathway (was the Stop being told… line); the top tab Edited After the
@@ -95,8 +102,16 @@ export const mainNav = [
       { label: 'Close to the Hip', href: '/close-to-the-hip', desc: 'Short answers and quick insights to carry into any conversation.' },
     ],
   },
-  { label: 'LXX vs Masoretic', href: '/edited-after-the-cross' },
-  { label: 'Symbol Lexicon', href: '/symbol-lexicon' },
+  {
+    label: 'Lexicons',
+    sublabel: 'Words, symbols, and texts',
+    glyph: '✦',
+    links: [
+      { label: 'Legal Lexicon', href: '/torah/legal-lexicon', desc: 'The courtroom words of Scripture, defined from the Law.' },
+      { label: 'Symbol Lexicon', href: '/symbol-lexicon', desc: 'New Testament symbols traced back to their Old Testament picture.' },
+      { label: 'LXX vs Masoretic', href: '/edited-after-the-cross', desc: 'What the apostles read, and what was rewritten after Messiah.' },
+    ],
+  },
   {
     label: 'Books',
     sublabel: 'Ancient Paths Restoration Press',
