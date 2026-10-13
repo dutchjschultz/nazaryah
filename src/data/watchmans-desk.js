@@ -1,4 +1,11 @@
-// watchmans-desk 1001 V16.js
+// watchmans-desk 1013 V17.js
+// V17: loaded "Even If It Comes True" (weekly-letter, 13 October, standalone).
+// Kind and status follow the newest entry (A Lullaby With No Morning), per the
+// upload. Strapline as supplied. No `law` was supplied and none is assigned —
+// the field is optional; flagged for Dutch. Newest by sortDate, so it takes the
+// top of the stream and the first band slot. Card: Dutch's supplied 1200x630,
+// placed at /og/watchmans-desk/<slug>.v2.png (the generator's first version);
+// thumb not committed.
 // V16: loaded "A Lullaby With No Morning" (weekly-letter, 1 October, standalone).
 // Newest by sortDate, so it takes the top of the stream and the first band slot.
 // Status "week-ending" follows the other weekly letters (not supplied). No `law`
@@ -92,6 +99,17 @@ export const STATUSES = {
 // string (a calendar date, or a phrase like "Ongoing") and is shown verbatim;
 // it is never parsed or sorted on. Give every new entry a sortDate.
 export const entries = [
+  {
+    slug: "even-if-it-comes-true",
+    kind: "weekly-letter", status: "week-ending", date: "13 October 2026",
+    sortDate: "2026-10-13",
+    eyebrow: "",
+    title: "Even If It Comes True",
+    deck: "A prophet can hit every prediction and still be false. Yahuah gave the test the internet forgot.",
+    body: "Online, the false prophets of today are exposed one way: the prediction failed, so the prophet is false. That test is in Scripture (Deuteronomy 18:22), but it is only half the story. Yahuah gave a deeper test, and it catches the prophet whose words come true.",
+    strapline: "The False Prophet Test Almost No One Teaches",
+    source: "standalone",
+  },
   {
     slug: "a-lullaby-with-no-morning",
     kind: "weekly-letter", status: "week-ending", date: "1 October 2026",
