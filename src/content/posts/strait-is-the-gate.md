@@ -5,7 +5,7 @@ deck: "Two gates, two trees, two builders, and a test the Torah gave first."
 verse: "Matthew 7:13-27"
 date: 2026-09-08
 author: "Nazaryah"
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 featured: false
 draft: false
 epigraph:

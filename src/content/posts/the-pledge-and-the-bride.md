@@ -3,7 +3,7 @@ title: "The Pledge and the Bride"
 subtitle: "Deuteronomy 24 Lived Out in Genesis 24"
 deck: "Genesis 24 keeps every rule of the pledge law, four hundred years early."
 description: "Genesis 24 keeps every rule of the pledge law, four hundred years early."
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 date: 2026-10-10
 associations: ["garments-and-covering", "whose-righteousness"]
 ---

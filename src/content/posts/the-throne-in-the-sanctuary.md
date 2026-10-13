@@ -4,7 +4,7 @@ subtitle: "Hebrews 8:1–2 and the Place Where Yahuah Sits"
 deck: "Scripture never separates them. Yahuah's throne stands inside His sanctuary."
 description: "Scripture never separates them. Yahuah's throne stands inside His sanctuary."
 verse: "Hebrews 8:1–2"
-category: "Scripture Unfiltered"
+category: "The Counterfeit Throne"
 date: 2026-10-11
 author: "Nazaryah"
 associations: ["the-mishkan", "trinity-examined", "delegated-authority"]

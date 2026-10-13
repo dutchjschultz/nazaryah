@@ -4,7 +4,7 @@ subtitle: "The Sea Beast of Revelation 13 Set Against Yahushua the Messiah"
 deck: "Seven marks on Revelation 13's sea beast. Every one was copied."
 description: "Seven marks on Revelation 13's sea beast. Every one was copied."
 slug: "the-copy-of-the-son"
-category: "Scripture Unfiltered"
+category: "The Counterfeit Throne"
 date: 2026-10-10
 author: "Nazaryah"
 associations: ["trinity-examined", "delegated-authority", "light-and-lamp"]

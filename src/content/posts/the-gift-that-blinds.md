@@ -4,7 +4,7 @@ subtitle: "A Root Study of the Gift Given to Bend"
 deck: "The hooked gift, the withheld wage, and why Torah calls both corruption."
 description: "The hooked gift, the withheld wage, and why Torah calls both corruption."
 slug: "the-gift-that-blinds"
-category: "Scripture Unfiltered"
+category: "The Root"
 date: 2026-10-13
 author: "Nazaryah"
 associations: ["lost-in-translation"]

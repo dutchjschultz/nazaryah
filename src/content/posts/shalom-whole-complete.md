@@ -5,7 +5,7 @@ description: "Why 'nothing missing, nothing broken' is not what the Hebrew says 
 subtitle: "Why the Popular Definition Is Not What the Hebrew Says"
 date: 2026-04-15
 author: "Nazaryah"
-category: "Scripture Unfiltered"
+category: "The Root"
 readTime: "12 min"
 image: "/og/blog/shalom-whole-complete.v2.png"
 tags: ["Hebrew", "Word Study", "Shalom", "shalem", "tamim", "Prosperity Gospel", "Heart", "Wholeness", "Living Temple"]

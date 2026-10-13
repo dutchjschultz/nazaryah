@@ -5,7 +5,7 @@ deck: "The verse about the eye is not about focus. It is about money."
 verse: "Matthew 6:19-34"
 date: 2026-09-08
 author: "Nazaryah"
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 featured: false
 draft: false
 epigraph:

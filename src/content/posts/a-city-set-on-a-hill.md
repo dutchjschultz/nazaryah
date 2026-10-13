@@ -5,7 +5,7 @@ deck: "Salt of the covenant, a lamp with no light of its own, and a city the nat
 verse: "Matthew 5:13-16"
 date: 2026-09-08
 author: "Nazaryah"
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 featured: false
 draft: false
 epigraph:

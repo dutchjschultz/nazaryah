@@ -4,7 +4,7 @@ subtitle: "A Study of Holy Meat, Common Meat, and the Unclean Person"
 deck: "Why the Law let the unclean and the clean eat the same meat."
 description: "Why the Law let the unclean and the clean eat the same meat."
 verse: "Deuteronomy 12:20–24"
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 date: 2026-10-11
 associations: ["pulpit-vocabulary", "the-mishkan"]
 epigraph:

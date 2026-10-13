@@ -5,7 +5,7 @@ deck: "Eight blessings, and a crowd that had heard every one of them before."
 verse: "Matthew 5:3-12"
 date: 2026-09-08
 author: "Nazaryah"
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 featured: false
 draft: false
 epigraph:

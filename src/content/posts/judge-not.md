@@ -5,7 +5,7 @@ deck: "Finish the paragraph. It ends with the reader removing the mote."
 verse: "Matthew 7:1-6"
 date: 2026-09-08
 author: "Nazaryah"
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 featured: false
 draft: false
 epigraph:

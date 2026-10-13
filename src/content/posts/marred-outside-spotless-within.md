@@ -4,7 +4,7 @@ subtitle: "Isaiah 52:14 and the Move from the Outside to the Inside"
 deck: "The word for His marred face is the word for a rejected offering."
 description: "The word for His marred face is the word for a rejected offering."
 slug: "marred-outside-spotless-within"
-category: "Scripture Unfiltered"
+category: "The Root"
 date: 2026-10-13
 author: "Nazaryah"
 associations: ["the-mishkan", "lost-in-translation", "two-stage-salvation"]

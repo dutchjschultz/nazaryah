@@ -4,7 +4,7 @@ subtitle: "Isaiah 43:3, the Saviour Who Sends, and the Saviour He Sent"
 deck: "The same Hebrew word Isaiah reserves for Yahuah, Scripture gives to men He sends."
 description: "The same Hebrew word Isaiah reserves for Yahuah, Scripture gives to men He sends."
 slug: "beside-me-there-is-no-saviour"
-category: "Scripture Unfiltered"
+category: "The Counterfeit Throne"
 date: 2026-10-13
 author: "Nazaryah"
 associations: ["trinity-examined", "goel-kopher", "delegated-authority"]

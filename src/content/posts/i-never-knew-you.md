@@ -5,7 +5,7 @@ deck: "They prophesied and cast out devils. The charge against them is built on 
 verse: "Matthew 7:21-23"
 date: 2026-09-08
 author: "Nazaryah"
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 featured: false
 draft: false
 epigraph:

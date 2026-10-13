@@ -3,7 +3,7 @@ title: "The Grove That Was Never a Grove"
 subtitle: "Asherah (H842) and the idol hidden behind an English word"
 deck: "The KJV's grove was never trees. It was a carved idol beside the altar."
 description: "The KJV's grove was never trees. It was a carved idol beside the altar."
-category: "Scripture Unfiltered"
+category: "The Root"
 date: 2026-10-10
 author: "Nazaryah"
 associations: ["lost-in-translation", "foreign-fire"]

@@ -5,7 +5,7 @@ deck: "Ten witnesses to one sermon, and the Law named at both ends."
 verse: "Matthew 5-7"
 date: 2026-09-08
 author: "Nazaryah"
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 draft: false
 epigraph:
   text: "To the law and to the testimony: if they speak not according to this word, it is because there is no light in them."

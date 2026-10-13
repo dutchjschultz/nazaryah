@@ -5,7 +5,7 @@ deck: "He denied a charge nobody had made yet, and then He set the clock."
 verse: "Matthew 5:17-20"
 date: 2026-09-08
 author: "Nazaryah"
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 featured: false
 draft: false
 epigraph:

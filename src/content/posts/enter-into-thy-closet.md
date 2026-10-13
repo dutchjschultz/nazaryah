@@ -5,7 +5,7 @@ deck: "He never argues that they should give, pray, or fast. He assumes it."
 verse: "Matthew 6:1-18"
 date: 2026-09-08
 author: "Nazaryah"
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 featured: false
 draft: false
 epigraph:

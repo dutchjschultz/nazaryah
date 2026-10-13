@@ -5,7 +5,7 @@ deck: "The verses used to throw Enoch out agree most with the Prophets."
 description: "The verses used to throw Enoch out agree most with the Prophets."
 date: 2026-10-13
 author: "Nazaryah"
-category: "The Scrolls"
+category: "The Quick Scroll"
 tags: []
 associations: ["trinity-examined", "delegated-authority"]
 featured: false

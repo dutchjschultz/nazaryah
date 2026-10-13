@@ -1,4 +1,8 @@
-// content config 1013 V27
+// content config 1013 V28
+// V28 (Dutch 1013, category rule): the category enum is the eight Berean Studies
+// category names plus six standing exceptions (four book series, The Trinity
+// Files, Parables). The Scrolls, The Feasts, The Law Still Stands, Word Studies
+// and The Sender and The Sent are retired; an unlisted value fails the build.
 // V27: category enum gains 'The Side Door' — the modern parables (Barney and
 // Clyde, Sinai Arcade) carry it as their only category (Dutch 1013).
 // V26: optional `kicker` — the centered label line a study opens on ("THE SEALED
@@ -147,23 +151,31 @@ const postsCollection = defineCollection({
     author: z.string().default('Nazaryah'),
     // Optional ONLY for a study served as its own section (`route` set); every
     // blog study carries one.
+    // CATEGORY RULE (Dutch 1013): a blog study's category is one of the EIGHT
+    // category names on the Berean Studies page (BLOG_GROUPS in
+    // src/data/blog-groups.js), spelled exactly. Any other value FAILS the build.
+    // Retired 1013: 'The Scrolls', 'The Feasts', 'The Law Still Stands',
+    // 'Word Studies', 'The Sender and The Sent'. The second list is the
+    // standing exceptions — book series and two sections that are not on the
+    // Berean Studies page — kept because the bookshelf cards, /trinity,
+    // /trinity/files and /parables read them; flagged to Dutch, not his eight.
     category: z.enum([
-      'The Scrolls',
+      // The eight
       'Scripture Unfiltered',
       'The Way In and the Walk',
+      'The Root',
+      'The Counterfeit Throne',
+      'The Quick Scroll',
       'Buried in Plain Sight',
-      'Parables',
-      'The Trinity Files',
-      'The Sender and The Sent',
+      'The Law & The Feasts',
+      'The Side Door',
+      // Standing exceptions (book series / other sections)
       'The Bearer',
       'Five Titles, One Christ',
       'What the Pulpit Buried',
-      // Volume V of the books. (The near-collision 'One Throne, One Name' was retired in V21.)
       'One God, One Name, One Throne',
-      'Word Studies',
-      'The Law Still Stands',
-      'The Feasts',
-      'The Side Door',
+      'The Trinity Files',
+      'Parables',
     ]).optional(),
     tags: z.array(z.string()).default([]),
     // HOME — the section this study is served from, if not /blog. The URL is

@@ -3,7 +3,7 @@ title: "Incarnate"
 subtitle: "One Idea, Two Labels — Heresy in the Temple of Vishnu, Creed in the Church"
 deck: "Called pagan in a Hindu temple, sung as gospel in a church pew."
 description: "Called pagan in a Hindu temple, sung as gospel in a church pew."
-category: "Scripture Unfiltered"
+category: "The Counterfeit Throne"
 date: 2026-10-12
 author: "Nazaryah"
 associations: ["trinity-examined"]

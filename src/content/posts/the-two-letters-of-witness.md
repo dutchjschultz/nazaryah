@@ -4,7 +4,7 @@ subtitle: "Ayin and Dalet (עד): Until, Forever, and Witness"
 deck: "Until, forever, and witness share two letters. English hides it; Hebrew never did."
 description: "Until, forever, and witness share two letters. English hides it; Hebrew never did."
 slug: "the-two-letters-of-witness"
-category: "Scripture Unfiltered"
+category: "The Root"
 date: 2026-10-13
 author: "Nazaryah"
 associations: ["lost-in-translation", "trinity-examined", "how-yahuah-speaks"]

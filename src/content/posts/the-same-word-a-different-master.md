@@ -2,7 +2,7 @@
 title: "The Same Word, a Different Master"
 deck: "One Hebrew word for slavery and service, and what Egypt teaches about the Law."
 description: "One Hebrew word for slavery and service, and what Egypt teaches about the Law."
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 featured: false
 draft: false
 date: 2026-10-01

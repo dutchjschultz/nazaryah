@@ -5,7 +5,7 @@ deck: "The cheek, the cloke, and the statute the man across from him was breakin
 verse: "Matthew 5:39-42 · 7:7-12"
 date: 2026-09-08
 author: "Nazaryah"
-category: "The Law Still Stands"
+category: "The Law & The Feasts"
 featured: false
 draft: false
 epigraph:
