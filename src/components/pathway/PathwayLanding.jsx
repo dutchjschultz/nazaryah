@@ -121,14 +121,23 @@ export default function PathwayLanding() {
 
         {/* HERO — compressed to drive the eye toward the cards below */}
         <div className="space-y-6 mb-16 fade-up" style={{ maxWidth: '44rem' }}>
-          <div
-            className="text-xs uppercase"
-            style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}
-          >
-            Pathway · A Hands-On Bible Study
-          </div>
-
+          {/* Page titles 1013 (Dutch): the section name is the title, in the site's
+              standard page-title style; the two-tone headline beneath it is the
+              subtitle, unchanged. The PATHWAY · A HANDS-ON BIBLE STUDY kicker is gone. */}
           <h1
+            style={{
+              fontFamily: 'var(--font-display)',
+              fontWeight: 700,
+              fontSize: 'clamp(1.8rem, 1.3rem + 2.6vw, 2.8rem)',
+              lineHeight: 1.14,
+              color: '#e8e2d4',
+              margin: 0,
+            }}
+          >
+            Pathway
+          </h1>
+
+          <p
             style={{
               fontFamily: '"Fraunces", Georgia, serif',
               fontWeight: 300,
@@ -142,7 +151,7 @@ export default function PathwayLanding() {
             <em style={{ fontStyle: 'italic', fontWeight: 400, color: amber }}>told</em>{' '}
             what to believe. Start{' '}
             <em style={{ fontStyle: 'italic', fontWeight: 400, color: amber }}>finding out.</em>
-          </h1>
+          </p>
 
           <p style={{ fontSize: '1.1rem', lineHeight: 1.7, color: cream, opacity: 0.85, maxWidth: '38rem' }}>
             For most of us, our doctrine got handed to us — by pastors, parents, Sunday school. We

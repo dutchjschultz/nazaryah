@@ -1,4 +1,6 @@
-// series-skins 1013 V6.js
+// series-skins 1013 V7.js
+// V7: the edited-after-the-cross section is named LXX vs Masoretic, matching its page title
+// and header tab (Page titles 1013). Key and URL unchanged.
 // V6: SECTIONS gains 'the-root' (The Root, /blog/c/the-root), filed like The Side
 // Door: a Root study's featured card wears the house look labelled The Root and
 // its location reads BEREAN STUDIES › THE ROOT (first: Marred Outside, Spotless Within).
@@ -185,7 +187,7 @@ export const SECTIONS = {
   peah: { name: 'Pe’ah', href: '/peah', skin: null, cta: 'Read the Entry' },
   'watchmans-desk': { name: 'The Watchman’s Desk', href: '/watchmans-desk', skin: null, cta: 'Read the Letter' },
   hollywood: { name: 'Hollywood', href: '/hollywood', skin: 'hollywood', cta: 'Read the Reel' },
-  'edited-after-the-cross': { name: 'Edited After the Cross', href: '/edited-after-the-cross', skin: null, cta: 'Read the Verse' },
+  'edited-after-the-cross': { name: 'LXX vs Masoretic', href: '/edited-after-the-cross', skin: null, cta: 'Read the Verse' },
   'symbol-lexicon': { name: 'The Symbol Lexicon', href: '/symbol-lexicon', skin: null, cta: 'Read the Symbol' },
   'torah-testimonies': { name: 'Torah Testimonies', href: '/torah/testimonies', skin: null, cta: 'Read the Testimony' },
   // Restored Truth has no front page of its own; its row's View all opens The Five Offerings.

@@ -1,4 +1,6 @@
-// borrowed-words-page 1009 V8.js
+// borrowed-words-page 1013 V9.js
+// V9: pageTitle is the section name, Greek Influence; the old title moves to pageTagline, shown as
+// the subtitle beneath it (Dutch, Page titles 1013). pageSubtitle (the italic deck) is unchanged.
 // V8: each doctrine carries oldPathsTitle (shown in parentheses after its heading); every word with
 // a Departure tab now has a story link — 75 of 80 (Pneuma and Oikonomia carry two each; telos,
 // charisma, kolasis, abyssos and orthotomeo have no tab and no link).
@@ -24,7 +26,8 @@
 
 export const sourceTypes = ["Gods & myths","Temples & cults","Philosophers","Emperors & state","Later teachers & translators"];
 
-export const pageTitle = "Words Your Bible Borrowed";
+export const pageTitle = "Greek Influence";
+export const pageTagline = "Words Your Bible Borrowed";
 export const pageSubtitle = "The Greek words that came into the New Testament carrying their gods with them";
 
 export const intro = [

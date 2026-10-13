@@ -1,4 +1,8 @@
-// nav 1012 V7.js
+// nav 1013 V8.js
+// V8 (Page titles 1013): labels follow the new page titles — Doctrines (was Two Roads From
+// the Same Verses), Greek Influence (was Words Your Bible Borrowed), Investigations (was One
+// Lie, Many Witnesses), Pathway (was the Stop being told… line); the top tab Edited After the
+// Cross → LXX vs Masoretic (stacks LXX vs / Masoretic in the desktop row). URLs unchanged.
 // V7: The Five Offerings joins Restored Truth (Five Offerings Etsy Block 1012 V1).
 // V6: STANDING RULE (Dutch, 1012) — every dropdown item's label is the title of
 // the page it opens, exactly as the page shows it (its <h1>); the page title wins.
@@ -32,7 +36,7 @@
 // Doctrines points to the paired Old Paths / Departure page. Never link to one
 // half of the pair from the header.
 const doctrines = {
-  label: 'Two Roads From the Same Verses',
+  label: 'Doctrines',
   href: '/doctrines',
   desc: 'The Old Paths and The Departure side by side: what Scripture taught and where the church left it.',
   pinned: true,
@@ -56,7 +60,7 @@ export const mainNav = [
       { label: 'Unmasking the Holidays', href: '/holidays', desc: 'Christmas, Easter, and Sunday — days the church kept that Scripture never named.' },
       { label: 'Christian or Demonic?', href: '/christian-or-demonic', desc: 'Five pillars every believer inherited, held up to the text.' },
       { label: 'The Paper Trail', href: '/on-these-two', desc: 'Every false teaching traced back up the tree to the root it grew from.' },
-      { label: 'Words Your Bible Borrowed', href: '/doctrines/borrowed-words', desc: 'The Greek behind the doctrines.' },
+      { label: 'Greek Influence', href: '/doctrines/borrowed-words', desc: 'The Greek behind the doctrines.' },
     ],
   },
   {
@@ -85,13 +89,13 @@ export const mainNav = [
       { label: 'Trilogies', href: '/trilogies', desc: 'Three studies that belong together. Each one opens the other two wider.' },
       { label: 'Collections', href: '/blog/collections', desc: 'Studies that outgrew the page.' },
       { label: 'The Parables', href: '/parables', desc: 'Yahushua’s parables read from the Law and the Prophets, not the pulpit.' },
-      { label: 'One Lie, Many Witnesses', href: '/investigations', desc: 'One claim put on the stand and examined witness by witness.' },
-      { label: 'Stop being told what to believe. Start finding out.', href: '/pathway', desc: 'Guided walks through one subject, stop by stop.' },
+      { label: 'Investigations', href: '/investigations', desc: 'One claim put on the stand and examined witness by witness.' },
+      { label: 'Pathway', href: '/pathway', desc: 'Guided walks through one subject, stop by stop.' },
       { label: 'Hidden Gems of Scripture', href: '/hidden-gems', desc: 'The verses the pulpit flips past, and what they actually say.' },
       { label: 'Close to the Hip', href: '/close-to-the-hip', desc: 'Short answers and quick insights to carry into any conversation.' },
     ],
   },
-  { label: 'Edited After the Cross', href: '/edited-after-the-cross' },
+  { label: 'LXX vs Masoretic', href: '/edited-after-the-cross' },
   { label: 'Symbol Lexicon', href: '/symbol-lexicon' },
   {
     label: 'Books',

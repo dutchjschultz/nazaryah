@@ -1,5 +1,7 @@
 ---
-// src/pages/doctrines.astro · 1008 V6
+// src/pages/doctrines.astro · 1013 V7
+// V7: the section name is the title; the clever line is the subtitle beneath it (Dutch, Page titles 1013).
+// Title Doctrines; subtitle Two Roads From the Same Verses; the DOCTRINES kicker is gone.
 // V6: the root paragraph is set apart in place — a faint gold-wash panel with a
 // gold left edge, a small THE ROOT label, the text in italic a touch larger.
 // Italic runs in the body serif (--font-body); the site carries no Cormorant
@@ -19,13 +21,13 @@ import { sections } from '../data/doctrines.data.js';
 ---
 
 <BaseLayout
-  title="Doctrines — The Old Paths & The Departure | Nazaryah"
+  title="Doctrines — Two Roads From the Same Verses | Nazaryah"
   description="Two ways to read the same doctrines: The Old Paths, what Scripture holds, and The Departure, where the church went wrong."
 >
   <div class="dl-page">
     <header class="dl-header">
-      <p class="dl-eyebrow">Doctrines</p>
-      <h1 class="dl-title">Two Roads From the Same Verses</h1>
+      <h1 class="dl-title">Doctrines</h1>
+      <p class="dl-subtitle">Two Roads From the Same Verses</p>
       <p class="dl-sub">The same doctrines, read from both directions.</p>
     </header>
 
@@ -87,13 +89,13 @@ import { sections } from '../data/doctrines.data.js';
 <style>
   .dl-page { background: #0e0d0b; min-height: 100vh; padding: 4rem 2rem 5rem; }
   .dl-header { text-align: center; max-width: 44rem; margin: 0 auto 3rem; }
-  .dl-eyebrow {
-    font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.28em;
-    text-transform: uppercase; color: #BA7517; margin: 0 0 0.7rem;
-  }
   .dl-title {
     font-family: var(--font-display); font-size: clamp(1.7rem, 1.3rem + 2.4vw, 2.6rem);
-    font-weight: 700; color: #e8e2d4; margin: 0 0 0.9rem; line-height: 1.14;
+    font-weight: 700; color: #e8e2d4; margin: 0 0 0.5rem; line-height: 1.14;
+  }
+  .dl-subtitle {
+    font-family: var(--font-display); font-size: clamp(1.05rem, 0.85rem + 1vw, 1.45rem);
+    font-weight: 600; letter-spacing: 0.04em; color: #c9a35c; margin: 0 0 0.9rem; line-height: 1.3;
   }
   .dl-sub { font-family: var(--font-body); font-style: italic; font-size: 1.1rem; color: #a89f8c; margin: 0; line-height: 1.5; }
 

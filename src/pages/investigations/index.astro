@@ -1,5 +1,7 @@
 ---
-// src/pages/investigations/index.astro · 0929 V4
+// src/pages/investigations/index.astro · 1013 V5
+// V5: the section name is the title; the clever line is the subtitle beneath it (Dutch, Page titles 1013).
+// Title Investigations, set larger; subtitle One Lie, Many Witnesses; the ― INVESTIGATIONS ― kicker is gone.
 // V4: the page now says what each case is AGAINST. H1 "One Question, Many
 // Witnesses" -> "One Lie, Many Witnesses"; the intro names false teachings
 // rather than errors; every card carries a "teaching on trial" line (the new
@@ -37,12 +39,12 @@ const cards = INVESTIGATIONS.map((inv) => ({
 ---
 
 <BaseLayout
-  title="Investigations | Nazaryah"
+  title="Investigations — One Lie, Many Witnesses | Nazaryah"
   description="Curated cases, not subject tags. Each investigation asks one question, argues its method in a nucleus study, and closes the case with several witnesses from different directions."
 >
   <main class="hub">
-    <p class="eyebrow">― Investigations ―</p>
-    <h1>One Lie, Many Witnesses</h1>
+    <h1>Investigations</h1>
+    <p class="inv-subtitle">One Lie, Many Witnesses</p>
     {/* The short CARD deck, read by the social-card generator. Not visible: the
         page's own intro is below, and the meta description is a third field
         again. The card must never fall back to the description, which is long
@@ -94,23 +96,25 @@ const cards = INVESTIGATIONS.map((inv) => ({
     margin: 0 auto;
     padding: 3rem 1.5rem 4.5rem;
   }
-  .eyebrow {
-    font-size: 10px;
-    letter-spacing: 4px;
-    text-transform: uppercase;
-    color: var(--gold);
-    text-align: center;
-    margin: 0 0 0.6rem;
-  }
-  :global(.dark) .eyebrow { color: var(--gold-light); }
 
   .hub h1 {
     font-family: var(--font-display);
     text-align: center;
-    margin: 0 0 0.5rem;
-    font-size: clamp(1.9rem, 4.6vw, 2.8rem);
+    margin: 0 0 0.4rem;
+    font-size: clamp(2.3rem, 5.6vw, 3.4rem);
   }
   :global(.dark) .hub h1 { color: var(--color-dark-text); }
+  .inv-subtitle {
+    font-family: var(--font-display);
+    text-align: center;
+    font-size: clamp(1.05rem, 0.85rem + 1vw, 1.45rem);
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    line-height: 1.3;
+    color: var(--gold);
+    margin: 0 0 1rem;
+  }
+  :global(.dark) .inv-subtitle { color: var(--gold-light); }
 
   /* Visually hidden; it exists for the card generator, not the reader. */
   .inv-card-deck {
