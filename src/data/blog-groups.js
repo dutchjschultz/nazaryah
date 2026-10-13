@@ -1,4 +1,5 @@
-// blog-groups 1013 V46.js
+// blog-groups 1013 V47.js
+// V47: the-gift-that-blinds joins the-root (category Scripture Unfiltered).
 // V46: beside-me-there-is-no-saviour joins the-counterfeit-throne (category Scripture Unfiltered).
 // V45: the-two-letters-of-witness joins the-root (category Scripture Unfiltered).
 // V44: marred-outside-spotless-within joins the-root (category Scripture Unfiltered).
@@ -179,7 +180,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 129 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 130 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (18) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
@@ -202,7 +203,7 @@ export const POST_GROUP = {
   'the-redeemer-who-never-needed-redeeming': 'the-counterfeit-throne',
   'the-copy-of-the-son': 'the-counterfeit-throne',
 
-  // ── The Root (23) ──
+  // ── The Root (24) ──
   // Volume V's seven word chapters. They sit beside What the Pulpit Buried's
   // six, which is the point: the two books are a matched pair excavating one
   // vocabulary, and the rail should read that way.
@@ -230,6 +231,7 @@ export const POST_GROUP = {
   'sanctification-the-temple-life-of-a-claimed-people': 'the-root',
   'marred-outside-spotless-within': 'the-root',
   'the-two-letters-of-witness': 'the-root',
+  'the-gift-that-blinds': 'the-root',
 
   // ── The Quick Scroll (9) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
