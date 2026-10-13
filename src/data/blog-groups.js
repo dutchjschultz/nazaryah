@@ -1,4 +1,5 @@
-// blog-groups 1013 V47.js
+// blog-groups 1013 V48.js
+// V48: the-book-of-enoch joins the-quick-scroll (category The Scrolls), beside Esther.
 // V47: the-gift-that-blinds joins the-root (category Scripture Unfiltered).
 // V46: beside-me-there-is-no-saviour joins the-counterfeit-throne (category Scripture Unfiltered).
 // V45: the-two-letters-of-witness joins the-root (category Scripture Unfiltered).
@@ -180,7 +181,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 130 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 131 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (18) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
@@ -233,8 +234,9 @@ export const POST_GROUP = {
   'the-two-letters-of-witness': 'the-root',
   'the-gift-that-blinds': 'the-root',
 
-  // ── The Quick Scroll (9) ──
+  // ── The Quick Scroll (10) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
+  'the-book-of-enoch': 'the-quick-scroll',
   'isaiah-runs-forward': 'the-quick-scroll',
   'hosea-lives-it-then-says-it': 'the-quick-scroll',
   'jonah-the-prophet-who-ran-from-mercy': 'the-quick-scroll',
