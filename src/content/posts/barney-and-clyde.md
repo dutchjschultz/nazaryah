@@ -1,9 +1,8 @@
 ---
 title: "The Adventures of Barney and Clyde"
-subtitle: "A parable"
-deck: "A parable: everyone studies the Son; almost no one asks who sent him."
+deck: "Everyone studies the Son; almost no one asks who sent him."
 description: "A parable: everyone studies the Son; almost no one asks who sent him."
-category: "Scripture Unfiltered"
+category: "The Side Door"
 date: 2026-10-10
 author: "Nazaryah"
 associations: ["trinity-examined", "light-and-lamp", "how-yahuah-speaks"]

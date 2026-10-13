@@ -1,4 +1,6 @@
-// content config 1012 V26
+// content config 1013 V27
+// V27: category enum gains 'The Side Door' — the modern parables (Barney and
+// Clyde, Sinai Arcade) carry it as their only category (Dutch 1013).
 // V26: optional `kicker` — the centered label line a study opens on ("THE SEALED
 // COUNT · WITNESS ONE · THE LAMPSTAND"), shown above the title in place of the
 // category line. Absent everywhere else.
@@ -161,6 +163,7 @@ const postsCollection = defineCollection({
       'Word Studies',
       'The Law Still Stands',
       'The Feasts',
+      'The Side Door',
     ]).optional(),
     tags: z.array(z.string()).default([]),
     // HOME — the section this study is served from, if not /blog. The URL is

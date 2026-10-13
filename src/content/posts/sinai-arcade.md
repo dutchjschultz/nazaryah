@@ -3,7 +3,7 @@ title: "The Parable of Sinai Arcade"
 subtitle: "A parable"
 deck: "A parable: the price paid, the law unchanged, and the walk that still remains."
 description: "A parable: the price paid, the law unchanged, and the walk that still remains."
-category: "Scripture Unfiltered"
+category: "The Side Door"
 date: 2026-10-10
 author: "Nazaryah"
 associations: ["two-stage-salvation", "goel-kopher"]
