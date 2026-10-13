@@ -1,4 +1,5 @@
-// blog-groups 1013 V48.js
+// blog-groups 1013 V49.js
+// V49: out-of-dead-wood joins buried-in-plain-sight (category Buried in Plain Sight).
 // V48: the-book-of-enoch joins the-quick-scroll (category The Scrolls), beside Esther.
 // V47: the-gift-that-blinds joins the-root (category Scripture Unfiltered).
 // V46: beside-me-there-is-no-saviour joins the-counterfeit-throne (category Scripture Unfiltered).
@@ -181,7 +182,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 131 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 132 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (18) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
@@ -246,7 +247,7 @@ export const POST_GROUP = {
   'micah-three-calls-to-hear': 'the-quick-scroll',
   'zephaniah-the-day-closes-in': 'the-quick-scroll',
 
-  // ── Buried in Plain Sight (22) ──
+  // ── Buried in Plain Sight (23) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
   'the-christian-experiment': 'buried-in-plain-sight',
   'the-men-in-the-margin': 'buried-in-plain-sight',
@@ -270,6 +271,7 @@ export const POST_GROUP = {
   'the-reign-is-now': 'buried-in-plain-sight',
   'gog-and-magog': 'buried-in-plain-sight',
   'two-clocks-not-one': 'buried-in-plain-sight',
+  'out-of-dead-wood': 'buried-in-plain-sight',
   'the-throne-in-the-sanctuary': 'buried-in-plain-sight',
   'saturnalia': 'buried-in-plain-sight',
   'ashtoreth': 'buried-in-plain-sight',
