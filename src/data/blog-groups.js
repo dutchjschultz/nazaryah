@@ -1,4 +1,5 @@
-// blog-groups 1013 V45.js
+// blog-groups 1013 V46.js
+// V46: beside-me-there-is-no-saviour joins the-counterfeit-throne (category Scripture Unfiltered).
 // V45: the-two-letters-of-witness joins the-root (category Scripture Unfiltered).
 // V44: marred-outside-spotless-within joins the-root (category Scripture Unfiltered).
 // V43: incarnate joins the-counterfeit-throne (category Scripture Unfiltered).
@@ -178,13 +179,14 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 128 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 129 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
-  // ── The Counterfeit Throne (17) ──
+  // ── The Counterfeit Throne (18) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
   'worship-and-service': 'the-counterfeit-throne',
   'the-throne-and-the-right-hand': 'the-counterfeit-throne',
   'incarnate': 'the-counterfeit-throne',
+  'beside-me-there-is-no-saviour': 'the-counterfeit-throne',
   'the-assembly-of-the-most-high': 'the-counterfeit-throne',
   'faith-has-an-address': 'the-counterfeit-throne',
   'heavens-letters-words-son': 'the-counterfeit-throne',
