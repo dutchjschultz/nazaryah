@@ -3,7 +3,7 @@ title: "Out of Dead Wood"
 subtitle: "A Study of Priests Raised From Nothing"
 deck: "Dust, dead wood, barren wombs, and a tomb — Yahuah raises His priests from nothing."
 description: "Dust, dead wood, barren wombs, and a tomb — Yahuah raises His priests from nothing."
-category: "Buried in Plain Sight"
+category: "Scripture Unfiltered"
 date: 2026-10-13
 author: "Nazaryah"
 associations: ["the-mishkan", "restored-creation"]

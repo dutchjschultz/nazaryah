@@ -3,7 +3,7 @@ title: "Two Clocks, Not One"
 subtitle: "The 400 Years and the 430 Years Explained Plainly"
 deck: "Two clocks, one finish line, and the 400 years of slavery that never happened."
 description: "Two clocks, one finish line, and the 400 years of slavery that never happened."
-category: "Buried in Plain Sight"
+category: "Scripture Unfiltered"
 date: 2026-10-10
 author: "Nazaryah"
 associations: ["lost-in-translation", "two-stage-salvation"]

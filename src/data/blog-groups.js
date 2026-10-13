@@ -1,4 +1,14 @@
-// blog-groups 1013 V49.js
+// blog-groups 1013 V50.js
+// V50 (Dutch 1013, category fixes): out-of-dead-wood and two-clocks-not-one move
+// buried-in-plain-sight → scripture-unfiltered; the-throne-in-the-sanctuary moves
+// buried-in-plain-sight → the-counterfeit-throne (the Trinity group; it keeps
+// its the-mishkan, trinity-examined and delegated-authority tags). All three
+// carry category Scripture Unfiltered. Buried in Plain Sight now 21 (the old count comment was stale).
+//
+// ── CATEGORY DEFINITION (Dutch 1013) — use for every new study ──
+// BURIED IN PLAIN SIGHT = something happening in the world today, held up to
+// Scripture. A study that is strictly biblical does NOT go here; it goes to
+// Scripture Unfiltered.
 // V49: out-of-dead-wood joins buried-in-plain-sight (category Buried in Plain Sight).
 // V48: the-book-of-enoch joins the-quick-scroll (category The Scrolls), beside Esther.
 // V47: the-gift-that-blinds joins the-root (category Scripture Unfiltered).
@@ -184,12 +194,13 @@ export const BLOG_JUMPOUTS = [
 
 // slug → group key. 132 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
-  // ── The Counterfeit Throne (18) ──
+  // ── The Counterfeit Throne (19) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
   'worship-and-service': 'the-counterfeit-throne',
   'the-throne-and-the-right-hand': 'the-counterfeit-throne',
   'incarnate': 'the-counterfeit-throne',
   'beside-me-there-is-no-saviour': 'the-counterfeit-throne',
+  'the-throne-in-the-sanctuary': 'the-counterfeit-throne',
   'the-assembly-of-the-most-high': 'the-counterfeit-throne',
   'faith-has-an-address': 'the-counterfeit-throne',
   'heavens-letters-words-son': 'the-counterfeit-throne',
@@ -247,7 +258,7 @@ export const POST_GROUP = {
   'micah-three-calls-to-hear': 'the-quick-scroll',
   'zephaniah-the-day-closes-in': 'the-quick-scroll',
 
-  // ── Buried in Plain Sight (23) ──
+  // ── Buried in Plain Sight (21) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
   'the-christian-experiment': 'buried-in-plain-sight',
   'the-men-in-the-margin': 'buried-in-plain-sight',
@@ -270,9 +281,6 @@ export const POST_GROUP = {
   'the-seventieth-week': 'buried-in-plain-sight',
   'the-reign-is-now': 'buried-in-plain-sight',
   'gog-and-magog': 'buried-in-plain-sight',
-  'two-clocks-not-one': 'buried-in-plain-sight',
-  'out-of-dead-wood': 'buried-in-plain-sight',
-  'the-throne-in-the-sanctuary': 'buried-in-plain-sight',
   'saturnalia': 'buried-in-plain-sight',
   'ashtoreth': 'buried-in-plain-sight',
   'bohemian-grove': 'buried-in-plain-sight',
@@ -341,7 +349,7 @@ export const POST_GROUP = {
   'two-kingdoms-one-walk': 'the-way-in-and-the-walk',
   'prepare-the-horse': 'the-way-in-and-the-walk',
 
-  // ── Scripture Unfiltered (17) ──
+  // ── Scripture Unfiltered (19) ──
   'hearts-and-reins': 'scripture-unfiltered',
   'kept-to-the-hour': 'scripture-unfiltered',
   'goat-that-was-not-slain': 'the-law-and-the-feasts',
@@ -362,6 +370,8 @@ export const POST_GROUP = {
   'two-mountains': 'scripture-unfiltered',
   'yet-once-more': 'scripture-unfiltered',
   'call-no-man-your-father': 'scripture-unfiltered',
+  'two-clocks-not-one': 'scripture-unfiltered',
+  'out-of-dead-wood': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
