@@ -1,4 +1,12 @@
-// home-pieces 1012 V4.js
+// home-pieces 1013 V5.js
+// V5 (Featured Picks — raise to 10 slots, Dutch 1013): ten seats, two rows of
+// five. Never two cards from one category (a piece's `category` = its skin
+// override, else its section — the same thing its card's look and location
+// line show). Pins (`featured: true`, newest featuredAt first) take seats first;
+// a pin whose category is already seated waits in Last 30 Days. Auto-fill tops
+// up the rest with the newest piece of each unseated category, categories in
+// order of their newest upload. Fewer categories than seats → fewer cards,
+// never an empty seat. Everything seated stays out of Last 30 Days.
 // V4: Dutch's 1012 rule — every piece is dated (first commit, git log), so three
 // more kinds join the pool: Torah Testimonies + Foundations (law-on-trial.js),
 // the Symbol Lexicon (symbol-lexicon-master.json), and the hand-built section
@@ -20,10 +28,9 @@
 // Cross. A piece is { key, title, deck, href, date, section, skin, cta,
 // featured, featuredAt }; `date` is an ISO YYYY-MM-DD string or null.
 //
-// FEATURED PICKS — pieces carrying `featured: true`, newest `featuredAt` first,
-// at most FEATURED_SLOTS. Picks never expire; when a seventh is named, set
-// `featured: false` on the oldest in the same commit. Over the cap, only the
-// six newest render.
+// FEATURED PICKS — see V5: pins (`featured: true`, newest `featuredAt` first)
+// then auto-fill, one card per category, at most FEATURED_SLOTS. Picks never
+// expire; a pin steps down when a newer pin of its category is named.
 // LAST 30 DAYS — every dated piece within WINDOW_DAYS of the build date, minus
 // the featured ones, grouped by section (SECTIONS in series-skins.js). Groups
 // run in order of their newest item; items newest first. The window is
@@ -44,7 +51,7 @@ import pageDates from '../data/page-dates.json';
 import { SECTIONS, SKINS, sectionOfPost, skinOf, symbolKeyOf } from '../data/series-skins.js';
 import { locationOf } from './nav-location.js';
 
-export const FEATURED_SLOTS = 5;
+export const FEATURED_SLOTS = 10;
 export const WINDOW_DAYS = 30;
 
 const iso = (d) => (d == null || d === '' ? null : d instanceof Date ? d.toISOString().slice(0, 10) : String(d).slice(0, 10));
@@ -60,6 +67,9 @@ function piece({ key, title, deck, href, date, section, data = {}, cta }) {
     href,
     date: iso(date),
     section,
+    // One card per category in Featured Picks (V5): the skin it wears by
+    // override, else its section.
+    category: data.skin || section,
     skin: skinOf(section, data.skin),
     // Where a reader would find it: the skin's own front page when the piece
     // wears one by override (The Copy of the Son → Hidden Gems), else its section's.
@@ -177,12 +187,24 @@ export async function homePieces() {
 
 const newestFirst = (a, b) => (b.date ?? '').localeCompare(a.date ?? '') || a.title.localeCompare(b.title);
 
-/** The featured picks, newest `featuredAt` first, capped at FEATURED_SLOTS. */
+/** The featured picks (V5): pins first, then auto-fill, one per category, at most FEATURED_SLOTS. */
 export function featuredPicks(pieces) {
-  return pieces
+  const seated = new Set();
+  const picks = [];
+  const seat = (p) => {
+    if (picks.length >= FEATURED_SLOTS || seated.has(p.category)) return;
+    seated.add(p.category);
+    picks.push(p);
+  };
+  pieces
     .filter((p) => p.featured)
     .sort((a, b) => (b.featuredAt ?? 0) - (a.featuredAt ?? 0) || newestFirst(a, b))
-    .slice(0, FEATURED_SLOTS);
+    .forEach(seat);
+  pieces
+    .filter((p) => !p.featured && p.date)
+    .sort(newestFirst)
+    .forEach(seat);
+  return picks;
 }
 
 /** Last 30 Days: [{ key, name, href, accent, items }] in order of newest item. */

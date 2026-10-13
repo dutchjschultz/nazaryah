@@ -1,5 +1,8 @@
 ---
-// src/pages/index.astro · 1012 V19
+// src/pages/index.astro · 1013 V20
+// V20 (Featured Picks — 10 slots, Dutch 1013): up to ten picks, one per
+// category (src/lib/home-pieces.js V5) — two rows of five on desktop, same card
+// size; rows of three on a tablet; one column on a phone.
 // V19 (spec 1012 V4): hero shorter (narrower picture panel, 105px picture,
 // tighter spacing); Doctrines and Published Books level on one row, each with
 // its subline beneath ("Where Christianity Has Been Handed a Lie" → /books);
@@ -618,10 +621,10 @@ const recent = recentGroups(pieces, picks);
       color: #a09078; text-align: center; margin: -0.9rem 0 1.4rem;
     }
 
-    /* Featured Picks: five compact cards in one row (spec 1012 V3, Part B);
-       three and two on a tablet, one column on a phone. */
+    /* Featured Picks: up to ten compact cards, rows of five (1013 V20);
+       rows of three on a tablet, one column on a phone. */
     .home-shell--wide { max-width: 80rem; }
-    .home-picks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.9rem; }
+    .home-picks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.9rem; row-gap: 1.1rem; grid-auto-rows: 1fr; }
 
     /* Last 30 Days row symbol, in the section's own colour. */
     .home-group-symbol { display: inline-flex; vertical-align: -0.15em; margin-right: 0.45rem; color: var(--grp-accent); }
