@@ -1,4 +1,5 @@
-// blog-groups 1013 V44.js
+// blog-groups 1013 V45.js
+// V45: the-two-letters-of-witness joins the-root (category Scripture Unfiltered).
 // V44: marred-outside-spotless-within joins the-root (category Scripture Unfiltered).
 // V43: incarnate joins the-counterfeit-throne (category Scripture Unfiltered).
 // V42: the-throne-in-the-sanctuary joins buried-in-plain-sight (category Buried in Plain Sight).
@@ -177,7 +178,7 @@ export const BLOG_JUMPOUTS = [
   { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
 ];
 
-// slug → group key. 127 blogs; the 51 trinity-files-* are intentionally absent.
+// slug → group key. 128 blogs; the 51 trinity-files-* are intentionally absent.
 export const POST_GROUP = {
   // ── The Counterfeit Throne (17) ──
   'the-judgment-of-christ': 'the-counterfeit-throne',
@@ -199,7 +200,7 @@ export const POST_GROUP = {
   'the-redeemer-who-never-needed-redeeming': 'the-counterfeit-throne',
   'the-copy-of-the-son': 'the-counterfeit-throne',
 
-  // ── The Root (22) ──
+  // ── The Root (23) ──
   // Volume V's seven word chapters. They sit beside What the Pulpit Buried's
   // six, which is the point: the two books are a matched pair excavating one
   // vocabulary, and the rail should read that way.
@@ -226,6 +227,7 @@ export const POST_GROUP = {
   'justification-the-verdict-buried-beneath-forgiveness': 'the-root',
   'sanctification-the-temple-life-of-a-claimed-people': 'the-root',
   'marred-outside-spotless-within': 'the-root',
+  'the-two-letters-of-witness': 'the-root',
 
   // ── The Quick Scroll (9) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
