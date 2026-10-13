@@ -1,4 +1,9 @@
-// watchmans-desk 1013 V17.js
+// watchmans-desk 1013 V18.js
+// V18: loaded "Bigger Is Not Blessed" (weekly-letter, 13 October, standalone),
+// kind/status as Even If It Comes True. Same sortDate as that letter, so array
+// order breaks the tie: listed first, it is the newest. No `law` supplied (left
+// off, flagged). Card: Dutch's supplied 1200x630 at
+// /og/watchmans-desk/<slug>.v2.png; thumb not committed.
 // V17: loaded "Even If It Comes True" (weekly-letter, 13 October, standalone).
 // Kind and status follow the newest entry (A Lullaby With No Morning), per the
 // upload. Strapline as supplied. No `law` was supplied and none is assigned —
@@ -99,6 +104,17 @@ export const STATUSES = {
 // string (a calendar date, or a phrase like "Ongoing") and is shown verbatim;
 // it is never parsed or sorted on. Give every new entry a sortDate.
 export const entries = [
+  {
+    slug: "bigger-is-not-blessed",
+    kind: "weekly-letter", status: "week-ending", date: "13 October 2026",
+    sortDate: "2026-10-13",
+    eyebrow: "",
+    title: "Bigger Is Not Blessed",
+    deck: "Christianity is the largest religion on earth, and many take that as proof of favor. Scripture has always counted the other way.",
+    body: "Christianity is the largest religion on earth, about 2.3 billion strong. Islam follows at 2 billion, Hinduism at 1.2 billion, Buddhism at over 300 million. Many believers point to that number with pride, as if the size of the movement proves Yahuah is behind it. Christian nationalism takes the same idea one step further: a big, powerful Christian nation, holding the reins of government, must be a blessed nation.",
+    strapline: "A Warning to Christian Nationalism and the Pride of Numbers",
+    source: "standalone",
+  },
   {
     slug: "even-if-it-comes-true",
     kind: "weekly-letter", status: "week-ending", date: "13 October 2026",
