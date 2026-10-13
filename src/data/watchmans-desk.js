@@ -1,4 +1,7 @@
-// watchmans-desk 1013 V18.js
+// watchmans-desk 1013 V19.js
+// V19: Bigger Is Not Blessed gets law "Following a multitude to do evil"
+// (Exodus 23:2, Dutch) — an ELEVENTH canonical string, a plain phrase like the
+// rest (no reference, no full verse); added to the V12 list below.
 // V18: loaded "Bigger Is Not Blessed" (weekly-letter, 13 October, standalone),
 // kind/status as Even If It Comes True. Same sortDate as that letter, so array
 // order breaks the tie: listed first, it is the newest. No `law` supplied (left
@@ -44,6 +47,7 @@
 //   Adding to the word · Mocking the afflicted · Offerings to the dead ·
 //   Standing images · The land is mine ·
 //   Hating thy brother in thine heart  (added V15)
+//   Following a multitude to do evil  (added V19)
 // V11: The Wedge Is Quiet gets law "False witness". Every entry already carried
 // an ISO sortDate driving the sort; display dates ("May 25", "Ongoing") are shown
 // verbatim and never parsed.
@@ -113,6 +117,7 @@ export const entries = [
     deck: "Christianity is the largest religion on earth, and many take that as proof of favor. Scripture has always counted the other way.",
     body: "Christianity is the largest religion on earth, about 2.3 billion strong. Islam follows at 2 billion, Hinduism at 1.2 billion, Buddhism at over 300 million. Many believers point to that number with pride, as if the size of the movement proves Yahuah is behind it. Christian nationalism takes the same idea one step further: a big, powerful Christian nation, holding the reins of government, must be a blessed nation.",
     strapline: "A Warning to Christian Nationalism and the Pride of Numbers",
+    law: "Following a multitude to do evil",
     source: "standalone",
   },
   {
