@@ -1,4 +1,5 @@
-// blog-groups 1013 V50.js
+// blog-groups 1014 V51.js
+// V51: two-passages-against-four-doctrines joins scripture-unfiltered (category Scripture Unfiltered). Map total 145 → 146.
 // V50 (Dutch 1013, category fixes): out-of-dead-wood and two-clocks-not-one move
 // buried-in-plain-sight → scripture-unfiltered; the-throne-in-the-sanctuary moves
 // buried-in-plain-sight → the-counterfeit-throne (the Trinity group; it keeps
@@ -372,6 +373,7 @@ export const POST_GROUP = {
   'call-no-man-your-father': 'scripture-unfiltered',
   'two-clocks-not-one': 'scripture-unfiltered',
   'out-of-dead-wood': 'scripture-unfiltered',
+  'two-passages-against-four-doctrines': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
