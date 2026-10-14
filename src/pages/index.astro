@@ -1,6 +1,11 @@
 ---
-// src/pages/index.astro · 1013 V20
-// V20 (Featured Picks — 10 slots, Dutch 1013): up to ten picks, one per
+// src/pages/index.astro · 1014 V23
+// V23 (Homepage Corner Cards Spec 1014 V1): a two-card puzzle stack sits beside
+// the hero box, upper-right — the Riddle (/riddle) over the Names (/why-the-names-
+// matter) — from src/data/corner-cards.js through CornerCard. Not fixed or sticky.
+// Under 1024px it drops beneath the hero, centered, cards 260px wide. (V21–V22
+// are the Desk/YouTube redesign, still on its preview branch.)
+// V20// V20 (Featured Picks — 10 slots, Dutch 1013): up to ten picks, one per
 // category (src/lib/home-pieces.js V5) — two rows of five on desktop, same card
 // size; rows of three on a tablet; one column on a phone.
 // V19 (spec 1012 V4): hero shorter (narrower picture panel, 105px picture,
@@ -63,6 +68,8 @@ import fs from 'node:fs';
 import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SeriesCard from '../components/SeriesCard.astro';
+import CornerCard from '../components/CornerCard.astro';
+import { cornerCards } from '../data/corner-cards.js';
 import Symbol from '../components/Symbol.astro';
 import FeastHero from '../components/FeastHero.jsx';
 import WatchmanCard from '../components/WatchmanCard.astro';
@@ -121,7 +128,8 @@ const recent = recentGroups(pieces, picks);
       z-index: 0;
     "></div>
 
-    <div class="hero-grid relative z-10">
+    <div class="hero-row relative z-10">
+    <div class="hero-grid">
       <!-- LEFT: Logo panel (dark background matches logo image) -->
       <div class="logo-panel">
         <img
@@ -167,6 +175,15 @@ const recent = recentGroups(pieces, picks);
         </div>
       </div>
     </div>
+    <!-- CORNER CARDS (Homepage Corner Cards Spec 1014 V1): two puzzle cards in the
+         hero's upper-right, from src/data/corner-cards.js. On a tablet or phone
+         the stack drops beneath the hero, centered, never full width. -->
+    {cornerCards.length > 0 && (
+      <div class="hero-corner" aria-label="Puzzles">
+        {cornerCards.map((c, i) => <CornerCard {...c} index={i} />)}
+      </div>
+    )}
+    </div>
   </section>
 
   <style>
@@ -176,6 +193,22 @@ const recent = recentGroups(pieces, picks);
       display: flex;
       align-items: center;
       justify-content: center;
+    }
+
+    /* The hero box and the corner stack share the 80rem frame side by side. */
+    .hero-row {
+      display: flex;
+      align-items: stretch;
+      gap: 1rem;
+      width: 100%;
+      max-width: 80rem;
+    }
+    .hero-row > .hero-grid { flex: 1 1 auto; min-width: 0; }
+    .hero-corner { flex: none; display: flex; flex-direction: column; gap: 0.75rem; align-self: flex-start; }
+    @media (max-width: 1023px) {
+      .hero-row { flex-direction: column; align-items: center; }
+      .hero-row > .hero-grid { width: 100%; }
+      .hero-corner { align-self: center; align-items: center; padding: 0.5rem 0 0.25rem; }
     }
 
     .hero-grid {
