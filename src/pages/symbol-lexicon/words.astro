@@ -1,0 +1,189 @@
+---
+// src/pages/symbol-lexicon/words.astro · 1015 V1
+// V1 (Etsy Load Note Symbol Words 1014 V2): the Words view of the Symbol Lexicon
+// — the Symbol Word List (src/data/symbol-word-list.json, served at
+// /data/symbol-word-list.json), the word-level companion to the master. Grouped
+// by the master's six movements, same titles and order, words alphabetical
+// within each. Each word is a compact entry: headword + variants, root + Hebrew,
+// the meaning (loaded exactly as written), further uses, further references,
+// and its lexicon links — an M code links to that master symbol page, a Q code
+// is plain text marked Queued. A filter finds a word or a variant.
+// The master is not touched. A word whose movement does not exist, or an M code
+// with no master entry, fails the build.
+import fs from 'node:fs';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import wordList from '../../data/symbol-word-list.json';
+import { symbols, movements } from '../../lib/symbol-lexicon.js';
+
+const symbolByN = new Map(symbols.map((s) => [s.n, s]));
+const words = wordList.words;
+const problems = [];
+for (const w of words) {
+  if (!movements.some((m) => m.n === w.movement)) problems.push(`#${w.n} ${w.word}: unknown movement ${w.movement}`);
+  for (const c of w.lexicon || []) {
+    if (c.code.startsWith('M') && !symbolByN.has(Number(c.code.slice(1)))) problems.push(`#${w.n} ${w.word}: no master entry ${c.code}`);
+  }
+}
+if (problems.length) throw new Error(`symbol-word-list.json:\n  ${problems.join('\n  ')}`);
+
+const byWord = (a, b) => a.word.localeCompare(b.word, 'en', { sensitivity: 'base' });
+const groups = movements.map((m) => ({ ...m, words: words.filter((w) => w.movement === m.n).sort(byWord) }));
+
+// The Symbol Lexicon's index card, newest version on disk (the symbol pages share it).
+const v = Math.max(0, ...fs.readdirSync('public/og').map((f) => Number(f.match(/^symbol-lexicon\.v(\d+)\.png$/)?.[1] ?? 0)));
+const ogImage = v ? `/og/symbol-lexicon.v${v}.png` : undefined;
+---
+
+<BaseLayout
+  title="Symbol Words — The Symbol Lexicon of Scripture | Nazaryah"
+  description={`${words.length} symbol words of Scripture, Genesis to Revelation, each with its Old Testament root and the meaning Scripture itself assigns — the word-level companion to the Symbol Lexicon.`}
+  ogImage={ogImage}
+>
+  <div class="sx">
+    <div class="sx-wrap">
+      <header class="sx-hero">
+        <h1>The Symbol Word List of Scripture</h1>
+        <p class="sx-sub">Every symbol word, Genesis to Revelation, with its Old Testament root.</p>
+        <nav class="sx-views" aria-label="Symbol Lexicon views">
+          <a href="/symbol-lexicon">Symbols</a>
+          <a href="/symbol-lexicon/words" aria-current="page">Words</a>
+        </nav>
+      </header>
+
+      <div class="sx-controls" data-pagefind-ignore>
+        <label class="sx-search">
+          <span class="sr-only">Find a word</span>
+          <input id="sw-q" type="search" placeholder="Find a word — try “lamp”" autocomplete="off" />
+        </label>
+        <span class="sx-count" id="sw-count">{words.length} words</span>
+      </div>
+
+      <nav class="sw-jump" aria-label="Movements">
+        {groups.map((g) => <a href={`#${g.anchor}`}>{g.title}</a>)}
+      </nav>
+
+      {groups.map((g) => (
+        <section class="sx-mv" id={g.anchor} aria-labelledby={`${g.anchor}-h`}>
+          <h2 id={`${g.anchor}-h`} class="sx-mv-h">{g.title}</h2>
+          <ul class="sw-list">
+            {g.words.map((w) => (
+              <li class="sw" data-w={`${w.word} ${w.alt || ''}`.toLowerCase()}>
+                <h3 class="sw-word">{w.word}{w.alt && <span class="sw-alt"> · {w.alt}</span>}</h3>
+                <p class="sw-root"><span class="sw-label">Root</span> {w.root}{w.hebrew && <span class="sw-heb"> · {w.hebrew}</span>}</p>
+                <p class="sw-meaning">{w.meaning}</p>
+                {w.also.length > 0 && (
+                  <ul class="sw-also">
+                    {w.also.map((a) => <li><span class="sw-from">{a.from}.</span> {a.meaning}</li>)}
+                  </ul>
+                )}
+                {w.refs.length > 0 && <p class="sw-refs"><span class="sw-label">See also</span> {w.refs.join(' · ')}</p>}
+                {w.lexicon.length > 0 && (
+                  <p class="sw-lex">
+                    <span class="sw-label">Lexicon</span>{' '}
+                    {w.lexicon.map((c, i) => (
+                      <>
+                        {i > 0 && <span aria-hidden="true"> · </span>}
+                        {c.code.startsWith('M')
+                          ? <a href={`/symbol-lexicon/${symbolByN.get(Number(c.code.slice(1))).slug}`}>{c.title}</a>
+                          : <span class="sw-queued">{c.title} <em>(Queued)</em></span>}
+                      </>
+                    ))}
+                  </p>
+                )}
+              </li>
+            ))}
+          </ul>
+        </section>
+      ))}
+      <p class="sx-empty" id="sw-empty" hidden>No word matches that filter.</p>
+    </div>
+  </div>
+</BaseLayout>
+
+<script>
+  // Keep the filter bar clear of the site's sticky header.
+  const siteHeader = document.querySelector<HTMLElement>('.site-header');
+  const fitBar = () => document.querySelector<HTMLElement>('.sx-controls')?.style.setProperty('--sx-top', `${siteHeader?.getBoundingClientRect().height ?? 0}px`);
+  fitBar();
+  window.addEventListener('resize', fitBar);
+  // Filter: the headword or one of its variants contains the query.
+  const input = document.getElementById('sw-q') as HTMLInputElement | null;
+  const rows = Array.from(document.querySelectorAll<HTMLElement>('.sw'));
+  const groups = Array.from(document.querySelectorAll<HTMLElement>('.sx-mv'));
+  const count = document.getElementById('sw-count');
+  const empty = document.getElementById('sw-empty');
+  const total = rows.length;
+  function apply() {
+    const q = (input?.value ?? '').toLowerCase().replace(/\s+/g, ' ').trim();
+    let shown = 0;
+    rows.forEach((li) => {
+      const on = !q || li.dataset.w!.includes(q);
+      li.hidden = !on;
+      if (on) shown++;
+    });
+    groups.forEach((g) => { g.hidden = !g.querySelector('.sw:not([hidden])'); });
+    if (count) count.textContent = q ? `${shown} of ${total} words` : `${total} words`;
+    if (empty) empty.hidden = shown > 0;
+  }
+  input?.addEventListener('input', apply);
+</script>
+
+<style>
+  .sx {
+    background: linear-gradient(180deg, #0e0904 0%, #1a1208 20%, #160f07 100%);
+    color: #e0d2b2;
+    font-family: Georgia, var(--font-family-serif), serif;
+    min-height: 100vh;
+  }
+  .sx-wrap { max-width: 52rem; margin: 0 auto; padding: 3.2rem 1.5rem 4.5rem; }
+  .sx-hero { margin: 0 0 1.6rem; }
+  .sx-hero h1 { font-family: 'Cinzel', serif; text-transform: uppercase; font-size: clamp(1.7rem, 4.6vw, 2.5rem); line-height: 1.1; color: #f0e0bf; margin: 0.8rem 0 0.6rem; }
+  .sx-sub { font-style: italic; font-size: 1.2rem; color: #c4a46b; margin: 0 0 1.1rem; }
+
+  .sx-views { display: inline-flex; border: 1px solid #3a2510; border-radius: 999px; overflow: hidden; }
+  .sx-views a { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; color: #c4a46b; padding: 0.4rem 1rem; }
+  .sx-views a[aria-current='page'] { background: #c4a46b; color: #160f07; }
+  .sx-views a:not([aria-current]):hover { color: #f0e0bf; }
+
+  .sx-controls {
+    position: sticky; top: var(--sx-top, 0px); z-index: 5; display: flex; align-items: center; gap: 0.6rem 1rem; flex-wrap: wrap;
+    padding: 0.8rem 0; margin-bottom: 1rem; background: rgba(22,15,7,0.94); border-bottom: 1px solid #3a2510;
+  }
+  .sx-search { flex: 1 1 18rem; }
+  .sx-search input { width: 100%; font-family: inherit; font-size: 1rem; padding: 0.55rem 0.8rem; border: 1px solid #3a2510; border-radius: 3px; background: #160f07; color: #e0d2b2; }
+  .sx-search input::placeholder { color: #8a6f45; font-style: italic; }
+  .sx-search input:focus { outline: 2px solid #8a6028; outline-offset: 1px; }
+  .sx-count { font-family: 'Cinzel', serif; text-transform: uppercase; font-size: 0.7rem; letter-spacing: 0.08em; color: #a08560; }
+
+  .sw-jump { display: flex; flex-wrap: wrap; gap: 0.3rem 1rem; margin: 0 0 2rem; }
+  .sw-jump a { font-size: 0.92rem; color: #c4a46b; text-decoration: none; border-bottom: 1px solid rgba(196,164,107,0.35); }
+  .sw-jump a:hover { color: #f0e0bf; }
+
+  .sx-mv { margin: 0 0 2.6rem; scroll-margin-top: 5rem; }
+  .sx-mv[hidden] { display: none; }
+  .sx-mv-h { font-family: 'Cinzel', serif; text-transform: uppercase; font-size: 0.95rem; letter-spacing: 0.14em; color: #f0e0bf; margin: 0; padding-bottom: 0.5rem; border-bottom: 1px solid #3a2510; }
+
+  .sw-list { list-style: none; margin: 0; padding: 0; }
+  .sw { padding: 1rem 0 1.05rem; border-bottom: 1px solid #2c1d0c; }
+  .sw[hidden] { display: none; }
+  .sw-word { margin: 0; font-family: Georgia, serif; font-size: 1.2rem; font-weight: 700; color: #f0e0bf; line-height: 1.3; }
+  .sw-alt { font-weight: 400; font-style: italic; font-size: 0.95rem; color: #9a8763; }
+  .sw p { margin: 0.3rem 0 0; }
+  .sw-label { font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: #b48a4a; margin-right: 0.35rem; }
+  .sw-root { font-size: 0.95rem; color: #c9b896; }
+  .sw-heb { font-style: italic; }
+  .sw-meaning { font-size: 1.02rem; line-height: 1.6; color: #e0d2b2; }
+  .sw-also { margin: 0.4rem 0 0; padding-left: 1.2rem; font-size: 0.95rem; line-height: 1.55; color: #c9b896; }
+  .sw-also li { margin: 0.2rem 0 0; }
+  .sw-from { font-style: italic; color: #c4a46b; }
+  .sw-refs { font-size: 0.9rem; color: #9a8763; }
+  .sw-lex { font-size: 0.92rem; color: #c9b896; }
+  .sw-lex a { color: #c4a46b; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(196,164,107,0.45); }
+  .sw-lex a:hover { color: #f0e0bf; }
+  .sw-queued em { font-style: normal; font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.12em; text-transform: uppercase; color: #a08560; }
+  .sx-empty { font-style: italic; color: #8a6f45; }
+
+  @media (max-width: 600px) {
+    .sx-wrap { padding: 2.4rem 1rem 3.5rem; }
+  }
+</style>

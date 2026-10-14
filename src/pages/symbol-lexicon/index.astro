@@ -1,5 +1,7 @@
 ---
-// src/pages/symbol-lexicon/index.astro · 1011 V3
+// src/pages/symbol-lexicon/index.astro · 1015 V4
+// V4: a Symbols / Words switch under the opening — Words is the Symbol Word List
+// view at /symbol-lexicon/words (Etsy Load Note Symbol Words 1014 V2).
 // V3: the "Restored Truth" eyebrow is gone — the section left that menu for its
 // own header tab beside Edited After the Cross.
 // V2: opening line is Dutch's "The New Testament speaks in pictures the Old
@@ -30,6 +32,10 @@ const refKey = (refs) => refs.map((r) => r.toLowerCase()).join('|');
         <p class="sx-sub">Every New Testament symbol traced back to its Old Testament root.</p>
         <p class="sx-open">The New Testament speaks in pictures the Old Testament had already painted. {roadNote}</p>
         <p class="sx-companion">Companion list: <a href="/torah/legal-lexicon">The Legal Lexicon of Scripture</a></p>
+        <nav class="sx-views" aria-label="Symbol Lexicon views">
+          <a href="/symbol-lexicon" aria-current="page">Symbols</a>
+          <a href="/symbol-lexicon/words">Words</a>
+        </nav>
       </header>
 
       <div class="sx-controls" data-pagefind-ignore>
@@ -64,6 +70,11 @@ const refKey = (refs) => refs.map((r) => r.toLowerCase()).join('|');
 </BaseLayout>
 
 <script>
+  // Keep the filter bar clear of the site's sticky header.
+  const siteHeader = document.querySelector<HTMLElement>('.site-header');
+  const fitBar = () => document.querySelector<HTMLElement>('.sx-controls')?.style.setProperty('--sx-top', `${siteHeader?.getBoundingClientRect().height ?? 0}px`);
+  fitBar();
+  window.addEventListener('resize', fitBar);
   // Filter: the symbol name contains the query, or one of its NT refs starts
   // with it at a reference boundary ("rev 12" → "rev 12:3", not "rev 1:2").
   const BOOKS: Record<string, string> = { revelation: 'rev', matthew: 'matt', genesis: 'gen', exodus: 'exod', isaiah: 'isa', daniel: 'dan', psalms: 'ps', psalm: 'ps', hebrews: 'heb', romans: 'rom' };
@@ -120,9 +131,13 @@ const refKey = (refs) => refs.map((r) => r.toLowerCase()).join('|');
   .sx-companion { font-size: 0.95rem; color: #9a8763; margin: 0; }
   .sx-companion a { color: #c4a46b; text-decoration: underline; text-underline-offset: 3px; text-decoration-color: rgba(196,164,107,0.45); }
   .sx-companion a:hover { color: #f0e0bf; }
+  .sx-views { display: inline-flex; margin-top: 1.1rem; border: 1px solid #3a2510; border-radius: 999px; overflow: hidden; }
+  .sx-views a { font-family: 'Cinzel', serif; font-size: 0.7rem; letter-spacing: 0.16em; text-transform: uppercase; text-decoration: none; color: #c4a46b; padding: 0.4rem 1rem; }
+  .sx-views a[aria-current='page'] { background: #c4a46b; color: #160f07; }
+  .sx-views a:not([aria-current]):hover { color: #f0e0bf; }
 
   .sx-controls {
-    position: sticky; top: 0; z-index: 5; display: flex; align-items: center; gap: 0.6rem 1rem; flex-wrap: wrap;
+    position: sticky; top: var(--sx-top, 0px); z-index: 5; display: flex; align-items: center; gap: 0.6rem 1rem; flex-wrap: wrap;
     padding: 0.8rem 0; margin-bottom: 1.4rem; background: rgba(22,15,7,0.94); border-bottom: 1px solid #3a2510;
   }
   .sx-search { flex: 1 1 18rem; }
