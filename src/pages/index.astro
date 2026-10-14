@@ -1,5 +1,8 @@
 ---
-// src/pages/index.astro · 1014 V25
+// src/pages/index.astro · 1014 V26
+// V26 (Desk — build it now, Dutch 1014): the dispatch log tightened so the whole
+// Desk section (masthead + three rows) is shorter than one of the old white
+// letter cards — 370px against 387px at 1440 wide. Goes live with the YouTube band.
 // V25 (Hero + header fixes, Dutch 1014): hero text, the Riddle card and the
 // Names card stand in ONE row, tops and bottoms level; the text block narrows
 // to make room and the row is shorter. Under 1024px: hero, red, blue, stacked.
@@ -775,41 +778,41 @@ const recent = recentGroups(pieces, picks);
       --wr-navy: #0a1d3a; --wr-navy-deep: #061230; --wr-red: #b8232a;
       --wr-red-deep: #8a1a20; --wr-cream: #f5f1e6; --wr-parchment: #ebe3cf;
       --wr-gold: #c9a961; --wr-ink-soft: #3a3a3a;
-      background: #0a0a0a; padding: 3.25rem 0 4rem; border-top: 4px solid var(--wr-red);
+      background: #0a0a0a; padding: 1rem 0 1.1rem; border-top: 4px solid var(--wr-red);
     }
     .wr-container { max-width: 80rem; margin: 0 auto; padding: 0 2.5rem; }
-    .wr-header { text-align: center; margin-bottom: 2.5rem; }
-    .wr-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--wr-red); font-weight: 700; margin: 0 0 0.5rem; }
-    .wr-title { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 900; font-size: clamp(1.9rem, 3.4vw, 2.6rem); color: var(--wr-cream); margin: 0; }
+    .wr-header { text-align: center; margin-bottom: 0.7rem; }
+    .wr-eyebrow { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--wr-red); font-weight: 700; margin: 0 0 0.15rem; }
+    .wr-title { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-weight: 900; font-size: clamp(1.5rem, 2.4vw, 1.9rem); line-height: 1.15; color: var(--wr-cream); margin: 0; }
     /* Band-level archive link — section navigation, so it sits in the masthead
        under the title (not inside a card). Text link only: no fill, no border,
        no button padding. Tight to the title; the header's margin-bottom opens the
        larger break before the card row. House red on black, brightening to cream. */
-    .wr-archive-link { display: inline-block; margin-top: 0.55rem; font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 700; color: var(--wr-red); text-decoration: none; transition: color .2s ease; }
+    .wr-archive-link { display: inline-block; margin-top: 0.2rem; font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.28em; text-transform: uppercase; font-weight: 700; color: var(--wr-red); text-decoration: none; transition: color .2s ease; }
     .wr-archive-link:hover { color: var(--wr-cream); }
 
     /* Faint watchtower behind the masthead — navy barely off the black. */
     .wr-header { position: relative; }
     .wr-header > :not(.wr-tower) { position: relative; }
-    .wr-tower { position: absolute; left: 50%; top: 50%; width: 8rem; height: 11rem; transform: translate(-50%, -50%); fill: #0c1729; stroke: #0c1729; pointer-events: none; }
+    .wr-tower { position: absolute; left: 50%; top: 50%; width: 5.5rem; height: 7rem; transform: translate(-50%, -50%); fill: #0b1424; stroke: #0b1424; pointer-events: none; }
 
     /* Dispatch log — full width rows divided by thin red hairlines. */
     .wr-log { list-style: none; margin: 0; padding: 0; border-top: 1px solid rgba(184,35,42,0.45); }
     .wr-log li { border-bottom: 1px solid rgba(184,35,42,0.45); }
-    .wr-row { display: grid; grid-template-columns: 10.5rem minmax(0, 1fr) auto; gap: 1.75rem; align-items: center; padding: 1.25rem 1.25rem 1.25rem 1rem; text-decoration: none; color: inherit; box-shadow: inset 0 0 0 transparent; transition: box-shadow .2s ease, background-color .2s ease; }
+    .wr-row { display: grid; grid-template-columns: 8.25rem minmax(0, 1fr) auto; gap: 1.1rem; align-items: center; padding: 0.55rem 1rem 0.55rem 0.9rem; text-decoration: none; color: inherit; box-shadow: inset 0 0 0 transparent; transition: box-shadow .2s ease, background-color .2s ease; }
     .wr-row:hover, .wr-row:focus-visible { box-shadow: inset 4px 0 0 var(--wr-red); background: rgba(10,29,58,0.28); outline: none; }
-    .wr-stamp { display: flex; flex-direction: column; gap: 0.3rem; align-self: start; padding: 0.55rem 0.7rem; background: var(--wr-navy); border-left: 2px solid var(--wr-red); }
+    .wr-stamp { display: flex; flex-direction: column; gap: 0.15rem; align-self: center; padding: 0.35rem 0.6rem; background: var(--wr-navy); border-left: 2px solid var(--wr-red); }
     .wr-stamp-date { font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.16em; color: #ff6b6f; white-space: nowrap; }
     .wr-stamp-kind { font-family: 'Cinzel', serif; font-size: 0.56rem; font-weight: 600; letter-spacing: 0.2em; color: #f08a8d; white-space: nowrap; }
-    .wr-row-body { display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
-    .wr-row-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.3rem; line-height: 1.25; color: var(--wr-parchment); }
+    .wr-row-body { display: flex; flex-direction: column; gap: 0.05rem; min-width: 0; }
+    .wr-row-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.08rem; line-height: 1.25; color: var(--wr-parchment); }
     .wr-row:hover .wr-row-title { color: #fff; }
-    .wr-row-deck { font-family: 'Crimson Text', Georgia, serif; font-style: italic; font-size: 1.02rem; line-height: 1.45; color: #b5aa92; }
-    .wr-row-tagline { font-family: 'Crimson Text', Georgia, serif; font-style: italic; font-size: 0.98rem; line-height: 1.4; color: #e2555b; margin-top: 0.15rem; }
+    .wr-row-deck { font-family: 'Crimson Text', Georgia, serif; font-style: italic; font-size: 0.92rem; line-height: 1.3; color: #b5aa92; }
+    .wr-row-tagline { font-family: 'Crimson Text', Georgia, serif; font-style: italic; font-size: 0.92rem; line-height: 1.3; color: #e2555b; margin-top: 0.05rem; }
     .wr-row-cta { font-family: 'Cinzel', serif; font-size: 0.64rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: #e2555b; white-space: nowrap; }
     .wr-row:hover .wr-row-cta { color: var(--wr-cream); }
-    .wr-row--lead { padding-top: 1.75rem; padding-bottom: 1.75rem; }
-    .wr-row--lead .wr-row-title { font-size: 1.7rem; }
+    .wr-row--lead { padding-top: 0.65rem; padding-bottom: 0.65rem; }
+    .wr-row--lead .wr-row-title { font-size: 1.32rem; }
 
     /* ============================================================
        YOUTUBE — film strip band
@@ -890,17 +893,17 @@ const recent = recentGroups(pieces, picks);
     }
     @media (max-width: 680px) {
       /* Phone: the dateline sits above the title. */
-      .wr-row { grid-template-columns: 1fr; gap: 0.6rem; padding: 1.1rem 0.75rem; }
+      .wr-row { grid-template-columns: 1fr; gap: 0.45rem; padding: 0.8rem 0.75rem; }
       .wr-stamp { flex-direction: row; align-items: baseline; gap: 0.75rem; align-self: start; }
-      .wr-row--lead .wr-row-title { font-size: 1.45rem; }
-      .wr-row-title { font-size: 1.15rem; }
+      .wr-row--lead .wr-row-title { font-size: 1.3rem; }
+      .wr-row-title { font-size: 1.08rem; }
       .yt-frame { flex-basis: 72%; }
     }
     @media (max-width: 1100px) { .home-picks { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
     @media (max-width: 640px) { .home-picks { grid-template-columns: 1fr; } }
     @media (max-width: 600px) {
       .home-shell, .wr-container, .yt-inner { padding: 0 1rem; }
-      .wr-section { padding: 2.5rem 0 3rem; }
+      .wr-section { padding: 1.5rem 0 1.75rem; }
       .home-group summary { padding: 0.9rem 1rem; }
       .home-group-list { padding: 0 1rem 0.5rem; }
     }
