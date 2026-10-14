@@ -1,5 +1,11 @@
 ---
-// src/pages/trinity/trinity-problems.astro · 1014 V1
+// src/pages/trinity/trinity-problems.astro · 1014 V2
+// V2 (Trinity Problems Etsy Block 1014 V2): four parts (data V2 `parts`). Under
+// "All", each part opens with its label, title and italic intro line; a Part
+// picker sits before the problem picker and narrows it ("All problems in this
+// part"); search and both views work within the chosen part. By-verse tags read
+// "Part Two · Problem 14 · …". Deep links: #part2, #p14. Intro paragraphs 2–3
+// replaced.
 // V1 (Trinity Problems Etsy Block 1014 V1): the Trinity Problems lexicon — the
 // verses a three-person God cannot account for, grouped under twenty problems.
 // Data: src/data/trinity-problems.js (problems + entries). Every number on the
@@ -9,11 +15,15 @@
 // scoped styles cover everything. The last view/problem is remembered per
 // visitor in localStorage when it is available; the page works without it.
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import { problems, entries } from '../../data/trinity-problems.js';
+import { parts, problems, entries } from '../../data/trinity-problems.js';
 
 const byId = new Map(problems.map((p) => [p.id, p]));
+const partById = new Map(parts.map((pt) => [pt.id, pt]));
 const badP = entries.filter((e) => !byId.has(e.p)).map((e) => e.n);
 if (badP.length) throw new Error(`trinity-problems.js: entries with unknown problem id: ${badP.join(', ')}`);
+const badPart = problems.filter((p) => !partById.has(p.part)).map((p) => p.id);
+if (badPart.length) throw new Error(`trinity-problems.js: problems with unknown part id: ${badPart.join(', ')}`);
+const partOfEntry = (e) => partById.get(byId.get(e.p).part);
 
 const entryCount = entries.length;
 const passageCount = new Set(entries.map((e) => e.ref)).size;
@@ -22,14 +32,15 @@ const fmt = (n) => n.toLocaleString('en-US');
 
 const NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
 const problemWord = NUMBER_WORDS[problemCount] ?? String(problemCount);
+const partWord = NUMBER_WORDS[parts.length] ?? String(parts.length);
 
 // By problem: problems in id order, each with its entries in lexicon order; a
-// part heading rides on the first problem of each part.
+// part's heading block (label, title, intro line) rides on its first problem.
 const groups = [...problems]
   .sort((a, b) => a.id - b.id)
   .map((p, i, all) => ({
     ...p,
-    partHead: i === 0 || all[i - 1].part !== p.part ? p.part : null,
+    partHead: i === 0 || all[i - 1].part !== p.part ? partById.get(p.part) : null,
     items: entries.filter((e) => e.p === p.id).sort((a, b) => a.n - b.n),
   }));
 
@@ -61,14 +72,8 @@ const subtitle = 'Verses for the Trinitarian to Explain';
 
       <section class="tp-intro">
         <p>The Trinitarian routinely hands the non-Trinitarian a short list of proof texts and asks for an explanation. This lexicon reverses the exchange. It gathers the passages a three-person God cannot account for without strain, special pleading, or a creed written centuries after the apostles.</p>
-        <p>The verses are grouped under twenty problems:</p>
-        <ul>
-          <li>The first nine are the original problems.</li>
-          <li>Eight more are drawn from the Apostolic writings.</li>
-          <li>The last three hold the Old Testament witness. These are kept to direct statements only: Yahuah speaking of Himself, and plain promises of the Messiah to come. No entry rests on a disputed reading.</li>
-        </ul>
-        <p>Each problem opens with a paragraph stating it. Under every verse, the issue it raises for the Trinity is set out on its own line.</p>
-        <p>The list can be read by problem, or as one running index in Bible order. A reference can be found by typing it in the search box.</p>
+        <p>The verses are grouped under twenty problems in four parts: the One God, the Father; the Son; the Spirit and the Throne; and the Old Testament witness. The Old Testament witness is kept to direct statements only, Yahuah speaking of Himself and plain promises of the Messiah to come, so that no entry rests on a disputed reading. Each problem opens with a paragraph stating it. Under every verse, the issue it raises for the Trinity is set out on its own line.</p>
+        <p>The list can be read by part, by problem, or as one running index in Bible order. A reference can be found by typing it in the search box.</p>
         <p class="tp-note">Scripture is quoted from the KJV with the names restored. Yahuah stands only where the New Testament quotes an Old Testament verse bearing the Name. Where <em>kurios</em> (G2962) refers to Yahushua, it is rendered “Master,” its plain sense, the same word Sarah used of Abraham (1 Peter 3:6). Quotations are kept to the phrase that carries the point; each verse should be read in its place.</p>
       </section>
 
@@ -77,10 +82,15 @@ const subtitle = 'Verses for the Trinitarian to Explain';
           <button type="button" data-tp-view="problem" aria-pressed="true">By problem</button>
           <button type="button" data-tp-view="verse" aria-pressed="false">By verse</button>
         </div>
+        <label class="tp-visually-hidden" for="tp-part">Part</label>
+        <select id="tp-part" data-tp-partpick>
+          <option value="all">All {partWord} parts</option>
+          {parts.map((pt) => <option value={String(pt.id)}>{pt.label} · {pt.title}</option>)}
+        </select>
         <label class="tp-visually-hidden" for="tp-problem">Problem</label>
         <select id="tp-problem" data-tp-problem>
           <option value="all">All {problemWord} problems</option>
-          {groups.map((p) => <option value={String(p.id)}>{p.id}. {p.title}</option>)}
+          {groups.map((p) => <option value={String(p.id)} data-part={String(p.part)}>{p.id}. {p.title}</option>)}
         </select>
         <label class="tp-visually-hidden" for="tp-search">Find a verse</label>
         <input id="tp-search" type="search" placeholder="Find a verse, e.g. John 17" autocomplete="off" data-tp-search />
@@ -91,8 +101,14 @@ const subtitle = 'Verses for the Trinitarian to Explain';
       <div class="tp-view" data-tp-panel="problem">
         {groups.map((p) => (
           <>
-            {p.partHead && <h2 class="tp-part" data-tp-part>{p.partHead}</h2>}
-            <section class="tp-problem" data-tp-group={String(p.id)} id={`problem-${p.id}`}>
+            {p.partHead && (
+              <header class="tp-parthead" data-tp-part={String(p.partHead.id)} id={`part${p.partHead.id}`}>
+                <p class="tp-part">{p.partHead.label}</p>
+                <h2 class="tp-parttitle">{p.partHead.title}</h2>
+                <p class="tp-partintro">{p.partHead.text}</p>
+              </header>
+            )}
+            <section class="tp-problem" data-tp-group={String(p.id)} data-part={String(p.part)} id={`p${p.id}`}>
               <p class="tp-pnum">Problem {p.id}</p>
               <h3 class="tp-ptitle">{p.title}</h3>
               <div class="tp-ptext"><b>The problem</b>{p.text}</div>
@@ -117,10 +133,10 @@ const subtitle = 'Verses for the Trinitarian to Explain';
       <div class="tp-view" data-tp-panel="verse" hidden>
         <ol class="tp-list">
           {byVerse.map((e) => (
-            <li class="tp-entry" data-tp-entry data-ref={e.ref} data-p={String(e.p)}>
+            <li class="tp-entry" data-tp-entry data-ref={e.ref} data-p={String(e.p)} data-part={String(byId.get(e.p).part)}>
               <span class="tp-no">No. {e.n}</span>
               <div class="tp-body">
-                <p class="tp-ref">{e.ref}<span class="tp-tag">Problem {e.p} · {byId.get(e.p).title}</span></p>
+                <p class="tp-ref">{e.ref}<span class="tp-tag">{partOfEntry(e).label} · Problem {e.p} · {byId.get(e.p).title}</span></p>
                 <p class="tp-verse">{e.verse}</p>
               </div>
               <p class="tp-issue"><b>The issue</b>{e.issue}</p>
@@ -162,11 +178,17 @@ const subtitle = 'Verses for the Trinitarian to Explain';
 
   const bar = document.querySelector('[data-tp-bar]');
   const viewBtns = [...document.querySelectorAll('[data-tp-view]')];
+  const partSel = document.querySelector('[data-tp-partpick]');
   const select = document.querySelector('[data-tp-problem]');
   const search = document.querySelector('[data-tp-search]');
   const countEl = document.querySelector('[data-tp-count]');
   const empty = document.querySelector('[data-tp-empty]');
   const panels = Object.fromEntries([...document.querySelectorAll('[data-tp-panel]')].map((el) => [el.dataset.tpPanel, el]));
+
+  // Every problem option, kept aside so the picker can be narrowed to one part.
+  const problemOpts = [...select.options].filter((o) => o.value !== 'all').map((o) => ({ value: o.value, text: o.text, part: o.dataset.part }));
+  const allLabel = select.options[0].text;
+  const partOfProblem = Object.fromEntries(problemOpts.map((o) => [o.value, o.part]));
 
   // Keep the bar clear of the site's sticky header.
   const header = document.querySelector('.site-header');
@@ -174,12 +196,33 @@ const subtitle = 'Verses for the Trinitarian to Explain';
   fitBar();
   window.addEventListener('resize', fitBar);
 
+  const validPart = (v) => [...partSel.options].some((o) => o.value === v);
   const saved = store.get() || {};
   let state = {
     view: saved.view === 'verse' ? 'verse' : 'problem',
-    problem: [...select.options].some((o) => o.value === saved.problem) ? saved.problem : 'all',
+    part: validPart(saved.part) ? saved.part : 'all',
+    problem: partOfProblem[saved.problem] ? saved.problem : 'all',
     q: '',
   };
+  if (state.problem !== 'all' && state.part !== 'all' && partOfProblem[state.problem] !== state.part) state.problem = 'all';
+
+  // Deep links: #part2 opens Part Two; #p14 opens problem 14 (in its part).
+  function fromHash() {
+    const h = location.hash.slice(1);
+    let m;
+    if ((m = h.match(/^part(\d+)$/)) && validPart(m[1])) { state.part = m[1]; state.problem = 'all'; state.view = 'problem'; return true; }
+    if ((m = h.match(/^p(\d+)$/)) && partOfProblem[m[1]]) { state.problem = m[1]; state.part = partOfProblem[m[1]]; state.view = 'problem'; return true; }
+    return false;
+  }
+
+  function fillProblems() {
+    const keep = state.problem;
+    select.length = 0;
+    select.add(new Option(state.part === 'all' ? allLabel : 'All problems in this part', 'all'));
+    for (const o of problemOpts) if (state.part === 'all' || o.part === state.part) select.add(new Option(o.text, o.value));
+    select.value = [...select.options].some((o) => o.value === keep) ? keep : 'all';
+    state.problem = select.value;
+  }
 
   // A reference matches when the query sits at a word start, and a query ending
   // in a number cannot run on into a longer one ("John 1" is not "John 10").
@@ -193,15 +236,16 @@ const subtitle = 'Verses for the Trinitarian to Explain';
 
   function render() {
     const match = matcher(state.q);
-    const all = state.problem === 'all';
+    const inScope = (el) => (state.part === 'all' || el.dataset.part === state.part) && (state.problem === 'all' || el.dataset.p === state.problem);
     for (const b of viewBtns) b.setAttribute('aria-pressed', String(b.dataset.tpView === state.view));
     for (const [k, el] of Object.entries(panels)) el.hidden = k !== state.view;
+    partSel.value = state.part;
 
     let shown = 0;
     if (state.view === 'problem') {
       for (const g of panels.problem.querySelectorAll('[data-tp-group]')) {
         let n = 0;
-        const inProblem = all || g.dataset.tpGroup === state.problem;
+        const inProblem = (state.part === 'all' || g.dataset.part === state.part) && (state.problem === 'all' || g.dataset.tpGroup === state.problem);
         for (const li of g.querySelectorAll('[data-tp-entry]')) {
           const on = inProblem && match(li.dataset.ref);
           li.hidden = !on;
@@ -211,28 +255,33 @@ const subtitle = 'Verses for the Trinitarian to Explain';
         shown += n;
       }
       for (const h of panels.problem.querySelectorAll('[data-tp-part]')) {
-        // A part heading shows only under "All", and only when one of its problems shows.
+        // A part's heading shows when all its problems are in view, and one of them shows.
         let sib = h.nextElementSibling, any = false;
         while (sib && !sib.matches('[data-tp-part]')) { if (!sib.hidden) any = true; sib = sib.nextElementSibling; }
-        h.hidden = !all || !any;
+        h.hidden = state.problem !== 'all' || !any;
       }
     } else {
       for (const li of panels.verse.querySelectorAll('[data-tp-entry]')) {
-        const on = (all || li.dataset.p === state.problem) && match(li.dataset.ref);
+        const on = inScope(li) && match(li.dataset.ref);
         li.hidden = !on;
         if (on) shown++;
       }
     }
     countEl.textContent = `${shown.toLocaleString('en-US')} ${shown === 1 ? 'entry' : 'entries'}`;
     empty.hidden = shown > 0;
-    store.set({ view: state.view, problem: state.problem });
+    store.set({ view: state.view, part: state.part, problem: state.problem });
   }
 
   for (const b of viewBtns) b.addEventListener('click', () => { state.view = b.dataset.tpView; render(); });
-  select.value = state.problem;
+  partSel.addEventListener('change', () => { state.part = partSel.value; fillProblems(); render(); });
   select.addEventListener('change', () => { state.problem = select.value; render(); });
   search.addEventListener('input', () => { state.q = search.value; render(); });
+  window.addEventListener('hashchange', () => { if (fromHash()) { fillProblems(); render(); bar.scrollIntoView({ block: 'start' }); } });
+
+  const linked = fromHash();
+  fillProblems();
   render();
+  if (linked) requestAnimationFrame(() => bar.scrollIntoView({ block: 'start' }));
 </script>
 
 <style>
@@ -277,7 +326,10 @@ const subtitle = 'Verses for the Trinitarian to Explain';
   .tp-count { font-variant-numeric: tabular-nums; color: var(--tp-muted); font-size: 0.88rem; margin: 0 0 0 auto; }
   .tp-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
-  .tp-part { font-family: var(--tp-display); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.85rem; color: var(--tp-gold); margin: 2.6rem 0 0; font-weight: 600; }
+  .tp-parthead { margin: 2.6rem 0 0; }
+  .tp-part { font-family: var(--tp-display); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.85rem; color: var(--tp-gold); margin: 0; font-weight: 600; }
+  .tp-parttitle { font-family: var(--tp-display); font-weight: 700; font-size: 2rem; line-height: 1.1; margin: 0.1rem 0 0; color: var(--tp-ink); }
+  .tp-partintro { margin: 0.3rem 0 0; color: var(--tp-muted); font-style: italic; }
   .tp-problem { padding-top: 1.4rem; }
   .tp-pnum { font-family: var(--tp-display); color: var(--tp-gold); font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; margin: 0; }
   .tp-ptitle { font-family: var(--tp-display); font-size: 1.75rem; line-height: 1.15; margin: 0.1rem 0 0.6rem; text-wrap: balance; color: var(--tp-ink); }

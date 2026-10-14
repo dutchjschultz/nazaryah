@@ -1,5 +1,8 @@
 ---
-// trinity.astro · 1014 V5 — Trinity Problems (/trinity/trinity-problems) listed beside
+// trinity.astro · 1014 V6 — the two small text links under Trinity Files become two
+// mini cards (The Foundations, Trinity Problems — count from trinity-problems.js),
+// same family, smaller, side by side; stacked on a phone (Etsy Block 1014 V2).
+// V5 · 1014 — Trinity Problems (/trinity/trinity-problems) listed beside
 // The Foundations under the Trinity Files card (Trinity Problems Etsy Block 1014 V1).
 // V4 · 1006 — replaces V3's top: the bridge lines are gone and the
 // H1 is back to full size; "What Is Actually Being Claimed?" moves up between the
@@ -21,6 +24,7 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { trinityFiles } from '../data/trinity-files.js';
 import { BOOK_SHELF } from '../data/books.js';
+import { entries as problemEntries } from '../data/trinity-problems.js';
 
 const filesWritten = trinityFiles.filter((f) => f.slug).length;
 const filesLine = `${filesWritten} of ${trinityFiles.length} files written`;
@@ -88,8 +92,19 @@ const STATIONS = ['Babel', 'Babylon', 'Egypt', 'Greece', 'Rome', 'Nicaea', 'Refo
         <p class="tl-progress">{filesLine}</p>
         <span class="tr-btn">Open the Files &nbsp;&#8594;</span>
       </a>
-      <a class="tl-feature-sub" href="/foundations">The Foundations <span class="tl-arrow" aria-hidden="true">&rarr;</span></a>
-      <a class="tl-feature-sub" href="/trinity/trinity-problems">Trinity Problems <span class="tl-arrow" aria-hidden="true">&rarr;</span></a>
+      <!-- Two mini cards that belong to the Trinity Files group (Etsy Block 1014 V2). -->
+      <div class="tl-minis">
+        <a class="tl-mini" href="/foundations">
+          <h3 class="tl-mini-title">The Foundations</h3>
+          <p class="tl-mini-desc">The handful of arguments that come up in verse after verse — the Name, the “us” passages, the Granville Sharp rule, I AM, and worship at the throne — answered once, in full, so each verse file can point back to them.</p>
+          <span class="tl-mini-go">Read the Foundations <span class="tl-arrow" aria-hidden="true">&rarr;</span></span>
+        </a>
+        <a class="tl-mini" href="/trinity/trinity-problems">
+          <h3 class="tl-mini-title">Trinity Problems</h3>
+          <p class="tl-mini-desc">{problemEntries.length} verses the Trinitarian has to explain, sorted into twenty problems — read them by part or by problem, or look up any verse.</p>
+          <span class="tl-mini-go">See the problems <span class="tl-arrow" aria-hidden="true">&rarr;</span></span>
+        </a>
+      </div>
     </section>
 
     <!-- ── THE BOOKS ── -->
@@ -365,20 +380,54 @@ const STATIONS = ['Babel', 'Babylon', 'Egypt', 'Greece', 'Rome', 'Nicaea', 'Refo
     color: #ba7517;
     margin: 0 0 1.9rem;
   }
-  .tl-feature-sub {
-    display: inline-block;
-    margin-top: 1.25rem;
+  /* Mini cards under Trinity Files — the same family (dark ground, bronze
+     edge, gold top rule), visibly smaller; side by side, stacked on a phone. */
+  .tl-minis {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1rem;
+    max-width: 980px;
+    margin: 1rem auto 0;
+    text-align: left;
+  }
+  .tl-mini {
+    display: flex;
+    flex-direction: column;
+    gap: 0.45rem;
+    padding: 1.1rem 1.25rem 1rem;
+    text-decoration: none;
+    border: 1px solid #4a3218;
+    border-top: 2px solid #8a6028;
+    background:
+      radial-gradient(ellipse at 50% 0%, rgba(150, 90, 40, 0.12), transparent 70%),
+      rgba(20, 13, 5, 0.6);
+    transition: border-color 0.2s;
+  }
+  .tl-mini:hover, .tl-mini:focus-visible { border-color: #8a6028; outline: none; }
+  .tl-mini:focus-visible { box-shadow: 0 0 0 2px #c4a46b; }
+  .tl-mini-title {
+    margin: 0;
+    font-family: var(--font-family-serif, 'Crimson Text'), 'Crimson Pro', Georgia, serif;
+    font-style: italic;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #f0e0bf;
+    line-height: 1.2;
+  }
+  .tl-mini-desc { margin: 0; font-size: 0.98rem; line-height: 1.5; color: #c9b896; }
+  .tl-mini-go {
+    margin-top: auto;
+    padding-top: 0.25rem;
     font-family: 'Cinzel', serif;
     font-size: 11px;
     letter-spacing: 2px;
     text-transform: uppercase;
-    color: #8a6028;
-    text-decoration: none;
+    color: #c4a46b;
   }
-  .tl-feature-sub + .tl-feature-sub { margin-left: 2rem; }
-  .tl-feature-sub:hover { color: #c4a46b; }
+  .tl-mini:hover .tl-mini-go { color: #f0e0bf; }
+  @media (max-width: 640px) { .tl-minis { grid-template-columns: 1fr; } }
   .tl-arrow { display: inline-block; transition: transform 0.2s ease; }
-  .tl-feature-sub:hover .tl-arrow,
+  .tl-mini:hover .tl-arrow,
   .tl-book-links a:hover .tl-arrow { transform: translateX(4px); }
 
   /* ── BANDS — The Books, The Historic Trail ── */
