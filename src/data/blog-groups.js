@@ -1,4 +1,5 @@
-// blog-groups 1014 V53.js
+// blog-groups 1014 V54.js
+// V54: two-babylons joins scripture-unfiltered (category Scripture Unfiltered). Map total 148 → 149.
 // V53: same-gospel-same-blood joins the-way-in-and-the-walk (category The Way In and the Walk). Map total 147 → 148.
 // V52: one-raiser-not-three joins the-counterfeit-throne (category The Counterfeit Throne; the batch said "Trinity Studies", which is the cluster's label, not a category). Map total 146 → 147.
 // V51: two-passages-against-four-doctrines joins scripture-unfiltered (category Scripture Unfiltered). Map total 145 → 146.
@@ -378,6 +379,7 @@ export const POST_GROUP = {
   'two-clocks-not-one': 'scripture-unfiltered',
   'out-of-dead-wood': 'scripture-unfiltered',
   'two-passages-against-four-doctrines': 'scripture-unfiltered',
+  'two-babylons': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
