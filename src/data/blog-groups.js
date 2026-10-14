@@ -1,4 +1,5 @@
-// blog-groups 1014 V55.js
+// blog-groups 1014 V56.js
+// V56: the-lucifer-deception confirmed in buried-in-plain-sight (Dutch 1014); its category now reads Buried in Plain Sight. Map total unchanged.
 // V55: marriage-and-divorce and the-law-of-jealousy join the-law-and-the-feasts (category The Law & The Feasts), beside fornication-and-adultery. Map total 149 → 151.
 // V54: two-babylons joins scripture-unfiltered (category Scripture Unfiltered). Map total 148 → 149.
 // V53: same-gospel-same-blood joins the-way-in-and-the-walk (category The Way In and the Walk). Map total 147 → 148.
@@ -274,7 +275,7 @@ export const POST_GROUP = {
   'the-sword-that-was-never-ours': 'buried-in-plain-sight',
   'two-kingdoms': 'buried-in-plain-sight',
   'the-star-on-the-flag': 'buried-in-plain-sight',   // ⚠ default — symbol origin, not an Esther walkthrough
-  'the-lucifer-deception': 'buried-in-plain-sight',  // ⚠ default — a planted lie (could be The Root)
+  'the-lucifer-deception': 'buried-in-plain-sight',  // Dutch 1014: stays here, labelled Buried in Plain Sight
   // The Living Temple investigation — nucleus + three of its four witnesses.
   // The fourth (shalom-whole-complete) stays in The Root; see the header note.
   'the-living-temple': 'buried-in-plain-sight',
