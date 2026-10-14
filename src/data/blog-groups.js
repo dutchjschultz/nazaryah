@@ -1,4 +1,5 @@
-// blog-groups 1014 V51.js
+// blog-groups 1014 V52.js
+// V52: one-raiser-not-three joins the-counterfeit-throne (category The Counterfeit Throne; the batch said "Trinity Studies", which is the cluster's label, not a category). Map total 146 → 147.
 // V51: two-passages-against-four-doctrines joins scripture-unfiltered (category Scripture Unfiltered). Map total 145 → 146.
 // V50 (Dutch 1013, category fixes): out-of-dead-wood and two-clocks-not-one move
 // buried-in-plain-sight → scripture-unfiltered; the-throne-in-the-sanctuary moves
@@ -216,6 +217,7 @@ export const POST_GROUP = {
   'the-man-between-the-veil-and-the-throne': 'the-counterfeit-throne',
   'the-redeemer-who-never-needed-redeeming': 'the-counterfeit-throne',
   'the-copy-of-the-son': 'the-counterfeit-throne',
+  'one-raiser-not-three': 'the-counterfeit-throne',
 
   // ── The Root (24) ──
   // Volume V's seven word chapters. They sit beside What the Pulpit Buried's
