@@ -1,4 +1,5 @@
-// blog-groups 1014 V52.js
+// blog-groups 1014 V53.js
+// V53: same-gospel-same-blood joins the-way-in-and-the-walk (category The Way In and the Walk). Map total 147 → 148.
 // V52: one-raiser-not-three joins the-counterfeit-throne (category The Counterfeit Throne; the batch said "Trinity Studies", which is the cluster's label, not a category). Map total 146 → 147.
 // V51: two-passages-against-four-doctrines joins scripture-unfiltered (category Scripture Unfiltered). Map total 145 → 146.
 // V50 (Dutch 1013, category fixes): out-of-dead-wood and two-clocks-not-one move
@@ -351,6 +352,7 @@ export const POST_GROUP = {
   'two-loads-in-the-wilderness': 'the-way-in-and-the-walk',
   'two-kingdoms-one-walk': 'the-way-in-and-the-walk',
   'prepare-the-horse': 'the-way-in-and-the-walk',
+  'same-gospel-same-blood': 'the-way-in-and-the-walk',
 
   // ── Scripture Unfiltered (19) ──
   'hearts-and-reins': 'scripture-unfiltered',
