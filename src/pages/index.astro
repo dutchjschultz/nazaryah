@@ -1,5 +1,10 @@
 ---
-// src/pages/index.astro · 1014 V23
+// src/pages/index.astro · 1014 V24
+// V24 (Corner Cards Spec 1014 V3, Part 4): the hero's logo panel is gone (the
+// header carries the logo, plus the emblem at its far right); the text block
+// takes the width. Doctrines and Books are one height, Books about two-thirds
+// as wide with its label on one line ("The Books"); Books' caption is now
+// CHURCH TRADITION · PUT ON TRIAL, styled like the Doctrines caption.
 // V23 (Homepage Corner Cards Spec 1014 V1): a two-card puzzle stack sits beside
 // the hero box, upper-right — the Riddle (/riddle) over the Names (/why-the-names-
 // matter) — from src/data/corner-cards.js through CornerCard. Not fixed or sticky.
@@ -130,17 +135,6 @@ const recent = recentGroups(pieces, picks);
 
     <div class="hero-row relative z-10">
     <div class="hero-grid">
-      <!-- LEFT: Logo panel (dark background matches logo image) -->
-      <div class="logo-panel">
-        <img
-          src="/images/nazaryah-logo.png"
-          alt="Nazaryah — Separated Unto Yah"
-          class="logo-panel-img"
-          loading="eager"
-          decoding="async"
-        />
-      </div>
-
       <!-- RIGHT: Content -->
       <div class="content-panel">
         <div class="hero-eyebrow">Separated Unto Yahuah</div>
@@ -160,16 +154,16 @@ const recent = recentGroups(pieces, picks);
               <span class="hero-cta-label">Doctrines</span>
               <span class="hero-cta-arrow" aria-hidden="true">→</span>
             </a>
-            <a href="/books" class="hero-cta hero-cta--ghost" aria-label="Read — Published Books">
+            <a href="/books" class="hero-cta hero-cta--ghost" aria-label="Read — The Books">
               <span class="hero-cta-badge"><span class="star" aria-hidden="true">★</span> Read</span>
-              <span class="hero-cta-label">Published Books</span>
+              <span class="hero-cta-label">The Books</span>
               <span class="hero-cta-arrow" aria-hidden="true">→</span>
             </a>
             <p class="hero-doc-links hero-sub--doctrines">
               <a href="/doctrines/old-paths">The Old Paths</a><span aria-hidden="true"> · </span><a href="/doctrines/the-departure">The Departure</a>
             </p>
             <p class="hero-doc-links hero-sub--books">
-              <a href="/books">Where Christianity Has Been Handed a Lie</a>
+              <a href="/books">Church Tradition</a><span aria-hidden="true"> · </span><a href="/books">Put on Trial</a>
             </p>
           </div>
         </div>
@@ -214,7 +208,9 @@ const recent = recentGroups(pieces, picks);
     .hero-grid {
       display: grid;
       /* V4 (A5): the dark logo panel narrows so the parchment side gains width. */
-      grid-template-columns: 7fr 18fr;
+      /* V24 (Corner Cards Spec V3, 4.1): the logo panel is gone — the header
+         carries the logo — so the text block takes the full width. */
+      grid-template-columns: minmax(0, 1fr);
       width: 100%;
       max-width: 80rem;
       /* Aspect ratio dropped — the second stacked CTA needs vertical room
@@ -226,43 +222,11 @@ const recent = recentGroups(pieces, picks);
       box-shadow: 0 8px 32px rgba(0,0,0,0.22), 0 2px 8px rgba(0,0,0,0.15);
     }
 
-    /* ── LEFT PANEL: dark, logo centered ── */
-    .logo-panel {
-      position: relative;
-      background: #0f0a04;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      padding: 0.35rem 1rem;
-      overflow: hidden;
-    }
 
     /* Subtle warm radial glow behind the logo */
-    .logo-panel::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(ellipse at 50% 45%, rgba(180, 120, 30, 0.18) 0%, transparent 70%);
-      pointer-events: none;
-    }
 
     /* Corner ornaments */
-    .logo-panel::after {
-      content: '';
-      position: absolute;
-      top: 10px; left: 10px;
-      width: 20px; height: 20px;
-      border-top: 1.5px solid rgba(196, 154, 78, 0.45);
-      border-left: 1.5px solid rgba(196, 154, 78, 0.45);
-    }
 
-    .logo-panel-img {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      height: 105px; /* V4 (A5): three quarters of 140px */
-      object-fit: contain;
-    }
 
     /* ── RIGHT PANEL ── */
     .content-panel {
@@ -352,6 +316,10 @@ const recent = recentGroups(pieces, picks);
     }
     .hero-cta--doctrines { grid-area: doc; }
     .hero-cta--ghost { grid-area: books; }
+    /* V24 (4.2): both buttons the same height (stretched to their shared row);
+       Books about two-thirds of Doctrines' width, its label on one line. */
+    .hero-cta-stack > .hero-cta { align-self: stretch; white-space: nowrap; box-sizing: border-box; }
+    .hero-cta-stack > .hero-cta--ghost { justify-self: start; justify-content: center; }
     .hero-sub--doctrines { grid-area: docsub; }
     .hero-sub--books { grid-area: bookssub; }
 
@@ -427,7 +395,7 @@ const recent = recentGroups(pieces, picks);
       background: transparent;
       border-color: #a87f1f;
       color: #6b4d12;
-      padding: 0.48rem 1.2rem;
+      padding: 0.48rem 0.85rem;
       font-size: 0.82rem;
       box-shadow: none;
     }
@@ -475,14 +443,7 @@ const recent = recentGroups(pieces, picks);
       .hero-cta-label { font-size: 0.9rem; }
       .hero-cta--ghost .hero-cta-label { font-size: 0.78rem; }
 
-      .logo-panel {
-        padding: 1.75rem 1.5rem;
-        min-height: 130px;
-      }
 
-      .logo-panel-img {
-        max-width: 220px;
-      }
 
       .content-panel {
         padding: 1.75rem 1.5rem;

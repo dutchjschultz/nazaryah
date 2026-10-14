@@ -1,5 +1,8 @@
 ---
-// src/pages/riddle.astro · 1014 V1
+// src/pages/riddle.astro · 1014 V2
+// V2 (Corner Cards Spec 1014 V3): the challenge under the tiles is "Read all three.
+// Lay them side by side. What must be true?" — nothing before the answer names or
+// hints at it (the old question line and the meta description did).
 // V1 (Homepage Corner Cards Spec 1014 V1, Part 2): A Riddle for the Logical Mind
 // — a four-step reveal. Step 1 (the three references and the question) renders
 // without JavaScript; the verse tiles, the nudge and the answer open with it.
@@ -24,7 +27,7 @@ const id = (ref) => 'rd-' + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
 <BaseLayout
   title="A Riddle for the Logical Mind — Nazaryah"
-  description="Three verses. One logical answer. Who is the only true God — and how many persons is He?"
+  description="Three verses. One logical answer. Read all three, lay them side by side — what must be true?"
 >
   <div class="rd-page">
     <div class="rd-wrap">
@@ -49,7 +52,7 @@ const id = (ref) => 'rd-' + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
         ))}
       </ul>
 
-      <p class="rd-question">Who is the only true God — and how many persons is He?</p>
+      <p class="rd-question">Read all three. Lay them side by side. What must be true?</p>
 
       <div class="rd-actions">
         <div class="rd-step">
