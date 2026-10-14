@@ -1,5 +1,8 @@
 ---
-// Header.astro · 1012 V18 — spec 1012 V4 (A1/A2): the home button is larger
+// Header.astro · 1014 V19 — Corner Cards Spec 1014 V3 (4.1): the shofar-and-moon
+// emblem (no wordmark, public/images/nazaryah-emblem.png, cut from nazaryah-wide.png)
+// closes the desktop row after the theme toggle; hidden with the row on phones.
+// V18 · 1012 — spec 1012 V4 (A1/A2): the home button is larger
 // than the search circle, solid dark ink in a gold ring (also in the phone bar);
 // the tabs spread evenly from the logo to the home button and every pill shares
 // one height and one bottom line. V17 — Homepage spec 1012 V3, A2/A4/A5: the logo glows
@@ -196,6 +199,9 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
           ))}
           <ThemeToggle />
         </div>
+        <!-- The emblem closes the row, mirroring the logo at the left (Corner Cards
+             Spec 1014 V3, 4.1). Decorative; desktop row only, so phones show one logo. -->
+        <img class="end-emblem" src="/images/nazaryah-emblem.png" alt="" width="353" height="128" loading="eager" decoding="async" />
       </div>
 
       <!-- Phone / narrow: the mark, the home button and a menu button -->
@@ -561,6 +567,9 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
   /* ============================================================
      UTILITY CLUSTER — search, About, Contact, theme (smaller type)
      ============================================================ */
+  /* Seated on a small dark plate, the ground the left logo stands on, so the moon
+     reads against the parchment end of the bar. */
+  .end-emblem { display: block; height: 50px; width: auto; margin-left: 0.9rem; flex: none; box-sizing: content-box; padding: 3px 10px; border-radius: 8px; background: radial-gradient(ellipse at 60% 45%, #2a1a08 0%, #0f0a04 70%); border: 1px solid rgba(212, 165, 49, 0.45); }
   .nav-utility {
     display: flex;
     gap: 0.2rem;

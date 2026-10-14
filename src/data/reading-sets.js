@@ -1,4 +1,6 @@
-// reading-sets 1010 V8.js
+// reading-sets 1014 V9.js
+// V9: Trilogy "The Marriage Covenant" added — Marriage and Divorce, The Law of
+// Jealousy, Fornication and Adultery (Dutch 1014).
 // V8: Trilogy "The Star of Your God" added — Saturnalia, Ashtoreth, Esther, Ishtar
 // & Marduk.
 // V7: When the Father Spoke — Two Mountains line reworded (Dutch).
@@ -146,6 +148,24 @@ export const READING_SETS = [
       {
         slug: "esther-ishtar-marduk",
         line: "Ishtar and Marduk: the star names carried into the book of Esther.",
+      },
+    ],
+  },
+  {
+    key: "the-marriage-covenant",
+    title: "The Marriage Covenant",
+    readings: [
+      {
+        slug: "marriage-and-divorce",
+        line: "The writ Yahuah gave, the treachery He hates, and the bride brought home.",
+      },
+      {
+        slug: "the-law-of-jealousy",
+        line: "The bitter cup of Numbers 5, taken from the bride and handed to the Son.",
+      },
+      {
+        slug: "fornication-and-adultery",
+        line: "Two words, two covenants, two judgments: the divorced sister and the defiled one.",
       },
     ],
   },

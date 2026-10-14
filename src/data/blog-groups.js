@@ -1,4 +1,5 @@
-// blog-groups 1014 V54.js
+// blog-groups 1014 V55.js
+// V55: marriage-and-divorce and the-law-of-jealousy join the-law-and-the-feasts (category The Law & The Feasts), beside fornication-and-adultery. Map total 149 → 151.
 // V54: two-babylons joins scripture-unfiltered (category Scripture Unfiltered). Map total 148 → 149.
 // V53: same-gospel-same-blood joins the-way-in-and-the-walk (category The Way In and the Walk). Map total 147 → 148.
 // V52: one-raiser-not-three joins the-counterfeit-throne (category The Counterfeit Throne; the batch said "Trinity Studies", which is the cluster's label, not a category). Map total 146 → 147.
@@ -290,7 +291,7 @@ export const POST_GROUP = {
   'ashtoreth': 'buried-in-plain-sight',
   'bohemian-grove': 'buried-in-plain-sight',
 
-  // ── The Law & The Feasts (17) ──
+  // ── The Law & The Feasts (22) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',
   'two-greatest-commandments': 'the-law-and-the-feasts',
   'seven-feasts-in-exodus': 'the-law-and-the-feasts',
@@ -312,6 +313,8 @@ export const POST_GROUP = {
   'the-same-word-a-different-master': 'the-law-and-the-feasts',
   'the-pledge-and-the-bride': 'the-law-and-the-feasts',
   'clean-and-unclean-at-the-same-table': 'the-law-and-the-feasts',
+  'marriage-and-divorce': 'the-law-and-the-feasts',
+  'the-law-of-jealousy': 'the-law-and-the-feasts',
 
   // ── The Parables (12) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
