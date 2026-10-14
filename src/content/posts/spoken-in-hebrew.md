@@ -12,21 +12,36 @@ epigraph:
 investigation: "spoken-in-hebrew"
 associations: []
 ---
+
 ## The Claim
 
 The New Testament that reaches the modern reader is written in Greek. Seminaries teach that it was composed in Greek, and pulpits treat the Greek as the source: when a hard question comes up, the answer begins, "The Greek says…"
 
 This investigation sets out a different claim. The message of Yahushua was spoken in Hebrew, by Hebrews, to Hebrews, out of the Hebrew Scriptures — and, by the testimony of the earliest writers, at least part of it was first written in Hebrew. The Greek is a faithful carrier in many places, but it is a carrier. Behind it stands a Hebrew Messiah, Hebrew apostles, and a Hebrew Torah.
 
-## Why It Matters
+## The Teaching Handed Down
 
-If the message began in Hebrew, then every Greek word chosen to carry it came with a history of its own. The meaning of a word in the New Testament cannot be settled by a Greek dictionary. It must be settled by the Hebrew word underneath it, and by how Moses and the prophets used that word.
+The Greek-original teaching is not one claim but a chain of them, and each link is taught as settled fact.
 
-That is not a small adjustment. It changes how soul, grave, favor, belief, and dozens of other words are read — and with them, the doctrines built on those words.
+- **The New Testament was composed in Greek.** Seminaries require Greek, not Hebrew, for the study of the apostles, and commentaries treat the Greek text as the inspired original.
 
-## The Seven Witnesses
+- **Hebrew was a dead language.** Generations of scholars taught that Hebrew had ceased to be spoken centuries before the first coming, and that the Jews of Judea spoke only Aramaic and Greek. On that view Yahushua could not have taught in Hebrew, and no apostle would have written in it.
 
-Torah requires more than one witness before a matter is settled (Deuteronomy 19:15). This case calls seven. Each stands on its own, and each points back here.
+- **Greek was Yahuah's chosen tongue.** Pulpits teach that "the fulness of the time" (Galatians 4:4) included a world united by Greek, so that the gospel could be written once in the language of the nations. Greek is praised as the most precise language ever spoken, fit for doctrine as Hebrew was not.
+
+- **The Greek settles the question.** Because the Greek is treated as the source, a Greek lexicon becomes the final judge of meaning, and "the Greek says" ends the argument.
+
+Each link holds up the next. If the apostles wrote in Greek, then Greek words carry Greek meanings, and the Torah and the Prophets become background reading — an "Old" Testament standing behind a "New" one, written in a different language for a different people.
+
+## Where It Came From
+
+Scripture never claims a Greek original. The teaching grew as the assemblies moved away from Jerusalem. Once the Hebrew-speaking believers of Judea were scattered, the copying and teaching of Scripture passed into Greek and Latin hands. When the Reformers later cried *ad fontes* — "back to the sources" — they went back to Erasmus' printed Greek New Testament of 1516, and stopped there. The Greek was mistaken for the fountain.
+
+Going back to the Greek is not going back to the source. The Hebrew beneath it is. If the message began in Hebrew, no Greek word in the New Testament can be settled by a Greek dictionary. It must be settled by the Hebrew word underneath it, and by how Moses and the prophets used that word.
+
+## The Eight Witnesses
+
+Torah requires more than one witness before a matter is settled (Deuteronomy 19:15). This case calls eight. Each stands on its own, and each points back here.
 
 - **1. [The Witnesses](/blog/the-witnesses).** What the earliest writers said about a Hebrew Matthew and a Hebrew letter to the Hebrews — and the late "Hebrew" texts that are not the original.
 
@@ -40,11 +55,13 @@ Torah requires more than one witness before a matter is settled (Deuteronomy 19:
 
 - **6. [What the Greek Carried](/blog/what-the-greek-carried).** The Greek words that came into the New Testament already loaded with the meanings of the gods and the philosophers, and the full list on the page [Words Your Bible Borrowed](/doctrines/borrowed-words/).
 
-- **7. [Two Names, One Man](/blog/two-names-one-man) (Acts 13:9).** Saul was never renamed. Luke says he was "also called Paul," the risen Messiah still called him Saul in the Hebrew tongue, and the same Hebrew-name-plus-gloss pattern runs through Barnabas, Simeon Niger, Thomas Didymus, Cephas, and Messias. The renaming story came later, from Jerome and Augustine, not from Scripture.
+- **7. [Two Names, One Man](/blog/two-names-one-man) (Acts 13:9).** Saul was never renamed. Luke says he was "also called Paul," and the same pattern runs through Barnabas, Thomas Didymus, and Messias — Hebrew names the writers kept and glossed for Greek readers.
+
+- **8. [The Tongue of Heaven](/blog/the-tongue-of-heaven).** From the one lip before Babel to the voice on the Damascus road, the speech of heaven recorded as men heard it — in Hebrew.
 
 ## The Verdict the Witnesses Reach
 
-Read together, the seven witnesses say one thing: the New Testament must be read from the Hebrew up, not from the Greek down. The apostles thought in the language of Moses. To understand them, the reader has to go where they went first — to the Torah and the Prophets.
+Read together, the eight witnesses say one thing: the New Testament must be read from the Hebrew up, not from the Greek down. The apostles thought in the language of Moses. To understand them, the reader has to go where they went first — to the Torah and the Prophets.
 
 > **JEREMIAH 6:16 — KJV**
 >

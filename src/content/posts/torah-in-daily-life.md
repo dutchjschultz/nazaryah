@@ -1,6 +1,6 @@
 ---
 title: "Torah in Daily Life"
-description: "The testimony of custom — the fringe, the sandal, the witnesses, and the lamb, the daily Torah that the Gospels assume on every page."
+description: "The testimony of custom — the fringe, the sandal, the offering, and the lamb, the daily Torah that the Gospels assume without explaining."
 deck: "The Customs of the Torah Woven Through the Gospels"
 verse: "Matthew 9:20"
 date: 2026-10-07
@@ -13,76 +13,79 @@ epigraph:
 investigation: "spoken-in-hebrew"
 associations: []
 ---
-## A People Who Lived the Torah
 
-The people of the Gospels did not read the Torah only on the Sabbath. They wore it, ate by it, buried by it, and went to court by it. Many scenes in the Gospels turn on a custom the Torah commanded — and a reader who does not know the Torah reads straight past them.
+## Why Customs Testify
+
+A writer shows where he comes from by what he leaves unexplained. A Greek author writing for Greek readers has to stop and explain Hebrew customs, because his readers have never lived by them. Again and again the Gospel writers do not stop. They mention fringes, sandals, offerings, and burial laws in passing, as things every reader already knows.
+
+That is how a Hebrew writes to Hebrews. Each custom below comes straight from the Torah, and each is set into the story without a word of explanation. Together they show that the message was first told among people who lived by the Torah — and in the language the Torah was written in.
 
 ## The Hem of His Garment
-
-The Torah commanded Israel to wear fringes, tzitzit, on the corners (kanaph, H3671) of their garments, "that ye may look upon it, and remember all the commandments of Yahuah" (Numbers 15:38–39). When the sick woman reached for Yahushua, she reached for those fringes:
 
 > **MATTHEW 9:20 — KJV**
 >
 > *And, behold, a woman, which was diseased with an issue of blood twelve years, came behind him, and touched the hem of his garment.*
 
-Malachi had promised that "the Sun of righteousness" would arise "with healing in his wings" (Malachi 4:2). The word for wings is kanaph — the same word as the corners of the garment.
+The Torah commanded fringes, *tzitzit*, on the corners (*kanaph*, H3671) of every garment, "that ye may look upon it, and remember all the commandments of Yahuah" (Numbers 15:38–39). Malachi promised that the Sun of righteousness would rise "with healing in his wings" (Malachi 4:2) — and "wings" is the same word, *kanaph*. Matthew never says why she reached for the hem. He does not need to. A Hebrew reader knew; a Greek reader sees only the edge of a cloak.
 
 ## The Sandal and the Redeemer
 
-In Israel, the right to redeem passed from one kinsman to another by the loosing of a shoe (Ruth 4:7). John’s words about the One coming after him use that custom:
-
 > **JOHN 1:27 — KJV**
 >
-> *He it is, who coming after me is preferred before me, whose shoe’s latchet I am not worthy to unloose.*
+> *He it is, who coming after me is preferred before me, whose shoe's latchet I am not worthy to unloose.*
 
-The redeemer had to be near of kin (Leviticus 25:25; Ruth 3:12). Yahuah calls Himself Israel’s Redeemer (Isaiah 41:14), and the One He sent "likewise took part of the same" flesh and blood (Hebrews 2:14) — a kinsman, as the Torah required.
+In Israel the right to redeem a kinsman's inheritance passed from one man to another by the loosing of a shoe (Ruth 4:7). A Greek reader hears only humility — a slave's chore John feels too lowly to do. A Hebrew reader also hears the law of the kinsman-redeemer: the right of redemption is not John's to take. It belongs to the One coming after him.
 
-## Birth and the Firstborn
+## The Poor Man's Offering
 
-- **The eighth day.** Circumcision and naming on the eighth day (Genesis 17:12; Luke 1:59; 2:21).
+> **LUKE 2:24 — KJV**
+>
+> *And to offer a sacrifice according to that which is said in the law of the Lord, A pair of turtledoves, or two young pigeons.*
 
-- **The poor man’s offering.** After the days of purification, Mary brought "a pair of turtledoves, or two young pigeons" (Luke 2:24) — the offering the Torah allowed for a family that could not afford a lamb (Leviticus 12:8). The family was poor.
+Luke records the offering and says nothing more. The meaning sits in Leviticus 12:8: the birds were the offering allowed when a mother "be not able to bring a lamb." Only a reader who knew the Torah would understand what Luke is quietly saying — the family of the Messiah was poor.
 
-- **The firstborn presented.** "Every male that openeth the womb shall be called holy to the Lord" (Luke 2:23; Exodus 13:2). The firstborn held a rank and a double portion (Deuteronomy 21:17); even a younger son could be "made" firstborn (Psalm 89:27).
+## The Gift That Moses Commanded
 
-## The Torah in Court and in the Temple
+> **MATTHEW 8:4 — KJV**
+>
+> *And Yahushua saith unto him, See thou tell no man; but go thy way, shew thyself to the priest, and offer the gift that Moses commanded, for a testimony unto them.*
 
-- **The healed leper.** "Go thy way, shew thyself to the priest, and offer the gift that Moses commanded" (Matthew 8:4; Leviticus 14).
+Matthew does not say what the gift was or why the priest had to see the man. Leviticus 14 does: the priest alone could declare a leper clean, and the cleansing required a set offering. The verse assumes a reader who already knows the law of the leper.
 
-- **Two or three witnesses.** The Torah’s rule (Deuteronomy 19:15) runs through Yahushua’s teaching (Matthew 18:16; John 8:17) — and through His trial, where the false witnesses could not agree (Mark 14:56).
+## The High Priest's Torn Clothes
 
-- **The high priest’s torn clothes.** Caiaphas "rent his clothes" (Matthew 26:65) — the one act the Torah forbids the high priest (Leviticus 21:10). At the trial of the Messiah, the high priest broke the Torah.
+> **MATTHEW 26:65 — KJV**
+>
+> *Then the high priest rent his clothes, saying, He hath spoken blasphemy.*
 
-- **Phylacteries and borders.** "They make broad their phylacteries, and enlarge the borders of their garments" (Matthew 23:5) — commands of Deuteronomy 6:8 and Numbers 15:38 turned into display.
+Leviticus 21:10 forbids the high priest to rend his clothes. Matthew adds no comment, but a Torah reader sees the point at once: in the very act of condemning the Messiah, the high priest broke the Torah he claimed to defend. The irony only lands for someone who knows Leviticus.
 
-## Torah Against Tradition
+## No Bone Broken
 
-Yahushua kept the Torah and refused the additions laid on top of it. Two scenes show the line He drew:
+> **JOHN 19:36 — KJV**
+>
+> *For these things were done, that the scripture should be fulfilled, A bone of him shall not be broken.*
 
-- **Corban.** A vow declaring property "a gift" to the temple was used to escape the command to honor father and mother. "Making the word of God of none effect through your tradition" (Mark 7:11–13).
+The scripture John means is the law of the Pesach lamb: "neither shall ye break a bone thereof" (Exodus 12:46). John does not name the lamb. He expects his reader to know which scripture governs bones, and why that law belongs to the Lamb of Elohim.
 
-- **Washing of hands.** The ritual hand-washing of Mark 7:3 came from "the tradition of the elders," not from the Torah. He rejected it while defending the commandment.
+## Down Before Night
 
-The pattern is plain: the Torah kept, the traditions of men refused.
+Rome commonly left the crucified on their crosses for days. Yet the bodies at Golgotha were taken down before evening (John 19:31). The reason is not Roman but Hebrew: a body hanged on a tree "shall not remain all night upon the tree" (Deuteronomy 21:22–23). Paul quotes the same law when he writes, "Cursed is every one that hangeth on a tree" (Galatians 3:13). The haste of that afternoon was the Torah at work.
 
-## The Lamb and the Tree
+## The Firstfruits
 
-- **The lamb set apart on the tenth.** The Pesach lamb was taken on the tenth day of the first month and kept until the fourteenth (Exodus 12:3–6).
+> **1 CORINTHIANS 15:20 — KJV**
+>
+> *But now is Messiah risen from the dead, and become the firstfruits of them that slept.*
 
-- **No bone broken.** "Neither shall ye break a bone thereof" (Exodus 12:46). "These things were done, that the scripture should be fulfilled, A bone of him shall not be broken" (John 19:36).
-
-- **Down before night.** A body hanged on a tree "shall not remain all night upon the tree" (Deuteronomy 21:22–23). The bodies were taken down before the high day (John 19:31), and Paul quotes the same Torah: "Cursed is every one that hangeth on a tree" (Galatians 3:13).
-
-- **Buried with spices.** "As the manner of the Jews is to bury" (John 19:40) — the custom of 2 Chronicles 16:14.
-
-- **The firstfruits.** The first sheaf of the harvest was waved before Yahuah (Leviticus 23:10–11). "Now is Messiah risen from the dead, and become the firstfruits of them that slept" (1 Corinthians 15:20).
+The firstfruits was the first sheaf of the harvest, waved before Yahuah before any of the harvest could be eaten (Leviticus 23:10–11, 14). Paul names the resurrection by that Torah offering, and he does it in a letter to Corinth, a Greek city — expecting the assembly there to know the wave sheaf well enough to follow him.
 
 ## The Torah Still Worn
 
-The Gospels were not written to people who had left the Torah behind. They were written about people who lived inside it — and the Book ends where the Torah began:
+None of these customs is explained, because none needed to be. The Gospels were written about people who lived inside the Torah, by men who thought in its words — and the Book ends where the Torah began:
 
 > **REVELATION 22:14 — KJV**
 >
 > *Blessed are they that do his commandments, that they may have right to the tree of life, and may enter in through the gates into the city.*
 
-*One of seven witnesses in a single case. **Torah in Daily Life** is the testimony of custom — the fringe, the sandal, the witnesses, and the lamb, the daily Torah that the Gospels assume on every page. The seven together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*
+*One of eight witnesses in a single case. **Torah in Daily Life** is the testimony of custom — the fringe, the sandal, the offering, and the lamb, the daily Torah that the Gospels assume without explaining. The eight together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*

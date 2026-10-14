@@ -13,6 +13,7 @@ epigraph:
 investigation: "spoken-in-hebrew"
 associations: []
 ---
+
 ## Hebrew Bones in Greek Skin
 
 Beyond single words, the sentences themselves run on Hebrew structure. A Greek reader of the first century would have found many of these patterns foreign. To a Hebrew ear they are native.
@@ -63,4 +64,4 @@ A writer who reaches past the Greek Bible to the Hebrew is a writer who reads, t
 
 Where the Greek New Testament matches the Septuagint, a translator rendering a Hebrew original would naturally use the Greek Scripture his readers already owned. Jerome says the Greek translator of Matthew is unknown; nothing prevents that translator from drawing on the Greek Bible of his day. Where the original writer’s own hand shows through — as in Matthew 2:15 and 8:17 — the quotation follows the Hebrew.
 
-*One of seven witnesses in a single case. **Hebrew Beneath the Greek** is the testimony of the text — the Hebrew grammar, wordplay, and quotations that show through the Greek like the grain through a coat of paint. The seven together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*
+*One of eight witnesses in a single case. **Hebrew Beneath the Greek** is the testimony of the text — the Hebrew grammar, wordplay, and quotations that show through the Greek like the grain through a coat of paint. The eight together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*

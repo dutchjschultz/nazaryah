@@ -13,11 +13,14 @@ epigraph:
 investigation: "spoken-in-hebrew"
 associations: []
 ---
+
 ## Words Do Not Travel Empty
 
 When the message of Yahushua was carried from Hebrew into Greek, Hebrew words had to be traded for Greek ones. The Greek words available already belonged to someone. Many had served for centuries in the temples of the gods, at the oracle of Delphi, in the schools of the philosophers, and on the inscriptions of the emperors. They came into the New Testament carrying their meanings with them.
 
 The Greek did not erase the Hebrew. It added to it — a little philosophy here, a little mythology there — until the teaching built on those words drifted far from what Moses and the prophets meant.
+
+That is not a small adjustment. It changes how soul, grave, favor, belief, and dozens of other words are read — and with them, the doctrines built on those words.
 
 ## How the Hebrew Is Known
 
@@ -53,4 +56,4 @@ Every Greek word in the New Testament has been screened — 5,523 entries in Str
 
 The full list is on the page [**Words Your Bible Borrowed**](/doctrines/borrowed-words/).
 
-*One of seven witnesses in a single case. **What the Greek Carried** is the reason the case matters — the Greek words that came in carrying their gods and philosophers, and the Hebrew they replaced. The seven together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*
+*One of eight witnesses in a single case. **What the Greek Carried** is the reason the case matters — the Greek words that came in carrying their gods and philosophers, and the Hebrew they replaced. The eight together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*

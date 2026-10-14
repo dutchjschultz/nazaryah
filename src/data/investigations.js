@@ -1,4 +1,8 @@
-// investigations 1012 V11.js
+// investigations 1014 V12.js
+// V12 (Spoken in Hebrew Replace and Add 1014): Spoken in Hebrew gains Witness
+// Eight · Heard — The Tongue of Heaven (Acts 26:14 / Zephaniah 3:9); eight
+// witnesses, four a side. Witness Two's passage moves off Acts 26:14 (now Witness
+// Eight's) to Acts 22:2; every blurb re-read from the rewritten hub.
 // V11: The Sealed Count goes live — nucleus + five witnesses, the columns shape
 // (three left, two right), placed after Spoken in Hebrew. Its nucleus carries the
 // optional passage/anchor lines (ConvergingColumns V3).
@@ -345,14 +349,14 @@ export const INVESTIGATIONS = [
     title: 'Spoken in Hebrew',
     shortTitle: 'Spoken in Hebrew',
     deck: 'The message beneath the Greek — and what the Greek carried in',
-    // Seven witnesses (V9): the columns shape, four left, three right.
+    // Eight witnesses (V12): the columns shape, four left, four right.
     layout: 'columns',
     enterLabel: 'Enter the case',
     orderNote: 'Numbered as the hub lists them · read in any order',
     teaching:
       'The New Testament was composed in Greek, and the Greek is the source: when a hard question comes up, the answer begins, “The Greek says…”',
     question:
-      'Was the message of Yahushua first spoken in Greek, or in Hebrew — and what did the Greek carry in? Seven witnesses answer.',
+      'Was the message of Yahushua first spoken in Greek, or in Hebrew — and what did the Greek carry in? Eight witnesses answer.',
     soon: false,
     nucleus: {
       label: 'The Nucleus',
@@ -376,7 +380,7 @@ export const INVESTIGATIONS = [
       {
         tag: 'Witness Two · Spoken',
         name: 'The Language of Judea',
-        passage: 'Acts 26:14',
+        passage: 'Acts 22:2',
         anchor: 'Nehemiah 13:24',
         status: 'live',
         href: '/blog/the-language-of-judea',
@@ -425,7 +429,16 @@ export const INVESTIGATIONS = [
         anchor: 'Genesis 17:5',
         status: 'live',
         href: '/blog/two-names-one-man',
-        blurb: 'Saul was never renamed. Luke says he was “also called Paul,” the risen Messiah still called him Saul in the Hebrew tongue, and the same Hebrew-name-plus-gloss pattern runs through Barnabas, Simeon Niger, Thomas Didymus, Cephas, and Messias. The renaming story came later, from Jerome and Augustine, not from Scripture.',
+        blurb: 'Saul was never renamed. Luke says he was “also called Paul,” and the same pattern runs through Barnabas, Thomas Didymus, and Messias — Hebrew names the writers kept and glossed for Greek readers.',
+      },
+      {
+        tag: 'Witness Eight · Heard',
+        name: 'The Tongue of Heaven',
+        passage: 'Acts 26:14',
+        anchor: 'Zephaniah 3:9',
+        status: 'live',
+        href: '/blog/the-tongue-of-heaven',
+        blurb: 'From the one lip before Babel to the voice on the Damascus road, the speech of heaven recorded as men heard it — in Hebrew.',
       },
     ],
   },

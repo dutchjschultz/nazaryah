@@ -13,6 +13,7 @@ epigraph:
 investigation: "spoken-in-hebrew"
 associations: []
 ---
+
 ## A Marriage Older Than the Gospels
 
 Long before the Gospels were written, the prophets described Yahuah’s covenant with Israel as a marriage. "Thy Maker is thine husband; Yahuah of hosts is his name" (Isaiah 54:5). "Turn, O backsliding children, saith Yahuah; for I am married unto you" (Jeremiah 3:14). Of the covenant at Sinai He said, "I was an husband unto them" (Jeremiah 31:32).
@@ -77,4 +78,4 @@ Revelation finishes the story the prophets began. The bride has made herself rea
 
 Then the bride comes down: "the holy city, new Jerusalem, coming down from God out of heaven, prepared as a bride adorned for her husband" (Revelation 21:2). From Hosea to Revelation, it is one marriage — and only a Hebrew reader hears all of it.
 
-*One of seven witnesses in a single case. **The Bride and the Bridegroom** is the testimony of Israel’s marriage — the betrothal, the price, the prepared place, and the feast that run from the prophets to Revelation. The seven together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*
+*One of eight witnesses in a single case. **The Bride and the Bridegroom** is the testimony of Israel’s marriage — the betrothal, the price, the prepared place, and the feast that run from the prophets to Revelation. The eight together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*

@@ -1,8 +1,8 @@
 ---
 title: "The Language of Judea"
-description: "The testimony of Scripture itself — the language heaven spoke, the language Jerusalem heard, and the Hebrew words the Greek could not let go."
+description: "The testimony of Scripture itself — the language Jerusalem heard, the Hebrew it wrote on its places, and the Hebrew words the Greek could not let go."
 deck: "What Scripture Records About the Language of the Apostles"
-verse: "Acts 26:14"
+verse: "Acts 22:2"
 date: 2026-10-07
 author: "Nazaryah"
 featured: false
@@ -13,15 +13,10 @@ epigraph:
 investigation: "spoken-in-hebrew"
 associations: []
 ---
-## The Language Heaven Used
 
-When the risen Messiah spoke to Saul on the Damascus road, He did not use Greek, the language of trade and government. Luke records the language:
+## The Language Jerusalem Heard
 
-> **ACTS 26:14 — KJV**
->
-> *And when we were all fallen to the earth, I heard a voice speaking unto me, and saying in the Hebrew tongue, Saul, Saul, why persecutest thou me?*
-
-Later, at the temple, the chief captain asked Paul, "Canst thou speak Greek?" (Acts 21:37). Paul could. But when he turned to the crowd of Jerusalem, he spoke Hebrew — and they fell silent:
+At the temple, the chief captain asked Paul, "Canst thou speak Greek?" (Acts 21:37). Paul could. But when he turned to the crowd of Jerusalem, "he spake unto them in the Hebrew tongue" (Acts 21:40) — and they fell silent:
 
 > **ACTS 22:2 — KJV**
 >
@@ -53,17 +48,15 @@ A translator renders most words into the new language, but some words carry so m
 
 - **Hosanna** — save now (Matthew 21:9; Psalm 118:25).
 
-- **Alleluia** — praise Yah (Revelation 19:1–6). The Name itself, preserved inside the Greek.
-
 - **Sabaoth** — hosts (Romans 9:29; James 5:4).
 
 - **Maranatha** — our Master, come (1 Corinthians 16:22), written to Corinth.
 
-- **Talitha cumi, Ephphatha, Corban, Rabboni, Cephas** (Mark 5:41; 7:34; 7:11; John 20:16; 1:42).
+- **Talitha cumi, Ephphatha, Rabboni** (Mark 5:41; 7:34; John 20:16).
 
 - **Eli, Eli, lama sabachthani** (Matthew 27:46) — the cry from the tree, in the words He actually spoke.
 
-Many of these are followed by the words "which is, being interpreted." That is the translator stepping into the text to explain a Hebrew word to a Greek reader.
+Several of these arrive with the writer stopping to explain them for a Greek reader — a pattern traced name by name in Witness Seven.
 
 ## Two Objections Answered
 
@@ -71,4 +64,4 @@ Many of these are followed by the words "which is, being interpreted." That is t
 
 **"Paul wrote to Greek cities."** His letters went to assemblies founded in synagogues, built on Jews and Torah-keeping proselytes (Acts 17:1–4; 18:4). He wrote to Rome, "I speak to them that know the law" (Romans 7:1). He left Abba and Maranatha untranslated in letters to Rome, Galatia, and Corinth. Whatever language carried a letter, the mind that composed it was trained "at the feet of Gamaliel… according to the perfect manner of the law of the fathers" (Acts 22:3).
 
-*One of seven witnesses in a single case. **The Language of Judea** is the testimony of Scripture itself — the language heaven spoke, the language Jerusalem heard, and the Hebrew words the Greek could not let go. The seven together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*
+*One of eight witnesses in a single case. **The Language of Judea** is the testimony of Scripture itself — the language Jerusalem heard, the Hebrew it wrote on its places, and the Hebrew words the Greek could not let go. The eight together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*

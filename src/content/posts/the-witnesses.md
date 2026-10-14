@@ -13,6 +13,7 @@ epigraph:
 investigation: "spoken-in-hebrew"
 associations: []
 ---
+
 ## One Voice from the Early Assemblies
 
 History is not the authority; Scripture is. But the earliest writers after the apostles speak with one voice on the language of Matthew, and not one early writer claims Matthew was first written in Greek.
@@ -59,4 +60,4 @@ Several "Hebrew" New Testament texts are offered today as the lost originals. No
 
 The honest position is this: the Hebrew original is lost, but the testimony that it existed is early, wide, and unanimous. Late texts do not fill that gap, and leaning on them weakens the case. The case rests on the witnesses above, and on the Hebrew that still shows through the Greek itself.
 
-*One of seven witnesses in a single case. **The Witnesses** is the testimony of history — the early writers who saw or knew of the Hebrew original, and the late texts that cannot replace it. The seven together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*
+*One of eight witnesses in a single case. **The Witnesses** is the testimony of history — the early writers who saw or knew of the Hebrew original, and the late texts that cannot replace it. The eight together make the case framed in the hub study, [**Spoken in Hebrew**](/blog/spoken-in-hebrew).*
