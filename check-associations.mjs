@@ -67,6 +67,14 @@ const FORBIDDEN = [
   { re: /\bsunset\b/gi, label: '"sunset" — use dusk', level: "error", skipQuotes: true },
 ];
 
+// ACCEPTED — house-term hits Dutch has reviewed and kept, by study slug and term
+// (the FORBIDDEN pattern's source text), with the number of hits accepted. Only
+// that many are excused; one more and the flag returns.
+const ACCEPTED = {
+  // Paul's own word inside the KJV quotations of 1 Cor 15:20, 23 (Dutch 1014).
+  "two-passages-against-four-doctrines": { "\\bFirstfruits\\b": 2 },
+};
+
 // Drop scripture blocks so quoted text isn't judged as Dutch's own prose.
 const withoutQuotes = (body) =>
   body
@@ -189,7 +197,8 @@ for (const file of files) {
   const prose = withoutQuotes(body);
   for (const { re, label, level, skipQuotes } of FORBIDDEN) {
     const hits = (skipQuotes ? prose : body).match(re);
-    if (hits) add(short, level, `${label} — ${hits.length}×`);
+    const n = (hits ? hits.length : 0) - (ACCEPTED[slug]?.[re.source] ?? 0);
+    if (n > 0) add(short, level, `${label} — ${n}×`);
   }
 }
 

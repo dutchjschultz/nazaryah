@@ -40,7 +40,7 @@ What the pulpit skips is John 5:28-29. The word "all" and the phrase "the hour" 
 
 John 5 puts the dead "in the graves" when He calls (v. 28). They are not in heaven waiting for a body. They hear His voice and come forth (v. 29).
 
-1 Corinthians 15 calls the dead "them that slept" (v. 20). Messiah is the firstfruits, the first sheaf waved before Yahuah while the rest of the harvest still stands in the field (Leviticus 23:10-11). His people are made alive "at his coming" (v. 23), all together, not one at a time as each dies. Paul even warns that without the resurrection the dead in Messiah "are perished" (v. 18). That warning only makes sense if they are not already in glory.
+1 Corinthians 15 calls the dead "them that slept" (v. 20). Messiah is the firstfruits, the first sheaf waved before Yahuah at Bikkurim while the rest of the harvest still stands in the field (Leviticus 23:10-11). His people are made alive "at his coming" (v. 23), all together, not one at a time as each dies. Paul even warns that without the resurrection the dead in Messiah "are perished" (v. 18). That warning only makes sense if they are not already in glory.
 
 Both verses keep the dead in the grave, asleep, until His voice and His coming.
 
