@@ -1,5 +1,8 @@
 ---
-// src/pages/index.astro · 1014 V24
+// src/pages/index.astro · 1014 V25
+// V25 (Hero + header fixes, Dutch 1014): hero text, the Riddle card and the
+// Names card stand in ONE row, tops and bottoms level; the text block narrows
+// to make room and the row is shorter. Under 1024px: hero, red, blue, stacked.
 // V24 (Corner Cards Spec 1014 V3, Part 4): the hero's logo panel is gone (the
 // header carries the logo, plus the emblem at its far right); the text block
 // takes the width. Doctrines and Books are one height, Books about two-thirds
@@ -198,11 +201,13 @@ const recent = recentGroups(pieces, picks);
       max-width: 80rem;
     }
     .hero-row > .hero-grid { flex: 1 1 auto; min-width: 0; }
-    .hero-corner { flex: none; display: flex; flex-direction: column; gap: 0.75rem; align-self: flex-start; }
+    /* V25: one row — hero text, Riddle card, Names card side by side, tops and
+       bottoms level (the cards stretch to the row's height). */
+    .hero-corner { flex: none; display: flex; flex-direction: row; gap: 1rem; align-self: stretch; }
     @media (max-width: 1023px) {
       .hero-row { flex-direction: column; align-items: center; }
       .hero-row > .hero-grid { width: 100%; }
-      .hero-corner { align-self: center; align-items: center; padding: 0.5rem 0 0.25rem; }
+      .hero-corner { flex-direction: column; align-self: center; align-items: center; gap: 0.75rem; padding: 0.5rem 0 0.25rem; }
     }
 
     .hero-grid {
@@ -234,7 +239,7 @@ const recent = recentGroups(pieces, picks);
       flex-direction: column;
       justify-content: center;
       gap: 0.08rem;
-      padding: 0.2rem 2rem;
+      padding: 0.15rem 1.6rem;
     }
 
     .hero-eyebrow {
