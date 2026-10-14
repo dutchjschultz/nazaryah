@@ -1,4 +1,6 @@
-// home-pieces 1013 V5.js
+// home-pieces 1013 V6.js
+// V6: a post's BLOG_GROUPS key rides into skinOf, so a Berean card's top edge
+// and symbol take its subcategory's tone (series-skins V8).
 // V5 (Featured Picks — raise to 10 slots, Dutch 1013): ten seats, two rows of
 // five. Never two cards from one category (a piece's `category` = its skin
 // override, else its section — the same thing its card's look and location
@@ -56,7 +58,7 @@ export const WINDOW_DAYS = 30;
 
 const iso = (d) => (d == null || d === '' ? null : d instanceof Date ? d.toISOString().slice(0, 10) : String(d).slice(0, 10));
 
-function piece({ key, title, deck, href, date, section, data = {}, cta }) {
+function piece({ key, title, deck, href, date, section, group, data = {}, cta }) {
   if (data.featured === true && !data.featuredAt) {
     throw new Error(`home-pieces: ${key} has featured: true but no featuredAt (the date it was named a pick).`);
   }
@@ -70,7 +72,7 @@ function piece({ key, title, deck, href, date, section, data = {}, cta }) {
     // One card per category in Featured Picks (V5): the skin it wears by
     // override, else its section.
     category: data.skin || section,
-    skin: skinOf(section, data.skin),
+    skin: skinOf(section, data.skin, group),
     // Where a reader would find it: the skin's own front page when the piece
     // wears one by override (The Copy of the Son → Hidden Gems), else its section's.
     location: data.skin
@@ -99,6 +101,7 @@ export async function homePieces() {
       href: postHref(p),
       date: p.data.date,
       section: sectionOfPost(p, groupOf(p.slug)),
+      group: groupOf(p.slug),
       data: p.data,
     })),
     ...hebrew.map((h) => piece({

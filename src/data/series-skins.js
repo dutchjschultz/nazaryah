@@ -1,4 +1,11 @@
-// series-skins 1013 V7.js
+// series-skins 1013 V8.js
+// V8 (Featured card colors — one look per category, Dutch 1013): every featured
+// card now wears its own category's look. Non-Berean sections get a full tint
+// (new skins: lxx-masoretic ink blue, symbol-lexicon deep teal, legal-lexicon
+// plum, five-offerings altar bronze-green, watchmans-desk navy + red top edge,
+// torah stone blue-grey; Hebrew, Investigations, Trinity and the Counterfeits
+// pages keep theirs). Berean Studies share one brown card (BEREAN_SKIN); each
+// subcategory colors the 3px top edge and the symbol (BEREAN_TONES, one line each).
 // V7: the edited-after-the-cross section is named LXX vs Masoretic, matching its page title
 // and header tab (Page titles 1013). Key and URL unchanged.
 // V6: SECTIONS gains 'the-root' (The Root, /blog/c/the-root), filed like The Side
@@ -154,6 +161,42 @@ export const SKINS = {
     background: 'radial-gradient(ellipse at 50% 30%, #2a1a05 0%, #0f0802 70%, #050200 100%)',
     glow: GLOW, accent: '#c99a3a', ctaColor: GOLD,
   },
+  'lxx-masoretic': {
+    name: 'LXX vs Masoretic', href: '/edited-after-the-cross', icon: '◇', kicker: 'Edited after the cross',
+    title: 'LXX <em>vs Masoretic</em>', description: 'The verses that changed after the cross.', cta: 'Read the Verse',
+    background: 'radial-gradient(ellipse at 50% 30%, #1f2c6c 0%, #121a46 70%, #080d28 100%)',
+    glow: GLOW, accent: '#8da2ff', ctaColor: GOLD,
+  },
+  'symbol-lexicon': {
+    name: 'The Symbol Lexicon', href: '/symbol-lexicon', icon: '◎', kicker: 'What the picture means',
+    title: 'Symbol <em>Lexicon</em>', description: 'Scripture’s symbols, read by Scripture.', cta: 'Read the Symbol',
+    background: 'radial-gradient(ellipse at 50% 30%, #09383f 0%, #062228 70%, #021417 100%)',
+    glow: GLOW, accent: '#4fc0c4', ctaColor: GOLD,
+  },
+  'legal-lexicon': {
+    name: 'The Legal Lexicon', href: '/torah/legal-lexicon', icon: '§', kicker: 'The court’s vocabulary',
+    title: 'Legal <em>Lexicon</em>', description: 'The courtroom words of Scripture.', cta: 'Read the Entry',
+    background: 'radial-gradient(ellipse at 50% 30%, #4e1a44 0%, #2c0e27 70%, #160613 100%)',
+    glow: GLOW, accent: '#c77ab6', ctaColor: GOLD,
+  },
+  'five-offerings': {
+    name: 'The Five Offerings', href: '/five-offerings', icon: '△', kicker: 'The altar',
+    title: 'The Five <em>Offerings</em>', description: 'What each offering on the altar was for.', cta: 'Read the Study',
+    background: 'radial-gradient(ellipse at 50% 30%, #323610 0%, #1f220a 70%, #121405 100%)',
+    glow: GLOW, accent: '#b5a64a', ctaColor: GOLD,
+  },
+  'watchmans-desk': {
+    name: 'The Watchman’s Desk', href: '/watchmans-desk', icon: '★', kicker: 'From the wall',
+    title: 'The Watchman’s <em>Desk</em>', description: 'Letters and field briefs from the wall.', cta: 'Read the Letter',
+    background: 'radial-gradient(ellipse at 50% 30%, #0d2248 0%, #07142c 70%, #030914 100%)',
+    glow: GLOW, accent: '#d8434a', ctaColor: GOLD, topRule: '#b8232a',
+  },
+  torah: {
+    name: 'Torah Testimonies', href: '/torah/testimonies', icon: '⌸', kicker: 'The law on trial',
+    title: 'Torah <em>Testimonies</em>', description: 'The Torah takes the stand.', cta: 'Read the Testimony',
+    background: 'radial-gradient(ellipse at 50% 30%, #2c3540 0%, #1b2129 70%, #12161c 100%)',
+    glow: GLOW, accent: '#a9b8c8', ctaColor: GOLD,
+  },
   studies: {
     name: 'The Studies', href: '/blog', icon: 'א', kicker: 'Scripture unfiltered',
     title: 'The <em>Studies</em>', description: 'Word studies, doctrines, and topical deep-dives — the full archive.', cta: 'All Studies',
@@ -172,6 +215,28 @@ export const HOUSE_SKIN = {
   topRule: GOLD,
 };
 
+// Berean Studies: one brown card for every subcategory; the subcategory colors
+// the 3px top edge and the symbol. Keyed by BLOG_GROUPS key (plus peah).
+export const BEREAN_SKIN = {
+  name: 'Berean Studies', icon: '◆', kicker: '',
+  background: 'radial-gradient(ellipse at 50% 30%, #3a2618 0%, #22160d 70%, #110b06 100%)',
+  glow: 'rgba(255, 220, 180, 0.06)', ctaColor: GOLD,
+};
+export const BEREAN_TONES = {
+  'scripture-unfiltered': '#ece3cc', // ivory
+  'the-way-in-and-the-walk': '#9cbf8e', // sage
+  'the-root': '#a8a843', // olive
+  'the-counterfeit-throne': '#a77ed6', // purple
+  'the-quick-scroll': '#e8a42c', // amber
+  'buried-in-plain-sight': '#c0502e', // rust
+  'the-law-and-the-feasts': '#7cc0ea', // sky blue
+  'the-side-door': '#d99566', // copper
+  peah: '#dcc47e', // wheat gold
+};
+// The sections that wear the Berean card, and the tone each takes when the
+// piece's own subcategory isn't known.
+const BEREAN_SECTIONS = { 'berean-studies': 'scripture-unfiltered', 'side-door': 'the-side-door', 'the-root': 'the-root', parables: 'the-side-door', peah: 'peah' };
+
 // Where each kind of piece lives. `name` heads its Last 30 Days dropdown,
 // `href` is that section's index ("View all →"), `skin` is the SKINS key it
 // wears (null = HOUSE_SKIN), `cta` is the featured card's call to action.
@@ -185,13 +250,13 @@ export const SECTIONS = {
   cosmology: { name: 'Cosmology', href: '/cosmology', skin: 'cosmology', cta: 'Read the Study' },
   hebrew: { name: 'Hebrew Word Studies', href: '/hebrew', skin: 'hebrew', cta: 'Read the Study' },
   peah: { name: 'Pe’ah', href: '/peah', skin: null, cta: 'Read the Entry' },
-  'watchmans-desk': { name: 'The Watchman’s Desk', href: '/watchmans-desk', skin: null, cta: 'Read the Letter' },
+  'watchmans-desk': { name: 'The Watchman’s Desk', href: '/watchmans-desk', skin: 'watchmans-desk', cta: 'Read the Letter' },
   hollywood: { name: 'Hollywood', href: '/hollywood', skin: 'hollywood', cta: 'Read the Reel' },
-  'edited-after-the-cross': { name: 'LXX vs Masoretic', href: '/edited-after-the-cross', skin: null, cta: 'Read the Verse' },
-  'symbol-lexicon': { name: 'The Symbol Lexicon', href: '/symbol-lexicon', skin: null, cta: 'Read the Symbol' },
-  'torah-testimonies': { name: 'Torah Testimonies', href: '/torah/testimonies', skin: null, cta: 'Read the Testimony' },
+  'edited-after-the-cross': { name: 'LXX vs Masoretic', href: '/edited-after-the-cross', skin: 'lxx-masoretic', cta: 'Read the Verse' },
+  'symbol-lexicon': { name: 'The Symbol Lexicon', href: '/symbol-lexicon', skin: 'symbol-lexicon', cta: 'Read the Symbol' },
+  'torah-testimonies': { name: 'Torah Testimonies', href: '/torah/testimonies', skin: 'torah', cta: 'Read the Testimony' },
   // Restored Truth has no front page of its own; its row's View all opens The Five Offerings.
-  'restored-truth': { name: 'Restored Truth', href: '/five-offerings', skin: null, cta: 'Read the Study' },
+  'restored-truth': { name: 'Restored Truth', href: '/five-offerings', skin: 'five-offerings', cta: 'Read the Study' },
   // Hand-built section pages, dated through src/data/page-dates.json (1012).
   'american-idolatry': { name: 'American Idolatry', href: '/american-idolatry', skin: 'american-idolatry', cta: 'Read the Study' },
   'sun-worship': { name: 'Sun Worship', href: '/sun-worship', skin: 'sun-worship', cta: 'Read the Study' },
@@ -216,13 +281,19 @@ export function sectionOfPost(post, group) {
   return 'berean-studies';
 }
 
-/** The skin a piece wears: its own `skin:` override, else its section's. */
-export function skinOf(sectionKey, override) {
+/** The skin a piece wears: its own `skin:` override, else its section's.
+ *  A Berean piece wears BEREAN_SKIN toned by `group` (its BLOG_GROUPS key). */
+export function skinOf(sectionKey, override, group) {
   const key = override || SECTIONS[sectionKey]?.skin;
   if (override && !SKINS[override]) {
     throw new Error(`series-skins: unknown skin "${override}" — use one of: ${Object.keys(SKINS).join(', ')}`);
   }
-  return key ? { key, ...SKINS[key] } : { key: null, ...HOUSE_SKIN, kicker: SECTIONS[sectionKey]?.name ?? '' };
+  if (key) return { key, ...SKINS[key] };
+  if (sectionKey in BEREAN_SECTIONS) {
+    const tone = BEREAN_TONES[group] || BEREAN_TONES[BEREAN_SECTIONS[sectionKey]];
+    return { key: null, ...BEREAN_SKIN, kicker: SECTIONS[sectionKey]?.name ?? '', accent: tone, topRule: tone };
+  }
+  return { key: null, ...HOUSE_SKIN, kicker: SECTIONS[sectionKey]?.name ?? '' };
 }
 
 // ── SYMBOLS ─────────────────────────────────────────────────────────────────
@@ -264,6 +335,9 @@ export const SYMBOLS = {
 const SYMBOL_ALIAS = {
   'berean-studies': 'studies',
   'the-root': 'studies',
+  'lxx-masoretic': 'edited-after-the-cross',
+  'five-offerings': 'torah',
+  'legal-lexicon': 'symbol-lexicon',
   'pathway-name-and-nature': 'pathway',
   'pathway-grave-and-gate': 'pathway',
   'torah-testimonies': 'torah',
