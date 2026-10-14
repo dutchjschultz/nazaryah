@@ -1,5 +1,7 @@
 ---
-// trinity.astro · 1006 V4 — replaces V3's top: the bridge lines are gone and the
+// trinity.astro · 1014 V5 — Trinity Problems (/trinity/trinity-problems) listed beside
+// The Foundations under the Trinity Files card (Trinity Problems Etsy Block 1014 V1).
+// V4 · 1006 — replaces V3's top: the bridge lines are gone and the
 // H1 is back to full size; "What Is Actually Being Claimed?" moves up between the
 // header and the Trinity Files card (moved, not copied; wording and styling
 // unchanged). The Trinity Files case-file label stays as V3 set it.
@@ -87,6 +89,7 @@ const STATIONS = ['Babel', 'Babylon', 'Egypt', 'Greece', 'Rome', 'Nicaea', 'Refo
         <span class="tr-btn">Open the Files &nbsp;&#8594;</span>
       </a>
       <a class="tl-feature-sub" href="/foundations">The Foundations <span class="tl-arrow" aria-hidden="true">&rarr;</span></a>
+      <a class="tl-feature-sub" href="/trinity/trinity-problems">Trinity Problems <span class="tl-arrow" aria-hidden="true">&rarr;</span></a>
     </section>
 
     <!-- ── THE BOOKS ── -->
@@ -372,6 +375,7 @@ const STATIONS = ['Babel', 'Babylon', 'Egypt', 'Greece', 'Rome', 'Nicaea', 'Refo
     color: #8a6028;
     text-decoration: none;
   }
+  .tl-feature-sub + .tl-feature-sub { margin-left: 2rem; }
   .tl-feature-sub:hover { color: #c4a46b; }
   .tl-arrow { display: inline-block; transition: transform 0.2s ease; }
   .tl-feature-sub:hover .tl-arrow,

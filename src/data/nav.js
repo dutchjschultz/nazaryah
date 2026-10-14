@@ -1,4 +1,6 @@
-// nav 1013 V9.js
+// nav 1014 V10.js
+// V10 (Trinity Problems Etsy Block 1014 V1): Lexicons gains Trinity Problems
+// (/trinity/trinity-problems), label = its h1, under LXX vs Masoretic.
 // V9 (Header — Lexicons tab, Dutch 1013): the Symbol Lexicon and LXX vs Masoretic
 // top tabs are replaced by one LEXICONS panel tab holding Legal Lexicon
 // (/torah/legal-lexicon — its existing page), Symbol Lexicon and LXX vs
@@ -110,6 +112,7 @@ export const mainNav = [
       { label: 'Legal Lexicon', href: '/torah/legal-lexicon', desc: 'The courtroom words of Scripture, defined from the Law.' },
       { label: 'Symbol Lexicon', href: '/symbol-lexicon', desc: 'New Testament symbols traced back to their Old Testament picture.' },
       { label: 'LXX vs Masoretic', href: '/edited-after-the-cross', desc: 'What the apostles read, and what was rewritten after Messiah.' },
+      { label: 'Trinity Problems', href: '/trinity/trinity-problems', desc: 'Verses the Trinitarian must explain' },
     ],
   },
   {

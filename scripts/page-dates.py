@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-page-dates  1012 V2
+page-dates  1014 V3
+V3: SINGLE_PAGES gains trinity/trinity-problems → trinity (Trinity Problems lexicon).
 V2: SINGLE_PAGES — top-level pages filed under a section (five-offerings →
 restored-truth); a page not yet committed takes today, the day it is added.
 V1: the dated registry of hand-built pages — the sections whose pages are single
@@ -49,6 +50,7 @@ SECTION_DIRS = {
 # Single pages at the top of src/pages, filed under a section of their own.
 SINGLE_PAGES = {
     "five-offerings": "restored-truth",
+    "trinity/trinity-problems": "trinity",
 }
 
 spec = importlib.util.spec_from_file_location("backfill", os.path.join(HERE, "backfill-social-images.py"))
