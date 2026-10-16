@@ -1,4 +1,6 @@
-// src/data/trinity-foundations.js · 1005 V1
+// src/data/trinity-foundations.js · 1016 V2
+// V2: Foundation VII, The Authority He Was Given, added live — cited by the
+// John 2:19-21 and John 10:17-18 verse files.
 // V1: the Trinity Foundations as data, lifted from the hand-typed ledger on
 // /foundations, which now renders from this file. The Trinity Files list reads
 // it for its Sort by Foundation dropdown, and each entry in trinity-files.js
@@ -18,4 +20,5 @@ export const trinityFoundations = [
   { id: "IV", slug: null, title: "I AM (egō eimi)", desc: "The \"I am\" sayings — ordinary Greek self-identification, not a claim to the divine Name.", soon: "In progress · 6 verses" },
   { id: "V", slug: null, title: "Worship & the Throne of the Lamb", desc: "The shared-throne scenes in Revelation — honor flowing through the Lamb to the One on the throne.", soon: "In progress · 6 verses" },
   { id: "VI", slug: "the-titles-he-was-given", title: "The Titles He Was Given", desc: "Every title of Yahuah that lands on the Son is worn by gift — a shared title was never a shared identity.", tally: 5 },
+  { id: "VII", slug: "authority-he-was-given", title: "The Authority He Was Given", desc: "Why exousia — power handed down from the Father — names no second God.", tally: 2 },
 ];

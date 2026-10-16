@@ -1,4 +1,7 @@
-// src/data/trinity-files.js · 1014 V4
+// src/data/trinity-files.js · 1016 V5
+// V5 (Dutch 1016): John 2:19-21 (#49, "The Temple He Would Raise") and John 10:17-18
+// (#57, "The Commandment He Received") written and linked; both cite Foundation VII,
+// The Authority He Was Given. List total unchanged at 166.
 // V4 (Dutch 1014): two COMING entries added — John 2:19-21 (after John 1:18, now
 // #49) and John 10:17-18 (after John 10:1-16, now #57). No slug or link yet: the
 // papers are drafts awaiting Dutch. Numbers are by position, so everything after
@@ -8,7 +11,7 @@
 // canonical place after Hebrews 9:14. foundations [] — it cites the go'el-kopher
 // study, which is not one of the Trinity Foundations I to VI.
 // V2: `foundations` added to every entry for the Sort by Foundation control —
-// ids from src/data/trinity-foundations.js ("I" to "VI"). Written entries take
+// ids from src/data/trinity-foundations.js ("I" to "VII"). Written entries take
 // them from the study's own Reference Piece pointer ("Foundation: … →"); coming
 // entries carry [] until the Trinity project's tag list arrives.
 // V1: first build — every proof text on one numbered list, written and coming, in canonical order.
@@ -22,7 +25,7 @@
 //  - To add a verse not on the list: insert it at its canonical place with `ref`, `section`, `claim`.
 //  - `section` must be one of these four strings, character for character:
 //      "Tanakh" | "Gospels" | "Acts & Letters" | "Revelation"
-//  - `foundations` = the Trinity Foundations the study cites, by id ("I" to "VI"),
+//  - `foundations` = the Trinity Foundations the study cites, by id ("I" to "VII"),
 //    lowest first. Names and links come from src/data/trinity-foundations.js;
 //    never type a foundation name here. Must match the study's Reference Piece.
 //  - `claim` = the words its defenders quote, KJV wording. Shown only while the file is coming.
@@ -77,7 +80,7 @@ export const trinityFiles = [
   { ref: "John 1:1", section: "Gospels", foundations: [], title: "“The Word Was God”", deck: "A man’s word is not a second man; Yahuah’s Word is Yahuah speaking", slug: "trinity-files-john-1-1" },
   { ref: "John 1:14", section: "Gospels", foundations: [], claim: "“The Word was made flesh”" },
   { ref: "John 1:18", section: "Gospels", foundations: [], claim: "“The only begotten Son” — or “only begotten God”" },
-  { ref: "John 2:19-21", section: "Gospels", foundations: [], claim: "“Destroy this temple, and in three days I will raise it up”" },
+  { ref: "John 2:19-21", section: "Gospels", foundations: ["VII"], title: "The Temple He Would Raise", deck: "Destroy or raise up — the same two words stand over every believer’s temple.", slug: "trinity-files-john-2-19-21" },
   { ref: "John 4:14, 26", section: "Gospels", foundations: [], claim: "Living water, and “I that speak unto thee am he”" },
   { ref: "John 5:18", section: "Gospels", foundations: [], claim: "“Making himself equal with God”" },
   { ref: "John 6:20", section: "Gospels", foundations: [], claim: "“It is I; be not afraid”" },
@@ -85,7 +88,7 @@ export const trinityFiles = [
   { ref: "John 8:24, 28", section: "Gospels", foundations: [], claim: "“If ye believe not that I am he”" },
   { ref: "John 8:58", section: "Gospels", foundations: ["IV"], title: "“Before Abraham Was, I Am”", deck: "Plain Greek words for being, not the divine Name of Exodus", slug: "trinity-files-john-8-58" },
   { ref: "John 10:1-16", section: "Gospels", foundations: [], claim: "“I am the good shepherd”" },
-  { ref: "John 10:17-18", section: "Gospels", foundations: [], claim: "“I have power to lay it down, and I have power to take it again”" },
+  { ref: "John 10:17-18", section: "Gospels", foundations: ["VII"], title: "The Commandment He Received", deck: "The right to take life again — given to the Son, offered to every believer.", slug: "trinity-files-john-10-17-18" },
   { ref: "John 10:22-39", section: "Gospels", foundations: [], title: "One With the Father", deck: "A oneness of mission claimed by the Son who was sent", slug: "trinity-files-john-10-22-39" },
   { ref: "John 11:25", section: "Gospels", foundations: [], title: "The Resurrection and the Life", deck: "A role the Father gave, not a nature the Son owned", slug: "trinity-files-john-11-25" },
   { ref: "John 12:13", section: "Gospels", foundations: [], claim: "“Blessed is the King of Israel that cometh in the name of the Lord”" },
