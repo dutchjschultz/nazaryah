@@ -1,6 +1,7 @@
 ---
 import HebrewLayout from '../../../layouts/HebrewLayout.astro';
 import { letters } from '../../../data/hebrew-alphabet';
+import { wordsWithLetter } from '../../../data/hebrew-words.js';
 
 export function getStaticPaths() {
   return letters
@@ -13,6 +14,7 @@ const data = letters.find((l) => l.slug === letter);
 if (!data) {
   throw new Error(`No alphabet entry with slug "${letter}"`);
 }
+const words = wordsWithLetter(data.name);
 ---
 
 <HebrewLayout
@@ -32,6 +34,12 @@ if (!data) {
     </div>
     <h1 class="hl-title">The {data.name}</h1>
     <p class="hl-sub">{data.meaning}</p>
+    {words.length > 0 && (
+      <p class="ltr-appears">
+        <span class="ltr-appears-label">Appears in:</span>{' '}
+        {words.map((w, i) => (<>{i > 0 && ', '}<a href={`/hebrew/words#${w.id}`}>{w.translit} &middot; {w.gloss}</a></>))}
+      </p>
+    )}
   </section>
 
   <section class="hl-section study-section">
@@ -73,6 +81,24 @@ if (!data) {
     text-transform: uppercase;
     color: #5a3e1a;
   }
+
+  .ltr-appears {
+    margin: 1.25rem auto 0;
+    font-size: 0.95rem;
+    color: #8a6028;
+  }
+  .ltr-appears-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .ltr-appears a {
+    color: #e8c97a;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232,201,122,0.35);
+  }
+  .ltr-appears a:hover { border-bottom-color: #e8c97a; }
 
   .study-section { max-width: 760px !important; }
 

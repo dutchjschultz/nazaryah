@@ -1,6 +1,18 @@
 ---
 import HebrewLayout from '../../layouts/HebrewLayout.astro';
-import { wordPictures } from '../../data/hebrew-alphabet';
+import { letters } from '../../data/hebrew-alphabet';
+import { hebrewWords } from '../../data/hebrew-words.js';
+
+// Letter-by-letter line: each Alphabet letter's modern script beside its picture.
+// A name in `letters` that the Alphabet page does not print stops the build.
+const charOf = Object.fromEntries(letters.map((l) => [l.name, l.modern]));
+const unknown = hebrewWords.flatMap((w) => w.letters.filter((n) => !charOf[n]).map((n) => `${w.id}: ${n}`));
+if (unknown.length) throw new Error(`hebrew-words.js: letter name not on the Alphabet page: ${unknown.join(', ')}`);
+const breakdown = (w) => {
+  const pics = w.pictures.split(' + ');
+  if (pics.length !== w.letters.length) throw new Error(`hebrew-words.js: ${w.id} has ${w.letters.length} letters but ${pics.length} pictures`);
+  return w.letters.map((n, i) => `<span class="ha-cl">${charOf[n]}</span> ${pics[i]}`).join(' &nbsp;+&nbsp; ');
+};
 ---
 
 <HebrewLayout
@@ -18,15 +30,16 @@ import { wordPictures } from '../../data/hebrew-alphabet';
 
   <section class="hl-section">
     <div class="wp-grid">
-      {wordPictures.map((w) => (
-        <div class="wp-card">
+      {hebrewWords.map((w) => (
+        <div class="wp-card" id={w.id}>
           <div class="wp-scripts">
-            <span class="wp-modern">{w.modern}</span>
+            <span class="wp-modern">{w.hebrew}</span>
             <span class="wp-paleo">{w.paleo}</span>
           </div>
-          <div class="wp-roman">{w.roman} &middot; {w.gloss}</div>
-          <div class="wp-break" set:html={w.breakdown} />
-          <p class="wp-meaning" set:html={w.meaning} />
+          <div class="wp-roman">{w.translit} &middot; {w.gloss}</div>
+          <div class="wp-break" set:html={breakdown(w)} />
+          <p class="wp-meaning" set:html={w.body} />
+          {w.study && <a class="wp-study" href={`/hebrew/words/${w.study}`}>Seen in Scripture &rarr;</a>}
         </div>
       ))}
     </div>
@@ -100,4 +113,23 @@ import { wordPictures } from '../../data/hebrew-alphabet';
     margin: 0;
   }
   .wp-meaning :global(strong) { color: #e8d5a8; }
+  .wp-card { scroll-margin-top: 6rem; }
+  .wp-card:target { border-color: #e8c97a; }
+  /* Same look as the Alphabet page's "Quick note →" */
+  .wp-study {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.62rem;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    text-align: center;
+    text-decoration: none;
+    margin-top: 0.85rem;
+    padding-top: 0.65rem;
+    border-top: 1px solid rgba(201,168,76,0.18);
+    opacity: 0.75;
+    transition: opacity 0.2s;
+  }
+  .wp-study:hover { opacity: 1; }
 </style>

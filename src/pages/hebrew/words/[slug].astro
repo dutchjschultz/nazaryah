@@ -1,0 +1,116 @@
+---
+// hebrew/words/[slug].astro · 1016 V1
+// A Hebrew word study, hung under the words it explains. Renders from
+// hebrewWordStudies in src/data/hebrew-words.js: links up to each word's anchor on
+// /hebrew/words and down to each letter's page on /hebrew/alphabet. No card is
+// added anywhere else (a dynamic route, so page-dates.py leaves it off the
+// homepage's Last 30 Days).
+import HebrewLayout from '../../../layouts/HebrewLayout.astro';
+import { letters } from '../../../data/hebrew-alphabet';
+import { hebrewWordStudies, wordById } from '../../../data/hebrew-words.js';
+
+export function getStaticPaths() {
+  return hebrewWordStudies.map((s) => ({ params: { slug: s.slug }, props: { study: s } }));
+}
+
+const { study } = Astro.props;
+const words = study.words.map((id) => {
+  const w = wordById(id);
+  if (!w) throw new Error(`hebrew-words.js: study ${study.slug} names unknown word "${id}"`);
+  return w;
+});
+const studyLetters = study.letters.map((name) => {
+  const l = letters.find((x) => x.name === name);
+  if (!l) throw new Error(`hebrew-words.js: study ${study.slug} names unknown letter "${name}"`);
+  return l;
+});
+---
+
+<HebrewLayout
+  title={`${study.title}: ${study.subtitle} — Word Pictures — Hebrew — Nazaryah`}
+  description={`${study.title}: ${study.subtitle}. A Hebrew word study from the Word Pictures.`}
+>
+  <section class="hl-hero">
+    <a href="/hebrew/words" class="hl-back">&#8592; Back to Word Pictures</a>
+    <p class="hl-label">&#8213; Seen in Scripture &#8213;</p>
+    <h1 class="hl-title">{study.title}</h1>
+    <p class="hl-sub">{study.subtitle}</p>
+
+    <div class="hw-links">
+      <p>
+        <span class="hw-links-label">Words in this study:</span>{' '}
+        {words.map((w, i) => (
+          <>{i > 0 && ' · '}<a href={`/hebrew/words#${w.id}`}><span class="hw-heb">{w.hebrew}</span> {w.translit} &middot; {w.gloss}</a></>
+        ))}
+      </p>
+      <p>
+        <span class="hw-links-label">Letters in this study:</span>{' '}
+        {studyLetters.map((l, i) => (
+          <>{i > 0 && ' · '}{l.slug && l.quickNote
+            ? <a href={`/hebrew/alphabet/${l.slug}`}><span class="hw-heb">{l.modern}</span> {l.name}</a>
+            : <span><span class="hw-heb">{l.modern}</span> {l.name}</span>}</>
+        ))}
+      </p>
+    </div>
+  </section>
+
+  <section class="hl-section hw-section">
+    <article class="hw-prose">
+      {study.sections.map(([heading, html]) => (
+        <>
+          <h2 set:html={heading} />
+          <p set:html={html} />
+        </>
+      ))}
+    </article>
+  </section>
+</HebrewLayout>
+
+<style is:global>
+  /* Hebrew and paleo glyphs: the body serif may not carry them. */
+  .hw-heb {
+    font-family: 'Noto Serif Hebrew', 'SBL Hebrew', 'Times New Roman', serif;
+    font-style: normal;
+  }
+</style>
+
+<style>
+  .hw-links {
+    margin: 1.75rem auto 0;
+    max-width: 640px;
+    font-size: 1rem;
+    color: #8a6028;
+    line-height: 1.7;
+  }
+  .hw-links p { margin: 0.25rem 0; }
+  .hw-links-label {
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+  .hw-links a {
+    color: #e8c97a;
+    text-decoration: none;
+    border-bottom: 1px solid rgba(232,201,122,0.35);
+  }
+  .hw-links a:hover { border-bottom-color: #e8c97a; }
+
+  .hw-section { max-width: 760px !important; }
+  .hw-prose {
+    font-size: 1.1rem;
+    line-height: 1.85;
+    color: #c4ad84;
+  }
+  .hw-prose h2 {
+    font-family: 'Cinzel', serif;
+    font-weight: 600;
+    font-size: clamp(1.15rem, 2.4vw, 1.45rem);
+    color: #f0e0bf;
+    margin: 2.5rem 0 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid #3a2510;
+  }
+  .hw-prose h2:first-child { margin-top: 0; }
+  .hw-prose p { margin: 0 0 1.25rem; }
+</style>
