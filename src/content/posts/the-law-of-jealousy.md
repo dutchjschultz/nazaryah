@@ -29,6 +29,8 @@ The priest puts holy water in a clay pot and adds dust from the floor of the tab
 
 He puts her under oath. If she is guilty, her thigh will waste and her belly will swell, and she answers, "Amen, amen" (Numbers 5:21-22). Then the priest writes the curses in a book, blots the writing out into the bitter water, and she drinks it (Numbers 5:23-24).
 
+Why the thigh? In Israel an oath was sworn with a hand under the thigh (Genesis 24:9; 47:29). The curse struck the very place where covenant oaths were made, the oath she had broken.
+
 If she is innocent, "she shall be free, and shall conceive seed" (Numbers 5:28). If she is guilty, "this woman shall bear her iniquity" (Numbers 5:31).
 
 ## The Wife Who Was Guilty
@@ -45,13 +47,17 @@ Notice who is doing what. The Father is the jealous husband whose covenant was b
 
 And it was bitter, as the Torah said it would be. The psalm foretold it: "They gave me also gall for my meat; and in my thirst they gave me vinegar to drink" (Psalm 69:21). At Golgotha they offered Him vinegar mixed with gall (Matthew 27:34), and at the end He received the vinegar and said, "It is finished" (John 19:29-30).
 
+Many things were finished that day. The trial of the unfaithful wife was one of them: the cup drunk, the verdict given, the curse blotted out.
+
 ## Where the Pieces Land
 
 **The dust.** The trial water held dust from the floor of Yahuah's house. The psalm of the cross says, "thou hast brought me into the dust of death" (Psalm 22:15).
 
-**The curse blotted out.** The priest wrote the curses down and *blotted them out*, *machah*, H4229, into the water (Numbers 5:23). Paul uses the same picture: the handwriting that was against us was blotted out and nailed to the tree (Colossians 2:14). And Yahuah says who does the blotting: "I, even I, am he that blotteth out thy transgressions" (Isaiah 43:25).
+**The curse blotted out.** The priest wrote the curses down and *blotted them out*, *machah*, H4229, into the water (Numbers 5:23). Paul uses the same picture: the handwriting that was against us was blotted out and nailed to the tree (Colossians 2:14). Peter preaches the same word: repent, "that your sins may be blotted out" (Acts 3:19). And Yahuah says who does the blotting: "I, even I, am he that blotteth out thy transgressions" (Isaiah 43:25).
 
 **The iniquity carried.** The trial ends with the guilty woman bearing her own iniquity (Numbers 5:31). At the cross it is turned around: "Yahuah hath laid on him the iniquity of us all" (Isaiah 53:6). Yahuah lays it; the Son carries it.
+
+**A curse among her people.** The guilty wife was to become "a curse among her people" (Numbers 5:27), cursed in public. At the cross, "they that passed by reviled him, wagging their heads" (Matthew 27:39), and Paul says Messiah was "made a curse for us" (Galatians 3:13).
 
 **The seed.** The curse struck the thigh, the place offspring come from (Genesis 46:26). The innocent wife was promised seed. Isaiah asks of the Messiah, "who shall declare his generation?" because He was cut off (Isaiah 53:8), and then answers: "he shall see his seed" (Isaiah 53:10). He went through the trial as the innocent one, and the promise of the innocent came true for Him.
 
@@ -59,11 +65,17 @@ And it was bitter, as the Torah said it would be. The psalm foretold it: "They g
 
 **The writing in the dust.** When the scribes dragged a woman taken in adultery before Yahushua, He stooped and wrote on the ground, twice (John 8:6, 8). Scripture never tells what He wrote. But a man writing in the dust while a woman stands accused of adultery brings Numbers 5 straight back, and Jeremiah warns that those who forsake Yahuah "shall be written in the earth" (Jeremiah 17:13). Her accusers walked away one by one.
 
+## Provoked to Jealousy
+
+The jealousy runs both ways. Moses sang that Israel had "moved me to jealousy with that which is not God," so Yahuah would "move them to jealousy with those which are not a people" (Deuteronomy 32:21). The husband answers an unfaithful wife by showing His love to strangers.
+
+Paul quotes that very song (Romans 10:19) and then explains it: deliverance came to the Gentiles "for to provoke them to jealousy" (Romans 11:11). The Greek word, *parazeloo*, G3863, is the same word the Greek Old Testament uses in Deuteronomy 32:21. It is not just the same English word. It is the same jealous husband, still drawing the same wife home by letting her watch others come in.
+
 ## Why the Bride Can Come Home
 
 The companion study on marriage and divorce asks how a divorced wife can ever come back when the Torah forbids it (Deuteronomy 24:4). The law of jealousy fills in the other half. Her guilt was real, and her cup was real. Yahuah did not pretend otherwise. He took the cup out of her hand and gave it to His Son.
 
-Then she dies with Him, buried with Him in immersion (Romans 6:3-6), and rises a new person who has never been tried, never been divorced, and never drunk the bitter water. She is free to be married to "him that is raised from the dead" (Romans 7:4). Once in her husband's house, she walks by the rules of that house. Deliverance first; the walk in the Father's Torah follows.
+Then she dies with Him, buried with Him in immersion (Romans 6:3-6), and rises a new person who has never been tried, never been divorced, and never drunk the bitter water. She is free to be married to "him that is raised from the dead" (Romans 7:4). She walks out of the trial "justified freely" through the redemption (Romans 3:24), declared righteous instead of cursed. Once in her husband's house, she walks by the rules of that house. Deliverance first; the walk in the Father's Torah follows.
 
 The trial began with a curse written in a book and blotted out. It ends where John saw the bride ready and dressed in fine linen, clean and white (Revelation 19:7-8), in a city where "there shall be no more curse" (Revelation 22:3).
 
