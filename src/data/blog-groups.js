@@ -1,4 +1,5 @@
-// blog-groups 1014 V56.js
+// blog-groups 1016 V57.js
+// V57: the-finger-of-yahuah joins scripture-unfiltered (category Scripture Unfiltered). Map total 151 → 152.
 // V56: the-lucifer-deception confirmed in buried-in-plain-sight (Dutch 1014); its category now reads Buried in Plain Sight. Map total unchanged.
 // V55: marriage-and-divorce and the-law-of-jealousy join the-law-and-the-feasts (category The Law & The Feasts), beside fornication-and-adultery. Map total 149 → 151.
 // V54: two-babylons joins scripture-unfiltered (category Scripture Unfiltered). Map total 148 → 149.
@@ -384,6 +385,7 @@ export const POST_GROUP = {
   'out-of-dead-wood': 'scripture-unfiltered',
   'two-passages-against-four-doctrines': 'scripture-unfiltered',
   'two-babylons': 'scripture-unfiltered',
+  'the-finger-of-yahuah': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
