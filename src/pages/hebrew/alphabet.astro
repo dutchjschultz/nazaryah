@@ -1,7 +1,6 @@
 ---
 import HebrewLayout from '../../layouts/HebrewLayout.astro';
 import { letters } from '../../data/hebrew-alphabet';
-import { wordsWithLetter } from '../../data/hebrew-words.js';
 ---
 
 <HebrewLayout
@@ -36,12 +35,12 @@ import { wordsWithLetter } from '../../data/hebrew-words.js';
     <div class="ab-grid">
       {letters.map((l) => {
         const hasNote = !!(l.slug && l.quickNote);
-        const words = wordsWithLetter(l.name);
-        // The card is a div with a full-card link laid over it, so the
-        // "Appears in" word links can sit on top of it (no link inside a link).
+        const Tag = hasNote ? 'a' : 'div';
         return (
-          <div class={`ab-card${hasNote ? ' ab-card-link' : ''}`}>
-            {hasNote && <a class="ab-cover" href={`/hebrew/alphabet/${l.slug}`} aria-label={`The ${l.name} — a quick note`}></a>}
+          <Tag
+            class={`ab-card${hasNote ? ' ab-card-link' : ''}`}
+            href={hasNote ? `/hebrew/alphabet/${l.slug}` : undefined}
+          >
             <div class="ab-scripts">
               <span class="ab-modern">{l.modern}</span>
               <span class="ab-paleo">{l.paleo}</span>
@@ -54,14 +53,8 @@ import { wordsWithLetter } from '../../data/hebrew-words.js';
             <div class="ab-pic">{l.pictograph}</div>
             <div class="ab-meaning">{l.meaning}</div>
             <div class="ab-essence" set:html={l.essence} />
-            {words.length > 0 && (
-              <div class="ab-appears">
-                <span class="ab-appears-label">Appears in:</span>{' '}
-                {words.map((w, i) => (<>{i > 0 && ', '}<a href={`/hebrew/words#${w.id}`}>{w.translit}</a></>))}
-              </div>
-            )}
             {hasNote && <div class="ab-readmore">Quick note &rarr;</div>}
-          </div>
+          </Tag>
         );
       })}
     </div>
@@ -192,38 +185,13 @@ import { wordsWithLetter } from '../../data/hebrew-words.js';
   .ab-card:hover .ab-essence { display: block; }
 
   /* Linked card variant — only used when a letter has a quick note */
-  .ab-card-link {
+  a.ab-card-link {
+    text-decoration: none;
     color: inherit;
     display: block;
     cursor: pointer;
   }
-  .ab-cover {
-    position: absolute;
-    inset: 0;
-    z-index: 1;
-  }
-  .ab-appears {
-    position: relative;
-    z-index: 2;
-    font-size: 0.8rem;
-    color: #8a6028;
-    text-align: center;
-    margin-top: 0.75rem;
-    line-height: 1.5;
-  }
-  .ab-appears-label {
-    font-family: 'Cinzel', serif;
-    font-size: 0.62rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-  }
-  .ab-appears a {
-    color: #e8c97a;
-    text-decoration: none;
-    border-bottom: 1px solid rgba(232,201,122,0.35);
-  }
-  .ab-appears a:hover { border-bottom-color: #e8c97a; }
-  .ab-card-link:hover {
+  a.ab-card-link:hover {
     border-color: #e8c97a;
     box-shadow: 0 8px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(232,201,122,0.2), 0 0 0 1px rgba(232,201,122,0.25);
   }
@@ -240,7 +208,7 @@ import { wordsWithLetter } from '../../data/hebrew-words.js';
     opacity: 0.75;
     transition: opacity 0.2s;
   }
-  .ab-card-link:hover .ab-readmore { opacity: 1; }
+  a.ab-card-link:hover .ab-readmore { opacity: 1; }
 
   @media (max-width: 640px) {
     .ab-grid { grid-template-columns: repeat(2, 1fr); }

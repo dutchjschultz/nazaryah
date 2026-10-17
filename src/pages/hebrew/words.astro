@@ -1,18 +1,27 @@
 ---
+// hebrew/words.astro · 1017 V2 — the Word Pictures page is a letter picker.
+// Pick a letter (strip on desktop, dropdown on phones) and the page shows every
+// word that contains it, the letter lit in each breakdown; ?letter=<slug> opens
+// it on one letter, no letter shows all. Each word with studies carries a
+// "Studies on this word" panel. Words from src/data/hebrew-words.js, studies
+// from src/data/hebrew-word-studies.js — nothing is hand-listed here.
 import HebrewLayout from '../../layouts/HebrewLayout.astro';
 import { letters } from '../../data/hebrew-alphabet';
 import { hebrewWords } from '../../data/hebrew-words.js';
+import { studiesForWord } from '../../data/hebrew-word-studies.js';
 
 // Letter-by-letter line: each Alphabet letter's modern script beside its picture.
 // A name in `letters` that the Alphabet page does not print stops the build.
 const charOf = Object.fromEntries(letters.map((l) => [l.name, l.modern]));
+const slugOf = Object.fromEntries(letters.map((l) => [l.name, l.slug]));
 const unknown = hebrewWords.flatMap((w) => w.letters.filter((n) => !charOf[n]).map((n) => `${w.id}: ${n}`));
 if (unknown.length) throw new Error(`hebrew-words.js: letter name not on the Alphabet page: ${unknown.join(', ')}`);
 const breakdown = (w) => {
   const pics = w.pictures.split(' + ');
   if (pics.length !== w.letters.length) throw new Error(`hebrew-words.js: ${w.id} has ${w.letters.length} letters but ${pics.length} pictures`);
-  return w.letters.map((n, i) => `<span class="ha-cl">${charOf[n]}</span> ${pics[i]}`).join(' &nbsp;+&nbsp; ');
+  return w.letters.map((n, i) => `<span class="wp-bit" data-l="${slugOf[n]}"><span class="ha-cl">${charOf[n]}</span> ${pics[i]}</span>`).join(' &nbsp;+&nbsp; ');
 };
+const pickable = letters.map((l) => ({ ...l, count: hebrewWords.filter((w) => w.letters.includes(l.name)).length }));
 ---
 
 <HebrewLayout
@@ -29,20 +38,68 @@ const breakdown = (w) => {
   </section>
 
   <section class="hl-section">
+    <nav class="wp-picker" aria-label="Pick a letter">
+      <div class="wp-strip">
+        {pickable.map((l) => (
+          <a
+            class={`wp-pick${l.count ? '' : ' is-empty'}`}
+            href={`/hebrew/words/?letter=${l.slug}`}
+            data-letter={l.slug}
+            title={`${l.name} — ${l.count} ${l.count === 1 ? 'word' : 'words'}`}
+          >
+            <span class="wp-pick-modern">{l.modern}</span>
+            <span class="wp-pick-paleo">{l.paleo}</span>
+            <span class="wp-pick-name">{l.name}</span>
+          </a>
+        ))}
+      </div>
+      <label class="wp-select-wrap">
+        <span class="wp-select-label">Choose a letter</span>
+        <select class="wp-select">
+          <option value="">All letters</option>
+          {pickable.map((l) => (
+            <option value={l.slug}>{l.modern} {l.name}{l.count ? '' : ' (no words yet)'}</option>
+          ))}
+        </select>
+      </label>
+      <p class="wp-status" aria-live="polite">
+        <span class="wp-status-text">Showing all words.</span>
+        <a class="wp-showall" href="/hebrew/words/" hidden>Show all &rarr;</a>
+      </p>
+    </nav>
+
     <div class="wp-grid">
-      {hebrewWords.map((w) => (
-        <div class="wp-card" id={w.id}>
-          <div class="wp-scripts">
-            <span class="wp-modern">{w.hebrew}</span>
-            <span class="wp-paleo">{w.paleo}</span>
+      {hebrewWords.map((w) => {
+        const studies = studiesForWord(w.id);
+        return (
+          <div class="wp-card" id={w.id} data-letters={w.letters.map((n) => slugOf[n]).join(' ')}>
+            <div class="wp-scripts">
+              <span class="wp-modern">{w.hebrew}</span>
+              <span class="wp-paleo">{w.paleo}</span>
+            </div>
+            <div class="wp-roman">{w.translit} &middot; {w.gloss}</div>
+            <div class="wp-break" set:html={breakdown(w)} />
+            <p class="wp-meaning" set:html={w.body} />
+            {studies.length > 0 && (
+              <div class="wp-studies">
+                <p class="wp-studies-label">Studies on this word</p>
+                <ul>
+                  {studies.map((st) => (
+                    <li>
+                      <a href={`/hebrew/words/${st.slug}/`}>
+                        <span class="wp-st-title">{st.title}</span>
+                        <span class="wp-st-sub">{st.subtitle}</span>
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
-          <div class="wp-roman">{w.translit} &middot; {w.gloss}</div>
-          <div class="wp-break" set:html={breakdown(w)} />
-          <p class="wp-meaning" set:html={w.body} />
-          {w.study && <a class="wp-study" href={`/hebrew/words/${w.study}`}>Seen in Scripture &rarr;</a>}
-        </div>
-      ))}
+        );
+      })}
     </div>
+    <p class="wp-none" hidden>No word pictures use this letter yet.</p>
   </section>
 
   <section class="hl-section hl-center">
@@ -113,23 +170,187 @@ const breakdown = (w) => {
     margin: 0;
   }
   .wp-meaning :global(strong) { color: #e8d5a8; }
-  .wp-card { scroll-margin-top: 6rem; }
+  .wp-card { scroll-margin-top: 9rem; }
   .wp-card:target { border-color: #e8c97a; }
-  /* Same look as the Alphabet page's "Quick note →" */
-  .wp-study {
+  .wp-card[hidden] { display: none; }
+  .wp-break :global(.wp-bit.is-lit .ha-cl) {
+    color: #0e0904;
+    background: #e8c97a;
+    border-radius: 3px;
+    padding: 0 0.3rem;
+    box-shadow: 0 0 10px rgba(232, 201, 122, 0.45);
+  }
+  .wp-break :global(.wp-bit.is-lit) { color: #e8c97a; }
+
+  /* ── Letter picker ── */
+  .wp-picker { margin: 0 auto 2.25rem; max-width: 1100px; }
+  .wp-strip {
+    display: grid;
+    grid-template-columns: repeat(11, 1fr);
+    gap: 0.4rem;
+  }
+  .wp-pick {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.1rem;
+    padding: 0.5rem 0.2rem 0.45rem;
+    background: linear-gradient(160deg, #1e1409 0%, #160f07 100%);
+    border: 1px solid #5a3e1a;
+    border-radius: 6px;
+    text-decoration: none;
+    transition: border-color 0.2s, background 0.2s;
+  }
+  .wp-pick:hover { border-color: #c4a46b; }
+  .wp-pick-modern { font-size: 1.5rem; color: #e8c97a; line-height: 1.1; }
+  .wp-pick-paleo { font-size: 1.1rem; color: #b88540; line-height: 1.1; }
+  .wp-pick-name {
+    font-family: 'Cinzel', serif;
+    font-size: 0.55rem;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: #8a6028;
+  }
+  .wp-pick.is-empty { opacity: 0.4; }
+  .wp-pick.is-empty:hover { opacity: 0.7; }
+  .wp-pick.is-active {
+    border-color: #e8c97a;
+    background: linear-gradient(160deg, #3a2810 0%, #241809 100%);
+    box-shadow: 0 0 0 1px rgba(232, 201, 122, 0.35);
+    opacity: 1;
+  }
+  .wp-pick.is-active .wp-pick-name { color: #e8c97a; }
+
+  .wp-select-wrap { display: none; }
+  .wp-select-label {
     display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #8a6028;
+    margin-bottom: 0.4rem;
+  }
+  .wp-select {
+    width: 100%;
+    font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;
+    font-size: 1.05rem;
+    color: #f0e0bf;
+    background: #1e1409;
+    border: 1px solid #8a5a2a;
+    border-radius: 6px;
+    padding: 0.6rem 0.75rem;
+  }
+
+  .wp-status {
+    text-align: center;
+    margin: 1rem 0 0;
+    font-style: italic;
+    color: #8a6028;
+    font-size: 0.95rem;
+  }
+  .wp-showall {
+    font-family: 'Cinzel', serif;
+    font-style: normal;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: #C9A84C;
+    text-decoration: none;
+    margin-left: 0.5rem;
+  }
+  .wp-none { text-align: center; color: #8a6028; font-style: italic; }
+
+  /* ── Studies on this word ── */
+  .wp-studies {
+    margin-top: 1.1rem;
+    padding: 0.85rem 1rem 0.9rem;
+    background: rgba(201, 168, 76, 0.08);
+    border: 1px solid rgba(201, 168, 76, 0.45);
+    border-radius: 6px;
+  }
+  .wp-studies-label {
     font-family: 'Cinzel', serif;
     font-size: 0.62rem;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: #C9A84C;
-    text-align: center;
-    text-decoration: none;
-    margin-top: 0.85rem;
-    padding-top: 0.65rem;
-    border-top: 1px solid rgba(201,168,76,0.18);
-    opacity: 0.75;
-    transition: opacity 0.2s;
+    margin: 0 0 0.5rem;
   }
-  .wp-study:hover { opacity: 1; }
+  .wp-studies ul { list-style: none; margin: 0; padding: 0; }
+  .wp-studies li + li { margin-top: 0.5rem; }
+  .wp-studies a { display: block; text-decoration: none; }
+  .wp-st-title {
+    display: block;
+    font-family: 'Cinzel', serif;
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: #e8c97a;
+  }
+  .wp-st-sub { display: block; font-style: italic; color: #c4a46b; font-size: 0.95rem; }
+  .wp-studies a:hover .wp-st-title { text-decoration: underline; text-underline-offset: 3px; }
+
+  @media (max-width: 760px) {
+    .wp-strip { display: none; }
+    .wp-select-wrap { display: block; }
+    .wp-grid { grid-template-columns: 1fr; }
+  }
 </style>
+
+<script>
+  const nameOf = {};
+  document.querySelectorAll('.wp-pick').forEach((a) => {
+    nameOf[a.dataset.letter] = a.querySelector('.wp-pick-name').textContent;
+  });
+  const cards = [...document.querySelectorAll('.wp-card')];
+  const select = document.querySelector('.wp-select');
+  const statusText = document.querySelector('.wp-status-text');
+  const showAll = document.querySelector('.wp-showall');
+  const none = document.querySelector('.wp-none');
+
+  function apply(letter) {
+    if (letter && !nameOf[letter]) letter = '';
+    let shown = 0;
+    cards.forEach((c) => {
+      const has = !letter || c.dataset.letters.split(' ').includes(letter);
+      c.hidden = !has;
+      if (has) shown++;
+      c.querySelectorAll('.wp-bit').forEach((b) => b.classList.toggle('is-lit', !!letter && b.dataset.l === letter));
+    });
+    document.querySelectorAll('.wp-pick').forEach((a) => {
+      const on = a.dataset.letter === letter;
+      a.classList.toggle('is-active', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
+    select.value = letter;
+    statusText.textContent = letter
+      ? `${shown} ${shown === 1 ? 'word uses' : 'words use'} ${nameOf[letter]}.`
+      : 'Showing all words.';
+    showAll.hidden = !letter;
+    none.hidden = !letter || shown > 0;
+  }
+
+  function go(letter) {
+    const url = new URL(location.href);
+    if (letter) url.searchParams.set('letter', letter); else url.searchParams.delete('letter');
+    url.hash = '';
+    history.pushState(null, '', url);
+    apply(letter);
+  }
+
+  document.querySelectorAll('.wp-pick').forEach((a) => a.addEventListener('click', (e) => {
+    e.preventDefault();
+    go(a.dataset.letter);
+  }));
+  showAll.addEventListener('click', (e) => { e.preventDefault(); go(''); });
+  select.addEventListener('change', () => go(select.value));
+  window.addEventListener('popstate', () => apply(new URLSearchParams(location.search).get('letter') || ''));
+
+  apply(new URLSearchParams(location.search).get('letter') || '');
+  // A #word link must stay visible: open on all words if the filter hides it.
+  if (location.hash) {
+    const target = document.getElementById(decodeURIComponent(location.hash.slice(1)));
+    if (target && target.hidden) apply('');
+    target?.scrollIntoView();
+  }
+</script>

@@ -1,13 +1,16 @@
 ---
-// hebrew/words/[slug].astro · 1016 V1
-// A Hebrew word study, hung under the words it explains. Renders from
-// hebrewWordStudies in src/data/hebrew-words.js: links up to each word's anchor on
-// /hebrew/words and down to each letter's page on /hebrew/alphabet. No card is
+// hebrew/words/[slug].astro · 1017 V2
+// V2: studies come from src/data/hebrew-word-studies.js; each letter in "Letters
+// in this study" opens the Word Pictures letter picker on that letter
+// (/hebrew/words/?letter=<slug>) instead of the Alphabet page.
+// V1: a Hebrew word study, hung under the words it explains: links up to each
+// word's anchor on /hebrew/words. No card is
 // added anywhere else (a dynamic route, so page-dates.py leaves it off the
 // homepage's Last 30 Days).
 import HebrewLayout from '../../../layouts/HebrewLayout.astro';
 import { letters } from '../../../data/hebrew-alphabet';
-import { hebrewWordStudies, wordById } from '../../../data/hebrew-words.js';
+import { wordById } from '../../../data/hebrew-words.js';
+import { hebrewWordStudies } from '../../../data/hebrew-word-studies.js';
 
 export function getStaticPaths() {
   return hebrewWordStudies.map((s) => ({ params: { slug: s.slug }, props: { study: s } }));
@@ -46,9 +49,7 @@ const studyLetters = study.letters.map((name) => {
       <p>
         <span class="hw-links-label">Letters in this study:</span>{' '}
         {studyLetters.map((l, i) => (
-          <>{i > 0 && ' · '}{l.slug && l.quickNote
-            ? <a href={`/hebrew/alphabet/${l.slug}`}><span class="hw-heb">{l.modern}</span> {l.name}</a>
-            : <span><span class="hw-heb">{l.modern}</span> {l.name}</span>}</>
+          <>{i > 0 && ' · '}<a href={`/hebrew/words/?letter=${l.slug}`}><span class="hw-heb">{l.modern}</span> {l.name}</a></>
         ))}
       </p>
     </div>
