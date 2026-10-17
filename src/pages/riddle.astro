@@ -1,157 +1,26 @@
 ---
-// src/pages/riddle.astro · 1014 V3
+// src/pages/riddle.astro · 1017 V4
+// V4 (Etsy Commandment One 1017 V1): /riddle keeps its URL and renders the NEWEST
+// riddle (riddles[0] in src/data/riddles.js) through src/components/Riddle.astro,
+// so the homepage corner card and Why the Names Matter's "Try the riddle" link
+// need no edit. Canonical points at that riddle's own page, /riddle/<slug>/.
+// The riddle that lived here (One Name, One Father) moved, unchanged, to
+// src/data/riddles.js and /riddle/one-name-one-father/.
 // V3 (Corner Cards Spec 1014 V4): in 1 Corinthians 8:6, "God" carries [Elohim] and
 // "Lord" carries [Master], so the two titles read as two different ranks.
 // V2 (Corner Cards Spec 1014 V3): the challenge under the tiles is "Read all three.
 // Lay them side by side. What must be true?" — nothing before the answer names or
 // hints at it (the old question line and the meta description did).
-// V1 (Homepage Corner Cards Spec 1014 V1, Part 2): A Riddle for the Logical Mind
-// — a four-step reveal. Step 1 (the three references and the question) renders
-// without JavaScript; the verse tiles, the nudge and the answer open with it.
-// Steps 3 and 4 are independent: a reader may jump straight to the answer.
-// Everything is on the page at build time; the script only flips `hidden` and
-// `aria-expanded`, so the scoped styles cover every state. Nothing is stored.
+// V1 (Homepage Corner Cards Spec 1014 V1, Part 2): A Riddle for the Logical Mind.
 import BaseLayout from '../layouts/BaseLayout.astro';
-
-const tiles = [
-  { ref: 'Psalm 83:18', text: 'That men may know that thou, whose name alone is JEHOVAH [Yahuah], art the most high over all the earth.' },
-  { ref: 'Isaiah 63:16', text: 'Doubtless thou art our father, though Abraham be ignorant of us, and Israel acknowledge us not: thou, O LORD [Yahuah], art our father, our redeemer; thy name is from everlasting.' },
-  { ref: 'Isaiah 45:5', text: 'I am the LORD [Yahuah], and there is none else, there is no God beside me: I girded thee, though thou hast not known me:' },
-];
-const nudge = { ref: '1 Corinthians 8:6', text: 'But to us there is but one God [Elohim], the Father, of whom are all things, and we in him; and one Lord [Master] Jesus Christ, by whom are all things, and we by him.' };
-const chain = [
-  ['His name is Yahuah.', 'Psalm 83:18'],
-  ['Yahuah is the Father.', 'Isaiah 63:16'],
-  ['Beside Yahuah there is no other God.', 'Isaiah 45:5'],
-];
-const id = (ref) => 'rd-' + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+import Riddle from '../components/Riddle.astro';
+import { newestRiddle } from '../data/riddles.js';
 ---
 
 <BaseLayout
   title="A Riddle for the Logical Mind — Nazaryah"
   description="Three verses. One logical answer. Read all three, lay them side by side — what must be true?"
+  canonical={`/riddle/${newestRiddle.slug}/`}
 >
-  <div class="rd-page">
-    <div class="rd-wrap">
-
-      <header class="rd-head">
-        <h1 class="rd-title">A Riddle for the Logical Mind</h1>
-        <p class="rd-intro tr-sub">Three verses. One logical answer. Can you find it?</p>
-      </header>
-
-      <ul class="rd-tiles">
-        {tiles.map((t) => (
-          <li class="rd-tile">
-            <button type="button" class="rd-tile-btn" aria-expanded="false" aria-controls={id(t.ref)} data-rd-toggle>
-              <span class="rd-tile-ref">{t.ref}</span>
-              <span class="rd-tile-hint" aria-hidden="true">Tap to read</span>
-            </button>
-            <p class="rd-tile-text" id={id(t.ref)} hidden>
-              <span class="rd-kjv">{t.ref} (KJV)</span>
-              <em>{t.text}</em>
-            </p>
-          </li>
-        ))}
-      </ul>
-
-      <p class="rd-question">Read all three. Lay them side by side. What must be true?</p>
-
-      <div class="rd-actions">
-        <div class="rd-step">
-          <button type="button" class="rd-btn rd-btn--nudge" aria-expanded="false" aria-controls="rd-nudge" data-rd-toggle>Need a nudge?</button>
-          <div id="rd-nudge" class="rd-reveal" hidden>
-            <p class="rd-nudge-line">Paul answered it in one sentence.</p>
-            <div class="rd-tile rd-tile--single">
-              <button type="button" class="rd-tile-btn" aria-expanded="false" aria-controls={id(nudge.ref)} data-rd-toggle>
-                <span class="rd-tile-ref">{nudge.ref}</span>
-                <span class="rd-tile-hint" aria-hidden="true">Tap to read</span>
-              </button>
-              <p class="rd-tile-text" id={id(nudge.ref)} hidden>
-                <span class="rd-kjv">{nudge.ref} (KJV)</span>
-                <em>{nudge.text}</em>
-              </p>
-            </div>
-          </div>
-        </div>
-
-        <div class="rd-step">
-          <button type="button" class="rd-btn rd-btn--answer" aria-expanded="false" aria-controls="rd-answer" data-rd-toggle>Show the answer</button>
-          <div id="rd-answer" class="rd-reveal" hidden>
-            <ol class="rd-chain">
-              {chain.map(([line, ref]) => <li>{line} <span class="rd-chain-ref">— {ref}</span></li>)}
-            </ol>
-            <p class="rd-verdict">Yahuah the Father is the only true God.</p>
-            <p class="rd-beneath">One name. One Father. One God. No room for a second or third person.</p>
-            <a class="rd-next" href="/why-the-names-matter">Now unmask the titles <span aria-hidden="true">&rarr;</span></a>
-          </div>
-        </div>
-      </div>
-
-    </div>
-  </div>
+  <Riddle riddle={newestRiddle} />
 </BaseLayout>
-
-<script>
-  for (const btn of document.querySelectorAll('[data-rd-toggle]')) {
-    const target = document.getElementById(btn.getAttribute('aria-controls'));
-    if (!target) continue;
-    btn.addEventListener('click', () => {
-      const open = btn.getAttribute('aria-expanded') !== 'true';
-      btn.setAttribute('aria-expanded', String(open));
-      target.hidden = !open;
-    });
-  }
-</script>
-
-<style>
-  .rd-page {
-    --rd-bg: #f2ead9; --rd-paper: #f8f2e4; --rd-ink: #2b2117; --rd-muted: #6f5f4a; --rd-rule: #d9c8a6;
-    --rd-gold: #7f601c; --rd-burgundy: #7a1e2b; --rd-on-burgundy: #fbf3e2;
-    background: var(--rd-bg); color: var(--rd-ink); padding: 0 16px;
-    font-family: 'EB Garamond', Garamond, Georgia, serif; font-size: 18px; line-height: 1.6;
-  }
-  :global(html.dark) .rd-page {
-    --rd-bg: #15110c; --rd-paper: #1d1812; --rd-ink: #ece2cc; --rd-muted: #a8977a; --rd-rule: #3b3123;
-    --rd-gold: #d2a849; --rd-burgundy: #8a2533; --rd-on-burgundy: #fbf3e2;
-  }
-  .rd-wrap { max-width: 42rem; margin: 0 auto; padding: 3rem 0 4.5rem; }
-  .rd-head { text-align: center; margin-bottom: 2rem; }
-  .rd-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.1; margin: 0 0 0.6rem; color: var(--rd-ink); text-wrap: balance; }
-  .rd-intro { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; font-size: 1.25rem; color: var(--rd-muted); margin: 0; }
-
-  .rd-tiles { list-style: none; margin: 0; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; align-items: start; }
-  .rd-tile { background: var(--rd-paper); border: 1px solid var(--rd-rule); border-radius: 8px; overflow: hidden; transition: box-shadow 0.2s ease, transform 0.2s ease; }
-  .rd-tile:hover, .rd-tile:focus-within { box-shadow: 0 0 0 1px var(--rd-gold), 0 6px 18px rgba(127, 96, 28, 0.18); transform: translateY(-2px); }
-  .rd-tile-btn { all: unset; box-sizing: border-box; display: flex; flex-direction: column; align-items: center; gap: 0.2rem; width: 100%; padding: 1.1rem 0.75rem; cursor: pointer; text-align: center; }
-  .rd-tile-btn:focus-visible { outline: 2px solid var(--rd-gold); outline-offset: -4px; border-radius: 6px; }
-  .rd-tile-ref { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.2rem; color: var(--rd-ink); }
-  .rd-tile-hint { font-family: 'Cinzel', serif; font-size: 0.58rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rd-gold); }
-  .rd-tile-btn[aria-expanded='true'] .rd-tile-hint { visibility: hidden; }
-  .rd-tile-text { margin: 0; padding: 0 1rem 1.1rem; font-size: 1rem; line-height: 1.55; }
-  .rd-kjv { display: block; font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rd-gold); margin-bottom: 0.3rem; }
-  .rd-tile--single { max-width: 22rem; margin: 0.7rem auto 0; }
-
-  .rd-question { margin: 2rem 0 0; text-align: center; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.35rem; line-height: 1.35; color: var(--rd-ink); text-wrap: balance; }
-
-  .rd-actions { margin-top: 2.2rem; display: grid; gap: 1.6rem; justify-items: center; text-align: center; }
-  .rd-step { width: 100%; display: grid; justify-items: center; }
-  .rd-btn { font: inherit; cursor: pointer; border-radius: 999px; padding: 0.55rem 1.4rem; font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; }
-  .rd-btn--nudge { background: var(--rd-burgundy); color: var(--rd-on-burgundy); border: 1px solid var(--rd-burgundy); }
-  .rd-btn--nudge:hover { filter: brightness(1.12); }
-  .rd-btn--answer { background: transparent; color: var(--rd-muted); border: 1px solid var(--rd-rule); font-size: 0.64rem; }
-  .rd-btn--answer:hover { color: var(--rd-ink); border-color: var(--rd-muted); }
-  .rd-btn:focus-visible { outline: 2px solid var(--rd-gold); outline-offset: 3px; }
-  .rd-reveal { width: 100%; margin-top: 1rem; }
-  .rd-nudge-line { margin: 0; font-style: italic; color: var(--rd-muted); }
-
-  .rd-chain { list-style: decimal; text-align: left; max-width: 26rem; margin: 0 auto; padding-left: 1.4rem; display: grid; gap: 0.3rem; }
-  .rd-chain-ref { color: var(--rd-muted); white-space: nowrap; }
-  .rd-verdict { margin: 1.6rem 0 0.5rem; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.2; color: var(--rd-ink); text-wrap: balance; }
-  .rd-beneath { margin: 0; font-style: italic; font-size: 1rem; color: var(--rd-muted); }
-  .rd-next { display: inline-block; margin-top: 1.4rem; font-family: 'Cinzel', serif; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rd-gold); text-decoration: none; }
-  .rd-next:hover { text-decoration: underline; text-underline-offset: 4px; }
-
-  [hidden] { display: none !important; }
-  @media (max-width: 640px) { .rd-tiles { grid-template-columns: 1fr; } }
-  @media (prefers-reduced-motion: reduce) { .rd-tile, .rd-tile:hover, .rd-tile:focus-within { transition: none; transform: none; box-shadow: none; } }
-</style>

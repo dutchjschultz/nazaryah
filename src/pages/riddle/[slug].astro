@@ -1,0 +1,21 @@
+---
+// src/pages/riddle/[slug].astro · 1017 V1
+// One page per riddle in src/data/riddles.js, through src/components/Riddle.astro
+// (the same look, four-step reveal, script and styles as /riddle). The meta
+// description is the same for every riddle and names nothing.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Riddle from '../../components/Riddle.astro';
+import { riddles } from '../../data/riddles.js';
+
+export function getStaticPaths() {
+  return riddles.map((r) => ({ params: { slug: r.slug }, props: { riddle: r } }));
+}
+const { riddle } = Astro.props;
+---
+
+<BaseLayout
+  title={`${riddle.title} — A Riddle for the Logical Mind — Nazaryah`}
+  description="Three verses. One logical answer. Read all three, lay them side by side — what must be true?"
+>
+  <Riddle riddle={riddle} />
+</BaseLayout>

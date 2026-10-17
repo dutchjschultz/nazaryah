@@ -1,0 +1,66 @@
+---
+// src/pages/riddles.astro · 1017 V1
+// Riddles — every riddle in src/data/riddles.js, newest first, as parchment cards
+// (title, card line, the three references), each opening /riddle/<slug>/. Same
+// palette as the riddle page. Nothing here names an answer.
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { riddles } from '../data/riddles.js';
+---
+
+<BaseLayout
+  title="Riddles — Nazaryah"
+  description="Three verses. One logical answer. Every riddle for the logical mind, newest first."
+>
+  <div class="rx-page">
+    <div class="rx-wrap">
+      <header class="rx-head">
+        <h1 class="rx-title">Riddles</h1>
+        <p class="rx-sub">Three verses. One logical answer.</p>
+      </header>
+
+      <ul class="rx-list">
+        {riddles.map((r) => (
+          <li>
+            <a class="rx-card" href={`/riddle/${r.slug}/`}>
+              <span class="rx-card-title">{r.title}</span>
+              <span class="rx-card-line">{r.line}</span>
+              <span class="rx-card-refs">{r.tiles.map((t) => t.ref).join(' · ')}</span>
+              <span class="rx-card-cta">Try the riddle <span aria-hidden="true">&rarr;</span></span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  /* The riddle page's palette (src/components/Riddle.astro). */
+  .rx-page {
+    --rd-bg: #f2ead9; --rd-paper: #f8f2e4; --rd-ink: #2b2117; --rd-muted: #6f5f4a; --rd-rule: #d9c8a6;
+    --rd-gold: #7f601c;
+    background: var(--rd-bg); color: var(--rd-ink); padding: 0 16px;
+    font-family: 'EB Garamond', Garamond, Georgia, serif; font-size: 18px; line-height: 1.6;
+  }
+  :global(html.dark) .rx-page {
+    --rd-bg: #15110c; --rd-paper: #1d1812; --rd-ink: #ece2cc; --rd-muted: #a8977a; --rd-rule: #3b3123;
+    --rd-gold: #d2a849;
+  }
+  .rx-wrap { max-width: 42rem; margin: 0 auto; padding: 3rem 0 4.5rem; }
+  .rx-head { text-align: center; margin-bottom: 2rem; }
+  .rx-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.1; margin: 0 0 0.6rem; color: var(--rd-ink); }
+  .rx-sub { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; font-size: 1.25rem; color: var(--rd-muted); margin: 0; }
+
+  .rx-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+  .rx-card {
+    display: grid; gap: 0.35rem; padding: 1.3rem 1.4rem; text-decoration: none; color: inherit;
+    background: var(--rd-paper); border: 1px solid var(--rd-rule); border-radius: 8px;
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  }
+  .rx-card:hover, .rx-card:focus-visible { box-shadow: 0 0 0 1px var(--rd-gold), 0 6px 18px rgba(127, 96, 28, 0.18); transform: translateY(-2px); outline: none; }
+  .rx-card-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.35rem; line-height: 1.2; color: var(--rd-ink); }
+  .rx-card-line { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; color: var(--rd-muted); }
+  .rx-card-refs { font-family: 'Cinzel', serif; font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rd-gold); }
+  .rx-card-cta { margin-top: 0.3rem; font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rd-gold); }
+  @media (prefers-reduced-motion: reduce) { .rx-card, .rx-card:hover { transition: none; transform: none; } }
+</style>
