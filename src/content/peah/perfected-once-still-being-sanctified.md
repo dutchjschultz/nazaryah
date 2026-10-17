@@ -2,7 +2,7 @@
 title: "Perfected Once, Still Being Sanctified"
 reference: "Hebrews 10:14"
 deck: "Two verb forms sit side by side in one line."
-group: "Law"
+topic: "Covenant and Deliverance"
 keyVerse: "For by one offering he hath perfected for ever them that are sanctified."
 keyVerseRef: "Hebrews 10:14"
 verses: "Hebrews 10:14 · Hebrews 10:16 · Hebrews 12:14"

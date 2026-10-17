@@ -2,7 +2,7 @@
 title: "Abraham's Seed Is One"
 reference: "Galatians 3:16"
 deck: "Paul counts one word, and the count settles who the promise belongs to."
-group: "Prophecy"
+topic: "Covenant and Deliverance"
 keyVerse: "He saith not, And to seeds, as of many; but as of one, And to thy seed, which is Messiah."
 keyVerseRef: "Galatians 3:16"
 verses: "Galatians 3:16 · Galatians 3:29 · Matthew 3:9 · Revelation 21:7"

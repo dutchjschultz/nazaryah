@@ -2,7 +2,7 @@
 title: "The Same Voice That Spoke at Sinai"
 reference: "Hebrews 12:25"
 deck: "Who is speaking from heaven? The next verse says."
-group: "Law"
+topic: "Law"
 keyVerse: "See that ye refuse not him that speaketh. For if they escaped not who refused him that spake on earth, much more shall not we escape, if we turn away from him that speaketh from heaven:"
 keyVerseRef: "Hebrews 12:25"
 verses: "Hebrews 12:25 · Exodus 19:18 · Haggai 2:6 · Exodus 20:22 · Hebrews 12:24 · Hebrews 12:29 · Deuteronomy 4:24"

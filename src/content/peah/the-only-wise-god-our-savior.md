@@ -2,7 +2,7 @@
 title: "The Only Wise God Our Savior"
 reference: "Jude 24-25"
 deck: "Jude grew up in the same house as Yahushua, and he names only one God."
-group: "One God"
+topic: "One God"
 keyVerse: "To the only wise God our Saviour, be glory and majesty, dominion and power, both now and ever. Amen."
 keyVerseRef: "Jude 25"
 verses: "Jude 1 · Jude 24-25 · Isaiah 43:11"

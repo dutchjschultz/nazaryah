@@ -2,7 +2,7 @@
 title: "He Learned Obedience"
 reference: "Hebrews 5:8"
 deck: "God knows all things and cannot learn, but the Son learned obedience."
-group: "One God"
+topic: "Messiah"
 keyVerse: "Though he were a Son, yet learned he obedience by the things which he suffered."
 keyVerseRef: "Hebrews 5:8"
 verses: "Hebrews 5:7-8 · Isaiah 40:13"

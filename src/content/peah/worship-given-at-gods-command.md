@@ -2,7 +2,7 @@
 title: "Worship Given at God's Command"
 reference: "Hebrews 1:6"
 deck: "The English word \"worship\" carries the whole argument."
-group: "One God"
+topic: "One God"
 keyVerse: "And again, when he bringeth in the firstbegotten into the world, he saith, And let all the angels of God worship him."
 keyVerseRef: "Hebrews 1:6"
 verses: "Hebrews 1:6 · Matthew 18:26 · Revelation 3:9 · 1 Chronicles 29:20 · Philippians 2:9-11"

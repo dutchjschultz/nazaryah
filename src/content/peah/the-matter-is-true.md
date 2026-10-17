@@ -2,7 +2,7 @@
 title: "The Matter Is True"
 reference: "Proverbs 17:9"
 deck: "The verse does not say he repeats a lie. It says he repeats a matter, and friends come apart."
-group: "Scripture"
+topic: "Walking It Out"
 keyVerse: "He that covereth a transgression seeketh love; but he that repeateth a matter separateth very friends."
 keyVerseRef: "Proverbs 17:9"
 verses: "Proverbs 17:9 · Luke 16:1 · Luke 16:8"

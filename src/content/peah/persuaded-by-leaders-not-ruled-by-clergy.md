@@ -2,7 +2,7 @@
 title: "Persuaded by Leaders, Not Ruled by Clergy"
 reference: "Hebrews 13:17"
 deck: "The same chapter says how to know which leaders to follow."
-group: "Scripture"
+topic: "Counterfeit Teachings"
 keyVerse: "Obey them that have the rule over you, and submit yourselves: for they watch for your souls, as they that must give account, that they may do it with joy, and not with grief: for that is unprofitable for you."
 keyVerseRef: "Hebrews 13:17"
 verses: "Hebrews 13:17 · Hebrews 3:18 · Hebrews 13:7 · Acts 17:11 · Acts 5:29 · Matthew 23:8"

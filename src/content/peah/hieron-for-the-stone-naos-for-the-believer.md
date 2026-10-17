@@ -2,7 +2,7 @@
 title: "Hieron for the Stone, Naos for the Believer"
 reference: "2 Thessalonians 2:4"
 deck: "Two Greek words for temple, and only one of them is you."
-group: "Prophecy"
+topic: "Prophecy"
 keyVerse: "Who opposeth and exalteth himself above all that is called God, or that is worshipped; so that he as God sitteth in the temple of God, shewing himself that he is God."
 keyVerseRef: "2 Thessalonians 2:4"
 verses: "2 Thessalonians 2:4 · 1 Corinthians 9:13 · Luke 1:9 · John 2:19-21 · 1 Corinthians 3:16 · 1 Corinthians 6:19 · 2 Corinthians 6:16 · Romans 6:12 · Romans 6:16 · Revelation 21:22"

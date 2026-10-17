@@ -2,7 +2,7 @@
 title: "Thy Name Which Thou Hast Given Me"
 reference: "John 17:11"
 deck: "Yahushua prayed in the name the Father gave him, the name he came in and spoke in."
-group: "One God"
+topic: "Names and Hebrew Words"
 keyVerse: "Holy Father, keep through thine own name those whom thou hast given me, that they may be one, as we are."
 keyVerseRef: "John 17:11"
 verses: "John 17:11-12 · John 5:43 · Philippians 2:9 · Deuteronomy 18:19"

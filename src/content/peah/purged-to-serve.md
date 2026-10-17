@@ -2,7 +2,7 @@
 title: "Purged to Serve"
 reference: "Hebrews 9:14"
 deck: "The blood cleanses for a purpose."
-group: "One God"
+topic: "Priesthood and Temple"
 keyVerse: "How much more shall the blood of Messiah, who through the eternal Spirit offered himself without spot to God, purge your conscience from dead works to serve the living God?"
 keyVerseRef: "Hebrews 9:14"
 verses: "Hebrews 9:14 · Hebrews 8:5 · Hebrews 9:9 · Hebrews 13:10 · Isaiah 61:1 · Luke 4:18 · Acts 10:38"

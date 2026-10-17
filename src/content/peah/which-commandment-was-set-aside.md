@@ -2,7 +2,7 @@
 title: "Which Commandment Was Set Aside"
 reference: "Hebrews 7:18-19"
 deck: "One commandment was set aside, and verse 16 names it."
-group: "Law"
+topic: "Law"
 keyVerse: "For there is verily a disannulling of the commandment going before for the weakness and unprofitableness thereof. For the law made nothing perfect, but the bringing in of a better hope did; by the which we draw nigh unto God."
 keyVerseRef: "Hebrews 7:18-19"
 verses: "Hebrews 7:18-19 · Hebrews 7:16 · Hebrews 7:23 · Hebrews 7:28 · Romans 8:3 · Romans 7:12"

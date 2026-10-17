@@ -2,7 +2,7 @@
 title: "Made Like His Brethren in All Things"
 reference: "Hebrews 2:17"
 deck: "In all things, not some, and that changes what a high priest must be."
-group: "One God"
+topic: "Messiah"
 keyVerse: "Wherefore in all things it behoved him to be made like unto his brethren, that he might be a merciful and faithful high priest in things pertaining to God, to make reconciliation for the sins of the people."
 keyVerseRef: "Hebrews 2:17"
 verses: "Hebrews 2:17 · Hebrews 2:14 · Hebrews 4:15 · James 1:13 · Hebrews 5:1"

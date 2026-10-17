@@ -4,7 +4,7 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "build": "astro build && node scripts/check-cards.mjs && node scripts/check-nav-titles.mjs && npx pagefind --site dist",
+    "build": "node scripts/check-peah-topics.mjs && astro build && node scripts/check-cards.mjs && node scripts/check-nav-titles.mjs && npx pagefind --site dist",
     "cards:missing": "astro build && python3 scripts/backfill-social-images.py --missing-only --no-thumbs",
     "preview": "astro preview",
     "astro": "astro",

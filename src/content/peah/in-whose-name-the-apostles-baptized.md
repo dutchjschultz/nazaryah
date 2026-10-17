@@ -2,7 +2,7 @@
 title: "In Whose Name the Apostles Baptized"
 reference: "Matthew 28:19"
 deck: "The apostles heard the command firsthand, and every baptism in Acts is in the name of Yahushua."
-group: "One God"
+topic: "One God"
 keyVerse: "Go ye therefore, and teach all nations, baptizing them in the name of the Father, and of the Son, and of the Holy Ghost."
 keyVerseRef: "Matthew 28:19"
 verses: "Matthew 28:19 · Luke 24:47 · Acts 2:38 · Acts 8:16 · Acts 10:48 · Acts 19:5"

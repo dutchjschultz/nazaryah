@@ -2,7 +2,7 @@
 title: "The Covenant Is Still Future"
 reference: "Genesis 17:1-9"
 deck: "Abraham's covenant had terms and a promise still ahead, and so does ours."
-group: "Law"
+topic: "Covenant and Deliverance"
 keyVerse: "Thou shalt keep my covenant therefore, thou, and thy seed after thee in their generations."
 keyVerseRef: "Genesis 17:9"
 verses: "Genesis 17:1 · Genesis 17:8-9 · Acts 7:5 · Hebrews 10:36"

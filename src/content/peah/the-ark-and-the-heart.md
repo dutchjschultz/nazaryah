@@ -2,7 +2,7 @@
 title: "The Ark and the Heart"
 reference: "Jeremiah 31:33"
 deck: "Where the law was kept in the tabernacle, and where it is kept now."
-group: "Law"
+topic: "Law"
 keyVerse: "After those days, saith Yahuah, I will put my law in their inward parts, and write it in their hearts; and will be their Elohim, and they shall be my people."
 keyVerseRef: "Jeremiah 31:33"
 verses: "1 Kings 8:9 · Exodus 25:21–22 · 1 Corinthians 3:16 · Hebrews 10:20 · Psalm 40:8 · Jeremiah 31:33 · 2 Corinthians 3:3"

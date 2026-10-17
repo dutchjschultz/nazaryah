@@ -2,7 +2,7 @@
 title: "Favor Turned Into Lasciviousness"
 reference: "Jude 4"
 deck: "Jude warned of men who turn Yahuah's favor into a license to live without His Law."
-group: "Law"
+topic: "Counterfeit Teachings"
 keyVerse: "Ungodly men, turning the grace of our God into lasciviousness."
 keyVerseRef: "Jude 4"
 verses: "Jude 4 · Romans 6:1-2 · 1 John 3:4"

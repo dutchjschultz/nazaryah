@@ -2,7 +2,7 @@
 title: "Jacob's Wrestling"
 reference: "Genesis 33:11"
 deck: "Jacob handed back the blessing he had grasped and kept only the one Yahuah gave."
-group: ""
+topic: "Covenant and Deliverance"
 keyVerse: "Take, I pray thee, my blessing that is brought to thee; because God hath dealt graciously with me, and because I have enough."
 keyVerseRef: "Genesis 33:11"
 verses: "Genesis 25:26 · Genesis 27:15–19 · Genesis 27:28–29 · Genesis 27:35 · Genesis 28:3–4 · Genesis 28:13–14 · Genesis 32:27–28 · Genesis 33:3–11"

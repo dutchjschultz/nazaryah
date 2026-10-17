@@ -2,7 +2,7 @@
 title: "Washed Like a Priest"
 reference: "Hebrews 10:22"
 deck: "Every phrase comes from the day Aaron's sons were made priests."
-group: "Law"
+topic: "Priesthood and Temple"
 keyVerse: "Let us draw near with a true heart in full assurance of faith, having our hearts sprinkled from an evil conscience, and our bodies washed with pure water."
 keyVerseRef: "Hebrews 10:22"
 verses: "Hebrews 10:22 · Exodus 29:4 · Exodus 29:21 · Exodus 30:19-21 · 1 Peter 2:5 · Revelation 1:6 · Ezekiel 44:23-24"

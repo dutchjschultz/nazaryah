@@ -2,7 +2,7 @@
 title: "Melchizedek Was a Man"
 reference: "Hebrews 7:3"
 deck: "Verse 4 calls him a man."
-group: "One God"
+topic: "Priesthood and Temple"
 keyVerse: "Without father, without mother, without descent, having neither beginning of days, nor end of life; but made like unto the Son of God; abideth a priest continually."
 keyVerseRef: "Hebrews 7:3"
 verses: "Hebrews 7:3 · Ezra 2:62"

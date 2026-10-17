@@ -2,7 +2,7 @@
 title: "Not Mine Own Righteousness"
 reference: "Philippians 3:9"
 deck: "Paul names two kinds of righteousness, and only one of them opens the door."
-group: "Law"
+topic: "Covenant and Deliverance"
 keyVerse: "And be found in him, not having mine own righteousness, which is of the law, but that which is through the faith of Messiah, the righteousness which is of Yahuah by faith."
 keyVerseRef: "Philippians 3:9"
 verses: "Philippians 3:5-9"

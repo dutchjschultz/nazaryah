@@ -2,7 +2,7 @@
 title: "Corn, Wine, and Oil"
 reference: "Hosea 2:8"
 deck: "Three words that have no man's work in them, and the name she gave them to."
-group: "One God"
+topic: "Names and Hebrew Words"
 keyVerse: "For she did not know that I gave her corn, and wine, and oil, and multiplied her silver and gold, which they prepared for Baal."
 keyVerseRef: "Hosea 2:8"
 verses: "Hosea 2:8 · Deuteronomy 7:13 · Deuteronomy 14:23 · Numbers 18:12 · Deuteronomy 28:51 · Joel 1:10 · Joel 2:19"

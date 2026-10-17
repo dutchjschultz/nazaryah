@@ -2,7 +2,7 @@
 title: "A Man Approved of God"
 reference: "Acts 2:22"
 deck: "At Shavuot, Peter called Yahushua a man and said God did the miracles by him."
-group: "One God"
+topic: "Messiah"
 keyVerse: "Yahushua of Nazareth, a man approved of God among you by miracles and wonders and signs, which God did by him in the midst of you."
 keyVerseRef: "Acts 2:22"
 verses: "Acts 2:22"

@@ -2,7 +2,7 @@
 title: "The Only True God"
 reference: "John 17:3"
 deck: "Yahushua prayed to the Father and called Him the only true God."
-group: "One God"
+topic: "One God"
 keyVerse: "And this is life eternal, that they might know thee the only true God, and Yahushua Messiah, whom thou hast sent."
 keyVerseRef: "John 17:3"
 verses: "John 17:3 · 1 Corinthians 8:6"

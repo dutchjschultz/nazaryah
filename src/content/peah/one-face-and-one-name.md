@@ -2,7 +2,7 @@
 title: "One Face and One Name at the End of Revelation"
 reference: "Revelation 22:3-4"
 deck: "Two are named at the last throne, and every word after them is singular."
-group: "One God"
+topic: "One God"
 keyVerse: "The throne of God and of the Lamb shall be in it; and his servants shall serve him: and they shall see his face; and his name shall be in their foreheads."
 keyVerseRef: "Revelation 22:3-4"
 verses: "Revelation 22:3-4 · Revelation 14:1 · Revelation 3:12 · Matthew 5:8 · John 1:18 · Revelation 5:7 · Hebrews 8:1"

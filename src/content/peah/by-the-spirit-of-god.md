@@ -2,7 +2,7 @@
 title: "By the Spirit of God"
 reference: "Matthew 12:28"
 deck: "Yahushua said the power over devils was the Spirit of God, and Luke calls it the finger of God."
-group: "One God"
+topic: "One God"
 keyVerse: "But if I cast out devils by the Spirit of God, then the kingdom of God is come unto you."
 keyVerseRef: "Matthew 12:28"
 verses: "Matthew 12:28 · Luke 11:20"

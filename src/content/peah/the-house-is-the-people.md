@@ -2,7 +2,7 @@
 title: "The House Is the People"
 reference: "Hebrews 3:6"
 deck: "The house of God has an address, and it is not a building."
-group: "Scripture"
+topic: "Priesthood and Temple"
 keyVerse: "But Messiah as a son over his own house; whose house are we, if we hold fast the confidence and the rejoicing of the hope firm unto the end."
 keyVerseRef: "Hebrews 3:6"
 verses: "Hebrews 3:6 · Hebrews 3:5 · Numbers 12:7"

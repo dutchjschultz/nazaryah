@@ -2,7 +2,7 @@
 title: "We Have an Altar"
 reference: "Hebrews 13:10"
 deck: "Believers have an altar, but it is not at the front of a room."
-group: "Scripture"
+topic: "Priesthood and Temple"
 keyVerse: "We have an altar, whereof they have no right to eat which serve the tabernacle."
 keyVerseRef: "Hebrews 13:10"
 verses: "Hebrews 13:10 · Leviticus 6:26 · 1 Corinthians 9:13 · Hebrews 13:13"

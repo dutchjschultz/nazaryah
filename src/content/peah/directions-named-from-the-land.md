@@ -2,7 +2,7 @@
 title: "Directions Named from the Land"
 reference: "Genesis 13:1"
 deck: "How Abram came up out of Egypt and still went south, and the one direction that points to the throne."
-group: ""
+topic: "Names and Hebrew Words"
 keyVerse: "And Abram went up out of Egypt, he, and his wife, and all that he had, and Lot with him, into the south."
 keyVerseRef: "Genesis 13:1"
 verses: "Genesis 13:1 · Exodus 10:19 · Zechariah 14:4 · Psalm 48:2 · Isaiah 14:13 · Job 37:22"

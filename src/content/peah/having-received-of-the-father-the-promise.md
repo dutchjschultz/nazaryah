@@ -2,7 +2,7 @@
 title: "Having Received of the Father the Promise"
 reference: "Acts 2:32-33"
 deck: "At Shavuot, Peter said God raised Yahushua, God exalted him, and the Father gave him the Spirit to pour out."
-group: "One God"
+topic: "Messiah"
 keyVerse: "Therefore being by the right hand of God exalted, and having received of the Father the promise of the Holy Ghost, he hath shed forth this, which ye now see and hear."
 keyVerseRef: "Acts 2:33"
 verses: "Acts 2:32-33 · Joel 2:28"

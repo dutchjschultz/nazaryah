@@ -2,7 +2,7 @@
 title: "The Ages Framed by the Spoken Word"
 reference: "Hebrews 11:3"
 deck: "Hebrews names the instrument of creation in one word."
-group: "One God"
+topic: "One God"
 keyVerse: "Through faith we understand that the worlds were framed by the word of God, so that things which are seen were not made of things which do appear."
 keyVerseRef: "Hebrews 11:3"
 verses: "Hebrews 11:3 · Psalm 33:6 · Genesis 1:14"

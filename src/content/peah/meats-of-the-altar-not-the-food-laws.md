@@ -2,7 +2,7 @@
 title: "Meats of the Altar, Not the Food Laws"
 reference: "Hebrews 13:9"
 deck: "The next verse says which meats are meant."
-group: "Law"
+topic: "Law"
 keyVerse: "Be not carried about with divers and strange doctrines. For it is a good thing that the heart be established with grace; not with meats, which have not profited them that have been occupied therein."
 keyVerseRef: "Hebrews 13:9"
 verses: "Hebrews 13:9 · Hebrews 13:10 · Hebrews 9:10 · Hebrews 13:8"

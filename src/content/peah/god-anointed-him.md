@@ -2,7 +2,7 @@
 title: "God Anointed Him"
 reference: "Acts 10:38"
 deck: "An anointed one receives from someone greater, and Peter said God was with him."
-group: "One God"
+topic: "Messiah"
 keyVerse: "How God anointed Yahushua of Nazareth with the Holy Ghost and with power: who went about doing good, and healing all that were oppressed of the devil; for God was with him."
 keyVerseRef: "Acts 10:38"
 verses: "Acts 10:38 · Isaiah 61:1 · Luke 4:21"

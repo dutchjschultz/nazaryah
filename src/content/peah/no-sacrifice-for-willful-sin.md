@@ -2,7 +2,7 @@
 title: "No Sacrifice for Willful Sin"
 reference: "Hebrews 10:26"
 deck: "Hebrews borrows a rule Moses already gave."
-group: "Law"
+topic: "Law"
 keyVerse: "For if we sin wilfully after that we have received the knowledge of the truth, there remaineth no more sacrifice for sins,"
 keyVerseRef: "Hebrews 10:26"
 verses: "Hebrews 10:26 · Numbers 15:27-29 · Numbers 15:30-31 · 1 John 3:4 · Psalm 119:142 · Hebrews 10:28-29 · 1 John 2:1"

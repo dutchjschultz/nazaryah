@@ -2,7 +2,7 @@
 title: "Till All Be Fulfilled"
 reference: "Matthew 5:17–19"
 deck: "The law stands until heaven and earth pass, and Revelation records the day they do."
-group: ""
+topic: "Law"
 keyVerse: "For verily I say unto you, Till heaven and earth pass, one jot or one tittle shall in no wise pass from the law, till all be fulfilled."
 keyVerseRef: "Matthew 5:18"
 verses: "Matthew 5:17–20 · John 19:30 · Revelation 20:11 · Revelation 21:1 · Revelation 21:5–6"

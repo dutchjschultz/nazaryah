@@ -2,7 +2,7 @@
 title: "Built to the Pattern"
 reference: "Hebrews 8:5"
 deck: "Moses did not design the tabernacle. He copied it."
-group: "Scripture"
+topic: "Priesthood and Temple"
 keyVerse: "Who serve unto the example and shadow of heavenly things, as Moses was admonished of God when he was about to make the tabernacle: for, See, saith he, that thou make all things according to the pattern shewed to thee in the mount."
 keyVerseRef: "Hebrews 8:5"
 verses: "Hebrews 8:5 · Exodus 25:40 · Exodus 25:9 · Colossians 2:17"

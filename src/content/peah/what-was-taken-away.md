@@ -2,7 +2,7 @@
 title: "What Was Taken Away"
 reference: "Hebrews 10:9"
 deck: "The psalm Hebrews quotes here ends with the Law in the heart."
-group: "Law"
+topic: "Law"
 keyVerse: "Then said he, Lo, I come to do thy will, O God. He taketh away the first, that he may establish the second."
 keyVerseRef: "Hebrews 10:9"
 verses: "Hebrews 10:9 · Hebrews 10:10 · Psalm 40:6-8 · Psalm 40:8"

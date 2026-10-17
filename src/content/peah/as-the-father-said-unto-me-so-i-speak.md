@@ -2,7 +2,7 @@
 title: "As the Father Said Unto Me, So I Speak"
 reference: "John 12:49-50"
 deck: "Moses said Yahuah would put His words in the Prophet's mouth, and Yahushua said that is what happened."
-group: "One God"
+topic: "Messiah"
 keyVerse: "Whatsoever I speak therefore, even as the Father said unto me, so I speak."
 keyVerseRef: "John 12:50"
 verses: "John 12:49-50 · Deuteronomy 18:18"

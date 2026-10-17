@@ -2,7 +2,7 @@
 title: "The Law Is the Truth"
 reference: "Psalm 119:142"
 deck: "Scripture calls the Law the truth, and truth does not expire."
-group: "Law"
+topic: "Law"
 keyVerse: "Thy righteousness is an everlasting righteousness, and thy law is the truth."
 keyVerseRef: "Psalm 119:142"
 verses: "Psalm 119:142 · John 17:17 · John 14:6 · 1 John 2:4"

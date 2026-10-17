@@ -2,7 +2,7 @@
 title: "Firstfruits of the Spirit"
 reference: "Romans 8:23"
 deck: "Scripture names the firstfruits, and Scripture says where the firstfruits lives."
-group: "Calendar and Feasts"
+topic: "Calendar and Feasts"
 keyVerse: "And not only they, but ourselves also, which have the firstfruits of the Spirit, even we ourselves groan within ourselves, waiting for the adoption, to wit, the redemption of our body."
 keyVerseRef: "Romans 8:23"
 verses: "1 Corinthians 15:20–21 · Romans 8:23 · 2 Corinthians 1:22 · Romans 8:10 · John 14:23"

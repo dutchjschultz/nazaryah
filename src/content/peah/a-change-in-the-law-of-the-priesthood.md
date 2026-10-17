@@ -2,7 +2,7 @@
 title: "A Change in the Law of the Priesthood"
 reference: "Hebrews 7:12"
 deck: "The chapter says which law changed, and it names it."
-group: "Law"
+topic: "Law"
 keyVerse: "For the priesthood being changed, there is made of necessity a change also of the law."
 keyVerseRef: "Hebrews 7:12"
 verses: "Hebrews 7:12 · Hebrews 11:5 · Matthew 5:18"

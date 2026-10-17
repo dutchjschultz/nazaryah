@@ -2,7 +2,7 @@
 title: "The Law Is Perfect"
 reference: "Psalm 19:7"
 deck: "A perfect Law has nothing in it to remove, so what was nailed to the cross?"
-group: "Law"
+topic: "Law"
 keyVerse: "The law of Yahuah is perfect, converting the soul."
 keyVerseRef: "Psalm 19:7"
 verses: "Psalm 19:7 · Matthew 5:17 · James 1:25 · Colossians 2:14"

@@ -2,7 +2,7 @@
 title: "My Doctrine Is Not Mine"
 reference: "John 7:17"
 deck: "Yahushua said his teaching was not his own, and gave a test anyone can take."
-group: "One God"
+topic: "Messiah"
 keyVerse: "If any man will do his will, he shall know of the doctrine, whether it be of God, or whether I speak of myself."
 keyVerseRef: "John 7:17"
 verses: "John 7:16-17"

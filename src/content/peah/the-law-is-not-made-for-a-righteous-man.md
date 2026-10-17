@@ -2,7 +2,7 @@
 title: "The Law Is Not Made for a Righteous Man"
 reference: "1 Timothy 1:8-9"
 deck: "The pulpit reads verse 9 alone, but Paul wrote verse 8 first."
-group: "Law"
+topic: "Law"
 keyVerse: "But we know that the law is good, if a man use it lawfully; knowing this, that the law is not made for a righteous man, but for the lawless and disobedient."
 keyVerseRef: "1 Timothy 1:8-9"
 verses: "1 Timothy 1:8-10"

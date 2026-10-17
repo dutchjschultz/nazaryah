@@ -2,7 +2,7 @@
 title: "The Message and the Picture"
 reference: "Daniel 9:23"
 deck: "Daniel uses two Hebrew words for vision: the message he was given and the picture he could not understand."
-group: "Prophecy"
+topic: "Prophecy"
 keyVerse: "Understand the matter, and consider the vision."
 keyVerseRef: "Daniel 9:23"
 verses: "Daniel 8:26-27 · Daniel 9:23-26 · Isaiah 52:14 · Revelation 22:10"

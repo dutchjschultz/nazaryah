@@ -1,4 +1,7 @@
-// content config 1017 V29
+// content config 1017 V30
+// V30 (Dutch 1017): Pe'ah `group` becomes `topic` — REQUIRED, one of the twelve
+// PEAH_TOPICS (src/lib/peah.js). A blank or unknown topic fails the build and
+// names the entry.
 // V29 (Pe'ah Page Redesign 1017 V1): peah gains optional `added` — the date the
 // entry went onto the site (orders the /peah Newest band and Sort). Blank falls
 // back to `date` (src/lib/peah.js peahAdded).
@@ -32,7 +35,7 @@
 // `foundations` (src/content/testimonies, src/content/foundations). No
 // frontmatter: title, reference and deck live in src/data/law-on-trial.js, the
 // one source of truth; the entry id is the slug the data file names in `body`.
-// V18: Pe'ah `group` is now the entry's SUBJECT, restricted to PEAH_SUBJECTS
+// V18: Pe'ah `group` is now the entry's SUBJECT, restricted to PEAH_TOPICS
 // (Law | One God | Calendar and Feasts | Prophecy | Scripture) instead of the
 // Studies taxonomy names. `reference` now leads the displayed title.
 // V17: peah gains optional `cardDeck` — the social card's line when `deck` clips.
@@ -112,7 +115,7 @@
 // so open-letter full-text files validate alongside weekly-letter ones.
 import { defineCollection, z } from 'astro:content';
 import { parseRef } from '../lib/scripture/parse-ref.js';
-import { PEAH_SUBJECTS } from '../lib/peah.js';
+import { PEAH_TOPICS } from '../lib/peah.js';
 
 // Scripture index citation (see src/pages/scripture.astro). Tier is a property
 // of the CITATION, not the verse: the same passage can be a plain statement in
@@ -351,17 +354,11 @@ const watchmansDeskCollection = defineCollection({
 // PE'AH — short reads from the corner of the field (/peah). Plain literal title,
 // one key verse, body paragraphs only, and the verses it touches listed at foot.
 //
-// PE'AH SUBJECTS — the `group` field is the entry's subject tag:
-//   Law
-//   One God
-//   Calendar and Feasts
-//   Prophecy
-//   Scripture
-// One value per entry. Reuse character for character. Chips are generated from
-// the data — never hand-maintain a chip list. A value outside this list fails
-// the build (a typo would otherwise mint a duplicate chip). Blank is allowed.
-// The /peah chips follow this order. The list itself is PEAH_SUBJECTS in
-// src/lib/peah.js (imported above), so the schema and the chips read one copy.
+// PE'AH TOPICS — every entry carries exactly one `topic`, one of the twelve in
+// PEAH_TOPICS (src/lib/peah.js), reused character for character: a variation in
+// case, spacing or wording would split one topic into two Topic-menu entries.
+// Blank or unknown fails the build, naming the entry. The /peah Topic menu is
+// generated from the list and the entries — never hand-maintained.
 const peahCollection = defineCollection({
   type: 'content',
   schema: z.object({
@@ -371,9 +368,9 @@ const peahCollection = defineCollection({
     // Optional shorter line for the SOCIAL CARD only, when `deck` is too long to
     // fit under a two-line title. The page and the /peah card keep `deck`.
     cardDeck: z.string().optional(),
-    group: z.string().default('').refine(
-      (v) => v === '' || PEAH_SUBJECTS.includes(v),
-      { message: `group must be blank or one of: ${PEAH_SUBJECTS.join(' | ')}` }
+    topic: z.string({ required_error: `Pe'ah topic is required — one of: ${PEAH_TOPICS.join(' | ')}` }).refine(
+      (v) => PEAH_TOPICS.includes(v),
+      { message: `Pe'ah topic must be one of: ${PEAH_TOPICS.join(' | ')}` }
     ),
     keyVerse: z.string(),
     keyVerseRef: z.string(),

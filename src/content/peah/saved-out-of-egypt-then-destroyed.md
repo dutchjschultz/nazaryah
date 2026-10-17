@@ -2,7 +2,7 @@
 title: "Saved Out of Egypt, Then Destroyed"
 reference: "Jude 5"
 deck: "A whole nation was saved out of Egypt, and most of it never reached the land."
-group: "Law"
+topic: "Covenant and Deliverance"
 keyVerse: "The Lord, having saved the people out of the land of Egypt, afterward destroyed them that believed not."
 keyVerseRef: "Jude 5"
 verses: "Jude 5 · 1 Corinthians 10:11-12 · Matthew 24:13"

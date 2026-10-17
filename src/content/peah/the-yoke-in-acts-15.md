@@ -2,7 +2,7 @@
 title: "The Yoke in Acts 15"
 reference: "Acts 15:10"
 deck: "What Peter meant by the yoke the fathers could not bear."
-group: "Law"
+topic: "Law"
 keyVerse: "Now therefore why tempt ye God, to put a yoke upon the neck of the disciples, which neither our fathers nor we were able to bear?"
 keyVerseRef: "Acts 15:10"
 verses: "Acts 15:1 · Acts 15:10 · Acts 15:11 · Acts 15:21"

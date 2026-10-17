@@ -37,7 +37,7 @@ const href = isPeah ? `/peah/${post.slug}` : isTestimony ? post.href : postHref(
 // The gold label: a study in a collection shows its collection's label (an
 // investigation study shows its case's shortTitle); everything else shows its
 // own category. The bookshelf check still reads the real category.
-const cat = isPeah ? post.data.group : isTestimony ? 'Testimony' : (cardLabelOf(post.slug) ?? post.data.category);
+const cat = isPeah ? post.data.topic : isTestimony ? 'Testimony' : (cardLabelOf(post.slug) ?? post.data.category);
 const book = isPeah || isTestimony ? undefined : bookCategories[post.data.category];
 const blurb = isPeah ? post.data.deck : (post.data.subtitle || post.data.deck || post.data.description);
 

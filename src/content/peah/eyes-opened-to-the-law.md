@@ -2,7 +2,7 @@
 title: "Eyes Opened to the Law"
 reference: "Psalm 119:18"
 deck: "The Psalm kept for comfort is a prayer to see wonders in the Torah."
-group: "Law"
+topic: "Law"
 keyVerse: "Open thou mine eyes, that I may behold wondrous things out of thy law."
 keyVerseRef: "Psalm 119:18"
 verses: "Psalm 119:18 · Exodus 3:20 · Psalm 1:2 · Psalm 19:7 · Psalm 119:97 · Luke 24:44–45"

@@ -2,7 +2,7 @@
 title: "Moses Wrote of Me"
 reference: "John 5:46"
 deck: "Yahushua named Moses as the accuser and tied His own words to Moses' writings: set one aside and the other goes with it."
-group: "Law"
+topic: "Law"
 keyVerse: "For had ye believed Moses, ye would have believed me: for he wrote of me."
 keyVerseRef: "John 5:46"
 verses: "John 5:45 · John 5:46 · John 5:47 · Hebrews 10:28–29"

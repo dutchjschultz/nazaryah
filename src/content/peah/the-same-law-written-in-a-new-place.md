@@ -2,7 +2,7 @@
 title: "The Same Law Written in a New Place"
 reference: "Hebrews 8:10"
 deck: "The new covenant brings no new law."
-group: "Law"
+topic: "Law"
 keyVerse: "For this is the covenant that I will make with the house of Israel after those days, saith Yahuah; I will put my laws into their mind, and write them in their hearts: and I will be to them a God, and they shall be to me a people:"
 keyVerseRef: "Hebrews 8:10"
 verses: "Hebrews 8:10 · Jeremiah 31:31-34 · Ezekiel 36:27 · Hebrews 8:8 · Romans 7:12 · Hebrews 8:13 · Jeremiah 31:32 · Romans 11:17 · Ephesians 2:12-13"

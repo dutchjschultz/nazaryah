@@ -2,7 +2,7 @@
 title: "The Belief Once Delivered"
 reference: "Jude 3"
 deck: "The belief was delivered once, so anything added centuries later is not part of it."
-group: "One God"
+topic: "Counterfeit Teachings"
 keyVerse: "Ye should earnestly contend for the faith which was once delivered unto the saints."
 keyVerseRef: "Jude 3"
 verses: "Jude 3 · Galatians 1:8 · Deuteronomy 6:4"

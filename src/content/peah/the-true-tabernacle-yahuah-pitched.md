@@ -2,7 +2,7 @@
 title: "The True Tabernacle Yahuah Pitched"
 reference: "Hebrews 8:2"
 deck: "A tent no man set up, with a priest serving in it now."
-group: "Scripture"
+topic: "Priesthood and Temple"
 keyVerse: "A minister of the sanctuary, and of the true tabernacle, which Yahuah pitched, and not man."
 keyVerseRef: "Hebrews 8:2"
 verses: "Hebrews 8:2 · Exodus 33:7"

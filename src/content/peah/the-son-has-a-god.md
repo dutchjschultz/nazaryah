@@ -2,7 +2,7 @@
 title: "The Son Has a God"
 reference: "Hebrews 1:9"
 deck: "The verse after the Trinity's favorite throne verse says who anointed the Son."
-group: "One God"
+topic: "One God"
 keyVerse: "Thou hast loved righteousness, and hated iniquity; therefore God, even thy God, hath anointed thee with the oil of gladness above thy fellows."
 keyVerseRef: "Hebrews 1:9"
 verses: "Hebrews 1:9 · Hebrews 1:8 · Psalm 45:6-7 · Psalm 82:6 · Exodus 22:28 · Exodus 7:1 · Hebrews 3:1 · Hebrews 3:14 · Romans 8:29"

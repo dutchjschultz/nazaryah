@@ -2,7 +2,7 @@
 title: "The Lord Rebuke Thee"
 reference: "Jude 9"
 deck: "The archangel would not rebuke the devil himself, so why do pulpits teach believers to?"
-group: "Scripture"
+topic: "Counterfeit Teachings"
 keyVerse: "Michael the archangel... durst not bring against him a railing accusation, but said, The Lord rebuke thee."
 keyVerseRef: "Jude 9"
 verses: "Jude 9 · Zechariah 3:2 · James 4:7"

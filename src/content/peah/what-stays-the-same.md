@@ -2,7 +2,7 @@
 title: "What Stays the Same"
 reference: "Hebrews 13:8"
 deck: "Hebrews records the Son changing. So what stays the same?"
-group: "Law"
+topic: "Messiah"
 keyVerse: "Yahushua the Messiah the same yesterday, and to day, and for ever."
 keyVerseRef: "Hebrews 13:8"
 verses: "Hebrews 13:8 · Malachi 3:6 · Hebrews 2:9 · Hebrews 5:8 · Hebrews 5:9 · Hebrews 7:26 · Hebrews 7:24 · Matthew 5:17-19 · Matthew 19:17"

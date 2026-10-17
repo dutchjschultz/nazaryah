@@ -2,7 +2,7 @@
 title: "Jude Quotes Enoch"
 reference: "Jude 14-15"
 deck: "A book of the Bible quotes Enoch and calls it prophecy."
-group: "Scripture"
+topic: "Scripture"
 keyVerse: "Enoch also, the seventh from Adam, prophesied of these, saying, Behold, the Lord cometh with ten thousands of his saints."
 keyVerseRef: "Jude 14"
 verses: "Jude 14-15 · Genesis 5:3-18 · Genesis 5:24"

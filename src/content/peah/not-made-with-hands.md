@@ -2,7 +2,7 @@
 title: "Not Made With Hands"
 reference: "Hebrews 9:11"
 deck: "The greater tabernacle is not waiting on stones in Jerusalem."
-group: "Prophecy"
+topic: "Priesthood and Temple"
 keyVerse: "But Messiah being come an high priest of good things to come, by a greater and more perfect tabernacle, not made with hands, that is to say, not of this building;"
 keyVerseRef: "Hebrews 9:11"
 verses: "Hebrews 9:11 · Acts 7:48 · Acts 17:24 · John 2:21 · 2 Corinthians 5:1"

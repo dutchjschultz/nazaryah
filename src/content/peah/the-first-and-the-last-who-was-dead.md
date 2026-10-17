@@ -2,7 +2,7 @@
 title: "The First and the Last Who Was Dead"
 reference: "Revelation 2:8"
 deck: "Yahuah is the First and the Last because He cannot die. The Son is the First and the Last because he did."
-group: "One God"
+topic: "Messiah"
 keyVerse: "These things saith the first and the last, which was dead, and is alive."
 keyVerseRef: "Revelation 2:8"
 verses: "Isaiah 44:6 · Revelation 1:8 · Revelation 1:5 · Revelation 1:17-18 · Revelation 2:8 · 1 Timothy 6:16 · 1 Corinthians 15:45 · Revelation 21:5-7"

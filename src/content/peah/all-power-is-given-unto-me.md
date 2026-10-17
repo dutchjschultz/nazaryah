@@ -2,7 +2,7 @@
 title: "All Power Is Given Unto Me"
 reference: "Matthew 28:18"
 deck: "Power that is given was first held by someone else."
-group: "One God"
+topic: "Messiah"
 keyVerse: "All power is given unto me in heaven and in earth."
 keyVerseRef: "Matthew 28:18"
 verses: "Matthew 28:18 · 1 Corinthians 15:27-28"

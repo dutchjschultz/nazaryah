@@ -2,7 +2,7 @@
 title: "The Anointed in the Oil Press"
 reference: "Luke 22:44"
 deck: "Gethsemane means oil press, and the night the Anointed One spent there was a pressing."
-group: "Scripture"
+topic: "Messiah"
 keyVerse: "And being in an agony he prayed more earnestly: and his sweat was as it were great drops of blood falling down to the ground."
 keyVerseRef: "Luke 22:44"
 verses: "Exodus 27:20 · Psalm 45:7 · Luke 22:42 · Luke 22:44 · Matthew 26:44 · Isaiah 53:10"

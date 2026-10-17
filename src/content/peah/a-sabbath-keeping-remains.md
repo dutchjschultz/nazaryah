@@ -2,7 +2,7 @@
 title: "A Sabbath-Keeping Remains"
 reference: "Hebrews 4:9"
 deck: "Only here does the writer change his word for rest."
-group: "Calendar and Feasts"
+topic: "Calendar and Feasts"
 keyVerse: "There remaineth therefore a rest to the people of God."
 keyVerseRef: "Hebrews 4:9"
 verses: "Hebrews 4:9 · Genesis 2:2-3 · Deuteronomy 5:15 · Exodus 31:13 · Isaiah 66:23"

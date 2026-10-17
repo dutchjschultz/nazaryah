@@ -2,7 +2,7 @@
 title: "Salvation Still Ahead"
 reference: "Hebrews 9:28"
 deck: "Hebrews still speaks of salvation as something ahead."
-group: "Prophecy"
+topic: "Kingdom and Resurrection"
 keyVerse: "So Messiah was once offered to bear the sins of many; and unto them that look for him shall he appear the second time without sin unto salvation."
 keyVerseRef: "Hebrews 9:28"
 verses: "Hebrews 9:28 · Romans 8:32 · 1 Peter 1:5 · Romans 13:11 · Romans 5:9-10"

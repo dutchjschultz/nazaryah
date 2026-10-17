@@ -2,7 +2,7 @@
 title: "No End to His Kingdom"
 reference: "Luke 1:33; 1 Corinthians 15:24"
 deck: "Gabriel said the kingdom has no end. Paul said the end comes. Both are true."
-group: "One God"
+topic: "Kingdom and Resurrection"
 keyVerse: "Then cometh the end, when he shall have delivered up the kingdom to God, even the Father."
 keyVerseRef: "1 Corinthians 15:24"
 verses: "Luke 1:32-33 · 1 Corinthians 15:24-28"

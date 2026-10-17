@@ -2,7 +2,7 @@
 title: "Heirs of Yahuah and Joint-Heirs with Messiah"
 reference: "Romans 8:17"
 deck: "Heirs of Yahuah, joint-heirs with Messiah, and the law built into the word heir."
-group: "Law"
+topic: "Covenant and Deliverance"
 keyVerse: "And if children, then heirs; heirs of God, and joint-heirs with Messiah; if so be that we suffer with him, that we may be also glorified together."
 keyVerseRef: "Romans 8:17"
 verses: "Romans 8:16–17 · Hebrews 1:2 · Numbers 27:8"

@@ -2,7 +2,7 @@
 title: "That They May Be One, Even as We Are One"
 reference: "John 17:22"
 deck: "The oneness of the Father and the Son is the same oneness Yahushua prayed for his followers."
-group: "One God"
+topic: "One God"
 keyVerse: "And the glory which thou gavest me I have given them; that they may be one, even as we are one."
 keyVerseRef: "John 17:22"
 verses: "John 17:21-22 · John 10:30"

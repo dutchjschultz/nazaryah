@@ -2,7 +2,7 @@
 title: "An Ear Turned from the Law"
 reference: "Proverbs 28:9"
 deck: "The man who will not hear the Law is not heard when he prays."
-group: "Law"
+topic: "Law"
 keyVerse: "He that turneth away his ear from hearing the law, even his prayer shall be abomination."
 keyVerseRef: "Proverbs 28:9"
 verses: "Proverbs 28:9 · 1 John 3:22"

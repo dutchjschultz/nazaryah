@@ -2,7 +2,7 @@
 title: "The Sacrifice of Praise"
 reference: "Hebrews 13:15"
 deck: "A temple needs sacrifices, and the living temple still offers them."
-group: "Scripture"
+topic: "Priesthood and Temple"
 keyVerse: "By him therefore let us offer the sacrifice of praise to God continually, that is, the fruit of our lips giving thanks to his name."
 keyVerseRef: "Hebrews 13:15"
 verses: "Hebrews 13:15 · Hosea 14:2 · Exodus 29:42 · Exodus 27:20 · Romans 12:1"

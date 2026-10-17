@@ -2,7 +2,7 @@
 title: "The Foundation Is Not the House"
 reference: "Hebrews 6:1"
 deck: "The altar call is the foundation. Hebrews says build on it."
-group: "Law"
+topic: "Walking It Out"
 keyVerse: "Therefore leaving the principles of the doctrine of Messiah, let us go on unto perfection; not laying again the foundation of repentance from dead works, and of faith toward God,"
 keyVerseRef: "Hebrews 6:1"
 verses: "Hebrews 6:1 · Hebrews 6:1-2 · Hebrews 5:12-14 · Deuteronomy 30:15-16 · Romans 7:7"

@@ -1,4 +1,8 @@
-// peah 1017 V5.js
+// peah 1017 V6.js
+// V6 (Dutch 1017, the twelve topics): PEAH_SUBJECTS becomes PEAH_TOPICS — twelve
+// values, approved by Dutch — and the entry field is `topic` (was `group`). Every
+// entry carries exactly one; the content schema fails the build on a blank or an
+// unknown value and names the file.
 // V5 (Pe'ah Page Redesign 1017 V1): peahAdded(data) — the day an entry went onto
 // the site (`added`, else `date`), for the /peah Newest band and sort; and
 // isNewTestament(bookIndex) for the Book menu's two headings.
@@ -18,15 +22,31 @@
 //                         sorts by its first verse. A book not in src/data/bible-books.js, or a
 //                         reference that will not parse, FAILS THE BUILD and
 //                         names the file.
-//   PEAH_SUBJECTS         the five subject values, in chip order.
+//   PEAH_TOPICS           the twelve topic values, in menu order.
 //   slugify(s)            "1 John" -> "1-john", "Calendar and Feasts" ->
 //                         "calendar-and-feasts" (the ?book= / ?subject= values).
 import { BIBLE_BOOKS, BOOK_ALIAS, SINGLE_CHAPTER, bookHeading } from '../data/bible-books.js';
 
-// The Pe'ah subject list, in chip order. The content schema restricts `group`
-// to these (see the comment block in src/content/config.ts). One value per
-// entry; reuse character for character; never hand-maintain a chip list.
-export const PEAH_SUBJECTS = ['Law', 'One God', 'Calendar and Feasts', 'Prophecy', 'Scripture'];
+// THE PE'AH TOPICS, in Topic-menu order. Every entry's `topic` is exactly one
+// of these, REUSED CHARACTER FOR CHARACTER — any change of case, spacing or
+// wording would split one topic into two menu entries, so the content schema
+// (src/content/config.ts) rejects anything not on this list, and a blank. The
+// /peah Topic menu is generated from this list and the entries; never hand-
+// maintain a topic list anywhere else.
+export const PEAH_TOPICS = [
+  'Law',
+  'One God',
+  'Messiah',
+  'Calendar and Feasts',
+  'Prophecy',
+  'Scripture',
+  'Covenant and Deliverance',
+  'Names and Hebrew Words',
+  'Priesthood and Temple',
+  'Kingdom and Resurrection',
+  'Counterfeit Teachings',
+  'Walking It Out',
+];
 
 export const peahTitle = (d) => `${d.reference} — ${d.title}`;
 

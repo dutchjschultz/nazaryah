@@ -2,7 +2,7 @@
 title: "Unbelief and Disobedience Are the Same Failure"
 reference: "Hebrews 3:18"
 deck: "Hebrews gives one failure two names."
-group: "Law"
+topic: "Walking It Out"
 keyVerse: "And to whom sware he that they should not enter into his rest, but to them that believed not?"
 keyVerseRef: "Hebrews 3:18"
 verses: "Hebrews 3:18 · Hebrews 4:6 · Hebrews 4:11 · Numbers 14:11 · Numbers 14:22 · Hebrews 3:6 · Hebrews 3:14"

@@ -2,7 +2,7 @@
 title: "A New and Living Way"
 reference: "Hebrews 10:20"
 deck: "The torn veil opened the room where the priests served daily."
-group: "Scripture"
+topic: "Priesthood and Temple"
 keyVerse: "By a new and living way, which he hath consecrated for us, through the veil, that is to say, his flesh;"
 keyVerseRef: "Hebrews 10:20"
 verses: "Hebrews 10:20 · Hebrews 9:18 · Matthew 27:51 · Hebrews 9:24 · Hebrews 9:7 · Hebrews 9:12"

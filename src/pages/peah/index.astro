@@ -5,7 +5,7 @@
 // (else `date`), SeriesCards like the homepage Featured Picks; a WORD SEARCH over
 // title, deck, reference and full body (index built at build time,
 // /peah/search-index.json, fetched on first use); three menus — TOPIC (the
-// entries' `group`, counted), BOOK (Old / New Testament headings, Bible order,
+// entries' `topic`, counted), BOOK (Old / New Testament headings, Bible order,
 // counted) and SORT (Newest first, Oldest first, Bible order). Search and menus
 // combine; "Showing N of 97 · Clear all"; the view lives in the address
 // (?q=&topic=&book=&sort=). Nothing chosen = every entry under its book
@@ -34,7 +34,7 @@
 // read from `reference` alone (src/lib/peah.js — an unknown book or an
 // unparseable reference fails the build and names the file). A Book drop-down
 // (only books holding an entry, canonical order) and the subject chips (from the
-// entries' `group` values, in PEAH_SUBJECTS order) filter together, and the
+// entries' `group` values, in PEAH_TOPICS order) filter together, and the
 // choice is kept in the address: /peah?book=romans&subject=law. With no script,
 // everything shows. Cards carry the composed title `reference — title`.
 // V2: Pe'ah entries carry no topic group now, so the chip row does not render.
@@ -45,7 +45,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import SeriesCard from '../../components/SeriesCard.astro';
 import { getCollection } from 'astro:content';
-import { parsePeahRef, PEAH_SUBJECTS, slugify, peahAdded, isNewTestament } from '../../lib/peah.js';
+import { parsePeahRef, PEAH_TOPICS, slugify, peahAdded, isNewTestament } from '../../lib/peah.js';
 import { skinOf, symbolKeyOf } from '../../data/series-skins.js';
 import { showDate } from '../../lib/home-pieces.js';
 
@@ -67,9 +67,9 @@ for (const x of entries) {
   else books.push({ slug: x.ref.bookSlug, name: x.ref.heading, nt: isNewTestament(x.ref.bookIndex), items: [x] });
 }
 
-// Topic menu: topics in use, in PEAH_SUBJECTS order, counted. Never hand-maintained.
-const topics = PEAH_SUBJECTS
-  .map((t) => ({ name: t, slug: slugify(t), count: entries.filter((x) => x.e.data.group === t).length }))
+// Topic menu: topics in use, in PEAH_TOPICS order, counted. Never hand-maintained.
+const topics = PEAH_TOPICS
+  .map((t) => ({ name: t, slug: slugify(t), count: entries.filter((x) => x.e.data.topic === t).length }))
   .filter((t) => t.count > 0);
 
 // Newest in the Field: the ten most recently added, newest first.
@@ -161,7 +161,7 @@ const symbol = symbolKeyOf('peah');
           <h2 class="peah-book-name">{b.name}</h2>
           <div class="peah-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
             {b.items.map((x) => (
-              <div class="peah-cell" data-slug={x.e.slug} data-topic={x.e.data.group ? slugify(x.e.data.group) : ''}
+              <div class="peah-cell" data-slug={x.e.slug} data-topic={x.e.data.topic ? slugify(x.e.data.topic) : ''}
                 data-book={b.slug} data-added={x.added} data-order={x.order}>
                 <BlogCard post={x.e} />
               </div>

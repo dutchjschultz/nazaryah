@@ -2,7 +2,7 @@
 title: "I Will Walk at Liberty"
 reference: "Psalm 119:45"
 deck: "What the psalmist meant by liberty, and why he set it beside keeping the law."
-group: "Law"
+topic: "Law"
 keyVerse: "So shall I keep thy law continually for ever and ever. And I will walk at liberty: for I seek thy precepts."
 keyVerseRef: "Psalm 119:44–45"
 verses: "Psalm 119:44–45 · Psalm 118:5 · 1 John 3:4 · John 8:34 · James 1:25"

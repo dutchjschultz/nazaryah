@@ -2,7 +2,7 @@
 title: "In the Presence of God for Us"
 reference: "Hebrews 9:24"
 deck: "He went in to stand before God for us."
-group: "One God"
+topic: "Priesthood and Temple"
 keyVerse: "For Messiah is not entered into the holy places made with hands, which are the figures of the true; but into heaven itself, now to appear in the presence of God for us:"
 keyVerseRef: "Hebrews 9:24"
 verses: "Hebrews 9:24 · 1 Timothy 2:5 · Hebrews 9:25-26 · Hebrews 9:12"

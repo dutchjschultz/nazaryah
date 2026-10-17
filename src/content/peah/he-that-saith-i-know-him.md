@@ -2,7 +2,7 @@
 title: "He That Saith, I Know Him"
 reference: "1 John 2:4"
 deck: "John's test for knowing Him, and the name he gives the man who fails it."
-group: "Law"
+topic: "Law"
 keyVerse: "He that saith, I know him, and keepeth not his commandments, is a liar, and the truth is not in him."
 keyVerseRef: "1 John 2:4"
 verses: "1 John 2:3 · 1 John 2:4 · 1 John 2:6 · 1 John 2:7 · John 15:10"

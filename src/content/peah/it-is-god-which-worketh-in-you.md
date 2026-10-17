@@ -2,7 +2,7 @@
 title: "It Is God Which Worketh in You"
 reference: "Philippians 2:13"
 deck: "The chapter used to prove Yahushua is God ends with glory to God the Father, and that same God at work in you."
-group: "One God"
+topic: "One God"
 keyVerse: "For it is God which worketh in you both to will and to do of his good pleasure."
 keyVerseRef: "Philippians 2:13"
 verses: "Philippians 2:5 · Philippians 2:11 · Philippians 2:13"

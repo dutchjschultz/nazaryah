@@ -2,7 +2,7 @@
 title: "David's Road to Gethsemane"
 reference: "John 18:1"
 deck: "The night of the oil press was walked once before, by David, on the same road."
-group: "Prophecy"
+topic: "Prophecy"
 keyVerse: "When Yahushua had spoken these words, he went forth with his disciples over the brook Cedron, where was a garden, into the which he entered, and his disciples."
 keyVerseRef: "John 18:1"
 verses: "John 18:1 · 2 Samuel 15:23 · 2 Samuel 15:30–31 · John 13:18 · 2 Samuel 17:23 · Matthew 27:5"

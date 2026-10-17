@@ -2,7 +2,7 @@
 title: "Yahuah Uncovers His Counsel Before He Acts"
 reference: "Amos 3:7"
 deck: "The word for secret is the counsel of friends, and it is kept with all who fear Him."
-group: "Scripture"
+topic: "Prophecy"
 keyVerse: "Surely the Lord Yahuah will do nothing, but he revealeth his secret unto his servants the prophets."
 keyVerseRef: "Amos 3:7"
 verses: "Amos 3:7 · Genesis 18:17 · Psalm 25:14"

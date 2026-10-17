@@ -2,7 +2,7 @@
 title: "Not as I Will"
 reference: "Matthew 26:39"
 deck: "In the garden there were two wills, and the Son laid his down."
-group: "One God"
+topic: "Messiah"
 keyVerse: "O my Father, if it be possible, let this cup pass from me: nevertheless not as I will, but as thou wilt."
 keyVerseRef: "Matthew 26:39"
 verses: "Matthew 26:39 · John 5:30"

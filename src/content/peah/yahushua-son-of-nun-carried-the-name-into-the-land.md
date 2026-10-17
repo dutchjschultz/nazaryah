@@ -2,7 +2,7 @@
 title: "Yahushua Son of Nun Carried the Name Into the Land"
 reference: "Numbers 13:16"
 deck: "Moses added Yah to the name of the man who would lead Israel into Canaan, and the new name was Yahushua."
-group: "Prophecy"
+topic: "Names and Hebrew Words"
 keyVerse: "And Moses called Oshea the son of Nun Yahushua."
 keyVerseRef: "Numbers 13:16"
 verses: "Numbers 13:2 · Numbers 13:8 · Numbers 13:16 · Hebrews 4:8-9"

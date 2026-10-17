@@ -2,7 +2,7 @@
 title: "Cloven Tongues"
 reference: "Acts 2:3"
 deck: "Why would the fire come down divided?"
-group: "Law"
+topic: "Covenant and Deliverance"
 keyVerse: "And there appeared unto them cloven tongues like as of fire, and it sat upon each of them."
 keyVerseRef: "Acts 2:3"
 verses: "Genesis 15:10 · Genesis 15:17 · Leviticus 1:17 · Luke 22:17 · Luke 22:20 · Romans 12:1 · Revelation 5:9"

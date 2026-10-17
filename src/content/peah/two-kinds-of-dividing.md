@@ -2,7 +2,7 @@
 title: "Two Kinds of Dividing"
 reference: "Proverbs 16:28"
 deck: "Yahuah separates the unlike. The accuser separates the like."
-group: "Scripture"
+topic: "Walking It Out"
 keyVerse: "A froward man soweth strife: and a whisperer separateth chief friends."
 keyVerseRef: "Proverbs 16:28"
 verses: "Proverbs 16:28 · Genesis 1:4 · Leviticus 20:24 · Genesis 2:24"

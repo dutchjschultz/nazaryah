@@ -2,7 +2,7 @@
 title: "The Witnesses Are Not Watching From the Stands"
 reference: "Hebrews 12:1"
 deck: "Hebrews 11 says where the witnesses are."
-group: "Prophecy"
+topic: "Kingdom and Resurrection"
 keyVerse: "Wherefore seeing we also are compassed about with so great a cloud of witnesses, let us lay aside every weight, and the sin which doth so easily beset us, and let us run with patience the race that is set before us,"
 keyVerseRef: "Hebrews 12:1"
 verses: "Hebrews 12:1 · Hebrews 11:13 · Hebrews 11:39-40 · Acts 2:34 · Ecclesiastes 9:5"

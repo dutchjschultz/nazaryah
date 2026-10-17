@@ -2,7 +2,7 @@
 title: "The Assembling Is Not a Sunday Service"
 reference: "Hebrews 10:25"
 deck: "The verse names no day and no building."
-group: "Calendar and Feasts"
+topic: "Counterfeit Teachings"
 keyVerse: "Not forsaking the assembling of ourselves together, as the manner of some is; but exhorting one another: and so much the more, as ye see the day approaching."
 keyVerseRef: "Hebrews 10:25"
 verses: "Hebrews 10:25 · 2 Thessalonians 2:1 · Hebrews 10:24 · Leviticus 23:2-3"

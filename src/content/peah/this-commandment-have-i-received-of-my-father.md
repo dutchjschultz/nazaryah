@@ -2,7 +2,7 @@
 title: "This Commandment Have I Received of My Father"
 reference: "John 10:18"
 deck: "Power in this verse is authority given by the Father, the same authority given to believers to become sons of God."
-group: "One God"
+topic: "Messiah"
 keyVerse: "I have power to lay it down, and I have power to take it again. This commandment have I received of my Father."
 keyVerseRef: "John 10:18"
 verses: "John 10:18 · John 1:12-13 · 1 Corinthians 6:14"
