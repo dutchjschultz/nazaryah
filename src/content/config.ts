@@ -1,4 +1,7 @@
-// content config 1013 V28
+// content config 1017 V29
+// V29 (Pe'ah Page Redesign 1017 V1): peah gains optional `added` — the date the
+// entry went onto the site (orders the /peah Newest band and Sort). Blank falls
+// back to `date` (src/lib/peah.js peahAdded).
 // V28 (Dutch 1013, category rule): the category enum is the eight Berean Studies
 // category names plus six standing exceptions (four book series, The Trinity
 // Files, Parables). The Scrolls, The Feasts, The Law Still Stands, Word Studies
@@ -376,6 +379,10 @@ const peahCollection = defineCollection({
     keyVerseRef: z.string(),
     verses: z.string().optional(),         // the "Verses:" line at the foot
     date: z.coerce.date(),
+    // The day the entry went ONTO THE SITE — not the day it was written. Orders
+    // the /peah Newest in the Field band and its Newest / Oldest sort. Blank
+    // falls back to `date`.
+    added: z.coerce.date().optional(),
     draft: z.boolean().optional(),
     // HOMEPAGE FEATURED PICKS (index.astro, src/lib/home-pieces.js). `featured`
     // marks a pick; `featuredAt` is the day Dutch named it (orders the six seats

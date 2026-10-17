@@ -1,4 +1,6 @@
-// home-pieces 1013 V6.js
+// home-pieces 1017 V7.js
+// V7: a Pe'ah entry's date is peahAdded() — `added` (the day it went onto the
+// site), else `date` — matching the /peah Newest band.
 // V6: a post's BLOG_GROUPS key rides into skinOf, so a Berean card's top edge
 // and symbol take its subcategory's tone (series-skins V8).
 // V5 (Featured Picks — raise to 10 slots, Dutch 1013): ten seats, two rows of
@@ -42,7 +44,7 @@
 // read-throughs (they ride with their parent), and anything not live.
 import { getCollection } from 'astro:content';
 import { postHref } from './post-href.js';
-import { peahTitle } from './peah.js';
+import { peahTitle, peahAdded } from './peah.js';
 import { groupOf } from '../data/blog-groups.js';
 import { entries as deskEntries } from '../data/watchmans-desk.js';
 import { studios, swarmEntries, craft, stars } from '../data/hollywood.js';
@@ -118,7 +120,7 @@ export async function homePieces() {
       title: peahTitle(p.data),
       deck: p.data.deck,
       href: `/peah/${p.slug}`,
-      date: p.data.date,
+      date: peahAdded(p.data), // the day it went onto the site (1017)
       section: 'peah',
       data: p.data,
     })),

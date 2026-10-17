@@ -1,4 +1,7 @@
-// peah 1005 V4.js
+// peah 1017 V5.js
+// V5 (Pe'ah Page Redesign 1017 V1): peahAdded(data) — the day an entry went onto
+// the site (`added`, else `date`), for the /peah Newest band and sort; and
+// isNewTestament(bookIndex) for the Book menu's two headings.
 // V4: a reference naming two passages ("Luke 1:33; 1 Corinthians 15:24") files
 // and sorts by the FIRST one, the part before the semicolon. The displayed title
 // still shows the whole reference.
@@ -26,6 +29,12 @@ import { BIBLE_BOOKS, BOOK_ALIAS, SINGLE_CHAPTER, bookHeading } from '../data/bi
 export const PEAH_SUBJECTS = ['Law', 'One God', 'Calendar and Feasts', 'Prophecy', 'Scripture'];
 
 export const peahTitle = (d) => `${d.reference} — ${d.title}`;
+
+// The day the entry went onto the site: `added`, else its `date`.
+export const peahAdded = (d) => d.added ?? d.date;
+
+// Matthew opens the New Testament in src/data/bible-books.js.
+export const isNewTestament = (bookIndex) => bookIndex >= BIBLE_BOOKS.indexOf('Matthew');
 
 export const slugify = (s) => s.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 

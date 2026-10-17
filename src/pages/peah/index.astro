@@ -1,5 +1,16 @@
 ---
-// src/pages/peah/index.astro · 1002 V6
+// src/pages/peah/index.astro · 1017 V7
+// V7 (Pe'ah Page Redesign 1017 V1): findable without knowing the verse. Under the
+// unchanged header: NEWEST IN THE FIELD — the ten latest entries by `added`
+// (else `date`), SeriesCards like the homepage Featured Picks; a WORD SEARCH over
+// title, deck, reference and full body (index built at build time,
+// /peah/search-index.json, fetched on first use); three menus — TOPIC (the
+// entries' `group`, counted), BOOK (Old / New Testament headings, Bible order,
+// counted) and SORT (Newest first, Oldest first, Bible order). Search and menus
+// combine; "Showing N of 97 · Clear all"; the view lives in the address
+// (?q=&topic=&book=&sort=). Nothing chosen = every entry under its book
+// heading; anything chosen = one flat list in the chosen order. The V4 one-book
+// opening view, the chips and ?subject= give way (?subject= still read).
 // V6: the drop-down counts ENTRIES, not verses — "Jude (6)" (a range is one
 // entry); the coverage percentage, its data files and "(complete)" are gone.
 // "All books (N)" is the drop-down's first item: every entry, under its book
@@ -32,28 +43,39 @@
 // (separate collection, never read by inFeed or study-pool.js).
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
+import SeriesCard from '../../components/SeriesCard.astro';
 import { getCollection } from 'astro:content';
-import { parsePeahRef, PEAH_SUBJECTS, slugify } from '../../lib/peah.js';
+import { parsePeahRef, PEAH_SUBJECTS, slugify, peahAdded, isNewTestament } from '../../lib/peah.js';
+import { skinOf, symbolKeyOf } from '../../data/series-skins.js';
+import { showDate } from '../../lib/home-pieces.js';
 
-const entries = (await getCollection('peah', ({ data }) => data.draft !== true))
-  .map((e) => ({ e, ref: parsePeahRef(e) }))
+const iso = (d) => new Date(d).toISOString().slice(0, 10);
+const bibleSorted = (await getCollection('peah', ({ data }) => data.draft !== true))
+  .map((e) => ({ e, ref: parsePeahRef(e), added: iso(peahAdded(e.data)) }))
   .sort((a, b) =>
     a.ref.bookIndex - b.ref.bookIndex ||
     a.ref.chapter - b.ref.chapter ||
     a.ref.verse - b.ref.verse ||
     a.e.data.title.localeCompare(b.e.data.title));
+const entries = bibleSorted.map((x, i) => ({ ...x, order: i }));
 
 // One section per book that holds at least one entry, in canonical order.
 const books = [];
 for (const x of entries) {
   const last = books[books.length - 1];
-  if (last && last.slug === x.ref.bookSlug) last.items.push(x.e);
-  else books.push({ slug: x.ref.bookSlug, name: x.ref.heading, items: [x.e] });
+  if (last && last.slug === x.ref.bookSlug) last.items.push(x);
+  else books.push({ slug: x.ref.bookSlug, name: x.ref.heading, nt: isNewTestament(x.ref.bookIndex), items: [x] });
 }
 
-// Chips: subjects in use, in PEAH_SUBJECTS order. Never hand-maintained.
-const used = new Set(entries.map((x) => x.e.data.group).filter(Boolean));
-const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, slug: slugify(s) }));
+// Topic menu: topics in use, in PEAH_SUBJECTS order, counted. Never hand-maintained.
+const topics = PEAH_SUBJECTS
+  .map((t) => ({ name: t, slug: slugify(t), count: entries.filter((x) => x.e.data.group === t).length }))
+  .filter((t) => t.count > 0);
+
+// Newest in the Field: the ten most recently added, newest first.
+const newest = [...entries].sort((a, b) => b.added.localeCompare(a.added) || a.order - b.order).slice(0, 10);
+const skin = skinOf('peah');
+const symbol = symbolKeyOf('peah');
 ---
 
 <BaseLayout
@@ -71,41 +93,87 @@ const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, sl
     <p class="peah-count">{entries.length} {entries.length === 1 ? 'read' : 'reads'}</p>
   </section>
 
+  <section class="peah-newest" aria-labelledby="peah-newest-h">
+    <h2 id="peah-newest-h" class="peah-band-h">Newest in the Field</h2>
+    <div class="peah-picks">
+      {newest.map((x) => (
+        <SeriesCard
+          skin={skin}
+          href={`/peah/${x.e.slug}`}
+          title={x.e.data.title}
+          description={x.e.data.deck}
+          cta="Read the Entry"
+          date={showDate(x.added)}
+          location={[x.e.data.reference]}
+          symbol={symbol}
+        />
+      ))}
+    </div>
+  </section>
+
   <div class="peah-wrap">
-    <div class="peah-controls">
-      <label class="peah-book-pick">
-        <span class="peah-book-label">Book</span>
-        <select id="peah-book">
-          <option value="all">All books ({entries.length})</option>
-          {books.map((b) => <option value={b.slug}>{b.name} ({b.items.length})</option>)}
-        </select>
+    <div class="peah-find">
+      <label class="peah-search">
+        <span class="sr-only">Search the corner studies</span>
+        <input id="peah-q" type="search" autocomplete="off" spellcheck="false"
+          placeholder="Search a word, a name, or a verse — e.g. Moses, Sabbath, John 5." />
       </label>
-      {chips.length > 0 && (
-        <div class="peah-chips" role="group" aria-label="Filter by subject">
-          <button type="button" class="peah-chip is-on" data-chip="">All</button>
-          {chips.map((c) => (
-            <button type="button" class="peah-chip" data-chip={c.slug}>{c.name}</button>
-          ))}
-        </div>
-      )}
+      <div class="peah-menus">
+        <label class="peah-menu">
+          <span class="peah-menu-label">Topic</span>
+          <select id="peah-topic">
+            <option value="">All topics ({entries.length})</option>
+            {topics.map((t) => <option value={t.slug}>{t.name} ({t.count})</option>)}
+          </select>
+        </label>
+        <label class="peah-menu">
+          <span class="peah-menu-label">Book</span>
+          <select id="peah-book">
+            <option value="">All books ({entries.length})</option>
+            {[['Old Testament', false], ['New Testament', true]].map(([label, nt]) => {
+              const inGroup = books.filter((b) => b.nt === nt);
+              return inGroup.length > 0 && (
+                <optgroup label={label}>
+                  {inGroup.map((b) => <option value={b.slug}>{b.name} ({b.items.length})</option>)}
+                </optgroup>
+              );
+            })}
+          </select>
+        </label>
+        <label class="peah-menu">
+          <span class="peah-menu-label">Sort</span>
+          <select id="peah-sort">
+            <option value="newest">Newest first</option>
+            <option value="oldest">Oldest first</option>
+            <option value="bible">Bible order</option>
+          </select>
+        </label>
+      </div>
+      <p class="peah-results-line" aria-live="polite">
+        <span id="peah-showing">Showing {entries.length} of {entries.length}</span>
+        <span id="peah-clear-wrap" hidden> · <a href="/peah/" id="peah-clear">Clear all</a></span>
+      </p>
     </div>
 
     <div id="peah-list">
-      {books.map((b, i) => (
-        <section class="peah-bookgroup" data-book={b.slug} hidden={i > 0}>
+      {books.map((b) => (
+        <section class="peah-bookgroup" data-book={b.slug}>
           <h2 class="peah-book-name">{b.name}</h2>
-          <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-            {b.items.map((e) => (
-              <div class="peah-cell" data-subject={e.data.group ? slugify(e.data.group) : ''}>
-                <BlogCard post={e} />
+          <div class="peah-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
+            {b.items.map((x) => (
+              <div class="peah-cell" data-slug={x.e.slug} data-topic={x.e.data.group ? slugify(x.e.data.group) : ''}
+                data-book={b.slug} data-added={x.added} data-order={x.order}>
+                <BlogCard post={x.e} />
               </div>
             ))}
           </div>
         </section>
       ))}
     </div>
-    <p class="peah-empty" id="peah-empty" hidden>No entry yet on that passage.</p>
-    <noscript><style>.peah-bookgroup[hidden]{display:block !important}</style></noscript>
+    <div id="peah-flat" class="peah-grid grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5" hidden></div>
+    <p class="peah-empty" id="peah-empty" hidden>
+      No corner study matches that. <a href="/peah/" class="peah-clear-link">Clear all</a>
+    </p>
   </div>
 </BaseLayout>
 
@@ -122,31 +190,58 @@ const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, sl
 
   .peah-wrap { padding: 2.25rem 1.5rem 3rem; max-width: 84rem; margin: 0 auto; }
 
-  .peah-controls { display: flex; flex-direction: column; gap: 1rem; align-items: center; margin-bottom: 2.2rem; }
-  .peah-book-pick { display: inline-flex; align-items: center; gap: 0.6rem; }
-  .peah-book-label { font-family: 'Cinzel', Georgia, serif; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: #6b3010; }
-  #peah-book {
-    font-family: var(--font-family-serif); font-size: 1rem; color: #2b1d11;
-    padding: 0.35rem 2rem 0.35rem 0.75rem; border: 1px solid #c4a97d; border-radius: 4px; background-color: #fbf5e6;
-    max-width: 100%;
+  /* ── Newest in the Field: the homepage Featured Picks grid (rows of five,
+     three on a tablet, two on a small tablet, one on a phone). ── */
+  .peah-newest { padding: 2rem 1.5rem 0.5rem; max-width: 80rem; margin: 0 auto; }
+  .peah-band-h {
+    font-family: 'Cinzel', Georgia, serif; font-size: 1.05rem; font-weight: 700; letter-spacing: 0.14em;
+    text-transform: uppercase; color: #4a2808; text-align: center; margin: 0 0 1.1rem;
   }
-  :global(.dark) .peah-book-label { color: #c4a46b; }
-  :global(.dark) #peah-book { background-color: #130e06; color: #e8d9b8; border-color: #3a2510; }
+  :global(.dark) .peah-band-h { color: #e8c98a; }
+  .peah-picks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.9rem; row-gap: 1.1rem; grid-auto-rows: 1fr; }
+  @media (max-width: 1100px) { .peah-picks { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 760px) { .peah-picks { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  /* Phone: one swipeable row, so ten cards do not push the search two screens down. */
+  @media (max-width: 520px) {
+    .peah-picks {
+      grid-template-columns: none; grid-auto-flow: column; grid-auto-columns: 82%;
+      overflow-x: auto; scroll-snap-type: x mandatory; padding-bottom: 0.6rem;
+      -webkit-overflow-scrolling: touch;
+    }
+    .peah-picks > :global(*) { scroll-snap-align: start; }
+  }
 
-  .peah-chips { display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
-  .peah-chip {
-    font-family: 'Cinzel', Georgia, serif; font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase;
-    padding: 0.4rem 0.85rem; border-radius: 999px; cursor: pointer;
-    border: 1px solid #c4a97d; background: #fbf5e6; color: #2b1d11;
-    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  /* ── Search, three menus, results line ── */
+  .peah-find { margin-bottom: 2.2rem; }
+  .peah-search { display: block; }
+  #peah-q {
+    width: 100%; font-family: var(--font-family-serif); font-size: 1.1rem; color: #2b1d11;
+    padding: 0.75rem 1rem; border: 1px solid #c4a97d; border-radius: 6px; background-color: #fbf5e6;
   }
-  .peah-chip:hover { border-color: #a07850; }
-  .peah-chip.is-on { background: #4a2808; color: #f5e8d0; border-color: #4a2808; }
-  .peah-chip:disabled { opacity: 0.38; cursor: default; }
-  .peah-chip:disabled:hover { border-color: #c4a97d; }
-  :global(.dark) .peah-chip { border-color: #3a2510; background: #130e06; color: #c4a46b; }
-  :global(.dark) .peah-chip:hover { border-color: #ba7517; }
-  :global(.dark) .peah-chip.is-on { background: #ba7517; color: #140d04; border-color: #ba7517; }
+  #peah-q::placeholder { color: #8a7458; font-style: italic; }
+  #peah-q:focus { outline: 2px solid #a07850; outline-offset: 1px; }
+  :global(.dark) #peah-q { background-color: #130e06; color: #e8d9b8; border-color: #3a2510; }
+  :global(.dark) #peah-q::placeholder { color: #8a7458; }
+
+  .peah-menus { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.9rem; margin-top: 0.9rem; }
+  @media (max-width: 640px) { .peah-menus { grid-template-columns: 1fr; } }
+  .peah-menu { display: flex; flex-direction: column; gap: 0.3rem; }
+  .peah-menu-label { font-family: 'Cinzel', Georgia, serif; font-size: 0.64rem; letter-spacing: 0.16em; text-transform: uppercase; color: #6b3010; }
+  .peah-menu select {
+    width: 100%; font-family: var(--font-family-serif); font-size: 1rem; color: #2b1d11;
+    padding: 0.45rem 0.75rem; border: 1px solid #c4a97d; border-radius: 4px; background-color: #fbf5e6;
+  }
+  :global(.dark) .peah-menu-label { color: #c4a46b; }
+  :global(.dark) .peah-menu select { background-color: #130e06; color: #e8d9b8; border-color: #3a2510; }
+
+  .peah-results-line {
+    text-align: center; margin: 1rem 0 0; font-family: var(--font-family-serif); font-style: italic;
+    font-size: 1rem; color: #6b5a45;
+  }
+  .peah-results-line a, .peah-clear-link { color: #6b3010; font-style: normal; font-family: 'Cinzel', Georgia, serif; font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+  :global(.dark) .peah-results-line { color: #b8a888; }
+  :global(.dark) .peah-results-line a, :global(.dark) .peah-clear-link { color: #e8c98a; }
+  .peah-cell[hidden] { display: none; }
 
   .peah-bookgroup + .peah-bookgroup { margin-top: 2.5rem; }
   .peah-book-name {
@@ -161,66 +256,145 @@ const chips = PEAH_SUBJECTS.filter((s) => used.has(s)).map((s) => ({ name: s, sl
   :global(.dark) .peah-empty { color: #b8a888; }
 </style>
 
+<style is:global>
+  /* Search highlight — created by the script at runtime, so it is global. */
+  mark.peahq-hit { background: #ecd28a; color: inherit; border-radius: 2px; padding: 0 1px; }
+  .dark mark.peahq-hit { background: #7a5410; color: #fff3d6; }
+</style>
+
 <script>
-  // One book at a time. The book is the drop-down's value (default: its first
-  // option, the earliest book holding an entry); the subject chip narrows that
-  // book only. Chips with nothing in the chosen book are disabled (greyed). The
-  // choice is kept in the address (?book=<slug>&subject=<slug>); an unknown value
-  // is ignored. A subject the newly chosen book does not hold falls back to All.
-  const select = document.getElementById('peah-book') as HTMLSelectElement | null;
-  const chips = Array.from(document.querySelectorAll<HTMLButtonElement>('.peah-chip'));
+  // Search + Topic + Book + Sort, combined. Nothing chosen: every entry under its
+  // book heading (Bible order). Anything chosen: the matching cells move into one
+  // flat grid in the chosen order. The view lives in the address
+  // (?q=&topic=&book=&sort=); the old ?subject= is read as ?topic=, ?book=all as
+  // no book. The search index (/peah/search-index.json) loads on first use.
+  const q = document.getElementById('peah-q') as HTMLInputElement;
+  const topicSel = document.getElementById('peah-topic') as HTMLSelectElement;
+  const bookSel = document.getElementById('peah-book') as HTMLSelectElement;
+  const sortSel = document.getElementById('peah-sort') as HTMLSelectElement;
+  const showing = document.getElementById('peah-showing')!;
+  const clearWrap = document.getElementById('peah-clear-wrap')!;
+  const empty = document.getElementById('peah-empty')!;
+  const flat = document.getElementById('peah-flat')!;
   const groups = Array.from(document.querySelectorAll<HTMLElement>('.peah-bookgroup'));
-  const empty = document.getElementById('peah-empty');
+  const cells = Array.from(document.querySelectorAll<HTMLElement>('.peah-cell'));
+  const home = new Map(cells.map((c) => [c, c.parentElement!]));
+  const total = cells.length;
 
-  // 'all' = All books: every book's section shows.
-  const ALL = 'all';
-  const inView = (g: HTMLElement) => book === ALL || g.dataset.book === book;
-  const bookOk = (v: string) => v === ALL || groups.some((g) => g.dataset.book === v);
-  const subjectsInView = () => new Set(
-    groups.filter(inView).flatMap((g) => Array.from(g.querySelectorAll<HTMLElement>('.peah-cell')).map((c) => c.dataset.subject || ''))
-  );
+  // Plain text per entry; also each card's own text, so title / deck /
+  // reference match before the index arrives.
+  const cardText = new Map(cells.map((c) => [c.dataset.slug!, (c.textContent || '').replace(/\s+/g, ' ').toLowerCase()]));
+  let bodyText: Map<string, string> | null = null;
+  let loading: Promise<void> | null = null;
+  function loadIndex() {
+    if (!loading) {
+      loading = fetch('/peah/search-index.json')
+        .then((r) => r.json())
+        .then((rows: { slug: string; text: string }[]) => { bodyText = new Map(rows.map((r) => [r.slug, r.text])); })
+        .catch(() => { bodyText = new Map(); });
+    }
+    return loading;
+  }
 
-  let book = groups[0]?.dataset.book || '';
-  let subject = '';
+  const norm = (s: string) => s.toLowerCase().replace(/[–—]/g, '-').replace(/\s+/g, ' ').trim();
+  const has = (slug: string, needle: string) =>
+    norm(cardText.get(slug) || '').includes(needle) || norm(bodyText?.get(slug) || '').includes(needle);
+
+  // Wrap matches in a card's deck line; undo the last pass first.
+  const escapeRe = (s: string) => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+  function highlight(cell: HTMLElement, needle: string) {
+    const deck = cell.querySelector<HTMLElement>('.post-subtitle');
+    if (!deck) return;
+    if (deck.dataset.plain === undefined) deck.dataset.plain = deck.textContent || '';
+    const plain = deck.dataset.plain;
+    if (!needle) { deck.textContent = plain; return; }
+    const re = new RegExp(escapeRe(needle).replace(/ /g, '\\s+'), 'gi');
+    deck.textContent = '';
+    let last = 0;
+    for (const m of plain.matchAll(re)) {
+      deck.append(plain.slice(last, m.index));
+      const mark = document.createElement('mark');
+      mark.className = 'peahq-hit';
+      mark.textContent = m[0];
+      deck.append(mark);
+      last = m.index! + m[0].length;
+    }
+    deck.append(plain.slice(last));
+  }
 
   function apply(updateUrl: boolean) {
-    if (select) select.value = book;
-    const has = subjectsInView();
-    if (subject && !has.has(subject)) subject = '';
-    chips.forEach((c) => {
-      const v = c.dataset.chip || '';
-      c.disabled = !!v && !has.has(v);
-      c.classList.toggle('is-on', v === subject);
-    });
-    let shown = 0;
-    groups.forEach((g) => {
-      const mine = inView(g);
-      g.hidden = !mine;
-      if (!mine) return;
-      g.querySelectorAll<HTMLElement>('.peah-cell').forEach((cell) => {
-        const on = !subject || cell.dataset.subject === subject;
-        cell.style.display = on ? '' : 'none';
-        if (on) shown++;
-      });
-    });
-    if (empty) empty.hidden = shown > 0;
+    const needle = norm(q.value);
+    const topic = topicSel.value, book = bookSel.value, sort = sortSel.value;
+    // A sort the reader picked (even the default, Newest first) counts as a choice.
+    const anything = !!(needle || topic || book || sortPicked);
+
+    const match = cells.filter((c) =>
+      (!topic || c.dataset.topic === topic) &&
+      (!book || c.dataset.book === book) &&
+      (!needle || has(c.dataset.slug!, needle)));
+    const on = new Set(match);
+    cells.forEach((c) => { c.hidden = !on.has(c); highlight(c, needle); });
+
+    if (anything) {
+      const by = (a: HTMLElement, b: HTMLElement) => Number(a.dataset.order) - Number(b.dataset.order);
+      const sorted = [...match].sort(sort === 'bible' ? by
+        : sort === 'oldest' ? (a, b) => a.dataset.added!.localeCompare(b.dataset.added!) || by(a, b)
+        : (a, b) => b.dataset.added!.localeCompare(a.dataset.added!) || by(a, b));
+      sorted.forEach((c) => flat.append(c));
+      flat.hidden = false;
+      groups.forEach((g) => { g.hidden = true; });
+    } else {
+      // Back under the book headings, in Bible order.
+      [...cells].sort((a, b) => Number(a.dataset.order) - Number(b.dataset.order)).forEach((c) => home.get(c)!.append(c));
+      flat.hidden = true;
+      groups.forEach((g) => { g.hidden = false; });
+    }
+
+    showing.textContent = `Showing ${match.length} of ${total}`;
+    clearWrap.hidden = !anything;
+    empty.hidden = match.length > 0;
+
     if (updateUrl) {
-      const q = new URLSearchParams();
-      q.set('book', book);
-      if (subject) q.set('subject', subject);
-      history.replaceState(null, '', `${location.pathname}?${q.toString()}${location.hash}`);
+      const p = new URLSearchParams();
+      if (q.value.trim()) p.set('q', q.value.trim());
+      if (topic) p.set('topic', topic);
+      if (book) p.set('book', book);
+      if (sortPicked) p.set('sort', sort);
+      const qs = p.toString();
+      history.replaceState(null, '', `${location.pathname}${qs ? '?' + qs : ''}${location.hash}`);
     }
   }
 
+  let sortPicked = false;
+  const optionOk = (sel: HTMLSelectElement, v: string) => Array.from(sel.options).some((o) => o.value === v);
   const params = new URLSearchParams(location.search);
+  const t = (params.get('topic') || params.get('subject') || '').toLowerCase();
   const b = (params.get('book') || '').toLowerCase();
-  const s = (params.get('subject') || '').toLowerCase();
-  if (bookOk(b)) book = b;
-  if (chips.some((c) => (c.dataset.chip || '') === s)) subject = s;
+  const so = (params.get('sort') || '').toLowerCase();
+  if (optionOk(topicSel, t)) topicSel.value = t;
+  if (b !== 'all' && optionOk(bookSel, b)) bookSel.value = b;
+  if (optionOk(sortSel, so)) { sortSel.value = so; sortPicked = true; }
+  q.value = params.get('q') || '';
   apply(false);
+  if (q.value.trim()) loadIndex().then(() => apply(false));
 
-  select?.addEventListener('change', () => { book = select.value; apply(true); });
-  chips.forEach((chip) => {
-    chip.addEventListener('click', () => { if (!chip.disabled) { subject = chip.dataset.chip || ''; apply(true); } });
+  let timer = 0;
+  q.addEventListener('focus', () => { loadIndex(); });
+  q.addEventListener('input', () => {
+    clearTimeout(timer);
+    timer = window.setTimeout(() => {
+      apply(true);
+      if (!bodyText) loadIndex().then(() => apply(false));
+    }, 120);
   });
+  [topicSel, bookSel].forEach((sel) => sel.addEventListener('change', () => apply(true)));
+  sortSel.addEventListener('change', () => { sortPicked = true; apply(true); });
+
+  function clearAll(e: Event) {
+    e.preventDefault();
+    q.value = ''; topicSel.value = ''; bookSel.value = ''; sortSel.value = 'newest'; sortPicked = false;
+    apply(true);
+  }
+  document.getElementById('peah-clear')!.addEventListener('click', clearAll);
+  document.querySelector('.peah-clear-link')!.addEventListener('click', clearAll);
 </script>
