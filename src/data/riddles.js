@@ -1,15 +1,24 @@
-// riddles 1017 V1.js
-// created: the riddle collection — Guilty of All (new) and One Name, One Father
-// (moved unchanged from src/pages/riddle.astro).
+// riddles 1018 V2.js
+// V2 (Etsy Riddles Board 1018 V1): every riddle gains a permanent `number` and a
+// `teaser`; One Name, One Father is the STANDING riddle (`standing: true`) — the
+// homepage card and /riddle always show it and never rotate. /riddles is now one
+// board: one riddle at a time, arrows by number, a numbered list under it.
+// V1 (1017): created — the riddle collection, Guilty of All (new) and One Name,
+// One Father (moved unchanged from src/pages/riddle.astro).
 //
 // ================================================================
-//   RIDDLES — NEWEST FIRST. riddles[0] is the newest: /riddle renders it, and
-//   the homepage Riddle corner card (src/data/corner-cards.js) takes its `line`
-//   and `href` from it, so adding a riddle at the top rotates both on its own.
-//   Each riddle has a page at /riddle/<slug>/ and a card on /riddles.
+//   RIDDLES — NEWEST FIRST. Add a new riddle at the TOP with the next `number`.
+//   /riddles opens on riddles[0] (newestRiddle). The standing riddle
+//   (standingRiddle, the one with `standing: true`) is the homepage card and
+//   /riddle, and never rotates. Every riddle keeps its own page at /riddle/<slug>/.
 //
+//   number        permanent, counted OLDEST first (1, 2, 3 …). Never renumber:
+//                 /riddles?n=<number> links depend on it. Must be unique.
+//   standing      true on exactly one riddle (One Name, One Father)
 //   slug, title   the page URL and the small eyebrow above the page heading
-//   line          the homepage corner-card line (and the /riddles card line)
+//   teaser        one or two sentences shown above the tiles and in the board's
+//                 numbered list — it must NOT name or hint at the answer
+//   line          the homepage corner-card line (shown only for the standing riddle)
 //   tiles         three { ref, text } — KJV, with [Yahuah] etc. in brackets
 //   nudgeLine     the line above the nudge verse
 //   nudge         { ref, text }
@@ -24,8 +33,10 @@
 
 export const riddles = [
   {
+    number: 2,
     slug: 'guilty-of-all',
     title: 'Guilty of All',
+    teaser: 'Every pulpit agrees Yahushua kept the whole Law. Hardly anyone stops to ask what keeping the very first commandment required of Him.',
     line: 'Three verses about the Law. One answer about the Son. Can you find it?',
     tiles: [
       { ref: 'James 2:10', text: 'For whosoever shall keep the whole law, and yet offend in one point, he is guilty of all.' },
@@ -44,8 +55,11 @@ export const riddles = [
     next: { href: '/peah/commandment-one-and-the-man-who-kept-it/', label: 'Read the corner study' },
   },
   {
+    number: 1,
+    standing: true,
     slug: 'one-name-one-father',
     title: 'One Name, One Father',
+    teaser: 'The Psalms and the Prophets each say one thing about Yahuah. Lay the three side by side, and only one conclusion is left standing.',
     line: 'Three verses. One answer. Can you find it?',
     tiles: [
       { ref: 'Psalm 83:18', text: 'That men may know that thou, whose name alone is JEHOVAH [Yahuah], art the most high over all the earth.' },
@@ -66,3 +80,14 @@ export const riddles = [
 ];
 
 export const newestRiddle = riddles[0];
+export const standingRiddle = riddles.find((r) => r.standing);
+// Oldest first, by number — the board's arrows and numbered list.
+export const riddlesByNumber = [...riddles].sort((a, b) => a.number - b.number);
+
+const numbers = riddles.map((r) => r.number);
+if (new Set(numbers).size !== numbers.length || numbers.some((n) => !Number.isInteger(n) || n < 1)) {
+  throw new Error(`riddles.js: every riddle needs a unique whole-number \`number\` (got ${numbers.join(', ')})`);
+}
+if (riddles.filter((r) => r.standing).length !== 1) {
+  throw new Error('riddles.js: exactly one riddle must carry `standing: true`');
+}

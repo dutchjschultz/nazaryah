@@ -1,4 +1,6 @@
-// nav 1014 V10.js
+// nav 1018 V11.js
+// V11 (Etsy Riddles Board 1018 V1): Riddles (/riddles), label = its h1, directly
+// under Close to the Hip.
 // V10 (Trinity Problems Etsy Block 1014 V1): Lexicons gains Trinity Problems
 // (/trinity/trinity-problems), label = its h1, under LXX vs Masoretic.
 // V9 (Header — Lexicons tab, Dutch 1013): the Symbol Lexicon and LXX vs Masoretic
@@ -102,6 +104,7 @@ export const mainNav = [
       { label: 'Pathway', href: '/pathway', desc: 'Guided walks through one subject, stop by stop.' },
       { label: 'Hidden Gems of Scripture', href: '/hidden-gems', desc: 'The verses the pulpit flips past, and what they actually say.' },
       { label: 'Close to the Hip', href: '/close-to-the-hip', desc: 'Short answers and quick insights to carry into any conversation.' },
+      { label: 'Riddles', href: '/riddles', desc: 'Three verses, one logical answer. Can you find it?' },
     ],
   },
   {

@@ -1,5 +1,8 @@
 ---
-// src/pages/riddle.astro · 1017 V4
+// src/pages/riddle.astro · 1018 V5
+// V5 (Etsy Riddles Board 1018 V1): /riddle renders the STANDING riddle again (One
+// Name, One Father, standingRiddle in src/data/riddles.js), as before 10/17;
+// canonical /riddle/one-name-one-father/. Why the Names Matter's link lands here.
 // V4 (Etsy Commandment One 1017 V1): /riddle keeps its URL and renders the NEWEST
 // riddle (riddles[0] in src/data/riddles.js) through src/components/Riddle.astro,
 // so the homepage corner card and Why the Names Matter's "Try the riddle" link
@@ -14,13 +17,13 @@
 // V1 (Homepage Corner Cards Spec 1014 V1, Part 2): A Riddle for the Logical Mind.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Riddle from '../components/Riddle.astro';
-import { newestRiddle } from '../data/riddles.js';
+import { standingRiddle } from '../data/riddles.js';
 ---
 
 <BaseLayout
   title="A Riddle for the Logical Mind — Nazaryah"
   description="Three verses. One logical answer. Read all three, lay them side by side — what must be true?"
-  canonical={`/riddle/${newestRiddle.slug}/`}
+  canonical={`/riddle/${standingRiddle.slug}/`}
 >
-  <Riddle riddle={newestRiddle} />
+  <Riddle riddle={standingRiddle} />
 </BaseLayout>

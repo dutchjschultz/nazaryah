@@ -1,5 +1,11 @@
 ---
-// src/components/Riddle.astro · 1017 V1
+// src/components/Riddle.astro · 1018 V2
+// V2 (Etsy Riddles Board 1018 V1): the riddle's `teaser` sits above the tiles
+// (italic, muted, centered). `board` mode is for the /riddles board: no page
+// heading or intro (the board has its own), no "More riddles →", and no page
+// background or padding of its own. Element ids carry the riddle's number, so
+// several riddles can sit on one page.
+// V1 (1017):
 // One riddle, A Riddle for the Logical Mind — a four-step reveal, moved here
 // unchanged from src/pages/riddle.astro (1014 V3) so /riddle and /riddle/<slug>
 // share one copy. New: the riddle's title as a small Cinzel eyebrow over the
@@ -10,18 +16,20 @@
 // independent: a reader may jump straight to the answer. Everything is on the
 // page at build time; the script only flips `hidden` and `aria-expanded`, so the
 // scoped styles cover every state. Nothing is stored.
-interface Props { riddle: any }
-const { riddle } = Astro.props;
-const id = (ref) => 'rd-' + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
+interface Props { riddle: any; board?: boolean }
+const { riddle, board = false } = Astro.props;
+const pre = `rd${riddle.number}`;
+const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 ---
 
-<div class="rd-page">
+<div class:list={['rd-page', { 'rd-page--board': board }]}>
   <div class="rd-wrap">
 
     <header class="rd-head">
       <p class="rd-eyebrow">{riddle.title}</p>
-      <h1 class="rd-title">A Riddle for the Logical Mind</h1>
-      <p class="rd-intro tr-sub">Three verses. One logical answer. Can you find it?</p>
+      {!board && <h1 class="rd-title">A Riddle for the Logical Mind</h1>}
+      {!board && <p class="rd-intro tr-sub">Three verses. One logical answer. Can you find it?</p>}
+      {riddle.teaser && <p class="rd-teaser">{riddle.teaser}</p>}
     </header>
 
     <ul class="rd-tiles">
@@ -43,8 +51,8 @@ const id = (ref) => 'rd-' + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
     <div class="rd-actions">
       <div class="rd-step">
-        <button type="button" class="rd-btn rd-btn--nudge" aria-expanded="false" aria-controls="rd-nudge" data-rd-toggle>Need a nudge?</button>
-        <div id="rd-nudge" class="rd-reveal" hidden>
+        <button type="button" class="rd-btn rd-btn--nudge" aria-expanded="false" aria-controls={`${pre}-nudge`} data-rd-toggle>Need a nudge?</button>
+        <div id={`${pre}-nudge`} class="rd-reveal" hidden>
           <p class="rd-nudge-line">{riddle.nudgeLine}</p>
           <div class="rd-tile rd-tile--single">
             <button type="button" class="rd-tile-btn" aria-expanded="false" aria-controls={id(riddle.nudge.ref)} data-rd-toggle>
@@ -60,15 +68,15 @@ const id = (ref) => 'rd-' + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
       </div>
 
       <div class="rd-step">
-        <button type="button" class="rd-btn rd-btn--answer" aria-expanded="false" aria-controls="rd-answer" data-rd-toggle>Show the answer</button>
-        <div id="rd-answer" class="rd-reveal" hidden>
+        <button type="button" class="rd-btn rd-btn--answer" aria-expanded="false" aria-controls={`${pre}-answer`} data-rd-toggle>Show the answer</button>
+        <div id={`${pre}-answer`} class="rd-reveal" hidden>
           <ol class="rd-chain">
             {riddle.chain.map(([line, ref]) => <li>{line} <span class="rd-chain-ref">— {ref}</span></li>)}
           </ol>
           <p class="rd-verdict">{riddle.verdict}</p>
           <p class="rd-beneath">{riddle.beneath}</p>
           <a class="rd-next" href={riddle.next.href}>{riddle.next.label} <span aria-hidden="true">&rarr;</span></a>
-          <a class="rd-more" href="/riddles">More riddles <span aria-hidden="true">&rarr;</span></a>
+          {!board && <a class="rd-more" href="/riddles">More riddles <span aria-hidden="true">&rarr;</span></a>}
         </div>
       </div>
     </div>
@@ -134,6 +142,11 @@ const id = (ref) => 'rd-' + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   .rd-beneath { margin: 0; font-style: italic; font-size: 1rem; color: var(--rd-muted); }
   .rd-next { display: inline-block; margin-top: 1.4rem; font-family: 'Cinzel', serif; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rd-gold); text-decoration: none; }
   .rd-next:hover { text-decoration: underline; text-underline-offset: 4px; }
+  .rd-page--board { background: transparent; padding: 0; }
+  .rd-page--board .rd-wrap { padding: 0 0 1rem; }
+  .rd-page--board .rd-head { margin-bottom: 1.6rem; }
+  .rd-teaser { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; font-size: 1.15rem; line-height: 1.5; color: var(--rd-muted); text-align: center; max-width: 34rem; margin: 1.1rem auto 0; text-wrap: pretty; }
+  .rd-page--board .rd-teaser { margin-top: 0.2rem; }
   .rd-eyebrow { font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rd-gold); margin: 0 0 0.7rem; }
   .rd-more { display: block; width: fit-content; margin: 1.1rem auto 0; font-family: 'Cinzel', serif; font-size: 0.6rem; letter-spacing: 0.16em; text-transform: uppercase; color: var(--rd-muted); text-decoration: none; }
   .rd-more:hover { color: var(--rd-ink); text-decoration: underline; text-underline-offset: 4px; }

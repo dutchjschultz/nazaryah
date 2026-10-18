@@ -1,15 +1,26 @@
 ---
-// src/pages/riddles.astro · 1017 V1
-// Riddles — every riddle in src/data/riddles.js, newest first, as parchment cards
-// (title, card line, the three references), each opening /riddle/<slug>/. Same
-// palette as the riddle page. Nothing here names an answer.
+// src/pages/riddles.astro · 1018 V2
+// V2 (Etsy Riddles Board 1018 V1): ONE BOARD — one riddle at a time. It opens on
+// the newest riddle; /riddles?n=<number> opens a given one. The counter row
+// (◀ Riddle 2 of 2 ▶) steps by `number`, disabled at each end (no wrap), and
+// writes ?n= to the address without a reload. Under it: the riddle's title and
+// teaser, then the full four-step reveal (src/components/Riddle.astro, board
+// mode). A riddle's open/closed state resets when the board leaves it. Under the
+// board, "All riddles" — a plain numbered list, oldest first, title + teaser, the
+// one on the board in gold. With JavaScript off only the newest riddle shows and
+// each list title opens that riddle's own page (/riddle/<slug>/).
+// The V1 card grid and its styles are gone.
+// V1 (1017): an index of parchment cards.
 import BaseLayout from '../layouts/BaseLayout.astro';
-import { riddles } from '../data/riddles.js';
+import Riddle from '../components/Riddle.astro';
+import { riddlesByNumber, newestRiddle } from '../data/riddles.js';
+
+const total = riddlesByNumber.length;
 ---
 
 <BaseLayout
   title="Riddles — Nazaryah"
-  description="Three verses. One logical answer. Every riddle for the logical mind, newest first."
+  description="Three verses. One logical answer. Every riddle for the logical mind, one at a time."
 >
   <div class="rx-page">
     <div class="rx-wrap">
@@ -18,21 +29,87 @@ import { riddles } from '../data/riddles.js';
         <p class="rx-sub">Three verses. One logical answer.</p>
       </header>
 
-      <ul class="rx-list">
-        {riddles.map((r) => (
-          <li>
-            <a class="rx-card" href={`/riddle/${r.slug}/`}>
-              <span class="rx-card-title">{r.title}</span>
-              <span class="rx-card-line">{r.line}</span>
-              <span class="rx-card-refs">{r.tiles.map((t) => t.ref).join(' · ')}</span>
-              <span class="rx-card-cta">Try the riddle <span aria-hidden="true">&rarr;</span></span>
-            </a>
-          </li>
+      <section class="rx-board" id="rx-board" aria-label="Riddle board">
+        <nav class="rx-counter" aria-label="Step through the riddles">
+          <button type="button" class="rx-arrow" id="rx-prev" aria-label="Previous riddle" disabled={newestRiddle.number === 1}>&#9664;</button>
+          <span class="rx-count" aria-live="polite">Riddle <b id="rx-n">{newestRiddle.number}</b> of {total}</span>
+          <button type="button" class="rx-arrow" id="rx-next" aria-label="Next riddle" disabled={newestRiddle.number === total}>&#9654;</button>
+        </nav>
+
+        {riddlesByNumber.map((r) => (
+          <div class="rx-slide" data-n={r.number} hidden={r.number !== newestRiddle.number}>
+            <Riddle riddle={r} board />
+          </div>
         ))}
-      </ul>
+      </section>
+
+      <section class="rx-all" aria-labelledby="rx-all-h">
+        <h2 id="rx-all-h" class="rx-all-h">All riddles</h2>
+        <ol class="rx-list">
+          {riddlesByNumber.map((r) => (
+            <li value={r.number} data-n={r.number} class:list={{ 'is-current': r.number === newestRiddle.number }}>
+              <a href={`/riddle/${r.slug}/`} data-n={r.number}>{r.title}</a>
+              <span class="rx-teaser"> — {r.teaser}</span>
+            </li>
+          ))}
+        </ol>
+      </section>
     </div>
   </div>
 </BaseLayout>
+
+<script>
+  const slides = Array.from(document.querySelectorAll<HTMLElement>('.rx-slide'));
+  const nums = slides.map((s) => Number(s.dataset.n));
+  const first = Math.min(...nums), last = Math.max(...nums);
+  const prev = document.getElementById('rx-prev') as HTMLButtonElement;
+  const next = document.getElementById('rx-next') as HTMLButtonElement;
+  const nOut = document.getElementById('rx-n')!;
+  const board = document.getElementById('rx-board')!;
+  const items = Array.from(document.querySelectorAll<HTMLElement>('.rx-list li'));
+  let current = Number(slides.find((s) => !s.hidden)?.dataset.n || last);
+
+  // Close every tile, nudge and answer inside a slide.
+  function reset(slide: HTMLElement) {
+    slide.querySelectorAll<HTMLElement>('[data-rd-toggle]').forEach((btn) => {
+      btn.setAttribute('aria-expanded', 'false');
+      const target = document.getElementById(btn.getAttribute('aria-controls') || '');
+      if (target) target.hidden = true;
+    });
+  }
+
+  function show(n: number, updateUrl: boolean) {
+    if (!nums.includes(n)) return;
+    slides.forEach((s) => {
+      const on = Number(s.dataset.n) === n;
+      if (!on && !s.hidden) reset(s);
+      s.hidden = !on;
+    });
+    current = n;
+    nOut.textContent = String(n);
+    prev.disabled = n <= first;
+    next.disabled = n >= last;
+    items.forEach((li) => li.classList.toggle('is-current', Number(li.dataset.n) === n));
+    if (updateUrl) {
+      const url = new URL(location.href);
+      url.searchParams.set('n', String(n));
+      history.replaceState(null, '', url);
+    }
+  }
+
+  prev.addEventListener('click', () => show(current - 1, true));
+  next.addEventListener('click', () => show(current + 1, true));
+  document.querySelectorAll<HTMLAnchorElement>('.rx-list a[data-n]').forEach((a) => {
+    a.addEventListener('click', (e) => {
+      e.preventDefault();
+      show(Number(a.dataset.n), true);
+      board.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  const asked = Number(new URLSearchParams(location.search).get('n'));
+  if (nums.includes(asked)) show(asked, false);
+</script>
 
 <style>
   /* The riddle page's palette (src/components/Riddle.astro). */
@@ -47,20 +124,30 @@ import { riddles } from '../data/riddles.js';
     --rd-gold: #d2a849;
   }
   .rx-wrap { max-width: 42rem; margin: 0 auto; padding: 3rem 0 4.5rem; }
-  .rx-head { text-align: center; margin-bottom: 2rem; }
+  .rx-head { text-align: center; margin-bottom: 1.8rem; }
   .rx-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(2rem, 6vw, 2.9rem); line-height: 1.1; margin: 0 0 0.6rem; color: var(--rd-ink); }
   .rx-sub { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; font-size: 1.25rem; color: var(--rd-muted); margin: 0; }
 
-  .rx-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
-  .rx-card {
-    display: grid; gap: 0.35rem; padding: 1.3rem 1.4rem; text-decoration: none; color: inherit;
-    background: var(--rd-paper); border: 1px solid var(--rd-rule); border-radius: 8px;
-    transition: box-shadow 0.2s ease, transform 0.2s ease;
+  .rx-board { scroll-margin-top: 9rem; }
+  .rx-counter { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 0 0 1.4rem; padding: 0.6rem 0; border-top: 1px solid var(--rd-rule); border-bottom: 1px solid var(--rd-rule); }
+  .rx-count { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rd-ink); }
+  .rx-count b { color: var(--rd-gold); }
+  .rx-arrow {
+    font: inherit; font-size: 0.85rem; line-height: 1; width: 2.4rem; height: 2.4rem; border-radius: 999px; cursor: pointer;
+    background: var(--rd-paper); color: var(--rd-gold); border: 1px solid var(--rd-rule);
   }
-  .rx-card:hover, .rx-card:focus-visible { box-shadow: 0 0 0 1px var(--rd-gold), 0 6px 18px rgba(127, 96, 28, 0.18); transform: translateY(-2px); outline: none; }
-  .rx-card-title { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: 1.35rem; line-height: 1.2; color: var(--rd-ink); }
-  .rx-card-line { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; color: var(--rd-muted); }
-  .rx-card-refs { font-family: 'Cinzel', serif; font-size: 0.64rem; letter-spacing: 0.14em; text-transform: uppercase; color: var(--rd-gold); }
-  .rx-card-cta { margin-top: 0.3rem; font-family: 'Cinzel', serif; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rd-gold); }
-  @media (prefers-reduced-motion: reduce) { .rx-card, .rx-card:hover { transition: none; transform: none; } }
+  .rx-arrow:hover:not(:disabled) { border-color: var(--rd-gold); }
+  .rx-arrow:focus-visible { outline: 2px solid var(--rd-gold); outline-offset: 3px; }
+  .rx-arrow:disabled { opacity: 0.35; cursor: default; }
+  .rx-slide[hidden] { display: none; }
+
+  .rx-all { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--rd-rule); }
+  .rx-all-h { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rd-muted); text-align: center; margin: 0 0 1rem; }
+  .rx-list { margin: 0; padding-left: 1.8rem; display: grid; gap: 0.55rem; }
+  .rx-list li { line-height: 1.5; }
+  .rx-list li::marker { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--rd-muted); }
+  .rx-list a { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: var(--rd-ink); text-decoration: none; }
+  .rx-list a:hover { text-decoration: underline; text-underline-offset: 3px; }
+  .rx-teaser { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; color: var(--rd-muted); }
+  .rx-list li.is-current a, .rx-list li.is-current::marker { color: var(--rd-gold); }
 </style>
