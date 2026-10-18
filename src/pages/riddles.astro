@@ -1,5 +1,10 @@
 ---
-// src/pages/riddles.astro · 1018 V2
+// src/pages/riddles.astro · 1018 V3
+// V3 (Etsy Riddles Board 1018 V2): a `kind: 'page'` riddle (Who Is "the Lord"?)
+// shows the counter, its title, its teaser and, in place of the tiles, one
+// burgundy pill (the "Need a nudge?" style) — its `cta` → its `href`. Its list
+// line works like any other; with JavaScript off it links to /riddles?n=<number>
+// (a page riddle has no /riddle/<slug>/ page).
 // V2 (Etsy Riddles Board 1018 V1): ONE BOARD — one riddle at a time. It opens on
 // the newest riddle; /riddles?n=<number> opens a given one. The counter row
 // (◀ Riddle 2 of 2 ▶) steps by `number`, disabled at each end (no wrap), and
@@ -13,7 +18,7 @@
 // V1 (1017): an index of parchment cards.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import Riddle from '../components/Riddle.astro';
-import { riddlesByNumber, newestRiddle } from '../data/riddles.js';
+import { riddlesByNumber, newestRiddle, isPage } from '../data/riddles.js';
 
 const total = riddlesByNumber.length;
 ---
@@ -38,7 +43,15 @@ const total = riddlesByNumber.length;
 
         {riddlesByNumber.map((r) => (
           <div class="rx-slide" data-n={r.number} hidden={r.number !== newestRiddle.number}>
-            <Riddle riddle={r} board />
+            {isPage(r) ? (
+              <div class="rx-pageriddle">
+                <p class="rx-eyebrow">{r.title}</p>
+                <p class="rx-lead">{r.teaser}</p>
+                <a class="rx-pill" href={r.href}>{r.cta} <span aria-hidden="true">&rarr;</span></a>
+              </div>
+            ) : (
+              <Riddle riddle={r} board />
+            )}
           </div>
         ))}
       </section>
@@ -48,7 +61,7 @@ const total = riddlesByNumber.length;
         <ol class="rx-list">
           {riddlesByNumber.map((r) => (
             <li value={r.number} data-n={r.number} class:list={{ 'is-current': r.number === newestRiddle.number }}>
-              <a href={`/riddle/${r.slug}/`} data-n={r.number}>{r.title}</a>
+              <a href={isPage(r) ? `/riddles?n=${r.number}` : `/riddle/${r.slug}/`} data-n={r.number}>{r.title}</a>
               <span class="rx-teaser"> — {r.teaser}</span>
             </li>
           ))}
@@ -115,13 +128,13 @@ const total = riddlesByNumber.length;
   /* The riddle page's palette (src/components/Riddle.astro). */
   .rx-page {
     --rd-bg: #f2ead9; --rd-paper: #f8f2e4; --rd-ink: #2b2117; --rd-muted: #6f5f4a; --rd-rule: #d9c8a6;
-    --rd-gold: #7f601c;
+    --rd-gold: #7f601c; --rd-burgundy: #7a1e2b; --rd-on-burgundy: #fbf3e2;
     background: var(--rd-bg); color: var(--rd-ink); padding: 0 16px;
     font-family: 'EB Garamond', Garamond, Georgia, serif; font-size: 18px; line-height: 1.6;
   }
   :global(html.dark) .rx-page {
     --rd-bg: #15110c; --rd-paper: #1d1812; --rd-ink: #ece2cc; --rd-muted: #a8977a; --rd-rule: #3b3123;
-    --rd-gold: #d2a849;
+    --rd-gold: #d2a849; --rd-burgundy: #8a2533; --rd-on-burgundy: #fbf3e2;
   }
   .rx-wrap { max-width: 42rem; margin: 0 auto; padding: 3rem 0 4.5rem; }
   .rx-head { text-align: center; margin-bottom: 1.8rem; }
@@ -140,6 +153,19 @@ const total = riddlesByNumber.length;
   .rx-arrow:focus-visible { outline: 2px solid var(--rd-gold); outline-offset: 3px; }
   .rx-arrow:disabled { opacity: 0.35; cursor: default; }
   .rx-slide[hidden] { display: none; }
+
+  /* A page riddle on the board — title, teaser and one pill, matching the
+     Riddle component's eyebrow, teaser and "Need a nudge?" button. */
+  .rx-pageriddle { text-align: center; padding: 0 0 1rem; }
+  .rx-eyebrow { font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rd-gold); margin: 0 0 0.7rem; }
+  .rx-lead { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; font-size: 1.15rem; line-height: 1.5; color: var(--rd-muted); max-width: 34rem; margin: 0.2rem auto 2rem; text-wrap: pretty; }
+  .rx-pill {
+    display: inline-block; border-radius: 999px; padding: 0.55rem 1.4rem; text-decoration: none;
+    font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+    background: var(--rd-burgundy); color: var(--rd-on-burgundy); border: 1px solid var(--rd-burgundy);
+  }
+  .rx-pill:hover { filter: brightness(1.12); }
+  .rx-pill:focus-visible { outline: 2px solid var(--rd-gold); outline-offset: 3px; }
 
   .rx-all { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--rd-rule); }
   .rx-all-h { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rd-muted); text-align: center; margin: 0 0 1rem; }

@@ -1,4 +1,10 @@
-// riddles 1018 V2.js
+// riddles 1018 V3.js
+// V3 (Etsy Riddles Board 1018 V2): Who Is "the Lord"? (/why-the-names-matter)
+// joins the board as Riddle 2 — it went live 10/14 beside the standing riddle — so
+// Guilty of All moves to 3. One-time renumber while the board was a day old;
+// numbers never change again. New `kind`: 'page' riddles live on their own page
+// (href + cta, no tiles). Teasers follow Dutch's rule: state only what mainstream
+// Christianity teaches, so the reader agrees before the riddle turns it.
 // V2 (Etsy Riddles Board 1018 V1): every riddle gains a permanent `number` and a
 // `teaser`; One Name, One Father is the STANDING riddle (`standing: true`) — the
 // homepage card and /riddle always show it and never rotate. /riddles is now one
@@ -15,9 +21,14 @@
 //   number        permanent, counted OLDEST first (1, 2, 3 …). Never renumber:
 //                 /riddles?n=<number> links depend on it. Must be unique.
 //   standing      true on exactly one riddle (One Name, One Father)
+//   kind          'riddle' (default) — the three-tile reveal; or 'page' — a riddle
+//                 that lives on its own page: it carries `href` (that page) and
+//                 `cta` (the board's button text) and has no tiles, nudge, chain,
+//                 verdict or next, and gets no /riddle/<slug>/ page
 //   slug, title   the page URL and the small eyebrow above the page heading
 //   teaser        one or two sentences shown above the tiles and in the board's
-//                 numbered list — it must NOT name or hint at the answer
+//                 numbered list. It states only what mainstream Christianity
+//                 teaches; it never names, hints at, or questions the answer
 //   line          the homepage corner-card line (shown only for the standing riddle)
 //   tiles         three { ref, text } — KJV, with [Yahuah] etc. in brackets
 //   nudgeLine     the line above the nudge verse
@@ -33,10 +44,10 @@
 
 export const riddles = [
   {
-    number: 2,
+    number: 3,
     slug: 'guilty-of-all',
     title: 'Guilty of All',
-    teaser: 'Every pulpit agrees Yahushua kept the whole Law. Hardly anyone stops to ask what keeping the very first commandment required of Him.',
+    teaser: 'Mainstream Christianity teaches that Jesus was 100% God and 100% man. As God in the flesh, He kept the whole Law perfectly.',
     line: 'Three verses about the Law. One answer about the Son. Can you find it?',
     tiles: [
       { ref: 'James 2:10', text: 'For whosoever shall keep the whole law, and yet offend in one point, he is guilty of all.' },
@@ -55,11 +66,21 @@ export const riddles = [
     next: { href: '/peah/commandment-one-and-the-man-who-kept-it/', label: 'Read the corner study' },
   },
   {
+    number: 2,
+    kind: 'page',
+    slug: 'who-is-the-lord',
+    title: 'Who Is “the Lord”?',
+    line: '“The Lord died.” “The Lord is immortal.” Both are preached. Can both be true?',
+    teaser: 'Mainstream Christianity teaches that the Lord died on the cross for our sins. It also teaches that the Lord is immortal and cannot die.',
+    href: '/why-the-names-matter',
+    cta: 'Unmask the titles',
+  },
+  {
     number: 1,
     standing: true,
     slug: 'one-name-one-father',
     title: 'One Name, One Father',
-    teaser: 'The Psalms and the Prophets each say one thing about Yahuah. Lay the three side by side, and only one conclusion is left standing.',
+    teaser: 'Mainstream Christianity teaches that God is one God in three persons: Father, Son, and Holy Spirit. All three are co-equal, co-eternal, and share one name.',
     line: 'Three verses. One answer. Can you find it?',
     tiles: [
       { ref: 'Psalm 83:18', text: 'That men may know that thou, whose name alone is JEHOVAH [Yahuah], art the most high over all the earth.' },
@@ -79,6 +100,7 @@ export const riddles = [
   },
 ];
 
+export const isPage = (r) => r.kind === 'page';
 export const newestRiddle = riddles[0];
 export const standingRiddle = riddles.find((r) => r.standing);
 // Oldest first, by number — the board's arrows and numbered list.
@@ -88,6 +110,10 @@ const numbers = riddles.map((r) => r.number);
 if (new Set(numbers).size !== numbers.length || numbers.some((n) => !Number.isInteger(n) || n < 1)) {
   throw new Error(`riddles.js: every riddle needs a unique whole-number \`number\` (got ${numbers.join(', ')})`);
 }
+const badKind = riddles.filter((r) => (r.kind ?? 'riddle') !== 'riddle' && r.kind !== 'page');
+if (badKind.length) throw new Error(`riddles.js: unknown kind on ${badKind.map((r) => r.slug).join(', ')} ('riddle' or 'page')`);
+const badPage = riddles.filter((r) => isPage(r) && !(r.href && r.cta));
+if (badPage.length) throw new Error(`riddles.js: kind 'page' needs href and cta: ${badPage.map((r) => r.slug).join(', ')}`);
 if (riddles.filter((r) => r.standing).length !== 1) {
   throw new Error('riddles.js: exactly one riddle must carry `standing: true`');
 }

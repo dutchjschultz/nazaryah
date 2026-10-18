@@ -1,14 +1,16 @@
 ---
-// src/pages/riddle/[slug].astro · 1017 V1
+// src/pages/riddle/[slug].astro · 1018 V2
+// V2 (Etsy Riddles Board 1018 V2): `kind: 'page'` riddles get no page here —
+// they live on their own page (their `href`).
 // One page per riddle in src/data/riddles.js, through src/components/Riddle.astro
 // (the same look, four-step reveal, script and styles as /riddle). The meta
 // description is the same for every riddle and names nothing.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Riddle from '../../components/Riddle.astro';
-import { riddles } from '../../data/riddles.js';
+import { riddles, isPage } from '../../data/riddles.js';
 
 export function getStaticPaths() {
-  return riddles.map((r) => ({ params: { slug: r.slug }, props: { riddle: r } }));
+  return riddles.filter((r) => !isPage(r)).map((r) => ({ params: { slug: r.slug }, props: { riddle: r } }));
 }
 const { riddle } = Astro.props;
 ---
