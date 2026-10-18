@@ -1,4 +1,5 @@
-// blog-groups 1018 V58.js
+// blog-groups 1018 V59.js
+// V59: the-genesis-of-the-son joins the-counterfeit-throne (category The Counterfeit Throne, like Incarnate and the rest of the group; the batch said Scripture Unfiltered). Map total 153 → 154.
 // V58: cedars-and-the-branch joins scripture-unfiltered (category Scripture Unfiltered). Map total 152 → 153.
 // V57: the-finger-of-yahuah joins scripture-unfiltered (category Scripture Unfiltered). Map total 151 → 152.
 // V56: the-lucifer-deception confirmed in buried-in-plain-sight (Dutch 1014); its category now reads Buried in Plain Sight. Map total unchanged.
@@ -207,6 +208,7 @@ export const POST_GROUP = {
   'worship-and-service': 'the-counterfeit-throne',
   'the-throne-and-the-right-hand': 'the-counterfeit-throne',
   'incarnate': 'the-counterfeit-throne',
+  'the-genesis-of-the-son': 'the-counterfeit-throne',
   'beside-me-there-is-no-saviour': 'the-counterfeit-throne',
   'the-throne-in-the-sanctuary': 'the-counterfeit-throne',
   'the-assembly-of-the-most-high': 'the-counterfeit-throne',

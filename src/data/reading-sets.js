@@ -1,4 +1,5 @@
-// reading-sets 1014 V9.js
+// reading-sets 1018 V10.js
+// V10: Trilogy "Born of a Woman" added — The Seed War, The Genesis of the Son, Incarnate (Dutch 1018).
 // V9: Trilogy "The Marriage Covenant" added — Marriage and Divorce, The Law of
 // Jealousy, Fornication and Adultery (Dutch 1014).
 // V8: Trilogy "The Star of Your God" added — Saturnalia, Ashtoreth, Esther, Ishtar
@@ -166,6 +167,24 @@ export const READING_SETS = [
       {
         slug: "fornication-and-adultery",
         line: "Two words, two covenants, two judgments: the divorced sister and the defiled one.",
+      },
+    ],
+  },
+  {
+    key: "born-of-a-woman",
+    title: "Born of a Woman",
+    readings: [
+      {
+        slug: "the-seed-war",
+        line: "The promise of Genesis 3:15 and the war waged against the seed of the woman.",
+      },
+      {
+        slug: "the-genesis-of-the-son",
+        line: "Where Matthew and Luke place His origin: begotten in Mary, not in eternity.",
+      },
+      {
+        slug: "incarnate",
+        line: "A god in flesh is pagan in a Hindu temple and gospel in a church pew.",
       },
     ],
   },
