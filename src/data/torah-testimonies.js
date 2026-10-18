@@ -1,4 +1,6 @@
-// src/data/torah-testimonies.js · 1005 V2
+// src/data/torah-testimonies.js · 1018 V3
+// G-004 Luke 16:16 written (slug luke-16-16); F-15 added to its foundations.
+// V2 (1005):
 // Added `foundations` to every entry for the Sort by Foundation control.
 //
 // HOW THIS FILE WORKS
@@ -53,7 +55,7 @@ export const torahTestimonies = [
   { id: "C-014", ref: "Mark 16:2, 9", section: "Sabbath", foundations: ["F-11"], claim: "First day of the week resurrection accounts." },
   { id: "C-009", ref: "Luke 6:1\u201311", section: "Sabbath", foundations: ["F-09"], claim: "Healing and reaping on the Sabbath show it was set aside." },
   { id: "D-021", ref: "Luke 10:7\u20138", section: "Clean & Unclean", foundations: ["F-10"], claim: "Eat such things as are set before you." },
-  { id: "G-004", ref: "Luke 16:16", section: "Dividing Line", foundations: ["F-13"], claim: "The Law was only until John the Baptist." },
+  { id: "G-004", ref: "Luke 16:16", section: "Dividing Line", foundations: ["F-13", "F-15"], title: "Witness to John", deck: "The word nobody wrote, and the sentence that comes right after it", slug: "luke-16-16" },  // written
   { id: "A-022", ref: "Luke 22:20", section: "Abolished & Nailed", foundations: ["F-05"], claim: "The new covenant in His blood replaces the old." },
   { id: "C-015", ref: "Luke 24:1", section: "Sabbath", foundations: ["F-11"], claim: "The women came on the first day of the week." },
   { id: "G-005", ref: "John 1:17", section: "Dividing Line", foundations: ["F-01"], claim: "The law came by Moses; favor and truth by Yahushua." },

@@ -9,8 +9,9 @@
 //         'planned' — foundations only; listed so the architecture is visible
 
 export const meta = {
-  version: 11,
-  updated: '2026-10-12', // v11: live testimonies and foundations carry `date` (first commit, git log) for the homepage Last 30 Days
+  version: 12,
+  updated: '2026-10-18', // v12: G-004 Luke 16:16 live — first testimony outside group D
+  // v11: live testimonies and foundations carry `date` (first commit, git log) for the homepage Last 30 Days
   // v10: F-10 V3 — one section added
 };
 
@@ -116,6 +117,18 @@ export const STUDIES = [
     group: 'D',
     status: 'live',
     date: '2026-10-03', // first committed
+  },
+  {
+    id: 'G-004',
+    slug: 'luke-16-16',
+    body: 'luke-16-16.md',
+    reference: 'Luke 16:16',
+    title: 'Witness to John',
+    deck: 'The word nobody wrote, and the sentence that comes right after it',
+    foundations: ['f-13', 'f-15'],
+    group: 'G',
+    status: 'live',
+    date: '2026-10-18', // first committed
   },
 ];
 
