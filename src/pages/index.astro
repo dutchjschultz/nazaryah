@@ -1,5 +1,9 @@
 ---
-// src/pages/index.astro · 1014 V26
+// src/pages/index.astro · 1019 V27
+// V27 (Riddle Box Handoff 1019 V1): the two solid corner cards are one Riddle Box
+// panel (RiddleBox.astro) in the hero's own parchment — gold double rule, two
+// compartments, oxblood and navy as accent ink only — so the header no longer
+// reads as two more Featured Picks. Copy and links unchanged (corner-cards.js).
 // V26 (Desk — build it now, Dutch 1014): the dispatch log tightened so the whole
 // Desk section (masthead + three rows) is shorter than one of the old white
 // letter cards — 370px against 387px at 1440 wide. Goes live with the YouTube band.
@@ -91,7 +95,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SeriesCard from '../components/SeriesCard.astro';
-import CornerCard from '../components/CornerCard.astro';
+import RiddleBox from '../components/RiddleBox.astro';
 import { cornerCards } from '../data/corner-cards.js';
 import Symbol from '../components/Symbol.astro';
 import FeastHero from '../components/FeastHero.jsx';
@@ -200,8 +204,8 @@ const recent = recentGroups(pieces, picks);
          hero's upper-right, from src/data/corner-cards.js. On a tablet or phone
          the stack drops beneath the hero, centered, never full width. -->
     {cornerCards.length > 0 && (
-      <div class="hero-corner" aria-label="Puzzles">
-        {cornerCards.map((c, i) => <CornerCard {...c} index={i} />)}
+      <div class="hero-corner">
+        <RiddleBox cards={cornerCards} />
       </div>
     )}
     </div>
@@ -231,7 +235,7 @@ const recent = recentGroups(pieces, picks);
     @media (max-width: 1023px) {
       .hero-row { flex-direction: column; align-items: center; }
       .hero-row > .hero-grid { width: 100%; }
-      .hero-corner { flex-direction: column; align-self: center; align-items: center; gap: 0.75rem; padding: 0.5rem 0 0.25rem; }
+      .hero-corner { flex-direction: column; align-self: center; align-items: center; gap: 0.75rem; padding: 0.5rem 0 0.25rem; width: 100%; max-width: 34rem; }
     }
 
     .hero-grid {

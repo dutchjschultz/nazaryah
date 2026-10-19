@@ -1,0 +1,157 @@
+---
+// src/components/RiddleBox.astro · 1019 V1
+// V1 (Riddle Box Handoff 1019 V1): the two solid corner cards (oxblood, navy)
+// read as two more Featured Picks, so they become ONE panel in the header's own
+// parchment: no fill (the hero's sheet shows through), a thin gold double rule,
+// near-square corners, no shadow. "◆ The Riddle Box ◆" across the top; two
+// compartments split by a thin gold rule (stacked under 720px, the rule turns
+// horizontal). Oxblood and navy survive only as accent ink — the mark and the
+// link — never as a background. Copy and links come from corner-cards.js
+// unchanged. Each compartment is one click target (a cover link), with
+// "More riddles" laid over it so no link sits inside another.
+interface Card {
+  heading: string;
+  line: string;
+  linkText: string;
+  href: string;
+  tone: 'burgundy' | 'navy';
+  mark?: 'question' | 'mask';
+  moreText?: string;
+  moreHref?: string;
+}
+interface Props { cards: Card[] }
+const { cards } = Astro.props;
+---
+
+<section class="rbx" aria-label="The Riddle Box">
+  <p class="rbx-label" aria-hidden="true">&#9670; The Riddle Box &#9670;</p>
+  <div class="rbx-grid">
+    {cards.map((c, i) => (
+      <>
+        {i > 0 && <span class="rbx-divider" aria-hidden="true"></span>}
+        <div class:list={['rbx-cell', `rbx-cell--${c.tone}`]}>
+          <a class="rbx-cover" href={c.href} aria-label={`${c.heading} — ${c.linkText}`}></a>
+          <p class="rbx-heading">
+            <span class="rbx-mark" aria-hidden="true">
+              {c.mark === 'mask' ? (
+                <svg viewBox="0 0 24 24"><path d="M3 8.5c3-1.6 6-1.6 9 0 3-1.6 6-1.6 9 0 0 4.6-2.2 7.5-5 7.5-1.7 0-2.9-.9-4-2.4-1.1 1.5-2.3 2.4-4 2.4-2.8 0-5-2.9-5-7.5z" /><path d="M6.6 10.6c.8-.6 1.9-.6 2.7 0M14.7 10.6c.8-.6 1.9-.6 2.7 0" /></svg>
+              ) : (
+                <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10.5" /><path d="M9.2 9.2a2.9 2.9 0 1 1 4.1 2.6c-.8.4-1.3 1-1.3 1.9v.6" /><circle class="rbx-dot" cx="12" cy="17.4" r="0.9" /></svg>
+              )}
+            </span>
+            <span>{c.heading}</span>
+          </p>
+          <p class="rbx-line">{c.line}</p>
+          <span class="rbx-link" aria-hidden="true">{c.linkText} <span>&rarr;</span></span>
+          {c.moreText && c.moreHref && <a class="rbx-more" href={c.moreHref}>{c.moreText} <span aria-hidden="true">&rarr;</span></a>}
+        </div>
+      </>
+    ))}
+  </div>
+</section>
+
+<style>
+  .rbx {
+    --rbx-gold: #b8892a;
+    --rbx-ink: var(--color-primary-text, #2b1d11);
+    --rbx-ink-soft: var(--color-secondary-text, #4a3a28);
+    --rbx-oxblood: #7a1e2b;
+    --rbx-navy: #13284d;
+    box-sizing: border-box;
+    width: 34rem;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 0.6rem 1.25rem 0.85rem;
+    background: transparent;
+    border: 3px double var(--rbx-gold);
+    border-radius: 2px;
+    box-shadow: none;
+  }
+  .rbx-label {
+    margin: 0 0 0.55rem;
+    text-align: center;
+    font-family: var(--font-display, 'Cinzel', Georgia, serif);
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: #6b4d12;
+  }
+  .rbx-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1px 1fr;
+    gap: 1.25rem;
+  }
+  .rbx-divider { background: var(--rbx-gold); opacity: 0.6; }
+
+  .rbx-cell { position: relative; display: flex; flex-direction: column; gap: 0.3rem; min-width: 0; }
+  .rbx-cover { position: absolute; inset: -0.25rem; z-index: 1; border-radius: 2px; }
+  .rbx-cover:focus-visible { outline: 2px solid var(--rbx-gold); outline-offset: 2px; }
+  .rbx-heading {
+    margin: 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 0.45rem;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-weight: 700;
+    font-size: 1.02rem;
+    line-height: 1.25;
+    color: var(--rbx-ink);
+  }
+  .rbx-mark { flex: none; width: 1.15rem; height: 1.15rem; margin-top: 0.08rem; }
+  .rbx-mark svg { width: 100%; height: 100%; fill: none; stroke: currentColor; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+  .rbx-mark .rbx-dot { fill: currentColor; stroke: none; }
+  .rbx-line {
+    margin: 0;
+    font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif;
+    font-style: italic;
+    font-size: 0.94rem;
+    line-height: 1.35;
+    color: var(--rbx-ink-soft);
+  }
+  .rbx-link {
+    margin-top: auto;
+    padding-top: 0.15rem;
+    font-family: 'Cinzel', serif;
+    font-size: 0.64rem;
+    font-weight: 700;
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+  }
+  .rbx-more {
+    position: relative;
+    z-index: 2;
+    align-self: flex-start;
+    font-family: 'Cinzel', serif;
+    font-size: 0.56rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--rbx-ink-soft);
+    opacity: 0.8;
+    text-decoration: none;
+  }
+  .rbx-more:hover, .rbx-more:focus-visible { opacity: 1; text-decoration: underline; text-underline-offset: 3px; }
+  .rbx-more:focus-visible { outline: 2px solid var(--rbx-gold); outline-offset: 2px; }
+
+  /* Oxblood and navy as accent ink only: the mark and the link. */
+  .rbx-cell--burgundy .rbx-mark, .rbx-cell--burgundy .rbx-link { color: var(--rbx-oxblood); }
+  .rbx-cell--navy .rbx-mark, .rbx-cell--navy .rbx-link { color: var(--rbx-navy); }
+  .rbx-cell:hover .rbx-link { text-decoration: underline; text-underline-offset: 3px; }
+
+  :global(.dark) .rbx {
+    --rbx-gold: #c9a24a;
+    --rbx-ink: var(--color-dark-text, #f0e6d2);
+    --rbx-ink-soft: var(--color-dark-secondary-text, #cdbf9f);
+    --rbx-oxblood: #e08a93;
+    --rbx-navy: #9fb8e6;
+  }
+  :global(.dark) .rbx-label { color: var(--gold-light, #e9cf85); }
+
+  @media (max-width: 720px) {
+    .rbx { width: 100%; }
+    .rbx-grid { grid-template-columns: 1fr; gap: 0.85rem; }
+    .rbx-divider { height: 1px; width: 100%; }
+  }
+</style>
