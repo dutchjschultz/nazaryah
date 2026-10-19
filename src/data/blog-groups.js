@@ -1,4 +1,5 @@
-// blog-groups 1019 V60.js
+// blog-groups 1019 V61.js
+// V61: the Awake and Divided trilogy — the-first-awakening-northampton, the-second-awakening-cane-ridge, the-third-awakening-azusa-street — joins buried-in-plain-sight (category Buried in Plain Sight). Map total 155 → 158.
 // V60: cease-or-fulfill joins the-law-and-the-feasts (category The Law & The Feasts), beside not-one-jot. Map total 154 → 155.
 // V59: the-genesis-of-the-son joins the-counterfeit-throne (category The Counterfeit Throne, like Incarnate and the rest of the group; the batch said Scripture Unfiltered). Map total 153 → 154.
 // V58: cedars-and-the-branch joins scripture-unfiltered (category Scripture Unfiltered). Map total 152 → 153.
@@ -296,6 +297,9 @@ export const POST_GROUP = {
   'saturnalia': 'buried-in-plain-sight',
   'ashtoreth': 'buried-in-plain-sight',
   'bohemian-grove': 'buried-in-plain-sight',
+  'the-first-awakening-northampton': 'buried-in-plain-sight',
+  'the-second-awakening-cane-ridge': 'buried-in-plain-sight',
+  'the-third-awakening-azusa-street': 'buried-in-plain-sight',
 
   // ── The Law & The Feasts (22) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',

@@ -1,5 +1,7 @@
 ---
-// ReadingSet.astro · 1010 V5
+// ReadingSet.astro · 1019 V6
+// V6: with `only` (the /trilogies page) the panel carries id=<set key>, so a link
+// can land on one trilogy — /trilogies#awake-and-divided (the homepage pin).
 // V5: a reading can be book material outside the posts collection (a panel on
 // /books/revelation), named in the data by `href` + `title` instead of `slug`.
 // Such a page passes `current={{ href }}` to be marked "You are reading". The
@@ -80,7 +82,7 @@ const sets = chosen.length
 {sets.length > 0 && (
   <div class="rs-wrap" data-reading-sets data-pagefind-ignore>
     {sets.map((set, si) => (
-      <aside class="rs" aria-label={`Trilogy: ${set.title}`} data-set={set.key} hidden={si > 0}>
+      <aside class="rs" id={only ? set.key : undefined} aria-label={`Trilogy: ${set.title}`} data-set={set.key} hidden={si > 0}>
         <div class="rs-inner">
           <header class="rs-head">
             <p class="rs-kicker">A Trilogy</p>
@@ -147,6 +149,7 @@ const sets = chosen.length
 
 <style>
   .rs {
+    scroll-margin-top: 7rem;
     margin: 0.25rem auto 1.75rem;
     padding: 5px;
     background: #2a1d10;

@@ -1,4 +1,9 @@
-// home-pieces 1017 V7.js
+// home-pieces 1019 V8.js
+// V8: a trilogy can be pinned as ONE Featured Picks card (Awake and Divided,
+// Dutch 1019). A reading-sets.js set with a `home` block becomes a piece titled
+// with the set's name, linking to it on /trilogies, wearing its Berean group's
+// look, with the location line it names. It exists only from featuredAt through
+// featuredUntil (the daily build drops it after), and never enters Last 30 Days.
 // V7: a Pe'ah entry's date is peahAdded() — `added` (the day it went onto the
 // site), else `date` — matching the /peah Newest band.
 // V6: a post's BLOG_GROUPS key rides into skinOf, so a Berean card's top edge
@@ -54,6 +59,7 @@ import { symbols as lexiconSymbols } from './symbol-lexicon.js';
 import pageDates from '../data/page-dates.json';
 import { SECTIONS, SKINS, sectionOfPost, skinOf, symbolKeyOf } from '../data/series-skins.js';
 import { locationOf } from './nav-location.js';
+import { READING_SETS } from '../data/reading-sets.js';
 
 export const FEATURED_SLOTS = 10;
 export const WINDOW_DAYS = 30;
@@ -181,6 +187,26 @@ export async function homePieces() {
       data: x,
     })),
   ];
+  // Pinned trilogies (V8): one card for the set, only while the pin holds.
+  const today = iso(new Date());
+  for (const set of READING_SETS) {
+    const h = set.home;
+    if (!h || (h.featuredUntil && today > h.featuredUntil)) continue;
+    const p = piece({
+      key: `trilogy:${set.key}`,
+      title: set.title,
+      deck: h.deck,
+      href: `/trilogies#${set.key}`,
+      date: h.date,
+      section: 'berean-studies',
+      group: h.group,
+      data: { featured: true, featuredAt: h.featuredAt },
+      cta: 'Read the Trilogy',
+    });
+    if (h.location) p.location = h.location;
+    p.trilogy = true;
+    list.push(p);
+  }
   // Hand-built pages last, so a route another source already serves wins.
   const seen = new Set(list.map((p) => p.href.replace(/\/$/, '')));
   for (const pg of pageDates.pages) {
@@ -218,7 +244,7 @@ export function recentGroups(pieces, featured, now = new Date()) {
   const shown = new Set(featured.map((p) => p.key));
   const bySection = new Map();
   for (const p of pieces) {
-    if (!p.date || p.date < cutoff || shown.has(p.key)) continue;
+    if (!p.date || p.date < cutoff || shown.has(p.key) || p.trilogy) continue;
     if (!bySection.has(p.section)) bySection.set(p.section, []);
     bySection.get(p.section).push(p);
   }

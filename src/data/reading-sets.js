@@ -1,4 +1,10 @@
-// reading-sets 1018 V10.js
+// reading-sets 1019 V11.js
+// V11: Trilogy "Awake and Divided" added — The First Awakening: Northampton, The
+// Second Awakening: Cane Ridge, The Third Awakening: Azusa Street (Buried in Plain
+// Sight, 1019). Each line is the study's own deck (the batch gave none). New
+// optional `home` block: pins the trilogy as one Featured Picks card (home-pieces
+// V8) — { deck, group, location, featuredAt, featuredUntil }; the card shows only
+// through featuredUntil and links to the trilogy on /trilogies.
 // V10: Trilogy "Born of a Woman" added — The Seed War, The Genesis of the Son, Incarnate (Dutch 1018).
 // V9: Trilogy "The Marriage Covenant" added — Marriage and Divorce, The Law of
 // Jealousy, Fornication and Adultery (Dutch 1014).
@@ -187,6 +193,33 @@ export const READING_SETS = [
         line: "A god in flesh is pagan in a Hindu temple and gospel in a church pew.",
       },
     ],
+  },
+  {
+    key: "awake-and-divided",
+    title: "Awake and Divided",
+    readings: [
+      {
+        slug: "the-first-awakening-northampton",
+        line: "The revival every pulpit praises left the colonies with rival churches in every town.",
+      },
+      {
+        slug: "the-second-awakening-cane-ridge",
+        line: "Camp meetings, the altar call, and a first seminary built to guard a creed.",
+      },
+      {
+        slug: "the-third-awakening-azusa-street",
+        line: "A tongues revival in an old Los Angeles stable, and the splits that followed.",
+      },
+    ],
+    // Pinned on the homepage for 14 days (Dutch 1019).
+    home: {
+      deck: "Three awakenings, three places, one pattern — the church woke up divided.",
+      group: "buried-in-plain-sight",
+      location: ["Berean Studies", "Buried in Plain Sight"],
+      date: "2026-10-19",
+      featuredAt: "2026-10-19T19:00",
+      featuredUntil: "2026-11-02",
+    },
   },
 ];
 
