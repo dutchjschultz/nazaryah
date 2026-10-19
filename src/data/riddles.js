@@ -1,4 +1,10 @@
-// riddles 1019 V4.js
+// riddles 1019 V5.js
+// STANDING RULE (Dutch): a riddle is never replaced or removed. New riddles are
+// only added, and numbers never change.
+// V5 (Etsy Doctrine Riddles 1019 V4): Riddle 20, Fulfilled (a second Torah
+// riddle, pair 02). `doctrine` becomes `doctrines: ['NN', …]` — a pair can carry
+// several riddles and a riddle can sit under several pairs. Riddles 2 and 3 join
+// pair 01 (Sacred Names → 2, 3, 4); pair 02 → 5, 20; pair 08 → 1.
 // V4 (Etsy Doctrine Riddles 1019 V3): sixteen doctrine riddles, numbers 4–19 in
 // doctrine order, one per Old Paths pair (Pair 08 keeps Riddle 1). New optional
 // field `doctrine` ties a riddle to its pair; the Old Paths cards and every
@@ -24,9 +30,11 @@
 //
 //   number        permanent, counted OLDEST first (1, 2, 3 …). Never renumber:
 //                 /riddles?n=<number> links depend on it. Must be unique.
-//   doctrine      optional — the two-digit `n` of its pair in doctrines.data.js
-//                 ('01' … '17'); the Old Paths card and both doctrine pages of
-//                 that pair link to /riddles?n=<number>. One riddle per pair.
+//   doctrines     optional — ['NN', …], the two-digit `n` of each pair in
+//                 doctrines.data.js ('01' … '17') the riddle belongs to. The Old
+//                 Paths card links to every riddle of its pair (by number); both
+//                 doctrine pages link to the pair's first riddle. A pair can carry
+//                 several riddles; a riddle can sit under several pairs.
 //   standing      true on exactly one riddle (One Name, One Father)
 //   kind          'riddle' (default) — the three-tile reveal; or 'page' — a riddle
 //                 that lives on its own page: it carries `href` (that page) and
@@ -51,8 +59,30 @@
 
 export const riddles = [
   {
+    number: 20,
+    doctrines: ['02'],
+    slug: 'fulfilled',
+    title: 'Fulfilled',
+    teaser: "Mainstream Christianity teaches that Jesus fulfilled the Law, so the Law is finished. What He completed at the cross, the believer no longer has to keep.",
+    tiles: [
+      { ref: 'Matthew 5:17', text: "Think not that I am come to destroy the law, or the prophets: I am not come to destroy, but to fulfil." },
+      { ref: 'Romans 8:4', text: "That the righteousness of the law might be fulfilled in us, who walk not after the flesh, but after the Spirit." },
+      { ref: 'Romans 13:8', text: "Owe no man any thing, but to love one another: for he that loveth another hath fulfilled the law." },
+    ],
+    nudgeLine: 'Paul named the law he meant.',
+    nudge: { ref: 'Romans 13:9', text: "For this, Thou shalt not commit adultery, Thou shalt not kill, Thou shalt not steal, Thou shalt not bear false witness, Thou shalt not covet; and if there be any other commandment, it is briefly comprehended in this saying, namely, Thou shalt love thy neighbour as thyself." },
+    chain: [
+      ['He came to fulfil the Law, not to destroy it.', 'Matthew 5:17'],
+      ['The same Law is fulfilled in us who walk after the Spirit.', 'Romans 8:4'],
+      ['The believer who loves has fulfilled the Law.', 'Romans 13:8'],
+    ],
+    verdict: 'Fulfilled does not mean finished. The Law He fulfilled is still being fulfilled in everyone who walks it.',
+    beneath: 'The verb is the same in all three: plēroō (G4137), to fill full.',
+    next: { href: '/doctrines/old-paths/walk-after-the-door', label: 'Read the doctrine: The Walk After the Door' },
+  },
+  {
     number: 19,
-    doctrine: '17',
+    doctrines: ['17'],
     slug: 'the-priesthood',
     title: "The Priesthood",
     teaser: "Mainstream Christianity teaches that pastors and priests stand between God and the people. The clergy carry a calling the people in the pews do not.",
@@ -73,7 +103,7 @@ export const riddles = [
   },
   {
     number: 18,
-    doctrine: '16',
+    doctrines: ['16'],
     slug: 'the-serpent-on-the-pole',
     title: "The Serpent on the Pole",
     teaser: "Mainstream Christianity teaches that crosses, crucifixes, and pictures of Jesus are aids to worship. The command against images was about pagan idols, not Christian art.",
@@ -94,7 +124,7 @@ export const riddles = [
   },
   {
     number: 17,
-    doctrine: '15',
+    doctrines: ['15'],
     slug: 'the-book-of-life',
     title: "The Book of Life",
     teaser: "Reformed Christianity teaches that God chose before the world began who would be saved and who would be lost. Your eternal destiny was fixed before you were born.",
@@ -115,7 +145,7 @@ export const riddles = [
   },
   {
     number: 16,
-    doctrine: '14',
+    doctrines: ['14'],
     slug: 'the-morning-star',
     title: "The Morning Star",
     teaser: "Mainstream Christianity teaches that Lucifer was a high angel who fell from heaven and became Satan. Isaiah 14 tells his story.",
@@ -136,7 +166,7 @@ export const riddles = [
   },
   {
     number: 15,
-    doctrine: '13',
+    doctrines: ['13'],
     slug: 'counted-righteous',
     title: "Counted Righteous",
     teaser: "Mainstream Christianity teaches that Christ's righteousness is credited to the believer's account. When God looks at you, He sees Jesus' obedience instead of yours.",
@@ -157,7 +187,7 @@ export const riddles = [
   },
   {
     number: 14,
-    doctrine: '12',
+    doctrines: ['12'],
     slug: 'the-olive-tree',
     title: "The Olive Tree",
     teaser: "Mainstream Christianity teaches that God has two peoples: Israel under the Law and the Church under grace. Each has its own plan and its own promises.",
@@ -178,7 +208,7 @@ export const riddles = [
   },
   {
     number: 13,
-    doctrine: '11',
+    doctrines: ['11'],
     slug: 'faith-alone',
     title: "Faith Alone",
     teaser: "Mainstream Christianity teaches that we are saved by faith alone. The moment you believe, your salvation is complete.",
@@ -199,7 +229,7 @@ export const riddles = [
   },
   {
     number: 12,
-    doctrine: '10',
+    doctrines: ['10'],
     slug: 'the-feasts',
     title: "The Feasts",
     teaser: "Mainstream Christianity teaches that the feasts were Jewish holidays, fulfilled and finished in Christ. The church has its own holy days now.",
@@ -220,7 +250,7 @@ export const riddles = [
   },
   {
     number: 11,
-    doctrine: '09',
+    doctrines: ['09'],
     slug: 'clean-and-unclean',
     title: "Clean and Unclean",
     teaser: "Mainstream Christianity teaches that the food laws were for the Jews and ended at the cross. Peter's vision declared every animal clean to eat.",
@@ -241,7 +271,7 @@ export const riddles = [
   },
   {
     number: 10,
-    doctrine: '07',
+    doctrines: ['07'],
     slug: 'the-inheritance',
     title: "The Inheritance",
     teaser: "Mainstream Christianity teaches that believers go to heaven when they die. Heaven is the home where they will live forever.",
@@ -262,7 +292,7 @@ export const riddles = [
   },
   {
     number: 9,
-    doctrine: '06',
+    doctrines: ['06'],
     slug: 'the-beast-and-the-plagues',
     title: "The Beast and the Plagues",
     teaser: "Mainstream Christianity teaches that Revelation is a coded book of end-time events. Its beasts and plagues are decoded from the headlines.",
@@ -283,7 +313,7 @@ export const riddles = [
   },
   {
     number: 8,
-    doctrine: '05',
+    doctrines: ['05'],
     slug: 'the-living-soul',
     title: "The Living Soul",
     teaser: "Mainstream Christianity teaches that every person has an immortal soul. At death the soul lives on, fully conscious, in heaven or in hell.",
@@ -304,7 +334,7 @@ export const riddles = [
   },
   {
     number: 7,
-    doctrine: '04',
+    doctrines: ['04'],
     slug: 'eternal-fire',
     title: "Eternal Fire",
     teaser: "Mainstream Christianity teaches that the wicked burn in hell forever. Their torment never ends, for all eternity.",
@@ -325,7 +355,7 @@ export const riddles = [
   },
   {
     number: 6,
-    doctrine: '03',
+    doctrines: ['03'],
     slug: 'the-gift-of-tongues',
     title: "The Gift of Tongues",
     teaser: "Charismatic Christianity teaches that speaking in tongues is a heavenly prayer language. It is a private, unknown speech that only the Spirit understands.",
@@ -347,7 +377,7 @@ export const riddles = [
   },
   {
     number: 5,
-    doctrine: '02',
+    doctrines: ['02'],
     slug: 'under-grace',
     title: "Under Grace",
     teaser: "Mainstream Christianity teaches that the Law was nailed to the cross. Believers live under grace now, and the commandments no longer bind them.",
@@ -368,7 +398,7 @@ export const riddles = [
   },
   {
     number: 4,
-    doctrine: '01',
+    doctrines: ['01'],
     slug: 'the-name',
     title: "The Name",
     teaser: "Mainstream Christianity teaches that God's name does not matter. \"The LORD\" and \"God\" are respectful titles, and the translators used them out of reverence.",
@@ -390,6 +420,7 @@ export const riddles = [
   },
   {
     number: 3,
+    doctrines: ['01'],
     slug: 'guilty-of-all',
     title: 'Guilty of All',
     teaser: 'Mainstream Christianity teaches that Jesus was 100% God and 100% man. As God in the flesh, He kept the whole Law perfectly.',
@@ -412,6 +443,7 @@ export const riddles = [
   },
   {
     number: 2,
+    doctrines: ['01'],
     kind: 'page',
     slug: 'who-is-the-lord',
     title: 'Who Is “the Lord”?',
@@ -422,7 +454,7 @@ export const riddles = [
   },
   {
     number: 1,
-    doctrine: '08',
+    doctrines: ['08'],
     standing: true,
     slug: 'one-name-one-father',
     title: 'One Name, One Father',
@@ -460,15 +492,16 @@ const badKind = riddles.filter((r) => (r.kind ?? 'riddle') !== 'riddle' && r.kin
 if (badKind.length) throw new Error(`riddles.js: unknown kind on ${badKind.map((r) => r.slug).join(', ')} ('riddle' or 'page')`);
 const badPage = riddles.filter((r) => isPage(r) && !(r.href && r.cta));
 if (badPage.length) throw new Error(`riddles.js: kind 'page' needs href and cta: ${badPage.map((r) => r.slug).join(', ')}`);
-const doctrineIds = riddles.filter((r) => r.doctrine).map((r) => r.doctrine);
-if (new Set(doctrineIds).size !== doctrineIds.length || doctrineIds.some((d) => !/^\d\d$/.test(d))) {
-  throw new Error(`riddles.js: \`doctrine\` must be a unique two-digit pair number (got ${doctrineIds.join(', ')})`);
+const badDoctrines = riddles.filter((r) => r.doctrines !== undefined
+  && !(Array.isArray(r.doctrines) && r.doctrines.length && r.doctrines.every((d) => /^\d\d$/.test(d))
+       && new Set(r.doctrines).size === r.doctrines.length));
+if (badDoctrines.length) {
+  throw new Error(`riddles.js: \`doctrines\` must be a list of distinct two-digit pair numbers: ${badDoctrines.map((r) => r.slug).join(', ')}`);
 }
-// Pair n → the riddle that tests it, for the doctrine cards and pages.
-export const riddleForDoctrine = (n) => {
-  const r = riddles.find((x) => x.doctrine === n);
-  return r ? { href: `/riddles?n=${r.number}`, number: r.number } : null;
-};
+// Pair n → every riddle that tests it, by number, for the doctrine cards and pages.
+export const riddlesForDoctrine = (n) => riddlesByNumber
+  .filter((r) => r.doctrines?.includes(n))
+  .map((r) => ({ href: `/riddles?n=${r.number}`, number: r.number }));
 if (riddles.filter((r) => r.standing).length !== 1) {
   throw new Error('riddles.js: exactly one riddle must carry `standing: true`');
 }

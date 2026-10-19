@@ -1,5 +1,7 @@
 ---
-// src/components/DoctrineInfo.astro · 1019 V5
+// src/components/DoctrineInfo.astro · 1019 V6
+// V6 (Etsy Doctrine Riddles 1019 V4): riddles.js `doctrines` is a list; the line
+// links to the pair's first riddle by number.
 // V5 (Etsy Doctrine Riddles 1019 V3): a pair with a riddle (riddles.js `doctrine`)
 // gets one quiet centered line at the foot of both its pages, Cinzel small caps,
 // gold: "Test it yourself → Try the riddle" to /riddles?n=<number>.
@@ -22,7 +24,7 @@ import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 import StandingStone from './StandingStone.astro';
 import DoctrineTabs from './DoctrineTabs.astro';
 import { departureTabs } from '../data/departure-tabs.js';
-import { riddleForDoctrine } from '../data/riddles.js';
+import { riddlesForDoctrine } from '../data/riddles.js';
 interface Props { side: 'old-paths' | 'departure'; pair: any; }
 const { side, pair } = Astro.props;
 const isOld = side === 'old-paths';
@@ -33,7 +35,7 @@ const hasTabs = !isOld && Boolean(departureTabs[entry.slug]);
 const bodyHtml = !hasTabs && entry.bodyFormat === 'markdown'
   ? (await (await createMarkdownProcessor()).render(entry.body)).code
   : null;
-const riddle = riddleForDoctrine(pair.n);
+const riddle = riddlesForDoctrine(pair.n)[0];
 const counterpartHref = isOld
   ? `/doctrines/the-departure/${counterpart.slug}`
   : `/doctrines/old-paths/${counterpart.slug}`;

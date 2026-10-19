@@ -1,5 +1,9 @@
 ---
-// src/components/DoctrineCard.astro · 1019 V3
+// src/components/DoctrineCard.astro · 1019 V4
+// V4 (Etsy Doctrine Riddles 1019 V4): `riddle` becomes `riddles` ({ href, number }[],
+// by number). One riddle: the V3 link. Two or more: the block is a <div> holding
+// separate links — "Solve the Riddles in 3 Verses" (to the first) and "You can
+// crack them →" followed by one small gold number link per riddle (2 · 3 · 4).
 // V3 (Etsy Doctrine Riddles 1019 V3): optional `riddle` ({ href, number }). When
 // set, the card sits in a .doctrine-card-wrap and a SIBLING link (the card is
 // already one <a>, so no nesting) is laid over its bottom-left, under the tag:
@@ -12,8 +16,10 @@
 // V1: The one card used by BOTH doctrine grids (Old Paths + The Departure). Gold
 // top rule, number in small gold caps, title, italic deck. The WHOLE card is the
 // link — no hover panel, no body text on the card.
-interface Props { n: string; title: string; deck: string; tag?: string; href: string; riddle?: { href: string; number: number } | null; }
-const { n, title, deck, tag, href, riddle } = Astro.props;
+interface Props { n: string; title: string; deck: string; tag?: string; href: string; riddles?: { href: string; number: number }[]; }
+const { n, title, deck, tag, href, riddles = [] } = Astro.props;
+const riddle = riddles[0];
+const several = riddles.length > 1;
 ---
 
 {riddle ? (
@@ -24,10 +30,19 @@ const { n, title, deck, tag, href, riddle } = Astro.props;
       <p class="doctrine-deck">{deck}</p>
       {tag && <p class="doctrine-tag">{tag}</p>}
     </a>
-    <a class="doctrine-riddle" href={riddle.href} aria-label={`Solve the riddle for ${title}`}>
-      <span class="dr-line1">Solve the Riddle in 3 Verses</span>
-      <span class="dr-line2">You can crack it &rarr;</span>
-    </a>
+    {several ? (
+      <div class="doctrine-riddle">
+        <a class="dr-line1" href={riddle.href} aria-label={`Solve the riddles for ${title}`}>Solve the Riddles in 3 Verses</a>
+        <span class="dr-line2">You can crack them &rarr;{riddles.map((r, i) => (
+          <>{i > 0 && <span class="dr-dot" aria-hidden="true"> &middot; </span>}<a class="dr-num" href={r.href} aria-label={`Riddle ${r.number}`}>{i === 0 && ' '}{r.number}</a></>
+        ))}</span>
+      </div>
+    ) : (
+      <a class="doctrine-riddle" href={riddle.href} aria-label={`Solve the riddle for ${title}`}>
+        <span class="dr-line1">Solve the Riddle in 3 Verses</span>
+        <span class="dr-line2">You can crack it &rarr;</span>
+      </a>
+    )}
   </div>
 ) : (
   <a class="doctrine-card" href={href}>
@@ -117,4 +132,14 @@ const { n, title, deck, tag, href, riddle } = Astro.props;
   .doctrine-riddle:hover .dr-line2,
   .doctrine-riddle:focus-visible .dr-line2 { text-decoration: underline; text-underline-offset: 4px; }
   .doctrine-riddle:focus-visible { outline: 1px solid #BA7517; outline-offset: 4px; }
+  /* Two or more riddles (V4): the block is a div; each line part is its own link. */
+  div.doctrine-riddle .dr-line1 { text-decoration: none; }
+  div.doctrine-riddle .dr-line1:hover,
+  div.doctrine-riddle .dr-line1:focus-visible { color: #e8e2d4; outline: none; }
+  .dr-dot { color: #9a7c46; font-style: normal; }
+  .dr-num {
+    font-family: var(--font-display); font-style: normal; font-size: 13px; font-weight: 600;
+    color: #e0a54a; text-decoration: none; padding: 0 0.1rem;
+  }
+  .dr-num:hover, .dr-num:focus-visible { color: #e8e2d4; text-decoration: underline; text-underline-offset: 4px; outline: none; }
 </style>

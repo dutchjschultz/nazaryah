@@ -1,5 +1,7 @@
 ---
-// src/pages/doctrines/old-paths.astro · 1019 V5
+// src/pages/doctrines/old-paths.astro · 1019 V6
+// V6 (Etsy Doctrine Riddles 1019 V4): cards carry `riddles` — every riddle of the pair
+// (01 → 2, 3, 4; 02 → 5, 20).
 // V5 (Etsy Doctrine Riddles 1019 V3): every doctrine card carries `riddle`, looked
 // up from riddles.js by pair `n` (08 opens Riddle 1). The Six Foundations get none.
 // V4: the doctrine grid carries borrowed="old-paths" — the Words Your Bible
@@ -21,7 +23,7 @@ import DoctrineGrid from '../../components/DoctrineGrid.astro';
 import DoctrineCard from '../../components/DoctrineCard.astro';
 import { doctrines } from '../../data/doctrines.data.js';
 import { foundations } from '../../data/foundations.data.js';
-import { riddleForDoctrine } from '../../data/riddles.js';
+import { riddlesForDoctrine } from '../../data/riddles.js';
 
 const cards = doctrines.map((d) => ({
   n: d.n,
@@ -30,7 +32,7 @@ const cards = doctrines.map((d) => ({
   tag: d.oldPaths.tag,
   href: `/doctrines/old-paths/${d.oldPaths.slug}`,
   slug: d.oldPaths.slug,
-  riddle: riddleForDoctrine(d.n),
+  riddles: riddlesForDoctrine(d.n),
 }));
 
 // TIER TWO — the order of Hebrews 6:1-2, as the data file is written. Render it
