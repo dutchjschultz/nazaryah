@@ -1,5 +1,8 @@
 ---
-// src/components/Riddle.astro · 1019 V3
+// src/components/Riddle.astro · 1019 V4
+// V4 (Riddles Why It Matters 1019 V1): a riddle with `why` shows a short study,
+// "Why It Matters", inside the answer, after the verdict and before the next
+// link — left-aligned prose under a thin gold rule. *word* renders in italics.
 // V3 (Etsy Doctrine Riddles 1019 V3): the line under the verdict renders only
 // when the riddle carries `beneath` (optional on the doctrine riddles).
 // V2 (Etsy Riddles Board 1018 V1): the riddle's `teaser` sits above the tiles
@@ -21,6 +24,8 @@
 interface Props { riddle: any; board?: boolean }
 const { riddle, board = false } = Astro.props;
 const pre = `rd${riddle.number}`;
+// *word* → italics (transliterations and titles in the Why It Matters study).
+const segs = (t) => t.split(/\*([^*]+)\*/).map((x, i) => ({ x, em: i % 2 === 1 }));
 const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 ---
 
@@ -77,6 +82,12 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
           </ol>
           <p class="rd-verdict">{riddle.verdict}</p>
           {riddle.beneath && <p class="rd-beneath">{riddle.beneath}</p>}
+          {riddle.why?.length > 0 && (
+            <section class="rd-why" aria-labelledby={`${pre}-why`}>
+              <h2 class="rd-why-head" id={`${pre}-why`}>Why It Matters</h2>
+              {riddle.why.map((para) => <p>{segs(para).map((g) => (g.em ? <em>{g.x}</em> : g.x))}</p>)}
+            </section>
+          )}
           <a class="rd-next" href={riddle.next.href}>{riddle.next.label} <span aria-hidden="true">&rarr;</span></a>
           {!board && <a class="rd-more" href="/riddles">More riddles <span aria-hidden="true">&rarr;</span></a>}
         </div>
@@ -142,6 +153,11 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   .rd-chain-ref { color: var(--rd-muted); white-space: nowrap; }
   .rd-verdict { margin: 1.6rem 0 0.5rem; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.2; color: var(--rd-ink); text-wrap: balance; }
   .rd-beneath { margin: 0; font-style: italic; font-size: 1rem; color: var(--rd-muted); }
+  .rd-why { margin: 2rem auto 0; max-width: 38rem; padding-top: 1.5rem; border-top: 1px solid var(--rd-rule); text-align: left; }
+  .rd-why-head { margin: 0 0 0.9rem; text-align: center; font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rd-gold); }
+  .rd-why p { margin: 0 0 1rem; font-size: 1.05rem; line-height: 1.65; color: var(--rd-ink); text-wrap: pretty; }
+  .rd-why p:last-child { margin-bottom: 0; }
+  .rd-why em { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; }
   .rd-next { display: inline-block; margin-top: 1.4rem; font-family: 'Cinzel', serif; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rd-gold); text-decoration: none; }
   .rd-next:hover { text-decoration: underline; text-underline-offset: 4px; }
   .rd-page--board { background: transparent; padding: 0; }

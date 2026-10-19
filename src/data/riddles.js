@@ -1,4 +1,7 @@
-// riddles 1019 V5.js
+// riddles 1019 V6.js
+// V6 (Riddles Why It Matters 1019 V1): every tile riddle gains `why` — the short
+// companion study ("Why It Matters") shown under the answer, after the verdict.
+// Riddle 2 (a page riddle) has its own study, Why the Names Matter, and none here.
 // STANDING RULE (Dutch): a riddle is never replaced or removed. New riddles are
 // only added, and numbers never change.
 // V5 (Etsy Doctrine Riddles 1019 V4): Riddle 20, Fulfilled (a second Torah
@@ -52,6 +55,8 @@
 //   verdict       the answer, large
 //   beneath       the line under the verdict (optional; no line when absent)
 //   next          { href, label } — the link under the answer
+//   why           optional — the "Why It Matters" study under the answer: a list
+//                 of paragraphs; *word* sets a transliteration or title in italics
 //
 //   Nothing before the answer may name or hint at it — the tiles' challenge
 //   line is the same for every riddle and lives in src/components/Riddle.astro.
@@ -79,6 +84,13 @@ export const riddles = [
     verdict: 'Fulfilled does not mean finished. The Law He fulfilled is still being fulfilled in everyone who walks it.',
     beneath: 'The verb is the same in all three: plēroō (G4137), to fill full.',
     next: { href: '/doctrines/old-paths/walk-after-the-door', label: 'Read the doctrine: The Walk After the Door' },
+    why: [
+      "The church teaches that Yahushua fulfilled the Law, so the Law is finished. He said, \"I am not come to destroy, but to fulfil\" (Matthew 5:17). Paul uses the same word for believers. \"The righteousness of the law\" is to be \"fulfilled in us, who walk not after the flesh, but after the Spirit\" (Romans 8:4). \"He that loveth another hath fulfilled the law\" (Romans 13:8). If fulfill means end, then every believer who walks in the Spirit ends the Law, and every act of love abolishes it. No one believes that. Fulfill does not mean finish.",
+      "The Greek *pleroo* means to fill full, to carry out completely, to give the full measure. Yahushua fulfilled the Law by doing it fully and by showing its full depth. The rest of Matthew 5 does exactly that. Murder reaches to anger. Adultery reaches to the lustful look. The command grew larger in His hands, not smaller. The word He refused was *kataluo*, to loosen down or dissolve, the same word used for the temple stones \"thrown down\" (Matthew 24:2).",
+      "The other prop is Romans 10:4, \"Messiah is the end of the law.\" The word is *telos*, goal or aim. Paul uses it the same way in 1 Timothy 1:5: \"the end of the commandment is charity.\" Love is the goal of the commandment, not its funeral. Messiah is where the Law was always aiming.",
+      "This matters because Yahushua attached a warning to that very sentence. Whoever breaks \"one of these least commandments, and shall teach men so, he shall be called the least in the kingdom of heaven\" (Matthew 5:19). A teaching that tells people the Law is finished is a teaching that breaks the commandments and teaches men so. He said the Law would stand \"till heaven and earth pass\" (Matthew 5:18), and they are still here.",
+      "Revelation identifies the people the dragon makes war against: the remnant \"which keep the commandments of Yahuah, and have the testimony of Yahushua Messiah\" (Revelation 12:17). The Law was fulfilled in them, not finished for them.",
+    ],
   },
   {
     number: 19,
@@ -100,6 +112,13 @@ export const riddles = [
     ],
     verdict: "Every believer is a priest. There is one Master, and no clergy class.",
     next: { href: '/doctrines/old-paths/a-kingdom-of-priests', label: "Read the doctrine: A Kingdom of Priests" },
+    why: [
+      "The church teaches that pastors and priests stand between God and the people, carrying a calling the pews do not. At Sinai Yahuah called the whole nation \"a kingdom of priests, and an holy nation\" (Exodus 19:6). Peter applies those words to every believer: \"ye are a chosen generation, a royal priesthood, an holy nation\" (1 Peter 2:9). Yahushua forbade the rank outright: \"be not ye called Rabbi: for one is your Master, even Messiah; and all ye are brethren\" (Matthew 23:8). One Master. Everyone else is a brother.",
+      "Paul names the only one who stands between: \"one mediator between God and men, the man Messiah Yahushua\" (1 Timothy 2:5). Note that he calls Him \"the man.\" The veil of the Holy Place was torn at His death (Matthew 27:51), opening priestly access to the believer. Yahushua alone, as High Priest, entered the Most Holy by His own blood (Hebrews 9:11-12). There is no room left for a second tier.",
+      "The words \"clergy\" and \"laity\" show the turn. Peter warned elders not to be \"lords over God's heritage\" (1 Peter 5:3). \"Heritage\" is *kleros*, and in that verse the *kleros* is the flock. The church later took that word for its officials, the clergy, and used *laos*, \"people,\" for everyone else, the laity. By around 110, Ignatius of Antioch was urging that nothing be done without the bishop. A ruling class grew from there.",
+      "This matters because a priestly class becomes a gatekeeper. When only the clergy are thought fit to handle Scripture, the people stop studying it and receive whatever they are handed. The Bereans did the opposite. They \"searched the scriptures daily, whether those things were so,\" even after hearing Paul (Acts 17:11). A kingdom of priests reads for itself.",
+      "Revelation gives the same title to all the redeemed, not to a few. Messiah \"hath made us kings and priests\" (Revelation 1:6). The song before the throne repeats it for every people redeemed by the blood: \"out of every kindred, and tongue, and people, and nation; and hast made us unto our God kings and priests\" (Revelation 5:9-10).",
+    ],
   },
   {
     number: 18,
@@ -121,6 +140,13 @@ export const riddles = [
     ],
     verdict: "If the image Yahuah ordered became an idol, the images men make will too.",
     next: { href: '/doctrines/old-paths/no-manner-of-similitude', label: "Read the doctrine: No Manner of Similitude" },
+    why: [
+      "The church teaches that crosses, crucifixes, and pictures of Jesus are aids to worship, and that the image commandment was only about pagan idols. Moses gave the reason for the command: \"ye saw no manner of similitude on the day that Yahuah spake unto you... lest ye corrupt yourselves, and make you a graven image\" (Deuteronomy 4:15-16). The ban was on images of Yahuah Himself, not only pagan gods. Then came the hard case. Yahuah commanded Moses to make a serpent of brass and set it on a pole, so the bitten could look and live (Numbers 21:8). Seven centuries later, Hezekiah \"brake in pieces the brasen serpent that Moses had made: for unto those days the children of Israel did burn incense to it\" (2 Kings 18:4). He called it *Nehushtan*, a piece of brass. Scripture praises him for it.",
+      "If an image Yahuah Himself commanded became an idol once people began to honor it, then images He never commanded stand on worse ground.",
+      "The early assemblies resisted images. The Council of Elvira, around 305, ruled that pictures should not be placed in churches, lest what is worshipped be painted on walls. Five centuries later the Second Council of Nicaea (787) reversed course and approved the veneration of icons. The crucifix, the statue, and the painted face followed.",
+      "This matters for two reasons. First, no one knows what Yahushua looked like. Scripture gives no description, and Isaiah says He had \"no form nor comeliness\" to draw the eye (Isaiah 53:2). Every picture is an artist's invention set before worshippers. Second, Yahushua used the serpent as a sign of belief, not an object to keep. \"As Moses lifted up the serpent... even so must the Son of man be lifted up: that whosoever believeth in him should... have eternal life\" (John 3:14-15). The healing came by trusting Yahuah's word, never by the brass. John's last line to the assembly is \"keep yourselves from idols\" (1 John 5:21).",
+      "Revelation's final test of worship centers on an image. The world is told to \"make an image to the beast\" and worship it (Revelation 13:14-15). The people who refuse are the people who learned the second commandment and kept it.",
+    ],
   },
   {
     number: 17,
@@ -142,6 +168,14 @@ export const riddles = [
     ],
     verdict: "A name that can be blotted out was never fixed.",
     next: { href: '/doctrines/old-paths/choose-life', label: "Read the doctrine: Choose Life" },
+    why: [
+      "Reformed teaching holds that Elohim chose, before the world began, who would be saved and who would be lost. Moses set a choice before Israel: \"I have set before you life and death... therefore choose life\" (Deuteronomy 30:19). A choice already made by someone else is no choice. Yahuah told Moses, \"Whosoever hath sinned against me, him will I blot out of my book\" (Exodus 32:33). And Yahushua promises the overcomer, \"I will not blot out his name out of the book of life\" (Revelation 3:5). Names can be written and names can be removed. The outcome is not sealed at birth.",
+      "Scripture states Yahuah's desire plainly. He has \"no pleasure in the death of him that dieth: wherefore turn yourselves, and live\" (Ezekiel 18:32). He is \"not willing that any should perish, but that all should come to repentance\" (2 Peter 3:9). He \"will have all men to be saved\" (1 Timothy 2:4). A Judge who fixed the verdicts in advance would not plead with the accused to turn.",
+      "The verse most often cited is Ephesians 1:4: \"he hath chosen us in him before the foundation of the world.\" The choosing is \"in him.\" Yahuah chose the way and the Son through whom it would come. Whoever enters Him is in the chosen one. The plan was fixed. The passengers were not.",
+      "The doctrine was built by Augustine in his later writings, taken up by John Calvin, and fixed by the Synod of Dort in 1618-1619. Its five points were later summed up under the name TULIP.",
+      "This matters because fatalism kills repentance. If the outcome is already decided, the call to turn is theater and the warnings are empty. It also makes Yahuah the author of the lost man's ruin, which Scripture never allows. James says no man should say he is tempted of Elohim (James 1:13). Even less should he say he was damned by Him before he drew breath.",
+      "Revelation closes with an open door: \"whosoever will, let him take the water of life freely\" (Revelation 22:17). The invitation is to whosoever, and it is the last one in the Book.",
+    ],
   },
   {
     number: 16,
@@ -163,6 +197,13 @@ export const riddles = [
     ],
     verdict: "Isaiah 14 is about a man: the king of Babylon.",
     next: { href: '/doctrines/old-paths/a-proverb-against-babylon', label: "Read the doctrine: A Proverb Against the King of Babylon" },
+    why: [
+      "The church teaches that Lucifer was a high angel who fell and became Satan, and that Isaiah 14 tells his story. Isaiah names the subject in the opening line: \"take up this proverb against the king of Babylon\" (Isaiah 14:4). His end is a grave: \"thy pomp is brought down to the grave... the worm is spread under thee, and the worms cover thee\" (Isaiah 14:11). And the onlookers ask, \"Is this the man that made the earth to tremble?\" (Isaiah 14:16). A king, a grave, worms, a man. No angel appears in the chapter.",
+      "The Hebrew in verse 12 is *heylel*, \"shining one,\" a taunt at the king who called himself a star. It is not a proper name. \"Lucifer\" came from Jerome's Latin Vulgate around 400, where *lucifer*, \"light-bearer,\" was the Latin word for the morning star. The KJV kept the Latin word as if it were a name. Earlier church writers such as Origen had already read the chapter as the fall of the adversary. Ezekiel 28 is read the same way, yet it addresses the prince of Tyre and twice calls him \"a man, and not God\" (Ezekiel 28:2, 9).",
+      "The adversary is real in Scripture. Isaiah 14 simply is not his biography. The sin it describes is the pride of a king: \"I will ascend into heaven... I will be like the most High\" (Isaiah 14:13-14). That is Babylon's sin in every age, from Babel to the great city of Revelation.",
+      "This matters because the popular reading takes Messiah's title and gives it to the enemy. Peter calls the coming light \"the day star\" (2 Peter 1:19), *phosphoros*, the light-bearer. Yahushua carries the light of His Father. He is not its source, but its bearer, the lamp that carries Yahuah's light. The Lucifer legend turns the light-bearer into the devil's name. Meanwhile the real warning of Isaiah 14, against proud men who claim the place of the Most High, is lost in a story about angels.",
+      "Revelation hands the title back to its owner: \"I Yahushua... am the root and the offspring of David, and the bright and morning star\" (Revelation 22:16). And it ends Babylon exactly as Isaiah did: \"Babylon the great is fallen, is fallen\" (Revelation 18:2).",
+    ],
   },
   {
     number: 15,
@@ -184,6 +225,13 @@ export const riddles = [
     ],
     verdict: "Righteousness is walked, not transferred.",
     next: { href: '/doctrines/old-paths/it-shall-be-our-righteousness', label: "Read the doctrine: It Shall Be Our Righteousness" },
+    why: [
+      "The church teaches that Messiah's righteousness is credited to the believer's account, so that Yahuah sees His obedience instead of theirs. Moses defined righteousness as something done: \"it shall be our righteousness, if we observe to do all these commandments\" (Deuteronomy 6:25). Ezekiel forbids transfer in either direction: \"the righteousness of the righteous shall be upon him, and the wickedness of the wicked shall be upon him\" (Ezekiel 18:20). John warns, \"let no man deceive you: he that doeth righteousness is righteous\" (1 John 3:7). He even says \"let no man deceive you\" first, as if he saw the teaching coming.",
+      "Two things must be kept distinct. Belief is counted for righteousness at entry. Abraham \"believed God, and it was counted unto him for righteousness\" (Romans 4:3). The blood pays the debt \"for the remission of sins that are past\" (Romans 3:25). That is pardon, and it is free. What Scripture does not teach is that Messiah's lifetime of obedience is then laid over the believer's life like a covering, so that his own conduct no longer counts. Forgiveness of the past is not a substitute for the walk ahead.",
+      "The covering doctrine came out of the Reformation. Reformed teachers spoke of the \"active obedience\" of Messiah imputed to believers. The Westminster Confession (1646) set it in writing. Its own critics have long called it a legal fiction: Yahuah declaring true what He knows is not.",
+      "This matters because it makes the believer's conduct invisible. If Yahuah sees only the Son's obedience, nothing the believer does or fails to do changes the record. Scripture says the opposite at every judgment scene. The dead are judged \"according to their works\" (Revelation 20:12). The returning Messiah brings His reward \"to give every man according as his work shall be\" (Revelation 22:12).",
+      "Revelation also shows what the bride wears. To her \"was granted that she should be arrayed in fine linen, clean and white: for the fine linen is the righteousness of saints\" (Revelation 19:8). The Greek is *dikaiomata*, righteous acts. The garment is granted by favor, and it is woven from her own deeds.",
+    ],
   },
   {
     number: 14,
@@ -205,6 +253,13 @@ export const riddles = [
     ],
     verdict: "One tree, one people, one law.",
     next: { href: '/doctrines/old-paths/one-olive-tree', label: "Read the doctrine: One Olive Tree" },
+    why: [
+      "The church teaches that Elohim has two peoples, Israel under the Law and the church under grace, each with its own plan. Moses gave one rule: \"One law and one manner shall be for you, and for the stranger that sojourneth with you\" (Numbers 15:16; see also Exodus 12:49). Paul says the Gentile believer is a wild branch \"graffed in among them,\" sharing \"the root and fatness of the olive tree\" (Romans 11:17). And he says they are \"no more strangers and foreigners, but fellowcitizens with the saints\" (Ephesians 2:19). One tree, one household, one law.",
+      "Jeremiah names the tree: Yahuah called Israel \"a green olive tree, fair, and of goodly fruit\" (Jeremiah 11:16). Paul tells Gentiles they were once \"aliens from the commonwealth of Israel\" (Ephesians 2:12), so being brought near means joining that commonwealth, not starting a second one. Those who belong to Messiah are \"Abraham's seed, and heirs according to the promise\" (Galatians 3:29), heirs through the one Seed, who is Messiah (Galatians 3:16).",
+      "The two-peoples system is young. John Nelson Darby developed it in the 1830s, and the Scofield Reference Bible (1909) carried it into American seminaries and pulpits. Its mirror image, \"replacement theology,\" says the church replaced Israel. Both make two trees. Paul planted one. The branch is grafted in. It neither replaces the tree nor grows beside it.",
+      "This matters because the two-peoples teaching hands the Gentile believer a separate rulebook. The commandments become \"Jewish\" and are set aside, while the promises are kept. But a grafted branch lives on the same root and bears the same fruit. Paul warns the branch, \"thou bearest not the root, but the root thee\" (Romans 11:18). A Gentile who cuts himself off from Israel's Law cuts himself off from the sap that feeds him.",
+      "Revelation's city has twelve gates, and on them \"the names of the twelve tribes of the children of Israel\" (Revelation 21:12). Its foundations carry the names of the twelve apostles (Revelation 21:14). There is no thirteenth gate for a second people.",
+    ],
   },
   {
     number: 13,
@@ -226,6 +281,13 @@ export const riddles = [
     ],
     verdict: "Deliverance begins at the blood and finishes in the walk.",
     next: { href: '/doctrines/old-paths/wine-and-the-bread', label: "Read the doctrine: The Wine and the Bread" },
+    why: [
+      "The church teaches that belief alone saves, and that deliverance is complete the moment one believes. Paul lays out two stages in two verses. \"Being now justified by his blood, we shall be saved from wrath through him\" (Romans 5:9). \"Being reconciled... by the death of his Son, we shall be saved by his life\" (Romans 5:10). Justified now, saved later. James is the only writer who uses the phrase \"faith only,\" and he denies it: \"by works a man is justified, and not by faith only\" (James 2:24). Yahushua puts the finish line at the end: \"he that shall endure unto the end, the same shall be saved\" (Matthew 24:13).",
+      "Entry is by the blood, freely, apart from works. \"By grace are ye saved through faith... not of works\" (Ephesians 2:8-9). The very next verse gives the purpose: \"created in Messiah Yahushua unto good works\" (Ephesians 2:10). Scripture speaks of deliverance in three tenses: begun (Ephesians 2:8), being worked out \"with fear and trembling\" (Philippians 2:12), and \"ready to be revealed in the last time\" (1 Peter 1:5).",
+      "The word \"alone\" was added. In his 1522 German New Testament, Martin Luther inserted *allein* (\"alone\") into Romans 3:28. The Greek has no such word. In the same year he called James \"an epistle of straw.\" He was answering Rome's system of purchased merit, and he swung to the other ditch.",
+      "This matters because \"once saved, always saved\" makes endurance meaningless and warnings empty. Hebrews says we are partakers of Messiah \"if we hold the beginning of our confidence stedfast unto the end\" (Hebrews 3:14). The blood opens the door. The walk, in the commandments, carries the believer through it. Cut the second stage off, and the first is turned into a ticket instead of a beginning.",
+      "Every one of the seven letters in Revelation ends with the same condition: \"to him that overcometh\" (Revelation 2:7, 11, 17, 26; 3:5, 12, 21). And to Smyrna: \"be thou faithful unto death, and I will give thee a crown of life\" (Revelation 2:10).",
+    ],
   },
   {
     number: 12,
@@ -247,6 +309,14 @@ export const riddles = [
     ],
     verdict: "The feasts are Yahuah's, and they still stand.",
     next: { href: '/doctrines/old-paths/signs-and-seasons', label: "Read the doctrine: Signs and Seasons" },
+    why: [
+      "The church teaches that the feasts were Jewish holidays, fulfilled and finished, and that the church now has its own days. Leviticus names the owner: \"the feasts of Yahuah... even these are my feasts\" (Leviticus 23:2). Paul, writing after the resurrection to a Gentile assembly in Corinth, says \"let us keep the feast\" (1 Corinthians 5:8), meaning Hag HaMatzot. And Zechariah sees the nations going up year by year \"to keep the feast of tabernacles\" (Zechariah 14:16). The feasts are Yahuah's, the Gentile assembly kept them, and the prophets see the nations keeping them still.",
+      "The appointed times are older than Israel. On the fourth day Yahuah set the lights \"for signs, and for seasons\" (Genesis 1:14). The word for seasons is *moedim*, the same word Leviticus 23 uses for the feasts. They are written into the sky.",
+      "\"Fulfilled\" does not mean finished. Paul calls the feasts and Sabbaths \"a shadow of things to come\" (Colossians 2:17). He wrote that after the cross, in the present tense. A shadow of things still to come cannot be retired.",
+      "The separation came by decree. At Nicaea in 325, Constantine's council moved the Easter reckoning away from Pesach, urging the church to have nothing in common with the Jews. The Council of Laodicea, around 363, forbade believers to rest on the Sabbath. Christmas and Easter filled the space.",
+      "This matters because the feasts tell the plan in order. Pesach is the Lamb. Hag HaMatzot is a life cleansed of leaven. Bikkurim is the firstfruits from the grave. Shavuot is the giving of the Law and the Spirit. Yom Teruah, Yom Kippur, and Sukkot point to the return, the judgment, and Yahuah dwelling with His people. Exchange them for holidays Scripture never names, and the calendar stops preaching.",
+      "Revelation shows a great multitude before the throne \"with palms in their hands\" (Revelation 7:9). Palm branches belong to Sukkot (Leviticus 23:40). The last feast is still being kept.",
+    ],
   },
   {
     number: 11,
@@ -268,6 +338,13 @@ export const riddles = [
     ],
     verdict: "Clean and unclean was never Jewish, and it never ended.",
     next: { href: '/doctrines/old-paths/ye-shall-be-holy', label: "Read the doctrine: Ye Shall Be Holy" },
+    why: [
+      "The church teaches that the food laws were for the Jews and that Peter's vision ended them. Noah took clean beasts \"by sevens\" and unclean \"by two\" (Genesis 7:2). That was centuries before Abraham, Moses, or a single Jew. Peter explained his own vision: \"God hath shewed me that I should not call any man common or unclean\" (Acts 10:28). The vision was about men, not menus. Isaiah sees those \"eating swine's flesh, and the abomination, and the mouse\" consumed \"together\" at Yahuah's coming (Isaiah 66:17). The line between clean and unclean was drawn before Israel, never moved by Peter, and still stands at the end.",
+      "Peter's own words in the vision tell the story. Years after the resurrection he said, \"I have never eaten any thing that is common or unclean\" (Acts 10:14). He had walked with Yahushua for three and a half years. He never heard Him end the food laws.",
+      "The other verse used is Mark 7:19. The KJV reads \"purging all meats.\" Several modern versions add, in parentheses, that He \"declared all foods clean.\" That line is the translators' comment, not a word of the text. The subject of Mark 7 is unwashed hands, a tradition of the elders, not unclean animals. And the Greek *broma* means food, which in Scripture means what Yahuah called food in the first place. Paul agrees: food is \"sanctified by the word of God\" (1 Timothy 4:5). That word is Leviticus 11.",
+      "This matters because holiness was first taught at the table. \"Ye shall therefore be holy, for I am holy\" closes the food chapter (Leviticus 11:44-45). Peter quotes that very line to believers (1 Peter 1:16). The command did not change when it crossed into the New Testament. A teaching that throws out the line teaches the believer that holiness has no daily shape.",
+      "Revelation keeps the category to the last. Fallen Babylon becomes \"the hold of every foul spirit, and a cage of every unclean and hateful bird\" (Revelation 18:2). Unclean still means unclean.",
+    ],
   },
   {
     number: 10,
@@ -289,6 +366,13 @@ export const riddles = [
     ],
     verdict: "The inheritance is the earth, received at the resurrection.",
     next: { href: '/doctrines/old-paths/inheritance-is-the-earth', label: "Read the doctrine: The Inheritance Is the Earth" },
+    why: [
+      "The church teaches that believers go to heaven when they die and live there forever. The Psalm settles the property lines: \"The heaven, even the heavens, are Yahuah's: but the earth hath he given to the children of men\" (Psalm 115:16). Yahushua named the inheritance: \"the meek... shall inherit the earth\" (Matthew 5:5), quoting Psalm 37:11. And He said plainly, \"no man hath ascended up to heaven\" (John 3:13). Peter added that David \"is not ascended into the heavens\" (Acts 2:34). The promise is the earth, and no one has gone up to collect a different one.",
+      "The promise began with Abraham. Yahuah gave him the land \"for ever\" (Genesis 13:15), yet he died \"not having received the promises\" (Hebrews 11:13). Paul calls him \"heir of the world\" (Romans 4:13). A promise of land that was never received is a promise still waiting. It waits for the resurrection, not for a death that sends the soul elsewhere.",
+      "The heaven-at-death teaching rests on the immortal soul (see Riddle 8). Greek thought taught the soul's escape from the material world. The church carried that hope into its hymns and funerals, and \"going home to glory\" replaced the Hebrew hope of the restored earth.",
+      "This matters because the Law itself is built around inheritance. The Jubilee returned every man to his land (Leviticus 25:10). It restored what was lost and cancelled what was owed. That is the shape of the hope. When the believer's future is moved to the clouds, the earth becomes disposable, the Jubilee becomes a curiosity, and the resurrection becomes a footnote. Scripture runs the other way. Creation itself waits to be \"delivered from the bondage of corruption\" (Romans 8:21).",
+      "Revelation does not send the redeemed up. It brings the city down. John saw \"a new heaven and a new earth,\" and the holy city \"coming down from God out of heaven,\" and heard that \"the tabernacle of God is with men, and he will dwell with them\" (Revelation 21:1-3). The inheritance is restored on earth.",
+    ],
   },
   {
     number: 9,
@@ -310,6 +394,13 @@ export const riddles = [
     ],
     verdict: "Revelation is decoded by the Law and the Prophets, not the newspaper.",
     next: { href: '/doctrines/old-paths/the-book-quotes', label: "Read the doctrine: The Book Quotes" },
+    why: [
+      "The church teaches that Revelation is a coded book of end-time events, decoded from the headlines. John's beast is \"like unto a leopard,\" with the feet \"of a bear\" and the mouth \"of a lion\" (Revelation 13:2). Those are Daniel's beasts, and Daniel says what they are: \"These great beasts... are four kings\" (Daniel 7:17). Revelation's sea and rivers turned to blood (Revelation 8:8; 16:3-4) are Egypt's first plague: \"all the waters that were in the river were turned to blood\" (Exodus 7:20). The key to Revelation is the Old Testament, not the evening news.",
+      "John says the book was \"signified\" (Revelation 1:1), set forth in signs. Those signs are drawn from Moses and the prophets on nearly every page: lampstands, the tree of life, the ark, the plagues, Babylon, the beasts. A reader who knows Daniel and Exodus can read Revelation. A reader who knows only the newspaper will be rewriting his chart every ten years.",
+      "The newspaper method has a history. The Reformers read the beast as a power already standing on the stage of history. In 1590 the Jesuit Francisco Ribera pushed the beast into a distant future, away from the Rome of his own day. John Nelson Darby and the Scofield Reference Bible spread that futurism in the 1800s and early 1900s. Hal Lindsey's *The Late Great Planet Earth* (1970) tied it to current events.",
+      "This matters for two reasons. Every failed headline prediction makes a fresh crop of scoffers. Worse, a beast placed in the future is a beast no one watches in the present. Revelation was written to be kept, not merely decoded: \"Blessed is he that readeth... and keep those things which are written therein\" (Revelation 1:3).",
+      "The Exodus pattern ends Revelation's story as it ended Egypt's. The plagues fell on Egypt while Israel was set apart in Goshen (Exodus 8:22). The overcomers in Revelation stand by the sea and sing \"the song of Moses the servant of God, and the song of the Lamb\" (Revelation 15:3). The book is the Exodus told again, for the whole earth.",
+    ],
   },
   {
     number: 8,
@@ -331,6 +422,13 @@ export const riddles = [
     ],
     verdict: "Man is mortal. Immortality is given at the resurrection.",
     next: { href: '/doctrines/old-paths/became-a-living-soul', label: "Read the doctrine: He Became a Living Soul" },
+    why: [
+      "The church teaches that every person has an immortal soul that lives on, conscious, after death. Genesis 2:7 says man \"became a living soul.\" Dust plus the breath of life equals a soul. Man does not have a soul; he is one. The same Hebrew phrase, *nephesh chayyah*, describes the animals in Genesis 1:24, translated \"living creature.\" Ezekiel 18:4 says \"the soul that sinneth, it shall die.\" Paul says Yahuah \"only hath immortality\" (1 Timothy 6:16). If immortality belongs to Him only, no man carries it by nature.",
+      "Scripture describes death as sleep and silence. \"The dead know not any thing\" (Ecclesiastes 9:5). When breath goes, man \"returneth to his earth; in that very day his thoughts perish\" (Psalm 146:4). The spirit that returns to Elohim (Ecclesiastes 12:7) is *ruach*, the breath He lent, not a conscious person floating free.",
+      "The immortal soul came from Plato. In the *Phaedo* he taught that the soul is trapped in the body and set free at death. Church writers trained in Greek thought carried the idea in. The Fifth Lateran Council made it binding dogma in 1513. The doctrine was decided by a council, not found in a text.",
+      "This matters because it empties the resurrection. If the dead are already in glory, raising the body is an afterthought. Paul argued the reverse: if there is no resurrection, \"they also which are fallen asleep in Messiah are perished\" (1 Corinthians 15:18). Immortality is \"put on\" at the resurrection (1 Corinthians 15:53), and Paul tells believers to seek it (Romans 2:7). No one seeks what he already owns. The doctrine also opened the door to prayers to the dead and to saints, which the Law forbids (Deuteronomy 18:11). It feeds the teaching of endless torment as well (see Riddle 7).",
+      "Revelation places the dead where Scripture always placed them, waiting. \"The sea gave up the dead which were in it; and death and hell delivered up the dead which were in them\" (Revelation 20:13). They are raised from the grave, not called back from heaven.",
+    ],
   },
   {
     number: 7,
@@ -352,6 +450,14 @@ export const riddles = [
     ],
     verdict: "Eternal fire is eternal in its result, not in its burning.",
     next: { href: '/doctrines/old-paths/wicked-consumed', label: "Read the doctrine: The Wicked Consumed" },
+    why: [
+      "The church teaches that the wicked burn forever in torment without end. Jude says Sodom and Gomorrha are \"set forth for an example, suffering the vengeance of eternal fire\" (Jude 1:7). Peter says the same cities were turned \"into ashes\" as \"an ensample\" (2 Peter 2:6). Sodom is not burning today. Malachi says the wicked \"shall be ashes under the soles of your feet\" (Malachi 4:3). Eternal fire, then, is fire whose work is final. What it burns never comes back.",
+      "Scripture names the end plainly. \"The wages of sin is death\" (Romans 6:23), not life in another place. Yahushua warned of the One who can \"destroy both soul and body in hell\" (Matthew 10:28). The wicked \"shall consume; into smoke shall they consume away\" (Psalm 37:20). Revelation calls it \"the second death\" (Revelation 20:14).",
+      "Revelation 14:11 says the smoke of their torment rises \"for ever and ever.\" Isaiah used the same words of Edom: \"the smoke thereof shall go up for ever\" (Isaiah 34:10). Edom is not burning either. The smoke is the lasting witness of a judgment that is finished.",
+      "Endless torment needs a soul that cannot die, and that idea came from Greek philosophy (see Riddle 8). Augustine built the doctrine out at length in *The City of God* in the fifth century. Medieval art and poetry fixed its pictures in the public mind. Few in the pews ever learned that the picture came from the painters, not the prophets.",
+      "This matters because it slanders the Judge. Yahuah says, \"I have no pleasure in the death of the wicked\" (Ezekiel 33:11). Judgment in Scripture is just, complete, and final, never cruelty without end. The doctrine also hands immortality to every sinner, when Scripture offers it only as a gift to those who seek it (Romans 2:7). Many have turned from Yahuah because they were told He keeps a torture chamber. He does not.",
+      "Revelation closes with a world where \"there shall be no more death, neither sorrow, nor crying, neither shall there be any more pain\" (Revelation 21:4). That promise could not stand beside a fire still burning living people.",
+    ],
   },
   {
     number: 6,
@@ -374,6 +480,13 @@ export const riddles = [
     verdict: "The gift of tongues is a real language that someone understands.",
     beneath: "Note: \"unknown\" in 1 Corinthians 14 is italic in the KJV, added by the translators.",
     next: { href: '/doctrines/old-paths/a-pure-lip', label: "Read the doctrine: A Pure Lip" },
+    why: [
+      "The charismatic movement teaches that tongues are a heavenly prayer language, private and unknown. The first outpouring, at Shavuot, says otherwise: \"every man heard them speak in his own language\" (Acts 2:6). The word is *dialektos*, a spoken human language. Paul says tongues are \"for a sign, not to them that believe, but to them that believe not\" (1 Corinthians 14:22). And without an interpreter, \"let him keep silence in the church\" (1 Corinthians 14:28). Real languages, given as a sign to outsiders, under strict order.",
+      "Paul draws the sign from Isaiah 28:11: \"with stammering lips and another tongue will he speak to this people\" (quoted in 1 Corinthians 14:21). In Isaiah, foreign speech was a warning to an Israel that would not hear. A sign meant for hearers cannot be private.",
+      "The word \"unknown\" in 1 Corinthians 14 is printed in italics in the KJV. The translators added it; no Greek word stands behind it. The modern practice began in Topeka, Kansas, in January 1901 under Charles Parham, and spread from Azusa Street in Los Angeles in 1906. Parham first taught that the tongues were real foreign languages for missionaries. Reports came back that the missionaries were not understood. After that, the teaching shifted to a \"heavenly language\" that no one could check.",
+      "This matters because Paul's test is understanding. \"I had rather speak five words with my understanding... than ten thousand words in an unknown tongue\" (1 Corinthians 14:19). A practice no one can understand cannot be tested, and Scripture commands testing: \"try the spirits whether they are of God\" (1 John 4:1). The Spirit produces self-control (Galatians 5:23), and \"the spirits of the prophets are subject to the prophets\" (1 Corinthians 14:32). Order is the mark of Yahuah's Spirit. Confusion is not (1 Corinthians 14:33).",
+      "In Revelation, \"tongue\" always means a people. The everlasting gospel goes \"to every nation, and kindred, and tongue, and people\" (Revelation 14:6). Tongues were given so the nations could hear, not so a speaker could be heard by no one.",
+    ],
   },
   {
     number: 5,
@@ -395,6 +508,13 @@ export const riddles = [
     ],
     verdict: "If sin still exists, the Law still stands.",
     next: { href: '/doctrines/old-paths/walk-after-the-door', label: "Read the doctrine: The Walk After the Door" },
+    why: [
+      "The church teaches that the Law was nailed to the cross and believers now live under grace. Yahushua set the limit: not one jot or tittle shall pass \"till heaven and earth pass\" (Matthew 5:18). Heaven and earth are still here. John defines sin: \"sin is the transgression of the law\" (1 John 3:4). Remove the Law and sin has no definition, yet every pulpit still preaches against sin. Paul answers the claim before anyone makes it: \"shall we sin, because we are not under the law, but under grace? God forbid\" (Romans 6:15).",
+      "\"Under the law\" in Paul means under its sentence. In Romans 6:14 the issue is sin having dominion and the death it earns. Favor (*charis*, grace) lifts the sentence. It never erases the line that defines the crime. A pardoned man is not free to rob the same bank again.",
+      "The \"nailed to the cross\" phrase comes from Colossians 2:14, \"blotting out the handwriting of ordinances that was against us... nailing it to his cross.\" The Greek *cheirographon* means a handwritten record of debt, a signed note of what is owed. What was nailed was the charge sheet against the sinner, not the commandments written by Yahuah's own finger. The idea that the Law itself died goes back to Marcion in the second century, who threw out the Law and the Old Testament together. Modern teaching of an \"age of grace\" carries the same root.",
+      "This matters because the two belong in order. Deliverance enters by the blood, freely, apart from works. Then the delivered walk. Favor itself teaches \"that, denying ungodliness and worldly lusts, we should live soberly, righteously, and godly\" (Titus 2:11-12). Grace without the Law is pardon with no direction. The Law without grace is direction with no pardon. Scripture never offers either one alone.",
+      "Revelation describes the saints at the end in plain words: \"here are they that keep the commandments of Yahuah, and the faith of Yahushua\" (Revelation 14:12). Both are named, and both are kept.",
+    ],
   },
   {
     number: 4,
@@ -417,6 +537,13 @@ export const riddles = [
     verdict: "Replacing the Name with \"the LORD\" is the very trade the prophets condemned.",
     beneath: "Note: Baal (H1168) means lord, master, owner.",
     next: { href: '/doctrines/old-paths/the-name-that-endures', label: "Read the doctrine: The Name That Endures" },
+    why: [
+      "The church says the name does not matter, and that \"the LORD\" and \"God\" are titles of reverence. Yahuah said the opposite at the burning bush: \"this is my name for ever, and this is my memorial unto all generations\" (Exodus 3:15). The name was given with no end date.",
+      "Jeremiah shows how a people loses it. The false prophets \"think to cause my people to forget my name by their dreams... as their fathers have forgotten my name for Baal\" (Jeremiah 23:27). The name was not taken by force. It faded from the pulpit, one sermon at a time, and *Baal* filled the space. *Baal* simply means lord or master. Hosea records Yahuah's answer: \"thou shalt call me Ishi; and shalt call me no more Baali\" (Hosea 2:16). The title the church calls reverent is the title Yahuah asked His bride to stop using.",
+      "The habit grew from a tradition that the name was too holy to speak. That rule is not in the Law. The third commandment forbids taking the name in vain (Exodus 20:7). The Hebrew *nasa* means to lift or carry, and a name that cannot be spoken cannot be carried, in vain or otherwise. Later Greek copies of the Old Testament wrote *kurios* in its place, and English Bibles printed LORD. Reverence that hides what Yahuah commanded to be remembered is not reverence.",
+      "This matters because the name is what is called upon. Joel says \"whosoever shall call on the name of Yahuah shall be delivered\" (Joel 2:32), and Paul repeats it for the nations (Romans 10:13). Malachi records a book of remembrance written \"for them that feared Yahuah, and that thought upon his name\" (Malachi 3:16). Yahushua said, \"I have declared unto them thy name\" (John 17:26). The Son came to restore what the prophets of dreams had buried.",
+      "Revelation commends the assembly that \"hast not denied my name\" (Revelation 3:8). It ends with that name on the foreheads of the redeemed (Revelation 14:1). See also \"Why the Names Matter\" on nazaryah.com.",
+    ],
   },
   {
     number: 3,
@@ -440,6 +567,14 @@ export const riddles = [
     verdict: 'Yahushua had a God, and His God was Yahuah.',
     beneath: 'A co-equal God has no God above Him to worship. He would fail the first command and stand guilty of all.',
     next: { href: '/peah/commandment-one-and-the-man-who-kept-it/', label: 'Read the corner study' },
+    why: [
+      "The church teaches that Yahushua was fully God and fully man, and as God in the flesh He kept the whole Law. James 2:10 sets the standard: break one point and you are \"guilty of all.\" Peter says Yahushua \"did no sin\" (1 Peter 2:22), so He kept every point, the first commandment included. Matthew 4:10 shows how He kept it. Facing the adversary, He answered from Deuteronomy 6:13: \"Thou shalt worship Yahuah thy God, and him only shalt thou serve.\"",
+      "Here is the riddle. Yahushua kept the first commandment by worshipping Yahuah as His own God. If He is Yahuah, He worshipped Himself, which no commandment asks. If He is a second person who is also God, then two stand as God and one serves the other, which is the very thing the first commandment forbids. Only one answer keeps 1 Peter 2:22 true: Yahushua is not Yahuah. He is the Son who worshipped Yahuah perfectly.",
+      "More verses press the same point. Elohim \"cannot be tempted with evil\" (James 1:13), yet the Son \"was in all points tempted like as we are\" (Hebrews 4:15). He \"learned obedience\" (Hebrews 5:8). A being who cannot be tempted and cannot fail learns nothing.",
+      "The two-natures formula comes from the Council of Chalcedon in 451. It was written to hold the Nicene creed together, and it is stated nowhere in Scripture. It asks the reader to believe that one person was tempted and untemptable, mortal and immortal, at the same moment.",
+      "This matters because it erases the example. Peter says Messiah left \"an example, that ye should follow his steps\" (1 Peter 2:21). A man who kept the Law in the power of the Spirit proves the Law can be walked. A God who kept it proves nothing about anyone else. The doctrine that exalts His nature in the end excuses His followers from His path.",
+      "Even glorified, He still names a God above Him. \"Him that overcometh will I make a pillar in the temple of my God\" (Revelation 3:12). He calls His people to the same road: \"even as I also overcame\" (Revelation 3:21).",
+    ],
   },
   {
     number: 2,
@@ -475,6 +610,13 @@ export const riddles = [
     verdict: 'Yahuah the Father is the only true God.',
     beneath: 'One name. One Father. One God. No room for a second or third person.',
     next: { href: '/why-the-names-matter', label: 'Now unmask the titles' },
+    why: [
+      "The Trinity asks the reader to accept one name shared by three persons. The three verses will not allow it. Psalm 83:18 gives the name to one: \"whose name alone is Yahuah.\" Alone means not shared. Isaiah 63:16 says who wears that name: \"thou, O Yahuah, art our father.\" Isaiah 45:5 shuts the door: \"there is none else, there is no God beside me.\" One name, worn by one person, and that person is the Father.",
+      "The prophets and apostles never taught the doctrine. Church councils settled it. Nicaea (325) declared the Son \"of one substance\" with the Father. Constantinople (381) added the Spirit as a third co-equal person. The working words, *ousia* (substance) and *hypostasis* (person), came out of Greek philosophy. Not one verse used to defend the doctrine contains them.",
+      "The shared-name claim leans on Matthew 28:19, \"in the name\" singular. Yet every baptism recorded in Acts is done in the name of Yahushua (Acts 2:38; 8:16; 10:48; 19:5). Eusebius of Caesarea, writing before Nicaea, repeatedly quotes the verse in a shorter form. Even as printed, the one name is the Father's, and the Son carries it. Yahushua means \"Yahuah saves,\" and He came \"in my Father's name\" (John 5:43). A son who carries his father's name does not become his father.",
+      "Yahushua prayed to \"the only true God\" and set Himself beside Him, not inside Him: \"and Yahushua Messiah, whom thou hast sent\" (John 17:3). He tied eternal life to knowing who that only true God is. Blend the Father into a three-person Godhead and that knowledge is lost. Worship drifts toward a concept no one in Scripture ever prayed to. Messiah said the true worshippers \"shall worship the Father\" (John 4:23).",
+      "Revelation keeps the line to the end. The 144,000 stand with the Lamb, \"having his Father's name written in their foreheads\" (Revelation 14:1). One name, one Father, and the Lamb standing beside Him.",
+    ],
   },
 ];
 
