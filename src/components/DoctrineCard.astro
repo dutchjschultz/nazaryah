@@ -1,5 +1,10 @@
 ---
-// src/components/DoctrineCard.astro · 0824 V2
+// src/components/DoctrineCard.astro · 1019 V3
+// V3 (Etsy Doctrine Riddles 1019 V3): optional `riddle` ({ href, number }). When
+// set, the card sits in a .doctrine-card-wrap and a SIBLING link (the card is
+// already one <a>, so no nesting) is laid over its bottom-left, under the tag:
+// "Solve the Riddle in 3 Verses" / "You can crack it →". The card gains bottom
+// padding to make room. Without `riddle` the card renders exactly as V2.
 // V2: the recognition `tag` renders beneath the deck — the doctrine named in
 // church vocabulary, muted gold small caps, so a reader who does not recognise
 // the poetic title knows the subject before he clicks. Optional: a card without
@@ -7,16 +12,31 @@
 // V1: The one card used by BOTH doctrine grids (Old Paths + The Departure). Gold
 // top rule, number in small gold caps, title, italic deck. The WHOLE card is the
 // link — no hover panel, no body text on the card.
-interface Props { n: string; title: string; deck: string; tag?: string; href: string; }
-const { n, title, deck, tag, href } = Astro.props;
+interface Props { n: string; title: string; deck: string; tag?: string; href: string; riddle?: { href: string; number: number } | null; }
+const { n, title, deck, tag, href, riddle } = Astro.props;
 ---
 
-<a class="doctrine-card" href={href}>
-  <span class="doctrine-num">{n}</span>
-  <p class="doctrine-cat">{title}</p>
-  <p class="doctrine-deck">{deck}</p>
-  {tag && <p class="doctrine-tag">{tag}</p>}
-</a>
+{riddle ? (
+  <div class="doctrine-card-wrap">
+    <a class="doctrine-card has-riddle" href={href}>
+      <span class="doctrine-num">{n}</span>
+      <p class="doctrine-cat">{title}</p>
+      <p class="doctrine-deck">{deck}</p>
+      {tag && <p class="doctrine-tag">{tag}</p>}
+    </a>
+    <a class="doctrine-riddle" href={riddle.href} aria-label={`Solve the riddle for ${title}`}>
+      <span class="dr-line1">Solve the Riddle in 3 Verses</span>
+      <span class="dr-line2">You can crack it &rarr;</span>
+    </a>
+  </div>
+) : (
+  <a class="doctrine-card" href={href}>
+    <span class="doctrine-num">{n}</span>
+    <p class="doctrine-cat">{title}</p>
+    <p class="doctrine-deck">{deck}</p>
+    {tag && <p class="doctrine-tag">{tag}</p>}
+  </a>
+)}
 
 <style>
   .doctrine-card {
@@ -74,4 +94,27 @@ const { n, title, deck, tag, href } = Astro.props;
     color: #9a7c46;
     line-height: 1.2;
   }
+
+  /* Riddle link (V3) — a sibling of the card link, laid over its bottom-left. */
+  .doctrine-card-wrap { position: relative; display: grid; min-width: 0; }
+  .doctrine-card.has-riddle { padding-bottom: 5rem; }
+  .doctrine-riddle {
+    position: absolute; left: 1.8rem; bottom: 1.1rem;
+    display: flex; flex-direction: column; gap: 0.15rem;
+    text-decoration: none;
+  }
+  .dr-line1 {
+    font-family: var(--font-display); font-size: 12px; text-transform: uppercase;
+    letter-spacing: 0.15em; color: #e0a54a; line-height: 1.3;
+    transition: color 0.2s;
+  }
+  .dr-line2 {
+    font-family: var(--font-body); font-size: 15px; font-style: italic;
+    color: #a89f8c; line-height: 1.3;
+  }
+  .doctrine-riddle:hover .dr-line1,
+  .doctrine-riddle:focus-visible .dr-line1 { color: #e8e2d4; }
+  .doctrine-riddle:hover .dr-line2,
+  .doctrine-riddle:focus-visible .dr-line2 { text-decoration: underline; text-underline-offset: 4px; }
+  .doctrine-riddle:focus-visible { outline: 1px solid #BA7517; outline-offset: 4px; }
 </style>

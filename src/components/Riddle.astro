@@ -1,5 +1,7 @@
 ---
-// src/components/Riddle.astro · 1018 V2
+// src/components/Riddle.astro · 1019 V3
+// V3 (Etsy Doctrine Riddles 1019 V3): the line under the verdict renders only
+// when the riddle carries `beneath` (optional on the doctrine riddles).
 // V2 (Etsy Riddles Board 1018 V1): the riddle's `teaser` sits above the tiles
 // (italic, muted, centered). `board` mode is for the /riddles board: no page
 // heading or intro (the board has its own), no "More riddles →", and no page
@@ -74,7 +76,7 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
             {riddle.chain.map(([line, ref]) => <li>{line} <span class="rd-chain-ref">— {ref}</span></li>)}
           </ol>
           <p class="rd-verdict">{riddle.verdict}</p>
-          <p class="rd-beneath">{riddle.beneath}</p>
+          {riddle.beneath && <p class="rd-beneath">{riddle.beneath}</p>}
           <a class="rd-next" href={riddle.next.href}>{riddle.next.label} <span aria-hidden="true">&rarr;</span></a>
           {!board && <a class="rd-more" href="/riddles">More riddles <span aria-hidden="true">&rarr;</span></a>}
         </div>

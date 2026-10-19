@@ -1,5 +1,8 @@
 ---
-// src/components/DoctrineInfo.astro · 1008 V4
+// src/components/DoctrineInfo.astro · 1019 V5
+// V5 (Etsy Doctrine Riddles 1019 V3): a pair with a riddle (riddles.js `doctrine`)
+// gets one quiet centered line at the foot of both its pages, Cinzel small caps,
+// gold: "Test it yourself → Try the riddle" to /riddles?n=<number>.
 // V4: every Departure page opens with the StandingStone notice (above the
 // kicker and title; never on the Old Paths side). A Departure entry with a
 // departure-tabs.js entry renders DoctrineTabs in place of its body; every other
@@ -19,6 +22,7 @@ import { createMarkdownProcessor } from '@astrojs/markdown-remark';
 import StandingStone from './StandingStone.astro';
 import DoctrineTabs from './DoctrineTabs.astro';
 import { departureTabs } from '../data/departure-tabs.js';
+import { riddleForDoctrine } from '../data/riddles.js';
 interface Props { side: 'old-paths' | 'departure'; pair: any; }
 const { side, pair } = Astro.props;
 const isOld = side === 'old-paths';
@@ -29,6 +33,7 @@ const hasTabs = !isOld && Boolean(departureTabs[entry.slug]);
 const bodyHtml = !hasTabs && entry.bodyFormat === 'markdown'
   ? (await (await createMarkdownProcessor()).render(entry.body)).code
   : null;
+const riddle = riddleForDoctrine(pair.n);
 const counterpartHref = isOld
   ? `/doctrines/the-departure/${counterpart.slug}`
   : `/doctrines/old-paths/${counterpart.slug}`;
@@ -68,6 +73,7 @@ const counterpartHref = isOld
   </a>
 
   <p class="di-back"><a href={isOld ? '/doctrines/old-paths' : '/doctrines/the-departure'}>&larr; All {kicker}</a></p>
+  {riddle && <p class="di-riddle"><a href={riddle.href}>Test it yourself <span aria-hidden="true">&rarr;</span> Try the riddle</a></p>}
 </article>
 </div>
 
@@ -162,6 +168,13 @@ const counterpartHref = isOld
     text-transform: uppercase; color: #8a8172; text-decoration: none;
   }
   .di-back a:hover { color: #BA7517; }
+
+  .di-riddle { margin: 2.4rem 0 0; text-align: center; }
+  .di-riddle a {
+    font-family: var(--font-display); font-variant: all-small-caps; font-size: 1rem;
+    letter-spacing: 0.12em; color: #BA7517; text-decoration: none;
+  }
+  .di-riddle a:hover { color: #e0a54a; text-decoration: underline; text-underline-offset: 4px; }
 
   @media (max-width: 520px) {
     .di-scripture-label { min-width: 100%; }

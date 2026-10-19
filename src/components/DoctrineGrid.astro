@@ -1,5 +1,7 @@
 ---
-// src/components/DoctrineGrid.astro · 1007 V3
+// src/components/DoctrineGrid.astro · 1019 V4
+// V4 (Etsy Doctrine Riddles 1019 V3): a card may carry `riddle`; passed straight
+// through to DoctrineCard (its riddle link). Old Paths sets it; The Departure doesn't.
 // V3: optional `borrowed` ("old-paths" | "departure"). When set, the Words Your
 // Bible Borrowed intro renders above the cards, and each card sits in a cell
 // with its BorrowedWords dropdown beneath it — outside the card's link, so the
@@ -15,7 +17,7 @@ import BorrowedWords from './BorrowedWords.astro';
 import BorrowedWordsIntro from './BorrowedWordsIntro.astro';
 interface Props {
   eyebrow: string; title: string; subtitle: string;
-  cards: { n: string; title: string; deck: string; tag?: string; href: string; slug?: string }[];
+  cards: { n: string; title: string; deck: string; tag?: string; href: string; slug?: string; riddle?: { href: string; number: number } | null }[];
   borrowed?: 'old-paths' | 'departure';
 }
 const { eyebrow, title, subtitle, cards, borrowed } = Astro.props;
@@ -41,11 +43,11 @@ const hasFooter = Astro.slots.has('default');
   <div class:list={['doctrine-grid', borrowed && 'has-borrowed']}>
     {cards.map((c) => borrowed ? (
       <div class="doctrine-cell">
-        <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} />
+        <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} riddle={c.riddle} />
         <BorrowedWords slug={c.slug} page={borrowed} />
       </div>
     ) : (
-      <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} />
+      <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} riddle={c.riddle} />
     ))}
   </div>
 
