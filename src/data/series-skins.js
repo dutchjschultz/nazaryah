@@ -1,4 +1,7 @@
-// series-skins 1013 V8.js
+// series-skins 1018 V9.js
+// V9 (Etsy Block Abolition Problems 1018 V1): SECTIONS gains 'torah' (Torah, /torah),
+// wearing the torah skin, so a single page filed under the Torah page (first:
+// Abolition Problems) is dated through page-dates.json like Trinity Problems.
 // V8 (Featured card colors — one look per category, Dutch 1013): every featured
 // card now wears its own category's look. Non-Berean sections get a full tint
 // (new skins: lxx-masoretic ink blue, symbol-lexicon deep teal, legal-lexicon
@@ -255,6 +258,7 @@ export const SECTIONS = {
   'edited-after-the-cross': { name: 'LXX vs Masoretic', href: '/edited-after-the-cross', skin: 'lxx-masoretic', cta: 'Read the Verse' },
   'symbol-lexicon': { name: 'The Symbol Lexicon', href: '/symbol-lexicon', skin: 'symbol-lexicon', cta: 'Read the Symbol' },
   'torah-testimonies': { name: 'Torah Testimonies', href: '/torah/testimonies', skin: 'torah', cta: 'Read the Testimony' },
+  torah: { name: 'Torah', href: '/torah', skin: 'torah', cta: 'Read the Study' },
   // Restored Truth has no front page of its own; its row's View all opens The Five Offerings.
   'restored-truth': { name: 'Restored Truth', href: '/five-offerings', skin: 'five-offerings', cta: 'Read the Study' },
   // Hand-built section pages, dated through src/data/page-dates.json (1012).
