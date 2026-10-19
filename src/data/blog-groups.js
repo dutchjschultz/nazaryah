@@ -1,4 +1,5 @@
-// blog-groups 1019 V61.js
+// blog-groups 1019 V62.js
+// V62: tried-in-the-reins joins the-root (category The Root). Map total 158 → 159.
 // V61: the Awake and Divided trilogy — the-first-awakening-northampton, the-second-awakening-cane-ridge, the-third-awakening-azusa-street — joins buried-in-plain-sight (category Buried in Plain Sight). Map total 155 → 158.
 // V60: cease-or-fulfill joins the-law-and-the-feasts (category The Law & The Feasts), beside not-one-jot. Map total 154 → 155.
 // V59: the-genesis-of-the-son joins the-counterfeit-throne (category The Counterfeit Throne, like Incarnate and the rest of the group; the batch said Scripture Unfiltered). Map total 153 → 154.
@@ -258,6 +259,7 @@ export const POST_GROUP = {
   'marred-outside-spotless-within': 'the-root',
   'the-two-letters-of-witness': 'the-root',
   'the-gift-that-blinds': 'the-root',
+  'tried-in-the-reins': 'the-root',
 
   // ── The Quick Scroll (10) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
