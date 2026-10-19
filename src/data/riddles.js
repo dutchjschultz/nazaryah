@@ -1,4 +1,5 @@
-// riddles 1019 V6.js
+// riddles 1019 V7.js
+// V7: Strong's numbers dropped from the lines under the verdict on Riddle 4 (Baal) and Riddle 20 (plēroō).
 // V6 (Riddles Why It Matters 1019 V1): every tile riddle gains `why` — the short
 // companion study ("Why It Matters") shown under the answer, after the verdict.
 // Riddle 2 (a page riddle) has its own study, Why the Names Matter, and none here.
@@ -82,7 +83,7 @@ export const riddles = [
       ['The believer who loves has fulfilled the Law.', 'Romans 13:8'],
     ],
     verdict: 'Fulfilled does not mean finished. The Law He fulfilled is still being fulfilled in everyone who walks it.',
-    beneath: 'The verb is the same in all three: plēroō (G4137), to fill full.',
+    beneath: 'The verb is the same in all three: plēroō, to fill full.',
     next: { href: '/doctrines/old-paths/walk-after-the-door', label: 'Read the doctrine: The Walk After the Door' },
     why: [
       "The church teaches that Yahushua fulfilled the Law, so the Law is finished. He said, \"I am not come to destroy, but to fulfil\" (Matthew 5:17). Paul uses the same word for believers. \"The righteousness of the law\" is to be \"fulfilled in us, who walk not after the flesh, but after the Spirit\" (Romans 8:4). \"He that loveth another hath fulfilled the law\" (Romans 13:8). If fulfill means end, then every believer who walks in the Spirit ends the Law, and every act of love abolishes it. No one believes that. Fulfill does not mean finish.",
@@ -535,7 +536,7 @@ export const riddles = [
       ["Baali means \"my lord,\" and He said to call Him that no more.", "Hosea 2:16"],
     ],
     verdict: "Replacing the Name with \"the LORD\" is the very trade the prophets condemned.",
-    beneath: "Note: Baal (H1168) means lord, master, owner.",
+    beneath: "Note: Baal means lord, master, owner.",
     next: { href: '/doctrines/old-paths/the-name-that-endures', label: "Read the doctrine: The Name That Endures" },
     why: [
       "The church says the name does not matter, and that \"the LORD\" and \"God\" are titles of reverence. Yahuah said the opposite at the burning bush: \"this is my name for ever, and this is my memorial unto all generations\" (Exodus 3:15). The name was given with no end date.",
