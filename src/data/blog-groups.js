@@ -1,4 +1,5 @@
-// blog-groups 1018 V59.js
+// blog-groups 1019 V60.js
+// V60: cease-or-fulfill joins the-law-and-the-feasts (category The Law & The Feasts), beside not-one-jot. Map total 154 → 155.
 // V59: the-genesis-of-the-son joins the-counterfeit-throne (category The Counterfeit Throne, like Incarnate and the rest of the group; the batch said Scripture Unfiltered). Map total 153 → 154.
 // V58: cedars-and-the-branch joins scripture-unfiltered (category Scripture Unfiltered). Map total 152 → 153.
 // V57: the-finger-of-yahuah joins scripture-unfiltered (category Scripture Unfiltered). Map total 151 → 152.
@@ -320,6 +321,7 @@ export const POST_GROUP = {
   'clean-and-unclean-at-the-same-table': 'the-law-and-the-feasts',
   'marriage-and-divorce': 'the-law-and-the-feasts',
   'the-law-of-jealousy': 'the-law-and-the-feasts',
+  'cease-or-fulfill': 'the-law-and-the-feasts',
 
   // ── The Parables (12) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
