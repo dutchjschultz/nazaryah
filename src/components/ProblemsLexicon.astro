@@ -1,0 +1,358 @@
+---
+// src/components/ProblemsLexicon.astro · 1018 V1
+// V1 (Etsy Block Abolition Problems 1018 V1): the Trinity Problems page body
+// (trinity-problems.astro 1014 V2) lifted into one component so Abolition
+// Problems is its twin — same layout, controls, script and styling. A page
+// passes its data (parts → problems → entries, in the trinity-problems.js
+// field names), the head lines, the back link and a storage key; the intro is
+// the default slot and the closing (optional) the "closing" slot.
+// `italics` lists transliterations (kataluo, anomia …) set in <em> wherever they
+// stand in a part intro, a problem statement or an issue line.
+// Both views are rendered at build time; the control bar only shows and hides
+// what is already on the page (no nodes are created at runtime). Styles are
+// global (tp- prefix, used nowhere else) because the slotted intro and closing
+// belong to the page, not to this component.
+interface Part { id: number; label: string; title: string; text: string }
+interface Problem { id: number; title: string; part: number; text: string }
+interface Entry { n: number; ref: string; p: number; verse: string; issue: string; sortKey: number[] }
+interface Props {
+  name: string;           // data file name, for build errors
+  storageKey: string;     // localStorage key for the remembered view
+  back: { href: string; label: string };
+  eyebrow: string;
+  title: string;
+  subtitle: string;
+  subClass?: string;      // section deck class the social-card generator reads
+  placeholder: string;
+  parts: Part[];
+  problems: Problem[];
+  entries: Entry[];
+  italics?: string[];
+}
+const { name, storageKey, back, eyebrow, title, subtitle, subClass = '', placeholder, parts, problems, entries, italics = [] } = Astro.props;
+
+const byId = new Map(problems.map((p) => [p.id, p]));
+const partById = new Map(parts.map((pt) => [pt.id, pt]));
+const badP = entries.filter((e) => !byId.has(e.p)).map((e) => e.n);
+if (badP.length) throw new Error(`${name}: entries with unknown problem id: ${badP.join(', ')}`);
+const badPart = problems.filter((p) => !partById.has(p.part)).map((p) => p.id);
+if (badPart.length) throw new Error(`${name}: problems with unknown part id: ${badPart.join(', ')}`);
+const partOfEntry = (e: Entry) => partById.get(byId.get(e.p)!.part)!;
+
+const entryCount = entries.length;
+const passageCount = new Set(entries.map((e) => e.ref)).size;
+const problemCount = problems.length;
+const fmt = (n: number) => n.toLocaleString('en-US');
+
+const NUMBER_WORDS = ['zero', 'one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine', 'ten', 'eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen', 'twenty'];
+const problemWord = NUMBER_WORDS[problemCount] ?? String(problemCount);
+const partWord = NUMBER_WORDS[parts.length] ?? String(parts.length);
+
+// Split a line on the listed transliterations so each can be set in italics.
+const italicRe = italics.length ? new RegExp(`\\b(${italics.join('|')})\\b`, 'g') : null;
+const segs = (s: string) => (italicRe ? s.split(italicRe).map((t, i) => ({ t, em: i % 2 === 1 })) : [{ t: s, em: false }]);
+
+// By problem: problems in id order, each with its entries in lexicon order; a
+// part's heading block (label, title, intro line) rides on its first problem.
+const groups = [...problems]
+  .sort((a, b) => a.id - b.id)
+  .map((p, i, all) => ({
+    ...p,
+    partHead: i === 0 || all[i - 1].part !== p.part ? partById.get(p.part) : null,
+    items: entries.filter((e) => e.p === p.id).sort((a, b) => a.n - b.n),
+  }));
+
+// By verse: one running index in Bible order (sortKey, then n).
+const cmpKey = (a: Entry, b: Entry) => {
+  for (let i = 0; i < 3; i++) if (a.sortKey[i] !== b.sortKey[i]) return a.sortKey[i] - b.sortKey[i];
+  return a.n - b.n;
+};
+const byVerse = [...entries].sort(cmpKey);
+---
+
+<div class="tp-page" data-tp-key={storageKey}>
+  <div class="tp-wrap">
+
+    <header class="tp-head">
+      <a href={back.href} class="tp-back">&#8592; {back.label}</a>
+      <p class="tp-eyebrow">{eyebrow}</p>
+      <h1 class="tp-title">{title}</h1>
+      <p class={`tp-sub ${subClass}`.trim()}>{subtitle}</p>
+      <p class="tp-tally">{fmt(entryCount)} entries · {fmt(passageCount)} passages · {problemCount} problems</p>
+    </header>
+
+    <section class="tp-intro">
+      <slot />
+    </section>
+
+    <div class="tp-bar" data-tp-bar>
+      <div class="tp-seg" role="group" aria-label="View">
+        <button type="button" data-tp-view="problem" aria-pressed="true">By problem</button>
+        <button type="button" data-tp-view="verse" aria-pressed="false">By verse</button>
+      </div>
+      <label class="tp-visually-hidden" for="tp-part">Part</label>
+      <select id="tp-part" data-tp-partpick>
+        <option value="all">All {partWord} parts</option>
+        {parts.map((pt) => <option value={String(pt.id)}>{pt.label} · {pt.title}</option>)}
+      </select>
+      <label class="tp-visually-hidden" for="tp-problem">Problem</label>
+      <select id="tp-problem" data-tp-problem>
+        <option value="all">All {problemWord} problems</option>
+        {groups.map((p) => <option value={String(p.id)} data-part={String(p.part)}>{p.id}. {p.title}</option>)}
+      </select>
+      <label class="tp-visually-hidden" for="tp-search">Find a verse</label>
+      <input id="tp-search" type="search" placeholder={placeholder} autocomplete="off" data-tp-search />
+      <p class="tp-count" aria-live="polite" data-tp-count>{fmt(entryCount)} entries</p>
+    </div>
+
+    <!-- BY PROBLEM -->
+    <div class="tp-view" data-tp-panel="problem">
+      {groups.map((p) => (
+        <>
+          {p.partHead && (
+            <header class="tp-parthead" data-tp-part={String(p.partHead.id)} id={`part${p.partHead.id}`}>
+              <p class="tp-part">{p.partHead.label}</p>
+              <h2 class="tp-parttitle">{p.partHead.title}</h2>
+              <p class="tp-partintro">{segs(p.partHead.text).map((s) => (s.em ? <em>{s.t}</em> : s.t))}</p>
+            </header>
+          )}
+          <section class="tp-problem" data-tp-group={String(p.id)} data-part={String(p.part)} id={`p${p.id}`}>
+            <p class="tp-pnum">Problem {p.id}</p>
+            <h3 class="tp-ptitle">{p.title}</h3>
+            <div class="tp-ptext"><b>The problem</b>{segs(p.text).map((s) => (s.em ? <em>{s.t}</em> : s.t))}</div>
+            <ol class="tp-list">
+              {p.items.map((e) => (
+                <li class="tp-entry" data-tp-entry data-ref={e.ref}>
+                  <span class="tp-no">No. {e.n}</span>
+                  <div class="tp-body">
+                    <p class="tp-ref">{e.ref}</p>
+                    <p class="tp-verse">{e.verse}</p>
+                  </div>
+                  <p class="tp-issue"><b>The issue</b>{segs(e.issue).map((s) => (s.em ? <em>{s.t}</em> : s.t))}</p>
+                </li>
+              ))}
+            </ol>
+          </section>
+        </>
+      ))}
+    </div>
+
+    <!-- BY VERSE -->
+    <div class="tp-view" data-tp-panel="verse" hidden>
+      <ol class="tp-list">
+        {byVerse.map((e) => (
+          <li class="tp-entry" data-tp-entry data-ref={e.ref} data-p={String(e.p)} data-part={String(byId.get(e.p)!.part)}>
+            <span class="tp-no">No. {e.n}</span>
+            <div class="tp-body">
+              <p class="tp-ref">{e.ref}<span class="tp-tag">{partOfEntry(e).label} · Problem {e.p} · {byId.get(e.p)!.title}</span></p>
+              <p class="tp-verse">{e.verse}</p>
+            </div>
+            <p class="tp-issue"><b>The issue</b>{segs(e.issue).map((s) => (s.em ? <em>{s.t}</em> : s.t))}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <p class="tp-empty" data-tp-empty hidden>No entry matches that reference.</p>
+
+    {Astro.slots.has('closing') && (
+      <section class="tp-closing">
+        <slot name="closing" />
+      </section>
+    )}
+
+  </div>
+</div>
+
+<script>
+  const page = document.querySelector('[data-tp-key]');
+  const KEY = page.dataset.tpKey;
+  const store = {
+    get() { try { return JSON.parse(localStorage.getItem(KEY) || 'null'); } catch { return null; } },
+    set(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch { /* memory unavailable — fine */ } },
+  };
+
+  const bar = document.querySelector('[data-tp-bar]');
+  const viewBtns = [...document.querySelectorAll('[data-tp-view]')];
+  const partSel = document.querySelector('[data-tp-partpick]');
+  const select = document.querySelector('[data-tp-problem]');
+  const search = document.querySelector('[data-tp-search]');
+  const countEl = document.querySelector('[data-tp-count]');
+  const empty = document.querySelector('[data-tp-empty]');
+  const panels = Object.fromEntries([...document.querySelectorAll('[data-tp-panel]')].map((el) => [el.dataset.tpPanel, el]));
+
+  // Every problem option, kept aside so the picker can be narrowed to one part.
+  const problemOpts = [...select.options].filter((o) => o.value !== 'all').map((o) => ({ value: o.value, text: o.text, part: o.dataset.part }));
+  const allLabel = select.options[0].text;
+  const partOfProblem = Object.fromEntries(problemOpts.map((o) => [o.value, o.part]));
+
+  // Keep the bar clear of the site's sticky header.
+  const header = document.querySelector('.site-header');
+  const fitBar = () => bar.style.setProperty('--tp-top', `${header ? header.getBoundingClientRect().height : 0}px`);
+  fitBar();
+  window.addEventListener('resize', fitBar);
+
+  const validPart = (v) => [...partSel.options].some((o) => o.value === v);
+  const saved = store.get() || {};
+  let state = {
+    view: saved.view === 'verse' ? 'verse' : 'problem',
+    part: validPart(saved.part) ? saved.part : 'all',
+    problem: partOfProblem[saved.problem] ? saved.problem : 'all',
+    q: '',
+  };
+  if (state.problem !== 'all' && state.part !== 'all' && partOfProblem[state.problem] !== state.part) state.problem = 'all';
+
+  // Deep links: #part2 opens Part Two; #p14 opens problem 14 (in its part).
+  function fromHash() {
+    const h = location.hash.slice(1);
+    let m;
+    if ((m = h.match(/^part(\d+)$/)) && validPart(m[1])) { state.part = m[1]; state.problem = 'all'; state.view = 'problem'; return true; }
+    if ((m = h.match(/^p(\d+)$/)) && partOfProblem[m[1]]) { state.problem = m[1]; state.part = partOfProblem[m[1]]; state.view = 'problem'; return true; }
+    return false;
+  }
+
+  function fillProblems() {
+    const keep = state.problem;
+    select.length = 0;
+    select.add(new Option(state.part === 'all' ? allLabel : 'All problems in this part', 'all'));
+    for (const o of problemOpts) if (state.part === 'all' || o.part === state.part) select.add(new Option(o.text, o.value));
+    select.value = [...select.options].some((o) => o.value === keep) ? keep : 'all';
+    state.problem = select.value;
+  }
+
+  // A reference matches when the query sits at a word start, and a query ending
+  // in a number cannot run on into a longer one ("John 1" is not "John 10").
+  const matcher = (q) => {
+    const t = q.trim().toLowerCase().replace(/\s+/g, ' ');
+    if (!t) return () => true;
+    const esc = t.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const re = new RegExp(`(^|\\s)${esc}${/\d$/.test(t) ? '(?!\\d)' : ''}`);
+    return (ref) => re.test(ref.toLowerCase());
+  };
+
+  function render() {
+    const match = matcher(state.q);
+    const inScope = (el) => (state.part === 'all' || el.dataset.part === state.part) && (state.problem === 'all' || el.dataset.p === state.problem);
+    for (const b of viewBtns) b.setAttribute('aria-pressed', String(b.dataset.tpView === state.view));
+    for (const [k, el] of Object.entries(panels)) el.hidden = k !== state.view;
+    partSel.value = state.part;
+
+    let shown = 0;
+    if (state.view === 'problem') {
+      for (const g of panels.problem.querySelectorAll('[data-tp-group]')) {
+        let n = 0;
+        const inProblem = (state.part === 'all' || g.dataset.part === state.part) && (state.problem === 'all' || g.dataset.tpGroup === state.problem);
+        for (const li of g.querySelectorAll('[data-tp-entry]')) {
+          const on = inProblem && match(li.dataset.ref);
+          li.hidden = !on;
+          if (on) n++;
+        }
+        g.hidden = n === 0;
+        shown += n;
+      }
+      for (const h of panels.problem.querySelectorAll('[data-tp-part]')) {
+        // A part's heading shows when all its problems are in view, and one of them shows.
+        let sib = h.nextElementSibling, any = false;
+        while (sib && !sib.matches('[data-tp-part]')) { if (!sib.hidden) any = true; sib = sib.nextElementSibling; }
+        h.hidden = state.problem !== 'all' || !any;
+      }
+    } else {
+      for (const li of panels.verse.querySelectorAll('[data-tp-entry]')) {
+        const on = inScope(li) && match(li.dataset.ref);
+        li.hidden = !on;
+        if (on) shown++;
+      }
+    }
+    countEl.textContent = `${shown.toLocaleString('en-US')} ${shown === 1 ? 'entry' : 'entries'}`;
+    empty.hidden = shown > 0;
+    store.set({ view: state.view, part: state.part, problem: state.problem });
+  }
+
+  for (const b of viewBtns) b.addEventListener('click', () => { state.view = b.dataset.tpView; render(); });
+  partSel.addEventListener('change', () => { state.part = partSel.value; fillProblems(); render(); });
+  select.addEventListener('change', () => { state.problem = select.value; render(); });
+  search.addEventListener('input', () => { state.q = search.value; render(); });
+  window.addEventListener('hashchange', () => { if (fromHash()) { fillProblems(); render(); bar.scrollIntoView({ block: 'start' }); } });
+
+  const linked = fromHash();
+  fillProblems();
+  render();
+  if (linked) requestAnimationFrame(() => bar.scrollIntoView({ block: 'start' }));
+</script>
+
+<style is:global>
+  .tp-page {
+    --tp-bg: #f2ead9; --tp-paper: #f8f2e4; --tp-ink: #2b2117; --tp-muted: #6f5f4a;
+    --tp-rule: #d9c8a6; --tp-gold: #7f601c; --tp-on-gold: #f8f2e4;
+    --tp-display: 'Cormorant Garamond', Georgia, serif; --tp-body: 'EB Garamond', Garamond, Georgia, serif;
+    background: var(--tp-bg); color: var(--tp-ink); font-family: var(--tp-body); font-size: 18px; line-height: 1.6;
+    padding: 0 16px;
+  }
+  html.dark .tp-page {
+    --tp-bg: #15110c; --tp-paper: #1d1812; --tp-ink: #ece2cc; --tp-muted: #a8977a;
+    --tp-rule: #3b3123; --tp-gold: #d2a849; --tp-on-gold: #15110c;
+  }
+  .tp-wrap { max-width: 46rem; margin: 0 auto; padding: 2.5rem 0 4rem; }
+
+  .tp-head { text-align: center; display: grid; gap: 0.4rem; padding-bottom: 1.6rem; border-bottom: 1px solid var(--tp-rule); }
+  .tp-back { justify-self: start; font-family: var(--tp-display); font-size: 0.95rem; color: var(--tp-muted); text-decoration: none; margin-bottom: 0.8rem; }
+  .tp-back:hover { color: var(--tp-gold); }
+  .tp-eyebrow { font-family: var(--tp-display); letter-spacing: 0.18em; text-transform: uppercase; font-size: 0.8rem; color: var(--tp-gold); font-weight: 600; margin: 0; }
+  .tp-title { font-family: var(--tp-display); font-weight: 700; font-size: clamp(2.4rem, 7vw, 3.6rem); line-height: 1.05; margin: 0; text-wrap: balance; color: var(--tp-ink); }
+  .tp-sub { font-family: var(--tp-display); font-style: italic; font-size: 1.35rem; color: var(--tp-muted); margin: 0; }
+  .tp-tally { font-variant-numeric: tabular-nums; color: var(--tp-muted); font-size: 0.95rem; margin: 0; }
+
+  .tp-intro { display: grid; gap: 1rem; padding: 1.6rem 0; }
+  .tp-intro p, .tp-intro ul { margin: 0; }
+  .tp-intro ul { padding-left: 1.3rem; display: grid; gap: 0.3rem; }
+  .tp-note { font-size: 0.95rem; color: var(--tp-muted); border-left: 2px solid var(--tp-gold); padding-left: 0.9rem; }
+
+  .tp-bar {
+    position: sticky; top: var(--tp-top, 0px); z-index: 20; background: var(--tp-bg);
+    border-top: 1px solid var(--tp-rule); border-bottom: 1px solid var(--tp-rule);
+    padding: 0.7rem 0; display: flex; flex-wrap: wrap; gap: 0.6rem; align-items: center;
+  }
+  .tp-seg { display: inline-flex; border: 1px solid var(--tp-rule); border-radius: 999px; overflow: hidden; }
+  .tp-seg button { font: inherit; font-size: 0.92rem; background: transparent; color: var(--tp-ink); border: 0; padding: 0.35rem 0.9rem; cursor: pointer; }
+  .tp-seg button[aria-pressed='true'] { background: var(--tp-gold); color: var(--tp-on-gold); }
+  .tp-bar select, .tp-bar input { font: inherit; font-size: 0.92rem; color: var(--tp-ink); background: var(--tp-paper); border: 1px solid var(--tp-rule); border-radius: 6px; padding: 0.35rem 0.6rem; min-width: 0; }
+  .tp-bar select { max-width: 100%; flex: 1 1 14rem; }
+  .tp-bar input { flex: 1 1 9rem; }
+  .tp-bar button:focus-visible, .tp-bar select:focus-visible, .tp-bar input:focus-visible { outline: 2px solid var(--tp-gold); outline-offset: 2px; }
+  .tp-count { font-variant-numeric: tabular-nums; color: var(--tp-muted); font-size: 0.88rem; margin: 0 0 0 auto; }
+  .tp-visually-hidden { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+  .tp-parthead { margin: 2.6rem 0 0; }
+  .tp-part { font-family: var(--tp-display); text-transform: uppercase; letter-spacing: 0.16em; font-size: 0.85rem; color: var(--tp-gold); margin: 0; font-weight: 600; }
+  .tp-parttitle { font-family: var(--tp-display); font-weight: 700; font-size: 2rem; line-height: 1.1; margin: 0.1rem 0 0; color: var(--tp-ink); }
+  .tp-partintro { margin: 0.3rem 0 0; color: var(--tp-muted); font-style: italic; }
+  .tp-problem { padding-top: 1.4rem; }
+  .tp-pnum { font-family: var(--tp-display); color: var(--tp-gold); font-size: 1rem; letter-spacing: 0.08em; text-transform: uppercase; font-weight: 600; margin: 0; }
+  .tp-ptitle { font-family: var(--tp-display); font-size: 1.75rem; line-height: 1.15; margin: 0.1rem 0 0.6rem; text-wrap: balance; color: var(--tp-ink); }
+  .tp-ptext { background: var(--tp-paper); border: 1px solid var(--tp-rule); border-radius: 4px; padding: 0.9rem 1.1rem; margin: 0 0 0.8rem; }
+  .tp-ptext b, .tp-issue b { font-family: var(--tp-display); letter-spacing: 0.12em; text-transform: uppercase; color: var(--tp-gold); font-weight: 700; }
+  .tp-ptext b { display: block; font-size: 0.8rem; margin-bottom: 0.2rem; }
+
+  .tp-list { list-style: none; margin: 0; padding: 0; }
+  .tp-entry { display: grid; grid-template-columns: 3.4rem minmax(0, 1fr); gap: 0.2rem 0.6rem; padding: 0.9rem 0; border-bottom: 1px solid var(--tp-rule); }
+  .tp-no { font-variant-numeric: tabular-nums; color: var(--tp-muted); font-size: 0.85rem; padding-top: 0.15rem; }
+  .tp-body { min-width: 0; }
+  .tp-ref { font-family: var(--tp-display); font-weight: 700; font-size: 1.15rem; letter-spacing: 0.02em; margin: 0; }
+  .tp-tag { display: block; font-family: var(--tp-body); font-weight: 400; font-size: 0.82rem; letter-spacing: 0; color: var(--tp-gold); }
+  .tp-verse { margin: 0.15rem 0 0; }
+  .tp-issue { grid-column: 2; margin: 0.45rem 0 0; padding-left: 0.8rem; border-left: 2px solid var(--tp-gold); font-size: 0.96rem; }
+  .tp-issue b { font-size: 0.72rem; margin-right: 0.4rem; }
+  .tp-empty { color: var(--tp-muted); padding: 2rem 0; text-align: center; margin: 0; }
+
+  .tp-closing { margin-top: 3rem; border-top: 1px solid var(--tp-rule); padding-top: 1.4rem; display: grid; gap: 1rem; }
+  .tp-closing h2 { font-family: var(--tp-display); font-size: 1.9rem; margin: 0; color: var(--tp-ink); }
+  .tp-closing h3 { font-family: var(--tp-display); font-size: 1.3rem; margin: 0.6rem 0 0; color: var(--tp-ink); }
+  .tp-closing p { margin: 0; }
+  .tp-last { font-style: italic; }
+
+  .tp-page [hidden] { display: none !important; }
+  @media (max-width: 520px) {
+    .tp-entry { grid-template-columns: 2.6rem minmax(0, 1fr); }
+    .tp-count { margin-left: 0; width: 100%; }
+  }
+</style>

@@ -1,0 +1,42 @@
+---
+// src/pages/torah/abolition-problems.astro · 1018 V1
+// V1 (Etsy Block Abolition Problems 1018 V1): the Abolition Problems lexicon —
+// the verses an abolished Law cannot account for, 278 entries under thirteen
+// problems in four parts. Twin of /trinity/trinity-problems: the same
+// ProblemsLexicon component, layout and controls; only the data, the title,
+// the location and the back link differ. Data: src/data/abolition-problems.js.
+// The third intro paragraph (the quotation note) takes the note style, as on
+// Trinity Problems. Greek transliterations are set in italics.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ProblemsLexicon from '../../components/ProblemsLexicon.astro';
+import { meta, parts, problems, entries } from '../../data/abolition-problems.js';
+
+const ITALICS = ['kataluo', 'anomia', 'anomos', 'athesmos', 'sabbatismos', 'gegonen', 'ennomos', 'kurios'];
+const italicRe = new RegExp(`\\b(${ITALICS.join('|')})\\b`, 'g');
+const segs = (s) => s.split(italicRe).map((t, i) => ({ t, em: i % 2 === 1 }));
+const intro = meta.intro.map(segs);
+---
+
+<BaseLayout
+  title={`${meta.title} — Nazaryah`}
+  description="The verses an abolished Law cannot account for, gathered under thirteen problems: the Messiah's own words, the apostles' letters, the assemblies keeping Sabbath and feasts after the cross, and the Old Testament witness."
+>
+  <ProblemsLexicon
+    name="abolition-problems.js"
+    storageKey="abolition-problems:view"
+    back={{ href: '/torah', label: 'Back to Torah' }}
+    eyebrow={meta.eyebrow}
+    title={meta.title}
+    subtitle={meta.subtitle}
+    subClass="to-sub"
+    placeholder="Find a verse, e.g. Acts 21"
+    parts={parts}
+    problems={problems}
+    entries={entries}
+    italics={ITALICS}
+  >
+    {intro.map((p, i) => (
+      <p class={i === intro.length - 1 ? 'tp-note' : undefined}>{p.map((s) => (s.em ? <em>{s.t}</em> : s.t))}</p>
+    ))}
+  </ProblemsLexicon>
+</BaseLayout>

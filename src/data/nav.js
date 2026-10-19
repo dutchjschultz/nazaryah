@@ -1,4 +1,6 @@
-// nav 1018 V11.js
+// nav 1018 V12.js
+// V12 (Etsy Block Abolition Problems 1018 V1): Lexicons gains Abolition Problems
+// (/torah/abolition-problems), label = its h1, directly under Trinity Problems.
 // V11 (Etsy Riddles Board 1018 V1): Riddles (/riddles), label = its h1, directly
 // under Close to the Hip.
 // V10 (Trinity Problems Etsy Block 1014 V1): Lexicons gains Trinity Problems
@@ -116,6 +118,7 @@ export const mainNav = [
       { label: 'Symbol Lexicon', href: '/symbol-lexicon', desc: 'New Testament symbols traced back to their Old Testament picture.' },
       { label: 'LXX vs Masoretic', href: '/edited-after-the-cross', desc: 'What the apostles read, and what was rewritten after Messiah.' },
       { label: 'Trinity Problems', href: '/trinity/trinity-problems', desc: 'Verses the Trinitarian must explain' },
+      { label: 'Abolition Problems', href: '/torah/abolition-problems', desc: 'Verses the abolitionist must explain' },
     ],
   },
   {
