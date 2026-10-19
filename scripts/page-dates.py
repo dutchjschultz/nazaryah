@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-page-dates  1014 V3
+page-dates  1018 V4
+V4: SINGLE_PAGES gains torah/abolition-problems → torah (Abolition Problems lexicon).
 V3: SINGLE_PAGES gains trinity/trinity-problems → trinity (Trinity Problems lexicon).
 V2: SINGLE_PAGES — top-level pages filed under a section (five-offerings →
 restored-truth); a page not yet committed takes today, the day it is added.
@@ -51,6 +52,7 @@ SECTION_DIRS = {
 SINGLE_PAGES = {
     "five-offerings": "restored-truth",
     "trinity/trinity-problems": "trinity",
+    "torah/abolition-problems": "torah",
 }
 
 spec = importlib.util.spec_from_file_location("backfill", os.path.join(HERE, "backfill-social-images.py"))

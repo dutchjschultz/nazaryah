@@ -1,5 +1,9 @@
 ---
-// torah.astro · 1005 V5 — Torah Testimonies leads: one full-width main card
+// torah.astro · 1018 V6 — Abolition Problems (/torah/abolition-problems) joins the
+// small cards beneath Torah Testimonies, as Trinity Problems sits on the Trinity
+// page (count from abolition-problems.js); the row of small cards goes to three
+// and stacks on a phone (Etsy Block Abolition Problems 1018 V1).
+// V5 · 1005 — Torah Testimonies leads: one full-width main card
 // (count, title, deck, full text), then the Legal Lexicon and Paul's Laws as two
 // smaller cards side by side beneath it (count, title, one deck line, link);
 // they stack on a phone. The two longer paragraphs leave this page and stay on
@@ -16,6 +20,7 @@ import { liveTerms, terms } from '../data/legal-lexicon.js';
 import { TORAH_CARD } from '../data/law-on-trial.js';
 import { torahTestimonies } from '../data/torah-testimonies.js';
 import { paulsLaws } from '../data/pauls-laws.js';
+import { entries as abolitionEntries, problems as abolitionProblems } from '../data/abolition-problems.js';
 
 const lexiconMeta = `${liveTerms.length} of ${terms.length} words live · growing`;
 
@@ -70,6 +75,13 @@ const lawMeta = lawLive > 0 ? `${lawLive} of ${torahTestimonies.length} testimon
             <p class="to-card-deck">{paulsLaws.deck}</p>
             <span class="to-card-cta">Read &nbsp;&#8594;</span>
           </a>
+
+          <a href="/torah/abolition-problems" class="to-card to-card-small">
+            <p class="to-card-meta">{abolitionEntries.length} verses · {abolitionProblems.length} problems</p>
+            <h3 class="to-card-title">Abolition Problems</h3>
+            <p class="to-card-deck">Verses the abolitionist must explain</p>
+            <span class="to-card-cta">See the problems &nbsp;&#8594;</span>
+          </a>
         </div>
       </div>
     </section>
@@ -101,7 +113,7 @@ const lawMeta = lawLive > 0 ? `${lawLive} of ${torahTestimonies.length} testimon
   .to-h2{font-family:'Cinzel',serif;font-size:clamp(1.2rem,2.5vw,1.6rem);font-weight:600;color:#f0e0bf;margin:0 0 1.25rem;padding-bottom:.6rem;border-bottom:1px solid #3a2510;}
 
   .to-cards{max-width:820px;margin:0 auto;}
-  .to-card-pair{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.5rem;}
+  .to-card-pair{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem;margin-top:1.5rem;}
   .to-card-small{display:flex;flex-direction:column;padding:1.6rem 1.75rem;}
   .to-card-small .to-card-title{font-size:1.2rem;}
   .to-card-small .to-card-deck{flex-grow:1;margin-bottom:1.1rem;}
