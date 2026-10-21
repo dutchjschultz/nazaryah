@@ -1,4 +1,5 @@
-// blog-groups 1021 V65.js
+// blog-groups 1021 V66.js
+// V66: rock-stone-and-word joins the-way-in-and-the-walk (category The Way In and the Walk), beside same-gospel-same-blood. Map total 162 -> 163.
 // V65: the-law-that-carries-his-name joins the-law-and-the-feasts (category The Law & The Feasts). Map total 161 -> 162.
 // V64: the-carnal-mind-vs-the-spiritual-mind joins the-law-and-the-feasts (category The Law & The Feasts), beside cease-or-fulfill. Map total 160 -> 161.
 // V63: sign-seal-and-mark joins scripture-unfiltered (category Scripture Unfiltered). Map total 159 → 160.
@@ -375,6 +376,7 @@ export const POST_GROUP = {
   'two-kingdoms-one-walk': 'the-way-in-and-the-walk',
   'prepare-the-horse': 'the-way-in-and-the-walk',
   'same-gospel-same-blood': 'the-way-in-and-the-walk',
+  'rock-stone-and-word': 'the-way-in-and-the-walk',
 
   // ── Scripture Unfiltered (19) ──
   'hearts-and-reins': 'scripture-unfiltered',
