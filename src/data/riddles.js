@@ -1,4 +1,7 @@
-// riddles 1021 V10.js
+// riddles 1021 V11.js
+// V11 (Communion package 1021 V2): Riddle 24, The Remembrance (pair 20, Communion).
+// It carries a hint line with no nudge verse and no chain (both now optional,
+// Riddle V8); its answer is the package's full paragraph.
 // V10 (Etsy Riddles Revelation Split 1021 V1): Riddle 22, The Gathering (pair 07,
 // The Rapture), and Riddle 23, The Thousand Years (pair 08, The Millennium).
 // Riddle 21 ties to pairs 02, 12, 18. Every doctrines tie shifts with the
@@ -59,9 +62,9 @@
 //                 teaches; it never names, hints at, or questions the answer
 //   line          the homepage corner-card line (shown only for the standing riddle)
 //   tiles         three { ref, text } — KJV, with [Yahuah] etc. in brackets
-//   nudgeLine     the line above the nudge verse
-//   nudge         { ref, text }
-//   chain         three [line, ref] — the answer's steps
+//   nudgeLine     the line above the nudge verse (the Hint)
+//   nudge         { ref, text } — optional; the Hint may be its line alone
+//   chain         three [line, ref] — the answer's steps; optional
 //   verdict       the answer, large
 //   beneath       the line under the verdict (optional; no line when absent)
 //   next          { href, label } — the link under the answer
@@ -74,6 +77,30 @@
 // ================================================================
 
 export const riddles = [
+  {
+    number: 24,
+    doctrines: ['20'],
+    slug: 'the-remembrance',
+    title: 'The Remembrance',
+    teaser: "Most of Christianity teaches that Communion is a church ordinance that Jesus set up at the Last Supper. The bread and cup are taken in church, weekly, monthly, or a few times a year, “in remembrance of me.” Some churches teach the bread becomes His body. Others teach it is only a memorial service. Either way, the remembrance is a church ritual of its own, separate from the feasts of Yahuah.",
+    tiles: [
+      { ref: 'Exodus 12:14', text: "And this day shall be unto you for a memorial; and ye shall keep it a feast to the LORD [Yahuah] throughout your generations; ye shall keep it a feast by an ordinance for ever." },
+      { ref: 'Luke 22:19', text: "And he took bread, and gave thanks, and brake it, and gave unto them, saying, This is my body which is given for you: this do in remembrance of me." },
+      { ref: '1 Corinthians 5:7-8', text: "For even Christ [Messiah] our passover is sacrificed for us: Therefore let us keep the feast, not with old leaven, neither with the leaven of malice and wickedness; but with the unleavened bread of sincerity and truth." },
+    ],
+    nudgeLine: 'Ask what the first memorial in Scripture was, and which feast Paul tells the assembly to keep.',
+    verdict: "Yahuah already had a memorial, and it was a feast: Pesach, to be kept “for ever.” When Yahushua said “this do in remembrance of me,” He was not starting a new church ritual. He was telling His disciples that the Pesach memorial would now remember Him, the Lamb. Paul says it plainly: Messiah is our Pesach, “therefore let us keep the feast.” The remembrance is the feast kept as Yahuah gave it, with eyes on the Lamb who was slain.",
+    next: { href: '/doctrines/old-paths/keep-the-feast', label: 'Read the doctrine: Keep the Feast' },
+    why: [
+      "The word “remembrance” did not start at the Last Supper. In Hebrew it is *zikkaron*, a memorial, and Yahuah gave the first one in Egypt. “This day shall be unto you for a memorial,” He said of Pesach, and Israel was to keep it as a feast for ever (Exodus 12:14).",
+      "In Hebrew, to remember is to do. Israel was told to look on their fringes and “remember all the commandments of Yahuah, and do them” (Numbers 15:39). Remembering was never a feeling in a pew. It was a life lived and a feast kept.",
+      "So when Yahushua said “this do in remembrance of me” (Luke 22:19), the disciples heard a Hebrew word with fifteen hundred years behind it. The meal that night was a preparation meal, the evening before Pesach. Yahushua told them He would not eat Pesach again “until it be fulfilled” (Luke 22:16). By the next afternoon He had died at the very hour the lambs were slain. He did not eat that Pesach. He became it.",
+      "That is why Paul could write, “Messiah our passover is sacrificed for us: therefore let us keep the feast” (1 Corinthians 5:7-8). Paul did not say “therefore let us hold Communion.” He said keep the feast. And when he wrote “as often as ye drink it, ye do shew the Master’s death till he come” (1 Corinthians 11:26), he gave no schedule. He was saying what the cup proclaims whenever the memorial is kept.",
+      "Where did the church ritual come from? The Greek word for remembrance, *anamnēsis*, carried baggage. Plato used it for the soul recalling what it knew before birth. Later church teachers used it to mean making the sacrifice present again on the altar. The Greek world also had sacred meals of its own. Papyrus invitations survive asking guests to dine “at the table of the lord Serapis.” Paul warned the Corinthians about this very thing: “Ye cannot drink the cup of the Master, and the cup of devils” (1 Corinthians 10:21).",
+      "Over the centuries the feast was cut loose from Yahuah’s calendar and turned into a church service. Catholics made it a sacrament. Protestants kept the service and called it an ordinance. Both moved the remembrance out of the feast and into the building.",
+      "The fix is simple. Keep the memorial Yahuah gave, and keep it remembering the Lamb. And the story is not over. Revelation points ahead to another supper: “Blessed are they which are called unto the marriage supper of the Lamb” (Revelation 19:9). The feast kept now is the rehearsal for the one still to come.",
+    ],
+  },
   {
     number: 23,
     doctrines: ['08'],

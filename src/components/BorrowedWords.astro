@@ -1,5 +1,10 @@
 ---
-// BorrowedWords 1007 V2.astro
+// BorrowedWords 1021 V3.astro
+// V3 (Communion package 1021 V2): three optional fields. A doctrine's
+// `departureHeader` replaces the standard "You've been quoting X…" line on the
+// Departure page. A word's `gloss` follows its name ("koinōnia — sharing"). A
+// word's `dep` ({ origin, scripture }) gives the Departure page its own two lines
+// — "Greek origin" and "Scripture" — in place of the "… wrote" pair.
 // V2: styled in the doctrine pages' own palette. Those pages are a fixed dark
 // ground (#0e0d0b) with #BA7517 gold and #e8e2d4 text in both site themes, so
 // every colour is set here; the V1 fallbacks (var(--gold) is a dark gold on this
@@ -21,7 +26,7 @@ import {
 const { slug, page } = Astro.props;
 const d = doctrines.find(x => (page === "departure" ? x.departureSlug : x.oldPathsSlug) === slug);
 const header = d && (page === "departure"
-  ? `You’ve been quoting ${d.departureSource} and calling it Scripture.`
+  ? (d.departureHeader || `You’ve been quoting ${d.departureSource} and calling it Scripture.`)
   : oldPathsHeader);
 const names = d ? d.words.map(w => w.greek.split(" / ")[0].toLowerCase()).join(" · ") : "";
 ---
@@ -41,10 +46,19 @@ const names = d ? d.words.map(w => w.greek.split(" / ")[0].toLowerCase()).join("
 
       {d.words.map(w => (
         <div class="bw-word" id={`bw-${w.id}`}>
-          <p class="bw-word-name">{w.greek.toUpperCase()}{" "}<span class="bw-kjv">· “{w.yourBible}”</span>{" "}<span class="bw-strongs">{w.strongs}</span></p>
+          <p class="bw-word-name">{w.greek.toUpperCase()}{w.gloss && <span class="bw-gloss">{" — "}{w.gloss}</span>}{" "}<span class="bw-kjv">· “{w.yourBible}”</span>{" "}<span class="bw-strongs">{w.strongs}</span></p>
           <p class="bw-line"><span class="bw-label">Your Bible says:</span>{" "}{w.yourBible}</p>
-          <p class="bw-line"><span class="bw-label">{w.sourceName}:</span>{" "}{w.sourceLine}</p>
-          <p class="bw-line"><span class="bw-label">{w.scriptureName}:</span>{" "}{w.scriptureLine}</p>
+          {page === "departure" && w.dep ? (
+            <>
+              <p class="bw-line"><span class="bw-label">Greek origin:</span>{" "}{w.dep.origin}</p>
+              <p class="bw-line"><span class="bw-label">Scripture:</span>{" "}{w.dep.scripture}</p>
+            </>
+          ) : (
+            <>
+              <p class="bw-line"><span class="bw-label">{w.sourceName}:</span>{" "}{w.sourceLine}</p>
+              <p class="bw-line"><span class="bw-label">{w.scriptureName}:</span>{" "}{w.scriptureLine}</p>
+            </>
+          )}
           <p class="bw-link">
             {WORD_PAGE_LIVE
               ? <a href={`${WORD_PAGE_PATH}#${w.id}`}>{w.linkLabel} →</a>
@@ -73,6 +87,7 @@ const names = d ? d.words.map(w => w.greek.split(" / ")[0].toLowerCase()).join("
   .bw-lead { font-size: 1rem; line-height: 1.5; color: #a89f8c; margin: 0 0 1rem; }
   .bw-word { margin: 0 0 1.1rem; }
   .bw-word-name { font-weight: 700; letter-spacing: 0.04em; color: #e8e2d4; margin: 0 0 0.25rem; line-height: 1.35; }
+  .bw-gloss { font-weight: 400; font-style: italic; letter-spacing: 0; color: #cfc6b3; text-transform: none; }
   .bw-kjv { font-weight: 400; font-style: italic; letter-spacing: 0; color: #a89f8c; }
   .bw-strongs { font-weight: 400; font-size: 0.8em; color: #8f8672; margin-left: 0.4em; white-space: nowrap; }
   .bw-line { margin: 0 0 0.15rem 1rem; line-height: 1.45; overflow-wrap: anywhere; }

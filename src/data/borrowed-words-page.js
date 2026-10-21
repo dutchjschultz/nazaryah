@@ -1,4 +1,7 @@
-// borrowed-words-page 1021 V10.js
+// borrowed-words-page 1021 V11.js
+// V11 (Communion package 1021 V2): group 20, Communion — koinōnia, deipnon / trapeza,
+// anamnēsis; mystērion and eucharistia cross-listed from Faith Alone, each with the
+// package's added line as its Communion note. No Strong's numbers. "twenty doctrines".
 // V10 (Greek Influence End-Times Additions 1021 V1): Revelation Teaching (06) becomes
 // three groups — 06 The Seven-Year Tribulation (hebdomas, apostasia, katechō), 07 The
 // Rapture (harpazō, apantēsis, then parousia and epiphaneia moved in unchanged), 08
@@ -41,7 +44,7 @@ export const intro = [
   "Every word on this page is a Greek word from the New Testament that was already in use before the apostles wrote it — in the temples of the gods, at the oracle of Delphi, in the schools of the philosophers, or on the inscriptions of the emperors. Each one replaced a Hebrew word, and each one brought its own meaning with it.",
   "The list was made by screening every Greek word in the New Testament — 5,523 entries in Strong’s dictionary. A word was kept only if its pagan or philosophical meaning can be shown to have changed a doctrine. Words that kept their Hebrew meaning in the church’s hands were left off, no matter where they came from.",
   "How do we know the Hebrew word beneath the Greek? Where the New Testament quotes the Old, or the Greek translation of the Old Testament renders a Hebrew word, the bridge is shown under the entry, so every claim can be checked.",
-  "The words are grouped under the nineteen doctrines they changed. Below them are words that bear on other subjects, and the popular claims that did not survive the test."
+  "The words are grouped under the twenty doctrines they changed. Below them are words that bear on other subjects, and the popular claims that did not survive the test."
 ];
 
 export const doctrines = [
@@ -1974,6 +1977,78 @@ export const doctrines = [
             "href": "/doctrines/the-departure/clergy-over-the-people#word-anathema"
           }
         ]
+      }
+    ]
+  },
+  {
+    "num": "20",
+    "title": "Communion",
+    "oldPathsTitle": "Keep the Feast",
+    "departureSlug": "communion",
+    "oldPathsSlug": "keep-the-feast",
+    "note": null,
+    "crossRefs": [
+      {
+        "id": "mysterion",
+        "note": "In Communion: the Latin Bible rendered mystērion as sacramentum, a Roman soldier’s oath, and the church’s word “sacrament” grew from it.",
+        "aliases": [
+          "mysterion-communion"
+        ]
+      },
+      {
+        "id": "eucharistia",
+        "note": "In Communion: the word means giving thanks, as Yahushua “gave thanks” over the bread (Luke 22:19), and the thanks became the name of the rite.",
+        "aliases": [
+          "eucharistia-communion"
+        ]
+      }
+    ],
+    "words": [
+      {
+        "id": "koinonia",
+        "greek": "Koinōnia",
+        "strongs": null,
+        "kjv": "communion",
+        "source": "In the Greek world, eating from a god’s sacrificial meal made a man a sharer, a partner, with that god. The meal itself was the bond.",
+        "hebrew": "Chabar — to join, to be a companion.",
+        "fed": "The belief that eating the bread at church is itself what joins the believer to Messiah’s body, the meal as the means of union.",
+        "bridge": "1 Corinthians 10:16-21 — Paul uses the same word for sharing in the Master’s cup and for being “partakers with devils” at an idol’s table.",
+        "aliases": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
+      },
+      {
+        "id": "deipnon",
+        "greek": "Deipnon / Trapeza",
+        "strongs": null,
+        "kjv": "supper / table",
+        "source": "Surviving papyrus invitations from Egypt ask guests to dine “at the table of the lord Serapis” in his temple. A god’s supper at a god’s table was a familiar rite.",
+        "hebrew": "Mishteh — a feast, a banquet.",
+        "fed": "The idea of a standing church rite called “the Lord’s table” or “the Lord’s supper,” held on the church’s own schedule apart from Yahuah’s feasts.",
+        "bridge": "Revelation 19:9 — the deipnon of the Lamb is the marriage supper still ahead.",
+        "aliases": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
+      },
+      {
+        "id": "anamnesis",
+        "greek": "Anamnēsis",
+        "strongs": null,
+        "kjv": "remembrance",
+        "source": "Plato used the word for the soul recalling what it knew before birth. Later church teachers used it for the moment in the service when the sacrifice is made present again.",
+        "hebrew": "Zikkaron — a memorial, kept by doing.",
+        "fed": "Remembrance as a ritual act performed at church, instead of the Pesach memorial kept as a feast.",
+        "bridge": "Hebrews 10:3 — the same word for the remembrance made in the sacrifices “every year,” a remembrance tied to Yahuah’s appointed time.",
+        "aliases": [],
+        "sources": [
+          "Philosophers",
+          "Later teachers & translators"
+        ],
+        "story": []
       }
     ]
   }

@@ -1,4 +1,7 @@
-// doctrines.data 1021 V9.js
+// doctrines.data 1021 V10.js
+// V10 (Communion package 1021 V2): pair 20 — Keep the Feast / Communion (tag
+// Communion). The Departure body is the riddle's "The Claim" paragraph; the package
+// gave the Departure page's panel but no body of its own.
 // V9 (Etsy Riddles Revelation Split 1021 V1): Revelation Teaching (06) splits into
 // three pairs grouped as one Revelation set — 06 The Seven-Year Tribulation,
 // 07 The Rapture (new), 08 The Millennium (new). New optional field
@@ -474,6 +477,27 @@ The assembly has elders and overseers who serve, teach, and keep watch — but t
       deck: "One Pulpit, One Pew — and the Wall Between Them",
       tag: "Clergy and Laity"
       // No body: the page is the tabbed layout (departure-tabs.js via DoctrineTabs).
+    }
+  },
+
+  {
+    n: "20",
+    oldPaths: {
+      slug: "keep-the-feast",
+      title: "Keep the Feast",
+      deck: "The Memorial Was Already Given",
+      tag: "Communion",
+      body: `Yahuah gave Israel a memorial in Egypt, and it was a feast: Pesach, kept for ever. To remember, in Hebrew, is to do. When Yahushua said "this do in remembrance of me," He was not starting a church service. The Pesach memorial would now remember Him, the Lamb slain at the hour the lambs were slain. Paul said it plainly: Messiah is our Pesach, therefore keep the feast. The remembrance is the feast kept as Yahuah gave it.`,
+      torah: ["Exodus 12:14", "Numbers 15:39"],
+      witness: ["Luke 22:19", "1 Corinthians 5:7-8"]
+    },
+    departure: {
+      slug: "communion",
+      title: "Communion",
+      deck: "The Feast the Church Moved Indoors",
+      tag: "Communion",
+      // The package gave no Departure body; this is its riddle's "The Claim" paragraph (Dutch's words).
+      body: `Most of Christianity teaches that Communion is a church ordinance that Jesus set up at the Last Supper. The bread and cup are taken in church, weekly, monthly, or a few times a year, "in remembrance of me." Some churches teach the bread becomes His body. Others teach it is only a memorial service. Either way, the remembrance is a church ritual of its own, separate from the feasts of Yahuah.`
     }
   }
 ];

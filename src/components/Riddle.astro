@@ -1,5 +1,9 @@
 ---
-// src/components/Riddle.astro · 1021 V7
+// src/components/Riddle.astro · 1021 V8
+// V8 (Communion package 1021 V2, Riddle 24): `nudge` and `chain` are optional — a
+// hint may be its line alone, and an answer may open straight on the verdict. A
+// verdict longer than one line's worth (over 160 characters) sets smaller, as
+// prose, instead of as the large headline.
 // V7 (Dutch 1021): two reveal buttons, not three. "Hint" (was "Need a nudge?") and
 // "Show the answer" sit side by side in one row, equal width, centered — still one
 // row on a phone. Each opens ONLY its own panel, full width beneath the row. The
@@ -75,7 +79,7 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
       <div id={`${pre}-nudge`} class="rd-reveal rd-reveal--hint" hidden>
         <p class="rd-nudge-line">{riddle.nudgeLine}</p>
-        <div class="rd-tile rd-tile--single">
+        {riddle.nudge && <div class="rd-tile rd-tile--single">
           <button type="button" class="rd-tile-btn" aria-expanded="false" aria-controls={id(riddle.nudge.ref)} data-rd-toggle>
             <span class="rd-tile-ref">{riddle.nudge.ref}</span>
             <span class="rd-tile-hint" aria-hidden="true">Tap to read</span>
@@ -84,14 +88,14 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
             <span class="rd-kjv">{riddle.nudge.ref} (KJV)</span>
             <em>{riddle.nudge.text}</em>
           </p>
-        </div>
+        </div>}
       </div>
 
       <div id={`${pre}-answer`} class="rd-reveal" hidden>
-        <ol class="rd-chain">
+        {riddle.chain?.length > 0 && <ol class="rd-chain">
           {riddle.chain.map(([line, ref]) => <li>{line} <span class="rd-chain-ref">— {ref}</span></li>)}
-        </ol>
-        <p class="rd-verdict">{riddle.verdict}</p>
+        </ol>}
+        <p class:list={['rd-verdict', { 'rd-verdict--long': riddle.verdict.length > 160, 'rd-verdict--first': !riddle.chain?.length }]}>{riddle.verdict}</p>
         {riddle.beneath && <p class="rd-beneath">{riddle.beneath}</p>}
         {riddle.why?.length > 0 && (
           <section class="rd-why" aria-labelledby={`${pre}-why`}>
@@ -175,6 +179,8 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   .rd-chain { list-style: decimal; text-align: left; max-width: 26rem; margin: 0 auto; padding-left: 1.4rem; display: grid; gap: 0.3rem; }
   .rd-chain-ref { color: var(--rd-muted); white-space: nowrap; }
   .rd-verdict { margin: 1.6rem 0 0.5rem; font-family: 'Playfair Display', Georgia, serif; font-weight: 700; font-size: clamp(1.6rem, 5vw, 2.2rem); line-height: 1.2; color: var(--rd-ink); text-wrap: balance; }
+  .rd-verdict--long { font-size: clamp(1.15rem, 3.2vw, 1.35rem); line-height: 1.5; font-weight: 600; text-align: left; max-width: 38rem; margin-left: auto; margin-right: auto; text-wrap: pretty; }
+  .rd-verdict--first { margin-top: 0.6rem; }
   .rd-beneath { margin: 0; font-style: italic; font-size: 1rem; color: var(--rd-muted); }
   .rd-why { margin: 2rem auto 0; max-width: 38rem; padding-top: 1.5rem; border-top: 1px solid var(--rd-rule); text-align: left; }
   .rd-why-head { margin: 0 0 0.9rem; text-align: center; font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rd-navy); }

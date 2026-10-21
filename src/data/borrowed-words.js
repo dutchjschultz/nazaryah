@@ -1,4 +1,8 @@
-// borrowed-words 1021 V10.js
+// borrowed-words 1021 V11.js
+// V11 (Communion package 1021 V2): doctrine 20, Communion — koinōnia, deipnon,
+// anamnēsis, mystērion and eucharistia (the last two link to their Communion
+// listings). Uses the new optional departureHeader, gloss and dep fields
+// (BorrowedWords V3). Faith Alone keeps its own mystērion and eucharistia.
 // V10 (Greek Influence End-Times Additions 1021 V1): the 06 panel takes hebdomas,
 // apostasia and katechō; parousia and epiphaneia move to the new 07 (The Rapture)
 // with harpazō and apantēsis; new 08 (The Millennium) carries chilioi and abyssos
@@ -494,6 +498,38 @@ export const doctrines = [
         sourceName: "The councils wrote", sourceLine: "anathema — cursed for disagreeing",
         scriptureName: "Paul wrote", scriptureLine: "anathema for “any other gospel” (Galatians 1:8)",
         linkLabel: "The councils’ word or Yahuah’s?" }
+    ]
+  },
+  {
+    num: "20", oldPathsSlug: "keep-the-feast", departureSlug: "communion",
+    departureSource: "the church",
+    departureHeader: "You’ve been keeping a church ritual and calling it His remembrance.",
+    words: [
+      { id: "koinonia", greek: "Koinōnia", gloss: "sharing", strongs: "", yourBible: "communion",
+        sourceName: "The temple cults wrote", sourceLine: "eat from the god’s table and become his partner",
+        scriptureName: "Paul wrote", scriptureLine: "“ye cannot be partakers of the Master’s table, and of the table of devils” (1 Corinthians 10:21)",
+        dep: { origin: "the bond made by eating a god’s sacrificial meal", scripture: "1 Corinthians 10:16-21" },
+        linkLabel: "The cults’ word or Yahuah’s?" },
+      { id: "deipnon", greek: "Deipnon", gloss: "supper", strongs: "", yourBible: "the Lord’s supper",
+        sourceName: "The priests of Serapis wrote", sourceLine: "come dine at the table of the lord Serapis",
+        scriptureName: "John wrote", scriptureLine: "“Blessed are they which are called unto the marriage supper of the Lamb” (Revelation 19:9)",
+        dep: { origin: "dinners held at a god’s table in his temple, as with Serapis in Egypt", scripture: "Revelation 19:9" },
+        linkLabel: "Serapis’s word or Yahuah’s?" },
+      { id: "anamnesis", greek: "Anamnēsis", gloss: "recollection", strongs: "", yourBible: "remembrance",
+        sourceName: "Plato wrote", sourceLine: "the soul recalls what it knew before birth",
+        scriptureName: "Moses wrote", scriptureLine: "“this day shall be unto you for a memorial” (Exodus 12:14)",
+        dep: { origin: "Plato’s word for the soul recalling a former life; later, the sacrifice made present again", scripture: "Hebrews 10:3" },
+        linkLabel: "Plato’s word or Yahuah’s?" },
+      { id: "mysterion-communion", greek: "Mystērion", gloss: "secret rite", strongs: "", yourBible: "mystery",
+        sourceName: "The Latin church wrote", sourceLine: "sacramentum, a soldier’s oath",
+        scriptureName: "Paul wrote", scriptureLine: "the mystery “now is made manifest” (Colossians 1:26)",
+        dep: { origin: "the hidden rites of the mystery cults, rendered sacramentum in Latin", scripture: "Colossians 1:26" },
+        linkLabel: "Rome’s word or Yahuah’s?" },
+      { id: "eucharistia-communion", greek: "Eucharistia", gloss: "thanksgiving", strongs: "", yourBible: "giving of thanks",
+        sourceName: "The church fathers wrote", sourceLine: "the Eucharist, the name of the rite",
+        scriptureName: "Luke wrote", scriptureLine: "“he took bread, and gave thanks” (Luke 22:19)",
+        dep: { origin: "ordinary thanks, later the name of the rite itself", scripture: "Luke 22:19" },
+        linkLabel: "The fathers’ word or Yahuah’s?" }
     ]
   }
 ];
