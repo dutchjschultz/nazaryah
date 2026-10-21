@@ -1,7 +1,15 @@
-// doctrines.data 1009 V8.js
+// doctrines.data 1021 V9.js
+// V9 (Etsy Riddles Revelation Split 1021 V1): Revelation Teaching (06) splits into
+// three pairs grouped as one Revelation set — 06 The Seven-Year Tribulation,
+// 07 The Rapture (new), 08 The Millennium (new). New optional field
+// `group: "revelation"` on all three drives the grid connector (DoctrineGrid).
+// Old pairs 07–17 renumber to 09–19 (display only; slugs unchanged). The 06
+// Departure keeps its slug (revelation-teaching) and its tabbed page; only its
+// title, deck, tag and summary body change. 07 and 08 render from `body`
+// (no tabs, no Words dropdown yet).
 // V8: every Old Paths `tag` (the small-caps topic line on its card and page) is
 // now its pair's Departure title — SACRED NAMES, TORAH DISMISSAL … CLERGY OVER
-// THE PEOPLE (07 and 09 use the word page's shorter names, Going to Heaven and
+// THE PEOPLE (09 and 11 use the word page's shorter names, Going to Heaven and
 // Purification & Holiness) — so the Old Paths card, the Departure page and the word page all
 // name the doctrine the same way (Dutch, 1009). Departure tags are unchanged.
 // This supersedes tag rule 1 below for the Old Paths half.
@@ -54,8 +62,8 @@
 //      rule 1: if the same label sits on two different pairs, it is telling the
 //      reader they are the same card twice. "Law vs. Grace" failed this — it
 //      fused whether Torah still applies (02) with whether the walk bears on a
-//      man's standing (11), which are answered independently and by different
-//      verses. Romans 6:14 belongs to 02; Ephesians 2:8-9 belongs to 11.
+//      man's standing (13), which are answered independently and by different
+//      verses. Romans 6:14 belongs to 02; Ephesians 2:8-9 belongs to 13.
 //
 // `bodyFormat: "markdown"` (optional) — the body is markdown (headings, lists,
 // links, blockquotes) and DoctrineInfo renders it as such. Absent = plain text.
@@ -168,26 +176,69 @@ export const doctrines = [
 
   {
     n: "06",
+    group: "revelation",
     oldPaths: {
       slug: "the-book-quotes",
       title: "The Book Quotes",
       deck: "Every Symbol Was Already Written",
-      tag: "Revelation Teaching",
+      tag: "Seven-Year Tribulation",
       body: "The Revelation introduces no new symbol. Its trumpets and vials are the plagues of Egypt reissued; its sevenfold measure is the seven times more of Leviticus 26; its beasts are Daniel's, its measuring reed and eaten scroll are Ezekiel's, its lampstands and horses are Zechariah's. Every image has an address in the Law and the Prophets. Read against those texts the book interprets itself. Read as fresh material with nothing behind it, it becomes whatever a given century needs it to be.",
       torah: ["Exodus 7-12", "Leviticus 26:18-28"],
       witness: ["Ezekiel 2:9-3:3", "Daniel 7", "Zechariah 4"]
     },
     departure: {
       slug: "revelation-teaching",
-      title: "Revelation Teaching",
-      deck: "The End Times Narrative Was Written By Rome — Not the Prophets",
-      tag: "Revelation · End Times",
-      body: `The prophetic framework most believers consider non-negotiable — a seven-year tribulation, a pre-tribulation rapture, a Millennial Kingdom still waiting to begin — was not taught by the apostles and did not exist in Protestant theology until the 19th century. It traces directly to a Jesuit priest named Francisco Ribera and was embedded into mainstream Christianity through the Scofield Reference Bible. Revelation deserves to be read through Scripture itself, not a system handed to Protestantism by the very church it once stood against.`
+      title: "The Seven-Year Tribulation",
+      deck: "Daniel's Last Week Was Cut Loose and Moved Two Thousand Years",
+      tag: "Seven-Year Tribulation",
+      body: `Most pulpits teach that the seals, trumpets, and vials of Revelation are still waiting for one seven-year stretch at the end of the age, ruled by a single Antichrist. To build that stretch, Daniel's seventieth week is lifted off the end of his count and set down two thousand years later, and the whole history of the assembly is dropped into a gap the prophecy never opens. Reading Revelation as a book of the far future traces to the Jesuit Francisco Ribera in the late 1500s. The gap and the seven-year tribulation came through John Nelson Darby in the 1830s and the Scofield Reference Bible in 1909. Revelation deserves to be read through the Law and the Prophets it quotes, not through a countdown with a hole cut in it.`
     }
   },
 
   {
     n: "07",
+    group: "revelation",
+    oldPaths: {
+      slug: "gathered-at-the-trumpet",
+      title: "Gathered at the Trumpet",
+      deck: "The Gathering Comes After the Tribulation",
+      tag: "The Rapture",
+      body: `At Sinai the trumpet sounded, and Moses brought the people out of the camp "to meet with God" (Exodus 19:16-17). Yahuah gathered His assembly by trumpet (Numbers 10:2) and set a yearly memorial of it at Yom Teruah (Leviticus 23:24). The gathering of the saints follows the same pattern, and Scripture gives its order with no gap in it. "Immediately after the tribulation of those days" the Son of man comes, and His angels gather His elect "with a great sound of a trumpet" (Matthew 24:29-31). It is the last trump (1 Corinthians 15:52). It does not come until the man of sin is revealed (2 Thessalonians 2:1-3), and those who refused the beast's mark rise in it (Revelation 20:4-5). There is one coming and one gathering, after the trouble, not a secret escape before it.`,
+      torah: ["Exodus 19:16-17", "Numbers 10:2", "Leviticus 23:24"],
+      witness: ["Matthew 24:29-31", "1 Corinthians 15:52", "2 Thessalonians 2:1-3", "Revelation 20:4-5"]
+    },
+    departure: {
+      slug: "the-rapture",
+      title: "The Rapture",
+      deck: "The Secret Escape the Apostles Never Preached",
+      tag: "The Rapture",
+      body: `The teaching that Messiah will come secretly and take the church to heaven before seven years of tribulation is repeated so often that most believers assume the apostles taught it. They did not. It was first set out as a system by John Nelson Darby in the 1830s, carried into American churches by the Scofield Reference Bible in 1909, and made a household word by The Late Great Planet Earth and the Left Behind novels. Scripture knows one coming and one gathering, at the last trumpet, after the tribulation. A church promised an exit before the trouble has been taught not to prepare for it.`
+    }
+  },
+
+  {
+    n: "08",
+    group: "revelation",
+    oldPaths: {
+      slug: "the-strong-man-bound",
+      title: "The Strong Man Bound",
+      deck: "The Thousand Years Began at the Cross",
+      tag: "The Millennium",
+      body: `The first promise in Scripture is that the woman's seed would bruise the serpent's head (Genesis 3:15). Yahushua said the strong man must be bound before his house can be spoiled (Matthew 12:29), and He was spoiling it as He spoke: "if I cast out devils by the Spirit of God, then the kingdom of God is come unto you" (Matthew 12:28). At the cross the prince of this world was cast out (John 12:31), and through death Messiah destroyed "him that had the power of death" (Hebrews 2:14). Revelation 20 names the purpose of the binding: "that he should deceive the nations no more." From that day the message went out to the nations, to turn them "from the power of Satan unto God" (Acts 26:18). The thousand is a number of fullness, as in the covenant kept "to a thousand generations" (Deuteronomy 7:9). The binding is not waiting to begin.`,
+      torah: ["Genesis 3:15", "Deuteronomy 7:9"],
+      witness: ["Matthew 12:28-29", "John 12:31", "Hebrews 2:14", "Acts 26:18", "Revelation 20:2-3"]
+    },
+    departure: {
+      slug: "the-millennium",
+      title: "The Millennium",
+      deck: "A Kingdom Still Waiting — for a King Who Already Reigns",
+      tag: "The Millennium",
+      body: `Most pulpits teach that the thousand years of Revelation 20 has not yet begun: Messiah returns, Satan is bound, and an earthly kingdom follows, often with a rebuilt temple and its sacrifices restored. Seventh-day Adventism moves the thousand years to heaven and leaves the earth empty, but it agrees on the point that matters most, that the binding is still in the future. Scripture places the binding of the strong man at Messiah's first coming, and its purpose is the open door to the nations that has stood ever since. A thousand years still waiting to start hands the dragon an age the cross already took from him.`
+    }
+  },
+
+  {
+    n: "09",
     oldPaths: {
       slug: "inheritance-is-the-earth",
       title: "The Inheritance Is the Earth",
@@ -207,7 +258,7 @@ export const doctrines = [
   },
 
   {
-    n: "08",
+    n: "10",
     oldPaths: {
       slug: "hear-o-israel",
       title: "Hear, O Israel",
@@ -227,7 +278,7 @@ export const doctrines = [
   },
 
   {
-    n: "09",
+    n: "11",
     oldPaths: {
       slug: "ye-shall-be-holy",
       title: "Ye Shall Be Holy",
@@ -247,7 +298,7 @@ export const doctrines = [
   },
 
   {
-    n: "10",
+    n: "12",
     oldPaths: {
       slug: "signs-and-seasons",
       title: "Signs and Seasons",
@@ -267,7 +318,7 @@ export const doctrines = [
   },
 
   {
-    n: "11",
+    n: "13",
     oldPaths: {
       slug: "wine-and-the-bread",
       title: "The Wine and the Bread",
@@ -287,7 +338,7 @@ export const doctrines = [
   },
 
   {
-    n: "12",
+    n: "14",
     oldPaths: {
       slug: "one-olive-tree",
       title: "One Olive Tree",
@@ -307,7 +358,7 @@ export const doctrines = [
   },
 
   {
-    n: "13",
+    n: "15",
     oldPaths: {
       slug: "it-shall-be-our-righteousness",
       title: "It Shall Be Our Righteousness",
@@ -326,7 +377,7 @@ export const doctrines = [
     }
   },
   {
-    n: "14",
+    n: "16",
     oldPaths: {
       slug: "a-proverb-against-babylon",
       title: "A Proverb Against the King of Babylon",
@@ -350,7 +401,7 @@ The true morning star is not a fallen angel. It is the Son: “I am the root and
     }
   },
   {
-    n: "15",
+    n: "17",
     oldPaths: {
       slug: "choose-life",
       title: "Choose Life",
@@ -376,7 +427,7 @@ Yahuah knows the end from the beginning (Isaiah 46:10). Knowing is not forcing. 
     }
   },
   {
-    n: "16",
+    n: "18",
     oldPaths: {
       slug: "no-manner-of-similitude",
       title: "No Manner of Similitude",
@@ -402,7 +453,7 @@ Yahuah did give Israel something to wear — and it was not an image. “Make th
     }
   },
   {
-    n: "17",
+    n: "19",
     oldPaths: {
       slug: "a-kingdom-of-priests",
       title: "A Kingdom of Priests",

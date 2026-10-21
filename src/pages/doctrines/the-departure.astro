@@ -1,5 +1,6 @@
 ---
-// src/pages/doctrines/the-departure.astro · 1009 V4
+// src/pages/doctrines/the-departure.astro · 1021 V5
+// 1021 V5 (Etsy Riddles Revelation Split 1021 V1): each card carries `group` (06–08, Revelation) for the grid connector.
 // V4: each card's bottom line now names its Old Paths partner — "→ THE NAME
 // THAT ENDURES" and so on, from the pair's oldPaths.title (small caps via
 // .doctrine-tag). The Old Paths cards carry the Departure title the same way,
@@ -26,6 +27,7 @@ const cards = doctrines.map((d) => ({
   tag: `→ ${d.oldPaths.title}`,
   href: `/doctrines/the-departure/${d.departure.slug}`,
   slug: d.departure.slug,
+  group: d.group,
 }));
 ---
 

@@ -1,4 +1,8 @@
-// riddles 1021 V9.js
+// riddles 1021 V10.js
+// V10 (Etsy Riddles Revelation Split 1021 V1): Riddle 22, The Gathering (pair 07,
+// The Rapture), and Riddle 23, The Thousand Years (pair 08, The Millennium).
+// Riddle 21 ties to pairs 02, 12, 18. Every doctrines tie shifts with the
+// Revelation split: old pairs 07–17 are now 09–19. Riddle numbers do not change.
 // V9: Riddle 21's second chain step reworded (Dutch 1021).
 // V8 (Sign, Seal, and Mark batch 1021 V2): Riddle 21, The Mark of the Beast — answer
 // from the batch; teaser, nudge (Daniel 7:25), chain and next link drafted by Etsy
@@ -40,7 +44,7 @@
 //   number        permanent, counted OLDEST first (1, 2, 3 …). Never renumber:
 //                 /riddles?n=<number> links depend on it. Must be unique.
 //   doctrines     optional — ['NN', …], the two-digit `n` of each pair in
-//                 doctrines.data.js ('01' … '17') the riddle belongs to. The Old
+//                 doctrines.data.js ('01' … '19') the riddle belongs to. The Old
 //                 Paths card links to every riddle of its pair (by number); both
 //                 doctrine pages link to the pair's first riddle. A pair can carry
 //                 several riddles; a riddle can sit under several pairs.
@@ -71,7 +75,69 @@
 
 export const riddles = [
   {
+    number: 23,
+    doctrines: ['08'],
+    slug: 'the-thousand-years',
+    title: 'The Thousand Years',
+    teaser: "Mainstream Christianity teaches that the thousand years of Revelation 20 has not yet begun. When Jesus returns, Satan will be bound, and Jesus will reign on earth for a thousand years.",
+    tiles: [
+      { ref: 'Matthew 12:29', text: "Or else how can one enter into a strong man’s house, and spoil his goods, except he first bind the strong man? and then he will spoil his house." },
+      { ref: 'John 12:31', text: "Now is the judgment of this world: now shall the prince of this world be cast out." },
+      { ref: 'Revelation 20:2-3', text: "And he laid hold on the dragon, that old serpent, which is the Devil, and Satan, and bound him a thousand years, And cast him into the bottomless pit, and shut him up, and set a seal upon him, that he should deceive the nations no more, till the thousand years should be fulfilled: and after that he must be loosed a little season." },
+    ],
+    nudgeLine: 'Ask when the nations first had their eyes opened.',
+    nudge: { ref: 'Acts 26:18', text: "To open their eyes, and to turn them from darkness to light, and from the power of Satan unto God, that they may receive forgiveness of sins, and inheritance among them which are sanctified by faith that is in me." },
+    chain: [
+      ["The strong man must be bound before his house is spoiled, and Yahushua was spoiling it then.", 'Matthew 12:29'],
+      ["At the cross, the prince of this world is cast out “now.”", 'John 12:31'],
+      ["The dragon is bound for one purpose: so that he deceives the nations no more.", 'Revelation 20:2-3'],
+    ],
+    verdict: "The binding happened at Messiah's first coming. The thousand years is the age we are living in now, not one still waiting to begin.",
+    next: { href: '/blog/the-short-season/', label: 'Read the study: The Short Season' },
+    why: [
+      "Most pulpits place the thousand years in the future. Yahushua returns, Satan is bound, and Messiah reigns from Jerusalem for a thousand years. Seventh-day Adventists move the thousand years to heaven and leave the earth empty. The two camps disagree about where, but they agree on when: the binding has not happened yet. Scripture says it has.",
+      "Yahushua said a strong man must be bound before his house can be spoiled (Matthew 12:29). He said it while He was casting out devils, and He told the Pharisees what that meant: \"if I cast out devils by the Spirit of God, then the kingdom of God is come unto you\" (Matthew 12:28). The binding was taking place in front of them.",
+      "The cross finished it. \"Now shall the prince of this world be cast out\" (John 12:31). Through death Messiah destroyed \"him that had the power of death, that is, the devil\" (Hebrews 2:14). He spoiled principalities and powers and \"made a shew of them openly\" (Colossians 2:15). The first promise in the Book, that the woman's seed would bruise the serpent's head (Genesis 3:15), was kept on a hill outside Jerusalem.",
+      "Revelation 20 gives the reason for the binding in plain words: \"that he should deceive the nations no more.\" Before Messiah, the nations sat in darkness, and Israel alone had the Law. After the cross, Paul was sent to the nations \"to open their eyes, and to turn them from darkness to light, and from the power of Satan unto God\" (Acts 26:18). That door could only open if the deceiver of the nations had been bound.",
+      "The number itself points the same way. In Scripture a thousand marks fullness, not a stopwatch. Yahuah keeps covenant \"to a thousand generations\" (Deuteronomy 7:9), and the cattle \"upon a thousand hills\" are His (Psalm 50:10). The thousand years is a whole age, the age of the open door.",
+      "This matters because a church waiting for the kingdom to begin forgets that it has already been given a place in it. Many who teach the future kingdom also expect a rebuilt temple with its sacrifices restored, which sets the work of the cross back on an altar of stone. The saints are not waiting to be made kings and priests. Messiah \"hath made us kings and priests unto God and his Father\" (Revelation 1:6).",
+      "The promise at the end of the age belongs to those who overcome in this one: \"To him that overcometh will I grant to sit with me in my throne, even as I also overcame, and am set down with my Father in his throne\" (Revelation 3:21).",
+    ],
+  },
+  {
+    number: 22,
+    doctrines: ['07'],
+    slug: 'the-gathering',
+    title: 'The Gathering',
+    teaser: "Mainstream Christianity teaches that Jesus will secretly take the church to heaven before the tribulation. The saints will be gone before the beast and his mark ever appear.",
+    tiles: [
+      { ref: '1 Thessalonians 4:16', text: "For the Lord [Master] himself shall descend from heaven with a shout, with the voice of the archangel, and with the trump of God: and the dead in Christ [Messiah] shall rise first:" },
+      { ref: 'Revelation 13:7', text: "And it was given unto him to make war with the saints, and to overcome them: and power was given him over all kindreds, and tongues, and nations." },
+      { ref: 'Revelation 20:4-5', text: "And I saw thrones, and they sat upon them, and judgment was given unto them: and I saw the souls of them that were beheaded for the witness of Jesus [Yahushua], and for the word of God, and which had not worshipped the beast, neither his image, neither had received his mark upon their foreheads, or in their hands; and they lived and reigned with Christ [Messiah] a thousand years. But the rest of the dead lived not again until the thousand years were finished. This is the first resurrection." },
+    ],
+    nudgeLine: 'The gathering waits for one particular trumpet.',
+    nudge: { ref: '1 Corinthians 15:52', text: "In a moment, in the twinkling of an eye, at the last trump: for the trumpet shall sound, and the dead shall be raised incorruptible, and we shall be changed." },
+    chain: [
+      ["When the Master comes down, the dead in Messiah rise first.", '1 Thessalonians 4:16'],
+      ["The beast makes war on the saints, so the saints are still on the earth.", 'Revelation 13:7'],
+      ["The ones who refused his mark rise in what John calls the first resurrection.", 'Revelation 20:4-5'],
+    ],
+    verdict: "The saints are not taken before the beast. The gathering comes after the mark, at the first resurrection.",
+    beneath: "“Immediately after the tribulation of those days” (Matthew 24:29).",
+    next: { href: '/blog/the-end-times-gap/', label: 'Read the study: The End Times Gap' },
+    why: [
+      "The secret rapture before the tribulation is younger than many church buildings. It was first set out as a system by John Nelson Darby in the 1830s, and the Scofield Reference Bible carried it into American pulpits in 1909. Popular books and films have since made it sound as old as the apostles.",
+      "Paul gave the order plainly. The Master descends, the trumpet sounds, the dead in Messiah rise first, and then the living are caught up to meet Him (1 Thessalonians 4:16-17). He calls that trumpet \"the last trump\" (1 Corinthians 15:52). A trumpet followed by seven more years of trumpets cannot be the last one.",
+      "Yahushua gave the same order. \"Immediately after the tribulation of those days\" the Son of man appears in the clouds, \"and he shall send his angels with a great sound of a trumpet, and they shall gather together his elect\" (Matthew 24:29-31). The gathering comes after the tribulation, not before it.",
+      "Paul warned the Thessalonians not to be shaken on this very point. Writing about \"our gathering together unto him,\" he said that day would not come \"except there come a falling away first, and that man of sin be revealed\" (2 Thessalonians 2:1-3). No church is taken away before the man of sin appears.",
+      "The pattern was set at Sinai. The trumpet sounded, and Moses brought the people out of the camp \"to meet with God\" (Exodus 19:16-17). Yahuah called His assembly together with trumpets (Numbers 10:2) and keeps that memorial every year at Yom Teruah (Leviticus 23:24). A gathering by trumpet was never a secret. It was the loudest sound in the camp.",
+      "This matters because a church that expects to leave before the trouble has no reason to prepare for it. Yahushua did not pray for His people to be taken out of the world: \"I pray not that thou shouldest take them out of the world, but that thou shouldest keep them from the evil\" (John 17:15). The beast makes war on saints who are still here, and Revelation names who they are: \"here are they that keep the commandments of God, and the faith of Yahushua\" (Revelation 14:12).",
+      "John saw how it ends for them. Those who refused the mark stood up in the first resurrection, and \"on such the second death hath no power, but they shall be priests of God and of Christ, and shall reign with him a thousand years\" (Revelation 20:6).",
+    ],
+  },
+  {
     number: 21,
+    doctrines: ['02', '12', '18'],
     slug: 'the-mark-of-the-beast',
     title: 'The Mark of the Beast',
     teaser: "Mainstream Christianity teaches that the mark of the beast is a computer chip, a barcode, or a tattoo. It will be forced on the world in the last days.",
@@ -136,7 +202,7 @@ export const riddles = [
   },
   {
     number: 19,
-    doctrines: ['17'],
+    doctrines: ['19'],
     slug: 'the-priesthood',
     title: "The Priesthood",
     teaser: "Mainstream Christianity teaches that pastors and priests stand between God and the people. The clergy carry a calling the people in the pews do not.",
@@ -164,7 +230,7 @@ export const riddles = [
   },
   {
     number: 18,
-    doctrines: ['16'],
+    doctrines: ['18'],
     slug: 'the-serpent-on-the-pole',
     title: "The Serpent on the Pole",
     teaser: "Mainstream Christianity teaches that crosses, crucifixes, and pictures of Jesus are aids to worship. The command against images was about pagan idols, not Christian art.",
@@ -192,7 +258,7 @@ export const riddles = [
   },
   {
     number: 17,
-    doctrines: ['15'],
+    doctrines: ['17'],
     slug: 'the-book-of-life',
     title: "The Book of Life",
     teaser: "Reformed Christianity teaches that God chose before the world began who would be saved and who would be lost. Your eternal destiny was fixed before you were born.",
@@ -221,7 +287,7 @@ export const riddles = [
   },
   {
     number: 16,
-    doctrines: ['14'],
+    doctrines: ['16'],
     slug: 'the-morning-star',
     title: "The Morning Star",
     teaser: "Mainstream Christianity teaches that Lucifer was a high angel who fell from heaven and became Satan. Isaiah 14 tells his story.",
@@ -249,7 +315,7 @@ export const riddles = [
   },
   {
     number: 15,
-    doctrines: ['13'],
+    doctrines: ['15'],
     slug: 'counted-righteous',
     title: "Counted Righteous",
     teaser: "Mainstream Christianity teaches that Christ's righteousness is credited to the believer's account. When God looks at you, He sees Jesus' obedience instead of yours.",
@@ -277,7 +343,7 @@ export const riddles = [
   },
   {
     number: 14,
-    doctrines: ['12'],
+    doctrines: ['14'],
     slug: 'the-olive-tree',
     title: "The Olive Tree",
     teaser: "Mainstream Christianity teaches that God has two peoples: Israel under the Law and the Church under grace. Each has its own plan and its own promises.",
@@ -305,7 +371,7 @@ export const riddles = [
   },
   {
     number: 13,
-    doctrines: ['11'],
+    doctrines: ['13'],
     slug: 'faith-alone',
     title: "Faith Alone",
     teaser: "Mainstream Christianity teaches that we are saved by faith alone. The moment you believe, your salvation is complete.",
@@ -333,7 +399,7 @@ export const riddles = [
   },
   {
     number: 12,
-    doctrines: ['10'],
+    doctrines: ['12'],
     slug: 'the-feasts',
     title: "The Feasts",
     teaser: "Mainstream Christianity teaches that the feasts were Jewish holidays, fulfilled and finished in Christ. The church has its own holy days now.",
@@ -362,7 +428,7 @@ export const riddles = [
   },
   {
     number: 11,
-    doctrines: ['09'],
+    doctrines: ['11'],
     slug: 'clean-and-unclean',
     title: "Clean and Unclean",
     teaser: "Mainstream Christianity teaches that the food laws were for the Jews and ended at the cross. Peter's vision declared every animal clean to eat.",
@@ -390,7 +456,7 @@ export const riddles = [
   },
   {
     number: 10,
-    doctrines: ['07'],
+    doctrines: ['09'],
     slug: 'the-inheritance',
     title: "The Inheritance",
     teaser: "Mainstream Christianity teaches that believers go to heaven when they die. Heaven is the home where they will live forever.",
@@ -631,7 +697,7 @@ export const riddles = [
   },
   {
     number: 1,
-    doctrines: ['08'],
+    doctrines: ['10'],
     standing: true,
     slug: 'one-name-one-father',
     title: 'One Name, One Father',

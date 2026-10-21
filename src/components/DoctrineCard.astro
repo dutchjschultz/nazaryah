@@ -1,5 +1,7 @@
 ---
-// src/components/DoctrineCard.astro · 1019 V4
+// src/components/DoctrineCard.astro · 1021 V5
+// V5 (Etsy Riddles Revelation Split 1021 V1): optional `groupLabel` — a small gold
+// eyebrow ("Revelation · 1 of 3") above the title, set by DoctrineGrid.
 // V4 (Etsy Doctrine Riddles 1019 V4): `riddle` becomes `riddles` ({ href, number }[],
 // by number). One riddle: the V3 link. Two or more: the block is a <div> holding
 // separate links — "Solve the Riddles in 3 Verses" (to the first) and "You can
@@ -16,8 +18,8 @@
 // V1: The one card used by BOTH doctrine grids (Old Paths + The Departure). Gold
 // top rule, number in small gold caps, title, italic deck. The WHOLE card is the
 // link — no hover panel, no body text on the card.
-interface Props { n: string; title: string; deck: string; tag?: string; href: string; riddles?: { href: string; number: number }[]; }
-const { n, title, deck, tag, href, riddles = [] } = Astro.props;
+interface Props { n: string; title: string; deck: string; tag?: string; href: string; riddles?: { href: string; number: number }[]; groupLabel?: string; }
+const { n, title, deck, tag, href, riddles = [], groupLabel } = Astro.props;
 const riddle = riddles[0];
 const several = riddles.length > 1;
 ---
@@ -26,6 +28,7 @@ const several = riddles.length > 1;
   <div class="doctrine-card-wrap">
     <a class="doctrine-card has-riddle" href={href}>
       <span class="doctrine-num">{n}</span>
+      {groupLabel && <span class="doctrine-group">{groupLabel}</span>}
       <p class="doctrine-cat">{title}</p>
       <p class="doctrine-deck">{deck}</p>
       {tag && <p class="doctrine-tag">{tag}</p>}
@@ -47,6 +50,7 @@ const several = riddles.length > 1;
 ) : (
   <a class="doctrine-card" href={href}>
     <span class="doctrine-num">{n}</span>
+      {groupLabel && <span class="doctrine-group">{groupLabel}</span>}
     <p class="doctrine-cat">{title}</p>
     <p class="doctrine-deck">{deck}</p>
     {tag && <p class="doctrine-tag">{tag}</p>}
@@ -79,6 +83,15 @@ const several = riddles.length > 1;
     font-weight: 600;
     letter-spacing: 0.15em;
     color: #BA7517;
+    text-transform: uppercase;
+  }
+  .doctrine-group {
+    margin-top: -0.35rem;
+    font-family: var(--font-display);
+    font-size: 10px;
+    font-weight: 600;
+    letter-spacing: 0.18em;
+    color: #d8a24a;
     text-transform: uppercase;
   }
   .doctrine-cat {

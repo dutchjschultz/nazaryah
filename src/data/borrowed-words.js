@@ -1,4 +1,6 @@
-// borrowed-words 1009 V8.js
+// borrowed-words 1021 V9.js
+// V9 (Etsy Riddles Revelation Split 1021 V1): `num` follows the doctrine renumber — old 07–17 are 09–19.
+// 06 keeps its words; the new pairs 07 (The Rapture) and 08 (The Millennium) have no entry yet.
 // V8: eight For Future Studies words join their doctrines' dropdowns — kardia, syneidesis (02),
 // apokatastasis (04), nous (05), sophia, demiourgos, parakletos (08), gnosis (11).
 // V7: doctrines 14–17 added (Lucifer, Predestination, Images in Worship, Clergy over the People).
@@ -198,7 +200,7 @@ export const doctrines = [
     ]
   },
   {
-    num: "07", oldPathsSlug: "inheritance-is-the-earth", departureSlug: "going-to-heaven",
+    num: "09", oldPathsSlug: "inheritance-is-the-earth", departureSlug: "going-to-heaven",
     departureSource: "Plato",
     words: [
       { id: "ouranos", greek: "Ouranos", strongs: "G3772", yourBible: "heaven",
@@ -216,7 +218,7 @@ export const doctrines = [
     ]
   },
   {
-    num: "08", oldPathsSlug: "hear-o-israel", departureSlug: "the-trinity",
+    num: "10", oldPathsSlug: "hear-o-israel", departureSlug: "the-trinity",
     departureSource: "the philosophers",
     words: [
       { id: "logos", greek: "Logos", strongs: "G3056", yourBible: "Word",
@@ -270,7 +272,7 @@ export const doctrines = [
     ]
   },
   {
-    num: "09", oldPathsSlug: "ye-shall-be-holy", departureSlug: "purification-holiness",
+    num: "11", oldPathsSlug: "ye-shall-be-holy", departureSlug: "purification-holiness",
     departureSource: "the Greek temples",
     words: [
       { id: "hagios", greek: "Hagios / Hagnos", strongs: "G40, G53", yourBible: "holy",
@@ -284,7 +286,7 @@ export const doctrines = [
     ]
   },
   {
-    num: "10", oldPathsSlug: "signs-and-seasons", departureSlug: "calendar-feasts",
+    num: "12", oldPathsSlug: "signs-and-seasons", departureSlug: "calendar-feasts",
     departureSource: "Caesar",
     words: [
       { id: "kairos", greek: "Kairos", strongs: "G2540", yourBible: "season",
@@ -310,7 +312,7 @@ export const doctrines = [
     ]
   },
   {
-    num: "11", oldPathsSlug: "wine-and-the-bread", departureSlug: "faith-alone",
+    num: "13", oldPathsSlug: "wine-and-the-bread", departureSlug: "faith-alone",
     departureSource: "the mystery cults",
     words: [
       { id: "pistis", greek: "Pistis", strongs: "G4102", yourBible: "faith",
@@ -344,7 +346,7 @@ export const doctrines = [
     ]
   },
   {
-    num: "12", oldPathsSlug: "one-olive-tree", departureSlug: "rightly-divided",
+    num: "14", oldPathsSlug: "one-olive-tree", departureSlug: "rightly-divided",
     departureSource: "Darby",
     words: [
       { id: "ekklesia", greek: "Ekklēsia", strongs: "G1577", yourBible: "church",
@@ -358,7 +360,7 @@ export const doctrines = [
     ]
   },
   {
-    num: "13", oldPathsSlug: "it-shall-be-our-righteousness", departureSlug: "imputed-righteousness",
+    num: "15", oldPathsSlug: "it-shall-be-our-righteousness", departureSlug: "imputed-righteousness",
     departureSource: "the Roman courts",
     words: [
       { id: "dikaiosyne", greek: "Dikaiosynē / Dikē", strongs: "G1343, G1349", yourBible: "righteousness",
@@ -376,7 +378,7 @@ export const doctrines = [
     ]
   },
   {
-    num: "14", oldPathsSlug: "a-proverb-against-babylon", departureSlug: "lucifer",
+    num: "16", oldPathsSlug: "a-proverb-against-babylon", departureSlug: "lucifer",
     departureSource: "Jerome",
     words: [
       { id: "phosphoros", greek: "Phōsphoros", strongs: "G5459", yourBible: "day star · Lucifer",
@@ -398,7 +400,7 @@ export const doctrines = [
     ]
   },
   {
-    num: "15", oldPathsSlug: "choose-life", departureSlug: "predestination",
+    num: "17", oldPathsSlug: "choose-life", departureSlug: "predestination",
     departureSource: "the Stoics",
     words: [
       { id: "proorizo", greek: "Proorizō", strongs: "G4309", yourBible: "predestinate",
@@ -412,7 +414,7 @@ export const doctrines = [
     ]
   },
   {
-    num: "16", oldPathsSlug: "no-manner-of-similitude", departureSlug: "images-in-worship",
+    num: "18", oldPathsSlug: "no-manner-of-similitude", departureSlug: "images-in-worship",
     departureSource: "Constantine",
     words: [
       { id: "stauros", greek: "Stauros", strongs: "G4716", yourBible: "cross",
@@ -430,7 +432,7 @@ export const doctrines = [
     ]
   },
   {
-    num: "17", oldPathsSlug: "a-kingdom-of-priests", departureSlug: "clergy-over-the-people",
+    num: "19", oldPathsSlug: "a-kingdom-of-priests", departureSlug: "clergy-over-the-people",
     departureSource: "the Greek temples",
     words: [
       { id: "episkopos", greek: "Episkopos", strongs: "G1985", yourBible: "bishop",
