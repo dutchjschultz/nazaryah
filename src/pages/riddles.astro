@@ -1,5 +1,14 @@
 ---
-// src/pages/riddles.astro · 1018 V3
+// src/pages/riddles.astro · 1021 V4
+// V4 (Etsy Riddles Board 1021 V1): the long "All riddles" list under the board is
+// gone — the page ends on the riddle (and, once open, its Why It Matters study).
+// In its place, "All riddles ▾" in the counter row: a <details> dropdown (works
+// with JavaScript off), right end of the row on desktop, centered under the
+// counter on a phone. Its panel floats over the board: one numbered row per
+// riddle, oldest first, titles only, the one on the board gold with ●. Picking
+// a row switches the board (same as the old list), then closes the dropdown; Esc
+// or a click outside also closes it. Without JavaScript each row links to
+// /riddle/<slug>/ (or /riddles?n=<number> for a page riddle).
 // V3 (Etsy Riddles Board 1018 V2): a `kind: 'page'` riddle (Who Is "the Lord"?)
 // shows the counter, its title, its teaser and, in place of the tiles, one
 // burgundy pill (the "Need a nudge?" style) — its `cta` → its `href`. Its list
@@ -35,11 +44,28 @@ const total = riddlesByNumber.length;
       </header>
 
       <section class="rx-board" id="rx-board" aria-label="Riddle board">
-        <nav class="rx-counter" aria-label="Step through the riddles">
-          <button type="button" class="rx-arrow" id="rx-prev" aria-label="Previous riddle" disabled={newestRiddle.number === 1}>&#9664;</button>
-          <span class="rx-count" aria-live="polite">Riddle <b id="rx-n">{newestRiddle.number}</b> of {total}</span>
-          <button type="button" class="rx-arrow" id="rx-next" aria-label="Next riddle" disabled={newestRiddle.number === total}>&#9654;</button>
-        </nav>
+        <div class="rx-counter">
+          <nav class="rx-steps" aria-label="Step through the riddles">
+            <button type="button" class="rx-arrow" id="rx-prev" aria-label="Previous riddle" disabled={newestRiddle.number === 1}>&#9664;</button>
+            <span class="rx-count" aria-live="polite">Riddle <b id="rx-n">{newestRiddle.number}</b> of {total}</span>
+            <button type="button" class="rx-arrow" id="rx-next" aria-label="Next riddle" disabled={newestRiddle.number === total}>&#9654;</button>
+          </nav>
+          <details class="rx-jump" id="rx-jump">
+            <summary aria-label="All riddles, choose one">All riddles <span class="rx-caret" aria-hidden="true"></span></summary>
+            <ol class="rx-jump-list">
+              {riddlesByNumber.map((r) => (
+                <li>
+                  <a href={isPage(r) ? `/riddles?n=${r.number}` : `/riddle/${r.slug}/`} data-n={r.number}
+                     class:list={['rx-row', { 'is-current': r.number === newestRiddle.number }]}
+                     aria-current={r.number === newestRiddle.number ? 'true' : undefined}>
+                    <span class="rx-row-n"><span class="rx-dot" aria-hidden="true">&#9679;</span>{r.number}.</span>
+                    <span class="rx-row-t">{r.title}</span>
+                  </a>
+                </li>
+              ))}
+            </ol>
+          </details>
+        </div>
 
         {riddlesByNumber.map((r) => (
           <div class="rx-slide" data-n={r.number} hidden={r.number !== newestRiddle.number}>
@@ -56,17 +82,6 @@ const total = riddlesByNumber.length;
         ))}
       </section>
 
-      <section class="rx-all" aria-labelledby="rx-all-h">
-        <h2 id="rx-all-h" class="rx-all-h">All riddles</h2>
-        <ol class="rx-list">
-          {riddlesByNumber.map((r) => (
-            <li value={r.number} data-n={r.number} class:list={{ 'is-current': r.number === newestRiddle.number }}>
-              <a href={isPage(r) ? `/riddles?n=${r.number}` : `/riddle/${r.slug}/`} data-n={r.number}>{r.title}</a>
-              <span class="rx-teaser"> — {r.teaser}</span>
-            </li>
-          ))}
-        </ol>
-      </section>
     </div>
   </div>
 </BaseLayout>
@@ -79,7 +94,8 @@ const total = riddlesByNumber.length;
   const next = document.getElementById('rx-next') as HTMLButtonElement;
   const nOut = document.getElementById('rx-n')!;
   const board = document.getElementById('rx-board')!;
-  const items = Array.from(document.querySelectorAll<HTMLElement>('.rx-list li'));
+  const jump = document.getElementById('rx-jump') as HTMLDetailsElement;
+  const rows = Array.from(document.querySelectorAll<HTMLAnchorElement>('.rx-row'));
   let current = Number(slides.find((s) => !s.hidden)?.dataset.n || last);
 
   // Close every tile, nudge and answer inside a slide.
@@ -102,7 +118,11 @@ const total = riddlesByNumber.length;
     nOut.textContent = String(n);
     prev.disabled = n <= first;
     next.disabled = n >= last;
-    items.forEach((li) => li.classList.toggle('is-current', Number(li.dataset.n) === n));
+    rows.forEach((a) => {
+      const on = Number(a.dataset.n) === n;
+      a.classList.toggle('is-current', on);
+      if (on) a.setAttribute('aria-current', 'true'); else a.removeAttribute('aria-current');
+    });
     if (updateUrl) {
       const url = new URL(location.href);
       url.searchParams.set('n', String(n));
@@ -112,12 +132,23 @@ const total = riddlesByNumber.length;
 
   prev.addEventListener('click', () => show(current - 1, true));
   next.addEventListener('click', () => show(current + 1, true));
-  document.querySelectorAll<HTMLAnchorElement>('.rx-list a[data-n]').forEach((a) => {
+  rows.forEach((a) => {
     a.addEventListener('click', (e) => {
       e.preventDefault();
       show(Number(a.dataset.n), true);
+      jump.open = false;
       board.scrollIntoView({ behavior: 'smooth', block: 'start' });
     });
+  });
+  // The dropdown closes on Esc (focus back to its summary) or a click outside it.
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && jump.open) {
+      jump.open = false;
+      jump.querySelector('summary')?.focus();
+    }
+  });
+  document.addEventListener('click', (e) => {
+    if (jump.open && !jump.contains(e.target as Node)) jump.open = false;
   });
 
   const asked = Number(new URLSearchParams(location.search).get('n'));
@@ -142,7 +173,11 @@ const total = riddlesByNumber.length;
   .rx-sub { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; font-size: 1.25rem; color: var(--rd-muted); margin: 0; }
 
   .rx-board { scroll-margin-top: 9rem; }
-  .rx-counter { display: flex; align-items: center; justify-content: center; gap: 1rem; margin: 0 0 1.4rem; padding: 0.6rem 0; border-top: 1px solid var(--rd-rule); border-bottom: 1px solid var(--rd-rule); }
+  /* Counter centered; the dropdown at the row's right end (a spacer column on the
+     left keeps the counter truly centered). */
+  .rx-counter { display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; column-gap: 1rem; margin: 0 0 1.4rem; padding: 0.6rem 0; border-top: 1px solid var(--rd-rule); border-bottom: 1px solid var(--rd-rule); }
+  .rx-counter::before { content: ''; }
+  .rx-steps { display: flex; align-items: center; justify-content: center; gap: 1rem; }
   .rx-count { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rd-ink); }
   .rx-count b { color: var(--rd-gold); }
   .rx-arrow {
@@ -167,13 +202,40 @@ const total = riddlesByNumber.length;
   .rx-pill:hover { filter: brightness(1.12); }
   .rx-pill:focus-visible { outline: 2px solid var(--rd-gold); outline-offset: 3px; }
 
-  .rx-all { margin-top: 3rem; padding-top: 1.6rem; border-top: 1px solid var(--rd-rule); }
-  .rx-all-h { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rd-muted); text-align: center; margin: 0 0 1rem; }
-  .rx-list { margin: 0; padding-left: 1.8rem; display: grid; gap: 0.55rem; }
-  .rx-list li { line-height: 1.5; }
-  .rx-list li::marker { font-family: 'Cinzel', serif; font-size: 0.8rem; color: var(--rd-muted); }
-  .rx-list a { font-family: 'Playfair Display', Georgia, serif; font-weight: 700; color: var(--rd-ink); text-decoration: none; }
-  .rx-list a:hover { text-decoration: underline; text-underline-offset: 3px; }
-  .rx-teaser { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; color: var(--rd-muted); }
-  .rx-list li.is-current a, .rx-list li.is-current::marker { color: var(--rd-gold); }
+  /* "All riddles ▾" — the jump dropdown in the counter row (V4). */
+  .rx-jump { position: relative; justify-self: end; }
+  .rx-jump summary {
+    list-style: none; cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem;
+    font-family: 'Cinzel', serif; font-size: 0.68rem; letter-spacing: 0.16em; text-transform: uppercase;
+    color: var(--rd-muted); border: 1px solid var(--rd-rule); border-radius: 999px; padding: 0.3rem 0.9rem;
+    background: var(--rd-paper); white-space: nowrap;
+  }
+  .rx-jump summary::-webkit-details-marker { display: none; }
+  .rx-jump summary:hover { color: var(--rd-ink); border-color: var(--rd-gold); }
+  .rx-jump summary:focus-visible { outline: 2px solid var(--rd-gold); outline-offset: 3px; }
+  .rx-caret::before { content: '\25BE'; }
+  .rx-jump[open] .rx-caret::before { content: '\25B4'; }
+  .rx-jump-list {
+    position: absolute; top: calc(100% + 0.5rem); right: 0; z-index: 30;
+    width: 20rem; max-width: calc(100vw - 32px); max-height: 60vh; overflow-y: auto; overscroll-behavior: contain;
+    margin: 0; padding: 0.35rem 0; list-style: none;
+    background: var(--rd-paper); border: 1px solid var(--rd-rule); border-radius: 8px;
+    box-shadow: 0 12px 32px rgba(43, 33, 23, 0.18), 0 2px 6px rgba(43, 33, 23, 0.1);
+  }
+  :global(html.dark) .rx-jump-list { box-shadow: 0 12px 32px rgba(0, 0, 0, 0.55), 0 2px 6px rgba(0, 0, 0, 0.4); }
+  .rx-jump-list li + li { border-top: 1px solid var(--rd-rule); }
+  .rx-row { display: grid; grid-template-columns: 2.6rem 1fr; gap: 0.6rem; align-items: baseline; padding: 0.45rem 0.9rem; text-decoration: none; }
+  .rx-row:hover, .rx-row:focus-visible { background: color-mix(in srgb, var(--rd-gold) 10%, transparent); outline: none; }
+  .rx-row-n { font-family: 'Cinzel', serif; font-size: 0.78rem; font-weight: 700; color: var(--rd-gold); text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .rx-dot { font-size: 0.5rem; margin-right: 0.3rem; vertical-align: 0.15em; visibility: hidden; }
+  .rx-row-t { font-family: 'Playfair Display', Georgia, serif; font-size: 0.95rem; line-height: 1.3; color: var(--rd-ink); }
+  .rx-row.is-current .rx-row-t { color: var(--rd-gold); }
+  .rx-row.is-current .rx-dot { visibility: visible; }
+
+  @media (max-width: 640px) {
+    .rx-counter { grid-template-columns: 1fr; row-gap: 0.6rem; }
+    .rx-counter::before { display: none; }
+    .rx-jump { justify-self: center; }
+    .rx-jump-list { right: auto; left: 50%; transform: translateX(-50%); }
+  }
 </style>
