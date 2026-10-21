@@ -17,6 +17,6 @@ The giver of "thou shalt have no other gods before me" (Exodus 20:3) has no God 
 
 Yahuah "is not a man" (Numbers 23:19) and "cannot be tempted with evil" (James 1:13). Yahushua was a man (1 Timothy 2:5) "in all points tempted like as we are" (Hebrews 4:15). The Scripture never needs a God-man formula; it shows a Son who obeyed His God.
 
-He came to fulfill the Law (Matthew 5:17), plēroō (G4137), to fill full by doing it, and not one jot passes (Matthew 5:18).
+He came to fulfill the Law (Matthew 5:17), plēroō, to fill full by doing it, and not one jot passes (Matthew 5:18).
 
 Revelation still calls Him the one who says "my God" four times in one verse (Revelation 3:12).
