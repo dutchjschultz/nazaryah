@@ -1,4 +1,11 @@
-// borrowed-words-page 1013 V9.js
+// borrowed-words-page 1021 V10.js
+// V10 (Greek Influence End-Times Additions 1021 V1): Revelation Teaching (06) becomes
+// three groups — 06 The Seven-Year Tribulation (hebdomas, apostasia, katechō), 07 The
+// Rapture (harpazō, apantēsis, then parousia and epiphaneia moved in unchanged), 08
+// The Millennium (chilioi; abyssos cross-listed from Hell, as oikonomia is). New
+// entries carry no Strong's number; katechō has no Hebrew beneath and no bridge.
+// The other groups' `num` follows the doctrine renumber (old 07–17 are 09–19; V9 of
+// the doctrines missed this file). Intro: "seventeen" → "nineteen" doctrines.
 // V9: pageTitle is the section name, Greek Influence; the old title moves to pageTagline, shown as
 // the subtitle beneath it (Dutch, Page titles 1013). pageSubtitle (the italic deck) is unchanged.
 // V8: each doctrine carries oldPathsTitle (shown in parentheses after its heading); every word with
@@ -34,7 +41,7 @@ export const intro = [
   "Every word on this page is a Greek word from the New Testament that was already in use before the apostles wrote it — in the temples of the gods, at the oracle of Delphi, in the schools of the philosophers, or on the inscriptions of the emperors. Each one replaced a Hebrew word, and each one brought its own meaning with it.",
   "The list was made by screening every Greek word in the New Testament — 5,523 entries in Strong’s dictionary. A word was kept only if its pagan or philosophical meaning can be shown to have changed a doctrine. Words that kept their Hebrew meaning in the church’s hands were left off, no matter where they came from.",
   "How do we know the Hebrew word beneath the Greek? Where the New Testament quotes the Old, or the Greek translation of the Old Testament renders a Hebrew word, the bridge is shown under the entry, so every claim can be checked.",
-  "The words are grouped under the seventeen doctrines they changed. Below them are words that bear on other subjects, and the popular claims that did not survive the test."
+  "The words are grouped under the nineteen doctrines they changed. Below them are words that bear on other subjects, and the popular claims that did not survive the test."
 ];
 
 export const doctrines = [
@@ -715,13 +722,101 @@ export const doctrines = [
   },
   {
     "num": "06",
-    "title": "Revelation Teaching",
+    "title": "The Seven-Year Tribulation",
     "oldPathsTitle": "The Book Quotes",
     "departureSlug": "revelation-teaching",
     "oldPathsSlug": "the-book-quotes",
     "note": "The rest of this doctrine came from later teaching, not word freight: the Jesuit Francisco Ribera’s futurism (1590), carried forward by John Darby in the 1830s and the Scofield Reference Bible (1909).",
     "crossRefs": [],
     "words": [
+      {
+        "id": "hebdomas",
+        "greek": "Hebdomas",
+        "strongs": null,
+        "kjv": "week",
+        "source": "Greek number philosophy treated the seven as a sacred unit, and Greek writers divided a man’s life into stages of seven years.",
+        "hebrew": "Shabua — a seven, a week.",
+        "fed": "Cutting the seventieth “week” of Daniel 9:27 away from the other sixty-nine and setting it in the future as a seven-year tribulation.",
+        "bridge": "Daniel 9:27 with Matthew 24:15.",
+        "aliases": [],
+        "sources": [
+          "Philosophers"
+        ],
+        "story": []
+      },
+      {
+        "id": "apostasia",
+        "greek": "Apostasia",
+        "strongs": null,
+        "kjv": "falling away",
+        "source": "In ordinary Greek, a political revolt or defection from a ruler.",
+        "hebrew": "Mered — rebellion (Joshua 22:22).",
+        "fed": "Recasting the “falling away” of 2 Thessalonians 2:3 as a “departure,” meaning the rapture, so that the church is gone before the man of sin is revealed.",
+        "bridge": "Acts 21:21 — the same word is used for forsaking Moses, a falling away from the Law, not a departure from the earth.",
+        "aliases": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": []
+      },
+      {
+        "id": "katecho",
+        "greek": "Katechō",
+        "strongs": null,
+        "kjv": "letteth",
+        "source": "The katochoi were men held in seclusion at the temple of Serapis in Egypt, “held fast” by the god.",
+        "hebrew": null,
+        "fed": "The teaching that “he who now letteth” in 2 Thessalonians 2:7 is the church, removed by rapture before the lawless one appears.",
+        "bridge": null,
+        "aliases": [],
+        "sources": [
+          "Temples & cults"
+        ],
+        "story": []
+      }
+    ]
+  },
+
+  {
+    "num": "07",
+    "title": "The Rapture",
+    "oldPathsTitle": "Gathered at the Trumpet",
+    "departureSlug": "the-rapture",
+    "oldPathsSlug": "gathered-at-the-trumpet",
+    "note": null,
+    "crossRefs": [],
+    "words": [
+      {
+        "id": "harpazo",
+        "greek": "Harpazō",
+        "strongs": null,
+        "kjv": "caught up",
+        "source": "The verb used in the Homeric Hymn to Demeter for Hades seizing Persephone and carrying her off to his realm. In Greek myth, being “snatched up” by a god was a common way for a mortal to vanish from the earth.",
+        "hebrew": "Gazal — to seize, take by force.",
+        "fed": "A secret snatching-away of believers before the trouble begins, with the world left wondering where they went.",
+        "bridge": "Acts 8:39 — the Spirit caught Philip away, and he was found at Azotus, still on the earth and still preaching.",
+        "aliases": [],
+        "sources": [
+          "Gods & myths"
+        ],
+        "story": []
+      },
+      {
+        "id": "apantesis",
+        "greek": "Apantēsis",
+        "strongs": null,
+        "kjv": "to meet",
+        "source": "The civic term for a city’s delegation going out to meet a ruler or dignitary on the road and escorting him back into the city.",
+        "hebrew": "Liqra’th — to meet, to go toward.",
+        "fed": "The reading of 1 Thessalonians 4:17 as believers going up to heaven with Messiah. The word’s own use points the other way: those who go out to meet Him turn and come back with Him.",
+        "bridge": "Acts 28:15 — the brethren came out as far as Appii Forum to meet Paul and walked him into Rome. Also Matthew 25:6, where the virgins go out to meet the bridegroom and go in with him.",
+        "aliases": [],
+        "sources": [
+          "Emperors & state"
+        ],
+        "story": []
+      },
+
       {
         "id": "parousia",
         "greek": "Parousia",
@@ -737,7 +832,7 @@ export const doctrines = [
         ],
         "story": [
           {
-            "label": "Revelation Teaching",
+            "label": "The Seven-Year Tribulation",
             "href": "/doctrines/the-departure/revelation-teaching#word-parousia"
           }
         ]
@@ -757,15 +852,51 @@ export const doctrines = [
         ],
         "story": [
           {
-            "label": "Revelation Teaching",
+            "label": "The Seven-Year Tribulation",
             "href": "/doctrines/the-departure/revelation-teaching#word-epiphaneia"
           }
         ]
       }
     ]
   },
+
   {
-    "num": "07",
+    "num": "08",
+    "title": "The Millennium",
+    "oldPathsTitle": "The Strong Man Bound",
+    "departureSlug": "the-millennium",
+    "oldPathsSlug": "the-strong-man-bound",
+    "note": null,
+    "crossRefs": [
+      {
+        "id": "abyssos",
+        "note": "In The Millennium: the abyss of Revelation 20, where the dragon is shut up so that he should deceive the nations no more.",
+        "aliases": [
+          "abyssos-millennium"
+        ]
+      }
+    ],
+    "words": [
+      {
+        "id": "chilioi",
+        "greek": "Chilioi",
+        "strongs": null,
+        "kjv": "thousand",
+        "source": "Plato’s Republic tells of souls making a thousand-year journey between death and rebirth. Later, Cerinthus, an early heretic, taught a coming thousand-year earthly kingdom of feasting and pleasure.",
+        "hebrew": "Eleph — a thousand.",
+        "fed": "The thousand years of Revelation 20 pushed into the future as an earthly golden age, instead of a reign that began when the strong man was bound at the cross.",
+        "bridge": "Psalm 90:4 with 2 Peter 3:8.",
+        "aliases": [],
+        "sources": [
+          "Philosophers",
+          "Later teachers & translators"
+        ],
+        "story": []
+      }
+    ]
+  },
+  {
+    "num": "09",
     "title": "Going to Heaven",
     "oldPathsTitle": "The Inheritance Is the Earth",
     "departureSlug": "going-to-heaven",
@@ -837,7 +968,7 @@ export const doctrines = [
     ]
   },
   {
-    "num": "08",
+    "num": "10",
     "title": "The Trinity",
     "oldPathsTitle": "Hear, O Israel",
     "departureSlug": "the-trinity",
@@ -1078,7 +1209,7 @@ export const doctrines = [
     ]
   },
   {
-    "num": "09",
+    "num": "11",
     "title": "Purification & Holiness",
     "oldPathsTitle": "Ye Shall Be Holy",
     "departureSlug": "purification-holiness",
@@ -1129,7 +1260,7 @@ export const doctrines = [
     ]
   },
   {
-    "num": "10",
+    "num": "12",
     "title": "Calendar & Feasts",
     "oldPathsTitle": "Signs and Seasons",
     "departureSlug": "calendar-feasts",
@@ -1241,7 +1372,7 @@ export const doctrines = [
     ]
   },
   {
-    "num": "11",
+    "num": "13",
     "title": "Faith Alone",
     "oldPathsTitle": "The Wine and the Bread",
     "departureSlug": "faith-alone",
@@ -1393,7 +1524,7 @@ export const doctrines = [
     ]
   },
   {
-    "num": "12",
+    "num": "14",
     "title": "Rightly Divided",
     "oldPathsTitle": "One Olive Tree",
     "departureSlug": "rightly-divided",
@@ -1463,7 +1594,7 @@ export const doctrines = [
     ]
   },
   {
-    "num": "13",
+    "num": "15",
     "title": "Imputed Righteousness",
     "oldPathsTitle": "It Shall Be Our Righteousness",
     "departureSlug": "imputed-righteousness",
@@ -1535,7 +1666,7 @@ export const doctrines = [
     ]
   },
   {
-    "num": "14",
+    "num": "16",
     "title": "Lucifer",
     "oldPathsTitle": "A Proverb Against the King of Babylon",
     "departureSlug": "lucifer",
@@ -1627,7 +1758,7 @@ export const doctrines = [
     ]
   },
   {
-    "num": "15",
+    "num": "17",
     "title": "Predestination",
     "oldPathsTitle": "Choose Life",
     "departureSlug": "predestination",
@@ -1680,7 +1811,7 @@ export const doctrines = [
     ]
   },
   {
-    "num": "16",
+    "num": "18",
     "title": "Images in Worship",
     "oldPathsTitle": "No Manner of Similitude",
     "departureSlug": "images-in-worship",
@@ -1753,7 +1884,7 @@ export const doctrines = [
     ]
   },
   {
-    "num": "17",
+    "num": "19",
     "title": "Clergy over the People",
     "oldPathsTitle": "A Kingdom of Priests",
     "departureSlug": "clergy-over-the-people",

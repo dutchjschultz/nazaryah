@@ -1,6 +1,9 @@
-// borrowed-words 1021 V9.js
+// borrowed-words 1021 V10.js
+// V10 (Greek Influence End-Times Additions 1021 V1): the 06 panel takes hebdomas,
+// apostasia and katechō; parousia and epiphaneia move to the new 07 (The Rapture)
+// with harpazō and apantēsis; new 08 (The Millennium) carries chilioi and abyssos
+// (linked to its Millennium listing). New words carry no Strong's number.
 // V9 (Etsy Riddles Revelation Split 1021 V1): `num` follows the doctrine renumber — old 07–17 are 09–19.
-// 06 keeps its words; the new pairs 07 (The Rapture) and 08 (The Millennium) have no entry yet.
 // V8: eight For Future Studies words join their doctrines' dropdowns — kardia, syneidesis (02),
 // apokatastasis (04), nous (05), sophia, demiourgos, parakletos (08), gnosis (11).
 // V7: doctrines 14–17 added (Lucifer, Predestination, Images in Worship, Clergy over the People).
@@ -189,6 +192,32 @@ export const doctrines = [
     num: "06", oldPathsSlug: "the-book-quotes", departureSlug: "revelation-teaching",
     departureSource: "a Jesuit",
     words: [
+      { id: "hebdomas", greek: "Hebdomas", strongs: "", yourBible: "week",
+        sourceName: "The philosophers wrote", sourceLine: "hebdomas — the sacred seven; a man’s life cut into stages of seven years",
+        scriptureName: "Daniel wrote", scriptureLine: "“he shall confirm the covenant with many for one week” — the seventieth week of one unbroken count (Daniel 9:27)",
+        linkLabel: "The philosophers’ seven or Yahuah’s?" },
+      { id: "apostasia", greek: "Apostasia", strongs: "", yourBible: "falling away",
+        sourceName: "Greek politics wrote", sourceLine: "apostasia — a revolt, a defection from the ruler",
+        scriptureName: "Luke wrote", scriptureLine: "“thou teachest all the Jews which are among the Gentiles to forsake Moses” — the same word, a falling away from the Law (Acts 21:21)",
+        linkLabel: "A departure or a revolt?" },
+      { id: "katecho", greek: "Katechō", strongs: "", yourBible: "letteth",
+        sourceName: "Serapis’s temple wrote", sourceLine: "katochoi — men held fast in seclusion by the god",
+        scriptureName: "Paul wrote", scriptureLine: "“only he who now letteth will let, until he be taken out of the way” (2 Thessalonians 2:7)",
+        linkLabel: "Serapis’s word or Yahuah’s?" }
+    ]
+  },
+  {
+    num: "07", oldPathsSlug: "gathered-at-the-trumpet", departureSlug: "the-rapture",
+    departureSource: "John Darby",
+    words: [
+      { id: "harpazo", greek: "Harpazō", strongs: "", yourBible: "caught up",
+        sourceName: "The Hymn to Demeter wrote", sourceLine: "harpazō — Hades seizing Persephone and carrying her off to his realm",
+        scriptureName: "Luke wrote", scriptureLine: "the Spirit “caught away Philip … But Philip was found at Azotus” — still on the earth, still preaching (Acts 8:39-40)",
+        linkLabel: "Hades’s word or Yahuah’s?" },
+      { id: "apantesis", greek: "Apantēsis", strongs: "", yourBible: "to meet",
+        sourceName: "The cities wrote", sourceLine: "apantēsis — the delegation that goes out to meet a ruler and escorts him back in",
+        scriptureName: "Luke wrote", scriptureLine: "the brethren “came to meet us as far as Appii forum” — and walked Paul into Rome (Acts 28:15)",
+        linkLabel: "Going up, or coming back with Him?" },
       { id: "parousia", greek: "Parousia", strongs: "G3952", yourBible: "coming",
         sourceName: "Caesar wrote", sourceLine: "parousia — the emperor’s royal visit to a city",
         scriptureName: "Joel wrote", scriptureLine: "“the great and the terrible day of Yahuah” — one day, not two comings (Joel 2:31)",
@@ -197,6 +226,20 @@ export const doctrines = [
         sourceName: "Antiochus wrote", sourceLine: "Epiphanes — “god made manifest,” his own title",
         scriptureName: "Isaiah wrote", scriptureLine: "“all flesh shall see it together” — no secret coming (Isaiah 40:5)",
         linkLabel: "Antiochus’s word or Yahuah’s?" }
+    ]
+  },
+  {
+    num: "08", oldPathsSlug: "the-strong-man-bound", departureSlug: "the-millennium",
+    departureSource: "Cerinthus",
+    words: [
+      { id: "chilioi", greek: "Chilioi", strongs: "", yourBible: "thousand",
+        sourceName: "Plato wrote", sourceLine: "a thousand-year journey of souls between death and rebirth (Republic)",
+        scriptureName: "Peter wrote", scriptureLine: "“a thousand years as one day” — the same measure Moses sang (2 Peter 3:8; Psalm 90:4)",
+        linkLabel: "Plato’s thousand or Yahuah’s?" },
+      { id: "abyssos-millennium", greek: "Abyssos", strongs: "", yourBible: "bottomless pit",
+        sourceName: "Greek cosmology wrote", sourceLine: "abyssos — the bottomless deep",
+        scriptureName: "Moses wrote", scriptureLine: "“darkness was upon the face of the deep” — the Septuagint puts abyssos for tehom (Genesis 1:2)",
+        linkLabel: "The Greeks’ pit or Yahuah’s deep?" }
     ]
   },
   {

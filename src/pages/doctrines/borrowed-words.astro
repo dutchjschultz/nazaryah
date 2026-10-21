@@ -1,5 +1,6 @@
 ---
-// borrowed-words-page 1013 V8.astro — src/pages/doctrines/borrowed-words.astro
+// borrowed-words-page 1021 V9.astro — src/pages/doctrines/borrowed-words.astro
+// V9: an entry with no Strong's number or no Hebrew beneath (the 1021 end-times words) skips that line.
 // V8: the section name is the title; the clever line is the subtitle beneath it (Dutch, Page titles 1013).
 // Title Greek Influence; subtitle Words Your Bible Borrowed (pageTagline); the CORE BELIEFS kicker is gone.
 // V7: doctrine headings add the Old Paths title in parentheses (.bwp-op, smaller
@@ -97,7 +98,7 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
           data-aliases={aliases.join(" ")}
           data-doctrine={d.departureSlug}
           data-sources={w.sources.join("|")}
-          data-search={fold([w.id, w.greek, w.kjv, w.strongs, w.source, w.hebrew, w.fed, w.bridge || "", note || "", w.sources.join(" ")].join(" "))}>
+          data-search={fold([w.id, w.greek, w.kjv, w.strongs || "", w.source, w.hebrew || "", w.fed, w.bridge || "", note || "", w.sources.join(" ")].join(" "))}>
           <summary>
             <span class="bwp-name">{w.greek}</span>
             <span class="bwp-kjv">“{w.kjv}”</span>
@@ -105,9 +106,9 @@ const fold = (s) => s.normalize("NFD").replace(/[̀-ͯ]/g, "").toLowerCase();
           </summary>
           <div class="bwp-body">
             {note && <p class="bwp-note-in">{note}</p>}
-            <p class="bwp-strongs">{w.strongs}</p>
+            {w.strongs && <p class="bwp-strongs">{w.strongs}</p>}
             <p><span class="bwp-label">Pagan source.</span>{" "}{w.source}</p>
-            <p><span class="bwp-label">Hebrew beneath.</span>{" "}{w.hebrew}</p>
+            {w.hebrew && <p><span class="bwp-label">Hebrew beneath.</span>{" "}{w.hebrew}</p>}
             <p><span class="bwp-label">What it fed.</span>{" "}{w.fed}</p>
             {w.bridge && <p class="bwp-bridge"><span class="bwp-label">The bridge.</span>{" "}{w.bridge}</p>}
             {w.story.length > 0 && <div class="bwp-stories">{w.story.map(s => <a class="bwp-story" href={s.href}><span class="bwp-story-label">See the verse it twisted</span><span class="bwp-story-title">Read how this became a doctrine:{" "}<strong>{s.label}</strong>{" "}→</span></a>)}</div>}
