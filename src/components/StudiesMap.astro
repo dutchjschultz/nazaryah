@@ -1,5 +1,7 @@
 ---
-// StudiesMap.astro · 1007 V1
+// StudiesMap.astro · 1021 V2
+// V2 (Recently Added Strip brief 1021 V2): on /blog ('all') the Recently Added
+// strip (RecentStudies.astro) sits between All Studies and the topic cards.
 // The Berean Studies landing, lifted out of src/pages/blog/index.astro so three
 // pages can share it. `show` decides what renders:
 //   'all'          /blog              — studies, Pe'ah + Trilogies cards, collections
@@ -11,6 +13,7 @@ import { BLOG_GROUPS, BLOG_JUMPOUTS, groupOf, inFeed, extrasOf } from '../data/b
 import { COLLECTIONS, collectionSlugs, leavesTopic, entryCount } from '../data/collections.js';
 import { READING_SETS } from '../data/reading-sets.js';
 import CollectionCard from './CollectionCard.astro';
+import RecentStudies from './RecentStudies.astro';
 
 const { show = 'all' } = Astro.props;
 const showStudies = show === 'all' || show === 'studies';
@@ -42,6 +45,8 @@ const trilogyCount = READING_SETS.length;
           <span class="blog-all-meta">{total} studies · search the full archive</span>
           <span class="blog-all-cta">Search &amp; browse &rarr;</span>
         </a>
+
+        {show === 'all' && <RecentStudies />}
 
         <p class="blog-map-eyebrow">Studies · browse by topic</p>
         <div class="blog-group-grid">
