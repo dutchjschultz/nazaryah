@@ -1,14 +1,13 @@
 ---
+// src/pages/blog/topics.astro · 1021 V2
+// V2 (Slim Header brief 1021 V1): the parchment banner is gone; the header tab marks the page, and
+// the All Studies box carries the H1 and the intro (StudiesMap lead).
 // blog/topics.astro · 1007 V1 — the Studies item in the Berean Studies menu:
 // All Studies and the topic cards only.
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import StudiesHero from '../../components/StudiesHero.astro';
 import StudiesMap from '../../components/StudiesMap.astro';
 ---
 
 <BaseLayout title="Studies - Berean Studies - Nazaryah" description="Full Bible studies, one subject at a time, sorted by topic.">
-  <StudiesHero title="Studies">
-    Full Bible studies, one subject at a time, sorted by topic. Pick a topic below, or open <strong>All Studies</strong> to search the whole archive.
-  </StudiesHero>
-  <StudiesMap show="studies" />
+  <StudiesMap show="studies" lead />
 </BaseLayout>

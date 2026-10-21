@@ -1,5 +1,10 @@
 ---
-// src/pages/index.astro · 1019 V27
+// src/pages/index.astro · 1021 V28
+// V28 (Last 30 Days Two Columns 1021 V1): the section dropdowns sit two across
+// (left to right, then down; one column under 720px). Each row is one line —
+// chevron at the left (right-pointing, turns down when open), symbol, name,
+// count, then View all at the right end; the "See list ▾ / Hide list ▴" cue is
+// gone. An open section grows in its own column only.
 // V27 (Riddle Box Handoff 1019 V1): the two solid corner cards are one Riddle Box
 // panel (RiddleBox.astro) in the hero's own parchment — gold double rule, two
 // compartments, oxblood and navy as accent ink only — so the header no longer
@@ -529,31 +534,61 @@ const recent = recentGroups(pieces, picks);
         <h2 id="last-30-days" class="home-h2">Last 30 Days</h2>
         <p class="home-sub">Added in the past month, filed by where each study lives. Open a section to see them.</p>
         <div class="home-recent">
-          {recent.map((g) => (
-            <details class="home-group" style={`--grp-accent: ${g.accent}`}>
-              <summary>
-                <span class="home-group-name">
-                  <svg class="home-group-chev" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9l6 6 6-6" /></svg>
-                  <span class="home-group-symbol" aria-hidden="true"><Symbol name={g.symbol} size="1.05rem" /></span>{g.name} <span class="home-group-count">({g.items.length})</span>
-                  <span class="home-group-cue"><span class="cue-closed">See list ▾</span><span class="cue-open">Hide list ▴</span></span>
-                </span>
-                <a class="home-group-all" href={g.href}>View all <span aria-hidden="true">→</span></a>
-              </summary>
-              <ul class="home-group-list">
-                {g.items.map((it) => (
-                  <li>
-                    <a href={it.href}>
-                      <span class="home-item-line">
-                        <span class="home-item-title">{it.title}</span>
-                        <span class="home-item-date">{showDate(it.date)}</span>
-                      </span>
-                      {it.deck && <span class="home-item-deck">{it.deck}</span>}
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          ))}
+          {/* Two stacks, left to right then down (0, 2, 4… left; 1, 3, 5… right), so an
+              open section grows only in its own column. Under 720px the stacks dissolve
+              (display: contents) and `order` puts the sections back in sequence. */}
+          <div class="home-recent-col">
+            {recent.map((g, i) => ({ g, i })).filter(({ i }) => i % 2 === 0).map(({ g, i }) => (
+              <details class="home-group" style={`--grp-accent: ${g.accent}; order: ${i}`}>
+                <summary>
+                  <span class="home-group-name">
+                    <svg class="home-group-chev" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+                    <span class="home-group-symbol" aria-hidden="true"><Symbol name={g.symbol} size="1.05rem" /></span>{g.name} <span class="home-group-count">({g.items.length})</span>
+                  </span>
+                  <a class="home-group-all" href={g.href}>View all <span aria-hidden="true">→</span></a>
+                </summary>
+                <ul class="home-group-list">
+                  {g.items.map((it) => (
+                    <li>
+                      <a href={it.href}>
+                        <span class="home-item-line">
+                          <span class="home-item-title">{it.title}</span>
+                          <span class="home-item-date">{showDate(it.date)}</span>
+                        </span>
+                        {it.deck && <span class="home-item-deck">{it.deck}</span>}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))}
+          </div>
+          <div class="home-recent-col">
+            {recent.map((g, i) => ({ g, i })).filter(({ i }) => i % 2 === 1).map(({ g, i }) => (
+              <details class="home-group" style={`--grp-accent: ${g.accent}; order: ${i}`}>
+                <summary>
+                  <span class="home-group-name">
+                    <svg class="home-group-chev" viewBox="0 0 24 24" aria-hidden="true" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6" /></svg>
+                    <span class="home-group-symbol" aria-hidden="true"><Symbol name={g.symbol} size="1.05rem" /></span>{g.name} <span class="home-group-count">({g.items.length})</span>
+                  </span>
+                  <a class="home-group-all" href={g.href}>View all <span aria-hidden="true">→</span></a>
+                </summary>
+                <ul class="home-group-list">
+                  {g.items.map((it) => (
+                    <li>
+                      <a href={it.href}>
+                        <span class="home-item-line">
+                          <span class="home-item-title">{it.title}</span>
+                          <span class="home-item-date">{showDate(it.date)}</span>
+                        </span>
+                        {it.deck && <span class="home-item-deck">{it.deck}</span>}
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -732,31 +767,31 @@ const recent = recentGroups(pieces, picks);
     .home-picks { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 0.9rem; row-gap: 1.1rem; grid-auto-rows: 1fr; }
 
     /* Last 30 Days row symbol, in the section's own colour. */
-    .home-group-symbol { display: inline-flex; vertical-align: -0.15em; margin-right: 0.45rem; color: var(--grp-accent); }
+    .home-group-symbol { display: inline-flex; margin-right: 0.2rem; color: var(--grp-accent); }
 
     /* Last 30 Days: closed dropdowns, a series-color bar on the left edge. */
-    .home-recent { display: grid; gap: 0.6rem; max-width: 52rem; margin: 0 auto; }
+    /* V28: two across, each column grows on its own (align start). */
+    .home-recent { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0 1.1rem; align-items: start; max-width: 74rem; margin: 0 auto; }
+    .home-recent-col { display: flex; flex-direction: column; gap: 0.85rem; min-width: 0; }
+    @media (max-width: 720px) {
+      .home-recent { display: flex; flex-direction: column; align-items: stretch; gap: 0.85rem; }
+      .home-recent-col { display: contents; }
+    }
     .home-group {
       background: #141210; border: 1px solid rgba(201,169,97,0.14); border-left: 3px solid var(--grp-accent);
       border-radius: 4px;
     }
     .home-group summary {
-      list-style: none; cursor: pointer; display: flex; align-items: baseline; justify-content: space-between;
+      list-style: none; cursor: pointer; display: flex; align-items: center; justify-content: space-between;
       gap: 1rem; padding: 0.95rem 1.2rem;
     }
     .home-group summary::-webkit-details-marker { display: none; }
     .home-group summary:focus-visible { outline: 2px solid var(--grp-accent); outline-offset: 2px; }
-    .home-group-name { font-family: 'Playfair Display', Georgia, serif; font-size: 1.12rem; color: #f5e6c8; }
-    /* V4 (A6): the open cue — a gold chevron the size of the symbol (down when
-       closed, up when open) and a small-caps SEE LIST / HIDE LIST after the count. */
-    .home-group-chev { width: 1.15rem; height: 1.15rem; flex: none; color: #d4af37; margin-right: 0.45rem; vertical-align: -0.2em; transition: transform .2s ease; }
-    .home-group[open] .home-group-chev { transform: rotate(180deg); }
-    .home-group-cue {
-      margin-left: 0.6rem; font-family: 'Cinzel', serif; font-size: 0.58rem; font-weight: 700; letter-spacing: 0.16em;
-      text-transform: uppercase; font-variant: small-caps; color: #a8925a; white-space: nowrap; vertical-align: 0.1em;
-    }
-    .home-group-cue .cue-open, .home-group[open] .home-group-cue .cue-closed { display: none; }
-    .home-group[open] .home-group-cue .cue-open { display: inline; }
+    .home-group-name { min-width: 0; display: flex; align-items: center; flex-wrap: nowrap; column-gap: 0.3rem; font-family: 'Playfair Display', Georgia, serif; font-size: 1.12rem; color: #f5e6c8; }
+    /* The open cue: a gold chevron the size of the symbol, right-pointing when
+       closed, turned down when open (V28; the SEE LIST label is gone). */
+    .home-group-chev { display: inline-block; width: 1.15rem; height: 1.15rem; flex: none; color: #d4af37; margin-right: 0.3rem; transition: transform .2s ease; }
+    .home-group[open] .home-group-chev { transform: rotate(90deg); }
     .home-group summary { transition: background .15s ease; border-radius: 4px; }
     .home-group summary:hover { background: #1c1915; }
     .home-group-count { color: #a09078; font-size: 0.95rem; }

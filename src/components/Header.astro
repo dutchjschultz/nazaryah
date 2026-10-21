@@ -1,5 +1,9 @@
 ---
-// Header.astro · 1014 V20 — Hero + header fixes (Dutch 1014): the right end of
+// Header.astro · 1021 V21 — Slim Header brief 1021 V1: the bar drops to about
+// half its height — logo 72px (was 110), tabs 44px (two-word tabs still stack),
+// home button 46px, the end picture a 58px square. The active tab keeps its dark
+// fill and gold edge. Phone: same menu, smaller logo only.
+// V20 · 1014 — Hero + header fixes (Dutch 1014): the right end of
 // the bar darkens again into the man-on-the-mountain picture (nazaryah-logo.png,
 // header height, gold border), which replaces V19's emblem. Search, About,
 // Contact and the theme toggle are one colour, parchment #f0e0bf — dark ink
@@ -470,7 +474,7 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
     display: inline-flex;
     align-items: center;
     gap: 0.3rem;
-    height: 2.5rem;
+    height: 2.75rem;
     box-sizing: border-box;
     align-items: flex-end;
     line-height: 1.05;
@@ -516,6 +520,9 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
   }
 
   /* The logo leads home: a pointer and a soft gold glow on hover (A2). */
+  /* V21: the logo at half height in the bar (Logo.astro's own sizes serve elsewhere). */
+  .home-logo :global(.logo-img) { height: 72px; }
+  @media (max-width: 640px) { .home-logo :global(.logo-img) { height: 56px; } }
   .home-logo { cursor: pointer; display: inline-block; border-radius: 6px; transition: filter 0.2s ease; }
   .home-logo:hover, .home-logo:focus-visible { filter: drop-shadow(0 0 6px rgba(240, 196, 80, 0.55)); }
   .home-logo:focus-visible { outline: 2px solid #d4a531; outline-offset: 3px; }
@@ -578,7 +585,7 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
   @media (min-width: 901px) and (max-width: 1239px) {
     #mobile-menu-button { color: #f0e0bf !important; }
   }
-  .end-picture { display: block; height: 110px; width: auto; margin-left: 0.9rem; flex: none; border-radius: 6px; border: 1px solid rgba(212, 165, 49, 0.7); }
+  .end-picture { display: block; height: 58px; width: 58px; object-fit: cover; margin-left: 0.9rem; flex: none; border-radius: 6px; border: 1px solid rgba(212, 165, 49, 0.7); }
   .nav-utility {
     display: flex;
     gap: 0.2rem;
@@ -609,8 +616,8 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
   /* V4 (A1): the home button — larger than the search circle, a solid dark
      house, a gold ring at the search circle's weight, a soft gold glow on hover. */
   .home-btn {
-    width: 3rem;
-    height: 3rem;
+    width: 46px;
+    height: 46px;
     flex: none;
     border-radius: 50%;
     border: 1.5px solid #c9a961;

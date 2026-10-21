@@ -1,5 +1,10 @@
 ---
-// StudiesMap.astro · 1021 V3
+// StudiesMap.astro · 1021 V4
+// V4 (Slim Header brief 1021 V1): optional `lead` — the page has no parchment
+// banner, so the All Studies box carries the page: "All Studies" becomes the
+// page's <h1>, and the meta line becomes the page's intro with the live count
+// ("Full Bible studies, one subject at a time, sorted by topic. Pick a topic
+// below, or search all N studies."). Used by /blog/topics; /blog keeps its banner.
 // V3: the Recently Added strip shows wherever the All Studies box does — /blog and
 // /blog/topics (the menu's Berean Studies › Studies) — not on /blog alone.
 // V2 (Recently Added Strip brief 1021 V2): on /blog ('all') the Recently Added
@@ -17,7 +22,7 @@ import { READING_SETS } from '../data/reading-sets.js';
 import CollectionCard from './CollectionCard.astro';
 import RecentStudies from './RecentStudies.astro';
 
-const { show = 'all' } = Astro.props;
+const { show = 'all', lead = false } = Astro.props;
 const showStudies = show === 'all' || show === 'studies';
 const showShort = show === 'all';
 const showCollections = show === 'all' || show === 'collections';
@@ -43,8 +48,17 @@ const trilogyCount = READING_SETS.length;
     {showStudies && (
       <>
         <a href="/blog/all" class="blog-all">
-          <span class="blog-all-label">All Studies</span>
-          <span class="blog-all-meta">{total} studies · search the full archive</span>
+          {lead ? (
+            <>
+              <h1 class="blog-all-label">All Studies</h1>
+              <span class="blog-all-meta blog-all-meta--lead">Full Bible studies, one subject at a time, sorted by topic. Pick a topic below, or search all <strong>{total} studies</strong>.</span>
+            </>
+          ) : (
+            <>
+              <span class="blog-all-label">All Studies</span>
+              <span class="blog-all-meta">{total} studies · search the full archive</span>
+            </>
+          )}
           <span class="blog-all-cta">Search &amp; browse &rarr;</span>
         </a>
 
@@ -122,6 +136,9 @@ const trilogyCount = READING_SETS.length;
   .blog-all:hover { transform: translateY(-2px); background: radial-gradient(ellipse at 20% 0%, #2c2010 0%, #1a1510 70%, #0e0b07 100%); }
   .blog-all-label { font-family: 'Playfair Display', Georgia, serif; font-style: italic; font-size: 1.7rem; color: #f5e6c8; }
   .blog-all-meta { font-family: 'Cormorant Garamond', Georgia, serif; font-style: italic; font-size: 1rem; color: #a09078; }
+  h1.blog-all-label { margin: 0; font-weight: 400; }
+  .blog-all-meta--lead { font-style: normal; font-size: 1.1rem; line-height: 1.5; color: #b8a888; max-width: 46rem; margin: 0.2rem 0 0.4rem; }
+  .blog-all-meta--lead strong { color: #f5e6c8; font-weight: 600; }
   .blog-all-cta { font-family: 'Cinzel', serif; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: #d4af37; margin-top: 0.3rem; }
 
   .blog-map-eyebrow { font-family: 'Cinzel', serif; font-size: 0.66rem; letter-spacing: 0.26em; text-transform: uppercase; color: #a08a4e; text-align: center; margin: 0 0 1.3rem; }
