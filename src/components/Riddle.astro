@@ -1,5 +1,8 @@
 ---
-// src/components/Riddle.astro · 1019 V4
+// src/components/Riddle.astro · 1021 V5
+// V5 (Dutch 1021): a riddle with `why` gets its own "Why it matters" button
+// under "Show the answer". It opens the answer and the study together and scrolls
+// to the study; it steps aside while the answer is open and returns when it closes.
 // V4 (Riddles Why It Matters 1019 V1): a riddle with `why` shows a short study,
 // "Why It Matters", inside the answer, after the verdict and before the next
 // link — left-aligned prose under a thin gold rule. *word* renders in italics.
@@ -76,6 +79,9 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
 
       <div class="rd-step">
         <button type="button" class="rd-btn rd-btn--answer" aria-expanded="false" aria-controls={`${pre}-answer`} data-rd-toggle>Show the answer</button>
+        {riddle.why?.length > 0 && (
+          <button type="button" class="rd-btn rd-btn--why" aria-controls={`${pre}-answer`} data-rd-why={`${pre}-why`}>Why it matters</button>
+        )}
         <div id={`${pre}-answer`} class="rd-reveal" hidden>
           <ol class="rd-chain">
             {riddle.chain.map(([line, ref]) => <li>{line} <span class="rd-chain-ref">— {ref}</span></li>)}
@@ -84,7 +90,7 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
           {riddle.beneath && <p class="rd-beneath">{riddle.beneath}</p>}
           {riddle.why?.length > 0 && (
             <section class="rd-why" aria-labelledby={`${pre}-why`}>
-              <h2 class="rd-why-head" id={`${pre}-why`}>Why It Matters</h2>
+              <h2 class="rd-why-head" id={`${pre}-why`} tabindex="-1">Why It Matters</h2>
               {riddle.why.map((para) => <p>{segs(para).map((g) => (g.em ? <em>{g.x}</em> : g.x))}</p>)}
             </section>
           )}
@@ -104,6 +110,21 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
       const open = btn.getAttribute('aria-expanded') !== 'true';
       btn.setAttribute('aria-expanded', String(open));
       target.hidden = !open;
+      const why = document.querySelector(`[data-rd-why][aria-controls="${target.id}"]`);
+      if (why) why.hidden = open;
+    });
+  }
+  // "Why it matters": open the answer (and the study inside it), then go to the study.
+  for (const btn of document.querySelectorAll('[data-rd-why]')) {
+    btn.addEventListener('click', () => {
+      const answer = document.getElementById(btn.getAttribute('aria-controls'));
+      const toggle = document.querySelector(`[data-rd-toggle][aria-controls="${answer.id}"]`);
+      answer.hidden = false;
+      toggle?.setAttribute('aria-expanded', 'true');
+      btn.hidden = true;
+      const head = document.getElementById(btn.dataset.rdWhy);
+      head?.parentElement.scrollIntoView({ behavior: matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'start' });
+      head?.focus({ preventScroll: true });
     });
   }
 </script>
@@ -145,6 +166,10 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   .rd-btn--nudge:hover { filter: brightness(1.12); }
   .rd-btn--answer { background: transparent; color: var(--rd-muted); border: 1px solid var(--rd-rule); font-size: 0.64rem; }
   .rd-btn--answer:hover { color: var(--rd-ink); border-color: var(--rd-muted); }
+  .rd-btn--why { margin-top: 0.7rem; background: transparent; color: var(--rd-gold); border: 1px solid var(--rd-gold); font-size: 0.64rem; }
+  .rd-btn--why:hover { background: var(--rd-gold); color: var(--rd-paper); }
+  .rd-why { scroll-margin-top: 8.5rem; }
+  .rd-why-head:focus { outline: none; }
   .rd-btn:focus-visible { outline: 2px solid var(--rd-gold); outline-offset: 3px; }
   .rd-reveal { width: 100%; margin-top: 1rem; }
   .rd-nudge-line { margin: 0; font-style: italic; color: var(--rd-muted); }
