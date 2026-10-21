@@ -1,11 +1,13 @@
 ---
+// src/pages/blog/index.astro · 1021 V2
+// V2 (Slim Header brief, extended to /blog by Dutch 1021): the parchment banner — title, divider,
+// the Acts 17:11 line and the intro — is gone; the All Studies box carries the H1 and the intro.
 // blog/index.astro · 1007 V2 — BEREAN STUDIES
 // V2: the Studies landing is now Berean Studies (Acts 17:11) and opens on all
 // four kinds of reading: the topic cards, a Pe'ah card, a Trilogies card, and
 // the collection cards. The map itself lives in src/components/StudiesMap.astro
 // so /blog/topics and /blog/collections can show one part each.
 import BaseLayout from '../../layouts/BaseLayout.astro';
-import StudiesHero from '../../components/StudiesHero.astro';
 import StudiesMap from '../../components/StudiesMap.astro';
 ---
 
@@ -13,9 +15,5 @@ import StudiesMap from '../../components/StudiesMap.astro';
   title="Berean Studies - Nazaryah"
   description="Bible studies searched out the Berean way: full studies by topic, short Pe'ah reads, trilogies, and collections."
 >
-  <StudiesHero title="Berean Studies" verse={{ text: 'They searched the scriptures daily, whether those things were so.', ref: 'Acts 17:11' }}>
-    Every study here is a focused search, hours in the Hebrew and Greek, one subject at a time.
-    Choose where to start: a full study, a short read, a trilogy, or a collection.
-  </StudiesHero>
-  <StudiesMap show="all" />
+  <StudiesMap show="all" lead="Every study here is a focused search, hours in the Hebrew and Greek, one subject at a time. Choose where to start: a full study, a short read, a trilogy, or a collection." />
 </BaseLayout>

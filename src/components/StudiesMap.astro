@@ -1,5 +1,8 @@
 ---
-// StudiesMap.astro · 1021 V4
+// StudiesMap.astro · 1021 V5
+// V5: `lead` may be the intro text itself (a string) — the box shows it, then "Or
+// search all N studies." /blog passes its own intro; /blog/topics keeps `lead`
+// alone and its own sentence.
 // V4 (Slim Header brief 1021 V1): optional `lead` — the page has no parchment
 // banner, so the All Studies box carries the page: "All Studies" becomes the
 // page's <h1>, and the meta line becomes the page's intro with the live count
@@ -51,7 +54,11 @@ const trilogyCount = READING_SETS.length;
           {lead ? (
             <>
               <h1 class="blog-all-label">All Studies</h1>
-              <span class="blog-all-meta blog-all-meta--lead">Full Bible studies, one subject at a time, sorted by topic. Pick a topic below, or search all <strong>{total} studies</strong>.</span>
+              {typeof lead === 'string' ? (
+                <span class="blog-all-meta blog-all-meta--lead">{lead} Or search all <strong>{total} studies</strong>.</span>
+              ) : (
+                <span class="blog-all-meta blog-all-meta--lead">Full Bible studies, one subject at a time, sorted by topic. Pick a topic below, or search all <strong>{total} studies</strong>.</span>
+              )}
             </>
           ) : (
             <>
