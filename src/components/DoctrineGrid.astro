@@ -1,5 +1,10 @@
 ---
-// src/components/DoctrineGrid.astro · 1021 V6
+// src/components/DoctrineGrid.astro · 1021 V7
+// V7 (Riddle Cards brief 1021 V2): the Revelation chevrons are gone; the
+// "Revelation · n of 3" line carries the grouping alone. New optional
+// `layout="five"` (the Old Paths grid): banner cards (DoctrineCard V6), five
+// across in a 1280px frame with a 14px gap; three across to 1100px, two to
+// 720px, one below 480px.
 // V6 (Etsy Riddles Revelation Split 1021 V1): optional `group` on a card. Cards that
 // share a group carry an eyebrow — "Revelation · 1 of 3" — counted by their order
 // among the group, and a small gold chevron sits in the gap after each grouped
@@ -26,17 +31,18 @@ interface Props {
   eyebrow: string; title: string; subtitle: string;
   cards: { n: string; title: string; deck: string; tag?: string; href: string; slug?: string; riddles?: { href: string; number: number }[]; group?: string }[];
   borrowed?: 'old-paths' | 'departure';
+  layout?: 'five';
 }
-const { eyebrow, title, subtitle, cards, borrowed } = Astro.props;
+const { eyebrow, title, subtitle, cards, borrowed, layout } = Astro.props;
+const five = layout === 'five';
 const hasFooter = Astro.slots.has('default');
-// Group eyebrows and chevrons (V6): "Revelation · 2 of 3", and a chevron after a
-// grouped card when the next card is in the same group.
+// Group eyebrows (V6): "Revelation · 2 of 3", counted by order within the group.
 const groupName = (g) => g.charAt(0).toUpperCase() + g.slice(1);
 const groupOf = cards.map((c, i) => {
   if (!c.group) return null;
   const members = cards.filter((x) => x.group === c.group);
   const pos = members.indexOf(c) + 1;
-  return { label: `${groupName(c.group)} · ${pos} of ${members.length}`, chevron: cards[i + 1]?.group === c.group };
+  return { label: `${groupName(c.group)} · ${pos} of ${members.length}` };
 });
 ---
 
@@ -56,17 +62,15 @@ const groupOf = cards.map((c, i) => {
 
   {borrowed && <BorrowedWordsIntro />}
 
-  <div class:list={['doctrine-grid', borrowed && 'has-borrowed']}>
+  <div class:list={['doctrine-grid', borrowed && 'has-borrowed', five && 'is-five']}>
     {cards.map((c, i) => borrowed ? (
-      <div class:list={['doctrine-cell', { 'has-chevron': groupOf[i]?.chevron }]}>
-        <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} riddles={c.riddles} groupLabel={groupOf[i]?.label} />
+      <div class="doctrine-cell">
+        <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} riddles={c.riddles} groupLabel={groupOf[i]?.label} banner={five} />
         <BorrowedWords slug={c.slug} page={borrowed} />
-        {groupOf[i]?.chevron && <span class="dg-chevron" aria-hidden="true">&rarr;</span>}
       </div>
     ) : (
-      <div class:list={['doctrine-item', { 'has-chevron': groupOf[i]?.chevron }]}>
-        <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} riddles={c.riddles} groupLabel={groupOf[i]?.label} />
-        {groupOf[i]?.chevron && <span class="dg-chevron" aria-hidden="true">&rarr;</span>}
+      <div class="doctrine-item">
+        <DoctrineCard n={c.n} title={c.title} deck={c.deck} tag={c.tag} href={c.href} riddles={c.riddles} groupLabel={groupOf[i]?.label} banner={five} />
       </div>
     ))}
   </div>
@@ -96,22 +100,20 @@ const groupOf = cards.map((c, i) => {
   .doctrine-grid.has-borrowed { row-gap: 1.75rem; }
   .doctrine-cell { display: grid; grid-row: span 2; grid-template-rows: subgrid; row-gap: 0.6rem; min-width: 0; }
 
-  /* Group chevron (V6): in the gap after a grouped card, level with the card's
-     middle; outside the link, never clickable. */
   .doctrine-item { display: grid; min-width: 0; }
   .doctrine-cell, .doctrine-item { position: relative; }
-  /* Pin each piece to its row, so the chevron (which shares row 1 with the card)
-     never bumps the card into the dropdown's row. */
+  /* Pin each piece to its row: the card in row 1, its dropdown in row 2. */
   .doctrine-cell > :global(:first-child), .doctrine-item > :global(:first-child) { grid-row: 1; grid-column: 1; }
-  .doctrine-cell > :global(:not(:first-child):not(.dg-chevron)) { grid-row: 2; grid-column: 1; }
-  .dg-chevron {
-    grid-row: 1; grid-column: 1; align-self: center; justify-self: end;
-    margin-right: calc(-0.625rem - 0.5em); z-index: 2; pointer-events: none;
-    font-family: var(--font-display); font-size: 1rem; line-height: 1; color: #BA7517;
-  }
+  .doctrine-cell > :global(:not(:first-child)) { grid-row: 2; grid-column: 1; }
+  /* Five across (V7) — the Old Paths grid. */
+  .doctrine-grid.is-five { grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 14px; max-width: 1280px; }
+  .doctrine-grid.is-five.has-borrowed { row-gap: 1.5rem; }
   .doctrines-footer { text-align: center; margin-top: 3rem; display: flex; flex-direction: column; align-items: center; gap: 1.25rem; }
 
-  @media (max-width: 860px) { .doctrine-grid { grid-template-columns: repeat(2, 1fr); } .dg-chevron { display: none; } }
+  @media (max-width: 860px) { .doctrine-grid { grid-template-columns: repeat(2, 1fr); } }
+  @media (max-width: 1100px) { .doctrine-grid.is-five { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 720px) { .doctrine-grid.is-five { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 480px) { .doctrine-grid.is-five { grid-template-columns: 1fr; } }
   @media (max-width: 500px) {
     .doctrine-grid { grid-template-columns: 1fr; }
     .doctrines-page { padding: 2.5rem 1rem 3rem; }

@@ -1,5 +1,14 @@
 ---
-// src/components/DoctrineCard.astro · 1021 V5
+// src/components/DoctrineCard.astro · 1021 V6
+// V6 (Riddle Cards brief 1021 V2): optional `banner`. The doctrine (the `tag`) moves
+// from the card's foot to a banner across its top — large gold small caps, the
+// number small and muted at its right end, a faint gold wash and a gold-dim
+// hairline under it — so the doctrine shows once and the number can no longer
+// collide with the series line. Body order: banner, series line, title, deck,
+// then the riddle block under a hairline at the card's foot. In this mode the
+// wrap carries the card's frame and the riddle block flows beneath the link
+// (still a sibling, no nested links), so it can never overlap the text. Tighter
+// for five across. Without `banner` the card renders exactly as V5.
 // V5 (Etsy Riddles Revelation Split 1021 V1): optional `groupLabel` — a small gold
 // eyebrow ("Revelation · 1 of 3") above the title, set by DoctrineGrid.
 // V4 (Etsy Doctrine Riddles 1019 V4): `riddle` becomes `riddles` ({ href, number }[],
@@ -18,13 +27,40 @@
 // V1: The one card used by BOTH doctrine grids (Old Paths + The Departure). Gold
 // top rule, number in small gold caps, title, italic deck. The WHOLE card is the
 // link — no hover panel, no body text on the card.
-interface Props { n: string; title: string; deck: string; tag?: string; href: string; riddles?: { href: string; number: number }[]; groupLabel?: string; }
-const { n, title, deck, tag, href, riddles = [], groupLabel } = Astro.props;
+interface Props { n: string; title: string; deck: string; tag?: string; href: string; riddles?: { href: string; number: number }[]; groupLabel?: string; banner?: boolean; }
+const { n, title, deck, tag, href, riddles = [], groupLabel, banner = false } = Astro.props;
 const riddle = riddles[0];
 const several = riddles.length > 1;
 ---
 
-{riddle ? (
+{banner ? (
+  <div class:list={['doctrine-card-wrap', 'is-banner', { 'has-riddle': riddle }]}>
+    <a class="doctrine-card" href={href}>
+      <span class="dc-banner">
+        <span class="dc-doctrine">{tag}</span>
+        <span class="dc-num">{n}</span>
+      </span>
+      <span class="dc-body">
+        {groupLabel && <span class="doctrine-group">{groupLabel}</span>}
+        <span class="doctrine-cat">{title}</span>
+        <span class="doctrine-deck">{deck}</span>
+      </span>
+    </a>
+    {riddle && (several ? (
+      <div class="doctrine-riddle">
+        <a class="dr-line1" href={riddle.href} aria-label={`Solve the riddles for ${title}`}>Solve the Riddles in 3 Verses</a>
+        <span class="dr-line2">You can crack them &rarr;{riddles.map((r, i) => (
+          <>{i > 0 && <span class="dr-dot" aria-hidden="true"> &middot; </span>}<a class="dr-num" href={r.href} aria-label={`Riddle ${r.number}`}>{i === 0 && ' '}{r.number}</a></>
+        ))}</span>
+      </div>
+    ) : (
+      <a class="doctrine-riddle" href={riddle.href} aria-label={`Solve the riddle for ${title}`}>
+        <span class="dr-line1">Solve the Riddle in 3 Verses</span>
+        <span class="dr-line2">You can crack it &rarr;</span>
+      </a>
+    ))}
+  </div>
+) : riddle ? (
   <div class="doctrine-card-wrap">
     <a class="doctrine-card has-riddle" href={href}>
       <span class="doctrine-num">{n}</span>
@@ -155,4 +191,37 @@ const several = riddles.length > 1;
     color: #e0a54a; text-decoration: none; padding: 0 0.1rem;
   }
   .dr-num:hover, .dr-num:focus-visible { color: #e8e2d4; text-decoration: underline; text-underline-offset: 4px; outline: none; }
+
+  /* Banner mode (V6) — the Old Paths grid, five across. */
+  .doctrine-card-wrap.is-banner {
+    display: flex; flex-direction: column; min-width: 0;
+    background: #161512; border: 0.5px solid rgba(255,255,255,0.07); border-top: 3px solid #BA7517; border-radius: 8px;
+    transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  }
+  .doctrine-card-wrap.is-banner:hover, .doctrine-card-wrap.is-banner:focus-within {
+    background: #1c1a16; border-color: rgba(186,117,23,0.45); transform: translateY(-2px);
+  }
+  .is-banner .doctrine-card {
+    flex: 1; gap: 0; padding: 0 0 14px; background: none; border: 0; border-radius: 0; transform: none;
+  }
+  .is-banner .doctrine-card:hover, .is-banner .doctrine-card:focus-visible { background: none; transform: none; }
+  .is-banner .doctrine-card:focus-visible { outline: 1px solid #BA7517; outline-offset: -3px; }
+  .dc-banner {
+    display: flex; justify-content: space-between; align-items: center; gap: 0.5rem;
+    padding: 12px 14px 10px; background: rgba(201,162,94,0.07); border-bottom: 1px solid rgba(201,162,94,0.28);
+  }
+  .dc-doctrine {
+    font-family: var(--font-display); font-variant: all-small-caps; font-size: 1.2rem; font-weight: 600;
+    letter-spacing: 0.06em; line-height: 1.1; color: #d8a24a;
+  }
+  .dc-num { flex: none; font-family: var(--font-display); font-size: 0.68rem; letter-spacing: 0.16em; color: #8f8574; }
+  .dc-body { flex: 1; display: flex; flex-direction: column; gap: 0.35rem; padding: 12px 14px 0; }
+  .is-banner .doctrine-group { display: block; margin: 0 0 0.1rem; font-size: 0.68rem; letter-spacing: 0.2em; }
+  .is-banner .doctrine-cat { font-size: 1.3rem; line-height: 1.2; }
+  .is-banner .doctrine-deck { flex: 1; font-size: 1.02rem; line-height: 1.25; }
+  .is-banner .doctrine-riddle {
+    position: static; margin: 0 14px 14px; padding-top: 10px; border-top: 1px solid rgba(255,255,255,0.08);
+  }
+  .is-banner .dr-line1 { font-size: 0.68rem; letter-spacing: 0.15em; }
+  .is-banner .dr-line2 { font-size: 0.98rem; }
 </style>
