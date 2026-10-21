@@ -1,4 +1,5 @@
-// blog-groups 1021 V66.js
+// blog-groups 1021 V67.js
+// V67: the Walking in the Vows trilogy — given-in-love, written-on-the-heart, examined-at-the-wedding — joins the-law-and-the-feasts (category The Law & The Feasts). Map total 163 -> 166.
 // V66: rock-stone-and-word joins the-way-in-and-the-walk (category The Way In and the Walk), beside same-gospel-same-blood. Map total 162 -> 163.
 // V65: the-law-that-carries-his-name joins the-law-and-the-feasts (category The Law & The Feasts). Map total 161 -> 162.
 // V64: the-carnal-mind-vs-the-spiritual-mind joins the-law-and-the-feasts (category The Law & The Feasts), beside cease-or-fulfill. Map total 160 -> 161.
@@ -334,6 +335,9 @@ export const POST_GROUP = {
   'cease-or-fulfill': 'the-law-and-the-feasts',
   'the-carnal-mind-vs-the-spiritual-mind': 'the-law-and-the-feasts',
   'the-law-that-carries-his-name': 'the-law-and-the-feasts',
+  'given-in-love': 'the-law-and-the-feasts',
+  'written-on-the-heart': 'the-law-and-the-feasts',
+  'examined-at-the-wedding': 'the-law-and-the-feasts',
 
   // ── The Parables (12) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's

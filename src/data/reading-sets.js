@@ -1,4 +1,7 @@
-// reading-sets 1019 V11.js
+// reading-sets 1021 V12.js
+// V12: Trilogy "Walking in the Vows" added — Given in Love, Written on the Heart,
+// Examined at the Wedding (The Law & The Feasts, 1021). Lines are each study's
+// deck; the panel keeps its standing sentence (the batch's set blurb has no slot).
 // V11: Trilogy "Awake and Divided" added — The First Awakening: Northampton, The
 // Second Awakening: Cane Ridge, The Third Awakening: Azusa Street (Buried in Plain
 // Sight, 1019). Each line is the study's own deck (the batch gave none). New
@@ -220,6 +223,24 @@ export const READING_SETS = [
       featuredAt: "2026-10-19T19:00",
       featuredUntil: "2026-11-02",
     },
+  },
+  {
+    key: "walking-in-the-vows",
+    title: "Walking in the Vows",
+    readings: [
+      {
+        slug: "given-in-love",
+        line: "Ten words spoken to a rescued people. Not a wall of rules, but a promise.",
+      },
+      {
+        slug: "written-on-the-heart",
+        line: "Same law, new place. The finger that wrote on stone now writes on hearts.",
+      },
+      {
+        slug: "examined-at-the-wedding",
+        line: "Not a courtroom verdict but a wedding door. The Bridegroom examines by the vows.",
+      },
+    ],
   },
 ];
 
