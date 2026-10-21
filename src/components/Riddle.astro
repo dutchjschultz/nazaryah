@@ -1,5 +1,6 @@
 ---
-// src/components/Riddle.astro · 1021 V5
+// src/components/Riddle.astro · 1021 V6
+// V6: a `why` entry that is a list of strings renders as a bulleted list (Riddle 21).
 // V5 (Dutch 1021): a riddle with `why` gets its own "Why it matters" button
 // under "Show the answer". It opens the answer and the study together and scrolls
 // to the study; it steps aside while the answer is open and returns when it closes.
@@ -91,7 +92,11 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
           {riddle.why?.length > 0 && (
             <section class="rd-why" aria-labelledby={`${pre}-why`}>
               <h2 class="rd-why-head" id={`${pre}-why`} tabindex="-1">Why It Matters</h2>
-              {riddle.why.map((para) => <p>{segs(para).map((g) => (g.em ? <em>{g.x}</em> : g.x))}</p>)}
+              {riddle.why.map((para) => Array.isArray(para) ? (
+                <ul>{para.map((li) => <li>{segs(li).map((g) => (g.em ? <em>{g.x}</em> : g.x))}</li>)}</ul>
+              ) : (
+                <p>{segs(para).map((g) => (g.em ? <em>{g.x}</em> : g.x))}</p>
+              ))}
             </section>
           )}
           <a class="rd-next" href={riddle.next.href}>{riddle.next.label} <span aria-hidden="true">&rarr;</span></a>
@@ -182,6 +187,9 @@ const id = (ref) => `${pre}-` + ref.toLowerCase().replace(/[^a-z0-9]+/g, '-');
   .rd-why-head { margin: 0 0 0.9rem; text-align: center; font-family: 'Cinzel', serif; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: var(--rd-gold); }
   .rd-why p { margin: 0 0 1rem; font-size: 1.05rem; line-height: 1.65; color: var(--rd-ink); text-wrap: pretty; }
   .rd-why p:last-child { margin-bottom: 0; }
+  .rd-why ul { list-style: disc; margin: 0 0 1rem; padding-left: 1.3rem; display: grid; gap: 0.4rem; }
+  .rd-why li { font-size: 1.05rem; line-height: 1.6; color: var(--rd-ink); }
+  .rd-why li::marker { color: var(--rd-gold); }
   .rd-why em { font-family: var(--font-family-serif, 'Crimson Text'), Georgia, serif; font-style: italic; }
   .rd-next { display: inline-block; margin-top: 1.4rem; font-family: 'Cinzel', serif; font-size: 0.66rem; font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase; color: var(--rd-gold); text-decoration: none; }
   .rd-next:hover { text-decoration: underline; text-underline-offset: 4px; }

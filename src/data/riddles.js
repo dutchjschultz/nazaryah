@@ -1,4 +1,8 @@
-// riddles 1019 V7.js
+// riddles 1021 V8.js
+// V8 (Sign, Seal, and Mark batch 1021 V2): Riddle 21, The Mark of the Beast — answer
+// from the batch; teaser, nudge (Daniel 7:25), chain and next link drafted by Etsy
+// and approved by Dutch 1021; next → the study Sign, Seal, and Mark. Its Why It
+// Matters carries a bullet list: a `why` entry may itself be a list of strings.
 // V7: Strong's numbers dropped from the lines under the verdict on Riddle 4 (Baal) and Riddle 20 (plēroō).
 // V6 (Riddles Why It Matters 1019 V1): every tile riddle gains `why` — the short
 // companion study ("Why It Matters") shown under the answer, after the verdict.
@@ -57,13 +61,49 @@
 //   beneath       the line under the verdict (optional; no line when absent)
 //   next          { href, label } — the link under the answer
 //   why           optional — the "Why It Matters" study under the answer: a list
-//                 of paragraphs; *word* sets a transliteration or title in italics
+//                 of paragraphs; *word* sets a transliteration or title in italics;
+//                 an entry that is itself a list renders as a bulleted list
 //
 //   Nothing before the answer may name or hint at it — the tiles' challenge
 //   line is the same for every riddle and lives in src/components/Riddle.astro.
 // ================================================================
 
 export const riddles = [
+  {
+    number: 21,
+    slug: 'the-mark-of-the-beast',
+    title: 'The Mark of the Beast',
+    teaser: "Mainstream Christianity teaches that the mark of the beast is a computer chip, a barcode, or a tattoo. It will be forced on the world in the last days.",
+    tiles: [
+      { ref: 'Exodus 13:9', text: "And it shall be for a sign unto thee upon thine hand, and for a memorial between thine eyes, that the LORD’s [Yahuah’s] law may be in thy mouth: for with a strong hand hath the LORD [Yahuah] brought thee out of Egypt." },
+      { ref: '2 Thessalonians 2:7-8', text: "For the mystery of iniquity doth already work: only he who now letteth will let, until he be taken out of the way. And then shall that Wicked be revealed, whom the Lord [Master] shall consume with the spirit of his mouth, and shall destroy with the brightness of his coming:" },
+      { ref: 'Revelation 14:9', text: "And the third angel followed them, saying with a loud voice, If any man worship the beast and his image, and receive his mark in his forehead, or in his hand," },
+    ],
+    nudgeLine: 'Daniel saw what the beast would set out to change.',
+    nudge: { ref: 'Daniel 7:25', text: "And he shall speak great words against the most High, and shall wear out the saints of the most High, and think to change times and laws: and they shall be given into his hand until a time and times and the dividing of time." },
+    chain: [
+      ["Yahuah's Law is worn on the hand and between the eyes.", 'Exodus 13:9'],
+      ['Lawlessness is already at work, and the lawless one is coming.', '2 Thessalonians 2:7-8'],
+      ["The beast's mark goes in the same two places.", 'Revelation 14:9'],
+    ],
+    verdict: "Rebellion against Yahuah's law, worn where His Law was meant to be.",
+    next: { href: '/blog/sign-seal-and-mark/', label: 'Read the study: Sign, Seal, and Mark' },
+    why: [
+      "The first clue was not picked at random. When Yahuah placed His Law \"upon thine hand\" and \"between thine eyes,\" He was speaking of a feast. Exodus 13:9 is the command for Hag HaMatzot, the seven days of unleavened bread. The feast and the Law sit together on the hand and the forehead. What a man keeps and what he obeys are worn in the same place.",
+      "Daniel saw a power that would come against both. The little horn would \"think to change times and laws\" (Daniel 7:25). The word for times is *zimnin*, the appointed seasons. The word for laws is *dat*, the Law itself. The two things Yahuah bound on the hand and forehead are the two things the beast sets out to change. Paul called this power \"that Wicked,\" the lawless one (2 Thessalonians 2:8), and John saw the beast set his mark where the Law and the feasts belong (Revelation 14:9).",
+      "The change did not come by the sword. It came by replacement. Yahuah's appointed times were set aside, and new days were put in their place:",
+      [
+        "Pesach gave way to Easter, its date cut loose from the Hebrew reckoning at the Council of Nicaea in 325 AD.",
+        "The seventh-day Sabbath gave way to Sunday. The Council of Laodicea, around 364 AD, forbade Christians to rest on the Sabbath.",
+        "The head of the year moved from Aviv (Exodus 12:2) to January 1, a Roman date.",
+        "Yom Teruah, Yom Kippur, and Sukkot dropped out of Christian practice, while Christmas and New Year's Day were added.",
+        "Shavuot was renamed and recounted so that it lands in late spring.",
+      ],
+      "Each one is a piece of the change. No single one of them is the mark. The mark is the whole pattern: Yahuah's times and Law traded for man's. Yahuah calls them \"my feasts\" (Leviticus 23:2), and Yahushua said that \"one jot or one tittle shall in no wise pass from the law\" (Matthew 5:18). Pesach and Easter cannot be worn on the same hand.",
+      "This is why the mark is not a chip, a barcode, or a tattoo. It is rebellion against Yahuah's Law, carried in what a man does and what he holds true. Many keep the changed days without knowing where they came from. They inherited them from the pulpit and never checked them against the Book.",
+      "Revelation draws the line plainly. The dragon makes war on those who \"keep the commandments of God\" (Revelation 12:17), and the saints at the end are found doing exactly that: \"here are they that keep the commandments of God, and the faith of Yahushua\" (Revelation 14:12). The Law the beast thought to change is the Law the overcomers are still keeping.",
+    ],
+  },
   {
     number: 20,
     doctrines: ['02'],
