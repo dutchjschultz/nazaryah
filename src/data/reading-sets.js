@@ -1,4 +1,5 @@
-// reading-sets 1021 V12.js
+// reading-sets 1021 V13.js
+// V13: Examined at the Wedding line follows its new deck (Dutch 1021).
 // V12: Trilogy "Walking in the Vows" added — Given in Love, Written on the Heart,
 // Examined at the Wedding (The Law & The Feasts, 1021). Lines are each study's
 // deck; the panel keeps its standing sentence (the batch's set blurb has no slot).
@@ -238,7 +239,7 @@ export const READING_SETS = [
       },
       {
         slug: "examined-at-the-wedding",
-        line: "Not a courtroom verdict but a wedding door. The Bridegroom examines by the vows.",
+        line: "The same judgment seen from the wedding. The Bridegroom examines by the vows.",
       },
     ],
   },

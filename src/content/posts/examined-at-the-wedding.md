@@ -1,8 +1,8 @@
 ---
 title: "Examined at the Wedding"
 subtitle: "Not Sentenced but Sent Away"
-deck: "Not a courtroom verdict but a wedding door. The Bridegroom examines by the vows."
-description: "Not a courtroom verdict but a wedding door. The Bridegroom examines by the vows."
+deck: "The same judgment seen from the wedding. The Bridegroom examines by the vows."
+description: "The same judgment seen from the wedding. The Bridegroom examines by the vows."
 slug: "examined-at-the-wedding"
 category: "The Law & The Feasts"
 date: 2026-10-21
