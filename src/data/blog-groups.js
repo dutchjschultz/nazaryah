@@ -1,4 +1,5 @@
-// blog-groups 1021 V63.js
+// blog-groups 1021 V64.js
+// V64: the-carnal-mind-vs-the-spiritual-mind joins the-law-and-the-feasts (category The Law & The Feasts), beside cease-or-fulfill. Map total 160 -> 161.
 // V63: sign-seal-and-mark joins scripture-unfiltered (category Scripture Unfiltered). Map total 159 → 160.
 // V62: tried-in-the-reins joins the-root (category The Root). Map total 158 → 159.
 // V61: the Awake and Divided trilogy — the-first-awakening-northampton, the-second-awakening-cane-ridge, the-third-awakening-azusa-street — joins buried-in-plain-sight (category Buried in Plain Sight). Map total 155 → 158.
@@ -329,6 +330,7 @@ export const POST_GROUP = {
   'marriage-and-divorce': 'the-law-and-the-feasts',
   'the-law-of-jealousy': 'the-law-and-the-feasts',
   'cease-or-fulfill': 'the-law-and-the-feasts',
+  'the-carnal-mind-vs-the-spiritual-mind': 'the-law-and-the-feasts',
 
   // ── The Parables (12) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
