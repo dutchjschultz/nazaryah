@@ -1,4 +1,5 @@
-// blog-groups 1019 V62.js
+// blog-groups 1021 V63.js
+// V63: sign-seal-and-mark joins scripture-unfiltered (category Scripture Unfiltered). Map total 159 → 160.
 // V62: tried-in-the-reins joins the-root (category The Root). Map total 158 → 159.
 // V61: the Awake and Divided trilogy — the-first-awakening-northampton, the-second-awakening-cane-ridge, the-third-awakening-azusa-street — joins buried-in-plain-sight (category Buried in Plain Sight). Map total 155 → 158.
 // V60: cease-or-fulfill joins the-law-and-the-feasts (category The Law & The Feasts), beside not-one-jot. Map total 154 → 155.
@@ -398,6 +399,7 @@ export const POST_GROUP = {
   'two-babylons': 'scripture-unfiltered',
   'the-finger-of-yahuah': 'scripture-unfiltered',
   'cedars-and-the-branch': 'scripture-unfiltered',
+  'sign-seal-and-mark': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
