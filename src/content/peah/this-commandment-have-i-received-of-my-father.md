@@ -11,7 +11,7 @@ date: 2026-10-02
 
 Yahushua said of his life, "I have power to lay it down, and I have power to take it again. This commandment have I received of my Father" (John 10:18). Many read this as proof that he raised himself, and so he must be God.
 
-The word "power" is exousia (G1849), authority. The same verse says where the authority came from: "This commandment have I received of my Father." The Son held it because the Father gave it.
+The word "power" is exousia, authority. The same verse says where the authority came from: "This commandment have I received of my Father." The Son held it because the Father gave it.
 
 Believers are given the same authority. "But as many as received him, to them gave he power to become the sons of God" (John 1:12). It is the same word, exousia, and the next verse says those sons are born "of God" (John 1:13). No one reads that and says the believer raised himself to new life.
 

@@ -11,9 +11,9 @@ date: 2026-10-16
 
 Paul warned that the man of sin would sit "in the temple of God," showing himself that he is God (2 Thessalonians 2:4). Modern prophecy teaching reads this as a rebuilt third temple in Jerusalem. The Greek word Paul chose overturns that reading.
 
-The KJV renders two different Greek words as "temple." Hieron (G2411) names the whole sacred precinct: courts, porches, and buildings. It appears in the Gospels and Acts, while the stone temple still stood, and only once in the epistles, where Paul speaks of those who served at the altar (1 Corinthians 9:13). It never appears in Revelation.
+The KJV renders two different Greek words as "temple." Hieron names the whole sacred precinct: courts, porches, and buildings. It appears in the Gospels and Acts, while the stone temple still stood, and only once in the epistles, where Paul speaks of those who served at the altar (1 Corinthians 9:13). It never appears in Revelation.
 
-Naos (G3485) comes from naio, "to dwell." It names the dwelling place itself, the sanctuary where the presence rests. In the Gospels it still marks the physical sanctuary, as when Zacharias went in to burn incense (Luke 1:9). Then Yahushua took the dwelling-word for His own body: "destroy this temple" (John 2:19-21). From that point the word moves inward.
+Naos comes from naio, "to dwell." It names the dwelling place itself, the sanctuary where the presence rests. In the Gospels it still marks the physical sanctuary, as when Zacharias went in to burn incense (Luke 1:9). Then Yahushua took the dwelling-word for His own body: "destroy this temple" (John 2:19-21). From that point the word moves inward.
 
 Whenever Paul speaks of the temple of Elohim as a present reality, he uses naos, and he places it in people. Believers are the naos of Elohim (1 Corinthians 3:16). The body is the naos of the set-apart Spirit (1 Corinthians 6:19). "Ye are the temple of the living God" (2 Corinthians 6:16).
 
