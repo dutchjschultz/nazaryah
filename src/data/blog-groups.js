@@ -1,4 +1,5 @@
-// blog-groups 1021 V64.js
+// blog-groups 1021 V65.js
+// V65: the-law-that-carries-his-name joins the-law-and-the-feasts (category The Law & The Feasts). Map total 161 -> 162.
 // V64: the-carnal-mind-vs-the-spiritual-mind joins the-law-and-the-feasts (category The Law & The Feasts), beside cease-or-fulfill. Map total 160 -> 161.
 // V63: sign-seal-and-mark joins scripture-unfiltered (category Scripture Unfiltered). Map total 159 → 160.
 // V62: tried-in-the-reins joins the-root (category The Root). Map total 158 → 159.
@@ -331,6 +332,7 @@ export const POST_GROUP = {
   'the-law-of-jealousy': 'the-law-and-the-feasts',
   'cease-or-fulfill': 'the-law-and-the-feasts',
   'the-carnal-mind-vs-the-spiritual-mind': 'the-law-and-the-feasts',
+  'the-law-that-carries-his-name': 'the-law-and-the-feasts',
 
   // ── The Parables (12) — the parables in the text ──
   // Kingdom of Lights leads the group. Dark Sayings of Old is the section's
