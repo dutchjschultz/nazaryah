@@ -1,4 +1,5 @@
-// riddles 1021 V8.js
+// riddles 1021 V9.js
+// V9: Riddle 21's second chain step reworded (Dutch 1021).
 // V8 (Sign, Seal, and Mark batch 1021 V2): Riddle 21, The Mark of the Beast — answer
 // from the batch; teaser, nudge (Daniel 7:25), chain and next link drafted by Etsy
 // and approved by Dutch 1021; next → the study Sign, Seal, and Mark. Its Why It
@@ -83,7 +84,7 @@ export const riddles = [
     nudge: { ref: 'Daniel 7:25', text: "And he shall speak great words against the most High, and shall wear out the saints of the most High, and think to change times and laws: and they shall be given into his hand until a time and times and the dividing of time." },
     chain: [
       ["Yahuah's Law is worn on the hand and between the eyes.", 'Exodus 13:9'],
-      ['Lawlessness is already at work, and the lawless one is coming.', '2 Thessalonians 2:7-8'],
+      ["Lawlessness was already at work in Paul’s day, and the lawless one would be revealed.", '2 Thessalonians 2:7-8'],
       ["The beast's mark goes in the same two places.", 'Revelation 14:9'],
     ],
     verdict: "Rebellion against Yahuah's law, worn where His Law was meant to be.",
