@@ -1,4 +1,5 @@
-// blog-groups 1021 V67.js
+// blog-groups 1021 V68.js
+// V68: zionism-and-the-three-wars joins buried-in-plain-sight (category Buried in Plain Sight). Map total 166 -> 167.
 // V67: the Walking in the Vows trilogy — given-in-love, written-on-the-heart, examined-at-the-wedding — joins the-law-and-the-feasts (category The Law & The Feasts). Map total 163 -> 166.
 // V66: rock-stone-and-word joins the-way-in-and-the-walk (category The Way In and the Walk), beside same-gospel-same-blood. Map total 162 -> 163.
 // V65: the-law-that-carries-his-name joins the-law-and-the-feasts (category The Law & The Feasts). Map total 161 -> 162.
@@ -307,6 +308,7 @@ export const POST_GROUP = {
   'the-first-awakening-northampton': 'buried-in-plain-sight',
   'the-second-awakening-cane-ridge': 'buried-in-plain-sight',
   'the-third-awakening-azusa-street': 'buried-in-plain-sight',
+  'zionism-and-the-three-wars': 'buried-in-plain-sight',
 
   // ── The Law & The Feasts (22) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',
