@@ -23,11 +23,25 @@
       "deck": "What the Dollar Bill Actually Says"
     },
     {
+      "route": "/american-idolatry/dont-tread-on-me",
+      "section": "american-idolatry",
+      "date": "2026-10-21",
+      "title": "Don’t Tread on Me",
+      "deck": "The Serpent America Hung on Its Porch"
+    },
+    {
       "route": "/american-idolatry/faith-of-the-founders",
       "section": "american-idolatry",
       "date": "2026-04-21",
       "title": "The Faith of the Founders",
       "deck": "What They Actually Believed"
+    },
+    {
+      "route": "/american-idolatry/golden-age",
+      "section": "american-idolatry",
+      "date": "2026-10-21",
+      "title": "The Golden Age",
+      "deck": "The Promise, the Crusader, and the Plan"
     },
     {
       "route": "/american-idolatry/july-4",
