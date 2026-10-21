@@ -1,5 +1,7 @@
 ---
-// StudiesMap.astro · 1021 V2
+// StudiesMap.astro · 1021 V3
+// V3: the Recently Added strip shows wherever the All Studies box does — /blog and
+// /blog/topics (the menu's Berean Studies › Studies) — not on /blog alone.
 // V2 (Recently Added Strip brief 1021 V2): on /blog ('all') the Recently Added
 // strip (RecentStudies.astro) sits between All Studies and the topic cards.
 // The Berean Studies landing, lifted out of src/pages/blog/index.astro so three
@@ -46,7 +48,7 @@ const trilogyCount = READING_SETS.length;
           <span class="blog-all-cta">Search &amp; browse &rarr;</span>
         </a>
 
-        {show === 'all' && <RecentStudies />}
+        <RecentStudies />
 
         <p class="blog-map-eyebrow">Studies · browse by topic</p>
         <div class="blog-group-grid">
