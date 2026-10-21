@@ -1,4 +1,5 @@
-// blog-groups 1021 V68.js
+// blog-groups 1021 V69.js
+// V69: serpent-underfoot joins scripture-unfiltered (category Scripture Unfiltered). Map total 167 -> 168.
 // V68: zionism-and-the-three-wars joins buried-in-plain-sight (category Buried in Plain Sight). Map total 166 -> 167.
 // V67: the Walking in the Vows trilogy — given-in-love, written-on-the-heart, examined-at-the-wedding — joins the-law-and-the-feasts (category The Law & The Feasts). Map total 163 -> 166.
 // V66: rock-stone-and-word joins the-way-in-and-the-walk (category The Way In and the Walk), beside same-gospel-same-blood. Map total 162 -> 163.
@@ -412,6 +413,7 @@ export const POST_GROUP = {
   'the-finger-of-yahuah': 'scripture-unfiltered',
   'cedars-and-the-branch': 'scripture-unfiltered',
   'sign-seal-and-mark': 'scripture-unfiltered',
+  'serpent-underfoot': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
