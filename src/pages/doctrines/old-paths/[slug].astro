@@ -1,5 +1,7 @@
 ---
-// src/pages/doctrines/old-paths/[slug].astro · 0805 V2
+// src/pages/doctrines/old-paths/[slug].astro · 1022 V3
+// V3: a doctrine pair with `layout: "v2"` and doctrine-v2.js content renders the
+// trial layout (DoctrinePageV2); every other page renders as before.
 // V2: this route now serves BOTH tiers of The Old Paths — the ten doctrine info
 // pages (DoctrineInfo, with the Departure counterpart link) AND the six foundation
 // info pages (FoundationInfo, four labeled sections, no tagline). The kind is
@@ -8,6 +10,8 @@
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DoctrineInfo from '../../../components/DoctrineInfo.astro';
 import FoundationInfo from '../../../components/FoundationInfo.astro';
+import DoctrinePageV2 from '../../../components/DoctrinePageV2.astro';
+import { v2For } from '../../../data/doctrine-v2.js';
 import { doctrines } from '../../../data/doctrines.data.js';
 import { foundations } from '../../../data/foundations.data.js';
 
@@ -19,6 +23,7 @@ export function getStaticPaths() {
 }
 
 const { kind, pair, foundation } = Astro.props;
+const v2 = kind === 'doctrine' ? v2For(pair) : null;
 const title = kind === 'doctrine'
   ? `${pair.oldPaths.title} — The Old Paths | Nazaryah`
   : `${foundation.title} — The Old Paths | Nazaryah`;
@@ -27,6 +32,6 @@ const description = kind === 'doctrine' ? pair.oldPaths.deck : foundation.deck;
 
 <BaseLayout title={title} description={description}>
   {kind === 'doctrine'
-    ? <DoctrineInfo side="old-paths" pair={pair} />
+    ? (v2 ? <DoctrinePageV2 side="old-paths" pair={pair} /> : <DoctrineInfo side="old-paths" pair={pair} />)
     : <FoundationInfo foundation={foundation} />}
 </BaseLayout>

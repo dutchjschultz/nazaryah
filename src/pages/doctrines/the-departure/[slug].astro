@@ -1,9 +1,13 @@
 ---
-// src/pages/doctrines/the-departure/[slug].astro · 0804 V1
+// src/pages/doctrines/the-departure/[slug].astro · 1022 V2
+// V2: a pair with `layout: "v2"` and doctrine-v2.js content renders the trial
+// layout (DoctrinePageV2); every other pair renders DoctrineInfo as before.
 // One info page per Departure doctrine (carried-over hover body). The Old Paths
 // counterpart link is derived from the same pair object in DoctrineInfo.
 import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DoctrineInfo from '../../../components/DoctrineInfo.astro';
+import DoctrinePageV2 from '../../../components/DoctrinePageV2.astro';
+import { v2For } from '../../../data/doctrine-v2.js';
 import { doctrines } from '../../../data/doctrines.data.js';
 
 export function getStaticPaths() {
@@ -11,8 +15,10 @@ export function getStaticPaths() {
 }
 const { pair } = Astro.props;
 const e = pair.departure;
+const v2 = v2For(pair);
+const deck = v2 ? v2.departure.subtitle : e.deck;
 ---
 
-<BaseLayout title={`${e.title} — The Departure | Nazaryah`} description={e.deck}>
-  <DoctrineInfo side="departure" pair={pair} />
+<BaseLayout title={`${e.title} — The Departure | Nazaryah`} description={deck}>
+  {v2 ? <DoctrinePageV2 side="departure" pair={pair} /> : <DoctrineInfo side="departure" pair={pair} />}
 </BaseLayout>

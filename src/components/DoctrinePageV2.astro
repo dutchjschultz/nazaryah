@@ -1,0 +1,307 @@
+---
+// src/components/DoctrinePageV2.astro · 1022 V1
+// V1 (Hell Doctrine V2 brief 1022 V1): the trial doctrine layout, beside
+// DoctrineInfo (the classic layout), never replacing it. A pair reaches it only
+// when doctrines.data.js sets `layout: "v2"` AND src/data/doctrine-v2.js holds
+// its content; the routes check both. One template for both halves, `side`
+// picks which:
+//   old-paths  numbered sections, the keepers list, the closing paragraph, the
+//              Torah / Second Witness lines, and the red turn box that hands the
+//              reader to the Departure (it replaces "Where the church departed").
+//   departure  the StandingStone banner (as on every Departure page), numbered
+//              sections, six word cards all open (two across, one on phones),
+//              the green Gehenna box, Read It Again, the timeline, What It Built,
+//              the green-edged Old Path close, further reading and the foot.
+// The riddle line keeps its place at the foot of both pages.
+import StandingStone from './StandingStone.astro';
+import { riddlesForDoctrine } from '../data/riddles.js';
+import { v2For } from '../data/doctrine-v2.js';
+interface Props { side: 'old-paths' | 'departure'; pair: any; }
+const { side, pair } = Astro.props;
+const isOld = side === 'old-paths';
+const v2 = v2For(pair);
+const op = v2.oldPaths;
+const dp = v2.departure;
+const riddle = riddlesForDoctrine(pair.n)[0];
+const oldHref = `/doctrines/old-paths/${pair.oldPaths.slug}`;
+const depHref = `/doctrines/the-departure/${pair.departure.slug}`;
+const greekHref = `/doctrines/borrowed-words#d-${pair.departure.slug}`;
+const resolve = (f: any) =>
+  f.to === 'oldPath' ? oldHref : f.to === 'greek' ? greekHref : f.to === 'riddle' ? riddle?.href : f.href;
+---
+
+<div class="d2-page">
+<article class="d2">
+  {isOld ? (
+    <>
+      <p class="d2-kicker">{op.kicker}</p>
+      <h1 class="d2-title">{op.title}</h1>
+      <p class="d2-sub">{op.subtitle}</p>
+
+      {op.sections.map((s: any, i: number) => (
+        <section class="d2-sec">
+          <h2 class="d2-h2"><span class="d2-step">{i + 1}</span>{s.title}</h2>
+          {s.paras?.map((p: string) => <p set:html={p} />)}
+          {s.keepers && (
+            <ul class="d2-keepers">
+              {s.keepers.map(([who, what]: [string, string]) => (
+                <li><b>{who}</b> — <span set:html={what} /></li>
+              ))}
+            </ul>
+          )}
+        </section>
+      ))}
+
+      <p class="d2-closing" set:html={op.closing} />
+
+      <div class="d2-verses">
+        <div><span class="d2-vlabel">Torah</span>{op.torah.join('  ·  ')}</div>
+        <div><span class="d2-vlabel">Second Witness</span>{op.witness.join('  ·  ')}</div>
+      </div>
+
+      <div class="d2-turn">
+        <p>{op.turn.text}</p>
+        <a href={depHref}>{op.turn.label} <span aria-hidden="true">&rarr;</span></a>
+      </div>
+
+      <p class="d2-back"><a href="/doctrines/old-paths">&larr; All The Old Paths</a></p>
+      {riddle && <p class="d2-riddle"><a href={riddle.href}>Test it yourself <span aria-hidden="true">&rarr;</span> Try the riddle</a></p>}
+    </>
+  ) : (
+    <>
+      <StandingStone />
+      <p class="d2-kicker">{dp.kicker}</p>
+      <h1 class="d2-title">{dp.title}</h1>
+      <p class="d2-sub">{dp.subtitle}</p>
+      <p class="d2-attrib">{dp.attribution}</p>
+
+      <section class="d2-sec">
+        <h2 class="d2-h2"><span class="d2-step">1</span>What You Were Taught</h2>
+        {dp.taught.map((p: string) => <p set:html={p} />)}
+      </section>
+
+      <section class="d2-sec">
+        <h2 class="d2-h2"><span class="d2-step">2</span>Where It Came From: The Greek Behind It</h2>
+        <p class="d2-lead">{dp.greekLead}</p>
+        <div class="d2-words">
+          {dp.words.map((w: any) => (
+            <div class="d2-w">
+              <h3 class="d2-wword">{w.word}</h3>
+              <p class="d2-says">Your Bible says: <span set:html={w.says} /></p>
+              <dl>
+                <dt class="d2-greek">To the Greeks</dt>
+                <dd set:html={w.greeks} />
+                <dt>The Hebrew Beneath</dt>
+                <dd set:html={w.hebrew} />
+                <dt>The Proof</dt>
+                <dd set:html={w.proof} />
+              </dl>
+              <a class="d2-more" href={`/doctrines/borrowed-words#${w.entry}`}>Full entry on Greek Influence <span aria-hidden="true">&rarr;</span></a>
+            </div>
+          ))}
+        </div>
+
+        <div class="d2-gehenna">
+          <p class="d2-glabel">{dp.gehenna.label}</p>
+          <h3>{dp.gehenna.title}</h3>
+          <p set:html={dp.gehenna.text} />
+        </div>
+
+        <div class="d2-again">
+          <p class="d2-alabel">Read It Again</p>
+          <p set:html={dp.again} />
+        </div>
+      </section>
+
+      <section class="d2-sec">
+        <h2 class="d2-h2"><span class="d2-step">3</span>How It Grew</h2>
+        <ul class="d2-timeline">
+          {dp.timeline.map(([when, what]: [string, string]) => (
+            <li><b>{when}</b> <span set:html={what} /></li>
+          ))}
+        </ul>
+      </section>
+
+      <section class="d2-sec">
+        <h2 class="d2-h2"><span class="d2-step">4</span>What It Built</h2>
+        <ul class="d2-built">
+          {dp.built.map((b: string) => <li set:html={b} />)}
+        </ul>
+      </section>
+
+      <section class="d2-sec">
+        <h2 class="d2-h2"><span class="d2-step">5</span>The Old Path</h2>
+        <div class="d2-old"><p set:html={dp.oldPath} /></div>
+      </section>
+
+      <p class="d2-further">
+        {dp.further.filter((f: any) => resolve(f)).map((f: any) => <a href={resolve(f)}>{f.label}</a>)}
+      </p>
+      <p class="d2-foot">
+        <a href={oldHref}>&larr; {pair.oldPaths.title}</a>
+        <a href="/doctrines/the-departure">All The Departure</a>
+        {riddle && <a href={riddle.href}>Test it yourself <span aria-hidden="true">&rarr;</span> Try the riddle</a>}
+      </p>
+    </>
+  )}
+</article>
+</div>
+
+<style>
+  /* The doctrine pages' fixed dark palette (DoctrineInfo): #0e0d0b ground,
+     #BA7517 gold, #d8b06a soft gold, #cfc7b6 body, #e8e2d4 titles, #161512
+     panels. Added for the trial: a warm red (the turn box, TO THE GREEKS) and a
+     muted green (Gehenna, the Old Path close). set:html content (em, b) is not
+     scoped, so it is reached through :global() under a scoped wrapper. */
+  .d2-page { background: #0e0d0b; min-height: 100vh; }
+  .d2 {
+    max-width: 50rem; margin: 0 auto;
+    padding: clamp(3rem, 6vw, 4.5rem) 1rem 4rem;
+    font-family: var(--font-body); font-size: 1.12rem; line-height: 1.75; color: #cfc7b6;
+  }
+  .d2 :global(em) { font-family: var(--font-body); font-style: italic; }
+  .d2 p { margin: 0 0 1.1rem; }
+  .d2-kicker {
+    font-family: var(--font-display); font-size: 11px; font-weight: 600;
+    letter-spacing: 0.28em; text-transform: uppercase; color: #BA7517; margin: 0 0 1rem !important;
+  }
+  .d2-title {
+    font-family: var(--font-display); font-size: clamp(1.9rem, 1.4rem + 2.4vw, 2.8rem);
+    font-weight: 700; line-height: 1.12; color: #e8e2d4; margin: 0 0 0.7rem; letter-spacing: 0.01em;
+  }
+  .d2-sub {
+    font-family: var(--font-body); font-style: italic;
+    font-size: clamp(1.1rem, 1rem + 0.5vw, 1.35rem); line-height: 1.45; color: #a89f8c;
+  }
+  .d2-attrib { font-style: italic; color: #d8b06a; margin-top: 1.2rem !important; }
+
+  .d2-sec { margin-top: 2.4rem; }
+  .d2-h2 {
+    display: flex; align-items: center; gap: 0.7rem;
+    font-family: var(--font-display); font-size: clamp(1.15rem, 1rem + 0.6vw, 1.4rem); font-weight: 700;
+    letter-spacing: 0.04em; color: #d8b06a; line-height: 1.3; margin: 0 0 1rem;
+  }
+  .d2-step {
+    flex: none; width: 1.8rem; height: 1.8rem; border-radius: 50%;
+    border: 1px solid rgba(186,117,23,0.55); color: #BA7517;
+    display: inline-flex; align-items: center; justify-content: center;
+    font-family: var(--font-body); font-size: 0.95rem; font-weight: 600; letter-spacing: 0;
+  }
+
+  .d2-keepers { list-style: none; margin: 0; padding: 0; }
+  .d2-keepers li { padding: 0.55rem 0; border-bottom: 1px solid rgba(255,255,255,0.07); }
+  .d2-keepers b { color: #d8b06a; font-weight: 700; }
+  .d2-closing { margin-top: 1.6rem !important; }
+
+  .d2-verses {
+    margin: 1.8rem 0 0; padding: 1.1rem 1.4rem;
+    background: #161512; border: 0.5px solid rgba(255,255,255,0.07); border-radius: 10px;
+    display: flex; flex-direction: column; gap: 0.45rem; font-size: 1.02rem;
+  }
+  .d2-vlabel {
+    display: inline-block; min-width: 9rem; margin-right: 0.6rem;
+    font-family: var(--font-display); font-size: 10px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase; color: #BA7517;
+  }
+
+  .d2-turn {
+    margin-top: 2.2rem; padding: 1.2rem 1.4rem;
+    border: 1px solid #a5533f; border-left: 4px solid #a5533f; border-radius: 8px;
+    background: rgba(165,83,63,0.08);
+  }
+  .d2-turn p { font-style: italic; color: #e8e2d4; margin-bottom: 0.6rem; }
+  .d2-turn a {
+    font-family: var(--font-display); font-size: 0.8rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #e0a08c; text-decoration: none;
+  }
+  .d2-turn a:hover { color: #f0bca9; text-decoration: underline; text-underline-offset: 4px; }
+
+  .d2-lead { font-style: italic; color: #a89f8c; }
+  .d2-words { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem; }
+  .d2-w {
+    background: #161512; border: 0.5px solid rgba(255,255,255,0.08); border-top: 2px solid #BA7517;
+    border-radius: 8px; padding: 1.1rem 1.2rem; font-size: 1.02rem; line-height: 1.55;
+    display: flex; flex-direction: column;
+  }
+  .d2-wword { font-family: var(--font-body); font-style: italic; font-weight: 500; font-size: 1.6rem; line-height: 1.1; color: #e8e2d4; margin: 0; }
+  .d2-says { font-size: 0.92rem; color: #a89f8c; margin: 0.3rem 0 0.6rem !important; }
+  .d2-says :global(b) { color: #e8e2d4; font-weight: 600; }
+  .d2-w dl { margin: 0; flex: 1; }
+  .d2-w dt {
+    font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #BA7517; margin-top: 0.75rem;
+  }
+  .d2-w dt.d2-greek { color: #e0a08c; }
+  .d2-w dd { margin: 0.15rem 0 0; }
+  .d2-more {
+    display: block; margin-top: 0.9rem; font-family: var(--font-display); font-size: 0.68rem;
+    letter-spacing: 0.14em; text-transform: uppercase; color: #d8b06a; text-decoration: none;
+  }
+  .d2-more:hover { color: #e8c98a; text-decoration: underline; text-underline-offset: 4px; }
+
+  .d2-gehenna {
+    margin-top: 1rem; padding: 1.1rem 1.2rem; background: #161512;
+    border: 0.5px solid rgba(255,255,255,0.08); border-top: 2px solid #6f8f6a; border-radius: 8px;
+  }
+  .d2-glabel {
+    font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
+    text-transform: uppercase; color: #9cbf96; margin: 0 0 0.3rem !important;
+  }
+  .d2-gehenna h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: #e8e2d4; margin: 0 0 0.6rem; letter-spacing: 0.02em; }
+  .d2-gehenna p:last-child { margin: 0; }
+
+  .d2-again {
+    margin-top: 1.2rem; padding: 1rem 1.3rem; border-left: 3px solid #BA7517;
+    background: rgba(186,117,23,0.06); border-radius: 0 8px 8px 0;
+  }
+  .d2-again p { font-style: italic; margin: 0; }
+  .d2-again .d2-alabel {
+    font-style: normal; font-family: var(--font-display); font-size: 10px; font-weight: 600;
+    letter-spacing: 0.22em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.3rem;
+  }
+
+  .d2-timeline { list-style: none; margin: 0; padding: 0 0 0 1.2rem; border-left: 1px solid rgba(186,117,23,0.45); }
+  .d2-timeline li { position: relative; padding: 0.4rem 0; }
+  .d2-timeline li::before {
+    content: ""; position: absolute; left: calc(-1.2rem - 5px); top: 1rem;
+    width: 9px; height: 9px; border-radius: 50%; background: #BA7517;
+  }
+  .d2-timeline b { color: #d8b06a; font-weight: 700; margin-right: 0.3rem; }
+
+  .d2-built { list-style: disc; margin: 0; padding-left: 1.3rem; }
+  .d2-built li { margin: 0 0 0.45rem; }
+  .d2-built li::marker { color: #BA7517; }
+
+  .d2-old {
+    padding: 1.1rem 1.3rem; border: 1px solid #4d6a49; border-radius: 8px;
+    background: rgba(111,143,106,0.08);
+  }
+  .d2-old p { margin: 0; }
+
+  .d2-further { margin-top: 2rem !important; display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; font-size: 1rem; }
+  .d2-further a, .d2-foot a { color: #d8b06a; text-decoration: none; }
+  .d2-further a:hover, .d2-foot a:hover { color: #e8c98a; text-decoration: underline; text-underline-offset: 3px; }
+  .d2-foot {
+    margin-top: 1.4rem !important; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08);
+    display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem;
+    font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
+  }
+
+  .d2-back { margin: 1.6rem 0 0; }
+  .d2-back a {
+    font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #8a8172; text-decoration: none;
+  }
+  .d2-back a:hover { color: #BA7517; }
+  .d2-riddle { margin: 2.4rem 0 0; text-align: center; }
+  .d2-riddle a {
+    font-family: var(--font-display); font-variant: all-small-caps; font-size: 1rem;
+    letter-spacing: 0.12em; color: #BA7517; text-decoration: none;
+  }
+  .d2-riddle a:hover { color: #e0a54a; text-decoration: underline; text-underline-offset: 4px; }
+
+  @media (max-width: 700px) {
+    .d2-words { grid-template-columns: 1fr; }
+    .d2-vlabel { display: block; min-width: 0; }
+  }
+</style>

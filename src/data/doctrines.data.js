@@ -1,4 +1,11 @@
-// doctrines.data 1021 V10.js
+// doctrines.data 1022 V11.js
+// V11 (Hell Doctrine V2 brief 1022 V1): every pair carries `layout` — "classic"
+// (DoctrineInfo, the layout every doctrine has had) or "v2" (DoctrinePageV2, the
+// trial layout: numbered sections, open word cards, the turn box). Hell (04) is
+// the trial and the only "v2"; its v2 content lives in src/data/doctrine-v2.js,
+// and its classic body and Departure tabs are untouched, so switching it back is
+// this one field. A pair set to "v2" with no doctrine-v2.js entry falls back to
+// classic. The lists, cards and riddle grid do not read this field.
 // V10 (Communion package 1021 V2): pair 20 — Keep the Feast / Communion (tag
 // Communion). The Departure body is the riddle's "The Claim" paragraph; the package
 // gave the Departure page's panel but no body of its own.
@@ -77,6 +84,7 @@
 export const doctrines = [
   {
     n: "01",
+    layout: "classic",
     oldPaths: {
       slug: "the-name-that-endures",
       title: "The Name That Endures",
@@ -97,6 +105,7 @@ export const doctrines = [
 
   {
     n: "02",
+    layout: "classic",
     oldPaths: {
       slug: "walk-after-the-door",
       title: "The Walk After the Door",
@@ -117,6 +126,7 @@ export const doctrines = [
 
   {
     n: "03",
+    layout: "classic",
     oldPaths: {
       slug: "a-pure-lip",
       title: "A Pure Lip",
@@ -137,6 +147,7 @@ export const doctrines = [
 
   {
     n: "04",
+    layout: "v2",
     oldPaths: {
       slug: "wicked-consumed",
       title: "The Wicked Consumed",
@@ -157,6 +168,7 @@ export const doctrines = [
 
   {
     n: "05",
+    layout: "classic",
     oldPaths: {
       slug: "became-a-living-soul",
       title: "He Became a Living Soul",
@@ -179,6 +191,7 @@ export const doctrines = [
 
   {
     n: "06",
+    layout: "classic",
     group: "revelation",
     oldPaths: {
       slug: "the-book-quotes",
@@ -200,6 +213,7 @@ export const doctrines = [
 
   {
     n: "07",
+    layout: "classic",
     group: "revelation",
     oldPaths: {
       slug: "gathered-at-the-trumpet",
@@ -221,6 +235,7 @@ export const doctrines = [
 
   {
     n: "08",
+    layout: "classic",
     group: "revelation",
     oldPaths: {
       slug: "the-strong-man-bound",
@@ -242,6 +257,7 @@ export const doctrines = [
 
   {
     n: "09",
+    layout: "classic",
     oldPaths: {
       slug: "inheritance-is-the-earth",
       title: "The Inheritance Is the Earth",
@@ -262,6 +278,7 @@ export const doctrines = [
 
   {
     n: "10",
+    layout: "classic",
     oldPaths: {
       slug: "hear-o-israel",
       title: "Hear, O Israel",
@@ -282,6 +299,7 @@ export const doctrines = [
 
   {
     n: "11",
+    layout: "classic",
     oldPaths: {
       slug: "ye-shall-be-holy",
       title: "Ye Shall Be Holy",
@@ -302,6 +320,7 @@ export const doctrines = [
 
   {
     n: "12",
+    layout: "classic",
     oldPaths: {
       slug: "signs-and-seasons",
       title: "Signs and Seasons",
@@ -322,6 +341,7 @@ export const doctrines = [
 
   {
     n: "13",
+    layout: "classic",
     oldPaths: {
       slug: "wine-and-the-bread",
       title: "The Wine and the Bread",
@@ -342,6 +362,7 @@ export const doctrines = [
 
   {
     n: "14",
+    layout: "classic",
     oldPaths: {
       slug: "one-olive-tree",
       title: "One Olive Tree",
@@ -362,6 +383,7 @@ export const doctrines = [
 
   {
     n: "15",
+    layout: "classic",
     oldPaths: {
       slug: "it-shall-be-our-righteousness",
       title: "It Shall Be Our Righteousness",
@@ -381,6 +403,7 @@ export const doctrines = [
   },
   {
     n: "16",
+    layout: "classic",
     oldPaths: {
       slug: "a-proverb-against-babylon",
       title: "A Proverb Against the King of Babylon",
@@ -405,6 +428,7 @@ The true morning star is not a fallen angel. It is the Son: “I am the root and
   },
   {
     n: "17",
+    layout: "classic",
     oldPaths: {
       slug: "choose-life",
       title: "Choose Life",
@@ -431,6 +455,7 @@ Yahuah knows the end from the beginning (Isaiah 46:10). Knowing is not forcing. 
   },
   {
     n: "18",
+    layout: "classic",
     oldPaths: {
       slug: "no-manner-of-similitude",
       title: "No Manner of Similitude",
@@ -457,6 +482,7 @@ Yahuah did give Israel something to wear — and it was not an image. “Make th
   },
   {
     n: "19",
+    layout: "classic",
     oldPaths: {
       slug: "a-kingdom-of-priests",
       title: "A Kingdom of Priests",
@@ -482,6 +508,7 @@ The assembly has elders and overseers who serve, teach, and keep watch — but t
 
   {
     n: "20",
+    layout: "classic",
     oldPaths: {
       slug: "keep-the-feast",
       title: "Keep the Feast",
