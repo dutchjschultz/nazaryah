@@ -1,4 +1,7 @@
-// doctrine-v2 1022 V2.js
+// doctrine-v2 1022 V3.js
+// V3 (brief 1022 V4): Further Reading is gone (the Go Deeper strip replaces it,
+// filled from study tags); the Hadēs tab gains `study`, the link to The Rich Man
+// and Lazarus under What it built.
 // V2 (Hell Doctrine V2 brief 1022 V2): the Departure's open word cards, Gehenna
 // box, page timeline, What It Built and Read It Again are gone. Where It Came From
 // is two paragraphs (`roots`), then the six words return as tabs (`tabs`, in
@@ -15,7 +18,7 @@
 //   oldPaths   { kicker, title, subtitle, sections[{ title, paras?, keepers? }],
 //                closing, torah[], witness[], turn }
 //   departure  { kicker, title, subtitle, attribution, taught[], roots[],
-//                tabs { tabs[] }, oldPath, further[] }
+//                tabs { tabs[] }, oldPath }
 //   a tab's id is that word's anchor on the Greek Influence page
 //   (/doctrines/borrowed-words#<id>); the entry itself is not edited here.
 
@@ -101,6 +104,7 @@ export const doctrineV2 = {
               ["1901", `The American Standard Version leaves the words untranslated, "Sheol" and "Hades," so readers can see they are not "hell."`],
               ["Today", `Funeral sermons place the lost in a burning Hades the moment they die.`],
             ],
+            study: ["Read the study: The Rich Man and Lazarus", "/blog/the-rich-man-and-lazarus"],
             built: [
               `A fire already burning, before any judgment has been held.`,
               `A judgment day with nothing left to decide, though Yahushua said the dead "shall come forth" from the graves to be judged (John 5:28-29).`,
@@ -219,14 +223,6 @@ export const doctrineV2 = {
         ],
       },
       oldPath: `Scripture never needed Hades. The wages of sin is death, and death is the end of life, not life in another place. Yahuah's fire consumes, the way it consumed Sodom, Nadab and Abihu, and the men who stood with Korah. Life without end is a gift, given to those who come through Messiah. And at the very end, John saw death and hell themselves cast into the lake of fire, "the second death" (Revelation 20:14). After that, "there shall be no more death" (Revelation 21:4).`,
-      // Further reading. "oldPath", "riddle" and "greek" resolve from the pair;
-      // anything else is a plain href.
-      further: [
-        { label: "The Old Path: The Wicked Consumed", to: "oldPath" },
-        { label: "Greek Influence: Hell", to: "greek" },
-        { label: "Riddle: Eternal Fire", to: "riddle" },
-        { label: "The Departure: Immortal Soul", href: "/doctrines/the-departure/immortal-soul" },
-      ],
     },
   },
 };

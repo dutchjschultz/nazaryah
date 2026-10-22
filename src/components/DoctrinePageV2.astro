@@ -1,5 +1,10 @@
 ---
-// src/components/DoctrinePageV2.astro · 1022 V2
+// src/components/DoctrinePageV2.astro · 1022 V3
+// V3 (Hell Doctrine V2 brief 1022 V4): the Go Deeper strip (DoctrineStudies,
+// filled from each study's `doctrines` tag) on both pages: Old Path after the
+// Torah / Second Witness lines, before the turn box; Departure after The Old
+// Path, in place of the hand-typed Further Reading. Greek Influence moves to
+// the Departure foot.
 // V2 (Hell Doctrine V2 brief 1022 V2): the Departure's open word cards are gone.
 // Where It Came From is two paragraphs, then the words as tabs through the
 // existing DoctrineTabs (bare: no opening or close of its own; warmGreek: the
@@ -15,10 +20,11 @@
 //              reader to the Departure (it replaces "Where the church departed").
 //   departure  the StandingStone banner (as on every Departure page), What You
 //              Were Taught, Where It Came From and the word tabs, the green-edged
-//              Old Path close, further reading and the foot.
+//              Old Path close, the Go Deeper strip and the foot.
 // The riddle line keeps its place at the foot of both pages.
 import StandingStone from './StandingStone.astro';
 import DoctrineTabs from './DoctrineTabs.astro';
+import DoctrineStudies from './DoctrineStudies.astro';
 import { riddlesForDoctrine } from '../data/riddles.js';
 import { v2For } from '../data/doctrine-v2.js';
 interface Props { side: 'old-paths' | 'departure'; pair: any; }
@@ -31,8 +37,6 @@ const riddle = riddlesForDoctrine(pair.n)[0];
 const oldHref = `/doctrines/old-paths/${pair.oldPaths.slug}`;
 const depHref = `/doctrines/the-departure/${pair.departure.slug}`;
 const greekHref = `/doctrines/borrowed-words#d-${pair.departure.slug}`;
-const resolve = (f: any) =>
-  f.to === 'oldPath' ? oldHref : f.to === 'greek' ? greekHref : f.to === 'riddle' ? riddle?.href : f.href;
 ---
 
 <div class="d2-page">
@@ -63,6 +67,8 @@ const resolve = (f: any) =>
         <div><span class="d2-vlabel">Torah</span>{op.torah.join('  ·  ')}</div>
         <div><span class="d2-vlabel">Second Witness</span>{op.witness.join('  ·  ')}</div>
       </div>
+
+      <DoctrineStudies slug={pair.departure.slug} />
 
       <div class="d2-turn">
         <p>{op.turn.text}</p>
@@ -96,11 +102,11 @@ const resolve = (f: any) =>
         <div class="d2-old"><p set:html={dp.oldPath} /></div>
       </section>
 
-      <p class="d2-further">
-        {dp.further.filter((f: any) => resolve(f)).map((f: any) => <a href={resolve(f)}>{f.label}</a>)}
-      </p>
+      <DoctrineStudies slug={pair.departure.slug} />
+
       <p class="d2-foot">
         <a href={oldHref}>&larr; {pair.oldPaths.title}</a>
+        <a href={greekHref}>Greek Influence: {pair.departure.title}</a>
         <a href="/doctrines/the-departure">All The Departure</a>
         {riddle && <a href={riddle.href}>Test it yourself <span aria-hidden="true">&rarr;</span> Try the riddle</a>}
       </p>
@@ -184,9 +190,8 @@ const resolve = (f: any) =>
   }
   .d2-old p { margin: 0; }
 
-  .d2-further { margin-top: 2rem !important; display: flex; flex-wrap: wrap; gap: 0.4rem 1.4rem; font-size: 1rem; }
-  .d2-further a, .d2-foot a { color: #d8b06a; text-decoration: none; }
-  .d2-further a:hover, .d2-foot a:hover { color: #e8c98a; text-decoration: underline; text-underline-offset: 3px; }
+  .d2-foot a { color: #d8b06a; text-decoration: none; }
+  .d2-foot a:hover { color: #e8c98a; text-decoration: underline; text-underline-offset: 3px; }
   .d2-foot {
     margin-top: 1.4rem !important; padding-top: 1rem; border-top: 1px solid rgba(255,255,255,0.08);
     display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem;

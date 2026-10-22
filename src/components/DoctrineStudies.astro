@@ -1,0 +1,59 @@
+---
+// src/components/DoctrineStudies.astro · 1022 V1
+// V1 (Hell Doctrine V2 brief 1022 V4): the Go Deeper strip. Every published
+// study whose frontmatter `doctrines` list holds this doctrine's Departure slug,
+// newest first, up to six. Both of a doctrine's pages (Old Path and Departure)
+// render it from the same slug, so one tag puts a study on both and removing
+// the tag takes it off both. No tagged study, no strip.
+// One quiet band: gold hairlines above and below, a small label, three across
+// (one on phones); each item is the title in italic, the deck, the category in
+// small caps. No fill, no item borders. Shown only by DoctrinePageV2, so a
+// doctrine gets a strip when it moves to the new layout.
+import { getCollection } from 'astro:content';
+import { postHref } from '../lib/post-href.js';
+interface Props { slug: string; }
+const { slug } = Astro.props;
+const studies = (await getCollection('posts', (p) => !p.data.draft && (p.data.doctrines ?? []).includes(slug)))
+  .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date))
+  .slice(0, 6);
+---
+{studies.length > 0 && (
+  <aside class="ds" aria-label="Go deeper: studies on this doctrine">
+    <p class="ds-label">Go Deeper · Studies on This Doctrine</p>
+    <div class="ds-row">
+      {studies.map((s) => (
+        <a class="ds-item" href={postHref(s)}>
+          <span class="ds-title">{s.data.title}</span>
+          {s.data.deck && <span class="ds-deck">{s.data.deck}</span>}
+          {s.data.category && <span class="ds-cat">{s.data.category}</span>}
+        </a>
+      ))}
+    </div>
+  </aside>
+)}
+
+<style>
+  .ds {
+    margin: 2rem 0 0; padding: 1rem 0 1.15rem;
+    border-top: 1px solid rgba(186,117,23,0.55); border-bottom: 1px solid rgba(186,117,23,0.55);
+  }
+  .ds-label {
+    font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.26em;
+    text-transform: uppercase; color: #BA7517; margin: 0 0 0.8rem !important;
+  }
+  .ds-row { display: grid; grid-template-columns: repeat(3, 1fr); gap: 0.9rem 1.4rem; }
+  .ds-item { display: block; text-decoration: none; color: #cfc7b6; }
+  .ds-title {
+    display: block; font-family: var(--font-body); font-style: italic; font-weight: 600;
+    font-size: 1.12rem; line-height: 1.25; color: #e8e2d4; transition: color 0.15s;
+  }
+  .ds-item:hover .ds-title { color: #d8b06a; }
+  .ds-deck { display: block; font-family: var(--font-body); font-size: 0.95rem; line-height: 1.35; color: #a89f8c; margin-top: 0.2rem; }
+  .ds-cat {
+    display: block; font-family: var(--font-display); font-variant: all-small-caps; font-size: 0.85rem;
+    letter-spacing: 0.14em; color: #8a7350; margin-top: 0.35rem;
+  }
+  @media (max-width: 700px) {
+    .ds-row { grid-template-columns: 1fr; }
+  }
+</style>

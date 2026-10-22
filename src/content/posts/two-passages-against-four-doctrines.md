@@ -7,6 +7,7 @@ category: "Scripture Unfiltered"
 date: 2026-10-14
 author: "Nazaryah"
 associations: ["delegated-authority", "trinity-examined"]
+doctrines: ["hell", "going-to-heaven", "the-rapture", "the-trinity"]
 companion: ["the-throne-and-the-right-hand", "the-reign-is-now"]
 featured: false
 draft: false

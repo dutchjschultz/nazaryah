@@ -1,4 +1,8 @@
-// content config 1017 V30
+// content config 1022 V31
+// V31 (Hell Doctrine V2 brief 1022 V4): posts gain optional `doctrines` — the
+// Departure slugs (src/data/doctrines.data.js) of the doctrines a study speaks
+// to. It fills the Go Deeper strip on that doctrine's Old Path and Departure
+// pages (DoctrineStudies.astro). An unknown slug fails the build and names it.
 // V30 (Dutch 1017): Pe'ah `group` becomes `topic` — REQUIRED, one of the twelve
 // PEAH_TOPICS (src/lib/peah.js). A blank or unknown topic fails the build and
 // names the entry.
@@ -116,6 +120,9 @@
 import { defineCollection, z } from 'astro:content';
 import { parseRef } from '../lib/scripture/parse-ref.js';
 import { PEAH_TOPICS } from '../lib/peah.js';
+import { doctrines as DOCTRINE_PAIRS } from '../data/doctrines.data.js';
+
+const DOCTRINE_SLUGS = DOCTRINE_PAIRS.map((p) => p.departure.slug);
 
 // Scripture index citation (see src/pages/scripture.astro). Tier is a property
 // of the CITATION, not the verse: the same passage can be a plain statement in
@@ -221,6 +228,14 @@ const postsCollection = defineCollection({
     // cluster by listing its key here; the Associated Studies panel and the
     // /associations coverage map pick it up automatically.
     associations: z.array(z.string()).default([]),
+    // DOCTRINE TAGS — the Departure slug of each doctrine this study speaks to
+    // ("hell", "immortal-soul", …). Every study carrying a doctrine's slug shows
+    // in the Go Deeper strip on that doctrine's two pages, newest first, up to
+    // six. Set once at upload, beside `associations`.
+    doctrines: z.array(z.string().refine(
+      (v) => DOCTRINE_SLUGS.includes(v),
+      (v) => ({ message: `unknown doctrine slug "${v}" — use a Departure slug: ${DOCTRINE_SLUGS.join(' | ')}` })
+    )).optional(),
     // One-line orientation shown under the title and in the associations panel.
     // Falls back to `subtitle` then `description` when omitted.
     deck: z.string().optional(),

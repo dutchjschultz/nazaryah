@@ -19,8 +19,9 @@
 //   data       a tabs object in this file's shape, used instead of the slug lookup
 //   bare       the tab row and panels only; the caller renders opening and close
 //   warmGreek  "What the Greek brought in" heading in the warm red
-// A tab may carry `more` (its Greek Influence link text) and a timeline row may
-// be [when, what] with no "who".
+// A tab may carry `more` (its Greek Influence link text) and `study` ([label,
+// href], a study link under What it built), and a timeline row may be
+// [when, what] with no "who".
 import { departureTabs } from "../data/departure-tabs.js";
 import { doctrines as bwDoctrines } from "../data/borrowed-words-page.js";
 const wordCount = new Set(bwDoctrines.flatMap((x) => x.words.map((w) => w.id))).size;
@@ -76,6 +77,7 @@ const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>
       </ol>
       <h3>What it built</h3>
       <ul class="dt-built">{t.built.map((b) => <li set:html={fmt(b)} />)}</ul>
+      {t.study && <p class="dt-study"><a href={t.study[1]}>{t.study[0]} →</a></p>}
       <p class="dt-more"><a href={`/doctrines/borrowed-words/#${t.id}`}>{t.more ?? `${t.greek} on Words Your Bible Borrowed`} →</a></p>
     </section>
   ))}
@@ -195,6 +197,7 @@ const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>
   .dt-built { list-style: disc; padding-left: 1.3rem; margin: 0 0 1.4rem; }
   .dt-built li { margin: 0 0 0.6rem; }
   .dt-built li::marker, .dt-closing li::marker { color: #BA7517; }
+  .dt-study { margin: -0.4rem 0 0 !important; }
   .dt-more { font-style: italic; margin-top: 1.4rem !important; }
 
   .dt-closing { margin-top: 2.8rem; padding-top: 0.2rem; }
