@@ -1,4 +1,5 @@
-// blog-groups 1022 V71.js
+// blog-groups 1022 V72.js
+// V72: ezekiel-the-glory-leaves-and-returns joins the-quick-scroll (category The Quick Scroll). Map total 175 -> 176.
 // V71: the-second-born and the-higher-priesthood join scripture-unfiltered (category Scripture Unfiltered). Map total 173 -> 175.
 // V70: The Trees of Judges investigation — the-trees-of-judges, the-vine, the-fig-tree, the-olive-tree, the-bramble — joins the-way-in-and-the-walk (category The Way In and the Walk). Map total 168 -> 173.
 // V69: serpent-underfoot joins scripture-unfiltered (category Scripture Unfiltered). Map total 167 -> 168.
@@ -270,7 +271,7 @@ export const POST_GROUP = {
   'the-gift-that-blinds': 'the-root',
   'tried-in-the-reins': 'the-root',
 
-  // ── The Quick Scroll (10) ──
+  // ── The Quick Scroll (11) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
   'the-book-of-enoch': 'the-quick-scroll',
   'isaiah-runs-forward': 'the-quick-scroll',
@@ -281,6 +282,7 @@ export const POST_GROUP = {
   'joel-locusts-return-and-the-outpouring': 'the-quick-scroll',
   'micah-three-calls-to-hear': 'the-quick-scroll',
   'zephaniah-the-day-closes-in': 'the-quick-scroll',
+  'ezekiel-the-glory-leaves-and-returns': 'the-quick-scroll',
 
   // ── Buried in Plain Sight (21) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
