@@ -1,4 +1,5 @@
-// blog-groups 1022 V70.js
+// blog-groups 1022 V71.js
+// V71: the-second-born and the-higher-priesthood join scripture-unfiltered (category Scripture Unfiltered). Map total 173 -> 175.
 // V70: The Trees of Judges investigation — the-trees-of-judges, the-vine, the-fig-tree, the-olive-tree, the-bramble — joins the-way-in-and-the-walk (category The Way In and the Walk). Map total 168 -> 173.
 // V69: serpent-underfoot joins scripture-unfiltered (category Scripture Unfiltered). Map total 167 -> 168.
 // V68: zionism-and-the-three-wars joins buried-in-plain-sight (category Buried in Plain Sight). Map total 166 -> 167.
@@ -391,7 +392,7 @@ export const POST_GROUP = {
   'the-olive-tree': 'the-way-in-and-the-walk',
   'the-bramble': 'the-way-in-and-the-walk',
 
-  // ── Scripture Unfiltered (19) ──
+  // ── Scripture Unfiltered (28) ──
   'hearts-and-reins': 'scripture-unfiltered',
   'kept-to-the-hour': 'scripture-unfiltered',
   'goat-that-was-not-slain': 'the-law-and-the-feasts',
@@ -420,6 +421,8 @@ export const POST_GROUP = {
   'cedars-and-the-branch': 'scripture-unfiltered',
   'sign-seal-and-mark': 'scripture-unfiltered',
   'serpent-underfoot': 'scripture-unfiltered',
+  'the-second-born': 'scripture-unfiltered',
+  'the-higher-priesthood': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;

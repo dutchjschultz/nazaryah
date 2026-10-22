@@ -9,7 +9,7 @@ author: "Nazaryah"
 category: "Parables"
 featured: false
 draft: false
-associations: ["the-mishkan", "pulpit-vocabulary"]
+associations: ["the-priesthood", "the-mishkan", "pulpit-vocabulary"]
 companion: ["kingdom-of-lights-read-through"]
 watch:
   title: "The Oil Is Not the Holy Spirit — The Ten Virgins Explained"

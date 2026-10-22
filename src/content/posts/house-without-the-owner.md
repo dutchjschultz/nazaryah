@@ -9,7 +9,7 @@ author: "Nazaryah"
 category: "Parables"
 featured: false
 draft: false
-associations: ["delegated-authority", "whose-righteousness", "lost-in-translation"]
+associations: ["the-priesthood", "delegated-authority", "whose-righteousness"]
 companion: ["house-without-the-owner-read-through"]
 watch:
   title: "The Nation Is Not the Church — The Wicked Husbandmen Explained"

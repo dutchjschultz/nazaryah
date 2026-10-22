@@ -9,7 +9,7 @@ author: "Nazaryah"
 category: "Parables"
 featured: false
 draft: false
-associations: ["pulpit-vocabulary"]
+associations: ["the-priesthood", "pulpit-vocabulary"]
 companion: ["the-talents-read-through", "kingdom-of-lights", "house-without-the-owner"]
 ---
 
