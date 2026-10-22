@@ -68,7 +68,7 @@ const greekHref = `/doctrines/borrowed-words#d-${pair.departure.slug}`;
         <div><span class="d2-vlabel">Second Witness</span>{op.witness.join('  ·  ')}</div>
       </div>
 
-      <DoctrineStudies slug={pair.departure.slug} />
+      <DoctrineStudies slug={pair.departure.slug} name={pair.departure.title} />
 
       <div class="d2-turn">
         <p>{op.turn.text}</p>
@@ -102,7 +102,7 @@ const greekHref = `/doctrines/borrowed-words#d-${pair.departure.slug}`;
         <div class="d2-old"><p set:html={dp.oldPath} /></div>
       </section>
 
-      <DoctrineStudies slug={pair.departure.slug} />
+      <DoctrineStudies slug={pair.departure.slug} name={pair.departure.title} />
 
       <p class="d2-foot">
         <a href={oldHref}>&larr; {pair.oldPaths.title}</a>

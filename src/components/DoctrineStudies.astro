@@ -1,8 +1,11 @@
 ---
-// src/components/DoctrineStudies.astro · 1022 V1
-// V1 (Hell Doctrine V2 brief 1022 V4): the Go Deeper strip. Every published
-// study whose frontmatter `doctrines` list holds this doctrine's Departure slug,
-// newest first, up to six. Both of a doctrine's pages (Old Path and Departure)
+// src/components/DoctrineStudies.astro · 1022 V2
+// V2 (Hell Doctrine V2 brief 1022 V5): three studies at most — pinned first,
+// then newest (src/lib/doctrine-studies.js, the same list the All Studies
+// doctrine filter reads). Past three, the band ends "See all N studies on
+// <doctrine> →" to /blog/all?doctrine=<slug>; N is the live count.
+// V1 (Hell Doctrine V2 brief 1022 V4): the Go Deeper strip. Studies whose
+// frontmatter tags this doctrine's Departure slug. Both of a doctrine's pages (Old Path and Departure)
 // render it from the same slug, so one tag puts a study on both and removing
 // the tag takes it off both. No tagged study, no strip.
 // One quiet band: gold hairlines above and below, a small label, three across
@@ -11,11 +14,10 @@
 // doctrine gets a strip when it moves to the new layout.
 import { getCollection } from 'astro:content';
 import { postHref } from '../lib/post-href.js';
-interface Props { slug: string; }
-const { slug } = Astro.props;
-const studies = (await getCollection('posts', (p) => !p.data.draft && (p.data.doctrines ?? []).includes(slug)))
-  .sort((a, b) => +new Date(b.data.date) - +new Date(a.data.date))
-  .slice(0, 6);
+import { doctrineStudies, doctrineFilterHref, STRIP_MAX } from '../lib/doctrine-studies.js';
+interface Props { slug: string; name: string; }
+const { slug, name } = Astro.props;
+const { strip: studies, total } = doctrineStudies(await getCollection('posts'), slug);
 ---
 {studies.length > 0 && (
   <aside class="ds" aria-label="Go deeper: studies on this doctrine">
@@ -29,6 +31,9 @@ const studies = (await getCollection('posts', (p) => !p.data.draft && (p.data.do
         </a>
       ))}
     </div>
+    {total > STRIP_MAX && (
+      <p class="ds-all"><a href={doctrineFilterHref(slug)}>See all {total} studies on {name} <span aria-hidden="true">&rarr;</span></a></p>
+    )}
   </aside>
 )}
 
@@ -53,7 +58,14 @@ const studies = (await getCollection('posts', (p) => !p.data.draft && (p.data.do
     display: block; font-family: var(--font-display); font-variant: all-small-caps; font-size: 0.85rem;
     letter-spacing: 0.14em; color: #8a7350; margin-top: 0.35rem;
   }
+  .ds-all { margin: 0.9rem 0 0 !important; text-align: right; }
+  .ds-all a {
+    font-family: var(--font-display); font-size: 0.7rem; letter-spacing: 0.14em; text-transform: uppercase;
+    color: #d8b06a; text-decoration: none;
+  }
+  .ds-all a:hover { color: #e8c98a; text-decoration: underline; text-underline-offset: 4px; }
   @media (max-width: 700px) {
+    .ds-all { text-align: left; }
     .ds-row { grid-template-columns: 1fr; }
   }
 </style>

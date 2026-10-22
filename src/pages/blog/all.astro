@@ -1,8 +1,16 @@
 ---
+// all.astro · 1022 V2
+// V2 (Hell Doctrine V2 brief 1022 V5): a doctrine filter. The menu lists every
+// doctrine at least one study here is tagged or pinned to (src/lib/
+// doctrine-studies.js — the list the Go Deeper strips read), and ?doctrine=<slug>
+// arrives already filtered, which is where a strip's "See all N" link lands.
+// It combines with the search; the count line follows the filter.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
 import { inFeed } from '../../data/blog-groups.js';
+import { doctrines as doctrinePairs } from '../../data/doctrines.data.js';
+import { doctrinesOf } from '../../lib/doctrine-studies.js';
 
 // Full archive minus the Trinity Files. All cards render in the DOM so the
 // search can filter across the whole set; pagination is client-side (12/page)
@@ -10,15 +18,30 @@ import { inFeed } from '../../data/blog-groups.js';
 const posts = (await getCollection('posts', ({ data }) => data.draft !== true))
   .filter(inFeed)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+
+// Doctrines with at least one tagged study on this page, in the doctrines' own order.
+const tagged = new Set(posts.flatMap(doctrinesOf));
+const doctrineOptions = doctrinePairs
+  .map((p) => ({ slug: p.departure.slug, name: p.departure.title }))
+  .filter((d) => tagged.has(d.slug));
 ---
 
 <BaseLayout title="All Studies — Nazaryah Studies" description="Search and browse the full archive of biblical studies.">
   <section class="blog-subhead">
     <a href="/blog" class="blog-back">&larr; Browse by category</a>
     <h1 class="blog-subhead-title">All Studies</h1>
-    <p class="blog-subhead-count">{posts.length} studies · type to filter</p>
+    <p class="blog-subhead-count" id="all-count" data-total={posts.length}>{posts.length} studies · type to filter</p>
     <div class="blog-search-wrap">
       <input id="blog-search" type="search" placeholder="Search titles &amp; keywords — try “goat” or “Esther”" autocomplete="off" aria-label="Search studies" />
+      {doctrineOptions.length > 0 && (
+        <label class="blog-doctrine">
+          <span>Doctrine</span>
+          <select id="blog-doctrine" aria-label="Filter by doctrine">
+            <option value="">All doctrines</option>
+            {doctrineOptions.map((d) => <option value={d.slug}>{d.name}</option>)}
+          </select>
+        </label>
+      )}
     </div>
   </section>
 
@@ -38,12 +61,26 @@ const posts = (await getCollection('posts', ({ data }) => data.draft !== true))
   const search = document.getElementById('blog-search');
   const pager = document.getElementById('all-pager');
   const noResults = document.getElementById('all-noresults');
+  const doctrineSel = document.getElementById('blog-doctrine');
+  const countLine = document.getElementById('all-count');
+  const total = Number(countLine.dataset.total);
   let filtered = cards;
   let pageN = 1;
 
   const compute = () => {
     const q = search.value.trim().toLowerCase();
-    return q ? cards.filter((c) => (c.getAttribute('data-search') || '').includes(q)) : cards;
+    const d = doctrineSel ? doctrineSel.value : '';
+    return cards.filter((c) =>
+      (!q || (c.getAttribute('data-search') || '').includes(q)) &&
+      (!d || (c.getAttribute('data-doctrines') || '').split(' ').includes(d)));
+  };
+
+  const updateCount = () => {
+    const d = doctrineSel && doctrineSel.value;
+    const name = d ? doctrineSel.options[doctrineSel.selectedIndex].text : '';
+    countLine.textContent = d
+      ? `${filtered.length} ${filtered.length === 1 ? 'study' : 'studies'} on ${name}`
+      : `${total} studies · type to filter`;
   };
 
   function makeBtn(label, onClick, cls, disabled) {
@@ -82,10 +119,24 @@ const posts = (await getCollection('posts', ({ data }) => data.draft !== true))
     const show = new Set(filtered.slice(start, start + PER));
     cards.forEach((c) => { c.style.display = show.has(c) ? '' : 'none'; });
     noResults.style.display = filtered.length === 0 ? '' : 'none';
+    updateCount();
     renderPager(last);
   }
 
   search.addEventListener('input', () => { filtered = compute(); pageN = 1; render(); });
+  if (doctrineSel) {
+    // ?doctrine=<slug> arrives filtered (a Go Deeper "See all" link); an unknown
+    // slug is ignored. Changing the menu keeps the address in step.
+    const want = new URLSearchParams(location.search).get('doctrine');
+    if (want && [...doctrineSel.options].some((o) => o.value === want)) doctrineSel.value = want;
+    doctrineSel.addEventListener('change', () => {
+      const u = new URL(location.href);
+      if (doctrineSel.value) u.searchParams.set('doctrine', doctrineSel.value); else u.searchParams.delete('doctrine');
+      history.replaceState(null, '', u);
+      filtered = compute(); pageN = 1; render();
+    });
+  }
+  filtered = compute();
   render();
 </script>
 
@@ -101,6 +152,13 @@ const posts = (await getCollection('posts', ({ data }) => data.draft !== true))
     border: 1px solid #7a4f28; background: #fbf5e6; color: #2b1d11;
   }
   #blog-search:focus { outline: 2px solid #a07850; outline-offset: 1px; }
+  .blog-doctrine { display: flex; align-items: center; justify-content: center; gap: 0.6rem; margin-top: 0.75rem; }
+  .blog-doctrine span { font-family: 'Cinzel', Georgia, serif; font-size: 0.62rem; letter-spacing: 0.16em; text-transform: uppercase; color: #7a4f28; }
+  #blog-doctrine {
+    font-family: Georgia, serif; font-size: 0.9rem; padding: 0.4rem 0.7rem; border-radius: 4px;
+    border: 1px solid #7a4f28; background: #fbf5e6; color: #2b1d11; cursor: pointer;
+  }
+  #blog-doctrine:focus { outline: 2px solid #a07850; outline-offset: 1px; }
 
   .blog-grid-wrap { padding: 2.5rem 1.5rem 3rem; max-width: 84rem; margin: 0 auto; }
   .blog-noresults { text-align: center; font-style: italic; color: var(--ink-faded, #5c4033); padding: 2.5rem 0; }

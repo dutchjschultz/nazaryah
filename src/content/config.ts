@@ -1,4 +1,8 @@
-// content config 1022 V31
+// content config 1022 V32
+// V32 (Hell Doctrine V2 brief 1022 V5): posts gain optional `pinned` — Departure
+// slugs of doctrines whose Go Deeper strip this study holds a place in (pinned
+// first, then newest, three shown). A pinned slug counts as tagged. Unknown
+// slugs fail the build, as with `doctrines`.
 // V31 (Hell Doctrine V2 brief 1022 V4): posts gain optional `doctrines` — the
 // Departure slugs (src/data/doctrines.data.js) of the doctrines a study speaks
 // to. It fills the Go Deeper strip on that doctrine's Old Path and Departure
@@ -230,11 +234,18 @@ const postsCollection = defineCollection({
     associations: z.array(z.string()).default([]),
     // DOCTRINE TAGS — the Departure slug of each doctrine this study speaks to
     // ("hell", "immortal-soul", …). Every study carrying a doctrine's slug shows
-    // in the Go Deeper strip on that doctrine's two pages, newest first, up to
-    // six. Set once at upload, beside `associations`.
+    // in the Go Deeper strip on that doctrine's two pages (three shown, pinned
+    // first, then newest; "See all" opens /blog/all?doctrine=<slug>) and in the
+    // All Studies doctrine filter. Set once at upload, beside `associations`.
     doctrines: z.array(z.string().refine(
       (v) => DOCTRINE_SLUGS.includes(v),
       (v) => ({ message: `unknown doctrine slug "${v}" — use a Departure slug: ${DOCTRINE_SLUGS.join(' | ')}` })
+    )).optional(),
+    // PINNED — doctrines (Departure slugs) whose strip this study holds a place
+    // in. Pinned studies lead the three, newest pinned first.
+    pinned: z.array(z.string().refine(
+      (v) => DOCTRINE_SLUGS.includes(v),
+      (v) => ({ message: `unknown doctrine slug "${v}" in pinned — use a Departure slug: ${DOCTRINE_SLUGS.join(' | ')}` })
     )).optional(),
     // One-line orientation shown under the title and in the associations panel.
     // Falls back to `subtitle` then `description` when omitted.

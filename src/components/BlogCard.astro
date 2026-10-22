@@ -8,6 +8,8 @@
 // (with the PE'AH tag) is gone — the verse sits in the title now.
 // 1002: One God, One Name, One Throne joins the bookshelf map, so all four
 // books' chapter cards carry the badge and the book-name label alike.
+// 1022: a study card carries data-doctrines (its `doctrines` + `pinned` slugs,
+// space-separated) for the All Studies doctrine filter; absent when untagged.
 // 1003: also renders a Torah Testimony card (collection 'testimonies', built in
 // collections.js — not a content entry): its own href, label "Testimony", the
 // reference line, title and deck. No date in the foot (testimonies carry none).
@@ -15,6 +17,7 @@ import { masterTitleBySlug } from '../data/books.js';
 import { postHref } from '../lib/post-href.js';
 import { cardLabelOf } from '../data/collections.js';
 import { peahTitle } from '../lib/peah.js';
+import { doctrinesOf } from '../lib/doctrine-studies.js';
 const { post } = Astro.props;
 
 // Chapters of the multi-part books display the master chapter title from the
@@ -55,7 +58,8 @@ const watch = post.data.watch;
 <article class="post-item card group flex flex-col overflow-hidden h-full"
   data-title={displayTitle.toLowerCase()}
   data-search={`${displayTitle} ${post.data.title} ${blurb || ''} ${cat || ''} ${post.data.commonName || ''}`.toLowerCase()}
-  data-group={isPeah ? (cat || '') : undefined}>
+  data-group={isPeah ? (cat || '') : undefined}
+  data-doctrines={post.data ? (doctrinesOf(post).join(' ') || undefined) : undefined}>
   <div class="p-6 flex flex-col flex-1">
     {book && <a href={book.href} class="bookshelf-badge">&#9672; From the Bookshelf</a>}
     {cat && <div class:list={["tag mb-3", { "tag-book": book }]} style="color: var(--bronze);">{cat}</div>}
