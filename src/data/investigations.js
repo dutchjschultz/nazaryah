@@ -1,4 +1,7 @@
-// investigations 1022 V13.js
+// investigations 1022 V14.js
+// V14: The Tree in the Midst goes live — nucleus + five witnesses, the columns shape
+// (three left, two right), placed after The Trees of Judges. Witness blurbs are the
+// hub's own "Five Witnesses" lines; card lines as Dutch gave them.
 // V13: The Trees of Judges goes live — nucleus + four witnesses (The Vine, The Fig
 // Tree, The Olive Tree, The Bramble), the orbit shape, placed after The Sealed Count.
 // Witness blurbs are the hub's own "Four Witnesses" lines.
@@ -566,6 +569,75 @@ export const INVESTIGATIONS = [
         status: 'live',
         href: '/blog/the-bramble',
         blurb: 'The man with none of the three. His shelter is a lie, his throne is bought, and his end is fire.',
+      },
+    ],
+  },
+  {
+    slug: 'the-tree-in-the-midst',
+    title: 'The Tree in the Midst',
+    shortTitle: 'The Tree in the Midst',
+    deck: 'Why Yahuah rebuilt the tree of life as an almond',
+    // Five witnesses: the columns shape, three left, two right.
+    layout: 'columns',
+    enterLabel: 'Enter the case',
+    orderNote: 'Numbered as the hub lists them · read in any order',
+    teaching:
+      'The tree of life was lost with Eden and comes back only in heaven — and the Law is the dead branch, freedom from it the living one.',
+    question:
+      'Where did the tree of life go after Eden? Every time Yahuah built it again, He built it as an almond, beside His Law. Five witnesses answer.',
+    soon: false,
+    nucleus: {
+      label: 'The Nucleus',
+      title: 'The Tree in the Midst',
+      href: '/blog/the-tree-in-the-midst',
+      passage: 'Genesis 2:9',
+      blurb: 'Every time Yahuah built the tree of life again, He built it as an almond. And every time, He set it beside His Law.',
+    },
+    witnesses: [
+      {
+        tag: 'Witness One · Eden',
+        name: 'The Tree Without a Name',
+        passage: 'Genesis 2:9; 3:22-24',
+        anchor: 'Genesis 3:24',
+        status: 'live',
+        href: '/blog/the-tree-without-a-name',
+        blurb: 'Eden’s tree is placed in the midst, then guarded at the east. It is kept, not destroyed, and its kind is never given.',
+      },
+      {
+        tag: 'Witness Two · Bethel',
+        name: 'The Gate at Almond',
+        passage: 'Genesis 28:10-22; 35:1-15',
+        anchor: 'Genesis 28:17',
+        status: 'live',
+        href: '/blog/the-gate-at-almond',
+        blurb: 'Jacob sees the gate of heaven at Luz, the almond place, and Yahuah repeats His promise there.',
+      },
+      {
+        tag: 'Witness Three · Lampstand',
+        name: 'Rebuilt in Gold',
+        passage: 'Exodus 25:31-40; 27:20-21',
+        anchor: 'Exodus 25:31',
+        status: 'live',
+        href: '/blog/rebuilt-in-gold',
+        blurb: 'Yahuah gives Moses the pattern of an almond tree of gold, set inside an Eden-shaped house, before the testimony.',
+      },
+      {
+        tag: 'Witness Four · Rod',
+        name: 'Dead Wood Lives',
+        passage: 'Numbers 17; Joshua 8:33',
+        anchor: 'Numbers 17:8',
+        status: 'live',
+        href: '/blog/dead-wood-lives',
+        blurb: 'An almond rod buds, blossoms, and bears fruit overnight, and is kept with the tables of the Law.',
+      },
+      {
+        tag: 'Witness Five · Almond',
+        name: 'The Watching Tree',
+        passage: 'Jeremiah 1:11-12; 31:28',
+        anchor: 'Jeremiah 1:11-12',
+        status: 'live',
+        href: '/blog/the-watching-tree',
+        blurb: 'The almond’s own name explains the pattern: Yahuah watches over His word to perform it.',
       },
     ],
   },
