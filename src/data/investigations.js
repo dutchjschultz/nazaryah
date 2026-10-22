@@ -1,4 +1,7 @@
-// investigations 1014 V12.js
+// investigations 1022 V13.js
+// V13: The Trees of Judges goes live — nucleus + four witnesses (The Vine, The Fig
+// Tree, The Olive Tree, The Bramble), the orbit shape, placed after The Sealed Count.
+// Witness blurbs are the hub's own "Four Witnesses" lines.
 // V12 (Spoken in Hebrew Replace and Add 1014): Spoken in Hebrew gains Witness
 // Eight · Heard — The Tongue of Heaven (Acts 26:14 / Zephaniah 3:9); eight
 // witnesses, four a side. Witness Two's passage moves off Acts 26:14 (now Witness
@@ -509,6 +512,60 @@ export const INVESTIGATIONS = [
         status: 'live',
         href: '/blog/the-greek-addition',
         blurb: 'The extra books came in through Greek copies that never agreed on a list.',
+      },
+    ],
+  },
+  {
+    slug: 'the-trees-of-judges',
+    title: 'The Trees of Judges',
+    shortTitle: 'The Trees of Judges',
+    deck: 'Three fruitful walks and one counterfeit',
+    layout: 'orbit',
+    enterLabel: 'Enter the orbit',
+    teaching:
+      "Jotham's riddle is a political fable and nothing more: the trees are Israel, the bramble is Abimelech, and the lesson ends in Judges 9.",
+    question:
+      "What do the three trees that refused the throne describe? Not a nation's politics — a believer's walk. Three trees are three parts of one walk, and the fourth is the counterfeit.",
+    soon: false,
+    nucleus: {
+      label: 'The Nucleus',
+      title: 'The Trees of Judges',
+      href: '/blog/the-trees-of-judges',
+      blurb:
+        "The three good trees of Jotham's riddle describe, in detail, how a believer walks. Each tree is one part of the same walk, and together they are the signs of a true believer. The bramble is the man who has none of the three and still wants the throne.",
+    },
+    witnesses: [
+      {
+        tag: 'Witness One · Entry',
+        name: 'The Covenant Entry',
+        study: 'The Vine',
+        status: 'live',
+        href: '/blog/the-vine',
+        blurb: 'How a man gets in at all. The wine is the blood of the covenant, and the entry of one man cheers God and man.',
+      },
+      {
+        tag: 'Witness Two · Law',
+        name: 'The Walk in the Law',
+        study: 'The Fig Tree',
+        status: 'live',
+        href: '/blog/the-fig-tree',
+        blurb: 'How a man walks once he is in. The Law is sweet to him, and his life bears its fruit for all to see.',
+      },
+      {
+        tag: 'Witness Three · Oil',
+        name: 'The Anointed Walk',
+        study: 'The Olive Tree',
+        status: 'live',
+        href: '/blog/the-olive-tree',
+        blurb: 'What Yahuah pours into the man who walks. The oil sets him apart, makes him a light, and is spent on others.',
+      },
+      {
+        tag: 'Witness Four · Counterfeit',
+        name: 'The Counterfeit',
+        study: 'The Bramble',
+        status: 'live',
+        href: '/blog/the-bramble',
+        blurb: 'The man with none of the three. His shelter is a lie, his throne is bought, and his end is fire.',
       },
     ],
   },

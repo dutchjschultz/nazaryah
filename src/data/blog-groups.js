@@ -1,4 +1,5 @@
-// blog-groups 1021 V69.js
+// blog-groups 1022 V70.js
+// V70: The Trees of Judges investigation — the-trees-of-judges, the-vine, the-fig-tree, the-olive-tree, the-bramble — joins the-way-in-and-the-walk (category The Way In and the Walk). Map total 168 -> 173.
 // V69: serpent-underfoot joins scripture-unfiltered (category Scripture Unfiltered). Map total 167 -> 168.
 // V68: zionism-and-the-three-wars joins buried-in-plain-sight (category Buried in Plain Sight). Map total 166 -> 167.
 // V67: the Walking in the Vows trilogy — given-in-love, written-on-the-heart, examined-at-the-wedding — joins the-law-and-the-feasts (category The Law & The Feasts). Map total 163 -> 166.
@@ -367,7 +368,7 @@ export const POST_GROUP = {
   'sinai-arcade': 'the-side-door', // the price paid, the law unchanged
   'barney-and-clyde': 'the-side-door', // who sent the Son
 
-  // ── The Way In and the Walk (14) — The Blood and the Bread ──
+  // ── The Way In and the Walk (21) — The Blood and the Bread ──
   'blood-and-bread': 'the-way-in-and-the-walk',
   'bread-and-wine': 'the-way-in-and-the-walk',
   'ark-of-covering': 'the-way-in-and-the-walk',
@@ -384,6 +385,11 @@ export const POST_GROUP = {
   'prepare-the-horse': 'the-way-in-and-the-walk',
   'same-gospel-same-blood': 'the-way-in-and-the-walk',
   'rock-stone-and-word': 'the-way-in-and-the-walk',
+  'the-trees-of-judges': 'the-way-in-and-the-walk', // investigation nucleus
+  'the-vine': 'the-way-in-and-the-walk',
+  'the-fig-tree': 'the-way-in-and-the-walk',
+  'the-olive-tree': 'the-way-in-and-the-walk',
+  'the-bramble': 'the-way-in-and-the-walk',
 
   // ── Scripture Unfiltered (19) ──
   'hearts-and-reins': 'scripture-unfiltered',
