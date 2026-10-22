@@ -2,6 +2,7 @@
 title: "Promised and Received at the Same Place"
 reference: "Genesis 12:7"
 deck: "The seed and the land were promised at Shechem, and received at Shechem."
+cardDeck: "Promised at Shechem, received at Shechem."
 topic: "Scripture"
 keyVerse: "And Yahuah appeared unto Abram, and said, Unto thy seed will I give this land: and there builded he an altar unto Yahuah, who appeared unto him."
 keyVerseRef: "Genesis 12:7"
