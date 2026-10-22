@@ -1,5 +1,10 @@
 ---
-// src/components/DoctrinePageV2.astro · 1022 V1
+// src/components/DoctrinePageV2.astro · 1022 V2
+// V2 (Hell Doctrine V2 brief 1022 V2): the Departure's open word cards are gone.
+// Where It Came From is two paragraphs, then the words as tabs through the
+// existing DoctrineTabs (bare: no opening or close of its own; warmGreek: the
+// "What the Greek brought in" heading in the warm red), Hadēs open by default,
+// every tab carrying every section. Then The Old Path, further reading, foot.
 // V1 (Hell Doctrine V2 brief 1022 V1): the trial doctrine layout, beside
 // DoctrineInfo (the classic layout), never replacing it. A pair reaches it only
 // when doctrines.data.js sets `layout: "v2"` AND src/data/doctrine-v2.js holds
@@ -8,12 +13,12 @@
 //   old-paths  numbered sections, the keepers list, the closing paragraph, the
 //              Torah / Second Witness lines, and the red turn box that hands the
 //              reader to the Departure (it replaces "Where the church departed").
-//   departure  the StandingStone banner (as on every Departure page), numbered
-//              sections, six word cards all open (two across, one on phones),
-//              the green Gehenna box, Read It Again, the timeline, What It Built,
-//              the green-edged Old Path close, further reading and the foot.
+//   departure  the StandingStone banner (as on every Departure page), What You
+//              Were Taught, Where It Came From and the word tabs, the green-edged
+//              Old Path close, further reading and the foot.
 // The riddle line keeps its place at the foot of both pages.
 import StandingStone from './StandingStone.astro';
+import DoctrineTabs from './DoctrineTabs.astro';
 import { riddlesForDoctrine } from '../data/riddles.js';
 import { v2For } from '../data/doctrine-v2.js';
 interface Props { side: 'old-paths' | 'departure'; pair: any; }
@@ -81,56 +86,13 @@ const resolve = (f: any) =>
       </section>
 
       <section class="d2-sec">
-        <h2 class="d2-h2"><span class="d2-step">2</span>Where It Came From: The Greek Behind It</h2>
-        <p class="d2-lead">{dp.greekLead}</p>
-        <div class="d2-words">
-          {dp.words.map((w: any) => (
-            <div class="d2-w">
-              <h3 class="d2-wword">{w.word}</h3>
-              <p class="d2-says">Your Bible says: <span set:html={w.says} /></p>
-              <dl>
-                <dt class="d2-greek">To the Greeks</dt>
-                <dd set:html={w.greeks} />
-                <dt>The Hebrew Beneath</dt>
-                <dd set:html={w.hebrew} />
-                <dt>The Proof</dt>
-                <dd set:html={w.proof} />
-              </dl>
-              <a class="d2-more" href={`/doctrines/borrowed-words#${w.entry}`}>Full entry on Greek Influence <span aria-hidden="true">&rarr;</span></a>
-            </div>
-          ))}
-        </div>
-
-        <div class="d2-gehenna">
-          <p class="d2-glabel">{dp.gehenna.label}</p>
-          <h3>{dp.gehenna.title}</h3>
-          <p set:html={dp.gehenna.text} />
-        </div>
-
-        <div class="d2-again">
-          <p class="d2-alabel">Read It Again</p>
-          <p set:html={dp.again} />
-        </div>
+        <h2 class="d2-h2"><span class="d2-step">2</span>Where It Came From</h2>
+        {dp.roots.map((p: string) => <p set:html={p} />)}
+        <DoctrineTabs data={dp.tabs} bare warmGreek />
       </section>
 
       <section class="d2-sec">
-        <h2 class="d2-h2"><span class="d2-step">3</span>How It Grew</h2>
-        <ul class="d2-timeline">
-          {dp.timeline.map(([when, what]: [string, string]) => (
-            <li><b>{when}</b> <span set:html={what} /></li>
-          ))}
-        </ul>
-      </section>
-
-      <section class="d2-sec">
-        <h2 class="d2-h2"><span class="d2-step">4</span>What It Built</h2>
-        <ul class="d2-built">
-          {dp.built.map((b: string) => <li set:html={b} />)}
-        </ul>
-      </section>
-
-      <section class="d2-sec">
-        <h2 class="d2-h2"><span class="d2-step">5</span>The Old Path</h2>
+        <h2 class="d2-h2"><span class="d2-step">3</span>The Old Path</h2>
         <div class="d2-old"><p set:html={dp.oldPath} /></div>
       </section>
 
@@ -150,8 +112,8 @@ const resolve = (f: any) =>
 <style>
   /* The doctrine pages' fixed dark palette (DoctrineInfo): #0e0d0b ground,
      #BA7517 gold, #d8b06a soft gold, #cfc7b6 body, #e8e2d4 titles, #161512
-     panels. Added for the trial: a warm red (the turn box, TO THE GREEKS) and a
-     muted green (Gehenna, the Old Path close). set:html content (em, b) is not
+     panels. Added for the trial: a warm red (the turn box) and a muted green
+     (the Old Path close). set:html content (em, b) is not
      scoped, so it is reached through :global() under a scoped wrapper. */
   .d2-page { background: #0e0d0b; min-height: 100vh; }
   .d2 {
@@ -216,62 +178,6 @@ const resolve = (f: any) =>
   }
   .d2-turn a:hover { color: #f0bca9; text-decoration: underline; text-underline-offset: 4px; }
 
-  .d2-lead { font-style: italic; color: #a89f8c; }
-  .d2-words { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.2rem; }
-  .d2-w {
-    background: #161512; border: 0.5px solid rgba(255,255,255,0.08); border-top: 2px solid #BA7517;
-    border-radius: 8px; padding: 1.1rem 1.2rem; font-size: 1.02rem; line-height: 1.55;
-    display: flex; flex-direction: column;
-  }
-  .d2-wword { font-family: var(--font-body); font-style: italic; font-weight: 500; font-size: 1.6rem; line-height: 1.1; color: #e8e2d4; margin: 0; }
-  .d2-says { font-size: 0.92rem; color: #a89f8c; margin: 0.3rem 0 0.6rem !important; }
-  .d2-says :global(b) { color: #e8e2d4; font-weight: 600; }
-  .d2-w dl { margin: 0; flex: 1; }
-  .d2-w dt {
-    font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
-    text-transform: uppercase; color: #BA7517; margin-top: 0.75rem;
-  }
-  .d2-w dt.d2-greek { color: #e0a08c; }
-  .d2-w dd { margin: 0.15rem 0 0; }
-  .d2-more {
-    display: block; margin-top: 0.9rem; font-family: var(--font-display); font-size: 0.68rem;
-    letter-spacing: 0.14em; text-transform: uppercase; color: #d8b06a; text-decoration: none;
-  }
-  .d2-more:hover { color: #e8c98a; text-decoration: underline; text-underline-offset: 4px; }
-
-  .d2-gehenna {
-    margin-top: 1rem; padding: 1.1rem 1.2rem; background: #161512;
-    border: 0.5px solid rgba(255,255,255,0.08); border-top: 2px solid #6f8f6a; border-radius: 8px;
-  }
-  .d2-glabel {
-    font-family: var(--font-display); font-size: 10px; font-weight: 600; letter-spacing: 0.2em;
-    text-transform: uppercase; color: #9cbf96; margin: 0 0 0.3rem !important;
-  }
-  .d2-gehenna h3 { font-family: var(--font-display); font-size: 1.15rem; font-weight: 700; color: #e8e2d4; margin: 0 0 0.6rem; letter-spacing: 0.02em; }
-  .d2-gehenna p:last-child { margin: 0; }
-
-  .d2-again {
-    margin-top: 1.2rem; padding: 1rem 1.3rem; border-left: 3px solid #BA7517;
-    background: rgba(186,117,23,0.06); border-radius: 0 8px 8px 0;
-  }
-  .d2-again p { font-style: italic; margin: 0; }
-  .d2-again .d2-alabel {
-    font-style: normal; font-family: var(--font-display); font-size: 10px; font-weight: 600;
-    letter-spacing: 0.22em; text-transform: uppercase; color: #BA7517; margin-bottom: 0.3rem;
-  }
-
-  .d2-timeline { list-style: none; margin: 0; padding: 0 0 0 1.2rem; border-left: 1px solid rgba(186,117,23,0.45); }
-  .d2-timeline li { position: relative; padding: 0.4rem 0; }
-  .d2-timeline li::before {
-    content: ""; position: absolute; left: calc(-1.2rem - 5px); top: 1rem;
-    width: 9px; height: 9px; border-radius: 50%; background: #BA7517;
-  }
-  .d2-timeline b { color: #d8b06a; font-weight: 700; margin-right: 0.3rem; }
-
-  .d2-built { list-style: disc; margin: 0; padding-left: 1.3rem; }
-  .d2-built li { margin: 0 0 0.45rem; }
-  .d2-built li::marker { color: #BA7517; }
-
   .d2-old {
     padding: 1.1rem 1.3rem; border: 1px solid #4d6a49; border-radius: 8px;
     background: rgba(111,143,106,0.08);
@@ -301,7 +207,6 @@ const resolve = (f: any) =>
   .d2-riddle a:hover { color: #e0a54a; text-decoration: underline; text-underline-offset: 4px; }
 
   @media (max-width: 700px) {
-    .d2-words { grid-template-columns: 1fr; }
     .d2-vlabel { display: block; min-width: 0; }
   }
 </style>

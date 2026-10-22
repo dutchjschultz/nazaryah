@@ -1,4 +1,8 @@
-// doctrine-v2 1022 V1.js
+// doctrine-v2 1022 V2.js
+// V2 (Hell Doctrine V2 brief 1022 V2): the Departure's open word cards, Gehenna
+// box, page timeline, What It Built and Read It Again are gone. Where It Came From
+// is two paragraphs (`roots`), then the six words return as tabs (`tabs`, in
+// departure-tabs.js shape, rendered by DoctrineTabs), each with every section.
 // V1 (Hell Doctrine V2 brief 1022 V1): content for the trial doctrine layout
 // (DoctrinePageV2), keyed by the pair's `n`. Only Hell (04) is written. A pair
 // reaches this file only when doctrines.data.js sets its `layout: "v2"`; set it
@@ -10,10 +14,9 @@
 // SHAPE
 //   oldPaths   { kicker, title, subtitle, sections[{ title, paras?, keepers? }],
 //                closing, torah[], witness[], turn }
-//   departure  { kicker, title, subtitle, attribution, taught[], greekLead,
-//                words[{ word, says, greeks, hebrew, proof, entry }], gehenna,
-//                again, timeline[[when, what]], built[], oldPath, further[] }
-//   word.entry is that word's anchor on the Greek Influence page
+//   departure  { kicker, title, subtitle, attribution, taught[], roots[],
+//                tabs { tabs[] }, oldPath, further[] }
+//   a tab's id is that word's anchor on the Greek Influence page
 //   (/doctrines/borrowed-words#<id>); the entry itself is not edited here.
 
 export const doctrineV2 = {
@@ -67,82 +70,154 @@ export const doctrineV2 = {
         `At most funerals and most altar calls, the teaching is the same. When an unsaved person dies, his soul goes straight to hell. There he is awake, aware, and burning, and it never ends. Ten thousand years from now he will still be burning, with no hope of relief.`,
         `Catholic churches teach it, with purgatory added for those not bad enough for hell. Baptist, Methodist, Pentecostal, and nondenominational churches teach the same endless burning without purgatory. The rich man of Luke 16, crying out from the flames, is usually the proof. "Turn or burn" is how many preachers put it.`,
       ],
-      greekLead: `The word "hell" in the English Bible stands in for four different words. Three of them came out of Greek religion. Here is what each one meant to the Greeks, and what Scripture says underneath it.`,
-      words: [
-        {
-          word: "Hadēs",
-          says: `<b>hell</b> (once, <b>grave</b>)`,
-          greeks: `Hades was a god, the brother of Zeus, who ruled the dead under the earth. His name was also the name of his kingdom, a gloomy place where the dead lived on as shades. In Homer, the dead there talk, remember, and grieve.`,
-          hebrew: `<em>Sheol</em>, the grave. In Sheol "there is no work, nor device, nor knowledge, nor wisdom" (Ecclesiastes 9:10). "The dead know not any thing" (Ecclesiastes 9:5).`,
-          proof: `Peter quotes David: "thou wilt not leave my soul in hell" (Acts 2:27). David wrote <em>Sheol</em> (Psalm 16:10). Yahushua went to the grave, not to a fire.`,
-          entry: "hades",
-        },
-        {
-          word: "Tartaroō",
-          says: `<b>cast down to hell</b>`,
-          greeks: `Tartarus was the deep pit below Hades. In Hesiod's poem of the gods, Zeus locked the defeated Titans there. Plato later made it the prison for the worst human souls.`,
-          hebrew: `None. Peter borrowed the Greek place-name once, and only for the angels that sinned.`,
-          proof: `Even there, they are "reserved unto judgment" (2 Peter 2:4). Held for a coming judgment, not burning. And the verse is about angels, not men.`,
-          entry: "tartaroo",
-        },
-        {
-          word: "Aiōnios",
-          says: `<b>everlasting</b>, <b>eternal</b>`,
-          greeks: `<em>Aiōn</em> meant an age, a lifetime, a long span. Plato used it for the timeless world of the gods, and later Greeks and Romans worshiped Aion as a god of endless time.`,
-          hebrew: `<em>Olam</em>, a long span whose end is out of sight. Aaron's priesthood was "everlasting" (Exodus 40:15). A servant served "for ever" (Exodus 21:6).`,
-          proof: `Sodom suffered "the vengeance of eternal fire" (Jude 7), yet Sodom is not burning today. It is ashes (2 Peter 2:6). Eternal fire is fire whose result lasts forever. "Everlasting punishment" (Matthew 25:46) is "everlasting destruction" (2 Thessalonians 1:9).`,
-          entry: "aion",
-        },
-        {
-          word: "Aidios",
-          says: `<b>everlasting</b>`,
-          greeks: `Aristotle's word for what has no beginning and no end, like the heavens he believed had always existed.`,
-          hebrew: `<em>Olam</em> again, a span whose end is hidden from view.`,
-          proof: `Jude uses it once, for the "everlasting chains" on the fallen angels, and they hold them "unto the judgment of the great day" (Jude 6). The chains hold them until a day. They hold them for judgment.`,
-          entry: "aidios",
-        },
-        {
-          word: "Katachthonios",
-          says: `<b>things under the earth</b>`,
-          greeks: `The "under the earth" gods: Hades, Persephone, Hecate, and Hermes, who led the dead down. Greeks dropped curse tablets into graves and wells to reach them.`,
-          hebrew: `The dead "sleep in the dust of the earth," and they "shall awake" (Daniel 12:2).`,
-          proof: `Paul uses the word once: every knee shall bow, in heaven, on earth, and "under the earth" (Philippians 2:10). The ones under the earth bow when they are raised, as Daniel said. They are not a living kingdom below.`,
-          entry: "katachthonios",
-        },
-        {
-          word: "Apokatastasis",
-          says: `<b>restitution</b>`,
-          greeks: `The Stoics' great return: the stars come back to their first places, the world burns, and everything begins again, over and over.`,
-          hebrew: `<em>Shuv</em>, to return, to restore.`,
-          proof: `Origen, about 230 AD, used the word to teach that every soul, even the devil, will one day be restored. Peter meant what "all his holy prophets" spoke of (Acts 3:21). Endless torment and everyone-saved are two sides of one error: both start with a soul that cannot die.`,
-          entry: "apokatastasis",
-        },
+      roots: [
+        `The English word "hell" covers four different words in the New Testament. Only one of them is Hebrew. When Yahushua warned of "hell fire," He said Gehenna, the Valley of Hinnom just outside Jerusalem. Jeremiah said it would become "the valley of slaughter," where the dead would be buried until there was no room left (Jeremiah 7:32). Isaiah saw the "carcases" of the rebels there, with a worm that does not die and a fire not quenched (Isaiah 66:24). Carcases are dead bodies, not living souls.`,
+        `The rest came out of Greek religion. Hades was the Greek god of the dead, and his name became the name of his kingdom. Tartarus was the pit where Zeus locked the Titans. Plato taught that the soul can never die, and that the worst souls are punished in Tartarus forever. Six Greek words carried that world into the church. Choose a word.`,
       ],
-      gehenna: {
-        label: "The One Word That Is Not Greek",
-        title: "Gehenna — the word Yahushua used",
-        text: `When Yahushua warned of "hell fire," the word is Gehenna, the Valley of Hinnom just outside Jerusalem. It is a Hebrew place, not a Greek god. Jeremiah said it would become "the valley of slaughter," where the dead would be buried until there was no room left (Jeremiah 7:32). Isaiah's last verse pictures the "carcases" of the rebels, with a worm that does not die and a fire not quenched (Isaiah 66:24). Carcases are dead bodies. A fire not quenched is one nobody puts out. It burns until the work is done.`,
+      // The word tabs, in DoctrineTabs' own shape (departure-tabs.js), rendered
+      // by that component with `bare` and `warmGreek`. Marks: *italic*.
+      // ids are the Greek Influence anchors, so #word-<id> and each tab's link
+      // land on the right word.
+      tabs: {
+        tabs: [
+          {
+            id: "hades", greek: "Hadēs", kjv: "hell", role: "The root word", more: "Hadēs on Greek Influence",
+            verse: { ref: "Acts 2:27", text: "Because thou wilt not leave my soul in hell, neither wilt thou suffer thine Holy One to see corruption." },
+            taught: [`Hell is a place of fire, and the lost go there the moment they die. The rich man of Luke 16 is the usual proof: "in hell he lift up his eyes, being in torments." So Hades, preachers say, is burning right now, and it is full of souls who are awake and suffering.`],
+            word: [
+              `To the Greeks, Hades was a god. He was a son of Kronos and a brother of Zeus, and when the brothers divided the world, he drew the underworld as his share. His name became the name of his kingdom.`,
+              `In Homer's *Odyssey*, Odysseus travels to that kingdom and the dead speak to him. They remember their lives, they grieve, and they want news of the living. Later Greek writers added rivers, judges, and punishments.`,
+              `When the Greek translators of the Old Testament came to the Hebrew word *Sheol*, they wrote *Hadēs*. The word came in, and the god's living kingdom of the dead came in with it.`,
+            ],
+            hebrew: [
+              `*Sheol* is the grave, the pit, the place of the dead, and it is quiet. "There is no work, nor device, nor knowledge, nor wisdom, in the grave, whither thou goest" (Ecclesiastes 9:10). "In death there is no remembrance of thee" (Psalm 6:5).`,
+              `Good men went there too. Jacob expected to "go down into the grave" mourning for Joseph (Genesis 37:35). *Sheol* is not a place of punishment. It is where every dead man waits for the resurrection.`,
+            ],
+            reread: [`"Thou wilt not leave my soul in the grave, neither wilt thou suffer thine Holy One to see corruption." Yahushua lay in a tomb, not in a fire, and Yahuah raised Him out of it.`],
+            timeline: [
+              ["About 750 BC", `Homer's *Odyssey* pictures Hades as a kingdom where the dead talk, remember, and grieve.`],
+              ["About 250 BC on", `The Greek translation of the Old Testament renders *Sheol* as *Hadēs*.`],
+              ["1611", `The King James translators render *Hadēs* as "hell" ten times and as "grave" once (1 Corinthians 15:55).`],
+              ["1901", `The American Standard Version leaves the words untranslated, "Sheol" and "Hades," so readers can see they are not "hell."`],
+              ["Today", `Funeral sermons place the lost in a burning Hades the moment they die.`],
+            ],
+            built: [
+              `A fire already burning, before any judgment has been held.`,
+              `A judgment day with nothing left to decide, though Yahushua said the dead "shall come forth" from the graves to be judged (John 5:28-29).`,
+              `A parable, the rich man and Lazarus, read as a map of the afterlife.`,
+            ],
+          },
+          {
+            id: "tartaroo", greek: "Tartaroō", kjv: "cast down to hell", role: "The root word", more: "Tartaroō on Greek Influence",
+            verse: { ref: "2 Peter 2:4", text: "For if God spared not the angels that sinned, but cast them down to hell, and delivered them into chains of darkness, to be reserved unto judgment;" },
+            taught: [`Hell is the devil's kingdom. He rules it, and his demons torment the souls of sinners there.`],
+            word: [
+              `In Hesiod's poem of the gods, Tartarus is a pit as far below Hades as the sky is above the earth. A bronze anvil dropped from the earth would fall nine days to reach it. Zeus threw the defeated Titans into it and shut them behind bronze gates.`,
+              `Plato later made it the prison of human souls. In his telling, souls too wicked to be cured are thrown into Tartarus and never come out.`,
+              `Peter used the word once. It is a Greek place-name, and it brought the Greek prison of the Titans along with it.`,
+            ],
+            hebrew: [`No Hebrew word stands behind it. The nearest picture is Isaiah's: the "host of the high ones" shall be "gathered together, as prisoners are gathered in the pit, and shall be shut up in the prison, and after many days shall they be visited" (Isaiah 24:21-22). Shut up now, judged later.`],
+            reread: [`Angels cast down, chained in darkness, "reserved unto judgment." A holding place before the judgment, for angels, not a furnace for men.`],
+            timeline: [
+              ["About 700 BC", `Hesiod's *Theogony* describes Tartarus as the prison of the Titans.`],
+              ["About 380 BC", `Plato makes Tartarus the place where incurable souls are punished forever.`],
+              ["About 65 AD", `Peter borrows the place-name once, for the angels that sinned.`],
+              ["1611", `Tartarus, Hades, and Gehenna all become one English word, "hell."`],
+              ["Today", `Medieval art's picture lives on: Satan ruling hell and torturing the damned.`],
+            ],
+            built: [
+              `Satan as the king of hell, when Scripture has him thrown into the fire, not ruling it (Revelation 20:10).`,
+              `Demons as torturers of men.`,
+              `The angels' prison confused with the punishment of men.`,
+            ],
+          },
+          {
+            id: "aion", greek: "Aiōnios", kjv: "everlasting", role: "The root word", more: "Aiōnios on Greek Influence",
+            verse: { ref: "Matthew 25:46", text: "And these shall go away into everlasting punishment: but the righteous into life eternal." },
+            taught: [`The punishment lasts as long as the life. If eternal life never ends, everlasting punishment never ends, so the wicked must burn forever.`],
+            word: [
+              `*Aiōn* meant an age, a lifetime, a long span of time. Plato changed that. In his *Timaeus* he set *aiōn*, the timeless forever of the gods' world, against *chronos*, ordinary time.`,
+              `In later Greek and Roman religion, Aion became a god of unending time, pictured with a serpent wound around his body. The philosopher's timeless forever took the place of the Hebrew idea of an age.`,
+            ],
+            hebrew: [`*Olam* is a long span whose end is hidden from view. Aaron's sons held "an everlasting priesthood" (Exodus 40:15), yet it gave way to Messiah's. A servant who loved his master served him "for ever" (Exodus 21:6), that is, for life. Jonah in the fish said the earth's bars were about him "for ever" (Jonah 2:6). It lasted three days.`],
+            reread: [`"Everlasting punishment" is "everlasting destruction" (2 Thessalonians 1:9): a punishment whose result never reverses. It is like "eternal judgment" (Hebrews 6:2) and "eternal redemption" (Hebrews 9:12), each done once with a result that lasts. Sodom suffered "eternal fire" (Jude 7) and is ashes today (2 Peter 2:6). Even the smoke that rises "for ever and ever" (Revelation 14:11) is Isaiah's smoke over Edom, which rises "for ever" (Isaiah 34:10). Edom is not burning now.`],
+            timeline: [
+              ["About 360 BC", `Plato's *Timaeus* makes *aiōn* the timeless eternity of the gods.`],
+              ["Later centuries BC", `Aion is worshiped as a god of endless time.`],
+              ["About 420 AD", `Augustine argues that "eternal" must mean endless for the punishment as well as the life.`],
+              ["1611", `The King James Version renders the word "everlasting" and "eternal."`],
+              ["Today", `Matthew 25:46 is the first verse quoted to prove endless torment.`],
+            ],
+            built: [
+              `Endless conscious torment as church doctrine.`,
+              `A penalty the Torah never names. The Torah's penalty for sin is death.`,
+            ],
+          },
+          {
+            id: "aidios", greek: "Aidios", kjv: "everlasting", role: "The root word", more: "Aidios on Greek Influence",
+            verse: { ref: "Jude 6", text: "And the angels which kept not their first estate, but left their own habitation, he hath reserved in everlasting chains under darkness unto the judgment of the great day." },
+            taught: [`The chains of hell never come off, and its darkness never ends. This verse is used to show that hell is forever.`],
+            word: [`*Aidios* was Aristotle's word for what has no beginning and no end. He taught that the heavens and their turning were *aidios*: never made and never ending. It is a philosopher's word for a universe with no Creator.`],
+            hebrew: [`*Olam* again. Only Yahuah is truly without beginning or end: "from everlasting to everlasting, thou art God" (Psalm 90:2).`],
+            reread: [`"Everlasting chains under darkness unto the judgment." The chains hold until the day. The word tells how sure the hold is, not that judgment never comes.`],
+            timeline: [
+              ["About 350 BC", `Aristotle calls the heavens *aidios*, uncreated and unending.`],
+              ["About 65 AD", `Jude uses the word once, for the chains on the fallen angels.`],
+              ["Later", `The church reads Jude 6 alongside Matthew 25:46 as a second proof of endless hell.`],
+            ],
+            built: [
+              `The angels' holding place read as the final hell itself.`,
+              `A second proof text for endless torment, borrowed from a word about chains.`,
+            ],
+          },
+          {
+            id: "katachthonios", greek: "Katachthonios", kjv: "under the earth", role: "The root word", more: "Katachthonios on Greek Influence",
+            verse: { ref: "Philippians 2:10", text: "That at the name of Yahushua every knee should bow, of things in heaven, and things in earth, and things under the earth;" },
+            taught: [`Souls are alive under the earth right now, in a realm of the dead. Yahushua went down there after His death to preach to them and set some free.`],
+            word: [
+              `The Greeks had gods "under the earth": Hades, Persephone, Hecate, and Hermes, who led the dead down. They were honored at night, with offerings poured into pits in the ground.`,
+              `Greeks wrote curses on thin lead sheets, addressed them to the gods under the earth, and dropped them into graves and wells so the dead would carry them down.`,
+            ],
+            hebrew: [`The dead are in the dust, asleep. "Many of them that sleep in the dust of the earth shall awake" (Daniel 12:2). "Awake and sing, ye that dwell in dust" (Isaiah 26:19).`],
+            reread: [`Every knee bows, in heaven, on earth, and under the earth. Those under the earth bow when they are raised, as Daniel said. John saw the same whole creation praising, "such as are under the earth" among them (Revelation 5:13).`],
+            timeline: [
+              ["About 700 BC", `Hesiod and Homer describe the gods under the earth.`],
+              ["About 400 BC", `Lead curse tablets to the underworld gods are common across the Greek world.`],
+              ["About 60 AD", `Paul uses the word once, for every knee bowing.`],
+              ["About 390 AD", `"He descended into hell" appears in a creed of the church at Aquileia, later part of the Apostles' Creed.`],
+              ["Middle Ages", `The "harrowing of hell" becomes a favorite story: Christ breaking into the underworld to free souls.`],
+            ],
+            built: [
+              `"He descended into hell" in the creed recited every Sunday.`,
+              `A living underworld of souls between death and resurrection.`,
+              `Prayers to the dead, and prayers for them.`,
+            ],
+          },
+          {
+            id: "apokatastasis", greek: "Apokatastasis", kjv: "restitution", role: "The root word", more: "Apokatastasis on Greek Influence",
+            verse: { ref: "Acts 3:21", text: "Whom the heaven must receive until the times of restitution of all things, which God hath spoken by the mouth of all his holy prophets since the world began." },
+            taught: [`In some churches, "restitution of all things" means every person will be saved in the end, even the devil. Hell is real, they say, but it is a cleansing fire, and everyone comes out.`],
+            word: [
+              `The Stoics taught a great circle of time. The stars return to their first places, the world is burned up in fire, and everything begins again, over and over. *Apokatastasis* was their word for that return.`,
+              `About 230 AD, Origen took the word into the church. He taught that every soul, even demons and the devil, would one day be purified and restored. His teaching was condemned in the sixth century, but it never went away.`,
+            ],
+            hebrew: [`*Shuv*, to return, to restore. The prophets used it for Israel brought home: "I will bring again the captivity of my people Israel and Judah ... and I will cause them to return to the land" (Jeremiah 30:3).`],
+            reread: [`The restitution is what "all his holy prophets" spoke of: Yahuah's people and land restored under Messiah. Not the rescue of the devil.`],
+            timeline: [
+              ["About 300 BC", `The Stoics teach the endless cycle of fire and return.`],
+              ["About 230 AD", `Origen teaches that all souls, even the devil, will be restored.`],
+              ["Sixth century", `Origen's teaching is condemned.`],
+              ["1790s", `The Universalist Church organizes in America.`],
+              ["2011", `"Love Wins" brings the idea back to evangelical readers.`],
+            ],
+            built: [
+              `Universalism, the backlash against a hell too cruel to believe.`,
+              `Second-chance teachings after death.`,
+              `Endless torment and everyone-saved, two sides of one error. Both begin with a soul that cannot die.`,
+            ],
+          },
+        ],
       },
-      again: `"The smoke of their torment ascendeth up for ever and ever" (Revelation 14:11). Isaiah said the same of Edom: "the smoke thereof shall go up for ever" (Isaiah 34:10). Edom is not smoking today. Smoke is what rises after the fire has done its work.`,
-      timeline: [
-        ["About 700 BC", `Homer and Hesiod describe Hades, the kingdom of the dead, and Tartarus, the prison pit below it.`],
-        ["About 380 BC", `Plato teaches the soul cannot die, and that the worst souls are thrown into Tartarus and never come out.`],
-        ["About 150 AD", `The <em>Apocalypse of Peter</em>, a writing outside the Bible, gives Christians a guided tour of hell's torments.`],
-        ["About 200 AD", `Tertullian teaches the wicked burn forever, and writes of looking forward to watching them suffer.`],
-        ["About 420 AD", `Augustine argues that the bodies of the damned will burn forever without being consumed.`],
-        ["About 1314", `Dante's <em>Inferno</em> maps hell circle by circle and fixes the picture for centuries.`],
-        ["1513", `The Fifth Lateran Council declares the soul immortal as official teaching.`],
-        ["1646", `The Westminster Confession, the Protestant standard, says the wicked are "cast into eternal torments."`],
-        ["1741", `Jonathan Edwards preaches "Sinners in the Hands of an Angry God."`],
-        ["Today", `The funeral sermon, the altar call, and "turn or burn."`],
-      ],
-      built: [
-        `Fear as the engine of the altar call.`,
-        `A picture of Yahuah as a torturer, when He says "I have no pleasure in the death of the wicked" (Ezekiel 33:11).`,
-        `Purgatory, indulgences, and prayers for the dead.`,
-        `Universalism, the backlash that says no one is lost at all.`,
-        `Satan as the king of hell, when Scripture has him thrown into the fire, not ruling it (Revelation 20:10).`,
-      ],
       oldPath: `Scripture never needed Hades. The wages of sin is death, and death is the end of life, not life in another place. Yahuah's fire consumes, the way it consumed Sodom, Nadab and Abihu, and the men who stood with Korah. Life without end is a gift, given to those who come through Messiah. And at the very end, John saw death and hell themselves cast into the lake of fire, "the second death" (Revelation 20:14). After that, "there shall be no more death" (Revelation 21:4).`,
       // Further reading. "oldPath", "riddle" and "greek" resolve from the pair;
       // anything else is a plain href.

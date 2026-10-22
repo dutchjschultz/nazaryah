@@ -1,5 +1,5 @@
 ---
-// DoctrineTabs.astro · 1009 V2 — tabbed Departure page body: a short opening,
+// DoctrineTabs.astro · 1022 V3 — tabbed Departure page body: a short opening,
 // one tab per root word (The Greek word / What the Hebrew said / How it grew —
 // a gold timeline / What it built + a link to the word on Words Your Bible
 // Borrowed), then a closing "The Old Path" with Further Reading.
@@ -14,18 +14,25 @@
 // Hebrew beneath it / a boxed "Read it again", then How it grew and What it built
 // as before. A tab without `verse` keeps the V1 sections. Further Reading labels
 // may hold {count}, filled with the unique word count from borrowed-words-page.js.
+// V3 (Hell Doctrine V2 brief 1022 V2): three opt-in props for the trial layout
+// (DoctrinePageV2), all absent on every classic page, which renders as before.
+//   data       a tabs object in this file's shape, used instead of the slug lookup
+//   bare       the tab row and panels only; the caller renders opening and close
+//   warmGreek  "What the Greek brought in" heading in the warm red
+// A tab may carry `more` (its Greek Influence link text) and a timeline row may
+// be [when, what] with no "who".
 import { departureTabs } from "../data/departure-tabs.js";
 import { doctrines as bwDoctrines } from "../data/borrowed-words-page.js";
 const wordCount = new Set(bwDoctrines.flatMap((x) => x.words.map((w) => w.id))).size;
-interface Props { slug: string; }
-const { slug } = Astro.props;
-const d = departureTabs[slug];
+interface Props { slug?: string; data?: any; bare?: boolean; warmGreek?: boolean; }
+const { slug, data, bare = false, warmGreek = false } = Astro.props;
+const d = data ?? departureTabs[slug!];
 const esc = (s: string) => s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
 const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>").replace(/\*(.+?)\*/g, "<em>$1</em>");
 ---
 {d && (
 <div class="dt">
-  <section class="dt-opening">{d.opening.map((p) => <p set:html={fmt(p)} />)}</section>
+  {!bare && <section class="dt-opening">{d.opening.map((p) => <p set:html={fmt(p)} />)}</section>}
 
   <div class="dt-tabs" role="tablist" aria-label="Root words">
     {d.tabs.map((t, i) => (
@@ -46,7 +53,7 @@ const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>
           <blockquote class="dt-verse"><p set:html={fmt(t.verse.text)} /><cite>{t.verse.ref} (KJV)</cite></blockquote>
           <h3>What you were taught</h3>
           {t.taught.map((p) => <p set:html={fmt(p)} />)}
-          <h3>What the Greek brought in</h3>
+          <h3 class={warmGreek ? "dt-warm" : undefined}>What the Greek brought in</h3>
           {t.word.map((p) => <p set:html={fmt(p)} />)}
           <h3>The Hebrew beneath it</h3>
           {t.hebrew.map((p) => <p set:html={fmt(p)} />)}
@@ -62,22 +69,23 @@ const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>
       )}
       <h3>How it grew</h3>
       <ol class="dt-time">
-        {t.timeline.map(([when, who, what]) => (
-          <li><span class="dt-when">{when}</span><span class="dt-who">{who}</span>{" "}<span class="dt-what" set:html={fmt(what)} /></li>
-        ))}
+        {t.timeline.map((row) => {
+          const [when, who, what] = row.length === 2 ? [row[0], "", row[1]] : row;
+          return <li><span class="dt-when">{when}</span>{who && <span class="dt-who">{who}</span>}{who && " "}<span class="dt-what" set:html={fmt(what)} /></li>;
+        })}
       </ol>
       <h3>What it built</h3>
       <ul class="dt-built">{t.built.map((b) => <li set:html={fmt(b)} />)}</ul>
-      <p class="dt-more"><a href={`/doctrines/borrowed-words/#${t.id}`}>{t.greek} on Words Your Bible Borrowed →</a></p>
+      <p class="dt-more"><a href={`/doctrines/borrowed-words/#${t.id}`}>{t.more ?? `${t.greek} on Words Your Bible Borrowed`} →</a></p>
     </section>
   ))}
 
-  <section class="dt-closing">
+  {!bare && <section class="dt-closing">
     <h2>The Old Path</h2>
     {d.closing.map((p) => <p set:html={fmt(p)} />)}
     <h3>Further Reading</h3>
     <ul>{d.further.map(([label, href]) => <li><a href={href}>{label.replace("{count}", String(wordCount))}</a></li>)}</ul>
-  </section>
+  </section>}
 </div>
 )}
 
@@ -181,6 +189,8 @@ const fmt = (s: string) => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>
     font-family: var(--font-display); font-size: 10px !important; font-weight: 600; letter-spacing: 0.25em;
     text-transform: uppercase; color: #BA7517; margin: 0 0 0.5rem !important;
   }
+
+  .dt h3.dt-warm { color: #e0a08c; border-bottom-color: rgba(165,83,63,0.45); }
 
   .dt-built { list-style: disc; padding-left: 1.3rem; margin: 0 0 1.4rem; }
   .dt-built li { margin: 0 0 0.6rem; }
