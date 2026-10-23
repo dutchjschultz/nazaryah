@@ -4,6 +4,8 @@ deck: "Ezekiel in five blocks, from the glory leaving Jerusalem to the glory com
 description: "Ezekiel in five blocks, from the glory leaving Jerusalem to the glory coming home."
 slug: "ezekiel-the-glory-leaves-and-returns"
 category: "The Quick Scroll"
+series: "ezekiel"
+seriesRole: "main"
 date: 2026-10-22
 author: "Nazaryah"
 featured: false
@@ -82,7 +84,7 @@ The evening before, Ezekiel’s mouth is opened (33:22), the mouth that was shut
 
 Most pulpits stop at the new heart. Ezekiel does not. The heart is made new so that the statutes can be kept. Same law, new place: the heart instead of the stone.
 
-**The bones and the sticks.** Chapter 37 gives the two pictures of the age. The valley of dry bones stands up when the breath enters them, and the Hebrew word for that breath is *ruach*, the same word as spirit (37:9-10, 14). Then two sticks, one for Judah and one for Joseph and Ephraim, become one stick in Ezekiel’s hand (37:16-19). One nation, one king, one Shepherd, walking in Yahuah’s judgments and keeping His statutes (37:22-24).
+**The bones and the sticks.** Chapter 37 gives the two pictures of the age. The valley of dry bones stands up when the breath enters them, and the Hebrew word for that breath is *ruach*, the same word as spirit (37:9-10, 14). Then two sticks, one for Judah and one for Joseph and Ephraim, become one stick in Ezekiel’s hand (37:16-19). One nation, one king, one Shepherd, walking in Yahuah’s judgments and keeping His statutes (37:22-24). The full vision is read in [*Can These Bones Live?*](/blog/ezekiel-vision-three-can-these-bones-live).
 
 **How it ends.** The chapter reaches past the age to its close: the graves opened and the people brought up out of them (37:12-13), and the sanctuary set in their midst forever (37:26-28).
 

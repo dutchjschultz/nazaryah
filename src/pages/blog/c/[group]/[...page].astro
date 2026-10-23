@@ -7,7 +7,7 @@ import BlogCard from '../../../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
 import { BLOG_GROUPS, groupOf, POSTS_PER_PAGE, extrasOf } from '../../../../data/blog-groups.js';
 import { COLLECTIONS, collectionSlugs, leavesTopic } from '../../../../data/collections.js';
-import { isSeriesCompanion, seriesFor, liveCount } from '../../../../lib/study-series.js';
+import { isSeriesCompanion, seriesFor, companionCount } from '../../../../lib/study-series.js';
 
 export async function getStaticPaths({ paginate }) {
   const all = (await getCollection('posts', ({ data }) => data.draft !== true))
@@ -52,6 +52,8 @@ export async function getStaticPaths({ paginate }) {
 }
 
 const { page, group, total } = Astro.props;
+// Book study series: the main study's card counts its published companions.
+const allPosts = await getCollection('posts');
 const [one, many] = group.countNoun || ['study', 'studies'];
 const [secOne, secMany] = group.sectionNoun || ['book', 'books'];
 const sectioned = group.sections || group.entries;
@@ -94,7 +96,7 @@ const pageHref = (n) => (n === 1 ? `/blog/c/${group.key}` : `/blog/c/${group.key
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
         {page.data.map((post) => {
           const s = seriesFor(post);
-          const n = s && post.slug === s.main ? liveCount(s) : 0;
+          const n = s && post.slug === s.main ? companionCount(allPosts, s) : 0;
           return <BlogCard post={post} note={n ? `plus ${n} companion ${n === 1 ? 'study' : 'studies'}` : undefined} />;
         })}
       </div>

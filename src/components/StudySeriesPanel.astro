@@ -1,5 +1,7 @@
 ---
-// src/components/StudySeriesPanel.astro · 1023 V1
+// src/components/StudySeriesPanel.astro · 1023 V2
+// V2 (associations batch 72): colours per series (toneOf(group, data)); Ezekiel's
+// visions ember, its Read Alongside tiles parchment.
 // V1 (associations batch 70): the button panel at the top of a book's Quick Scroll
 // study, directly under the masthead. One block per group (a letterspaced header,
 // its italic `sub`), then big tiles: `n` large and bold, `title` beneath. Each
@@ -21,7 +23,7 @@ const show = data && post.slug === data.main;
 {show && (
   <nav class="ssp" aria-label="Study series" data-pagefind-ignore>
     {data.groups.map((g: any) => {
-      const t = toneOf(g);
+      const t = toneOf(g, data);
       return (
         <section class:list={['ssp-group', `ssp-${g.key}`, { 'ssp-single': g.items.length === 1 }]}
           style={`--ssp-bg: linear-gradient(160deg, ${t.from}, ${t.to}); --ssp-ink: ${t.ink}; --ssp-edge: ${t.edge};`}>

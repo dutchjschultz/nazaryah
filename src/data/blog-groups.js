@@ -1,4 +1,6 @@
-// blog-groups 1023 V76.js
+// blog-groups 1023 V77.js
+// V77: ezekiel-vision-three-can-these-bones-live joins the-quick-scroll (category The Quick Scroll), the first
+// Ezekiel series companion (the topic page lists the Ezekiel main only). Map total 187 -> 188.
 // V76: The Making of Lucifer trilogy — is-this-the-man and thou-art-a-man-and-not-el join scripture-unfiltered;
 // the-lucifer-deception moves from buried-in-plain-sight to the-root (rewritten as a word study). Map total 185 -> 187.
 // V75: the Zechariah study series joins the-quick-scroll (category The Quick Scroll): the main
@@ -291,6 +293,7 @@ export const POST_GROUP = {
   'micah-three-calls-to-hear': 'the-quick-scroll',
   'zephaniah-the-day-closes-in': 'the-quick-scroll',
   'ezekiel-the-glory-leaves-and-returns': 'the-quick-scroll',
+  'ezekiel-vision-three-can-these-bones-live': 'the-quick-scroll', // Ezekiel series companion
   'zechariah-eight-visions-two-burdens': 'the-quick-scroll', // series main
   'zechariah-vision-one-riders-among-the-myrtles': 'the-quick-scroll',
   'zechariah-vision-two-four-horns-and-four-carpenters': 'the-quick-scroll',

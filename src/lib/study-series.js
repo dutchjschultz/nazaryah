@@ -1,4 +1,10 @@
-// study-series 1023 V1.js
+// study-series 1023 V2.js
+// V2 (associations batch 72): Ezekiel joins (src/data/ezekiel-series.js). Colours are
+// per series now (SERIES below: each group key -> a palette tone), since Ezekiel's
+// visions burn ember where Zechariah's are night. A group may hold studies that are
+// NOT the series' own ("Read Alongside": posts in other categories, no `series`).
+// Only a post carrying the series key is a companion: it alone counts in
+// "plus N companion studies", wears the series bar and joins Previous / Next.
 // V1 (associations batch 70): the registry of book study series — a Quick Scroll
 // main study plus its companion studies, each series in its own data file
 // (src/data/zechariah-series.js). A post joins a series with `series: "<key>"`;
@@ -6,15 +12,35 @@
 // StudySeriesBar (on each companion) read from here, as do the category page
 // (companions stay off it) and the homepage (companions stay off it).
 //
-//   seriesFor(post)        the series data, or null (book chapters' `series` is not a key here)
-//   isSeriesCompanion(post) in a registered series and not its main study
-//   seriesItems(data)      every item, in data-file order, with its group
-//   liveCount(data)        live companion studies
-//   placeOf(data, slug)    { item, group, prev, next } — prev/next skip `soon` items
-//   toneOf(group)          the group's colours (by `tone`, else its key): bg, ink, edge
+//   seriesFor(post)            the series data, or null (book chapters' `series` is not a key here)
+//   isSeriesCompanion(post)    in a registered series and not its main study
+//   seriesItems(data)          every item, in data-file order, with its group
+//   companionCount(posts, data) published companions (posts carrying the series key)
+//   placeOf(data, slug, posts) { item, group, prev, next } — prev/next run through the
+//                              live companions only, skipping `soon` items and Read Alongside
+//   toneOf(group, data)        the group's colours: from, to, ink, edge
 import { ZECHARIAH_SERIES } from '../data/zechariah-series.js';
+import { EZEKIEL_SERIES } from '../data/ezekiel-series.js';
 
-export const STUDY_SERIES = { zechariah: ZECHARIAH_SERIES };
+// Palette. Each colour means something: night for visions seen at night, ember for
+// the fire of Ezekiel's throne visions, burgundy for the fasting question, bronze for
+// a burden carried, parchment for studies already on the site (the Berean card look).
+const PALETTE = {
+  night:     { from: '#1F3864', to: '#2E4A7D', ink: '#E2C06A', edge: '#C9A44A' },
+  ember:     { from: '#7A2E12', to: '#A8461C', ink: '#F0C86A', edge: '#E0A04A' },
+  burgundy:  { from: '#5C1F2B', to: '#5C1F2B', ink: '#F1E6CF', edge: '#B98A5A' },
+  bronze:    { from: '#7A5A1E', to: '#9C7428', ink: '#FBF3DF', edge: '#E3C27A' },
+  parchment: { from: '#F5E8C8', to: '#E8D5A3', ink: '#3A2410', edge: '#A07850' },
+};
+
+const SERIES = {
+  zechariah: { data: ZECHARIAH_SERIES, tones: { visions: 'night', fasting: 'burgundy', burdens: 'bronze' } },
+  ezekiel:   { data: EZEKIEL_SERIES,   tones: { visions: 'ember', related: 'parchment' } },
+};
+
+export const STUDY_SERIES = Object.fromEntries(Object.entries(SERIES).map(([k, s]) => [k, s.data]));
+
+const keyOf = (data) => Object.keys(SERIES).find((k) => SERIES[k].data === data);
 
 export const seriesFor = (post) => STUDY_SERIES[post?.data?.series] ?? null;
 
@@ -26,22 +52,20 @@ export const isSeriesCompanion = (post) => {
 export const seriesItems = (data) =>
   data.groups.flatMap((group) => group.items.map((item) => ({ item, group })));
 
-export const liveCount = (data) => seriesItems(data).filter(({ item }) => item.status === 'live').length;
+const companionSlugs = (posts, data) =>
+  new Set(posts.filter((p) => !p.data.draft && seriesFor(p) === data && p.slug !== data.main).map((p) => p.slug));
 
-export function placeOf(data, slug) {
-  const all = seriesItems(data);
-  const live = all.filter(({ item }) => item.status === 'live' && item.slug);
-  const i = live.findIndex(({ item }) => item.slug === slug);
+export const companionCount = (posts, data) => companionSlugs(posts, data).size;
+
+export function placeOf(data, slug, posts) {
+  const own = companionSlugs(posts, data);
+  const chain = seriesItems(data).filter(({ item }) => item.status === 'live' && own.has(item.slug));
+  const i = chain.findIndex(({ item }) => item.slug === slug);
   if (i < 0) return null;
-  return { ...live[i], prev: live[i - 1] ?? null, next: live[i + 1] ?? null };
+  return { ...chain[i], prev: chain[i - 1] ?? null, next: chain[i + 1] ?? null };
 }
 
-// Each group's colour means something: the visions were seen at night (navy,
-// gold lettering); the fasting question burgundy on parchment; a burden is a
-// weight carried (bronze, cream). A new series picks one by `tone` or adds its own.
-const TONES = {
-  visions: { from: '#1F3864', to: '#2E4A7D', ink: '#E2C06A', edge: '#C9A44A' },
-  fasting: { from: '#5C1F2B', to: '#5C1F2B', ink: '#F1E6CF', edge: '#B98A5A' },
-  burdens: { from: '#7A5A1E', to: '#9C7428', ink: '#FBF3DF', edge: '#E3C27A' },
+export const toneOf = (group, data) => {
+  const s = SERIES[keyOf(data)];
+  return PALETTE[group.tone ?? s?.tones[group.key]] ?? PALETTE.bronze;
 };
-export const toneOf = (group) => TONES[group.tone ?? group.key] ?? TONES.burdens;

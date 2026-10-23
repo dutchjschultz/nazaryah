@@ -1,5 +1,7 @@
 ---
-// src/components/StudySeriesBar.astro · 1023 V1
+// src/components/StudySeriesBar.astro · 1023 V2
+// V2 (associations batch 72): Previous / Next run through the series' own companions
+// only (not its Read Alongside studies); colours per series.
 // V1 (associations batch 70): the slim bar under the masthead of each companion
 // study in a book study series. "Part of <main title>" (linked to the Quick
 // Scroll), the item's place ("Vision 1 of 8" when its `n` is a counted run, else
@@ -11,10 +13,11 @@ import { seriesFor, isSeriesCompanion, placeOf, toneOf } from '../lib/study-seri
 interface Props { post: any; }
 const { post } = Astro.props;
 const data = isSeriesCompanion(post) ? seriesFor(post) : null;
-const place = data ? placeOf(data, post.slug) : null;
-const main = place ? (await getCollection('posts', (p) => p.slug === data.main))[0] : null;
+const posts = data ? await getCollection('posts') : [];
+const place = data ? placeOf(data, post.slug, posts) : null;
+const main = place ? posts.find((p) => p.slug === data.main) : null;
 
-const t = place ? toneOf(place.group) : null;
+const t = place ? toneOf(place.group, data) : null;
 // "Vision 1" -> "Vision 1 of 8"; other labels stand as written.
 const where = place
   ? (/^\S+ \d+$/.test(place.item.n) ? `${place.item.n} of ${place.group.items.length}` : place.item.n)
