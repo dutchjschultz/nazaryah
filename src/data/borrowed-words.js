@@ -1,4 +1,6 @@
-// borrowed-words 1022 V17.js
+// borrowed-words 1023 V18.js
+// V18 (Greek Influence panels 1023 V1): charisma joins the 03 panel (last) and orthotomeō leads the
+// 14 panel, matching the tab order; lines drawn from the panel text. No Strong's number.
 // V17: 20 Communion panel follows its tab order — anamnēsis · koinōnia · deipnon · mystērion · eucharistia.
 // V16: 14 Rightly Divided panel in its tab order (oikonomia · ekklēsia); orthotomeō has no panel entry yet.
 // V15: 13 Faith Alone panel follows its v2 tabs — pistis · gnōsis · palingenesia · nikē · euangelion; mystērion and eucharistia are Communion's.
@@ -131,7 +133,11 @@ export const doctrines = [
       { id: "ekstasis", greek: "Ekstasis", strongs: "G1611", yourBible: "trance",
         sourceName: "Dionysus’s worshippers wrote", sourceLine: "ekstasis — standing outside oneself in frenzy",
         scriptureName: "Paul wrote", scriptureLine: "“God is not the author of confusion” (1 Corinthians 14:33)",
-        linkLabel: "Dionysus’s word or Yahuah’s?" }
+        linkLabel: "Dionysus’s word or Yahuah’s?" },
+      { id: "charisma", greek: "Charisma", strongs: "", yourBible: "gift",
+        sourceName: "Max Weber wrote", sourceLine: "charisma — a leader’s personal magnetism, the power to draw followers (1922)",
+        scriptureName: "Moses wrote", scriptureLine: "chen — the favor Noah “found” in the eyes of Yahuah (Genesis 6:8)",
+        linkLabel: "Weber’s word or Yahuah’s?" }
     ]
   },
   {
@@ -366,6 +372,10 @@ export const doctrines = [
     num: "14", oldPathsSlug: "one-olive-tree", departureSlug: "rightly-divided",
     departureSource: "Darby",
     words: [
+      { id: "orthotomeo", greek: "Orthotomeō", strongs: "", yourBible: "rightly dividing",
+        sourceName: "Scofield wrote", sourceLine: "Rightly Dividing the Word of Truth — the Bible cut into separate ages (1888)",
+        scriptureName: "Solomon wrote", scriptureLine: "yashar — “he shall direct thy paths” (Proverbs 3:6)",
+        linkLabel: "Scofield’s word or Yahuah’s?" },
       { id: "oikonomia", greek: "Oikonomia", strongs: "G3622", yourBible: "dispensation",
         sourceName: "Darby wrote", sourceLine: "dispensations — separate ages with separate terms",
         scriptureName: "Paul wrote", scriptureLine: "a stewardship “committed unto me” (1 Corinthians 9:17)",

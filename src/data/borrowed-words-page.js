@@ -1,4 +1,6 @@
-// borrowed-words-page 1022 V17.js
+// borrowed-words-page 1023 V18.js
+// V18 (Greek Influence panels 1023 V1): charisma and orthotomeō take the new text — source,
+// Hebrew beneath, what it fed, bridge; both tagged Later teachers & translators; no Strong's number.
 // V17 (Faith Alone / Rightly Divided briefs 1022): orthotomeō links to its new Rightly Divided tab;
 // mystērion and eucharistia link to their Communion tabs (they left Faith Alone); oikonomia reads
 // "Darby’s dispensations, set at seven in the Scofield notes".
@@ -438,15 +440,15 @@ export const doctrines = [
       {
         "id": "charisma",
         "greek": "Charisma",
-        "strongs": "G5486",
+        "strongs": null,
         "kjv": "gift",
-        "source": "From charis, the gift of the Graces.",
-        "hebrew": "Gifts given by Yahuah for building up the assembly in order (1 Corinthians 14:33, 40).",
-        "fed": "The “charismatic” movement — gifts defined by sensation rather than by edification and order.",
-        "bridge": null,
+        "source": "Charisma is rare in Greek writing before the New Testament. It grew from charis, favor, the word behind the Charites, the Greek goddesses of favor and charm. Its modern sense came much later. In 1922 the German writer Max Weber used “charisma” for a leader’s personal magnetism, the power to draw followers by force of personality. By the 1960s the tongues-speaking renewal in Protestant and Catholic churches had taken the name “charismatic.”",
+        "hebrew": "Chen, favor, the favor Noah “found” in the eyes of Yahuah (Genesis 6:8). A gift of favor is given, never performed.",
+        "fed": "The gifts treated as a show of power, with tongues as the proof that a believer has the Spirit, and “charismatic” worn as a badge that sets some believers above others.",
+        "bridge": "“The manifestation of the Spirit is given to every man to profit withal” (1 Corinthians 12:7). Paul then asks, “do all speak with tongues?” (1 Corinthians 12:30), and the answer he expects is no.",
         "aliases": [],
         "sources": [
-          "Gods & myths"
+          "Later teachers & translators"
         ],
         "story": [
           {
@@ -1633,12 +1635,12 @@ export const doctrines = [
       {
         "id": "orthotomeo",
         "greek": "Orthotomeō",
-        "strongs": "G3718",
-        "kjv": "rightly divide",
-        "source": "A road-builder’s word: to cut a straight path.",
-        "hebrew": "The Septuagint uses it for “he shall direct thy paths” (Proverbs 3:6).",
-        "fed": "2 Timothy 2:15 read as “divide the Bible into separate ages” instead of “cut a straight path through the word.” The Greek here is plain; the English rendering made the doctrine.",
-        "bridge": null,
+        "strongs": null,
+        "kjv": "rightly dividing",
+        "source": "None. Orthotomeō is a plain workman’s word meaning to cut straight, the way a road is cut through open country or a furrow is plowed in a straight line. The Greek Old Testament uses it for a straight path: “he shall direct thy paths” (Proverbs 3:6) and “the righteousness of the perfect shall direct his way” (Proverbs 11:5). The borrowing came from later teachers, not from pagan religion. In 1888 C. I. Scofield published a booklet titled Rightly Dividing the Word of Truth, and Clarence Larkin’s book of the same name followed in 1921. Both read the word as cutting the Bible into separate ages.",
+        "hebrew": "Yashar, to make straight, the word behind “he shall direct thy paths” (Proverbs 3:6).",
+        "fed": "Scripture cut into dispensations, with the Law and the promises set aside for Israel and the letters of Paul kept for the church.",
+        "bridge": "Paul’s charge to “rightly divide the word of truth” (2 Timothy 2:15) is a charge to keep the road straight, the same straight path Proverbs 3:6 promises to the one who trusts Yahuah.",
         "aliases": [],
         "sources": [
           "Later teachers & translators"

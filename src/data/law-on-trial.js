@@ -9,8 +9,9 @@
 //         'planned' — foundations only; listed so the architecture is visible
 
 export const meta = {
-  version: 12,
-  updated: '2026-10-18', // v12: G-004 Luke 16:16 live — first testimony outside group D
+  version: 13,
+  updated: '2026-10-23', // v13: eight testimonies and two foundations carry `doctrines` (and F-10 `pinned`) from study-doctrine-tags 1022 V2; they join the Go Deeper strips and All Studies (src/lib/doctrine-studies.js)
+  // v12: G-004 Luke 16:16 live — first testimony outside group D
   // v11: live testimonies and foundations carry `date` (first commit, git log) for the homepage Last 30 Days
   // v10: F-10 V3 — one section added
 };
@@ -45,6 +46,7 @@ export const STUDIES = [
     group: 'D',
     status: 'live',
     date: '2026-10-03', // first committed
+    doctrines: ["purification-holiness", "torah-dismissal"],
   },
   {
     id: 'D-002',
@@ -57,6 +59,7 @@ export const STUDIES = [
     group: 'D',
     status: 'live',
     date: '2026-10-03', // first committed
+    doctrines: ["purification-holiness", "torah-dismissal"],
   },
   {
     id: 'D-003',
@@ -69,6 +72,7 @@ export const STUDIES = [
     group: 'D',
     status: 'live',
     date: '2026-10-03', // first committed
+    doctrines: ["purification-holiness", "torah-dismissal"],
   },
   {
     id: 'D-004',
@@ -81,6 +85,7 @@ export const STUDIES = [
     group: 'D',
     status: 'live',
     date: '2026-10-03', // first committed
+    doctrines: ["purification-holiness", "torah-dismissal"],
   },
   {
     id: 'D-012',
@@ -93,6 +98,7 @@ export const STUDIES = [
     group: 'D',
     status: 'live',
     date: '2026-10-03', // first committed
+    doctrines: ["purification-holiness", "torah-dismissal"],
   },
   {
     id: 'D-018',
@@ -105,6 +111,7 @@ export const STUDIES = [
     group: 'D',
     status: 'live',
     date: '2026-10-03', // first committed
+    doctrines: ["purification-holiness", "torah-dismissal"],
   },
   {
     id: 'D-019',
@@ -117,6 +124,7 @@ export const STUDIES = [
     group: 'D',
     status: 'live',
     date: '2026-10-03', // first committed
+    doctrines: ["purification-holiness", "torah-dismissal"],
   },
   {
     id: 'G-004',
@@ -129,6 +137,7 @@ export const STUDIES = [
     group: 'G',
     status: 'live',
     date: '2026-10-18', // first committed
+    doctrines: ["torah-dismissal"],
   },
 ];
 
@@ -238,6 +247,8 @@ export const FOUNDATIONS = [
     verses: 19,
     status: 'live',
     date: '2026-10-03', // first committed
+    doctrines: ["purification-holiness", "torah-dismissal"],
+    pinned: ["purification-holiness"],
     // F-10 V3 (2026-10-11): "The Torah Already Kept Two Lines Apart" added
     // between "Both Words in One Breath" and "What Did Change" (Leviticus 10:10,
     // Deuteronomy 12:22). Nothing else in the foundation changed.
@@ -272,6 +283,7 @@ export const FOUNDATIONS = [
     verses: 12,
     status: 'live',
     date: '2026-10-05', // first committed
+    doctrines: ["torah-dismissal"],
   },
   {
     key: 'f-14',

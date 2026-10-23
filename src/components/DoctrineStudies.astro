@@ -1,5 +1,6 @@
 ---
-// src/components/DoctrineStudies.astro · 1022 V2
+// src/components/DoctrineStudies.astro · 1023 V3
+// V3: entries may be Torah Testimonies (studyPool); each links by studyHref.
 // V2 (Hell Doctrine V2 brief 1022 V5): three studies at most — pinned first,
 // then newest (src/lib/doctrine-studies.js, the same list the All Studies
 // doctrine filter reads). Past three, the band ends "See all N studies on
@@ -13,8 +14,7 @@
 // small caps. No fill, no item borders. Shown only by DoctrinePageV2, so a
 // doctrine gets a strip when it moves to the new layout.
 import { getCollection } from 'astro:content';
-import { postHref } from '../lib/post-href.js';
-import { doctrineStudies, doctrineFilterHref, STRIP_MAX } from '../lib/doctrine-studies.js';
+import { doctrineStudies, doctrineFilterHref, studyHref, STRIP_MAX } from '../lib/doctrine-studies.js';
 interface Props { slug: string; name: string; }
 const { slug, name } = Astro.props;
 const { strip: studies, total } = doctrineStudies(await getCollection('posts'), slug);
@@ -24,7 +24,7 @@ const { strip: studies, total } = doctrineStudies(await getCollection('posts'), 
     <p class="ds-label">Go Deeper · Studies on This Doctrine</p>
     <div class="ds-row">
       {studies.map((s) => (
-        <a class="ds-item" href={postHref(s)}>
+        <a class="ds-item" href={studyHref(s)}>
           <span class="ds-title">{s.data.title}</span>
           {s.data.deck && <span class="ds-deck">{s.data.deck}</span>}
           {s.data.category && <span class="ds-cat">{s.data.category}</span>}
