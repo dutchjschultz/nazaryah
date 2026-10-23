@@ -1,5 +1,6 @@
-// trilogies 1023 V1.js
-// first build — trilogy list for the triptych page and nav mega-menu
+// trilogies 1023 V2.js
+// V2 (trilogy-subtitles 1023 V1): stage subtitle lines for ten trilogies; The Making of Lucifer's line to follow.
+// V1: first build — trilogy list for the triptych page and nav mega-menu
 //
 // THE ONE LIST OF TRILOGIES — studies that stand alone but belong together,
 // curated by hand. Read by the Trilogies page and the Berean Studies menu
@@ -38,7 +39,7 @@ export const TRILOGIES = [
   {
     id: "walking-in-the-vows",
     title: "Walking in the Vows",
-    line: "",
+    line: "The Ten Words as wedding vows: spoken in love, written within, and examined at the feast.",
     studies: [
       { slug: "given-in-love", deck: "Ten words spoken to a rescued people. Not a wall of rules, but a promise." },
       { slug: "written-on-the-heart", deck: "Same law, new place. The finger that wrote on stone now writes on hearts." },
@@ -48,7 +49,7 @@ export const TRILOGIES = [
   {
     id: "awake-and-divided",
     title: "Awake and Divided",
-    line: "",
+    line: "Three famous revivals, and the divided churches each one left behind.",
     studies: [
       { slug: "the-first-awakening-northampton", deck: "The revival every pulpit praises left the colonies with rival churches in every town." },
       { slug: "the-second-awakening-cane-ridge", deck: "Camp meetings, the altar call, and a first seminary built to guard a creed." },
@@ -59,7 +60,7 @@ export const TRILOGIES = [
   {
     id: "born-of-a-woman",
     title: "Born of a Woman",
-    line: "",
+    line: "Where the Son’s story begins: a promised seed, born of a woman in time.",
     studies: [
       { slug: "the-seed-war", deck: "The promise of Genesis 3:15 and the war waged against the seed of the woman." },
       { slug: "the-genesis-of-the-son", deck: "Where Matthew and Luke place His origin: begotten in Mary, not in eternity." },
@@ -69,7 +70,7 @@ export const TRILOGIES = [
   {
     id: "the-marriage-covenant",
     title: "The Marriage Covenant",
-    line: "",
+    line: "Marriage, jealousy, and unfaithfulness, read as the story of Yahuah and His bride.",
     studies: [
       { slug: "marriage-and-divorce", deck: "The writ Yahuah gave, the treachery He hates, and the bride brought home." },
       { slug: "the-law-of-jealousy", deck: "The bitter cup of Numbers 5, taken from the bride and handed to the Son." },
@@ -79,7 +80,7 @@ export const TRILOGIES = [
   {
     id: "the-star-of-your-god",
     title: "The Star of Your God",
-    line: "",
+    line: "The old star-gods of Babylon and Rome, still honored under new names.",
     studies: [
       { slug: "saturnalia", deck: "Saturn's star: Rome's December week, kept under a new name." },
       { slug: "ashtoreth", deck: "The queen of heaven: the goddess Israel would not put away." },
@@ -89,7 +90,7 @@ export const TRILOGIES = [
   {
     id: "when-the-father-spoke",
     title: "When the Father Spoke",
-    line: "",
+    line: "Three times the Father’s voice is heard, and each time it points to the Son.",
     studies: [
       { slug: "two-mountains", deck: "Sinai and the high mountain: the voice Israel feared says, 'Hear ye him.'" },
       { slug: "trinity-files-matthew-3-13-17", deck: "The Jordan: the Father's voice names His beloved Son." },
@@ -99,7 +100,7 @@ export const TRILOGIES = [
   {
     id: "the-beast-of-revelation-13",
     title: "The Beast of Revelation 13",
-    line: "",
+    line: "A beast that copies the Son, and the court that names who stands behind it.",
     studies: [
       { href: "/books/revelation#chapter-13", title: "Chapter 13 — False Claims Enforced", deck: "The sea beast rises, receives the dragon's throne, and demands the world's allegiance." },
       { slug: "the-copy-of-the-son", deck: "Seven marks on the beast, every one lifted from the life of Yahushua." },
@@ -109,7 +110,7 @@ export const TRILOGIES = [
   {
     id: "how-yahuah-speaks",
     title: "How Yahuah Speaks",
-    line: "",
+    line: "The sky, the letters, the parables, and the Son all carry one voice.",
     studies: [
       { slug: "heavens-letters-words-son", deck: "Four voices: the sky, the letters, the words, the Son." },
       { slug: "dark-sayings-of-old", deck: "The parables: meanings written long before they were spoken." },
@@ -119,7 +120,7 @@ export const TRILOGIES = [
   {
     id: "the-tenth-day",
     title: "The Tenth Day",
-    line: "",
+    line: "One day in the seventh month holds a cover, two goats, and a trumpet of release.",
     studies: [
       { slug: "the-kapporet-atonement-cover", deck: "The cover: what the blood was sprinkled on, and why." },
       { slug: "goat-that-was-not-slain", deck: "The goats: one slain, one sent away." },
@@ -129,7 +130,7 @@ export const TRILOGIES = [
   {
     id: "the-garment-and-the-blood",
     title: "The Garment and the Blood",
-    line: "",
+    line: "From Eden’s coat of skins to the firstborn’s robe, every covering has a cost.",
     studies: [
       { slug: "clothed-by-the-owner", deck: "The garment: who made the covering, and what it cost." },
       { slug: "goat-that-was-not-slain", deck: "The blood: two goats, one day, one finished work." },
