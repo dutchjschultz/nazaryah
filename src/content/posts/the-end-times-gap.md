@@ -4,6 +4,8 @@ description: "Every believer has seen the chart: a line from the cross, then a b
 deck: "Four holes cut into prophecy — and who cut them"
 subtitle: "Four Places Where a Blank Was Cut Into a Prophecy That Has None"
 date: 2026-09-29
+doctrines: ["revelation-teaching", "the-millennium"]
+pinned: ["revelation-teaching"]
 author: "Nazaryah"
 category: "Buried in Plain Sight"
 readTime: "9 min"

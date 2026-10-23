@@ -2,6 +2,8 @@
 title: "The Third Awakening: Azusa Street"
 subtitle: "1901–1916 · Topeka, Los Angeles, and Beyond"
 date: 2026-10-19
+doctrines: ["tongue-talking"]
+pinned: ["tongue-talking"]
 author: "Nazaryah"
 category: "Buried in Plain Sight"
 deck: "A tongues revival in an old Los Angeles stable, and the splits that followed."

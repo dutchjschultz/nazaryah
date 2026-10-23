@@ -2,6 +2,7 @@
 title: "The Weight on the Throne"
 description: "Kavod is weight, not light. Glory belongs to the One who sits."
 date: 2026-08-26
+doctrines: ["the-trinity"]
 author: "Dutch Schultz"
 series: "One God, One Name, One Throne"
 seriesOrder: 4

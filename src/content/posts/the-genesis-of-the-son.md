@@ -4,6 +4,8 @@ deck: "Matthew and Luke place His origin in Mary's womb, not in eternity past."
 description: "Matthew and Luke place His origin in Mary's womb, not in eternity past."
 category: "The Counterfeit Throne"
 date: 2026-10-18
+doctrines: ["the-trinity"]
+pinned: ["the-trinity"]
 associations: ["trinity-examined", "lost-in-translation"]
 companion: ["incarnate", "the-seed-war", "one-raiser-not-three"]
 author: "Nazaryah"

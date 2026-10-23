@@ -5,6 +5,7 @@ deck: "A parable: the price paid, the law unchanged, and the walk that still rem
 description: "A parable: the price paid, the law unchanged, and the walk that still remains."
 category: "The Side Door"
 date: 2026-10-10
+doctrines: ["torah-dismissal", "faith-alone"]
 author: "Nazaryah"
 associations: ["two-stage-salvation", "goel-kopher"]
 featured: false

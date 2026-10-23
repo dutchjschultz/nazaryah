@@ -2,6 +2,7 @@
 title: "The Debt of Wendell Hollis"
 description: "A man carried his debt everywhere except the one place that could settle it."
 date: 2026-08-26
+doctrines: ["torah-dismissal"]
 author: "Dutch Schultz"
 series: "One God, One Name, One Throne"
 seriesOrder: 8

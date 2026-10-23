@@ -4,6 +4,7 @@ description: "The best known sentence in the sermon and the least read. Matthew 
 deck: "Finish the paragraph. It ends with the reader removing the mote."
 verse: "Matthew 7:1-6"
 date: 2026-09-08
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "The Law & The Feasts"
 featured: false

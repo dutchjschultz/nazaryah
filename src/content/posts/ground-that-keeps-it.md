@@ -5,6 +5,7 @@ deck: "What the seed was, and why three grounds that heard it produced nothing"
 verse: "Mark 4:1–20"
 commonName: "The Sower"
 date: 2026-09-29
+doctrines: ["torah-dismissal", "faith-alone"]
 author: "Nazaryah"
 category: "Parables"
 featured: false

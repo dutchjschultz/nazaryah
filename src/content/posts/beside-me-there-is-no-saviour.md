@@ -6,6 +6,7 @@ description: "The same Hebrew word Isaiah reserves for Yahuah, Scripture gives t
 slug: "beside-me-there-is-no-saviour"
 category: "The Counterfeit Throne"
 date: 2026-10-13
+doctrines: ["the-trinity"]
 author: "Nazaryah"
 associations: ["trinity-examined", "goel-kopher", "delegated-authority"]
 companion: ["the-throne-and-the-right-hand", "the-redeemer-who-never-needed-redeeming"]

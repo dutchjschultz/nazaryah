@@ -4,6 +4,7 @@ description: "Three pairs close the sermon and all three test one thing. Deutero
 deck: "Two gates, two trees, two builders, and a test the Torah gave first."
 verse: "Matthew 7:13-27"
 date: 2026-09-08
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "The Law & The Feasts"
 featured: false

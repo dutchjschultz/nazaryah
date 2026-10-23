@@ -6,6 +6,7 @@ description: "Seven marks on Revelation 13's sea beast. Every one was copied."
 slug: "the-copy-of-the-son"
 category: "The Counterfeit Throne"
 date: 2026-10-10
+doctrines: ["the-trinity", "revelation-teaching"]
 author: "Nazaryah"
 associations: ["trinity-examined", "delegated-authority", "light-and-lamp"]
 companion: ["trinity-files-matthew-3-13-17", "the-throne-and-the-right-hand", "prophets-and-prophecy"]

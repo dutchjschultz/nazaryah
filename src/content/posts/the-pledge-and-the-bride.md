@@ -5,6 +5,7 @@ deck: "Genesis 24 keeps every rule of the pledge law, four hundred years early."
 description: "Genesis 24 keeps every rule of the pledge law, four hundred years early."
 category: "The Law & The Feasts"
 date: 2026-10-10
+doctrines: ["torah-dismissal"]
 associations: ["garments-and-covering", "whose-righteousness"]
 ---
 

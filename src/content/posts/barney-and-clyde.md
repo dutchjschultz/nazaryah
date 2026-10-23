@@ -4,6 +4,7 @@ deck: "Everyone studies the Son; almost no one asks who sent him."
 description: "A parable: everyone studies the Son; almost no one asks who sent him."
 category: "The Side Door"
 date: 2026-10-10
+doctrines: ["the-trinity"]
 author: "Nazaryah"
 associations: ["trinity-examined", "light-and-lamp", "how-yahuah-speaks"]
 draft: false

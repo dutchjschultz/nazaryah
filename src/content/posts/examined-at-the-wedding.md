@@ -6,6 +6,7 @@ description: "The same judgment seen from the wedding. The Bridegroom examines b
 slug: "examined-at-the-wedding"
 category: "The Law & The Feasts"
 date: 2026-10-21
+doctrines: ["torah-dismissal", "imputed-righteousness"]
 author: "Nazaryah"
 associations: ["two-stage-salvation", "trinity-examined", "lost-in-translation"]
 companion: ["marriage-and-divorce", "the-law-of-jealousy", "the-pledge-and-the-bride"]

@@ -5,6 +5,7 @@ deck: "Adam, Israel, and six sons of Genesis lost the birthright. One Son kept i
 description: "Adam, Israel, and six sons of Genesis lost the birthright. One Son kept it."
 category: "Scripture Unfiltered"
 date: 2026-10-22
+doctrines: ["the-trinity"]
 author: "Nazaryah"
 associations: ["the-second-adam", "delegated-authority"]
 companion: ["the-higher-priesthood", "the-robe-of-the-firstborn", "joint-heirs-with-the-king"]

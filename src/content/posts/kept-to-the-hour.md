@@ -3,6 +3,8 @@ title: "Kept to the Hour"
 description: "What was done in each feast, what it showed, and what it accomplishes."
 deck: "What was done in each feast, what it showed, and what it accomplishes."
 date: 2026-09-08
+doctrines: ["calendar-feasts"]
+pinned: ["calendar-feasts"]
 author: "Nazaryah"
 category: "Scripture Unfiltered"
 featured: false

@@ -5,6 +5,7 @@ deck: "The bottle was never the law. Yahuah already said what a bottle is."
 verse: "Luke 5:33–39"
 commonName: "New Wine in Old Bottles"
 date: 2026-09-30
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "Parables"
 featured: false

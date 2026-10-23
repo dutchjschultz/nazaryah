@@ -6,6 +6,7 @@ description: "Paul's test for the carnal heart: will it submit to Yahuah's Law?"
 slug: "the-carnal-mind-vs-the-spiritual-mind"
 category: "The Law & The Feasts"
 date: 2026-10-21
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 associations: ["two-stage-salvation", "lost-in-translation", "pulpit-vocabulary"]
 companion: ["hearts-and-reins", "tried-in-the-reins"]

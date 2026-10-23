@@ -6,6 +6,8 @@ description: "Same law, new place. The finger that wrote on stone now writes on 
 slug: "written-on-the-heart"
 category: "The Law & The Feasts"
 date: 2026-10-21
+doctrines: ["torah-dismissal"]
+pinned: ["torah-dismissal"]
 author: "Nazaryah"
 associations: ["two-stage-salvation", "trinity-examined"]
 companion: ["the-finger-of-yahuah", "the-carnal-mind-vs-the-spiritual-mind"]

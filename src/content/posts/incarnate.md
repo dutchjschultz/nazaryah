@@ -5,6 +5,7 @@ deck: "Called pagan in a Hindu temple, sung as gospel in a church pew."
 description: "Called pagan in a Hindu temple, sung as gospel in a church pew."
 category: "The Counterfeit Throne"
 date: 2026-10-12
+doctrines: ["the-trinity"]
 author: "Nazaryah"
 associations: ["trinity-examined"]
 tags: []

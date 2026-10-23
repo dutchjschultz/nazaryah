@@ -4,6 +4,7 @@ description: "Four verses nobody preaches, and a pulpit with nothing to name gro
 deck: "Four verses nobody preaches, and a pulpit with nothing to name growing."
 verse: "Mark 4:26–29"
 date: 2026-09-29
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "Parables"
 featured: false

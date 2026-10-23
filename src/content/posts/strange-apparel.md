@@ -5,6 +5,8 @@ deck: "A man came in on the king's own invitation and was thrown out from the ta
 verse: "Matthew 22:1–14"
 commonName: "The Marriage of the King's Son"
 date: 2026-10-01
+doctrines: ["torah-dismissal", "imputed-righteousness"]
+pinned: ["imputed-righteousness"]
 author: "Nazaryah"
 category: "Parables"
 featured: false

@@ -6,6 +6,7 @@ description: "Ten words spoken to a rescued people. Not a wall of rules, but a p
 slug: "given-in-love"
 category: "The Law & The Feasts"
 date: 2026-10-21
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 associations: ["lost-in-translation", "pulpit-vocabulary"]
 companion: ["the-law-that-carries-his-name", "cease-or-fulfill"]

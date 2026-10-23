@@ -5,6 +5,7 @@ deck: "The struck Rock, the tablets, the Cornerstone — the way in, the walk, t
 description: "The struck Rock, the tablets, the Cornerstone — the way in, the walk, the example."
 category: "The Way In and the Walk"
 date: 2026-10-21
+doctrines: ["torah-dismissal", "faith-alone"]
 author: "Nazaryah"
 associations: ["two-stage-salvation", "lost-in-translation"]
 companion: ["same-gospel-same-blood", "bread-and-wine"]

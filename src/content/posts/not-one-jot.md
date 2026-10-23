@@ -4,6 +4,8 @@ description: "Matthew 5:17-20 read word by word. Kataluo is to pull a standing s
 deck: "He denied a charge nobody had made yet, and then He set the clock."
 verse: "Matthew 5:17-20"
 date: 2026-09-08
+doctrines: ["torah-dismissal"]
+pinned: ["torah-dismissal"]
 author: "Nazaryah"
 category: "The Law & The Feasts"
 featured: false

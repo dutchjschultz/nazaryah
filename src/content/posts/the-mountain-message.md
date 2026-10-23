@@ -4,6 +4,7 @@ description: "The Sermon on the Mount is preached as the founding charter of a n
 deck: "Ten witnesses to one sermon, and the Law named at both ends."
 verse: "Matthew 5-7"
 date: 2026-09-08
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "The Law & The Feasts"
 draft: false

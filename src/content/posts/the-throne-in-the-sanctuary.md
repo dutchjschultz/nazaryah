@@ -6,6 +6,7 @@ description: "Scripture never separates them. Yahuah's throne stands inside His 
 verse: "Hebrews 8:1–2"
 category: "The Counterfeit Throne"
 date: 2026-10-11
+doctrines: ["the-trinity"]
 author: "Nazaryah"
 associations: ["the-mishkan", "trinity-examined", "delegated-authority"]
 companion: ["the-throne-and-the-right-hand", "ark-of-covering", "one-face-and-one-name"]

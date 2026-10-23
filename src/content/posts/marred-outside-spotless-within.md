@@ -6,6 +6,7 @@ description: "The word for His marred face is the word for a rejected offering."
 slug: "marred-outside-spotless-within"
 category: "The Root"
 date: 2026-10-13
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 associations: ["the-mishkan", "lost-in-translation", "two-stage-salvation"]
 draft: false

@@ -4,6 +4,7 @@ deck: "Matthew 5:17 sets the Sabbath word against the work word."
 description: "Matthew 5:17 sets the Sabbath word against the work word."
 category: "The Law & The Feasts"
 date: 2026-10-19
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 associations: ["lost-in-translation", "pulpit-vocabulary"]
 companion: ["not-one-jot", "commandment-one-and-the-man-who-kept-it"]

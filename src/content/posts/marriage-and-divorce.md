@@ -4,6 +4,7 @@ deck: "From the writ of divorce to the marriage of the Lamb."
 description: "From the writ of divorce to the marriage of the Lamb."
 category: "The Law & The Feasts"
 date: 2026-10-14
+doctrines: ["the-trinity"]
 author: "Nazaryah"
 associations: ["lost-in-translation", "trinity-examined"]
 companion: ["the-pledge-and-the-bride", "misplaced-titles-1-bridegroom"]

@@ -4,6 +4,7 @@ description: "Matthew 6 handles alms, prayer and fasting in a row, and the word 
 deck: "He never argues that they should give, pray, or fast. He assumes it."
 verse: "Matthew 6:1-18"
 date: 2026-09-08
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "The Law & The Feasts"
 featured: false

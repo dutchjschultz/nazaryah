@@ -6,6 +6,7 @@ category: "The Law & The Feasts"
 featured: false
 draft: false
 date: 2026-10-01
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 associations: ["lost-in-translation", "two-stage-salvation"]
 ---

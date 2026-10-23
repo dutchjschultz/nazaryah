@@ -4,6 +4,7 @@ description: "The Beatitudes are preached as the gentle opening of a kinder cove
 deck: "Eight blessings, and a crowd that had heard every one of them before."
 verse: "Matthew 5:3-12"
 date: 2026-09-08
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "The Law & The Feasts"
 featured: false

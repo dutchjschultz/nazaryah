@@ -5,6 +5,7 @@ deck: "Why the crowd waiting for Daniel's stone walked straight past the kingdom
 verse: "Mark 4:30–32"
 commonName: "The Mustard Seed"
 date: 2026-09-30
+doctrines: ["the-millennium"]
 author: "Nazaryah"
 category: "Parables"
 featured: false

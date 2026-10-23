@@ -5,6 +5,7 @@ deck: "Sinai shook the earth once. When He speaks again, heaven shakes too."
 description: "Sinai shook the earth once. When He speaks again, heaven shakes too."
 category: "Scripture Unfiltered"
 date: 2026-10-10
+doctrines: ["the-millennium", "the-rapture"]
 author: "Nazaryah"
 associations: ["how-yahuah-speaks", "kingdom-now"]
 featured: false

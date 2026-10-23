@@ -4,6 +4,7 @@ description: "The English word cease in Daniel 9:27 hides shabath — the root o
 deck: "Daniel says the sacrifice was caused to cease. The Hebrew verb is the Sabbath verb."
 subtitle: "The Hebrew Verb the English Hides"
 date: 2026-08-25
+doctrines: ["torah-dismissal", "revelation-teaching"]
 author: "Nazaryah"
 category: "Buried in Plain Sight"
 readTime: "22 min"

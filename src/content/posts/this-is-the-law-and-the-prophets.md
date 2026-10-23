@@ -4,6 +4,7 @@ description: "Two blocks of the sermon sit far apart and belong together: the ma
 deck: "The cheek, the cloke, and the statute the man across from him was breaking."
 verse: "Matthew 5:39-42 · 7:7-12"
 date: 2026-09-08
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "The Law & The Feasts"
 featured: false

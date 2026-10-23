@@ -5,6 +5,7 @@ deck: "They did not look forward to a cross. They believed Yahuah, under the blo
 description: "They did not look forward to a cross. They believed Yahuah, under the blood."
 category: "The Way In and the Walk"
 date: 2026-10-14
+doctrines: ["rightly-divided"]
 author: "Nazaryah"
 associations: ["two-stage-salvation", "goel-kopher"]
 companion: ["bread-and-wine", "faith-has-an-address", "blood-and-bread"]

@@ -4,6 +4,7 @@ description: "An offering was never one thing. The cross ended the function that
 deck: "The cross ended one function of the offerings and filled every other one into the priest"
 subtitle: "What the Cross Ended, What It Filled, and Why"
 date: 2026-08-25
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "Buried in Plain Sight"
 readTime: "11 min"

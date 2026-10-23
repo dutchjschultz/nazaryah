@@ -4,6 +4,7 @@ deck: "The bitter cup the bride never drank, and who drank it instead."
 description: "The bitter cup the bride never drank, and who drank it instead."
 category: "The Law & The Feasts"
 date: 2026-10-14
+doctrines: ["the-trinity"]
 author: "Nazaryah"
 associations: ["goel-kopher", "trinity-examined"]
 companion: ["misplaced-titles-1-bridegroom", "the-redeemer-who-never-needed-redeeming"]

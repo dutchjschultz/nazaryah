@@ -1,4 +1,5 @@
-// borrowed-words 1021 V11.js
+// borrowed-words 1022 V12.js
+// V12 (doctrines handoff index 1022 V2): pentēkostē's yourBible reads "the fiftieth", not "Pentecost".
 // V11 (Communion package 1021 V2): doctrine 20, Communion — koinōnia, deipnon,
 // anamnēsis, mystērion and eucharistia (the last two link to their Communion
 // listings). Uses the new optional departureHeader, gloss and dep fields
@@ -352,7 +353,7 @@ export const doctrines = [
         sourceName: "The Saxons wrote", sourceLine: "Eostre — goddess of spring",
         scriptureName: "Moses wrote", scriptureLine: "Pesach — “it is Yahuah’s passover” (Exodus 12:11)",
         linkLabel: "Eostre’s word or Yahuah’s?" },
-      { id: "pentekoste", greek: "Pentēkostē", strongs: "G4005", yourBible: "Pentecost",
+      { id: "pentekoste", greek: "Pentēkostē", strongs: "G4005", yourBible: "the fiftieth",
         sourceName: "The Greeks wrote", sourceLine: "pentēkostē — “the fiftieth,” a number with no count behind it",
         scriptureName: "Moses wrote", scriptureLine: "Shavuot — seven Sabbaths complete, then fifty days (Leviticus 23:15–16)",
         linkLabel: "The Greeks’ word or Yahuah’s?" }

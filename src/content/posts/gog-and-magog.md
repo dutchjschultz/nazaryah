@@ -4,6 +4,7 @@ description: "Rosh does not mean Russia — it means chief. Meshech and Tubal we
 deck: "Ezekiel named the invaders. The prophecy industry renamed them."
 subtitle: "Ezekiel 38 Is Not a Russian Invasion, and Revelation 20 Is Not a Second War"
 date: 2026-09-29
+doctrines: ["revelation-teaching", "the-millennium"]
 author: "Nazaryah"
 category: "Buried in Plain Sight"
 readTime: "10 min"

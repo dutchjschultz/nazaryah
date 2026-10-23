@@ -5,6 +5,7 @@ deck: "Rome's week of Saturn, and the season that kept its customs under a new n
 description: "Rome's week of Saturn, and the season that kept its customs under a new name."
 category: "Buried in Plain Sight"
 date: 2026-10-10
+doctrines: ["calendar-feasts"]
 author: "Nazaryah"
 associations: ["foreign-fire"]
 companion: ["ashtoreth", "esther-ishtar-marduk"]

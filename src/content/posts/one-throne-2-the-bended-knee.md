@@ -2,6 +2,7 @@
 title: "The Bended Knee"
 description: "Barak means to kneel. The blessing was always meant to travel upward."
 date: 2026-08-26
+doctrines: ["the-trinity"]
 author: "Dutch Schultz"
 series: "One God, One Name, One Throne"
 seriesOrder: 2

@@ -1,4 +1,5 @@
-// borrowed-words-page 1021 V11.js
+// borrowed-words-page 1022 V12.js
+// V12 (doctrines handoff index 1022 V2): pentēkostē's kjv line reads "the fiftieth", not "Pentecost".
 // V11 (Communion package 1021 V2): group 20, Communion — koinōnia, deipnon / trapeza,
 // anamnēsis; mystērion and eucharistia cross-listed from Faith Alone, each with the
 // package's added line as its Communion note. No Strong's numbers. "twenty doctrines".
@@ -1356,7 +1357,7 @@ export const doctrines = [
         "id": "pentekoste",
         "greek": "Pentēkostē",
         "strongs": "G4005",
-        "kjv": "Pentecost",
+        "kjv": "the fiftieth",
         "source": "A Greek label, “the fiftieth,” with no Torah content.",
         "hebrew": "Shavuot — seven Sabbaths complete, then fifty days, falling in summer (Leviticus 23:15–16).",
         "fed": "A feast detached from its count and moved to late spring.",

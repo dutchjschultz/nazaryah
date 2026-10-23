@@ -5,6 +5,7 @@ deck: "The verse every replacement sermon leans on, read inside its own parable.
 verse: "Matthew 21:33–46"
 commonName: "The Wicked Husbandmen"
 date: 2026-09-01
+doctrines: ["torah-dismissal", "rightly-divided"]
 author: "Nazaryah"
 category: "Parables"
 featured: false

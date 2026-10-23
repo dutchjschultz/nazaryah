@@ -4,6 +4,8 @@ description: "The prophets announced a king who would be seated and reign until 
 deck: "A king already seated, reigning until His enemies are made a footstool"
 subtitle: "The Millennium Is Not Ahead of Us — the Reign of Messiah Between the Comings"
 date: 2026-09-29
+doctrines: ["the-millennium"]
+pinned: ["the-millennium"]
 author: "Nazaryah"
 category: "Buried in Plain Sight"
 readTime: "10 min"

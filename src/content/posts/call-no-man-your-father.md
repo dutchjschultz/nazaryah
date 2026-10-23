@@ -4,6 +4,8 @@ deck: "Yahushua honored the father at home and forbade the father in the seat."
 description: "Yahushua honored the father at home and forbade the father in the seat."
 category: "Scripture Unfiltered"
 date: 2026-10-11
+doctrines: ["clergy-over-the-people"]
+pinned: ["clergy-over-the-people"]
 author: "Nazaryah"
 associations: ["pulpit-vocabulary"]
 featured: false

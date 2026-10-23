@@ -2,6 +2,7 @@
 title: "The Second Awakening: Cane Ridge"
 subtitle: "1790–1840s · The Frontier and the Burned-over District"
 date: 2026-10-19
+doctrines: ["tongue-talking", "clergy-over-the-people"]
 author: "Nazaryah"
 category: "Buried in Plain Sight"
 deck: "Camp meetings, the altar call, and a first seminary built to guard a creed."

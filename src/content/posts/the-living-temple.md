@@ -4,6 +4,7 @@ description: "Modern Christianity says the Law of Moses was abolished at the cro
 deck: "Four witnesses to one question: what did the Messiah do with the Law of Moses?"
 subtitle: "An Investigation in Four Witnesses"
 date: 2026-08-25
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "Buried in Plain Sight"
 readTime: "8 min"

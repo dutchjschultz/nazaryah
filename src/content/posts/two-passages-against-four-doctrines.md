@@ -5,9 +5,10 @@ deck: "John 5 and 1 Corinthians 15 side by side, and what the pulpit skips."
 description: "John 5 and 1 Corinthians 15 side by side, and what the pulpit skips."
 category: "Scripture Unfiltered"
 date: 2026-10-14
+doctrines: ["the-rapture", "going-to-heaven", "the-trinity", "hell"]
+pinned: ["hell"]
 author: "Nazaryah"
 associations: ["delegated-authority", "trinity-examined"]
-doctrines: ["hell", "going-to-heaven", "the-rapture", "the-trinity"]
 companion: ["the-throne-and-the-right-hand", "the-reign-is-now"]
 featured: false
 draft: false

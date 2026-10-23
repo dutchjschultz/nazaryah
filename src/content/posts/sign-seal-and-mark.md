@@ -6,6 +6,7 @@ description: "Three words the pulpit blends into one, and what Scripture does wi
 slug: "sign-seal-and-mark"
 category: "Scripture Unfiltered"
 date: 2026-10-21
+doctrines: ["sacred-names"]
 associations: ["pulpit-vocabulary", "lost-in-translation"]
 author: "Nazaryah"
 featured: false

@@ -4,6 +4,7 @@ description: "The testimony of custom — the fringe, the sandal, the offering, 
 deck: "The Customs of the Torah Woven Through the Gospels"
 verse: "Matthew 9:20"
 date: 2026-10-07
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 featured: false
 draft: false

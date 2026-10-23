@@ -4,6 +4,7 @@ description: "The reason the case matters — the Greek words that came in carry
 deck: "Why It Matters That the Message Began in Hebrew"
 verse: "Colossians 2:8"
 date: 2026-10-07
+doctrines: ["immortal-soul", "hell"]
 author: "Nazaryah"
 featured: false
 draft: false

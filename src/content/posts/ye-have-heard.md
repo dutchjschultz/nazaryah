@@ -4,6 +4,7 @@ description: "The six sayings of Matthew 5 are labelled antitheses and read as M
 deck: "Six quotations, and one of them Yahuah never said."
 verse: "Matthew 5:21-48"
 date: 2026-09-08
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "The Law & The Feasts"
 featured: false

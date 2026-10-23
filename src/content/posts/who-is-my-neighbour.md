@@ -5,6 +5,7 @@ deck: "Two men who carried the law walked past it lying in the road. The man shu
 verse: "Luke 10:25–37"
 commonName: "The Good Samaritan"
 date: 2026-09-06
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "Parables"
 featured: false

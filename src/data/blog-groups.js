@@ -1,4 +1,6 @@
-// blog-groups 1022 V72.js
+// blog-groups 1022 V73.js
+// V73: inAllStudies — the All Studies pool is the feed plus every investigation study
+// (investigation studies carry no category, so they sit outside the feed). Map unchanged.
 // V72: ezekiel-the-glory-leaves-and-returns joins the-quick-scroll (category The Quick Scroll). Map total 175 -> 176.
 // V71: the-second-born and the-higher-priesthood join scripture-unfiltered (category Scripture Unfiltered). Map total 173 -> 175.
 // V70: The Trees of Judges investigation — the-trees-of-judges, the-vine, the-fig-tree, the-olive-tree, the-bramble — joins the-way-in-and-the-walk (category The Way In and the Walk). Map total 168 -> 173.
@@ -432,5 +434,10 @@ export const groupByKey = (key) => BLOG_GROUPS.find((g) => g.key === key) || nul
 
 // The blog feed = every published post that has a group (excludes Trinity Files).
 export const inFeed = (post) => !!POST_GROUP[post.slug];
+
+// The All Studies pool = the feed plus every investigation study (they carry an
+// `investigation` and no category, so they are not in the feed). Category pages
+// keep reading inFeed. The Go Deeper strips read this pool too (doctrine-studies.js).
+export const inAllStudies = (post) => inFeed(post) || !!post.data.investigation;
 
 export const POSTS_PER_PAGE = 12;

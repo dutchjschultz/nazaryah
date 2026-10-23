@@ -6,6 +6,7 @@ description: "Scripture promised to crush the serpent. The yellow flag asks not 
 slug: "serpent-underfoot"
 category: "Scripture Unfiltered"
 date: 2026-10-21
+doctrines: ["images-in-worship"]
 author: "Nazaryah"
 associations: ["foreign-fire"]
 companion: ["the-seed-war", "the-lucifer-deception", "the-sword-that-was-never-ours"]

@@ -5,6 +5,7 @@ description: "Sinai named the hand that wrote the Law. The Gospels named it agai
 deck: "Sinai named the hand that wrote the Law. The Gospels named it again."
 category: "Scripture Unfiltered"
 date: 2026-10-16
+doctrines: ["the-trinity", "torah-dismissal"]
 author: "Nazaryah"
 associations: ["trinity-examined", "lost-in-translation"]
 companion: ["one-raiser-not-three", "beside-me-there-is-no-saviour", "two-passages-against-four-doctrines"]

@@ -6,6 +6,7 @@ description: "Until, forever, and witness share two letters. English hides it; H
 slug: "the-two-letters-of-witness"
 category: "The Root"
 date: 2026-10-13
+doctrines: ["the-trinity"]
 author: "Nazaryah"
 associations: ["lost-in-translation", "trinity-examined", "how-yahuah-speaks"]
 companion: ["heavens-letters-words-son", "letters-in-stone", "ark-of-covering"]

@@ -1,5 +1,7 @@
 ---
-// all.astro · 1022 V2
+// all.astro · 1022 V3
+// V3 (doctrines handoff index 1022 V2): investigation studies list here too
+// (inAllStudies), not only the categorized feed.
 // V2 (Hell Doctrine V2 brief 1022 V5): a doctrine filter. The menu lists every
 // doctrine at least one study here is tagged or pinned to (src/lib/
 // doctrine-studies.js — the list the Go Deeper strips read), and ?doctrine=<slug>
@@ -8,15 +10,15 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import BlogCard from '../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
-import { inFeed } from '../../data/blog-groups.js';
+import { inAllStudies } from '../../data/blog-groups.js';
 import { doctrines as doctrinePairs } from '../../data/doctrines.data.js';
 import { doctrinesOf } from '../../lib/doctrine-studies.js';
 
-// Full archive minus the Trinity Files. All cards render in the DOM so the
+// Full archive (feed + investigation studies) minus the Trinity Files. All cards render in the DOM so the
 // search can filter across the whole set; pagination is client-side (12/page)
 // so any filtered view stays short.
 const posts = (await getCollection('posts', ({ data }) => data.draft !== true))
-  .filter(inFeed)
+  .filter(inAllStudies)
   .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
 
 // Doctrines with at least one tagged study on this page, in the doctrines' own order.

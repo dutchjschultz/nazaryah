@@ -4,6 +4,8 @@ description: "Two witnesses from one root, two tables and a book, and a Torah th
 deck: "The same verb that cut the Law into stone writes it on the heart"
 subtitle: "Where the Law Was Written, and Where It Is Written Now"
 date: 2026-08-25
+doctrines: ["torah-dismissal"]
+pinned: ["torah-dismissal"]
 author: "Nazaryah"
 category: "Buried in Plain Sight"
 readTime: "21 min"

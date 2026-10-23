@@ -4,6 +4,7 @@ description: "Salt was a requirement at the altar and the mark of a covenant tha
 deck: "Salt of the covenant, a lamp with no light of its own, and a city the nations walk toward."
 verse: "Matthew 5:13-16"
 date: 2026-09-08
+doctrines: ["torah-dismissal"]
 author: "Nazaryah"
 category: "The Law & The Feasts"
 featured: false

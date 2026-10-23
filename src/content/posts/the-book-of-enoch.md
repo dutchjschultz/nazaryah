@@ -4,6 +4,7 @@ subtitle: "Show One Verse That Breaks the Word"
 deck: "The verses used to throw Enoch out agree most with the Prophets."
 description: "The verses used to throw Enoch out agree most with the Prophets."
 date: 2026-10-13
+doctrines: ["the-trinity"]
 author: "Nazaryah"
 category: "The Quick Scroll"
 tags: []

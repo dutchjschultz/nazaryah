@@ -4,6 +4,8 @@ description: "The devil was bound at the cross. The short season of loosing bega
 deck: "Twelve world-shaping events in eleven months. That is not coincidence — that is a stamp."
 subtitle: "When Was the Enemy Loosed? Revelation 20 and the Binding the Church Moved"
 date: 2026-04-20
+doctrines: ["the-millennium"]
+pinned: ["the-millennium"]
 author: "Nazaryah"
 category: "Buried in Plain Sight"
 readTime: "22 min"

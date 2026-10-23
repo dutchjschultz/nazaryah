@@ -4,6 +4,8 @@ description: "Gabriel counts sixty-nine weeks and then says the next thing. The 
 deck: "Seventy weeks were determined, and seventy weeks ran"
 subtitle: "Daniel 9:24–27, the 490 Years Completed, and Where the Church Got Its Seven-Year Tribulation"
 date: 2026-09-29
+doctrines: ["revelation-teaching"]
+pinned: ["revelation-teaching"]
 author: "Nazaryah"
 category: "Buried in Plain Sight"
 readTime: "12 min"

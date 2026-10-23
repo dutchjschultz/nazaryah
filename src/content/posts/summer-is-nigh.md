@@ -5,6 +5,7 @@ deck: "Four men looking at the temple were told they would see its summer."
 verse: "Mark 13:28–31"
 commonName: "The Budding Fig Tree"
 date: 2026-10-02
+doctrines: ["revelation-teaching"]
 author: "Nazaryah"
 category: "Parables"
 featured: false

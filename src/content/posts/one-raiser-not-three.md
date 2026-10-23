@@ -5,6 +5,7 @@ deck: "Romans 8:11 is quoted to prove three raisers. Read slowly, it names one."
 description: "Romans 8:11 is quoted to prove three raisers. Read slowly, it names one."
 category: "The Counterfeit Throne"
 date: 2026-10-14
+doctrines: ["the-trinity"]
 author: "Nazaryah"
 associations: ["trinity-examined", "delegated-authority"]
 companion: ["beside-me-there-is-no-saviour", "two-passages-against-four-doctrines", "the-throne-and-the-right-hand"]

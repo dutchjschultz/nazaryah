@@ -5,6 +5,8 @@ deck: "Dust, dead wood, barren wombs, and a tomb — Yahuah raises His priests f
 description: "Dust, dead wood, barren wombs, and a tomb — Yahuah raises His priests from nothing."
 category: "Scripture Unfiltered"
 date: 2026-10-13
+doctrines: ["clergy-over-the-people"]
+pinned: ["clergy-over-the-people"]
 author: "Nazaryah"
 associations: ["the-mishkan", "restored-creation"]
 companion: ["the-almond-watch", "paradise-restored"]
