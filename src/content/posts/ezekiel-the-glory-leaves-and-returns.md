@@ -50,7 +50,7 @@ Each of those readings lifts a chapter out of its block and sets it down in a di
 
 **What happens.** Seven nations hear their sentence: Ammon, Moab, Edom, and Philistia in one chapter (25), then Tyre (26-28), Sidon (28:20-23), and Egypt (29-32). Tyre gets three chapters because it was the trading capital of the age. Egypt gets four because Judah kept running to it for help. Pharaoh is pictured as a great cedar of Lebanon, cut down (31).
 
-**The king of Tyre.** Chapter 28 is the one most pulpits lift out. The text names the man and speaks to him directly: “thou art a man, and not El” (28:2). His sin is trade and pride, “by the multitude of thy merchandise” (28:16). The garden and the cherub are the picture Yahuah paints over a king who thought his rich island was paradise. They are not a hidden biography of Satan.
+**The king of Tyre.** Chapter 28 is the one most pulpits lift out. The text names the man and speaks to him directly: “thou art a man, and not El” (28:2). His sin is trade and pride, “by the multitude of thy merchandise” (28:16). The garden and the cherub are the picture Yahuah paints over a king who thought his rich island was paradise. They are not a hidden biography of Satan. The full chapter is read in its setting in [*Thou Art a Man, and Not El*](/blog/thou-art-a-man-and-not-el).
 
 **How it ends.** Egypt goes down into the pit and finds the other nations already lying there (32:18-32).
 

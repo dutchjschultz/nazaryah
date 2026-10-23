@@ -1,4 +1,7 @@
-// reading-sets 1021 V13.js
+// reading-sets 1023 V14.js
+// V14: Trilogy "The Making of Lucifer" added — Is This the Man?, Thou Art a Man, and Not El,
+// The Lucifer Deception (batch 71, 1023). Lines are each study's deck; the panel keeps its
+// standing sentence, which is the batch's description.
 // V13: Examined at the Wedding line follows its new deck (Dutch 1021).
 // V12: Trilogy "Walking in the Vows" added — Given in Love, Written on the Heart,
 // Examined at the Wedding (The Law & The Feasts, 1021). Lines are each study's
@@ -240,6 +243,23 @@ export const READING_SETS = [
       {
         slug: "examined-at-the-wedding",
         line: "The same judgment seen from the wedding. The Bridegroom examines by the vows.",
+      },
+    ],
+  },  {
+    key: "the-making-of-lucifer",
+    title: "The Making of Lucifer",
+    readings: [
+      {
+        slug: "is-this-the-man",
+        line: "The verse preached as Satan’s fall is a taunt song over a dead king of Babylon.",
+      },
+      {
+        slug: "thou-art-a-man-and-not-el",
+        line: "The chapter preached as the devil’s life story names a king, a city, and his trade.",
+      },
+      {
+        slug: "the-lucifer-deception",
+        line: "How a Latin word for the morning star became the devil’s name.",
       },
     ],
   },

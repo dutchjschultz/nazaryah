@@ -1,4 +1,6 @@
-// blog-groups 1023 V75.js
+// blog-groups 1023 V76.js
+// V76: The Making of Lucifer trilogy — is-this-the-man and thou-art-a-man-and-not-el join scripture-unfiltered;
+// the-lucifer-deception moves from buried-in-plain-sight to the-root (rewritten as a word study). Map total 185 -> 187.
 // V75: the Zechariah study series joins the-quick-scroll (category The Quick Scroll): the main
 // study and seven companions (the topic page lists the main only; src/lib/study-series.js). Map total 177 -> 185.
 // V74: three-verses-after-the-end joins scripture-unfiltered (category Scripture Unfiltered). Map total 176 -> 177.
@@ -275,6 +277,7 @@ export const POST_GROUP = {
   'the-two-letters-of-witness': 'the-root',
   'the-gift-that-blinds': 'the-root',
   'tried-in-the-reins': 'the-root',
+  'the-lucifer-deception': 'the-root',  // batch 71 (1023): rewritten as a word study; moves here from buried-in-plain-sight
 
   // ── The Quick Scroll (11) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
@@ -307,7 +310,6 @@ export const POST_GROUP = {
   'the-sword-that-was-never-ours': 'buried-in-plain-sight',
   'two-kingdoms': 'buried-in-plain-sight',
   'the-star-on-the-flag': 'buried-in-plain-sight',   // ⚠ default — symbol origin, not an Esther walkthrough
-  'the-lucifer-deception': 'buried-in-plain-sight',  // Dutch 1014: stays here, labelled Buried in Plain Sight
   // The Living Temple investigation — nucleus + three of its four witnesses.
   // The fourth (shalom-whole-complete) stays in The Root; see the header note.
   'the-living-temple': 'buried-in-plain-sight',
@@ -439,6 +441,8 @@ export const POST_GROUP = {
   'the-second-born': 'scripture-unfiltered',
   'the-higher-priesthood': 'scripture-unfiltered',
   'three-verses-after-the-end': 'scripture-unfiltered',
+  'is-this-the-man': 'scripture-unfiltered',
+  'thou-art-a-man-and-not-el': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
