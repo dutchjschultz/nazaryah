@@ -1,4 +1,9 @@
-// doctrines.data 1022 V13.js
+// doctrines.data 1022 V18.js
+// V18: doctrine 08 goes to layout "v2" (The Millennium doctrine brief 1022 V2); its Departure deck is now "A Kingdom Still Waiting — for a Strong Man Already Bound."
+// V17: doctrine 07 goes to layout "v2" (The Rapture doctrine brief 1022 V1).
+// V16: doctrine 06 goes to layout "v2" (The Seven-Year Tribulation doctrine brief 1022 V1).
+// V15: doctrine 05 goes to layout "v2" (Immortal Soul doctrine brief 1022 V1).
+// V14: doctrine 03 goes to layout "v2" (Tongue Talking doctrine brief 1022 V1).
 // V13: doctrine 02 goes to layout "v2" (Torah Dismissal doctrine brief 1022 V2); its Departure deck is now "Favor Didn't Kill the Law — It Lifted the Sentence."
 // V12 (Sacred Names doctrine brief 1022 V1): 01 Sacred Names goes to layout "v2".
 // V11 (Hell Doctrine V2 brief 1022 V1): every pair carries `layout` — "classic"
@@ -128,7 +133,7 @@ export const doctrines = [
 
   {
     n: "03",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "a-pure-lip",
       title: "A Pure Lip",
@@ -170,7 +175,7 @@ export const doctrines = [
 
   {
     n: "05",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "became-a-living-soul",
       title: "He Became a Living Soul",
@@ -193,7 +198,7 @@ export const doctrines = [
 
   {
     n: "06",
-    layout: "classic",
+    layout: "v2",
     group: "revelation",
     oldPaths: {
       slug: "the-book-quotes",
@@ -215,7 +220,7 @@ export const doctrines = [
 
   {
     n: "07",
-    layout: "classic",
+    layout: "v2",
     group: "revelation",
     oldPaths: {
       slug: "gathered-at-the-trumpet",
@@ -237,7 +242,7 @@ export const doctrines = [
 
   {
     n: "08",
-    layout: "classic",
+    layout: "v2",
     group: "revelation",
     oldPaths: {
       slug: "the-strong-man-bound",
@@ -251,7 +256,7 @@ export const doctrines = [
     departure: {
       slug: "the-millennium",
       title: "The Millennium",
-      deck: "A Kingdom Still Waiting — for a King Who Already Reigns",
+      deck: "A Kingdom Still Waiting — for a Strong Man Already Bound",
       tag: "The Millennium",
       body: `Most pulpits teach that the thousand years of Revelation 20 has not yet begun: Messiah returns, Satan is bound, and an earthly kingdom follows, often with a rebuilt temple and its sacrifices restored. Seventh-day Adventism moves the thousand years to heaven and leaves the earth empty, but it agrees on the point that matters most, that the binding is still in the future. Scripture places the binding of the strong man at Messiah's first coming, and its purpose is the open door to the nations that has stood ever since. A thousand years still waiting to start hands the dragon an age the cross already took from him.`
     }

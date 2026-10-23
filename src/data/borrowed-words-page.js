@@ -1,4 +1,9 @@
-// borrowed-words-page 1022 V13.js
+// borrowed-words-page 1022 V16.js
+// V16 (Tribulation / Rapture / Millennium briefs 1022): story links for the end-times words —
+// hebdomas, apostasia, katechō to The Seven-Year Tribulation; harpazō, apantēsis, parousia,
+// epiphaneia to The Rapture (parousia and epiphaneia moved off 06); chilioi and abyssos to The Millennium.
+// V15 (The Millennium doctrine brief 1022 V2): the abyssos entry under Hell drops "(H8415)" beside tehom.
+// V14: (Tongue Talking doctrine brief 1022 V1): charisma links to its new tab on Tongue Talking.
 // V13 (Torah Dismissal doctrine brief 1022 V2): telos gains a story link to the Nomos tab, where
 // Romans 10:4 is answered; syneidēsis loses its link (its tab is dropped from the six).
 // V12 (doctrines handoff index 1022 V2): pentēkostē's kjv line reads "the fiftieth", not "Pentecost".
@@ -440,7 +445,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Tongue Talking",
+            "href": "/doctrines/the-departure/tongue-talking#word-charisma"
+          }
+        ]
       }
     ]
   },
@@ -574,14 +584,19 @@ export const doctrines = [
         "strongs": "G12",
         "kjv": "bottomless pit",
         "source": "The bottomless deep of Greek cosmology.",
-        "hebrew": "Tehom (H8415), the deep waters of Genesis 1:2.",
+        "hebrew": "Tehom, the deep waters of Genesis 1:2.",
         "fed": "A literal pit of fire beneath the earth.",
         "bridge": "The Septuagint of Genesis 1:2 puts abyssos for tehom.",
         "aliases": [],
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Millennium",
+            "href": "/doctrines/the-departure/the-millennium#word-abyssos"
+          }
+        ]
       },
       {
         "id": "apokatastasis",
@@ -748,7 +763,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Seven-Year Tribulation",
+            "href": "/doctrines/the-departure/revelation-teaching#word-hebdomas"
+          }
+        ]
       },
       {
         "id": "apostasia",
@@ -763,7 +783,12 @@ export const doctrines = [
         "sources": [
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Seven-Year Tribulation",
+            "href": "/doctrines/the-departure/revelation-teaching#word-apostasia"
+          }
+        ]
       },
       {
         "id": "katecho",
@@ -778,7 +803,12 @@ export const doctrines = [
         "sources": [
           "Temples & cults"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Seven-Year Tribulation",
+            "href": "/doctrines/the-departure/revelation-teaching#word-katecho"
+          }
+        ]
       }
     ]
   },
@@ -805,7 +835,12 @@ export const doctrines = [
         "sources": [
           "Gods & myths"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Rapture",
+            "href": "/doctrines/the-departure/the-rapture#word-harpazo"
+          }
+        ]
       },
       {
         "id": "apantesis",
@@ -820,7 +855,12 @@ export const doctrines = [
         "sources": [
           "Emperors & state"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Rapture",
+            "href": "/doctrines/the-departure/the-rapture#word-apantesis"
+          }
+        ]
       },
 
       {
@@ -838,8 +878,8 @@ export const doctrines = [
         ],
         "story": [
           {
-            "label": "The Seven-Year Tribulation",
-            "href": "/doctrines/the-departure/revelation-teaching#word-parousia"
+            "label": "The Rapture",
+            "href": "/doctrines/the-departure/the-rapture#word-parousia"
           }
         ]
       },
@@ -858,8 +898,8 @@ export const doctrines = [
         ],
         "story": [
           {
-            "label": "The Seven-Year Tribulation",
-            "href": "/doctrines/the-departure/revelation-teaching#word-epiphaneia"
+            "label": "The Rapture",
+            "href": "/doctrines/the-departure/the-rapture#word-epiphaneia"
           }
         ]
       }
@@ -897,7 +937,12 @@ export const doctrines = [
           "Philosophers",
           "Later teachers & translators"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "The Millennium",
+            "href": "/doctrines/the-departure/the-millennium#word-chilioi"
+          }
+        ]
       }
     ]
   },

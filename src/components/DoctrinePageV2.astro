@@ -1,5 +1,11 @@
 ---
-// src/components/DoctrinePageV2.astro · 1022 V3
+// src/components/DoctrinePageV2.astro · 1022 V4
+// V4 (Tribulation / Rapture / Millennium briefs 1022): a pair with a `group` is
+// one of a series ("Revelation · 2 of 3", counted as DoctrineGrid counts the card
+// eyebrow). Both foot rows gain the neighbours: the Old Path's "← Revelation 1 of
+// 3: <Old Path title>" before All The Old Paths and "Revelation 3 of 3: … →" after;
+// the Departure's the same pair, with Departure titles, after the riddle link.
+// The series words in the kickers are the content's own (doctrine-v2.js).
 // V3 (Hell Doctrine V2 brief 1022 V4): the Go Deeper strip (DoctrineStudies,
 // filled from each study's `doctrines` tag) on both pages: Old Path after the
 // Torah / Second Witness lines, before the turn box; Departure after The Old
@@ -27,6 +33,7 @@ import DoctrineTabs from './DoctrineTabs.astro';
 import DoctrineStudies from './DoctrineStudies.astro';
 import { riddlesForDoctrine } from '../data/riddles.js';
 import { v2For } from '../data/doctrine-v2.js';
+import { doctrines as PAIRS } from '../data/doctrines.data.js';
 interface Props { side: 'old-paths' | 'departure'; pair: any; }
 const { side, pair } = Astro.props;
 const isOld = side === 'old-paths';
@@ -37,6 +44,16 @@ const riddle = riddlesForDoctrine(pair.n)[0];
 const oldHref = `/doctrines/old-paths/${pair.oldPaths.slug}`;
 const depHref = `/doctrines/the-departure/${pair.departure.slug}`;
 const greekHref = `/doctrines/borrowed-words#d-${pair.departure.slug}`;
+// Series neighbours (empty when the pair has no group).
+const members = pair.group ? PAIRS.filter((p: any) => p.group === pair.group) : [];
+const pos = members.findIndex((p: any) => p.n === pair.n);
+const seriesName = pair.group ? pair.group.charAt(0).toUpperCase() + pair.group.slice(1) : '';
+const step = (d: number) => {
+  const p = pos >= 0 ? members[pos + d] : undefined;
+  return p && { p, label: `${seriesName} ${pos + d + 1} of ${members.length}` };
+};
+const prev = step(-1);
+const next = step(1);
 ---
 
 <div class="d2-page">
@@ -75,7 +92,11 @@ const greekHref = `/doctrines/borrowed-words#d-${pair.departure.slug}`;
         <a href={depHref}>{op.turn.label} <span aria-hidden="true">&rarr;</span></a>
       </div>
 
-      <p class="d2-back"><a href="/doctrines/old-paths">&larr; All The Old Paths</a></p>
+      <p class="d2-back">
+        {prev && <a href={`/doctrines/old-paths/${prev.p.oldPaths.slug}`}>&larr; {prev.label}: {prev.p.oldPaths.title}</a>}
+        <a href="/doctrines/old-paths">&larr; All The Old Paths</a>
+        {next && <a href={`/doctrines/old-paths/${next.p.oldPaths.slug}`}>{next.label}: {next.p.oldPaths.title} <span aria-hidden="true">&rarr;</span></a>}
+      </p>
       {riddle && <p class="d2-riddle"><a href={riddle.href}>Test it yourself <span aria-hidden="true">&rarr;</span> Try the riddle</a></p>}
     </>
   ) : (
@@ -109,6 +130,8 @@ const greekHref = `/doctrines/borrowed-words#d-${pair.departure.slug}`;
         <a href={greekHref}>Greek Influence: {pair.departure.title}</a>
         <a href="/doctrines/the-departure">All The Departure</a>
         {riddle && <a href={riddle.href}>Test it yourself <span aria-hidden="true">&rarr;</span> Try the riddle</a>}
+        {prev && <a href={`/doctrines/the-departure/${prev.p.departure.slug}`}>&larr; {prev.label}: {prev.p.departure.title}</a>}
+        {next && <a href={`/doctrines/the-departure/${next.p.departure.slug}`}>{next.label}: {next.p.departure.title} <span aria-hidden="true">&rarr;</span></a>}
       </p>
     </>
   )}
@@ -198,7 +221,7 @@ const greekHref = `/doctrines/borrowed-words#d-${pair.departure.slug}`;
     font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase;
   }
 
-  .d2-back { margin: 1.6rem 0 0; }
+  .d2-back { margin: 1.6rem 0 0; display: flex; flex-wrap: wrap; gap: 0.6rem 1.6rem; }
   .d2-back a {
     font-family: var(--font-display); font-size: 0.72rem; letter-spacing: 0.16em;
     text-transform: uppercase; color: #8a8172; text-decoration: none;
