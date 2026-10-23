@@ -1,4 +1,5 @@
-// doctrine-v2 1022 V4.js
+// doctrine-v2 1022 V5.js
+// V5: Torah Dismissal doctrine brief 1022 V2: 02 Torah Dismissal, text from its 1022 V2 preview — six word tabs (Charis open first); syneidēsis dropped for the six-tab cap
 // V4 (Sacred Names doctrine brief 1022 V1): 01 Sacred Names, text from its 1022 V1
 // preview — five word tabs (Kurios open first), no Strong's numbers.
 // V3 (brief 1022 V4): Further Reading is gone (the Go Deeper strip replaces it,
@@ -211,6 +212,241 @@ export const doctrineV2 = {
         ],
       },
       oldPath: `The old path keeps the Name. Yahuah gave it at the burning bush and bound it to every generation. "Thy name, O Yahuah, endureth for ever" (Psalm 135:13). Caesar's title, Zeus's titles, and a god-king's boast stand where the Name should be. Take them out, and the Father and the Son stand clear again: Yahuah, beside whom "there is no saviour" (Isaiah 43:11), and Yahushua, whose very name says "Yahuah saves." Restoring the Name is nothing new. It is obeying a command that never ended. And Revelation shows it restored, the Lamb's people "having his Father's name written in their foreheads" (Revelation 14:1), and in the city to come, "his name shall be in their foreheads" (Revelation 22:4).`,
+    },
+  },
+
+  "02": {
+    oldPaths: {
+      kicker: "The Old Path · Torah Dismissal",
+      title: "The Walk After the Door",
+      subtitle: "Deliverance Opens It. Torah Is What Walking Looks Like.",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `Torah was never the door. Yahuah opens the door, by the blood He provides. Israel was not handed the Law in Egypt and told to earn their way out. The blood went on the doorposts first, and Yahuah said, "when I see the blood, I will pass over you" (Exodus 12:13). Only after that did He speak at Sinai, and He began with what He had already done: "I am Yahuah thy God, which have brought thee out of the land of Egypt" (Exodus 20:2).`,
+            `The door comes first, then the walk. Paul gives both in one breath: "being now justified by his blood," and "being reconciled, we shall be saved by his life" (Romans 5:9-10). And the walk is not out of reach. Moses said the commandment is "not hidden from thee, neither is it far off," but "very nigh unto thee ... that thou mayest do it" (Deuteronomy 30:11, 14).`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `Israel walked out of Egypt free, and Torah showed them how free people live. David sang it: "I will walk at liberty: for I seek thy precepts" (Psalm 119:45). Solomon called the commandment "a lamp" and the law "light" (Proverbs 6:23). A lamp is for walking at night, not for opening a locked door.`,
+            `Put the two together wrongly and you get two errors at once. One man thinks keeping the Law earns his way in. Another thinks being let in means he no longer needs to walk. Scripture holds both halves in order: the blood opens, and the commandments are the road.`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Abraham", `"kept my charge, my commandments, my statutes, and my laws" (Genesis 26:5), centuries before Sinai.`],
+            ["Moses", `"I have taught you statutes and judgments, even as Yahuah my God commanded me" (Deuteronomy 4:5).`],
+            ["David", `"O how love I thy law! it is my meditation all the day" (Psalm 119:97).`],
+            ["Daniel", `his enemies could find no fault "except we find it against him concerning the law of his God" (Daniel 6:5).`],
+            ["Yahushua", `"Think not that I am come to destroy the law ... I am not come to destroy, but to fulfil" (Matthew 5:17).`],
+            ["Paul", `"thou thyself also walkest orderly, and keepest the law" (Acts 21:24).`],
+            ["John", `"hereby we do know that we know him, if we keep his commandments" (1 John 2:3).`],
+          ],
+        },
+      ],
+      closing: `And at the end, John saw the same two marks on Yahuah's people: they "keep the commandments of God, and have the testimony of Yahushua Messiah" (Revelation 12:17). The testimony is the door. The commandments are the walk.`,
+      torah: ["Exodus 20:2", "Deuteronomy 30:11-14"],
+      witness: ["Psalm 119:44-45", "Proverbs 6:23", "Romans 5:9-10"],
+      turn: {
+        text: "But Christianity went another way. It taught that favor ended the Law, that the commandments were nailed to the cross, and that the walk is optional once the door is open.",
+        label: "The Departure: Torah Dismissal",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 02",
+      title: "Torah Dismissal",
+      subtitle: "Favor Didn't Kill the Law — It Lifted the Sentence",
+      attribution: "You've been quoting the philosophers and calling it Scripture.",
+      taught: [
+        `The Law was nailed to the cross. We are under grace now, not under the law. The Old Testament was for the Jews, and the New Testament is for the church. Just love God and follow your heart. Most believers have never heard anything else.`,
+        `Catholic teaching divides the Law into three parts. The ceremonial and civil laws ended with Messiah. The moral law stands, summed up in the Ten Commandments, but the Sabbath has passed to Sunday. Reformed and Presbyterian churches say much the same. Baptist, evangelical, and Pentecostal churches often go further: the whole Law is gone, and believers follow "the law of love" or "the leading of the Spirit" instead.`,
+      ],
+      roots: [
+        `Yahushua said the opposite: "Think not that I am come to destroy the law, or the prophets" (Matthew 5:17). The split came later. About 144 AD, Marcion taught that the God of the Law and the God of Messiah were two different gods, and threw out the whole Old Testament. The church cast him out, but kept much of his split. It kept the door and threw away the road.`,
+        `The Greek words helped. To a Greek, <em>nomos</em> was a city's custom, made by men and changed by men. <em>Charis</em> was a lovely gift that asked nothing back. A covenant became a Greek "will" that a newer will cancels. The heart became the seat of feelings, and repentance became regret. And Paul's warnings about the pagan star-powers were turned against Yahuah's own Sabbaths and feasts. Six Greek words carried the split into the church. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "charis", greek: "Charis", kjv: "grace", role: "The root word", more: "Charis on Greek Influence",
+            verse: { ref: "Romans 6:14", text: "For sin shall not have dominion over you: for ye are not under the law, but under grace." },
+            taught: [
+              `We are not under the law anymore. We are under grace. Grace means God gave us a free gift we did not earn, so the commandments no longer apply to us. Trying to keep the Sabbath or the feasts is going back under the law. That is called legalism.`,
+            ],
+            word: [
+              `*Charis* was an everyday Greek word for charm, beauty, and a kindness done. But the Greeks also made it into goddesses. Hesiod, an early Greek poet, wrote of the Charites, the Graces, daughters of Zeus who handed out beauty and delight.`,
+              `The word itself is not evil. But to a Greek ear, *charis* was a lovely gift that asked nothing back. Read that way, grace became a gift that sets the Law aside.`,
+            ],
+            hebrew: [
+              `Behind *charis* stands the Hebrew word *chen*, favor. When the Torah was put into Greek, *charis* was used for *chen* the very first time it appears: "But Noah found grace in the eyes of Yahuah" (Genesis 6:8). The next verse tells us what kind of man found it: "Noah walked with God" (Genesis 6:9).`,
+              `*Chen* is the kindness a greater one shows to a lesser one. Moses shows how favor and the way belong together: "if I have found grace in thy sight, shew me now thy way" (Exodus 33:13). Favor does not cancel the way. Favor is what lets a man walk in it.`,
+            ],
+            reread: [`Now read it the way Paul meant it: sin will not rule over you anymore, because you are no longer under the Law's sentence of death. You are under Yahuah's favor, the favor that shows you His way. "Not under the law" means not under its penalty. Messiah "redeemed us from the curse of the law" (Galatians 3:13), not from the Law. Paul answers the pulpit in the very next verse: "What then? shall we sin, because we are not under the law, but under grace? God forbid" (Romans 6:15). And John tells us what sin is: "sin is the transgression of the law" (1 John 3:4).`],
+            timeline: [
+              ["About 700 BC", `Hesiod names the Charites, the Graces, daughters of Zeus.`],
+              ["About 250 BC", `The Torah is put into Greek, and *chen* becomes *charis* (Genesis 6:8).`],
+              ["About 144 AD", `Marcion teaches that the God of the Law and the God of grace are two different gods.`],
+              ["About 412 AD", `Augustine, in *On the Spirit and the Letter*, sets the Law that kills against the grace that gives life.`],
+              ["1520s", `Luther sets law and gospel against each other: the Law only accuses; grace alone saves.`],
+              ["1909", `The Scofield Reference Bible splits history into a "dispensation of law" and a "dispensation of grace."`],
+            ],
+            built: [
+              `Grace as a hall pass: saved by grace, so the commandments become optional.`,
+              `"Legalism," the name pinned on anyone who keeps the Sabbath or the feasts.`,
+              `A door with no road: the blood is preached, and the bread, the commandments, is not.`,
+            ],
+          },
+          {
+            id: "nomos", greek: "Nomos", kjv: "law", role: "The root word", more: "Nomos on Greek Influence",
+            verse: { ref: "Romans 10:4", text: "For Messiah is the end of the law for righteousness to every one that believeth." },
+            taught: [
+              `Messiah is the end of the law. When He came, the Law was over, finished and done away. Believers now live by faith, not by rules. The Ten Commandments may be good advice, but nobody is bound to keep them anymore.`,
+            ],
+            word: [
+              `*Nomos* is the Greek word for law. In the Greek world it meant the rules a city made for itself: custom, habit, laws written by men. Greek teachers called the Sophists said these laws were made up, and could be changed whenever people liked. So to a Greek ear, "the law" sounded like a code of rules and penalties. When the Greek text puts *nomos* where Moses wrote Torah, that Greek sound comes along with it.`,
+              `The word for "end" is *telos*. To Aristotle it meant the goal, the purpose a thing is aimed at. An acorn's *telos* is the oak. But "end" in English usually means stop, and a word for goal was heard as termination.`,
+            ],
+            hebrew: [
+              `The Hebrew word beneath *nomos* is *Torah*. It comes from *yarah*, which means to aim, to shoot an arrow, to point the way. Torah is not a city's rulebook. It is a Father's instruction, pointing His children down the path. And Paul's "law" is Moses' Torah: he quotes "Thou shalt not covet" and calls it the law (Romans 7:7).`,
+              `Paul tells us what he means. A few verses later he quotes Moses: "The word is nigh thee, even in thy mouth, and in thy heart" (Romans 10:8). That is Deuteronomy 30, where Moses is speaking of the commandment: "it is not hidden from thee, neither is it far off ... that thou mayest do it" (Deuteronomy 30:11, 14). He did not quote Moses to end Moses.`,
+            ],
+            reread: [`Now read it the way Paul meant it: Messiah is the goal the Torah was aiming at all along, so that everyone who trusts Him is made right with Yahuah. A target does not destroy the arrow. It is what the arrow was shot at. Paul said it plainly earlier in the same letter: "Do we then make void the law through faith? God forbid: yea, we establish the law" (Romans 3:31). And again: "the law is holy, and the commandment holy, and just, and good" (Romans 7:12).`],
+            timeline: [
+              ["About 430 BC", `The Sophists teach that *nomos* is man-made custom, set against nature.`],
+              ["About 350 BC", `Aristotle makes *telos* his word for purpose, the goal a thing is made for.`],
+              ["About 250 BC", `The Greek copy of the Torah uses *nomos* for Torah, and a Father's instruction now sounds like a legal code.`],
+              ["About 144 AD", `Marcion cuts the Law and the Prophets out of his Bible altogether.`],
+              ["1830s", `Darby's dispensations: the Law belonged to Israel's age, and the church lives in the age of grace.`],
+              ["Today", `"The end of the law" is the first verse quoted to say the Law is over.`],
+            ],
+            built: [
+              `The commandments read as Israel's old rules, not the believer's walk.`,
+              `Nine out of ten: the Sabbath dropped, the other nine kept as "moral law."`,
+              `Moses against Messiah: the Law and the good news set against each other.`,
+            ],
+          },
+          {
+            id: "stoicheia", greek: "Stoicheia", kjv: "elements", role: "The root word", more: "Stoicheia on Greek Influence",
+            verse: { ref: "Galatians 4:9-10", text: "But now, after that ye have known God, or rather are known of God, how turn ye again to the weak and beggarly elements, whereunto ye desire again to be in bondage? Ye observe days, and months, and times, and years." },
+            taught: [
+              `The Galatians were Christians who started keeping the Jewish law. Paul calls the Sabbath, the new moons, and the feasts "weak and beggarly elements." Keeping holy days is bondage. And Colossians settles it: Messiah took the Law "out of the way, nailing it to his cross" (Colossians 2:14), so "let no man therefore judge you" about Sabbaths, new moons, or food (Colossians 2:16).`,
+            ],
+            word: [
+              `*Stoicheia* means the basic parts of something: the ABCs, the building blocks. Greek philosophers taught that the whole world was built from four: earth, water, air, and fire. In time, many in the Greek world came to treat these elements, and the stars moving across the sky, as spirits that ruled men's lives.`,
+              `Those powers were thought to govern the days and the months, so people kept lucky and unlucky days to please them. That was the world the Galatians came out of.`,
+            ],
+            hebrew: [
+              `No Hebrew word stands behind it. Paul tells us who the Galatians had been, one verse earlier: "when ye knew not God, ye did service unto them which by nature are no gods" (Galatians 4:8). They were pagans who had served false gods. So when Paul asks why they "turn again," he means back to the gods they left, not to a Torah they never had.`,
+              `Moses warned against that very thing: do not look at "the sun, and the moon, and the stars" and be "driven to worship them" (Deuteronomy 4:19). But Yahuah's days are different. He calls them "my feasts" (Leviticus 23:2), appointed meetings with Him. Paul did not call Yahuah's feasts beggarly. He called the star-days beggarly.`,
+            ],
+            reread: [`Now read it the way Paul meant it: you know Yahuah now; better yet, He knows you. So why go back to the weak, worthless star powers you once served, and keep their days and seasons all over again? You cannot go back to a place you have never been. And what was nailed to the cross in Colossians? "The handwriting of ordinances that was against us" (Colossians 2:14). The word is *cheirographon*, a handwritten note of debt. The record of what we owed was nailed up, not the Torah. The rules Paul does reject there are "touch not; taste not; handle not," which he calls "the commandments and doctrines of men" (Colossians 2:21-22).`],
+            timeline: [
+              ["About 450 BC", `Empedocles teaches that all things are made of four elements: earth, water, air, and fire.`],
+              ["About 50 AD", `Paul warns former pagans in Galatia not to go back to their old days and seasons.`],
+              ["About 60 AD", `Paul warns the Colossians against philosophy and "the rudiments of the world."`],
+              ["321 AD", `Constantine orders rest on "the venerable day of the sun."`],
+              ["About 364 AD", `The Council of Laodicea forbids Christians to rest on the Sabbath.`],
+              ["Today", `"Galatians says keeping days is bondage."`],
+            ],
+            built: [
+              `No Sabbath and no feasts: Yahuah's appointed times treated as if they were the pagans' star-days.`,
+              `Colossians 2:14 read as the Law nailed to the cross, when it was the record of debt.`,
+              `Man's calendar kept instead: the continuous Roman week and the church holidays kept, while the days Yahuah named are called bondage.`,
+            ],
+          },
+          {
+            id: "diatheke", greek: "Diathēkē", kjv: "testament", role: "The root word", more: "Diathēkē on Greek Influence",
+            verse: { ref: "Hebrews 8:13", text: "In that he saith, A new covenant, he hath made the first old. Now that which decayeth and waxeth old is ready to vanish away." },
+            taught: [
+              `The old covenant has vanished away. God made a new covenant with the church, and the Law belonged to the old one. That is why we have an Old Testament and a New Testament. The first is over, and the second replaced it.`,
+            ],
+            word: [
+              `*Diathēkē* is the word the King James prints here as "covenant," and in other places as "testament." In Greek law it meant a will, the paper a man leaves behind when he dies. A will takes effect at death, and a newer will cancels the older one.`,
+              `Read that way, a "new covenant" sounds like a new will that throws out the old one, and so the Bible got its "Old Testament" and "New Testament."`,
+            ],
+            hebrew: [
+              `But this writer is quoting Jeremiah, word for word (Hebrews 8:8-12). Jeremiah wrote: "Behold, the days come, saith Yahuah, that I will make a new covenant with the house of Israel, and with the house of Judah" (Jeremiah 31:31). The Hebrew word is *berit*, a covenant, a binding promise between two sides, like a marriage.`,
+              `"New" is *chadash*, renewed, repaired. The same root gives the Hebrew word for the new moon: the same moon, made new again. And what goes into the renewed covenant? "I will put my law in their inward parts, and write it in their hearts" (Jeremiah 31:33). The Torah is not thrown out of the new covenant. It is written into it.`,
+            ],
+            reread: [`Now read it the way Jeremiah meant it: the first arrangement, the one the people broke, served by an earthly tent and animal blood, is worn out and passing away. The writer names it in the next verse: "ordinances of divine service, and a worldly sanctuary" (Hebrews 9:1). And he tells us where the fault was: "finding fault with them" (Hebrews 8:8), with the people, not the Law, "because they continued not in my covenant" (Hebrews 8:9). The broken arrangement wore out. The Torah did not. Yahuah wrote it again, this time on the heart, like a husband renewing his vows with a wife who wandered.`],
+            timeline: [
+              ["About 250 BC", `The Greek Torah uses *diathēkē*, a will, for *berit*, a covenant.`],
+              ["About 170 AD", `Melito of Sardis lists "the books of the old covenant," among the first to use the phrase for a set of books.`],
+              ["About 207 AD", `Tertullian, writing in Latin, calls the two parts of Scripture two "testaments."`],
+              ["About 405 AD", `Jerome's Latin Bible prints *testamentum*, and English later follows it as "testament."`],
+              ["1611", `The King James Bible prints "The Old Testament" and "The New Testament" as the names of the two halves.`],
+              ["Today", `"That's Old Testament. We're New Testament believers."`],
+            ],
+            built: [
+              `Replacement: the old will cancelled, and the church set in Israel's place.`,
+              `Half a Bible: the Torah and the Prophets read as background, not instruction.`,
+              `A new covenant without the Law, the very thing Jeremiah said would be written on the heart left out.`,
+            ],
+          },
+          {
+            id: "kardia", greek: "Kardia", kjv: "heart", role: "The root word", more: "Kardia on Greek Influence",
+            verse: { ref: "Hebrews 8:10", text: "For this is the covenant that I will make with the house of Israel after those days, saith Yahuah; I will put my laws into their mind, and write them in their hearts: and I will be to them a God, and they shall be to me a people:" },
+            taught: [
+              `In the new covenant, God writes His law on our hearts, so we don't need the written commandments anymore. If you love God, your heart will lead you. God looks at the heart, not at rules. Just follow your heart.`,
+            ],
+            word: [
+              `*Kardia* means heart. In the old Greek poets, like Homer, the heart was where a man felt: his courage, his anger, his longing. The philosopher Plato put thinking in the head and the feelings down in the chest.`,
+              `So to a Greek ear, the heart is the feeling part of a man, not the thinking part. Read that way, a law "written in their hearts" sounds like a warm feeling that takes the place of the written commandment.`,
+            ],
+            hebrew: [
+              `But this verse quotes Jeremiah: "I will put my law in their inward parts, and write it in their hearts" (Jeremiah 31:33). The Hebrew word for heart is *lev*. In Hebrew, the heart is where a man thinks, understands, and decides: his mind and his will, not only his feelings. That is why the verse can put "mind" and "hearts" side by side.`,
+              `And look at what gets written there: "my law," My Torah. The same Torah Moses gave: "these words, which I command thee this day, shall be in thine heart" (Deuteronomy 6:6). The new covenant does not trust the heart. It rewrites the heart with the Torah.`,
+            ],
+            reread: [`Now read it the way Jeremiah meant it: I will put My Torah into their thinking and write it where they make their choices, and I will be their God, and they will be My people. A heart with Yahuah's Torah written on it does not drift away from the commandments. It loves them. Ezekiel says the Spirit is given to "cause you to walk in my statutes" (Ezekiel 36:27). And John said, "this is the love of God, that we keep his commandments: and his commandments are not grievous" (1 John 5:3).`],
+            timeline: [
+              ["About 750 BC", `Homer makes the heart the seat of courage, anger, and passion.`],
+              ["About 360 BC", `Plato puts reason in the head and the feelings in the chest.`],
+              ["About 250 BC", `The Greek Torah renders *lev* as *kardia*, and the feeling-heart comes with the word.`],
+              ["1799", `Schleiermacher calls religion a matter of feeling, not of doctrine or deeds.`],
+              ["Today", `"God looks at your heart, not at rules."`],
+            ],
+            built: [
+              `"Follow your heart": feeling set over the commandment.`,
+              `A law with no words: the "law on the heart" turned into a vague sense of love, with the commandments themselves left out.`,
+            ],
+          },
+          {
+            id: "metanoia", greek: "Metanoia", kjv: "repentance", role: "The root word", more: "Metanoia on Greek Influence",
+            verse: { ref: "Acts 26:20", text: "But shewed first unto them of Damascus, and at Jerusalem, and throughout all the coasts of Judaea, and then to the Gentiles, that they should repent and turn to God, and do works meet for repentance." },
+            taught: [
+              `Repentance means feeling sorry for your sins and changing your mind about Messiah. You admit you are a sinner, you believe, and you are saved. It is a moment at the altar, not a change in how you live. Telling people to keep commandments after that is adding works.`,
+            ],
+            word: [
+              `*Metanoia* in plain Greek means a change of mind, or regret, an afterthought. The Greeks even pictured her as a goddess. Lucian, a Greek writer, describes a famous painting by Apelles in which Metanoia, Repentance, stands dressed in mourning, weeping and ashamed, as the truth arrives.`,
+              `To the Greek ear, repentance was a feeling: sorrow, regret, a mind changed. Nothing in the word asks a man to walk a different way.`,
+            ],
+            hebrew: [
+              `Behind the Greek word stands the Hebrew *shuv*. It means to turn around, to stop walking one way and walk back the other. Ezekiel shows what the turn looks like: "if the wicked will turn from all his sins that he hath committed, and keep all my statutes, and do that which is lawful and right, he shall surely live" (Ezekiel 18:21).`,
+              `Now look at Paul's verse again. He says three things: "repent," "turn to God," and "do works meet for repentance." That is not a feeling. That is *shuv* in three steps. Moses said the same: "And shalt return unto Yahuah thy God, and shalt obey his voice according to all that I command thee this day" (Deuteronomy 30:2).`,
+            ],
+            reread: [`Now read it the way Paul meant it: I told everyone, Jews first, then Gentiles, to turn around, come back to Yahuah, and live a life that proves they have truly come back. A turn that never changes direction is not a turn. The blood opens the way home. Turning is the walk home, on Yahuah's road, by His commandments.`],
+            timeline: [
+              ["About 330 BC", `Apelles paints *Calumny*, with Metanoia, Repentance, mourning at the end of the scene.`],
+              ["About 160 AD", `Lucian describes the painting: Repentance weeping and ashamed.`],
+              ["About 405 AD", `Jerome's Latin Bible renders "repent" as *paenitentiam agite*, later read as "do penance."`],
+              ["1215", `The Fourth Lateran Council requires every Catholic to confess to a priest at least once a year.`],
+              ["1500s", `The Reformers throw out penance, but leave repentance as an inner sorrow and a change of mind.`],
+              ["Today", `"Repent just means change your mind."`],
+            ],
+            built: [
+              `The altar call: repentance as one moment of sorrow, not a life turned around.`,
+              `Penance: sorrow worked off through a priest, instead of a return to the commandments.`,
+              `"Works" as a dirty word, though Paul himself preached "works meet for repentance."`,
+            ],
+          },
+        ],
+      },
+      oldPath: `The old path is simple. Yahuah delivers by the blood of the Lamb He provided. That is the door, and no one walks through it by keeping rules. But the door opens onto a road, and the road is the Torah. Paul put both in one place: "being now justified by his blood," and "being reconciled, we shall be saved by his life" (Romans 5:9-10). The blood is the entry. The bread, the commandments, is the walk. Yahushua said whoever does and teaches the commandments "shall be called great in the kingdom of heaven" (Matthew 5:19). Paul believed "all things which are written in the law and in the prophets" (Acts 24:14). And Revelation names the people who stand at the end: "Here is the patience of the saints: here are they that keep the commandments of God, and the faith of Yahushua" (Revelation 14:12).`,
     },
   },
 

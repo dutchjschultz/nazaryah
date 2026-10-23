@@ -1,4 +1,5 @@
-// doctrines.data 1022 V12.js
+// doctrines.data 1022 V13.js
+// V13: doctrine 02 goes to layout "v2" (Torah Dismissal doctrine brief 1022 V2); its Departure deck is now "Favor Didn't Kill the Law — It Lifted the Sentence."
 // V12 (Sacred Names doctrine brief 1022 V1): 01 Sacred Names goes to layout "v2".
 // V11 (Hell Doctrine V2 brief 1022 V1): every pair carries `layout` — "classic"
 // (DoctrineInfo, the layout every doctrine has had) or "v2" (DoctrinePageV2, the
@@ -106,7 +107,7 @@ export const doctrines = [
 
   {
     n: "02",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "walk-after-the-door",
       title: "The Walk After the Door",
@@ -119,7 +120,7 @@ export const doctrines = [
     departure: {
       slug: "torah-dismissal",
       title: "Torah Dismissal",
-      deck: "Grace Didn't Kill the Law — It Fulfilled the Penalty",
+      deck: "Favor Didn't Kill the Law — It Lifted the Sentence",
       tag: "Law Abolished",
       body: `One of the most dangerous half-truths in modern Christianity is the idea that the Torah was "nailed to the cross" and has no place in the believer's life today. Yahushua Himself declared He did not come to abolish the Law but to fulfill it — and fulfilling a debt is not the same as erasing the standard. There is a critical difference between the penalty of the Law, which Messiah bore, and the instruction of the Law, which remains the very definition of righteousness for those who love Yahuah.`
     }

@@ -1,4 +1,5 @@
-// borrowed-words 1022 V12.js
+// borrowed-words 1022 V13.js
+// V13: 02 Torah Dismissal panel follows its v2 tabs — charis · nomos · stoicheia · diathēkē · kardia · metanoia; syneidēsis stays on Greek Influence only.
 // V12 (doctrines handoff index 1022 V2): pentēkostē's yourBible reads "the fiftieth", not "Pentecost".
 // V11 (Communion package 1021 V2): doctrine 20, Communion — koinōnia, deipnon,
 // anamnēsis, mystērion and eucharistia (the last two link to their Communion
@@ -89,26 +90,22 @@ export const doctrines = [
         sourceName: "The Sophists wrote", sourceLine: "nomos — man-made custom, rules a city invents",
         scriptureName: "Moses wrote", scriptureLine: "torah — instruction, a Father pointing the way (Deuteronomy 6:1)",
         linkLabel: "The Sophists’ word or Yahuah’s?" },
-      { id: "diatheke", greek: "Diathēkē", strongs: "G1242", yourBible: "testament",
-        sourceName: "Greek law wrote", sourceLine: "diathēkē — a will, replaced by the next will",
-        scriptureName: "Jeremiah wrote", scriptureLine: "berit — a covenant renewed, “my law in their inward parts” (Jeremiah 31:33)",
-        linkLabel: "Greek law’s word or Yahuah’s?" },
       { id: "stoicheia", greek: "Stoicheia", strongs: "G4747", yourBible: "elements",
         sourceName: "The astrologers wrote", sourceLine: "stoicheia — star spirits that rule the days and months",
         scriptureName: "Paul wrote", scriptureLine: "“how turn ye again to the weak and beggarly elements” — their old star-worship, not the Torah (Galatians 4:9)",
         linkLabel: "The astrologers’ word or Yahuah’s?" },
-      { id: "metanoia", greek: "Metanoia", strongs: "G3341", yourBible: "repentance",
-        sourceName: "The Greek painters showed", sourceLine: "Metanoia — a goddess of regret, weeping too late",
-        scriptureName: "Ezekiel wrote", scriptureLine: "shuv — turn back and “keep all my statutes” (Ezekiel 18:21)",
-        linkLabel: "Regret’s word or Yahuah’s?" },
+      { id: "diatheke", greek: "Diathēkē", strongs: "G1242", yourBible: "testament",
+        sourceName: "Greek law wrote", sourceLine: "diathēkē — a will, replaced by the next will",
+        scriptureName: "Jeremiah wrote", scriptureLine: "berit — a covenant renewed, “my law in their inward parts” (Jeremiah 31:33)",
+        linkLabel: "Greek law’s word or Yahuah’s?" },
       { id: "kardia", greek: "Kardia", strongs: "G2588", yourBible: "heart",
         sourceName: "The poets wrote", sourceLine: "kardia — the seat of feeling and passion",
         scriptureName: "Moses wrote", scriptureLine: "lev — “these words… shall be in thine heart” (Deuteronomy 6:6)",
         linkLabel: "The poets’ word or Yahuah’s?" },
-      { id: "syneidesis", greek: "Syneidēsis", strongs: "G4893", yourBible: "conscience",
-        sourceName: "The Stoics wrote", sourceLine: "syneidēsis — an inner judge of right and wrong",
-        scriptureName: "Isaiah wrote", scriptureLine: "“To the law and to the testimony” (Isaiah 8:20)",
-        linkLabel: "The Stoics’ word or Yahuah’s?" }
+      { id: "metanoia", greek: "Metanoia", strongs: "G3341", yourBible: "repentance",
+        sourceName: "The Greek painters showed", sourceLine: "Metanoia — a goddess of regret, weeping too late",
+        scriptureName: "Ezekiel wrote", scriptureLine: "shuv — turn back and “keep all my statutes” (Ezekiel 18:21)",
+        linkLabel: "Regret’s word or Yahuah’s?" }
     ]
   },
   {

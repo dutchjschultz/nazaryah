@@ -1,4 +1,6 @@
-// borrowed-words-page 1022 V12.js
+// borrowed-words-page 1022 V13.js
+// V13 (Torah Dismissal doctrine brief 1022 V2): telos gains a story link to the Nomos tab, where
+// Romans 10:4 is answered; syneidēsis loses its link (its tab is dropped from the six).
 // V12 (doctrines handoff index 1022 V2): pentēkostē's kjv line reads "the fiftieth", not "Pentecost".
 // V11 (Communion package 1021 V2): group 20, Communion — koinōnia, deipnon / trapeza,
 // anamnēsis; mystērion and eucharistia cross-listed from Faith Alone, each with the
@@ -223,7 +225,12 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Torah Dismissal",
+            "href": "/doctrines/the-departure/torah-dismissal#word-nomos"
+          }
+        ]
       },
       {
         "id": "diatheke",
@@ -320,12 +327,7 @@ export const doctrines = [
         "sources": [
           "Philosophers"
         ],
-        "story": [
-          {
-            "label": "Torah Dismissal",
-            "href": "/doctrines/the-departure/torah-dismissal#word-syneidesis"
-          }
-        ]
+        "story": []
       }
     ]
   },
