@@ -1,5 +1,7 @@
 ---
-// StudiesMap.astro · 1021 V5
+// StudiesMap.astro · 1023 V6
+// V6 (associations batch 70): a topic's count leaves out book study series companions,
+// matching its page (the main study stands for the book).
 // V5: `lead` may be the intro text itself (a string) — the box shows it, then "Or
 // search all N studies." /blog passes its own intro; /blog/topics keeps `lead`
 // alone and its own sentence.
@@ -21,6 +23,7 @@
 import { getCollection } from 'astro:content';
 import { BLOG_GROUPS, BLOG_JUMPOUTS, groupOf, inFeed, extrasOf } from '../data/blog-groups.js';
 import { COLLECTIONS, collectionSlugs, leavesTopic, entryCount } from '../data/collections.js';
+import { isSeriesCompanion } from '../lib/study-series.js';
 import { READING_SETS } from '../data/reading-sets.js';
 import CollectionCard from './CollectionCard.astro';
 import RecentStudies from './RecentStudies.astro';
@@ -33,7 +36,7 @@ const showCollections = show === 'all' || show === 'collections';
 const all = await getCollection('posts', ({ data }) => data.draft !== true);
 const posts = all.filter(inFeed);
 const countByGroup = Object.fromEntries(
-  BLOG_GROUPS.map((g) => [g.key, posts.filter((p) => groupOf(p.slug) === g.key && !leavesTopic(p.slug)).length + extrasOf(g.key).length])
+  BLOG_GROUPS.map((g) => [g.key, posts.filter((p) => groupOf(p.slug) === g.key && !leavesTopic(p.slug) && !isSeriesCompanion(p)).length + extrasOf(g.key).length])
 );
 const total = posts.length;
 const slugSet = new Set(all.map((p) => p.slug));

@@ -1,5 +1,7 @@
 ---
-// BlogLayout.astro · 1012 V17
+// BlogLayout.astro · 1023 V18
+// V18 (associations batch 70): a book study series shows under the masthead —
+// StudySeriesPanel (tiles) on its main Quick Scroll study, StudySeriesBar on each companion.
 // V17: a study's own `kicker` (its label line) takes the small line above the
 // title; without one the line is the category, as before.
 // V16: Read Next resolves a companion slug against Pe'ah when it is not a post
@@ -75,6 +77,8 @@ import Epigraph from '../components/Epigraph.astro';
 import InvestigationBar from '../components/InvestigationBar.astro';
 import BookTextNote from '../components/BookTextNote.astro';
 import ReadingSet from '../components/ReadingSet.astro';
+import StudySeriesPanel from '../components/StudySeriesPanel.astro';
+import StudySeriesBar from '../components/StudySeriesBar.astro';
 import { postHref, postHome, postHomeLabel } from '../lib/post-href.js';
 import { getEntry } from 'astro:content';
 import { peahTitle } from '../lib/peah.js';
@@ -233,6 +237,13 @@ const companions = (
           </div>
         )}
       </header>
+
+      <!-- Book study series: the tile panel on the main Quick Scroll study, the slim
+           series bar on each companion (nothing on the rest) -->
+      <div class="max-w-3xl mx-auto">
+        <StudySeriesPanel post={post} />
+        <StudySeriesBar post={post} />
+      </div>
 
       <!-- Trilogy panel (studies that belong together; nothing on the rest) -->
       <div class="max-w-5xl mx-auto md:px-4">

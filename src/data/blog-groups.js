@@ -1,4 +1,6 @@
-// blog-groups 1023 V74.js
+// blog-groups 1023 V75.js
+// V75: the Zechariah study series joins the-quick-scroll (category The Quick Scroll): the main
+// study and seven companions (the topic page lists the main only; src/lib/study-series.js). Map total 177 -> 185.
 // V74: three-verses-after-the-end joins scripture-unfiltered (category Scripture Unfiltered). Map total 176 -> 177.
 // V73: inAllStudies — the All Studies pool is the feed plus every investigation study
 // (investigation studies carry no category, so they sit outside the feed). Map unchanged.
@@ -286,6 +288,14 @@ export const POST_GROUP = {
   'micah-three-calls-to-hear': 'the-quick-scroll',
   'zephaniah-the-day-closes-in': 'the-quick-scroll',
   'ezekiel-the-glory-leaves-and-returns': 'the-quick-scroll',
+  'zechariah-eight-visions-two-burdens': 'the-quick-scroll', // series main
+  'zechariah-vision-one-riders-among-the-myrtles': 'the-quick-scroll',
+  'zechariah-vision-two-four-horns-and-four-carpenters': 'the-quick-scroll',
+  'zechariah-vision-three-a-city-without-walls': 'the-quick-scroll',
+  'zechariah-vision-four-filthy-garments-taken-away': 'the-quick-scroll',
+  'zechariah-did-ye-fast-unto-me': 'the-quick-scroll',
+  'zechariah-the-king-on-a-donkey': 'the-quick-scroll',
+  'zechariah-the-shepherd-sold': 'the-quick-scroll',
 
   // ── Buried in Plain Sight (21) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',

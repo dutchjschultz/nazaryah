@@ -18,7 +18,9 @@ import { postHref } from '../lib/post-href.js';
 import { cardLabelOf } from '../data/collections.js';
 import { peahTitle } from '../lib/peah.js';
 import { doctrinesOf } from '../lib/doctrine-studies.js';
-const { post } = Astro.props;
+// `note`: an optional small line under the blurb (the category page's "plus 7
+// companion studies" on a book study series' main study).
+const { post, note } = Astro.props;
 
 // Chapters of the multi-part books display the master chapter title from the
 // book's Contents (the single source of truth), not the blog's own title.
@@ -67,7 +69,8 @@ const watch = post.data.watch;
     <h3 class="post-title text-sm font-semibold mb-3 leading-snug" style="font-family: var(--font-display);">
       <a href={href} style="color: var(--deep-earth);">{displayTitle}</a>
     </h3>
-    <p class="post-subtitle text-sm leading-relaxed mb-5 line-clamp-4 flex-1">{blurb}</p>
+    <p class:list={["post-subtitle text-sm leading-relaxed line-clamp-4 flex-1", note ? "mb-2" : "mb-5"]}>{blurb}</p>
+    {note && <p class="post-series-note mb-5">{note}</p>}
     {/* The actions, pinned to the foot of the card. READ IS LAST, so it sits on
         the bottom line of every card in the grid. Watch goes above it with its
         CTA line closest to Read, so that line holds too; a long video title
@@ -109,6 +112,10 @@ const watch = post.data.watch;
     color: #9a6b1f; margin: -2px 0 8px; padding-bottom: 7px; border-bottom: 1px solid var(--sand-dark);
   }
   .post-subtitle { font-style: italic; color: var(--ink-faded); }
+  .post-series-note {
+    font-family: 'Cinzel', Georgia, serif; font-size: 10px; font-weight: 600; letter-spacing: 1.5px;
+    text-transform: uppercase; color: #9a6b1f;
+  }
 
   /* ── Card foot ────────────────────────────────────────────────────────────
      margin-top:auto pins the action block to the bottom of the card, and the

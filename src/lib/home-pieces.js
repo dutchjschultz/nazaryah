@@ -1,4 +1,5 @@
-// home-pieces 1019 V8.js
+// home-pieces 1023 V9.js
+// V9 (associations batch 70): a book study series' companions stay off the homepage; the main study stands for the book.
 // V8: a trilogy can be pinned as ONE Featured Picks card (Awake and Divided,
 // Dutch 1019). A reading-sets.js set with a `home` block becomes a piece titled
 // with the set's name, linking to it on /trilogies, wearing its Berean group's
@@ -47,6 +48,7 @@
 // rotate-featured.mjs) to keep it honest.
 // Excluded everywhere: drafts, `unlisted` go-deeper pages, `companionOf`
 // read-throughs (they ride with their parent), and anything not live.
+import { isSeriesCompanion } from './study-series.js';
 import { getCollection } from 'astro:content';
 import { postHref } from './post-href.js';
 import { peahTitle, peahAdded } from './peah.js';
@@ -94,7 +96,9 @@ function piece({ key, title, deck, href, date, section, group, data = {}, cta })
 }
 
 export async function homePieces() {
-  const posts = await getCollection('posts', (p) => p.data.draft !== true && !p.data.unlisted && !p.data.companionOf);
+  // A book study series' companions stay off the homepage, as off the category
+  // page: the main study stands for the book (src/lib/study-series.js).
+  const posts = await getCollection('posts', (p) => p.data.draft !== true && !p.data.unlisted && !p.data.companionOf && !isSeriesCompanion(p));
   const peah = await getCollection('peah', (p) => p.data.draft !== true);
   const hebrew = await getCollection('hebrew');
 

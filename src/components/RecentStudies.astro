@@ -1,5 +1,6 @@
 ---
-// src/components/RecentStudies.astro · 1021 V1
+// src/components/RecentStudies.astro · 1023 V2
+// V2 (associations batch 70): book study series companions stay off the strip.
 // V1 (Recently Added Strip brief 1021 V2): the five most recently added studies,
 // one row, on the Berean Studies page between the All Studies box and "Studies ·
 // browse by topic". Built from the same study data as the archive (posts in the
@@ -18,10 +19,12 @@
 import { getCollection } from 'astro:content';
 import { execSync } from 'node:child_process';
 import { BLOG_GROUPS, groupOf, inFeed } from '../data/blog-groups.js';
+import { isSeriesCompanion } from '../lib/study-series.js';
 import { postHref } from '../lib/post-href.js';
 
 const COUNT = 5;
-const posts = (await getCollection('posts', ({ data }) => data.draft !== true)).filter(inFeed);
+// Book study series companions stay off, as on the category page (study-series.js).
+const posts = (await getCollection('posts', ({ data }) => data.draft !== true)).filter((p) => inFeed(p) && !isSeriesCompanion(p));
 const groupName = Object.fromEntries(BLOG_GROUPS.map((g) => [g.key, g.name]));
 
 // When a study's file first entered the repo (seconds), to order a shared date.

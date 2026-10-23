@@ -1,4 +1,7 @@
-// content config 1022 V32
+// content config 1023 V33
+// V33 (associations batch 70): posts gain optional `seriesRole: "main"` — the Quick Scroll study
+// that leads a book study series (src/lib/study-series.js).
+
 // V32 (Hell Doctrine V2 brief 1022 V5): posts gain optional `pinned` — Departure
 // slugs of doctrines whose Go Deeper strip this study holds a place in (pinned
 // first, then newest, three shown). A pinned slug counts as tagged. Unknown
@@ -228,6 +231,10 @@ const postsCollection = defineCollection({
     series: z.string().optional(),
     // Chapter number within `series`, 1-based, taken from that book's Contents list.
     seriesOrder: z.number().optional(),
+    // STUDY SERIES role — "main" marks the Quick Scroll study that leads a book
+    // study series (src/lib/study-series.js); its companions carry the same
+    // `series` key and no role.
+    seriesRole: z.enum(['main']).optional(),
     // Cross-reference clusters (see src/data/associations.js). A study joins a
     // cluster by listing its key here; the Associated Studies panel and the
     // /associations coverage map pick it up automatically.

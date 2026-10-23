@@ -1,9 +1,13 @@
 ---
+// blog/c/[group] · 1023
+// (associations batch 70): a topic page lists a book study series by its main study
+// only, with "plus N companion studies" on that card (src/lib/study-series.js).
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
 import BlogCard from '../../../../components/BlogCard.astro';
 import { getCollection } from 'astro:content';
 import { BLOG_GROUPS, groupOf, POSTS_PER_PAGE, extrasOf } from '../../../../data/blog-groups.js';
 import { COLLECTIONS, collectionSlugs, leavesTopic } from '../../../../data/collections.js';
+import { isSeriesCompanion, seriesFor, liveCount } from '../../../../lib/study-series.js';
 
 export async function getStaticPaths({ paginate }) {
   const all = (await getCollection('posts', ({ data }) => data.draft !== true))
@@ -11,9 +15,11 @@ export async function getStaticPaths({ paginate }) {
   // TOPIC pages: regular studies only — a study in a collection is listed on
   // its collection page instead (it keeps its POST_GROUP line; see collections.js),
   // unless the collection lets it keep its topic (alsoOnTopic). Topic extras —
-  // pages outside the blog (TOPIC_EXTRAS) — are merged in by date.
+  // pages outside the blog (TOPIC_EXTRAS) — are merged in by date. A book study
+  // series shows only its main study here; its companions are reached from the
+  // main study's panel, search and the cluster panels (src/lib/study-series.js).
   const byGroup = BLOG_GROUPS.flatMap((g) => {
-    const posts = [...all.filter((p) => groupOf(p.slug) === g.key && !leavesTopic(p.slug)), ...extrasOf(g.key)]
+    const posts = [...all.filter((p) => groupOf(p.slug) === g.key && !leavesTopic(p.slug) && !isSeriesCompanion(p)), ...extrasOf(g.key)]
       .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
     return paginate(posts, { params: { group: g.key }, pageSize: POSTS_PER_PAGE, props: { group: g } });
   });
@@ -86,7 +92,11 @@ const pageHref = (n) => (n === 1 ? `/blog/c/${group.key}` : `/blog/c/${group.key
       ))
     ) : (
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-5">
-        {page.data.map((post) => <BlogCard post={post} />)}
+        {page.data.map((post) => {
+          const s = seriesFor(post);
+          const n = s && post.slug === s.main ? liveCount(s) : 0;
+          return <BlogCard post={post} note={n ? `plus ${n} companion ${n === 1 ? 'study' : 'studies'}` : undefined} />;
+        })}
       </div>
     )}
 
