@@ -1,4 +1,5 @@
-// borrowed-words 1022 V13.js
+// borrowed-words 1022 V14.js
+// V14: 10 The Trinity panel follows its v2 tabs (preview card) — logos · ousia · hypostasis · monogenēs · paraklētos · theotēs; physis, morphē, oikonomia, hymnos, sophia, dēmiourgos stay on Greek Influence.
 // V13: 02 Torah Dismissal panel follows its v2 tabs — charis · nomos · stoicheia · diathēkē · kardia · metanoia; syneidēsis stays on Greek Influence only.
 // V12 (doctrines handoff index 1022 V2): pentēkostē's yourBible reads "the fiftieth", not "Pentecost".
 // V11 (Communion package 1021 V2): doctrine 20, Communion — koinōnia, deipnon,
@@ -270,10 +271,6 @@ export const doctrines = [
         sourceName: "Philo wrote", sourceLine: "logos — “the second god”",
         scriptureName: "David wrote", scriptureLine: "davar — “by the word of Yahuah were the heavens made” (Psalm 33:6)",
         linkLabel: "Philo’s word or Yahuah’s?" },
-      { id: "theotes", greek: "Theotēs / Theiotēs", strongs: "G2320, G2305", yourBible: "Godhead",
-        sourceName: "The philosophers wrote", sourceLine: "to theion — a divine essence that beings can share",
-        scriptureName: "Paul wrote", scriptureLine: "“it pleased the Father that in him should all fulness dwell” (Colossians 1:19)",
-        linkLabel: "The philosophers’ word or Yahuah’s?" },
       { id: "ousia", greek: "Ousia", strongs: "G3776", yourBible: "substance",
         sourceName: "Aristotle wrote", sourceLine: "ousia — the essence of a thing; Nicaea’s “one substance”",
         scriptureName: "Luke wrote", scriptureLine: "ousia — only “goods,” the son’s inheritance (Luke 15:12)",
@@ -282,38 +279,18 @@ export const doctrines = [
         sourceName: "Plotinus wrote", sourceLine: "three hypostases — the One, the Mind, the Soul",
         scriptureName: "Moses wrote", scriptureLine: "“Hear, O Israel: Yahuah our Elohim is one Yahuah” (Deuteronomy 6:4)",
         linkLabel: "Plotinus’s word or Yahuah’s?" },
-      { id: "physis", greek: "Physis", strongs: "G5449", yourBible: "nature",
-        sourceName: "The philosophers wrote", sourceLine: "physis — divine nature; Chalcedon’s “two natures”",
-        scriptureName: "Peter wrote", scriptureLine: "believers “partakers of the divine nature” — and no one calls them God (2 Peter 1:4)",
-        linkLabel: "The philosophers’ word or Yahuah’s?" },
       { id: "monogenes", greek: "Monogenēs", strongs: "G3439", yourBible: "only begotten",
         sourceName: "Plato wrote", sourceLine: "monogenēs — the one-of-a-kind cosmos",
         scriptureName: "Moses wrote", scriptureLine: "yachid — “thine only son Isaac,” born in time (Genesis 22:2)",
         linkLabel: "Plato’s word or Yahuah’s?" },
-      { id: "morphe", greek: "Morphē", strongs: "G3444", yourBible: "form",
-        sourceName: "Aristotle wrote", sourceLine: "morphē — the essence that makes a thing what it is",
-        scriptureName: "Moses wrote", scriptureLine: "man made “in our image, after our likeness” (Genesis 1:26)",
-        linkLabel: "Aristotle’s word or Yahuah’s?" },
-      { id: "oikonomia-trinity", greek: "Oikonomia", strongs: "G3622", yourBible: "dispensation",
-        sourceName: "Tertullian wrote", sourceLine: "the “economy” — one God arranged into three",
-        scriptureName: "Paul wrote", scriptureLine: "a stewardship given to a servant (Ephesians 3:2)",
-        linkLabel: "Tertullian’s word or Yahuah’s?" },
-      { id: "hymnos", greek: "Hymnos", strongs: "G5215", yourBible: "hymn",
-        sourceName: "Homer wrote", sourceLine: "hymnos — songs sung to Apollo, Demeter, and Hermes",
-        scriptureName: "David wrote", scriptureLine: "tehillim — the Psalms, songs Yahuah gave His people",
-        linkLabel: "Homer’s word or Yahuah’s?" },
-      { id: "sophia", greek: "Sophia", strongs: "G4678", yourBible: "wisdom",
-        sourceName: "The Gnostics wrote", sourceLine: "Sophia — a divine being beside God",
-        scriptureName: "Solomon wrote", scriptureLine: "chokmah — “Yahuah by wisdom hath founded the earth” (Proverbs 3:19)",
-        linkLabel: "The Gnostics’ word or Yahuah’s?" },
-      { id: "demiourgos", greek: "Dēmiourgos", strongs: "G1217", yourBible: "maker",
-        sourceName: "Plato wrote", sourceLine: "the Demiurge — a second, craftsman god",
-        scriptureName: "Isaiah wrote", scriptureLine: "“that spreadeth abroad the earth by myself” (Isaiah 44:24)",
-        linkLabel: "Plato’s word or Yahuah’s?" },
       { id: "parakletos", greek: "Paraklētos", strongs: "G3875", yourBible: "Comforter",
         sourceName: "The Greek courts said", sourceLine: "paraklētos — an advocate called to one’s side",
         scriptureName: "John wrote", scriptureLine: "“we have an advocate with the Father, Jesus Christ” (1 John 2:1)",
-        linkLabel: "The courts’ word or Yahuah’s?" }
+        linkLabel: "The courts’ word or Yahuah’s?" },
+      { id: "theotes", greek: "Theotēs / Theiotēs", strongs: "G2320, G2305", yourBible: "Godhead",
+        sourceName: "The philosophers wrote", sourceLine: "to theion — a divine essence that beings can share",
+        scriptureName: "Paul wrote", scriptureLine: "“it pleased the Father that in him should all fulness dwell” (Colossians 1:19)",
+        linkLabel: "The philosophers’ word or Yahuah’s?" }
     ]
   },
   {

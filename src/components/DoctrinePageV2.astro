@@ -1,5 +1,7 @@
 ---
-// src/components/DoctrinePageV2.astro · 1022 V4
+// src/components/DoctrinePageV2.astro · 1022 V5
+// V5 (Going to Heaven doctrine brief 1022 V1): links inside the Old Path close are styled
+// (the close is set:html; Heaven's links Paradise Restored inline).
 // V4 (Tribulation / Rapture / Millennium briefs 1022): a pair with a `group` is
 // one of a series ("Revelation · 2 of 3", counted as DoctrineGrid counts the card
 // eyebrow). Both foot rows gain the neighbours: the Old Path's "← Revelation 1 of
@@ -212,6 +214,9 @@ const next = step(1);
     background: rgba(111,143,106,0.08);
   }
   .d2-old p { margin: 0; }
+  /* An inline study link in the close (Going to Heaven: Paradise Restored). */
+  .d2-old :global(a) { color: #d8b06a; text-decoration: underline; text-underline-offset: 3px; }
+  .d2-old :global(a:hover) { color: #e8c98a; }
 
   .d2-foot a { color: #d8b06a; text-decoration: none; }
   .d2-foot a:hover { color: #e8c98a; text-decoration: underline; text-underline-offset: 3px; }

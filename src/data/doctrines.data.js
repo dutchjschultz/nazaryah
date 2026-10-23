@@ -1,4 +1,8 @@
-// doctrines.data 1022 V18.js
+// doctrines.data 1022 V22.js
+// V22: doctrine 12 goes to layout "v2" (Calendar & Feasts doctrine brief 1022 V1).
+// V21: doctrine 11 goes to layout "v2" (Purification & Holiness doctrine brief 1022 V1).
+// V20: doctrine 10 goes to layout "v2" (The Trinity doctrine brief 1022 V1).
+// V19: doctrine 09 goes to layout "v2" (Going to Heaven doctrine brief 1022 V1); its Departure title is the short "Going to Heaven".
 // V18: doctrine 08 goes to layout "v2" (The Millennium doctrine brief 1022 V2); its Departure deck is now "A Kingdom Still Waiting — for a Strong Man Already Bound."
 // V17: doctrine 07 goes to layout "v2" (The Rapture doctrine brief 1022 V1).
 // V16: doctrine 06 goes to layout "v2" (The Seven-Year Tribulation doctrine brief 1022 V1).
@@ -264,7 +268,7 @@ export const doctrines = [
 
   {
     n: "09",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "inheritance-is-the-earth",
       title: "The Inheritance Is the Earth",
@@ -276,7 +280,7 @@ export const doctrines = [
     },
     departure: {
       slug: "going-to-heaven",
-      title: "Going to Heaven When You Die",
+      title: "Going to Heaven",
       deck: "You're Not Going Anywhere — And That's Actually Good News",
       tag: "Going to Heaven",
       body: `The beloved comfort of "they're in Heaven now" is almost universally accepted in Christian culture — yet it directly contradicts what Scripture teaches about death, sleep, and the resurrection. Yahuah's plan was never to evacuate souls upward at the moment of death; it was to resurrect the dead on the last day in glorified bodies to dwell on a renewed earth. The resurrection is the believer's true and magnificent hope — quietly swapped out for a departure story Scripture never tells.`
@@ -285,7 +289,7 @@ export const doctrines = [
 
   {
     n: "10",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "hear-o-israel",
       title: "Hear, O Israel",
@@ -306,7 +310,7 @@ export const doctrines = [
 
   {
     n: "11",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "ye-shall-be-holy",
       title: "Ye Shall Be Holy",
@@ -327,7 +331,7 @@ export const doctrines = [
 
   {
     n: "12",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "signs-and-seasons",
       title: "Signs and Seasons",

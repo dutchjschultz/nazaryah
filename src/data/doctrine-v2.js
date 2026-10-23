@@ -1,4 +1,8 @@
-// doctrine-v2 1022 V10.js
+// doctrine-v2 1022 V14.js
+// V14: Calendar & Feasts doctrine brief 1022 V1: 12, text from its 1022 V1 preview — five word tabs (Kairos open first)
+// V13: Purification & Holiness doctrine brief 1022 V1: 11, text from its 1022 V1 preview — two word tabs (Hagios / Hagnos open first)
+// V12: The Trinity doctrine brief 1022 V1: 10, text from its 1022 V1 preview — six word tabs (Logos open first); the other six words stay on Greek Influence
+// V11: Going to Heaven doctrine brief 1022 V1: 09, text from its 1022 V1 preview — three word tabs (Ouranos open first); the Old Path close links Paradise Restored
 // V10: The Millennium doctrine brief 1022 V2: 08, text from its 1022 V2 preview — two word tabs (Chilioi open first)
 // V9: The Rapture doctrine brief 1022 V1: 07, text from its 1022 V1 preview — four word tabs (Harpazō open first; Parousia and Epiphaneia moved from 06)
 // V8: The Seven-Year Tribulation doctrine brief 1022 V1: 06, text from its 1022 V1 preview — three word tabs (Hebdomas open first); series kickers
@@ -1531,6 +1535,709 @@ export const doctrineV2 = {
         ],
       },
       oldPath: `The strong man was bound at the cross, and his house has been plundered ever since. Nation after nation has heard the word he once kept from them. The thousand years is the full span of that binding, not a golden age still to come. A thousand years still waiting to start hands the dragon an age the cross already took from him. At the end he is loosed "a little season" (Revelation 20:3), and then he is "cast into the lake of fire" (Revelation 20:10). The Revelation shows the triumph already won: "they overcame him by the blood of the Lamb, and by the word of their testimony" (Revelation 12:11).`,
+    },
+  },
+  "09": {
+    oldPaths: {
+      kicker: "The Old Path · Going to Heaven",
+      title: "The Inheritance Is the Earth",
+      subtitle: "The Land Was the Promise",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `Scripture draws a plain line. "The heaven, even the heavens, are Yahuah's: but the earth hath he given to the children of men" (Psalm 115:16). Yahuah promised Abraham the land "for an everlasting possession" (Genesis 17:8), and He never traded that promise for a cloud. David said, "the meek shall inherit the earth" (Psalm 37:11), and "The righteous shall inherit the land, and dwell therein for ever" (Psalm 37:29).`,
+            `The dead do not go up. "No man hath ascended up to heaven," Yahushua said (John 3:13). Peter said even David "is not ascended into the heavens" (Acts 2:34); his tomb was still with them (Acts 2:29). The dead sleep in the dust (Daniel 12:2) until the last trump, when they are raised (1 Corinthians 15:52) to inherit the earth made new.`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `The fathers lived as strangers in the land they were promised, and they wanted to be buried in it. Jacob said, "bury me with my fathers" (Genesis 49:29). Joseph made Israel swear, "ye shall carry up my bones from hence" (Genesis 50:25), and they did (Joshua 24:32). They "died in faith, not having received the promises" (Hebrews 11:13). They expected to rise where they lay.`,
+            `Moses promised scattered Israel that Yahuah would "bring thee into the land which thy fathers possessed" (Deuteronomy 30:5). Every fiftieth year the Jubilee gave each family its land back, because Yahuah said, "the land is mine" (Leviticus 25:23).`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Abraham", `the land given "for an everlasting possession" (Genesis 17:8).`],
+            ["Joseph", `"ye shall carry up my bones from hence" (Genesis 50:25).`],
+            ["Job", `his Redeemer "shall stand at the latter day upon the earth" (Job 19:25).`],
+            ["David", `"the meek shall inherit the earth" (Psalm 37:11).`],
+            ["Daniel", `"thou shalt rest, and stand in thy lot at the end of the days" (Daniel 12:13).`],
+            ["Yahushua", `"Blessed are the meek: for they shall inherit the earth" (Matthew 5:5).`],
+          ],
+        },
+      ],
+      closing: `Revelation ends where the promise began. The redeemed sing, "we shall reign on the earth" (Revelation 5:10). And the city does not go up; it comes "down from God out of heaven," because "the tabernacle of God is with men, and he will dwell with them" (Revelation 21:2-3).`,
+      torah: ["Genesis 17:8", "Deuteronomy 30:5"],
+      witness: ["Psalm 115:16", "Psalm 37:29", "Job 19:25", "Matthew 5:5"],
+      turn: {
+        text: "But Christianity went another way. It traded the land for the sky, and the resurrection for a flight upward at death.",
+        label: "The Departure: Going to Heaven",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 09",
+      title: "Going to Heaven",
+      subtitle: "You're Not Going Anywhere — And That's Actually Good News",
+      attribution: "You've been singing Plato's hope and calling it Scripture.",
+      taught: [
+        `At nearly every funeral the preacher says it: she is in heaven now, looking down on us. Going to heaven when you die is the hope most churchgoers carry. The goal of the believer's life, they are told, is to leave this earth behind and live up there for ever, in a mansion on a street of gold.`,
+        `Rome teaches that those who die in God's favor, once they are fully purified, go to heaven and see God face to face. The Westminster Confession says the souls of the righteous are "received into the highest heavens" at death. Evangelists ask, "If you died tonight, would you go to heaven?" Pentecostal and Baptist choirs sing "I'll Fly Away." Catholic or Protestant, the funeral agrees on one point: the dead believer is up there now.`,
+      ],
+      roots: [
+        `The Greeks sent their favored dead away from the earth. Homer put a few heroes on the Elysian plain at the ends of the world, and Hesiod put them on the Isles of the Blessed. Plato went further: the soul that lived well would "return and dwell in its native star" (<em>Timaeus</em>). Rome carried it on; Cicero pictured the souls of great men living in the Milky Way.`,
+        `Scripture tells a different story. "The heaven, even the heavens, are Yahuah's: but the earth hath he given to the children of men" (Psalm 115:16). The dead sleep in the dust until the last day, and then they rise to inherit the earth made new. Three Greek words carried the other hope in. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "ouranos", greek: "Ouranos", kjv: "heaven", role: "The root word", more: "Ouranos on Greek Influence",
+            verse: { ref: "Matthew 5:3", text: "Blessed are the poor in spirit: for theirs is the kingdom of heaven." },
+            taught: [
+              `The kingdom of heaven is the place God's people go when they die. Stay humble now, and one day you will live in heaven with God. The pulpit reads every "kingdom of heaven" as a home above the clouds. The Beatitudes become a promise of a ticket out of this world.`,
+            ],
+            word: [
+              `*Ouranos* was a god before it was a sky. In Hesiod's poem about the birth of the gods, Ouranos is the Sky himself, the first king of heaven and father of the Titans, until his son Kronos overthrew him.`,
+              `Plato later taught that a soul which lived well would go back up to live in its own star. So to a Greek reader, heaven was where the good soul came from and where it goes home. Read that way, "the kingdom of heaven" is a place up there that you go to.`,
+            ],
+            hebrew: [
+              `Yahushua spoke these words in Hebrew, and two verses later He quotes David: "Blessed are the meek: for they shall inherit the earth" (Matthew 5:5). David wrote it first: "But the meek shall inherit the earth; and shall delight themselves in the abundance of peace" (Psalm 37:11). The poor in spirit and the meek are the same people. One verse says the kingdom of heaven is theirs. The other says the earth is.`,
+              `The Hebrew word for heaven is *shamayim*. It is Yahuah's throne: "The heaven is my throne, and the earth is my footstool" (Isaiah 66:1). And David says who lives where: "The heaven, even the heavens, are Yahuah's: but the earth hath he given to the children of men" (Psalm 115:16). The kingdom of heaven is the kingdom that comes from heaven, Yahuah's rule, not a place men move to. Luke gives the same saying as "yours is the kingdom of God" (Luke 6:20).`,
+            ],
+            reread: [`Now read it the way Yahushua meant it: "Happy are the poor in spirit, for the rule of Yahuah, the kingdom that comes down from His throne, belongs to them." He taught the same people how to pray for it: "Thy kingdom come. Thy will be done in earth, as it is in heaven" (Matthew 6:10). The kingdom comes here. Nobody prays for a kingdom to come to him if he is about to leave for it. And no one has gone up yet: "no man hath ascended up to heaven" (John 3:13).`],
+            timeline: [
+              ["About 700 BC", `Hesiod: Ouranos, the Sky, is the first king of the gods.`],
+              ["About 360 BC", `Plato: the soul that lived well returns to dwell in its own star (*Timaeus*).`],
+              ["1646", `The Westminster Confession: the souls of the righteous are "received into the highest heavens" at death.`],
+              ["1898", `The hymn "When We All Get to Heaven" sets the hope above the clouds.`],
+              ["Today", `The pulpit: "She's in heaven now, looking down on us."`],
+            ],
+            built: [
+              `Heaven at death: the soul flies upward the moment the body dies.`,
+              `A gospel of leaving: the earth written off as a waiting room, though Yahuah gave it to the children of men.`,
+              `The resurrection made an afterthought, since the dead are said to be home already.`,
+            ],
+          },
+          {
+            id: "paradeisos", greek: "Paradeisos", kjv: "paradise", role: "The root word", more: "Paradeisos on Greek Influence",
+            verse: { ref: "Luke 23:43", text: "And Yahushua said unto him, Verily I say unto thee, To day shalt thou be with me in paradise." },
+            taught: [
+              `The thief on the cross died and went straight to heaven that same day. This verse is read at funerals, Catholic and Protestant, to prove the dead are with Yahushua right now. Paradise is heaven, a resting place above where souls wait for the end. If a thief could go there the day he died, the pulpit says, so will every believer.`,
+            ],
+            word: [
+              `*Paradeisos* came from Persia. It was the word for a king's walled park, a royal garden with trees, water, and animals. The Greek writer Xenophon used it for the Persian kings' parks. The Greek Torah then used it for the garden of Eden.`,
+              `Later teachers lifted the garden into the sky and made it a waiting room for the souls of the dead. About 210 AD Tertullian taught that paradise already held the souls of the martyrs. That is the paradise the pulpit sees in this verse.`,
+            ],
+            hebrew: [
+              `The Hebrew word beneath is *gan*, a garden. The first paradise was planted on the earth: "And Yahuah Elohim planted a garden eastward in Eden; and there he put the man whom he had formed" (Genesis 2:8). Where the Greek Torah says *paradeisos*, Moses wrote *gan*.`,
+              `Scripture never moves that garden into the sky. It brings it back. John hears of "the tree of life, which is in the midst of the paradise of God" (Revelation 2:7), and then sees that tree beside the river in the city that comes down to the earth (Revelation 22:1-2). And the thief had not asked to go to heaven. He asked for the kingdom: "Master, remember me when thou comest into thy kingdom" (Luke 23:42).`,
+            ],
+            reread: [`The Greek copies were written without commas; where the comma goes is a translator's choice. Move it one word: "Verily I say unto thee to day, thou shalt be with me in paradise." I tell you today, on this day with both of us dying, you will be with Me in the garden when I come in My kingdom. Yahushua Himself did not go to paradise that day. He lay in the tomb, and on the morning He rose He told Mary, "Touch me not; for I am not yet ascended to my Father" (John 20:17). The thief asked to be remembered when the kingdom comes. That is what he was promised.`],
+            timeline: [
+              ["About 400 BC", `Xenophon uses *paradeisos* for the Persian kings' walled parks.`],
+              ["About 250 BC", `In Alexandria the Greek Torah calls Eden's garden a *paradeisos* (Genesis 2:8).`],
+              ["About 210 AD", `Tertullian teaches that paradise already holds the souls of the martyrs.`],
+              ["1611", `The King James Version places the comma before "To day."`],
+              ["Today", `The pulpit: "The thief went to heaven the day he died, and so will you."`],
+            ],
+            built: [
+              `A heavenly waiting room: souls resting in a paradise above until the end.`,
+              `The deathbed ticket: one last-minute prayer said to send a soul straight to heaven that day.`,
+              `The restored garden of Revelation forgotten in favor of a cloud.`,
+            ],
+          },
+          {
+            id: "makarios", greek: "Makarios", kjv: "blessed", role: "The root word", more: "Makarios on Greek Influence",
+            verse: { ref: "Revelation 14:13", text: "And I heard a voice from heaven saying unto me, Write, Blessed are the dead which die in the Master from henceforth: Yea, saith the Spirit, that they may rest from their labours; and their works do follow them." },
+            taught: [
+              `This verse is read at funerals. "Blessed are the dead": they are happy now, in glory, free from pain, singing with the angels. The pulpit says our loved ones are already enjoying their reward. Rome gives the title "Blessed" to dead believers it declares to be in heaven, a step toward sainthood. Their work on earth is done, and their joy in heaven has begun.`,
+            ],
+            word: [
+              `*Makarios* means blessed or happy. In Homer, the *makares*, "the blessed ones," were the gods themselves, living at ease on Olympus. Hesiod wrote of the Isles of the Blessed, where heroes went after death to a happy land at the edge of the world.`,
+              `So "the blessed dead" sounded to a Greek like heroes enjoying the good life somewhere far away. That is still the picture at most funerals.`,
+            ],
+            hebrew: [
+              `The Hebrew word beneath "blessed" is *ashrei*. It is kin to the verb Proverbs uses for walking a path: "go in the way of understanding" (Proverbs 9:6). The first Psalm opens with it: "Blessed is the man that walketh not in the counsel of the ungodly." Instead, "his delight is in the law of Yahuah" (Psalm 1:1-2). Blessed is not about where a man is. It is about how he walked.`,
+              `And the prophets say what the righteous dead do: they rest. "He shall enter into peace: they shall rest in their beds, each one walking in his uprightness" (Isaiah 57:2). Daniel was told the same: "But go thou thy way till the end be: for thou shalt rest, and stand in thy lot at the end of the days" (Daniel 12:13).`,
+            ],
+            reread: [`Now read it the way John meant it: "Happy are those who walked with Yahuah and die in the Master. From now on they rest from their labor, and the way they walked follows them." Look at the verse just before: "Here is the patience of the saints: here are they that keep the commandments of God, and the faith of Yahushua" (Revelation 14:12). The blessed dead are the ones who walked in the commandments and held the testimony. They are not up in glory singing. They rest, like Daniel, until the day of reward: "behold, I come quickly; and my reward is with me" (Revelation 22:12).`],
+            timeline: [
+              ["About 750 BC", `Homer: the *makares*, "the blessed ones," are the gods at ease on Olympus.`],
+              ["About 700 BC", `Hesiod: heroes go after death to the Isles of the Blessed (*Works and Days*).`],
+              ["About 250 BC on", `The Greek Psalms put *makarios* for *ashrei*: "Blessed is the man" (Psalm 1:1).`],
+              ["1646", `The Westminster Confession: the souls of the righteous, "made perfect in holiness," go at once to heaven.`],
+              ["Today", `At the funeral: "Blessed are the dead; they're with the Master now."`],
+            ],
+            built: [
+              `The blessed dead in glory: loved ones pictured as awake and rejoicing above.`,
+              `Comfort without the resurrection: the hope moved from the last day to the day of death.`,
+              `Rewards handed out at death, not at His coming, and the church declaring who is already in glory.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `The old path keeps the inheritance on the earth. "The righteous shall inherit the land, and dwell therein for ever" (Psalm 37:29). Job did not expect to fly away. He expected his Redeemer to "stand at the latter day upon the earth" (Job 19:25). The dead wait in the dust, and they rise when He comes. Plato sent the soul up to its star. Scripture brings heaven down. The garden returns, from a garden planted to a city descended, as the study <a href="/blog/paradise-restored">Paradise Restored</a> traces it. Revelation shows which way the city moves: "And I John saw the holy city, new Jerusalem, coming down from God out of heaven, prepared as a bride adorned for her husband" (Revelation 21:2).`,
+    },
+  },
+  "10": {
+    oldPaths: {
+      kicker: "The Old Path · The Trinity",
+      title: "Hear, O Israel",
+      subtitle: "One. Not One in Three.",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `Israel's whole belief rests on one sentence. "Hear, O Israel: Yahuah our God is one Yahuah" (Deuteronomy 6:4). Moses said it twice more so no one could miss it: "Yahuah he is God; there is none else beside him" (Deuteronomy 4:35), and "there is none else" (Deuteronomy 4:39). Yahuah Himself asks, "Is there a God beside me?" and answers, "I know not any" (Isaiah 44:8). One means one.`,
+            `Yahuah has a Son, Yahushua. The Father begot Him, sent Him, and raised Him from the dead. The Son prayed to the Father, obeyed the Father, and called Him "my God" (John 20:17). He never took the Father's place or the Father's title. His very name means "Yahuah saves." Yahuah alone saves; the Son provided the way. The Spirit is not a third someone. It is Yahuah's own power at work. Yahushua called it "the finger of God" (Luke 11:20), where Matthew wrote "the Spirit of God" (Matthew 12:28).`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `Israel was told to keep these words "in thine heart," to teach them to their children, and to write them "upon the posts of thy house, and on thy gates" (Deuteronomy 6:6-9). Every child grew up hearing that Yahuah is one.`,
+            `When a scribe asked Yahushua which commandment came first, He did not announce a new God. He quoted the same words (Mark 12:29). The scribe answered, "there is one God; and there is none other but he." Yahushua told him he was "not far from the kingdom of God" (Mark 12:32, 34).`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Moses", `"Yahuah our God is one Yahuah" (Deuteronomy 6:4).`],
+            ["Isaiah", `"I, even I, am Yahuah; and beside me there is no saviour" (Isaiah 43:11).`],
+            ["Yahushua", `the Father is "the only true God," and the Son is the one "whom thou hast sent" (John 17:3).`],
+            ["Paul", `"to us there is but one God, the Father" (1 Corinthians 8:6).`],
+            ["Paul again", `"one God, and one mediator between God and men, the man Messiah Yahushua" (1 Timothy 2:5).`],
+            ["James", `"Thou believest that there is one God; thou doest well" (James 2:19).`],
+          ],
+        },
+      ],
+      closing: `Even risen and glorified, the Son still speaks of the Father as His God. In one verse He says "my God" four times (Revelation 3:12). A doctrine of three persons has to be carried into these texts, because it cannot be carried out of them.`,
+      torah: ["Deuteronomy 6:4", "Deuteronomy 4:35, 39"],
+      witness: ["Isaiah 43:10-11", "Isaiah 44:8", "Isaiah 45:5", "Mark 12:29", "John 17:3", "1 Corinthians 8:6", "1 Timothy 2:5"],
+      turn: {
+        text: "But Christianity went another way. It counted three where Moses counted one, and called it a mystery.",
+        label: "The Departure: The Trinity",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 10",
+      title: "The Trinity",
+      subtitle: "One Name, Not Three — The Doctrine That Rewrote the Father",
+      attribution: "You've been quoting Philo and the councils and calling it Scripture.",
+      taught: [
+        `Nearly every church teaches the same thing. There is one God in three persons: the Father, the Son, and the Holy Spirit. Each one is fully God. None is greater than another, and none came before another. All three share one substance. It is called a mystery. You are told not to try to understand it, only to believe it, and that if you deny it you are not a Christian.`,
+        `The Catholic Church calls the Trinity the central mystery of the faith. Baptist, Methodist, Presbyterian, Lutheran, and nondenominational statements of faith say the same thing, and Pentecostal churches such as the Assemblies of God list it among their fundamental truths. It is sung every Sunday: "God in three persons, blessed Trinity." Even the Oneness Pentecostals, who reject three persons, only trade one error for another. They make the Son and the Father the same person.`,
+      ],
+      roots: [
+        `The apostles never used the word. The Trinity was built in steps, and the building blocks were Greek. Heraclitus and the Stoics taught a <em>logos</em>, a divine reason running through the world. About 40 AD, Philo of Alexandria, a Jew who loved Plato, made that <em>logos</em> a go-between standing between God and the world, and even called it "the second God." About 150, Justin Martyr brought the idea into the church and called the Word "another God" beside the Maker of all things.`,
+        `About 213, Tertullian wrote the Latin word <em>trinitas</em> and spoke of three persons of one substance. In 325, at Nicaea, with the emperor Constantine in the room and urging the word, the bishops wrote that the Son is of "one substance" with the Father. In 381, at Constantinople, under the emperor Theodosius, the Spirit was added, to be worshiped and glorified together with the Father and the Son. The apostles did not write this creed. Roman bishops under Roman emperors did, and every key word in it came from the philosophers. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "logos", greek: "Logos", kjv: "Word", role: "The root word", more: "Logos on Greek Influence",
+            verse: { ref: "John 1:1", text: "In the beginning was the Word, and the Word was with God, and the Word was God." },
+            taught: [
+              `The Son is the Word, so the Son is God. Before the world was made, He stood beside the Father as a second divine person, equal in every way. At Bethlehem that second person came down and took a body. This verse is read as the plainest proof of the Trinity in the whole Bible.`,
+            ],
+            word: [
+              `About 500 BC, a Greek philosopher named Heraclitus used *logos* for the "reason" that runs the whole universe. The Stoics after him called it a divine reason living in everything, a seed of god in every mind.`,
+              `Then Philo, a Jewish teacher in Alexandria who loved Plato, called the *logos* God's "firstborn," His "image," and even "the second god." About 155, Justin Martyr taught that there is "another God" beneath the Maker of all things. He even said that Socrates and Heraclitus, who lived by the *logos*, had been Christians before Messiah came. Read through that lens, "the Word was with God" turns into a second God standing next to the first.`,
+            ],
+            hebrew: [
+              `John opens with the first words of Moses: "In the beginning." And in Genesis, Yahuah makes the world one way. He speaks: "And God said, Let there be light: and there was light" (Genesis 1:3). David says it plainly: "By the word of Yahuah were the heavens made; and all the host of them by the breath of his mouth" (Psalm 33:6).`,
+              `The Hebrew word is *davar*. It means a spoken word, a promise, a thing said and meant. Yahuah's *davar* is not a second person beside Him. It is Yahuah Himself speaking, His own mind going out of His mouth. "So shall my word be that goeth forth out of my mouth: it shall not return unto me void" (Isaiah 55:11). A man's word is not a second man.`,
+            ],
+            reread: [`The way John meant it: In the beginning Yahuah spoke. His word was with Him, the way a man's word is with him. And His word was His own; what God was, His word was. A few verses later John says what happened to that word: "the Word was made flesh, and dwelt among us" (John 1:14). The promise Yahuah spoke in the beginning became a man, born in time, "the only begotten of the Father." John is not describing two Gods. He is describing one God whose spoken word came to life in His Son.`],
+            timeline: [
+              ["About 500 BC", `Heraclitus calls the *logos* the reason that runs the universe.`],
+              ["About 300 BC", `The Stoics make the *logos* the divine reason in all things.`],
+              ["About 40 AD", `Philo of Alexandria, steeped in Plato, calls the *logos* "the second god."`],
+              ["About 155", `Justin Martyr teaches "another God" beneath the Maker of all things.`],
+              ["325", `The Nicene Creed names the Son "God of God," a second divine one beside the Father.`],
+              ["Today", `The pulpit: "The Word is God the Son, the second person of the Trinity."`],
+            ],
+            built: [
+              `A second divine person: the Word turned from Yahuah's voice into another God beside Him.`,
+              `"God the Son," a title Scripture never uses, built on reading *logos* the way Philo read it. Scripture says "Son of God."`,
+              `John 1:1 used to overrule Deuteronomy 6:4.`,
+            ],
+          },
+          {
+            id: "ousia", greek: "Ousia", kjv: "substance", role: "The root word", more: "Ousia on Greek Influence",
+            verse: { ref: "John 10:30", text: "I and my Father are one." },
+            taught: [
+              `This is the pulpit's favorite proof. "One" means one substance: the Father and the Son are the same God, as the Nicene Creed says, "of one substance with the Father." The Son was claiming to be God, and that is why the crowd picked up stones. Catholic, Orthodox, Lutheran, Anglican, and Methodist services say that creed aloud. Since 2011, English-speaking Catholics say "consubstantial with the Father" at every Mass.`,
+            ],
+            word: [
+              `The creed's word is *homoousios*, "same substance." It is built on *ousia*. About 350 BC, Aristotle used *ousia* for the essence of a thing, what it really is underneath. But *ousia* is not in this verse. The word here is simply "one."`,
+              `About 268, a council at Antioch is reported to have rejected *homoousios* as an unfit word for the Son. In 325 the emperor Constantine wanted one creed for one empire. Eusebius of Caesarea wrote home from Nicaea that the emperor himself urged the word. The bishops who would not sign were sent into exile.`,
+            ],
+            hebrew: [
+              `Yahushua is talking about sheep. All of John 10 answers Ezekiel 34, where Yahuah promises: "And I will set up one shepherd over them, and he shall feed them, even my servant David" (Ezekiel 34:23). The shepherd is Yahuah's servant, set over the flock by Yahuah. The Hebrew for "one" is *echad*, the same word as in "Yahuah our God is one Yahuah."`,
+              `Now read the verse just before: "My Father, which gave them me, is greater than all; and no man is able to pluck them out of my Father's hand" (John 10:29). The Father gave the sheep. The Father is greater than all. The sheep sit in the Son's hand and the Father's hand at once: one grip, one purpose.`,
+            ],
+            reread: [`The way Yahushua meant it: My Father gave Me these sheep. He and I hold them together, as one. No one can take them from us. When the crowd accused Him, He told them exactly what He had claimed: "I am the Son of God" (John 10:36), not God the Son. Later He prayed for His followers "that they may be one, even as we are one" (John 17:22). If "one" meant one substance, the disciples would become one substance too. And the only time the New Testament uses *ousia*, it is a prodigal's money, which he "wasted ... with riotous living" (Luke 15:13).`],
+            timeline: [
+              ["About 350 BC", `Aristotle uses *ousia* for the essence of a thing.`],
+              ["About 30 AD", `The word appears in Yahushua's parable only as a son's inheritance, the goods he wasted (Luke 15:12-13).`],
+              ["About 268", `A council at Antioch is reported to have rejected *homoousios*.`],
+              ["325", `Nicaea, with Constantine urging it, makes *homoousios* its key word.`],
+              ["2011", `The English Catholic Mass changes to "consubstantial with the Father."`],
+              ["Today", `The pulpit: "Very God of very God, of one substance with the Father."`],
+            ],
+            built: [
+              `"One substance," the test word of the Nicene Creed, taken from Aristotle, not from Scripture.`,
+              `John 10:30 as a Trinity proof, though a few verses later He says, "I am the Son of God."`,
+              `Bishops exiled by an emperor for refusing a philosopher's word.`,
+            ],
+          },
+          {
+            id: "hypostasis", greek: "Hypostasis", kjv: "person", role: "The root word", more: "Hypostasis on Greek Influence",
+            verse: { ref: "Hebrews 1:3", text: "Who being the brightness of his glory, and the express image of his person, and upholding all things by the word of his power," },
+            taught: [
+              `There are two persons here, the Father and the Son, and the Holy Ghost makes three. Each one is a separate person, and each is fully God: one God in three persons. This verse is used to show that the Son is a person of the Godhead, equal with the Father.`,
+            ],
+            word: [
+              `The King James word "person" here is *hypostasis*. It means "what stands under," the real thing, the reality. The King James Version gives it as "substance" in Hebrews 11:1: "faith is the substance of things hoped for." This verse is the only place it becomes "person."`,
+              `About 260 AD, a pagan philosopher named Plotinus taught three *hypostases* at the top of everything: the One, the Mind, and the Soul. At Nicaea in 325, *hypostasis* still meant the same as *ousia*; the creed lists the two words side by side. About fifty years later, Basil of Caesarea and his friends split them apart: one *ousia*, three *hypostases*. In Latin the word became *persona*, the mask an actor wore, and from there the English "person."`,
+            ],
+            hebrew: [
+              `Two verses later, Hebrews quotes David's psalm: "Thou art my Son, this day have I begotten thee" (Hebrews 1:5; Psalm 2:7). A son has a father, and a begetting has a day.`,
+              `"Express image" is the Greek *charaktēr*, the mark a seal stamps into wax. The Hebrew idea is *tselem*, image: "So God created man in his own image" (Genesis 1:27). There is one seal. The stamp shows it exactly, but the stamp is not a second seal. Moses settled how many there are: "Yahuah our God is one Yahuah" (Deuteronomy 6:4).`,
+            ],
+            reread: [`The way the writer meant it: The Son carries His Father's glory the way a lamp carries a flame, and He is the exact stamp of the Father's own being. There is one *hypostasis* here, and it is the Father's. "Brightness" is light shining out from a source. The Father is the light; the Son is the light-bearer. The opening lines say so: God "hath in these last days spoken unto us by his Son, whom he hath appointed heir of all things" (Hebrews 1:2). The one doing the appointing is the one God. The Son is His perfect image, not a second person of a three-person God.`],
+            timeline: [
+              ["About 260", `Plotinus teaches three first *hypostases*: the One, the Mind, the Soul.`],
+              ["325", `At Nicaea, *hypostasis* and *ousia* still mean the same thing; the creed lists them together.`],
+              ["About 375", `Basil of Caesarea separates the words: one *ousia*, three *hypostases*.`],
+              ["381–382", `The bishops gathered at Constantinople confess one substance in three *hypostases*.`],
+              ["Today", `The pulpit: "One God in three persons, blessed Trinity."`],
+            ],
+            built: [
+              `Three persons in one God: Plotinus's three *hypostases*, given Bible names.`,
+              `"Person" treated as a Bible word, though the King James Version uses it for *hypostasis* only here.`,
+              `The Son made a second *hypostasis*, when Hebrews makes Him the image of the Father's one.`,
+            ],
+          },
+          {
+            id: "monogenes", greek: "Monogenēs", kjv: "only begotten", role: "The root word", more: "Monogenēs on Greek Influence",
+            verse: { ref: "John 3:16", text: "For God so loved the world, that he gave his only begotten Son, that whosoever believeth in him should not perish, but have everlasting life." },
+            taught: [
+              `The Son is God's only begotten Son, "eternally begotten," as many churches now say the creed, "begotten of the Father before all worlds." He never had a beginning. He was always the Son, just as eternal as the Father. His sonship is a mystery that happened outside of time.`,
+            ],
+            word: [
+              `*Monogenēs* means "one of a kind," the only one of its sort. Plato used it at the end of his *Timaeus* for the world itself, the one-of-a-kind offspring of his maker-god.`,
+              `About 225, Origen of Alexandria taught that the Son is begotten eternally, with no beginning at all. The creed of 381 wrote that into its words: "begotten of the Father before all worlds," a birth that never happened on any day. No Hebrew father ever begot a son before he himself existed.`,
+            ],
+            hebrew: [
+              `Hebrews uses this same word for Isaac: Abraham "offered up his only begotten son" (Hebrews 11:17). But Abraham had another son, Ishmael. So *monogenēs* cannot mean the only son ever born. It points back to Moses: "Take now thy son, thine only son Isaac, whom thou lovest" (Genesis 22:2).`,
+              `The Hebrew word is *yachid*: only, one and only, the beloved one. Isaac was the son of promise, and he was born in time. Sarah "bare Abraham a son in his old age, at the set time of which God had spoken to him" (Genesis 21:2).`,
+            ],
+            reread: [`The way Yahushua meant it: Yahuah loved the world so much that He gave His one beloved Son, the way Abraham offered Isaac, so that whoever trusts in Him will not perish but have life that does not end. The next verse says who is doing the saving: "God sent not his Son into the world to condemn the world; but that the world through him might be saved" (John 3:17). Yahuah gives and Yahuah sends. Yahuah saves; the beloved Son He gave is the way. Abraham's Moriah was the picture; Yahuah's gift was the real thing.`],
+            timeline: [
+              ["Moriah", `Abraham offers Isaac, his *yachid*, his only son, born at the set time.`],
+              ["About 360 BC", `Plato calls the world a *monogenēs*, the one-of-a-kind offspring of his maker-god.`],
+              ["About 225", `Origen teaches that the Son is begotten eternally, without beginning.`],
+              ["325", `Nicaea: "begotten of the Father, only-begotten, that is, of the substance of the Father."`],
+              ["381", `Constantinople: "begotten of the Father before all worlds."`],
+              ["Today", `The pulpit: "Eternally begotten. He never had a beginning."`],
+            ],
+            built: [
+              `Eternal generation: a birth with no day, unknown to Moses or to Psalm 2:7.`,
+              `The Son made as eternal as the Father: the Father's gift turned into a second eternal God.`,
+              `A Father who gave nothing of His own, if what He gave was Himself.`,
+            ],
+          },
+          {
+            id: "parakletos", greek: "Paraklētos", kjv: "Comforter", role: "The root word", more: "Paraklētos on Greek Influence",
+            verse: { ref: "John 14:16", text: "And I will pray the Father, and he shall give you another Comforter, that he may abide with you for ever;" },
+            taught: [
+              `The Holy Spirit is the third person of the Trinity. The Son said "another Comforter," so the Spirit must be someone other than the Son and other than the Father. And the Bible calls the Spirit "he." So the Spirit is a person, equal to the other two. If any doubt is left, 1 John 5:7 settles it: "these three are one."`,
+            ],
+            word: [
+              `*Paraklētos* comes from the Greek courts. It means one called to your side, a helper or advocate standing beside the accused. In Greek, *paraklētos* is a masculine word, so the Greek says "he" to match it. But the Greek word for spirit is not masculine, and the King James Version says, "The Spirit itself beareth witness" (Romans 8:16). The creed of Nicaea in 325 said only, "And in the Holy Ghost." Fifty-six years later, at Constantinople, the Spirit was declared worshiped and glorified together with the Father and the Son.`,
+              `Then a verse was added. The words "the Father, the Word, and the Holy Ghost: and these three are one" in 1 John 5:7 appear in no Greek manuscript until the late Middle Ages. Erasmus left them out of his Greek New Testament in 1516 and 1519. He put them into his third edition in 1522, after a late Greek copy containing them was produced. The King James Version kept them.`,
+            ],
+            hebrew: [
+              `The Hebrew behind "comfort" is *nacham*. "Comfort ye, comfort ye my people, saith your God" (Isaiah 40:1). And who is the Comforter? Yahuah says, "I, even I, am he that comforteth you" (Isaiah 51:12). In the Hebrew, the Comforter is Yahuah Himself, by His own Spirit.`,
+              `John uses the same Greek word for the Son: "we have an advocate with the Father, Yahushua Messiah the righteous" (1 John 2:1). So *paraklētos* is a role, standing beside, not the name of a third person.`,
+            ],
+            reread: [`The way Yahushua meant it: I will ask the Father, and He will give you another Helper at your side, His own Spirit of truth, so that you are never left alone. Two verses later He says who is coming: "I will not leave you comfortless: I will come to you" (John 14:18). A few verses after that: "my Father will love him, and we will come unto him, and make our abode with him" (John 14:23). The Father and the Son come to live with the believer by the Spirit. No third one is named.`],
+            timeline: [
+              ["About 400 BC", `In the Greek courts, a *paraklētos* is a friend called to stand beside the accused.`],
+              ["325", `The Nicene Creed says only, "And in the Holy Ghost."`],
+              ["381", `Constantinople declares the Spirit worshiped and glorified with the Father and the Son.`],
+              ["589", `A council at Toledo in Spain adds that the Spirit proceeds from the Father "and the Son."`],
+              ["1522", `Erasmus puts the added words of 1 John 5:7 into his third Greek edition, and the King James Version of 1611 keeps them.`],
+              ["Today", `The pulpit: "God the Holy Spirit, the third person of the Trinity."`],
+            ],
+            built: [
+              `The third person: a helper's title and a grammar rule made into a separate God.`,
+              `The finished Trinity, added at Constantinople fifty-six years after Nicaea.`,
+              `1 John 5:7 used as a proof text, though it was added fifteen centuries late.`,
+            ],
+          },
+          {
+            id: "theotes", greek: "Theotēs", kjv: "Godhead", role: "The root word", more: "Theotēs on Greek Influence",
+            verse: { ref: "Colossians 2:9", text: "For in him dwelleth all the fulness of the Godhead bodily." },
+            taught: [
+              `This verse proves the Son is fully God. "The Godhead" means the Trinity: Father, Son, and Holy Ghost, three persons sharing one divine being. All of that lives in the Son. So He is God the Son, one of the three.`,
+            ],
+            word: [
+              `The King James word "Godhead" stands for three different Greek words. *Theotēs* is here. *Theiotēs* is in Romans 1:20. And *to theion*, "the divine," is in Acts 17:29, where Paul used the Greeks' own word to tell them God is not "like unto gold, or silver, or stone." *To theion* was the philosophers' word for a divine stuff that gods and spirits could share in.`,
+              `Church teachers in the 300s, Gregory of Nazianzus among them, took *theotēs* for the one divine being that three persons share. The old English word "godhead" simply meant godhood, being God, the way "childhood" means being a child. It never meant a group of three.`,
+            ],
+            hebrew: [
+              `Paul explains his own words one chapter earlier: "For it pleased the Father that in him should all fulness dwell" (Colossians 1:19). Who put the fullness in the Son? The Father did, because He wanted to. The fullness is the Father's own, and He gave it.`,
+              `Fullness is the Hebrew idea of *melo*, everything that fills a thing. "The earth is Yahuah's, and the fulness thereof" (Psalm 24:1). Yahuah's glory once filled the tabernacle (Exodus 40:34). Now His fullness lives in a man. Yahushua said, "the Father that dwelleth in me, he doeth the works" (John 14:10).`,
+            ],
+            reread: [`The way Paul meant it: everything that Yahuah is lives in this one man, in a real body, because the Father was pleased to put it there. Look at the verse right before it: "Beware lest any man spoil you through philosophy and vain deceit, after the tradition of men" (Colossians 2:8). Paul wrote that warning one breath before the verse the councils later filled with philosophy. And he prayed that believers would be "filled with all the fulness of God" (Ephesians 3:19). No one calls them God.`],
+            timeline: [
+              ["About 350 BC", `The philosophers use *to theion*, "the divine," for a divine essence beings can share.`],
+              ["About 50 AD", `Paul at Athens uses their own word to tell them God is not like gold or stone (Acts 17:29).`],
+              ["About 380", `Gregory of Nazianzus teaches one *theotēs*, one Godhead, undivided in three persons.`],
+              ["1611", `The King James Version puts "Godhead" for all three Greek words.`],
+              ["Today", `The pulpit: "The Godhead is the Father, the Son, and the Holy Ghost."`],
+            ],
+            built: [
+              `The Godhead as a committee of three: a word for being God turned into a name for three persons.`,
+              `Colossians 2:9 as a Trinity proof, though the verse before it warns against the philosophy behind it.`,
+              `The dwelling confused with the One who dwells in it.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `Scripture never needed a substance or three persons. "To us there is but one God, the Father" (1 Corinthians 8:6). His Son Yahushua was begotten, sent, and obedient. His Spirit is His own power, His finger at work in the world. Yahuah alone saves; the Son He gave provided the way. At the end, "then shall the Son also himself be subject unto him that put all things under him, that God may be all in all" (1 Corinthians 15:28). The Trinity has to be carried into the text, because it cannot be carried out of it. Revelation keeps the order from its very first line: "The Revelation of Yahushua Messiah, which God gave unto him" (Revelation 1:1). And John heard the risen Son say "my God" four times in one breath (Revelation 3:12).`,
+    },
+  },
+  "11": {
+    oldPaths: {
+      kicker: "The Old Path · Purification & Holiness",
+      title: "Ye Shall Be Holy",
+      subtitle: "Clean and Unclean Were Taught, Not Guessed",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `Yahuah drew the line between clean and unclean Himself. He told the priests to "put difference between holy and unholy, and between unclean and clean" (Leviticus 10:10). Leviticus 11 names the animals. Beasts that part the hoof and chew the cud are food. In the waters, whatever has "fins and scales" is food (Leviticus 11:9). The swine, the hare, and everything in the water without fins and scales are not.`,
+            `The reason comes with the rule. "Ye shall be holy unto me: for I Yahuah am holy, and have severed you from other people, that ye should be mine" (Leviticus 20:26). Holy means set apart, kept for one owner. A people set apart for Yahuah eat as people set apart.`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `The line is older than Sinai. Noah took clean beasts "by sevens" and unclean beasts "by two" (Genesis 7:2). Centuries later, a young captive in Babylon "purposed in his heart that he would not defile himself with the portion of the king's meat" (Daniel 1:8). He asked for vegetables and water, and Yahuah blessed him for it.`,
+            `The priests were charged to keep teaching the difference. When they stopped, Yahuah said, "Her priests have violated my law ... neither have they shewed difference between the unclean and the clean" (Ezekiel 22:26). And Ezekiel saw a faithful priesthood doing it again: "they shall teach my people the difference between the holy and profane, and cause them to discern between the unclean and the clean" (Ezekiel 44:23).`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Noah", `clean beasts taken "by sevens" (Genesis 7:2).`],
+            ["Moses", `"to make a difference between the unclean and the clean" (Leviticus 11:47).`],
+            ["Daniel", `"he would not defile himself" (Daniel 1:8).`],
+            ["Ezekiel", `"my soul hath not been polluted" (Ezekiel 4:14).`],
+            ["Peter", `years after the cross: "I have never eaten any thing that is common or unclean" (Acts 10:14).`],
+            ["Paul", `"the temple of God is holy, which temple ye are" (1 Corinthians 3:17).`],
+          ],
+        },
+      ],
+      closing: `And at the gate of the city to come, John saw the same line kept: "there shall in no wise enter into it any thing that defileth" (Revelation 21:27).`,
+      torah: ["Leviticus 10:10", "Leviticus 11", "Leviticus 20:25-26", "Genesis 7:2"],
+      witness: ["Ezekiel 44:23", "Ezekiel 22:26", "Daniel 1:8", "Acts 10:14", "Revelation 21:27"],
+      turn: {
+        text: "But Christianity went another way. It taught that every food was made clean, and that holiness is a standing you are handed, not a walk.",
+        label: "The Departure: Purification & Holiness Laws",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 11",
+      title: "Purification & Holiness Laws",
+      subtitle: "Your Body Is the Temple — So Why Aren't You Keeping It Clean?",
+      attribution: "You've been reading a vision about men as a menu.",
+      taught: [
+        `The church teaches that the food laws were for the Jews, and they ended at the cross. Three verses carry the teaching. Many newer Bibles print Mark 7:19 as "he declared all foods clean." Peter's sheet full of animals in Acts 10 is said to prove that pork and shellfish are now fine. And Paul wrote that every creature of God is good, "sanctified by the word of God and prayer" (1 Timothy 4:5).`,
+        `Holiness itself is taught two ways. In Catholic teaching it is a rank: the saints, declared holy by the church and painted in the windows. Baptist, Lutheran, Reformed, and nondenominational churches teach it as a standing handed over at belief: God looks at you through His Son, so you are already holy. Methodists and the Holiness churches add a "second blessing" that makes a believer perfect in a moment. However it is taught, nothing is asked of the plate.`,
+      ],
+      roots: [
+        `In Hebrew, holy means set apart: cut out from the rest and kept for one owner. Moses closed the food laws with it: "ye shall be holy; for I am holy" (Leviticus 11:44). Being holy and eating clean were said in the same breath, and holiness was something a man walked in every day.`,
+        `Greek gave holiness a temple meaning. <em>Hagnos</em> was the purity a worshiper needed to come near a god, and the goddess Artemis was praised as "the pure one." <em>Teleios</em>, "perfect," was a word of the mystery cults, used of those who had passed through the secret rites. Holiness became a status a ceremony gave you, and perfection became a rank above ordinary people. The walk dropped out. Two Greek words carried it in. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "hagios", greek: "Hagios / Hagnos", kjv: "holy", role: "The root word", more: "Hagios / Hagnos on Greek Influence",
+            verse: { ref: "1 Peter 1:15-16", text: "But as he which hath called you is holy, so be ye holy in all manner of conversation; Because it is written, Be ye holy; for I am holy." },
+            taught: [
+              `"Be holy" means be a good person. Don't lie, don't cheat, go to church. You are holy because you are in Messiah, and God sees His Son when He looks at you. It has nothing to do with food, the pulpit says, because Mark 7:19 made all foods clean, Peter's sheet proved it, and Paul said every creature is "sanctified by the word of God and prayer."`,
+            ],
+            word: [
+              `The Greek copy uses *hagios*, "holy." Its cousin *hagnos* means "pure." In the Greek temples these words described a holy place, or a person made ritually clean to come before a god. Homer calls the goddess Artemis *hagnē*, "the pure one."`,
+              `Holiness was a temple status, something a priest or a ceremony gave you. The church kept that idea. Holiness became a rank given by the church, or a standing given at belief, with nothing to do in daily life.`,
+            ],
+            hebrew: [
+              `But Peter says plainly, "it is written." He is quoting Moses, and the verse he picked closes the food laws: "ye shall be holy; for I am holy: neither shall ye defile yourselves with any manner of creeping thing that creepeth upon the earth" (Leviticus 11:44).`,
+              `The Hebrew word is *qadosh*, set apart. Three verses later Moses says what the whole chapter was for: "To make a difference between the unclean and the clean, and between the beast that may be eaten and the beast that may not be eaten" (Leviticus 11:47).`,
+            ],
+            reread: [`"The One who called you is set apart, so be set apart in all your living, down to what you put on your plate." Peter keeps the right order: first bought back "with the precious blood of Messiah, as of a lamb without blemish" (1 Peter 1:19), then walking "as obedient children" (1 Peter 1:14). His sheet was about men: "God hath shewed me that I should not call any man common or unclean" (Acts 10:28). In Mark 7 the question was unwashed hands (Mark 7:5), and food goes "into the belly, and goeth out into the draught, purging all meats" (Mark 7:19). The body does the purging. "To eat with unwashen hands defileth not a man" (Matthew 15:20). And Timothy's creatures are those "which God hath created to be received," made holy "by the word of God" (1 Timothy 4:3, 5). The word that set them apart is Leviticus 11.`],
+            timeline: [
+              ["Sinai", `"Ye shall be holy; for I am holy" closes the food laws (Leviticus 11:44).`],
+              ["About 750 BC", `Homer calls the goddess Artemis *hagnē*, "the pure one." Holiness is a temple word.`],
+              ["About 34 AD", `Peter, after the cross: "I have never eaten any thing that is common or unclean" (Acts 10:14).`],
+              ["About 130 AD", `The Epistle of Barnabas turns the food laws into pictures of wicked men, not food to avoid.`],
+              ["993 AD", `A pope formally declares a man a saint for the first time. Holiness becomes a rank.`],
+              ["Today", `The pulpit: "You are holy in Him. Now pass the ham."`],
+            ],
+            built: [
+              `Saints as a rank: holiness handed out by the church after death, though Moses spoke to "all the congregation" (Leviticus 19:2).`,
+              `Holiness as a position: declared over a person, with nothing asked of how he lives.`,
+              `Nothing asked of the plate: "purging all meats" and Peter's sheet read as permission to eat anything.`,
+            ],
+          },
+          {
+            id: "teleios", greek: "Teleios", kjv: "perfect", role: "The root word", more: "Teleios on Greek Influence",
+            verse: { ref: "Matthew 5:48", text: "Be ye therefore perfect, even as your Father which is in heaven is perfect." },
+            taught: [
+              `Most churches say nobody can be perfect. Yahushua said this, they teach, to show that no one can keep the Law, so everyone needs favor. Methodist, Nazarene, and Holiness churches teach the opposite: a second blessing comes after you are saved and wipes out the sin inside you in a moment. Then you are "entirely sanctified." Either way, perfect means sinless.`,
+            ],
+            word: [
+              `The Greek copy uses *teleios*. It means "finished" or "complete." But the mystery religions, secret cults with hidden rites, used the same word family for their initiations. A *teletē* was a secret rite. Plato wrote that the man who is always being initiated into the perfect rites alone becomes truly perfect.`,
+              `Perfect became a rank, a level reached through a rite. That is how the church came to hear it: a special experience that lifts you above ordinary believers.`,
+            ],
+            hebrew: [
+              `Yahushua was drawing on Moses: "Thou shalt be perfect with Yahuah thy God" (Deuteronomy 18:13). Yahuah said the same to Abram long before: "walk before me, and be thou perfect" (Genesis 17:1).`,
+              `The Hebrew word is *tamim*: whole, sound, like a lamb with nothing missing. Moses had just warned Israel against the fortune-tellers and charmers of the nations (Deuteronomy 18:9-12). Being *tamim* meant walking with Yahuah alone. "Blessed are the undefiled in the way, who walk in the law of Yahuah" (Psalm 119:1). "Undefiled" is the same word.`,
+            ],
+            reread: [`"So be whole, walking with your Father and holding nothing back, the way your Father in heaven is whole." Look at the verses just before it. Yahushua is talking about loving your enemies, because the Father "maketh his sun to rise on the evil and on the good" (Matthew 5:45). Perfect is a way of walking, not a rank. Later a rich young man asked how to enter life. Yahushua said, "keep the commandments," and then, "If thou wilt be perfect, go and sell that thou hast" (Matthew 19:17, 21). Perfect begins with the commandments. It is a whole heart that holds nothing back.`],
+            timeline: [
+              ["Abram's day", `"Walk before me, and be thou perfect" (Genesis 17:1).`],
+              ["About 370 BC", `Plato writes that only the one always initiated into the perfect rites becomes truly perfect.`],
+              ["About 200 AD", `Clement of Alexandria borrows the language of the mysteries and calls the mature believer "the perfect" one.`],
+              ["1766", `John Wesley publishes *A Plain Account of Christian Perfection*.`],
+              ["1867", `The first national Holiness camp meeting gathers at Vineland, New Jersey. Perfection becomes a second blessing received in a moment.`],
+              ["Today", `The pulpit: "Nobody's perfect," or, "I was entirely sanctified at the altar."`],
+            ],
+            built: [
+              `Entire sanctification: a second blessing that makes a believer sinless in one moment.`,
+              `Two classes of believers: the "perfected" few above the ordinary many, just as in the cults.`,
+              `A command nobody tries: if perfect means sinless, the command is out of reach, and the walk is dropped.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `The old path is plain. Yahuah separated clean from unclean, and He separated His people from the nations so they would be His (Leviticus 20:26). Deliverance comes first, by the blood of the Lamb Yahuah provided. Then comes the walk: the commandments, the plate, the whole heart. Paul told the believers in Corinth, "the temple of God is holy, which temple ye are" (1 Corinthians 3:17). A temple is kept clean because Someone lives there. And Revelation closes the matter at the gate of the city: "there shall in no wise enter into it any thing that defileth, neither whatsoever worketh abomination, or maketh a lie" (Revelation 21:27).`,
+    },
+  },
+  "12": {
+    oldPaths: {
+      kicker: "The Old Path · Calendar & Feasts",
+      title: "Signs and Seasons",
+      subtitle: "The Calendar Was Hung in the Sky",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `Yahuah hung His calendar in the sky on the fourth day: "let them be for signs, and for seasons, and for days, and years" (Genesis 1:14). The sun turns the year, the moon numbers the month, and the stars stand as witnesses. "He appointed the moon for seasons: the sun knoweth his going down" (Psalm 104:19).`,
+            `The day is the light: "God called the light Day" (Genesis 1:5), from dawn to dusk. The month opens at the first dawn after the moon passes the sun, and the moon is full on the 15th. The year turns when the sun rises due east in spring, and Aviv is the first month whose day one falls on or after that day. The barley confirms it; it does not decide it. The Sabbaths fall on the 8th, 15th, 22nd, and 29th of every month. And the feasts are Yahuah's: "even these are my feasts" (Leviticus 23:2).`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `Israel left Egypt by the moon. "This month shall be unto you the beginning of months" (Exodus 12:2), and they went out "on the fifteenth day of the first month" (Numbers 33:3), under a full moon. The manna showed the Sabbath by the moon. Israel reached the wilderness of Sin on "the fifteenth day of the second month" (Exodus 16:1), gathered six days, and rested on the seventh, the 22nd (Exodus 16:26).`,
+            `No one waited to spot a sliver of moon. David knew ahead of time: "to morrow is the new moon" (1 Samuel 20:5). The feasts came in their order, from Pesach on the 14th of Aviv, to Shavuot in summer, to Sukkot in the seventh month. Israel even kept Pesach in the wilderness of Sinai, far from any barley field (Numbers 9:1-5).`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Moses", `"These are the feasts of Yahuah ... which ye shall proclaim in their seasons" (Leviticus 23:4).`],
+            ["David", `"Blow up the trumpet in the new moon, in the time appointed" (Psalm 81:3).`],
+            ["Solomon", `offerings "on the sabbaths, and on the new moons, and on the solemn feasts" (2 Chronicles 8:13).`],
+            ["Ezekiel", `the gate opened "on the sabbath" and "in the day of the new moon" (Ezekiel 46:1).`],
+            ["Yahushua", `"about the midst of the feast" He "went up into the temple, and taught" (John 7:14).`],
+            ["Paul", `"I must by all means keep this feast that cometh in Jerusalem" (Acts 18:21).`],
+          ],
+        },
+      ],
+      closing: `The calendar never ends. "From one new moon to another, and from one sabbath to another, shall all flesh come to worship before me" (Isaiah 66:23). And in the city to come, the tree of life yields "her fruit every month" (Revelation 22:2).`,
+      torah: ["Genesis 1:14", "Leviticus 23:1-4", "Exodus 12:2", "Exodus 16:1, 26", "Numbers 9:1-5"],
+      witness: ["Psalm 104:19", "Psalm 81:3", "1 Samuel 20:5", "Ezekiel 46:1", "Isaiah 66:23"],
+      turn: {
+        text: "But Christianity went another way. It took Rome's week, Rome's midnight, and Rome's holidays, and called Yahuah's appointments Jewish.",
+        label: "The Departure: Calendar & Feasts",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 12",
+      title: "Calendar & Feasts",
+      subtitle: "You've Been Missing the Appointments — Because Someone Changed the Calendar",
+      attribution: "You've been keeping Rome's calendar and calling it Scripture.",
+      taught: [
+        `The church teaches that the feasts of Leviticus were Jewish holidays, and they ended at the cross. In their place it keeps three days of its own. Sunday is "the Lord's day," kept because He rose on the first day of the week. Easter celebrates the resurrection on a spring Sunday. Christmas celebrates His birth on December 25. The week rolls on without a break, the day starts at midnight, and most believers have never heard that Yahuah has a calendar at all.`,
+        `Catholics keep the full church year: Advent, Christmas, Lent, Holy Week, Easter, and the Sunday fifty days after it. Protestants dropped most saints' days but kept the big three. Baptist, Methodist, Lutheran, and nondenominational churches gather on Sunday, put up the tree in December, and hold dawn services at Easter. The tongues-speaking churches call the Sunday fifty days after Easter "the birthday of the church." Even most churches that keep a seventh day keep it on Rome's unbroken week.`,
+      ],
+      roots: [
+        `Rome ran its calendar by the sun alone. Its day began at midnight. Its seven-day week was named for the planet gods, and one of its days belonged to the Sun. The same Roman almanac of 354 that first lists Messiah's birth on December 25 also marks that day as the birthday of the Unconquered Sun.`,
+        `Then emperors and councils took the church's calendar in hand. On March 7, 321, Constantine ordered courts and city workshops to rest on "the venerable day of the Sun." At Nicaea in 325, Easter was cut loose from the Hebrew reckoning, and Constantine wrote that the churches should have nothing in common with the Jews. About 363–364, canon 29 of the Council of Laodicea told Christians to work on the Sabbath and honor "the Lord's day" instead. By about 336, Rome kept Messiah's birth on December 25. And in 1582, Pope Gregory XIII reset the sun's calendar so Easter would fall where Nicaea meant it to. Along the way, the Hebrew names were traded for Greek ones. Five Greek words carried it in. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "kairos", greek: "Kairos", kjv: "seasons, times", role: "The root word", more: "Kairos on Greek Influence",
+            verse: { ref: "Galatians 4:10", text: "Ye observe days, and months, and times, and years." },
+            taught: [
+              `Paul is scolding the Galatians for keeping the Jewish calendar. Days, months, times, and years: that means Sabbaths, new moons, feasts, and holy years. Going back to the Law's calendar is going back to slavery. So believers today should not keep the feasts.`,
+            ],
+            word: [
+              `The word for "times" is *kairos*. To the Greeks, Kairos was a god, called the youngest son of Zeus, with his own altar at Olympia by the entrance to the stadium. The sculptor Lysippos made a famous statue of him: a lock of hair hanging in front, and bald behind. You grab the lucky moment as it comes, because once it passes you cannot catch it.`,
+              `So a *kairos* was a chance, a lucky time, the right moment. It was never a set meeting with Yahuah. The church hears "times and seasons" the same way: vague stretches of time, with no date and no appointment.`,
+            ],
+            hebrew: [
+              `When the Torah was put into Greek, *kairos* was used in the creation story: "let them be for signs, and for seasons" (Genesis 1:14). "Seasons" there is *moadim*, from *moed*. A moed is an appointment, a set time to meet. It is the same word Yahuah uses for His feasts: "even these are my feasts" (Leviticus 23:2).`,
+              `So the sky was hung to keep Yahuah's appointments, and the name of a lucky god's moment was put in their place. A moed is not luck. Yahuah sets it, Yahuah keeps it, and He expects His people to come.`,
+            ],
+            reread: [`"You used to serve gods that are not gods. Now you know Yahuah. So why go back to your old gods' days, and months, and lucky times, and years?" Paul says it in the verses just before: "when ye knew not God, ye did service unto them which by nature are no gods ... how turn ye again to the weak and beggarly elements?" (Galatians 4:8-9). These were people from the nations. They had never kept Yahuah's feasts, so they could not "turn again" to them. They were turning back to the calendar of their idols. And Paul kept Yahuah's: "we sailed away from Philippi after the days of unleavened bread" (Acts 20:6).`],
+            timeline: [
+              ["Day four", `Yahuah hangs the lights "for signs, and for seasons," His appointments (Genesis 1:14).`],
+              ["About 330 BC", `Lysippos carves the god Kairos: a lock in front, bald behind.`],
+              ["About 250 BC", `The Torah is put into Greek, and *moadim* in Genesis 1:14 becomes *kairoi*.`],
+              ["About 50 AD", `Paul warns the Galatians not to turn back to the days of "them which by nature are no gods."`],
+              ["About 160 AD", `Justin Martyr teaches that the Sabbath and the feasts were given to Israel only because of their hard hearts.`],
+              ["Today", `The pulpit: "Galatians 4:10. Paul says don't keep the feasts."`],
+            ],
+            built: [
+              `Feasts as bondage: Yahuah's own appointments treated as the "beggarly elements" of idols.`,
+              `Times and seasons with no date: the feasts heard as vague seasons, not set meetings.`,
+              `A calendar without the sky: Rome's week and Rome's year in place of the sun and the moon.`,
+            ],
+          },
+          {
+            id: "kyriakos", greek: "Kyriakos", kjv: "the Lord's day", role: "The root word", more: "Kyriakos on Greek Influence",
+            verse: { ref: "Revelation 1:10", text: "I was in the Spirit on the Lord's day, and heard behind me a great voice, as of a trumpet," },
+            taught: [
+              `The Lord's day is Sunday, the day He rose. John was worshiping on Sunday when he saw the vision. The apostles moved the day of rest from the seventh day to the first, and Sunday is now the Christian Sabbath. Catholics call it a day of obligation. Protestants call it the Lord's day and build the week around it.`,
+            ],
+            word: [
+              `The word is *kyriakos*. It simply means "belonging to the lord," the master's. The verse does not name a day of the week.`,
+              `But in John's world, Caesar was called "lord," and inscriptions and papyri from Asia and Egypt name certain days *Sebastē*, "Emperor's Day," set apart to honor him. John's seven churches stood in Asia. There, a day that "belonged to the lord" already meant a day that belonged to a ruler. Later, Rome filled the empty phrase with a day of its own: the day of the Sun.`,
+            ],
+            hebrew: [
+              `Scripture names one day that Yahuah calls His own: "If thou turn away thy foot from the sabbath, from doing thy pleasure on my holy day; and call the sabbath a delight, the holy of Yahuah, honourable" (Isaiah 58:13).`,
+              `"My holy day" is *yom qodshi*, the day set apart. The Sabbath is counted by the moon, not by Rome's week. Day one of the month stands alone, and the Sabbaths fall on the 8th, 15th, 22nd, and 29th. Ezekiel saw the east gate shut "the six working days," opened "on the sabbath," and opened "in the day of the new moon" (Ezekiel 46:1). And Yahushua said whose day it is: "the Son of man is Master also of the sabbath" (Mark 2:28).`,
+            ],
+            reread: [`"I was in the Spirit on the day that belongs to Yahuah, His holy day, His Sabbath, and I heard behind me a great voice, like a trumpet." Nothing in Revelation points to the first day of the week. But the book does tell us who Yahuah's people are: "here are they that keep the commandments of God, and the faith of Yahushua" (Revelation 14:12). John saw his vision on Yahuah's own day, and the saints in that vision keep Yahuah's own commandments.`],
+            timeline: [
+              ["First century", `In Asia, days called *Sebastē*, "Emperor's Day," honor Caesar.`],
+              ["About 95 AD", `John on Patmos: "I was in the Spirit on the Lord's day." No weekday is named.`],
+              ["About 110 AD", `Ignatius writes of believers "no longer keeping Sabbath," but living "according to the Lord's." The word "day" is not in his Greek.`],
+              ["March 7, 321", `Constantine orders courts and city workshops to rest on "the venerable day of the Sun."`],
+              ["About 363–364", `Canon 29 of the Council of Laodicea: Christians must not rest on the Sabbath but work, and honor the Lord's day.`],
+              ["Today", `The pulpit: "Sunday is the Lord's day, the Christian Sabbath."`],
+            ],
+            built: [
+              `Sunday worship: Rome's day of the Sun placed where Yahuah's holy day stood.`,
+              `A Sabbath on a rolling week: even many Sabbath keepers count Rome's unbroken week and land on the day Rome named for Saturn, instead of counting by the moon.`,
+              `The Sabbath called Jewish: Yahuah's "my holy day" treated as belonging to one nation.`,
+            ],
+          },
+          {
+            id: "heorte", greek: "Heortē", kjv: "holyday", role: "The root word", more: "Heortē on Greek Influence",
+            verse: { ref: "Colossians 2:16-17", text: "Let no man therefore judge you in meat, or in drink, or in respect of an holyday, or of the new moon, or of the sabbath days: Which are a shadow of things to come; but the body is of Messiah." },
+            taught: [
+              `Paul says no one can judge you for not keeping the feasts, the new moons, or the Sabbath. Those things were only shadows, and the shadow ended when the Son came. So keeping a holy day is optional at best, and legalism at worst. Christmas and Easter, on the other hand, are kept as a matter of course.`,
+            ],
+            word: [
+              `The word is *heortē*, the everyday Greek word for a religious festival: the great procession for Athena in Athens, the feasts of Dionysus, the games for Zeus. Any god could have a *heortē*.`,
+              `The word itself is not the whole problem; the Greek Old Testament uses it for Yahuah's feasts too. The problem is how it was heard. If every festival is a *heortē*, any holy day will do. The church filled the word with its own holidays and treated them as the same thing as Yahuah's.`,
+            ],
+            hebrew: [
+              `Paul's three words, holyday, new moon, sabbath, are a set that runs all through the Hebrew Scriptures: "on the sabbaths, and on the new moons, and on the solemn feasts, three times in the year, even in the feast of unleavened bread, and in the feast of weeks, and in the feast of tabernacles" (2 Chronicles 8:13).`,
+              `"Holyday" stands for *chag*, a feast kept to Yahuah, when His people went up to meet Him. These feasts are commanded and dated: "These are the feasts of Yahuah, even holy convocations, which ye shall proclaim in their seasons" (Leviticus 23:4).`,
+            ],
+            reread: [`"Don't let anyone outside judge you for how you eat and drink at Yahuah's feasts, His new moons, and His Sabbaths. These picture things still to come, and the body of Messiah is the one to judge it." Who were the judges? They came "through philosophy and vain deceit, after the tradition of men" (Colossians 2:8). They taught "Touch not; taste not; handle not," "after the commandments and doctrines of men" (Colossians 2:21-22). And Paul says these days "are" a shadow of things to come. Not were. They still point forward.`],
+            timeline: [
+              ["Sinai", `The feasts are commanded and dated: "These are the feasts of Yahuah" (Leviticus 23:4).`],
+              ["About 500 BC", `In Athens, *heortē* is the word for the gods' festivals, like the great procession for Athena.`],
+              ["About 250 BC", `The Torah is put into Greek, and *chag* becomes *heortē*.`],
+              ["About 60 AD", `Paul tells the Colossians not to let the philosophers judge them over feasts, new moons, and Sabbaths.`],
+              ["About 336 AD", `Rome keeps a feast of Messiah's birth on December 25, the day its calendar also marks as the birthday of the Unconquered Sun.`],
+              ["Today", `The pulpit: "Colossians 2:16. Nobody can tell you to keep the feasts."`],
+            ],
+            built: [
+              `Church holidays for Yahuah's feasts: Christmas, Lent, and Easter in place of Pesach, Shavuot, and Sukkot.`,
+              `"Shadow" read as "gone": Paul's "are a shadow of things to come" read as if it said "were."`,
+              `Feast keepers judged: the very thing Paul forbade, turned around against the people keeping Yahuah's days.`,
+            ],
+          },
+          {
+            id: "pascha", greek: "Pascha", kjv: "Easter", role: "The root word", more: "Pascha on Greek Influence",
+            verse: { ref: "Acts 12:4", text: "And when he had apprehended him, he put him in prison, and delivered him to four quaternions of soldiers to keep him; intending after Easter to bring him forth to the people." },
+            taught: [
+              `Easter is the day the church celebrates the resurrection, on the Sunday after the first full moon of spring. Catholics prepare for it with forty days of Lent. Protestants hold dawn services, cantatas, and egg hunts. Many say it has been kept since the apostles, and some point to this very verse: Easter is right there in the Book of Acts.`,
+            ],
+            word: [
+              `Here is the surprise. *Pascha* is not a pagan word at all. It is the Hebrew word *Pesach* written in Greek letters. The pagan name came in English.`,
+              `About 725 AD an English monk named Bede wrote that the spring month was named for a goddess, Eostre. Early English Bibles put "Easter" for *pascha*. The King James translators changed every one of them to "passover," except this one, Acts 12:4.`,
+            ],
+            hebrew: [
+              `Pesach is Yahuah's own feast: "ye shall eat it in haste: it is Yahuah's passover" (Exodus 12:11). It means "passing over." Yahuah passed over the houses marked with the blood.`,
+              `The feast has a date: "In the fourteenth day of the first month at even is Yahuah's passover. And on the fifteenth day of the same month is the feast of unleavened bread" (Leviticus 23:5-6). Paul says what it means: "For even Messiah our passover is sacrificed for us" (1 Corinthians 5:7). The Lamb Yahuah provided died on the 14th, at 3 in the afternoon, the very hour the lambs were slain.`,
+            ],
+            reread: [`"He put Peter in prison under four squads of soldiers, planning to bring him out to the people after the Pesach." Luke gives the season one verse earlier: "(Then were the days of unleavened bread.)" (Acts 12:3). Herod was not waiting for a goddess. He was waiting for Yahuah's feast to end. And Paul tells a church full of people from the nations to keep that same feast: "Therefore let us keep the feast, not with old leaven ... but with the unleavened bread of sincerity and truth" (1 Corinthians 5:8).`],
+            timeline: [
+              ["Egypt", `The lamb is slain on the 14th of the first month: "it is Yahuah's passover" (Exodus 12:11).`],
+              ["31 AD", `Yahushua eats a preparation meal on the 13th, "before the feast of the passover" (John 13:1). He dies at 3 PM on the 14th as the lambs are slain. The Pesach is eaten that night with His body in the tomb.`],
+              ["About 190 AD", `The churches of Asia still keep the 14th. Victor, bishop of Rome, threatens to cut them off.`],
+              ["325 AD", `At Nicaea the feast is cut loose from the Hebrew reckoning and kept on a Sunday.`],
+              ["1582", `Pope Gregory XIII resets the calendar, dropping ten days, so Easter falls where Rome reckons it.`],
+              ["1611", `The King James Bible leaves "Easter" for *pascha* in one verse, Acts 12:4.`],
+            ],
+            built: [
+              `Easter Sunday: a moving spring Sunday in place of the 14th of the first month.`,
+              `The Last Supper called the Passover: the meal of John 13 was eaten "before the feast," on the 13th. Calling it the Pesach meal puts His death a day late.`,
+              `Spring customs as worship: eggs, rabbits, and a goddess's name dressed up as resurrection.`,
+            ],
+          },
+          {
+            id: "pentekoste", greek: "Pentēkostē", kjv: "the fiftieth", role: "The root word", more: "Pentēkostē on Greek Influence",
+            verse: { ref: "Acts 2:1", text: "And when the day of <em>pentēkostē</em> was fully come, they were all with one accord in one place." },
+            taught: [
+              `Fifty days after Easter Sunday, the Spirit came down and the church was born. Catholic, Anglican, and Lutheran churches mark it with red banners on a Sunday in late spring, and some bake a birthday cake. Many teach it was a brand-new Christian day with nothing to do with the Law. A whole family of tongues-speaking churches took the Greek word as its name.`,
+            ],
+            word: [
+              `*Pentēkostē* is a Greek counting word. It simply means "the fiftieth." Greek-speaking Jews used it as a short label for the feast. But a number is not a count. It does not tell you fifty from what, or what must be finished first.`,
+              `The church turned the counting word into a name, and the name replaced the Hebrew one. Then it counted fifty days from its own Easter Sunday and landed in late spring.`,
+            ],
+            hebrew: [
+              `Moses gave the count, not just the number: "And ye shall count unto you from the morrow after the sabbath, from the day that ye brought the sheaf of the wave offering; seven sabbaths shall be complete: Even unto the morrow after the seventh sabbath shall ye number fifty days" (Leviticus 23:15-16).`,
+              `The feast is *Shavuot*, "weeks." First, seven Sabbaths must be complete, counted from the wave sheaf on the 16th of Aviv: the 22nd and 29th of the first month, the 8th, 15th, 22nd, and 29th of the second, and the 8th of the third. Then, from the morrow after the seventh Sabbath, fifty days are numbered. Shavuot lands on the 28th or 29th of the fourth month, in summer, at the wheat harvest. It can never fall in the third month. Moses calls it "the feast of harvest, the firstfruits of thy labours" (Exodus 23:16).`,
+            ],
+            reread: [`"And when the day of Shavuot was fully counted out, the seven Sabbaths complete and the fifty days numbered to the last one, they were all with one accord in one place." "Fully come" is a filling word. It means filled up to the end, like a measure filled to the top. Luke is pointing straight back to Moses' count. And it was a harvest day: "the same day there were added unto them about three thousand souls" (Acts 2:41). It was not a new day. It was Yahuah's day, kept on time.`],
+            timeline: [
+              ["Sinai", `"Seven sabbaths shall be complete," then fifty days are numbered (Leviticus 23:15-16).`],
+              ["About 200 BC on", `Greek-speaking Jews label the feast by a number, "the fiftieth" (Tobit 2:1; 2 Maccabees 12:32).`],
+              ["31 AD", `In Jerusalem the Spirit is poured out on Shavuot, and three thousand are added (Acts 2:41).`],
+              ["About 306 AD", `A council at Elvira in Spain orders the feast kept on the fiftieth day after Easter, always a Sunday in late spring.`],
+              ["1901", `At a Bible school in Topeka, Kansas, students speak in tongues, and a movement takes the Greek word as its name.`],
+              ["Today", `The pulpit: "The birthday of the church," a Sunday in late spring.`],
+            ],
+            built: [
+              `A Greek name for a Hebrew feast: the counting word made into a name, and Shavuot forgotten.`,
+              `A feast without a count: the seven Sabbaths dropped, and the day moved about fifty days early, out of summer into late spring.`,
+              `The birthday of the church: as if Yahuah's people began here, instead of at a harvest feast He commanded in the Torah.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `The old path is written in the sky. The sun turns the year. The moon numbers the month, and the Sabbaths fall on the 8th, 15th, 22nd, and 29th. The day runs from dawn to dusk. The feasts come in their seasons: Pesach on the 14th of the first month, Hag HaMatzot from the 15th, Bikkurim with the wave sheaf, Shavuot in summer after seven Sabbaths and fifty days, then Yom Teruah, Yom Kippur, and Sukkot. Deliverance came first, through the Lamb on the 14th. The walk follows: keeping Yahuah's appointments on Yahuah's calendar. Isaiah saw it would never end: "from one new moon to another, and from one sabbath to another, shall all flesh come to worship before me, saith Yahuah" (Isaiah 66:23). And Revelation shows the same calendar in the city to come, where the tree of life "yielded her fruit every month" (Revelation 22:2).`,
     },
   },
 };
