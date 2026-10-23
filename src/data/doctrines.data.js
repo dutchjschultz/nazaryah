@@ -1,4 +1,5 @@
-// doctrines.data 1022 V11.js
+// doctrines.data 1022 V12.js
+// V12 (Sacred Names doctrine brief 1022 V1): 01 Sacred Names goes to layout "v2".
 // V11 (Hell Doctrine V2 brief 1022 V1): every pair carries `layout` — "classic"
 // (DoctrineInfo, the layout every doctrine has had) or "v2" (DoctrinePageV2, the
 // trial layout: numbered sections, open word cards, the turn box). Hell (04) is
@@ -84,7 +85,7 @@
 export const doctrines = [
   {
     n: "01",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "the-name-that-endures",
       title: "The Name That Endures",

@@ -1,4 +1,6 @@
-// doctrine-v2 1022 V3.js
+// doctrine-v2 1022 V4.js
+// V4 (Sacred Names doctrine brief 1022 V1): 01 Sacred Names, text from its 1022 V1
+// preview — five word tabs (Kurios open first), no Strong's numbers.
 // V3 (brief 1022 V4): Further Reading is gone (the Go Deeper strip replaces it,
 // filled from study tags); the Hadēs tab gains `study`, the link to The Rich Man
 // and Lazarus under What it built.
@@ -23,6 +25,195 @@
 //   (/doctrines/borrowed-words#<id>); the entry itself is not edited here.
 
 export const doctrineV2 = {
+  "01": {
+    oldPaths: {
+      kicker: "The Old Path · Sacred Names",
+      title: "The Name That Endures",
+      subtitle: "He Gave It to Be Remembered — Generation to Generation",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `At the burning bush Moses asked for a name, and Yahuah gave one. "This is my name for ever, and this is my memorial unto all generations" (Exodus 3:15). It was not a title for one age. It was a name to be remembered by every generation after.`,
+            `Moses told Israel to "fear this glorious and fearful name, YAHUAH THY GOD" (Deuteronomy 28:58). David says the Name belongs to One alone: "thou, whose name alone is Yahuah, art the most high over all the earth" (Psalm 83:18). And the Son carries it in His own name. Yahushua means "Yahuah saves." Every time His name is spoken, it says who saves.`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `The Name was spoken, called on, and placed on the people. Abram built an altar "and called upon the name of Yahuah" (Genesis 12:8). The priests blessed Israel with it, and Yahuah said, "they shall put my name upon the children of Israel; and I will bless them" (Numbers 6:27).`,
+            `The prophets warned what happens when the Name is dropped. False prophets would "cause my people to forget my name," just "as their fathers have forgotten my name for Baal" (Jeremiah 23:27). Baal means "lord" or "master." Israel did not stop worshiping. They traded the Name for a title. So Yahuah promised, "I will take away the names of Baalim out of her mouth" (Hosea 2:17).`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Moses", `"I will publish the name of Yahuah" (Deuteronomy 32:3).`],
+            ["David", `"Thy name, O Yahuah, endureth for ever" (Psalm 135:13).`],
+            ["Elijah", `"call ye on the name of your gods, and I will call on the name of Yahuah" (1 Kings 18:24).`],
+            ["Joel", `"whosoever shall call on the name of Yahuah shall be delivered" (Joel 2:32).`],
+            ["Malachi", `a book of remembrance for those "that thought upon his name" (Malachi 3:16).`],
+            ["Yahushua", `"I have manifested thy name unto the men which thou gavest me" (John 17:6).`],
+          ],
+        },
+      ],
+      closing: `And at the end, John saw the Lamb on mount Sion with His people, "having his Father's name written in their foreheads" (Revelation 14:1).`,
+      torah: ["Exodus 3:15", "Deuteronomy 28:58", "Numbers 6:27"],
+      witness: ["Psalm 83:18", "Psalm 135:13", "Jeremiah 23:27", "Malachi 3:16", "Revelation 14:1"],
+      turn: {
+        text: "But Christianity went another way. It put a title where the Name stood, and told the people the Name did not matter.",
+        label: "The Departure: Sacred Names",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 01",
+      title: "Sacred Names",
+      subtitle: "What's In A Name? Everything.",
+      attribution: "You've been praying to a title Caesar wore and calling it the Name.",
+      taught: [
+        `Open almost any English Bible and the Name is gone. Where Moses wrote Yahuah, the reader sees "the LORD," close to seven thousand times. Where the prophets wrote Elohim, Elyon, and Yahuah of hosts, the reader sees God, Most High, and Almighty. Ask about it, and the answer is kind and quick: God knows your heart. He answers to any name. What matters is that you love Him.`,
+        `Every branch of the church says it in its own way. In 2008 the Vatican told Catholic bishops that the Name is not to be spoken or sung in Catholic worship. Baptist, Methodist, charismatic, and nondenominational churches pray to "the Lord" and close "in Jesus' name," and many call the Hebrew names a fad. The Father is "the Lord God," the Son is "the Lord Jesus," and the pulpit treats the two as one.`,
+      ],
+      roots: [
+        `The message was Hebrew before it was Greek. Yahushua and His apostles read the Name in the scrolls of Moses and the prophets. When those scrolls were put into Greek, the Name had no Greek word, and some of the earliest Greek copies simply wrote it in Hebrew letters in the middle of the Greek. Later copies put <em>kurios</em>, "lord," in its place.`,
+        `The titles that came in were not empty. <em>Kurios</em> was Caesar's title. <em>Theos</em> was the word for Zeus and the gods of Olympus. <em>Sōtēr</em> was what the god-kings of Egypt called themselves. "All-ruling" and "Most High" were praises sung to Isis and to Zeus. A name given "for ever" was traded for words any god could wear. And once the Father and the Son were both "Lord" and both "God," the reader could no longer tell who was speaking to whom. Five Greek words carried it in. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "kurios", greek: "Kurios", kjv: "Lord", role: "The root word", more: "Kurios on Greek Influence",
+            verse: { ref: "Matthew 22:44", text: "Yahuah said unto my Master, Sit thou on my right hand, till I make thine enemies thy footstool?" },
+            taught: [`Yahushua asked the Pharisees a riddle: how can David call his own son "Lord"? In the King James it reads, "The LORD said unto my Lord." The pulpit answers: because the Son is the LORD God Himself. Two Lords, one God. This verse is used to prove that the Son is the same God as the Father.`],
+            word: [
+              `*Kurios* means "lord" or "master." It was also Caesar's title. Believers were pressed to say "Lord Caesar," and old Polycarp was put to death rather than say it. Greek gods were called *kurios* too. Invitations survive asking guests to dine "at the couch of the lord Serapis." Paul knew that world: "there be gods many, and lords many" (1 Corinthians 8:5).`,
+              `In the Greek copy of this verse, the same word stands twice: *kurios* said to *kurios*. A Greek reader sees two lords of the same rank, and cannot tell them apart.`,
+            ],
+            hebrew: [
+              `But Yahushua was quoting David, and David wrote in Hebrew: "Yahuah said unto my Master, Sit thou at my right hand, until I make thine enemies thy footstool" (Psalm 110:1).`,
+              `The first word is the Name itself, *Yahuah*. The second is *adon*, "my master," the word Sarah used of Abraham: "my lord being old also" (Genesis 18:12). It is a word for men. David saw two different persons: Yahuah, and the man Yahuah would seat beside Him. Yahuah even told Israel to stop calling Him "Baali," "my lord," so His Name would not be mixed with another: "thou shalt call me Ishi; and shalt call me no more Baali" (Hosea 2:16).`,
+            ],
+            reread: [`"Yahuah said to my master: Sit at My right hand, until I make your enemies your footstool." Then Yahushua asked, "If David then call him Master, how is he his son?" (Matthew 22:45). The Messiah is David's son and David's master, a man Yahuah raised up and seated at His right hand. Peter said it plainly at Shavuot: "God hath made that same Yahushua, whom ye have crucified, both Master and Messiah" (Acts 2:36). Made. Yahuah does not make Himself anything.`],
+            timeline: [
+              ["The burning bush", `Yahuah gives His Name to Moses: "this is my name for ever" (Exodus 3:15).`],
+              ["About 250 BC – 100 AD", `Some early Greek copies still write the Name in Hebrew letters. Later copies put *kurios* in its place.`],
+              ["About 155 AD", `Polycarp is told to say "Lord Caesar" and live. He refuses and is put to death.`],
+              ["1611", `The King James translators print "LORD" in capitals almost everywhere the Name stands.`],
+              ["Today", `The pulpit: "It doesn't matter what you call Him. He knows your heart."`],
+            ],
+            built: [
+              `The lost Name: Yahuah's own Name, given for all generations, hidden behind a title nearly seven thousand times.`,
+              `A blurred Father and Son: both called "Lord," until the reader cannot tell who is speaking to whom, and the Trinity fills the gap.`,
+              `A Son called "Lord" in the Father's place, when Scripture calls Him the master Yahuah made.`,
+            ],
+          },
+          {
+            id: "theos", greek: "Theos", kjv: "God", role: "The root word", more: "Theos on Greek Influence",
+            verse: { ref: "John 10:34", text: "Yahushua answered them, Is it not written in your law, I said, Ye are gods?" },
+            taught: [`The crowd picked up stones because, they said, "thou, being a man, makest thyself God" (John 10:33). The pulpit says the crowd understood Him perfectly: the Son was claiming to be God. Then Yahushua quotes a Psalm about "gods," and most preachers hurry past it. Some call it a clever dodge. The whole passage is used to prove that He said He was God.`],
+            word: [
+              `*Theos* was the everyday Greek word for Zeus, Hermes, and the other gods of Mount Olympus. Even dead emperors were declared a *theos*.`,
+              `When Paul healed a lame man at Lystra, the crowd cried, "The gods are come down to us in the likeness of men," and called Barnabas Jupiter and Paul Mercurius (Acts 14:11-12). To a Greek ear, *theos* means a higher kind of being, a different nature from man. Read that way, "Ye are gods" makes no sense, so the pulpit skips it.`,
+            ],
+            hebrew: [
+              `But Yahushua was quoting a Psalm, and the Psalm is in Hebrew: "I have said, Ye are gods; and all of you are children of the most High" (Psalm 82:6).`,
+              `The Hebrew word is *elohim*. It means mighty ones with authority. It is a rank, not a nature. In this Psalm the elohim are Israel's judges, men who "shall die like men" (Psalm 82:7). Yahuah even told Moses, "See, I have made thee a god to Pharaoh" (Exodus 7:1). Moses did not become a different kind of being. He was given authority.`,
+            ],
+            reread: [`"Is it not written in your Torah, I said, You are elohim, men with authority from Yahuah? Then why do you stone Me for saying I am His Son?" He finishes the thought Himself: "Say ye of him, whom the Father hath sanctified, and sent into the world, Thou blasphemest; because I said, I am the Son of God?" (John 10:36). He did not say, "I am God." He said He was the Son, set apart and sent by the Father. The verse used to prove He claimed to be God is the verse where He corrects the charge.`],
+            timeline: [
+              ["About 750 BC", `Homer's *theoi* are Zeus and the gods of Olympus.`],
+              ["42 BC", `Rome declares Julius Caesar a god after his death. The Greek east calls him *theos*.`],
+              ["About 48 AD", `At Lystra a crowd calls Paul and Barnabas gods come down in the likeness of men (Acts 14:11).`],
+              ["325 AD", `The creed of Nicaea calls the Son "very God of very God," of one substance with the Father.`],
+              ["Today", `The pulpit: "They tried to stone Him because He said He was God."`],
+            ],
+            built: [
+              `The Trinity: *theos* read as a divine nature three persons share, instead of a rank Yahuah gives.`,
+              `The "He is God" proof texts: every *theos* read as a nature, so the Son who was sent becomes the One who sent Him.`,
+            ],
+          },
+          {
+            id: "soter", greek: "Sōtēr", kjv: "Saviour", role: "The root word", more: "Sōtēr on Greek Influence",
+            verse: { ref: "Luke 2:11", text: "For unto you is born this day in the city of David a Saviour, which is Messiah the Master." },
+            taught: [`This verse is read at every Christmas service. The baby in the manger, the pulpit says, is "the Savior of the world," God Himself come down as a child. The Son saves, and the Son is God. So the One who saves and the One who was born are made one and the same person.`],
+            word: [
+              `*Sōtēr*, "savior," was a title of gods and kings. Zeus was hailed as Zeus Sōtēr. The Greek king of Egypt called himself Ptolemy Sōtēr, and under his son the Torah was put into Greek.`,
+              `Caesar Augustus, the very emperor named in Luke 2:1, was praised on a stone at Priene as a savior, and his birthday as the start of "good news" for the world. In the Greek copy, the angel's words sound like Caesar's own announcement. A Greek reader hears that a new god-king has been born to save the world.`,
+            ],
+            hebrew: [
+              `The Hebrew word beneath is *yasha*, to save. And Yahuah says who saves: "I, even I, am Yahuah; and beside me there is no saviour" (Isaiah 43:11). He says it again: "there is none beside me" (Isaiah 45:21).`,
+              `That is why the child was named before He was born: "thou shalt call his name YAHUSHUA: for he shall save his people from their sins" (Matthew 1:21). *Yahushua* means "Yahuah saves." The child's own name tells you who saves. The baby in the manger is the way Yahuah provided, not a second savior beside Him.`,
+            ],
+            reread: [`"Unto you is born this day, in the city of David, the one through whom Yahuah saves: the Messiah, the master." Luke shows it in the same chapter. Old Simeon took the child in his arms and blessed Yahuah: "For mine eyes have seen thy salvation" (Luke 2:30). Thy salvation, Yahuah's. Mary had already said whom she praised: "my spirit hath rejoiced in God my Saviour" (Luke 1:47). Yahuah saves. The Son is the way He provided.`],
+            timeline: [
+              ["About 304 BC", `Ptolemy I, the Greek king of Egypt, takes the title Sōtēr.`],
+              ["About 250 BC", `Under his son, the Torah is put into Greek. Yahuah's deliverance is carried in the god-kings' word.`],
+              ["9 BC", `A stone at Priene hails Augustus as a savior and his birthday as "good news."`],
+              ["325 AD", `The creed of Nicaea says the Son "for our salvation came down," as very God.`],
+              ["Today", `The pulpit: "Jesus is your Savior," and the Father who saves is left out.`],
+            ],
+            built: [
+              `A second savior: prayers, songs, and altar calls aimed at the Son as the one who saves, against "beside me there is no saviour" (Isaiah 43:11).`,
+              `A name with no meaning: the name that says "Yahuah saves" turned into a sound, so no one hears whom it names.`,
+            ],
+          },
+          {
+            id: "pantokrator", greek: "Pantokratōr", kjv: "Almighty", role: "The root word", more: "Pantokratōr on Greek Influence",
+            verse: { ref: "Revelation 4:8", text: "And the four beasts had each of them six wings about him; and they were full of eyes within: and they rest not day and night, saying, Holy, holy, holy, Lord God Almighty, which was, and is, and is to come." },
+            taught: [`This is the song of heaven, and most churches sing it. The hymn finishes the line: "God in three Persons, blessed Trinity!" The pulpit says three holies mean three persons, and "Almighty" means the all-powerful God who is Father, Son, and Spirit together.`],
+            word: [
+              `*Pantokratōr* means "the all-ruler." The Greeks praised their gods as all-ruling, and temple hymns in Egypt praised the goddess Isis the same way.`,
+              `Later the church painted "Christ Pantocrator," the Son as ruler of all, on its icons and in the domes of its churches. The word lets the reader put anyone on the throne. It carries no name at all.`,
+            ],
+            hebrew: [
+              `The four beasts are singing Isaiah's song: "Holy, holy, holy, is Yahuah of hosts: the whole earth is full of his glory" (Isaiah 6:3). Where the Greek says "Almighty," the prophets wrote *Tsebaoth*, hosts, armies. Yahuah is the commander of heaven's armies. The Greek Old Testament often turned "Yahuah of hosts" into "Lord Almighty," and the Name and the armies were lost together.`,
+              `And "holy" three times is how Hebrew says "most holy." Hebrew repeats a word to make it strong. Jeremiah does the same: "O earth, earth, earth, hear the word of Yahuah" (Jeremiah 22:29). Nobody thinks there are three earths.`,
+            ],
+            reread: [`"Most holy, most holy, most holy is Yahuah of hosts, Commander of heaven's armies, who was, and is, and is to come." Then watch who sits on the throne and who comes to it. The song is sung to One: "for thou hast created all things" (Revelation 4:11). Then the Lamb "came and took the book out of the right hand of him that sat upon the throne" (Revelation 5:7). The Lamb comes to the throne and receives from the One sitting on it. The scene the hymn calls a Trinity shows one on the throne, and His Son coming to Him.`],
+            timeline: [
+              ["About 250 BC on", `The Greek Old Testament often turns "Yahuah of hosts" into "Lord Almighty," *kurios pantokratōr*.`],
+              ["About 100 BC", `Temple hymns in Egypt praise Isis as the all-ruling one.`],
+              ["Sixth century", `At Sinai, the Pantocrator icon shows the Son as ruler of all.`],
+              ["1826", `Reginald Heber's hymn joins Isaiah's song to the Trinity: "God in three Persons, blessed Trinity!"`],
+              ["Today", `The pulpit: "Holy, holy, holy: Father, Son, and Holy Spirit."`],
+            ],
+            built: [
+              `The Trinity hymn: Isaiah's "most holy" sung as three persons.`,
+              `The enthroned Son: the Pantocrator image puts the Son on the Father's throne.`,
+              `A lost title: "Yahuah of hosts," used more than two hundred times by the prophets, gone from the reader's Bible.`,
+            ],
+          },
+          {
+            id: "hypsistos", greek: "Hypsistos", kjv: "Most High", role: "The root word", more: "Hypsistos on Greek Influence",
+            verse: { ref: "Acts 16:17", text: "The same followed Paul and us, and cried, saying, These men are the servants of the most high God, which shew unto us the way of salvation." },
+            taught: [`A slave girl with an evil spirit follows Paul through Philippi, and everything she says is true. The pulpit says even the devil knows who God is. Paul only cast the spirit out because she was a nuisance, drawing the crowd's eyes to herself. The lesson preached is that demons believe and tremble.`],
+            word: [
+              `*Hypsistos* means "highest." Across the Greek world men worshiped Zeus Hypsistos, "Zeus the Most High," and a nameless "Most High God" in shrines from Macedonia to Asia Minor.`,
+              `So when a girl with a spirit of divination called out "the most high God," a Greek crowd heard their own high god. And the Greek has no "the" before "way": she offered *a* way of deliverance, one road among many. The pulpit hears a true confession. Philippi heard Zeus.`,
+            ],
+            hebrew: [
+              `In the Torah, the Most High is *Elyon*, and it is joined to the Name. Melchizedek blessed Abram "of the most high God" (Genesis 14:19). When Abram answered the king of Sodom, he put the Name in front of the title so no one could mistake whom he meant: "I have lift up mine hand unto Yahuah, the most high God, the possessor of heaven and earth" (Genesis 14:22).`,
+              `David said it outright: "thou, whose name alone is Yahuah, art the most high over all the earth" (Psalm 83:18). The title belongs to the Name. Pull it away from the Name, and any god can wear it.`,
+            ],
+            reread: [`"These men serve Zeus the Highest, and they show you a way to be saved." That is why Paul was "grieved" (Acts 16:18). A spirit of divination was folding Yahuah into the gods of Greece and making Paul's message one more road among many. Paul answered the title with a name: "I command thee in the name of Yahushua Messiah to come out of her." He did what Abram did at Sodom. He would not let the Most High be anyone but Yahuah.`],
+            timeline: [
+              ["Abram's day", `Abram joins the title to the Name: "Yahuah, the most high God" (Genesis 14:22).`],
+              ["About 250 BC", `The Greek Torah puts *hypsistos* for Elyon (Genesis 14:18).`],
+              ["First century AD", `Zeus Hypsistos and "the Most High God" are worshiped in shrines across Macedonia and Asia Minor.`],
+              ["About 50 AD", `At Philippi a girl with a spirit of divination calls out the title, and Paul casts the spirit out (Acts 16:16-18).`],
+              ["Today", `The pulpit: "Even the devil knows who God is."`],
+            ],
+            built: [
+              `One God by many names: "the Most High" treated as a title any religion can share, so the Name seems optional.`,
+              `The demon's witness: a pagan title heard as a true confession, and Paul's grief explained away.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `The old path keeps the Name. Yahuah gave it at the burning bush and bound it to every generation. "Thy name, O Yahuah, endureth for ever" (Psalm 135:13). Caesar's title, Zeus's titles, and a god-king's boast stand where the Name should be. Take them out, and the Father and the Son stand clear again: Yahuah, beside whom "there is no saviour" (Isaiah 43:11), and Yahushua, whose very name says "Yahuah saves." Restoring the Name is nothing new. It is obeying a command that never ended. And Revelation shows it restored, the Lamb's people "having his Father's name written in their foreheads" (Revelation 14:1), and in the city to come, "his name shall be in their foreheads" (Revelation 22:4).`,
+    },
+  },
+
   "04": {
     oldPaths: {
       kicker: "The Old Path · Hell",
