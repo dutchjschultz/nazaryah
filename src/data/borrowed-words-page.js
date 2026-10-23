@@ -1,4 +1,7 @@
-// borrowed-words-page 1022 V16.js
+// borrowed-words-page 1022 V17.js
+// V17 (Faith Alone / Rightly Divided briefs 1022): orthotomeō links to its new Rightly Divided tab;
+// mystērion and eucharistia link to their Communion tabs (they left Faith Alone); oikonomia reads
+// "Darby’s dispensations, set at seven in the Scofield notes".
 // V16 (Tribulation / Rapture / Millennium briefs 1022): story links for the end-times words —
 // hebdomas, apostasia, katechō to The Seven-Year Tribulation; harpazō, apantēsis, parousia,
 // epiphaneia to The Rapture (parousia and epiphaneia moved off 06); chilioi and abyssos to The Millennium.
@@ -1486,8 +1489,8 @@ export const doctrines = [
         ],
         "story": [
           {
-            "label": "Faith Alone",
-            "href": "/doctrines/the-departure/faith-alone#word-mysterion"
+            "label": "Communion",
+            "href": "/doctrines/the-departure/communion#word-mysterion"
           }
         ]
       },
@@ -1506,8 +1509,8 @@ export const doctrines = [
         ],
         "story": [
           {
-            "label": "Faith Alone",
-            "href": "/doctrines/the-departure/faith-alone#word-eucharistia"
+            "label": "Communion",
+            "href": "/doctrines/the-departure/communion#word-eucharistia"
           }
         ]
       },
@@ -1610,7 +1613,7 @@ export const doctrines = [
         "kjv": "dispensation",
         "source": "Household management. Tertullian used “the economy” to describe God arranged into three (Against Praxeas 2–3); John Darby later built separate “dispensations” on it.",
         "hebrew": "Stewardship: “a dispensation of the gospel is committed unto me” (1 Corinthians 9:17).",
-        "fed": "Darby’s seven dispensations, each with different terms of salvation (Ephesians 1:10; 3:2).",
+        "fed": "Darby’s dispensations, set at seven in the Scofield notes, each with different terms of salvation (Ephesians 1:10; 3:2).",
         "bridge": null,
         "aliases": [],
         "sources": [
@@ -1640,7 +1643,12 @@ export const doctrines = [
         "sources": [
           "Later teachers & translators"
         ],
-        "story": []
+        "story": [
+          {
+            "label": "Rightly Divided",
+            "href": "/doctrines/the-departure/rightly-divided#word-orthotomeo"
+          }
+        ]
       }
     ]
   },

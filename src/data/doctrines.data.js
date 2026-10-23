@@ -1,4 +1,12 @@
-// doctrines.data 1022 V22.js
+// doctrines.data 1022 V30.js
+// V30: doctrine 20 goes to layout "v2" (Communion doctrine brief 1022 V1).
+// V29: doctrine 19 goes to layout "v2" (Clergy over the People doctrine brief 1022 V1).
+// V28: doctrine 18 goes to layout "v2" (Images in Worship doctrine brief 1022 V1).
+// V27: doctrine 17 goes to layout "v2" (Predestination doctrine brief 1022 V2).
+// V26: doctrine 16 goes to layout "v2" (Lucifer doctrine brief 1022 V1).
+// V25: doctrine 15 goes to layout "v2" (Imputed Righteousness doctrine brief 1022 V1).
+// V24: doctrine 14 goes to layout "v2" (Rightly Divided doctrine brief 1022 V1).
+// V23: doctrine 13 goes to layout "v2" (Faith Alone doctrine brief 1022 V2).
 // V22: doctrine 12 goes to layout "v2" (Calendar & Feasts doctrine brief 1022 V1).
 // V21: doctrine 11 goes to layout "v2" (Purification & Holiness doctrine brief 1022 V1).
 // V20: doctrine 10 goes to layout "v2" (The Trinity doctrine brief 1022 V1).
@@ -352,7 +360,7 @@ export const doctrines = [
 
   {
     n: "13",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "wine-and-the-bread",
       title: "The Wine and the Bread",
@@ -373,7 +381,7 @@ export const doctrines = [
 
   {
     n: "14",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "one-olive-tree",
       title: "One Olive Tree",
@@ -394,7 +402,7 @@ export const doctrines = [
 
   {
     n: "15",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "it-shall-be-our-righteousness",
       title: "It Shall Be Our Righteousness",
@@ -414,7 +422,7 @@ export const doctrines = [
   },
   {
     n: "16",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "a-proverb-against-babylon",
       title: "A Proverb Against the King of Babylon",
@@ -439,7 +447,7 @@ The true morning star is not a fallen angel. It is the Son: “I am the root and
   },
   {
     n: "17",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "choose-life",
       title: "Choose Life",
@@ -466,7 +474,7 @@ Yahuah knows the end from the beginning (Isaiah 46:10). Knowing is not forcing. 
   },
   {
     n: "18",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "no-manner-of-similitude",
       title: "No Manner of Similitude",
@@ -493,7 +501,7 @@ Yahuah did give Israel something to wear — and it was not an image. “Make th
   },
   {
     n: "19",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "a-kingdom-of-priests",
       title: "A Kingdom of Priests",
@@ -519,7 +527,7 @@ The assembly has elders and overseers who serve, teach, and keep watch — but t
 
   {
     n: "20",
-    layout: "classic",
+    layout: "v2",
     oldPaths: {
       slug: "keep-the-feast",
       title: "Keep the Feast",

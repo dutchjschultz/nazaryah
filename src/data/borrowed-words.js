@@ -1,4 +1,7 @@
-// borrowed-words 1022 V14.js
+// borrowed-words 1022 V17.js
+// V17: 20 Communion panel follows its tab order — anamnēsis · koinōnia · deipnon · mystērion · eucharistia.
+// V16: 14 Rightly Divided panel in its tab order (oikonomia · ekklēsia); orthotomeō has no panel entry yet.
+// V15: 13 Faith Alone panel follows its v2 tabs — pistis · gnōsis · palingenesia · nikē · euangelion; mystērion and eucharistia are Communion's.
 // V14: 10 The Trinity panel follows its v2 tabs (preview card) — logos · ousia · hypostasis · monogenēs · paraklētos · theotēs; physis, morphē, oikonomia, hymnos, sophia, dēmiourgos stay on Greek Influence.
 // V13: 02 Torah Dismissal panel follows its v2 tabs — charis · nomos · stoicheia · diathēkē · kardia · metanoia; syneidēsis stays on Greek Influence only.
 // V12 (doctrines handoff index 1022 V2): pentēkostē's yourBible reads "the fiftieth", not "Pentecost".
@@ -341,18 +344,10 @@ export const doctrines = [
         sourceName: "Theognis wrote", sourceLine: "Pistis — a goddess who left the earth",
         scriptureName: "Moses wrote", scriptureLine: "emunah — Moses’ hands “steady” until dusk (Exodus 17:12)",
         linkLabel: "Theognis’s word or Yahuah’s?" },
-      { id: "euangelion", greek: "Euangelion", strongs: "G2098", yourBible: "gospel",
-        sourceName: "Caesar wrote", sourceLine: "euangelion — the “good tidings” of Augustus’s birthday",
-        scriptureName: "Isaiah wrote", scriptureLine: "besorah — “Thy God reigneth!” (Isaiah 52:7)",
-        linkLabel: "Caesar’s word or Yahuah’s?" },
-      { id: "mysterion", greek: "Mystērion", strongs: "G3466", yourBible: "mystery",
-        sourceName: "Eleusis wrote", sourceLine: "mystēria — secret rites that save the initiated",
-        scriptureName: "Amos wrote", scriptureLine: "sod — “he revealeth his secret unto his servants” (Amos 3:7)",
-        linkLabel: "Eleusis’s word or Yahuah’s?" },
-      { id: "eucharistia", greek: "Eucharistia", strongs: "G2169", yourBible: "giving of thanks",
-        sourceName: "The mystery cults wrote", sourceLine: "a sacred meal that joins the worshipper to the god",
-        scriptureName: "Yahushua said", scriptureLine: "“this do in remembrance of me” (Luke 22:19)",
-        linkLabel: "The cults’ word or Yahuah’s?" },
+      { id: "gnosis", greek: "Gnōsis", strongs: "G1108", yourBible: "knowledge",
+        sourceName: "The Gnostics wrote", sourceLine: "gnōsis — saved by knowing, whatever the body does",
+        scriptureName: "Jeremiah wrote", scriptureLine: "judging the cause of the poor — “was not this to know me?” (Jeremiah 22:16)",
+        linkLabel: "The Gnostics’ word or Yahuah’s?" },
       { id: "palingenesia", greek: "Palingenesia", strongs: "G3824", yourBible: "regeneration",
         sourceName: "The Stoics wrote", sourceLine: "palingenesia — the world reborn from fire, again and again",
         scriptureName: "Yahushua said", scriptureLine: "the restoration “when the Son of man shall sit in the throne” (Matthew 19:28)",
@@ -361,24 +356,24 @@ export const doctrines = [
         sourceName: "Athens wrote", sourceLine: "Nike — the winged goddess of the Acropolis",
         scriptureName: "Isaiah wrote", scriptureLine: "netsach — “He will swallow up death for ever” (Isaiah 25:8)",
         linkLabel: "Athens’ word or Yahuah’s?" },
-      { id: "gnosis", greek: "Gnōsis", strongs: "G1108", yourBible: "knowledge",
-        sourceName: "The Gnostics wrote", sourceLine: "gnōsis — saved by knowing, whatever the body does",
-        scriptureName: "Jeremiah wrote", scriptureLine: "judging the cause of the poor — “was not this to know me?” (Jeremiah 22:16)",
-        linkLabel: "The Gnostics’ word or Yahuah’s?" }
+      { id: "euangelion", greek: "Euangelion", strongs: "G2098", yourBible: "gospel",
+        sourceName: "Caesar wrote", sourceLine: "euangelion — the “good tidings” of Augustus’s birthday",
+        scriptureName: "Isaiah wrote", scriptureLine: "besorah — “Thy God reigneth!” (Isaiah 52:7)",
+        linkLabel: "Caesar’s word or Yahuah’s?" }
     ]
   },
   {
     num: "14", oldPathsSlug: "one-olive-tree", departureSlug: "rightly-divided",
     departureSource: "Darby",
     words: [
-      { id: "ekklesia", greek: "Ekklēsia", strongs: "G1577", yourBible: "church",
-        sourceName: "Athens wrote", sourceLine: "ekklēsia — the city’s voting assembly (Acts 19:39)",
-        scriptureName: "Stephen said", scriptureLine: "qahal — Israel, “the church in the wilderness” (Acts 7:38)",
-        linkLabel: "Athens’ word or Yahuah’s?" },
       { id: "oikonomia", greek: "Oikonomia", strongs: "G3622", yourBible: "dispensation",
         sourceName: "Darby wrote", sourceLine: "dispensations — separate ages with separate terms",
         scriptureName: "Paul wrote", scriptureLine: "a stewardship “committed unto me” (1 Corinthians 9:17)",
-        linkLabel: "Darby’s word or Yahuah’s?" }
+        linkLabel: "Darby’s word or Yahuah’s?" },
+      { id: "ekklesia", greek: "Ekklēsia", strongs: "G1577", yourBible: "church",
+        sourceName: "Athens wrote", sourceLine: "ekklēsia — the city’s voting assembly (Acts 19:39)",
+        scriptureName: "Stephen said", scriptureLine: "qahal — Israel, “the church in the wilderness” (Acts 7:38)",
+        linkLabel: "Athens’ word or Yahuah’s?" }
     ]
   },
   {
@@ -480,6 +475,11 @@ export const doctrines = [
     departureSource: "the church",
     departureHeader: "You’ve been keeping a church ritual and calling it His remembrance.",
     words: [
+      { id: "anamnesis", greek: "Anamnēsis", gloss: "recollection", strongs: "", yourBible: "remembrance",
+        sourceName: "Plato wrote", sourceLine: "the soul recalls what it knew before birth",
+        scriptureName: "Moses wrote", scriptureLine: "“this day shall be unto you for a memorial” (Exodus 12:14)",
+        dep: { origin: "Plato’s word for the soul recalling a former life; later, the sacrifice made present again", scripture: "Hebrews 10:3" },
+        linkLabel: "Plato’s word or Yahuah’s?" },
       { id: "koinonia", greek: "Koinōnia", gloss: "sharing", strongs: "", yourBible: "communion",
         sourceName: "The temple cults wrote", sourceLine: "eat from the god’s table and become his partner",
         scriptureName: "Paul wrote", scriptureLine: "“ye cannot be partakers of the Master’s table, and of the table of devils” (1 Corinthians 10:21)",
@@ -490,11 +490,6 @@ export const doctrines = [
         scriptureName: "John wrote", scriptureLine: "“Blessed are they which are called unto the marriage supper of the Lamb” (Revelation 19:9)",
         dep: { origin: "dinners held at a god’s table in his temple, as with Serapis in Egypt", scripture: "Revelation 19:9" },
         linkLabel: "Serapis’s word or Yahuah’s?" },
-      { id: "anamnesis", greek: "Anamnēsis", gloss: "recollection", strongs: "", yourBible: "remembrance",
-        sourceName: "Plato wrote", sourceLine: "the soul recalls what it knew before birth",
-        scriptureName: "Moses wrote", scriptureLine: "“this day shall be unto you for a memorial” (Exodus 12:14)",
-        dep: { origin: "Plato’s word for the soul recalling a former life; later, the sacrifice made present again", scripture: "Hebrews 10:3" },
-        linkLabel: "Plato’s word or Yahuah’s?" },
       { id: "mysterion-communion", greek: "Mystērion", gloss: "secret rite", strongs: "", yourBible: "mystery",
         sourceName: "The Latin church wrote", sourceLine: "sacramentum, a soldier’s oath",
         scriptureName: "Paul wrote", scriptureLine: "the mystery “now is made manifest” (Colossians 1:26)",

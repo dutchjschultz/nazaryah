@@ -1,4 +1,12 @@
-// doctrine-v2 1022 V14.js
+// doctrine-v2 1022 V22.js
+// V22: Communion doctrine brief 1022 V1: 20, text from its 1022 V1 preview — five word tabs (Anamnēsis open first)
+// V21: Clergy over the People doctrine brief 1022 V1: 19, text from its 1022 V1 preview — four word tabs (Episkopos open first; hiereus and laikos share one)
+// V20: Images in Worship doctrine brief 1022 V1: 18, text from its 1022 V1 preview — three word tabs (Stauros open first)
+// V19: Predestination doctrine brief 1022 V2: 17, text from its 1022 V2 preview — two word tabs (Proorizō open first)
+// V18: Lucifer doctrine brief 1022 V1: 16, text from its 1022 V1 preview — four word tabs (Phōsphoros · Heōsphoros open first)
+// V17: Imputed Righteousness doctrine brief 1022 V1: 15, text from its 1022 V1 preview — three word tabs (Dikaiosynē / Dikē open first)
+// V16: Rightly Divided doctrine brief 1022 V1: 14, text from its 1022 V1 preview — three word tabs (Orthotomeō new, open first)
+// V15: Faith Alone doctrine brief 1022 V2: 13, text from its 1022 V2 preview — five word tabs (Pistis open first); mystērion and eucharistia go to Communion
 // V14: Calendar & Feasts doctrine brief 1022 V1: 12, text from its 1022 V1 preview — five word tabs (Kairos open first)
 // V13: Purification & Holiness doctrine brief 1022 V1: 11, text from its 1022 V1 preview — two word tabs (Hagios / Hagnos open first)
 // V12: The Trinity doctrine brief 1022 V1: 10, text from its 1022 V1 preview — six word tabs (Logos open first); the other six words stay on Greek Influence
@@ -2238,6 +2246,1327 @@ export const doctrineV2 = {
         ],
       },
       oldPath: `The old path is written in the sky. The sun turns the year. The moon numbers the month, and the Sabbaths fall on the 8th, 15th, 22nd, and 29th. The day runs from dawn to dusk. The feasts come in their seasons: Pesach on the 14th of the first month, Hag HaMatzot from the 15th, Bikkurim with the wave sheaf, Shavuot in summer after seven Sabbaths and fifty days, then Yom Teruah, Yom Kippur, and Sukkot. Deliverance came first, through the Lamb on the 14th. The walk follows: keeping Yahuah's appointments on Yahuah's calendar. Isaiah saw it would never end: "from one new moon to another, and from one sabbath to another, shall all flesh come to worship before me, saith Yahuah" (Isaiah 66:23). And Revelation shows the same calendar in the city to come, where the tree of life "yielded her fruit every month" (Revelation 22:2).`,
+    },
+  },
+  "13": {
+    oldPaths: {
+      kicker: "The Old Path · Faith Alone",
+      title: "The Wine and the Bread",
+      subtitle: "The Cup Opens the Door. The Bread Walks the Road.",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `When Abram came back from battle, Melchizedek, "the priest of the most high God," met him and "brought forth bread and wine" (Genesis 14:18). From that first table the pattern holds. The wine is the blood: the door Yahuah opens, the atonement no man can earn. The bread is the body: the walk through that door, a life lived by His commandments.`,
+            `Scripture speaks of deliverance in three tenses. "By grace are ye saved" (Ephesians 2:8) is done. "Work out your own salvation" (Philippians 2:12) is going on. "He that shall endure unto the end, the same shall be saved" (Matthew 24:13) is still ahead. Paul holds them together: "justified by his blood," and "saved by his life" (Romans 5:9-10). The cup starts a man. The bread finishes him.`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `The Law never set the cup and the bread apart. With the offerings came a meal offering of flour and oil and a drink offering of wine (Numbers 15:4-5), together, every time. Wisdom sets the same table: "Come, eat of my bread, and drink of the wine which I have mingled" (Proverbs 9:5).`,
+            `Yahuah promised a priest "for ever after the order of Melchizedek" (Psalm 110:4), a priest who brings both. Belief and the walk were never two roads. Abraham "believed in Yahuah; and he counted it to him for righteousness" (Genesis 15:6). Then Abraham walked.`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Abraham", `believed, and when he offered Isaac, "by works was faith made perfect" (James 2:22).`],
+            ["Rahab", `trusted Yahuah and hid the spies, "justified by works" (James 2:25).`],
+            ["Caleb", `"he had another spirit with him, and hath followed me fully" (Numbers 14:24).`],
+            ["Yahushua", `"If ye love me, keep my commandments" (John 14:15).`],
+            ["Paul", `preached to all nations "for the obedience of faith" (Romans 16:26).`],
+            ["James", `"by works a man is justified, and not by faith only" (James 2:24).`],
+          ],
+        },
+      ],
+      closing: `And at the end, John saw the cup and the bread together on the saints. They "keep the commandments of God, and the faith of Yahushua" (Revelation 14:12).`,
+      torah: ["Genesis 14:18", "Numbers 15:4-5"],
+      witness: ["Proverbs 9:5", "Psalm 110:4"],
+      turn: {
+        text: "But Christianity went another way. It poured the cup and never passed the bread, and called belief alone the whole of deliverance.",
+        label: "The Departure: Faith Alone",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 13",
+      title: "Faith Alone",
+      subtitle: "The Cup Poured, the Bread Never Passed",
+      attribution: "You've been quoting Luther and calling it Scripture.",
+      taught: [
+        `"Believe, and you are saved, and nothing you do can add to it." That is the heart of most Protestant preaching: <em>sola fide</em>, faith alone. Pray the prayer, mean it, and heaven is settled. Works are good, the preacher says, but they are only fruit, and they have nothing to do with whether you are saved. Many Baptist churches add "once saved, always saved." Evangelical and Pentecostal churches give the altar call: come forward, receive Him, and you are born again tonight.`,
+        `Catholics reject "faith alone" by name. The Council of Trent condemned it in 1547. But the Catholic answer puts the church's works in the place of Yahuah's: baptism as an infant, the Mass, confession, and penance. Neither side sends the believer back to the commandments. One stops at the door with a prayer, the other with a sacrament, and the walk Yahuah gave is left out of both.`,
+      ],
+      roots: [
+        `Paul never wrote "faith alone." In 1522 Martin Luther published his German New Testament and added the word <em>allein</em>, "alone," to Romans 3:28. Paul wrote that a man is justified by belief "without the deeds of the law." Luther's German made it "by faith alone." When critics objected, he defended the word in his <em>Open Letter on Translating</em> in 1530. In his 1522 preface he called the letter of James "an epistle of straw" next to the books he ranked highest. James says the opposite of "alone." The only place in Scripture where "faith" and "only" stand together is James 2:24: "not by faith only."`,
+        `The idea had older roots. The Greeks worshiped Pistis, Trust, as a goddess, and Rome built a temple to Fides. Greek teachers of speech used <em>pistis</em> for proof, whatever persuades the mind. The mystery cults promised a new birth through a rite, and the Gnostics deliverance through secret knowledge. Rome hailed the emperor's birthday as good news and worshiped Victory as a goddess who hands the win down. In each one, a man was saved by what was done to him or what he came to know, not by how he walked afterward. Five Greek words carried that into the church. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "pistis", greek: "Pistis", kjv: "faith", role: "The root word", more: "Pistis on Greek Influence",
+            verse: { ref: "James 2:24", text: "Ye see then how that by works a man is justified, and not by faith only." },
+            taught: [
+              `James and Paul seem to disagree, and Paul wins. "A man is justified by faith without the deeds of the law" (Romans 3:28). James, preachers say, only means that real faith will show itself, or that he speaks of being justified before men, not before God. Faith is believing that Messiah died for you, and that belief alone saves.`,
+            ],
+            word: [
+              `In Greek, *pistis* meant trust, and it also meant proof. Aristotle's book on speaking names the *pisteis*, the ways a speaker persuades his hearers. Belief became a matter of the mind being persuaded and agreeing.`,
+              `*Pistis* was also a goddess. The poet Theognis mourned that Pistis, "a great goddess," had left mankind and gone back to Olympus. Rome built a temple to Fides, her Latin twin, on the Capitol in the 200s BC. Trust was a power to honor, not a road to walk.`,
+            ],
+            hebrew: [
+              `*Emunah*, firmness, steadiness, faithfulness. When Moses' arms grew heavy in the battle, Aaron and Hur held them up, "and his hands were steady until the going down of the sun" (Exodus 17:12). That word "steady" is *emunah*. "The just shall live by his faith" (Habakkuk 2:4) means by his steadiness, his faithfulness. Hebrew belief stands firm and keeps going.`,
+            ],
+            reread: [`"By works a man is justified, and not by faith only." Paul and James do not fight. Paul says no works of the Law can open the door; that is done "through faith in his blood" (Romans 3:25). James says belief that never walks is dead: "faith, if it hath not works, is dead, being alone" (James 2:17). The one time Scripture puts "faith" beside "alone," it calls it dead. Paul agrees: "the doers of the law shall be justified" (Romans 2:13). His whole message, he says, was "for obedience to the faith among all nations" (Romans 1:5).`],
+            timeline: [
+              ["About 550 BC", `Theognis mourns that the goddess Pistis has left mankind.`],
+              ["About 57 AD", `Paul writes Romans 3:28, with no "alone" in it.`],
+              ["1522", `Luther's German New Testament adds *allein* to Romans 3:28, and his preface calls James "an epistle of straw."`],
+              ["1530", `Luther defends "alone" in his *Open Letter on Translating*.`],
+              ["1547", `The Council of Trent condemns faith alone, and puts the sacraments in its place.`],
+              ["1646", `The Westminster Confession calls faith "the alone instrument of justification."`],
+            ],
+            built: [
+              `"Faith alone" as the banner of the Reformation.`,
+              `The letter of James treated as second-rate.`,
+              `Belief reduced to agreeing with facts.`,
+              `"Once saved, always saved," with no road after the door.`,
+            ],
+          },
+          {
+            id: "gnosis", greek: "Gnōsis", kjv: "knowledge", role: "The root word", more: "Gnōsis on Greek Influence",
+            verse: { ref: "Luke 1:77", text: "To give knowledge of salvation unto his people by the remission of their sins," },
+            taught: [
+              `Salvation starts with knowing. You have to know you are a sinner, know that Messiah died for you, and know for sure that you are going to heaven. Preachers ask, "If you died tonight, do you know where you would go?" If you know the right answer, you have it. What you do with your life after that does not change it.`,
+            ],
+            word: [
+              `*Gnōsis* means knowledge. In the second century a movement grew up around this word, the Gnostics. Teachers like Basilides in Alexandria and Valentinus in Rome taught that people are saved by knowing secret truth. To them, the spirit was good and the body was worthless, made by a lesser god, so what the body did did not matter.`,
+              `Irenaeus, a church leader who wrote against them, reported that some claimed they would be saved because of what they were, not because of how they lived. Knowing became the ticket, and the life became beside the point. Paul had already warned Timothy about "science falsely so called," knowledge that made men err "concerning the faith" (1 Timothy 6:20-21).`,
+            ],
+            hebrew: [
+              `Zacharias spoke these words as a priest of Israel, and his song is full of the prophets. Jeremiah promised a day when Yahuah would write His law on the heart, and said, "they shall all know me ... for I will forgive their iniquity" (Jeremiah 31:34). Knowing Yahuah and having sins forgiven come together, just as in Zacharias' song.`,
+              `The Hebrew word for knowledge is *da'at*, from *yada*, to know. In Hebrew, to know someone is to live close to him and do as he does. Jeremiah says it of a good king: "He judged the cause of the poor and needy; then it was well with him: was not this to know me? saith Yahuah" (Jeremiah 22:16). Knowing Yahuah is something you do.`,
+            ],
+            reread: [`Now read it the way Zacharias meant it: to let His people know His deliverance, to know Him by walking with Him, through the forgiving of their sins. He had already said what the deliverance was for, a few lines earlier: "that we being delivered out of the hand of our enemies might serve him without fear, In holiness and righteousness before him, all the days of our life" (Luke 1:74-75). First delivered, then serving, every day after. John says the same: "He that saith, I know him, and keepeth not his commandments, is a liar" (1 John 2:4).`],
+            timeline: [
+              ["About 90 AD", `John warns, "He that saith, I know him, and keepeth not his commandments, is a liar."`],
+              ["About 130 AD", `Basilides teaches salvation by secret knowledge in Alexandria.`],
+              ["About 140 AD", `Valentinus, a Gnostic teacher in Rome, says the spiritual are saved by what they know.`],
+              ["About 180 AD", `Irenaeus records Gnostics who said they would be saved by nature, whatever they did.`],
+              ["1960s", `Evangelism Explosion opens its soul-winning talk with one question: do you know for certain you would go to heaven?`],
+              ["Today", `"Do you know for sure you're saved?"`],
+            ],
+            built: [
+              `"Just believe": deliverance as knowing the right facts, with nothing asked of the walk.`,
+              `Assurance without obedience: being sure of heaven treated as proof, no matter how a person lives.`,
+              `"The body doesn't matter": what you eat, what day you keep, how you walk.`,
+            ],
+          },
+          {
+            id: "palingenesia", greek: "Palingenesia", kjv: "regeneration", role: "The root word", more: "Palingenesia on Greek Influence",
+            verse: { ref: "Titus 3:5", text: "Not by works of righteousness which we have done, but according to his mercy he saved us, by the washing of regeneration, and renewing of the Holy Ghost;" },
+            taught: [
+              `You are saved the moment you are born again. It happens all at once: at baptism, some say, or when you pray the sinner's prayer. It is "not by works," so nothing you do before or after has anything to do with it. Once you are regenerated, you are a new person, and you can never be lost.`,
+            ],
+            word: [
+              `*Palingenesia* means "birth again." It came from the Greek philosophers. The Stoics believed the whole world ends in fire and is then born again, over and over. The mystery cults used the idea too. A worshiper of Isis came out of her rites as if reborn.`,
+              `A Roman stone from 376 AD says a man was "reborn for eternity" through the sacrifice of a bull. In their world, reborn meant a one-time change done by a rite, and finished the moment it was done.`,
+            ],
+            hebrew: [
+              `Paul's washing and renewing echo Ezekiel. Yahuah promised to wash His people and put a new spirit in them: "Then will I sprinkle clean water upon you, and ye shall be clean ... A new heart also will I give you, and a new spirit will I put within you ... and cause you to walk in my statutes, and ye shall keep my judgments, and do them" (Ezekiel 36:25-27).`,
+              `The Hebrew word for new is *chadash*, made fresh. The washing is the start, and the new spirit is given for a reason: to walk in His statutes. The only other place this word appears in the New Testament is Matthew 19:28, "in the regeneration when the Son of man shall sit in the throne of his glory." That is the restoration of all things at His return (Acts 3:21). The new birth begins at the washing and is finished at the restoration.`,
+            ],
+            reread: [`Now read it the way Paul meant it: He saved us, not because of good deeds we had already done, but by His mercy, through the washing that begins a new life and the new spirit He puts in us. That is the door. Paul tells Titus what comes next, three verses later: "that they which have believed in God might be careful to maintain good works" (Titus 3:8). The washing is not the end of the road. It is the start of it.`],
+            timeline: [
+              ["About 280 BC", `The Stoics teach that the world burns and is born again, over and over.`],
+              ["About 155 AD", `Justin Martyr calls baptism being "regenerated."`],
+              ["About 170 AD", `Apuleius writes of a worshiper of Isis who comes out of her rites as if reborn.`],
+              ["376 AD", `A Roman stone records a man "reborn for eternity" through a bull sacrifice.`],
+              ["Today", `"Pray this prayer, and you are born again, forever."`],
+            ],
+            built: [
+              `Baptismal regeneration: water poured once, and the person declared reborn for good.`,
+              `The sinner's prayer: one moment in the past standing in for a life of walking.`,
+              `"Once saved, always saved," with the new birth treated as the whole journey.`,
+            ],
+          },
+          {
+            id: "nike", greek: "Nikē", kjv: "victory", role: "The root word", more: "Nikē on Greek Influence",
+            verse: { ref: "1 John 5:4", text: "For whatsoever is born of God overcometh the world: and this is the victory that overcometh the world, even our faith." },
+            taught: [
+              `The victory is already won. Messiah did it all at the cross, and all you have to do is believe it. Your faith is the victory. You don't fight; you just claim it. Preachers say, "We fight from victory, not for victory." Talk of enduring or keeping commandments, they warn, takes away from His finished work.`,
+            ],
+            word: [
+              `*Nikē* was the name of a goddess. Nike had wings, and the Athenians built her a small temple at the gate of the Acropolis. Rome called her Victoria and set her statue in the Senate house.`,
+              `Nike flew down and handed the win to one side, all in a moment. The hero took the wreath, and the crowd only cheered. That is a win you receive, not one you endure for. Read through that picture, "the victory" becomes a prize already handed over.`,
+            ],
+            hebrew: [
+              `When Paul writes "Death is swallowed up in victory" (1 Corinthians 15:54), he is quoting Isaiah: "He will swallow up death in victory" (Isaiah 25:8). The Hebrew word Isaiah used is *netsach*. It does not mean a win in a moment. It means lasting, enduring, "for ever." Many Bibles put Isaiah's line as "He will swallow up death for ever."`,
+              `In Hebrew, the one who triumphs is the one still standing at the end. Paul's next words are "be ye stedfast, unmoveable, always abounding in the work of the Master" (1 Corinthians 15:58). Yahushua said it plainly: "he that shall endure unto the end, the same shall be saved" (Matthew 24:13).`,
+            ],
+            reread: [`Now read it the way John meant it: this is what outlasts the world, our trust, held steady to the end. John says in the verse just before what that looks like: "For this is the love of God, that we keep his commandments: and his commandments are not grievous" (1 John 5:3). The overcomer, Yahushua said, is "he that overcometh, and keepeth my works unto the end" (Revelation 2:26). "It is finished" (John 19:30) was the redemption, done once at the tree. The walk is kept to the end.`],
+            timeline: [
+              ["About 700 BC", `Isaiah writes, "He will swallow up death in victory," *netsach*, for ever.`],
+              ["About 420 BC", `A temple to Athena Nike, the winged goddess of the win, stands at the Acropolis gate.`],
+              ["29 BC", `Augustus sets a statue of Victoria in the Roman Senate house.`],
+              ["384 AD", `Rome's senators, led by Symmachus, still plead to keep their altar of Victory.`],
+              ["Today", `"We fight from victory, not for victory."`],
+            ],
+            built: [
+              `A finished triumph: the win already handed over, so nothing is asked of the believer.`,
+              `Any talk of the walk branded "works salvation."`,
+              `"It is finished" stretched from the redemption to the believer's whole life.`,
+            ],
+          },
+          {
+            id: "euangelion", greek: "Euangelion", kjv: "gospel", role: "The root word", more: "Euangelion on Greek Influence",
+            verse: { ref: "Romans 10:15", text: "And how shall they preach, except they be sent? as it is written, How beautiful are the feet of them that preach the gospel of peace, and bring glad tidings of good things!" },
+            taught: [
+              `This is the great missions verse. The gospel is the good news that Messiah died for your sins. Paul gave it a few verses back: confess with your mouth and believe in your heart, and you will be saved (Romans 10:9). Preachers carry that news, and the feet that carry it are beautiful. That is the whole message.`,
+            ],
+            word: [
+              `The Greek uses *euangelion* and its verb, "to bring good news." Rome used this word for the emperor. A stone set up at Priene, in what is now Turkey, in 9 BC says the birthday of "the god" Augustus was the beginning of good tidings for the world.`,
+              `Caesar's good news was a birth announcement: something had happened, so be glad. The pulpit's gospel sounds much the same: news about the past, to be believed, with no kingdom and no law.`,
+            ],
+            hebrew: [
+              `But Paul is quoting Isaiah: "How beautiful upon the mountains are the feet of him that bringeth good tidings, that publisheth peace; that bringeth good tidings of good, that publisheth salvation; that saith unto Zion, Thy God reigneth!" (Isaiah 52:7).`,
+              `The Hebrew verb is *basar*, and the news itself is *besorah*. Look at what the messenger says. His news is not only that something happened. It is "Thy God reigneth!" The King is on His throne. When a king takes his throne, his law goes out with him: "out of Zion shall go forth the law" (Isaiah 2:3). Good news, in Hebrew, is the news of Yahuah's reign, and a reign is something you live under.`,
+            ],
+            reread: [`Now read it the way Paul meant it: how beautiful are the feet of those who bring the news that Yahuah reigns! Paul says it in the very next verse: "But they have not all obeyed the gospel" (Romans 10:16). You cannot obey a birth announcement. You obey a King. That is why Yahushua preached "the gospel of the kingdom of God," and told His hearers, "repent ye, and believe the gospel" (Mark 1:14-15). He sent His disciples out "teaching them to observe all things whatsoever I have commanded you" (Matthew 28:20).`],
+            timeline: [
+              ["About 700 BC", `Isaiah's messenger runs to Zion: "Thy God reigneth!"`],
+              ["9 BC", `A stone at Priene calls the birthday of "the god" Augustus the start of good tidings for the world.`],
+              ["About 28 AD", `Yahushua preaches "the gospel of the kingdom of God": repent, and believe.`],
+              ["1520s", `Luther sets "Law" and "Gospel" against each other: the Law only demands, the gospel only gives.`],
+              ["1965", `The "Four Spiritual Laws" tract boils the gospel down to four points and a prayer.`],
+            ],
+            built: [
+              `A gospel with no King: news about the past, with no reign to live under now.`,
+              `Law versus gospel: the commandments treated as the enemy of the good news, instead of the King's own words.`,
+              `"Accept" in the place of "repent," and "observe all things" left out of the message.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `Melchizedek brought out bread and wine, and Scripture never separated them. The cup is the blood, the door Yahuah opens, and no man earns his way through it. The bread is the walk, His commandments lived out after the door is open. Belief that stops at the door is what James called dead. Belief that walks is what Habakkuk called life. John saw the bride at the end, clothed in fine linen, "for the fine linen is the righteousness of saints" (Revelation 19:8). And he saw who stands: "they that keep the commandments of God, and the faith of Yahushua" (Revelation 14:12).`,
+    },
+  },
+  "14": {
+    oldPaths: {
+      kicker: "The Old Path · Rightly Divided",
+      title: "One Olive Tree",
+      subtitle: "He Never Started a Second People",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `Yahuah gave one law to His people and to the stranger who joined them. "One law shall be to him that is homeborn, and unto the stranger that sojourneth among you" (Exodus 12:49). Moses said it again: "One law and one manner shall be for you, and for the stranger" (Numbers 15:16).`,
+            `Paul pictured one olive tree. Some natural branches were broken off because of unbelief. Wild branches were grafted in by belief, and they share "the root and fatness of the olive tree" (Romans 11:17). "Thou bearest not the root, but the root thee" (Romans 11:18). One tree, one root, one people. Yahuah never started a second people with a second plan.`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `When Israel left Egypt, "a mixed multitude went up also with them" (Exodus 12:38). They stood at Sinai and lived under the same law. Ruth the Moabite told Naomi, "thy people shall be my people, and thy God my God" (Ruth 1:16), and she became the great-grandmother of King David (Ruth 4:17). Caleb, "the Kenezite," received Hebron as his inheritance in Israel (Joshua 14:14).`,
+            `The stranger joined Israel. He did not start a second people beside it.`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Moses", `"One law shall be to him that is homeborn, and unto the stranger" (Exodus 12:49).`],
+            ["Ruth", `"thy people shall be my people, and thy God my God" (Ruth 1:16).`],
+            ["Isaiah", `"mine house shall be called an house of prayer for all people" (Isaiah 56:7).`],
+            ["Ezekiel", `the strangers "shall have inheritance with you among the tribes of Israel" (Ezekiel 47:22).`],
+            ["Yahushua", `"there shall be one fold, and one shepherd" (John 10:16).`],
+            ["Paul", `"no more strangers and foreigners, but fellowcitizens with the saints" (Ephesians 2:19).`],
+          ],
+        },
+      ],
+      closing: `And the city John saw at the end has "the names of the twelve tribes of the children of Israel" on its gates and "the names of the twelve apostles of the Lamb" on its foundations (Revelation 21:12, 14). One city, one people.`,
+      torah: ["Exodus 12:49", "Numbers 15:15-16"],
+      witness: ["Isaiah 56:6-7", "Ezekiel 47:22-23", "Romans 11:17-18", "Ephesians 2:12-19"],
+      turn: {
+        text: "But Christianity went another way. It cut the Book in two and handed each half to a different people.",
+        label: "The Departure: Rightly Divided",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 14",
+      title: "Rightly Divided",
+      subtitle: "Cut the Book in Half and Both Halves Bleed",
+      attribution: "You've been reading Scofield's notes and calling it Scripture.",
+      taught: [
+        `God has run history in separate ages, called dispensations, and each age has its own rules. Israel is God's earthly people, and Israel was under the Law. The church is God's heavenly people, and the church is under grace. The two are kept apart on purpose, so that what God says to one is set aside for the other. The Old Testament, the Sermon on the Mount, and much of the Gospels are "for the Jews." Paul's letters are "for us." The church age is a pause in God's plan for Israel. When the church is taken away, God goes back to dealing with Israel.`,
+        `Most Baptist, Bible, Pentecostal, and nondenominational churches in America learned this from the Scofield Bible and from the schools that taught it. The Catholic Church and the Reformed churches reject that system, but they carry their own knife. They teach that the church replaced Israel, and they cut the Law into three parts, moral, ceremonial, and civil, and keep only the first. Every branch cuts the Book somewhere.`,
+      ],
+      roots: [
+        `The system usually rests on one verse: Timothy was to be "rightly dividing the word of truth" (2 Timothy 2:15). The Greek word is <em>orthotomeō</em>, and it is a road word. It means to cut straight, the way a road-builder cuts a straight line across open ground, or a plowman cuts a straight furrow. Paul told Timothy to keep his path straight. He did not tell him to split the Book in two.`,
+        `The split came in the 1830s. John Nelson Darby, a leader of the Plymouth Brethren in Ireland and England, taught that Israel and the church are two peoples with two destinies, and he set history into dispensations. C. I. Scofield brought it to America. In 1909 his Scofield Reference Bible printed notes on the same page as the verses, marking where the divisions fall. Clarence Larkin drew the charts in 1918. In 1924 the school that became Dallas Theological Seminary opened and trained the pastors. Many readers have taken the notes for Scripture ever since. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "orthotomeo", greek: "Orthotomeō", kjv: "rightly dividing", role: "The root word", more: "Orthotomeō on Greek Influence",
+            verse: { ref: "2 Timothy 2:15", text: "Study to shew thyself approved unto God, a workman that needeth not to be ashamed, rightly dividing the word of truth." },
+            taught: [
+              `"Rightly dividing" means cutting the Bible into its proper sections and knowing which parts were written to whom. There is Israel's part and the church's part. A workman who is not ashamed knows that the Law and the kingdom sayings were not written to him. Many Bible schools call this the key verse of all Bible study.`,
+            ],
+            word: [
+              `*Orthotomeō* is a rare word. It is built from *orthos*, straight, and *temnō*, to cut. It pictures a straight cut: a road laid straight across the country, or a furrow plowed straight across a field. The Greek translation of Proverbs uses it twice for a straight path: "he shall direct thy paths" (Proverbs 3:6), and "the righteousness of the perfect shall direct his way" (Proverbs 11:5).`,
+              `This time the Greek did not carry in a pagan god. The trouble came in English. "Dividing" sounded like chopping. In 1888 Scofield published a booklet called *Rightly Dividing the Word of Truth* and used the verse to split the Book into ages and peoples. In 1921 Clarence Larkin published *Rightly Dividing the Word*. A road word became a butcher's word.`,
+            ],
+            hebrew: [
+              `*Yashar* means straight, upright, to make straight. "In all thy ways acknowledge him, and he shall direct thy paths" (Proverbs 3:6). Isaiah cried, "make straight in the desert a highway for our God" (Isaiah 40:3).`,
+              `A straight road does not cut the land in two. It runs from one end to the other without turning aside.`,
+            ],
+            reread: [`"A workman that needeth not to be ashamed, cutting straight the word of truth." Two verses later Paul names the crooked teachers, men whose "word will eat as doth a canker," who "concerning the truth have erred" (2 Timothy 2:17-18). Straight teaching against teaching that swerves. And to the same Timothy he wrote that "all scripture" is "profitable" (2 Timothy 3:16), the very Scriptures Timothy had known "from a child" (2 Timothy 3:15). That was the Law and the Prophets. Not one page was set aside.`],
+            timeline: [
+              ["About 250 BC on", `The Greek translation of Proverbs uses the word for Yahuah directing a straight path.`],
+              ["About 66 AD", `Paul tells Timothy to cut the word of truth straight.`],
+              ["1611", `The King James Version renders it "rightly dividing."`],
+              ["1888", `Scofield's booklet *Rightly Dividing the Word of Truth* makes the verse a slogan for splitting Scripture.`],
+              ["1921", `Clarence Larkin publishes *Rightly Dividing the Word*.`],
+            ],
+            built: [
+              `A verse about walking straight turned into permission to set Scripture aside.`,
+              `Maturity measured by how much of the Bible you know is "not for you."`,
+              `The Torah and the Sermon on the Mount skipped as written to someone else.`,
+            ],
+          },
+          {
+            id: "oikonomia", greek: "Oikonomia", kjv: "dispensation", role: "The root word", more: "Oikonomia on Greek Influence",
+            verse: { ref: "Ephesians 3:2", text: "If ye have heard of the dispensation of the grace of God which is given me to you-ward:" },
+            taught: [
+              `We live in the Dispensation of Grace, also called the Church Age. God deals with people in different ways in different ages. In the age of Law, Israel was under the commandments. In this age we are under grace, and the Law does not apply to us. Paul, the apostle to the Gentiles, is our teacher. The Gospels and the Law belong to the Jews.`,
+            ],
+            word: [
+              `*Oikonomia* comes from two words: *oikos*, a house, and *nomos*, a rule. It means running a household, the job of a steward who manages his master's house. About 360 BC the Greek writer Xenophon wrote a whole book on it, about managing a farm and its servants. Yahushua uses the word of the dishonest steward: "give an account of thy stewardship" (Luke 16:2).`,
+              `Later teachers turned this house word into something else. About 213, Tertullian used "the economy" to describe God arranged into three. In the 1830s, John Darby used "dispensations" for separate ages of history, each with its own terms. The Scofield Reference Bible of 1909 printed seven of them in its notes, and Clarence Larkin's charts of 1918 hung them on church walls.`,
+            ],
+            hebrew: [
+              `In Hebrew, the steward is the man set "over the house," like Joseph, whom his master "made ... overseer over his house" in Egypt (Genesis 39:4). The house is *bayit*. And Yahuah says of Moses: "My servant Moses is not so, who is faithful in all mine house" (Numbers 12:7).`,
+              `Hebrews quotes that verse and draws the line straight through: "Moses verily was faithful in all his house, as a servant ... But Messiah as a son over his own house; whose house are we" (Hebrews 3:5-6). One house. Moses served in it, the Son is over it, and we are it. A dispensation is not a new age with new rules. It is a job given to a servant in the one house: "a dispensation of the gospel is committed unto me," Paul says (1 Corinthians 9:17).`,
+            ],
+            reread: [`The way Paul meant it: you have heard of the job Yahuah gave me in His house, to carry His favor to you, the nations. Four verses later he says what that favor brings: "That the Gentiles should be fellowheirs, and of the same body, and partakers of his promise in Messiah by the gospel" (Ephesians 3:6). Same body. Same promise. And his other "dispensation," "the dispensation of the fulness of times," is so that Yahuah "might gather together in one all things" (Ephesians 1:10). Paul's dispensation gathers into one. Darby's dispensations divide.`],
+            timeline: [
+              ["About 360 BC", `Xenophon writes the *Oeconomicus*: *oikonomia* means running a household and its farm.`],
+              ["About 213", `Tertullian uses "the economy" to arrange God into three.`],
+              ["1830s", `John Darby divides history into separate dispensations with separate terms, and adds a secret rapture.`],
+              ["1909", `The Scofield Reference Bible prints seven dispensations in the notes, on the same page as the text.`],
+              ["1918", `Clarence Larkin's *Dispensational Truth* spreads the system in large charts.`],
+              ["Today", `The pulpit: "That's for the Jews. We're under grace."`],
+            ],
+            built: [
+              `Different terms in different ages: Law for them, grace for us, as if Yahuah changed His mind.`,
+              `The secret rapture: the church taken out of the way so that Yahuah can go back to dealing with Israel.`,
+              `Charts on the church wall that the apostles never drew.`,
+            ],
+          },
+          {
+            id: "ekklesia", greek: "Ekklēsia", kjv: "church", role: "The root word", more: "Ekklēsia on Greek Influence",
+            verse: { ref: "Matthew 16:18", text: "And I say also unto thee, That thou art Peter, and upon this rock I will build my church; and the gates of hell shall not prevail against it." },
+            taught: [
+              `Messiah said, "I will build my church": will, in the future. So the church was something new. It did not exist in the Old Testament. It began in Acts 2, on Shavuot, and it is a separate people from Israel. Israel has its own promises on earth, and the church has its own in heaven. Some teachers call the church age "the great parenthesis," a pause in God's plan for Israel.`,
+            ],
+            word: [
+              `In a Greek city, the *ekklēsia* was the town meeting: citizens called out of their homes to vote. The Bible itself uses the word that way for the crowd at Ephesus: "it shall be determined in a lawful assembly" (Acts 19:39).`,
+              `The English word "church" comes from a different Greek word, *kuriakon*, meaning "belonging to the lord." Tyndale translated *ekklēsia* as "congregation" in 1526, but the King James translators were told by rule to keep the old word "church." So English readers hear "church" and picture a building, or a new religion, not Israel.`,
+            ],
+            hebrew: [
+              `The Hebrew word beneath *ekklēsia* is *qahal*, the assembly of Israel, the people Yahuah called together. Stephen calls Israel at Sinai "the church in the wilderness" (Acts 7:38). Same word. The church was already there, gathered at the mountain.`,
+              `Hebrews proves it. It quotes David: "in the midst of the congregation will I praise thee" (Psalm 22:22). In the Greek, David's "congregation" comes out as "church": "in the midst of the church will I sing praise unto thee" (Hebrews 2:12). David's congregation and the church of the apostles are one and the same word.`,
+            ],
+            reread: [`The way Yahushua meant it: on this rock I will build My assembly, Yahuah's own congregation, gathered and built up again, and the gates of the grave will not hold it. His followers understood Him that way. At Jerusalem, when the nations began to come in, James quoted the prophets: Yahuah "will build again the tabernacle of David, which is fallen down" (Acts 15:16). Not a new people; the old house, rebuilt. Paul told believers from the nations that they had been "aliens from the commonwealth of Israel," but now were "fellowcitizens with the saints, and of the household of God" (Ephesians 2:12, 19).`],
+            timeline: [
+              ["About 500 BC", `In Athens, the *ekklēsia* is the city's voting assembly of citizens.`],
+              ["About 250 BC on", `The Greek translation of the Old Testament renders *qahal* as *ekklēsia*.`],
+              ["1526", `Tyndale translates *ekklēsia* as "congregation," not "church."`],
+              ["1611", `The King James translators keep the old church words: "church," not "congregation."`],
+              ["1830s", `John Darby teaches that the church is a heavenly people, separate from Israel, an earthly people.`],
+              ["1943", `H. A. Ironside's *The Great Parenthesis* calls the church age a break in God's plan for Israel.`],
+            ],
+            built: [
+              `Two peoples of God: Israel on earth, the church in heaven, each with its own promises.`,
+              `The Old Testament for someone else: the Torah and the prophets set aside as Israel's mail, not ours.`,
+              `A "church" with a birthday in Acts 2, cut off from the assembly at Sinai.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `Scripture never cut the Book in two. One law for the homeborn and the stranger. One olive tree, one root. Paul cut a straight path through the word of truth, and he told Timothy that the Scriptures he had known from a child were "able to make thee wise unto salvation" (2 Timothy 3:15). The Gentile who believes is grafted into Israel's tree. Delivered by the blood first, he then walks by the same commandments as the natural branches. And the city at the end has Israel's twelve tribes on its gates and the twelve apostles on its foundations (Revelation 21:12-14). One city, one people.`,
+    },
+  },
+  "15": {
+    oldPaths: {
+      kicker: "The Old Path · Imputed Righteousness",
+      title: "It Shall Be Our Righteousness",
+      subtitle: "He Credited Belief. He Still Expected Feet.",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `Moses told Israel what righteousness is: "it shall be our righteousness, if we observe to do all these commandments" (Deuteronomy 6:25). The psalmist said the same: "all thy commandments are righteousness" (Psalm 119:172). Ezekiel said a man's righteousness is his own: "the righteousness of the righteous shall be upon him" (Ezekiel 18:20). John put it in one line: "he that doeth righteousness is righteous" (1 John 3:7).`,
+            `The door comes first. Abraham "believed in Yahuah; and he counted it to him for righteousness" (Genesis 15:6). Two chapters later Yahuah told him what came next: "walk before me, and be thou perfect" (Genesis 17:1). When Yahuah tested him, Abraham "rose up early in the morning" and went to Moriah (Genesis 22:3). James shows the two together: "faith wrought with his works," and so "the scripture was fulfilled" (James 2:22-23). The counting opened the door. The walking was the road. And Ezekiel warns that a man who turns back from the road loses what he had: "All his righteousness that he hath done shall not be mentioned" (Ezekiel 18:24).`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `Israel came out of Egypt under the blood: "when I see the blood, I will pass over you" (Exodus 12:13). Only after that did they come to Sinai and receive the commandments. Deliverance first, then the walk. The order never changed.`,
+            `Generations later, Zacharias and Elisabeth were "both righteous before God, walking in all the commandments and ordinances" of Yahuah, "blameless" (Luke 1:6). Scripture called them righteous because of how they walked.`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Noah", `"a just man and perfect in his generations, and Noah walked with God" (Genesis 6:9).`],
+            ["Abraham", `"kept my charge, my commandments, my statutes, and my laws" (Genesis 26:5).`],
+            ["Moses", `"it shall be our righteousness, if we observe to do all these commandments" (Deuteronomy 6:25).`],
+            ["Ezekiel", `the just man "hath walked in my statutes ... he shall surely live" (Ezekiel 18:9).`],
+            ["Zacharias and Elisabeth", `"both righteous before God, walking in all the commandments" (Luke 1:6).`],
+            ["John", `"he that doeth righteousness is righteous, even as he is righteous" (1 John 3:7).`],
+          ],
+        },
+      ],
+      closing: `Revelation names the people who stand at the end: "here are they that keep the commandments of God, and the faith of Yahushua" (Revelation 14:12). Both, together.`,
+      torah: ["Genesis 15:6", "Genesis 17:1", "Deuteronomy 6:25"],
+      witness: ["Psalm 119:172", "Ezekiel 18:20", "1 John 3:7", "James 2:23"],
+      turn: {
+        text: "But Christianity went another way. It turned righteousness into a record swapped in heaven, and left the life on earth untouched.",
+        label: "The Departure: Imputed Righteousness",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 15",
+      title: "Imputed Righteousness",
+      subtitle: "A Record Swapped, a Life Untouched",
+      attribution: "You've been quoting a Roman courtroom and calling it Scripture.",
+      taught: [
+        `When God looks at you, He does not see you. He sees His Son. Messiah's perfect obedience has been placed on your record, and your sins on His. Nothing you do after that can add to your record or take from it. That is "imputed righteousness," and it is taught in Lutheran, Reformed, Baptist, Pentecostal, and nondenominational churches alike. "All our righteousnesses are as filthy rags" (Isaiah 64:6) is quoted to show that your own obedience is filthy, and Messiah's righteousness "covers" you so God no longer sees your sin.`,
+        `Rome rejected the bare swap. At the Council of Trent in 1547 it condemned anyone who says a man is justified by the imputation of Messiah's righteousness alone. But Rome put righteousness into the soul through its sacraments instead: poured in at baptism, lost by mortal sin, restored in the confessional, with the merits of Messiah and the saints kept in a treasury the church hands out. Protestant or Catholic, righteousness arrives as a transaction, a ledger entry or a sacrament.`,
+      ],
+      roots: [
+        `The Greeks pictured justice as a goddess, Dikē, a daughter of Zeus, and Rome worshipped her as Iustitia, the lady of the law courts. In that world "righteous" was a verdict: what the judge declared about you. Greek clerks used <em>logizomai</em> for entering a sum on an account, and Greek worshippers used <em>hilaskomai</em> for soothing an angry god with an offering.`,
+        `The Reformers built on the courtroom. Martin Luther preached an "alien righteousness," one that comes from outside us. His co-worker Philip Melanchthon wrote in 1531 that "to justify" means to pronounce a man righteous "in a forensic way," as a judge does. The Hebrew word had always meant righteousness done: "it shall be our righteousness, if we observe to do all these commandments" (Deuteronomy 6:25). Three Greek words carried the courtroom in. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "dikaiosyne", greek: "Dikaiosynē / Dikē", kjv: "righteousness", role: "The root word", more: "Dikaiosynē / Dikē on Greek Influence",
+            verse: { ref: "Matthew 5:20", text: "For I say unto you, That except your righteousness shall exceed the righteousness of the scribes and Pharisees, ye shall in no case enter into the kingdom of heaven." },
+            taught: [
+              `Nobody was more careful than the Pharisees. So Yahushua was showing that no one can ever be good enough. The only righteousness that gets you in is His righteousness, put on your account. You could never earn it, so you must receive it. Your own goodness has nothing to do with it.`,
+            ],
+            word: [
+              `The Greek copy uses *dikaiosynē*, built on *dikē*. Dikē was a goddess: Justice, a daughter of Zeus, who saw that the guilty were punished. When Paul was bitten by a snake on Malta, the islanders said, "vengeance suffereth not to live" (Acts 28:4). The word for vengeance there is *dikē*. Rome worshipped her as Iustitia, the lady of the law courts.`,
+              `In that world, being righteous was a verdict: what the judge declared about you. Read that way, righteousness becomes a legal status written on a record.`,
+            ],
+            hebrew: [
+              `Yahushua spoke Hebrew, and His word was *tsedaqah*, righteousness done. Moses defined it for Israel: "And it shall be our righteousness, if we observe to do all these commandments before Yahuah our God, as he hath commanded us" (Deuteronomy 6:25). In Hebrew, the righteous man is the one who does right. Ezekiel describes him: "if a man be just, and do that which is lawful and right ... Hath walked in my statutes, and hath kept my judgments, to deal truly; he is just, he shall surely live" (Ezekiel 18:5, 9). Righteousness is not a verdict filed away. It is a way of walking.`,
+              `Isaiah used the same word when he said "all our righteousnesses are as filthy rags" (Isaiah 64:6). Read the verse before it: Yahuah "meetest him that rejoiceth and worketh righteousness" (Isaiah 64:5). And the verse after: "there is none that calleth upon thy name" (Isaiah 64:7). Isaiah was confessing for a nation in rebellion. The rags were a rebel nation's worship, not a faithful man's obedience.`,
+            ],
+            reread: [`Now read it the way Yahushua meant it: "Unless your doing of right goes deeper than the scribes and Pharisees, from the heart all the way through, you will not enter the kingdom." He said so one verse earlier: "whosoever shall do and teach them, the same shall be called great in the kingdom of heaven" (Matthew 5:19). Then, for the rest of the chapter, He shows what deeper looks like: not only no murder, but no hatred; not only no adultery, but no lust. He was not saying the commandments are impossible. He was telling those who follow Him to keep them from the heart.`],
+            timeline: [
+              ["About 700 BC", `Hesiod names Dikē, Justice, as a daughter of Zeus.`],
+              ["About 60 AD", `On Malta the islanders see Paul bitten and say Dikē will not let him live (Acts 28:4).`],
+              ["About 1519", `Luther preaches an "alien righteousness," one that comes from outside us, not our own.`],
+              ["1559", `Calvin's final *Institutes*: justification is the forgiving of sins and the imputing of Messiah's righteousness.`],
+              ["Today", `The pulpit: "When God looks at you, He sees His Son."`],
+            ],
+            built: [
+              `A verdict on a record: righteousness filed away in heaven instead of walked out on earth.`,
+              `Obedience as filthy rags: the commandments treated as a danger to the believer instead of his path.`,
+              `The Sermon on the Mount read as impossible, so no one tries to keep it.`,
+            ],
+          },
+          {
+            id: "logizomai", greek: "Logizomai", kjv: "impute", role: "The root word", more: "Logizomai on Greek Influence",
+            verse: { ref: "Romans 4:3", text: "For what saith the scripture? Abraham believed God, and it was counted unto him for righteousness." },
+            taught: [
+              `Abraham did nothing. He just believed, and God credited righteousness to his account. That is how it works for us too. God moves Messiah's righteousness into our account, like a deposit. Works have nothing to do with it, before or after you believe. Abraham is the proof.`,
+            ],
+            word: [
+              `*Logizomai* is a plain word. It means to count, to reckon, to weigh something up. Greek merchants used it for entries in an account book. The Latin Bible put it into Latin with *reputare* and *imputare*, an accountant's words for posting a charge or a credit to someone's account.`,
+              `The Reformers built on that ledger picture. Righteousness became a sum moved from one account to another. The word did not demand that reading; the account book did.`,
+            ],
+            hebrew: [
+              `But Paul is quoting Moses, and Moses wrote in Hebrew: "And he believed in Yahuah; and he counted it to him for righteousness" (Genesis 15:6). "Believed" is *aman*, the root of *emunah*: to stand firm, to lean your full weight on someone. "Counted" is *chashav*: to think, to weigh, to judge what something is worth.`,
+              `Look at how the same Hebrew is used of Phinehas. He stood up and acted, and the plague stopped. "And that was counted unto him for righteousness unto all generations for evermore" (Psalm 106:31). Nothing was moved from someone else's account. Yahuah weighed what the man did and called it right. Abraham's trust was the same kind, real and proven: "Abraham obeyed my voice, and kept my charge, my commandments, my statutes, and my laws" (Genesis 26:5).`,
+            ],
+            reread: [`Now read it the way Paul meant it: "Abraham trusted Yahuah, and Yahuah weighed that trust and counted it as right, the first step of a walk." Paul says what the counting is a few verses on, quoting David: "Blessed are they whose iniquities are forgiven, and whose sins are covered" (Romans 4:7). Counted righteousness is a debt forgiven, not a borrowed life. And Abraham is the father of those "who also walk in the steps of that faith of our father Abraham" (Romans 4:12). James quotes the very same verse and draws the same line: "Seest thou how faith wrought with his works, and by works was faith made perfect?" (James 2:22).`],
+            timeline: [
+              ["Abraham's day", `He trusts, and he walks: "kept my charge, my commandments" (Genesis 26:5).`],
+              ["About 400 AD", `The Latin Bible puts Paul's "counted" into accountant's Latin, *reputare* and *imputare*.`],
+              ["1531", `Melanchthon calls justification a courtroom word: righteousness declared, not lived.`],
+              ["1547", `The Council of Trent curses anyone who says a man is justified by belief alone, and anyone who says he is justified by the imputation of Messiah's righteousness alone. Rome and the Reformers now curse each other.`],
+              ["1646", `The Westminster Confession: God justifies by "imputing the obedience and satisfaction" of Messiah to believers.`],
+              ["Today", `The pulpit: "It's credited to your account. You don't have to do anything."`],
+            ],
+            built: [
+              `A swapped record: the books say "righteous" while the life stays untouched.`,
+              `Abraham without Moriah: Genesis 15 preached, and Genesis 22 and 26 left out.`,
+              `Keeping the commandments called legalism, as if walking them were a threat to the record.`,
+            ],
+          },
+          {
+            id: "hilasmos", greek: "Hilasmos / Hilastērion", kjv: "propitiation", role: "The root word", more: "Hilasmos / Hilastērion on Greek Influence",
+            verse: { ref: "Romans 3:25", text: "Whom God hath set forth to be a propitiation through faith in his blood, to declare his righteousness for the remission of sins that are past, through the forbearance of God;" },
+            taught: [
+              `God was angry at sin, and His anger had to land on someone. So the Son took the full wrath of God on the cross, and God's anger was satisfied. Now Messiah's righteousness covers you like a blanket, so when God looks down He no longer sees your sin. That is what "propitiation" means: the Son calmed an angry Father. Catholic teaching speaks of the satisfaction owed to God's justice; Protestant teaching calls it penal substitution.`,
+            ],
+            word: [
+              `The Greek copy uses *hilastērion* here, and its close kin *hilasmos* in 1 John 2:2. The verb behind them, *hilaskomai*, was what the Greeks did to calm an angry god. In Homer's *Iliad*, the Greeks send a great sacrifice so they may "appease" Apollo, who is shooting plague into their camp.`,
+              `Man brings the gift, and the god calms down. Read through that picture, the cross becomes the Son calming an angry Father.`,
+            ],
+            hebrew: [
+              `But the Greek copy of Hebrews uses this same word for the lid of the ark: "the cherubims of glory shadowing the mercyseat" (Hebrews 9:5). Beneath it is the Hebrew *kapporet*, the mercy seat, from *kaphar*, to cover. Yahuah told Moses what it was for: "And there I will meet with thee, and I will commune with thee from above the mercy seat" (Exodus 25:22).`,
+              `Look at what the lid sat on: "in the ark thou shalt put the testimony" (Exodus 25:21), the tablets of the Law. The blood went on the mercy seat (Leviticus 16:14), and the Law stayed inside the ark beneath it. Mercy rested on top of the commandments; it did not remove them. And notice who provides it. Yahuah designed the mercy seat. Yahuah gave the blood: "For the life of the flesh is in the blood: and I have given it to you upon the altar to make an atonement for your souls" (Leviticus 17:11). In the Greek picture, man brings a gift to calm the god. In the Hebrew, Yahuah Himself gives the covering, so that He can meet with His people.`,
+            ],
+            reread: [`Now read it the way Paul meant it: "Yahuah set Him out in the open as the mercy seat, the place of covering, where, through trust in His blood, the sins already done are covered and forgiven." Yahuah "set forth" the covering, because "he loved us, and sent his Son to be the propitiation for our sins" (1 John 4:10). The covering does not blind Him: "all things are naked and opened unto the eyes of him with whom we have to do" (Hebrews 4:13). It covers "sins that are past," and the blood keeps cleansing those who walk: "if we walk in the light ... the blood of Yahushua Messiah his Son cleanseth us from all sin" (1 John 1:7). Then Paul answers the next question himself: "Do we then make void the law through faith? God forbid: yea, we establish the law" (Romans 3:31).`],
+            timeline: [
+              ["About 750 BC", `Homer: the Greeks send sacrifices to "appease" an angry Apollo (*Iliad*, book 1).`],
+              ["About 250 BC", `The Greek Torah names the ark's lid *hilastērion*.`],
+              ["1098", `Anselm teaches that the cross repaid the honor owed to an offended God.`],
+              ["1559", `Calvin teaches that the Son bore the Father's wrath in the sinner's place.`],
+              ["1611", `The King James Version writes "mercyseat" in Hebrews 9:5 but "propitiation" in Romans 3:25, though the Greek word is the same.`],
+              ["2001", `A popular hymn sings that at the cross the wrath of God was satisfied.`],
+            ],
+            built: [
+              `An angry Father and a gentle Son, set against each other, as if the Son had to talk the Father out of His anger. Scripture says Yahuah Himself "set forth" the covering.`,
+              `Sin hidden under a blanket so God "doesn't see it," instead of forgiven and left behind.`,
+              `Wrath settled, walk optional: if the anger is gone for good, nothing after the door seems to matter.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `The old path is Abraham's. He believed Yahuah, and it was counted to him for righteousness. Two chapters later Yahuah told him what came next: "walk before me, and be thou perfect" (Genesis 17:1). The counting opened the door; the walking was the road. Moses said the same to all Israel: "it shall be our righteousness, if we observe to do all these commandments" (Deuteronomy 6:25). Righteousness is not a certificate passed from one hand to another. It is worn by the people who walk it out. Revelation shows the bride dressed for her wedding and says what her clothes are made of: "And to her was granted that she should be arrayed in fine linen, clean and white: for the fine linen is the righteousness of saints" (Revelation 19:8). In Greek the word is plural: the righteous acts of the saints.`,
+    },
+  },
+  "16": {
+    oldPaths: {
+      kicker: "The Old Path · Lucifer",
+      title: "A Proverb Against the King of Babylon",
+      subtitle: "Isaiah Named the Man",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `Isaiah tells you who the chapter is about before he says a word about him. "Thou shalt take up this proverb against the king of Babylon" (Isaiah 14:4). The proverb is a taunt song, sung over a tyrant who has fallen. The king is dead. His "pomp is brought down to the grave," and "the worm is spread under thee, and the worms cover thee" (Isaiah 14:11). Worms do not eat angels. Those who look at his body ask, "Is this the man that made the earth to tremble?" (Isaiah 14:16).`,
+            `This king had boasted, "I will ascend into heaven, I will exalt my throne above the stars of God" (Isaiah 14:13). He gave himself a shining title: <em>heylel</em>, "shining one, son of the dawn" (Isaiah 14:12). It was a stolen title. The morning star belongs to Yahushua: "I am the root and the offspring of David, and the bright and morning star" (Revelation 22:16). The morning star makes no light of its own. It carries the light of the coming day. So the Son carries the light of His Father.`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `The prophets spoke this way about proud kings more than once. Ezekiel was sent to the prince of Tyrus, who said, "I am a God." The answer came back: "yet thou art a man, and not God" (Ezekiel 28:2). Nebuchadnezzar looked over his city and said, "Is not this great Babylon, that I have built?" He was driven out to eat grass like an ox, until he knew "that the most High ruleth" (Daniel 4:30, 32).`,
+            `Scripture names the enemy by what he does, never by a title of light. In the garden he is the serpent, "more subtil than any beast of the field" (Genesis 3:1). <em>Satan</em> means adversary. Moses even used the word for Yahuah's own messenger, who "stood in the way for an adversary against" Balaam (Numbers 22:22). It is the name of a work, not a shining name.`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Moses", `the enemy named by his craft, the serpent "more subtil than any beast of the field" (Genesis 3:1).`],
+            ["Isaiah", `the proud king in his grave: "Is this the man?" (Isaiah 14:16).`],
+            ["Ezekiel", `to the ruler of Tyrus: "thou art a man, and not God" (Ezekiel 28:2).`],
+            ["Daniel", `Babylon's boaster humbled "until thou know that the most High ruleth" (Daniel 4:32).`],
+            ["Peter", `the true "day star" rising "in your hearts" (2 Peter 1:19).`],
+            ["John", `Yahushua, "the bright and morning star" (Revelation 22:16).`],
+          ],
+        },
+      ],
+      closing: `At the very end, the true morning star speaks for Himself: "I Yahushua have sent mine angel to testify unto you these things ... I am the root and the offspring of David, and the bright and morning star" (Revelation 22:16). No one else holds the title.`,
+      torah: ["Genesis 3:1", "Numbers 22:22"],
+      witness: ["Isaiah 14:4, 11, 13, 16", "Ezekiel 28:2", "2 Peter 1:19", "Revelation 22:16"],
+      turn: {
+        text: "But Christianity went another way. It took the king's stolen title, made it the name of a fallen angel, and gave him a life story Isaiah never wrote.",
+        label: "The Departure: Lucifer",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 16",
+      title: "Lucifer",
+      subtitle: "The Fallen Angel Hollywood Built — and Isaiah Never Wrote",
+      attribution: "You've been quoting Jerome and Milton and calling it Scripture.",
+      taught: [
+        `Most Christians learned the story as children. Lucifer was the highest angel in heaven, the most beautiful of all, the covering cherub who led heaven's worship with music built into his body. He grew proud and said, "I will be like the most High." He led a third of the angels in revolt, was thrown down, and became Satan. Isaiah 14 and Ezekiel 28 are read as his life story.`,
+        `Catholic tradition calls him Lucifer, the prince of the angels who fell through pride and was cast down by Michael. Baptist, Pentecostal, and nondenominational preachers tell the same story, often in more detail: Lucifer was heaven's worship leader, which is why, they say, the devil goes after church music. Films, novels, and costumes finish the picture: a beautiful angel turned red, horned, and winged.`,
+      ],
+      roots: [
+        `Isaiah wrote <em>heylel</em>, "shining one," a boast the king of Babylon made for himself. The Greek translators wrote <em>heōsphoros</em>, "dawn-bringer," the name of the morning star. In Greek myth that star was a god, the son of Eos, the goddess of the dawn. Jerome's Latin Bible, finished about 405, wrote <em>lucifer</em>, "light-bearer," and the Latin word stuck as a name.`,
+        `After that, the story grew by addition. Origen had already read Isaiah 14 as the devil's fall. Milton's <em>Paradise Lost</em> (1667) gave Lucifer a voice, a rebellion, and a war in heaven. Greek serpent-monsters, star-gods who ruled the world, and winged messengers filled in the rest. Four Greek words carried that world into the church. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "phosphoros", greek: "Phōsphoros · Heōsphoros", kjv: "day star · Lucifer", role: "The root word", more: "Phōsphoros · Heōsphoros on Greek Influence",
+            verse: { ref: "Isaiah 14:12", text: "How art thou fallen from heaven, O Lucifer, son of the morning! how art thou cut down to the ground, which didst weaken the nations!" },
+            taught: [
+              `This verse is the fall of an angel, not a man. Lucifer, "son of the morning," was heaven's worship leader, a covering cherub who wanted the throne of God. His words in the next verse, "I will ascend into heaven," are read as an angel's rebellion before the world began. From here the church took the name it still uses for the devil.`,
+            ],
+            word: [
+              `In Hesiod's poem of the gods, the Dawn goddess Eos bears "the star Eosphoros," the morning star. The Greeks also called that star *phōsphoros*, "light-bringer," a title they gave as well to torch-carrying goddesses like Hecate and Artemis.`,
+              `When the Greek translators reached Isaiah 14:12, they put *heōsphoros* for the Hebrew *heylel*. Jerome, finishing his Latin Bible about 405, wrote *lucifer*, the Latin name of the same star. He also wrote *lucifer* at 2 Peter 1:19, where Peter speaks of the "day star" rising in believers' hearts. In Jerome's Latin, one word named both the king of Babylon and the light of Messiah in the heart.`,
+              `The King James translators kept "Lucifer" as a proper name in Isaiah and wrote "day star" in Peter. English readers lost the link. The title was handed to the adversary and hidden from the Son.`,
+            ],
+            hebrew: [
+              `*Heylel* comes from *halal*, to shine. The same letters spell "to boast." "Son of the dawn," *ben shachar*, is a title the king gave himself. Isaiah never leaves the subject he named in verse 4, the king of Babylon. Verse 15 sends him down "to hell, to the sides of the pit": *Sheol*, the grave. Verse 16 calls him "the man." Verse 20 says, "Thou shalt not be joined with them in burial." Angels are not buried.`,
+            ],
+            reread: [`"How art thou fallen from heaven, O shining one, son of the dawn! how art thou cut down to the ground, which didst weaken the nations!" A king who crushed nations, cut down to the ground, laid in the grave with worms for his covering (Isaiah 14:11). A man who named himself a star. His boast died with him. The true light-bearer is the Son, who rose from the grave and still carries His Father's light.`],
+            timeline: [
+              ["About 250 BC on", `The Greek translation of the Old Testament puts *heōsphoros*, the morning-star god's name, in Isaiah 14:12.`],
+              ["About 230 AD", `Origen reads Isaiah 14 as the fall of the devil.`],
+              ["About 405", `Jerome's Latin Bible writes *lucifer* in Isaiah 14:12 and in 2 Peter 1:19.`],
+              ["1611", `The King James Version keeps "Lucifer" in Isaiah and writes "day star" in 2 Peter.`],
+              ["1667", `Milton's *Paradise Lost* gives the fallen angel his character and his war.`],
+              ["Today", `The story is preached as if Isaiah wrote it.`],
+            ],
+            built: [
+              `"Lucifer" as a personal name for the devil, a name Scripture never gives him.`,
+              `A worship-leader angel's life story, assembled from Isaiah 14, Ezekiel 28, and Milton.`,
+              `The Son's light-bearer title (2 Peter 1:19) handed to the adversary.`,
+            ],
+          },
+          {
+            id: "drakon", greek: "Drakōn", kjv: "dragon", role: "The root word", more: "Drakōn on Greek Influence",
+            verse: { ref: "Revelation 12:3-4", text: "And there appeared another wonder in heaven; and behold a great red dragon, having seven heads and ten horns, and seven crowns upon his heads. And his tail drew the third part of the stars of heaven, and did cast them to the earth: and the dragon stood before the woman which was ready to be delivered, for to devour her child as soon as it was born." },
+            taught: [
+              `Satan is a great red dragon. Before the world began, he led a rebellion in heaven, and his tail swept a third of the angels, the "stars," down with him. Those fallen angels are the demons of today. This verse is the main proof for the whole story. In church windows and paintings, Michael or Saint George stands over a winged dragon with a spear.`,
+            ],
+            word: [
+              `To the Greeks a *drakōn* was a great serpent, a monster that guarded sacred places. Greek hymns of about 600 BC tell how Apollo killed the serpent at Delphi, later called Python, and took the shrine for himself. Hesiod tells of a serpent guarding the golden apples at the edge of the world; later writers named him Ladon.`,
+              `The Greek translators used *drakōn* for the Hebrew *tannin*. Later Christian art joined the two. The dragon of the prophets became the dragon of Greek myth, with wings, claws, and fire, and the devil was drawn that way for a thousand years.`,
+            ],
+            hebrew: [
+              `*Tannin* is the prophets' picture of an empire and its king. Pharaoh is "the great dragon that lieth in the midst of his rivers" (Ezekiel 29:3). Nebuchadnezzar "swallowed me up like a dragon" (Jeremiah 51:34). Egypt is the dragon Yahuah wounded (Isaiah 51:9).`,
+              `John's dragon has "seven heads and ten horns." The angel explains the heads as mountains and kings, and the horns as "ten kings" (Revelation 17:9-12). Daniel's beasts are read the same way: "These great beasts ... are four kings" (Daniel 7:17).`,
+              `The falling stars come straight from Daniel, where an earthly horn "waxed great, even to the host of heaven; and it cast down some of the host and of the stars to the ground, and stamped upon them" (Daniel 8:10). In Daniel the stars are Yahuah's people: "they that turn many to righteousness as the stars for ever and ever" (Daniel 12:3).`,
+            ],
+            reread: [`John calls the dragon a "wonder." The Greek word is *sēmeion*, a sign, a picture to be read. A beast-power wearing the crowns of kingdoms threw down some of Yahuah's people, and stood before the woman "for to devour her child as soon as it was born" (Revelation 12:4). That is what Herod, Rome's king over Judea, tried at Bethlehem (Matthew 2:16). John names the power behind it: "that old serpent, called the Devil, and Satan" (Revelation 12:9). Serpent, slanderer, adversary. The one place Scripture lists his names, Lucifer is not among them.`],
+            timeline: [
+              ["About 700 BC", `Hesiod tells of the serpent guarding the golden apples.`],
+              ["About 600 BC", `Greek hymns tell of Apollo killing the serpent at Delphi.`],
+              ["About 250 BC on", `The Greek translators put *drakōn* for *tannin*, as at Ezekiel 29:3.`],
+              ["About 95 AD", `John sees a dragon with seven heads and ten horns, kingdoms in the prophets' language.`],
+              ["About 1260", `The *Golden Legend* spreads the story of Saint George and the dragon across Europe.`],
+              ["Today", `The devil is drawn as a winged dragon, and Revelation is read as a monster story.`],
+            ],
+            built: [
+              `A literal winged dragon-devil in place of the prophets' picture of beastly kingdoms.`,
+              `Prophecy read as a monster tale instead of a history of empires.`,
+              `Saint-and-dragon art in church windows and on church walls.`,
+            ],
+          },
+          {
+            id: "kosmokrator", greek: "Kosmokratōr", kjv: "rulers of the darkness", role: "The root word", more: "Kosmokratōr on Greek Influence",
+            verse: { ref: "Ephesians 6:12", text: "For we wrestle not against flesh and blood, but against principalities, against powers, against the rulers of the darkness of this world, against spiritual wickedness in high places." },
+            taught: [
+              `Every city, nation, and region has a ruling demon over it. Believers must learn its name, map its territory, and bind it in prayer before revival can come. Prayer walks and "spiritual mapping" are built on this verse. Lucifer is pictured at the top, a general over a chain of command of fallen angels.`,
+            ],
+            word: [
+              `*Kosmokratōr* means "world-ruler." In Greek astrology it was a name for the planets, which were thought to rule the fate of men below. The astrologer Vettius Valens, about 150 AD, uses it that way.`,
+              `In the magic spells of the Roman world, written on papyrus, gods were called on by the same title: Helios the sun, Hermes, and Serapis. The magician's aim was to name the power and so control it. Paul used the word once. To his readers it named the powers people feared were running the world.`,
+            ],
+            hebrew: [
+              `Daniel saw that nations have princes behind them: "the prince of the kingdom of Persia" (Daniel 10:13), "the prince of Grecia" (Daniel 10:20). But Daniel did not map them, name them, or bind them. He fasted and prayed, and he was heard "from the first day" (Daniel 10:12).`,
+              `The armor Paul lists is Yahuah's own armor from Isaiah: "he put on righteousness as a breastplate, and an helmet of salvation upon his head" (Isaiah 59:17). Paul picks up the same pieces: "the breastplate of righteousness ... the helmet of salvation" (Ephesians 6:14, 17).`,
+            ],
+            reread: [`Paul's answer to the world-rulers is "the whole armour of God ... and having done all, to stand" (Ephesians 6:13): truth, righteousness, the good news of peace, belief, and the word. A life walked in Yahuah's ways, not a map of demons. The ruler of this world was already "cast out" at the cross (John 12:31). "Submit yourselves therefore to God. Resist the devil, and he will flee from you" (James 4:7).`],
+            timeline: [
+              ["About 60 AD", `Paul uses *kosmokratōr* once, in Ephesians 6:12.`],
+              ["About 150 AD", `Vettius Valens calls a planet *kosmokratōr*.`],
+              ["200s–300s AD", `Magic papyri call on Helios, Hermes, and Serapis as *kosmokratōr*.`],
+              ["1990s", `"Territorial spirits" and "spiritual mapping" spread through charismatic churches.`],
+              ["Today", `Prayer teams walk city streets to bind the spirit said to rule over them.`],
+            ],
+            built: [
+              `Territorial spirits over cities, mapped and bound by name.`,
+              `Prayer turned into a battle plan against named demons.`,
+              `The devil as a general with a chain of command, in place of an adversary already judged at the cross.`,
+            ],
+          },
+          {
+            id: "angelos", greek: "Angelos", kjv: "angel", role: "The root word", more: "Angelos on Greek Influence",
+            verse: { ref: "Hebrews 1:7", text: "And of the angels he saith, Who maketh his angels spirits, and his ministers a flame of fire." },
+            taught: [
+              `Angels are shining spirit beings with great white wings, made of fire and light, and Lucifer was the highest of them. Ezekiel 28 is read as his story: "the anointed cherub" who walked "in Eden the garden of God," with "tabrets" and "pipes" made in him from the day he was created, a musician from the start. And when good people die, many are told they become angels and "get their wings."`,
+            ],
+            word: [
+              `*Angelos* simply means messenger: a man carrying a letter, or a herald sent by a king. Greek art gave the messengers of the gods wings. Hermes wore winged sandals and a winged cap. Nike, Victory, had wings on her back, and so did Eros.`,
+              `The first believers drew angels as plain men. Gabriel, painted in a Roman catacomb in the 200s, has no wings. By about 400, winged figures appear in Rome's church mosaics, and by the 430s winged angels stand around the throne in the mosaics of Santa Maria Maggiore, shaped much like the winged Victories of Roman art.`,
+            ],
+            hebrew: [
+              `Hebrews is quoting a psalm: "Who maketh his angels spirits; his ministers a flaming fire" (Psalm 104:4). The verse just before says Yahuah "maketh the clouds his chariot: who walketh upon the wings of the wind" (Psalm 104:3). The only wings in the passage belong to the wind. The word for angels is *malak*, messenger. The word for spirits is *ruach*, wind. David is saying Yahuah sends the winds as His messengers and flames of fire as His servants.`,
+              `When His messengers came to men, they came looking like men. The three who came to Abraham were "three men" (Genesis 18:2). Two of them came to Sodom as "two angels" (Genesis 19:1), and the men of the city called them "the men" (Genesis 19:5). Prophets were called *malak* too: "Haggai Yahuah's messenger" (Haggai 1:13). In Scripture the beings with wings are seraphim and cherubim (Isaiah 6:2; Ezekiel 10:5), not the messengers sent to men.`,
+              `Ezekiel's "anointed cherub" lament was taken up "upon the king of Tyrus" (Ezekiel 28:12), a man grown rich by "merchandise" (Ezekiel 28:16), who would "die the deaths of the uncircumcised" (Ezekiel 28:10). Angels are not circumcised or uncircumcised. Scripture never calls Lucifer an angel.`,
+            ],
+            reread: [`"He makes the winds His messengers, and flames of fire His servants." The same chapter says what messengers are for: "Are they not all ministering spirits, sent forth to minister for them who shall be heirs of salvation?" (Hebrews 1:14). Servants on errands, who could pass for men: "some have entertained angels unawares" (Hebrews 13:2). No one misses a pair of wings at the dinner table. And the cherub of Ezekiel 28 is a king's pride dressed in Eden's language. The king was a man.`],
+            timeline: [
+              ["200s AD", `A Roman catacomb painting shows Gabriel as a man without wings.`],
+              ["About 400", `Winged figures appear in Rome's church mosaics.`],
+              ["430s", `Winged angels surround the throne in the mosaics of Santa Maria Maggiore.`],
+              ["1667", `Milton's *Paradise Lost* sets Lucifer at the head of rebel angels at war.`],
+              ["1946", `*It's a Wonderful Life*: "Every time a bell rings, an angel gets his wings."`],
+              ["Today", `Funeral cards say the departed "got their wings."`],
+            ],
+            built: [
+              `Winged angels, with Lucifer as their fallen chief.`,
+              `The dead "getting their wings," when Scripture says they sleep until the resurrection.`,
+              `A cherub's life story taken from a lament over a merchant king.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `Scripture never needed Lucifer. Isaiah named the man: the king of Babylon, dead, covered with worms, mocked by those who saw him. Ezekiel named the man: the ruler of Tyrus, "a man, and not God." The enemy is named by his works, serpent, adversary, slanderer, and he goes about "transformed into an angel of light" (2 Corinthians 11:14), wearing a light that is not his. The light-bearer's title belongs to the Son, who carries His Father's light. Peter promised that "the day star" would "arise in your hearts" (2 Peter 1:19). And at the end the Son says it Himself: "I am the root and the offspring of David, and the bright and morning star" (Revelation 22:16).`,
+    },
+  },
+  "17": {
+    oldPaths: {
+      kicker: "The Old Path · Predestination",
+      title: "Choose Life",
+      subtitle: "The Choice Was Always Yours",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `Moses set two roads before Israel and told them to pick one. "I have set before you life and death, blessing and cursing: therefore choose life" (Deuteronomy 30:19). A choice settled before birth would not be a choice. Yahuah takes no pleasure in anyone's death: "Have I any pleasure at all that the wicked should die? ... and not that he should return from his ways, and live?" (Ezekiel 18:23). "Wherefore turn yourselves, and live ye" (Ezekiel 18:32). Peter says the same. He is "not willing that any should perish" (2 Peter 3:9).`,
+            `And the road can be left. "Whosoever hath sinned against me, him will I blot out of my book" (Exodus 32:33). When the righteous man turns away to do evil, "in his sin that he hath sinned, in them shall he die" (Ezekiel 18:24). Yahuah knows "the end from the beginning" (Isaiah 46:10). But knowing is not forcing.`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `In Egypt the blood came first. "When I see the blood, I will pass over you" (Exodus 12:13). Then came the bread without leaven, and then the walk out of Egypt toward Sinai. Paul gives believers the same order: "Messiah our passover is sacrificed for us: Therefore let us keep the feast ... with the unleavened bread of sincerity and truth" (1 Corinthians 5:7-8). Entry by the blood; the walk by the bread.`,
+            `Not everyone who left Egypt reached the land. The whole nation came out under the blood, yet "with many of them God was not well pleased: for they were overthrown in the wilderness" (1 Corinthians 10:5). At the end of the road, Joshua still put the choice to Israel: "choose you this day whom ye will serve" (Joshua 24:15).`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Moses", `"therefore choose life, that both thou and thy seed may live" (Deuteronomy 30:19).`],
+            ["Joshua", `"choose you this day whom ye will serve" (Joshua 24:15).`],
+            ["Elijah", `"How long halt ye between two opinions?" (1 Kings 18:21).`],
+            ["Ezekiel", `"turn yourselves, and live ye" (Ezekiel 18:32).`],
+            ["Yahushua", `"he that shall endure unto the end, the same shall be saved" (Matthew 24:13).`],
+            ["Paul", `"lest that by any means, when I have preached to others, I myself should be a castaway" (1 Corinthians 9:27).`],
+          ],
+        },
+      ],
+      closing: `At the very end, the book is still open, and names can still be kept or lost. "He that overcometh, the same shall be clothed in white raiment; and I will not blot out his name out of the book of life" (Revelation 3:5).`,
+      torah: ["Deuteronomy 30:19", "Exodus 32:33", "Exodus 12:13"],
+      witness: ["Ezekiel 18:23, 24, 32", "2 Peter 3:9", "Matthew 24:13", "Revelation 3:5"],
+      turn: {
+        text: "But Christianity went another way. It taught that every man's end was fixed before he was born, and that a man once saved can never be lost.",
+        label: "The Departure: Predestination",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 17",
+      title: "Predestination",
+      subtitle: "Most Deny It by Name — and Live It Every Sunday",
+      attribution: "You've been quoting Augustine and Calvin and calling it Scripture.",
+      taught: [
+        `Reformed and Presbyterian churches teach it openly. Before the world was made, God chose some people for eternal life and passed over the rest. Nothing the chosen do can undo it, and nothing the others do can change it. The Westminster Confession (1646) says God "freely, and unchangeably" ordained "whatsoever comes to pass." Calvin called it God's "eternal decree."`,
+        `Most churchgoers say they do not believe this. Yet many Baptist and nondenominational churches teach its working form: once saved, always saved. Pray the prayer once, and the walk after it decides nothing. Catholic teaching, following Thomas Aquinas, also holds that God chose the elect for glory from all eternity, while denying that He sends anyone to hell by decree. Methodists and most Pentecostals reject the doctrine by name, but in pew after pew the same idea lives on: the blood without the walk.`,
+      ],
+      roots: [
+        `The Stoics, Greek philosophers from about 300 BC, taught that everything happens by fate, <em>heimarmenē</em>: an unbroken chain of causes that nothing can change. They called the same power <em>pronoia</em>, providence. The Roman Stoic Seneca put their creed in one line: "The fates lead the willing, and drag the unwilling."`,
+        `Augustine, bishop of Hippo in North Africa, had once defended man's free choice. Late in life, arguing against Pelagius, he taught that God had fixed the number of the saved so firmly that none could be added or taken away. Calvin built on Augustine, and the Synod of Dort sealed it. Two Greek words carried Stoic fate into the church. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "proorizo", greek: "Proorizō", kjv: "predestinate", role: "The root word", more: "Proorizō on Greek Influence",
+            verse: { ref: "Romans 8:29-30", text: "For whom he did foreknow, he also did predestinate to be conformed to the image of his Son, that he might be the firstborn among many brethren. Moreover whom he did predestinate, them he also called: and whom he called, them he also justified: and whom he justified, them he also glorified." },
+            taught: [
+              `Romans 8 is a golden chain no one can break. Whoever God foreknew, He predestinated; whoever He predestinated, He called, justified, and glorified. No link can drop out. So the list of the saved was fixed before anyone was born, and what a person does after he believes cannot change where he ends. "Once saved, always saved" rests on this chain.`,
+            ],
+            word: [
+              `*Proorizō* is built from *horizō*, to set a boundary (the root of our word "horizon"), and *pro*, beforehand. The word itself is plain: to mark out ahead of time. The freight came with how it was read. The Stoics taught *heimarmenē*, fate: every event tied to the one before it in a chain that cannot break. Chrysippus, about 230 BC, made it the center of his teaching.`,
+              `Augustine read Paul through a chain like that. From about 412 to 430, arguing against Pelagius, he taught that the number of the predestined is "so certain that one can neither be added to them nor taken from them." In the 800s the monk Gottschalk pushed it further: God predestines some to life and some to death. Calvin's *Institutes* (first edition 1536, final edition 1559) made the double decree a teaching of the Reformation: "some are preordained to eternal life, others to eternal damnation."`,
+            ],
+            hebrew: [
+              `Paul is not describing a list of names. He is describing a destination: "to be conformed to the image of his Son." The verse just before tells who walks that road: "them that love God" (Romans 8:28). In Moses, those who love Him are those who "keep his commandments" (Deuteronomy 7:9).`,
+              `"Foreknow" carries the Hebrew *yada*, knowing in covenant. "You only have I known of all the families of the earth: therefore I will punish you" (Amos 3:2). Israel was known, and still answerable. A few verses earlier Paul gives the "if": "if ye through the Spirit do mortify the deeds of the body, ye shall live" (Romans 8:13). And the Hebrew word for choosing, *bachar*, is put in man's own hands: "choose life" (Deuteronomy 30:19).`,
+            ],
+            reread: [`The people who love God and keep His commandments, the ones He knows, have a place marked out for them ahead of time: to become like His Son. The line is drawn, and the people inside it are the ones walking in it. Paul is describing a road, not a list. Yahuah marked out the destination beforehand: the likeness of His Son. He calls, and those who love Him and keep His commandments walk the road to that end. The road was set ahead of time. The walkers still have to walk it.`],
+            timeline: [
+              ["About 300 BC", `Zeno founds the Stoic school; fate, *heimarmenē*, rules all things.`],
+              ["About 412–430", `Augustine, against Pelagius, teaches a fixed number of the saved.`],
+              ["848–849", `Gottschalk is condemned at Mainz and Quierzy for teaching double predestination, and is kept in a monastery prison until his death.`],
+              ["1536 / 1559", `Calvin's *Institutes*: some made for life, others for damnation.`],
+              ["1618–19", `The Synod of Dort answers the followers of Arminius in five heads of doctrine. The acronym TULIP is not from Dort; it first appears about 1905.`],
+              ["Today", `"If you were chosen, you can't lose it; if you lose it, you were never chosen."`],
+            ],
+            built: [
+              `Double predestination: some born for heaven, some born for the fire.`,
+              `A walk that does not matter once the prayer is prayed.`,
+              `The "half-Calvinist": a church that drops four points and keeps one, eternal security.`,
+            ],
+          },
+          {
+            id: "pronoia", greek: "Pronoia", kjv: "providence", role: "The root word", more: "Pronoia on Greek Influence",
+            verse: { ref: "Romans 13:14", text: "But put ye on the Master Yahushua Messiah, and make not provision for the flesh, to fulfil the lusts thereof." },
+            taught: [
+              `When you believed, you put on the Son like a robe. Now when God looks at you, He sees only His Son. Your sins, past, present, and future, are covered. God planned it all ahead of time by His providence, and nothing you do can take the robe off. The Westminster Confession (1646) says God governs "all creatures, actions, and things, from the greatest even to the least," and that those He has called "can neither totally nor finally fall away from the state of grace." Evangelicals say it more simply: "God is in control," and "once saved, always saved."`,
+            ],
+            word: [
+              `*Pronoia* means forethought, planning ahead. To the Stoics it was the divine mind that plans everything in advance, so that whatever happens was always going to happen. Chrysippus wrote a book *On Providence*, and the Stoics held that providence and fate were one power: nothing could have been otherwise. At Delphi, Athena had a shrine that some ancient writers called the shrine of Athena Pronoia, "Athena Forethought."`,
+              `The Stoic teacher Cleanthes prayed to be led by Zeus and by destiny, and Seneca, about 65 AD, gave the Latin form: "The fates lead the willing, and drag the unwilling." Read through that lens, the church came to believe God had arranged everything, even a man's final end, and that nothing he does can change it.`,
+            ],
+            hebrew: [
+              `Look who holds the *pronoia* in this verse. Not God, but the believer. "Make not provision for the flesh": do not plan ahead for sin. The only other place the word appears in the New Testament is a hired speaker, Tertullus, flattering the Roman governor Felix: "very worthy deeds are done unto this nation by thy providence" (Acts 24:2). The Stoic god's forethought has become a man's job.`,
+              `"Put on" is Hebrew clothing language. Job said, "I put on righteousness, and it clothed me" (Job 29:14). The word is *labash*, to get dressed, and Job put it on by living right. Isaiah gives the same choice Moses gave: "If ye be willing and obedient, ye shall eat the good of the land: But if ye refuse and rebel, ye shall be devoured with the sword" (Isaiah 1:19-20). The "if" is real, and the book can lose names: "him will I blot out of my book" (Exodus 32:33).`,
+            ],
+            reread: [`"Dress yourselves in Messiah: walk the way He walked. And do not plan ahead for your flesh to get what it wants." Paul says it plainly just before: "now is our salvation nearer than when we believed" (Romans 13:11), so "Let us walk honestly, as in the day" (Romans 13:13). The blood had brought them in, but their deliverance was still ahead, at the end of the road. The robe is not a cover thrown over a careless life. It is a life put on every day, by walking.`],
+            timeline: [
+              ["About 230 BC", `Chrysippus writes *On Providence*: providence and fate are one.`],
+              ["About 65 AD", `Seneca: "The fates lead the willing, and drag the unwilling."`],
+              ["529", `The Council of Orange rejects any teaching that God foreordains men to evil.`],
+              ["1646", `The Westminster Confession joins God's decree, His providence, and the perseverance of the saints.`],
+              ["1990", `Charles Stanley's *Eternal Security* teaches that a believer stays saved even if he later stops believing.`],
+              ["Today", `"I don't believe in predestination," and "once saved, always saved," in the same breath.`],
+            ],
+            built: [
+              `Once saved, always saved: Stoic fate applied to deliverance.`,
+              `The blood without the bread: Pesach remembered, Hag HaMatzot and the walk to Sinai thrown away.`,
+              `No need to endure, against Matthew 24:13.`,
+              `Every evil laid at the feet of a decree: "it was God's will."`,
+            ],
+          },
+        ],
+      },
+      oldPath: `Scripture never needed fate. Yahuah sets life and death before every man and says, "choose life." Deliverance begins at the blood, and the walk goes on with the bread: the commandments of Yahuah, kept day by day. Those who keep walking arrive. "Be thou faithful unto death, and I will give thee a crown of life" (Revelation 2:10). "He that overcometh ... I will not blot out his name out of the book of life" (Revelation 3:5).`,
+    },
+  },
+  "18": {
+    oldPaths: {
+      kicker: "The Old Path · Images in Worship",
+      title: "No Manner of Similitude",
+      subtitle: "You Saw No Form — So Make None",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `When Yahuah spoke at Sinai, Israel saw nothing. "Ye heard the voice of the words, but saw no similitude; only ye heard a voice" (Deuteronomy 4:12). That was the reason for the command that follows: "ye saw no manner of similitude ... Lest ye corrupt yourselves, and make you a graven image" (Deuteronomy 4:15-16).`,
+            `The second commandment makes no exception for religious images. "Thou shalt not make unto thee any graven image, or any likeness of any thing ... Thou shalt not bow down thyself to them, nor serve them" (Exodus 20:4-5). Isaiah asks, "To whom then will ye liken God?" (Isaiah 40:18). Paul told the Athenians the same thing: God is not "like unto gold, or silver, or stone, graven by art and man's device" (Acts 17:29).`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `Even a thing Yahuah ordered made could become an idol. Moses lifted up a bronze serpent on a pole, and those who looked at it lived (Numbers 21:8-9). Centuries later Israel was burning incense to it. Hezekiah "brake in pieces the brasen serpent that Moses had made," and called it Nehushtan, a piece of brass (2 Kings 18:4). The sign that pointed to deliverance had become a thing to worship.`,
+            `Yahuah did give Israel something to wear, and it was not a picture. "Make them fringes in the borders of their garments ... that ye may look upon it, and remember all the commandments of Yahuah, and do them" (Numbers 15:38-39). The sign on the hand and between the eyes was His words (Deuteronomy 6:6-8). What He forbade was the mark in the skin: "nor print any marks upon you: I am Yahuah" (Leviticus 19:28).`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Moses", `"ye saw no manner of similitude" (Deuteronomy 4:15).`],
+            ["Hezekiah", `broke the bronze serpent when Israel burned incense to it (2 Kings 18:4).`],
+            ["Josiah", `put away "the images, and the idols" (2 Kings 23:24).`],
+            ["Shadrach, Meshach, and Abednego", `would not "worship the golden image which thou hast set up" (Daniel 3:18).`],
+            ["Paul", `God is not "like unto gold, or silver, or stone, graven by art" (Acts 17:29).`],
+            ["John", `"Little children, keep yourselves from idols" (1 John 5:21).`],
+          ],
+        },
+      ],
+      closing: `At the very end, the redeemed need no picture. "They shall see his face; and his name shall be in their foreheads" (Revelation 22:4). The only mark they carry is His Name.`,
+      torah: ["Exodus 20:4-5", "Deuteronomy 4:12, 15-16", "Leviticus 19:28", "Numbers 15:38-39", "Numbers 21:8-9"],
+      witness: ["2 Kings 18:4", "Isaiah 40:18", "Acts 17:29", "1 John 5:21"],
+      turn: {
+        text: "But Christianity went another way. It raised the cross on its steeples and hung it on its necks, gave the Son a painted face, and put marks in the skin.",
+        label: "The Departure: Images in Worship",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 18",
+      title: "Images in Worship",
+      subtitle: "The Cross on the Neck, the Steeple, and the Skin",
+      attribution: "You've been wearing Constantine's sign and calling it Scripture.",
+      taught: [
+        `The church teaches that images which point to God are not idols. The Catholic Catechism says it in so many words: "The Christian veneration of images is not contrary to the first commandment which proscribes idols," because "the honor rendered to an image passes to its prototype" (Catechism 2132). The Catholic count of the commandments folds the ban on images into the first. So Catholic and Orthodox churches fill their walls with crucifixes, statues, icons, and stained glass, and the faithful kneel, kiss, and light candles before them.`,
+        `Protestants took down most of the statues but kept the empty cross: on the steeple, over the pulpit, on Bibles, on gold chains, on ball caps, on the rearview mirror. Sunday-school walls carry a painted face with long hair and soft eyes, and children are told it is the Son of God. Many believers wear a cross or have one tattooed "to show I belong to Him." Both camps say the same thing in different words: it is not worship; it is a reminder.`,
+      ],
+      roots: [
+        `The pagan world was full of sacred images. Greeks and Romans set up statues of their gods and of the emperor and burned incense before them. Plato taught that things on earth are images, <em>eikones</em>, of heavenly patterns, so an image could lead the mind upward. Cross-shapes were old religious signs too: the Egyptian ankh, held by the gods as the sign of life, and an equal-armed cross tied to the sun-god in Assyria. Slaves and the servants of a god were branded with that god's mark.`,
+        `The first believers had none of this. About 200 AD, Minucius Felix wrote, "Crosses, moreover, we neither worship nor wish for." That changed with Constantine in 312, who put the sign on his soldiers' shields and a cross-shaped standard at the head of his army. Three Greek words opened the door the Torah had shut. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "stauros", greek: "Stauros", kjv: "cross", role: "The root word", more: "Stauros on Greek Influence",
+            verse: { ref: "Galatians 6:14", text: "But God forbid that I should glory, save in the cross of our Master Yahushua Messiah, by whom the world is crucified unto me, and I unto the world." },
+            taught: [
+              `Paul gloried in the cross, so we lift it high. The cross is the symbol of our belief. Catholics keep the crucifix, with the body on it, and on Good Friday the faithful come forward to kneel before it and kiss it. Protestants keep the empty cross "because He is risen," and put it on the steeple, over the altar, on a gold chain, and on the bumper of the car. Wearing it says, "I belong to Him."`,
+            ],
+            word: [
+              `*Stauros* in Greek meant an upright stake, a pole set in the ground. Homer uses it for the stakes of a fence (*Odyssey* 14.11). It was a tool of execution, nothing more. The Romans sometimes fixed a crossbeam to the stake; the word itself does not tell the shape. Scripture also calls it a tree (Acts 5:30; 1 Peter 2:24).`,
+              `The cross-shape itself was a religious sign long before the church took it up. The Egyptian ankh, a cross with a loop at the top, was the sign of life held in the hands of the gods. When Christians tore down the temple of Serapis at Alexandria in 391, cross-shaped signs on its stones were explained as meaning "life to come," and both pagans and Christians claimed them (Socrates, *Church History* 5.17). Assyrian kings wore an equal-armed cross, which the British Museum calls "a symbol of the sun god." Sun-wheels, a cross inside a circle, are carved on stones across ancient Europe. These shapes turn up in many lands, and that alone does not prove the church copied any one of them. What the record does show is when the cross became a holy object: about 312, when Constantine said he saw a sign in the sky with the words "conquer by this," and put it on his soldiers' shields (Eusebius, *Life of Constantine* 1.28). From the shields it went to the churches, and from the churches to the necks of the people.`,
+            ],
+            hebrew: [
+              `Paul tells us what he means by the stauros in this same letter. He calls it a tree, and he quotes Moses: "Cursed is every one that hangeth on a tree" (Galatians 3:13). Moses wrote, "he that is hanged is accursed of God" (Deuteronomy 21:23). The Hebrew word is *etz*, a tree or a piece of wood. To an Israelite that wood was a place of shame and curse. No one would have worn it.`,
+              `The Torah also shows what happens when a sign becomes an object. Moses lifted a bronze serpent on a pole, and Yahushua compared His own lifting up to it (John 3:14). Years later Israel burned incense to it, so Hezekiah "brake in pieces the brasen serpent that Moses had made ... and he called it Nehushtan" (2 Kings 18:4), a piece of brass.`,
+            ],
+            reread: [`"I will boast in nothing but what Messiah suffered on the tree, the curse He bore for us. Because of it, this world is dead to me, and I am dead to it." Paul is not boasting in a shape. He is boasting in a death, and in a life that died with it. Yahushua said, "let him deny himself, and take up his cross, and follow me" (Matthew 16:24). A cross you carry every day by denying yourself, not one you hang on a chain.`],
+            timeline: [
+              ["About 200", `Minucius Felix: "Crosses, moreover, we neither worship nor wish for."`],
+              ["312", `Constantine puts the sign on his soldiers' shields and carries a cross-shaped standard, the labarum, into battle (Eusebius, *Life of Constantine* 1.28-31).`],
+              ["About 326", `Constantine's mother Helena visits Jerusalem. The story that she found the "True Cross" is first written down about 395; relic veneration follows.`],
+              ["692", `The Council in Trullo orders Messiah painted as a man rather than a lamb; the crucifix grows from it.`],
+              ["1500s", `Protestant reformers remove the body but keep the empty cross.`],
+              ["Today", `The cross is worn on chains, caps, shirts, and skin as proof of belonging to Him.`],
+            ],
+            built: [
+              `The cross as an object of reverence: a Nehushtan on every steeple.`,
+              `Relics and the "True Cross": wood treated as holy.`,
+              `The cross as a badge, an image worn to claim the belief whose Torah forbids it.`,
+            ],
+          },
+          {
+            id: "eikon", greek: "Eikōn", kjv: "image", role: "The root word", more: "Eikōn on Greek Influence",
+            verse: { ref: "Colossians 1:15", text: "Who is the image of the invisible God, the firstborn of every creature:" },
+            taught: [
+              `The Son is God you can see. The invisible God became visible in Him, so now it is right to make pictures of Him. That is how the icons were defended in the East and the statues in the West, and it is why a painted face hangs in so many Protestant homes and Sunday schools. Many also read this verse to say that the Son is God Himself.`,
+            ],
+            word: [
+              `*Eikōn* means image or likeness. Plato taught that everything on earth is a copy, an *eikōn*, of a perfect pattern in heaven. In the Roman world the emperor's image stood in every city, and honor paid to it counted as honor to him. About 112, when Pliny, governor of Bithynia, tested people accused of being Christians, he had them offer incense and wine to the emperor's image.`,
+              `Church teachers built on both ideas. About 375, Basil of Caesarea wrote that "the honour paid to the image passes on to the prototype," using the emperor's image as his example. After decades of fighting over images, the Second Council of Nicaea (787) used that line to rule that icons of Messiah and the saints are to be venerated. Our English word "icon" comes straight from *eikōn*.`,
+            ],
+            hebrew: [
+              `Paul's word goes back to the first page of the Bible. The Greek Old Testament uses *eikōn* for the Hebrew *tselem*, image: "So God created man in his own image" (Genesis 1:27). Adam was the image, a living man who showed what his Maker is like, the way a son shows his father. No one painted Adam on a wall.`,
+              `And no one was ever to paint Yahuah. "Ye saw no manner of similitude ... Lest ye corrupt yourselves, and make you a graven image" (Deuteronomy 4:15-16). *Temunah*, similitude, means a shape or form. Israel saw no shape, so they were to make none. An image of the invisible God is not the invisible God. A son can look like his father; he is not his father.`,
+            ],
+            reread: [`"The Son is the living likeness of the unseen God. He shows us what the Father is like, as Adam was made to do, and He is the firstborn, the Son who holds first place" (compare Psalm 89:27). Paul says who put that likeness in Him: "it pleased the Father that in him should all fulness dwell" (Colossians 1:19). And he says where the image is found now, not on a wall but in changed lives: "the new man, which is renewed in knowledge after the image of him that created him" (Colossians 3:10). Paul wrote of the pagans who "changed the glory of the uncorruptible God into an image made like to corruptible man" (Romans 1:23). Yahuah never wanted a painting of His Son. He wants a people who look like Him.`],
+            timeline: [
+              ["About 360 BC", `Plato: earthly things are images, *eikones*, of heavenly patterns.`],
+              ["About 112", `Pliny tests accused Christians before the emperor's image.`],
+              ["About 375", `Basil: "the honour paid to the image passes on to the prototype."`],
+              ["726–843", `The Iconoclast struggle: emperors in the East order icons destroyed, and icon-lovers fight back.`],
+              ["787", `The Second Council of Nicaea declares that images of Messiah and the saints are to be venerated.`],
+              ["1940", `Warner Sallman's *Head of Christ* is printed hundreds of millions of times for Protestant homes and Sunday schools.`],
+            ],
+            built: [
+              `Icon veneration: bowing before painted images.`,
+              `Statues, crucifixes, and stained-glass saints.`,
+              `The Protestant picture of the Son: a likeness Scripture never gives and the second commandment forbids.`,
+            ],
+          },
+          {
+            id: "stigma", greek: "Stigma", kjv: "marks", role: "The root word", more: "Stigma on Greek Influence",
+            verse: { ref: "Galatians 6:17", text: "From henceforth let no man trouble me: for I bear in my body the marks of the Master Yahushua." },
+            taught: [
+              `Paul carried marks on his body to show he belonged to the Son. So a cross or a Bible verse tattooed on the arm is a good way to witness. Rome reads the verse another way: Paul bore the wounds of the crucifixion, the "stigmata," as Francis of Assisi later was said to. And every Ash Wednesday, Catholics, along with many Lutherans, Anglicans, and Methodists, receive a cross of ashes on the forehead. Either way, a mark on the body becomes a badge of belief.`,
+            ],
+            word: [
+              `*Stigma* was the Greek word for a brand or tattoo pricked into the skin. Slaves were marked with their master's sign. People who served a god were marked with that god's sign. Herodotus, a Greek historian, tells of a temple of Heracles in Egypt where a runaway who received the god's sacred marks could not be touched (*Histories* 2.113).`,
+              `When King Ptolemy IV of Egypt wanted to force Jews into the worship of Dionysus, he ordered them branded with the god's ivy leaf (3 Maccabees 2:29). The mark said whose you were.`,
+            ],
+            hebrew: [
+              `The Torah forbids that kind of mark outright: "Ye shall not make any cuttings in your flesh for the dead, nor print any marks upon you: I am Yahuah" (Leviticus 19:28). The Hebrew words mean writing and cutting: writing cut into the skin, a tattoo. Paul knew this law. He would never have printed anything on his body.`,
+              `Israel did have a mark of belonging, but it was not ink: "thou shalt bind them for a sign upon thine hand, and they shall be as frontlets between thine eyes" (Deuteronomy 6:8). The sign was His words, kept and lived.`,
+            ],
+            reread: [`"From now on, let no one trouble me. The scars on my body show whose servant I am. I took them for the Master Yahushua." Paul lists those scars himself: "Thrice was I beaten with rods, once was I stoned" (2 Corinthians 11:25). In the same chapter as our verse, he warns about men who "desire to make a fair shew in the flesh" (Galatians 6:12). Paul's marks were not for show, and he did not choose them. Others beat them into him. At the end, the redeemed carry one mark: "his name shall be in their foreheads" (Revelation 22:4).`],
+            timeline: [
+              ["About 440 BC", `Herodotus: temple servants bear their god's sacred marks.`],
+              ["About 217 BC", `Ptolemy IV, by the account in 3 Maccabees, orders Jews branded with the ivy leaf of Dionysus.`],
+              ["About 55 AD", `Paul calls his scars from rods and stones "the marks of the Master Yahushua."`],
+              ["1224", `Francis of Assisi is said to receive the "stigmata," the wounds of the crucifixion, in his body.`],
+              ["Today", `Crosses and verses are inked as a sign of belief, often defended from Galatians 6:17, and ashes mark foreheads every Ash Wednesday.`],
+            ],
+            built: [
+              `The Christian tattoo: the pagan devotee's mark, renamed as a testimony.`,
+              `Stigmata: Paul's scars turned into a miracle of the flesh.`,
+              `A cross of ashes on the forehead, where Yahuah put His words.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `Scripture never needed a picture. Israel heard a voice and saw no form. Yahuah's reminders were His words, worn as fringes and bound on the hand and between the eyes, not shapes of wood or metal, and not ink in the skin. When the bronze serpent became a thing to worship, Hezekiah broke it. The Son showed the Father by what He did and said, never by what He looked like, and the second commandment was the very ground Paul preached on in Athens (Acts 17:29). Revelation shows that what is worn on the hand and the forehead matters: one mark belongs to the beast (Revelation 13:16), and the other is the Name. It ends with the face that matters: "And they shall see his face; and his name shall be in their foreheads" (Revelation 22:4).`,
+    },
+  },
+  "19": {
+    oldPaths: {
+      kicker: "The Old Path · Clergy over the People",
+      title: "A Kingdom of Priests",
+      subtitle: "Every One of Them, Not a Class Above Them",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `At Sinai, Yahuah spoke about the whole nation: "ye shall be unto me a kingdom of priests, and an holy nation" (Exodus 19:6). Not a nation with priests in it, but a nation of priests. Moses wanted every one of them to hear from Yahuah: "would God that all Yahuah's people were prophets" (Numbers 11:29).`,
+            `The apostles say the same to every believer. "Ye are a chosen generation, a royal priesthood" (1 Peter 2:9). Yahushua "hath made us kings and priests unto God and his Father" (Revelation 1:6). There is "one mediator between God and men, the man Messiah Yahushua" (1 Timothy 2:5), and no second one, whether he wears a collar or a suit. Yahushua forbade the titles that lift one brother above another: "be not ye called Rabbi: for one is your Master, even Messiah; and all ye are brethren. And call no man your father upon the earth" (Matthew 23:8-9).`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `Moses did not carry the people alone. Yahuah put the spirit that was on him upon seventy elders (Numbers 11:16-17, 25). When two men, Eldad and Medad, prophesied in the camp, Joshua said, "forbid them." Moses answered with his wish that all Yahuah's people were prophets (Numbers 11:28-29).`,
+            `The first assemblies were led by elders, always more than one. Paul and Barnabas "ordained them elders in every church" (Acts 14:23). In the meeting, everyone took part: "every one of you hath a psalm, hath a doctrine" (1 Corinthians 14:26). And the people of Berea checked even Paul against the Scriptures. They "searched the scriptures daily, whether those things were so" (Acts 17:11).`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Moses", `"would God that all Yahuah's people were prophets" (Numbers 11:29).`],
+            ["Yahushua", `"one is your Master, even Messiah; and all ye are brethren" (Matthew 23:8).`],
+            ["Peter", `"also an elder," who told the elders not to be "lords over God's heritage" (1 Peter 5:1, 3).`],
+            ["Paul", `"Not for that we have dominion over your faith, but are helpers of your joy" (2 Corinthians 1:24).`],
+            ["The Bereans", `"searched the scriptures daily, whether those things were so" (Acts 17:11).`],
+            ["John", `"kings and priests unto God and his Father" (Revelation 1:6).`],
+          ],
+        },
+      ],
+      closing: `At the very end, the redeemed sing that the Lamb "hast made us unto our God kings and priests" (Revelation 5:10). Every one of them.`,
+      torah: ["Exodus 19:6", "Numbers 11:29"],
+      witness: ["1 Peter 2:9", "Revelation 1:6", "Matthew 23:8-10", "1 Timothy 2:5"],
+      turn: {
+        text: "But Christianity went another way. It lifted one man above the rest, whether bishop, priest, or pastor, and made the people his audience.",
+        label: "The Departure: Clergy over the People",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 19",
+      title: "Clergy over the People",
+      subtitle: "One Pulpit, One Pew — and the Wall Between Them",
+      attribution: "You've been quoting Ignatius and calling it Scripture.",
+      taught: [
+        `In the Catholic and Orthodox churches, the priest is set apart by holy orders, a sacrament. Only he can offer the Mass and pronounce sins forgiven, and he is said to stand in the Son's place at the altar. Bishops rule over priests, and in Rome the pope rules over the bishops. Everyone else is the laity, the people who receive.`,
+        `Protestants are quick to say what is wrong with that. Then they go to church and say, "My pastor says." The pastor is "God's anointed," and "touch not mine anointed" (Psalm 105:15) is quoted to shut down a question. In many churches only the ordained may baptize or serve the bread and the cup. Pentecostal and charismatic churches add bishops, apostles, and "the man of God," and large churches run the senior pastor like a company's chief executive. Rome calls him a priest; Protestants call him pastor, reverend, or minister. Either way, one man speaks for Yahuah and the rest listen.`,
+      ],
+      roots: [
+        `Every piece was already standing in the Greek world. Greek poets called the gods the overseers, <em>episkopoi</em>, of men, and Greek cities sent overseers to watch their towns. Greek temples had priests, <em>hiereis</em>, who alone could offer the sacrifice. Homer called his kings "shepherd of the people." Temples hung up offerings called <em>anathēmata</em>. Rome's high priest was the Pontifex Maximus, and the popes later took that title for themselves.`,
+        `Within a lifetime of the apostles, the church began to sort itself the same way. Clement of Rome, about 96, set the "layman" apart from the priests. Ignatius, about 110, put one bishop over the elders. Cyprian, about 250, made the bishop the center of the church. Four Greek words built the wall between pulpit and pew. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "episkopos", greek: "Episkopos", kjv: "bishop", role: "The root word", more: "Episkopos on Greek Influence",
+            verse: { ref: "1 Timothy 3:1-2", text: "This is a true saying, If a man desire the office of a bishop, he desireth a good work. A bishop then must be blameless, the husband of one wife, vigilant, sober, of good behaviour, given to hospitality, apt to teach;" },
+            taught: [
+              `This is the job posting for the top man in the church. In Catholic, Orthodox, Anglican, and Methodist churches, the bishop rules over the priests and churches of a region. In most other Protestant churches the same verse is preached over the senior pastor, who rules a congregation. He sits above everyone else, and the people answer to him. Reaching that office is treated as the highest calling a man can have.`,
+            ],
+            word: [
+              `*Episkopos* means "one who watches over." In Homer's *Iliad*, Achilles calls the gods to be the "witnesses and overseers" of an oath. The Athenian lawgiver Solon, about 590 BC, called the goddess Athena the "great-hearted overseer" who holds her hands over the city. Athens sent officials called *episkopoi* to watch over its subject towns, and the playwright Aristophanes mocks one in *The Birds* (414 BC). An overseer was a god watching over men, or a ruler's officer watching his subjects.`,
+              `In Paul's letters the overseers are simply the elders, several in each assembly, serving together (Acts 20:17, 28; Titus 1:5, 7). Philippi had "bishops and deacons," plural (Philippians 1:1). The word "office" is not in the Greek of verse 1; the translators added it. The Greek says, "if a man desire oversight." Then, about 110 AD, Ignatius wrote, "Let no man do anything connected with the church without the bishop," and one overseer was lifted above all the elders.`,
+            ],
+            hebrew: [
+              `Peter shows what this word means in Hebrew. Choosing a man to replace Judas, he quoted David: "his bishoprick let another take" (Acts 1:20). David had written, "let another take his office" (Psalm 109:8). The Hebrew word is *pequddah*, from *pakad*, to watch over or take care of. It means a charge, a duty given to someone.`,
+              `The Greek Old Testament calls Eleazar the priest an *episkopos*. He had "the oversight of all the tabernacle" (Numbers 4:16): the oil for the light, the incense, the anointing oil, the vessels. That is oversight in Hebrew: a job of care and service, not a throne.`,
+            ],
+            reread: [`"If a man wants to watch over the flock, he wants a good work. So a watchman must be blameless, faithful to his one wife, awake, sober, well-behaved, open-hearted to guests, and able to teach." Paul calls it "a good work," not a high seat. Peter, an elder himself, told the elders how to do it: "Feed the flock of God which is among you, taking the oversight thereof ... Neither as being lords over God's heritage, but being ensamples to the flock" (1 Peter 5:2-3). Among the flock, not above it.`],
+            timeline: [
+              ["414 BC", `Aristophanes mocks an Athenian *episkopos* sent to oversee a town.`],
+              ["About 110", `Ignatius: "do nothing without the bishop." One overseer now stands above the elders.`],
+              ["About 250", `Cyprian: "the bishop is in the church, and the church in the bishop."`],
+              ["About 380", `Bishops rule cities, and the bishop of Rome claims first place among them.`],
+              ["1541", `Calvin's Geneva makes the pastor the first of its church offices.`],
+              ["Today", `One man runs the assembly, often by title and salary.`],
+            ],
+            built: [
+              `The single ruling bishop or senior pastor, in place of a body of elders.`,
+              `The pulpit as authority: one voice, many silent.`,
+              `Church office pursued as a career.`,
+            ],
+          },
+          {
+            id: "hiereus", greek: "Hiereus · Laikos", kjv: "priest · laity", role: "The root word", more: "Hiereus · Laikos on Greek Influence",
+            verse: { ref: "Revelation 1:6", text: "And hath made us kings and priests unto God and his Father; to him be glory and dominion for ever and ever. Amen." },
+            taught: [
+              `Yes, all believers are priests, in a spiritual way. But in real church life, only the ordained man can lead the service, serve the bread and the cup, or explain the Bible with authority. Rome calls him a priest, and he alone hears confession and offers the Mass. Protestants call him the pastor or the minister, and teach "the priesthood of all believers" while the ordained do the ministry. Everyone else is the "laity," the people in the pews who watch, listen, give, and go home.`,
+            ],
+            word: [
+              `*Hiereus*, "priest," was the man who served in a Greek temple. He stood between the worshiper and the god, offered the sacrifice, and spoke for the god. *Laikos* meant "of the people," common, not sacred.`,
+              `About 96 AD, Clement of Rome, writing to the believers at Corinth, compared church order to the temple: high priest, priests, Levites, and "the layman is bound by the layman's ordinances" (1 Clement 40). He is the first church writer known to use the word. About 200, Tertullian set the "order" of church leaders apart from the common people, and about 250 Cyprian called the bishop a priest. Two classes were born: clergy and laity. Yet the New Testament never calls a church leader a *hiereus*. It uses the word for the Levites, for pagan priests (Acts 14:13), for Messiah as High Priest, and for all believers together, as in this verse.`,
+            ],
+            hebrew: [
+              `John is echoing Moses at Sinai: "And ye shall be unto me a kingdom of priests, and an holy nation" (Exodus 19:6). The Hebrew word is *kohen*, a priest, one who comes near to serve. Yahuah's plan was a whole nation of them.`,
+              `Under the Levitical order the priests came from one tribe. That order pointed to Yahushua, who entered the holy place "by his own blood ... once" (Hebrews 9:12). Now Peter takes Moses' words and gives them to every believer: "But ye are a chosen generation, a royal priesthood, an holy nation, a peculiar people" (1 Peter 2:9).`,
+            ],
+            reread: [`"He has made all of us, every believer, a kingdom, priests who serve His God and Father." Not some of us. Us. Notice too that the Son has a God: "unto God and his Father." And only one go-between is left: "For there is one God, and one mediator between God and men, the man Messiah Yahushua" (1 Timothy 2:5). One God. One mediator, and He is a man, the Son. No priest and no pastor stands in the middle of that.`],
+            timeline: [
+              ["About 96", `Clement of Rome: the first known church use of "layman," *laikos*.`],
+              ["About 200", `Tertullian sets the "order" of leaders apart from the common people.`],
+              ["About 250", `Cyprian calls the bishop a priest.`],
+              ["1215", `The Fourth Lateran Council requires every believer to confess to a priest at least once a year.`],
+              ["1563", `The Council of Trent declares holy orders a sacrament and curses whoever denies a visible priesthood.`],
+              ["Today", `Ordained clergy and the laity in both camps, whether the man is called priest or pastor.`],
+            ],
+            built: [
+              `A priest between the believer and Yahuah.`,
+              `The laity: the people of Yahuah reduced to an audience.`,
+              `Confession to a man.`,
+            ],
+          },
+          {
+            id: "poimen", greek: "Poimēn", kjv: "pastors", role: "The root word", more: "Poimēn on Greek Influence",
+            verse: { ref: "Ephesians 4:11", text: "And he gave some, apostles; and some, prophets; and some, evangelists; and some, pastors and teachers;" },
+            taught: [
+              `Every church needs a pastor, the man God called to lead it. He preaches, counsels, marries, buries, and decides. People say "my pastor says" the way Catholics say "Father says," and Catholic parishes call their priest the pastor too. In large churches the senior pastor is the vision-caster and chief executive, and the staff, elders, and deacons serve under him. This verse is read as his job description.`,
+            ],
+            word: [
+              `*Poimēn* means shepherd. Homer called kings like Agamemnon *poimēn laōn*, "shepherd of the people," the title of a ruler over the crowd. That is how the word came to sound in the church: one man over the people.`,
+              `But this is the only verse in the New Testament where *poimēn* is used for a leader in the assembly. It sits in a list of gifts, and it is plural, "pastors." Paul never put "Pastor" in front of a man's name, and he never made one man the head of an assembly. In 1541 Calvin's Geneva named four church offices with the pastor first, and the Protestant pastor was born. In the late 1900s, church-growth books taught pastors to lead like the chief executive of a company.`,
+            ],
+            hebrew: [
+              `Paul's words echo Jeremiah: "And I will give you pastors according to mine heart, which shall feed you with knowledge and understanding" (Jeremiah 3:15). Yahuah gives them; Paul says, "he gave some." The Hebrew word is *ro'eh*, a shepherd, one who feeds. And the first Shepherd is Yahuah Himself: "Yahuah is my shepherd; I shall not want" (Psalm 23:1).`,
+              `The prophets warned about shepherds who rule for themselves: "Woe be to the shepherds of Israel that do feed themselves!" (Ezekiel 34:2). They ruled "with force and with cruelty" (Ezekiel 34:4). Yahuah's answer was to take the flock back: "Behold, I, even I, will both search my sheep, and seek them out" (Ezekiel 34:11). Messiah is "that great shepherd of the sheep" (Hebrews 13:20), and the elders feed the flock under Him (1 Peter 5:2-4).`,
+            ],
+            reread: [`"He gave gifts to His people: some sent out, some prophets, some who carry the good news, and some who feed the flock and teach it." Then Paul tells us why: "For the perfecting of the saints, for the work of the ministry" (Ephesians 4:12). The shepherds get the saints ready, and the saints do the work of the ministry. The gift was given so the people would grow up, "That we henceforth be no more children" (Ephesians 4:14). Not so they would spend their lives saying, "my pastor says."`],
+            timeline: [
+              ["About 750 BC", `Homer: kings are *poimēn laōn*, shepherds over the people.`],
+              ["About 60 AD", `Paul lists "pastors and teachers" among several gifts (Ephesians 4:11).`],
+              ["1517", `The Reformation begins; Protestants reject the priest as go-between.`],
+              ["1541", `Calvin's Ecclesiastical Ordinances make the pastor the first office of the church.`],
+              ["Late 1900s", `Church-growth teaching shapes the senior pastor into a chief executive.`],
+              ["Today", `"My pastor says": the priest's authority under a Protestant title.`],
+            ],
+            built: [
+              `The senior pastor: one man over the assembly, as the priest was over the parish.`,
+              `"My pastor says": the people of Yahuah repeating a man instead of testing the Scripture (Acts 17:11).`,
+              `"Pastor" as a title, a salary, and a career.`,
+            ],
+          },
+          {
+            id: "anathema", greek: "Anathema", kjv: "accursed", role: "The root word", more: "Anathema on Greek Influence",
+            verse: { ref: "Galatians 1:8", text: "But though we, or an angel from heaven, preach any other gospel unto you than that which we have preached unto you, let him be accursed." },
+            taught: [
+              `This verse guards the creeds. Whoever denies what the church has defined, the Trinity, the sacraments, the authority of the church, is preaching "another gospel" and is accursed. The great councils closed their creeds with that very word, anathema, and Rome still excommunicates. Protestant churches do it by another name: a church board can put a member out for questioning what the pulpit teaches, and in some churches leaving is treated as leaving God.`,
+            ],
+            word: [
+              `*Anathēma* first meant an offering hung up in a Greek temple, a gift set apart for a god. Luke uses the word that way for the temple's "goodly stones and gifts" (Luke 21:5).`,
+              `From the fourth century, church councils turned it into a sentence. The Council of Nicaea (325) closed its creed with one: those who said of the Son "there was when he was not" were condemned. The first creed-curse fell on men who would not confess the council's view of the Son. The Council of Trent (1545–1563) ended canon after canon with "let him be anathema." Luther was excommunicated in 1521, and in 1553 Calvin's Geneva burned Michael Servetus for denying the Trinity. The word became the clergy's weapon against anyone who questioned them.`,
+            ],
+            hebrew: [
+              `Beneath it is the Hebrew *cherem*, something devoted to Yahuah, given over wholly to Him, often for destruction. The Greek Old Testament uses *anathema* for it at Jericho: "And the city shall be accursed, even it, and all that are therein, to Yahuah" (Joshua 6:17).`,
+              `Paul's warning comes straight out of the Torah. Moses wrote that even a prophet whose signs come true must not be followed if he says, "Let us go after other gods, which thou hast not known" (Deuteronomy 13:1-3). Paul says the same: not even "we, or an angel from heaven." The test was never a council. The test was what Yahuah had already spoken. And when a brother had to be put out, the whole assembly did it together (1 Corinthians 5:4; Matthew 18:17), not a man in an office.`,
+            ],
+            reread: [`"If anyone, even I, even an angel, brings you a different good news from the one you first received, let him be devoted to destruction." Paul says it twice (Galatians 1:9). The measure is the message already given: "To the law and to the testimony: if they speak not according to this word, it is because there is no light in them" (Isaiah 8:20). That measure judges the councils too. When a council adds a creed the apostles never preached and curses everyone who will not sign it, Paul's anathema does not fall on the believer. It falls on the council.`],
+            timeline: [
+              ["About 400 BC", `Greek temples fill with *anathēmata*, offerings hung up for the gods.`],
+              ["325", `Nicaea closes its creed with a curse; later councils follow.`],
+              ["1054", `Rome's legates and the patriarch of Constantinople excommunicate each other.`],
+              ["1521", `Luther is excommunicated by the pope.`],
+              ["1545–1563", `The Council of Trent: canon after canon ends "let him be anathema."`],
+              ["1553", `Calvin's Geneva burns Michael Servetus for denying the Trinity.`],
+            ],
+            built: [
+              `Excommunication by office: the clergy holding the keys over the people.`,
+              `Creeds enforced by curse, in place of Scripture tested by every reader (Acts 17:11).`,
+              `Fear of leaving the church, as if leaving a building were leaving Yahuah.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `Scripture never needed a clergy. Yahuah called the whole nation a kingdom of priests, and Moses wished all His people were prophets. The assembly needs elders who teach and watch, but as brothers among brothers, not a priesthood above them. "One is your Master, even Messiah; and all ye are brethren" (Matthew 23:8). There is one mediator, "the man Messiah Yahushua" (1 Timothy 2:5). And Revelation names the only priesthood that remains: "Thou ... hast made us unto our God kings and priests: and we shall reign on the earth" (Revelation 5:10). Us, every one of us. Not the priest, and not the pastor.`,
+    },
+  },
+  "20": {
+    oldPaths: {
+      kicker: "The Old Path · Communion",
+      title: "Keep the Feast",
+      subtitle: "The Memorial Was Already Given",
+      sections: [
+        {
+          title: "What Scripture Says",
+          paras: [
+            `Yahuah gave Israel a memorial before He gave them the Law at Sinai. In Egypt He said of Pesach, "this day shall be unto you for a memorial; and ye shall keep it a feast" (Exodus 12:14). The memorial was the feast. It was to be kept "for ever."`,
+            `In Hebrew, to remember is to do. Israel looked on their fringes to "remember all the commandments of Yahuah, and do them" (Numbers 15:39). So when Yahushua said "this do in remembrance of me" (Luke 22:19), He pointed His disciples back to the memorial Yahuah already gave, now with Him as the Lamb. Paul read it that way: "Messiah our passover is sacrificed for us: therefore let us keep the feast" (1 Corinthians 5:7-8).`,
+          ],
+        },
+        {
+          title: "How It Was Walked",
+          paras: [
+            `Pesach was kept at a table, by a household, once a year. The lamb was chosen on the tenth day and killed on the fourteenth (Exodus 12:3, 6). Its blood went on the doorposts, and Yahuah said, "when I see the blood, I will pass over you" (Exodus 12:13). It was eaten that night with unleavened bread and bitter herbs (Exodus 12:8). The children asked, "What mean ye by this service?" and the fathers told the story (Exodus 12:26-27).`,
+            `Yahushua spoke His words of remembrance at a meal the evening before, "before the feast of the passover" (John 13:1). The next morning His accusers still had the Pesach ahead of them (John 18:28). He died at the ninth hour on the fourteenth, as the lambs were slain, and the Pesach was eaten that night while His body lay in the tomb. He did not eat that Pesach. He became it.`,
+          ],
+        },
+        {
+          title: "Who Kept It",
+          keepers: [
+            ["Moses", `Israel "kept the passover on the fourteenth day of the first month" in the wilderness (Numbers 9:5).`],
+            ["Joshua", `the first Pesach in the land, kept at Gilgal "in the plains of Jericho" (Joshua 5:10).`],
+            ["Hezekiah", `called all Israel back to the feast, "so there was great joy in Jerusalem" (2 Chronicles 30:26).`],
+            ["Josiah", `"Keep the passover unto Yahuah your God, as it is written in the book of this covenant" (2 Kings 23:21).`],
+            ["Yahushua", `went up with His family "every year at the feast of the passover" (Luke 2:41-42), and at the last was the Lamb.`],
+            ["Paul", `"Therefore let us keep the feast" (1 Corinthians 5:8).`],
+          ],
+        },
+      ],
+      closing: `And the feast points ahead. John heard, "Blessed are they which are called unto the marriage supper of the Lamb" (Revelation 19:9). Every Pesach kept now is a rehearsal for that night.`,
+      torah: ["Exodus 12:14", "Numbers 15:39"],
+      witness: ["Luke 22:19", "1 Corinthians 5:7-8"],
+      turn: {
+        text: "But Christianity went another way. It moved the memorial out of the feast and into the building, and turned a supper into a ceremony.",
+        label: "The Departure: Communion",
+      },
+    },
+
+    departure: {
+      kicker: "The Departure · 20",
+      title: "Communion",
+      subtitle: "The Feast the Church Moved Indoors",
+      attribution: "You've been holding a ceremony and calling it His feast.",
+      taught: [
+        `Walk into almost any church on Communion Sunday and the scene is the same. The pastor reads "this do in remembrance of me." Trays come down the rows. Each person takes a small cracker or a piece of matzah and a thimble cup of grape juice. Heads bow. The room goes quiet for a minute or two, and then the service moves on.`,
+        `Catholics call it the Eucharist and the Mass. The priest says the words at the altar, and the church teaches that the bread and wine become His body and blood. Lutherans say His body is present "in, with, and under" the bread. Baptist and nondenominational churches call it an ordinance, a memorial kept once a month or once a quarter. Some churches keep it every Sunday. Many Pentecostal and charismatic teachers add that taking it brings healing. The forms differ, but every one is a church rite, on the church's schedule, in the church's building.`,
+      ],
+      roots: [
+        `Yahuah gave a feast. Pesach was a whole household around a table at night, with a lamb, unleavened bread, and bitter herbs, kept once a year at the time He set. Over the centuries the feast was cut loose from His calendar. The family table became an altar or a tray. The yearly feast became a weekly or monthly rite. A supper became a bite.`,
+        `The Greek world already had that rite. Its temples held sacred dinners where worshipers ate at a god's table and so became his partners. Invitations survive from Roman Egypt asking guests to dine "at the table of the lord Serapis." The mystery cults had secret rites for the initiated, and Justin Martyr admitted that the followers of Mithras used bread and a cup in theirs. Paul warned the Corinthians, "Ye cannot drink the cup of the Master, and the cup of devils" (1 Corinthians 10:21). Five Greek words carried the god's table into the church. Choose a word.`,
+      ],
+      tabs: {
+        tabs: [
+          {
+            id: "anamnesis", greek: "Anamnēsis", kjv: "remembrance", role: "The root word", more: "Anamnēsis on Greek Influence",
+            verse: { ref: "Luke 22:19", text: "And he took bread, and gave thanks, and brake it, and gave unto them, saying, This is my body which is given for you: this do in remembrance of me." },
+            taught: [
+              `Remembrance means a church service. When the bread and cup are passed, you think about the cross and examine your heart. The church decides how often, whether daily, weekly, monthly, or a few times a year. Either way, it is something you do sitting down, in the building.`,
+            ],
+            word: [
+              `In Greek, *anamnēsis* was a word of the mind. Plato used it for the soul recalling what it knew before it was born. To him, all learning was remembering. Remembering was an inward act, a thought.`,
+              `Later church teachers took the word further. In the Mass, the *anamnēsis* is the prayer where the church remembers the cross, and the sacrifice is said to be made present again on the altar. Either way, remembrance stopped being something you keep and became something you think or perform.`,
+            ],
+            hebrew: [
+              `Yahushua spoke as a Hebrew, and the word behind "remembrance" is *zikkaron*, a memorial. Yahuah named the first one Himself: "this day shall be unto you for a memorial; and ye shall keep it a feast" (Exodus 12:14). The memorial and the feast are the same thing. The verb *zakar*, to remember, means to remember by doing: "remember all the commandments of Yahuah, and do them" (Numbers 15:39). A Hebrew memorial is not a quiet minute. It is a table set, a lamb eaten, a story told to the children.`,
+              `He said these words at the meal the evening before Pesach (John 13:1). The gospel writers call the bread on that table *artos*, ordinary bread, not the unleavened bread of the feast. The next afternoon He died at the hour the lambs were slain. The memorial He pointed to was the feast He was about to fulfill.`,
+            ],
+            reread: [`"This do in remembrance of me." Keep the memorial Yahuah already gave, Pesach, and from now on remember Me in it. He is the Lamb. Paul read it exactly that way: "Messiah our passover is sacrificed for us: therefore let us keep the feast" (1 Corinthians 5:7-8).`],
+            timeline: [
+              ["About 55 AD", `Paul tells the assembly at Corinth to keep the feast with Messiah as their Pesach (1 Corinthians 5:7-8).`],
+              ["About 110 AD", `Ignatius of Antioch calls the broken bread "the medicine of immortality," the way the Greeks spoke of their sacred foods.`],
+              ["About 190 AD", `Victor, bishop of Rome, tries to cut off the assemblies in Asia that still keep the memorial on the fourteenth day of the first month.`],
+              ["325 AD", `The Council of Nicaea, under Constantine, settles that the church will no longer follow the Jewish reckoning for its spring feast.`],
+              ["1215", `The Fourth Lateran Council makes it official teaching that the bread and wine change into His body and blood.`],
+              ["1529", `Luther and Zwingli argue at Marburg over what the bread is. Neither returns it to the feast. The Protestant churches keep the ceremony and change only its explanation.`],
+            ],
+            built: [
+              `The Mass, the altar, and a priest who offers the sacrifice again.`,
+              `Communion Sunday, a few minutes in the pew in place of a feast.`,
+              `Easter in place of Pesach, and the church's calendar in place of Yahuah's. Today the daily Mass and the monthly tray go on, and no Pesach is kept in either.`,
+            ],
+          },
+          {
+            id: "koinonia", greek: "Koinōnia", kjv: "communion", role: "The root word", more: "Koinōnia on Greek Influence",
+            verse: { ref: "1 Corinthians 10:16", text: "The cup of blessing which we bless, is it not the communion of the blood of Messiah? The bread which we break, is it not the communion of the body of Messiah?" },
+            taught: [
+              `Communion is the moment you are joined to Messiah. Catholics speak of "receiving Communion," taking Him into yourself in the bread. Protestants call it a time of close fellowship with Him, the most sacred minute of the month. Either way, the bite itself is the holy moment of union, and those not in good standing are kept from the tray.`,
+            ],
+            word: [
+              `In the Greek world, a sacrifice ended in a meal. Part went to the god on the altar, and the worshipers ate the rest, often in dining rooms built inside the temple grounds. On the hill above Corinth, the shrine of Demeter and Kore had dozens of small dining rooms for these meals.`,
+              `To eat the god's meat at the god's table was to share with the god, to become his partner. The meal itself was the bond. Paul used that very word to warn the Corinthians. Eating at an idol's table made them partners "with devils" (1 Corinthians 10:20). The church kept the idea and changed the name on the altar. The bite became the bond.`,
+            ],
+            hebrew: [
+              `*Chabar*, to join, to be a companion. Israel was joined to Yahuah by covenant, sealed with blood at Sinai (Exodus 24:8), and kept that covenant at His feasts. The Pesach itself was a sacrifice eaten by the household: "It is the sacrifice of Yahuah's passover" (Exodus 12:27).`,
+              `Paul points straight to that: "are not they which eat of the sacrifices partakers of the altar?" (1 Corinthians 10:18). The sharing was at Yahuah's table, at Yahuah's time, with His people together. It was never a private moment between one man and a cracker.`,
+            ],
+            reread: [`"The cup of blessing which we bless ... The bread which we break." Paul's very next line says what the sharing is: "we being many are one bread, and one body" (1 Corinthians 10:17). It is a people at one table, sharing in what His blood bought. And John says that fellowship is walked, not just tasted: "if we walk in the light ... we have fellowship one with another" (1 John 1:7).`],
+            timeline: [
+              ["500s to 100s BC", `The shrine of Demeter and Kore above Corinth grows to dozens of dining rooms for sacred meals.`],
+              ["About 55 AD", `Paul warns the Corinthians that eating at an idol's table makes them partners with devils (1 Corinthians 10:20-21).`],
+              ["1215", `The Fourth Lateran Council requires every Catholic to receive Communion at least once a year, at Easter.`],
+              ["Mid-1500s", `John Calvin teaches that at the table the believer is lifted up to feed on Messiah spiritually.`],
+              ["1910", `Pope Pius X lowers the age of First Communion to about seven.`],
+            ],
+            built: [
+              `"Holy Communion" as the name of a rite instead of a people sharing a table.`,
+              `First Communion, a child's rite of passage.`,
+              `Open and closed communion, and fights over who may take the tray.`,
+              `Fellowship shrunk to a cup passed down a pew.`,
+            ],
+          },
+          {
+            id: "deipnon", greek: "Deipnon", kjv: "supper", role: "The root word", more: "Deipnon on Greek Influence",
+            verse: { ref: "1 Corinthians 11:20-21", text: "When ye come together therefore into one place, this is not to eat the Master's supper. For in eating every one taketh before other his own supper: and one is hungry, and another is drunken." },
+            taught: [
+              `"The supper" is the rite of the bread and cup, and the table at the front of the sanctuary is "the Master's table." It is not a meal. The bread is a cracker or a wafer, the cup is a sip, and the whole thing takes five minutes. Some churches set the table under a cloth with "This Do in Remembrance of Me" carved on its front.`,
+            ],
+            word: [
+              `*Deipnon* was the main meal of the day, the evening dinner. Greek and Roman temples hosted dinners in a god's name. Papyrus invitations from Roman Egypt survive. In one, a man named Chaeremon asks a friend to dine "at the table of the lord Serapis" in the temple of Serapis the next day. The god was the host, and the worshipers were his guests.`,
+              `To new believers in Corinth, a supper "of the Master" sounded like those temple dinners. Paul set the two side by side: "Ye cannot be partakers of the Master's table, and of the table of devils" (1 Corinthians 10:21). In time the church kept the table and the god-as-host, and dropped the supper.`,
+            ],
+            hebrew: [
+              `*Mishteh*, a feast, a real banquet. Pesach was a supper: roast lamb, bread, herbs, and a family that went to bed full. Isaiah saw Yahuah preparing "a feast of fat things" for all people (Isaiah 25:6), and in the same breath, "He will swallow up death in victory" (Isaiah 25:8). The supper Scripture looks toward is a wedding feast: "Blessed are they which are called unto the marriage supper of the Lamb" (Revelation 19:9).`,
+            ],
+            reread: [`Read Corinth closely. Paul's complaint was not that they ate a meal. It was that "one is hungry, and another is drunken." The rich ate first and the poor went without. His fix: "when ye come together to eat, tarry one for another" (1 Corinthians 11:33). "Let him eat at home" (1 Corinthians 11:34) was for the man too hungry to wait, not an order to end the supper.`],
+            timeline: [
+              ["About 55 AD", `Paul corrects the Corinthians for eating the supper unfairly, not for eating it.`],
+              ["About 112 AD", `Pliny, a Roman governor, reports that Christians meet before dawn and then gather again later "to take food, but ordinary and harmless food."`],
+              ["About 155 AD", `Justin Martyr describes a Sunday gathering where bread and a cup are passed with no meal around them.`],
+              ["About 363 AD", `The Council of Laodicea forbids holding the "love feasts" inside churches.`],
+              ["Today", `A wafer or a cracker stands in for the supper, at a table no one eats from.`],
+            ],
+            built: [
+              `A supper with no supper in it.`,
+              `The table as a piece of church furniture, or an altar.`,
+              `The shared meals Jude calls "feasts of charity" (Jude 12) pushed out of the assembly.`,
+              `The marriage supper of the Lamb shrunk, in the believer's mind, to a bite and a sip.`,
+            ],
+          },
+          {
+            id: "mysterion", greek: "Mystērion", kjv: "mystery", role: "The root word", more: "Mystērion on Greek Influence",
+            verse: { ref: "1 Corinthians 4:1", text: "Let a man so account of us, as of the ministers of Messiah, and stewards of the mysteries of God." },
+            taught: [
+              `Communion is a sacrament, a holy mystery. In Catholic teaching there are seven sacraments, each carrying grace in itself, and the priest is the steward who gives it out. Most Protestants keep two, baptism and the bread and cup, and many still call them sacraments or "means of grace." Baptists call them ordinances, but guard them the same way. Only certain men may lead it, and only at the front.`,
+            ],
+            word: [
+              `The mystery cults were secret rites. At Eleusis, near Athens, worshipers of Demeter were initiated in ceremonies they swore never to reveal, and were promised a better lot after death. The cults of Isis and Mithras worked the same way: a rite performed, a secret shared, a blessing received. Justin Martyr admitted that the Mithras rite used bread and a cup, and said demons had copied it.`,
+              `When the Bible went into Latin, *mystērion* was often rendered *sacramentum*. That was the oath a Roman soldier swore to his general. From that word came "sacrament": a sworn, sacred rite that does something to the one who takes it.`,
+            ],
+            hebrew: [
+              `*Sod*, a secret counsel. Yahuah does nothing without first revealing "his secret unto his servants the prophets" (Amos 3:7). In Daniel, the king's dream was a *raz*, a mystery, and "the secret was revealed unto Daniel" (Daniel 2:19). A Hebrew mystery is something hidden that Yahuah makes known. It is not something kept hidden inside a rite.`,
+            ],
+            reread: [`"Stewards of the mysteries of God." Paul was not handing out wafers. He was trusted with a message: "the mystery which hath been hid from ages and from generations, but now is made manifest" (Colossians 1:26), "made known to all nations for the obedience of faith" (Romans 16:26). A steward of a revealed message preaches it. He does not lock it in a ceremony only he may perform.`],
+            timeline: [
+              ["About 155 AD", `Justin Martyr notes the bread and cup of the Mithras rite and blames demons for the likeness.`],
+              ["About 200 AD", `Tertullian, writing in Latin, calls baptism and the bread and cup *sacramenta*.`],
+              ["About 400 AD", `Jerome's Latin Bible renders *mystērion* as *sacramentum* in Ephesians 5:32 and other places.`],
+              ["About 1150", `Peter Lombard fixes the number of sacraments at seven.`],
+              ["1520", `Luther cuts the seven down, keeping baptism and the bread and cup, but keeps the word.`],
+              ["1547", `The Council of Trent declares that the sacraments give grace by the very act performed.`],
+            ],
+            built: [
+              `Seven sacraments, and a priesthood set over the people to give them out.`,
+              `Grace pictured as something that flows through a rite.`,
+              `Rules on who may serve the bread, and where it may be served.`,
+            ],
+          },
+          {
+            id: "eucharistia", greek: "Eucharistia", kjv: "giving of thanks", role: "The root word", more: "Eucharistia on Greek Influence",
+            verse: { ref: "1 Corinthians 11:24", text: "And when he had given thanks, he brake it, and said, Take, eat: this is my body, which is broken for you: this do in remembrance of me." },
+            taught: [
+              `The Eucharist is the sacred meal itself. In Catholic churches the consecrated bread, the host, is kept in a gold box on the altar, bowed to, and carried through the streets in procession. Protestants use the word less, but the idea is the same. The thanks has become the name of the rite.`,
+            ],
+            word: [
+              `*Eucharistia* is plain Greek for gratitude, built on *charis*, favor. Within a century of the apostles it became a name. The Didache, about 100 AD, gives prayers "concerning the eucharist." Ignatius, about 110 AD, warns of men who "abstain from the eucharist." By about 155 AD Justin writes that "this food is called among us Eucharist."`,
+              `The thanks spoken over a meal had become a holy object. The word that once pointed up to the Father now pointed down to the bread.`,
+            ],
+            hebrew: [
+              `Giving thanks at a table is Torah: "When thou hast eaten and art full, then thou shalt bless Yahuah thy God" (Deuteronomy 8:10). The thanksgiving offering, *todah*, was eaten as a meal, and it came with "leavened bread" (Leviticus 7:13). The psalmist said, "I will take the cup of salvation" and "I will offer to thee the sacrifice of thanksgiving" (Psalm 116:13, 17). The thanks went to Yahuah. It was never the name of the bread.`,
+            ],
+            reread: [`"When he had given thanks, he brake it." Yahushua thanked His Father over ordinary bread, the way every Hebrew did at his table. The thanks pointed up to Yahuah. The rite turned it around, so that now the bread itself receives the honor.`],
+            timeline: [
+              ["About 100 AD", `The Didache gives prayers of thanks "concerning the eucharist."`],
+              ["About 110 AD", `Ignatius uses "the eucharist" as the name of the bread itself.`],
+              ["About 155 AD", `Justin Martyr writes that the food "is called among us Eucharist."`],
+              ["1264", `Pope Urban IV orders a yearly feast day in honor of the consecrated bread.`],
+              ["1551", `The Council of Trent rules that the consecrated host is to be worshiped.`],
+            ],
+            built: [
+              `The host bowed to, kept on the altar, and carried in procession.`,
+              `Chapels built for sitting before the bread in worship.`,
+              `The Father's thanks turned into the name of a ceremony.`,
+            ],
+          },
+        ],
+      },
+      oldPath: `Yahuah never asked for a ceremony in a pew. He gave a feast. Once a year, at the time He set, a household gathers at a table, eats unleavened bread, and tells the story of a Lamb whose blood turned death away. Since the tree, that story has a name: Yahushua. "This do in remembrance of me" sends the believer back to that table, not away from it. Keep the feast, and keep it remembering Him. And the table is not the end of it. Revelation points to a supper still ahead, "the marriage supper of the Lamb" (Revelation 19:9), and every Pesach kept now is a rehearsal for that night.`,
     },
   },
 };
