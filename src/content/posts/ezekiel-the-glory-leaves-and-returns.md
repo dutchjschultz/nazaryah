@@ -22,7 +22,7 @@ A reader who knows which block he is standing in knows who is being spoken to an
 
 ## Why It Looks Scattered
 
-Most people know Ezekiel by its parts. The wheels in chapter 1. The king of Tyre in chapter 28, preached as the devil’s life story. The dry bones in chapter 37, preached as the founding of the modern State of Israel. Gog and Magog in chapters 38 and 39, preached as a Russian invasion. The temple in chapters 40 to 48, preached as a building still to come, with animal sacrifices started up again. Even the shut east gate of chapter 44 was used by early church writers to argue that Mary never had other children.
+Most people know Ezekiel by its parts. The wheels in chapter 1. The king of Tyre in chapter 28, preached as the devil’s life story. The dry bones in chapter 37, preached as the founding of the modern State of Israel. Gog and Magog in chapters 38 and 39, preached as a Russian invasion. The temple in chapters 40 to 48, preached as a stone building for a thousand-year kingdom on the present earth. Even the shut east gate of chapter 44 was used by early church writers to argue that Mary never had other children.
 
 Each of those readings lifts a chapter out of its block and sets it down in a different century. Read front to back, the book will not allow it. Ezekiel dates his messages thirteen times, and apart from one late word filed with the others against Egypt (29:17), the dates move forward.
 
@@ -178,7 +178,7 @@ Scripture does reuse Ezekiel’s language, and it says so openly. John takes up 
 
 **A seven-year gap.** Block Four follows Block Three with nothing wedged between. Daniel’s seventy weeks are finished, and Ezekiel never brings an orphan week into his book.
 
-**A future temple with sacrifices started up again.** Three things stand in the way. First, the house was shown to the captives as a pattern, on a condition: “if they be ashamed of all that they have done” (43:10-11). Second, the prince in that house offers a sin offering “for himself” (45:22) and has sons (46:16), so he cannot be the sinless Messiah. Third, Hebrews closes the door outright: where sins are forgiven, “there is no more offering for sin” (Hebrews 10:18).
+**A middle kingdom with a rebuilt stone temple.** Block Five comes after the last battle, not before it, and Ezekiel puts no thousand-year reign between them. Two details keep the house from being a stage set for a Messiah reigning on the present earth. The house was shown to the captives as a pattern, on a condition: “if they be ashamed of all that they have done” (43:10-11). And the prince in that house offers a sin offering “for himself” (45:22) and has sons (46:16), so he cannot be the sinless Messiah. The offerings themselves are not the problem. None of the five is thrown out. The sin offering is at rest because the one offering never wears out (Hebrews 10:14), and Ezekiel still names it in the house to come (45:17; 46:20). Why Ezekiel can still name the sin offering in the house to come is laid out in [*Three Verses After the End*](/blog/three-verses-after-the-end).
 
 **A law with an expiration date.** The Sabbaths are the charge in Block One (20:12-24), the statutes are written into the new heart in Block Three (36:27), and the Sabbaths are hallowed in the house of Block Five (44:24). First block, middle block, last block. Anyone teaching that the law ended somewhere in the middle has to account for the last chapters.
 

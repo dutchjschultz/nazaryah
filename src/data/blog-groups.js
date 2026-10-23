@@ -1,4 +1,5 @@
-// blog-groups 1022 V73.js
+// blog-groups 1023 V74.js
+// V74: three-verses-after-the-end joins scripture-unfiltered (category Scripture Unfiltered). Map total 176 -> 177.
 // V73: inAllStudies — the All Studies pool is the feed plus every investigation study
 // (investigation studies carry no category, so they sit outside the feed). Map unchanged.
 // V72: ezekiel-the-glory-leaves-and-returns joins the-quick-scroll (category The Quick Scroll). Map total 175 -> 176.
@@ -427,6 +428,7 @@ export const POST_GROUP = {
   'serpent-underfoot': 'scripture-unfiltered',
   'the-second-born': 'scripture-unfiltered',
   'the-higher-priesthood': 'scripture-unfiltered',
+  'three-verses-after-the-end': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;

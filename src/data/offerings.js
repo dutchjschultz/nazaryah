@@ -1,4 +1,5 @@
-// offerings 1012 V2.js
+// offerings 1023 V3.js
+// V3 (associations batch 69, Door 4): the sin offering's forward close links Three Verses After the End.
 // all five cards loaded: burnt, meal, peace, sin, trespass; page intro and close moved into the data file
 
 export const page = {
@@ -272,7 +273,7 @@ export const offerings = [
     ],
     "forward": [
       "The sin offering is at rest because its one job is done: “where remission of these is, there is no more offering for sin” (Hebrews 10:18). A believer who stumbles does not bring a new goat. He confesses and is covered by the same blood (1 John 2:1–2).",
-      "At rest does not mean thrown out. Ezekiel's closing vision still names a bullock for a sin offering at Pesach (Ezekiel 45:17, 22)."
+      "At rest does not mean thrown out. Ezekiel's closing vision still names a bullock for a sin offering at Pesach (Ezekiel 45:17, 22). How Ezekiel can still name it after the one offering is laid out in <a href=\"/blog/three-verses-after-the-end\"><i>Three Verses After the End</i></a>."
     ]
   },
   {

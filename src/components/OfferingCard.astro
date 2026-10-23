@@ -1,5 +1,6 @@
 ---
-// src/components/OfferingCard.astro · 1012 V3
+// src/components/OfferingCard.astro · 1023 V4
+// V4 (associations batch 69): links in the card text (offerings-text V2) are underlined in the text colour.
 // V3 (block 1012 V3): text carries <i>…</i> for italics; parenthesised Scripture
 // references are wrapped <span class="cite"> (the block's own regex); the
 // status pill has two looks — warm for Still standing, a cool blue-grey for At
@@ -119,6 +120,7 @@ const atRest = o.status !== 'Still standing';
   .oc-drop-body p, .oc-forward p { margin: 0 0 0.85rem; font-family: var(--font-body); font-size: 1.02rem; line-height: 1.7; color: #cfc7b6; }
   .oc :global(em), .oc :global(i) { font-family: var(--font-family-serif); font-style: italic; }
   .oc :global(.cite) { color: #8f8775; }
+  .oc :global(a) { color: inherit; text-decoration: underline; text-decoration-color: #b08a4a; text-underline-offset: 3px; }
 
   /* The New Testament side of each drop-down: a lightly shaded note. */
   .oc-believer {

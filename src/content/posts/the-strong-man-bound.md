@@ -5,7 +5,6 @@ deck: "Yahushua never told anyone to bind the strong man. He told them it was al
 verse: "Mark 3:22–30"
 date: 2026-10-01
 doctrines: ["the-millennium"]
-pinned: ["the-millennium"]
 author: "Nazaryah"
 category: "Parables"
 featured: false
