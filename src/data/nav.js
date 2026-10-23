@@ -1,4 +1,6 @@
-// nav 1018 V12.js
+// nav 1023 V13.js
+// V13 (Trilogy Triptych brief 1023 V1): Berean Studies carries `trilogies: true` — its dropdown becomes a
+// mega-menu with the Trilogies triptych beside the links (Header V22).
 // V12 (Etsy Block Abolition Problems 1018 V1): Lexicons gains Abolition Problems
 // (/torah/abolition-problems), label = its h1, directly under Trinity Problems.
 // V11 (Etsy Riddles Board 1018 V1): Riddles (/riddles), label = its h1, directly
@@ -96,6 +98,9 @@ export const mainNav = [
     sublabel: 'Acts 17:11',
     glyph: '✦',
     href: '/blog',
+    // The dropdown is a mega-menu: these links, with the Trilogies triptych beside
+    // them (TrilogyTriptych size="menu", from src/data/trilogies.js).
+    trilogies: true,
     links: [
       { label: 'Studies', href: '/blog/topics', desc: 'Full Bible studies, one subject at a time, sorted by topic.' },
       { label: "Pe'ah", href: '/peah', desc: 'A short read on one verse, one point. Fits with morning coffee.' },

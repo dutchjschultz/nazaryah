@@ -1,5 +1,10 @@
 ---
-// Header.astro · 1021 V21 — Slim Header brief 1021 V1: the bar drops to about
+// Header.astro · 1023 V22 — Trilogy Triptych brief 1023 V1: the Berean Studies
+// dropdown becomes a mega-menu (nav.js `trilogies: true`): its links in one column,
+// the Trilogies triptych beside them (TrilogyTriptych size="menu": titles left,
+// hover / focus / tap swaps, All trilogies at the foot). The phone menu carries the
+// same triptych at the end of its Berean Studies group (titles as a swipe row).
+// V21 · 1021 — Slim Header brief 1021 V1: the bar drops to about
 // half its height — logo 72px (was 110), tabs 44px (two-word tabs still stack),
 // home button 46px, the end picture a 58px square. The active tab keeps its dark
 // fill and gold edge. Phone: same menu, smaller logo only.
@@ -79,6 +84,7 @@
 // itself still links to /doctrines.
 import Logo from './Logo.astro';
 import ThemeToggle from './ThemeToggle.astro';
+import TrilogyTriptych from './TrilogyTriptych.astro';
 import { mainNav, utilityNav, NAV_DIVIDERS } from '../data/nav.js';
 
 // A label of two or more words stacks on two centred lines in the desktop row
@@ -101,7 +107,7 @@ const activeHref = (links: { href: string }[]) =>
   links.filter((l) => matches(l.href)).sort((a, b) => b.href.length - a.href.length)[0]?.href;
 
 type NavLink = { label: string; href: string; desc: string; pinned?: boolean };
-type Tab = { label: string; href?: string; sublabel?: string; glyph?: string; links?: NavLink[] };
+type Tab = { label: string; href?: string; sublabel?: string; glyph?: string; links?: NavLink[]; trilogies?: boolean };
 
 const tabs = (mainNav as Tab[]).map((tab, i) => {
   if (!tab.links) return { ...tab, id: `np-${i}`, active: matches(tab.href!) };
@@ -112,7 +118,7 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
     current,
     pinned: tab.links.filter((l) => l.pinned),
     rest: tab.links.filter((l) => !l.pinned),
-    twoCol: tab.links.length > 6,
+    twoCol: tab.links.length > 6 && !tab.trilogies,
     active: !!current || (tab.href ? matches(tab.href) : false),
   };
 });
@@ -141,7 +147,7 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
                   {stackOf(tab.label) ? <span class="nav-stack">{stackOf(tab.label)!.map((line) => <span>{line}</span>)}</span> : tab.label}
                   <span class="caret" aria-hidden="true">▾</span>
                 </button>
-                <div id={tab.id} class:list={['np-panel', tab.twoCol && 'np-panel--two']} data-np-panel>
+                <div id={tab.id} class:list={['np-panel', tab.twoCol && 'np-panel--two', tab.trilogies && 'np-panel--mega']} data-np-panel>
                   {tab.href ? (
                     <a href={tab.href} class="np-head np-head--link">
                       <span class="np-glyph" aria-hidden="true">{tab.glyph}</span>
@@ -172,16 +178,23 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
                       ))}
                     </ul>
                   )}
-                  <ul class="np-items">
-                    {tab.rest.map((l) => (
-                      <li>
-                        <a href={l.href} class:list={['np-item', tab.current === l.href && 'active']}>
-                          <span class="np-item-name">{l.label}</span>
-                          {l.desc && <span class="np-item-desc">{l.desc}</span>}
-                        </a>
-                      </li>
-                    ))}
-                  </ul>
+                  <div class:list={[tab.trilogies && 'np-mega']}>
+                    <ul class="np-items">
+                      {tab.rest.map((l) => (
+                        <li>
+                          <a href={l.href} class:list={['np-item', tab.current === l.href && 'active']}>
+                            <span class="np-item-name">{l.label}</span>
+                            {l.desc && <span class="np-item-desc">{l.desc}</span>}
+                          </a>
+                        </li>
+                      ))}
+                    </ul>
+                    {tab.trilogies && (
+                      <div class="np-trilogies">
+                        <TrilogyTriptych size="menu" idBase="ttm" />
+                      </div>
+                    )}
+                  </div>
                   <div class="np-foot">Separated unto Yahuah</div>
                 </div>
               </li>
@@ -265,6 +278,11 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
                     </a>
                   </li>
                 ))}
+                {tab.trilogies && (
+                  <li class="m-trilogies">
+                    <TrilogyTriptych size="menu" idBase="ttmm" />
+                  </li>
+                )}
               </ul>
             </li>
           ) : (
@@ -695,6 +713,12 @@ const tabs = (mainNav as Tab[]).map((tab, i) => {
     transition: opacity 0.18s ease, transform 0.18s ease, visibility 0.18s;
   }
   .np-panel--two { width: 42rem; }
+  /* Berean Studies mega-menu: the links in one column, the Trilogies triptych
+     beside them. place() keeps the wide panel on screen. */
+  .np-panel--mega { width: min(68rem, calc(100vw - 2rem)); }
+  .np-mega { display: grid; grid-template-columns: 17rem minmax(0, 1fr); }
+  .np-trilogies { padding: 1rem 1.2rem 1.1rem; border-left: 1px solid rgba(212, 165, 49, 0.18); min-width: 0; }
+  .m-trilogies { margin: 0.6rem 0 0.2rem; padding: 0.8rem 0.6rem; border: 1px solid rgba(212, 165, 49, 0.25); border-radius: 8px; background: rgba(0, 0, 0, 0.25); }
   .np-wrap.is-open .np-panel {
     visibility: visible;
     opacity: 1;

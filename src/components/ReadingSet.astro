@@ -1,5 +1,8 @@
 ---
-// ReadingSet.astro · 1019 V6
+// ReadingSet.astro · 1023 V7
+// V7 (Trilogy Triptych brief 1023 V1): the trilogy's title links to its tab on the
+// Trilogies page (/trilogies#<key>). The data now comes from src/data/trilogies.js
+// through reading-sets.js; nothing else here changes.
 // V6: with `only` (the /trilogies page) the panel carries id=<set key>, so a link
 // can land on one trilogy — /trilogies#awake-and-divided (the homepage pin).
 // V5: a reading can be book material outside the posts collection (a panel on
@@ -86,7 +89,7 @@ const sets = chosen.length
         <div class="rs-inner">
           <header class="rs-head">
             <p class="rs-kicker">A Trilogy</p>
-            <p class="rs-title">{set.title}</p>
+            <p class="rs-title"><a href={`/trilogies#${set.key}`} class="rs-title-link">{set.title}</a></p>
             <p class="rs-intro">Three studies that stand on their own and shed light on one another. Start with any one.</p>
           </header>
 
@@ -174,6 +177,8 @@ const sets = chosen.length
     text-transform: uppercase;
     color: #c49a4e;
   }
+  .rs-title-link { color: inherit; text-decoration: none; border-bottom: 1px solid rgba(196, 154, 78, 0.45); }
+  .rs-title-link:hover, .rs-title-link:focus-visible { color: #fff1c4; border-bottom-color: #c49a4e; }
   .rs-title {
     margin: 0.1rem 0 0;
     font-family: 'Crimson Pro', 'Crimson Text', Georgia, serif;

@@ -1,4 +1,11 @@
-// reading-sets 1023 V14.js
+// reading-sets 1023 V15.js
+// V15 (Trilogy Triptych brief 1023 V1): the trilogies now live in ONE list,
+// src/data/trilogies.js (edit that file, not this one). This file keeps the shape
+// the Trilogy panel (ReadingSet), the homepage pin and the studies map read —
+// key / title / readings[{ slug | href, title?, line }] / home — derived from it.
+// READING_SETS stays oldest first (trilogies.js is newest first), so a study in two
+// trilogies still opens on the same one by default (The Goat That Was Not Slain:
+// The Garment and the Blood).
 // V14: Trilogy "The Making of Lucifer" added — Is This the Man?, Thou Art a Man, and Not El,
 // The Lucifer Deception (batch 71, 1023). Lines are each study's deck; the panel keeps its
 // standing sentence, which is the batch's description.
@@ -54,216 +61,14 @@
 // So list the one you want shown by default first. An unknown slug is skipped,
 // so a typo can never break a page; check the panel after a deploy.
 
-export const READING_SETS = [
-  {
-    key: "the-garment-and-the-blood",
-    title: "The Garment and the Blood",
-    readings: [
-      {
-        slug: "clothed-by-the-owner",
-        line: "The garment: who made the covering, and what it cost.",
-      },
-      {
-        slug: "goat-that-was-not-slain",
-        line: "The blood: two goats, one day, one finished work.",
-      },
-      {
-        slug: "the-robe-of-the-firstborn",
-        line: "Where the two meet: the firstborn's robe, dipped in blood.",
-      },
-    ],
-  },
-  {
-    key: "the-tenth-day",
-    title: "The Tenth Day",
-    readings: [
-      {
-        slug: "the-kapporet-atonement-cover",
-        line: "The cover: what the blood was sprinkled on, and why.",
-      },
-      {
-        slug: "goat-that-was-not-slain",
-        line: "The goats: one slain, one sent away.",
-      },
-      {
-        slug: "the-year-of-liberty",
-        line: "The trumpet: the Jubilee sounded on the same day.",
-      },
-    ],
-  },
-  {
-    key: "how-yahuah-speaks",
-    title: "How Yahuah Speaks",
-    readings: [
-      {
-        slug: "heavens-letters-words-son",
-        line: "Four voices: the sky, the letters, the words, the Son.",
-      },
-      {
-        slug: "dark-sayings-of-old",
-        line: "The parables: meanings written long before they were spoken.",
-      },
-      {
-        slug: "prophets-and-prophecy",
-        line: "The last voice: why heaven has nothing left to add.",
-      },
-    ],
-  },
-  {
-    key: "the-beast-of-revelation-13",
-    title: "The Beast of Revelation 13",
-    readings: [
-      {
-        href: "/books/revelation#chapter-13",
-        title: "Chapter 13 — False Claims Enforced",
-        line: "The sea beast rises, receives the dragon's throne, and demands the world's allegiance.",
-      },
-      {
-        slug: "the-copy-of-the-son",
-        line: "Seven marks on the beast, every one lifted from the life of Yahushua.",
-      },
-      {
-        href: "/books/revelation#court-appeal-2",
-        title: "Court Appeal II — The Woman, the Beast, and the Second Beast",
-        line: "Rome, the Edomite layer, and the whole system: the court identifies the coalition.",
-      },
-    ],
-  },
-  {
-    key: "when-the-father-spoke",
-    title: "When the Father Spoke",
-    readings: [
-      {
-        slug: "two-mountains",
-        line: "Sinai and the high mountain: the voice Israel feared says, 'Hear ye him.'",
-      },
-      {
-        slug: "trinity-files-matthew-3-13-17",
-        line: "The Jordan: the Father's voice names His beloved Son.",
-      },
-      {
-        slug: "yet-once-more",
-        line: "The last word: heaven shakes, and the kingdom remains.",
-      },
-    ],
-  },
-  {
-    key: "the-star-of-your-god",
-    title: "The Star of Your God",
-    readings: [
-      {
-        slug: "saturnalia",
-        line: "Saturn's star: Rome's December week, kept under a new name.",
-      },
-      {
-        slug: "ashtoreth",
-        line: "The queen of heaven: the goddess Israel would not put away.",
-      },
-      {
-        slug: "esther-ishtar-marduk",
-        line: "Ishtar and Marduk: the star names carried into the book of Esther.",
-      },
-    ],
-  },
-  {
-    key: "the-marriage-covenant",
-    title: "The Marriage Covenant",
-    readings: [
-      {
-        slug: "marriage-and-divorce",
-        line: "The writ Yahuah gave, the treachery He hates, and the bride brought home.",
-      },
-      {
-        slug: "the-law-of-jealousy",
-        line: "The bitter cup of Numbers 5, taken from the bride and handed to the Son.",
-      },
-      {
-        slug: "fornication-and-adultery",
-        line: "Two words, two covenants, two judgments: the divorced sister and the defiled one.",
-      },
-    ],
-  },
-  {
-    key: "born-of-a-woman",
-    title: "Born of a Woman",
-    readings: [
-      {
-        slug: "the-seed-war",
-        line: "The promise of Genesis 3:15 and the war waged against the seed of the woman.",
-      },
-      {
-        slug: "the-genesis-of-the-son",
-        line: "Where Matthew and Luke place His origin: begotten in Mary, not in eternity.",
-      },
-      {
-        slug: "incarnate",
-        line: "A god in flesh is pagan in a Hindu temple and gospel in a church pew.",
-      },
-    ],
-  },
-  {
-    key: "awake-and-divided",
-    title: "Awake and Divided",
-    readings: [
-      {
-        slug: "the-first-awakening-northampton",
-        line: "The revival every pulpit praises left the colonies with rival churches in every town.",
-      },
-      {
-        slug: "the-second-awakening-cane-ridge",
-        line: "Camp meetings, the altar call, and a first seminary built to guard a creed.",
-      },
-      {
-        slug: "the-third-awakening-azusa-street",
-        line: "A tongues revival in an old Los Angeles stable, and the splits that followed.",
-      },
-    ],
-    // Pinned on the homepage for 14 days (Dutch 1019).
-    home: {
-      deck: "Three awakenings, three places, one pattern — the church woke up divided.",
-      group: "buried-in-plain-sight",
-      location: ["Berean Studies", "Buried in Plain Sight"],
-      date: "2026-10-19",
-      featuredAt: "2026-10-19T19:00",
-      featuredUntil: "2026-11-02",
-    },
-  },
-  {
-    key: "walking-in-the-vows",
-    title: "Walking in the Vows",
-    readings: [
-      {
-        slug: "given-in-love",
-        line: "Ten words spoken to a rescued people. Not a wall of rules, but a promise.",
-      },
-      {
-        slug: "written-on-the-heart",
-        line: "Same law, new place. The finger that wrote on stone now writes on hearts.",
-      },
-      {
-        slug: "examined-at-the-wedding",
-        line: "The same judgment seen from the wedding. The Bridegroom examines by the vows.",
-      },
-    ],
-  },  {
-    key: "the-making-of-lucifer",
-    title: "The Making of Lucifer",
-    readings: [
-      {
-        slug: "is-this-the-man",
-        line: "The verse preached as Satan’s fall is a taunt song over a dead king of Babylon.",
-      },
-      {
-        slug: "thou-art-a-man-and-not-el",
-        line: "The chapter preached as the devil’s life story names a king, a city, and his trade.",
-      },
-      {
-        slug: "the-lucifer-deception",
-        line: "How a Latin word for the morning star became the devil’s name.",
-      },
-    ],
-  },
-];
+import { TRILOGIES } from './trilogies.js';
+
+export const READING_SETS = [...TRILOGIES].reverse().map((t) => ({
+  key: t.id,
+  title: t.title,
+  readings: t.studies.map((s) => (s.slug ? { slug: s.slug, line: s.deck } : { href: s.href, title: s.title, line: s.deck })),
+  ...(t.home ? { home: t.home } : {}),
+}));
 
 // A reading is identified by its slug (a study) or its href (book material).
 export const readingId = (r) => r.slug ?? r.href;

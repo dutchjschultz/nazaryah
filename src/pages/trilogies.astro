@@ -1,26 +1,25 @@
 ---
-// trilogies.astro · 1007 V1 — the Trilogies item in the Berean Studies menu.
-// Every trilogy in src/data/reading-sets.js, each shown in the same dark panel
-// that sits at the top of its studies (ReadingSet.astro with `only`). Adding a
-// trilogy to the data file adds it here; nothing in this page changes.
+// trilogies.astro · 1023 V2 — the Trilogies item in the Berean Studies menu.
+// V2 (Trilogy Triptych brief 1023 V1): one trilogy at a time. A row of tabs, one
+// per trilogy (newest first), over a fixed stage that shows the chosen trilogy as
+// a triptych (TrilogyTriptych). The page no longer grows a screen per trilogy:
+// every stage shares one cell, so its height is the tallest trilogy's.
+// /trilogies#<id> opens that trilogy's tab. Title and subtitle show once, here.
+// V1: every trilogy in src/data/reading-sets.js, each in its own dark panel.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import StudiesHero from '../components/StudiesHero.astro';
-import ReadingSet from '../components/ReadingSet.astro';
-import { READING_SETS } from '../data/reading-sets.js';
+import TrilogyTriptych from '../components/TrilogyTriptych.astro';
 ---
 
 <BaseLayout title="Trilogies - Berean Studies - Nazaryah" description="Three studies that stand on their own and shed light on one another.">
   <StudiesHero title="Trilogies">
-    Three studies that stand on their own and shed light on one another. Start with any one, and the other two will open it wider.
+    Three studies that stand on their own and shed light on one another. Start with any one.
   </StudiesHero>
   <section class="tri-wrap">
-    <div class="tri-inner">
-      {READING_SETS.map((set) => <ReadingSet only={set.key} />)}
-    </div>
+    <TrilogyTriptych size="page" />
   </section>
 </BaseLayout>
 
 <style>
-  .tri-wrap { background: #0a0a0a; padding: 2.5rem 1rem 3.5rem; border-top: 3px solid #b89150; }
-  .tri-inner { max-width: 64rem; margin: 0 auto; display: flex; flex-direction: column; gap: 1.5rem; }
+  .tri-wrap { padding: 2.25rem 1rem 3.5rem; overflow-x: clip; }
 </style>

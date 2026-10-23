@@ -1,0 +1,289 @@
+---
+// src/components/TrilogyTriptych.astro · 1023 V1
+// V1 (Trilogy Triptych brief 1023 V1): one trilogy at a time, chosen from a row of
+// tabs, shown as a triptych — three arched panels side by side, the centre one
+// taller, like an altarpiece. Each panel is the whole link: a gold seal, the study
+// title, its italic deck line, "Read the study". Two sizes, one data file
+// (src/data/trilogies.js via src/lib/trilogies.js):
+//   size="page"  the Trilogies page. Tabs ("TRILOGY" eyebrow over the italic
+//                title) join the stage beneath; the row scrolls sideways, never
+//                the page. /trilogies#<id> opens that tab, and a tab change
+//                updates the address.
+//   size="menu"  the Berean Studies mega-menu. Titles in a narrow left column
+//                (hover, focus or tap swaps), "All trilogies" at its foot, a
+//                compact triptych on the right. Always on the dropdown's dark ground.
+// Every stage is drawn and stacked in one grid cell, so the stage is as tall as
+// the tallest trilogy and the page height never changes with the number of
+// trilogies. On a swap the two side panels fold inward and reopen with the new
+// trilogy (page size; off under prefers-reduced-motion). Phones: the tabs or
+// titles become a swipe row, and the panels stack in one column with square tops.
+// Colours: light values first, restated under :global(.dark) (see ReadingSet's
+// colour note — several site tokens have no dark value).
+import { resolvedTrilogies } from '../lib/trilogies.js';
+// `idBase` keeps ids unique when the menu triptych is drawn twice (desktop panel
+// and phone menu).
+interface Props { size?: 'page' | 'menu'; idBase?: string; }
+const { size = 'page', idBase = 'ttm' } = Astro.props;
+const trilogies = await resolvedTrilogies();
+const isPage = size === 'page';
+const stageId = (id: string) => (isPage ? id : `${idBase}-${id}`);
+const pickId = (id: string) => (isPage ? `tt-tab-${id}` : `${idBase}-pick-${id}`);
+const first = trilogies[0]?.id;
+---
+{trilogies.length > 0 && (
+  <div class:list={['tt', `tt--${size}`]} data-tt data-size={size} data-current={first}>
+    {isPage ? (
+      <div class="tt-tabs" role="tablist" aria-label="Trilogies">
+        {trilogies.map((t) => (
+          <button type="button" role="tab" class="tt-tab" id={pickId(t.id)} data-tt-pick={t.id}
+            aria-selected={t.id === first ? 'true' : 'false'} aria-controls={stageId(t.id)} tabindex={t.id === first ? 0 : -1}>
+            <span class="tt-tab-eyebrow">Trilogy</span>
+            <span class="tt-tab-title">{t.title}</span>
+          </button>
+        ))}
+      </div>
+    ) : (
+      <div class="tt-list">
+        <p class="tt-list-head">Trilogies</p>
+        <div class="tt-picks">
+          {trilogies.map((t) => (
+            <button type="button" class="tt-pick" id={pickId(t.id)} data-tt-pick={t.id}
+              aria-pressed={t.id === first ? 'true' : 'false'} aria-controls={stageId(t.id)}>{t.title}</button>
+          ))}
+        </div>
+        <a class="tt-all" href="/trilogies">All trilogies <span aria-hidden="true">&rarr;</span></a>
+      </div>
+    )}
+
+    <div class="tt-stages">
+      {trilogies.map((t) => (
+        <section class:list={['tt-stage', t.id === first && 'is-on']} id={stageId(t.id)} data-tt-stage={t.id}
+          role={isPage ? 'tabpanel' : undefined} aria-labelledby={pickId(t.id)} aria-hidden={t.id === first ? undefined : 'true'}>
+          {isPage && <p class="tt-eyebrow">A Trilogy</p>}
+          <h2 class="tt-title">{isPage ? t.title : <a href={t.href} tabindex={t.id === first ? undefined : -1}>{t.title}</a>}</h2>
+          {t.line && <p class="tt-line">{t.line}</p>}
+          <div class="tt-panels">
+            {t.studies.map((s, i) => (
+              <a class:list={['tt-panel', i === 1 ? 'tt-panel--centre' : i === 0 ? 'tt-panel--left' : 'tt-panel--right']}
+                href={s.href} tabindex={t.id === first ? undefined : -1}>
+                <span class="tt-seal" aria-hidden="true"><span>✦</span></span>
+                <span class="tt-panel-title">{s.title}</span>
+                {s.deck && <span class="tt-panel-deck">{s.deck}</span>}
+                <span class="tt-read">Read the study <span aria-hidden="true">&rarr;</span></span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
+    </div>
+  </div>
+)}
+
+<script>
+  const FOLD_MS = 220;
+  const still = () => window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  for (const root of document.querySelectorAll<HTMLElement>('[data-tt]')) {
+    const isPage = root.dataset.size === 'page';
+    const picks = Array.from(root.querySelectorAll<HTMLElement>('[data-tt-pick]'));
+    const stages = new Map(Array.from(root.querySelectorAll<HTMLElement>('[data-tt-stage]')).map((s) => [s.dataset.ttStage!, s]));
+    let timer: number | undefined;
+
+    const mark = (id: string) => {
+      for (const p of picks) {
+        const on = p.dataset.ttPick === id;
+        p.setAttribute(isPage ? 'aria-selected' : 'aria-pressed', on ? 'true' : 'false');
+        if (isPage) p.tabIndex = on ? 0 : -1;
+      }
+    };
+    const light = (stage: HTMLElement, on: boolean) => {
+      stage.classList.toggle('is-on', on);
+      if (on) stage.removeAttribute('aria-hidden'); else stage.setAttribute('aria-hidden', 'true');
+      stage.querySelectorAll<HTMLElement>('a').forEach((a) => (on ? a.removeAttribute('tabindex') : (a.tabIndex = -1)));
+    };
+
+    function show(id: string, animate: boolean) {
+      const next = stages.get(id);
+      const prev = stages.get(root.dataset.current!);
+      if (!next || next === prev) return;
+      root.dataset.current = id;
+      mark(id);
+      window.clearTimeout(timer);
+      stages.forEach((s) => s.classList.remove('is-folded'));
+      if (!animate || still() || !prev) {
+        stages.forEach((s) => light(s, s === next));
+        return;
+      }
+      prev.classList.add('is-folded');           // the side panels fold inward
+      timer = window.setTimeout(() => {
+        light(prev, false);
+        prev.classList.remove('is-folded');
+        next.classList.add('is-folded');
+        light(next, true);
+        requestAnimationFrame(() => requestAnimationFrame(() => next.classList.remove('is-folded'))); // and reopen
+      }, FOLD_MS);
+    }
+
+    for (const p of picks) {
+      const id = p.dataset.ttPick!;
+      p.addEventListener('click', () => {
+        show(id, isPage);
+        if (isPage) history.replaceState(null, '', `#${id}`);
+      });
+      if (!isPage) {
+        p.addEventListener('mouseenter', () => show(id, false));
+        p.addEventListener('focus', () => show(id, false));
+      }
+    }
+
+    if (isPage) {
+      // Arrow keys move along the tab row, as a tab list should.
+      root.querySelector('[role="tablist"]')?.addEventListener('keydown', (e: Event) => {
+        const k = (e as KeyboardEvent).key;
+        if (k !== 'ArrowRight' && k !== 'ArrowLeft') return;
+        const i = picks.findIndex((p) => p.dataset.ttPick === root.dataset.current);
+        const n = picks[(i + (k === 'ArrowRight' ? 1 : -1) + picks.length) % picks.length];
+        n.focus(); n.click(); n.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      });
+      const fromHash = () => {
+        const id = decodeURIComponent(location.hash.slice(1));
+        if (!stages.has(id)) return;
+        show(id, false);
+        root.querySelector<HTMLElement>(`[data-tt-pick="${id}"]`)?.scrollIntoView({ block: 'nearest', inline: 'center' });
+      };
+      fromHash();
+      window.addEventListener('hashchange', fromHash);
+    }
+  }
+</script>
+
+<style>
+  /* ── Shared shape ─────────────────────────────────────────────────────── */
+  .tt-stages { display: grid; }
+  .tt-stage { grid-area: 1 / 1; visibility: hidden; opacity: 0; transition: opacity 0.2s ease; min-width: 0; }
+  .tt-stage.is-on { visibility: visible; opacity: 1; }
+
+  .tt-panels { display: grid; grid-template-columns: 1fr 1.12fr 1fr; align-items: end; gap: 1.1rem; }
+  .tt-panel {
+    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 0.55rem;
+    padding: 2.6rem 1.2rem 1.3rem; text-decoration: none; min-width: 0;
+    border-radius: 50% 50% 10px 10px / 7.5rem 7.5rem 10px 10px;
+    transition: transform 0.22s ease, opacity 0.22s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  }
+  .tt-panel--left { transform-origin: right center; }
+  .tt-panel--right { transform-origin: left center; }
+  .tt-stage.is-folded .tt-panel--left,
+  .tt-stage.is-folded .tt-panel--right { transform: perspective(900px) scaleX(0.06); opacity: 0.25; }
+  .tt-stage.is-folded .tt-panel--centre { opacity: 0.5; }
+  .tt-panel:hover, .tt-panel:focus-visible { transform: translateY(-3px); outline: none; }
+
+  .tt-seal {
+    display: grid; place-items: center; width: 2.6rem; height: 2.6rem; border-radius: 50%;
+    background: radial-gradient(circle at 35% 30%, #f3d27a 0%, #c99a3a 55%, #8a6520 100%);
+    box-shadow: inset 0 0 0 2px rgba(255, 241, 196, 0.55), inset 0 0 0 5px rgba(138, 101, 32, 0.55), 0 2px 6px rgba(0, 0, 0, 0.25);
+    color: #4a2808; font-size: 1rem; flex: none;
+  }
+  .tt-panel-title { font-family: var(--font-display); font-weight: 700; letter-spacing: 0.02em; line-height: 1.25; }
+  .tt-panel-deck { font-family: var(--font-family-serif); font-style: italic; line-height: 1.4; }
+  .tt-read {
+    margin-top: auto; padding-top: 0.5rem; font-family: var(--font-display); font-size: 0.66rem;
+    font-weight: 700; letter-spacing: 0.18em; text-transform: uppercase;
+  }
+
+  /* ── Page size ────────────────────────────────────────────────────────── */
+  .tt--page { max-width: 64rem; margin: 0 auto; }
+  .tt-tabs {
+    display: flex; gap: 0.4rem; overflow-x: auto; overscroll-behavior-x: contain; scrollbar-width: thin;
+    padding: 0 0.2rem; position: relative; z-index: 1;
+    scrollbar-color: #b89150 transparent;
+  }
+  .tt-tab {
+    flex: none; display: flex; flex-direction: column; align-items: flex-start; gap: 0.1rem;
+    padding: 0.55rem 1rem 0.6rem; cursor: pointer; text-align: left;
+    background: #e8d9b3; border: 1px solid #c8a878; border-bottom: none; border-radius: 8px 8px 0 0;
+    color: #5b4530; margin-bottom: -1px; transition: background 0.15s ease, color 0.15s ease;
+  }
+  .tt-tab:hover { background: #f0e3c2; color: #2b1d11; }
+  .tt-tab[aria-selected='true'] { background: #f5e8c8; color: #2b1d11; border-color: #9c7c4c; padding-bottom: 0.7rem; }
+  .tt-tab:focus-visible { outline: 2px solid #8a6520; outline-offset: -3px; }
+  .tt-tab-eyebrow { font-family: var(--font-display); font-size: 0.58rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: #8a6520; }
+  .tt-tab-title { font-family: var(--font-family-serif); font-style: italic; font-size: 1.02rem; white-space: nowrap; }
+
+  .tt--page .tt-stages {
+    background: radial-gradient(ellipse at top, #f5e8c8 0%, #e8d5a3 100%);
+    border: 1px solid #9c7c4c; border-radius: 0 10px 10px 10px;
+    padding: 2rem 2rem 2.2rem; box-shadow: 0 10px 30px -18px rgba(43, 29, 17, 0.6);
+  }
+  .tt--page .tt-eyebrow { font-family: var(--font-display); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.26em; text-transform: uppercase; color: #8a6520; margin: 0; text-align: center; }
+  .tt--page .tt-title { font-family: var(--font-display); font-size: clamp(1.5rem, 1.1rem + 1.6vw, 2.2rem); font-weight: 700; color: #2b1d11; margin: 0.35rem 0 0; text-align: center; }
+  .tt--page .tt-line { font-family: var(--font-family-serif); font-style: italic; font-size: 1.12rem; color: #5b4530; margin: 0.4rem auto 0; max-width: 40rem; text-align: center; }
+  .tt--page .tt-panels { margin-top: 1.8rem; }
+  .tt--page .tt-panel { min-height: 19rem; background: #faf0d4; border: 1px solid #c8a878; box-shadow: 0 6px 18px -12px rgba(43, 29, 17, 0.55); }
+  .tt--page .tt-panel--centre { min-height: 22rem; border-color: #9c7c4c; }
+  .tt--page .tt-panel:hover, .tt--page .tt-panel:focus-visible { border-color: #8a6520; box-shadow: 0 10px 24px -12px rgba(43, 29, 17, 0.6), 0 0 0 1px #b89150; }
+  .tt--page .tt-panel-title { font-size: 1.02rem; color: #2b1d11; }
+  .tt--page .tt-panel-deck { font-size: 1rem; color: #5b4530; }
+  .tt--page .tt-read { color: #8a6520; }
+
+  :global(.dark) .tt-tab { background: #2a1d10; border-color: #5a4226; color: #c4ad84; }
+  :global(.dark) .tt-tab:hover { background: #33240f; color: #f0e0bf; }
+  :global(.dark) .tt-tab[aria-selected='true'] { background: #3a2a18; color: #f0e0bf; border-color: #7a5a36; }
+  :global(.dark) .tt-tab-eyebrow { color: #d4a85f; }
+  :global(.dark) .tt--page .tt-stages { background: radial-gradient(ellipse at top, #3a2a18 0%, #2a1d10 100%); border-color: #7a5a36; box-shadow: 0 10px 30px -18px rgba(0, 0, 0, 0.8); }
+  :global(.dark) .tt--page .tt-eyebrow { color: #d4a85f; }
+  :global(.dark) .tt--page .tt-title { color: #f0e0bf; }
+  :global(.dark) .tt--page .tt-line { color: #c4ad84; }
+  :global(.dark) .tt--page .tt-panel { background: #1f150b; border-color: #5a4226; box-shadow: 0 6px 18px -12px rgba(0, 0, 0, 0.9); }
+  :global(.dark) .tt--page .tt-panel--centre { border-color: #7a5a36; }
+  :global(.dark) .tt--page .tt-panel:hover, :global(.dark) .tt--page .tt-panel:focus-visible { border-color: #d4a85f; box-shadow: 0 10px 24px -12px rgba(0, 0, 0, 0.9), 0 0 0 1px #d4a85f; }
+  :global(.dark) .tt--page .tt-panel-title { color: #f0e0bf; }
+  :global(.dark) .tt--page .tt-panel-deck { color: #c4ad84; }
+  :global(.dark) .tt--page .tt-read { color: #d4a85f; }
+
+  /* ── Menu size (the dropdown's dark ground in both themes) ────────────── */
+  .tt--menu { display: grid; grid-template-columns: 12.5rem minmax(0, 1fr); gap: 1.1rem; }
+  .tt-list { display: flex; flex-direction: column; min-width: 0; border-right: 1px solid rgba(212, 165, 49, 0.18); padding-right: 0.9rem; }
+  .tt-list-head { font-family: var(--font-display); font-size: 0.62rem; font-weight: 700; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(240, 196, 80, 0.75); margin: 0 0 0.4rem; }
+  .tt-picks { display: flex; flex-direction: column; gap: 0.1rem; }
+  .tt-pick {
+    text-align: left; cursor: pointer; background: none; border: 1px solid transparent; border-radius: 5px;
+    padding: 0.35rem 0.55rem; font-family: var(--font-family-serif); font-style: italic; font-size: 0.95rem; color: #c9b48f;
+  }
+  .tt-pick:hover, .tt-pick:focus-visible { color: #fff1c4; background: rgba(168, 127, 31, 0.14); outline: none; }
+  .tt-pick[aria-pressed='true'] { color: #fff1c4; background: rgba(168, 127, 31, 0.2); border-color: rgba(212, 165, 49, 0.3); }
+  .tt-all { margin-top: 0.7rem; padding: 0.35rem 0.55rem; font-family: var(--font-display); font-size: 0.66rem; font-weight: 700; letter-spacing: 0.16em; text-transform: uppercase; color: #e2bd62; text-decoration: none; }
+  .tt-all:hover, .tt-all:focus-visible { color: #fff1c4; }
+  .tt--menu .tt-title { font-family: var(--font-display); font-size: 0.95rem; font-weight: 700; letter-spacing: 0.06em; margin: 0 0 0.25rem; text-align: center; }
+  .tt--menu .tt-title a { color: #e2bd62; text-decoration: none; }
+  .tt--menu .tt-title a:hover { color: #fff1c4; }
+  .tt--menu .tt-line { font-family: var(--font-family-serif); font-style: italic; font-size: 0.88rem; color: #a89478; margin: 0 0 0.3rem; text-align: center; }
+  .tt--menu .tt-panels { gap: 0.6rem; margin-top: 0.5rem; }
+  .tt--menu .tt-panel {
+    min-height: 12.5rem; padding: 1.6rem 0.7rem 0.8rem; gap: 0.35rem;
+    border-radius: 50% 50% 8px 8px / 4.5rem 4.5rem 8px 8px;
+    background: linear-gradient(180deg, rgba(168, 127, 31, 0.16), rgba(0, 0, 0, 0.25));
+    border: 1px solid rgba(212, 165, 49, 0.35);
+  }
+  .tt--menu .tt-panel--centre { min-height: 14rem; border-color: rgba(212, 165, 49, 0.55); }
+  .tt--menu .tt-panel:hover, .tt--menu .tt-panel:focus-visible { border-color: #e2bd62; box-shadow: 0 0 0 1px rgba(226, 189, 98, 0.5); }
+  .tt--menu .tt-seal { width: 1.8rem; height: 1.8rem; font-size: 0.75rem; }
+  .tt--menu .tt-panel-title { font-size: 0.74rem; color: #f0e0bf; }
+  .tt--menu .tt-panel-deck { font-size: 0.82rem; color: #a89478; display: -webkit-box; -webkit-line-clamp: 4; -webkit-box-orient: vertical; overflow: hidden; }
+  .tt--menu .tt-read { font-size: 0.56rem; color: #e2bd62; }
+
+  /* ── Phones ───────────────────────────────────────────────────────────── */
+  @media (max-width: 719px) {
+    .tt-panels, .tt--menu .tt-panels { grid-template-columns: minmax(0, 1fr); align-items: stretch; }
+    .tt-panel, .tt--menu .tt-panel { border-radius: 10px; min-height: 0 !important; padding-top: 1.2rem; }
+    .tt--page .tt-stages { padding: 1.4rem 1rem 1.5rem; border-radius: 0 10px 10px 10px; }
+    .tt-stage.is-folded .tt-panel--left, .tt-stage.is-folded .tt-panel--right { transform: none; opacity: 0.4; }
+    .tt--menu { grid-template-columns: minmax(0, 1fr); gap: 0.6rem; }
+    .tt-list { border-right: none; padding-right: 0; }
+    .tt-picks { flex-direction: row; overflow-x: auto; overscroll-behavior-x: contain; gap: 0.35rem; padding-bottom: 0.3rem; scrollbar-width: thin; }
+    .tt-pick { flex: none; white-space: nowrap; border-color: rgba(212, 165, 49, 0.25); }
+    .tt-all { order: 3; margin-top: 0.3rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .tt-stage, .tt-panel { transition: none; }
+  }
+</style>
