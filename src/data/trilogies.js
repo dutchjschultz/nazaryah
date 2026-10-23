@@ -1,5 +1,6 @@
-// trilogies 1023 V2.js
-// V2 (trilogy-subtitles 1023 V1): stage subtitle lines for ten trilogies; The Making of Lucifer's line to follow.
+// trilogies 1023 V3.js
+// V3: The Making of Lucifer's subtitle line (Dutch 1023). Every trilogy now has one.
+// V2 (trilogy-subtitles 1023 V1): stage subtitle lines for ten trilogies.
 // V1: first build — trilogy list for the triptych page and nav mega-menu
 //
 // THE ONE LIST OF TRILOGIES — studies that stand alone but belong together,
@@ -29,7 +30,7 @@ export const TRILOGIES = [
   {
     id: "the-making-of-lucifer",
     title: "The Making of Lucifer",
-    line: "",
+    line: "Two kings, one Latin word, and the fallen angel the church built from them.",
     studies: [
       { slug: "is-this-the-man", deck: "The verse preached as Satan’s fall is a taunt song over a dead king of Babylon." },
       { slug: "thou-art-a-man-and-not-el", deck: "The chapter preached as the devil’s life story names a king, a city, and his trade." },
