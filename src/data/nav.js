@@ -1,4 +1,5 @@
-// nav 1023 V13.js
+// nav 1024 V14.js
+// V14: Counterfeits item renamed "Spirit of Truth or Seducing Spirits?" (was Christian or Demonic?); desc names the practices with no count (Dutch 1024). Href unchanged.
 // V13 (Trilogy Triptych brief 1023 V1): Berean Studies carries `trilogies: true` — its dropdown becomes a
 // mega-menu with the Trilogies triptych beside the links (Header V22).
 // V12 (Etsy Block Abolition Problems 1018 V1): Lexicons gains Abolition Problems
@@ -22,7 +23,7 @@
 // V6: STANDING RULE (Dutch, 1012) — every dropdown item's label is the title of
 // the page it opens, exactly as the page shows it (its <h1>); the page title wins.
 // Twelve items renamed to match (Doctrines, Foreign Fire, Catholicism, Holidays,
-// Christian or Demonic?, the Calendar, Ekklesia, Pe'ah, Investigations,
+// Spirit of Truth or Seducing Spirits?, the Calendar, Ekklesia, Pe'ah, Investigations,
 // Pathways, Hidden Gems, Books). New menu items take their page's title.
 // scripts/check-nav-titles.mjs reports any drift after a build.
 // V5 (Homepage spec 1012 V3, A6): "Hebrew Word Studies" → "The Hebrew Tongue",
@@ -73,7 +74,7 @@ export const mainNav = [
       { label: 'Hollywood', href: '/hollywood', desc: 'How the screen taught a generation to cheer for wizards and witches.' },
       { label: 'American Idolatry', href: '/american-idolatry', desc: 'When the flag stands on the pulpit and the nation becomes the covenant.' },
       { label: 'Unmasking the Holidays', href: '/holidays', desc: 'Christmas, Easter, and Sunday — days the church kept that Scripture never named.' },
-      { label: 'Christian or Demonic?', href: '/christian-or-demonic', desc: 'Five pillars every believer inherited, held up to the text.' },
+      { label: 'Spirit of Truth or Seducing Spirits?', href: '/christian-or-demonic', desc: 'The practices every believer inherited, held up to the text.' },
       { label: 'The Paper Trail', href: '/on-these-two', desc: 'Every false teaching traced back up the tree to the root it grew from.' },
       { label: 'Greek Influence', href: '/doctrines/borrowed-words', desc: 'The Greek behind the doctrines.' },
     ],

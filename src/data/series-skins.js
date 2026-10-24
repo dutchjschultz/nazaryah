@@ -1,4 +1,5 @@
-// series-skins 1018 V9.js
+// series-skins 1024 V10.js
+// V10: the Christian or Demonic? series is renamed "Spirit of Truth or Seducing Spirits?" (name, title; the description names the practices with no count, Dutch 1024). Slug /christian-or-demonic unchanged.
 // V9 (Etsy Block Abolition Problems 1018 V1): SECTIONS gains 'torah' (Torah, /torah),
 // wearing the torah skin, so a single page filed under the Torah page (first:
 // Abolition Problems) is dated through page-dates.json like Trinity Problems.
@@ -123,8 +124,8 @@ export const SKINS = {
     glow: GLOW, accent: '#9a8f80', ctaColor: GOLD,
   },
   'christian-or-demonic': {
-    name: 'Christian or Demonic?', href: '/christian-or-demonic', icon: '⚖', kicker: 'Test what you were taught',
-    title: 'Christian <em>or Demonic?</em>', description: 'Five pillars every believer inherited without testing. Hold each one to the text and see what stands.', cta: 'Begin the Examination',
+    name: 'Spirit of Truth or Seducing Spirits?', href: '/christian-or-demonic', icon: '⚖', kicker: 'Test what you were taught',
+    title: 'Spirit of Truth <em>or Seducing Spirits?</em>', description: 'The practices every believer inherited without testing. Hold each one to the text and see what stands.', cta: 'Begin the Examination',
     background: 'radial-gradient(ellipse at 50% 30%, #5a1010 0%, #2a0808 70%, #180404 100%)',
     glow: GLOW, accent: '#a83a3a', ctaColor: GOLD,
   },
