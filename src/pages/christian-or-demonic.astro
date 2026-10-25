@@ -4,13 +4,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 
 <BaseLayout
   title="Spirit of Truth or Seducing Spirits? — Nazaryah"
-  description="Eight things every believer inherited, held up to Scripture and history. Prayer, Music, the Canon, Translations, Language & Symbols, the Altar Call, Children's Church, and the Tithe — examined one at a time."
+  description="Ten things every believer inherited, held up to Scripture and history. Three were handed down before anyone in the pew was born — the Canon, Translations, Language & Symbols. Seven are things the church does every week — Prayer, Music, the Altar Call, Children's Church, the Tithe, Ministries, and the Sermon."
 >
   <div class="cod-wrap">
 
     <!-- HERO -->
     <section class="cod-hero">
-      <p class="cod-label">&#8213; An Eight-Part Examination &#8213;</p>
+      <p class="cod-label">&#8213; A Ten-Part Examination &#8213;</p>
       <h1 class="cod-title">Spirit of Truth <em>or</em> Seducing Spirits?</h1>
       <p class="cod-sub">
         Let Scripture &amp; history decide.
@@ -24,10 +24,10 @@ import BaseLayout from '../layouts/BaseLayout.astro';
           Yahushua promised that "the Spirit of truth" would "guide you into all truth" (John 16:13). Paul warned that "in the latter times some shall depart from the faith, giving heed to seducing spirits, and doctrines of devils" (1 Timothy 4:1). Every practice in these chapters came from one or the other.
         </p>
         <p>
-          Ask any believer what prayer means, what music is for, where their Bible came from, why they worship on Sunday, or what the cross, the fish, and the steeple actually are — and you will get answers passed down from a pulpit, not tested against the text. Then ask where the altar call came from, why the children leave the room, and whose storehouse the tithe goes to. Eight pillars of modern Christianity, eight uncomfortable questions, and eight answers Scripture gives that almost no one asks.
+          Ask any believer what prayer means, what music is for, where their Bible came from, why they worship on Sunday, or what the cross, the fish, and the steeple actually are — and you will get answers passed down from a pulpit, not tested against the text. Then ask where the altar call came from, why the children leave the room, whose storehouse the tithe goes to, what a "ministry" is, and why one man talks for an hour while everyone else listens. Ten chapters, ten uncomfortable questions, and ten answers Scripture gives that almost no one asks.
         </p>
         <p>
-          Each study below walks through one pillar. The Hebrew and Greek words behind the concept. The first-century context that has been quietly replaced. The pagan original underneath the Christian costume. No creeds. No councils. No comfortable conclusions — only the text in the languages it was given.
+          The ten split into two kinds of inheritance. Three chapters examine what was <strong>handed down</strong> to every believer before he could test any of it — the book in his lap, the words on its pages, the pictures hanging over its pulpit. Seven examine what the church actively <strong>does</strong>, every week, by habit. Each study below walks through one pillar: the Hebrew and Greek words behind the concept, the first-century context that has been quietly replaced, the pagan original underneath the Christian costume. No creeds. No councils. No comfortable conclusions — only the text in the languages it was given.
         </p>
       </div>
     </section>
@@ -35,89 +35,137 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     <!-- STUDY LIST -->
     <section class="cod-cta-section">
       <p class="cod-cta-label">&#8213; Choose Your Study &#8213;</p>
-      <h2 class="cod-cta-title">Eight Pillars, One at a Time</h2>
+      <h2 class="cod-cta-title">Ten Chapters, Two Kinds of Inheritance</h2>
+      <p class="cod-cta-intro">Three were settled before anyone alive today was born. Seven are things the church does, every week, without asking why.</p>
 
-      <div class="cod-card-grid">
+      <div class="cod-group-picker" role="tablist" aria-label="Chapter groups">
+        <button type="button" role="tab" class="cod-group-tab" data-group="handed-down" aria-selected="true" id="cod-tab-handed-down" aria-controls="cod-panel-handed-down">
+          <span class="cod-group-tab-eyebrow">Group One</span>
+          <span class="cod-group-tab-name">Handed Down</span>
+          <span class="cod-group-tab-count">3 chapters</span>
+        </button>
+        <button type="button" role="tab" class="cod-group-tab" data-group="practices" aria-selected="false" tabindex="-1" id="cod-tab-practices" aria-controls="cod-panel-practices">
+          <span class="cod-group-tab-eyebrow">Group Two</span>
+          <span class="cod-group-tab-name">Practices</span>
+          <span class="cod-group-tab-count">7 chapters</span>
+        </button>
+      </div>
 
-        <a href="/studies/prayer" class="cod-card">
-          <span class="cod-card-num" aria-hidden="true">I</span>
-          <span class="cod-card-text">
-            <span class="cod-card-chapter">Chapter One</span>
-            <span class="cod-card-title">Prayer</span>
-            <span class="cod-card-poetic">It's a Courtroom Word. Not a Feeling.</span>
-          </span>
-          <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
-        </a>
+      <div class="cod-group-stage" data-group-stage>
 
-        <a href="/studies/music" class="cod-card">
-          <span class="cod-card-num" aria-hidden="true">II</span>
-          <span class="cod-card-text">
-            <span class="cod-card-chapter">Chapter Two</span>
-            <span class="cod-card-title">Music</span>
-            <span class="cod-card-poetic">The Sound of Self-Worship.</span>
-          </span>
-          <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
-        </a>
+        <section class="cod-group-panel is-on" id="cod-panel-handed-down" data-group-panel="handed-down" role="tabpanel" aria-labelledby="cod-tab-handed-down">
+          <p class="cod-group-desc">What arrived already decided — the book, its words, and the pictures believers were never asked to test before they were handed one.</p>
+          <div class="cod-card-grid">
 
-        <a href="/studies/canon" class="cod-card">
-          <span class="cod-card-num" aria-hidden="true">III</span>
-          <span class="cod-card-text">
-            <span class="cod-card-chapter">Chapter Three</span>
-            <span class="cod-card-title">The Canon</span>
-            <span class="cod-card-poetic">Who Gave You the New Testament?</span>
-          </span>
-          <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
-        </a>
+            <a href="/studies/canon" class="cod-card">
+              <span class="cod-card-num" aria-hidden="true">III</span>
+              <span class="cod-card-text">
+                <span class="cod-card-chapter">Chapter Three</span>
+                <span class="cod-card-title">The Canon</span>
+                <span class="cod-card-poetic">Who Gave You the New Testament?</span>
+              </span>
+              <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
 
-        <a href="/studies/translations" class="cod-card">
-          <span class="cod-card-num" aria-hidden="true">IV</span>
-          <span class="cod-card-text">
-            <span class="cod-card-chapter">Chapter Four</span>
-            <span class="cod-card-title">Translations</span>
-            <span class="cod-card-poetic">You Haven't Been Reading the Word.</span>
-          </span>
-          <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
-        </a>
+            <a href="/studies/translations" class="cod-card">
+              <span class="cod-card-num" aria-hidden="true">IV</span>
+              <span class="cod-card-text">
+                <span class="cod-card-chapter">Chapter Four</span>
+                <span class="cod-card-title">Translations</span>
+                <span class="cod-card-poetic">You Haven't Been Reading the Word.</span>
+              </span>
+              <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
 
-        <a href="/studies/language-symbols" class="cod-card">
-          <span class="cod-card-num" aria-hidden="true">V</span>
-          <span class="cod-card-text">
-            <span class="cod-card-chapter">Chapter Five</span>
-            <span class="cod-card-title">Language &amp; Symbols</span>
-            <span class="cod-card-poetic">Do You Know What You're Worshipping?</span>
-          </span>
-          <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
-        </a>
+            <a href="/studies/language-symbols" class="cod-card">
+              <span class="cod-card-num" aria-hidden="true">V</span>
+              <span class="cod-card-text">
+                <span class="cod-card-chapter">Chapter Five</span>
+                <span class="cod-card-title">Language &amp; Symbols</span>
+                <span class="cod-card-poetic">Do You Know What You're Worshipping?</span>
+              </span>
+              <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
 
-        <a href="/studies/altar-call" class="cod-card">
-          <span class="cod-card-num" aria-hidden="true">VI</span>
-          <span class="cod-card-text">
-            <span class="cod-card-chapter">Chapter Six</span>
-            <span class="cod-card-title">The Altar Call</span>
-            <span class="cod-card-poetic">Walk the Aisle, Skip the Road.</span>
-          </span>
-          <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
-        </a>
+          </div>
+        </section>
 
-        <a href="/studies/childrens-church" class="cod-card">
-          <span class="cod-card-num" aria-hidden="true">VII</span>
-          <span class="cod-card-text">
-            <span class="cod-card-chapter">Chapter Seven</span>
-            <span class="cod-card-title">Children's Church</span>
-            <span class="cod-card-poetic">Go Now, Ye That Are Men.</span>
-          </span>
-          <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
-        </a>
+        <section class="cod-group-panel" id="cod-panel-practices" data-group-panel="practices" role="tabpanel" aria-labelledby="cod-tab-practices" aria-hidden="true" hidden>
+          <p class="cod-group-desc">What the church does every week — prayer, music, the altar, the classroom, the offering, the title, and the pulpit.</p>
+          <div class="cod-card-grid">
 
-        <a href="/studies/tithe" class="cod-card">
-          <span class="cod-card-num" aria-hidden="true">VIII</span>
-          <span class="cod-card-text">
-            <span class="cod-card-chapter">Chapter Eight</span>
-            <span class="cod-card-title">The Tithe</span>
-            <span class="cod-card-poetic">Into Whose Storehouse?</span>
-          </span>
-          <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
-        </a>
+            <a href="/studies/prayer" class="cod-card">
+              <span class="cod-card-num" aria-hidden="true">I</span>
+              <span class="cod-card-text">
+                <span class="cod-card-chapter">Chapter One</span>
+                <span class="cod-card-title">Prayer</span>
+                <span class="cod-card-poetic">It's a Courtroom Word. Not a Feeling.</span>
+              </span>
+              <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+
+            <a href="/studies/music" class="cod-card">
+              <span class="cod-card-num" aria-hidden="true">II</span>
+              <span class="cod-card-text">
+                <span class="cod-card-chapter">Chapter Two</span>
+                <span class="cod-card-title">Music</span>
+                <span class="cod-card-poetic">The Sound of Self-Worship.</span>
+              </span>
+              <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+
+            <a href="/studies/altar-call" class="cod-card">
+              <span class="cod-card-num" aria-hidden="true">VI</span>
+              <span class="cod-card-text">
+                <span class="cod-card-chapter">Chapter Six</span>
+                <span class="cod-card-title">The Altar Call</span>
+                <span class="cod-card-poetic">Walk the Aisle, Skip the Road.</span>
+              </span>
+              <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+
+            <a href="/studies/childrens-church" class="cod-card">
+              <span class="cod-card-num" aria-hidden="true">VII</span>
+              <span class="cod-card-text">
+                <span class="cod-card-chapter">Chapter Seven</span>
+                <span class="cod-card-title">Children's Church</span>
+                <span class="cod-card-poetic">Go Now, Ye That Are Men.</span>
+              </span>
+              <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+
+            <a href="/studies/tithe" class="cod-card">
+              <span class="cod-card-num" aria-hidden="true">VIII</span>
+              <span class="cod-card-text">
+                <span class="cod-card-chapter">Chapter Eight</span>
+                <span class="cod-card-title">The Tithe</span>
+                <span class="cod-card-poetic">Into Whose Storehouse?</span>
+              </span>
+              <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+
+            <a href="/studies/ministries" class="cod-card">
+              <span class="cod-card-num" aria-hidden="true">IX</span>
+              <span class="cod-card-text">
+                <span class="cod-card-chapter">Chapter Nine</span>
+                <span class="cod-card-title">Ministries</span>
+                <span class="cod-card-poetic">Whose Temple Are You Keeping?</span>
+              </span>
+              <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+
+            <a href="/studies/sermon" class="cod-card">
+              <span class="cod-card-num" aria-hidden="true">X</span>
+              <span class="cod-card-text">
+                <span class="cod-card-chapter">Chapter Ten</span>
+                <span class="cod-card-title">The Sermon</span>
+                <span class="cod-card-poetic">One Voice and a Silent Room.</span>
+              </span>
+              <span class="cod-card-arrow" aria-hidden="true">&rarr;</span>
+            </a>
+
+          </div>
+        </section>
 
       </div>
     </section>
@@ -129,9 +177,40 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     </section>
 
   </div>
-</BaseLayout>
 
-<style>
+  <script>
+    const stage = document.querySelector('[data-group-stage]');
+    if (stage) {
+      const tabs = Array.from(document.querySelectorAll('.cod-group-tab'));
+      const panels = Array.from(stage.querySelectorAll('[data-group-panel]'));
+      const show = (name) => {
+        for (const tab of tabs) {
+          const on = tab.dataset.group === name;
+          tab.setAttribute('aria-selected', on ? 'true' : 'false');
+          tab.tabIndex = on ? 0 : -1;
+        }
+        for (const panel of panels) {
+          const on = panel.dataset.groupPanel === name;
+          panel.classList.toggle('is-on', on);
+          if (on) { panel.removeAttribute('hidden'); panel.removeAttribute('aria-hidden'); }
+          else { panel.setAttribute('hidden', ''); panel.setAttribute('aria-hidden', 'true'); }
+        }
+      };
+      for (const tab of tabs) {
+        tab.addEventListener('click', () => show(tab.dataset.group));
+      }
+      const row = document.querySelector('.cod-group-picker');
+      row?.addEventListener('keydown', (e) => {
+        if (e.key !== 'ArrowRight' && e.key !== 'ArrowLeft') return;
+        const i = tabs.findIndex((t) => t.getAttribute('aria-selected') === 'true');
+        const next = tabs[(i + (e.key === 'ArrowRight' ? 1 : -1) + tabs.length) % tabs.length];
+        next.focus();
+        show(next.dataset.group);
+      });
+    }
+  </script>
+
+  <style>
   .cod-wrap {
     background:
       radial-gradient(ellipse at 50% 100%, rgba(184,35,42,0.18) 0%, transparent 55%),
@@ -198,6 +277,7 @@ import BaseLayout from '../layouts/BaseLayout.astro';
   }
   .cod-prose p { margin-bottom: 1.5rem; }
   .cod-prose p:last-child { margin-bottom: 0; }
+  .cod-prose strong { color: #ffb070; }
 
   .cod-cta-section {
     text-align: center;
@@ -217,10 +297,88 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     font-size: clamp(1.4rem, 3vw, 2.1rem);
     font-weight: 600;
     color: #fff5e0;
-    margin: 0 0 2.5rem;
+    margin: 0 0 0.9rem;
+  }
+  .cod-cta-intro {
+    font-size: 1rem;
+    font-style: italic;
+    color: #d9a878;
+    max-width: 560px;
+    margin: 0 auto 2.75rem;
+    line-height: 1.6;
   }
 
-  /* Compact chapter list (1024): one slim row per chapter, two columns on wide
+  /* Group picker — two named tabs standing in for "Part One / Part Two" of
+     the series, styled like the chapter-card numerals rather than a generic
+     pill switch. */
+  .cod-group-picker {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    max-width: 640px;
+    margin: 0 auto 2.25rem;
+    flex-wrap: wrap;
+  }
+  .cod-group-tab {
+    flex: 1 1 220px;
+    max-width: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.2rem;
+    cursor: pointer;
+    text-align: center;
+    background: linear-gradient(180deg, rgba(90,18,20,0.35) 0%, rgba(36,4,5,0.55) 100%);
+    border: 1px solid rgba(255,120,60,0.22);
+    border-radius: 10px;
+    padding: 0.9rem 1rem 1rem;
+    color: #f0d8b8;
+    transition: background 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
+  }
+  .cod-group-tab:hover { transform: translateY(-2px); border-color: rgba(255,140,70,0.45); }
+  .cod-group-tab[aria-selected='true'] {
+    background: linear-gradient(180deg, #7a1c1c 0%, #3a0a0c 100%);
+    border-color: #ff7a30;
+    box-shadow: 0 6px 20px -8px rgba(255, 90, 30, 0.4);
+  }
+  .cod-group-tab:focus-visible { outline: 2px solid #ff9a55; outline-offset: 2px; }
+  .cod-group-tab-eyebrow {
+    font-family: 'Cinzel', serif;
+    font-size: 0.6rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #ff9a55;
+    font-weight: 700;
+  }
+  .cod-group-tab-name {
+    font-family: 'Cinzel', serif;
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    color: #fff5e0;
+  }
+  .cod-group-tab-count {
+    font-size: 0.78rem;
+    font-style: italic;
+    color: #c98a60;
+  }
+  .cod-group-tab[aria-selected='true'] .cod-group-tab-count { color: #ffcfa0; }
+
+  .cod-group-stage { max-width: 980px; margin: 0 auto; }
+  .cod-group-panel { display: none; }
+  .cod-group-panel.is-on { display: block; animation: cod-fade-in 0.25s ease; }
+  @keyframes cod-fade-in { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: translateY(0); } }
+  .cod-group-desc {
+    font-size: 1rem;
+    font-style: italic;
+    color: #e8bc96;
+    max-width: 640px;
+    margin: 0 auto 1.75rem;
+    line-height: 1.6;
+    text-align: center;
+  }
+
+  /* Compact chapter list (1025): one slim row per chapter, two columns on wide
      screens, one on phones. Numeral | chapter, title, line | arrow. */
   .cod-card-grid {
     display: grid;
@@ -317,4 +475,13 @@ import BaseLayout from '../layouts/BaseLayout.astro';
     color: #7a3a20;
     text-transform: uppercase;
   }
-</style>
+
+  @media (max-width: 640px) {
+    .cod-group-picker { gap: 0.6rem; }
+    .cod-group-tab { flex: 1 1 45%; padding: 0.75rem 0.6rem 0.8rem; }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .cod-group-panel.is-on { animation: none; }
+  }
+  </style>
+</BaseLayout>
