@@ -909,7 +909,7 @@
       "section": "berean-studies",
       "date": "2026-04-20",
       "title": "The Canon",
-      "deck": "Who Gave You the New Testament?"
+      "deck": "Who Gave the Church the New Testament?"
     },
     {
       "route": "/studies/childrens-church",
@@ -926,6 +926,13 @@
       "deck": "Do You Know What You're Worshipping?"
     },
     {
+      "route": "/studies/ministries",
+      "section": "berean-studies",
+      "date": "2026-10-25",
+      "title": "Ministries",
+      "deck": "Whose Temple Are You Keeping?"
+    },
+    {
       "route": "/studies/music",
       "section": "berean-studies",
       "date": "2026-04-20",
@@ -937,7 +944,14 @@
       "section": "berean-studies",
       "date": "2026-04-20",
       "title": "Prayer",
-      "deck": "Judgment, Mediation, and the Mission It Points To"
+      "deck": "Judgment, Mediation, and the Mediator It Points To"
+    },
+    {
+      "route": "/studies/sermon",
+      "section": "berean-studies",
+      "date": "2026-10-25",
+      "title": "The Sermon",
+      "deck": "One Voice and a Silent Room"
     },
     {
       "route": "/studies/the-moon-in-scripture",
