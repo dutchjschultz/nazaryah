@@ -1,4 +1,6 @@
-// study-series 1023 V2.js
+// study-series 1027 V3.js
+// V3 (associations batch 73): royal purple for the "In Revelation" group on both
+// series (the throne room of Revelation), so the colour means the same on each panel.
 // V2 (associations batch 72): Ezekiel joins (src/data/ezekiel-series.js). Colours are
 // per series now (SERIES below: each group key -> a palette tone), since Ezekiel's
 // visions burn ember where Zechariah's are night. A group may hold studies that are
@@ -24,18 +26,20 @@ import { EZEKIEL_SERIES } from '../data/ezekiel-series.js';
 
 // Palette. Each colour means something: night for visions seen at night, ember for
 // the fire of Ezekiel's throne visions, burgundy for the fasting question, bronze for
-// a burden carried, parchment for studies already on the site (the Berean card look).
+// a burden carried, royal purple for Revelation's throne room, parchment for studies
+// already on the site (the Berean card look).
 const PALETTE = {
   night:     { from: '#1F3864', to: '#2E4A7D', ink: '#E2C06A', edge: '#C9A44A' },
   ember:     { from: '#7A2E12', to: '#A8461C', ink: '#F0C86A', edge: '#E0A04A' },
   burgundy:  { from: '#5C1F2B', to: '#5C1F2B', ink: '#F1E6CF', edge: '#B98A5A' },
   bronze:    { from: '#7A5A1E', to: '#9C7428', ink: '#FBF3DF', edge: '#E3C27A' },
+  royal:     { from: '#3B2A5C', to: '#55407F', ink: '#E2C06A', edge: '#C9A44A' },
   parchment: { from: '#F5E8C8', to: '#E8D5A3', ink: '#3A2410', edge: '#A07850' },
 };
 
 const SERIES = {
-  zechariah: { data: ZECHARIAH_SERIES, tones: { visions: 'night', fasting: 'burgundy', burdens: 'bronze' } },
-  ezekiel:   { data: EZEKIEL_SERIES,   tones: { visions: 'ember', related: 'parchment' } },
+  zechariah: { data: ZECHARIAH_SERIES, tones: { visions: 'night', fasting: 'burgundy', burdens: 'bronze', revelation: 'royal' } },
+  ezekiel:   { data: EZEKIEL_SERIES,   tones: { visions: 'ember', revelation: 'royal', related: 'parchment' } },
 };
 
 export const STUDY_SERIES = Object.fromEntries(Object.entries(SERIES).map(([k, s]) => [k, s.data]));

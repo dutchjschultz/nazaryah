@@ -274,3 +274,16 @@
   from = "/studies/canon/parable"
   to = "/blog/barney-and-clyde"
   status = 301
+
+# Retired 1027 (batch 73): the First Burden of Zechariah went live in two Parts and is
+# now one study. Both Part addresses were live, so they point at it. Their cards stay
+# on disk (a crawled card file is never removed).
+[[redirects]]
+  from = "/blog/zechariah-the-king-on-a-donkey"
+  to = "/blog/zechariah-first-burden-the-shepherd-king"
+  status = 301
+
+[[redirects]]
+  from = "/blog/zechariah-the-shepherd-sold"
+  to = "/blog/zechariah-first-burden-the-shepherd-king"
+  status = 301

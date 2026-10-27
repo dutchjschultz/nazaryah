@@ -58,10 +58,10 @@ Read front to back, the book does not scatter. It runs.
 - **[Four horns and four carpenters](/blog/zechariah-vision-two-four-horns-and-four-carpenters)**: the powers that scattered Judah are themselves cut down (1:18-21).
 - **[A man with a measuring line](/blog/zechariah-vision-three-a-city-without-walls)**: Jerusalem will spill past its walls, with Yahuah as a wall of fire around it, and many nations will be joined to Him (2:1-13).
 - **[Joshua the high priest](/blog/zechariah-vision-four-filthy-garments-taken-away)** stands in filthy garments with the adversary at his right hand. The filthy garments are taken away, clean ones put on, and Yahuah promises to bring forth His servant “the BRANCH” (3:1-10).
-- **A golden lampstand between two olive trees**, fed with oil that no man pours (4:1-14).
-- **A flying scroll**: the curse going out against the thief and the man who swears falsely by the Name (5:1-4).
-- **A woman in a basket**, named Wickedness, carried off to the land of Shinar to have a house built for her there (5:5-11). Shinar is Babylon’s plain. Wickedness is sent back to where it came from.
-- **Four chariots** come out from between two mountains of brass and go out to the four quarters of the earth (6:1-8).
+- **[A golden lampstand between two olive trees](/blog/zechariah-vision-five-not-by-might-nor-by-power)**, fed with oil that no man pours (4:1-14).
+- **[A flying scroll](/blog/zechariah-vision-six-the-flying-roll)**: the curse going out against the thief and the man who swears falsely by the Name (5:1-4).
+- **[A woman in a basket](/blog/zechariah-vision-seven-wickedness-in-the-ephah)**, named Wickedness, carried off to the land of Shinar to have a house built for her there (5:5-11). Shinar is Babylon’s plain. Wickedness is sent back to where it came from.
+- **[Four chariots](/blog/zechariah-vision-eight-a-priest-upon-his-throne)** come out from between two mountains of brass and go out to the four quarters of the earth (6:1-8).
 
 **How it ends.** Crowns are made and set on the head of Joshua the high priest, and the word over him points forward.
 
@@ -83,11 +83,15 @@ A high priest named Joshua, in Hebrew *Yehoshua*, the same name the Messiah woul
 
 **How it ends.** The fasts men made for their sorrow will be turned into “cheerful feasts” (8:19), and the nations will come looking for Yahuah. Ten men out of every language will take hold of the skirt of one man of Judah and say, “We will go with you: for we have heard that Elohim is with you” (8:23).
 
-### [Block Four — Zechariah 9 to 11](/blog/zechariah-the-king-on-a-donkey)
+### [Block Four — Zechariah 9 to 11](/blog/zechariah-first-burden-the-shepherd-king)
 
 *The first burden: the King comes, and the shepherd is sold. About 332 BC to the Messiah’s death in 31 AD.*
 
 **The years.** No more dates. The burden opens with judgment on Hadrach, Damascus, Tyre, and the Philistine cities (9:1-8), the same coastal road Alexander the Great marched down in 332 BC. Greece is named outright: “thy sons, O Greece” (9:13). The burden runs forward from there to the King.
+
+After Alexander, Greek kings ruled Judah, and in the 160s BC Antiochus IV set an idol in the temple until the Maccabees drove the Greeks out.
+
+**Why the burden.** No one was attacking the returned captives. Persia was paying for the temple (Ezra 6:8). Their fear was that they had no king. The last king of David’s line had been carried to Babylon, and his grandson Zerubbabel was only a governor (Haggai 1:1). The burden answers that David’s line is not finished. The King is still coming, through Zerubbabel himself (Matthew 1:12-13), and they are to turn now, because the heart that sells the flock is the heart that would sell the King.
 
 **The King.** In the middle of the conquests, a different kind of king arrives.
 
@@ -97,11 +101,13 @@ A high priest named Joshua, in Hebrew *Yehoshua*, the same name the Messiah woul
 
 Matthew and John both quote it on the day Yahushua rode into Jerusalem (Matthew 21:5; John 12:15).
 
-**The shepherds.** Chapter 10 says the people wandered like sheep because there was no shepherd (10:2). In chapter 11 Zechariah is made to play the shepherd of a flock marked for slaughter. [When he asks for his wages, they weigh out thirty pieces of silver, the price of a slave gored by an ox in the Law (Exodus 21:32), and Yahuah calls it sarcastically “a goodly price that I was prised at of them” (11:12-13)](/blog/zechariah-the-shepherd-sold). The silver is thrown to the potter in the house of Yahuah. Matthew records the same silver, the same potter, the same field (Matthew 27:3-10).
+**The shepherds.** Chapter 10 says the people wandered like sheep because there was no shepherd (10:2). In chapter 11 Zechariah is made to play the shepherd of a flock marked for slaughter. When he asks for his wages, they weigh out thirty pieces of silver, the price of a slave gored by an ox in the Law (Exodus 21:32), and Yahuah calls it sarcastically “a goodly price that I was prised at of them” (11:12-13). The silver is thrown to the potter in the house of Yahuah. Matthew records the same silver, the same potter, the same field (Matthew 27:3-10).
 
 **How it ends.** The shepherd breaks his two staffs, Beauty and Bands, the second one breaking the brotherhood between Judah and Israel (11:10-14). Then a worthless shepherd is raised up in his place (11:15-17).
 
-### Block Five — Zechariah 12 to 14
+The chapter opens with fire on the cedars of Lebanon (11:1), the wood the temple was built from. Forty years after the silver was weighed, in AD 70, Rome burned the temple.
+
+### [Block Five — Zechariah 12 to 14](/blog/zechariah-second-burden-the-one-they-pierced)
 
 *The second burden: the pierced one, across the age, to the day of Yahuah. From 31 AD to the end.*
 
@@ -117,7 +123,9 @@ Matthew and John both quote it on the day Yahushua rode into Jerusalem (Matthew 
 
 Yahushua quoted it the night He was taken (Matthew 26:31). After the scattering, a third part is brought through the fire and refined like silver, and they call on His name (13:8-9). That refining is the life of the age between the comings.
 
-**The day.** Chapter 14 is the day of Yahuah. He comes with all His holy ones, His feet stand on the Mount of Olives, and the light at evening time does not fade (14:4-7). Living waters go out from Jerusalem, half toward the eastern sea and half toward the western, summer and winter (14:8).
+**The city falls.** “The city shall be taken … and half of the city shall go forth into captivity” (14:2). That is AD 70, when Rome took Jerusalem and its people were “led away captive into all nations” (Luke 21:24).
+
+**The day.** From the fall of the city, Zechariah leaps to the end, the way the prophets often do. Yahuah comes with all His holy ones, His feet stand on the Mount of Olives, and the light at evening time does not fade (14:4-7). Living waters go out from Jerusalem, half toward the eastern sea and half toward the western, summer and winter (14:8).
 
 > And Yahuah shall be king over all the earth: in that day shall there be one Yahuah, and his name one.
 >
@@ -173,7 +181,7 @@ The book closes the question two chapters later. When the day comes, “there sh
 
 ## What the Timeline Rules Out
 
-**A war map for the evening news.** The nations gathered against Jerusalem in chapter 12 and chapter 14 sit inside the second burden, between the piercing and the day of Yahuah. They are the same last gathering Ezekiel calls Gog, and the same habit turns them into a forecast of modern borders.
+**A war map for the evening news.** The nations that break themselves on Jerusalem in chapter 12 are the same last gathering Ezekiel calls Gog, and the same habit turns them into a forecast of modern borders. The army of 14:2 is different. It takes the city, which Gog never does (Revelation 20:9). That one came in AD 70.
 
 **A second God at the end.** The last chapter names one King and one name (14:9).
 
@@ -193,10 +201,10 @@ Asked about a fast men invented, Yahuah answers with the Law their fathers refus
 
 After the Greek conquest, the King rides in on a donkey and the shepherd is sold for the price of a slave.
 
-The pierced one is mourned, the shepherd is struck, a third is refined through the age, and on the last day Yahuah is King over all the earth with the nations keeping Sukkot.
+The pierced one is mourned, the shepherd is struck, Jerusalem falls in AD 70, a third is refined through the age, and on the last day Yahuah is King over all the earth with the nations keeping Sukkot.
 
 ## Where It Lands
 
-Zechariah runs parallel to Revelation, and in the same order. The horses go out over the earth, the two olive trees stand beside the lampstand, the pierced one is seen, and living water flows out of the city at the end.
+Zechariah’s pictures return all through Revelation. The horses go out over the earth, the two olive trees stand beside the lampstand, the pierced one is seen, and living water flows out of the city at the end. Every one of the eight visions is traced into Revelation in [*One Night, Seen Again*](/blog/zechariah-in-revelation-one-night-seen-again).
 
 Revelation opens on the same verse Zechariah gave the cross: every eye shall see Him, “and they also which pierced him” (Revelation 1:7). And it closes where Zechariah closed, with a city where nothing that defiles can enter (Revelation 21:27), and His name is in the foreheads of His servants (Revelation 22:4).

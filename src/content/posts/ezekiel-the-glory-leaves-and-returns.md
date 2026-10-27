@@ -36,9 +36,9 @@ Each of those readings lifts a chapter out of its block and sets it down in a di
 
 **The years.** Ezekiel is a priest already carried to Babylon with King Jehoiachin, living among the captives by the river Chebar (1:1-3). His call comes in the fifth year of that captivity. Jerusalem is still standing, the temple is still in use, and the people left behind believe the worst is over.
 
-**The throne.** Yahuah shows him the throne moving on its wheels, and the text names what sits on it: “the likeness of the glory of Yahuah” (1:28). One glory, one name, no second figure introduced.
+**The throne.** Yahuah shows him the throne moving on its wheels, and the text names what sits on it: “the likeness of the glory of Yahuah” (1:28). One glory, one name, no second figure introduced. The full vision is read in [*The Likeness of the Glory*](/blog/ezekiel-vision-one-the-likeness-of-the-glory).
 
-**What happens.** Ezekiel is sent to act out the siege with a clay tile, lie on his side for days on end, and shave his head with a sword (4-5). In chapters 8 to 11 he is carried in vision into the temple and shown what goes on inside it: images on the walls, women weeping for Tammuz, and twenty-five men with their backs to the temple, bowing to the sun toward the east (8:16). Then the glory lifts off the cherubim, moves to the threshold, to the east gate, and finally leaves the city for the mountain on the east side (10:18-19; 11:23).
+**What happens.** Ezekiel is sent to act out the siege with a clay tile, lie on his side for days on end, and shave his head with a sword (4-5). [In chapters 8 to 11](/blog/ezekiel-vision-two-far-off-from-my-sanctuary) he is carried in vision into the temple and shown what goes on inside it: images on the walls, women weeping for Tammuz, and twenty-five men with their backs to the temple, bowing to the sun toward the east (8:16). Then the glory lifts off the cherubim, moves to the threshold, to the east gate, and finally leaves the city for the mountain on the east side (10:18-19; 11:23).
 
 **The charge.** Chapter 20 names it. Yahuah gave His Sabbaths “to be a sign between me and them” (20:12), and they polluted them along with their idols (20:13, 16, 24). Chapter 22 adds that the priests hid their eyes from His Sabbaths and put no difference between holy and profane (22:26).
 
@@ -100,7 +100,7 @@ Most pulpits stop at the new heart. Ezekiel does not. The heart is made new so t
 
 **How it ends.** The dead are buried for seven months and the weapons burned for seven years (39:9, 12). Then Yahuah says He will hide His face from them no more (39:29). The full case against the Russian-invasion reading is laid out in the Nazaryah investigation [*Gog and Magog*](/blog/gog-and-magog).
 
-### Block Five — Ezekiel 40 to 48
+### [Block Five — Ezekiel 40 to 48](/blog/ezekiel-vision-four-the-glory-comes-home)
 
 *The glory comes home. What follows the end.*
 
@@ -200,7 +200,7 @@ The glory comes home by the east gate, a river runs out to heal the Dead Sea, an
 
 ## Where It Lands
 
-Ezekiel runs parallel to Revelation, and in the same order. Both open on the throne, both have the prophet eat a scroll, both name Gog and Magog at the end, and both close on a city with a river and leaves that heal. The story is the same because the ending is the same.
+Ezekiel runs parallel to Revelation, and in the same order. Both open on the throne, both have the prophet eat a scroll, both name Gog and Magog at the end, and both close on a city with a river and leaves that heal. The story is the same because the ending is the same. The four visions are traced into Revelation, one by one, in [*The Same Story, Told Twice*](/blog/ezekiel-in-revelation-the-same-story-told-twice).
 
 The glory that left the house in Ezekiel’s day comes home for good in the last chapters of the Scriptures, where John hears the same promise Ezekiel closed on.
 

@@ -1,5 +1,5 @@
-// ezekiel-series 1023 V1.js
-// New: Ezekiel companion studies. 4 visions (1 live, 3 coming soon) and 3 related studies already on the site.
+// ezekiel-series 1027 V2.js
+// V2: all 4 visions live with final titles; new "In Revelation" group.
 
 export const EZEKIEL_SERIES = {
   main: "ezekiel-the-glory-leaves-and-returns",
@@ -7,12 +7,20 @@ export const EZEKIEL_SERIES = {
     {
       key: "visions",
       label: "The Four Visions",
-      sub: "“The visions of God” · chapters 1, 8–11, 37, 40–48",
+      sub: "“The visions of Elohim” · chapters 1, 8–11, 37, 40–48",
       items: [
-        { n: "Vision 1", title: "The Throne by the River",   slug: null, status: "soon" },
-        { n: "Vision 2", title: "The Glory Leaves",          slug: null, status: "soon" },
-        { n: "Vision 3", title: "Can These Bones Live?",     slug: "ezekiel-vision-three-can-these-bones-live", status: "live" },
-        { n: "Vision 4", title: "The Glory Returns",         slug: null, status: "soon" }
+        { n: "Vision 1", title: "The Likeness of the Glory", slug: "ezekiel-vision-one-the-likeness-of-the-glory", status: "live" },
+        { n: "Vision 2", title: "Far Off From My Sanctuary", slug: "ezekiel-vision-two-far-off-from-my-sanctuary", status: "live" },
+        { n: "Vision 3", title: "Can These Bones Live?",     slug: "ezekiel-vision-three-can-these-bones-live",   status: "live" },
+        { n: "Vision 4", title: "The Glory Comes Home",      slug: "ezekiel-vision-four-the-glory-comes-home",     status: "live" }
+      ]
+    },
+    {
+      key: "revelation",
+      label: "In Revelation",
+      sub: "The four visions, seen again on Patmos",
+      items: [
+        { n: "Revelation", title: "The Same Story, Told Twice", slug: "ezekiel-in-revelation-the-same-story-told-twice", status: "live" }
       ]
     },
     {

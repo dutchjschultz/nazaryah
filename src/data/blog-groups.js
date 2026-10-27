@@ -1,4 +1,8 @@
-// blog-groups 1023 V77.js
+// blog-groups 1027 V78.js
+// V78 (batch 73): Zechariah and Ezekiel series complete. Zechariah Visions Five to Eight, the First and Second
+// Burdens and Zechariah in Revelation join the-quick-scroll; zechariah-the-king-on-a-donkey and
+// zechariah-the-shepherd-sold retired (301 to the First Burden). Ezekiel Visions One, Two, Four and Ezekiel in
+// Revelation join. Companions stay off the topic page. Map total 188 -> 197.
 // V77: ezekiel-vision-three-can-these-bones-live joins the-quick-scroll (category The Quick Scroll), the first
 // Ezekiel series companion (the topic page lists the Ezekiel main only). Map total 187 -> 188.
 // V76: The Making of Lucifer trilogy — is-this-the-man and thou-art-a-man-and-not-el join scripture-unfiltered;
@@ -293,15 +297,24 @@ export const POST_GROUP = {
   'micah-three-calls-to-hear': 'the-quick-scroll',
   'zephaniah-the-day-closes-in': 'the-quick-scroll',
   'ezekiel-the-glory-leaves-and-returns': 'the-quick-scroll',
-  'ezekiel-vision-three-can-these-bones-live': 'the-quick-scroll', // Ezekiel series companion
+  'ezekiel-vision-one-the-likeness-of-the-glory': 'the-quick-scroll', // Ezekiel series companions
+  'ezekiel-vision-two-far-off-from-my-sanctuary': 'the-quick-scroll',
+  'ezekiel-vision-three-can-these-bones-live': 'the-quick-scroll',
+  'ezekiel-vision-four-the-glory-comes-home': 'the-quick-scroll',
+  'ezekiel-in-revelation-the-same-story-told-twice': 'the-quick-scroll',
   'zechariah-eight-visions-two-burdens': 'the-quick-scroll', // series main
   'zechariah-vision-one-riders-among-the-myrtles': 'the-quick-scroll',
   'zechariah-vision-two-four-horns-and-four-carpenters': 'the-quick-scroll',
   'zechariah-vision-three-a-city-without-walls': 'the-quick-scroll',
   'zechariah-vision-four-filthy-garments-taken-away': 'the-quick-scroll',
   'zechariah-did-ye-fast-unto-me': 'the-quick-scroll',
-  'zechariah-the-king-on-a-donkey': 'the-quick-scroll',
-  'zechariah-the-shepherd-sold': 'the-quick-scroll',
+  'zechariah-vision-five-not-by-might-nor-by-power': 'the-quick-scroll',
+  'zechariah-vision-six-the-flying-roll': 'the-quick-scroll',
+  'zechariah-vision-seven-wickedness-in-the-ephah': 'the-quick-scroll',
+  'zechariah-vision-eight-a-priest-upon-his-throne': 'the-quick-scroll',
+  'zechariah-first-burden-the-shepherd-king': 'the-quick-scroll',
+  'zechariah-second-burden-the-one-they-pierced': 'the-quick-scroll',
+  'zechariah-in-revelation-one-night-seen-again': 'the-quick-scroll',
 
   // ── Buried in Plain Sight (21) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',

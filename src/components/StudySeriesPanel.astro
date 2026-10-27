@@ -1,5 +1,7 @@
 ---
-// src/components/StudySeriesPanel.astro · 1023 V2
+// src/components/StudySeriesPanel.astro · 1027 V3
+// V3 (associations batch 73): a two-item group (the Burdens) sits two across at every
+// width; "In Revelation" wears royal purple with gold.
 // V2 (associations batch 72): colours per series (toneOf(group, data)); Ezekiel's
 // visions ember, its Read Alongside tiles parchment.
 // V1 (associations batch 70): the button panel at the top of a book's Quick Scroll
@@ -25,7 +27,7 @@ const show = data && post.slug === data.main;
     {data.groups.map((g: any) => {
       const t = toneOf(g, data);
       return (
-        <section class:list={['ssp-group', `ssp-${g.key}`, { 'ssp-single': g.items.length === 1 }]}
+        <section class:list={['ssp-group', `ssp-${g.key}`, { 'ssp-single': g.items.length === 1, 'ssp-pair': g.items.length === 2 }]}
           style={`--ssp-bg: linear-gradient(160deg, ${t.from}, ${t.to}); --ssp-ink: ${t.ink}; --ssp-edge: ${t.edge};`}>
           <p class="ssp-label">{g.label}</p>
           {g.sub && <p class="ssp-sub">{g.sub}</p>}
@@ -63,6 +65,7 @@ const show = data && post.slug === data.main;
   .ssp-tiles { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 0.7rem; }
   @media (min-width: 768px) { .ssp-tiles { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
   .ssp-single .ssp-tiles { grid-template-columns: minmax(0, 1fr); }
+  .ssp-pair .ssp-tiles { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 
   .ssp-tile {
     display: flex; flex-direction: column; justify-content: center; gap: 0.2rem;
