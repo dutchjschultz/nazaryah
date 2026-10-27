@@ -1,7 +1,12 @@
 #!/usr/bin/env python3
 """
-nazaryah-social-images  0804 V5
+nazaryah-social-images  1027 V6
 Generates the two social images for a nazaryah.com piece.
+
+V6: the deck is never cut. V5 kept only the first two wrapped lines and silently
+dropped the rest, so a two-sentence deck ended mid-sentence on the card (Wrap It In
+A Bow: "…worshipped the Elohim of"). The deck now takes up to three lines, stepping
+its size down if it needs to; fit_deck() raises rather than truncate.
 
 V5: thumbnail now writes to public/og/<slug>-thumb.png (was public/thumb/), so
 card and thumb share one standard scheme under /og/ mirroring the page URL.
@@ -91,6 +96,19 @@ def wrap(draw, text, font, max_w):
     return lines
 
 
+def fit_deck(draw, deck, font_path, sizes, max_w, max_lines=3):
+    """Wraps the deck whole: the largest size in `sizes` that fits in `max_lines`.
+    Never truncates. A deck that will not fit at the smallest size is an error."""
+    if not deck:
+        return None, [], 0
+    for size in sizes:
+        font = ImageFont.truetype(font_path, size)
+        lines = wrap(draw, deck, font, max_w)
+        if len(lines) <= max_lines:
+            return font, lines, size
+    raise SystemExit(f"deck too long for the card even at {sizes[-1]}px: {deck!r}")
+
+
 def save_png(img, out):
     """Writes a truecolor RGB PNG. Indexed/palette PNGs are rejected by X's image
     pipeline (broken image + downgrade to the small card), so cards stay truecolor
@@ -143,12 +161,12 @@ def build_card(kicker, title, deck, out):
 
     tracked(d, (PAD, 92), kicker.upper(), ImageFont.truetype(FONT_BOLD, 22), GOLD, 5)
 
-    f_deck = ImageFont.truetype(FONT_ITAL, 30)
+    f_deck, dlines, dsize = fit_deck(d, deck, FONT_ITAL, (30, 28, 26), W - PAD * 2 - 200)
+    dlh = int(dsize * 1.4)
     for size in range(84, 41, -4):
         f_title = ImageFont.truetype(FONT_BOLD, size)
         lines = wrap(d, title, f_title, W - PAD * 2 - 40)
-        dlines = wrap(d, deck, f_deck, W - PAD * 2 - 200)[:2] if deck else []
-        total = len(lines) * int(size * 1.18) + 14 + len(dlines) * 42
+        total = len(lines) * int(size * 1.18) + 14 + len(dlines) * dlh
         if len(lines) <= 3 and total <= BOTTOM - TOP:
             break
 
@@ -159,7 +177,7 @@ def build_card(kicker, title, deck, out):
     y += 14
     for line in dlines:
         d.text((PAD, y), line, font=f_deck, fill=DECK)
-        y += 42
+        y += dlh
 
     tracked(d, (PAD, H - PAD - 26), "NAZARYAH.COM", ImageFont.truetype(FONT_REG, 21), GOLD, 4)
     img = place_mark(img, 200, W - PAD - 180, H - PAD + 10)
@@ -179,12 +197,12 @@ def build_thumb(kicker, title, deck, out):
 
     tracked(d, (PAD, 96), kicker.upper(), ImageFont.truetype(FONT_BOLD, 32), GOLD, 7)
 
-    f_deck = ImageFont.truetype(FONT_REG, 40)
+    f_deck, dlines, dsize = fit_deck(d, deck, FONT_REG, (40, 37, 34), W - PAD * 2 - 260)
+    dlh = int(dsize * 1.35)
     for size in range(132, 61, -6):
         f_title = ImageFont.truetype(FONT_BOLD, size)
         lines = wrap(d, title, f_title, W - PAD * 2)
-        dlines = wrap(d, deck, f_deck, W - PAD * 2 - 260)[:2] if deck else []
-        total = len(lines) * int(size * 1.16) + (18 + len(dlines) * 54 if dlines else 0)
+        total = len(lines) * int(size * 1.16) + (18 + len(dlines) * dlh if dlines else 0)
         if len(lines) <= 3 and total <= BOTTOM - TOP:
             break
 
@@ -196,7 +214,7 @@ def build_thumb(kicker, title, deck, out):
         y += 18
         for line in dlines:
             d.text((PAD, y), line, font=f_deck, fill=DECK)
-            y += 54
+            y += dlh
 
     tracked(d, (PAD, H - PAD - 40), "NAZARYAH.COM", ImageFont.truetype(FONT_REG, 30), GOLD, 6)
     img = place_mark(img, 300, W - PAD - 270, H - PAD + 16)
