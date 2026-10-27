@@ -1,4 +1,6 @@
-// blog-groups 1027 V78.js
+// blog-groups 1027 V79.js
+// V79 (batch 74): the six Servant in Isaiah companions join the-quick-scroll (series "isaiah"; the topic
+// page lists isaiah-runs-forward only, "plus 6 companion studies"). Map total 197 -> 203.
 // V78 (batch 73): Zechariah and Ezekiel series complete. Zechariah Visions Five to Eight, the First and Second
 // Burdens and Zechariah in Revelation join the-quick-scroll; zechariah-the-king-on-a-donkey and
 // zechariah-the-shepherd-sold retired (301 to the First Burden). Ezekiel Visions One, Two, Four and Ezekiel in
@@ -315,6 +317,12 @@ export const POST_GROUP = {
   'zechariah-first-burden-the-shepherd-king': 'the-quick-scroll',
   'zechariah-second-burden-the-one-they-pierced': 'the-quick-scroll',
   'zechariah-in-revelation-one-night-seen-again': 'the-quick-scroll',
+  'servant-in-isaiah-1-israel-is-the-servant': 'the-quick-scroll', // Isaiah series companions
+  'servant-in-isaiah-2-two-servants-one-chapter': 'the-quick-scroll',
+  'servant-in-isaiah-3-he-keeps-calling-them-servant': 'the-quick-scroll',
+  'servant-in-isaiah-4-the-name-changes-hands': 'the-quick-scroll',
+  'servant-in-isaiah-5-the-one-carries-the-many': 'the-quick-scroll',
+  'servant-in-isaiah-6-servants-plural': 'the-quick-scroll',
 
   // ── Buried in Plain Sight (21) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
