@@ -1,5 +1,7 @@
 ---
-// src/pages/quick-scroll/index.astro · 1029 V1
+// src/pages/quick-scroll/index.astro · 1029 V2
+// V2 (Dutch 1029): `scrollRole: "companion"` + `scrollBook` lists a study under that book's Quick Scroll
+// (after any series items). A book with companions but no main stays faded; the count reads mains only.
 // V1 (Quick Scroll Book Page 1029 V1): The Quick Scroll as a Bible — a leather cover that opens to
 // a two-page spread with seven thumb-index tabs (QuickScrollBook.jsx). The canon's shape lives in
 // src/data/quick-scroll-canon.js; whether a book is written is read from the posts at build time:
@@ -22,8 +24,8 @@ const card = (p) => ({ title: p.data.title, deck: p.data.deck ?? '', url: postHr
 
 const scrolls = {};
 const claim = (book, main, source) => {
-  if (scrolls[book]) throw new Error(`/quick-scroll: two Quick Scrolls for "${book}" — ${scrolls[book].source} and ${source}. Keep one.`);
-  scrolls[book] = { ...main, source };
+  if (scrolls[book]?.main) throw new Error(`/quick-scroll: two Quick Scrolls for "${book}" — ${scrolls[book].source} and ${source}. Keep one.`);
+  scrolls[book] = { ...main, companions: [...main.companions, ...(scrolls[book]?.companions ?? [])], source };
 };
 
 // Book study series: the main study, then every live item in data-file order.
@@ -39,11 +41,18 @@ for (const [book, data] of Object.entries(STUDY_SERIES)) {
 
 // Books with no series yet: the post that names its book.
 for (const p of posts) {
-  if (p.data.scrollBook) claim(p.data.scrollBook, { main: card(p), companions: [] }, p.slug);
+  if (p.data.scrollBook && p.data.scrollRole !== 'companion') claim(p.data.scrollBook, { main: card(p), companions: [] }, p.slug);
+}
+// Companions tagged by `scrollRole: "companion"`, after the series items.
+for (const p of posts) {
+  if (p.data.scrollBook && p.data.scrollRole === 'companion') {
+    scrolls[p.data.scrollBook] ??= { main: null, companions: [] };
+    scrolls[p.data.scrollBook].companions.push({ title: p.data.title, url: postHref(p) });
+  }
 }
 for (const k in scrolls) delete scrolls[k].source;
 
-const count = Object.keys(scrolls).reduce((n, k) => n + (DOUBLE_BOOKS.includes(k) ? 2 : 1), 0);
+const count = Object.keys(scrolls).filter((k) => scrolls[k].main).reduce((n, k) => n + (DOUBLE_BOOKS.includes(k) ? 2 : 1), 0);
 ---
 <BaseLayout title="The Quick Scroll - Berean Studies - Nazaryah" description="The Holy Scriptures, book by book — cliff-notes walkthroughs of whole books of the Bible, with the companion studies that go deeper.">
   <header class="qs-head">
