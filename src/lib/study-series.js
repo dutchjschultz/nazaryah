@@ -1,4 +1,6 @@
-// study-series 1029 V5.js
+// study-series 1029 V6.js
+// V6 (associations batch 75, Isaiah half): Isaiah's second group, Reading the Book, takes ember, for the
+// live coal off the altar in Isaiah 6:6.
 // V5 (associations batch 75): Lamentations joins (src/data/lamentations-series.js). Two new tones:
 // ash for the poems (the city in ashes, 2:10) and sackcloth for the funeral song; Shadow and Substance
 // takes dawn, for "new every morning" (3:23), the rising out of the pit.
@@ -32,7 +34,7 @@ import { ISAIAH_SERIES } from '../data/isaiah-series.js';
 import { LAMENTATIONS_SERIES } from '../data/lamentations-series.js';
 
 // Palette. Each colour means something: night for visions seen at night, ember for
-// the fire of Ezekiel's throne visions, burgundy for the fasting question, bronze for
+// the fire of Ezekiel's throne visions and Isaiah's coal off the altar, burgundy for the fasting question, bronze for
 // a burden carried, royal purple for Revelation's throne room, olive for Isaiah's servant, ash for the burned city,
 // sackcloth for mourning, dawn for the morning mercies, parchment for studies
 // already on the site (the Berean card look).
@@ -52,7 +54,7 @@ const PALETTE = {
 const SERIES = {
   zechariah: { data: ZECHARIAH_SERIES, tones: { visions: 'night', fasting: 'burgundy', burdens: 'bronze', revelation: 'royal' } },
   ezekiel:   { data: EZEKIEL_SERIES,   tones: { visions: 'ember', revelation: 'royal', related: 'parchment' } },
-  isaiah:    { data: ISAIAH_SERIES,    tones: { servant: 'olive' } },
+  isaiah:    { data: ISAIAH_SERIES,    tones: { servant: 'olive', book: 'ember' } },
   lamentations: { data: LAMENTATIONS_SERIES, tones: { poems: 'ash', funeral: 'sackcloth', rising: 'dawn' } },
 };
 

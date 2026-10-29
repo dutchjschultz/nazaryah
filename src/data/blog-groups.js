@@ -1,4 +1,6 @@
-// blog-groups 1029 V80.js
+// blog-groups 1029 V81.js
+// V81 (batch 75, Isaiah half): isaiah-sees-the-throne, isaiah-misread and who-wrote-isaiah join the-quick-scroll
+// (series "isaiah"; the topic page now reads "plus 9 companion studies"). Map total 209 -> 212.
 // V80 (batch 75): the Lamentations series joins the-quick-scroll (series "lamentations"; the topic page
 // lists lamentations-five-voices-one-warning only, "plus 5 companion studies"). Map total 203 -> 209.
 // V79 (batch 74): the six Servant in Isaiah companions join the-quick-scroll (series "isaiah"; the topic
@@ -325,6 +327,9 @@ export const POST_GROUP = {
   'servant-in-isaiah-4-the-name-changes-hands': 'the-quick-scroll',
   'servant-in-isaiah-5-the-one-carries-the-many': 'the-quick-scroll',
   'servant-in-isaiah-6-servants-plural': 'the-quick-scroll',
+  'isaiah-sees-the-throne': 'the-quick-scroll',
+  'isaiah-misread': 'the-quick-scroll',
+  'who-wrote-isaiah': 'the-quick-scroll',
   'lamentations-five-voices-one-warning': 'the-quick-scroll', // series main
   'lamentations-the-alphabet-of-grief': 'the-quick-scroll',  // Lamentations series companions
   'lamentations-who-wrote-it': 'the-quick-scroll',
