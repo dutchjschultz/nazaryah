@@ -1,4 +1,6 @@
-// blog-groups 1029 V81.js
+// blog-groups 1029 V82.js
+// V82 (Quick Scroll Book Page 1029 V1): the-quick-scroll gains `href: '/quick-scroll'` — its topic card opens the
+// Bible book page instead of the filtered list. /blog/c/the-quick-scroll still builds and keeps its address. Map unchanged.
 // V81 (batch 75, Isaiah half): isaiah-sees-the-throne, isaiah-misread and who-wrote-isaiah join the-quick-scroll
 // (series "isaiah"; the topic page now reads "plus 9 companion studies"). Map total 209 -> 212.
 // V80 (batch 75): the Lamentations series joins the-quick-scroll (series "lamentations"; the topic page
@@ -209,7 +211,7 @@ export const BLOG_GROUPS = [
   { key: 'the-way-in-and-the-walk', name: 'The Way In and the Walk', subtitle: 'The Blood and the Bread', blurb: 'Deliverance in two parts: the door the blood opens, and the road the bread walks.' },
   { key: 'the-root',             name: 'The Root',             blurb: 'Word studies — where a single Hebrew or Greek root is the whole study.' },
   { key: 'the-counterfeit-throne', name: 'The Counterfeit Throne', blurb: 'Blogs that take the Trinity head-on — Father, Son, and the seat between them.' },
-  { key: 'the-quick-scroll',     name: 'The Quick Scroll',     blurb: 'Cliff-notes walkthroughs of whole books of the Bible.' },
+  { key: 'the-quick-scroll',     name: 'The Quick Scroll',     href: '/quick-scroll', blurb: 'Cliff-notes walkthroughs of whole books of the Bible.' },
   { key: 'buried-in-plain-sight', name: 'Buried in Plain Sight', blurb: 'The systems, symbols, and history hidden in plain view.' },
   { key: 'the-law-and-the-feasts', name: 'The Law & The Feasts', blurb: 'The Torah that still stands, and the appointed times it keeps.' },
   { key: 'the-side-door',        name: 'The Side Door',        blurb: 'Modern parables — hard truth slipped in sideways, the way a story can and a lecture cannot.' },

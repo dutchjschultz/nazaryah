@@ -1,5 +1,7 @@
 ---
-// StudiesMap.astro · 1023 V6
+// StudiesMap.astro · 1029 V7
+// V7 (Quick Scroll Book Page 1029 V1): a topic card opens its group's `href` when it has one
+// (The Quick Scroll -> /quick-scroll), else /blog/c/<key>.
 // V6 (associations batch 70): a topic's count leaves out book study series companions,
 // matching its page (the main study stands for the book).
 // V5: `lead` may be the intro text itself (a string) — the box shows it, then "Or
@@ -77,7 +79,7 @@ const trilogyCount = READING_SETS.length;
         <p class="blog-map-eyebrow">Studies · browse by topic</p>
         <div class="blog-group-grid">
           {BLOG_GROUPS.map((g) => (
-            <a href={`/blog/c/${g.key}`} class="blog-group-card">
+            <a href={g.href ?? `/blog/c/${g.key}`} class="blog-group-card">
               <span class="bg-name">{g.name}</span>
               {g.subtitle && <span class="bg-sub">{g.subtitle}</span>}
               <span class="bg-blurb">{g.blurb}</span>

@@ -1,4 +1,5 @@
-// nav 1024 V14.js
+// nav 1029 V15.js
+// V15 (Quick Scroll Book Page 1029 V1): Berean Studies gains The Quick Scroll (/quick-scroll), after Studies.
 // V14: Counterfeits item renamed "Spirit of Truth or Seducing Spirits?" (was Christian or Demonic?); desc names the practices with no count (Dutch 1024). Href unchanged.
 // V13 (Trilogy Triptych brief 1023 V1): Berean Studies carries `trilogies: true` — its dropdown becomes a
 // mega-menu with the Trilogies triptych beside the links (Header V22).
@@ -104,6 +105,7 @@ export const mainNav = [
     trilogies: true,
     links: [
       { label: 'Studies', href: '/blog/topics', desc: 'Full Bible studies, one subject at a time, sorted by topic.' },
+      { label: 'The Quick Scroll', href: '/quick-scroll', desc: 'The Holy Scriptures, book by book.' },
       { label: "Pe'ah", href: '/peah', desc: 'A short read on one verse, one point. Fits with morning coffee.' },
       { label: 'Trilogies', href: '/trilogies', desc: 'Three studies that belong together. Each one opens the other two wider.' },
       { label: 'Collections', href: '/blog/collections', desc: 'Studies that outgrew the page.' },

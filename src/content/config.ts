@@ -1,4 +1,7 @@
-// content config 1023 V33
+// content config 1029 V34
+// V34 (Quick Scroll book page 1029 V1): posts gain optional `scrollBook` — a canon slug from
+// src/data/quick-scroll-canon.js marking this study as that book's Quick Scroll on /quick-scroll,
+// for books with no study series. A series main needs none (its `series` key is the book).
 // V33 (associations batch 70): posts gain optional `seriesRole: "main"` — the Quick Scroll study
 // that leads a book study series (src/lib/study-series.js).
 
@@ -128,6 +131,7 @@ import { defineCollection, z } from 'astro:content';
 import { parseRef } from '../lib/scripture/parse-ref.js';
 import { PEAH_TOPICS } from '../lib/peah.js';
 import { doctrines as DOCTRINE_PAIRS } from '../data/doctrines.data.js';
+import { BOOK_SLUGS } from '../data/quick-scroll-canon.js';
 
 const DOCTRINE_SLUGS = DOCTRINE_PAIRS.map((p) => p.departure.slug);
 
@@ -235,6 +239,10 @@ const postsCollection = defineCollection({
     // study series (src/lib/study-series.js); its companions carry the same
     // `series` key and no role.
     seriesRole: z.enum(['main']).optional(),
+    // QUICK SCROLL BOOK — the canon slug (src/data/quick-scroll-canon.js) this study is the
+    // Quick Scroll for, lighting that book on /quick-scroll. Only for a book with no study
+    // series; a series main is read from its `series` key. An unknown slug fails the build.
+    scrollBook: z.enum(BOOK_SLUGS).optional(),
     // Cross-reference clusters (see src/data/associations.js). A study joins a
     // cluster by listing its key here; the Associated Studies panel and the
     // /associations coverage map pick it up automatically.

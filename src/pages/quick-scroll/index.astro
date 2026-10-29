@@ -1,0 +1,55 @@
+---
+// src/pages/quick-scroll/index.astro · 1029 V1
+// V1 (Quick Scroll Book Page 1029 V1): The Quick Scroll as a Bible — a leather cover that opens to
+// a two-page spread with seven thumb-index tabs (QuickScrollBook.jsx). The canon's shape lives in
+// src/data/quick-scroll-canon.js; whether a book is written is read from the posts at build time:
+//   - a book study series (src/lib/study-series.js) whose key is a canon slug: its main study is
+//     the Quick Scroll, and its live items (companions and Read Alongside) list beneath, in order;
+//   - a post with `scrollBook: "<slug>"`: the Quick Scroll for a book with no series yet.
+// Study URLs are unchanged; this page only links to them.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import QuickScrollBook from '../../components/QuickScrollBook.jsx';
+import { CANON, TANAK_NOTE, TOTAL_BOOKS, DOUBLE_BOOKS, BOOK_SLUGS } from '../../data/quick-scroll-canon.js';
+import { STUDY_SERIES, seriesItems } from '../../lib/study-series.js';
+import { postHref } from '../../lib/post-href.js';
+import { getCollection } from 'astro:content';
+import '../../styles/quick-scroll.css';
+
+const posts = await getCollection('posts', (p) => !p.data.draft);
+const bySlug = new Map(posts.map((p) => [p.slug, p]));
+
+const card = (p) => ({ title: p.data.title, deck: p.data.deck ?? '', url: postHref(p) });
+
+const scrolls = {};
+const claim = (book, main, source) => {
+  if (scrolls[book]) throw new Error(`/quick-scroll: two Quick Scrolls for "${book}" — ${scrolls[book].source} and ${source}. Keep one.`);
+  scrolls[book] = { ...main, source };
+};
+
+// Book study series: the main study, then every live item in data-file order.
+for (const [book, data] of Object.entries(STUDY_SERIES)) {
+  if (!BOOK_SLUGS.includes(book)) continue;
+  const main = bySlug.get(data.main);
+  if (!main) continue;
+  const companions = seriesItems(data)
+    .filter(({ item }) => item.status === 'live' && bySlug.has(item.slug))
+    .map(({ item }) => { const p = bySlug.get(item.slug); return { title: p.data.title, url: postHref(p) }; });
+  claim(book, { main: card(main), companions }, main.slug);
+}
+
+// Books with no series yet: the post that names its book.
+for (const p of posts) {
+  if (p.data.scrollBook) claim(p.data.scrollBook, { main: card(p), companions: [] }, p.slug);
+}
+for (const k in scrolls) delete scrolls[k].source;
+
+const count = Object.keys(scrolls).reduce((n, k) => n + (DOUBLE_BOOKS.includes(k) ? 2 : 1), 0);
+---
+<BaseLayout title="The Quick Scroll - Berean Studies - Nazaryah" description="The Holy Scriptures, book by book — cliff-notes walkthroughs of whole books of the Bible, with the companion studies that go deeper.">
+  <header class="qs-head">
+    <h1>The Quick Scroll</h1>
+    <p class="qs-sub">The Holy Scriptures, Book by Book</p>
+    <p class="qs-count">{count} of {TOTAL_BOOKS} books</p>
+  </header>
+  <QuickScrollBook client:load canon={CANON} tanakNote={TANAK_NOTE} scrolls={scrolls} />
+</BaseLayout>
