@@ -1,4 +1,6 @@
-// blog-groups 1027 V79.js
+// blog-groups 1029 V80.js
+// V80 (batch 75): the Lamentations series joins the-quick-scroll (series "lamentations"; the topic page
+// lists lamentations-five-voices-one-warning only, "plus 5 companion studies"). Map total 203 -> 209.
 // V79 (batch 74): the six Servant in Isaiah companions join the-quick-scroll (series "isaiah"; the topic
 // page lists isaiah-runs-forward only, "plus 6 companion studies"). Map total 197 -> 203.
 // V78 (batch 73): Zechariah and Ezekiel series complete. Zechariah Visions Five to Eight, the First and Second
@@ -287,7 +289,7 @@ export const POST_GROUP = {
   'tried-in-the-reins': 'the-root',
   'the-lucifer-deception': 'the-root',  // batch 71 (1023): rewritten as a word study; moves here from buried-in-plain-sight
 
-  // ── The Quick Scroll (11) ──
+  // ── The Quick Scroll (12) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
   'the-book-of-enoch': 'the-quick-scroll',
   'isaiah-runs-forward': 'the-quick-scroll',
@@ -323,6 +325,12 @@ export const POST_GROUP = {
   'servant-in-isaiah-4-the-name-changes-hands': 'the-quick-scroll',
   'servant-in-isaiah-5-the-one-carries-the-many': 'the-quick-scroll',
   'servant-in-isaiah-6-servants-plural': 'the-quick-scroll',
+  'lamentations-five-voices-one-warning': 'the-quick-scroll', // series main
+  'lamentations-the-alphabet-of-grief': 'the-quick-scroll',  // Lamentations series companions
+  'lamentations-who-wrote-it': 'the-quick-scroll',
+  'lamentations-take-up-a-lamentation': 'the-quick-scroll',
+  'lamentations-a-funeral-in-scripture': 'the-quick-scroll',
+  'lamentations-death-burial-and-rising': 'the-quick-scroll',
 
   // ── Buried in Plain Sight (21) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
