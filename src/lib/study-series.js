@@ -1,4 +1,8 @@
-// study-series 1029 V6.js
+// study-series 1030 V7.js
+// V7 (associations batch 76): Jeremiah joins (src/data/jeremiah-series.js). Two new tones: clay for
+// Acted Out (the potter's house and the smashed jar, 18–19) and vineyard for Built and Planted
+// (plant vineyards, 31:5). Torn Down takes ember, for the fire kindled in the gates (17:27).
+// Read Alongside is parchment, as on Ezekiel.
 // V6 (associations batch 75, Isaiah half): Isaiah's second group, Reading the Book, takes ember, for the
 // live coal off the altar in Isaiah 6:6.
 // V5 (associations batch 75): Lamentations joins (src/data/lamentations-series.js). Two new tones:
@@ -32,11 +36,13 @@ import { ZECHARIAH_SERIES } from '../data/zechariah-series.js';
 import { EZEKIEL_SERIES } from '../data/ezekiel-series.js';
 import { ISAIAH_SERIES } from '../data/isaiah-series.js';
 import { LAMENTATIONS_SERIES } from '../data/lamentations-series.js';
+import { JEREMIAH_SERIES } from '../data/jeremiah-series.js';
 
 // Palette. Each colour means something: night for visions seen at night, ember for
 // the fire of Ezekiel's throne visions and Isaiah's coal off the altar, burgundy for the fasting question, bronze for
 // a burden carried, royal purple for Revelation's throne room, olive for Isaiah's servant, ash for the burned city,
-// sackcloth for mourning, dawn for the morning mercies, parchment for studies
+// sackcloth for mourning, dawn for the morning mercies, clay for Jeremiah's potter's lessons, vineyard for
+// the planting, parchment for studies
 // already on the site (the Berean card look).
 const PALETTE = {
   night:     { from: '#1F3864', to: '#2E4A7D', ink: '#E2C06A', edge: '#C9A44A' },
@@ -48,6 +54,8 @@ const PALETTE = {
   ash:       { from: '#2F2F2F', to: '#4A4744', ink: '#E2C06A', edge: '#A89A80' },
   sackcloth: { from: '#4E3F2E', to: '#6B5841', ink: '#F1E6CF', edge: '#C9A44A' },
   dawn:      { from: '#7A4A22', to: '#B57A38', ink: '#FFF4DC', edge: '#E8C27A' },
+  clay:      { from: '#6B3A22', to: '#8C5233', ink: '#F6E7CF', edge: '#D6A56A' },
+  vineyard:  { from: '#2E4A2A', to: '#456B3A', ink: '#F0DFA0', edge: '#C9A44A' },
   parchment: { from: '#F5E8C8', to: '#E8D5A3', ink: '#3A2410', edge: '#A07850' },
 };
 
@@ -56,6 +64,7 @@ const SERIES = {
   ezekiel:   { data: EZEKIEL_SERIES,   tones: { visions: 'ember', revelation: 'royal', related: 'parchment' } },
   isaiah:    { data: ISAIAH_SERIES,    tones: { servant: 'olive', book: 'ember' } },
   lamentations: { data: LAMENTATIONS_SERIES, tones: { poems: 'ash', funeral: 'sackcloth', rising: 'dawn' } },
+  jeremiah: { data: JEREMIAH_SERIES, tones: { lessons: 'clay', torn: 'ember', built: 'vineyard', related: 'parchment' } },
 };
 
 export const STUDY_SERIES = Object.fromEntries(Object.entries(SERIES).map(([k, s]) => [k, s.data]));
