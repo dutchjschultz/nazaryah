@@ -1,4 +1,7 @@
-// links.data 0812 V19.js
+// links.data 1101 V20.js
+// V20. Pulpit filler, torah side: 4 links added for the curse-of-Ham chain (torah.filler.*), from the
+// sources named in Canaan Not Ham Etsy 1101 V1. Titles, lines, witnesses and findings are Etsy's, built
+// from the handoff and the study; flagged for Dutch. 236 total.
 // V19. Baptism, Worship, Spirit, Pulpit filler: 18 links added (5 baptism, 1 bread, 5 worship, 2 spirit, 5 filler). 232 total.
 // V18. Israel and the nations: 14 links added (10 trinity.israel, 4 torah.israel). 214 total.
 // V17. Authority and Tithes: 13 links added (7 trinity.authority, 5 torah.tithes, 1 trinity.tithes). 200 total.
@@ -3615,6 +3618,64 @@ export const links = {
     ],
     records: [],
     finding: 'The first thing said about the greatest missionary\u2019s calling was how much he would suffer.',
+  },
+
+
+  'torah.filler.hams-line-tied-to-servitude': {
+    title: 'Ham\u2019s Line Tied to Servitude',
+    line: 'Noah\u2019s word over Canaan is read onto Ham\u2019s Egyptian descendants.',
+    witnesses: [
+      ['Genesis 9:25', 'Cursed be Canaan'],
+      ['Genesis 10:6', 'Cush, Mizraim, Phut, and Canaan'],
+      ['Genesis 9:18', 'Ham is the father of Canaan'],
+    ],
+    records: [
+      { source: 'Origen, Homilies on Genesis 16.1', date: '3rd century', note: 'Ties Ham\u2019s Egyptian descendants to servitude and calls them a \u201cdiscolored posterity.\u201d' },
+    ],
+    finding: 'The curse named one son, and Mizraim was not that son.',
+  },
+
+  'torah.filler.ham-given-a-skin-color': {
+    title: 'Ham Given a Skin Color',
+    line: 'The story of Noah\u2019s tent is retold with Ham turning black.',
+    witnesses: [
+      ['Genesis 9:25', 'Cursed be Canaan'],
+      ['Psalm 105:23', 'the land of Ham'],
+      ['Acts 17:26', 'made of one blood all nations'],
+    ],
+    records: [
+      { source: 'The Cave of Treasures (Syriac)', date: '4th century', note: 'Says Ham \u201cbecame black,\u201d linking the curse story to skin color.' },
+    ],
+    finding: 'Genesis says nothing about any man\u2019s color, in the tent or after it.',
+  },
+
+  'torah.filler.curse-laid-on-africa': {
+    title: 'The Curse Laid on Africa',
+    line: 'A royal chronicler explains enslaved Africans by the curse of Noah.',
+    witnesses: [
+      ['Genesis 10:19', 'from Sidon, as thou comest to Gerar, unto Gaza'],
+      ['Genesis 10:6', 'Cush, Mizraim, Phut'],
+      ['Exodus 21:16', 'he that stealeth a man'],
+    ],
+    records: [
+      { source: 'Gomes Eanes de Zurara, Chronicle of the Discovery and Conquest of Guinea', date: '1453', note: 'The Portuguese royal chronicler explains the enslaved Africans brought to Portugal by \u201cthe curse that Noah cast upon his son Ham after the flood.\u201d Often cited as the first use of the curse to justify early modern slavery.' },
+    ],
+    finding: 'Canaan\u2019s border ran from Sidon to Gaza, and none of it is in Africa.',
+  },
+
+  'torah.filler.curse-preached-as-bible': {
+    title: 'The Curse Preached as Bible',
+    line: 'The name is changed, the color is added, and the result is sold as Scripture.',
+    witnesses: [
+      ['Deuteronomy 24:16', 'every man for his own sin'],
+      ['Ezekiel 18:20', 'son shall not bear the iniquity'],
+      ['Exodus 21:16', 'he shall surely be put to death'],
+      ['1 Timothy 1:10', 'menstealers'],
+    ],
+    records: [
+      { source: 'Josiah Priest, Slavery, As It Relates to the Negro (reissued as Bible Defence of Slavery, 1851)', date: '1843', note: 'Makes Ham the black son of Noah, claims the name means \u201cblack,\u201d and calls the bondage of his descendants a \u201cjudicial act of God.\u201d' },
+    ],
+    finding: 'The Law the preachers quoted put the man-stealer to death.',
   },
 
 };

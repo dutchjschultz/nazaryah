@@ -1,4 +1,5 @@
-// blog-groups 1101 V84.js
+// blog-groups 1101 V85.js
+// V85: canaan-not-ham joins scripture-unfiltered (category Scripture Unfiltered). Map total 219 -> 220.
 // V84 (Hebrews Quick Scroll Handoff 1101 V1): the Hebrews series joins the-quick-scroll (series "hebrews"; the
 // topic page lists hebrews-seven-betters-and-five-warnings only, "plus 1 companion study"). Map total 217 -> 219.
 // V83 (batch 76): the Jeremiah series joins the-quick-scroll (series "jeremiah"; the topic page lists
@@ -493,6 +494,7 @@ export const POST_GROUP = {
   'three-verses-after-the-end': 'scripture-unfiltered',
   'is-this-the-man': 'scripture-unfiltered',
   'thou-art-a-man-and-not-el': 'scripture-unfiltered',
+  'canaan-not-ham': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;

@@ -1,4 +1,7 @@
-// chain-filings 0809 V1.js
+// chain-filings 1101 V2.js
+// V2: a `posts` study files at its real address (/blog/<slug>, or its `route` / `home`, as post-href.js
+// decides), not /posts/<slug>/. The first study to file (canaan-not-ham) would have linked to a dead page.
+// V1: new file.
 // New file. Inverts study frontmatter into a link-id to studies map at build time.
 
 // HOW IT WORKS
@@ -28,9 +31,10 @@ function buildFilings() {
     const collection = slug.split('/')[0];
     const rest = slug.split('/').slice(1).join('/');
 
+    const postUrl = fm.route ?? `${fm.home ?? '/blog'}/${fm.slug ?? rest}`;
     const entry = {
       title: fm.title || rest,
-      url: fm.permalink || `/${collection}/${rest}/`,
+      url: fm.permalink || (collection === 'posts' ? postUrl : `/${collection}/${rest}/`),
     };
 
     for (const id of ids) {

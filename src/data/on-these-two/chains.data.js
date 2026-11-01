@@ -1,4 +1,7 @@
-// chains.data 0812 V17.js
+// chains.data 1101 V18.js
+// V18. Pulpit filler: the curse-of-Ham chain added (torah), from Canaan Not Ham Etsy 1101 V1. The handoff's
+// summary line is the verdict finding; spokenBy and aliases are Etsy's, flagged for Dutch. The study files
+// against all four links (chainLinks in canaan-not-ham). 132 total.
 // V17. Pulpit filler (new category) added + 12 chains (11 trinity, 1 torah). 131 total.
 // V16. Israel and the nations: 9 chains added (6 trinity, 3 torah) — first category spanning both hinges. 119 total.
 // V15. Authority and Tithes: 9 chains added (7 trinity, 2 torah). 110 total.
@@ -3540,6 +3543,31 @@ export const chains = [
     },
   },
 
+  {
+    id: 'the-curse-of-ham',
+    saying: 'The curse of Ham',
+    hinge: 'torah',
+    category: 'Pulpit filler',
+    spokenBy: 'preached from the pulpits that defended the slave trade',
+    aliases: ['curse of ham', 'ham', 'canaan', 'noah', 'genesis 9', 'genesis 9:25', 'slavery', 'africa', 'black', 'race'],
+    links: [
+      'torah.hinge',
+      'torah.filler.hams-line-tied-to-servitude',
+      'torah.filler.ham-given-a-skin-color',
+      'torah.filler.curse-laid-on-africa',
+      'torah.filler.curse-preached-as-bible',
+    ],
+    verdict: {
+      witnesses: [
+        ['Genesis 9:25', 'Cursed be Canaan'],
+        ['Genesis 9:26-27', 'Canaan shall be his servant'],
+        ['Joshua 9:23', 'ye are cursed, hewers of wood'],
+        ['Deuteronomy 24:16', 'every man for his own sin'],
+        ['Acts 17:26', 'made of one blood all nations'],
+      ],
+      finding: 'Noah cursed Canaan by name. Over seventeen centuries the name was changed to Ham, the curse was given a skin color, and the result was preached as Bible to defend the slave trade.',
+    },
+  },
 ];
 
 export default chains;
