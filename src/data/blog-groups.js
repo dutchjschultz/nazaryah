@@ -1,4 +1,6 @@
-// blog-groups 1030 V83.js
+// blog-groups 1101 V84.js
+// V84 (Hebrews Quick Scroll Handoff 1101 V1): the Hebrews series joins the-quick-scroll (series "hebrews"; the
+// topic page lists hebrews-seven-betters-and-five-warnings only, "plus 1 companion study"). Map total 217 -> 219.
 // V83 (batch 76): the Jeremiah series joins the-quick-scroll (series "jeremiah"; the topic page lists
 // jeremiah-tear-down-then-build only, "plus 4 companion studies"). Map total 212 -> 217.
 // V82 (Quick Scroll Book Page 1029 V1): the-quick-scroll gains `href: '/quick-scroll'` — its topic card opens the
@@ -295,7 +297,7 @@ export const POST_GROUP = {
   'tried-in-the-reins': 'the-root',
   'the-lucifer-deception': 'the-root',  // batch 71 (1023): rewritten as a word study; moves here from buried-in-plain-sight
 
-  // ── The Quick Scroll (49) ──
+  // ── The Quick Scroll (51) ──
   'esther-ishtar-marduk': 'the-quick-scroll',
   'the-book-of-enoch': 'the-quick-scroll',
   'isaiah-runs-forward': 'the-quick-scroll',
@@ -345,6 +347,8 @@ export const POST_GROUP = {
   'jeremiah-the-sabbath-at-the-gates': 'the-quick-scroll',
   'jeremiah-new-covenant-same-law': 'the-quick-scroll',
   'jeremiah-seventy-years-to-seventy-weeks': 'the-quick-scroll',
+  'hebrews-seven-betters-and-five-warnings': 'the-quick-scroll', // series main
+  'hebrews-sanctuary-walk': 'the-quick-scroll',                  // Hebrews series companion
 
   // ── Buried in Plain Sight (21) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',

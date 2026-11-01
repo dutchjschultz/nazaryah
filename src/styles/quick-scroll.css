@@ -1,4 +1,5 @@
-/* quick-scroll 1029 V1.css
+/* quick-scroll 1101 V2.css
+   V2 (Hebrews Quick Scroll 1101): .qs-subtitle, the main study's subtitle on the card.
    V1 (Quick Scroll Book Page 1029 V1): the Bible on /quick-scroll (QuickScrollBook.jsx).
    Imported by src/pages/quick-scroll/index.astro, so it is global: every class is qs-prefixed.
    Colours come from the site tokens in global.css; the two leathers (oxblood Tanak, navy
@@ -112,6 +113,7 @@ button.qs-line:hover .qs-name, .qs-line.is-active .qs-name { text-decoration: un
 @keyframes qs-turn { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 .qs-ref { font-family: 'Cormorant Garamond', Georgia, serif; font-variant: small-caps; letter-spacing: .1em; color: var(--qs-gold-ink); margin: 0; }
 .qs-title { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 2rem; font-weight: 600; line-height: 1.15; margin: .2rem 0 .5rem; color: var(--qs-ink); }
+.qs-subtitle { font-family: var(--font-family-serif); font-style: italic; font-size: 1.2rem; color: var(--qs-ink); margin: -.2rem 0 .6rem; }
 .qs-deck { font-family: var(--font-family-serif); font-style: italic; color: var(--qs-ink-2); margin: 0 0 1.3rem; }
 .qs-wrap a.qs-read {
   display: inline-block; padding: .5rem 1.1rem; border: 1px solid var(--qs-gold); border-radius: 4px;

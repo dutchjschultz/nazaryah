@@ -1,5 +1,7 @@
 ---
-// src/pages/quick-scroll/index.astro · 1029 V2
+// src/pages/quick-scroll/index.astro · 1101 V3
+// V3 (Hebrews Quick Scroll 1101): a main study's `subtitle` rides on its card (the Hebrews main is titled
+// plain "Hebrews", so the subtitle carries the name).
 // V2 (Dutch 1029): `scrollRole: "companion"` + `scrollBook` lists a study under that book's Quick Scroll
 // (after any series items). A book with companions but no main stays faded; the count reads mains only.
 // V1 (Quick Scroll Book Page 1029 V1): The Quick Scroll as a Bible — a leather cover that opens to
@@ -20,7 +22,7 @@ import '../../styles/quick-scroll.css';
 const posts = await getCollection('posts', (p) => !p.data.draft);
 const bySlug = new Map(posts.map((p) => [p.slug, p]));
 
-const card = (p) => ({ title: p.data.title, deck: p.data.deck ?? '', url: postHref(p) });
+const card = (p) => ({ title: p.data.title, subtitle: p.data.subtitle ?? '', deck: p.data.deck ?? '', url: postHref(p) });
 
 const scrolls = {};
 const claim = (book, main, source) => {

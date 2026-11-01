@@ -1,4 +1,5 @@
-// QuickScrollBook 1029 V1.jsx
+// QuickScrollBook 1101 V2.jsx
+// V2 (Hebrews Quick Scroll 1101): the card shows the main study's subtitle under its title, when it has one.
 // V1 (Quick Scroll Book Page 1029 V1): the Bible on /quick-scroll. A closed cover opens to a
 // two-page spread; seven thumb-index tabs on the fore-edge pick a section (left page), a written
 // book opens its Quick Scroll card and companions (right page). Written books come in `scrolls`
@@ -131,6 +132,7 @@ export default function QuickScrollBook({ canon, tanakNote, scrolls }) {
             <article className="qs-detail" key={book}>
               <p className="qs-ref">{bookName(book)}</p>
               <h3 className="qs-title">{shown.main.title}</h3>
+              {shown.main.subtitle && <p className="qs-subtitle">{shown.main.subtitle}</p>}
               {shown.main.deck && <p className="qs-deck">{shown.main.deck}</p>}
               <a className="qs-read" href={shown.main.url}>Read the Quick Scroll</a>
               {shown.companions.length > 0 && (

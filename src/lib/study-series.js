@@ -1,4 +1,6 @@
-// study-series 1030 V7.js
+// study-series 1101 V8.js
+// V8 (Hebrews Quick Scroll Handoff 1101 V1): Hebrews joins (src/data/hebrews-series.js). The Sanctuary Walk
+// takes ember, for the fire on the brazen altar, the walk's first station past the gate (13:10).
 // V7 (associations batch 76): Jeremiah joins (src/data/jeremiah-series.js). Two new tones: clay for
 // Acted Out (the potter's house and the smashed jar, 18–19) and vineyard for Built and Planted
 // (plant vineyards, 31:5). Torn Down takes ember, for the fire kindled in the gates (17:27).
@@ -37,6 +39,7 @@ import { EZEKIEL_SERIES } from '../data/ezekiel-series.js';
 import { ISAIAH_SERIES } from '../data/isaiah-series.js';
 import { LAMENTATIONS_SERIES } from '../data/lamentations-series.js';
 import { JEREMIAH_SERIES } from '../data/jeremiah-series.js';
+import { HEBREWS_SERIES } from '../data/hebrews-series.js';
 
 // Palette. Each colour means something: night for visions seen at night, ember for
 // the fire of Ezekiel's throne visions and Isaiah's coal off the altar, burgundy for the fasting question, bronze for
@@ -65,6 +68,7 @@ const SERIES = {
   isaiah:    { data: ISAIAH_SERIES,    tones: { servant: 'olive', book: 'ember' } },
   lamentations: { data: LAMENTATIONS_SERIES, tones: { poems: 'ash', funeral: 'sackcloth', rising: 'dawn' } },
   jeremiah: { data: JEREMIAH_SERIES, tones: { lessons: 'clay', torn: 'ember', built: 'vineyard', related: 'parchment' } },
+  hebrews:  { data: HEBREWS_SERIES,  tones: { sanctuary: 'ember' } },
 };
 
 export const STUDY_SERIES = Object.fromEntries(Object.entries(SERIES).map(([k, s]) => [k, s.data]));
