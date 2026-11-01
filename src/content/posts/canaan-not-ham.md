@@ -10,6 +10,7 @@ author: "Nazaryah"
 featured: false
 draft: false
 associations: []
+companion: ["gog-and-magog", "the-seed-war", "the-second-born"]
 chainLinks: ["torah.filler.hams-line-tied-to-servitude", "torah.filler.ham-given-a-skin-color", "torah.filler.curse-laid-on-africa", "torah.filler.curse-preached-as-bible"]
 ---
 
