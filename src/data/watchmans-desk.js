@@ -1,4 +1,10 @@
-// watchmans-desk 1013 V19.js
+// watchmans-desk 1101 V20.js
+// V20: loaded "In the Likeness of Men" (field-brief, 1 November, standalone, status "filed"), Etsy Batch 1101 V1.
+// New law "No likeness of male or female" (Deuteronomy 4:16) — a TWELFTH canonical string, added to the
+// V12 list below; it duplicates no existing chip. The batch's `kindWord: "STUDY"`, `lawRef`,
+// `displayDate` and `ogImage` are not fields here: the masthead takes its kind word from KINDS (FIELD
+// BRIEF), the date is written "1 November 2026" like the rest, and the card is Dutch's supplied 1200x630
+// at /og/watchmans-desk/<slug>.v2.png (V6 convention, no ogImage). Thumb not committed.
 // V19: Bigger Is Not Blessed gets law "Following a multitude to do evil"
 // (Exodus 23:2, Dutch) — an ELEVENTH canonical string, a plain phrase like the
 // rest (no reference, no full verse); added to the V12 list below.
@@ -48,6 +54,7 @@
 //   Standing images · The land is mine ·
 //   Hating thy brother in thine heart  (added V15)
 //   Following a multitude to do evil  (added V19)
+//   No likeness of male or female  (added V20)
 // V11: The Wedge Is Quiet gets law "False witness". Every entry already carried
 // an ISO sortDate driving the sort; display dates ("May 25", "Ongoing") are shown
 // verbatim and never parsed.
@@ -108,6 +115,18 @@ export const STATUSES = {
 // string (a calendar date, or a phrase like "Ongoing") and is shown verbatim;
 // it is never parsed or sorted on. Give every new entry a sortDate.
 export const entries = [
+  {
+    slug: "in-the-likeness-of-men",
+    kind: "field-brief", status: "filed", date: "1 November 2026",
+    sortDate: "2026-11-01",
+    eyebrow: "",
+    title: "In the Likeness of Men",
+    deck: "Long before the creeds, the nations already believed their gods came down to walk among them as men.",
+    body: "At Lystra, in the hill country of Asia Minor, Paul healed a man who had been crippled from birth. The crowd did not shout that a prophet had come. They shouted in their own tongue that \"the gods are come down to us in the likeness of men\" (Acts 14:11). The Greek phrase is *homoiōthentes anthrōpois*, made like to men. They named Barnabas Jupiter and Paul Mercurius, the Roman names for Zeus and Hermes, and the priest of Jupiter brought oxen and garlands to the gate to sacrifice to them (Acts 14:12-13).",
+    strapline: "Egypt carved it. Greece sang it. Rome minted it. Lystra shouted it.",
+    law: "No likeness of male or female",
+    source: "standalone",
+  },
   {
     slug: "bigger-is-not-blessed",
     kind: "weekly-letter", status: "week-ending", date: "13 October 2026",
