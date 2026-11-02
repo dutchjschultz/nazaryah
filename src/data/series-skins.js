@@ -1,4 +1,6 @@
-// series-skins 1024 V10.js
+// series-skins 1102 V11.js
+// V11 (Etsy Handoff Counterfeit 1102 V1): SECTIONS gains 'counterfeit' (Counterfeit, /counterfeit), house skin,
+// so the section's hand-built pages are dated through page-dates.json.
 // V10: the Christian or Demonic? series is renamed "Spirit of Truth or Seducing Spirits?" (name, title; the description names the practices with no count, Dutch 1024). Slug /christian-or-demonic unchanged.
 // V9 (Etsy Block Abolition Problems 1018 V1): SECTIONS gains 'torah' (Torah, /torah),
 // wearing the torah skin, so a single page filed under the Torah page (first:
@@ -269,6 +271,7 @@ export const SECTIONS = {
   holidays: { name: 'The Holidays', href: '/holidays', skin: 'holidays', cta: 'Read the Study' },
   'foreign-fire': { name: 'Foreign Fire', href: '/foreign-fire', skin: 'foreign-fire', cta: 'Read the Study' },
   calendar: { name: 'The Calendar', href: '/calendar', skin: 'calendar', cta: 'Read the Study' },
+  counterfeit: { name: 'Counterfeit', href: '/counterfeit', skin: null, cta: 'Read the Study' },
 };
 
 // Trinity series: the Trinity Files and the three Trinity books shelved under /trinity.

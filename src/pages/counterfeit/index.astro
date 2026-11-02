@@ -1,0 +1,79 @@
+---
+// counterfeit/index 1102 V1.astro
+// V1 (Etsy Handoff Counterfeit 1102 V1): the Counterfeit section front, a card
+// grid. One card per entry in STUDIES: reference line (small caps), title, italic
+// deck. Adding a study (one per religion, Buddhism's 38 Blessings first) is one
+// more entry here, no markup change. Palette matches the section's pages.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+const STUDIES = [
+  {
+    reference: 'Five Religions',
+    title: 'The Five Major World Religions',
+    deck: 'Truth kept, then turned sideways.',
+    href: '/counterfeit/five-world-religions',
+  },
+];
+---
+
+<BaseLayout
+  title="Counterfeit | Nazaryah"
+  description="The world's religions taken one at a time, from their own writings, and set beside Scripture: what each kept of the truth, and where it turned."
+>
+  <div class="cfx">
+    <div class="cfx-wrap">
+      <h1>Counterfeit</h1>
+      <div class="cfx-grid">
+        {STUDIES.map((s) => (
+          <a href={s.href} class="cfx-card">
+            <span class="cfx-ref">{s.reference}</span>
+            <span class="cfx-title">{s.title}</span>
+            <span class="cfx-deck">{s.deck}</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .cfx {
+    --navy: #1F3864;
+    --ink: #222;
+    --muted: #5a5f6b;
+    --gold: #B8902F;
+    --paper: #fdfcf8;
+    --card: #ffffff;
+    --line: #e4e0d4;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.6;
+  }
+  /* The site's global headings are Cinzel; this page's headings keep its own serif. */
+  .cfx h1, .cfx h2, .cfx h3 { font-family: inherit; }
+  .cfx-wrap { max-width: 1080px; margin: 0 auto; padding: 40px 16px 48px; }
+  .cfx h1 { color: var(--navy); font-size: 2.2rem; line-height: 1.2; margin: 0 0 28px; font-weight: normal; }
+  .cfx-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+    gap: 22px;
+  }
+  .cfx-card {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    text-decoration: none;
+    background: var(--card);
+    border: 1px solid var(--line);
+    border-top: 4px solid var(--navy);
+    border-radius: 6px;
+    padding: 22px 22px 20px;
+    transition: transform .2s ease;
+  }
+  .cfx-card:hover { transform: translateY(-3px); }
+  .cfx-ref { font-variant: small-caps; letter-spacing: .12em; color: var(--gold); font-size: .95rem; }
+  .cfx-title { color: var(--navy); font-size: 1.45rem; line-height: 1.25; }
+  .cfx-deck { font-style: italic; color: var(--muted); font-size: 1.05rem; }
+  @media (max-width: 480px) { .cfx h1 { font-size: 1.8rem; } }
+</style>

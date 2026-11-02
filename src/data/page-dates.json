@@ -639,6 +639,27 @@
       "deck": "The shaved sun-crown of pagan priesthoods preserved on the heads of Catholic monks"
     },
     {
+      "route": "/counterfeit",
+      "section": "counterfeit",
+      "date": "2026-11-02",
+      "title": "Counterfeit",
+      "deck": ""
+    },
+    {
+      "route": "/counterfeit/five-world-religions",
+      "section": "counterfeit",
+      "date": "2026-11-02",
+      "title": "The Five Major World Religions",
+      "deck": ""
+    },
+    {
+      "route": "/counterfeit/five-world-religions/growth",
+      "section": "counterfeit",
+      "date": "2026-11-02",
+      "title": "How They Have Grown",
+      "deck": ""
+    },
+    {
       "route": "/disney/cinderella",
       "section": "hollywood",
       "date": "2026-04-16",

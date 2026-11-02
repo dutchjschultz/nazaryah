@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-page-dates  1018 V4
+page-dates  1102 V5
+V5: SECTION_DIRS gains counterfeit → counterfeit (the Counterfeit section, 1102).
 V4: SINGLE_PAGES gains torah/abolition-problems → torah (Abolition Problems lexicon).
 V3: SINGLE_PAGES gains trinity/trinity-problems → trinity (Trinity Problems lexicon).
 V2: SINGLE_PAGES — top-level pages filed under a section (five-offerings →
@@ -46,6 +47,7 @@ SECTION_DIRS = {
     "calendar": "calendar",
     "hebrew": "hebrew",
     "studies": "berean-studies",
+    "counterfeit": "counterfeit",
 }
 
 # Single pages at the top of src/pages, filed under a section of their own.

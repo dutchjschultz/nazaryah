@@ -1,0 +1,301 @@
+---
+// counterfeit/five-world-religions/growth 1102 V1.astro
+// V1 (Etsy Handoff Counterfeit 1102 V1): How They Have Grown, from Five World
+// Religions Growth 1102 V2.html, text and figures as written. Wrapped in
+// BaseLayout (its footer replaces the page's own). The charts, legend and
+// tooltips are built by the script at load, so the style block is is:global with
+// every selector under an fwg- prefix (scoped styles miss runtime nodes); the
+// palette moved from :root/body onto .fwg. The script ships is:inline, as written.
+// Figures: World Christian Database 2026 — change them together with the cards on
+// /counterfeit/five-world-religions.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+---
+
+<BaseLayout
+  title="How They Have Grown | Nazaryah"
+  description="Christianity, Islam, Hinduism, Buddhism, and Judaism measured against the growth of the world since 1900: each religion's share of world population, and how many times larger each has grown."
+>
+  <div class="fwg">
+  <div class="fwg-wrap">
+
+
+  
+  <p class="fwg-kicker"><a href="/counterfeit/five-world-religions">Counterfeit · The Five Major World Religions</a></p>
+  <h1>How They Have Grown</h1>
+  <p class="fwg-deck">Five religions measured against the growth of the world itself.</p>
+
+  <p>In 1900 the world held about 1.6 billion people. By 2026 it holds about 8.3 billion, more than five times as many. Every one of the five major religions has grown in raw numbers over that span, simply because there are more people alive. The real question is whether a religion has grown faster or slower than the world around it.</p>
+  <p>The fair way to answer that is to measure each religion as a share of the whole world. A religion that held one person in ten in 1900 and still holds one in ten today has kept pace. One that now holds one in four has outrun the world. One that holds fewer has fallen behind, no matter how large its raw numbers have become.</p>
+
+  <h2>Share of the World</h2>
+  <div class="fwg-chart-card" id="shareCard">
+    <div class="fwg-chart-title">Percent of world population, 1900 to 2026</div>
+    <div class="fwg-chart-sub">Tap or hover on the chart to see each year.</div>
+    <div class="fwg-legend" id="shareLegend"></div>
+    <svg id="shareChart" role="img" aria-label="Line chart of each religion's share of world population from 1900 to 2026"></svg>
+    <div class="fwg-tip" id="shareTip"></div>
+  </div>
+
+  <h2>Growth Since 1900</h2>
+  <div class="fwg-chart-card" id="growthCard">
+    <div class="fwg-chart-title">How many times larger each has grown since 1900</div>
+    <div class="fwg-chart-sub">The dashed line marks the world itself, 5.1 times larger.</div>
+    <svg id="growthChart" role="img" aria-label="Bar chart of each religion's growth multiple since 1900 compared with world growth"></svg>
+    <div class="fwg-tip" id="growthTip"></div>
+  </div>
+
+  <section class="fwg-readout">
+    <h2>Reading the Record</h2>
+
+    <h3><i style="background:var(--s-isl)"></i>Islam</h3>
+    <p>Islam is the clear outlier. It held about one person in eight in 1900 (12.4 percent) and holds about one in four today (25.4 percent). Its followers have multiplied more than ten times over, twice the pace of the world. Most of that growth comes from large families in young, fast-growing nations rather than from converts.</p>
+
+    <h3><i style="background:var(--s-chr)"></i>Christianity</h3>
+    <p>Christianity remains the largest of the five, about 2.7 billion people. Its share, though, has slipped slightly, from 34.5 percent in 1900 to 32.2 percent today. Its numbers have grown a little slower than the world. The ground under it has also shifted: in 1900 most Christians lived in Europe and North America, and today most live in Africa, Latin America, and Asia.</p>
+
+    <h3><i style="background:var(--s-hin)"></i>Hinduism</h3>
+    <p>Hinduism has grown slightly faster than the world, from 12.5 percent to 13.8 percent. It remains tied almost entirely to India and Nepal, and its numbers rise and fall with India's population.</p>
+
+    <h3><i style="background:var(--s-bud)"></i>Buddhism</h3>
+    <p>Buddhism has fallen behind. Its share has dropped from 7.8 percent to 6.5 percent, and its numbers have flattened in recent decades as its homelands in East Asia have aged and many there have walked away from religion altogether. It is the only one of the five expected to shrink in the coming decades.</p>
+
+    <h3><i style="background:var(--s-jud)"></i>Judaism</h3>
+    <p>Judaism has held nearly still in number while the world grew around it. About 11.7 million in 1900 and about 15.8 million today, its share has fallen from about 0.7 percent to about 0.2 percent. The Holocaust took roughly six million Jewish lives in the 1940s, which is why the count in 2000 stood barely above where it stood in 1900.</p>
+  </section>
+
+  <h2>What the Numbers Cannot Show</h2>
+  <p>A head count measures who is claimed by a religion, not who walks in what it teaches. Census figures count a person as Christian, Muslim, or Hindu by birth, family, or a box checked on a form. Size has never been a mark of truth in Scripture. Israel was chosen as "the fewest of all people" (Deuteronomy 7:7), and Yahushua said the way to life is narrow and "few there be that find it" (Matthew 7:14). Revelation draws the same line at the end: all the world wondered after the beast (Revelation 13:3), while the remnant the dragon makes war against is small and marked by one thing, keeping the commandments of Yahuah and holding the testimony of Yahushua (Revelation 12:17).</p>
+
+  <p class="fwg-note">Figures come from the World Christian Database, "Status of Global Christianity, 2026, in the Context of 1900–2075" (Center for the Study of Global Christianity, Gordon-Conwell Theological Seminary), which tracks all major religions from one consistent source back to 1900. Other surveys count somewhat differently; the Pew Research Center, for example, places Buddhists far lower, at about 324 million in 2020, chiefly because the two sources classify religious life in China differently. The direction of each trend is the same in both.</p>
+
+  <a class="fwg-back" href="/counterfeit/five-world-religions">← Back to The Five Major World Religions</a>
+  </div>
+  </div>
+
+<script is:inline>
+(function () {
+  var years = [1900, 1970, 2000, 2020, 2026];
+  var world = [1619625, 3694684, 6171703, 7887001, 8300678]; // thousands
+  var series = [
+    { name: "Christianity", color: "var(--s-chr)", data: [558346, 1222867, 1993436, 2526029, 2673989] },
+    { name: "Islam",        color: "var(--s-isl)", data: [200301, 576995, 1311342, 1917487, 2105142] },
+    { name: "Hinduism",     color: "var(--s-hin)", data: [202976, 455729, 842884, 1097448, 1148172] },
+    { name: "Buddhism",     color: "var(--s-bud)", data: [126946, 234130, 448943, 528137, 535726] },
+    { name: "Judaism",      color: "var(--s-jud)", data: [11725, 13917, 12942, 15239, 15765] }
+  ];
+  series.forEach(function (s) {
+    s.share = s.data.map(function (v, i) { return v / world[i] * 100; });
+    s.mult = s.data[s.data.length - 1] / s.data[0];
+  });
+  var worldMult = world[world.length - 1] / world[0];
+  var NS = "http://www.w3.org/2000/svg";
+
+  function el(tag, attrs, parent) {
+    var e = document.createElementNS(NS, tag);
+    for (var k in attrs) e.setAttribute(k, attrs[k]);
+    if (parent) parent.appendChild(e);
+    return e;
+  }
+  function fmtPeople(k) {
+    var n = k * 1000;
+    if (n >= 1e9) return (n / 1e9).toFixed(2).replace(/0$/, "") + " billion";
+    return Math.round(n / 1e6) + " million";
+  }
+  function fmtPct(p) { return p < 1 ? p.toFixed(2) + "%" : p.toFixed(1) + "%"; }
+
+  // Legend
+  var leg = document.getElementById("shareLegend");
+  series.forEach(function (s) {
+    var sp = document.createElement("span");
+    sp.innerHTML = '<i style="background:' + s.color + '"></i>' + s.name;
+    leg.appendChild(sp);
+  });
+
+  function drawShare() {
+    var svg = document.getElementById("shareChart");
+    var card = document.getElementById("shareCard");
+    var tip = document.getElementById("shareTip");
+    svg.innerHTML = "";
+    var W = svg.clientWidth || 600;
+    var narrow = W < 460;
+    var H = narrow ? 300 : 340;
+    var m = { t: 10, r: narrow ? 92 : 112, b: 28, l: 34 };
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.style.height = H + "px";
+    var pw = W - m.l - m.r, ph = H - m.t - m.b;
+    var x = function (y) { return m.l + (y - 1900) / (2026 - 1900) * pw; };
+    var yMax = 40;
+    var y = function (v) { return m.t + ph - v / yMax * ph; };
+
+    for (var g = 0; g <= yMax; g += 10) {
+      el("line", { x1: m.l, x2: m.l + pw, y1: y(g), y2: y(g), stroke: "var(--grid)", "stroke-width": 1 }, svg);
+      var t = el("text", { x: m.l - 6, y: y(g) + 4, "text-anchor": "end", "font-size": 11, fill: "var(--faint)" }, svg);
+      t.textContent = g + "%";
+    }
+    years.forEach(function (yr) {
+      var t = el("text", { x: x(yr), y: H - 8, "text-anchor": yr === 2026 ? "end" : (yr === 1900 ? "start" : "middle"), "font-size": 11, fill: "var(--faint)" }, svg);
+      t.textContent = (narrow && yr === 2020) ? "" : yr;
+    });
+
+    series.forEach(function (s) {
+      var d = s.share.map(function (v, i) { return (i ? "L" : "M") + x(years[i]).toFixed(1) + "," + y(v).toFixed(1); }).join(" ");
+      el("path", { d: d, fill: "none", stroke: s.color, "stroke-width": 2, "stroke-linejoin": "round", "stroke-linecap": "round" }, svg);
+      var last = s.share.length - 1;
+      var lbl = el("text", { x: x(2026) + 8, y: y(s.share[last]) + 4, "font-size": narrow ? 11 : 12, fill: "var(--ink)" }, svg);
+      lbl.textContent = s.name + " " + fmtPct(s.share[last]);
+    });
+
+    var cross = el("line", { y1: m.t, y2: m.t + ph, stroke: "var(--faint)", "stroke-width": 1, "stroke-dasharray": "3 3", opacity: 0 }, svg);
+    var dots = series.map(function (s) {
+      return el("circle", { r: 4.5, fill: s.color, stroke: "var(--card)", "stroke-width": 2, opacity: 0 }, svg);
+    });
+    var hit = el("rect", { x: m.l, y: m.t, width: pw, height: ph, fill: "transparent", style: "cursor:crosshair" }, svg);
+
+    function show(evt) {
+      var r = svg.getBoundingClientRect();
+      var px = (evt.clientX - r.left) * (W / r.width);
+      var best = 0, bd = Infinity;
+      years.forEach(function (yr, i) { var dd = Math.abs(x(yr) - px); if (dd < bd) { bd = dd; best = i; } });
+      var cx = x(years[best]);
+      cross.setAttribute("x1", cx); cross.setAttribute("x2", cx); cross.setAttribute("opacity", 1);
+      dots.forEach(function (c, j) { c.setAttribute("cx", cx); c.setAttribute("cy", y(series[j].share[best])); c.setAttribute("opacity", 1); });
+      var html = "<b>" + years[best] + " · world " + fmtPeople(world[best]) + "</b>";
+      series.slice().sort(function (a, b) { return b.share[best] - a.share[best]; }).forEach(function (s) {
+        html += '<div class="fwg-row"><span><i style="background:' + s.color + '"></i>' + s.name + "</span><span>" + fmtPct(s.share[best]) + "</span></div>";
+      });
+      tip.innerHTML = html;
+      tip.style.opacity = 1;
+      var cr = card.getBoundingClientRect();
+      var left = (r.left - cr.left) + cx * (r.width / W);
+      var tw = tip.offsetWidth;
+      left = left + 14 + tw > cr.width ? left - tw - 14 : left + 14;
+      tip.style.left = Math.max(4, left) + "px";
+      tip.style.top = ((r.top - cr.top) + 10) + "px";
+    }
+    function hide() {
+      tip.style.opacity = 0; cross.setAttribute("opacity", 0);
+      dots.forEach(function (c) { c.setAttribute("opacity", 0); });
+    }
+    hit.addEventListener("pointermove", show);
+    hit.addEventListener("pointerdown", show);
+    hit.addEventListener("pointerleave", hide);
+  }
+
+  function drawGrowth() {
+    var svg = document.getElementById("growthChart");
+    var card = document.getElementById("growthCard");
+    var tip = document.getElementById("growthTip");
+    svg.innerHTML = "";
+    var W = svg.clientWidth || 600;
+    var narrow = W < 460;
+    var rows = series.slice().sort(function (a, b) { return b.mult - a.mult; });
+    var band = 44, barH = 22;
+    var m = { t: 22, r: 52, b: 26, l: narrow ? 92 : 108 };
+    var H = m.t + rows.length * band + m.b;
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.style.height = H + "px";
+    var pw = W - m.l - m.r;
+    var xMax = 12;
+    var x = function (v) { return m.l + v / xMax * pw; };
+
+    for (var g = 0; g <= xMax; g += 2) {
+      el("line", { x1: x(g), x2: x(g), y1: m.t - 6, y2: H - m.b, stroke: "var(--grid)", "stroke-width": 1 }, svg);
+      var t = el("text", { x: x(g), y: H - 8, "text-anchor": "middle", "font-size": 11, fill: "var(--faint)" }, svg);
+      t.textContent = g + "×";
+    }
+
+    var wx = x(worldMult);
+    el("line", { x1: wx, x2: wx, y1: m.t - 8, y2: H - m.b, stroke: "var(--navy)", "stroke-width": 1.5, "stroke-dasharray": "4 3" }, svg);
+    var wl = el("text", { x: wx, y: m.t - 12, "text-anchor": "middle", "font-size": 11, fill: "var(--navy)" }, svg);
+    wl.textContent = "World " + worldMult.toFixed(1) + "×";
+
+    rows.forEach(function (s, i) {
+      var cy = m.t + i * band + band / 2;
+      var t = el("text", { x: m.l - 10, y: cy + 4, "text-anchor": "end", "font-size": narrow ? 12 : 13, fill: "var(--ink)" }, svg);
+      t.textContent = s.name;
+      var w = Math.max(4, x(s.mult) - m.l);
+      // bar anchored square at baseline, 4px rounded at the data end
+      var r = 4;
+      var x0 = m.l, x1 = m.l + w, y0 = cy - barH / 2, y1 = cy + barH / 2;
+      var d = "M" + x0 + "," + y0 + " H" + (x1 - r) + " Q" + x1 + "," + y0 + " " + x1 + "," + (y0 + r) +
+              " V" + (y1 - r) + " Q" + x1 + "," + y1 + " " + (x1 - r) + "," + y1 + " H" + x0 + " Z";
+      var bar = el("path", { d: d, fill: s.color }, svg);
+      var v = el("text", { x: x1 + 6, y: cy + 4, "font-size": 12, fill: "var(--ink)", style: "paint-order:stroke;stroke:#ffffff;stroke-width:5px;stroke-linejoin:round" }, svg);
+      v.textContent = s.mult.toFixed(1) + "×";
+      var hit = el("rect", { x: 0, y: cy - band / 2, width: W, height: band, fill: "transparent" }, svg);
+      function show() {
+        var html = "<b>" + s.name + "</b>" +
+          '<div class="fwg-row"><span>1900</span><span>' + fmtPeople(s.data[0]) + "</span></div>" +
+          '<div class="fwg-row"><span>2026</span><span>' + fmtPeople(s.data[s.data.length - 1]) + "</span></div>" +
+          '<div class="fwg-row"><span>Growth</span><span>' + s.mult.toFixed(1) + "× (world " + worldMult.toFixed(1) + "×)</span></div>";
+        tip.innerHTML = html; tip.style.opacity = 1;
+        var rr = svg.getBoundingClientRect(), cr = card.getBoundingClientRect();
+        var sc = rr.width / W;
+        var left = (rr.left - cr.left) + Math.min(x1 + 50, W - 10) * sc;
+        var tw = tip.offsetWidth;
+        if (left + tw > cr.width - 4) left = cr.width - tw - 4;
+        tip.style.left = Math.max(4, left) + "px";
+        tip.style.top = ((rr.top - cr.top) + (cy + band / 2) * sc) + "px";
+        bar.setAttribute("opacity", 1);
+      }
+      hit.addEventListener("pointerenter", show);
+      hit.addEventListener("pointerdown", show);
+      hit.addEventListener("pointerleave", function () { tip.style.opacity = 0; });
+    });
+
+  }
+
+  function drawAll() { drawShare(); drawGrowth(); }
+  drawAll();
+  var rt;
+  window.addEventListener("resize", function () { clearTimeout(rt); rt = setTimeout(drawAll, 120); });
+})();
+</script>
+</BaseLayout>
+
+<style is:global>
+  .fwg {
+    --navy: #1F3864;
+    --ink: #222;
+    --muted: #5a5f6b;
+    --faint: #8a8f99;
+    --gold: #B8902F;
+    --paper: #fdfcf8;
+    --card: #ffffff;
+    --line: #e4e0d4;
+    --grid: #ece9e0;
+    --s-chr: #2a78d6;  /* Christianity */
+    --s-isl: #eb6834;  /* Islam */
+    --s-hin: #1baf7a;  /* Hinduism */
+    --s-bud: #eda100;  /* Buddhism */
+    --s-jud: #e87ba4;  /* Judaism */
+  }
+  .fwg *, .fwg *::before, .fwg *::after { box-sizing: border-box; }
+  .fwg { margin: 0; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.6; }
+  /* The site's global headings are Cinzel; this page's headings keep its own serif. */
+  .fwg h1, .fwg h2, .fwg h3 { font-family: inherit; }
+  .fwg-wrap { max-width: 880px; margin: 0 auto; padding: 40px 16px 24px; }
+  .fwg-kicker { font-variant: small-caps; letter-spacing: .12em; color: var(--gold); font-size: .95rem; margin: 0 0 6px; }
+  .fwg-kicker a { color: var(--gold); text-decoration: none; }
+  .fwg h1 { color: var(--navy); font-size: 2.2rem; line-height: 1.2; margin: 0 0 6px; font-weight: normal; }
+  .fwg-deck { font-style: italic; color: var(--muted); font-size: 1.15rem; margin: 0 0 28px; }
+  .fwg h2 { color: var(--navy); font-weight: normal; font-size: 1.45rem; margin: 40px 0 6px; }
+  .fwg p { margin: 0 0 14px; font-size: 1.05rem; }
+  .fwg-chart-card { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--navy); border-radius: 6px; padding: 18px 14px 14px; margin: 16px 0 10px; position: relative; }
+  .fwg-chart-title { color: var(--navy); font-size: 1.05rem; margin: 0 0 2px 4px; }
+  .fwg-chart-sub { color: var(--muted); font-size: .9rem; margin: 0 0 10px 4px; font-style: italic; }
+  .fwg-legend { display: flex; flex-wrap: wrap; gap: 6px 16px; margin: 0 0 8px 4px; font-size: .88rem; color: var(--muted); }
+  .fwg-legend span { display: inline-flex; align-items: center; gap: 6px; }
+  .fwg-legend i { width: 14px; height: 3px; border-radius: 2px; display: inline-block; }
+  .fwg svg { display: block; width: 100%; overflow: visible; font-family: Georgia, serif; }
+  .fwg-tip { position: absolute; pointer-events: none; background: var(--card); border: 1px solid var(--line); border-radius: 6px; box-shadow: 0 4px 14px rgba(0,0,0,.08); padding: 8px 10px; font-size: .85rem; color: var(--ink); opacity: 0; transition: opacity .12s; min-width: 160px; z-index: 2; }
+  .fwg-tip b { color: var(--navy); font-weight: normal; display: block; margin-bottom: 4px; font-variant: small-caps; letter-spacing: .05em; }
+  .fwg-tip .fwg-row { display: flex; justify-content: space-between; gap: 14px; }
+  .fwg-tip .fwg-row span:first-child { display: inline-flex; align-items: center; gap: 6px; }
+  .fwg-tip i { width: 10px; height: 3px; border-radius: 2px; display: inline-block; }
+  .fwg-readout h3 { color: var(--navy); font-weight: normal; font-size: 1.15rem; margin: 26px 0 4px; display: flex; align-items: center; gap: 10px; }
+  .fwg-readout h3 i { width: 18px; height: 4px; border-radius: 2px; display: inline-block; }
+  .fwg-note { font-size: .92rem; color: var(--muted); }
+  .fwg-back { display: inline-block; margin-top: 30px; color: var(--navy); text-decoration: none; }
+  @media (max-width: 480px) { .fwg h1 { font-size: 1.8rem; } }
+</style>

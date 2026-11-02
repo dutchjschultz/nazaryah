@@ -1,4 +1,5 @@
-// nav 1029 V15.js
+// nav 1102 V16.js
+// V16 (Etsy Handoff Counterfeit 1102 V1): Counterfeits gains Counterfeit (/counterfeit), label = its h1, last in the panel.
 // V15 (Quick Scroll Book Page 1029 V1): Berean Studies gains The Quick Scroll (/quick-scroll), after Studies.
 // V14: Counterfeits item renamed "Spirit of Truth or Seducing Spirits?" (was Christian or Demonic?); desc names the practices with no count (Dutch 1024). Href unchanged.
 // V13 (Trilogy Triptych brief 1023 V1): Berean Studies carries `trilogies: true` — its dropdown becomes a
@@ -78,6 +79,7 @@ export const mainNav = [
       { label: 'Spirit of Truth or Seducing Spirits?', href: '/christian-or-demonic', desc: 'The practices every believer inherited, held up to the text.' },
       { label: 'The Paper Trail', href: '/on-these-two', desc: 'Every false teaching traced back up the tree to the root it grew from.' },
       { label: 'Greek Influence', href: '/doctrines/borrowed-words', desc: 'The Greek behind the doctrines.' },
+      { label: 'Counterfeit', href: '/counterfeit', desc: 'The five major world religions: truth kept, then turned sideways.' },
     ],
   },
   {
