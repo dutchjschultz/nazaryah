@@ -1,5 +1,7 @@
 ---
-// src/pages/quick-scroll/index.astro · 1101 V3
+// src/pages/quick-scroll/index.astro · 1102 V4
+// V4 (Genesis Quick Scroll 1102): a canon section's `intro` slug becomes an opening-study card (`intros`, keyed by
+// section id), shown on that section's page above its books. The Torah opens with Five Books, One Walk.
 // V3 (Hebrews Quick Scroll 1101): a main study's `subtitle` rides on its card (the Hebrews main is titled
 // plain "Hebrews", so the subtitle carries the name).
 // V2 (Dutch 1029): `scrollRole: "companion"` + `scrollBook` lists a study under that book's Quick Scroll
@@ -54,6 +56,13 @@ for (const p of posts) {
 }
 for (const k in scrolls) delete scrolls[k].source;
 
+// Opening studies: a canon section's `intro` slug, if that post is published.
+const intros = {};
+for (const half of CANON) for (const sec of half.sections) {
+  const p = sec.intro && bySlug.get(sec.intro);
+  if (p) intros[sec.id] = card(p);
+}
+
 const count = Object.keys(scrolls).filter((k) => scrolls[k].main).reduce((n, k) => n + (DOUBLE_BOOKS.includes(k) ? 2 : 1), 0);
 ---
 <BaseLayout title="The Quick Scroll - Berean Studies - Nazaryah" description="The Holy Scriptures, book by book — cliff-notes walkthroughs of whole books of the Bible, with the companion studies that go deeper.">
@@ -62,5 +71,5 @@ const count = Object.keys(scrolls).filter((k) => scrolls[k].main).reduce((n, k) 
     <p class="qs-sub">The Holy Scriptures, Book by Book</p>
     <p class="qs-count">{count} of {TOTAL_BOOKS} books</p>
   </header>
-  <QuickScrollBook client:load canon={CANON} tanakNote={TANAK_NOTE} scrolls={scrolls} />
+  <QuickScrollBook client:load canon={CANON} tanakNote={TANAK_NOTE} scrolls={scrolls} intros={intros} />
 </BaseLayout>

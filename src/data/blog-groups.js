@@ -1,4 +1,7 @@
-// blog-groups 1101 V85.js
+// blog-groups 1102 V87.js
+// V87: only-in-the-throne joins scripture-unfiltered (category Scripture Unfiltered). Map total 225 -> 226.
+// V86 (Genesis Quick Scroll Handoff 1102 V1): five-books-one-walk (the Torah opening study) and the Genesis series
+// (series "genesis"; the topic page lists genesis-the-generations only, "plus 3 companion studies") join the-quick-scroll. Map total 220 -> 225.
 // V85: canaan-not-ham joins scripture-unfiltered (category Scripture Unfiltered). Map total 219 -> 220.
 // V84 (Hebrews Quick Scroll Handoff 1101 V1): the Hebrews series joins the-quick-scroll (series "hebrews"; the
 // topic page lists hebrews-seven-betters-and-five-warnings only, "plus 1 companion study"). Map total 217 -> 219.
@@ -350,6 +353,11 @@ export const POST_GROUP = {
   'jeremiah-seventy-years-to-seventy-weeks': 'the-quick-scroll',
   'hebrews-seven-betters-and-five-warnings': 'the-quick-scroll', // series main
   'hebrews-sanctuary-walk': 'the-quick-scroll',                  // Hebrews series companion
+  'five-books-one-walk': 'the-quick-scroll',                     // Torah opening study
+  'genesis-the-generations': 'the-quick-scroll',                 // series main
+  'the-seventy-and-the-portion': 'the-quick-scroll',             // Genesis series companions
+  'get-thee-out': 'the-quick-scroll',
+  'the-bride-at-the-well': 'the-quick-scroll',
 
   // ── Buried in Plain Sight (21) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
@@ -495,6 +503,7 @@ export const POST_GROUP = {
   'is-this-the-man': 'scripture-unfiltered',
   'thou-art-a-man-and-not-el': 'scripture-unfiltered',
   'canaan-not-ham': 'scripture-unfiltered',
+  'only-in-the-throne': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;

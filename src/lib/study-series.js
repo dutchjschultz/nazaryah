@@ -1,4 +1,6 @@
-// study-series 1101 V8.js
+// study-series 1102 V9.js
+// V9 (Genesis Quick Scroll Handoff 1102 V1): Genesis joins (src/data/genesis-series.js). The Calling takes dawn,
+// for the first light of Genesis 1:3 and the first call of 12:1. Read Alongside is parchment, as on Jeremiah.
 // V8 (Hebrews Quick Scroll Handoff 1101 V1): Hebrews joins (src/data/hebrews-series.js). The Sanctuary Walk
 // takes ember, for the fire on the brazen altar, the walk's first station past the gate (13:10).
 // V7 (associations batch 76): Jeremiah joins (src/data/jeremiah-series.js). Two new tones: clay for
@@ -40,6 +42,7 @@ import { ISAIAH_SERIES } from '../data/isaiah-series.js';
 import { LAMENTATIONS_SERIES } from '../data/lamentations-series.js';
 import { JEREMIAH_SERIES } from '../data/jeremiah-series.js';
 import { HEBREWS_SERIES } from '../data/hebrews-series.js';
+import { GENESIS_SERIES } from '../data/genesis-series.js';
 
 // Palette. Each colour means something: night for visions seen at night, ember for
 // the fire of Ezekiel's throne visions and Isaiah's coal off the altar, burgundy for the fasting question, bronze for
@@ -69,6 +72,7 @@ const SERIES = {
   lamentations: { data: LAMENTATIONS_SERIES, tones: { poems: 'ash', funeral: 'sackcloth', rising: 'dawn' } },
   jeremiah: { data: JEREMIAH_SERIES, tones: { lessons: 'clay', torn: 'ember', built: 'vineyard', related: 'parchment' } },
   hebrews:  { data: HEBREWS_SERIES,  tones: { sanctuary: 'ember' } },
+  genesis:  { data: GENESIS_SERIES,  tones: { calling: 'dawn', related: 'parchment' } },
 };
 
 export const STUDY_SERIES = Object.fromEntries(Object.entries(SERIES).map(([k, s]) => [k, s.data]));

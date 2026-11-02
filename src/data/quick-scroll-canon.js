@@ -1,4 +1,6 @@
-// quick-scroll-canon 1029 V1.js
+// quick-scroll-canon 1102 V2.js
+// V2 (Genesis Quick Scroll Handoff 1102 V1): a section may carry `intro: "<post slug>"` — an opening study read
+// before the books of that section. The Torah takes five-books-one-walk. A missing slug simply shows nothing.
 // First build: canon arrangement for The Quick Scroll book page (Tanak 22 per Jerome; Brit Chadashah 27)
 //
 // ── STATUS IS NEVER TYPED INTO THIS FILE ──
@@ -19,7 +21,7 @@ export const CANON = [
   {
     half: "tanak", halfTitle: "Tanak", halfSub: "The Twenty-Two Books",
     sections: [
-      { id: "torah", tab: "Torah", title: "Torah — The Law", entries: [
+      { id: "torah", tab: "Torah", title: "Torah — The Law", intro: "five-books-one-walk", entries: [
         { letter: "א", name: "Genesis", books: [b("genesis", "Genesis")] },
         { letter: "ב", name: "Exodus", books: [b("exodus", "Exodus")] },
         { letter: "ג", name: "Leviticus", books: [b("leviticus", "Leviticus")] },

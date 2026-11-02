@@ -1,4 +1,6 @@
-// QuickScrollBook 1101 V2.jsx
+// QuickScrollBook 1102 V3.jsx
+// V3 (Genesis Quick Scroll 1102): `intros` (section id -> card) puts an opening study at the head of a
+// section's page, above its books. The Torah opens with Five Books, One Walk.
 // V2 (Hebrews Quick Scroll 1101): the card shows the main study's subtitle under its title, when it has one.
 // V1 (Quick Scroll Book Page 1029 V1): the Bible on /quick-scroll. A closed cover opens to a
 // two-page spread; seven thumb-index tabs on the fore-edge pick a section (left page), a written
@@ -12,7 +14,7 @@ const KEY = 'qs-open';
 const safeGet = (k) => { try { return localStorage.getItem(k); } catch { return null; } };
 const safeSet = (k, v) => { try { localStorage.setItem(k, v); } catch {} };
 
-export default function QuickScrollBook({ canon, tanakNote, scrolls }) {
+export default function QuickScrollBook({ canon, tanakNote, scrolls, intros = {} }) {
   const sections = useMemo(
     () => canon.flatMap((h) => h.sections.map((s) => ({ ...s, half: h.half, halfTitle: h.halfTitle, halfSub: h.halfSub }))),
     [canon]
@@ -99,6 +101,13 @@ export default function QuickScrollBook({ canon, tanakNote, scrolls }) {
           <p className="qs-half">{sec.halfTitle} — {sec.halfSub}</p>
           <h2 className="qs-sec-title">{sec.title}</h2>
           {sec.id === 'torah' && <p className="qs-note">{tanakNote}</p>}
+          {intros[sec.id] && (
+            <a className="qs-intro" href={intros[sec.id].url}>
+              <span className="qs-intro-kicker">Read first</span>
+              <span className="qs-intro-title">{intros[sec.id].title}</span>
+              {intros[sec.id].deck && <span className="qs-intro-deck">{intros[sec.id].deck}</span>}
+            </a>
+          )}
           <ol className="qs-list">
             {sec.entries.map((e) => (
               <li key={e.name} className="qs-entry">

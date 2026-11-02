@@ -1,4 +1,5 @@
-/* quick-scroll 1101 V2.css
+/* quick-scroll 1102 V3.css
+   V3 (Genesis Quick Scroll 1102): .qs-intro, a section's opening study (the Torah's Five Books, One Walk).
    V2 (Hebrews Quick Scroll 1101): .qs-subtitle, the main study's subtitle on the card.
    V1 (Quick Scroll Book Page 1029 V1): the Bible on /quick-scroll (QuickScrollBook.jsx).
    Imported by src/pages/quick-scroll/index.astro, so it is global: every class is qs-prefixed.
@@ -146,3 +147,10 @@ button.qs-line:hover .qs-name, .qs-line.is-active .qs-name { text-decoration: un
   .qs-page--right { border-top: 1px solid var(--qs-rule); scroll-margin-top: 80px; }
   .qs-empty { margin-top: .5rem; }
 }
+
+/* V3: a section's opening study, above its books */
+.qs-intro { display: block; text-decoration: none; border: 1px solid var(--qs-gold); border-radius: 4px; padding: .7rem .9rem; margin: 0 0 1.2rem; color: inherit; }
+.qs-intro:hover, .qs-intro:focus-visible { background: rgba(201, 164, 74, .08); }
+.qs-intro-kicker { display: block; font-size: .7rem; letter-spacing: .14em; text-transform: uppercase; color: var(--qs-gold); margin-bottom: .2rem; }
+.qs-intro-title { display: block; font-family: var(--font-family-serif); font-size: 1.1rem; font-weight: 600; }
+.qs-intro-deck { display: block; font-family: var(--font-family-serif); font-size: .9rem; font-style: italic; color: var(--qs-ink-2); margin-top: .2rem; }
