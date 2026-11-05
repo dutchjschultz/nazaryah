@@ -1,4 +1,5 @@
-// blog-groups 1102 V87.js
+// blog-groups 1105 V88.js
+// V88 (Etsy Batch 1105 V1): king-over-the-proud, behold-now-behemoth, behold-the-lamb join scripture-unfiltered (The Serpent and the Lamb trilogy). Map total 226 -> 229.
 // V87: only-in-the-throne joins scripture-unfiltered (category Scripture Unfiltered). Map total 225 -> 226.
 // V86 (Genesis Quick Scroll Handoff 1102 V1): five-books-one-walk (the Torah opening study) and the Genesis series
 // (series "genesis"; the topic page lists genesis-the-generations only, "plus 3 companion studies") join the-quick-scroll. Map total 220 -> 225.
@@ -504,6 +505,9 @@ export const POST_GROUP = {
   'thou-art-a-man-and-not-el': 'scripture-unfiltered',
   'canaan-not-ham': 'scripture-unfiltered',
   'only-in-the-throne': 'scripture-unfiltered',
+  'king-over-the-proud': 'scripture-unfiltered',
+  'behold-now-behemoth': 'scripture-unfiltered',
+  'behold-the-lamb': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;

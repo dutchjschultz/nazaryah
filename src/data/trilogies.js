@@ -1,4 +1,5 @@
-// trilogies 1023 V3.js
+// trilogies 1105 V4.js
+// V4 (Etsy Batch 1105 V1): The Serpent and the Lamb added first (king-over-the-proud, behold-now-behemoth, behold-the-lamb).
 // V3: The Making of Lucifer's subtitle line (Dutch 1023). Every trilogy now has one.
 // V2 (trilogy-subtitles 1023 V1): stage subtitle lines for ten trilogies.
 // V1: first build — trilogy list for the triptych page and nav mega-menu
@@ -27,6 +28,16 @@
 // study, and on a trilogy without exactly three studies (src/lib/trilogies.js).
 
 export const TRILOGIES = [
+  {
+    id: "the-serpent-and-the-lamb",
+    title: "The Serpent and the Lamb",
+    line: "The unseen king of the proud, the pride a man can see, and the Lamb who ends them both.",
+    studies: [
+      { slug: "king-over-the-proud", deck: "Leviathan is no loose end. He is the old serpent, king of the proud." },
+      { slug: "behold-now-behemoth", deck: "Named only once in the Bible. His four marks run through all of Scripture." },
+      { slug: "behold-the-lamb", deck: "The dragon and the beast are copies. Here is the real thing." },
+    ],
+  },
   {
     id: "the-making-of-lucifer",
     title: "The Making of Lucifer",

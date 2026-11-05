@@ -1,4 +1,5 @@
-// post-href 0929 V3.js
+// post-href 1105 V4.js
+// V4 (Etsy Batch 1105 V1): HOME_LABEL gains '/counterfeit' → Counterfeit (The Serpent King).
 // V3: the /blog home's reader-facing label is now "Studies" (breadcrumbs and
 // "Back to …"). The address is unchanged.
 // V2: `route` — a study that IS a section page (the cosmology page) is served at
@@ -20,6 +21,7 @@ export const DEFAULT_HOME = '/blog';
 export const HOME_LABEL = {
   '/blog': 'Studies',
   '/cosmology': 'Cosmology',
+  '/counterfeit': 'Counterfeit',
 };
 
 export const postHome = (entry) => entry?.data?.home ?? DEFAULT_HOME;

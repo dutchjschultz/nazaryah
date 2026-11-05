@@ -1,0 +1,22 @@
+---
+// counterfeit/[slug] 1105 V1.astro
+// V1 (Etsy Batch 1105 V1): serves any study whose frontmatter sets
+// home: "/counterfeit" at /counterfeit/<slug>. Same layout as /blog/<slug>.
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../layouts/BlogLayout.astro';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('posts')).filter((post) => post.data.home === '/counterfeit');
+  return posts.map((post) => ({
+    params: { slug: post.slug },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await post.render();
+---
+
+<BlogLayout post={post}>
+  <Content />
+</BlogLayout>
