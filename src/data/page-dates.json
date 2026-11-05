@@ -646,6 +646,13 @@
       "deck": ""
     },
     {
+      "route": "/counterfeit/buddhism",
+      "section": "counterfeit",
+      "date": "2026-11-05",
+      "title": "Buddhism",
+      "deck": "Sound conduct, no Creator, and merit in place of favor."
+    },
+    {
       "route": "/counterfeit/buddhism/38-blessings",
       "section": "counterfeit",
       "date": "2026-11-05",
@@ -695,11 +702,11 @@
       "deck": "The robe or the word: which marks the man of God?"
     },
     {
-      "route": "/counterfeit/five-world-religions",
+      "route": "/counterfeit/christianity",
       "section": "counterfeit",
-      "date": "2026-11-02",
-      "title": "The Five Major World Religions",
-      "deck": ""
+      "date": "2026-11-05",
+      "title": "Christianity",
+      "deck": "The Messiah and the Scriptures, wrapped in a Trinity and a Roman calendar."
     },
     {
       "route": "/counterfeit/five-world-religions/growth",
@@ -707,6 +714,27 @@
       "date": "2026-11-02",
       "title": "How They Have Grown",
       "deck": ""
+    },
+    {
+      "route": "/counterfeit/hinduism",
+      "section": "counterfeit",
+      "date": "2026-11-05",
+      "title": "Hinduism",
+      "deck": "One Source split into many gods and endless rebirth."
+    },
+    {
+      "route": "/counterfeit/islam",
+      "section": "counterfeit",
+      "date": "2026-11-05",
+      "title": "Islam",
+      "deck": "One God and Abraham, with the Son and the cross denied."
+    },
+    {
+      "route": "/counterfeit/judaism",
+      "section": "counterfeit",
+      "date": "2026-11-05",
+      "title": "Rabbinic Judaism",
+      "deck": "The Torah buried under the traditions of men."
     },
     {
       "route": "/disney/cinderella",

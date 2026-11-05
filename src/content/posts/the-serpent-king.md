@@ -23,10 +23,6 @@ At Wat Tham Suea, the Tiger Cave Temple in Krabi, Thailand, a golden serpent wit
 
 Anyone who has read Job 41 and Isaiah 27 in the King James will feel he has met this creature before. This study sets the two side by side. No historical record ties them together, and the study says so plainly below. The comparison is one of picture, not proof. Even so, the picture is worth a long look.
 
-![The Phaya Nak at Wat Tham Suea, the Tiger Cave Temple in Krabi, Thailand](/images/counterfeit/phaya-nak-tiger-cave-1.jpg)
-
-*The Phaya Nak at Wat Tham Suea, the Tiger Cave Temple, Krabi, Thailand, November 2026.*
-
 ## Who the Phaya Nak Is
 
 The naga began in ancient India and belongs to both Hindu and Buddhist tradition. In Thailand it came in with those religions and blended with older local serpent reverence. Thailand today is mainly Theravada Buddhist, so the Phaya Nak is met mostly at Buddhist temples.
@@ -54,10 +50,6 @@ Naga bodies form the railings of temple stairs and walkways because the naga is 
 **A creature of the water.** Leviathan is in the sea (Isaiah 27:1; Psalm 104:26), and “he maketh the deep to boil like a pot” (Job 41:31). The naga is a lord of the waters, and this statue rises from a base carved in curling, wave-like swirls.
 
 **Fire.** “A flame goeth out of his mouth” (Job 41:21). The statue itself shows no fire. Yet each year, around the end of Buddhist Lent, crowds gather on the Mekong River to watch glowing balls of light said to rise from the water, and people in Thailand and Laos credit them to the Phaya Nak. These are called naga fireballs. Their cause is disputed, and some critics call them man-made.
-
-![The scaled body of the Phaya Nak forming the railing that leads to the temple door](/images/counterfeit/phaya-nak-tiger-cave-2.jpg)
-
-*The scaled body forms the railing that leads to the temple door.*
 
 ## What the Record Cannot Show
 

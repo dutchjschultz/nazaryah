@@ -1,0 +1,161 @@
+---
+// ReligionHub 1105 V1.astro
+// V1 (Etsy Handoff Counterfeit Restructure 1105 V4): one religion's hub at
+// /counterfeit/<religion>. Breadcrumb, title, deck (.cfh-deck, the social card's
+// deck), the intro block (symbol left; Began / Followers / Writings, intro, The
+// Symbol, thread right; stacks under 560px), then the religion's top-level
+// entries by kind: "Books Examined" (book-on-a-shelf cards), then "Studies"
+// (study = navy-top card, picture = photo-band card). An empty heading is not
+// shown; a hub with nothing shows "Studies on this religion are coming."
+// Deeper studies (any entry with a parent) never appear here.
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReligionSymbol from './ReligionSymbol.astro';
+import { religion, books, studies, bookChips } from '../../data/counterfeit.js';
+
+interface Props { id: string }
+const r = religion(Astro.props.id);
+if (!r) throw new Error(`ReligionHub: unknown religion "${Astro.props.id}"`);
+const bookList = books(r.id);
+const studyList = studies(r.id);
+const plainDeck = r.deck;
+---
+
+<BaseLayout
+  title={`${r.name} | Counterfeit | Nazaryah`}
+  description={`${r.name} set beside Scripture: where it began, what it teaches, its symbol, and the thread to follow. ${plainDeck}`}
+>
+  <div class="cfh">
+    <div class="cfh-wrap">
+      <nav class="cfh-crumb" aria-label="Breadcrumb"><a href="/counterfeit">Counterfeit</a> › <span>{r.name}</span></nav>
+      <h1>{r.name}</h1>
+      <p class="cfh-deck">{r.deck}</p>
+
+      <section class="intro-block">
+        <ReligionSymbol id={r.id} class="big" label={r.symbolLabel} uid={`hub-${r.id}`} />
+        <div>
+          <ul class="facts">
+            <li><b>Began:</b> {r.began}</li>
+            <li><b>Followers:</b> {r.followers}</li>
+            <li><b>Writings:</b> {r.writings}</li>
+          </ul>
+          <p set:html={r.intro} />
+          <h2 class="intro-h">The Symbol</h2>
+          <p set:html={r.symbol} />
+          <p class="thread">{r.thread}</p>
+        </div>
+      </section>
+
+      {!bookList.length && !studyList.length && (
+        <p class="cfh-coming">Studies on this religion are coming.</p>
+      )}
+
+      {bookList.length > 0 && (
+        <section>
+          <h2>Books Examined</h2>
+          {bookList.map((b) => (
+            <a class="bookcard" href={b.href}>
+              <div class="cover" style={`background:${b.book.color};color:${b.book.emblem}`}>
+                <b>{b.title}</b>
+                <ReligionSymbol id={b.religion} emblem={b.book.emblem} />
+              </div>
+              <div>
+                <p class="kicker">{b.reference}</p>
+                <h3>{b.title}</h3>
+                <p class="by">{b.book.byline}</p>
+                <p>{b.book.blurb}</p>
+                {bookChips(b.slug).map((c) => <span class="chip">{c}</span>)}
+                <p class="open"><span class="enter">Open the book →</span></p>
+              </div>
+            </a>
+          ))}
+        </section>
+      )}
+
+      {studyList.length > 0 && (
+        <section>
+          <h2>Studies</h2>
+          <div class="grid">
+            {studyList.map((s) => s.kind === 'picture' ? (
+              <a class="pic" href={s.href}>
+                <img class="photo" src={s.photos[0].src} alt={s.photos[0].alt} loading="lazy" />
+                <div class="body">
+                  <span class="tag">Picture study</span>
+                  <span class="ref">{s.reference}</span>
+                  <h3>{s.title}</h3>
+                  <p>{s.deck}</p>
+                </div>
+              </a>
+            ) : (
+              <a class="card" href={s.href}>
+                <span class="ref">{s.reference}</span>
+                <h3>{s.title}</h3>
+                <p>{s.deck}</p>
+              </a>
+            ))}
+          </div>
+        </section>
+      )}
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .cfh {
+    --navy: #1F3864; --ink: #222; --muted: #5a5f6b; --gold: #B8902F;
+    --paper: #fdfcf8; --card: #fff; --line: #e4e0d4; --stone: #ece7da;
+    background: var(--paper); color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif; line-height: 1.6;
+  }
+  .cfh *, .cfh *::before, .cfh *::after { box-sizing: border-box; }
+  .cfh h1, .cfh h2, .cfh h3 { font-family: inherit; }
+  .cfh-wrap { max-width: 1040px; margin: 0 auto; padding: 32px 16px 48px; }
+  .cfh-crumb { font-size: .88rem; color: var(--muted); margin: 0 0 14px; }
+  .cfh-crumb a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .cfh h1 { color: var(--navy); font-weight: normal; font-size: 2.2rem; margin: 0 0 6px; line-height: 1.2; }
+  .cfh-deck { font-style: italic; color: var(--muted); font-size: 1.15rem; margin: 0 0 24px; }
+  .cfh h2 { color: var(--navy); font-weight: normal; font-size: 1.45rem; margin: 38px 0 14px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
+  .cfh-coming { margin: 28px 0 0; font-style: italic; color: var(--muted); font-size: 1.05rem; }
+
+  .intro-block { display: flex; gap: 24px; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--navy); border-radius: 6px; padding: 22px; }
+  .intro-block :global(.big) { width: 110px; height: 110px; flex: none; }
+  .intro-block p { margin: 0 0 12px; }
+  .intro-block .intro-h { font-size: 1rem; border: 0; padding: 0; margin: 4px 0 4px; font-variant: small-caps; letter-spacing: .06em; }
+  .facts { list-style: none; padding: 0; margin: 0 0 12px; font-size: .92rem; color: var(--muted); }
+  .facts li { margin: 0 0 4px; }
+  .facts b { color: var(--navy); font-weight: normal; font-variant: small-caps; letter-spacing: .05em; }
+  .thread { font-style: italic; }
+
+  .kicker { font-variant: small-caps; letter-spacing: .12em; color: var(--gold); font-size: .95rem; margin: 0 0 4px; }
+  .enter { color: var(--navy); border-bottom: 1px solid var(--gold); }
+
+  /* Book on a shelf */
+  .bookcard { display: flex; gap: 22px; background: var(--stone); border-radius: 8px; padding: 22px; align-items: center; text-decoration: none; color: var(--ink); transition: transform .2s ease; }
+  .bookcard:hover { transform: translateY(-3px); }
+  .cover { width: 130px; height: 180px; flex: none; border-radius: 3px 6px 6px 3px; box-shadow: inset 8px 0 0 rgba(0,0,0,.18), 4px 6px 14px rgba(0,0,0,.18); display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px; }
+  .cover b { font-weight: normal; font-size: .95rem; margin-bottom: 10px; }
+  .cover :global(svg) { width: 62px; height: 62px; }
+  .bookcard h3 { margin: 0 0 4px; color: var(--navy); font-weight: normal; font-size: 1.5rem; }
+  .bookcard .by { font-size: .9rem; color: var(--muted); margin: 0 0 10px; }
+  .bookcard p { margin: 0 0 10px; }
+  .bookcard .open { margin: 12px 0 0; }
+  .chip { display: inline-block; font-size: .8rem; color: var(--navy); border: 1px solid var(--navy); border-radius: 12px; padding: 1px 9px; margin-right: 6px; }
+
+  /* Studies */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 18px; }
+  .card, .pic { text-decoration: none; color: var(--ink); transition: transform .2s ease; }
+  .card:hover, .pic:hover { transform: translateY(-3px); }
+  .card { background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--navy); border-radius: 6px; padding: 20px; display: block; }
+  .ref { font-variant: small-caps; letter-spacing: .1em; color: var(--gold); font-size: .85rem; }
+  .card h3, .pic h3 { margin: 4px 0 6px; color: var(--navy); font-weight: normal; font-size: 1.3rem; }
+  .card p, .pic p { margin: 0; font-style: italic; color: var(--muted); }
+  .pic { background: var(--card); border: 1px solid var(--line); border-radius: 6px; overflow: hidden; display: block; }
+  .photo { display: block; width: 100%; height: 170px; object-fit: cover; object-position: center 40%; }
+  .pic .body { padding: 16px 20px 20px; }
+  .tag { float: right; font-size: .75rem; color: #fff; background: var(--gold); border-radius: 10px; padding: 1px 8px; font-style: normal; }
+
+  @media (max-width: 560px) {
+    .intro-block { flex-direction: column; }
+    .bookcard { flex-direction: column; align-items: flex-start; }
+    .cfh h1 { font-size: 1.8rem; }
+  }
+</style>

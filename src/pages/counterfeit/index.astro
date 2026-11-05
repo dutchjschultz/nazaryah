@@ -1,48 +1,17 @@
 ---
-// counterfeit/index 1105 V3.astro
-// V3 (Etsy Batch 1105 V1): The Serpent King (/counterfeit/the-serpent-king) joins the
-// Buddhism group, after The 38 Blessings set (the batch's STUDIES list is GROUPS since V2).
-// V2 (Etsy Handoff 38 Blessings 1105 V2): cards sit in GROUPS. The first group has
-// no heading (The Five Major World Religions); "Buddhism" follows with The 38
-// Blessings and its six Go Deeper pages.
-// V1 (Etsy Handoff Counterfeit 1102 V1): the Counterfeit section front, a card
-// grid. One card per entry in STUDIES: reference line (small caps), title, italic
-// deck. Adding a study (one per religion, Buddhism's 38 Blessings first) is one
-// more entry here, no markup change. Palette matches the section's pages.
+// counterfeit/index 1105 V4.astro
+// V4 (Etsy Handoff Counterfeit Restructure 1105 V4): the front door. The opening
+// text of the retired /counterfeit/five-world-religions page, then the five
+// religions as tiles (one row of five at every width; under 640px each shrinks to
+// symbol, name, Enter), then the full-width By the Numbers panel for the growth
+// page, then the page's closing line. No study cards: every tile opens its hub.
+// Tiles, counts and hubs come from src/data/counterfeit.js. The h1 stays
+// "Counterfeit" (the nav label and the section name; the mockup's "The Five Major
+// World Religions" sits under it as the subtitle line).
+// V3: The Serpent King joined the Buddhism group. V2: cards in GROUPS.
 import BaseLayout from '../../layouts/BaseLayout.astro';
-
-const B = '/counterfeit/buddhism/38-blessings';
-const GROUPS = [
-  {
-    heading: null,
-    studies: [
-      {
-        reference: 'Five Religions',
-        title: 'The Five Major World Religions',
-        deck: 'Truth kept, then turned sideways.',
-        href: '/counterfeit/five-world-religions',
-      },
-    ],
-  },
-  {
-    heading: 'Buddhism',
-    studies: [
-      { reference: 'Mangala Sutta', title: 'The 38 Blessings', deck: 'Thirty-eight familiar virtues, and the Root they left behind.', href: B },
-      { reference: 'Blessing 5', title: 'Merit from Past Lives', deck: 'An inheritance from a father, or a debt from another life?', href: `${B}/past-merit` },
-      { reference: 'Blessing 29', title: 'The Ascetic and the Prophet', deck: 'The robe or the word: which marks the man of God?', href: `${B}/the-ascetic` },
-      { reference: 'Blessing 31', title: 'Austerities and the Commanded Fast', deck: 'One day Yahuah commanded, and all the days men added.', href: `${B}/austerities` },
-      { reference: 'Blessing 33', title: 'Four Truths and One Word', deck: 'Suffering is real. The question is where it came from.', href: `${B}/four-noble-truths` },
-      { reference: 'Blessing 34', title: 'Blown Out or Raised Up', deck: 'A flame put out, or a body raised?', href: `${B}/nirvana` },
-      { reference: 'The Rewards', title: 'Merit for Sale', deck: 'Fine skin, long life, and the souls of men.', href: `${B}/merit-for-sale` },
-      {
-        reference: 'Buddhism',
-        title: 'The Serpent King',
-        deck: 'A five-headed serpent guards a Thai temple. The King James has seen him before.',
-        href: '/counterfeit/the-serpent-king',
-      },
-    ],
-  },
-];
+import ReligionSymbol from '../../components/counterfeit/ReligionSymbol.astro';
+import { RELIGIONS, countLine, hubHref } from '../../data/counterfeit.js';
 ---
 
 <BaseLayout
@@ -52,20 +21,46 @@ const GROUPS = [
   <div class="cfx">
     <div class="cfx-wrap">
       <h1>Counterfeit</h1>
-      {GROUPS.map((g) => (
-        <section class="cfx-group">
-          {g.heading && <h2>{g.heading}</h2>}
-          <div class="cfx-grid">
-            {g.studies.map((s) => (
-              <a href={s.href} class="cfx-card">
-                <span class="cfx-ref">{s.reference}</span>
-                <span class="cfx-title">{s.title}</span>
-                <span class="cfx-deck">{s.deck}</span>
-              </a>
-            ))}
-          </div>
-        </section>
-      ))}
+      <p class="cfx-sub">The Five Major World Religions</p>
+      <p class="cfx-deck">Truth kept, then turned sideways.</p>
+
+      <section class="cfx-intro">
+        <p>A counterfeit only works when it looks like the real thing. No one prints a bill that resembles nothing; the closer the copy runs to the genuine, the easier it spends. The five largest religions on earth each hold pieces of truth that trace back to the Word, and each one turns those pieces sideways.</p>
+        <p>Scripture explains why the pieces are there at all. Every nation descends from the sons of Noah (Genesis 10:32; Acts 17:26), and every nation once knew the Creator. Paul says they knew Him, yet "glorified him not as God" and traded His glory for images (Romans 1:21-23). What remained was a memory of the truth with the Root cut away. Even then, the work of the Law stayed written in the conscience (Romans 2:14-15), which is why so much of what these religions teach sounds familiar.</p>
+        <p>Each study in this section takes one religion on its own terms, from its own writings, and sets it beside Scripture: what it kept, where it came from, and where it turned. Christianity stands last on purpose. By the time a reader reaches it, the pattern will already be familiar.</p>
+      </section>
+
+      <nav class="rels" aria-label="The five religions">
+        {RELIGIONS.map((r) => (
+          <a class="rel" href={hubHref(r.id)}>
+            <ReligionSymbol id={r.id} uid={`tile-${r.id}`} />
+            <div>
+              <h3>{r.name}</h3>
+              <p>{r.tile}</p>
+              <span class="count">{countLine(r.id)}</span><br />
+              <span class="enter">Enter →</span>
+            </div>
+          </a>
+        ))}
+      </nav>
+      <p class="cfx-note">Follower counts are for 2026 (World Christian Database).</p>
+
+      <a class="numbers" href="/counterfeit/five-world-religions/growth">
+        <div class="numtext">
+          <p class="kicker">By the Numbers</p>
+          <h2>How They Have Grown</h2>
+          <p>The world has grown more than five times over since 1900. The record shows which religions kept pace, which outran it, and which fell behind.</p>
+          <ul class="hl">
+            <li><b>Islam</b> doubled its share of the world, from 12.4% to 25.4%.</li>
+            <li><b>Christianity</b> is still the largest, yet slipped from 34.5% to 32.2%.</li>
+            <li><b>Judaism</b> fell from 0.7% to 0.2% while its numbers barely moved.</li>
+          </ul>
+          <span class="enter big">See the full record: two charts and the story behind them →</span>
+        </div>
+        <svg class="spark" viewBox="0 0 520 220" role="img" aria-label="Share of world population by religion, 1900 to 2026"><line x1="34" x2="402" y1="196.0" y2="196.0" stroke="#ece9e0"/><text x="28" y="200.0" text-anchor="end" font-size="10" fill="#8a8f99">0%</text><line x1="34" x2="402" y1="149.5" y2="149.5" stroke="#ece9e0"/><text x="28" y="153.5" text-anchor="end" font-size="10" fill="#8a8f99">10%</text><line x1="34" x2="402" y1="103.0" y2="103.0" stroke="#ece9e0"/><text x="28" y="107.0" text-anchor="end" font-size="10" fill="#8a8f99">20%</text><line x1="34" x2="402" y1="56.5" y2="56.5" stroke="#ece9e0"/><text x="28" y="60.5" text-anchor="end" font-size="10" fill="#8a8f99">30%</text><line x1="34" x2="402" y1="10.0" y2="10.0" stroke="#ece9e0"/><text x="28" y="14.0" text-anchor="end" font-size="10" fill="#8a8f99">40%</text><text x="34.0" y="214" text-anchor="start" font-size="10" fill="#8a8f99">1900</text><text x="402.0" y="214" text-anchor="end" font-size="10" fill="#8a8f99">2026</text><path d="M34.0,35.7 L238.4,42.1 L326.1,45.8 L384.5,47.1 L402.0,46.2" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="408.0" y="50.2" font-size="11" fill="#222">Christianity 32.2%</text><path d="M34.0,138.5 L238.4,123.4 L326.1,97.2 L384.5,82.9 L402.0,78.1" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="408.0" y="82.1" font-size="11" fill="#222">Islam 25.4%</text><path d="M34.0,137.7 L238.4,138.6 L326.1,132.5 L384.5,131.3 L402.0,131.7" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="408.0" y="135.7" font-size="11" fill="#222">Hinduism 13.8%</text><path d="M34.0,159.6 L238.4,166.5 L326.1,162.2 L384.5,164.9 L402.0,166.0" fill="none" stroke="#eda100" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="408.0" y="170.0" font-size="11" fill="#222">Buddhism 6.5%</text><path d="M34.0,192.6 L238.4,194.2 L326.1,195.0 L384.5,195.1 L402.0,195.1" fill="none" stroke="#e87ba4" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="408.0" y="199.1" font-size="11" fill="#222">Judaism 0.2%</text></svg>
+      </a>
+
+      <p class="cfx-close">Revelation names the people who come through every counterfeit standing: those who keep the commandments of Yahuah and hold to the belief of Yahushua (Revelation 14:12). Nothing kept back, and nothing turned sideways.</p>
     </div>
   </div>
 </BaseLayout>
@@ -84,32 +79,54 @@ const GROUPS = [
     font-family: Georgia, "Times New Roman", serif;
     line-height: 1.6;
   }
+  .cfx *, .cfx *::before, .cfx *::after { box-sizing: border-box; }
   /* The site's global headings are Cinzel; this page's headings keep its own serif. */
   .cfx h1, .cfx h2, .cfx h3 { font-family: inherit; }
   .cfx-wrap { max-width: 1080px; margin: 0 auto; padding: 40px 16px 48px; }
-  .cfx h1 { color: var(--navy); font-size: 2.2rem; line-height: 1.2; margin: 0 0 28px; font-weight: normal; }
-  .cfx-group + .cfx-group { margin-top: 40px; }
-  .cfx h2 { color: var(--navy); font-size: 1.5rem; font-weight: normal; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
-  .cfx-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
-    gap: 22px;
+  .cfx h1 { color: var(--navy); font-size: 2.2rem; line-height: 1.2; margin: 0 0 6px; font-weight: normal; }
+  .cfx-sub { font-variant: small-caps; letter-spacing: .08em; color: var(--gold); font-size: 1.1rem; margin: 0 0 2px; }
+  .cfx-deck { font-style: italic; color: var(--muted); font-size: 1.15rem; margin: 0 0 24px; }
+  .cfx-intro p { margin: 0 0 14px; font-size: 1.05rem; max-width: 760px; }
+  .cfx-note { font-size: .88rem; color: var(--muted); margin: 10px 0 0; }
+
+  /* Religion tiles (.rels, from the mockup): one row of five at every width. */
+  .rels { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin-top: 30px; }
+  .rel {
+    background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--navy); border-radius: 6px;
+    display: flex; flex-direction: column; align-items: center; text-align: center; gap: 8px; padding: 16px 10px;
+    text-decoration: none; color: var(--ink); transition: transform .2s ease;
   }
-  .cfx-card {
-    display: flex;
-    flex-direction: column;
-    gap: 6px;
-    text-decoration: none;
-    background: var(--card);
-    border: 1px solid var(--line);
-    border-top: 4px solid var(--navy);
-    border-radius: 6px;
-    padding: 22px 22px 20px;
-    transition: transform .2s ease;
+  .rel:hover { transform: translateY(-3px); }
+  .rel svg { width: 48px; height: 48px; flex: none; }
+  .rel h3 { margin: 0 0 4px; color: var(--navy); font-weight: normal; font-size: 1.05rem; line-height: 1.25; }
+  .rel p { margin: 0 0 8px; font-size: .85rem; line-height: 1.4; }
+  .count { font-size: .75rem; color: var(--gold); font-variant: small-caps; letter-spacing: .06em; }
+  .enter { color: var(--navy); border-bottom: 1px solid var(--gold); font-size: .95rem; }
+  @media (max-width: 640px) {
+    .rels { gap: 6px; }
+    .rel { padding: 10px 4px; gap: 4px; }
+    .rel svg { width: 34px; height: 34px; }
+    .rel h3 { font-size: .68rem; line-height: 1.2; hyphens: auto; -webkit-hyphens: auto; }
+    .rel p, .rel .count, .rel br { display: none; }
+    .rel .enter { font-size: .7rem; }
   }
-  .cfx-card:hover { transform: translateY(-3px); }
-  .cfx-ref { font-variant: small-caps; letter-spacing: .12em; color: var(--gold); font-size: .95rem; }
-  .cfx-title { color: var(--navy); font-size: 1.45rem; line-height: 1.25; }
-  .cfx-deck { font-style: italic; color: var(--muted); font-size: 1.05rem; }
+
+  /* By the Numbers panel */
+  .numbers {
+    margin-top: 28px; display: grid; grid-template-columns: 1fr 1.15fr; gap: 24px; align-items: center;
+    background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--gold); border-radius: 6px; padding: 24px;
+    text-decoration: none; color: var(--ink);
+  }
+  .numbers .kicker { font-variant: small-caps; letter-spacing: .12em; color: var(--gold); font-size: .95rem; margin: 0 0 4px; }
+  .numbers h2 { color: var(--navy); font-weight: normal; font-size: 1.5rem; margin: 0 0 8px; }
+  .numbers p { margin: 0 0 10px; }
+  .hl { margin: 0 0 14px; padding-left: 18px; }
+  .hl li { margin: 4px 0; }
+  .hl b { color: var(--navy); font-weight: normal; }
+  .enter.big { font-size: 1rem; }
+  .spark { width: 100%; height: auto; font-family: Georgia, serif; }
+  @media (max-width: 760px) { .numbers { grid-template-columns: 1fr; } }
+
+  .cfx-close { max-width: 760px; margin: 40px 0 0; font-size: 1.05rem; }
   @media (max-width: 480px) { .cfx h1 { font-size: 1.8rem; } }
 </style>

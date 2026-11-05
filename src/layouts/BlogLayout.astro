@@ -1,5 +1,11 @@
 ---
-// BlogLayout.astro · 1023 V18
+// BlogLayout.astro · 1105 V19
+// V19 (Etsy Handoff Counterfeit Restructure 1105 V4): optional `crumbs` (the
+// breadcrumb trail after Home, last item unlinked) and `back` ({ href, label },
+// the footer link) let a sectioned study name a deeper trail, e.g. Counterfeit ›
+// Buddhism › The Serpent King. A named `lead` slot renders full width between
+// the masthead and the study (a picture study's lead photos). All three absent
+// everywhere else: unchanged.
 // V18 (associations batch 70): a book study series shows under the masthead —
 // StudySeriesPanel (tiles) on its main Quick Scroll study, StudySeriesBar on each companion.
 // V17: a study's own `kicker` (its label line) takes the small line above the
@@ -86,9 +92,12 @@ import type { CollectionEntry } from 'astro:content';
 
 interface Props {
   post: CollectionEntry<'posts'>;
+  crumbs?: { label: string; href?: string }[];
+  back?: { href: string; label: string };
 }
 
-const { post } = Astro.props;
+const { post, crumbs, back } = Astro.props;
+const hasLead = Astro.slots.has('lead');
 // Skip the masthead subtitle when the body's opening lines already carry it.
 const bodyOpening = (post.body || '').slice(0, 800).replace(/[*_\\]/g, '');
 const showSubtitle = !!post.data.subtitle && !bodyOpening.includes(post.data.subtitle.replace(/[*_\\]/g, ''));
@@ -162,10 +171,21 @@ const companions = (
       <nav class="max-w-4xl mx-auto mb-8 text-sm" style="font-family: var(--font-body);" data-pagefind-ignore>
         <ol class="flex items-center space-x-2" style="color: var(--ink-faded);">
           <li><a href="/" class="hover:text-[var(--bronze)]">Home</a></li>
-          <li>/</li>
-          <li><a href={home} class="hover:text-[var(--bronze)]">{homeLabel}</a></li>
-          <li>/</li>
-          <li class="font-medium" style="color: var(--ink);">{title}</li>
+          {crumbs ? crumbs.map((c) => (
+            <>
+              <li>/</li>
+              {c.href
+                ? <li><a href={c.href} class="hover:text-[var(--bronze)]">{c.label}</a></li>
+                : <li class="font-medium" style="color: var(--ink);">{c.label}</li>}
+            </>
+          )) : (
+            <>
+              <li>/</li>
+              <li><a href={home} class="hover:text-[var(--bronze)]">{homeLabel}</a></li>
+              <li>/</li>
+              <li class="font-medium" style="color: var(--ink);">{title}</li>
+            </>
+          )}
         </ol>
       </nav>
 
@@ -270,6 +290,12 @@ const companions = (
         <WatchCard post={post} />
       </div>
 
+      {hasLead && (
+        <div class="max-w-5xl mx-auto mb-10">
+          <slot name="lead" />
+        </div>
+      )}
+
       <!-- Article Content -->
       <div class="max-w-3xl mx-auto prose">
         <Content />
@@ -319,14 +345,14 @@ const companions = (
       <footer class="max-w-3xl mx-auto mt-16 pt-8 border-t border-[var(--sand-dark)]" data-pagefind-ignore>
         <div class="flex items-center justify-between">
           <a
-            href={home}
+            href={back?.href ?? home}
             class="inline-flex items-center gap-2 hover:underline"
             style="color: var(--bronze); font-family: var(--font-display); font-size: 0.9rem; letter-spacing: 1px;"
           >
             <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
             </svg>
-            Back to {homeLabel}
+            Back to {back?.label ?? homeLabel}
           </a>
 
           <div class="flex gap-4">

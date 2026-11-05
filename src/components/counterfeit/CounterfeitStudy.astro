@@ -1,15 +1,23 @@
 ---
-// CounterfeitStudy 1105 V1.astro
+// CounterfeitStudy 1105 V2.astro
+// V2 (Etsy Handoff Counterfeit Restructure 1105 V4): the "Counterfeit" kicker gives
+// way to a breadcrumb, Counterfeit › <religion> › <page>, read from the page's
+// entry in src/data/counterfeit.js (matched by URL). A `book` entry opens with
+// the cover header (cover block, "A Book Examined", title, subtitle, source line
+// with author and ISBN) and an "Inside this book" list: the main study, then each
+// deeper study (entries whose parent is this book) with its blessing number. The
+// study text follows unchanged, under #the-study. Stacks under 560px.
 // V1 (Etsy Handoff 38 Blessings 1105 V2): the study frame for the Counterfeit
-// section's studies (The 38 Blessings and its Go Deeper pages). Kicker, h1, italic
+// section's studies (The 38 Blessings and its Go Deeper pages). h1, italic
 // subtitle (.cfs-sub), then the study text from the page's slot. `deck` is the
-// short card deck (the /counterfeit card line), carried in a visually hidden
+// short card deck (the hub card line), carried in a visually hidden
 // .cfs-card-deck for the social-card backfill and page-dates; the meta
-// description stays its own field. Palette matches /counterfeit and
-// /counterfeit/five-world-religions. Slotted markup belongs to the calling page,
+// description stays its own field. Slotted markup belongs to the calling page,
 // so the styles here are is:global under the .cfs prefix (scoped rules would
 // miss it).
 import BaseLayout from '../../layouts/BaseLayout.astro';
+import ReligionSymbol from './ReligionSymbol.astro';
+import { entryByHref, religion, hubHref, deeperStudies } from '../../data/counterfeit.js';
 
 interface Props {
   title: string;
@@ -18,16 +26,51 @@ interface Props {
   description: string;
 }
 const { title, subtitle, deck, description } = Astro.props;
+const entry = entryByHref(Astro.url.pathname);
+if (!entry) throw new Error(`CounterfeitStudy: ${Astro.url.pathname} has no entry in src/data/counterfeit.js`);
+const rel = religion(entry.religion);
+const book = entry.kind === 'book' ? entry : null;
+const inside = book ? deeperStudies(book.slug) : [];
 ---
 
 <BaseLayout title={`${title} | Nazaryah`} description={description} article>
   <div class="cfs">
     <article class="cfs-wrap">
-      <p class="cfs-kicker"><a href="/counterfeit">Counterfeit</a></p>
-      <h1>{title}</h1>
-      <p class="cfs-sub">{subtitle}</p>
+      <nav class="cfs-crumb" aria-label="Breadcrumb">
+        <a href="/counterfeit">Counterfeit</a> › <a href={hubHref(rel.id)}>{rel.name}</a> › <span>{title}</span>
+      </nav>
+      {book ? (
+        <>
+          <header class="cfs-bookhead">
+            <div class="cfs-cover" style={`background:${book.book.color};color:${book.book.emblem}`}>
+              <b>{book.title}</b>
+              <ReligionSymbol id={book.religion} emblem={book.book.emblem} />
+            </div>
+            <div>
+              <p class="cfs-kicker">A Book Examined</p>
+              <h1>{title}</h1>
+              <p class="cfs-sub">{subtitle}</p>
+              <p class="cfs-meta">Source: <i>{book.book.source}</i>, {book.book.author}, ISBN {book.book.isbn}</p>
+            </div>
+          </header>
+          <nav class="cfs-inside" aria-label="Inside this book">
+            <h2>Inside this book</h2>
+            <ol>
+              <li><a href="#the-study">{book.book.mainLabel}</a></li>
+              {inside.map((d) => (
+                <li><a href={d.href}>{d.title}</a> <span class="cfs-meta">({d.blessing})</span></li>
+              ))}
+            </ol>
+          </nav>
+        </>
+      ) : (
+        <>
+          <h1>{title}</h1>
+          <p class="cfs-sub">{subtitle}</p>
+        </>
+      )}
       <p class="cfs-card-deck">{deck}</p>
-      <div class="cfs-body">
+      <div class="cfs-body" id="the-study">
         <slot />
       </div>
     </article>
@@ -50,13 +93,33 @@ const { title, subtitle, deck, description } = Astro.props;
   /* The site's global headings are Cinzel; this section's headings keep its own serif. */
   .cfs h1, .cfs h2, .cfs h3 { font-family: inherit; }
   .cfs-wrap { max-width: 760px; margin: 0 auto; padding: 40px 16px 56px; }
+  .cfs-crumb { font-size: .88rem; color: var(--muted); margin: 0 0 16px; }
+  .cfs-crumb a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
   .cfs-kicker {
     font-variant: small-caps;
     letter-spacing: .12em;
+    color: var(--gold);
     font-size: .95rem;
-    margin: 0 0 6px;
+    margin: 0 0 4px;
   }
-  .cfs-kicker a { color: var(--gold); text-decoration: none; }
+  /* Book page: cover header + Inside this book */
+  .cfs-bookhead { display: flex; gap: 26px; background: #ece7da; border-radius: 8px; padding: 26px; align-items: center; margin: 0 0 22px; }
+  .cfs-bookhead h1 { margin-bottom: 4px; }
+  .cfs-bookhead .cfs-sub { margin: 0 0 8px; }
+  .cfs-cover {
+    width: 150px; height: 208px; flex: none; border-radius: 3px 6px 6px 3px;
+    box-shadow: inset 8px 0 0 rgba(0,0,0,.18), 4px 6px 14px rgba(0,0,0,.18);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 10px;
+  }
+  .cfs-cover b { font-weight: normal; font-size: 1rem; margin-bottom: 12px; }
+  .cfs-cover svg { width: 70px; height: 70px; }
+  .cfs-meta { font-size: .9rem; color: var(--muted); margin: 0; }
+  .cfs-inside { background: #fff; border: 1px solid #e4e0d4; border-radius: 6px; padding: 16px 20px; margin: 0 0 28px; }
+  .cfs-inside h2 { margin: 0 0 8px; color: var(--navy); font-weight: normal; font-size: 1.05rem; font-variant: small-caps; letter-spacing: .06em; }
+  .cfs-inside ol { margin: 0; padding-left: 22px; }
+  .cfs-inside li { margin: 4px 0; }
+  .cfs-inside a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  @media (max-width: 560px) { .cfs-bookhead { flex-direction: column; align-items: flex-start; } }
   .cfs h1 { color: var(--navy); font-size: 2.2rem; line-height: 1.2; margin: 0 0 6px; font-weight: normal; }
   .cfs-sub { font-style: italic; color: var(--muted); font-size: 1.15rem; margin: 0 0 32px; }
   .cfs .cfs-card-deck {

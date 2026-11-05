@@ -1,0 +1,73 @@
+---
+// ReligionSymbol 1105 V1.astro
+// V1 (Etsy Handoff Counterfeit Restructure 1105 V4): the five religion symbols,
+// as drawn on the retired /counterfeit/five-world-religions cards. Used by the
+// front-door tiles, the hub intro blocks and (as `emblem`, one colour) the book
+// cover. `uid` keeps the crescent's mask id unique when a page shows it twice.
+interface Props {
+  id: 'hinduism' | 'buddhism' | 'judaism' | 'islam' | 'christianity';
+  label?: string;
+  class?: string;
+  /** One-colour emblem (the book cover's wheel). */
+  emblem?: string;
+  uid?: string;
+}
+const { id, label, class: cls, emblem, uid = 'a' } = Astro.props;
+const navy = emblem ?? '#1F3864';
+const gold = emblem ?? '#B8902F';
+const maskId = `cf-crescent-${uid}`;
+---
+
+<svg class={cls} viewBox="0 0 100 100" role={label ? 'img' : undefined} aria-label={label} aria-hidden={label ? undefined : 'true'}>
+  {id === 'hinduism' && (
+    <>
+      <circle cx="50" cy="50" r="47" fill="none" stroke={gold} stroke-width="2" />
+      <text x="50" y="68" text-anchor="middle" font-size="54" fill={navy}
+        font-family="'Noto Sans Devanagari','Kohinoor Devanagari','Devanagari Sangam MN','Mangal',sans-serif">&#x0950;</text>
+    </>
+  )}
+  {id === 'buddhism' && (
+    <>
+      <g fill="none" stroke={navy}>
+        <circle cx="50" cy="50" r="44" stroke-width={emblem ? 4 : 5} />
+        {!emblem && <circle cx="50" cy="50" r="37" stroke-width="1.5" stroke={gold} />}
+        <circle cx="50" cy="50" r="11" stroke-width={emblem ? 3 : 4} />
+        <g stroke-width={emblem ? 3 : 4} stroke-linecap="round">
+          <line x1="50" y1="39" x2="50" y2="8" />
+          <line x1="50" y1="61" x2="50" y2="92" />
+          <line x1="39" y1="50" x2="8" y2="50" />
+          <line x1="61" y1="50" x2="92" y2="50" />
+          <line x1="57.8" y1="42.2" x2="79.7" y2="20.3" />
+          <line x1="42.2" y1="57.8" x2="20.3" y2="79.7" />
+          <line x1="42.2" y1="42.2" x2="20.3" y2="20.3" />
+          <line x1="57.8" y1="57.8" x2="79.7" y2="79.7" />
+        </g>
+      </g>
+      {!emblem && <circle cx="50" cy="50" r="4" fill={gold} />}
+    </>
+  )}
+  {id === 'judaism' && (
+    <g fill="none" stroke={navy} stroke-width="5" stroke-linejoin="round">
+      <polygon points="50,8 86.4,71 13.6,71" />
+      <polygon points="50,92 13.6,29 86.4,29" />
+    </g>
+  )}
+  {id === 'islam' && (
+    <>
+      <defs>
+        <mask id={maskId}>
+          <rect width="100" height="100" fill="#fff" />
+          <circle cx="55" cy="46" r="31" fill="#000" />
+        </mask>
+      </defs>
+      <circle cx="44" cy="50" r="38" fill={navy} mask={`url(#${maskId})`} />
+      <polygon fill={gold} points="74,32 77.4,42.6 88.5,42.6 79.5,49.2 82.9,59.8 74,53.2 65.1,59.8 68.5,49.2 59.5,42.6 70.6,42.6" />
+    </>
+  )}
+  {id === 'christianity' && (
+    <>
+      <rect x="44" y="8" width="12" height="84" rx="1.5" fill={navy} />
+      <rect x="22" y="28" width="56" height="12" rx="1.5" fill={navy} />
+    </>
+  )}
+</svg>

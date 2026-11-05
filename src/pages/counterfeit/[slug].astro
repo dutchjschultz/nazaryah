@@ -1,9 +1,15 @@
 ---
-// counterfeit/[slug] 1105 V1.astro
+// counterfeit/[slug] 1105 V2.astro
+// V2 (Etsy Handoff Counterfeit Restructure 1105 V4): each study is matched to its
+// entry in src/data/counterfeit.js (the build fails without one). The breadcrumb
+// reads Counterfeit › <religion> › <title>, the footer link returns to the
+// religion's hub, and a `picture` entry leads with its photos, large and
+// captioned, before the study text.
 // V1 (Etsy Batch 1105 V1): serves any study whose frontmatter sets
 // home: "/counterfeit" at /counterfeit/<slug>. Same layout as /blog/<slug>.
 import { getCollection } from 'astro:content';
 import BlogLayout from '../../layouts/BlogLayout.astro';
+import { entryBySlug, religion, hubHref } from '../../data/counterfeit.js';
 
 export async function getStaticPaths() {
   const posts = (await getCollection('posts')).filter((post) => post.data.home === '/counterfeit');
@@ -14,9 +20,34 @@ export async function getStaticPaths() {
 }
 
 const { post } = Astro.props;
-const { Content } = await post.render();
+const entry = entryBySlug(post.slug);
+if (!entry) throw new Error(`counterfeit/[slug]: ${post.slug} has no entry in src/data/counterfeit.js`);
+const rel = religion(entry.religion);
+const crumbs = [
+  { label: 'Counterfeit', href: '/counterfeit' },
+  { label: rel.name, href: hubHref(rel.id) },
+  { label: post.data.title },
+];
+const photos = entry.kind === 'picture' ? entry.photos ?? [] : [];
 ---
 
-<BlogLayout post={post}>
-  <Content />
+<BlogLayout post={post} crumbs={crumbs} back={{ href: hubHref(rel.id), label: rel.name }}>
+  {photos.length > 0 && (
+    <div slot="lead" class="cfp-lead">
+      {photos.map((ph) => (
+        <figure class="cfp-fig">
+          <img src={ph.src} alt={ph.alt} />
+          <figcaption>{ph.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  )}
 </BlogLayout>
+
+<style>
+  .cfp-lead { display: grid; grid-template-columns: 9fr 16fr; gap: 16px; align-items: start; }
+  .cfp-fig { margin: 0; }
+  .cfp-fig img { display: block; width: 100%; height: auto; border-radius: 6px; }
+  .cfp-fig figcaption { font-family: var(--font-family-serif, Georgia, serif); font-style: italic; font-size: .95rem; color: var(--ink-faded); margin-top: 8px; line-height: 1.45; }
+  @media (max-width: 700px) { .cfp-lead { grid-template-columns: 1fr; } }
+</style>

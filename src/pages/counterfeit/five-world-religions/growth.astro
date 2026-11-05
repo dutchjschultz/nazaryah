@@ -1,5 +1,8 @@
 ---
-// counterfeit/five-world-religions/growth 1102 V1.astro
+// counterfeit/five-world-religions/growth 1105 V2.astro
+// V2 (Etsy Handoff Counterfeit Restructure 1105 V4): /counterfeit/five-world-religions
+// now redirects to /counterfeit, so the kicker becomes a breadcrumb (Counterfeit ›
+// How They Have Grown) and the back link returns to Counterfeit. Route unchanged.
 // V1 (Etsy Handoff Counterfeit 1102 V1): How They Have Grown, from Five World
 // Religions Growth 1102 V2.html, text and figures as written. Wrapped in
 // BaseLayout (its footer replaces the page's own). The charts, legend and
@@ -20,7 +23,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
 
   
-  <p class="fwg-kicker"><a href="/counterfeit/five-world-religions">Counterfeit · The Five Major World Religions</a></p>
+  <nav class="fwg-crumb" aria-label="Breadcrumb"><a href="/counterfeit">Counterfeit</a> › <span>How They Have Grown</span></nav>
   <h1>How They Have Grown</h1>
   <p class="fwg-deck">Five religions measured against the growth of the world itself.</p>
 
@@ -68,7 +71,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 
   <p class="fwg-note">Figures come from the World Christian Database, "Status of Global Christianity, 2026, in the Context of 1900–2075" (Center for the Study of Global Christianity, Gordon-Conwell Theological Seminary), which tracks all major religions from one consistent source back to 1900. Other surveys count somewhat differently; the Pew Research Center, for example, places Buddhists far lower, at about 324 million in 2020, chiefly because the two sources classify religious life in China differently. The direction of each trend is the same in both.</p>
 
-  <a class="fwg-back" href="/counterfeit/five-world-religions">← Back to The Five Major World Religions</a>
+  <a class="fwg-back" href="/counterfeit">← Back to Counterfeit</a>
   </div>
   </div>
 
@@ -275,8 +278,8 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   /* The site's global headings are Cinzel; this page's headings keep its own serif. */
   .fwg h1, .fwg h2, .fwg h3 { font-family: inherit; }
   .fwg-wrap { max-width: 880px; margin: 0 auto; padding: 40px 16px 24px; }
-  .fwg-kicker { font-variant: small-caps; letter-spacing: .12em; color: var(--gold); font-size: .95rem; margin: 0 0 6px; }
-  .fwg-kicker a { color: var(--gold); text-decoration: none; }
+  .fwg-crumb { font-size: .88rem; color: var(--muted); margin: 0 0 14px; }
+  .fwg-crumb a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
   .fwg h1 { color: var(--navy); font-size: 2.2rem; line-height: 1.2; margin: 0 0 6px; font-weight: normal; }
   .fwg-deck { font-style: italic; color: var(--muted); font-size: 1.15rem; margin: 0 0 28px; }
   .fwg h2 { color: var(--navy); font-weight: normal; font-size: 1.45rem; margin: 40px 0 6px; }

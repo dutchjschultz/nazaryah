@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  1105 V21
+backfill-social-images  1105 V22
+V22: `counterfeit` also reads .cfh-deck (a religion hub's line under its title).
 V21: `counterfeit` mapped to .cfs-card-deck (the hidden short card deck of the
 Counterfeit study frame: The 38 Blessings and its Go Deeper pages).
 V20: `five-offerings` mapped to .fo-sub (the page's subtitle line).
@@ -119,7 +120,7 @@ WS = re.compile(r"\s+")
 # ("Hover each number…"), so og:description (a real deck) is used there instead.
 DECK_CLASSES = {
     "blog": ["post-deck"],
-    "counterfeit": ["cfs-card-deck"],
+    "counterfeit": ["cfs-card-deck", "cfh-deck"],
     "american-idolatry": ["aip-subtitle", "ai-banner-sub"],
     "associations": ["blurb", "assoc-lede"],
     "books": ["bk-subtitle", "bk-intro"],

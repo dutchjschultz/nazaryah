@@ -50,6 +50,18 @@
 # address was live and served a real page, so it is redirected rather than
 # left to 404. Its card at /og/blog/the-appointed-times.v2.png is deliberately
 # NOT deleted — a crawled card file is never removed or renamed.
+# Counterfeit restructure (Etsy Handoff Counterfeit Restructure 1105 V4): the Five
+# World Religions page folded into the /counterfeit front door and the five hubs.
+# Its card file stays in public/og (a crawled card is never removed).
+[[redirects]]
+  from = "/counterfeit/five-world-religions"
+  to = "/counterfeit"
+  status = 301
+[[redirects]]
+  from = "/counterfeit/five-world-religions/"
+  to = "/counterfeit"
+  status = 301
+
 [[redirects]]
   from = "/blog/the-appointed-times"
   to = "/blog/kept-to-the-hour"
