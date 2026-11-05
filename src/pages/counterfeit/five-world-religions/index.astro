@@ -1,5 +1,7 @@
 ---
-// counterfeit/five-world-religions 1102 V1.astro
+// counterfeit/five-world-religions 1105 V2.astro
+// V2 (Etsy Handoff 38 Blessings 1105 V2): the Buddhism card gains "Read the study:
+// The 38 Blessings →" below its thread line. Nothing else changed.
 // V1 (Etsy Handoff Counterfeit 1102 V1): the landing page of the Counterfeit
 // section, from Five World Religions 1102 V3.html, text as written. Wrapped in
 // BaseLayout (its footer replaces the page's own); the page palette moved from
@@ -78,6 +80,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
       <h3>The Symbol</h3>
       <p>The Dharma wheel (<i>Dharmachakra</i>). Its eight spokes stand for the Eightfold Path, and its turning stands for the Buddha setting his teaching in motion.</p>
       <p class="fwr-thread">The thread to follow: sound moral conduct, as in the 38 Blessings of the Mangala Sutta, with the Creator removed and stored-up merit put in the place of favor.</p>
+      <p class="fwr-study"><a class="fwr-growth-link" href="/counterfeit/buddhism/38-blessings">Read the study: The 38 Blessings →</a></p>
     </article>
 
     <!-- RABBINIC JUDAISM -->
@@ -206,6 +209,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
   .fwr-card h3 { color: var(--navy); font-size: 1rem; font-weight: normal; font-variant: small-caps; letter-spacing: .06em; margin: 8px 0 4px; }
   .fwr-thread { margin-top: auto; padding-top: 10px; font-style: italic; }
     .fwr-growth-link { color: var(--navy); text-decoration: none; font-size: 1.15rem; border-bottom: 1px solid var(--gold); }
+  .fwr-card .fwr-study { margin: 6px 0 0; }
   .fwr-note { font-size: .92rem; color: var(--muted); }
   .fwr-close { max-width: 760px; margin: 40px 0 0; font-size: 1.05rem; }
   @media (max-width: 480px) { .fwr h1 { font-size: 1.8rem; } }

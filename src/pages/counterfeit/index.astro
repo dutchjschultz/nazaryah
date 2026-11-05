@@ -1,17 +1,38 @@
 ---
-// counterfeit/index 1102 V1.astro
+// counterfeit/index 1105 V2.astro
+// V2 (Etsy Handoff 38 Blessings 1105 V2): cards sit in GROUPS. The first group has
+// no heading (The Five Major World Religions); "Buddhism" follows with The 38
+// Blessings and its six Go Deeper pages.
 // V1 (Etsy Handoff Counterfeit 1102 V1): the Counterfeit section front, a card
 // grid. One card per entry in STUDIES: reference line (small caps), title, italic
 // deck. Adding a study (one per religion, Buddhism's 38 Blessings first) is one
 // more entry here, no markup change. Palette matches the section's pages.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 
-const STUDIES = [
+const B = '/counterfeit/buddhism/38-blessings';
+const GROUPS = [
   {
-    reference: 'Five Religions',
-    title: 'The Five Major World Religions',
-    deck: 'Truth kept, then turned sideways.',
-    href: '/counterfeit/five-world-religions',
+    heading: null,
+    studies: [
+      {
+        reference: 'Five Religions',
+        title: 'The Five Major World Religions',
+        deck: 'Truth kept, then turned sideways.',
+        href: '/counterfeit/five-world-religions',
+      },
+    ],
+  },
+  {
+    heading: 'Buddhism',
+    studies: [
+      { reference: 'Mangala Sutta', title: 'The 38 Blessings', deck: 'Thirty-eight familiar virtues, and the Root they left behind.', href: B },
+      { reference: 'Blessing 5', title: 'Merit from Past Lives', deck: 'An inheritance from a father, or a debt from another life?', href: `${B}/past-merit` },
+      { reference: 'Blessing 29', title: 'The Ascetic and the Prophet', deck: 'The robe or the word: which marks the man of God?', href: `${B}/the-ascetic` },
+      { reference: 'Blessing 31', title: 'Austerities and the Commanded Fast', deck: 'One day Yahuah commanded, and all the days men added.', href: `${B}/austerities` },
+      { reference: 'Blessing 33', title: 'Four Truths and One Word', deck: 'Suffering is real. The question is where it came from.', href: `${B}/four-noble-truths` },
+      { reference: 'Blessing 34', title: 'Blown Out or Raised Up', deck: 'A flame put out, or a body raised?', href: `${B}/nirvana` },
+      { reference: 'The Rewards', title: 'Merit for Sale', deck: 'Fine skin, long life, and the souls of men.', href: `${B}/merit-for-sale` },
+    ],
   },
 ];
 ---
@@ -23,15 +44,20 @@ const STUDIES = [
   <div class="cfx">
     <div class="cfx-wrap">
       <h1>Counterfeit</h1>
-      <div class="cfx-grid">
-        {STUDIES.map((s) => (
-          <a href={s.href} class="cfx-card">
-            <span class="cfx-ref">{s.reference}</span>
-            <span class="cfx-title">{s.title}</span>
-            <span class="cfx-deck">{s.deck}</span>
-          </a>
-        ))}
-      </div>
+      {GROUPS.map((g) => (
+        <section class="cfx-group">
+          {g.heading && <h2>{g.heading}</h2>}
+          <div class="cfx-grid">
+            {g.studies.map((s) => (
+              <a href={s.href} class="cfx-card">
+                <span class="cfx-ref">{s.reference}</span>
+                <span class="cfx-title">{s.title}</span>
+                <span class="cfx-deck">{s.deck}</span>
+              </a>
+            ))}
+          </div>
+        </section>
+      ))}
     </div>
   </div>
 </BaseLayout>
@@ -54,6 +80,8 @@ const STUDIES = [
   .cfx h1, .cfx h2, .cfx h3 { font-family: inherit; }
   .cfx-wrap { max-width: 1080px; margin: 0 auto; padding: 40px 16px 48px; }
   .cfx h1 { color: var(--navy); font-size: 2.2rem; line-height: 1.2; margin: 0 0 28px; font-weight: normal; }
+  .cfx-group + .cfx-group { margin-top: 40px; }
+  .cfx h2 { color: var(--navy); font-size: 1.5rem; font-weight: normal; margin: 0 0 16px; padding-bottom: 6px; border-bottom: 1px solid var(--line); }
   .cfx-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));

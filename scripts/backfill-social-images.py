@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 """
-backfill-social-images  1012 V20
+backfill-social-images  1105 V21
+V21: `counterfeit` mapped to .cfs-card-deck (the hidden short card deck of the
+Counterfeit study frame: The 38 Blessings and its Go Deeper pages).
 V20: `five-offerings` mapped to .fo-sub (the page's subtitle line).
 V19: `symbol-lexicon` mapped to .sx-sub (the index's subtitle line), and
 symbol-lexicon/<slug> joins skip() — the 229 symbol pages share the index card
@@ -117,6 +119,7 @@ WS = re.compile(r"\s+")
 # ("Hover each number…"), so og:description (a real deck) is used there instead.
 DECK_CLASSES = {
     "blog": ["post-deck"],
+    "counterfeit": ["cfs-card-deck"],
     "american-idolatry": ["aip-subtitle", "ai-banner-sub"],
     "associations": ["blurb", "assoc-lede"],
     "books": ["bk-subtitle", "bk-intro"],

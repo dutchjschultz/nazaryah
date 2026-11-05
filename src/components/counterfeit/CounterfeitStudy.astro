@@ -1,0 +1,96 @@
+---
+// CounterfeitStudy 1105 V1.astro
+// V1 (Etsy Handoff 38 Blessings 1105 V2): the study frame for the Counterfeit
+// section's studies (The 38 Blessings and its Go Deeper pages). Kicker, h1, italic
+// subtitle (.cfs-sub), then the study text from the page's slot. `deck` is the
+// short card deck (the /counterfeit card line), carried in a visually hidden
+// .cfs-card-deck for the social-card backfill and page-dates; the meta
+// description stays its own field. Palette matches /counterfeit and
+// /counterfeit/five-world-religions. Slotted markup belongs to the calling page,
+// so the styles here are is:global under the .cfs prefix (scoped rules would
+// miss it).
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+interface Props {
+  title: string;
+  subtitle: string;
+  deck: string;
+  description: string;
+}
+const { title, subtitle, deck, description } = Astro.props;
+---
+
+<BaseLayout title={`${title} | Nazaryah`} description={description} article>
+  <div class="cfs">
+    <article class="cfs-wrap">
+      <p class="cfs-kicker"><a href="/counterfeit">Counterfeit</a></p>
+      <h1>{title}</h1>
+      <p class="cfs-sub">{subtitle}</p>
+      <p class="cfs-card-deck">{deck}</p>
+      <div class="cfs-body">
+        <slot />
+      </div>
+    </article>
+  </div>
+</BaseLayout>
+
+<style is:global>
+  .cfs {
+    --navy: #1F3864;
+    --ink: #222;
+    --muted: #5a5f6b;
+    --gold: #B8902F;
+    --paper: #fdfcf8;
+    background: var(--paper);
+    color: var(--ink);
+    font-family: Georgia, "Times New Roman", serif;
+    line-height: 1.65;
+  }
+  .cfs *, .cfs *::before, .cfs *::after { box-sizing: border-box; }
+  /* The site's global headings are Cinzel; this section's headings keep its own serif. */
+  .cfs h1, .cfs h2, .cfs h3 { font-family: inherit; }
+  .cfs-wrap { max-width: 760px; margin: 0 auto; padding: 40px 16px 56px; }
+  .cfs-kicker {
+    font-variant: small-caps;
+    letter-spacing: .12em;
+    font-size: .95rem;
+    margin: 0 0 6px;
+  }
+  .cfs-kicker a { color: var(--gold); text-decoration: none; }
+  .cfs h1 { color: var(--navy); font-size: 2.2rem; line-height: 1.2; margin: 0 0 6px; font-weight: normal; }
+  .cfs-sub { font-style: italic; color: var(--muted); font-size: 1.15rem; margin: 0 0 32px; }
+  .cfs .cfs-card-deck {
+    position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+    overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+  }
+  .cfs-body h2 {
+    color: var(--navy);
+    font-size: 1.5rem;
+    line-height: 1.3;
+    font-weight: normal;
+    margin: 40px 0 12px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e4e0d4;
+  }
+  .cfs-body h3 {
+    color: var(--navy);
+    font-size: 1.12rem;
+    line-height: 1.35;
+    font-weight: bold;
+    margin: 26px 0 8px;
+  }
+  .cfs-body p { margin: 0 0 14px; font-size: 1.05rem; }
+  .cfs-body strong { color: var(--navy); }
+  .cfs-body em { font-style: italic; }
+  .cfs-body a { color: var(--navy); }
+  .cfs-deeper, .cfs-back { margin: 4px 0 18px; }
+  .cfs-deeper a, .cfs-back a {
+    color: var(--navy);
+    text-decoration: none;
+    border-bottom: 1px solid var(--gold);
+    font-size: 1.1rem;
+  }
+  .cfs-deeper a:hover, .cfs-back a:hover { border-bottom-width: 2px; }
+  .cfs-back { margin-top: 32px; }
+  @media (max-width: 480px) { .cfs h1 { font-size: 1.8rem; } }
+</style>
