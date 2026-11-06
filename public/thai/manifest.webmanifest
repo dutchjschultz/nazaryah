@@ -1,0 +1,14 @@
+{
+  "name": "Say It in Thai",
+  "short_name": "Say It in Thai",
+  "description": "Learn to speak Thai by sound.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#232e6e",
+  "theme_color": "#232e6e",
+  "icons": [
+    {"src": "icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any maskable"},
+    {"src": "icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any maskable"}
+  ]
+}

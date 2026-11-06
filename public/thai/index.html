@@ -1,0 +1,702 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#232e6e">
+<meta name="description" content="Learn to speak Thai by sound.">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Say It in Thai">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]{display:none!important}</style>
+<title>Say It in Thai</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Sarabun:wght@400;600;700&family=Trirong:wght@500;700&display=swap">
+<style>
+/* Layout: a one-column phone handbook. Every sound is a reference card with a printed footnote at its foot.
+   Pitch curves ride above each spoken syllable, like notes above a hymn line. */
+:root {
+  --bg: #dbe6de;        /* Sukhothai celadon glaze */
+  --leaf: #f1f5ef;      /* card paper */
+  --ink: #161d42;       /* indigo-dyed ink */
+  --soft: #4a5570;
+  --line: #b4c4bb;
+  --lac: #232e6e;       /* indigo silk */
+  --on-lac: #f1f5ef;
+  --gold: #8f5a00;      /* marigold, darkened for text */
+  --mouth: #cfd9d2;
+  --tooth: #fbfdf9;
+  --tongue: #d98a84;
+  --hit: #c2302a;
+  --t-m: #52626f;
+  --t-l: #2f4bb8;
+  --t-f: #c2302a;
+  --t-h: #0b7a57;
+  --t-r: #a35b00;
+  --good: #0b7a57;
+  --bad: #c2302a;
+  --f-thai: "Trirong", "Noto Serif Thai", Georgia, serif;
+  --f-body: "Sarabun", "Noto Sans Thai", system-ui, sans-serif;
+  --f-phon: "Noto Sans", "Segoe UI", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #10142a; --leaf: #1a2042; --ink: #dfe9e2; --soft: #a4b0c4; --line: #36406a;
+    --lac: #2c387f; --on-lac: #f1f5ef; --gold: #f2b632;
+    --mouth: #2c3560; --tooth: #e9eee8; --tongue: #c9746e; --hit: #ffb340;
+    --t-m: #a9bac8; --t-l: #94a8ff; --t-f: #ff8d7d; --t-h: #55d6a8; --t-r: #f2b632;
+    --good: #55d6a8; --bad: #ff8d7d; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #10142a; --leaf: #1a2042; --ink: #dfe9e2; --soft: #a4b0c4; --line: #36406a;
+  --lac: #2c387f; --on-lac: #f1f5ef; --gold: #f2b632;
+  --mouth: #2c3560; --tooth: #e9eee8; --tongue: #c9746e; --hit: #ffb340;
+  --t-m: #a9bac8; --t-l: #94a8ff; --t-f: #ff8d7d; --t-h: #55d6a8; --t-r: #f2b632;
+  --good: #55d6a8; --bad: #ff8d7d; color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font: 400 17px/1.5 var(--f-body);
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 0 96px;
+}
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--lac); }
+.wrap { max-width: 640px; margin-inline: auto; display: grid; gap: 20px; min-width: 0; }
+button { font: inherit; color: inherit; cursor: pointer; }
+button:focus-visible, a:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 9; background: var(--lac); color: var(--on-lac);
+  margin-inline: calc(-1 * max(16px, env(safe-area-inset-left, 0px))) calc(-1 * max(16px, env(safe-area-inset-right, 0px)));
+  padding: 8px max(16px, env(safe-area-inset-right, 0px)) 8px max(16px, env(safe-area-inset-left, 0px));
+  display: flex; align-items: center; justify-content: space-between; gap: 12px; margin-bottom: 20px;
+}
+.top strong { font: 700 18px/1.2 var(--f-thai); }
+.speed { display: flex; border: 1px solid var(--on-lac); border-radius: 4px; overflow: hidden; flex: none; }
+.speed button { background: none; border: 0; color: var(--on-lac); padding: 6px 14px; font-size: 15px; min-height: 36px; }
+.speed button[aria-pressed="true"] { background: var(--on-lac); color: var(--lac); font-weight: 700; }
+
+nav.tabs {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 9; background: var(--leaf); border-top: 2px solid var(--lac);
+  display: grid; grid-template-columns: repeat(7, 1fr);
+  padding: 0 env(safe-area-inset-right, 0px) env(safe-area-inset-bottom, 0px) env(safe-area-inset-left, 0px);
+}
+nav.tabs button { background: none; border: 0; padding: 6px 0 8px; display: grid; justify-items: center; gap: 0; font-size: 12px; min-width: 0; color: var(--soft); }
+nav.tabs .g { font: 700 21px/1.35 var(--f-thai); }
+nav.tabs button[aria-current="page"] { color: var(--ink); font-weight: 700; box-shadow: inset 0 3px 0 var(--gold); }
+
+h1, h2, h3 { margin: 0; text-wrap: balance; line-height: 1.2; }
+h1 { font: 700 30px/1.2 var(--f-thai); }
+h2 { font: 700 23px/1.25 var(--f-thai); }
+h3 { font: 700 18px/1.3 var(--f-body); }
+p { margin: 0; }
+.lede { color: var(--soft); max-width: 62ch; }
+.stack { display: grid; gap: 12px; min-width: 0; }
+.eyebrow { font: 600 13px/1.3 var(--f-phon); letter-spacing: .08em; text-transform: uppercase; color: var(--gold); }
+
+.hero { display: grid; gap: 6px; padding-block: 8px; }
+.hero .big { font: 700 clamp(64px, 21vw, 112px)/1.25 var(--f-thai); color: var(--lac); }
+:root:not([data-theme="light"]) .hero .big { color: inherit; }
+.staffed { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+
+/* phonetic spelling with pitch curves */
+.ph { display: inline-flex; flex-wrap: wrap; align-items: flex-end; column-gap: 1px; row-gap: 4px; font: 600 1.1em/1.2 var(--f-phon); }
+.syl { display: inline-grid; justify-items: center; }
+.syl svg { width: 1.7em; height: .95em; display: block; }
+.syl svg path { fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: round; stroke-linejoin: round; }
+.phw { display: inline-grid; gap: 2px; min-width: 0; justify-items: inherit; }
+.plain { font: 600 .82em/1.25 var(--f-body); color: var(--gold); }
+.sep { align-self: flex-end; color: var(--soft); padding-inline: 1px; }
+.sp { width: .4em; }
+.t-m { color: var(--t-m); } .t-l { color: var(--t-l); } .t-f { color: var(--t-f); } .t-h { color: var(--t-h); } .t-r { color: var(--t-r); }
+
+.say {
+  background: var(--lac); color: var(--on-lac); border: 0; border-radius: 50%;
+  width: 44px; height: 44px; display: grid; place-items: center; flex: none;
+}
+.say svg { width: 22px; height: 22px; fill: currentColor; }
+.say:active { transform: scale(.94); }
+
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { background: none; border: 1.5px solid var(--lac); color: var(--ink); border-radius: 4px; padding: 7px 12px; min-height: 40px; font-size: 16px; }
+:root .chip[aria-pressed="true"] { background: var(--lac); color: var(--on-lac); font-weight: 700; }
+
+.card { background: var(--leaf); border-radius: 6px; padding: 14px; display: grid; gap: 12px; min-width: 0; }
+.card.flat { background: none; padding: 0; }
+.snd-head { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; }
+.key { font: 700 34px/1.1 var(--f-phon); color: var(--lac); }
+:root .key { color: var(--ink); }
+.key sup { font: 700 13px/1 var(--f-phon); color: var(--gold); margin-left: 2px; vertical-align: super; }
+.thaiset { font: 500 24px/1.3 var(--f-thai); }
+.word { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 4px 10px; }
+.word .tw { font: 500 26px/1.3 var(--f-thai); }
+.word .en { color: var(--soft); }
+.like { color: var(--ink); }
+.fn { border-top: 1px solid var(--line); padding-top: 10px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; font-size: 15px; line-height: 1.42; }
+.fn .figs { display: flex; align-items: center; gap: 2px; }
+.fn svg.mo { width: 100px; height: auto; display: block; }
+.fn .ar { color: var(--soft); font-size: 16px; }
+.fn .n { font: 700 13px/1 var(--f-phon); color: var(--gold); vertical-align: super; margin-right: 3px; }
+.fn b { font-weight: 700; }
+.fn .figs.two svg.mo { width: 74px; }
+.fn:has(.figs.two) { grid-template-columns: minmax(0, 1fr); }
+@media (max-width: 380px) { .fn { grid-template-columns: minmax(0, 1fr); } }
+
+.mo .m { fill: var(--mouth); }
+.mo .o { fill: none; stroke: var(--soft); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
+.mo .tt { fill: var(--tooth); stroke: var(--soft); stroke-width: .9; }
+.mo .tg { fill: var(--tongue); }
+.mo .lip { fill: var(--tongue); opacity: .75; }
+.mo .hit { fill: none; stroke: var(--hit); stroke-width: 2.2; }
+.mo .air { fill: none; stroke: var(--hit); stroke-width: 1.5; stroke-dasharray: 3 3; stroke-linecap: round; }
+
+.rule { display: grid; grid-template-columns: 44px minmax(0, 1fr); gap: 12px; align-items: start; border-top: 1px solid var(--line); padding-top: 12px; }
+.rule .mk { font: 700 22px/1.3 var(--f-phon); color: var(--gold); text-align: center; }
+.keyrow { display: grid; grid-template-columns: 3.6em minmax(0, 1fr); gap: 4px 12px; align-items: baseline; }
+.keyrow b { font: 700 18px/1.3 var(--f-phon); }
+.note { background: var(--lac); color: var(--on-lac); border-radius: 6px; padding: 14px; display: grid; gap: 6px; }
+.note a { color: inherit; }
+.tone-head { display: flex; align-items: center; gap: 14px; }
+.tone-head svg { width: 72px; height: 42px; flex: none; }
+.tone-head svg path { fill: none; stroke: currentColor; stroke-width: 3.2; stroke-linecap: round; }
+.tone-head svg line { stroke: var(--line); stroke-width: 1; }
+.tone-mark { font: 700 26px/1 var(--f-phon); }
+
+.grid44 { display: grid; grid-template-columns: repeat(auto-fill, minmax(70px, 1fr)); gap: 6px; }
+.lt { background: var(--leaf); border: 0; border-radius: 4px; padding: 6px 2px; display: grid; justify-items: center; font-size: 13px; line-height: 1.25; color: var(--soft); min-width: 0; }
+.lt .g { font: 500 34px/1.35 var(--f-thai); color: var(--ink); }
+.lt[aria-pressed="true"] { outline: 2.5px solid var(--gold); outline-offset: -2.5px; }
+.lt.old .g { opacity: .55; }
+.bigl { font: 500 84px/1.2 var(--f-thai); }
+.lhead { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; }
+.tag { display: inline-block; border: 1.5px solid currentColor; border-radius: 3px; padding: 0 6px; font: 600 13px/1.5 var(--f-phon); }
+.marks { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.mk-item { background: var(--leaf); border-radius: 4px; padding: 8px 10px; display: flex; align-items: center; gap: 10px; min-width: 0; }
+.mk-item .g { font: 500 30px/1.3 var(--f-thai); }
+
+.phr { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 4px 12px; align-items: center; border-bottom: 1px solid var(--line); padding-block: 12px; }
+.phr .tw { font: 500 23px/1.35 var(--f-thai); }
+.phr .en { color: var(--soft); }
+.phr .body { display: grid; gap: 2px; min-width: 0; }
+
+.drill { background: var(--leaf); border-radius: 6px; padding: 16px; display: grid; gap: 14px; justify-items: center; text-align: center; }
+.drill .say { width: 76px; height: 76px; }
+.drill .say svg { width: 36px; height: 36px; }
+.opts { display: grid; gap: 8px; width: 100%; }
+.opt { background: none; border: 1.5px solid var(--lac); border-radius: 4px; padding: 10px; display: flex; flex-wrap: wrap; justify-content: center; align-items: flex-end; gap: 4px 12px; min-height: 52px; }
+.opt.right { border-color: var(--good); box-shadow: inset 0 0 0 1.5px var(--good); }
+.opt.wrong { border-color: var(--bad); box-shadow: inset 0 0 0 1.5px var(--bad); }
+.opt .en { color: var(--soft); }
+.next { background: var(--lac); color: var(--on-lac); border: 0; border-radius: 4px; padding: 10px 22px; min-height: 44px; font-weight: 700; }
+.score { font-variant-numeric: tabular-nums; color: var(--soft); }
+
+.lessons { display: grid; gap: 8px; }
+.ltile { background: var(--leaf); border: 0; border-radius: 6px; padding: 12px 14px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; align-items: center; text-align: left; min-height: 72px; }
+.ltile .nm { font: 700 18px/1.3 var(--f-body); color: var(--ink); }
+.ltile .sub { color: var(--soft); font-size: 15px; }
+.ltile .thn { grid-row: 1 / span 2; grid-column: 2; font: 500 24px/1.3 var(--f-thai); color: var(--ink); text-align: right; }
+.ltile .st { color: var(--good); font-weight: 600; }
+.back { background: none; border: 0; padding: 6px 0; min-height: 40px; color: var(--gold); font-weight: 700; justify-self: start; }
+.toast { position: fixed; left: 16px; right: 16px; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); z-index: 11; max-width: 560px; margin-inline: auto; background: var(--ink); color: var(--bg); padding: 12px 14px; border-radius: 6px; font-size: 15px; }
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+</head>
+<body>
+<div class="top">
+  <strong>Say It in Thai</strong>
+  <div class="speed" role="group" aria-label="Voice speed">
+    <button id="spd-n" aria-pressed="true">Normal</button>
+    <button id="spd-s" aria-pressed="false">Slow</button>
+  </div>
+</div>
+<main class="wrap" id="app"></main>
+<nav class="tabs" id="tabs" aria-label="Sections"></nav>
+<div class="toast" id="toast" role="status" hidden></div>
+
+<script>
+/* ---------- mouth drawing, seen from the side, facing left ---------- */
+const SH = {
+  rest:{t:[31,62],h:[58,58]},
+  lab:{t:[31,62],h:[58,58],lip:'closed',hit:[15,52]},
+  labn:{t:[31,62],h:[58,58],lip:'closed',hit:[15,52],nose:1},
+  fv:{t:[31,62],h:[58,58],lip:'f',hit:[22,52]},
+  alv:{t:[29,41],h:[54,56],lip:'open',hit:[29,39]},
+  alvn:{t:[29,41],h:[54,56],lip:'open',hit:[29,39],nose:1},
+  sib:{t:[30,47],h:[52,50],lip:'near',hit:[30,42]},
+  tap:{t:[34,39],h:[58,56],lip:'open',hit:[34,37]},
+  pal:{t:[34,58],h:[50,34],lip:'open',hit:[50,31]},
+  yy:{t:[33,58],h:[50,39],lip:'near',hit:[50,35]},
+  vel:{t:[32,66],h:[74,36],lip:'open',hit:[74,33]},
+  veln:{t:[32,66],h:[74,36],lip:'open',hit:[74,33],nose:1},
+  ww:{t:[32,66],h:[74,40],lip:'round',hit:[12,52]},
+  gl:{t:[31,62],h:[58,60],lip:'open',hit:[92,92]},
+  i:{t:[32,60],h:[52,38],lip:'spread'},
+  e:{t:[32,62],h:[52,45],lip:'open'},
+  ae:{t:[32,66],h:[54,54],lip:'open',jaw:5},
+  a:{t:[33,70],h:[60,64],lip:'open',jaw:9},
+  ue:{t:[32,66],h:[74,39],lip:'spread'},
+  er:{t:[32,66],h:[72,47],lip:'open',jaw:2},
+  u:{t:[32,66],h:[74,38],lip:'round'},
+  o:{t:[32,66],h:[74,45],lip:'round',jaw:2},
+  aw:{t:[32,68],h:[74,54],lip:'round',jaw:6}
+};
+function mouth(key){
+  const s = SH[key] || SH.rest, j = s.jaw||0, [tx,ty]=s.t, [hx,hy]=s.h, lip=s.lip||'open';
+  let up=[14,46,7,5], lo=[14,60+j,7,5];
+  if(lip==='closed'){up=[14,47,7,5];lo=[14,57,7,5];}
+  if(lip==='near'){lo=[14,58,7,5];}
+  if(lip==='round'){up=[10,47,5,5];lo=[10,57+j,5,5];}
+  if(lip==='spread'){up=[16,46,7,4];lo=[16,58+j,7,4];}
+  if(lip==='f'){lo=[21,57,6,5];}
+  const tongue=`M30 ${84+j} Q${tx-3} ${ty+8} ${tx} ${ty} C${tx+8} ${ty-5} ${hx-16} ${hy} ${hx} ${hy} C${hx+13} ${hy} 86 ${Math.max(hy+14,62)} 87 84 L87 104 L36 104 Z`;
+  const velum=s.nose?'M58 29 Q74 30 84 48':'M58 29 Q80 30 97 39';
+  const air=s.nose?`<path class="air" d="M92 52 Q92 30 70 22 L28 22"/>`:'';
+  const hit=s.hit?`<circle class="hit" cx="${s.hit[0]}" cy="${s.hit[1]}" r="6"/>`:'';
+  return `<svg class="mo" viewBox="0 0 110 106" role="img" aria-label="Side view of the mouth">
+<path class="m" d="M24 38 Q30 33 34 34 Q46 26 58 29 L98 16 L98 10 L26 10 Z"/>
+<path class="o" d="M26 4 L6 30 L13 37"/>
+<path class="o" d="M24 38 Q30 33 34 34 Q46 26 58 29"/>
+<path class="o" d="${velum}" stroke-width="3"/>
+<path class="o" d="M30 16 Q70 12 98 22 L99 104"/>
+<path class="tg" d="${tongue}"/>
+<path class="tt" d="M21 39 L28 38 L27 51 L23 51 Z"/>
+<path class="tt" d="M22 ${58+j} L26 ${58+j} L28 ${70+j} L21 ${70+j} Z"/>
+<ellipse class="lip" cx="${up[0]}" cy="${up[1]}" rx="${up[2]}" ry="${up[3]}"/>
+<ellipse class="lip" cx="${lo[0]}" cy="${lo[1]}" rx="${lo[2]}" ry="${lo[3]}"/>
+<path class="o" d="M${lo[0]-3} ${lo[1]+5} Q10 ${80+j} 22 ${90+j} L36 ${100+j}"/>
+${air}${hit}</svg>`;
+}
+
+/* ---------- pitch curves ---------- */
+const CURVE = {
+  m:'M3 8 L25 8', l:'M3 10 Q14 12 25 14', f:'M3 8 Q8 1 14 3 Q20 6 25 14',
+  h:'M3 7 Q14 8 25 2', r:'M3 9 Q11 15 16 12 Q21 9 25 3'
+};
+function toneOf(s){
+  const n=s.normalize('NFD');
+  if(n.includes('̀'))return 'l';
+  if(n.includes('́'))return 'h';
+  if(n.includes('̂'))return 'f';
+  if(n.includes('̌'))return 'r';
+  return 'm';
+}
+const ONS=['khr','khl','khw','phr','phl','kr','kl','kw','pr','pl','tr','ph','th','kh','ng','ch','k','p','t','j','b','d','f','h','l','m','n','r','s','w','y'];
+const ONMAP={ph:'p',th:'t',kh:'k',k:'g',p:'bp',t:'dt',j:'dj'};
+const NUC=[['aaeo','aew'],['aawy','awwy'],['aai','ahy'],['aao','ahw'],['aae','aae'],['aaw','aww'],['aa','ah'],['ae','ae'],['ai','ai'],['ao','ao'],['awy','awy'],['aw','aw'],['ay','ay'],['a','uh'],
+ ['uea','eua'],['uue','euu'],['ue','eu'],['uay','ooay'],['ua','ooa'],['ui','ooey'],['oo','ooo'],['u','oo'],['iao','eeow'],['ia','eea'],['iu','ew'],['ee','ee'],['i','i'],
+ ['oh','ohh'],['o','oh'],['err','err'],['er','er'],['e','eh']];
+function plainSyl(p){
+  let w=p.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(), out='';
+  const on=ONS.find(o=>w.startsWith(o));
+  if(on){const base=ONS.find(o=>ONMAP[o]&&on.startsWith(o)&&(on.length===o.length||/^[rlw]$/.test(on.slice(o.length))));
+    out=base?ONMAP[base]+on.slice(base.length):on; w=w.slice(on.length)}
+  const n=NUC.find(x=>w.startsWith(x[0]));
+  if(n){out+=n[1];w=w.slice(n[0].length)}
+  return out+w;
+}
+function plain(str){return str.split(/([ \-])/).map(p=>/[a-zA-Z\u00C0-\u024F]/.test(p)?plainSyl(p):p).join('')}
+function ph(str){
+  return '<span class="phw"><span class="ph" lang="und-Latn">'+str.split(/([ \-])/).map(p=>{
+    if(p===' ')return '<span class="sp"></span>';
+    if(p==='-')return '<span class="sep">-</span>';
+    if(!/[a-zA-ZÀ-ɏ]/.test(p))return `<span class="sep">${p}</span>`;
+    const t=toneOf(p);
+    return `<span class="syl t-${t}"><svg viewBox="0 0 28 16" aria-hidden="true"><path d="${CURVE[t]}"/></svg><span>${p}</span></span>`;
+  }).join('')+'</span><span class="plain">Say: '+plain(str)+'</span></span>';
+}
+
+/* ---------- sound data: the footnote is always tongue, teeth, lips, air ---------- */
+const CONS = [
+ {k:'k',th:'ก',like:'The k in "skin," which is close to a g. The Say line writes it g.',w:['ไก่','kài','chicken'],m:'vel',f:['Back of the tongue presses the soft roof of the mouth, then lets go.','Slightly apart.','Relaxed and open.','No puff. A hand held at the lips feels nothing.']},
+ {k:'kh',th:'ข ค ฆ',like:'A plain English k, as in "kite."',w:['ไข่','khài','egg'],m:'vel',f:['Same place as k: back of the tongue on the soft roof of the mouth.','Slightly apart.','Relaxed and open.','A strong puff on release. This puff is the only thing that separates kh from k.']},
+ {k:'ng',th:'ง',like:'The ng in "singer," placed at the start of a word.',w:['งู','ngoo','snake'],m:'veln',f:['Back of the tongue seals against the soft roof of the mouth. Tip rests behind the lower teeth.','Slightly apart.','Relaxed and open.','Voice hums out through the nose. To find it, say "sing" and hold the ng, then open into the vowel.']},
+ {k:'j',th:'จ',like:'Between English j and ch, so it sounds odd at first. Close to the tch in "kitchen," with no buzz and no puff.',w:['จาน','jaan','plate'],m:'pal',f:['Flat front of the tongue presses the hard roof of the mouth, tip low behind the lower teeth.','Close together.','Slightly forward.','No puff of air and no voice buzz. English has no exact match, and the Say line writes it dj.']},
+ {k:'ch',th:'ฉ ช ฌ',like:'The ch in "chair," with a puff of air.',w:['ช้าง','cháang','elephant'],m:'pal',f:['Same place as j: flat front of the tongue on the hard roof.','Close together.','Slightly forward.','A puff of air on release.']},
+ {k:'y',th:'ย ญ',like:'The y in "yes."',w:['ยา','yaa','medicine'],m:'yy',f:['Middle of the tongue rises close to the hard roof without touching it.','Slightly apart.','Spread a little.','Voice flows without a stop.']},
+ {k:'d',th:'ด ฎ',like:'The d in "dog."',w:['เด็ก','dèk','child'],m:'alv',f:['Tip touches the ridge just behind the upper front teeth.','Tip sits right behind the upper teeth and never between them.','Relaxed.','Voice starts before the tongue lets go.']},
+ {k:'t',th:'ต ฏ',like:'The t in "stop," between d and t. The Say line writes it dt.',w:['เต่า','tào','turtle'],m:'alv',f:['Tip touches the ridge just behind the upper front teeth.','Tip sits right behind the upper teeth.','Relaxed.','No puff and no voice buzz. It falls between English d and t.']},
+ {k:'th',th:'ถ ท ธ ฐ ฑ ฒ',like:'A plain English t, as in "top." Never the th in "the."',w:['ทอง','thaawng','gold'],m:'alv',f:['Same place as t: tip on the ridge behind the upper teeth.','Tongue stays behind the teeth. It never pokes between them as in English "the."','Relaxed.','A strong puff on release.']},
+ {k:'n',th:'น ณ',like:'The n in "no."',w:['หนู','nǒo','mouse'],m:'alvn',f:['Tip touches the ridge behind the upper front teeth.','Slightly apart, tongue behind the upper teeth.','Relaxed.','Voice hums out through the nose.']},
+ {k:'b',th:'บ',like:'The b in "boy."',w:['บ้าน','bâan','house'],m:'lab',f:['Rests low and takes no part.','Slightly apart behind the lips.','Both lips press together, then open.','Voice starts before the lips open.']},
+ {k:'p',th:'ป',like:'The p in "spin," between b and p. The Say line writes it bp.',w:['ปลา','plaa','fish'],m:'lab',f:['Rests low and takes no part.','Slightly apart behind the lips.','Both lips press together, then open.','No puff. A held-up paper does not move.']},
+ {k:'ph',th:'ผ พ ภ',like:'A plain English p, as in "pin." The ph is never an f.',w:['พ่อ','phâaw','father'],m:'lab',f:['Rests low and takes no part.','Stay off the lower lip. Upper teeth touching the lip would turn this into f.','Both lips press together, then open.','A strong puff that moves a held-up paper.']},
+ {k:'f',th:'ฝ ฟ',like:'The f in "fan."',w:['ฟัน','fan','teeth'],m:'fv',f:['Rests low and takes no part.','Upper teeth rest lightly on the lower lip.','Lower lip rises to meet the upper teeth.','Air hisses through the gap, with no voice.']},
+ {k:'m',th:'ม',like:'The m in "man."',w:['ม้า','máa','horse'],m:'labn',f:['Rests low and takes no part.','Slightly apart behind the lips.','Both lips stay closed.','Voice hums out through the nose.']},
+ {k:'r',th:'ร',like:'A single quick tap, like the Spanish r in "pero."',w:['รถ','rót','car'],m:'tap',f:['Tip taps the ridge behind the upper teeth once. It does not curl back as in English r.','Slightly apart.','Relaxed.','Voice stays on. In casual Bangkok speech many speakers soften this to l.']},
+ {k:'l',th:'ล ฬ',like:'The l in "love."',w:['ลิง','ling','monkey'],m:'alv',f:['Tip stays on the ridge behind the upper teeth, and the sides drop.','Slightly apart.','Relaxed.','Voice flows around both sides of the tongue.']},
+ {k:'w',th:'ว',like:'The w in "win."',w:['วัน','wan','day'],m:'ww',f:['Back of the tongue rises toward the soft roof without touching.','Well apart, hidden behind the lips.','Lips round tightly, then open.','Voice flows without a stop.']},
+ {k:'s',th:'ส ศ ษ ซ',like:'The s in "sun."',w:['เสือ','sǔea','tiger'],m:'sib',f:['Tip rises close to the ridge and leaves a thin channel down the middle.','Nearly touching. Air hisses against them.','Spread a little.','Air only, with no voice.']},
+ {k:'h',th:'ห ฮ',like:'The h in "hat."',w:['ห้า','hâa','five'],m:'gl',f:['Already in place for the next vowel.','Apart.','Open.','Breath passes the open voice box in the throat.']},
+ {k:'(catch)',th:'อ',like:'The small catch in the throat in the middle of "uh-oh."',w:['อ่าน','àan','to read'],m:'gl',f:['Already in place for the vowel.','Apart.','Open.','The voice box snaps shut, then opens. This letter also serves as a silent seat for a vowel.']}
+];
+const VOW = [
+ {k:'a',th:'กะ',like:'The u in "cut." Short.',w:['กับ','kàp','with'],m:'a',f:['Low in the mouth, in the center.','Well apart. The jaw drops.','Open and relaxed.','Cut off quickly.']},
+ {k:'aa',th:'กา',like:'The a in "father." Long.',w:['มา','maa','to come'],m:'a',f:['Low in the mouth, in the center.','Well apart. The jaw drops.','Open and relaxed.','Held about twice as long as short a.']},
+ {k:'i',th:'กิ',like:'A very short "ee."',w:['กิน','kin','to eat'],m:'i',f:['Front of the tongue high, just under the hard roof.','Nearly closed.','Spread as in a smile.','Cut off quickly.']},
+ {k:'ee',th:'กี',like:'The ee in "see." Long.',w:['ปี','pee','year'],m:'i',f:['Front of the tongue high, just under the hard roof.','Nearly closed.','Spread as in a smile.','Held long.']},
+ {k:'ue',th:'กึ',like:'An "oo" said with smiling lips. English has no match. Short.',w:['ขึ้น','khûen','to go up'],m:'ue',f:['Back of the tongue high, the same place as oo.','Nearly closed.','Spread flat. No rounding at all.','Cut off quickly.']},
+ {k:'uue',th:'กือ',like:'The same sound as ue, held long.',w:['มือ','muue','hand'],m:'ue',f:['Back of the tongue high, the same place as oo.','Nearly closed.','Spread flat. No rounding at all.','Held long.']},
+ {k:'u',th:'กุ',like:'The u in "put." Short.',w:['คุณ','khun','you'],m:'u',f:['Back of the tongue high.','Nearly closed.','Rounded.','Cut off quickly.']},
+ {k:'oo',th:'กู',like:'The oo in "food." Long.',w:['ดู','doo','to look'],m:'u',f:['Back of the tongue high.','Nearly closed.','Rounded and pushed forward.','Held long.']},
+ {k:'e',th:'เกะ',like:'The e in "pen." Short.',w:['เย็น','yen','cool'],m:'e',f:['Front of the tongue at middle height.','A little apart.','Slightly spread.','Cut off quickly.']},
+ {k:'ay',th:'เก',like:'The ay in "say," with no slide into ee at the end. Long.',w:['ทะเล','thá-lay','sea'],m:'e',f:['Front of the tongue at middle height, held still.','A little apart.','Slightly spread.','Held long on one steady sound.']},
+ {k:'ae',th:'แกะ',like:'The a in "cat." Short.',w:['แข็ง','khǎeng','hard'],m:'ae',f:['Front of the tongue low.','Apart. The jaw drops more than for e.','Spread and open.','Cut off quickly.']},
+ {k:'aae',th:'แก',like:'The a in "bad," drawn out. Long.',w:['แม่','mâae','mother'],m:'ae',f:['Front of the tongue low.','Apart. The jaw drops more than for e.','Spread and open.','Held long.']},
+ {k:'o',th:'โกะ',like:'The o in "go," cut short. Never the o in "hot."',w:['คน','khon','person'],m:'o',f:['Back of the tongue at middle height.','A little apart.','Rounded.','Cut off quickly.']},
+ {k:'oh',th:'โก',like:'The o in "go," with no slide into w at the end. Long.',w:['โมง','mohng','hour'],m:'o',f:['Back of the tongue at middle height, held still.','A little apart.','Rounded and held.','Held long on one steady sound.']},
+ {k:'aw',th:'เกาะ',like:'The aw in "saw," cut short.',w:['เกาะ','kàw','island'],m:'aw',f:['Back of the tongue low.','Well apart.','Lightly rounded.','Cut off quickly.']},
+ {k:'aaw',th:'กอ',like:'The aw in "saw." Long.',w:['ขอ','khǎaw','to ask for'],m:'aw',f:['Back of the tongue low.','Well apart.','Lightly rounded.','Held long.']},
+ {k:'er',th:'เกอะ',like:'The er in "her," with no r at all. Short.',w:['เงิน','ngern','money'],m:'er',f:['Middle to back of the tongue, at middle height. The tip does not curl.','A little apart.','Relaxed. No rounding.','Cut off quickly.']},
+ {k:'err',th:'เกอ',like:'The same sound as er, held long. Still no r.',w:['เจอ','jerr','to meet'],m:'er',f:['Middle to back of the tongue, at middle height. The tip does not curl.','A little apart.','Relaxed. No rounding.','Held long. The double r marks length and is not spoken.']}
+];
+const GLD = [
+ {k:'ai',th:'ไก',like:'The word "eye."',w:['ไทย','thai','Thai'],m:['a','i'],f:['Glides from low center to high front.','Close from apart to nearly shut.','Open, then spread.','One smooth breath.']},
+ {k:'aai',th:'กาย',like:'A long "ah," then a quick "ee."',w:['ชาย','chaai','man'],m:['a','i'],f:['Stays low, then rises fast to high front at the end.','Stay apart, then close.','Open, then spread.','Most of the time is spent on aa.']},
+ {k:'ao',th:'เกา',like:'The ow in "cow." Short.',w:['เรา','rao','we'],m:['a','u'],f:['Glides from low center to high back.','Close from apart to nearly shut.','Open, then round.','One quick breath.']},
+ {k:'aao',th:'กาว',like:'A long "ah," then a quick "oo."',w:['ขาว','khǎao','white'],m:['a','u'],f:['Stays low, then rises to high back at the end.','Stay apart, then close.','Open, then round.','Most of the time is spent on aa.']},
+ {k:'ia',th:'เกีย',like:'"Ee-ah" as one beat.',w:['เรียน','rian','to study'],m:['i','a'],f:['Moves from high front down to low center.','Open from nearly shut.','Spread, then open.','One smooth breath.']},
+ {k:'ua',th:'กัว',like:'"Oo-ah" as one beat.',w:['วัว','wua','cow'],m:['u','a'],f:['Moves from high back down to low center.','Open from nearly shut.','Round, then open.','One smooth breath.']},
+ {k:'uea',th:'เกือ',like:'The Thai ue sound sliding into "ah."',w:['เรือ','ruea','boat'],m:['ue','a'],f:['Moves from high back down to low center.','Open from nearly shut.','Spread flat, then open. No rounding.','One smooth breath.']},
+ {k:'iu',th:'กิว',like:'A short "ee," then "oo."',w:['หิว','hǐu','hungry'],m:['i','u'],f:['Slides from high front to high back.','Stay nearly shut.','Spread, then round.','One quick breath.']},
+ {k:'aaeo',th:'แกว',like:'The a in "bad" drawn out, then a quick "oo."',w:['แมว','maaeo','cat'],m:['ae','u'],f:['Stays low in front, then rises to high back.','Stay apart, then close.','Spread, then round.','Most of the time is spent on aae.']},
+ {k:'aawy',th:'กอย',like:'The aw in "saw," long, then a quick "ee."',w:['น้อย','náawy','a little'],m:['aw','i'],f:['Stays low in back, then rises to high front.','Stay apart, then close.','Rounded, then spread.','Most of the time is spent on aaw.']},
+ {k:'ui',th:'กุย',like:'"Oo-ee" as one quick beat.',w:['คุย','khui','to chat'],m:['u','i'],f:['Slides from high back to high front.','Stay nearly shut.','Round, then spread.','One quick breath.']}
+];
+const END = [
+ {k:'-k',th:'ก ข ค ฆ',like:'The k in "back" with the last click held in. Cut off silently.',w:['นก','nók','bird'],m:'vel',f:['Back of the tongue rises to the soft roof and stays there.','Stay still.','Stay open.','Air stops and is not released. No puff follows.']},
+ {k:'-t',th:'ด ต ท จ ช ส and others',like:'The t in "hot" with the tongue left in place. Cut off silently.',w:['เจ็ด','jèt','seven'],m:'alv',f:['Tip rises to the ridge behind the upper teeth and stays there.','Stay still.','Stay open.','Air stops and is not released. Many letters end this way, including ส, which is an s only at the start of a syllable.']},
+ {k:'-p',th:'บ ป พ ฟ ภ',like:'The p in "cup" with the lips left shut. Cut off silently.',w:['สิบ','sìp','ten'],m:'lab',f:['Takes no part.','Stay still.','Lips close and stay closed.','Air stops and is not released.']},
+ {k:'-m',th:'ม',like:'The m in "ham."',w:['สาม','sǎam','three'],m:'labn',f:['Takes no part.','Slightly apart.','Lips close and stay closed.','Voice hums through the nose.']},
+ {k:'-n',th:'น ญ ณ ร ล ฬ',like:'The n in "sun." Thai ร and ล both turn into n at the end of a syllable.',w:['ร้อน','ráawn','hot'],m:'alvn',f:['Tip rises to the ridge behind the upper teeth and stays there.','Slightly apart.','Relaxed.','Voice hums through the nose.']},
+ {k:'-ng',th:'ง',like:'The ng in "sing."',w:['สอง','sǎawng','two'],m:'veln',f:['Back of the tongue seals the soft roof and stays there.','Slightly apart.','Relaxed.','Voice hums through the nose.']},
+ {k:'-w',th:'ว',like:'A soft "oo" closing the syllable.',w:['ดาว','daao','star'],m:'u',f:['Back of the tongue rises at the end.','Close a little.','Round at the end.','Voice fades without a stop. The spelling here usually shows it as o.']},
+ {k:'-y',th:'ย',like:'A soft "ee" closing the syllable.',w:['สาย','sǎai','late morning'],m:'i',f:['Front of the tongue rises at the end.','Close a little.','Spread at the end.','Voice fades without a stop. The spelling here usually shows it as i.']}
+];
+const CLU = [
+ ['kr','กร',['กรุงเทพ','krung-thêp','Bangkok'],'vel','tap','k','the single r tap'],
+ ['kl','กล',['ไกล','klai','far'],'vel','alv','k','l'],
+ ['kw','กว',['กว้าง','kwâang','wide'],'vel','ww','k','w'],
+ ['khr','ขร คร',['ครู','khroo','teacher'],'vel','tap','kh','the single r tap'],
+ ['khl','ขล คล',['คลอง','khlaawng','canal'],'vel','alv','kh','l'],
+ ['khw','ขว คว',['ขวา','khwǎa','right side'],'vel','ww','kh','w'],
+ ['pr','ปร',['ประตู','prà-too','door'],'lab','tap','p','the single r tap'],
+ ['pl','ปล',['ปลา','plaa','fish'],'lab','alv','p','l'],
+ ['phr','พร',['พระ','phrá','monk'],'lab','tap','ph','the single r tap'],
+ ['phl','ผล พล',['เพลง','phlayng','song'],'lab','alv','ph','l'],
+ ['tr','ตร',['ตรง','trong','straight'],'alv','tap','t','the single r tap']
+].map(c=>({k:c[0],th:c[1],like:`${c[0].replace(/[rlw]$/,'')} and ${c[0].slice(-1)} with no vowel between them.`,w:c[2],m:[c[3],c[4]],
+  f:[`Starts in the place for ${c[5]}, then moves at once to ${c[6]}.`,'Stay behind the lips. The tongue does not touch the biting edge.',c[0].endsWith('w')?'Round as the second sound begins.':'Relaxed.',/h/.test(c[0])?'A puff on the first sound.':'No puff on the first sound.']}));
+
+const TONES = [
+ {id:'m',name:'Mid',mark:'a',say:['คา','khaa','stuck'],pitch:'Level, in the normal speaking voice. No rise and no drop.',eng:'A flat, bored "hmm."',f:['Same as the sound being said. Tone adds no tongue movement.','No change.','No change.','The vocal cords hold steady tension.']},
+ {id:'l',name:'Low',mark:'à',say:['ข่า','khàa','galangal root'],pitch:'Starts below the normal voice and stays low, sinking a little.',eng:'The end of a calm statement: "I know."',f:['Same as the sound being said.','No change.','No change.','The vocal cords relax and the voice drops in the throat.']},
+ {id:'f',name:'Falling',mark:'â',say:['ค่า','khâa','value'],pitch:'Starts high, goes a little higher, then falls hard.',eng:'A firm "No!" or a stern "Stop."',f:['Same as the sound being said.','No change.','No change.','The vocal cords tighten, then let go.']},
+ {id:'h',name:'High',mark:'á',say:['ค้า','kháa','to trade'],pitch:'Starts above the normal voice and climbs near the end.',eng:'A tight, bright "Hey!" at the top of the voice.',f:['Same as the sound being said.','No change.','No change.','The vocal cords stay tight and tighten more.']},
+ {id:'r',name:'Rising',mark:'ǎ',say:['ขา','khǎa','leg'],pitch:'Dips low, then rises clearly.',eng:'A doubtful question: "Really?"',f:['Same as the sound being said.','No change.','No change.','The vocal cords loosen, then tighten through the syllable.']}
+];
+const LET = [
+['ก','kaaw kài','ไก่','chicken','M','k','k'],['ข','khǎaw khài','ไข่','egg','H','kh','k'],['ฃ','khǎaw khùat','ขวด','bottle','H','kh','k',1],
+['ค','khaaw khwaai','ควาย','buffalo','L','kh','k'],['ฅ','khaaw khon','คน','person','L','kh','k',1],['ฆ','khaaw rá-khang','ระฆัง','bell','L','kh','k'],
+['ง','ngaaw ngoo','งู','snake','L','ng','ng'],['จ','jaaw jaan','จาน','plate','M','j','t'],['ฉ','chǎaw chìng','ฉิ่ง','small cymbals','H','ch','—'],
+['ช','chaaw cháang','ช้าง','elephant','L','ch','t'],['ซ','saaw sôh','โซ่','chain','L','s','t'],['ฌ','chaaw cherr','เฌอ','tree','L','ch','—'],
+['ญ','yaaw yǐng','หญิง','woman','L','y','n'],['ฎ','daaw chá-daa','ชฎา','dance headdress','M','d','t'],['ฏ','taaw pà-tàk','ปฏัก','ox goad','M','t','t'],
+['ฐ','thǎaw thǎan','ฐาน','pedestal','H','th','t'],['ฑ','thaaw mon-thoh','มณโฑ','Montho, a figure in the Ramakien','L','th','t'],['ฒ','thaaw phôo-thâo','ผู้เฒ่า','elder','L','th','t'],
+['ณ','naaw nayn','เณร','novice monk','L','n','n'],['ด','daaw dèk','เด็ก','child','M','d','t'],['ต','taaw tào','เต่า','turtle','M','t','t'],
+['ถ','thǎaw thǔng','ถุง','bag','H','th','t'],['ท','thaaw thá-hǎan','ทหาร','soldier','L','th','t'],['ธ','thaaw thong','ธง','flag','L','th','t'],
+['น','naaw nǒo','หนู','mouse','L','n','n'],['บ','baaw bai-máai','ใบไม้','leaf','M','b','p'],['ป','paaw plaa','ปลา','fish','M','p','p'],
+['ผ','phǎaw phûeng','ผึ้ง','bee','H','ph','—'],['ฝ','fǎaw fǎa','ฝา','lid','H','f','—'],['พ','phaaw phaan','พาน','offering tray','L','ph','p'],
+['ฟ','faaw fan','ฟัน','teeth','L','f','p'],['ภ','phaaw sǎm-phao','สำเภา','sailing junk','L','ph','p'],['ม','maaw máa','ม้า','horse','L','m','m'],
+['ย','yaaw yák','ยักษ์','giant','L','y','y'],['ร','raaw ruea','เรือ','boat','L','r','n'],['ล','laaw ling','ลิง','monkey','L','l','n'],
+['ว','waaw wǎaen','แหวน','ring','L','w','w'],['ศ','sǎaw sǎa-laa','ศาลา','pavilion','H','s','t'],['ษ','sǎaw ruue-sěe','ฤๅษี','hermit','H','s','t'],
+['ส','sǎaw sǔea','เสือ','tiger','H','s','t'],['ห','hǎaw hèep','หีบ','chest','H','h','—'],['ฬ','laaw jù-laa','จุฬา','star kite','L','l','n'],
+['อ','aaw àang','อ่าง','basin','M','(catch)','vowel'],['ฮ','haaw nók-hôok','นกฮูก','owl','L','h','—']
+];
+const MARKS = [
+ ['กะ','a'],['กา','aa'],['กิ','i'],['กี','ee'],['กึ','ue'],['กือ','uue'],['กุ','u'],['กู','oo'],['เกะ','e'],
+ ['เก','ay'],['แกะ','ae'],['แก','aae'],['โกะ','o'],['โก','oh'],['เกาะ','aw'],['กอ','aaw'],['เกอะ','er'],['เกอ','err']
+];
+const PHRASES = {
+ 'Greetings':[
+  ['สวัสดี','sà-wàt-dee','Hello, or goodbye','s'],['สบายดีไหม','sà-baai dee mǎi','How are you?','q'],['สบายดี','sà-baai dee','Doing well','s'],
+  ['ขอบคุณ','khàawp-khun','Thank you','s'],['ขอโทษ','khǎaw-thôht','Sorry, or excuse me','s'],['ไม่เป็นไร','mâi pen rai','No problem, never mind','s'],
+  ['คุณชื่ออะไร','khun chûue à-rai','What is your name?','q'],['{I}ชื่อ...','{I} chûue ...','My name is ...','s'],['ยินดีที่ได้รู้จัก','yin-dee thêe dâai róo-jàk','Nice to meet you','s'],['ลาก่อน','laa-kàawn','Goodbye, for a long time','s']],
+ 'Understanding':[
+  ['ไม่เข้าใจ','mâi khâo-jai','I do not understand','s'],['พูดช้าๆ ได้ไหม','phôot cháa-cháa dâai mǎi','Can you speak slowly?','q'],['พูดอีกครั้งได้ไหม','phôot èek khráng dâai mǎi','Can you say that again?','q'],
+  ['พูดภาษาอังกฤษได้ไหม','phôot phaa-sǎa ang-krìt dâai mǎi','Can you speak English?','q'],['อันนี้เรียกว่าอะไร','an-née rîak wâa à-rai','What is this called?','q']],
+ 'Food':[
+  ['หิวข้าว','hǐu khâao','I am hungry','s'],['ขอเมนูหน่อย','khǎaw may-noo nàwy','The menu, please','s'],['ไม่เผ็ด','mâi phèt','Not spicy','s'],['เผ็ดนิดหน่อย','phèt nít-nàwy','A little spicy','s'],
+  ['ไม่ใส่น้ำตาล','mâi sài náam-taan','No sugar','s'],['ขอน้ำเปล่า','khǎaw náam-plàao','Plain water, please','s'],['อร่อยมาก','à-ràwy mâak','Very tasty','s'],['เก็บเงินด้วย','kèp ngern dûay','The bill, please','s']],
+ 'Getting around':[
+  ['ห้องน้ำอยู่ที่ไหน','hâwng-náam yòo thêe-nǎi','Where is the toilet?','q'],['ไกลไหม','klai mǎi','Is it far?','q'],['ตรงไป','trong pai','Go straight','s'],
+  ['เลี้ยวซ้าย','líao sáai','Turn left','s'],['เลี้ยวขวา','líao khwǎa','Turn right','s'],['จอดตรงนี้','jàawt trong-née','Stop right here','s']],
+ 'Shopping':[
+  ['เท่าไหร่','thâo-rài','How much?','q'],['แพงไป','phaaeng pai','Too expensive','s'],['ลดได้ไหม','lót dâai mǎi','Can the price come down?','q'],
+  ['เอาอันนี้','ao an-née','I will take this one','s'],['ไม่เอา','mâi ao','I do not want it','s']],
+ 'Numbers':[
+  ['ศูนย์','sǒon','0 ๐'],['หนึ่ง','nùeng','1 ๑'],['สอง','sǎawng','2 ๒'],['สาม','sǎam','3 ๓'],['สี่','sèe','4 ๔'],['ห้า','hâa','5 ๕'],['หก','hòk','6 ๖'],['เจ็ด','jèt','7 ๗'],
+  ['แปด','pàaet','8 ๘'],['เก้า','kâao','9 ๙'],['สิบ','sìp','10 ๑๐'],['สิบเอ็ด','sìp-èt','11 ๑๑'],['ยี่สิบ','yêe-sìp','20 ๒๐'],['หนึ่งร้อย','nùeng-ráawy','100 ๑๐๐'],['หนึ่งพัน','nùeng-phan','1,000 ๑,๐๐๐']]
+};
+const DRILLS = {
+ 'Puff of air':[[['กา','kaa','crow'],['คา','khaa','stuck']],[['ตา','taa','eye'],['ทา','thaa','to paint']],[['ปา','paa','to throw'],['พา','phaa','to lead']],[['ไก่','kài','chicken'],['ไข่','khài','egg']]],
+ 'Short or long':[[['เข้า','khâo','to enter'],['ข้าว','khâao','rice']],[['ฝัน','fǎn','to dream'],['ฝาน','fǎan','to slice']],[['คน','khon','person'],['โคน','khohn','foot of a tree']]],
+ 'Tones':[[['คา','khaa','stuck'],['ข่า','khàa','galangal root'],['ค่า','khâa','value'],['ค้า','kháa','to trade'],['ขา','khǎa','leg']],[['ไม้','máai','wood'],['ไม่','mâi','not'],['ใหม่','mài','new']],[['ใกล้','klâi','near'],['ไกล','klai','far']],[['ขาว','khǎao','white'],['ข้าว','khâao','rice'],['ข่าว','khàao','news']]]
+};
+
+const LESSONS = [
+ {id:'num1',title:'Numbers 0 to 10',th:'เลข',tip:'-p',use:['สองคน','sǎawng khon','Two people'],note:'Thai counts people, animals and things with a counting word after the number. Khon is the counting word for people.',
+  w:[['ศูนย์','sǒon','zero'],['หนึ่ง','nùeng','one'],['สอง','sǎawng','two'],['สาม','sǎam','three'],['สี่','sèe','four'],['ห้า','hâa','five'],['หก','hòk','six'],['เจ็ด','jèt','seven'],['แปด','pàaet','eight'],['เก้า','kâao','nine'],['สิบ','sìp','ten']]},
+ {id:'num2',title:'Bigger numbers',th:'เลขใหญ่',tip:'uue',use:['ห้าสิบบาท','hâa-sìp bàat','Fifty baht'],note:'Numbers build in order, as in English: three-ten is thirty. Two exceptions: a 1 at the end of a number above ten is èt, and 20 is yêe-sìp.',
+  w:[['สิบเอ็ด','sìp-èt','eleven'],['สิบสอง','sìp-sǎawng','twelve'],['ยี่สิบ','yêe-sìp','twenty'],['ยี่สิบเอ็ด','yêe-sìp-èt','twenty-one'],['สามสิบ','sǎam-sìp','thirty'],['หนึ่งร้อย','nùeng-ráawy','one hundred'],['หนึ่งพัน','nùeng-phan','one thousand'],['หนึ่งหมื่น','nùeng-mùuen','ten thousand'],['หนึ่งแสน','nùeng-sǎaen','one hundred thousand']]},
+ {id:'travel',title:'Travel',th:'เดินทาง',tip:'r',use:['ไปสนามบิน','pai sà-nǎam-bin','Go to the airport','s'],note:'Pai means go. Pai followed by any place on this list tells a driver where to go.',
+  w:[['สนามบิน','sà-nǎam-bin','airport'],['โรงแรม','rohng-raaem','hotel'],['ตั๋ว','tǔa','ticket'],['หนังสือเดินทาง','nǎng-sǔue-derrn-thaang','passport'],['กระเป๋า','krà-pǎo','bag'],['แผนที่','phǎaen-thêe','map'],['ตลาด','tà-làat','market'],['ชายหาด','chaai-hàat','beach'],['วัด','wát','temple'],['โรงพยาบาล','rohng-phá-yaa-baan','hospital']]},
+ {id:'trans',title:'Transportation',th:'การเดินทาง',tip:'-t',use:['สถานีรถไฟอยู่ที่ไหน','sà-thǎa-nee rót-fai yòo thêe-nǎi','Where is the train station?','q'],note:'Rót means vehicle. Rót-fai is literally fire vehicle, and rót-fai-fáa is electric train. The word fai means fire, and fai-fáa means electricity.',
+  w:[['รถ','rót','car'],['รถเมล์','rót-may','city bus'],['รถไฟ','rót-fai','train'],['รถไฟฟ้า','rót-fai-fáa','electric skytrain'],['แท็กซี่','tháek-sêe','taxi'],['รถตุ๊กตุ๊ก','rót-túk-túk','tuk-tuk'],['มอเตอร์ไซค์','maaw-terr-sai','motorcycle'],['เรือ','ruea','boat'],['เครื่องบิน','khrûeang-bin','airplane'],['สถานี','sà-thǎa-nee','station']]},
+ {id:'family',title:'Family',th:'ครอบครัว',tip:'ph',use:['นี่แม่ของ{I}','nêe mâae khǎawng {I}','This is my mother','s'],note:'Thai has no single word for brother or sister. Phêe is any older sibling and náawng is any younger one. Grandparents also have different names on each side of the family.',
+  w:[['ครอบครัว','khrâawp-khrua','family'],['พ่อ','phâaw','father'],['แม่','mâae','mother'],['สามี','sǎa-mee','husband'],['ภรรยา','phan-rá-yaa','wife'],['ลูก','lôok','son or daughter'],['พี่','phêe','older brother or sister'],['น้อง','náawng','younger brother or sister'],['ปู่','pòo',"father's father"],['ย่า','yâa',"father's mother"],['ตา','taa',"mother's father"],['ยาย','yaai',"mother's mother"]]},
+ {id:'food',title:'Food and drink',th:'อาหาร',tip:'kh',use:['ขอข้าวผัดไก่','khǎaw khâao-phàt-kài','Chicken fried rice, please','s'],note:'Khǎaw means "may I have." It goes in front of any item on this list.',
+  w:[['ข้าว','khâao','rice'],['น้ำ','náam','water'],['ไก่','kài','chicken'],['หมู','mǒo','pork'],['เนื้อ','núea','beef'],['ปลา','plaa','fish'],['กุ้ง','kûng','shrimp'],['ไข่','khài','egg'],['ผัก','phàk','vegetables'],['ผลไม้','phǒn-lá-máai','fruit'],['กาแฟ','kaa-faae','coffee'],['ชา','chaa','tea']]},
+ {id:'days',title:'Days of the week',th:'วัน',tip:'j',use:['วันนี้วันอะไร','wan-née wan à-rai','What day is today?','q'],note:'Every day name begins with wan, the word for day.',
+  w:[['วันอาทิตย์','wan-aa-thít','Sunday'],['วันจันทร์','wan-jan','Monday'],['วันอังคาร','wan-ang-khaan','Tuesday'],['วันพุธ','wan-phút','Wednesday'],['วันพฤหัส','wan-phá-rúe-hàt','Thursday'],['วันศุกร์','wan-sùk','Friday'],['วันเสาร์','wan-sǎo','Saturday']]},
+ {id:'time',title:'Time words',th:'เวลา',tip:'ch',use:['พรุ่งนี้เจอกัน','phrûng-née jerr kan','See you tomorrow','s'],note:'Thai verbs do not change for past or future. Words like these show when something happens.',
+  w:[['ตอนนี้','taawn-née','now'],['วันนี้','wan-née','today'],['พรุ่งนี้','phrûng-née','tomorrow'],['เมื่อวาน','mûea-waan','yesterday'],['ตอนเช้า','taawn-cháao','morning'],['ตอนเย็น','taawn-yen','evening'],['กลางคืน','klaang-khuuen','night'],['สัปดาห์','sàp-daa','week'],['เดือน','duean','month'],['ปี','pee','year']]},
+ {id:'color',title:'Colors',th:'สี',tip:'aae',use:['เอาสีแดง','ao sěe daaeng','I will take the red one','s'],note:'Sěe means color. In a shop, sěe goes in front of the color word.',
+  w:[['แดง','daaeng','red'],['เขียว','khǐao','green'],['น้ำเงิน','náam-ngern','dark blue'],['ฟ้า','fáa','light blue'],['เหลือง','lǔeang','yellow'],['ขาว','khǎao','white'],['ดำ','dam','black'],['ส้ม','sôm','orange']]}
+];
+
+/* ---------- state ---------- */
+const store = {get(k,d){try{const v=localStorage.getItem('thai.'+k);return v===null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem('thai.'+k,v)}catch(e){}}};
+let lesson=null, T=null, donej={}; try{donej=JSON.parse(store.get('done','{}'))}catch(e){}
+let speaker = store.get('speaker','m'), rate = store.get('rate','0.9'), soundTab='Consonants', phraseTab='Greetings', letterSel='ก', letterFilter='All', drillSet='Puff of air', voice=null, voiceState='checking', q=null, score=[0,0];
+const NAV=[['start','ก','Start'],['lessons','บท','Lessons'],['sounds','อา','Sounds'],['tones','ก้','Tones'],['letters','ขค','Letters'],['phrases','พูด','Phrases'],['practice','ฝึก','Drill']];
+const SP='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>';
+const sayBtn=(t,label)=>`<button class="say" data-say="${t}" aria-label="Hear ${label||t}">${SP}</button>`;
+
+/* ---------- speech ---------- */
+function loadVoice(){
+  if(!('speechSynthesis' in window)){voiceState='none';return}
+  const v=speechSynthesis.getVoices();
+  voice=v.find(x=>/^th/i.test(x.lang))||null;
+  voiceState=voice?'ready':(v.length?'nothai':'checking');
+}
+function say(text){
+  text=text.replace(/\.\.\./g,'');
+  if(!('speechSynthesis' in window)){toast('This view has no speech engine. Open the page in Safari or Chrome to hear Thai.');return}
+  loadVoice();
+  if(voiceState==='nothai'){toast('This device has no Thai voice. Add Thai in its text-to-speech settings.');return}
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(text);
+  u.lang='th-TH'; u.rate=parseFloat(rate); if(voice)u.voice=voice;
+  u.onerror=e=>{if(e.error&&e.error!=='canceled'&&e.error!=='interrupted')toast('The Thai voice could not play here. Open the page in Safari or Chrome.')};
+  speechSynthesis.speak(u);
+}
+let toastT; function toast(m){const t=document.getElementById('toast');t.textContent=m;t.hidden=false;clearTimeout(toastT);toastT=setTimeout(()=>t.hidden=true,5000)}
+
+/* ---------- footnote numbers run through every sound in the app ---------- */
+let fnNo=0; const ALL=[...CONS,...VOW,...GLD,...END,...CLU,...TONES]; ALL.forEach(s=>s.n=++fnNo);
+const initialOf={}; CONS.forEach(c=>initialOf[c.k]=c);
+
+function footnote(s){
+  const ms=Array.isArray(s.m)?s.m:(s.m?[s.m]:null);
+  const figs=ms?`<div class="figs${ms.length>1?' two':''}">${ms.map(mouth).join('<span class="ar" aria-hidden="true">→</span>')}</div>`:'';
+  const [a,b,c,d]=s.f;
+  return `<div class="fn"${ms?'':' style="grid-template-columns:minmax(0,1fr)"'}>${figs}<p><span class="n">${s.n}</span><b>Tongue:</b> ${a} <b>Teeth:</b> ${b} <b>Lips:</b> ${c} <b>Air and voice:</b> ${d}</p></div>`;
+}
+function soundCard(s){
+  return `<article class="card"><div class="snd-head"><div class="key">${s.k}<sup>${s.n}</sup></div><div class="thaiset" lang="th">${s.th}</div>${sayBtn(s.w[0],s.w[2])}</div>
+  <p class="like">${s.like}</p>
+  <div class="word"><span class="tw" lang="th">${s.w[0]}</span>${ph(s.w[1])}<span class="en">${s.w[2]}</span></div>${footnote(s)}</article>`;
+}
+
+/* ---------- views ---------- */
+const V={};
+V.start=()=>{
+ const pol=speaker==='m'?['ครับ','khráp']:['ค่ะ','khâ'];
+ return `<section class="hero"><div class="eyebrow">Speak Thai by sound</div>
+  <div class="big" lang="th">พูดไทย</div>
+  <div class="staffed">${sayBtn('พูดไทย','phôot thai')}<div style="font-size:26px">${ph('phôot thai')}</div></div>
+  <p class="lede">"Speak Thai." The curve above each syllable shows what the voice does on it.</p></section>
+ <section class="card"><h2>First sentence</h2>
+  <div class="word"><span class="tw" lang="th">สวัสดี${pol[0]}</span></div>
+  <div class="staffed">${sayBtn('สวัสดี'+pol[0],'hello')}<div style="font-size:22px">${ph('sà-wàt-dee '+pol[1])}</div></div>
+  <p class="en" style="color:var(--soft)">Hello. The last word is the polite ending.</p>
+  <div class="chips" role="group" aria-label="Speaker"><button class="chip" data-speaker="m" aria-pressed="${speaker==='m'}">Man speaking: khráp</button><button class="chip" data-speaker="f" aria-pressed="${speaker==='f'}">Woman speaking: khâ</button></div>
+ </section>
+ <section class="note"><h3>Easy lessons</h3><p>Short word lessons on numbers, travel, transportation, family and more, each with a small test at the end.</p><button class="chip" data-go="lessons" style="border-color:var(--on-lac);color:var(--on-lac);justify-self:start">Open the lessons</button></section>
+ <section class="stack"><h2>Five things that make Thai sound Thai</h2>
+  <div class="rule"><div class="mk">ˇ</div><div><h3>Pitch changes the word</h3><p>Thai has five tones. The same syllable spoken on a different pitch is a different word: khâao is rice and khǎao is white.</p></div></div>
+  <div class="rule"><div class="mk">h</div><div><h3>A puff of air changes the word</h3><p>English puffs the p in "pin" and not the p in "spin." Thai treats those as two separate sounds. Kài is chicken and khài is egg.</p></div></div>
+  <div class="rule"><div class="mk">aa</div><div><h3>Length changes the word</h3><p>Long vowels last about twice as long as short ones. Khâo means to enter and khâao means rice.</p></div></div>
+  <div class="rule"><div class="mk">-k</div><div><h3>Endings stay silent</h3><p>A final k, t or p is shaped by the mouth and never released. The sound stops dead with the tongue or lips left in place.</p></div></div>
+  <div class="rule"><div class="mk">-</div><div><h3>Every syllable keeps its beat</h3><p>English swallows its weak syllables. Thai says each one clearly, and the last syllable of a word carries the most weight.</p></div></div>
+ </section>
+ <section class="stack"><h2>How to read the spelling</h2>
+  <div class="keyrow"><b class="plain" style="font-size:18px">Say</b><span>The gold line under every spelling uses plain English sounds. In it, ph, th and kh become plain p, t and k. A letter written one extra time means hold the sound longer: uh is short, ah is long, oh is short, ohh is long.</span></div>
+  <div class="keyrow"><b>h</b><span>After k, p, t or c it marks a puff of air. It is never the English "th" or "ph."</span></div>
+  <div class="keyrow"><b>aa</b><span>A doubled vowel is held long. So are ee, oo, ay and oh.</span></div>
+  <div class="keyrow"><b>à á â ǎ</b><span>The mark on a vowel gives the tone. No mark means mid tone.</span></div>
+  <div class="keyrow"><b>k p t</b><span>With no h, these have no puff. They are softer than English.</span></div>
+  <div class="keyrow"><b>ue</b><span>A sound English does not have. It is on the Sounds page under vowels.</span></div>
+  <div class="keyrow"><b>-</b><span>A dash separates syllables inside one word.</span></div>
+ </section>
+ <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
+ <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
+ <p class="score">App version 4</p>`;
+};
+function voiceNote(){
+  if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
+  if(voiceState==='none')return 'This view has no speech engine, so the speaker buttons stay silent. Open the page in Safari or Chrome for sound.';
+  if(voiceState==='nothai')return 'No Thai voice is installed on this device. Add Thai in its text-to-speech or spoken content settings, then reopen this page.';
+  return 'Press any speaker button to test the Thai voice.';
+}
+V.sounds=()=>{
+ const sets={Consonants:[CONS,'Twenty-one sounds can start a syllable. Thai letters that share a sound appear together. The word on each card shows the sound in use.'],
+  Vowels:[VOW,'Vowels come in short and long pairs, shown side by side in order. Each Thai form is written on ก as a stand-in letter, because a Thai vowel cannot stand alone.'],
+  'Double vowels':[GLD,'These slide from one vowel into the next inside one syllable. The two drawings show where the mouth starts and where it finishes.'],
+  Endings:[END,'Only eight sounds can close a syllable. Many Thai letters change their sound at the end, so the Thai letters listed here all end the same way.'],
+  Blends:[CLU,'Eleven pairs of consonants can start a syllable. Thai gives them no vowel between, unlike English speakers who tend to add one.']};
+ const [list,intro]=sets[soundTab];
+ return `<h1>Sounds</h1><p class="lede">Every sound carries a numbered footnote giving the tongue, teeth, lips and air. Each drawing shows the head from the side, facing left, and the circle marks where the mouth does the work.</p>
+ <div class="chips">${Object.keys(sets).map(k=>`<button class="chip" data-soundtab="${k}" aria-pressed="${k===soundTab}">${k}</button>`).join('')}</div>
+ <p class="lede">${intro}</p><div class="stack">${list.map(soundCard).join('')}</div>`;
+};
+V.tones=()=>`<h1>Tones</h1><p class="lede">Tone is the pitch of the voice across one syllable. It belongs to the word the way a vowel does. The five words below are spelled alike in English letters and are all different words in Thai.</p>
+ <div class="stack">${TONES.map(t=>`<article class="card"><div class="snd-head"><div class="tone-head t-${t.id}"><svg viewBox="0 0 28 16" aria-hidden="true"><line x1="0" y1="2" x2="28" y2="2"/><line x1="0" y1="8" x2="28" y2="8"/><line x1="0" y1="14" x2="28" y2="14"/><path d="${CURVE[t.id]}" stroke-width="2"/></svg></div><div><div class="key" style="font-size:24px">${t.name}<sup>${t.n}</sup></div><span class="tone-mark t-${t.id}">${t.mark}</span></div>${sayBtn(t.say[0],t.say[2])}</div>
+  <p class="like">${t.pitch} ${t.eng}</p><div class="word"><span class="tw" lang="th">${t.say[0]}</span>${ph(t.say[1])}<span class="en">${t.say[2]}</span></div>${footnote(t)}</article>`).join('')}</div>
+ <section class="card"><h2>One sentence, one syllable, four tones</h2>
+  <div class="word"><span class="tw" lang="th">ไม้ใหม่ไม่ไหม้ไหม</span></div>
+  <div class="staffed">${sayBtn('ไม้ใหม่ไม่ไหม้ไหม','the sentence')}<div style="font-size:20px">${ph('máai mài mâi mâi mǎi')}</div></div>
+  <p style="color:var(--soft)">"New wood does not burn, does it?"</p></section>
+ <section class="card"><h2>Near or far</h2><p>The tone is the whole difference between these two. A falling tone says near, and a mid tone says far.</p>
+  <div class="staffed">${sayBtn('ใกล้','near')}<span class="tw" lang="th" style="font:500 26px var(--f-thai)">ใกล้</span><span style="font-size:20px">${ph('klâi')}</span></div>
+  <div class="staffed">${sayBtn('ไกล','far')}<span class="tw" lang="th" style="font:500 26px var(--f-thai)">ไกล</span><span style="font-size:20px">${ph('klai')}</span></div></section>`;
+V.letters=()=>{
+ const l=LET.find(x=>x[0]===letterSel), s=initialOf[l[5]], cls={M:'Mid class',H:'High class',L:'Low class'};
+ const list=LET.filter(x=>letterFilter==='All'||cls[x[4]].startsWith(letterFilter));
+ const hear=(l[0]==='ฮ'?'ฮอ ':l[0]==='อ'?'ออ ':l[0]+'อ ')+l[2];
+ return `<h1>Letters</h1><p class="lede">Thai has 44 consonant letters. Children learn each one by a name: its sound plus a word that starts with it, as in "ก for chicken." Tap a letter to see it.</p>
+ <section class="card" id="ldetail"><div class="lhead"><div class="bigl" lang="th">${l[0]}</div><div><div style="font-size:19px">${ph(l[1])}</div><p class="word"><span class="tw" lang="th">${l[2]}</span><span class="en">${l[3]}</span></p></div>${sayBtn(hear,l[1])}</div>
+  <p><span class="tag">${cls[l[4]]}</span> Starts a syllable as <b>${l[5]}</b>. ${l[6]==='—'?'Rarely or never ends a syllable.':l[6]==='vowel'?'Inside a word it carries a vowel sound.':`Ends a syllable as <b>-${l[6]}</b>.`}${l[7]?' No longer used in modern Thai.':''}</p>
+  ${footnote(s)}</section>
+ <div class="chips">${['All','Mid','High','Low'].map(k=>`<button class="chip" data-lfilter="${k}" aria-pressed="${k===letterFilter}">${k==='All'?'All 44':k+' class'}</button>`).join('')}</div>
+ <div class="grid44">${list.map(x=>`<button class="lt${x[7]?' old':''}" data-letter="${x[0]}" aria-pressed="${x[0]===letterSel}"><span class="g" lang="th">${x[0]}</span><span>${x[5]==='(catch)'?'catch':x[5]}</span></button>`).join('')}</div>
+ <section class="stack"><h2>Vowel marks</h2><p class="lede">Vowels sit above, below, before or after the consonant, and the consonant is always said first. Thai leaves no spaces between words. Here ก stands in for any consonant.</p>
+ <div class="marks">${MARKS.map(m=>`<div class="mk-item"><span class="g" lang="th">${m[0]}</span><span style="font:600 17px var(--f-phon)">${m[1]}<span class="plain" style="display:block;font-size:14px">Say: ${plain(m[1])}</span></span></div>`).join('')}</div></section>
+ <section class="stack"><h2>Tone marks and letter classes</h2><p class="lede">Four small marks sit above the consonant. The tone they give depends on the class of the first letter, which is why each letter belongs to a class.</p>
+ <div class="rule"><div class="mk" lang="th">ก่</div><div><h3>First mark</h3><p>Low tone after mid and high class. Falling tone after low class.</p></div></div>
+ <div class="rule"><div class="mk" lang="th">ก้</div><div><h3>Second mark</h3><p>Falling tone after mid and high class. High tone after low class.</p></div></div>
+ <div class="rule"><div class="mk" lang="th">ก๊</div><div><h3>Third mark</h3><p>High tone. Used with mid class letters only.</p></div></div>
+ <div class="rule"><div class="mk" lang="th">ก๋</div><div><h3>Fourth mark</h3><p>Rising tone. Used with mid class letters only.</p></div></div>
+ <div class="rule"><div class="mk">—</div><div><h3>No mark</h3><p>In a syllable ending on a vowel or on m, n, ng, w or y, mid and low class give mid tone, and high class gives rising tone. Syllables ending in k, t or p follow further rules.</p></div></div></section>`;
+};
+V.phrases=()=>{
+ const pol=speaker==='m'?{s:['ครับ','khráp'],q:['ครับ','khráp']}:{s:['ค่ะ','khâ'],q:['คะ','khá']};
+ const I=speaker==='m'?['ผม','phǒm']:['ฉัน','chǎn'];
+ return `<h1>Phrases</h1><p class="lede">The polite ending is added automatically. Thai changes it by who is speaking.</p>
+ <div class="chips" role="group" aria-label="Speaker"><button class="chip" data-speaker="m" aria-pressed="${speaker==='m'}">Man speaking</button><button class="chip" data-speaker="f" aria-pressed="${speaker==='f'}">Woman speaking</button></div>
+ <div class="chips">${Object.keys(PHRASES).map(k=>`<button class="chip" data-phrasetab="${k}" aria-pressed="${k===phraseTab}">${k}</button>`).join('')}</div>
+ <div>${PHRASES[phraseTab].map(p=>{
+   const tail=p[3]?pol[p[3]]:['',''];
+   const th=p[0].replace('{I}',I[0]), sp=p[1].replace('{I}',I[1]);
+   const full=th+tail[0], spoken=sp+(tail[1]?' '+tail[1]:'');
+   return `<div class="phr"><div class="body"><span class="tw" lang="th">${full}</span><span style="font-size:18px">${ph(spoken)}</span><span class="en">${p[2]}</span></div>${sayBtn(full,p[2])}</div>`}).join('')}</div>`;
+};
+V.practice=()=>{
+ if(!q)newQ();
+ const silent=voiceState==='none'||voiceState==='nothai';
+ return `<h1>Drill</h1><p class="lede">${silent?'No Thai voice is available here, so each question shows the Thai word to read.':'Press the speaker, then pick the word that was spoken. These pairs differ by a single feature.'}</p>
+ <div class="chips">${Object.keys(DRILLS).map(k=>`<button class="chip" data-drill="${k}" aria-pressed="${k===drillSet}">${k}</button>`).join('')}</div>
+ <section class="drill" id="drillbox">${drillBody(silent)}</section>`;
+};
+function drillBody(silent){
+ const done=q.picked!=null;
+ return `${silent?`<div class="bigl" lang="th" style="font-size:60px">${q.ans[0]}</div>`:sayBtn(q.ans[0],'the word')}
+ <div class="opts">${q.opts.map((o,i)=>{
+   let c=''; if(done){if(o===q.ans)c=' right'; else if(i===q.picked)c=' wrong'}
+   return `<button class="opt${c}" data-opt="${i}" ${done?'disabled':''}><span style="font-size:20px">${ph(o[1])}</span><span class="en">${o[2]}</span></button>`}).join('')}</div>
+ ${done?`<p><span lang="th" style="font:500 24px var(--f-thai)">${q.ans[0]}</span> ${q.opts[q.picked]===q.ans?'Correct.':'That word was '+q.ans[1]+'.'}</p><button class="next" data-next="1">Next word</button>`:''}
+ <p class="score">Correct so far: ${score[0]} of ${score[1]}</p>`;
+}
+function newQ(){
+ const groups=DRILLS[drillSet], g=groups[Math.floor(Math.random()*groups.length)];
+ q={opts:g,ans:g[Math.floor(Math.random()*g.length)],picked:null};
+}
+
+function tail(kind){const p=speaker==='m'?{s:['ครับ','khráp'],q:['ครับ','khráp']}:{s:['ค่ะ','khâ'],q:['คะ','khá']};return kind?p[kind]:['','']}
+function fill(p){const I=speaker==='m'?['ผม','phǒm']:['ฉัน','chǎn'],t=tail(p[3]);return [p[0].replace('{I}',I[0])+t[0],p[1].replace('{I}',I[1])+(t[1]?' '+t[1]:'')]}
+V.lessons=()=>{
+ if(lesson&&T)return testView();
+ if(lesson)return learnView();
+ const n=LESSONS.filter(l=>donej[l.id]).length;
+ return `<h1>Lessons</h1><p class="lede">Each lesson is a short list of everyday words with a small test at the end. Lessons finished so far: ${n} of ${LESSONS.length}.</p>
+ <div class="lessons">${LESSONS.map(l=>`<button class="ltile" data-les="${l.id}"><span class="nm">${l.title}</span><span class="thn" lang="th">${l.th}</span><span class="sub">${l.w.length} words${donej[l.id]?` · <span class="st">Best test ${donej[l.id]} of ${l.w.length}</span>`:''}</span></button>`).join('')}</div>`;
+};
+function learnView(){
+ const l=lesson, s=ALL.find(x=>x.k===l.tip), u=fill(l.use);
+ return `<button class="back" data-lback="1">‹ All lessons</button><h1>${l.title}</h1><p class="lede">${l.note}</p>
+ <div>${l.w.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${w[0]}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span></div>${sayBtn(w[0],w[2])}</div>`).join('')}</div>
+ <section class="card"><h3>Use it in a sentence</h3><div class="word"><span class="tw" lang="th">${u[0]}</span></div><div class="staffed">${sayBtn(u[0],l.use[2])}<span style="font-size:18px">${ph(u[1])}</span></div><p style="color:var(--soft)">${l.use[2]}</p></section>
+ <section class="card"><h3>Sound to watch: ${s.k}</h3><p class="like">${s.like}</p>${footnote(s)}</section>
+ <button class="next" data-ltest="1" style="justify-self:start">Take the test</button>`;
+}
+function shuffle(a){a=a.slice();for(let i=a.length-1;i>0;i--){const j=Math.floor(Math.random()*(i+1));[a[i],a[j]]=[a[j],a[i]]}return a}
+function testOpts(){const w=T.order[T.i];T.opts=shuffle([w,...shuffle(lesson.w.filter(x=>x!==w)).slice(0,2)]);T.picked=null}
+function testView(){
+ const l=lesson;
+ if(T.i>=T.order.length){
+  return `<button class="back" data-lback="1">‹ All lessons</button><section class="drill"><h1>${T.right} of ${T.order.length}</h1><p>${l.title} is finished. ${T.right===T.order.length?'Every word was correct.':'Another run tests every word again.'}</p><button class="next" data-ltest="1">Test again</button><button class="back" data-lreview="1">Review the words</button></section>`;
+ }
+ const w=T.order[T.i], done=T.picked!=null;
+ return `<button class="back" data-lreview="1">‹ ${l.title}</button><section class="drill"><p class="score">Word ${T.i+1} of ${T.order.length}</p>
+ <div class="bigl" lang="th" style="font-size:52px">${w[0]}</div><div style="font-size:21px">${ph(w[1])}</div>${sayBtn(w[0],'the word')}
+ <div class="opts">${T.opts.map((o,i)=>{let c='';if(done){if(o===w)c=' right';else if(i===T.picked)c=' wrong'}return `<button class="opt${c}" data-lpick="${i}" ${done?'disabled':''}><span>${o[2]}</span></button>`}).join('')}</div>
+ ${done?`<button class="next" data-lnext="1">${T.i+1<T.order.length?'Next word':'See the result'}</button>`:''}</section>`;
+}
+
+/* ---------- routing and events ---------- */
+const app=document.getElementById('app');
+function current(){const h=location.hash.slice(1);return V[h]?h:store.get('view','start')}
+let view='start';
+function render(keep){
+ loadVoice();
+ if(!V[view])view='start';
+ app.innerHTML=V[view]();
+ document.getElementById('tabs').innerHTML=NAV.map(n=>`<button data-go="${n[0]}"${n[0]===view?' aria-current="page"':''}><span class="g" lang="th">${n[1]}</span><span>${n[2]}</span></button>`).join('');
+ if(!keep)window.scrollTo(0,0);
+}
+function go(v){view=v;store.set('view',v);try{history.replaceState(null,'','#'+v)}catch(e){location.hash=v}render()}
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button'); if(!b)return; const d=b.dataset;
+ if(d.say){say(d.say);return}
+ if(d.les){lesson=LESSONS.find(l=>l.id===d.les);T=null;render();return}
+ if(d.lback){lesson=null;T=null;render();return}
+ if(d.lreview){T=null;render();return}
+ if(d.ltest){T={i:0,right:0,order:shuffle(lesson.w)};testOpts();render();return}
+ if(d.lpick){T.picked=+d.lpick;if(T.opts[T.picked]===T.order[T.i])T.right++;render(true);return}
+ if(d.lnext){T.i++;if(T.i<T.order.length){testOpts();render()}else{donej[lesson.id]=Math.max(donej[lesson.id]||0,T.right);store.set('done',JSON.stringify(donej));render()}return}
+ if(d.go){go(d.go);return}
+ if(d.speaker){speaker=d.speaker;store.set('speaker',speaker);render(true);return}
+ if(d.soundtab){soundTab=d.soundtab;render(true);return}
+ if(d.phrasetab){phraseTab=d.phrasetab;render(true);return}
+ if(d.lfilter){letterFilter=d.lfilter;render(true);return}
+ if(d.letter){letterSel=d.letter;render(true);document.getElementById('ldetail').scrollIntoView({block:'center'});return}
+ if(d.drill){drillSet=d.drill;newQ();render(true);return}
+ if(d.opt){q.picked=+d.opt;score[1]++;if(q.opts[q.picked]===q.ans)score[0]++;render(true);return}
+ if(d.next){newQ();render(true);if(voiceState!=='none'&&voiceState!=='nothai')say(q.ans[0]);return}
+});
+function setRate(r){rate=r;store.set('rate',r);document.getElementById('spd-n').setAttribute('aria-pressed',r==='0.9');document.getElementById('spd-s').setAttribute('aria-pressed',r==='0.55')}
+document.getElementById('spd-n').onclick=()=>setRate('0.9');
+document.getElementById('spd-s').onclick=()=>setRate('0.55');
+window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(V[h]&&h!==view){view=h;render()}});
+if('speechSynthesis' in window)speechSynthesis.addEventListener?.('voiceschanged',()=>{loadVoice();const n=document.getElementById('voice-note');if(n)n.textContent=voiceNote()});
+setRate(rate); view=current(); render();
+</script>
+<script>if('serviceWorker' in navigator){navigator.serviceWorker.register('sw.js').catch(function(){})}</script>
+</body>
+</html>
