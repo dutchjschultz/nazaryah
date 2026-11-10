@@ -29,13 +29,16 @@
   --gold: #8f5a00;      /* marigold, darkened for text */
   --mouth: #cfd9d2;
   --tooth: #fbfdf9;
-  --tongue: #d98a84;
+  --tongue: #e8a79f;
+  --on-tongue: #4a1512;
+  --lip: #a8443e;
   --hit: #c2302a;
   --t-m: #52626f;
   --t-l: #2f4bb8;
   --t-f: #c2302a;
   --t-h: #0b7a57;
   --t-r: #a35b00;
+  --w0: #7b3fa0; --w1: #0f7c86; --w2: #a8471c; --w3: #4f6f10;
   --good: #0b7a57;
   --bad: #c2302a;
   --f-thai: "Trirong", "Noto Serif Thai", Georgia, serif;
@@ -46,17 +49,17 @@
   :root:not([data-theme="light"]) {
     --bg: #10142a; --leaf: #1a2042; --ink: #dfe9e2; --soft: #a4b0c4; --line: #36406a;
     --lac: #2c387f; --on-lac: #f1f5ef; --gold: #f2b632;
-    --mouth: #2c3560; --tooth: #e9eee8; --tongue: #c9746e; --hit: #ffb340;
+    --mouth: #2c3560; --tooth: #e9eee8; --tongue: #e8a79f; --on-tongue: #4a1512; --lip: #d9716a; --hit: #ffb340;
     --t-m: #a9bac8; --t-l: #94a8ff; --t-f: #ff8d7d; --t-h: #55d6a8; --t-r: #f2b632;
-    --good: #55d6a8; --bad: #ff8d7d; color-scheme: dark;
+    --w0: #cfa2f2; --w1: #5fd3dc; --w2: #f3a07a; --w3: #b9d96c; --good: #55d6a8; --bad: #ff8d7d; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --bg: #10142a; --leaf: #1a2042; --ink: #dfe9e2; --soft: #a4b0c4; --line: #36406a;
   --lac: #2c387f; --on-lac: #f1f5ef; --gold: #f2b632;
-  --mouth: #2c3560; --tooth: #e9eee8; --tongue: #c9746e; --hit: #ffb340;
+  --mouth: #2c3560; --tooth: #e9eee8; --tongue: #e8a79f; --on-tongue: #4a1512; --lip: #d9716a; --hit: #ffb340;
   --t-m: #a9bac8; --t-l: #94a8ff; --t-f: #ff8d7d; --t-h: #55d6a8; --t-r: #f2b632;
-  --good: #55d6a8; --bad: #ff8d7d; color-scheme: dark;
+  --w0: #cfa2f2; --w1: #5fd3dc; --w2: #f3a07a; --w3: #b9d96c; --good: #55d6a8; --bad: #ff8d7d; color-scheme: dark;
 }
 * { box-sizing: border-box; }
 body {
@@ -141,12 +144,19 @@ p { margin: 0; }
 .word .en { color: var(--soft); }
 .like { color: var(--ink); }
 .fn { border-top: 1px solid var(--line); padding-top: 10px; display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 12px; align-items: start; font-size: 15px; line-height: 1.42; }
-.fn .figs { display: flex; align-items: center; gap: 2px; }
+.fn .figs { display: flex; align-items: center; justify-content: center; gap: 2px; }
 .fn svg.mo { width: 100px; height: auto; display: block; }
 .fn .ar { color: var(--soft); font-size: 16px; }
 .fn .n { font: 700 13px/1 var(--f-phon); color: var(--gold); vertical-align: super; margin-right: 3px; }
 .fn b { font-weight: 700; }
 .fn .figs.two svg.mo { width: 74px; }
+.bigbtn { background: none; border: 0; padding: 0; display: block; }
+.bigv svg.mo { width: 100%; max-width: 560px; display: block; margin-inline: auto; }
+.bigv { position: fixed; inset: 0; z-index: 12; background: var(--leaf); overflow: auto; padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(24px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.bigv .in { max-width: 560px; margin-inline: auto; display: grid; gap: 12px; }
+.smile { display: flex; gap: 8px; align-items: center; font-weight: 600; color: var(--t-h); }
+.smile svg { width: 24px; height: 24px; flex: none; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; }
+.linkb { background: none; border: 0; padding: 8px 0; min-height: 44px; color: var(--gold); font-weight: 700; text-decoration: underline; text-align: left; }
 .fn:has(.figs.two) { grid-template-columns: minmax(0, 1fr); }
 @media (max-width: 380px) { .fn { grid-template-columns: minmax(0, 1fr); } }
 
@@ -154,7 +164,10 @@ p { margin: 0; }
 .mo .o { fill: none; stroke: var(--soft); stroke-width: 1.6; stroke-linecap: round; stroke-linejoin: round; }
 .mo .tt { fill: var(--tooth); stroke: var(--soft); stroke-width: .9; }
 .mo .tg { fill: var(--tongue); }
-.mo .lip { fill: var(--tongue); opacity: .75; }
+.mo .lip { fill: var(--lip); }
+.mo .lb text { font: 600 8.5px var(--f-body); fill: var(--ink); }
+.mo .lb text.tl { fill: var(--on-tongue); }
+.mo .ld path { fill: none; stroke: var(--soft); stroke-width: .7; }
 .mo .hit { fill: none; stroke: var(--hit); stroke-width: 2.2; }
 .mo .air { fill: none; stroke: var(--hit); stroke-width: 1.5; stroke-dasharray: 3 3; stroke-linecap: round; }
 
@@ -214,6 +227,38 @@ p { margin: 0; }
 .other .en { color: var(--soft); }
 details > summary { cursor: pointer; font-weight: 700; min-height: 32px; }
 details[open] > summary { margin-bottom: 10px; }
+.brk { display: grid; gap: 10px; }
+.pieces { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; align-items: stretch; }
+.pc { border: 2px solid currentColor; border-radius: 6px; padding: 6px 12px; display: grid; justify-items: center; gap: 0; min-width: 76px; }
+.pc .g { font: 500 40px/1.35 var(--f-thai); }
+.pc .dn { font-size: 15px; line-height: 1; }
+.pc .s { font: 700 17px/1.3 var(--f-phon); }
+.pc .k { font-size: 12px; color: var(--soft); letter-spacing: .06em; text-transform: uppercase; }
+.plus { align-self: center; color: var(--soft); font-size: 20px; }
+.p0 { color: var(--t-l); } .p1 { color: var(--t-h); } .p2 { color: var(--t-r); } .p3 { color: var(--t-f); }
+.pline { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 4px 12px; align-items: start; border-top: 1px solid var(--line); padding-top: 8px; }
+.pline .g { font: 500 30px/1.3 var(--f-thai); }
+.wbw { display: flex; flex-wrap: wrap; gap: 10px 6px; align-items: stretch; }
+.wcol { display: grid; justify-items: center; align-content: start; gap: 2px; border-top: 4px solid currentColor; padding: 6px 8px 2px; min-width: 64px; text-align: center; }
+.wcol .tw { font: 500 30px/1.3 var(--f-thai); }
+.wcol .mean { color: var(--ink); font-size: 14px; line-height: 1.3; max-width: 11ch; }
+.wc .syl, .wc .sep, .wc .plain { color: inherit; }
+.gloss { display: grid; gap: 2px; }
+.gloss .lab { font: 600 12px/1.3 var(--f-phon); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.gloss .v { font-size: 18px; }
+.wcard { border-left: 5px solid currentColor; }
+.wcard > * { color: var(--ink); }
+.px { color: var(--soft); }
+.pc.hid { border-style: dashed; }
+.legend { color: var(--soft); font-size: 15px; }
+.legend span { font-weight: 700; }
+.tips { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+.sylb { display: grid; gap: 8px; border-top: 1px dashed var(--line); padding-top: 10px; }
+.sylb:first-of-type { border-top: 0; padding-top: 0; }
+.tnote { font-size: 15px; }
+.w0 { color: var(--w0); } .w1 { color: var(--w1); } .w2 { color: var(--w2); } .w3 { color: var(--w3); }
+.wlink { background: none; border: 1px solid var(--line); border-radius: 4px; color: var(--gold); font-weight: 700; padding: 4px 8px; min-height: 36px; font-size: 14px; }
+.phr .acts { display: flex; gap: 8px; align-items: center; }
 .toast { position: fixed; left: 16px; right: 16px; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); z-index: 11; max-width: 560px; margin-inline: auto; background: var(--ink); color: var(--bg); padding: 12px 14px; border-radius: 6px; font-size: 15px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
@@ -230,6 +275,7 @@ details[open] > summary { margin-bottom: 10px; }
 </div>
 <main class="wrap" id="app"></main>
 <nav class="tabs" id="tabs" aria-label="Sections"></nav>
+<div class="bigv" id="bigv" hidden></div>
 <div class="toast" id="toast" role="status" hidden></div>
 
 <script>
@@ -259,7 +305,7 @@ const SH = {
   o:{t:[32,66],h:[74,45],lip:'round',jaw:2},
   aw:{t:[32,68],h:[74,54],lip:'round',jaw:6}
 };
-function mouth(key){
+function mouth(key,bare){
   const s = SH[key] || SH.rest, j = s.jaw||0, [tx,ty]=s.t, [hx,hy]=s.h, lip=s.lip||'open';
   let up=[14,46,7,5], lo=[14,60+j,7,5];
   if(lip==='closed'){up=[14,47,7,5];lo=[14,57,7,5];}
@@ -267,23 +313,26 @@ function mouth(key){
   if(lip==='round'){up=[10,47,5,5];lo=[10,57+j,5,5];}
   if(lip==='spread'){up=[16,46,7,4];lo=[16,58+j,7,4];}
   if(lip==='f'){lo=[21,57,6,5];}
-  const tongue=`M30 ${84+j} Q${tx-3} ${ty+8} ${tx} ${ty} C${tx+8} ${ty-5} ${hx-16} ${hy} ${hx} ${hy} C${hx+13} ${hy} 86 ${Math.max(hy+14,62)} 87 84 L87 104 L36 104 Z`;
+  const tongue=`M${tx} ${ty} C${tx+8} ${ty-5} ${hx-16} ${hy} ${hx} ${hy} C${hx+13} ${hy} 88 ${Math.max(hy+10,58)} 88 80 L86 98 Q60 ${94+j} 44 ${84+j} Q${tx+10} ${ty+16} ${tx+4} ${ty+7} Q${tx+1} ${ty+4} ${tx} ${ty} Z`;
   const velum=s.nose?'M58 29 Q74 30 84 48':'M58 29 Q80 30 97 39';
   const air=s.nose?`<path class="air" d="M92 52 Q92 30 70 22 L28 22"/>`:'';
   const hit=s.hit?`<circle class="hit" cx="${s.hit[0]}" cy="${s.hit[1]}" r="6"/>`:'';
-  return `<svg class="mo" viewBox="0 0 110 106" role="img" aria-label="Side view of the mouth">
+  const labels=bare?'':`<g class="ld"><path d="M-6 41 L20 44"/><path d="M-6 53 L4 52"/><path d="M48 1 L48 27"/><path d="M104 40 L86 37"/><path d="M104 92 L93 92"/><path d="M13 80 L${tx+3} ${ty+4}"/><path d="M104 66 L${Math.min(hx+10,84)} ${Math.max(hy+6,60)}"/></g>
+<g class="lb"><text x="-34" y="44">Teeth</text><text x="-34" y="56">Lips</text><text x="30" y="0">Roof of mouth</text><text x="106" y="43">Soft roof</text><text x="106" y="95">Throat</text><text x="-34" y="83">Tongue tip</text><text x="106" y="69">Tongue back</text><text x="62" y="20" text-anchor="middle">Nose</text></g>`;
+  return `<svg class="mo" viewBox="${bare?'0 0 110 106':'-38 -9 208 126'}" role="img" aria-label="Side view of the mouth, facing left">
 <path class="m" d="M24 38 Q30 33 34 34 Q46 26 58 29 L98 16 L98 10 L26 10 Z"/>
 <path class="o" d="M26 4 L6 30 L13 37"/>
 <path class="o" d="M24 38 Q30 33 34 34 Q46 26 58 29"/>
 <path class="o" d="${velum}" stroke-width="3"/>
 <path class="o" d="M30 16 Q70 12 98 22 L99 104"/>
+<path class="o" d="M28 ${70+j} Q40 ${96+j} 86 ${100}"/>
 <path class="tg" d="${tongue}"/>
 <path class="tt" d="M21 39 L28 38 L27 51 L23 51 Z"/>
 <path class="tt" d="M22 ${58+j} L26 ${58+j} L28 ${70+j} L21 ${70+j} Z"/>
 <ellipse class="lip" cx="${up[0]}" cy="${up[1]}" rx="${up[2]}" ry="${up[3]}"/>
 <ellipse class="lip" cx="${lo[0]}" cy="${lo[1]}" rx="${lo[2]}" ry="${lo[3]}"/>
 <path class="o" d="M${lo[0]-3} ${lo[1]+5} Q10 ${80+j} 22 ${90+j} L36 ${100+j}"/>
-${air}${hit}</svg>`;
+${air}${hit}${labels}</svg>`;
 }
 
 /* ---------- pitch curves ---------- */
@@ -302,8 +351,8 @@ function toneOf(s){
 const ONS=['khr','khl','khw','phr','phl','kr','kl','kw','pr','pl','tr','ph','th','kh','ng','ch','k','p','t','j','b','d','f','h','l','m','n','r','s','w','y'];
 const ONMAP={ph:'p',th:'t',kh:'k',k:'g',p:'bp',t:'dt',j:'dj'};
 const NUC=[['aaeo','aew'],['aawy','awwy'],['aai','ahy'],['aao','ahw'],['aae','aae'],['aaw','aww'],['aa','ah'],['ae','ae'],['ai','ai'],['ao','ao'],['awy','awy'],['aw','aw'],['ay','ay'],['a','uh'],
- ['uea','eua'],['uue','euu'],['ue','eu'],['uay','ooay'],['ua','ooa'],['ui','ooey'],['oo','ooo'],['u','oo'],['iao','eeow'],['ia','eea'],['iu','ew'],['ee','ee'],['i','i'],
- ['oh','ohh'],['o','oh'],['err','err'],['er','er'],['e','eh']];
+ ['ueay','euay'],['uea','eua'],['uue','euu'],['ue','eu'],['uay','ooay'],['ua','ooa'],['ui','ooey'],['oo','ooo'],['u','oo'],['iao','eeow'],['ia','eea'],['iu','ew'],['ee','ee'],['i','i'],
+ ['oh','ohh'],['o','oh'],['err','err'],['er','er'],['eo','ehw'],['e','eh']];
 function plainSyl(p){
   let w=p.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(), out='';
   const on=ONS.find(o=>w.startsWith(o));
@@ -482,13 +531,603 @@ const LESSONS = [
   w:[['แดง','daaeng','red'],['เขียว','khǐao','green'],['น้ำเงิน','náam-ngern','dark blue'],['ฟ้า','fáa','light blue'],['เหลือง','lǔeang','yellow'],['ขาว','khǎao','white'],['ดำ','dam','black'],['ส้ม','sôm','orange']]}
 ];
 
-/* Word list for the lookup page. Only en, th and ph are needed. The sound breakdown builds itself from ph.
-   tip, also (other English words that should find it) and use (a sentence) are optional. */
-const DICT = [
- {en:'water',th:'น้ำ',ph:'náam',also:'drink',
-  tip:'The Thai letters look short, but speakers hold this vowel long. Hold the ah, keep the voice high, and close the lips on the m. The word also builds other words: ห้องน้ำ hâwng-náam is a toilet, literally water room, and น้ำตาล náam-taan is sugar.',
-  use:['ขอน้ำเปล่า','khǎaw náam-plàao','Plain water, please','s']}
-];
+const WORDS_RAW=`
+#phrase
+Hello|ส·วัส·ดี|sà-wàt-dee|well-being|hi, goodbye|s
+How are you?|ส·บาย ดี ไหม|sà-baai dee mǎi|comfortable;good;question word|how are you doing|q
+Doing well|ส·บาย ดี|sà-baai dee|comfortable;good|fine, i am fine|s
+Thank you|ขอบ คุณ|khàawp-khun|thank;you|thanks|s
+Sorry, or excuse me|ขอ โทษ|khǎaw-thôht|ask for;blame|sorry, excuse me, pardon|s
+No problem, never mind|ไม่ เป็น ไร|mâi pen rai|not;be;anything|no problem, never mind, you are welcome|s
+What is your name?|คุณ ชื่อ อะ·ไร|khun chûue à-rai|you;name;what|name|q
+My name is|{I} ชื่อ|{I} chûue|I;name is|my name|s
+Nice to meet you|ยิน·ดี ที่ ได้ รู้·จัก|yin-dee thêe dâai róo-jàk|glad;that;get to;know|meet|s
+Goodbye, for a long time|ลา ก่อน|laa-kàawn|leave;first|goodbye, farewell|s
+I do not understand|ไม่ เข้า ใจ|mâi khâo-jai|not;enter;heart|understand|s
+Can you speak slowly?|พูด ช้า·ๆ ได้ ไหม|phôot cháa-cháa dâai mǎi|speak;slowly slowly;can;question word|slowly, slow down|q
+Can you say that again?|พูด อีก ครั้ง ได้ ไหม|phôot èek khráng dâai mǎi|speak;more;time;can;question word|again, repeat|q
+Can you speak English?|พูด ภา·ษา อัง·กฤษ ได้ ไหม|phôot phaa-sǎa ang-krìt dâai mǎi|speak;language;English;can;question word|english|q
+What is this called?|อัน นี้ เรียก ว่า อะ·ไร|an-née rîak wâa à-rai|thing;this;call;that;what|called|q
+I am hungry|หิว ข้าว|hǐu khâao|hungry;rice|hungry for food|s
+The menu, please|ขอ เม·นู หน่อย|khǎaw may-noo nàwy|ask for;menu;a little|menu|s
+Not spicy|ไม่ เผ็ด|mâi phèt|not;spicy|no spice|s
+A little spicy|เผ็ด นิด·หน่อย|phèt nít-nàwy|spicy;a little|mild|s
+No sugar|ไม่ ใส่ น้ำ·ตาล|mâi sài náam-taan|not;put in;sugar|sugar free|s
+Plain water, please|ขอ น้ำ เปล่า|khǎaw náam-plàao|ask for;water;empty|drinking water|s
+Very tasty|อ·ร่อย มาก|à-ràwy mâak|tasty;very|delicious food, yummy|s
+The bill, please|เก็บ เงิน ด้วย|kèp ngern dûay|collect;money;too|check, bill|s
+Where is the toilet?|ห้อง น้ำ อยู่ ที่·ไหน|hâwng-náam yòo thêe-nǎi|room;water;be at;where|toilet, restroom, bathroom|q
+Is it far?|ไกล ไหม|klai mǎi|far;question word|how far|q
+Go straight|ตรง ไป|trong pai|straight;go|straight ahead|s
+Turn left|เลี้ยว ซ้าย|líao sáai|turn;left|left|s
+Turn right|เลี้ยว ขวา|líao khwǎa|turn;right|right|s
+Stop right here|จอด ตรง นี้|jàawt trong-née|park;right at;here|stop here|s
+How much?|เท่า·ไหร่|thâo-rài|how much|price, cost|q
+Too expensive|แพง ไป|phaaeng pai|expensive;beyond|too much|s
+Can the price come down?|ลด ได้ ไหม|lót dâai mǎi|reduce;can;question word|discount, bargain|q
+I will take this one|เอา อัน นี้|ao an-née|take;thing;this|buy this|s
+I do not want it|ไม่ เอา|mâi ao|not;take|no thanks|s
+Good morning|อ·รุณ ส·วัสดิ์|à-run sà-wàt|dawn;well-being|morning greeting|s
+Good night|รา·ตรี ส·วัสดิ์|raa-tree sà-wàt|night;well-being|night greeting|s
+See you later|แล้ว เจอ กัน|láaeo jerr kan|then;meet;together|later|s
+Where are you from?|คุณ มา จาก ไหน|khun maa jàak nǎi|you;come;from;where|from|q
+I am from America|{I} มา จาก อ·เม·ริ·กา|{I} maa jàak à-may-rí-kaa|I;come;from;America|american, usa|s
+I live in Thailand|{I} อยู่ เมือง ไทย|{I} yòo mueang thai|I;live;country;Thai|live here|s
+Do you understand?|เข้า ใจ ไหม|khâo-jai mǎi|enter;heart;question word|understand|q
+I understand|เข้า ใจ แล้ว|khâo-jai láaeo|enter;heart;already|got it|s
+Wait a moment|รอ สัก ครู่|raaw sàk khrôo|wait;just;moment|wait, one moment|s
+Help!|ช่วย ด้วย|chûay dûay|help;too|help me, emergency|
+Call a doctor|เรียก หมอ หน่อย|rîak mǎaw nàwy|call;doctor;a little|need a doctor|s
+I am lost|{I} หลง ทาง|{I} lǒng-thaang|I;stray;road|lost|s
+Do you have this?|มี อัน นี้ ไหม|mee an-née mǎi|have;thing;this;question word|do you have|q
+Take me to the hotel|ไป โรง·แรม|pai rohng-raaem|go;hotel|to the hotel|s
+I like it|{I} ชอบ|{I} châawp|I;like|like it|s
+Congratulations|ยิน·ดี ด้วย|yin-dee dûay|glad;too|congrats|s
+Good luck|โชค ดี|chôhk dee|luck;good|luck|s
+Be careful|ระ·วัง|rá-wang|watch out|careful, watch out|s
+#num
+zero|ศูนย์|sǒon||0
+one|หนึ่ง|nùeng||1
+two|สอง|sǎawng||2
+three|สาม|sǎam||3
+four|สี่|sèe||4
+five|ห้า|hâa||5
+six|หก|hòk||6
+seven|เจ็ด|jèt||7
+eight|แปด|pàaet||8
+nine|เก้า|kâao||9
+ten|สิบ|sìp||10
+eleven|สิบ เอ็ด|sìp-èt|ten;one|11
+twelve|สิบ สอง|sìp-sǎawng|ten;two|12
+fifteen|สิบ ห้า|sìp-hâa|ten;five|15
+twenty|ยี่ สิบ|yêe-sìp|two;ten|20
+twenty-one|ยี่ สิบ เอ็ด|yêe-sìp-èt|two;ten;one|21
+thirty|สาม สิบ|sǎam-sìp|three;ten|30
+forty|สี่ สิบ|sèe-sìp|four;ten|40
+fifty|ห้า สิบ|hâa-sìp|five;ten|50
+one hundred|หนึ่ง ร้อย|nùeng-ráawy|one;hundred|100, hundred
+five hundred|ห้า ร้อย|hâa-ráawy|five;hundred|500
+one thousand|หนึ่ง พัน|nùeng-phan|one;thousand|1000, thousand
+ten thousand|หนึ่ง หมื่น|nùeng-mùuen|one;ten thousand|10000
+one hundred thousand|หนึ่ง แสน|nùeng-sǎaen|one;hundred thousand|100000
+one million|หนึ่ง ล้าน|nùeng-láan|one;million|million
+half|ครึ่ง|khrûeng||
+#time
+now|ตอน นี้|taawn-née|time;this|right now
+today|วัน นี้|wan-née|day;this|
+tomorrow|พรุ่ง·นี้|phrûng-née||
+yesterday|เมื่อ วาน|mûea-waan|when;day before|
+morning|ตอน เช้า|taawn-cháao|time;morning|
+evening|ตอน เย็น|taawn-yen|time;evening|
+night|กลาง คืน|klaang-khuuen|middle;night|
+week|สัป·ดาห์|sàp-daa||
+month|เดือน|duean||moon month
+year|ปี|pee||
+time|เว·ลา|way-laa||
+hour|ชั่ว·โมง|chûa-mohng||
+minute|นา·ที|naa-thee||
+later|ที หลัง|thee-lǎng|time;after|afterwards
+before|ก่อน|kàawn||first, earlier
+day|วัน|wan||
+weekend|เสาร์ อา·ทิตย์|sǎo-aa-thít|Saturday;Sunday|
+#day
+Sunday|วัน อา·ทิตย์|wan-aa-thít|day;sun|
+Monday|วัน จันทร์|wan-jan|day;moon|
+Tuesday|วัน อัง·คาร|wan-ang-khaan|day;Mars|
+Wednesday|วัน พุธ|wan-phút|day;Mercury|
+Thursday|วัน พ·ฤ·หัส|wan-phá-rúe-hàt|day;Jupiter|
+Friday|วัน ศุกร์|wan-sùk|day;Venus|
+Saturday|วัน เสาร์|wan-sǎo|day;Saturn|
+#people
+family|ครอบ ครัว|khrâawp-khrua|cover;kitchen|
+father|พ่อ|phâaw||dad
+mother|แม่|mâae||mom
+husband|สา·มี|sǎa-mee||
+wife|ภรร·~ร·ยา|phan-rá-yaa||
+wife (casual word)|เมีย|mia||
+son or daughter|ลูก|lôok||child, son, daughter, kid
+older brother or sister|พี่|phêe||older brother, older sister, sibling
+younger brother or sister|น้อง|náawng||younger brother, younger sister, sibling
+father's father|ปู่|pòo||grandfather, grandpa
+father's mother|ย่า|yâa||grandmother, grandma
+mother's father|ตา|taa||grandfather, grandpa
+mother's mother|ยาย|yaai||grandmother, grandma
+grandchild|หลาน|lǎan||grandson, granddaughter, nephew, niece
+friend|เพื่อน|phûean||
+man|ผู้ ชาย|phôo-chaai|person;male|male
+woman|ผู้ หญิง|phôo-yǐng|person;female|female, lady
+child|เด็ก|dèk||kid, children
+baby|เด็ก อ่อน|dèk-àawn|child;soft|infant
+person|คน|khon||people
+teacher|ครู|khroo||
+doctor|หมอ|mǎaw||
+nurse|พ·ยา·บาล|phá-yaa-baan||
+monk|พระ|phrá||
+boyfriend or girlfriend|แฟน|faaen||partner, boyfriend, girlfriend
+neighbor|เพื่อน บ้าน|phûean-bâan|friend;house|
+guest|แขก|khàaek||visitor
+driver|คน ขับ รถ|khon-khàp-rót|person;drive;car|
+customer|ลูก ค้า|lôok-kháa|child;trade|
+older aunt|ป้า|pâa||aunt
+older uncle|ลุง|lung||uncle
+Thai person|คน ไทย|khon-thai|person;Thai|thai people
+foreigner|ฝ·รั่ง|fà-ràng||westerner
+boss|เจ้า·นาย|jâo-naai||
+#body
+head|หัว|hǔa||
+hair|ผม|phǒm||
+eye|ตา|taa||eyes
+ear|หู|hǒo||ears
+nose|จ·มูก|jà-mòok||
+mouth|ปาก|pàak||lips
+tooth|ฟัน|fan||teeth
+tongue|ลิ้น|lín||
+face|หน้า|nâa||
+neck|คอ|khaaw||throat
+shoulder|ไหล่|lài||
+arm|แขน|khǎaen||
+hand|มือ|muue||
+finger|นิ้ว|níu||
+back|หลัง|lǎng||
+stomach|ท้อง|tháawng||belly
+leg|ขา|khǎa||
+foot|เท้า|tháao||feet
+knee|เข่า|khào||
+skin|ผิว|phǐu||
+heart|หัว ใจ|hǔa-jai|head;heart|
+blood|เลือด|lûeat||
+bone|กระ·ดูก|krà-dòok||
+#food
+water|น้ำ|náam||drink
+rice|ข้าว|khâao||meal
+chicken|ไก่|kài||
+pork|หมู|mǒo||pig
+beef|เนื้อ|núea||meat
+fish|ปลา|plaa||
+shrimp|กุ้ง|kûng||prawn
+egg|ไข่|khài||eggs
+vegetables|ผัก|phàk||vegetable, greens
+fruit|ผล·~ล ไม้|phǒn-lá-máai|fruit, result;wood, plant|
+coffee|กา·แฟ|kaa-faae||
+tea|ชา|chaa||
+milk|นม|nom||
+food|อา·หาร|aa-hǎan||
+noodles|ก๋วย·เตี๋ยว|kǔay-tǐao||noodle soup
+fried rice|ข้าว ผัด|khâao-phàt|rice;fry|
+pad thai|ผัด ไทย|phàt-thai|fry;Thai|
+soup|ซุป|súp||
+curry|แกง|kaaeng||
+papaya salad|ส้ม ตำ|sôm-tam|sour;pound|som tam
+sticky rice|ข้าว เหนียว|khâao-nǐao|rice;sticky|
+bread|ข·นม ปัง|khà-nǒm-pang|snack;bread|
+salt|เกลือ|kluea||
+sugar|น้ำ ตาล|náam-taan|water;palm|
+chili|พริก|phrík||chili pepper
+black pepper|พริก ไทย|phrík-thai|chili;Thai|pepper
+garlic|กระ·เทียม|krà-thiam||
+onion|หัว หอม|hǔa-hǎawm|head;fragrant|
+ice cream|ไอ·ศ·กรีม|ai-sà-kreem||
+snack|ข·นม|khà-nǒm||dessert, sweets
+banana|กล้วย|klûay||
+mango|มะ·ม่วง|má-mûang||
+papaya|มะ·ละ·กอ|má-lá-kaaw||
+coconut|มะ·พร้าว|má-phráao||
+pineapple|สับ·ปะ·รด|sàp-pà-rót||
+watermelon|แตง·โม|taaeng-moh||
+durian|ทุ·เรียน|thú-rian||
+orange|ส้ม|sôm||
+lime|มะ·นาว|má-naao||lemon
+rambutan|เงาะ|ngáw||
+mangosteen|มัง·คุด|mang-khút||
+lychee|ลิ้น·จี่|lín-jèe||
+grapes|อ·งุ่น|à-ngùn||grape
+squid|ปลา หมึก|plaa-mùek|fish;ink|
+crab|ปู|poo||
+fish sauce|น้ำ ปลา|náam-plaa|water;fish|
+soy sauce|ซี·อิ๊ว|see-íu||
+breakfast|อา·หาร เช้า|aa-hǎan-cháao|food;morning|
+lunch|อา·หาร กลาง·วัน|aa-hǎan-klaang-wan|food;midday|
+dinner|อา·หาร เย็น|aa-hǎan-yen|food;evening|supper
+tofu|เต้า·หู้|tâo-hôo||bean curd
+cake|เค้ก|kháyk||
+juice|น้ำ ผล·~ล·ไม้|náam-phǒn-lá-máai|water;fruit|fruit juice
+beer|เบียร์|bia||
+ice|น้ำ แข็ง|náam-khǎeng|water;hard|
+orange juice|น้ำ ส้ม|náam-sôm|water;orange|
+coconut water|น้ำ มะ·พร้าว|náam-má-phráao|water;coconut|
+iced coffee|กา·แฟ เย็น|kaa-faae-yen|coffee;cold|
+hot water|น้ำ ร้อน|náam-ráawn|water;hot|
+soda|โซ·ดา|soh-daa||
+#place
+airport|ส·นาม บิน|sà-nǎam-bin|field;fly|
+hotel|โรง แรม|rohng-raaem|building;lodging|
+market|ต·ลาด|tà-làat||
+beach|ชาย หาด|chaai-hàat|edge;beach|
+temple|วัด|wát||wat
+hospital|โรง พ·ยา·บาล|rohng-phá-yaa-baan|building;nursing|
+house|บ้าน|bâan||home
+room|ห้อง|hâwng||
+toilet|ห้อง น้ำ|hâwng-náam|room;water|restroom, bathroom
+restaurant|ร้าน อา·หาร|ráan-aa-hǎan|shop;food|
+shop|ร้าน|ráan||store
+school|โรง เรียน|rohng-rian|building;study|
+bank|ธ·นา·คาร|thá-naa-khaan||
+pharmacy|ร้าน ขาย ยา|ráan-khǎai-yaa|shop;sell;medicine|drugstore, chemist
+station|ส·ถา·นี|sà-thǎa-nee||
+train station|ส·ถา·นี รถ ไฟ|sà-thǎa-nee-rót-fai|station;vehicle;fire|
+bus stop|ป้าย รถ เมล์|pâai-rót-may|sign;vehicle;mail|
+city|เมือง|mueang||town
+village|หมู่ บ้าน|mòo-bâan|group;house|
+road|ถ·นน|thà-nǒn||street
+lane|ซอย|saawy||soi, alley
+park|สวน|sǔan||garden
+mall|ห้าง|hâang||department store, shopping center
+church|โบสถ์|bòht||
+gas station|ปั๊ม น้ำ·มัน|pám-náam-man|pump;oil|petrol station
+palace|วัง|wang||
+Bangkok|กรุง เทพ|krung-thâyp|capital;angel|
+Thailand|ประ·เทศ ไทย|prà-thâyt-thai|country;Thai|thai country
+country|ประ·เทศ|prà-thâyt||nation
+kitchen|ห้อง ครัว|hâwng-khrua|room;kitchen|
+bedroom|ห้อง นอน|hâwng-naawn|room;sleep|
+living room|ห้อง นั่ง เล่น|hâwng-nâng-lên|room;sit;play|
+office|ที่ ทำ·งาน|thêe-tham-ngaan|place;work|workplace
+#trans
+car|รถ|rót||vehicle
+city bus|รถ เมล์|rót-may|vehicle;mail|bus
+train|รถ ไฟ|rót-fai|vehicle;fire|
+electric skytrain|รถ ไฟ ฟ้า|rót-fai-fáa|vehicle;fire;sky|bts, skytrain, metro
+taxi|แท็ก·ซี่|tháek-sêe||cab
+tuk-tuk|รถ ตุ๊ก·ตุ๊ก|rót-túk-túk|vehicle;tuk-tuk|
+motorcycle|มอ·เตอร์·ไซค์|maaw-terr-sai||motorbike
+boat|เรือ|ruea||ship, ferry
+airplane|เครื่อง บิน|khrûeang-bin|machine;fly|plane
+van|รถ ตู้|rót-tôo|vehicle;cabinet|minibus
+#thing
+ticket|ตั๋ว|tǔa||
+passport|หนัง·สือ เดิน·ทาง|nǎng-sǔue-derrn-thaang|book;travel|
+bag|กระ·เป๋า|krà-pǎo||suitcase, luggage
+map|แผน ที่|phǎaen-thêe|plan;place|
+telephone|โท·ร·ศัพท์|thoh-rá-sàp||phone
+mobile phone|มือ ถือ|muue-thǔue|hand;hold|cell phone, phone
+money|เงิน|ngern||cash, silver
+key|กุญ·แจ|kun-jaae||
+book|หนัง·สือ|nǎng-sǔue||
+pen|ปาก·กา|pàak-kaa||
+pencil|ดิน·สอ|din-sǎaw||
+table|โต๊ะ|tó||desk
+chair|เก้า·อี้|kâo-êe||seat
+bed|เตียง|tiang||
+door|ประ·ตู|prà-too||
+window|หน้า ต่าง|nâa-tàang|face;opening|
+glass|แก้ว|kâaeo||cup
+plate|จาน|jaan||dish
+bowl|ชาม|chaam||
+spoon|ช้อน|cháawn||
+fork|ส้อม|sâawm||
+chopsticks|ตะ·เกียบ|tà-kìap||
+bottle|ขวด|khùat||
+umbrella|ร่ม|rôm||
+clock|นา·ฬิ·กา|naa-lí-kaa||watch
+computer|คอม·พิว·เตอร์|khaawm-phiu-terr||
+television|ที·วี|thee-wee||tv
+light|ไฟ|fai||lamp, fire
+electric fan|พัด ลม|phát-lom|wave;wind|fan
+air conditioner|แอร์|aae||aircon, ac
+towel|ผ้า ขน หนู|phâa-khǒn-nǒo|cloth;fur;mouse|
+soap|ส·บู่|sà-bòo||
+toothbrush|แปรง สี ฟัน|praaeng-sěe-fan|brush;rub;teeth|
+shampoo|แชม·พู|chaaem-phoo||
+medicine|ยา|yaa||pill, drug
+camera|กล้อง|klâwng||
+picture|รูป|rôop||photo
+letter|จด·หมาย|jòt-mǎai||mail
+gift|ของ ขวัญ|khǎawng-khwǎn|thing;blessing|present
+knife|มีด|mêet||
+mirror|กระ·จก|krà-jòk||
+pillow|หมอน|mǎawn||
+blanket|ผ้า ห่ม|phâa-hòm|cloth;cover|
+trash|ข·ยะ|khà-yà||garbage, rubbish
+paper|กระ·ดาษ|krà-dàat||
+wallet|กระ·เป๋า ตัง|krà-pǎo-tang|bag;money|purse
+receipt|ใบ เสร็จ|bai-sèt|sheet;finished|
+seat|ที่ นั่ง|thêe-nâng|place;sit|
+price|รา·คา|raa-khaa||cost
+shirt|เสื้อ|sûea||top
+pants|กาง·เกง|kaang-kayng||trousers
+shoes|รอง เท้า|raawng-tháao|under;foot|
+hat|หมวก|mùak||cap
+socks|ถุง เท้า|thǔng-tháao|bag;foot|
+glasses|แว่น ตา|wâaen-taa|lens;eye|spectacles
+skirt|กระ·โปรง|krà-prohng||
+belt|เข็ม·ขัด|khěm-khàt||
+clothes|เสื้อ ผ้า|sûea-phâa|shirt;cloth|clothing
+#color
+red|แดง|daaeng||
+green|เขียว|khǐao||
+dark blue|น้ำ เงิน|náam-ngern|water;silver|blue, navy
+light blue|ฟ้า|fáa||sky blue
+yellow|เหลือง|lǔeang||
+white|ขาว|khǎao||
+black|ดำ|dam||
+orange color|ส้ม|sôm||orange
+purple|ม่วง|mûang||
+pink|ชม·พู|chom-phoo||
+brown|น้ำ ตาล|náam-taan|water;palm|
+gray|เทา|thao||grey
+gold color|ทอง|thaawng||gold
+#animal
+dog|หมา|mǎa||
+cat|แมว|maaeo||
+bird|นก|nók||
+elephant|ช้าง|cháang||
+horse|ม้า|máa||
+cow|วัว|wua||
+buffalo|ควาย|khwaai||water buffalo
+monkey|ลิง|ling||
+snake|งู|ngoo||
+tiger|เสือ|sǔea||
+mouse|หนู|nǒo||rat
+duck|เป็ด|pèt||
+frog|กบ|kòp||
+turtle|เต่า|tào||
+mosquito|ยุง|yung||
+ant|มด|mót||
+butterfly|ผี เสื้อ|phěe-sûea|ghost;shirt|
+shark|ฉ·ลาม|chà-lǎam||
+gecko|ตุ๊ก·แก|túk-kaae||
+rabbit|กระ·ต่าย|krà-tàai||
+goat|แพะ|pháe||
+sheep|แกะ|kàe||
+bear|หมี|měe||
+lion|สิง·โต|sǐng-toh||
+deer|กวาง|kwaang||
+squirrel|กระ·รอก|krà-râawk||
+shellfish|หอย|hǎawy||clam, oyster
+bee|ผึ้ง|phûeng||
+animal|สัตว์|sàt||
+#scene
+sky|ฟ้า|fáa||
+sun|พระ อา·ทิตย์|phrá-aa-thít|holy;sun|
+moon|พระ จันทร์|phrá-jan|holy;moon|
+star|ดาว|daao||
+sea|ทะ·เล|thá-lay||ocean
+mountain|ภู เขา|phoo-khǎo|hill;mountain|
+river|แม่ น้ำ|mâae-náam|mother;water|
+waterfall|น้ำ ตก|náam-tòk|water;fall|
+island|เกาะ|kàw||
+forest|ป่า|pàa||jungle
+tree|ต้น ไม้|tôn-máai|trunk;wood|
+flower|ดอก ไม้|dàawk-máai|bud;wood|
+rice field|ทุ่ง นา|thûng-naa|field;paddy|paddy
+cave|ถ้ำ|thâm||
+lake|ทะ·เล สาบ|thá-lay-sàap|sea;lake|
+#word
+rain|ฝน|fǒn||
+wind|ลม|lom||
+cloud|เมฆ|mâyk||
+weather|อา·กาศ|aa-kàat||air
+storm|พา·ยุ|phaa-yú||
+rainy season|หน้า ฝน|nâa-fǒn|season;rain|monsoon
+hot season|หน้า ร้อน|nâa-ráawn|season;hot|summer
+sunlight|แดด|dàaet||sunshine
+earth|ดิน|din||soil, dirt, ground
+stone|หิน|hǐn||rock
+sand|ทราย|saai||
+#verb
+eat|กิน|kin||
+drink|ดื่ม|dùuem||
+go|ไป|pai||
+come|มา|maa||
+sleep|นอน|naawn||lie down
+walk|เดิน|derrn||
+run|วิ่ง|wîng||
+sit|นั่ง|nâng||sit down
+stand|ยืน|yuuen||stand up
+see|เห็น|hěn||
+look|ดู|doo||watch, look at
+listen|ฟัง|fang||hear
+speak|พูด|phôot||talk, say
+read|อ่าน|àan||
+write|เขียน|khǐan||
+buy|ซื้อ|súue||
+sell|ขาย|khǎai||
+pay|จ่าย|jàai||
+work|ทำ งาน|tham-ngaan|do;work|job
+play|เล่น|lâyn||
+swim|ว่าย น้ำ|wâai-náam|swim;water|
+cook|ทำ อา·หาร|tham-aa-hǎan|do;food|
+wash|ล้าง|láang||
+take a shower|อาบ น้ำ|àap-náam|bathe;water|bathe, shower
+open|เปิด|pèrt||
+close|ปิด|pìt||shut
+wait|รอ|raaw||
+help|ช่วย|chûay||
+know|รู้|róo||
+think|คิด|khít||
+love|รัก|rák||
+like|ชอบ|châawp||
+need|ต้อง การ|tâwng-kaan|must;matter|
+give|ให้|hâi||
+take|เอา|ao||get
+bring|เอา มา|ao-maa|take;come|
+meet|เจอ|jerr||find
+study|เรียน|rian||learn
+teach|สอน|sǎawn||
+drive|ขับ รถ|khàp-rót|drive;car|
+ride|ขี่|khèe||
+travel|เที่ยว|thîao||go out, tour
+rest|พัก|phák||relax
+ask|ถาม|thǎam||
+answer|ตอบ|tàawp||reply
+laugh|หัว·เราะ|hǔa-ráw||
+cry|ร้อง ไห้|ráawng-hâi|call out;weep|
+sing|ร้อง เพลง|ráawng-phlayng|call out;song|
+dance|เต้น|tâyn||
+wake up|ตื่น|tùuen||
+go home|กลับ บ้าน|klàp-bâan|return;house|
+return|กลับ|klàp||come back, go back
+have|มี|mee||
+choose|เลือก|lûeak||pick
+try|ลอง|laawng||
+start|เริ่ม|rêrm||begin
+finish|เสร็จ|sèt||be done
+forget|ลืม|luuem||
+remember|จำ|jam||
+fly|บิน|bin||
+use|ใช้|chái||
+send|ส่ง|sòng||
+carry|ถือ|thǔue||hold
+find|หา|hǎa||look for, search
+borrow|ยืม|yuuem||
+fix|ซ่อม|sâawm||repair
+visit|เยี่ยม|yîam||
+#adj
+hot|ร้อน|ráawn||
+cold|หนาว|nǎao||
+big|ใหญ่|yài||large
+small|เล็ก|lék||little
+good|ดี|dee||
+beautiful|สวย|sǔay||pretty
+delicious|อ·ร่อย|à-ràwy||tasty
+expensive|แพง|phaaeng||
+cheap|ถูก|thòok||
+fast|เร็ว|reo||quick
+slow|ช้า|cháa||
+new|ใหม่|mài||
+old|เก่า|kào||used
+old in age|แก่|kàae||elderly
+easy|ง่าย|ngâai||
+difficult|ยาก|yâak||hard
+far|ไกล|klai||
+near|ใกล้|klâi||close
+clean|ส·อาด|sà-àat||
+free|ว่าง|wâang||empty, available
+wrong|ผิด|phìt||
+many|เยอะ|yér||a lot, lots
+few|น้อย|náawy||little
+long|ยาว|yaao||
+short|สั้น|sân||
+tall|สูง|sǒong||high
+short in height|เตี้ย|tîa||
+heavy|หนัก|nàk||
+light in weight|เบา|bao||
+strong|แข็ง แรง|khǎeng-raaeng|hard;strength|
+quiet|เงียบ|ngîap||
+loud|ดัง|dang||noisy
+sweet|หวาน|wǎan||
+sour|เปรี้ยว|prîao||
+salty|เค็ม|khem||
+spicy|เผ็ด|phèt||hot food
+bitter|ขม|khǒm||
+fun|ส·นุก|sà-nùk||enjoyable
+funny|ต·ลก|tà-lòk||
+clever|เก่ง|kèng||skilled, good at
+lazy|ขี้ เกียจ|khêe-kìat|prone to;idle|
+kind|ใจ ดี|jai-dee|heart;good|nice
+cute|น่า รัก|nâa-rák|worth;love|lovely
+same|เหมือน|mǔean||alike
+important|สำ·คัญ|sǎm-khan||
+dangerous|อัน·ตราย|an-traai||
+cool|เย็น|yen||
+wet|เปียก|pìak||
+dry|แห้ง|hâaeng||
+comfortable|ส·บาย|sà-baai||
+#feel
+happy|ดี ใจ|dee-jai|good;heart|glad
+sad|เสีย ใจ|sǐa-jai|spoiled;heart|sorry
+tired|เหนื่อย|nùeay||
+hungry|หิว|hǐu||
+full|อิ่ม|ìm||full up
+thirsty|หิว น้ำ|hǐu-náam|hungry;water|
+sleepy|ง่วง|ngûang||
+sick|ป่วย|pùay||ill
+angry|โกรธ|kròht||mad
+bored|เบื่อ|bùea||
+busy|ยุ่ง|yûng||
+worried|เป็น ห่วง|pen-hùang|be;worry|
+scared|กลัว|klua||afraid
+excited|ตื่น เต้น|tùuen-tâyn|wake;dance|
+ready|พร้อม|phráawm||
+#word
+what|อะ·ไร|à-rai||
+where|ที่ ไหน|thêe-nǎi|place;which|
+when|เมื่อ ไหร่|mûea-rài|when;which time|
+who|ใคร|khrai||
+why|ทำ ไม|tham-mai|do;what|
+how|อย่าง ไร|yàang-rai|way;what|
+yes|ใช่|châi||correct, right
+no, not so|ไม่ ใช่|mâi-châi|not;correct|no
+not|ไม่|mâi||no
+and|และ|láe||
+or|หรือ|rǔue||
+but|แต่|tàae||
+because|เพราะ|phráw||
+this|นี้|née||
+that|นั้น|nán||
+here|ที่ นี่|thêe-nêe|place;this|
+there|ที่ นั่น|thêe-nân|place;that|
+I (man speaking)|ผม|phǒm||i, me
+I (woman speaking)|ฉัน|chǎn||i, me
+you|คุณ|khun||
+we|เรา|rao||us
+they|พวก เขา|phûak-kháo|group;he|them
+he or she|เขา|kháo||he, she, him, her
+very|มาก|mâak||much, a lot
+a little|นิด·หน่อย|nít-nàwy||a bit
+more|อีก|èek||again, another
+only|แค่|khâae||just
+all|ทั้ง หมด|tháng-mòt|whole;used up|everything
+every|ทุก|thúk||each
+with|กับ|kàp||and
+from|จาก|jàak||
+in|ใน|nai||inside
+on|บน|bon||on top
+under|ใต้|tâi||below
+can|ได้|dâai||able
+must|ต้อง|tâwng||have to
+will|จะ|jà||going to
+already|แล้ว|láaeo||
+still|ยัง|yang||not yet
+okay|โอ·เค|oh-khay||ok, all right
+thing|ของ|khǎawng||stuff, belongings
+color|สี|sěe||colour
+baht|บาท|bàat||money unit
+discount|ส่วน ลด|sùan-lót|part;reduce|
+change money|เงิน ทอน|ngern-thaawn|money;give back|change
+fever|ไข้|khâi||
+headache|ปวด หัว|pùat-hǔa|ache;head|
+stomach ache|ปวด ท้อง|pùat-tháawng|ache;stomach|
+cough|ไอ|ai||
+a cold|หวัด|wàt||cold, flu
+allergic|แพ้|pháae||allergy
+dizzy|เวียน หัว|wian-hǔa|spin;head|
+pain|เจ็บ|jèp||hurt, sore
+stairs|บัน·ได|ban-dai||steps, ladder
+roof|หลัง คา|lǎng-khaa|back;roof|
+floor|พื้น|phúuen||ground
+wall|ผ·นัง|phà-nǎng||
+`;
 
 /* ---------- state ---------- */
 const store = {get(k,d){try{const v=localStorage.getItem('thai.'+k);return v===null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem('thai.'+k,v)}catch(e){}}};
@@ -522,15 +1161,17 @@ let toastT; function toast(m){const t=document.getElementById('toast');t.textCon
 let fnNo=0; const ALL=[...CONS,...VOW,...GLD,...END,...CLU,...TONES]; ALL.forEach(s=>s.n=++fnNo);
 const initialOf={}; CONS.forEach(c=>initialOf[c.k]=c);
 
+const SMILE=['i','ee','ue','uue','e','ay','ae','aae','ai','aai','aawy','ui','-y'];
+const SMI='<svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M7 13.5 Q12 19 17 13.5"/></svg>';
 function footnote(s){
   const ms=Array.isArray(s.m)?s.m:(s.m?[s.m]:null);
-  const figs=ms?`<div class="figs${ms.length>1?' two':''}">${ms.map(mouth).join('<span class="ar" aria-hidden="true">→</span>')}</div>`:'';
+  const figs=ms?`<div class="figs${ms.length>1?' two':''}">${ms.map(k=>`<button class="bigbtn" data-big="${k}" aria-label="Show this drawing large">${mouth(k,true)}</button>`).join('<span class="ar" aria-hidden="true">→</span>')}</div>`:'';
   const [a,b,c,d]=s.f;
   return `<div class="fn"${ms?'':' style="grid-template-columns:minmax(0,1fr)"'}>${figs}<p><span class="n">${s.n}</span><b>Tongue:</b> ${a} <b>Teeth:</b> ${b} <b>Lips:</b> ${c} <b>Air and voice:</b> ${d}</p></div>`;
 }
 function soundCard(s){
   return `<article class="card"><div class="snd-head"><div class="key">${s.k}<sup>${s.n}</sup></div><div class="thaiset" lang="th">${s.th}</div>${sayBtn(s.w[0],s.w[2])}</div>
-  <p class="like">${s.like}</p>
+  <p class="like">${s.like}</p>${SMILE.includes(s.k)?`<p class="smile">${SMI}<span>Smile on this sound. Wide lips help it come out right.</span></p>`:''}
   <div class="word"><span class="tw" lang="th">${s.w[0]}</span>${ph(s.w[1])}<span class="en">${s.w[2]}</span></div>${footnote(s)}</article>`;
 }
 
@@ -550,12 +1191,14 @@ V.start=()=>{
  </section>
  <section class="card"><h3>Look up a word</h3><p>Type an English word to get the Thai, how to say it and where the tongue and teeth go.</p><button class="chip" data-go="find" style="justify-self:start">Find a word</button></section>
  <section class="note"><h3>Easy lessons</h3><p>Short word lessons on numbers, travel, transportation, family and more, each with a small test at the end.</p><button class="chip" data-go="lessons" style="border-color:var(--on-lac);color:var(--on-lac);justify-self:start">Open the lessons</button></section>
- <section class="stack"><h2>Five things that make Thai sound Thai</h2>
+ <section class="stack"><h2>Six things that make Thai sound Thai</h2>
   <div class="rule"><div class="mk">ˇ</div><div><h3>Pitch changes the word</h3><p>Thai has five tones. The same syllable spoken on a different pitch is a different word: khâao is rice and khǎao is white.</p></div></div>
   <div class="rule"><div class="mk">h</div><div><h3>A puff of air changes the word</h3><p>English puffs the p in "pin" and not the p in "spin." Thai treats those as two separate sounds. Kài is chicken and khài is egg.</p></div></div>
   <div class="rule"><div class="mk">aa</div><div><h3>Length changes the word</h3><p>Long vowels last about twice as long as short ones. Khâo means to enter and khâao means rice.</p></div></div>
   <div class="rule"><div class="mk">-k</div><div><h3>Endings stay silent</h3><p>A final k, t or p is shaped by the mouth and never released. The sound stops dead with the tongue or lips left in place.</p></div></div>
   <div class="rule"><div class="mk">-</div><div><h3>Every syllable keeps its beat</h3><p>English swallows its weak syllables. Thai says each one clearly, and the last syllable of a word carries the most weight.</p></div></div>
+ 
+  <div class="rule"><div class="mk">ee</div><div><h3>Smile at the end</h3><p>Some sounds need wide lips. Words ending in ee, i, ai, ue or a soft y come out right when the mouth widens into a smile at the end. Words ending in oo, oh, aw or a soft w need round lips, so the smile does not apply to them.</p></div></div>
  </section>
  <section class="stack"><h2>How to read the spelling</h2>
   <div class="keyrow"><b class="plain" style="font-size:18px">Say</b><span>The gold line under every spelling uses plain English sounds. In it, ph, th and kh become plain p, t and k. A letter written one extra time means hold the sound longer: uh is short, ah is long, oh is short, ohh is long.</span></div>
@@ -568,7 +1211,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 5</p>`;
+ <p class="score">App version 11</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -583,9 +1226,11 @@ V.sounds=()=>{
   Endings:[END,'Only eight sounds can close a syllable. Many Thai letters change their sound at the end, so the Thai letters listed here all end the same way.'],
   Blends:[CLU,'Eleven pairs of consonants can start a syllable. Thai gives them no vowel between, unlike English speakers who tend to add one.']};
  const [list,intro]=sets[soundTab];
- return `<h1>Sounds</h1><p class="lede">Every sound carries a numbered footnote giving the tongue, teeth, lips and air. Each drawing shows the head from the side, facing left, and the circle marks where the mouth does the work.</p>
+ return `<h1>Sounds</h1><p class="lede">Every sound carries a numbered footnote giving the tongue, teeth, lips and air.  Tap any drawing to see it large.</p>
+ <p class="lede" hidden>
  <div class="chips">${Object.keys(sets).map(k=>`<button class="chip" data-soundtab="${k}" aria-pressed="${k===soundTab}">${k}</button>`).join('')}</div>
- <p class="lede">${intro}</p><div class="stack">${list.map(soundCard).join('')}</div>`;
+ <p class="lede">${intro}</p><div class="stack">${list.map(soundCard).join('')}</div>
+ <button class="linkb" data-big="vel">See how to read the drawings, in large form</button>`;
 };
 V.tones=()=>`<h1>Tones</h1><p class="lede">Tone is the pitch of the voice across one syllable. It belongs to the word the way a vowel does. The five words below are spelled alike in English letters and are all different words in Thai.</p>
  <div class="stack">${TONES.map(t=>`<article class="card"><div class="snd-head"><div class="tone-head t-${t.id}"><svg viewBox="0 0 28 16" aria-hidden="true"><line x1="0" y1="2" x2="28" y2="2"/><line x1="0" y1="8" x2="28" y2="8"/><line x1="0" y1="14" x2="28" y2="14"/><path d="${CURVE[t.id]}" stroke-width="2"/></svg></div><div><div class="key" style="font-size:24px">${t.name}<sup>${t.n}</sup></div><span class="tone-mark t-${t.id}">${t.mark}</span></div>${sayBtn(t.say[0],t.say[2])}</div>
@@ -626,7 +1271,7 @@ V.phrases=()=>{
    const tail=p[3]?pol[p[3]]:['',''];
    const th=p[0].replace('{I}',I[0]), sp=p[1].replace('{I}',I[1]);
    const full=th+tail[0], spoken=sp+(tail[1]?' '+tail[1]:'');
-   return `<div class="phr"><div class="body"><span class="tw" lang="th">${full}</span><span style="font-size:18px">${ph(spoken)}</span><span class="en">${p[2]}</span></div>${sayBtn(full,p[2])}</div>`}).join('')}</div>`;
+   return `<div class="phr"><div class="body"><span class="tw" lang="th">${full}</span><span style="font-size:18px">${ph(spoken)}</span><span class="en">${p[2]}</span></div><div class="acts"><button class="wlink" data-open="${p[0]}">${/^\d/.test(p[2])?'Letters':'Word by word'}</button>${sayBtn(full,p[2])}</div></div>`}).join('')}</div>`;
 };
 V.practice=()=>{
  if(!q)newQ();
@@ -661,7 +1306,7 @@ V.lessons=()=>{
 function learnView(){
  const l=lesson, s=ALL.find(x=>x.k===l.tip), u=fill(l.use);
  return `<button class="back" data-lback="1">‹ All lessons</button><h1>${l.title}</h1><p class="lede">${l.note}</p>
- <div>${l.w.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${w[0]}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span></div>${sayBtn(w[0],w[2])}</div>`).join('')}</div>
+ <div>${l.w.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${w[0]}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span></div><div class="acts"><button class="wlink" data-open="${w[0]}">Letters</button>${sayBtn(w[0],w[2])}</div></div>`).join('')}</div>
  <section class="card"><h3>Use it in a sentence</h3><div class="word"><span class="tw" lang="th">${u[0]}</span></div><div class="staffed">${sayBtn(u[0],l.use[2])}<span style="font-size:18px">${ph(u[1])}</span></div><p style="color:var(--soft)">${l.use[2]}</p></section>
  <section class="card"><h3>Sound to watch: ${s.k}</h3><p class="like">${s.like}</p>${footnote(s)}</section>
  <button class="next" data-ltest="1" style="justify-self:start">Take the test</button>`;
@@ -680,9 +1325,216 @@ function testView(){
  ${done?`<button class="next" data-lnext="1">${T.i+1<T.order.length?'Next word':'See the result'}</button>`:''}</section>`;
 }
 
-/* ---------- word lookup ---------- */
+/* ---------- word list ----------
+   Each line: English | Thai | spelling | meaning of each part | other English words that find it | polite ending (s or q)
+   In the Thai, · splits syllables and a space splits the separate words inside it.
+   A line starting with # sets the group, which picks the example sentence. */
+function parseWords(raw){
+ const out=[]; let cat='word';
+ raw.split('\n').forEach(line=>{
+  line=line.trim(); if(!line||line.startsWith('//'))return;
+  if(line[0]==='#'){cat=line.slice(1).trim();return}
+  const f=line.split('|').map(x=>x.trim());
+  const [en,thSplit,phs,mean='',also='',pol='']=f;
+  out.push({en,thSplit,th:thSplit.replace(/~./g,'').replace(/[· ]/g,''),ph:phs,means:mean?mean.split(';').map(x=>x.trim()):null,also,pol,cat});
+ });
+ return out;
+}
+const WORDS=parseWords(WORDS_RAW);
+const CUSTOM={
+ 'water':{tip:'The Thai letters look short, but speakers hold this vowel long. Hold the ah, keep the voice high, and close the lips on the m. The word also builds other words: ห้องน้ำ hâwng-náam is a toilet, literally water room, and น้ำตาล náam-taan is sugar.',
+  sent:[['ขอ','khǎaw','ask for'],['น้ำ','náam','water'],['เปล่า','plàao','empty, bare']],meaning:'Plain water, please.',pol:'s'}
+};
+
+/* ---------- reading a Thai syllable ---------- */
+const LEADV='เแโใไ', TONEM='่้๊๋', THANT='์';
+const LCLASS={}; LET.forEach(l=>LCLASS[l[0]]=l[4]); const LNAME={}; LET.forEach(l=>LNAME[l[0]]=l[1]);
+const LOWSON='งญนมยรลว';
+const SHORTV=['a','i','ue','u','e','ae','o','aw','er'];
+const LONGV={aa:'ah',ee:'ee',uue:'euu',oo:'ooo',oh:'ohh',aaw:'aww',aae:'aae',err:'err',ia:'eea',ua:'ooa',uea:'eua',ay:'ay'};
+const STRIP={ueay:['uea','y'],aai:['aa','y'],aao:['aa','w'],iu:['i','w'],ui:['u','y'],aawy:['aaw','y'],awy:['aw','y'],aaeo:['aae','w'],iao:['ia','w'],uay:['ua','y'],ai:['a','y'],eo:['e','w'],ayo:['ay','w']};
+const TNAME={m:'mid',l:'low',f:'falling',h:'high',r:'rising'};
+const MNAME={'่':'first tone mark','้':'second tone mark','๊':'third tone mark','๋':'fourth tone mark'};
+const CLSNAME={M:'mid',H:'high',L:'low'};
+const isC=c=>/[ก-ฮ]/.test(c);
+const isSyl=p=>/[a-zA-ZÀ-ɏ]/.test(p);
+function parseSyl(p){
+ const tone=toneOf(p);
+ let w=p.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
+ const on=ONS.find(o=>w.startsWith(o))||''; w=w.slice(on.length);
+ const n=NUC.find(x=>w.startsWith(x[0])); const nuc=n?n[0]:''; w=w.slice(nuc.length);
+ return {on,nuc,coda:w,tone};
+}
+const plainOn=o=>({k:'g',kh:'k',p:'bp',ph:'p',t:'dt',th:'t',j:'dj'})[o]||o;
+const plainNuc=n=>{const x=NUC.find(v=>v[0]===n);return x?x[1]:n};
+function anaSyl(th,p,lend){
+ const S=parseSyl(p), ch=[...th], role=new Array(ch.length).fill(null), flags=[];
+ if(th==='ๆ')return {th,p,S,pieces:[{th:'ๆ',kind:'Repeat mark',c:'p2',say:'say it again',note:'This mark means: say the word before it a second time.'}],toneNote:'',flags};
+ ch.forEach((c,i)=>{if(c===THANT){role[i]='silentmark';for(let j=i-1;j>=0;j--){role[j]='silent';if(isC(ch[j])){if(ch[j]==='ร'&&j>=2&&/[ทต]/.test(ch[j-1])&&isC(ch[j-2]))role[j-1]='silent';break}}}});
+ ch.forEach((c,i)=>{if(role[i])return;
+  if(TONEM.includes(c))role[i]='tone'; else if(c==='ฤ')role[i]='ru'; else if(!isC(c))role[i]='vowel'});
+ let cs=ch.map((c,i)=>i).filter(i=>isC(ch[i])&&!role[i]);
+ let leader=null;
+ if(cs.length>1&&((ch[cs[0]]==='ห'&&LOWSON.includes(ch[cs[1]])&&S.on!=='h')||(ch[cs[0]]==='อ'&&ch[cs[1]]==='ย'&&S.on==='y'))){leader=cs.shift();role[leader]='leader'}
+ let init=null; if(cs.length){init=cs.shift();role[init]='init'}
+ const clus=/^(khr|khl|khw|phr|phl|kr|kl|kw|pr|pl|tr)$/.test(S.on);
+ if(clus&&cs.length&&'รลว'.includes(ch[cs[0]])){role[cs.shift()]='cluster'}
+ else if(cs.length&&ch[cs[0]]==='ร'&&cs[0]===init+1&&ch.slice(cs[0]+1).some((c,k)=>role[cs[0]+1+k]==='vowel')){role[cs.shift()]='silentr'}
+ if(cs.length>1&&ch[cs[0]]==='ร'&&ch[cs[1]]==='ร'&&cs[1]===cs[0]+1){role[cs.shift()]='rr'}
+ const viaSign=/[ไใ]/.test(th);
+ const glide=(S.nuc==='ai'&&viaSign)?null:STRIP[S.nuc];
+ const last=cs.length?cs[cs.length-1]:null;
+ cs.forEach(i=>{const c=ch[i];
+  if(i===last&&S.coda&&!(S.coda==='m'&&ch.includes('ำ'))){role[i]='end';return}
+  if(i===last&&glide&&((glide[1]==='y'&&c==='ย')||(glide[1]==='w'&&c==='ว'))){role[i]='glide';return}
+  if('อวย'.includes(c)){role[i]=(c==='ย'&&viaSign)?'silent':'vowel';return}
+  role[i]='unknown'; flags.push('unplaced letter '+c);
+ });
+ if(S.coda&&!role.includes('end')&&!(S.coda==='m'&&ch.includes('ำ')))flags.push('no ending letter for -'+S.coda);
+ const glideUsed=role.includes('glide');
+ const vNuc=glideUsed?glide[0]:S.nuc;
+ let vSay=plainNuc(vNuc); if(ch.includes('ำ'))vSay=plainNuc(S.nuc)+'m';
+ const hasV=role.some((r,i)=>r==='vowel'||r==='ru'||r==='rr');
+ // tone rule
+ const lead=leader!=null?ch[leader]:null;
+ let cls=lead==='ห'?'H':lead==='อ'?'M':(init!=null?LCLASS[ch[init]]:'M');
+ const lent=!!(lend&&leader==null&&init!=null&&LOWSON.includes(ch[init])); if(lent)cls=lend.cls;
+ const mark=ch.find(c=>TONEM.includes(c))||'';
+ const stop=/^(k|t|p)$/.test(S.coda);
+ const shortV=SHORTV.includes(S.nuc);
+ const dead=stop||(shortV&&!S.coda);
+ const RULE={M:{'':dead?'l':'m','่':'l','้':'f','๊':'h','๋':'r'},H:{'':dead?'l':'r','่':'l','้':'f'},L:{'':dead?(shortV?'h':'f'):'m','่':'f','้':'h'}};
+ const expect=RULE[cls]&&RULE[cls][mark];
+ let toneNote;
+ if(ch.includes('ฤ')){toneNote=`Said with a ${TNAME[S.tone]} tone.`}
+ else if(expect===S.tone){
+  toneNote=`A ${CLSNAME[cls]} class ${lead||lent?'sound':'letter'}${lead?` (the silent ${lead} makes it ${CLSNAME[cls]} class)`:lent?` (the ${lend.ch} just before it lends its ${CLSNAME[cls]} class)`:''} with ${mark?'the '+MNAME[mark]:'no tone mark'}${!mark&&dead?(stop?`, on a syllable that stops on -${S.coda}`:', on a short vowel with no ending'):''} gives a ${TNAME[S.tone]} tone.`;
+ } else {toneNote=`This syllable does not follow the usual tone rule. Thai speakers say it with a ${TNAME[S.tone]} tone.`; flags.push('tone rule gives '+(expect||'?')+' but spelling says '+S.tone)}
+ // pieces in written order
+ const pieces=[]; let vFirst=true; const baseOn=clus?S.on.replace(/[rlw]$/,''):S.on;
+ ch.forEach((c,i)=>{const r=role[i];
+  if(r==='leader')pieces.push({th:c,kind:'Silent letter',c:'px',say:'silent',note:`Not said. It makes ${ch[init]} a ${CLSNAME[cls]} class sound, which sets the tone.`});
+  else if(r==='init'){const asp=/^(kh|ph|th|ch)$/.test(baseOn),un=/^(k|p|t)$/.test(baseOn);
+   pieces.push({th:c,kind:'Starting letter',c:'p0',say:baseOn?plainOn(baseOn):'catch',note:baseOn?`Starts the sound with ${plainOn(baseOn)}${asp?', with a puff of air':un?', with no puff of air':''}. ${CLSNAME[LCLASS[c]]?('It is a '+CLSNAME[LCLASS[c]]+' class letter.'):''}`:`Here อ only holds the vowel. It gives a small catch in the throat, as in "uh-oh." It is a mid class letter.`});
+   if(!hasV&&!ch.slice(i+1).some((x,k)=>role[i+1+k]==='cluster'))pieces.push(hidden());}
+  else if(r==='cluster'){pieces.push({th:c,kind:'Second letter',c:'p0',say:S.on.slice(-1),note:`Joins the first letter to make the blend ${plainOn(baseOn)}${S.on.slice(-1)}. Say both with no vowel between.`}); if(!hasV)pieces.push(hidden());}
+  else if(r==='vowel'){const pos=LEADV.includes(c)?'Written before the letter, but said after it.':/[ัิีึื็่้๊๋ํ]/.test(c)?'Sits above the letter.':/[ุู]/.test(c)?'Sits below the letter.':isC(c)?'Here this letter is part of the vowel, not a sound of its own.':'Sits after the letter.';
+   const extra=c==='็'?' It marks the vowel as short.':c==='ำ'?' This vowel carries its own m.':'';
+   pieces.push({th:c,kind:vFirst?'Vowel':'Vowel, next part',c:'p2',say:vFirst?vSay:'…',note:pos+(vFirst?'':' It belongs to the same vowel.')+extra}); vFirst=false;}
+  else if(r==='rr')pieces.push({th:c,kind:'Vowel',c:'p2',say:vSay,note:'A double ร (รร) is read as a. The second ร closes the syllable as n.'});
+  else if(r==='ru')pieces.push({th:c,kind:'Letter-vowel',c:'p2',say:'reu',note:'A rare letter that is said reu. It comes from Sanskrit words.'});
+  else if(r==='end'){const how={k:'the back of the tongue',t:'the tongue tip',p:'the lips'}[S.coda];
+   pieces.push({th:c,kind:'Ending',c:'p1',say:'-'+S.coda,note:`At the end of a syllable ${c} is said as ${S.coda}.${how?` Stop the sound with ${how} and let no air out.`:''}`});}
+  else if(r==='glide')pieces.push({th:c,kind:'Ending',c:'p1',say:'-'+glide[1],note:`At the end it adds a light ${glide[1]==='y'?'"ee"':'"oo"'} glide to the vowel.`});
+  else if(r==='tone')pieces.push({th:c,kind:'Tone mark',c:'p3',say:TNAME[S.tone]+' tone',note:`The ${MNAME[c]}. It sits above the letter and makes no sound.`});
+  else if(r==='silent')pieces.push({th:c,kind:'Silent letter',c:'px',say:'silent',note:'Written but not said.'});
+  else if(r==='silentmark')pieces.push({th:c,kind:'Silent mark',c:'px',say:'silent',note:'This mark tells the reader to skip the letter under it.'});
+  else if(r==='silentr')pieces.push({th:c,kind:'Silent letter',c:'px',say:'silent',note:'This ร is written but not said in this word.'});
+  else pieces.push({th:c,kind:'Letter',c:'px',say:'?',note:''});
+ });
+ function hidden(){return {th:'',kind:'Hidden vowel',c:'p2',hid:1,say:vSay,note:`No vowel is written here. Thai reads a hidden ${vSay} sound.`}}
+ return {th,p,S,pieces,toneNote,flags,dead,stop};
+}
+
+/* ---------- building a word from its parts ---------- */
+function speakerI(){return speaker==='m'?['ผม','phǒm']:['ฉัน','chǎn']}
+function mkWord(thSplit,phs,en,means){
+ // returns {th,ph,en,comps:[{th,ph,mean,syls:[ana]}],flags}
+ const I=speakerI();
+ const comps=thSplit.split(' '), sy=phs.replace('{I}',I[1]).split(/[ \-]+/).filter(isSyl);
+ let k=0; const out=[], flags=[];
+ comps.forEach((c,ci)=>{
+  const parts=(c==='{I}'?I[0]:c).split('·');
+  let prev=null;
+  const syls=parts.map(t=>{const p=sy[k++]; if(!p){flags.push('missing spelling for '+t);return null}
+   const linked=t[0]==='~', tt=linked?t.slice(1):t;
+   let lend=null;
+   if(prev&&prev.pieces.some(x=>x.hid)&&!prev.stop&&!prev.pieces.some(x=>/Ending|Tone mark|Second letter/.test(x.kind))){const s0=prev.pieces.find(x=>x.kind==='Starting letter');if(s0&&/[HM]/.test(LCLASS[s0.th]))lend={cls:LCLASS[s0.th],ch:s0.th}}
+   const a=anaSyl(tt,p,lend); a.linked=linked;
+   if(linked&&a.pieces[0]){a.pieces[0].kind='Letter read twice';a.pieces[0].note='This letter already ended the syllable before. Thai reads it a second time here to start this syllable.'}
+   flags.push(...a.flags.map(f=>tt+': '+f)); prev=a; return a}).filter(Boolean);
+  out.push({th:parts.filter(t=>t[0]!=='~').join(''),ph:syls.map(s=>s.p).join('-'),mean:c==='{I}'?'I':(means?means[ci]:en)||en,syls});
+ });
+ if(k!==sy.length)flags.push('spelling has '+sy.length+' syllables, Thai has '+k);
+ return {th:out.map(c=>c.th).join(''),ph:phs.replace('{I}',I[1]),en,comps:out,flags};
+}
+const POLITE={m:{s:['ครับ','khráp'],q:['ครับ','khráp']},f:{s:['ค่ะ','khâ'],q:['คะ','khá']}};
+function politeComp(kind){const p=POLITE[speaker][kind];return mkWord(p[0],p[1],'polite word, '+(speaker==='m'?'man':'woman')+' speaking').comps[0]}
+const TW={yuu:['อยู่','yòo','be at'],thinai:['ที่·ไหน','thêe-nǎi','where'],khaw:['ขอ','khǎaw','ask for'],duu:['ดู','doo','look at'],jep:['เจ็บ','jèp','hurt'],nii:['นี่','nêe','this'],khuue:['คือ','khuue','is'],khaawng:['ของ','khǎawng','of'],hen:['เห็น','hěn','see'],pai:['ไป','pai','go'],duay:['ด้วย','dûay','by, with'],yaak:['อยาก','yàak','want'],maak:['มาก','mâak','very, much'],ao:['เอา','ao','take'],see:['สี','sěe','color'],baat:['บาท','bàat','baht'],jer:['เจอ','jerr','meet'],kan:['กัน','kan','together'],suay:['สวย','sǔay','beautiful']};
+const I_=['{I}','{I}','I'];
+const art=w=>/^[aeiou]/i.test(w)?'an':'a';
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+const TPL={
+ place:e=>({w:['X',TW.yuu,TW.thinai],m:`Where is the ${e.en}?`,pol:'q'}),
+ food:e=>({w:[TW.khaw,'X'],m:`${cap(e.en)}, please.`,pol:'s'}),
+ thing:e=>({w:[TW.khaw,TW.duu,'X'],m:`May I see the ${e.en}?`,pol:'q'}),
+ body:e=>({w:[TW.jep,'X'],m:`My ${e.en} hurts.`,pol:'s'}),
+ people:e=>({w:[TW.nii,TW.khuue,'X',TW.khaawng,I_],m:`This is my ${e.en}.`,pol:'s'}),
+ animal:e=>({w:[I_,TW.hen,'X'],m:`I see ${art(e.en)} ${e.en}.`,pol:'s'}),
+ trans:e=>({w:[TW.pai,TW.duay,'X'],m:`Go by ${e.en}.`,pol:'s'}),
+ verb:e=>({w:[I_,TW.yaak,'X'],m:`I want to ${e.en}.`,pol:'s'}),
+ adj:e=>({w:['X',TW.maak],m:`Very ${e.en}.`,pol:'s'}),
+ feel:e=>({w:[I_,'X'],m:`I am ${e.en}.`,pol:'s'}),
+ color:e=>({w:[TW.ao,TW.see,'X'],m:`I will take the ${e.en} one.`,pol:'s'}),
+ num:e=>({w:['X',TW.baat],m:`${cap(e.en)} baht.`,pol:'s'}),
+ day:e=>({w:[TW.jer,TW.kan,'X'],m:`See you on ${e.en}.`,pol:'s'}),
+ scene:e=>({w:['X',TW.suay,TW.maak],m:`The ${e.en} is very beautiful.`,pol:'s'})
+};
+function sentenceOf(e){
+ const c=CUSTOM[e.en];
+ if(c&&c.sent)return {words:c.sent.map(w=>mkWord(w[0],w[1],w[2])),m:c.meaning,pol:c.pol};
+ const t=TPL[e.cat]; if(!t)return null;
+ const s=t(e);
+ const words=s.w.map(w=>w==='X'?{...mkWord(e.thSplit.replace(/ /g,'·'),e.ph,e.en),solo:1}:mkWord(w[0],w[1],w[2]));
+ return {words,m:s.m,pol:s.pol};
+}
+
+/* ---------- tips from the sounds themselves ---------- */
+function autoTips(word){
+ const tips=[], seen=new Set(), add=(k,t)=>{if(!seen.has(k)&&tips.length<3){seen.add(k);tips.push(t)}};
+ word.comps.forEach(c=>c.syls.forEach(a=>{const S=a.S, b=S.on.replace(/(?<=..)[rlw]$/,'').replace(/^([kpt])[rlw]$/,'$1');
+  if(b==='ph')add('ph','ph is a plain English p with a puff of air. It is never an f.');
+  if(b==='th')add('th','th is a plain English t. It is never the th in "the."');
+  if(b==='kh')add('kh','kh is a plain English k.');
+  if(b==='k')add('k','k here has no puff of air. Say it softly, close to g.');
+  if(b==='p')add('p','p here has no puff of air. Say it softly, between b and p.');
+  if(b==='t')add('t','t here has no puff of air. Say it softly, between d and t.');
+  if(b==='j')add('j','j sits between English j and ch, with no buzz.');
+  if(b==='ng')add('ng','Start with ng, the sound in the middle of "singer."');
+  if(/^(ue|uue|uea)$/.test(S.nuc))add('ue','ue is an "oo" said with smiling lips, not rounded ones.');
+  if(a.stop)add('stop'+S.coda,`The -${S.coda} at the end is silent. Stop the sound with ${({k:'the back of the tongue',t:'the tongue tip',p:'closed lips'})[S.coda]} and let no air out.`);
+  if(S.on.includes('r'))add('r','The r is one quick tap of the tongue, not an English r.');
+  if(LONGV[S.nuc])add('long',`Hold the ${LONGV[S.nuc]} sound long.`);
+ }));
+ return tips;
+}
+
+/* ---------- drawing a word ---------- */
+const COMB=/[ัิ-ฺ็-๎ำ]/;
+const dot=t=>t.length===1&&COMB.test(t)?'◌'+t:t;
+function piecesHTML(parts){
+ return `<div class="pieces">${parts.map((p,i)=>`${i?'<span class="plus" aria-hidden="true">+</span>':''}<div class="pc ${p.c}${p.hid?' hid':''}"><span class="g" lang="th">${p.hid?'( )':dot(p.th)}</span><span class="dn" aria-hidden="true">↓</span><span class="s">${p.say}</span><span class="k">${p.kind}</span></div>`).join('')}</div>
+ ${parts.map(p=>`<div class="pline"><span class="g ${p.c}" lang="th">${p.hid?'( )':dot(p.th)}</span><p><b class="${p.c}">${p.kind}.</b> ${p.note}</p></div>`).join('')}`;
+}
+const LEGEND=`<p class="legend"><span class="p0">Blue</span> starting letter · <span class="p2">Gold</span> vowel · <span class="p1">Green</span> ending · <span class="p3">Red</span> tone mark · <span class="px">Gray</span> silent. The dotted circle stands for the letter a mark attaches to.</p>`;
+function sylHTML(a,many){
+ return `<div class="sylb">${many?`<div class="word"><span class="tw" lang="th">${a.th}</span><span style="font-size:17px">${ph(a.p)}</span></div>`:''}${piecesHTML(a.pieces)}${a.toneNote?`<p class="tnote"><b class="t-${a.S.tone}">Tone.</b> ${a.toneNote}</p>`:''}</div>`;
+}
+function compCard(c,n,showHead){
+ const many=c.syls.length>1;
+ return `<div class="card wcard w${n%4}" style="background:var(--bg);gap:10px">${showHead?`<div class="word"><span class="tw w${n%4}" lang="th">${c.th}</span><span class="wc w${n%4}" style="font-size:18px">${ph(c.ph)}</span><span class="en">${c.mean}</span>${sayBtn(c.th,c.mean)}</div>`:''}
+ ${many?`<p style="color:var(--soft)">${c.syls.length} syllables, each broken down in turn.</p>`:''}${c.syls.map(a=>sylHTML(a,many)).join('')}</div>`;
+}
+function wordsBlock(comps,meaning,literal,headline){
+ return `${headline?`<div class="staffed">${sayBtn(comps.map(c=>c.th).join(''),meaning)}<span lang="th" style="font:500 28px/1.3 var(--f-thai)">${comps.map((c,n)=>`<span class="w${n%4}">${c.th}</span>`).join('')}</span></div>`:''}
+ <div class="wbw">${comps.map((c,n)=>`<div class="wcol w${n%4}"><span class="tw" lang="th">${c.th}</span><span class="wc">${ph(c.ph)}</span><span class="mean">${c.mean}</span></div>`).join('')}</div>
+ <div class="gloss"><span class="lab">Word for word</span><span class="v">${literal}</span></div>
+ <div class="gloss"><span class="lab">Meaning</span><span class="v">${meaning}</span></div>
+ <details class="brk"><summary>Break each word into its letters</summary><div class="brk">${LEGEND}${comps.map((c,n)=>compCard(c,n,true)).join('')}</div></details>`;
+}
+function endsSmile(phon){const l=phon.split(/[ \-]/).filter(isSyl).pop();if(!l)return false;const k=sylKeys(l);return SMILE.includes(k[k.length-1])}
 function sylKeys(p){
-  let w=p.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase(); const out=[];
+  let w=p.normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase(); const out=[];
   const on=ONS.find(o=>w.startsWith(o));
   if(on){out.push(on);w=w.slice(on.length)} else out.push('(catch)');
   const n=NUC.find(x=>w.startsWith(x[0]));
@@ -691,40 +1543,54 @@ function sylKeys(p){
   return out;
 }
 function soundsIn(phon){
-  const keys=[]; phon.split(/[ \-]/).filter(p=>/[a-zA-Z\u00C0-\u024F]/.test(p)).forEach(p=>sylKeys(p).forEach(k=>{if(!keys.includes(k))keys.push(k)}));
+  const keys=[]; phon.split(/[ \-]/).filter(isSyl).forEach(p=>sylKeys(p).forEach(k=>{if(!keys.includes(k))keys.push(k)}));
   return keys.map(k=>ALL.find(x=>x.k===k)).filter(Boolean);
 }
-function wordIndex(){
-  const seen=new Set(), out=[], add=e=>{if(!seen.has(e.th+e.en)&&!DICT.some(d=>d!==e&&d.th===e.th)){seen.add(e.th+e.en);out.push(e)}};
-  DICT.forEach(add);
-  LESSONS.forEach(l=>l.w.forEach(w=>add({en:w[2],th:w[0],ph:w[1]})));
-  Object.values(PHRASES).flat().filter(p=>!/^\d/.test(p[2])).forEach(p=>add({en:p[2],th:p[0],ph:p[1],pol:p[3]}));
-  return out;
-}
-function findWords(q){
-  q=q.trim().toLowerCase(); if(!q)return [];
-  const rank=e=>{const t=(e.en+' '+(e.also||'')).toLowerCase(), en=e.en.toLowerCase();
-    if(en===q)return 0; if(new RegExp('\\b'+q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&')+'\\b').test(t))return 1; if(en.startsWith(q))return 2; if(t.includes(q)||e.th.includes(q))return 3; return 9};
-  return wordIndex().map(e=>[rank(e),e]).filter(x=>x[0]<9).sort((a,b)=>a[0]-b[0]).map(x=>x[1]);
+function buildEntry(e){
+ const w=mkWord(e.thSplit,e.ph,e.en,e.means);
+ if(e.pol)w.comps.push(politeComp(e.pol));
+ w.th=w.comps.map(c=>c.th).join(''); w.ph=w.comps.map(c=>c.ph).join(' ');
+ return w;
 }
 function entryCard(e){
-  const u=fill([e.th,e.ph,e.en,e.pol]), sylls=u[1].split(/[ \-]/).filter(p=>/[a-zA-Z\u00C0-\u024F]/.test(p));
-  const sounds=soundsIn(u[1]), long=sylls.length>3;
-  const tones=sylls.map(p=>{const t=TONES.find(x=>x.id===toneOf(p));
-    return `<div class="toneline"><span class="t-${t.id}" style="font:700 18px var(--f-phon)">${p}</span><span><b class="t-${t.id}">${t.name} tone.</b> ${t.pitch}</span></div>`}).join('');
-  const use=e.use?fill(e.use):null;
-  return `<article class="card"><div class="bigw"><div><div class="tw" lang="th">${u[0]}</div><p style="color:var(--soft)">${e.en}</p></div>${sayBtn(u[0],e.en)}</div>
-  <div style="font-size:26px">${ph(u[1])}</div>
-  ${e.tip?`<p>${e.tip}</p>`:''}
+ const w=buildEntry(e), c0=CUSTOM[e.en];
+ const sylls=w.comps.flatMap(c=>c.syls), multi=w.comps.length>1;
+ const tips=c0&&c0.tip?[c0.tip]:autoTips(w);
+ const tones=sylls.filter(a=>TNAME[a.S.tone]).map(a=>{const t=TONES.find(x=>x.id===a.S.tone);
+  return `<div class="toneline"><span class="t-${t.id}" style="font:700 18px var(--f-phon)">${a.p}</span><span><b class="t-${t.id}">${t.name} tone.</b> ${t.pitch}</span></div>`}).join('');
+ const sent=multi||e.cat==='phrase'?null:sentenceOf(e);
+ let sentHTML='';
+ if(sent){const comps=sent.words.flatMap(x=>x.solo?[{...x.comps[0],th:x.th,ph:x.ph,mean:x.en,syls:x.comps.flatMap(c=>c.syls)}]:x.comps); comps.push(politeComp(sent.pol));
+  sentHTML=`<div class="stack" style="gap:10px"><h3>In a sentence</h3>${wordsBlock(comps,sent.m,comps.map(c=>c.mean.replace(/^polite word, (man|woman) speaking$/,'(polite)')).join(' + '),true)}</div>`}
+ const long=sylls.length>3, sounds=soundsIn(w.ph);
+ return `<article class="card"><div class="bigw"><div><div class="tw" lang="th">${w.th}</div><p style="color:var(--soft)">${e.en}</p></div>${sayBtn(w.th,e.en)}</div>
+  <div style="font-size:24px">${ph(w.ph)}</div>
+  ${tips.length?`<ul class="tips">${tips.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}${endsSmile(w.ph)?`<p class="smile">${SMI}<span>This ends on a smile sound. Widen the lips at the end.</span></p>`:''}
+  ${multi?`<div class="stack" style="gap:10px"><h3>Word by word</h3>${wordsBlock(w.comps,e.en,w.comps.map(c=>c.mean.replace(/^polite word, (man|woman) speaking$/,'(polite)')).join(' + '),false)}</div>`
+   :`<details class="brk"><summary>Break it into letters</summary><div class="brk">${LEGEND}${compCard(w.comps[0],0,false)}</div></details>`}
   <div class="stack" style="gap:8px"><h3>The tone</h3>${tones}</div>
-  ${use?`<div class="stack" style="gap:6px"><h3>In a sentence</h3><div class="word"><span class="tw" lang="th">${use[0]}</span></div><div class="staffed">${sayBtn(use[0],e.use[2])}<span style="font-size:18px">${ph(use[1])}</span></div><p style="color:var(--soft)">${e.use[2]}</p></div>`:''}
+  ${sentHTML}
   <details${long?'':' open'}><summary>Tongue and teeth for each sound</summary><div class="stack">${sounds.map(s=>`<div class="stack" style="gap:4px"><div><b style="font:700 19px var(--f-phon)">${s.k}</b> ${s.like}</div>${footnote(s)}</div>`).join('')}</div></details></article>`;
 }
+
+/* ---------- search ---------- */
+const keyOf=t=>t.replace(/\.\.\./g,'').replace(/~./g,'').replace(/[· ]/g,'');
+function entryByTh(t){const k=keyOf(t);return WORDS.find(e=>keyOf(e.thSplit)===k)}
+function findWords(q){
+ q=q.trim().toLowerCase(); if(!q)return [];
+ const esc=q.replace(/[.*+?^${}()|[\]\\]/g,'\\$&');
+ const rank=e=>{const en=e.en.toLowerCase(), t=(en+', '+(e.also||'')).toLowerCase();
+  if(en===q||(e.also||'').toLowerCase().split(',').map(s=>s.trim()).includes(q))return 0;
+  if(new RegExp('\\b'+esc+'\\b').test(t))return 1+(e.cat==='phrase'?1:0); if(en.startsWith(q))return 3; if(t.includes(q)||e.th.includes(q))return 4; return 9};
+ return WORDS.map(e=>[rank(e),e]).filter(x=>x[0]<9).sort((a,b)=>a[0]-b[0]||a[1].en.length-b[1].en.length).map(x=>x[1]);
+}
+let findSel=null;
 function findOut(){
-  const r=findWords(findQ);
-  if(!findQ.trim())return `<p class="lede">Type an English word above.</p>`;
-  if(!r.length)return `<p class="lede">"${findQ.replace(/</g,'&lt;')}" is not in the word list yet.</p>`;
-  return entryCard(r[0])+(r.length>1?`<div><h3>Other matches</h3>${r.slice(1,9).map(e=>`<button class="other" data-pick="${e.en.replace(/"/g,'&quot;')}"><span class="tw" lang="th">${e.th.replace('{I}','')}</span><span class="en">${e.en}</span></button>`).join('')}</div>`:'');
+ if(findSel){const e=entryByTh(findSel); if(e)return entryCard(e)}
+ const r=findWords(findQ);
+ if(!findQ.trim())return `<p class="lede">Type an English word above. The list holds ${WORDS.length} words and phrases.</p>`;
+ if(!r.length)return `<p class="lede">"${findQ.replace(/</g,'&lt;')}" is not in the word list yet.</p>`;
+ return entryCard(r[0])+(r.length>1?`<div><h3>Other matches</h3>${r.slice(1,9).map(e=>`<button class="other" data-open="${e.thSplit}"><span class="tw" lang="th">${e.th.replace('{I}','')}</span><span class="en">${e.en}</span></button>`).join('')}</div>`:'');
 }
 V.find=()=>`<h1>Find a word</h1><label for="find-q" class="lede">Type a word in English</label>
  <input class="findbox" id="find-q" type="search" autocomplete="off" autocapitalize="off" value="${findQ.replace(/"/g,'&quot;')}">
@@ -745,7 +1611,10 @@ function go(v){view=v;store.set('view',v);try{history.replaceState(null,'','#'+v
 document.addEventListener('click',e=>{
  const b=e.target.closest('button'); if(!b)return; const d=b.dataset;
  if(d.say){say(d.say);return}
- if(d.pick){findQ=d.pick;render();return}
+ if(d.pick){findQ=d.pick;findSel=null;render();return}
+ if(d.open){const en=entryByTh(d.open);findSel=d.open;if(en)findQ=en.en;go('find');return}
+ if(d.big){const b=document.getElementById('bigv');b.innerHTML=`<div class="in"><h2>How to read the drawing</h2>${mouth(d.big)}<p>This is a head cut in half and seen from the side, with the face looking left. The lips and teeth are on the left and the throat is on the right.</p><p>The pink band is the tongue. Its tip points left toward the teeth. Its back sits on the right, near the soft roof of the mouth.</p><p>The red circle marks the spot where the mouth does the work. Red dashes mean the air leaves through the nose. A vowel drawing has no circle, because only the shape of the tongue matters.</p><button class="next" data-unbig="1" style="justify-self:start">Close</button></div>`;b.hidden=false;b.scrollTop=0;return}
+ if(d.unbig){document.getElementById('bigv').hidden=true;return}
  if(d.les){lesson=LESSONS.find(l=>l.id===d.les);T=null;render();return}
  if(d.lback){lesson=null;T=null;render();return}
  if(d.lreview){T=null;render();return}
@@ -765,7 +1634,7 @@ document.addEventListener('click',e=>{
 function setRate(r){rate=r;store.set('rate',r);document.getElementById('spd-n').setAttribute('aria-pressed',r==='0.9');document.getElementById('spd-s').setAttribute('aria-pressed',r==='0.55')}
 document.getElementById('spd-n').onclick=()=>setRate('0.9');
 document.getElementById('spd-s').onclick=()=>setRate('0.55');
-document.addEventListener('input',e=>{if(e.target.id==='find-q'){findQ=e.target.value;document.getElementById('find-out').innerHTML=findOut()}});
+document.addEventListener('input',e=>{if(e.target.id==='find-q'){findQ=e.target.value;findSel=null;document.getElementById('find-out').innerHTML=findOut()}});
 window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(V[h]&&h!==view){view=h;render()}});
 if('speechSynthesis' in window)speechSynthesis.addEventListener?.('voiceschanged',()=>{loadVoice();const n=document.getElementById('voice-note');if(n)n.textContent=voiceNote()});
 setRate(rate); view=current(); render();
