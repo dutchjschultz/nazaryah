@@ -1,4 +1,8 @@
-// counterfeit 1110 V2.js
+// counterfeit 1110 V3.js
+// V3 (Five Symbols 1110 V1): new kind `symbol` — each religion's two symbol
+// studies (`part` why = Why They Chose It, error = The Error It Carries). They
+// sit under "The Symbol" in the hub's intro block, not in the Studies grid,
+// and count as studies on the tile.
 // V2 (Counterfeit Section Load 1110 V1): new kind `overview` — one religion
 // overview study per hub (Islam, Judaism, Hinduism, Buddhism; Christianity has
 // none), shown first under the hub's Studies heading. The tile count line adds
@@ -19,7 +23,7 @@
 // ENTRIES — every Counterfeit page below a hub.
 //   slug      the last URL segment (the book's slug is what `parent` names)
 //   religion  hinduism | buddhism | judaism | islam | christianity
-//   kind      book | study | picture | overview
+//   kind      book | study | picture | overview | symbol (with part: why | error)
 //   parent    '' for a top-level entry; the book's slug for a deeper study.
 //             Deeper studies never show on a hub or the front door, only in
 //             their book's "Inside this book" list.
@@ -101,6 +105,16 @@ export const RELIGIONS = [
 const B = '/counterfeit/buddhism/38-blessings';
 
 export const ENTRIES = [
+  { slug: 'star-and-crescent-why-they-chose-it', religion: 'islam', kind: 'symbol', part: 'why', parent: '', href: '/counterfeit/star-and-crescent-why-they-chose-it', reference: 'The Symbol', title: "The Star and Crescent: Why They Chose It", deck: "Islam forbids images, yet a moon and a star fly over much of the Muslim world." },
+  { slug: 'star-and-crescent-the-error-it-carries', religion: 'islam', kind: 'symbol', part: 'error', parent: '', href: '/counterfeit/star-and-crescent-the-error-it-carries', reference: 'The Symbol', title: "The Star and Crescent: The Error It Carries", deck: "A religion that confesses one God placed a created light on its banner." },
+  { slug: 'star-of-david-why-they-chose-it', religion: 'judaism', kind: 'symbol', part: 'why', parent: '', href: '/counterfeit/star-of-david-why-they-chose-it', reference: 'The Symbol', title: "The Star of David: Why They Chose It", deck: "The best-known Jewish symbol in the world, and a late arrival in Jewish history." },
+  { slug: 'star-of-david-the-error-it-carries', religion: 'judaism', kind: 'symbol', part: 'error', parent: '', href: '/counterfeit/star-of-david-the-error-it-carries', reference: 'The Symbol', title: "The Star of David: The Error It Carries", deck: "Scripture promised a Star out of Jacob. The star Judaism chose stands in His place." },
+  { slug: 'om-why-they-chose-it', religion: 'hinduism', kind: 'symbol', part: 'why', parent: '', href: '/counterfeit/om-why-they-chose-it', reference: 'The Symbol', title: "The Om: Why They Chose It", deck: "One syllable that Hindus call the sound of all creation." },
+  { slug: 'om-the-error-it-carries', religion: 'hinduism', kind: 'symbol', part: 'error', parent: '', href: '/counterfeit/om-the-error-it-carries', reference: 'The Symbol', title: "The Om: The Error It Carries", deck: "Hinduism offers a syllable to utter at death. Scripture offers a Name to call upon." },
+  { slug: 'dharma-wheel-why-they-chose-it', religion: 'buddhism', kind: 'symbol', part: 'why', parent: '', href: '/counterfeit/dharma-wheel-why-they-chose-it', reference: 'The Symbol', title: "The Dharma Wheel: Why They Chose It", deck: "Eight spokes, one hub, and a teaching set in motion at a deer park in India." },
+  { slug: 'dharma-wheel-the-error-it-carries', religion: 'buddhism', kind: 'symbol', part: 'error', parent: '', href: '/counterfeit/dharma-wheel-the-error-it-carries', reference: 'The Symbol', title: "The Dharma Wheel: The Error It Carries", deck: "A wheel with eight spokes and no one at the center." },
+  { slug: 'cross-why-they-chose-it', religion: 'christianity', kind: 'symbol', part: 'why', parent: '', href: '/counterfeit/cross-why-they-chose-it', reference: 'The Symbol', title: "The Cross: Why They Chose It", deck: "The symbol two billion people wear, and the reasons they give for wearing it." },
+  { slug: 'cross-the-error-it-carries', religion: 'christianity', kind: 'symbol', part: 'error', parent: '', href: '/counterfeit/cross-the-error-it-carries', reference: 'The Symbol', title: "The Cross: The Error It Carries", deck: "Yahushua compared His lifting up to a bronze serpent. A righteous king once broke that serpent to pieces." },
   { slug: 'what-the-muslim-kept', religion: 'islam', kind: 'overview', parent: '', href: '/counterfeit/what-the-muslim-kept', reference: 'Religion Overview', title: 'What the Muslim Kept and the Church Threw Away', deck: 'One God, set prayer, a clean table, a fixed day, and a yearly fast, and the one thing Islam never had' },
   { slug: 'the-law-kept-the-lamb-refused', religion: 'judaism', kind: 'overview', parent: '', href: '/counterfeit/the-law-kept-the-lamb-refused', reference: 'Religion Overview', title: 'Judaism: The Law Kept, the Lamb Refused', deck: "The mirror image of the church's error" },
   { slug: 'the-commandments-under-a-thousand-gods', religion: 'hinduism', kind: 'overview', parent: '', href: '/counterfeit/the-commandments-under-a-thousand-gods', reference: 'Religion Overview', title: 'Hinduism: The Commandments Under a Thousand Gods', deck: 'Discipline, prayer, and the second tablet, all buried beneath idols' },
@@ -150,7 +164,7 @@ export const ENTRIES = [
 // ── Derived (never hand-kept) ────────────────────────────────────────────────
 
 const RELIGION_IDS = new Set(RELIGIONS.map((r) => r.id));
-const KINDS = new Set(['book', 'study', 'picture', 'overview']);
+const KINDS = new Set(['book', 'study', 'picture', 'overview', 'symbol']);
 const SLUGS = new Set(ENTRIES.map((e) => e.slug));
 for (const e of ENTRIES) {
   if (!RELIGION_IDS.has(e.religion)) throw new Error(`counterfeit.js: ${e.slug} has unknown religion "${e.religion}"`);
@@ -167,7 +181,9 @@ export const hubHref = (id) => `/counterfeit/${id}`;
 /** Top-level entries of a religion (deeper studies excluded). */
 export const topLevel = (id) => ENTRIES.filter((e) => e.religion === id && !e.parent);
 export const books = (id) => topLevel(id).filter((e) => e.kind === 'book');
-export const studies = (id) => topLevel(id).filter((e) => e.kind !== 'book');
+export const studies = (id) => topLevel(id).filter((e) => e.kind !== 'book' && e.kind !== 'symbol');
+/** The religion's two symbol studies, Why They Chose It first. */
+export const symbolStudies = (id) => ['why', 'error'].map((p) => topLevel(id).find((e) => e.kind === 'symbol' && e.part === p)).filter(Boolean);
 /** The religion's overview study, or undefined (Christianity has none). */
 export const overviewOf = (id) => ENTRIES.find((e) => e.religion === id && e.kind === 'overview');
 export const overviews = () => RELIGIONS.map((r) => overviewOf(r.id)).filter(Boolean);
@@ -177,7 +193,7 @@ const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
 /** The tile's count line: "1 book · 2 studies · 24 Stack Up answers", or "Intro · studies coming". */
 export const countLine = (id) => {
   const b = books(id).length;
-  const s = studies(id).length;
+  const s = studies(id).length + symbolStudies(id).length;
   const a = answersFor(id).length;
   if (!b && !s && !a) return 'Intro · studies coming';
   return [b && plural(b, 'book', 'books'), s && plural(s, 'study', 'studies'), a && plural(a, 'Stack Up answer', 'Stack Up answers')].filter(Boolean).join(' · ');

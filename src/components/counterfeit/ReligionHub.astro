@@ -1,5 +1,8 @@
 ---
-// ReligionHub 1110 V2.astro
+// ReligionHub 1110 V3.astro
+// V3 (Five Symbols 1110 V1): under "The Symbol" in the intro block, the
+// religion's two symbol studies as a pair of small cards (Why They Chose It,
+// then The Error It Carries).
 // V2 (Counterfeit Section Load 1110 V1): the religion overview (kind overview)
 // leads the Studies grid, and a new "How <religion> Stacks Up" list follows it:
 // every Old Paths doctrine this religion answers, in Old Paths order, linking
@@ -14,7 +17,7 @@
 // Deeper studies (any entry with a parent) never appear here.
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReligionSymbol from './ReligionSymbol.astro';
-import { religion, books, studies, bookChips } from '../../data/counterfeit.js';
+import { religion, books, studies, bookChips, symbolStudies } from '../../data/counterfeit.js';
 import { answersFor, studyHref } from '../../data/stackup.js';
 
 interface Props { id: string }
@@ -24,6 +27,7 @@ const bookList = books(r.id);
 const studyList = studies(r.id);
 const plainDeck = r.deck;
 const stack = answersFor(r.id);
+const symbolPair = symbolStudies(r.id);
 ---
 
 <BaseLayout
@@ -47,6 +51,16 @@ const stack = answersFor(r.id);
           <p set:html={r.intro} />
           <h2 class="intro-h">The Symbol</h2>
           <p set:html={r.symbol} />
+          {symbolPair.length > 0 && (
+            <div class="sym-pair">
+              {symbolPair.map((s) => (
+                <a class="sym" href={s.href}>
+                  <span class="ref">{s.part === 'why' ? 'Why They Chose It' : 'The Error It Carries'}</span>
+                  <span class="sym-deck">{s.deck}</span>
+                </a>
+              ))}
+            </div>
+          )}
           <p class="thread">{r.thread}</p>
         </div>
       </section>
@@ -177,6 +191,14 @@ const stack = answersFor(r.id);
   .tag { float: right; font-size: .75rem; color: #fff; background: var(--gold); border-radius: 10px; padding: 1px 8px; font-style: normal; }
 
   .card.overview { border-top-color: var(--gold); }
+
+  /* The two symbol studies under "The Symbol" */
+  .sym-pair { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin: 0 0 14px; }
+  .sym { display: block; background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 4px; padding: 8px 12px; text-decoration: none; color: var(--ink); transition: transform .2s ease; }
+  .sym:hover { transform: translateY(-2px); border-color: var(--gold); }
+  .sym .ref { display: block; }
+  .sym-deck { display: block; font-style: italic; color: var(--muted); font-size: .9rem; line-height: 1.4; }
+  @media (max-width: 560px) { .sym-pair { grid-template-columns: 1fr; } }
 
   /* How <religion> Stacks Up */
   .stack-sub { margin: -6px 0 14px; color: var(--muted); font-style: italic; }
