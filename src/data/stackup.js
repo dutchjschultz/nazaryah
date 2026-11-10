@@ -1,4 +1,6 @@
-// stackup 1110 V2.js
+// stackup 1110 V3.js
+// V3 (Etsy Stack Up Patch 1110 V1): Wine and the Bread / Islam deck changed to
+// "All Bread and No Cup" (was a repeat of The Walk After the Door / Islam).
 // V2 (Counterfeit Section Load 1110 V1): derived helpers added below the list —
 // setHref / studyHref / nextSet / prevSet / answersFor / bandFor — and a build
 // guard (25 sets, five answers each in the fixed order, unique slugs). The list
@@ -537,7 +539,7 @@ export const stackup = [
       {
         "religion": "Islam",
         "slug": "islam",
-        "title": "A Walk With No Door",
+        "title": "All Bread and No Cup",
         "hook": "Islam is all bread and no cup.",
         "image": "/images/stackup/islam.jpg"
       },

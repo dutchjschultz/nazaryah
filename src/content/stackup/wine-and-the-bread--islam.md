@@ -1,6 +1,6 @@
 ---
 title: "The Wine and the Bread: Islam's Answer"
-deck: "A Walk With No Door"
+deck: "All Bread and No Cup"
 doctrine: "wine-and-the-bread"
 religion: "Islam"
 ---
