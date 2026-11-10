@@ -1,4 +1,10 @@
-// content config 1029 V35
+// content config 1110 V36
+// V36 (Counterfeit Section Load 1110 V1): new `stackup` collection
+// (src/content/stackup/<doctrine-slug>--<religion>.md) — the 112 How the Five
+// Religions Stack Up studies, served at /counterfeit/stack-up/<doctrine>/<religion>.
+// Frontmatter title / deck / doctrine / religion; the set list and card text live
+// in src/data/stackup.js, and the page route fails the build when a file and its
+// stackup.js answer disagree.
 // V35 (Dutch 1029): posts gain optional `scrollRole: "main" | "companion"` beside `scrollBook`. Absent or
 // "main" = the book's Quick Scroll; "companion" = listed under that book's Quick Scroll on /quick-scroll
 // (the book stays faded until it has a main).
@@ -459,7 +465,19 @@ const hebrewCollection = defineCollection({
 const testimoniesCollection = defineCollection({ type: 'content', schema: z.object({}) });
 const testimonyFoundationsCollection = defineCollection({ type: 'content', schema: z.object({}) });
 
+// HOW THE FIVE RELIGIONS STACK UP — one short study per religion per doctrine (V36).
+const stackupCollection = defineCollection({
+  type: 'content',
+  schema: z.object({
+    title: z.string(),
+    deck: z.string(),
+    doctrine: z.string(),
+    religion: z.enum(['Islam', 'Judaism', 'Hinduism', 'Buddhism', 'Christianity']),
+  }),
+});
+
 export const collections = {
+  stackup: stackupCollection,
   posts: postsCollection,
   peah: peahCollection,
   testimonies: testimoniesCollection,

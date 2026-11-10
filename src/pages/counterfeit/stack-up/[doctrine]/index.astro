@@ -1,0 +1,46 @@
+---
+// counterfeit/stack-up/[doctrine]/index 1110 V1.astro
+// V1 (Counterfeit Section Load 1110 V1): one page per Stack Up set (the 25 Old
+// Paths doctrines in src/data/stackup.js). Sidebar left (StackUpSidebar); main:
+// breadcrumb (The Old Paths › doctrine › How the Five Religions Stack Up), the
+// heading "On the Doctrine: <title>", the house panel (StackUpHouse), then
+// "Back to the doctrine" and "Next set".
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import StackUpSidebar from '../../../../components/stackup/StackUpSidebar.astro';
+import StackUpHouse from '../../../../components/stackup/StackUpHouse.astro';
+import { stackup, setHref, nextSet } from '../../../../data/stackup.js';
+
+export function getStaticPaths() {
+  return stackup.map((d) => ({ params: { doctrine: d.slug }, props: { d } }));
+}
+
+const { d } = Astro.props;
+const next = nextSet(d);
+---
+
+<BaseLayout
+  title={`${d.title}: How the Five Religions Stack Up | Nazaryah`}
+  description={`How Islam, Judaism, Hinduism, Buddhism and Christianity each answer the Old Paths doctrine ${d.title}. ${d.oneLine}`}
+>
+  <div class="su">
+    <div class="su-wrap">
+      <div class="su-layout">
+        <StackUpSidebar current={d.slug} />
+        <div class="su-main">
+          <nav class="su-crumb" aria-label="Breadcrumb">
+            <a href="/doctrines/old-paths">The Old Paths</a> › <a href={d.doctrineUrl}>{d.title}</a> › <a href="/counterfeit/stack-up">How the Five Religions Stack Up</a>
+          </nav>
+          <h1>On the Doctrine: {d.title}</h1>
+          <p class="cfh-deck">{d.oneLine}</p>
+          <StackUpHouse doctrine={d} />
+          <nav class="su-after" aria-label="Set navigation">
+            <a href={d.doctrineUrl}>← Back to the doctrine</a>
+            {next
+              ? <a href={setHref(next)}>Next set: {next.title} →</a>
+              : <a href="/counterfeit/stack-up">All the sets →</a>}
+          </nav>
+        </div>
+      </div>
+    </div>
+  </div>
+</BaseLayout>

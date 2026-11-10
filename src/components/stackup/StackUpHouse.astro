@@ -1,0 +1,68 @@
+---
+// StackUpHouse 1110 V1.astro
+// V1 (Counterfeit Section Load 1110 V1): the navy house-shaped panel of a set
+// page. The roof names the doctrine (number, title, one-line summary) and holds
+// the gold "Read the doctrine" button and a plain <details> "Show the Old Path
+// text" fold-out (no script). Under it, five cards in one row, always Islam,
+// Judaism, Hinduism, Buddhism, Christianity; on narrow screens the row scrolls
+// sideways and never wraps. A card shows its picture when the file is in
+// public/ (stackup.js `image`), else a tan box with the religion's symbol. A
+// "No connection" slot has no link.
+import fs from 'node:fs';
+import '../../styles/stackup.css';
+import ReligionSymbol from '../counterfeit/ReligionSymbol.astro';
+import { studyHref } from '../../data/stackup.js';
+
+interface Props { doctrine: any }
+const { doctrine: d } = Astro.props;
+const hasImage = (src: string | undefined) => !!src && fs.existsSync(`public${src}`);
+---
+
+<section class="su-house" aria-label={`How the five religions stack up on ${d.title}`}>
+  <div class="su-roof">
+    <p class="su-roof-n">The Old Paths · {d.n}</p>
+    <h2>{d.title}</h2>
+    <p class="su-roof-line">{d.oneLine}</p>
+    <div class="su-roof-actions">
+      <a class="su-btn" href={d.doctrineUrl}>Read the doctrine</a>
+    </div>
+    <details class="su-fold">
+      <summary>Show the Old Path text</summary>
+      <p>{d.oldPath}</p>
+    </details>
+  </div>
+  <div class="su-rooms">
+    <p class="su-scroll-note">Swipe sideways for all five religions.</p>
+    <div class="su-row">
+      {d.answers.map((a: any) => {
+        const id = a.religion.toLowerCase();
+        const pic = (
+          <div class="su-pic">
+            {hasImage(a.image)
+              ? <img src={a.image} alt="" loading="lazy" />
+              : <ReligionSymbol id={id} uid={`house-${d.slug}-${id}`} />}
+          </div>
+        );
+        return a.slug ? (
+          <a class="su-card" href={studyHref(d, a)}>
+            {pic}
+            <div class="su-card-body">
+              <span class="su-card-rel">{a.religion}</span>
+              <h3>{a.title}</h3>
+              <p>{a.hook}</p>
+              <span class="su-read">Read the answer →</span>
+            </div>
+          </a>
+        ) : (
+          <div class="su-card su-none">
+            {pic}
+            <div class="su-card-body">
+              <span class="su-card-rel">{a.religion}</span>
+              <h3>No connection</h3>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

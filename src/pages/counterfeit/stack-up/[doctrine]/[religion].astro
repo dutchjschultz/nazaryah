@@ -1,0 +1,66 @@
+---
+// counterfeit/stack-up/[doctrine]/[religion] 1110 V1.astro
+// V1 (Counterfeit Section Load 1110 V1): one page per Stack Up study (the
+// `stackup` collection, src/content/stackup/<doctrine>--<religion>.md). Every
+// live answer in src/data/stackup.js must have its file, and the file's
+// doctrine / religion / deck must match that answer, or the build fails.
+// Breadcrumb, kicker, title, deck (.cfh-deck — the short card deck; the meta
+// description is the answer's hook), the study, then the navy box: Read the
+// doctrine, See all five religions on <doctrine>, and the other four answers.
+import { getCollection } from 'astro:content';
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import '../../../../styles/stackup.css';
+import { stackup, setHref, studyHref } from '../../../../data/stackup.js';
+
+export async function getStaticPaths() {
+  const files = new Map((await getCollection('stackup')).map((e) => [e.id.replace(/\.md$/, ''), e]));
+  const paths = [];
+  for (const d of stackup) {
+    for (const a of d.answers) {
+      if (!a.slug) continue;
+      const key = `${d.slug}--${a.slug}`;
+      const entry = files.get(key);
+      if (!entry) throw new Error(`stack-up: ${key} is live in src/data/stackup.js but src/content/stackup/${key}.md is missing`);
+      if (entry.data.doctrine !== d.slug || entry.data.religion !== a.religion || entry.data.deck !== a.title) {
+        throw new Error(`stack-up: src/content/stackup/${key}.md (doctrine "${entry.data.doctrine}", religion "${entry.data.religion}", deck "${entry.data.deck}") does not match its stackup.js answer ("${d.slug}", "${a.religion}", "${a.title}")`);
+      }
+      files.delete(key);
+      paths.push({ params: { doctrine: d.slug, religion: a.slug }, props: { d, a, entry } });
+    }
+  }
+  if (files.size) throw new Error(`stack-up: no stackup.js answer for ${[...files.keys()].join(', ')}`);
+  return paths;
+}
+
+const { d, a, entry } = Astro.props;
+const { Content } = await entry.render();
+const others = d.answers.filter((x) => x !== a);
+---
+
+<BaseLayout title={`${entry.data.title} | Nazaryah`} description={a.hook} article>
+  <div class="su">
+    <div class="su-wrap su-narrow">
+      <nav class="su-crumb" aria-label="Breadcrumb">
+        <a href="/doctrines/old-paths">The Old Paths</a> › <a href={d.doctrineUrl}>{d.title}</a> › <a href={setHref(d)}>How the Five Religions Stack Up</a> › <span>{a.religion}</span>
+      </nav>
+      <p class="su-kicker">How the Five Religions Stack Up · {d.n}</p>
+      <h1>{entry.data.title}</h1>
+      <p class="cfh-deck">{entry.data.deck}</p>
+      <article class="su-body">
+        <Content />
+      </article>
+      <aside class="su-box" aria-label="This doctrine" data-pagefind-ignore>
+        <h2>On the Doctrine: {d.title}</h2>
+        <div class="su-box-actions">
+          <a class="su-btn" href={d.doctrineUrl}>Read the doctrine</a>
+          <a class="su-link" href={setHref(d)}>See all five religions on {d.title} →</a>
+        </div>
+        <ul>
+          {others.map((o) => o.slug
+            ? <li><a href={studyHref(d, o)}><b>{o.religion}</b>{o.title}</a></li>
+            : <li class="su-none"><b>{o.religion}</b>No connection</li>)}
+        </ul>
+      </aside>
+    </div>
+  </div>
+</BaseLayout>

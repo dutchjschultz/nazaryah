@@ -1,0 +1,31 @@
+---
+// StackUpBand 1110 V1.astro
+// V1 (Counterfeit Section Load 1110 V1): the link band at the foot of an Old
+// Paths doctrine page, pointing to that doctrine's Stack Up set: the five
+// religions (a link each, or "No connection"), then the gold button to the set.
+// Renders nothing for a page with no set (Lay the Hand Upon the Head).
+import '../../styles/stackup.css';
+import { bandFor, setHref, studyHref } from '../../data/stackup.js';
+
+interface Props { slug: string }
+const d = bandFor(Astro.props.slug);
+---
+
+{d && (
+  <aside class="su-band" aria-label="How the Five Religions Stack Up" data-pagefind-ignore>
+    <div class="su-band-in">
+      <p class="su-band-k">How the Five Religions Stack Up</p>
+      <h2>On the Doctrine: {d.title}</h2>
+      <ul>
+        {d.answers.map((a: any) => (
+          <li>
+            {a.slug
+              ? <a href={studyHref(d, a)}><b>{a.religion}</b>{a.title}</a>
+              : <span><b>{a.religion}</b>No connection</span>}
+          </li>
+        ))}
+      </ul>
+      <a class="su-btn" href={setHref(d)}>See all five religions →</a>
+    </div>
+  </aside>
+)}

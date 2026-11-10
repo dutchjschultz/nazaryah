@@ -1,0 +1,24 @@
+---
+// counterfeit/stack-up/index 1110 V1.astro
+// V1 (Counterfeit Section Load 1110 V1): the How the Five Religions Stack Up
+// landing page. Breadcrumb, title, deck (.cfh-deck, the social card's line),
+// the section's opening paragraphs, then StackUpIndex (overviews + 25 sets).
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import StackUpIndex from '../../../components/stackup/StackUpIndex.astro';
+---
+
+<BaseLayout
+  title="How the Five Religions Stack Up | Counterfeit | Nazaryah"
+  description="Every Old Paths doctrine set beside Islam, Judaism, Hinduism, Buddhism and Christianity: what each religion teaches, what it kept, where it falls, and the verdict of Scripture."
+>
+  <div class="su">
+    <div class="su-wrap">
+      <nav class="su-crumb" aria-label="Breadcrumb"><a href="/counterfeit">Counterfeit</a> › <span>How the Five Religions Stack Up</span></nav>
+      <h1>How the Five Religions Stack Up</h1>
+      <p class="cfh-deck">Every Old Path, and how each religion answers it.</p>
+      <p class="su-lede">Each set takes one doctrine from The Old Paths and holds the five largest religions up against it, always in the same order: Islam, Judaism, Hinduism, Buddhism, Christianity. Each answer is one short study: what the religion teaches, what it kept, where it falls, and the verdict.</p>
+      <p class="su-lede">Where a religion has no teaching on a doctrine at all, its place in the set reads "No connection."</p>
+      <StackUpIndex heading={false} />
+    </div>
+  </div>
+</BaseLayout>

@@ -1,4 +1,8 @@
-// counterfeit 1105 V1.js
+// counterfeit 1110 V2.js
+// V2 (Counterfeit Section Load 1110 V1): new kind `overview` — one religion
+// overview study per hub (Islam, Judaism, Hinduism, Buddhism; Christianity has
+// none), shown first under the hub's Studies heading. The tile count line adds
+// the religion's Stack Up answers (src/data/stackup.js).
 // V1 (Etsy Handoff Counterfeit Restructure 1105 V4): THE ONE LIST for the
 // Counterfeit section. Three levels: the front door (/counterfeit) shows the five
 // RELIGIONS as tiles; each religion's hub (/counterfeit/<religion>) shows its
@@ -15,7 +19,7 @@
 // ENTRIES — every Counterfeit page below a hub.
 //   slug      the last URL segment (the book's slug is what `parent` names)
 //   religion  hinduism | buddhism | judaism | islam | christianity
-//   kind      book | study | picture
+//   kind      book | study | picture | overview
 //   parent    '' for a top-level entry; the book's slug for a deeper study.
 //             Deeper studies never show on a hub or the front door, only in
 //             their book's "Inside this book" list.
@@ -23,6 +27,8 @@
 //   book      (kind book) the cover and source line.
 //   blessing  (deeper study) the blessing number it opens from, or a label.
 //   photos    (kind picture) lead photos with captions; photos[0] is the card band.
+
+import { answersFor } from './stackup.js';
 
 export const RELIGIONS = [
   {
@@ -95,6 +101,10 @@ export const RELIGIONS = [
 const B = '/counterfeit/buddhism/38-blessings';
 
 export const ENTRIES = [
+  { slug: 'what-the-muslim-kept', religion: 'islam', kind: 'overview', parent: '', href: '/counterfeit/what-the-muslim-kept', reference: 'Religion Overview', title: 'What the Muslim Kept and the Church Threw Away', deck: 'One God, set prayer, a clean table, a fixed day, and a yearly fast, and the one thing Islam never had' },
+  { slug: 'the-law-kept-the-lamb-refused', religion: 'judaism', kind: 'overview', parent: '', href: '/counterfeit/the-law-kept-the-lamb-refused', reference: 'Religion Overview', title: 'Judaism: The Law Kept, the Lamb Refused', deck: "The mirror image of the church's error" },
+  { slug: 'the-commandments-under-a-thousand-gods', religion: 'hinduism', kind: 'overview', parent: '', href: '/counterfeit/the-commandments-under-a-thousand-gods', reference: 'Religion Overview', title: 'Hinduism: The Commandments Under a Thousand Gods', deck: 'Discipline, prayer, and the second tablet, all buried beneath idols' },
+  { slug: 'a-law-without-a-lawgiver', religion: 'buddhism', kind: 'overview', parent: '', href: '/counterfeit/a-law-without-a-lawgiver', reference: 'Religion Overview', title: 'Buddhism: A Law Without a Lawgiver', deck: 'The second tablet kept, the first tablet missing' },
   {
     slug: '38-blessings',
     religion: 'buddhism',
@@ -140,7 +150,7 @@ export const ENTRIES = [
 // ── Derived (never hand-kept) ────────────────────────────────────────────────
 
 const RELIGION_IDS = new Set(RELIGIONS.map((r) => r.id));
-const KINDS = new Set(['book', 'study', 'picture']);
+const KINDS = new Set(['book', 'study', 'picture', 'overview']);
 const SLUGS = new Set(ENTRIES.map((e) => e.slug));
 for (const e of ENTRIES) {
   if (!RELIGION_IDS.has(e.religion)) throw new Error(`counterfeit.js: ${e.slug} has unknown religion "${e.religion}"`);
@@ -158,15 +168,19 @@ export const hubHref = (id) => `/counterfeit/${id}`;
 export const topLevel = (id) => ENTRIES.filter((e) => e.religion === id && !e.parent);
 export const books = (id) => topLevel(id).filter((e) => e.kind === 'book');
 export const studies = (id) => topLevel(id).filter((e) => e.kind !== 'book');
+/** The religion's overview study, or undefined (Christianity has none). */
+export const overviewOf = (id) => ENTRIES.find((e) => e.religion === id && e.kind === 'overview');
+export const overviews = () => RELIGIONS.map((r) => overviewOf(r.id)).filter(Boolean);
 export const deeperStudies = (bookSlug) => ENTRIES.filter((e) => e.parent === bookSlug);
 
 const plural = (n, one, many) => `${n} ${n === 1 ? one : many}`;
-/** The tile's count line: "1 book · 1 study", or "Intro · studies coming". */
+/** The tile's count line: "1 book · 2 studies · 24 Stack Up answers", or "Intro · studies coming". */
 export const countLine = (id) => {
   const b = books(id).length;
   const s = studies(id).length;
-  if (!b && !s) return 'Intro · studies coming';
-  return [b && plural(b, 'book', 'books'), s && plural(s, 'study', 'studies')].filter(Boolean).join(' · ');
+  const a = answersFor(id).length;
+  if (!b && !s && !a) return 'Intro · studies coming';
+  return [b && plural(b, 'book', 'books'), s && plural(s, 'study', 'studies'), a && plural(a, 'Stack Up answer', 'Stack Up answers')].filter(Boolean).join(' · ');
 };
 /** A book card's chips: "Main study", "6 deeper studies". */
 export const bookChips = (bookSlug) => {

@@ -1,5 +1,8 @@
 ---
-// src/pages/doctrines/old-paths/[slug].astro · 1022 V3
+// src/pages/doctrines/old-paths/[slug].astro · 1110 V4
+// V4 (Counterfeit Section Load 1110 V1): every page ends with StackUpBand, the
+// link to that doctrine's How the Five Religions Stack Up set (it renders
+// nothing for Lay the Hand Upon the Head, which has no set).
 // V3: a doctrine pair with `layout: "v2"` and doctrine-v2.js content renders the
 // trial layout (DoctrinePageV2); every other page renders as before.
 // V2: this route now serves BOTH tiers of The Old Paths — the ten doctrine info
@@ -11,6 +14,7 @@ import BaseLayout from '../../../layouts/BaseLayout.astro';
 import DoctrineInfo from '../../../components/DoctrineInfo.astro';
 import FoundationInfo from '../../../components/FoundationInfo.astro';
 import DoctrinePageV2 from '../../../components/DoctrinePageV2.astro';
+import StackUpBand from '../../../components/stackup/StackUpBand.astro';
 import { v2For } from '../../../data/doctrine-v2.js';
 import { doctrines } from '../../../data/doctrines.data.js';
 import { foundations } from '../../../data/foundations.data.js';
@@ -34,4 +38,5 @@ const description = kind === 'doctrine' ? pair.oldPaths.deck : foundation.deck;
   {kind === 'doctrine'
     ? (v2 ? <DoctrinePageV2 side="old-paths" pair={pair} /> : <DoctrineInfo side="old-paths" pair={pair} />)
     : <FoundationInfo foundation={foundation} />}
+  <StackUpBand slug={kind === 'doctrine' ? pair.oldPaths.slug : foundation.slug} />
 </BaseLayout>

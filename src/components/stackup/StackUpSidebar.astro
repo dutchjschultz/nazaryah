@@ -1,0 +1,32 @@
+---
+// StackUpSidebar 1110 V1.astro
+// V1 (Counterfeit Section Load 1110 V1): the left column of a Stack Up set page.
+// All 25 sets in Old Paths order (the current one marked), then the religion
+// overviews, then "Back to The Old Paths". Under 900px it drops below the house.
+import '../../styles/stackup.css';
+import { stackup, setHref } from '../../data/stackup.js';
+import { overviews, religion } from '../../data/counterfeit.js';
+
+interface Props { current?: string }
+const { current } = Astro.props;
+---
+
+<aside class="su-side" aria-label="How the Five Religions Stack Up">
+  <h2>The Sets</h2>
+  <ol>
+    {stackup.map((d) => (
+      <li>
+        <a href={setHref(d)} aria-current={d.slug === current ? 'page' : undefined}>
+          <span class="su-side-n">{d.n}</span><span>{d.title}</span>
+        </a>
+      </li>
+    ))}
+  </ol>
+  <h2>Religion Overviews</h2>
+  <ul>
+    {overviews().map((o) => (
+      <li><a href={o.href}><span>{religion(o.religion).name}</span></a></li>
+    ))}
+  </ul>
+  <p class="su-side-back"><a href="/doctrines/old-paths">Back to The Old Paths</a></p>
+</aside>
