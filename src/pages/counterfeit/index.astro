@@ -1,5 +1,10 @@
 ---
-// counterfeit/index 1110 V5.astro
+// counterfeit/index 1110 V6.astro
+// V6 (Etsy Handoff Symbol Links 1110 V1): each religion tile now carries its two
+// symbol studies (Why They Chose It / The Error It Carries) as their own links at
+// the foot of the tile. The tile is a <div>; the top (symbol, name, text, Enter)
+// is the hub link, so no link sits inside another. Under 640px the pair shortens
+// to "Why" / "Error".
 // V5 (Counterfeit Section Load 1110 V1): StackUpIndex (the four religion
 // overviews, then the 25 How the Five Religions Stack Up sets) sits between the
 // By the Numbers panel and the closing line.
@@ -15,7 +20,7 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReligionSymbol from '../../components/counterfeit/ReligionSymbol.astro';
 import StackUpIndex from '../../components/stackup/StackUpIndex.astro';
-import { RELIGIONS, countLine, hubHref } from '../../data/counterfeit.js';
+import { RELIGIONS, countLine, hubHref, symbolStudies } from '../../data/counterfeit.js';
 ---
 
 <BaseLayout
@@ -35,17 +40,33 @@ import { RELIGIONS, countLine, hubHref } from '../../data/counterfeit.js';
       </section>
 
       <nav class="rels" aria-label="The five religions">
-        {RELIGIONS.map((r) => (
-          <a class="rel" href={hubHref(r.id)}>
-            <ReligionSymbol id={r.id} uid={`tile-${r.id}`} />
-            <div>
-              <h3>{r.name}</h3>
-              <p>{r.tile}</p>
-              <span class="count">{countLine(r.id)}</span><br />
-              <span class="enter">Enter →</span>
+        {RELIGIONS.map((r) => {
+          const pair = symbolStudies(r.id);
+          return (
+            <div class="rel">
+              <a class="rel-hub" href={hubHref(r.id)}>
+                <ReligionSymbol id={r.id} uid={`tile-${r.id}`} />
+                <div>
+                  <h3>{r.name}</h3>
+                  <p>{r.tile}</p>
+                  <span class="count">{countLine(r.id)}</span><br />
+                  <span class="enter">Enter →</span>
+                </div>
+              </a>
+              {pair.length > 0 && (
+                <div class="rel-sym">
+                  <span class="rel-sym-label">The Symbol</span>
+                  {pair.map((s) => (
+                    <a href={s.href}>
+                      <span class="long">{s.part === 'why' ? 'Why They Chose It' : 'The Error It Carries'}</span>
+                      <span class="short">{s.part === 'why' ? 'Why' : 'Error'}</span>
+                    </a>
+                  ))}
+                </div>
+              )}
             </div>
-          </a>
-        ))}
+          );
+        })}
       </nav>
       <p class="cfx-note">Follower counts are for 2026 (World Christian Database).</p>
 
@@ -103,6 +124,12 @@ import { RELIGIONS, countLine, hubHref } from '../../data/counterfeit.js';
     text-decoration: none; color: var(--ink); transition: transform .2s ease;
   }
   .rel:hover { transform: translateY(-3px); }
+  .rel-hub { display: flex; flex-direction: column; align-items: center; gap: 8px; text-decoration: none; color: var(--ink); flex: 1; }
+  .rel-sym { width: 100%; margin-top: 4px; padding-top: 10px; border-top: 1px solid var(--line); display: flex; flex-direction: column; gap: 6px; }
+  .rel-sym-label { font-variant: small-caps; letter-spacing: .08em; color: var(--gold); font-size: .75rem; }
+  .rel-sym a { color: var(--navy); text-decoration: none; font-size: .85rem; line-height: 1.3; border: 1px solid var(--line); border-radius: 4px; padding: 5px 4px; background: var(--paper); }
+  .rel-sym a:hover { border-color: var(--gold); }
+  .rel-sym .short { display: none; }
   .rel svg { width: 48px; height: 48px; flex: none; }
   .rel h3 { margin: 0 0 4px; color: var(--navy); font-weight: normal; font-size: 1.05rem; line-height: 1.25; }
   .rel p { margin: 0 0 8px; font-size: .85rem; line-height: 1.4; }
@@ -115,6 +142,12 @@ import { RELIGIONS, countLine, hubHref } from '../../data/counterfeit.js';
     .rel h3 { font-size: .68rem; line-height: 1.2; hyphens: auto; -webkit-hyphens: auto; }
     .rel p, .rel .count, .rel br { display: none; }
     .rel .enter { font-size: .7rem; }
+    .rel-hub { gap: 4px; }
+    .rel-sym { padding-top: 6px; gap: 4px; }
+    .rel-sym-label { display: none; }
+    .rel-sym a { font-size: .65rem; padding: 3px 2px; }
+    .rel-sym .long { display: none; }
+    .rel-sym .short { display: inline; }
   }
 
   /* By the Numbers panel */
