@@ -1,5 +1,7 @@
 ---
-// StackUpHouse 1110 V1.astro
+// StackUpHouse 1112 V2.astro
+// V2 (Card Label Change 1112 V1): on each card the religion name is the large
+// title (h3) and the poetic deck line sits beneath it, small and italic.
 // V1 (Counterfeit Section Load 1110 V1): the navy house-shaped panel of a set
 // page. The roof names the doctrine (number, title, one-line summary) and holds
 // the gold "Read the doctrine" button and a plain <details> "Show the Old Path
@@ -47,8 +49,8 @@ const hasImage = (src: string | undefined) => !!src && fs.existsSync(`public${sr
           <a class="su-card" href={studyHref(d, a)}>
             {pic}
             <div class="su-card-body">
-              <span class="su-card-rel">{a.religion}</span>
-              <h3>{a.title}</h3>
+              <h3>{a.religion}</h3>
+              <span class="su-card-deck">{a.title}</span>
               <p>{a.hook}</p>
               <span class="su-read">Read the answer →</span>
             </div>
@@ -57,8 +59,8 @@ const hasImage = (src: string | undefined) => !!src && fs.existsSync(`public${sr
           <div class="su-card su-none">
             {pic}
             <div class="su-card-body">
-              <span class="su-card-rel">{a.religion}</span>
-              <h3>No connection</h3>
+              <h3>{a.religion}</h3>
+              <span class="su-card-deck">No connection</span>
             </div>
           </div>
         );

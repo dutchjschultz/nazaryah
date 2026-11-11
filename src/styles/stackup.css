@@ -84,15 +84,15 @@ a.su-card:hover { transform: translateY(-3px); }
 .su-pic img { width: 100%; height: 100%; object-fit: cover; display: block; }
 .su-pic svg { width: 44%; height: auto; opacity: .85; }
 .su-card-body { padding: 10px 12px 12px; display: flex; flex-direction: column; flex: 1; }
-.su-card-rel { font-variant: small-caps; letter-spacing: .1em; color: var(--su-gold); font-size: .82rem; }
-.su-card h3 { color: var(--su-navy); font-weight: normal; font-size: 1.05rem; line-height: 1.3; margin: 2px 0 6px; }
+.su-card h3 { color: var(--su-navy); font-weight: normal; font-size: 1.2rem; line-height: 1.25; margin: 0 0 2px; }
+.su-card-deck { display: block; font-style: italic; color: var(--su-gold); font-size: .9rem; line-height: 1.35; margin: 0 0 6px; }
 .su-card p { font-size: .86rem; line-height: 1.45; color: var(--su-muted); margin: 0 0 8px; display: -webkit-box; -webkit-line-clamp: 5; -webkit-box-orient: vertical; overflow: hidden; }
 .su-card .su-read { margin-top: auto; color: var(--su-navy); font-size: .9rem; border-bottom: 1px solid var(--su-gold); align-self: flex-start; }
 .su-card.su-none { background: #2b3f66; color: #c9d0de; }
 .su-card.su-none .su-pic { background: #34497a; }
 .su-card.su-none .su-pic svg { opacity: .35; }
-.su-card.su-none .su-card-rel { color: #c9b27a; }
-.su-card.su-none h3 { color: #c9d0de; font-style: italic; }
+.su-card.su-none h3 { color: #c9d0de; }
+.su-card.su-none .su-card-deck { color: #c9b27a; }
 .su-scroll-note { display: none; color: #c9d0de; font-size: .8rem; font-style: italic; margin: 0 0 8px; }
 @media (max-width: 1060px) { .su-scroll-note { display: block; } }
 

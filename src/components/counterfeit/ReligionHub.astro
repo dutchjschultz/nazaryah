@@ -1,5 +1,8 @@
 ---
-// ReligionHub 1110 V3.astro
+// ReligionHub 1112 V4.astro
+// V4 (Card Label Change 1112 V1): in How <religion> Stacks Up, the doctrine
+// name is the large line (normal case) and the poetic deck line sits beneath it,
+// small and italic. The number stays on the left.
 // V3 (Five Symbols 1110 V1): under "The Symbol" in the intro block, the
 // religion's two symbol studies as a pair of small cards (Why They Chose It,
 // then The Error It Carries).
@@ -207,8 +210,8 @@ const symbolPair = symbolStudies(r.id);
   .stack a { display: flex; gap: 12px; align-items: baseline; height: 100%; background: var(--card); border: 1px solid var(--line); border-radius: 6px; padding: 10px 14px; text-decoration: none; color: var(--ink); }
   .stack a:hover { border-color: var(--gold); }
   .stack .n { flex: none; width: 2.2em; color: var(--gold); font-size: .85rem; font-variant-numeric: tabular-nums; }
-  .stack .dt { display: block; font-variant: small-caps; letter-spacing: .06em; color: var(--muted); font-size: .85rem; line-height: 1.3; }
-  .stack .ad { display: block; color: var(--navy); font-size: 1.02rem; line-height: 1.3; }
+  .stack .dt { display: block; color: var(--navy); font-size: 1.02rem; line-height: 1.3; }
+  .stack .ad { display: block; font-style: italic; color: var(--muted); font-size: .85rem; line-height: 1.3; }
 
   @media (max-width: 560px) {
     .intro-block { flex-direction: column; }
