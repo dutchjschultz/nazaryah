@@ -28,6 +28,12 @@ Scripture does bind man to the ground, but as his origin, not his power source. 
 
 Walking barefoot is not sin. Looking to the earth as a source of healing energy is the old error of serving "the creature more than the Creator" (Romans 1:25).
 
+## Food and the Ground
+
+Yahuah does put healing in what He made, and Scripture names where He put it. He gave every herb and fruit "for meat" (Genesis 1:29), and in Ezekiel's vision the trees by the river bear fruit "for meat, and the leaf thereof for medicine" (Ezekiel 47:12). Food heals by plain means anyone can test: what is eaten builds and repairs the body.
+
+Earthing makes a different claim. It says an unseen charge rises out of the ground and into bare feet. Scripture never says healing comes up from the ground, and the evidence offered for it is thin and mostly paid for by those who sell the mats. Eating fruit is using a gift Yahuah named. Seeking a force from the earth is looking to creation for something Scripture never says creation gives.
+
 ## The Verdict
 
 Earthing is a modern New Age health claim, not a religious import from the five. It is recorded here because it shares their root: healing drawn from creation instead of from the Creator.
