@@ -1,5 +1,9 @@
 ---
-// counterfeit/index 1114 V7.astro
+// counterfeit/index 1114 V8.astro
+// V8 (Dutch 1114): How the Five Religions Stack Up becomes one card under the
+// Carried West card (same pattern), titled "... to the Old Paths Doctrines",
+// opening the first set page (sidebar + house). The 25-set list is gone from
+// this page; the Religion Overviews row stays where it was.
 // V7 (Carried West Etsy Upload 1114 V1): the Carried West group card sits
 // directly under the five religion tiles (the tiles stay one row of five), with
 // its deck, its three categories as links, and its count. From
@@ -25,6 +29,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReligionSymbol from '../../components/counterfeit/ReligionSymbol.astro';
 import StackUpIndex from '../../components/stackup/StackUpIndex.astro';
 import { RELIGIONS, countLine, hubHref, symbolStudies } from '../../data/counterfeit.js';
+import { stackup, setHref, liveAnswers } from '../../data/stackup.js';
 import { GROUP as CW, CATEGORIES as CW_CATS, categoryHref as cwHref, groupCount as cwCount } from '../../data/carried-west.js';
 ---
 
@@ -88,6 +93,18 @@ import { GROUP as CW, CATEGORIES as CW_CATS, categoryHref as cwHref, groupCount 
         </div>
       </div>
 
+      <div class="cw sux">
+        <a class="cw-main" href={setHref(stackup[0])}>
+          <h2>How the Five Religions Stack Up to the Old Paths Doctrines</h2>
+          <p>Every Old Path, and how each religion answers it.</p>
+          <span class="count">{stackup.length} doctrines · {stackup.reduce((n, d) => n + liveAnswers(d).length, 0)} answers</span><br />
+          <span class="enter">Enter →</span>
+        </a>
+        <a class="sux-syms" href={setHref(stackup[0])} aria-hidden="true" tabindex="-1">
+          {RELIGIONS.map((r) => <ReligionSymbol id={r.id} uid={`sux-${r.id}`} />)}
+        </a>
+      </div>
+
       <a class="numbers" href="/counterfeit/five-world-religions/growth">
         <div class="numtext">
           <p class="kicker">By the Numbers</p>
@@ -103,7 +120,7 @@ import { GROUP as CW, CATEGORIES as CW_CATS, categoryHref as cwHref, groupCount 
         <svg class="spark" viewBox="0 0 520 220" role="img" aria-label="Share of world population by religion, 1900 to 2026"><line x1="34" x2="402" y1="196.0" y2="196.0" stroke="#ece9e0"/><text x="28" y="200.0" text-anchor="end" font-size="10" fill="#8a8f99">0%</text><line x1="34" x2="402" y1="149.5" y2="149.5" stroke="#ece9e0"/><text x="28" y="153.5" text-anchor="end" font-size="10" fill="#8a8f99">10%</text><line x1="34" x2="402" y1="103.0" y2="103.0" stroke="#ece9e0"/><text x="28" y="107.0" text-anchor="end" font-size="10" fill="#8a8f99">20%</text><line x1="34" x2="402" y1="56.5" y2="56.5" stroke="#ece9e0"/><text x="28" y="60.5" text-anchor="end" font-size="10" fill="#8a8f99">30%</text><line x1="34" x2="402" y1="10.0" y2="10.0" stroke="#ece9e0"/><text x="28" y="14.0" text-anchor="end" font-size="10" fill="#8a8f99">40%</text><text x="34.0" y="214" text-anchor="start" font-size="10" fill="#8a8f99">1900</text><text x="402.0" y="214" text-anchor="end" font-size="10" fill="#8a8f99">2026</text><path d="M34.0,35.7 L238.4,42.1 L326.1,45.8 L384.5,47.1 L402.0,46.2" fill="none" stroke="#2a78d6" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="408.0" y="50.2" font-size="11" fill="#222">Christianity 32.2%</text><path d="M34.0,138.5 L238.4,123.4 L326.1,97.2 L384.5,82.9 L402.0,78.1" fill="none" stroke="#eb6834" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="408.0" y="82.1" font-size="11" fill="#222">Islam 25.4%</text><path d="M34.0,137.7 L238.4,138.6 L326.1,132.5 L384.5,131.3 L402.0,131.7" fill="none" stroke="#1baf7a" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="408.0" y="135.7" font-size="11" fill="#222">Hinduism 13.8%</text><path d="M34.0,159.6 L238.4,166.5 L326.1,162.2 L384.5,164.9 L402.0,166.0" fill="none" stroke="#eda100" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="408.0" y="170.0" font-size="11" fill="#222">Buddhism 6.5%</text><path d="M34.0,192.6 L238.4,194.2 L326.1,195.0 L384.5,195.1 L402.0,195.1" fill="none" stroke="#e87ba4" stroke-width="2" stroke-linejoin="round" stroke-linecap="round"/><text x="408.0" y="199.1" font-size="11" fill="#222">Judaism 0.2%</text></svg>
       </a>
 
-      <div class="su cfx-su"><StackUpIndex more /></div>
+      <div class="su cfx-su"><StackUpIndex sets={false} /></div>
 
       <p class="cfx-close">Revelation names the people who come through every counterfeit standing: those who keep the commandments of Yahuah and hold to the belief of Yahushua (Revelation 14:12). Nothing kept back, and nothing turned sideways.</p>
     </div>
@@ -179,6 +196,9 @@ import { GROUP as CW, CATEGORIES as CW_CATS, categoryHref as cwHref, groupCount 
   .cw-cats a:hover { transform: translateY(-2px); border-color: var(--gold); }
   .cw-v { display: block; font-variant: small-caps; letter-spacing: .08em; color: var(--gold); font-size: .78rem; }
   .cw-n { display: block; color: var(--navy); font-size: 1.02rem; line-height: 1.3; }
+  .sux { border-top-color: var(--navy); }
+  .sux-syms { display: flex; justify-content: center; gap: 14px; flex-wrap: wrap; }
+  .sux-syms :global(svg) { width: 48px; height: 48px; flex: none; }
   @media (max-width: 760px) { .cw { grid-template-columns: 1fr; } }
   @media (max-width: 480px) { .cw-cats { grid-template-columns: 1fr; } }
 

@@ -1,5 +1,7 @@
 ---
-// StackUpIndex 1114 V2.astro
+// StackUpIndex 1114 V3.astro
+// V3 (Dutch 1114): `sets={false}` shows the Religion Overviews only (the
+// Counterfeit front page, where the sets became one card).
 // V2 (Dutch 1114): each set card leads with the plain doctrine name (Tongue
 // Talking) as the big line, then its Old Paths title (A Pure Lip) as a
 // subtitle, then the catchphrase in small italic, then the count. From
@@ -12,8 +14,8 @@ import '../../styles/stackup.css';
 import { stackup, setHref, liveAnswers, headOf } from '../../data/stackup.js';
 import { overviews, religion } from '../../data/counterfeit.js';
 
-interface Props { more?: boolean; heading?: boolean }
-const { more = false, heading = true } = Astro.props;
+interface Props { more?: boolean; heading?: boolean; sets?: boolean }
+const { more = false, heading = true, sets = true } = Astro.props;
 const count = (d: any) => {
   const n = liveAnswers(d).length;
   return n === 5 ? 'All five religions' : n === 1 ? 'One religion answers' : `${n} of five religions`;
@@ -29,6 +31,7 @@ const count = (d: any) => {
     ))}
   </div>
 
+  {sets && <>
   {heading && <h2 class="su-index-h">How the Five Religions Stack Up</h2>}
   <p class="su-index-sub">Every Old Paths doctrine, and how Islam, Judaism, Hinduism, Buddhism and Christianity each answer it.</p>
   <ol class="su-sets">
@@ -42,4 +45,5 @@ const count = (d: any) => {
     ))}
   </ol>
   {more && <p class="su-index-more"><a href="/counterfeit/stack-up">Open How the Five Religions Stack Up →</a></p>}
+  </>}
 </div>
