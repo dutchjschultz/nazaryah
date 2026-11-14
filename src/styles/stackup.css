@@ -1,4 +1,5 @@
-/* stackup 1114 V2.css
+/* stackup 1114 V3.css
+   V3 (Dutch 1114): .su-roof-sub, the Old Paths title under the roof heading.
    V2 (Dutch 1114): set cards on the index gain .su-set-s (the Old Paths title,
    small caps) and .su-set-d (the catchphrase, small italic) under the plain
    doctrine name; the count drops to its own line.
@@ -68,6 +69,7 @@
 }
 .su-roof-n { font-variant: small-caps; letter-spacing: .14em; color: var(--su-gold-light); font-size: .9rem; margin: 0; }
 .su-roof h2 { color: #fff; font-weight: normal; font-size: 1.6rem; margin: 2px 0 4px; line-height: 1.25; }
+.su-roof-sub { font-variant: small-caps; letter-spacing: .08em; color: var(--su-gold-light); font-size: 1.1rem; margin: 0 0 4px; }
 .su-roof-line { font-style: italic; color: #d9deea; margin: 0 auto 14px; max-width: 640px; }
 .su-roof-actions { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 10px 18px; }
 .su-btn { display: inline-block; background: var(--su-gold); color: #fff !important; text-decoration: none; padding: 7px 18px; border-radius: 4px; font-size: .95rem; letter-spacing: .02em; }

@@ -1,10 +1,12 @@
 ---
-// StackUpSidebar 1110 V1.astro
+// StackUpSidebar 1114 V2.astro
+// V2 (Dutch 1114): each set is listed by its plain doctrine name (Tongue
+// Talking), from headOf() in src/data/stackup.js.
 // V1 (Counterfeit Section Load 1110 V1): the left column of a Stack Up set page.
 // All 25 sets in Old Paths order (the current one marked), then the religion
 // overviews, then "Back to The Old Paths". Under 900px it drops below the house.
 import '../../styles/stackup.css';
-import { stackup, setHref } from '../../data/stackup.js';
+import { stackup, setHref, headOf } from '../../data/stackup.js';
 import { overviews, religion } from '../../data/counterfeit.js';
 
 interface Props { current?: string }
@@ -17,7 +19,7 @@ const { current } = Astro.props;
     {stackup.map((d) => (
       <li>
         <a href={setHref(d)} aria-current={d.slug === current ? 'page' : undefined}>
-          <span class="su-side-n">{d.n}</span><span>{d.title}</span>
+          <span class="su-side-n">{d.n}</span><span>{headOf(d).name}</span>
         </a>
       </li>
     ))}

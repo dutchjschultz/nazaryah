@@ -1,5 +1,8 @@
 ---
-// StackUpHouse 1112 V2.astro
+// StackUpHouse 1114 V3.astro
+// V3 (Dutch 1114): the roof reads the plain doctrine name (Tongue Talking) as
+// its heading, the Old Paths title (A Pure Lip) as a small-caps subtitle, and
+// the catchphrase in italic beneath, from headOf() in src/data/stackup.js.
 // V2 (Card Label Change 1112 V1): on each card the religion name is the large
 // title (h3) and the poetic deck line sits beneath it, small and italic.
 // V1 (Counterfeit Section Load 1110 V1): the navy house-shaped panel of a set
@@ -13,18 +16,20 @@
 import fs from 'node:fs';
 import '../../styles/stackup.css';
 import ReligionSymbol from '../counterfeit/ReligionSymbol.astro';
-import { studyHref } from '../../data/stackup.js';
+import { studyHref, headOf } from '../../data/stackup.js';
 
 interface Props { doctrine: any }
 const { doctrine: d } = Astro.props;
+const head = headOf(d);
 const hasImage = (src: string | undefined) => !!src && fs.existsSync(`public${src}`);
 ---
 
-<section class="su-house" aria-label={`How the five religions stack up on ${d.title}`}>
+<section class="su-house" aria-label={`How the five religions stack up on ${head.name}`}>
   <div class="su-roof">
     <p class="su-roof-n">The Old Paths · {d.n}</p>
-    <h2>{d.title}</h2>
-    <p class="su-roof-line">{d.oneLine}</p>
+    <h2>{head.name}</h2>
+    <p class="su-roof-sub">{head.title}</p>
+    <p class="su-roof-line">{head.deck}</p>
     <div class="su-roof-actions">
       <a class="su-btn" href={d.doctrineUrl}>Read the doctrine</a>
     </div>
