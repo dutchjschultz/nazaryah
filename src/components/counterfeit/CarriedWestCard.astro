@@ -1,0 +1,29 @@
+---
+// CarriedWestCard 1114 V1.astro
+// V1 (Carried West Etsy Upload 1114 V1): one Carried West study card — the
+// religion line in small caps, the title, the italic deck beneath. A side note
+// carries a small "Side Note" label. Used on the category pages and under the
+// "Carried West" heading of a religion hub. Same card pattern as the hub's
+// Studies cards (navy top border); a side note's top border is gold.
+import { studyHref } from '../../data/carried-west.js';
+
+interface Props { study: any; showCategory?: boolean; categoryName?: string }
+const { study: s, showCategory = false, categoryName = '' } = Astro.props;
+---
+
+<a class={s.sideNote ? 'cwc side' : 'cwc'} href={studyHref(s)}>
+  {s.sideNote && <span class="cwc-tag">Side Note</span>}
+  <span class="cwc-rel">{showCategory && categoryName ? `${categoryName} · ${s.religion}` : s.religion}</span>
+  <h3>{s.title}</h3>
+  <p>{s.deck}</p>
+</a>
+
+<style>
+  .cwc { display: block; background: #fff; border: 1px solid #e4e0d4; border-top: 4px solid #1F3864; border-radius: 6px; padding: 20px; text-decoration: none; color: #222; transition: transform .2s ease; font-family: Georgia, "Times New Roman", serif; line-height: 1.6; }
+  .cwc:hover { transform: translateY(-3px); }
+  .cwc.side { border-top-color: #B8902F; }
+  .cwc-rel { font-variant: small-caps; letter-spacing: .1em; color: #B8902F; font-size: .85rem; }
+  .cwc h3 { margin: 4px 0 6px; color: #1F3864; font-weight: normal; font-size: 1.3rem; font-family: inherit; line-height: 1.3; }
+  .cwc p { margin: 0; font-style: italic; color: #5a5f6b; font-family: var(--font-family-serif, Georgia, serif); }
+  .cwc-tag { float: right; font-size: .75rem; color: #fff; background: #B8902F; border-radius: 10px; padding: 1px 8px; font-style: normal; margin-left: 8px; }
+</style>

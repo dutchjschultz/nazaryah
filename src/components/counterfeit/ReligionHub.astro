@@ -1,5 +1,9 @@
 ---
-// ReligionHub 1112 V4.astro
+// ReligionHub 1114 V5.astro
+// V5 (Carried West Etsy Upload 1114 V1): a "Carried West" heading after
+// Studies lists every Carried West study naming this religion (category order,
+// then study order), each card with its category before the religion line, and
+// a link to the Carried West page. Absent when the religion has none.
 // V4 (Card Label Change 1112 V1): in How <religion> Stacks Up, the doctrine
 // name is the large line (normal case) and the poetic deck line sits beneath it,
 // small and italic. The number stays on the left.
@@ -22,6 +26,8 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReligionSymbol from './ReligionSymbol.astro';
 import { religion, books, studies, bookChips, symbolStudies } from '../../data/counterfeit.js';
 import { answersFor, studyHref } from '../../data/stackup.js';
+import CarriedWestCard from './CarriedWestCard.astro';
+import { GROUP as CW, studiesFor as carriedWestFor, category as cwCategory } from '../../data/carried-west.js';
 
 interface Props { id: string }
 const r = religion(Astro.props.id);
@@ -31,6 +37,7 @@ const studyList = studies(r.id);
 const plainDeck = r.deck;
 const stack = answersFor(r.id);
 const symbolPair = symbolStudies(r.id);
+const carried = carriedWestFor(r.id);
 ---
 
 <BaseLayout
@@ -68,7 +75,7 @@ const symbolPair = symbolStudies(r.id);
         </div>
       </section>
 
-      {!bookList.length && !studyList.length && !stack.length && (
+      {!bookList.length && !studyList.length && !stack.length && !carried.length && (
         <p class="cfh-coming">Studies on this religion are coming.</p>
       )}
 
@@ -115,6 +122,16 @@ const symbolPair = symbolStudies(r.id);
                 <p>{s.deck}</p>
               </a>
             ))}
+          </div>
+        </section>
+      )}
+
+      {carried.length > 0 && (
+        <section>
+          <h2>Carried West</h2>
+          <p class="stack-sub">{CW.deck} <a href={CW.href}>All of Carried West →</a></p>
+          <div class="grid">
+            {carried.map((s) => <CarriedWestCard study={s} showCategory categoryName={cwCategory(s.category).name} />)}
           </div>
         </section>
       )}

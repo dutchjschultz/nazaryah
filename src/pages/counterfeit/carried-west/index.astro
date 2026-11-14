@@ -1,0 +1,52 @@
+---
+// counterfeit/carried-west 1114 V1.astro
+// V1 (Carried West Etsy Upload 1114 V1): the Carried West group page, opened
+// from its card on the Counterfeit front page. Breadcrumb, title, deck
+// (.cfh-deck, the social card's deck), then the three categories in order,
+// each with its verse in small caps, its hub text and its study count.
+// Everything comes from src/data/carried-west.js.
+import BaseLayout from '../../../layouts/BaseLayout.astro';
+import { GROUP, CATEGORIES, categoryHref, categoryCount } from '../../../data/carried-west.js';
+---
+
+<BaseLayout title={`${GROUP.name} | Counterfeit | Nazaryah`} description={GROUP.deck}>
+  <div class="cwg">
+    <div class="cwg-wrap">
+      <nav class="cwg-crumb" aria-label="Breadcrumb"><a href="/counterfeit">Counterfeit</a> › <span>{GROUP.name}</span></nav>
+      <h1>{GROUP.name}</h1>
+      <p class="cfh-deck">{GROUP.deck}</p>
+
+      <div class="cwg-cats">
+        {CATEGORIES.map((c) => (
+          <a class="cwg-cat" href={categoryHref(c.slug)}>
+            <span class="cwg-verse">{c.verse}</span>
+            <h2>{c.name}</h2>
+            <p>{c.hub}</p>
+            <span class="cwg-count">{categoryCount(c.slug)}</span><br />
+            <span class="cwg-enter">Enter →</span>
+          </a>
+        ))}
+      </div>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .cwg { --navy: #1F3864; --ink: #222; --muted: #5a5f6b; --gold: #B8902F; --paper: #fdfcf8; --line: #e4e0d4; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.6; }
+  .cwg *, .cwg *::before, .cwg *::after { box-sizing: border-box; }
+  .cwg h1, .cwg h2 { font-family: inherit; }
+  .cwg-wrap { max-width: 1040px; margin: 0 auto; padding: 32px 16px 48px; }
+  .cwg-crumb { font-size: .88rem; color: var(--muted); margin: 0 0 14px; }
+  .cwg-crumb a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .cwg h1 { color: var(--navy); font-weight: normal; font-size: 2.2rem; margin: 0 0 6px; line-height: 1.2; }
+  .cfh-deck { font-style: italic; color: var(--muted); font-size: 1.15rem; margin: 0 0 28px; font-family: var(--font-family-serif, Georgia, serif); }
+  .cwg-cats { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 18px; }
+  .cwg-cat { display: block; background: #fff; border: 1px solid var(--line); border-top: 4px solid var(--gold); border-radius: 6px; padding: 22px; text-decoration: none; color: var(--ink); transition: transform .2s ease; }
+  .cwg-cat:hover { transform: translateY(-3px); }
+  .cwg-verse { font-variant: small-caps; letter-spacing: .1em; color: var(--gold); font-size: .9rem; }
+  .cwg-cat h2 { color: var(--navy); font-weight: normal; font-size: 1.5rem; margin: 2px 0 8px; line-height: 1.25; }
+  .cwg-cat p { margin: 0 0 12px; }
+  .cwg-count { font-size: .8rem; color: var(--gold); font-variant: small-caps; letter-spacing: .06em; }
+  .cwg-enter { color: var(--navy); border-bottom: 1px solid var(--gold); }
+  @media (max-width: 480px) { .cwg h1 { font-size: 1.8rem; } }
+</style>

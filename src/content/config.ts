@@ -1,4 +1,7 @@
-// content config 1110 V36
+// content config 1114 V37
+// V37 (Carried West Etsy Upload 1114 V1): `home` may be a nested path
+// ("/counterfeit/carried-west/under-the-oak"), same pattern as `route`; the
+// Carried West studies live one level under their category page.
 // V36 (Counterfeit Section Load 1110 V1): new `stackup` collection
 // (src/content/stackup/<doctrine-slug>--<religion>.md) — the 112 How the Five
 // Religions Stack Up studies, served at /counterfeit/stack-up/<doctrine>/<religion>.
@@ -213,7 +216,7 @@ const postsCollection = defineCollection({
     tags: z.array(z.string()).default([]),
     // HOME — the section this study is served from, if not /blog. The URL is
     // <home>/<slug>; see src/lib/post-href.js. Must start with "/".
-    home: z.string().regex(/^\/[a-z0-9-]+$/).optional(),
+    home: z.string().regex(/^\/[a-z0-9-]+(\/[a-z0-9-]+)*$/).optional(),
     // ROUTE — the exact URL, for a study that IS a section page (e.g. "/cosmology").
     // Takes precedence over `home`. See src/lib/post-href.js.
     route: z.string().regex(/^\/[a-z0-9-]+(\/[a-z0-9-]+)*$/).optional(),

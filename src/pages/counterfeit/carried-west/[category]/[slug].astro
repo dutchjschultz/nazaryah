@@ -1,0 +1,34 @@
+---
+// counterfeit/carried-west/[category]/[slug] 1114 V1.astro
+// V1 (Carried West Etsy Upload 1114 V1): serves each Carried West study — any
+// post whose home is /counterfeit/carried-west/<category> — through BlogLayout.
+// Every post must have its entry in src/data/carried-west.js, under the same
+// category (the build fails otherwise). Breadcrumb Counterfeit › Carried West ›
+// <category> › <title>; the footer link returns to the category page.
+import { getCollection } from 'astro:content';
+import BlogLayout from '../../../../layouts/BlogLayout.astro';
+import { GROUP, STUDIES, studyBySlug, category, categoryHref } from '../../../../data/carried-west.js';
+
+export async function getStaticPaths() {
+  const posts = (await getCollection('posts')).filter((p) => (p.data.home ?? '').startsWith(`${GROUP.href}/`));
+  for (const s of STUDIES) {
+    if (!posts.some((p) => p.slug === s.slug)) throw new Error(`carried-west: ${s.slug} is in src/data/carried-west.js but has no post`);
+  }
+  return posts.map((post) => {
+    const s = studyBySlug(post.slug);
+    if (!s) throw new Error(`carried-west: ${post.slug} has no entry in src/data/carried-west.js`);
+    if (post.data.home !== categoryHref(s.category)) throw new Error(`carried-west: ${post.slug} home is ${post.data.home}, but carried-west.js files it under ${s.category}`);
+    return { params: { category: s.category, slug: post.slug }, props: { post, cat: category(s.category) } };
+  });
+}
+
+const { post, cat } = Astro.props;
+const crumbs = [
+  { label: 'Counterfeit', href: '/counterfeit' },
+  { label: GROUP.name, href: GROUP.href },
+  { label: cat.name, href: categoryHref(cat.slug) },
+  { label: post.data.title },
+];
+---
+
+<BlogLayout post={post} crumbs={crumbs} back={{ href: categoryHref(cat.slug), label: cat.name }} />

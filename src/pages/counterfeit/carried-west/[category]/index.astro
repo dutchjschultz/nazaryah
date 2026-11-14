@@ -1,0 +1,50 @@
+---
+// counterfeit/carried-west/[category] 1114 V1.astro
+// V1 (Carried West Etsy Upload 1114 V1): one Carried West category page
+// (Profiteth Little, Under the Oak, Strange Fire). Breadcrumb, title, the verse
+// in small caps, the hub text (.cfh-deck, the social card's deck), then the
+// card grid of its studies in order, side notes last. From
+// src/data/carried-west.js.
+import BaseLayout from '../../../../layouts/BaseLayout.astro';
+import CarriedWestCard from '../../../../components/counterfeit/CarriedWestCard.astro';
+import { GROUP, CATEGORIES, studiesIn } from '../../../../data/carried-west.js';
+
+export function getStaticPaths() {
+  return CATEGORIES.map((c) => ({ params: { category: c.slug }, props: { cat: c } }));
+}
+
+const { cat } = Astro.props;
+const list = studiesIn(cat.slug);
+---
+
+<BaseLayout title={`${cat.name} | ${GROUP.name} | Counterfeit | Nazaryah`} description={cat.hub}>
+  <div class="cwk">
+    <div class="cwk-wrap">
+      <nav class="cwk-crumb" aria-label="Breadcrumb"><a href="/counterfeit">Counterfeit</a> › <a href={GROUP.href}>{GROUP.name}</a> › <span>{cat.name}</span></nav>
+      <h1>{cat.name}</h1>
+      <p class="cwk-verse">{cat.verse}</p>
+      <p class="cfh-deck">{cat.hub}</p>
+
+      <div class="cwk-grid">
+        {list.map((s) => <CarriedWestCard study={s} />)}
+      </div>
+
+      <p class="cwk-back"><a href={GROUP.href}>← Back to {GROUP.name}</a></p>
+    </div>
+  </div>
+</BaseLayout>
+
+<style>
+  .cwk { --navy: #1F3864; --ink: #222; --muted: #5a5f6b; --gold: #B8902F; --paper: #fdfcf8; background: var(--paper); color: var(--ink); font-family: Georgia, "Times New Roman", serif; line-height: 1.6; }
+  .cwk *, .cwk *::before, .cwk *::after { box-sizing: border-box; }
+  .cwk h1 { font-family: inherit; }
+  .cwk-wrap { max-width: 1040px; margin: 0 auto; padding: 32px 16px 48px; }
+  .cwk-crumb { font-size: .88rem; color: var(--muted); margin: 0 0 14px; }
+  .cwk-crumb a, .cwk-back a { color: var(--navy); text-decoration: none; border-bottom: 1px solid var(--gold); }
+  .cwk h1 { color: var(--navy); font-weight: normal; font-size: 2.2rem; margin: 0 0 4px; line-height: 1.2; }
+  .cwk-verse { font-variant: small-caps; letter-spacing: .1em; color: var(--gold); font-size: 1.05rem; margin: 0 0 6px; }
+  .cfh-deck { font-style: italic; color: var(--muted); font-size: 1.15rem; margin: 0 0 28px; max-width: 760px; font-family: var(--font-family-serif, Georgia, serif); }
+  .cwk-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 280px), 1fr)); gap: 18px; }
+  .cwk-back { margin: 32px 0 0; }
+  @media (max-width: 480px) { .cwk h1 { font-size: 1.8rem; } }
+</style>

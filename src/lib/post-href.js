@@ -1,4 +1,6 @@
-// post-href 1105 V4.js
+// post-href 1114 V5.js
+// V5 (Carried West Etsy Upload 1114 V1): HOME_LABEL gains the three Carried West
+// category homes (/counterfeit/carried-west/<category>).
 // V4 (Etsy Batch 1105 V1): HOME_LABEL gains '/counterfeit' → Counterfeit (The Serpent King).
 // V3: the /blog home's reader-facing label is now "Studies" (breadcrumbs and
 // "Back to …"). The address is unchanged.
@@ -22,6 +24,9 @@ export const HOME_LABEL = {
   '/blog': 'Studies',
   '/cosmology': 'Cosmology',
   '/counterfeit': 'Counterfeit',
+  '/counterfeit/carried-west/profiteth-little': 'Profiteth Little',
+  '/counterfeit/carried-west/under-the-oak': 'Under the Oak',
+  '/counterfeit/carried-west/strange-fire': 'Strange Fire',
 };
 
 export const postHome = (entry) => entry?.data?.home ?? DEFAULT_HOME;

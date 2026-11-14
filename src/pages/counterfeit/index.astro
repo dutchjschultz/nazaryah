@@ -1,5 +1,9 @@
 ---
-// counterfeit/index 1110 V6.astro
+// counterfeit/index 1114 V7.astro
+// V7 (Carried West Etsy Upload 1114 V1): the Carried West group card sits
+// directly under the five religion tiles (the tiles stay one row of five), with
+// its deck, its three categories as links, and its count. From
+// src/data/carried-west.js.
 // V6 (Etsy Handoff Symbol Links 1110 V1): each religion tile now carries its two
 // symbol studies (Why They Chose It / The Error It Carries) as their own links at
 // the foot of the tile. The tile is a <div>; the top (symbol, name, text, Enter)
@@ -21,6 +25,7 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import ReligionSymbol from '../../components/counterfeit/ReligionSymbol.astro';
 import StackUpIndex from '../../components/stackup/StackUpIndex.astro';
 import { RELIGIONS, countLine, hubHref, symbolStudies } from '../../data/counterfeit.js';
+import { GROUP as CW, CATEGORIES as CW_CATS, categoryHref as cwHref, groupCount as cwCount } from '../../data/carried-west.js';
 ---
 
 <BaseLayout
@@ -69,6 +74,19 @@ import { RELIGIONS, countLine, hubHref, symbolStudies } from '../../data/counter
         })}
       </nav>
       <p class="cfx-note">Follower counts are for 2026 (World Christian Database).</p>
+      <div class="cw">
+        <a class="cw-main" href={CW.href}>
+          <h2>{CW.name}</h2>
+          <p>{CW.deck}</p>
+          <span class="count">{cwCount()}</span><br />
+          <span class="enter">Enter →</span>
+        </a>
+        <div class="cw-cats">
+          {CW_CATS.map((c) => (
+            <a href={cwHref(c.slug)}><span class="cw-v">{c.verse}</span><span class="cw-n">{c.name}</span></a>
+          ))}
+        </div>
+      </div>
 
       <a class="numbers" href="/counterfeit/five-world-religions/growth">
         <div class="numtext">
@@ -149,6 +167,20 @@ import { RELIGIONS, countLine, hubHref, symbolStudies } from '../../data/counter
     .rel-sym .long { display: none; }
     .rel-sym .short { display: inline; }
   }
+
+  /* Carried West group card, under the five tiles */
+  .cw { margin-top: 18px; display: grid; grid-template-columns: 1fr 1.2fr; gap: 20px; align-items: center; background: var(--card); border: 1px solid var(--line); border-top: 4px solid var(--gold); border-radius: 6px; padding: 20px 24px; }
+  .cw-main { text-decoration: none; color: var(--ink); }
+  .cw .kicker { font-variant: small-caps; letter-spacing: .12em; color: var(--gold); font-size: .95rem; margin: 0 0 2px; }
+  .cw h2 { color: var(--navy); font-weight: normal; font-size: 1.5rem; margin: 0 0 6px; }
+  .cw-main p { margin: 0 0 8px; font-style: italic; color: var(--muted); }
+  .cw-cats { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
+  .cw-cats a { display: block; text-decoration: none; background: var(--paper); border: 1px solid var(--line); border-left: 3px solid var(--gold); border-radius: 4px; padding: 8px 12px; transition: transform .2s ease; }
+  .cw-cats a:hover { transform: translateY(-2px); border-color: var(--gold); }
+  .cw-v { display: block; font-variant: small-caps; letter-spacing: .08em; color: var(--gold); font-size: .78rem; }
+  .cw-n { display: block; color: var(--navy); font-size: 1.02rem; line-height: 1.3; }
+  @media (max-width: 760px) { .cw { grid-template-columns: 1fr; } }
+  @media (max-width: 480px) { .cw-cats { grid-template-columns: 1fr; } }
 
   /* By the Numbers panel */
   .numbers {
