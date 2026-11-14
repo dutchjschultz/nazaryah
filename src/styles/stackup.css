@@ -1,4 +1,7 @@
-/* stackup 1110 V1.css
+/* stackup 1114 V2.css
+   V2 (Dutch 1114): set cards on the index gain .su-set-s (the Old Paths title,
+   small caps) and .su-set-d (the catchphrase, small italic) under the plain
+   doctrine name; the count drops to its own line.
    V1 (Counterfeit Section Load 1110 V1): one stylesheet for How the Five
    Religions Stack Up — the landing page, the 25 set pages (sidebar + house
    panel), the 112 study pages, the band on the Old Paths doctrine pages and the
@@ -134,6 +137,9 @@ a.su-card:hover { transform: translateY(-3px); }
 .su-set-n { flex: none; width: 2.2em; color: var(--su-gold); font-size: .85rem; font-variant-numeric: tabular-nums; }
 .su-set-t { color: var(--su-navy); font-size: 1.02rem; line-height: 1.3; display: block; }
 .su-set-c { color: var(--su-muted); font-size: .8rem; font-style: italic; }
+.su-set-s { display: block; color: var(--su-gold); font-variant: small-caps; letter-spacing: .06em; font-size: .92rem; line-height: 1.3; margin-top: 2px; }
+.su-set-d { display: block; color: var(--su-muted); font-family: var(--font-family-serif, Georgia, serif); font-style: italic; font-size: .9rem; line-height: 1.35; margin: 2px 0 4px; }
+.su-set-c { display: block; font-size: .75rem; }
 .su-index-more { margin: 14px 0 0; }
 .su-index-more a { color: var(--su-navy); text-decoration: none; border-bottom: 1px solid var(--su-gold); }
 

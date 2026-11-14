@@ -1,11 +1,15 @@
 ---
-// StackUpIndex 1110 V1.astro
+// StackUpIndex 1114 V2.astro
+// V2 (Dutch 1114): each set card leads with the plain doctrine name (Tongue
+// Talking) as the big line, then its Old Paths title (A Pure Lip) as a
+// subtitle, then the catchphrase in small italic, then the count. From
+// headOf() in src/data/stackup.js.
 // V1 (Counterfeit Section Load 1110 V1): the religion overviews, then all 25
 // Stack Up sets in Old Paths order (number, title, how many religions answer).
 // Used on /counterfeit (with `more`, a link to the Stack Up landing page) and on
 // /counterfeit/stack-up itself. Must sit inside a .su wrapper.
 import '../../styles/stackup.css';
-import { stackup, setHref, liveAnswers } from '../../data/stackup.js';
+import { stackup, setHref, liveAnswers, headOf } from '../../data/stackup.js';
 import { overviews, religion } from '../../data/counterfeit.js';
 
 interface Props { more?: boolean; heading?: boolean }
@@ -32,7 +36,7 @@ const count = (d: any) => {
       <li>
         <a class="su-set" href={setHref(d)}>
           <span class="su-set-n">{d.n}</span>
-          <span><span class="su-set-t">{d.title}</span><span class="su-set-c">{count(d)}</span></span>
+          <span><span class="su-set-t">{headOf(d).name}</span><span class="su-set-s">{headOf(d).title}</span><span class="su-set-d">{headOf(d).deck}</span><span class="su-set-c">{count(d)}</span></span>
         </a>
       </li>
     ))}

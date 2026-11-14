@@ -1,4 +1,9 @@
-// stackup 1110 V3.js
+// stackup 1114 V4.js
+// V4 (Dutch 1114): headOf(d) — a set's three card lines from the doctrine data:
+// `name` (the plain doctrine name, e.g. Tongue Talking: the doctrine's tag),
+// `title` (A Pure Lip) and `deck` (the catchphrase). Read from
+// doctrines.data.js (oldPaths) and foundations.data.js by the doctrineUrl
+// slug; a set that resolves to neither fails the build.
 // V3 (Etsy Stack Up Patch 1110 V1): Wine and the Bread / Islam deck changed to
 // "All Bread and No Cup" (was a repeat of The Walk After the Door / Islam).
 // V2 (Counterfeit Section Load 1110 V1): derived helpers added below the list —
@@ -11,6 +16,9 @@
 // answers: always Islam, Judaism, Hinduism, Buddhism, Christianity.
 // slug null = "No connection" (no study, no link).
 // image: one picture per religion by default; set a per-card path to override.
+
+import { doctrines as DOCTRINE_PAIRS } from './doctrines.data.js';
+import { foundations as FOUNDATIONS } from './foundations.data.js';
 
 export const STACKUP_BASE = '/counterfeit/stack-up';
 
@@ -1133,3 +1141,15 @@ export const answersFor = (religionId) =>
   stackup.flatMap((d) => d.answers.filter((a) => a.slug === religionId).map((a) => ({ doctrine: d, answer: a })));
 /** The set for an Old Paths page's slug, or null (Lay the Hand Upon the Head has none). */
 export const bandFor = (doctrineSlug) => findDoctrine(doctrineSlug) ?? null;
+
+// ── Card lines (V4) ──────────────────────────────────────────────────────────
+const HEADS = new Map([
+  ...DOCTRINE_PAIRS.map((p) => p.oldPaths),
+  ...FOUNDATIONS,
+].map((o) => [o.slug, { name: o.tag, title: o.title, deck: o.deck }]));
+for (const d of stackup) {
+  const h = HEADS.get(d.doctrineUrl.split('/').pop());
+  if (!h || !h.name) throw new Error(`stackup.js: ${d.slug} has no doctrine name (tag) in doctrines.data.js or foundations.data.js`);
+}
+/** { name, title, deck } — plain doctrine name, its Old Paths title, its catchphrase. */
+export const headOf = (d) => HEADS.get(d.doctrineUrl.split('/').pop());
