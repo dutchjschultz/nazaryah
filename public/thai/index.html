@@ -263,8 +263,6 @@ details[open] > summary { margin-bottom: 10px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 
-</head>
-<body>
 <div class="top">
   <strong>Say It in Thai</strong>
   <button class="findbtn" data-go="find" aria-label="Find a word"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="10.5" cy="10.5" r="6.5"/><path d="M15.5 15.5 21 21"/></svg></button>
@@ -484,6 +482,10 @@ const MARKS = [
  ['เก','ay'],['แกะ','ae'],['แก','aae'],['โกะ','o'],['โก','oh'],['เกาะ','aw'],['กอ','aaw'],['เกอะ','er'],['เกอ','err']
 ];
 const PHRASES = {
+ 'Wishes':[
+  ['สุขสันต์วันเกิด','sùk-sǎn wan kèrt','Happy Birthday','s'],['สวัสดีปีใหม่','sà-wàt-dee pee mài','Happy New Year','s'],['ขอให้มีความสุข','khǎaw hâi mee khwaam-sùk','May you be happy','s'],
+  ['หายไวๆ','hǎai wai-wai','Get well soon','s'],['เดินทางปลอดภัย','derrn-thaang plàawt-phai','Safe travels','s'],['ฝันดี','fǎn dee','Sweet dreams','s'],
+  ['ยินดีด้วย','yin-dee dûay','Congratulations','s'],['โชคดี','chôhk dee','Good luck','s'],['ดูแลตัวเองด้วย','doo-laae tua-ayng dûay','Take care','s']],
  'Greetings':[
   ['สวัสดี','sà-wàt-dee','Hello, or goodbye','s'],['สบายดีไหม','sà-baai dee mǎi','How are you?','q'],['สบายดี','sà-baai dee','Doing well','s'],
   ['ขอบคุณ','khàawp-khun','Thank you','s'],['ขอโทษ','khǎaw-thôht','Sorry, or excuse me','s'],['ไม่เป็นไร','mâi pen rai','No problem, never mind','s'],
@@ -500,6 +502,14 @@ const PHRASES = {
  'Shopping':[
   ['เท่าไหร่','thâo-rài','How much?','q'],['แพงไป','phaaeng pai','Too expensive','s'],['ลดได้ไหม','lót dâai mǎi','Can the price come down?','q'],
   ['เอาอันนี้','ao an-née','I will take this one','s'],['ไม่เอา','mâi ao','I do not want it','s']],
+ 'Weather':[
+  ['อากาศเป็นยังไง','aa-kàat pen yang-ngai','How is the weather?','q'],['วันนี้ร้อนมาก','wan-née ráawn mâak','It is hot today','s'],['อากาศหนาว','aa-kàat nǎao','It is cold','s'],
+  ['อากาศดี','aa-kàat dee','The weather is nice','s'],['ฝนตก','fǒn tòk','It is raining','s'],['ฝนจะตกไหม','fǒn jà tòk mǎi','Is it going to rain?','q'],
+  ['ลมแรง','lom raaeng','It is windy','s'],['ฟ้าครึ้ม','fáa khrúem','It is cloudy','s'],['แดดออก','dàaet àawk','It is sunny','s'],['อบอ้าว','òp-âao','It is muggy','s'],['เอาร่มไปด้วย','ao rôm pai dûay','Bring an umbrella','s']],
+ 'Time':[
+  ['{I}จะกลับมาทีหลัง','{I} jà klàp maa thee-lǎng','I will come back later','s'],['นานเท่าไหร่','naan thâo-rài','How long?','q'],['รอแป๊บหนึ่ง','raaw páaep nùeng','Wait a second','s'],
+  ['พรุ่งนี้ว่างไหม','phrûng-née wâang mǎi','Are you free tomorrow?','q'],['พรุ่งนี้เจอกัน','phrûng-née jerr kan','See you tomorrow','s'],['แล้วเจอกัน','láaeo jerr kan','See you later','s'],
+  ['{I}มาสาย','{I} maa sǎai','I am late','s'],['เร็วๆ','reo-reo','Hurry up'],['กี่โมงแล้ว','kèe mohng láaeo','What time is it?','q']],
  'Numbers':[
   ['ศูนย์','sǒon','0 ๐'],['หนึ่ง','nùeng','1 ๑'],['สอง','sǎawng','2 ๒'],['สาม','sǎam','3 ๓'],['สี่','sèe','4 ๔'],['ห้า','hâa','5 ๕'],['หก','hòk','6 ๖'],['เจ็ด','jèt','7 ๗'],
   ['แปด','pàaet','8 ๘'],['เก้า','kâao','9 ๙'],['สิบ','sìp','10 ๑๐'],['สิบเอ็ด','sìp-èt','11 ๑๑'],['ยี่สิบ','yêe-sìp','20 ๒๐'],['หนึ่งร้อย','nùeng-ráawy','100 ๑๐๐'],['หนึ่งพัน','nùeng-phan','1,000 ๑,๐๐๐']]
@@ -527,6 +537,10 @@ const LESSONS = [
   w:[['วันอาทิตย์','wan-aa-thít','Sunday'],['วันจันทร์','wan-jan','Monday'],['วันอังคาร','wan-ang-khaan','Tuesday'],['วันพุธ','wan-phút','Wednesday'],['วันพฤหัส','wan-phá-rúe-hàt','Thursday'],['วันศุกร์','wan-sùk','Friday'],['วันเสาร์','wan-sǎo','Saturday']]},
  {id:'time',title:'Time words',th:'เวลา',tip:'ch',use:['พรุ่งนี้เจอกัน','phrûng-née jerr kan','See you tomorrow','s'],note:'Thai verbs do not change for past or future. Words like these show when something happens.',
   w:[['ตอนนี้','taawn-née','now'],['วันนี้','wan-née','today'],['พรุ่งนี้','phrûng-née','tomorrow'],['เมื่อวาน','mûea-waan','yesterday'],['ตอนเช้า','taawn-cháao','morning'],['ตอนเย็น','taawn-yen','evening'],['กลางคืน','klaang-khuuen','night'],['สัปดาห์','sàp-daa','week'],['เดือน','duean','month'],['ปี','pee','year']]},
+ {id:'weather',title:'Weather',th:'อากาศ',tip:'f',use:['ฝนตก','fǒn tòk','It is raining','s'],note:'Thailand has three seasons: hot, rainy and cool. Each season name starts with nâa. Rain in Thai does not "rain"; it falls, so ฝนตก fǒn tòk is literally rain falls.',
+  w:[['อากาศ','aa-kàat','weather'],['ร้อน','ráawn','hot'],['หนาว','nǎao','cold'],['อุ่น','ùn','warm'],['ฝน','fǒn','rain'],['ลม','lom','wind'],['เมฆ','mâyk','cloud'],['แดด','dàaet','sunlight'],['ฟ้าร้อง','fáa-ráawng','thunder'],['ฟ้าแลบ','fáa-lâaep','lightning'],['หมอก','màawk','fog'],['หน้าฝน','nâa-fǒn','rainy season'],['หน้าหนาว','nâa-nǎao','cool season']]},
+ {id:'when',title:'Before, after and later',th:'เมื่อไหร่',tip:'l',use:['ไปทีหลัง','pai thee-lǎng','Go later','s'],note:'Thai verbs never change for past or future, so these words carry the when. Most of them go at the end of the sentence.',
+  w:[['แล้ว','láaeo','already'],['ยังไม่','yang mâi','not yet'],['ก่อน','kàawn','before'],['หลังจาก','lǎng-jàak','after'],['ทีหลัง','thee-lǎng','later'],['เร็วๆนี้','reo-reo née','soon'],['ทันที','than-thee','right away'],['บางครั้ง','baang-khráng','sometimes'],['บ่อยๆ','bàwy-bàwy','often'],['ทุกวัน','thúk-wan','every day'],['นาน','naan','a long time'],['จนถึง','jon-thǔeng','until'],['ตั้งแต่','tâng-tàae','since']]},
  {id:'color',title:'Colors',th:'สี',tip:'aae',use:['เอาสีแดง','ao sěe daaeng','I will take the red one','s'],note:'Sěe means color. In a shop, sěe goes in front of the color word.',
   w:[['แดง','daaeng','red'],['เขียว','khǐao','green'],['น้ำเงิน','náam-ngern','dark blue'],['ฟ้า','fáa','light blue'],['เหลือง','lǔeang','yellow'],['ขาว','khǎao','white'],['ดำ','dam','black'],['ส้ม','sôm','orange']]}
 ];
@@ -585,6 +599,51 @@ I like it|{I} ชอบ|{I} châawp|I;like|like it|s
 Congratulations|ยิน·ดี ด้วย|yin-dee dûay|glad;too|congrats|s
 Good luck|โชค ดี|chôhk dee|luck;good|luck|s
 Be careful|ระ·วัง|rá-wang|watch out|careful, watch out|s
+Happy Birthday|สุข·สันต์ วัน เกิด|sùk-sǎn wan kèrt|happy;day;born|birthday, happy birthday, bday|s
+Happy New Year|ส·วัส·ดี ปี ใหม่|sà-wàt-dee pee mài|well-being;year;new|new year, happy new year|s
+Happy Songkran (Thai New Year)|สุข·สันต์ วัน สง·กรานต์|sùk-sǎn wan sǒng-kraan|happy;day;Songkran|songkran, thai new year|s
+May you be happy|ขอ ให้ มี ความ·สุข|khǎaw hâi mee khwaam-sùk|ask;let;have;happiness|best wishes, be happy, have a nice day, wishing you|s
+Get well soon|หาย ไว·ๆ|hǎai wai-wai|recover;quickly quickly|get well, feel better, recover|s
+Safe travels|เดิน·ทาง ปลอด·ภัย|derrn-thaang plàawt-phai|travel;safe|safe trip, have a safe trip, bon voyage|s
+Have fun|เที่ยว ให้ ส·นุก|thîao hâi sà-nùk|go out;let it be;fun|have a good time, enjoy|s
+Sweet dreams|ฝัน ดี|fǎn dee|dream;good|good night, sleep well|s
+Take care|ดู·แล ตัว·เอง ด้วย|doo-laae tua-ayng dûay|look after;yourself;too|take care of yourself|s
+Sorry for your loss|{I} เสีย ใจ ด้วย|{I} sǐa-jai dûay|I;spoiled;heart;too|condolences, sympathy|s
+Thank you very much|ขอบ คุณ มาก|khàawp-khun mâak|thank;you;very|thanks a lot, many thanks|s
+I love you|{I} รัก คุณ|{I} rák khun|I;love;you|love you|s
+I miss you|{I} คิด·ถึง คุณ|{I} khít-thǔeng khun|I;miss;you|miss you|s
+Welcome|ยิน·ดี ต้อน·รับ|yin-dee tâawn-ráp|glad;welcome|welcome, you are welcome here|s
+Good job|เก่ง มาก|kèng mâak|clever;very|well done, great job|s
+Very good|ดี มาก|dee mâak|good;very|great, excellent|s
+Cheers|ชน แก้ว|chon kâaeo|bump;glass|toast, cheers|
+I am happy|{I} มี ความ·สุข|{I} mee khwaam-sùk|I;have;happiness|happy, i am happy|s
+I am full|อิ่ม แล้ว|ìm láaeo|full;already|full, had enough|s
+I do not know|ไม่ รู้|mâi róo|not;know|dont know, no idea|s
+Can you help me?|ช่วย {I} ได้ ไหม|chûay {I} dâai mǎi|help;me;can;question word|help me, please help|q
+What time is it?|กี่ โมง แล้ว|kèe mohng láaeo|how many;hour;already|time, what time|q
+How old are you?|คุณ อา·ยุ เท่า·ไหร่|khun aa-yú thâo-rài|you;age;how much|age, how old|q
+Where do you live?|คุณ อยู่ ที่·ไหน|khun yòo thêe-nǎi|you;live;where|live, where live|q
+What are you doing?|ทำ อะ·ไร อยู่|tham à-rai yòo|do;what;be at|doing, what doing|q
+See you tomorrow|พรุ่ง·นี้ เจอ กัน|phrûng-née jerr kan|tomorrow;meet;together|tomorrow, see you|s
+Let's go|ไป กัน|pai kan|go;together|lets go, let us go|
+I will come back later|{I} จะ กลับ มา ที หลัง|{I} jà klàp maa thee-lǎng|I;will;return;come;time;after|come back later, back later|s
+How long?|นาน เท่า·ไหร่|naan thâo-rài|long time;how much|how long|q
+Wait a second|รอ แป๊บ หนึ่ง|raaw páaep nùeng|wait;moment;one|just a minute, one second|s
+Are you free tomorrow?|พรุ่ง·นี้ ว่าง ไหม|phrûng-née wâang mǎi|tomorrow;free;question word|free tomorrow|q
+I am late|{I} มา สาย|{I} maa sǎai|I;come;late|sorry i am late, running late|s
+Hurry up|เร็ว·ๆ|reo-reo|quickly quickly|quick, hurry|
+How is the weather?|อา·กาศ เป็น ยัง·ไง|aa-kàat pen yang-ngai|weather;be;how|weather today, what is the weather|q
+It is hot today|วัน·นี้ ร้อน มาก|wan-née ráawn mâak|today;hot;very|hot today, very hot|s
+It is cold|อา·กาศ หนาว|aa-kàat nǎao|weather;cold|cold weather|s
+The weather is nice|อา·กาศ ดี|aa-kàat dee|weather;good|nice weather, good weather|s
+It is raining|ฝน ตก|fǒn tòk|rain;fall|raining|s
+Is it going to rain?|ฝน จะ ตก ไหม|fǒn jà tòk mǎi|rain;will;fall;question word|going to rain|q
+It is windy|ลม แรง|lom raaeng|wind;strong|windy, strong wind|s
+It is cloudy|ฟ้า ครึ้ม|fáa khrúem|sky;overcast|cloudy, overcast|s
+It is sunny|แดด ออก|dàaet àawk|sunlight;come out|sunny, sun is out|s
+It is too hot|ร้อน เกิน ไป|ráawn kern pai|hot;exceed;go|too hot|s
+It is muggy|อบ·อ้าว|òp-âao|muggy|humid, sticky weather|s
+Bring an umbrella|เอา ร่ม ไป ด้วย|ao rôm pai dûay|take;umbrella;go;with|take an umbrella|s
 #num
 zero|ศูนย์|sǒon||0
 one|หนึ่ง|nùeng||1
@@ -630,6 +689,37 @@ later|ที หลัง|thee-lǎng|time;after|afterwards
 before|ก่อน|kàawn||first, earlier
 day|วัน|wan||
 weekend|เสาร์ อา·ทิตย์|sǎo-aa-thít|Saturday;Sunday|
+after|หลัง จาก|lǎng-jàak|back;from|afterwards, after that
+soon|เร็ว·ๆ นี้|reo-reo née|quickly quickly;this|shortly, in a little while
+right away|ทัน·ที|than-thee||immediately, at once, right now
+early|แต่ เช้า|tàae-cháao|from;morning|early morning
+late|สาย|sǎai||running late, late morning
+a long time|นาน|naan||long time, long while
+sometimes|บาง ครั้ง|baang-khráng|some;time|now and then
+often|บ่อย·ๆ|bàwy-bàwy|often often|frequently, a lot
+every day|ทุก วัน|thúk-wan|every;day|daily
+not yet|ยัง ไม่|yang mâi|still;not|
+until|จน ถึง|jon-thǔeng|until;reach|till, up to
+during|ระ·หว่าง|rá-wàang||while, between
+since|ตั้ง·แต่|tâng-tàae||ever since, from the time
+next|ต่อ·ไป|tàaw-pai||then, after this
+first|แรก|râaek||first one
+last|สุด·ท้าย|sùt-tháai||final, at last
+again|อีก ครั้ง|èek khráng|more;time|once more
+tonight|คืน นี้|khuuen-née|night;this|
+this morning|เช้า นี้|cháao-née|morning;this|
+last night|เมื่อ คืน|mûea-khuuen|when;night|
+day after tomorrow|มะ·รืน·นี้|má-ruuen-née||
+day before yesterday|เมื่อ วาน ซืน|mûea-waan-suuen|when;day before;before that|
+next week|อา·ทิตย์ หน้า|aa-thít nâa|week;front|
+last week|อา·ทิตย์ ที่ แล้ว|aa-thít thêe láaeo|week;that;already|
+next year|ปี หน้า|pee nâa|year;front|
+last year|ปี ที่ แล้ว|pee thêe láaeo|year;that;already|
+afternoon|ตอน บ่าย|taawn-bàai|time;afternoon|
+noon|เที่ยง|thîang||midday
+midnight|เที่ยง คืน|thîang-khuuen|noon;night|
+dawn|รุ่ง เช้า|rûng-cháao|first light;morning|first light, daybreak
+dusk|พลบ ค่ำ|phlóp-khâm|twilight;evening|twilight, nightfall
 #day
 Sunday|วัน อา·ทิตย์|wan-aa-thít|day;sun|
 Monday|วัน จันทร์|wan-jan|day;moon|
@@ -934,6 +1024,13 @@ sunlight|แดด|dàaet||sunshine
 earth|ดิน|din||soil, dirt, ground
 stone|หิน|hǐn||rock
 sand|ทราย|saai||
+thunder|ฟ้า ร้อง|fáa-ráawng|sky;roar|
+lightning|ฟ้า แลบ|fáa-lâaep|sky;flash|
+flood|น้ำ ท่วม|náam-thûam|water;overflow|flooding
+fog|หมอก|màawk||mist, haze
+rainbow|รุ้ง|rúng||
+cool season|หน้า หนาว|nâa-nǎao|season;cold|winter, cold season
+snow|หิ·มะ|hì-má||
 #verb
 eat|กิน|kin||
 drink|ดื่ม|dùuem||
@@ -1002,6 +1099,7 @@ find|หา|hǎa||look for, search
 borrow|ยืม|yuuem||
 fix|ซ่อม|sâawm||repair
 visit|เยี่ยม|yîam||
+freeze|แช่ แข็ง|châae-khǎeng|soak;hard|frozen, freezer
 #adj
 hot|ร้อน|ráawn||
 cold|หนาว|nǎao||
@@ -1053,6 +1151,8 @@ cool|เย็น|yen||
 wet|เปียก|pìak||
 dry|แห้ง|hâaeng||
 comfortable|ส·บาย|sà-baai||
+warm|อุ่น|ùn||
+humid|ชื้น|chúen||damp, moist
 #feel
 happy|ดี ใจ|dee-jai|good;heart|glad
 sad|เสีย ใจ|sǐa-jai|spoiled;heart|sorry
@@ -1211,7 +1311,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 11</p>`;
+ <p class="score">App version 13</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1341,6 +1441,7 @@ function parseWords(raw){
  return out;
 }
 const WORDS=parseWords(WORDS_RAW);
+
 const CUSTOM={
  'water':{tip:'The Thai letters look short, but speakers hold this vowel long. Hold the ah, keep the voice high, and close the lips on the m. The word also builds other words: ห้องน้ำ hâwng-náam is a toilet, literally water room, and น้ำตาล náam-taan is sugar.',
   sent:[['ขอ','khǎaw','ask for'],['น้ำ','náam','water'],['เปล่า','plàao','empty, bare']],meaning:'Plain water, please.',pol:'s'}
@@ -1589,10 +1690,13 @@ function findOut(){
  if(findSel){const e=entryByTh(findSel); if(e)return entryCard(e)}
  const r=findWords(findQ);
  if(!findQ.trim())return `<p class="lede">Type an English word above. The list holds ${WORDS.length} words and phrases.</p>`;
- if(!r.length)return `<p class="lede">"${findQ.replace(/</g,'&lt;')}" is not in the word list yet.</p>`;
+ if(!r.length){
+  const near=[...new Set(findQ.toLowerCase().split(/\s+/).filter(w=>w.length>2).flatMap(w=>findWords(w).slice(0,4)))].slice(0,8);
+  return `<p class="lede">"${findQ.replace(/</g,'&lt;')}" is not in the list yet.</p>`+(near.length?`<div><h3>Entries that share a word with it</h3>${near.map(e=>`<button class="other" data-open="${e.thSplit}"><span class="tw" lang="th">${e.th.replace('{I}','')}</span><span class="en">${e.en}</span></button>`).join('')}</div>`:'');
+ }
  return entryCard(r[0])+(r.length>1?`<div><h3>Other matches</h3>${r.slice(1,9).map(e=>`<button class="other" data-open="${e.thSplit}"><span class="tw" lang="th">${e.th.replace('{I}','')}</span><span class="en">${e.en}</span></button>`).join('')}</div>`:'');
 }
-V.find=()=>`<h1>Find a word</h1><label for="find-q" class="lede">Type a word in English</label>
+V.find=()=>`<h1>Find a word or phrase</h1><label for="find-q" class="lede">Type a word or phrase in English, such as Happy Birthday</label>
  <input class="findbox" id="find-q" type="search" autocomplete="off" autocapitalize="off" value="${findQ.replace(/"/g,'&quot;')}">
  <div class="stack" id="find-out">${findOut()}</div>`;
 
