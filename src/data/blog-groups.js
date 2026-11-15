@@ -1,4 +1,9 @@
-// blog-groups 1105 V88.js
+// blog-groups 1115 V90.js
+// V90 (Torah Quick Scroll Handoff 1115 V1): the Leviticus, Numbers, and Deuteronomy series (series "leviticus", "numbers",
+// "deuteronomy"; each topic page lists only its main, "plus N companion studies") join the-quick-scroll. 13 posts. The Numbers 6:24-27
+// Trinity File stays out of this map like every trinity-files-* post. Map total 233 -> 246.
+// V89 (Exodus Quick Scroll Handoff 1115 V1): the Exodus series (series "exodus"; the topic page lists exodus-out-of-one-service
+// only, "plus 3 companion studies") joins the-quick-scroll. Map total 229 -> 233.
 // V88 (Etsy Batch 1105 V1): king-over-the-proud, behold-now-behemoth, behold-the-lamb join scripture-unfiltered (The Serpent and the Lamb trilogy). Map total 226 -> 229.
 // V87: only-in-the-throne joins scripture-unfiltered (category Scripture Unfiltered). Map total 225 -> 226.
 // V86 (Genesis Quick Scroll Handoff 1102 V1): five-books-one-walk (the Torah opening study) and the Genesis series
@@ -359,6 +364,23 @@ export const POST_GROUP = {
   'the-seventy-and-the-portion': 'the-quick-scroll',             // Genesis series companions
   'get-thee-out': 'the-quick-scroll',
   'the-bride-at-the-well': 'the-quick-scroll',
+  'exodus-out-of-one-service': 'the-quick-scroll',               // series main
+  'pharaohs-four-bargains': 'the-quick-scroll',                  // Exodus series companions
+  'eaten-in-haste': 'the-quick-scroll',
+  'no-way-back': 'the-quick-scroll',
+  'leviticus-from-the-altar-to-the-kingdom': 'the-quick-scroll',   // series main
+  'six-kinds-one-walk': 'the-quick-scroll',                // Leviticus series companions
+  'strange-fire': 'the-quick-scroll',
+  'proclaim-liberty': 'the-quick-scroll',
+  'numbers-two-counts-one-voice': 'the-quick-scroll',              // series main
+  'the-visit': 'the-quick-scroll',                         // Numbers series companions
+  'the-rod-that-budded': 'the-quick-scroll',
+  'the-serpent-on-the-pole': 'the-quick-scroll',
+  'the-way-of-balaam': 'the-quick-scroll',
+  'deuteronomy-this-day': 'the-quick-scroll',                      // series main
+  'the-shema': 'the-quick-scroll',                         // Deuteronomy series companions
+  'circumcised-heart': 'the-quick-scroll',
+  'the-song-of-moses': 'the-quick-scroll',
 
   // ── Buried in Plain Sight (21) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',

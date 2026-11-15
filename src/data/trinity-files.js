@@ -1,4 +1,7 @@
-// src/data/trinity-files.js · 1016 V5
+// src/data/trinity-files.js · 1115 V6
+// V6 (Torah Quick Scroll Handoff 1115 V1): Numbers 6:24-27 added and written — "One Name on the People"
+// (trinity-files-numbers-6-24-27). It was not on the list, so it goes in at its canonical place after Genesis 35:7.
+// foundations [] — it leans on none of Foundations I to VII. List total 166 -> 167; everything after it renumbers itself.
 // V5 (Dutch 1016): John 2:19-21 (#49, "The Temple He Would Raise") and John 10:17-18
 // (#57, "The Commandment He Received") written and linked; both cite Foundation VII,
 // The Authority He Was Given. List total unchanged at 166.
@@ -39,6 +42,7 @@ export const trinityFiles = [
   { ref: "Genesis 18-19", section: "Tanakh", foundations: [], title: "Three Came to the Tent", deck: "The visitor who bore the Name was sent by the One who owns it", slug: "trinity-files-genesis-18-19" },
   { ref: "Genesis 20:13", section: "Tanakh", foundations: ["II"], title: "The Hand That Led Abraham", deck: "A plural verb is the dress of the language, not a count of gods", slug: "trinity-files-genesis-20-13" },
   { ref: "Genesis 35:7", section: "Tanakh", foundations: ["II"], title: "Where God Appeared", deck: "One Maker met Jacob, however the verb is spelled", slug: "trinity-files-genesis-35-7" },
+  { ref: "Numbers 6:24-27", section: "Tanakh", foundations: [], title: "One Name on the People", deck: "Three lines of blessing, one name, one speaker who says “I”", slug: "trinity-files-numbers-6-24-27" },
   { ref: "2 Samuel 7:23", section: "Tanakh", foundations: ["II"], title: "The One Who Went to Redeem", deck: "David’s plural verb counts letters, never persons", slug: "trinity-files-2-samuel-7-23" },
   { ref: "Psalm 45:6-7", section: "Tanakh", foundations: [], title: "A Throne, and a God Above It", deck: "The king hailed as god still bows to a God of his own", slug: "trinity-files-psalm-45-6-7" },
   { ref: "Psalm 58:11", section: "Tanakh", foundations: ["II"], title: "The Bench of One Judge", deck: "A plural form is the fullness of His justice, not a second judge", slug: "trinity-files-psalm-58-11" },

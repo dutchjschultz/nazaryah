@@ -1,4 +1,10 @@
-// study-series 1102 V9.js
+// study-series 1115 V11.js
+// V11 (Torah Quick Scroll Handoff 1115 V1): Leviticus, Numbers, and Deuteronomy join, completing the Torah.
+// Learning the Walk takes ember, for the fire that came out from before Yahuah (Leviticus 9:24; 10:2). Counted and
+// Tested takes bronze, for a burden carried and the serpent of bronze (Numbers 21:9). The Heart takes vineyard, for
+// the land of vineyards they had not planted (Deuteronomy 6:11). Read Alongside is parchment on all three.
+// V10 (Exodus Quick Scroll Handoff 1115 V1): Exodus joins (src/data/exodus-series.js). The Leaving takes night,
+// for "a night to be much observed" (Exodus 12:42), the night Israel ate in haste and walked out. Read Alongside is parchment.
 // V9 (Genesis Quick Scroll Handoff 1102 V1): Genesis joins (src/data/genesis-series.js). The Calling takes dawn,
 // for the first light of Genesis 1:3 and the first call of 12:1. Read Alongside is parchment, as on Jeremiah.
 // V8 (Hebrews Quick Scroll Handoff 1101 V1): Hebrews joins (src/data/hebrews-series.js). The Sanctuary Walk
@@ -43,6 +49,10 @@ import { LAMENTATIONS_SERIES } from '../data/lamentations-series.js';
 import { JEREMIAH_SERIES } from '../data/jeremiah-series.js';
 import { HEBREWS_SERIES } from '../data/hebrews-series.js';
 import { GENESIS_SERIES } from '../data/genesis-series.js';
+import { EXODUS_SERIES } from '../data/exodus-series.js';
+import { LEVITICUS_SERIES } from '../data/leviticus-series.js';
+import { NUMBERS_SERIES } from '../data/numbers-series.js';
+import { DEUTERONOMY_SERIES } from '../data/deuteronomy-series.js';
 
 // Palette. Each colour means something: night for visions seen at night, ember for
 // the fire of Ezekiel's throne visions and Isaiah's coal off the altar, burgundy for the fasting question, bronze for
@@ -73,6 +83,10 @@ const SERIES = {
   jeremiah: { data: JEREMIAH_SERIES, tones: { lessons: 'clay', torn: 'ember', built: 'vineyard', related: 'parchment' } },
   hebrews:  { data: HEBREWS_SERIES,  tones: { sanctuary: 'ember' } },
   genesis:  { data: GENESIS_SERIES,  tones: { calling: 'dawn', related: 'parchment' } },
+  exodus:   { data: EXODUS_SERIES,   tones: { leaving: 'night', related: 'parchment' } },
+  leviticus:   { data: LEVITICUS_SERIES,   tones: { walk: 'ember', related: 'parchment' } },
+  numbers:     { data: NUMBERS_SERIES,     tones: { counted: 'bronze', related: 'parchment' } },
+  deuteronomy: { data: DEUTERONOMY_SERIES, tones: { heart: 'vineyard', related: 'parchment' } },
 };
 
 export const STUDY_SERIES = Object.fromEntries(Object.entries(SERIES).map(([k, s]) => [k, s.data]));
