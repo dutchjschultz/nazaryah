@@ -1,4 +1,5 @@
-// counterfeit 1110 V3.js
+// counterfeit 1115 V4.js
+// V4 (Etsy Load Counterfeit Studies 1115 V1): adds two studies, Added and Taken Away (Islam) and The King's Idol (Buddhism).
 // V3 (Five Symbols 1110 V1): new kind `symbol` — each religion's two symbol
 // studies (`part` why = Why They Chose It, error = The Error It Carries). They
 // sit under "The Symbol" in the hub's intro block, not in the Studies grid,
@@ -159,6 +160,8 @@ export const ENTRIES = [
       { src: '/images/counterfeit/phaya-nak-tiger-cave-2.jpg', alt: 'The scaled body of the Phaya Nak forming the railing that leads to the temple door', caption: 'The scaled body forms the railing that leads to the temple door.' },
     ],
   },
+  { slug: 'added-and-taken-away', religion: 'islam', kind: 'study', parent: '', href: '/counterfeit/added-and-taken-away', reference: 'Deuteronomy 4:2', title: 'Added and Taken Away', deck: "Islam added to Yahuah's food law; the church took from it." },
+  { slug: 'the-kings-idol', religion: 'buddhism', kind: 'study', parent: '', href: '/counterfeit/the-kings-idol', reference: '1 Kings 12:28', title: "The King's Idol", deck: "Thailand's Emerald Buddha guards the throne the way Jeroboam's calves once did." },
 ];
 
 // ── Derived (never hand-kept) ────────────────────────────────────────────────
