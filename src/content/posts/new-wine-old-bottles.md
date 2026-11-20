@@ -1,7 +1,7 @@
 ---
 title: "New Wine, Old Bottles"
-description: "The bottle was never the law. Yahuah already said what a bottle is."
-deck: "The bottle was never the law. Yahuah already said what a bottle is."
+description: "The question was about skipping meals. The answer was a wedding."
+deck: "The question was about skipping meals. The answer was a wedding."
 verse: "Luke 5:33–39"
 commonName: "New Wine in Old Bottles"
 date: 2026-09-30
@@ -14,124 +14,109 @@ associations: ["pulpit-vocabulary", "two-stage-salvation"]
 companion: ["new-wine-old-bottles-read-through", "dark-sayings-of-old", "the-talents"]
 ---
 
-## What most pulpits say this parable means
+## What the pulpit does with this parable
 
-Nearly everyone has heard this parable explained the same way. The new wine is the good news. The old bottles are the law of Yahuah. The law was worn out and brittle, it could not hold what Yahushua brought, so He poured, and the old thing burst, and that was the end of it.
+Nearly everyone has heard it explained the same way. The new wine is the good news. The old bottles are the law of Yahuah. The law was worn out and brittle, it could not hold what Yahushua brought, so He poured, the old thing burst, and that was the end of it.
 
-The lesson drawn from that is preached every week. The law is old, the good news is new, and a believer who goes back to the commandments is pouring new wine into a dead skin. There is one problem with it. The passage says what it is about in its own first line, and the first line has nothing to do with the law. It is about skipping meals.
+The lesson drawn from that gets preached every week. The law is old, the good news is new, and a believer who goes back to the commandments is pouring new wine into a dead skin.
 
-## What was happening in the room
+There is one problem with it. Nothing in the answer mentions the law, and the question that produced the answer was about skipping meals.
 
-A group came to Yahushua with a complaint. Not a question about how a man is saved. A complaint about eating.
+## The table it was spoken at
 
-> Then came to him the disciples of John, saying, Why do we and the Pharisees fast oft, but thy disciples fast not? — Matthew 9:14
+Levi the tax collector got up from his table, followed Yahushua, and then put on a feast. The house filled with tax collectors and with the people the religious men would not sit beside.
 
-They were not asking whether fasting was right. They fasted. They were asking why the men around Yahushua did not fast as often as they did.
+The first complaint was about the company. They asked why the Master was eating with publicans and sinners (Luke 5:30). He answered it out of Hosea, telling them to go and learn what it means that Yahuah will have mercy and not sacrifice (Matthew 9:13; Hosea 6:6).
 
-Fasting had become the way a man proved he was serious about Yahuah. The disciples of John fasted and mourned. The Pharisees fasted twice in the week, and one of them is recorded telling Yahuah so while he prayed (Luke 18:12). Their students looked across at the men with Yahushua, saw them eating a normal meal, and took it as proof that those men were not serious. One group had made its own practice the ruler, and then held the ruler up against everybody else.
+The second complaint came at the same table.
 
-## Why the answer came as a picture
+> And they said unto him, Why do the disciples of John fast often, and make prayers, and likewise the disciples of the Pharisees; but thine eat and drink? (Luke 5:33)
 
-Yahushua could have answered with an argument. He answered with a picture instead, and He did that often. An argument is won or lost on the spot. A picture goes home with the hearer and keeps working on him, and it sorts the listeners while it does. A man who wants the truth turns it over until he sees it. A man defending his own habits hears a short story about cloth and bottles, decides it was not about him, and walks away (Matthew 13:13).
+That is the question the parable answers. Not a question about sin. Not a question about the commandments. A question about how often other men skipped meals.
 
-## The fasting they were arguing about was never commanded
+One fact belongs beside it. At the hour it was asked, John the baptiser was in prison, shut up by Herod (Luke 3:19-20). The men putting the question had a man to mourn for. The record states it, and assigns no motive to it.
 
-The law of Yahuah commands one fast. On the tenth day of the seventh month a man goes without food and humbles himself before Yahuah (Leviticus 16:29-31; Leviticus 23:27-32). One day in the year. Nothing else in the law tells a man when to fast.
+## The answer, in plain words
 
-The rest came from men. After Jerusalem fell the people began keeping mourning fasts in the fourth, fifth, seventh and tenth months, and they were still keeping them seventy years later (Zechariah 8:19). The twice-a-week fast came from the same place. Yahuah had already given His judgment on those fasts, asking the people keeping them whether they had fasted to Him at all in all those years, and reminding them what He had actually asked for: honest judgment, mercy between brothers, and no crushing of the widow, the orphan, the stranger or the poor (Zechariah 7:5-10).
+It came in one piece (Luke 5:34-39). Nobody mourns at a wedding while the groom is standing there. A day for fasting is coming, and it begins when the groom is taken away. What is new is not sewn onto what is worn out. What is still working is not poured into a container with no stretch left in it. And a man who is used to what he has will not want what is new, because of how it tastes to him.
 
-This has to be said flat, because the popular teaching stands or falls on it. The fasting under dispute is not in the law. It was a custom. Whatever burst in this parable, it was not the commandments of Yahuah, because the commandments of Yahuah were never what the argument was about.
+The passage itself, with the meaning of each image carried alongside it, runs in the read-through.
 
-## His first answer: nobody mourns at a wedding
+## What a fast is, and what it is for
 
-Before the bottles, Yahushua gives them a wedding. The friends of the groom cannot be made to mourn while the groom is standing there with them (Matthew 9:15). The fast these men wanted was a mourning fast. There was nothing in that room to mourn, and no schedule of theirs could manufacture a reason.
+The law of Yahuah appoints one fast in the year. On the tenth day of the seventh month a man afflicts his soul and goes without food before Yahuah (Leviticus 16:29-31; Leviticus 23:27-32). Affliction is the stated purpose of it.
 
-## What the new wine is
+Isaiah puts the matter to a people who were fasting and seeing no answer. Yahuah asks them whether a day for a man "to afflict his soul," with his head bowed as a bulrush and sackcloth under him, is the fast He had chosen (Isaiah 58:5). Then He names the fast He did choose: to loose the bands of wickedness, to let the oppressed go free, to "deal thy bread to the hungry," to bring the poor that are cast out into the house, and to cover the naked (Isaiah 58:6-7).
 
-The drink has to be named or the picture stays half finished. New wine in the Hebrew Scriptures is the fresh yield, and it is never neutral. It is what Yahuah hands His people when He is good to them, named beside the grain and the oil (Deuteronomy 7:13), and it is the thing that makes a man's heart glad (Psalm 104:15).
+Bread handed to the hungry. The cast out brought into a house. The naked covered. That is the fast Yahuah chose, in His own words.
 
-The prophets carry it further than a harvest. When Yahuah describes the day He brings His people back, He describes wine and He describes the end of grief in the same breath: wheat, wine and oil, a soul like a watered garden, no sorrowing any more at all, and mourning turned into joy (Jeremiah 31:12-13). That promise sits in the same chapter as the new heart with the law written inside it.
+Now set that beside the room. The complaint about fasting was made inside a house where a tax collector had set bread in front of the people everyone else had cast out. The fast Yahuah named was being kept at that table, by the men accused of not fasting, while the men at the door counted meals.
 
-Then the sharpest piece, aimed straight at the men asking the question. Yahuah had already said what He would do with their mourning fasts.
+## Three pictures, one wedding
 
-> The fast of the fourth month, and the fast of the fifth, and the fast of the seventh, and the fast of the tenth, shall be to the house of Judah joy and gladness, and cheerful feasts. — Zechariah 8:19
+A wedding has a groom, it has garments, and it has wine. A question about mourning was answered with the one setting where mourning is out of place, and the next two pictures were lifted from that same setting. Three pictures, one breath, one answer.
 
-Those are the same four fasts, and Yahuah appointed them to end as feasts. So the new wine is named out of their own Scriptures. It is the gladness of Yahuah with His people, poured out by His hand, the very thing He promised would take the place of the mourning. Men stood in that room demanding a mourning fast while the joy appointed to replace it was being poured out in front of them.
+## The wedding, from the Hebrew Scriptures
 
-## The bottle is a person, and Yahuah said so
+Yahuah calls Himself a husband to His people. He tells them their Maker is their husband (Isaiah 54:5). He says He will betroth them to Himself for ever (Hosea 2:19). He says that as a bridegroom rejoices over the bride, so would He rejoice over them (Isaiah 62:5).
 
-The bottle does not have to be guessed at, and it does not have to be explained by describing how containers were made. There is already a saying about bottles and wine in the Hebrew Scriptures. Yahuah gave it to Jeremiah — every bottle shall be filled with wine — and when the people repeated it back as something everybody knew, He told them what it meant. He would fill the inhabitants of the land, the kings on David's throne, the priests and the prophets, with drunkenness (Jeremiah 13:12-13).
+The children of the bridechamber are the groom's own companions, the men who stand with him through the feast. Samson was given thirty of them, and the feast they kept ran seven days (Judges 14:11-12). Jacob served for a wife and was told to fulfil her week (Genesis 29:27). A wedding in the Hebrew Scriptures is a seven-day feast, and the groom's companions are there for all of it.
 
-The bottles are the men. What fills them comes from Yahuah's hand. One difference should be stated rather than hidden: in Jeremiah what He pours is drunkenness, and it is a judgment. The saying is not being used here to settle the contents. It is being used to settle the container, because that is the part Yahuah defined out loud. A bottle, in His own words, is a person.
+So weigh what was being asked. A fast is affliction. A wedding is seven days of feasting. Those men wanted mourning performed on a schedule, inside the one week where it has no place, while the groom stood in the room.
 
-## What made the old bottle hard
+## The garment
 
-Scripture describes the men who kept those seventy years of fasting, and the description decides this parable.
+A garment is what a man is clothed in before Yahuah. Isaiah calls every righteousness of his people filthy rags (Isaiah 64:6), and in the same book speaks of being clothed with the garments of deliverance and covered with a robe of righteousness (Isaiah 61:10). When a priest stood before Yahuah in filthy garments they were not mended. The word given was to take them off him, and the promise that came with it was a change of raiment (Zechariah 3:4). The covering is exchanged.
 
-> They made their hearts as an adamant stone, lest they should hear the law, and the words which Yahuah of hosts hath sent in his spirit by the former prophets. — Zechariah 7:12
+The picture holds two losses, not one. The patch has to be cut out of a new garment, so the new one is ruined to mend the old one, and the old one tears worse than before. The passage says plainly that the piece taken out of the new does not agree with the old (Luke 5:36). Two garments go in and neither comes out whole.
 
-They made their own hearts hard as stone, and the verse states the reason: so they would not have to hear the law. That is the old bottle. It is not the law. It is a heart that went hard on purpose so the law would stay outside of it. The same man still fasts. He fasts twice a week and feels righteous doing it, because the fasting is his own and the law is not.
+## The wine
 
-Say it flat. The old bottle is a man. Not a covenant, not a nation, not a system — a man who built his religion out of his own practice and the traditions handed down to him, and who went hard on the inside so the commandments of Yahuah could never reach him. He is already full, and what fills him is his own.
+New wine is what Yahuah hands His people when He is good to them, named together with the corn and the oil (Deuteronomy 7:13). It is called the thing that makes a man's heart glad (Psalm 104:15). In the law a measure of it is poured out beside the offering by command (Numbers 15:5, 10). And of a cluster still hanging on the vine Yahuah says that a blessing is in it (Isaiah 65:8).
 
-## Why the bottle bursts
+One limit belongs here rather than hidden. New wine is not a uniformly favourable symbol. Hosea says that wine and new wine take away the heart (Hosea 4:11). So the wine is not a code word standing in for a doctrine. It is Yahuah's to give and Yahuah's to pour, and that is as far as the text carries it.
 
-The passage says the bottle breaks. It never says the wine was too strong, and it never blames what was poured. The Hebrew Scriptures describe that very thing and name the cause. Elihu had words in him he had not been allowed to say, and this is how he put it.
+New wine is also still working. It gives off gas for weeks and pushes out against whatever holds it.
 
-> Behold, my belly is as wine which hath no vent; it is ready to burst like new bottles. — Job 32:19
+## The bottle, and what Scripture does not say about it
 
-No vent. Nothing wrong with the wine and nothing wrong with the filling. The vessel is shut, nothing can move, and what is inside tears it apart. Elihu could not let anything out; the men in front of Yahushua would not let anything in. It is the same fault turned the other way, and Zechariah already said how they sealed it. They stopped their ears so they would not hear the law.
+A bottle in this scene is not glass and it is not clay. It is the hide of a goat or a kid, sewn shut, with the neck tied off — *askos* in the Greek. New, it is soft and it gives; filled with wine that is still working, it swells with the pressure and holds. That stretch is spent once. After a skin has carried a batch and dried, it is stiff, and stiff leather does not swell a second time. Pressure a new skin absorbs splits an old one along the seam.
 
-So the bursting is no mystery and has nothing to do with age. Something came into that room from Yahuah's own hand, and it did not arrive on their schedule. A man whose religion is his own habit has no room in him for that. He does not give way. He splits, because giving way would mean his practice was never the measure.
+Now the part that decides this parable. The Hebrew Scriptures assign settled meanings to the vine, the vineyard, the shepherd, the seed and the fig tree. They assign none to a wine bottle. The skin bottle appears five times in the Hebrew Scriptures and not one of those places tells a reader what it stands for.
 
-## What happens to the old bottle
+Where the Word has not assigned a meaning, this study does not supply one. That is not a small point, because the popular teaching rests its whole case on a meaning supplied from outside the text.
 
-The parable does not leave the old bottle standing in the corner. The wine is spilled and the bottle itself perishes (Luke 5:37; Mark 2:22). Both are lost, not one. Isaiah says the same against a whole people, and names what they had done: they were children who would not hear the law of Yahuah, and they told the prophets to stop telling them the truth and to speak smooth things instead (Isaiah 30:9-10). Then comes the breaking.
+## The one scene that holds both pictures together
 
-> There shall not be found in the bursting of it a sherd to take fire from the hearth, or to take water withal out of the pit. — Isaiah 30:14
+The Hebrew Scriptures show those split skins once. Men came to Joshua claiming a long journey and laid out their proof: patched clothing, worn shoes, and wine bottles old, rent, and bound back together. Their word for it was that the bottles had been new when they filled them (Joshua 9:4-13).
 
-The word is bursting. The people who would not hear the law are the vessel, and what happens is not a crack that can be patched. Not one piece is left big enough to carry a coal or scoop water. Jeremiah was made to act it out, breaking a bottle in front of the men and saying Yahuah would break that people and that city the same way, so that it could not be made whole again (Jeremiah 19:10-11). The bottle saying ends there too, with the vessels dashed one against another and no pity (Jeremiah 13:14). The old bottles are not retired. They are broken past mending.
+Israel ruled on the evidence in front of their eyes, and the record names the failure in one line: they asked not counsel at the mouth of Yahuah (Joshua 9:14). Three days later the truth came out.
 
-## The new bottle is a new heart with the law inside it
+The men at Levi's table ruled the same way. They watched other men eat and handed down a verdict on it.
 
-A hard container does not get fixed by pouring more carefully. It gets replaced, and Yahuah said so long before this argument happened.
+## The verdict the parable states about itself
 
-> A new heart also will I give you ... and I will put my spirit within you, and cause you to walk in my statutes, and ye shall keep my judgments, and do them. — Ezekiel 36:26-27
+New wine goes into new bottles, and the passage says of that pair, "both are preserved" (Luke 5:38). Where a parable states its own outcome, the reading stops there.
 
-The order is the whole thing. Yahuah takes the stone out. Yahuah puts a living heart in. Then that person walks in the commandments and keeps them. The keeping is not the price of the new heart; it is what a new heart does. Jeremiah says the same of the same heart and names what goes inside it.
+The verdict is preservation. The wine is kept and the container is kept. Nothing in that sentence is thrown away and nothing in it is condemned. What is under judgment is whether what is poured and what holds it will survive together.
 
-> I will put my law in their inward parts, and write it in their hearts; and will be their God, and they shall be my people. — Jeremiah 31:33
+## The last line is about taste
 
-Say that one flat as well. The new bottle is a man too. It is the same man made over: a new heart where the stone used to be, the spirit of Yahuah put within him, and the law of Yahuah written on the inside of him. That is the only container in the story that is preserved, and it is preserved because of what is written in it.
+Moab had been at ease from his youth, settled on his lees, and never emptied from vessel to vessel. The result is stated plainly: his taste remained in him, and his scent was not changed (Jeremiah 48:11). A vessel never poured out keeps whatever it started with.
 
-## The picture has been turned around backwards
+The scene closes on a man who says the old is better (Luke 5:39). The passage does not say he is right. It records what he says and the reason he gives, and the reason is that he is used to it.
 
-The popular teaching makes the wine the new message Yahushua brought, and makes the law of Yahuah the bottle. The law is the brittle container in that reading. The law is what cracks apart when the new is poured, and getting rid of it is the point of the story.
+## Where the popular reading breaks
 
-The passage never makes the law the container. Yahuah said what the bottle is, and the bottle is a man. So the law is neither the bottle nor the drink. The law is what Yahuah writes on the inside of the container after He has made it new, and what gets poured is the gladness already named, coming from His hand in the same promise where He puts His spirit within a man and that man walks in the commandments.
-
-The coat at the front of the parable says it in fewer words. A new patch on a worn-out coat tears it worse (Matthew 9:16). When Yahuah found a priest standing before Him in filthy clothes He did not patch them; He had them taken off the man and clean ones put on him (Zechariah 3:3-4). Replaced, not repaired.
-
-There is a cost to having it backwards, and it is not small. A house that teaches the law was set aside is left preaching a new heart with nothing written in it. It hands a person a clean container and no idea what it was made to hold, and then wonders why the life does not change.
-
-## Old wine and new wine
-
-The scene ends on old wine, and that has a precedent in the Hebrew Scriptures as well.
-
-> No man also having drunk old wine straightway desireth new: for he saith, The old is better. — Luke 5:39
-
-The passage does not say the old is better. It says the man says it, and the reason he gives is not an argument. It is taste.
-
-Jeremiah described a whole nation that way. Moab had been at ease from his youth and had settled on his lees, never emptied from vessel to vessel, and the result is stated plainly.
-
-> Therefore his taste remained in him, and his scent is not changed. — Jeremiah 48:11
-
-Being poured from one vessel to another is what changes a man. Left sitting, he keeps the taste he always had, and that taste becomes the whole reason he refuses. The next verse says what came of it: Yahuah would send men to empty his vessels and break his bottles (Jeremiah 48:12).
-
-Age by itself is not the fault, and the point should not be overstated. Yahuah describes His own feast with wine well refined (Isaiah 25:6), and refined means poured off the sediment. The difference is not how long the wine sat. It is whether it was ever moved.
+- The question. What was asked was why one group of men did not fast as often as another group. The law commands one fast in the year. The schedule under dispute was twice a week, and a Pharisee is on record telling Yahuah about it while he prayed (Luke 18:12). No commandment of Yahuah was anywhere in the question.
+- The audience. The men standing there were disciples of John and students of the Pharisees, each keeping a practice of his own. The answer is aimed at men measuring other men by a custom they built themselves.
+- The timing. The bridegroom, the garment and the bottles are one answer, spoken in one breath, to one question — and that same answer appoints a day when the disciples will fast. An answer that schedules a fast is not an answer that abolishes fasting, and three pictures spoken together cannot be split apart into separate ages.
+- The reasoning. The teaching assumes the bottle stands for the law, then points at the bursting to prove the law failed. The assumption is the conclusion.
 
 ## The verdict
 
-The parable answers why the men with Yahushua were not fasting on somebody else's schedule. The gladness Yahuah promised was in that room, and it could not be poured into hearts gone hard from years of practice, hard for the stated purpose of keeping the law on the outside.
+The parable answers the question it was asked. A wedding was going on. The groom was in the room, and mourning has no place at a wedding, which is what a fast is for. A day for fasting was coming, and it was named out loud: when the groom is taken away.
 
-The bottle is the man. What fills him comes from Yahuah's hand. And the new heart Yahuah gives is not a heart with the law taken out of it. It is a heart with the law written on the inside, in a person finally able to hold it.
+The men asking had built a schedule the law never gave them and were using it to measure the men across the table. What Yahushua was doing would not be stitched onto that and would not be poured into it — not because what they carried was wicked, but because it had no give left in it. The covering a man wears before Yahuah is exchanged, not patched. The wine is Yahuah's to give and Yahuah's to pour. And the last word of the scene names the reason men like these turn down what is standing in front of them. Not that it is false. They are used to what they have, and it tastes better to them.
+
+The wedding did not end with the answer. The last book of Scripture brings it back and puts a day on it: the marriage of the Lamb is come, and his wife hath made herself ready (Revelation 19:7). The bridegroom was taken away, and the fasting He named began. The wedding He named has not happened yet.

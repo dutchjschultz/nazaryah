@@ -10,130 +10,178 @@ author: "Nazaryah"
 category: "Parables"
 featured: false
 draft: false
-associations: ["kingdom-now", "two-stage-salvation"]
+associations: ["kingdom-now"]
 companion: ["summer-is-nigh-read-through", "house-without-the-owner", "the-reign-is-now"]
 ---
 
 ## The Question at the Stones
 
-The parable of the fig tree does not begin at the fig tree. It begins at the temple door. As Yahushua went out of the temple, one of His disciples pointed at the building.
+Preachers once taught that the fig tree in this parable was modern Israel, and that the Messiah would be back by 1988. The year came and nothing happened. The fig tree was never about modern Israel. It was about a building the disciples were looking at that day.
+
+The parable of the budding fig tree begins at the temple door. As Yahushua went out of the temple, one of His disciples pointed at the building.
 
 > And as he went out of the temple, one of his disciples saith unto him, Master, see what manner of stones and what buildings are here! And Yahushua answering said unto him, Seest thou these great buildings? there shall not be left one stone upon another, that shall not be thrown down. — Mark 13:1–2
 
-He then sat on the mount of Olives, over against the temple. Peter, James, John, and Andrew came to Him privately and asked one thing two ways: when shall these things be, and what shall be the sign when all these things shall be fulfilled (Mark 13:3–4). Both halves of the question are about the stones. Nothing else was asked.
+He then sat on the mount of Olives, over against the temple. Peter, James, John, and Andrew came to Him privately and asked one question two ways: when shall these things be, and what shall be the sign when all these things shall be fulfilled (Mark 13:3–4). Both halves are about the stones. Luke records the same two-part question (Luke 21:7).
 
-Luke records the same two-part question (Luke 21:7). Matthew alone adds a third clause, the sign of His coming and of the end of the world (Matthew 24:3). The word rendered world there is *aion*, the age, not *kosmos*, the world. Even in Matthew, the disciples were asking when an age would close, and the age they knew was the age of that house.
+Matthew adds a third piece, the sign of His coming and of the end of the world (Matthew 24:3). The word rendered world there is *aion*, the age, not *kosmos*, the world. The age those men knew was the age of that house.
 
-The common teaching that splits Matthew’s questions into a present, a near future, and a far future, and then files the fig tree in the far future, has no ground in Mark at all.
+Today’s pulpit takes Matthew’s account and splits it into three times: part of it for the disciples, part for the church age, and part for the end of the world. The fig tree is then filed in the far future. A parable forced to fit an answer that was already decided will never be understood. Mark carries one question, and it is about a building.
 
-Mark carries one question, and it is about a building.
+The disciples asked two things. When will the temple come down, and how will we know it is close. The parable is the answer to both.
 
-The question governs the answer. Every word Yahushua spoke from Mark 13:5 to the fig tree answers a question about stones coming down. The audience governs the hearing. Four men sat on a hill looking at the temple. When He said “ye,” He was speaking to them.
-
-The fig tree answers when the temple falls.
-
-## The Tree They Had Already Seen
-
-These four men had seen a fig tree before this one. Days earlier, on the road into Jerusalem, Yahushua went to a fig tree in full leaf.
-
-> And seeing a fig tree afar off having leaves, he came, if haply he might find any thing thereon: and when he came to it, he found nothing but leaves; for the time of figs was not yet. And Yahushua answered and said unto it, No man eat fruit of thee hereafter for ever. And his disciples heard it. — Mark 11:13–14
-
-What He did next is the key to the whole chapter. He went into the temple, drove out those who bought and sold, and said the house of prayer had been made a den of thieves (Mark 11:15–17). The next morning the disciples passed the same tree and found it dried up from the roots (Mark 11:20). Mark sets the temple between the two halves of the fig tree. The tree and the house are one story.
-
-The tree had leaves, and leaves announced fruit. That is why He went to it in a season when the full crop was not yet due. It held out a promise from a distance and had nothing under the promise when He came close.
-
-The disciples did not need the image explained. The Prophets had already put a fig tree, a house, and a dried root in one place. Hosea records that Yahuah found Israel like grapes in the wilderness and saw their fathers as the firstripe in the fig tree at her first time (Hosea 9:10). A few verses on, the same chapter closes:
-
-> For the wickedness of their doings I will drive them out of mine house, I will love them no more: all their princes are revolters. Ephraim is smitten, their root is dried up, they shall bear no fruit. — Hosea 9:15–16
-
-Driven out of the house. Root dried up. No fruit. Hosea set down the order of Mark 11 centuries before it happened. Jeremiah said it the same way: no figs on the fig tree, and the leaf shall fade (Jeremiah 8:13). Micah grieved that there was no firstripe fruit to eat, and then named what was missing: the good man was perished out of the earth, and there was none upright among men (Micah 7:1–2).
-
-Before the image is applied, Scripture defines what a tree is. In the Hebrew Scriptures a tree is a man. The man who trusts in Yahuah shall be as a tree planted by the waters, and shall not cease from yielding fruit (Jeremiah 17:7–8). The righteous shall flourish like the palm tree and still bring forth fruit in old age (Psalm 92:12–14). Yahuah calls His restored people trees of righteousness, the planting of Yahuah (Isaiah 61:3). Ezekiel speaks of all the trees of the field watching Yahuah bring down the high tree and dry up the green tree (Ezekiel 17:24), and the trees there are kings and peoples. Jotham told the men of Shechem a whole parable in which the trees are men choosing a king (Judges 9:7–15). A fig tree is not a flag for a nation. It is a planting of men, and Yahuah comes to men for fruit.
-
-Scripture also defines the fruit, and it defines it as righteousness. The fruit of the righteous is a tree of life (Proverbs 11:30). Isaiah’s vineyard was planted for judgment and righteousness, and when Yahuah came looking for both He found oppression and a cry (Isaiah 5:7). Amos charged Israel with turning the fruit of righteousness into hemlock (Amos 6:12). Hosea told the same people to sow in righteousness, and said they had plowed wickedness and eaten the fruit of lies (Hosea 10:12–13). Moses then says what righteousness is. He spoke to a people Yahuah had already brought out of Egypt with a mighty hand (Deuteronomy 6:21), and told them:
-
-> And it shall be our righteousness, if we observe to do all these commandments before Yahuah our God, as he hath commanded us. — Deuteronomy 6:25
-
-David said it in one line: all thy commandments are righteousness (Psalm 119:172). The fruit is righteousness, and righteousness is the commandments kept by a people already delivered. The fruit is the law walked out in a man’s life. Psalm 1 puts the two together: the man whose delight is in the law of Yahuah is a tree that brings forth his fruit in his season (Psalm 1:2–3).
-
-A tree in leaf with no fruit is a people showing every outward sign of a harvest with no keeping of the law beneath it. That was the house the four men were looking at: sacrifices running, courts full, priests at their stations, and no fruit.
-
-The fig tree is a planting of men, its fruit is righteousness, the law kept, and the leaves without fruit are the temple service carried on without it.
-
-## Summer Is the End
-
-On the mount of Olives, facing that house, Yahushua gave the parable.
+## The Parable, Said Plainly
 
 > Now learn a parable of the fig tree; When her branch is yet tender, and putteth forth leaves, ye know that summer is near: So ye in like manner, when ye shall see these things come to pass, know that it is nigh, even at the doors. Verily I say unto you, that this generation shall not pass, till all these things be done. Heaven and earth shall pass away: but my words shall not pass away. — Mark 13:28–31
 
-The likeness is to the whole scene, not to the tree alone. A man sees the branch go tender and the leaves come out, and he knows what season follows. The leaves are not the lesson. The season is.
+In plain words, it says this. Anyone knows summer is coming when the fig tree puts out its leaves. In the same way, when the disciples saw the things He had just told them, they were to know that the end of that house was close. And it would happen before the men then living were gone.
 
-The season named is summer, and the Prophets had already said what summer means for Israel. Yahuah showed Amos a basket of summer fruit and asked him what he saw.
+The parable has two halves, a picture and a meaning. The picture is a fig tree in leaf. The meaning is “these things” coming to pass.
+
+The picture is a plain one. A farmer does not need a calendar to know the season. He watches his fig tree. When the leaves come out, winter is over and summer is on the way. Solomon wrote it the same way: the winter is past, the rain is over and gone, and the fig tree putteth forth her green figs (Song of Solomon 2:11–13).
+
+The fig tree in this parable is a calendar.
+
+## The Other Fig Tree
+
+These four men had seen a fig tree a few days earlier. On the road into Jerusalem, Yahushua found a fig tree in full leaf with nothing on it but leaves, and cursed it (Mark 11:12–14). He went straight into the temple and drove out the buyers and sellers (Mark 11:15–17). The next morning Peter said, Master, behold, the fig tree which thou cursedst is withered away (Mark 11:20–21). Mark tells that fig tree in two halves, with the temple in the middle.
+
+That tree was judged for leaves without fruit. The tree in this parable is a different tree with a different use. It carries no fruit and no curse, and nobody comes to it looking for any. Its leaves only tell the season.
+
+The withered tree is a contrast, not a key.
+
+## Why a Fig Tree
+
+Three reasons for choosing a fig tree were standing in front of those four men.
+
+First, the fig tree is the tree whose leaves announce summer.
+
+Second, the last fig tree these men had seen stood on either side of the cleansing of that same temple, and it was already withered.
+
+Third, Jeremiah had already put the fig tree and the summer together against the first temple. His message opens at the gate of Yahuah’s house (Jeremiah 7:2) and runs on into the next chapter: there shall be no figs on the fig tree, and the leaf shall fade (Jeremiah 8:13); the harvest is past, the summer is ended, and we are not saved (Jeremiah 8:20).
+
+The fig tree was the natural tree for the end of a house.
+
+## Summer Is the End
+
+The season the tree tells is summer, and the Prophets had already said what summer means for Israel. Yahuah showed Amos a basket of summer fruit and asked him what he saw.
 
 > And he said, Amos, what seest thou? And I said, A basket of summer fruit. Then said Yahuah unto me, The end is come upon my people of Israel; I will not again pass by them any more. — Amos 8:2
 
-The word for summer fruit is *qayits* (H7019). The word for end is *qets* (H7093). The two sound almost alike, and Yahuah made His point with the sound itself: summer fruit, the end. This is not a meaning laid on Amos from outside. It is the answer Amos was given when he was asked what he saw.
+The Hebrew word for summer fruit is *qayits*. The word for end is *qets*. The two sound almost the same, and Yahuah made His point with the sound: summer fruit, the end.
 
-Jeremiah carried the same season to the same people, in the same chapter as the leafless fig: the harvest is past, the summer is ended, and we are not saved (Jeremiah 8:20). In both prophets, summer is not a time of blessing for an unfruitful people. It is the time their end arrives.
+Jeremiah preached at the gate of the first temple, years before Babylon burned it. In that same message he called the house a den of robbers (Jeremiah 7:11), the line Yahushua quoted when He drove out the sellers that week. And he said the house would be left like Shiloh, in ruins (Jeremiah 7:12–14).
 
-When Yahushua told four men watching the temple that summer was near, He was speaking the language of Amos. Summer is the end come upon the people. When they saw these things come to pass, the end of that house was standing at the doors.
+So when Yahushua said summer is near, four men who knew Amos and Jeremiah heard it plainly. The end of the house was near.
 
-In the Prophets summer is not a revival; summer is the end.
+In the Prophets summer is not a good sign; summer is the end.
 
-## What the Pulpit Planted in 1948
+## These Things, Named in the Chapter
 
-Popular prophecy teaching reads the parable another way. It makes the fig tree the modern state of Israel, the budding its founding in 1948, and “this generation” the people alive to see it. Prophecy books of the 1970s and 1980s counted a generation of forty years from 1948 and set the Messiah’s return near 1988. The year came and went, and the reading was quietly stretched rather than given up.
+Now the meaning half: so ye in like manner, when ye shall see these things. “These things” are not left for anyone to guess. Yahushua had just named them, in the same answer, to the same four men (Mark 13:5–10).
 
-The reading breaks the question first. The disciples asked when the stones in front of them would fall. A state founded nineteen centuries later answers nothing they asked.
+- Men coming in His name to deceive.
+- Wars and rumours of wars.
+- Earthquakes and famines.
+- The disciples themselves delivered up to councils and beaten in synagogues.
+- The good news published among all nations.
 
-It breaks the audience second. Yahushua said, when ye shall see these things. The men in front of Him were the ones told to watch, and they were the ones who would see.
+Today’s pulpit reads that list as tomorrow’s news. The New Testament records it as already done, inside the lives of the men who heard it.
 
-It breaks the season third. The pulpit makes the budding a blessing on a restored nation. In Amos and Jeremiah, summer is the end come upon the people, not their restoration. The modern reading takes the sign of a house’s end and preaches it as the sign of a house’s return.
+Deceivers came. Paul met a false prophet named Bar-jesus on Cyprus (Acts 13:6). A Roman captain asked Paul whether he was the Egyptian who had led four thousand men out into the wilderness (Acts 21:38). John wrote that even now there were many antichrists (1 John 2:18).
 
-It breaks Luke fourth. Luke records Him saying, behold the fig tree, and all the trees (Luke 21:29). If any tree in leaf tells the season, the lesson cannot be a coded prophecy about one nation. It is how any man reads summer coming from the leaves.
+The earth shook. It shook when the Messiah died on the tree, and the rocks rent (Matthew 27:51). It shook again at the tomb (Matthew 28:2). It shook the prison at Philippi until every door was opened (Acts 16:26). A prophet named Agabus foretold a great famine throughout all the world, and it came to pass in the days of Claudius Caesar (Acts 11:28).
 
-The generation is settled by the same speaker in the same week. In the temple, before He walked out of it, Yahushua said all the righteous blood shed upon the earth would come upon this generation, and told that house it was left desolate (Matthew 23:35–38). “This generation” in His mouth that week meant the men standing in front of Him. Before that generation had passed, in the year 70, the temple was burned and its stones thrown down, one from another, as He said.
+The disciples were delivered up to councils. Peter and John stood before the council (Acts 4:5–7). The apostles were beaten and told not to speak in the name of Yahushua (Acts 5:40). Paul said he had beaten in every synagogue those who believed (Acts 22:19). Stephen was stoned (Acts 7:59). James the brother of John was killed with the sword (Acts 12:2).
+
+The good news went to the nations. Paul wrote that it had been preached to every creature which is under heaven (Colossians 1:23), and that the faith of the believers in Rome was spoken of throughout the whole world (Romans 1:8).
+
+Every leaf on that list came out while those men were still alive.
+
+## The Abomination and Daniel’s Seventy Weeks
+
+Then came the last sign: the abomination of desolation, spoken of by Daniel the prophet, standing where it ought not. With it came an order. Let them that be in Judaea flee to the mountains. Let him that is on the housetop not go down into the house. Pray that your flight be not in the winter (Mark 13:14–18).
+
+Daniel named that desolation inside his seventy weeks. The weeks were determined upon thy people and upon thy holy city (Daniel 9:24), and they close this way:
+
+> And after threescore and two weeks shall Messiah be cut off, but not for himself: and the people of the prince that shall come shall destroy the city and the sanctuary; and the end thereof shall be with a flood, and unto the end of the war desolations are determined. — Daniel 9:26
+
+The word for end there is *qets*, the same word Yahuah sounded out over Amos’s basket of summer fruit. Daniel’s weeks were set on Daniel’s people and Daniel’s city, and they close with the city and the sanctuary destroyed.
+
+The pulpit cuts the last week off those seventy and moves it two thousand years forward. Then it uses this chapter to prove the week is still future, and uses the moved week to prove this chapter is still future. Each wrong reading is held up by the other.
+
+Luke records the same moment and drops the riddle entirely.
+
+> And when ye shall see Jerusalem compassed with armies, then know that the desolation thereof is nigh. Then let them which are in Judaea flee to the mountains. — Luke 21:20–21
+
+Those are the leaves: armies around Jerusalem. The order to run was given to men in Judaea, with houses and housetops in Judaea, who could be caught out in a Judaean winter.
+
+The abomination is Jerusalem surrounded by armies, and the order to flee belonged to the men who would see it.
+
+## The Darkened Sun and the Clouds
+
+After that come the darkened sun and the falling stars (Mark 13:24–25). Isaiah used that picture for the fall of nations, and he drew it with a fig tree: all their host shall fall down, as the leaf falleth off from the vine, and as a falling fig from the fig tree (Isaiah 34:4). He used the same darkened sun and stars for the fall of Babylon (Isaiah 13:10, 19). In the Prophets, that is how the end of a kingdom is described.
+
+Then they shall see the Son of man coming in the clouds with great power and glory (Mark 13:26). That picture comes from Daniel.
+
+> I saw in the night visions, and, behold, one like the Son of man came with the clouds of heaven, and came to the Ancient of days, and they brought him near before him. And there was given him dominion, and glory, and a kingdom. — Daniel 7:13–14
+
+In Daniel the clouds carry the Son of man up to the Ancient of days to receive a kingdom. A cloud received Yahushua out of the disciples’ sight as He went up (Acts 1:9). Luke ends his account of the fig tree with the same thing: know ye that the kingdom of God is nigh at hand (Luke 21:31).
+
+The clouds carry the Son of man up to receive the kingdom, not down to the earth.
+
+## Nigh, Even at the Doors
+
+Know that it is nigh, even at the doors. Luke names what is near twice. The desolation of Jerusalem is nigh (Luke 21:20). The kingdom of God is nigh (Luke 21:31).
+
+The house comes down, and the kingdom is given.
+
+## This Generation
+
+This generation shall not pass, till all these things be done. In the temple that same week, Yahushua said all the righteous blood shed upon the earth would come upon this generation, and told that house, Behold, your house is left unto you desolate (Matthew 23:35–38). “This generation,” in His mouth that week, meant the men standing in front of Him.
+
+Before that generation passed, in the year 70, Roman armies surrounded Jerusalem, the temple burned, and its stones were thrown down, as He said.
 
 This generation means the generation that heard it.
 
-## All These Things, the Clouds Included
+## What the Pulpit Planted in 1948
 
-The strongest objection sits inside the chapter. Among the things that generation would see, Yahushua named the Son of man coming in the clouds with great power and glory (Mark 13:26). If that is His return to the earth, then “this generation” cannot mean the men on the hill, because they died and He had not returned.
+Popular prophecy teaching made the fig tree the modern state of Israel, the budding its founding in 1948, and “this generation” the people alive to see it. Books counted forty years and set the return of the Messiah near 1988. The year came and went, and the reading was stretched rather than given up.
 
-The answer is in the passage He was quoting. The clouds come from Daniel.
+That reading breaks four ways.
 
-> I saw in the night visions, and, behold, one like the Son of man came with the clouds of heaven, and came to the Ancient of days, and they brought him near before him. And there was given him dominion, and glory, and a kingdom, that all people, nations, and languages, should serve him: his dominion is an everlasting dominion, which shall not pass away, and his kingdom that which shall not be destroyed. — Daniel 7:13–14
+It breaks the question. The disciples asked about the stones in front of them, and a state founded nineteen centuries later answers nothing they asked.
 
-Daniel saw the Son of man come with the clouds to the Ancient of days. The direction is upward, into the presence of Yahuah, not downward to the earth. He comes to be given dominion and a kingdom. That is an enthronement, not a landing. Daniel also says that dominion shall not pass away, the same words Yahushua set against the passing of heaven and earth at the close of the parable.
+It breaks the audience. He said “ye,” and gave an order to flee to men living in Judaea.
 
-Yahushua said the same to the high priest at His trial: ye shall see the Son of man sitting on the right hand of power, and coming in the clouds of heaven (Mark 14:62). He said “ye” to the high priest of that generation. The kingdom was given when He was lifted up at the tree, and a cloud received Him out of the disciples’ sight as He went up to the Ancient of days (Acts 1:9). The men on the hill saw it. The high priest who judged Him lived in the generation that saw the house he served thrown down.
+It breaks the season. In Amos and Jeremiah summer is the end of a people, not their comeback. The modern reading takes the sign of a house ending and preaches it as the sign of a house returning.
 
-The darkened sun and falling stars of the same passage are the Prophets’ language for the fall of a house or a nation, not for the end of the physical sky. Isaiah used those words for the fall of Babylon (Isaiah 13:10, 19).
+It breaks Luke. Luke records Him saying, behold the fig tree, and all the trees (Luke 21:29). If any tree in leaf tells the season, this was never a coded prophecy about one nation.
 
-The clouds of Mark 13:26 carry the Son of man up to the throne, and that generation saw Him take it.
+## Flee to the Mountains
 
-## That Day and That Hour
+Every generation since has read “flee to the mountains” as an order for itself. Some keep a bag packed by the door. The order was given to men in Judaea, about a temple standing in front of them, and Yahushua put a limit on it Himself: this generation shall not pass, till all these things be done.
 
-The parable ends at verse 31. At verse 32 Yahushua turns.
+The order to flee was fulfilled by the generation it was given to.
 
-> But of that day and that hour knoweth no man, no, not the angels which are in heaven, neither the Son, but the Father. — Mark 13:32
+## The Parable Put Back Together
 
-Up to this point He had answered the question asked, with signs, a season, and a generation. Here He speaks of a day with no sign, no season, and no generation attached. “These things” were known by signs and could be read like leaves. “That day” is known to the Father alone and cannot be read at all. The two are not the same event. The fall of the house was near. The day of His return, when He ends death and holds the final judgment, was not given to anyone to count toward. That keeps the return future and whole, and keeps the parable where its own question put it.
+The disciples asked when the temple would fall and how they would know it was close. Yahushua answered with a tree they all knew. When the fig tree puts out its leaves, any farmer knows summer is coming.
 
-The verse corrects one more teaching in passing. The Son said He did not know what the Father knew, which no co-equal person of a single Godhead could say.
+He chose a fig tree because its leaves are the sign of summer, because a fig tree had just withered on either side of His cleansing of that temple, and because Jeremiah had already set the fig tree and the summer against the first house.
 
-Mark then gives one more short telling: a man taking a far journey, leaving his servants their work and commanding the porter to watch (Mark 13:34–37). That telling belongs to the day no man knows. The fig tree belongs to the summer that four men were told they would see.
+Summer, in the Prophets, is the end. Amos heard it over a basket of summer fruit. Jeremiah said it at the gate of the first temple. Daniel used the same word for the close of his seventy weeks, when the city and the sanctuary would be destroyed.
 
-The summer was read from the leaves; the day is read from nothing and can only be watched for.
+The leaves were the things He listed, and those men lived through every one of them. When the last of them came, armies around Jerusalem and the abomination standing where it ought not, they were not to wait for one more sign. They were to leave Judaea.
 
-## Stones That Fall, Words That Stand
+All of it fell inside the generation He was speaking to. In the year 70 the stones came down, one from another, as He said. Heaven and earth may pass away. His words did not.
 
-The parable closes on a contrast Yahushua drew Himself: heaven and earth shall pass away, but my words shall not pass away. The disciples began by admiring stones. He ended by naming the one thing that does not fall. Isaiah had said it: the grass withereth, the flower fadeth, but the word of our God shall stand for ever (Isaiah 40:8).
+The lesson of the fig tree is not a date to calculate. It is a sign to read and an order to act on. It was given so that the men who read the leaves would not be inside when the stones came down.
 
-The house fell because it bore leaves and no fruit. It kept the outward service and left the law unkept, and the law is the light (Proverbs 6:23; Isaiah 8:20). A house in full leaf with no light in it had already reached its summer.
+## The Fig Tree in Revelation
 
-Yahuah’s search for fruit did not end with the stones, because He never dwelt in stones for their own sake. He said, let them make me a sanctuary, that I may dwell among them (Exodus 25:8). When one house came down, Peter wrote to the people who had become the house: ye also, as lively stones, are built up a spiritual house, an holy priesthood (1 Peter 2:5). The stones that would not stay one upon another gave way to living stones that do.
+The last book of Scripture uses the fig tree one more time, with the same picture Isaiah used for the fall of a kingdom.
 
-The warning carries over whole. A people delivered by the Messiah and planted again is still a fig tree, and Yahuah still comes to it looking for fruit. Leaves are not fruit. A full building, a busy calendar of services, and a name for being alive are the same leaves the temple carried. The fruit is what Psalm 1 says it is: the law delighted in and kept, brought forth in its season. A tree that meets Him with leaves has already been told what summer means.
+> And the stars of heaven fell unto the earth, even as a fig tree casteth her untimely figs, when she is shaken of a mighty wind. — Revelation 6:13
 
-The budding fig tree announced the end of a house that bore leaves without the fruit of the law; that generation saw it, and the words that judged it stand over every tree Yahuah has planted since.
+Isaiah, Yahushua, and John speak in one language: a shaken fig tree and falling stars mark a kingdom coming down. The budding fig tree of Mark 13 told four men that the end of the house in front of them was near, and that generation saw every stone of it fall.
