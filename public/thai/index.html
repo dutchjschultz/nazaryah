@@ -275,6 +275,40 @@ details[open] > summary { margin-bottom: 10px; }
 .wlink { background: none; border: 1px solid var(--line); border-radius: 4px; color: var(--gold); font-weight: 700; padding: 4px 8px; min-height: 36px; font-size: 14px; }
 .phr .acts { display: flex; gap: 8px; align-items: center; }
 .toast { position: fixed; left: 16px; right: 16px; bottom: calc(84px + env(safe-area-inset-bottom, 0px)); z-index: 11; max-width: 560px; margin-inline: auto; background: var(--ink); color: var(--bg); padding: 12px 14px; border-radius: 6px; font-size: 15px; }
+/* Writing view (V17): tap any Thai to enlarge it; vowel marks in color. */
+.thz { cursor: zoom-in; border-radius: 3px; }
+.thz:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
+.zv-v { color: var(--t-l); }
+.zv-s { color: var(--t-f); }
+.zl { position: relative; display: inline-block; white-space: nowrap; }
+.zl1, .zl2 { position: absolute; inset: 0; pointer-events: none; user-select: none; -webkit-user-select: none; }
+.zl2 { -webkit-text-stroke: .012em currentColor; }
+.zt0 { color: transparent; -webkit-text-stroke-color: transparent; }
+.zoomv { position: fixed; inset: 0; z-index: 13; background: rgba(10, 14, 34, .62); display: grid; place-items: center; padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
+.zoomv[hidden] { display: none !important; }
+.zin { position: relative; background: var(--leaf); color: var(--ink); border-radius: 8px; width: min(100%, 640px); max-height: 100%; overflow: auto; padding: 44px 16px 18px; display: grid; gap: 10px; justify-items: center; text-align: center; }
+.zt { font: 500 200px/1.6 "Sarabun", "Noto Sans Thai", sans-serif; white-space: nowrap; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.zx { position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border: 0; border-radius: 22px; background: var(--lac); color: var(--on-lac); font: 700 24px/1 var(--f-phon); }
+.zin .legend { margin: 0; }
+.wmarks { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
+.wmark { background: var(--bg); border-radius: 6px; padding: 10px; display: grid; gap: 2px; justify-items: center; text-align: center; }
+.wmark .g { font: 500 76px/1.45 "Sarabun", "Noto Sans Thai", sans-serif; }
+.wmark .tn { font: 600 20px/1.3 var(--f-body); }
+.wmark .rn { font: 700 15px/1.3 var(--f-phon); color: var(--gold); }
+.wmark p { margin: 4px 0 0; font-size: 15px; color: var(--soft); }
+.wforms { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; }
+.wform { background: var(--bg); border-radius: 6px; padding: 8px 4px; min-width: 0; display: grid; gap: 4px; justify-items: center; align-content: start; text-align: center; }
+.wform .lab { font: 600 12px/1.3 var(--f-phon); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.wform .g { font: 500 clamp(30px, 10vw, 64px)/1.5 "Sarabun", "Noto Sans Thai", sans-serif; }
+.wform .ex { font: 500 clamp(28px, 9vw, 46px)/1.5 "Sarabun", "Noto Sans Thai", sans-serif; }
+.wform .lab { min-height: 3.9em; }
+.wbox { background: var(--bg); border-left: 4px solid var(--gold); border-radius: 4px; padding: 10px 12px; margin: 0; }
+.wform .en { overflow-wrap: anywhere; }
+.wform .en { color: var(--soft); font-size: 15px; }
+.wnote { margin: 0; }
+.card[id^="w-"] { scroll-margin-top: 72px; }
+.wsound { margin: 0; }
+.wsound b { font: 700 18px var(--f-phon); margin-right: 6px; }
 @media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
 </style>
 
@@ -290,6 +324,7 @@ details[open] > summary { margin-bottom: 10px; }
 <nav class="tabs" id="tabs" aria-label="Sections"></nav>
 <div class="bigv" id="bigv" hidden></div>
 <div class="toast" id="toast" role="status" hidden></div>
+<div class="zoomv" id="zoomv" hidden></div>
 
 <script>
 /* ---------- mouth drawing, seen from the side, facing left ---------- */
@@ -1326,7 +1361,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 16</p>`;
+ <p class="score">App version 17</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1445,7 +1480,7 @@ V.letters=()=>{
  <section class="card" id="vdetail">
   <div class="lhead"><div class="bigl" lang="th">${dv(v.th)}</div><div>
    <div style="font:700 26px var(--f-phon)">${v.k}</div><div class="plain" style="font-size:17px">Say: ${plain(v.k)}</div></div>${sayBtn(hearV,v.k)}</div>
-  <p class="asin">${ASIN[v.k]}</p>${CLOSED[v.k]?`<p style="color:var(--soft)">This vowel changes shape inside some words. Step 1 shows how.</p>`:''}
+  <p class="asin">${ASIN[v.k]}</p>${VWK[v.k]?`<button class="wlink" data-written="${VWK[v.k]}" style="justify-self:start">See how it's written →</button>`:''}${CLOSED[v.k]?`<p style="color:var(--soft)">This vowel changes shape inside some words. Step 1 shows how.</p>`:''}
   ${SMILE.includes(v.k)?`<p class="smile">${SMI}<span>Smile on this sound. Wide lips help it come out right.</span></p>`:''}
   <div class="stack" style="gap:8px">
   ${lv('vp',1,'Where it sits',`<p>This vowel sits ${VPOS[v.k]?VPOS[v.k]+' the letter':VPOS2[v.k]}. The dotted circle shows where the letter goes. Wherever the vowel is written, the letter is said first.</p>${CLOSED[v.k]?`<p><b>It changes shape.</b> When an ending sound such as k, t, n or m comes after this vowel, ${CLOSED[v.k][1]}: <span lang="th" style="font:500 28px var(--f-thai)">${CLOSED[v.k][0]}</span>. The sound stays the same. Only the writing changes.</p>`:''}`)}
@@ -1829,19 +1864,109 @@ V.find=()=>`<h1>Find a word or phrase</h1><label for="find-q" class="lede">Type 
  <div class="stack" id="find-out">${findOut()}</div>`;
 
 /* ---------- routing and events ---------- */
+/* ---------- writing view (V17) ---------- */
+// Coloring: vowel marks blue, the two short signs (ะ, ็) red, letters and tone marks plain.
+const ZSHORT='ะ็', ZVOW='เแโใไัาำิีึืุูๅ';
+// Browsers paint a mark that sits on a letter in the letter's color, so a colored mark is drawn as
+// three stacked copies of the same text: the full text in ink; a copy where only the letter+mark
+// clusters that carry a colored mark show, in that color; and a copy that repaints those letters
+// alone in ink (the marks are left out there, since they take no width). Tone marks are left out of
+// the two upper copies; a vowel mark sits under a tone mark, so its place does not change.
+const ZCOMB=/[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]/, ZTONE=/[\u0E48-\u0E4C]/;
+function zKind(ch,i,o){const c=ch[i],prev=ch[i-1]||'';
+ if(ZSHORT.includes(c))return 's'; if(ZVOW.includes(c))return 'v';
+ if(o&&c==='อ'&&i>0&&(isC(prev)||ZVOW.includes(prev)||ZSHORT.includes(prev)||TONEM.includes(prev)||prev==='◌'))return 'v';
+ return '';}
+function colorTh(th,o){
+ const ch=[...th], all=ch.map((c,i)=>[c,zKind(ch,i,o)]);
+ const base=all.map(([c,k])=>k&&!ZCOMB.test(c)?`<span class="zv-${k}">${c}</span>`:c).join('');
+ if(!all.some(([c,k])=>k&&ZCOMB.test(c)))return base;
+ const nt=all.filter(([c])=>!ZTONE.test(c)); let mid='',top='';
+ for(let i=0;i<nt.length;){let j=i+1;while(j<nt.length&&ZCOMB.test(nt[j][0]))j++;
+  const cl=nt.slice(i,j), mk=cl.find(([c,k])=>k&&ZCOMB.test(c)), txt=cl.map(x=>x[0]).join('');
+  if(mk){mid+=`<span class="zv-${mk[1]}">${txt}</span>`;top+=`<span>${cl[0][0]}</span>`}
+  else{mid+=`<span class="zt0">${txt}</span>`;top+=`<span class="zt0">${txt}</span>`}
+  i=j}
+ return `<span class="zl">${base}<span class="zl1" aria-hidden="true">${mid}</span><span class="zl2" aria-hidden="true">${top}</span></span>`;
+}
+const thText=el=>{const c=el.cloneNode(true);c.querySelectorAll('.zl1,.zl2').forEach(x=>x.remove());return c.textContent};
+const ZLEG=`<p class="legend"><span class="zv-v">Blue</span> vowel mark · <span class="zv-s">Red</span> short sign, ะ or ◌็ · letters in plain ink</p>`;
+function markTh(root){root.querySelectorAll('[lang="th"]').forEach(el=>{if(el.closest('button,a,summary,.tabs')||!/[฀-๿]/.test(el.textContent))return;el.classList.add('thz');el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','Enlarge '+thText(el).trim())})}
+let zoomFrom=null;
+function openZoom(el){
+ const text=thText(el).replace(/\s+/g,' ').trim(); if(!text)return;
+ const z=document.getElementById('zoomv'); zoomFrom=el;
+ z.innerHTML=`<div class="zin" role="dialog" aria-modal="true" aria-label="Enlarged Thai"><button class="zx" data-unzoom="1" aria-label="Close">×</button><div class="zt" lang="th">${colorTh(text,el.dataset.o==='1')}</div>${ZLEG}${/◌/.test(text)?'':sayBtn(text.replace(/ /g,''),text)}</div>`;
+ z.hidden=false;
+ const t=z.querySelector('.zt'); let s=200; t.style.fontSize=s+'px';
+ while(t.scrollWidth>t.clientWidth&&s>40){s-=8;t.style.fontSize=s+'px'}
+ z.querySelector('.zx').focus();
+}
+function closeZoom(){const z=document.getElementById('zoomv');if(z.hidden)return;z.hidden=true;z.innerHTML='';if(zoomFrom&&document.contains(zoomFrom))zoomFrom.focus();zoomFrom=null}
+// How It's Written: one block per vowel pair, in the app's vowel order.
+const WL={L:'Long',LO:'Long, nothing after',LC:'Long, a letter after',S:'Short',SB:'Short, with or without a letter after',SO:'Short, nothing after',SC:'Short, a letter after'};
+const WRT=[
+ {k:'a',keys:['a','aa'],forms:[['L','◌า',['กา','kaa','crow']],['SO','◌ะ',['กะ','kà','to estimate']],['SC','◌ั◌',['กัน','kan','together']]],
+  note:'า after the letter is long. ะ after the letter is short. When a letter follows the short a, ะ becomes ั (mai han-akat) on top of the first letter.'},
+ {k:'i',keys:['i','ee'],forms:[['L','◌ี',['ปี','pee','year']],['SB','◌ิ',['กิน','kin','to eat']]],
+  note:'ี on top is long and ิ on top is short. Each keeps its shape whether or not a letter follows.'},
+ {k:'ue',keys:['ue','uue'],forms:[['LO','◌ือ',['มือ','muue','hand']],['LC','◌ื◌',['ยืน','yuuen','to stand']],['SB','◌ึ',['ขึ้น','khûen','to go up']]],
+  note:'The long sound is ื with อ after it. When a letter follows, the อ drops off and only ื stays. ึ on top is the short sound.'},
+ {k:'u',keys:['u','oo'],forms:[['L','◌ู',['ดู','doo','to look']],['SB','◌ุ',['คุณ','khun','you']]],
+  note:'ู under the letter is long and ุ under the letter is short. Both keep their shape whether or not a letter follows.'},
+ {k:'e',keys:['e','ay'],forms:[['L','เ◌',['เท','thay','to pour']],['SO','เ◌ะ',['เตะ','tè','to kick']],['SC','เ◌็◌',['เย็น','yen','cool']]],
+  note:'เ alone is long. ะ after it makes it short. When a letter follows the short sound, ็ goes on top instead.',
+  box:'ะ (two hooks) and ็ (one curl) are two different characters. Neither is a piece of the other. Both tell the reader to say the vowel short. ะ is used when nothing follows. When a letter follows, ะ has no room at the end, so ็ goes on top of the first letter instead.',
+  extra:'One exception: when a tone mark sits on the letter, ็ is left out. เล่น (lên, to play) and เก่ง (kèng, skilled) are still said short.'},
+ {k:'ae',keys:['ae','aae'],forms:[['L','แ◌',['แม่','mâae','mother']],['SO','แ◌ะ',['แกะ','kàe','sheep']],['SC','แ◌็◌',['แข็ง','khǎeng','hard']]],
+  note:'แ alone is long. ะ after it makes it short. When a letter follows the short sound, ็ goes on top instead.',
+  box:'ะ (two hooks) and ็ (one curl) are two different characters. Neither is a piece of the other. Both tell the reader to say the vowel short. With แ, ะ is used when nothing follows, as in แกะ. When a letter follows, ะ has no room at the end, so ็ goes on top of the first letter instead, as in แข็ง.'},
+ {k:'o',keys:['o','oh'],forms:[['L','โ◌',['โต','toh','big']],['SO','โ◌ะ',['โต๊ะ','tó','table']],['SC','◌◌',['คน','khon','person'],'No vowel mark']],
+  note:'โ alone is long. ะ after it makes it short. When a letter follows the short o, nothing is written at all: two letters side by side are read with a short o between them.'},
+ {k:'aw',keys:['aw','aaw'],forms:[['L','◌อ',['ขอ','khǎaw','to ask for']],['SO','เ◌าะ',['เกาะ','kàw','island']],['SC','◌็อ◌',['ล็อก','láwk','lock'],'Rare']],
+  note:'อ after the letter is long. The short sound is written เ-าะ when nothing follows. When a letter follows, ็ goes on top and อ stays; this spelling is rare and shows up mostly in borrowed words.'},
+ {k:'er',keys:['er','err'],forms:[['LO','เ◌อ',['เจอ','jerr','to meet']],['LC','เ◌ิ◌',['เดิน','derrn','to walk']],['SO','เ◌อะ',['เยอะ','yér','a lot']]],
+  note:'เ-อ is long. When a letter follows the long sound, the อ drops off and ิ goes on top. ะ added at the end makes it short.'}
+];
+// Thai inside prose: colored, tappable, and a lone mark sits on a dotted circle.
+const thx=s=>s.replace(/[\u0E00-\u0E7F◌]+/g,m=>`<span lang="th" data-o="1">${colorTh(/^[\u0E31\u0E34-\u0E3A\u0E47-\u0E4E]/.test(m)?'◌'+m:m,1)}</span>`);
+const VWK={}; WRT.forEach(b=>b.keys.forEach(k=>VWK[k]=b.k));
+const WMARKS=[['ะ','สระอะ','sara a','Short sign. Comes after the letter when nothing follows.'],
+ ['◌็','ไม้ไต่คู้','mai taikhu','Short sign. Sits on top of the letter when another letter follows.'],
+ ['◌ั','ไม้หันอากาศ','mai han-akat','Short a when a letter follows. Sits on top of the first letter.'],
+ ['เ','สระเอ','sara e','Written before the letter, said after it.'],
+ ['แ','สระแอ','sara ae','Written before the letter, said after it.'],
+ ['โ','สระโอ','sara o','Written before the letter, said after it.']];
+V.written=()=>`<button class="back" data-wback="1">← Vowels and Letters</button>
+ <h1>How It's Written</h1>
+ <p class="lede">Speaking comes first. This page is for reading: each vowel drawn large, with its marks in color. The dotted circle stands for any letter. Tap any Thai to see it bigger still.</p>
+ ${ZLEG}
+ <section class="card"><h2>The marks</h2><div class="wmarks">${WMARKS.map(m=>`<div class="wmark"><span class="g" lang="th">${colorTh(m[0])}</span><span class="tn" lang="th">${m[1]}</span><span class="rn">${m[2]}</span><p>${m[3]}</p></div>`).join('')}</div></section>
+ ${WRT.map(b=>`<section class="card" id="w-${b.k}"><h2>${b.keys.join(' and ')}</h2>
+  ${b.keys.map(k=>`<p class="wsound"><b>${k}</b>${ASIN[k]}</p>`).join('')}
+  <div class="wforms">${b.forms.map(f=>`<div class="wform"><span class="lab">${WL[f[0]]}${f[3]?' · '+f[3]:''}</span><span class="g" lang="th" data-o="1">${colorTh(f[1],1)}</span><span class="ex" lang="th" data-o="1">${colorTh(f[2][0],1)}</span><span style="font-size:18px">${ph(f[2][1])}</span><span class="en">${f[2][2]}</span>${sayBtn(f[2][0],f[2][2])}</div>`).join('')}</div>
+  <p class="wnote">${thx(b.note)}</p>${b.box?`<p class="wbox">${thx(b.box)}</p>`:''}${b.extra?`<p class="wnote" style="color:var(--soft)">${thx(b.extra)}</p>`:''}
+ </section>`).join('')}
+ <button class="back" data-wback="1">← Vowels and Letters</button>`;
 const app=document.getElementById('app');
 function current(){const h=location.hash.slice(1);return V[h]?h:store.get('view','start')}
 let view='start';
 function render(keep){
  loadVoice();
  if(!V[view])view='start';
- app.innerHTML=V[view]();
+ app.innerHTML=V[view](); markTh(app);
  document.getElementById('tabs').innerHTML=NAV.map(n=>`<button data-go="${n[0]}"${n[0]===view?' aria-current="page"':''}><span class="g" lang="th">${n[1]}</span><span>${n[2]}</span></button>`).join('');
  if(!keep)window.scrollTo(0,0);
 }
 function go(v){view=v;store.set('view',v);try{history.replaceState(null,'','#'+v)}catch(e){location.hash=v}render()}
 document.addEventListener('click',e=>{
+ const zv=document.getElementById('zoomv');
+ if(!zv.hidden&&e.target===zv){closeZoom();return}
+ const zt=e.target.closest('.thz'); if(zt&&!e.target.closest('button')){openZoom(zt);return}
  const b=e.target.closest('button'); if(!b)return; const d=b.dataset;
+ if(d.unzoom){closeZoom();return}
+ if(d.written){go('written');const s=document.getElementById('w-'+d.written);if(s)s.scrollIntoView({block:'start'});return}
+ if(d.wback){go('letters');const s=document.getElementById('vdetail');if(s)s.scrollIntoView({block:'center'});return}
  if(d.say){say(d.say);return}
  if(d.pick){findQ=d.pick;findSel=null;render();return}
  if(d.open){const en=entryByTh(d.open);findSel=d.open;if(en)findQ=en.en;go('find');return}
@@ -1868,7 +1993,8 @@ document.addEventListener('click',e=>{
 function setRate(r){rate=r;store.set('rate',r);document.getElementById('spd-n').setAttribute('aria-pressed',r==='0.9');document.getElementById('spd-s').setAttribute('aria-pressed',r==='0.55')}
 document.getElementById('spd-n').onclick=()=>setRate('0.9');
 document.getElementById('spd-s').onclick=()=>setRate('0.55');
-document.addEventListener('input',e=>{if(e.target.id==='find-q'){findQ=e.target.value;findSel=null;document.getElementById('find-out').innerHTML=findOut()}});
+document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeZoom();return}const z=e.target.closest&&e.target.closest('.thz');if(z&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openZoom(z)}});
+document.addEventListener('input',e=>{if(e.target.id==='find-q'){findQ=e.target.value;findSel=null;{const fo=document.getElementById('find-out');fo.innerHTML=findOut();markTh(fo)}}});
 window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(V[h]&&h!==view){view=h;render()}});
 if('speechSynthesis' in window)speechSynthesis.addEventListener?.('voiceschanged',()=>{loadVoice();const n=document.getElementById('voice-note');if(n)n.textContent=voiceNote()});
 setRate(rate); view=current(); render();
