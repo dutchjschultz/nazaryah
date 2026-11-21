@@ -191,6 +191,21 @@ p { margin: 0; }
 .bigl { font: 500 84px/1.2 var(--f-thai); }
 .lhead { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; }
 .tag { display: inline-block; border: 1.5px solid currentColor; border-radius: 3px; padding: 0 6px; font: 600 13px/1.5 var(--f-phon); }
+.lvl { background: var(--leaf); border-radius: 6px; padding: 10px 14px; }
+.lvl > summary { font: 700 17px/1.4 var(--f-body); color: var(--gold); }
+.lvl .lvn { display: inline-block; min-width: 22px; height: 22px; border-radius: 11px; background: var(--lac); color: var(--on-lac); text-align: center; font: 700 13px/22px var(--f-phon); margin-right: 8px; }
+.hl { color: var(--hit); }
+.syl2 { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 4px 14px; align-items: center; border-top: 1px solid var(--line); padding-block: 10px; }
+.syl2 .tw { font: 500 38px/1.3 var(--f-thai); }
+.vrow > summary { display: flex; align-items: center; gap: 14px; min-height: 56px; }
+.vrow .vg { font: 500 34px/1.3 var(--f-thai); min-width: 74px; }
+.vrow .vk { font: 700 18px var(--f-phon); }
+.vrow .vs { color: var(--gold); font-weight: 600; }
+.big3 { display: grid; gap: 8px; }
+.big3 p { margin: 0; }
+.vgrid { display: grid; grid-template-columns: repeat(auto-fill, minmax(84px, 1fr)); gap: 6px; }
+.vgrid .lt .g { font-size: 30px; }
+.asin { font: 600 18px/1.35 var(--f-body); color: var(--ink); }
 .marks { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
 .mk-item { background: var(--leaf); border-radius: 4px; padding: 8px 10px; display: flex; align-items: center; gap: 10px; min-width: 0; }
 .mk-item .g { font: 500 30px/1.3 var(--f-thai); }
@@ -1232,7 +1247,7 @@ wall|ผ·นัง|phà-nǎng||
 /* ---------- state ---------- */
 const store = {get(k,d){try{const v=localStorage.getItem('thai.'+k);return v===null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem('thai.'+k,v)}catch(e){}}};
 let findQ='water', lesson=null, T=null, donej={}; try{donej=JSON.parse(store.get('done','{}'))}catch(e){}
-let speaker = store.get('speaker','m'), rate = store.get('rate','0.9'), soundTab='Consonants', phraseTab='Greetings', letterSel='ก', letterFilter='All', drillSet='Puff of air', voice=null, voiceState='checking', q=null, score=[0,0];
+let speaker = store.get('speaker','m'), rate = store.get('rate','0.9'), soundTab='Consonants', phraseTab='Greetings', letterSel='ก', letterFilter='Most used', vowelSel='aa', vowelSet='Single', drillSet='Puff of air', voice=null, voiceState='checking', q=null, score=[0,0];
 const NAV=[['start','ก','Start'],['lessons','บท','Lessons'],['sounds','อา','Sounds'],['tones','ก้','Tones'],['letters','ขค','Letters'],['phrases','พูด','Phrases'],['practice','ฝึก','Drill']];
 const SP='<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9v6h4l5 5V4L8 9H4zm12.5 3a4.5 4.5 0 0 0-2.5-4v8a4.5 4.5 0 0 0 2.5-4zM14 3.2v2.1a7 7 0 0 1 0 13.4v2.1a9 9 0 0 0 0-17.6z"/></svg>';
 const sayBtn=(t,label)=>`<button class="say" data-say="${t}" aria-label="Hear ${label||t}">${SP}</button>`;
@@ -1311,7 +1326,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 13</p>`;
+ <p class="score">App version 15</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1342,24 +1357,119 @@ V.tones=()=>`<h1>Tones</h1><p class="lede">Tone is the pitch of the voice across
  <section class="card"><h2>Near or far</h2><p>The tone is the whole difference between these two. A falling tone says near, and a mid tone says far.</p>
   <div class="staffed">${sayBtn('ใกล้','near')}<span class="tw" lang="th" style="font:500 26px var(--f-thai)">ใกล้</span><span style="font-size:20px">${ph('klâi')}</span></div>
   <div class="staffed">${sayBtn('ไกล','far')}<span class="tw" lang="th" style="font:500 26px var(--f-thai)">ไกล</span><span style="font-size:20px">${ph('klai')}</span></div></section>`;
+/* ---------- Letters page: each layer opens one step deeper ---------- */
+const RARE='ฌฎฏฐฑฒ';
+const LWORD={'ต':['ตา','taa','eye'],'ฆ':['โฆษณา','khôht-sà-naa','advertisement'],'ญ':['ญาติ','yâat','relative'],'ฎ':['กฎ','kòt','rule'],'ฏ':['ปฏิทิน','pà-tì-thin','calendar'],'ณ':['คุณ','khun','you'],'ภ':['ภาษา','phaa-sǎa','language'],'ษ':['ภาษา','phaa-sǎa','language'],'ฬ':['กีฬา','kee-laa','sport'],'ฮ':['ฮา','haa','funny']};
+const SYLMEAN={'กา':'crow','ขา':'leg','คา':'stuck','งา':'sesame','ชา':'tea','ตา':'eye','ทา':'to paint','นา':'rice field','ปา':'to throw','ฝา':'lid','พา':'to take along','มา':'to come','ยา':'medicine','ลา':'donkey','หา':'to look for','อา':'aunt or uncle','รา':'mold','ฮา':'funny','ดี':'good','ปี':'year','มี':'to have','สี':'color','ที':'one time','ผี':'ghost','ตี':'to hit','ชี':'nun','หู':'ear'};
+const VPOS={a:'after',aa:'after',i:'above',ee:'above',ue:'above',uue:'above, with อ after',u:'below',oo:'below',e:'before, with ะ after',ay:'before',ae:'before, with ะ after',aae:'before',o:'before, with ะ after',oh:'before',aw:'around it: เ before, าะ after',aaw:'after',er:'before, with อะ after',err:'before, with อ after'};
+const COMBL=/[ัิ-ฺ็-๎]/;
+function markLetter(th,c){let o='';for(let i=0;i<th.length;i++){if(th[i]===c){let j=i+1;while(j<th.length&&COMBL.test(th[j]))j++;o+=`<span class="hl">${th.slice(i,j)}</span>`;i=j-1}else o+=th[i]}return o}
+function letterWords(l){
+ const out=[[l[2],l[1].split(' ').slice(1).join(' '),l[3]]];
+ if(LWORD[l[0]]){out.push(LWORD[l[0]]);return out}
+ const c=l[0];
+ const m=WORDS.filter(w=>{if(/ /.test(w.thSplit)||w.th.includes('{')||w.cat==='phrase')return false;let t=w.th;if(LEADV.includes(t[0]))t=t.slice(1);if(t[0]!==c)return false;if((c==='ห'||c==='อ')&&LOWSON.includes(t[1]))return false;return w.th!==l[2]&&w.en!==l[3]&&!/[A-Z?]/.test(w.en.slice(1))});
+ m.sort((x,y)=>x.ph.split('-').length-y.ph.split('-').length||x.th.length-y.th.length);
+ if(m[0])out.push([m[0].th,m[0].ph,m[0].en]);
+ return out;
+}
+const dv=th=>th.replace('ก','◌');
+function vowelSyl(l,vk){
+ const init=l[5]==='(catch)'?'':l[5], v={aa:['า','aa'],ee:['ี','ee'],oo:['ู','oo']}[vk];
+ let p=init+v[1]; if(l[4]==='H')p=p.replace(/[aeo]/,ch=>({a:'ǎ',e:'ě',o:'ǒ'})[ch]);
+ return {th:l[0]+v[0],ph:p,v:vk,mean:SYLMEAN[l[0]+v[0]]};
+}
+let lvOpen={}; try{lvOpen=JSON.parse(store.get('lvOpen','{}'))||{}}catch(e){}
+document.addEventListener('toggle',e=>{const k=e.target.dataset&&e.target.dataset.lv;if(k){lvOpen[k]=e.target.open;store.set('lvOpen',JSON.stringify(lvOpen))}},true);
+const lv=(k,n,title,body)=>`<details class="lvl" data-lv="${k}"${lvOpen[k]?' open':''}><summary><span class="lvn">${n}</span>${title}</summary>${body}</details>`;
+const ASIN={a:'uh, as in "cut." Short.',aa:'ah, as in "father." Long.',i:'ee, as in "feet," cut short.',ee:'ee, as in "see." Long.',
+ ue:'No English word has this sound. The closest is the oo in "good" said with a wide smile, lips flat. Short.',uue:'The same smiling oo as in "good," held long. No English word has it.',
+ u:'oo, as in "put." Short.',oo:'oo, as in "food." Long.',e:'eh, as in "pen." Short.',ay:'ay, as in "say," held still. Long.',ae:'a, as in "cat." Short.',aae:'a, as in "bad," drawn out. Long.',
+ o:'oh, as in "go," cut short.',oh:'oh, as in "go," held still. Long.',aw:'aw, as in "saw," cut short.',aaw:'aw, as in "saw." Long.',er:'er, as in "her," with no r. Short.',err:'er, as in "her," with no r, held long.',
+ ai:'eye, as in "my."',aai:'eye, as in "my," with the ah drawn out.',ao:'ow, as in "cow."',aao:'ow, as in "how," with the ah drawn out.',ia:'ee-ah, as in the name "Mia."',ua:'oo-ah, as in the end of "Joshua."',
+ uea:'No English word has it. The smiling oo of "good" sliding into "ah."',iu:'ee-oo, close to "few."',aaeo:'The a in "bad" sliding into oo, close to "meow." The Thai word for cat is said just that way.',aawy:'oy, as in "boy."',ui:'oo-ee, as in "gooey."'};
+const GW={a:'cut',aa:'father',i:'feet',ee:'see',ue:'smile oo',uue:'smile oo',u:'put',oo:'food',e:'pen',ay:'say',ae:'cat',aae:'bad',o:'go',oh:'go',aw:'saw',aaw:'saw',er:'her',err:'her',ai:'my',aai:'my',ao:'cow',aao:'how',ia:'Mia',ua:'Joshua',uea:'smile oo-ah',iu:'few',aaeo:'meow',aawy:'boy',ui:'gooey'};
+const VPOS2={ai:'before the letter',aai:'after the letter, as า then ย',ao:'around it: เ before, า after',aao:'after the letter, as า then ว',ia:'around it: เ before, ี on top, ย after',ua:'on top and after: ั on top, ว after',uea:'around it: เ before, ื on top, อ after',iu:'on top and after: ิ on top, ว after',aaeo:'around it: แ before, ว after',aawy:'after the letter, as อ then ย',ui:'under and after: ุ under, ย after'};
+const ONSET=['khr','khl','khw','phr','phl','kr','kl','kw','pr','pl','tr','ph','th','kh','ng','ch','k','p','t','j','b','d','f','h','l','m','n','r','s','w','y',''];
+function vowelWords(v){
+ const out=[v.w];
+ const hit=WORDS.filter(w=>{if(/ /.test(w.thSplit)||w.th.includes('{')||w.th===v.w[0]||/'s /.test(w.en))return false;const sy=w.ph.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().split('-');
+  if(sy.length>2)return false;return sy.some(x=>ONSET.some(o=>x.startsWith(o)&&['','k','t','p','m','n','ng'].some(c=>x===o+v.k+c)))});
+ hit.sort((a,b)=>a.ph.split('-').length-b.ph.split('-').length||a.th.length-b.th.length);
+ if(hit[0])out.push([hit[0].th,hit[0].ph,hit[0].en]);
+ return out;
+}
+function onTwo(v){
+ const short=SHORTV.includes(v.k), gl=!VOW.includes(v);
+ const tone=(ch,cls)=>{const acc=gl||!short?'':cls==='M'?'\u0300':'\u0301';return v.k.replace(/[aeiou]/,x=>(x+acc).normalize('NFC'))};
+ return [['ป','p','M'],['ม','m','L']].map(([c,o,cls])=>({th:v.th.replace('ก',c),ph:o+tone(c,cls)}));
+}
 V.letters=()=>{
  const l=LET.find(x=>x[0]===letterSel), s=initialOf[l[5]], cls={M:'Mid class',H:'High class',L:'Low class'};
- const list=LET.filter(x=>letterFilter==='All'||cls[x[4]].startsWith(letterFilter));
+ const list=LET.filter(x=>letterFilter==='All'?true:letterFilter==='Most used'?!(x[7]||RARE.includes(x[0])):cls[x[4]].startsWith(letterFilter));
  const hear=(l[0]==='ฮ'?'ฮอ ':l[0]==='อ'?'ออ ':l[0]+'อ ')+l[2];
- return `<h1>Letters</h1><p class="lede">Thai has 44 consonant letters. Children learn each one by a name: its sound plus a word that starts with it, as in "ก for chicken." Tap a letter to see it.</p>
- <section class="card" id="ldetail"><div class="lhead"><div class="bigl" lang="th">${l[0]}</div><div><div style="font-size:19px">${ph(l[1])}</div><p class="word"><span class="tw" lang="th">${l[2]}</span><span class="en">${l[3]}</span></p></div>${sayBtn(hear,l[1])}</div>
-  <p><span class="tag">${cls[l[4]]}</span> Starts a syllable as <b>${l[5]}</b>. ${l[6]==='—'?'Rarely or never ends a syllable.':l[6]==='vowel'?'Inside a word it carries a vowel sound.':`Ends a syllable as <b>-${l[6]}</b>.`}${l[7]?' No longer used in modern Thai.':''}</p>
-  ${footnote(s)}</section>
- <div class="chips">${['All','Mid','High','Low'].map(k=>`<button class="chip" data-lfilter="${k}" aria-pressed="${k===letterFilter}">${k==='All'?'All 44':k+' class'}</button>`).join('')}</div>
+ const nm=l[1].split(' '), snd=l[5]==='(catch)'?'no sound of its own':l[5];
+ const words=letterWords(l);
+ const second=l[0]==='ห'?'oo':'ee';
+ const syls=[vowelSyl(l,'aa'),vowelSyl(l,second)];
+ const vinfo={aa:['า','sits after the letter','the a in "father," held long'],ee:['ี','sits on top of the letter','the ee in "see," held long'],oo:['ู','hangs under the letter','the oo in "food," held long']};
+ const vl=vowelSet==='Single'?VOW:GLD, v=[...VOW,...GLD].find(x=>x.k===vowelSel)||VOW[1];
+ const vi=VOW.indexOf(v), partner=vi>=0?VOW[vi^1]:null, hearV=v.th.replace('ก','อ');
+ return `<h1>Vowels and Letters</h1>
+ <section class="card big3"><h2>The big picture</h2>
+  <p>Every Thai syllable is built the same way: a letter starts it, a vowel carries it, and sometimes an ending sound closes it. The vowel is the heart of the syllable. It sets how long the sound lasts, and the tone rides on it.</p>
+  <p><b>1. Vowels.</b> The ah, ee, oo sounds. In writing, a vowel is a small mark that hangs on a letter, so each one here is shown on a dotted circle that stands for any letter. Start here.</p>
+  <p><b>2. Letters.</b> There are 44. Each is a consonant sound, such as k, m or s.</p>
+  <p><b>3. Tone marks.</b> Four tiny marks that tell the voice to go up or down. The Say line in this app already shows the tone, so these can wait.</p>
+  <p style="color:var(--soft)">For speaking, the sounds are what matter. Reading and writing can come later.</p>
+ </section>
+ <h2 style="margin-bottom:0">Vowels</h2>
+ <section class="card" id="vdetail">
+  <div class="lhead"><div class="bigl" lang="th">${dv(v.th)}</div><div>
+   <div style="font:700 26px var(--f-phon)">${v.k}</div><div class="plain" style="font-size:17px">Say: ${plain(v.k)}</div></div>${sayBtn(hearV,v.k)}</div>
+  <p class="asin">${ASIN[v.k]}</p>
+  ${SMILE.includes(v.k)?`<p class="smile">${SMI}<span>Smile on this sound. Wide lips help it come out right.</span></p>`:''}
+  <div class="stack" style="gap:8px">
+  ${lv('vp',1,'Where it sits',`<p>This vowel sits ${VPOS[v.k]?VPOS[v.k]+' the letter':VPOS2[v.k]}. The dotted circle shows where the letter goes. Wherever the vowel is written, the letter is said first.</p>`)}
+  ${lv('vt',2,'Hear it on two letters',`<p>The same vowel on ป (p) and on ม (m). Only the letter changes.</p>${onTwo(v).map(y=>`<div class="syl2"><span class="tw" lang="th">${y.th}</span><div style="font-size:19px">${ph(y.ph)}</div>${sayBtn(y.th,y.ph)}</div>`).join('')}`)}
+  ${lv('vw',3,'See it in words',vowelWords(v).map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${w[0]}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span></div><div class="acts">${sayBtn(w[0],w[2])}</div></div>`).join(''))}
+  ${lv('vm',4,'How the mouth makes it',footnote(v))}
+  ${partner?lv('vq',5,SHORTV.includes(v.k)?'Its long partner':'Its short partner',`<p>Thai pairs most vowels: the same sound, short and long. The long one is held about twice as long, and the difference can change the word.</p>
+   <button class="other" data-vowel="${partner.k}"><span class="tw" lang="th">${dv(partner.th)}</span><span class="en"><b>${partner.k}</b> · ${ASIN[partner.k]}</span></button>`):''}
+  </div></section>
+ <div class="chips"><button class="chip" data-vset="Single" aria-pressed="${vowelSet==='Single'}">Single vowels: 18</button><button class="chip" data-vset="Two-part" aria-pressed="${vowelSet!=='Single'}">Two-part vowels: 11</button></div>
+ ${vowelSet==='Single'?'<p class="lede">Shown in pairs, short then long.</p>':'<p class="lede">These slide from one vowel into another inside one beat, like "eye" or "cow" in English.</p>'}
+ <div class="vgrid">${vl.map(x=>`<button class="lt" data-vowel="${x.k}" aria-pressed="${x.k===v.k}"><span class="g" lang="th">${dv(x.th)}</span><span>${x.k} · ${/ /.test(GW[x.k])?GW[x.k]:'as in '+GW[x.k]}</span></button>`).join('')}</div>
+ <h2 style="margin-bottom:0">Letters</h2>
+ <section class="card" id="ldetail">
+  <div class="lhead"><div class="bigl" lang="th">${l[0]}</div><div>
+   <div style="font-size:15px;color:var(--soft)">Its name</div><div style="font-size:19px">${ph(l[1])}</div>
+   <p style="margin:6px 0 0">Its sound: <b style="font:700 20px var(--f-phon)">${snd}</b></p></div>${sayBtn(hear,l[1])}</div>
+  <p>Thai children learn every letter by a name made of two parts: the letter's sound, then a word that starts with it. <b>${nm[0]}</b> is the letter's sound with "aw" added so it can be said out loud, and <b>${nm.slice(1).join(' ')}</b> means "${l[3]}." It works like saying "B as in boy."</p>
+  ${s?`<p class="like">${s.like}</p>`:''}
+  ${l[7]?'<p class="smile"><span>This letter is no longer used. Skip it.</span></p>':RARE.includes(l[0])?'<p class="smile"><span>A rare letter, found mostly in old or borrowed words. Learn it last.</span></p>':''}
+  <div class="stack" style="gap:8px">
+  ${lv('w',1,'See it in words',`<p>The letter is shown in red inside each word.</p>${words.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${markLetter(w[0],l[0])}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span></div><div class="acts">${sayBtn(w[0],w[2])}</div></div>`).join('')}`)}
+  ${lv('v',2,'Add two vowels',`<p>Only two vowels here, so the letter stays the focus.</p>
+   ${syls.map(y=>{const vi=vinfo[y.v];return `<p><b lang="th" style="font:500 30px var(--f-thai)">${'◌'+vi[0]}</b> This vowel ${vi[1]}. It sounds like ${vi[2]}.</p>`}).join('')}
+   <p>Put together, the letter is said first, then the vowel:</p>
+   ${syls.map(y=>`<div class="syl2"><span class="tw" lang="th"><span class="hl">${l[0]}</span>${y.th.slice(1)}</span><div><div style="font-size:19px">${ph(y.ph)}</div><span class="en">${y.mean?'A real word: '+y.mean:'A practice sound'}</span></div>${sayBtn(y.th,y.ph)}</div>`).join('')}`)}
+  ${s?lv('m',3,'How the mouth makes it',footnote(s)):''}
+  ${lv('c',4,'Its group, for later',`<p><span class="tag">${cls[l[4]]}</span> Every letter belongs to one of three groups: mid, high or low. The group only matters for reading tones off the page, so it can wait.</p>
+   <p>At the end of a syllable this letter ${l[6]==='—'?'is rarely or never used.':l[6]==='vowel'?'turns into part of a vowel.':`is said as <b>-${l[6]}</b>${l[6]!==l[5]?`, not ${l[5]}`:''}.`}</p>`)}
+  </div></section>
+ <div class="chips">${['Most used','All','Mid','High','Low'].map(k=>`<button class="chip" data-lfilter="${k}" aria-pressed="${k===letterFilter}">${k==='All'?'All 44':k==='Most used'?'Most used':k+' class'}</button>`).join('')}</div>
  <div class="grid44">${list.map(x=>`<button class="lt${x[7]?' old':''}" data-letter="${x[0]}" aria-pressed="${x[0]===letterSel}"><span class="g" lang="th">${x[0]}</span><span>${x[5]==='(catch)'?'catch':x[5]}</span></button>`).join('')}</div>
- <section class="stack"><h2>Vowel marks</h2><p class="lede">Vowels sit above, below, before or after the consonant, and the consonant is always said first. Thai leaves no spaces between words. Here ก stands in for any consonant.</p>
- <div class="marks">${MARKS.map(m=>`<div class="mk-item"><span class="g" lang="th">${m[0]}</span><span style="font:600 17px var(--f-phon)">${m[1]}<span class="plain" style="display:block;font-size:14px">Say: ${plain(m[1])}</span></span></div>`).join('')}</div></section>
- <section class="stack"><h2>Tone marks and letter classes</h2><p class="lede">Four small marks sit above the consonant. The tone they give depends on the class of the first letter, which is why each letter belongs to a class.</p>
- <div class="rule"><div class="mk" lang="th">ก่</div><div><h3>First mark</h3><p>Low tone after mid and high class. Falling tone after low class.</p></div></div>
- <div class="rule"><div class="mk" lang="th">ก้</div><div><h3>Second mark</h3><p>Falling tone after mid and high class. High tone after low class.</p></div></div>
- <div class="rule"><div class="mk" lang="th">ก๊</div><div><h3>Third mark</h3><p>High tone. Used with mid class letters only.</p></div></div>
- <div class="rule"><div class="mk" lang="th">ก๋</div><div><h3>Fourth mark</h3><p>Rising tone. Used with mid class letters only.</p></div></div>
- <div class="rule"><div class="mk">—</div><div><h3>No mark</h3><p>In a syllable ending on a vowel or on m, n, ng, w or y, mid and low class give mid tone, and high class gives rising tone. Syllables ending in k, t or p follow further rules.</p></div></div></section>`;
+ <details class="lvl"><summary>Thai has no spaces. How do readers know where a word ends?</summary>
+  <p>The same way an English reader can read "ilovemydog." A reader who knows the words sees where each one stops. Thai children learn to spot words this way from the start.</p>
+  <p>Thai does use a space, but in a different place: it marks the end of a thought, the way English uses a period. For speaking, none of this matters, because spoken Thai has the same small pauses as English.</p></details>
+ <details class="lvl"><summary>Tone marks, for later</summary>
+  <p>Four tiny marks sit on top of a letter and tell the voice which way to go. The tone a mark gives also depends on the letter's group, which is why each letter has one. The Say line throughout this app already shows the tone, so a speaker does not need these rules.</p>
+  <div class="rule"><div class="mk" lang="th">◌่</div><div><h3>First mark</h3><p>Low tone on mid and high letters. Falling tone on low letters.</p></div></div>
+  <div class="rule"><div class="mk" lang="th">◌้</div><div><h3>Second mark</h3><p>Falling tone on mid and high letters. High tone on low letters.</p></div></div>
+  <div class="rule"><div class="mk" lang="th">◌๊</div><div><h3>Third mark</h3><p>High tone. Used on mid letters only.</p></div></div>
+  <div class="rule"><div class="mk" lang="th">◌๋</div><div><h3>Fourth mark</h3><p>Rising tone. Used on mid letters only.</p></div></div>
+  <div class="rule"><div class="mk">—</div><div><h3>No mark</h3><p>Usually a level, middle tone on mid and low letters, and a rising tone on high letters. Words ending in k, t or p follow further rules.</p></div></div></details>`;
 };
 V.phrases=()=>{
  const pol=speaker==='m'?{s:['ครับ','khráp'],q:['ครับ','khráp']}:{s:['ค่ะ','khâ'],q:['คะ','khá']};
@@ -1730,6 +1840,8 @@ document.addEventListener('click',e=>{
  if(d.soundtab){soundTab=d.soundtab;render(true);return}
  if(d.phrasetab){phraseTab=d.phrasetab;render(true);return}
  if(d.lfilter){letterFilter=d.lfilter;render(true);return}
+ if(d.vset){vowelSet=d.vset;vowelSel=d.vset==='Single'?'aa':'ai';render(true);return}
+ if(d.vowel){vowelSel=d.vowel;render(true);document.getElementById('vdetail').scrollIntoView({block:'center'});return}
  if(d.letter){letterSel=d.letter;render(true);document.getElementById('ldetail').scrollIntoView({block:'center'});return}
  if(d.drill){drillSet=d.drill;newQ();render(true);return}
  if(d.opt){q.picked=+d.opt;score[1]++;if(q.opts[q.picked]===q.ans)score[0]++;render(true);return}
