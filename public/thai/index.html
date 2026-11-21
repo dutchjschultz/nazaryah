@@ -427,7 +427,7 @@ const VOW = [
  {k:'oh',th:'โก',like:'The o in "go," with no slide into w at the end. Long.',w:['โมง','mohng','hour'],m:'o',f:['Back of the tongue at middle height, held still.','A little apart.','Rounded and held.','Held long on one steady sound.']},
  {k:'aw',th:'เกาะ',like:'The aw in "saw," cut short.',w:['เกาะ','kàw','island'],m:'aw',f:['Back of the tongue low.','Well apart.','Lightly rounded.','Cut off quickly.']},
  {k:'aaw',th:'กอ',like:'The aw in "saw." Long.',w:['ขอ','khǎaw','to ask for'],m:'aw',f:['Back of the tongue low.','Well apart.','Lightly rounded.','Held long.']},
- {k:'er',th:'เกอะ',like:'The er in "her," with no r at all. Short.',w:['เงิน','ngern','money'],m:'er',f:['Middle to back of the tongue, at middle height. The tip does not curl.','A little apart.','Relaxed. No rounding.','Cut off quickly.']},
+ {k:'er',th:'เกอะ',like:'The er in "her," with no r at all. Short.',w:['เยอะ','yér','a lot'],m:'er',f:['Middle to back of the tongue, at middle height. The tip does not curl.','A little apart.','Relaxed. No rounding.','Cut off quickly.']},
  {k:'err',th:'เกอ',like:'The same sound as er, held long. Still no r.',w:['เจอ','jerr','to meet'],m:'er',f:['Middle to back of the tongue, at middle height. The tip does not curl.','A little apart.','Relaxed. No rounding.','Held long. The double r marks length and is not spoken.']}
 ];
 const GLD = [
@@ -1326,7 +1326,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 15</p>`;
+ <p class="score">App version 16</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1391,10 +1391,28 @@ const ASIN={a:'uh, as in "cut." Short.',aa:'ah, as in "father." Long.',i:'ee, as
 const GW={a:'cut',aa:'father',i:'feet',ee:'see',ue:'smile oo',uue:'smile oo',u:'put',oo:'food',e:'pen',ay:'say',ae:'cat',aae:'bad',o:'go',oh:'go',aw:'saw',aaw:'saw',er:'her',err:'her',ai:'my',aai:'my',ao:'cow',aao:'how',ia:'Mia',ua:'Joshua',uea:'smile oo-ah',iu:'few',aaeo:'meow',aawy:'boy',ui:'gooey'};
 const VPOS2={ai:'before the letter',aai:'after the letter, as า then ย',ao:'around it: เ before, า after',aao:'after the letter, as า then ว',ia:'around it: เ before, ี on top, ย after',ua:'on top and after: ั on top, ว after',uea:'around it: เ before, ื on top, อ after',iu:'on top and after: ิ on top, ว after',aaeo:'around it: แ before, ว after',aawy:'after the letter, as อ then ย',ui:'under and after: ุ under, ย after'};
 const ONSET=['khr','khl','khw','phr','phl','kr','kl','kw','pr','pl','tr','ph','th','kh','ng','ch','k','p','t','j','b','d','f','h','l','m','n','r','s','w','y',''];
+const CLOSED={a:['◌ั','the ะ turns into a small curved mark on top',['กับ','kàp','with']],
+ e:['เ◌็','the ะ drops off and a small loop goes on top',['เจ็ด','jèt','seven']],
+ ae:['แ◌็','the ะ drops off and a small loop goes on top',['แข็ง','khǎeng','hard']],
+ o:['(nothing)','no vowel mark is written at all. When two letters stand together with nothing on them, a short o is heard between them',['คน','khon','person']],
+ uue:['◌ื','the อ drops off and only the mark on top stays',['ยืน','yuuen','to stand']],
+ err:['เ◌ิ','the อ drops off and a mark goes on top',['เดิน','derrn','to walk']],
+ aw:['◌็อ','the เ and ะ drop off, and a small loop goes on top of อ',null],
+ ua:['◌ว','the mark on top drops off and only ว stays',null]};
+const VCH=/[ะ-ฺเ-ไ็]/;
+function vowelForm(v,th){
+ const op=[...v.th.replace('ก','')];
+ if(op.every(c=>th.includes(c)))return 'open';
+ const c=CLOSED[v.k];
+ if(c&&v.k==='o'&&!VCH.test(th))return 'closed';
+ if(c&&v.k!=='o'&&[...c[0].replace('◌','')].every(x=>th.includes(x)))return 'closed';
+ return null;
+}
 function vowelWords(v){
- const out=[v.w];
+ const out=[v.w]; const cl=CLOSED[v.k]&&CLOSED[v.k][2];
+ if(cl&&cl[0]!==v.w[0]){out.push(cl);return out}
  const hit=WORDS.filter(w=>{if(/ /.test(w.thSplit)||w.th.includes('{')||w.th===v.w[0]||/'s /.test(w.en))return false;const sy=w.ph.normalize('NFD').replace(/[\u0300-\u036f]/g,'').toLowerCase().split('-');
-  if(sy.length>2)return false;return sy.some(x=>ONSET.some(o=>x.startsWith(o)&&['','k','t','p','m','n','ng'].some(c=>x===o+v.k+c)))});
+  if(sy.length>1||!vowelForm(v,w.th)||(v.k==='a'&&/[ำว]/.test(w.th)))return false;return sy.some(x=>ONSET.some(o=>x.startsWith(o)&&['','k','t','p','m','n','ng'].some(c=>x===o+v.k+c)))});
  hit.sort((a,b)=>a.ph.split('-').length-b.ph.split('-').length||a.th.length-b.th.length);
  if(hit[0])out.push([hit[0].th,hit[0].ph,hit[0].en]);
  return out;
@@ -1427,12 +1445,12 @@ V.letters=()=>{
  <section class="card" id="vdetail">
   <div class="lhead"><div class="bigl" lang="th">${dv(v.th)}</div><div>
    <div style="font:700 26px var(--f-phon)">${v.k}</div><div class="plain" style="font-size:17px">Say: ${plain(v.k)}</div></div>${sayBtn(hearV,v.k)}</div>
-  <p class="asin">${ASIN[v.k]}</p>
+  <p class="asin">${ASIN[v.k]}</p>${CLOSED[v.k]?`<p style="color:var(--soft)">This vowel changes shape inside some words. Step 1 shows how.</p>`:''}
   ${SMILE.includes(v.k)?`<p class="smile">${SMI}<span>Smile on this sound. Wide lips help it come out right.</span></p>`:''}
   <div class="stack" style="gap:8px">
-  ${lv('vp',1,'Where it sits',`<p>This vowel sits ${VPOS[v.k]?VPOS[v.k]+' the letter':VPOS2[v.k]}. The dotted circle shows where the letter goes. Wherever the vowel is written, the letter is said first.</p>`)}
+  ${lv('vp',1,'Where it sits',`<p>This vowel sits ${VPOS[v.k]?VPOS[v.k]+' the letter':VPOS2[v.k]}. The dotted circle shows where the letter goes. Wherever the vowel is written, the letter is said first.</p>${CLOSED[v.k]?`<p><b>It changes shape.</b> When an ending sound such as k, t, n or m comes after this vowel, ${CLOSED[v.k][1]}: <span lang="th" style="font:500 28px var(--f-thai)">${CLOSED[v.k][0]}</span>. The sound stays the same. Only the writing changes.</p>`:''}`)}
   ${lv('vt',2,'Hear it on two letters',`<p>The same vowel on ป (p) and on ม (m). Only the letter changes.</p>${onTwo(v).map(y=>`<div class="syl2"><span class="tw" lang="th">${y.th}</span><div style="font-size:19px">${ph(y.ph)}</div>${sayBtn(y.th,y.ph)}</div>`).join('')}`)}
-  ${lv('vw',3,'See it in words',vowelWords(v).map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${w[0]}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span></div><div class="acts">${sayBtn(w[0],w[2])}</div></div>`).join(''))}
+  ${lv('vw',3,'See it in words',vowelWords(v).map(w=>{const fm=vowelForm(v,w[0]);return `<div class="phr"><div class="body"><span class="tw" lang="th">${w[0]}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span><span style="font-size:15px;color:var(--soft)">${fm==='closed'?(v.k==='o'?'No vowel mark here. The short o is hidden between the two letters.':`Here the vowel is written ${CLOSED[v.k][0]}, its short form, because an ending sound follows.`):`Here the vowel is written ${dv(v.th)}, the full form.`}</span></div><div class="acts">${sayBtn(w[0],w[2])}</div></div>`}).join(''))}
   ${lv('vm',4,'How the mouth makes it',footnote(v))}
   ${partner?lv('vq',5,SHORTV.includes(v.k)?'Its long partner':'Its short partner',`<p>Thai pairs most vowels: the same sound, short and long. The long one is held about twice as long, and the difference can change the word.</p>
    <button class="other" data-vowel="${partner.k}"><span class="tw" lang="th">${dv(partner.th)}</span><span class="en"><b>${partner.k}</b> · ${ASIN[partner.k]}</span></button>`):''}
