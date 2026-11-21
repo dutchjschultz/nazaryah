@@ -33,6 +33,7 @@
   --on-tongue: #4a1512;
   --lip: #a8443e;
   --hit: #c2302a;
+  --hl: #c2302a;        /* the letter picked out in red inside a word */
   --t-m: #52626f;
   --t-l: #2f4bb8;
   --t-f: #c2302a;
@@ -49,7 +50,7 @@
   :root:not([data-theme="light"]) {
     --bg: #10142a; --leaf: #1a2042; --ink: #dfe9e2; --soft: #a4b0c4; --line: #36406a;
     --lac: #2c387f; --on-lac: #f1f5ef; --gold: #f2b632;
-    --mouth: #2c3560; --tooth: #e9eee8; --tongue: #e8a79f; --on-tongue: #4a1512; --lip: #d9716a; --hit: #ffb340;
+    --mouth: #2c3560; --tooth: #e9eee8; --tongue: #e8a79f; --on-tongue: #4a1512; --lip: #d9716a; --hit: #ffb340; --hl: #ff6b5e;
     --t-m: #a9bac8; --t-l: #94a8ff; --t-f: #ff8d7d; --t-h: #55d6a8; --t-r: #f2b632;
     --w0: #cfa2f2; --w1: #5fd3dc; --w2: #f3a07a; --w3: #b9d96c; --good: #55d6a8; --bad: #ff8d7d; color-scheme: dark;
   }
@@ -57,7 +58,7 @@
 :root[data-theme="dark"] {
   --bg: #10142a; --leaf: #1a2042; --ink: #dfe9e2; --soft: #a4b0c4; --line: #36406a;
   --lac: #2c387f; --on-lac: #f1f5ef; --gold: #f2b632;
-  --mouth: #2c3560; --tooth: #e9eee8; --tongue: #e8a79f; --on-tongue: #4a1512; --lip: #d9716a; --hit: #ffb340;
+  --mouth: #2c3560; --tooth: #e9eee8; --tongue: #e8a79f; --on-tongue: #4a1512; --lip: #d9716a; --hit: #ffb340; --hl: #ff6b5e;
   --t-m: #a9bac8; --t-l: #94a8ff; --t-f: #ff8d7d; --t-h: #55d6a8; --t-r: #f2b632;
   --w0: #cfa2f2; --w1: #5fd3dc; --w2: #f3a07a; --w3: #b9d96c; --good: #55d6a8; --bad: #ff8d7d; color-scheme: dark;
 }
@@ -194,7 +195,7 @@ p { margin: 0; }
 .lvl { background: var(--leaf); border-radius: 6px; padding: 10px 14px; }
 .lvl > summary { font: 700 17px/1.4 var(--f-body); color: var(--gold); }
 .lvl .lvn { display: inline-block; min-width: 22px; height: 22px; border-radius: 11px; background: var(--lac); color: var(--on-lac); text-align: center; font: 700 13px/22px var(--f-phon); margin-right: 8px; }
-.hl { color: var(--hit); }
+.hl { color: var(--hl); }
 .syl2 { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 4px 14px; align-items: center; border-top: 1px solid var(--line); padding-block: 10px; }
 .syl2 .tw { font: 500 38px/1.3 var(--f-thai); }
 .vrow > summary { display: flex; align-items: center; gap: 14px; min-height: 56px; }
@@ -1361,7 +1362,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 17</p>`;
+ <p class="score">App version 18</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
