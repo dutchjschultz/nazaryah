@@ -402,7 +402,7 @@ function toneOf(s){
 }
 const ONS=['khr','khl','khw','phr','phl','kr','kl','kw','pr','pl','tr','ph','th','kh','ng','ch','k','p','t','j','b','d','f','h','l','m','n','r','s','w','y'];
 const ONMAP={ph:'p',th:'t',kh:'k',k:'g',p:'bp',t:'dt',j:'dj'};
-const NUC=[['aaeo','aew'],['aawy','awwy'],['aai','ahy'],['aao','ahw'],['aae','aae'],['aaw','aww'],['aa','ah'],['ae','ae'],['ai','ai'],['ao','ao'],['awy','awy'],['aw','aw'],['ay','ay'],['a','uh'],
+const NUC=[['oei','erry'],['aaeo','aew'],['aawy','awwy'],['aai','ahy'],['aao','ahw'],['aae','aae'],['aaw','aww'],['aa','ah'],['ae','ae'],['ai','ai'],['ao','ao'],['awy','awy'],['aw','aw'],['ay','ay'],['a','uh'],
  ['ueay','euay'],['uea','eua'],['uue','euu'],['ue','eu'],['uay','ooay'],['ua','ooa'],['ui','ooey'],['oo','ooo'],['u','oo'],['iao','eeow'],['ia','eea'],['iu','ew'],['ee','ee'],['i','i'],
  ['oh','ohh'],['o','oh'],['err','err'],['er','er'],['eo','ehw'],['e','eh']];
 function plainSyl(p){
@@ -544,6 +544,10 @@ const PHRASES = {
   ['สวัสดี','sà-wàt-dee','Hello, or goodbye','s'],['สบายดีไหม','sà-baai dee mǎi','How are you?','q'],['สบายดี','sà-baai dee','Doing well','s'],
   ['ขอบคุณ','khàawp-khun','Thank you','s'],['ขอโทษ','khǎaw-thôht','Sorry, or excuse me','s'],['ไม่เป็นไร','mâi pen rai','No problem, never mind','s'],
   ['คุณชื่ออะไร','khun chûue à-rai','What is your name?','q'],['{I}ชื่อ...','{I} chûue ...','My name is ...','s'],['ยินดีที่ได้รู้จัก','yin-dee thêe dâai róo-jàk','Nice to meet you','s'],['ลาก่อน','laa-kàawn','Goodbye, for a long time','s']],
+ 'Family':[
+  ['นี่พี่ชายของ{I}','nêe phêe-chaai khǎawng {I}','This is my older brother','s'],['คุณมีพี่น้องกี่คน','khun mee phêe-náawng kèe khon','How many brothers and sisters do you have?','q'],['{I}มีลูกสองคน','{I} mee lôok sǎawng khon','I have two children','s'],
+  ['{I}เป็นลูกคนเดียว','{I} pen lôok khon diao','I am an only child','s'],['คุณแต่งงานหรือยัง','khun tàaeng-ngaan rǔue yang','Are you married?','q'],['{I}แต่งงานแล้ว','{I} tàaeng-ngaan láaeo','I am married','s'],
+  ['ครอบครัวสบายดีไหม','khrâawp-khrua sà-baai dee mǎi','Is your family well?','q'],['ญาติมาเยี่ยม','yâat maa yîam','Relatives are coming to visit','s'],['คิดถึงแม่','khít-thǔeng mâae','I miss my mother','s']],
  'Understanding':[
   ['ไม่เข้าใจ','mâi khâo-jai','I do not understand','s'],['พูดช้าๆ ได้ไหม','phôot cháa-cháa dâai mǎi','Can you speak slowly?','q'],['พูดอีกครั้งได้ไหม','phôot èek khráng dâai mǎi','Can you say that again?','q'],
   ['พูดภาษาอังกฤษได้ไหม','phôot phaa-sǎa ang-krìt dâai mǎi','Can you speak English?','q'],['อันนี้เรียกว่าอะไร','an-née rîak wâa à-rai','What is this called?','q']],
@@ -585,6 +589,8 @@ const LESSONS = [
   w:[['รถ','rót','car'],['รถเมล์','rót-may','city bus'],['รถไฟ','rót-fai','train'],['รถไฟฟ้า','rót-fai-fáa','electric skytrain'],['แท็กซี่','tháek-sêe','taxi'],['รถตุ๊กตุ๊ก','rót-túk-túk','tuk-tuk'],['มอเตอร์ไซค์','maaw-terr-sai','motorcycle'],['เรือ','ruea','boat'],['เครื่องบิน','khrûeang-bin','airplane'],['สถานี','sà-thǎa-nee','station']]},
  {id:'family',title:'Family',th:'ครอบครัว',tip:'ph',use:['นี่แม่ของ{I}','nêe mâae khǎawng {I}','This is my mother','s'],note:'Thai has no single word for brother or sister. Phêe is any older sibling and náawng is any younger one. Grandparents also have different names on each side of the family.',
   w:[['ครอบครัว','khrâawp-khrua','family'],['พ่อ','phâaw','father'],['แม่','mâae','mother'],['สามี','sǎa-mee','husband'],['ภรรยา','phan-rá-yaa','wife'],['ลูก','lôok','son or daughter'],['พี่','phêe','older brother or sister'],['น้อง','náawng','younger brother or sister'],['ปู่','pòo',"father's father"],['ย่า','yâa',"father's mother"],['ตา','taa',"mother's father"],['ยาย','yaai',"mother's mother"]]},
+ {id:'relatives',title:'Relatives',th:'ญาติ',tip:'ia',use:['ญาติมาเยี่ยม','yâat maa yîam','Relatives are coming to visit','s'],note:'Thai names uncles and aunts by age and by side. Lung and pâa are older than your parent, on either side. Náa is younger than your mother, and aa is younger than your father. Add chaai for male or sǎao for female to any family word. Khǒei marks a man who married in, and sà-phái marks a woman who married in.',
+  w:[['ญาติ','yâat','relatives'],['ลุง','lung',"parent's older brother"],['ป้า','pâa',"parent's older sister"],['น้า','náa',"mother's younger brother or sister"],['อา','aa',"father's younger brother or sister"],['ลูกพี่ลูกน้อง','lôok-phêe-lôok-náawng','cousin'],['หลานชาย','lǎan-chaai','grandson or nephew'],['หลานสาว','lǎan-sǎao','granddaughter or niece'],['พ่อตา','phâaw-taa',"wife's father"],['แม่ยาย','mâae-yaai',"wife's mother"],['พ่อสามี','phâaw-sǎa-mee',"husband's father"],['แม่สามี','mâae-sǎa-mee',"husband's mother"],['ลูกเขย','lôok-khǒei','son-in-law'],['ลูกสะใภ้','lôok-sà-phái','daughter-in-law'],['พี่เขย','phêe-khǒei','older brother-in-law'],['พี่สะใภ้','phêe-sà-phái','older sister-in-law'],['ทวด','thûat','great-grandparent']]},
  {id:'food',title:'Food and drink',th:'อาหาร',tip:'kh',use:['ขอข้าวผัดไก่','khǎaw khâao-phàt-kài','Chicken fried rice, please','s'],note:'Khǎaw means "may I have." It goes in front of any item on this list.',
   w:[['ข้าว','khâao','rice'],['น้ำ','náam','water'],['ไก่','kài','chicken'],['หมู','mǒo','pork'],['เนื้อ','núea','beef'],['ปลา','plaa','fish'],['กุ้ง','kûng','shrimp'],['ไข่','khài','egg'],['ผัก','phàk','vegetables'],['ผลไม้','phǒn-lá-máai','fruit'],['กาแฟ','kaa-faae','coffee'],['ชา','chaa','tea']]},
  {id:'days',title:'Days of the week',th:'วัน',tip:'j',use:['วันนี้วันอะไร','wan-née wan à-rai','What day is today?','q'],note:'Every day name begins with wan, the word for day.',
@@ -609,6 +615,15 @@ Sorry, or excuse me|ขอ โทษ|khǎaw-thôht|ask for;blame|sorry, excuse m
 No problem, never mind|ไม่ เป็น ไร|mâi pen rai|not;be;anything|no problem, never mind, you are welcome|s
 What is your name?|คุณ ชื่อ อะ·ไร|khun chûue à-rai|you;name;what|name|q
 My name is|{I} ชื่อ|{I} chûue|I;name is|my name|s
+This is my older brother|นี่ พี่ ชาย ของ {I}|nêe phêe-chaai khǎawng {I}|this;older brother;of;me|my brother|s
+How many brothers and sisters do you have?|คุณ มี พี่ น้อง กี่ คน|khun mee phêe-náawng kèe khon|you;have;siblings;how many;person|siblings, how many siblings|q
+I have two children|{I} มี ลูก สอง คน|{I} mee lôok sǎawng khon|I;have;child;two;person|my kids, two kids|s
+I am an only child|{I} เป็น ลูก คน เดียว|{I} pen lôok khon diao|I;be;child;person;single|only child|s
+Are you married?|คุณ แต่ง งาน หรือ ยัง|khun tàaeng-ngaan rǔue yang|you;arrange;event;or;yet|married|q
+I am married|{I} แต่ง งาน แล้ว|{I} tàaeng-ngaan láaeo|I;arrange;event;already|married|s
+Is your family well?|ครอบ ครัว ส·บาย ดี ไหม|khrâawp-khrua sà-baai dee mǎi|cover;kitchen;comfortable;good;question word|how is your family|q
+Relatives are coming to visit|ญาติ มา เยี่ยม|yâat maa yîam|relatives;come;visit|family visit, relatives visiting|s
+I miss my mother|คิด ถึง แม่|khít-thǔeng mâae|think;reach;mother|miss mom|s
 Nice to meet you|ยิน·ดี ที่ ได้ รู้·จัก|yin-dee thêe dâai róo-jàk|glad;that;get to;know|meet|s
 Goodbye, for a long time|ลา ก่อน|laa-kàawn|leave;first|goodbye, farewell|s
 I do not understand|ไม่ เข้า ใจ|mâi khâo-jai|not;enter;heart|understand|s
@@ -812,8 +827,41 @@ neighbor|เพื่อน บ้าน|phûean-bâan|friend;house|
 guest|แขก|khàaek||visitor
 driver|คน ขับ รถ|khon-khàp-rót|person;drive;car|
 customer|ลูก ค้า|lôok-kháa|child;trade|
-older aunt|ป้า|pâa||aunt
-older uncle|ลุง|lung||uncle
+older aunt|ป้า|pâa||aunt, parent's older sister
+older uncle|ลุง|lung||uncle, parent's older brother
+mother's younger brother or sister|น้า|náa||aunt, uncle, younger aunt, younger uncle
+father's younger brother or sister|อา|aa||aunt, uncle, younger aunt, younger uncle
+relatives|ญาติ|yâat||relative, relations, kin, extended family
+older brother|พี่ ชาย|phêe-chaai|older sibling;male|big brother
+older sister|พี่ สาว|phêe-sǎao|older sibling;young woman|big sister
+younger brother|น้อง ชาย|náawng-chaai|younger sibling;male|little brother
+younger sister|น้อง สาว|náawng-sǎao|younger sibling;young woman|little sister
+son|ลูก ชาย|lôok-chaai|child;male|
+daughter|ลูก สาว|lôok-sǎao|child;young woman|
+parents|พ่อ แม่|phâaw-mâae|father;mother|mother and father
+brothers and sisters|พี่ น้อง|phêe-náawng|older sibling;younger sibling|siblings
+grandparents|ปู่ ย่า ตา ยาย|pòo-yâa-taa-yaai|father's father;father's mother;mother's father;mother's mother|grandparent
+grandson or nephew|หลาน ชาย|lǎan-chaai|grandchild;male|grandson, nephew
+granddaughter or niece|หลาน สาว|lǎan-sǎao|grandchild;young woman|granddaughter, niece
+cousin|ลูก พี่ ลูก น้อง|lôok-phêe-lôok-náawng|child;older sibling;child;younger sibling|cousins
+great-grandparent|ทวด|thûat||great-grandfather, great-grandmother
+great-grandchild|เหลน|lǎyn||great-grandson, great-granddaughter
+wife's father|พ่อ ตา|phâaw-taa|father;mother's father|father-in-law
+wife's mother|แม่ ยาย|mâae-yaai|mother;mother's mother|mother-in-law
+husband's father|พ่อ สา·มี|phâaw-sǎa-mee|father;husband|father-in-law
+husband's mother|แม่ สา·มี|mâae-sǎa-mee|mother;husband|mother-in-law
+son-in-law|ลูก เขย|lôok-khǒei|child;married-in man|
+daughter-in-law|ลูก สะ·ใภ้|lôok-sà-phái|child;married-in woman|
+older brother-in-law|พี่ เขย|phêe-khǒei|older sibling;married-in man|brother-in-law
+younger brother-in-law|น้อง เขย|náawng-khǒei|younger sibling;married-in man|brother-in-law
+older sister-in-law|พี่ สะ·ใภ้|phêe-sà-phái|older sibling;married-in woman|sister-in-law
+younger sister-in-law|น้อง สะ·ใภ้|náawng-sà-phái|younger sibling;married-in woman|sister-in-law
+stepfather|พ่อ เลี้ยง|phâaw-líang|father;raise|
+stepmother|แม่ เลี้ยง|mâae-líang|mother;raise|
+twins|ฝา·แฝด|fǎa-fàaet||twin
+only child|ลูก คน เดียว|lôok-khon-diao|child;person;single|
+oldest child|ลูก คน โต|lôok-khon-toh|child;person;big|eldest child, firstborn
+youngest child|ลูก คน เล็ก|lôok-khon-lék|child;person;small|
 Thai person|คน ไทย|khon-thai|person;Thai|thai people
 foreigner|ฝ·รั่ง|fà-ràng||westerner
 boss|เจ้า·นาย|jâo-naai||
@@ -1361,7 +1409,6 @@ naughty|ซน|son
 to overtake|แซง|saaeng
 Japan|ญี่·ปุ่น|yêe-pùn
 grass|หญ้า|yâa
-relative|ญาติ|yâat
 errand, business|ธุ·ระ|thú-rá
 incense stick|ธูป|thôop
 to tell|บอก|bàawk
@@ -1606,7 +1653,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 20</p>`;
+ <p class="score">App version 21</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1906,7 +1953,7 @@ const LCLASS={}; LET.forEach(l=>LCLASS[l[0]]=l[4]); const LNAME={}; LET.forEach(
 const LOWSON='งญนมยรลว';
 const SHORTV=['a','i','ue','u','e','ae','o','aw','er'];
 const LONGV={aa:'ah',ee:'ee',uue:'euu',oo:'ooo',oh:'ohh',aaw:'aww',aae:'aae',err:'err',ia:'eea',ua:'ooa',uea:'eua',ay:'ay'};
-const STRIP={ueay:['uea','y'],aai:['aa','y'],aao:['aa','w'],iu:['i','w'],ui:['u','y'],aawy:['aaw','y'],awy:['aw','y'],aaeo:['aae','w'],iao:['ia','w'],uay:['ua','y'],ai:['a','y'],eo:['e','w'],ayo:['ay','w']};
+const STRIP={oei:['err','y'],ueay:['uea','y'],aai:['aa','y'],aao:['aa','w'],iu:['i','w'],ui:['u','y'],aawy:['aaw','y'],awy:['aw','y'],aaeo:['aae','w'],iao:['ia','w'],uay:['ua','y'],ai:['a','y'],eo:['e','w'],ayo:['ay','w']};
 const TNAME={m:'mid',l:'low',f:'falling',h:'high',r:'rising'};
 const MNAME={'่':'first tone mark','้':'second tone mark','๊':'third tone mark','๋':'fourth tone mark'};
 const CLSNAME={M:'mid',H:'high',L:'low'};
@@ -1944,6 +1991,7 @@ function anaSyl(th,p,lend){
   if('อวย'.includes(c)){role[i]=(c==='ย'&&viaSign)?'silent':'vowel';return}
   role[i]='unknown'; flags.push('unplaced letter '+c);
  });
+ {const L=ch.length-1;if(L>0&&/[ิุ]/.test(ch[L])&&role[L-1]==='end')role[L]='silent';}
  if(S.coda&&!role.includes('end')&&!(S.coda==='m'&&ch.includes('ำ')))flags.push('no ending letter for -'+S.coda);
  const glideUsed=role.includes('glide');
  const vNuc=glideUsed?glide[0]:S.nuc;
@@ -2092,7 +2140,7 @@ function sylKeys(p){
   const on=ONS.find(o=>w.startsWith(o));
   if(on){out.push(on);w=w.slice(on.length)} else out.push('(catch)');
   const n=NUC.find(x=>w.startsWith(x[0]));
-  if(n){const z={awy:['aw','-y'],uay:['ua','-y'],iao:['ia','-w']}[n[0]];if(z)out.push(...z);else out.push(n[0]);w=w.slice(n[0].length)}
+  if(n){const z={awy:['aw','-y'],uay:['ua','-y'],iao:['ia','-w'],oei:['err','-y']}[n[0]];if(z)out.push(...z);else out.push(n[0]);w=w.slice(n[0].length)}
   if(w)out.push('-'+w);
   return out;
 }
