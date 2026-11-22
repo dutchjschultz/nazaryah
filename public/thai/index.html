@@ -2238,12 +2238,15 @@ function colorTh(th,o){
 }
 const thText=el=>{const c=el.cloneNode(true);c.querySelectorAll('.zl1,.zl2').forEach(x=>x.remove());return c.textContent};
 const ZLEG=`<p class="legend"><span class="zv-v">Blue</span> vowel mark · <span class="zv-s">Red</span> short sign, ะ or ◌็ · letters in plain ink</p>`;
+// Enlarged view: the key lists only the colors the tapped Thai actually shows; plain ink always.
+function zLeg(th,o){const ch=[...th], ks=new Set(ch.map((c,i)=>zKind(ch,i,o)));
+ return `<p class="legend">${[ks.has('v')&&'<span class="zv-v">Blue</span> vowel mark',ks.has('s')&&'<span class="zv-s">Red</span> short sign, ะ or ◌็','letters in plain ink'].filter(Boolean).join(' · ')}</p>`}
 function markTh(root){root.querySelectorAll('[lang="th"]').forEach(el=>{if(el.closest('button,a,summary,.tabs')||!/[฀-๿]/.test(el.textContent))return;el.classList.add('thz');el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','Enlarge '+thText(el).trim())})}
 let zoomFrom=null;
 function openZoom(el){
  const text=thText(el).replace(/\s+/g,' ').trim(); if(!text)return;
  const z=document.getElementById('zoomv'); zoomFrom=el;
- z.innerHTML=`<div class="zin" role="dialog" aria-modal="true" aria-label="Enlarged Thai"><button class="zx" data-unzoom="1" aria-label="Close">×</button><div class="zt" lang="th">${colorTh(text,el.dataset.o==='1')}</div>${ZLEG}${/◌/.test(text)?'':sayBtn(text.replace(/ /g,''),text)}</div>`;
+ z.innerHTML=`<div class="zin" role="dialog" aria-modal="true" aria-label="Enlarged Thai"><button class="zx" data-unzoom="1" aria-label="Close">×</button><div class="zt" lang="th">${colorTh(text,el.dataset.o==='1')}</div>${zLeg(text,el.dataset.o==='1')}${/◌/.test(text)?'':sayBtn(text.replace(/ /g,''),text)}</div>`;
  z.hidden=false;
  const t=z.querySelector('.zt'); let s=200; t.style.fontSize=s+'px';
  while(t.scrollWidth>t.clientWidth&&s>40){s-=8;t.style.fontSize=s+'px'}
