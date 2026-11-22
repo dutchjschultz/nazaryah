@@ -1,5 +1,7 @@
 ---
-// foundations.astro · 1005 V2 — the ledger renders from src/data/trinity-foundations.js
+// foundations.astro · 1122 V3 — Foundations VIII to X added (data file). A Foundation with
+// no typed tally shows the count computed from trinity-files.js `foundations` ids.
+// V2 · 1005 — the ledger renders from src/data/trinity-foundations.js
 // (the same file the Trinity Files Sort by Foundation dropdown reads). Rows,
 // wording, and the typed tallies are unchanged.
 // V1 · 1004 — Foundation VI, The Titles He Was Given, added live
@@ -7,6 +9,8 @@
 // they always have been.
 import BaseLayout from '../layouts/BaseLayout.astro';
 import { trinityFoundations } from '../data/trinity-foundations.js';
+import { trinityFiles } from '../data/trinity-files.js';
+const citedBy = (f) => f.tally ?? trinityFiles.filter((t) => t.slug && t.foundations?.includes(f.id)).length;
 ---
 
 <BaseLayout
@@ -35,7 +39,7 @@ import { trinityFoundations } from '../data/trinity-foundations.js';
                 <p class="found-desc">{f.desc}</p>
               </span>
               <span class="found-meta">
-                <span class="found-tally">Cited by <b>{f.tally}</b> studies</span>
+                <span class="found-tally">Cited by <b>{citedBy(f)}</b> studies</span>
                 <span class="found-read">Read &rarr;</span>
               </span>
             </a>

@@ -1,4 +1,6 @@
-// src/data/trinity-files.js · 1115 V6
+// src/data/trinity-files.js · 1122 V7
+// V7 (Etsy Handoff Philippians 2-5-8 1122 V1): Philippians 2:5-8 written and linked — "The Hand That Did Not Reach"
+// (trinity-files-philippians-2-5-8). foundations [] — it cites none of the Foundations. List total unchanged at 167.
 // V6 (Torah Quick Scroll Handoff 1115 V1): Numbers 6:24-27 added and written — "One Name on the People"
 // (trinity-files-numbers-6-24-27). It was not on the list, so it goes in at its canonical place after Genesis 35:7.
 // foundations [] — it leans on none of Foundations I to VII. List total 166 -> 167; everything after it renumbers itself.
@@ -143,7 +145,7 @@ export const trinityFiles = [
   { ref: "Ephesians 1:3-14", section: "Acts & Letters", foundations: [], title: "Blessed Be the God and Father", deck: "The Blessing That Names Its God", slug: "trinity-files-ephesians-1-3-14" },
   { ref: "Ephesians 2:18-5:20", section: "Acts & Letters", foundations: [], title: "One God and Father of All", deck: "The Three Named Together, and the One Above All", slug: "trinity-files-ephesians-2-18-5-20" },
   { ref: "Ephesians 4:8", section: "Acts & Letters", foundations: [], title: "The Spoils Handed Down", deck: "How Yahuah’s triumph became gifts in the Messiah’s hands", slug: "trinity-files-ephesians-4-8" },
-  { ref: "Philippians 2:5-8", section: "Acts & Letters", foundations: [], claim: "“Being in the form of God”" },
+  { ref: "Philippians 2:5-8", section: "Acts & Letters", foundations: [], title: "The Hand That Did Not Reach", deck: "Two sons in the image of God, and the one who would not grab", slug: "trinity-files-philippians-2-5-8" },
   { ref: "Philippians 2:10-11", section: "Acts & Letters", foundations: [], claim: "“Every knee should bow”" },
   { ref: "Philippians 3:3", section: "Acts & Letters", foundations: [], claim: "“Worship God in the spirit, and rejoice in Christ Jesus”" },
   { ref: "Colossians 1:15", section: "Acts & Letters", foundations: [], claim: "“The image of the invisible God”" },

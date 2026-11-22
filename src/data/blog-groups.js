@@ -1,4 +1,6 @@
-// blog-groups 1115 V90.js
+// blog-groups 1122 V91.js
+// V91 (Etsy Load - Framed by the Light 1122 V1): framed-by-the-light joins buried-in-plain-sight. The Philippians 2:5-8
+// Trinity File stays out of this map like every trinity-files-* post. Map total 246 -> 247.
 // V90 (Torah Quick Scroll Handoff 1115 V1): the Leviticus, Numbers, and Deuteronomy series (series "leviticus", "numbers",
 // "deuteronomy"; each topic page lists only its main, "plus N companion studies") join the-quick-scroll. 13 posts. The Numbers 6:24-27
 // Trinity File stays out of this map like every trinity-files-* post. Map total 233 -> 246.
@@ -411,6 +413,7 @@ export const POST_GROUP = {
   'the-second-awakening-cane-ridge': 'buried-in-plain-sight',
   'the-third-awakening-azusa-street': 'buried-in-plain-sight',
   'zionism-and-the-three-wars': 'buried-in-plain-sight',
+  'framed-by-the-light': 'buried-in-plain-sight',
 
   // ── The Law & The Feasts (22) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',
