@@ -259,6 +259,9 @@ details[open] > summary { margin-bottom: 10px; }
 .wcol .tw { font: 500 30px/1.3 var(--f-thai); }
 .wcol .mean { color: var(--ink); font-size: 14px; line-height: 1.3; max-width: 11ch; }
 .wc .syl, .wc .sep, .wc .plain { color: inherit; }
+/* Word lists (See it in words): red marks only the letter or syllable being taught, so the sound line
+   under each word is plain ink; the curve above each syllable still shows the pitch. */
+.inkph .syl { color: var(--ink); }
 .gloss { display: grid; gap: 2px; }
 .gloss .lab { font: 600 12px/1.3 var(--f-phon); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
 .gloss .v { font-size: 18px; }
@@ -1603,7 +1606,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 19</p>`;
+ <p class="score">App version 20</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1719,7 +1722,7 @@ function vowelGroups(v){
  let co=Math.min(c.length,Math.max(n-o.length-x.length,Math.floor(n/2))); let oo=Math.min(o.length,n-co); let xo=Math.min(x.length,n-co-oo);
  return {open:o.slice(0,oo),closed:c.slice(0,co),other:x.slice(0,xo)};
 }
-function wordRow(th,phs,en){return `<div class="phr"><div class="body"><span class="tw" lang="th">${th}</span><span style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span></div><div class="acts">${sayBtn(th.replace(/<[^>]+>/g,''),en)}</div></div>`}
+function wordRow(th,phs,en){return `<div class="phr"><div class="body"><span class="tw" lang="th">${th}</span><span class="inkph" style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span></div><div class="acts">${sayBtn(th.replace(/<[^>]+>/g,''),en)}</div></div>`}
 function vowelWordsHTML(v){
  const g=vowelGroups(v), mark=w=>w.sy.map((x,i)=>i===w.hit&&w.sy.length>1?`<span class="hl">${x}</span>`:x).join('');
  const tot=g.open.length+g.closed.length+g.other.length;
