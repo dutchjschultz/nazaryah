@@ -5,7 +5,7 @@ description: "Photographers never plan by the sun's disc. They plan by dawn and 
 date: 2026-11-22
 author: "Nazaryah"
 category: "Buried in Plain Sight"
-associations: []
+associations: ["the-moedim"]
 ---
 
 Most of the church world, and a good part of the Hebrew Roots movement with it, counts the day from sundown to sundown. The day, they say, begins when the light goes away. That teaching came out of Babylonian rabbinic tradition, not out of Torah. Scripture tells a different story, and the sun itself backs Scripture up every morning and every evening. One group of people proves it without ever opening a Bible: the men and women who make their living with a camera.
