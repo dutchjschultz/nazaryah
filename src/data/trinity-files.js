@@ -1,4 +1,6 @@
-// src/data/trinity-files.js · 1122 V7
+// src/data/trinity-files.js · 1122 V8
+// V8 (Trinity Files Upload 1122 V2): Mark 12:29-30 written and linked — "One Lord, Our God" (trinity-files-mark-12-29-30).
+// foundations ["II", "X"] — The "Us" Passages and The One Sent in His Name. List total unchanged at 167.
 // V7 (Etsy Handoff Philippians 2-5-8 1122 V1): Philippians 2:5-8 written and linked — "The Hand That Did Not Reach"
 // (trinity-files-philippians-2-5-8). foundations [] — it cites none of the Foundations. List total unchanged at 167.
 // V6 (Torah Quick Scroll Handoff 1115 V1): Numbers 6:24-27 added and written — "One Name on the People"
@@ -30,7 +32,7 @@
 //  - To add a verse not on the list: insert it at its canonical place with `ref`, `section`, `claim`.
 //  - `section` must be one of these four strings, character for character:
 //      "Tanakh" | "Gospels" | "Acts & Letters" | "Revelation"
-//  - `foundations` = the Trinity Foundations the study cites, by id ("I" to "VII"),
+//  - `foundations` = the Trinity Foundations the study cites, by id ("I" to "X"),
 //    lowest first. Names and links come from src/data/trinity-foundations.js;
 //    never type a foundation name here. Must match the study's Reference Piece.
 //  - `claim` = the words its defenders quote, KJV wording. Shown only while the file is coming.
@@ -78,7 +80,7 @@ export const trinityFiles = [
   { ref: "Matthew 26:64", section: "Gospels", foundations: [], claim: "“Sitting on the right hand of power”" },
   { ref: "Matthew 28:19", section: "Gospels", foundations: [], claim: "“In the name of the Father, and of the Son, and of the Holy Ghost”" },
   { ref: "Mark 2:5-7", section: "Gospels", foundations: [], title: "Authority Lent, Not Owned", deck: "The doubters’ premise, undone by a Son who was given the right", slug: "trinity-files-mark-2-5-7" },
-  { ref: "Mark 12:29-30", section: "Gospels", foundations: [], claim: "“The Lord our God is one Lord”" },
+  { ref: "Mark 12:29-30", section: "Gospels", foundations: ["II", "X"], title: "One Lord, Our God", deck: "The Master recited the Shema and called Yahuah “our God.” The worshipper is never the One He worships.", slug: "trinity-files-mark-12-29-30" },
   { ref: "Mark 13:32", section: "Gospels", foundations: [], title: "The One Thing the Son Did Not Know", deck: "A day kept back from the Son and held by the Father alone", slug: "trinity-files-mark-13-32" },
   { ref: "Luke 1:35", section: "Gospels", foundations: [], claim: "“The power of the Highest shall overshadow thee”" },
   { ref: "Luke 4:18", section: "Gospels", foundations: [], claim: "“The Spirit of the Lord is upon me”" },
