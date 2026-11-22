@@ -215,6 +215,8 @@ p { margin: 0; }
 .phr .tw { font: 500 23px/1.35 var(--f-thai); }
 .phr .en { color: var(--soft); }
 .phr .body { display: grid; gap: 2px; min-width: 0; }
+.phr .tnote { color: var(--soft); font-size: 15px; line-height: 1.35; }
+.phr .tnote [lang="th"] { font-family: var(--f-thai); font-size: 18px; }
 
 .drill { background: var(--leaf); border-radius: 6px; padding: 16px; display: grid; gap: 14px; justify-items: center; text-align: center; }
 .drill .say { width: 76px; height: 76px; }
@@ -291,20 +293,20 @@ details[open] > summary { margin-bottom: 10px; }
 .zoomv { position: fixed; inset: 0; z-index: 13; background: rgba(10, 14, 34, .62); display: grid; place-items: center; padding: calc(16px + env(safe-area-inset-top, 0px)) max(16px, env(safe-area-inset-right, 0px)) calc(16px + env(safe-area-inset-bottom, 0px)) max(16px, env(safe-area-inset-left, 0px)); }
 .zoomv[hidden] { display: none !important; }
 .zin { position: relative; background: var(--leaf); color: var(--ink); border-radius: 8px; width: min(100%, 640px); max-height: 100%; overflow: auto; padding: 44px 16px 18px; display: grid; gap: 10px; justify-items: center; text-align: center; }
-.zt { font: 500 200px/1.6 "Sarabun", "Noto Sans Thai", sans-serif; white-space: nowrap; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
+.zt { font: 500 200px/1.6 var(--f-thai); white-space: nowrap; max-width: 100%; overflow-x: auto; overflow-y: hidden; }
 .zx { position: absolute; top: 6px; right: 6px; width: 44px; height: 44px; border: 0; border-radius: 22px; background: var(--lac); color: var(--on-lac); font: 700 24px/1 var(--f-phon); }
 .zin .legend { margin: 0; }
 .wmarks { display: grid; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); gap: 8px; }
 .wmark { background: var(--bg); border-radius: 6px; padding: 10px; display: grid; gap: 2px; justify-items: center; text-align: center; }
-.wmark .g { font: 500 76px/1.45 "Sarabun", "Noto Sans Thai", sans-serif; }
+.wmark .g { font: 500 76px/1.45 var(--f-thai); }
 .wmark .tn { font: 600 20px/1.3 var(--f-body); }
 .wmark .rn { font: 700 15px/1.3 var(--f-phon); color: var(--gold); }
 .wmark p { margin: 4px 0 0; font-size: 15px; color: var(--soft); }
 .wforms { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 1fr); gap: 6px; }
 .wform { background: var(--bg); border-radius: 6px; padding: 8px 4px; min-width: 0; display: grid; gap: 4px; justify-items: center; align-content: start; text-align: center; }
 .wform .lab { font: 600 12px/1.3 var(--f-phon); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
-.wform .g { font: 500 clamp(30px, 10vw, 64px)/1.5 "Sarabun", "Noto Sans Thai", sans-serif; }
-.wform .ex { font: 500 clamp(28px, 9vw, 46px)/1.5 "Sarabun", "Noto Sans Thai", sans-serif; }
+.wform .g { font: 500 clamp(30px, 10vw, 64px)/1.5 var(--f-thai); }
+.wform .ex { font: 500 clamp(28px, 9vw, 46px)/1.5 var(--f-thai); }
 .wform .lab { min-height: 3.9em; }
 .wbox { background: var(--bg); border-left: 4px solid var(--gold); border-radius: 4px; padding: 10px 12px; margin: 0; }
 .wform .en { overflow-wrap: anywhere; }
@@ -1653,7 +1655,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 21</p>`;
+ <p class="score">App version 22</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1769,11 +1771,18 @@ function vowelGroups(v){
  let co=Math.min(c.length,Math.max(n-o.length-x.length,Math.floor(n/2))); let oo=Math.min(o.length,n-co); let xo=Math.min(x.length,n-co-oo);
  return {open:o.slice(0,oo),closed:c.slice(0,co),other:x.slice(0,xo)};
 }
-function wordRow(th,phs,en){return `<div class="phr"><div class="body"><span class="tw" lang="th">${th}</span><span class="inkph" style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span></div><div class="acts">${sayBtn(th.replace(/<[^>]+>/g,''),en)}</div></div>`}
+// Tone marks stacked on a word in the vowel lists are not part of the vowel: say so under the word.
+const TONEMK={'\u0E48':'mai ek','\u0E49':'mai tho','\u0E4A':'mai tri','\u0E4B':'mai chattawa'};
+function toneNote(th){
+ const m=[...new Set([...th.replace(/<[^>]+>/g,'')].filter(c=>TONEMK[c]))]; if(!m.length)return '';
+ const sh=m.map(c=>'\u25CC'+c), nm=m.map(c=>TONEMK[c]), and=a=>a.length<2?a[0]:a.slice(0,-1).join(', ')+' and '+a[a.length-1];
+ return `<span class="tnote">${m.length<2?`The small mark stacked on top, <span lang="th">${sh[0]}</span>, is a tone mark (${nm[0]}). It is not part of the vowel. It only sets the pitch of the voice.`:`The small marks stacked on top, <span lang="th">${and(sh)}</span>, are tone marks (${and(nm)}). They are not part of the vowel. They only set the pitch of the voice.`}</span>`;
+}
+function wordRow(th,phs,en,note){return `<div class="phr"><div class="body"><span class="tw" lang="th">${th}</span><span class="inkph" style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span>${note||''}</div><div class="acts">${sayBtn(th.replace(/<[^>]+>/g,''),en)}</div></div>`}
 function vowelWordsHTML(v){
  const g=vowelGroups(v), mark=w=>w.sy.map((x,i)=>i===w.hit&&w.sy.length>1?`<span class="hl">${x}</span>`:x).join('');
  const tot=g.open.length+g.closed.length+g.other.length;
- const sec=(list,head)=>list.length?`<h3 style="margin:14px 0 0">${head}</h3>${list.map(w=>wordRow(mark(w),w.ph,w.en)).join('')}`:'';
+ const sec=(list,head)=>list.length?`<h3 style="margin:14px 0 0">${head}</h3>${list.map(w=>wordRow(mark(w),w.ph,w.en,toneNote(w.th))).join('')}`:'';
  const cl=CLOSED[v.k];
  return `<p>${tot} words with this vowel. Say each one out loud. In longer words the syllable with the vowel is shown in red.</p>
   ${sec(g.open,`Full form ${dv(v.th)}`)}
