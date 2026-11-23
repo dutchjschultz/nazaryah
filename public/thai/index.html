@@ -14,7 +14,7 @@
 <title>Say It in Thai</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Sarabun:wght@400;600;700&family=Trirong:wght@500;700&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;600;700&family=Sarabun:wght@400;600;700&family=Trirong:wght@500;700&family=Noto+Serif+Thai:wght@500;700&display=swap">
 <style>
 /* Layout: a one-column phone handbook. Every sound is a reference card with a printed footnote at its foot.
    Pitch curves ride above each spoken syllable, like notes above a hymn line. */
@@ -232,6 +232,8 @@ p { margin: 0; }
 .score { font-variant-numeric: tabular-nums; color: var(--soft); }
 
 .lessons { display: grid; gap: 8px; }
+/* Trirong has no dotted circle (◌): any Thai shown on one is drawn in Noto Serif Thai so the mark sits on the circle (Dutch 1123). */
+.dc, .dc * { font-family: "Noto Serif Thai", var(--f-thai) !important; }
 .ltile.locked { opacity: .5; cursor: default; }
 .ctile .sub { grid-column: 1; }
 .ltile { background: var(--leaf); border: 0; border-radius: 6px; padding: 12px 14px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; align-items: center; text-align: left; min-height: 72px; }
@@ -1659,7 +1661,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 28</p>`;
+ <p class="score">App version 29</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1757,12 +1759,20 @@ const ASIN={a:'uh, as in "cut." Short.',aa:'ah, as in "father." Long.',i:'ee, as
  o:'oh, as in "go," cut short.',oh:'oh, as in "go," held still. Long.',aw:'aw, as in "saw," cut short.',aaw:'aw, as in "saw." Long.',er:'er, as in "her," with no r. Short.',err:'er, as in "her," with no r, held long.',
  ai:'eye, as in "my."',aai:'eye, as in "my," with the ah drawn out.',ao:'ow, as in "cow."',aao:'ow, as in "how," with the ah drawn out.',ia:'ee-ah, as in the name "Mia."',ua:'oo-ah, as in the end of "Joshua."',
  uea:'No English word has it. The smiling oo of "good" sliding into "ah."',iu:'ee-oo, close to "few."',aaeo:'The a in "bad" sliding into oo, close to "meow." The Thai word for cat is said just that way.',aawy:'oy, as in "boy."',ui:'oo-ee, as in "gooey."'};
-// Short/long pairs share one hint word: short = cut off quick, long = held out (Dutch 1123)
-const VPAIR={a:['father','faaather'],i:['see','seeee'],ue:['smile oo','ooooo, smiling'],u:['food','fooood'],e:['say','saaay'],ae:['bad','baaad'],o:['go','gooooh'],aw:['saw','saaaw'],er:['her','heeer']};
+// Vowel tile hints: English examples spelled with the same letters as the sound spelling (Dutch 1123).
+// Where English has no such spelling (ue, uue, uea, ae, aae, iu, aaeo, aawy, ui) the closest sound is named instead.
+const VHINT={a:'like the a in "ha!", said quick',aa:'like the a in father, spa',i:'like the i in taxi, visa',ee:'like the i in machine, police, ski',
+ ue:'no English match: oo said with a smile',uue:'no English match: oo said with a smile, held long',u:'like the u in put, push',oo:'like the oo in food, moon',
+ e:'like the e in café, said quick',ay:'like the ay in say, day',ae:'like the a in cat, said quick',aae:'like the a in bad, held long',
+ o:'like the o in obey, photo',oh:'like the oh in oh, ohm',aw:'like the aw in saw, said quick',aaw:'like the aw in saw, law',
+ er:'like the er in her, said quick, no r',err:'like the er in her, fern, held long, no r',
+ ai:'like the ai in Thai, aisle',aai:'like the ai in aisle, held long',ao:'like the ao in ciao, Mao',aao:'like the ao in ciao, held long',
+ ia:'like the ia in Mia, via',ua:'like the ua in Joshua',uea:'no English match: smile oo, then a',iu:'like the ew in few',
+ aaeo:'like the eow in meow',aawy:'like the oy in boy',ui:'like the ooey in gooey'};
 const VLONGONLY=['ia','ua','uea'];
 function vTile(x){const vi=VOW.indexOf(x);
- if(vi>=0){const sh=vi%2===0,pk=VOW[vi-(vi%2)].k,[w,held]=VPAIR[pk];return `<span>${x.k} · <b>${sh?'SHORT':'LONG'}</b></span><span>${sh?`"${w}" cut off quick`:`"${w}" held out — ${held}`}</span>`}
- const hint=/ /.test(GW[x.k])?GW[x.k]:'as in '+GW[x.k];
+ if(vi>=0){const sh=vi%2===0; return `<span>${x.k} · <b>${sh?'SHORT':'LONG'}</b></span><span>${VHINT[x.k]}</span>`}
+ const hint=VHINT[x.k];
  return VLONGONLY.includes(x.k)?`<span>${x.k} · <b>LONG</b></span><span>${hint}</span>`:`<span>${x.k} · ${hint}</span>`}
 function sameLine(v){const vi=VOW.indexOf(v);if(vi<0)return '';const p=VOW[vi^1];
  return `<p class="sameln">Same sound as <span lang="th">${dv(p.th)}</span> ${p.k}; the only difference is how long you hold it. In Thai, length can change the meaning of the word.</p>`}
@@ -2294,13 +2304,14 @@ const ZLEG=`<p class="legend"><span class="zv-v">Blue</span> vowel mark · <span
 // Enlarged view: the key lists only the colors the tapped Thai actually shows; plain ink always.
 function zLeg(th,o){const ch=[...th], ks=new Set(ch.map((c,i)=>zKind(ch,i,o)));
  return `<p class="legend">${[ks.has('v')&&'<span class="zv-v">Blue</span> vowel mark',ks.has('s')&&'<span class="zv-s">Red</span> short sign, ะ or ◌็','letters in plain ink'].filter(Boolean).join(' · ')}</p>`}
-function markTh(root){root.querySelectorAll('[lang="th"]').forEach(el=>{if(el.closest('button,a,summary,.tabs')||!/[฀-๿]/.test(el.textContent))return;el.classList.add('thz');el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','Enlarge '+thText(el).trim())})}
+function markDc(root){root.querySelectorAll('[lang="th"], .zt').forEach(el=>{if(el.textContent.includes('\u25CC'))el.classList.add('dc')})}
+function markTh(root){markDc(root);root.querySelectorAll('[lang="th"]').forEach(el=>{if(el.closest('button,a,summary,.tabs')||!/[฀-๿]/.test(el.textContent))return;el.classList.add('thz');el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','Enlarge '+thText(el).trim())})}
 let zoomFrom=null;
 function openZoom(el){
  const text=thText(el).replace(/\s+/g,' ').trim(); if(!text)return;
  const z=document.getElementById('zoomv'); zoomFrom=el;
  z.innerHTML=`<div class="zin" role="dialog" aria-modal="true" aria-label="Enlarged Thai"><button class="zx" data-unzoom="1" aria-label="Close">×</button><div class="zt" lang="th">${colorTh(text,el.dataset.o==='1')}</div>${zLeg(text,el.dataset.o==='1')}${/◌/.test(text)?'':sayBtn(text.replace(/ /g,''),text)}</div>`;
- z.hidden=false;
+ z.hidden=false; markDc(z);
  const t=z.querySelector('.zt'); let s=200; t.style.fontSize=s+'px';
  while(t.scrollWidth>t.clientWidth&&s>40){s-=8;t.style.fontSize=s+'px'}
  z.querySelector('.zx').focus();
@@ -2384,7 +2395,7 @@ const CWL=['num1','num2','food','color','family','days','time','weather','travel
 const CPH=['Greetings','Understanding','Food','Getting around','Shopping','Family','Weather','Time','Numbers','Wishes'];
 const CPASS=80, CREV=5, CTESTMAX=25;
 const CCLS={M:'Mid class',H:'High class',L:'Low class'};
-const vlab=k=>`${k} · ${/ /.test(GW[k])?GW[k]:'as in '+GW[k]}`;
+const vlab=k=>`${k} · ${VHINT[k]}`;
 const vOf=k=>[...VOW,...GLD].find(v=>v.k===k);
 function cLesson(n){
  if(n<=20){const c=CL[n-1], vs=c[1].split(' ');
