@@ -1659,7 +1659,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 24</p>`;
+ <p class="score">App version 25</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1854,9 +1854,8 @@ V.letters=()=>{
  <h2 style="margin-bottom:0">Letters</h2>
  <section class="card" id="ldetail">
   <div class="lhead"><div class="bigl" lang="th">${l[0]}</div><div>
-   <div style="font-size:15px;color:var(--soft)">Its name</div><div style="font-size:19px">${ph(l[1])}</div>
-   <p style="margin:6px 0 0">Its sound: <b style="font:700 20px var(--f-phon)">${snd}</b></p></div>${sayBtn(hear,l[1])}</div>
-  <p>Thai children learn every letter by a name made of two parts: the letter's sound, then a word that starts with it. <b>${nm[0]}</b> is the letter's sound with "aw" added so it can be said out loud, and <b>${nm.slice(1).join(' ')}</b> means "${l[3]}." It works like saying "B as in boy."</p>
+   <p style="margin:0">Its sound: <b style="font:700 20px var(--f-phon)">${snd}</b></p></div>${sayBtn(hear,l[1])}</div>
+  ${nameLine(l)}
   ${twinLine(l)}
   ${s?`<p class="like">${s.like}</p>`:''}
   ${l[7]?'<p class="smile"><span>This letter is no longer used. Skip it.</span></p>':RARE.includes(l[0])?'<p class="smile"><span>A rare letter, found mostly in old or borrowed words. Learn it last.</span></p>':''}
@@ -2399,12 +2398,13 @@ function cNext(){
  C.stage='end'; const pct=Math.round(C.right*100/C.q.length); C.pct=pct;
  if(C.L.kind!=='t'||pct>=CPASS){CS.done[C.n]=Math.max(CS.done[C.n]??0,pct);cSave()}
 }
+function nameLine(l){return `<p class="lname">Its name: <b>${l[1]}</b> (say: ${plain(l[1])}). The first word is the letter's sound; the second word, <span lang="th">${l[2]}</span> "${l[3]}," is the word it stands for — like "A as in apple." Thais always say both words together.</p>`}
 function cLetterCard(l){
  const hear=(l[0]==='ฮ'?'ฮอ ':l[0]==='อ'?'ออ ':l[0]+'อ ')+l[2], snd=l[5]==='(catch)'?'no sound of its own':l[5];
  return `<section class="card"><div class="lhead"><div class="bigl" lang="th">${l[0]}</div><div>
   <p style="margin:0">Its sound: <b style="font:700 20px var(--f-phon)">${snd}</b></p>
-  <p style="margin:4px 0 0">Its name: ${ph(l[1])}. <span lang="th">${l[2]}</span> means "${l[3]}."</p>
   <p style="margin:6px 0 0"><span class="tag">${CCLS[l[4]]}</span></p></div>${sayBtn(hear,l[1])}</div>
+  ${nameLine(l)}
   ${twinLine(l)}
   <p style="margin:0">At the end of a syllable it ${l[6]==='—'?'is rarely or never used.':l[6]==='vowel'?'turns into part of a vowel.':`is said as <b>-${l[6]}</b>.`}</p>
   ${l[7]?'<p class="smile"><span>No longer used. Know it when you see it.</span></p>':TILERARE.includes(l[0])?'<p class="smile"><span>A rare letter, found mostly in old or borrowed words.</span></p>':''}</section>`;
