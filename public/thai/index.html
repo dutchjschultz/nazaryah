@@ -189,6 +189,8 @@ p { margin: 0; }
 .lt .g { font: 500 34px/1.35 var(--f-thai); color: var(--ink); }
 .lt[aria-pressed="true"] { outline: 2.5px solid var(--gold); outline-offset: -2.5px; }
 .lt.old .g { opacity: .55; }
+.lt .tw2 { font-size: 11.5px; line-height: 1.2; text-align: center; padding-inline: 2px; }
+.twin [lang="th"] { font: 500 22px/1 var(--f-thai); }
 .bigl { font: 500 84px/1.2 var(--f-thai); }
 .lhead { display: grid; grid-template-columns: auto minmax(0, 1fr) auto; gap: 14px; align-items: center; }
 .tag { display: inline-block; border: 1.5px solid currentColor; border-radius: 3px; padding: 0 6px; font: 600 13px/1.5 var(--f-phon); }
@@ -1655,7 +1657,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 22</p>`;
+ <p class="score">App version 23</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1688,6 +1690,14 @@ V.tones=()=>`<h1>Tones</h1><p class="lede">Tone is the pitch of the voice across
   <div class="staffed">${sayBtn('ไกล','far')}<span class="tw" lang="th" style="font:500 26px var(--f-thai)">ไกล</span><span style="font-size:20px">${ph('klai')}</span></div></section>`;
 /* ---------- Letters page: each layer opens one step deeper ---------- */
 const RARE='ฌฎฏฐฑฒ';
+// Letters that share a sound: the tile adds the name word and class, the detail page names the twins.
+const CLSN={M:'mid',H:'high',L:'low'}, TILERARE=RARE+'ฆ';
+const twins=l=>l[5]==='(catch)'?[]:LET.filter(x=>x[5]===l[5]&&x[0]!==l[0]);
+const tileTag=x=>twins(x).length?`<span class="tw2">${x[3].split(',')[0]} · ${CLSN[x[4]]}${x[7]?' (old)':TILERARE.includes(x[0])?' (rare)':''}</span>`:'';
+function twinLine(l){const t=twins(l); if(!t.length)return '';
+ const and=a=>a.length<2?a[0]:a.slice(0,-1).join(', ')+' and '+a[a.length-1];
+ const same=t.every(x=>x[4]===l[4]);
+ return `<p class="twin">Sounds the same as ${and(t.map(x=>`<span lang="th">${x[0]}</span> (${CLSN[x[4]]})`))}. ${same?`${t.length<2?'Both are':'All are'} ${CLSN[l[4]]} class, so the tone is read the same way; only the spelling differs.`:'The class is what makes the tone different.'}</p>`}
 const LWORD={'ต':['ตา','taa','eye'],'ฆ':['โฆษณา','khôht-sà-naa','advertisement'],'ญ':['ญาติ','yâat','relative'],'ฎ':['กฎ','kòt','rule'],'ฏ':['ปฏิทิน','pà-tì-thin','calendar'],'ณ':['คุณ','khun','you'],'ภ':['ภาษา','phaa-sǎa','language'],'ษ':['ภาษา','phaa-sǎa','language'],'ฬ':['กีฬา','kee-laa','sport'],'ฮ':['ฮา','haa','funny']};
 const SYLMEAN={'กา':'crow','ขา':'leg','คา':'stuck','งา':'sesame','ชา':'tea','ตา':'eye','ทา':'to paint','นา':'rice field','ปา':'to throw','ฝา':'lid','พา':'to take along','มา':'to come','ยา':'medicine','ลา':'donkey','หา':'to look for','อา':'aunt or uncle','รา':'mold','ฮา':'funny','ดี':'good','ปี':'year','มี':'to have','สี':'color','ที':'one time','ผี':'ghost','ตี':'to hit','ชี':'nun','หู':'ear'};
 const VPOS={a:'after',aa:'after',i:'above',ee:'above',ue:'above',uue:'above, with อ after',u:'below',oo:'below',e:'before, with ะ after',ay:'before',ae:'before, with ะ after',aae:'before',o:'before, with ะ after',oh:'before',aw:'around it: เ before, าะ after',aaw:'after',er:'before, with อะ after',err:'before, with อ after'};
@@ -1845,6 +1855,7 @@ V.letters=()=>{
    <div style="font-size:15px;color:var(--soft)">Its name</div><div style="font-size:19px">${ph(l[1])}</div>
    <p style="margin:6px 0 0">Its sound: <b style="font:700 20px var(--f-phon)">${snd}</b></p></div>${sayBtn(hear,l[1])}</div>
   <p>Thai children learn every letter by a name made of two parts: the letter's sound, then a word that starts with it. <b>${nm[0]}</b> is the letter's sound with "aw" added so it can be said out loud, and <b>${nm.slice(1).join(' ')}</b> means "${l[3]}." It works like saying "B as in boy."</p>
+  ${twinLine(l)}
   ${s?`<p class="like">${s.like}</p>`:''}
   ${l[7]?'<p class="smile"><span>This letter is no longer used. Skip it.</span></p>':RARE.includes(l[0])?'<p class="smile"><span>A rare letter, found mostly in old or borrowed words. Learn it last.</span></p>':''}
   <div class="stack" style="gap:8px">
@@ -1858,7 +1869,7 @@ V.letters=()=>{
    <p>At the end of a syllable this letter ${l[6]==='—'?'is rarely or never used.':l[6]==='vowel'?'turns into part of a vowel.':`is said as <b>-${l[6]}</b>${l[6]!==l[5]?`, not ${l[5]}`:''}.`}</p>`)}
   </div></section>
  <div class="chips">${['Most used','All','Mid','High','Low'].map(k=>`<button class="chip" data-lfilter="${k}" aria-pressed="${k===letterFilter}">${k==='All'?'All 44':k==='Most used'?'Most used':k+' class'}</button>`).join('')}</div>
- <div class="grid44">${list.map(x=>`<button class="lt${x[7]?' old':''}" data-letter="${x[0]}" aria-pressed="${x[0]===letterSel}"><span class="g" lang="th">${x[0]}</span><span>${x[5]==='(catch)'?'catch':x[5]}</span></button>`).join('')}</div>
+ <div class="grid44">${list.map(x=>`<button class="lt${x[7]?' old':''}" data-letter="${x[0]}" aria-pressed="${x[0]===letterSel}"><span class="g" lang="th">${x[0]}</span><span>${x[5]==='(catch)'?'catch':x[5]}</span>${tileTag(x)}</button>`).join('')}</div>
  <details class="lvl"><summary>Thai has no spaces. How do readers know where a word ends?</summary>
   <p>The same way an English reader can read "ilovemydog." A reader who knows the words sees where each one stops. Thai children learn to spot words this way from the start.</p>
   <p>Thai does use a space, but in a different place: it marks the end of a thought, the way English uses a period. For speaking, none of this matters, because spoken Thai has the same small pauses as English.</p></details>
