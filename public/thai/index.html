@@ -232,6 +232,8 @@ p { margin: 0; }
 .score { font-variant-numeric: tabular-nums; color: var(--soft); }
 
 .lessons { display: grid; gap: 8px; }
+.ltile.locked { opacity: .5; cursor: default; }
+.ctile .sub { grid-column: 1; }
 .ltile { background: var(--leaf); border: 0; border-radius: 6px; padding: 12px 14px; display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 2px 12px; align-items: center; text-align: left; min-height: 72px; }
 .ltile .nm { font: 700 18px/1.3 var(--f-body); color: var(--ink); }
 .ltile .sub { color: var(--soft); font-size: 15px; }
@@ -1657,7 +1659,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 23</p>`;
+ <p class="score">App version 24</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1921,6 +1923,7 @@ V.lessons=()=>{
  if(lesson)return learnView();
  const n=LESSONS.filter(l=>donej[l.id]).length;
  return `<h1>Lessons</h1><p class="lede">Each lesson is a short list of everyday words with a small test at the end. Lessons finished so far: ${n} of ${LESSONS.length}.</p>
+ <section class="note"><h3>Numbered Lessons</h3><p>50 lessons in order, from the first letters and vowels to full phrases, with a test after every four. Each one opens when the one before is finished.</p><button class="chip" data-go="course" style="border-color:var(--on-lac);color:var(--on-lac);justify-self:start">Open the numbered lessons</button></section>
  <div class="lessons">${LESSONS.map(l=>`<button class="ltile" data-les="${l.id}"><span class="nm">${l.title}</span><span class="thn" lang="th">${l.th}</span><span class="sub">${l.w.length} words${donej[l.id]?` · <span class="st">Best test ${donej[l.id]} of ${l.w.length}</span>`:''}</span></button>`).join('')}</div>`;
 };
 function learnView(){
@@ -2309,6 +2312,181 @@ V.written=()=>`<button class="back" data-wback="1">← Vowels and Letters</butto
   <p class="wnote">${thx(b.note)}</p>${b.box?`<p class="wbox">${thx(b.box)}</p>`:''}${b.extra?`<p class="wnote" style="color:var(--soft)">${thx(b.extra)}</p>`:''}
  </section>`).join('')}
  <button class="back" data-wback="1">← Vowels and Letters</button>`;
+/* ---------- Numbered lessons: 50 lessons in order, each opens when the one before is finished ----------
+   1-20  letters and vowels (15 vowels and 22 letters in 1-10, the other 14 and 22 in 11-20), most useful first,
+         each with 4 practice words built only from letters and vowels already learned
+   21-30 topic words from LESSONS plus that lesson's phrase;  31-40 phrases from PHRASES
+   41-50 tests of four lessons each (41 = 1-4 ... 50 = 37-40), pass mark 80%
+   Every lesson opens with a short review; a missed item drops to box 0 and comes back more often.
+   Progress lives on this device (thai.course); Back up / Restore move it as a .json file. */
+const CL=[ // [new letters, new vowels, 4 practice words: Thai, sound, meaning]
+ ['กน','aa a',[['กา','kaa','crow'],['นา','naa','rice field'],['กัน','kan','together'],['นาน','naan','a long time']]],
+ ['มด','o ee',[['ดี','dee','good'],['มา','maa','come'],['นก','nók','bird'],['นม','nom','milk']]],
+ ['ตห','ai',[['ตา','taa','eye'],['ตก','tòk','fall'],['หก','hòk','six'],['ไก่','kài','chicken']]],
+ ['งล','aaw uea',[['ลม','lom','wind'],['งาน','ngaan','work'],['นอน','naawn','sleep'],['ไกล','klai','far']]],
+ ['บส','ua',[['สาม','sǎam','three'],['สอง','sǎawng','two'],['หัว','hǔa','head'],['บอก','bàawk','to tell']]],
+ ['รว','ia e',[['วัน','wan','day'],['รัก','rák','love'],['วัด','wát','temple'],['เก็บ','kèp','collect']]],
+ ['ขผ','aae',[['ผม','phǒm','hair'],['ขา','khǎa','leg'],['แดง','daaeng','red'],['แขน','khǎaen','arm']]],
+ ['ปจ','oo i',[['ไป','pai','go'],['ปลา','plaa','fish'],['ดู','doo','look'],['สิบ','sìp','ten']]],
+ ['ยชท','ao',[['ชา','chaa','tea'],['ยา','yaa','medicine'],['เรา','rao','we'],['ไทย','thai','Thai']]],
+ ['คพฟ','uue',[['คน','khon','person'],['ไฟ','fai','light'],['มือ','muue','hand'],['ฟัง','fang','listen']]],
+ ['ซถ','oh ue',[['รถ','rót','car'],['ถาม','thǎam','ask'],['โมง','mohng','hour'],['ถึง','thǔeng','to arrive']]],
+ ['อฝ','u',[['ฝน','fǒn','rain'],['อีก','èek','more'],['ลุง','lung','older uncle'],['ทุก','thúk','every']]],
+ ['ฉศ','ay aai',[['ขาย','khǎai','sell'],['ฉัน','chǎn','I (woman speaking)'],['สาย','sǎai','late'],['ยาย','yaai',"mother's mother"]]],
+ ['ญภ','aao',[['ขาว','khǎao','white'],['ดาว','daao','star'],['ภาพ','phâap','picture'],['กุญแจ','kun-jaae','key']]],
+ ['ธษ','err aawy',[['เจอ','jerr','meet'],['เธอ','therr','she, you'],['ซอย','saawy','lane'],['เดิน','derrn','walk']]],
+ ['ฆฬ','aw',[['เกาะ','kàw','island'],['เมฆ','mâyk','cloud'],['วาฬ','waan','whale'],['เพราะ','phráw','because']]],
+ ['ณฮ','er',[['คุณ','khun','you'],['เงิน','ngern','money'],['เปิด','pèrt','open'],['เยอะ','yér','many']]],
+ ['ฎฐ','ae aaeo',[['แมว','maaeo','cat'],['แพะ','pháe','goat'],['และ','láe','and'],['แก้ว','kâaeo','glass']]],
+ ['ฃฅฌ','iu',[['หิว','hǐu','hungry'],['ผิว','phǐu','skin'],['นิ้ว','níu','finger'],['ซีอิ๊ว','see-íu','soy sauce']]],
+ ['ฏฑฒ','ui',[['ลุย','lui','to wade through'],['ปุ๋ย','pǔi','fertilizer'],['เรียน','rian','study'],['ภาษา','phaa-sǎa','language']]]
+];
+const CWL=['num1','num2','food','color','family','days','time','weather','travel','trans'];
+const CPH=['Greetings','Understanding','Food','Getting around','Shopping','Family','Weather','Time','Numbers','Wishes'];
+const CPASS=80, CREV=5, CTESTMAX=25;
+const CCLS={M:'Mid class',H:'High class',L:'Low class'};
+const vlab=k=>`${k} · ${/ /.test(GW[k])?GW[k]:'as in '+GW[k]}`;
+const vOf=k=>[...VOW,...GLD].find(v=>v.k===k);
+function cLesson(n){
+ if(n<=20){const c=CL[n-1], vs=c[1].split(' ');
+  return {n,kind:'lv',c,vs,title:`Letters ${[...c[0]].join(' ')} · ${vs.length>1?'vowels':'vowel'} ${vs.map(k=>dv(vOf(k).th)).join(' ')}`,
+   items:[...[...c[0]].map(x=>'L:'+x),...vs.map(k=>'V:'+k),...c[2].map(w=>'W:'+w[0])]}}
+ if(n<=30){const l=LESSONS.find(x=>x.id===CWL[n-21]);return {n,kind:'w',l,title:`Words: ${l.title}`,items:[...l.w.map(w=>'W:'+w[0]),'P:'+l.use[0]]}}
+ if(n<=40){const k=CPH[n-31];return {n,kind:'p',k,title:`Phrases: ${k}`,items:PHRASES[k].map(p=>'P:'+p[0])}}
+ const a=(n-41)*4+1;return {n,kind:'t',a,title:`Test: lessons ${a} to ${a+3}`,items:[...new Set([a,a+1,a+2,a+3].flatMap(i=>cLesson(i).items))]};
+}
+let CIX=null;
+function cix(){
+ if(CIX)return CIX; const x={};
+ LET.forEach(l=>x['L:'+l[0]]={t:'L',l,ans:l[5]==='(catch)'?'no sound of its own':l[5]});
+ [...VOW,...GLD].forEach(v=>x['V:'+v.k]={t:'V',v,ans:vlab(v.k)});
+ CL.forEach(c=>c[2].forEach(w=>x['W:'+w[0]]??={t:'W',w,ans:w[2]}));
+ CWL.forEach(id=>{const l=LESSONS.find(y=>y.id===id);l.w.forEach(w=>x['W:'+w[0]]??={t:'W',w,ans:w[2]});x['P:'+l.use[0]]??={t:'P',p:l.use,ans:l.use[2]}});
+ CPH.forEach(k=>PHRASES[k].forEach(p=>x['P:'+p[0]]??={t:'P',p,ans:p[2]}));
+ return CIX=x;
+}
+let CS={app:'say-it-in-thai',v:1,done:{},box:{}};
+try{const s=JSON.parse(store.get('course','null'));if(s&&s.done&&s.box)CS=s}catch(e){}
+const cSave=()=>store.set('course',JSON.stringify(CS));
+const cOpen=n=>n===1||CS.done[n-1]!=null;
+let C=null; // the lesson in progress: {n, L, stage:'review'|'learn'|'quiz'|'end', q, i, right, miss, opts, picked}
+function cWeight(k){const b=CS.box[k];return b==null?1:[8,4,2,1,.5,.25][Math.min(b,5)]}
+function cReviewPick(L){
+ const own=new Set(L.items), pool=[];
+ for(let i=1;i<L.n&&i<=40;i++)cLesson(i).items.forEach(k=>{if(!own.has(k)&&!pool.includes(k))pool.push(k)});
+ const out=[]; while(out.length<CREV&&pool.length){const tot=pool.reduce((s,k)=>s+cWeight(k),0);let r=Math.random()*tot,j=0;
+  for(;j<pool.length-1;j++){r-=cWeight(pool[j]);if(r<=0)break} out.push(pool.splice(j,1)[0])}
+ return out;
+}
+function cStart(n){
+ const L=cLesson(n); C={n,L,i:0,right:0,miss:[]};
+ if(L.kind==='t'){C.stage='quiz';C.q=shuffle(L.items).slice(0,CTESTMAX)}
+ else{const r=cReviewPick(L); if(r.length){C.stage='review';C.q=r}else{C.stage='learn'}}
+ if(C.q&&C.stage!=='learn')cOpts();
+}
+function cOpts(){
+ const it=cix()[C.q[C.i]], same=[...new Set(Object.values(cix()).filter(o=>o.t===it.t&&o.ans!==it.ans).map(o=>o.ans))];
+ C.opts=shuffle([it.ans,...shuffle(same).slice(0,2)]); C.picked=null;
+}
+function cAnswer(i){
+ const k=C.q[C.i], it=cix()[k]; C.picked=i;
+ const ok=C.opts[i]===it.ans; if(ok)C.right++;else C.miss.push(k);
+ CS.box[k]=ok?Math.min(5,(CS.box[k]??0)+1):0; cSave();
+}
+function cNext(){
+ C.i++; if(C.i<C.q.length){cOpts();return}
+ if(C.stage==='review'){C.stage='learn';C.q=null;return}
+ C.stage='end'; const pct=Math.round(C.right*100/C.q.length); C.pct=pct;
+ if(C.L.kind!=='t'||pct>=CPASS){CS.done[C.n]=Math.max(CS.done[C.n]??0,pct);cSave()}
+}
+function cLetterCard(l){
+ const hear=(l[0]==='ฮ'?'ฮอ ':l[0]==='อ'?'ออ ':l[0]+'อ ')+l[2], snd=l[5]==='(catch)'?'no sound of its own':l[5];
+ return `<section class="card"><div class="lhead"><div class="bigl" lang="th">${l[0]}</div><div>
+  <p style="margin:0">Its sound: <b style="font:700 20px var(--f-phon)">${snd}</b></p>
+  <p style="margin:4px 0 0">Its name: ${ph(l[1])}. <span lang="th">${l[2]}</span> means "${l[3]}."</p>
+  <p style="margin:6px 0 0"><span class="tag">${CCLS[l[4]]}</span></p></div>${sayBtn(hear,l[1])}</div>
+  ${twinLine(l)}
+  <p style="margin:0">At the end of a syllable it ${l[6]==='—'?'is rarely or never used.':l[6]==='vowel'?'turns into part of a vowel.':`is said as <b>-${l[6]}</b>.`}</p>
+  ${l[7]?'<p class="smile"><span>No longer used. Know it when you see it.</span></p>':TILERARE.includes(l[0])?'<p class="smile"><span>A rare letter, found mostly in old or borrowed words.</span></p>':''}</section>`;
+}
+function cVowelCard(k){
+ const v=vOf(k), cl=CLOSED[k], vi=VOW.indexOf(v), partner=vi>=0?VOW[vi^1]:null, kind=vi<0?'Two-part vowel':SHORTV.includes(k)?'Short vowel':'Long vowel';
+ return `<section class="card"><div class="lhead"><div class="bigl" style="font-size:56px" lang="th">${dv(v.th)}</div><div>
+  <p style="margin:0">Its sound: <b style="font:700 20px var(--f-phon)">${k}</b></p><p style="margin:4px 0 0">${v.like}</p>
+  <p style="margin:6px 0 0"><span class="tag">${kind}</span></p></div>${sayBtn(v.th.replace('ก','อ'),k)}</div>
+  <p style="margin:0"><b>Full form:</b> <span lang="th" style="font:500 26px var(--f-thai)">${dv(v.th)}</span>, used when nothing follows the vowel${cl?'':', and also when a letter follows'}.</p>
+  ${cl?(k==='o'?`<p style="margin:0"><b>Short form:</b> no mark at all. When a letter follows, the short o is hidden: two letters side by side are read with o between them.</p>`
+   :`<p style="margin:0"><b>Short form:</b> <span lang="th" style="font:500 26px var(--f-thai)">${cl[0]}</span>, used when a letter follows: ${cl[1]}.</p>`):''}
+  ${k==='ai'?'<p style="margin:0">Also written <span lang="th" style="font:500 26px var(--f-thai)">ใ◌</span> in twenty common words, said the same.</p>':''}
+  ${partner?`<p style="margin:0;color:var(--soft)">Its ${SHORTV.includes(k)?'long':'short'} partner is <span lang="th">${dv(partner.th)}</span> ${partner.k}.</p>`:''}</section>`;
+}
+function cPhraseRow(p){const f=fill(p);return `<div class="phr"><div class="body"><span class="tw" lang="th">${f[0]}</span><span class="inkph" style="font-size:18px">${ph(f[1])}</span><span class="en">${p[2]}</span></div><div class="acts">${sayBtn(f[0],p[2])}</div></div>`}
+function cLearnView(){
+ const L=C.L; let body='';
+ if(L.kind==='lv'){
+  body=`<h2>New letters</h2>${[...L.c[0]].map(x=>cLetterCard(LET.find(l=>l[0]===x))).join('')}
+  <h2>New ${L.vs.length>1?'vowels':'vowel'}</h2>${L.vs.map(cVowelCard).join('')}
+  <h2>Practice words</h2><p>Every word here uses only letters and vowels already learned. Say each one out loud.</p>
+  <div>${L.c[2].map(w=>wordRow(w[0],w[1],w[2],toneNote(w[0]))).join('')}</div>`}
+ else if(L.kind==='w'){
+  body=`<p class="lede">${L.l.note}</p><div>${L.l.w.map(w=>wordRow(w[0],w[1],w[2])).join('')}</div>
+  <h2>One phrase</h2><div>${cPhraseRow(L.l.use)}</div>`}
+ else body=`<p class="lede">Say each phrase out loud, then check yourself.</p><div>${PHRASES[L.k].map(cPhraseRow).join('')}</div>`;
+ return `<button class="back" data-cback="1">‹ Numbered lessons</button><h1>Lesson ${L.n}</h1><p class="lede">${L.title}</p>
+ ${body}<button class="next" data-cquiz="1" style="justify-self:start">Check what you learned</button>`;
+}
+function cQuizView(){
+ const k=C.q[C.i], it=cix()[k], done=C.picked!=null, L=C.L;
+ let prompt, show;
+ if(it.t==='L'){prompt='What sound does this letter make?';show=`<div class="bigl" lang="th">${it.l[0]}</div>`}
+ else if(it.t==='V'){prompt='Which vowel is this?';show=`<div class="bigl" lang="th">${dv(it.v.th)}</div>`}
+ else{const p=it.t==='W'?it.w:fill(it.p);prompt=it.t==='W'?'What does this word mean?':'What does this phrase mean?';
+  show=`<div class="bigl" lang="th" style="font-size:${it.t==='W'?52:34}px;overflow-wrap:anywhere">${p[0]}</div><div style="font-size:21px">${ph(p[1])}</div>${sayBtn(p[0],'it')}`}
+ const head=C.stage==='review'?`Quick review · ${C.i+1} of ${C.q.length}`:L.kind==='t'?`Test · ${C.i+1} of ${C.q.length} · pass mark ${CPASS}%`:`Check · ${C.i+1} of ${C.q.length}`;
+ return `<button class="back" data-cback="1">‹ Numbered lessons</button><h1>Lesson ${L.n}</h1>
+ <section class="drill"><p class="score">${head}</p>${show}<p style="margin:0">${prompt}</p>
+ <div class="opts">${C.opts.map((o,i)=>{let c='';if(done){if(o===it.ans)c=' right';else if(i===C.picked)c=' wrong'}return `<button class="opt${c}" data-cpick="${i}" ${done?'disabled':''}><span>${o}</span></button>`}).join('')}</div>
+ ${done?`<button class="next" data-cnext="1">${C.i+1<C.q.length?'Next':C.stage==='review'?'On to the new lesson':'See the result'}</button>`:''}</section>`;
+}
+function cEndView(){
+ const L=C.L, pass=L.kind!=='t'||C.pct>=CPASS, last=C.n===50;
+ const miss=C.miss.map(k=>{const it=cix()[k];return it.t==='L'?it.l[0]:it.t==='V'?dv(it.v.th):it.t==='W'?it.w[0]:fill(it.p)[0]});
+ return `<button class="back" data-cback="1">‹ Numbered lessons</button>
+ <section class="drill"><h1>${C.right} of ${C.q.length}</h1>
+ <p>${pass?(last?'All 50 lessons are finished.':`Lesson ${L.n} is finished. Lesson ${L.n+1} is open.`):`The pass mark is ${CPASS}%. This run scored ${C.pct}%. Take the test again to open lesson ${L.n+1}.`}</p>
+ ${miss.length?`<p style="margin:0">Missed, and back in review more often: <span lang="th">${miss.join('</span>, <span lang="th">')}</span></p>`:''}
+ ${pass&&!last?`<button class="next" data-cgo="${L.n+1}">Start lesson ${L.n+1}</button>`:''}
+ ${pass?'':`<button class="next" data-cgo="${L.n}">Take the test again</button>`}
+ ${L.kind!=='t'?`<button class="back" data-cgo="${L.n}">Do lesson ${L.n} again</button>`:''}</section>`;
+}
+const CSECT=[[1,'Vowels and letters, part one'],[11,'Vowels and letters, part two'],[21,'Words'],[31,'Phrases'],[41,'Tests']];
+V.course=()=>{
+ if(C){if(C.stage==='learn')return cLearnView();if(C.stage==='end')return cEndView();return cQuizView()}
+ const n=Object.keys(CS.done).length, next=Array.from({length:50},(_,i)=>i+1).find(i=>CS.done[i]==null);
+ return `<button class="back" data-go="lessons">‹ Lessons</button><h1>Numbered Lessons</h1>
+ <p class="lede">50 lessons in order, from the first letters to full phrases. Each lesson opens when the one before it is finished. Every lesson starts with a short review, and anything missed comes back more often.</p>
+ <p class="score">Finished: ${n} of 50</p>
+ ${next?`<button class="next" data-cgo="${next}" style="justify-self:start">${n?'Continue with':'Start'} lesson ${next}</button>`:''}
+ ${CSECT.map(([a,h])=>`<h2 style="margin-bottom:0">${a}–${a+9} · ${h}</h2><div class="lessons">${Array.from({length:10},(_,j)=>{const i=a+j,L=cLesson(i),open=cOpen(i),d=CS.done[i];
+  return `<button class="ltile ctile${open?'':' locked'}" data-cgo="${i}" ${open?'':'disabled'}><span class="nm">Lesson ${i}</span><span class="thn" lang="th">${L.kind==='lv'?L.c[0]:L.kind==='w'?L.l.th:L.kind==='p'?'พูด':'สอบ'}</span><span class="sub">${L.title}${d!=null?` · <span class="st">Finished, ${d}%</span>`:open?'':' · Locked'}</span></button>`}).join('')}</div>`).join('')}
+ <section class="card"><h2>Your progress</h2><p>Progress is saved on this device only. Save a backup file to keep it safe or to move it to another phone or computer.</p>
+ <div class="chips"><button class="chip" data-cbackup="1">Back up progress</button><button class="chip" data-crestore="1">Restore progress</button></div>
+ <input type="file" id="c-file" accept=".json,application/json" hidden></section>`;
+};
+function cBackup(){
+ const a=document.createElement('a'); a.href=URL.createObjectURL(new Blob([JSON.stringify(CS)],{type:'application/json'}));
+ a.download='say-it-in-thai-progress-'+new Date().toISOString().slice(0,10)+'.json'; document.body.appendChild(a); a.click(); a.remove();
+ setTimeout(()=>URL.revokeObjectURL(a.href),2000); toast('Progress saved as a file.');
+}
+function cRestore(file){
+ const r=new FileReader();
+ r.onload=()=>{try{const s=JSON.parse(r.result);
+  if(!s||s.app!=='say-it-in-thai'||typeof s.done!=='object'||typeof s.box!=='object')throw 0;
+  CS={app:'say-it-in-thai',v:1,done:s.done,box:s.box}; cSave(); C=null; render(true); toast('Progress restored.')}
+  catch(e){toast('That file is not a Say It in Thai backup.')}};
+ r.readAsText(file);
+}
+
 const app=document.getElementById('app');
 function current(){const h=location.hash.slice(1);return V[h]?h:store.get('view','start')}
 let view='start';
@@ -2316,7 +2494,7 @@ function render(keep){
  loadVoice();
  if(!V[view])view='start';
  app.innerHTML=V[view](); markTh(app);
- document.getElementById('tabs').innerHTML=NAV.map(n=>`<button data-go="${n[0]}"${n[0]===view?' aria-current="page"':''}><span class="g" lang="th">${n[1]}</span><span>${n[2]}</span></button>`).join('');
+ document.getElementById('tabs').innerHTML=NAV.map(n=>`<button data-go="${n[0]}"${n[0]===(view==='course'?'lessons':view)?' aria-current="page"':''}><span class="g" lang="th">${n[1]}</span><span>${n[2]}</span></button>`).join('');
  if(!keep)window.scrollTo(0,0);
 }
 function go(v){view=v;store.set('view',v);try{history.replaceState(null,'','#'+v)}catch(e){location.hash=v}render()}
@@ -2339,7 +2517,14 @@ document.addEventListener('click',e=>{
  if(d.ltest){T={i:0,right:0,order:shuffle(lesson.w)};testOpts();render();return}
  if(d.lpick){T.picked=+d.lpick;if(T.opts[T.picked]===T.order[T.i])T.right++;render(true);return}
  if(d.lnext){T.i++;if(T.i<T.order.length){testOpts();render()}else{donej[lesson.id]=Math.max(donej[lesson.id]||0,T.right);store.set('done',JSON.stringify(donej));render()}return}
- if(d.go){go(d.go);return}
+ if(d.cgo){cStart(+d.cgo);if(view!=='course')go('course');else render();return}
+ if(d.cback){C=null;render();return}
+ if(d.cquiz){C.stage='quiz';C.q=shuffle(C.L.items);C.i=0;C.right=0;C.miss=[];cOpts();render();return}
+ if(d.cpick){cAnswer(+d.cpick);render(true);return}
+ if(d.cnext){cNext();render();return}
+ if(d.cbackup){cBackup();return}
+ if(d.crestore){document.getElementById('c-file').click();return}
+ if(d.go){if(d.go==='course')C=null;go(d.go);return}
  if(d.speaker){speaker=d.speaker;store.set('speaker',speaker);render(true);return}
  if(d.soundtab){soundTab=d.soundtab;render(true);return}
  if(d.phrasetab){phraseTab=d.phrasetab;render(true);return}
@@ -2355,6 +2540,7 @@ function setRate(r){rate=r;store.set('rate',r);document.getElementById('spd-n').
 document.getElementById('spd-n').onclick=()=>setRate('0.9');
 document.getElementById('spd-s').onclick=()=>setRate('0.55');
 document.addEventListener('keydown',e=>{if(e.key==='Escape'){closeZoom();return}const z=e.target.closest&&e.target.closest('.thz');if(z&&(e.key==='Enter'||e.key===' ')){e.preventDefault();openZoom(z)}});
+document.addEventListener('change',e=>{if(e.target.id==='c-file'&&e.target.files[0])cRestore(e.target.files[0])});
 document.addEventListener('input',e=>{if(e.target.id==='find-q'){findQ=e.target.value;findSel=null;{const fo=document.getElementById('find-out');fo.innerHTML=findOut();markTh(fo)}}});
 window.addEventListener('hashchange',()=>{const h=location.hash.slice(1);if(V[h]&&h!==view){view=h;render()}});
 if('speechSynthesis' in window)speechSynthesis.addEventListener?.('voiceschanged',()=>{loadVoice();const n=document.getElementById('voice-note');if(n)n.textContent=voiceNote()});
