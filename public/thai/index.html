@@ -1659,7 +1659,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 27</p>`;
+ <p class="score">App version 28</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1694,6 +1694,14 @@ V.tones=()=>`<h1>Tones</h1><p class="lede">Tone is the pitch of the voice across
 const RARE='ฌฎฏฐฑฒ';
 // Letters that share a sound: the tile adds the name word and class, the detail page names the twins.
 const CLSN={M:'mid',H:'high',L:'low'}, TILERARE=RARE+'ฆ';
+// What follows "Its sound: x" on unpuffed and puffed letters (Dutch 1123); these replace the Sounds-tab note on the letter page.
+const SNDTX={k:` with no puff of air — like the k in "skin." To English ears it sounds close to g, so the Say line writes g.`,
+ t:` with no puff of air — like the t in "stop." To English ears it sounds close to dt, so the Say line writes dt.`,
+ p:` with no puff of air — like the p in "spin." To English ears it sounds close to bp, so the Say line writes bp.`,
+ j:` with no puff of air. To English ears it sounds close to dj, so the Say line writes dj.`,
+ d:` with no puff of air — like the d in "dog."`, b:` with no puff of air — like the b in "boy."`,
+ kh:`. Puffed, like the k in "kite."`, th:`. Puffed, like the t in "top."`, ph:`. Puffed, like the p in "pin."`, ch:`. Puffed, like the ch in "chair."`};
+const sndLine=l=>{const snd=l[5]==='(catch)'?'no sound of its own':l[5];return `Its sound: <b style="font:700 20px var(--f-phon)">${snd}</b>${SNDTX[l[5]]||''}`};
 const twins=l=>l[5]==='(catch)'?[]:LET.filter(x=>x[5]===l[5]&&x[0]!==l[0]);
 const tileTag=x=>twins(x).length?`<span class="tw2">${x[3].split(',')[0]} · ${CLSN[x[4]]}${x[7]?' (old)':TILERARE.includes(x[0])?' (rare)':''}</span>`:'';
 function twinLine(l){const t=twins(l); if(!t.length)return '';
@@ -1749,6 +1757,15 @@ const ASIN={a:'uh, as in "cut." Short.',aa:'ah, as in "father." Long.',i:'ee, as
  o:'oh, as in "go," cut short.',oh:'oh, as in "go," held still. Long.',aw:'aw, as in "saw," cut short.',aaw:'aw, as in "saw." Long.',er:'er, as in "her," with no r. Short.',err:'er, as in "her," with no r, held long.',
  ai:'eye, as in "my."',aai:'eye, as in "my," with the ah drawn out.',ao:'ow, as in "cow."',aao:'ow, as in "how," with the ah drawn out.',ia:'ee-ah, as in the name "Mia."',ua:'oo-ah, as in the end of "Joshua."',
  uea:'No English word has it. The smiling oo of "good" sliding into "ah."',iu:'ee-oo, close to "few."',aaeo:'The a in "bad" sliding into oo, close to "meow." The Thai word for cat is said just that way.',aawy:'oy, as in "boy."',ui:'oo-ee, as in "gooey."'};
+// Short/long pairs share one hint word: short = cut off quick, long = held out (Dutch 1123)
+const VPAIR={a:['father','faaather'],i:['see','seeee'],ue:['smile oo','ooooo, smiling'],u:['food','fooood'],e:['say','saaay'],ae:['bad','baaad'],o:['go','gooooh'],aw:['saw','saaaw'],er:['her','heeer']};
+const VLONGONLY=['ia','ua','uea'];
+function vTile(x){const vi=VOW.indexOf(x);
+ if(vi>=0){const sh=vi%2===0,pk=VOW[vi-(vi%2)].k,[w,held]=VPAIR[pk];return `<span>${x.k} · <b>${sh?'SHORT':'LONG'}</b></span><span>${sh?`"${w}" cut off quick`:`"${w}" held out — ${held}`}</span>`}
+ const hint=/ /.test(GW[x.k])?GW[x.k]:'as in '+GW[x.k];
+ return VLONGONLY.includes(x.k)?`<span>${x.k} · <b>LONG</b></span><span>${hint}</span>`:`<span>${x.k} · ${hint}</span>`}
+function sameLine(v){const vi=VOW.indexOf(v);if(vi<0)return '';const p=VOW[vi^1];
+ return `<p class="sameln">Same sound as <span lang="th">${dv(p.th)}</span> ${p.k}; the only difference is how long you hold it. In Thai, length can change the meaning of the word.</p>`}
 const GW={a:'cut',aa:'father',i:'feet',ee:'see',ue:'smile oo',uue:'smile oo',u:'put',oo:'food',e:'pen',ay:'say',ae:'cat',aae:'bad',o:'go',oh:'go',aw:'saw',aaw:'saw',er:'her',err:'her',ai:'my',aai:'my',ao:'cow',aao:'how',ia:'Mia',ua:'Joshua',uea:'smile oo-ah',iu:'few',aaeo:'meow',aawy:'boy',ui:'gooey'};
 const VPOS2={ai:'before the letter',aai:'after the letter, as า then ย',ao:'around it: เ before, า after',aao:'after the letter, as า then ว',ia:'around it: เ before, ี on top, ย after',ua:'on top and after: ั on top, ว after',uea:'around it: เ before, ื on top, อ after',iu:'on top and after: ิ on top, ว after',aaeo:'around it: แ before, ว after',aawy:'after the letter, as อ then ย',ui:'under and after: ุ under, ย after'};
 const ONSET=['khr','khl','khw','phr','phl','kr','kl','kw','pr','pl','tr','ph','th','kh','ng','ch','k','p','t','j','b','d','f','h','l','m','n','r','s','w','y',''];
@@ -1838,7 +1855,7 @@ V.letters=()=>{
  <section class="card" id="vdetail">
   <div class="lhead"><div class="bigl" lang="th">${dv(v.th)}</div><div>
    <div style="font:700 26px var(--f-phon)">${v.k}</div><div class="plain" style="font-size:17px">Say: ${plain(v.k)}</div></div>${sayBtn(hearV,v.k)}</div>
-  <p class="asin">${ASIN[v.k]}</p>${VWK[v.k]?`<button class="wlink" data-written="${VWK[v.k]}" style="justify-self:start">See how it's written →</button>`:''}${CLOSED[v.k]?`<p style="color:var(--soft)">This vowel changes shape inside some words. Step 1 shows how.</p>`:''}
+  <p class="asin">${ASIN[v.k]}</p>${sameLine(v)}${VWK[v.k]?`<button class="wlink" data-written="${VWK[v.k]}" style="justify-self:start">See how it's written →</button>`:''}${CLOSED[v.k]?`<p style="color:var(--soft)">This vowel changes shape inside some words. Step 1 shows how.</p>`:''}
   ${SMILE.includes(v.k)?`<p class="smile">${SMI}<span>Smile on this sound. Wide lips help it come out right.</span></p>`:''}
   <div class="stack" style="gap:8px">
   ${lv('vp',1,'Where it sits',`<p>This vowel sits ${VPOS[v.k]?VPOS[v.k]+' the letter':VPOS2[v.k]}. The dotted circle shows where the letter goes. Wherever the vowel is written, the letter is said first.</p>${CLOSED[v.k]?`<p><b>It changes shape.</b> When an ending sound such as k, t, n or m comes after this vowel, ${CLOSED[v.k][1]}: <span lang="th" style="font:500 28px var(--f-thai)">${CLOSED[v.k][0]}</span>. The sound stays the same. Only the writing changes.</p>`:''}`)}
@@ -1850,14 +1867,14 @@ V.letters=()=>{
   </div></section>
  <div class="chips"><button class="chip" data-vset="Single" aria-pressed="${vowelSet==='Single'}">Single vowels: 18</button><button class="chip" data-vset="Two-part" aria-pressed="${vowelSet!=='Single'}">Two-part vowels: 11</button></div>
  ${vowelSet==='Single'?'<p class="lede">Shown in pairs, short then long.</p>':'<p class="lede">These slide from one vowel into another inside one beat, like "eye" or "cow" in English.</p>'}
- <div class="vgrid">${vl.map(x=>`<button class="lt" data-vowel="${x.k}" aria-pressed="${x.k===v.k}"><span class="g" lang="th">${dv(x.th)}</span><span>${x.k} · ${/ /.test(GW[x.k])?GW[x.k]:'as in '+GW[x.k]}</span></button>`).join('')}</div>
+ <div class="vgrid">${vl.map(x=>`<button class="lt" data-vowel="${x.k}" aria-pressed="${x.k===v.k}"><span class="g" lang="th">${dv(x.th)}</span>${vTile(x)}</button>`).join('')}</div>
  <h2 style="margin-bottom:0">Letters</h2>
  <section class="card" id="ldetail">
   <div class="lhead"><div class="bigl" lang="th">${l[0]}</div><div>
-   <p style="margin:0">Its sound: <b style="font:700 20px var(--f-phon)">${snd}</b></p></div>${sayBtn(hear,l[1])}</div>
+   <p style="margin:0">${sndLine(l)}</p></div>${sayBtn(hear,l[1])}</div>
   ${nameLine(l)}
   ${twinLine(l)}
-  ${s?`<p class="like">${s.like}</p>`:''}
+  ${s&&!SNDTX[l[5]]?`<p class="like">${s.like}</p>`:''}
   ${l[7]?'<p class="smile"><span>This letter is no longer used. Skip it.</span></p>':RARE.includes(l[0])?'<p class="smile"><span>A rare letter, found mostly in old or borrowed words. Learn it last.</span></p>':''}
   <div class="stack" style="gap:8px">
   ${lv('w',1,`See it in ${words.length} words`,`<p>Say each word out loud. The letter is shown in red. Words that start with it come first.</p>${words.map(w=>wordRow(markLetter(w.th,l[0]),w.ph,w.en)).join('')}`)}
@@ -2432,7 +2449,7 @@ const HIDDEN_O=`<p style="margin:0"><b>Example:</b> <span lang="th">คน</span
 function cLetterCard(l){
  const hear=(l[0]==='ฮ'?'ฮอ ':l[0]==='อ'?'ออ ':l[0]+'อ ')+l[2], snd=l[5]==='(catch)'?'no sound of its own':l[5];
  return `<section class="card"><div class="lhead"><div class="bigl" lang="th">${l[0]}</div><div>
-  <p style="margin:0">Its sound: <b style="font:700 20px var(--f-phon)">${snd}</b></p>
+  <p style="margin:0">${sndLine(l)}</p>
   <p style="margin:6px 0 0"><span class="tag">${CCLS[l[4]]}</span></p></div>${sayBtn(hear,l[1])}</div>
   ${nameLine(l)}
   ${twinLine(l)}
@@ -2448,7 +2465,7 @@ function cVowelCard(k){
   ${cl?(k==='o'?`<p style="margin:0"><b>Short form:</b> no mark at all. When a letter follows, the short o is hidden: two letters side by side are read with o between them.</p>${HIDDEN_O}`
    :`<p style="margin:0"><b>Short form:</b> <span lang="th" style="font:500 26px var(--f-thai)">${cl[0]}</span>, used when a letter follows: ${cl[1]}.</p>`):''}
   ${k==='ai'?'<p style="margin:0">Also written <span lang="th" style="font:500 26px var(--f-thai)">ใ◌</span> in twenty common words, said the same.</p>':''}
-  ${partner?`<p style="margin:0;color:var(--soft)">Its ${SHORTV.includes(k)?'long':'short'} partner is <span lang="th">${dv(partner.th)}</span> ${partner.k}.</p>`:''}</section>`;
+  ${sameLine(v)}</section>`;
 }
 function cColorRow(th,phs,en){return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,phs)}</span><span style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span></div><div class="acts">${sayBtn(th,en)}</div></div>`}
 function cPhraseRow(p){const f=fill(p);return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(f[0],f[1])}</span><span style="font-size:18px">${ph(f[1])}</span><span class="en">${p[2]}</span></div><div class="acts">${sayBtn(f[0],p[2])}</div></div>`}
