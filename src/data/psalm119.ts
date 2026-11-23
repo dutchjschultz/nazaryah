@@ -1,3 +1,5 @@
+// psalm119 1123 V1.ts
+// Movements rewritten as three stretches (7-7-8 letters); Aleph flow line rebuilt from verses 1-8
 export interface Psalm119Word {
   verse: number;
   hebrew: string;
@@ -109,7 +111,7 @@ export const PSALM119_LETTERS: Psalm119Letter[] = [
       '"Blessed, blessed — indeed YOU — oh that it were so — then I will praise You, I will keep."',
     message:
       'The starting point of everything. Yahuah is the Strength, the First, the Leader of all things. Blessed is the one who encounters Him — and who resolves to praise and keep His Torah.',
-    flow: 'Blessed and blessed is the one who encounters YOU, Yahuah — oh that I would always walk in this — then I will praise You and I will keep Your Torah.',
+    flow: 'Blessed are those who walk in the Law of Yahuah — blessed are those who keep His testimonies and seek Him with the whole heart — they also do no iniquity — You have commanded us to keep Your precepts diligently — O that my ways were directed to keep Your statutes — then I shall not be ashamed — I will praise You as I learn Your righteous judgments — I will keep Your statutes: O forsake me not utterly.',
     kjv: [
       'Blessed are the undefiled in the way, who walk in the law of the LORD.',
       'Blessed are they that keep his testimonies, and that seek him with the whole heart.',
@@ -886,51 +888,41 @@ export const PSALM119_LETTERS: Psalm119Letter[] = [
 export const MOVEMENTS: Movement[] = [
   {
     num: 1,
-    range: 'Letters א–ז (1–7)',
+    range: 'Aleph to Zayin · Letters 1–7',
     verseRange: 'Verses 1–56',
-    title: 'The Foundation',
-    theme: 'Salvation · Sanctification · Separation',
+    title: 'Setting Out',
+    theme: 'The man starts out blessed and eager.',
     points: [
-      'You encounter Yahuah — He is the Source and the Strength',
-      'His Word takes up residence inside you',
-      'You become a stranger in this world',
-      'The wilderness brings you low — you choose and you run',
-      'Total surrender at the window — the breath fills you',
-      'The nail connects you to Yahuah — everything flows',
-      'The proud mock, but you have songs in the night',
+      'He hides the Word in his heart (verse 11)',
+      '"I am a stranger in the earth" (verse 19)',
+      '"I will run the way of thy commandments" (verse 32)',
+      '"This I had, because I kept thy precepts" (verse 56)',
     ],
   },
   {
     num: 2,
-    range: 'Letters ח–נ (8–14)',
+    range: 'Heth to Nun · Letters 8–14',
     verseRange: 'Verses 57–112',
-    title: 'The Deepening',
-    theme: 'The Dark Night · The Anchor · The Overflow',
+    title: 'Tested',
+    theme: 'Now the road gets hard.',
     points: [
-      'Enclosed in the covenant — Yahuah is your portion',
-      'Every affliction is turned to good — four times: Tov',
-      'His hands made you — the Hand is at work in you',
-      'The total breaking point — soul faints, how long?',
-      'The eternal anchor is found — forever, I am Yours',
-      'Wisdom pours out like water — wiser than enemies',
-      'The soul fully alive — swimming in Torah',
+      '"Before I was afflicted I went astray: but now have I kept thy word" (verse 67)',
+      'He calls the trouble good because it taught him (verse 71)',
+      '"They had almost consumed me" — the Law kept him alive (verses 87, 92)',
+      'His heart is set to keep the statutes "even unto the end" (verse 112)',
     ],
   },
   {
     num: 3,
-    range: 'Letters ס–ת (15–22)',
+    range: 'Samekh to Tav · Letters 15–22',
     verseRange: 'Verses 113–176',
-    title: 'The Witness and Seal',
-    theme: 'Prophetic Voice · Priestly Intercession · Covenant Seal',
+    title: 'Holding On to the End',
+    theme: 'The last stretch is eight letters, not seven.',
     points: [
-      'Fully upheld and trembling in holy awe',
-      'The eye sees clearly — it is time to act — therefore',
-      'The mouth opens and speaks and weeps',
-      'The fishhook of righteousness pulls through fire',
-      'The desperate cry before dawn — He is nearer',
-      'See my affliction — plead my cause — Your word is true',
-      'Great peace in keeping — princes cannot stop the fire',
-      'Final humble surrender — I have strayed. Seek me.',
+      'He cries out before the dawning of the morning (verse 147)',
+      '"Order my steps in thy word" (verse 133)',
+      '"I have kept thy precepts and thy testimonies" (verse 168)',
+      'The last request: "seek thy servant" (verse 176)',
     ],
   },
 ];
