@@ -1,4 +1,7 @@
-// src/data/trinity-files.js · 1122 V8
+// src/data/trinity-files.js · 1123 V9
+// V9 (Trinity Cleanup Upload 1123 V1): six coming "I am" entries removed (Matthew 14:27, John 4:14, 26, John 6:20,
+// John 8:24, 28, John 13:18-19, John 14:6); John 8:58 foundations cleared (Foundation IV, I AM, retired). Foundation ids
+// remapped to the renumbered list (VI->V, VII->VI, X->IX). List total 167 -> 161.
 // V8 (Trinity Files Upload 1122 V2): Mark 12:29-30 written and linked — "One Lord, Our God" (trinity-files-mark-12-29-30).
 // foundations ["II", "X"] — The "Us" Passages and The One Sent in His Name. List total unchanged at 167.
 // V7 (Etsy Handoff Philippians 2-5-8 1122 V1): Philippians 2:5-8 written and linked — "The Hand That Did Not Reach"
@@ -32,7 +35,7 @@
 //  - To add a verse not on the list: insert it at its canonical place with `ref`, `section`, `claim`.
 //  - `section` must be one of these four strings, character for character:
 //      "Tanakh" | "Gospels" | "Acts & Letters" | "Revelation"
-//  - `foundations` = the Trinity Foundations the study cites, by id ("I" to "X"),
+//  - `foundations` = the Trinity Foundations the study cites, by id ("I" to "IX"),
 //    lowest first. Names and links come from src/data/trinity-foundations.js;
 //    never type a foundation name here. Must match the study's Reference Piece.
 //  - `claim` = the words its defenders quote, KJV wording. Shown only while the file is coming.
@@ -70,7 +73,6 @@ export const trinityFiles = [
   { ref: "Matthew 9:2", section: "Gospels", foundations: [], claim: "“Thy sins be forgiven thee”" },
   { ref: "Matthew 12:6, 8", section: "Gospels", foundations: [], claim: "Greater than the temple, Lord of the Sabbath" },
   { ref: "Matthew 12:32", section: "Gospels", foundations: [], claim: "Blasphemy against the Holy Ghost" },
-  { ref: "Matthew 14:27", section: "Gospels", foundations: [], claim: "“Be of good cheer; it is I”" },
   { ref: "Matthew 16:27", section: "Gospels", foundations: [], claim: "“He shall reward every man according to his works”" },
   { ref: "Matthew 19:17-21", section: "Gospels", foundations: [], claim: "“Come and follow me”" },
   { ref: "Matthew 21:9", section: "Gospels", foundations: [], claim: "“He that cometh in the name of the Lord”" },
@@ -80,7 +82,7 @@ export const trinityFiles = [
   { ref: "Matthew 26:64", section: "Gospels", foundations: [], claim: "“Sitting on the right hand of power”" },
   { ref: "Matthew 28:19", section: "Gospels", foundations: [], claim: "“In the name of the Father, and of the Son, and of the Holy Ghost”" },
   { ref: "Mark 2:5-7", section: "Gospels", foundations: [], title: "Authority Lent, Not Owned", deck: "The doubters’ premise, undone by a Son who was given the right", slug: "trinity-files-mark-2-5-7" },
-  { ref: "Mark 12:29-30", section: "Gospels", foundations: ["II", "X"], title: "One Lord, Our God", deck: "The Master recited the Shema and called Yahuah “our God.” The worshipper is never the One He worships.", slug: "trinity-files-mark-12-29-30" },
+  { ref: "Mark 12:29-30", section: "Gospels", foundations: ["II", "IX"], title: "One Lord, Our God", deck: "The Master recited the Shema and called Yahuah “our God.” The worshipper is never the One He worships.", slug: "trinity-files-mark-12-29-30" },
   { ref: "Mark 13:32", section: "Gospels", foundations: [], title: "The One Thing the Son Did Not Know", deck: "A day kept back from the Son and held by the Father alone", slug: "trinity-files-mark-13-32" },
   { ref: "Luke 1:35", section: "Gospels", foundations: [], claim: "“The power of the Highest shall overshadow thee”" },
   { ref: "Luke 4:18", section: "Gospels", foundations: [], claim: "“The Spirit of the Lord is upon me”" },
@@ -88,21 +90,16 @@ export const trinityFiles = [
   { ref: "John 1:1", section: "Gospels", foundations: [], title: "“The Word Was God”", deck: "A man’s word is not a second man; Yahuah’s Word is Yahuah speaking", slug: "trinity-files-john-1-1" },
   { ref: "John 1:14", section: "Gospels", foundations: [], claim: "“The Word was made flesh”" },
   { ref: "John 1:18", section: "Gospels", foundations: [], claim: "“The only begotten Son” — or “only begotten God”" },
-  { ref: "John 2:19-21", section: "Gospels", foundations: ["VII"], title: "The Temple He Would Raise", deck: "Destroy or raise up — the same two words stand over every believer’s temple.", slug: "trinity-files-john-2-19-21" },
-  { ref: "John 4:14, 26", section: "Gospels", foundations: [], claim: "Living water, and “I that speak unto thee am he”" },
+  { ref: "John 2:19-21", section: "Gospels", foundations: ["VI"], title: "The Temple He Would Raise", deck: "Destroy or raise up — the same two words stand over every believer’s temple.", slug: "trinity-files-john-2-19-21" },
   { ref: "John 5:18", section: "Gospels", foundations: [], claim: "“Making himself equal with God”" },
-  { ref: "John 6:20", section: "Gospels", foundations: [], claim: "“It is I; be not afraid”" },
   { ref: "John 7:37-38", section: "Gospels", foundations: [], claim: "“Rivers of living water”" },
-  { ref: "John 8:24, 28", section: "Gospels", foundations: [], claim: "“If ye believe not that I am he”" },
-  { ref: "John 8:58", section: "Gospels", foundations: ["IV"], title: "“Before Abraham Was, I Am”", deck: "Plain Greek words for being, not the divine Name of Exodus", slug: "trinity-files-john-8-58" },
+  { ref: "John 8:58", section: "Gospels", foundations: [], title: "“Before Abraham Was, I Am”", deck: "Plain Greek words for being, not the divine Name of Exodus", slug: "trinity-files-john-8-58" },
   { ref: "John 10:1-16", section: "Gospels", foundations: [], claim: "“I am the good shepherd”" },
-  { ref: "John 10:17-18", section: "Gospels", foundations: ["VII"], title: "The Commandment He Received", deck: "The right to take life again — given to the Son, offered to every believer.", slug: "trinity-files-john-10-17-18" },
+  { ref: "John 10:17-18", section: "Gospels", foundations: ["VI"], title: "The Commandment He Received", deck: "The right to take life again — given to the Son, offered to every believer.", slug: "trinity-files-john-10-17-18" },
   { ref: "John 10:22-39", section: "Gospels", foundations: [], title: "One With the Father", deck: "A oneness of mission claimed by the Son who was sent", slug: "trinity-files-john-10-22-39" },
   { ref: "John 11:25", section: "Gospels", foundations: [], title: "The Resurrection and the Life", deck: "A role the Father gave, not a nature the Son owned", slug: "trinity-files-john-11-25" },
   { ref: "John 12:13", section: "Gospels", foundations: [], claim: "“Blessed is the King of Israel that cometh in the name of the Lord”" },
   { ref: "John 12:38-41", section: "Gospels", foundations: [], claim: "“When he saw his glory, and spake of him”" },
-  { ref: "John 13:18-19", section: "Gospels", foundations: [], claim: "“Ye may believe that I am he”" },
-  { ref: "John 14:6", section: "Gospels", foundations: [], claim: "“I am the way, the truth, and the life”" },
   { ref: "John 14:9-11", section: "Gospels", foundations: [], claim: "“He that hath seen me hath seen the Father”" },
   { ref: "John 14:16-17, 26", section: "Gospels", foundations: [], claim: "“Another Comforter”" },
   { ref: "John 15:26", section: "Gospels", foundations: [], claim: "“The Spirit of truth, which proceedeth from the Father”" },
@@ -188,16 +185,16 @@ export const trinityFiles = [
   { ref: "2 John 7-9", section: "Acts & Letters", foundations: [], claim: "“He hath both the Father and the Son”" },
   { ref: "Jude 4-5", section: "Acts & Letters", foundations: ["I"], title: "The Master and the Lord", deck: "What Jude meant by the two titles — and the name your modern Bible swapped into verse five", slug: "trinity-files-jude-4-5" },
   { ref: "Jude 25", section: "Acts & Letters", foundations: [], title: "Through, Not To", deck: "The doxology that calls the only God the Saviour — and His Son the road the glory travels", slug: "trinity-files-jude-25" },
-  { ref: "Revelation 1:17-18", section: "Revelation", foundations: ["VI"], title: "Was Dead, and Alive", deck: "The First and the Last, defined by a grave", slug: "trinity-files-revelation-1-17-18" },
-  { ref: "Revelation 2:8", section: "Revelation", foundations: ["VI"], title: "The First and the Last", deck: "Smyrna’s title — who died, and is alive", slug: "trinity-files-revelation-2-8" },
+  { ref: "Revelation 1:17-18", section: "Revelation", foundations: ["V"], title: "Was Dead, and Alive", deck: "The First and the Last, defined by a grave", slug: "trinity-files-revelation-1-17-18" },
+  { ref: "Revelation 2:8", section: "Revelation", foundations: ["V"], title: "The First and the Last", deck: "Smyrna’s title — who died, and is alive", slug: "trinity-files-revelation-2-8" },
   { ref: "Revelation 2:23", section: "Revelation", foundations: [], claim: "“I am he which searcheth the reins and hearts”" },
-  { ref: "Revelation 3:7", section: "Revelation", foundations: ["VI"], title: "The Key of David", deck: "Holy, true, and holding a steward’s key", slug: "trinity-files-revelation-3-7" },
+  { ref: "Revelation 3:7", section: "Revelation", foundations: ["V"], title: "The Key of David", deck: "Holy, true, and holding a steward’s key", slug: "trinity-files-revelation-3-7" },
   { ref: "Revelation 5:6", section: "Revelation", foundations: [], claim: "A Lamb in the midst of the throne" },
   { ref: "Revelation 5:9", section: "Revelation", foundations: [], claim: "“They sung a new song”" },
   { ref: "Revelation 5:11-14", section: "Revelation", foundations: [], claim: "“Worthy is the Lamb”" },
   { ref: "Revelation 7:17", section: "Revelation", foundations: [], claim: "“The Lamb … shall feed them”" },
   { ref: "Revelation 11:15", section: "Revelation", foundations: [], claim: "“He shall reign for ever and ever”" },
-  { ref: "Revelation 17:14; 19:16", section: "Revelation", foundations: ["VI"], title: "A Name Written On Him", deck: "King of kings — crowned, not self-made", slug: "trinity-files-revelation-17-14-19-16" },
+  { ref: "Revelation 17:14; 19:16", section: "Revelation", foundations: ["V"], title: "A Name Written On Him", deck: "King of kings — crowned, not self-made", slug: "trinity-files-revelation-17-14-19-16" },
   { ref: "Revelation 20:6", section: "Revelation", foundations: [], claim: "“Priests of God and of Christ”" },
   { ref: "Revelation 21:9", section: "Revelation", foundations: [], claim: "“The bride, the Lamb’s wife”" },
   { ref: "Revelation 21:22", section: "Revelation", foundations: [], claim: "“The Lord God Almighty and the Lamb are the temple”" },
@@ -205,5 +202,5 @@ export const trinityFiles = [
   { ref: "Revelation 22:3-5", section: "Revelation", foundations: [], claim: "“His servants shall serve him”" },
   { ref: "Revelation 22:6-7, 16", section: "Revelation", foundations: [], claim: "“The Lord God of the holy prophets”" },
   { ref: "Revelation 22:12", section: "Revelation", foundations: [], claim: "“To give every man according as his work shall be”" },
-  { ref: "Revelation 22:13", section: "Revelation", foundations: ["VI"], title: "Alpha and Omega — Who Speaks?", deck: "The disputed voice of Revelation’s last chapter", slug: "trinity-files-revelation-22-13" },
+  { ref: "Revelation 22:13", section: "Revelation", foundations: ["V"], title: "Alpha and Omega — Who Speaks?", deck: "The disputed voice of Revelation’s last chapter", slug: "trinity-files-revelation-22-13" },
 ];
