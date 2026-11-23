@@ -1620,7 +1620,7 @@ function footnote(s){
 function soundCard(s){
   return `<article class="card"><div class="snd-head"><div class="key">${s.k}<sup>${s.n}</sup></div><div class="thaiset" lang="th">${s.th}</div>${sayBtn(s.w[0],s.w[2])}</div>
   <p class="like">${s.like}</p>${SMILE.includes(s.k)?`<p class="smile">${SMI}<span>Smile on this sound. Wide lips help it come out right.</span></p>`:''}
-  <div class="word"><span class="tw" lang="th">${s.w[0]}</span>${ph(s.w[1])}<span class="en">${s.w[2]}</span></div>${footnote(s)}</article>`;
+  <div class="word"><span class="tw" lang="th">${tsy(s.w[0],s.w[1])}</span>${ph(s.w[1])}<span class="en">${s.w[2]}</span></div>${footnote(s)}</article>`;
 }
 
 /* ---------- views ---------- */
@@ -1659,7 +1659,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 26</p>`;
+ <p class="score">App version 27</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1682,7 +1682,7 @@ V.sounds=()=>{
 };
 V.tones=()=>`<h1>Tones</h1><p class="lede">Tone is the pitch of the voice across one syllable. It belongs to the word the way a vowel does. The five words below are spelled alike in English letters and are all different words in Thai.</p>
  <div class="stack">${TONES.map(t=>`<article class="card"><div class="snd-head"><div class="tone-head t-${t.id}"><svg viewBox="0 0 28 16" aria-hidden="true"><line x1="0" y1="2" x2="28" y2="2"/><line x1="0" y1="8" x2="28" y2="8"/><line x1="0" y1="14" x2="28" y2="14"/><path d="${CURVE[t.id]}" stroke-width="2"/></svg></div><div><div class="key" style="font-size:24px">${t.name}<sup>${t.n}</sup></div><span class="tone-mark t-${t.id}">${t.mark}</span></div>${sayBtn(t.say[0],t.say[2])}</div>
-  <p class="like">${t.pitch} ${t.eng}</p><div class="word"><span class="tw" lang="th">${t.say[0]}</span>${ph(t.say[1])}<span class="en">${t.say[2]}</span></div>${footnote(t)}</article>`).join('')}</div>
+  <p class="like">${t.pitch} ${t.eng}</p><div class="word"><span class="tw" lang="th">${tsy(t.say[0],t.say[1])}</span>${ph(t.say[1])}<span class="en">${t.say[2]}</span></div>${footnote(t)}</article>`).join('')}</div>
  <section class="card"><h2>One sentence, one syllable, four tones</h2>
   <div class="word"><span class="tw" lang="th">ไม้ใหม่ไม่ไหม้ไหม</span></div>
   <div class="staffed">${sayBtn('ไม้ใหม่ไม่ไหม้ไหม','the sentence')}<div style="font-size:20px">${ph('máai mài mâi mâi mǎi')}</div></div>
@@ -1892,7 +1892,7 @@ V.phrases=()=>{
    const tail=p[3]?pol[p[3]]:['',''];
    const th=p[0].replace('{I}',I[0]), sp=p[1].replace('{I}',I[1]);
    const full=th+tail[0], spoken=sp+(tail[1]?' '+tail[1]:'');
-   return `<div class="phr"><div class="body"><span class="tw" lang="th">${full}</span><span style="font-size:18px">${ph(spoken)}</span><span class="en">${p[2]}</span></div><div class="acts"><button class="wlink" data-open="${p[0]}">${/^\d/.test(p[2])?'Letters':'Word by word'}</button>${sayBtn(full,p[2])}</div></div>`}).join('')}</div>`;
+   return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(full,spoken)}</span><span style="font-size:18px">${ph(spoken)}</span><span class="en">${p[2]}</span></div><div class="acts"><button class="wlink" data-open="${p[0]}">${/^\d/.test(p[2])?'Letters':'Word by word'}</button>${sayBtn(full,p[2])}</div></div>`}).join('')}</div>`;
 };
 V.practice=()=>{
  if(!q)newQ();
@@ -1928,8 +1928,8 @@ V.lessons=()=>{
 function learnView(){
  const l=lesson, s=ALL.find(x=>x.k===l.tip), u=fill(l.use);
  return `<button class="back" data-lback="1">‹ All lessons</button><h1>${l.title}</h1><p class="lede">${l.note}</p>
- <div>${l.w.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${w[0]}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span></div><div class="acts"><button class="wlink" data-open="${w[0]}">Letters</button>${sayBtn(w[0],w[2])}</div></div>`).join('')}</div>
- <section class="card"><h3>Use it in a sentence</h3><div class="word"><span class="tw" lang="th">${u[0]}</span></div><div class="staffed">${sayBtn(u[0],l.use[2])}<span style="font-size:18px">${ph(u[1])}</span></div><p style="color:var(--soft)">${l.use[2]}</p></section>
+ <div>${l.w.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(w[0],w[1])}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span></div><div class="acts"><button class="wlink" data-open="${w[0]}">Letters</button>${sayBtn(w[0],w[2])}</div></div>`).join('')}</div>
+ <section class="card"><h3>Use it in a sentence</h3><div class="word"><span class="tw" lang="th">${tsy(u[0],u[1])}</span></div><div class="staffed">${sayBtn(u[0],l.use[2])}<span style="font-size:18px">${ph(u[1])}</span></div><p style="color:var(--soft)">${l.use[2]}</p></section>
  <section class="card"><h3>Sound to watch: ${s.k}</h3><p class="like">${s.like}</p>${footnote(s)}</section>
  <button class="next" data-ltest="1" style="justify-self:start">Take the test</button>`;
 }
@@ -1942,7 +1942,7 @@ function testView(){
  }
  const w=T.order[T.i], done=T.picked!=null;
  return `<button class="back" data-lreview="1">‹ ${l.title}</button><section class="drill"><p class="score">Word ${T.i+1} of ${T.order.length}</p>
- <div class="bigl" lang="th" style="font-size:52px">${w[0]}</div><div style="font-size:21px">${ph(w[1])}</div>${sayBtn(w[0],'the word')}
+ <div class="bigl" lang="th" style="font-size:52px">${tsy(w[0],w[1])}</div><div style="font-size:21px">${ph(w[1])}</div>${sayBtn(w[0],'the word')}
  <div class="opts">${T.opts.map((o,i)=>{let c='';if(done){if(o===w)c=' right';else if(i===T.picked)c=' wrong'}return `<button class="opt${c}" data-lpick="${i}" ${done?'disabled':''}><span>${o[2]}</span></button>`}).join('')}</div>
  ${done?`<button class="next" data-lnext="1">${T.i+1<T.order.length?'Next word':'See the result'}</button>`:''}</section>`;
 }
@@ -1963,6 +1963,29 @@ function parseWords(raw){
  return out;
 }
 const WORDS=parseWords(WORDS_RAW);
+
+/* Thai in the sound line's colors: each Thai syllable takes the tone color of its romanized syllable
+   (marks stay inside their syllable). Syllables are found by matching the Thai against the syllables
+   of the word list, so the split is only used when it gives exactly as many syllables as the sound line. */
+let SYLS=null;
+function sylSet(){if(SYLS)return SYLS;SYLS=new Set(['ๆ','ครับ','ค่ะ','คะ','ผม','ฉัน']);
+ WORDS.forEach(w=>w.thSplit.replace(/~./g,'').replace(/\{[^}]*\}|\.\.\./g,' ').split(/[· ]+/).forEach(x=>x&&SYLS.add(x)));
+ [...LET.map(l=>l[2]),...LESSONS.flatMap(l=>l.w.map(w=>w[0]))].forEach(x=>{if(!/[ ๆ]/.test(x))SYLS.add(x)});return SYLS}
+const TH1=/[ก-ๅ็-๎]/;
+const SYLCACHE=new Map();
+function tsy(th,phs){
+ if(!th||!phs||/</.test(th))return th;
+ const key=th+'|'+phs; if(SYLCACHE.has(key))return SYLCACHE.get(key);
+ const tones=phs.split(/[ \-]/).filter(x=>/[a-zA-ZÀ-ɏ]/.test(x)).map(toneOf), n=tones.length, S=sylSet(), memo=new Map();
+ const go=(i,k)=>{
+  if(i===th.length)return k===n?[]:null; const mk=i+','+k; if(memo.has(mk))return memo.get(mk); let r=null;
+  if(!TH1.test(th[i])&&th[i]!=='ๆ'){const t=go(i+1,k);r=t&&[[th[i],null],...t]}
+  else if(k<n)for(let L=Math.min(12,th.length-i);L>=1&&!r;L--){const sub=th.slice(i,i+L);if(!S.has(sub))continue;const t=go(i+L,k+1);if(t)r=[[sub,tones[k]],...t]}
+  memo.set(mk,r);return r};
+ const seg=n?go(0,0):null;
+ const out=seg?seg.map(([x,t])=>t?`<span class="t-${t}">${x}</span>`:x).join(''):th;
+ SYLCACHE.set(key,out); return out;
+}
 
 const CUSTOM={
  'water':{tip:'The Thai letters look short, but speakers hold this vowel long. Hold the ah, keep the voice high, and close the lips on the m. The word also builds other words: ห้องน้ำ hâwng-náam is a toilet, literally water room, and น้ำตาล náam-taan is sugar.',
@@ -2142,7 +2165,7 @@ function piecesHTML(parts){
 }
 const LEGEND=`<p class="legend"><span class="p0">Blue</span> starting letter · <span class="p2">Gold</span> vowel · <span class="p1">Green</span> ending · <span class="p3">Red</span> tone mark · <span class="px">Gray</span> silent. The dotted circle stands for the letter a mark attaches to.</p>`;
 function sylHTML(a,many){
- return `<div class="sylb">${many?`<div class="word"><span class="tw" lang="th">${a.th}</span><span style="font-size:17px">${ph(a.p)}</span></div>`:''}${piecesHTML(a.pieces)}${a.toneNote?`<p class="tnote"><b class="t-${a.S.tone}">Tone.</b> ${a.toneNote}</p>`:''}</div>`;
+ return `<div class="sylb">${many?`<div class="word"><span class="tw" lang="th">${tsy(a.th,a.p)}</span><span style="font-size:17px">${ph(a.p)}</span></div>`:''}${piecesHTML(a.pieces)}${a.toneNote?`<p class="tnote"><b class="t-${a.S.tone}">Tone.</b> ${a.toneNote}</p>`:''}</div>`;
 }
 function compCard(c,n,showHead){
  const many=c.syls.length>1;
@@ -2187,7 +2210,7 @@ function entryCard(e){
  if(sent){const comps=sent.words.flatMap(x=>x.solo?[{...x.comps[0],th:x.th,ph:x.ph,mean:x.en,syls:x.comps.flatMap(c=>c.syls)}]:x.comps); comps.push(politeComp(sent.pol));
   sentHTML=`<div class="stack" style="gap:10px"><h3>In a sentence</h3>${wordsBlock(comps,sent.m,comps.map(c=>c.mean.replace(/^polite word, (man|woman) speaking$/,'(polite)')).join(' + '),true)}</div>`}
  const long=sylls.length>3, sounds=soundsIn(w.ph);
- return `<article class="card"><div class="bigw"><div><div class="tw" lang="th">${w.th}</div><p style="color:var(--soft)">${e.en}</p></div>${sayBtn(w.th,e.en)}</div>
+ return `<article class="card"><div class="bigw"><div><div class="tw" lang="th">${tsy(w.th,w.ph)}</div><p style="color:var(--soft)">${e.en}</p></div>${sayBtn(w.th,e.en)}</div>
   <div style="font-size:24px">${ph(w.ph)}</div>
   ${tips.length?`<ul class="tips">${tips.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}${endsSmile(w.ph)?`<p class="smile">${SMI}<span>This ends on a smile sound. Widen the lips at the end.</span></p>`:''}
   ${multi?`<div class="stack" style="gap:10px"><h3>Word by word</h3>${wordsBlock(w.comps,e.en,w.comps.map(c=>c.mean.replace(/^polite word, (man|woman) speaking$/,'(polite)')).join(' + '),false)}</div>`
@@ -2427,7 +2450,8 @@ function cVowelCard(k){
   ${k==='ai'?'<p style="margin:0">Also written <span lang="th" style="font:500 26px var(--f-thai)">ใ◌</span> in twenty common words, said the same.</p>':''}
   ${partner?`<p style="margin:0;color:var(--soft)">Its ${SHORTV.includes(k)?'long':'short'} partner is <span lang="th">${dv(partner.th)}</span> ${partner.k}.</p>`:''}</section>`;
 }
-function cPhraseRow(p){const f=fill(p);return `<div class="phr"><div class="body"><span class="tw" lang="th">${f[0]}</span><span class="inkph" style="font-size:18px">${ph(f[1])}</span><span class="en">${p[2]}</span></div><div class="acts">${sayBtn(f[0],p[2])}</div></div>`}
+function cColorRow(th,phs,en){return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,phs)}</span><span style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span></div><div class="acts">${sayBtn(th,en)}</div></div>`}
+function cPhraseRow(p){const f=fill(p);return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(f[0],f[1])}</span><span style="font-size:18px">${ph(f[1])}</span><span class="en">${p[2]}</span></div><div class="acts">${sayBtn(f[0],p[2])}</div></div>`}
 function cLearnView(){
  const L=C.L; let body='';
  if(L.kind==='lv'){
@@ -2436,7 +2460,7 @@ function cLearnView(){
   <h2>Practice words</h2><p>Every word here uses only letters and vowels already learned. Say each one out loud.</p>
   <div>${L.c[2].map(w=>wordRow(w[0],w[1],w[2],toneNote(w[0]))).join('')}</div>`}
  else if(L.kind==='w'){
-  body=`<p class="lede">${L.l.note}</p><div>${L.l.w.map(w=>wordRow(w[0],w[1],w[2])).join('')}</div>
+  body=`<p class="lede">${L.l.note}</p><div>${L.l.w.map(w=>cColorRow(w[0],w[1],w[2])).join('')}</div>
   <h2>One phrase</h2><div>${cPhraseRow(L.l.use)}</div>`}
  else body=`<p class="lede">Say each phrase out loud, then check yourself.</p><div>${PHRASES[L.k].map(cPhraseRow).join('')}</div>`;
  return `<button class="back" data-cback="1">‹ Numbered lessons</button><h1>Lesson ${L.n}</h1><p class="lede">${L.title}</p>
@@ -2448,7 +2472,7 @@ function cQuizView(){
  if(it.t==='L'){prompt='What sound does this letter make?';show=`<div class="bigl" lang="th">${it.l[0]}</div>`}
  else if(it.t==='V'){prompt='Which vowel is this?';show=`<div class="bigl" lang="th">${dv(it.v.th)}</div>`}
  else{const p=it.t==='W'?it.w:fill(it.p);prompt=it.t==='W'?'What does this word mean?':'What does this phrase mean?';
-  show=`<div class="bigl" lang="th" style="font-size:${it.t==='W'?52:34}px;overflow-wrap:anywhere">${p[0]}</div><div style="font-size:21px">${ph(p[1])}</div>${sayBtn(p[0],'it')}`}
+  show=`<div class="bigl" lang="th" style="font-size:${it.t==='W'?52:34}px;overflow-wrap:anywhere">${tsy(p[0],p[1])}</div><div style="font-size:21px">${ph(p[1])}</div>${sayBtn(p[0],'it')}`}
  const head=C.stage==='review'?`Quick review · ${C.i+1} of ${C.q.length}`:L.kind==='t'?`Test · ${C.i+1} of ${C.q.length} · pass mark ${CPASS}%`:`Check · ${C.i+1} of ${C.q.length}`;
  return `<button class="back" data-cback="1">‹ Numbered lessons</button><h1>Lesson ${L.n}</h1>
  <section class="drill"><p class="score">${head}</p>${show}<p style="margin:0">${prompt}</p>
