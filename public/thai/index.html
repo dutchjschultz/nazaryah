@@ -1661,7 +1661,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 29</p>`;
+ <p class="score">App version 30</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1760,9 +1760,10 @@ const ASIN={a:'uh, as in "cut." Short.',aa:'ah, as in "father." Long.',i:'ee, as
  ai:'eye, as in "my."',aai:'eye, as in "my," with the ah drawn out.',ao:'ow, as in "cow."',aao:'ow, as in "how," with the ah drawn out.',ia:'ee-ah, as in the name "Mia."',ua:'oo-ah, as in the end of "Joshua."',
  uea:'No English word has it. The smiling oo of "good" sliding into "ah."',iu:'ee-oo, close to "few."',aaeo:'The a in "bad" sliding into oo, close to "meow." The Thai word for cat is said just that way.',aawy:'oy, as in "boy."',ui:'oo-ee, as in "gooey."'};
 // Vowel tile hints: English examples spelled with the same letters as the sound spelling (Dutch 1123).
+// Short a is the exception: no English a word has its sound, so the u in cut is used (Dutch 1124).
 // Where English has no such spelling (ue, uue, uea, ae, aae, iu, aaeo, aawy, ui) the closest sound is named instead.
-const VHINT={a:'like the a in "ha!", said quick',aa:'like the a in father, spa',i:'like the i in taxi, visa',ee:'like the i in machine, police, ski',
- ue:'no English match: oo said with a smile',uue:'no English match: oo said with a smile, held long',u:'like the u in put, push',oo:'like the oo in food, moon',
+const VHINT={a:'like the u in cut, but, sun',aa:'like the a in father, spa',i:'like the i in taxi, visa',ee:'like the i in machine, police, ski',
+ ue:'no English match: oo said with a smile',uue:'no English match: oo said with a smile, held long',u:'like the u in flu, tuna',oo:'like the oo in food, moon',
  e:'like the e in café, said quick',ay:'like the ay in say, day',ae:'like the a in cat, said quick',aae:'like the a in bad, held long',
  o:'like the o in obey, photo',oh:'like the oh in oh, ohm',aw:'like the aw in saw, said quick',aaw:'like the aw in saw, law',
  er:'like the er in her, said quick, no r',err:'like the er in her, fern, held long, no r',
@@ -1775,6 +1776,7 @@ function vTile(x){const vi=VOW.indexOf(x);
  const hint=VHINT[x.k];
  return VLONGONLY.includes(x.k)?`<span>${x.k} · <b>LONG</b></span><span>${hint}</span>`:`<span>${x.k} · ${hint}</span>`}
 function sameLine(v){const vi=VOW.indexOf(v);if(vi<0)return '';const p=VOW[vi^1];
+ if(v.k==='a')return `<p class="sameln">Same sound as <span lang="th">${dv(p.th)}</span> aa, cut off short. To English ears it sounds most like the u in "cut."</p>`;
  return `<p class="sameln">Same sound as <span lang="th">${dv(p.th)}</span> ${p.k}; the only difference is how long you hold it. In Thai, length can change the meaning of the word.</p>`}
 const GW={a:'cut',aa:'father',i:'feet',ee:'see',ue:'smile oo',uue:'smile oo',u:'put',oo:'food',e:'pen',ay:'say',ae:'cat',aae:'bad',o:'go',oh:'go',aw:'saw',aaw:'saw',er:'her',err:'her',ai:'my',aai:'my',ao:'cow',aao:'how',ia:'Mia',ua:'Joshua',uea:'smile oo-ah',iu:'few',aaeo:'meow',aawy:'boy',ui:'gooey'};
 const VPOS2={ai:'before the letter',aai:'after the letter, as า then ย',ao:'around it: เ before, า after',aao:'after the letter, as า then ว',ia:'around it: เ before, ี on top, ย after',ua:'on top and after: ั on top, ว after',uea:'around it: เ before, ื on top, อ after',iu:'on top and after: ิ on top, ว after',aaeo:'around it: แ before, ว after',aawy:'after the letter, as อ then ย',ui:'under and after: ุ under, ย after'};
