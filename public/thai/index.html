@@ -292,6 +292,9 @@ details[open] > summary { margin-bottom: 10px; }
 .thz:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
 .zv-v { color: var(--t-l); }
 .zv-s { color: var(--t-f); }
+.sil, .zsil { color: var(--soft); }
+.silnote { color: var(--soft); font-size: 15px; line-height: 1.35; }
+.silnote [lang="th"] { font-family: var(--f-thai); font-size: 18px; }
 .zl { position: relative; display: inline-block; white-space: nowrap; }
 .zl1, .zl2 { position: absolute; inset: 0; pointer-events: none; user-select: none; -webkit-user-select: none; }
 .zl2 { -webkit-text-stroke: .012em currentColor; }
@@ -1661,7 +1664,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 30</p>`;
+ <p class="score">App version 31</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1819,7 +1822,7 @@ function toneNote(th){
  const sh=m.map(c=>'\u25CC'+c), nm=m.map(c=>TONEMK[c]), and=a=>a.length<2?a[0]:a.slice(0,-1).join(', ')+' and '+a[a.length-1];
  return `<span class="tnote">${m.length<2?`The small mark stacked on top, <span lang="th">${sh[0]}</span>, is a tone mark (${nm[0]}). It is not part of the vowel. It only sets the pitch of the voice.`:`The small marks stacked on top, <span lang="th">${and(sh)}</span>, are tone marks (${and(nm)}). They are not part of the vowel. They only set the pitch of the voice.`}</span>`;
 }
-function wordRow(th,phs,en,note){return `<div class="phr"><div class="body"><span class="tw" lang="th">${th}</span><span class="inkph" style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span>${note||''}</div><div class="acts">${sayBtn(th.replace(/<[^>]+>/g,''),en)}</div></div>`}
+function wordRow(th,phs,en,note){return `<div class="phr"><div class="body"><span class="tw" lang="th">${th}</span><span class="inkph" style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span>${silNote(th,phs)}${note||''}</div><div class="acts">${sayBtn(th.replace(/<[^>]+>/g,''),en)}</div></div>`}
 function vowelWordsHTML(v){
  const g=vowelGroups(v), mark=w=>w.sy.map((x,i)=>i===w.hit&&w.sy.length>1?`<span class="hl">${x}</span>`:x).join('');
  const tot=g.open.length+g.closed.length+g.other.length;
@@ -1921,7 +1924,7 @@ V.phrases=()=>{
    const tail=p[3]?pol[p[3]]:['',''];
    const th=p[0].replace('{I}',I[0]), sp=p[1].replace('{I}',I[1]);
    const full=th+tail[0], spoken=sp+(tail[1]?' '+tail[1]:'');
-   return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(full,spoken)}</span><span style="font-size:18px">${ph(spoken)}</span><span class="en">${p[2]}</span></div><div class="acts"><button class="wlink" data-open="${p[0]}">${/^\d/.test(p[2])?'Letters':'Word by word'}</button>${sayBtn(full,p[2])}</div></div>`}).join('')}</div>`;
+   return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(full,spoken)}</span><span style="font-size:18px">${ph(spoken)}</span><span class="en">${p[2]}</span>${silNote(full,spoken)}</div><div class="acts"><button class="wlink" data-open="${p[0]}">${/^\d/.test(p[2])?'Letters':'Word by word'}</button>${sayBtn(full,p[2])}</div></div>`}).join('')}</div>`;
 };
 V.practice=()=>{
  if(!q)newQ();
@@ -1957,7 +1960,7 @@ V.lessons=()=>{
 function learnView(){
  const l=lesson, s=ALL.find(x=>x.k===l.tip), u=fill(l.use);
  return `<button class="back" data-lback="1">‹ All lessons</button><h1>${l.title}</h1><p class="lede">${l.note}</p>
- <div>${l.w.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(w[0],w[1])}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span></div><div class="acts"><button class="wlink" data-open="${w[0]}">Letters</button>${sayBtn(w[0],w[2])}</div></div>`).join('')}</div>
+ <div>${l.w.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(w[0],w[1])}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span>${silNote(w[0],w[1])}</div><div class="acts"><button class="wlink" data-open="${w[0]}">Letters</button>${sayBtn(w[0],w[2])}</div></div>`).join('')}</div>
  <section class="card"><h3>Use it in a sentence</h3><div class="word"><span class="tw" lang="th">${tsy(u[0],u[1])}</span></div><div class="staffed">${sayBtn(u[0],l.use[2])}<span style="font-size:18px">${ph(u[1])}</span></div><p style="color:var(--soft)">${l.use[2]}</p></section>
  <section class="card"><h3>Sound to watch: ${s.k}</h3><p class="like">${s.like}</p>${footnote(s)}</section>
  <button class="next" data-ltest="1" style="justify-self:start">Take the test</button>`;
@@ -2002,18 +2005,44 @@ function sylSet(){if(SYLS)return SYLS;SYLS=new Set(['ๆ','ครับ','ค่
  [...LET.map(l=>l[2]),...LESSONS.flatMap(l=>l.w.map(w=>w[0]))].forEach(x=>{if(!/[ ๆ]/.test(x))SYLS.add(x)});return SYLS}
 const TH1=/[ก-ๅ็-๎]/;
 const SYLCACHE=new Map();
-function tsy(th,phs){
- if(!th||!phs||/</.test(th))return th;
+function sylSeg(th,phs){ // [[Thai piece, tone or null, romanized syllable or null], ...] or null
+ if(!th||!phs||/</.test(th))return null;
  const key=th+'|'+phs; if(SYLCACHE.has(key))return SYLCACHE.get(key);
- const tones=phs.split(/[ \-]/).filter(x=>/[a-zA-ZÀ-ɏ]/.test(x)).map(toneOf), n=tones.length, S=sylSet(), memo=new Map();
+ const rom=phs.split(/[ \-]/).filter(x=>/[a-zA-ZÀ-ɏ]/.test(x)), n=rom.length, S=sylSet(), memo=new Map();
  const go=(i,k)=>{
   if(i===th.length)return k===n?[]:null; const mk=i+','+k; if(memo.has(mk))return memo.get(mk); let r=null;
-  if(!TH1.test(th[i])&&th[i]!=='ๆ'){const t=go(i+1,k);r=t&&[[th[i],null],...t]}
-  else if(k<n)for(let L=Math.min(12,th.length-i);L>=1&&!r;L--){const sub=th.slice(i,i+L);if(!S.has(sub))continue;const t=go(i+L,k+1);if(t)r=[[sub,tones[k]],...t]}
+  if(!TH1.test(th[i])&&th[i]!=='ๆ'){const t=go(i+1,k);r=t&&[[th[i],null,null],...t]}
+  else if(k<n)for(let L=Math.min(12,th.length-i);L>=1&&!r;L--){const sub=th.slice(i,i+L);if(!S.has(sub))continue;const t=go(i+L,k+1);if(t)r=[[sub,toneOf(rom[k]),rom[k]],...t]}
   memo.set(mk,r);return r};
- const seg=n?go(0,0):null;
- const out=seg?seg.map(([x,t])=>t?`<span class="t-${t}">${x}</span>`:x).join(''):th;
- SYLCACHE.set(key,out); return out;
+ const seg=n?go(0,0):null; SYLCACHE.set(key,seg); return seg;
+}
+function tsy(th,phs){const seg=sylSeg(th,phs);return seg?seg.map(([x,t])=>t?`<span class="t-${t}">${x}</span>`:x).join(''):th}
+
+/* Silent letters: ◌์ (thanthakhat) silences the letter under it, with any vowel mark on that letter, and the ท or ต
+   before a silenced ร (จันทร์). Shown gray in the word, the zoom and the breakdown; a line under the word names them. (Dutch 1124) */
+function silIdx(t){const S=new Set(),ch=[...t];
+ ch.forEach((c,i)=>{if(c!=='์')return;S.add(i);for(let j=i-1;j>=0;j--){S.add(j);if(isC(ch[j])){if(ch[j]==='ร'&&j>=2&&/[ทต]/.test(ch[j-1])&&isC(ch[j-2]))S.add(j-1);break}}});
+ return S}
+function silWrap(t,cls){const S=silIdx(t);if(!S.size)return null;const ch=[...t];let o='',run='';
+ ch.forEach((c,i)=>{if(S.has(i))run+=c;else{if(run){o+=`<span class="${cls}">${run}</span>`;run=''}o+=c}});
+ if(run)o+=`<span class="${cls}">${run}</span>`;return o}
+function markSil(root){
+ const w=document.createTreeWalker(root,NodeFilter.SHOW_TEXT,{acceptNode:n=>n.nodeValue.includes('์')&&n.parentElement&&n.parentElement.closest('[lang="th"]')&&!n.parentElement.closest('.zt,.sil,.zsil,.px,button.opt')?1:3});
+ const ns=[];while(w.nextNode())ns.push(w.currentNode);
+ ns.forEach(n=>{const h=silWrap(n.nodeValue,'sil');if(!h)return;const sp=document.createElement('span');sp.innerHTML=h;n.replaceWith(...sp.childNodes)});
+}
+function silNote(th,phs){
+ th=(th||'').replace(/<[^>]+>/g,''); if(!th.includes('์'))return '';
+ const seg=sylSeg(th,phs)||[[th,null,null]], parts=[]; let pos=0;
+ seg.forEach(([x,,r])=>{const ch=[...x],S=silIdx(x);
+  if(S.size){const idx=[...S].sort((a,b)=>a-b),first=idx[0],run=idx.map(i=>ch[i]).join('');
+   let prev=null;for(let j=first-1;j>=0;j--)if(isC(ch[j])){prev=ch[j];break}
+   const end=pos+x.length===th.length||/\s/.test(th[pos+x.length]||'')?'word':'syllable';
+   const coda=r&&(r.normalize('NFD').replace(/[̀-ͯ]/g,'').match(/(ng|[kptmn])$/)||[])[1];
+   const lead=`<span lang="th">${run}</span> ${[...run].filter(isC).length>1?'are':'is'} silent`;
+   parts.push(coda&&prev?`${lead}, so the ${end} ends on <span lang="th">${prev}</span> (${coda}).`:r?`${lead}, so the ${end} ends on its vowel sound (${r}).`:`${lead}.`)}
+  pos+=x.length});
+ return parts.length?`<span class="silnote">The mark <span lang="th">◌์</span> on top means "don't say this letter." ${parts.join(' ')}</span>`:'';
 }
 
 const CUSTOM={
@@ -2241,6 +2270,7 @@ function entryCard(e){
  const long=sylls.length>3, sounds=soundsIn(w.ph);
  return `<article class="card"><div class="bigw"><div><div class="tw" lang="th">${tsy(w.th,w.ph)}</div><p style="color:var(--soft)">${e.en}</p></div>${sayBtn(w.th,e.en)}</div>
   <div style="font-size:24px">${ph(w.ph)}</div>
+  ${silNote(w.th,w.ph).replace('<span class="silnote">','<p class="silnote" style="margin:0">').replace(/<\/span>$/,'</p>')}
   ${tips.length?`<ul class="tips">${tips.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}${endsSmile(w.ph)?`<p class="smile">${SMI}<span>This ends on a smile sound. Widen the lips at the end.</span></p>`:''}
   ${multi?`<div class="stack" style="gap:10px"><h3>Word by word</h3>${wordsBlock(w.comps,e.en,w.comps.map(c=>c.mean.replace(/^polite word, (man|woman) speaking$/,'(polite)')).join(' + '),false)}</div>`
    :`<details class="brk"><summary>Break it into letters</summary><div class="brk">${LEGEND}${compCard(w.comps[0],0,false)}</div></details>`}
@@ -2290,8 +2320,8 @@ function zKind(ch,i,o){const c=ch[i],prev=ch[i-1]||'';
  if(o&&c==='อ'&&i>0&&(isC(prev)||ZVOW.includes(prev)||ZSHORT.includes(prev)||TONEM.includes(prev)||prev==='◌'))return 'v';
  return '';}
 function colorTh(th,o){
- const ch=[...th], all=ch.map((c,i)=>[c,zKind(ch,i,o)]);
- const base=all.map(([c,k])=>k&&!ZCOMB.test(c)?`<span class="zv-${k}">${c}</span>`:c).join('');
+ const ch=[...th], SL=silIdx(th), all=ch.map((c,i)=>[c,SL.has(i)?'':zKind(ch,i,o)]);
+ let base='',run=''; all.forEach(([c,k],i)=>{if(SL.has(i)){run+=c;return}if(run){base+=`<span class="zsil">${run}</span>`;run=''}base+=k&&!ZCOMB.test(c)?`<span class="zv-${k}">${c}</span>`:c}); if(run)base+=`<span class="zsil">${run}</span>`;
  if(!all.some(([c,k])=>k&&ZCOMB.test(c)))return base;
  const nt=all.filter(([c])=>!ZTONE.test(c)); let mid='',top='';
  for(let i=0;i<nt.length;){let j=i+1;while(j<nt.length&&ZCOMB.test(nt[j][0]))j++;
@@ -2305,9 +2335,9 @@ const thText=el=>{const c=el.cloneNode(true);c.querySelectorAll('.zl1,.zl2').for
 const ZLEG=`<p class="legend"><span class="zv-v">Blue</span> vowel mark · <span class="zv-s">Red</span> short sign, ะ or ◌็ · letters in plain ink</p>`;
 // Enlarged view: the key lists only the colors the tapped Thai actually shows; plain ink always.
 function zLeg(th,o){const ch=[...th], ks=new Set(ch.map((c,i)=>zKind(ch,i,o)));
- return `<p class="legend">${[ks.has('v')&&'<span class="zv-v">Blue</span> vowel mark',ks.has('s')&&'<span class="zv-s">Red</span> short sign, ะ or ◌็','letters in plain ink'].filter(Boolean).join(' · ')}</p>`}
+ return `<p class="legend">${[ks.has('v')&&'<span class="zv-v">Blue</span> vowel mark',ks.has('s')&&'<span class="zv-s">Red</span> short sign, ะ or ◌็',silIdx(th).size&&'<span class="zsil">Gray</span> silent, not said','letters in plain ink'].filter(Boolean).join(' · ')}</p>`}
 function markDc(root){root.querySelectorAll('[lang="th"], .zt').forEach(el=>{if(el.textContent.includes('\u25CC'))el.classList.add('dc')})}
-function markTh(root){markDc(root);root.querySelectorAll('[lang="th"]').forEach(el=>{if(el.closest('button,a,summary,.tabs')||!/[฀-๿]/.test(el.textContent))return;el.classList.add('thz');el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','Enlarge '+thText(el).trim())})}
+function markTh(root){markDc(root);markSil(root);root.querySelectorAll('[lang="th"]').forEach(el=>{if(el.closest('button,a,summary,.tabs')||!/[฀-๿]/.test(el.textContent))return;el.classList.add('thz');el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','Enlarge '+thText(el).trim())})}
 let zoomFrom=null;
 function openZoom(el){
  const text=thText(el).replace(/\s+/g,' ').trim(); if(!text)return;
@@ -2352,7 +2382,8 @@ const WMARKS=[['ะ','สระอะ','sara a','Short sign. Comes after the let
  ['◌ั','ไม้หันอากาศ','mai han-akat','Short a when a letter follows. Sits on top of the first letter.'],
  ['เ','สระเอ','sara e','Written before the letter, said after it.'],
  ['แ','สระแอ','sara ae','Written before the letter, said after it.'],
- ['โ','สระโอ','sara o','Written before the letter, said after it.']];
+ ['โ','สระโอ','sara o','Written before the letter, said after it.'],
+ ['◌์','ทัณฑฆาต','thanthakhat','Silence mark — not a vowel. The letter under it is not said. Example: <span lang="th">ศูนย์</span> sǒon "zero", <span lang="th">อาทิตย์</span> aa-thít "sun".']];
 V.written=()=>`<button class="back" data-wback="1">← Vowels and Letters</button>
  <h1>How It's Written</h1>
  <p class="lede">Speaking comes first. This page is for reading: each vowel drawn large, with its marks in color. The dotted circle stands for any letter. Tap any Thai to see it bigger still.</p>
@@ -2480,8 +2511,8 @@ function cVowelCard(k){
   ${k==='ai'?'<p style="margin:0">Also written <span lang="th" style="font:500 26px var(--f-thai)">ใ◌</span> in twenty common words, said the same.</p>':''}
   ${sameLine(v)}</section>`;
 }
-function cColorRow(th,phs,en){return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,phs)}</span><span style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span></div><div class="acts">${sayBtn(th,en)}</div></div>`}
-function cPhraseRow(p){const f=fill(p);return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(f[0],f[1])}</span><span style="font-size:18px">${ph(f[1])}</span><span class="en">${p[2]}</span></div><div class="acts">${sayBtn(f[0],p[2])}</div></div>`}
+function cColorRow(th,phs,en){return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,phs)}</span><span style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span>${silNote(th,phs)}</div><div class="acts">${sayBtn(th,en)}</div></div>`}
+function cPhraseRow(p){const f=fill(p);return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(f[0],f[1])}</span><span style="font-size:18px">${ph(f[1])}</span><span class="en">${p[2]}</span>${silNote(f[0],f[1])}</div><div class="acts">${sayBtn(f[0],p[2])}</div></div>`}
 function cLearnView(){
  const L=C.L; let body='';
  if(L.kind==='lv'){
