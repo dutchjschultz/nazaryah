@@ -233,6 +233,31 @@ p { margin: 0; }
 .score { font-variant-numeric: tabular-nums; color: var(--soft); }
 
 .lessons { display: grid; gap: 8px; }
+.hw { display: grid; gap: 10px; }
+.hwbox { background: var(--bg); border-radius: 6px; padding: 6px; touch-action: pinch-zoom; }
+.hwsvg { width: 100%; height: auto; max-height: 72vh; display: block; }
+.hwwait { color: var(--soft); margin: 0; padding: 30px 0; text-align: center; }
+.hwg { stroke: var(--soft); stroke-width: 2.5; opacity: .6; }
+.hwm { stroke-dasharray: 12 10; }
+.hwt, .hwlt { font-family: "Sarabun", var(--f-thai); font-weight: 400; }
+.hwt { fill: var(--soft); opacity: .32; }
+.hwlt { fill: var(--ink); }
+.hwp { fill: none; stroke: var(--gold); stroke-width: 16; stroke-linecap: round; stroke-linejoin: round; }
+.hwtip { fill: var(--gold); stroke: var(--bg); stroke-width: 3; }
+.hwstar { fill: var(--bad); stroke: var(--bg); stroke-width: 2; }
+.hwn circle { fill: var(--lac); } .hwn text { fill: var(--on-lac); font: 700 20px var(--f-body); text-anchor: middle; }
+.hwkey { margin: 0; color: var(--soft); font-size: 14px; } .hwkstar { color: var(--bad); }
+.hwlook { display: grid; grid-template-columns: repeat(auto-fill, minmax(110px, 1fr)); gap: 8px; }
+.hwla { background: var(--leaf); border: 0; border-radius: 6px; padding: 6px; display: grid; justify-items: center; gap: 2px; color: var(--soft); font: 600 15px var(--f-phon); }
+.hwla.cur { outline: 2.5px solid var(--gold); outline-offset: -2.5px; }
+.hwla svg { width: 100%; height: 132px; }
+.hwc { fill: none; stroke: #e5484d; stroke-width: 7; }
+.endnote { background: none; border: 0; padding: 0; color: var(--gold); font-size: 14px; text-align: left; text-decoration: underline dotted; text-underline-offset: 3px; cursor: pointer; justify-self: start; }
+.endnote [lang="th"] { font: 500 18px var(--f-thai); }
+.endt { display: grid; gap: 6px; }
+.endr { display: grid; grid-template-columns: minmax(130px, auto) 1fr; gap: 4px 12px; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
+.endr [lang="th"] { font: 500 24px/1.4 var(--f-thai); }
+.stend { margin: 4px 0 0; font-size: 15px; }
 /* Trirong has no dotted circle (◌): any Thai shown on one is drawn in Noto Serif Thai so the mark sits on the circle (Dutch 1123). */
 .dc, .dc * { font-family: "Noto Serif Thai", var(--f-thai) !important; }
 .ltile.locked { opacity: .5; cursor: default; }
@@ -547,7 +572,7 @@ const LET = [
 ['ก','kaaw kài','ไก่','chicken','M','k','k'],['ข','khǎaw khài','ไข่','egg','H','kh','k'],['ฃ','khǎaw khùat','ขวด','bottle','H','kh','k',1],
 ['ค','khaaw khwaai','ควาย','buffalo','L','kh','k'],['ฅ','khaaw khon','คน','person','L','kh','k',1],['ฆ','khaaw rá-khang','ระฆัง','bell','L','kh','k'],
 ['ง','ngaaw ngoo','งู','snake','L','ng','ng'],['จ','jaaw jaan','จาน','plate','M','j','t'],['ฉ','chǎaw chìng','ฉิ่ง','small cymbals','H','ch','—'],
-['ช','chaaw cháang','ช้าง','elephant','L','ch','t'],['ซ','saaw sôh','โซ่','chain','L','s','t'],['ฌ','chaaw cherr','เฌอ','tree','L','ch','—'],
+['ช','chaaw cháang','ช้าง','elephant','L','ch','t'],['ซ','saaw sôh','โซ่','chain','L','s','t'],['ฌ','chaaw cherr','เฌอ','tree','L','ch','t'],
 ['ญ','yaaw yǐng','หญิง','woman','L','y','n'],['ฎ','daaw chá-daa','ชฎา','dance headdress','M','d','t'],['ฏ','taaw pà-tàk','ปฏัก','ox goad','M','t','t'],
 ['ฐ','thǎaw thǎan','ฐาน','pedestal','H','th','t'],['ฑ','thaaw mon-thoh','มณโฑ','Montho, a figure in the Ramakien','L','th','t'],['ฒ','thaaw phôo-thâo','ผู้เฒ่า','elder','L','th','t'],
 ['ณ','naaw nayn','เณร','novice monk','L','n','n'],['ด','daaw dèk','เด็ก','child','M','d','t'],['ต','taaw tào','เต่า','turtle','M','t','t'],
@@ -1682,7 +1707,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 33</p>`;
+ <p class="score">App version 34</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1847,7 +1872,7 @@ function toneNote(th){
  const sh=m.map(c=>'\u25CC'+c), nm=m.map(c=>TONEMK[c]), and=a=>a.length<2?a[0]:a.slice(0,-1).join(', ')+' and '+a[a.length-1];
  return `<span class="tnote">${m.length<2?`The small mark stacked on top, <span lang="th">${sh[0]}</span>, is a tone mark (${nm[0]}). It is not part of the vowel. It only sets the pitch of the voice.`:`The small marks stacked on top, <span lang="th">${and(sh)}</span>, are tone marks (${and(nm)}). They are not part of the vowel. They only set the pitch of the voice.`}</span>`;
 }
-function wordRow(th,phs,en,note){return `<div class="phr"><div class="body"><span class="tw" lang="th">${th}</span><span class="inkph" style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span>${silNote(th,phs)}${note||''}</div><div class="acts">${sayBtn(th.replace(/<[^>]+>/g,''),en)}</div></div>`}
+function wordRow(th,phs,en,note){return `<div class="phr"><div class="body"><span class="tw" lang="th">${th}</span><span class="inkph" style="font-size:18px">${ph(phs)}</span>${endNote(th,phs)}<span class="en">${en}</span>${silNote(th,phs)}${note||''}</div><div class="acts">${sayBtn(th.replace(/<[^>]+>/g,''),en)}</div></div>`}
 function vowelWordsHTML(v){
  const g=vowelGroups(v), mark=w=>w.sy.map((x,i)=>i===w.hit&&w.sy.length>1?`<span class="hl">${x}</span>`:x).join('');
  const tot=g.open.length+g.closed.length+g.other.length;
@@ -1892,6 +1917,7 @@ V.letters=()=>{
   <p style="color:var(--soft)">For speaking, the sounds are what matter. Reading and writing can come later.</p>
  </section>
  <section class="card" id="lclasses">${CLASSCARD}</section>
+ <section class="card"><h2>Ending sounds</h2><p>Many letters change their sound at the end of a word: <span lang="th">ด</span> starts as d but ends as a clipped t.</p><button class="next" data-go="endings" style="justify-self:start">Open the Ending Sounds chart</button></section>
  <h2 style="margin-bottom:0">Vowels</h2>
  <section class="card" id="vdetail">
   <div class="lhead"><div class="bigl" lang="th">${dv(v.th)}</div><div>
@@ -1905,6 +1931,7 @@ V.letters=()=>{
   ${lv('vm',4,'How the mouth makes it',footnote(v))}
   ${partner?lv('vq',5,SHORTV.includes(v.k)?'Its long partner':'Its short partner',`<p>Thai pairs most vowels: the same sound, short and long. The long one is held about twice as long, and the difference can change the word.</p>
    <button class="other" data-vowel="${partner.k}"><span class="tw" lang="th">${dv(partner.th)}</span><span class="en"><b>${partner.k}</b> · ${ASIN[partner.k]}</span></button>`):''}
+  ${lv('vh',partner?6:5,'How to write it',hwPanel('V:'+v.th,`This vowel sits ${VPOS[v.k]?VPOS[v.k]+' the letter':VPOS2[v.k]}. The gray ก stands for any letter.`))}
   </div></section>
  <div class="chips"><button class="chip" data-vset="Single" aria-pressed="${vowelSet==='Single'}">Single vowels: 18</button><button class="chip" data-vset="Two-part" aria-pressed="${vowelSet!=='Single'}">Two-part vowels: 11</button></div>
  ${vowelSet==='Single'?'<p class="lede">Shown in pairs, short then long.</p>':'<p class="lede">These slide from one vowel into another inside one beat, like "eye" or "cow" in English.</p>'}
@@ -1912,7 +1939,7 @@ V.letters=()=>{
  <h2 style="margin-bottom:0">Letters</h2>
  <section class="card" id="ldetail">
   <div class="lhead"><div class="bigl" lang="th">${l[0]}</div><div>
-   <p style="margin:0">${sndLine(l)}</p></div>${sayBtn(hear,l[1])}</div>
+   <p style="margin:0">${sndLine(l)}</p>${startEnd(l)}</div>${sayBtn(hear,l[1])}</div>
   ${nameLine(l)}
   ${twinLine(l)}
   ${s&&!SNDTX[l[5]]?`<p class="like">${s.like}</p>`:''}
@@ -1926,6 +1953,7 @@ V.letters=()=>{
   ${s?lv('m',3,'How the mouth makes it',footnote(s)):''}
   ${lv('c',4,'Its group, for later',`<p>${clsTag(cls[l[4]])} Every letter belongs to one of three groups: mid, high or low. The group only matters for reading tones off the page, so it can wait.</p>
    <p>At the end of a syllable this letter ${l[6]==='—'?'is rarely or never used.':l[6]==='vowel'?'turns into part of a vowel.':`is said as <b>-${l[6]}</b>${l[6]!==l[5]?`, not ${l[5]}`:''}.`}</p>`)}
+  ${lv('h',5,'How to write it',hwPanel('L:'+l[0]))}
   </div></section>
  <div class="chips">${['Most used','All','Mid','High','Low'].map(k=>`<button class="chip" data-lfilter="${k}" aria-pressed="${k===letterFilter}">${k==='All'?'All 44':k==='Most used'?'Most used':k+' class'}</button>`).join('')}</div>
  <div class="grid44">${list.map(x=>`<button class="lt${x[7]?' old':''}" data-letter="${x[0]}" aria-pressed="${x[0]===letterSel}"><span class="g" lang="th">${x[0]}</span><span>${x[5]==='(catch)'?'catch':x[5]}</span>${tileTag(x)}</button>`).join('')}</div>
@@ -1986,7 +2014,7 @@ V.lessons=()=>{
 function learnView(){
  const l=lesson, s=ALL.find(x=>x.k===l.tip), u=fill(l.use);
  return `<button class="back" data-lback="1">‹ All lessons</button><h1>${l.title}</h1><p class="lede">${l.note}</p>
- <div>${l.w.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(w[0],w[1])}</span><span style="font-size:18px">${ph(w[1])}</span><span class="en">${w[2]}</span>${silNote(w[0],w[1])}</div><div class="acts"><button class="wlink" data-open="${w[0]}">Letters</button>${sayBtn(w[0],w[2])}</div></div>`).join('')}</div>
+ <div>${l.w.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(w[0],w[1])}</span><span style="font-size:18px">${ph(w[1])}</span>${endNote(w[0],w[1])}<span class="en">${w[2]}</span>${silNote(w[0],w[1])}</div><div class="acts"><button class="wlink" data-open="${w[0]}">Letters</button>${sayBtn(w[0],w[2])}</div></div>`).join('')}</div>
  <section class="card"><h3>Use it in a sentence</h3><div class="word"><span class="tw" lang="th">${tsy(u[0],u[1])}</span></div><div class="staffed">${sayBtn(u[0],l.use[2])}<span style="font-size:18px">${ph(u[1])}</span></div><p style="color:var(--soft)">${l.use[2]}</p></section>
  <section class="card"><h3>Sound to watch: ${s.k}</h3><p class="like">${s.like}</p>${footnote(s)}</section>
  <button class="next" data-ltest="1" style="justify-self:start">Take the test</button>`;
@@ -2295,7 +2323,7 @@ function entryCard(e){
   sentHTML=`<div class="stack" style="gap:10px"><h3>In a sentence</h3>${wordsBlock(comps,sent.m,comps.map(c=>c.mean.replace(/^polite word, (man|woman) speaking$/,'(polite)')).join(' + '),true)}</div>`}
  const long=sylls.length>3, sounds=soundsIn(w.ph);
  return `<article class="card"><div class="bigw"><div><div class="tw" lang="th">${tsy(w.th,w.ph)}</div><p style="color:var(--soft)">${e.en}</p></div>${sayBtn(w.th,e.en)}</div>
-  <div style="font-size:24px">${ph(w.ph)}</div>
+  <div style="font-size:24px">${ph(w.ph)}</div>${endNote(w.th,w.ph)}
   ${silNote(w.th,w.ph).replace('<span class="silnote">','<p class="silnote" style="margin:0">').replace(/<\/span>$/,'</p>')}
   ${tips.length?`<ul class="tips">${tips.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}${endsSmile(w.ph)?`<p class="smile">${SMI}<span>This ends on a smile sound. Widen the lips at the end.</span></p>`:''}
   ${multi?`<div class="stack" style="gap:10px"><h3>Word by word</h3>${wordsBlock(w.comps,e.en,w.comps.map(c=>c.mean.replace(/^polite word, (man|woman) speaking$/,'(polite)')).join(' + '),false)}</div>`
@@ -2363,7 +2391,7 @@ const ZLEG=`<p class="legend"><span class="zv-v">Blue</span> vowel mark · <span
 function zLeg(th,o){const ch=[...th], ks=new Set(ch.map((c,i)=>zKind(ch,i,o)));
  return `<p class="legend">${[ks.has('v')&&'<span class="zv-v">Blue</span> vowel mark',ks.has('s')&&'<span class="zv-s">Red</span> short sign, ะ or ◌็',silIdx(th).size&&'<span class="zsil">Gray</span> silent, not said','letters in plain ink'].filter(Boolean).join(' · ')}</p>`}
 function markDc(root){root.querySelectorAll('[lang="th"], .zt').forEach(el=>{if(el.textContent.includes('\u25CC'))el.classList.add('dc')})}
-function markTh(root){markDc(root);markSil(root);root.querySelectorAll('[lang="th"]').forEach(el=>{if(el.closest('button,a,summary,.tabs')||!/[฀-๿]/.test(el.textContent))return;el.classList.add('thz');el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','Enlarge '+thText(el).trim())})}
+function markTh(root){markDc(root);markSil(root);hwFill(root);root.querySelectorAll('[lang="th"]').forEach(el=>{if(el.closest('button,a,summary,.tabs')||!/[฀-๿]/.test(el.textContent))return;el.classList.add('thz');el.tabIndex=0;el.setAttribute('role','button');el.setAttribute('aria-label','Enlarge '+thText(el).trim())})}
 let zoomFrom=null;
 function openZoom(el){
  const text=thText(el).replace(/\s+/g,' ').trim(); if(!text)return;
@@ -2617,7 +2645,7 @@ const HIDDEN_O=`<p style="margin:0"><b>Example:</b> <span lang="th">คน</span
 function cLetterCard(l){
  const hear=(l[0]==='ฮ'?'ฮอ ':l[0]==='อ'?'ออ ':l[0]+'อ ')+l[2], snd=l[5]==='(catch)'?'no sound of its own':l[5];
  return `<section class="card"><div class="lhead"><div class="bigl" lang="th">${l[0]}</div><div>
-  <p style="margin:0">${sndLine(l)}</p>
+  <p style="margin:0">${sndLine(l)}</p>${startEnd(l)}
   <p style="margin:6px 0 0">${clsTag(CCLS[l[4]])}</p></div>${sayBtn(hear,l[1])}</div>
   ${nameLine(l)}
   ${twinLine(l)}
@@ -2635,7 +2663,7 @@ function cVowelCard(k){
   ${k==='ai'?'<p style="margin:0">Also written <span lang="th" style="font:500 26px var(--f-thai)">ใ◌</span> in twenty common words, said the same.</p>':''}
   ${sameLine(v)}</section>`;
 }
-function cColorRow(th,phs,en){return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,phs)}</span><span style="font-size:18px">${ph(phs)}</span><span class="en">${en}</span>${silNote(th,phs)}</div><div class="acts">${sayBtn(th,en)}</div></div>`}
+function cColorRow(th,phs,en){return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,phs)}</span><span style="font-size:18px">${ph(phs)}</span>${endNote(th,phs)}<span class="en">${en}</span>${silNote(th,phs)}</div><div class="acts">${sayBtn(th,en)}</div></div>`}
 function cPhraseRow(p){const f=fill(p);return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(f[0],f[1])}</span><span style="font-size:18px">${ph(f[1])}</span><span class="en">${p[2]}</span>${silNote(f[0],f[1])}</div><div class="acts">${sayBtn(f[0],p[2])}</div></div>`}
 function cLearnView(){
  const L=C.L; let body='';
@@ -2703,6 +2731,329 @@ function cRestore(file){
  r.readAsText(file);
 }
 
+/* Pen-path tracer: copied from scripts/thai-strokes.js (edit there, then copy here). */
+const TS = { FS: 300, W: 820, H: 600, BASE: 420, X0: 90 };
+function tsMask(str, x, sub) {
+  const c = document.createElement('canvas'); c.width = TS.W; c.height = TS.H;
+  const g = c.getContext('2d', { willReadFrequently: true });
+  g.font = `400 ${TS.FS}px Sarabun`; g.textBaseline = 'alphabetic'; g.fillStyle = '#000';
+  g.fillText(str, x, TS.BASE);
+  const d = g.getImageData(0, 0, TS.W, TS.H).data, m = new Uint8Array(TS.W * TS.H);
+  for (let i = 0; i < m.length; i++) m[i] = d[i * 4 + 3] > 120 ? 1 : 0;
+  if (sub) { // remove the sample letter so only the vowel pieces are traced
+    g.clearRect(0, 0, TS.W, TS.H); g.fillText(sub.ch, sub.x, TS.BASE);
+    const e = g.getImageData(0, 0, TS.W, TS.H).data;
+    for (let i = 0; i < m.length; i++) if (e[i * 4 + 3] > 40) m[i] = 0;
+  }
+  return m;
+}
+function tsThin(m) {
+  const W = TS.W, H = TS.H; let ch = true;
+  const P = (x, y) => m[y * W + x];
+  while (ch) {
+    ch = false;
+    for (const step of [0, 1]) {
+      const del = [];
+      for (let y = 1; y < H - 1; y++) for (let x = 1; x < W - 1; x++) {
+        if (!P(x, y)) continue;
+        const n = [P(x, y - 1), P(x + 1, y - 1), P(x + 1, y), P(x + 1, y + 1), P(x, y + 1), P(x - 1, y + 1), P(x - 1, y), P(x - 1, y - 1)];
+        const B = n.reduce((a, b) => a + b, 0); if (B < 2 || B > 6) continue;
+        let A = 0; for (let k = 0; k < 8; k++) if (!n[k] && n[(k + 1) % 8]) A++; if (A !== 1) continue;
+        if (step === 0 ? (n[0] * n[2] * n[4] || n[2] * n[4] * n[6]) : (n[0] * n[2] * n[6] || n[0] * n[4] * n[6])) continue;
+        del.push(y * W + x);
+      }
+      if (del.length) { ch = true; del.forEach(i => m[i] = 0); }
+    }
+  }
+  return m;
+}
+function tsGraph(m) {
+  const W = TS.W, N8 = [-W - 1, -W, -W + 1, -1, 1, W - 1, W, W + 1];
+  const on = i => m[i] === 1, nb = i => N8.map(o => i + o).filter(on);
+  const pix = []; for (let i = 0; i < m.length; i++) if (m[i]) pix.push(i);
+  const deg = new Map(pix.map(i => [i, nb(i).length]));
+  // node pixels = not exactly two neighbours; adjacent node pixels form one node
+  const nodeOf = new Map(); const nodes = [];
+  pix.forEach(i => {
+    if (deg.get(i) === 2 || nodeOf.has(i)) return;
+    const id = nodes.length, q = [i], mem = []; nodeOf.set(i, id);
+    while (q.length) { const p = q.pop(); mem.push(p); nb(p).forEach(r => { if (deg.get(r) !== 2 && !nodeOf.has(r)) { nodeOf.set(r, id); q.push(r); } }); }
+    const cx = mem.reduce((a, p) => a + p % W, 0) / mem.length, cy = mem.reduce((a, p) => a + Math.floor(p / W), 0) / mem.length;
+    nodes.push({ id, mem, x: cx, y: cy, end: mem.length === 1 && deg.get(i) === 1 });
+  });
+  const used = new Set(), edges = [];
+  const walk = (start, first) => {
+    const ch = [start, first]; let prev = start, cur = first;
+    while (!nodeOf.has(cur)) { used.add(cur); const nx = nb(cur).filter(r => r !== prev && !(ch.length > 2 && r === ch[ch.length - 3])); if (!nx.length) break; prev = cur; cur = nx.find(r => nodeOf.has(r) && r !== start) ?? nx[0]; ch.push(cur); if (cur === start) break; }
+    return ch;
+  };
+  nodes.forEach(n => n.mem.forEach(p => nb(p).forEach(r => {
+    if (nodeOf.has(r) || used.has(r)) return;
+    const ch = walk(p, r), end = ch[ch.length - 1];
+    edges.push({ a: n.id, b: nodeOf.has(end) ? nodeOf.get(end) : n.id, px: ch });
+  })));
+  // closed rings with no node at all
+  pix.forEach(i => {
+    if (nodeOf.has(i) || used.has(i)) return;
+    const id = nodes.length; nodeOf.set(i, id); nodes.push({ id, mem: [i], x: i % W, y: Math.floor(i / W), end: false });
+    const r = nb(i)[0]; const ch = walk(i, r); edges.push({ a: id, b: id, px: ch[ch.length - 1] === i ? ch : [...ch, i] });
+  });
+  return { nodes, edges, W };
+}
+const tsLen = e => e.px.length;
+function tsPrune(G, minLen) {
+  let again = true;
+  while (again) {
+    again = false;
+    const cnt = n => G.edges.filter(e => e.a === n || e.b === n).length;
+    for (const e of [...G.edges]) {
+      const ea = cnt(e.a), eb = cnt(e.b);
+      if (e.a !== e.b && tsLen(e) < minLen && ((ea === 1 && eb >= 3) || (eb === 1 && ea >= 3))) { G.edges.splice(G.edges.indexOf(e), 1); again = true; break; }
+    }
+  }
+  return G;
+}
+// Thick joins leave little knots of junctions joined by very short edges (a false tiny loop at ฟ's foot):
+// merge those junctions into one, and drop the tiny self-loops that leaves behind.
+function tsContract(G, maxLen) {
+  let again = true;
+  while (again) {
+    again = false;
+    const cnt = n => G.edges.filter(e => e.a === n || e.b === n).length;
+    // only a knot: the short edge is a bridge, or the way round without it is tiny (a real head loop is far longer)
+    const around = e => { const dist = new Map([[e.a, 0]]), pq = [[0, e.a]];
+      while (pq.length) { pq.sort((x, y) => x[0] - y[0]); const [d, n] = pq.shift(); if (n === e.b) return d; if (d > dist.get(n)) continue;
+        G.edges.forEach(f => { if (f === e || f.a === f.b || (f.a !== n && f.b !== n)) return; const m2 = f.a === n ? f.b : f.a, nd = d + tsLen(f); if (nd < 80 && (!dist.has(m2) || nd < dist.get(m2))) { dist.set(m2, nd); pq.push([nd, m2]); } }); }
+      return Infinity; };
+    const e = G.edges.find(e => { if (e.a === e.b || tsLen(e) >= maxLen || cnt(e.a) < 2 || cnt(e.b) < 2) return false; const r = around(e); return r === Infinity ? !G.edges.some(f => f !== e && f.a !== f.b && ((f.a === e.a && f.b === e.b) || (f.a === e.b && f.b === e.a))) && tsLen(e) < 12 : r + tsLen(e) < 60; });
+    if (e) { const { a, b } = e; G.edges.splice(G.edges.indexOf(e), 1); G.edges.forEach(f => { if (f.a === b) f.a = a; if (f.b === b) f.b = a; }); again = true; }
+    const tiny = G.edges.filter(f => f.a === f.b && tsLen(f) < 45);
+    if (tiny.length) { G.edges = G.edges.filter(f => !tiny.includes(f)); again = true; }
+  }
+  return G;
+}
+const tsXY = (G, i) => [i % G.W, Math.floor(i / G.W)];
+function tsDir(G, px, k) { // direction leaving along px from its start, over k pixels
+  const [x0, y0] = tsXY(G, px[0]), [x1, y1] = tsXY(G, px[Math.min(k, px.length - 1)]);
+  const l = Math.hypot(x1 - x0, y1 - y0) || 1; return [(x1 - x0) / l, (y1 - y0) / l];
+}
+function tsWalk(G, fix = {}) {
+  const E = G.edges.map((e, k) => ({ ...e, k })), at = n => E.filter(e => e.a === n || e.b === n);
+  const comp = []; const seen = new Set();
+  E.forEach(e => { if (seen.has(e.k)) return; const c = [], q = [e]; seen.add(e.k);
+    while (q.length) { const f = q.pop(); c.push(f); [f.a, f.b].forEach(n => at(n).forEach(g => { if (!seen.has(g.k)) { seen.add(g.k); q.push(g); } })); }
+    comp.push(c); });
+  const size = c => c.reduce((a, e) => a + tsLen(e), 0);
+  const minx = c => Math.min(...c.flatMap(e => e.px.map(p => p % G.W)));
+  if (fix.ltr) comp.sort((a, b) => minx(a) - minx(b)); // vowel pieces: in the order they are written, left to right
+  else { comp.sort((a, b) => size(b) - size(a)); const main = comp.shift(); comp.sort((a, b) => minx(a) - minx(b)); comp.unshift(main); }
+  const strokes = [];
+  comp.forEach((c, ci) => {
+    if (size(c) < 25) return;
+    const vis = new Set(); const out = [];
+    const orient = (e, from) => e.a === from ? e.px : [...e.px].reverse();
+    const nodesC = [...new Set(c.flatMap(e => [e.a, e.b]))];
+    const degC = n => c.filter(e => e.a === n || e.b === n).reduce((a, e) => a + (e.a === e.b ? 2 : 1), 0);
+    // head: the smallest loop in this piece. For each edge, the shortest way back round without it closes a cycle.
+    // several small loops (a flag on ช ซ can close a tiny one): the head is the leftmost
+    let head = null; const cx = cyc => { const ps = cyc.flatMap(([e]) => e.px); return ps.reduce((a, p) => a + p % G.W, 0) / ps.length; };
+    const better = (len, cyc) => len < 300 && (!head || cx(cyc) < head.x - 4 || (Math.abs(cx(cyc) - head.x) <= 4 && len < head.len));
+    c.forEach(e => {
+      if (e.a === e.b) { const cyc = [[e, e.a]]; if (better(tsLen(e), cyc)) head = { len: tsLen(e), cyc, x: cx(cyc) }; return; }
+      const dist = new Map([[e.b, 0]]), via = new Map(), pq = [[0, e.b]];
+      while (pq.length) { pq.sort((x, y) => x[0] - y[0]); const [d, n] = pq.shift(); if (d > dist.get(n)) continue; if (n === e.a) break;
+        c.forEach(f => { if (f === e || f.a === f.b || (f.a !== n && f.b !== n)) return; const m2 = f.a === n ? f.b : f.a, nd = d + tsLen(f);
+          if (!dist.has(m2) || nd < dist.get(m2)) { dist.set(m2, nd); via.set(m2, [f, n]); pq.push([nd, m2]); } }); }
+      if (!dist.has(e.a)) return; const len = dist.get(e.a) + tsLen(e); if (len >= 300) return;
+      const cyc = [[e, e.a]]; let t = e.a; const back = []; while (t !== e.b) { const [f, n] = via.get(t); back.push([f, t]); t = n; }
+      // walk: e from a to b, then from b back to a along the found path
+      const fw = back.reverse().map(([f, to]) => [f, f.a === to ? f.b : f.a]);
+      const full = [...cyc, ...fw]; if (better(len, full)) head = { len, cyc: full, x: cx(full) };
+    });
+    if (head) { // the node where the loop joins the rest of the letter
+      const cn = head.cyc.map(([e, from]) => from), inC = new Set(head.cyc.map(([e]) => e.k));
+      const ext = n => c.filter(e => !inC.has(e.k) && (e.a === n || e.b === n)).reduce((a, e) => a + tsLen(e), 0);
+      head.node = cn.reduce((best, n) => ext(n) > ext(best) ? n : best, cn[0]);
+      const i0 = cn.indexOf(head.node); head.cyc = [...head.cyc.slice(i0), ...head.cyc.slice(0, i0)];
+      head.edges = head.cyc.map(([e]) => e);
+    }
+    if (fix.nohead && ci === 0) head = null;
+    let cur, path = [];
+    const take = (e, from) => { vis.add(e.k); const p = orient(e, from); path.push(...(path.length ? p.slice(1) : p)); return e.a === from ? e.b : e.a; };
+    if (head) {
+      cur = head.node;
+      const rest = c.filter(e => !head.edges.includes(e) && (e.a === cur || e.b === cur));
+      const dOut = rest.length ? tsDir(G, orient(rest[0], cur), 12) : [0, 1];
+      // loop as one closed chain starting and ending at the head node
+      let ring = []; head.cyc.forEach(([e, from]) => { const p = orient(e, from); ring.push(...(ring.length ? p.slice(1) : p)); });
+      const back = [...ring].reverse();
+      const arrive = r => { const [x0, y0] = tsXY(G, r[r.length - 12]), [x1, y1] = tsXY(G, r[r.length - 1]); const l = Math.hypot(x1 - x0, y1 - y0) || 1; return [(x1 - x0) / l, (y1 - y0) / l]; };
+      const dot = (a, b) => a[0] * b[0] + a[1] * b[1];
+      let r = dot(arrive(ring), dOut) >= dot(arrive(back), dOut) ? ring : back;
+      if (fix.flip && ci === 0) r = r === ring ? back : ring;
+      head.edges.forEach(e => vis.add(e.k)); path.push(...r);
+    } else {
+      const ends = nodesC.filter(n => degC(n) === 1).map(n => G.nodes[n]);
+      const pool = ends.length ? ends : nodesC.map(n => G.nodes[n]);
+      pool.sort((a, b) => fix.start === 'right' ? b.x - a.x : fix.start === 'top' ? a.y - b.y : fix.start === 'bottom' ? b.y - a.y : (a.x - b.x) || (a.y - b.y));
+      cur = pool[0].id;
+    }
+    let dIn = path.length > 12 ? (() => { const [x0, y0] = tsXY(G, path[path.length - 12]), [x1, y1] = tsXY(G, path[path.length - 1]); const l = Math.hypot(x1 - x0, y1 - y0) || 1; return [(x1 - x0) / l, (y1 - y0) / l]; })() : null;
+    let guard = 0;
+    while (c.some(e => !vis.has(e.k)) && guard++ < 60) {
+      const open = c.filter(e => !vis.has(e.k) && (e.a === cur || e.b === cur));
+      // a short leg that dead-ends (ค ฅ down to the foot) is drawn first and come back up, as Thai hands do
+      const deg1 = n => c.filter(e => e.a === n || e.b === n).length === 1;
+      const leg = open.length > 1 && open.find(e => { const far = e.a === cur ? e.b : e.a; return far !== cur && deg1(far) && tsLen(e) < 160; });
+      if (leg) { const p = orient(leg, cur); take(leg, cur); path.push(...[...p].reverse().slice(1));
+        const [x0, y0] = tsXY(G, p[Math.min(12, p.length - 1)]), [x1, y1] = tsXY(G, p[0]); const l = Math.hypot(x1 - x0, y1 - y0) || 1; dIn = [(x1 - x0) / l, (y1 - y0) / l]; continue; }
+      if (open.length) {
+        open.sort((e, f) => { const s = g => dIn ? -(dIn[0] * tsDir(G, orient(g, cur), 12)[0] + dIn[1] * tsDir(G, orient(g, cur), 12)[1]) : 0; return s(e) - s(f); });
+        const e = open[0]; const p = orient(e, cur); cur = take(e, cur);
+        const [x0, y0] = tsXY(G, p[Math.max(0, p.length - 12)]), [x1, y1] = tsXY(G, p[p.length - 1]); const l = Math.hypot(x1 - x0, y1 - y0) || 1; dIn = [(x1 - x0) / l, (y1 - y0) / l];
+        continue;
+      }
+      // stuck: go back along drawn edges to the nearest node that still has an open edge (pen stays down)
+      const dist = new Map([[cur, 0]]), via = new Map(), q = [cur];
+      while (q.length) { const n = q.shift(); c.filter(e => vis.has(e.k) && (e.a === n || e.b === n)).forEach(e => { const m2 = e.a === n ? e.b : e.a; if (!dist.has(m2)) { dist.set(m2, dist.get(n) + 1); via.set(m2, [e, n]); q.push(m2); } }); }
+      const target = [...dist.keys()].find(n => c.some(e => !vis.has(e.k) && (e.a === n || e.b === n)));
+      if (target == null) break;
+      const hop = []; let t = target; while (t !== cur) { const [e, n] = via.get(t); hop.unshift([e, n]); t = n; }
+      hop.forEach(([e, n]) => { const p = orient(e, n); path.push(...p.slice(1)); cur = e.a === n ? e.b : e.a; });
+      dIn = null;
+    }
+    out.push(path.map(i => tsXY(G, i)));
+    strokes.push(...out);
+  });
+  return strokes;
+}
+function tsSimplify(pts, eps) {
+  if (pts.length < 3) return pts;
+  let dmax = 0, idx = 0; const [ax, ay] = pts[0], [bx, by] = pts[pts.length - 1], L = Math.hypot(bx - ax, by - ay) || 1;
+  for (let i = 1; i < pts.length - 1; i++) { const d = Math.abs((by - ay) * pts[i][0] - (bx - ax) * pts[i][1] + bx * ay - by * ax) / L; if (d > dmax) { dmax = d; idx = i; } }
+  if (dmax > eps) return [...tsSimplify(pts.slice(0, idx + 1), eps).slice(0, -1), ...tsSimplify(pts.slice(idx), eps)];
+  return [pts[0], pts[pts.length - 1]];
+}
+function tsSmooth(pts) { // light moving average so the pixel staircase reads as a pen line; ends stay put
+  return pts.map((p, i) => { if (i < 2 || i > pts.length - 3) return p; let x = 0, y = 0; for (let k = -2; k <= 2; k++) { x += pts[i + k][0]; y += pts[i + k][1]; } return [x / 5, y / 5]; });
+}
+function traceGlyph(str, fix = {}, sub = null) {
+  const m = tsThin(tsMask(str, TS.X0, sub));
+  const G = tsPrune(tsContract(tsPrune(tsGraph(m), fix.prune || 30), 22), fix.prune || 30);
+  return tsWalk(G, fix).map(s => tsSimplify(tsSmooth(s), 0.9).map(([x, y]) => [Math.round(x), Math.round(y)]));
+}
+
+// Per-letter fixes found by eye on the review sheet. prune 12 keeps the small flags (ช ซ ศ ส ฃ ฅ ฬ) and ต's notch.
+const FIX = {};
+for (const c of 'ชซศสฃฅฬต') FIX[c] = { prune: 12 };
+function tsBounds(str, sub) { const m = tsMask(str, TS.X0, sub); let x0 = 1e9, y0 = 1e9, x1 = -1, y1 = -1;
+  for (let i = 0; i < m.length; i++) if (m[i]) { const x = i % TS.W, y = Math.floor(i / TS.W); if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
+  return [x0, y0, x1, y1]; }
+
+/* ---------- How to write it (Dutch 1125) ----------
+   The pen path is traced from the Sarabun glyph in the browser (code from scripts/thai-strokes.js):
+   start at the head, go round it, follow the stroke; a short leg that dead-ends is drawn first and come back up.
+   The panel draws the letter large on guide lines, a star where the pen starts, then the line drags out with an
+   arrowhead riding its tip. Replay and Slow buttons. Look-alike groups sit under it with the difference circled. */
+const HW={cache:{},slow:false,run:0};
+const LOOK=[['ข','ช','ซ'],['ค','ด','ต'],['บ','ป','ษ'],['พ','ฟ','ผ','ฝ'],['ถ','ภ']];
+// red circles in the tracer's 300px coordinates: [x, y, r]
+const LOOKC={'ข':[[233,262,28]],'ช':[[238,253,30]],'ซ':[[150,262,24],[238,256,28]],
+ 'ค':[[176,325,36]],'ด':[[176,330,36]],'ต':[[177,268,26]],
+ 'บ':[[248,262,26]],'ป':[[251,196,28]],'ษ':[[212,322,42]],
+ 'พ':[[126,272,30]],'ฟ':[[271,198,28]],'ผ':[[145,275,30]],'ฝ':[[241,198,28]],
+ 'ถ':[[145,388,32]],'ภ':[[145,318,30]]};
+function hwData(key){ // key 'L:ก' or 'V:เกาะ'
+ if(HW.cache[key])return HW.cache[key];
+ const [t,th]=[key[0],key.slice(2)]; let st,b;
+ if(t==='L'){st=traceGlyph(th,FIX[th]||{});b=tsBounds(th)}
+ else{const g=document.createElement('canvas').getContext('2d');g.font=`400 ${TS.FS}px Sarabun`;const i=th.indexOf('ก'),x=TS.X0+g.measureText(th.slice(0,i)).width;
+  st=traceGlyph(th,{ltr:true,...(FIX[th]||{})},{ch:'ก',x});b=tsBounds(th)}
+ return HW.cache[key]={st,b,top:HW.top??(HW.top=tsBounds('ก')[1])};
+}
+const hwPath=p=>'M'+p.map(q=>q.join(' ')).join('L');
+function hwSVG(key){
+ const d=hwData(key),[x0,y0,x1,y1]=d.b,top=d.top,base=TS.BASE,mid=(top+base)/2,pad=34;
+ const vx=x0-pad,vy=Math.min(y0,top)-pad,vw=x1-x0+2*pad,vh=Math.max(y1,base)+pad-vy, th=key.slice(2);
+ const s0=d.st[0]&&d.st[0][0];
+ const star=(x,y,r)=>{let p='';for(let i=0;i<10;i++){const a=-Math.PI/2+i*Math.PI/5,rr=i%2?r*.45:r;p+=(i?'L':'M')+(x+rr*Math.cos(a)).toFixed(1)+' '+(y+rr*Math.sin(a)).toFixed(1)}return p+'Z'};
+ return `<svg class="hwsvg" viewBox="${vx} ${vy} ${vw} ${vh}" role="img" aria-label="How to write ${th}">
+  <line class="hwg" x1="${vx}" x2="${vx+vw}" y1="${top}" y2="${top}"/><line class="hwg hwm" x1="${vx}" x2="${vx+vw}" y1="${mid}" y2="${mid}"/><line class="hwg" x1="${vx}" x2="${vx+vw}" y1="${base}" y2="${base}"/>
+  <text class="hwt" x="${TS.X0}" y="${base}" font-size="${TS.FS}">${th}</text>
+  ${d.st.map((p,i)=>`<path class="hwp" data-i="${i}" d="${hwPath(p)}"/>`).join('')}
+  ${d.st.slice(1).map((p,i)=>`<g class="hwn" data-i="${i+1}"><circle cx="${p[0][0]}" cy="${p[0][1]}" r="15"/><text x="${p[0][0]}" y="${p[0][1]+7}">${i+2}</text></g>`).join('')}
+  ${s0?`<path class="hwstar" d="${star(s0[0],s0[1],22)}"/>`:''}
+  <path class="hwtip" d="M-16 -13 L16 0 L-16 13 Z" style="opacity:0"/></svg>`;
+}
+function hwPanel(key,note){
+ const th=key.slice(2), grp=key[0]==='L'&&LOOK.find(g=>g.includes(th));
+ return `<div class="hw" data-hw="${key}">
+  ${note?`<p style="margin:0">${note}</p>`:''}
+  <div class="hwbox"><p class="hwwait">Loading the letter…</p></div>
+  <p class="hwkey"><span class="hwkstar">★</span> start here · the line draws in the direction the pen moves${key[0]==='V'?' · gray letter = any letter':''}</p>
+  <div class="chips"><button class="chip" data-hwplay="1">Replay</button><button class="chip" data-hwslow="1" aria-pressed="${HW.slow}">Slow</button></div>
+  ${grp?`<h3 style="margin:8px 0 0">Look-alikes</h3><p style="margin:0;color:var(--soft)">Easy to mix up. The red circle marks what is different.</p>
+  <div class="hwlook" data-look="${grp.join('')}"></div>`:''}
+ </div>`;
+}
+function hwLook(el){
+ const g=[...el.dataset.look];
+ el.innerHTML=g.map(c=>{const b=tsBounds(c),pad=24,l=LET.find(x=>x[0]===c),cur=c===letterSel;
+  return `<button class="hwla${cur?' cur':''}" data-letter="${c}" aria-label="${c}, ${l[5]}"><svg viewBox="${b[0]-pad} ${Math.min(b[1],180)-pad} ${b[2]-b[0]+2*pad} ${Math.max(b[3],TS.BASE)-Math.min(b[1],180)+2*pad}">
+   <text class="hwlt" x="${TS.X0}" y="${TS.BASE}" font-size="${TS.FS}">${c}</text>${(LOOKC[c]||[]).map(([x,y,r])=>`<circle class="hwc" cx="${x}" cy="${y}" r="${r}"/>`).join('')}</svg><span>${l[5]}</span></button>`}).join('');
+}
+async function hwFill(root){
+ const boxes=[...root.querySelectorAll('.hw')].filter(h=>h.closest('details')?.open&&!h.dataset.done);
+ if(!boxes.length)return;
+ try{await document.fonts.load(`400 ${TS.FS}px Sarabun`,'กข')}catch(e){}
+ boxes.forEach(h=>{h.dataset.done='1';h.querySelector('.hwbox').innerHTML=hwSVG(h.dataset.hw);const lk=h.querySelector('.hwlook');if(lk)hwLook(lk);hwPlay(h)});
+}
+function hwPlay(h){
+ const svg=h.querySelector('.hwsvg'); if(!svg)return; const run=++HW.run; h.dataset.run=run;
+ const ps=[...svg.querySelectorAll('.hwp')], tip=svg.querySelector('.hwtip'), nums=[...svg.querySelectorAll('.hwn')];
+ const L=ps.map(p=>p.getTotalLength()); ps.forEach((p,i)=>{p.style.strokeDasharray=L[i];p.style.strokeDashoffset=L[i]}); nums.forEach(n=>n.style.opacity=0);
+ const speed=()=>HW.slow?110:330; let i=0,d=0,last=null,pause=350;
+ const step=t=>{
+  if(h.dataset.run!=run||!svg.isConnected)return;
+  if(last==null)last=t; const dt=Math.min(64,t-last); last=t;
+  if(pause>0){pause-=dt;requestAnimationFrame(step);return}
+  d+=speed()*dt/1000; const p=ps[i];
+  if(d>=L[i]){p.style.strokeDashoffset=0;i++;d=0;if(i>=ps.length){tip.style.opacity=0;return}pause=450;const n=nums.find(n=>+n.dataset.i===i);if(n)n.style.opacity=1;requestAnimationFrame(step);return}
+  p.style.strokeDashoffset=L[i]-d;
+  const a=p.getPointAtLength(d),b=p.getPointAtLength(Math.min(L[i],d+4)),ang=Math.atan2(b.y-a.y,b.x-a.x)*180/Math.PI;
+  tip.setAttribute('transform',`translate(${a.x} ${a.y}) rotate(${ang})`);tip.style.opacity=1;
+  requestAnimationFrame(step)};
+ requestAnimationFrame(step);
+}
+document.addEventListener('toggle',e=>{if(e.target.matches&&e.target.matches('details')&&e.target.open&&e.target.querySelector('.hw'))hwFill(e.target)},true);
+
+/* ---------- Ending sounds (Dutch 1125) ----------
+   At the end of a word the sound is clipped: tongue or lips close and stop without letting the sound out. */
+const ENDGRP=[['clipped k','กขคฆ'],['clipped t','ดตถทธฎฏฐฑฒจชซฌศษส'],['clipped p','บปพฟภ'],['n','นณญรลฬ'],['m','ม'],['ng','ง'],['i glide','ย','like "eye"'],['o/u glide','ว','like "now"']];
+const ENDEX=[['ลด','lót','reduce','ด','t'],['มีด','mêet','knife','ด','t'],['รถ','rót','car','ถ','t'],['ชาติ','châat','nation','ต','t'],['ลาภ','lâap','fortune','ภ','p'],['อาหาร','aa-hǎan','food','ร','n'],['ผล','phǒn','fruit, result','ล','n']];
+const endOf=c=>{const g=ENDGRP.find(x=>x[1].includes(c));return g?g[0]:null};
+function endChart(){
+ return `<h2>Ending sounds</h2>
+ <p>At the end of a word the sound is clipped. The tongue or lips close and stop, without letting the sound out. Many letters change their sound at the end.</p>
+ <div class="endt">${ENDGRP.map(([s,cs,like])=>`<div class="endr"><b>Ends as ${s}${like?` <span style="font-weight:400;color:var(--soft)">(${like})</span>`:''}</b><span lang="th">${[...cs].join(' ')}</span></div>`).join('')}</div>
+ <h3 style="margin:6px 0 0">Examples</h3>
+ <div>${ENDEX.map(([th,p,en,c,s])=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,p)}</span><span style="font-size:18px">${ph(p)}</span><span class="en">${en} · <span lang="th">${c}</span> → ${s}</span></div><div class="acts">${sayBtn(th,en)}</div></div>`).join('')}</div>`;
+}
+V.endings=()=>`<button class="back" data-go="letters">‹ Vowels and Letters</button><h1>Ending Sounds</h1><section class="card">${endChart()}</section>`;
+// the note under a word's Say line, when its last letter sounds different at the end than at the start
+function endNote(th,phs){
+ th=(th||'').replace(/<[^>]+>/g,''); if(!th||!phs||/\s/.test(th.trim()))return '';
+ const ch=[...th], S=silIdx(th); let i=ch.length-1;
+ while(i>=0&&(S.has(i)||/[่-์]/.test(ch[i])))i--;
+ if(i<0||!isC(ch[i]))return '';
+ const l=LET.find(x=>x[0]===ch[i]); if(!l||!/^(k|t|p|n|m|ng)$/.test(l[6])||l[5]===l[6])return '';
+ const last=phs.split(/[ \-]/).filter(x=>/[a-zA-ZÀ-ɏ]/.test(x)).pop()||'', coda=(last.normalize('NFD').replace(/[̀-ͯ]/g,'').match(/(ng|[kptmn])$/)||[])[1];
+ if(coda!==l[6])return '';
+ return `<button class="endnote" data-endings="1"><span lang="th">${l[0]}</span> at the end = ${/^[ktp]$/.test(l[6])?'clipped ':''}${l[6]}</button>`;
+}
+const startEnd=l=>{const st=l[5]==='(catch)'?'no sound of its own':l[5], e=l[6]==='—'?'not used at the end':l[6]==='vowel'?'part of a vowel':endOf(l[0])||l[6];
+ return `<p class="stend">At the start: <b>${st}</b> &nbsp; At the end: <b>${e}</b></p>`};
+
 const app=document.getElementById('app');
 function current(){const h=location.hash.slice(1);return V[h]?h:store.get('view','start')}
 let view='start';
@@ -2710,7 +3061,7 @@ function render(keep){
  loadVoice();
  if(!V[view])view='start';
  app.innerHTML=V[view](); markTh(app);
- document.getElementById('tabs').innerHTML=NAV.map(n=>`<button data-go="${n[0]}"${n[0]===(view==='course'?'lessons':view)?' aria-current="page"':''}><span class="g" lang="th">${n[1]}</span><span>${n[2]}</span></button>`).join('');
+ document.getElementById('tabs').innerHTML=NAV.map(n=>`<button data-go="${n[0]}"${n[0]===(view==='course'?'lessons':view==='endings'?'letters':view)?' aria-current="page"':''}><span class="g" lang="th">${n[1]}</span><span>${n[2]}</span></button>`).join('');
  if(!keep)window.scrollTo(0,0);
 }
 function go(v){view=v;store.set('view',v);try{history.replaceState(null,'','#'+v)}catch(e){location.hash=v}render()}
@@ -2727,6 +3078,9 @@ document.addEventListener('click',e=>{
  if(d.pick){findQ=d.pick;findSel=null;render();return}
  if(d.open){const en=entryByTh(d.open);findSel=d.open;if(en)findQ=en.en;go('find');return}
  if(d.big){const b=document.getElementById('bigv');b.innerHTML=`<div class="in"><h2>How to read the drawing</h2>${mouth(d.big)}<p>This is a head cut in half and seen from the side, with the face looking left. The lips and teeth are on the left and the throat is on the right.</p><p>The pink band is the tongue. Its tip points left toward the teeth. Its back sits on the right, near the soft roof of the mouth.</p><p>The red circle marks the spot where the mouth does the work. Red dashes mean the air leaves through the nose. A vowel drawing has no circle, because only the shape of the tongue matters.</p><button class="next" data-unbig="1" style="justify-self:start">Close</button></div>`;b.hidden=false;b.scrollTop=0;return}
+ if(d.hwplay){const h=b.closest('.hw');if(h)hwPlay(h);return}
+ if(d.hwslow){HW.slow=!HW.slow;document.querySelectorAll('[data-hwslow]').forEach(x=>x.setAttribute('aria-pressed',HW.slow));const h=b.closest('.hw');if(h)hwPlay(h);return}
+ if(d.endings){const bv=document.getElementById('bigv');bv.innerHTML=`<div class="in">${endChart()}<button class="next" data-unbig="1" style="justify-self:start">Close</button></div>`;markTh(bv);bv.hidden=false;bv.scrollTop=0;return}
  if(d.classes){const b=document.getElementById('bigv');b.innerHTML=`<div class="in">${CLASSCARD}<button class="next" data-unbig="1" style="justify-self:start">Close</button></div>`;markTh(b);b.hidden=false;b.scrollTop=0;return}
  if(d.unbig){document.getElementById('bigv').hidden=true;return}
  if(d.les){lesson=LESSONS.find(l=>l.id===d.les);T=null;render();return}
