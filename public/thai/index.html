@@ -343,6 +343,13 @@ details[open] > summary { margin-bottom: 10px; }
 .spp li { display: grid; grid-template-columns: 72px 1fr; gap: 10px; align-items: center; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
 .spp li:last-child { border-bottom: 0; }
 .spp .g { font: 500 48px/1.3 var(--f-thai); text-align: center; }
+.spord { display: grid; gap: 6px; border: 1.5px solid var(--line); border-radius: 6px; padding: 8px 10px; }
+.spord > div { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 6px; }
+.spord .k { flex-basis: 100%; font: 600 12px/1.3 var(--f-phon); letter-spacing: .08em; text-transform: uppercase; color: var(--soft); }
+.g2 { font: 500 30px/1.3 var(--f-thai); }
+.dotsep { color: var(--soft); padding: 0 2px; }
+.spblk { display: inline-block; border: 2px solid var(--gold); border-radius: 6px; padding: 0 6px; }
+.spnote { margin: 0; } .spnote .g2 { font-size: 24px; }
 .spp .hid { font: 700 18px var(--f-phon); color: var(--soft); text-align: center; }
 .spp .k { display: block; font-weight: 700; }
 .spp .flag { display: inline-block; margin-top: 3px; padding: 1px 6px; border-radius: 4px; background: var(--lac); color: var(--on-lac); font-size: 13px; font-weight: 700; }
@@ -1707,7 +1714,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 34</p>`;
+ <p class="score">App version 35</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1872,7 +1879,7 @@ function toneNote(th){
  const sh=m.map(c=>'\u25CC'+c), nm=m.map(c=>TONEMK[c]), and=a=>a.length<2?a[0]:a.slice(0,-1).join(', ')+' and '+a[a.length-1];
  return `<span class="tnote">${m.length<2?`The small mark stacked on top, <span lang="th">${sh[0]}</span>, is a tone mark (${nm[0]}). It is not part of the vowel. It only sets the pitch of the voice.`:`The small marks stacked on top, <span lang="th">${and(sh)}</span>, are tone marks (${and(nm)}). They are not part of the vowel. They only set the pitch of the voice.`}</span>`;
 }
-function wordRow(th,phs,en,note){return `<div class="phr"><div class="body"><span class="tw" lang="th">${th}</span><span class="inkph" style="font-size:18px">${ph(phs)}</span>${endNote(th,phs)}<span class="en">${en}</span>${silNote(th,phs)}${note||''}</div><div class="acts">${sayBtn(th.replace(/<[^>]+>/g,''),en)}</div></div>`}
+function wordRow(th,phs,en,note){return `<div class="phr"><div class="body"><span class="tw" lang="th">${th}</span><span class="inkph" style="font-size:18px">${ph(phs)}</span>${endNote(th,phs)}<span class="en">${en}</span>${silNote(th,phs)}${note||''}</div><div class="acts">${spBtn(th.replace(/<[^>]+>/g,''),phs,en)}${sayBtn(th.replace(/<[^>]+>/g,''),en)}</div></div>`}
 function vowelWordsHTML(v){
  const g=vowelGroups(v), mark=w=>w.sy.map((x,i)=>i===w.hit&&w.sy.length>1?`<span class="hl">${x}</span>`:x).join('');
  const tot=g.open.length+g.closed.length+g.other.length;
@@ -2014,7 +2021,7 @@ V.lessons=()=>{
 function learnView(){
  const l=lesson, s=ALL.find(x=>x.k===l.tip), u=fill(l.use);
  return `<button class="back" data-lback="1">‹ All lessons</button><h1>${l.title}</h1><p class="lede">${l.note}</p>
- <div>${l.w.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(w[0],w[1])}</span><span style="font-size:18px">${ph(w[1])}</span>${endNote(w[0],w[1])}<span class="en">${w[2]}</span>${silNote(w[0],w[1])}</div><div class="acts"><button class="wlink" data-open="${w[0]}">Letters</button>${sayBtn(w[0],w[2])}</div></div>`).join('')}</div>
+ <div>${l.w.map(w=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(w[0],w[1])}</span><span style="font-size:18px">${ph(w[1])}</span>${endNote(w[0],w[1])}<span class="en">${w[2]}</span>${silNote(w[0],w[1])}</div><div class="acts">${spBtn(w[0],w[1],w[2])}<button class="wlink" data-open="${w[0]}">Letters</button>${sayBtn(w[0],w[2])}</div></div>`).join('')}</div>
  <section class="card"><h3>Use it in a sentence</h3><div class="word"><span class="tw" lang="th">${tsy(u[0],u[1])}</span></div><div class="staffed">${sayBtn(u[0],l.use[2])}<span style="font-size:18px">${ph(u[1])}</span></div><p style="color:var(--soft)">${l.use[2]}</p></section>
  <section class="card"><h3>Sound to watch: ${s.k}</h3><p class="like">${s.like}</p>${footnote(s)}</section>
  <button class="next" data-ltest="1" style="justify-self:start">Take the test</button>`;
@@ -2322,7 +2329,7 @@ function entryCard(e){
  if(sent){const comps=sent.words.flatMap(x=>x.solo?[{...x.comps[0],th:x.th,ph:x.ph,mean:x.en,syls:x.comps.flatMap(c=>c.syls)}]:x.comps); comps.push(politeComp(sent.pol));
   sentHTML=`<div class="stack" style="gap:10px"><h3>In a sentence</h3>${wordsBlock(comps,sent.m,comps.map(c=>c.mean.replace(/^polite word, (man|woman) speaking$/,'(polite)')).join(' + '),true)}</div>`}
  const long=sylls.length>3, sounds=soundsIn(w.ph);
- return `<article class="card"><div class="bigw"><div><div class="tw" lang="th">${tsy(w.th,w.ph)}</div><p style="color:var(--soft)">${e.en}</p></div>${sayBtn(w.th,e.en)}</div>
+ return `<article class="card"><div class="bigw"><div><div class="tw" lang="th">${tsy(w.th,w.ph)}</div><p style="color:var(--soft)">${e.en}</p></div><div class="acts">${spBtn(w.th,w.ph,e.en)}${sayBtn(w.th,e.en)}</div></div>
   <div style="font-size:24px">${ph(w.ph)}</div>${endNote(w.th,w.ph)}
   ${silNote(w.th,w.ph).replace('<span class="silnote">','<p class="silnote" style="margin:0">').replace(/<\/span>$/,'</p>')}
   ${tips.length?`<ul class="tips">${tips.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}${endsSmile(w.ph)?`<p class="smile">${SMI}<span>This ends on a smile sound. Widen the lips at the end.</span></p>`:''}
@@ -2619,7 +2626,7 @@ function spSyl(y,many,i){
  let vl;
  if(!v)vl=`No vowel is written. A hidden short <b>${vk}</b> is said: ${as}`;
  else{const parts=v[0].split(/◌| \+ /).filter(Boolean);vl=`${parts.length>1?parts.map(x=>`<span class="g" lang="th">${x}</span>`).join(' + ')+' joined → ':''}<span class="g" lang="th">${v[0]}</span> = <b>${vk}</b>. ${/^[A-Z]/.test(as)?as:'Sounds like '+as}${v[2]?' '+v[2]:''}`}
- return `<div class="spsy">${many?`<h3>Syllable ${i+1}: <span lang="th">${th}</span> · ${r}</h3>`:''}
+ return `<div class="spsy">${many?`<h3>Syllable ${i+1}: <span lang="th">${th}</span> · ${r}</h3>`:''}${spOrderHTML(th,r)}
   <ol class="spp">${toks.split(' ').map(x=>spPiece(x,r)).join('')}</ol>
   <p class="spv"><b>Vowel.</b> ${vl}</p>
   <p class="spt"><b>Tone.</b> ${why} = <b class="t-${t}">${TNAME[t]} tone</b> → <b class="t-${t}" style="font-family:var(--f-phon)">${spSay(r)}</b></p></div>`;
@@ -2630,10 +2637,65 @@ function openSpell(b){
  z.innerHTML=`<div class="zin spin" role="dialog" aria-modal="true" aria-label="How ${w} is spelled"><button class="zx" data-unzoom="1" aria-label="Close">×</button>
   <h2>How it's spelled</h2><div class="spw" lang="th">${tsy(w,r)}</div>
   <div class="sphd"><span style="font-size:19px">${ph(r)}</span><span class="en">"${l[3]}"</span>${sayBtn(w,l[3])}</div>
-  <p style="margin:0;color:var(--soft)">Each piece in the order it is written, left to right.${Y.length>1?` ${Y.length} syllables.`:''}</p>
-  ${Y.map((y,i)=>spSyl(y,Y.length>1,i)).join('')}</div>`;
+  <p style="margin:0;color:var(--soft)">Thai is not always said in the order it is written. Each syllable shows both, then every piece in written order.${Y.length>1?` ${Y.length} syllables.`:''}</p>
+  ${Y.map((y,i)=>spSyl(y,Y.length>1,i)).join('')}${spFinalNote(w,r)}</div>`;
  z.hidden=false; markDc(z); markSil(z); z.querySelector('.zin').scrollTop=0; z.querySelector('.zx').focus();
 }
+/* How it's spelled, for every word (Dutch 1125): written order vs spoken order per syllable, consonant clusters
+   shown as one joined block, the front-vowel-before-a-cluster note, and the ล ร ญ ณ ฬ = n ending note.
+   Built from anaSyl, so it works on any word whose sound line splits into syllables. */
+const CLUS={kr:'"cr" in "scrap"',kl:'"cl" in "clock"',kw:'"qu" in "squid"',khr:'"cr" in "cry"',khl:'"cl" in "clean"',khw:'"qu" in "quick"',tr:'"tr" in "strip"',pr:'"pr" in "spring"',pl:'"pl" in "split"',phr:'"pr" in "pray"',phl:'"pl" in "play"'};
+const NFINAL='ลรญณฬ';
+function spSyls(th,ph){ // [[thai syllable, romanized]] or null
+ const seg=sylSeg(th,ph); if(seg)return seg.filter(x=>x[2]).map(x=>[x[0],x[2]]);
+ const r=ph.split(/[ \-]/).filter(x=>/[a-zA-ZÀ-ɏ]/.test(x)); return r.length===1?[[th.replace(/\s/g,''),r[0]]]:null;
+}
+function spOrder(x,r){ // the two rows for one syllable, plus cluster / front-vowel notes
+ let a; try{a=anaSyl(x,r)}catch(e){return null}
+ const P=a.pieces, on=a.S.on, st=P.find(p=>p.kind==='Starting letter'), sec=P.find(p=>p.kind==='Second letter');
+ const vs=P.filter(p=>/^Vowel|^Hidden vowel|^Letter-vowel/.test(p.kind)), end=P.find(p=>p.kind==='Ending');
+ const lead=vs.find(p=>LEADV.includes(p.th));
+ const g=t=>`<span class="g2" lang="th">${t}</span>`;
+ const written=P.map(p=>p.hid?'<span class="hid">( )</span>':g(dot(p.th))).join('<span class="dotsep">·</span>');
+ const nuc=STRIP[a.S.nuc]&&end&&/^-(y|w)$/.test(end.say)?STRIP[a.S.nuc][0]:a.S.nuc;
+ const parts=[];
+ if(sec)parts.push(`<span class="spblk">${g(st.th+sec.th)}</span> (${on})`); else if(st)parts.push(`${g(st.th)} (${on||'no sound'})`);
+ if(vs.length)parts.push(`${vs.some(v=>v.hid)?'<span class="hid">( )</span>':g(vs.map(v=>dot(v.th)).join(''))} (${nuc})`);
+ if(end)parts.push(`${g(end.th)} (${end.say})`);
+ const notes=[];
+ if(sec)notes.push(`<span class="spblk">${g(st.th+sec.th)}</span> = <b>${on}</b>${CLUS[on]?` (like ${CLUS[on]})`:''}: two letters said as one sound, with no vowel between.`);
+ if(lead&&sec)notes.push(`${g(lead.th)} is written first, but it is said after the <b>whole</b> cluster ${g(st.th+sec.th)}, not after ${g(st.th)} alone.`);
+ else if(lead&&st)notes.push(`${g(lead.th)} is written first, but it is said after ${g(st.th)}.`);
+ return {written,spoken:parts.join(' + ')+` = <b>${r}</b>`,notes,end,sec,a};
+}
+function spOrderHTML(x,r){
+ const o=spOrder(x,r); if(!o)return '';
+ return `<div class="spord"><div><span class="k">Written order</span>${o.written}</div><div><span class="k">Spoken order</span>${o.spoken}</div></div>${o.notes.map(n=>`<p class="spnote">${n}</p>`).join('')}`;
+}
+function spFinalNote(th,ph){ // ล ร ญ ณ ฬ at the end are n
+ const S=spSyls(th,ph); if(!S)return '';
+ const o=S.map(([x,r])=>spOrder(x,r)), lastC=[...th.trim()].filter(c=>!/[\u0E48-\u0E4C]/.test(c)).pop();
+ const endN=o.map(q=>q&&q.end&&NFINAL.includes(q.end.th)?q.end.th:null).filter(Boolean);
+ const lastO=o[o.length-1], clusEnd=lastO&&lastO.sec&&NFINAL.includes(lastO.sec.th)&&lastO.sec.th===lastC&&!lastO.end;
+ if(!endN.length&&!clusEnd)return '';
+ const base=`<b>Ending letters.</b> <span lang="th">ล ร ญ ณ ฬ</span> at the end of a word are said as <b>n</b>, never l or r.`;
+ return `<p class="spnote">${base} ${clusEnd?`So <span lang="th">${th}</span> could never be "${lastO.a.S.on.replace(/[lr]$/,'')}${lastO.a.S.nuc}${lastO.sec.th==='ล'?'l':'r'}": the <span lang="th">${lastO.sec.th}</span> here belongs to the cluster at the start.`:`Here ${[...new Set(endN)].map(c=>`<span lang="th">${c}</span>`).join(', ')} at the end ${endN.length>1?'are':'is'} said n.`}</p>`;
+}
+function openSpellAny(th,phs,en){
+ const S=spSyls(th,phs), z=document.getElementById('zoomv');
+ const body=S?S.map(([x,r],i)=>{let a;try{a=anaSyl(x,r)}catch(e){a=null}
+  return `<div class="spsy">${S.length>1?`<h3>Syllable ${i+1}: <span lang="th">${x}</span> · ${r}</h3>`:''}${spOrderHTML(x,r)}
+   ${a?`<ol class="spp">${a.pieces.map(p=>`<li>${p.hid?'<span class="hid g">( )</span>':`<span class="g" lang="th">${dot(p.th)}</span>`}<span><span class="k">${p.kind}</span>${p.note}</span></li>`).join('')}</ol><p class="spt"><b>Tone.</b> ${a.toneNote}</p>`:''}</div>`}).join('')
+  :`<p>This word's sound line does not split cleanly into syllables, so it can't be taken apart here.</p>`;
+ z.innerHTML=`<div class="zin spin" role="dialog" aria-modal="true" aria-label="How ${th} is spelled"><button class="zx" data-unzoom="1" aria-label="Close">×</button>
+  <h2>How it's spelled</h2><div class="spw" lang="th">${tsy(th,phs)}</div>
+  <div class="sphd"><span style="font-size:19px">${ph(phs)}</span>${en?`<span class="en">"${en}"</span>`:''}${sayBtn(th,en||th)}</div>
+  <p style="margin:0;color:var(--soft)">Thai is not always said in the order it is written. Each syllable shows both.</p>
+  ${body}${spFinalNote(th,phs)}</div>`;
+ z.hidden=false; markDc(z); markSil(z); z.querySelector('.zin').scrollTop=0; z.querySelector('.zx').focus();
+}
+const spBtn=(th,phs,en)=>/\s/.test(th.trim())||!phs?'':`<button class="wlink" data-spw="${th}" data-sph="${phs}" data-sen="${(en||'').replace(/"/g,'&quot;')}">Spelled</button>`;
+
 function nameLine(l){return `<p class="lname">Its name: <b>${l[1]}</b> (say: ${plain(l[1])}). The first word is the letter's sound; the second word, <button class="spl" data-spell="${l[2]}" lang="th" aria-label="How ${l[2]} is spelled">${l[2]}</button> "${l[3]}," is the word it stands for — like "A as in apple." Thais always say both words together.</p>`}
 // Short o with no mark: worked example and more words, each with a speaker button (Dutch 1123)
 const HIDDEN_O=`<p style="margin:0"><b>Example:</b> <span lang="th">คน</span> = k + o + n = <b>khon</b>, "person."</p>
@@ -2663,7 +2725,7 @@ function cVowelCard(k){
   ${k==='ai'?'<p style="margin:0">Also written <span lang="th" style="font:500 26px var(--f-thai)">ใ◌</span> in twenty common words, said the same.</p>':''}
   ${sameLine(v)}</section>`;
 }
-function cColorRow(th,phs,en){return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,phs)}</span><span style="font-size:18px">${ph(phs)}</span>${endNote(th,phs)}<span class="en">${en}</span>${silNote(th,phs)}</div><div class="acts">${sayBtn(th,en)}</div></div>`}
+function cColorRow(th,phs,en){return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,phs)}</span><span style="font-size:18px">${ph(phs)}</span>${endNote(th,phs)}<span class="en">${en}</span>${silNote(th,phs)}</div><div class="acts">${spBtn(th,phs,en)}${sayBtn(th,en)}</div></div>`}
 function cPhraseRow(p){const f=fill(p);return `<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(f[0],f[1])}</span><span style="font-size:18px">${ph(f[1])}</span><span class="en">${p[2]}</span>${silNote(f[0],f[1])}</div><div class="acts">${sayBtn(f[0],p[2])}</div></div>`}
 function cLearnView(){
  const L=C.L; let body='';
@@ -3071,6 +3133,7 @@ document.addEventListener('click',e=>{
  const zt=e.target.closest('.thz'); if(zt&&!e.target.closest('button')){openZoom(zt);return}
  const b=e.target.closest('button'); if(!b)return; const d=b.dataset;
  if(d.unzoom){closeZoom();return}
+ if(d.spw){openSpellAny(d.spw,d.sph,d.sen);return}
  if(d.spell){openSpell(b);return}
  if(d.written){go('written');const s=document.getElementById('w-'+d.written);if(s)s.scrollIntoView({block:'start'});return}
  if(d.wback){go('letters');const s=document.getElementById('vdetail');if(s)s.scrollIntoView({block:'center'});return}
