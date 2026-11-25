@@ -1,4 +1,11 @@
-// watchmans-desk 1101 V20.js
+// watchmans-desk 1125 V21.js
+// V21: loaded "The Built Crowd" (weekly-letter, week-ending, 25 November, standalone). Body from the attached
+// "The Built Crowd 1125 V2.docx" (the upload named V1; V2 is the file supplied, with a REVIEW copy listing its
+// changes). The docx masthead, title and deck are left out of the body (the page renders them from this entry);
+// Exodus 23:2 opens the body as a .wl-epigraph. Law supplied as "Following a multitude"; set to the existing
+// canonical string "Following a multitude to do evil" (V19, Bigger Is Not Blessed) so the chip is not split.
+// The supplied og:image path is not a field here: the card is the generator's 1200x630 at
+// /og/watchmans-desk/<slug>.v2.png (V6 convention, no ogImage). Thumb not committed.
 // V20: loaded "In the Likeness of Men" (field-brief, 1 November, standalone, status "filed"), Etsy Batch 1101 V1.
 // New law "No likeness of male or female" (Deuteronomy 4:16) — a TWELFTH canonical string, added to the
 // V12 list below; it duplicates no existing chip. The batch's `kindWord: "STUDY"`, `lawRef`,
@@ -115,6 +122,18 @@ export const STATUSES = {
 // string (a calendar date, or a phrase like "Ongoing") and is shown verbatim;
 // it is never parsed or sorted on. Give every new entry a sortDate.
 export const entries = [
+  {
+    slug: "the-built-crowd",
+    kind: "weekly-letter", status: "week-ending", date: "25 November 2026",
+    sortDate: "2026-11-25",
+    eyebrow: "",
+    title: "The Built Crowd",
+    deck: "The multitude you see may have been made for you to follow.",
+    body: "Yahuah wrote this into His Law because He knew the crowd would be the test. The verse has two halves. The first forbids following the many. The second forbids speaking up in a cause just to lean with the many. This week showed both halves at work.",
+    strapline: "Thou shalt not follow a multitude to do evil.",
+    law: "Following a multitude to do evil",
+    source: "standalone",
+  },
   {
     slug: "in-the-likeness-of-men",
     kind: "field-brief", status: "filed", date: "1 November 2026",
