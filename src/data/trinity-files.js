@@ -1,4 +1,6 @@
-// src/data/trinity-files.js · 1123 V9
+// src/data/trinity-files.js · 1125 V10
+// V10 (Etsy Handoff John 5-18 1125 V1): John 5:18 written and linked — "The Charge and the Answer"
+// (trinity-files-john-5-18). foundations ["VI"] — The Authority He Was Given. List total unchanged at 161.
 // V9 (Trinity Cleanup Upload 1123 V1): six coming "I am" entries removed (Matthew 14:27, John 4:14, 26, John 6:20,
 // John 8:24, 28, John 13:18-19, John 14:6); John 8:58 foundations cleared (Foundation IV, I AM, retired). Foundation ids
 // remapped to the renumbered list (VI->V, VII->VI, X->IX). List total 167 -> 161.
@@ -91,7 +93,7 @@ export const trinityFiles = [
   { ref: "John 1:14", section: "Gospels", foundations: [], claim: "“The Word was made flesh”" },
   { ref: "John 1:18", section: "Gospels", foundations: [], claim: "“The only begotten Son” — or “only begotten God”" },
   { ref: "John 2:19-21", section: "Gospels", foundations: ["VI"], title: "The Temple He Would Raise", deck: "Destroy or raise up — the same two words stand over every believer’s temple.", slug: "trinity-files-john-2-19-21" },
-  { ref: "John 5:18", section: "Gospels", foundations: [], claim: "“Making himself equal with God”" },
+  { ref: "John 5:18", section: "Gospels", foundations: ["VI"], title: "The Charge and the Answer", deck: "Two accusations, one sentence, and the Father named in the middle of it", slug: "trinity-files-john-5-18" },
   { ref: "John 7:37-38", section: "Gospels", foundations: [], claim: "“Rivers of living water”" },
   { ref: "John 8:58", section: "Gospels", foundations: [], title: "“Before Abraham Was, I Am”", deck: "Plain Greek words for being, not the divine Name of Exodus", slug: "trinity-files-john-8-58" },
   { ref: "John 10:1-16", section: "Gospels", foundations: [], claim: "“I am the good shepherd”" },

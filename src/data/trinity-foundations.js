@@ -1,4 +1,5 @@
-// src/data/trinity-foundations.js · 1123 V5
+// src/data/trinity-foundations.js · 1125 V6
+// V6 (Etsy Handoff John 5-18 1125 V1): Foundation VI, The Authority He Was Given, tally 2 -> 3 (John 5:18 now cites it).
 // V5 (Worship Upload 1123 V1): Foundation IV, Worship & the Throne of the Lamb, published at
 // /foundations/worship-throne-of-the-lamb; hand-typed "6 verses" dropped, Cited by computes from trinity-files.js.
 // V4 (Trinity Cleanup Upload 1123 V1): Foundation IV, I AM (egō eimi), retired and removed; the rest
@@ -27,7 +28,7 @@ export const trinityFoundations = [
   { id: "III", slug: "granville-sharp-rule", title: "The Granville Sharp Rule", desc: "The one-article \"God and Savior\" grammar — a man's rule, its real limits, and what it cannot prove.", tally: 3 },
   { id: "IV", slug: "worship-throne-of-the-lamb", title: "Worship & the Throne of the Lamb", desc: "The honor given to the Lamb passes through Him to the One on the throne." },
   { id: "V", slug: "the-titles-he-was-given", title: "The Titles He Was Given", desc: "Every title of Yahuah that lands on the Son is worn by gift — a shared title was never a shared identity.", tally: 5 },
-  { id: "VI", slug: "authority-he-was-given", title: "The Authority He Was Given", desc: "Why exousia — power handed down from the Father — names no second God.", tally: 2 },
+  { id: "VI", slug: "authority-he-was-given", title: "The Authority He Was Given", desc: "Why exousia — power handed down from the Father — names no second God.", tally: 3 },
   { id: "VII", slug: "three-named-together", title: "Three Named Together", desc: "Naming three in one breath joins them in one work — it never makes them one God." },
   { id: "VIII", slug: "spirit-of-yahuah", title: "The Spirit of Yahuah", desc: "The Spirit that speaks, teaches and grieves is the Father’s own breath and power — not a third person." },
   { id: "IX", slug: "one-sent-in-his-name", title: "The One Sent in His Name", desc: "A Yahuah verse fulfilled in the Son shows the Sender at work through the one He sent." },
