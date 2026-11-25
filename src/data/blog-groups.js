@@ -1,4 +1,5 @@
-// blog-groups 1122 V91.js
+// blog-groups 1125 V92.js
+// V92 (associations batch 77): rain-on-the-seed joins scripture-unfiltered (category Scripture Unfiltered). Map total 247 -> 248.
 // V91 (Etsy Load - Framed by the Light 1122 V1): framed-by-the-light joins buried-in-plain-sight. The Philippians 2:5-8
 // Trinity File stays out of this map like every trinity-files-* post. Map total 246 -> 247.
 // V90 (Torah Quick Scroll Handoff 1115 V1): the Leviticus, Numbers, and Deuteronomy series (series "leviticus", "numbers",
@@ -533,6 +534,7 @@ export const POST_GROUP = {
   'king-over-the-proud': 'scripture-unfiltered',
   'behold-now-behemoth': 'scripture-unfiltered',
   'behold-the-lamb': 'scripture-unfiltered',
+  'rain-on-the-seed': 'scripture-unfiltered',
 };
 
 export const groupOf = (slug) => POST_GROUP[slug] || null;
