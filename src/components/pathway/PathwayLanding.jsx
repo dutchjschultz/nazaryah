@@ -255,10 +255,10 @@ export default function PathwayLanding() {
           />
         </div>
 
-        {/* THE THREE PATHWAYS */}
+        {/* THE PATHWAYS */}
         <div className="mb-20 fade-up" style={{ animationDelay: '0.35s', opacity: 0, animationFillMode: 'forwards' }}>
           <p style={{ color: cream, opacity: 0.7, fontSize: '1.05rem', maxWidth: '38rem', lineHeight: 1.7, marginBottom: '2.5rem' }}>
-            Three pathways. Pick the one where the question is loudest in your own life — you don't
+            Two pathways. Pick the one where the question is loudest in your own life — you don't
             have to walk them in order.
           </p>
 
