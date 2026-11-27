@@ -1714,7 +1714,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 35</p>`;
+ <p class="score">App version 36</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -3002,12 +3002,30 @@ function tsSmooth(pts) { // light moving average so the pixel staircase reads as
 function traceGlyph(str, fix = {}, sub = null) {
   const m = tsThin(tsMask(str, TS.X0, sub));
   const G = tsPrune(tsContract(tsPrune(tsGraph(m), fix.prune || 30), 22), fix.prune || 30);
-  return tsWalk(G, fix).map(s => tsSimplify(tsSmooth(s), 0.9).map(([x, y]) => [Math.round(x), Math.round(y)]));
+  const S = tsWalk(G, fix).map(s => tsSimplify(tsSmooth(s), 0.9).map(([x, y]) => [Math.round(x), Math.round(y)]));
+  return fix.lift ? tsLift(S) : S;
+}
+// ◌ื has two ticks. The walk reaches the second one by going back over the arch; lift the pen instead:
+// the stroke ends at the top of the first tick, and the second tick is its own short stroke up from the arch.
+function tsLift(S) {
+  const out = [];
+  S.forEach(s => {
+    const top = Math.min(...s.map(p => p[1])), e = s[s.length - 1];
+    const j = s.findIndex((p, i) => i > 0 && i < s.length - 1 && p[1] - top < 4 && s[i + 1][1] > p[1]);
+    if (j < 0 || e[1] - top > 4) { out.push(s); return; }
+    const A = s.slice(0, j + 1), arch = A.filter(p => p[1] < top + 34).sort((a, b) => Math.abs(a[0] - e[0]) - Math.abs(b[0] - e[0]))[0];
+    out.push(A, [[e[0], arch ? arch[1] : e[1] + 16], e]);
+  });
+  return out;
 }
 
 // Per-letter fixes found by eye on the review sheet. prune 12 keeps the small flags (ช ซ ศ ส ฃ ฅ ฬ) and ต's notch.
 const FIX = {};
 for (const c of 'ชซศสฃฅฬต') FIX[c] = { prune: 12 };
+// prune 6 keeps พ ฟ's middle peak; 12 keeps ◌ุ's tail and ฌ's foot; ◌ื also lifts the pen for its second tick (Dutch 1127)
+for (const c of 'พฟ') FIX[c] = { prune: 6 };
+for (const c of ['ฌ', 'กุ', 'กุย']) FIX[c] = { prune: 12 };
+for (const c of ['กือ', 'เกือ']) FIX[c] = { prune: 12, lift: true };
 function tsBounds(str, sub) { const m = tsMask(str, TS.X0, sub); let x0 = 1e9, y0 = 1e9, x1 = -1, y1 = -1;
   for (let i = 0; i < m.length; i++) if (m[i]) { const x = i % TS.W, y = Math.floor(i / TS.W); if (x < x0) x0 = x; if (x > x1) x1 = x; if (y < y0) y0 = y; if (y > y1) y1 = y; }
   return [x0, y0, x1, y1]; }
