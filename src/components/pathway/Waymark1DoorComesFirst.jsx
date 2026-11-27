@@ -15,7 +15,7 @@ const C = {
   olive: "#a9b27a",
 };
 
-const STORAGE_KEY = "pathway_c_waymark1_door_comes_first";
+const STORAGE_KEY = "pathway_b_waymark1_door_comes_first";
 const LAST_STEP = 5;
 
 export default function Waymark1DoorComesFirst() {

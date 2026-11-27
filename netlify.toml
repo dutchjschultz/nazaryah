@@ -299,3 +299,14 @@
   from = "/blog/zechariah-the-shepherd-sold"
   to = "/blog/zechariah-first-burden-the-shepherd-king"
   status = 301
+
+# 1127: The Grave and the Gate (old Pathway B) retired; Torah Dismissal is Pathway B.
+[[redirects]]
+  from = "/pathway/grave-and-gate"
+  to = "/pathway/torah-dismissal/waymark-1"
+  status = 301
+
+[[redirects]]
+  from = "/pathway/grave-and-gate/*"
+  to = "/pathway/torah-dismissal/waymark-1"
+  status = 301

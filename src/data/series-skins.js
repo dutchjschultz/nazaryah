@@ -149,12 +149,6 @@ export const SKINS = {
     background: 'radial-gradient(ellipse at 50% 30%, #1a4a30 0%, #0d2818 70%, #051a0d 100%)',
     glow: GLOW, accent: '#3f9a68', ctaColor: GOLD,
   },
-  'pathway-grave-and-gate': {
-    name: 'The Grave and the Gate', href: '/pathway/grave-and-gate/stop-1', icon: '⚱', kicker: 'Guided pathway',
-    title: 'The Grave <em>and the Gate</em>', description: 'What Scripture actually says about the dead, and where the borrowed fires of hell came from.', cta: 'Walk the Path',
-    background: 'radial-gradient(ellipse at 50% 30%, #1a2050 0%, #0d1130 70%, #050818 100%)',
-    glow: GLOW, accent: '#5b67c4', ctaColor: GOLD,
-  },
   doctrines: {
     name: 'The Doctrines', href: '/doctrines', icon: '◉', kicker: 'Start here',
     title: 'The <em>Doctrines</em>', description: 'The teachings handed down from the pulpit, examined one at a time. Start here.', cta: 'Read the Doctrines',
@@ -347,7 +341,6 @@ const SYMBOL_ALIAS = {
   'five-offerings': 'torah',
   'legal-lexicon': 'symbol-lexicon',
   'pathway-name-and-nature': 'pathway',
-  'pathway-grave-and-gate': 'pathway',
   'torah-testimonies': 'torah',
   'restored-truth': 'torah',
 };

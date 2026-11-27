@@ -6,7 +6,7 @@ export default function PathwayLanding() {
   const bg = '#0d140f';
   const dim = 'rgba(237, 228, 207, 0.55)';
 
-  // The three pathway cards, all active (Pathway C opened 1127 with Waymark 1).
+  // The pathway cards. 1127: The Grave and the Gate retired; Torah Dismissal is Pathway B.
   const pathways = [
     {
       slug: 'name-and-nature',
@@ -32,22 +32,8 @@ export default function PathwayLanding() {
       buttonText: 'Begin this pathway',
     },
     {
-      slug: 'grave-and-gate',
-      letter: 'B',
-      name: 'The Grave and the Gate',
-      tagline: 'What really happens when you die — and where did the fiery hell come from?',
-      description:
-        'If you grew up afraid of hell, this is for you. We walk through the actual Hebrew and Greek words behind hell, soul, death, and resurrection — and you find out that the doctrine you were terrified of as a child has more in common with Dante than with Scripture.',
-      stops: [
-        { num: 1, title: 'What Are We?', status: 'active', minutes: 15 },
-      ],
-      status: 'active',
-      route: '/pathway/grave-and-gate/stop-1',
-      buttonText: 'Begin this pathway',
-    },
-    {
       slug: 'torah-dismissal',
-      letter: 'C',
+      letter: 'B',
       name: 'Torah Dismissal',
       tagline: 'The Walk After the Door',
       description:
