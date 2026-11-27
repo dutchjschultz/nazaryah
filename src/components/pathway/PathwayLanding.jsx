@@ -6,7 +6,7 @@ export default function PathwayLanding() {
   const bg = '#0d140f';
   const dim = 'rgba(237, 228, 207, 0.55)';
 
-  // The three pathway cards. First one active, two locked for now.
+  // The three pathway cards, all active (Pathway C opened 1127 with Waymark 1).
   const pathways = [
     {
       slug: 'name-and-nature',
@@ -46,16 +46,16 @@ export default function PathwayLanding() {
       buttonText: 'Begin this pathway',
     },
     {
-      slug: 'way-marked-out',
+      slug: 'torah-dismissal',
       letter: 'C',
-      name: 'The Way Marked Out',
-      tagline: "Was the Torah really 'nailed to the cross,' or has the church just been telling us that?",
+      name: 'Torah Dismissal',
+      tagline: 'The Walk After the Door',
       description:
-        'Most believers have been told the Old Testament law is over and done with — that Yahushua "fulfilled" it and now we live by grace. We open the actual words for fulfill, law, and Sabbath, and let Scripture itself tell you what it meant.',
+        'Deliverance opens it; Torah is what walking looks like. Most believers have been told the Law was nailed to the cross. Walk it back to Scripture one waymark at a time and see what the Word actually says.',
       stops: [],
-      status: 'coming-soon',
-      route: null,
-      buttonText: 'Coming soon',
+      status: 'active',
+      route: '/pathway/torah-dismissal/waymark-1',
+      buttonText: 'Begin Waymark 1',
     },
   ];
 
