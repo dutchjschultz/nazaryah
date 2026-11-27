@@ -1,4 +1,5 @@
-// blog-groups 1125 V92.js
+// blog-groups 1127 V93.js
+// V93 (Etsy, 1127): the Pathways jump-out leaves BLOG_JUMPOUTS (Pathway moved to Restored Truth); The Trinity Files stays.
 // V92 (associations batch 77): rain-on-the-seed joins scripture-unfiltered (category Scripture Unfiltered). Map total 247 -> 248.
 // V91 (Etsy Load - Framed by the Light 1122 V1): framed-by-the-light joins buried-in-plain-sight. The Philippians 2:5-8
 // Trinity File stays out of this map like every trinity-files-* post. Map total 246 -> 247.
@@ -249,7 +250,7 @@ export const extrasOf = (key) => TOPIC_EXTRAS[key] || [];
 // content actually lives.
 export const BLOG_JUMPOUTS = [
   { label: 'The Trinity Files', note: 'verse by verse, on the Trinity page', href: '/trinity/files' },
-  { label: 'Pathways',          note: 'Guided study series',                          href: '/pathway' },
+  // Pathways jump-out removed 1127: Pathway now sits under Restored Truth, not Berean Studies.
 ];
 
 // slug → group key. 132 blogs; the 51 trinity-files-* are intentionally absent.

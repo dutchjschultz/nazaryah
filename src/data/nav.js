@@ -1,4 +1,5 @@
-// nav 1102 V16.js
+// nav 1127 V17.js
+// V17 (Etsy, 1127): Pathway (/pathway) moves from Berean Studies to Restored Truth, last in the panel. Label, href, desc unchanged.
 // V16 (Etsy Handoff Counterfeit 1102 V1): Counterfeits gains Counterfeit (/counterfeit), label = its h1, last in the panel.
 // V15 (Quick Scroll Book Page 1029 V1): Berean Studies gains The Quick Scroll (/quick-scroll), after Studies.
 // V14: Counterfeits item renamed "Spirit of Truth or Seducing Spirits?" (was Christian or Demonic?); desc names the practices with no count (Dutch 1024). Href unchanged.
@@ -93,6 +94,7 @@ export const mainNav = [
       { label: 'Is This the Ekklesia?', href: '/ekklesia', desc: 'What the assembly was meant to be before it became “church.”' },
       { label: 'Cosmology', href: '/cosmology', desc: 'The shape of what Yahuah made, from the firmament above to the earth below.' },
       { label: 'The Five Offerings', href: '/five-offerings', desc: 'The five offerings of Leviticus, what each one held, and why none of them is gone.' },
+      { label: 'Pathway', href: '/pathway', desc: 'Guided walks through one subject, stop by stop.' },
     ],
   },
   { label: 'Torah', href: '/torah' },
@@ -113,7 +115,6 @@ export const mainNav = [
       { label: 'Collections', href: '/blog/collections', desc: 'Studies that outgrew the page.' },
       { label: 'The Parables', href: '/parables', desc: 'Yahushua’s parables read from the Law and the Prophets, not the pulpit.' },
       { label: 'Investigations', href: '/investigations', desc: 'One claim put on the stand and examined witness by witness.' },
-      { label: 'Pathway', href: '/pathway', desc: 'Guided walks through one subject, stop by stop.' },
       { label: 'Hidden Gems of Scripture', href: '/hidden-gems', desc: 'The verses the pulpit flips past, and what they actually say.' },
       { label: 'Close to the Hip', href: '/close-to-the-hip', desc: 'Short answers and quick insights to carry into any conversation.' },
       { label: 'Riddles', href: '/riddles', desc: 'Three verses, one logical answer. Can you find it?' },
