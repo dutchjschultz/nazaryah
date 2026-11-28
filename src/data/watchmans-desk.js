@@ -1,4 +1,8 @@
-// watchmans-desk 1125 V21.js
+// watchmans-desk 1128 V22.js
+// V22 (Dutch 1128): "In the Likeness of Men" moved to Berean Studies -> Buried in Plain Sight as a study
+// (/blog/in-the-likeness-of-men; 301 from the old Desk address in netlify.toml). Its entry and its
+// src/content/watchmans-desk file are gone. Its law "No likeness of male or female" now has no Desk
+// entry, so that chip drops off the Desk filter; the string stays in the canonical list below.
 // V21: loaded "The Built Crowd" (weekly-letter, week-ending, 25 November, standalone). Body from the attached
 // "The Built Crowd 1125 V2.docx" (the upload named V1; V2 is the file supplied, with a REVIEW copy listing its
 // changes). The docx masthead, title and deck are left out of the body (the page renders them from this entry);
@@ -132,18 +136,6 @@ export const entries = [
     body: "Yahuah wrote this into His Law because He knew the crowd would be the test. The verse has two halves. The first forbids following the many. The second forbids speaking up in a cause just to lean with the many. This week showed both halves at work.",
     strapline: "Thou shalt not follow a multitude to do evil.",
     law: "Following a multitude to do evil",
-    source: "standalone",
-  },
-  {
-    slug: "in-the-likeness-of-men",
-    kind: "field-brief", status: "filed", date: "1 November 2026",
-    sortDate: "2026-11-01",
-    eyebrow: "",
-    title: "In the Likeness of Men",
-    deck: "Long before the creeds, the nations already believed their gods came down to walk among them as men.",
-    body: "At Lystra, in the hill country of Asia Minor, Paul healed a man who had been crippled from birth. The crowd did not shout that a prophet had come. They shouted in their own tongue that \"the gods are come down to us in the likeness of men\" (Acts 14:11). The Greek phrase is *homoiōthentes anthrōpois*, made like to men. They named Barnabas Jupiter and Paul Mercurius, the Roman names for Zeus and Hermes, and the priest of Jupiter brought oxen and garlands to the gate to sacrifice to them (Acts 14:12-13).",
-    strapline: "Egypt carved it. Greece sang it. Rome minted it. Lystra shouted it.",
-    law: "No likeness of male or female",
     source: "standalone",
   },
   {

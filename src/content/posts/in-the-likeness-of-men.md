@@ -3,6 +3,13 @@ title: "In the Likeness of Men"
 deck: "Long before the creeds, the nations already believed their gods came down to walk among them as men."
 description: "Long before the creeds, the nations already believed their gods came down to walk among them as men."
 slug: "in-the-likeness-of-men"
+category: "Buried in Plain Sight"
+date: 2026-11-01
+author: "Nazaryah"
+companion: ["incarnate", "the-genesis-of-the-son", "who-was-manifest-in-the-flesh"]
+featured: true
+featuredAt: 2026-11-28T08:20
+draft: false
 ---
 
 ## The Crowd at Lystra

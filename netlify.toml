@@ -103,6 +103,12 @@
   to = "/watchmans-desk/a-temple-and-nobody-asked-whose"
   status = 301
 
+# Dutch 1128: In the Likeness of Men moved from the Watchman's Desk to Berean Studies (Buried in Plain Sight).
+[[redirects]]
+  from = "/watchmans-desk/in-the-likeness-of-men"
+  to = "/blog/in-the-likeness-of-men"
+  status = 301
+
 # Scripture Insights became the two-lane "Close to the Hip" page. Keep the old URL
 # resolving to the new one (trailing-slash variant covered explicitly).
 [[redirects]]

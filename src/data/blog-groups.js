@@ -1,4 +1,5 @@
-// blog-groups 1127 V93.js
+// blog-groups 1128 V94.js
+// V94 (Dutch 1128): in-the-likeness-of-men (moved from the Watchman's Desk) joins buried-in-plain-sight. Map total 248 -> 249.
 // V93 (Etsy, 1127): the Pathways jump-out leaves BLOG_JUMPOUTS (Pathway moved to Restored Truth); The Trinity Files stays.
 // V92 (associations batch 77): rain-on-the-seed joins scripture-unfiltered (category Scripture Unfiltered). Map total 247 -> 248.
 // V91 (Etsy Load - Framed by the Light 1122 V1): framed-by-the-light joins buried-in-plain-sight. The Philippians 2:5-8
@@ -386,7 +387,7 @@ export const POST_GROUP = {
   'circumcised-heart': 'the-quick-scroll',
   'the-song-of-moses': 'the-quick-scroll',
 
-  // ── Buried in Plain Sight (21) ──
+  // ── Buried in Plain Sight (27) ──
   'buried-in-plain-sight': 'buried-in-plain-sight',
   'the-christian-experiment': 'buried-in-plain-sight',
   'the-men-in-the-margin': 'buried-in-plain-sight',
@@ -416,6 +417,7 @@ export const POST_GROUP = {
   'the-third-awakening-azusa-street': 'buried-in-plain-sight',
   'zionism-and-the-three-wars': 'buried-in-plain-sight',
   'framed-by-the-light': 'buried-in-plain-sight',
+  'in-the-likeness-of-men': 'buried-in-plain-sight',
 
   // ── The Law & The Feasts (22) ──
   'fornication-and-adultery': 'the-law-and-the-feasts',
