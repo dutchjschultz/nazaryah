@@ -1717,7 +1717,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 37</p>`;
+ <p class="score">App version 38</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1956,7 +1956,7 @@ V.letters=()=>{
   ${l[7]?'<p class="smile"><span>This letter is no longer used. Skip it.</span></p>':RARE.includes(l[0])?'<p class="smile"><span>A rare letter, found mostly in old or borrowed words. Learn it last.</span></p>':''}
   <div class="stack" style="gap:8px">
   ${lv('w',++LN.n,`See it in ${words.length} words`,`<p>Say each word out loud. The letter is shown in red. Words that start with it come first.</p>${words.map(w=>wordRow(markLetter(w.th,l[0]),w.ph,w.en)).join('')}`)}
-  ${quietSec(l)}
+  ${ruleSecs(l)}
   ${lv('v',++LN.n,'Add two vowels',`<p>Only two vowels here, so the letter stays the focus.</p>
    ${syls.map(y=>{const vi=vinfo[y.v];return `<p><b lang="th" style="font:500 30px var(--f-thai)">${'◌'+vi[0]}</b> This vowel ${vi[1]}. It sounds like ${vi[2]}.</p>`}).join('')}
    <p>Put together, the letter is said first, then the vowel:</p>
@@ -2096,37 +2096,82 @@ function markSil(root){
  const ns=[];while(w.nextNode())ns.push(w.currentNode);
  ns.forEach(n=>{const h=silWrap(n.nodeValue,'sil');if(!h)return;const sp=document.createElement('span');sp.innerHTML=h;n.replaceWith(...sp.childNodes)});
 }
-/* When ห / อ goes quiet (Dutch 1127): ห before ง ญ น ม ย ร ล ว is not said; it only makes that letter high class.
-   อ before ย does the same in four words, making ย mid class. The section sits on the letter's page; every word in the
-   app with a silent ห or อ carries a small tag that opens it. Detection comes from anaSyl's 'leader' role. */
+/* Letter rules (Dutch 1127): wherever a letter acts differently by a rule, its letter page gets a section on it.
+   One-or-two-word exceptions are left out. Words where the spelling would mislead (silent ห / อ / ร, ทร = s, รร)
+   carry a small tag that opens the section; clusters and vowel jobs are too common to tag. Detection uses anaSyl. */
 const LN={n:0};
-const QUIET={
- 'ห':{eight:[['ง','ng'],['ญ','y'],['น','n'],['ม','m'],['ย','y'],['ร','r'],['ล','l'],['ว','w']],
-  quiet:[['หนู','nǒo','mouse','น'],['หมา','mǎa','dog','ม'],['หลาน','lǎan','grandchild','ล'],['หวาน','wǎan','sweet','ว'],['หรือ','rǔue','or','ร'],['หญ้า','yâa','grass','ญ'],['หยุด','yùt','stop','ย'],['เหงื่อ','ngùea','sweat','ง']],
-  said:[['หก','hòk','six'],['หัว','hǔa','head'],['ห้า','hâa','five'],['ห้อง','hâwng','room']]},
- 'อ':{quiet:[['อย่า','yàa','don\'t'],['อยู่','yòo','be at, live'],['อย่าง','yàang','kind, way'],['อยาก','yàak','want']]}};
-function quietOf(th,phs){
- th=(th||'').replace(/<[^>]+>/g,''); if(!phs||!/[หอ][งญนมยรลว]/.test(th))return [];
- const S=spSyls(th.replace(/\s/g,''),phs); if(!S)return [];
- const o=new Set(); S.forEach(([x,r])=>{try{anaSyl(x,r).pieces.forEach(p=>{if(p.kind==='Silent letter'&&/^Not said\. It makes/.test(p.note))o.add(p.th)})}catch(e){}});
- return [...o].filter(c=>QUIET[c]);
-}
-const quietNote=(th,phs)=>quietOf(th,phs).map(c=>`<button class="endnote" data-quiet="${c}">Silent <span lang="th">${c}</span> · see the note on the letter</button>`).join('');
-function quietSec(l){
- const q=QUIET[l[0]]; if(!q)return '';
- const row=([th,p,en])=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,p)}</span><span style="font-size:18px">${ph(p)}</span><span class="en">${en}</span></div><div class="acts">${sayBtn(th,en)}</div></div>`;
- if(l[0]==='ห')return lv('q',++LN.n,'When ห goes quiet',`
+const rwRow=([th,p,en])=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,p)}</span><span style="font-size:18px">${ph(p)}</span><span class="en">${en}</span></div><div class="acts">${sayBtn(th,en)}</div></div>`;
+const rwRows=ws=>ws.map(rwRow).join('');
+const rH=t=>`<h3 style="margin:6px 0 0">${t}</h3>`;
+const rT=t=>`<span lang="th">${t}</span>`;
+const rTiles=xs=>`<div class="qeight">${xs.map(([c,s])=>`<span><b lang="th">${c}</b>${s}</span>`).join('')}</div>`;
+const clusSec=(c,firsts,ws)=>`
+  <p>Right after ${firsts.map(rT).join(' ')}, ${rT(c)} can join that letter into one blended sound, with <b>no vowel between</b>, like "pr" in "pray". Only these letters take ${rT(c)} this way.</p>
+  ${rTiles(firsts.map(f=>[f+c,(LET.find(x=>x[0]===f)||[])[5]+({'ร':'r','ล':'l','ว':'w'})[c]]))}
+  ${rH('Examples')}${rwRows(ws)}
+  ${c==='ว'?'':`<p class="spnote">In fast everyday speech many Thai speakers drop the ${c==='ร'?'r':'l'} of a blend, so ${c==='ร'?`${rT('ครับ')} khráp often sounds like kháp`:`${rT('ปลา')} plaa often sounds like paa`}. Say it in full when learning.</p>`}`;
+const RULES={
+ 'ห':[{k:'q',t:'When ห goes quiet',b:()=>`
   <p>Put ห in front of one of these eight letters and it is <b>not said at all</b>. It is there only to make that letter <b>high class</b>, which changes the tone of the word.</p>
-  <div class="qeight">${q.eight.map(([c,s])=>`<span><b lang="th">${c}</b>${s}</span>`).join('')}</div>
+  ${rTiles([['ง','ng'],['ญ','y'],['น','n'],['ม','m'],['ย','y'],['ร','r'],['ล','l'],['ว','w']])}
   <p>All eight are low class letters with no high class twin. Thai borrows ห's class by writing it in front of them.</p>
-  <h3 style="margin:6px 0 0">Silent ห</h3>${q.quiet.map(row).join('')}
-  <h3 style="margin:6px 0 0">ห said as h</h3><p style="margin:0;color:var(--soft)">A vowel or any other letter comes right after it.</p>${q.said.map(row).join('')}
-  <p class="spnote"><b>Quick check.</b> Look at the letter right after ห. One of the eight: ห is silent. Anything else: say h. A vowel such as <span lang="th">เ</span> or <span lang="th">ใ</span> written in front does not change this, as in <span lang="th">ใหม่</span> mài "new".</p>`);
- return lv('q',++LN.n,'When อ goes quiet',`
+  ${rH('Silent ห')}${rwRows([['หนู','nǒo','mouse'],['หมา','mǎa','dog'],['หลาน','lǎan','grandchild'],['หวาน','wǎan','sweet'],['หรือ','rǔue','or'],['หญ้า','yâa','grass'],['หยุด','yùt','stop'],['เหงื่อ','ngùea','sweat']])}
+  ${rH('ห said as h')}<p style="margin:0;color:var(--soft)">A vowel or any other letter comes right after it.</p>${rwRows([['หก','hòk','six'],['หัว','hǔa','head'],['ห้า','hâa','five'],['ห้อง','hâwng','room']])}
+  <p class="spnote"><b>Quick check.</b> Look at the letter right after ห. One of the eight: ห is silent. Anything else: say h. A vowel such as ${rT('เ')} or ${rT('ใ')} written in front does not change this, as in ${rT('ใหม่')} mài "new".</p>`}],
+ 'อ':[{k:'qv',t:'When อ is a vowel',b:()=>`
+  <p>อ has two jobs, and where it sits tells you which.</p>
+  ${rH('At the start: a silent holder')}<p style="margin:0">A Thai vowel can't stand alone. When a word starts with a vowel sound, อ is written to hold the vowel and is not said.</p>
+  ${rwRows([['อาหาร','aa-hǎan','food'],['อ่าน','àan','read'],['อิ่ม','ìm','full']])}
+  ${rH('After a letter: the vowel aw')}<p style="margin:0">After another letter, อ is the vowel itself, a long aw.</p>
+  ${rwRows([['รอ','raaw','wait'],['พ่อ','phâaw','father'],['หมอ','mǎaw','doctor']])}
+  ${rH('Inside other vowels')}<p style="margin:0">อ is also one piece of the vowels ${rT('เ◌อ')}, ${rT('◌ือ')} and ${rT('เ◌ือ')}. There it has no sound of its own.</p>
+  ${rwRows([['เจอ','jerr','meet'],['มือ','muue','hand'],['เรือ','ruea','boat']])}
+  <p class="spnote"><b>Quick check.</b> อ with nothing before it in the syllable: silent holder. อ after a letter, with no other vowel mark around it: aw.</p>`},
+  {k:'q',t:'When อ goes quiet',b:()=>`
   <p>In four everyday words, อ is written before ย and is <b>not said</b>. It makes ย a <b>mid class</b> sound, which sets the tone. Only these four words do it.</p>
-  ${q.quiet.map(row).join('')}
-  <p class="spnote">Everywhere else, อ either carries a vowel at the start of a word or is the vowel itself, as in <span lang="th">พ่อ</span> phâaw "father".</p>`);
+  ${rwRows([['อย่า','yàa',"don't"],['อยู่','yòo','be at, live'],['อย่าง','yàang','kind, way'],['อยาก','yàak','want']])}`}],
+ 'ร':[{k:'qc',t:'When ร joins the letter before',b:()=>clusSec('ร',['ก','ข','ค','ต','ป','พ'],[['กรุงเทพ','krung-thâyp','Bangkok'],['ครับ','khráp','polite ending, man speaking'],['ตรง','trong','straight'],['พริก','phrík','chili']])},
+  {k:'qs',t:'When ร goes quiet',b:()=>`
+  <p>After ${rT('จ')} ${rT('ซ')} ${rT('ศ')} ${rT('ส')}, a ร that starts a blend is <b>written but not said</b>.</p>
+  ${rwRows([['จริง','jing','true'],['เสร็จ','sèt','finish'],['สร้าง','sâang','build'],['ศรี','sěe','glory, splendor']])}
+  <p class="spnote">${rT('ทร')} is different again: the pair is said <b>s</b>. See the note on the letter ${rT('ท')}.</p>`},
+  {k:'qr',t:'When ร comes twice',b:()=>`
+  <p>Two ร side by side (${rT('รร')}) are read as a vowel, not as r.</p>
+  ${rH('รร with an ending letter after it: a')}${rwRows([['กรรม','kam','karma'],['ธรรม','tham','dharma, the teaching']])}
+  ${rH('รร at the end: an')}${rwRows([['สวรรค์','sà-wǎn','heaven'],['บรรยาย','ban-yaai','describe']])}
+  <p class="spnote">Most of these words come from Sanskrit and Pali, so they turn up in religious, formal and written Thai.</p>`}],
+ 'ล':[{k:'qc',t:'When ล joins the letter before',b:()=>clusSec('ล',['ก','ข','ค','ป','พ'],[['ไกล','klai','far'],['กล้วย','klûay','banana'],['ปลา','plaa','fish'],['พลอย','phlaawy','gem']])}],
+ 'ว':[{k:'qc',t:'When ว joins the letter before',b:()=>clusSec('ว',['ก','ข','ค'],[['กวาง','kwaang','deer'],['ขวา','khwǎa','right (side)'],['ควาย','khwaai','buffalo'],['ความ','khwaam','(makes a noun, like "-ness")']])},
+  {k:'qv',t:'When ว is a vowel',b:()=>`
+  <p>ว is a w at the start of a word. Between two letters it can be the vowel <b>ua</b> instead.</p>
+  ${rH('With ◌ั above, and nothing after: ua')}${rwRows([['ตัว','tua','body'],['หัว','hǔa','head'],['วัว','wua','cow']])}
+  ${rH('With a letter after it, the ◌ั drops away')}${rwRows([['รวม','ruam','to combine'],['สวน','sǔan','park'],['ช่วย','chûay','help']])}
+  <p class="spnote">At the end of a syllable, ว is the glide -o, as in ${rT('เที่ยว')} thîao "travel". After ${rT('ก ข ค')} it may be a blend instead: see "When ว joins the letter before".</p>`}],
+ 'ย':[{k:'qv',t:'When ย is part of a vowel',b:()=>`
+  <p>ย is a y at the start of a word. Inside the vowel ${rT('เ◌ีย')} it is part of the vowel <b>ia</b> and is not said as y.</p>
+  ${rwRows([['เรียน','rian','study'],['เสีย','sǐa','broken'],['เบียร์','bia','beer']])}
+  ${rH('◌ัย: ai')}<p style="margin:0">With ◌ั above and nothing after, ย makes the vowel ai.</p>${rwRows([['ภัย','phai','danger'],['วัย','wai','age, time of life']])}
+  <p class="spnote">At the end of a syllable after other vowels, ย is the glide -i, as in ${rT('ช่วย')} chûay "help".</p>`}],
+ 'ท':[{k:'qs',t:'When ทร says s',b:()=>`
+  <p>${rT('ทร')} together at the start of a syllable is said <b>s</b>, not thr. The ร is silent and ท takes the s sound.</p>
+  ${rwRows([['ทราย','saai','sand'],['ทราบ','sâap','know (formal)'],['ทรง','song','shape, form']])}
+  <p class="spnote">ท is a low class letter, so these words follow the low class tone rules, unlike ส.</p>`}]
+};
+function ruleSecs(l){return (RULES[l[0]]||[]).map(r=>lv(r.k,++LN.n,r.t,r.b())).join('')}
+// tags: [letter, section key, label] for each misleading spelling in a word
+function quietOf(th,phs){
+ th=(th||'').replace(/<[^>]+>/g,''); if(!phs||!/[หอร]/.test(th))return [];
+ const S=spSyls(th.replace(/\s/g,''),phs); if(!S)return [];
+ const o=new Map(); S.forEach(([x,r])=>{let a;try{a=anaSyl(x,r)}catch(e){return}
+  const ch=[...x];
+  a.pieces.forEach(p=>{
+   if(p.kind==='Silent letter'&&/^Not said\. It makes/.test(p.note))o.set(p.th,[p.th,'q',`Silent ${rT(p.th)}`]);
+   if(p.kind==='Silent letter'&&/This ร/.test(p.note)){const pr=ch[ch.indexOf('ร')-1];if(pr==='ท')o.set('ทร',['ท','qs',`${rT('ทร')} = s`]);else o.set('ร',['ร','qs',`Silent ${rT('ร')}`])}});
+  if(x.includes('รร'))o.set('รร',['ร','qr',`${rT('รร')} read as a vowel`]);
+ });
+ return [...o.values()];
 }
+const quietNote=(th,phs)=>quietOf(th,phs).map(([c,k,lab])=>`<button class="endnote" data-quiet="${c}" data-qk="${k}">${lab} · see the note on the letter</button>`).join('');
 function silNote(th,phs){return silNote0(th,phs)+quietNote(th,phs)}
 function silNote0(th,phs){
  th=(th||'').replace(/<[^>]+>/g,''); if(!th.includes('์'))return '';
@@ -3197,7 +3242,7 @@ document.addEventListener('click',e=>{
  if(d.big){const b=document.getElementById('bigv');b.innerHTML=`<div class="in"><h2>How to read the drawing</h2>${mouth(d.big)}<p>This is a head cut in half and seen from the side, with the face looking left. The lips and teeth are on the left and the throat is on the right.</p><p>The pink band is the tongue. Its tip points left toward the teeth. Its back sits on the right, near the soft roof of the mouth.</p><p>The red circle marks the spot where the mouth does the work. Red dashes mean the air leaves through the nose. A vowel drawing has no circle, because only the shape of the tongue matters.</p><button class="next" data-unbig="1" style="justify-self:start">Close</button></div>`;b.hidden=false;b.scrollTop=0;return}
  if(d.hwplay){const h=b.closest('.hw');if(h)hwPlay(h);return}
  if(d.hwslow){HW.slow=!HW.slow;document.querySelectorAll('[data-hwslow]').forEach(x=>x.setAttribute('aria-pressed',HW.slow));const h=b.closest('.hw');if(h)hwPlay(h);return}
- if(d.quiet){letterSel=d.quiet;lvOpen.q=true;store.set('lvOpen',JSON.stringify(lvOpen));['zoomv','bigv'].forEach(i=>{const z=document.getElementById(i);if(z)z.hidden=true});go('letters');const q=document.querySelector('details[data-lv="q"]');if(q)window.scrollTo({top:q.getBoundingClientRect().top+scrollY-70});return}
+ if(d.quiet){const qk=d.qk||'q';letterSel=d.quiet;lvOpen[qk]=true;store.set('lvOpen',JSON.stringify(lvOpen));['zoomv','bigv'].forEach(i=>{const z=document.getElementById(i);if(z)z.hidden=true});go('letters');const q=document.querySelector(`details[data-lv="${qk}"]`);if(q)window.scrollTo({top:q.getBoundingClientRect().top+scrollY-70});return}
  if(d.endings){const bv=document.getElementById('bigv');bv.innerHTML=`<div class="in">${endChart()}<button class="next" data-unbig="1" style="justify-self:start">Close</button></div>`;markTh(bv);bv.hidden=false;bv.scrollTop=0;return}
  if(d.classes){const b=document.getElementById('bigv');b.innerHTML=`<div class="in">${CLASSCARD}<button class="next" data-unbig="1" style="justify-self:start">Close</button></div>`;markTh(b);b.hidden=false;b.scrollTop=0;return}
  if(d.unbig){document.getElementById('bigv').hidden=true;return}
