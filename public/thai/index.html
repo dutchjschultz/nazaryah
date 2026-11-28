@@ -254,6 +254,8 @@ p { margin: 0; }
 .hwc { fill: none; stroke: #e5484d; stroke-width: 7; }
 .endnote { background: none; border: 0; padding: 0; color: var(--gold); font-size: 14px; text-align: left; text-decoration: underline dotted; text-underline-offset: 3px; cursor: pointer; justify-self: start; }
 .endnote [lang="th"] { font: 500 18px var(--f-thai); }
+.qtags { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+.qtags .qk { color: var(--soft); font-size: 14px; }
 .qeight { display: flex; flex-wrap: wrap; gap: 6px; }
 .qeight span { display: grid; justify-items: center; min-width: 52px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 10px; color: var(--soft); font-size: 14px; }
 .qeight b { font: 500 30px var(--f-thai); color: var(--ink); }
@@ -1717,7 +1719,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 38</p>`;
+ <p class="score">App version 39</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -2098,7 +2100,7 @@ function markSil(root){
 }
 /* Letter rules (Dutch 1127): wherever a letter acts differently by a rule, its letter page gets a section on it.
    One-or-two-word exceptions are left out. Words where the spelling would mislead (silent ห / อ / ร, ทร = s, รร)
-   carry a small tag that opens the section; clusters and vowel jobs are too common to tag. Detection uses anaSyl. */
+   carry a small tag that opens the section; blends and vowel jobs are tagged too (Dutch 1127). Detection uses anaSyl. */
 const LN={n:0};
 const rwRow=([th,p,en])=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,p)}</span><span style="font-size:18px">${ph(p)}</span><span class="en">${en}</span></div><div class="acts">${sayBtn(th,en)}</div></div>`;
 const rwRows=ws=>ws.map(rwRow).join('');
@@ -2160,7 +2162,7 @@ const RULES={
 function ruleSecs(l){return (RULES[l[0]]||[]).map(r=>lv(r.k,++LN.n,r.t,r.b())).join('')}
 // tags: [letter, section key, label] for each misleading spelling in a word
 function quietOf(th,phs){
- th=(th||'').replace(/<[^>]+>/g,''); if(!phs||!/[หอร]/.test(th))return [];
+ th=(th||'').replace(/<[^>]+>/g,''); if(!phs||!/[หอรลวย]/.test(th))return [];
  const S=spSyls(th.replace(/\s/g,''),phs); if(!S)return [];
  const o=new Map(); S.forEach(([x,r])=>{let a;try{a=anaSyl(x,r)}catch(e){return}
   const ch=[...x];
@@ -2168,10 +2170,15 @@ function quietOf(th,phs){
    if(p.kind==='Silent letter'&&/^Not said\. It makes/.test(p.note))o.set(p.th,[p.th,'q',`Silent ${rT(p.th)}`]);
    if(p.kind==='Silent letter'&&/This ร/.test(p.note)){const pr=ch[ch.indexOf('ร')-1];if(pr==='ท')o.set('ทร',['ท','qs',`${rT('ทร')} = s`]);else o.set('ร',['ร','qs',`Silent ${rT('ร')}`])}});
   if(x.includes('รร'))o.set('รร',['ร','qr',`${rT('รร')} read as a vowel`]);
+  const st=a.pieces.find(p=>p.kind==='Starting letter');
+  a.pieces.forEach(p=>{
+   if(p.kind==='Second letter'&&'รลว'.includes(p.th)&&st)o.set(p.th+'qc',[p.th,'qc',`${rT(st.th+p.th)} blend`]);
+   if(/^Vowel/.test(p.kind)&&'อวย'.includes(p.th))o.set(p.th+'qv',[p.th,'qv',`${rT(p.th)} as a vowel`]);});
+  if(/ัย$/.test(x))o.set('ยqv',['ย','qv',`${rT('ย')} as a vowel`]);
  });
  return [...o.values()];
 }
-const quietNote=(th,phs)=>quietOf(th,phs).map(([c,k,lab])=>`<button class="endnote" data-quiet="${c}" data-qk="${k}">${lab} · see the note on the letter</button>`).join('');
+const quietNote=(th,phs)=>{const q=quietOf(th,phs);return q.length?`<span class="qtags"><span class="qk">Letter notes:</span>${q.map(([c,k,lab])=>`<button class="endnote" data-quiet="${c}" data-qk="${k}">${lab}</button>`).join('')}</span>`:''};
 function silNote(th,phs){return silNote0(th,phs)+quietNote(th,phs)}
 function silNote0(th,phs){
  th=(th||'').replace(/<[^>]+>/g,''); if(!th.includes('์'))return '';
