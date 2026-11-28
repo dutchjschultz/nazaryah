@@ -121,9 +121,6 @@ export default function Stop1ElohimEchad() {
 
       <div className="relative max-w-4xl mx-auto px-12 md:px-20 py-20 md:py-24">
         <div className="space-y-7 mb-20" style={{ animation: 'fadeUp 0.9s ease-out forwards' }}>
-          <a href="/pathway/name-and-nature/waymarks" style={{ color: amber, opacity: 0.75, textDecoration: 'none', fontSize: '0.9rem', display: 'inline-block' }}>
-            Returning? Go to your waymarks →
-          </a>
           <div className="text-xs uppercase" style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}>
             Pathway · The Name and the Nature · Waymark 1
           </div>
@@ -915,7 +912,7 @@ export default function Stop1ElohimEchad() {
                 the Name the Father gave Moses at the burning bush.
               </p>
               <button
-                onClick={() => { window.location.href = '/pathway/name-and-nature/waymarks'; }}
+                onClick={() => { window.location.href = '/pathway/name-and-nature/stop-2'; }}
                 className="px-10 py-4 transition-all duration-300" style={{
                 backgroundColor: 'transparent', border: `1px solid ${amber}`, color: amber,
                 fontFamily: '"Fraunces", Georgia, serif', fontSize: '1rem', letterSpacing: '0.08em',
@@ -923,7 +920,7 @@ export default function Stop1ElohimEchad() {
               }}
                 onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 168, 106, 0.1)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}>
-                Choose your waymark →
+                Continue to Waymark 2 — <em>The Name</em> →
               </button>
             </div>
           </div>

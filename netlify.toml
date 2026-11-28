@@ -311,9 +311,8 @@
   to = "/pathway/torah-dismissal/waymark-1"
   status = 301
 
-# 1127: Pathway A has no page at its own folder URL; the /pathway card's
-# "Enter Pathway" lands on the intro (Waymark 1). The chooser is /pathway/name-and-nature/waymarks.
+# 1127: the short-lived Pathway A chooser at /waymarks gave way to the entry page.
 [[redirects]]
-  from = "/pathway/name-and-nature"
-  to = "/pathway/name-and-nature/stop-1"
+  from = "/pathway/name-and-nature/waymarks"
+  to = "/pathway/name-and-nature"
   status = 301
