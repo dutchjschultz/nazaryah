@@ -40,8 +40,8 @@ export default function PathwayLanding() {
         'Deliverance opens it; Torah is what walking looks like. Most believers have been told the Law was nailed to the cross. Walk it back to Scripture one waymark at a time and see what the Word actually says.',
       stops: [],
       status: 'active',
-      route: '/pathway/torah-dismissal/waymark-1',
-      buttonText: 'Begin Waymark 1',
+      route: '/pathway/torah-dismissal',
+      buttonText: 'Enter Pathway',
     },
   ];
 
