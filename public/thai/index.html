@@ -254,6 +254,9 @@ p { margin: 0; }
 .hwc { fill: none; stroke: #e5484d; stroke-width: 7; }
 .endnote { background: none; border: 0; padding: 0; color: var(--gold); font-size: 14px; text-align: left; text-decoration: underline dotted; text-underline-offset: 3px; cursor: pointer; justify-self: start; }
 .endnote [lang="th"] { font: 500 18px var(--f-thai); }
+.qeight { display: flex; flex-wrap: wrap; gap: 6px; }
+.qeight span { display: grid; justify-items: center; min-width: 52px; padding: 6px 8px; border: 1px solid var(--line); border-radius: 10px; color: var(--soft); font-size: 14px; }
+.qeight b { font: 500 30px var(--f-thai); color: var(--ink); }
 .endt { display: grid; gap: 6px; }
 .endr { display: grid; grid-template-columns: minmax(130px, auto) 1fr; gap: 4px 12px; align-items: baseline; border-bottom: 1px solid var(--line); padding-bottom: 6px; }
 .endr [lang="th"] { font: 500 24px/1.4 var(--f-thai); }
@@ -1714,7 +1717,7 @@ V.start=()=>{
  </section>
  <section class="note"><h3>Street signs mislead</h3><p>Thai road signs write the puff with h too. Phuket is said "poo-ket." Thailand starts with a t. The ph is never f, and the th is never the sound in "the."</p></section>
  <section class="card"><h3>Sound on this device</h3><p id="voice-note">${voiceNote()}</p></section>
- <p class="score">App version 36</p>`;
+ <p class="score">App version 37</p>`;
 };
 function voiceNote(){
   if(voiceState==='ready')return `Thai voice ready: ${voice.name}. The speaker buttons read each word aloud, and the Slow switch at the top slows them down.`;
@@ -1944,7 +1947,7 @@ V.letters=()=>{
  ${vowelSet==='Single'?'<p class="lede">Shown in pairs, short then long.</p>':'<p class="lede">These slide from one vowel into another inside one beat, like "eye" or "cow" in English.</p>'}
  <div class="vgrid">${vl.map(x=>`<button class="lt" data-vowel="${x.k}" aria-pressed="${x.k===v.k}"><span class="g" lang="th">${dv(x.th)}</span>${vTile(x)}</button>`).join('')}</div>
  <h2 style="margin-bottom:0">Letters</h2>
- <section class="card" id="ldetail">
+ <section class="card" id="ldetail">${(LN.n=0,'')}
   <div class="lhead"><div class="bigl" lang="th">${l[0]}</div><div>
    <p style="margin:0">${sndLine(l)}</p>${startEnd(l)}</div>${sayBtn(hear,l[1])}</div>
   ${nameLine(l)}
@@ -1952,15 +1955,16 @@ V.letters=()=>{
   ${s&&!SNDTX[l[5]]?`<p class="like">${s.like}</p>`:''}
   ${l[7]?'<p class="smile"><span>This letter is no longer used. Skip it.</span></p>':RARE.includes(l[0])?'<p class="smile"><span>A rare letter, found mostly in old or borrowed words. Learn it last.</span></p>':''}
   <div class="stack" style="gap:8px">
-  ${lv('w',1,`See it in ${words.length} words`,`<p>Say each word out loud. The letter is shown in red. Words that start with it come first.</p>${words.map(w=>wordRow(markLetter(w.th,l[0]),w.ph,w.en)).join('')}`)}
-  ${lv('v',2,'Add two vowels',`<p>Only two vowels here, so the letter stays the focus.</p>
+  ${lv('w',++LN.n,`See it in ${words.length} words`,`<p>Say each word out loud. The letter is shown in red. Words that start with it come first.</p>${words.map(w=>wordRow(markLetter(w.th,l[0]),w.ph,w.en)).join('')}`)}
+  ${quietSec(l)}
+  ${lv('v',++LN.n,'Add two vowels',`<p>Only two vowels here, so the letter stays the focus.</p>
    ${syls.map(y=>{const vi=vinfo[y.v];return `<p><b lang="th" style="font:500 30px var(--f-thai)">${'◌'+vi[0]}</b> This vowel ${vi[1]}. It sounds like ${vi[2]}.</p>`}).join('')}
    <p>Put together, the letter is said first, then the vowel:</p>
    ${syls.map(y=>`<div class="syl2"><span class="tw" lang="th"><span class="hl">${l[0]}</span>${y.th.slice(1)}</span><div><div style="font-size:19px">${ph(y.ph)}</div><span class="en">${y.mean?'A real word: '+y.mean:'A practice sound'}</span></div>${sayBtn(y.th,y.ph)}</div>`).join('')}`)}
-  ${s?lv('m',3,'How the mouth makes it',footnote(s)):''}
-  ${lv('c',4,'Its group, for later',`<p>${clsTag(cls[l[4]])} Every letter belongs to one of three groups: mid, high or low. The group only matters for reading tones off the page, so it can wait.</p>
+  ${s?lv('m',++LN.n,'How the mouth makes it',footnote(s)):''}
+  ${lv('c',++LN.n,'Its group, for later',`<p>${clsTag(cls[l[4]])} Every letter belongs to one of three groups: mid, high or low. The group only matters for reading tones off the page, so it can wait.</p>
    <p>At the end of a syllable this letter ${l[6]==='—'?'is rarely or never used.':l[6]==='vowel'?'turns into part of a vowel.':`is said as <b>-${l[6]}</b>${l[6]!==l[5]?`, not ${l[5]}`:''}.`}</p>`)}
-  ${lv('h',5,'How to write it',hwPanel('L:'+l[0]))}
+  ${lv('h',++LN.n,'How to write it',hwPanel('L:'+l[0]))}
   </div></section>
  <div class="chips">${['Most used','All','Mid','High','Low'].map(k=>`<button class="chip" data-lfilter="${k}" aria-pressed="${k===letterFilter}">${k==='All'?'All 44':k==='Most used'?'Most used':k+' class'}</button>`).join('')}</div>
  <div class="grid44">${list.map(x=>`<button class="lt${x[7]?' old':''}" data-letter="${x[0]}" aria-pressed="${x[0]===letterSel}"><span class="g" lang="th">${x[0]}</span><span>${x[5]==='(catch)'?'catch':x[5]}</span>${tileTag(x)}</button>`).join('')}</div>
@@ -2092,7 +2096,39 @@ function markSil(root){
  const ns=[];while(w.nextNode())ns.push(w.currentNode);
  ns.forEach(n=>{const h=silWrap(n.nodeValue,'sil');if(!h)return;const sp=document.createElement('span');sp.innerHTML=h;n.replaceWith(...sp.childNodes)});
 }
-function silNote(th,phs){
+/* When ห / อ goes quiet (Dutch 1127): ห before ง ญ น ม ย ร ล ว is not said; it only makes that letter high class.
+   อ before ย does the same in four words, making ย mid class. The section sits on the letter's page; every word in the
+   app with a silent ห or อ carries a small tag that opens it. Detection comes from anaSyl's 'leader' role. */
+const LN={n:0};
+const QUIET={
+ 'ห':{eight:[['ง','ng'],['ญ','y'],['น','n'],['ม','m'],['ย','y'],['ร','r'],['ล','l'],['ว','w']],
+  quiet:[['หนู','nǒo','mouse','น'],['หมา','mǎa','dog','ม'],['หลาน','lǎan','grandchild','ล'],['หวาน','wǎan','sweet','ว'],['หรือ','rǔue','or','ร'],['หญ้า','yâa','grass','ญ'],['หยุด','yùt','stop','ย'],['เหงื่อ','ngùea','sweat','ง']],
+  said:[['หก','hòk','six'],['หัว','hǔa','head'],['ห้า','hâa','five'],['ห้อง','hâwng','room']]},
+ 'อ':{quiet:[['อย่า','yàa','don\'t'],['อยู่','yòo','be at, live'],['อย่าง','yàang','kind, way'],['อยาก','yàak','want']]}};
+function quietOf(th,phs){
+ th=(th||'').replace(/<[^>]+>/g,''); if(!phs||!/[หอ][งญนมยรลว]/.test(th))return [];
+ const S=spSyls(th.replace(/\s/g,''),phs); if(!S)return [];
+ const o=new Set(); S.forEach(([x,r])=>{try{anaSyl(x,r).pieces.forEach(p=>{if(p.kind==='Silent letter'&&/^Not said\. It makes/.test(p.note))o.add(p.th)})}catch(e){}});
+ return [...o].filter(c=>QUIET[c]);
+}
+const quietNote=(th,phs)=>quietOf(th,phs).map(c=>`<button class="endnote" data-quiet="${c}">Silent <span lang="th">${c}</span> · see the note on the letter</button>`).join('');
+function quietSec(l){
+ const q=QUIET[l[0]]; if(!q)return '';
+ const row=([th,p,en])=>`<div class="phr"><div class="body"><span class="tw" lang="th">${tsy(th,p)}</span><span style="font-size:18px">${ph(p)}</span><span class="en">${en}</span></div><div class="acts">${sayBtn(th,en)}</div></div>`;
+ if(l[0]==='ห')return lv('q',++LN.n,'When ห goes quiet',`
+  <p>Put ห in front of one of these eight letters and it is <b>not said at all</b>. It is there only to make that letter <b>high class</b>, which changes the tone of the word.</p>
+  <div class="qeight">${q.eight.map(([c,s])=>`<span><b lang="th">${c}</b>${s}</span>`).join('')}</div>
+  <p>All eight are low class letters with no high class twin. Thai borrows ห's class by writing it in front of them.</p>
+  <h3 style="margin:6px 0 0">Silent ห</h3>${q.quiet.map(row).join('')}
+  <h3 style="margin:6px 0 0">ห said as h</h3><p style="margin:0;color:var(--soft)">A vowel or any other letter comes right after it.</p>${q.said.map(row).join('')}
+  <p class="spnote"><b>Quick check.</b> Look at the letter right after ห. One of the eight: ห is silent. Anything else: say h. A vowel such as <span lang="th">เ</span> or <span lang="th">ใ</span> written in front does not change this, as in <span lang="th">ใหม่</span> mài "new".</p>`);
+ return lv('q',++LN.n,'When อ goes quiet',`
+  <p>In four everyday words, อ is written before ย and is <b>not said</b>. It makes ย a <b>mid class</b> sound, which sets the tone. Only these four words do it.</p>
+  ${q.quiet.map(row).join('')}
+  <p class="spnote">Everywhere else, อ either carries a vowel at the start of a word or is the vowel itself, as in <span lang="th">พ่อ</span> phâaw "father".</p>`);
+}
+function silNote(th,phs){return silNote0(th,phs)+quietNote(th,phs)}
+function silNote0(th,phs){
  th=(th||'').replace(/<[^>]+>/g,''); if(!th.includes('์'))return '';
  const seg=sylSeg(th,phs)||[[th,null,null]], parts=[]; let pos=0;
  seg.forEach(([x,,r])=>{const ch=[...x],S=silIdx(x);
@@ -2331,7 +2367,7 @@ function entryCard(e){
  const long=sylls.length>3, sounds=soundsIn(w.ph);
  return `<article class="card"><div class="bigw"><div><div class="tw" lang="th">${tsy(w.th,w.ph)}</div><p style="color:var(--soft)">${e.en}</p></div><div class="acts">${spBtn(w.th,w.ph,e.en)}${sayBtn(w.th,e.en)}</div></div>
   <div style="font-size:24px">${ph(w.ph)}</div>${endNote(w.th,w.ph)}
-  ${silNote(w.th,w.ph).replace('<span class="silnote">','<p class="silnote" style="margin:0">').replace(/<\/span>$/,'</p>')}
+  ${silNote0(w.th,w.ph).replace('<span class="silnote">','<p class="silnote" style="margin:0">').replace(/<\/span>$/,'</p>')}${quietNote(w.th,w.ph)}
   ${tips.length?`<ul class="tips">${tips.map(t=>`<li>${t}</li>`).join('')}</ul>`:''}${endsSmile(w.ph)?`<p class="smile">${SMI}<span>This ends on a smile sound. Widen the lips at the end.</span></p>`:''}
   ${multi?`<div class="stack" style="gap:10px"><h3>Word by word</h3>${wordsBlock(w.comps,e.en,w.comps.map(c=>c.mean.replace(/^polite word, (man|woman) speaking$/,'(polite)')).join(' + '),false)}</div>`
    :`<details class="brk"><summary>Break it into letters</summary><div class="brk">${LEGEND}${compCard(w.comps[0],0,false)}</div></details>`}
@@ -3161,6 +3197,7 @@ document.addEventListener('click',e=>{
  if(d.big){const b=document.getElementById('bigv');b.innerHTML=`<div class="in"><h2>How to read the drawing</h2>${mouth(d.big)}<p>This is a head cut in half and seen from the side, with the face looking left. The lips and teeth are on the left and the throat is on the right.</p><p>The pink band is the tongue. Its tip points left toward the teeth. Its back sits on the right, near the soft roof of the mouth.</p><p>The red circle marks the spot where the mouth does the work. Red dashes mean the air leaves through the nose. A vowel drawing has no circle, because only the shape of the tongue matters.</p><button class="next" data-unbig="1" style="justify-self:start">Close</button></div>`;b.hidden=false;b.scrollTop=0;return}
  if(d.hwplay){const h=b.closest('.hw');if(h)hwPlay(h);return}
  if(d.hwslow){HW.slow=!HW.slow;document.querySelectorAll('[data-hwslow]').forEach(x=>x.setAttribute('aria-pressed',HW.slow));const h=b.closest('.hw');if(h)hwPlay(h);return}
+ if(d.quiet){letterSel=d.quiet;lvOpen.q=true;store.set('lvOpen',JSON.stringify(lvOpen));['zoomv','bigv'].forEach(i=>{const z=document.getElementById(i);if(z)z.hidden=true});go('letters');const q=document.querySelector('details[data-lv="q"]');if(q)window.scrollTo({top:q.getBoundingClientRect().top+scrollY-70});return}
  if(d.endings){const bv=document.getElementById('bigv');bv.innerHTML=`<div class="in">${endChart()}<button class="next" data-unbig="1" style="justify-self:start">Close</button></div>`;markTh(bv);bv.hidden=false;bv.scrollTop=0;return}
  if(d.classes){const b=document.getElementById('bigv');b.innerHTML=`<div class="in">${CLASSCARD}<button class="next" data-unbig="1" style="justify-self:start">Close</button></div>`;markTh(b);b.hidden=false;b.scrollTop=0;return}
  if(d.unbig){document.getElementById('bigv').hidden=true;return}
