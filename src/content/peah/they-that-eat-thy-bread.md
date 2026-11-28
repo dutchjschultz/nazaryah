@@ -1,16 +1,16 @@
 ---
 title: "They That Eat Thy Bread"
-reference: "Obadiah 7"
+reference: "Obadiah 5-7"
 deck: "Shared bread does not make a man faithful."
 topic: "Scripture"
 keyVerse: "All the men of thy confederacy have brought thee even to the border: the men that were at peace with thee have deceived thee, and prevailed against thee; they that eat thy bread have laid a wound under thee: there is none understanding in him."
 keyVerseRef: "Obadiah 7"
-verses: "Obadiah 7 · Psalm 41:9 · 2 Samuel 15:31 · John 13:18 · Micah 7:5–6 · Matthew 10:36 · Acts 20:30 · Micah 7:7 · Revelation 2:20"
+verses: "Obadiah 5–7 · Psalm 41:9 · 2 Samuel 15:31 · John 13:18 · Micah 7:5–6 · Matthew 10:36 · Acts 20:30 · Micah 7:7 · Revelation 2:20"
 date: 2026-11-27
 added: 2026-11-27
 ---
 
-Edom's allies turned on it: "they that eat thy bread have laid a wound under thee" (Obadiah 1:7). The men at Edom's table were the ones who struck it. The betrayal of Yahushua is often told as a single event with no pattern behind it. Obadiah shows the pattern was already written.
+Thieves by night would steal only "till they had enough," and grapegatherers would "leave some grapes" (Obadiah 1:5). Edom would be stripped bare, its "hidden things sought up" (Obadiah 1:6). Those who did it were its friends. Edom's allies turned on it: "they that eat thy bread have laid a wound under thee" (Obadiah 1:7). The men at Edom's table were the ones who struck it. The betrayal of Yahushua is often told as a single event with no pattern behind it. Obadiah shows the pattern was already written.
 
 David lived the same wound. "Mine own familiar friend, in whom I trusted, which did eat of my bread, hath lifted up his heel against me" (Psalm 41:9). His own counsellor, Ahithophel, joined Absalom's revolt (2 Samuel 15:31).
 

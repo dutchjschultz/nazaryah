@@ -1,16 +1,16 @@
 ---
 title: "A Nest Among the Stars"
-reference: "Obadiah 4"
+reference: "Obadiah 2-4"
 deck: "The stars were the height of its pride."
 topic: "Scripture"
 keyVerse: "Though thou exalt thyself as the eagle, and though thou set thy nest among the stars, thence will I bring thee down, saith Yahuah."
 keyVerseRef: "Obadiah 4"
-verses: "Obadiah 4 · Jeremiah 49:16 · Isaiah 14:4 · Isaiah 14:13 · Isaiah 14:16 · Ezekiel 28:2 · Matthew 11:23 · Isaiah 14:12 · Revelation 22:16"
+verses: "Obadiah 2–4 · Jeremiah 49:16 · Isaiah 14:4 · Isaiah 14:13 · Isaiah 14:16 · Ezekiel 28:2 · Matthew 11:23 · Isaiah 14:12 · Revelation 22:16"
 date: 2026-11-27
 added: 2026-11-27
 ---
 
-Yahuah tells Edom, "though thou set thy nest among the stars, thence will I bring thee down" (Obadiah 1:4). Edom never left the rocks of Seir. The stars were the height of its pride. The same words in Isaiah 14 are often read as the fall of an angel named Lucifer, but the prophets use them for nations of men.
+Yahuah tells Edom, "I have made thee small among the heathen," and "The pride of thine heart hath deceived thee." Edom had asked, "Who shall bring me down to the ground?" (Obadiah 1:2-3). Yahuah answers, "though thou set thy nest among the stars, thence will I bring thee down" (Obadiah 1:4). Edom never left the rocks of Seir. The stars were the height of its pride. The same words in Isaiah 14 are often read as the fall of an angel named Lucifer, but the prophets use them for nations of men.
 
 Jeremiah repeats the charge against Edom: "though thou shouldest make thy nest as high as the eagle, I will bring thee down from thence" (Jeremiah 49:16).
 
