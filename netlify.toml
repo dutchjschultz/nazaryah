@@ -322,3 +322,26 @@
   from = "/pathway/name-and-nature/waymarks"
   to = "/pathway/name-and-nature"
   status = 301
+
+# Pe'ah Jude 1128: the six 1002 Jude entries were replaced by the ten-entry Jude set;
+# each retired URL goes to its counterpart (The Lord Rebuke Thee kept its URL).
+[[redirects]]
+  from = "/peah/the-belief-once-delivered"
+  to = "/peah/once-delivered"
+  status = 301
+[[redirects]]
+  from = "/peah/favor-turned-into-lasciviousness"
+  to = "/peah/favor-turned-to-license"
+  status = 301
+[[redirects]]
+  from = "/peah/saved-out-of-egypt-then-destroyed"
+  to = "/peah/saved-then-destroyed"
+  status = 301
+[[redirects]]
+  from = "/peah/jude-quotes-enoch"
+  to = "/peah/the-coming-is-the-judgment"
+  status = 301
+[[redirects]]
+  from = "/peah/the-only-wise-god-our-savior"
+  to = "/peah/the-only-wise-god-our-saviour"
+  status = 301
