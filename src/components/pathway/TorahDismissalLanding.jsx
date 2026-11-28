@@ -57,7 +57,7 @@ const PATHWAY = {
       reveal: "Torah is instruction. Even a mother has a torah for her son (Proverbs 1:8). Waymark 3 digs into it.",
     },
   ],
-  allDoneText: "You’ve finished every open waymark. More are on the way.",
+  allDoneText: "You’ve finished every waymark in this pathway.",
 };
 
 const WAYMARKS = [
@@ -67,12 +67,12 @@ const WAYMARKS = [
   { n: 4, title: "“He Fulfilled It, So It’s Finished”", blurb: "Matthew 5:17–19, one word at a time.", key: "pathway_b_waymark4_fulfilled_finished", steps: 6, live: true },
   { n: 5, title: "“He Broke the Sabbath”", blurb: "Yahushua and the traditions of men.", key: "pathway_b_waymark5_traditions_of_men", steps: 7, live: true },
   { n: 6, title: "“Nailed to the Cross”", blurb: "What Colossians 2 actually says was nailed.", key: "pathway_b_waymark6_nailed_to_the_cross", steps: 6, live: true },
-  { n: 7, title: "“Not Under Law”", blurb: "Paul’s own words in Romans.", key: "pathway_b_waymark7_not_under_law", steps: 5, live: false },
-  { n: 8, title: "“Works of the Law”", blurb: "What Paul fought in Galatians — and what Paul did.", key: "pathway_b_waymark8_works_of_the_law", steps: 5, live: false },
-  { n: 9, title: "Peter’s Sheet and Clean Foods", blurb: "What Peter said his own vision meant.", key: "pathway_b_waymark9_peters_sheet", steps: 6, live: false },
-  { n: 10, title: "New Covenant, Same Law", blurb: "What changed, and what stayed.", key: "pathway_b_waymark10_new_covenant", steps: 6, live: false },
-  { n: 11, title: "The Walk", blurb: "What walking looks like after the door — and the judgment.", key: "pathway_b_waymark11_the_walk", steps: 7, live: false },
-  { n: 12, title: "The Walk After the Door", blurb: "The whole pathway, walked back through.", key: "pathway_b_waymark12_walk_after_the_door", steps: 13, live: false },
+  { n: 7, title: "“Not Under Law”", blurb: "Paul’s own words in Romans.", key: "pathway_b_waymark7_not_under_law", steps: 5, live: true },
+  { n: 8, title: "“Works of the Law”", blurb: "What Paul fought in Galatians — and what Paul did.", key: "pathway_b_waymark8_works_of_the_law", steps: 5, live: true },
+  { n: 9, title: "Peter’s Sheet and Clean Foods", blurb: "What Peter said his own vision meant.", key: "pathway_b_waymark9_peters_sheet", steps: 6, live: true },
+  { n: 10, title: "New Covenant, Same Law", blurb: "What changed, and what stayed.", key: "pathway_b_waymark10_new_covenant", steps: 6, live: true },
+  { n: 11, title: "The Walk", blurb: "What walking looks like after the door — and the judgment.", key: "pathway_b_waymark11_the_walk", steps: 7, live: true },
+  { n: 12, title: "The Walk After the Door", blurb: "The whole pathway, walked back through.", key: "pathway_b_waymark12_walk_after_the_door", steps: 13, live: true },
 ];
 
 function readProgress(w) {
