@@ -1,5 +1,7 @@
 ---
-// blog/c/[group] · 1023
+// blog/c/[group] · 1128
+// 1128 (Dutch): a topic page leads with its homepage Featured Picks (`featured: true`, newest
+// featuredAt first), then everything else newest first. Collection pages are unchanged.
 // (associations batch 70): a topic page lists a book study series by its main study
 // only, with "plus N companion studies" on that card (src/lib/study-series.js).
 import BaseLayout from '../../../../layouts/BaseLayout.astro';
@@ -19,8 +21,13 @@ export async function getStaticPaths({ paginate }) {
   // series shows only its main study here; its companions are reached from the
   // main study's panel, search and the cluster panels (src/lib/study-series.js).
   const byGroup = BLOG_GROUPS.flatMap((g) => {
+    const pin = (p) => (p.data.featured === true && p.data.featuredAt ? new Date(p.data.featuredAt).valueOf() : null);
     const posts = [...all.filter((p) => groupOf(p.slug) === g.key && !leavesTopic(p.slug) && !isSeriesCompanion(p)), ...extrasOf(g.key)]
-      .sort((a, b) => b.data.date.valueOf() - a.data.date.valueOf());
+      .sort((a, b) => {
+        const pa = pin(a), pb = pin(b);
+        if (pa !== null || pb !== null) return (pb ?? -Infinity) - (pa ?? -Infinity);
+        return b.data.date.valueOf() - a.data.date.valueOf();
+      });
     return paginate(posts, { params: { group: g.key }, pageSize: POSTS_PER_PAGE, props: { group: g } });
   });
   // COLLECTION pages: same template, fed from src/data/collections.js. Adding a
