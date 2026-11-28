@@ -122,7 +122,7 @@ export default function Stop6SeedOfTheWoman() {
       <div className="relative max-w-4xl mx-auto px-12 md:px-20 py-20 md:py-24">
         <div className="space-y-7 mb-20" style={{ animation: 'fadeUp 0.9s ease-out forwards' }}>
           <div className="text-xs uppercase" style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}>
-            Pathway · The Name and the Nature · Stop 6
+            Pathway · The Name and the Nature · Waymark 6
           </div>
           <h1 style={{ fontFamily: '"Fraunces", Georgia, serif', fontWeight: 300, fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 0.98, letterSpacing: '-0.03em', maxWidth: '20ch' }}>
             The <em style={{ fontStyle: 'italic', fontWeight: 400, color: amber }}>Seed</em> of the Woman
@@ -692,7 +692,7 @@ export default function Stop6SeedOfTheWoman() {
           <p className="lesson-p" style={{ fontSize: '1.18rem', marginTop: '2rem', color: amber, fontFamily: '"Fraunces", Georgia, serif', fontStyle: 'italic' }}>
             But you may already be hearing the objection. <em>"What about John 1:1? What about
             'before Abraham was, I am'? What about all the verses Trinitarians use?"</em> Next
-            stop, we walk through every one of those proof-texts and show what they actually
+            waymark, we walk through every one of those proof-texts and show what they actually
             say.
           </p>
 
@@ -791,7 +791,7 @@ export default function Stop6SeedOfTheWoman() {
               }}
                 onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 168, 106, 0.1)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}>
-                Continue to Stop 7 — <em>Trinity Proof-Texts Dismantled</em> →
+                Continue to Waymark 7 — <em>Trinity Proof-Texts Dismantled</em> →
               </button>
             </div>
           </div>

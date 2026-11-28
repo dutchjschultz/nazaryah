@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import React from 'react';
 
 export default function PathwayLanding() {
   const cream = '#ede4cf';
@@ -28,8 +28,8 @@ export default function PathwayLanding() {
         { num: 10, title: 'The Original Faith', status: 'active', minutes: 22 },
       ],
       status: 'active',
-      route: '/pathway/name-and-nature/stop-1',
-      buttonText: 'Begin this pathway',
+      route: '/pathway/name-and-nature',
+      buttonText: 'Enter Pathway',
     },
     {
       slug: 'torah-dismissal',
@@ -150,7 +150,7 @@ export default function PathwayLanding() {
           </p>
 
           <p style={{ color: amber, fontStyle: 'italic', fontFamily: '"Fraunces", Georgia, serif', fontSize: '1.15rem', fontWeight: 300, maxWidth: '40rem', lineHeight: 1.65 }}>
-            Each pathway is twelve stops, ten to fifteen minutes apiece — about the size of a normal
+            Each pathway is a series of short waymarks, about ten to fifteen minutes each — the size of a normal
             devotional time. But this isn't your usual devotional. Walk one pathway through, and over
             a couple of weeks, you'll watch a doctrine you've held your whole life come apart in
             your hands — not because someone told you to doubt it, but because the Bible itself does.
@@ -197,8 +197,8 @@ export default function PathwayLanding() {
               />
               <ProcessStep
                 num="2"
-                title="Walk the stops"
-                body="Each pathway is broken into stops — short interactive lessons about ten minutes each. Every stop walks you through one word, one verse, or one tool. You answer along the way."
+                title="Walk the waymarks"
+                body="Each pathway is broken into waymarks — short interactive lessons about ten to fifteen minutes each. Every waymark walks you through one word, one verse, or one tool. You answer along the way."
                 colors={{ cream, amber, bg }}
               />
               <ProcessStep
@@ -382,7 +382,6 @@ function ProcessStep({ num, title, body, colors }) {
 
 function PathwayCard({ pathway, colors }) {
   const { cream, amber, dim } = colors;
-  const [expanded, setExpanded] = useState(false);
   const isActive = pathway.status === 'active';
 
   const handleBegin = () => {
@@ -475,82 +474,6 @@ function PathwayCard({ pathway, colors }) {
             {pathway.description}
           </p>
 
-          {/* Stops dropdown — only for active pathway */}
-          {isActive && pathway.stops.length > 0 && (
-            <button
-              onClick={() => setExpanded(!expanded)}
-              style={{
-                background: 'none',
-                border: 'none',
-                color: amber,
-                opacity: 0.85,
-                fontFamily: '"Fraunces", Georgia, serif',
-                fontSize: '0.9rem',
-                letterSpacing: '0.05em',
-                cursor: 'pointer',
-                padding: 0,
-                marginBottom: expanded ? '1.2rem' : '0',
-                transition: 'opacity 0.3s',
-              }}
-              onMouseEnter={(e) => { e.currentTarget.style.opacity = '1'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.opacity = '0.85'; }}
-            >
-              {expanded ? '− Hide the stops' : `+ See all ${pathway.stops.length} stop${pathway.stops.length === 1 ? '' : 's'}`}
-            </button>
-          )}
-
-          {/* Stops list — expanded */}
-          {isActive && expanded && (
-            <ol
-              style={{
-                listStyle: 'none',
-                padding: 0,
-                margin: '0 0 1.5rem 0',
-                borderLeft: `1px solid rgba(212, 168, 106, 0.3)`,
-                paddingLeft: '1.4rem',
-                animation: 'fadeIn 0.4s ease-out',
-              }}
-            >
-              {pathway.stops.map((stop, idx) => (
-                <li
-                  key={idx}
-                  className={`stop-list-item ${stop.status}`}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'baseline',
-                    gap: '0.8rem',
-                    padding: '0.55rem 0',
-                    color: stop.status === 'active' ? cream : 'rgba(237, 228, 207, 0.4)',
-                    fontSize: '0.98rem',
-                    cursor: stop.status === 'active' ? 'default' : 'default',
-                  }}
-                >
-                  <span
-                    style={{
-                      fontFamily: '"Fraunces", Georgia, serif',
-                      fontSize: '0.75rem',
-                      color: stop.status === 'active' ? amber : 'rgba(212, 168, 106, 0.4)',
-                      letterSpacing: '0.15em',
-                      minWidth: '1.6rem',
-                    }}
-                  >
-                    {String(stop.num).padStart(2, '0')}
-                  </span>
-                  <span style={{ flex: 1 }}>{stop.title}</span>
-                  {stop.status === 'active' && stop.minutes && (
-                    <span style={{ fontSize: '0.78rem', color: cream, opacity: 0.4, fontStyle: 'italic' }}>
-                      {stop.minutes} min
-                    </span>
-                  )}
-                  {stop.status === 'coming-soon' && (
-                    <span style={{ fontSize: '0.7rem', color: cream, opacity: 0.4, letterSpacing: '0.1em', textTransform: 'uppercase' }}>
-                      Soon
-                    </span>
-                  )}
-                </li>
-              ))}
-            </ol>
-          )}
         </div>
 
         {/* CTA Button */}

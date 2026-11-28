@@ -123,7 +123,7 @@ export default function Stop4AuthorityInHisName() {
       <div className="relative max-w-4xl mx-auto px-12 md:px-20 py-20 md:py-24">
         <div className="space-y-7 mb-20" style={{ animation: 'fadeUp 0.9s ease-out forwards' }}>
           <div className="text-xs uppercase" style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}>
-            Pathway · The Name and the Nature · Stop 4
+            Pathway · The Name and the Nature · Waymark 4
           </div>
           <h1 style={{ fontFamily: '"Fraunces", Georgia, serif', fontWeight: 300, fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 0.98, letterSpacing: '-0.03em', maxWidth: '20ch' }}>
             The <em style={{ fontStyle: 'italic', fontWeight: 400, color: amber }}>Authority</em> in His Name
@@ -496,7 +496,7 @@ export default function Stop4AuthorityInHisName() {
             Three losses, all upstream of where the modern church is now. Recovering the Names —
             both of them — is the foundation. The relationship between them is the next step.
             Walking in genuine covenant is the third. <strong style={{ color: amber }}>Each one of
-            these stops in the pathway has been doing that work.</strong>
+            these waymarks in the pathway has been doing that work.</strong>
           </p>
 
           <Question
@@ -655,7 +655,7 @@ export default function Stop4AuthorityInHisName() {
           <p className="lesson-p" style={{ fontSize: '1.18rem', marginTop: '2rem', color: amber, fontFamily: '"Fraunces", Georgia, serif', fontStyle: 'italic' }}>
             One thing remains, though, before you can walk in this fully. The Trinitarian says the
             Father and the Son are really "one being" — and that single doctrine collapses the
-            very chain we just traced. Next stop, we dismantle it.
+            very chain we just traced. Next waymark, we dismantle it.
           </p>
 
           <div style={{ textAlign: 'center', paddingTop: '1.5rem' }}>
@@ -752,7 +752,7 @@ export default function Stop4AuthorityInHisName() {
               }}
                 onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 168, 106, 0.1)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}>
-                Continue to Stop 5 — <em>The Roles of the Father and the Son</em> →
+                Continue to Waymark 5 — <em>The Roles of the Father and the Son</em> →
               </button>
             </div>
           </div>

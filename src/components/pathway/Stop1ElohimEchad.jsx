@@ -121,8 +121,11 @@ export default function Stop1ElohimEchad() {
 
       <div className="relative max-w-4xl mx-auto px-12 md:px-20 py-20 md:py-24">
         <div className="space-y-7 mb-20" style={{ animation: 'fadeUp 0.9s ease-out forwards' }}>
+          <a href="/pathway/name-and-nature/waymarks" style={{ color: amber, opacity: 0.75, textDecoration: 'none', fontSize: '0.9rem', display: 'inline-block' }}>
+            Returning? Go to your waymarks →
+          </a>
           <div className="text-xs uppercase" style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}>
-            Pathway · The Name and the Nature · Stop 1
+            Pathway · The Name and the Nature · Waymark 1
           </div>
           <h1 style={{ fontFamily: '"Fraunces", Georgia, serif', fontWeight: 300, fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 0.98, letterSpacing: '-0.03em', maxWidth: '20ch' }}>
             The <em style={{ fontStyle: 'italic', fontWeight: 400, color: amber }}>One</em> Living Elohim
@@ -462,7 +465,7 @@ export default function Stop1ElohimEchad() {
             plural form as evidence for plurality within Yahuah. Not in the Second Temple period. Not in
             the medieval period. Not now. <strong style={{ color: amber }}>The "Elohim is plural therefore
             Trinity" argument is a foreigner's reading,</strong> applied centuries later by people who
-            didn't speak the language. Hold onto this. It will come up again at every stop on this trail.
+            didn't speak the language. Hold onto this. It will come up again at every waymark on this trail.
           </p>
           <Question
             prompt="If the plural form of Elohim proved multiple persons inside one being, what else in the Bible would also have to be 'multiple persons in one being'?"
@@ -908,11 +911,11 @@ export default function Stop1ElohimEchad() {
                 fontFamily: '"Fraunces", Georgia, serif', fontWeight: 300, fontSize: '1.18rem',
                 color: cream, opacity: 0.7, maxWidth: '34rem', margin: '0 auto 1.5rem', lineHeight: 1.6,
               }}>
-                You now know the right question. The next stop is where Torah finally gives the answer —
+                You now know the right question. The next waymark is where Torah finally gives the answer —
                 the Name the Father gave Moses at the burning bush.
               </p>
               <button
-                onClick={() => { window.location.href = '/pathway/name-and-nature/stop-2'; }}
+                onClick={() => { window.location.href = '/pathway/name-and-nature/waymarks'; }}
                 className="px-10 py-4 transition-all duration-300" style={{
                 backgroundColor: 'transparent', border: `1px solid ${amber}`, color: amber,
                 fontFamily: '"Fraunces", Georgia, serif', fontSize: '1rem', letterSpacing: '0.08em',
@@ -920,7 +923,7 @@ export default function Stop1ElohimEchad() {
               }}
                 onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 168, 106, 0.1)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}>
-                Continue to Stop 2 — <em>The Name</em> →
+                Choose your waymark →
               </button>
             </div>
           </div>

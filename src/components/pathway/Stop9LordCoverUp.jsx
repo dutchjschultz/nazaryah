@@ -104,7 +104,7 @@ export default function Stop9LordCoverUp() {
       <div className="relative max-w-4xl mx-auto px-12 md:px-20 py-20 md:py-24">
         <div className="space-y-7 mb-20" style={{ animation: 'fadeUp 0.9s ease-out forwards' }}>
           <div className="text-xs uppercase" style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}>
-            Pathway · The Name and the Nature · Stop 9
+            Pathway · The Name and the Nature · Waymark 9
           </div>
           <h1 style={{ fontFamily: '"Fraunces", Georgia, serif', fontWeight: 300, fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 0.98, letterSpacing: '-0.03em', maxWidth: '20ch' }}>
             <em style={{ fontStyle: 'italic', fontWeight: 400, color: amber }}>Lord</em> — The Cover-Up
@@ -144,7 +144,7 @@ export default function Stop9LordCoverUp() {
           eyebrow="A quick game to start"
           heading="Theos or Kyrios?" colors={colors}>
           <p className="lesson-p">
-            Back in Stop 2, you walked through the first half of this story. Yahuah's personal Name appears <strong style={{ color: amber }}>over 6,800 times</strong> in the Old Testament. Modern English Bibles have replaced almost every one of those with the single word "LORD." The Father's Name was buried under a title.
+            Back in Waymark 2, you walked through the first half of this story. Yahuah's personal Name appears <strong style={{ color: amber }}>over 6,800 times</strong> in the Old Testament. Modern English Bibles have replaced almost every one of those with the single word "LORD." The Father's Name was buried under a title.
           </p>
           <p className="lesson-p">
             But that was only half the story. The New Testament was written in Greek — and Greek had <strong style={{ color: amber }}>two different words</strong> doing the obscuring work, not just one:
@@ -374,7 +374,7 @@ export default function Stop9LordCoverUp() {
               <>
                 <strong style={{ color: amber }}>Read the restored version slowly.</strong> The verse is no longer about Yahushua being Yahuah. It's about confessing Yahushua as your Master AND calling on Yahuah's Name to be saved — two distinct relationships with two distinct Beings, both essential to salvation. Father at the source, Son as the appointed Master through whom we approach Him.
                 <br /><br />
-                The Trinitarian "proof" only works in the English. In the original languages, the verse teaches two distinct Beings working together — the very framework Stop 5 showed you. <strong style={{ color: amber }}>The cover-up created the doctrine. Restore the Names and the doctrine evaporates.</strong>
+                The Trinitarian "proof" only works in the English. In the original languages, the verse teaches two distinct Beings working together — the very framework Waymark 5 showed you. <strong style={{ color: amber }}>The cover-up created the doctrine. Restore the Names and the doctrine evaporates.</strong>
               </>
             }
           />
@@ -461,7 +461,7 @@ export default function Stop9LordCoverUp() {
             And recovering the Name recovers the prayer. The very first request in the Lord's Prayer — <em>"Hallowed be Thy Name"</em> — comes back to life. You can't hallow a Name you don't know. Now you do.
           </p>
           <p className="lesson-p" style={{ fontSize: '1.18rem', marginTop: '2rem', color: amber, fontFamily: '"Fraunces", Georgia, serif', fontStyle: 'italic' }}>
-            One stop remains. You now know His Son, His nature, and His Name. The last lesson isn't dismantling — it's recovery. The original faith. That's where we end.
+            One waymark remains. You now know His Son, His nature, and His Name. The last lesson isn't dismantling — it's recovery. The original faith. That's where we end.
           </p>
           <div style={{ textAlign: 'center', paddingTop: '1.5rem' }}>
             <button onClick={() => unlockNext(10)} className="px-8 py-3 transition-all duration-300" style={{
@@ -499,7 +499,7 @@ export default function Stop9LordCoverUp() {
                 }}
                 onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 168, 106, 0.1)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}>
-                Continue to Stop 10 — <em>The Original Faith</em> →
+                Continue to Waymark 10 — <em>The Original Faith</em> →
               </button>
             </div>
           </div>
@@ -772,7 +772,7 @@ function RecapQuiz({ colors, onComplete }) {
       prompt: "What does Romans 10:9-13 actually teach when you restore the original Names?",
       options: [
         { label: "That Yahushua and Yahuah are the same Being, since they're both called 'Lord'", correct: false, feedback: "That reading only works in the English translation. In the original, Paul calls Yahushua our Adon (Master) — and quotes Joel 2:32 about calling on YAHUAH'S Name. Two distinct Beings." },
-        { label: "That confessing Yahushua as Master AND calling on Yahuah's Name are both required for salvation — two distinct Beings, two distinct relationships", correct: true, feedback: "Right. The verse, restored, teaches the exact chain of authority you walked through in Stops 4 and 5. The Father is the source — calling on Yahuah's Name brings salvation. The Son is the appointed Master — confessing Yahushua as Adon is how we operate under the Father's authority." },
+        { label: "That confessing Yahushua as Master AND calling on Yahuah's Name are both required for salvation — two distinct Beings, two distinct relationships", correct: true, feedback: "Right. The verse, restored, teaches the exact chain of authority you walked through in Waymarks 4 and 5. The Father is the source — calling on Yahuah's Name brings salvation. The Son is the appointed Master — confessing Yahushua as Adon is how we operate under the Father's authority." },
         { label: "That 'Lord' is the most important word in the Bible", correct: false, feedback: "'Lord' is a title — and the problem is that the same English word now covers both the Father's Name and the Son's title. Restoring the original Names reveals two distinct Beings working together." },
       ],
     },

@@ -110,7 +110,7 @@ export default function Stop8RuachPneuma() {
       <div className="relative max-w-4xl mx-auto px-12 md:px-20 py-20 md:py-24">
         <div className="space-y-7 mb-20" style={{ animation: 'fadeUp 0.9s ease-out forwards' }}>
           <div className="text-xs uppercase" style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}>
-            Pathway · The Name and the Nature · Stop 8
+            Pathway · The Name and the Nature · Waymark 8
           </div>
           <h1 style={{ fontFamily: '"Fraunces", Georgia, serif', fontWeight: 300, fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 0.98, letterSpacing: '-0.03em', maxWidth: '20ch' }}>
             <em style={{ fontStyle: 'italic', fontWeight: 400, color: amber }}>Ruach</em> / Pneuma — The Spirit
@@ -134,7 +134,7 @@ export default function Stop8RuachPneuma() {
           heading="Why can the Trinity only ever produce pairs?"
           colors={colors}>
           <p className="lesson-p">
-            In Stop 7 you noticed something striking. The strongest Trinitarian proof-texts —
+            In Waymark 7 you noticed something striking. The strongest Trinitarian proof-texts —
             John 8:58, John 10:30, Isaiah 9:6 — all show two figures, never three. Every
             throne-room scene in Scripture shows two figures, never three.
           </p>
@@ -407,7 +407,7 @@ export default function Stop8RuachPneuma() {
             <strong style={{ color: amber }}>There is no third party in that scene.</strong> Just
             the Father, His breath, and a man becoming alive. Adam doesn't become divine — he
             becomes a living being. The Father's Spirit gives life. The recipient remains human.
-            Same pattern Stop 6 showed you with Yahushua's conception. Same pattern that applies
+            Same pattern Waymark 6 showed you with Yahushua's conception. Same pattern that applies
             to every born-again believer. Same Father, same Ruach, same life-giving breath.
           </p>
 
@@ -852,7 +852,7 @@ export default function Stop8RuachPneuma() {
               }}
                 onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 168, 106, 0.1)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}>
-                Continue to Stop 9 — <em>Lord (Kyrios) — The Cover-Up</em> →
+                Continue to Waymark 9 — <em>Lord (Kyrios) — The Cover-Up</em> →
               </button>
             </div>
           </div>

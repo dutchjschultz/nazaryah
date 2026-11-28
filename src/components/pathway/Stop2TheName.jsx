@@ -171,7 +171,7 @@ export default function Stop2TheName() {
             className="text-xs uppercase"
             style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}
           >
-            Pathway · The Name and the Nature · Stop 2
+            Pathway · The Name and the Nature · Waymark 2
           </div>
           <h1
             style={{
@@ -1216,7 +1216,7 @@ export default function Stop2TheName() {
               </div>
             </div>
 
-            {/* Bridge to Stop 3 */}
+            {/* Bridge to Waymark 3 */}
             <div className="mt-24 text-center pb-8">
               <p
                 className="italic mb-6"
@@ -1254,7 +1254,7 @@ export default function Stop2TheName() {
                   e.currentTarget.style.backgroundColor = 'transparent';
                 }}
               >
-                Continue to Stop 3 — <em>Call on His Name</em> →
+                Continue to Waymark 3 — <em>Call on His Name</em> →
               </button>
             </div>
           </div>

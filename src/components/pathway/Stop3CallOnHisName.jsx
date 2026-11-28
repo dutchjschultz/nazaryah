@@ -122,7 +122,7 @@ export default function Stop3CallOnHisName() {
       <div className="relative max-w-4xl mx-auto px-12 md:px-20 py-20 md:py-24">
         <div className="space-y-7 mb-20" style={{ animation: 'fadeUp 0.9s ease-out forwards' }}>
           <div className="text-xs uppercase" style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}>
-            Pathway · The Name and the Nature · Stop 3
+            Pathway · The Name and the Nature · Waymark 3
           </div>
           <h1 style={{ fontFamily: '"Fraunces", Georgia, serif', fontWeight: 300, fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 0.98, letterSpacing: '-0.03em', maxWidth: '20ch' }}>
             Call on <em style={{ fontStyle: 'italic', fontWeight: 400, color: amber }}>His Name</em>
@@ -478,7 +478,7 @@ export default function Stop3CallOnHisName() {
               Yahushua walked among us in flesh, but after his resurrection now dwells in believers
               as the Father's same Spirit. <strong style={{ color: amber, fontStyle: 'normal' }}>The
               "Holy Spirit" is not a third being</strong> — it is the Father's own breath at work
-              in his people. We'll dig into this fully in Stop 8 — <em>Ruach / Pneuma</em>.
+              in his people. We'll dig into this fully in Waymark 8 — <em>Ruach / Pneuma</em>.
             </p>
           </div>
           <Question
@@ -501,7 +501,7 @@ export default function Stop3CallOnHisName() {
           heading="“The Lord” has been doing the work of two names"
           colors={{ cream, amber, dim }}>
           <p className="lesson-p">
-            In Stop 2 we learned that the Greek word <em>Kyrios</em> (Lord) is being used in two
+            In Waymark 2 we learned that the Greek word <em>Kyrios</em> (Lord) is being used in two
             completely different ways in the New Testament — sometimes as the LXX substitution for{' '}
             <em>Yahuah</em>, sometimes as the ordinary Greek title for a master. English Bibles flatten
             both into the single word <em>Lord</em>.
@@ -679,7 +679,7 @@ export default function Stop3CallOnHisName() {
           heading="What translation hid, and what it could not hide"
           colors={{ cream, amber, dim }}>
           <p className="lesson-p">
-            We've already traced the substitution chain in Stop 2. Just as a recap of how the Name was
+            We've already traced the substitution chain in Waymark 2. Just as a recap of how the Name was
             hidden from those calling on it:
           </p>
           <div style={{ paddingLeft: '1rem', marginBottom: '1.5rem', borderLeft: `2px solid ${amber}`, maxWidth: '38rem' }}>
@@ -786,7 +786,7 @@ export default function Stop3CallOnHisName() {
             the Name he gave.
           </div>
           <p className="lesson-p" style={{ fontSize: '1.2rem', marginTop: '2rem', color: amber, fontFamily: '"Fraunces", Georgia, serif', fontStyle: 'italic' }}>
-            You can call on his Name now. He is hearing you. And what awaits you in the next stop is what
+            You can call on his Name now. He is hearing you. And what awaits you in the next waymark is what
             comes WITH the Name once you carry it — its authority, its power, and the things the apostles
             did with it that the modern church has barely begun to recover.
           </p>
@@ -897,7 +897,7 @@ export default function Stop3CallOnHisName() {
                 fontFamily: '"Fraunces", Georgia, serif', fontWeight: 300, fontSize: '1.18rem',
                 color: cream, opacity: 0.7, maxWidth: '34rem', margin: '0 auto 1.5rem', lineHeight: 1.6,
               }}>
-                You've reached the end of the stops we've built so far. The next one — the authority
+                You've reached the end of the waymarks we've built so far. The next one — the authority
                 that comes WITH the Name once you carry it — is on the way. For now, head back to the
                 pathway hub.
               </p>

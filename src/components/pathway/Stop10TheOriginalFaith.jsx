@@ -101,13 +101,13 @@ export default function Stop10TheOriginalFaith() {
       <div className="relative max-w-4xl mx-auto px-12 md:px-20 py-20 md:py-24">
         <div className="space-y-7 mb-20" style={{ animation: 'fadeUp 0.9s ease-out forwards' }}>
           <div className="text-xs uppercase" style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}>
-            Pathway · The Name and the Nature · Stop 10 (Final)
+            Pathway · The Name and the Nature · Waymark 10 (Final)
           </div>
           <h1 style={{ fontFamily: '"Fraunces", Georgia, serif', fontWeight: 300, fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 0.98, letterSpacing: '-0.03em', maxWidth: '20ch' }}>
             <em style={{ fontStyle: 'italic', fontWeight: 400, color: amber }}>The Original</em> Faith
           </h1>
           <p className="text-xl leading-relaxed" style={{ color: cream, opacity: 0.78, maxWidth: '36rem', fontWeight: 300 }}>
-            You've walked nine stops. Now we walk back through them — and you'll see how much you've actually internalized. Then we ask the only question that matters: <em>so what changes?</em>
+            You've walked nine waymarks. Now we walk back through them — and you'll see how much you've actually internalized. Then we ask the only question that matters: <em>so what changes?</em>
           </p>
           <div className="flex items-center gap-4 pt-3 text-sm" style={{ color: cream, opacity: 0.5 }}>
             <span style={{ letterSpacing: '0.12em' }}>About 22 minutes</span>
@@ -120,27 +120,27 @@ export default function Stop10TheOriginalFaith() {
           eyebrow="Before we look back, take a breath"
           heading="What's different inside you now?" colors={colors}>
           <p className="lesson-p">
-            You've walked through nine stops. That's not a small thing. Most believers go an entire lifetime without seriously examining what they were taught about who they're worshipping. You did the work. You let the evidence push back on what you'd inherited.
+            You've walked through nine waymarks. That's not a small thing. Most believers go an entire lifetime without seriously examining what they were taught about who they're worshipping. You did the work. You let the evidence push back on what you'd inherited.
           </p>
           <p className="lesson-p">
-            Before we walk back through everything, take a breath. Notice that something inside you is different from when you started Stop 1. Maybe it's a small thing. Maybe it's bigger than you can name yet.
+            Before we walk back through everything, take a breath. Notice that something inside you is different from when you started Waymark 1. Maybe it's a small thing. Maybe it's bigger than you can name yet.
           </p>
           <p className="lesson-p"><strong style={{ color: amber }}>Pick what feels truest right now:</strong></p>
           <ChoiceCards
             options={[
               { title: 'I see the Father differently now', body: 'He has a Name. He is one. He is Spirit. He is not three Persons in a triune Godhead. He is the One who has been speaking to me my whole life — I just didn\'t know His Name.', correct: true, feedback: 'That\'s the recovery. He has been there the whole time, with a Name, with a nature, speaking through Scripture. Now you can hear Him. The whole pathway has been clearing the ground for you to see Him as He actually is. Welcome to the rest of your walk.' },
-              { title: 'I read Scripture differently now', body: "I see the Names where translators erased them. I notice 'the Lord' and ask which one. I read the OT first to anchor my doctrine. Scripture has new weight.", correct: true, feedback: "Right. That's the methodology change Stop 9 named. The Bible reads differently when you know what was buried under 'the Lord' and what was preserved. Every page becomes a forensic walk — and the Father becomes visible everywhere He used to be hidden behind a title." },
-              { title: "I'm not sure yet — that's why I'm here", body: "Some of this is still landing. I want to walk back through it carefully and see what holds up.", correct: true, feedback: "That's exactly the right posture for this lesson. We're going to walk back through every stop. You'll see what stuck and what needs more thought. By the end, you'll have a clearer picture than you do right now." },
+              { title: 'I read Scripture differently now', body: "I see the Names where translators erased them. I notice 'the Lord' and ask which one. I read the OT first to anchor my doctrine. Scripture has new weight.", correct: true, feedback: "Right. That's the methodology change Waymark 9 named. The Bible reads differently when you know what was buried under 'the Lord' and what was preserved. Every page becomes a forensic walk — and the Father becomes visible everywhere He used to be hidden behind a title." },
+              { title: "I'm not sure yet — that's why I'm here", body: "Some of this is still landing. I want to walk back through it carefully and see what holds up.", correct: true, feedback: "That's exactly the right posture for this lesson. We're going to walk back through every waymark. You'll see what stuck and what needs more thought. By the end, you'll have a clearer picture than you do right now." },
             ]}
             onCorrect={() => unlockNext(0)} colors={colors} />
         </Step>
 
         <Step idx={1} unlockedSteps={unlockedSteps} stepRefs={stepRefs} num="02" label="Echad"
-          eyebrow="Stop 1 — The One Living Elohim"
+          eyebrow="Waymark 1 — The One Living Elohim"
           heading="One — really one" colors={colors}>
-          <div className="recap-tag">↩ revisiting Stop 1</div>
+          <div className="recap-tag">↩ revisiting Waymark 1</div>
           <p className="lesson-p">
-            The first stop dismantled "compound unity." The Hebrew word <em>echad</em> doesn't mean "many in one." It means <strong style={{ color: amber }}>one</strong> — the same way "one apple" means one apple. Hebrew has another word, <em>yachid</em>, for absolute uniqueness. <em>Echad</em> just means one of something. Trinitarian theology was using a word as if it carried freight it doesn't carry.
+            The first waymark dismantled "compound unity." The Hebrew word <em>echad</em> doesn't mean "many in one." It means <strong style={{ color: amber }}>one</strong> — the same way "one apple" means one apple. Hebrew has another word, <em>yachid</em>, for absolute uniqueness. <em>Echad</em> just means one of something. Trinitarian theology was using a word as if it carried freight it doesn't carry.
           </p>
           <p className="lesson-p">
             Quick game to confirm. Each verse below uses <em>echad</em>. Pick which sense it has — and watch the pattern.
@@ -159,19 +159,19 @@ export default function Stop10TheOriginalFaith() {
           />
 
           <p className="lesson-p" style={{ marginTop: '2rem' }}>
-            Yahuah is <em>echad</em>. Not three Persons sharing an essence. Not a "compound unity." <strong style={{ color: amber }}>One Being.</strong> One Father. The first stop was the foundation, and you saw it then. You see it more clearly now.
+            Yahuah is <em>echad</em>. Not three Persons sharing an essence. Not a "compound unity." <strong style={{ color: amber }}>One Being.</strong> One Father. The first waymark was the foundation, and you saw it then. You see it more clearly now.
           </p>
         </Step>
 
         <Step idx={2} unlockedSteps={unlockedSteps} stepRefs={stepRefs} num="03" label="The Name"
-          eyebrow="Stop 2 — Yahuah"
+          eyebrow="Waymark 2 — Yahuah"
           heading="His Name is buried in your Bible" colors={colors}>
-          <div className="recap-tag">↩ revisiting Stop 2</div>
+          <div className="recap-tag">↩ revisiting Waymark 2</div>
           <p className="lesson-p">
-            The second stop showed you the Father has a personal Name — <strong style={{ color: amber }}>Yahuah</strong> — used over 6,800 times in the Hebrew Old Testament. Modern English Bibles replaced almost every one of those with the single word "LORD" in small caps. The Father's Name was buried under a generic title.
+            The second waymark showed you the Father has a personal Name — <strong style={{ color: amber }}>Yahuah</strong> — used over 6,800 times in the Hebrew Old Testament. Modern English Bibles replaced almost every one of those with the single word "LORD" in small caps. The Father's Name was buried under a generic title.
           </p>
           <p className="lesson-p">
-            You also saw in Stop 9 how the same cover-up extended to the New Testament — <em>Kyrios</em> in Greek and <em>Dominus</em> in Latin both became "Lord" in English, flattening Yahuah and Yahushua into one word.
+            You also saw in Waymark 9 how the same cover-up extended to the New Testament — <em>Kyrios</em> in Greek and <em>Dominus</em> in Latin both became "Lord" in English, flattening Yahuah and Yahushua into one word.
           </p>
           <p className="lesson-p">
             Quick game. Below is Psalm 110:1 — one of the most-cited "Trinitarian" verses in Scripture. Three "Lord" instances. Tap each one and assign it. Then watch the verse re-render with the original Names restored.
@@ -196,11 +196,11 @@ export default function Stop10TheOriginalFaith() {
         </Step>
 
         <Step idx={3} unlockedSteps={unlockedSteps} stepRefs={stepRefs} num="04" label="Calling on the Name"
-          eyebrow="Stop 3 — How to call on Him"
+          eyebrow="Waymark 3 — How to call on Him"
           heading="The Name is meant to be used" colors={colors}>
-          <div className="recap-tag">↩ revisiting Stop 3</div>
+          <div className="recap-tag">↩ revisiting Waymark 3</div>
           <p className="lesson-p">
-            Stop 3 walked you through what it actually means to "call on the Name of Yahuah." It isn't a vague spiritual gesture. It's a direct, personal address — using His real Name, the Name He gave Moses, the Name woven into every covenant promise.
+            Waymark 3 walked you through what it actually means to "call on the Name of Yahuah." It isn't a vague spiritual gesture. It's a direct, personal address — using His real Name, the Name He gave Moses, the Name woven into every covenant promise.
           </p>
           <p className="lesson-p">
             <strong style={{ color: amber }}>Pick the option that captures what calling on His Name actually means:</strong>
@@ -209,17 +209,17 @@ export default function Stop10TheOriginalFaith() {
             options={[
               { title: 'Personally addressing Yahuah by His real Name, in covenant relationship', body: "It means using His personal Name — Yahuah — when I speak to Him. Acknowledging who He actually is, in His own self-revealed identity, the way a child uses their father's name.", correct: true, feedback: "Right. That's what 'calling on the Name' actually means in Scripture. Not a generic title. His real Name — the one He gave Moses, the one woven into His Son's name, the one preserved in 'Hallelu-Yah.' Personal. Covenantal. The Name He listens for." },
               { title: 'Just generic prayer to "the Lord"', body: 'Calling on His Name means praying to "the Lord" or "God" however you usually do — it doesn\'t really matter what word you use.', correct: false, feedback: "If that were true, then Joel 2:32 ('whoever calls on the NAME of Yahuah shall be saved') would just say 'whoever prays shall be saved.' But it specifies — His NAME. The Name is the access point. The covenantal identifier. Calling on a generic title isn't the same as calling on the personal Name He gave to be called by." },
-              { title: "It's not really for us — that was just for Old Testament Israel", body: "The Name was specific to the old covenant. Christians today don't need to use it.", correct: false, feedback: "Joel 2:32 is quoted in the New Testament — Acts 2:21 (Peter at Shavuot) and Romans 10:13. The promise to 'whoever calls on the Name of Yahuah' wasn't replaced by 'whoever calls on the Lord' — that's the COVER-UP you saw in Stop 9. The Name is for everyone who would call on Him. It always was." },
+              { title: "It's not really for us — that was just for Old Testament Israel", body: "The Name was specific to the old covenant. Christians today don't need to use it.", correct: false, feedback: "Joel 2:32 is quoted in the New Testament — Acts 2:21 (Peter at Shavuot) and Romans 10:13. The promise to 'whoever calls on the Name of Yahuah' wasn't replaced by 'whoever calls on the Lord' — that's the COVER-UP you saw in Waymark 9. The Name is for everyone who would call on Him. It always was." },
             ]}
             onCorrect={() => unlockNext(3)} colors={colors} />
         </Step>
 
         <Step idx={4} unlockedSteps={unlockedSteps} stepRefs={stepRefs} num="05" label="Authority"
-          eyebrow="Stop 4 — The chain of authority"
+          eyebrow="Waymark 4 — The chain of authority"
           heading="Where does Yahushua's authority come from?" colors={colors}>
-          <div className="recap-tag">↩ revisiting Stop 4</div>
+          <div className="recap-tag">↩ revisiting Waymark 4</div>
           <p className="lesson-p">
-            Stop 4 walked you through the chain. The Father is the source of all authority. He delegated that authority to His Son — Yahushua said it constantly: <em>"the Father hath given all things into his hand,"</em> <em>"all power is given unto me in heaven and in earth."</em> Given. Delegated. From the Father. This is what every co-equal-Persons doctrine misses.
+            Waymark 4 walked you through the chain. The Father is the source of all authority. He delegated that authority to His Son — Yahushua said it constantly: <em>"the Father hath given all things into his hand,"</em> <em>"all power is given unto me in heaven and in earth."</em> Given. Delegated. From the Father. This is what every co-equal-Persons doctrine misses.
           </p>
           <p className="lesson-p">
             <strong style={{ color: amber }}>Build the chain.</strong> Below are four pieces of the authority structure. Tap them in order — from the source down to where it lands in your life. Wrong picks bounce back.
@@ -240,11 +240,11 @@ export default function Stop10TheOriginalFaith() {
         </Step>
 
         <Step idx={5} unlockedSteps={unlockedSteps} stepRefs={stepRefs} num="06" label="Roles"
-          eyebrow="Stop 5 — Source vs. agent"
+          eyebrow="Waymark 5 — Source vs. agent"
           heading="Who does what — match each role" colors={colors}>
-          <div className="recap-tag">↩ revisiting Stop 5</div>
+          <div className="recap-tag">↩ revisiting Waymark 5</div>
           <p className="lesson-p">
-            Stop 5 showed you the consistent pattern across Scripture. The Father is the <em>source</em>. The Son is the <em>agent</em>. Different verbs apply to each. Different actions. Different positions in every transaction. Trinitarian theology blurs all this into "co-equal Persons doing the same things." The text doesn't.
+            Waymark 5 showed you the consistent pattern across Scripture. The Father is the <em>source</em>. The Son is the <em>agent</em>. Different verbs apply to each. Different actions. Different positions in every transaction. Trinitarian theology blurs all this into "co-equal Persons doing the same things." The text doesn't.
           </p>
           <p className="lesson-p">
             <strong style={{ color: amber }}>Match each role to the right Being.</strong> Tap a role on top, then tap the Being it belongs to.
@@ -275,11 +275,11 @@ export default function Stop10TheOriginalFaith() {
         </Step>
 
         <Step idx={6} unlockedSteps={unlockedSteps} stepRefs={stepRefs} num="07" label="The Seed"
-          eyebrow="Stop 6 — The Son's humanity"
+          eyebrow="Waymark 6 — The Son's humanity"
           heading="Fully human, the second Adam" colors={colors}>
-          <div className="recap-tag">↩ revisiting Stop 6</div>
+          <div className="recap-tag">↩ revisiting Waymark 6</div>
           <p className="lesson-p">
-            Stop 6 made the case that Yahushua was fully human — born of Miriam, conceived by the Father's Ruach overshadowing her (the same word the Septuagint uses for the cloud of glory filling the Tabernacle), given life the same way Adam was. <strong style={{ color: amber }}>The Son is the second Adam.</strong> Not a divine being in human disguise. A real man, given life by the Father's own breath, fulfilling the seed-of-the-woman promise from Genesis 3:15.
+            Waymark 6 made the case that Yahushua was fully human — born of Miriam, conceived by the Father's Ruach overshadowing her (the same word the Septuagint uses for the cloud of glory filling the Tabernacle), given life the same way Adam was. <strong style={{ color: amber }}>The Son is the second Adam.</strong> Not a divine being in human disguise. A real man, given life by the Father's own breath, fulfilling the seed-of-the-woman promise from Genesis 3:15.
           </p>
           <p className="lesson-p">
             This is one of the hardest pieces of Pathway A for most readers. The "fully God / fully man" doctrine is so embedded in modern Christianity that the simpler — and more biblical — reading feels foreign. But it's also the most Scripturally consistent.
@@ -297,30 +297,30 @@ export default function Stop10TheOriginalFaith() {
         </Step>
 
         <Step idx={7} unlockedSteps={unlockedSteps} stepRefs={stepRefs} num="08" label="Trinity Dismantled"
-          eyebrow="Stop 7 — The proof-texts"
+          eyebrow="Waymark 7 — The proof-texts"
           heading="The keystone verses, examined honestly" colors={colors}>
-          <div className="recap-tag">↩ revisiting Stop 7</div>
+          <div className="recap-tag">↩ revisiting Waymark 7</div>
           <p className="lesson-p">
-            Stop 7 walked you through the three keystone verses Trinitarians use to "prove" Yahushua is Yahuah. <em>"Before Abraham was, I am" (John 8:58). "I and my Father are one" (John 10:30). "Mighty God, Everlasting Father" (Isaiah 9:6).</em> Each one falls apart under examination. None of them say what the doctrine claims they say.
+            Waymark 7 walked you through the three keystone verses Trinitarians use to "prove" Yahushua is Yahuah. <em>"Before Abraham was, I am" (John 8:58). "I and my Father are one" (John 10:30). "Mighty God, Everlasting Father" (Isaiah 9:6).</em> Each one falls apart under examination. None of them say what the doctrine claims they say.
           </p>
           <p className="lesson-p">
             <strong style={{ color: amber }}>Pick the option that captures the real reason these verses don't prove the Trinity:</strong>
           </p>
           <ChoiceCards
             options={[
-              { title: 'The verses are mistranslations or forgeries', body: "Translators corrupted the original text to make it sound Trinitarian. The verses don't really say those things in Greek.", correct: false, feedback: "That overstates it. The Greek text of John 8:58 really does say ego eimi ('I am'). John 10:30 really does say 'one' (hen). Isaiah 9:6 really does include those titles. The TEXT isn't the problem. The INTERPRETATION is the problem. The texts say something different than what Trinitarians claim — and you saw in Stop 7 that reading them in context, with the original languages, dissolves the doctrine without any need to question the manuscript itself." },
+              { title: 'The verses are mistranslations or forgeries', body: "Translators corrupted the original text to make it sound Trinitarian. The verses don't really say those things in Greek.", correct: false, feedback: "That overstates it. The Greek text of John 8:58 really does say ego eimi ('I am'). John 10:30 really does say 'one' (hen). Isaiah 9:6 really does include those titles. The TEXT isn't the problem. The INTERPRETATION is the problem. The texts say something different than what Trinitarians claim — and you saw in Waymark 7 that reading them in context, with the original languages, dissolves the doctrine without any need to question the manuscript itself." },
               { title: "Yahushua never claimed to be God", body: "He always denied any divine claims and called Himself just a man.", correct: false, feedback: "That's not quite right either. Yahushua claimed pre-existence, claimed unique authority, claimed unique relationship with His Father. He never claimed to BE His Father — that's the actual point. He claimed to BE THE SON OF Yahuah. Distinct identity. Sent by His Father. Given authority. The Trinitarian reading distorts His real claims into something they aren't." },
-              { title: 'They prove at most TWO Beings — never three Persons acting together', body: "Each one shows the Father AND the Son in distinct positions — Yahushua existing before Abraham AS THE SON, Yahushua and the Father unified in PURPOSE, the Son being given titles BY the Father. Two Beings, distinguished, working together. Never three co-equal Persons acting as one.", correct: true, feedback: "Right. This is the bi-theism observation Stop 7 named. The Trinitarian's own proof-texts only ever produce TWO figures — the Father and the Son in distinct roles. The Spirit is conspicuously absent from every keystone verse. The doctrine of THREE Persons isn't even what the proof-texts prove. They prove at most two Beings — and even then, in distinct, non-co-equal roles. The whole edifice rests on misreadings the original languages don't support." },
+              { title: 'They prove at most TWO Beings — never three Persons acting together', body: "Each one shows the Father AND the Son in distinct positions — Yahushua existing before Abraham AS THE SON, Yahushua and the Father unified in PURPOSE, the Son being given titles BY the Father. Two Beings, distinguished, working together. Never three co-equal Persons acting as one.", correct: true, feedback: "Right. This is the bi-theism observation Waymark 7 named. The Trinitarian's own proof-texts only ever produce TWO figures — the Father and the Son in distinct roles. The Spirit is conspicuously absent from every keystone verse. The doctrine of THREE Persons isn't even what the proof-texts prove. They prove at most two Beings — and even then, in distinct, non-co-equal roles. The whole edifice rests on misreadings the original languages don't support." },
             ]}
             onCorrect={() => unlockNext(7)} colors={colors} />
         </Step>
 
         <Step idx={8} unlockedSteps={unlockedSteps} stepRefs={stepRefs} num="09" label="The Spirit"
-          eyebrow="Stop 8 — Whose Spirit?"
+          eyebrow="Waymark 8 — Whose Spirit?"
           heading="The grammar itself dismantles the doctrine" colors={colors}>
-          <div className="recap-tag">↩ revisiting Stop 8</div>
+          <div className="recap-tag">↩ revisiting Waymark 8</div>
           <p className="lesson-p">
-            Stop 8 made the strongest possible case that the Spirit is not a third Person. The grammatical pattern across the Old Testament is consistent: <strong style={{ color: amber }}>"the Spirit OF Yahuah," "MY Spirit," "HIS Spirit."</strong> The Spirit is always described as belonging to the Father. If the Spirit were a separate co-equal Person, this language would be redundant. It isn't redundant — because the Spirit IS the Father reaching into the world.
+            Waymark 8 made the strongest possible case that the Spirit is not a third Person. The grammatical pattern across the Old Testament is consistent: <strong style={{ color: amber }}>"the Spirit OF Yahuah," "MY Spirit," "HIS Spirit."</strong> The Spirit is always described as belonging to the Father. If the Spirit were a separate co-equal Person, this language would be redundant. It isn't redundant — because the Spirit IS the Father reaching into the world.
           </p>
           <p className="lesson-p">
             Quick pattern game. Below are four OT verses about the Spirit. Predict which possessive construction is used in each — <strong style={{ color: amber }}>"OF Yahuah"</strong> or <strong style={{ color: amber }}>"MY Spirit"</strong> (or "HIS Spirit"). The point is the relentlessness of the pattern.
@@ -345,11 +345,11 @@ export default function Stop10TheOriginalFaith() {
         </Step>
 
         <Step idx={9} unlockedSteps={unlockedSteps} stepRefs={stepRefs} num="10" label="The Cover-Up"
-          eyebrow="Stop 9 — How tradition replaced Scripture"
+          eyebrow="Waymark 9 — How tradition replaced Scripture"
           heading="Sort the doctrines — Scripture or Tradition?" colors={colors}>
-          <div className="recap-tag">↩ revisiting Stop 9</div>
+          <div className="recap-tag">↩ revisiting Waymark 9</div>
           <p className="lesson-p">
-            Stop 9 walked you through the historical cover-up — Septuagint to Vulgate to KJV — that buried the Father's Name AND the Son's title under the same English word. You saw how that linguistic merger made the Trinity feel inevitable.
+            Waymark 9 walked you through the historical cover-up — Septuagint to Vulgate to KJV — that buried the Father's Name AND the Son's title under the same English word. You saw how that linguistic merger made the Trinity feel inevitable.
           </p>
           <p className="lesson-p">
             But the cover-up isn't only about the Trinity. Once Scripture's clear distinctions get flattened, all kinds of false doctrines move in. Here's a teaser for what comes in <strong style={{ color: amber }}>Pathways B and C</strong>. Each statement below is either from Scripture or from tradition (Babylon, Rome, or both). <strong style={{ color: amber }}>Sort each one.</strong> Wrong answers preview the work ahead.
@@ -368,7 +368,7 @@ export default function Stop10TheOriginalFaith() {
               { id: '5', text: "Grace was always there — Noah found grace, Moses found grace, David lived under grace", answer: 'scripture', explanation: "Scripture. Genesis 6:8 — 'Noah found grace in the eyes of Yahuah.' Exodus 33:17 — Moses found grace. Grace was ALWAYS available. The 'we live under grace, NOT law' doctrine is the OPPOSITE of what Scripture teaches." },
               { id: '6', text: 'The biblical day starts at sundown', answer: 'tradition', explanation: "Tradition. Sundown-to-sundown reckoning is a Babylonian rabbinic tradition that came from the exile period. Genesis 1 describes the day from light to dusk — dawn to dusk, 12 hours. Pesach and Yom Kippur are the only stated exceptions in Scripture. Pathway C examines the calendar." },
               { id: '7', text: "Yahushua is the Son of Yahuah, sent by the Father", answer: 'scripture', explanation: "Scripture. Said by Yahushua himself dozens of times. The Son. Sent. Not co-equal. Not the same Being as the Father. The clearest claim of the entire NT." },
-              { id: '8', text: 'The Trinity is taught throughout Scripture', answer: 'tradition', explanation: "Tradition. The word 'Trinity' appears nowhere in Scripture. The doctrine was formalized at imperial councils (Nicaea 325, Constantinople 381) — over 300 years after the apostles. Stop 7 dismantled the proof-texts. The doctrine is from Rome, not Scripture." },
+              { id: '8', text: 'The Trinity is taught throughout Scripture', answer: 'tradition', explanation: "Tradition. The word 'Trinity' appears nowhere in Scripture. The doctrine was formalized at imperial councils (Nicaea 325, Constantinople 381) — over 300 years after the apostles. Waymark 7 dismantled the proof-texts. The doctrine is from Rome, not Scripture." },
             ]}
           />
 
@@ -525,7 +525,7 @@ export default function Stop10TheOriginalFaith() {
         <Step idx={12} unlockedSteps={unlockedSteps} stepRefs={stepRefs} num="13" label="Recap"
           eyebrow="Lock it in" heading="Three integration questions" colors={colors}>
           <p className="lesson-p">
-            Three final questions covering the whole pathway. These test integration across all ten stops.
+            Three final questions covering the whole pathway. These test integration across all ten waymarks.
           </p>
           <RecapQuiz colors={colors} onComplete={() => unlockNext(12)} />
         </Step>
@@ -746,23 +746,23 @@ function RecapQuiz({ colors, onComplete }) {
       prompt: "Across the whole pathway, what is the consistent biblical pattern between the Father and the Son?",
       options: [
         { label: "Two co-equal Persons sharing one divine essence", correct: false, feedback: "That's the Trinitarian framework. Scripture's actual pattern is different. The Father is consistently the SOURCE, the Son the AGENT. The Father SENDS, the Son is SENT. The Father GIVES, the Son RECEIVES. Different roles, distinct Beings, never co-equal in the way the doctrine claims." },
-        { label: "The Father is the source, the Son is the agent — distinct roles, never co-equal, never interchangeable", correct: true, feedback: "Right. This is the pattern across every stop. Stops 4 and 5 named it directly. Stop 7 showed the proof-texts only ever produce two figures (never three). Stop 9 showed the apostles preserved this distinction in Greek (Theos for the Father, Kyrios for the Son). The pattern is unmistakable once you see it. The Father is never sent; the Son is never the source." },
+        { label: "The Father is the source, the Son is the agent — distinct roles, never co-equal, never interchangeable", correct: true, feedback: "Right. This is the pattern across every waymark. Waymarks 4 and 5 named it directly. Waymark 7 showed the proof-texts only ever produce two figures (never three). Waymark 9 showed the apostles preserved this distinction in Greek (Theos for the Father, Kyrios for the Son). The pattern is unmistakable once you see it. The Father is never sent; the Son is never the source." },
         { label: "The Father is the Spirit, and the Son is just a manifestation of the Father", correct: false, feedback: "That's modalism, the OTHER major heresy. It's also wrong. The Father and the Son are TWO DISTINCT BEINGS. The Father is in heaven, speaking. The Son was on earth, listening, obeying, and going back to His Father. Two Beings. Not one Being appearing in different modes." },
       ],
     },
     {
       prompt: "What is the methodology Pathway A taught for reading Scripture honestly?",
       options: [
-        { label: "Read only the New Testament — that's where Yahushua's teachings are", correct: false, feedback: "The OPPOSITE of what Pathway A taught. Stop 9 made the case that the OT must ANCHOR your doctrine, BECAUSE the NT translation conventions (Kyrios, Dominus, Lord) systematically merged distinct Beings into one English title. NT-only reading produces the Trinity, the grace-replaces-law doctrine, and many other false teachings." },
+        { label: "Read only the New Testament — that's where Yahushua's teachings are", correct: false, feedback: "The OPPOSITE of what Pathway A taught. Waymark 9 made the case that the OT must ANCHOR your doctrine, BECAUSE the NT translation conventions (Kyrios, Dominus, Lord) systematically merged distinct Beings into one English title. NT-only reading produces the Trinity, the grace-replaces-law doctrine, and many other false teachings." },
         { label: "Trust whatever your pastor or denomination teaches — they've studied this", correct: false, feedback: "That's exactly the trap Pathway A was designed to break. The 'just trust the experts' approach has propagated centuries of inherited cover-ups. Anchor in the OT. Follow the original languages. Test every doctrine against the consistent biblical pattern. That's the methodology." },
         { label: "Anchor in the OT first (where Names and roles are clear), then test NT readings against the OT pattern, with the original languages as your guide", correct: true, feedback: "Right. That's the methodology. The OT keeps Yahuah, Adon, Adonai distinct. The Father and Son are clearly different Beings with different roles. Once that framework is solid, NT readings can be tested against it — and you can mentally restore the Names where translators erased them. This methodology applies to every doctrine you'll examine in Pathways B and C." },
       ],
     },
     {
-      prompt: "What's the most important practical change Stop 10 named for your daily walk?",
+      prompt: "What's the most important practical change Waymark 10 named for your daily walk?",
       options: [
-        { label: "You should change religions and join a Hebrew Roots congregation", correct: false, feedback: "Stop 10 didn't say that. The change is internal first — your prayer, your reading, your understanding. Where you worship is a separate question. The change Stop 10 named is recognizing that you can speak to the Father by His real Name, read His words as His personal voice to you, and walk in the original faith — wherever you are, whatever community you're in." },
-        { label: "Your prayer, your reading, and your relationship change because you now know Yahuah by Name and recognize His voice", correct: true, feedback: "Right. That's the recovery Stop 11 named. You call Him by Name. You read Scripture as His voice speaking to you personally. Your Christian clichés get repaired. Your walk has weight. Your appreciation deepens. The Father has been speaking to you the whole time — now you can hear Him. That's the original faith." },
+        { label: "You should change religions and join a Hebrew Roots congregation", correct: false, feedback: "Waymark 10 didn't say that. The change is internal first — your prayer, your reading, your understanding. Where you worship is a separate question. The change Waymark 10 named is recognizing that you can speak to the Father by His real Name, read His words as His personal voice to you, and walk in the original faith — wherever you are, whatever community you're in." },
+        { label: "Your prayer, your reading, and your relationship change because you now know Yahuah by Name and recognize His voice", correct: true, feedback: "Right. That's the recovery Waymark 11 named. You call Him by Name. You read Scripture as His voice speaking to you personally. Your Christian clichés get repaired. Your walk has weight. Your appreciation deepens. The Father has been speaking to you the whole time — now you can hear Him. That's the original faith." },
         { label: "You can stop reading the Bible — you've graduated", correct: false, feedback: "The opposite. NOW you can actually read the Bible — for the first time, without the cover-up obscuring everything. Now Scripture becomes the Father's personal voice to you. That's where your real walk with Him begins. Pathway A was the foundation. Reading Scripture as His voice is the rest of your life." },
       ],
     },

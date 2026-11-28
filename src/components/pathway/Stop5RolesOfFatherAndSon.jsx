@@ -122,7 +122,7 @@ export default function Stop5RolesOfFatherAndSon() {
       <div className="relative max-w-4xl mx-auto px-12 md:px-20 py-20 md:py-24">
         <div className="space-y-7 mb-20" style={{ animation: 'fadeUp 0.9s ease-out forwards' }}>
           <div className="text-xs uppercase" style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}>
-            Pathway · The Name and the Nature · Stop 5
+            Pathway · The Name and the Nature · Waymark 5
           </div>
           <h1 style={{ fontFamily: '"Fraunces", Georgia, serif', fontWeight: 300, fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 0.98, letterSpacing: '-0.03em', maxWidth: '20ch' }}>
             The <em style={{ fontStyle: 'italic', fontWeight: 400, color: amber }}>Roles</em> of the Father and the Son
@@ -145,7 +145,7 @@ export default function Stop5RolesOfFatherAndSon() {
           heading="Has the church handed the Father's titles to the Son?"
           colors={colors}>
           <p className="lesson-p">
-            In Stop 4 we traced the chain of authority — Father at the source, Son as the means,
+            In Waymark 4 we traced the chain of authority — Father at the source, Son as the means,
             believer in covenant operating under both. Two beings. Two roles. Distinct.
           </p>
           <p className="lesson-p">
@@ -739,7 +739,7 @@ export default function Stop5RolesOfFatherAndSon() {
           <p className="lesson-p">
             That's because in Scripture, the Spirit is the Father's own Ruach — His breath, His
             presence, His active power reaching into the world. <em>Not</em> a separate Being on
-            a separate throne. We'll dig into this fully in Stop 8 — <em>Ruach / Pneuma</em>. For
+            a separate throne. We'll dig into this fully in Waymark 8 — <em>Ruach / Pneuma</em>. For
             now, hold the observation: every role-passage and every throne-room scene in Scripture
             shows two beings, and the Spirit is always at work in or through them — never named as
             a third figure beside them.
@@ -785,7 +785,7 @@ export default function Stop5RolesOfFatherAndSon() {
                 Want all five titles, in full?
               </h3>
               <p className="mb-10" style={{ color: cream, opacity: 0.65, fontSize: '1.05rem', maxWidth: '34rem', lineHeight: 1.7 }}>
-                This stop walked through three of the five titles. The book traces all five in
+                This waymark walked through three of the five titles. The book traces all five in
                 Hebrew and Greek — including Bridegroom and Inheritance — and shows how each one
                 tells the same story.
               </p>
@@ -840,7 +840,7 @@ export default function Stop5RolesOfFatherAndSon() {
               }}
                 onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 168, 106, 0.1)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}>
-                Continue to Stop 6 — <em>The Seed of the Woman</em> →
+                Continue to Waymark 6 — <em>The Seed of the Woman</em> →
               </button>
             </div>
           </div>

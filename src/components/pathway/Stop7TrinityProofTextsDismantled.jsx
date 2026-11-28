@@ -110,7 +110,7 @@ export default function Stop7TrinityProofTextsDismantled() {
       <div className="relative max-w-4xl mx-auto px-12 md:px-20 py-20 md:py-24">
         <div className="space-y-7 mb-20" style={{ animation: 'fadeUp 0.9s ease-out forwards' }}>
           <div className="text-xs uppercase" style={{ color: amber, opacity: 0.85, letterSpacing: '0.32em', fontWeight: 500 }}>
-            Pathway · The Name and the Nature · Stop 7
+            Pathway · The Name and the Nature · Waymark 7
           </div>
           <h1 style={{ fontFamily: '"Fraunces", Georgia, serif', fontWeight: 300, fontSize: 'clamp(2.8rem, 6vw, 5rem)', lineHeight: 0.98, letterSpacing: '-0.03em', maxWidth: '20ch' }}>
             Trinity <em style={{ fontStyle: 'italic', fontWeight: 400, color: amber }}>Proof-Texts</em> Dismantled
@@ -814,7 +814,7 @@ export default function Stop7TrinityProofTextsDismantled() {
                 title: 'The Spirit is missing because there is no third Person — the Spirit is the Father\'s own nature in action, not a separate being',
                 body: 'Every keystone verse shows two figures because there are only ever two figures: the Father, and His appointed Son. The "Holy Spirit" is the Father\'s own Ruach — His breath, His presence, His active power. Not a third Person beside Him. That\'s why the Spirit is conspicuously absent from every throne room and every proof-text — because the Spirit IS the Father, not someone separate.',
                 correct: true,
-                feedback: 'Yes. This is the simplest and most consistent explanation. If the Spirit were a third Person, you would expect at least some of the keystone verses to require all three to make sense. None of them do. Every throne room shows two beings. Every proof-text argues at most for bi-theism. The Spirit is conspicuously absent because the Spirit is not a separate Person — the Spirit is the Father\'s own nature reaching into the world. We dig into this fully in Stop 8.',
+                feedback: 'Yes. This is the simplest and most consistent explanation. If the Spirit were a third Person, you would expect at least some of the keystone verses to require all three to make sense. None of them do. Every throne room shows two beings. Every proof-text argues at most for bi-theism. The Spirit is conspicuously absent because the Spirit is not a separate Person — the Spirit is the Father\'s own nature reaching into the world. We dig into this fully in Waymark 8.',
               },
               {
                 title: 'The Spirit is invisible, so He doesn\'t show up in visions',
@@ -968,7 +968,7 @@ export default function Stop7TrinityProofTextsDismantled() {
               }}
                 onMouseEnter={(e) => { e.currentTarget.style.backgroundColor = 'rgba(212, 168, 106, 0.1)'; }}
                 onMouseLeave={(e) => { e.currentTarget.style.backgroundColor = 'transparent'; }}>
-                Continue to Stop 8 — <em>Ruach / Pneuma — The Spirit</em> →
+                Continue to Waymark 8 — <em>Ruach / Pneuma — The Spirit</em> →
               </button>
             </div>
           </div>

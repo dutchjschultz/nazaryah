@@ -94,7 +94,7 @@ export const mainNav = [
       { label: 'Is This the Ekklesia?', href: '/ekklesia', desc: 'What the assembly was meant to be before it became “church.”' },
       { label: 'Cosmology', href: '/cosmology', desc: 'The shape of what Yahuah made, from the firmament above to the earth below.' },
       { label: 'The Five Offerings', href: '/five-offerings', desc: 'The five offerings of Leviticus, what each one held, and why none of them is gone.' },
-      { label: 'Pathway', href: '/pathway', desc: 'Guided walks through one subject, stop by stop.' },
+      { label: 'Pathway', href: '/pathway', desc: 'Guided walks through one subject, waymark by waymark.' },
     ],
   },
   { label: 'Torah', href: '/torah' },
